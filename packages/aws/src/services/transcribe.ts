@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -3695,27 +3694,13 @@ export type ListCallAnalyticsCategoriesError =
  *
  * To get detailed information about a specific Call Analytics category, use the operation.
  */
-export const listCallAnalyticsCategories: API.OperationMethod<
+export const listCallAnalyticsCategories: API.PaginatedOperationMethod<
   ListCallAnalyticsCategoriesRequest,
   ListCallAnalyticsCategoriesResponse,
   ListCallAnalyticsCategoriesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCallAnalyticsCategoriesRequest,
-  ) => stream.Stream<
-    ListCallAnalyticsCategoriesResponse,
-    ListCallAnalyticsCategoriesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCallAnalyticsCategoriesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListCallAnalyticsCategoriesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCallAnalyticsCategoriesRequest,
   output: ListCallAnalyticsCategoriesResponse,
   errors: [
@@ -3744,27 +3729,13 @@ export type ListCallAnalyticsJobsError =
  *
  * To get detailed information about a specific Call Analytics job, use the operation.
  */
-export const listCallAnalyticsJobs: API.OperationMethod<
+export const listCallAnalyticsJobs: API.PaginatedOperationMethod<
   ListCallAnalyticsJobsRequest,
   ListCallAnalyticsJobsResponse,
   ListCallAnalyticsJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCallAnalyticsJobsRequest,
-  ) => stream.Stream<
-    ListCallAnalyticsJobsResponse,
-    ListCallAnalyticsJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCallAnalyticsJobsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListCallAnalyticsJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCallAnalyticsJobsRequest,
   output: ListCallAnalyticsJobsResponse,
   errors: [
@@ -3793,27 +3764,13 @@ export type ListLanguageModelsError =
  *
  * To get detailed information about a specific custom language model, use the operation.
  */
-export const listLanguageModels: API.OperationMethod<
+export const listLanguageModels: API.PaginatedOperationMethod<
   ListLanguageModelsRequest,
   ListLanguageModelsResponse,
   ListLanguageModelsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListLanguageModelsRequest,
-  ) => stream.Stream<
-    ListLanguageModelsResponse,
-    ListLanguageModelsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListLanguageModelsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListLanguageModelsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLanguageModelsRequest,
   output: ListLanguageModelsResponse,
   errors: [
@@ -3842,27 +3799,13 @@ export type ListMedicalScribeJobsError =
  *
  * To get detailed information about a specific Medical Scribe job, use the operation.
  */
-export const listMedicalScribeJobs: API.OperationMethod<
+export const listMedicalScribeJobs: API.PaginatedOperationMethod<
   ListMedicalScribeJobsRequest,
   ListMedicalScribeJobsResponse,
   ListMedicalScribeJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListMedicalScribeJobsRequest,
-  ) => stream.Stream<
-    ListMedicalScribeJobsResponse,
-    ListMedicalScribeJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListMedicalScribeJobsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListMedicalScribeJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMedicalScribeJobsRequest,
   output: ListMedicalScribeJobsResponse,
   errors: [
@@ -3891,27 +3834,13 @@ export type ListMedicalTranscriptionJobsError =
  *
  * To get detailed information about a specific medical transcription job, use the operation.
  */
-export const listMedicalTranscriptionJobs: API.OperationMethod<
+export const listMedicalTranscriptionJobs: API.PaginatedOperationMethod<
   ListMedicalTranscriptionJobsRequest,
   ListMedicalTranscriptionJobsResponse,
   ListMedicalTranscriptionJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListMedicalTranscriptionJobsRequest,
-  ) => stream.Stream<
-    ListMedicalTranscriptionJobsResponse,
-    ListMedicalTranscriptionJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListMedicalTranscriptionJobsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListMedicalTranscriptionJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMedicalTranscriptionJobsRequest,
   output: ListMedicalTranscriptionJobsResponse,
   errors: [
@@ -3940,27 +3869,13 @@ export type ListMedicalVocabulariesError =
  *
  * To get detailed information about a specific custom medical vocabulary, use the operation.
  */
-export const listMedicalVocabularies: API.OperationMethod<
+export const listMedicalVocabularies: API.PaginatedOperationMethod<
   ListMedicalVocabulariesRequest,
   ListMedicalVocabulariesResponse,
   ListMedicalVocabulariesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListMedicalVocabulariesRequest,
-  ) => stream.Stream<
-    ListMedicalVocabulariesResponse,
-    ListMedicalVocabulariesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListMedicalVocabulariesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListMedicalVocabulariesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMedicalVocabulariesRequest,
   output: ListMedicalVocabulariesResponse,
   errors: [
@@ -4021,27 +3936,13 @@ export type ListTranscriptionJobsError =
  *
  * To get detailed information about a specific transcription job, use the operation.
  */
-export const listTranscriptionJobs: API.OperationMethod<
+export const listTranscriptionJobs: API.PaginatedOperationMethod<
   ListTranscriptionJobsRequest,
   ListTranscriptionJobsResponse,
   ListTranscriptionJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTranscriptionJobsRequest,
-  ) => stream.Stream<
-    ListTranscriptionJobsResponse,
-    ListTranscriptionJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTranscriptionJobsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListTranscriptionJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTranscriptionJobsRequest,
   output: ListTranscriptionJobsResponse,
   errors: [
@@ -4070,27 +3971,13 @@ export type ListVocabulariesError =
  *
  * To get detailed information about a specific custom vocabulary, use the operation.
  */
-export const listVocabularies: API.OperationMethod<
+export const listVocabularies: API.PaginatedOperationMethod<
   ListVocabulariesRequest,
   ListVocabulariesResponse,
   ListVocabulariesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListVocabulariesRequest,
-  ) => stream.Stream<
-    ListVocabulariesResponse,
-    ListVocabulariesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListVocabulariesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListVocabulariesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListVocabulariesRequest,
   output: ListVocabulariesResponse,
   errors: [
@@ -4119,27 +4006,13 @@ export type ListVocabularyFiltersError =
  *
  * To get detailed information about a specific custom vocabulary filter, use the operation.
  */
-export const listVocabularyFilters: API.OperationMethod<
+export const listVocabularyFilters: API.PaginatedOperationMethod<
   ListVocabularyFiltersRequest,
   ListVocabularyFiltersResponse,
   ListVocabularyFiltersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListVocabularyFiltersRequest,
-  ) => stream.Stream<
-    ListVocabularyFiltersResponse,
-    ListVocabularyFiltersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListVocabularyFiltersRequest,
-  ) => stream.Stream<
-    unknown,
-    ListVocabularyFiltersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListVocabularyFiltersRequest,
   output: ListVocabularyFiltersResponse,
   errors: [

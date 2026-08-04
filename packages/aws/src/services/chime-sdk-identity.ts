@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -2101,27 +2100,13 @@ export type ListAppInstanceAdminsError =
 /**
  * Returns a list of the administrators in the `AppInstance`.
  */
-export const listAppInstanceAdmins: API.OperationMethod<
+export const listAppInstanceAdmins: API.PaginatedOperationMethod<
   ListAppInstanceAdminsRequest,
   ListAppInstanceAdminsResponse,
   ListAppInstanceAdminsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAppInstanceAdminsRequest,
-  ) => stream.Stream<
-    ListAppInstanceAdminsResponse,
-    ListAppInstanceAdminsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAppInstanceAdminsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListAppInstanceAdminsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAppInstanceAdminsRequest,
   output: ListAppInstanceAdminsResponse,
   errors: [
@@ -2155,27 +2140,13 @@ export type ListAppInstanceBotsError =
 /**
  * Lists all `AppInstanceBots` created under a single `AppInstance`.
  */
-export const listAppInstanceBots: API.OperationMethod<
+export const listAppInstanceBots: API.PaginatedOperationMethod<
   ListAppInstanceBotsRequest,
   ListAppInstanceBotsResponse,
   ListAppInstanceBotsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAppInstanceBotsRequest,
-  ) => stream.Stream<
-    ListAppInstanceBotsResponse,
-    ListAppInstanceBotsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAppInstanceBotsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListAppInstanceBotsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAppInstanceBotsRequest,
   output: ListAppInstanceBotsResponse,
   errors: [
@@ -2209,27 +2180,13 @@ export type ListAppInstancesError =
  * Lists all Amazon Chime `AppInstance`s created under a single AWS
  * account.
  */
-export const listAppInstances: API.OperationMethod<
+export const listAppInstances: API.PaginatedOperationMethod<
   ListAppInstancesRequest,
   ListAppInstancesResponse,
   ListAppInstancesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAppInstancesRequest,
-  ) => stream.Stream<
-    ListAppInstancesResponse,
-    ListAppInstancesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAppInstancesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListAppInstancesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAppInstancesRequest,
   output: ListAppInstancesResponse,
   errors: [
@@ -2261,27 +2218,13 @@ export type ListAppInstanceUserEndpointsError =
 /**
  * Lists all the `AppInstanceUserEndpoints` created under a single `AppInstanceUser`.
  */
-export const listAppInstanceUserEndpoints: API.OperationMethod<
+export const listAppInstanceUserEndpoints: API.PaginatedOperationMethod<
   ListAppInstanceUserEndpointsRequest,
   ListAppInstanceUserEndpointsResponse,
   ListAppInstanceUserEndpointsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAppInstanceUserEndpointsRequest,
-  ) => stream.Stream<
-    ListAppInstanceUserEndpointsResponse,
-    ListAppInstanceUserEndpointsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAppInstanceUserEndpointsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListAppInstanceUserEndpointsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAppInstanceUserEndpointsRequest,
   output: ListAppInstanceUserEndpointsResponse,
   errors: [
@@ -2314,27 +2257,13 @@ export type ListAppInstanceUsersError =
  * List all `AppInstanceUsers` created under a single
  * `AppInstance`.
  */
-export const listAppInstanceUsers: API.OperationMethod<
+export const listAppInstanceUsers: API.PaginatedOperationMethod<
   ListAppInstanceUsersRequest,
   ListAppInstanceUsersResponse,
   ListAppInstanceUsersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAppInstanceUsersRequest,
-  ) => stream.Stream<
-    ListAppInstanceUsersResponse,
-    ListAppInstanceUsersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAppInstanceUsersRequest,
-  ) => stream.Stream<
-    unknown,
-    ListAppInstanceUsersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAppInstanceUsersRequest,
   output: ListAppInstanceUsersResponse,
   errors: [

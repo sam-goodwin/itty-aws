@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -1760,27 +1759,13 @@ export type ListChannelHandshakesError =
 /**
  * Lists channel handshakes based on specified criteria.
  */
-export const listChannelHandshakes: API.OperationMethod<
+export const listChannelHandshakes: API.PaginatedOperationMethod<
   ListChannelHandshakesRequest,
   ListChannelHandshakesResponse,
   ListChannelHandshakesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListChannelHandshakesRequest,
-  ) => stream.Stream<
-    ListChannelHandshakesResponse,
-    ListChannelHandshakesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListChannelHandshakesRequest,
-  ) => stream.Stream<
-    ChannelHandshakeSummary,
-    ListChannelHandshakesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ChannelHandshakeSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListChannelHandshakesRequest,
   output: ListChannelHandshakesResponse,
   errors: [
@@ -1811,27 +1796,13 @@ export type ListProgramManagementAccountsError =
 /**
  * Lists program management accounts based on specified criteria.
  */
-export const listProgramManagementAccounts: API.OperationMethod<
+export const listProgramManagementAccounts: API.PaginatedOperationMethod<
   ListProgramManagementAccountsRequest,
   ListProgramManagementAccountsResponse,
   ListProgramManagementAccountsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListProgramManagementAccountsRequest,
-  ) => stream.Stream<
-    ListProgramManagementAccountsResponse,
-    ListProgramManagementAccountsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListProgramManagementAccountsRequest,
-  ) => stream.Stream<
-    ProgramManagementAccountSummary,
-    ListProgramManagementAccountsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ProgramManagementAccountSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProgramManagementAccountsRequest,
   output: ListProgramManagementAccountsResponse,
   errors: [
@@ -1862,27 +1833,13 @@ export type ListRelationshipsError =
 /**
  * Lists partner relationships based on specified criteria.
  */
-export const listRelationships: API.OperationMethod<
+export const listRelationships: API.PaginatedOperationMethod<
   ListRelationshipsRequest,
   ListRelationshipsResponse,
   ListRelationshipsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRelationshipsRequest,
-  ) => stream.Stream<
-    ListRelationshipsResponse,
-    ListRelationshipsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRelationshipsRequest,
-  ) => stream.Stream<
-    RelationshipSummary,
-    ListRelationshipsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  RelationshipSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRelationshipsRequest,
   output: ListRelationshipsResponse,
   errors: [

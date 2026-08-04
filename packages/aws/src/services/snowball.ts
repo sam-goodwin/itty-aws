@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -1799,27 +1798,13 @@ export type DescribeAddressesError =
  * the US regions will return addresses from the list of all addresses associated with this
  * account in all US regions.
  */
-export const describeAddresses: API.OperationMethod<
+export const describeAddresses: API.PaginatedOperationMethod<
   DescribeAddressesRequest,
   DescribeAddressesResult,
   DescribeAddressesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeAddressesRequest,
-  ) => stream.Stream<
-    DescribeAddressesResult,
-    DescribeAddressesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeAddressesRequest,
-  ) => stream.Stream<
-    Address,
-    DescribeAddressesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Address
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeAddressesRequest,
   output: DescribeAddressesResult,
   errors: [InvalidNextTokenException, InvalidResourceException],
@@ -2025,27 +2010,13 @@ export type ListClusterJobsError =
  * `JobListEntry` object is for a job in the specified cluster and contains a job's
  * state, a job's ID, and other information.
  */
-export const listClusterJobs: API.OperationMethod<
+export const listClusterJobs: API.PaginatedOperationMethod<
   ListClusterJobsRequest,
   ListClusterJobsResult,
   ListClusterJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListClusterJobsRequest,
-  ) => stream.Stream<
-    ListClusterJobsResult,
-    ListClusterJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListClusterJobsRequest,
-  ) => stream.Stream<
-    JobListEntry,
-    ListClusterJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  JobListEntry
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListClusterJobsRequest,
   output: ListClusterJobsResult,
   errors: [InvalidNextTokenException, InvalidResourceException],
@@ -2066,27 +2037,13 @@ export type ListClustersError = InvalidNextTokenException | CommonErrors;
  * `ClusterListEntry` object contains a cluster's state, a cluster's ID, and other
  * important status information.
  */
-export const listClusters: API.OperationMethod<
+export const listClusters: API.PaginatedOperationMethod<
   ListClustersRequest,
   ListClustersResult,
   ListClustersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListClustersRequest,
-  ) => stream.Stream<
-    ListClustersResult,
-    ListClustersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListClustersRequest,
-  ) => stream.Stream<
-    ClusterListEntry,
-    ListClustersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ClusterListEntry
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListClustersRequest,
   output: ListClustersResult,
   errors: [InvalidNextTokenException],
@@ -2111,27 +2068,13 @@ export type ListCompatibleImagesError =
  * device. Currently, supported AMIs are based on the Amazon Linux-2, Ubuntu 20.04 LTS - Focal, or Ubuntu 22.04 LTS - Jammy images, available on the
  * Amazon Web Services Marketplace. Ubuntu 16.04 LTS - Xenial (HVM) images are no longer supported in the Market, but still supported for use on devices through Amazon EC2 VM Import/Export and running locally in AMIs.
  */
-export const listCompatibleImages: API.OperationMethod<
+export const listCompatibleImages: API.PaginatedOperationMethod<
   ListCompatibleImagesRequest,
   ListCompatibleImagesResult,
   ListCompatibleImagesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCompatibleImagesRequest,
-  ) => stream.Stream<
-    ListCompatibleImagesResult,
-    ListCompatibleImagesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCompatibleImagesRequest,
-  ) => stream.Stream<
-    CompatibleImage,
-    ListCompatibleImagesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  CompatibleImage
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCompatibleImagesRequest,
   output: ListCompatibleImagesResult,
   errors: [Ec2RequestFailedException, InvalidNextTokenException],
@@ -2154,27 +2097,13 @@ export type ListJobsError = InvalidNextTokenException | CommonErrors;
  * in one of the US regions will return jobs from the list of all jobs associated with this
  * account in all US regions.
  */
-export const listJobs: API.OperationMethod<
+export const listJobs: API.PaginatedOperationMethod<
   ListJobsRequest,
   ListJobsResult,
   ListJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListJobsRequest,
-  ) => stream.Stream<
-    ListJobsResult,
-    ListJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListJobsRequest,
-  ) => stream.Stream<
-    JobListEntry,
-    ListJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  JobListEntry
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListJobsRequest,
   output: ListJobsResult,
   errors: [InvalidNextTokenException],
@@ -2196,27 +2125,13 @@ export type ListLongTermPricingError =
 /**
  * Lists all long-term pricing types.
  */
-export const listLongTermPricing: API.OperationMethod<
+export const listLongTermPricing: API.PaginatedOperationMethod<
   ListLongTermPricingRequest,
   ListLongTermPricingResult,
   ListLongTermPricingError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListLongTermPricingRequest,
-  ) => stream.Stream<
-    ListLongTermPricingResult,
-    ListLongTermPricingError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListLongTermPricingRequest,
-  ) => stream.Stream<
-    LongTermPricingListEntry,
-    ListLongTermPricingError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  LongTermPricingListEntry
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLongTermPricingRequest,
   output: ListLongTermPricingResult,
   errors: [InvalidNextTokenException, InvalidResourceException],
@@ -2235,27 +2150,13 @@ export type ListPickupLocationsError = InvalidResourceException | CommonErrors;
 /**
  * A list of locations from which the customer can choose to pickup a device.
  */
-export const listPickupLocations: API.OperationMethod<
+export const listPickupLocations: API.PaginatedOperationMethod<
   ListPickupLocationsRequest,
   ListPickupLocationsResult,
   ListPickupLocationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPickupLocationsRequest,
-  ) => stream.Stream<
-    ListPickupLocationsResult,
-    ListPickupLocationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPickupLocationsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListPickupLocationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPickupLocationsRequest,
   output: ListPickupLocationsResult,
   errors: [InvalidResourceException],

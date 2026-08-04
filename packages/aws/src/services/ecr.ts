@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -4585,27 +4584,13 @@ export type DescribeImagesError =
  * instead. For more information about Amazon Web Services native basic scanning, see Scan
  * images for software vulnerabilities in Amazon ECR.
  */
-export const describeImages: API.OperationMethod<
+export const describeImages: API.PaginatedOperationMethod<
   DescribeImagesRequest,
   DescribeImagesResponse,
   DescribeImagesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeImagesRequest,
-  ) => stream.Stream<
-    DescribeImagesResponse,
-    DescribeImagesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeImagesRequest,
-  ) => stream.Stream<
-    ImageDetail,
-    DescribeImagesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  ImageDetail
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeImagesRequest,
   output: DescribeImagesResponse,
   errors: [
@@ -4636,27 +4621,13 @@ export type DescribeImageScanFindingsError =
 /**
  * Returns the scan findings for the specified image.
  */
-export const describeImageScanFindings: API.OperationMethod<
+export const describeImageScanFindings: API.PaginatedOperationMethod<
   DescribeImageScanFindingsRequest,
   DescribeImageScanFindingsResponse,
   DescribeImageScanFindingsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeImageScanFindingsRequest,
-  ) => stream.Stream<
-    DescribeImageScanFindingsResponse,
-    DescribeImageScanFindingsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeImageScanFindingsRequest,
-  ) => stream.Stream<
-    unknown,
-    DescribeImageScanFindingsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeImageScanFindingsRequest,
   output: DescribeImageScanFindingsResponse,
   errors: [
@@ -4721,27 +4692,13 @@ export type DescribePullThroughCacheRulesError =
 /**
  * Returns the pull through cache rules for a registry.
  */
-export const describePullThroughCacheRules: API.OperationMethod<
+export const describePullThroughCacheRules: API.PaginatedOperationMethod<
   DescribePullThroughCacheRulesRequest,
   DescribePullThroughCacheRulesResponse,
   DescribePullThroughCacheRulesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribePullThroughCacheRulesRequest,
-  ) => stream.Stream<
-    DescribePullThroughCacheRulesResponse,
-    DescribePullThroughCacheRulesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribePullThroughCacheRulesRequest,
-  ) => stream.Stream<
-    PullThroughCacheRule,
-    DescribePullThroughCacheRulesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  PullThroughCacheRule
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribePullThroughCacheRulesRequest,
   output: DescribePullThroughCacheRulesResponse,
   errors: [
@@ -4793,27 +4750,13 @@ export type DescribeRepositoriesError =
 /**
  * Describes image repositories in a registry.
  */
-export const describeRepositories: API.OperationMethod<
+export const describeRepositories: API.PaginatedOperationMethod<
   DescribeRepositoriesRequest,
   DescribeRepositoriesResponse,
   DescribeRepositoriesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeRepositoriesRequest,
-  ) => stream.Stream<
-    DescribeRepositoriesResponse,
-    DescribeRepositoriesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeRepositoriesRequest,
-  ) => stream.Stream<
-    Repository,
-    DescribeRepositoriesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  Repository
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeRepositoriesRequest,
   output: DescribeRepositoriesResponse,
   errors: [
@@ -4842,27 +4785,13 @@ export type DescribeRepositoryCreationTemplatesError =
  * `prefixes` request parameter can be used to return the details for a
  * specific repository creation template.
  */
-export const describeRepositoryCreationTemplates: API.OperationMethod<
+export const describeRepositoryCreationTemplates: API.PaginatedOperationMethod<
   DescribeRepositoryCreationTemplatesRequest,
   DescribeRepositoryCreationTemplatesResponse,
   DescribeRepositoryCreationTemplatesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeRepositoryCreationTemplatesRequest,
-  ) => stream.Stream<
-    DescribeRepositoryCreationTemplatesResponse,
-    DescribeRepositoryCreationTemplatesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeRepositoryCreationTemplatesRequest,
-  ) => stream.Stream<
-    RepositoryCreationTemplate,
-    DescribeRepositoryCreationTemplatesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  RepositoryCreationTemplate
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeRepositoryCreationTemplatesRequest,
   output: DescribeRepositoryCreationTemplatesResponse,
   errors: [InvalidParameterException, ServerException, ValidationException],
@@ -5008,27 +4937,13 @@ export type GetLifecyclePolicyPreviewError =
  * Retrieves the results of the lifecycle policy preview request for the specified
  * repository.
  */
-export const getLifecyclePolicyPreview: API.OperationMethod<
+export const getLifecyclePolicyPreview: API.PaginatedOperationMethod<
   GetLifecyclePolicyPreviewRequest,
   GetLifecyclePolicyPreviewResponse,
   GetLifecyclePolicyPreviewError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetLifecyclePolicyPreviewRequest,
-  ) => stream.Stream<
-    GetLifecyclePolicyPreviewResponse,
-    GetLifecyclePolicyPreviewError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetLifecyclePolicyPreviewRequest,
-  ) => stream.Stream<
-    LifecyclePolicyPreviewResult,
-    GetLifecyclePolicyPreviewError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  LifecyclePolicyPreviewResult
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetLifecyclePolicyPreviewRequest,
   output: GetLifecyclePolicyPreviewResponse,
   errors: [
@@ -5241,27 +5156,13 @@ export type ListImagesError =
  * results to return only `TAGGED` images to list all of the tags in your
  * repository.
  */
-export const listImages: API.OperationMethod<
+export const listImages: API.PaginatedOperationMethod<
   ListImagesRequest,
   ListImagesResponse,
   ListImagesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListImagesRequest,
-  ) => stream.Stream<
-    ListImagesResponse,
-    ListImagesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListImagesRequest,
-  ) => stream.Stream<
-    ImageIdentifier,
-    ListImagesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  ImageIdentifier
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListImagesRequest,
   output: ListImagesResponse,
   errors: [

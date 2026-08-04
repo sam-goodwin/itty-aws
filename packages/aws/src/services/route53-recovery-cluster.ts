@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -412,27 +411,13 @@ export type ListRoutingControlsError =
  * - Working with
  * routing controls in Route 53 ARC
  */
-export const listRoutingControls: API.OperationMethod<
+export const listRoutingControls: API.PaginatedOperationMethod<
   ListRoutingControlsRequest,
   ListRoutingControlsResponse,
   ListRoutingControlsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRoutingControlsRequest,
-  ) => stream.Stream<
-    ListRoutingControlsResponse,
-    ListRoutingControlsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRoutingControlsRequest,
-  ) => stream.Stream<
-    RoutingControl,
-    ListRoutingControlsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  RoutingControl
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRoutingControlsRequest,
   output: ListRoutingControlsResponse,
   errors: [

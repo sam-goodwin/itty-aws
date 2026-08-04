@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -1858,27 +1857,13 @@ export type ListDomainsError =
 /**
  * Lists all the domains in the Amazon Web Services account.
  */
-export const listDomains: API.OperationMethod<
+export const listDomains: API.PaginatedOperationMethod<
   ListDomainsRequest,
   ListDomainsResponse,
   ListDomainsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDomainsRequest,
-  ) => stream.Stream<
-    ListDomainsResponse,
-    ListDomainsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDomainsRequest,
-  ) => stream.Stream<
-    DomainSummary,
-    ListDomainsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  DomainSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDomainsRequest,
   output: ListDomainsResponse,
   errors: [
@@ -1910,27 +1895,13 @@ export type ListFraudsterRegistrationJobsError =
  * `JobStatus`. If `JobStatus` is not provided, this lists all
  * fraudster registration jobs in the given domain.
  */
-export const listFraudsterRegistrationJobs: API.OperationMethod<
+export const listFraudsterRegistrationJobs: API.PaginatedOperationMethod<
   ListFraudsterRegistrationJobsRequest,
   ListFraudsterRegistrationJobsResponse,
   ListFraudsterRegistrationJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListFraudsterRegistrationJobsRequest,
-  ) => stream.Stream<
-    ListFraudsterRegistrationJobsResponse,
-    ListFraudsterRegistrationJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListFraudsterRegistrationJobsRequest,
-  ) => stream.Stream<
-    FraudsterRegistrationJobSummary,
-    ListFraudsterRegistrationJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  FraudsterRegistrationJobSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFraudsterRegistrationJobsRequest,
   output: ListFraudsterRegistrationJobsResponse,
   errors: [
@@ -1961,27 +1932,13 @@ export type ListFraudstersError =
 /**
  * Lists all fraudsters in a specified watchlist or domain.
  */
-export const listFraudsters: API.OperationMethod<
+export const listFraudsters: API.PaginatedOperationMethod<
   ListFraudstersRequest,
   ListFraudstersResponse,
   ListFraudstersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListFraudstersRequest,
-  ) => stream.Stream<
-    ListFraudstersResponse,
-    ListFraudstersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListFraudstersRequest,
-  ) => stream.Stream<
-    FraudsterSummary,
-    ListFraudstersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  FraudsterSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFraudstersRequest,
   output: ListFraudstersResponse,
   errors: [
@@ -2014,27 +1971,13 @@ export type ListSpeakerEnrollmentJobsError =
  * `JobStatus`. If `JobStatus` is not provided, this lists all
  * jobs with all possible speaker enrollment job statuses.
  */
-export const listSpeakerEnrollmentJobs: API.OperationMethod<
+export const listSpeakerEnrollmentJobs: API.PaginatedOperationMethod<
   ListSpeakerEnrollmentJobsRequest,
   ListSpeakerEnrollmentJobsResponse,
   ListSpeakerEnrollmentJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSpeakerEnrollmentJobsRequest,
-  ) => stream.Stream<
-    ListSpeakerEnrollmentJobsResponse,
-    ListSpeakerEnrollmentJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSpeakerEnrollmentJobsRequest,
-  ) => stream.Stream<
-    SpeakerEnrollmentJobSummary,
-    ListSpeakerEnrollmentJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  SpeakerEnrollmentJobSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSpeakerEnrollmentJobsRequest,
   output: ListSpeakerEnrollmentJobsResponse,
   errors: [
@@ -2065,27 +2008,13 @@ export type ListSpeakersError =
 /**
  * Lists all speakers in a specified domain.
  */
-export const listSpeakers: API.OperationMethod<
+export const listSpeakers: API.PaginatedOperationMethod<
   ListSpeakersRequest,
   ListSpeakersResponse,
   ListSpeakersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSpeakersRequest,
-  ) => stream.Stream<
-    ListSpeakersResponse,
-    ListSpeakersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSpeakersRequest,
-  ) => stream.Stream<
-    SpeakerSummary,
-    ListSpeakersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  SpeakerSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSpeakersRequest,
   output: ListSpeakersResponse,
   errors: [
@@ -2146,27 +2075,13 @@ export type ListWatchlistsError =
 /**
  * Lists all watchlists in a specified domain.
  */
-export const listWatchlists: API.OperationMethod<
+export const listWatchlists: API.PaginatedOperationMethod<
   ListWatchlistsRequest,
   ListWatchlistsResponse,
   ListWatchlistsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListWatchlistsRequest,
-  ) => stream.Stream<
-    ListWatchlistsResponse,
-    ListWatchlistsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListWatchlistsRequest,
-  ) => stream.Stream<
-    WatchlistSummary,
-    ListWatchlistsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  WatchlistSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListWatchlistsRequest,
   output: ListWatchlistsResponse,
   errors: [

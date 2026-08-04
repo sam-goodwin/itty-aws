@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -4971,27 +4970,13 @@ export type DescribeClientAuthenticationSettingsError =
  * types that are supported for the specified directory is retrieved. Currently, only
  * `SmartCard` is supported.
  */
-export const describeClientAuthenticationSettings: API.OperationMethod<
+export const describeClientAuthenticationSettings: API.PaginatedOperationMethod<
   DescribeClientAuthenticationSettingsRequest,
   DescribeClientAuthenticationSettingsResult,
   DescribeClientAuthenticationSettingsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeClientAuthenticationSettingsRequest,
-  ) => stream.Stream<
-    DescribeClientAuthenticationSettingsResult,
-    DescribeClientAuthenticationSettingsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeClientAuthenticationSettingsRequest,
-  ) => stream.Stream<
-    ClientAuthenticationSettingInfo,
-    DescribeClientAuthenticationSettingsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ClientAuthenticationSettingInfo
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeClientAuthenticationSettingsRequest,
   output: DescribeClientAuthenticationSettingsResult,
   errors: [
@@ -5071,27 +5056,13 @@ export type DescribeDirectoriesError =
  * You can also specify a maximum number of return results with the `Limit`
  * parameter.
  */
-export const describeDirectories: API.OperationMethod<
+export const describeDirectories: API.PaginatedOperationMethod<
   DescribeDirectoriesRequest,
   DescribeDirectoriesResult,
   DescribeDirectoriesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeDirectoriesRequest,
-  ) => stream.Stream<
-    DescribeDirectoriesResult,
-    DescribeDirectoriesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeDirectoriesRequest,
-  ) => stream.Stream<
-    DirectoryDescription,
-    DescribeDirectoriesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  DirectoryDescription
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeDirectoriesRequest,
   output: DescribeDirectoriesResult,
   errors: [
@@ -5154,27 +5125,13 @@ export type DescribeDomainControllersError =
 /**
  * Provides information about any domain controllers in your directory.
  */
-export const describeDomainControllers: API.OperationMethod<
+export const describeDomainControllers: API.PaginatedOperationMethod<
   DescribeDomainControllersRequest,
   DescribeDomainControllersResult,
   DescribeDomainControllersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeDomainControllersRequest,
-  ) => stream.Stream<
-    DescribeDomainControllersResult,
-    DescribeDomainControllersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeDomainControllersRequest,
-  ) => stream.Stream<
-    unknown,
-    DescribeDomainControllersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeDomainControllersRequest,
   output: DescribeDomainControllersResult,
   errors: [
@@ -5272,27 +5229,13 @@ export type DescribeLDAPSSettingsError =
 /**
  * Describes the status of LDAP security for the specified directory.
  */
-export const describeLDAPSSettings: API.OperationMethod<
+export const describeLDAPSSettings: API.PaginatedOperationMethod<
   DescribeLDAPSSettingsRequest,
   DescribeLDAPSSettingsResult,
   DescribeLDAPSSettingsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeLDAPSSettingsRequest,
-  ) => stream.Stream<
-    DescribeLDAPSSettingsResult,
-    DescribeLDAPSSettingsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeLDAPSSettingsRequest,
-  ) => stream.Stream<
-    LDAPSSettingInfo,
-    DescribeLDAPSSettingsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  LDAPSSettingInfo
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeLDAPSSettingsRequest,
   output: DescribeLDAPSSettingsResult,
   errors: [
@@ -5327,27 +5270,13 @@ export type DescribeRegionsError =
  * Provides information about the Regions that are configured for multi-Region
  * replication.
  */
-export const describeRegions: API.OperationMethod<
+export const describeRegions: API.PaginatedOperationMethod<
   DescribeRegionsRequest,
   DescribeRegionsResult,
   DescribeRegionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeRegionsRequest,
-  ) => stream.Stream<
-    DescribeRegionsResult,
-    DescribeRegionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeRegionsRequest,
-  ) => stream.Stream<
-    RegionDescription,
-    DescribeRegionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  RegionDescription
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeRegionsRequest,
   output: DescribeRegionsResult,
   errors: [
@@ -5412,27 +5341,13 @@ export type DescribeSharedDirectoriesError =
 /**
  * Returns the shared directories in your account.
  */
-export const describeSharedDirectories: API.OperationMethod<
+export const describeSharedDirectories: API.PaginatedOperationMethod<
   DescribeSharedDirectoriesRequest,
   DescribeSharedDirectoriesResult,
   DescribeSharedDirectoriesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeSharedDirectoriesRequest,
-  ) => stream.Stream<
-    DescribeSharedDirectoriesResult,
-    DescribeSharedDirectoriesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeSharedDirectoriesRequest,
-  ) => stream.Stream<
-    SharedDirectory,
-    DescribeSharedDirectoriesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  SharedDirectory
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeSharedDirectoriesRequest,
   output: DescribeSharedDirectoriesResult,
   errors: [
@@ -5472,27 +5387,13 @@ export type DescribeSnapshotsError =
  * You can also specify a maximum number of return results with the *Limit*
  * parameter.
  */
-export const describeSnapshots: API.OperationMethod<
+export const describeSnapshots: API.PaginatedOperationMethod<
   DescribeSnapshotsRequest,
   DescribeSnapshotsResult,
   DescribeSnapshotsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeSnapshotsRequest,
-  ) => stream.Stream<
-    DescribeSnapshotsResult,
-    DescribeSnapshotsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeSnapshotsRequest,
-  ) => stream.Stream<
-    Snapshot,
-    DescribeSnapshotsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Snapshot
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeSnapshotsRequest,
   output: DescribeSnapshotsResult,
   errors: [
@@ -5527,27 +5428,13 @@ export type DescribeTrustsError =
  * If no input parameters are provided, such as DirectoryId or TrustIds, this request
  * describes all the trust relationships belonging to the account.
  */
-export const describeTrusts: API.OperationMethod<
+export const describeTrusts: API.PaginatedOperationMethod<
   DescribeTrustsRequest,
   DescribeTrustsResult,
   DescribeTrustsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeTrustsRequest,
-  ) => stream.Stream<
-    DescribeTrustsResult,
-    DescribeTrustsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeTrustsRequest,
-  ) => stream.Stream<
-    Trust,
-    DescribeTrustsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Trust
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeTrustsRequest,
   output: DescribeTrustsResult,
   errors: [
@@ -5580,27 +5467,13 @@ export type DescribeUpdateDirectoryError =
 /**
  * Describes the updates of a directory for a particular update type.
  */
-export const describeUpdateDirectory: API.OperationMethod<
+export const describeUpdateDirectory: API.PaginatedOperationMethod<
   DescribeUpdateDirectoryRequest,
   DescribeUpdateDirectoryResult,
   DescribeUpdateDirectoryError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeUpdateDirectoryRequest,
-  ) => stream.Stream<
-    DescribeUpdateDirectoryResult,
-    DescribeUpdateDirectoryError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeUpdateDirectoryRequest,
-  ) => stream.Stream<
-    UpdateInfoEntry,
-    DescribeUpdateDirectoryError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  UpdateInfoEntry
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeUpdateDirectoryRequest,
   output: DescribeUpdateDirectoryResult,
   errors: [
@@ -6084,27 +5957,13 @@ export type ListADAssessmentsError =
  * assessments in your account. Use this operation to monitor assessment status and manage
  * multiple assessments.
  */
-export const listADAssessments: API.OperationMethod<
+export const listADAssessments: API.PaginatedOperationMethod<
   ListADAssessmentsRequest,
   ListADAssessmentsResult,
   ListADAssessmentsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListADAssessmentsRequest,
-  ) => stream.Stream<
-    ListADAssessmentsResult,
-    ListADAssessmentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListADAssessmentsRequest,
-  ) => stream.Stream<
-    AssessmentSummary,
-    ListADAssessmentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AssessmentSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListADAssessmentsRequest,
   output: ListADAssessmentsResult,
   errors: [
@@ -6137,27 +5996,13 @@ export type ListCertificatesError =
  * For the specified directory, lists all the certificates registered for a secure LDAP or
  * client certificate authentication.
  */
-export const listCertificates: API.OperationMethod<
+export const listCertificates: API.PaginatedOperationMethod<
   ListCertificatesRequest,
   ListCertificatesResult,
   ListCertificatesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCertificatesRequest,
-  ) => stream.Stream<
-    ListCertificatesResult,
-    ListCertificatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCertificatesRequest,
-  ) => stream.Stream<
-    CertificateInfo,
-    ListCertificatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  CertificateInfo
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCertificatesRequest,
   output: ListCertificatesResult,
   errors: [
@@ -6189,27 +6034,13 @@ export type ListIpRoutesError =
 /**
  * Lists the address blocks that you have added to a directory.
  */
-export const listIpRoutes: API.OperationMethod<
+export const listIpRoutes: API.PaginatedOperationMethod<
   ListIpRoutesRequest,
   ListIpRoutesResult,
   ListIpRoutesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListIpRoutesRequest,
-  ) => stream.Stream<
-    ListIpRoutesResult,
-    ListIpRoutesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListIpRoutesRequest,
-  ) => stream.Stream<
-    IpRouteInfo,
-    ListIpRoutesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  IpRouteInfo
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListIpRoutesRequest,
   output: ListIpRoutesResult,
   errors: [
@@ -6239,27 +6070,13 @@ export type ListLogSubscriptionsError =
 /**
  * Lists the active log subscriptions for the Amazon Web Services account.
  */
-export const listLogSubscriptions: API.OperationMethod<
+export const listLogSubscriptions: API.PaginatedOperationMethod<
   ListLogSubscriptionsRequest,
   ListLogSubscriptionsResult,
   ListLogSubscriptionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListLogSubscriptionsRequest,
-  ) => stream.Stream<
-    ListLogSubscriptionsResult,
-    ListLogSubscriptionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListLogSubscriptionsRequest,
-  ) => stream.Stream<
-    LogSubscription,
-    ListLogSubscriptionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  LogSubscription
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLogSubscriptionsRequest,
   output: ListLogSubscriptionsResult,
   errors: [
@@ -6288,27 +6105,13 @@ export type ListSchemaExtensionsError =
 /**
  * Lists all schema extensions applied to a Microsoft AD Directory.
  */
-export const listSchemaExtensions: API.OperationMethod<
+export const listSchemaExtensions: API.PaginatedOperationMethod<
   ListSchemaExtensionsRequest,
   ListSchemaExtensionsResult,
   ListSchemaExtensionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSchemaExtensionsRequest,
-  ) => stream.Stream<
-    ListSchemaExtensionsResult,
-    ListSchemaExtensionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSchemaExtensionsRequest,
-  ) => stream.Stream<
-    SchemaExtensionInfo,
-    ListSchemaExtensionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  SchemaExtensionInfo
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSchemaExtensionsRequest,
   output: ListSchemaExtensionsResult,
   errors: [
@@ -6338,27 +6141,13 @@ export type ListTagsForResourceError =
 /**
  * Lists all tags on a directory.
  */
-export const listTagsForResource: API.OperationMethod<
+export const listTagsForResource: API.PaginatedOperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResult,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTagsForResourceRequest,
-  ) => stream.Stream<
-    ListTagsForResourceResult,
-    ListTagsForResourceError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTagsForResourceRequest,
-  ) => stream.Stream<
-    Tag,
-    ListTagsForResourceError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Tag
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResult,
   errors: [

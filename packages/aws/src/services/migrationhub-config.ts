@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -317,27 +316,13 @@ export type DescribeHomeRegionControlsError =
  * This API permits filtering on the `ControlId` and `HomeRegion`
  * fields.
  */
-export const describeHomeRegionControls: API.OperationMethod<
+export const describeHomeRegionControls: API.PaginatedOperationMethod<
   DescribeHomeRegionControlsRequest,
   DescribeHomeRegionControlsResult,
   DescribeHomeRegionControlsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeHomeRegionControlsRequest,
-  ) => stream.Stream<
-    DescribeHomeRegionControlsResult,
-    DescribeHomeRegionControlsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeHomeRegionControlsRequest,
-  ) => stream.Stream<
-    unknown,
-    DescribeHomeRegionControlsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeHomeRegionControlsRequest,
   output: DescribeHomeRegionControlsResult,
   errors: [

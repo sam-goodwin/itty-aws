@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -2395,27 +2394,13 @@ export type GetExclusionsPreviewError =
  * the preview token. You can obtain the preview token by running the CreateExclusionsPreview
  * API.
  */
-export const getExclusionsPreview: API.OperationMethod<
+export const getExclusionsPreview: API.PaginatedOperationMethod<
   GetExclusionsPreviewRequest,
   GetExclusionsPreviewResponse,
   GetExclusionsPreviewError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetExclusionsPreviewRequest,
-  ) => stream.Stream<
-    GetExclusionsPreviewResponse,
-    GetExclusionsPreviewError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetExclusionsPreviewRequest,
-  ) => stream.Stream<
-    unknown,
-    GetExclusionsPreviewError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetExclusionsPreviewRequest,
   output: GetExclusionsPreviewResponse,
   errors: [
@@ -2473,27 +2458,13 @@ export type ListAssessmentRunAgentsError =
  * Lists the agents of the assessment runs that are specified by the ARNs of the
  * assessment runs.
  */
-export const listAssessmentRunAgents: API.OperationMethod<
+export const listAssessmentRunAgents: API.PaginatedOperationMethod<
   ListAssessmentRunAgentsRequest,
   ListAssessmentRunAgentsResponse,
   ListAssessmentRunAgentsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAssessmentRunAgentsRequest,
-  ) => stream.Stream<
-    ListAssessmentRunAgentsResponse,
-    ListAssessmentRunAgentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAssessmentRunAgentsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListAssessmentRunAgentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAssessmentRunAgentsRequest,
   output: ListAssessmentRunAgentsResponse,
   errors: [
@@ -2522,27 +2493,13 @@ export type ListAssessmentRunsError =
  * Lists the assessment runs that correspond to the assessment templates that are
  * specified by the ARNs of the assessment templates.
  */
-export const listAssessmentRuns: API.OperationMethod<
+export const listAssessmentRuns: API.PaginatedOperationMethod<
   ListAssessmentRunsRequest,
   ListAssessmentRunsResponse,
   ListAssessmentRunsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAssessmentRunsRequest,
-  ) => stream.Stream<
-    ListAssessmentRunsResponse,
-    ListAssessmentRunsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAssessmentRunsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListAssessmentRunsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAssessmentRunsRequest,
   output: ListAssessmentRunsResponse,
   errors: [
@@ -2571,27 +2528,13 @@ export type ListAssessmentTargetsError =
  * information about assessment targets, see Amazon Inspector Assessment
  * Targets.
  */
-export const listAssessmentTargets: API.OperationMethod<
+export const listAssessmentTargets: API.PaginatedOperationMethod<
   ListAssessmentTargetsRequest,
   ListAssessmentTargetsResponse,
   ListAssessmentTargetsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAssessmentTargetsRequest,
-  ) => stream.Stream<
-    ListAssessmentTargetsResponse,
-    ListAssessmentTargetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAssessmentTargetsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListAssessmentTargetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAssessmentTargetsRequest,
   output: ListAssessmentTargetsResponse,
   errors: [AccessDeniedException, InternalException, InvalidInputException],
@@ -2615,27 +2558,13 @@ export type ListAssessmentTemplatesError =
  * Lists the assessment templates that correspond to the assessment targets that are
  * specified by the ARNs of the assessment targets.
  */
-export const listAssessmentTemplates: API.OperationMethod<
+export const listAssessmentTemplates: API.PaginatedOperationMethod<
   ListAssessmentTemplatesRequest,
   ListAssessmentTemplatesResponse,
   ListAssessmentTemplatesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAssessmentTemplatesRequest,
-  ) => stream.Stream<
-    ListAssessmentTemplatesResponse,
-    ListAssessmentTemplatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAssessmentTemplatesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListAssessmentTemplatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAssessmentTemplatesRequest,
   output: ListAssessmentTemplatesResponse,
   errors: [
@@ -2664,27 +2593,13 @@ export type ListEventSubscriptionsError =
  * Lists all the event subscriptions for the assessment template that is specified by
  * the ARN of the assessment template. For more information, see SubscribeToEvent and UnsubscribeFromEvent.
  */
-export const listEventSubscriptions: API.OperationMethod<
+export const listEventSubscriptions: API.PaginatedOperationMethod<
   ListEventSubscriptionsRequest,
   ListEventSubscriptionsResponse,
   ListEventSubscriptionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEventSubscriptionsRequest,
-  ) => stream.Stream<
-    ListEventSubscriptionsResponse,
-    ListEventSubscriptionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEventSubscriptionsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListEventSubscriptionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEventSubscriptionsRequest,
   output: ListEventSubscriptionsResponse,
   errors: [
@@ -2712,27 +2627,13 @@ export type ListExclusionsError =
 /**
  * List exclusions that are generated by the assessment run.
  */
-export const listExclusions: API.OperationMethod<
+export const listExclusions: API.PaginatedOperationMethod<
   ListExclusionsRequest,
   ListExclusionsResponse,
   ListExclusionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListExclusionsRequest,
-  ) => stream.Stream<
-    ListExclusionsResponse,
-    ListExclusionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListExclusionsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListExclusionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListExclusionsRequest,
   output: ListExclusionsResponse,
   errors: [
@@ -2761,27 +2662,13 @@ export type ListFindingsError =
  * Lists findings that are generated by the assessment runs that are specified by the
  * ARNs of the assessment runs.
  */
-export const listFindings: API.OperationMethod<
+export const listFindings: API.PaginatedOperationMethod<
   ListFindingsRequest,
   ListFindingsResponse,
   ListFindingsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListFindingsRequest,
-  ) => stream.Stream<
-    ListFindingsResponse,
-    ListFindingsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListFindingsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListFindingsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFindingsRequest,
   output: ListFindingsResponse,
   errors: [
@@ -2808,27 +2695,13 @@ export type ListRulesPackagesError =
 /**
  * Lists all available Amazon Inspector rules packages.
  */
-export const listRulesPackages: API.OperationMethod<
+export const listRulesPackages: API.PaginatedOperationMethod<
   ListRulesPackagesRequest,
   ListRulesPackagesResponse,
   ListRulesPackagesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRulesPackagesRequest,
-  ) => stream.Stream<
-    ListRulesPackagesResponse,
-    ListRulesPackagesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRulesPackagesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListRulesPackagesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRulesPackagesRequest,
   output: ListRulesPackagesResponse,
   errors: [AccessDeniedException, InternalException, InvalidInputException],
@@ -2881,27 +2754,13 @@ export type PreviewAgentsError =
  * Previews the agents installed on the EC2 instances that are part of the specified
  * assessment target.
  */
-export const previewAgents: API.OperationMethod<
+export const previewAgents: API.PaginatedOperationMethod<
   PreviewAgentsRequest,
   PreviewAgentsResponse,
   PreviewAgentsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: PreviewAgentsRequest,
-  ) => stream.Stream<
-    PreviewAgentsResponse,
-    PreviewAgentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: PreviewAgentsRequest,
-  ) => stream.Stream<
-    unknown,
-    PreviewAgentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: PreviewAgentsRequest,
   output: PreviewAgentsResponse,
   errors: [

@@ -6794,27 +6794,13 @@ export type GetDurableExecutionHistoryError =
  *
  * The history is available while the execution is running and for a retention period after it completes (1-90 days, default 30 days). You can control whether to include execution data such as step results and callback payloads.
  */
-export const getDurableExecutionHistory: API.OperationMethod<
+export const getDurableExecutionHistory: API.PaginatedOperationMethod<
   GetDurableExecutionHistoryRequest,
   GetDurableExecutionHistoryResponse,
   GetDurableExecutionHistoryError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetDurableExecutionHistoryRequest,
-  ) => stream.Stream<
-    GetDurableExecutionHistoryResponse,
-    GetDurableExecutionHistoryError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetDurableExecutionHistoryRequest,
-  ) => stream.Stream<
-    Event,
-    GetDurableExecutionHistoryError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Event
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetDurableExecutionHistoryRequest,
   output: GetDurableExecutionHistoryResponse,
   errors: [
@@ -6844,27 +6830,13 @@ export type GetDurableExecutionStateError =
  *
  * The response contains operations ordered by start sequence number in ascending order. Completed operations with children don't include child operation details since they don't need to be replayed.
  */
-export const getDurableExecutionState: API.OperationMethod<
+export const getDurableExecutionState: API.PaginatedOperationMethod<
   GetDurableExecutionStateRequest,
   GetDurableExecutionStateResponse,
   GetDurableExecutionStateError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetDurableExecutionStateRequest,
-  ) => stream.Stream<
-    GetDurableExecutionStateResponse,
-    GetDurableExecutionStateError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetDurableExecutionStateRequest,
-  ) => stream.Stream<
-    Operation,
-    GetDurableExecutionStateError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Operation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetDurableExecutionStateRequest,
   output: GetDurableExecutionStateResponse,
   errors: [
@@ -7648,27 +7620,13 @@ export type ListAliasesError =
 /**
  * Returns a list of aliases for a Lambda function.
  */
-export const listAliases: API.OperationMethod<
+export const listAliases: API.PaginatedOperationMethod<
   ListAliasesRequest,
   ListAliasesResponse,
   ListAliasesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAliasesRequest,
-  ) => stream.Stream<
-    ListAliasesResponse,
-    ListAliasesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAliasesRequest,
-  ) => stream.Stream<
-    AliasConfiguration,
-    ListAliasesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AliasConfiguration
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAliasesRequest,
   output: ListAliasesResponse,
   errors: [
@@ -7696,27 +7654,13 @@ export type ListCapacityProvidersError =
 /**
  * Returns a list of capacity providers in your account.
  */
-export const listCapacityProviders: API.OperationMethod<
+export const listCapacityProviders: API.PaginatedOperationMethod<
   ListCapacityProvidersRequest,
   ListCapacityProvidersResponse,
   ListCapacityProvidersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCapacityProvidersRequest,
-  ) => stream.Stream<
-    ListCapacityProvidersResponse,
-    ListCapacityProvidersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCapacityProvidersRequest,
-  ) => stream.Stream<
-    CapacityProvider,
-    ListCapacityProvidersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  CapacityProvider
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCapacityProvidersRequest,
   output: ListCapacityProvidersResponse,
   errors: [
@@ -7742,27 +7686,13 @@ export type ListCodeSigningConfigsError =
 /**
  * Returns a list of code signing configurations. A request returns up to 10,000 configurations per call. You can use the `MaxItems` parameter to return fewer configurations per call.
  */
-export const listCodeSigningConfigs: API.OperationMethod<
+export const listCodeSigningConfigs: API.PaginatedOperationMethod<
   ListCodeSigningConfigsRequest,
   ListCodeSigningConfigsResponse,
   ListCodeSigningConfigsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCodeSigningConfigsRequest,
-  ) => stream.Stream<
-    ListCodeSigningConfigsResponse,
-    ListCodeSigningConfigsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCodeSigningConfigsRequest,
-  ) => stream.Stream<
-    CodeSigningConfig,
-    ListCodeSigningConfigsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  CodeSigningConfig
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCodeSigningConfigsRequest,
   output: ListCodeSigningConfigsResponse,
   errors: [InvalidParameterValueException, ServiceException],
@@ -7786,27 +7716,13 @@ export type ListDurableExecutionsByFunctionError =
 /**
  * Returns a list of durable executions for a specified Lambda function. You can filter the results by execution name, status, and start time range. This API supports pagination for large result sets.
  */
-export const listDurableExecutionsByFunction: API.OperationMethod<
+export const listDurableExecutionsByFunction: API.PaginatedOperationMethod<
   ListDurableExecutionsByFunctionRequest,
   ListDurableExecutionsByFunctionResponse,
   ListDurableExecutionsByFunctionError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDurableExecutionsByFunctionRequest,
-  ) => stream.Stream<
-    ListDurableExecutionsByFunctionResponse,
-    ListDurableExecutionsByFunctionError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDurableExecutionsByFunctionRequest,
-  ) => stream.Stream<
-    Execution,
-    ListDurableExecutionsByFunctionError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Execution
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDurableExecutionsByFunctionRequest,
   output: ListDurableExecutionsByFunctionResponse,
   errors: [
@@ -7835,27 +7751,13 @@ export type ListEventSourceMappingsError =
 /**
  * Lists event source mappings. Specify an `EventSourceArn` to show only event source mappings for a single event source.
  */
-export const listEventSourceMappings: API.OperationMethod<
+export const listEventSourceMappings: API.PaginatedOperationMethod<
   ListEventSourceMappingsRequest,
   ListEventSourceMappingsResponse,
   ListEventSourceMappingsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEventSourceMappingsRequest,
-  ) => stream.Stream<
-    ListEventSourceMappingsResponse,
-    ListEventSourceMappingsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEventSourceMappingsRequest,
-  ) => stream.Stream<
-    EventSourceMappingConfiguration,
-    ListEventSourceMappingsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  EventSourceMappingConfiguration
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEventSourceMappingsRequest,
   output: ListEventSourceMappingsResponse,
   errors: [
@@ -7888,27 +7790,13 @@ export type ListFunctionEventInvokeConfigsError =
  *
  * To configure options for asynchronous invocation, use PutFunctionEventInvokeConfig.
  */
-export const listFunctionEventInvokeConfigs: API.OperationMethod<
+export const listFunctionEventInvokeConfigs: API.PaginatedOperationMethod<
   ListFunctionEventInvokeConfigsRequest,
   ListFunctionEventInvokeConfigsResponse,
   ListFunctionEventInvokeConfigsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListFunctionEventInvokeConfigsRequest,
-  ) => stream.Stream<
-    ListFunctionEventInvokeConfigsResponse,
-    ListFunctionEventInvokeConfigsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListFunctionEventInvokeConfigsRequest,
-  ) => stream.Stream<
-    FunctionEventInvokeConfig,
-    ListFunctionEventInvokeConfigsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  FunctionEventInvokeConfig
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFunctionEventInvokeConfigsRequest,
   output: ListFunctionEventInvokeConfigsResponse,
   errors: [
@@ -7942,27 +7830,13 @@ export type ListFunctionsError =
  *
  * The `ListFunctions` operation returns a subset of the FunctionConfiguration fields. To get the additional fields (State, StateReasonCode, StateReason, LastUpdateStatus, LastUpdateStatusReason, LastUpdateStatusReasonCode, RuntimeVersionConfig) for a function or version, use GetFunction.
  */
-export const listFunctions: API.OperationMethod<
+export const listFunctions: API.PaginatedOperationMethod<
   ListFunctionsRequest,
   ListFunctionsResponse,
   ListFunctionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListFunctionsRequest,
-  ) => stream.Stream<
-    ListFunctionsResponse,
-    ListFunctionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListFunctionsRequest,
-  ) => stream.Stream<
-    FunctionConfiguration,
-    ListFunctionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  FunctionConfiguration
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFunctionsRequest,
   output: ListFunctionsResponse,
   errors: [
@@ -7989,27 +7863,13 @@ export type ListFunctionsByCodeSigningConfigError =
 /**
  * List the functions that use the specified code signing configuration. You can use this method prior to deleting a code signing configuration, to verify that no functions are using it.
  */
-export const listFunctionsByCodeSigningConfig: API.OperationMethod<
+export const listFunctionsByCodeSigningConfig: API.PaginatedOperationMethod<
   ListFunctionsByCodeSigningConfigRequest,
   ListFunctionsByCodeSigningConfigResponse,
   ListFunctionsByCodeSigningConfigError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListFunctionsByCodeSigningConfigRequest,
-  ) => stream.Stream<
-    ListFunctionsByCodeSigningConfigResponse,
-    ListFunctionsByCodeSigningConfigError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListFunctionsByCodeSigningConfigRequest,
-  ) => stream.Stream<
-    FunctionArn,
-    ListFunctionsByCodeSigningConfigError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  FunctionArn
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFunctionsByCodeSigningConfigRequest,
   output: ListFunctionsByCodeSigningConfigResponse,
   errors: [
@@ -8037,27 +7897,13 @@ export type ListFunctionUrlConfigsError =
 /**
  * Returns a list of Lambda function URLs for the specified function.
  */
-export const listFunctionUrlConfigs: API.OperationMethod<
+export const listFunctionUrlConfigs: API.PaginatedOperationMethod<
   ListFunctionUrlConfigsRequest,
   ListFunctionUrlConfigsResponse,
   ListFunctionUrlConfigsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListFunctionUrlConfigsRequest,
-  ) => stream.Stream<
-    ListFunctionUrlConfigsResponse,
-    ListFunctionUrlConfigsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListFunctionUrlConfigsRequest,
-  ) => stream.Stream<
-    FunctionUrlConfig,
-    ListFunctionUrlConfigsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  FunctionUrlConfig
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFunctionUrlConfigsRequest,
   output: ListFunctionUrlConfigsResponse,
   errors: [
@@ -8086,27 +7932,13 @@ export type ListFunctionVersionsByCapacityProviderError =
 /**
  * Returns a list of function versions that are configured to use a specific capacity provider.
  */
-export const listFunctionVersionsByCapacityProvider: API.OperationMethod<
+export const listFunctionVersionsByCapacityProvider: API.PaginatedOperationMethod<
   ListFunctionVersionsByCapacityProviderRequest,
   ListFunctionVersionsByCapacityProviderResponse,
   ListFunctionVersionsByCapacityProviderError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListFunctionVersionsByCapacityProviderRequest,
-  ) => stream.Stream<
-    ListFunctionVersionsByCapacityProviderResponse,
-    ListFunctionVersionsByCapacityProviderError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListFunctionVersionsByCapacityProviderRequest,
-  ) => stream.Stream<
-    FunctionVersionsByCapacityProviderListItem,
-    ListFunctionVersionsByCapacityProviderError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  FunctionVersionsByCapacityProviderListItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFunctionVersionsByCapacityProviderRequest,
   output: ListFunctionVersionsByCapacityProviderResponse,
   errors: [
@@ -8134,27 +7966,13 @@ export type ListLayersError =
 /**
  * Lists Lambda layers and shows information about the latest version of each. Specify a runtime identifier to list only layers that indicate that they're compatible with that runtime. Specify a compatible architecture to include only layers that are compatible with that instruction set architecture.
  */
-export const listLayers: API.OperationMethod<
+export const listLayers: API.PaginatedOperationMethod<
   ListLayersRequest,
   ListLayersResponse,
   ListLayersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListLayersRequest,
-  ) => stream.Stream<
-    ListLayersResponse,
-    ListLayersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListLayersRequest,
-  ) => stream.Stream<
-    LayersListItem,
-    ListLayersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  LayersListItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLayersRequest,
   output: ListLayersResponse,
   errors: [
@@ -8184,27 +8002,13 @@ export type ListLayerVersionsError =
 /**
  * Lists the versions of an Lambda layer. Versions that have been deleted aren't listed. Specify a runtime identifier to list only versions that indicate that they're compatible with that runtime. Specify a compatible architecture to include only layer versions that are compatible with that architecture.
  */
-export const listLayerVersions: API.OperationMethod<
+export const listLayerVersions: API.PaginatedOperationMethod<
   ListLayerVersionsRequest,
   ListLayerVersionsResponse,
   ListLayerVersionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListLayerVersionsRequest,
-  ) => stream.Stream<
-    ListLayerVersionsResponse,
-    ListLayerVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListLayerVersionsRequest,
-  ) => stream.Stream<
-    LayerVersionsListItem,
-    ListLayerVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  LayerVersionsListItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLayerVersionsRequest,
   output: ListLayerVersionsResponse,
   errors: [
@@ -8237,27 +8041,13 @@ export type ListProvisionedConcurrencyConfigsError =
 /**
  * Retrieves a list of provisioned concurrency configurations for a function.
  */
-export const listProvisionedConcurrencyConfigs: API.OperationMethod<
+export const listProvisionedConcurrencyConfigs: API.PaginatedOperationMethod<
   ListProvisionedConcurrencyConfigsRequest,
   ListProvisionedConcurrencyConfigsResponse,
   ListProvisionedConcurrencyConfigsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListProvisionedConcurrencyConfigsRequest,
-  ) => stream.Stream<
-    ListProvisionedConcurrencyConfigsResponse,
-    ListProvisionedConcurrencyConfigsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListProvisionedConcurrencyConfigsRequest,
-  ) => stream.Stream<
-    ProvisionedConcurrencyConfigListItem,
-    ListProvisionedConcurrencyConfigsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ProvisionedConcurrencyConfigListItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProvisionedConcurrencyConfigsRequest,
   output: ListProvisionedConcurrencyConfigsResponse,
   errors: [
@@ -8320,27 +8110,13 @@ export type ListVersionsByFunctionError =
 /**
  * Returns a list of versions, with the version-specific configuration of each. Lambda returns up to 50 versions per call.
  */
-export const listVersionsByFunction: API.OperationMethod<
+export const listVersionsByFunction: API.PaginatedOperationMethod<
   ListVersionsByFunctionRequest,
   ListVersionsByFunctionResponse,
   ListVersionsByFunctionError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListVersionsByFunctionRequest,
-  ) => stream.Stream<
-    ListVersionsByFunctionResponse,
-    ListVersionsByFunctionError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListVersionsByFunctionRequest,
-  ) => stream.Stream<
-    FunctionConfiguration,
-    ListVersionsByFunctionError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  FunctionConfiguration
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListVersionsByFunctionRequest,
   output: ListVersionsByFunctionResponse,
   errors: [

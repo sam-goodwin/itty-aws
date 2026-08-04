@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -7083,27 +7082,13 @@ export type ListComponentBuildVersionsError =
  * Returns the list of component build versions for the specified component
  * version Amazon Resource Name (ARN).
  */
-export const listComponentBuildVersions: API.OperationMethod<
+export const listComponentBuildVersions: API.PaginatedOperationMethod<
   ListComponentBuildVersionsRequest,
   ListComponentBuildVersionsResponse,
   ListComponentBuildVersionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListComponentBuildVersionsRequest,
-  ) => stream.Stream<
-    ListComponentBuildVersionsResponse,
-    ListComponentBuildVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListComponentBuildVersionsRequest,
-  ) => stream.Stream<
-    ComponentSummary,
-    ListComponentBuildVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ComponentSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListComponentBuildVersionsRequest,
   output: ListComponentBuildVersionsResponse,
   errors: [
@@ -7149,27 +7134,13 @@ export type ListComponentsError =
  * recipe. When you use a wildcard in any node, all nodes to the right of the first wildcard must also be
  * wildcards.
  */
-export const listComponents: API.OperationMethod<
+export const listComponents: API.PaginatedOperationMethod<
   ListComponentsRequest,
   ListComponentsResponse,
   ListComponentsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListComponentsRequest,
-  ) => stream.Stream<
-    ListComponentsResponse,
-    ListComponentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListComponentsRequest,
-  ) => stream.Stream<
-    ComponentVersion,
-    ListComponentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ComponentVersion
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListComponentsRequest,
   output: ListComponentsResponse,
   errors: [
@@ -7204,27 +7175,13 @@ export type ListContainerRecipesError =
 /**
  * Returns a list of container recipes.
  */
-export const listContainerRecipes: API.OperationMethod<
+export const listContainerRecipes: API.PaginatedOperationMethod<
   ListContainerRecipesRequest,
   ListContainerRecipesResponse,
   ListContainerRecipesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListContainerRecipesRequest,
-  ) => stream.Stream<
-    ListContainerRecipesResponse,
-    ListContainerRecipesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListContainerRecipesRequest,
-  ) => stream.Stream<
-    ContainerRecipeSummary,
-    ListContainerRecipesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ContainerRecipeSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListContainerRecipesRequest,
   output: ListContainerRecipesResponse,
   errors: [
@@ -7259,27 +7216,13 @@ export type ListDistributionConfigurationsError =
 /**
  * Returns a list of distribution configurations.
  */
-export const listDistributionConfigurations: API.OperationMethod<
+export const listDistributionConfigurations: API.PaginatedOperationMethod<
   ListDistributionConfigurationsRequest,
   ListDistributionConfigurationsResponse,
   ListDistributionConfigurationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDistributionConfigurationsRequest,
-  ) => stream.Stream<
-    ListDistributionConfigurationsResponse,
-    ListDistributionConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDistributionConfigurationsRequest,
-  ) => stream.Stream<
-    DistributionConfigurationSummary,
-    ListDistributionConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  DistributionConfigurationSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDistributionConfigurationsRequest,
   output: ListDistributionConfigurationsResponse,
   errors: [
@@ -7314,27 +7257,13 @@ export type ListImageBuildVersionsError =
 /**
  * Returns a list of image build versions.
  */
-export const listImageBuildVersions: API.OperationMethod<
+export const listImageBuildVersions: API.PaginatedOperationMethod<
   ListImageBuildVersionsRequest,
   ListImageBuildVersionsResponse,
   ListImageBuildVersionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListImageBuildVersionsRequest,
-  ) => stream.Stream<
-    ListImageBuildVersionsResponse,
-    ListImageBuildVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListImageBuildVersionsRequest,
-  ) => stream.Stream<
-    ImageSummary,
-    ListImageBuildVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ImageSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListImageBuildVersionsRequest,
   output: ListImageBuildVersionsResponse,
   errors: [
@@ -7371,27 +7300,13 @@ export type ListImagePackagesError =
  * List the Packages that are associated with an Image Build Version, as determined by
  * Amazon Web Services Systems Manager Inventory at build time.
  */
-export const listImagePackages: API.OperationMethod<
+export const listImagePackages: API.PaginatedOperationMethod<
   ListImagePackagesRequest,
   ListImagePackagesResponse,
   ListImagePackagesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListImagePackagesRequest,
-  ) => stream.Stream<
-    ListImagePackagesResponse,
-    ListImagePackagesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListImagePackagesRequest,
-  ) => stream.Stream<
-    ImagePackage,
-    ListImagePackagesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ImagePackage
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListImagePackagesRequest,
   output: ListImagePackagesResponse,
   errors: [
@@ -7428,27 +7343,13 @@ export type ListImagePipelineImagesError =
 /**
  * Returns a list of images created by the specified pipeline.
  */
-export const listImagePipelineImages: API.OperationMethod<
+export const listImagePipelineImages: API.PaginatedOperationMethod<
   ListImagePipelineImagesRequest,
   ListImagePipelineImagesResponse,
   ListImagePipelineImagesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListImagePipelineImagesRequest,
-  ) => stream.Stream<
-    ListImagePipelineImagesResponse,
-    ListImagePipelineImagesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListImagePipelineImagesRequest,
-  ) => stream.Stream<
-    ImageSummary,
-    ListImagePipelineImagesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ImageSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListImagePipelineImagesRequest,
   output: ListImagePipelineImagesResponse,
   errors: [
@@ -7484,27 +7385,13 @@ export type ListImagePipelinesError =
 /**
  * Returns a list of image pipelines.
  */
-export const listImagePipelines: API.OperationMethod<
+export const listImagePipelines: API.PaginatedOperationMethod<
   ListImagePipelinesRequest,
   ListImagePipelinesResponse,
   ListImagePipelinesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListImagePipelinesRequest,
-  ) => stream.Stream<
-    ListImagePipelinesResponse,
-    ListImagePipelinesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListImagePipelinesRequest,
-  ) => stream.Stream<
-    ImagePipeline,
-    ListImagePipelinesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ImagePipeline
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListImagePipelinesRequest,
   output: ListImagePipelinesResponse,
   errors: [
@@ -7539,27 +7426,13 @@ export type ListImageRecipesError =
 /**
  * Returns a list of image recipes.
  */
-export const listImageRecipes: API.OperationMethod<
+export const listImageRecipes: API.PaginatedOperationMethod<
   ListImageRecipesRequest,
   ListImageRecipesResponse,
   ListImageRecipesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListImageRecipesRequest,
-  ) => stream.Stream<
-    ListImageRecipesResponse,
-    ListImageRecipesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListImageRecipesRequest,
-  ) => stream.Stream<
-    ImageRecipeSummary,
-    ListImageRecipesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ImageRecipeSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListImageRecipesRequest,
   output: ListImageRecipesResponse,
   errors: [
@@ -7595,27 +7468,13 @@ export type ListImagesError =
  * Returns the list of images that you have access to. Newly created images can take up
  * to two minutes to appear in the ListImages API Results.
  */
-export const listImages: API.OperationMethod<
+export const listImages: API.PaginatedOperationMethod<
   ListImagesRequest,
   ListImagesResponse,
   ListImagesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListImagesRequest,
-  ) => stream.Stream<
-    ListImagesResponse,
-    ListImagesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListImagesRequest,
-  ) => stream.Stream<
-    ImageVersion,
-    ListImagesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ImageVersion
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListImagesRequest,
   output: ListImagesResponse,
   errors: [
@@ -7664,27 +7523,13 @@ export type ListImageScanFindingAggregationsError =
  *
  * - `vulnerabilityId`
  */
-export const listImageScanFindingAggregations: API.OperationMethod<
+export const listImageScanFindingAggregations: API.PaginatedOperationMethod<
   ListImageScanFindingAggregationsRequest,
   ListImageScanFindingAggregationsResponse,
   ListImageScanFindingAggregationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListImageScanFindingAggregationsRequest,
-  ) => stream.Stream<
-    ListImageScanFindingAggregationsResponse,
-    ListImageScanFindingAggregationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListImageScanFindingAggregationsRequest,
-  ) => stream.Stream<
-    ImageScanFindingAggregation,
-    ListImageScanFindingAggregationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ImageScanFindingAggregation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListImageScanFindingAggregationsRequest,
   output: ListImageScanFindingAggregationsResponse,
   errors: [
@@ -7718,27 +7563,13 @@ export type ListImageScanFindingsError =
 /**
  * Returns a list of image scan findings for your account.
  */
-export const listImageScanFindings: API.OperationMethod<
+export const listImageScanFindings: API.PaginatedOperationMethod<
   ListImageScanFindingsRequest,
   ListImageScanFindingsResponse,
   ListImageScanFindingsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListImageScanFindingsRequest,
-  ) => stream.Stream<
-    ListImageScanFindingsResponse,
-    ListImageScanFindingsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListImageScanFindingsRequest,
-  ) => stream.Stream<
-    ImageScanFinding,
-    ListImageScanFindingsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ImageScanFinding
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListImageScanFindingsRequest,
   output: ListImageScanFindingsResponse,
   errors: [
@@ -7773,27 +7604,13 @@ export type ListInfrastructureConfigurationsError =
 /**
  * Returns a list of infrastructure configurations.
  */
-export const listInfrastructureConfigurations: API.OperationMethod<
+export const listInfrastructureConfigurations: API.PaginatedOperationMethod<
   ListInfrastructureConfigurationsRequest,
   ListInfrastructureConfigurationsResponse,
   ListInfrastructureConfigurationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListInfrastructureConfigurationsRequest,
-  ) => stream.Stream<
-    ListInfrastructureConfigurationsResponse,
-    ListInfrastructureConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListInfrastructureConfigurationsRequest,
-  ) => stream.Stream<
-    InfrastructureConfigurationSummary,
-    ListInfrastructureConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  InfrastructureConfigurationSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListInfrastructureConfigurationsRequest,
   output: ListInfrastructureConfigurationsResponse,
   errors: [
@@ -7828,27 +7645,13 @@ export type ListLifecycleExecutionResourcesError =
 /**
  * List resources that the runtime instance of the image lifecycle identified for lifecycle actions.
  */
-export const listLifecycleExecutionResources: API.OperationMethod<
+export const listLifecycleExecutionResources: API.PaginatedOperationMethod<
   ListLifecycleExecutionResourcesRequest,
   ListLifecycleExecutionResourcesResponse,
   ListLifecycleExecutionResourcesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListLifecycleExecutionResourcesRequest,
-  ) => stream.Stream<
-    ListLifecycleExecutionResourcesResponse,
-    ListLifecycleExecutionResourcesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListLifecycleExecutionResourcesRequest,
-  ) => stream.Stream<
-    LifecycleExecutionResource,
-    ListLifecycleExecutionResourcesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  LifecycleExecutionResource
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLifecycleExecutionResourcesRequest,
   output: ListLifecycleExecutionResourcesResponse,
   errors: [
@@ -7883,27 +7686,13 @@ export type ListLifecycleExecutionsError =
 /**
  * Get the lifecycle runtime history for the specified resource.
  */
-export const listLifecycleExecutions: API.OperationMethod<
+export const listLifecycleExecutions: API.PaginatedOperationMethod<
   ListLifecycleExecutionsRequest,
   ListLifecycleExecutionsResponse,
   ListLifecycleExecutionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListLifecycleExecutionsRequest,
-  ) => stream.Stream<
-    ListLifecycleExecutionsResponse,
-    ListLifecycleExecutionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListLifecycleExecutionsRequest,
-  ) => stream.Stream<
-    LifecycleExecution,
-    ListLifecycleExecutionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  LifecycleExecution
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLifecycleExecutionsRequest,
   output: ListLifecycleExecutionsResponse,
   errors: [
@@ -7938,27 +7727,13 @@ export type ListLifecyclePoliciesError =
 /**
  * Get a list of lifecycle policies in your Amazon Web Services account.
  */
-export const listLifecyclePolicies: API.OperationMethod<
+export const listLifecyclePolicies: API.PaginatedOperationMethod<
   ListLifecyclePoliciesRequest,
   ListLifecyclePoliciesResponse,
   ListLifecyclePoliciesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListLifecyclePoliciesRequest,
-  ) => stream.Stream<
-    ListLifecyclePoliciesResponse,
-    ListLifecyclePoliciesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListLifecyclePoliciesRequest,
-  ) => stream.Stream<
-    LifecyclePolicySummary,
-    ListLifecyclePoliciesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  LifecyclePolicySummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLifecyclePoliciesRequest,
   output: ListLifecyclePoliciesResponse,
   errors: [
@@ -8020,27 +7795,13 @@ export type ListWaitingWorkflowStepsError =
  * Get a list of workflow steps that are waiting for action for workflows
  * in your Amazon Web Services account.
  */
-export const listWaitingWorkflowSteps: API.OperationMethod<
+export const listWaitingWorkflowSteps: API.PaginatedOperationMethod<
   ListWaitingWorkflowStepsRequest,
   ListWaitingWorkflowStepsResponse,
   ListWaitingWorkflowStepsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListWaitingWorkflowStepsRequest,
-  ) => stream.Stream<
-    ListWaitingWorkflowStepsResponse,
-    ListWaitingWorkflowStepsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListWaitingWorkflowStepsRequest,
-  ) => stream.Stream<
-    WorkflowStepExecution,
-    ListWaitingWorkflowStepsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  WorkflowStepExecution
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListWaitingWorkflowStepsRequest,
   output: ListWaitingWorkflowStepsResponse,
   errors: [
@@ -8075,27 +7836,13 @@ export type ListWorkflowBuildVersionsError =
 /**
  * Returns a list of build versions for a specific workflow resource.
  */
-export const listWorkflowBuildVersions: API.OperationMethod<
+export const listWorkflowBuildVersions: API.PaginatedOperationMethod<
   ListWorkflowBuildVersionsRequest,
   ListWorkflowBuildVersionsResponse,
   ListWorkflowBuildVersionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListWorkflowBuildVersionsRequest,
-  ) => stream.Stream<
-    ListWorkflowBuildVersionsResponse,
-    ListWorkflowBuildVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListWorkflowBuildVersionsRequest,
-  ) => stream.Stream<
-    WorkflowSummary,
-    ListWorkflowBuildVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  WorkflowSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListWorkflowBuildVersionsRequest,
   output: ListWorkflowBuildVersionsResponse,
   errors: [
@@ -8131,27 +7878,13 @@ export type ListWorkflowExecutionsError =
  * Returns a list of workflow runtime instance metadata objects for a specific image build
  * version.
  */
-export const listWorkflowExecutions: API.OperationMethod<
+export const listWorkflowExecutions: API.PaginatedOperationMethod<
   ListWorkflowExecutionsRequest,
   ListWorkflowExecutionsResponse,
   ListWorkflowExecutionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListWorkflowExecutionsRequest,
-  ) => stream.Stream<
-    ListWorkflowExecutionsResponse,
-    ListWorkflowExecutionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListWorkflowExecutionsRequest,
-  ) => stream.Stream<
-    WorkflowExecutionMetadata,
-    ListWorkflowExecutionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  WorkflowExecutionMetadata
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListWorkflowExecutionsRequest,
   output: ListWorkflowExecutionsResponse,
   errors: [
@@ -8186,27 +7919,13 @@ export type ListWorkflowsError =
 /**
  * Lists workflow build versions based on filtering parameters.
  */
-export const listWorkflows: API.OperationMethod<
+export const listWorkflows: API.PaginatedOperationMethod<
   ListWorkflowsRequest,
   ListWorkflowsResponse,
   ListWorkflowsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListWorkflowsRequest,
-  ) => stream.Stream<
-    ListWorkflowsResponse,
-    ListWorkflowsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListWorkflowsRequest,
-  ) => stream.Stream<
-    WorkflowVersion,
-    ListWorkflowsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  WorkflowVersion
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListWorkflowsRequest,
   output: ListWorkflowsResponse,
   errors: [
@@ -8242,27 +7961,13 @@ export type ListWorkflowStepExecutionsError =
  * Returns runtime data for each step in a runtime instance of the workflow
  * that you specify in the request.
  */
-export const listWorkflowStepExecutions: API.OperationMethod<
+export const listWorkflowStepExecutions: API.PaginatedOperationMethod<
   ListWorkflowStepExecutionsRequest,
   ListWorkflowStepExecutionsResponse,
   ListWorkflowStepExecutionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListWorkflowStepExecutionsRequest,
-  ) => stream.Stream<
-    ListWorkflowStepExecutionsResponse,
-    ListWorkflowStepExecutionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListWorkflowStepExecutionsRequest,
-  ) => stream.Stream<
-    WorkflowStepMetadata,
-    ListWorkflowStepExecutionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  WorkflowStepMetadata
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListWorkflowStepExecutionsRequest,
   output: ListWorkflowStepExecutionsResponse,
   errors: [

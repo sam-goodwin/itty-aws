@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -1955,27 +1954,13 @@ export type DescribeBudgetActionHistoriesError =
 /**
  * Describes a budget action history detail.
  */
-export const describeBudgetActionHistories: API.OperationMethod<
+export const describeBudgetActionHistories: API.PaginatedOperationMethod<
   DescribeBudgetActionHistoriesRequest,
   DescribeBudgetActionHistoriesResponse,
   DescribeBudgetActionHistoriesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeBudgetActionHistoriesRequest,
-  ) => stream.Stream<
-    DescribeBudgetActionHistoriesResponse,
-    DescribeBudgetActionHistoriesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeBudgetActionHistoriesRequest,
-  ) => stream.Stream<
-    ActionHistory,
-    DescribeBudgetActionHistoriesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  ActionHistory
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeBudgetActionHistoriesRequest,
   output: DescribeBudgetActionHistoriesResponse,
   errors: [
@@ -2007,27 +1992,13 @@ export type DescribeBudgetActionsForAccountError =
 /**
  * Describes all of the budget actions for an account.
  */
-export const describeBudgetActionsForAccount: API.OperationMethod<
+export const describeBudgetActionsForAccount: API.PaginatedOperationMethod<
   DescribeBudgetActionsForAccountRequest,
   DescribeBudgetActionsForAccountResponse,
   DescribeBudgetActionsForAccountError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeBudgetActionsForAccountRequest,
-  ) => stream.Stream<
-    DescribeBudgetActionsForAccountResponse,
-    DescribeBudgetActionsForAccountError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeBudgetActionsForAccountRequest,
-  ) => stream.Stream<
-    Action,
-    DescribeBudgetActionsForAccountError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  Action
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeBudgetActionsForAccountRequest,
   output: DescribeBudgetActionsForAccountResponse,
   errors: [
@@ -2059,27 +2030,13 @@ export type DescribeBudgetActionsForBudgetError =
 /**
  * Describes all of the budget actions for a budget.
  */
-export const describeBudgetActionsForBudget: API.OperationMethod<
+export const describeBudgetActionsForBudget: API.PaginatedOperationMethod<
   DescribeBudgetActionsForBudgetRequest,
   DescribeBudgetActionsForBudgetResponse,
   DescribeBudgetActionsForBudgetError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeBudgetActionsForBudgetRequest,
-  ) => stream.Stream<
-    DescribeBudgetActionsForBudgetResponse,
-    DescribeBudgetActionsForBudgetError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeBudgetActionsForBudgetRequest,
-  ) => stream.Stream<
-    Action,
-    DescribeBudgetActionsForBudgetError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  Action
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeBudgetActionsForBudgetRequest,
   output: DescribeBudgetActionsForBudgetResponse,
   errors: [
@@ -2113,27 +2070,13 @@ export type DescribeBudgetNotificationsForAccountError =
 /**
  * Lists the budget names and notifications that are associated with an account.
  */
-export const describeBudgetNotificationsForAccount: API.OperationMethod<
+export const describeBudgetNotificationsForAccount: API.PaginatedOperationMethod<
   DescribeBudgetNotificationsForAccountRequest,
   DescribeBudgetNotificationsForAccountResponse,
   DescribeBudgetNotificationsForAccountError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeBudgetNotificationsForAccountRequest,
-  ) => stream.Stream<
-    DescribeBudgetNotificationsForAccountResponse,
-    DescribeBudgetNotificationsForAccountError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeBudgetNotificationsForAccountRequest,
-  ) => stream.Stream<
-    BudgetNotificationsForAccount,
-    DescribeBudgetNotificationsForAccountError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  BudgetNotificationsForAccount
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeBudgetNotificationsForAccountRequest,
   output: DescribeBudgetNotificationsForAccountResponse,
   errors: [
@@ -2169,27 +2112,13 @@ export type DescribeBudgetPerformanceHistoryError =
 /**
  * Describes the history for `DAILY`, `MONTHLY`, and `QUARTERLY` budgets. Budget history isn't available for `ANNUAL` budgets.
  */
-export const describeBudgetPerformanceHistory: API.OperationMethod<
+export const describeBudgetPerformanceHistory: API.PaginatedOperationMethod<
   DescribeBudgetPerformanceHistoryRequest,
   DescribeBudgetPerformanceHistoryResponse,
   DescribeBudgetPerformanceHistoryError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeBudgetPerformanceHistoryRequest,
-  ) => stream.Stream<
-    DescribeBudgetPerformanceHistoryResponse,
-    DescribeBudgetPerformanceHistoryError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeBudgetPerformanceHistoryRequest,
-  ) => stream.Stream<
-    unknown,
-    DescribeBudgetPerformanceHistoryError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeBudgetPerformanceHistoryRequest,
   output: DescribeBudgetPerformanceHistoryResponse,
   errors: [
@@ -2227,27 +2156,13 @@ export type DescribeBudgetsError =
  * The Request Syntax section shows the `BudgetLimit` syntax. For
  * `PlannedBudgetLimits`, see the Examples section.
  */
-export const describeBudgets: API.OperationMethod<
+export const describeBudgets: API.PaginatedOperationMethod<
   DescribeBudgetsRequest,
   DescribeBudgetsResponse,
   DescribeBudgetsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeBudgetsRequest,
-  ) => stream.Stream<
-    DescribeBudgetsResponse,
-    DescribeBudgetsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeBudgetsRequest,
-  ) => stream.Stream<
-    Budget,
-    DescribeBudgetsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  Budget
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeBudgetsRequest,
   output: DescribeBudgetsResponse,
   errors: [
@@ -2282,27 +2197,13 @@ export type DescribeNotificationsForBudgetError =
 /**
  * Lists the notifications that are associated with a budget.
  */
-export const describeNotificationsForBudget: API.OperationMethod<
+export const describeNotificationsForBudget: API.PaginatedOperationMethod<
   DescribeNotificationsForBudgetRequest,
   DescribeNotificationsForBudgetResponse,
   DescribeNotificationsForBudgetError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeNotificationsForBudgetRequest,
-  ) => stream.Stream<
-    DescribeNotificationsForBudgetResponse,
-    DescribeNotificationsForBudgetError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeNotificationsForBudgetRequest,
-  ) => stream.Stream<
-    Notification,
-    DescribeNotificationsForBudgetError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  Notification
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeNotificationsForBudgetRequest,
   output: DescribeNotificationsForBudgetResponse,
   errors: [
@@ -2337,27 +2238,13 @@ export type DescribeSubscribersForNotificationError =
 /**
  * Lists the subscribers that are associated with a notification.
  */
-export const describeSubscribersForNotification: API.OperationMethod<
+export const describeSubscribersForNotification: API.PaginatedOperationMethod<
   DescribeSubscribersForNotificationRequest,
   DescribeSubscribersForNotificationResponse,
   DescribeSubscribersForNotificationError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeSubscribersForNotificationRequest,
-  ) => stream.Stream<
-    DescribeSubscribersForNotificationResponse,
-    DescribeSubscribersForNotificationError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeSubscribersForNotificationRequest,
-  ) => stream.Stream<
-    Subscriber,
-    DescribeSubscribersForNotificationError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  Subscriber
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeSubscribersForNotificationRequest,
   output: DescribeSubscribersForNotificationResponse,
   errors: [

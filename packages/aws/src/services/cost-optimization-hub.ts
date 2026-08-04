@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -2349,27 +2348,13 @@ export type ListEfficiencyMetricsError =
  *
  * The operation supports both daily and monthly time granularities and allows grouping results by account ID, Amazon Web Services Region. Results are returned as time-series data, enabling you to analyze trends in your cost optimization performance over the specified time period.
  */
-export const listEfficiencyMetrics: API.OperationMethod<
+export const listEfficiencyMetrics: API.PaginatedOperationMethod<
   ListEfficiencyMetricsRequest,
   ListEfficiencyMetricsResponse,
   ListEfficiencyMetricsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEfficiencyMetricsRequest,
-  ) => stream.Stream<
-    ListEfficiencyMetricsResponse,
-    ListEfficiencyMetricsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEfficiencyMetricsRequest,
-  ) => stream.Stream<
-    EfficiencyMetricsByGroup,
-    ListEfficiencyMetricsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  EfficiencyMetricsByGroup
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEfficiencyMetricsRequest,
   output: ListEfficiencyMetricsResponse,
   errors: [
@@ -2398,27 +2383,13 @@ export type ListEnrollmentStatusesError =
 /**
  * Retrieves the enrollment status for an account. It can also return the list of accounts that are enrolled under the organization.
  */
-export const listEnrollmentStatuses: API.OperationMethod<
+export const listEnrollmentStatuses: API.PaginatedOperationMethod<
   ListEnrollmentStatusesRequest,
   ListEnrollmentStatusesResponse,
   ListEnrollmentStatusesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEnrollmentStatusesRequest,
-  ) => stream.Stream<
-    ListEnrollmentStatusesResponse,
-    ListEnrollmentStatusesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEnrollmentStatusesRequest,
-  ) => stream.Stream<
-    AccountEnrollmentStatus,
-    ListEnrollmentStatusesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AccountEnrollmentStatus
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEnrollmentStatusesRequest,
   output: ListEnrollmentStatusesResponse,
   errors: [
@@ -2447,27 +2418,13 @@ export type ListRecommendationsError =
 /**
  * Returns a list of recommendations.
  */
-export const listRecommendations: API.OperationMethod<
+export const listRecommendations: API.PaginatedOperationMethod<
   ListRecommendationsRequest,
   ListRecommendationsResponse,
   ListRecommendationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRecommendationsRequest,
-  ) => stream.Stream<
-    ListRecommendationsResponse,
-    ListRecommendationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRecommendationsRequest,
-  ) => stream.Stream<
-    Recommendation,
-    ListRecommendationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Recommendation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRecommendationsRequest,
   output: ListRecommendationsResponse,
   errors: [
@@ -2498,27 +2455,13 @@ export type ListRecommendationSummariesError =
  *
  * The following filters are not supported for this API: `recommendationIds`, `resourceArns`, and `resourceIds`.
  */
-export const listRecommendationSummaries: API.OperationMethod<
+export const listRecommendationSummaries: API.PaginatedOperationMethod<
   ListRecommendationSummariesRequest,
   ListRecommendationSummariesResponse,
   ListRecommendationSummariesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRecommendationSummariesRequest,
-  ) => stream.Stream<
-    ListRecommendationSummariesResponse,
-    ListRecommendationSummariesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRecommendationSummariesRequest,
-  ) => stream.Stream<
-    RecommendationSummary,
-    ListRecommendationSummariesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  RecommendationSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRecommendationSummariesRequest,
   output: ListRecommendationSummariesResponse,
   errors: [

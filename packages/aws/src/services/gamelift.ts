@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -10329,27 +10328,13 @@ export type DescribeFleetAttributesError =
  * Setting up Amazon GameLift Servers
  * fleets
  */
-export const describeFleetAttributes: API.OperationMethod<
+export const describeFleetAttributes: API.PaginatedOperationMethod<
   DescribeFleetAttributesInput,
   DescribeFleetAttributesOutput,
   DescribeFleetAttributesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeFleetAttributesInput,
-  ) => stream.Stream<
-    DescribeFleetAttributesOutput,
-    DescribeFleetAttributesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeFleetAttributesInput,
-  ) => stream.Stream<
-    FleetAttributes,
-    DescribeFleetAttributesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  FleetAttributes
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeFleetAttributesInput,
   output: DescribeFleetAttributesOutput,
   errors: [
@@ -10412,27 +10397,13 @@ export type DescribeFleetCapacityError =
  *
  * GameLift metrics for fleets
  */
-export const describeFleetCapacity: API.OperationMethod<
+export const describeFleetCapacity: API.PaginatedOperationMethod<
   DescribeFleetCapacityInput,
   DescribeFleetCapacityOutput,
   DescribeFleetCapacityError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeFleetCapacityInput,
-  ) => stream.Stream<
-    DescribeFleetCapacityOutput,
-    DescribeFleetCapacityError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeFleetCapacityInput,
-  ) => stream.Stream<
-    FleetCapacity,
-    DescribeFleetCapacityError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  FleetCapacity
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeFleetCapacityInput,
   output: DescribeFleetCapacityOutput,
   errors: [
@@ -10522,27 +10493,13 @@ export type DescribeFleetEventsError =
  * Setting up Amazon GameLift Servers
  * fleets
  */
-export const describeFleetEvents: API.OperationMethod<
+export const describeFleetEvents: API.PaginatedOperationMethod<
   DescribeFleetEventsInput,
   DescribeFleetEventsOutput,
   DescribeFleetEventsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeFleetEventsInput,
-  ) => stream.Stream<
-    DescribeFleetEventsOutput,
-    DescribeFleetEventsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeFleetEventsInput,
-  ) => stream.Stream<
-    Event,
-    DescribeFleetEventsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Event
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeFleetEventsInput,
   output: DescribeFleetEventsOutput,
   errors: [
@@ -10597,27 +10554,13 @@ export type DescribeFleetLocationAttributesError =
  *
  * Amazon GameLift Servers service locations for managed hosting
  */
-export const describeFleetLocationAttributes: API.OperationMethod<
+export const describeFleetLocationAttributes: API.PaginatedOperationMethod<
   DescribeFleetLocationAttributesInput,
   DescribeFleetLocationAttributesOutput,
   DescribeFleetLocationAttributesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeFleetLocationAttributesInput,
-  ) => stream.Stream<
-    DescribeFleetLocationAttributesOutput,
-    DescribeFleetLocationAttributesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeFleetLocationAttributesInput,
-  ) => stream.Stream<
-    unknown,
-    DescribeFleetLocationAttributesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeFleetLocationAttributesInput,
   output: DescribeFleetLocationAttributesOutput,
   errors: [
@@ -10833,27 +10776,13 @@ export type DescribeFleetUtilizationError =
  *
  * GameLift Metrics for Fleets
  */
-export const describeFleetUtilization: API.OperationMethod<
+export const describeFleetUtilization: API.PaginatedOperationMethod<
   DescribeFleetUtilizationInput,
   DescribeFleetUtilizationOutput,
   DescribeFleetUtilizationError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeFleetUtilizationInput,
-  ) => stream.Stream<
-    DescribeFleetUtilizationOutput,
-    DescribeFleetUtilizationError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeFleetUtilizationInput,
-  ) => stream.Stream<
-    FleetUtilization,
-    DescribeFleetUtilizationError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  FleetUtilization
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeFleetUtilizationInput,
   output: DescribeFleetUtilizationOutput,
   errors: [
@@ -10985,27 +10914,13 @@ export type DescribeGameServerInstancesError =
  * Amazon GameLift Servers FleetIQ
  * Guide
  */
-export const describeGameServerInstances: API.OperationMethod<
+export const describeGameServerInstances: API.PaginatedOperationMethod<
   DescribeGameServerInstancesInput,
   DescribeGameServerInstancesOutput,
   DescribeGameServerInstancesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeGameServerInstancesInput,
-  ) => stream.Stream<
-    DescribeGameServerInstancesOutput,
-    DescribeGameServerInstancesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeGameServerInstancesInput,
-  ) => stream.Stream<
-    GameServerInstance,
-    DescribeGameServerInstancesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  GameServerInstance
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeGameServerInstancesInput,
   output: DescribeGameServerInstancesOutput,
   errors: [
@@ -11067,27 +10982,13 @@ export type DescribeGameSessionDetailsError =
  *
  * All APIs by task
  */
-export const describeGameSessionDetails: API.OperationMethod<
+export const describeGameSessionDetails: API.PaginatedOperationMethod<
   DescribeGameSessionDetailsInput,
   DescribeGameSessionDetailsOutput,
   DescribeGameSessionDetailsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeGameSessionDetailsInput,
-  ) => stream.Stream<
-    DescribeGameSessionDetailsOutput,
-    DescribeGameSessionDetailsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeGameSessionDetailsInput,
-  ) => stream.Stream<
-    GameSessionDetail,
-    DescribeGameSessionDetailsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  GameSessionDetail
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeGameSessionDetailsInput,
   output: DescribeGameSessionDetailsOutput,
   errors: [
@@ -11168,27 +11069,13 @@ export type DescribeGameSessionQueuesError =
  *
  * View Your Queues
  */
-export const describeGameSessionQueues: API.OperationMethod<
+export const describeGameSessionQueues: API.PaginatedOperationMethod<
   DescribeGameSessionQueuesInput,
   DescribeGameSessionQueuesOutput,
   DescribeGameSessionQueuesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeGameSessionQueuesInput,
-  ) => stream.Stream<
-    DescribeGameSessionQueuesOutput,
-    DescribeGameSessionQueuesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeGameSessionQueuesInput,
-  ) => stream.Stream<
-    GameSessionQueue,
-    DescribeGameSessionQueuesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  GameSessionQueue
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeGameSessionQueuesInput,
   output: DescribeGameSessionQueuesOutput,
   errors: [
@@ -11257,27 +11144,13 @@ export type DescribeGameSessionsError =
  *
  * All APIs by task
  */
-export const describeGameSessions: API.OperationMethod<
+export const describeGameSessions: API.PaginatedOperationMethod<
   DescribeGameSessionsInput,
   DescribeGameSessionsOutput,
   DescribeGameSessionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeGameSessionsInput,
-  ) => stream.Stream<
-    DescribeGameSessionsOutput,
-    DescribeGameSessionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeGameSessionsInput,
-  ) => stream.Stream<
-    GameSession,
-    DescribeGameSessionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  GameSession
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeGameSessionsInput,
   output: DescribeGameSessionsOutput,
   errors: [
@@ -11344,27 +11217,13 @@ export type DescribeInstancesError =
  *
  * All APIs by task
  */
-export const describeInstances: API.OperationMethod<
+export const describeInstances: API.PaginatedOperationMethod<
   DescribeInstancesInput,
   DescribeInstancesOutput,
   DescribeInstancesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeInstancesInput,
-  ) => stream.Stream<
-    DescribeInstancesOutput,
-    DescribeInstancesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeInstancesInput,
-  ) => stream.Stream<
-    Instance,
-    DescribeInstancesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Instance
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeInstancesInput,
   output: DescribeInstancesOutput,
   errors: [
@@ -11453,27 +11312,13 @@ export type DescribeMatchmakingConfigurationsError =
  *
  * Setting up FlexMatch matchmakers
  */
-export const describeMatchmakingConfigurations: API.OperationMethod<
+export const describeMatchmakingConfigurations: API.PaginatedOperationMethod<
   DescribeMatchmakingConfigurationsInput,
   DescribeMatchmakingConfigurationsOutput,
   DescribeMatchmakingConfigurationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeMatchmakingConfigurationsInput,
-  ) => stream.Stream<
-    DescribeMatchmakingConfigurationsOutput,
-    DescribeMatchmakingConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeMatchmakingConfigurationsInput,
-  ) => stream.Stream<
-    MatchmakingConfiguration,
-    DescribeMatchmakingConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  MatchmakingConfiguration
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeMatchmakingConfigurationsInput,
   output: DescribeMatchmakingConfigurationsOutput,
   errors: [
@@ -11511,27 +11356,13 @@ export type DescribeMatchmakingRuleSetsError =
  * - Build a rule
  * set
  */
-export const describeMatchmakingRuleSets: API.OperationMethod<
+export const describeMatchmakingRuleSets: API.PaginatedOperationMethod<
   DescribeMatchmakingRuleSetsInput,
   DescribeMatchmakingRuleSetsOutput,
   DescribeMatchmakingRuleSetsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeMatchmakingRuleSetsInput,
-  ) => stream.Stream<
-    DescribeMatchmakingRuleSetsOutput,
-    DescribeMatchmakingRuleSetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeMatchmakingRuleSetsInput,
-  ) => stream.Stream<
-    MatchmakingRuleSet,
-    DescribeMatchmakingRuleSetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  MatchmakingRuleSet
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeMatchmakingRuleSetsInput,
   output: DescribeMatchmakingRuleSetsOutput,
   errors: [
@@ -11585,27 +11416,13 @@ export type DescribePlayerSessionsError =
  *
  * All APIs by task
  */
-export const describePlayerSessions: API.OperationMethod<
+export const describePlayerSessions: API.PaginatedOperationMethod<
   DescribePlayerSessionsInput,
   DescribePlayerSessionsOutput,
   DescribePlayerSessionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribePlayerSessionsInput,
-  ) => stream.Stream<
-    DescribePlayerSessionsOutput,
-    DescribePlayerSessionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribePlayerSessionsInput,
-  ) => stream.Stream<
-    PlayerSession,
-    DescribePlayerSessionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  PlayerSession
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribePlayerSessionsInput,
   output: DescribePlayerSessionsOutput,
   errors: [
@@ -11693,27 +11510,13 @@ export type DescribeScalingPoliciesError =
  * A fleet may have all of its scaling policies suspended. This operation does not affect
  * the status of the scaling policies, which remains ACTIVE.
  */
-export const describeScalingPolicies: API.OperationMethod<
+export const describeScalingPolicies: API.PaginatedOperationMethod<
   DescribeScalingPoliciesInput,
   DescribeScalingPoliciesOutput,
   DescribeScalingPoliciesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeScalingPoliciesInput,
-  ) => stream.Stream<
-    DescribeScalingPoliciesOutput,
-    DescribeScalingPoliciesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeScalingPoliciesInput,
-  ) => stream.Stream<
-    ScalingPolicy,
-    DescribeScalingPoliciesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ScalingPolicy
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeScalingPoliciesInput,
   output: DescribeScalingPoliciesOutput,
   errors: [
@@ -12125,27 +11928,13 @@ export type ListAliasesError =
  *
  * All APIs by task
  */
-export const listAliases: API.OperationMethod<
+export const listAliases: API.PaginatedOperationMethod<
   ListAliasesInput,
   ListAliasesOutput,
   ListAliasesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAliasesInput,
-  ) => stream.Stream<
-    ListAliasesOutput,
-    ListAliasesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAliasesInput,
-  ) => stream.Stream<
-    Alias,
-    ListAliasesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Alias
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAliasesInput,
   output: ListAliasesOutput,
   errors: [
@@ -12185,27 +11974,13 @@ export type ListBuildsError =
  *
  * All APIs by task
  */
-export const listBuilds: API.OperationMethod<
+export const listBuilds: API.PaginatedOperationMethod<
   ListBuildsInput,
   ListBuildsOutput,
   ListBuildsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListBuildsInput,
-  ) => stream.Stream<
-    ListBuildsOutput,
-    ListBuildsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListBuildsInput,
-  ) => stream.Stream<
-    Build,
-    ListBuildsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Build
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBuildsInput,
   output: ListBuildsOutput,
   errors: [
@@ -12258,27 +12033,13 @@ export type ListComputeError =
  * `GameLiftServiceSdkEndpoint` or
  * `GameLiftAgentEndpoint`.
  */
-export const listCompute: API.OperationMethod<
+export const listCompute: API.PaginatedOperationMethod<
   ListComputeInput,
   ListComputeOutput,
   ListComputeError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListComputeInput,
-  ) => stream.Stream<
-    ListComputeOutput,
-    ListComputeError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListComputeInput,
-  ) => stream.Stream<
-    Compute,
-    ListComputeError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Compute
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListComputeInput,
   output: ListComputeOutput,
   errors: [
@@ -12330,27 +12091,13 @@ export type ListContainerFleetsError =
  *
  * Fleet IDs are returned in no particular order.
  */
-export const listContainerFleets: API.OperationMethod<
+export const listContainerFleets: API.PaginatedOperationMethod<
   ListContainerFleetsInput,
   ListContainerFleetsOutput,
   ListContainerFleetsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListContainerFleetsInput,
-  ) => stream.Stream<
-    ListContainerFleetsOutput,
-    ListContainerFleetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListContainerFleetsInput,
-  ) => stream.Stream<
-    ContainerFleet,
-    ListContainerFleetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ContainerFleet
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListContainerFleetsInput,
   output: ListContainerFleetsOutput,
   errors: [
@@ -12399,27 +12146,13 @@ export type ListContainerGroupDefinitionsError =
  *
  * This operation returns the list of container group definitions in no particular order.
  */
-export const listContainerGroupDefinitions: API.OperationMethod<
+export const listContainerGroupDefinitions: API.PaginatedOperationMethod<
   ListContainerGroupDefinitionsInput,
   ListContainerGroupDefinitionsOutput,
   ListContainerGroupDefinitionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListContainerGroupDefinitionsInput,
-  ) => stream.Stream<
-    ListContainerGroupDefinitionsOutput,
-    ListContainerGroupDefinitionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListContainerGroupDefinitionsInput,
-  ) => stream.Stream<
-    ContainerGroupDefinition,
-    ListContainerGroupDefinitionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ContainerGroupDefinition
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListContainerGroupDefinitionsInput,
   output: ListContainerGroupDefinitionsOutput,
   errors: [
@@ -12470,27 +12203,13 @@ export type ListContainerGroupDefinitionVersionsError =
  *
  * - Manage a container group definition
  */
-export const listContainerGroupDefinitionVersions: API.OperationMethod<
+export const listContainerGroupDefinitionVersions: API.PaginatedOperationMethod<
   ListContainerGroupDefinitionVersionsInput,
   ListContainerGroupDefinitionVersionsOutput,
   ListContainerGroupDefinitionVersionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListContainerGroupDefinitionVersionsInput,
-  ) => stream.Stream<
-    ListContainerGroupDefinitionVersionsOutput,
-    ListContainerGroupDefinitionVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListContainerGroupDefinitionVersionsInput,
-  ) => stream.Stream<
-    ContainerGroupDefinition,
-    ListContainerGroupDefinitionVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ContainerGroupDefinition
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListContainerGroupDefinitionVersionsInput,
   output: ListContainerGroupDefinitionVersionsOutput,
   errors: [
@@ -12538,27 +12257,13 @@ export type ListFleetDeploymentsError =
  *
  * Deployments are returned starting with the latest.
  */
-export const listFleetDeployments: API.OperationMethod<
+export const listFleetDeployments: API.PaginatedOperationMethod<
   ListFleetDeploymentsInput,
   ListFleetDeploymentsOutput,
   ListFleetDeploymentsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListFleetDeploymentsInput,
-  ) => stream.Stream<
-    ListFleetDeploymentsOutput,
-    ListFleetDeploymentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListFleetDeploymentsInput,
-  ) => stream.Stream<
-    FleetDeployment,
-    ListFleetDeploymentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  FleetDeployment
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFleetDeploymentsInput,
   output: ListFleetDeploymentsOutput,
   errors: [
@@ -12612,27 +12317,13 @@ export type ListFleetsError =
  *
  * Fleet IDs are returned in no particular order.
  */
-export const listFleets: API.OperationMethod<
+export const listFleets: API.PaginatedOperationMethod<
   ListFleetsInput,
   ListFleetsOutput,
   ListFleetsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListFleetsInput,
-  ) => stream.Stream<
-    ListFleetsOutput,
-    ListFleetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListFleetsInput,
-  ) => stream.Stream<
-    FleetId,
-    ListFleetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  FleetId
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFleetsInput,
   output: ListFleetsOutput,
   errors: [
@@ -12662,27 +12353,13 @@ export type ListGameServerGroupsError =
  *
  * Lists a game server groups.
  */
-export const listGameServerGroups: API.OperationMethod<
+export const listGameServerGroups: API.PaginatedOperationMethod<
   ListGameServerGroupsInput,
   ListGameServerGroupsOutput,
   ListGameServerGroupsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListGameServerGroupsInput,
-  ) => stream.Stream<
-    ListGameServerGroupsOutput,
-    ListGameServerGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListGameServerGroupsInput,
-  ) => stream.Stream<
-    GameServerGroup,
-    ListGameServerGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  GameServerGroup
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListGameServerGroupsInput,
   output: ListGameServerGroupsOutput,
   errors: [
@@ -12719,27 +12396,13 @@ export type ListGameServersError =
  * Amazon GameLift Servers FleetIQ
  * Guide
  */
-export const listGameServers: API.OperationMethod<
+export const listGameServers: API.PaginatedOperationMethod<
   ListGameServersInput,
   ListGameServersOutput,
   ListGameServersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListGameServersInput,
-  ) => stream.Stream<
-    ListGameServersOutput,
-    ListGameServersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListGameServersInput,
-  ) => stream.Stream<
-    GameServer,
-    ListGameServersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  GameServer
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListGameServersInput,
   output: ListGameServersOutput,
   errors: [
@@ -12775,27 +12438,13 @@ export type ListLocationsError =
  *
  * Service locations
  */
-export const listLocations: API.OperationMethod<
+export const listLocations: API.PaginatedOperationMethod<
   ListLocationsInput,
   ListLocationsOutput,
   ListLocationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListLocationsInput,
-  ) => stream.Stream<
-    ListLocationsOutput,
-    ListLocationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListLocationsInput,
-  ) => stream.Stream<
-    LocationModel,
-    ListLocationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  LocationModel
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLocationsInput,
   output: ListLocationsOutput,
   errors: [
@@ -12833,27 +12482,13 @@ export type ListScriptsError =
  *
  * All APIs by task
  */
-export const listScripts: API.OperationMethod<
+export const listScripts: API.PaginatedOperationMethod<
   ListScriptsInput,
   ListScriptsOutput,
   ListScriptsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListScriptsInput,
-  ) => stream.Stream<
-    ListScriptsOutput,
-    ListScriptsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListScriptsInput,
-  ) => stream.Stream<
-    Script,
-    ListScriptsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Script
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListScriptsInput,
   output: ListScriptsOutput,
   errors: [
@@ -13339,27 +12974,13 @@ export type SearchGameSessionsError =
  *
  * All APIs by task
  */
-export const searchGameSessions: API.OperationMethod<
+export const searchGameSessions: API.PaginatedOperationMethod<
   SearchGameSessionsInput,
   SearchGameSessionsOutput,
   SearchGameSessionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: SearchGameSessionsInput,
-  ) => stream.Stream<
-    SearchGameSessionsOutput,
-    SearchGameSessionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: SearchGameSessionsInput,
-  ) => stream.Stream<
-    GameSession,
-    SearchGameSessionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  GameSession
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchGameSessionsInput,
   output: SearchGameSessionsOutput,
   errors: [

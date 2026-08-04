@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -7285,27 +7284,13 @@ export type GetCisScanResultDetailsError =
 /**
  * Retrieves CIS scan result details.
  */
-export const getCisScanResultDetails: API.OperationMethod<
+export const getCisScanResultDetails: API.PaginatedOperationMethod<
   GetCisScanResultDetailsRequest,
   GetCisScanResultDetailsResponse,
   GetCisScanResultDetailsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetCisScanResultDetailsRequest,
-  ) => stream.Stream<
-    GetCisScanResultDetailsResponse,
-    GetCisScanResultDetailsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetCisScanResultDetailsRequest,
-  ) => stream.Stream<
-    CisScanResultDetails,
-    GetCisScanResultDetailsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  CisScanResultDetails
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetCisScanResultDetailsRequest,
   output: GetCisScanResultDetailsResponse,
   errors: [
@@ -7334,27 +7319,13 @@ export type GetClustersForImageError =
 /**
  * Returns a list of clusters and metadata associated with an image.
  */
-export const getClustersForImage: API.OperationMethod<
+export const getClustersForImage: API.PaginatedOperationMethod<
   GetClustersForImageRequest,
   GetClustersForImageResponse,
   GetClustersForImageError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetClustersForImageRequest,
-  ) => stream.Stream<
-    GetClustersForImageResponse,
-    GetClustersForImageError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetClustersForImageRequest,
-  ) => stream.Stream<
-    ClusterInformation,
-    GetClustersForImageError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ClusterInformation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetClustersForImageRequest,
   output: GetClustersForImageResponse,
   errors: [
@@ -7682,27 +7653,13 @@ export type ListAccountPermissionsError =
  * Lists the permissions an account has to configure Amazon Inspector.
  * If the account is a member account or standalone account with resources managed by an Organizations policy, the operation returns fewer permissions.
  */
-export const listAccountPermissions: API.OperationMethod<
+export const listAccountPermissions: API.PaginatedOperationMethod<
   ListAccountPermissionsRequest,
   ListAccountPermissionsResponse,
   ListAccountPermissionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAccountPermissionsRequest,
-  ) => stream.Stream<
-    ListAccountPermissionsResponse,
-    ListAccountPermissionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAccountPermissionsRequest,
-  ) => stream.Stream<
-    Permission,
-    ListAccountPermissionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Permission
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountPermissionsRequest,
   output: ListAccountPermissionsResponse,
   errors: [
@@ -7731,27 +7688,13 @@ export type ListCisScanConfigurationsError =
 /**
  * Lists CIS scan configurations.
  */
-export const listCisScanConfigurations: API.OperationMethod<
+export const listCisScanConfigurations: API.PaginatedOperationMethod<
   ListCisScanConfigurationsRequest,
   ListCisScanConfigurationsResponse,
   ListCisScanConfigurationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCisScanConfigurationsRequest,
-  ) => stream.Stream<
-    ListCisScanConfigurationsResponse,
-    ListCisScanConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCisScanConfigurationsRequest,
-  ) => stream.Stream<
-    CisScanConfiguration,
-    ListCisScanConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  CisScanConfiguration
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCisScanConfigurationsRequest,
   output: ListCisScanConfigurationsResponse,
   errors: [
@@ -7780,27 +7723,13 @@ export type ListCisScanResultsAggregatedByChecksError =
 /**
  * Lists scan results aggregated by checks.
  */
-export const listCisScanResultsAggregatedByChecks: API.OperationMethod<
+export const listCisScanResultsAggregatedByChecks: API.PaginatedOperationMethod<
   ListCisScanResultsAggregatedByChecksRequest,
   ListCisScanResultsAggregatedByChecksResponse,
   ListCisScanResultsAggregatedByChecksError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCisScanResultsAggregatedByChecksRequest,
-  ) => stream.Stream<
-    ListCisScanResultsAggregatedByChecksResponse,
-    ListCisScanResultsAggregatedByChecksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCisScanResultsAggregatedByChecksRequest,
-  ) => stream.Stream<
-    CisCheckAggregation,
-    ListCisScanResultsAggregatedByChecksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  CisCheckAggregation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCisScanResultsAggregatedByChecksRequest,
   output: ListCisScanResultsAggregatedByChecksResponse,
   errors: [
@@ -7829,27 +7758,13 @@ export type ListCisScanResultsAggregatedByTargetResourceError =
 /**
  * Lists scan results aggregated by a target resource.
  */
-export const listCisScanResultsAggregatedByTargetResource: API.OperationMethod<
+export const listCisScanResultsAggregatedByTargetResource: API.PaginatedOperationMethod<
   ListCisScanResultsAggregatedByTargetResourceRequest,
   ListCisScanResultsAggregatedByTargetResourceResponse,
   ListCisScanResultsAggregatedByTargetResourceError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCisScanResultsAggregatedByTargetResourceRequest,
-  ) => stream.Stream<
-    ListCisScanResultsAggregatedByTargetResourceResponse,
-    ListCisScanResultsAggregatedByTargetResourceError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCisScanResultsAggregatedByTargetResourceRequest,
-  ) => stream.Stream<
-    CisTargetResourceAggregation,
-    ListCisScanResultsAggregatedByTargetResourceError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  CisTargetResourceAggregation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCisScanResultsAggregatedByTargetResourceRequest,
   output: ListCisScanResultsAggregatedByTargetResourceResponse,
   errors: [
@@ -7878,27 +7793,13 @@ export type ListCisScansError =
 /**
  * Returns a CIS scan list.
  */
-export const listCisScans: API.OperationMethod<
+export const listCisScans: API.PaginatedOperationMethod<
   ListCisScansRequest,
   ListCisScansResponse,
   ListCisScansError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCisScansRequest,
-  ) => stream.Stream<
-    ListCisScansResponse,
-    ListCisScansError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCisScansRequest,
-  ) => stream.Stream<
-    CisScan,
-    ListCisScansError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  CisScan
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCisScansRequest,
   output: ListCisScansResponse,
   errors: [
@@ -8015,27 +7916,13 @@ export type ListCoverageError =
 /**
  * Lists coverage details for your environment.
  */
-export const listCoverage: API.OperationMethod<
+export const listCoverage: API.PaginatedOperationMethod<
   ListCoverageRequest,
   ListCoverageResponse,
   ListCoverageError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCoverageRequest,
-  ) => stream.Stream<
-    ListCoverageResponse,
-    ListCoverageError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCoverageRequest,
-  ) => stream.Stream<
-    CoveredResource,
-    ListCoverageError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  CoveredResource
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCoverageRequest,
   output: ListCoverageResponse,
   errors: [InternalServerException, ThrottlingException, ValidationException],
@@ -8058,27 +7945,13 @@ export type ListCoverageStatisticsError =
 /**
  * Lists Amazon Inspector coverage statistics for your environment.
  */
-export const listCoverageStatistics: API.OperationMethod<
+export const listCoverageStatistics: API.PaginatedOperationMethod<
   ListCoverageStatisticsRequest,
   ListCoverageStatisticsResponse,
   ListCoverageStatisticsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCoverageStatisticsRequest,
-  ) => stream.Stream<
-    ListCoverageStatisticsResponse,
-    ListCoverageStatisticsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCoverageStatisticsRequest,
-  ) => stream.Stream<
-    Counts,
-    ListCoverageStatisticsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Counts
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCoverageStatisticsRequest,
   output: ListCoverageStatisticsResponse,
   errors: [InternalServerException, ThrottlingException, ValidationException],
@@ -8101,27 +7974,13 @@ export type ListDelegatedAdminAccountsError =
 /**
  * Lists information about the Amazon Inspector delegated administrator of your organization.
  */
-export const listDelegatedAdminAccounts: API.OperationMethod<
+export const listDelegatedAdminAccounts: API.PaginatedOperationMethod<
   ListDelegatedAdminAccountsRequest,
   ListDelegatedAdminAccountsResponse,
   ListDelegatedAdminAccountsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDelegatedAdminAccountsRequest,
-  ) => stream.Stream<
-    ListDelegatedAdminAccountsResponse,
-    ListDelegatedAdminAccountsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDelegatedAdminAccountsRequest,
-  ) => stream.Stream<
-    DelegatedAdminAccount,
-    ListDelegatedAdminAccountsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  DelegatedAdminAccount
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDelegatedAdminAccountsRequest,
   output: ListDelegatedAdminAccountsResponse,
   errors: [
@@ -8150,27 +8009,13 @@ export type ListFiltersError =
 /**
  * Lists the filters associated with your account.
  */
-export const listFilters: API.OperationMethod<
+export const listFilters: API.PaginatedOperationMethod<
   ListFiltersRequest,
   ListFiltersResponse,
   ListFiltersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListFiltersRequest,
-  ) => stream.Stream<
-    ListFiltersResponse,
-    ListFiltersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListFiltersRequest,
-  ) => stream.Stream<
-    Filter,
-    ListFiltersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Filter
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFiltersRequest,
   output: ListFiltersResponse,
   errors: [
@@ -8198,27 +8043,13 @@ export type ListFindingAggregationsError =
 /**
  * Lists aggregated finding data for your environment based on specific criteria.
  */
-export const listFindingAggregations: API.OperationMethod<
+export const listFindingAggregations: API.PaginatedOperationMethod<
   ListFindingAggregationsRequest,
   ListFindingAggregationsResponse,
   ListFindingAggregationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListFindingAggregationsRequest,
-  ) => stream.Stream<
-    ListFindingAggregationsResponse,
-    ListFindingAggregationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListFindingAggregationsRequest,
-  ) => stream.Stream<
-    AggregationResponse,
-    ListFindingAggregationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AggregationResponse
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFindingAggregationsRequest,
   output: ListFindingAggregationsResponse,
   errors: [InternalServerException, ThrottlingException, ValidationException],
@@ -8241,27 +8072,13 @@ export type ListFindingsError =
 /**
  * Lists findings for your environment.
  */
-export const listFindings: API.OperationMethod<
+export const listFindings: API.PaginatedOperationMethod<
   ListFindingsRequest,
   ListFindingsResponse,
   ListFindingsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListFindingsRequest,
-  ) => stream.Stream<
-    ListFindingsResponse,
-    ListFindingsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListFindingsRequest,
-  ) => stream.Stream<
-    Finding,
-    ListFindingsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Finding
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFindingsRequest,
   output: ListFindingsResponse,
   errors: [InternalServerException, ThrottlingException, ValidationException],
@@ -8286,27 +8103,13 @@ export type ListMembersError =
  * List members associated with the Amazon Inspector delegated administrator for your
  * organization.
  */
-export const listMembers: API.OperationMethod<
+export const listMembers: API.PaginatedOperationMethod<
   ListMembersRequest,
   ListMembersResponse,
   ListMembersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListMembersRequest,
-  ) => stream.Stream<
-    ListMembersResponse,
-    ListMembersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListMembersRequest,
-  ) => stream.Stream<
-    Member,
-    ListMembersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Member
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMembersRequest,
   output: ListMembersResponse,
   errors: [
@@ -8363,27 +8166,13 @@ export type ListUsageTotalsError =
 /**
  * Lists the Amazon Inspector usage totals over the last 30 days.
  */
-export const listUsageTotals: API.OperationMethod<
+export const listUsageTotals: API.PaginatedOperationMethod<
   ListUsageTotalsRequest,
   ListUsageTotalsResponse,
   ListUsageTotalsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListUsageTotalsRequest,
-  ) => stream.Stream<
-    ListUsageTotalsResponse,
-    ListUsageTotalsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListUsageTotalsRequest,
-  ) => stream.Stream<
-    UsageTotal,
-    ListUsageTotalsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  UsageTotal
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListUsageTotalsRequest,
   output: ListUsageTotalsResponse,
   errors: [
@@ -8443,27 +8232,13 @@ export type SearchVulnerabilitiesError =
 /**
  * Lists Amazon Inspector coverage details for a specific vulnerability.
  */
-export const searchVulnerabilities: API.OperationMethod<
+export const searchVulnerabilities: API.PaginatedOperationMethod<
   SearchVulnerabilitiesRequest,
   SearchVulnerabilitiesResponse,
   SearchVulnerabilitiesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: SearchVulnerabilitiesRequest,
-  ) => stream.Stream<
-    SearchVulnerabilitiesResponse,
-    SearchVulnerabilitiesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: SearchVulnerabilitiesRequest,
-  ) => stream.Stream<
-    Vulnerability,
-    SearchVulnerabilitiesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Vulnerability
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchVulnerabilitiesRequest,
   output: SearchVulnerabilitiesResponse,
   errors: [

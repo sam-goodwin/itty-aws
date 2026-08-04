@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -5874,27 +5873,13 @@ export type DescribeProjectsError =
  *
  * This operation requires permissions to perform the `rekognition:DescribeProjects` action.
  */
-export const describeProjects: API.OperationMethod<
+export const describeProjects: API.PaginatedOperationMethod<
   DescribeProjectsRequest,
   DescribeProjectsResponse,
   DescribeProjectsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeProjectsRequest,
-  ) => stream.Stream<
-    DescribeProjectsResponse,
-    DescribeProjectsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeProjectsRequest,
-  ) => stream.Stream<
-    ProjectDescription,
-    DescribeProjectsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ProjectDescription
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeProjectsRequest,
   output: DescribeProjectsResponse,
   errors: [
@@ -5933,27 +5918,13 @@ export type DescribeProjectVersionsError =
  * This operation requires permissions to perform the `rekognition:DescribeProjectVersions`
  * action.
  */
-export const describeProjectVersions: API.OperationMethod<
+export const describeProjectVersions: API.PaginatedOperationMethod<
   DescribeProjectVersionsRequest,
   DescribeProjectVersionsResponse,
   DescribeProjectVersionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeProjectVersionsRequest,
-  ) => stream.Stream<
-    DescribeProjectVersionsResponse,
-    DescribeProjectVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeProjectVersionsRequest,
-  ) => stream.Stream<
-    ProjectVersionDescription,
-    DescribeProjectVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ProjectVersionDescription
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeProjectVersionsRequest,
   output: DescribeProjectVersionsResponse,
   errors: [
@@ -6665,27 +6636,13 @@ export type GetCelebrityRecognitionError =
  * and populate the `NextToken` request parameter with the token
  * value returned from the previous call to `GetCelebrityRecognition`.
  */
-export const getCelebrityRecognition: API.OperationMethod<
+export const getCelebrityRecognition: API.PaginatedOperationMethod<
   GetCelebrityRecognitionRequest,
   GetCelebrityRecognitionResponse,
   GetCelebrityRecognitionError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetCelebrityRecognitionRequest,
-  ) => stream.Stream<
-    GetCelebrityRecognitionResponse,
-    GetCelebrityRecognitionError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetCelebrityRecognitionRequest,
-  ) => stream.Stream<
-    unknown,
-    GetCelebrityRecognitionError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetCelebrityRecognitionRequest,
   output: GetCelebrityRecognitionResponse,
   errors: [
@@ -6749,27 +6706,13 @@ export type GetContentModerationError =
  *
  * For more information, see moderating content in the Amazon Rekognition Developer Guide.
  */
-export const getContentModeration: API.OperationMethod<
+export const getContentModeration: API.PaginatedOperationMethod<
   GetContentModerationRequest,
   GetContentModerationResponse,
   GetContentModerationError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetContentModerationRequest,
-  ) => stream.Stream<
-    GetContentModerationResponse,
-    GetContentModerationError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetContentModerationRequest,
-  ) => stream.Stream<
-    unknown,
-    GetContentModerationError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetContentModerationRequest,
   output: GetContentModerationResponse,
   errors: [
@@ -6820,27 +6763,13 @@ export type GetFaceDetectionError =
  * Note that for the `GetFaceDetection` operation, the returned values for
  * `FaceOccluded` and `EyeDirection` will always be "null".
  */
-export const getFaceDetection: API.OperationMethod<
+export const getFaceDetection: API.PaginatedOperationMethod<
   GetFaceDetectionRequest,
   GetFaceDetectionResponse,
   GetFaceDetectionError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetFaceDetectionRequest,
-  ) => stream.Stream<
-    GetFaceDetectionResponse,
-    GetFaceDetectionError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetFaceDetectionRequest,
-  ) => stream.Stream<
-    unknown,
-    GetFaceDetectionError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetFaceDetectionRequest,
   output: GetFaceDetectionResponse,
   errors: [
@@ -6945,27 +6874,13 @@ export type GetFaceSearchError =
  * You can also sort by persons by specifying `INDEX` for the `SORTBY` input
  * parameter.
  */
-export const getFaceSearch: API.OperationMethod<
+export const getFaceSearch: API.PaginatedOperationMethod<
   GetFaceSearchRequest,
   GetFaceSearchResponse,
   GetFaceSearchError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetFaceSearchRequest,
-  ) => stream.Stream<
-    GetFaceSearchResponse,
-    GetFaceSearchError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetFaceSearchRequest,
-  ) => stream.Stream<
-    unknown,
-    GetFaceSearchError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetFaceSearchRequest,
   output: GetFaceSearchResponse,
   errors: [
@@ -7064,27 +6979,13 @@ export type GetLabelDetectionError =
  * If you are retrieving results while using the Amazon Simple Notification Service, note that you will receive an
  * "ERROR" notification if the job encounters an issue.
  */
-export const getLabelDetection: API.OperationMethod<
+export const getLabelDetection: API.PaginatedOperationMethod<
   GetLabelDetectionRequest,
   GetLabelDetectionResponse,
   GetLabelDetectionError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetLabelDetectionRequest,
-  ) => stream.Stream<
-    GetLabelDetectionResponse,
-    GetLabelDetectionError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetLabelDetectionRequest,
-  ) => stream.Stream<
-    unknown,
-    GetLabelDetectionError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetLabelDetectionRequest,
   output: GetLabelDetectionResponse,
   errors: [
@@ -7183,27 +7084,13 @@ export type GetPersonTrackingError =
  * of results. To get the next page of results, call `GetPersonTracking` and populate the `NextToken` request parameter with the token
  * value returned from the previous call to `GetPersonTracking`.
  */
-export const getPersonTracking: API.OperationMethod<
+export const getPersonTracking: API.PaginatedOperationMethod<
   GetPersonTrackingRequest,
   GetPersonTrackingResponse,
   GetPersonTrackingError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetPersonTrackingRequest,
-  ) => stream.Stream<
-    GetPersonTrackingResponse,
-    GetPersonTrackingError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetPersonTrackingRequest,
-  ) => stream.Stream<
-    unknown,
-    GetPersonTrackingError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetPersonTrackingRequest,
   output: GetPersonTrackingResponse,
   errors: [
@@ -7262,27 +7149,13 @@ export type GetSegmentDetectionError =
  *
  * For more information, see Detecting video segments in stored video in the Amazon Rekognition Developer Guide.
  */
-export const getSegmentDetection: API.OperationMethod<
+export const getSegmentDetection: API.PaginatedOperationMethod<
   GetSegmentDetectionRequest,
   GetSegmentDetectionResponse,
   GetSegmentDetectionError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetSegmentDetectionRequest,
-  ) => stream.Stream<
-    GetSegmentDetectionResponse,
-    GetSegmentDetectionError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetSegmentDetectionRequest,
-  ) => stream.Stream<
-    unknown,
-    GetSegmentDetectionError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetSegmentDetectionRequest,
   output: GetSegmentDetectionResponse,
   errors: [
@@ -7337,27 +7210,13 @@ export type GetTextDetectionError =
  * and populate the `NextToken` request parameter with the token value returned from the previous
  * call to `GetTextDetection`.
  */
-export const getTextDetection: API.OperationMethod<
+export const getTextDetection: API.PaginatedOperationMethod<
   GetTextDetectionRequest,
   GetTextDetectionResponse,
   GetTextDetectionError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetTextDetectionRequest,
-  ) => stream.Stream<
-    GetTextDetectionResponse,
-    GetTextDetectionError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetTextDetectionRequest,
-  ) => stream.Stream<
-    unknown,
-    GetTextDetectionError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetTextDetectionRequest,
   output: GetTextDetectionResponse,
   errors: [
@@ -7530,27 +7389,13 @@ export type ListCollectionsError =
  * This operation requires permissions to perform the
  * `rekognition:ListCollections` action.
  */
-export const listCollections: API.OperationMethod<
+export const listCollections: API.PaginatedOperationMethod<
   ListCollectionsRequest,
   ListCollectionsResponse,
   ListCollectionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCollectionsRequest,
-  ) => stream.Stream<
-    ListCollectionsResponse,
-    ListCollectionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCollectionsRequest,
-  ) => stream.Stream<
-    CollectionId,
-    ListCollectionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  CollectionId
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCollectionsRequest,
   output: ListCollectionsResponse,
   errors: [
@@ -7602,27 +7447,13 @@ export type ListDatasetEntriesError =
  *
  * This operation requires permissions to perform the `rekognition:ListDatasetEntries` action.
  */
-export const listDatasetEntries: API.OperationMethod<
+export const listDatasetEntries: API.PaginatedOperationMethod<
   ListDatasetEntriesRequest,
   ListDatasetEntriesResponse,
   ListDatasetEntriesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDatasetEntriesRequest,
-  ) => stream.Stream<
-    ListDatasetEntriesResponse,
-    ListDatasetEntriesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDatasetEntriesRequest,
-  ) => stream.Stream<
-    DatasetEntry,
-    ListDatasetEntriesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  DatasetEntry
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDatasetEntriesRequest,
   output: ListDatasetEntriesResponse,
   errors: [
@@ -7667,27 +7498,13 @@ export type ListDatasetLabelsError =
  * Lists the labels in a dataset. Amazon Rekognition Custom Labels uses labels to describe images. For more information, see Labeling images
  * in the *Amazon Rekognition Custom Labels Developer Guide*.
  */
-export const listDatasetLabels: API.OperationMethod<
+export const listDatasetLabels: API.PaginatedOperationMethod<
   ListDatasetLabelsRequest,
   ListDatasetLabelsResponse,
   ListDatasetLabelsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDatasetLabelsRequest,
-  ) => stream.Stream<
-    ListDatasetLabelsResponse,
-    ListDatasetLabelsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDatasetLabelsRequest,
-  ) => stream.Stream<
-    DatasetLabelDescription,
-    ListDatasetLabelsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  DatasetLabelDescription
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDatasetLabelsRequest,
   output: ListDatasetLabelsResponse,
   errors: [
@@ -7730,27 +7547,13 @@ export type ListFacesError =
  * This operation requires permissions to perform the `rekognition:ListFaces`
  * action.
  */
-export const listFaces: API.OperationMethod<
+export const listFaces: API.PaginatedOperationMethod<
   ListFacesRequest,
   ListFacesResponse,
   ListFacesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListFacesRequest,
-  ) => stream.Stream<
-    ListFacesResponse,
-    ListFacesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListFacesRequest,
-  ) => stream.Stream<
-    Face,
-    ListFacesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Face
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFacesRequest,
   output: ListFacesResponse,
   errors: [
@@ -7784,27 +7587,13 @@ export type ListMediaAnalysisJobsError =
 /**
  * Returns a list of media analysis jobs. Results are sorted by `CreationTimestamp` in descending order.
  */
-export const listMediaAnalysisJobs: API.OperationMethod<
+export const listMediaAnalysisJobs: API.PaginatedOperationMethod<
   ListMediaAnalysisJobsRequest,
   ListMediaAnalysisJobsResponse,
   ListMediaAnalysisJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListMediaAnalysisJobsRequest,
-  ) => stream.Stream<
-    ListMediaAnalysisJobsResponse,
-    ListMediaAnalysisJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListMediaAnalysisJobsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListMediaAnalysisJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMediaAnalysisJobsRequest,
   output: ListMediaAnalysisJobsResponse,
   errors: [
@@ -7843,27 +7632,13 @@ export type ListProjectPoliciesError =
  *
  * This operation requires permissions to perform the `rekognition:ListProjectPolicies` action.
  */
-export const listProjectPolicies: API.OperationMethod<
+export const listProjectPolicies: API.PaginatedOperationMethod<
   ListProjectPoliciesRequest,
   ListProjectPoliciesResponse,
   ListProjectPoliciesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListProjectPoliciesRequest,
-  ) => stream.Stream<
-    ListProjectPoliciesResponse,
-    ListProjectPoliciesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListProjectPoliciesRequest,
-  ) => stream.Stream<
-    ProjectPolicy,
-    ListProjectPoliciesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ProjectPolicy
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectPoliciesRequest,
   output: ListProjectPoliciesResponse,
   errors: [
@@ -7897,27 +7672,13 @@ export type ListStreamProcessorsError =
 /**
  * Gets a list of stream processors that you have created with CreateStreamProcessor.
  */
-export const listStreamProcessors: API.OperationMethod<
+export const listStreamProcessors: API.PaginatedOperationMethod<
   ListStreamProcessorsRequest,
   ListStreamProcessorsResponse,
   ListStreamProcessorsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListStreamProcessorsRequest,
-  ) => stream.Stream<
-    ListStreamProcessorsResponse,
-    ListStreamProcessorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListStreamProcessorsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListStreamProcessorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListStreamProcessorsRequest,
   output: ListStreamProcessorsResponse,
   errors: [
@@ -7990,27 +7751,13 @@ export type ListUsersError =
  * truncated, `NextToken` is returned in the response that can be used in the
  * subsequent request to retrieve the next set of identities.
  */
-export const listUsers: API.OperationMethod<
+export const listUsers: API.PaginatedOperationMethod<
   ListUsersRequest,
   ListUsersResponse,
   ListUsersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListUsersRequest,
-  ) => stream.Stream<
-    ListUsersResponse,
-    ListUsersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListUsersRequest,
-  ) => stream.Stream<
-    User,
-    ListUsersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  User
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListUsersRequest,
   output: ListUsersResponse,
   errors: [

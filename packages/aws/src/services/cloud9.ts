@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -762,27 +761,13 @@ export type DescribeEnvironmentMembershipsError =
  * Cloud9 can continue to use the service as normal.
  * Learn more"
  */
-export const describeEnvironmentMemberships: API.OperationMethod<
+export const describeEnvironmentMemberships: API.PaginatedOperationMethod<
   DescribeEnvironmentMembershipsRequest,
   DescribeEnvironmentMembershipsResult,
   DescribeEnvironmentMembershipsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeEnvironmentMembershipsRequest,
-  ) => stream.Stream<
-    DescribeEnvironmentMembershipsResult,
-    DescribeEnvironmentMembershipsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeEnvironmentMembershipsRequest,
-  ) => stream.Stream<
-    unknown,
-    DescribeEnvironmentMembershipsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeEnvironmentMembershipsRequest,
   output: DescribeEnvironmentMembershipsResult,
   errors: [
@@ -900,27 +885,13 @@ export type ListEnvironmentsError =
  * Cloud9 can continue to use the service as normal.
  * Learn more"
  */
-export const listEnvironments: API.OperationMethod<
+export const listEnvironments: API.PaginatedOperationMethod<
   ListEnvironmentsRequest,
   ListEnvironmentsResult,
   ListEnvironmentsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEnvironmentsRequest,
-  ) => stream.Stream<
-    ListEnvironmentsResult,
-    ListEnvironmentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEnvironmentsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListEnvironmentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEnvironmentsRequest,
   output: ListEnvironmentsResult,
   errors: [

@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -343,27 +342,13 @@ export type ListRealtimeContactAnalysisSegmentsError =
 /**
  * Provides a list of analysis segments for a real-time analysis session.
  */
-export const listRealtimeContactAnalysisSegments: API.OperationMethod<
+export const listRealtimeContactAnalysisSegments: API.PaginatedOperationMethod<
   ListRealtimeContactAnalysisSegmentsRequest,
   ListRealtimeContactAnalysisSegmentsResponse,
   ListRealtimeContactAnalysisSegmentsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRealtimeContactAnalysisSegmentsRequest,
-  ) => stream.Stream<
-    ListRealtimeContactAnalysisSegmentsResponse,
-    ListRealtimeContactAnalysisSegmentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRealtimeContactAnalysisSegmentsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListRealtimeContactAnalysisSegmentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRealtimeContactAnalysisSegmentsRequest,
   output: ListRealtimeContactAnalysisSegmentsResponse,
   errors: [

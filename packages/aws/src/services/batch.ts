@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -5364,27 +5363,13 @@ export type DescribeComputeEnvironmentsError =
  * `DescribeComputeEnvironment` operation to determine the
  * `ecsClusterArn` that you launch your Amazon ECS container instances into.
  */
-export const describeComputeEnvironments: API.OperationMethod<
+export const describeComputeEnvironments: API.PaginatedOperationMethod<
   DescribeComputeEnvironmentsRequest,
   DescribeComputeEnvironmentsResponse,
   DescribeComputeEnvironmentsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeComputeEnvironmentsRequest,
-  ) => stream.Stream<
-    DescribeComputeEnvironmentsResponse,
-    DescribeComputeEnvironmentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeComputeEnvironmentsRequest,
-  ) => stream.Stream<
-    ComputeEnvironmentDetail,
-    DescribeComputeEnvironmentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ComputeEnvironmentDetail
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeComputeEnvironmentsRequest,
   output: DescribeComputeEnvironmentsResponse,
   errors: [ClientException, ServerException],
@@ -5428,27 +5413,13 @@ export type DescribeJobDefinitionsError =
  * Describes a list of job definitions. You can specify a `status` (such as
  * `ACTIVE`) to only return job definitions that match that status.
  */
-export const describeJobDefinitions: API.OperationMethod<
+export const describeJobDefinitions: API.PaginatedOperationMethod<
   DescribeJobDefinitionsRequest,
   DescribeJobDefinitionsResponse,
   DescribeJobDefinitionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeJobDefinitionsRequest,
-  ) => stream.Stream<
-    DescribeJobDefinitionsResponse,
-    DescribeJobDefinitionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeJobDefinitionsRequest,
-  ) => stream.Stream<
-    JobDefinition,
-    DescribeJobDefinitionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  JobDefinition
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeJobDefinitionsRequest,
   output: DescribeJobDefinitionsResponse,
   errors: [ClientException, ServerException],
@@ -5470,27 +5441,13 @@ export type DescribeJobQueuesError =
 /**
  * Describes one or more of your job queues.
  */
-export const describeJobQueues: API.OperationMethod<
+export const describeJobQueues: API.PaginatedOperationMethod<
   DescribeJobQueuesRequest,
   DescribeJobQueuesResponse,
   DescribeJobQueuesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeJobQueuesRequest,
-  ) => stream.Stream<
-    DescribeJobQueuesResponse,
-    DescribeJobQueuesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeJobQueuesRequest,
-  ) => stream.Stream<
-    JobQueueDetail,
-    DescribeJobQueuesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  JobQueueDetail
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeJobQueuesRequest,
   output: DescribeJobQueuesResponse,
   errors: [ClientException, ServerException],
@@ -5575,27 +5532,13 @@ export type DescribeServiceEnvironmentsError =
 /**
  * Describes one or more of your service environments.
  */
-export const describeServiceEnvironments: API.OperationMethod<
+export const describeServiceEnvironments: API.PaginatedOperationMethod<
   DescribeServiceEnvironmentsRequest,
   DescribeServiceEnvironmentsResponse,
   DescribeServiceEnvironmentsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeServiceEnvironmentsRequest,
-  ) => stream.Stream<
-    DescribeServiceEnvironmentsResponse,
-    DescribeServiceEnvironmentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeServiceEnvironmentsRequest,
-  ) => stream.Stream<
-    ServiceEnvironmentDetail,
-    DescribeServiceEnvironmentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ServiceEnvironmentDetail
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeServiceEnvironmentsRequest,
   output: DescribeServiceEnvironmentsResponse,
   errors: [ClientException, ServerException],
@@ -5662,27 +5605,13 @@ export type ListConsumableResourcesError =
 /**
  * Returns a list of Batch consumable resources.
  */
-export const listConsumableResources: API.OperationMethod<
+export const listConsumableResources: API.PaginatedOperationMethod<
   ListConsumableResourcesRequest,
   ListConsumableResourcesResponse,
   ListConsumableResourcesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListConsumableResourcesRequest,
-  ) => stream.Stream<
-    ListConsumableResourcesResponse,
-    ListConsumableResourcesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListConsumableResourcesRequest,
-  ) => stream.Stream<
-    ConsumableResourceSummary,
-    ListConsumableResourcesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ConsumableResourceSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListConsumableResourcesRequest,
   output: ListConsumableResourcesResponse,
   errors: [ClientException, ServerException],
@@ -5709,27 +5638,13 @@ export type ListJobsError = ClientException | ServerException | CommonErrors;
  *
  * - An array job ID to return a list of the children for that job
  */
-export const listJobs: API.OperationMethod<
+export const listJobs: API.PaginatedOperationMethod<
   ListJobsRequest,
   ListJobsResponse,
   ListJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListJobsRequest,
-  ) => stream.Stream<
-    ListJobsResponse,
-    ListJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListJobsRequest,
-  ) => stream.Stream<
-    JobSummary,
-    ListJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  JobSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListJobsRequest,
   output: ListJobsResponse,
   errors: [ClientException, ServerException],
@@ -5751,27 +5666,13 @@ export type ListJobsByConsumableResourceError =
 /**
  * Returns a list of Batch jobs that require a specific consumable resource.
  */
-export const listJobsByConsumableResource: API.OperationMethod<
+export const listJobsByConsumableResource: API.PaginatedOperationMethod<
   ListJobsByConsumableResourceRequest,
   ListJobsByConsumableResourceResponse,
   ListJobsByConsumableResourceError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListJobsByConsumableResourceRequest,
-  ) => stream.Stream<
-    ListJobsByConsumableResourceResponse,
-    ListJobsByConsumableResourceError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListJobsByConsumableResourceRequest,
-  ) => stream.Stream<
-    ListJobsByConsumableResourceSummary,
-    ListJobsByConsumableResourceError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ListJobsByConsumableResourceSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListJobsByConsumableResourceRequest,
   output: ListJobsByConsumableResourceResponse,
   errors: [ClientException, ServerException],
@@ -5793,27 +5694,13 @@ export type ListQuotaSharesError =
 /**
  * Returns a list of Batch quota shares associated with a job queue.
  */
-export const listQuotaShares: API.OperationMethod<
+export const listQuotaShares: API.PaginatedOperationMethod<
   ListQuotaSharesRequest,
   ListQuotaSharesResponse,
   ListQuotaSharesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListQuotaSharesRequest,
-  ) => stream.Stream<
-    ListQuotaSharesResponse,
-    ListQuotaSharesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListQuotaSharesRequest,
-  ) => stream.Stream<
-    QuotaShareDetail,
-    ListQuotaSharesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  QuotaShareDetail
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListQuotaSharesRequest,
   output: ListQuotaSharesResponse,
   errors: [ClientException, ServerException],
@@ -5835,27 +5722,13 @@ export type ListSchedulingPoliciesError =
 /**
  * Returns a list of Batch scheduling policies.
  */
-export const listSchedulingPolicies: API.OperationMethod<
+export const listSchedulingPolicies: API.PaginatedOperationMethod<
   ListSchedulingPoliciesRequest,
   ListSchedulingPoliciesResponse,
   ListSchedulingPoliciesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSchedulingPoliciesRequest,
-  ) => stream.Stream<
-    ListSchedulingPoliciesResponse,
-    ListSchedulingPoliciesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSchedulingPoliciesRequest,
-  ) => stream.Stream<
-    SchedulingPolicyListingDetail,
-    ListSchedulingPoliciesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  SchedulingPolicyListingDetail
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSchedulingPoliciesRequest,
   output: ListSchedulingPoliciesResponse,
   errors: [ClientException, ServerException],
@@ -5877,27 +5750,13 @@ export type ListServiceJobsError =
 /**
  * Returns a list of service jobs for a specified job queue.
  */
-export const listServiceJobs: API.OperationMethod<
+export const listServiceJobs: API.PaginatedOperationMethod<
   ListServiceJobsRequest,
   ListServiceJobsResponse,
   ListServiceJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListServiceJobsRequest,
-  ) => stream.Stream<
-    ListServiceJobsResponse,
-    ListServiceJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListServiceJobsRequest,
-  ) => stream.Stream<
-    ServiceJobSummary,
-    ListServiceJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ServiceJobSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListServiceJobsRequest,
   output: ListServiceJobsResponse,
   errors: [ClientException, ServerException],

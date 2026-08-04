@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -11435,27 +11434,13 @@ export type DescribeEndpointsError =
 /**
  * Send a request with an empty body to the regional API endpoint to get your account API endpoint. Note that DescribeEndpoints is no longer required. We recommend that you send your requests directly to the regional endpoint instead.
  */
-export const describeEndpoints: API.OperationMethod<
+export const describeEndpoints: API.PaginatedOperationMethod<
   DescribeEndpointsRequest,
   DescribeEndpointsResponse,
   DescribeEndpointsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeEndpointsRequest,
-  ) => stream.Stream<
-    DescribeEndpointsResponse,
-    DescribeEndpointsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeEndpointsRequest,
-  ) => stream.Stream<
-    Endpoint,
-    DescribeEndpointsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Endpoint
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeEndpointsRequest,
   output: DescribeEndpointsResponse,
   errors: [
@@ -11728,27 +11713,13 @@ export type ListJobsError =
 /**
  * Retrieve a JSON array of up to twenty of your most recently created jobs. This array includes in-process, completed, and errored jobs. This will return the jobs themselves, not just a list of the jobs. To retrieve the twenty next most recent jobs, use the nextToken string returned with the array.
  */
-export const listJobs: API.OperationMethod<
+export const listJobs: API.PaginatedOperationMethod<
   ListJobsRequest,
   ListJobsResponse,
   ListJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListJobsRequest,
-  ) => stream.Stream<
-    ListJobsResponse,
-    ListJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListJobsRequest,
-  ) => stream.Stream<
-    Job,
-    ListJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Job
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListJobsRequest,
   output: ListJobsResponse,
   errors: [
@@ -11783,27 +11754,13 @@ export type ListJobTemplatesError =
 /**
  * Retrieve a JSON array of up to twenty of your job templates. This will return the templates themselves, not just a list of them. To retrieve the next twenty templates, use the nextToken string returned with the array
  */
-export const listJobTemplates: API.OperationMethod<
+export const listJobTemplates: API.PaginatedOperationMethod<
   ListJobTemplatesRequest,
   ListJobTemplatesResponse,
   ListJobTemplatesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListJobTemplatesRequest,
-  ) => stream.Stream<
-    ListJobTemplatesResponse,
-    ListJobTemplatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListJobTemplatesRequest,
-  ) => stream.Stream<
-    JobTemplate,
-    ListJobTemplatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  JobTemplate
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListJobTemplatesRequest,
   output: ListJobTemplatesResponse,
   errors: [
@@ -11838,27 +11795,13 @@ export type ListPresetsError =
 /**
  * Retrieve a JSON array of up to twenty of your presets. This will return the presets themselves, not just a list of them. To retrieve the next twenty presets, use the nextToken string returned with the array.
  */
-export const listPresets: API.OperationMethod<
+export const listPresets: API.PaginatedOperationMethod<
   ListPresetsRequest,
   ListPresetsResponse,
   ListPresetsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPresetsRequest,
-  ) => stream.Stream<
-    ListPresetsResponse,
-    ListPresetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPresetsRequest,
-  ) => stream.Stream<
-    Preset,
-    ListPresetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Preset
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPresetsRequest,
   output: ListPresetsResponse,
   errors: [
@@ -11893,27 +11836,13 @@ export type ListQueuesError =
 /**
  * Retrieve a JSON array of up to twenty of your queues. This will return the queues themselves, not just a list of them. To retrieve the next twenty queues, use the nextToken string returned with the array.
  */
-export const listQueues: API.OperationMethod<
+export const listQueues: API.PaginatedOperationMethod<
   ListQueuesRequest,
   ListQueuesResponse,
   ListQueuesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListQueuesRequest,
-  ) => stream.Stream<
-    ListQueuesResponse,
-    ListQueuesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListQueuesRequest,
-  ) => stream.Stream<
-    Queue,
-    ListQueuesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Queue
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListQueuesRequest,
   output: ListQueuesResponse,
   errors: [
@@ -11982,27 +11911,13 @@ export type ListVersionsError =
 /**
  * Retrieve a JSON array of all available Job engine versions and the date they expire.
  */
-export const listVersions: API.OperationMethod<
+export const listVersions: API.PaginatedOperationMethod<
   ListVersionsRequest,
   ListVersionsResponse,
   ListVersionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListVersionsRequest,
-  ) => stream.Stream<
-    ListVersionsResponse,
-    ListVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListVersionsRequest,
-  ) => stream.Stream<
-    JobEngineVersion,
-    ListVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  JobEngineVersion
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListVersionsRequest,
   output: ListVersionsResponse,
   errors: [
@@ -12105,27 +12020,13 @@ export type SearchJobsError =
 /**
  * Retrieve a JSON array that includes job details for up to twenty of your most recent jobs. Optionally filter results further according to input file, queue, or status. To retrieve the twenty next most recent jobs, use the nextToken string returned with the array.
  */
-export const searchJobs: API.OperationMethod<
+export const searchJobs: API.PaginatedOperationMethod<
   SearchJobsRequest,
   SearchJobsResponse,
   SearchJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: SearchJobsRequest,
-  ) => stream.Stream<
-    SearchJobsResponse,
-    SearchJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: SearchJobsRequest,
-  ) => stream.Stream<
-    Job,
-    SearchJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Job
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchJobsRequest,
   output: SearchJobsResponse,
   errors: [

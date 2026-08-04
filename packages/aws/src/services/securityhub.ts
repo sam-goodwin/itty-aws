@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -20118,27 +20117,13 @@ export type DescribeActionTargetsError =
 /**
  * Returns a list of the custom action targets in Security Hub CSPM in your account.
  */
-export const describeActionTargets: API.OperationMethod<
+export const describeActionTargets: API.PaginatedOperationMethod<
   DescribeActionTargetsRequest,
   DescribeActionTargetsResponse,
   DescribeActionTargetsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeActionTargetsRequest,
-  ) => stream.Stream<
-    DescribeActionTargetsResponse,
-    DescribeActionTargetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeActionTargetsRequest,
-  ) => stream.Stream<
-    ActionTarget,
-    DescribeActionTargetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ActionTarget
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeActionTargetsRequest,
   output: DescribeActionTargetsResponse,
   errors: [
@@ -20233,27 +20218,13 @@ export type DescribeProductsError =
  * If you don't provide an integration ARN, then the results include all of the available
  * product integrations.
  */
-export const describeProducts: API.OperationMethod<
+export const describeProducts: API.PaginatedOperationMethod<
   DescribeProductsRequest,
   DescribeProductsResponse,
   DescribeProductsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeProductsRequest,
-  ) => stream.Stream<
-    DescribeProductsResponse,
-    DescribeProductsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeProductsRequest,
-  ) => stream.Stream<
-    Product,
-    DescribeProductsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Product
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeProductsRequest,
   output: DescribeProductsResponse,
   errors: [
@@ -20283,27 +20254,13 @@ export type DescribeProductsV2Error =
 /**
  * Gets information about the product integration.
  */
-export const describeProductsV2: API.OperationMethod<
+export const describeProductsV2: API.PaginatedOperationMethod<
   DescribeProductsV2Request,
   DescribeProductsV2Response,
   DescribeProductsV2Error,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeProductsV2Request,
-  ) => stream.Stream<
-    DescribeProductsV2Response,
-    DescribeProductsV2Error,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeProductsV2Request,
-  ) => stream.Stream<
-    ProductV2,
-    DescribeProductsV2Error,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ProductV2
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeProductsV2Request,
   output: DescribeProductsV2Response,
   errors: [
@@ -20362,27 +20319,13 @@ export type DescribeStandardsError =
  *
  * For each standard, the results include the standard ARN, the name, and a description.
  */
-export const describeStandards: API.OperationMethod<
+export const describeStandards: API.PaginatedOperationMethod<
   DescribeStandardsRequest,
   DescribeStandardsResponse,
   DescribeStandardsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeStandardsRequest,
-  ) => stream.Stream<
-    DescribeStandardsResponse,
-    DescribeStandardsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeStandardsRequest,
-  ) => stream.Stream<
-    Standard,
-    DescribeStandardsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Standard
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeStandardsRequest,
   output: DescribeStandardsResponse,
   errors: [InternalException, InvalidAccessException, InvalidInputException],
@@ -20411,27 +20354,13 @@ export type DescribeStandardsControlsError =
  *
  * This operation returns an empty list for standard subscriptions where `StandardsControlsUpdatable` has value `NOT_READY_FOR_UPDATES`.
  */
-export const describeStandardsControls: API.OperationMethod<
+export const describeStandardsControls: API.PaginatedOperationMethod<
   DescribeStandardsControlsRequest,
   DescribeStandardsControlsResponse,
   DescribeStandardsControlsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeStandardsControlsRequest,
-  ) => stream.Stream<
-    DescribeStandardsControlsResponse,
-    DescribeStandardsControlsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeStandardsControlsRequest,
-  ) => stream.Stream<
-    StandardsControl,
-    DescribeStandardsControlsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  StandardsControl
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeStandardsControlsRequest,
   output: DescribeStandardsControlsResponse,
   errors: [
@@ -21072,27 +21001,13 @@ export type GetEnabledStandardsError =
 /**
  * Returns a list of the standards that are currently enabled.
  */
-export const getEnabledStandards: API.OperationMethod<
+export const getEnabledStandards: API.PaginatedOperationMethod<
   GetEnabledStandardsRequest,
   GetEnabledStandardsResponse,
   GetEnabledStandardsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetEnabledStandardsRequest,
-  ) => stream.Stream<
-    GetEnabledStandardsResponse,
-    GetEnabledStandardsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetEnabledStandardsRequest,
-  ) => stream.Stream<
-    StandardsSubscription,
-    GetEnabledStandardsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  StandardsSubscription
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetEnabledStandardsRequest,
   output: GetEnabledStandardsResponse,
   errors: [
@@ -21164,27 +21079,13 @@ export type GetFindingHistoryError =
  * that the results are incomplete. However, you should continue to specify a `NextToken` value until you receive a
  * response that doesn't include this value.
  */
-export const getFindingHistory: API.OperationMethod<
+export const getFindingHistory: API.PaginatedOperationMethod<
   GetFindingHistoryRequest,
   GetFindingHistoryResponse,
   GetFindingHistoryError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetFindingHistoryRequest,
-  ) => stream.Stream<
-    GetFindingHistoryResponse,
-    GetFindingHistoryError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetFindingHistoryRequest,
-  ) => stream.Stream<
-    FindingHistoryRecord,
-    GetFindingHistoryError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  FindingHistoryRecord
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetFindingHistoryRequest,
   output: GetFindingHistoryResponse,
   errors: [
@@ -21215,27 +21116,13 @@ export type GetFindingsError =
  *
  * If cross-Region aggregation is enabled, then when you call `GetFindings` from the home Region, the results include all of the matching findings from both the home Region and linked Regions.
  */
-export const getFindings: API.OperationMethod<
+export const getFindings: API.PaginatedOperationMethod<
   GetFindingsRequest,
   GetFindingsResponse,
   GetFindingsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetFindingsRequest,
-  ) => stream.Stream<
-    GetFindingsResponse,
-    GetFindingsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetFindingsRequest,
-  ) => stream.Stream<
-    AwsSecurityFinding,
-    GetFindingsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AwsSecurityFinding
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetFindingsRequest,
   output: GetFindingsResponse,
   errors: [
@@ -21303,27 +21190,13 @@ export type GetFindingsTrendsV2Error =
 /**
  * Returns findings trend data based on the specified criteria. This operation helps you analyze patterns and changes in findings over time.
  */
-export const getFindingsTrendsV2: API.OperationMethod<
+export const getFindingsTrendsV2: API.PaginatedOperationMethod<
   GetFindingsTrendsV2Request,
   GetFindingsTrendsV2Response,
   GetFindingsTrendsV2Error,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetFindingsTrendsV2Request,
-  ) => stream.Stream<
-    GetFindingsTrendsV2Response,
-    GetFindingsTrendsV2Error,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetFindingsTrendsV2Request,
-  ) => stream.Stream<
-    TrendsMetricsResult,
-    GetFindingsTrendsV2Error,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  TrendsMetricsResult
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetFindingsTrendsV2Request,
   output: GetFindingsTrendsV2Response,
   errors: [
@@ -21362,27 +21235,13 @@ export type GetFindingsV2Error =
  * `GetFindings` and `GetFindingsV2` both use `securityhub:GetFindings` in the `Action` element of an IAM policy statement.
  * You must have permission to perform the `securityhub:GetFindings` action.
  */
-export const getFindingsV2: API.OperationMethod<
+export const getFindingsV2: API.PaginatedOperationMethod<
   GetFindingsV2Request,
   GetFindingsV2Response,
   GetFindingsV2Error,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetFindingsV2Request,
-  ) => stream.Stream<
-    GetFindingsV2Response,
-    GetFindingsV2Error,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetFindingsV2Request,
-  ) => stream.Stream<
-    unknown,
-    GetFindingsV2Error,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetFindingsV2Request,
   output: GetFindingsV2Response,
   errors: [
@@ -21445,27 +21304,13 @@ export type GetInsightsError =
 /**
  * Lists and describes insights for the specified insight ARNs.
  */
-export const getInsights: API.OperationMethod<
+export const getInsights: API.PaginatedOperationMethod<
   GetInsightsRequest,
   GetInsightsResponse,
   GetInsightsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetInsightsRequest,
-  ) => stream.Stream<
-    GetInsightsResponse,
-    GetInsightsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetInsightsRequest,
-  ) => stream.Stream<
-    Insight,
-    GetInsightsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Insight
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetInsightsRequest,
   output: GetInsightsResponse,
   errors: [
@@ -21604,27 +21449,13 @@ export type GetRecommendedPolicyV2Error =
  * Retrieves the recommended policy to remediate a Security Hub finding.
  * `GetRecommendedPolicyV2` only supports findings for unused permissions.
  */
-export const getRecommendedPolicyV2: API.OperationMethod<
+export const getRecommendedPolicyV2: API.PaginatedOperationMethod<
   GetRecommendedPolicyV2Request,
   GetRecommendedPolicyV2Response,
   GetRecommendedPolicyV2Error,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetRecommendedPolicyV2Request,
-  ) => stream.Stream<
-    GetRecommendedPolicyV2Response,
-    GetRecommendedPolicyV2Error,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetRecommendedPolicyV2Request,
-  ) => stream.Stream<
-    RecommendationStep,
-    GetRecommendedPolicyV2Error,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  RecommendationStep
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetRecommendedPolicyV2Request,
   output: GetRecommendedPolicyV2Response,
   errors: [
@@ -21693,27 +21524,13 @@ export type GetResourcesTrendsV2Error =
 /**
  * Returns resource trend data based on the specified criteria. This operation helps you analyze patterns and changes in resource compliance over time.
  */
-export const getResourcesTrendsV2: API.OperationMethod<
+export const getResourcesTrendsV2: API.PaginatedOperationMethod<
   GetResourcesTrendsV2Request,
   GetResourcesTrendsV2Response,
   GetResourcesTrendsV2Error,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetResourcesTrendsV2Request,
-  ) => stream.Stream<
-    GetResourcesTrendsV2Response,
-    GetResourcesTrendsV2Error,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetResourcesTrendsV2Request,
-  ) => stream.Stream<
-    ResourcesTrendsMetricsResult,
-    GetResourcesTrendsV2Error,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ResourcesTrendsMetricsResult
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetResourcesTrendsV2Request,
   output: GetResourcesTrendsV2Response,
   errors: [
@@ -21750,27 +21567,13 @@ export type GetResourcesV2Error =
  *
  * You can use the `Filters` parameter to refine results based on resource attributes. You can use `Scopes` and `Filters` independently or together. When both are provided, `Scopes` narrows the data set first, and then `Filters` refines results within that scoped data set.
  */
-export const getResourcesV2: API.OperationMethod<
+export const getResourcesV2: API.PaginatedOperationMethod<
   GetResourcesV2Request,
   GetResourcesV2Response,
   GetResourcesV2Error,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetResourcesV2Request,
-  ) => stream.Stream<
-    GetResourcesV2Response,
-    GetResourcesV2Error,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetResourcesV2Request,
-  ) => stream.Stream<
-    ResourceResult,
-    GetResourcesV2Error,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ResourceResult
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetResourcesV2Request,
   output: GetResourcesV2Response,
   errors: [
@@ -21878,27 +21681,13 @@ export type ListAggregatorsV2Error =
 /**
  * Retrieves a list of V2 aggregators.
  */
-export const listAggregatorsV2: API.OperationMethod<
+export const listAggregatorsV2: API.PaginatedOperationMethod<
   ListAggregatorsV2Request,
   ListAggregatorsV2Response,
   ListAggregatorsV2Error,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAggregatorsV2Request,
-  ) => stream.Stream<
-    ListAggregatorsV2Response,
-    ListAggregatorsV2Error,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAggregatorsV2Request,
-  ) => stream.Stream<
-    AggregatorV2,
-    ListAggregatorsV2Error,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AggregatorV2
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAggregatorsV2Request,
   output: ListAggregatorsV2Response,
   errors: [
@@ -21991,27 +21780,13 @@ export type ListConfigurationPoliciesError =
  * Lists the configuration policies that the Security Hub CSPM delegated administrator has created for your
  * organization. Only the delegated administrator can invoke this operation from the home Region.
  */
-export const listConfigurationPolicies: API.OperationMethod<
+export const listConfigurationPolicies: API.PaginatedOperationMethod<
   ListConfigurationPoliciesRequest,
   ListConfigurationPoliciesResponse,
   ListConfigurationPoliciesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListConfigurationPoliciesRequest,
-  ) => stream.Stream<
-    ListConfigurationPoliciesResponse,
-    ListConfigurationPoliciesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListConfigurationPoliciesRequest,
-  ) => stream.Stream<
-    ConfigurationPolicySummary,
-    ListConfigurationPoliciesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ConfigurationPolicySummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListConfigurationPoliciesRequest,
   output: ListConfigurationPoliciesResponse,
   errors: [
@@ -22043,27 +21818,13 @@ export type ListConfigurationPolicyAssociationsError =
  * Provides information about the associations for your configuration policies and self-managed behavior. Only the
  * Security Hub CSPM delegated administrator can invoke this operation from the home Region.
  */
-export const listConfigurationPolicyAssociations: API.OperationMethod<
+export const listConfigurationPolicyAssociations: API.PaginatedOperationMethod<
   ListConfigurationPolicyAssociationsRequest,
   ListConfigurationPolicyAssociationsResponse,
   ListConfigurationPolicyAssociationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListConfigurationPolicyAssociationsRequest,
-  ) => stream.Stream<
-    ListConfigurationPolicyAssociationsResponse,
-    ListConfigurationPolicyAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListConfigurationPolicyAssociationsRequest,
-  ) => stream.Stream<
-    ConfigurationPolicyAssociationSummary,
-    ListConfigurationPolicyAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ConfigurationPolicyAssociationSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListConfigurationPolicyAssociationsRequest,
   output: ListConfigurationPolicyAssociationsResponse,
   errors: [
@@ -22125,27 +21886,13 @@ export type ListEnabledProductsForImportError =
  * Lists all findings-generating solutions (products) that you are subscribed to receive
  * findings from in Security Hub CSPM.
  */
-export const listEnabledProductsForImport: API.OperationMethod<
+export const listEnabledProductsForImport: API.PaginatedOperationMethod<
   ListEnabledProductsForImportRequest,
   ListEnabledProductsForImportResponse,
   ListEnabledProductsForImportError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEnabledProductsForImportRequest,
-  ) => stream.Stream<
-    ListEnabledProductsForImportResponse,
-    ListEnabledProductsForImportError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEnabledProductsForImportRequest,
-  ) => stream.Stream<
-    NonEmptyString,
-    ListEnabledProductsForImportError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  NonEmptyString
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEnabledProductsForImportRequest,
   output: ListEnabledProductsForImportResponse,
   errors: [InternalException, InvalidAccessException, LimitExceededException],
@@ -22171,27 +21918,13 @@ export type ListFindingAggregatorsError =
  * If cross-Region aggregation is enabled, then `ListFindingAggregators` returns the Amazon Resource Name (ARN)
  * of the finding aggregator. You can run this operation from any Amazon Web Services Region.
  */
-export const listFindingAggregators: API.OperationMethod<
+export const listFindingAggregators: API.PaginatedOperationMethod<
   ListFindingAggregatorsRequest,
   ListFindingAggregatorsResponse,
   ListFindingAggregatorsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListFindingAggregatorsRequest,
-  ) => stream.Stream<
-    ListFindingAggregatorsResponse,
-    ListFindingAggregatorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListFindingAggregatorsRequest,
-  ) => stream.Stream<
-    FindingAggregator,
-    ListFindingAggregatorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  FindingAggregator
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFindingAggregatorsRequest,
   output: ListFindingAggregatorsResponse,
   errors: [
@@ -22228,27 +21961,13 @@ export type ListInvitationsError =
  * Only accounts that are managed by invitation can use this operation.
  * Accounts that are managed using the integration with Organizations don't receive invitations.
  */
-export const listInvitations: API.OperationMethod<
+export const listInvitations: API.PaginatedOperationMethod<
   ListInvitationsRequest,
   ListInvitationsResponse,
   ListInvitationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListInvitationsRequest,
-  ) => stream.Stream<
-    ListInvitationsResponse,
-    ListInvitationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListInvitationsRequest,
-  ) => stream.Stream<
-    Invitation,
-    ListInvitationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Invitation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListInvitationsRequest,
   output: ListInvitationsResponse,
   errors: [
@@ -22281,27 +22000,13 @@ export type ListMembersError =
  * The results include both member accounts that belong to an organization and member
  * accounts that were invited manually.
  */
-export const listMembers: API.OperationMethod<
+export const listMembers: API.PaginatedOperationMethod<
   ListMembersRequest,
   ListMembersResponse,
   ListMembersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListMembersRequest,
-  ) => stream.Stream<
-    ListMembersResponse,
-    ListMembersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListMembersRequest,
-  ) => stream.Stream<
-    Member,
-    ListMembersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Member
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMembersRequest,
   output: ListMembersResponse,
   errors: [
@@ -22331,27 +22036,13 @@ export type ListOrganizationAdminAccountsError =
  * Lists the Security Hub CSPM administrator accounts. Can only be called by the organization
  * management account.
  */
-export const listOrganizationAdminAccounts: API.OperationMethod<
+export const listOrganizationAdminAccounts: API.PaginatedOperationMethod<
   ListOrganizationAdminAccountsRequest,
   ListOrganizationAdminAccountsResponse,
   ListOrganizationAdminAccountsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListOrganizationAdminAccountsRequest,
-  ) => stream.Stream<
-    ListOrganizationAdminAccountsResponse,
-    ListOrganizationAdminAccountsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListOrganizationAdminAccountsRequest,
-  ) => stream.Stream<
-    AdminAccount,
-    ListOrganizationAdminAccountsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AdminAccount
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationAdminAccountsRequest,
   output: ListOrganizationAdminAccountsResponse,
   errors: [
@@ -22380,27 +22071,13 @@ export type ListSecurityControlDefinitionsError =
 /**
  * Lists all of the security controls that apply to a specified standard.
  */
-export const listSecurityControlDefinitions: API.OperationMethod<
+export const listSecurityControlDefinitions: API.PaginatedOperationMethod<
   ListSecurityControlDefinitionsRequest,
   ListSecurityControlDefinitionsResponse,
   ListSecurityControlDefinitionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSecurityControlDefinitionsRequest,
-  ) => stream.Stream<
-    ListSecurityControlDefinitionsResponse,
-    ListSecurityControlDefinitionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSecurityControlDefinitionsRequest,
-  ) => stream.Stream<
-    SecurityControlDefinition,
-    ListSecurityControlDefinitionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  SecurityControlDefinition
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSecurityControlDefinitionsRequest,
   output: ListSecurityControlDefinitionsResponse,
   errors: [
@@ -22431,27 +22108,13 @@ export type ListStandardsControlAssociationsError =
  *
  * This operation omits standards control associations for standard subscriptions where `StandardsControlsUpdatable` has value `NOT_READY_FOR_UPDATES`.
  */
-export const listStandardsControlAssociations: API.OperationMethod<
+export const listStandardsControlAssociations: API.PaginatedOperationMethod<
   ListStandardsControlAssociationsRequest,
   ListStandardsControlAssociationsResponse,
   ListStandardsControlAssociationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListStandardsControlAssociationsRequest,
-  ) => stream.Stream<
-    ListStandardsControlAssociationsResponse,
-    ListStandardsControlAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListStandardsControlAssociationsRequest,
-  ) => stream.Stream<
-    StandardsControlAssociationSummary,
-    ListStandardsControlAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  StandardsControlAssociationSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListStandardsControlAssociationsRequest,
   output: ListStandardsControlAssociationsResponse,
   errors: [

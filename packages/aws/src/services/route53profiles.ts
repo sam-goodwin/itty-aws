@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -1101,27 +1100,13 @@ export type ListProfileAssociationsError =
 /**
  * Lists all the VPCs that the specified Route 53 Profile is associated with.
  */
-export const listProfileAssociations: API.OperationMethod<
+export const listProfileAssociations: API.PaginatedOperationMethod<
   ListProfileAssociationsRequest,
   ListProfileAssociationsResponse,
   ListProfileAssociationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListProfileAssociationsRequest,
-  ) => stream.Stream<
-    ListProfileAssociationsResponse,
-    ListProfileAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListProfileAssociationsRequest,
-  ) => stream.Stream<
-    ProfileAssociation,
-    ListProfileAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ProfileAssociation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProfileAssociationsRequest,
   output: ListProfileAssociationsResponse,
   errors: [
@@ -1154,27 +1139,13 @@ export type ListProfileResourceAssociationsError =
 /**
  * Lists all the resource associations for the specified Route 53 Profile.
  */
-export const listProfileResourceAssociations: API.OperationMethod<
+export const listProfileResourceAssociations: API.PaginatedOperationMethod<
   ListProfileResourceAssociationsRequest,
   ListProfileResourceAssociationsResponse,
   ListProfileResourceAssociationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListProfileResourceAssociationsRequest,
-  ) => stream.Stream<
-    ListProfileResourceAssociationsResponse,
-    ListProfileResourceAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListProfileResourceAssociationsRequest,
-  ) => stream.Stream<
-    ProfileResourceAssociation,
-    ListProfileResourceAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ProfileResourceAssociation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProfileResourceAssociationsRequest,
   output: ListProfileResourceAssociationsResponse,
   errors: [
@@ -1207,27 +1178,13 @@ export type ListProfilesError =
 /**
  * Lists all the Route 53 Profiles associated with your Amazon Web Services account.
  */
-export const listProfiles: API.OperationMethod<
+export const listProfiles: API.PaginatedOperationMethod<
   ListProfilesRequest,
   ListProfilesResponse,
   ListProfilesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListProfilesRequest,
-  ) => stream.Stream<
-    ListProfilesResponse,
-    ListProfilesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListProfilesRequest,
-  ) => stream.Stream<
-    ProfileSummary,
-    ListProfilesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ProfileSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProfilesRequest,
   output: ListProfilesResponse,
   errors: [

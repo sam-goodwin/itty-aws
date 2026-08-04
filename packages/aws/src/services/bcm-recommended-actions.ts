@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -283,27 +282,13 @@ export type ListRecommendedActionsError =
 /**
  * Returns a list of recommended actions that match the filter criteria.
  */
-export const listRecommendedActions: API.OperationMethod<
+export const listRecommendedActions: API.PaginatedOperationMethod<
   ListRecommendedActionsRequest,
   ListRecommendedActionsResponse,
   ListRecommendedActionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRecommendedActionsRequest,
-  ) => stream.Stream<
-    ListRecommendedActionsResponse,
-    ListRecommendedActionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRecommendedActionsRequest,
-  ) => stream.Stream<
-    RecommendedAction,
-    ListRecommendedActionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  RecommendedAction
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRecommendedActionsRequest,
   output: ListRecommendedActionsResponse,
   errors: [

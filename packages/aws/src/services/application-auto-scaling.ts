@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -1430,27 +1429,13 @@ export type DescribeScalableTargetsError =
  * You can filter the results using `ResourceIds` and
  * `ScalableDimension`.
  */
-export const describeScalableTargets: API.OperationMethod<
+export const describeScalableTargets: API.PaginatedOperationMethod<
   DescribeScalableTargetsRequest,
   DescribeScalableTargetsResponse,
   DescribeScalableTargetsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeScalableTargetsRequest,
-  ) => stream.Stream<
-    DescribeScalableTargetsResponse,
-    DescribeScalableTargetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeScalableTargetsRequest,
-  ) => stream.Stream<
-    ScalableTarget,
-    DescribeScalableTargetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ScalableTarget
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeScalableTargetsRequest,
   output: DescribeScalableTargetsResponse,
   errors: [
@@ -1485,27 +1470,13 @@ export type DescribeScalingActivitiesError =
  *
  * For information about viewing scaling activities using the Amazon Web Services CLI, see Scaling activities for Application Auto Scaling.
  */
-export const describeScalingActivities: API.OperationMethod<
+export const describeScalingActivities: API.PaginatedOperationMethod<
   DescribeScalingActivitiesRequest,
   DescribeScalingActivitiesResponse,
   DescribeScalingActivitiesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeScalingActivitiesRequest,
-  ) => stream.Stream<
-    DescribeScalingActivitiesResponse,
-    DescribeScalingActivitiesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeScalingActivitiesRequest,
-  ) => stream.Stream<
-    ScalingActivity,
-    DescribeScalingActivitiesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ScalingActivity
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeScalingActivitiesRequest,
   output: DescribeScalingActivitiesResponse,
   errors: [
@@ -1540,27 +1511,13 @@ export type DescribeScalingPoliciesError =
  *
  * For more information, see Target tracking scaling policies and Step scaling policies in the *Application Auto Scaling User Guide*.
  */
-export const describeScalingPolicies: API.OperationMethod<
+export const describeScalingPolicies: API.PaginatedOperationMethod<
   DescribeScalingPoliciesRequest,
   DescribeScalingPoliciesResponse,
   DescribeScalingPoliciesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeScalingPoliciesRequest,
-  ) => stream.Stream<
-    DescribeScalingPoliciesResponse,
-    DescribeScalingPoliciesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeScalingPoliciesRequest,
-  ) => stream.Stream<
-    ScalingPolicy,
-    DescribeScalingPoliciesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ScalingPolicy
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeScalingPoliciesRequest,
   output: DescribeScalingPoliciesResponse,
   errors: [
@@ -1595,27 +1552,13 @@ export type DescribeScheduledActionsError =
  *
  * For more information, see Scheduled scaling in the *Application Auto Scaling User Guide*.
  */
-export const describeScheduledActions: API.OperationMethod<
+export const describeScheduledActions: API.PaginatedOperationMethod<
   DescribeScheduledActionsRequest,
   DescribeScheduledActionsResponse,
   DescribeScheduledActionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeScheduledActionsRequest,
-  ) => stream.Stream<
-    DescribeScheduledActionsResponse,
-    DescribeScheduledActionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeScheduledActionsRequest,
-  ) => stream.Stream<
-    ScheduledAction,
-    DescribeScheduledActionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ScheduledAction
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeScheduledActionsRequest,
   output: DescribeScheduledActionsResponse,
   errors: [

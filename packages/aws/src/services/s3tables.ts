@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -3511,27 +3510,13 @@ export type ListNamespacesError =
  *
  * You must have the `s3tables:ListNamespaces` permission to use this operation.
  */
-export const listNamespaces: API.OperationMethod<
+export const listNamespaces: API.PaginatedOperationMethod<
   ListNamespacesRequest,
   ListNamespacesResponse,
   ListNamespacesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListNamespacesRequest,
-  ) => stream.Stream<
-    ListNamespacesResponse,
-    ListNamespacesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListNamespacesRequest,
-  ) => stream.Stream<
-    NamespaceSummary,
-    ListNamespacesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  NamespaceSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListNamespacesRequest,
   output: ListNamespacesResponse,
   errors: [
@@ -3570,27 +3555,13 @@ export type ListTableBucketsError =
  *
  * You must have the `s3tables:ListTableBuckets` permission to use this operation.
  */
-export const listTableBuckets: API.OperationMethod<
+export const listTableBuckets: API.PaginatedOperationMethod<
   ListTableBucketsRequest,
   ListTableBucketsResponse,
   ListTableBucketsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTableBucketsRequest,
-  ) => stream.Stream<
-    ListTableBucketsResponse,
-    ListTableBucketsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTableBucketsRequest,
-  ) => stream.Stream<
-    TableBucketSummary,
-    ListTableBucketsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  TableBucketSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTableBucketsRequest,
   output: ListTableBucketsResponse,
   errors: [
@@ -3628,27 +3599,13 @@ export type ListTablesError =
  *
  * You must have the `s3tables:ListTables` permission to use this operation.
  */
-export const listTables: API.OperationMethod<
+export const listTables: API.PaginatedOperationMethod<
   ListTablesRequest,
   ListTablesResponse,
   ListTablesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTablesRequest,
-  ) => stream.Stream<
-    ListTablesResponse,
-    ListTablesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTablesRequest,
-  ) => stream.Stream<
-    TableSummary,
-    ListTablesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  TableSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTablesRequest,
   output: ListTablesResponse,
   errors: [

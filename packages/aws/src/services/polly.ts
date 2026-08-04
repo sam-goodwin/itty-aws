@@ -1289,27 +1289,13 @@ export type ListSpeechSynthesisTasksError =
  * creation date. This operation can filter the tasks by their status, for
  * example, allowing users to list only tasks that are completed.
  */
-export const listSpeechSynthesisTasks: API.OperationMethod<
+export const listSpeechSynthesisTasks: API.PaginatedOperationMethod<
   ListSpeechSynthesisTasksInput,
   ListSpeechSynthesisTasksOutput,
   ListSpeechSynthesisTasksError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSpeechSynthesisTasksInput,
-  ) => stream.Stream<
-    ListSpeechSynthesisTasksOutput,
-    ListSpeechSynthesisTasksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSpeechSynthesisTasksInput,
-  ) => stream.Stream<
-    unknown,
-    ListSpeechSynthesisTasksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSpeechSynthesisTasksInput,
   output: ListSpeechSynthesisTasksOutput,
   errors: [InvalidNextTokenException, ServiceFailureException],

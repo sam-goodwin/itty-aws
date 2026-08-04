@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -1214,27 +1213,13 @@ export type BatchGetSecretValueError =
  * IAM policy actions for Secrets Manager and Authentication
  * and access control in Secrets Manager.
  */
-export const batchGetSecretValue: API.OperationMethod<
+export const batchGetSecretValue: API.PaginatedOperationMethod<
   BatchGetSecretValueRequest,
   BatchGetSecretValueResponse,
   BatchGetSecretValueError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: BatchGetSecretValueRequest,
-  ) => stream.Stream<
-    BatchGetSecretValueResponse,
-    BatchGetSecretValueError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: BatchGetSecretValueRequest,
-  ) => stream.Stream<
-    unknown,
-    BatchGetSecretValueError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: BatchGetSecretValueRequest,
   output: BatchGetSecretValueResponse,
   errors: [
@@ -1691,27 +1676,13 @@ export type ListSecretsError =
  * IAM policy actions for Secrets Manager and Authentication
  * and access control in Secrets Manager.
  */
-export const listSecrets: API.OperationMethod<
+export const listSecrets: API.PaginatedOperationMethod<
   ListSecretsRequest,
   ListSecretsResponse,
   ListSecretsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSecretsRequest,
-  ) => stream.Stream<
-    ListSecretsResponse,
-    ListSecretsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSecretsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListSecretsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSecretsRequest,
   output: ListSecretsResponse,
   errors: [
@@ -1751,27 +1722,13 @@ export type ListSecretVersionIdsError =
  * IAM policy actions for Secrets Manager and Authentication
  * and access control in Secrets Manager.
  */
-export const listSecretVersionIds: API.OperationMethod<
+export const listSecretVersionIds: API.PaginatedOperationMethod<
   ListSecretVersionIdsRequest,
   ListSecretVersionIdsResponse,
   ListSecretVersionIdsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSecretVersionIdsRequest,
-  ) => stream.Stream<
-    ListSecretVersionIdsResponse,
-    ListSecretVersionIdsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSecretVersionIdsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListSecretVersionIdsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSecretVersionIdsRequest,
   output: ListSecretVersionIdsResponse,
   errors: [

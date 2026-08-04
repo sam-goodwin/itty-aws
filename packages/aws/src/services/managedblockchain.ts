@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -2184,27 +2183,13 @@ export type ListAccessorsError =
  * Returns a list of the accessors and their properties. Accessor objects are containers that have the
  * information required for token based access to your Ethereum nodes.
  */
-export const listAccessors: API.OperationMethod<
+export const listAccessors: API.PaginatedOperationMethod<
   ListAccessorsInput,
   ListAccessorsOutput,
   ListAccessorsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAccessorsInput,
-  ) => stream.Stream<
-    ListAccessorsOutput,
-    ListAccessorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAccessorsInput,
-  ) => stream.Stream<
-    AccessorSummary,
-    ListAccessorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AccessorSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccessorsInput,
   output: ListAccessorsOutput,
   errors: [
@@ -2237,27 +2222,13 @@ export type ListInvitationsError =
  *
  * Applies only to Hyperledger Fabric.
  */
-export const listInvitations: API.OperationMethod<
+export const listInvitations: API.PaginatedOperationMethod<
   ListInvitationsInput,
   ListInvitationsOutput,
   ListInvitationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListInvitationsInput,
-  ) => stream.Stream<
-    ListInvitationsOutput,
-    ListInvitationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListInvitationsInput,
-  ) => stream.Stream<
-    unknown,
-    ListInvitationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListInvitationsInput,
   output: ListInvitationsOutput,
   errors: [
@@ -2289,27 +2260,13 @@ export type ListMembersError =
  *
  * Applies only to Hyperledger Fabric.
  */
-export const listMembers: API.OperationMethod<
+export const listMembers: API.PaginatedOperationMethod<
   ListMembersInput,
   ListMembersOutput,
   ListMembersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListMembersInput,
-  ) => stream.Stream<
-    ListMembersOutput,
-    ListMembersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListMembersInput,
-  ) => stream.Stream<
-    unknown,
-    ListMembersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMembersInput,
   output: ListMembersOutput,
   errors: [
@@ -2339,27 +2296,13 @@ export type ListNetworksError =
  *
  * Applies to Hyperledger Fabric and Ethereum.
  */
-export const listNetworks: API.OperationMethod<
+export const listNetworks: API.PaginatedOperationMethod<
   ListNetworksInput,
   ListNetworksOutput,
   ListNetworksError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListNetworksInput,
-  ) => stream.Stream<
-    ListNetworksOutput,
-    ListNetworksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListNetworksInput,
-  ) => stream.Stream<
-    unknown,
-    ListNetworksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListNetworksInput,
   output: ListNetworksOutput,
   errors: [
@@ -2389,27 +2332,13 @@ export type ListNodesError =
  *
  * Applies to Hyperledger Fabric and Ethereum.
  */
-export const listNodes: API.OperationMethod<
+export const listNodes: API.PaginatedOperationMethod<
   ListNodesInput,
   ListNodesOutput,
   ListNodesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListNodesInput,
-  ) => stream.Stream<
-    ListNodesOutput,
-    ListNodesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListNodesInput,
-  ) => stream.Stream<
-    unknown,
-    ListNodesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListNodesInput,
   output: ListNodesOutput,
   errors: [
@@ -2440,27 +2369,13 @@ export type ListProposalsError =
  *
  * Applies only to Hyperledger Fabric.
  */
-export const listProposals: API.OperationMethod<
+export const listProposals: API.PaginatedOperationMethod<
   ListProposalsInput,
   ListProposalsOutput,
   ListProposalsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListProposalsInput,
-  ) => stream.Stream<
-    ListProposalsOutput,
-    ListProposalsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListProposalsInput,
-  ) => stream.Stream<
-    unknown,
-    ListProposalsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProposalsInput,
   output: ListProposalsOutput,
   errors: [
@@ -2491,27 +2406,13 @@ export type ListProposalVotesError =
  *
  * Applies only to Hyperledger Fabric.
  */
-export const listProposalVotes: API.OperationMethod<
+export const listProposalVotes: API.PaginatedOperationMethod<
   ListProposalVotesInput,
   ListProposalVotesOutput,
   ListProposalVotesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListProposalVotesInput,
-  ) => stream.Stream<
-    ListProposalVotesOutput,
-    ListProposalVotesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListProposalVotesInput,
-  ) => stream.Stream<
-    unknown,
-    ListProposalVotesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProposalVotesInput,
   output: ListProposalVotesOutput,
   errors: [

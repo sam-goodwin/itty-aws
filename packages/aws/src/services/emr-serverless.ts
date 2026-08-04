@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -1996,27 +1995,13 @@ export type ListApplicationsError =
 /**
  * Lists applications based on a set of parameters.
  */
-export const listApplications: API.OperationMethod<
+export const listApplications: API.PaginatedOperationMethod<
   ListApplicationsRequest,
   ListApplicationsResponse,
   ListApplicationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListApplicationsRequest,
-  ) => stream.Stream<
-    ListApplicationsResponse,
-    ListApplicationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListApplicationsRequest,
-  ) => stream.Stream<
-    ApplicationSummary,
-    ListApplicationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ApplicationSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListApplicationsRequest,
   output: ListApplicationsResponse,
   errors: [InternalServerException, ValidationException],
@@ -2039,27 +2024,13 @@ export type ListJobRunAttemptsError =
 /**
  * Lists all attempt of a job run.
  */
-export const listJobRunAttempts: API.OperationMethod<
+export const listJobRunAttempts: API.PaginatedOperationMethod<
   ListJobRunAttemptsRequest,
   ListJobRunAttemptsResponse,
   ListJobRunAttemptsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListJobRunAttemptsRequest,
-  ) => stream.Stream<
-    ListJobRunAttemptsResponse,
-    ListJobRunAttemptsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListJobRunAttemptsRequest,
-  ) => stream.Stream<
-    JobRunAttemptSummary,
-    ListJobRunAttemptsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  JobRunAttemptSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListJobRunAttemptsRequest,
   output: ListJobRunAttemptsResponse,
   errors: [
@@ -2085,27 +2056,13 @@ export type ListJobRunsError =
 /**
  * Lists job runs based on a set of parameters.
  */
-export const listJobRuns: API.OperationMethod<
+export const listJobRuns: API.PaginatedOperationMethod<
   ListJobRunsRequest,
   ListJobRunsResponse,
   ListJobRunsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListJobRunsRequest,
-  ) => stream.Stream<
-    ListJobRunsResponse,
-    ListJobRunsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListJobRunsRequest,
-  ) => stream.Stream<
-    JobRunSummary,
-    ListJobRunsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  JobRunSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListJobRunsRequest,
   output: ListJobRunsResponse,
   errors: [InternalServerException, ValidationException],
@@ -2128,27 +2085,13 @@ export type ListSessionsError =
 /**
  * Lists sessions for the specified application. You can filter sessions by state and creation time.
  */
-export const listSessions: API.OperationMethod<
+export const listSessions: API.PaginatedOperationMethod<
   ListSessionsRequest,
   ListSessionsResponse,
   ListSessionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSessionsRequest,
-  ) => stream.Stream<
-    ListSessionsResponse,
-    ListSessionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSessionsRequest,
-  ) => stream.Stream<
-    SessionSummary,
-    ListSessionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  SessionSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSessionsRequest,
   output: ListSessionsResponse,
   errors: [

@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -10697,27 +10696,13 @@ export type DescribeClusterDbRevisionsError =
 /**
  * Returns an array of `ClusterDbRevision` objects.
  */
-export const describeClusterDbRevisions: API.OperationMethod<
+export const describeClusterDbRevisions: API.PaginatedOperationMethod<
   DescribeClusterDbRevisionsMessage,
   ClusterDbRevisionsMessage,
   DescribeClusterDbRevisionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeClusterDbRevisionsMessage,
-  ) => stream.Stream<
-    ClusterDbRevisionsMessage,
-    DescribeClusterDbRevisionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeClusterDbRevisionsMessage,
-  ) => stream.Stream<
-    ClusterDbRevision,
-    DescribeClusterDbRevisionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ClusterDbRevision
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeClusterDbRevisionsMessage,
   output: ClusterDbRevisionsMessage,
   errors: [ClusterNotFoundFault, InvalidClusterStateFault],
@@ -10757,27 +10742,13 @@ export type DescribeClusterParameterGroupsError =
  * returned regardless of whether they have tag keys or values associated with
  * them.
  */
-export const describeClusterParameterGroups: API.OperationMethod<
+export const describeClusterParameterGroups: API.PaginatedOperationMethod<
   DescribeClusterParameterGroupsMessage,
   ClusterParameterGroupsMessage,
   DescribeClusterParameterGroupsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeClusterParameterGroupsMessage,
-  ) => stream.Stream<
-    ClusterParameterGroupsMessage,
-    DescribeClusterParameterGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeClusterParameterGroupsMessage,
-  ) => stream.Stream<
-    ClusterParameterGroup,
-    DescribeClusterParameterGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ClusterParameterGroup
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeClusterParameterGroupsMessage,
   output: ClusterParameterGroupsMessage,
   errors: [ClusterParameterGroupNotFoundFault, InvalidTagFault],
@@ -10810,27 +10781,13 @@ export type DescribeClusterParametersError =
  * Amazon Redshift Parameter Groups
  * in the *Amazon Redshift Cluster Management Guide*.
  */
-export const describeClusterParameters: API.OperationMethod<
+export const describeClusterParameters: API.PaginatedOperationMethod<
   DescribeClusterParametersMessage,
   ClusterParameterGroupDetails,
   DescribeClusterParametersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeClusterParametersMessage,
-  ) => stream.Stream<
-    ClusterParameterGroupDetails,
-    DescribeClusterParametersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeClusterParametersMessage,
-  ) => stream.Stream<
-    Parameter,
-    DescribeClusterParametersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Parameter
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeClusterParametersMessage,
   output: ClusterParameterGroupDetails,
   errors: [ClusterParameterGroupNotFoundFault],
@@ -10866,27 +10823,13 @@ export type DescribeClustersError =
  * If both tag keys and values are omitted from the request, clusters are returned
  * regardless of whether they have tag keys or values associated with them.
  */
-export const describeClusters: API.OperationMethod<
+export const describeClusters: API.PaginatedOperationMethod<
   DescribeClustersMessage,
   ClustersMessage,
   DescribeClustersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeClustersMessage,
-  ) => stream.Stream<
-    ClustersMessage,
-    DescribeClustersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeClustersMessage,
-  ) => stream.Stream<
-    Cluster,
-    DescribeClustersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Cluster
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeClustersMessage,
   output: ClustersMessage,
   errors: [ClusterNotFoundFault, InvalidTagFault],
@@ -10924,27 +10867,13 @@ export type DescribeClusterSecurityGroupsError =
  * returned regardless of whether they have tag keys or values associated with
  * them.
  */
-export const describeClusterSecurityGroups: API.OperationMethod<
+export const describeClusterSecurityGroups: API.PaginatedOperationMethod<
   DescribeClusterSecurityGroupsMessage,
   ClusterSecurityGroupMessage,
   DescribeClusterSecurityGroupsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeClusterSecurityGroupsMessage,
-  ) => stream.Stream<
-    ClusterSecurityGroupMessage,
-    DescribeClusterSecurityGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeClusterSecurityGroupsMessage,
-  ) => stream.Stream<
-    ClusterSecurityGroup,
-    DescribeClusterSecurityGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ClusterSecurityGroup
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeClusterSecurityGroupsMessage,
   output: ClusterSecurityGroupMessage,
   errors: [ClusterSecurityGroupNotFoundFault, InvalidTagFault],
@@ -10982,27 +10911,13 @@ export type DescribeClusterSnapshotsError =
  * If both tag keys and values are omitted from the request, snapshots are returned
  * regardless of whether they have tag keys or values associated with them.
  */
-export const describeClusterSnapshots: API.OperationMethod<
+export const describeClusterSnapshots: API.PaginatedOperationMethod<
   DescribeClusterSnapshotsMessage,
   SnapshotMessage,
   DescribeClusterSnapshotsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeClusterSnapshotsMessage,
-  ) => stream.Stream<
-    SnapshotMessage,
-    DescribeClusterSnapshotsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeClusterSnapshotsMessage,
-  ) => stream.Stream<
-    Snapshot,
-    DescribeClusterSnapshotsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Snapshot
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeClusterSnapshotsMessage,
   output: SnapshotMessage,
   errors: [
@@ -11041,27 +10956,13 @@ export type DescribeClusterSubnetGroupsError =
  * returned regardless of whether they have tag keys or values associated with
  * them.
  */
-export const describeClusterSubnetGroups: API.OperationMethod<
+export const describeClusterSubnetGroups: API.PaginatedOperationMethod<
   DescribeClusterSubnetGroupsMessage,
   ClusterSubnetGroupMessage,
   DescribeClusterSubnetGroupsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeClusterSubnetGroupsMessage,
-  ) => stream.Stream<
-    ClusterSubnetGroupMessage,
-    DescribeClusterSubnetGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeClusterSubnetGroupsMessage,
-  ) => stream.Stream<
-    ClusterSubnetGroup,
-    DescribeClusterSubnetGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ClusterSubnetGroup
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeClusterSubnetGroupsMessage,
   output: ClusterSubnetGroupMessage,
   errors: [ClusterSubnetGroupNotFoundFault, InvalidTagFault],
@@ -11083,27 +10984,13 @@ export type DescribeClusterTracksError =
 /**
  * Returns a list of all the available maintenance tracks.
  */
-export const describeClusterTracks: API.OperationMethod<
+export const describeClusterTracks: API.PaginatedOperationMethod<
   DescribeClusterTracksMessage,
   TrackListMessage,
   DescribeClusterTracksError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeClusterTracksMessage,
-  ) => stream.Stream<
-    TrackListMessage,
-    DescribeClusterTracksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeClusterTracksMessage,
-  ) => stream.Stream<
-    MaintenanceTrack,
-    DescribeClusterTracksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  MaintenanceTrack
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeClusterTracksMessage,
   output: TrackListMessage,
   errors: [InvalidClusterTrackFault, UnauthorizedOperation],
@@ -11127,27 +11014,13 @@ export type DescribeClusterVersionsError = CommonErrors;
  * Amazon Redshift Clusters
  * in the *Amazon Redshift Cluster Management Guide*.
  */
-export const describeClusterVersions: API.OperationMethod<
+export const describeClusterVersions: API.PaginatedOperationMethod<
   DescribeClusterVersionsMessage,
   ClusterVersionsMessage,
   DescribeClusterVersionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeClusterVersionsMessage,
-  ) => stream.Stream<
-    ClusterVersionsMessage,
-    DescribeClusterVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeClusterVersionsMessage,
-  ) => stream.Stream<
-    ClusterVersion,
-    DescribeClusterVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ClusterVersion
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeClusterVersionsMessage,
   output: ClusterVersionsMessage,
   errors: [],
@@ -11169,27 +11042,13 @@ export type DescribeCustomDomainAssociationsError =
 /**
  * Contains information about custom domain associations for a cluster.
  */
-export const describeCustomDomainAssociations: API.OperationMethod<
+export const describeCustomDomainAssociations: API.PaginatedOperationMethod<
   DescribeCustomDomainAssociationsMessage,
   CustomDomainAssociationsMessage,
   DescribeCustomDomainAssociationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeCustomDomainAssociationsMessage,
-  ) => stream.Stream<
-    CustomDomainAssociationsMessage,
-    DescribeCustomDomainAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeCustomDomainAssociationsMessage,
-  ) => stream.Stream<
-    Association,
-    DescribeCustomDomainAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Association
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeCustomDomainAssociationsMessage,
   output: CustomDomainAssociationsMessage,
   errors: [CustomDomainAssociationNotFoundFault, UnsupportedOperationFault],
@@ -11209,27 +11068,13 @@ export type DescribeDataSharesError = InvalidDataShareFault | CommonErrors;
  * Shows the status of any inbound or outbound datashares available in the specified
  * account.
  */
-export const describeDataShares: API.OperationMethod<
+export const describeDataShares: API.PaginatedOperationMethod<
   DescribeDataSharesMessage,
   DescribeDataSharesResult,
   DescribeDataSharesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeDataSharesMessage,
-  ) => stream.Stream<
-    DescribeDataSharesResult,
-    DescribeDataSharesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeDataSharesMessage,
-  ) => stream.Stream<
-    DataShare,
-    DescribeDataSharesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  DataShare
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeDataSharesMessage,
   output: DescribeDataSharesResult,
   errors: [InvalidDataShareFault],
@@ -11250,27 +11095,13 @@ export type DescribeDataSharesForConsumerError =
 /**
  * Returns a list of datashares where the account identifier being called is a consumer account identifier.
  */
-export const describeDataSharesForConsumer: API.OperationMethod<
+export const describeDataSharesForConsumer: API.PaginatedOperationMethod<
   DescribeDataSharesForConsumerMessage,
   DescribeDataSharesForConsumerResult,
   DescribeDataSharesForConsumerError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeDataSharesForConsumerMessage,
-  ) => stream.Stream<
-    DescribeDataSharesForConsumerResult,
-    DescribeDataSharesForConsumerError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeDataSharesForConsumerMessage,
-  ) => stream.Stream<
-    DataShare,
-    DescribeDataSharesForConsumerError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  DataShare
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeDataSharesForConsumerMessage,
   output: DescribeDataSharesForConsumerResult,
   errors: [InvalidNamespaceFault],
@@ -11291,27 +11122,13 @@ export type DescribeDataSharesForProducerError =
 /**
  * Returns a list of datashares when the account identifier being called is a producer account identifier.
  */
-export const describeDataSharesForProducer: API.OperationMethod<
+export const describeDataSharesForProducer: API.PaginatedOperationMethod<
   DescribeDataSharesForProducerMessage,
   DescribeDataSharesForProducerResult,
   DescribeDataSharesForProducerError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeDataSharesForProducerMessage,
-  ) => stream.Stream<
-    DescribeDataSharesForProducerResult,
-    DescribeDataSharesForProducerError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeDataSharesForProducerMessage,
-  ) => stream.Stream<
-    DataShare,
-    DescribeDataSharesForProducerError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  DataShare
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeDataSharesForProducerMessage,
   output: DescribeDataSharesForProducerResult,
   errors: [InvalidNamespaceFault],
@@ -11335,27 +11152,13 @@ export type DescribeDefaultClusterParametersError = CommonErrors;
  * Amazon Redshift Parameter Groups
  * in the *Amazon Redshift Cluster Management Guide*.
  */
-export const describeDefaultClusterParameters: API.OperationMethod<
+export const describeDefaultClusterParameters: API.PaginatedOperationMethod<
   DescribeDefaultClusterParametersMessage,
   DescribeDefaultClusterParametersResult,
   DescribeDefaultClusterParametersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeDefaultClusterParametersMessage,
-  ) => stream.Stream<
-    DescribeDefaultClusterParametersResult,
-    DescribeDefaultClusterParametersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeDefaultClusterParametersMessage,
-  ) => stream.Stream<
-    unknown,
-    DescribeDefaultClusterParametersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeDefaultClusterParametersMessage,
   output: DescribeDefaultClusterParametersResult,
   errors: [],
@@ -11378,27 +11181,13 @@ export type DescribeEndpointAccessError =
 /**
  * Describes a Redshift-managed VPC endpoint.
  */
-export const describeEndpointAccess: API.OperationMethod<
+export const describeEndpointAccess: API.PaginatedOperationMethod<
   DescribeEndpointAccessMessage,
   EndpointAccessList,
   DescribeEndpointAccessError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeEndpointAccessMessage,
-  ) => stream.Stream<
-    EndpointAccessList,
-    DescribeEndpointAccessError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeEndpointAccessMessage,
-  ) => stream.Stream<
-    EndpointAccess,
-    DescribeEndpointAccessError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  EndpointAccess
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeEndpointAccessMessage,
   output: EndpointAccessList,
   errors: [
@@ -11424,27 +11213,13 @@ export type DescribeEndpointAuthorizationError =
 /**
  * Describes an endpoint authorization.
  */
-export const describeEndpointAuthorization: API.OperationMethod<
+export const describeEndpointAuthorization: API.PaginatedOperationMethod<
   DescribeEndpointAuthorizationMessage,
   EndpointAuthorizationList,
   DescribeEndpointAuthorizationError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeEndpointAuthorizationMessage,
-  ) => stream.Stream<
-    EndpointAuthorizationList,
-    DescribeEndpointAuthorizationError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeEndpointAuthorizationMessage,
-  ) => stream.Stream<
-    EndpointAuthorization,
-    DescribeEndpointAuthorizationError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  EndpointAuthorization
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeEndpointAuthorizationMessage,
   output: EndpointAuthorizationList,
   errors: [ClusterNotFoundFault, UnsupportedOperationFault],
@@ -11486,27 +11261,13 @@ export type DescribeEventsError = CommonErrors;
  * snapshot or parameter group can be obtained by providing the name as a parameter. By
  * default, the past hour of events are returned.
  */
-export const describeEvents: API.OperationMethod<
+export const describeEvents: API.PaginatedOperationMethod<
   DescribeEventsMessage,
   EventsMessage,
   DescribeEventsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeEventsMessage,
-  ) => stream.Stream<
-    EventsMessage,
-    DescribeEventsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeEventsMessage,
-  ) => stream.Stream<
-    Event,
-    DescribeEventsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Event
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeEventsMessage,
   output: EventsMessage,
   errors: [],
@@ -11540,27 +11301,13 @@ export type DescribeEventSubscriptionsError =
  * returned regardless of whether they have tag keys or values associated with
  * them.
  */
-export const describeEventSubscriptions: API.OperationMethod<
+export const describeEventSubscriptions: API.PaginatedOperationMethod<
   DescribeEventSubscriptionsMessage,
   EventSubscriptionsMessage,
   DescribeEventSubscriptionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeEventSubscriptionsMessage,
-  ) => stream.Stream<
-    EventSubscriptionsMessage,
-    DescribeEventSubscriptionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeEventSubscriptionsMessage,
-  ) => stream.Stream<
-    EventSubscription,
-    DescribeEventSubscriptionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  EventSubscription
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeEventSubscriptionsMessage,
   output: EventSubscriptionsMessage,
   errors: [InvalidTagFault, SubscriptionNotFoundFault],
@@ -11593,27 +11340,13 @@ export type DescribeHsmClientCertificatesError =
  * are returned regardless of whether they have tag keys or values associated with
  * them.
  */
-export const describeHsmClientCertificates: API.OperationMethod<
+export const describeHsmClientCertificates: API.PaginatedOperationMethod<
   DescribeHsmClientCertificatesMessage,
   HsmClientCertificateMessage,
   DescribeHsmClientCertificatesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeHsmClientCertificatesMessage,
-  ) => stream.Stream<
-    HsmClientCertificateMessage,
-    DescribeHsmClientCertificatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeHsmClientCertificatesMessage,
-  ) => stream.Stream<
-    HsmClientCertificate,
-    DescribeHsmClientCertificatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  HsmClientCertificate
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeHsmClientCertificatesMessage,
   output: HsmClientCertificateMessage,
   errors: [HsmClientCertificateNotFoundFault, InvalidTagFault],
@@ -11647,27 +11380,13 @@ export type DescribeHsmConfigurationsError =
  * returned regardless of whether they have tag keys or values associated with
  * them.
  */
-export const describeHsmConfigurations: API.OperationMethod<
+export const describeHsmConfigurations: API.PaginatedOperationMethod<
   DescribeHsmConfigurationsMessage,
   HsmConfigurationMessage,
   DescribeHsmConfigurationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeHsmConfigurationsMessage,
-  ) => stream.Stream<
-    HsmConfigurationMessage,
-    DescribeHsmConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeHsmConfigurationsMessage,
-  ) => stream.Stream<
-    HsmConfiguration,
-    DescribeHsmConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  HsmConfiguration
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeHsmConfigurationsMessage,
   output: HsmConfigurationMessage,
   errors: [HsmConfigurationNotFoundFault, InvalidTagFault],
@@ -11690,27 +11409,13 @@ export type DescribeInboundIntegrationsError =
 /**
  * Returns a list of inbound integrations.
  */
-export const describeInboundIntegrations: API.OperationMethod<
+export const describeInboundIntegrations: API.PaginatedOperationMethod<
   DescribeInboundIntegrationsMessage,
   InboundIntegrationsMessage,
   DescribeInboundIntegrationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeInboundIntegrationsMessage,
-  ) => stream.Stream<
-    InboundIntegrationsMessage,
-    DescribeInboundIntegrationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeInboundIntegrationsMessage,
-  ) => stream.Stream<
-    InboundIntegration,
-    DescribeInboundIntegrationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  InboundIntegration
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeInboundIntegrationsMessage,
   output: InboundIntegrationsMessage,
   errors: [
@@ -11736,27 +11441,13 @@ export type DescribeIntegrationsError =
 /**
  * Describes one or more zero-ETL or S3 event integrations with Amazon Redshift.
  */
-export const describeIntegrations: API.OperationMethod<
+export const describeIntegrations: API.PaginatedOperationMethod<
   DescribeIntegrationsMessage,
   IntegrationsMessage,
   DescribeIntegrationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeIntegrationsMessage,
-  ) => stream.Stream<
-    IntegrationsMessage,
-    DescribeIntegrationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeIntegrationsMessage,
-  ) => stream.Stream<
-    Integration,
-    DescribeIntegrationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Integration
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeIntegrationsMessage,
   output: IntegrationsMessage,
   errors: [IntegrationNotFoundFault, UnsupportedOperationFault],
@@ -11804,27 +11495,13 @@ export type DescribeNodeConfigurationOptionsError =
  * Returns properties of possible node configurations such as node type, number of nodes, and
  * disk usage for the specified action type.
  */
-export const describeNodeConfigurationOptions: API.OperationMethod<
+export const describeNodeConfigurationOptions: API.PaginatedOperationMethod<
   DescribeNodeConfigurationOptionsMessage,
   NodeConfigurationOptionsMessage,
   DescribeNodeConfigurationOptionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeNodeConfigurationOptionsMessage,
-  ) => stream.Stream<
-    NodeConfigurationOptionsMessage,
-    DescribeNodeConfigurationOptionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeNodeConfigurationOptionsMessage,
-  ) => stream.Stream<
-    NodeConfigurationOption,
-    DescribeNodeConfigurationOptionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  NodeConfigurationOption
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeNodeConfigurationOptionsMessage,
   output: NodeConfigurationOptionsMessage,
   errors: [
@@ -11857,27 +11534,13 @@ export type DescribeOrderableClusterOptionsError = CommonErrors;
  * Amazon Redshift Clusters
  * in the *Amazon Redshift Cluster Management Guide*.
  */
-export const describeOrderableClusterOptions: API.OperationMethod<
+export const describeOrderableClusterOptions: API.PaginatedOperationMethod<
   DescribeOrderableClusterOptionsMessage,
   OrderableClusterOptionsMessage,
   DescribeOrderableClusterOptionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeOrderableClusterOptionsMessage,
-  ) => stream.Stream<
-    OrderableClusterOptionsMessage,
-    DescribeOrderableClusterOptionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeOrderableClusterOptionsMessage,
-  ) => stream.Stream<
-    OrderableClusterOption,
-    DescribeOrderableClusterOptionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  OrderableClusterOption
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeOrderableClusterOptionsMessage,
   output: OrderableClusterOptionsMessage,
   errors: [],
@@ -11927,27 +11590,13 @@ export type DescribeRedshiftIdcApplicationsError =
 /**
  * Lists the Amazon Redshift IAM Identity Center applications.
  */
-export const describeRedshiftIdcApplications: API.OperationMethod<
+export const describeRedshiftIdcApplications: API.PaginatedOperationMethod<
   DescribeRedshiftIdcApplicationsMessage,
   DescribeRedshiftIdcApplicationsResult,
   DescribeRedshiftIdcApplicationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeRedshiftIdcApplicationsMessage,
-  ) => stream.Stream<
-    DescribeRedshiftIdcApplicationsResult,
-    DescribeRedshiftIdcApplicationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeRedshiftIdcApplicationsMessage,
-  ) => stream.Stream<
-    RedshiftIdcApplication,
-    DescribeRedshiftIdcApplicationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  RedshiftIdcApplication
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeRedshiftIdcApplicationsMessage,
   output: DescribeRedshiftIdcApplicationsResult,
   errors: [
@@ -11976,27 +11625,13 @@ export type DescribeReservedNodeExchangeStatusError =
  * Returns exchange status details and associated metadata for a reserved-node
  * exchange. Statuses include such values as in progress and requested.
  */
-export const describeReservedNodeExchangeStatus: API.OperationMethod<
+export const describeReservedNodeExchangeStatus: API.PaginatedOperationMethod<
   DescribeReservedNodeExchangeStatusInputMessage,
   DescribeReservedNodeExchangeStatusOutputMessage,
   DescribeReservedNodeExchangeStatusError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeReservedNodeExchangeStatusInputMessage,
-  ) => stream.Stream<
-    DescribeReservedNodeExchangeStatusOutputMessage,
-    DescribeReservedNodeExchangeStatusError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeReservedNodeExchangeStatusInputMessage,
-  ) => stream.Stream<
-    ReservedNodeExchangeStatus,
-    DescribeReservedNodeExchangeStatusError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ReservedNodeExchangeStatus
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeReservedNodeExchangeStatusInputMessage,
   output: DescribeReservedNodeExchangeStatusOutputMessage,
   errors: [
@@ -12032,27 +11667,13 @@ export type DescribeReservedNodeOfferingsError =
  * Purchasing Reserved Nodes
  * in the *Amazon Redshift Cluster Management Guide*.
  */
-export const describeReservedNodeOfferings: API.OperationMethod<
+export const describeReservedNodeOfferings: API.PaginatedOperationMethod<
   DescribeReservedNodeOfferingsMessage,
   ReservedNodeOfferingsMessage,
   DescribeReservedNodeOfferingsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeReservedNodeOfferingsMessage,
-  ) => stream.Stream<
-    ReservedNodeOfferingsMessage,
-    DescribeReservedNodeOfferingsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeReservedNodeOfferingsMessage,
-  ) => stream.Stream<
-    ReservedNodeOffering,
-    DescribeReservedNodeOfferingsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ReservedNodeOffering
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeReservedNodeOfferingsMessage,
   output: ReservedNodeOfferingsMessage,
   errors: [
@@ -12078,27 +11699,13 @@ export type DescribeReservedNodesError =
 /**
  * Returns the descriptions of the reserved nodes.
  */
-export const describeReservedNodes: API.OperationMethod<
+export const describeReservedNodes: API.PaginatedOperationMethod<
   DescribeReservedNodesMessage,
   ReservedNodesMessage,
   DescribeReservedNodesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeReservedNodesMessage,
-  ) => stream.Stream<
-    ReservedNodesMessage,
-    DescribeReservedNodesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeReservedNodesMessage,
-  ) => stream.Stream<
-    ReservedNode,
-    DescribeReservedNodesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ReservedNode
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeReservedNodesMessage,
   output: ReservedNodesMessage,
   errors: [DependentServiceUnavailableFault, ReservedNodeNotFoundFault],
@@ -12152,27 +11759,13 @@ export type DescribeScheduledActionsError =
 /**
  * Describes properties of scheduled actions.
  */
-export const describeScheduledActions: API.OperationMethod<
+export const describeScheduledActions: API.PaginatedOperationMethod<
   DescribeScheduledActionsMessage,
   ScheduledActionsMessage,
   DescribeScheduledActionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeScheduledActionsMessage,
-  ) => stream.Stream<
-    ScheduledActionsMessage,
-    DescribeScheduledActionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeScheduledActionsMessage,
-  ) => stream.Stream<
-    ScheduledAction,
-    DescribeScheduledActionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ScheduledAction
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeScheduledActionsMessage,
   output: ScheduledActionsMessage,
   errors: [ScheduledActionNotFoundFault, UnauthorizedOperation],
@@ -12199,27 +11792,13 @@ export type DescribeSnapshotCopyGrantsError =
  * Amazon Redshift Database Encryption
  * in the *Amazon Redshift Cluster Management Guide*.
  */
-export const describeSnapshotCopyGrants: API.OperationMethod<
+export const describeSnapshotCopyGrants: API.PaginatedOperationMethod<
   DescribeSnapshotCopyGrantsMessage,
   SnapshotCopyGrantMessage,
   DescribeSnapshotCopyGrantsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeSnapshotCopyGrantsMessage,
-  ) => stream.Stream<
-    SnapshotCopyGrantMessage,
-    DescribeSnapshotCopyGrantsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeSnapshotCopyGrantsMessage,
-  ) => stream.Stream<
-    SnapshotCopyGrant,
-    DescribeSnapshotCopyGrantsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  SnapshotCopyGrant
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeSnapshotCopyGrantsMessage,
   output: SnapshotCopyGrantMessage,
   errors: [InvalidTagFault, SnapshotCopyGrantNotFoundFault],
@@ -12238,27 +11817,13 @@ export type DescribeSnapshotSchedulesError = CommonErrors;
 /**
  * Returns a list of snapshot schedules.
  */
-export const describeSnapshotSchedules: API.OperationMethod<
+export const describeSnapshotSchedules: API.PaginatedOperationMethod<
   DescribeSnapshotSchedulesMessage,
   DescribeSnapshotSchedulesOutputMessage,
   DescribeSnapshotSchedulesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeSnapshotSchedulesMessage,
-  ) => stream.Stream<
-    DescribeSnapshotSchedulesOutputMessage,
-    DescribeSnapshotSchedulesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeSnapshotSchedulesMessage,
-  ) => stream.Stream<
-    SnapshotSchedule,
-    DescribeSnapshotSchedulesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  SnapshotSchedule
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeSnapshotSchedulesMessage,
   output: DescribeSnapshotSchedulesOutputMessage,
   errors: [],
@@ -12303,27 +11868,13 @@ export type DescribeTableRestoreStatusError =
  * `DescribeTableRestoreStatus` returns the status of the table specified by
  * `TableRestoreRequestId`.
  */
-export const describeTableRestoreStatus: API.OperationMethod<
+export const describeTableRestoreStatus: API.PaginatedOperationMethod<
   DescribeTableRestoreStatusMessage,
   TableRestoreStatusMessage,
   DescribeTableRestoreStatusError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeTableRestoreStatusMessage,
-  ) => stream.Stream<
-    TableRestoreStatusMessage,
-    DescribeTableRestoreStatusError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeTableRestoreStatusMessage,
-  ) => stream.Stream<
-    TableRestoreStatus,
-    DescribeTableRestoreStatusError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  TableRestoreStatus
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeTableRestoreStatusMessage,
   output: TableRestoreStatusMessage,
   errors: [ClusterNotFoundFault, TableRestoreNotFoundFault],
@@ -12367,27 +11918,13 @@ export type DescribeTagsError =
  * If both tag keys and values are omitted from the request, resources are returned
  * regardless of whether they have tag keys or values associated with them.
  */
-export const describeTags: API.OperationMethod<
+export const describeTags: API.PaginatedOperationMethod<
   DescribeTagsMessage,
   TaggedResourceListMessage,
   DescribeTagsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeTagsMessage,
-  ) => stream.Stream<
-    TaggedResourceListMessage,
-    DescribeTagsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeTagsMessage,
-  ) => stream.Stream<
-    TaggedResource,
-    DescribeTagsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  TaggedResource
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeTagsMessage,
   output: TaggedResourceListMessage,
   errors: [InvalidTagFault, ResourceNotFoundFault],
@@ -12422,27 +11959,13 @@ export type DescribeUsageLimitsError =
  * - If cluster identifier and feature type are provided,
  * then all usage limit objects for the combination of cluster and feature are returned.
  */
-export const describeUsageLimits: API.OperationMethod<
+export const describeUsageLimits: API.PaginatedOperationMethod<
   DescribeUsageLimitsMessage,
   UsageLimitList,
   DescribeUsageLimitsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeUsageLimitsMessage,
-  ) => stream.Stream<
-    UsageLimitList,
-    DescribeUsageLimitsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeUsageLimitsMessage,
-  ) => stream.Stream<
-    UsageLimit,
-    DescribeUsageLimitsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  UsageLimit
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeUsageLimitsMessage,
   output: UsageLimitList,
   errors: [ClusterNotFoundFault, UnsupportedOperationFault],
@@ -12776,27 +12299,13 @@ export type GetReservedNodeExchangeConfigurationOptionsError =
  * include information about the source reserved node and target reserved node offering.
  * Details include the node type, the price, the node count, and the offering type.
  */
-export const getReservedNodeExchangeConfigurationOptions: API.OperationMethod<
+export const getReservedNodeExchangeConfigurationOptions: API.PaginatedOperationMethod<
   GetReservedNodeExchangeConfigurationOptionsInputMessage,
   GetReservedNodeExchangeConfigurationOptionsOutputMessage,
   GetReservedNodeExchangeConfigurationOptionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetReservedNodeExchangeConfigurationOptionsInputMessage,
-  ) => stream.Stream<
-    GetReservedNodeExchangeConfigurationOptionsOutputMessage,
-    GetReservedNodeExchangeConfigurationOptionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetReservedNodeExchangeConfigurationOptionsInputMessage,
-  ) => stream.Stream<
-    ReservedNodeConfigurationOption,
-    GetReservedNodeExchangeConfigurationOptionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ReservedNodeConfigurationOption
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetReservedNodeExchangeConfigurationOptionsInputMessage,
   output: GetReservedNodeExchangeConfigurationOptionsOutputMessage,
   errors: [
@@ -12832,27 +12341,13 @@ export type GetReservedNodeExchangeOfferingsError =
  * Returns an array of DC2 ReservedNodeOfferings that matches the payment type, term,
  * and usage price of the given DC1 reserved node.
  */
-export const getReservedNodeExchangeOfferings: API.OperationMethod<
+export const getReservedNodeExchangeOfferings: API.PaginatedOperationMethod<
   GetReservedNodeExchangeOfferingsInputMessage,
   GetReservedNodeExchangeOfferingsOutputMessage,
   GetReservedNodeExchangeOfferingsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetReservedNodeExchangeOfferingsInputMessage,
-  ) => stream.Stream<
-    GetReservedNodeExchangeOfferingsOutputMessage,
-    GetReservedNodeExchangeOfferingsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetReservedNodeExchangeOfferingsInputMessage,
-  ) => stream.Stream<
-    ReservedNodeOffering,
-    GetReservedNodeExchangeOfferingsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ReservedNodeOffering
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetReservedNodeExchangeOfferingsInputMessage,
   output: GetReservedNodeExchangeOfferingsOutputMessage,
   errors: [
@@ -12907,27 +12402,13 @@ export type ListRecommendationsError =
 /**
  * List the Amazon Redshift Advisor recommendations for one or multiple Amazon Redshift clusters in an Amazon Web Services account.
  */
-export const listRecommendations: API.OperationMethod<
+export const listRecommendations: API.PaginatedOperationMethod<
   ListRecommendationsMessage,
   ListRecommendationsResult,
   ListRecommendationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRecommendationsMessage,
-  ) => stream.Stream<
-    ListRecommendationsResult,
-    ListRecommendationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRecommendationsMessage,
-  ) => stream.Stream<
-    Recommendation,
-    ListRecommendationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Recommendation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRecommendationsMessage,
   output: ListRecommendationsResult,
   errors: [ClusterNotFoundFault, UnsupportedOperationFault],

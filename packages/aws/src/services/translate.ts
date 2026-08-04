@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -1323,27 +1322,13 @@ export type ListLanguagesError =
 /**
  * Provides a list of languages (RFC-5646 codes and names) that Amazon Translate supports.
  */
-export const listLanguages: API.OperationMethod<
+export const listLanguages: API.PaginatedOperationMethod<
   ListLanguagesRequest,
   ListLanguagesResponse,
   ListLanguagesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListLanguagesRequest,
-  ) => stream.Stream<
-    ListLanguagesResponse,
-    ListLanguagesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListLanguagesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListLanguagesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLanguagesRequest,
   output: ListLanguagesResponse,
   errors: [
@@ -1370,27 +1355,13 @@ export type ListParallelDataError =
 /**
  * Provides a list of your parallel data resources in Amazon Translate.
  */
-export const listParallelData: API.OperationMethod<
+export const listParallelData: API.PaginatedOperationMethod<
   ListParallelDataRequest,
   ListParallelDataResponse,
   ListParallelDataError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListParallelDataRequest,
-  ) => stream.Stream<
-    ListParallelDataResponse,
-    ListParallelDataError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListParallelDataRequest,
-  ) => stream.Stream<
-    unknown,
-    ListParallelDataError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListParallelDataRequest,
   output: ListParallelDataResponse,
   errors: [
@@ -1444,27 +1415,13 @@ export type ListTerminologiesError =
 /**
  * Provides a list of custom terminologies associated with your account.
  */
-export const listTerminologies: API.OperationMethod<
+export const listTerminologies: API.PaginatedOperationMethod<
   ListTerminologiesRequest,
   ListTerminologiesResponse,
   ListTerminologiesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTerminologiesRequest,
-  ) => stream.Stream<
-    ListTerminologiesResponse,
-    ListTerminologiesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTerminologiesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListTerminologiesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTerminologiesRequest,
   output: ListTerminologiesResponse,
   errors: [
@@ -1491,27 +1448,13 @@ export type ListTextTranslationJobsError =
 /**
  * Gets a list of the batch translation jobs that you have submitted.
  */
-export const listTextTranslationJobs: API.OperationMethod<
+export const listTextTranslationJobs: API.PaginatedOperationMethod<
   ListTextTranslationJobsRequest,
   ListTextTranslationJobsResponse,
   ListTextTranslationJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTextTranslationJobsRequest,
-  ) => stream.Stream<
-    ListTextTranslationJobsResponse,
-    ListTextTranslationJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTextTranslationJobsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListTextTranslationJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTextTranslationJobsRequest,
   output: ListTextTranslationJobsResponse,
   errors: [

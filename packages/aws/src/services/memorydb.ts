@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -3702,27 +3701,13 @@ export type DescribeACLsError =
 /**
  * Returns a list of ACLs.
  */
-export const describeACLs: API.OperationMethod<
+export const describeACLs: API.PaginatedOperationMethod<
   DescribeACLsRequest,
   DescribeACLsResponse,
   DescribeACLsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeACLsRequest,
-  ) => stream.Stream<
-    DescribeACLsResponse,
-    DescribeACLsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeACLsRequest,
-  ) => stream.Stream<
-    ACL,
-    DescribeACLsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ACL
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeACLsRequest,
   output: DescribeACLsResponse,
   errors: [ACLNotFoundFault, InvalidParameterCombinationException],
@@ -3746,27 +3731,13 @@ export type DescribeClustersError =
 /**
  * Returns information about all provisioned clusters if no cluster identifier is specified, or about a specific cluster if a cluster name is supplied.
  */
-export const describeClusters: API.OperationMethod<
+export const describeClusters: API.PaginatedOperationMethod<
   DescribeClustersRequest,
   DescribeClustersResponse,
   DescribeClustersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeClustersRequest,
-  ) => stream.Stream<
-    DescribeClustersResponse,
-    DescribeClustersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeClustersRequest,
-  ) => stream.Stream<
-    Cluster,
-    DescribeClustersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Cluster
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeClustersRequest,
   output: DescribeClustersResponse,
   errors: [
@@ -3794,27 +3765,13 @@ export type DescribeEngineVersionsError =
 /**
  * Returns a list of the available Redis OSS engine versions.
  */
-export const describeEngineVersions: API.OperationMethod<
+export const describeEngineVersions: API.PaginatedOperationMethod<
   DescribeEngineVersionsRequest,
   DescribeEngineVersionsResponse,
   DescribeEngineVersionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeEngineVersionsRequest,
-  ) => stream.Stream<
-    DescribeEngineVersionsResponse,
-    DescribeEngineVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeEngineVersionsRequest,
-  ) => stream.Stream<
-    EngineVersionInfo,
-    DescribeEngineVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  EngineVersionInfo
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeEngineVersionsRequest,
   output: DescribeEngineVersionsResponse,
   errors: [
@@ -3843,27 +3800,13 @@ export type DescribeEventsError =
  *
  * By default, only the events occurring within the last hour are returned; however, you can retrieve up to 14 days' worth of events if necessary.
  */
-export const describeEvents: API.OperationMethod<
+export const describeEvents: API.PaginatedOperationMethod<
   DescribeEventsRequest,
   DescribeEventsResponse,
   DescribeEventsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeEventsRequest,
-  ) => stream.Stream<
-    DescribeEventsResponse,
-    DescribeEventsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeEventsRequest,
-  ) => stream.Stream<
-    Event,
-    DescribeEventsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Event
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeEventsRequest,
   output: DescribeEventsResponse,
   errors: [
@@ -3891,27 +3834,13 @@ export type DescribeMultiRegionClustersError =
 /**
  * Returns details about one or more multi-Region clusters.
  */
-export const describeMultiRegionClusters: API.OperationMethod<
+export const describeMultiRegionClusters: API.PaginatedOperationMethod<
   DescribeMultiRegionClustersRequest,
   DescribeMultiRegionClustersResponse,
   DescribeMultiRegionClustersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeMultiRegionClustersRequest,
-  ) => stream.Stream<
-    DescribeMultiRegionClustersResponse,
-    DescribeMultiRegionClustersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeMultiRegionClustersRequest,
-  ) => stream.Stream<
-    MultiRegionCluster,
-    DescribeMultiRegionClustersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  MultiRegionCluster
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeMultiRegionClustersRequest,
   output: DescribeMultiRegionClustersResponse,
   errors: [
@@ -3996,27 +3925,13 @@ export type DescribeParameterGroupsError =
 /**
  * Returns a list of parameter group descriptions. If a parameter group name is specified, the list contains only the descriptions for that group.
  */
-export const describeParameterGroups: API.OperationMethod<
+export const describeParameterGroups: API.PaginatedOperationMethod<
   DescribeParameterGroupsRequest,
   DescribeParameterGroupsResponse,
   DescribeParameterGroupsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeParameterGroupsRequest,
-  ) => stream.Stream<
-    DescribeParameterGroupsResponse,
-    DescribeParameterGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeParameterGroupsRequest,
-  ) => stream.Stream<
-    ParameterGroup,
-    DescribeParameterGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ParameterGroup
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeParameterGroupsRequest,
   output: DescribeParameterGroupsResponse,
   errors: [
@@ -4045,27 +3960,13 @@ export type DescribeParametersError =
 /**
  * Returns the detailed parameter list for a particular parameter group.
  */
-export const describeParameters: API.OperationMethod<
+export const describeParameters: API.PaginatedOperationMethod<
   DescribeParametersRequest,
   DescribeParametersResponse,
   DescribeParametersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeParametersRequest,
-  ) => stream.Stream<
-    DescribeParametersResponse,
-    DescribeParametersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeParametersRequest,
-  ) => stream.Stream<
-    Parameter,
-    DescribeParametersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Parameter
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeParametersRequest,
   output: DescribeParametersResponse,
   errors: [
@@ -4094,27 +3995,13 @@ export type DescribeReservedNodesError =
 /**
  * Returns information about reserved nodes for this account, or about a specified reserved node.
  */
-export const describeReservedNodes: API.OperationMethod<
+export const describeReservedNodes: API.PaginatedOperationMethod<
   DescribeReservedNodesRequest,
   DescribeReservedNodesResponse,
   DescribeReservedNodesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeReservedNodesRequest,
-  ) => stream.Stream<
-    DescribeReservedNodesResponse,
-    DescribeReservedNodesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeReservedNodesRequest,
-  ) => stream.Stream<
-    ReservedNode,
-    DescribeReservedNodesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ReservedNode
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeReservedNodesRequest,
   output: DescribeReservedNodesResponse,
   errors: [
@@ -4143,27 +4030,13 @@ export type DescribeReservedNodesOfferingsError =
 /**
  * Lists available reserved node offerings.
  */
-export const describeReservedNodesOfferings: API.OperationMethod<
+export const describeReservedNodesOfferings: API.PaginatedOperationMethod<
   DescribeReservedNodesOfferingsRequest,
   DescribeReservedNodesOfferingsResponse,
   DescribeReservedNodesOfferingsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeReservedNodesOfferingsRequest,
-  ) => stream.Stream<
-    DescribeReservedNodesOfferingsResponse,
-    DescribeReservedNodesOfferingsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeReservedNodesOfferingsRequest,
-  ) => stream.Stream<
-    ReservedNodesOffering,
-    DescribeReservedNodesOfferingsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ReservedNodesOffering
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeReservedNodesOfferingsRequest,
   output: DescribeReservedNodesOfferingsResponse,
   errors: [
@@ -4190,27 +4063,13 @@ export type DescribeServiceUpdatesError =
 /**
  * Returns details of the service updates.
  */
-export const describeServiceUpdates: API.OperationMethod<
+export const describeServiceUpdates: API.PaginatedOperationMethod<
   DescribeServiceUpdatesRequest,
   DescribeServiceUpdatesResponse,
   DescribeServiceUpdatesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeServiceUpdatesRequest,
-  ) => stream.Stream<
-    DescribeServiceUpdatesResponse,
-    DescribeServiceUpdatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeServiceUpdatesRequest,
-  ) => stream.Stream<
-    ServiceUpdate,
-    DescribeServiceUpdatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ServiceUpdate
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeServiceUpdatesRequest,
   output: DescribeServiceUpdatesResponse,
   errors: [
@@ -4238,27 +4097,13 @@ export type DescribeSnapshotsError =
  * Returns information about cluster snapshots. By default, DescribeSnapshots lists all of your snapshots; it can optionally describe a single snapshot,
  * or just the snapshots associated with a particular cluster.
  */
-export const describeSnapshots: API.OperationMethod<
+export const describeSnapshots: API.PaginatedOperationMethod<
   DescribeSnapshotsRequest,
   DescribeSnapshotsResponse,
   DescribeSnapshotsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeSnapshotsRequest,
-  ) => stream.Stream<
-    DescribeSnapshotsResponse,
-    DescribeSnapshotsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeSnapshotsRequest,
-  ) => stream.Stream<
-    Snapshot,
-    DescribeSnapshotsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Snapshot
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeSnapshotsRequest,
   output: DescribeSnapshotsResponse,
   errors: [
@@ -4285,27 +4130,13 @@ export type DescribeSubnetGroupsError =
 /**
  * Returns a list of subnet group descriptions. If a subnet group name is specified, the list contains only the description of that group.
  */
-export const describeSubnetGroups: API.OperationMethod<
+export const describeSubnetGroups: API.PaginatedOperationMethod<
   DescribeSubnetGroupsRequest,
   DescribeSubnetGroupsResponse,
   DescribeSubnetGroupsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeSubnetGroupsRequest,
-  ) => stream.Stream<
-    DescribeSubnetGroupsResponse,
-    DescribeSubnetGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeSubnetGroupsRequest,
-  ) => stream.Stream<
-    SubnetGroup,
-    DescribeSubnetGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  SubnetGroup
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeSubnetGroupsRequest,
   output: DescribeSubnetGroupsResponse,
   errors: [ServiceLinkedRoleNotFoundFault, SubnetGroupNotFoundFault],
@@ -4327,27 +4158,13 @@ export type DescribeUsersError =
 /**
  * Returns a list of users.
  */
-export const describeUsers: API.OperationMethod<
+export const describeUsers: API.PaginatedOperationMethod<
   DescribeUsersRequest,
   DescribeUsersResponse,
   DescribeUsersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeUsersRequest,
-  ) => stream.Stream<
-    DescribeUsersResponse,
-    DescribeUsersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeUsersRequest,
-  ) => stream.Stream<
-    User,
-    DescribeUsersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  User
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeUsersRequest,
   output: DescribeUsersResponse,
   errors: [InvalidParameterCombinationException, UserNotFoundFault],

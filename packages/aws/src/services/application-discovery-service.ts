@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -2006,27 +2005,13 @@ export type DescribeAgentsError =
  * associated with your user can be listed if you call `DescribeAgents` as is
  * without passing any parameters.
  */
-export const describeAgents: API.OperationMethod<
+export const describeAgents: API.PaginatedOperationMethod<
   DescribeAgentsRequest,
   DescribeAgentsResponse,
   DescribeAgentsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeAgentsRequest,
-  ) => stream.Stream<
-    DescribeAgentsResponse,
-    DescribeAgentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeAgentsRequest,
-  ) => stream.Stream<
-    AgentInfo,
-    DescribeAgentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AgentInfo
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeAgentsRequest,
   output: DescribeAgentsResponse,
   errors: [
@@ -2137,27 +2122,13 @@ export type DescribeContinuousExportsError =
  * can be listed if you call `DescribeContinuousExports` as is without passing
  * any parameters.
  */
-export const describeContinuousExports: API.OperationMethod<
+export const describeContinuousExports: API.PaginatedOperationMethod<
   DescribeContinuousExportsRequest,
   DescribeContinuousExportsResponse,
   DescribeContinuousExportsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeContinuousExportsRequest,
-  ) => stream.Stream<
-    DescribeContinuousExportsResponse,
-    DescribeContinuousExportsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeContinuousExportsRequest,
-  ) => stream.Stream<
-    ContinuousExportDescription,
-    DescribeContinuousExportsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ContinuousExportDescription
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeContinuousExportsRequest,
   output: DescribeContinuousExportsResponse,
   errors: [
@@ -2191,27 +2162,13 @@ export type DescribeExportConfigurationsError =
 /**
  * `DescribeExportConfigurations` is deprecated. Use DescribeExportTasks, instead.
  */
-export const describeExportConfigurations: API.OperationMethod<
+export const describeExportConfigurations: API.PaginatedOperationMethod<
   DescribeExportConfigurationsRequest,
   DescribeExportConfigurationsResponse,
   DescribeExportConfigurationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeExportConfigurationsRequest,
-  ) => stream.Stream<
-    DescribeExportConfigurationsResponse,
-    DescribeExportConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeExportConfigurationsRequest,
-  ) => stream.Stream<
-    ExportInfo,
-    DescribeExportConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ExportInfo
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeExportConfigurationsRequest,
   output: DescribeExportConfigurationsResponse,
   errors: [
@@ -2244,27 +2201,13 @@ export type DescribeExportTasksError =
  * Retrieve status of one or more export tasks. You can retrieve the status of up to 100
  * export tasks.
  */
-export const describeExportTasks: API.OperationMethod<
+export const describeExportTasks: API.PaginatedOperationMethod<
   DescribeExportTasksRequest,
   DescribeExportTasksResponse,
   DescribeExportTasksError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeExportTasksRequest,
-  ) => stream.Stream<
-    DescribeExportTasksResponse,
-    DescribeExportTasksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeExportTasksRequest,
-  ) => stream.Stream<
-    ExportInfo,
-    DescribeExportTasksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ExportInfo
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeExportTasksRequest,
   output: DescribeExportTasksResponse,
   errors: [
@@ -2296,27 +2239,13 @@ export type DescribeImportTasksError =
  * Returns an array of import tasks for your account, including status information, times,
  * IDs, the Amazon S3 Object URL for the import file, and more.
  */
-export const describeImportTasks: API.OperationMethod<
+export const describeImportTasks: API.PaginatedOperationMethod<
   DescribeImportTasksRequest,
   DescribeImportTasksResponse,
   DescribeImportTasksError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeImportTasksRequest,
-  ) => stream.Stream<
-    DescribeImportTasksResponse,
-    DescribeImportTasksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeImportTasksRequest,
-  ) => stream.Stream<
-    ImportTask,
-    DescribeImportTasksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ImportTask
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeImportTasksRequest,
   output: DescribeImportTasksResponse,
   errors: [
@@ -2360,27 +2289,13 @@ export type DescribeTagsError =
  * Also, all configuration items associated with your user that have tags can be
  * listed if you call `DescribeTags` as is without passing any parameters.
  */
-export const describeTags: API.OperationMethod<
+export const describeTags: API.PaginatedOperationMethod<
   DescribeTagsRequest,
   DescribeTagsResponse,
   DescribeTagsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeTagsRequest,
-  ) => stream.Stream<
-    DescribeTagsResponse,
-    DescribeTagsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeTagsRequest,
-  ) => stream.Stream<
-    ConfigurationTag,
-    DescribeTagsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ConfigurationTag
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeTagsRequest,
   output: DescribeTagsResponse,
   errors: [
@@ -2516,27 +2431,13 @@ export type ListConfigurationsError =
  * required parameter `configurationType`. Optional filtering may be applied to refine
  * search results.
  */
-export const listConfigurations: API.OperationMethod<
+export const listConfigurations: API.PaginatedOperationMethod<
   ListConfigurationsRequest,
   ListConfigurationsResponse,
   ListConfigurationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListConfigurationsRequest,
-  ) => stream.Stream<
-    ListConfigurationsResponse,
-    ListConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListConfigurationsRequest,
-  ) => stream.Stream<
-    { [key: string]: string | undefined },
-    ListConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  { [key: string]: string | undefined }
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListConfigurationsRequest,
   output: ListConfigurationsResponse,
   errors: [

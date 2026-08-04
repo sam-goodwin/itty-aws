@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -2608,27 +2607,13 @@ export type ListEndpointsByPlatformApplicationError =
  *
  * This action is throttled at 30 transactions per second (TPS).
  */
-export const listEndpointsByPlatformApplication: API.OperationMethod<
+export const listEndpointsByPlatformApplication: API.PaginatedOperationMethod<
   ListEndpointsByPlatformApplicationInput,
   ListEndpointsByPlatformApplicationResponse,
   ListEndpointsByPlatformApplicationError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEndpointsByPlatformApplicationInput,
-  ) => stream.Stream<
-    ListEndpointsByPlatformApplicationResponse,
-    ListEndpointsByPlatformApplicationError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEndpointsByPlatformApplicationInput,
-  ) => stream.Stream<
-    Endpoint,
-    ListEndpointsByPlatformApplicationError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Endpoint
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEndpointsByPlatformApplicationInput,
   output: ListEndpointsByPlatformApplicationResponse,
   errors: [
@@ -2661,27 +2646,13 @@ export type ListOriginationNumbersError =
  * For more information about origination numbers, see Origination numbers in the Amazon SNS Developer
  * Guide.
  */
-export const listOriginationNumbers: API.OperationMethod<
+export const listOriginationNumbers: API.PaginatedOperationMethod<
   ListOriginationNumbersRequest,
   ListOriginationNumbersResult,
   ListOriginationNumbersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListOriginationNumbersRequest,
-  ) => stream.Stream<
-    ListOriginationNumbersResult,
-    ListOriginationNumbersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListOriginationNumbersRequest,
-  ) => stream.Stream<
-    PhoneNumberInformation,
-    ListOriginationNumbersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  PhoneNumberInformation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOriginationNumbersRequest,
   output: ListOriginationNumbersResult,
   errors: [
@@ -2719,27 +2690,13 @@ export type ListPhoneNumbersOptedOutError =
  * `NextToken` string received from the previous call. When there are no
  * more records to return, `NextToken` will be null.
  */
-export const listPhoneNumbersOptedOut: API.OperationMethod<
+export const listPhoneNumbersOptedOut: API.PaginatedOperationMethod<
   ListPhoneNumbersOptedOutInput,
   ListPhoneNumbersOptedOutResponse,
   ListPhoneNumbersOptedOutError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPhoneNumbersOptedOutInput,
-  ) => stream.Stream<
-    ListPhoneNumbersOptedOutResponse,
-    ListPhoneNumbersOptedOutError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPhoneNumbersOptedOutInput,
-  ) => stream.Stream<
-    PhoneNumber,
-    ListPhoneNumbersOptedOutError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  PhoneNumber
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPhoneNumbersOptedOutInput,
   output: ListPhoneNumbersOptedOutResponse,
   errors: [
@@ -2776,27 +2733,13 @@ export type ListPlatformApplicationsError =
  *
  * This action is throttled at 15 transactions per second (TPS).
  */
-export const listPlatformApplications: API.OperationMethod<
+export const listPlatformApplications: API.PaginatedOperationMethod<
   ListPlatformApplicationsInput,
   ListPlatformApplicationsResponse,
   ListPlatformApplicationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPlatformApplicationsInput,
-  ) => stream.Stream<
-    ListPlatformApplicationsResponse,
-    ListPlatformApplicationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPlatformApplicationsInput,
-  ) => stream.Stream<
-    PlatformApplication,
-    ListPlatformApplicationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  PlatformApplication
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPlatformApplicationsInput,
   output: ListPlatformApplicationsResponse,
   errors: [
@@ -2834,27 +2777,13 @@ export type ListSMSSandboxPhoneNumbersError =
  * see SMS sandbox in
  * the *Amazon SNS Developer Guide*.
  */
-export const listSMSSandboxPhoneNumbers: API.OperationMethod<
+export const listSMSSandboxPhoneNumbers: API.PaginatedOperationMethod<
   ListSMSSandboxPhoneNumbersInput,
   ListSMSSandboxPhoneNumbersResult,
   ListSMSSandboxPhoneNumbersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSMSSandboxPhoneNumbersInput,
-  ) => stream.Stream<
-    ListSMSSandboxPhoneNumbersResult,
-    ListSMSSandboxPhoneNumbersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSMSSandboxPhoneNumbersInput,
-  ) => stream.Stream<
-    SMSSandboxPhoneNumber,
-    ListSMSSandboxPhoneNumbersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  SMSSandboxPhoneNumber
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSMSSandboxPhoneNumbersInput,
   output: ListSMSSandboxPhoneNumbersResult,
   errors: [
@@ -2888,27 +2817,13 @@ export type ListSubscriptionsError =
  *
  * This action is throttled at 30 transactions per second (TPS).
  */
-export const listSubscriptions: API.OperationMethod<
+export const listSubscriptions: API.PaginatedOperationMethod<
   ListSubscriptionsInput,
   ListSubscriptionsResponse,
   ListSubscriptionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSubscriptionsInput,
-  ) => stream.Stream<
-    ListSubscriptionsResponse,
-    ListSubscriptionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSubscriptionsInput,
-  ) => stream.Stream<
-    Subscription,
-    ListSubscriptionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Subscription
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSubscriptionsInput,
   output: ListSubscriptionsResponse,
   errors: [
@@ -2942,27 +2857,13 @@ export type ListSubscriptionsByTopicError =
  *
  * This action is throttled at 30 transactions per second (TPS).
  */
-export const listSubscriptionsByTopic: API.OperationMethod<
+export const listSubscriptionsByTopic: API.PaginatedOperationMethod<
   ListSubscriptionsByTopicInput,
   ListSubscriptionsByTopicResponse,
   ListSubscriptionsByTopicError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSubscriptionsByTopicInput,
-  ) => stream.Stream<
-    ListSubscriptionsByTopicResponse,
-    ListSubscriptionsByTopicError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSubscriptionsByTopicInput,
-  ) => stream.Stream<
-    Subscription,
-    ListSubscriptionsByTopicError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Subscription
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSubscriptionsByTopicInput,
   output: ListSubscriptionsByTopicResponse,
   errors: [
@@ -3031,27 +2932,13 @@ export type ListTopicsError =
  *
  * This action is throttled at 30 transactions per second (TPS).
  */
-export const listTopics: API.OperationMethod<
+export const listTopics: API.PaginatedOperationMethod<
   ListTopicsInput,
   ListTopicsResponse,
   ListTopicsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTopicsInput,
-  ) => stream.Stream<
-    ListTopicsResponse,
-    ListTopicsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTopicsInput,
-  ) => stream.Stream<
-    Topic,
-    ListTopicsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Topic
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTopicsInput,
   output: ListTopicsResponse,
   errors: [

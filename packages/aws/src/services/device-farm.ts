@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -4656,27 +4655,13 @@ export type GetOfferingStatusError =
  * period. The API returns a `NotEligible` error if the user is not permitted to invoke the
  * operation. If you must be able to invoke this operation, contact aws-devicefarm-support@amazon.com.
  */
-export const getOfferingStatus: API.OperationMethod<
+export const getOfferingStatus: API.PaginatedOperationMethod<
   GetOfferingStatusRequest,
   GetOfferingStatusResult,
   GetOfferingStatusError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetOfferingStatusRequest,
-  ) => stream.Stream<
-    GetOfferingStatusResult,
-    GetOfferingStatusError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetOfferingStatusRequest,
-  ) => stream.Stream<
-    unknown,
-    GetOfferingStatusError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetOfferingStatusRequest,
   output: GetOfferingStatusResult,
   errors: [
@@ -4970,27 +4955,13 @@ export type ListArtifactsError =
 /**
  * Gets information about artifacts.
  */
-export const listArtifacts: API.OperationMethod<
+export const listArtifacts: API.PaginatedOperationMethod<
   ListArtifactsRequest,
   ListArtifactsResult,
   ListArtifactsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListArtifactsRequest,
-  ) => stream.Stream<
-    ListArtifactsResult,
-    ListArtifactsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListArtifactsRequest,
-  ) => stream.Stream<
-    Artifact,
-    ListArtifactsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Artifact
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListArtifactsRequest,
   output: ListArtifactsResult,
   errors: [
@@ -5047,27 +5018,13 @@ export type ListDevicePoolsError =
 /**
  * Gets information about device pools.
  */
-export const listDevicePools: API.OperationMethod<
+export const listDevicePools: API.PaginatedOperationMethod<
   ListDevicePoolsRequest,
   ListDevicePoolsResult,
   ListDevicePoolsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDevicePoolsRequest,
-  ) => stream.Stream<
-    ListDevicePoolsResult,
-    ListDevicePoolsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDevicePoolsRequest,
-  ) => stream.Stream<
-    DevicePool,
-    ListDevicePoolsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  DevicePool
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDevicePoolsRequest,
   output: ListDevicePoolsResult,
   errors: [
@@ -5095,27 +5052,13 @@ export type ListDevicesError =
 /**
  * Gets information about unique device types.
  */
-export const listDevices: API.OperationMethod<
+export const listDevices: API.PaginatedOperationMethod<
   ListDevicesRequest,
   ListDevicesResult,
   ListDevicesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDevicesRequest,
-  ) => stream.Stream<
-    ListDevicesResult,
-    ListDevicesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDevicesRequest,
-  ) => stream.Stream<
-    Device,
-    ListDevicesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Device
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDevicesRequest,
   output: ListDevicesResult,
   errors: [
@@ -5171,27 +5114,13 @@ export type ListJobsError =
 /**
  * Gets information about jobs for a given test run.
  */
-export const listJobs: API.OperationMethod<
+export const listJobs: API.PaginatedOperationMethod<
   ListJobsRequest,
   ListJobsResult,
   ListJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListJobsRequest,
-  ) => stream.Stream<
-    ListJobsResult,
-    ListJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListJobsRequest,
-  ) => stream.Stream<
-    Job,
-    ListJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Job
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListJobsRequest,
   output: ListJobsResult,
   errors: [
@@ -5283,27 +5212,13 @@ export type ListOfferingsError =
  * `NotEligible` error if the user is not permitted to invoke the operation. If you must be
  * able to invoke this operation, contact aws-devicefarm-support@amazon.com.
  */
-export const listOfferings: API.OperationMethod<
+export const listOfferings: API.PaginatedOperationMethod<
   ListOfferingsRequest,
   ListOfferingsResult,
   ListOfferingsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListOfferingsRequest,
-  ) => stream.Stream<
-    ListOfferingsResult,
-    ListOfferingsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListOfferingsRequest,
-  ) => stream.Stream<
-    Offering,
-    ListOfferingsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Offering
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOfferingsRequest,
   output: ListOfferingsResult,
   errors: [
@@ -5336,27 +5251,13 @@ export type ListOfferingTransactionsError =
  * The API returns a `NotEligible` error if the user is not permitted to invoke the operation. If
  * you must be able to invoke this operation, contact aws-devicefarm-support@amazon.com.
  */
-export const listOfferingTransactions: API.OperationMethod<
+export const listOfferingTransactions: API.PaginatedOperationMethod<
   ListOfferingTransactionsRequest,
   ListOfferingTransactionsResult,
   ListOfferingTransactionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListOfferingTransactionsRequest,
-  ) => stream.Stream<
-    ListOfferingTransactionsResult,
-    ListOfferingTransactionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListOfferingTransactionsRequest,
-  ) => stream.Stream<
-    OfferingTransaction,
-    ListOfferingTransactionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  OfferingTransaction
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOfferingTransactionsRequest,
   output: ListOfferingTransactionsResult,
   errors: [
@@ -5385,27 +5286,13 @@ export type ListProjectsError =
 /**
  * Gets information about projects.
  */
-export const listProjects: API.OperationMethod<
+export const listProjects: API.PaginatedOperationMethod<
   ListProjectsRequest,
   ListProjectsResult,
   ListProjectsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListProjectsRequest,
-  ) => stream.Stream<
-    ListProjectsResult,
-    ListProjectsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListProjectsRequest,
-  ) => stream.Stream<
-    Project,
-    ListProjectsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Project
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsRequest,
   output: ListProjectsResult,
   errors: [
@@ -5461,27 +5348,13 @@ export type ListRunsError =
 /**
  * Gets information about runs, given an AWS Device Farm project ARN.
  */
-export const listRuns: API.OperationMethod<
+export const listRuns: API.PaginatedOperationMethod<
   ListRunsRequest,
   ListRunsResult,
   ListRunsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRunsRequest,
-  ) => stream.Stream<
-    ListRunsResult,
-    ListRunsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRunsRequest,
-  ) => stream.Stream<
-    Run,
-    ListRunsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Run
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRunsRequest,
   output: ListRunsResult,
   errors: [
@@ -5509,27 +5382,13 @@ export type ListSamplesError =
 /**
  * Gets information about samples, given an AWS Device Farm job ARN.
  */
-export const listSamples: API.OperationMethod<
+export const listSamples: API.PaginatedOperationMethod<
   ListSamplesRequest,
   ListSamplesResult,
   ListSamplesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSamplesRequest,
-  ) => stream.Stream<
-    ListSamplesResult,
-    ListSamplesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSamplesRequest,
-  ) => stream.Stream<
-    Sample,
-    ListSamplesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Sample
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSamplesRequest,
   output: ListSamplesResult,
   errors: [
@@ -5557,27 +5416,13 @@ export type ListSuitesError =
 /**
  * Gets information about test suites for a given job.
  */
-export const listSuites: API.OperationMethod<
+export const listSuites: API.PaginatedOperationMethod<
   ListSuitesRequest,
   ListSuitesResult,
   ListSuitesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSuitesRequest,
-  ) => stream.Stream<
-    ListSuitesResult,
-    ListSuitesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSuitesRequest,
-  ) => stream.Stream<
-    Suite,
-    ListSuitesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Suite
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSuitesRequest,
   output: ListSuitesResult,
   errors: [
@@ -5625,27 +5470,13 @@ export type ListTestGridProjectsError =
 /**
  * Gets a list of all Selenium testing projects in your account.
  */
-export const listTestGridProjects: API.OperationMethod<
+export const listTestGridProjects: API.PaginatedOperationMethod<
   ListTestGridProjectsRequest,
   ListTestGridProjectsResult,
   ListTestGridProjectsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTestGridProjectsRequest,
-  ) => stream.Stream<
-    ListTestGridProjectsResult,
-    ListTestGridProjectsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTestGridProjectsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListTestGridProjectsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTestGridProjectsRequest,
   output: ListTestGridProjectsResult,
   errors: [ArgumentException, InternalServiceException],
@@ -5667,27 +5498,13 @@ export type ListTestGridSessionActionsError =
 /**
  * Returns a list of the actions taken in a TestGridSession.
  */
-export const listTestGridSessionActions: API.OperationMethod<
+export const listTestGridSessionActions: API.PaginatedOperationMethod<
   ListTestGridSessionActionsRequest,
   ListTestGridSessionActionsResult,
   ListTestGridSessionActionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTestGridSessionActionsRequest,
-  ) => stream.Stream<
-    ListTestGridSessionActionsResult,
-    ListTestGridSessionActionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTestGridSessionActionsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListTestGridSessionActionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTestGridSessionActionsRequest,
   output: ListTestGridSessionActionsResult,
   errors: [ArgumentException, InternalServiceException, NotFoundException],
@@ -5709,27 +5526,13 @@ export type ListTestGridSessionArtifactsError =
 /**
  * Retrieves a list of artifacts created during the session.
  */
-export const listTestGridSessionArtifacts: API.OperationMethod<
+export const listTestGridSessionArtifacts: API.PaginatedOperationMethod<
   ListTestGridSessionArtifactsRequest,
   ListTestGridSessionArtifactsResult,
   ListTestGridSessionArtifactsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTestGridSessionArtifactsRequest,
-  ) => stream.Stream<
-    ListTestGridSessionArtifactsResult,
-    ListTestGridSessionArtifactsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTestGridSessionArtifactsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListTestGridSessionArtifactsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTestGridSessionArtifactsRequest,
   output: ListTestGridSessionArtifactsResult,
   errors: [ArgumentException, InternalServiceException, NotFoundException],
@@ -5751,27 +5554,13 @@ export type ListTestGridSessionsError =
 /**
  * Retrieves a list of sessions for a TestGridProject.
  */
-export const listTestGridSessions: API.OperationMethod<
+export const listTestGridSessions: API.PaginatedOperationMethod<
   ListTestGridSessionsRequest,
   ListTestGridSessionsResult,
   ListTestGridSessionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTestGridSessionsRequest,
-  ) => stream.Stream<
-    ListTestGridSessionsResult,
-    ListTestGridSessionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTestGridSessionsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListTestGridSessionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTestGridSessionsRequest,
   output: ListTestGridSessionsResult,
   errors: [ArgumentException, InternalServiceException, NotFoundException],
@@ -5794,27 +5583,13 @@ export type ListTestsError =
 /**
  * Gets information about tests in a given test suite.
  */
-export const listTests: API.OperationMethod<
+export const listTests: API.PaginatedOperationMethod<
   ListTestsRequest,
   ListTestsResult,
   ListTestsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTestsRequest,
-  ) => stream.Stream<
-    ListTestsResult,
-    ListTestsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTestsRequest,
-  ) => stream.Stream<
-    Test,
-    ListTestsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Test
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTestsRequest,
   output: ListTestsResult,
   errors: [
@@ -5847,27 +5622,13 @@ export type ListUniqueProblemsError =
  * MyActivity.java:386), `ListUniqueProblems` returns a single entry instead of many
  * individual entries for that exception.
  */
-export const listUniqueProblems: API.OperationMethod<
+export const listUniqueProblems: API.PaginatedOperationMethod<
   ListUniqueProblemsRequest,
   ListUniqueProblemsResult,
   ListUniqueProblemsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListUniqueProblemsRequest,
-  ) => stream.Stream<
-    ListUniqueProblemsResult,
-    ListUniqueProblemsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListUniqueProblemsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListUniqueProblemsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListUniqueProblemsRequest,
   output: ListUniqueProblemsResult,
   errors: [
@@ -5895,27 +5656,13 @@ export type ListUploadsError =
 /**
  * Gets information about uploads, given an AWS Device Farm project ARN.
  */
-export const listUploads: API.OperationMethod<
+export const listUploads: API.PaginatedOperationMethod<
   ListUploadsRequest,
   ListUploadsResult,
   ListUploadsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListUploadsRequest,
-  ) => stream.Stream<
-    ListUploadsResult,
-    ListUploadsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListUploadsRequest,
-  ) => stream.Stream<
-    Upload,
-    ListUploadsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Upload
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListUploadsRequest,
   output: ListUploadsResult,
   errors: [

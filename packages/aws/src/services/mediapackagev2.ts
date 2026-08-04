@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -3212,27 +3211,13 @@ export type ListChannelGroupsError =
 /**
  * Retrieves all channel groups that are configured in Elemental MediaPackage.
  */
-export const listChannelGroups: API.OperationMethod<
+export const listChannelGroups: API.PaginatedOperationMethod<
   ListChannelGroupsRequest,
   ListChannelGroupsResponse,
   ListChannelGroupsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListChannelGroupsRequest,
-  ) => stream.Stream<
-    ListChannelGroupsResponse,
-    ListChannelGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListChannelGroupsRequest,
-  ) => stream.Stream<
-    ChannelGroupListConfiguration,
-    ListChannelGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ChannelGroupListConfiguration
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListChannelGroupsRequest,
   output: ListChannelGroupsResponse,
   errors: [
@@ -3262,27 +3247,13 @@ export type ListChannelsError =
 /**
  * Retrieves all channels in a specific channel group that are configured in AWS Elemental MediaPackage.
  */
-export const listChannels: API.OperationMethod<
+export const listChannels: API.PaginatedOperationMethod<
   ListChannelsRequest,
   ListChannelsResponse,
   ListChannelsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListChannelsRequest,
-  ) => stream.Stream<
-    ListChannelsResponse,
-    ListChannelsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListChannelsRequest,
-  ) => stream.Stream<
-    ChannelListConfiguration,
-    ListChannelsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ChannelListConfiguration
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListChannelsRequest,
   output: ListChannelsResponse,
   errors: [
@@ -3313,27 +3284,13 @@ export type ListHarvestJobsError =
 /**
  * Retrieves a list of harvest jobs that match the specified criteria.
  */
-export const listHarvestJobs: API.OperationMethod<
+export const listHarvestJobs: API.PaginatedOperationMethod<
   ListHarvestJobsRequest,
   ListHarvestJobsResponse,
   ListHarvestJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListHarvestJobsRequest,
-  ) => stream.Stream<
-    ListHarvestJobsResponse,
-    ListHarvestJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListHarvestJobsRequest,
-  ) => stream.Stream<
-    HarvestJob,
-    ListHarvestJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  HarvestJob
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListHarvestJobsRequest,
   output: ListHarvestJobsResponse,
   errors: [
@@ -3364,27 +3321,13 @@ export type ListOriginEndpointsError =
 /**
  * Retrieves all origin endpoints in a specific channel that are configured in AWS Elemental MediaPackage.
  */
-export const listOriginEndpoints: API.OperationMethod<
+export const listOriginEndpoints: API.PaginatedOperationMethod<
   ListOriginEndpointsRequest,
   ListOriginEndpointsResponse,
   ListOriginEndpointsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListOriginEndpointsRequest,
-  ) => stream.Stream<
-    ListOriginEndpointsResponse,
-    ListOriginEndpointsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListOriginEndpointsRequest,
-  ) => stream.Stream<
-    OriginEndpointListConfiguration,
-    ListOriginEndpointsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  OriginEndpointListConfiguration
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOriginEndpointsRequest,
   output: ListOriginEndpointsResponse,
   errors: [

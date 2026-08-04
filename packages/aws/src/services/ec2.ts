@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -83226,27 +83225,13 @@ export type DescribeAddressesAttributeError =
 /**
  * Describes the attributes of the specified Elastic IP addresses. For requirements, see Using reverse DNS for email applications.
  */
-export const describeAddressesAttribute: API.OperationMethod<
+export const describeAddressesAttribute: API.PaginatedOperationMethod<
   DescribeAddressesAttributeRequest,
   DescribeAddressesAttributeResult,
   DescribeAddressesAttributeError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeAddressesAttributeRequest,
-  ) => stream.Stream<
-    DescribeAddressesAttributeResult,
-    DescribeAddressesAttributeError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeAddressesAttributeRequest,
-  ) => stream.Stream<
-    AddressAttribute,
-    DescribeAddressesAttributeError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  AddressAttribute
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeAddressesAttributeRequest,
   output: DescribeAddressesAttributeResult,
   errors: [
@@ -83279,27 +83264,13 @@ export type DescribeAddressTransfersError = CommonErrors;
  * account. Accepted transfers are visible to the source account for 14 days
  * after the transfers have been accepted.
  */
-export const describeAddressTransfers: API.OperationMethod<
+export const describeAddressTransfers: API.PaginatedOperationMethod<
   DescribeAddressTransfersRequest,
   DescribeAddressTransfersResult,
   DescribeAddressTransfersError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeAddressTransfersRequest,
-  ) => stream.Stream<
-    DescribeAddressTransfersResult,
-    DescribeAddressTransfersError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeAddressTransfersRequest,
-  ) => stream.Stream<
-    AddressTransfer,
-    DescribeAddressTransfersError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  AddressTransfer
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeAddressTransfersRequest,
   output: DescribeAddressTransfersResult,
   errors: [],
@@ -83392,27 +83363,13 @@ export type DescribeAwsNetworkPerformanceMetricSubscriptionsError =
 /**
  * Describes the current Infrastructure Performance metric subscriptions.
  */
-export const describeAwsNetworkPerformanceMetricSubscriptions: API.OperationMethod<
+export const describeAwsNetworkPerformanceMetricSubscriptions: API.PaginatedOperationMethod<
   DescribeAwsNetworkPerformanceMetricSubscriptionsRequest,
   DescribeAwsNetworkPerformanceMetricSubscriptionsResult,
   DescribeAwsNetworkPerformanceMetricSubscriptionsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeAwsNetworkPerformanceMetricSubscriptionsRequest,
-  ) => stream.Stream<
-    DescribeAwsNetworkPerformanceMetricSubscriptionsResult,
-    DescribeAwsNetworkPerformanceMetricSubscriptionsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeAwsNetworkPerformanceMetricSubscriptionsRequest,
-  ) => stream.Stream<
-    Subscription,
-    DescribeAwsNetworkPerformanceMetricSubscriptionsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  Subscription
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeAwsNetworkPerformanceMetricSubscriptionsRequest,
   output: DescribeAwsNetworkPerformanceMetricSubscriptionsResult,
   errors: [],
@@ -83472,27 +83429,13 @@ export type DescribeByoipCidrsError =
  * Describes the IP address ranges that were provisioned for use with Amazon Web Services resources
  * through through bring your own IP addresses (BYOIP).
  */
-export const describeByoipCidrs: API.OperationMethod<
+export const describeByoipCidrs: API.PaginatedOperationMethod<
   DescribeByoipCidrsRequest,
   DescribeByoipCidrsResult,
   DescribeByoipCidrsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeByoipCidrsRequest,
-  ) => stream.Stream<
-    DescribeByoipCidrsResult,
-    DescribeByoipCidrsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeByoipCidrsRequest,
-  ) => stream.Stream<
-    ByoipCidr,
-    DescribeByoipCidrsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  ByoipCidr
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeByoipCidrsRequest,
   output: DescribeByoipCidrsResult,
   errors: [RequestLimitExceeded, MissingParameter, UnauthorizedOperation],
@@ -83516,27 +83459,13 @@ export type DescribeCapacityBlockExtensionHistoryError =
  * Describes the events for the specified Capacity Block extension during the specified
  * time.
  */
-export const describeCapacityBlockExtensionHistory: API.OperationMethod<
+export const describeCapacityBlockExtensionHistory: API.PaginatedOperationMethod<
   DescribeCapacityBlockExtensionHistoryRequest,
   DescribeCapacityBlockExtensionHistoryResult,
   DescribeCapacityBlockExtensionHistoryError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeCapacityBlockExtensionHistoryRequest,
-  ) => stream.Stream<
-    DescribeCapacityBlockExtensionHistoryResult,
-    DescribeCapacityBlockExtensionHistoryError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeCapacityBlockExtensionHistoryRequest,
-  ) => stream.Stream<
-    CapacityBlockExtension,
-    DescribeCapacityBlockExtensionHistoryError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  CapacityBlockExtension
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeCapacityBlockExtensionHistoryRequest,
   output: DescribeCapacityBlockExtensionHistoryResult,
   errors: [
@@ -83564,27 +83493,13 @@ export type DescribeCapacityBlockExtensionOfferingsError =
  * Describes Capacity Block extension offerings available for purchase in the Amazon Web Services
  * Region that you're currently using.
  */
-export const describeCapacityBlockExtensionOfferings: API.OperationMethod<
+export const describeCapacityBlockExtensionOfferings: API.PaginatedOperationMethod<
   DescribeCapacityBlockExtensionOfferingsRequest,
   DescribeCapacityBlockExtensionOfferingsResult,
   DescribeCapacityBlockExtensionOfferingsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeCapacityBlockExtensionOfferingsRequest,
-  ) => stream.Stream<
-    DescribeCapacityBlockExtensionOfferingsResult,
-    DescribeCapacityBlockExtensionOfferingsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeCapacityBlockExtensionOfferingsRequest,
-  ) => stream.Stream<
-    CapacityBlockExtensionOffering,
-    DescribeCapacityBlockExtensionOfferingsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  CapacityBlockExtensionOffering
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeCapacityBlockExtensionOfferingsRequest,
   output: DescribeCapacityBlockExtensionOfferingsResult,
   errors: [
@@ -83615,27 +83530,13 @@ export type DescribeCapacityBlockOfferingsError =
  * To search for an available Capacity Block offering, you specify a reservation duration
  * and instance count.
  */
-export const describeCapacityBlockOfferings: API.OperationMethod<
+export const describeCapacityBlockOfferings: API.PaginatedOperationMethod<
   DescribeCapacityBlockOfferingsRequest,
   DescribeCapacityBlockOfferingsResult,
   DescribeCapacityBlockOfferingsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeCapacityBlockOfferingsRequest,
-  ) => stream.Stream<
-    DescribeCapacityBlockOfferingsResult,
-    DescribeCapacityBlockOfferingsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeCapacityBlockOfferingsRequest,
-  ) => stream.Stream<
-    CapacityBlockOffering,
-    DescribeCapacityBlockOfferingsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  CapacityBlockOffering
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeCapacityBlockOfferingsRequest,
   output: DescribeCapacityBlockOfferingsResult,
   errors: [RequestLimitExceeded, InvalidParameterValue, UnauthorizedOperation],
@@ -83658,27 +83559,13 @@ export type DescribeCapacityBlocksError =
 /**
  * Describes details about Capacity Blocks in the Amazon Web Services Region that you're currently using.
  */
-export const describeCapacityBlocks: API.OperationMethod<
+export const describeCapacityBlocks: API.PaginatedOperationMethod<
   DescribeCapacityBlocksRequest,
   DescribeCapacityBlocksResult,
   DescribeCapacityBlocksError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeCapacityBlocksRequest,
-  ) => stream.Stream<
-    DescribeCapacityBlocksResult,
-    DescribeCapacityBlocksError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeCapacityBlocksRequest,
-  ) => stream.Stream<
-    CapacityBlock,
-    DescribeCapacityBlocksError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  CapacityBlock
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeCapacityBlocksRequest,
   output: DescribeCapacityBlocksResult,
   errors: [
@@ -83705,27 +83592,13 @@ export type DescribeCapacityBlockStatusError =
 /**
  * Describes the availability of capacity for the specified Capacity blocks, or all of your Capacity Blocks.
  */
-export const describeCapacityBlockStatus: API.OperationMethod<
+export const describeCapacityBlockStatus: API.PaginatedOperationMethod<
   DescribeCapacityBlockStatusRequest,
   DescribeCapacityBlockStatusResult,
   DescribeCapacityBlockStatusError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeCapacityBlockStatusRequest,
-  ) => stream.Stream<
-    DescribeCapacityBlockStatusResult,
-    DescribeCapacityBlockStatusError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeCapacityBlockStatusRequest,
-  ) => stream.Stream<
-    CapacityBlockStatus,
-    DescribeCapacityBlockStatusError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  CapacityBlockStatus
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeCapacityBlockStatusRequest,
   output: DescribeCapacityBlockStatusResult,
   errors: [
@@ -83752,27 +83625,13 @@ export type DescribeCapacityManagerDataExportsError =
 /**
  * Describes one or more Capacity Manager data export configurations. Returns information about export settings, delivery status, and recent export activity.
  */
-export const describeCapacityManagerDataExports: API.OperationMethod<
+export const describeCapacityManagerDataExports: API.PaginatedOperationMethod<
   DescribeCapacityManagerDataExportsRequest,
   DescribeCapacityManagerDataExportsResult,
   DescribeCapacityManagerDataExportsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeCapacityManagerDataExportsRequest,
-  ) => stream.Stream<
-    DescribeCapacityManagerDataExportsResult,
-    DescribeCapacityManagerDataExportsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeCapacityManagerDataExportsRequest,
-  ) => stream.Stream<
-    CapacityManagerDataExportResponse,
-    DescribeCapacityManagerDataExportsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  CapacityManagerDataExportResponse
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeCapacityManagerDataExportsRequest,
   output: DescribeCapacityManagerDataExportsResult,
   errors: [
@@ -83801,27 +83660,13 @@ export type DescribeCapacityReservationBillingRequestsError =
  * Reservation. For more information, see Billing assignment for shared
  * Amazon EC2 Capacity Reservations.
  */
-export const describeCapacityReservationBillingRequests: API.OperationMethod<
+export const describeCapacityReservationBillingRequests: API.PaginatedOperationMethod<
   DescribeCapacityReservationBillingRequestsRequest,
   DescribeCapacityReservationBillingRequestsResult,
   DescribeCapacityReservationBillingRequestsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeCapacityReservationBillingRequestsRequest,
-  ) => stream.Stream<
-    DescribeCapacityReservationBillingRequestsResult,
-    DescribeCapacityReservationBillingRequestsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeCapacityReservationBillingRequestsRequest,
-  ) => stream.Stream<
-    CapacityReservationBillingRequest,
-    DescribeCapacityReservationBillingRequestsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  CapacityReservationBillingRequest
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeCapacityReservationBillingRequestsRequest,
   output: DescribeCapacityReservationBillingRequestsResult,
   errors: [RequestLimitExceeded, MissingParameter, UnauthorizedOperation],
@@ -83864,27 +83709,13 @@ export type DescribeCapacityReservationFleetsError =
 /**
  * Describes one or more Capacity Reservation Fleets.
  */
-export const describeCapacityReservationFleets: API.OperationMethod<
+export const describeCapacityReservationFleets: API.PaginatedOperationMethod<
   DescribeCapacityReservationFleetsRequest,
   DescribeCapacityReservationFleetsResult,
   DescribeCapacityReservationFleetsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeCapacityReservationFleetsRequest,
-  ) => stream.Stream<
-    DescribeCapacityReservationFleetsResult,
-    DescribeCapacityReservationFleetsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeCapacityReservationFleetsRequest,
-  ) => stream.Stream<
-    CapacityReservationFleet,
-    DescribeCapacityReservationFleetsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  CapacityReservationFleet
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeCapacityReservationFleetsRequest,
   output: DescribeCapacityReservationFleetsResult,
   errors: [
@@ -83913,27 +83744,13 @@ export type DescribeCapacityReservationsError =
  * Capacity Reservations in the Amazon Web Services Region that you're currently
  * using.
  */
-export const describeCapacityReservations: API.OperationMethod<
+export const describeCapacityReservations: API.PaginatedOperationMethod<
   DescribeCapacityReservationsRequest,
   DescribeCapacityReservationsResult,
   DescribeCapacityReservationsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeCapacityReservationsRequest,
-  ) => stream.Stream<
-    DescribeCapacityReservationsResult,
-    DescribeCapacityReservationsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeCapacityReservationsRequest,
-  ) => stream.Stream<
-    CapacityReservation,
-    DescribeCapacityReservationsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  CapacityReservation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeCapacityReservationsRequest,
   output: DescribeCapacityReservationsResult,
   errors: [
@@ -84001,27 +83818,13 @@ export type DescribeCarrierGatewaysError =
 /**
  * Describes one or more of your carrier gateways.
  */
-export const describeCarrierGateways: API.OperationMethod<
+export const describeCarrierGateways: API.PaginatedOperationMethod<
   DescribeCarrierGatewaysRequest,
   DescribeCarrierGatewaysResult,
   DescribeCarrierGatewaysError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeCarrierGatewaysRequest,
-  ) => stream.Stream<
-    DescribeCarrierGatewaysResult,
-    DescribeCarrierGatewaysError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeCarrierGatewaysRequest,
-  ) => stream.Stream<
-    CarrierGateway,
-    DescribeCarrierGatewaysError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  CarrierGateway
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeCarrierGatewaysRequest,
   output: DescribeCarrierGatewaysResult,
   errors: [
@@ -84054,27 +83857,13 @@ export type DescribeClassicLinkInstancesError =
  * information about EC2-Classic instances linked to a VPC through ClassicLink. You cannot
  * use this request to return information about other instances.
  */
-export const describeClassicLinkInstances: API.OperationMethod<
+export const describeClassicLinkInstances: API.PaginatedOperationMethod<
   DescribeClassicLinkInstancesRequest,
   DescribeClassicLinkInstancesResult,
   DescribeClassicLinkInstancesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeClassicLinkInstancesRequest,
-  ) => stream.Stream<
-    DescribeClassicLinkInstancesResult,
-    DescribeClassicLinkInstancesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeClassicLinkInstancesRequest,
-  ) => stream.Stream<
-    ClassicLinkInstance,
-    DescribeClassicLinkInstancesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  ClassicLinkInstance
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeClassicLinkInstancesRequest,
   output: DescribeClassicLinkInstancesResult,
   errors: [
@@ -84101,27 +83890,13 @@ export type DescribeClientVpnAuthorizationRulesError =
 /**
  * Describes the authorization rules for a specified Client VPN endpoint.
  */
-export const describeClientVpnAuthorizationRules: API.OperationMethod<
+export const describeClientVpnAuthorizationRules: API.PaginatedOperationMethod<
   DescribeClientVpnAuthorizationRulesRequest,
   DescribeClientVpnAuthorizationRulesResult,
   DescribeClientVpnAuthorizationRulesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeClientVpnAuthorizationRulesRequest,
-  ) => stream.Stream<
-    DescribeClientVpnAuthorizationRulesResult,
-    DescribeClientVpnAuthorizationRulesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeClientVpnAuthorizationRulesRequest,
-  ) => stream.Stream<
-    AuthorizationRule,
-    DescribeClientVpnAuthorizationRulesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  AuthorizationRule
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeClientVpnAuthorizationRulesRequest,
   output: DescribeClientVpnAuthorizationRulesResult,
   errors: [
@@ -84150,27 +83925,13 @@ export type DescribeClientVpnConnectionsError =
  * Describes active client connections and connections that have been terminated within the last 60
  * minutes for the specified Client VPN endpoint.
  */
-export const describeClientVpnConnections: API.OperationMethod<
+export const describeClientVpnConnections: API.PaginatedOperationMethod<
   DescribeClientVpnConnectionsRequest,
   DescribeClientVpnConnectionsResult,
   DescribeClientVpnConnectionsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeClientVpnConnectionsRequest,
-  ) => stream.Stream<
-    DescribeClientVpnConnectionsResult,
-    DescribeClientVpnConnectionsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeClientVpnConnectionsRequest,
-  ) => stream.Stream<
-    ClientVpnConnection,
-    DescribeClientVpnConnectionsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  ClientVpnConnection
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeClientVpnConnectionsRequest,
   output: DescribeClientVpnConnectionsResult,
   errors: [
@@ -84198,27 +83959,13 @@ export type DescribeClientVpnEndpointsError =
 /**
  * Describes one or more Client VPN endpoints in the account.
  */
-export const describeClientVpnEndpoints: API.OperationMethod<
+export const describeClientVpnEndpoints: API.PaginatedOperationMethod<
   DescribeClientVpnEndpointsRequest,
   DescribeClientVpnEndpointsResult,
   DescribeClientVpnEndpointsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeClientVpnEndpointsRequest,
-  ) => stream.Stream<
-    DescribeClientVpnEndpointsResult,
-    DescribeClientVpnEndpointsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeClientVpnEndpointsRequest,
-  ) => stream.Stream<
-    ClientVpnEndpoint,
-    DescribeClientVpnEndpointsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  ClientVpnEndpoint
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeClientVpnEndpointsRequest,
   output: DescribeClientVpnEndpointsResult,
   errors: [
@@ -84246,27 +83993,13 @@ export type DescribeClientVpnRoutesError =
 /**
  * Describes the routes for the specified Client VPN endpoint.
  */
-export const describeClientVpnRoutes: API.OperationMethod<
+export const describeClientVpnRoutes: API.PaginatedOperationMethod<
   DescribeClientVpnRoutesRequest,
   DescribeClientVpnRoutesResult,
   DescribeClientVpnRoutesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeClientVpnRoutesRequest,
-  ) => stream.Stream<
-    DescribeClientVpnRoutesResult,
-    DescribeClientVpnRoutesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeClientVpnRoutesRequest,
-  ) => stream.Stream<
-    ClientVpnRoute,
-    DescribeClientVpnRoutesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  ClientVpnRoute
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeClientVpnRoutesRequest,
   output: DescribeClientVpnRoutesResult,
   errors: [
@@ -84295,27 +84028,13 @@ export type DescribeClientVpnTargetNetworksError =
 /**
  * Describes the target networks associated with the specified Client VPN endpoint.
  */
-export const describeClientVpnTargetNetworks: API.OperationMethod<
+export const describeClientVpnTargetNetworks: API.PaginatedOperationMethod<
   DescribeClientVpnTargetNetworksRequest,
   DescribeClientVpnTargetNetworksResult,
   DescribeClientVpnTargetNetworksError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeClientVpnTargetNetworksRequest,
-  ) => stream.Stream<
-    DescribeClientVpnTargetNetworksResult,
-    DescribeClientVpnTargetNetworksError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeClientVpnTargetNetworksRequest,
-  ) => stream.Stream<
-    TargetNetwork,
-    DescribeClientVpnTargetNetworksError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  TargetNetwork
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeClientVpnTargetNetworksRequest,
   output: DescribeClientVpnTargetNetworksResult,
   errors: [
@@ -84343,27 +84062,13 @@ export type DescribeCoipPoolsError =
 /**
  * Describes the specified customer-owned address pools or all of your customer-owned address pools.
  */
-export const describeCoipPools: API.OperationMethod<
+export const describeCoipPools: API.PaginatedOperationMethod<
   DescribeCoipPoolsRequest,
   DescribeCoipPoolsResult,
   DescribeCoipPoolsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeCoipPoolsRequest,
-  ) => stream.Stream<
-    DescribeCoipPoolsResult,
-    DescribeCoipPoolsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeCoipPoolsRequest,
-  ) => stream.Stream<
-    CoipPool,
-    DescribeCoipPoolsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  CoipPool
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeCoipPoolsRequest,
   output: DescribeCoipPoolsResult,
   errors: [RequestLimitExceeded, InvalidPoolIDMalformed, UnauthorizedOperation],
@@ -84479,27 +84184,13 @@ export type DescribeDhcpOptionsError =
  * For more information, see DHCP option sets in the
  * *Amazon VPC User Guide*.
  */
-export const describeDhcpOptions: API.OperationMethod<
+export const describeDhcpOptions: API.PaginatedOperationMethod<
   DescribeDhcpOptionsRequest,
   DescribeDhcpOptionsResult,
   DescribeDhcpOptionsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeDhcpOptionsRequest,
-  ) => stream.Stream<
-    DescribeDhcpOptionsResult,
-    DescribeDhcpOptionsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeDhcpOptionsRequest,
-  ) => stream.Stream<
-    DhcpOptions,
-    DescribeDhcpOptionsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  DhcpOptions
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeDhcpOptionsRequest,
   output: DescribeDhcpOptionsResult,
   errors: [
@@ -84533,27 +84224,13 @@ export type DescribeEgressOnlyInternetGatewaysError =
  * Alternatively, you can specify specific egress-only internet gateway IDs or filter the results to
  * include only the egress-only internet gateways that match specific criteria.
  */
-export const describeEgressOnlyInternetGateways: API.OperationMethod<
+export const describeEgressOnlyInternetGateways: API.PaginatedOperationMethod<
   DescribeEgressOnlyInternetGatewaysRequest,
   DescribeEgressOnlyInternetGatewaysResult,
   DescribeEgressOnlyInternetGatewaysError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeEgressOnlyInternetGatewaysRequest,
-  ) => stream.Stream<
-    DescribeEgressOnlyInternetGatewaysResult,
-    DescribeEgressOnlyInternetGatewaysError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeEgressOnlyInternetGatewaysRequest,
-  ) => stream.Stream<
-    EgressOnlyInternetGateway,
-    DescribeEgressOnlyInternetGatewaysError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  EgressOnlyInternetGateway
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeEgressOnlyInternetGatewaysRequest,
   output: DescribeEgressOnlyInternetGatewaysResult,
   errors: [
@@ -84606,27 +84283,13 @@ export type DescribeExportImageTasksError =
 /**
  * Describes the specified export image tasks or all of your export image tasks.
  */
-export const describeExportImageTasks: API.OperationMethod<
+export const describeExportImageTasks: API.PaginatedOperationMethod<
   DescribeExportImageTasksRequest,
   DescribeExportImageTasksResult,
   DescribeExportImageTasksError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeExportImageTasksRequest,
-  ) => stream.Stream<
-    DescribeExportImageTasksResult,
-    DescribeExportImageTasksError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeExportImageTasksRequest,
-  ) => stream.Stream<
-    ExportImageTask,
-    DescribeExportImageTasksError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  ExportImageTask
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeExportImageTasksRequest,
   output: DescribeExportImageTasksResult,
   errors: [
@@ -84679,27 +84342,13 @@ export type DescribeFastLaunchImagesError =
 /**
  * Describe details for Windows AMIs that are configured for Windows fast launch.
  */
-export const describeFastLaunchImages: API.OperationMethod<
+export const describeFastLaunchImages: API.PaginatedOperationMethod<
   DescribeFastLaunchImagesRequest,
   DescribeFastLaunchImagesResult,
   DescribeFastLaunchImagesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeFastLaunchImagesRequest,
-  ) => stream.Stream<
-    DescribeFastLaunchImagesResult,
-    DescribeFastLaunchImagesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeFastLaunchImagesRequest,
-  ) => stream.Stream<
-    DescribeFastLaunchImagesSuccessItem,
-    DescribeFastLaunchImagesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  DescribeFastLaunchImagesSuccessItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeFastLaunchImagesRequest,
   output: DescribeFastLaunchImagesResult,
   errors: [RequestLimitExceeded, InvalidRequest, UnauthorizedOperation],
@@ -84718,27 +84367,13 @@ export type DescribeFastSnapshotRestoresError = CommonErrors;
 /**
  * Describes the state of fast snapshot restores for your snapshots.
  */
-export const describeFastSnapshotRestores: API.OperationMethod<
+export const describeFastSnapshotRestores: API.PaginatedOperationMethod<
   DescribeFastSnapshotRestoresRequest,
   DescribeFastSnapshotRestoresResult,
   DescribeFastSnapshotRestoresError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeFastSnapshotRestoresRequest,
-  ) => stream.Stream<
-    DescribeFastSnapshotRestoresResult,
-    DescribeFastSnapshotRestoresError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeFastSnapshotRestoresRequest,
-  ) => stream.Stream<
-    DescribeFastSnapshotRestoreSuccessItem,
-    DescribeFastSnapshotRestoresError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  DescribeFastSnapshotRestoreSuccessItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeFastSnapshotRestoresRequest,
   output: DescribeFastSnapshotRestoresResult,
   errors: [],
@@ -84833,27 +84468,13 @@ export type DescribeFleetsError =
  * For more information, see Describe your
  * EC2 Fleet in the *Amazon EC2 User Guide*.
  */
-export const describeFleets: API.OperationMethod<
+export const describeFleets: API.PaginatedOperationMethod<
   DescribeFleetsRequest,
   DescribeFleetsResult,
   DescribeFleetsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeFleetsRequest,
-  ) => stream.Stream<
-    DescribeFleetsResult,
-    DescribeFleetsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeFleetsRequest,
-  ) => stream.Stream<
-    FleetData,
-    DescribeFleetsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  FleetData
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeFleetsRequest,
   output: DescribeFleetsResult,
   errors: [
@@ -84884,27 +84505,13 @@ export type DescribeFlowLogsError =
  * To view the published flow log records, you must view the log destination. For example,
  * the CloudWatch Logs log group, the Amazon S3 bucket, or the Kinesis Data Firehose delivery stream.
  */
-export const describeFlowLogs: API.OperationMethod<
+export const describeFlowLogs: API.PaginatedOperationMethod<
   DescribeFlowLogsRequest,
   DescribeFlowLogsResult,
   DescribeFlowLogsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeFlowLogsRequest,
-  ) => stream.Stream<
-    DescribeFlowLogsResult,
-    DescribeFlowLogsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeFlowLogsRequest,
-  ) => stream.Stream<
-    FlowLog,
-    DescribeFlowLogsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  FlowLog
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeFlowLogsRequest,
   output: DescribeFlowLogsResult,
   errors: [
@@ -84962,27 +84569,13 @@ export type DescribeFpgaImagesError =
  * private AFIs that you own, and AFIs owned by other Amazon Web Services accounts for which you have load
  * permissions.
  */
-export const describeFpgaImages: API.OperationMethod<
+export const describeFpgaImages: API.PaginatedOperationMethod<
   DescribeFpgaImagesRequest,
   DescribeFpgaImagesResult,
   DescribeFpgaImagesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeFpgaImagesRequest,
-  ) => stream.Stream<
-    DescribeFpgaImagesResult,
-    DescribeFpgaImagesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeFpgaImagesRequest,
-  ) => stream.Stream<
-    FpgaImage,
-    DescribeFpgaImagesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  FpgaImage
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeFpgaImagesRequest,
   output: DescribeFpgaImagesResult,
   errors: [
@@ -85016,27 +84609,13 @@ export type DescribeHostReservationOfferingsError =
  * information about supported instance types, see Dedicated Hosts
  * in the *Amazon EC2 User Guide*.
  */
-export const describeHostReservationOfferings: API.OperationMethod<
+export const describeHostReservationOfferings: API.PaginatedOperationMethod<
   DescribeHostReservationOfferingsRequest,
   DescribeHostReservationOfferingsResult,
   DescribeHostReservationOfferingsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeHostReservationOfferingsRequest,
-  ) => stream.Stream<
-    DescribeHostReservationOfferingsResult,
-    DescribeHostReservationOfferingsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeHostReservationOfferingsRequest,
-  ) => stream.Stream<
-    HostOffering,
-    DescribeHostReservationOfferingsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  HostOffering
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeHostReservationOfferingsRequest,
   output: DescribeHostReservationOfferingsResult,
   errors: [
@@ -85060,27 +84639,13 @@ export type DescribeHostReservationsError = CommonErrors;
  * Describes reservations that are associated with Dedicated Hosts in your
  * account.
  */
-export const describeHostReservations: API.OperationMethod<
+export const describeHostReservations: API.PaginatedOperationMethod<
   DescribeHostReservationsRequest,
   DescribeHostReservationsResult,
   DescribeHostReservationsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeHostReservationsRequest,
-  ) => stream.Stream<
-    DescribeHostReservationsResult,
-    DescribeHostReservationsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeHostReservationsRequest,
-  ) => stream.Stream<
-    HostReservation,
-    DescribeHostReservationsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  HostReservation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeHostReservationsRequest,
   output: DescribeHostReservationsResult,
   errors: [],
@@ -85107,27 +84672,13 @@ export type DescribeHostsError =
  * All listed instances consume capacity on your Dedicated Host. Dedicated Hosts that have
  * recently been released are listed with the state `released`.
  */
-export const describeHosts: API.OperationMethod<
+export const describeHosts: API.PaginatedOperationMethod<
   DescribeHostsRequest,
   DescribeHostsResult,
   DescribeHostsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeHostsRequest,
-  ) => stream.Stream<
-    DescribeHostsResult,
-    DescribeHostsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeHostsRequest,
-  ) => stream.Stream<
-    Host,
-    DescribeHostsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  Host
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeHostsRequest,
   output: DescribeHostsResult,
   errors: [RequestLimitExceeded, InvalidHostIDMalformed, UnauthorizedOperation],
@@ -85150,27 +84701,13 @@ export type DescribeIamInstanceProfileAssociationsError =
 /**
  * Describes your IAM instance profile associations.
  */
-export const describeIamInstanceProfileAssociations: API.OperationMethod<
+export const describeIamInstanceProfileAssociations: API.PaginatedOperationMethod<
   DescribeIamInstanceProfileAssociationsRequest,
   DescribeIamInstanceProfileAssociationsResult,
   DescribeIamInstanceProfileAssociationsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeIamInstanceProfileAssociationsRequest,
-  ) => stream.Stream<
-    DescribeIamInstanceProfileAssociationsResult,
-    DescribeIamInstanceProfileAssociationsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeIamInstanceProfileAssociationsRequest,
-  ) => stream.Stream<
-    IamInstanceProfileAssociation,
-    DescribeIamInstanceProfileAssociationsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  IamInstanceProfileAssociation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeIamInstanceProfileAssociationsRequest,
   output: DescribeIamInstanceProfileAssociationsResult,
   errors: [RequestLimitExceeded, InvalidParameterValue, UnauthorizedOperation],
@@ -85313,27 +84850,13 @@ export type DescribeImageReferencesError =
  * For more information, see Identify your resources referencing
  * specified AMIs in the *Amazon EC2 User Guide*.
  */
-export const describeImageReferences: API.OperationMethod<
+export const describeImageReferences: API.PaginatedOperationMethod<
   DescribeImageReferencesRequest,
   DescribeImageReferencesResult,
   DescribeImageReferencesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeImageReferencesRequest,
-  ) => stream.Stream<
-    DescribeImageReferencesResult,
-    DescribeImageReferencesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeImageReferencesRequest,
-  ) => stream.Stream<
-    ImageReference,
-    DescribeImageReferencesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  ImageReference
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeImageReferencesRequest,
   output: DescribeImageReferencesResult,
   errors: [RequestLimitExceeded, InvalidAMIIDMalformed, UnauthorizedOperation],
@@ -85385,27 +84908,13 @@ export type DescribeImagesError =
  * The order of the elements in the response, including those within nested structures,
  * might vary. Applications should not assume the elements appear in a particular order.
  */
-export const describeImages: API.OperationMethod<
+export const describeImages: API.PaginatedOperationMethod<
   DescribeImagesRequest,
   DescribeImagesResult,
   DescribeImagesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeImagesRequest,
-  ) => stream.Stream<
-    DescribeImagesResult,
-    DescribeImagesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeImagesRequest,
-  ) => stream.Stream<
-    Image,
-    DescribeImagesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  Image
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeImagesRequest,
   output: DescribeImagesResult,
   errors: [
@@ -85437,27 +84946,13 @@ export type DescribeImageUsageReportEntriesError =
  * For more information, see View your AMI usage in the
  * *Amazon EC2 User Guide*.
  */
-export const describeImageUsageReportEntries: API.OperationMethod<
+export const describeImageUsageReportEntries: API.PaginatedOperationMethod<
   DescribeImageUsageReportEntriesRequest,
   DescribeImageUsageReportEntriesResult,
   DescribeImageUsageReportEntriesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeImageUsageReportEntriesRequest,
-  ) => stream.Stream<
-    DescribeImageUsageReportEntriesResult,
-    DescribeImageUsageReportEntriesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeImageUsageReportEntriesRequest,
-  ) => stream.Stream<
-    ImageUsageReportEntry,
-    DescribeImageUsageReportEntriesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  ImageUsageReportEntry
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeImageUsageReportEntriesRequest,
   output: DescribeImageUsageReportEntriesResult,
   errors: [RequestLimitExceeded, InvalidParameterValue, UnauthorizedOperation],
@@ -85484,27 +84979,13 @@ export type DescribeImageUsageReportsError =
  * For more information, see View your AMI usage in the
  * *Amazon EC2 User Guide*.
  */
-export const describeImageUsageReports: API.OperationMethod<
+export const describeImageUsageReports: API.PaginatedOperationMethod<
   DescribeImageUsageReportsRequest,
   DescribeImageUsageReportsResult,
   DescribeImageUsageReportsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeImageUsageReportsRequest,
-  ) => stream.Stream<
-    DescribeImageUsageReportsResult,
-    DescribeImageUsageReportsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeImageUsageReportsRequest,
-  ) => stream.Stream<
-    ImageUsageReport,
-    DescribeImageUsageReportsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  ImageUsageReport
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeImageUsageReportsRequest,
   output: DescribeImageUsageReportsResult,
   errors: [RequestLimitExceeded, InvalidParameterValue, UnauthorizedOperation],
@@ -85527,27 +85008,13 @@ export type DescribeImportImageTasksError =
 /**
  * Displays details about an import virtual machine or import snapshot tasks that are already created.
  */
-export const describeImportImageTasks: API.OperationMethod<
+export const describeImportImageTasks: API.PaginatedOperationMethod<
   DescribeImportImageTasksRequest,
   DescribeImportImageTasksResult,
   DescribeImportImageTasksError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeImportImageTasksRequest,
-  ) => stream.Stream<
-    DescribeImportImageTasksResult,
-    DescribeImportImageTasksError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeImportImageTasksRequest,
-  ) => stream.Stream<
-    ImportImageTask,
-    DescribeImportImageTasksError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  ImportImageTask
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeImportImageTasksRequest,
   output: DescribeImportImageTasksResult,
   errors: [RequestLimitExceeded, InvalidParameter, UnauthorizedOperation],
@@ -85570,27 +85037,13 @@ export type DescribeImportSnapshotTasksError =
 /**
  * Describes your import snapshot tasks.
  */
-export const describeImportSnapshotTasks: API.OperationMethod<
+export const describeImportSnapshotTasks: API.PaginatedOperationMethod<
   DescribeImportSnapshotTasksRequest,
   DescribeImportSnapshotTasksResult,
   DescribeImportSnapshotTasksError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeImportSnapshotTasksRequest,
-  ) => stream.Stream<
-    DescribeImportSnapshotTasksResult,
-    DescribeImportSnapshotTasksError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeImportSnapshotTasksRequest,
-  ) => stream.Stream<
-    ImportSnapshotTask,
-    DescribeImportSnapshotTasksError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  ImportSnapshotTask
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeImportSnapshotTasksRequest,
   output: DescribeImportSnapshotTasksResult,
   errors: [RequestLimitExceeded, InvalidParameter, UnauthorizedOperation],
@@ -85643,27 +85096,13 @@ export type DescribeInstanceConnectEndpointsError =
 /**
  * Describes the specified EC2 Instance Connect Endpoints or all EC2 Instance Connect Endpoints.
  */
-export const describeInstanceConnectEndpoints: API.OperationMethod<
+export const describeInstanceConnectEndpoints: API.PaginatedOperationMethod<
   DescribeInstanceConnectEndpointsRequest,
   DescribeInstanceConnectEndpointsResult,
   DescribeInstanceConnectEndpointsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeInstanceConnectEndpointsRequest,
-  ) => stream.Stream<
-    DescribeInstanceConnectEndpointsResult,
-    DescribeInstanceConnectEndpointsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeInstanceConnectEndpointsRequest,
-  ) => stream.Stream<
-    Ec2InstanceConnectEndpoint,
-    DescribeInstanceConnectEndpointsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  Ec2InstanceConnectEndpoint
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeInstanceConnectEndpointsRequest,
   output: DescribeInstanceConnectEndpointsResult,
   errors: [
@@ -85714,27 +85153,13 @@ export type DescribeInstanceCreditSpecificationsError =
  * For more information, see Burstable
  * performance instances in the *Amazon EC2 User Guide*.
  */
-export const describeInstanceCreditSpecifications: API.OperationMethod<
+export const describeInstanceCreditSpecifications: API.PaginatedOperationMethod<
   DescribeInstanceCreditSpecificationsRequest,
   DescribeInstanceCreditSpecificationsResult,
   DescribeInstanceCreditSpecificationsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeInstanceCreditSpecificationsRequest,
-  ) => stream.Stream<
-    DescribeInstanceCreditSpecificationsResult,
-    DescribeInstanceCreditSpecificationsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeInstanceCreditSpecificationsRequest,
-  ) => stream.Stream<
-    InstanceCreditSpecification,
-    DescribeInstanceCreditSpecificationsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  InstanceCreditSpecification
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeInstanceCreditSpecificationsRequest,
   output: DescribeInstanceCreditSpecificationsResult,
   errors: [
@@ -85790,27 +85215,13 @@ export type DescribeInstanceEventWindowsError =
  * For more information, see Define event windows for scheduled
  * events in the *Amazon EC2 User Guide*.
  */
-export const describeInstanceEventWindows: API.OperationMethod<
+export const describeInstanceEventWindows: API.PaginatedOperationMethod<
   DescribeInstanceEventWindowsRequest,
   DescribeInstanceEventWindowsResult,
   DescribeInstanceEventWindowsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeInstanceEventWindowsRequest,
-  ) => stream.Stream<
-    DescribeInstanceEventWindowsResult,
-    DescribeInstanceEventWindowsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeInstanceEventWindowsRequest,
-  ) => stream.Stream<
-    InstanceEventWindow,
-    DescribeInstanceEventWindowsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  InstanceEventWindow
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeInstanceEventWindowsRequest,
   output: DescribeInstanceEventWindowsResult,
   errors: [
@@ -85859,27 +85270,13 @@ export type DescribeInstanceImageMetadataError =
  * The order of the elements in the response, including those within nested structures,
  * might vary. Applications should not assume the elements appear in a particular order.
  */
-export const describeInstanceImageMetadata: API.OperationMethod<
+export const describeInstanceImageMetadata: API.PaginatedOperationMethod<
   DescribeInstanceImageMetadataRequest,
   DescribeInstanceImageMetadataResult,
   DescribeInstanceImageMetadataError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeInstanceImageMetadataRequest,
-  ) => stream.Stream<
-    DescribeInstanceImageMetadataResult,
-    DescribeInstanceImageMetadataError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeInstanceImageMetadataRequest,
-  ) => stream.Stream<
-    InstanceImageMetadata,
-    DescribeInstanceImageMetadataError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  InstanceImageMetadata
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeInstanceImageMetadataRequest,
   output: DescribeInstanceImageMetadataResult,
   errors: [
@@ -85944,27 +85341,13 @@ export type DescribeInstancesError =
  * structures, might vary. Applications should not assume the elements appear in a
  * particular order.
  */
-export const describeInstances: API.OperationMethod<
+export const describeInstances: API.PaginatedOperationMethod<
   DescribeInstancesRequest,
   DescribeInstancesResult,
   DescribeInstancesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeInstancesRequest,
-  ) => stream.Stream<
-    DescribeInstancesResult,
-    DescribeInstancesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeInstancesRequest,
-  ) => stream.Stream<
-    Reservation,
-    DescribeInstancesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  Reservation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeInstancesRequest,
   output: DescribeInstancesResult,
   errors: [
@@ -86080,27 +85463,13 @@ export type DescribeInstanceStatusError =
  * structures, might vary. Applications should not assume the elements appear in a
  * particular order.
  */
-export const describeInstanceStatus: API.OperationMethod<
+export const describeInstanceStatus: API.PaginatedOperationMethod<
   DescribeInstanceStatusRequest,
   DescribeInstanceStatusResult,
   DescribeInstanceStatusError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeInstanceStatusRequest,
-  ) => stream.Stream<
-    DescribeInstanceStatusResult,
-    DescribeInstanceStatusError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeInstanceStatusRequest,
-  ) => stream.Stream<
-    InstanceStatus,
-    DescribeInstanceStatusError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  InstanceStatus
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeInstanceStatusRequest,
   output: DescribeInstanceStatusResult,
   errors: [
@@ -86144,27 +85513,13 @@ export type DescribeInstanceTopologyError = CommonErrors;
  * For more information, see Amazon EC2 topology in
  * the *Amazon EC2 User Guide*.
  */
-export const describeInstanceTopology: API.OperationMethod<
+export const describeInstanceTopology: API.PaginatedOperationMethod<
   DescribeInstanceTopologyRequest,
   DescribeInstanceTopologyResult,
   DescribeInstanceTopologyError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeInstanceTopologyRequest,
-  ) => stream.Stream<
-    DescribeInstanceTopologyResult,
-    DescribeInstanceTopologyError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeInstanceTopologyRequest,
-  ) => stream.Stream<
-    InstanceTopology,
-    DescribeInstanceTopologyError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  InstanceTopology
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeInstanceTopologyRequest,
   output: DescribeInstanceTopologyResult,
   errors: [],
@@ -86185,27 +85540,13 @@ export type DescribeInstanceTypeOfferingsError = CommonErrors;
  * specified, the default is to list the instance types that are offered in the current
  * Region.
  */
-export const describeInstanceTypeOfferings: API.OperationMethod<
+export const describeInstanceTypeOfferings: API.PaginatedOperationMethod<
   DescribeInstanceTypeOfferingsRequest,
   DescribeInstanceTypeOfferingsResult,
   DescribeInstanceTypeOfferingsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeInstanceTypeOfferingsRequest,
-  ) => stream.Stream<
-    DescribeInstanceTypeOfferingsResult,
-    DescribeInstanceTypeOfferingsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeInstanceTypeOfferingsRequest,
-  ) => stream.Stream<
-    InstanceTypeOffering,
-    DescribeInstanceTypeOfferingsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  InstanceTypeOffering
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeInstanceTypeOfferingsRequest,
   output: DescribeInstanceTypeOfferingsResult,
   errors: [],
@@ -86227,27 +85568,13 @@ export type DescribeInstanceTypesError = CommonErrors;
  * that are not supported in the current Region, set `IncludeUnsupportedInRegion`
  * to `true`.
  */
-export const describeInstanceTypes: API.OperationMethod<
+export const describeInstanceTypes: API.PaginatedOperationMethod<
   DescribeInstanceTypesRequest,
   DescribeInstanceTypesResult,
   DescribeInstanceTypesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeInstanceTypesRequest,
-  ) => stream.Stream<
-    DescribeInstanceTypesResult,
-    DescribeInstanceTypesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeInstanceTypesRequest,
-  ) => stream.Stream<
-    InstanceTypeInfo,
-    DescribeInstanceTypesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  InstanceTypeInfo
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeInstanceTypesRequest,
   output: DescribeInstanceTypesResult,
   errors: [],
@@ -86273,27 +85600,13 @@ export type DescribeInternetGatewaysError =
  * Alternatively, you can specify specific internet gateway IDs or filter the results to
  * include only the internet gateways that match specific criteria.
  */
-export const describeInternetGateways: API.OperationMethod<
+export const describeInternetGateways: API.PaginatedOperationMethod<
   DescribeInternetGatewaysRequest,
   DescribeInternetGatewaysResult,
   DescribeInternetGatewaysError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeInternetGatewaysRequest,
-  ) => stream.Stream<
-    DescribeInternetGatewaysResult,
-    DescribeInternetGatewaysError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeInternetGatewaysRequest,
-  ) => stream.Stream<
-    InternetGateway,
-    DescribeInternetGatewaysError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  InternetGateway
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeInternetGatewaysRequest,
   output: DescribeInternetGatewaysResult,
   errors: [
@@ -86395,27 +85708,13 @@ export type DescribeIpamPoolAllocationsError = CommonErrors;
  *
  * This action returns only allocations directly owned by you. To view all allocations in a pool you own or that has been shared with you, including allocations owned by other accounts, use GetIpamPoolAllocations.
  */
-export const describeIpamPoolAllocations: API.OperationMethod<
+export const describeIpamPoolAllocations: API.PaginatedOperationMethod<
   DescribeIpamPoolAllocationsRequest,
   DescribeIpamPoolAllocationsResult,
   DescribeIpamPoolAllocationsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeIpamPoolAllocationsRequest,
-  ) => stream.Stream<
-    DescribeIpamPoolAllocationsResult,
-    DescribeIpamPoolAllocationsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeIpamPoolAllocationsRequest,
-  ) => stream.Stream<
-    IpamPoolAllocation,
-    DescribeIpamPoolAllocationsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  IpamPoolAllocation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeIpamPoolAllocationsRequest,
   output: DescribeIpamPoolAllocationsResult,
   errors: [],
@@ -86438,27 +85737,13 @@ export type DescribeIpamPoolsError =
 /**
  * Get information about your IPAM pools.
  */
-export const describeIpamPools: API.OperationMethod<
+export const describeIpamPools: API.PaginatedOperationMethod<
   DescribeIpamPoolsRequest,
   DescribeIpamPoolsResult,
   DescribeIpamPoolsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeIpamPoolsRequest,
-  ) => stream.Stream<
-    DescribeIpamPoolsResult,
-    DescribeIpamPoolsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeIpamPoolsRequest,
-  ) => stream.Stream<
-    IpamPool,
-    DescribeIpamPoolsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  IpamPool
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeIpamPoolsRequest,
   output: DescribeIpamPoolsResult,
   errors: [
@@ -86485,27 +85770,13 @@ export type DescribeIpamPrefixListResolversError =
 /**
  * Describes one or more IPAM prefix list resolvers. Use this operation to view the configuration, status, and properties of your resolvers.
  */
-export const describeIpamPrefixListResolvers: API.OperationMethod<
+export const describeIpamPrefixListResolvers: API.PaginatedOperationMethod<
   DescribeIpamPrefixListResolversRequest,
   DescribeIpamPrefixListResolversResult,
   DescribeIpamPrefixListResolversError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeIpamPrefixListResolversRequest,
-  ) => stream.Stream<
-    DescribeIpamPrefixListResolversResult,
-    DescribeIpamPrefixListResolversError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeIpamPrefixListResolversRequest,
-  ) => stream.Stream<
-    IpamPrefixListResolver,
-    DescribeIpamPrefixListResolversError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  IpamPrefixListResolver
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeIpamPrefixListResolversRequest,
   output: DescribeIpamPrefixListResolversResult,
   errors: [
@@ -86532,27 +85803,13 @@ export type DescribeIpamPrefixListResolverTargetsError =
 /**
  * Describes one or more IPAM prefix list resolver Targets. Use this operation to view the configuration and status of resolver targets.
  */
-export const describeIpamPrefixListResolverTargets: API.OperationMethod<
+export const describeIpamPrefixListResolverTargets: API.PaginatedOperationMethod<
   DescribeIpamPrefixListResolverTargetsRequest,
   DescribeIpamPrefixListResolverTargetsResult,
   DescribeIpamPrefixListResolverTargetsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeIpamPrefixListResolverTargetsRequest,
-  ) => stream.Stream<
-    DescribeIpamPrefixListResolverTargetsResult,
-    DescribeIpamPrefixListResolverTargetsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeIpamPrefixListResolverTargetsRequest,
-  ) => stream.Stream<
-    IpamPrefixListResolverTarget,
-    DescribeIpamPrefixListResolverTargetsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  IpamPrefixListResolverTarget
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeIpamPrefixListResolverTargetsRequest,
   output: DescribeIpamPrefixListResolverTargetsResult,
   errors: [
@@ -86579,27 +85836,13 @@ export type DescribeIpamResourceDiscoveriesError =
 /**
  * Describes IPAM resource discoveries. A resource discovery is an IPAM component that enables IPAM to manage and monitor resources that belong to the owning account.
  */
-export const describeIpamResourceDiscoveries: API.OperationMethod<
+export const describeIpamResourceDiscoveries: API.PaginatedOperationMethod<
   DescribeIpamResourceDiscoveriesRequest,
   DescribeIpamResourceDiscoveriesResult,
   DescribeIpamResourceDiscoveriesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeIpamResourceDiscoveriesRequest,
-  ) => stream.Stream<
-    DescribeIpamResourceDiscoveriesResult,
-    DescribeIpamResourceDiscoveriesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeIpamResourceDiscoveriesRequest,
-  ) => stream.Stream<
-    IpamResourceDiscovery,
-    DescribeIpamResourceDiscoveriesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  IpamResourceDiscovery
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeIpamResourceDiscoveriesRequest,
   output: DescribeIpamResourceDiscoveriesResult,
   errors: [
@@ -86626,27 +85869,13 @@ export type DescribeIpamResourceDiscoveryAssociationsError =
 /**
  * Describes resource discovery association with an Amazon VPC IPAM. An associated resource discovery is a resource discovery that has been associated with an IPAM..
  */
-export const describeIpamResourceDiscoveryAssociations: API.OperationMethod<
+export const describeIpamResourceDiscoveryAssociations: API.PaginatedOperationMethod<
   DescribeIpamResourceDiscoveryAssociationsRequest,
   DescribeIpamResourceDiscoveryAssociationsResult,
   DescribeIpamResourceDiscoveryAssociationsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeIpamResourceDiscoveryAssociationsRequest,
-  ) => stream.Stream<
-    DescribeIpamResourceDiscoveryAssociationsResult,
-    DescribeIpamResourceDiscoveryAssociationsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeIpamResourceDiscoveryAssociationsRequest,
-  ) => stream.Stream<
-    IpamResourceDiscoveryAssociation,
-    DescribeIpamResourceDiscoveryAssociationsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  IpamResourceDiscoveryAssociation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeIpamResourceDiscoveryAssociationsRequest,
   output: DescribeIpamResourceDiscoveryAssociationsResult,
   errors: [
@@ -86675,27 +85904,13 @@ export type DescribeIpamsError =
  *
  * For more information, see What is IPAM? in the *Amazon VPC IPAM User Guide*.
  */
-export const describeIpams: API.OperationMethod<
+export const describeIpams: API.PaginatedOperationMethod<
   DescribeIpamsRequest,
   DescribeIpamsResult,
   DescribeIpamsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeIpamsRequest,
-  ) => stream.Stream<
-    DescribeIpamsResult,
-    DescribeIpamsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeIpamsRequest,
-  ) => stream.Stream<
-    Ipam,
-    DescribeIpamsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  Ipam
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeIpamsRequest,
   output: DescribeIpamsResult,
   errors: [RequestLimitExceeded, InvalidIpamIdNotFound, UnauthorizedOperation],
@@ -86718,27 +85933,13 @@ export type DescribeIpamScopesError =
 /**
  * Get information about your IPAM scopes.
  */
-export const describeIpamScopes: API.OperationMethod<
+export const describeIpamScopes: API.PaginatedOperationMethod<
   DescribeIpamScopesRequest,
   DescribeIpamScopesResult,
   DescribeIpamScopesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeIpamScopesRequest,
-  ) => stream.Stream<
-    DescribeIpamScopesResult,
-    DescribeIpamScopesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeIpamScopesRequest,
-  ) => stream.Stream<
-    IpamScope,
-    DescribeIpamScopesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  IpamScope
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeIpamScopesRequest,
   output: DescribeIpamScopesResult,
   errors: [
@@ -86765,27 +85966,13 @@ export type DescribeIpv6PoolsError =
 /**
  * Describes your IPv6 address pools.
  */
-export const describeIpv6Pools: API.OperationMethod<
+export const describeIpv6Pools: API.PaginatedOperationMethod<
   DescribeIpv6PoolsRequest,
   DescribeIpv6PoolsResult,
   DescribeIpv6PoolsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeIpv6PoolsRequest,
-  ) => stream.Stream<
-    DescribeIpv6PoolsResult,
-    DescribeIpv6PoolsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeIpv6PoolsRequest,
-  ) => stream.Stream<
-    Ipv6Pool,
-    DescribeIpv6PoolsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  Ipv6Pool
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeIpv6PoolsRequest,
   output: DescribeIpv6PoolsResult,
   errors: [
@@ -86846,27 +86033,13 @@ export type DescribeLaunchTemplatesError =
 /**
  * Describes one or more launch templates.
  */
-export const describeLaunchTemplates: API.OperationMethod<
+export const describeLaunchTemplates: API.PaginatedOperationMethod<
   DescribeLaunchTemplatesRequest,
   DescribeLaunchTemplatesResult,
   DescribeLaunchTemplatesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeLaunchTemplatesRequest,
-  ) => stream.Stream<
-    DescribeLaunchTemplatesResult,
-    DescribeLaunchTemplatesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeLaunchTemplatesRequest,
-  ) => stream.Stream<
-    LaunchTemplate,
-    DescribeLaunchTemplatesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  LaunchTemplate
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeLaunchTemplatesRequest,
   output: DescribeLaunchTemplatesResult,
   errors: [
@@ -86900,27 +86073,13 @@ export type DescribeLaunchTemplateVersionsError =
  * latest versions or all the default versions of all the launch templates in your
  * account.
  */
-export const describeLaunchTemplateVersions: API.OperationMethod<
+export const describeLaunchTemplateVersions: API.PaginatedOperationMethod<
   DescribeLaunchTemplateVersionsRequest,
   DescribeLaunchTemplateVersionsResult,
   DescribeLaunchTemplateVersionsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeLaunchTemplateVersionsRequest,
-  ) => stream.Stream<
-    DescribeLaunchTemplateVersionsResult,
-    DescribeLaunchTemplateVersionsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeLaunchTemplateVersionsRequest,
-  ) => stream.Stream<
-    LaunchTemplateVersion,
-    DescribeLaunchTemplateVersionsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  LaunchTemplateVersion
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeLaunchTemplateVersionsRequest,
   output: DescribeLaunchTemplateVersionsResult,
   errors: [
@@ -86945,27 +86104,13 @@ export type DescribeLocalGatewayRouteTablesError = CommonErrors;
  * Describes one or more local gateway route tables. By default, all local gateway route tables are described.
  * Alternatively, you can filter the results.
  */
-export const describeLocalGatewayRouteTables: API.OperationMethod<
+export const describeLocalGatewayRouteTables: API.PaginatedOperationMethod<
   DescribeLocalGatewayRouteTablesRequest,
   DescribeLocalGatewayRouteTablesResult,
   DescribeLocalGatewayRouteTablesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeLocalGatewayRouteTablesRequest,
-  ) => stream.Stream<
-    DescribeLocalGatewayRouteTablesResult,
-    DescribeLocalGatewayRouteTablesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeLocalGatewayRouteTablesRequest,
-  ) => stream.Stream<
-    LocalGatewayRouteTable,
-    DescribeLocalGatewayRouteTablesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  LocalGatewayRouteTable
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeLocalGatewayRouteTablesRequest,
   output: DescribeLocalGatewayRouteTablesResult,
   errors: [],
@@ -86985,27 +86130,13 @@ export type DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsError
 /**
  * Describes the associations between virtual interface groups and local gateway route tables.
  */
-export const describeLocalGatewayRouteTableVirtualInterfaceGroupAssociations: API.OperationMethod<
+export const describeLocalGatewayRouteTableVirtualInterfaceGroupAssociations: API.PaginatedOperationMethod<
   DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsRequest,
   DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsResult,
   DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsRequest,
-  ) => stream.Stream<
-    DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsResult,
-    DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsRequest,
-  ) => stream.Stream<
-    LocalGatewayRouteTableVirtualInterfaceGroupAssociation,
-    DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  LocalGatewayRouteTableVirtualInterfaceGroupAssociation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsRequest,
   output: DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsResult,
   errors: [],
@@ -87025,27 +86156,13 @@ export type DescribeLocalGatewayRouteTableVpcAssociationsError = CommonErrors;
 /**
  * Describes the specified associations between VPCs and local gateway route tables.
  */
-export const describeLocalGatewayRouteTableVpcAssociations: API.OperationMethod<
+export const describeLocalGatewayRouteTableVpcAssociations: API.PaginatedOperationMethod<
   DescribeLocalGatewayRouteTableVpcAssociationsRequest,
   DescribeLocalGatewayRouteTableVpcAssociationsResult,
   DescribeLocalGatewayRouteTableVpcAssociationsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeLocalGatewayRouteTableVpcAssociationsRequest,
-  ) => stream.Stream<
-    DescribeLocalGatewayRouteTableVpcAssociationsResult,
-    DescribeLocalGatewayRouteTableVpcAssociationsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeLocalGatewayRouteTableVpcAssociationsRequest,
-  ) => stream.Stream<
-    LocalGatewayRouteTableVpcAssociation,
-    DescribeLocalGatewayRouteTableVpcAssociationsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  LocalGatewayRouteTableVpcAssociation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeLocalGatewayRouteTableVpcAssociationsRequest,
   output: DescribeLocalGatewayRouteTableVpcAssociationsResult,
   errors: [],
@@ -87065,27 +86182,13 @@ export type DescribeLocalGatewaysError = CommonErrors;
  * Describes one or more local gateways. By default, all local gateways are described.
  * Alternatively, you can filter the results.
  */
-export const describeLocalGateways: API.OperationMethod<
+export const describeLocalGateways: API.PaginatedOperationMethod<
   DescribeLocalGatewaysRequest,
   DescribeLocalGatewaysResult,
   DescribeLocalGatewaysError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeLocalGatewaysRequest,
-  ) => stream.Stream<
-    DescribeLocalGatewaysResult,
-    DescribeLocalGatewaysError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeLocalGatewaysRequest,
-  ) => stream.Stream<
-    LocalGateway,
-    DescribeLocalGatewaysError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  LocalGateway
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeLocalGatewaysRequest,
   output: DescribeLocalGatewaysResult,
   errors: [],
@@ -87104,27 +86207,13 @@ export type DescribeLocalGatewayVirtualInterfaceGroupsError = CommonErrors;
 /**
  * Describes the specified local gateway virtual interface groups.
  */
-export const describeLocalGatewayVirtualInterfaceGroups: API.OperationMethod<
+export const describeLocalGatewayVirtualInterfaceGroups: API.PaginatedOperationMethod<
   DescribeLocalGatewayVirtualInterfaceGroupsRequest,
   DescribeLocalGatewayVirtualInterfaceGroupsResult,
   DescribeLocalGatewayVirtualInterfaceGroupsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeLocalGatewayVirtualInterfaceGroupsRequest,
-  ) => stream.Stream<
-    DescribeLocalGatewayVirtualInterfaceGroupsResult,
-    DescribeLocalGatewayVirtualInterfaceGroupsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeLocalGatewayVirtualInterfaceGroupsRequest,
-  ) => stream.Stream<
-    LocalGatewayVirtualInterfaceGroup,
-    DescribeLocalGatewayVirtualInterfaceGroupsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  LocalGatewayVirtualInterfaceGroup
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeLocalGatewayVirtualInterfaceGroupsRequest,
   output: DescribeLocalGatewayVirtualInterfaceGroupsResult,
   errors: [],
@@ -87143,27 +86232,13 @@ export type DescribeLocalGatewayVirtualInterfacesError = CommonErrors;
 /**
  * Describes the specified local gateway virtual interfaces.
  */
-export const describeLocalGatewayVirtualInterfaces: API.OperationMethod<
+export const describeLocalGatewayVirtualInterfaces: API.PaginatedOperationMethod<
   DescribeLocalGatewayVirtualInterfacesRequest,
   DescribeLocalGatewayVirtualInterfacesResult,
   DescribeLocalGatewayVirtualInterfacesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeLocalGatewayVirtualInterfacesRequest,
-  ) => stream.Stream<
-    DescribeLocalGatewayVirtualInterfacesResult,
-    DescribeLocalGatewayVirtualInterfacesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeLocalGatewayVirtualInterfacesRequest,
-  ) => stream.Stream<
-    LocalGatewayVirtualInterface,
-    DescribeLocalGatewayVirtualInterfacesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  LocalGatewayVirtualInterface
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeLocalGatewayVirtualInterfacesRequest,
   output: DescribeLocalGatewayVirtualInterfacesResult,
   errors: [],
@@ -87208,27 +86283,13 @@ export type DescribeMacHostsError =
 /**
  * Describes the specified EC2 Mac Dedicated Host or all of your EC2 Mac Dedicated Hosts.
  */
-export const describeMacHosts: API.OperationMethod<
+export const describeMacHosts: API.PaginatedOperationMethod<
   DescribeMacHostsRequest,
   DescribeMacHostsResult,
   DescribeMacHostsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeMacHostsRequest,
-  ) => stream.Stream<
-    DescribeMacHostsResult,
-    DescribeMacHostsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeMacHostsRequest,
-  ) => stream.Stream<
-    MacHost,
-    DescribeMacHostsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  MacHost
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeMacHostsRequest,
   output: DescribeMacHostsResult,
   errors: [RequestLimitExceeded, InvalidHostIDMalformed, UnauthorizedOperation],
@@ -87253,27 +86314,13 @@ export type DescribeMacModificationTasksError =
  * task for an Amazon EC2 Mac instance. For more information, see Configure
  * SIP for Amazon EC2 instances in the *Amazon EC2 User Guide*.
  */
-export const describeMacModificationTasks: API.OperationMethod<
+export const describeMacModificationTasks: API.PaginatedOperationMethod<
   DescribeMacModificationTasksRequest,
   DescribeMacModificationTasksResult,
   DescribeMacModificationTasksError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeMacModificationTasksRequest,
-  ) => stream.Stream<
-    DescribeMacModificationTasksResult,
-    DescribeMacModificationTasksError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeMacModificationTasksRequest,
-  ) => stream.Stream<
-    MacModificationTask,
-    DescribeMacModificationTasksError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  MacModificationTask
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeMacModificationTasksRequest,
   output: DescribeMacModificationTasksResult,
   errors: [RequestLimitExceeded, InvalidParameter, UnauthorizedOperation],
@@ -87297,27 +86344,13 @@ export type DescribeManagedPrefixListsError =
 /**
  * Describes your managed prefix lists and any Amazon Web Services-managed prefix lists.
  */
-export const describeManagedPrefixLists: API.OperationMethod<
+export const describeManagedPrefixLists: API.PaginatedOperationMethod<
   DescribeManagedPrefixListsRequest,
   DescribeManagedPrefixListsResult,
   DescribeManagedPrefixListsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeManagedPrefixListsRequest,
-  ) => stream.Stream<
-    DescribeManagedPrefixListsResult,
-    DescribeManagedPrefixListsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeManagedPrefixListsRequest,
-  ) => stream.Stream<
-    ManagedPrefixList,
-    DescribeManagedPrefixListsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  ManagedPrefixList
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeManagedPrefixListsRequest,
   output: DescribeManagedPrefixListsResult,
   errors: [
@@ -87348,27 +86381,13 @@ export type DescribeMovingAddressesError =
  * Describes your Elastic IP addresses that are being moved from or being restored to the EC2-Classic platform.
  * This request does not return information about any other Elastic IP addresses in your account.
  */
-export const describeMovingAddresses: API.OperationMethod<
+export const describeMovingAddresses: API.PaginatedOperationMethod<
   DescribeMovingAddressesRequest,
   DescribeMovingAddressesResult,
   DescribeMovingAddressesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeMovingAddressesRequest,
-  ) => stream.Stream<
-    DescribeMovingAddressesResult,
-    DescribeMovingAddressesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeMovingAddressesRequest,
-  ) => stream.Stream<
-    MovingAddressStatus,
-    DescribeMovingAddressesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  MovingAddressStatus
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeMovingAddressesRequest,
   output: DescribeMovingAddressesResult,
   errors: [RequestLimitExceeded, UnsupportedOperation, UnauthorizedOperation],
@@ -87398,27 +86417,13 @@ export type DescribeNatGatewaysError =
  * Alternatively, you can specify specific NAT gateway IDs or filter the results to
  * include only the NAT gateways that match specific criteria.
  */
-export const describeNatGateways: API.OperationMethod<
+export const describeNatGateways: API.PaginatedOperationMethod<
   DescribeNatGatewaysRequest,
   DescribeNatGatewaysResult,
   DescribeNatGatewaysError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeNatGatewaysRequest,
-  ) => stream.Stream<
-    DescribeNatGatewaysResult,
-    DescribeNatGatewaysError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeNatGatewaysRequest,
-  ) => stream.Stream<
-    NatGateway,
-    DescribeNatGatewaysError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  NatGateway
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeNatGatewaysRequest,
   output: DescribeNatGatewaysResult,
   errors: [
@@ -87457,27 +86462,13 @@ export type DescribeNetworkAclsError =
  * For more information, see Network ACLs in the
  * *Amazon VPC User Guide*.
  */
-export const describeNetworkAcls: API.OperationMethod<
+export const describeNetworkAcls: API.PaginatedOperationMethod<
   DescribeNetworkAclsRequest,
   DescribeNetworkAclsResult,
   DescribeNetworkAclsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeNetworkAclsRequest,
-  ) => stream.Stream<
-    DescribeNetworkAclsResult,
-    DescribeNetworkAclsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeNetworkAclsRequest,
-  ) => stream.Stream<
-    NetworkAcl,
-    DescribeNetworkAclsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  NetworkAcl
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeNetworkAclsRequest,
   output: DescribeNetworkAclsResult,
   errors: [
@@ -87506,27 +86497,13 @@ export type DescribeNetworkInsightsAccessScopeAnalysesError =
 /**
  * Describes the specified Network Access Scope analyses.
  */
-export const describeNetworkInsightsAccessScopeAnalyses: API.OperationMethod<
+export const describeNetworkInsightsAccessScopeAnalyses: API.PaginatedOperationMethod<
   DescribeNetworkInsightsAccessScopeAnalysesRequest,
   DescribeNetworkInsightsAccessScopeAnalysesResult,
   DescribeNetworkInsightsAccessScopeAnalysesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeNetworkInsightsAccessScopeAnalysesRequest,
-  ) => stream.Stream<
-    DescribeNetworkInsightsAccessScopeAnalysesResult,
-    DescribeNetworkInsightsAccessScopeAnalysesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeNetworkInsightsAccessScopeAnalysesRequest,
-  ) => stream.Stream<
-    NetworkInsightsAccessScopeAnalysis,
-    DescribeNetworkInsightsAccessScopeAnalysesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  NetworkInsightsAccessScopeAnalysis
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeNetworkInsightsAccessScopeAnalysesRequest,
   output: DescribeNetworkInsightsAccessScopeAnalysesResult,
   errors: [RequestLimitExceeded, InvalidParameterValue, UnauthorizedOperation],
@@ -87549,27 +86526,13 @@ export type DescribeNetworkInsightsAccessScopesError =
 /**
  * Describes the specified Network Access Scopes.
  */
-export const describeNetworkInsightsAccessScopes: API.OperationMethod<
+export const describeNetworkInsightsAccessScopes: API.PaginatedOperationMethod<
   DescribeNetworkInsightsAccessScopesRequest,
   DescribeNetworkInsightsAccessScopesResult,
   DescribeNetworkInsightsAccessScopesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeNetworkInsightsAccessScopesRequest,
-  ) => stream.Stream<
-    DescribeNetworkInsightsAccessScopesResult,
-    DescribeNetworkInsightsAccessScopesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeNetworkInsightsAccessScopesRequest,
-  ) => stream.Stream<
-    NetworkInsightsAccessScope,
-    DescribeNetworkInsightsAccessScopesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  NetworkInsightsAccessScope
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeNetworkInsightsAccessScopesRequest,
   output: DescribeNetworkInsightsAccessScopesResult,
   errors: [RequestLimitExceeded, InvalidParameterValue, UnauthorizedOperation],
@@ -87592,27 +86555,13 @@ export type DescribeNetworkInsightsAnalysesError =
 /**
  * Describes one or more of your network insights analyses.
  */
-export const describeNetworkInsightsAnalyses: API.OperationMethod<
+export const describeNetworkInsightsAnalyses: API.PaginatedOperationMethod<
   DescribeNetworkInsightsAnalysesRequest,
   DescribeNetworkInsightsAnalysesResult,
   DescribeNetworkInsightsAnalysesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeNetworkInsightsAnalysesRequest,
-  ) => stream.Stream<
-    DescribeNetworkInsightsAnalysesResult,
-    DescribeNetworkInsightsAnalysesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeNetworkInsightsAnalysesRequest,
-  ) => stream.Stream<
-    NetworkInsightsAnalysis,
-    DescribeNetworkInsightsAnalysesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  NetworkInsightsAnalysis
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeNetworkInsightsAnalysesRequest,
   output: DescribeNetworkInsightsAnalysesResult,
   errors: [RequestLimitExceeded, InvalidParameterValue, UnauthorizedOperation],
@@ -87635,27 +86584,13 @@ export type DescribeNetworkInsightsPathsError =
 /**
  * Describes one or more of your paths.
  */
-export const describeNetworkInsightsPaths: API.OperationMethod<
+export const describeNetworkInsightsPaths: API.PaginatedOperationMethod<
   DescribeNetworkInsightsPathsRequest,
   DescribeNetworkInsightsPathsResult,
   DescribeNetworkInsightsPathsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeNetworkInsightsPathsRequest,
-  ) => stream.Stream<
-    DescribeNetworkInsightsPathsResult,
-    DescribeNetworkInsightsPathsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeNetworkInsightsPathsRequest,
-  ) => stream.Stream<
-    NetworkInsightsPath,
-    DescribeNetworkInsightsPathsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  NetworkInsightsPath
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeNetworkInsightsPathsRequest,
   output: DescribeNetworkInsightsPathsResult,
   errors: [RequestLimitExceeded, InvalidParameterValue, UnauthorizedOperation],
@@ -87709,27 +86644,13 @@ export type DescribeNetworkInterfacePermissionsError =
 /**
  * Describes the permissions for your network interfaces.
  */
-export const describeNetworkInterfacePermissions: API.OperationMethod<
+export const describeNetworkInterfacePermissions: API.PaginatedOperationMethod<
   DescribeNetworkInterfacePermissionsRequest,
   DescribeNetworkInterfacePermissionsResult,
   DescribeNetworkInterfacePermissionsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeNetworkInterfacePermissionsRequest,
-  ) => stream.Stream<
-    DescribeNetworkInterfacePermissionsResult,
-    DescribeNetworkInterfacePermissionsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeNetworkInterfacePermissionsRequest,
-  ) => stream.Stream<
-    NetworkInterfacePermission,
-    DescribeNetworkInterfacePermissionsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  NetworkInterfacePermission
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeNetworkInterfacePermissionsRequest,
   output: DescribeNetworkInterfacePermissionsResult,
   errors: [
@@ -87767,27 +86688,13 @@ export type DescribeNetworkInterfacesError =
  * We strongly recommend using only paginated requests. Unpaginated requests are
  * susceptible to throttling and timeouts.
  */
-export const describeNetworkInterfaces: API.OperationMethod<
+export const describeNetworkInterfaces: API.PaginatedOperationMethod<
   DescribeNetworkInterfacesRequest,
   DescribeNetworkInterfacesResult,
   DescribeNetworkInterfacesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeNetworkInterfacesRequest,
-  ) => stream.Stream<
-    DescribeNetworkInterfacesResult,
-    DescribeNetworkInterfacesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeNetworkInterfacesRequest,
-  ) => stream.Stream<
-    NetworkInterface,
-    DescribeNetworkInterfacesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  NetworkInterface
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeNetworkInterfacesRequest,
   output: DescribeNetworkInterfacesResult,
   errors: [
@@ -87882,27 +86789,13 @@ export type DescribePrefixListsError =
  * Describes available Amazon Web Services services in a prefix list format, which includes the prefix list
  * name and prefix list ID of the service and the IP address range for the service.
  */
-export const describePrefixLists: API.OperationMethod<
+export const describePrefixLists: API.PaginatedOperationMethod<
   DescribePrefixListsRequest,
   DescribePrefixListsResult,
   DescribePrefixListsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribePrefixListsRequest,
-  ) => stream.Stream<
-    DescribePrefixListsResult,
-    DescribePrefixListsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribePrefixListsRequest,
-  ) => stream.Stream<
-    PrefixList,
-    DescribePrefixListsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  PrefixList
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribePrefixListsRequest,
   output: DescribePrefixListsResult,
   errors: [
@@ -87944,27 +86837,13 @@ export type DescribePrincipalIdFormatError = CommonErrors;
  * | `vpc-cidr-block-association` | `vpc-endpoint` |
  * `vpc-peering-connection` | `vpn-connection` | `vpn-gateway`.
  */
-export const describePrincipalIdFormat: API.OperationMethod<
+export const describePrincipalIdFormat: API.PaginatedOperationMethod<
   DescribePrincipalIdFormatRequest,
   DescribePrincipalIdFormatResult,
   DescribePrincipalIdFormatError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribePrincipalIdFormatRequest,
-  ) => stream.Stream<
-    DescribePrincipalIdFormatResult,
-    DescribePrincipalIdFormatError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribePrincipalIdFormatRequest,
-  ) => stream.Stream<
-    PrincipalIdFormat,
-    DescribePrincipalIdFormatError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  PrincipalIdFormat
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribePrincipalIdFormatRequest,
   output: DescribePrincipalIdFormatResult,
   errors: [],
@@ -87987,27 +86866,13 @@ export type DescribePublicIpv4PoolsError =
 /**
  * Describes the specified IPv4 address pools.
  */
-export const describePublicIpv4Pools: API.OperationMethod<
+export const describePublicIpv4Pools: API.PaginatedOperationMethod<
   DescribePublicIpv4PoolsRequest,
   DescribePublicIpv4PoolsResult,
   DescribePublicIpv4PoolsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribePublicIpv4PoolsRequest,
-  ) => stream.Stream<
-    DescribePublicIpv4PoolsResult,
-    DescribePublicIpv4PoolsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribePublicIpv4PoolsRequest,
-  ) => stream.Stream<
-    PublicIpv4Pool,
-    DescribePublicIpv4PoolsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  PublicIpv4Pool
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribePublicIpv4PoolsRequest,
   output: DescribePublicIpv4PoolsResult,
   errors: [
@@ -88065,27 +86930,13 @@ export type DescribeReplaceRootVolumeTasksError =
  * Describes a root volume replacement task. For more information, see
  * Replace a root volume in the *Amazon EC2 User Guide*.
  */
-export const describeReplaceRootVolumeTasks: API.OperationMethod<
+export const describeReplaceRootVolumeTasks: API.PaginatedOperationMethod<
   DescribeReplaceRootVolumeTasksRequest,
   DescribeReplaceRootVolumeTasksResult,
   DescribeReplaceRootVolumeTasksError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeReplaceRootVolumeTasksRequest,
-  ) => stream.Stream<
-    DescribeReplaceRootVolumeTasksResult,
-    DescribeReplaceRootVolumeTasksError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeReplaceRootVolumeTasksRequest,
-  ) => stream.Stream<
-    ReplaceRootVolumeTask,
-    DescribeReplaceRootVolumeTasksError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  ReplaceRootVolumeTask
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeReplaceRootVolumeTasksRequest,
   output: DescribeReplaceRootVolumeTasksResult,
   errors: [RequestLimitExceeded, InvalidParameterValue, UnauthorizedOperation],
@@ -88185,27 +87036,13 @@ export type DescribeReservedInstancesModificationsError =
  * The order of the elements in the response, including those within nested structures,
  * might vary. Applications should not assume the elements appear in a particular order.
  */
-export const describeReservedInstancesModifications: API.OperationMethod<
+export const describeReservedInstancesModifications: API.PaginatedOperationMethod<
   DescribeReservedInstancesModificationsRequest,
   DescribeReservedInstancesModificationsResult,
   DescribeReservedInstancesModificationsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeReservedInstancesModificationsRequest,
-  ) => stream.Stream<
-    DescribeReservedInstancesModificationsResult,
-    DescribeReservedInstancesModificationsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeReservedInstancesModificationsRequest,
-  ) => stream.Stream<
-    ReservedInstancesModification,
-    DescribeReservedInstancesModificationsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  ReservedInstancesModification
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeReservedInstancesModificationsRequest,
   output: DescribeReservedInstancesModificationsResult,
   errors: [RequestLimitExceeded, InvalidParameterValue, UnauthorizedOperation],
@@ -88240,27 +87077,13 @@ export type DescribeReservedInstancesOfferingsError =
  * The order of the elements in the response, including those within nested structures,
  * might vary. Applications should not assume the elements appear in a particular order.
  */
-export const describeReservedInstancesOfferings: API.OperationMethod<
+export const describeReservedInstancesOfferings: API.PaginatedOperationMethod<
   DescribeReservedInstancesOfferingsRequest,
   DescribeReservedInstancesOfferingsResult,
   DescribeReservedInstancesOfferingsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeReservedInstancesOfferingsRequest,
-  ) => stream.Stream<
-    DescribeReservedInstancesOfferingsResult,
-    DescribeReservedInstancesOfferingsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeReservedInstancesOfferingsRequest,
-  ) => stream.Stream<
-    ReservedInstancesOffering,
-    DescribeReservedInstancesOfferingsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  ReservedInstancesOffering
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeReservedInstancesOfferingsRequest,
   output: DescribeReservedInstancesOfferingsResult,
   errors: [RequestLimitExceeded, InvalidParameterValue, UnauthorizedOperation],
@@ -88287,27 +87110,13 @@ export type DescribeRouteServerEndpointsError =
  *
  * For more information see Dynamic routing in your VPC with VPC Route Server in the *Amazon VPC User Guide*.
  */
-export const describeRouteServerEndpoints: API.OperationMethod<
+export const describeRouteServerEndpoints: API.PaginatedOperationMethod<
   DescribeRouteServerEndpointsRequest,
   DescribeRouteServerEndpointsResult,
   DescribeRouteServerEndpointsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeRouteServerEndpointsRequest,
-  ) => stream.Stream<
-    DescribeRouteServerEndpointsResult,
-    DescribeRouteServerEndpointsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeRouteServerEndpointsRequest,
-  ) => stream.Stream<
-    RouteServerEndpoint,
-    DescribeRouteServerEndpointsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  RouteServerEndpoint
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeRouteServerEndpointsRequest,
   output: DescribeRouteServerEndpointsResult,
   errors: [
@@ -88344,27 +87153,13 @@ export type DescribeRouteServerPeersError =
  *
  * For more information see Dynamic routing in your VPC with VPC Route Server in the *Amazon VPC User Guide*.
  */
-export const describeRouteServerPeers: API.OperationMethod<
+export const describeRouteServerPeers: API.PaginatedOperationMethod<
   DescribeRouteServerPeersRequest,
   DescribeRouteServerPeersResult,
   DescribeRouteServerPeersError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeRouteServerPeersRequest,
-  ) => stream.Stream<
-    DescribeRouteServerPeersResult,
-    DescribeRouteServerPeersError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeRouteServerPeersRequest,
-  ) => stream.Stream<
-    RouteServerPeer,
-    DescribeRouteServerPeersError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  RouteServerPeer
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeRouteServerPeersRequest,
   output: DescribeRouteServerPeersResult,
   errors: [
@@ -88406,27 +87201,13 @@ export type DescribeRouteServersError =
  *
  * For more information see Dynamic routing in your VPC with VPC Route Server in the *Amazon VPC User Guide*.
  */
-export const describeRouteServers: API.OperationMethod<
+export const describeRouteServers: API.PaginatedOperationMethod<
   DescribeRouteServersRequest,
   DescribeRouteServersResult,
   DescribeRouteServersError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeRouteServersRequest,
-  ) => stream.Stream<
-    DescribeRouteServersResult,
-    DescribeRouteServersError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeRouteServersRequest,
-  ) => stream.Stream<
-    RouteServer,
-    DescribeRouteServersError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  RouteServer
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeRouteServersRequest,
   output: DescribeRouteServersResult,
   errors: [
@@ -88461,27 +87242,13 @@ export type DescribeRouteTablesError =
  * For more information, see Route tables in the
  * *Amazon VPC User Guide*.
  */
-export const describeRouteTables: API.OperationMethod<
+export const describeRouteTables: API.PaginatedOperationMethod<
   DescribeRouteTablesRequest,
   DescribeRouteTablesResult,
   DescribeRouteTablesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeRouteTablesRequest,
-  ) => stream.Stream<
-    DescribeRouteTablesResult,
-    DescribeRouteTablesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeRouteTablesRequest,
-  ) => stream.Stream<
-    RouteTable,
-    DescribeRouteTablesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  RouteTable
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeRouteTablesRequest,
   output: DescribeRouteTablesResult,
   errors: [
@@ -88510,27 +87277,13 @@ export type DescribeScheduledInstanceAvailabilityError = CommonErrors;
  * After you find a schedule that meets your needs, call PurchaseScheduledInstances
  * to purchase Scheduled Instances with that schedule.
  */
-export const describeScheduledInstanceAvailability: API.OperationMethod<
+export const describeScheduledInstanceAvailability: API.PaginatedOperationMethod<
   DescribeScheduledInstanceAvailabilityRequest,
   DescribeScheduledInstanceAvailabilityResult,
   DescribeScheduledInstanceAvailabilityError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeScheduledInstanceAvailabilityRequest,
-  ) => stream.Stream<
-    DescribeScheduledInstanceAvailabilityResult,
-    DescribeScheduledInstanceAvailabilityError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeScheduledInstanceAvailabilityRequest,
-  ) => stream.Stream<
-    ScheduledInstanceAvailability,
-    DescribeScheduledInstanceAvailabilityError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  ScheduledInstanceAvailability
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeScheduledInstanceAvailabilityRequest,
   output: DescribeScheduledInstanceAvailabilityResult,
   errors: [],
@@ -88549,27 +87302,13 @@ export type DescribeScheduledInstancesError = CommonErrors;
 /**
  * Describes the specified Scheduled Instances or all your Scheduled Instances.
  */
-export const describeScheduledInstances: API.OperationMethod<
+export const describeScheduledInstances: API.PaginatedOperationMethod<
   DescribeScheduledInstancesRequest,
   DescribeScheduledInstancesResult,
   DescribeScheduledInstancesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeScheduledInstancesRequest,
-  ) => stream.Stream<
-    DescribeScheduledInstancesResult,
-    DescribeScheduledInstancesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeScheduledInstancesRequest,
-  ) => stream.Stream<
-    ScheduledInstance,
-    DescribeScheduledInstancesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  ScheduledInstance
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeScheduledInstancesRequest,
   output: DescribeScheduledInstancesResult,
   errors: [],
@@ -88588,27 +87327,13 @@ export type DescribeSecondaryInterfacesError = CommonErrors;
 /**
  * Describes one or more of your secondary interfaces.
  */
-export const describeSecondaryInterfaces: API.OperationMethod<
+export const describeSecondaryInterfaces: API.PaginatedOperationMethod<
   DescribeSecondaryInterfacesRequest,
   DescribeSecondaryInterfacesResult,
   DescribeSecondaryInterfacesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeSecondaryInterfacesRequest,
-  ) => stream.Stream<
-    DescribeSecondaryInterfacesResult,
-    DescribeSecondaryInterfacesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeSecondaryInterfacesRequest,
-  ) => stream.Stream<
-    SecondaryInterface,
-    DescribeSecondaryInterfacesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  SecondaryInterface
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeSecondaryInterfacesRequest,
   output: DescribeSecondaryInterfacesResult,
   errors: [],
@@ -88627,27 +87352,13 @@ export type DescribeSecondaryNetworksError = CommonErrors;
 /**
  * Describes one or more secondary networks.
  */
-export const describeSecondaryNetworks: API.OperationMethod<
+export const describeSecondaryNetworks: API.PaginatedOperationMethod<
   DescribeSecondaryNetworksRequest,
   DescribeSecondaryNetworksResult,
   DescribeSecondaryNetworksError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeSecondaryNetworksRequest,
-  ) => stream.Stream<
-    DescribeSecondaryNetworksResult,
-    DescribeSecondaryNetworksError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeSecondaryNetworksRequest,
-  ) => stream.Stream<
-    SecondaryNetwork,
-    DescribeSecondaryNetworksError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  SecondaryNetwork
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeSecondaryNetworksRequest,
   output: DescribeSecondaryNetworksResult,
   errors: [],
@@ -88666,27 +87377,13 @@ export type DescribeSecondarySubnetsError = CommonErrors;
 /**
  * Describes one or more of your secondary subnets.
  */
-export const describeSecondarySubnets: API.OperationMethod<
+export const describeSecondarySubnets: API.PaginatedOperationMethod<
   DescribeSecondarySubnetsRequest,
   DescribeSecondarySubnetsResult,
   DescribeSecondarySubnetsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeSecondarySubnetsRequest,
-  ) => stream.Stream<
-    DescribeSecondarySubnetsResult,
-    DescribeSecondarySubnetsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeSecondarySubnetsRequest,
-  ) => stream.Stream<
-    SecondarySubnet,
-    DescribeSecondarySubnetsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  SecondarySubnet
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeSecondarySubnetsRequest,
   output: DescribeSecondarySubnetsResult,
   errors: [],
@@ -88727,27 +87424,13 @@ export type DescribeSecurityGroupRulesError =
 /**
  * Describes one or more of your security group rules.
  */
-export const describeSecurityGroupRules: API.OperationMethod<
+export const describeSecurityGroupRules: API.PaginatedOperationMethod<
   DescribeSecurityGroupRulesRequest,
   DescribeSecurityGroupRulesResult,
   DescribeSecurityGroupRulesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeSecurityGroupRulesRequest,
-  ) => stream.Stream<
-    DescribeSecurityGroupRulesResult,
-    DescribeSecurityGroupRulesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeSecurityGroupRulesRequest,
-  ) => stream.Stream<
-    SecurityGroupRule,
-    DescribeSecurityGroupRulesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  SecurityGroupRule
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeSecurityGroupRulesRequest,
   output: DescribeSecurityGroupRulesResult,
   errors: [
@@ -88777,27 +87460,13 @@ export type DescribeSecurityGroupsError =
 /**
  * Describes the specified security groups or all of your security groups.
  */
-export const describeSecurityGroups: API.OperationMethod<
+export const describeSecurityGroups: API.PaginatedOperationMethod<
   DescribeSecurityGroupsRequest,
   DescribeSecurityGroupsResult,
   DescribeSecurityGroupsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeSecurityGroupsRequest,
-  ) => stream.Stream<
-    DescribeSecurityGroupsResult,
-    DescribeSecurityGroupsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeSecurityGroupsRequest,
-  ) => stream.Stream<
-    SecurityGroup,
-    DescribeSecurityGroupsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  SecurityGroup
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeSecurityGroupsRequest,
   output: DescribeSecurityGroupsResult,
   errors: [
@@ -88823,27 +87492,13 @@ export type DescribeSecurityGroupVpcAssociationsError = CommonErrors;
 /**
  * Describes security group VPC associations made with AssociateSecurityGroupVpc.
  */
-export const describeSecurityGroupVpcAssociations: API.OperationMethod<
+export const describeSecurityGroupVpcAssociations: API.PaginatedOperationMethod<
   DescribeSecurityGroupVpcAssociationsRequest,
   DescribeSecurityGroupVpcAssociationsResult,
   DescribeSecurityGroupVpcAssociationsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeSecurityGroupVpcAssociationsRequest,
-  ) => stream.Stream<
-    DescribeSecurityGroupVpcAssociationsResult,
-    DescribeSecurityGroupVpcAssociationsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeSecurityGroupVpcAssociationsRequest,
-  ) => stream.Stream<
-    SecurityGroupVpcAssociation,
-    DescribeSecurityGroupVpcAssociationsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  SecurityGroupVpcAssociation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeSecurityGroupVpcAssociationsRequest,
   output: DescribeSecurityGroupVpcAssociationsResult,
   errors: [],
@@ -88970,27 +87625,13 @@ export type DescribeSnapshotsError =
  * We strongly recommend using only paginated requests. Unpaginated requests are
  * susceptible to throttling and timeouts.
  */
-export const describeSnapshots: API.OperationMethod<
+export const describeSnapshots: API.PaginatedOperationMethod<
   DescribeSnapshotsRequest,
   DescribeSnapshotsResult,
   DescribeSnapshotsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeSnapshotsRequest,
-  ) => stream.Stream<
-    DescribeSnapshotsResult,
-    DescribeSnapshotsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeSnapshotsRequest,
-  ) => stream.Stream<
-    Snapshot,
-    DescribeSnapshotsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  Snapshot
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeSnapshotsRequest,
   output: DescribeSnapshotsResult,
   errors: [
@@ -89014,27 +87655,13 @@ export type DescribeSnapshotTierStatusError = CommonErrors;
 /**
  * Describes the storage tier status of one or more Amazon EBS snapshots.
  */
-export const describeSnapshotTierStatus: API.OperationMethod<
+export const describeSnapshotTierStatus: API.PaginatedOperationMethod<
   DescribeSnapshotTierStatusRequest,
   DescribeSnapshotTierStatusResult,
   DescribeSnapshotTierStatusError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeSnapshotTierStatusRequest,
-  ) => stream.Stream<
-    DescribeSnapshotTierStatusResult,
-    DescribeSnapshotTierStatusError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeSnapshotTierStatusRequest,
-  ) => stream.Stream<
-    SnapshotTierStatus,
-    DescribeSnapshotTierStatusError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  SnapshotTierStatus
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeSnapshotTierStatusRequest,
   output: DescribeSnapshotTierStatusResult,
   errors: [],
@@ -89140,27 +87767,13 @@ export type DescribeSpotFleetRequestsError =
  * Spot Fleet requests are deleted 48 hours after they are canceled and their instances
  * are terminated.
  */
-export const describeSpotFleetRequests: API.OperationMethod<
+export const describeSpotFleetRequests: API.PaginatedOperationMethod<
   DescribeSpotFleetRequestsRequest,
   DescribeSpotFleetRequestsResponse,
   DescribeSpotFleetRequestsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeSpotFleetRequestsRequest,
-  ) => stream.Stream<
-    DescribeSpotFleetRequestsResponse,
-    DescribeSpotFleetRequestsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeSpotFleetRequestsRequest,
-  ) => stream.Stream<
-    SpotFleetRequestConfig,
-    DescribeSpotFleetRequestsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  SpotFleetRequestConfig
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeSpotFleetRequestsRequest,
   output: DescribeSpotFleetRequestsResponse,
   errors: [
@@ -89207,27 +87820,13 @@ export type DescribeSpotInstanceRequestsError =
  * Spot Instance requests are deleted four hours after they are canceled and their instances are
  * terminated.
  */
-export const describeSpotInstanceRequests: API.OperationMethod<
+export const describeSpotInstanceRequests: API.PaginatedOperationMethod<
   DescribeSpotInstanceRequestsRequest,
   DescribeSpotInstanceRequestsResult,
   DescribeSpotInstanceRequestsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeSpotInstanceRequestsRequest,
-  ) => stream.Stream<
-    DescribeSpotInstanceRequestsResult,
-    DescribeSpotInstanceRequestsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeSpotInstanceRequestsRequest,
-  ) => stream.Stream<
-    SpotInstanceRequest,
-    DescribeSpotInstanceRequestsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  SpotInstanceRequest
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeSpotInstanceRequestsRequest,
   output: DescribeSpotInstanceRequestsResult,
   errors: [
@@ -89256,27 +87855,13 @@ export type DescribeSpotPriceHistoryError = CommonErrors;
  * instance types within that time range. It also returns the last price change before the
  * start time, which is the effective price as of the start time.
  */
-export const describeSpotPriceHistory: API.OperationMethod<
+export const describeSpotPriceHistory: API.PaginatedOperationMethod<
   DescribeSpotPriceHistoryRequest,
   DescribeSpotPriceHistoryResult,
   DescribeSpotPriceHistoryError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeSpotPriceHistoryRequest,
-  ) => stream.Stream<
-    DescribeSpotPriceHistoryResult,
-    DescribeSpotPriceHistoryError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeSpotPriceHistoryRequest,
-  ) => stream.Stream<
-    SpotPrice,
-    DescribeSpotPriceHistoryError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  SpotPrice
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeSpotPriceHistoryRequest,
   output: DescribeSpotPriceHistoryResult,
   errors: [],
@@ -89306,27 +87891,13 @@ export type DescribeStaleSecurityGroupsError =
  * gateway security group referencing feature has been disabled), or if a
  * security group VPC association has been disassociated.
  */
-export const describeStaleSecurityGroups: API.OperationMethod<
+export const describeStaleSecurityGroups: API.PaginatedOperationMethod<
   DescribeStaleSecurityGroupsRequest,
   DescribeStaleSecurityGroupsResult,
   DescribeStaleSecurityGroupsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeStaleSecurityGroupsRequest,
-  ) => stream.Stream<
-    DescribeStaleSecurityGroupsResult,
-    DescribeStaleSecurityGroupsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeStaleSecurityGroupsRequest,
-  ) => stream.Stream<
-    StaleSecurityGroup,
-    DescribeStaleSecurityGroupsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  StaleSecurityGroup
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeStaleSecurityGroupsRequest,
   output: DescribeStaleSecurityGroupsResult,
   errors: [RequestLimitExceeded, InvalidVpcIDNotFound, UnauthorizedOperation],
@@ -89360,27 +87931,13 @@ export type DescribeStoreImageTasksError = CommonErrors;
  * For more information, see Store and restore an AMI using
  * S3 in the *Amazon EC2 User Guide*.
  */
-export const describeStoreImageTasks: API.OperationMethod<
+export const describeStoreImageTasks: API.PaginatedOperationMethod<
   DescribeStoreImageTasksRequest,
   DescribeStoreImageTasksResult,
   DescribeStoreImageTasksError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeStoreImageTasksRequest,
-  ) => stream.Stream<
-    DescribeStoreImageTasksResult,
-    DescribeStoreImageTasksError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeStoreImageTasksRequest,
-  ) => stream.Stream<
-    StoreImageTaskResult,
-    DescribeStoreImageTasksError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  StoreImageTaskResult
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeStoreImageTasksRequest,
   output: DescribeStoreImageTasksResult,
   errors: [],
@@ -89409,27 +87966,13 @@ export type DescribeSubnetsError =
  * For more information, see Subnets in the
  * *Amazon VPC User Guide*.
  */
-export const describeSubnets: API.OperationMethod<
+export const describeSubnets: API.PaginatedOperationMethod<
   DescribeSubnetsRequest,
   DescribeSubnetsResult,
   DescribeSubnetsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeSubnetsRequest,
-  ) => stream.Stream<
-    DescribeSubnetsResult,
-    DescribeSubnetsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeSubnetsRequest,
-  ) => stream.Stream<
-    Subnet,
-    DescribeSubnetsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  Subnet
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeSubnetsRequest,
   output: DescribeSubnetsResult,
   errors: [
@@ -89467,27 +88010,13 @@ export type DescribeTagsError =
  * structures, might vary. Applications should not assume the elements appear in a
  * particular order.
  */
-export const describeTags: API.OperationMethod<
+export const describeTags: API.PaginatedOperationMethod<
   DescribeTagsRequest,
   DescribeTagsResult,
   DescribeTagsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeTagsRequest,
-  ) => stream.Stream<
-    DescribeTagsResult,
-    DescribeTagsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeTagsRequest,
-  ) => stream.Stream<
-    TagDescription,
-    DescribeTagsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  TagDescription
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeTagsRequest,
   output: DescribeTagsResult,
   errors: [RequestLimitExceeded, ParseError, UnauthorizedOperation],
@@ -89528,27 +88057,13 @@ export type DescribeTrafficMirrorFiltersError =
 /**
  * Describes one or more Traffic Mirror filters.
  */
-export const describeTrafficMirrorFilters: API.OperationMethod<
+export const describeTrafficMirrorFilters: API.PaginatedOperationMethod<
   DescribeTrafficMirrorFiltersRequest,
   DescribeTrafficMirrorFiltersResult,
   DescribeTrafficMirrorFiltersError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeTrafficMirrorFiltersRequest,
-  ) => stream.Stream<
-    DescribeTrafficMirrorFiltersResult,
-    DescribeTrafficMirrorFiltersError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeTrafficMirrorFiltersRequest,
-  ) => stream.Stream<
-    TrafficMirrorFilter,
-    DescribeTrafficMirrorFiltersError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  TrafficMirrorFilter
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeTrafficMirrorFiltersRequest,
   output: DescribeTrafficMirrorFiltersResult,
   errors: [
@@ -89575,27 +88090,13 @@ export type DescribeTrafficMirrorSessionsError =
 /**
  * Describes one or more Traffic Mirror sessions. By default, all Traffic Mirror sessions are described. Alternatively, you can filter the results.
  */
-export const describeTrafficMirrorSessions: API.OperationMethod<
+export const describeTrafficMirrorSessions: API.PaginatedOperationMethod<
   DescribeTrafficMirrorSessionsRequest,
   DescribeTrafficMirrorSessionsResult,
   DescribeTrafficMirrorSessionsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeTrafficMirrorSessionsRequest,
-  ) => stream.Stream<
-    DescribeTrafficMirrorSessionsResult,
-    DescribeTrafficMirrorSessionsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeTrafficMirrorSessionsRequest,
-  ) => stream.Stream<
-    TrafficMirrorSession,
-    DescribeTrafficMirrorSessionsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  TrafficMirrorSession
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeTrafficMirrorSessionsRequest,
   output: DescribeTrafficMirrorSessionsResult,
   errors: [
@@ -89622,27 +88123,13 @@ export type DescribeTrafficMirrorTargetsError =
 /**
  * Information about one or more Traffic Mirror targets.
  */
-export const describeTrafficMirrorTargets: API.OperationMethod<
+export const describeTrafficMirrorTargets: API.PaginatedOperationMethod<
   DescribeTrafficMirrorTargetsRequest,
   DescribeTrafficMirrorTargetsResult,
   DescribeTrafficMirrorTargetsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeTrafficMirrorTargetsRequest,
-  ) => stream.Stream<
-    DescribeTrafficMirrorTargetsResult,
-    DescribeTrafficMirrorTargetsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeTrafficMirrorTargetsRequest,
-  ) => stream.Stream<
-    TrafficMirrorTarget,
-    DescribeTrafficMirrorTargetsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  TrafficMirrorTarget
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeTrafficMirrorTargetsRequest,
   output: DescribeTrafficMirrorTargetsResult,
   errors: [
@@ -89671,27 +88158,13 @@ export type DescribeTransitGatewayAttachmentsError =
  * Describes one or more attachments between resources and transit gateways. By default, all attachments are described.
  * Alternatively, you can filter the results by attachment ID, attachment state, resource ID, or resource owner.
  */
-export const describeTransitGatewayAttachments: API.OperationMethod<
+export const describeTransitGatewayAttachments: API.PaginatedOperationMethod<
   DescribeTransitGatewayAttachmentsRequest,
   DescribeTransitGatewayAttachmentsResult,
   DescribeTransitGatewayAttachmentsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeTransitGatewayAttachmentsRequest,
-  ) => stream.Stream<
-    DescribeTransitGatewayAttachmentsResult,
-    DescribeTransitGatewayAttachmentsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeTransitGatewayAttachmentsRequest,
-  ) => stream.Stream<
-    TransitGatewayAttachment,
-    DescribeTransitGatewayAttachmentsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  TransitGatewayAttachment
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeTransitGatewayAttachmentsRequest,
   output: DescribeTransitGatewayAttachmentsResult,
   errors: [
@@ -89719,27 +88192,13 @@ export type DescribeTransitGatewayConnectPeersError =
 /**
  * Describes one or more Connect peers.
  */
-export const describeTransitGatewayConnectPeers: API.OperationMethod<
+export const describeTransitGatewayConnectPeers: API.PaginatedOperationMethod<
   DescribeTransitGatewayConnectPeersRequest,
   DescribeTransitGatewayConnectPeersResult,
   DescribeTransitGatewayConnectPeersError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeTransitGatewayConnectPeersRequest,
-  ) => stream.Stream<
-    DescribeTransitGatewayConnectPeersResult,
-    DescribeTransitGatewayConnectPeersError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeTransitGatewayConnectPeersRequest,
-  ) => stream.Stream<
-    TransitGatewayConnectPeer,
-    DescribeTransitGatewayConnectPeersError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  TransitGatewayConnectPeer
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeTransitGatewayConnectPeersRequest,
   output: DescribeTransitGatewayConnectPeersResult,
   errors: [
@@ -89766,27 +88225,13 @@ export type DescribeTransitGatewayConnectsError =
 /**
  * Describes one or more Connect attachments.
  */
-export const describeTransitGatewayConnects: API.OperationMethod<
+export const describeTransitGatewayConnects: API.PaginatedOperationMethod<
   DescribeTransitGatewayConnectsRequest,
   DescribeTransitGatewayConnectsResult,
   DescribeTransitGatewayConnectsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeTransitGatewayConnectsRequest,
-  ) => stream.Stream<
-    DescribeTransitGatewayConnectsResult,
-    DescribeTransitGatewayConnectsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeTransitGatewayConnectsRequest,
-  ) => stream.Stream<
-    TransitGatewayConnect,
-    DescribeTransitGatewayConnectsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  TransitGatewayConnect
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeTransitGatewayConnectsRequest,
   output: DescribeTransitGatewayConnectsResult,
   errors: [
@@ -89839,27 +88284,13 @@ export type DescribeTransitGatewayMulticastDomainsError =
 /**
  * Describes one or more transit gateway multicast domains.
  */
-export const describeTransitGatewayMulticastDomains: API.OperationMethod<
+export const describeTransitGatewayMulticastDomains: API.PaginatedOperationMethod<
   DescribeTransitGatewayMulticastDomainsRequest,
   DescribeTransitGatewayMulticastDomainsResult,
   DescribeTransitGatewayMulticastDomainsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeTransitGatewayMulticastDomainsRequest,
-  ) => stream.Stream<
-    DescribeTransitGatewayMulticastDomainsResult,
-    DescribeTransitGatewayMulticastDomainsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeTransitGatewayMulticastDomainsRequest,
-  ) => stream.Stream<
-    TransitGatewayMulticastDomain,
-    DescribeTransitGatewayMulticastDomainsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  TransitGatewayMulticastDomain
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeTransitGatewayMulticastDomainsRequest,
   output: DescribeTransitGatewayMulticastDomainsResult,
   errors: [
@@ -89886,27 +88317,13 @@ export type DescribeTransitGatewayPeeringAttachmentsError =
 /**
  * Describes your transit gateway peering attachments.
  */
-export const describeTransitGatewayPeeringAttachments: API.OperationMethod<
+export const describeTransitGatewayPeeringAttachments: API.PaginatedOperationMethod<
   DescribeTransitGatewayPeeringAttachmentsRequest,
   DescribeTransitGatewayPeeringAttachmentsResult,
   DescribeTransitGatewayPeeringAttachmentsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeTransitGatewayPeeringAttachmentsRequest,
-  ) => stream.Stream<
-    DescribeTransitGatewayPeeringAttachmentsResult,
-    DescribeTransitGatewayPeeringAttachmentsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeTransitGatewayPeeringAttachmentsRequest,
-  ) => stream.Stream<
-    TransitGatewayPeeringAttachment,
-    DescribeTransitGatewayPeeringAttachmentsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  TransitGatewayPeeringAttachment
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeTransitGatewayPeeringAttachmentsRequest,
   output: DescribeTransitGatewayPeeringAttachmentsResult,
   errors: [
@@ -89933,27 +88350,13 @@ export type DescribeTransitGatewayPolicyTablesError =
 /**
  * Describes one or more transit gateway route policy tables.
  */
-export const describeTransitGatewayPolicyTables: API.OperationMethod<
+export const describeTransitGatewayPolicyTables: API.PaginatedOperationMethod<
   DescribeTransitGatewayPolicyTablesRequest,
   DescribeTransitGatewayPolicyTablesResult,
   DescribeTransitGatewayPolicyTablesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeTransitGatewayPolicyTablesRequest,
-  ) => stream.Stream<
-    DescribeTransitGatewayPolicyTablesResult,
-    DescribeTransitGatewayPolicyTablesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeTransitGatewayPolicyTablesRequest,
-  ) => stream.Stream<
-    TransitGatewayPolicyTable,
-    DescribeTransitGatewayPolicyTablesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  TransitGatewayPolicyTable
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeTransitGatewayPolicyTablesRequest,
   output: DescribeTransitGatewayPolicyTablesResult,
   errors: [
@@ -89980,27 +88383,13 @@ export type DescribeTransitGatewayRouteTableAnnouncementsError =
 /**
  * Describes one or more transit gateway route table advertisements.
  */
-export const describeTransitGatewayRouteTableAnnouncements: API.OperationMethod<
+export const describeTransitGatewayRouteTableAnnouncements: API.PaginatedOperationMethod<
   DescribeTransitGatewayRouteTableAnnouncementsRequest,
   DescribeTransitGatewayRouteTableAnnouncementsResult,
   DescribeTransitGatewayRouteTableAnnouncementsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeTransitGatewayRouteTableAnnouncementsRequest,
-  ) => stream.Stream<
-    DescribeTransitGatewayRouteTableAnnouncementsResult,
-    DescribeTransitGatewayRouteTableAnnouncementsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeTransitGatewayRouteTableAnnouncementsRequest,
-  ) => stream.Stream<
-    TransitGatewayRouteTableAnnouncement,
-    DescribeTransitGatewayRouteTableAnnouncementsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  TransitGatewayRouteTableAnnouncement
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeTransitGatewayRouteTableAnnouncementsRequest,
   output: DescribeTransitGatewayRouteTableAnnouncementsResult,
   errors: [
@@ -90029,27 +88418,13 @@ export type DescribeTransitGatewayRouteTablesError =
  * Describes one or more transit gateway route tables. By default, all transit gateway route tables are described.
  * Alternatively, you can filter the results.
  */
-export const describeTransitGatewayRouteTables: API.OperationMethod<
+export const describeTransitGatewayRouteTables: API.PaginatedOperationMethod<
   DescribeTransitGatewayRouteTablesRequest,
   DescribeTransitGatewayRouteTablesResult,
   DescribeTransitGatewayRouteTablesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeTransitGatewayRouteTablesRequest,
-  ) => stream.Stream<
-    DescribeTransitGatewayRouteTablesResult,
-    DescribeTransitGatewayRouteTablesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeTransitGatewayRouteTablesRequest,
-  ) => stream.Stream<
-    TransitGatewayRouteTable,
-    DescribeTransitGatewayRouteTablesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  TransitGatewayRouteTable
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeTransitGatewayRouteTablesRequest,
   output: DescribeTransitGatewayRouteTablesResult,
   errors: [
@@ -90079,27 +88454,13 @@ export type DescribeTransitGatewaysError =
  * Describes one or more transit gateways. By default, all transit gateways are described. Alternatively, you can
  * filter the results.
  */
-export const describeTransitGateways: API.OperationMethod<
+export const describeTransitGateways: API.PaginatedOperationMethod<
   DescribeTransitGatewaysRequest,
   DescribeTransitGatewaysResult,
   DescribeTransitGatewaysError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeTransitGatewaysRequest,
-  ) => stream.Stream<
-    DescribeTransitGatewaysResult,
-    DescribeTransitGatewaysError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeTransitGatewaysRequest,
-  ) => stream.Stream<
-    TransitGateway,
-    DescribeTransitGatewaysError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  TransitGateway
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeTransitGatewaysRequest,
   output: DescribeTransitGatewaysResult,
   errors: [
@@ -90128,27 +88489,13 @@ export type DescribeTransitGatewayVpcAttachmentsError =
  * Describes one or more VPC attachments. By default, all VPC attachments are described.
  * Alternatively, you can filter the results.
  */
-export const describeTransitGatewayVpcAttachments: API.OperationMethod<
+export const describeTransitGatewayVpcAttachments: API.PaginatedOperationMethod<
   DescribeTransitGatewayVpcAttachmentsRequest,
   DescribeTransitGatewayVpcAttachmentsResult,
   DescribeTransitGatewayVpcAttachmentsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeTransitGatewayVpcAttachmentsRequest,
-  ) => stream.Stream<
-    DescribeTransitGatewayVpcAttachmentsResult,
-    DescribeTransitGatewayVpcAttachmentsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeTransitGatewayVpcAttachmentsRequest,
-  ) => stream.Stream<
-    TransitGatewayVpcAttachment,
-    DescribeTransitGatewayVpcAttachmentsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  TransitGatewayVpcAttachment
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeTransitGatewayVpcAttachmentsRequest,
   output: DescribeTransitGatewayVpcAttachmentsResult,
   errors: [
@@ -90175,27 +88522,13 @@ export type DescribeTrunkInterfaceAssociationsError =
 /**
  * Describes one or more network interface trunk associations.
  */
-export const describeTrunkInterfaceAssociations: API.OperationMethod<
+export const describeTrunkInterfaceAssociations: API.PaginatedOperationMethod<
   DescribeTrunkInterfaceAssociationsRequest,
   DescribeTrunkInterfaceAssociationsResult,
   DescribeTrunkInterfaceAssociationsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeTrunkInterfaceAssociationsRequest,
-  ) => stream.Stream<
-    DescribeTrunkInterfaceAssociationsResult,
-    DescribeTrunkInterfaceAssociationsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeTrunkInterfaceAssociationsRequest,
-  ) => stream.Stream<
-    TrunkInterfaceAssociation,
-    DescribeTrunkInterfaceAssociationsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  TrunkInterfaceAssociation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeTrunkInterfaceAssociationsRequest,
   output: DescribeTrunkInterfaceAssociationsResult,
   errors: [RequestLimitExceeded, OperationNotPermitted, UnauthorizedOperation],
@@ -90218,27 +88551,13 @@ export type DescribeVerifiedAccessEndpointsError =
 /**
  * Describes the specified Amazon Web Services Verified Access endpoints.
  */
-export const describeVerifiedAccessEndpoints: API.OperationMethod<
+export const describeVerifiedAccessEndpoints: API.PaginatedOperationMethod<
   DescribeVerifiedAccessEndpointsRequest,
   DescribeVerifiedAccessEndpointsResult,
   DescribeVerifiedAccessEndpointsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeVerifiedAccessEndpointsRequest,
-  ) => stream.Stream<
-    DescribeVerifiedAccessEndpointsResult,
-    DescribeVerifiedAccessEndpointsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeVerifiedAccessEndpointsRequest,
-  ) => stream.Stream<
-    VerifiedAccessEndpoint,
-    DescribeVerifiedAccessEndpointsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  VerifiedAccessEndpoint
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeVerifiedAccessEndpointsRequest,
   output: DescribeVerifiedAccessEndpointsResult,
   errors: [
@@ -90265,27 +88584,13 @@ export type DescribeVerifiedAccessGroupsError =
 /**
  * Describes the specified Verified Access groups.
  */
-export const describeVerifiedAccessGroups: API.OperationMethod<
+export const describeVerifiedAccessGroups: API.PaginatedOperationMethod<
   DescribeVerifiedAccessGroupsRequest,
   DescribeVerifiedAccessGroupsResult,
   DescribeVerifiedAccessGroupsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeVerifiedAccessGroupsRequest,
-  ) => stream.Stream<
-    DescribeVerifiedAccessGroupsResult,
-    DescribeVerifiedAccessGroupsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeVerifiedAccessGroupsRequest,
-  ) => stream.Stream<
-    VerifiedAccessGroup,
-    DescribeVerifiedAccessGroupsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  VerifiedAccessGroup
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeVerifiedAccessGroupsRequest,
   output: DescribeVerifiedAccessGroupsResult,
   errors: [
@@ -90312,27 +88617,13 @@ export type DescribeVerifiedAccessInstanceLoggingConfigurationsError =
 /**
  * Describes the specified Amazon Web Services Verified Access instances.
  */
-export const describeVerifiedAccessInstanceLoggingConfigurations: API.OperationMethod<
+export const describeVerifiedAccessInstanceLoggingConfigurations: API.PaginatedOperationMethod<
   DescribeVerifiedAccessInstanceLoggingConfigurationsRequest,
   DescribeVerifiedAccessInstanceLoggingConfigurationsResult,
   DescribeVerifiedAccessInstanceLoggingConfigurationsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeVerifiedAccessInstanceLoggingConfigurationsRequest,
-  ) => stream.Stream<
-    DescribeVerifiedAccessInstanceLoggingConfigurationsResult,
-    DescribeVerifiedAccessInstanceLoggingConfigurationsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeVerifiedAccessInstanceLoggingConfigurationsRequest,
-  ) => stream.Stream<
-    VerifiedAccessInstanceLoggingConfiguration,
-    DescribeVerifiedAccessInstanceLoggingConfigurationsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  VerifiedAccessInstanceLoggingConfiguration
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeVerifiedAccessInstanceLoggingConfigurationsRequest,
   output: DescribeVerifiedAccessInstanceLoggingConfigurationsResult,
   errors: [
@@ -90359,27 +88650,13 @@ export type DescribeVerifiedAccessInstancesError =
 /**
  * Describes the specified Amazon Web Services Verified Access instances.
  */
-export const describeVerifiedAccessInstances: API.OperationMethod<
+export const describeVerifiedAccessInstances: API.PaginatedOperationMethod<
   DescribeVerifiedAccessInstancesRequest,
   DescribeVerifiedAccessInstancesResult,
   DescribeVerifiedAccessInstancesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeVerifiedAccessInstancesRequest,
-  ) => stream.Stream<
-    DescribeVerifiedAccessInstancesResult,
-    DescribeVerifiedAccessInstancesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeVerifiedAccessInstancesRequest,
-  ) => stream.Stream<
-    VerifiedAccessInstance,
-    DescribeVerifiedAccessInstancesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  VerifiedAccessInstance
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeVerifiedAccessInstancesRequest,
   output: DescribeVerifiedAccessInstancesResult,
   errors: [
@@ -90406,27 +88683,13 @@ export type DescribeVerifiedAccessTrustProvidersError =
 /**
  * Describes the specified Amazon Web Services Verified Access trust providers.
  */
-export const describeVerifiedAccessTrustProviders: API.OperationMethod<
+export const describeVerifiedAccessTrustProviders: API.PaginatedOperationMethod<
   DescribeVerifiedAccessTrustProvidersRequest,
   DescribeVerifiedAccessTrustProvidersResult,
   DescribeVerifiedAccessTrustProvidersError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeVerifiedAccessTrustProvidersRequest,
-  ) => stream.Stream<
-    DescribeVerifiedAccessTrustProvidersResult,
-    DescribeVerifiedAccessTrustProvidersError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeVerifiedAccessTrustProvidersRequest,
-  ) => stream.Stream<
-    VerifiedAccessTrustProvider,
-    DescribeVerifiedAccessTrustProvidersError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  VerifiedAccessTrustProvider
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeVerifiedAccessTrustProvidersRequest,
   output: DescribeVerifiedAccessTrustProvidersResult,
   errors: [
@@ -90500,27 +88763,13 @@ export type DescribeVolumesError =
  * structures, might vary. Applications should not assume the elements appear in a
  * particular order.
  */
-export const describeVolumes: API.OperationMethod<
+export const describeVolumes: API.PaginatedOperationMethod<
   DescribeVolumesRequest,
   DescribeVolumesResult,
   DescribeVolumesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeVolumesRequest,
-  ) => stream.Stream<
-    DescribeVolumesResult,
-    DescribeVolumesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeVolumesRequest,
-  ) => stream.Stream<
-    Volume,
-    DescribeVolumesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  Volume
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeVolumesRequest,
   output: DescribeVolumesResult,
   errors: [
@@ -90552,27 +88801,13 @@ export type DescribeVolumesModificationsError =
  * For more information, see
  * Monitor the progress of volume modifications in the *Amazon EBS User Guide*.
  */
-export const describeVolumesModifications: API.OperationMethod<
+export const describeVolumesModifications: API.PaginatedOperationMethod<
   DescribeVolumesModificationsRequest,
   DescribeVolumesModificationsResult,
   DescribeVolumesModificationsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeVolumesModificationsRequest,
-  ) => stream.Stream<
-    DescribeVolumesModificationsResult,
-    DescribeVolumesModificationsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeVolumesModificationsRequest,
-  ) => stream.Stream<
-    VolumeModification,
-    DescribeVolumesModificationsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  VolumeModification
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeVolumesModificationsRequest,
   output: DescribeVolumesModificationsResult,
   errors: [
@@ -90638,27 +88873,13 @@ export type DescribeVolumeStatusError =
  * structures, might vary. Applications should not assume the elements appear in a
  * particular order.
  */
-export const describeVolumeStatus: API.OperationMethod<
+export const describeVolumeStatus: API.PaginatedOperationMethod<
   DescribeVolumeStatusRequest,
   DescribeVolumeStatusResult,
   DescribeVolumeStatusError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeVolumeStatusRequest,
-  ) => stream.Stream<
-    DescribeVolumeStatusResult,
-    DescribeVolumeStatusError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeVolumeStatusRequest,
-  ) => stream.Stream<
-    VolumeStatusItem,
-    DescribeVolumeStatusError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  VolumeStatusItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeVolumeStatusRequest,
   output: DescribeVolumeStatusResult,
   errors: [
@@ -90795,27 +89016,13 @@ export type DescribeVpcClassicLinkDnsSupportError =
  * of an instance in a VPC resolves to its private IP address when addressed from a linked
  * EC2-Classic instance.
  */
-export const describeVpcClassicLinkDnsSupport: API.OperationMethod<
+export const describeVpcClassicLinkDnsSupport: API.PaginatedOperationMethod<
   DescribeVpcClassicLinkDnsSupportRequest,
   DescribeVpcClassicLinkDnsSupportResult,
   DescribeVpcClassicLinkDnsSupportError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeVpcClassicLinkDnsSupportRequest,
-  ) => stream.Stream<
-    DescribeVpcClassicLinkDnsSupportResult,
-    DescribeVpcClassicLinkDnsSupportError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeVpcClassicLinkDnsSupportRequest,
-  ) => stream.Stream<
-    ClassicLinkDnsSupport,
-    DescribeVpcClassicLinkDnsSupportError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  ClassicLinkDnsSupport
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeVpcClassicLinkDnsSupportRequest,
   output: DescribeVpcClassicLinkDnsSupportResult,
   errors: [RequestLimitExceeded, InvalidVpcIDNotFound, UnauthorizedOperation],
@@ -90886,27 +89093,13 @@ export type DescribeVpcEndpointConnectionNotificationsError =
  * Describes the connection notifications for VPC endpoints and VPC endpoint
  * services.
  */
-export const describeVpcEndpointConnectionNotifications: API.OperationMethod<
+export const describeVpcEndpointConnectionNotifications: API.PaginatedOperationMethod<
   DescribeVpcEndpointConnectionNotificationsRequest,
   DescribeVpcEndpointConnectionNotificationsResult,
   DescribeVpcEndpointConnectionNotificationsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeVpcEndpointConnectionNotificationsRequest,
-  ) => stream.Stream<
-    DescribeVpcEndpointConnectionNotificationsResult,
-    DescribeVpcEndpointConnectionNotificationsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeVpcEndpointConnectionNotificationsRequest,
-  ) => stream.Stream<
-    ConnectionNotification,
-    DescribeVpcEndpointConnectionNotificationsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  ConnectionNotification
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeVpcEndpointConnectionNotificationsRequest,
   output: DescribeVpcEndpointConnectionNotificationsResult,
   errors: [
@@ -90930,27 +89123,13 @@ export type DescribeVpcEndpointConnectionsError = CommonErrors;
  * Describes the VPC endpoint connections to your VPC endpoint services, including any
  * endpoints that are pending your acceptance.
  */
-export const describeVpcEndpointConnections: API.OperationMethod<
+export const describeVpcEndpointConnections: API.PaginatedOperationMethod<
   DescribeVpcEndpointConnectionsRequest,
   DescribeVpcEndpointConnectionsResult,
   DescribeVpcEndpointConnectionsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeVpcEndpointConnectionsRequest,
-  ) => stream.Stream<
-    DescribeVpcEndpointConnectionsResult,
-    DescribeVpcEndpointConnectionsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeVpcEndpointConnectionsRequest,
-  ) => stream.Stream<
-    VpcEndpointConnection,
-    DescribeVpcEndpointConnectionsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  VpcEndpointConnection
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeVpcEndpointConnectionsRequest,
   output: DescribeVpcEndpointConnectionsResult,
   errors: [],
@@ -90976,27 +89155,13 @@ export type DescribeVpcEndpointsError =
  * Alternatively, you can specify specific VPC endpoint IDs or filter the results to
  * include only the VPC endpoints that match specific criteria.
  */
-export const describeVpcEndpoints: API.OperationMethod<
+export const describeVpcEndpoints: API.PaginatedOperationMethod<
   DescribeVpcEndpointsRequest,
   DescribeVpcEndpointsResult,
   DescribeVpcEndpointsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeVpcEndpointsRequest,
-  ) => stream.Stream<
-    DescribeVpcEndpointsResult,
-    DescribeVpcEndpointsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeVpcEndpointsRequest,
-  ) => stream.Stream<
-    VpcEndpoint,
-    DescribeVpcEndpointsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  VpcEndpoint
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeVpcEndpointsRequest,
   output: DescribeVpcEndpointsResult,
   errors: [
@@ -91024,27 +89189,13 @@ export type DescribeVpcEndpointServiceConfigurationsError =
 /**
  * Describes the VPC endpoint service configurations in your account (your services).
  */
-export const describeVpcEndpointServiceConfigurations: API.OperationMethod<
+export const describeVpcEndpointServiceConfigurations: API.PaginatedOperationMethod<
   DescribeVpcEndpointServiceConfigurationsRequest,
   DescribeVpcEndpointServiceConfigurationsResult,
   DescribeVpcEndpointServiceConfigurationsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeVpcEndpointServiceConfigurationsRequest,
-  ) => stream.Stream<
-    DescribeVpcEndpointServiceConfigurationsResult,
-    DescribeVpcEndpointServiceConfigurationsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeVpcEndpointServiceConfigurationsRequest,
-  ) => stream.Stream<
-    ServiceConfiguration,
-    DescribeVpcEndpointServiceConfigurationsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  ServiceConfiguration
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeVpcEndpointServiceConfigurationsRequest,
   output: DescribeVpcEndpointServiceConfigurationsResult,
   errors: [
@@ -91073,27 +89224,13 @@ export type DescribeVpcEndpointServicePermissionsError =
  * Describes the principals (service consumers) that are permitted to discover your VPC
  * endpoint service. Principal ARNs with path components aren't supported.
  */
-export const describeVpcEndpointServicePermissions: API.OperationMethod<
+export const describeVpcEndpointServicePermissions: API.PaginatedOperationMethod<
   DescribeVpcEndpointServicePermissionsRequest,
   DescribeVpcEndpointServicePermissionsResult,
   DescribeVpcEndpointServicePermissionsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeVpcEndpointServicePermissionsRequest,
-  ) => stream.Stream<
-    DescribeVpcEndpointServicePermissionsResult,
-    DescribeVpcEndpointServicePermissionsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeVpcEndpointServicePermissionsRequest,
-  ) => stream.Stream<
-    AllowedPrincipal,
-    DescribeVpcEndpointServicePermissionsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  AllowedPrincipal
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeVpcEndpointServicePermissionsRequest,
   output: DescribeVpcEndpointServicePermissionsResult,
   errors: [
@@ -91155,27 +89292,13 @@ export type DescribeVpcPeeringConnectionsError =
  * Alternatively, you can specify specific VPC peering connection IDs or filter the results to
  * include only the VPC peering connections that match specific criteria.
  */
-export const describeVpcPeeringConnections: API.OperationMethod<
+export const describeVpcPeeringConnections: API.PaginatedOperationMethod<
   DescribeVpcPeeringConnectionsRequest,
   DescribeVpcPeeringConnectionsResult,
   DescribeVpcPeeringConnectionsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeVpcPeeringConnectionsRequest,
-  ) => stream.Stream<
-    DescribeVpcPeeringConnectionsResult,
-    DescribeVpcPeeringConnectionsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeVpcPeeringConnectionsRequest,
-  ) => stream.Stream<
-    VpcPeeringConnection,
-    DescribeVpcPeeringConnectionsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  VpcPeeringConnection
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeVpcPeeringConnectionsRequest,
   output: DescribeVpcPeeringConnectionsResult,
   errors: [
@@ -91208,27 +89331,13 @@ export type DescribeVpcsError =
  * Alternatively, you can specify specific VPC IDs or filter the results to
  * include only the VPCs that match specific criteria.
  */
-export const describeVpcs: API.OperationMethod<
+export const describeVpcs: API.PaginatedOperationMethod<
   DescribeVpcsRequest,
   DescribeVpcsResult,
   DescribeVpcsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeVpcsRequest,
-  ) => stream.Stream<
-    DescribeVpcsResult,
-    DescribeVpcsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeVpcsRequest,
-  ) => stream.Stream<
-    Vpc,
-    DescribeVpcsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  Vpc
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeVpcsRequest,
   output: DescribeVpcsResult,
   errors: [
@@ -91257,27 +89366,13 @@ export type DescribeVpnConcentratorsError =
 /**
  * Describes one or more of your VPN concentrators.
  */
-export const describeVpnConcentrators: API.OperationMethod<
+export const describeVpnConcentrators: API.PaginatedOperationMethod<
   DescribeVpnConcentratorsRequest,
   DescribeVpnConcentratorsResult,
   DescribeVpnConcentratorsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeVpnConcentratorsRequest,
-  ) => stream.Stream<
-    DescribeVpnConcentratorsResult,
-    DescribeVpnConcentratorsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeVpnConcentratorsRequest,
-  ) => stream.Stream<
-    VpnConcentrator,
-    DescribeVpnConcentratorsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  VpnConcentrator
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeVpnConcentratorsRequest,
   output: DescribeVpnConcentratorsResult,
   errors: [
@@ -93616,27 +91711,13 @@ export type GetAssociatedIpv6PoolCidrsError =
 /**
  * Gets information about the IPv6 CIDR block associations for a specified IPv6 address pool.
  */
-export const getAssociatedIpv6PoolCidrs: API.OperationMethod<
+export const getAssociatedIpv6PoolCidrs: API.PaginatedOperationMethod<
   GetAssociatedIpv6PoolCidrsRequest,
   GetAssociatedIpv6PoolCidrsResult,
   GetAssociatedIpv6PoolCidrsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetAssociatedIpv6PoolCidrsRequest,
-  ) => stream.Stream<
-    GetAssociatedIpv6PoolCidrsResult,
-    GetAssociatedIpv6PoolCidrsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetAssociatedIpv6PoolCidrsRequest,
-  ) => stream.Stream<
-    Ipv6CidrAssociation,
-    GetAssociatedIpv6PoolCidrsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  Ipv6CidrAssociation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetAssociatedIpv6PoolCidrsRequest,
   output: GetAssociatedIpv6PoolCidrsResult,
   errors: [
@@ -93663,27 +91744,13 @@ export type GetAwsNetworkPerformanceDataError =
 /**
  * Gets network performance data.
  */
-export const getAwsNetworkPerformanceData: API.OperationMethod<
+export const getAwsNetworkPerformanceData: API.PaginatedOperationMethod<
   GetAwsNetworkPerformanceDataRequest,
   GetAwsNetworkPerformanceDataResult,
   GetAwsNetworkPerformanceDataError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetAwsNetworkPerformanceDataRequest,
-  ) => stream.Stream<
-    GetAwsNetworkPerformanceDataResult,
-    GetAwsNetworkPerformanceDataError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetAwsNetworkPerformanceDataRequest,
-  ) => stream.Stream<
-    DataResponse,
-    GetAwsNetworkPerformanceDataError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  DataResponse
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetAwsNetworkPerformanceDataRequest,
   output: GetAwsNetworkPerformanceDataResult,
   errors: [RequestLimitExceeded, MissingParameter, UnauthorizedOperation],
@@ -93725,27 +91792,13 @@ export type GetCapacityManagerMetricDataError =
  * Retrieves capacity usage metrics for your EC2 resources. Returns time-series data for metrics like unused capacity, utilization rates, and costs
  * across On-Demand, Spot, and Capacity Reservations. Data can be grouped and filtered by various dimensions such as region, account, and instance family.
  */
-export const getCapacityManagerMetricData: API.OperationMethod<
+export const getCapacityManagerMetricData: API.PaginatedOperationMethod<
   GetCapacityManagerMetricDataRequest,
   GetCapacityManagerMetricDataResult,
   GetCapacityManagerMetricDataError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetCapacityManagerMetricDataRequest,
-  ) => stream.Stream<
-    GetCapacityManagerMetricDataResult,
-    GetCapacityManagerMetricDataError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetCapacityManagerMetricDataRequest,
-  ) => stream.Stream<
-    MetricDataResult,
-    GetCapacityManagerMetricDataError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  MetricDataResult
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetCapacityManagerMetricDataRequest,
   output: GetCapacityManagerMetricDataResult,
   errors: [RequestLimitExceeded, MissingParameter, UnauthorizedOperation],
@@ -93769,27 +91822,13 @@ export type GetCapacityManagerMetricDimensionsError =
  * Retrieves the available dimension values for capacity metrics within a specified time range. This is useful for discovering what accounts,
  * regions, instance families, and other dimensions have data available for filtering and grouping.
  */
-export const getCapacityManagerMetricDimensions: API.OperationMethod<
+export const getCapacityManagerMetricDimensions: API.PaginatedOperationMethod<
   GetCapacityManagerMetricDimensionsRequest,
   GetCapacityManagerMetricDimensionsResult,
   GetCapacityManagerMetricDimensionsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetCapacityManagerMetricDimensionsRequest,
-  ) => stream.Stream<
-    GetCapacityManagerMetricDimensionsResult,
-    GetCapacityManagerMetricDimensionsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetCapacityManagerMetricDimensionsRequest,
-  ) => stream.Stream<
-    CapacityManagerDimension,
-    GetCapacityManagerMetricDimensionsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  CapacityManagerDimension
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetCapacityManagerMetricDimensionsRequest,
   output: GetCapacityManagerMetricDimensionsResult,
   errors: [RequestLimitExceeded, MissingParameter, UnauthorizedOperation],
@@ -93808,27 +91847,13 @@ export type GetCapacityManagerMonitoredTagKeysError = CommonErrors;
 /**
  * Retrieves the tag keys that are currently being monitored by EC2 Capacity Manager. Monitored tag keys are included as dimensions in capacity metric data, enabling you to group and filter metrics by tag values.
  */
-export const getCapacityManagerMonitoredTagKeys: API.OperationMethod<
+export const getCapacityManagerMonitoredTagKeys: API.PaginatedOperationMethod<
   GetCapacityManagerMonitoredTagKeysRequest,
   GetCapacityManagerMonitoredTagKeysResult,
   GetCapacityManagerMonitoredTagKeysError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetCapacityManagerMonitoredTagKeysRequest,
-  ) => stream.Stream<
-    GetCapacityManagerMonitoredTagKeysResult,
-    GetCapacityManagerMonitoredTagKeysError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetCapacityManagerMonitoredTagKeysRequest,
-  ) => stream.Stream<
-    CapacityManagerMonitoredTagKey,
-    GetCapacityManagerMonitoredTagKeysError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  CapacityManagerMonitoredTagKey
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetCapacityManagerMonitoredTagKeysRequest,
   output: GetCapacityManagerMonitoredTagKeysResult,
   errors: [],
@@ -94125,27 +92150,13 @@ export type GetGroupsForCapacityReservationError =
 /**
  * Lists the resource groups to which a Capacity Reservation has been added.
  */
-export const getGroupsForCapacityReservation: API.OperationMethod<
+export const getGroupsForCapacityReservation: API.PaginatedOperationMethod<
   GetGroupsForCapacityReservationRequest,
   GetGroupsForCapacityReservationResult,
   GetGroupsForCapacityReservationError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetGroupsForCapacityReservationRequest,
-  ) => stream.Stream<
-    GetGroupsForCapacityReservationResult,
-    GetGroupsForCapacityReservationError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetGroupsForCapacityReservationRequest,
-  ) => stream.Stream<
-    CapacityReservationGroup,
-    GetGroupsForCapacityReservationError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  CapacityReservationGroup
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetGroupsForCapacityReservationRequest,
   output: GetGroupsForCapacityReservationResult,
   errors: [
@@ -94298,27 +92309,13 @@ export type GetInstanceTypesFromInstanceRequirementsError =
  * mixed instance groups using attribute-based instance type selection in the
  * *Amazon EC2 Auto Scaling User Guide*.
  */
-export const getInstanceTypesFromInstanceRequirements: API.OperationMethod<
+export const getInstanceTypesFromInstanceRequirements: API.PaginatedOperationMethod<
   GetInstanceTypesFromInstanceRequirementsRequest,
   GetInstanceTypesFromInstanceRequirementsResult,
   GetInstanceTypesFromInstanceRequirementsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetInstanceTypesFromInstanceRequirementsRequest,
-  ) => stream.Stream<
-    GetInstanceTypesFromInstanceRequirementsResult,
-    GetInstanceTypesFromInstanceRequirementsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetInstanceTypesFromInstanceRequirementsRequest,
-  ) => stream.Stream<
-    InstanceTypeInfoFromInstanceRequirements,
-    GetInstanceTypesFromInstanceRequirementsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  InstanceTypeInfoFromInstanceRequirements
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetInstanceTypesFromInstanceRequirementsRequest,
   output: GetInstanceTypesFromInstanceRequirementsResult,
   errors: [RequestLimitExceeded, MissingParameter, UnauthorizedOperation],
@@ -94379,27 +92376,13 @@ export type GetIpamAddressHistoryError =
 /**
  * Retrieve historical information about a CIDR within an IPAM scope. For more information, see View the history of IP addresses in the *Amazon VPC IPAM User Guide*.
  */
-export const getIpamAddressHistory: API.OperationMethod<
+export const getIpamAddressHistory: API.PaginatedOperationMethod<
   GetIpamAddressHistoryRequest,
   GetIpamAddressHistoryResult,
   GetIpamAddressHistoryError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetIpamAddressHistoryRequest,
-  ) => stream.Stream<
-    GetIpamAddressHistoryResult,
-    GetIpamAddressHistoryError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetIpamAddressHistoryRequest,
-  ) => stream.Stream<
-    IpamAddressHistoryRecord,
-    GetIpamAddressHistoryError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  IpamAddressHistoryRecord
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetIpamAddressHistoryRequest,
   output: GetIpamAddressHistoryResult,
   errors: [
@@ -94427,27 +92410,13 @@ export type GetIpamDiscoveredAccountsError =
 /**
  * Gets IPAM discovered accounts. A discovered account is an Amazon Web Services account that is monitored under a resource discovery. If you have integrated IPAM with Amazon Web Services Organizations, all accounts in the organization are discovered accounts. Only the IPAM account can get all discovered accounts in the organization.
  */
-export const getIpamDiscoveredAccounts: API.OperationMethod<
+export const getIpamDiscoveredAccounts: API.PaginatedOperationMethod<
   GetIpamDiscoveredAccountsRequest,
   GetIpamDiscoveredAccountsResult,
   GetIpamDiscoveredAccountsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetIpamDiscoveredAccountsRequest,
-  ) => stream.Stream<
-    GetIpamDiscoveredAccountsResult,
-    GetIpamDiscoveredAccountsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetIpamDiscoveredAccountsRequest,
-  ) => stream.Stream<
-    IpamDiscoveredAccount,
-    GetIpamDiscoveredAccountsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  IpamDiscoveredAccount
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetIpamDiscoveredAccountsRequest,
   output: GetIpamDiscoveredAccountsResult,
   errors: [
@@ -94504,27 +92473,13 @@ export type GetIpamDiscoveredResourceCidrsError =
 /**
  * Returns the resource CIDRs that are monitored as part of a resource discovery. A discovered resource is a resource CIDR monitored under a resource discovery. The following resources can be discovered: VPCs, Public IPv4 pools, VPC subnets, and Elastic IP addresses.
  */
-export const getIpamDiscoveredResourceCidrs: API.OperationMethod<
+export const getIpamDiscoveredResourceCidrs: API.PaginatedOperationMethod<
   GetIpamDiscoveredResourceCidrsRequest,
   GetIpamDiscoveredResourceCidrsResult,
   GetIpamDiscoveredResourceCidrsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetIpamDiscoveredResourceCidrsRequest,
-  ) => stream.Stream<
-    GetIpamDiscoveredResourceCidrsResult,
-    GetIpamDiscoveredResourceCidrsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetIpamDiscoveredResourceCidrsRequest,
-  ) => stream.Stream<
-    IpamDiscoveredResourceCidr,
-    GetIpamDiscoveredResourceCidrsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  IpamDiscoveredResourceCidr
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetIpamDiscoveredResourceCidrsRequest,
   output: GetIpamDiscoveredResourceCidrsResult,
   errors: [
@@ -94619,27 +92574,13 @@ export type GetIpamPoolAllocationsError =
  *
  * If you use this action after AllocateIpamPoolCidr or ReleaseIpamPoolAllocation, note that all EC2 API actions follow an eventual consistency model.
  */
-export const getIpamPoolAllocations: API.OperationMethod<
+export const getIpamPoolAllocations: API.PaginatedOperationMethod<
   GetIpamPoolAllocationsRequest,
   GetIpamPoolAllocationsResult,
   GetIpamPoolAllocationsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetIpamPoolAllocationsRequest,
-  ) => stream.Stream<
-    GetIpamPoolAllocationsResult,
-    GetIpamPoolAllocationsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetIpamPoolAllocationsRequest,
-  ) => stream.Stream<
-    IpamPoolAllocation,
-    GetIpamPoolAllocationsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  IpamPoolAllocation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetIpamPoolAllocationsRequest,
   output: GetIpamPoolAllocationsResult,
   errors: [
@@ -94668,27 +92609,13 @@ export type GetIpamPoolCidrsError =
 /**
  * Get the CIDRs provisioned to an IPAM pool.
  */
-export const getIpamPoolCidrs: API.OperationMethod<
+export const getIpamPoolCidrs: API.PaginatedOperationMethod<
   GetIpamPoolCidrsRequest,
   GetIpamPoolCidrsResult,
   GetIpamPoolCidrsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetIpamPoolCidrsRequest,
-  ) => stream.Stream<
-    GetIpamPoolCidrsResult,
-    GetIpamPoolCidrsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetIpamPoolCidrsRequest,
-  ) => stream.Stream<
-    IpamPoolCidr,
-    GetIpamPoolCidrsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  IpamPoolCidr
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetIpamPoolCidrsRequest,
   output: GetIpamPoolCidrsResult,
   errors: [
@@ -94717,27 +92644,13 @@ export type GetIpamPrefixListResolverRulesError =
 /**
  * Retrieves the CIDR selection rules for an IPAM prefix list resolver. Use this operation to view the business logic that determines which CIDRs are selected for synchronization with prefix lists.
  */
-export const getIpamPrefixListResolverRules: API.OperationMethod<
+export const getIpamPrefixListResolverRules: API.PaginatedOperationMethod<
   GetIpamPrefixListResolverRulesRequest,
   GetIpamPrefixListResolverRulesResult,
   GetIpamPrefixListResolverRulesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetIpamPrefixListResolverRulesRequest,
-  ) => stream.Stream<
-    GetIpamPrefixListResolverRulesResult,
-    GetIpamPrefixListResolverRulesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetIpamPrefixListResolverRulesRequest,
-  ) => stream.Stream<
-    IpamPrefixListResolverRule,
-    GetIpamPrefixListResolverRulesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  IpamPrefixListResolverRule
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetIpamPrefixListResolverRulesRequest,
   output: GetIpamPrefixListResolverRulesResult,
   errors: [
@@ -94765,27 +92678,13 @@ export type GetIpamPrefixListResolverVersionEntriesError =
 /**
  * Retrieves the CIDR entries for a specific version of an IPAM prefix list resolver. This shows the actual CIDRs that were selected and synchronized at a particular point in time.
  */
-export const getIpamPrefixListResolverVersionEntries: API.OperationMethod<
+export const getIpamPrefixListResolverVersionEntries: API.PaginatedOperationMethod<
   GetIpamPrefixListResolverVersionEntriesRequest,
   GetIpamPrefixListResolverVersionEntriesResult,
   GetIpamPrefixListResolverVersionEntriesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetIpamPrefixListResolverVersionEntriesRequest,
-  ) => stream.Stream<
-    GetIpamPrefixListResolverVersionEntriesResult,
-    GetIpamPrefixListResolverVersionEntriesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetIpamPrefixListResolverVersionEntriesRequest,
-  ) => stream.Stream<
-    IpamPrefixListResolverVersionEntry,
-    GetIpamPrefixListResolverVersionEntriesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  IpamPrefixListResolverVersionEntry
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetIpamPrefixListResolverVersionEntriesRequest,
   output: GetIpamPrefixListResolverVersionEntriesResult,
   errors: [RequestLimitExceeded, MissingParameter, UnauthorizedOperation],
@@ -94836,27 +92735,13 @@ export type GetIpamPrefixListResolverVersionsError =
  *
  * **Version 2 CIDRs:** 10.1.0.0/16, 10.2.0.0/16, 10.3.0.0/16
  */
-export const getIpamPrefixListResolverVersions: API.OperationMethod<
+export const getIpamPrefixListResolverVersions: API.PaginatedOperationMethod<
   GetIpamPrefixListResolverVersionsRequest,
   GetIpamPrefixListResolverVersionsResult,
   GetIpamPrefixListResolverVersionsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetIpamPrefixListResolverVersionsRequest,
-  ) => stream.Stream<
-    GetIpamPrefixListResolverVersionsResult,
-    GetIpamPrefixListResolverVersionsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetIpamPrefixListResolverVersionsRequest,
-  ) => stream.Stream<
-    IpamPrefixListResolverVersion,
-    GetIpamPrefixListResolverVersionsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  IpamPrefixListResolverVersion
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetIpamPrefixListResolverVersionsRequest,
   output: GetIpamPrefixListResolverVersionsResult,
   errors: [
@@ -94885,27 +92770,13 @@ export type GetIpamResourceCidrsError =
 /**
  * Returns resource CIDRs managed by IPAM in a given scope. If an IPAM is associated with more than one resource discovery, the resource CIDRs across all of the resource discoveries is returned. A resource discovery is an IPAM component that enables IPAM to manage and monitor resources that belong to the owning account.
  */
-export const getIpamResourceCidrs: API.OperationMethod<
+export const getIpamResourceCidrs: API.PaginatedOperationMethod<
   GetIpamResourceCidrsRequest,
   GetIpamResourceCidrsResult,
   GetIpamResourceCidrsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetIpamResourceCidrsRequest,
-  ) => stream.Stream<
-    GetIpamResourceCidrsResult,
-    GetIpamResourceCidrsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetIpamResourceCidrsRequest,
-  ) => stream.Stream<
-    IpamResourceCidr,
-    GetIpamResourceCidrsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  IpamResourceCidr
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetIpamResourceCidrsRequest,
   output: GetIpamResourceCidrsResult,
   errors: [
@@ -94968,27 +92839,13 @@ export type GetManagedPrefixListAssociationsError =
 /**
  * Gets information about the resources that are associated with the specified managed prefix list.
  */
-export const getManagedPrefixListAssociations: API.OperationMethod<
+export const getManagedPrefixListAssociations: API.PaginatedOperationMethod<
   GetManagedPrefixListAssociationsRequest,
   GetManagedPrefixListAssociationsResult,
   GetManagedPrefixListAssociationsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetManagedPrefixListAssociationsRequest,
-  ) => stream.Stream<
-    GetManagedPrefixListAssociationsResult,
-    GetManagedPrefixListAssociationsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetManagedPrefixListAssociationsRequest,
-  ) => stream.Stream<
-    PrefixListAssociation,
-    GetManagedPrefixListAssociationsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  PrefixListAssociation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetManagedPrefixListAssociationsRequest,
   output: GetManagedPrefixListAssociationsResult,
   errors: [
@@ -95018,27 +92875,13 @@ export type GetManagedPrefixListEntriesError =
 /**
  * Gets information about the entries for a specified managed prefix list.
  */
-export const getManagedPrefixListEntries: API.OperationMethod<
+export const getManagedPrefixListEntries: API.PaginatedOperationMethod<
   GetManagedPrefixListEntriesRequest,
   GetManagedPrefixListEntriesResult,
   GetManagedPrefixListEntriesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetManagedPrefixListEntriesRequest,
-  ) => stream.Stream<
-    GetManagedPrefixListEntriesResult,
-    GetManagedPrefixListEntriesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetManagedPrefixListEntriesRequest,
-  ) => stream.Stream<
-    PrefixListEntry,
-    GetManagedPrefixListEntriesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  PrefixListEntry
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetManagedPrefixListEntriesRequest,
   output: GetManagedPrefixListEntriesResult,
   errors: [
@@ -95086,27 +92929,13 @@ export type GetNetworkInsightsAccessScopeAnalysisFindingsError =
 /**
  * Gets the findings for the specified Network Access Scope analysis.
  */
-export const getNetworkInsightsAccessScopeAnalysisFindings: API.OperationMethod<
+export const getNetworkInsightsAccessScopeAnalysisFindings: API.PaginatedOperationMethod<
   GetNetworkInsightsAccessScopeAnalysisFindingsRequest,
   GetNetworkInsightsAccessScopeAnalysisFindingsResult,
   GetNetworkInsightsAccessScopeAnalysisFindingsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetNetworkInsightsAccessScopeAnalysisFindingsRequest,
-  ) => stream.Stream<
-    GetNetworkInsightsAccessScopeAnalysisFindingsResult,
-    GetNetworkInsightsAccessScopeAnalysisFindingsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetNetworkInsightsAccessScopeAnalysisFindingsRequest,
-  ) => stream.Stream<
-    AccessScopeAnalysisFinding,
-    GetNetworkInsightsAccessScopeAnalysisFindingsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  AccessScopeAnalysisFinding
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetNetworkInsightsAccessScopeAnalysisFindingsRequest,
   output: GetNetworkInsightsAccessScopeAnalysisFindingsResult,
   errors: [RequestLimitExceeded, InvalidParameterValue, UnauthorizedOperation],
@@ -95334,27 +93163,13 @@ export type GetSecurityGroupsForVpcError =
 /**
  * Gets security groups that can be associated by the Amazon Web Services account making the request with network interfaces in the specified VPC.
  */
-export const getSecurityGroupsForVpc: API.OperationMethod<
+export const getSecurityGroupsForVpc: API.PaginatedOperationMethod<
   GetSecurityGroupsForVpcRequest,
   GetSecurityGroupsForVpcResult,
   GetSecurityGroupsForVpcError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetSecurityGroupsForVpcRequest,
-  ) => stream.Stream<
-    GetSecurityGroupsForVpcResult,
-    GetSecurityGroupsForVpcError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetSecurityGroupsForVpcRequest,
-  ) => stream.Stream<
-    SecurityGroupForVpc,
-    GetSecurityGroupsForVpcError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  SecurityGroupForVpc
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetSecurityGroupsForVpcRequest,
   output: GetSecurityGroupsForVpcResult,
   errors: [
@@ -95430,27 +93245,13 @@ export type GetSpotPlacementScoresError = CommonErrors;
  * For more information, see Spot placement score in
  * the *Amazon EC2 User Guide*.
  */
-export const getSpotPlacementScores: API.OperationMethod<
+export const getSpotPlacementScores: API.PaginatedOperationMethod<
   GetSpotPlacementScoresRequest,
   GetSpotPlacementScoresResult,
   GetSpotPlacementScoresError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetSpotPlacementScoresRequest,
-  ) => stream.Stream<
-    GetSpotPlacementScoresResult,
-    GetSpotPlacementScoresError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetSpotPlacementScoresRequest,
-  ) => stream.Stream<
-    SpotPlacementScore,
-    GetSpotPlacementScoresError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  SpotPlacementScore
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetSpotPlacementScoresRequest,
   output: GetSpotPlacementScoresResult,
   errors: [],
@@ -95501,27 +93302,13 @@ export type GetTransitGatewayAttachmentPropagationsError =
 /**
  * Lists the route tables to which the specified resource attachment propagates routes.
  */
-export const getTransitGatewayAttachmentPropagations: API.OperationMethod<
+export const getTransitGatewayAttachmentPropagations: API.PaginatedOperationMethod<
   GetTransitGatewayAttachmentPropagationsRequest,
   GetTransitGatewayAttachmentPropagationsResult,
   GetTransitGatewayAttachmentPropagationsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetTransitGatewayAttachmentPropagationsRequest,
-  ) => stream.Stream<
-    GetTransitGatewayAttachmentPropagationsResult,
-    GetTransitGatewayAttachmentPropagationsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetTransitGatewayAttachmentPropagationsRequest,
-  ) => stream.Stream<
-    TransitGatewayAttachmentPropagation,
-    GetTransitGatewayAttachmentPropagationsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  TransitGatewayAttachmentPropagation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetTransitGatewayAttachmentPropagationsRequest,
   output: GetTransitGatewayAttachmentPropagationsResult,
   errors: [
@@ -95578,27 +93365,13 @@ export type GetTransitGatewayMulticastDomainAssociationsError =
 /**
  * Gets information about the associations for the transit gateway multicast domain.
  */
-export const getTransitGatewayMulticastDomainAssociations: API.OperationMethod<
+export const getTransitGatewayMulticastDomainAssociations: API.PaginatedOperationMethod<
   GetTransitGatewayMulticastDomainAssociationsRequest,
   GetTransitGatewayMulticastDomainAssociationsResult,
   GetTransitGatewayMulticastDomainAssociationsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetTransitGatewayMulticastDomainAssociationsRequest,
-  ) => stream.Stream<
-    GetTransitGatewayMulticastDomainAssociationsResult,
-    GetTransitGatewayMulticastDomainAssociationsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetTransitGatewayMulticastDomainAssociationsRequest,
-  ) => stream.Stream<
-    TransitGatewayMulticastDomainAssociation,
-    GetTransitGatewayMulticastDomainAssociationsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  TransitGatewayMulticastDomainAssociation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetTransitGatewayMulticastDomainAssociationsRequest,
   output: GetTransitGatewayMulticastDomainAssociationsResult,
   errors: [
@@ -95628,27 +93401,13 @@ export type GetTransitGatewayPolicyTableAssociationsError =
 /**
  * Gets a list of the transit gateway policy table associations.
  */
-export const getTransitGatewayPolicyTableAssociations: API.OperationMethod<
+export const getTransitGatewayPolicyTableAssociations: API.PaginatedOperationMethod<
   GetTransitGatewayPolicyTableAssociationsRequest,
   GetTransitGatewayPolicyTableAssociationsResult,
   GetTransitGatewayPolicyTableAssociationsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetTransitGatewayPolicyTableAssociationsRequest,
-  ) => stream.Stream<
-    GetTransitGatewayPolicyTableAssociationsResult,
-    GetTransitGatewayPolicyTableAssociationsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetTransitGatewayPolicyTableAssociationsRequest,
-  ) => stream.Stream<
-    TransitGatewayPolicyTableAssociation,
-    GetTransitGatewayPolicyTableAssociationsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  TransitGatewayPolicyTableAssociation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetTransitGatewayPolicyTableAssociationsRequest,
   output: GetTransitGatewayPolicyTableAssociationsResult,
   errors: [
@@ -95705,27 +93464,13 @@ export type GetTransitGatewayPrefixListReferencesError =
 /**
  * Gets information about the prefix list references in a specified transit gateway route table.
  */
-export const getTransitGatewayPrefixListReferences: API.OperationMethod<
+export const getTransitGatewayPrefixListReferences: API.PaginatedOperationMethod<
   GetTransitGatewayPrefixListReferencesRequest,
   GetTransitGatewayPrefixListReferencesResult,
   GetTransitGatewayPrefixListReferencesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetTransitGatewayPrefixListReferencesRequest,
-  ) => stream.Stream<
-    GetTransitGatewayPrefixListReferencesResult,
-    GetTransitGatewayPrefixListReferencesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetTransitGatewayPrefixListReferencesRequest,
-  ) => stream.Stream<
-    TransitGatewayPrefixListReference,
-    GetTransitGatewayPrefixListReferencesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  TransitGatewayPrefixListReference
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetTransitGatewayPrefixListReferencesRequest,
   output: GetTransitGatewayPrefixListReferencesResult,
   errors: [
@@ -95753,27 +93498,13 @@ export type GetTransitGatewayRouteTableAssociationsError =
 /**
  * Gets information about the associations for the specified transit gateway route table.
  */
-export const getTransitGatewayRouteTableAssociations: API.OperationMethod<
+export const getTransitGatewayRouteTableAssociations: API.PaginatedOperationMethod<
   GetTransitGatewayRouteTableAssociationsRequest,
   GetTransitGatewayRouteTableAssociationsResult,
   GetTransitGatewayRouteTableAssociationsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetTransitGatewayRouteTableAssociationsRequest,
-  ) => stream.Stream<
-    GetTransitGatewayRouteTableAssociationsResult,
-    GetTransitGatewayRouteTableAssociationsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetTransitGatewayRouteTableAssociationsRequest,
-  ) => stream.Stream<
-    TransitGatewayRouteTableAssociation,
-    GetTransitGatewayRouteTableAssociationsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  TransitGatewayRouteTableAssociation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetTransitGatewayRouteTableAssociationsRequest,
   output: GetTransitGatewayRouteTableAssociationsResult,
   errors: [
@@ -95800,27 +93531,13 @@ export type GetTransitGatewayRouteTablePropagationsError =
 /**
  * Gets information about the route table propagations for the specified transit gateway route table.
  */
-export const getTransitGatewayRouteTablePropagations: API.OperationMethod<
+export const getTransitGatewayRouteTablePropagations: API.PaginatedOperationMethod<
   GetTransitGatewayRouteTablePropagationsRequest,
   GetTransitGatewayRouteTablePropagationsResult,
   GetTransitGatewayRouteTablePropagationsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetTransitGatewayRouteTablePropagationsRequest,
-  ) => stream.Stream<
-    GetTransitGatewayRouteTablePropagationsResult,
-    GetTransitGatewayRouteTablePropagationsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetTransitGatewayRouteTablePropagationsRequest,
-  ) => stream.Stream<
-    TransitGatewayRouteTablePropagation,
-    GetTransitGatewayRouteTablePropagationsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  TransitGatewayRouteTablePropagation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetTransitGatewayRouteTablePropagationsRequest,
   output: GetTransitGatewayRouteTablePropagationsResult,
   errors: [
@@ -95977,27 +93694,13 @@ export type GetVpnConnectionDeviceTypesError = CommonErrors;
  * list of device types with sample configuration files available under Your customer gateway
  * device in the *Amazon Web Services Site-to-Site VPN User Guide*.
  */
-export const getVpnConnectionDeviceTypes: API.OperationMethod<
+export const getVpnConnectionDeviceTypes: API.PaginatedOperationMethod<
   GetVpnConnectionDeviceTypesRequest,
   GetVpnConnectionDeviceTypesResult,
   GetVpnConnectionDeviceTypesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetVpnConnectionDeviceTypesRequest,
-  ) => stream.Stream<
-    GetVpnConnectionDeviceTypesResult,
-    GetVpnConnectionDeviceTypesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetVpnConnectionDeviceTypesRequest,
-  ) => stream.Stream<
-    VpnConnectionDeviceType,
-    GetVpnConnectionDeviceTypesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  VpnConnectionDeviceType
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetVpnConnectionDeviceTypesRequest,
   output: GetVpnConnectionDeviceTypesResult,
   errors: [],
@@ -96227,27 +93930,13 @@ export type ListImagesInRecycleBinError =
  * Recycle
  * Bin in the *Amazon EC2 User Guide*.
  */
-export const listImagesInRecycleBin: API.OperationMethod<
+export const listImagesInRecycleBin: API.PaginatedOperationMethod<
   ListImagesInRecycleBinRequest,
   ListImagesInRecycleBinResult,
   ListImagesInRecycleBinError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListImagesInRecycleBinRequest,
-  ) => stream.Stream<
-    ListImagesInRecycleBinResult,
-    ListImagesInRecycleBinError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListImagesInRecycleBinRequest,
-  ) => stream.Stream<
-    ImageRecycleBinInfo,
-    ListImagesInRecycleBinError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  ImageRecycleBinInfo
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListImagesInRecycleBinRequest,
   output: ListImagesInRecycleBinResult,
   errors: [RequestLimitExceeded, InvalidAMIIDNotFound, UnauthorizedOperation],
@@ -96270,27 +93959,13 @@ export type ListSnapshotsInRecycleBinError =
 /**
  * Lists one or more snapshots that are currently in the Recycle Bin.
  */
-export const listSnapshotsInRecycleBin: API.OperationMethod<
+export const listSnapshotsInRecycleBin: API.PaginatedOperationMethod<
   ListSnapshotsInRecycleBinRequest,
   ListSnapshotsInRecycleBinResult,
   ListSnapshotsInRecycleBinError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSnapshotsInRecycleBinRequest,
-  ) => stream.Stream<
-    ListSnapshotsInRecycleBinResult,
-    ListSnapshotsInRecycleBinError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSnapshotsInRecycleBinRequest,
-  ) => stream.Stream<
-    SnapshotRecycleBinInfo,
-    ListSnapshotsInRecycleBinError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  SnapshotRecycleBinInfo
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSnapshotsInRecycleBinRequest,
   output: ListSnapshotsInRecycleBinResult,
   errors: [
@@ -100611,27 +98286,13 @@ export type SearchLocalGatewayRoutesError =
 /**
  * Searches for routes in the specified local gateway route table.
  */
-export const searchLocalGatewayRoutes: API.OperationMethod<
+export const searchLocalGatewayRoutes: API.PaginatedOperationMethod<
   SearchLocalGatewayRoutesRequest,
   SearchLocalGatewayRoutesResult,
   SearchLocalGatewayRoutesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: SearchLocalGatewayRoutesRequest,
-  ) => stream.Stream<
-    SearchLocalGatewayRoutesResult,
-    SearchLocalGatewayRoutesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: SearchLocalGatewayRoutesRequest,
-  ) => stream.Stream<
-    LocalGatewayRoute,
-    SearchLocalGatewayRoutesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  LocalGatewayRoute
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchLocalGatewayRoutesRequest,
   output: SearchLocalGatewayRoutesResult,
   errors: [
@@ -100660,27 +98321,13 @@ export type SearchTransitGatewayMulticastGroupsError =
 /**
  * Searches one or more transit gateway multicast groups and returns the group membership information.
  */
-export const searchTransitGatewayMulticastGroups: API.OperationMethod<
+export const searchTransitGatewayMulticastGroups: API.PaginatedOperationMethod<
   SearchTransitGatewayMulticastGroupsRequest,
   SearchTransitGatewayMulticastGroupsResult,
   SearchTransitGatewayMulticastGroupsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: SearchTransitGatewayMulticastGroupsRequest,
-  ) => stream.Stream<
-    SearchTransitGatewayMulticastGroupsResult,
-    SearchTransitGatewayMulticastGroupsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: SearchTransitGatewayMulticastGroupsRequest,
-  ) => stream.Stream<
-    TransitGatewayMulticastGroup,
-    SearchTransitGatewayMulticastGroupsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  TransitGatewayMulticastGroup
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchTransitGatewayMulticastGroupsRequest,
   output: SearchTransitGatewayMulticastGroupsResult,
   errors: [
@@ -100709,27 +98356,13 @@ export type SearchTransitGatewayRoutesError =
 /**
  * Searches for routes in the specified transit gateway route table.
  */
-export const searchTransitGatewayRoutes: API.OperationMethod<
+export const searchTransitGatewayRoutes: API.PaginatedOperationMethod<
   SearchTransitGatewayRoutesRequest,
   SearchTransitGatewayRoutesResult,
   SearchTransitGatewayRoutesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: SearchTransitGatewayRoutesRequest,
-  ) => stream.Stream<
-    SearchTransitGatewayRoutesResult,
-    SearchTransitGatewayRoutesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: SearchTransitGatewayRoutesRequest,
-  ) => stream.Stream<
-    TransitGatewayRoute,
-    SearchTransitGatewayRoutesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  TransitGatewayRoute
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchTransitGatewayRoutesRequest,
   output: SearchTransitGatewayRoutesResult,
   errors: [

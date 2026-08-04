@@ -7541,27 +7541,13 @@ export type GetAgentMemoryError =
 /**
  * Gets the sessions stored in the memory of the agent.
  */
-export const getAgentMemory: API.OperationMethod<
+export const getAgentMemory: API.PaginatedOperationMethod<
   GetAgentMemoryRequest,
   GetAgentMemoryResponse,
   GetAgentMemoryError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetAgentMemoryRequest,
-  ) => stream.Stream<
-    GetAgentMemoryResponse,
-    GetAgentMemoryError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetAgentMemoryRequest,
-  ) => stream.Stream<
-    Memory,
-    GetAgentMemoryError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Memory
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetAgentMemoryRequest,
   output: GetAgentMemoryResponse,
   errors: [
@@ -7898,27 +7884,13 @@ export type ListFlowExecutionEventsError =
  *
  * Flow executions is in preview release for Amazon Bedrock and is subject to change.
  */
-export const listFlowExecutionEvents: API.OperationMethod<
+export const listFlowExecutionEvents: API.PaginatedOperationMethod<
   ListFlowExecutionEventsRequest,
   ListFlowExecutionEventsResponse,
   ListFlowExecutionEventsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListFlowExecutionEventsRequest,
-  ) => stream.Stream<
-    ListFlowExecutionEventsResponse,
-    ListFlowExecutionEventsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListFlowExecutionEventsRequest,
-  ) => stream.Stream<
-    FlowExecutionEvent,
-    ListFlowExecutionEventsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  FlowExecutionEvent
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFlowExecutionEventsRequest,
   output: ListFlowExecutionEventsResponse,
   errors: [
@@ -7951,27 +7923,13 @@ export type ListFlowExecutionsError =
  *
  * Flow executions is in preview release for Amazon Bedrock and is subject to change.
  */
-export const listFlowExecutions: API.OperationMethod<
+export const listFlowExecutions: API.PaginatedOperationMethod<
   ListFlowExecutionsRequest,
   ListFlowExecutionsResponse,
   ListFlowExecutionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListFlowExecutionsRequest,
-  ) => stream.Stream<
-    ListFlowExecutionsResponse,
-    ListFlowExecutionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListFlowExecutionsRequest,
-  ) => stream.Stream<
-    FlowExecutionSummary,
-    ListFlowExecutionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  FlowExecutionSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFlowExecutionsRequest,
   output: ListFlowExecutionsResponse,
   errors: [
@@ -8002,27 +7960,13 @@ export type ListInvocationsError =
 /**
  * Lists all invocations associated with a specific session. For more information about sessions, see Store and retrieve conversation history and context with Amazon Bedrock sessions.
  */
-export const listInvocations: API.OperationMethod<
+export const listInvocations: API.PaginatedOperationMethod<
   ListInvocationsRequest,
   ListInvocationsResponse,
   ListInvocationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListInvocationsRequest,
-  ) => stream.Stream<
-    ListInvocationsResponse,
-    ListInvocationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListInvocationsRequest,
-  ) => stream.Stream<
-    InvocationSummary,
-    ListInvocationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  InvocationSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListInvocationsRequest,
   output: ListInvocationsResponse,
   errors: [
@@ -8053,27 +7997,13 @@ export type ListInvocationStepsError =
 /**
  * Lists all invocation steps associated with a session and optionally, an invocation within the session. For more information about sessions, see Store and retrieve conversation history and context with Amazon Bedrock sessions.
  */
-export const listInvocationSteps: API.OperationMethod<
+export const listInvocationSteps: API.PaginatedOperationMethod<
   ListInvocationStepsRequest,
   ListInvocationStepsResponse,
   ListInvocationStepsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListInvocationStepsRequest,
-  ) => stream.Stream<
-    ListInvocationStepsResponse,
-    ListInvocationStepsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListInvocationStepsRequest,
-  ) => stream.Stream<
-    InvocationStepSummary,
-    ListInvocationStepsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  InvocationStepSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListInvocationStepsRequest,
   output: ListInvocationStepsResponse,
   errors: [
@@ -8103,27 +8033,13 @@ export type ListSessionsError =
 /**
  * Lists all sessions in your Amazon Web Services account. For more information about sessions, see Store and retrieve conversation history and context with Amazon Bedrock sessions.
  */
-export const listSessions: API.OperationMethod<
+export const listSessions: API.PaginatedOperationMethod<
   ListSessionsRequest,
   ListSessionsResponse,
   ListSessionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSessionsRequest,
-  ) => stream.Stream<
-    ListSessionsResponse,
-    ListSessionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSessionsRequest,
-  ) => stream.Stream<
-    SessionSummary,
-    ListSessionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  SessionSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSessionsRequest,
   output: ListSessionsResponse,
   errors: [
@@ -8263,27 +8179,13 @@ export type RerankError =
 /**
  * Reranks the relevance of sources based on queries. For more information, see Improve the relevance of query responses with a reranker model.
  */
-export const rerank: API.OperationMethod<
+export const rerank: API.PaginatedOperationMethod<
   RerankRequest,
   RerankResponse,
   RerankError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: RerankRequest,
-  ) => stream.Stream<
-    RerankResponse,
-    RerankError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: RerankRequest,
-  ) => stream.Stream<
-    RerankResult,
-    RerankError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  RerankResult
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: RerankRequest,
   output: RerankResponse,
   errors: [
@@ -8321,27 +8223,13 @@ export type RetrieveError =
 /**
  * Queries a knowledge base and retrieves information from it.
  */
-export const retrieve: API.OperationMethod<
+export const retrieve: API.PaginatedOperationMethod<
   RetrieveRequest,
   RetrieveResponse,
   RetrieveError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: RetrieveRequest,
-  ) => stream.Stream<
-    RetrieveResponse,
-    RetrieveError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: RetrieveRequest,
-  ) => stream.Stream<
-    KnowledgeBaseRetrievalResult,
-    RetrieveError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  KnowledgeBaseRetrievalResult
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: RetrieveRequest,
   output: RetrieveResponse,
   errors: [

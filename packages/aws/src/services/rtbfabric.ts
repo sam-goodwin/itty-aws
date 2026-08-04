@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -2876,27 +2875,13 @@ export type ListCertificateAssociationsError =
 /**
  * Lists the certificate associations for a responder gateway.
  */
-export const listCertificateAssociations: API.OperationMethod<
+export const listCertificateAssociations: API.PaginatedOperationMethod<
   ListCertificateAssociationsRequest,
   ListCertificateAssociationsResponse,
   ListCertificateAssociationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCertificateAssociationsRequest,
-  ) => stream.Stream<
-    ListCertificateAssociationsResponse,
-    ListCertificateAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCertificateAssociationsRequest,
-  ) => stream.Stream<
-    CertificateAssociationSummary,
-    ListCertificateAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  CertificateAssociationSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCertificateAssociationsRequest,
   output: ListCertificateAssociationsResponse,
   errors: [
@@ -2927,27 +2912,13 @@ export type ListLinkRoutingRulesError =
 /**
  * Lists the routing rules for a link.
  */
-export const listLinkRoutingRules: API.OperationMethod<
+export const listLinkRoutingRules: API.PaginatedOperationMethod<
   ListLinkRoutingRulesRequest,
   ListLinkRoutingRulesResponse,
   ListLinkRoutingRulesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListLinkRoutingRulesRequest,
-  ) => stream.Stream<
-    ListLinkRoutingRulesResponse,
-    ListLinkRoutingRulesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListLinkRoutingRulesRequest,
-  ) => stream.Stream<
-    LinkRoutingRuleSummary,
-    ListLinkRoutingRulesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  LinkRoutingRuleSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLinkRoutingRulesRequest,
   output: ListLinkRoutingRulesResponse,
   errors: [
@@ -2980,27 +2951,13 @@ export type ListLinksError =
  *
  * Returns a list of all links for the specified gateways, including their status and configuration details.
  */
-export const listLinks: API.OperationMethod<
+export const listLinks: API.PaginatedOperationMethod<
   ListLinksRequest,
   ListLinksResponse,
   ListLinksError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListLinksRequest,
-  ) => stream.Stream<
-    ListLinksResponse,
-    ListLinksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListLinksRequest,
-  ) => stream.Stream<
-    ListLinksResponseStructure,
-    ListLinksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ListLinksResponseStructure
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLinksRequest,
   output: ListLinksResponse,
   errors: [
@@ -3028,27 +2985,13 @@ export type ListRequesterGatewaysError =
 /**
  * Lists requester gateways.
  */
-export const listRequesterGateways: API.OperationMethod<
+export const listRequesterGateways: API.PaginatedOperationMethod<
   ListRequesterGatewaysRequest,
   ListRequesterGatewaysResponse,
   ListRequesterGatewaysError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRequesterGatewaysRequest,
-  ) => stream.Stream<
-    ListRequesterGatewaysResponse,
-    ListRequesterGatewaysError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRequesterGatewaysRequest,
-  ) => stream.Stream<
-    GatewayId,
-    ListRequesterGatewaysError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  GatewayId
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRequesterGatewaysRequest,
   output: ListRequesterGatewaysResponse,
   errors: [InternalServerException, ValidationException],
@@ -3070,27 +3013,13 @@ export type ListResponderGatewaysError =
 /**
  * Lists reponder gateways.
  */
-export const listResponderGateways: API.OperationMethod<
+export const listResponderGateways: API.PaginatedOperationMethod<
   ListResponderGatewaysRequest,
   ListResponderGatewaysResponse,
   ListResponderGatewaysError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListResponderGatewaysRequest,
-  ) => stream.Stream<
-    ListResponderGatewaysResponse,
-    ListResponderGatewaysError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListResponderGatewaysRequest,
-  ) => stream.Stream<
-    GatewayId,
-    ListResponderGatewaysError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  GatewayId
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListResponderGatewaysRequest,
   output: ListResponderGatewaysResponse,
   errors: [InternalServerException, ValidationException],

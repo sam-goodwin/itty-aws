@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -2609,27 +2608,13 @@ export type ListAliasesError =
  *
  * - UpdateAlias
  */
-export const listAliases: API.OperationMethod<
+export const listAliases: API.PaginatedOperationMethod<
   ListAliasesInput,
   ListAliasesOutput,
   ListAliasesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAliasesInput,
-  ) => stream.Stream<
-    ListAliasesOutput,
-    ListAliasesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAliasesInput,
-  ) => stream.Stream<
-    Alias,
-    ListAliasesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  Alias
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAliasesInput,
   output: ListAliasesOutput,
   errors: [
@@ -2674,27 +2659,13 @@ export type ListKeysError =
  *
  * - GetKey
  */
-export const listKeys: API.OperationMethod<
+export const listKeys: API.PaginatedOperationMethod<
   ListKeysInput,
   ListKeysOutput,
   ListKeysError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListKeysInput,
-  ) => stream.Stream<
-    ListKeysOutput,
-    ListKeysError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListKeysInput,
-  ) => stream.Stream<
-    KeySummary,
-    ListKeysError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  KeySummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListKeysInput,
   output: ListKeysOutput,
   errors: [
@@ -2737,27 +2708,13 @@ export type ListTagsForResourceError =
  *
  * - UntagResource
  */
-export const listTagsForResource: API.OperationMethod<
+export const listTagsForResource: API.PaginatedOperationMethod<
   ListTagsForResourceInput,
   ListTagsForResourceOutput,
   ListTagsForResourceError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTagsForResourceInput,
-  ) => stream.Stream<
-    ListTagsForResourceOutput,
-    ListTagsForResourceError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTagsForResourceInput,
-  ) => stream.Stream<
-    Tag,
-    ListTagsForResourceError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  Tag
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTagsForResourceInput,
   output: ListTagsForResourceOutput,
   errors: [

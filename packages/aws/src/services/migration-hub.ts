@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -1354,27 +1353,13 @@ export type ListApplicationStatesError =
  * `ApplicationIds` parameter, only the migration statuses for those
  * applications will be returned.
  */
-export const listApplicationStates: API.OperationMethod<
+export const listApplicationStates: API.PaginatedOperationMethod<
   ListApplicationStatesRequest,
   ListApplicationStatesResult,
   ListApplicationStatesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListApplicationStatesRequest,
-  ) => stream.Stream<
-    ListApplicationStatesResult,
-    ListApplicationStatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListApplicationStatesRequest,
-  ) => stream.Stream<
-    ApplicationState,
-    ListApplicationStatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ApplicationState
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListApplicationStatesRequest,
   output: ListApplicationStatesResult,
   errors: [
@@ -1417,27 +1402,13 @@ export type ListCreatedArtifactsError =
  *
  * - Lists created artifacts in a paginated interface.
  */
-export const listCreatedArtifacts: API.OperationMethod<
+export const listCreatedArtifacts: API.PaginatedOperationMethod<
   ListCreatedArtifactsRequest,
   ListCreatedArtifactsResult,
   ListCreatedArtifactsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCreatedArtifactsRequest,
-  ) => stream.Stream<
-    ListCreatedArtifactsResult,
-    ListCreatedArtifactsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCreatedArtifactsRequest,
-  ) => stream.Stream<
-    CreatedArtifact,
-    ListCreatedArtifactsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  CreatedArtifact
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCreatedArtifactsRequest,
   output: ListCreatedArtifactsResult,
   errors: [
@@ -1472,27 +1443,13 @@ export type ListDiscoveredResourcesError =
 /**
  * Lists discovered resources associated with the given `MigrationTask`.
  */
-export const listDiscoveredResources: API.OperationMethod<
+export const listDiscoveredResources: API.PaginatedOperationMethod<
   ListDiscoveredResourcesRequest,
   ListDiscoveredResourcesResult,
   ListDiscoveredResourcesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDiscoveredResourcesRequest,
-  ) => stream.Stream<
-    ListDiscoveredResourcesResult,
-    ListDiscoveredResourcesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDiscoveredResourcesRequest,
-  ) => stream.Stream<
-    DiscoveredResource,
-    ListDiscoveredResourcesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  DiscoveredResource
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDiscoveredResourcesRequest,
   output: ListDiscoveredResourcesResult,
   errors: [
@@ -1536,27 +1493,13 @@ export type ListMigrationTasksError =
  *
  * - Lists migration tasks in a paginated interface.
  */
-export const listMigrationTasks: API.OperationMethod<
+export const listMigrationTasks: API.PaginatedOperationMethod<
   ListMigrationTasksRequest,
   ListMigrationTasksResult,
   ListMigrationTasksError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListMigrationTasksRequest,
-  ) => stream.Stream<
-    ListMigrationTasksResult,
-    ListMigrationTasksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListMigrationTasksRequest,
-  ) => stream.Stream<
-    MigrationTaskSummary,
-    ListMigrationTasksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  MigrationTaskSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMigrationTasksRequest,
   output: ListMigrationTasksResult,
   errors: [
@@ -1592,27 +1535,13 @@ export type ListMigrationTaskUpdatesError =
  * This is a paginated API that returns all the migration-task states for the specified
  * `MigrationTaskName` and `ProgressUpdateStream`.
  */
-export const listMigrationTaskUpdates: API.OperationMethod<
+export const listMigrationTaskUpdates: API.PaginatedOperationMethod<
   ListMigrationTaskUpdatesRequest,
   ListMigrationTaskUpdatesResult,
   ListMigrationTaskUpdatesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListMigrationTaskUpdatesRequest,
-  ) => stream.Stream<
-    ListMigrationTaskUpdatesResult,
-    ListMigrationTaskUpdatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListMigrationTaskUpdatesRequest,
-  ) => stream.Stream<
-    MigrationTaskUpdate,
-    ListMigrationTaskUpdatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  MigrationTaskUpdate
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMigrationTaskUpdatesRequest,
   output: ListMigrationTaskUpdatesResult,
   errors: [
@@ -1645,27 +1574,13 @@ export type ListProgressUpdateStreamsError =
 /**
  * Lists progress update streams associated with the user account making this call.
  */
-export const listProgressUpdateStreams: API.OperationMethod<
+export const listProgressUpdateStreams: API.PaginatedOperationMethod<
   ListProgressUpdateStreamsRequest,
   ListProgressUpdateStreamsResult,
   ListProgressUpdateStreamsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListProgressUpdateStreamsRequest,
-  ) => stream.Stream<
-    ListProgressUpdateStreamsResult,
-    ListProgressUpdateStreamsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListProgressUpdateStreamsRequest,
-  ) => stream.Stream<
-    ProgressUpdateStreamSummary,
-    ListProgressUpdateStreamsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ProgressUpdateStreamSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProgressUpdateStreamsRequest,
   output: ListProgressUpdateStreamsResult,
   errors: [
@@ -1699,27 +1614,13 @@ export type ListSourceResourcesError =
  * Lists all the source resource that are associated with the specified
  * `MigrationTaskName` and `ProgressUpdateStream`.
  */
-export const listSourceResources: API.OperationMethod<
+export const listSourceResources: API.PaginatedOperationMethod<
   ListSourceResourcesRequest,
   ListSourceResourcesResult,
   ListSourceResourcesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSourceResourcesRequest,
-  ) => stream.Stream<
-    ListSourceResourcesResult,
-    ListSourceResourcesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSourceResourcesRequest,
-  ) => stream.Stream<
-    SourceResource,
-    ListSourceResourcesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  SourceResource
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSourceResourcesRequest,
   output: ListSourceResourcesResult,
   errors: [

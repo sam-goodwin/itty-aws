@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -2242,27 +2241,13 @@ export type DescribeBatchPredictionsError =
 /**
  * Returns a list of `BatchPrediction` operations that match the search criteria in the request.
  */
-export const describeBatchPredictions: API.OperationMethod<
+export const describeBatchPredictions: API.PaginatedOperationMethod<
   DescribeBatchPredictionsInput,
   DescribeBatchPredictionsOutput,
   DescribeBatchPredictionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeBatchPredictionsInput,
-  ) => stream.Stream<
-    DescribeBatchPredictionsOutput,
-    DescribeBatchPredictionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeBatchPredictionsInput,
-  ) => stream.Stream<
-    BatchPrediction,
-    DescribeBatchPredictionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  BatchPrediction
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeBatchPredictionsInput,
   output: DescribeBatchPredictionsOutput,
   errors: [InternalServerException, InvalidInputException],
@@ -2284,27 +2269,13 @@ export type DescribeDataSourcesError =
 /**
  * Returns a list of `DataSource` that match the search criteria in the request.
  */
-export const describeDataSources: API.OperationMethod<
+export const describeDataSources: API.PaginatedOperationMethod<
   DescribeDataSourcesInput,
   DescribeDataSourcesOutput,
   DescribeDataSourcesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeDataSourcesInput,
-  ) => stream.Stream<
-    DescribeDataSourcesOutput,
-    DescribeDataSourcesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeDataSourcesInput,
-  ) => stream.Stream<
-    DataSource,
-    DescribeDataSourcesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  DataSource
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeDataSourcesInput,
   output: DescribeDataSourcesOutput,
   errors: [InternalServerException, InvalidInputException],
@@ -2326,27 +2297,13 @@ export type DescribeEvaluationsError =
 /**
  * Returns a list of `DescribeEvaluations` that match the search criteria in the request.
  */
-export const describeEvaluations: API.OperationMethod<
+export const describeEvaluations: API.PaginatedOperationMethod<
   DescribeEvaluationsInput,
   DescribeEvaluationsOutput,
   DescribeEvaluationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeEvaluationsInput,
-  ) => stream.Stream<
-    DescribeEvaluationsOutput,
-    DescribeEvaluationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeEvaluationsInput,
-  ) => stream.Stream<
-    Evaluation,
-    DescribeEvaluationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Evaluation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeEvaluationsInput,
   output: DescribeEvaluationsOutput,
   errors: [InternalServerException, InvalidInputException],
@@ -2368,27 +2325,13 @@ export type DescribeMLModelsError =
 /**
  * Returns a list of `MLModel` that match the search criteria in the request.
  */
-export const describeMLModels: API.OperationMethod<
+export const describeMLModels: API.PaginatedOperationMethod<
   DescribeMLModelsInput,
   DescribeMLModelsOutput,
   DescribeMLModelsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeMLModelsInput,
-  ) => stream.Stream<
-    DescribeMLModelsOutput,
-    DescribeMLModelsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeMLModelsInput,
-  ) => stream.Stream<
-    MLModel,
-    DescribeMLModelsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  MLModel
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeMLModelsInput,
   output: DescribeMLModelsOutput,
   errors: [InternalServerException, InvalidInputException],

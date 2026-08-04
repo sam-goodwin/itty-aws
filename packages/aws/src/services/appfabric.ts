@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -1844,27 +1843,13 @@ export type ListAppAuthorizationsError =
 /**
  * Returns a list of all app authorizations configured for an app bundle.
  */
-export const listAppAuthorizations: API.OperationMethod<
+export const listAppAuthorizations: API.PaginatedOperationMethod<
   ListAppAuthorizationsRequest,
   ListAppAuthorizationsResponse,
   ListAppAuthorizationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAppAuthorizationsRequest,
-  ) => stream.Stream<
-    ListAppAuthorizationsResponse,
-    ListAppAuthorizationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAppAuthorizationsRequest,
-  ) => stream.Stream<
-    AppAuthorizationSummary,
-    ListAppAuthorizationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AppAuthorizationSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAppAuthorizationsRequest,
   output: ListAppAuthorizationsResponse,
   errors: [
@@ -1894,27 +1879,13 @@ export type ListAppBundlesError =
 /**
  * Returns a list of app bundles.
  */
-export const listAppBundles: API.OperationMethod<
+export const listAppBundles: API.PaginatedOperationMethod<
   ListAppBundlesRequest,
   ListAppBundlesResponse,
   ListAppBundlesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAppBundlesRequest,
-  ) => stream.Stream<
-    ListAppBundlesResponse,
-    ListAppBundlesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAppBundlesRequest,
-  ) => stream.Stream<
-    AppBundleSummary,
-    ListAppBundlesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AppBundleSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAppBundlesRequest,
   output: ListAppBundlesResponse,
   errors: [
@@ -1944,27 +1915,13 @@ export type ListIngestionDestinationsError =
 /**
  * Returns a list of all ingestion destinations configured for an ingestion.
  */
-export const listIngestionDestinations: API.OperationMethod<
+export const listIngestionDestinations: API.PaginatedOperationMethod<
   ListIngestionDestinationsRequest,
   ListIngestionDestinationsResponse,
   ListIngestionDestinationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListIngestionDestinationsRequest,
-  ) => stream.Stream<
-    ListIngestionDestinationsResponse,
-    ListIngestionDestinationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListIngestionDestinationsRequest,
-  ) => stream.Stream<
-    IngestionDestinationSummary,
-    ListIngestionDestinationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  IngestionDestinationSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListIngestionDestinationsRequest,
   output: ListIngestionDestinationsResponse,
   errors: [
@@ -1995,27 +1952,13 @@ export type ListIngestionsError =
 /**
  * Returns a list of all ingestions configured for an app bundle.
  */
-export const listIngestions: API.OperationMethod<
+export const listIngestions: API.PaginatedOperationMethod<
   ListIngestionsRequest,
   ListIngestionsResponse,
   ListIngestionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListIngestionsRequest,
-  ) => stream.Stream<
-    ListIngestionsResponse,
-    ListIngestionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListIngestionsRequest,
-  ) => stream.Stream<
-    IngestionSummary,
-    ListIngestionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  IngestionSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListIngestionsRequest,
   output: ListIngestionsResponse,
   errors: [

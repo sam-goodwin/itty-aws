@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -4278,27 +4277,13 @@ export type ListGatewayRoutesError =
  * Returns a list of existing gateway routes that are associated to a virtual
  * gateway.
  */
-export const listGatewayRoutes: API.OperationMethod<
+export const listGatewayRoutes: API.PaginatedOperationMethod<
   ListGatewayRoutesInput,
   ListGatewayRoutesOutput,
   ListGatewayRoutesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListGatewayRoutesInput,
-  ) => stream.Stream<
-    ListGatewayRoutesOutput,
-    ListGatewayRoutesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListGatewayRoutesInput,
-  ) => stream.Stream<
-    GatewayRouteRef,
-    ListGatewayRoutesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  GatewayRouteRef
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListGatewayRoutesInput,
   output: ListGatewayRoutesOutput,
   errors: [
@@ -4331,27 +4316,13 @@ export type ListMeshesError =
 /**
  * Returns a list of existing service meshes.
  */
-export const listMeshes: API.OperationMethod<
+export const listMeshes: API.PaginatedOperationMethod<
   ListMeshesInput,
   ListMeshesOutput,
   ListMeshesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListMeshesInput,
-  ) => stream.Stream<
-    ListMeshesOutput,
-    ListMeshesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListMeshesInput,
-  ) => stream.Stream<
-    MeshRef,
-    ListMeshesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  MeshRef
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMeshesInput,
   output: ListMeshesOutput,
   errors: [
@@ -4384,27 +4355,13 @@ export type ListRoutesError =
 /**
  * Returns a list of existing routes in a service mesh.
  */
-export const listRoutes: API.OperationMethod<
+export const listRoutes: API.PaginatedOperationMethod<
   ListRoutesInput,
   ListRoutesOutput,
   ListRoutesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRoutesInput,
-  ) => stream.Stream<
-    ListRoutesOutput,
-    ListRoutesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRoutesInput,
-  ) => stream.Stream<
-    RouteRef,
-    ListRoutesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  RouteRef
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRoutesInput,
   output: ListRoutesOutput,
   errors: [
@@ -4437,27 +4394,13 @@ export type ListTagsForResourceError =
 /**
  * List the tags for an App Mesh resource.
  */
-export const listTagsForResource: API.OperationMethod<
+export const listTagsForResource: API.PaginatedOperationMethod<
   ListTagsForResourceInput,
   ListTagsForResourceOutput,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTagsForResourceInput,
-  ) => stream.Stream<
-    ListTagsForResourceOutput,
-    ListTagsForResourceError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTagsForResourceInput,
-  ) => stream.Stream<
-    TagRef,
-    ListTagsForResourceError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  TagRef
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTagsForResourceInput,
   output: ListTagsForResourceOutput,
   errors: [
@@ -4490,27 +4433,13 @@ export type ListVirtualGatewaysError =
 /**
  * Returns a list of existing virtual gateways in a service mesh.
  */
-export const listVirtualGateways: API.OperationMethod<
+export const listVirtualGateways: API.PaginatedOperationMethod<
   ListVirtualGatewaysInput,
   ListVirtualGatewaysOutput,
   ListVirtualGatewaysError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListVirtualGatewaysInput,
-  ) => stream.Stream<
-    ListVirtualGatewaysOutput,
-    ListVirtualGatewaysError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListVirtualGatewaysInput,
-  ) => stream.Stream<
-    VirtualGatewayRef,
-    ListVirtualGatewaysError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  VirtualGatewayRef
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListVirtualGatewaysInput,
   output: ListVirtualGatewaysOutput,
   errors: [
@@ -4543,27 +4472,13 @@ export type ListVirtualNodesError =
 /**
  * Returns a list of existing virtual nodes.
  */
-export const listVirtualNodes: API.OperationMethod<
+export const listVirtualNodes: API.PaginatedOperationMethod<
   ListVirtualNodesInput,
   ListVirtualNodesOutput,
   ListVirtualNodesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListVirtualNodesInput,
-  ) => stream.Stream<
-    ListVirtualNodesOutput,
-    ListVirtualNodesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListVirtualNodesInput,
-  ) => stream.Stream<
-    VirtualNodeRef,
-    ListVirtualNodesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  VirtualNodeRef
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListVirtualNodesInput,
   output: ListVirtualNodesOutput,
   errors: [
@@ -4596,27 +4511,13 @@ export type ListVirtualRoutersError =
 /**
  * Returns a list of existing virtual routers in a service mesh.
  */
-export const listVirtualRouters: API.OperationMethod<
+export const listVirtualRouters: API.PaginatedOperationMethod<
   ListVirtualRoutersInput,
   ListVirtualRoutersOutput,
   ListVirtualRoutersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListVirtualRoutersInput,
-  ) => stream.Stream<
-    ListVirtualRoutersOutput,
-    ListVirtualRoutersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListVirtualRoutersInput,
-  ) => stream.Stream<
-    VirtualRouterRef,
-    ListVirtualRoutersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  VirtualRouterRef
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListVirtualRoutersInput,
   output: ListVirtualRoutersOutput,
   errors: [
@@ -4649,27 +4550,13 @@ export type ListVirtualServicesError =
 /**
  * Returns a list of existing virtual services in a service mesh.
  */
-export const listVirtualServices: API.OperationMethod<
+export const listVirtualServices: API.PaginatedOperationMethod<
   ListVirtualServicesInput,
   ListVirtualServicesOutput,
   ListVirtualServicesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListVirtualServicesInput,
-  ) => stream.Stream<
-    ListVirtualServicesOutput,
-    ListVirtualServicesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListVirtualServicesInput,
-  ) => stream.Stream<
-    VirtualServiceRef,
-    ListVirtualServicesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  VirtualServiceRef
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListVirtualServicesInput,
   output: ListVirtualServicesOutput,
   errors: [

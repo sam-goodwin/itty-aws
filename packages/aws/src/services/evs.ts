@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -1605,27 +1604,13 @@ export type ListEnvironmentConnectorsError =
 /**
  * Lists the connectors within an environment. Returns the status of each connector and its applicable checks, among other connector details.
  */
-export const listEnvironmentConnectors: API.OperationMethod<
+export const listEnvironmentConnectors: API.PaginatedOperationMethod<
   ListEnvironmentConnectorsRequest,
   ListEnvironmentConnectorsResponse,
   ListEnvironmentConnectorsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEnvironmentConnectorsRequest,
-  ) => stream.Stream<
-    ListEnvironmentConnectorsResponse,
-    ListEnvironmentConnectorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEnvironmentConnectorsRequest,
-  ) => stream.Stream<
-    Connector,
-    ListEnvironmentConnectorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Connector
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEnvironmentConnectorsRequest,
   output: ListEnvironmentConnectorsResponse,
   errors: [ResourceNotFoundException, ValidationException],
@@ -1647,27 +1632,13 @@ export type ListEnvironmentHostsError =
 /**
  * List the hosts within an environment.
  */
-export const listEnvironmentHosts: API.OperationMethod<
+export const listEnvironmentHosts: API.PaginatedOperationMethod<
   ListEnvironmentHostsRequest,
   ListEnvironmentHostsResponse,
   ListEnvironmentHostsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEnvironmentHostsRequest,
-  ) => stream.Stream<
-    ListEnvironmentHostsResponse,
-    ListEnvironmentHostsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEnvironmentHostsRequest,
-  ) => stream.Stream<
-    Host,
-    ListEnvironmentHostsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Host
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEnvironmentHostsRequest,
   output: ListEnvironmentHostsResponse,
   errors: [ResourceNotFoundException, ValidationException],
@@ -1686,27 +1657,13 @@ export type ListEnvironmentsError = ValidationException | CommonErrors;
 /**
  * Lists the Amazon EVS environments in your Amazon Web Services account in the specified Amazon Web Services Region.
  */
-export const listEnvironments: API.OperationMethod<
+export const listEnvironments: API.PaginatedOperationMethod<
   ListEnvironmentsRequest,
   ListEnvironmentsResponse,
   ListEnvironmentsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEnvironmentsRequest,
-  ) => stream.Stream<
-    ListEnvironmentsResponse,
-    ListEnvironmentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEnvironmentsRequest,
-  ) => stream.Stream<
-    EnvironmentSummary,
-    ListEnvironmentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  EnvironmentSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEnvironmentsRequest,
   output: ListEnvironmentsResponse,
   errors: [ValidationException],
@@ -1728,27 +1685,13 @@ export type ListEnvironmentVlansError =
 /**
  * Lists environment VLANs that are associated with the specified environment.
  */
-export const listEnvironmentVlans: API.OperationMethod<
+export const listEnvironmentVlans: API.PaginatedOperationMethod<
   ListEnvironmentVlansRequest,
   ListEnvironmentVlansResponse,
   ListEnvironmentVlansError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEnvironmentVlansRequest,
-  ) => stream.Stream<
-    ListEnvironmentVlansResponse,
-    ListEnvironmentVlansError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEnvironmentVlansRequest,
-  ) => stream.Stream<
-    Vlan,
-    ListEnvironmentVlansError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Vlan
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEnvironmentVlansRequest,
   output: ListEnvironmentVlansResponse,
   errors: [ResourceNotFoundException, ValidationException],
@@ -1788,27 +1731,13 @@ export type ListVmEntitlementsError =
 /**
  * Lists the Windows Server License entitlements for virtual machines in an Amazon EVS environment. Returns existing entitlements for virtual machines associated with the specified environment and connector.
  */
-export const listVmEntitlements: API.OperationMethod<
+export const listVmEntitlements: API.PaginatedOperationMethod<
   ListVmEntitlementsRequest,
   ListVmEntitlementsResponse,
   ListVmEntitlementsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListVmEntitlementsRequest,
-  ) => stream.Stream<
-    ListVmEntitlementsResponse,
-    ListVmEntitlementsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListVmEntitlementsRequest,
-  ) => stream.Stream<
-    VmEntitlement,
-    ListVmEntitlementsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  VmEntitlement
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListVmEntitlementsRequest,
   output: ListVmEntitlementsResponse,
   errors: [ResourceNotFoundException, ValidationException],

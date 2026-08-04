@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -2093,27 +2092,13 @@ export type GetResourcePoliciesError =
 /**
  * Retrieves the resource policies attached to the specified response plan.
  */
-export const getResourcePolicies: API.OperationMethod<
+export const getResourcePolicies: API.PaginatedOperationMethod<
   GetResourcePoliciesInput,
   GetResourcePoliciesOutput,
   GetResourcePoliciesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetResourcePoliciesInput,
-  ) => stream.Stream<
-    GetResourcePoliciesOutput,
-    GetResourcePoliciesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetResourcePoliciesInput,
-  ) => stream.Stream<
-    ResourcePolicy,
-    GetResourcePoliciesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ResourcePolicy
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetResourcePoliciesInput,
   output: GetResourcePoliciesOutput,
   errors: [
@@ -2207,27 +2192,13 @@ export type ListIncidentFindingsError =
  * change made by an CloudFormation stack creation or update or an CodeDeploy
  * deployment that can be investigated as a potential cause of the incident.
  */
-export const listIncidentFindings: API.OperationMethod<
+export const listIncidentFindings: API.PaginatedOperationMethod<
   ListIncidentFindingsInput,
   ListIncidentFindingsOutput,
   ListIncidentFindingsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListIncidentFindingsInput,
-  ) => stream.Stream<
-    ListIncidentFindingsOutput,
-    ListIncidentFindingsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListIncidentFindingsInput,
-  ) => stream.Stream<
-    FindingSummary,
-    ListIncidentFindingsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  FindingSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListIncidentFindingsInput,
   output: ListIncidentFindingsOutput,
   errors: [
@@ -2258,27 +2229,13 @@ export type ListIncidentRecordsError =
  * Lists all incident records in your account. Use this command to retrieve the Amazon
  * Resource Name (ARN) of the incident record you want to update.
  */
-export const listIncidentRecords: API.OperationMethod<
+export const listIncidentRecords: API.PaginatedOperationMethod<
   ListIncidentRecordsInput,
   ListIncidentRecordsOutput,
   ListIncidentRecordsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListIncidentRecordsInput,
-  ) => stream.Stream<
-    ListIncidentRecordsOutput,
-    ListIncidentRecordsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListIncidentRecordsInput,
-  ) => stream.Stream<
-    IncidentRecordSummary,
-    ListIncidentRecordsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  IncidentRecordSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListIncidentRecordsInput,
   output: ListIncidentRecordsOutput,
   errors: [
@@ -2307,27 +2264,13 @@ export type ListRelatedItemsError =
 /**
  * List all related items for an incident record.
  */
-export const listRelatedItems: API.OperationMethod<
+export const listRelatedItems: API.PaginatedOperationMethod<
   ListRelatedItemsInput,
   ListRelatedItemsOutput,
   ListRelatedItemsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRelatedItemsInput,
-  ) => stream.Stream<
-    ListRelatedItemsOutput,
-    ListRelatedItemsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRelatedItemsInput,
-  ) => stream.Stream<
-    RelatedItem,
-    ListRelatedItemsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  RelatedItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRelatedItemsInput,
   output: ListRelatedItemsOutput,
   errors: [
@@ -2356,27 +2299,13 @@ export type ListReplicationSetsError =
 /**
  * Lists details about the replication set configured in your account.
  */
-export const listReplicationSets: API.OperationMethod<
+export const listReplicationSets: API.PaginatedOperationMethod<
   ListReplicationSetsInput,
   ListReplicationSetsOutput,
   ListReplicationSetsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListReplicationSetsInput,
-  ) => stream.Stream<
-    ListReplicationSetsOutput,
-    ListReplicationSetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListReplicationSetsInput,
-  ) => stream.Stream<
-    Arn,
-    ListReplicationSetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Arn
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListReplicationSetsInput,
   output: ListReplicationSetsOutput,
   errors: [
@@ -2405,27 +2334,13 @@ export type ListResponsePlansError =
 /**
  * Lists all response plans in your account.
  */
-export const listResponsePlans: API.OperationMethod<
+export const listResponsePlans: API.PaginatedOperationMethod<
   ListResponsePlansInput,
   ListResponsePlansOutput,
   ListResponsePlansError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListResponsePlansInput,
-  ) => stream.Stream<
-    ListResponsePlansOutput,
-    ListResponsePlansError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListResponsePlansInput,
-  ) => stream.Stream<
-    ResponsePlanSummary,
-    ListResponsePlansError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ResponsePlanSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListResponsePlansInput,
   output: ListResponsePlansOutput,
   errors: [
@@ -2484,27 +2399,13 @@ export type ListTimelineEventsError =
 /**
  * Lists timeline events for the specified incident record.
  */
-export const listTimelineEvents: API.OperationMethod<
+export const listTimelineEvents: API.PaginatedOperationMethod<
   ListTimelineEventsInput,
   ListTimelineEventsOutput,
   ListTimelineEventsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTimelineEventsInput,
-  ) => stream.Stream<
-    ListTimelineEventsOutput,
-    ListTimelineEventsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTimelineEventsInput,
-  ) => stream.Stream<
-    EventSummary,
-    ListTimelineEventsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  EventSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTimelineEventsInput,
   output: ListTimelineEventsOutput,
   errors: [

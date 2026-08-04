@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -935,27 +934,13 @@ export type DescribeTableError =
  *
  * For more information about the Amazon Redshift Data API and CLI usage examples, see Using the Amazon Redshift Data API in the *Amazon Redshift Management Guide*.
  */
-export const describeTable: API.OperationMethod<
+export const describeTable: API.PaginatedOperationMethod<
   DescribeTableRequest,
   DescribeTableResponse,
   DescribeTableError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeTableRequest,
-  ) => stream.Stream<
-    DescribeTableResponse,
-    DescribeTableError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeTableRequest,
-  ) => stream.Stream<
-    ColumnMetadata,
-    DescribeTableError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ColumnMetadata
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeTableRequest,
   output: DescribeTableResponse,
   errors: [
@@ -1030,27 +1015,13 @@ export type GetStatementResultError =
  *
  * For more information about the Amazon Redshift Data API and CLI usage examples, see Using the Amazon Redshift Data API in the *Amazon Redshift Management Guide*.
  */
-export const getStatementResult: API.OperationMethod<
+export const getStatementResult: API.PaginatedOperationMethod<
   GetStatementResultRequest,
   GetStatementResultResponse,
   GetStatementResultError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetStatementResultRequest,
-  ) => stream.Stream<
-    GetStatementResultResponse,
-    GetStatementResultError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetStatementResultRequest,
-  ) => stream.Stream<
-    Field[],
-    GetStatementResultError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Field[]
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetStatementResultRequest,
   output: GetStatementResultResponse,
   errors: [
@@ -1078,27 +1049,13 @@ export type GetStatementResultV2Error =
  *
  * For more information about the Amazon Redshift Data API and CLI usage examples, see Using the Amazon Redshift Data API in the *Amazon Redshift Management Guide*.
  */
-export const getStatementResultV2: API.OperationMethod<
+export const getStatementResultV2: API.PaginatedOperationMethod<
   GetStatementResultV2Request,
   GetStatementResultV2Response,
   GetStatementResultV2Error,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetStatementResultV2Request,
-  ) => stream.Stream<
-    GetStatementResultV2Response,
-    GetStatementResultV2Error,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetStatementResultV2Request,
-  ) => stream.Stream<
-    QueryRecords,
-    GetStatementResultV2Error,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  QueryRecords
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetStatementResultV2Request,
   output: GetStatementResultV2Response,
   errors: [
@@ -1138,27 +1095,13 @@ export type ListDatabasesError =
  *
  * For more information about the Amazon Redshift Data API and CLI usage examples, see Using the Amazon Redshift Data API in the *Amazon Redshift Management Guide*.
  */
-export const listDatabases: API.OperationMethod<
+export const listDatabases: API.PaginatedOperationMethod<
   ListDatabasesRequest,
   ListDatabasesResponse,
   ListDatabasesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDatabasesRequest,
-  ) => stream.Stream<
-    ListDatabasesResponse,
-    ListDatabasesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDatabasesRequest,
-  ) => stream.Stream<
-    string,
-    ListDatabasesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  string
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDatabasesRequest,
   output: ListDatabasesResponse,
   errors: [
@@ -1201,27 +1144,13 @@ export type ListSchemasError =
  *
  * For more information about the Amazon Redshift Data API and CLI usage examples, see Using the Amazon Redshift Data API in the *Amazon Redshift Management Guide*.
  */
-export const listSchemas: API.OperationMethod<
+export const listSchemas: API.PaginatedOperationMethod<
   ListSchemasRequest,
   ListSchemasResponse,
   ListSchemasError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSchemasRequest,
-  ) => stream.Stream<
-    ListSchemasResponse,
-    ListSchemasError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSchemasRequest,
-  ) => stream.Stream<
-    string,
-    ListSchemasError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  string
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSchemasRequest,
   output: ListSchemasResponse,
   errors: [
@@ -1254,27 +1183,13 @@ export type ListStatementsError =
  *
  * For more information about the Amazon Redshift Data API and CLI usage examples, see Using the Amazon Redshift Data API in the *Amazon Redshift Management Guide*.
  */
-export const listStatements: API.OperationMethod<
+export const listStatements: API.PaginatedOperationMethod<
   ListStatementsRequest,
   ListStatementsResponse,
   ListStatementsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListStatementsRequest,
-  ) => stream.Stream<
-    ListStatementsResponse,
-    ListStatementsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListStatementsRequest,
-  ) => stream.Stream<
-    StatementData,
-    ListStatementsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  StatementData
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListStatementsRequest,
   output: ListStatementsResponse,
   errors: [
@@ -1315,27 +1230,13 @@ export type ListTablesError =
  *
  * For more information about the Amazon Redshift Data API and CLI usage examples, see Using the Amazon Redshift Data API in the *Amazon Redshift Management Guide*.
  */
-export const listTables: API.OperationMethod<
+export const listTables: API.PaginatedOperationMethod<
   ListTablesRequest,
   ListTablesResponse,
   ListTablesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTablesRequest,
-  ) => stream.Stream<
-    ListTablesResponse,
-    ListTablesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTablesRequest,
-  ) => stream.Stream<
-    TableMember,
-    ListTablesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  TableMember
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTablesRequest,
   output: ListTablesResponse,
   errors: [

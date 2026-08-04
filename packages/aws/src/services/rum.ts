@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -1279,27 +1278,13 @@ export type BatchGetRumMetricDefinitionsError =
 /**
  * Retrieves the list of metrics and dimensions that a RUM app monitor is sending to a single destination.
  */
-export const batchGetRumMetricDefinitions: API.OperationMethod<
+export const batchGetRumMetricDefinitions: API.PaginatedOperationMethod<
   BatchGetRumMetricDefinitionsRequest,
   BatchGetRumMetricDefinitionsResponse,
   BatchGetRumMetricDefinitionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: BatchGetRumMetricDefinitionsRequest,
-  ) => stream.Stream<
-    BatchGetRumMetricDefinitionsResponse,
-    BatchGetRumMetricDefinitionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: BatchGetRumMetricDefinitionsRequest,
-  ) => stream.Stream<
-    MetricDefinition,
-    BatchGetRumMetricDefinitionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  MetricDefinition
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: BatchGetRumMetricDefinitionsRequest,
   output: BatchGetRumMetricDefinitionsResponse,
   errors: [
@@ -1497,27 +1482,13 @@ export type GetAppMonitorDataError =
 /**
  * Retrieves the raw performance events that RUM has collected from your web application, so that you can do your own processing or analysis of this data.
  */
-export const getAppMonitorData: API.OperationMethod<
+export const getAppMonitorData: API.PaginatedOperationMethod<
   GetAppMonitorDataRequest,
   GetAppMonitorDataResponse,
   GetAppMonitorDataError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetAppMonitorDataRequest,
-  ) => stream.Stream<
-    GetAppMonitorDataResponse,
-    GetAppMonitorDataError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetAppMonitorDataRequest,
-  ) => stream.Stream<
-    EventData,
-    GetAppMonitorDataError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  EventData
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetAppMonitorDataRequest,
   output: GetAppMonitorDataResponse,
   errors: [
@@ -1581,27 +1552,13 @@ export type ListAppMonitorsError =
 /**
  * Returns a list of the Amazon CloudWatch RUM app monitors in the account.
  */
-export const listAppMonitors: API.OperationMethod<
+export const listAppMonitors: API.PaginatedOperationMethod<
   ListAppMonitorsRequest,
   ListAppMonitorsResponse,
   ListAppMonitorsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAppMonitorsRequest,
-  ) => stream.Stream<
-    ListAppMonitorsResponse,
-    ListAppMonitorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAppMonitorsRequest,
-  ) => stream.Stream<
-    AppMonitorSummary,
-    ListAppMonitorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AppMonitorSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAppMonitorsRequest,
   output: ListAppMonitorsResponse,
   errors: [
@@ -1632,27 +1589,13 @@ export type ListRumMetricsDestinationsError =
  *
  * For more information about extended metrics, see AddRumMetrics.
  */
-export const listRumMetricsDestinations: API.OperationMethod<
+export const listRumMetricsDestinations: API.PaginatedOperationMethod<
   ListRumMetricsDestinationsRequest,
   ListRumMetricsDestinationsResponse,
   ListRumMetricsDestinationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRumMetricsDestinationsRequest,
-  ) => stream.Stream<
-    ListRumMetricsDestinationsResponse,
-    ListRumMetricsDestinationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRumMetricsDestinationsRequest,
-  ) => stream.Stream<
-    MetricDestinationSummary,
-    ListRumMetricsDestinationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  MetricDestinationSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRumMetricsDestinationsRequest,
   output: ListRumMetricsDestinationsResponse,
   errors: [

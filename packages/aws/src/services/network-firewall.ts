@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -5779,27 +5778,13 @@ export type GetAnalysisReportResultsError =
  *
  * For more information, see AnalysisTypeReportResult.
  */
-export const getAnalysisReportResults: API.OperationMethod<
+export const getAnalysisReportResults: API.PaginatedOperationMethod<
   GetAnalysisReportResultsRequest,
   GetAnalysisReportResultsResponse,
   GetAnalysisReportResultsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetAnalysisReportResultsRequest,
-  ) => stream.Stream<
-    GetAnalysisReportResultsResponse,
-    GetAnalysisReportResultsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetAnalysisReportResultsRequest,
-  ) => stream.Stream<
-    AnalysisTypeReportResult,
-    GetAnalysisReportResultsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AnalysisTypeReportResult
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetAnalysisReportResultsRequest,
   output: GetAnalysisReportResultsResponse,
   errors: [
@@ -5828,27 +5813,13 @@ export type ListAnalysisReportsError =
 /**
  * Returns a list of all traffic analysis reports generated within the last 30 days.
  */
-export const listAnalysisReports: API.OperationMethod<
+export const listAnalysisReports: API.PaginatedOperationMethod<
   ListAnalysisReportsRequest,
   ListAnalysisReportsResponse,
   ListAnalysisReportsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAnalysisReportsRequest,
-  ) => stream.Stream<
-    ListAnalysisReportsResponse,
-    ListAnalysisReportsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAnalysisReportsRequest,
-  ) => stream.Stream<
-    AnalysisReport,
-    ListAnalysisReportsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AnalysisReport
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAnalysisReportsRequest,
   output: ListAnalysisReportsResponse,
   errors: [
@@ -5878,27 +5849,13 @@ export type ListFirewallPoliciesError =
  * your setting for max results and the number of firewall policies, a single call might not
  * return the full list.
  */
-export const listFirewallPolicies: API.OperationMethod<
+export const listFirewallPolicies: API.PaginatedOperationMethod<
   ListFirewallPoliciesRequest,
   ListFirewallPoliciesResponse,
   ListFirewallPoliciesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListFirewallPoliciesRequest,
-  ) => stream.Stream<
-    ListFirewallPoliciesResponse,
-    ListFirewallPoliciesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListFirewallPoliciesRequest,
-  ) => stream.Stream<
-    FirewallPolicyMetadata,
-    ListFirewallPoliciesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  FirewallPolicyMetadata
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFirewallPoliciesRequest,
   output: ListFirewallPoliciesResponse,
   errors: [InternalServerError, InvalidRequestException, ThrottlingException],
@@ -5925,27 +5882,13 @@ export type ListFirewallsError =
  * Depending on your setting for max results and the number of firewalls, a single call
  * might not return the full list.
  */
-export const listFirewalls: API.OperationMethod<
+export const listFirewalls: API.PaginatedOperationMethod<
   ListFirewallsRequest,
   ListFirewallsResponse,
   ListFirewallsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListFirewallsRequest,
-  ) => stream.Stream<
-    ListFirewallsResponse,
-    ListFirewallsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListFirewallsRequest,
-  ) => stream.Stream<
-    FirewallMetadata,
-    ListFirewallsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  FirewallMetadata
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFirewallsRequest,
   output: ListFirewallsResponse,
   errors: [InternalServerError, InvalidRequestException, ThrottlingException],
@@ -5974,27 +5917,13 @@ export type ListFlowOperationResultsError =
  * A flow is network traffic that is monitored by a firewall, either by stateful or stateless rules.
  * For traffic to be considered part of a flow, it must share Destination, DestinationPort, Direction, Protocol, Source, and SourcePort.
  */
-export const listFlowOperationResults: API.OperationMethod<
+export const listFlowOperationResults: API.PaginatedOperationMethod<
   ListFlowOperationResultsRequest,
   ListFlowOperationResultsResponse,
   ListFlowOperationResultsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListFlowOperationResultsRequest,
-  ) => stream.Stream<
-    ListFlowOperationResultsResponse,
-    ListFlowOperationResultsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListFlowOperationResultsRequest,
-  ) => stream.Stream<
-    Flow,
-    ListFlowOperationResultsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Flow
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFlowOperationResultsRequest,
   output: ListFlowOperationResultsResponse,
   errors: [
@@ -6029,27 +5958,13 @@ export type ListFlowOperationsError =
  * A flow is network traffic that is monitored by a firewall, either by stateful or stateless rules.
  * For traffic to be considered part of a flow, it must share Destination, DestinationPort, Direction, Protocol, Source, and SourcePort.
  */
-export const listFlowOperations: API.OperationMethod<
+export const listFlowOperations: API.PaginatedOperationMethod<
   ListFlowOperationsRequest,
   ListFlowOperationsResponse,
   ListFlowOperationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListFlowOperationsRequest,
-  ) => stream.Stream<
-    ListFlowOperationsResponse,
-    ListFlowOperationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListFlowOperationsRequest,
-  ) => stream.Stream<
-    FlowOperationMetadata,
-    ListFlowOperationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  FlowOperationMetadata
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFlowOperationsRequest,
   output: ListFlowOperationsResponse,
   errors: [
@@ -6079,27 +5994,13 @@ export type ListProxiesError =
  * your setting for max results and the number of proxies, a single call might not
  * return the full list.
  */
-export const listProxies: API.OperationMethod<
+export const listProxies: API.PaginatedOperationMethod<
   ListProxiesRequest,
   ListProxiesResponse,
   ListProxiesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListProxiesRequest,
-  ) => stream.Stream<
-    ListProxiesResponse,
-    ListProxiesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListProxiesRequest,
-  ) => stream.Stream<
-    ProxyMetadata,
-    ListProxiesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ProxyMetadata
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProxiesRequest,
   output: ListProxiesResponse,
   errors: [InternalServerError, InvalidRequestException, ThrottlingException],
@@ -6125,27 +6026,13 @@ export type ListProxyConfigurationsError =
  * your setting for max results and the number of proxy configurations, a single call might not
  * return the full list.
  */
-export const listProxyConfigurations: API.OperationMethod<
+export const listProxyConfigurations: API.PaginatedOperationMethod<
   ListProxyConfigurationsRequest,
   ListProxyConfigurationsResponse,
   ListProxyConfigurationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListProxyConfigurationsRequest,
-  ) => stream.Stream<
-    ListProxyConfigurationsResponse,
-    ListProxyConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListProxyConfigurationsRequest,
-  ) => stream.Stream<
-    ProxyConfigurationMetadata,
-    ListProxyConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ProxyConfigurationMetadata
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProxyConfigurationsRequest,
   output: ListProxyConfigurationsResponse,
   errors: [
@@ -6176,27 +6063,13 @@ export type ListProxyRuleGroupsError =
  * your setting for max results and the number of proxy rule groups, a single call might not
  * return the full list.
  */
-export const listProxyRuleGroups: API.OperationMethod<
+export const listProxyRuleGroups: API.PaginatedOperationMethod<
   ListProxyRuleGroupsRequest,
   ListProxyRuleGroupsResponse,
   ListProxyRuleGroupsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListProxyRuleGroupsRequest,
-  ) => stream.Stream<
-    ListProxyRuleGroupsResponse,
-    ListProxyRuleGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListProxyRuleGroupsRequest,
-  ) => stream.Stream<
-    ProxyRuleGroupMetadata,
-    ListProxyRuleGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ProxyRuleGroupMetadata
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProxyRuleGroupsRequest,
   output: ListProxyRuleGroupsResponse,
   errors: [
@@ -6226,27 +6099,13 @@ export type ListRuleGroupsError =
  * setting for max results and the number of rule groups, a single call might not return the
  * full list.
  */
-export const listRuleGroups: API.OperationMethod<
+export const listRuleGroups: API.PaginatedOperationMethod<
   ListRuleGroupsRequest,
   ListRuleGroupsResponse,
   ListRuleGroupsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRuleGroupsRequest,
-  ) => stream.Stream<
-    ListRuleGroupsResponse,
-    ListRuleGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRuleGroupsRequest,
-  ) => stream.Stream<
-    RuleGroupMetadata,
-    ListRuleGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  RuleGroupMetadata
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRuleGroupsRequest,
   output: ListRuleGroupsResponse,
   errors: [InternalServerError, InvalidRequestException, ThrottlingException],
@@ -6277,27 +6136,13 @@ export type ListTagsForResourceError =
  * You can tag the Amazon Web Services resources that you manage through Network Firewall: firewalls, firewall
  * policies, and rule groups.
  */
-export const listTagsForResource: API.OperationMethod<
+export const listTagsForResource: API.PaginatedOperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTagsForResourceRequest,
-  ) => stream.Stream<
-    ListTagsForResourceResponse,
-    ListTagsForResourceError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTagsForResourceRequest,
-  ) => stream.Stream<
-    Tag,
-    ListTagsForResourceError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Tag
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -6325,27 +6170,13 @@ export type ListTLSInspectionConfigurationsError =
 /**
  * Retrieves the metadata for the TLS inspection configurations that you have defined. Depending on your setting for max results and the number of TLS inspection configurations, a single call might not return the full list.
  */
-export const listTLSInspectionConfigurations: API.OperationMethod<
+export const listTLSInspectionConfigurations: API.PaginatedOperationMethod<
   ListTLSInspectionConfigurationsRequest,
   ListTLSInspectionConfigurationsResponse,
   ListTLSInspectionConfigurationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTLSInspectionConfigurationsRequest,
-  ) => stream.Stream<
-    ListTLSInspectionConfigurationsResponse,
-    ListTLSInspectionConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTLSInspectionConfigurationsRequest,
-  ) => stream.Stream<
-    TLSInspectionConfigurationMetadata,
-    ListTLSInspectionConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  TLSInspectionConfigurationMetadata
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTLSInspectionConfigurationsRequest,
   output: ListTLSInspectionConfigurationsResponse,
   errors: [InternalServerError, InvalidRequestException, ThrottlingException],
@@ -6372,27 +6203,13 @@ export type ListVpcEndpointAssociationsError =
  * Depending on your setting for max results and the number of associations, a single call
  * might not return the full list.
  */
-export const listVpcEndpointAssociations: API.OperationMethod<
+export const listVpcEndpointAssociations: API.PaginatedOperationMethod<
   ListVpcEndpointAssociationsRequest,
   ListVpcEndpointAssociationsResponse,
   ListVpcEndpointAssociationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListVpcEndpointAssociationsRequest,
-  ) => stream.Stream<
-    ListVpcEndpointAssociationsResponse,
-    ListVpcEndpointAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListVpcEndpointAssociationsRequest,
-  ) => stream.Stream<
-    VpcEndpointAssociationMetadata,
-    ListVpcEndpointAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  VpcEndpointAssociationMetadata
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListVpcEndpointAssociationsRequest,
   output: ListVpcEndpointAssociationsResponse,
   errors: [InternalServerError, InvalidRequestException, ThrottlingException],

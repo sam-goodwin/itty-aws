@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -1232,27 +1231,13 @@ export type ListClustersError =
 /**
  * Returns information about provisioned Amazon DocumentDB elastic clusters.
  */
-export const listClusters: API.OperationMethod<
+export const listClusters: API.PaginatedOperationMethod<
   ListClustersInput,
   ListClustersOutput,
   ListClustersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListClustersInput,
-  ) => stream.Stream<
-    ListClustersOutput,
-    ListClustersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListClustersInput,
-  ) => stream.Stream<
-    ClusterInList,
-    ListClustersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ClusterInList
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListClustersInput,
   output: ListClustersOutput,
   errors: [
@@ -1281,27 +1266,13 @@ export type ListClusterSnapshotsError =
 /**
  * Returns information about snapshots for a specified elastic cluster.
  */
-export const listClusterSnapshots: API.OperationMethod<
+export const listClusterSnapshots: API.PaginatedOperationMethod<
   ListClusterSnapshotsInput,
   ListClusterSnapshotsOutput,
   ListClusterSnapshotsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListClusterSnapshotsInput,
-  ) => stream.Stream<
-    ListClusterSnapshotsOutput,
-    ListClusterSnapshotsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListClusterSnapshotsInput,
-  ) => stream.Stream<
-    ClusterSnapshotInList,
-    ListClusterSnapshotsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ClusterSnapshotInList
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListClusterSnapshotsInput,
   output: ListClusterSnapshotsOutput,
   errors: [
@@ -1330,27 +1301,13 @@ export type ListPendingMaintenanceActionsError =
 /**
  * Retrieves a list of all maintenance actions that are pending.
  */
-export const listPendingMaintenanceActions: API.OperationMethod<
+export const listPendingMaintenanceActions: API.PaginatedOperationMethod<
   ListPendingMaintenanceActionsInput,
   ListPendingMaintenanceActionsOutput,
   ListPendingMaintenanceActionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPendingMaintenanceActionsInput,
-  ) => stream.Stream<
-    ListPendingMaintenanceActionsOutput,
-    ListPendingMaintenanceActionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPendingMaintenanceActionsInput,
-  ) => stream.Stream<
-    ResourcePendingMaintenanceAction,
-    ListPendingMaintenanceActionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ResourcePendingMaintenanceAction
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPendingMaintenanceActionsInput,
   output: ListPendingMaintenanceActionsOutput,
   errors: [

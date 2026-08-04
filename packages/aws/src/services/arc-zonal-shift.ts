@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -1124,27 +1123,13 @@ export type ListAutoshiftsError =
 /**
  * Returns the autoshifts for an Amazon Web Services Region. By default, the call returns only `ACTIVE` autoshifts. Optionally, you can specify the `status` parameter to return `COMPLETED` autoshifts.
  */
-export const listAutoshifts: API.OperationMethod<
+export const listAutoshifts: API.PaginatedOperationMethod<
   ListAutoshiftsRequest,
   ListAutoshiftsResponse,
   ListAutoshiftsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAutoshiftsRequest,
-  ) => stream.Stream<
-    ListAutoshiftsResponse,
-    ListAutoshiftsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAutoshiftsRequest,
-  ) => stream.Stream<
-    AutoshiftSummary,
-    ListAutoshiftsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AutoshiftSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAutoshiftsRequest,
   output: ListAutoshiftsResponse,
   errors: [
@@ -1173,27 +1158,13 @@ export type ListManagedResourcesError =
 /**
  * Lists all the resources in your Amazon Web Services account in this Amazon Web Services Region that are managed for zonal shifts in Amazon Application Recovery Controller, and information about them. The information includes the zonal autoshift status for the resource, as well as the Amazon Resource Name (ARN), the Availability Zones that each resource is deployed in, and the resource name.
  */
-export const listManagedResources: API.OperationMethod<
+export const listManagedResources: API.PaginatedOperationMethod<
   ListManagedResourcesRequest,
   ListManagedResourcesResponse,
   ListManagedResourcesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListManagedResourcesRequest,
-  ) => stream.Stream<
-    ListManagedResourcesResponse,
-    ListManagedResourcesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListManagedResourcesRequest,
-  ) => stream.Stream<
-    ManagedResourceSummary,
-    ListManagedResourcesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ManagedResourceSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListManagedResourcesRequest,
   output: ListManagedResourcesResponse,
   errors: [
@@ -1224,27 +1195,13 @@ export type ListZonalShiftsError =
  *
  * For more information about listing autoshifts, see ">ListAutoshifts.
  */
-export const listZonalShifts: API.OperationMethod<
+export const listZonalShifts: API.PaginatedOperationMethod<
   ListZonalShiftsRequest,
   ListZonalShiftsResponse,
   ListZonalShiftsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListZonalShiftsRequest,
-  ) => stream.Stream<
-    ListZonalShiftsResponse,
-    ListZonalShiftsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListZonalShiftsRequest,
-  ) => stream.Stream<
-    ZonalShiftSummary,
-    ListZonalShiftsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ZonalShiftSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListZonalShiftsRequest,
   output: ListZonalShiftsResponse,
   errors: [

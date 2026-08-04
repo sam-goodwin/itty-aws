@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -11396,27 +11395,13 @@ export type DescribeBotAnalyzerRecommendationError =
  *
  * Recommendations are returned with pagination support. Each recommendation includes the issue location, priority level, detailed description, and proposed fix.
  */
-export const describeBotAnalyzerRecommendation: API.OperationMethod<
+export const describeBotAnalyzerRecommendation: API.PaginatedOperationMethod<
   DescribeBotAnalyzerRecommendationRequest,
   DescribeBotAnalyzerRecommendationResponse,
   DescribeBotAnalyzerRecommendationError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeBotAnalyzerRecommendationRequest,
-  ) => stream.Stream<
-    DescribeBotAnalyzerRecommendationResponse,
-    DescribeBotAnalyzerRecommendationError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeBotAnalyzerRecommendationRequest,
-  ) => stream.Stream<
-    BotAnalyzerRecommendation,
-    DescribeBotAnalyzerRecommendationError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  BotAnalyzerRecommendation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeBotAnalyzerRecommendationRequest,
   output: DescribeBotAnalyzerRecommendationResponse,
   errors: [
@@ -12008,27 +11993,13 @@ export type ListAggregatedUtterancesError =
  *
  * - You opted out of participating in improving Amazon Lex.
  */
-export const listAggregatedUtterances: API.OperationMethod<
+export const listAggregatedUtterances: API.PaginatedOperationMethod<
   ListAggregatedUtterancesRequest,
   ListAggregatedUtterancesResponse,
   ListAggregatedUtterancesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAggregatedUtterancesRequest,
-  ) => stream.Stream<
-    ListAggregatedUtterancesResponse,
-    ListAggregatedUtterancesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAggregatedUtterancesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListAggregatedUtterancesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAggregatedUtterancesRequest,
   output: ListAggregatedUtterancesResponse,
   errors: [
@@ -12057,27 +12028,13 @@ export type ListBotAliasesError =
 /**
  * Gets a list of aliases for the specified bot.
  */
-export const listBotAliases: API.OperationMethod<
+export const listBotAliases: API.PaginatedOperationMethod<
   ListBotAliasesRequest,
   ListBotAliasesResponse,
   ListBotAliasesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListBotAliasesRequest,
-  ) => stream.Stream<
-    ListBotAliasesResponse,
-    ListBotAliasesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListBotAliasesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListBotAliasesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBotAliasesRequest,
   output: ListBotAliasesResponse,
   errors: [
@@ -12106,27 +12063,13 @@ export type ListBotAliasReplicasError =
 /**
  * The action to list the replicated bots created from the source bot alias.
  */
-export const listBotAliasReplicas: API.OperationMethod<
+export const listBotAliasReplicas: API.PaginatedOperationMethod<
   ListBotAliasReplicasRequest,
   ListBotAliasReplicasResponse,
   ListBotAliasReplicasError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListBotAliasReplicasRequest,
-  ) => stream.Stream<
-    ListBotAliasReplicasResponse,
-    ListBotAliasReplicasError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListBotAliasReplicasRequest,
-  ) => stream.Stream<
-    unknown,
-    ListBotAliasReplicasError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBotAliasReplicasRequest,
   output: ListBotAliasReplicasResponse,
   errors: [
@@ -12156,27 +12099,13 @@ export type ListBotAnalyzerHistoryError =
  *
  * The history includes all analysis executions regardless of their status, allowing you to track past analyses and their outcomes.
  */
-export const listBotAnalyzerHistory: API.OperationMethod<
+export const listBotAnalyzerHistory: API.PaginatedOperationMethod<
   ListBotAnalyzerHistoryRequest,
   ListBotAnalyzerHistoryResponse,
   ListBotAnalyzerHistoryError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListBotAnalyzerHistoryRequest,
-  ) => stream.Stream<
-    ListBotAnalyzerHistoryResponse,
-    ListBotAnalyzerHistoryError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListBotAnalyzerHistoryRequest,
-  ) => stream.Stream<
-    BotAnalyzerHistorySummary,
-    ListBotAnalyzerHistoryError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  BotAnalyzerHistorySummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBotAnalyzerHistoryRequest,
   output: ListBotAnalyzerHistoryResponse,
   errors: [
@@ -12205,27 +12134,13 @@ export type ListBotLocalesError =
 /**
  * Gets a list of locales for the specified bot.
  */
-export const listBotLocales: API.OperationMethod<
+export const listBotLocales: API.PaginatedOperationMethod<
   ListBotLocalesRequest,
   ListBotLocalesResponse,
   ListBotLocalesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListBotLocalesRequest,
-  ) => stream.Stream<
-    ListBotLocalesResponse,
-    ListBotLocalesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListBotLocalesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListBotLocalesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBotLocalesRequest,
   output: ListBotLocalesResponse,
   errors: [
@@ -12254,27 +12169,13 @@ export type ListBotRecommendationsError =
  * Get a list of bot recommendations that meet the specified
  * criteria.
  */
-export const listBotRecommendations: API.OperationMethod<
+export const listBotRecommendations: API.PaginatedOperationMethod<
   ListBotRecommendationsRequest,
   ListBotRecommendationsResponse,
   ListBotRecommendationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListBotRecommendationsRequest,
-  ) => stream.Stream<
-    ListBotRecommendationsResponse,
-    ListBotRecommendationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListBotRecommendationsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListBotRecommendationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBotRecommendationsRequest,
   output: ListBotRecommendationsResponse,
   errors: [
@@ -12330,27 +12231,13 @@ export type ListBotResourceGenerationsError =
 /**
  * Lists the generation requests made for a bot locale.
  */
-export const listBotResourceGenerations: API.OperationMethod<
+export const listBotResourceGenerations: API.PaginatedOperationMethod<
   ListBotResourceGenerationsRequest,
   ListBotResourceGenerationsResponse,
   ListBotResourceGenerationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListBotResourceGenerationsRequest,
-  ) => stream.Stream<
-    ListBotResourceGenerationsResponse,
-    ListBotResourceGenerationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListBotResourceGenerationsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListBotResourceGenerationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBotResourceGenerationsRequest,
   output: ListBotResourceGenerationsResponse,
   errors: [
@@ -12378,27 +12265,13 @@ export type ListBotsError =
 /**
  * Gets a list of available bots.
  */
-export const listBots: API.OperationMethod<
+export const listBots: API.PaginatedOperationMethod<
   ListBotsRequest,
   ListBotsResponse,
   ListBotsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListBotsRequest,
-  ) => stream.Stream<
-    ListBotsResponse,
-    ListBotsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListBotsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListBotsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBotsRequest,
   output: ListBotsResponse,
   errors: [
@@ -12426,27 +12299,13 @@ export type ListBotVersionReplicasError =
 /**
  * Contains information about all the versions replication statuses applicable for Global Resiliency.
  */
-export const listBotVersionReplicas: API.OperationMethod<
+export const listBotVersionReplicas: API.PaginatedOperationMethod<
   ListBotVersionReplicasRequest,
   ListBotVersionReplicasResponse,
   ListBotVersionReplicasError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListBotVersionReplicasRequest,
-  ) => stream.Stream<
-    ListBotVersionReplicasResponse,
-    ListBotVersionReplicasError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListBotVersionReplicasRequest,
-  ) => stream.Stream<
-    unknown,
-    ListBotVersionReplicasError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBotVersionReplicasRequest,
   output: ListBotVersionReplicasResponse,
   errors: [
@@ -12483,27 +12342,13 @@ export type ListBotVersionsError =
  * The `ListBotVersions` operation always returns at least
  * one version, the `DRAFT` version.
  */
-export const listBotVersions: API.OperationMethod<
+export const listBotVersions: API.PaginatedOperationMethod<
   ListBotVersionsRequest,
   ListBotVersionsResponse,
   ListBotVersionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListBotVersionsRequest,
-  ) => stream.Stream<
-    ListBotVersionsResponse,
-    ListBotVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListBotVersionsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListBotVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBotVersionsRequest,
   output: ListBotVersionsResponse,
   errors: [
@@ -12537,27 +12382,13 @@ export type ListBuiltInIntentsError =
  * parameter when you call the `CreateIntent` operation. For
  * more information, see CreateIntent.
  */
-export const listBuiltInIntents: API.OperationMethod<
+export const listBuiltInIntents: API.PaginatedOperationMethod<
   ListBuiltInIntentsRequest,
   ListBuiltInIntentsResponse,
   ListBuiltInIntentsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListBuiltInIntentsRequest,
-  ) => stream.Stream<
-    ListBuiltInIntentsResponse,
-    ListBuiltInIntentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListBuiltInIntentsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListBuiltInIntentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBuiltInIntentsRequest,
   output: ListBuiltInIntentsResponse,
   errors: [
@@ -12586,27 +12417,13 @@ export type ListBuiltInSlotTypesError =
  * Gets a list of built-in slot types that meet the specified
  * criteria.
  */
-export const listBuiltInSlotTypes: API.OperationMethod<
+export const listBuiltInSlotTypes: API.PaginatedOperationMethod<
   ListBuiltInSlotTypesRequest,
   ListBuiltInSlotTypesResponse,
   ListBuiltInSlotTypesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListBuiltInSlotTypesRequest,
-  ) => stream.Stream<
-    ListBuiltInSlotTypesResponse,
-    ListBuiltInSlotTypesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListBuiltInSlotTypesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListBuiltInSlotTypesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBuiltInSlotTypesRequest,
   output: ListBuiltInSlotTypesResponse,
   errors: [
@@ -12636,27 +12453,13 @@ export type ListCustomVocabularyItemsError =
  * Paginated list of custom vocabulary items for a given bot locale's
  * custom vocabulary.
  */
-export const listCustomVocabularyItems: API.OperationMethod<
+export const listCustomVocabularyItems: API.PaginatedOperationMethod<
   ListCustomVocabularyItemsRequest,
   ListCustomVocabularyItemsResponse,
   ListCustomVocabularyItemsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCustomVocabularyItemsRequest,
-  ) => stream.Stream<
-    ListCustomVocabularyItemsResponse,
-    ListCustomVocabularyItemsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCustomVocabularyItemsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListCustomVocabularyItemsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCustomVocabularyItemsRequest,
   output: ListCustomVocabularyItemsResponse,
   errors: [
@@ -12685,27 +12488,13 @@ export type ListExportsError =
  * Lists the exports for a bot, bot locale, or custom vocabulary.
  * Exports are kept in the list for 7 days.
  */
-export const listExports: API.OperationMethod<
+export const listExports: API.PaginatedOperationMethod<
   ListExportsRequest,
   ListExportsResponse,
   ListExportsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListExportsRequest,
-  ) => stream.Stream<
-    ListExportsResponse,
-    ListExportsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListExportsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListExportsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListExportsRequest,
   output: ListExportsResponse,
   errors: [InternalServerException, ThrottlingException, ValidationException],
@@ -12728,27 +12517,13 @@ export type ListImportsError =
  * Lists the imports for a bot, bot locale, or custom vocabulary.
  * Imports are kept in the list for 7 days.
  */
-export const listImports: API.OperationMethod<
+export const listImports: API.PaginatedOperationMethod<
   ListImportsRequest,
   ListImportsResponse,
   ListImportsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListImportsRequest,
-  ) => stream.Stream<
-    ListImportsResponse,
-    ListImportsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListImportsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListImportsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListImportsRequest,
   output: ListImportsResponse,
   errors: [InternalServerException, ThrottlingException, ValidationException],
@@ -12784,27 +12559,13 @@ export type ListIntentMetricsError =
  *
  * Note that an `order` field exists in both `binBy` and `metrics`. You can specify only one `order` in a given request.
  */
-export const listIntentMetrics: API.OperationMethod<
+export const listIntentMetrics: API.PaginatedOperationMethod<
   ListIntentMetricsRequest,
   ListIntentMetricsResponse,
   ListIntentMetricsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListIntentMetricsRequest,
-  ) => stream.Stream<
-    ListIntentMetricsResponse,
-    ListIntentMetricsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListIntentMetricsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListIntentMetricsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListIntentMetricsRequest,
   output: ListIntentMetricsResponse,
   errors: [
@@ -12870,27 +12631,13 @@ export type ListIntentsError =
 /**
  * Get a list of intents that meet the specified criteria.
  */
-export const listIntents: API.OperationMethod<
+export const listIntents: API.PaginatedOperationMethod<
   ListIntentsRequest,
   ListIntentsResponse,
   ListIntentsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListIntentsRequest,
-  ) => stream.Stream<
-    ListIntentsResponse,
-    ListIntentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListIntentsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListIntentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListIntentsRequest,
   output: ListIntentsResponse,
   errors: [
@@ -12932,27 +12679,13 @@ export type ListIntentStageMetricsError =
  *
  * Note that an `order` field exists in both `binBy` and `metrics`. You can only specify one `order` in a given request.
  */
-export const listIntentStageMetrics: API.OperationMethod<
+export const listIntentStageMetrics: API.PaginatedOperationMethod<
   ListIntentStageMetricsRequest,
   ListIntentStageMetricsResponse,
   ListIntentStageMetricsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListIntentStageMetricsRequest,
-  ) => stream.Stream<
-    ListIntentStageMetricsResponse,
-    ListIntentStageMetricsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListIntentStageMetricsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListIntentStageMetricsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListIntentStageMetricsRequest,
   output: ListIntentStageMetricsResponse,
   errors: [
@@ -12984,27 +12717,13 @@ export type ListRecommendedIntentsError =
  * recommendation that you can use in your bot. Intents in the
  * response are ordered by relevance.
  */
-export const listRecommendedIntents: API.OperationMethod<
+export const listRecommendedIntents: API.PaginatedOperationMethod<
   ListRecommendedIntentsRequest,
   ListRecommendedIntentsResponse,
   ListRecommendedIntentsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRecommendedIntentsRequest,
-  ) => stream.Stream<
-    ListRecommendedIntentsResponse,
-    ListRecommendedIntentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRecommendedIntentsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListRecommendedIntentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRecommendedIntentsRequest,
   output: ListRecommendedIntentsResponse,
   errors: [
@@ -13038,27 +12757,13 @@ export type ListSessionAnalyticsDataError =
  *
  * - Use the `maxResults` field to limit the number of results to return in a single response and the `nextToken` field to return the next batch of results if the response does not return the full set of results.
  */
-export const listSessionAnalyticsData: API.OperationMethod<
+export const listSessionAnalyticsData: API.PaginatedOperationMethod<
   ListSessionAnalyticsDataRequest,
   ListSessionAnalyticsDataResponse,
   ListSessionAnalyticsDataError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSessionAnalyticsDataRequest,
-  ) => stream.Stream<
-    ListSessionAnalyticsDataResponse,
-    ListSessionAnalyticsDataError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSessionAnalyticsDataRequest,
-  ) => stream.Stream<
-    unknown,
-    ListSessionAnalyticsDataError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSessionAnalyticsDataRequest,
   output: ListSessionAnalyticsDataResponse,
   errors: [
@@ -13100,27 +12805,13 @@ export type ListSessionMetricsError =
  *
  * Note that an `order` field exists in both `binBy` and `metrics`. Currently, you can specify it in either field, but not in both.
  */
-export const listSessionMetrics: API.OperationMethod<
+export const listSessionMetrics: API.PaginatedOperationMethod<
   ListSessionMetricsRequest,
   ListSessionMetricsResponse,
   ListSessionMetricsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSessionMetricsRequest,
-  ) => stream.Stream<
-    ListSessionMetricsResponse,
-    ListSessionMetricsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSessionMetricsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListSessionMetricsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSessionMetricsRequest,
   output: ListSessionMetricsResponse,
   errors: [
@@ -13149,27 +12840,13 @@ export type ListSlotsError =
 /**
  * Gets a list of slots that match the specified criteria.
  */
-export const listSlots: API.OperationMethod<
+export const listSlots: API.PaginatedOperationMethod<
   ListSlotsRequest,
   ListSlotsResponse,
   ListSlotsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSlotsRequest,
-  ) => stream.Stream<
-    ListSlotsResponse,
-    ListSlotsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSlotsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListSlotsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSlotsRequest,
   output: ListSlotsResponse,
   errors: [
@@ -13198,27 +12875,13 @@ export type ListSlotTypesError =
 /**
  * Gets a list of slot types that match the specified criteria.
  */
-export const listSlotTypes: API.OperationMethod<
+export const listSlotTypes: API.PaginatedOperationMethod<
   ListSlotTypesRequest,
   ListSlotTypesResponse,
   ListSlotTypesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSlotTypesRequest,
-  ) => stream.Stream<
-    ListSlotTypesResponse,
-    ListSlotTypesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSlotTypesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListSlotTypesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSlotTypesRequest,
   output: ListSlotTypesResponse,
   errors: [
@@ -13277,27 +12940,13 @@ export type ListTestExecutionResultItemsError =
 /**
  * Gets a list of test execution result items.
  */
-export const listTestExecutionResultItems: API.OperationMethod<
+export const listTestExecutionResultItems: API.PaginatedOperationMethod<
   ListTestExecutionResultItemsRequest,
   ListTestExecutionResultItemsResponse,
   ListTestExecutionResultItemsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTestExecutionResultItemsRequest,
-  ) => stream.Stream<
-    ListTestExecutionResultItemsResponse,
-    ListTestExecutionResultItemsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTestExecutionResultItemsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListTestExecutionResultItemsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTestExecutionResultItemsRequest,
   output: ListTestExecutionResultItemsResponse,
   errors: [
@@ -13326,27 +12975,13 @@ export type ListTestExecutionsError =
 /**
  * The list of test set executions.
  */
-export const listTestExecutions: API.OperationMethod<
+export const listTestExecutions: API.PaginatedOperationMethod<
   ListTestExecutionsRequest,
   ListTestExecutionsResponse,
   ListTestExecutionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTestExecutionsRequest,
-  ) => stream.Stream<
-    ListTestExecutionsResponse,
-    ListTestExecutionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTestExecutionsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListTestExecutionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTestExecutionsRequest,
   output: ListTestExecutionsResponse,
   errors: [
@@ -13375,27 +13010,13 @@ export type ListTestSetRecordsError =
 /**
  * The list of test set records.
  */
-export const listTestSetRecords: API.OperationMethod<
+export const listTestSetRecords: API.PaginatedOperationMethod<
   ListTestSetRecordsRequest,
   ListTestSetRecordsResponse,
   ListTestSetRecordsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTestSetRecordsRequest,
-  ) => stream.Stream<
-    ListTestSetRecordsResponse,
-    ListTestSetRecordsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTestSetRecordsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListTestSetRecordsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTestSetRecordsRequest,
   output: ListTestSetRecordsResponse,
   errors: [
@@ -13424,27 +13045,13 @@ export type ListTestSetsError =
 /**
  * The list of the test sets
  */
-export const listTestSets: API.OperationMethod<
+export const listTestSets: API.PaginatedOperationMethod<
   ListTestSetsRequest,
   ListTestSetsResponse,
   ListTestSetsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTestSetsRequest,
-  ) => stream.Stream<
-    ListTestSetsResponse,
-    ListTestSetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTestSetsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListTestSetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTestSetsRequest,
   output: ListTestSetsResponse,
   errors: [
@@ -13486,27 +13093,13 @@ export type ListUtteranceAnalyticsDataError =
  *
  * - Use the `maxResults` field to limit the number of results to return in a single response and the `nextToken` field to return the next batch of results if the response does not return the full set of results.
  */
-export const listUtteranceAnalyticsData: API.OperationMethod<
+export const listUtteranceAnalyticsData: API.PaginatedOperationMethod<
   ListUtteranceAnalyticsDataRequest,
   ListUtteranceAnalyticsDataResponse,
   ListUtteranceAnalyticsDataError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListUtteranceAnalyticsDataRequest,
-  ) => stream.Stream<
-    ListUtteranceAnalyticsDataResponse,
-    ListUtteranceAnalyticsDataError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListUtteranceAnalyticsDataRequest,
-  ) => stream.Stream<
-    unknown,
-    ListUtteranceAnalyticsDataError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListUtteranceAnalyticsDataRequest,
   output: ListUtteranceAnalyticsDataResponse,
   errors: [
@@ -13553,27 +13146,13 @@ export type ListUtteranceMetricsError =
  *
  * Note that an `order` field exists in both `binBy` and `metrics`. Currently, you can specify it in either field, but not in both.
  */
-export const listUtteranceMetrics: API.OperationMethod<
+export const listUtteranceMetrics: API.PaginatedOperationMethod<
   ListUtteranceMetricsRequest,
   ListUtteranceMetricsResponse,
   ListUtteranceMetricsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListUtteranceMetricsRequest,
-  ) => stream.Stream<
-    ListUtteranceMetricsResponse,
-    ListUtteranceMetricsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListUtteranceMetricsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListUtteranceMetricsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListUtteranceMetricsRequest,
   output: ListUtteranceMetricsResponse,
   errors: [

@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -1640,27 +1639,13 @@ export type ListInvoiceSummariesError =
 /**
  * Retrieves your invoice details programmatically, without line item details.
  */
-export const listInvoiceSummaries: API.OperationMethod<
+export const listInvoiceSummaries: API.PaginatedOperationMethod<
   ListInvoiceSummariesRequest,
   ListInvoiceSummariesResponse,
   ListInvoiceSummariesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListInvoiceSummariesRequest,
-  ) => stream.Stream<
-    ListInvoiceSummariesResponse,
-    ListInvoiceSummariesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListInvoiceSummariesRequest,
-  ) => stream.Stream<
-    InvoiceSummary,
-    ListInvoiceSummariesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  InvoiceSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListInvoiceSummariesRequest,
   output: ListInvoiceSummariesResponse,
   errors: [
@@ -1690,27 +1675,13 @@ export type ListInvoiceUnitsError =
 /**
  * This fetches a list of all invoice unit definitions for a given account, as of the provided `AsOf` date.
  */
-export const listInvoiceUnits: API.OperationMethod<
+export const listInvoiceUnits: API.PaginatedOperationMethod<
   ListInvoiceUnitsRequest,
   ListInvoiceUnitsResponse,
   ListInvoiceUnitsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListInvoiceUnitsRequest,
-  ) => stream.Stream<
-    ListInvoiceUnitsResponse,
-    ListInvoiceUnitsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListInvoiceUnitsRequest,
-  ) => stream.Stream<
-    InvoiceUnit,
-    ListInvoiceUnitsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  InvoiceUnit
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListInvoiceUnitsRequest,
   output: ListInvoiceUnitsResponse,
   errors: [
@@ -1743,27 +1714,13 @@ export type ListProcurementPortalPreferencesError =
  *
  * Retrieves a list of procurement portal preferences associated with the Amazon Web Services account.
  */
-export const listProcurementPortalPreferences: API.OperationMethod<
+export const listProcurementPortalPreferences: API.PaginatedOperationMethod<
   ListProcurementPortalPreferencesRequest,
   ListProcurementPortalPreferencesResponse,
   ListProcurementPortalPreferencesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListProcurementPortalPreferencesRequest,
-  ) => stream.Stream<
-    ListProcurementPortalPreferencesResponse,
-    ListProcurementPortalPreferencesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListProcurementPortalPreferencesRequest,
-  ) => stream.Stream<
-    ProcurementPortalPreferenceSummary,
-    ListProcurementPortalPreferencesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ProcurementPortalPreferenceSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProcurementPortalPreferencesRequest,
   output: ListProcurementPortalPreferencesResponse,
   errors: [

@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -6198,27 +6197,13 @@ export type DescribeJobLogItemsError =
 /**
  * Retrieves detailed job log items with paging.
  */
-export const describeJobLogItems: API.OperationMethod<
+export const describeJobLogItems: API.PaginatedOperationMethod<
   DescribeJobLogItemsRequest,
   DescribeJobLogItemsResponse,
   DescribeJobLogItemsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeJobLogItemsRequest,
-  ) => stream.Stream<
-    DescribeJobLogItemsResponse,
-    DescribeJobLogItemsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeJobLogItemsRequest,
-  ) => stream.Stream<
-    JobLog,
-    DescribeJobLogItemsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  JobLog
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeJobLogItemsRequest,
   output: DescribeJobLogItemsResponse,
   errors: [UninitializedAccountException, ValidationException],
@@ -6240,27 +6225,13 @@ export type DescribeJobsError =
 /**
  * Returns a list of Jobs. Use the JobsID and fromDate and toData filters to limit which jobs are returned. The response is sorted by creationDataTime - latest date first. Jobs are normally created by the StartTest, StartCutover, and TerminateTargetInstances APIs. Jobs are also created by DiagnosticLaunch and TerminateDiagnosticInstances, which are APIs available only to *Support* and only used in response to relevant support tickets.
  */
-export const describeJobs: API.OperationMethod<
+export const describeJobs: API.PaginatedOperationMethod<
   DescribeJobsRequest,
   DescribeJobsResponse,
   DescribeJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeJobsRequest,
-  ) => stream.Stream<
-    DescribeJobsResponse,
-    DescribeJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeJobsRequest,
-  ) => stream.Stream<
-    Job,
-    DescribeJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Job
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeJobsRequest,
   output: DescribeJobsResponse,
   errors: [UninitializedAccountException, ValidationException],
@@ -6283,27 +6254,13 @@ export type DescribeLaunchConfigurationTemplatesError =
 /**
  * Lists all Launch Configuration Templates, filtered by Launch Configuration Template IDs
  */
-export const describeLaunchConfigurationTemplates: API.OperationMethod<
+export const describeLaunchConfigurationTemplates: API.PaginatedOperationMethod<
   DescribeLaunchConfigurationTemplatesRequest,
   DescribeLaunchConfigurationTemplatesResponse,
   DescribeLaunchConfigurationTemplatesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeLaunchConfigurationTemplatesRequest,
-  ) => stream.Stream<
-    DescribeLaunchConfigurationTemplatesResponse,
-    DescribeLaunchConfigurationTemplatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeLaunchConfigurationTemplatesRequest,
-  ) => stream.Stream<
-    LaunchConfigurationTemplate,
-    DescribeLaunchConfigurationTemplatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  LaunchConfigurationTemplate
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeLaunchConfigurationTemplatesRequest,
   output: DescribeLaunchConfigurationTemplatesResponse,
   errors: [
@@ -6330,27 +6287,13 @@ export type DescribeReplicationConfigurationTemplatesError =
 /**
  * Lists all ReplicationConfigurationTemplates, filtered by Source Server IDs.
  */
-export const describeReplicationConfigurationTemplates: API.OperationMethod<
+export const describeReplicationConfigurationTemplates: API.PaginatedOperationMethod<
   DescribeReplicationConfigurationTemplatesRequest,
   DescribeReplicationConfigurationTemplatesResponse,
   DescribeReplicationConfigurationTemplatesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeReplicationConfigurationTemplatesRequest,
-  ) => stream.Stream<
-    DescribeReplicationConfigurationTemplatesResponse,
-    DescribeReplicationConfigurationTemplatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeReplicationConfigurationTemplatesRequest,
-  ) => stream.Stream<
-    ReplicationConfigurationTemplate,
-    DescribeReplicationConfigurationTemplatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ReplicationConfigurationTemplate
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeReplicationConfigurationTemplatesRequest,
   output: DescribeReplicationConfigurationTemplatesResponse,
   errors: [
@@ -6376,27 +6319,13 @@ export type DescribeSourceServersError =
 /**
  * Retrieves all SourceServers or multiple SourceServers by ID.
  */
-export const describeSourceServers: API.OperationMethod<
+export const describeSourceServers: API.PaginatedOperationMethod<
   DescribeSourceServersRequest,
   DescribeSourceServersResponse,
   DescribeSourceServersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeSourceServersRequest,
-  ) => stream.Stream<
-    DescribeSourceServersResponse,
-    DescribeSourceServersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeSourceServersRequest,
-  ) => stream.Stream<
-    SourceServer,
-    DescribeSourceServersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  SourceServer
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeSourceServersRequest,
   output: DescribeSourceServersResponse,
   errors: [UninitializedAccountException, ValidationException],
@@ -6419,27 +6348,13 @@ export type DescribeVcenterClientsError =
 /**
  * Returns a list of the installed vCenter clients.
  */
-export const describeVcenterClients: API.OperationMethod<
+export const describeVcenterClients: API.PaginatedOperationMethod<
   DescribeVcenterClientsRequest,
   DescribeVcenterClientsResponse,
   DescribeVcenterClientsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeVcenterClientsRequest,
-  ) => stream.Stream<
-    DescribeVcenterClientsResponse,
-    DescribeVcenterClientsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeVcenterClientsRequest,
-  ) => stream.Stream<
-    VcenterClient,
-    DescribeVcenterClientsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  VcenterClient
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeVcenterClientsRequest,
   output: DescribeVcenterClientsResponse,
   errors: [
@@ -6680,27 +6595,13 @@ export type ListApplicationsError =
 /**
  * Retrieves all applications or multiple applications by ID.
  */
-export const listApplications: API.OperationMethod<
+export const listApplications: API.PaginatedOperationMethod<
   ListApplicationsRequest,
   ListApplicationsResponse,
   ListApplicationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListApplicationsRequest,
-  ) => stream.Stream<
-    ListApplicationsResponse,
-    ListApplicationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListApplicationsRequest,
-  ) => stream.Stream<
-    Application,
-    ListApplicationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Application
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListApplicationsRequest,
   output: ListApplicationsResponse,
   errors: [UninitializedAccountException],
@@ -6722,27 +6623,13 @@ export type ListConnectorsError =
 /**
  * List Connectors.
  */
-export const listConnectors: API.OperationMethod<
+export const listConnectors: API.PaginatedOperationMethod<
   ListConnectorsRequest,
   ListConnectorsResponse,
   ListConnectorsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListConnectorsRequest,
-  ) => stream.Stream<
-    ListConnectorsResponse,
-    ListConnectorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListConnectorsRequest,
-  ) => stream.Stream<
-    Connector,
-    ListConnectorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Connector
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListConnectorsRequest,
   output: ListConnectorsResponse,
   errors: [UninitializedAccountException, ValidationException],
@@ -6764,27 +6651,13 @@ export type ListExportErrorsError =
 /**
  * List export errors.
  */
-export const listExportErrors: API.OperationMethod<
+export const listExportErrors: API.PaginatedOperationMethod<
   ListExportErrorsRequest,
   ListExportErrorsResponse,
   ListExportErrorsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListExportErrorsRequest,
-  ) => stream.Stream<
-    ListExportErrorsResponse,
-    ListExportErrorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListExportErrorsRequest,
-  ) => stream.Stream<
-    ExportTaskError,
-    ListExportErrorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ExportTaskError
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListExportErrorsRequest,
   output: ListExportErrorsResponse,
   errors: [UninitializedAccountException, ValidationException],
@@ -6803,27 +6676,13 @@ export type ListExportsError = UninitializedAccountException | CommonErrors;
 /**
  * List exports.
  */
-export const listExports: API.OperationMethod<
+export const listExports: API.PaginatedOperationMethod<
   ListExportsRequest,
   ListExportsResponse,
   ListExportsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListExportsRequest,
-  ) => stream.Stream<
-    ListExportsResponse,
-    ListExportsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListExportsRequest,
-  ) => stream.Stream<
-    ExportTask,
-    ListExportsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ExportTask
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListExportsRequest,
   output: ListExportsResponse,
   errors: [UninitializedAccountException],
@@ -6845,27 +6704,13 @@ export type ListImportErrorsError =
 /**
  * List import errors.
  */
-export const listImportErrors: API.OperationMethod<
+export const listImportErrors: API.PaginatedOperationMethod<
   ListImportErrorsRequest,
   ListImportErrorsResponse,
   ListImportErrorsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListImportErrorsRequest,
-  ) => stream.Stream<
-    ListImportErrorsResponse,
-    ListImportErrorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListImportErrorsRequest,
-  ) => stream.Stream<
-    ImportTaskError,
-    ListImportErrorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ImportTaskError
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListImportErrorsRequest,
   output: ListImportErrorsResponse,
   errors: [UninitializedAccountException, ValidationException],
@@ -6884,27 +6729,13 @@ export type ListImportFileEnrichmentsError = ValidationException | CommonErrors;
 /**
  * Lists import file enrichment jobs with optional filtering by job IDs.
  */
-export const listImportFileEnrichments: API.OperationMethod<
+export const listImportFileEnrichments: API.PaginatedOperationMethod<
   ListImportFileEnrichmentsRequest,
   ListImportFileEnrichmentsResponse,
   ListImportFileEnrichmentsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListImportFileEnrichmentsRequest,
-  ) => stream.Stream<
-    ListImportFileEnrichmentsResponse,
-    ListImportFileEnrichmentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListImportFileEnrichmentsRequest,
-  ) => stream.Stream<
-    ImportFileEnrichment,
-    ListImportFileEnrichmentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ImportFileEnrichment
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListImportFileEnrichmentsRequest,
   output: ListImportFileEnrichmentsResponse,
   errors: [ValidationException],
@@ -6926,27 +6757,13 @@ export type ListImportsError =
 /**
  * List imports.
  */
-export const listImports: API.OperationMethod<
+export const listImports: API.PaginatedOperationMethod<
   ListImportsRequest,
   ListImportsResponse,
   ListImportsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListImportsRequest,
-  ) => stream.Stream<
-    ListImportsResponse,
-    ListImportsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListImportsRequest,
-  ) => stream.Stream<
-    ImportTask,
-    ListImportsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ImportTask
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListImportsRequest,
   output: ListImportsResponse,
   errors: [UninitializedAccountException, ValidationException],
@@ -6968,27 +6785,13 @@ export type ListManagedAccountsError =
 /**
  * List Managed Accounts.
  */
-export const listManagedAccounts: API.OperationMethod<
+export const listManagedAccounts: API.PaginatedOperationMethod<
   ListManagedAccountsRequest,
   ListManagedAccountsResponse,
   ListManagedAccountsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListManagedAccountsRequest,
-  ) => stream.Stream<
-    ListManagedAccountsResponse,
-    ListManagedAccountsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListManagedAccountsRequest,
-  ) => stream.Stream<
-    ManagedAccount,
-    ListManagedAccountsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ManagedAccount
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListManagedAccountsRequest,
   output: ListManagedAccountsResponse,
   errors: [UninitializedAccountException, ValidationException],
@@ -7012,27 +6815,13 @@ export type ListNetworkMigrationAnalysesError =
 /**
  * Lists network migration analysis jobs for a specified execution. Returns information about analysis job status and results.
  */
-export const listNetworkMigrationAnalyses: API.OperationMethod<
+export const listNetworkMigrationAnalyses: API.PaginatedOperationMethod<
   ListNetworkMigrationAnalysesRequest,
   ListNetworkMigrationAnalysesResponse,
   ListNetworkMigrationAnalysesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListNetworkMigrationAnalysesRequest,
-  ) => stream.Stream<
-    ListNetworkMigrationAnalysesResponse,
-    ListNetworkMigrationAnalysesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListNetworkMigrationAnalysesRequest,
-  ) => stream.Stream<
-    NetworkMigrationAnalysisJobDetails,
-    ListNetworkMigrationAnalysesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  NetworkMigrationAnalysisJobDetails
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListNetworkMigrationAnalysesRequest,
   output: ListNetworkMigrationAnalysesResponse,
   errors: [
@@ -7061,27 +6850,13 @@ export type ListNetworkMigrationAnalysisResultsError =
 /**
  * Lists the results of network migration analyses, showing connectivity and compatibility findings for migrated resources.
  */
-export const listNetworkMigrationAnalysisResults: API.OperationMethod<
+export const listNetworkMigrationAnalysisResults: API.PaginatedOperationMethod<
   ListNetworkMigrationAnalysisResultsRequest,
   ListNetworkMigrationAnalysisResultsResponse,
   ListNetworkMigrationAnalysisResultsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListNetworkMigrationAnalysisResultsRequest,
-  ) => stream.Stream<
-    ListNetworkMigrationAnalysisResultsResponse,
-    ListNetworkMigrationAnalysisResultsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListNetworkMigrationAnalysisResultsRequest,
-  ) => stream.Stream<
-    NetworkMigrationAnalysisResult,
-    ListNetworkMigrationAnalysisResultsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  NetworkMigrationAnalysisResult
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListNetworkMigrationAnalysisResultsRequest,
   output: ListNetworkMigrationAnalysisResultsResponse,
   errors: [
@@ -7110,27 +6885,13 @@ export type ListNetworkMigrationCodeGenerationsError =
 /**
  * Lists network migration code generation jobs, which convert network mappings into infrastructure-as-code templates.
  */
-export const listNetworkMigrationCodeGenerations: API.OperationMethod<
+export const listNetworkMigrationCodeGenerations: API.PaginatedOperationMethod<
   ListNetworkMigrationCodeGenerationsRequest,
   ListNetworkMigrationCodeGenerationsResponse,
   ListNetworkMigrationCodeGenerationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListNetworkMigrationCodeGenerationsRequest,
-  ) => stream.Stream<
-    ListNetworkMigrationCodeGenerationsResponse,
-    ListNetworkMigrationCodeGenerationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListNetworkMigrationCodeGenerationsRequest,
-  ) => stream.Stream<
-    NetworkMigrationCodeGenerationJobDetails,
-    ListNetworkMigrationCodeGenerationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  NetworkMigrationCodeGenerationJobDetails
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListNetworkMigrationCodeGenerationsRequest,
   output: ListNetworkMigrationCodeGenerationsResponse,
   errors: [
@@ -7159,27 +6920,13 @@ export type ListNetworkMigrationCodeGenerationSegmentsError =
 /**
  * Lists code generation segments, which represent individual infrastructure components generated as code templates.
  */
-export const listNetworkMigrationCodeGenerationSegments: API.OperationMethod<
+export const listNetworkMigrationCodeGenerationSegments: API.PaginatedOperationMethod<
   ListNetworkMigrationCodeGenerationSegmentsRequest,
   ListNetworkMigrationCodeGenerationSegmentsResponse,
   ListNetworkMigrationCodeGenerationSegmentsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListNetworkMigrationCodeGenerationSegmentsRequest,
-  ) => stream.Stream<
-    ListNetworkMigrationCodeGenerationSegmentsResponse,
-    ListNetworkMigrationCodeGenerationSegmentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListNetworkMigrationCodeGenerationSegmentsRequest,
-  ) => stream.Stream<
-    NetworkMigrationCodeGenerationSegment,
-    ListNetworkMigrationCodeGenerationSegmentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  NetworkMigrationCodeGenerationSegment
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListNetworkMigrationCodeGenerationSegmentsRequest,
   output: ListNetworkMigrationCodeGenerationSegmentsResponse,
   errors: [
@@ -7205,27 +6952,13 @@ export type ListNetworkMigrationDefinitionsError =
 /**
  * Lists all network migration definitions in the account, with optional filtering.
  */
-export const listNetworkMigrationDefinitions: API.OperationMethod<
+export const listNetworkMigrationDefinitions: API.PaginatedOperationMethod<
   ListNetworkMigrationDefinitionsRequest,
   ListNetworkMigrationDefinitionsResponse,
   ListNetworkMigrationDefinitionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListNetworkMigrationDefinitionsRequest,
-  ) => stream.Stream<
-    ListNetworkMigrationDefinitionsResponse,
-    ListNetworkMigrationDefinitionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListNetworkMigrationDefinitionsRequest,
-  ) => stream.Stream<
-    NetworkMigrationDefinitionSummary,
-    ListNetworkMigrationDefinitionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  NetworkMigrationDefinitionSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListNetworkMigrationDefinitionsRequest,
   output: ListNetworkMigrationDefinitionsResponse,
   errors: [AccessDeniedException],
@@ -7249,27 +6982,13 @@ export type ListNetworkMigrationDeployedStacksError =
 /**
  * Lists CloudFormation stacks that have been deployed as part of the network migration.
  */
-export const listNetworkMigrationDeployedStacks: API.OperationMethod<
+export const listNetworkMigrationDeployedStacks: API.PaginatedOperationMethod<
   ListNetworkMigrationDeployedStacksRequest,
   ListNetworkMigrationDeployedStacksResponse,
   ListNetworkMigrationDeployedStacksError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListNetworkMigrationDeployedStacksRequest,
-  ) => stream.Stream<
-    ListNetworkMigrationDeployedStacksResponse,
-    ListNetworkMigrationDeployedStacksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListNetworkMigrationDeployedStacksRequest,
-  ) => stream.Stream<
-    NetworkMigrationDeployedStackDetails,
-    ListNetworkMigrationDeployedStacksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  NetworkMigrationDeployedStackDetails
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListNetworkMigrationDeployedStacksRequest,
   output: ListNetworkMigrationDeployedStacksResponse,
   errors: [
@@ -7298,27 +7017,13 @@ export type ListNetworkMigrationDeploymentsError =
 /**
  * Lists network migration deployment jobs and their current status.
  */
-export const listNetworkMigrationDeployments: API.OperationMethod<
+export const listNetworkMigrationDeployments: API.PaginatedOperationMethod<
   ListNetworkMigrationDeploymentsRequest,
   ListNetworkMigrationDeployerJobResponse,
   ListNetworkMigrationDeploymentsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListNetworkMigrationDeploymentsRequest,
-  ) => stream.Stream<
-    ListNetworkMigrationDeployerJobResponse,
-    ListNetworkMigrationDeploymentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListNetworkMigrationDeploymentsRequest,
-  ) => stream.Stream<
-    NetworkMigrationDeployerJobDetails,
-    ListNetworkMigrationDeploymentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  NetworkMigrationDeployerJobDetails
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListNetworkMigrationDeploymentsRequest,
   output: ListNetworkMigrationDeployerJobResponse,
   errors: [
@@ -7345,27 +7050,13 @@ export type ListNetworkMigrationExecutionsError =
 /**
  * Lists network migration execution instances for a given definition, showing the status and progress of each execution.
  */
-export const listNetworkMigrationExecutions: API.OperationMethod<
+export const listNetworkMigrationExecutions: API.PaginatedOperationMethod<
   ListNetworkMigrationExecutionsRequest,
   ListNetworkMigrationExecutionsResponse,
   ListNetworkMigrationExecutionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListNetworkMigrationExecutionsRequest,
-  ) => stream.Stream<
-    ListNetworkMigrationExecutionsResponse,
-    ListNetworkMigrationExecutionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListNetworkMigrationExecutionsRequest,
-  ) => stream.Stream<
-    NetworkMigrationExecution,
-    ListNetworkMigrationExecutionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  NetworkMigrationExecution
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListNetworkMigrationExecutionsRequest,
   output: ListNetworkMigrationExecutionsResponse,
   errors: [AccessDeniedException, ResourceNotFoundException],
@@ -7389,27 +7080,13 @@ export type ListNetworkMigrationMapperSegmentConstructsError =
 /**
  * Lists constructs within a mapper segment, representing individual infrastructure components like VPCs, subnets, or security groups.
  */
-export const listNetworkMigrationMapperSegmentConstructs: API.OperationMethod<
+export const listNetworkMigrationMapperSegmentConstructs: API.PaginatedOperationMethod<
   ListNetworkMigrationMapperSegmentConstructsRequest,
   ListNetworkMigrationMapperSegmentConstructsResponse,
   ListNetworkMigrationMapperSegmentConstructsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListNetworkMigrationMapperSegmentConstructsRequest,
-  ) => stream.Stream<
-    ListNetworkMigrationMapperSegmentConstructsResponse,
-    ListNetworkMigrationMapperSegmentConstructsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListNetworkMigrationMapperSegmentConstructsRequest,
-  ) => stream.Stream<
-    NetworkMigrationMapperSegmentConstruct,
-    ListNetworkMigrationMapperSegmentConstructsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  NetworkMigrationMapperSegmentConstruct
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListNetworkMigrationMapperSegmentConstructsRequest,
   output: ListNetworkMigrationMapperSegmentConstructsResponse,
   errors: [
@@ -7438,27 +7115,13 @@ export type ListNetworkMigrationMapperSegmentsError =
 /**
  * Lists mapper segments, which represent logical groupings of network resources to be migrated together.
  */
-export const listNetworkMigrationMapperSegments: API.OperationMethod<
+export const listNetworkMigrationMapperSegments: API.PaginatedOperationMethod<
   ListNetworkMigrationMapperSegmentsRequest,
   ListNetworkMigrationMapperSegmentsResponse,
   ListNetworkMigrationMapperSegmentsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListNetworkMigrationMapperSegmentsRequest,
-  ) => stream.Stream<
-    ListNetworkMigrationMapperSegmentsResponse,
-    ListNetworkMigrationMapperSegmentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListNetworkMigrationMapperSegmentsRequest,
-  ) => stream.Stream<
-    NetworkMigrationMapperSegment,
-    ListNetworkMigrationMapperSegmentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  NetworkMigrationMapperSegment
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListNetworkMigrationMapperSegmentsRequest,
   output: ListNetworkMigrationMapperSegmentsResponse,
   errors: [
@@ -7487,27 +7150,13 @@ export type ListNetworkMigrationMappingsError =
 /**
  * Lists network migration mapping jobs, which analyze and create relationships between source and target network resources.
  */
-export const listNetworkMigrationMappings: API.OperationMethod<
+export const listNetworkMigrationMappings: API.PaginatedOperationMethod<
   ListNetworkMigrationMappingsRequest,
   ListNetworkMigrationMappingsResponse,
   ListNetworkMigrationMappingsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListNetworkMigrationMappingsRequest,
-  ) => stream.Stream<
-    ListNetworkMigrationMappingsResponse,
-    ListNetworkMigrationMappingsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListNetworkMigrationMappingsRequest,
-  ) => stream.Stream<
-    NetworkMigrationMappingJobDetails,
-    ListNetworkMigrationMappingsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  NetworkMigrationMappingJobDetails
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListNetworkMigrationMappingsRequest,
   output: ListNetworkMigrationMappingsResponse,
   errors: [
@@ -7536,27 +7185,13 @@ export type ListNetworkMigrationMappingUpdatesError =
 /**
  * Lists mapping update jobs, which apply customer modifications to the generated network mappings.
  */
-export const listNetworkMigrationMappingUpdates: API.OperationMethod<
+export const listNetworkMigrationMappingUpdates: API.PaginatedOperationMethod<
   ListNetworkMigrationMappingUpdatesRequest,
   ListNetworkMigrationMappingUpdatesResponse,
   ListNetworkMigrationMappingUpdatesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListNetworkMigrationMappingUpdatesRequest,
-  ) => stream.Stream<
-    ListNetworkMigrationMappingUpdatesResponse,
-    ListNetworkMigrationMappingUpdatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListNetworkMigrationMappingUpdatesRequest,
-  ) => stream.Stream<
-    NetworkMigrationMappingUpdateJobDetails,
-    ListNetworkMigrationMappingUpdatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  NetworkMigrationMappingUpdateJobDetails
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListNetworkMigrationMappingUpdatesRequest,
   output: ListNetworkMigrationMappingUpdatesResponse,
   errors: [
@@ -7583,27 +7218,13 @@ export type ListSourceServerActionsError =
 /**
  * List source server post migration custom actions.
  */
-export const listSourceServerActions: API.OperationMethod<
+export const listSourceServerActions: API.PaginatedOperationMethod<
   ListSourceServerActionsRequest,
   ListSourceServerActionsResponse,
   ListSourceServerActionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSourceServerActionsRequest,
-  ) => stream.Stream<
-    ListSourceServerActionsResponse,
-    ListSourceServerActionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSourceServerActionsRequest,
-  ) => stream.Stream<
-    SourceServerActionDocument,
-    ListSourceServerActionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  SourceServerActionDocument
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSourceServerActionsRequest,
   output: ListSourceServerActionsResponse,
   errors: [ResourceNotFoundException, UninitializedAccountException],
@@ -7655,27 +7276,13 @@ export type ListTemplateActionsError =
 /**
  * List template post migration custom actions.
  */
-export const listTemplateActions: API.OperationMethod<
+export const listTemplateActions: API.PaginatedOperationMethod<
   ListTemplateActionsRequest,
   ListTemplateActionsResponse,
   ListTemplateActionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTemplateActionsRequest,
-  ) => stream.Stream<
-    ListTemplateActionsResponse,
-    ListTemplateActionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTemplateActionsRequest,
-  ) => stream.Stream<
-    TemplateActionDocument,
-    ListTemplateActionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  TemplateActionDocument
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTemplateActionsRequest,
   output: ListTemplateActionsResponse,
   errors: [ResourceNotFoundException, UninitializedAccountException],
@@ -7694,27 +7301,13 @@ export type ListWavesError = UninitializedAccountException | CommonErrors;
 /**
  * Retrieves all waves or multiple waves by ID.
  */
-export const listWaves: API.OperationMethod<
+export const listWaves: API.PaginatedOperationMethod<
   ListWavesRequest,
   ListWavesResponse,
   ListWavesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListWavesRequest,
-  ) => stream.Stream<
-    ListWavesResponse,
-    ListWavesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListWavesRequest,
-  ) => stream.Stream<
-    Wave,
-    ListWavesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Wave
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListWavesRequest,
   output: ListWavesResponse,
   errors: [UninitializedAccountException],

@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -3945,27 +3944,13 @@ export type GetChannelScheduleError =
 /**
  * Retrieves information about your channel's schedule.
  */
-export const getChannelSchedule: API.OperationMethod<
+export const getChannelSchedule: API.PaginatedOperationMethod<
   GetChannelScheduleRequest,
   GetChannelScheduleResponse,
   GetChannelScheduleError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetChannelScheduleRequest,
-  ) => stream.Stream<
-    GetChannelScheduleResponse,
-    GetChannelScheduleError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetChannelScheduleRequest,
-  ) => stream.Stream<
-    ScheduleEntry,
-    GetChannelScheduleError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ScheduleEntry
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetChannelScheduleRequest,
   output: GetChannelScheduleResponse,
   errors: [BadRequestException, ChannelNotFound],
@@ -4043,27 +4028,13 @@ export type ListAlertsError = BadRequestException | CommonErrors;
 /**
  * Lists the alerts that are associated with a MediaTailor channel assembly resource.
  */
-export const listAlerts: API.OperationMethod<
+export const listAlerts: API.PaginatedOperationMethod<
   ListAlertsRequest,
   ListAlertsResponse,
   ListAlertsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAlertsRequest,
-  ) => stream.Stream<
-    ListAlertsResponse,
-    ListAlertsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAlertsRequest,
-  ) => stream.Stream<
-    Alert,
-    ListAlertsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Alert
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAlertsRequest,
   output: ListAlertsResponse,
   errors: [BadRequestException],
@@ -4082,27 +4053,13 @@ export type ListChannelsError = CommonErrors;
 /**
  * Retrieves information about the channels that are associated with the current AWS account.
  */
-export const listChannels: API.OperationMethod<
+export const listChannels: API.PaginatedOperationMethod<
   ListChannelsRequest,
   ListChannelsResponse,
   ListChannelsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListChannelsRequest,
-  ) => stream.Stream<
-    ListChannelsResponse,
-    ListChannelsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListChannelsRequest,
-  ) => stream.Stream<
-    Channel,
-    ListChannelsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Channel
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListChannelsRequest,
   output: ListChannelsResponse,
   errors: [],
@@ -4121,27 +4078,13 @@ export type ListFunctionsError = CommonErrors;
 /**
  * Retrieves all functions associated with your AWS account in the current Region. For more information about functions, see Working with functions in the *MediaTailor User Guide*.
  */
-export const listFunctions: API.OperationMethod<
+export const listFunctions: API.PaginatedOperationMethod<
   ListFunctionsRequest,
   ListFunctionsResponse,
   ListFunctionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListFunctionsRequest,
-  ) => stream.Stream<
-    ListFunctionsResponse,
-    ListFunctionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListFunctionsRequest,
-  ) => stream.Stream<
-    Function,
-    ListFunctionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Function
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFunctionsRequest,
   output: ListFunctionsResponse,
   errors: [],
@@ -4160,27 +4103,13 @@ export type ListLiveSourcesError = CommonErrors;
 /**
  * Lists the live sources contained in a source location. A source represents a piece of content.
  */
-export const listLiveSources: API.OperationMethod<
+export const listLiveSources: API.PaginatedOperationMethod<
   ListLiveSourcesRequest,
   ListLiveSourcesResponse,
   ListLiveSourcesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListLiveSourcesRequest,
-  ) => stream.Stream<
-    ListLiveSourcesResponse,
-    ListLiveSourcesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListLiveSourcesRequest,
-  ) => stream.Stream<
-    LiveSource,
-    ListLiveSourcesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  LiveSource
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLiveSourcesRequest,
   output: ListLiveSourcesResponse,
   errors: [],
@@ -4199,27 +4128,13 @@ export type ListPlaybackConfigurationsError = CommonErrors;
 /**
  * Retrieves existing playback configurations. For information about MediaTailor configurations, see Working with Configurations in AWS Elemental MediaTailor.
  */
-export const listPlaybackConfigurations: API.OperationMethod<
+export const listPlaybackConfigurations: API.PaginatedOperationMethod<
   ListPlaybackConfigurationsRequest,
   ListPlaybackConfigurationsResponse,
   ListPlaybackConfigurationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPlaybackConfigurationsRequest,
-  ) => stream.Stream<
-    ListPlaybackConfigurationsResponse,
-    ListPlaybackConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPlaybackConfigurationsRequest,
-  ) => stream.Stream<
-    PlaybackConfiguration,
-    ListPlaybackConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  PlaybackConfiguration
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPlaybackConfigurationsRequest,
   output: ListPlaybackConfigurationsResponse,
   errors: [],
@@ -4241,27 +4156,13 @@ export type ListPrefetchSchedulesError =
 /**
  * Lists the prefetch schedules for a playback configuration.
  */
-export const listPrefetchSchedules: API.OperationMethod<
+export const listPrefetchSchedules: API.PaginatedOperationMethod<
   ListPrefetchSchedulesRequest,
   ListPrefetchSchedulesResponse,
   ListPrefetchSchedulesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPrefetchSchedulesRequest,
-  ) => stream.Stream<
-    ListPrefetchSchedulesResponse,
-    ListPrefetchSchedulesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPrefetchSchedulesRequest,
-  ) => stream.Stream<
-    PrefetchSchedule,
-    ListPrefetchSchedulesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  PrefetchSchedule
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPrefetchSchedulesRequest,
   output: ListPrefetchSchedulesResponse,
   errors: [BadRequestException, PlaybackConfigurationNotFound],
@@ -4280,27 +4181,13 @@ export type ListSourceLocationsError = CommonErrors;
 /**
  * Lists the source locations for a channel. A source location defines the host server URL, and contains a list of sources.
  */
-export const listSourceLocations: API.OperationMethod<
+export const listSourceLocations: API.PaginatedOperationMethod<
   ListSourceLocationsRequest,
   ListSourceLocationsResponse,
   ListSourceLocationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSourceLocationsRequest,
-  ) => stream.Stream<
-    ListSourceLocationsResponse,
-    ListSourceLocationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSourceLocationsRequest,
-  ) => stream.Stream<
-    SourceLocation,
-    ListSourceLocationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  SourceLocation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSourceLocationsRequest,
   output: ListSourceLocationsResponse,
   errors: [],
@@ -4337,27 +4224,13 @@ export type ListVodSourcesError = CommonErrors;
 /**
  * Lists the VOD sources contained in a source location. A source represents a piece of content.
  */
-export const listVodSources: API.OperationMethod<
+export const listVodSources: API.PaginatedOperationMethod<
   ListVodSourcesRequest,
   ListVodSourcesResponse,
   ListVodSourcesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListVodSourcesRequest,
-  ) => stream.Stream<
-    ListVodSourcesResponse,
-    ListVodSourcesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListVodSourcesRequest,
-  ) => stream.Stream<
-    VodSource,
-    ListVodSourcesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  VodSource
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListVodSourcesRequest,
   output: ListVodSourcesResponse,
   errors: [],

@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -1446,27 +1445,13 @@ export type ListAccessPointsError =
 /**
  * Returns resource information for all S3 File System Access Points associated with the specified S3 File System.
  */
-export const listAccessPoints: API.OperationMethod<
+export const listAccessPoints: API.PaginatedOperationMethod<
   ListAccessPointsRequest,
   ListAccessPointsResponse,
   ListAccessPointsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAccessPointsRequest,
-  ) => stream.Stream<
-    ListAccessPointsResponse,
-    ListAccessPointsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAccessPointsRequest,
-  ) => stream.Stream<
-    ListAccessPointsDescription,
-    ListAccessPointsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ListAccessPointsDescription
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccessPointsRequest,
   output: ListAccessPointsResponse,
   errors: [
@@ -1492,27 +1477,13 @@ export type ListFileSystemsError =
 /**
  * Returns a list of all S3 File Systems owned by the account with optional filtering by bucket.
  */
-export const listFileSystems: API.OperationMethod<
+export const listFileSystems: API.PaginatedOperationMethod<
   ListFileSystemsRequest,
   ListFileSystemsResponse,
   ListFileSystemsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListFileSystemsRequest,
-  ) => stream.Stream<
-    ListFileSystemsResponse,
-    ListFileSystemsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListFileSystemsRequest,
-  ) => stream.Stream<
-    ListFileSystemsDescription,
-    ListFileSystemsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ListFileSystemsDescription
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFileSystemsRequest,
   output: ListFileSystemsResponse,
   errors: [InternalServerException, ValidationException],
@@ -1535,27 +1506,13 @@ export type ListMountTargetsError =
 /**
  * Returns resource information for all mount targets with optional filtering by file system, access point, and VPC.
  */
-export const listMountTargets: API.OperationMethod<
+export const listMountTargets: API.PaginatedOperationMethod<
   ListMountTargetsRequest,
   ListMountTargetsResponse,
   ListMountTargetsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListMountTargetsRequest,
-  ) => stream.Stream<
-    ListMountTargetsResponse,
-    ListMountTargetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListMountTargetsRequest,
-  ) => stream.Stream<
-    ListMountTargetsDescription,
-    ListMountTargetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ListMountTargetsDescription
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMountTargetsRequest,
   output: ListMountTargetsResponse,
   errors: [
@@ -1582,27 +1539,13 @@ export type ListTagsForResourceError =
 /**
  * Lists all tags for S3 Files resources.
  */
-export const listTagsForResource: API.OperationMethod<
+export const listTagsForResource: API.PaginatedOperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTagsForResourceRequest,
-  ) => stream.Stream<
-    ListTagsForResourceResponse,
-    ListTagsForResourceError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTagsForResourceRequest,
-  ) => stream.Stream<
-    Tag,
-    ListTagsForResourceError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Tag
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [

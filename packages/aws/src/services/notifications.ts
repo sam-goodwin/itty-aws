@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -2912,27 +2911,13 @@ export type ListChannelsError =
 /**
  * Returns a list of Channels for a `NotificationConfiguration`.
  */
-export const listChannels: API.OperationMethod<
+export const listChannels: API.PaginatedOperationMethod<
   ListChannelsRequest,
   ListChannelsResponse,
   ListChannelsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListChannelsRequest,
-  ) => stream.Stream<
-    ListChannelsResponse,
-    ListChannelsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListChannelsRequest,
-  ) => stream.Stream<
-    ChannelArn,
-    ListChannelsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  ChannelArn
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListChannelsRequest,
   output: ListChannelsResponse,
   errors: [
@@ -2963,27 +2948,13 @@ export type ListEventRulesError =
 /**
  * Returns a list of `EventRules` according to specified filters, in reverse chronological order (newest first).
  */
-export const listEventRules: API.OperationMethod<
+export const listEventRules: API.PaginatedOperationMethod<
   ListEventRulesRequest,
   ListEventRulesResponse,
   ListEventRulesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEventRulesRequest,
-  ) => stream.Stream<
-    ListEventRulesResponse,
-    ListEventRulesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEventRulesRequest,
-  ) => stream.Stream<
-    EventRuleStructure,
-    ListEventRulesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  EventRuleStructure
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEventRulesRequest,
   output: ListEventRulesResponse,
   errors: [
@@ -3014,27 +2985,13 @@ export type ListManagedNotificationChannelAssociationsError =
 /**
  * Returns a list of Account contacts and Channels associated with a `ManagedNotificationConfiguration`, in paginated format.
  */
-export const listManagedNotificationChannelAssociations: API.OperationMethod<
+export const listManagedNotificationChannelAssociations: API.PaginatedOperationMethod<
   ListManagedNotificationChannelAssociationsRequest,
   ListManagedNotificationChannelAssociationsResponse,
   ListManagedNotificationChannelAssociationsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListManagedNotificationChannelAssociationsRequest,
-  ) => stream.Stream<
-    ListManagedNotificationChannelAssociationsResponse,
-    ListManagedNotificationChannelAssociationsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListManagedNotificationChannelAssociationsRequest,
-  ) => stream.Stream<
-    ManagedNotificationChannelAssociationSummary,
-    ListManagedNotificationChannelAssociationsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  ManagedNotificationChannelAssociationSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListManagedNotificationChannelAssociationsRequest,
   output: ListManagedNotificationChannelAssociationsResponse,
   errors: [
@@ -3065,27 +3022,13 @@ export type ListManagedNotificationChildEventsError =
 /**
  * Returns a list of `ManagedNotificationChildEvents` for a specified aggregate `ManagedNotificationEvent`, ordered by creation time in reverse chronological order (newest first).
  */
-export const listManagedNotificationChildEvents: API.OperationMethod<
+export const listManagedNotificationChildEvents: API.PaginatedOperationMethod<
   ListManagedNotificationChildEventsRequest,
   ListManagedNotificationChildEventsResponse,
   ListManagedNotificationChildEventsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListManagedNotificationChildEventsRequest,
-  ) => stream.Stream<
-    ListManagedNotificationChildEventsResponse,
-    ListManagedNotificationChildEventsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListManagedNotificationChildEventsRequest,
-  ) => stream.Stream<
-    ManagedNotificationChildEventOverview,
-    ListManagedNotificationChildEventsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  ManagedNotificationChildEventOverview
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListManagedNotificationChildEventsRequest,
   output: ListManagedNotificationChildEventsResponse,
   errors: [
@@ -3115,27 +3058,13 @@ export type ListManagedNotificationConfigurationsError =
 /**
  * Returns a list of Managed Notification Configurations according to specified filters, ordered by creation time in reverse chronological order (newest first).
  */
-export const listManagedNotificationConfigurations: API.OperationMethod<
+export const listManagedNotificationConfigurations: API.PaginatedOperationMethod<
   ListManagedNotificationConfigurationsRequest,
   ListManagedNotificationConfigurationsResponse,
   ListManagedNotificationConfigurationsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListManagedNotificationConfigurationsRequest,
-  ) => stream.Stream<
-    ListManagedNotificationConfigurationsResponse,
-    ListManagedNotificationConfigurationsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListManagedNotificationConfigurationsRequest,
-  ) => stream.Stream<
-    ManagedNotificationConfigurationStructure,
-    ListManagedNotificationConfigurationsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  ManagedNotificationConfigurationStructure
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListManagedNotificationConfigurationsRequest,
   output: ListManagedNotificationConfigurationsResponse,
   errors: [
@@ -3164,27 +3093,13 @@ export type ListManagedNotificationEventsError =
 /**
  * Returns a list of Managed Notification Events according to specified filters, ordered by creation time in reverse chronological order (newest first).
  */
-export const listManagedNotificationEvents: API.OperationMethod<
+export const listManagedNotificationEvents: API.PaginatedOperationMethod<
   ListManagedNotificationEventsRequest,
   ListManagedNotificationEventsResponse,
   ListManagedNotificationEventsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListManagedNotificationEventsRequest,
-  ) => stream.Stream<
-    ListManagedNotificationEventsResponse,
-    ListManagedNotificationEventsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListManagedNotificationEventsRequest,
-  ) => stream.Stream<
-    ManagedNotificationEventOverview,
-    ListManagedNotificationEventsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  ManagedNotificationEventOverview
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListManagedNotificationEventsRequest,
   output: ListManagedNotificationEventsResponse,
   errors: [
@@ -3214,27 +3129,13 @@ export type ListMemberAccountsError =
 /**
  * Returns a list of member accounts associated with a notification configuration.
  */
-export const listMemberAccounts: API.OperationMethod<
+export const listMemberAccounts: API.PaginatedOperationMethod<
   ListMemberAccountsRequest,
   ListMemberAccountsResponse,
   ListMemberAccountsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListMemberAccountsRequest,
-  ) => stream.Stream<
-    ListMemberAccountsResponse,
-    ListMemberAccountsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListMemberAccountsRequest,
-  ) => stream.Stream<
-    MemberAccount,
-    ListMemberAccountsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  MemberAccount
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMemberAccountsRequest,
   output: ListMemberAccountsResponse,
   errors: [
@@ -3264,27 +3165,13 @@ export type ListNotificationConfigurationsError =
 /**
  * Returns a list of abbreviated `NotificationConfigurations` according to specified filters, in reverse chronological order (newest first).
  */
-export const listNotificationConfigurations: API.OperationMethod<
+export const listNotificationConfigurations: API.PaginatedOperationMethod<
   ListNotificationConfigurationsRequest,
   ListNotificationConfigurationsResponse,
   ListNotificationConfigurationsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListNotificationConfigurationsRequest,
-  ) => stream.Stream<
-    ListNotificationConfigurationsResponse,
-    ListNotificationConfigurationsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListNotificationConfigurationsRequest,
-  ) => stream.Stream<
-    NotificationConfigurationStructure,
-    ListNotificationConfigurationsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  NotificationConfigurationStructure
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListNotificationConfigurationsRequest,
   output: ListNotificationConfigurationsResponse,
   errors: [
@@ -3315,27 +3202,13 @@ export type ListNotificationEventsError =
  *
  * User Notifications stores notifications in the individual Regions you register as notification hubs and the Region of the source event rule. ListNotificationEvents only returns notifications stored in the same Region in which the action is called. User Notifications doesn't backfill notifications to new Regions selected as notification hubs. For this reason, we recommend that you make calls in your oldest registered notification hub. For more information, see Notification hubs in the *Amazon Web Services User Notifications User Guide*.
  */
-export const listNotificationEvents: API.OperationMethod<
+export const listNotificationEvents: API.PaginatedOperationMethod<
   ListNotificationEventsRequest,
   ListNotificationEventsResponse,
   ListNotificationEventsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListNotificationEventsRequest,
-  ) => stream.Stream<
-    ListNotificationEventsResponse,
-    ListNotificationEventsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListNotificationEventsRequest,
-  ) => stream.Stream<
-    NotificationEventOverview,
-    ListNotificationEventsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  NotificationEventOverview
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListNotificationEventsRequest,
   output: ListNotificationEventsResponse,
   errors: [
@@ -3364,27 +3237,13 @@ export type ListNotificationHubsError =
 /**
  * Returns a list of `NotificationHubs`.
  */
-export const listNotificationHubs: API.OperationMethod<
+export const listNotificationHubs: API.PaginatedOperationMethod<
   ListNotificationHubsRequest,
   ListNotificationHubsResponse,
   ListNotificationHubsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListNotificationHubsRequest,
-  ) => stream.Stream<
-    ListNotificationHubsResponse,
-    ListNotificationHubsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListNotificationHubsRequest,
-  ) => stream.Stream<
-    NotificationHubOverview,
-    ListNotificationHubsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  NotificationHubOverview
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListNotificationHubsRequest,
   output: ListNotificationHubsResponse,
   errors: [
@@ -3414,27 +3273,13 @@ export type ListOrganizationalUnitsError =
 /**
  * Returns a list of organizational units associated with a notification configuration.
  */
-export const listOrganizationalUnits: API.OperationMethod<
+export const listOrganizationalUnits: API.PaginatedOperationMethod<
   ListOrganizationalUnitsRequest,
   ListOrganizationalUnitsResponse,
   ListOrganizationalUnitsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListOrganizationalUnitsRequest,
-  ) => stream.Stream<
-    ListOrganizationalUnitsResponse,
-    ListOrganizationalUnitsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListOrganizationalUnitsRequest,
-  ) => stream.Stream<
-    OrganizationalUnitId,
-    ListOrganizationalUnitsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  OrganizationalUnitId
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationalUnitsRequest,
   output: ListOrganizationalUnitsResponse,
   errors: [

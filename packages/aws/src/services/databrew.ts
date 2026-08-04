@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -3381,27 +3380,13 @@ export type ListDatasetsError =
 /**
  * Lists all of the DataBrew datasets.
  */
-export const listDatasets: API.OperationMethod<
+export const listDatasets: API.PaginatedOperationMethod<
   ListDatasetsRequest,
   ListDatasetsResponse,
   ListDatasetsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDatasetsRequest,
-  ) => stream.Stream<
-    ListDatasetsResponse,
-    ListDatasetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDatasetsRequest,
-  ) => stream.Stream<
-    Dataset,
-    ListDatasetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Dataset
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDatasetsRequest,
   output: ListDatasetsResponse,
   errors: [ValidationException, TooManyRequestsException],
@@ -3424,27 +3409,13 @@ export type ListJobRunsError =
 /**
  * Lists all of the previous runs of a particular DataBrew job.
  */
-export const listJobRuns: API.OperationMethod<
+export const listJobRuns: API.PaginatedOperationMethod<
   ListJobRunsRequest,
   ListJobRunsResponse,
   ListJobRunsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListJobRunsRequest,
-  ) => stream.Stream<
-    ListJobRunsResponse,
-    ListJobRunsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListJobRunsRequest,
-  ) => stream.Stream<
-    JobRun,
-    ListJobRunsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  JobRun
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListJobRunsRequest,
   output: ListJobRunsResponse,
   errors: [
@@ -3470,27 +3441,13 @@ export type ListJobsError =
 /**
  * Lists all of the DataBrew jobs that are defined.
  */
-export const listJobs: API.OperationMethod<
+export const listJobs: API.PaginatedOperationMethod<
   ListJobsRequest,
   ListJobsResponse,
   ListJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListJobsRequest,
-  ) => stream.Stream<
-    ListJobsResponse,
-    ListJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListJobsRequest,
-  ) => stream.Stream<
-    Job,
-    ListJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Job
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListJobsRequest,
   output: ListJobsResponse,
   errors: [ValidationException, TooManyRequestsException],
@@ -3512,27 +3469,13 @@ export type ListProjectsError =
 /**
  * Lists all of the DataBrew projects that are defined.
  */
-export const listProjects: API.OperationMethod<
+export const listProjects: API.PaginatedOperationMethod<
   ListProjectsRequest,
   ListProjectsResponse,
   ListProjectsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListProjectsRequest,
-  ) => stream.Stream<
-    ListProjectsResponse,
-    ListProjectsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListProjectsRequest,
-  ) => stream.Stream<
-    Project,
-    ListProjectsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Project
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsRequest,
   output: ListProjectsResponse,
   errors: [ValidationException, TooManyRequestsException],
@@ -3554,27 +3497,13 @@ export type ListRecipesError =
 /**
  * Lists all of the DataBrew recipes that are defined.
  */
-export const listRecipes: API.OperationMethod<
+export const listRecipes: API.PaginatedOperationMethod<
   ListRecipesRequest,
   ListRecipesResponse,
   ListRecipesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRecipesRequest,
-  ) => stream.Stream<
-    ListRecipesResponse,
-    ListRecipesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRecipesRequest,
-  ) => stream.Stream<
-    Recipe,
-    ListRecipesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Recipe
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRecipesRequest,
   output: ListRecipesResponse,
   errors: [ValidationException, TooManyRequestsException],
@@ -3598,27 +3527,13 @@ export type ListRecipeVersionsError =
  * Lists the versions of a particular DataBrew recipe, except for
  * `LATEST_WORKING`.
  */
-export const listRecipeVersions: API.OperationMethod<
+export const listRecipeVersions: API.PaginatedOperationMethod<
   ListRecipeVersionsRequest,
   ListRecipeVersionsResponse,
   ListRecipeVersionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRecipeVersionsRequest,
-  ) => stream.Stream<
-    ListRecipeVersionsResponse,
-    ListRecipeVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRecipeVersionsRequest,
-  ) => stream.Stream<
-    Recipe,
-    ListRecipeVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Recipe
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRecipeVersionsRequest,
   output: ListRecipeVersionsResponse,
   errors: [
@@ -3646,27 +3561,13 @@ export type ListRulesetsError =
  * List all rulesets available in the current account or rulesets associated
  * with a specific resource (dataset).
  */
-export const listRulesets: API.OperationMethod<
+export const listRulesets: API.PaginatedOperationMethod<
   ListRulesetsRequest,
   ListRulesetsResponse,
   ListRulesetsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRulesetsRequest,
-  ) => stream.Stream<
-    ListRulesetsResponse,
-    ListRulesetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRulesetsRequest,
-  ) => stream.Stream<
-    RulesetItem,
-    ListRulesetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  RulesetItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRulesetsRequest,
   output: ListRulesetsResponse,
   errors: [
@@ -3692,27 +3593,13 @@ export type ListSchedulesError =
 /**
  * Lists the DataBrew schedules that are defined.
  */
-export const listSchedules: API.OperationMethod<
+export const listSchedules: API.PaginatedOperationMethod<
   ListSchedulesRequest,
   ListSchedulesResponse,
   ListSchedulesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSchedulesRequest,
-  ) => stream.Stream<
-    ListSchedulesResponse,
-    ListSchedulesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSchedulesRequest,
-  ) => stream.Stream<
-    Schedule,
-    ListSchedulesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Schedule
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSchedulesRequest,
   output: ListSchedulesResponse,
   errors: [ValidationException, TooManyRequestsException],

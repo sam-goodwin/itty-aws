@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -6814,27 +6813,13 @@ export type GetSnapshotsError =
  * Retrieves search metrics data. The data provides a snapshot of how your users interact
  * with your search application and how effective the application is.
  */
-export const getSnapshots: API.OperationMethod<
+export const getSnapshots: API.PaginatedOperationMethod<
   GetSnapshotsRequest,
   GetSnapshotsResponse,
   GetSnapshotsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetSnapshotsRequest,
-  ) => stream.Stream<
-    GetSnapshotsResponse,
-    GetSnapshotsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetSnapshotsRequest,
-  ) => stream.Stream<
-    unknown,
-    GetSnapshotsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetSnapshotsRequest,
   output: GetSnapshotsResponse,
   errors: [
@@ -6866,27 +6851,13 @@ export type ListAccessControlConfigurationsError =
  * where search results are filtered based on the user or their group access to
  * documents.
  */
-export const listAccessControlConfigurations: API.OperationMethod<
+export const listAccessControlConfigurations: API.PaginatedOperationMethod<
   ListAccessControlConfigurationsRequest,
   ListAccessControlConfigurationsResponse,
   ListAccessControlConfigurationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAccessControlConfigurationsRequest,
-  ) => stream.Stream<
-    ListAccessControlConfigurationsResponse,
-    ListAccessControlConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAccessControlConfigurationsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListAccessControlConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccessControlConfigurationsRequest,
   output: ListAccessControlConfigurationsResponse,
   errors: [
@@ -6916,27 +6887,13 @@ export type ListDataSourcesError =
 /**
  * Lists the data source connectors that you have created.
  */
-export const listDataSources: API.OperationMethod<
+export const listDataSources: API.PaginatedOperationMethod<
   ListDataSourcesRequest,
   ListDataSourcesResponse,
   ListDataSourcesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDataSourcesRequest,
-  ) => stream.Stream<
-    ListDataSourcesResponse,
-    ListDataSourcesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDataSourcesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListDataSourcesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDataSourcesRequest,
   output: ListDataSourcesResponse,
   errors: [
@@ -6967,27 +6924,13 @@ export type ListDataSourceSyncJobsError =
 /**
  * Gets statistics about synchronizing a data source connector.
  */
-export const listDataSourceSyncJobs: API.OperationMethod<
+export const listDataSourceSyncJobs: API.PaginatedOperationMethod<
   ListDataSourceSyncJobsRequest,
   ListDataSourceSyncJobsResponse,
   ListDataSourceSyncJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDataSourceSyncJobsRequest,
-  ) => stream.Stream<
-    ListDataSourceSyncJobsResponse,
-    ListDataSourceSyncJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDataSourceSyncJobsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListDataSourceSyncJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDataSourceSyncJobsRequest,
   output: ListDataSourceSyncJobsResponse,
   errors: [
@@ -7019,27 +6962,13 @@ export type ListEntityPersonasError =
  * Lists specific permissions of users and groups with access to your
  * Amazon Kendra experience.
  */
-export const listEntityPersonas: API.OperationMethod<
+export const listEntityPersonas: API.PaginatedOperationMethod<
   ListEntityPersonasRequest,
   ListEntityPersonasResponse,
   ListEntityPersonasError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEntityPersonasRequest,
-  ) => stream.Stream<
-    ListEntityPersonasResponse,
-    ListEntityPersonasError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEntityPersonasRequest,
-  ) => stream.Stream<
-    unknown,
-    ListEntityPersonasError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEntityPersonasRequest,
   output: ListEntityPersonasResponse,
   errors: [
@@ -7073,27 +7002,13 @@ export type ListExperienceEntitiesError =
  * application experience, see Building
  * a search experience with no code.
  */
-export const listExperienceEntities: API.OperationMethod<
+export const listExperienceEntities: API.PaginatedOperationMethod<
   ListExperienceEntitiesRequest,
   ListExperienceEntitiesResponse,
   ListExperienceEntitiesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListExperienceEntitiesRequest,
-  ) => stream.Stream<
-    ListExperienceEntitiesResponse,
-    ListExperienceEntitiesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListExperienceEntitiesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListExperienceEntitiesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListExperienceEntitiesRequest,
   output: ListExperienceEntitiesResponse,
   errors: [
@@ -7122,27 +7037,13 @@ export type ListExperiencesError =
  * experience, see Building a
  * search experience with no code.
  */
-export const listExperiences: API.OperationMethod<
+export const listExperiences: API.PaginatedOperationMethod<
   ListExperiencesRequest,
   ListExperiencesResponse,
   ListExperiencesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListExperiencesRequest,
-  ) => stream.Stream<
-    ListExperiencesResponse,
-    ListExperiencesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListExperiencesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListExperiencesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListExperiencesRequest,
   output: ListExperiencesResponse,
   errors: [
@@ -7172,27 +7073,13 @@ export type ListFaqsError =
 /**
  * Gets a list of FAQs associated with an index.
  */
-export const listFaqs: API.OperationMethod<
+export const listFaqs: API.PaginatedOperationMethod<
   ListFaqsRequest,
   ListFaqsResponse,
   ListFaqsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListFaqsRequest,
-  ) => stream.Stream<
-    ListFaqsResponse,
-    ListFaqsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListFaqsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListFaqsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFaqsRequest,
   output: ListFaqsResponse,
   errors: [
@@ -7258,27 +7145,13 @@ export type ListGroupsOlderThanOrderingIdError =
  *
  * `ListGroupsOlderThanOrderingId` is currently not supported in the Amazon Web Services GovCloud (US-West) region.
  */
-export const listGroupsOlderThanOrderingId: API.OperationMethod<
+export const listGroupsOlderThanOrderingId: API.PaginatedOperationMethod<
   ListGroupsOlderThanOrderingIdRequest,
   ListGroupsOlderThanOrderingIdResponse,
   ListGroupsOlderThanOrderingIdError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListGroupsOlderThanOrderingIdRequest,
-  ) => stream.Stream<
-    ListGroupsOlderThanOrderingIdResponse,
-    ListGroupsOlderThanOrderingIdError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListGroupsOlderThanOrderingIdRequest,
-  ) => stream.Stream<
-    unknown,
-    ListGroupsOlderThanOrderingIdError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListGroupsOlderThanOrderingIdRequest,
   output: ListGroupsOlderThanOrderingIdResponse,
   errors: [
@@ -7308,27 +7181,13 @@ export type ListIndicesError =
 /**
  * Lists the Amazon Kendra indexes that you created.
  */
-export const listIndices: API.OperationMethod<
+export const listIndices: API.PaginatedOperationMethod<
   ListIndicesRequest,
   ListIndicesResponse,
   ListIndicesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListIndicesRequest,
-  ) => stream.Stream<
-    ListIndicesResponse,
-    ListIndicesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListIndicesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListIndicesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListIndicesRequest,
   output: ListIndicesResponse,
   errors: [
@@ -7364,27 +7223,13 @@ export type ListQuerySuggestionsBlockListsError =
  * `ListQuerySuggestionsBlockLists` is currently not supported in the
  * Amazon Web Services GovCloud (US-West) region.
  */
-export const listQuerySuggestionsBlockLists: API.OperationMethod<
+export const listQuerySuggestionsBlockLists: API.PaginatedOperationMethod<
   ListQuerySuggestionsBlockListsRequest,
   ListQuerySuggestionsBlockListsResponse,
   ListQuerySuggestionsBlockListsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListQuerySuggestionsBlockListsRequest,
-  ) => stream.Stream<
-    ListQuerySuggestionsBlockListsResponse,
-    ListQuerySuggestionsBlockListsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListQuerySuggestionsBlockListsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListQuerySuggestionsBlockListsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListQuerySuggestionsBlockListsRequest,
   output: ListQuerySuggestionsBlockListsResponse,
   errors: [
@@ -7447,27 +7292,13 @@ export type ListThesauriError =
 /**
  * Lists the thesauri for an index.
  */
-export const listThesauri: API.OperationMethod<
+export const listThesauri: API.PaginatedOperationMethod<
   ListThesauriRequest,
   ListThesauriResponse,
   ListThesauriError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListThesauriRequest,
-  ) => stream.Stream<
-    ListThesauriResponse,
-    ListThesauriError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListThesauriRequest,
-  ) => stream.Stream<
-    unknown,
-    ListThesauriError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListThesauriRequest,
   output: ListThesauriResponse,
   errors: [

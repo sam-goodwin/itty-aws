@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -9500,27 +9499,13 @@ export type ListAIAgentsError =
 /**
  * Lists AI Agents.
  */
-export const listAIAgents: API.OperationMethod<
+export const listAIAgents: API.PaginatedOperationMethod<
   ListAIAgentsRequest,
   ListAIAgentsResponse,
   ListAIAgentsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAIAgentsRequest,
-  ) => stream.Stream<
-    ListAIAgentsResponse,
-    ListAIAgentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAIAgentsRequest,
-  ) => stream.Stream<
-    AIAgentSummary,
-    ListAIAgentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AIAgentSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAIAgentsRequest,
   output: ListAIAgentsResponse,
   errors: [
@@ -9551,27 +9536,13 @@ export type ListAIAgentVersionsError =
 /**
  * List AI Agent versions.
  */
-export const listAIAgentVersions: API.OperationMethod<
+export const listAIAgentVersions: API.PaginatedOperationMethod<
   ListAIAgentVersionsRequest,
   ListAIAgentVersionsResponse,
   ListAIAgentVersionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAIAgentVersionsRequest,
-  ) => stream.Stream<
-    ListAIAgentVersionsResponse,
-    ListAIAgentVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAIAgentVersionsRequest,
-  ) => stream.Stream<
-    AIAgentVersionSummary,
-    ListAIAgentVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AIAgentVersionSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAIAgentVersionsRequest,
   output: ListAIAgentVersionsResponse,
   errors: [
@@ -9602,27 +9573,13 @@ export type ListAIGuardrailsError =
 /**
  * Lists the AI Guardrails available on the Amazon Q in Connect assistant.
  */
-export const listAIGuardrails: API.OperationMethod<
+export const listAIGuardrails: API.PaginatedOperationMethod<
   ListAIGuardrailsRequest,
   ListAIGuardrailsResponse,
   ListAIGuardrailsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAIGuardrailsRequest,
-  ) => stream.Stream<
-    ListAIGuardrailsResponse,
-    ListAIGuardrailsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAIGuardrailsRequest,
-  ) => stream.Stream<
-    AIGuardrailSummary,
-    ListAIGuardrailsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AIGuardrailSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAIGuardrailsRequest,
   output: ListAIGuardrailsResponse,
   errors: [
@@ -9653,27 +9610,13 @@ export type ListAIGuardrailVersionsError =
 /**
  * Lists AI Guardrail versions.
  */
-export const listAIGuardrailVersions: API.OperationMethod<
+export const listAIGuardrailVersions: API.PaginatedOperationMethod<
   ListAIGuardrailVersionsRequest,
   ListAIGuardrailVersionsResponse,
   ListAIGuardrailVersionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAIGuardrailVersionsRequest,
-  ) => stream.Stream<
-    ListAIGuardrailVersionsResponse,
-    ListAIGuardrailVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAIGuardrailVersionsRequest,
-  ) => stream.Stream<
-    AIGuardrailVersionSummary,
-    ListAIGuardrailVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AIGuardrailVersionSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAIGuardrailVersionsRequest,
   output: ListAIGuardrailVersionsResponse,
   errors: [
@@ -9704,27 +9647,13 @@ export type ListAIPromptsError =
 /**
  * Lists the AI Prompts available on the Amazon Q in Connect assistant.
  */
-export const listAIPrompts: API.OperationMethod<
+export const listAIPrompts: API.PaginatedOperationMethod<
   ListAIPromptsRequest,
   ListAIPromptsResponse,
   ListAIPromptsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAIPromptsRequest,
-  ) => stream.Stream<
-    ListAIPromptsResponse,
-    ListAIPromptsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAIPromptsRequest,
-  ) => stream.Stream<
-    AIPromptSummary,
-    ListAIPromptsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AIPromptSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAIPromptsRequest,
   output: ListAIPromptsResponse,
   errors: [
@@ -9755,27 +9684,13 @@ export type ListAIPromptVersionsError =
 /**
  * Lists AI Prompt versions.
  */
-export const listAIPromptVersions: API.OperationMethod<
+export const listAIPromptVersions: API.PaginatedOperationMethod<
   ListAIPromptVersionsRequest,
   ListAIPromptVersionsResponse,
   ListAIPromptVersionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAIPromptVersionsRequest,
-  ) => stream.Stream<
-    ListAIPromptVersionsResponse,
-    ListAIPromptVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAIPromptVersionsRequest,
-  ) => stream.Stream<
-    AIPromptVersionSummary,
-    ListAIPromptVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AIPromptVersionSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAIPromptVersionsRequest,
   output: ListAIPromptVersionsResponse,
   errors: [
@@ -9804,27 +9719,13 @@ export type ListAssistantAssociationsError =
 /**
  * Lists information about assistant associations.
  */
-export const listAssistantAssociations: API.OperationMethod<
+export const listAssistantAssociations: API.PaginatedOperationMethod<
   ListAssistantAssociationsRequest,
   ListAssistantAssociationsResponse,
   ListAssistantAssociationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAssistantAssociationsRequest,
-  ) => stream.Stream<
-    ListAssistantAssociationsResponse,
-    ListAssistantAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAssistantAssociationsRequest,
-  ) => stream.Stream<
-    AssistantAssociationSummary,
-    ListAssistantAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AssistantAssociationSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAssistantAssociationsRequest,
   output: ListAssistantAssociationsResponse,
   errors: [
@@ -9851,27 +9752,13 @@ export type ListAssistantsError =
 /**
  * Lists information about assistants.
  */
-export const listAssistants: API.OperationMethod<
+export const listAssistants: API.PaginatedOperationMethod<
   ListAssistantsRequest,
   ListAssistantsResponse,
   ListAssistantsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAssistantsRequest,
-  ) => stream.Stream<
-    ListAssistantsResponse,
-    ListAssistantsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAssistantsRequest,
-  ) => stream.Stream<
-    AssistantSummary,
-    ListAssistantsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AssistantSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAssistantsRequest,
   output: ListAssistantsResponse,
   errors: [AccessDeniedException, UnauthorizedException, ValidationException],
@@ -9897,27 +9784,13 @@ export type ListContentAssociationsError =
  *
  * For more information about content associations--what they are and when they are used--see Integrate Amazon Q in Connect with step-by-step guides in the *Amazon Connect Administrator Guide*.
  */
-export const listContentAssociations: API.OperationMethod<
+export const listContentAssociations: API.PaginatedOperationMethod<
   ListContentAssociationsRequest,
   ListContentAssociationsResponse,
   ListContentAssociationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListContentAssociationsRequest,
-  ) => stream.Stream<
-    ListContentAssociationsResponse,
-    ListContentAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListContentAssociationsRequest,
-  ) => stream.Stream<
-    ContentAssociationSummary,
-    ListContentAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ContentAssociationSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListContentAssociationsRequest,
   output: ListContentAssociationsResponse,
   errors: [
@@ -9945,27 +9818,13 @@ export type ListContentsError =
 /**
  * Lists the content.
  */
-export const listContents: API.OperationMethod<
+export const listContents: API.PaginatedOperationMethod<
   ListContentsRequest,
   ListContentsResponse,
   ListContentsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListContentsRequest,
-  ) => stream.Stream<
-    ListContentsResponse,
-    ListContentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListContentsRequest,
-  ) => stream.Stream<
-    ContentSummary,
-    ListContentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ContentSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListContentsRequest,
   output: ListContentsResponse,
   errors: [
@@ -9991,27 +9850,13 @@ export type ListImportJobsError =
 /**
  * Lists information about import jobs.
  */
-export const listImportJobs: API.OperationMethod<
+export const listImportJobs: API.PaginatedOperationMethod<
   ListImportJobsRequest,
   ListImportJobsResponse,
   ListImportJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListImportJobsRequest,
-  ) => stream.Stream<
-    ListImportJobsResponse,
-    ListImportJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListImportJobsRequest,
-  ) => stream.Stream<
-    ImportJobSummary,
-    ListImportJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ImportJobSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListImportJobsRequest,
   output: ListImportJobsResponse,
   errors: [AccessDeniedException, ValidationException],
@@ -10033,27 +9878,13 @@ export type ListKnowledgeBasesError =
 /**
  * Lists the knowledge bases.
  */
-export const listKnowledgeBases: API.OperationMethod<
+export const listKnowledgeBases: API.PaginatedOperationMethod<
   ListKnowledgeBasesRequest,
   ListKnowledgeBasesResponse,
   ListKnowledgeBasesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListKnowledgeBasesRequest,
-  ) => stream.Stream<
-    ListKnowledgeBasesResponse,
-    ListKnowledgeBasesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListKnowledgeBasesRequest,
-  ) => stream.Stream<
-    KnowledgeBaseSummary,
-    ListKnowledgeBasesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  KnowledgeBaseSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListKnowledgeBasesRequest,
   output: ListKnowledgeBasesResponse,
   errors: [AccessDeniedException, ValidationException],
@@ -10076,27 +9907,13 @@ export type ListMessagesError =
 /**
  * Lists messages on an Amazon Q in Connect session.
  */
-export const listMessages: API.OperationMethod<
+export const listMessages: API.PaginatedOperationMethod<
   ListMessagesRequest,
   ListMessagesResponse,
   ListMessagesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListMessagesRequest,
-  ) => stream.Stream<
-    ListMessagesResponse,
-    ListMessagesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListMessagesRequest,
-  ) => stream.Stream<
-    MessageOutput,
-    ListMessagesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  MessageOutput
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMessagesRequest,
   output: ListMessagesResponse,
   errors: [
@@ -10124,27 +9941,13 @@ export type ListMessageTemplatesError =
 /**
  * Lists all the available Amazon Q in Connect message templates for the specified knowledge base.
  */
-export const listMessageTemplates: API.OperationMethod<
+export const listMessageTemplates: API.PaginatedOperationMethod<
   ListMessageTemplatesRequest,
   ListMessageTemplatesResponse,
   ListMessageTemplatesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListMessageTemplatesRequest,
-  ) => stream.Stream<
-    ListMessageTemplatesResponse,
-    ListMessageTemplatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListMessageTemplatesRequest,
-  ) => stream.Stream<
-    MessageTemplateSummary,
-    ListMessageTemplatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  MessageTemplateSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMessageTemplatesRequest,
   output: ListMessageTemplatesResponse,
   errors: [
@@ -10173,27 +9976,13 @@ export type ListMessageTemplateVersionsError =
 /**
  * Lists all the available versions for the specified Amazon Q in Connect message template.
  */
-export const listMessageTemplateVersions: API.OperationMethod<
+export const listMessageTemplateVersions: API.PaginatedOperationMethod<
   ListMessageTemplateVersionsRequest,
   ListMessageTemplateVersionsResponse,
   ListMessageTemplateVersionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListMessageTemplateVersionsRequest,
-  ) => stream.Stream<
-    ListMessageTemplateVersionsResponse,
-    ListMessageTemplateVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListMessageTemplateVersionsRequest,
-  ) => stream.Stream<
-    MessageTemplateVersionSummary,
-    ListMessageTemplateVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  MessageTemplateVersionSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMessageTemplateVersionsRequest,
   output: ListMessageTemplateVersionsResponse,
   errors: [
@@ -10224,27 +10013,13 @@ export type ListModelsError =
 /**
  * Lists the models available to an Amazon Q in Connect assistant in the assistant's Amazon Web Services Region. The available models are determined by the region of the specified assistant.
  */
-export const listModels: API.OperationMethod<
+export const listModels: API.PaginatedOperationMethod<
   ListModelsRequest,
   ListModelsResponse,
   ListModelsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListModelsRequest,
-  ) => stream.Stream<
-    ListModelsResponse,
-    ListModelsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListModelsRequest,
-  ) => stream.Stream<
-    ModelSummary,
-    ListModelsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ModelSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListModelsRequest,
   output: ListModelsResponse,
   errors: [
@@ -10274,27 +10049,13 @@ export type ListQuickResponsesError =
 /**
  * Lists information about quick response.
  */
-export const listQuickResponses: API.OperationMethod<
+export const listQuickResponses: API.PaginatedOperationMethod<
   ListQuickResponsesRequest,
   ListQuickResponsesResponse,
   ListQuickResponsesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListQuickResponsesRequest,
-  ) => stream.Stream<
-    ListQuickResponsesResponse,
-    ListQuickResponsesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListQuickResponsesRequest,
-  ) => stream.Stream<
-    QuickResponseSummary,
-    ListQuickResponsesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  QuickResponseSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListQuickResponsesRequest,
   output: ListQuickResponsesResponse,
   errors: [
@@ -10321,27 +10082,13 @@ export type ListSpansError =
 /**
  * Retrieves AI agent execution traces for a session, providing granular visibility into agent orchestration flows, LLM interactions, and tool invocations.
  */
-export const listSpans: API.OperationMethod<
+export const listSpans: API.PaginatedOperationMethod<
   ListSpansRequest,
   ListSpansResponse,
   ListSpansError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSpansRequest,
-  ) => stream.Stream<
-    ListSpansResponse,
-    ListSpansError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSpansRequest,
-  ) => stream.Stream<
-    Span,
-    ListSpansError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Span
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSpansRequest,
   output: ListSpansResponse,
   errors: [
@@ -10441,27 +10188,13 @@ export type QueryAssistantError =
  *
  * Performs a manual search against the specified assistant. To retrieve recommendations for an assistant, use GetRecommendations.
  */
-export const queryAssistant: API.OperationMethod<
+export const queryAssistant: API.PaginatedOperationMethod<
   QueryAssistantRequest,
   QueryAssistantResponse,
   QueryAssistantError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: QueryAssistantRequest,
-  ) => stream.Stream<
-    QueryAssistantResponse,
-    QueryAssistantError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: QueryAssistantRequest,
-  ) => stream.Stream<
-    ResultData,
-    QueryAssistantError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ResultData
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: QueryAssistantRequest,
   output: QueryAssistantResponse,
   errors: [
@@ -10608,27 +10341,13 @@ export type SearchContentError =
 /**
  * Searches for content in a specified knowledge base. Can be used to get a specific content resource by its name.
  */
-export const searchContent: API.OperationMethod<
+export const searchContent: API.PaginatedOperationMethod<
   SearchContentRequest,
   SearchContentResponse,
   SearchContentError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: SearchContentRequest,
-  ) => stream.Stream<
-    SearchContentResponse,
-    SearchContentError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: SearchContentRequest,
-  ) => stream.Stream<
-    ContentSummary,
-    SearchContentError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ContentSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchContentRequest,
   output: SearchContentResponse,
   errors: [
@@ -10658,27 +10377,13 @@ export type SearchMessageTemplatesError =
 /**
  * Searches for Amazon Q in Connect message templates in the specified knowledge base.
  */
-export const searchMessageTemplates: API.OperationMethod<
+export const searchMessageTemplates: API.PaginatedOperationMethod<
   SearchMessageTemplatesRequest,
   SearchMessageTemplatesResponse,
   SearchMessageTemplatesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: SearchMessageTemplatesRequest,
-  ) => stream.Stream<
-    SearchMessageTemplatesResponse,
-    SearchMessageTemplatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: SearchMessageTemplatesRequest,
-  ) => stream.Stream<
-    MessageTemplateSearchResultData,
-    SearchMessageTemplatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  MessageTemplateSearchResultData
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchMessageTemplatesRequest,
   output: SearchMessageTemplatesResponse,
   errors: [
@@ -10709,27 +10414,13 @@ export type SearchQuickResponsesError =
 /**
  * Searches existing Amazon Q in Connect quick responses in an Amazon Q in Connect knowledge base.
  */
-export const searchQuickResponses: API.OperationMethod<
+export const searchQuickResponses: API.PaginatedOperationMethod<
   SearchQuickResponsesRequest,
   SearchQuickResponsesResponse,
   SearchQuickResponsesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: SearchQuickResponsesRequest,
-  ) => stream.Stream<
-    SearchQuickResponsesResponse,
-    SearchQuickResponsesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: SearchQuickResponsesRequest,
-  ) => stream.Stream<
-    QuickResponseSearchResultData,
-    SearchQuickResponsesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  QuickResponseSearchResultData
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchQuickResponsesRequest,
   output: SearchQuickResponsesResponse,
   errors: [
@@ -10759,27 +10450,13 @@ export type SearchSessionsError =
 /**
  * Searches for sessions.
  */
-export const searchSessions: API.OperationMethod<
+export const searchSessions: API.PaginatedOperationMethod<
   SearchSessionsRequest,
   SearchSessionsResponse,
   SearchSessionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: SearchSessionsRequest,
-  ) => stream.Stream<
-    SearchSessionsResponse,
-    SearchSessionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: SearchSessionsRequest,
-  ) => stream.Stream<
-    SessionSummary,
-    SearchSessionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  SessionSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchSessionsRequest,
   output: SearchSessionsResponse,
   errors: [

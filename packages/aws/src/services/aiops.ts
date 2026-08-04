@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -749,27 +748,13 @@ export type ListInvestigationGroupsError =
 /**
  * Returns the ARN and name of each investigation group in the account.
  */
-export const listInvestigationGroups: API.OperationMethod<
+export const listInvestigationGroups: API.PaginatedOperationMethod<
   ListInvestigationGroupsInput,
   ListInvestigationGroupsOutput,
   ListInvestigationGroupsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListInvestigationGroupsInput,
-  ) => stream.Stream<
-    ListInvestigationGroupsOutput,
-    ListInvestigationGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListInvestigationGroupsInput,
-  ) => stream.Stream<
-    ListInvestigationGroupsModel,
-    ListInvestigationGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ListInvestigationGroupsModel
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListInvestigationGroupsInput,
   output: ListInvestigationGroupsOutput,
   errors: [AccessDeniedException, InternalServerException, ThrottlingException],

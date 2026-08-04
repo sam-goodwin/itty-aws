@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -1222,27 +1221,13 @@ export type ListChecksError =
 /**
  * List a filterable set of Checks. This API provides global recommendations, eliminating the need to call the API in each AWS Region.
  */
-export const listChecks: API.OperationMethod<
+export const listChecks: API.PaginatedOperationMethod<
   ListChecksRequest,
   ListChecksResponse,
   ListChecksError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListChecksRequest,
-  ) => stream.Stream<
-    ListChecksResponse,
-    ListChecksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListChecksRequest,
-  ) => stream.Stream<
-    CheckSummary,
-    ListChecksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  CheckSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListChecksRequest,
   output: ListChecksResponse,
   errors: [
@@ -1272,27 +1257,13 @@ export type ListOrganizationRecommendationAccountsError =
 /**
  * Lists the accounts that own the resources for an organization aggregate recommendation. This API only supports prioritized recommendations and provides global priority recommendations, eliminating the need to call the API in each AWS Region.
  */
-export const listOrganizationRecommendationAccounts: API.OperationMethod<
+export const listOrganizationRecommendationAccounts: API.PaginatedOperationMethod<
   ListOrganizationRecommendationAccountsRequest,
   ListOrganizationRecommendationAccountsResponse,
   ListOrganizationRecommendationAccountsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListOrganizationRecommendationAccountsRequest,
-  ) => stream.Stream<
-    ListOrganizationRecommendationAccountsResponse,
-    ListOrganizationRecommendationAccountsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListOrganizationRecommendationAccountsRequest,
-  ) => stream.Stream<
-    AccountRecommendationLifecycleSummary,
-    ListOrganizationRecommendationAccountsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AccountRecommendationLifecycleSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationRecommendationAccountsRequest,
   output: ListOrganizationRecommendationAccountsResponse,
   errors: [
@@ -1323,27 +1294,13 @@ export type ListOrganizationRecommendationResourcesError =
 /**
  * List Resources of a Recommendation within an Organization. This API only supports prioritized recommendations and provides global priority recommendations, eliminating the need to call the API in each AWS Region.
  */
-export const listOrganizationRecommendationResources: API.OperationMethod<
+export const listOrganizationRecommendationResources: API.PaginatedOperationMethod<
   ListOrganizationRecommendationResourcesRequest,
   ListOrganizationRecommendationResourcesResponse,
   ListOrganizationRecommendationResourcesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListOrganizationRecommendationResourcesRequest,
-  ) => stream.Stream<
-    ListOrganizationRecommendationResourcesResponse,
-    ListOrganizationRecommendationResourcesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListOrganizationRecommendationResourcesRequest,
-  ) => stream.Stream<
-    OrganizationRecommendationResourceSummary,
-    ListOrganizationRecommendationResourcesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  OrganizationRecommendationResourceSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationRecommendationResourcesRequest,
   output: ListOrganizationRecommendationResourcesResponse,
   errors: [
@@ -1373,27 +1330,13 @@ export type ListOrganizationRecommendationsError =
 /**
  * List a filterable set of Recommendations within an Organization. This API only supports prioritized recommendations and provides global priority recommendations, eliminating the need to call the API in each AWS Region.
  */
-export const listOrganizationRecommendations: API.OperationMethod<
+export const listOrganizationRecommendations: API.PaginatedOperationMethod<
   ListOrganizationRecommendationsRequest,
   ListOrganizationRecommendationsResponse,
   ListOrganizationRecommendationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListOrganizationRecommendationsRequest,
-  ) => stream.Stream<
-    ListOrganizationRecommendationsResponse,
-    ListOrganizationRecommendationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListOrganizationRecommendationsRequest,
-  ) => stream.Stream<
-    OrganizationRecommendationSummary,
-    ListOrganizationRecommendationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  OrganizationRecommendationSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationRecommendationsRequest,
   output: ListOrganizationRecommendationsResponse,
   errors: [
@@ -1423,27 +1366,13 @@ export type ListRecommendationResourcesError =
 /**
  * List Resources of a Recommendation. This API provides global recommendations, eliminating the need to call the API in each AWS Region.
  */
-export const listRecommendationResources: API.OperationMethod<
+export const listRecommendationResources: API.PaginatedOperationMethod<
   ListRecommendationResourcesRequest,
   ListRecommendationResourcesResponse,
   ListRecommendationResourcesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRecommendationResourcesRequest,
-  ) => stream.Stream<
-    ListRecommendationResourcesResponse,
-    ListRecommendationResourcesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRecommendationResourcesRequest,
-  ) => stream.Stream<
-    RecommendationResourceSummary,
-    ListRecommendationResourcesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  RecommendationResourceSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRecommendationResourcesRequest,
   output: ListRecommendationResourcesResponse,
   errors: [
@@ -1473,27 +1402,13 @@ export type ListRecommendationsError =
 /**
  * List a filterable set of Recommendations. This API provides global recommendations, eliminating the need to call the API in each AWS Region.
  */
-export const listRecommendations: API.OperationMethod<
+export const listRecommendations: API.PaginatedOperationMethod<
   ListRecommendationsRequest,
   ListRecommendationsResponse,
   ListRecommendationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRecommendationsRequest,
-  ) => stream.Stream<
-    ListRecommendationsResponse,
-    ListRecommendationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRecommendationsRequest,
-  ) => stream.Stream<
-    RecommendationSummary,
-    ListRecommendationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  RecommendationSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRecommendationsRequest,
   output: ListRecommendationsResponse,
   errors: [

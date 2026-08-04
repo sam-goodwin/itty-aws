@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -1217,27 +1216,13 @@ export type GetTranscriptError =
  * The Amazon Connect Participant Service APIs do not use Signature Version 4
  * authentication.
  */
-export const getTranscript: API.OperationMethod<
+export const getTranscript: API.PaginatedOperationMethod<
   GetTranscriptRequest,
   GetTranscriptResponse,
   GetTranscriptError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetTranscriptRequest,
-  ) => stream.Stream<
-    GetTranscriptResponse,
-    GetTranscriptError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetTranscriptRequest,
-  ) => stream.Stream<
-    unknown,
-    GetTranscriptError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetTranscriptRequest,
   output: GetTranscriptResponse,
   errors: [

@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -2024,27 +2023,13 @@ export type GetServerDetailsError =
 /**
  * Retrieves detailed information about a specified server.
  */
-export const getServerDetails: API.OperationMethod<
+export const getServerDetails: API.PaginatedOperationMethod<
   GetServerDetailsRequest,
   GetServerDetailsResponse,
   GetServerDetailsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetServerDetailsRequest,
-  ) => stream.Stream<
-    GetServerDetailsResponse,
-    GetServerDetailsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetServerDetailsRequest,
-  ) => stream.Stream<
-    AssociatedApplication,
-    GetServerDetailsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AssociatedApplication
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetServerDetailsRequest,
   output: GetServerDetailsResponse,
   errors: [
@@ -2104,27 +2089,13 @@ export type ListAnalyzableServersError =
 /**
  * Retrieves a list of all the servers fetched from customer vCenter using Strategy Recommendation Collector.
  */
-export const listAnalyzableServers: API.OperationMethod<
+export const listAnalyzableServers: API.PaginatedOperationMethod<
   ListAnalyzableServersRequest,
   ListAnalyzableServersResponse,
   ListAnalyzableServersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAnalyzableServersRequest,
-  ) => stream.Stream<
-    ListAnalyzableServersResponse,
-    ListAnalyzableServersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAnalyzableServersRequest,
-  ) => stream.Stream<
-    AnalyzableServerSummary,
-    ListAnalyzableServersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AnalyzableServerSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAnalyzableServersRequest,
   output: ListAnalyzableServersResponse,
   errors: [
@@ -2153,27 +2124,13 @@ export type ListApplicationComponentsError =
 /**
  * Retrieves a list of all the application components (processes).
  */
-export const listApplicationComponents: API.OperationMethod<
+export const listApplicationComponents: API.PaginatedOperationMethod<
   ListApplicationComponentsRequest,
   ListApplicationComponentsResponse,
   ListApplicationComponentsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListApplicationComponentsRequest,
-  ) => stream.Stream<
-    ListApplicationComponentsResponse,
-    ListApplicationComponentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListApplicationComponentsRequest,
-  ) => stream.Stream<
-    ApplicationComponentDetail,
-    ListApplicationComponentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ApplicationComponentDetail
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListApplicationComponentsRequest,
   output: ListApplicationComponentsResponse,
   errors: [
@@ -2202,27 +2159,13 @@ export type ListCollectorsError =
 /**
  * Retrieves a list of all the installed collectors.
  */
-export const listCollectors: API.OperationMethod<
+export const listCollectors: API.PaginatedOperationMethod<
   ListCollectorsRequest,
   ListCollectorsResponse,
   ListCollectorsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCollectorsRequest,
-  ) => stream.Stream<
-    ListCollectorsResponse,
-    ListCollectorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCollectorsRequest,
-  ) => stream.Stream<
-    Collector,
-    ListCollectorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Collector
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCollectorsRequest,
   output: ListCollectorsResponse,
   errors: [
@@ -2251,27 +2194,13 @@ export type ListImportFileTaskError =
 /**
  * Retrieves a list of all the imports performed.
  */
-export const listImportFileTask: API.OperationMethod<
+export const listImportFileTask: API.PaginatedOperationMethod<
   ListImportFileTaskRequest,
   ListImportFileTaskResponse,
   ListImportFileTaskError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListImportFileTaskRequest,
-  ) => stream.Stream<
-    ListImportFileTaskResponse,
-    ListImportFileTaskError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListImportFileTaskRequest,
-  ) => stream.Stream<
-    ImportFileTaskInformation,
-    ListImportFileTaskError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ImportFileTaskInformation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListImportFileTaskRequest,
   output: ListImportFileTaskResponse,
   errors: [
@@ -2300,27 +2229,13 @@ export type ListServersError =
 /**
  * Returns a list of all the servers.
  */
-export const listServers: API.OperationMethod<
+export const listServers: API.PaginatedOperationMethod<
   ListServersRequest,
   ListServersResponse,
   ListServersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListServersRequest,
-  ) => stream.Stream<
-    ListServersResponse,
-    ListServersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListServersRequest,
-  ) => stream.Stream<
-    ServerDetail,
-    ListServersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ServerDetail
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListServersRequest,
   output: ListServersResponse,
   errors: [

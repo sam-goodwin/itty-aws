@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -1310,27 +1309,13 @@ export type GetStreamError =
 /**
  * Returns detailed information about a specific data capture stream for an Amazon Keyspaces table. The information includes the stream's Amazon Resource Name (ARN), creation time, current status, retention period, shard composition, and associated table details. This operation helps you monitor and manage the configuration of your Amazon Keyspaces data streams.
  */
-export const getStream: API.OperationMethod<
+export const getStream: API.PaginatedOperationMethod<
   GetStreamInput,
   GetStreamOutput,
   GetStreamError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetStreamInput,
-  ) => stream.Stream<
-    GetStreamOutput,
-    GetStreamError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetStreamInput,
-  ) => stream.Stream<
-    Shard,
-    GetStreamError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Shard
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetStreamInput,
   output: GetStreamOutput,
   errors: [
@@ -1361,27 +1346,13 @@ export type ListStreamsError =
 /**
  * Returns a list of all data capture streams associated with your Amazon Keyspaces account or for a specific keyspace or table. The response includes information such as stream ARNs, table associations, creation timestamps, and current status. This operation helps you discover and manage all active data streams in your Amazon Keyspaces environment.
  */
-export const listStreams: API.OperationMethod<
+export const listStreams: API.PaginatedOperationMethod<
   ListStreamsInput,
   ListStreamsOutput,
   ListStreamsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListStreamsInput,
-  ) => stream.Stream<
-    ListStreamsOutput,
-    ListStreamsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListStreamsInput,
-  ) => stream.Stream<
-    Stream,
-    ListStreamsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Stream
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListStreamsInput,
   output: ListStreamsOutput,
   errors: [

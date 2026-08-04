@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -549,27 +548,13 @@ export type ListTunnelsError = CommonErrors;
  *
  * Requires permission to access the ListTunnels action.
  */
-export const listTunnels: API.OperationMethod<
+export const listTunnels: API.PaginatedOperationMethod<
   ListTunnelsRequest,
   ListTunnelsResponse,
   ListTunnelsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTunnelsRequest,
-  ) => stream.Stream<
-    ListTunnelsResponse,
-    ListTunnelsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTunnelsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListTunnelsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTunnelsRequest,
   output: ListTunnelsResponse,
   errors: [],

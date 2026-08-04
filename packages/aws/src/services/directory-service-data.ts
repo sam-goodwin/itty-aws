@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -1337,27 +1336,13 @@ export type ListGroupMembersError =
  * You can also specify a maximum number of return results with the `MaxResults`
  * parameter.
  */
-export const listGroupMembers: API.OperationMethod<
+export const listGroupMembers: API.PaginatedOperationMethod<
   ListGroupMembersRequest,
   ListGroupMembersResult,
   ListGroupMembersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListGroupMembersRequest,
-  ) => stream.Stream<
-    ListGroupMembersResult,
-    ListGroupMembersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListGroupMembersRequest,
-  ) => stream.Stream<
-    Member,
-    ListGroupMembersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Member
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListGroupMembersRequest,
   output: ListGroupMembersResult,
   errors: [
@@ -1397,27 +1382,13 @@ export type ListGroupsError =
  * You can also specify a maximum number of return results with the `MaxResults`
  * parameter.
  */
-export const listGroups: API.OperationMethod<
+export const listGroups: API.PaginatedOperationMethod<
   ListGroupsRequest,
   ListGroupsResult,
   ListGroupsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListGroupsRequest,
-  ) => stream.Stream<
-    ListGroupsResult,
-    ListGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListGroupsRequest,
-  ) => stream.Stream<
-    GroupSummary,
-    ListGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  GroupSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListGroupsRequest,
   output: ListGroupsResult,
   errors: [
@@ -1457,27 +1428,13 @@ export type ListGroupsForMemberError =
  * You can also specify a maximum number of return results with the `MaxResults`
  * parameter.
  */
-export const listGroupsForMember: API.OperationMethod<
+export const listGroupsForMember: API.PaginatedOperationMethod<
   ListGroupsForMemberRequest,
   ListGroupsForMemberResult,
   ListGroupsForMemberError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListGroupsForMemberRequest,
-  ) => stream.Stream<
-    ListGroupsForMemberResult,
-    ListGroupsForMemberError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListGroupsForMemberRequest,
-  ) => stream.Stream<
-    GroupSummary,
-    ListGroupsForMemberError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  GroupSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListGroupsForMemberRequest,
   output: ListGroupsForMemberResult,
   errors: [
@@ -1517,27 +1474,13 @@ export type ListUsersError =
  * You can also specify a maximum number of return results with the `MaxResults`
  * parameter.
  */
-export const listUsers: API.OperationMethod<
+export const listUsers: API.PaginatedOperationMethod<
   ListUsersRequest,
   ListUsersResult,
   ListUsersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListUsersRequest,
-  ) => stream.Stream<
-    ListUsersResult,
-    ListUsersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListUsersRequest,
-  ) => stream.Stream<
-    UserSummary,
-    ListUsersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  UserSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListUsersRequest,
   output: ListUsersResult,
   errors: [
@@ -1612,27 +1555,13 @@ export type SearchGroupsError =
  * You can also specify a maximum number of return results with the `MaxResults`
  * parameter.
  */
-export const searchGroups: API.OperationMethod<
+export const searchGroups: API.PaginatedOperationMethod<
   SearchGroupsRequest,
   SearchGroupsResult,
   SearchGroupsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: SearchGroupsRequest,
-  ) => stream.Stream<
-    SearchGroupsResult,
-    SearchGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: SearchGroupsRequest,
-  ) => stream.Stream<
-    Group,
-    SearchGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Group
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchGroupsRequest,
   output: SearchGroupsResult,
   errors: [
@@ -1673,27 +1602,13 @@ export type SearchUsersError =
  * You can also specify a maximum number of return results with the `MaxResults`
  * parameter.
  */
-export const searchUsers: API.OperationMethod<
+export const searchUsers: API.PaginatedOperationMethod<
   SearchUsersRequest,
   SearchUsersResult,
   SearchUsersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: SearchUsersRequest,
-  ) => stream.Stream<
-    SearchUsersResult,
-    SearchUsersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: SearchUsersRequest,
-  ) => stream.Stream<
-    User,
-    SearchUsersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  User
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchUsersRequest,
   output: SearchUsersResult,
   errors: [

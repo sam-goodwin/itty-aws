@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -755,27 +754,13 @@ export type ListCustomerAgreementsError =
 /**
  * List active customer-agreements applicable to calling identity.
  */
-export const listCustomerAgreements: API.OperationMethod<
+export const listCustomerAgreements: API.PaginatedOperationMethod<
   ListCustomerAgreementsRequest,
   ListCustomerAgreementsResponse,
   ListCustomerAgreementsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCustomerAgreementsRequest,
-  ) => stream.Stream<
-    ListCustomerAgreementsResponse,
-    ListCustomerAgreementsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCustomerAgreementsRequest,
-  ) => stream.Stream<
-    CustomerAgreementSummary,
-    ListCustomerAgreementsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  CustomerAgreementSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCustomerAgreementsRequest,
   output: ListCustomerAgreementsResponse,
   errors: [
@@ -806,27 +791,13 @@ export type ListReportsError =
 /**
  * List available reports.
  */
-export const listReports: API.OperationMethod<
+export const listReports: API.PaginatedOperationMethod<
   ListReportsRequest,
   ListReportsResponse,
   ListReportsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListReportsRequest,
-  ) => stream.Stream<
-    ListReportsResponse,
-    ListReportsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListReportsRequest,
-  ) => stream.Stream<
-    ReportSummary,
-    ListReportsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ReportSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListReportsRequest,
   output: ListReportsResponse,
   errors: [
@@ -859,27 +830,13 @@ export type ListReportVersionsError =
 /**
  * List available report versions for a given report.
  */
-export const listReportVersions: API.OperationMethod<
+export const listReportVersions: API.PaginatedOperationMethod<
   ListReportVersionsRequest,
   ListReportVersionsResponse,
   ListReportVersionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListReportVersionsRequest,
-  ) => stream.Stream<
-    ListReportVersionsResponse,
-    ListReportVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListReportVersionsRequest,
-  ) => stream.Stream<
-    ReportSummary,
-    ListReportVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ReportSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListReportVersionsRequest,
   output: ListReportVersionsResponse,
   errors: [

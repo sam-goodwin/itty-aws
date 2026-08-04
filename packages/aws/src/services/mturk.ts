@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -2425,27 +2424,13 @@ export type ListAssignmentsForHITError =
  * parameters
  * of the operation to control sorting and pagination.
  */
-export const listAssignmentsForHIT: API.OperationMethod<
+export const listAssignmentsForHIT: API.PaginatedOperationMethod<
   ListAssignmentsForHITRequest,
   ListAssignmentsForHITResponse,
   ListAssignmentsForHITError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAssignmentsForHITRequest,
-  ) => stream.Stream<
-    ListAssignmentsForHITResponse,
-    ListAssignmentsForHITError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAssignmentsForHITRequest,
-  ) => stream.Stream<
-    unknown,
-    ListAssignmentsForHITError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAssignmentsForHITRequest,
   output: ListAssignmentsForHITResponse,
   errors: [RequestError, ServiceFault],
@@ -2466,27 +2451,13 @@ export type ListBonusPaymentsError = RequestError | ServiceFault | CommonErrors;
  * operation retrieves the amounts of bonuses you have paid to Workers
  * for a given HIT or assignment.
  */
-export const listBonusPayments: API.OperationMethod<
+export const listBonusPayments: API.PaginatedOperationMethod<
   ListBonusPaymentsRequest,
   ListBonusPaymentsResponse,
   ListBonusPaymentsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListBonusPaymentsRequest,
-  ) => stream.Stream<
-    ListBonusPaymentsResponse,
-    ListBonusPaymentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListBonusPaymentsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListBonusPaymentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBonusPaymentsRequest,
   output: ListBonusPaymentsResponse,
   errors: [RequestError, ServiceFault],
@@ -2508,27 +2479,13 @@ export type ListHITsError = RequestError | ServiceFault | CommonErrors;
  * HITs of any status, except for HITs that have been deleted of with
  * the DeleteHIT operation or that have been auto-deleted.
  */
-export const listHITs: API.OperationMethod<
+export const listHITs: API.PaginatedOperationMethod<
   ListHITsRequest,
   ListHITsResponse,
   ListHITsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListHITsRequest,
-  ) => stream.Stream<
-    ListHITsResponse,
-    ListHITsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListHITsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListHITsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListHITsRequest,
   output: ListHITsResponse,
   errors: [RequestError, ServiceFault],
@@ -2552,27 +2509,13 @@ export type ListHITsForQualificationTypeError =
  * The operation returns HITs of any status, except for HITs that have been deleted
  * with the `DeleteHIT` operation or that have been auto-deleted.
  */
-export const listHITsForQualificationType: API.OperationMethod<
+export const listHITsForQualificationType: API.PaginatedOperationMethod<
   ListHITsForQualificationTypeRequest,
   ListHITsForQualificationTypeResponse,
   ListHITsForQualificationTypeError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListHITsForQualificationTypeRequest,
-  ) => stream.Stream<
-    ListHITsForQualificationTypeResponse,
-    ListHITsForQualificationTypeError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListHITsForQualificationTypeRequest,
-  ) => stream.Stream<
-    unknown,
-    ListHITsForQualificationTypeError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListHITsForQualificationTypeRequest,
   output: ListHITsForQualificationTypeResponse,
   errors: [RequestError, ServiceFault],
@@ -2598,27 +2541,13 @@ export type ListQualificationRequestsError =
  * operation to poll for pending requests, and accepts them using the
  * AcceptQualification operation.
  */
-export const listQualificationRequests: API.OperationMethod<
+export const listQualificationRequests: API.PaginatedOperationMethod<
   ListQualificationRequestsRequest,
   ListQualificationRequestsResponse,
   ListQualificationRequestsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListQualificationRequestsRequest,
-  ) => stream.Stream<
-    ListQualificationRequestsResponse,
-    ListQualificationRequestsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListQualificationRequestsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListQualificationRequestsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListQualificationRequestsRequest,
   output: ListQualificationRequestsResponse,
   errors: [RequestError, ServiceFault],
@@ -2642,27 +2571,13 @@ export type ListQualificationTypesError =
  * operation returns a list of Qualification types, filtered by
  * an optional search term.
  */
-export const listQualificationTypes: API.OperationMethod<
+export const listQualificationTypes: API.PaginatedOperationMethod<
   ListQualificationTypesRequest,
   ListQualificationTypesResponse,
   ListQualificationTypesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListQualificationTypesRequest,
-  ) => stream.Stream<
-    ListQualificationTypesResponse,
-    ListQualificationTypesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListQualificationTypesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListQualificationTypesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListQualificationTypesRequest,
   output: ListQualificationTypesResponse,
   errors: [RequestError, ServiceFault],
@@ -2684,27 +2599,13 @@ export type ListReviewableHITsError =
  * The `ListReviewableHITs` operation retrieves the HITs with Status equal to
  * Reviewable or Status equal to Reviewing that belong to the Requester calling the operation.
  */
-export const listReviewableHITs: API.OperationMethod<
+export const listReviewableHITs: API.PaginatedOperationMethod<
   ListReviewableHITsRequest,
   ListReviewableHITsResponse,
   ListReviewableHITsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListReviewableHITsRequest,
-  ) => stream.Stream<
-    ListReviewableHITsResponse,
-    ListReviewableHITsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListReviewableHITsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListReviewableHITsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListReviewableHITsRequest,
   output: ListReviewableHITsResponse,
   errors: [RequestError, ServiceFault],
@@ -2729,27 +2630,13 @@ export type ListReviewPolicyResultsForHITError =
  * see Review Policies. The ListReviewPolicyResultsForHIT operation can return results for both
  * Assignment-level and HIT-level review results.
  */
-export const listReviewPolicyResultsForHIT: API.OperationMethod<
+export const listReviewPolicyResultsForHIT: API.PaginatedOperationMethod<
   ListReviewPolicyResultsForHITRequest,
   ListReviewPolicyResultsForHITResponse,
   ListReviewPolicyResultsForHITError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListReviewPolicyResultsForHITRequest,
-  ) => stream.Stream<
-    ListReviewPolicyResultsForHITResponse,
-    ListReviewPolicyResultsForHITError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListReviewPolicyResultsForHITRequest,
-  ) => stream.Stream<
-    unknown,
-    ListReviewPolicyResultsForHITError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListReviewPolicyResultsForHITRequest,
   output: ListReviewPolicyResultsForHITResponse,
   errors: [RequestError, ServiceFault],
@@ -2767,27 +2654,13 @@ export type ListWorkerBlocksError = RequestError | ServiceFault | CommonErrors;
 /**
  * The `ListWorkersBlocks` operation retrieves a list of Workers who are blocked from working on your HITs.
  */
-export const listWorkerBlocks: API.OperationMethod<
+export const listWorkerBlocks: API.PaginatedOperationMethod<
   ListWorkerBlocksRequest,
   ListWorkerBlocksResponse,
   ListWorkerBlocksError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListWorkerBlocksRequest,
-  ) => stream.Stream<
-    ListWorkerBlocksResponse,
-    ListWorkerBlocksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListWorkerBlocksRequest,
-  ) => stream.Stream<
-    unknown,
-    ListWorkerBlocksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListWorkerBlocksRequest,
   output: ListWorkerBlocksResponse,
   errors: [RequestError, ServiceFault],
@@ -2809,27 +2682,13 @@ export type ListWorkersWithQualificationTypeError =
  * The `ListWorkersWithQualificationType` operation returns all of the Workers
  * that have been associated with a given Qualification type.
  */
-export const listWorkersWithQualificationType: API.OperationMethod<
+export const listWorkersWithQualificationType: API.PaginatedOperationMethod<
   ListWorkersWithQualificationTypeRequest,
   ListWorkersWithQualificationTypeResponse,
   ListWorkersWithQualificationTypeError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListWorkersWithQualificationTypeRequest,
-  ) => stream.Stream<
-    ListWorkersWithQualificationTypeResponse,
-    ListWorkersWithQualificationTypeError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListWorkersWithQualificationTypeRequest,
-  ) => stream.Stream<
-    unknown,
-    ListWorkersWithQualificationTypeError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListWorkersWithQualificationTypeRequest,
   output: ListWorkersWithQualificationTypeResponse,
   errors: [RequestError, ServiceFault],

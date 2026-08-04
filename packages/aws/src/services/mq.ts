@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -2583,27 +2582,13 @@ export type DescribeSharedResourcesError =
 /**
  * Returns the resources shared to a broker.
  */
-export const describeSharedResources: API.OperationMethod<
+export const describeSharedResources: API.PaginatedOperationMethod<
   DescribeSharedResourcesRequest,
   DescribeSharedResourcesResponse,
   DescribeSharedResourcesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeSharedResourcesRequest,
-  ) => stream.Stream<
-    DescribeSharedResourcesResponse,
-    DescribeSharedResourcesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeSharedResourcesRequest,
-  ) => stream.Stream<
-    SharedResource,
-    DescribeSharedResourcesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  SharedResource
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeSharedResourcesRequest,
   output: DescribeSharedResourcesResponse,
   errors: [
@@ -2659,27 +2644,13 @@ export type ListBrokersError =
 /**
  * Returns a list of all brokers.
  */
-export const listBrokers: API.OperationMethod<
+export const listBrokers: API.PaginatedOperationMethod<
   ListBrokersRequest,
   ListBrokersResponse,
   ListBrokersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListBrokersRequest,
-  ) => stream.Stream<
-    ListBrokersResponse,
-    ListBrokersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListBrokersRequest,
-  ) => stream.Stream<
-    BrokerSummary,
-    ListBrokersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  BrokerSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBrokersRequest,
   output: ListBrokersResponse,
   errors: [

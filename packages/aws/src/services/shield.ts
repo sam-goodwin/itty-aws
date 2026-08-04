@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -2447,27 +2446,13 @@ export type ListAttacksError =
  * Returns all ongoing DDoS attacks or all DDoS attacks during a specified time
  * period.
  */
-export const listAttacks: API.OperationMethod<
+export const listAttacks: API.PaginatedOperationMethod<
   ListAttacksRequest,
   ListAttacksResponse,
   ListAttacksError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAttacksRequest,
-  ) => stream.Stream<
-    ListAttacksResponse,
-    ListAttacksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAttacksRequest,
-  ) => stream.Stream<
-    AttackSummary,
-    ListAttacksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AttackSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAttacksRequest,
   output: ListAttacksResponse,
   errors: [
@@ -2496,27 +2481,13 @@ export type ListProtectionGroupsError =
  * Retrieves ProtectionGroup objects for the account. You can retrieve all protection groups or you can provide
  * filtering criteria and retrieve just the subset of protection groups that match the criteria.
  */
-export const listProtectionGroups: API.OperationMethod<
+export const listProtectionGroups: API.PaginatedOperationMethod<
   ListProtectionGroupsRequest,
   ListProtectionGroupsResponse,
   ListProtectionGroupsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListProtectionGroupsRequest,
-  ) => stream.Stream<
-    ListProtectionGroupsResponse,
-    ListProtectionGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListProtectionGroupsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListProtectionGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProtectionGroupsRequest,
   output: ListProtectionGroupsResponse,
   errors: [
@@ -2545,27 +2516,13 @@ export type ListProtectionsError =
  * Retrieves Protection objects for the account. You can retrieve all protections or you can provide
  * filtering criteria and retrieve just the subset of protections that match the criteria.
  */
-export const listProtections: API.OperationMethod<
+export const listProtections: API.PaginatedOperationMethod<
   ListProtectionsRequest,
   ListProtectionsResponse,
   ListProtectionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListProtectionsRequest,
-  ) => stream.Stream<
-    ListProtectionsResponse,
-    ListProtectionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListProtectionsRequest,
-  ) => stream.Stream<
-    Protection,
-    ListProtectionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Protection
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProtectionsRequest,
   output: ListProtectionsResponse,
   errors: [
@@ -2593,27 +2550,13 @@ export type ListResourcesInProtectionGroupError =
 /**
  * Retrieves the resources that are included in the protection group.
  */
-export const listResourcesInProtectionGroup: API.OperationMethod<
+export const listResourcesInProtectionGroup: API.PaginatedOperationMethod<
   ListResourcesInProtectionGroupRequest,
   ListResourcesInProtectionGroupResponse,
   ListResourcesInProtectionGroupError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListResourcesInProtectionGroupRequest,
-  ) => stream.Stream<
-    ListResourcesInProtectionGroupResponse,
-    ListResourcesInProtectionGroupError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListResourcesInProtectionGroupRequest,
-  ) => stream.Stream<
-    unknown,
-    ListResourcesInProtectionGroupError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListResourcesInProtectionGroupRequest,
   output: ListResourcesInProtectionGroupResponse,
   errors: [

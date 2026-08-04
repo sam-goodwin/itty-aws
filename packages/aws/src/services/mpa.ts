@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -1824,27 +1823,13 @@ export type ListApprovalTeamsError =
 /**
  * Returns a list of approval teams.
  */
-export const listApprovalTeams: API.OperationMethod<
+export const listApprovalTeams: API.PaginatedOperationMethod<
   ListApprovalTeamsRequest,
   ListApprovalTeamsResponse,
   ListApprovalTeamsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListApprovalTeamsRequest,
-  ) => stream.Stream<
-    ListApprovalTeamsResponse,
-    ListApprovalTeamsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListApprovalTeamsRequest,
-  ) => stream.Stream<
-    ListApprovalTeamsResponseApprovalTeam,
-    ListApprovalTeamsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  ListApprovalTeamsResponseApprovalTeam
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListApprovalTeamsRequest,
   output: ListApprovalTeamsResponse,
   errors: [
@@ -1873,27 +1858,13 @@ export type ListIdentitySourcesError =
 /**
  * Returns a list of identity sources. For more information, see Identity Source in the *Multi-party approval User Guide*.
  */
-export const listIdentitySources: API.OperationMethod<
+export const listIdentitySources: API.PaginatedOperationMethod<
   ListIdentitySourcesRequest,
   ListIdentitySourcesResponse,
   ListIdentitySourcesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListIdentitySourcesRequest,
-  ) => stream.Stream<
-    ListIdentitySourcesResponse,
-    ListIdentitySourcesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListIdentitySourcesRequest,
-  ) => stream.Stream<
-    IdentitySourceForList,
-    ListIdentitySourcesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  IdentitySourceForList
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListIdentitySourcesRequest,
   output: ListIdentitySourcesResponse,
   errors: [
@@ -1922,27 +1893,13 @@ export type ListPoliciesError =
 /**
  * Returns a list of policies. Policies define the permissions for team resources.
  */
-export const listPolicies: API.OperationMethod<
+export const listPolicies: API.PaginatedOperationMethod<
   ListPoliciesRequest,
   ListPoliciesResponse,
   ListPoliciesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPoliciesRequest,
-  ) => stream.Stream<
-    ListPoliciesResponse,
-    ListPoliciesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPoliciesRequest,
-  ) => stream.Stream<
-    Policy,
-    ListPoliciesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  Policy
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPoliciesRequest,
   output: ListPoliciesResponse,
   errors: [
@@ -1972,27 +1929,13 @@ export type ListPolicyVersionsError =
 /**
  * Returns a list of the versions for policies. Policies define the permissions for team resources.
  */
-export const listPolicyVersions: API.OperationMethod<
+export const listPolicyVersions: API.PaginatedOperationMethod<
   ListPolicyVersionsRequest,
   ListPolicyVersionsResponse,
   ListPolicyVersionsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPolicyVersionsRequest,
-  ) => stream.Stream<
-    ListPolicyVersionsResponse,
-    ListPolicyVersionsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPolicyVersionsRequest,
-  ) => stream.Stream<
-    PolicyVersionSummary,
-    ListPolicyVersionsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  PolicyVersionSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPolicyVersionsRequest,
   output: ListPolicyVersionsResponse,
   errors: [
@@ -2023,27 +1966,13 @@ export type ListResourcePoliciesError =
 /**
  * Returns a list of policies for a resource.
  */
-export const listResourcePolicies: API.OperationMethod<
+export const listResourcePolicies: API.PaginatedOperationMethod<
   ListResourcePoliciesRequest,
   ListResourcePoliciesResponse,
   ListResourcePoliciesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListResourcePoliciesRequest,
-  ) => stream.Stream<
-    ListResourcePoliciesResponse,
-    ListResourcePoliciesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListResourcePoliciesRequest,
-  ) => stream.Stream<
-    ListResourcePoliciesResponseResourcePolicy,
-    ListResourcePoliciesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  ListResourcePoliciesResponseResourcePolicy
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListResourcePoliciesRequest,
   output: ListResourcePoliciesResponse,
   errors: [
@@ -2074,27 +2003,13 @@ export type ListSessionsError =
 /**
  * Returns a list of approval sessions. For more information, see Session in the *Multi-party approval User Guide*.
  */
-export const listSessions: API.OperationMethod<
+export const listSessions: API.PaginatedOperationMethod<
   ListSessionsRequest,
   ListSessionsResponse,
   ListSessionsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSessionsRequest,
-  ) => stream.Stream<
-    ListSessionsResponse,
-    ListSessionsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSessionsRequest,
-  ) => stream.Stream<
-    ListSessionsResponseSession,
-    ListSessionsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  ListSessionsResponseSession
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSessionsRequest,
   output: ListSessionsResponse,
   errors: [

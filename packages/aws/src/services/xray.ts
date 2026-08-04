@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -2642,27 +2641,13 @@ export type BatchGetTracesError =
  * documents that originates from a single request. Use `GetTraceSummaries` to get a
  * list of trace IDs.
  */
-export const batchGetTraces: API.OperationMethod<
+export const batchGetTraces: API.PaginatedOperationMethod<
   BatchGetTracesRequest,
   BatchGetTracesResult,
   BatchGetTracesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: BatchGetTracesRequest,
-  ) => stream.Stream<
-    BatchGetTracesResult,
-    BatchGetTracesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: BatchGetTracesRequest,
-  ) => stream.Stream<
-    Trace,
-    BatchGetTracesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Trace
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: BatchGetTracesRequest,
   output: BatchGetTracesResult,
   errors: [InvalidRequestException, ThrottledException],
@@ -2878,27 +2863,13 @@ export type GetGroupsError =
 /**
  * Retrieves all active group details.
  */
-export const getGroups: API.OperationMethod<
+export const getGroups: API.PaginatedOperationMethod<
   GetGroupsRequest,
   GetGroupsResult,
   GetGroupsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetGroupsRequest,
-  ) => stream.Stream<
-    GetGroupsResult,
-    GetGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetGroupsRequest,
-  ) => stream.Stream<
-    GroupSummary,
-    GetGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  GroupSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetGroupsRequest,
   output: GetGroupsResult,
   errors: [InvalidRequestException, ThrottledException],
@@ -2967,27 +2938,13 @@ export type GetInsightEventsError =
  * event. You can review an insight's events in the Impact Timeline on the Inspect page in the X-Ray
  * console.
  */
-export const getInsightEvents: API.OperationMethod<
+export const getInsightEvents: API.PaginatedOperationMethod<
   GetInsightEventsRequest,
   GetInsightEventsResult,
   GetInsightEventsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetInsightEventsRequest,
-  ) => stream.Stream<
-    GetInsightEventsResult,
-    GetInsightEventsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetInsightEventsRequest,
-  ) => stream.Stream<
-    unknown,
-    GetInsightEventsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetInsightEventsRequest,
   output: GetInsightEventsResult,
   errors: [InvalidRequestException, ThrottledException],
@@ -3030,27 +2987,13 @@ export type GetInsightSummariesError =
 /**
  * Retrieves the summaries of all insights in the specified group matching the provided filter values.
  */
-export const getInsightSummaries: API.OperationMethod<
+export const getInsightSummaries: API.PaginatedOperationMethod<
   GetInsightSummariesRequest,
   GetInsightSummariesResult,
   GetInsightSummariesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetInsightSummariesRequest,
-  ) => stream.Stream<
-    GetInsightSummariesResult,
-    GetInsightSummariesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetInsightSummariesRequest,
-  ) => stream.Stream<
-    unknown,
-    GetInsightSummariesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetInsightSummariesRequest,
   output: GetInsightSummariesResult,
   errors: [InvalidRequestException, ThrottledException],
@@ -3105,27 +3048,13 @@ export type GetSamplingRulesError =
 /**
  * Retrieves all sampling rules.
  */
-export const getSamplingRules: API.OperationMethod<
+export const getSamplingRules: API.PaginatedOperationMethod<
   GetSamplingRulesRequest,
   GetSamplingRulesResult,
   GetSamplingRulesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetSamplingRulesRequest,
-  ) => stream.Stream<
-    GetSamplingRulesResult,
-    GetSamplingRulesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetSamplingRulesRequest,
-  ) => stream.Stream<
-    SamplingRuleRecord,
-    GetSamplingRulesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  SamplingRuleRecord
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetSamplingRulesRequest,
   output: GetSamplingRulesResult,
   errors: [InvalidRequestException, ThrottledException],
@@ -3146,27 +3075,13 @@ export type GetSamplingStatisticSummariesError =
 /**
  * Retrieves information about recent sampling results for all sampling rules.
  */
-export const getSamplingStatisticSummaries: API.OperationMethod<
+export const getSamplingStatisticSummaries: API.PaginatedOperationMethod<
   GetSamplingStatisticSummariesRequest,
   GetSamplingStatisticSummariesResult,
   GetSamplingStatisticSummariesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetSamplingStatisticSummariesRequest,
-  ) => stream.Stream<
-    GetSamplingStatisticSummariesResult,
-    GetSamplingStatisticSummariesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetSamplingStatisticSummariesRequest,
-  ) => stream.Stream<
-    SamplingStatisticSummary,
-    GetSamplingStatisticSummariesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  SamplingStatisticSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetSamplingStatisticSummariesRequest,
   output: GetSamplingStatisticSummariesResult,
   errors: [InvalidRequestException, ThrottledException],
@@ -3212,27 +3127,13 @@ export type GetServiceGraphError =
  * Downstream services can be other applications, Amazon Web Services resources, HTTP web APIs, or SQL
  * databases.
  */
-export const getServiceGraph: API.OperationMethod<
+export const getServiceGraph: API.PaginatedOperationMethod<
   GetServiceGraphRequest,
   GetServiceGraphResult,
   GetServiceGraphError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetServiceGraphRequest,
-  ) => stream.Stream<
-    GetServiceGraphResult,
-    GetServiceGraphError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetServiceGraphRequest,
-  ) => stream.Stream<
-    Service,
-    GetServiceGraphError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Service
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetServiceGraphRequest,
   output: GetServiceGraphResult,
   errors: [InvalidRequestException, ThrottledException],
@@ -3254,27 +3155,13 @@ export type GetTimeSeriesServiceStatisticsError =
  * Get an aggregation of service statistics defined by a specific time
  * range.
  */
-export const getTimeSeriesServiceStatistics: API.OperationMethod<
+export const getTimeSeriesServiceStatistics: API.PaginatedOperationMethod<
   GetTimeSeriesServiceStatisticsRequest,
   GetTimeSeriesServiceStatisticsResult,
   GetTimeSeriesServiceStatisticsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetTimeSeriesServiceStatisticsRequest,
-  ) => stream.Stream<
-    GetTimeSeriesServiceStatisticsResult,
-    GetTimeSeriesServiceStatisticsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetTimeSeriesServiceStatisticsRequest,
-  ) => stream.Stream<
-    TimeSeriesServiceStatistics,
-    GetTimeSeriesServiceStatisticsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  TimeSeriesServiceStatistics
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetTimeSeriesServiceStatisticsRequest,
   output: GetTimeSeriesServiceStatisticsResult,
   errors: [InvalidRequestException, ThrottledException],
@@ -3295,27 +3182,13 @@ export type GetTraceGraphError =
 /**
  * Retrieves a service graph for one or more specific trace IDs.
  */
-export const getTraceGraph: API.OperationMethod<
+export const getTraceGraph: API.PaginatedOperationMethod<
   GetTraceGraphRequest,
   GetTraceGraphResult,
   GetTraceGraphError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetTraceGraphRequest,
-  ) => stream.Stream<
-    GetTraceGraphResult,
-    GetTraceGraphError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetTraceGraphRequest,
-  ) => stream.Stream<
-    Service,
-    GetTraceGraphError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Service
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetTraceGraphRequest,
   output: GetTraceGraphResult,
   errors: [InvalidRequestException, ThrottledException],
@@ -3374,27 +3247,13 @@ export type GetTraceSummariesError =
  * see Use filter
  * expressions in the *Amazon Web Services X-Ray Developer Guide*.
  */
-export const getTraceSummaries: API.OperationMethod<
+export const getTraceSummaries: API.PaginatedOperationMethod<
   GetTraceSummariesRequest,
   GetTraceSummariesResult,
   GetTraceSummariesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetTraceSummariesRequest,
-  ) => stream.Stream<
-    GetTraceSummariesResult,
-    GetTraceSummariesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetTraceSummariesRequest,
-  ) => stream.Stream<
-    TraceSummary,
-    GetTraceSummariesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  TraceSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetTraceSummariesRequest,
   output: GetTraceSummariesResult,
   errors: [InvalidRequestException, ThrottledException],
@@ -3415,27 +3274,13 @@ export type ListResourcePoliciesError =
 /**
  * Returns the list of resource policies in the target Amazon Web Services account.
  */
-export const listResourcePolicies: API.OperationMethod<
+export const listResourcePolicies: API.PaginatedOperationMethod<
   ListResourcePoliciesRequest,
   ListResourcePoliciesResult,
   ListResourcePoliciesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListResourcePoliciesRequest,
-  ) => stream.Stream<
-    ListResourcePoliciesResult,
-    ListResourcePoliciesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListResourcePoliciesRequest,
-  ) => stream.Stream<
-    ResourcePolicy,
-    ListResourcePoliciesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ResourcePolicy
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListResourcePoliciesRequest,
   output: ListResourcePoliciesResult,
   errors: [InvalidRequestException, ThrottledException],
@@ -3491,27 +3336,13 @@ export type ListTagsForResourceError =
 /**
  * Returns a list of tags that are applied to the specified Amazon Web Services X-Ray group or sampling rule.
  */
-export const listTagsForResource: API.OperationMethod<
+export const listTagsForResource: API.PaginatedOperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTagsForResourceRequest,
-  ) => stream.Stream<
-    ListTagsForResourceResponse,
-    ListTagsForResourceError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTagsForResourceRequest,
-  ) => stream.Stream<
-    Tag,
-    ListTagsForResourceError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Tag
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [

@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -2974,27 +2973,13 @@ export type GetInstrumentationConfigurationStatusError =
  *
  * If no status or time window is provided, the operation defaults to ACTIVE events from the last hour.
  */
-export const getInstrumentationConfigurationStatus: API.OperationMethod<
+export const getInstrumentationConfigurationStatus: API.PaginatedOperationMethod<
   GetInstrumentationConfigurationStatusRequest,
   GetInstrumentationConfigurationStatusResponse,
   GetInstrumentationConfigurationStatusError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetInstrumentationConfigurationStatusRequest,
-  ) => stream.Stream<
-    GetInstrumentationConfigurationStatusResponse,
-    GetInstrumentationConfigurationStatusError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetInstrumentationConfigurationStatusRequest,
-  ) => stream.Stream<
-    InstrumentationStatusEvent,
-    GetInstrumentationConfigurationStatusError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  InstrumentationStatusEvent
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetInstrumentationConfigurationStatusRequest,
   output: GetInstrumentationConfigurationStatusResponse,
   errors: [ResourceNotFoundException, ThrottlingException, ValidationException],
@@ -3080,27 +3065,13 @@ export type ListEntityEventsError =
 /**
  * Returns a list of change events for a specific entity, such as deployments, configuration changes, or other state-changing activities. This operation helps track the history of changes that may have affected service performance.
  */
-export const listEntityEvents: API.OperationMethod<
+export const listEntityEvents: API.PaginatedOperationMethod<
   ListEntityEventsInput,
   ListEntityEventsOutput,
   ListEntityEventsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEntityEventsInput,
-  ) => stream.Stream<
-    ListEntityEventsOutput,
-    ListEntityEventsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEntityEventsInput,
-  ) => stream.Stream<
-    ChangeEvent,
-    ListEntityEventsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ChangeEvent
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEntityEventsInput,
   output: ListEntityEventsOutput,
   errors: [ThrottlingException, ValidationException],
@@ -3147,27 +3118,13 @@ export type ListInstrumentationConfigurationsError =
  *
  * Include the previous `SyncedAt` value to perform incremental syncs. When no changes are detected, the response sets `Changed` to `false` and omits configuration details.
  */
-export const listInstrumentationConfigurations: API.OperationMethod<
+export const listInstrumentationConfigurations: API.PaginatedOperationMethod<
   ListInstrumentationConfigurationsRequest,
   InstrumentationConfigurationsPage,
   ListInstrumentationConfigurationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListInstrumentationConfigurationsRequest,
-  ) => stream.Stream<
-    InstrumentationConfigurationsPage,
-    ListInstrumentationConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListInstrumentationConfigurationsRequest,
-  ) => stream.Stream<
-    InstrumentationConfigurationWithoutServiceEnv,
-    ListInstrumentationConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  InstrumentationConfigurationWithoutServiceEnv
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListInstrumentationConfigurationsRequest,
   output: InstrumentationConfigurationsPage,
   errors: [ResourceNotFoundException, ThrottlingException, ValidationException],
@@ -3189,27 +3146,13 @@ export type ListServiceDependenciesError =
 /**
  * Returns a list of service dependencies of the service that you specify. A dependency is an infrastructure component that an operation of this service connects with. Dependencies can include Amazon Web Services services, Amazon Web Services resources, and third-party services.
  */
-export const listServiceDependencies: API.OperationMethod<
+export const listServiceDependencies: API.PaginatedOperationMethod<
   ListServiceDependenciesInput,
   ListServiceDependenciesOutput,
   ListServiceDependenciesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListServiceDependenciesInput,
-  ) => stream.Stream<
-    ListServiceDependenciesOutput,
-    ListServiceDependenciesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListServiceDependenciesInput,
-  ) => stream.Stream<
-    ServiceDependency,
-    ListServiceDependenciesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ServiceDependency
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListServiceDependenciesInput,
   output: ListServiceDependenciesOutput,
   errors: [ThrottlingException, ValidationException],
@@ -3231,27 +3174,13 @@ export type ListServiceDependentsError =
 /**
  * Returns the list of dependents that invoked the specified service during the provided time range. Dependents include other services, CloudWatch Synthetics canaries, and clients that are instrumented with CloudWatch RUM app monitors.
  */
-export const listServiceDependents: API.OperationMethod<
+export const listServiceDependents: API.PaginatedOperationMethod<
   ListServiceDependentsInput,
   ListServiceDependentsOutput,
   ListServiceDependentsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListServiceDependentsInput,
-  ) => stream.Stream<
-    ListServiceDependentsOutput,
-    ListServiceDependentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListServiceDependentsInput,
-  ) => stream.Stream<
-    ServiceDependent,
-    ListServiceDependentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ServiceDependent
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListServiceDependentsInput,
   output: ListServiceDependentsOutput,
   errors: [ThrottlingException, ValidationException],
@@ -3274,27 +3203,13 @@ export type ListServiceLevelObjectiveExclusionWindowsError =
 /**
  * Retrieves all exclusion windows configured for a specific SLO.
  */
-export const listServiceLevelObjectiveExclusionWindows: API.OperationMethod<
+export const listServiceLevelObjectiveExclusionWindows: API.PaginatedOperationMethod<
   ListServiceLevelObjectiveExclusionWindowsInput,
   ListServiceLevelObjectiveExclusionWindowsOutput,
   ListServiceLevelObjectiveExclusionWindowsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListServiceLevelObjectiveExclusionWindowsInput,
-  ) => stream.Stream<
-    ListServiceLevelObjectiveExclusionWindowsOutput,
-    ListServiceLevelObjectiveExclusionWindowsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListServiceLevelObjectiveExclusionWindowsInput,
-  ) => stream.Stream<
-    ExclusionWindow,
-    ListServiceLevelObjectiveExclusionWindowsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ExclusionWindow
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListServiceLevelObjectiveExclusionWindowsInput,
   output: ListServiceLevelObjectiveExclusionWindowsOutput,
   errors: [ResourceNotFoundException, ThrottlingException, ValidationException],
@@ -3316,27 +3231,13 @@ export type ListServiceLevelObjectivesError =
 /**
  * Returns a list of SLOs created in this account.
  */
-export const listServiceLevelObjectives: API.OperationMethod<
+export const listServiceLevelObjectives: API.PaginatedOperationMethod<
   ListServiceLevelObjectivesInput,
   ListServiceLevelObjectivesOutput,
   ListServiceLevelObjectivesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListServiceLevelObjectivesInput,
-  ) => stream.Stream<
-    ListServiceLevelObjectivesOutput,
-    ListServiceLevelObjectivesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListServiceLevelObjectivesInput,
-  ) => stream.Stream<
-    ServiceLevelObjectiveSummary,
-    ListServiceLevelObjectivesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ServiceLevelObjectiveSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListServiceLevelObjectivesInput,
   output: ListServiceLevelObjectivesOutput,
   errors: [ThrottlingException, ValidationException],
@@ -3358,27 +3259,13 @@ export type ListServiceOperationsError =
 /**
  * Returns a list of the *operations* of this service that have been discovered by Application Signals. Only the operations that were invoked during the specified time range are returned.
  */
-export const listServiceOperations: API.OperationMethod<
+export const listServiceOperations: API.PaginatedOperationMethod<
   ListServiceOperationsInput,
   ListServiceOperationsOutput,
   ListServiceOperationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListServiceOperationsInput,
-  ) => stream.Stream<
-    ListServiceOperationsOutput,
-    ListServiceOperationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListServiceOperationsInput,
-  ) => stream.Stream<
-    ServiceOperation,
-    ListServiceOperationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ServiceOperation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListServiceOperationsInput,
   output: ListServiceOperationsOutput,
   errors: [ThrottlingException, ValidationException],
@@ -3400,27 +3287,13 @@ export type ListServicesError =
 /**
  * Returns a list of services that have been discovered by Application Signals. A service represents a minimum logical and transactional unit that completes a business function. Services are discovered through Application Signals instrumentation.
  */
-export const listServices: API.OperationMethod<
+export const listServices: API.PaginatedOperationMethod<
   ListServicesInput,
   ListServicesOutput,
   ListServicesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListServicesInput,
-  ) => stream.Stream<
-    ListServicesOutput,
-    ListServicesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListServicesInput,
-  ) => stream.Stream<
-    ServiceSummary,
-    ListServicesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ServiceSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListServicesInput,
   output: ListServicesOutput,
   errors: [ThrottlingException, ValidationException],
@@ -3442,27 +3315,13 @@ export type ListServiceStatesError =
 /**
  * Returns information about the last deployment and other change states of services. This API provides visibility into recent changes that may have affected service performance, helping with troubleshooting and change correlation.
  */
-export const listServiceStates: API.OperationMethod<
+export const listServiceStates: API.PaginatedOperationMethod<
   ListServiceStatesInput,
   ListServiceStatesOutput,
   ListServiceStatesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListServiceStatesInput,
-  ) => stream.Stream<
-    ListServiceStatesOutput,
-    ListServiceStatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListServiceStatesInput,
-  ) => stream.Stream<
-    ServiceState,
-    ListServiceStatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ServiceState
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListServiceStatesInput,
   output: ListServiceStatesOutput,
   errors: [ThrottlingException, ValidationException],

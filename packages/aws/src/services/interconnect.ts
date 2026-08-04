@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -677,27 +676,13 @@ export type ListAttachPointsError = CommonErrors;
 /**
  * Lists all Attach Points the caller has access to that are valid for the specified Environment.
  */
-export const listAttachPoints: API.OperationMethod<
+export const listAttachPoints: API.PaginatedOperationMethod<
   ListAttachPointsRequest,
   ListAttachPointsResponse,
   ListAttachPointsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAttachPointsRequest,
-  ) => stream.Stream<
-    ListAttachPointsResponse,
-    ListAttachPointsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAttachPointsRequest,
-  ) => stream.Stream<
-    AttachPointDescriptor,
-    ListAttachPointsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AttachPointDescriptor
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAttachPointsRequest,
   output: ListAttachPointsResponse,
   errors: [],
@@ -728,27 +713,13 @@ export type ListConnectionsError = CommonErrors;
  *
  * Only Connection objects matching all filters will be returned.
  */
-export const listConnections: API.OperationMethod<
+export const listConnections: API.PaginatedOperationMethod<
   ListConnectionsRequest,
   ListConnectionsResponse,
   ListConnectionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListConnectionsRequest,
-  ) => stream.Stream<
-    ListConnectionsResponse,
-    ListConnectionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListConnectionsRequest,
-  ) => stream.Stream<
-    ConnectionSummary,
-    ListConnectionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ConnectionSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListConnectionsRequest,
   output: ListConnectionsResponse,
   errors: [],
@@ -767,27 +738,13 @@ export type ListEnvironmentsError = CommonErrors;
 /**
  * Lists all of the environments that can produce connections that will land in the called AWS region.
  */
-export const listEnvironments: API.OperationMethod<
+export const listEnvironments: API.PaginatedOperationMethod<
   ListEnvironmentsRequest,
   ListEnvironmentsResponse,
   ListEnvironmentsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEnvironmentsRequest,
-  ) => stream.Stream<
-    ListEnvironmentsResponse,
-    ListEnvironmentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEnvironmentsRequest,
-  ) => stream.Stream<
-    Environment,
-    ListEnvironmentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Environment
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEnvironmentsRequest,
   output: ListEnvironmentsResponse,
   errors: [],

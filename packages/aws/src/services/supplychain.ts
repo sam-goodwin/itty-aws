@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -2343,27 +2342,13 @@ export type ListDataIntegrationEventsError =
 /**
  * Enables you to programmatically list all data integration events for the provided Amazon Web Services Supply Chain instance.
  */
-export const listDataIntegrationEvents: API.OperationMethod<
+export const listDataIntegrationEvents: API.PaginatedOperationMethod<
   ListDataIntegrationEventsRequest,
   ListDataIntegrationEventsResponse,
   ListDataIntegrationEventsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDataIntegrationEventsRequest,
-  ) => stream.Stream<
-    ListDataIntegrationEventsResponse,
-    ListDataIntegrationEventsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDataIntegrationEventsRequest,
-  ) => stream.Stream<
-    DataIntegrationEvent,
-    ListDataIntegrationEventsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  DataIntegrationEvent
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDataIntegrationEventsRequest,
   output: ListDataIntegrationEventsResponse,
   errors: [
@@ -2393,27 +2378,13 @@ export type ListDataIntegrationFlowExecutionsError =
 /**
  * List flow executions.
  */
-export const listDataIntegrationFlowExecutions: API.OperationMethod<
+export const listDataIntegrationFlowExecutions: API.PaginatedOperationMethod<
   ListDataIntegrationFlowExecutionsRequest,
   ListDataIntegrationFlowExecutionsResponse,
   ListDataIntegrationFlowExecutionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDataIntegrationFlowExecutionsRequest,
-  ) => stream.Stream<
-    ListDataIntegrationFlowExecutionsResponse,
-    ListDataIntegrationFlowExecutionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDataIntegrationFlowExecutionsRequest,
-  ) => stream.Stream<
-    DataIntegrationFlowExecution,
-    ListDataIntegrationFlowExecutionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  DataIntegrationFlowExecution
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDataIntegrationFlowExecutionsRequest,
   output: ListDataIntegrationFlowExecutionsResponse,
   errors: [
@@ -2443,27 +2414,13 @@ export type ListDataIntegrationFlowsError =
 /**
  * Enables you to programmatically list all data pipelines for the provided Amazon Web Services Supply Chain instance.
  */
-export const listDataIntegrationFlows: API.OperationMethod<
+export const listDataIntegrationFlows: API.PaginatedOperationMethod<
   ListDataIntegrationFlowsRequest,
   ListDataIntegrationFlowsResponse,
   ListDataIntegrationFlowsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDataIntegrationFlowsRequest,
-  ) => stream.Stream<
-    ListDataIntegrationFlowsResponse,
-    ListDataIntegrationFlowsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDataIntegrationFlowsRequest,
-  ) => stream.Stream<
-    DataIntegrationFlow,
-    ListDataIntegrationFlowsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  DataIntegrationFlow
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDataIntegrationFlowsRequest,
   output: ListDataIntegrationFlowsResponse,
   errors: [
@@ -2493,27 +2450,13 @@ export type ListDataLakeDatasetsError =
 /**
  * Enables you to programmatically view the list of Amazon Web Services Supply Chain data lake datasets. Developers can view the datasets and the corresponding information such as namespace, schema, and so on for a given instance ID and namespace.
  */
-export const listDataLakeDatasets: API.OperationMethod<
+export const listDataLakeDatasets: API.PaginatedOperationMethod<
   ListDataLakeDatasetsRequest,
   ListDataLakeDatasetsResponse,
   ListDataLakeDatasetsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDataLakeDatasetsRequest,
-  ) => stream.Stream<
-    ListDataLakeDatasetsResponse,
-    ListDataLakeDatasetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDataLakeDatasetsRequest,
-  ) => stream.Stream<
-    DataLakeDataset,
-    ListDataLakeDatasetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  DataLakeDataset
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDataLakeDatasetsRequest,
   output: ListDataLakeDatasetsResponse,
   errors: [
@@ -2543,27 +2486,13 @@ export type ListDataLakeNamespacesError =
 /**
  * Enables you to programmatically view the list of Amazon Web Services Supply Chain data lake namespaces. Developers can view the namespaces and the corresponding information such as description for a given instance ID. Note that this API only return custom namespaces, instance pre-defined namespaces are not included.
  */
-export const listDataLakeNamespaces: API.OperationMethod<
+export const listDataLakeNamespaces: API.PaginatedOperationMethod<
   ListDataLakeNamespacesRequest,
   ListDataLakeNamespacesResponse,
   ListDataLakeNamespacesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDataLakeNamespacesRequest,
-  ) => stream.Stream<
-    ListDataLakeNamespacesResponse,
-    ListDataLakeNamespacesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDataLakeNamespacesRequest,
-  ) => stream.Stream<
-    DataLakeNamespace,
-    ListDataLakeNamespacesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  DataLakeNamespace
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDataLakeNamespacesRequest,
   output: ListDataLakeNamespacesResponse,
   errors: [
@@ -2592,27 +2521,13 @@ export type ListInstancesError =
 /**
  * List all Amazon Web Services Supply Chain instances for a specific account. Enables you to programmatically list all Amazon Web Services Supply Chain instances based on their account ID, instance name, and state of the instance (active or delete).
  */
-export const listInstances: API.OperationMethod<
+export const listInstances: API.PaginatedOperationMethod<
   ListInstancesRequest,
   ListInstancesResponse,
   ListInstancesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListInstancesRequest,
-  ) => stream.Stream<
-    ListInstancesResponse,
-    ListInstancesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListInstancesRequest,
-  ) => stream.Stream<
-    Instance,
-    ListInstancesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Instance
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListInstancesRequest,
   output: ListInstancesResponse,
   errors: [

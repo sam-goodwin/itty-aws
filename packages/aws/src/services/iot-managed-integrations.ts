@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -6034,27 +6033,13 @@ export type ListAccountAssociationsError =
 /**
  * Lists all account associations, with optional filtering by connector destination ID.
  */
-export const listAccountAssociations: API.OperationMethod<
+export const listAccountAssociations: API.PaginatedOperationMethod<
   ListAccountAssociationsRequest,
   ListAccountAssociationsResponse,
   ListAccountAssociationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAccountAssociationsRequest,
-  ) => stream.Stream<
-    ListAccountAssociationsResponse,
-    ListAccountAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAccountAssociationsRequest,
-  ) => stream.Stream<
-    AccountAssociationItem,
-    ListAccountAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AccountAssociationItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountAssociationsRequest,
   output: ListAccountAssociationsResponse,
   errors: [
@@ -6084,27 +6069,13 @@ export type ListCloudConnectorsError =
 /**
  * Returns a list of connectors filtered by its Lambda Amazon Resource Name (ARN) and `type`.
  */
-export const listCloudConnectors: API.OperationMethod<
+export const listCloudConnectors: API.PaginatedOperationMethod<
   ListCloudConnectorsRequest,
   ListCloudConnectorsResponse,
   ListCloudConnectorsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCloudConnectorsRequest,
-  ) => stream.Stream<
-    ListCloudConnectorsResponse,
-    ListCloudConnectorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCloudConnectorsRequest,
-  ) => stream.Stream<
-    ConnectorItem,
-    ListCloudConnectorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ConnectorItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCloudConnectorsRequest,
   output: ListCloudConnectorsResponse,
   errors: [
@@ -6133,27 +6104,13 @@ export type ListConnectorDestinationsError =
 /**
  * Lists all connector destinations, with optional filtering by cloud connector ID.
  */
-export const listConnectorDestinations: API.OperationMethod<
+export const listConnectorDestinations: API.PaginatedOperationMethod<
   ListConnectorDestinationsRequest,
   ListConnectorDestinationsResponse,
   ListConnectorDestinationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListConnectorDestinationsRequest,
-  ) => stream.Stream<
-    ListConnectorDestinationsResponse,
-    ListConnectorDestinationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListConnectorDestinationsRequest,
-  ) => stream.Stream<
-    ConnectorDestinationSummary,
-    ListConnectorDestinationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ConnectorDestinationSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListConnectorDestinationsRequest,
   output: ListConnectorDestinationsResponse,
   errors: [
@@ -6183,27 +6140,13 @@ export type ListCredentialLockersError =
 /**
  * List information on an existing credential locker.
  */
-export const listCredentialLockers: API.OperationMethod<
+export const listCredentialLockers: API.PaginatedOperationMethod<
   ListCredentialLockersRequest,
   ListCredentialLockersResponse,
   ListCredentialLockersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCredentialLockersRequest,
-  ) => stream.Stream<
-    ListCredentialLockersResponse,
-    ListCredentialLockersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCredentialLockersRequest,
-  ) => stream.Stream<
-    CredentialLockerSummary,
-    ListCredentialLockersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  CredentialLockerSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCredentialLockersRequest,
   output: ListCredentialLockersResponse,
   errors: [
@@ -6233,27 +6176,13 @@ export type ListDestinationsError =
 /**
  * List all notification destinations.
  */
-export const listDestinations: API.OperationMethod<
+export const listDestinations: API.PaginatedOperationMethod<
   ListDestinationsRequest,
   ListDestinationsResponse,
   ListDestinationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDestinationsRequest,
-  ) => stream.Stream<
-    ListDestinationsResponse,
-    ListDestinationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDestinationsRequest,
-  ) => stream.Stream<
-    DestinationSummary,
-    ListDestinationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  DestinationSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDestinationsRequest,
   output: ListDestinationsResponse,
   errors: [
@@ -6284,27 +6213,13 @@ export type ListDeviceDiscoveriesError =
 /**
  * Lists all device discovery tasks, with optional filtering by type and status.
  */
-export const listDeviceDiscoveries: API.OperationMethod<
+export const listDeviceDiscoveries: API.PaginatedOperationMethod<
   ListDeviceDiscoveriesRequest,
   ListDeviceDiscoveriesResponse,
   ListDeviceDiscoveriesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDeviceDiscoveriesRequest,
-  ) => stream.Stream<
-    ListDeviceDiscoveriesResponse,
-    ListDeviceDiscoveriesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDeviceDiscoveriesRequest,
-  ) => stream.Stream<
-    DeviceDiscoverySummary,
-    ListDeviceDiscoveriesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  DeviceDiscoverySummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDeviceDiscoveriesRequest,
   output: ListDeviceDiscoveriesResponse,
   errors: [
@@ -6338,27 +6253,13 @@ export type ListDiscoveredDevicesError =
 /**
  * Lists all devices discovered during a specific device discovery task.
  */
-export const listDiscoveredDevices: API.OperationMethod<
+export const listDiscoveredDevices: API.PaginatedOperationMethod<
   ListDiscoveredDevicesRequest,
   ListDiscoveredDevicesResponse,
   ListDiscoveredDevicesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDiscoveredDevicesRequest,
-  ) => stream.Stream<
-    ListDiscoveredDevicesResponse,
-    ListDiscoveredDevicesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDiscoveredDevicesRequest,
-  ) => stream.Stream<
-    DiscoveredDeviceSummary,
-    ListDiscoveredDevicesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  DiscoveredDeviceSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDiscoveredDevicesRequest,
   output: ListDiscoveredDevicesResponse,
   errors: [
@@ -6390,27 +6291,13 @@ export type ListEventLogConfigurationsError =
 /**
  * List all event log configurations for an account.
  */
-export const listEventLogConfigurations: API.OperationMethod<
+export const listEventLogConfigurations: API.PaginatedOperationMethod<
   ListEventLogConfigurationsRequest,
   ListEventLogConfigurationsResponse,
   ListEventLogConfigurationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEventLogConfigurationsRequest,
-  ) => stream.Stream<
-    ListEventLogConfigurationsResponse,
-    ListEventLogConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEventLogConfigurationsRequest,
-  ) => stream.Stream<
-    EventLogConfigurationSummary,
-    ListEventLogConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  EventLogConfigurationSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEventLogConfigurationsRequest,
   output: ListEventLogConfigurationsResponse,
   errors: [
@@ -6439,27 +6326,13 @@ export type ListManagedThingAccountAssociationsError =
 /**
  * Lists all account associations for a specific managed thing.
  */
-export const listManagedThingAccountAssociations: API.OperationMethod<
+export const listManagedThingAccountAssociations: API.PaginatedOperationMethod<
   ListManagedThingAccountAssociationsRequest,
   ListManagedThingAccountAssociationsResponse,
   ListManagedThingAccountAssociationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListManagedThingAccountAssociationsRequest,
-  ) => stream.Stream<
-    ListManagedThingAccountAssociationsResponse,
-    ListManagedThingAccountAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListManagedThingAccountAssociationsRequest,
-  ) => stream.Stream<
-    ManagedThingAssociation,
-    ListManagedThingAccountAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ManagedThingAssociation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListManagedThingAccountAssociationsRequest,
   output: ListManagedThingAccountAssociationsResponse,
   errors: [
@@ -6490,27 +6363,13 @@ export type ListManagedThingsError =
 /**
  * Listing all managed things with provision for filters.
  */
-export const listManagedThings: API.OperationMethod<
+export const listManagedThings: API.PaginatedOperationMethod<
   ListManagedThingsRequest,
   ListManagedThingsResponse,
   ListManagedThingsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListManagedThingsRequest,
-  ) => stream.Stream<
-    ListManagedThingsResponse,
-    ListManagedThingsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListManagedThingsRequest,
-  ) => stream.Stream<
-    ManagedThingSummary,
-    ListManagedThingsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ManagedThingSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListManagedThingsRequest,
   output: ListManagedThingsResponse,
   errors: [
@@ -6544,27 +6403,13 @@ export type ListManagedThingSchemasError =
 /**
  * List schemas associated with a managed thing.
  */
-export const listManagedThingSchemas: API.OperationMethod<
+export const listManagedThingSchemas: API.PaginatedOperationMethod<
   ListManagedThingSchemasRequest,
   ListManagedThingSchemasResponse,
   ListManagedThingSchemasError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListManagedThingSchemasRequest,
-  ) => stream.Stream<
-    ListManagedThingSchemasResponse,
-    ListManagedThingSchemasError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListManagedThingSchemasRequest,
-  ) => stream.Stream<
-    ManagedThingSchemaListItem,
-    ListManagedThingSchemasError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ManagedThingSchemaListItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListManagedThingSchemasRequest,
   output: ListManagedThingSchemasResponse,
   errors: [
@@ -6596,27 +6441,13 @@ export type ListNotificationConfigurationsError =
 /**
  * List all notification configurations.
  */
-export const listNotificationConfigurations: API.OperationMethod<
+export const listNotificationConfigurations: API.PaginatedOperationMethod<
   ListNotificationConfigurationsRequest,
   ListNotificationConfigurationsResponse,
   ListNotificationConfigurationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListNotificationConfigurationsRequest,
-  ) => stream.Stream<
-    ListNotificationConfigurationsResponse,
-    ListNotificationConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListNotificationConfigurationsRequest,
-  ) => stream.Stream<
-    NotificationConfigurationSummary,
-    ListNotificationConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  NotificationConfigurationSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListNotificationConfigurationsRequest,
   output: ListNotificationConfigurationsResponse,
   errors: [
@@ -6645,27 +6476,13 @@ export type ListOtaTaskConfigurationsError =
 /**
  * List all of the over-the-air (OTA) task configurations.
  */
-export const listOtaTaskConfigurations: API.OperationMethod<
+export const listOtaTaskConfigurations: API.PaginatedOperationMethod<
   ListOtaTaskConfigurationsRequest,
   ListOtaTaskConfigurationsResponse,
   ListOtaTaskConfigurationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListOtaTaskConfigurationsRequest,
-  ) => stream.Stream<
-    ListOtaTaskConfigurationsResponse,
-    ListOtaTaskConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListOtaTaskConfigurationsRequest,
-  ) => stream.Stream<
-    OtaTaskConfigurationSummary,
-    ListOtaTaskConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  OtaTaskConfigurationSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOtaTaskConfigurationsRequest,
   output: ListOtaTaskConfigurationsResponse,
   errors: [
@@ -6695,27 +6512,13 @@ export type ListOtaTaskExecutionsError =
 /**
  * List all of the over-the-air (OTA) task executions.
  */
-export const listOtaTaskExecutions: API.OperationMethod<
+export const listOtaTaskExecutions: API.PaginatedOperationMethod<
   ListOtaTaskExecutionsRequest,
   ListOtaTaskExecutionsResponse,
   ListOtaTaskExecutionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListOtaTaskExecutionsRequest,
-  ) => stream.Stream<
-    ListOtaTaskExecutionsResponse,
-    ListOtaTaskExecutionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListOtaTaskExecutionsRequest,
-  ) => stream.Stream<
-    OtaTaskExecutionSummaries,
-    ListOtaTaskExecutionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  OtaTaskExecutionSummaries
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOtaTaskExecutionsRequest,
   output: ListOtaTaskExecutionsResponse,
   errors: [
@@ -6746,27 +6549,13 @@ export type ListOtaTasksError =
 /**
  * List all of the over-the-air (OTA) tasks.
  */
-export const listOtaTasks: API.OperationMethod<
+export const listOtaTasks: API.PaginatedOperationMethod<
   ListOtaTasksRequest,
   ListOtaTasksResponse,
   ListOtaTasksError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListOtaTasksRequest,
-  ) => stream.Stream<
-    ListOtaTasksResponse,
-    ListOtaTasksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListOtaTasksRequest,
-  ) => stream.Stream<
-    OtaTaskSummary,
-    ListOtaTasksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  OtaTaskSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOtaTasksRequest,
   output: ListOtaTasksResponse,
   errors: [
@@ -6798,27 +6587,13 @@ export type ListProvisioningProfilesError =
 /**
  * List the provisioning profiles within the Amazon Web Services account.
  */
-export const listProvisioningProfiles: API.OperationMethod<
+export const listProvisioningProfiles: API.PaginatedOperationMethod<
   ListProvisioningProfilesRequest,
   ListProvisioningProfilesResponse,
   ListProvisioningProfilesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListProvisioningProfilesRequest,
-  ) => stream.Stream<
-    ListProvisioningProfilesResponse,
-    ListProvisioningProfilesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListProvisioningProfilesRequest,
-  ) => stream.Stream<
-    ProvisioningProfileSummary,
-    ListProvisioningProfilesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ProvisioningProfileSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProvisioningProfilesRequest,
   output: ListProvisioningProfilesResponse,
   errors: [
@@ -6851,27 +6626,13 @@ export type ListSchemaVersionsError =
 /**
  * Lists schema versions with the provided information.
  */
-export const listSchemaVersions: API.OperationMethod<
+export const listSchemaVersions: API.PaginatedOperationMethod<
   ListSchemaVersionsRequest,
   ListSchemaVersionsResponse,
   ListSchemaVersionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSchemaVersionsRequest,
-  ) => stream.Stream<
-    ListSchemaVersionsResponse,
-    ListSchemaVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSchemaVersionsRequest,
-  ) => stream.Stream<
-    SchemaVersionListItem,
-    ListSchemaVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  SchemaVersionListItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSchemaVersionsRequest,
   output: ListSchemaVersionsResponse,
   errors: [

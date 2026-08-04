@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -5334,27 +5333,13 @@ export type ListComponentOutputsError =
  * Proton components in the
  * *Proton User Guide*.
  */
-export const listComponentOutputs: API.OperationMethod<
+export const listComponentOutputs: API.PaginatedOperationMethod<
   ListComponentOutputsInput,
   ListComponentOutputsOutput,
   ListComponentOutputsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListComponentOutputsInput,
-  ) => stream.Stream<
-    ListComponentOutputsOutput,
-    ListComponentOutputsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListComponentOutputsInput,
-  ) => stream.Stream<
-    Output,
-    ListComponentOutputsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Output
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListComponentOutputsInput,
   output: ListComponentOutputsOutput,
   errors: [
@@ -5388,27 +5373,13 @@ export type ListComponentProvisionedResourcesError =
  * Proton components in the
  * *Proton User Guide*.
  */
-export const listComponentProvisionedResources: API.OperationMethod<
+export const listComponentProvisionedResources: API.PaginatedOperationMethod<
   ListComponentProvisionedResourcesInput,
   ListComponentProvisionedResourcesOutput,
   ListComponentProvisionedResourcesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListComponentProvisionedResourcesInput,
-  ) => stream.Stream<
-    ListComponentProvisionedResourcesOutput,
-    ListComponentProvisionedResourcesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListComponentProvisionedResourcesInput,
-  ) => stream.Stream<
-    ProvisionedResource,
-    ListComponentProvisionedResourcesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ProvisionedResource
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListComponentProvisionedResourcesInput,
   output: ListComponentProvisionedResourcesOutput,
   errors: [
@@ -5441,27 +5412,13 @@ export type ListComponentsError =
  * Proton components in the
  * *Proton User Guide*.
  */
-export const listComponents: API.OperationMethod<
+export const listComponents: API.PaginatedOperationMethod<
   ListComponentsInput,
   ListComponentsOutput,
   ListComponentsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListComponentsInput,
-  ) => stream.Stream<
-    ListComponentsOutput,
-    ListComponentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListComponentsInput,
-  ) => stream.Stream<
-    ComponentSummary,
-    ListComponentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ComponentSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListComponentsInput,
   output: ListComponentsOutput,
   errors: [
@@ -5491,27 +5448,13 @@ export type ListDeploymentsError =
 /**
  * List deployments. You can filter the result list by environment, service, or a single service instance.
  */
-export const listDeployments: API.OperationMethod<
+export const listDeployments: API.PaginatedOperationMethod<
   ListDeploymentsInput,
   ListDeploymentsOutput,
   ListDeploymentsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDeploymentsInput,
-  ) => stream.Stream<
-    ListDeploymentsOutput,
-    ListDeploymentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDeploymentsInput,
-  ) => stream.Stream<
-    DeploymentSummary,
-    ListDeploymentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  DeploymentSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDeploymentsInput,
   output: ListDeploymentsOutput,
   errors: [
@@ -5544,27 +5487,13 @@ export type ListEnvironmentAccountConnectionsError =
  * For more information, see Environment account
  * connections in the *Proton User guide*.
  */
-export const listEnvironmentAccountConnections: API.OperationMethod<
+export const listEnvironmentAccountConnections: API.PaginatedOperationMethod<
   ListEnvironmentAccountConnectionsInput,
   ListEnvironmentAccountConnectionsOutput,
   ListEnvironmentAccountConnectionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEnvironmentAccountConnectionsInput,
-  ) => stream.Stream<
-    ListEnvironmentAccountConnectionsOutput,
-    ListEnvironmentAccountConnectionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEnvironmentAccountConnectionsInput,
-  ) => stream.Stream<
-    EnvironmentAccountConnectionSummary,
-    ListEnvironmentAccountConnectionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  EnvironmentAccountConnectionSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEnvironmentAccountConnectionsInput,
   output: ListEnvironmentAccountConnectionsOutput,
   errors: [
@@ -5594,27 +5523,13 @@ export type ListEnvironmentOutputsError =
 /**
  * List the infrastructure as code outputs for your environment.
  */
-export const listEnvironmentOutputs: API.OperationMethod<
+export const listEnvironmentOutputs: API.PaginatedOperationMethod<
   ListEnvironmentOutputsInput,
   ListEnvironmentOutputsOutput,
   ListEnvironmentOutputsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEnvironmentOutputsInput,
-  ) => stream.Stream<
-    ListEnvironmentOutputsOutput,
-    ListEnvironmentOutputsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEnvironmentOutputsInput,
-  ) => stream.Stream<
-    Output,
-    ListEnvironmentOutputsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Output
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEnvironmentOutputsInput,
   output: ListEnvironmentOutputsOutput,
   errors: [
@@ -5644,27 +5559,13 @@ export type ListEnvironmentProvisionedResourcesError =
 /**
  * List the provisioned resources for your environment.
  */
-export const listEnvironmentProvisionedResources: API.OperationMethod<
+export const listEnvironmentProvisionedResources: API.PaginatedOperationMethod<
   ListEnvironmentProvisionedResourcesInput,
   ListEnvironmentProvisionedResourcesOutput,
   ListEnvironmentProvisionedResourcesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEnvironmentProvisionedResourcesInput,
-  ) => stream.Stream<
-    ListEnvironmentProvisionedResourcesOutput,
-    ListEnvironmentProvisionedResourcesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEnvironmentProvisionedResourcesInput,
-  ) => stream.Stream<
-    ProvisionedResource,
-    ListEnvironmentProvisionedResourcesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ProvisionedResource
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEnvironmentProvisionedResourcesInput,
   output: ListEnvironmentProvisionedResourcesOutput,
   errors: [
@@ -5694,27 +5595,13 @@ export type ListEnvironmentsError =
 /**
  * List environments with detail data summaries.
  */
-export const listEnvironments: API.OperationMethod<
+export const listEnvironments: API.PaginatedOperationMethod<
   ListEnvironmentsInput,
   ListEnvironmentsOutput,
   ListEnvironmentsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEnvironmentsInput,
-  ) => stream.Stream<
-    ListEnvironmentsOutput,
-    ListEnvironmentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEnvironmentsInput,
-  ) => stream.Stream<
-    EnvironmentSummary,
-    ListEnvironmentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  EnvironmentSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEnvironmentsInput,
   output: ListEnvironmentsOutput,
   errors: [
@@ -5744,27 +5631,13 @@ export type ListEnvironmentTemplatesError =
 /**
  * List environment templates.
  */
-export const listEnvironmentTemplates: API.OperationMethod<
+export const listEnvironmentTemplates: API.PaginatedOperationMethod<
   ListEnvironmentTemplatesInput,
   ListEnvironmentTemplatesOutput,
   ListEnvironmentTemplatesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEnvironmentTemplatesInput,
-  ) => stream.Stream<
-    ListEnvironmentTemplatesOutput,
-    ListEnvironmentTemplatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEnvironmentTemplatesInput,
-  ) => stream.Stream<
-    EnvironmentTemplateSummary,
-    ListEnvironmentTemplatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  EnvironmentTemplateSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEnvironmentTemplatesInput,
   output: ListEnvironmentTemplatesOutput,
   errors: [
@@ -5794,27 +5667,13 @@ export type ListEnvironmentTemplateVersionsError =
 /**
  * List major or minor versions of an environment template with detail data.
  */
-export const listEnvironmentTemplateVersions: API.OperationMethod<
+export const listEnvironmentTemplateVersions: API.PaginatedOperationMethod<
   ListEnvironmentTemplateVersionsInput,
   ListEnvironmentTemplateVersionsOutput,
   ListEnvironmentTemplateVersionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEnvironmentTemplateVersionsInput,
-  ) => stream.Stream<
-    ListEnvironmentTemplateVersionsOutput,
-    ListEnvironmentTemplateVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEnvironmentTemplateVersionsInput,
-  ) => stream.Stream<
-    EnvironmentTemplateVersionSummary,
-    ListEnvironmentTemplateVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  EnvironmentTemplateVersionSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEnvironmentTemplateVersionsInput,
   output: ListEnvironmentTemplateVersionsOutput,
   errors: [
@@ -5845,27 +5704,13 @@ export type ListRepositoriesError =
 /**
  * List linked repositories with detail data.
  */
-export const listRepositories: API.OperationMethod<
+export const listRepositories: API.PaginatedOperationMethod<
   ListRepositoriesInput,
   ListRepositoriesOutput,
   ListRepositoriesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRepositoriesInput,
-  ) => stream.Stream<
-    ListRepositoriesOutput,
-    ListRepositoriesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRepositoriesInput,
-  ) => stream.Stream<
-    RepositorySummary,
-    ListRepositoriesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  RepositorySummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRepositoriesInput,
   output: ListRepositoriesOutput,
   errors: [
@@ -5895,27 +5740,13 @@ export type ListRepositorySyncDefinitionsError =
 /**
  * List repository sync definitions with detail data.
  */
-export const listRepositorySyncDefinitions: API.OperationMethod<
+export const listRepositorySyncDefinitions: API.PaginatedOperationMethod<
   ListRepositorySyncDefinitionsInput,
   ListRepositorySyncDefinitionsOutput,
   ListRepositorySyncDefinitionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRepositorySyncDefinitionsInput,
-  ) => stream.Stream<
-    ListRepositorySyncDefinitionsOutput,
-    ListRepositorySyncDefinitionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRepositorySyncDefinitionsInput,
-  ) => stream.Stream<
-    RepositorySyncDefinition,
-    ListRepositorySyncDefinitionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  RepositorySyncDefinition
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRepositorySyncDefinitionsInput,
   output: ListRepositorySyncDefinitionsOutput,
   errors: [
@@ -5944,27 +5775,13 @@ export type ListServiceInstanceOutputsError =
 /**
  * Get a list service of instance Infrastructure as Code (IaC) outputs.
  */
-export const listServiceInstanceOutputs: API.OperationMethod<
+export const listServiceInstanceOutputs: API.PaginatedOperationMethod<
   ListServiceInstanceOutputsInput,
   ListServiceInstanceOutputsOutput,
   ListServiceInstanceOutputsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListServiceInstanceOutputsInput,
-  ) => stream.Stream<
-    ListServiceInstanceOutputsOutput,
-    ListServiceInstanceOutputsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListServiceInstanceOutputsInput,
-  ) => stream.Stream<
-    Output,
-    ListServiceInstanceOutputsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Output
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListServiceInstanceOutputsInput,
   output: ListServiceInstanceOutputsOutput,
   errors: [
@@ -5994,27 +5811,13 @@ export type ListServiceInstanceProvisionedResourcesError =
 /**
  * List provisioned resources for a service instance with details.
  */
-export const listServiceInstanceProvisionedResources: API.OperationMethod<
+export const listServiceInstanceProvisionedResources: API.PaginatedOperationMethod<
   ListServiceInstanceProvisionedResourcesInput,
   ListServiceInstanceProvisionedResourcesOutput,
   ListServiceInstanceProvisionedResourcesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListServiceInstanceProvisionedResourcesInput,
-  ) => stream.Stream<
-    ListServiceInstanceProvisionedResourcesOutput,
-    ListServiceInstanceProvisionedResourcesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListServiceInstanceProvisionedResourcesInput,
-  ) => stream.Stream<
-    ProvisionedResource,
-    ListServiceInstanceProvisionedResourcesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ProvisionedResource
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListServiceInstanceProvisionedResourcesInput,
   output: ListServiceInstanceProvisionedResourcesOutput,
   errors: [
@@ -6045,27 +5848,13 @@ export type ListServiceInstancesError =
  * List service instances with summary data. This action lists service instances of all
  * services in the Amazon Web Services account.
  */
-export const listServiceInstances: API.OperationMethod<
+export const listServiceInstances: API.PaginatedOperationMethod<
   ListServiceInstancesInput,
   ListServiceInstancesOutput,
   ListServiceInstancesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListServiceInstancesInput,
-  ) => stream.Stream<
-    ListServiceInstancesOutput,
-    ListServiceInstancesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListServiceInstancesInput,
-  ) => stream.Stream<
-    ServiceInstanceSummary,
-    ListServiceInstancesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ServiceInstanceSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListServiceInstancesInput,
   output: ListServiceInstancesOutput,
   errors: [
@@ -6096,27 +5885,13 @@ export type ListServicePipelineOutputsError =
 /**
  * Get a list of service pipeline Infrastructure as Code (IaC) outputs.
  */
-export const listServicePipelineOutputs: API.OperationMethod<
+export const listServicePipelineOutputs: API.PaginatedOperationMethod<
   ListServicePipelineOutputsInput,
   ListServicePipelineOutputsOutput,
   ListServicePipelineOutputsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListServicePipelineOutputsInput,
-  ) => stream.Stream<
-    ListServicePipelineOutputsOutput,
-    ListServicePipelineOutputsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListServicePipelineOutputsInput,
-  ) => stream.Stream<
-    Output,
-    ListServicePipelineOutputsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Output
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListServicePipelineOutputsInput,
   output: ListServicePipelineOutputsOutput,
   errors: [
@@ -6146,27 +5921,13 @@ export type ListServicePipelineProvisionedResourcesError =
 /**
  * List provisioned resources for a service and pipeline with details.
  */
-export const listServicePipelineProvisionedResources: API.OperationMethod<
+export const listServicePipelineProvisionedResources: API.PaginatedOperationMethod<
   ListServicePipelineProvisionedResourcesInput,
   ListServicePipelineProvisionedResourcesOutput,
   ListServicePipelineProvisionedResourcesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListServicePipelineProvisionedResourcesInput,
-  ) => stream.Stream<
-    ListServicePipelineProvisionedResourcesOutput,
-    ListServicePipelineProvisionedResourcesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListServicePipelineProvisionedResourcesInput,
-  ) => stream.Stream<
-    ProvisionedResource,
-    ListServicePipelineProvisionedResourcesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ProvisionedResource
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListServicePipelineProvisionedResourcesInput,
   output: ListServicePipelineProvisionedResourcesOutput,
   errors: [
@@ -6195,27 +5956,13 @@ export type ListServicesError =
 /**
  * List services with summaries of detail data.
  */
-export const listServices: API.OperationMethod<
+export const listServices: API.PaginatedOperationMethod<
   ListServicesInput,
   ListServicesOutput,
   ListServicesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListServicesInput,
-  ) => stream.Stream<
-    ListServicesOutput,
-    ListServicesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListServicesInput,
-  ) => stream.Stream<
-    ServiceSummary,
-    ListServicesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ServiceSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListServicesInput,
   output: ListServicesOutput,
   errors: [
@@ -6244,27 +5991,13 @@ export type ListServiceTemplatesError =
 /**
  * List service templates with detail data.
  */
-export const listServiceTemplates: API.OperationMethod<
+export const listServiceTemplates: API.PaginatedOperationMethod<
   ListServiceTemplatesInput,
   ListServiceTemplatesOutput,
   ListServiceTemplatesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListServiceTemplatesInput,
-  ) => stream.Stream<
-    ListServiceTemplatesOutput,
-    ListServiceTemplatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListServiceTemplatesInput,
-  ) => stream.Stream<
-    ServiceTemplateSummary,
-    ListServiceTemplatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ServiceTemplateSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListServiceTemplatesInput,
   output: ListServiceTemplatesOutput,
   errors: [
@@ -6294,27 +6027,13 @@ export type ListServiceTemplateVersionsError =
 /**
  * List major or minor versions of a service template with detail data.
  */
-export const listServiceTemplateVersions: API.OperationMethod<
+export const listServiceTemplateVersions: API.PaginatedOperationMethod<
   ListServiceTemplateVersionsInput,
   ListServiceTemplateVersionsOutput,
   ListServiceTemplateVersionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListServiceTemplateVersionsInput,
-  ) => stream.Stream<
-    ListServiceTemplateVersionsOutput,
-    ListServiceTemplateVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListServiceTemplateVersionsInput,
-  ) => stream.Stream<
-    ServiceTemplateVersionSummary,
-    ListServiceTemplateVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ServiceTemplateVersionSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListServiceTemplateVersionsInput,
   output: ListServiceTemplateVersionsOutput,
   errors: [
@@ -6346,27 +6065,13 @@ export type ListTagsForResourceError =
  * List tags for a resource. For more information, see Proton
  * resources and tagging in the *Proton User Guide*.
  */
-export const listTagsForResource: API.OperationMethod<
+export const listTagsForResource: API.PaginatedOperationMethod<
   ListTagsForResourceInput,
   ListTagsForResourceOutput,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTagsForResourceInput,
-  ) => stream.Stream<
-    ListTagsForResourceOutput,
-    ListTagsForResourceError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTagsForResourceInput,
-  ) => stream.Stream<
-    Tag,
-    ListTagsForResourceError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Tag
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTagsForResourceInput,
   output: ListTagsForResourceOutput,
   errors: [

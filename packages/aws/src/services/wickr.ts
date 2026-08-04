@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -3432,27 +3431,13 @@ export type ListBlockedGuestUsersError =
 /**
  * Retrieves a paginated list of guest users who have been blocked from a Wickr network. You can filter and sort the results.
  */
-export const listBlockedGuestUsers: API.OperationMethod<
+export const listBlockedGuestUsers: API.PaginatedOperationMethod<
   ListBlockedGuestUsersRequest,
   ListBlockedGuestUsersResponse,
   ListBlockedGuestUsersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListBlockedGuestUsersRequest,
-  ) => stream.Stream<
-    ListBlockedGuestUsersResponse,
-    ListBlockedGuestUsersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListBlockedGuestUsersRequest,
-  ) => stream.Stream<
-    BlockedGuestUser,
-    ListBlockedGuestUsersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  BlockedGuestUser
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBlockedGuestUsersRequest,
   output: ListBlockedGuestUsersResponse,
   errors: [
@@ -3487,27 +3472,13 @@ export type ListBotsError =
 /**
  * Retrieves a paginated list of bots in a specified Wickr network. You can filter and sort the results based on various criteria.
  */
-export const listBots: API.OperationMethod<
+export const listBots: API.PaginatedOperationMethod<
   ListBotsRequest,
   ListBotsResponse,
   ListBotsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListBotsRequest,
-  ) => stream.Stream<
-    ListBotsResponse,
-    ListBotsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListBotsRequest,
-  ) => stream.Stream<
-    Bot,
-    ListBotsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Bot
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBotsRequest,
   output: ListBotsResponse,
   errors: [
@@ -3542,27 +3513,13 @@ export type ListDevicesForUserError =
 /**
  * Retrieves a paginated list of devices associated with a specific user in a Wickr network. This operation returns information about all devices where the user has logged into Wickr.
  */
-export const listDevicesForUser: API.OperationMethod<
+export const listDevicesForUser: API.PaginatedOperationMethod<
   ListDevicesForUserRequest,
   ListDevicesForUserResponse,
   ListDevicesForUserError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDevicesForUserRequest,
-  ) => stream.Stream<
-    ListDevicesForUserResponse,
-    ListDevicesForUserError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDevicesForUserRequest,
-  ) => stream.Stream<
-    BasicDeviceObject,
-    ListDevicesForUserError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  BasicDeviceObject
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDevicesForUserRequest,
   output: ListDevicesForUserResponse,
   errors: [
@@ -3597,27 +3554,13 @@ export type ListGuestUsersError =
 /**
  * Retrieves a paginated list of guest users who have communicated with your Wickr network. Guest users are external users from federated networks who can communicate with network members.
  */
-export const listGuestUsers: API.OperationMethod<
+export const listGuestUsers: API.PaginatedOperationMethod<
   ListGuestUsersRequest,
   ListGuestUsersResponse,
   ListGuestUsersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListGuestUsersRequest,
-  ) => stream.Stream<
-    ListGuestUsersResponse,
-    ListGuestUsersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListGuestUsersRequest,
-  ) => stream.Stream<
-    GuestUser,
-    ListGuestUsersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  GuestUser
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListGuestUsersRequest,
   output: ListGuestUsersResponse,
   errors: [
@@ -3651,27 +3594,13 @@ export type ListNetworksError =
 /**
  * Retrieves a paginated list of all Wickr networks associated with your Amazon Web Services account. You can sort the results by network ID or name.
  */
-export const listNetworks: API.OperationMethod<
+export const listNetworks: API.PaginatedOperationMethod<
   ListNetworksRequest,
   ListNetworksResponse,
   ListNetworksError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListNetworksRequest,
-  ) => stream.Stream<
-    ListNetworksResponse,
-    ListNetworksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListNetworksRequest,
-  ) => stream.Stream<
-    Network,
-    ListNetworksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Network
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListNetworksRequest,
   output: ListNetworksResponse,
   errors: [
@@ -3705,27 +3634,13 @@ export type ListSecurityGroupsError =
 /**
  * Retrieves a paginated list of security groups in a specified Wickr network. You can sort the results by various criteria.
  */
-export const listSecurityGroups: API.OperationMethod<
+export const listSecurityGroups: API.PaginatedOperationMethod<
   ListSecurityGroupsRequest,
   ListSecurityGroupsResponse,
   ListSecurityGroupsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSecurityGroupsRequest,
-  ) => stream.Stream<
-    ListSecurityGroupsResponse,
-    ListSecurityGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSecurityGroupsRequest,
-  ) => stream.Stream<
-    SecurityGroup,
-    ListSecurityGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  SecurityGroup
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSecurityGroupsRequest,
   output: ListSecurityGroupsResponse,
   errors: [
@@ -3760,27 +3675,13 @@ export type ListSecurityGroupUsersError =
 /**
  * Retrieves a paginated list of users who belong to a specific security group in a Wickr network.
  */
-export const listSecurityGroupUsers: API.OperationMethod<
+export const listSecurityGroupUsers: API.PaginatedOperationMethod<
   ListSecurityGroupUsersRequest,
   ListSecurityGroupUsersResponse,
   ListSecurityGroupUsersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSecurityGroupUsersRequest,
-  ) => stream.Stream<
-    ListSecurityGroupUsersResponse,
-    ListSecurityGroupUsersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSecurityGroupUsersRequest,
-  ) => stream.Stream<
-    User,
-    ListSecurityGroupUsersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  User
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSecurityGroupUsersRequest,
   output: ListSecurityGroupUsersResponse,
   errors: [
@@ -3815,27 +3716,13 @@ export type ListUsersError =
 /**
  * Retrieves a paginated list of users in a specified Wickr network. You can filter and sort the results based on various criteria such as name, status, or security group membership.
  */
-export const listUsers: API.OperationMethod<
+export const listUsers: API.PaginatedOperationMethod<
   ListUsersRequest,
   ListUsersResponse,
   ListUsersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListUsersRequest,
-  ) => stream.Stream<
-    ListUsersResponse,
-    ListUsersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListUsersRequest,
-  ) => stream.Stream<
-    User,
-    ListUsersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  User
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListUsersRequest,
   output: ListUsersResponse,
   errors: [

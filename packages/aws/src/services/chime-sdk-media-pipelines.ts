@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -3376,27 +3375,13 @@ export type ListMediaCapturePipelinesError =
 /**
  * Returns a list of media pipelines.
  */
-export const listMediaCapturePipelines: API.OperationMethod<
+export const listMediaCapturePipelines: API.PaginatedOperationMethod<
   ListMediaCapturePipelinesRequest,
   ListMediaCapturePipelinesResponse,
   ListMediaCapturePipelinesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListMediaCapturePipelinesRequest,
-  ) => stream.Stream<
-    ListMediaCapturePipelinesResponse,
-    ListMediaCapturePipelinesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListMediaCapturePipelinesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListMediaCapturePipelinesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMediaCapturePipelinesRequest,
   output: ListMediaCapturePipelinesResponse,
   errors: [
@@ -3430,27 +3415,13 @@ export type ListMediaInsightsPipelineConfigurationsError =
 /**
  * Lists the available media insights pipeline configurations.
  */
-export const listMediaInsightsPipelineConfigurations: API.OperationMethod<
+export const listMediaInsightsPipelineConfigurations: API.PaginatedOperationMethod<
   ListMediaInsightsPipelineConfigurationsRequest,
   ListMediaInsightsPipelineConfigurationsResponse,
   ListMediaInsightsPipelineConfigurationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListMediaInsightsPipelineConfigurationsRequest,
-  ) => stream.Stream<
-    ListMediaInsightsPipelineConfigurationsResponse,
-    ListMediaInsightsPipelineConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListMediaInsightsPipelineConfigurationsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListMediaInsightsPipelineConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMediaInsightsPipelineConfigurationsRequest,
   output: ListMediaInsightsPipelineConfigurationsResponse,
   errors: [
@@ -3484,27 +3455,13 @@ export type ListMediaPipelineKinesisVideoStreamPoolsError =
 /**
  * Lists the video stream pools in the media pipeline.
  */
-export const listMediaPipelineKinesisVideoStreamPools: API.OperationMethod<
+export const listMediaPipelineKinesisVideoStreamPools: API.PaginatedOperationMethod<
   ListMediaPipelineKinesisVideoStreamPoolsRequest,
   ListMediaPipelineKinesisVideoStreamPoolsResponse,
   ListMediaPipelineKinesisVideoStreamPoolsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListMediaPipelineKinesisVideoStreamPoolsRequest,
-  ) => stream.Stream<
-    ListMediaPipelineKinesisVideoStreamPoolsResponse,
-    ListMediaPipelineKinesisVideoStreamPoolsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListMediaPipelineKinesisVideoStreamPoolsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListMediaPipelineKinesisVideoStreamPoolsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMediaPipelineKinesisVideoStreamPoolsRequest,
   output: ListMediaPipelineKinesisVideoStreamPoolsResponse,
   errors: [
@@ -3538,27 +3495,13 @@ export type ListMediaPipelinesError =
 /**
  * Returns a list of media pipelines.
  */
-export const listMediaPipelines: API.OperationMethod<
+export const listMediaPipelines: API.PaginatedOperationMethod<
   ListMediaPipelinesRequest,
   ListMediaPipelinesResponse,
   ListMediaPipelinesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListMediaPipelinesRequest,
-  ) => stream.Stream<
-    ListMediaPipelinesResponse,
-    ListMediaPipelinesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListMediaPipelinesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListMediaPipelinesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMediaPipelinesRequest,
   output: ListMediaPipelinesResponse,
   errors: [

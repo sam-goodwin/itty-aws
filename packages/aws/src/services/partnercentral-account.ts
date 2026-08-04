@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -2272,27 +2271,13 @@ export type ListConnectionInvitationsError =
 /**
  * Lists connection invitations for the partner account, with optional filtering by status, type, and other criteria.
  */
-export const listConnectionInvitations: API.OperationMethod<
+export const listConnectionInvitations: API.PaginatedOperationMethod<
   ListConnectionInvitationsRequest,
   ListConnectionInvitationsResponse,
   ListConnectionInvitationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListConnectionInvitationsRequest,
-  ) => stream.Stream<
-    ListConnectionInvitationsResponse,
-    ListConnectionInvitationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListConnectionInvitationsRequest,
-  ) => stream.Stream<
-    ConnectionInvitationSummary,
-    ListConnectionInvitationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ConnectionInvitationSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListConnectionInvitationsRequest,
   output: ListConnectionInvitationsResponse,
   errors: [
@@ -2321,27 +2306,13 @@ export type ListConnectionsError =
 /**
  * Lists active connections for the partner account, with optional filtering by connection type and participant.
  */
-export const listConnections: API.OperationMethod<
+export const listConnections: API.PaginatedOperationMethod<
   ListConnectionsRequest,
   ListConnectionsResponse,
   ListConnectionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListConnectionsRequest,
-  ) => stream.Stream<
-    ListConnectionsResponse,
-    ListConnectionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListConnectionsRequest,
-  ) => stream.Stream<
-    ConnectionSummary,
-    ListConnectionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ConnectionSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListConnectionsRequest,
   output: ListConnectionsResponse,
   errors: [
@@ -2370,27 +2341,13 @@ export type ListPartnersError =
 /**
  * Lists partner accounts in the catalog, providing a summary view of all partners.
  */
-export const listPartners: API.OperationMethod<
+export const listPartners: API.PaginatedOperationMethod<
   ListPartnersRequest,
   ListPartnersResponse,
   ListPartnersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPartnersRequest,
-  ) => stream.Stream<
-    ListPartnersResponse,
-    ListPartnersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPartnersRequest,
-  ) => stream.Stream<
-    PartnerSummary,
-    ListPartnersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  PartnerSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPartnersRequest,
   output: ListPartnersResponse,
   errors: [

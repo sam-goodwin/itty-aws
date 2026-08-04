@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -2470,27 +2469,13 @@ export type ListAccessTokensError = CommonErrors;
 /**
  * Lists all personal access tokens (PATs) associated with the user who calls the API. You can only list PATs associated with your Amazon Web Services Builder ID.
  */
-export const listAccessTokens: API.OperationMethod<
+export const listAccessTokens: API.PaginatedOperationMethod<
   ListAccessTokensRequest,
   ListAccessTokensResponse,
   ListAccessTokensError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAccessTokensRequest,
-  ) => stream.Stream<
-    ListAccessTokensResponse,
-    ListAccessTokensError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAccessTokensRequest,
-  ) => stream.Stream<
-    AccessTokenSummary,
-    ListAccessTokensError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AccessTokenSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccessTokensRequest,
   output: ListAccessTokensResponse,
   errors: [],
@@ -2509,27 +2494,13 @@ export type ListDevEnvironmentsError = CommonErrors;
 /**
  * Retrieves a list of Dev Environments in a project.
  */
-export const listDevEnvironments: API.OperationMethod<
+export const listDevEnvironments: API.PaginatedOperationMethod<
   ListDevEnvironmentsRequest,
   ListDevEnvironmentsResponse,
   ListDevEnvironmentsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDevEnvironmentsRequest,
-  ) => stream.Stream<
-    ListDevEnvironmentsResponse,
-    ListDevEnvironmentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDevEnvironmentsRequest,
-  ) => stream.Stream<
-    DevEnvironmentSummary,
-    ListDevEnvironmentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  DevEnvironmentSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDevEnvironmentsRequest,
   output: ListDevEnvironmentsResponse,
   errors: [],
@@ -2548,27 +2519,13 @@ export type ListDevEnvironmentSessionsError = CommonErrors;
 /**
  * Retrieves a list of active sessions for a Dev Environment in a project.
  */
-export const listDevEnvironmentSessions: API.OperationMethod<
+export const listDevEnvironmentSessions: API.PaginatedOperationMethod<
   ListDevEnvironmentSessionsRequest,
   ListDevEnvironmentSessionsResponse,
   ListDevEnvironmentSessionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDevEnvironmentSessionsRequest,
-  ) => stream.Stream<
-    ListDevEnvironmentSessionsResponse,
-    ListDevEnvironmentSessionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDevEnvironmentSessionsRequest,
-  ) => stream.Stream<
-    DevEnvironmentSessionSummary,
-    ListDevEnvironmentSessionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  DevEnvironmentSessionSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDevEnvironmentSessionsRequest,
   output: ListDevEnvironmentSessionsResponse,
   errors: [],
@@ -2595,27 +2552,13 @@ export type ListEventLogsError = CommonErrors;
  * and maintain a record of events that extends past 90 days. For more information, see Working with CloudTrail Event History and Working with
  * CloudTrail trails.
  */
-export const listEventLogs: API.OperationMethod<
+export const listEventLogs: API.PaginatedOperationMethod<
   ListEventLogsRequest,
   ListEventLogsResponse,
   ListEventLogsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEventLogsRequest,
-  ) => stream.Stream<
-    ListEventLogsResponse,
-    ListEventLogsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEventLogsRequest,
-  ) => stream.Stream<
-    EventLogEntry,
-    ListEventLogsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  EventLogEntry
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEventLogsRequest,
   output: ListEventLogsResponse,
   errors: [],
@@ -2634,27 +2577,13 @@ export type ListProjectsError = CommonErrors;
 /**
  * Retrieves a list of projects.
  */
-export const listProjects: API.OperationMethod<
+export const listProjects: API.PaginatedOperationMethod<
   ListProjectsRequest,
   ListProjectsResponse,
   ListProjectsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListProjectsRequest,
-  ) => stream.Stream<
-    ListProjectsResponse,
-    ListProjectsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListProjectsRequest,
-  ) => stream.Stream<
-    ProjectSummary,
-    ListProjectsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ProjectSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsRequest,
   output: ListProjectsResponse,
   errors: [],
@@ -2673,27 +2602,13 @@ export type ListSourceRepositoriesError = CommonErrors;
 /**
  * Retrieves a list of source repositories in a project.
  */
-export const listSourceRepositories: API.OperationMethod<
+export const listSourceRepositories: API.PaginatedOperationMethod<
   ListSourceRepositoriesRequest,
   ListSourceRepositoriesResponse,
   ListSourceRepositoriesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSourceRepositoriesRequest,
-  ) => stream.Stream<
-    ListSourceRepositoriesResponse,
-    ListSourceRepositoriesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSourceRepositoriesRequest,
-  ) => stream.Stream<
-    ListSourceRepositoriesItem,
-    ListSourceRepositoriesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ListSourceRepositoriesItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSourceRepositoriesRequest,
   output: ListSourceRepositoriesResponse,
   errors: [],
@@ -2712,27 +2627,13 @@ export type ListSourceRepositoryBranchesError = CommonErrors;
 /**
  * Retrieves a list of branches in a specified source repository.
  */
-export const listSourceRepositoryBranches: API.OperationMethod<
+export const listSourceRepositoryBranches: API.PaginatedOperationMethod<
   ListSourceRepositoryBranchesRequest,
   ListSourceRepositoryBranchesResponse,
   ListSourceRepositoryBranchesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSourceRepositoryBranchesRequest,
-  ) => stream.Stream<
-    ListSourceRepositoryBranchesResponse,
-    ListSourceRepositoryBranchesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSourceRepositoryBranchesRequest,
-  ) => stream.Stream<
-    ListSourceRepositoryBranchesItem,
-    ListSourceRepositoryBranchesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ListSourceRepositoryBranchesItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSourceRepositoryBranchesRequest,
   output: ListSourceRepositoryBranchesResponse,
   errors: [],
@@ -2751,27 +2652,13 @@ export type ListSpacesError = CommonErrors;
 /**
  * Retrieves a list of spaces.
  */
-export const listSpaces: API.OperationMethod<
+export const listSpaces: API.PaginatedOperationMethod<
   ListSpacesRequest,
   ListSpacesResponse,
   ListSpacesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSpacesRequest,
-  ) => stream.Stream<
-    ListSpacesResponse,
-    ListSpacesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSpacesRequest,
-  ) => stream.Stream<
-    SpaceSummary,
-    ListSpacesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  SpaceSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSpacesRequest,
   output: ListSpacesResponse,
   errors: [],
@@ -2789,27 +2676,13 @@ export type ListWorkflowRunsError = CommonErrors;
 /**
  * Retrieves a list of workflow runs of a specified workflow.
  */
-export const listWorkflowRuns: API.OperationMethod<
+export const listWorkflowRuns: API.PaginatedOperationMethod<
   ListWorkflowRunsRequest,
   ListWorkflowRunsResponse,
   ListWorkflowRunsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListWorkflowRunsRequest,
-  ) => stream.Stream<
-    ListWorkflowRunsResponse,
-    ListWorkflowRunsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListWorkflowRunsRequest,
-  ) => stream.Stream<
-    WorkflowRunSummary,
-    ListWorkflowRunsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  WorkflowRunSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListWorkflowRunsRequest,
   output: ListWorkflowRunsResponse,
   errors: [],
@@ -2828,27 +2701,13 @@ export type ListWorkflowsError = CommonErrors;
 /**
  * Retrieves a list of workflows in a specified project.
  */
-export const listWorkflows: API.OperationMethod<
+export const listWorkflows: API.PaginatedOperationMethod<
   ListWorkflowsRequest,
   ListWorkflowsResponse,
   ListWorkflowsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListWorkflowsRequest,
-  ) => stream.Stream<
-    ListWorkflowsResponse,
-    ListWorkflowsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListWorkflowsRequest,
-  ) => stream.Stream<
-    WorkflowSummary,
-    ListWorkflowsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  WorkflowSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListWorkflowsRequest,
   output: ListWorkflowsResponse,
   errors: [],

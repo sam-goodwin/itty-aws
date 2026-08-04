@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -4675,27 +4674,13 @@ export type GetVehicleStatusError =
  * Retrieves information about the status of campaigns, decoder manifests, or state templates
  * associated with a vehicle.
  */
-export const getVehicleStatus: API.OperationMethod<
+export const getVehicleStatus: API.PaginatedOperationMethod<
   GetVehicleStatusRequest,
   GetVehicleStatusResponse,
   GetVehicleStatusError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetVehicleStatusRequest,
-  ) => stream.Stream<
-    GetVehicleStatusResponse,
-    GetVehicleStatusError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetVehicleStatusRequest,
-  ) => stream.Stream<
-    VehicleStatus,
-    GetVehicleStatusError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  VehicleStatus
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetVehicleStatusRequest,
   output: GetVehicleStatusResponse,
   errors: [
@@ -4798,27 +4783,13 @@ export type ListCampaignsError =
  *
  * This API operation uses pagination. Specify the `nextToken` parameter in the request to return more results.
  */
-export const listCampaigns: API.OperationMethod<
+export const listCampaigns: API.PaginatedOperationMethod<
   ListCampaignsRequest,
   ListCampaignsResponse,
   ListCampaignsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCampaignsRequest,
-  ) => stream.Stream<
-    ListCampaignsResponse,
-    ListCampaignsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCampaignsRequest,
-  ) => stream.Stream<
-    CampaignSummary,
-    ListCampaignsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  CampaignSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCampaignsRequest,
   output: ListCampaignsResponse,
   errors: [AccessDeniedException, ThrottlingException, ValidationException],
@@ -4845,27 +4816,13 @@ export type ListDecoderManifestNetworkInterfacesError =
  *
  * This API operation uses pagination. Specify the `nextToken` parameter in the request to return more results.
  */
-export const listDecoderManifestNetworkInterfaces: API.OperationMethod<
+export const listDecoderManifestNetworkInterfaces: API.PaginatedOperationMethod<
   ListDecoderManifestNetworkInterfacesRequest,
   ListDecoderManifestNetworkInterfacesResponse,
   ListDecoderManifestNetworkInterfacesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDecoderManifestNetworkInterfacesRequest,
-  ) => stream.Stream<
-    ListDecoderManifestNetworkInterfacesResponse,
-    ListDecoderManifestNetworkInterfacesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDecoderManifestNetworkInterfacesRequest,
-  ) => stream.Stream<
-    NetworkInterface,
-    ListDecoderManifestNetworkInterfacesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  NetworkInterface
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDecoderManifestNetworkInterfacesRequest,
   output: ListDecoderManifestNetworkInterfacesResponse,
   errors: [
@@ -4897,27 +4854,13 @@ export type ListDecoderManifestsError =
  *
  * This API operation uses pagination. Specify the `nextToken` parameter in the request to return more results.
  */
-export const listDecoderManifests: API.OperationMethod<
+export const listDecoderManifests: API.PaginatedOperationMethod<
   ListDecoderManifestsRequest,
   ListDecoderManifestsResponse,
   ListDecoderManifestsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDecoderManifestsRequest,
-  ) => stream.Stream<
-    ListDecoderManifestsResponse,
-    ListDecoderManifestsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDecoderManifestsRequest,
-  ) => stream.Stream<
-    DecoderManifestSummary,
-    ListDecoderManifestsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  DecoderManifestSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDecoderManifestsRequest,
   output: ListDecoderManifestsResponse,
   errors: [
@@ -4949,27 +4892,13 @@ export type ListDecoderManifestSignalsError =
  *
  * This API operation uses pagination. Specify the `nextToken` parameter in the request to return more results.
  */
-export const listDecoderManifestSignals: API.OperationMethod<
+export const listDecoderManifestSignals: API.PaginatedOperationMethod<
   ListDecoderManifestSignalsRequest,
   ListDecoderManifestSignalsResponse,
   ListDecoderManifestSignalsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDecoderManifestSignalsRequest,
-  ) => stream.Stream<
-    ListDecoderManifestSignalsResponse,
-    ListDecoderManifestSignalsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDecoderManifestSignalsRequest,
-  ) => stream.Stream<
-    SignalDecoder,
-    ListDecoderManifestSignalsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  SignalDecoder
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDecoderManifestSignalsRequest,
   output: ListDecoderManifestSignalsResponse,
   errors: [
@@ -5002,27 +4931,13 @@ export type ListFleetsError =
  *
  * This API operation uses pagination. Specify the `nextToken` parameter in the request to return more results.
  */
-export const listFleets: API.OperationMethod<
+export const listFleets: API.PaginatedOperationMethod<
   ListFleetsRequest,
   ListFleetsResponse,
   ListFleetsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListFleetsRequest,
-  ) => stream.Stream<
-    ListFleetsResponse,
-    ListFleetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListFleetsRequest,
-  ) => stream.Stream<
-    FleetSummary,
-    ListFleetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  FleetSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFleetsRequest,
   output: ListFleetsResponse,
   errors: [
@@ -5055,27 +4970,13 @@ export type ListFleetsForVehicleError =
  *
  * This API operation uses pagination. Specify the `nextToken` parameter in the request to return more results.
  */
-export const listFleetsForVehicle: API.OperationMethod<
+export const listFleetsForVehicle: API.PaginatedOperationMethod<
   ListFleetsForVehicleRequest,
   ListFleetsForVehicleResponse,
   ListFleetsForVehicleError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListFleetsForVehicleRequest,
-  ) => stream.Stream<
-    ListFleetsForVehicleResponse,
-    ListFleetsForVehicleError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListFleetsForVehicleRequest,
-  ) => stream.Stream<
-    FleetId,
-    ListFleetsForVehicleError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  FleetId
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFleetsForVehicleRequest,
   output: ListFleetsForVehicleResponse,
   errors: [
@@ -5109,27 +5010,13 @@ export type ListModelManifestNodesError =
  *
  * This API operation uses pagination. Specify the `nextToken` parameter in the request to return more results.
  */
-export const listModelManifestNodes: API.OperationMethod<
+export const listModelManifestNodes: API.PaginatedOperationMethod<
   ListModelManifestNodesRequest,
   ListModelManifestNodesResponse,
   ListModelManifestNodesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListModelManifestNodesRequest,
-  ) => stream.Stream<
-    ListModelManifestNodesResponse,
-    ListModelManifestNodesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListModelManifestNodesRequest,
-  ) => stream.Stream<
-    Node,
-    ListModelManifestNodesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Node
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListModelManifestNodesRequest,
   output: ListModelManifestNodesResponse,
   errors: [
@@ -5162,27 +5049,13 @@ export type ListModelManifestsError =
  *
  * This API operation uses pagination. Specify the `nextToken` parameter in the request to return more results.
  */
-export const listModelManifests: API.OperationMethod<
+export const listModelManifests: API.PaginatedOperationMethod<
   ListModelManifestsRequest,
   ListModelManifestsResponse,
   ListModelManifestsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListModelManifestsRequest,
-  ) => stream.Stream<
-    ListModelManifestsResponse,
-    ListModelManifestsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListModelManifestsRequest,
-  ) => stream.Stream<
-    ModelManifestSummary,
-    ListModelManifestsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ModelManifestSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListModelManifestsRequest,
   output: ListModelManifestsResponse,
   errors: [
@@ -5215,27 +5088,13 @@ export type ListSignalCatalogNodesError =
  *
  * This API operation uses pagination. Specify the `nextToken` parameter in the request to return more results.
  */
-export const listSignalCatalogNodes: API.OperationMethod<
+export const listSignalCatalogNodes: API.PaginatedOperationMethod<
   ListSignalCatalogNodesRequest,
   ListSignalCatalogNodesResponse,
   ListSignalCatalogNodesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSignalCatalogNodesRequest,
-  ) => stream.Stream<
-    ListSignalCatalogNodesResponse,
-    ListSignalCatalogNodesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSignalCatalogNodesRequest,
-  ) => stream.Stream<
-    Node,
-    ListSignalCatalogNodesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Node
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSignalCatalogNodesRequest,
   output: ListSignalCatalogNodesResponse,
   errors: [
@@ -5271,27 +5130,13 @@ export type ListSignalCatalogsError =
  *
  * This API operation uses pagination. Specify the `nextToken` parameter in the request to return more results.
  */
-export const listSignalCatalogs: API.OperationMethod<
+export const listSignalCatalogs: API.PaginatedOperationMethod<
   ListSignalCatalogsRequest,
   ListSignalCatalogsResponse,
   ListSignalCatalogsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSignalCatalogsRequest,
-  ) => stream.Stream<
-    ListSignalCatalogsResponse,
-    ListSignalCatalogsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSignalCatalogsRequest,
-  ) => stream.Stream<
-    SignalCatalogSummary,
-    ListSignalCatalogsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  SignalCatalogSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSignalCatalogsRequest,
   output: ListSignalCatalogsResponse,
   errors: [
@@ -5322,27 +5167,13 @@ export type ListStateTemplatesError =
  *
  * Access to certain Amazon Web Services IoT FleetWise features is currently gated. For more information, see Amazon Web Services Region and feature availability in the *Amazon Web Services IoT FleetWise Developer Guide*.
  */
-export const listStateTemplates: API.OperationMethod<
+export const listStateTemplates: API.PaginatedOperationMethod<
   ListStateTemplatesRequest,
   ListStateTemplatesResponse,
   ListStateTemplatesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListStateTemplatesRequest,
-  ) => stream.Stream<
-    ListStateTemplatesResponse,
-    ListStateTemplatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListStateTemplatesRequest,
-  ) => stream.Stream<
-    StateTemplateSummary,
-    ListStateTemplatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  StateTemplateSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListStateTemplatesRequest,
   output: ListStateTemplatesResponse,
   errors: [
@@ -5403,27 +5234,13 @@ export type ListVehiclesError =
  *
  * This API operation uses pagination. Specify the `nextToken` parameter in the request to return more results.
  */
-export const listVehicles: API.OperationMethod<
+export const listVehicles: API.PaginatedOperationMethod<
   ListVehiclesRequest,
   ListVehiclesResponse,
   ListVehiclesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListVehiclesRequest,
-  ) => stream.Stream<
-    ListVehiclesResponse,
-    ListVehiclesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListVehiclesRequest,
-  ) => stream.Stream<
-    VehicleSummary,
-    ListVehiclesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  VehicleSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListVehiclesRequest,
   output: ListVehiclesResponse,
   errors: [
@@ -5455,27 +5272,13 @@ export type ListVehiclesInFleetError =
  *
  * This API operation uses pagination. Specify the `nextToken` parameter in the request to return more results.
  */
-export const listVehiclesInFleet: API.OperationMethod<
+export const listVehiclesInFleet: API.PaginatedOperationMethod<
   ListVehiclesInFleetRequest,
   ListVehiclesInFleetResponse,
   ListVehiclesInFleetError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListVehiclesInFleetRequest,
-  ) => stream.Stream<
-    ListVehiclesInFleetResponse,
-    ListVehiclesInFleetError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListVehiclesInFleetRequest,
-  ) => stream.Stream<
-    VehicleName,
-    ListVehiclesInFleetError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  VehicleName
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListVehiclesInFleetRequest,
   output: ListVehiclesInFleetResponse,
   errors: [

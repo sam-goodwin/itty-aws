@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -5076,27 +5075,13 @@ export type ListBatchInferenceJobsError =
  * Gets a list of the batch inference jobs that have been performed off of a solution
  * version.
  */
-export const listBatchInferenceJobs: API.OperationMethod<
+export const listBatchInferenceJobs: API.PaginatedOperationMethod<
   ListBatchInferenceJobsRequest,
   ListBatchInferenceJobsResponse,
   ListBatchInferenceJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListBatchInferenceJobsRequest,
-  ) => stream.Stream<
-    ListBatchInferenceJobsResponse,
-    ListBatchInferenceJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListBatchInferenceJobsRequest,
-  ) => stream.Stream<
-    BatchInferenceJobSummary,
-    ListBatchInferenceJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  BatchInferenceJobSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBatchInferenceJobsRequest,
   output: ListBatchInferenceJobsResponse,
   errors: [InvalidInputException, InvalidNextTokenException],
@@ -5119,27 +5104,13 @@ export type ListBatchSegmentJobsError =
  * Gets a list of the batch segment jobs that have been performed off of a solution
  * version that you specify.
  */
-export const listBatchSegmentJobs: API.OperationMethod<
+export const listBatchSegmentJobs: API.PaginatedOperationMethod<
   ListBatchSegmentJobsRequest,
   ListBatchSegmentJobsResponse,
   ListBatchSegmentJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListBatchSegmentJobsRequest,
-  ) => stream.Stream<
-    ListBatchSegmentJobsResponse,
-    ListBatchSegmentJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListBatchSegmentJobsRequest,
-  ) => stream.Stream<
-    BatchSegmentJobSummary,
-    ListBatchSegmentJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  BatchSegmentJobSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBatchSegmentJobsRequest,
   output: ListBatchSegmentJobsResponse,
   errors: [InvalidInputException, InvalidNextTokenException],
@@ -5164,27 +5135,13 @@ export type ListCampaignsError =
  * The response provides the properties for each campaign, including the Amazon Resource Name (ARN).
  * For more information on campaigns, see CreateCampaign.
  */
-export const listCampaigns: API.OperationMethod<
+export const listCampaigns: API.PaginatedOperationMethod<
   ListCampaignsRequest,
   ListCampaignsResponse,
   ListCampaignsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCampaignsRequest,
-  ) => stream.Stream<
-    ListCampaignsResponse,
-    ListCampaignsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCampaignsRequest,
-  ) => stream.Stream<
-    CampaignSummary,
-    ListCampaignsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  CampaignSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCampaignsRequest,
   output: ListCampaignsResponse,
   errors: [InvalidInputException, InvalidNextTokenException],
@@ -5238,27 +5195,13 @@ export type ListDatasetExportJobsError =
  * information on dataset export jobs, see CreateDatasetExportJob. For more information on datasets, see
  * CreateDataset.
  */
-export const listDatasetExportJobs: API.OperationMethod<
+export const listDatasetExportJobs: API.PaginatedOperationMethod<
   ListDatasetExportJobsRequest,
   ListDatasetExportJobsResponse,
   ListDatasetExportJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDatasetExportJobsRequest,
-  ) => stream.Stream<
-    ListDatasetExportJobsResponse,
-    ListDatasetExportJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDatasetExportJobsRequest,
-  ) => stream.Stream<
-    DatasetExportJobSummary,
-    ListDatasetExportJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  DatasetExportJobSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDatasetExportJobsRequest,
   output: ListDatasetExportJobsResponse,
   errors: [InvalidInputException, InvalidNextTokenException],
@@ -5279,27 +5222,13 @@ export type ListDatasetGroupsError = InvalidNextTokenException | CommonErrors;
  * for each dataset group, including the Amazon Resource Name (ARN). For more
  * information on dataset groups, see CreateDatasetGroup.
  */
-export const listDatasetGroups: API.OperationMethod<
+export const listDatasetGroups: API.PaginatedOperationMethod<
   ListDatasetGroupsRequest,
   ListDatasetGroupsResponse,
   ListDatasetGroupsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDatasetGroupsRequest,
-  ) => stream.Stream<
-    ListDatasetGroupsResponse,
-    ListDatasetGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDatasetGroupsRequest,
-  ) => stream.Stream<
-    DatasetGroupSummary,
-    ListDatasetGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  DatasetGroupSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDatasetGroupsRequest,
   output: ListDatasetGroupsResponse,
   errors: [InvalidNextTokenException],
@@ -5326,27 +5255,13 @@ export type ListDatasetImportJobsError =
  * information on dataset import jobs, see CreateDatasetImportJob. For more information on datasets, see
  * CreateDataset.
  */
-export const listDatasetImportJobs: API.OperationMethod<
+export const listDatasetImportJobs: API.PaginatedOperationMethod<
   ListDatasetImportJobsRequest,
   ListDatasetImportJobsResponse,
   ListDatasetImportJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDatasetImportJobsRequest,
-  ) => stream.Stream<
-    ListDatasetImportJobsResponse,
-    ListDatasetImportJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDatasetImportJobsRequest,
-  ) => stream.Stream<
-    DatasetImportJobSummary,
-    ListDatasetImportJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  DatasetImportJobSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDatasetImportJobsRequest,
   output: ListDatasetImportJobsResponse,
   errors: [InvalidInputException, InvalidNextTokenException],
@@ -5370,27 +5285,13 @@ export type ListDatasetsError =
  * response provides the properties for each dataset, including the Amazon
  * Resource Name (ARN). For more information on datasets, see CreateDataset.
  */
-export const listDatasets: API.OperationMethod<
+export const listDatasets: API.PaginatedOperationMethod<
   ListDatasetsRequest,
   ListDatasetsResponse,
   ListDatasetsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDatasetsRequest,
-  ) => stream.Stream<
-    ListDatasetsResponse,
-    ListDatasetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDatasetsRequest,
-  ) => stream.Stream<
-    DatasetSummary,
-    ListDatasetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  DatasetSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDatasetsRequest,
   output: ListDatasetsResponse,
   errors: [InvalidInputException, InvalidNextTokenException],
@@ -5415,27 +5316,13 @@ export type ListEventTrackersError =
  * Name (ARN) and tracking ID. For more
  * information on event trackers, see CreateEventTracker.
  */
-export const listEventTrackers: API.OperationMethod<
+export const listEventTrackers: API.PaginatedOperationMethod<
   ListEventTrackersRequest,
   ListEventTrackersResponse,
   ListEventTrackersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEventTrackersRequest,
-  ) => stream.Stream<
-    ListEventTrackersResponse,
-    ListEventTrackersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEventTrackersRequest,
-  ) => stream.Stream<
-    EventTrackerSummary,
-    ListEventTrackersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  EventTrackerSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEventTrackersRequest,
   output: ListEventTrackersResponse,
   errors: [InvalidInputException, InvalidNextTokenException],
@@ -5457,27 +5344,13 @@ export type ListFiltersError =
 /**
  * Lists all filters that belong to a given dataset group.
  */
-export const listFilters: API.OperationMethod<
+export const listFilters: API.PaginatedOperationMethod<
   ListFiltersRequest,
   ListFiltersResponse,
   ListFiltersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListFiltersRequest,
-  ) => stream.Stream<
-    ListFiltersResponse,
-    ListFiltersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListFiltersRequest,
-  ) => stream.Stream<
-    FilterSummary,
-    ListFiltersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  FilterSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFiltersRequest,
   output: ListFiltersResponse,
   errors: [InvalidInputException, InvalidNextTokenException],
@@ -5499,27 +5372,13 @@ export type ListMetricAttributionMetricsError =
 /**
  * Lists the metrics for the metric attribution.
  */
-export const listMetricAttributionMetrics: API.OperationMethod<
+export const listMetricAttributionMetrics: API.PaginatedOperationMethod<
   ListMetricAttributionMetricsRequest,
   ListMetricAttributionMetricsResponse,
   ListMetricAttributionMetricsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListMetricAttributionMetricsRequest,
-  ) => stream.Stream<
-    ListMetricAttributionMetricsResponse,
-    ListMetricAttributionMetricsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListMetricAttributionMetricsRequest,
-  ) => stream.Stream<
-    MetricAttribute,
-    ListMetricAttributionMetricsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  MetricAttribute
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMetricAttributionMetricsRequest,
   output: ListMetricAttributionMetricsResponse,
   errors: [InvalidInputException, InvalidNextTokenException],
@@ -5541,27 +5400,13 @@ export type ListMetricAttributionsError =
 /**
  * Lists metric attributions.
  */
-export const listMetricAttributions: API.OperationMethod<
+export const listMetricAttributions: API.PaginatedOperationMethod<
   ListMetricAttributionsRequest,
   ListMetricAttributionsResponse,
   ListMetricAttributionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListMetricAttributionsRequest,
-  ) => stream.Stream<
-    ListMetricAttributionsResponse,
-    ListMetricAttributionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListMetricAttributionsRequest,
-  ) => stream.Stream<
-    MetricAttributionSummary,
-    ListMetricAttributionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  MetricAttributionSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMetricAttributionsRequest,
   output: ListMetricAttributionsResponse,
   errors: [InvalidInputException, InvalidNextTokenException],
@@ -5584,27 +5429,13 @@ export type ListRecipesError =
  * Returns a list of available recipes. The response provides the properties
  * for each recipe, including the recipe's Amazon Resource Name (ARN).
  */
-export const listRecipes: API.OperationMethod<
+export const listRecipes: API.PaginatedOperationMethod<
   ListRecipesRequest,
   ListRecipesResponse,
   ListRecipesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRecipesRequest,
-  ) => stream.Stream<
-    ListRecipesResponse,
-    ListRecipesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRecipesRequest,
-  ) => stream.Stream<
-    RecipeSummary,
-    ListRecipesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  RecipeSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRecipesRequest,
   output: ListRecipesResponse,
   errors: [InvalidInputException, InvalidNextTokenException],
@@ -5629,27 +5460,13 @@ export type ListRecommendersError =
  * The response provides the properties for each recommender, including the Amazon Resource Name (ARN).
  * For more information on recommenders, see CreateRecommender.
  */
-export const listRecommenders: API.OperationMethod<
+export const listRecommenders: API.PaginatedOperationMethod<
   ListRecommendersRequest,
   ListRecommendersResponse,
   ListRecommendersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRecommendersRequest,
-  ) => stream.Stream<
-    ListRecommendersResponse,
-    ListRecommendersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRecommendersRequest,
-  ) => stream.Stream<
-    RecommenderSummary,
-    ListRecommendersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  RecommenderSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRecommendersRequest,
   output: ListRecommendersResponse,
   errors: [InvalidInputException, InvalidNextTokenException],
@@ -5670,27 +5487,13 @@ export type ListSchemasError = InvalidNextTokenException | CommonErrors;
  * properties for each schema, including the Amazon Resource Name (ARN).
  * For more information on schemas, see CreateSchema.
  */
-export const listSchemas: API.OperationMethod<
+export const listSchemas: API.PaginatedOperationMethod<
   ListSchemasRequest,
   ListSchemasResponse,
   ListSchemasError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSchemasRequest,
-  ) => stream.Stream<
-    ListSchemasResponse,
-    ListSchemasError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSchemasRequest,
-  ) => stream.Stream<
-    DatasetSchemaSummary,
-    ListSchemasError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  DatasetSchemaSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSchemasRequest,
   output: ListSchemasResponse,
   errors: [InvalidNextTokenException],
@@ -5715,27 +5518,13 @@ export type ListSolutionsError =
  * The response provides the properties for each solution, including the Amazon Resource Name (ARN).
  * For more information on solutions, see CreateSolution.
  */
-export const listSolutions: API.OperationMethod<
+export const listSolutions: API.PaginatedOperationMethod<
   ListSolutionsRequest,
   ListSolutionsResponse,
   ListSolutionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSolutionsRequest,
-  ) => stream.Stream<
-    ListSolutionsResponse,
-    ListSolutionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSolutionsRequest,
-  ) => stream.Stream<
-    SolutionSummary,
-    ListSolutionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  SolutionSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSolutionsRequest,
   output: ListSolutionsResponse,
   errors: [InvalidInputException, InvalidNextTokenException],
@@ -5760,27 +5549,13 @@ export type ListSolutionVersionsError =
  * specified, all the solution versions associated with the account are listed. The response
  * provides the properties for each solution version, including the Amazon Resource Name (ARN).
  */
-export const listSolutionVersions: API.OperationMethod<
+export const listSolutionVersions: API.PaginatedOperationMethod<
   ListSolutionVersionsRequest,
   ListSolutionVersionsResponse,
   ListSolutionVersionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSolutionVersionsRequest,
-  ) => stream.Stream<
-    ListSolutionVersionsResponse,
-    ListSolutionVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSolutionVersionsRequest,
-  ) => stream.Stream<
-    SolutionVersionSummary,
-    ListSolutionVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  SolutionVersionSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSolutionVersionsRequest,
   output: ListSolutionVersionsResponse,
   errors: [

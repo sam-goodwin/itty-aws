@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -4828,27 +4827,13 @@ export type DescribeModelVersionsError =
 /**
  * Gets all of the model versions for the specified model type or for the specified model type and model ID. You can also get details for a single, specified model version.
  */
-export const describeModelVersions: API.OperationMethod<
+export const describeModelVersions: API.PaginatedOperationMethod<
   DescribeModelVersionsRequest,
   DescribeModelVersionsResult,
   DescribeModelVersionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeModelVersionsRequest,
-  ) => stream.Stream<
-    DescribeModelVersionsResult,
-    DescribeModelVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeModelVersionsRequest,
-  ) => stream.Stream<
-    unknown,
-    DescribeModelVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeModelVersionsRequest,
   output: DescribeModelVersionsResult,
   errors: [
@@ -4881,27 +4866,13 @@ export type GetBatchImportJobsError =
  * To get the next page results, provide the pagination token from the `GetBatchImportJobsResponse` as part of your request.
  * A null pagination token fetches the records from the beginning.
  */
-export const getBatchImportJobs: API.OperationMethod<
+export const getBatchImportJobs: API.PaginatedOperationMethod<
   GetBatchImportJobsRequest,
   GetBatchImportJobsResult,
   GetBatchImportJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetBatchImportJobsRequest,
-  ) => stream.Stream<
-    GetBatchImportJobsResult,
-    GetBatchImportJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetBatchImportJobsRequest,
-  ) => stream.Stream<
-    unknown,
-    GetBatchImportJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetBatchImportJobsRequest,
   output: GetBatchImportJobsResult,
   errors: [
@@ -4931,27 +4902,13 @@ export type GetBatchPredictionJobsError =
 /**
  * Gets all batch prediction jobs or a specific job if you specify a job ID. This is a paginated API. If you provide a null maxResults, this action retrieves a maximum of 50 records per page. If you provide a maxResults, the value must be between 1 and 50. To get the next page results, provide the pagination token from the GetBatchPredictionJobsResponse as part of your request. A null pagination token fetches the records from the beginning.
  */
-export const getBatchPredictionJobs: API.OperationMethod<
+export const getBatchPredictionJobs: API.PaginatedOperationMethod<
   GetBatchPredictionJobsRequest,
   GetBatchPredictionJobsResult,
   GetBatchPredictionJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetBatchPredictionJobsRequest,
-  ) => stream.Stream<
-    GetBatchPredictionJobsResult,
-    GetBatchPredictionJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetBatchPredictionJobsRequest,
-  ) => stream.Stream<
-    unknown,
-    GetBatchPredictionJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetBatchPredictionJobsRequest,
   output: GetBatchPredictionJobsResult,
   errors: [
@@ -5016,27 +4973,13 @@ export type GetDetectorsError =
  * `GetDetectorsResponse` as part of your request. A null pagination token
  * fetches the records from the beginning.
  */
-export const getDetectors: API.OperationMethod<
+export const getDetectors: API.PaginatedOperationMethod<
   GetDetectorsRequest,
   GetDetectorsResult,
   GetDetectorsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetDetectorsRequest,
-  ) => stream.Stream<
-    GetDetectorsResult,
-    GetDetectorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetDetectorsRequest,
-  ) => stream.Stream<
-    unknown,
-    GetDetectorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetDetectorsRequest,
   output: GetDetectorsResult,
   errors: [
@@ -5101,27 +5044,13 @@ export type GetEntityTypesError =
  * `GetEntityTypesResponse` as part of your request. A null pagination token
  * fetches the records from the beginning.
  */
-export const getEntityTypes: API.OperationMethod<
+export const getEntityTypes: API.PaginatedOperationMethod<
   GetEntityTypesRequest,
   GetEntityTypesResult,
   GetEntityTypesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetEntityTypesRequest,
-  ) => stream.Stream<
-    GetEntityTypesResult,
-    GetEntityTypesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetEntityTypesRequest,
-  ) => stream.Stream<
-    unknown,
-    GetEntityTypesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetEntityTypesRequest,
   output: GetEntityTypesResult,
   errors: [
@@ -5250,27 +5179,13 @@ export type GetEventTypesError =
  * `GetEventTypesResponse` as part of your request. A null pagination token
  * fetches the records from the beginning.
  */
-export const getEventTypes: API.OperationMethod<
+export const getEventTypes: API.PaginatedOperationMethod<
   GetEventTypesRequest,
   GetEventTypesResult,
   GetEventTypesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetEventTypesRequest,
-  ) => stream.Stream<
-    GetEventTypesResult,
-    GetEventTypesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetEventTypesRequest,
-  ) => stream.Stream<
-    unknown,
-    GetEventTypesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetEventTypesRequest,
   output: GetEventTypesResult,
   errors: [
@@ -5305,27 +5220,13 @@ export type GetExternalModelsError =
  * results, provide the pagination token from the `GetExternalModelsResult` as part
  * of your request. A null pagination token fetches the records from the beginning.
  */
-export const getExternalModels: API.OperationMethod<
+export const getExternalModels: API.PaginatedOperationMethod<
   GetExternalModelsRequest,
   GetExternalModelsResult,
   GetExternalModelsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetExternalModelsRequest,
-  ) => stream.Stream<
-    GetExternalModelsResult,
-    GetExternalModelsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetExternalModelsRequest,
-  ) => stream.Stream<
-    unknown,
-    GetExternalModelsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetExternalModelsRequest,
   output: GetExternalModelsResult,
   errors: [
@@ -5388,27 +5289,13 @@ export type GetLabelsError =
  * `GetGetLabelsResponse` as part of your request. A null pagination token
  * fetches the records from the beginning.
  */
-export const getLabels: API.OperationMethod<
+export const getLabels: API.PaginatedOperationMethod<
   GetLabelsRequest,
   GetLabelsResult,
   GetLabelsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetLabelsRequest,
-  ) => stream.Stream<
-    GetLabelsResult,
-    GetLabelsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetLabelsRequest,
-  ) => stream.Stream<
-    unknown,
-    GetLabelsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetLabelsRequest,
   output: GetLabelsResult,
   errors: [
@@ -5438,27 +5325,13 @@ export type GetListElementsError =
 /**
  * Gets all the elements in the specified list.
  */
-export const getListElements: API.OperationMethod<
+export const getListElements: API.PaginatedOperationMethod<
   GetListElementsRequest,
   GetListElementsResult,
   GetListElementsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetListElementsRequest,
-  ) => stream.Stream<
-    GetListElementsResult,
-    GetListElementsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetListElementsRequest,
-  ) => stream.Stream<
-    unknown,
-    GetListElementsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetListElementsRequest,
   output: GetListElementsResult,
   errors: [
@@ -5488,27 +5361,13 @@ export type GetListsMetadataError =
 /**
  * Gets the metadata of either all the lists under the account or the specified list.
  */
-export const getListsMetadata: API.OperationMethod<
+export const getListsMetadata: API.PaginatedOperationMethod<
   GetListsMetadataRequest,
   GetListsMetadataResult,
   GetListsMetadataError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetListsMetadataRequest,
-  ) => stream.Stream<
-    GetListsMetadataResult,
-    GetListsMetadataError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetListsMetadataRequest,
-  ) => stream.Stream<
-    unknown,
-    GetListsMetadataError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetListsMetadataRequest,
   output: GetListsMetadataResult,
   errors: [
@@ -5545,27 +5404,13 @@ export type GetModelsError =
  * response as part of your request. A null pagination token
  * fetches the records from the beginning.
  */
-export const getModels: API.OperationMethod<
+export const getModels: API.PaginatedOperationMethod<
   GetModelsRequest,
   GetModelsResult,
   GetModelsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetModelsRequest,
-  ) => stream.Stream<
-    GetModelsResult,
-    GetModelsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetModelsRequest,
-  ) => stream.Stream<
-    unknown,
-    GetModelsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetModelsRequest,
   output: GetModelsResult,
   errors: [
@@ -5630,27 +5475,13 @@ export type GetOutcomesError =
  * `GetOutcomesResult` as part of your request. A null pagination token
  * fetches the records from the beginning.
  */
-export const getOutcomes: API.OperationMethod<
+export const getOutcomes: API.PaginatedOperationMethod<
   GetOutcomesRequest,
   GetOutcomesResult,
   GetOutcomesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetOutcomesRequest,
-  ) => stream.Stream<
-    GetOutcomesResult,
-    GetOutcomesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetOutcomesRequest,
-  ) => stream.Stream<
-    unknown,
-    GetOutcomesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetOutcomesRequest,
   output: GetOutcomesResult,
   errors: [
@@ -5682,27 +5513,13 @@ export type GetRulesError =
  *
  * This is a paginated API. Providing null maxResults results in retrieving maximum of 100 records per page. If you provide maxResults the value must be between 50 and 100. To get the next page result, a provide a pagination token from GetRulesResult as part of your request. Null pagination token fetches the records from the beginning.
  */
-export const getRules: API.OperationMethod<
+export const getRules: API.PaginatedOperationMethod<
   GetRulesRequest,
   GetRulesResult,
   GetRulesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetRulesRequest,
-  ) => stream.Stream<
-    GetRulesResult,
-    GetRulesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetRulesRequest,
-  ) => stream.Stream<
-    unknown,
-    GetRulesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetRulesRequest,
   output: GetRulesResult,
   errors: [
@@ -5737,27 +5554,13 @@ export type GetVariablesError =
  * `GetVariablesResult` as part of your request. Null pagination token
  * fetches the records from the beginning.
  */
-export const getVariables: API.OperationMethod<
+export const getVariables: API.PaginatedOperationMethod<
   GetVariablesRequest,
   GetVariablesResult,
   GetVariablesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetVariablesRequest,
-  ) => stream.Stream<
-    GetVariablesResult,
-    GetVariablesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetVariablesRequest,
-  ) => stream.Stream<
-    unknown,
-    GetVariablesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetVariablesRequest,
   output: GetVariablesResult,
   errors: [
@@ -5797,27 +5600,13 @@ export type ListEventPredictionsError =
  * If you provide a `maxResults`, the value must be between 50 and 100. To get the next page results, provide
  * the `nextToken` from the response as part of your request. A null `nextToken` fetches the records from the beginning.
  */
-export const listEventPredictions: API.OperationMethod<
+export const listEventPredictions: API.PaginatedOperationMethod<
   ListEventPredictionsRequest,
   ListEventPredictionsResult,
   ListEventPredictionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEventPredictionsRequest,
-  ) => stream.Stream<
-    ListEventPredictionsResult,
-    ListEventPredictionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEventPredictionsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListEventPredictionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEventPredictionsRequest,
   output: ListEventPredictionsResult,
   errors: [
@@ -5847,27 +5636,13 @@ export type ListTagsForResourceError =
  * response as part of your request. A null pagination token
  * fetches the records from the beginning.
  */
-export const listTagsForResource: API.OperationMethod<
+export const listTagsForResource: API.PaginatedOperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResult,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTagsForResourceRequest,
-  ) => stream.Stream<
-    ListTagsForResourceResult,
-    ListTagsForResourceError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTagsForResourceRequest,
-  ) => stream.Stream<
-    unknown,
-    ListTagsForResourceError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResult,
   errors: [

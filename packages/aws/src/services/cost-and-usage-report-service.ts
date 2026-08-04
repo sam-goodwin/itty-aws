@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -420,27 +419,13 @@ export type DescribeReportDefinitionsError =
 /**
  * Lists the Amazon Web Services Cost and Usage Report available to this account.
  */
-export const describeReportDefinitions: API.OperationMethod<
+export const describeReportDefinitions: API.PaginatedOperationMethod<
   DescribeReportDefinitionsRequest,
   DescribeReportDefinitionsResponse,
   DescribeReportDefinitionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeReportDefinitionsRequest,
-  ) => stream.Stream<
-    DescribeReportDefinitionsResponse,
-    DescribeReportDefinitionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeReportDefinitionsRequest,
-  ) => stream.Stream<
-    unknown,
-    DescribeReportDefinitionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeReportDefinitionsRequest,
   output: DescribeReportDefinitionsResponse,
   errors: [InternalErrorException],

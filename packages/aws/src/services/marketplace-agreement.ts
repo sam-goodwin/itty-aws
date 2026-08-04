@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -2702,27 +2701,13 @@ export type GetAgreementEntitlementsError =
 /**
  * Obtains details about the entitlements of an agreement.
  */
-export const getAgreementEntitlements: API.OperationMethod<
+export const getAgreementEntitlements: API.PaginatedOperationMethod<
   GetAgreementEntitlementsInput,
   GetAgreementEntitlementsOutput,
   GetAgreementEntitlementsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetAgreementEntitlementsInput,
-  ) => stream.Stream<
-    GetAgreementEntitlementsOutput,
-    GetAgreementEntitlementsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetAgreementEntitlementsInput,
-  ) => stream.Stream<
-    AgreementEntitlement,
-    GetAgreementEntitlementsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AgreementEntitlement
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetAgreementEntitlementsInput,
   output: GetAgreementEntitlementsOutput,
   errors: [
@@ -2795,27 +2780,13 @@ export type GetAgreementTermsError =
  *
  * - `Configuration` – The buyer/acceptor's selection at the time of agreement creation, such as the number of units purchased for a dimension or setting the `EnableAutoRenew` flag.
  */
-export const getAgreementTerms: API.OperationMethod<
+export const getAgreementTerms: API.PaginatedOperationMethod<
   GetAgreementTermsInput,
   GetAgreementTermsOutput,
   GetAgreementTermsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetAgreementTermsInput,
-  ) => stream.Stream<
-    GetAgreementTermsOutput,
-    GetAgreementTermsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetAgreementTermsInput,
-  ) => stream.Stream<
-    AcceptedTerm,
-    GetAgreementTermsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AcceptedTerm
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetAgreementTermsInput,
   output: GetAgreementTermsOutput,
   errors: [
@@ -2877,27 +2848,13 @@ export type ListAgreementCancellationRequestsError =
  *
  * `PartyType` is a required parameter. A `ValidationException` is returned if `PartyType` is not provided.
  */
-export const listAgreementCancellationRequests: API.OperationMethod<
+export const listAgreementCancellationRequests: API.PaginatedOperationMethod<
   ListAgreementCancellationRequestsInput,
   ListAgreementCancellationRequestsOutput,
   ListAgreementCancellationRequestsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAgreementCancellationRequestsInput,
-  ) => stream.Stream<
-    ListAgreementCancellationRequestsOutput,
-    ListAgreementCancellationRequestsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAgreementCancellationRequestsInput,
-  ) => stream.Stream<
-    AgreementCancellationRequestSummary,
-    ListAgreementCancellationRequestsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AgreementCancellationRequestSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAgreementCancellationRequestsInput,
   output: ListAgreementCancellationRequestsOutput,
   errors: [
@@ -2926,27 +2883,13 @@ export type ListAgreementChargesError =
 /**
  * Allows acceptors to view charges and purchase orders that are associated with an agreement. The response includes details about all charges regardless of whether a purchase order is linked to each charge.
  */
-export const listAgreementCharges: API.OperationMethod<
+export const listAgreementCharges: API.PaginatedOperationMethod<
   ListAgreementChargesInput,
   ListAgreementChargesOutput,
   ListAgreementChargesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAgreementChargesInput,
-  ) => stream.Stream<
-    ListAgreementChargesOutput,
-    ListAgreementChargesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAgreementChargesInput,
-  ) => stream.Stream<
-    Charge,
-    ListAgreementChargesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Charge
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAgreementChargesInput,
   output: ListAgreementChargesOutput,
   errors: [
@@ -2978,27 +2921,13 @@ export type ListAgreementInvoiceLineItemsError =
  *
  * The `groupBy` parameter is required and supports only `INVOICE_ID` as a value. The `agreementId` parameter is required.
  */
-export const listAgreementInvoiceLineItems: API.OperationMethod<
+export const listAgreementInvoiceLineItems: API.PaginatedOperationMethod<
   ListAgreementInvoiceLineItemsInput,
   ListAgreementInvoiceLineItemsOutput,
   ListAgreementInvoiceLineItemsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAgreementInvoiceLineItemsInput,
-  ) => stream.Stream<
-    ListAgreementInvoiceLineItemsOutput,
-    ListAgreementInvoiceLineItemsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAgreementInvoiceLineItemsInput,
-  ) => stream.Stream<
-    AgreementInvoiceLineItemGroupSummary,
-    ListAgreementInvoiceLineItemsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AgreementInvoiceLineItemGroupSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAgreementInvoiceLineItemsInput,
   output: ListAgreementInvoiceLineItemsOutput,
   errors: [
@@ -3030,27 +2959,13 @@ export type ListAgreementPaymentRequestsError =
  *
  * `PartyType` is a required parameter. A `ValidationException` is returned if `PartyType` is not provided. Pagination is supported through `maxResults` (1-50, default 50) and `nextToken` parameters.
  */
-export const listAgreementPaymentRequests: API.OperationMethod<
+export const listAgreementPaymentRequests: API.PaginatedOperationMethod<
   ListAgreementPaymentRequestsInput,
   ListAgreementPaymentRequestsOutput,
   ListAgreementPaymentRequestsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAgreementPaymentRequestsInput,
-  ) => stream.Stream<
-    ListAgreementPaymentRequestsOutput,
-    ListAgreementPaymentRequestsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAgreementPaymentRequestsInput,
-  ) => stream.Stream<
-    PaymentRequestSummary,
-    ListAgreementPaymentRequestsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  PaymentRequestSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAgreementPaymentRequestsInput,
   output: ListAgreementPaymentRequestsOutput,
   errors: [
@@ -3079,27 +2994,13 @@ export type ListBillingAdjustmentRequestsError =
 /**
  * Lists billing adjustment requests for a specific agreement. Sellers (proposers) can use this operation to view all billing adjustment requests associated with an agreement.
  */
-export const listBillingAdjustmentRequests: API.OperationMethod<
+export const listBillingAdjustmentRequests: API.PaginatedOperationMethod<
   ListBillingAdjustmentRequestsInput,
   ListBillingAdjustmentRequestsOutput,
   ListBillingAdjustmentRequestsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListBillingAdjustmentRequestsInput,
-  ) => stream.Stream<
-    ListBillingAdjustmentRequestsOutput,
-    ListBillingAdjustmentRequestsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListBillingAdjustmentRequestsInput,
-  ) => stream.Stream<
-    BillingAdjustmentSummary,
-    ListBillingAdjustmentRequestsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  BillingAdjustmentSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBillingAdjustmentRequestsInput,
   output: ListBillingAdjustmentRequestsOutput,
   errors: [
@@ -3310,27 +3211,13 @@ export type SearchAgreementsError =
  *
  * - `AgreementType` + `OfferSetId` + `Status` + `EndTime`
  */
-export const searchAgreements: API.OperationMethod<
+export const searchAgreements: API.PaginatedOperationMethod<
   SearchAgreementsInput,
   SearchAgreementsOutput,
   SearchAgreementsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: SearchAgreementsInput,
-  ) => stream.Stream<
-    SearchAgreementsOutput,
-    SearchAgreementsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: SearchAgreementsInput,
-  ) => stream.Stream<
-    AgreementViewSummary,
-    SearchAgreementsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AgreementViewSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchAgreementsInput,
   output: SearchAgreementsOutput,
   errors: [

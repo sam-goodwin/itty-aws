@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -1569,27 +1568,13 @@ export type ListIdentityPoolsError =
  * You must use Amazon Web Services developer credentials to call this
  * operation.
  */
-export const listIdentityPools: API.OperationMethod<
+export const listIdentityPools: API.PaginatedOperationMethod<
   ListIdentityPoolsInput,
   ListIdentityPoolsResponse,
   ListIdentityPoolsError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListIdentityPoolsInput,
-  ) => stream.Stream<
-    ListIdentityPoolsResponse,
-    ListIdentityPoolsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListIdentityPoolsInput,
-  ) => stream.Stream<
-    IdentityPoolShortDescription,
-    ListIdentityPoolsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Region | HttpClient.HttpClient,
+  IdentityPoolShortDescription
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListIdentityPoolsInput,
   output: ListIdentityPoolsResponse,
   errors: [

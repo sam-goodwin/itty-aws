@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -942,27 +941,13 @@ export type ListRetainedMessagesError =
  * For more information about messaging costs, see Amazon Web Services IoT Core
  * pricing - Messaging.
  */
-export const listRetainedMessages: API.OperationMethod<
+export const listRetainedMessages: API.PaginatedOperationMethod<
   ListRetainedMessagesRequest,
   ListRetainedMessagesResponse,
   ListRetainedMessagesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRetainedMessagesRequest,
-  ) => stream.Stream<
-    ListRetainedMessagesResponse,
-    ListRetainedMessagesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRetainedMessagesRequest,
-  ) => stream.Stream<
-    RetainedMessageSummary,
-    ListRetainedMessagesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  RetainedMessageSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRetainedMessagesRequest,
   output: ListRetainedMessagesResponse,
   errors: [
@@ -997,27 +982,13 @@ export type ListSubscriptionsError =
  *
  * Requires permission to access the ListSubscriptions action.
  */
-export const listSubscriptions: API.OperationMethod<
+export const listSubscriptions: API.PaginatedOperationMethod<
   ListSubscriptionsRequest,
   ListSubscriptionsResponse,
   ListSubscriptionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSubscriptionsRequest,
-  ) => stream.Stream<
-    ListSubscriptionsResponse,
-    ListSubscriptionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSubscriptionsRequest,
-  ) => stream.Stream<
-    SubscriptionSummary,
-    ListSubscriptionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  SubscriptionSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSubscriptionsRequest,
   output: ListSubscriptionsResponse,
   errors: [

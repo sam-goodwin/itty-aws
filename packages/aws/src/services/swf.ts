@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -4030,27 +4029,13 @@ export type GetWorkflowExecutionHistoryError =
  * For details and example IAM policies, see Using IAM to Manage Access to Amazon SWF
  * Workflows in the *Amazon SWF Developer Guide*.
  */
-export const getWorkflowExecutionHistory: API.OperationMethod<
+export const getWorkflowExecutionHistory: API.PaginatedOperationMethod<
   GetWorkflowExecutionHistoryInput,
   History,
   GetWorkflowExecutionHistoryError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetWorkflowExecutionHistoryInput,
-  ) => stream.Stream<
-    History,
-    GetWorkflowExecutionHistoryError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetWorkflowExecutionHistoryInput,
-  ) => stream.Stream<
-    HistoryEvent,
-    GetWorkflowExecutionHistoryError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  HistoryEvent
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetWorkflowExecutionHistoryInput,
   output: History,
   errors: [OperationNotPermittedFault, UnknownResourceFault],
@@ -4095,27 +4080,13 @@ export type ListActivityTypesError =
  * For details and example IAM policies, see Using IAM to Manage Access to Amazon SWF
  * Workflows in the *Amazon SWF Developer Guide*.
  */
-export const listActivityTypes: API.OperationMethod<
+export const listActivityTypes: API.PaginatedOperationMethod<
   ListActivityTypesInput,
   ActivityTypeInfos,
   ListActivityTypesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListActivityTypesInput,
-  ) => stream.Stream<
-    ActivityTypeInfos,
-    ListActivityTypesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListActivityTypesInput,
-  ) => stream.Stream<
-    ActivityTypeInfo,
-    ListActivityTypesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ActivityTypeInfo
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListActivityTypesInput,
   output: ActivityTypeInfos,
   errors: [OperationNotPermittedFault, UnknownResourceFault],
@@ -4171,27 +4142,13 @@ export type ListClosedWorkflowExecutionsError =
  * For details and example IAM policies, see Using IAM to Manage Access to Amazon SWF
  * Workflows in the *Amazon SWF Developer Guide*.
  */
-export const listClosedWorkflowExecutions: API.OperationMethod<
+export const listClosedWorkflowExecutions: API.PaginatedOperationMethod<
   ListClosedWorkflowExecutionsInput,
   WorkflowExecutionInfos,
   ListClosedWorkflowExecutionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListClosedWorkflowExecutionsInput,
-  ) => stream.Stream<
-    WorkflowExecutionInfos,
-    ListClosedWorkflowExecutionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListClosedWorkflowExecutionsInput,
-  ) => stream.Stream<
-    WorkflowExecutionInfo,
-    ListClosedWorkflowExecutionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  WorkflowExecutionInfo
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListClosedWorkflowExecutionsInput,
   output: WorkflowExecutionInfos,
   errors: [OperationNotPermittedFault, UnknownResourceFault],
@@ -4236,27 +4193,13 @@ export type ListDomainsError = OperationNotPermittedFault | CommonErrors;
  * For details and example IAM policies, see Using IAM to Manage Access to Amazon SWF
  * Workflows in the *Amazon SWF Developer Guide*.
  */
-export const listDomains: API.OperationMethod<
+export const listDomains: API.PaginatedOperationMethod<
   ListDomainsInput,
   DomainInfos,
   ListDomainsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDomainsInput,
-  ) => stream.Stream<
-    DomainInfos,
-    ListDomainsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDomainsInput,
-  ) => stream.Stream<
-    DomainInfo,
-    ListDomainsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  DomainInfo
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDomainsInput,
   output: DomainInfos,
   errors: [OperationNotPermittedFault],
@@ -4312,27 +4255,13 @@ export type ListOpenWorkflowExecutionsError =
  * For details and example IAM policies, see Using IAM to Manage Access to Amazon SWF
  * Workflows in the *Amazon SWF Developer Guide*.
  */
-export const listOpenWorkflowExecutions: API.OperationMethod<
+export const listOpenWorkflowExecutions: API.PaginatedOperationMethod<
   ListOpenWorkflowExecutionsInput,
   WorkflowExecutionInfos,
   ListOpenWorkflowExecutionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListOpenWorkflowExecutionsInput,
-  ) => stream.Stream<
-    WorkflowExecutionInfos,
-    ListOpenWorkflowExecutionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListOpenWorkflowExecutionsInput,
-  ) => stream.Stream<
-    WorkflowExecutionInfo,
-    ListOpenWorkflowExecutionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  WorkflowExecutionInfo
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOpenWorkflowExecutionsInput,
   output: WorkflowExecutionInfos,
   errors: [OperationNotPermittedFault, UnknownResourceFault],
@@ -4400,27 +4329,13 @@ export type ListWorkflowTypesError =
  * For details and example IAM policies, see Using IAM to Manage Access to Amazon SWF
  * Workflows in the *Amazon SWF Developer Guide*.
  */
-export const listWorkflowTypes: API.OperationMethod<
+export const listWorkflowTypes: API.PaginatedOperationMethod<
   ListWorkflowTypesInput,
   WorkflowTypeInfos,
   ListWorkflowTypesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListWorkflowTypesInput,
-  ) => stream.Stream<
-    WorkflowTypeInfos,
-    ListWorkflowTypesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListWorkflowTypesInput,
-  ) => stream.Stream<
-    WorkflowTypeInfo,
-    ListWorkflowTypesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  WorkflowTypeInfo
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListWorkflowTypesInput,
   output: WorkflowTypeInfos,
   errors: [OperationNotPermittedFault, UnknownResourceFault],
@@ -4541,27 +4456,13 @@ export type PollForDecisionTaskError =
  * For details and example IAM policies, see Using IAM to Manage Access to Amazon SWF
  * Workflows in the *Amazon SWF Developer Guide*.
  */
-export const pollForDecisionTask: API.OperationMethod<
+export const pollForDecisionTask: API.PaginatedOperationMethod<
   PollForDecisionTaskInput,
   DecisionTask,
   PollForDecisionTaskError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: PollForDecisionTaskInput,
-  ) => stream.Stream<
-    DecisionTask,
-    PollForDecisionTaskError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: PollForDecisionTaskInput,
-  ) => stream.Stream<
-    HistoryEvent,
-    PollForDecisionTaskError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  HistoryEvent
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: PollForDecisionTaskInput,
   output: DecisionTask,
   errors: [

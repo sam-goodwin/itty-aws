@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -2025,27 +2024,13 @@ export type ListBaselinesError =
 /**
  * Returns a summary list of all available baselines. For usage examples, see *the Amazon Web Services Control Tower User Guide* .
  */
-export const listBaselines: API.OperationMethod<
+export const listBaselines: API.PaginatedOperationMethod<
   ListBaselinesInput,
   ListBaselinesOutput,
   ListBaselinesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListBaselinesInput,
-  ) => stream.Stream<
-    ListBaselinesOutput,
-    ListBaselinesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListBaselinesInput,
-  ) => stream.Stream<
-    BaselineSummary,
-    ListBaselinesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  BaselineSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBaselinesInput,
   output: ListBaselinesOutput,
   errors: [
@@ -2075,27 +2060,13 @@ export type ListControlOperationsError =
 /**
  * Provides a list of operations in progress or queued. For usage examples, see ListControlOperation examples.
  */
-export const listControlOperations: API.OperationMethod<
+export const listControlOperations: API.PaginatedOperationMethod<
   ListControlOperationsInput,
   ListControlOperationsOutput,
   ListControlOperationsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListControlOperationsInput,
-  ) => stream.Stream<
-    ListControlOperationsOutput,
-    ListControlOperationsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListControlOperationsInput,
-  ) => stream.Stream<
-    ControlOperationSummary,
-    ListControlOperationsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  ControlOperationSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListControlOperationsInput,
   output: ListControlOperationsOutput,
   errors: [
@@ -2125,27 +2096,13 @@ export type ListEnabledBaselinesError =
 /**
  * Returns a list of summaries describing `EnabledBaseline` resources. You can filter the list by the corresponding `Baseline` or `Target` of the `EnabledBaseline` resources. For usage examples, see *the Amazon Web Services Control Tower User Guide* .
  */
-export const listEnabledBaselines: API.OperationMethod<
+export const listEnabledBaselines: API.PaginatedOperationMethod<
   ListEnabledBaselinesInput,
   ListEnabledBaselinesOutput,
   ListEnabledBaselinesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEnabledBaselinesInput,
-  ) => stream.Stream<
-    ListEnabledBaselinesOutput,
-    ListEnabledBaselinesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEnabledBaselinesInput,
-  ) => stream.Stream<
-    EnabledBaselineSummary,
-    ListEnabledBaselinesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  EnabledBaselineSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEnabledBaselinesInput,
   output: ListEnabledBaselinesOutput,
   errors: [
@@ -2176,27 +2133,13 @@ export type ListEnabledControlsError =
 /**
  * Lists the controls enabled by Amazon Web Services Control Tower on the specified organizational unit and the accounts it contains. For usage examples, see the *Controls Reference Guide* .
  */
-export const listEnabledControls: API.OperationMethod<
+export const listEnabledControls: API.PaginatedOperationMethod<
   ListEnabledControlsInput,
   ListEnabledControlsOutput,
   ListEnabledControlsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEnabledControlsInput,
-  ) => stream.Stream<
-    ListEnabledControlsOutput,
-    ListEnabledControlsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEnabledControlsInput,
-  ) => stream.Stream<
-    EnabledControlSummary,
-    ListEnabledControlsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  EnabledControlSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEnabledControlsInput,
   output: ListEnabledControlsOutput,
   errors: [
@@ -2227,27 +2170,13 @@ export type ListLandingZoneOperationsError =
 /**
  * Lists all landing zone operations from the past 90 days. Results are sorted by time, with the most recent operation first.
  */
-export const listLandingZoneOperations: API.OperationMethod<
+export const listLandingZoneOperations: API.PaginatedOperationMethod<
   ListLandingZoneOperationsInput,
   ListLandingZoneOperationsOutput,
   ListLandingZoneOperationsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListLandingZoneOperationsInput,
-  ) => stream.Stream<
-    ListLandingZoneOperationsOutput,
-    ListLandingZoneOperationsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListLandingZoneOperationsInput,
-  ) => stream.Stream<
-    LandingZoneOperationSummary,
-    ListLandingZoneOperationsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  LandingZoneOperationSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLandingZoneOperationsInput,
   output: ListLandingZoneOperationsOutput,
   errors: [
@@ -2280,27 +2209,13 @@ export type ListLandingZonesError =
  *
  * Returns one landing zone ARN.
  */
-export const listLandingZones: API.OperationMethod<
+export const listLandingZones: API.PaginatedOperationMethod<
   ListLandingZonesInput,
   ListLandingZonesOutput,
   ListLandingZonesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListLandingZonesInput,
-  ) => stream.Stream<
-    ListLandingZonesOutput,
-    ListLandingZonesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListLandingZonesInput,
-  ) => stream.Stream<
-    LandingZoneSummary,
-    ListLandingZonesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  LandingZoneSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLandingZonesInput,
   output: ListLandingZonesOutput,
   errors: [

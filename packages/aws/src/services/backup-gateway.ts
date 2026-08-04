@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -1133,27 +1132,13 @@ export type ListGatewaysError = CommonErrors;
 /**
  * Lists backup gateways owned by an Amazon Web Services account in an Amazon Web Services Region. The returned list is ordered by gateway Amazon Resource Name (ARN).
  */
-export const listGateways: API.OperationMethod<
+export const listGateways: API.PaginatedOperationMethod<
   ListGatewaysInput,
   ListGatewaysOutput,
   ListGatewaysError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListGatewaysInput,
-  ) => stream.Stream<
-    ListGatewaysOutput,
-    ListGatewaysError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListGatewaysInput,
-  ) => stream.Stream<
-    Gateway,
-    ListGatewaysError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Gateway
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListGatewaysInput,
   output: ListGatewaysOutput,
   errors: [],
@@ -1172,27 +1157,13 @@ export type ListHypervisorsError = CommonErrors;
 /**
  * Lists your hypervisors.
  */
-export const listHypervisors: API.OperationMethod<
+export const listHypervisors: API.PaginatedOperationMethod<
   ListHypervisorsInput,
   ListHypervisorsOutput,
   ListHypervisorsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListHypervisorsInput,
-  ) => stream.Stream<
-    ListHypervisorsOutput,
-    ListHypervisorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListHypervisorsInput,
-  ) => stream.Stream<
-    Hypervisor,
-    ListHypervisorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Hypervisor
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListHypervisorsInput,
   output: ListHypervisorsOutput,
   errors: [],
@@ -1230,27 +1201,13 @@ export type ListVirtualMachinesError = CommonErrors;
 /**
  * Lists your virtual machines.
  */
-export const listVirtualMachines: API.OperationMethod<
+export const listVirtualMachines: API.PaginatedOperationMethod<
   ListVirtualMachinesInput,
   ListVirtualMachinesOutput,
   ListVirtualMachinesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListVirtualMachinesInput,
-  ) => stream.Stream<
-    ListVirtualMachinesOutput,
-    ListVirtualMachinesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListVirtualMachinesInput,
-  ) => stream.Stream<
-    VirtualMachine,
-    ListVirtualMachinesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  VirtualMachine
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListVirtualMachinesInput,
   output: ListVirtualMachinesOutput,
   errors: [],

@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -600,27 +599,13 @@ export type ListRescoreExecutionPlansError =
  * is an Amazon Kendra Intelligent Ranking resource used for
  * provisioning the `Rescore` API.
  */
-export const listRescoreExecutionPlans: API.OperationMethod<
+export const listRescoreExecutionPlans: API.PaginatedOperationMethod<
   ListRescoreExecutionPlansRequest,
   ListRescoreExecutionPlansResponse,
   ListRescoreExecutionPlansError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRescoreExecutionPlansRequest,
-  ) => stream.Stream<
-    ListRescoreExecutionPlansResponse,
-    ListRescoreExecutionPlansError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRescoreExecutionPlansRequest,
-  ) => stream.Stream<
-    unknown,
-    ListRescoreExecutionPlansError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRescoreExecutionPlansRequest,
   output: ListRescoreExecutionPlansResponse,
   errors: [

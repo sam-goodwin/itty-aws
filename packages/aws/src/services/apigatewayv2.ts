@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -9363,27 +9362,13 @@ export type ListRoutingRulesError =
 /**
  * Lists routing rules.
  */
-export const listRoutingRules: API.OperationMethod<
+export const listRoutingRules: API.PaginatedOperationMethod<
   ListRoutingRulesRequest,
   ListRoutingRulesResponse,
   ListRoutingRulesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRoutingRulesRequest,
-  ) => stream.Stream<
-    ListRoutingRulesResponse,
-    ListRoutingRulesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRoutingRulesRequest,
-  ) => stream.Stream<
-    RoutingRule,
-    ListRoutingRulesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  RoutingRule
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRoutingRulesRequest,
   output: ListRoutingRulesResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],

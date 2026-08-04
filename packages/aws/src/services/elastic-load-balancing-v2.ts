@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -4450,27 +4449,13 @@ export type DescribeAccountLimitsError = CommonErrors;
  * - Quotas for your Gateway
  * Load Balancers
  */
-export const describeAccountLimits: API.OperationMethod<
+export const describeAccountLimits: API.PaginatedOperationMethod<
   DescribeAccountLimitsInput,
   DescribeAccountLimitsOutput,
   DescribeAccountLimitsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeAccountLimitsInput,
-  ) => stream.Stream<
-    DescribeAccountLimitsOutput,
-    DescribeAccountLimitsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeAccountLimitsInput,
-  ) => stream.Stream<
-    Limit,
-    DescribeAccountLimitsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Limit
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeAccountLimitsInput,
   output: DescribeAccountLimitsOutput,
   errors: [],
@@ -4539,27 +4524,13 @@ export type DescribeListenerCertificatesError =
  * Server certificates in the Network Load Balancers
  * Guide.
  */
-export const describeListenerCertificates: API.OperationMethod<
+export const describeListenerCertificates: API.PaginatedOperationMethod<
   DescribeListenerCertificatesInput,
   DescribeListenerCertificatesOutput,
   DescribeListenerCertificatesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeListenerCertificatesInput,
-  ) => stream.Stream<
-    DescribeListenerCertificatesOutput,
-    DescribeListenerCertificatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeListenerCertificatesInput,
-  ) => stream.Stream<
-    Certificate,
-    DescribeListenerCertificatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Certificate
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeListenerCertificatesInput,
   output: DescribeListenerCertificatesOutput,
   errors: [ListenerNotFoundException],
@@ -4583,27 +4554,13 @@ export type DescribeListenersError =
  * Balancer, Network Load Balancer, or Gateway Load Balancer. You must specify either a load
  * balancer or one or more listeners.
  */
-export const describeListeners: API.OperationMethod<
+export const describeListeners: API.PaginatedOperationMethod<
   DescribeListenersInput,
   DescribeListenersOutput,
   DescribeListenersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeListenersInput,
-  ) => stream.Stream<
-    DescribeListenersOutput,
-    DescribeListenersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeListenersInput,
-  ) => stream.Stream<
-    Listener,
-    DescribeListenersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Listener
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeListenersInput,
   output: DescribeListenersOutput,
   errors: [
@@ -4659,27 +4616,13 @@ export type DescribeLoadBalancersError =
 /**
  * Describes the specified load balancers or all of your load balancers.
  */
-export const describeLoadBalancers: API.OperationMethod<
+export const describeLoadBalancers: API.PaginatedOperationMethod<
   DescribeLoadBalancersInput,
   DescribeLoadBalancersOutput,
   DescribeLoadBalancersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeLoadBalancersInput,
-  ) => stream.Stream<
-    DescribeLoadBalancersOutput,
-    DescribeLoadBalancersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeLoadBalancersInput,
-  ) => stream.Stream<
-    LoadBalancer,
-    DescribeLoadBalancersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  LoadBalancer
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeLoadBalancersInput,
   output: DescribeLoadBalancersOutput,
   errors: [LoadBalancerNotFoundException],
@@ -4702,27 +4645,13 @@ export type DescribeRulesError =
  * Describes the specified rules or the rules for the specified listener. You must specify
  * either a listener or rules.
  */
-export const describeRules: API.OperationMethod<
+export const describeRules: API.PaginatedOperationMethod<
   DescribeRulesInput,
   DescribeRulesOutput,
   DescribeRulesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeRulesInput,
-  ) => stream.Stream<
-    DescribeRulesOutput,
-    DescribeRulesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeRulesInput,
-  ) => stream.Stream<
-    Rule,
-    DescribeRulesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Rule
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeRulesInput,
   output: DescribeRulesOutput,
   errors: [
@@ -4836,27 +4765,13 @@ export type DescribeTargetGroupsError =
  * results: the ARN of the load balancer, the names of one or more target groups, or the ARNs of
  * one or more target groups.
  */
-export const describeTargetGroups: API.OperationMethod<
+export const describeTargetGroups: API.PaginatedOperationMethod<
   DescribeTargetGroupsInput,
   DescribeTargetGroupsOutput,
   DescribeTargetGroupsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeTargetGroupsInput,
-  ) => stream.Stream<
-    DescribeTargetGroupsOutput,
-    DescribeTargetGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeTargetGroupsInput,
-  ) => stream.Stream<
-    TargetGroup,
-    DescribeTargetGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  TargetGroup
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeTargetGroupsInput,
   output: DescribeTargetGroupsOutput,
   errors: [LoadBalancerNotFoundException, TargetGroupNotFoundException],
@@ -4902,27 +4817,13 @@ export type DescribeTrustStoreAssociationsError =
 /**
  * Describes all resources associated with the specified trust store.
  */
-export const describeTrustStoreAssociations: API.OperationMethod<
+export const describeTrustStoreAssociations: API.PaginatedOperationMethod<
   DescribeTrustStoreAssociationsInput,
   DescribeTrustStoreAssociationsOutput,
   DescribeTrustStoreAssociationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeTrustStoreAssociationsInput,
-  ) => stream.Stream<
-    DescribeTrustStoreAssociationsOutput,
-    DescribeTrustStoreAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeTrustStoreAssociationsInput,
-  ) => stream.Stream<
-    TrustStoreAssociation,
-    DescribeTrustStoreAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  TrustStoreAssociation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeTrustStoreAssociationsInput,
   output: DescribeTrustStoreAssociationsOutput,
   errors: [TrustStoreNotFoundException],
@@ -4945,27 +4846,13 @@ export type DescribeTrustStoreRevocationsError =
  * Describes the revocation files in use by the specified trust store or revocation
  * files.
  */
-export const describeTrustStoreRevocations: API.OperationMethod<
+export const describeTrustStoreRevocations: API.PaginatedOperationMethod<
   DescribeTrustStoreRevocationsInput,
   DescribeTrustStoreRevocationsOutput,
   DescribeTrustStoreRevocationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeTrustStoreRevocationsInput,
-  ) => stream.Stream<
-    DescribeTrustStoreRevocationsOutput,
-    DescribeTrustStoreRevocationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeTrustStoreRevocationsInput,
-  ) => stream.Stream<
-    DescribeTrustStoreRevocation,
-    DescribeTrustStoreRevocationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  DescribeTrustStoreRevocation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeTrustStoreRevocationsInput,
   output: DescribeTrustStoreRevocationsOutput,
   errors: [RevocationIdNotFoundException, TrustStoreNotFoundException],
@@ -4986,27 +4873,13 @@ export type DescribeTrustStoresError =
 /**
  * Describes all trust stores for the specified account.
  */
-export const describeTrustStores: API.OperationMethod<
+export const describeTrustStores: API.PaginatedOperationMethod<
   DescribeTrustStoresInput,
   DescribeTrustStoresOutput,
   DescribeTrustStoresError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeTrustStoresInput,
-  ) => stream.Stream<
-    DescribeTrustStoresOutput,
-    DescribeTrustStoresError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeTrustStoresInput,
-  ) => stream.Stream<
-    TrustStore,
-    DescribeTrustStoresError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  TrustStore
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeTrustStoresInput,
   output: DescribeTrustStoresOutput,
   errors: [TrustStoreNotFoundException],

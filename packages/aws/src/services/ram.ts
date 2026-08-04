@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -2763,27 +2762,13 @@ export type GetResourcePoliciesError =
  * *only*
  * when there are no more results to display.
  */
-export const getResourcePolicies: API.OperationMethod<
+export const getResourcePolicies: API.PaginatedOperationMethod<
   GetResourcePoliciesRequest,
   GetResourcePoliciesResponse,
   GetResourcePoliciesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetResourcePoliciesRequest,
-  ) => stream.Stream<
-    GetResourcePoliciesResponse,
-    GetResourcePoliciesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetResourcePoliciesRequest,
-  ) => stream.Stream<
-    unknown,
-    GetResourcePoliciesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetResourcePoliciesRequest,
   output: GetResourcePoliciesResponse,
   errors: [
@@ -2823,27 +2808,13 @@ export type GetResourceShareAssociationsError =
  * *only*
  * when there are no more results to display.
  */
-export const getResourceShareAssociations: API.OperationMethod<
+export const getResourceShareAssociations: API.PaginatedOperationMethod<
   GetResourceShareAssociationsRequest,
   GetResourceShareAssociationsResponse,
   GetResourceShareAssociationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetResourceShareAssociationsRequest,
-  ) => stream.Stream<
-    GetResourceShareAssociationsResponse,
-    GetResourceShareAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetResourceShareAssociationsRequest,
-  ) => stream.Stream<
-    unknown,
-    GetResourceShareAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetResourceShareAssociationsRequest,
   output: GetResourceShareAssociationsResponse,
   errors: [
@@ -2884,27 +2855,13 @@ export type GetResourceShareInvitationsError =
  * *only*
  * when there are no more results to display.
  */
-export const getResourceShareInvitations: API.OperationMethod<
+export const getResourceShareInvitations: API.PaginatedOperationMethod<
   GetResourceShareInvitationsRequest,
   GetResourceShareInvitationsResponse,
   GetResourceShareInvitationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetResourceShareInvitationsRequest,
-  ) => stream.Stream<
-    GetResourceShareInvitationsResponse,
-    GetResourceShareInvitationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetResourceShareInvitationsRequest,
-  ) => stream.Stream<
-    unknown,
-    GetResourceShareInvitationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetResourceShareInvitationsRequest,
   output: GetResourceShareInvitationsResponse,
   errors: [
@@ -2944,27 +2901,13 @@ export type GetResourceSharesError =
  * *only*
  * when there are no more results to display.
  */
-export const getResourceShares: API.OperationMethod<
+export const getResourceShares: API.PaginatedOperationMethod<
   GetResourceSharesRequest,
   GetResourceSharesResponse,
   GetResourceSharesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetResourceSharesRequest,
-  ) => stream.Stream<
-    GetResourceSharesResponse,
-    GetResourceSharesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetResourceSharesRequest,
-  ) => stream.Stream<
-    unknown,
-    GetResourceSharesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetResourceSharesRequest,
   output: GetResourceSharesResponse,
   errors: [
@@ -3007,27 +2950,13 @@ export type ListPendingInvitationResourcesError =
  * *only*
  * when there are no more results to display.
  */
-export const listPendingInvitationResources: API.OperationMethod<
+export const listPendingInvitationResources: API.PaginatedOperationMethod<
   ListPendingInvitationResourcesRequest,
   ListPendingInvitationResourcesResponse,
   ListPendingInvitationResourcesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPendingInvitationResourcesRequest,
-  ) => stream.Stream<
-    ListPendingInvitationResourcesResponse,
-    ListPendingInvitationResourcesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPendingInvitationResourcesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListPendingInvitationResourcesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPendingInvitationResourcesRequest,
   output: ListPendingInvitationResourcesResponse,
   errors: [
@@ -3069,27 +2998,13 @@ export type ListPermissionAssociationsError =
  * *only*
  * when there are no more results to display.
  */
-export const listPermissionAssociations: API.OperationMethod<
+export const listPermissionAssociations: API.PaginatedOperationMethod<
   ListPermissionAssociationsRequest,
   ListPermissionAssociationsResponse,
   ListPermissionAssociationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPermissionAssociationsRequest,
-  ) => stream.Stream<
-    ListPermissionAssociationsResponse,
-    ListPermissionAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPermissionAssociationsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListPermissionAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPermissionAssociationsRequest,
   output: ListPermissionAssociationsResponse,
   errors: [
@@ -3126,27 +3041,13 @@ export type ListPermissionsError =
  * *only*
  * when there are no more results to display.
  */
-export const listPermissions: API.OperationMethod<
+export const listPermissions: API.PaginatedOperationMethod<
   ListPermissionsRequest,
   ListPermissionsResponse,
   ListPermissionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPermissionsRequest,
-  ) => stream.Stream<
-    ListPermissionsResponse,
-    ListPermissionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPermissionsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListPermissionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPermissionsRequest,
   output: ListPermissionsResponse,
   errors: [
@@ -3184,27 +3085,13 @@ export type ListPermissionVersionsError =
  * *only*
  * when there are no more results to display.
  */
-export const listPermissionVersions: API.OperationMethod<
+export const listPermissionVersions: API.PaginatedOperationMethod<
   ListPermissionVersionsRequest,
   ListPermissionVersionsResponse,
   ListPermissionVersionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPermissionVersionsRequest,
-  ) => stream.Stream<
-    ListPermissionVersionsResponse,
-    ListPermissionVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPermissionVersionsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListPermissionVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPermissionVersionsRequest,
   output: ListPermissionVersionsResponse,
   errors: [
@@ -3244,27 +3131,13 @@ export type ListPrincipalsError =
  * *only*
  * when there are no more results to display.
  */
-export const listPrincipals: API.OperationMethod<
+export const listPrincipals: API.PaginatedOperationMethod<
   ListPrincipalsRequest,
   ListPrincipalsResponse,
   ListPrincipalsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPrincipalsRequest,
-  ) => stream.Stream<
-    ListPrincipalsResponse,
-    ListPrincipalsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPrincipalsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListPrincipalsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPrincipalsRequest,
   output: ListPrincipalsResponse,
   errors: [
@@ -3301,27 +3174,13 @@ export type ListReplacePermissionAssociationsWorkError =
  * *only*
  * when there are no more results to display.
  */
-export const listReplacePermissionAssociationsWork: API.OperationMethod<
+export const listReplacePermissionAssociationsWork: API.PaginatedOperationMethod<
   ListReplacePermissionAssociationsWorkRequest,
   ListReplacePermissionAssociationsWorkResponse,
   ListReplacePermissionAssociationsWorkError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListReplacePermissionAssociationsWorkRequest,
-  ) => stream.Stream<
-    ListReplacePermissionAssociationsWorkResponse,
-    ListReplacePermissionAssociationsWorkError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListReplacePermissionAssociationsWorkRequest,
-  ) => stream.Stream<
-    unknown,
-    ListReplacePermissionAssociationsWorkError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListReplacePermissionAssociationsWorkRequest,
   output: ListReplacePermissionAssociationsWorkResponse,
   errors: [
@@ -3359,27 +3218,13 @@ export type ListResourcesError =
  * *only*
  * when there are no more results to display.
  */
-export const listResources: API.OperationMethod<
+export const listResources: API.PaginatedOperationMethod<
   ListResourcesRequest,
   ListResourcesResponse,
   ListResourcesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListResourcesRequest,
-  ) => stream.Stream<
-    ListResourcesResponse,
-    ListResourcesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListResourcesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListResourcesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListResourcesRequest,
   output: ListResourcesResponse,
   errors: [
@@ -3419,27 +3264,13 @@ export type ListResourceSharePermissionsError =
  * *only*
  * when there are no more results to display.
  */
-export const listResourceSharePermissions: API.OperationMethod<
+export const listResourceSharePermissions: API.PaginatedOperationMethod<
   ListResourceSharePermissionsRequest,
   ListResourceSharePermissionsResponse,
   ListResourceSharePermissionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListResourceSharePermissionsRequest,
-  ) => stream.Stream<
-    ListResourceSharePermissionsResponse,
-    ListResourceSharePermissionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListResourceSharePermissionsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListResourceSharePermissionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListResourceSharePermissionsRequest,
   output: ListResourceSharePermissionsResponse,
   errors: [
@@ -3470,27 +3301,13 @@ export type ListResourceTypesError =
 /**
  * Lists the resource types that can be shared by RAM.
  */
-export const listResourceTypes: API.OperationMethod<
+export const listResourceTypes: API.PaginatedOperationMethod<
   ListResourceTypesRequest,
   ListResourceTypesResponse,
   ListResourceTypesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListResourceTypesRequest,
-  ) => stream.Stream<
-    ListResourceTypesResponse,
-    ListResourceTypesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListResourceTypesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListResourceTypesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListResourceTypesRequest,
   output: ListResourceTypesResponse,
   errors: [
@@ -3522,27 +3339,13 @@ export type ListSourceAssociationsError =
  *
  * You can filter the results by resource share Amazon Resource Name (ARN), source ID, source type, or association status. We recommend using pagination to ensure that the operation returns quickly and successfully.
  */
-export const listSourceAssociations: API.OperationMethod<
+export const listSourceAssociations: API.PaginatedOperationMethod<
   ListSourceAssociationsRequest,
   ListSourceAssociationsResponse,
   ListSourceAssociationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSourceAssociationsRequest,
-  ) => stream.Stream<
-    ListSourceAssociationsResponse,
-    ListSourceAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSourceAssociationsRequest,
-  ) => stream.Stream<
-    AssociatedSource,
-    ListSourceAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AssociatedSource
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSourceAssociationsRequest,
   output: ListSourceAssociationsResponse,
   errors: [

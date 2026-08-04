@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -2294,27 +2293,13 @@ export type ListContactChannelsError =
 /**
  * Lists all contact channels for the specified contact.
  */
-export const listContactChannels: API.OperationMethod<
+export const listContactChannels: API.PaginatedOperationMethod<
   ListContactChannelsRequest,
   ListContactChannelsResult,
   ListContactChannelsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListContactChannelsRequest,
-  ) => stream.Stream<
-    ListContactChannelsResult,
-    ListContactChannelsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListContactChannelsRequest,
-  ) => stream.Stream<
-    ContactChannel,
-    ListContactChannelsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ContactChannel
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListContactChannelsRequest,
   output: ListContactChannelsResult,
   errors: [
@@ -2347,27 +2332,13 @@ export type ListContactsError =
 /**
  * Lists all contacts and escalation plans in Incident Manager.
  */
-export const listContacts: API.OperationMethod<
+export const listContacts: API.PaginatedOperationMethod<
   ListContactsRequest,
   ListContactsResult,
   ListContactsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListContactsRequest,
-  ) => stream.Stream<
-    ListContactsResult,
-    ListContactsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListContactsRequest,
-  ) => stream.Stream<
-    Contact,
-    ListContactsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Contact
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListContactsRequest,
   output: ListContactsResult,
   errors: [
@@ -2398,27 +2369,13 @@ export type ListEngagementsError =
 /**
  * Lists all engagements that have happened in an incident.
  */
-export const listEngagements: API.OperationMethod<
+export const listEngagements: API.PaginatedOperationMethod<
   ListEngagementsRequest,
   ListEngagementsResult,
   ListEngagementsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEngagementsRequest,
-  ) => stream.Stream<
-    ListEngagementsResult,
-    ListEngagementsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEngagementsRequest,
-  ) => stream.Stream<
-    Engagement,
-    ListEngagementsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Engagement
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEngagementsRequest,
   output: ListEngagementsResult,
   errors: [
@@ -2450,27 +2407,13 @@ export type ListPageReceiptsError =
 /**
  * Lists all of the engagements to contact channels that have been acknowledged.
  */
-export const listPageReceipts: API.OperationMethod<
+export const listPageReceipts: API.PaginatedOperationMethod<
   ListPageReceiptsRequest,
   ListPageReceiptsResult,
   ListPageReceiptsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPageReceiptsRequest,
-  ) => stream.Stream<
-    ListPageReceiptsResult,
-    ListPageReceiptsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPageReceiptsRequest,
-  ) => stream.Stream<
-    Receipt,
-    ListPageReceiptsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Receipt
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPageReceiptsRequest,
   output: ListPageReceiptsResult,
   errors: [
@@ -2507,27 +2450,13 @@ export type ListPageResolutionsError =
  * indicates the hierarchy of escalation plan > on-call schedule >
  * contact.
  */
-export const listPageResolutions: API.OperationMethod<
+export const listPageResolutions: API.PaginatedOperationMethod<
   ListPageResolutionsRequest,
   ListPageResolutionsResult,
   ListPageResolutionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPageResolutionsRequest,
-  ) => stream.Stream<
-    ListPageResolutionsResult,
-    ListPageResolutionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPageResolutionsRequest,
-  ) => stream.Stream<
-    ResolutionContact,
-    ListPageResolutionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ResolutionContact
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPageResolutionsRequest,
   output: ListPageResolutionsResult,
   errors: [
@@ -2559,27 +2488,13 @@ export type ListPagesByContactError =
 /**
  * Lists the engagements to a contact's contact channels.
  */
-export const listPagesByContact: API.OperationMethod<
+export const listPagesByContact: API.PaginatedOperationMethod<
   ListPagesByContactRequest,
   ListPagesByContactResult,
   ListPagesByContactError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPagesByContactRequest,
-  ) => stream.Stream<
-    ListPagesByContactResult,
-    ListPagesByContactError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPagesByContactRequest,
-  ) => stream.Stream<
-    Page,
-    ListPagesByContactError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Page
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPagesByContactRequest,
   output: ListPagesByContactResult,
   errors: [
@@ -2612,27 +2527,13 @@ export type ListPagesByEngagementError =
 /**
  * Lists the engagements to contact channels that occurred by engaging a contact.
  */
-export const listPagesByEngagement: API.OperationMethod<
+export const listPagesByEngagement: API.PaginatedOperationMethod<
   ListPagesByEngagementRequest,
   ListPagesByEngagementResult,
   ListPagesByEngagementError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPagesByEngagementRequest,
-  ) => stream.Stream<
-    ListPagesByEngagementResult,
-    ListPagesByEngagementError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPagesByEngagementRequest,
-  ) => stream.Stream<
-    Page,
-    ListPagesByEngagementError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Page
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPagesByEngagementRequest,
   output: ListPagesByEngagementResult,
   errors: [
@@ -2666,27 +2567,13 @@ export type ListPreviewRotationShiftsError =
  *
  * The Incident Manager primarily uses this operation to populate the **Preview** calendar. It is not typically run by end users.
  */
-export const listPreviewRotationShifts: API.OperationMethod<
+export const listPreviewRotationShifts: API.PaginatedOperationMethod<
   ListPreviewRotationShiftsRequest,
   ListPreviewRotationShiftsResult,
   ListPreviewRotationShiftsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPreviewRotationShiftsRequest,
-  ) => stream.Stream<
-    ListPreviewRotationShiftsResult,
-    ListPreviewRotationShiftsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPreviewRotationShiftsRequest,
-  ) => stream.Stream<
-    RotationShift,
-    ListPreviewRotationShiftsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  RotationShift
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPreviewRotationShiftsRequest,
   output: ListPreviewRotationShiftsResult,
   errors: [
@@ -2719,27 +2606,13 @@ export type ListRotationOverridesError =
 /**
  * Retrieves a list of overrides currently specified for an on-call rotation.
  */
-export const listRotationOverrides: API.OperationMethod<
+export const listRotationOverrides: API.PaginatedOperationMethod<
   ListRotationOverridesRequest,
   ListRotationOverridesResult,
   ListRotationOverridesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRotationOverridesRequest,
-  ) => stream.Stream<
-    ListRotationOverridesResult,
-    ListRotationOverridesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRotationOverridesRequest,
-  ) => stream.Stream<
-    RotationOverride,
-    ListRotationOverridesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  RotationOverride
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRotationOverridesRequest,
   output: ListRotationOverridesResult,
   errors: [
@@ -2773,27 +2646,13 @@ export type ListRotationsError =
 /**
  * Retrieves a list of on-call rotations.
  */
-export const listRotations: API.OperationMethod<
+export const listRotations: API.PaginatedOperationMethod<
   ListRotationsRequest,
   ListRotationsResult,
   ListRotationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRotationsRequest,
-  ) => stream.Stream<
-    ListRotationsResult,
-    ListRotationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRotationsRequest,
-  ) => stream.Stream<
-    Rotation,
-    ListRotationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Rotation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRotationsRequest,
   output: ListRotationsResult,
   errors: [
@@ -2828,27 +2687,13 @@ export type ListRotationShiftsError =
 /**
  * Returns a list of shifts generated by an existing rotation in the system.
  */
-export const listRotationShifts: API.OperationMethod<
+export const listRotationShifts: API.PaginatedOperationMethod<
   ListRotationShiftsRequest,
   ListRotationShiftsResult,
   ListRotationShiftsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRotationShiftsRequest,
-  ) => stream.Stream<
-    ListRotationShiftsResult,
-    ListRotationShiftsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRotationShiftsRequest,
-  ) => stream.Stream<
-    RotationShift,
-    ListRotationShiftsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  RotationShift
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRotationShiftsRequest,
   output: ListRotationShiftsResult,
   errors: [

@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -5309,27 +5308,13 @@ export type GetQueryResultsError =
  * Gets event data results of a query. You must specify the `QueryID` value
  * returned by the `StartQuery` operation.
  */
-export const getQueryResults: API.OperationMethod<
+export const getQueryResults: API.PaginatedOperationMethod<
   GetQueryResultsRequest,
   GetQueryResultsResponse,
   GetQueryResultsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetQueryResultsRequest,
-  ) => stream.Stream<
-    GetQueryResultsResponse,
-    GetQueryResultsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetQueryResultsRequest,
-  ) => stream.Stream<
-    unknown,
-    GetQueryResultsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetQueryResultsRequest,
   output: GetQueryResultsResponse,
   errors: [
@@ -5455,27 +5440,13 @@ export type ListChannelsError =
 /**
  * Lists the channels in the current account, and their source names.
  */
-export const listChannels: API.OperationMethod<
+export const listChannels: API.PaginatedOperationMethod<
   ListChannelsRequest,
   ListChannelsResponse,
   ListChannelsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListChannelsRequest,
-  ) => stream.Stream<
-    ListChannelsResponse,
-    ListChannelsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListChannelsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListChannelsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListChannelsRequest,
   output: ListChannelsResponse,
   errors: [
@@ -5522,27 +5493,13 @@ export type ListEventDataStoresError =
  * Returns information about all event data stores in the account, in the current
  * Region.
  */
-export const listEventDataStores: API.OperationMethod<
+export const listEventDataStores: API.PaginatedOperationMethod<
   ListEventDataStoresRequest,
   ListEventDataStoresResponse,
   ListEventDataStoresError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEventDataStoresRequest,
-  ) => stream.Stream<
-    ListEventDataStoresResponse,
-    ListEventDataStoresError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEventDataStoresRequest,
-  ) => stream.Stream<
-    unknown,
-    ListEventDataStoresError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEventDataStoresRequest,
   output: ListEventDataStoresResponse,
   errors: [
@@ -5571,27 +5528,13 @@ export type ListImportFailuresError =
 /**
  * Returns a list of failures for the specified import.
  */
-export const listImportFailures: API.OperationMethod<
+export const listImportFailures: API.PaginatedOperationMethod<
   ListImportFailuresRequest,
   ListImportFailuresResponse,
   ListImportFailuresError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListImportFailuresRequest,
-  ) => stream.Stream<
-    ListImportFailuresResponse,
-    ListImportFailuresError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListImportFailuresRequest,
-  ) => stream.Stream<
-    ImportFailureListItem,
-    ListImportFailuresError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ImportFailureListItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListImportFailuresRequest,
   output: ListImportFailuresResponse,
   errors: [
@@ -5622,27 +5565,13 @@ export type ListImportsError =
  * Returns information on all imports, or a select set of imports by
  * `ImportStatus` or `Destination`.
  */
-export const listImports: API.OperationMethod<
+export const listImports: API.PaginatedOperationMethod<
   ListImportsRequest,
   ListImportsResponse,
   ListImportsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListImportsRequest,
-  ) => stream.Stream<
-    ListImportsResponse,
-    ListImportsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListImportsRequest,
-  ) => stream.Stream<
-    ImportsListItem,
-    ListImportsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ImportsListItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListImportsRequest,
   output: ListImportsResponse,
   errors: [
@@ -5686,27 +5615,13 @@ export type ListInsightsDataError =
  * The rate of ListInsightsData requests is limited to two per second, per account, per Region. If
  * this limit is exceeded, a throttling error occurs.
  */
-export const listInsightsData: API.OperationMethod<
+export const listInsightsData: API.PaginatedOperationMethod<
   ListInsightsDataRequest,
   ListInsightsDataResponse,
   ListInsightsDataError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListInsightsDataRequest,
-  ) => stream.Stream<
-    ListInsightsDataResponse,
-    ListInsightsDataError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListInsightsDataRequest,
-  ) => stream.Stream<
-    Event,
-    ListInsightsDataError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Event
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListInsightsDataRequest,
   output: ListInsightsDataResponse,
   errors: [
@@ -5753,27 +5668,13 @@ export type ListInsightsMetricDataError =
  * - If `ListInsightsMetricData` is invoked without `TrailName` parameter, access to the `ListInsightsMetricData` API operation is linked to the `cloudtrail:LookupEvents` action only. To use this operation,
  * you must have permissions to perform the `cloudtrail:LookupEvents` action.
  */
-export const listInsightsMetricData: API.OperationMethod<
+export const listInsightsMetricData: API.PaginatedOperationMethod<
   ListInsightsMetricDataRequest,
   ListInsightsMetricDataResponse,
   ListInsightsMetricDataError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListInsightsMetricDataRequest,
-  ) => stream.Stream<
-    ListInsightsMetricDataResponse,
-    ListInsightsMetricDataError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListInsightsMetricDataRequest,
-  ) => stream.Stream<
-    unknown,
-    ListInsightsMetricDataError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListInsightsMetricDataRequest,
   output: ListInsightsMetricDataResponse,
   errors: [
@@ -5808,27 +5709,13 @@ export type ListPublicKeysError =
  * from a specific Region, you must look in the same Region for its corresponding public
  * key.
  */
-export const listPublicKeys: API.OperationMethod<
+export const listPublicKeys: API.PaginatedOperationMethod<
   ListPublicKeysRequest,
   ListPublicKeysResponse,
   ListPublicKeysError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPublicKeysRequest,
-  ) => stream.Stream<
-    ListPublicKeysResponse,
-    ListPublicKeysError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPublicKeysRequest,
-  ) => stream.Stream<
-    PublicKey,
-    ListPublicKeysError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  PublicKey
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPublicKeysRequest,
   output: ListPublicKeysResponse,
   errors: [
@@ -5869,27 +5756,13 @@ export type ListQueriesError =
  * `FINISHED`, `FAILED`, `TIMED_OUT`, or
  * `CANCELLED`.
  */
-export const listQueries: API.OperationMethod<
+export const listQueries: API.PaginatedOperationMethod<
   ListQueriesRequest,
   ListQueriesResponse,
   ListQueriesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListQueriesRequest,
-  ) => stream.Stream<
-    ListQueriesResponse,
-    ListQueriesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListQueriesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListQueriesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListQueriesRequest,
   output: ListQueriesResponse,
   errors: [
@@ -5932,27 +5805,13 @@ export type ListTagsError =
 /**
  * Lists the tags for the specified trails, event data stores, dashboards, or channels in the current Region.
  */
-export const listTags: API.OperationMethod<
+export const listTags: API.PaginatedOperationMethod<
   ListTagsRequest,
   ListTagsResponse,
   ListTagsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTagsRequest,
-  ) => stream.Stream<
-    ListTagsResponse,
-    ListTagsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTagsRequest,
-  ) => stream.Stream<
-    ResourceTag,
-    ListTagsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ResourceTag
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTagsRequest,
   output: ListTagsResponse,
   errors: [
@@ -5986,27 +5845,13 @@ export type ListTrailsError =
 /**
  * Lists trails that are in the current account.
  */
-export const listTrails: API.OperationMethod<
+export const listTrails: API.PaginatedOperationMethod<
   ListTrailsRequest,
   ListTrailsResponse,
   ListTrailsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTrailsRequest,
-  ) => stream.Stream<
-    ListTrailsResponse,
-    ListTrailsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTrailsRequest,
-  ) => stream.Stream<
-    TrailInfo,
-    ListTrailsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  TrailInfo
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTrailsRequest,
   output: ListTrailsResponse,
   errors: [OperationNotPermittedException, UnsupportedOperationException],
@@ -6069,27 +5914,13 @@ export type LookupEventsError =
  * The rate of lookup requests is limited to two per second, per account, per Region. If
  * this limit is exceeded, a throttling error occurs.
  */
-export const lookupEvents: API.OperationMethod<
+export const lookupEvents: API.PaginatedOperationMethod<
   LookupEventsRequest,
   LookupEventsResponse,
   LookupEventsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: LookupEventsRequest,
-  ) => stream.Stream<
-    LookupEventsResponse,
-    LookupEventsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: LookupEventsRequest,
-  ) => stream.Stream<
-    Event,
-    LookupEventsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Event
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: LookupEventsRequest,
   output: LookupEventsResponse,
   errors: [

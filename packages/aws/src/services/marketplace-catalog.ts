@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -2604,27 +2603,13 @@ export type ListChangeSetsError =
  * You can describe a change during the 60-day request history retention period for API
  * calls.
  */
-export const listChangeSets: API.OperationMethod<
+export const listChangeSets: API.PaginatedOperationMethod<
   ListChangeSetsRequest,
   ListChangeSetsResponse,
   ListChangeSetsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListChangeSetsRequest,
-  ) => stream.Stream<
-    ListChangeSetsResponse,
-    ListChangeSetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListChangeSetsRequest,
-  ) => stream.Stream<
-    ChangeSetSummaryListItem,
-    ListChangeSetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ChangeSetSummaryListItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListChangeSetsRequest,
   output: ListChangeSetsResponse,
   errors: [
@@ -2654,27 +2639,13 @@ export type ListEntitiesError =
 /**
  * Provides the list of entities of a given type.
  */
-export const listEntities: API.OperationMethod<
+export const listEntities: API.PaginatedOperationMethod<
   ListEntitiesRequest,
   ListEntitiesResponse,
   ListEntitiesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEntitiesRequest,
-  ) => stream.Stream<
-    ListEntitiesResponse,
-    ListEntitiesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEntitiesRequest,
-  ) => stream.Stream<
-    EntitySummary,
-    ListEntitiesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  EntitySummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEntitiesRequest,
   output: ListEntitiesResponse,
   errors: [

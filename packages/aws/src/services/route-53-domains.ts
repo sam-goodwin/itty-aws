@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -2420,27 +2419,13 @@ export type ListDomainsError = InvalidInput | CommonErrors;
  * This operation returns all the domain names registered with Amazon Route 53 for the
  * current Amazon Web Services account if no filtering conditions are used.
  */
-export const listDomains: API.OperationMethod<
+export const listDomains: API.PaginatedOperationMethod<
   ListDomainsRequest,
   ListDomainsResponse,
   ListDomainsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDomainsRequest,
-  ) => stream.Stream<
-    ListDomainsResponse,
-    ListDomainsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDomainsRequest,
-  ) => stream.Stream<
-    DomainSummary,
-    ListDomainsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  DomainSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDomainsRequest,
   output: ListDomainsResponse,
   errors: [InvalidInput],
@@ -2462,27 +2447,13 @@ export type ListOperationsError = InvalidInput | CommonErrors;
  *
  * This command runs only in the us-east-1 Region.
  */
-export const listOperations: API.OperationMethod<
+export const listOperations: API.PaginatedOperationMethod<
   ListOperationsRequest,
   ListOperationsResponse,
   ListOperationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListOperationsRequest,
-  ) => stream.Stream<
-    ListOperationsResponse,
-    ListOperationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListOperationsRequest,
-  ) => stream.Stream<
-    OperationSummary,
-    ListOperationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  OperationSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOperationsRequest,
   output: ListOperationsResponse,
   errors: [InvalidInput],
@@ -2512,27 +2483,13 @@ export type ListPricesError = InvalidInput | UnsupportedTLD | CommonErrors;
  *
  * - Domain restoration
  */
-export const listPrices: API.OperationMethod<
+export const listPrices: API.PaginatedOperationMethod<
   ListPricesRequest,
   ListPricesResponse,
   ListPricesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPricesRequest,
-  ) => stream.Stream<
-    ListPricesResponse,
-    ListPricesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPricesRequest,
-  ) => stream.Stream<
-    DomainPrice,
-    ListPricesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  DomainPrice
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPricesRequest,
   output: ListPricesResponse,
   errors: [InvalidInput, UnsupportedTLD],
@@ -3070,27 +3027,13 @@ export type ViewBillingError = InvalidInput | CommonErrors;
 /**
  * Returns all the domain-related billing records for the current Amazon Web Services account for a specified period
  */
-export const viewBilling: API.OperationMethod<
+export const viewBilling: API.PaginatedOperationMethod<
   ViewBillingRequest,
   ViewBillingResponse,
   ViewBillingError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ViewBillingRequest,
-  ) => stream.Stream<
-    ViewBillingResponse,
-    ViewBillingError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ViewBillingRequest,
-  ) => stream.Stream<
-    BillingRecord,
-    ViewBillingError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  BillingRecord
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ViewBillingRequest,
   output: ViewBillingResponse,
   errors: [InvalidInput],

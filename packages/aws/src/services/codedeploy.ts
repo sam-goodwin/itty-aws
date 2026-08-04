@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -4342,27 +4341,13 @@ export type ListApplicationRevisionsError =
 /**
  * Lists information about revisions for an application.
  */
-export const listApplicationRevisions: API.OperationMethod<
+export const listApplicationRevisions: API.PaginatedOperationMethod<
   ListApplicationRevisionsInput,
   ListApplicationRevisionsOutput,
   ListApplicationRevisionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListApplicationRevisionsInput,
-  ) => stream.Stream<
-    ListApplicationRevisionsOutput,
-    ListApplicationRevisionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListApplicationRevisionsInput,
-  ) => stream.Stream<
-    RevisionLocation,
-    ListApplicationRevisionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  RevisionLocation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListApplicationRevisionsInput,
   output: ListApplicationRevisionsOutput,
   errors: [
@@ -4391,27 +4376,13 @@ export type ListApplicationsError = InvalidNextTokenException | CommonErrors;
 /**
  * Lists the applications registered with the user or Amazon Web Services account.
  */
-export const listApplications: API.OperationMethod<
+export const listApplications: API.PaginatedOperationMethod<
   ListApplicationsInput,
   ListApplicationsOutput,
   ListApplicationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListApplicationsInput,
-  ) => stream.Stream<
-    ListApplicationsOutput,
-    ListApplicationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListApplicationsInput,
-  ) => stream.Stream<
-    ApplicationName,
-    ListApplicationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ApplicationName
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListApplicationsInput,
   output: ListApplicationsOutput,
   errors: [InvalidNextTokenException],
@@ -4431,27 +4402,13 @@ export type ListDeploymentConfigsError =
 /**
  * Lists the deployment configurations with the user or Amazon Web Services account.
  */
-export const listDeploymentConfigs: API.OperationMethod<
+export const listDeploymentConfigs: API.PaginatedOperationMethod<
   ListDeploymentConfigsInput,
   ListDeploymentConfigsOutput,
   ListDeploymentConfigsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDeploymentConfigsInput,
-  ) => stream.Stream<
-    ListDeploymentConfigsOutput,
-    ListDeploymentConfigsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDeploymentConfigsInput,
-  ) => stream.Stream<
-    DeploymentConfigName,
-    ListDeploymentConfigsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  DeploymentConfigName
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDeploymentConfigsInput,
   output: ListDeploymentConfigsOutput,
   errors: [InvalidNextTokenException],
@@ -4475,27 +4432,13 @@ export type ListDeploymentGroupsError =
  * Lists the deployment groups for an application registered with the Amazon Web Services
  * user or Amazon Web Services account.
  */
-export const listDeploymentGroups: API.OperationMethod<
+export const listDeploymentGroups: API.PaginatedOperationMethod<
   ListDeploymentGroupsInput,
   ListDeploymentGroupsOutput,
   ListDeploymentGroupsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDeploymentGroupsInput,
-  ) => stream.Stream<
-    ListDeploymentGroupsOutput,
-    ListDeploymentGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDeploymentGroupsInput,
-  ) => stream.Stream<
-    DeploymentGroupName,
-    ListDeploymentGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  DeploymentGroupName
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDeploymentGroupsInput,
   output: ListDeploymentGroupsOutput,
   errors: [
@@ -4534,27 +4477,13 @@ export type ListDeploymentInstancesError =
  *
  * Lists the instance for a deployment associated with the user or Amazon Web Services account.
  */
-export const listDeploymentInstances: API.OperationMethod<
+export const listDeploymentInstances: API.PaginatedOperationMethod<
   ListDeploymentInstancesInput,
   ListDeploymentInstancesOutput,
   ListDeploymentInstancesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDeploymentInstancesInput,
-  ) => stream.Stream<
-    ListDeploymentInstancesOutput,
-    ListDeploymentInstancesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDeploymentInstancesInput,
-  ) => stream.Stream<
-    InstanceId,
-    ListDeploymentInstancesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  InstanceId
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDeploymentInstancesInput,
   output: ListDeploymentInstancesOutput,
   errors: [
@@ -4596,27 +4525,13 @@ export type ListDeploymentsError =
  * Lists the deployments in a deployment group for an application registered with the
  * user or Amazon Web Services account.
  */
-export const listDeployments: API.OperationMethod<
+export const listDeployments: API.PaginatedOperationMethod<
   ListDeploymentsInput,
   ListDeploymentsOutput,
   ListDeploymentsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDeploymentsInput,
-  ) => stream.Stream<
-    ListDeploymentsOutput,
-    ListDeploymentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDeploymentsInput,
-  ) => stream.Stream<
-    DeploymentId,
-    ListDeploymentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  DeploymentId
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDeploymentsInput,
   output: ListDeploymentsOutput,
   errors: [

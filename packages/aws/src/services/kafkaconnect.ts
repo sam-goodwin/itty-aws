@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -1954,27 +1953,13 @@ export type ListConnectorOperationsError =
 /**
  * Lists information about a connector's operation(s).
  */
-export const listConnectorOperations: API.OperationMethod<
+export const listConnectorOperations: API.PaginatedOperationMethod<
   ListConnectorOperationsRequest,
   ListConnectorOperationsResponse,
   ListConnectorOperationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListConnectorOperationsRequest,
-  ) => stream.Stream<
-    ListConnectorOperationsResponse,
-    ListConnectorOperationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListConnectorOperationsRequest,
-  ) => stream.Stream<
-    ConnectorOperationSummary,
-    ListConnectorOperationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ConnectorOperationSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListConnectorOperationsRequest,
   output: ListConnectorOperationsResponse,
   errors: [
@@ -2009,27 +1994,13 @@ export type ListConnectorsError =
 /**
  * Returns a list of all the connectors in this account and Region. The list is limited to connectors whose name starts with the specified prefix. The response also includes a description of each of the listed connectors.
  */
-export const listConnectors: API.OperationMethod<
+export const listConnectors: API.PaginatedOperationMethod<
   ListConnectorsRequest,
   ListConnectorsResponse,
   ListConnectorsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListConnectorsRequest,
-  ) => stream.Stream<
-    ListConnectorsResponse,
-    ListConnectorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListConnectorsRequest,
-  ) => stream.Stream<
-    ConnectorSummary,
-    ListConnectorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ConnectorSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListConnectorsRequest,
   output: ListConnectorsResponse,
   errors: [
@@ -2064,27 +2035,13 @@ export type ListCustomPluginsError =
 /**
  * Returns a list of all of the custom plugins in this account and Region.
  */
-export const listCustomPlugins: API.OperationMethod<
+export const listCustomPlugins: API.PaginatedOperationMethod<
   ListCustomPluginsRequest,
   ListCustomPluginsResponse,
   ListCustomPluginsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCustomPluginsRequest,
-  ) => stream.Stream<
-    ListCustomPluginsResponse,
-    ListCustomPluginsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCustomPluginsRequest,
-  ) => stream.Stream<
-    CustomPluginSummary,
-    ListCustomPluginsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  CustomPluginSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCustomPluginsRequest,
   output: ListCustomPluginsResponse,
   errors: [
@@ -2153,27 +2110,13 @@ export type ListWorkerConfigurationsError =
 /**
  * Returns a list of all of the worker configurations in this account and Region.
  */
-export const listWorkerConfigurations: API.OperationMethod<
+export const listWorkerConfigurations: API.PaginatedOperationMethod<
   ListWorkerConfigurationsRequest,
   ListWorkerConfigurationsResponse,
   ListWorkerConfigurationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListWorkerConfigurationsRequest,
-  ) => stream.Stream<
-    ListWorkerConfigurationsResponse,
-    ListWorkerConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListWorkerConfigurationsRequest,
-  ) => stream.Stream<
-    WorkerConfigurationSummary,
-    ListWorkerConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  WorkerConfigurationSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListWorkerConfigurationsRequest,
   output: ListWorkerConfigurationsResponse,
   errors: [

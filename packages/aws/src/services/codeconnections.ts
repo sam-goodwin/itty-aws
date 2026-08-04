@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -1635,27 +1634,13 @@ export type ListConnectionsError = ResourceNotFoundException | CommonErrors;
 /**
  * Lists the connections associated with your account.
  */
-export const listConnections: API.OperationMethod<
+export const listConnections: API.PaginatedOperationMethod<
   ListConnectionsInput,
   ListConnectionsOutput,
   ListConnectionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListConnectionsInput,
-  ) => stream.Stream<
-    ListConnectionsOutput,
-    ListConnectionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListConnectionsInput,
-  ) => stream.Stream<
-    unknown,
-    ListConnectionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListConnectionsInput,
   output: ListConnectionsOutput,
   errors: [ResourceNotFoundException],
@@ -1673,27 +1658,13 @@ export type ListHostsError = CommonErrors;
 /**
  * Lists the hosts associated with your account.
  */
-export const listHosts: API.OperationMethod<
+export const listHosts: API.PaginatedOperationMethod<
   ListHostsInput,
   ListHostsOutput,
   ListHostsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListHostsInput,
-  ) => stream.Stream<
-    ListHostsOutput,
-    ListHostsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListHostsInput,
-  ) => stream.Stream<
-    unknown,
-    ListHostsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListHostsInput,
   output: ListHostsOutput,
   errors: [],
@@ -1718,27 +1689,13 @@ export type ListRepositoryLinksError =
 /**
  * Lists the repository links created for connections in your account.
  */
-export const listRepositoryLinks: API.OperationMethod<
+export const listRepositoryLinks: API.PaginatedOperationMethod<
   ListRepositoryLinksInput,
   ListRepositoryLinksOutput,
   ListRepositoryLinksError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRepositoryLinksInput,
-  ) => stream.Stream<
-    ListRepositoryLinksOutput,
-    ListRepositoryLinksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRepositoryLinksInput,
-  ) => stream.Stream<
-    unknown,
-    ListRepositoryLinksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRepositoryLinksInput,
   output: ListRepositoryLinksOutput,
   errors: [
@@ -1799,27 +1756,13 @@ export type ListSyncConfigurationsError =
 /**
  * Returns a list of sync configurations for a specified repository.
  */
-export const listSyncConfigurations: API.OperationMethod<
+export const listSyncConfigurations: API.PaginatedOperationMethod<
   ListSyncConfigurationsInput,
   ListSyncConfigurationsOutput,
   ListSyncConfigurationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSyncConfigurationsInput,
-  ) => stream.Stream<
-    ListSyncConfigurationsOutput,
-    ListSyncConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSyncConfigurationsInput,
-  ) => stream.Stream<
-    unknown,
-    ListSyncConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSyncConfigurationsInput,
   output: ListSyncConfigurationsOutput,
   errors: [

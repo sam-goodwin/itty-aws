@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -2163,27 +2162,13 @@ export type GetDataLakeSourcesError =
  * Retrieves a snapshot of the current Region, including whether Amazon Security Lake is enabled
  * for those accounts and which sources Security Lake is collecting data from.
  */
-export const getDataLakeSources: API.OperationMethod<
+export const getDataLakeSources: API.PaginatedOperationMethod<
   GetDataLakeSourcesRequest,
   GetDataLakeSourcesResponse,
   GetDataLakeSourcesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetDataLakeSourcesRequest,
-  ) => stream.Stream<
-    GetDataLakeSourcesResponse,
-    GetDataLakeSourcesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetDataLakeSourcesRequest,
-  ) => stream.Stream<
-    DataLakeSource,
-    GetDataLakeSourcesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  DataLakeSource
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetDataLakeSourcesRequest,
   output: GetDataLakeSourcesResponse,
   errors: [
@@ -2254,27 +2239,13 @@ export type ListDataLakeExceptionsError =
  * Lists the Amazon Security Lake exceptions that you can use to find the source of problems and
  * fix them.
  */
-export const listDataLakeExceptions: API.OperationMethod<
+export const listDataLakeExceptions: API.PaginatedOperationMethod<
   ListDataLakeExceptionsRequest,
   ListDataLakeExceptionsResponse,
   ListDataLakeExceptionsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDataLakeExceptionsRequest,
-  ) => stream.Stream<
-    ListDataLakeExceptionsResponse,
-    ListDataLakeExceptionsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDataLakeExceptionsRequest,
-  ) => stream.Stream<
-    DataLakeException,
-    ListDataLakeExceptionsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  DataLakeException
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDataLakeExceptionsRequest,
   output: ListDataLakeExceptionsResponse,
   errors: [
@@ -2344,27 +2315,13 @@ export type ListLogSourcesError =
 /**
  * Retrieves the log sources.
  */
-export const listLogSources: API.OperationMethod<
+export const listLogSources: API.PaginatedOperationMethod<
   ListLogSourcesRequest,
   ListLogSourcesResponse,
   ListLogSourcesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListLogSourcesRequest,
-  ) => stream.Stream<
-    ListLogSourcesResponse,
-    ListLogSourcesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListLogSourcesRequest,
-  ) => stream.Stream<
-    LogSource,
-    ListLogSourcesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  LogSource
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLogSourcesRequest,
   output: ListLogSourcesResponse,
   errors: [
@@ -2400,27 +2357,13 @@ export type ListSubscribersError =
  * Lists all subscribers for the specific Amazon Security Lake account ID. You can retrieve a list
  * of subscriptions associated with a specific organization or Amazon Web Services account.
  */
-export const listSubscribers: API.OperationMethod<
+export const listSubscribers: API.PaginatedOperationMethod<
   ListSubscribersRequest,
   ListSubscribersResponse,
   ListSubscribersError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSubscribersRequest,
-  ) => stream.Stream<
-    ListSubscribersResponse,
-    ListSubscribersError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSubscribersRequest,
-  ) => stream.Stream<
-    SubscriberResource,
-    ListSubscribersError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  SubscriberResource
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSubscribersRequest,
   output: ListSubscribersResponse,
   errors: [

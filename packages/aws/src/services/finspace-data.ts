@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -2424,27 +2423,13 @@ export type ListChangesetsError =
 /**
  * Lists the FinSpace Changesets for a Dataset.
  */
-export const listChangesets: API.OperationMethod<
+export const listChangesets: API.PaginatedOperationMethod<
   ListChangesetsRequest,
   ListChangesetsResponse,
   ListChangesetsError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListChangesetsRequest,
-  ) => stream.Stream<
-    ListChangesetsResponse,
-    ListChangesetsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListChangesetsRequest,
-  ) => stream.Stream<
-    ChangesetSummary,
-    ListChangesetsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Region | HttpClient.HttpClient,
+  ChangesetSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListChangesetsRequest,
   output: ListChangesetsResponse,
   errors: [
@@ -2476,27 +2461,13 @@ export type ListDatasetsError =
 /**
  * Lists all of the active Datasets that a user has access to.
  */
-export const listDatasets: API.OperationMethod<
+export const listDatasets: API.PaginatedOperationMethod<
   ListDatasetsRequest,
   ListDatasetsResponse,
   ListDatasetsError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDatasetsRequest,
-  ) => stream.Stream<
-    ListDatasetsResponse,
-    ListDatasetsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDatasetsRequest,
-  ) => stream.Stream<
-    Dataset,
-    ListDatasetsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Region | HttpClient.HttpClient,
+  Dataset
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDatasetsRequest,
   output: ListDatasetsResponse,
   errors: [
@@ -2527,27 +2498,13 @@ export type ListDataViewsError =
 /**
  * Lists all available Dataviews for a Dataset.
  */
-export const listDataViews: API.OperationMethod<
+export const listDataViews: API.PaginatedOperationMethod<
   ListDataViewsRequest,
   ListDataViewsResponse,
   ListDataViewsError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDataViewsRequest,
-  ) => stream.Stream<
-    ListDataViewsResponse,
-    ListDataViewsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDataViewsRequest,
-  ) => stream.Stream<
-    DataViewSummary,
-    ListDataViewsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Region | HttpClient.HttpClient,
+  DataViewSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDataViewsRequest,
   output: ListDataViewsResponse,
   errors: [
@@ -2577,27 +2534,13 @@ export type ListPermissionGroupsError =
 /**
  * Lists all available permission groups in FinSpace.
  */
-export const listPermissionGroups: API.OperationMethod<
+export const listPermissionGroups: API.PaginatedOperationMethod<
   ListPermissionGroupsRequest,
   ListPermissionGroupsResponse,
   ListPermissionGroupsError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPermissionGroupsRequest,
-  ) => stream.Stream<
-    ListPermissionGroupsResponse,
-    ListPermissionGroupsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPermissionGroupsRequest,
-  ) => stream.Stream<
-    PermissionGroup,
-    ListPermissionGroupsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Region | HttpClient.HttpClient,
+  PermissionGroup
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPermissionGroupsRequest,
   output: ListPermissionGroupsResponse,
   errors: [
@@ -2656,27 +2599,13 @@ export type ListUsersError =
 /**
  * Lists all available users in FinSpace.
  */
-export const listUsers: API.OperationMethod<
+export const listUsers: API.PaginatedOperationMethod<
   ListUsersRequest,
   ListUsersResponse,
   ListUsersError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListUsersRequest,
-  ) => stream.Stream<
-    ListUsersResponse,
-    ListUsersError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListUsersRequest,
-  ) => stream.Stream<
-    User,
-    ListUsersError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Region | HttpClient.HttpClient,
+  User
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListUsersRequest,
   output: ListUsersResponse,
   errors: [

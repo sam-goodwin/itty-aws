@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -6422,27 +6421,13 @@ export type ListPhoneNumberOrdersError =
 /**
  * Lists the phone numbers for an administrator's Amazon Chime SDK account.
  */
-export const listPhoneNumberOrders: API.OperationMethod<
+export const listPhoneNumberOrders: API.PaginatedOperationMethod<
   ListPhoneNumberOrdersRequest,
   ListPhoneNumberOrdersResponse,
   ListPhoneNumberOrdersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPhoneNumberOrdersRequest,
-  ) => stream.Stream<
-    ListPhoneNumberOrdersResponse,
-    ListPhoneNumberOrdersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPhoneNumberOrdersRequest,
-  ) => stream.Stream<
-    unknown,
-    ListPhoneNumberOrdersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPhoneNumberOrdersRequest,
   output: ListPhoneNumberOrdersResponse,
   errors: [
@@ -6477,27 +6462,13 @@ export type ListPhoneNumbersError =
  * Amazon Chime SDK user, Amazon Chime SDK Voice Connector, or Amazon Chime SDK Voice
  * Connector group.
  */
-export const listPhoneNumbers: API.OperationMethod<
+export const listPhoneNumbers: API.PaginatedOperationMethod<
   ListPhoneNumbersRequest,
   ListPhoneNumbersResponse,
   ListPhoneNumbersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPhoneNumbersRequest,
-  ) => stream.Stream<
-    ListPhoneNumbersResponse,
-    ListPhoneNumbersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPhoneNumbersRequest,
-  ) => stream.Stream<
-    unknown,
-    ListPhoneNumbersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPhoneNumbersRequest,
   output: ListPhoneNumbersResponse,
   errors: [
@@ -6531,27 +6502,13 @@ export type ListProxySessionsError =
 /**
  * Lists the proxy sessions for the specified Amazon Chime SDK Voice Connector.
  */
-export const listProxySessions: API.OperationMethod<
+export const listProxySessions: API.PaginatedOperationMethod<
   ListProxySessionsRequest,
   ListProxySessionsResponse,
   ListProxySessionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListProxySessionsRequest,
-  ) => stream.Stream<
-    ListProxySessionsResponse,
-    ListProxySessionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListProxySessionsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListProxySessionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProxySessionsRequest,
   output: ListProxySessionsResponse,
   errors: [
@@ -6584,27 +6541,13 @@ export type ListSipMediaApplicationsError =
 /**
  * Lists the SIP media applications under the administrator's AWS account.
  */
-export const listSipMediaApplications: API.OperationMethod<
+export const listSipMediaApplications: API.PaginatedOperationMethod<
   ListSipMediaApplicationsRequest,
   ListSipMediaApplicationsResponse,
   ListSipMediaApplicationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSipMediaApplicationsRequest,
-  ) => stream.Stream<
-    ListSipMediaApplicationsResponse,
-    ListSipMediaApplicationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSipMediaApplicationsRequest,
-  ) => stream.Stream<
-    SipMediaApplication,
-    ListSipMediaApplicationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  SipMediaApplication
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSipMediaApplicationsRequest,
   output: ListSipMediaApplicationsResponse,
   errors: [
@@ -6637,27 +6580,13 @@ export type ListSipRulesError =
 /**
  * Lists the SIP rules under the administrator's AWS account.
  */
-export const listSipRules: API.OperationMethod<
+export const listSipRules: API.PaginatedOperationMethod<
   ListSipRulesRequest,
   ListSipRulesResponse,
   ListSipRulesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSipRulesRequest,
-  ) => stream.Stream<
-    ListSipRulesResponse,
-    ListSipRulesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSipRulesRequest,
-  ) => stream.Stream<
-    SipRule,
-    ListSipRulesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  SipRule
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSipRulesRequest,
   output: ListSipRulesResponse,
   errors: [
@@ -6757,27 +6686,13 @@ export type ListVoiceConnectorGroupsError =
  * Lists the Amazon Chime SDK Voice Connector groups in the administrator's AWS
  * account.
  */
-export const listVoiceConnectorGroups: API.OperationMethod<
+export const listVoiceConnectorGroups: API.PaginatedOperationMethod<
   ListVoiceConnectorGroupsRequest,
   ListVoiceConnectorGroupsResponse,
   ListVoiceConnectorGroupsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListVoiceConnectorGroupsRequest,
-  ) => stream.Stream<
-    ListVoiceConnectorGroupsResponse,
-    ListVoiceConnectorGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListVoiceConnectorGroupsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListVoiceConnectorGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListVoiceConnectorGroupsRequest,
   output: ListVoiceConnectorGroupsResponse,
   errors: [
@@ -6810,27 +6725,13 @@ export type ListVoiceConnectorsError =
  * Lists the Amazon Chime SDK Voice Connectors in the administrators
  * AWS account.
  */
-export const listVoiceConnectors: API.OperationMethod<
+export const listVoiceConnectors: API.PaginatedOperationMethod<
   ListVoiceConnectorsRequest,
   ListVoiceConnectorsResponse,
   ListVoiceConnectorsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListVoiceConnectorsRequest,
-  ) => stream.Stream<
-    ListVoiceConnectorsResponse,
-    ListVoiceConnectorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListVoiceConnectorsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListVoiceConnectorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListVoiceConnectorsRequest,
   output: ListVoiceConnectorsResponse,
   errors: [
@@ -6897,27 +6798,13 @@ export type ListVoiceProfileDomainsError =
 /**
  * Lists the specified voice profile domains in the administrator's AWS account.
  */
-export const listVoiceProfileDomains: API.OperationMethod<
+export const listVoiceProfileDomains: API.PaginatedOperationMethod<
   ListVoiceProfileDomainsRequest,
   ListVoiceProfileDomainsResponse,
   ListVoiceProfileDomainsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListVoiceProfileDomainsRequest,
-  ) => stream.Stream<
-    ListVoiceProfileDomainsResponse,
-    ListVoiceProfileDomainsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListVoiceProfileDomainsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListVoiceProfileDomainsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListVoiceProfileDomainsRequest,
   output: ListVoiceProfileDomainsResponse,
   errors: [
@@ -6951,27 +6838,13 @@ export type ListVoiceProfilesError =
 /**
  * Lists the voice profiles in a voice profile domain.
  */
-export const listVoiceProfiles: API.OperationMethod<
+export const listVoiceProfiles: API.PaginatedOperationMethod<
   ListVoiceProfilesRequest,
   ListVoiceProfilesResponse,
   ListVoiceProfilesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListVoiceProfilesRequest,
-  ) => stream.Stream<
-    ListVoiceProfilesResponse,
-    ListVoiceProfilesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListVoiceProfilesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListVoiceProfilesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListVoiceProfilesRequest,
   output: ListVoiceProfilesResponse,
   errors: [
@@ -7390,27 +7263,13 @@ export type SearchAvailablePhoneNumbersError =
 /**
  * Searches the provisioned phone numbers in an organization.
  */
-export const searchAvailablePhoneNumbers: API.OperationMethod<
+export const searchAvailablePhoneNumbers: API.PaginatedOperationMethod<
   SearchAvailablePhoneNumbersRequest,
   SearchAvailablePhoneNumbersResponse,
   SearchAvailablePhoneNumbersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: SearchAvailablePhoneNumbersRequest,
-  ) => stream.Stream<
-    SearchAvailablePhoneNumbersResponse,
-    SearchAvailablePhoneNumbersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: SearchAvailablePhoneNumbersRequest,
-  ) => stream.Stream<
-    unknown,
-    SearchAvailablePhoneNumbersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchAvailablePhoneNumbersRequest,
   output: SearchAvailablePhoneNumbersResponse,
   errors: [

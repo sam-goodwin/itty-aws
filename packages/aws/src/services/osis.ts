@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -1603,27 +1602,13 @@ export type ListPipelineEndpointConnectionsError =
 /**
  * Lists the pipeline endpoints connected to pipelines in your account.
  */
-export const listPipelineEndpointConnections: API.OperationMethod<
+export const listPipelineEndpointConnections: API.PaginatedOperationMethod<
   ListPipelineEndpointConnectionsRequest,
   ListPipelineEndpointConnectionsResponse,
   ListPipelineEndpointConnectionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPipelineEndpointConnectionsRequest,
-  ) => stream.Stream<
-    ListPipelineEndpointConnectionsResponse,
-    ListPipelineEndpointConnectionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPipelineEndpointConnectionsRequest,
-  ) => stream.Stream<
-    PipelineEndpointConnection,
-    ListPipelineEndpointConnectionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  PipelineEndpointConnection
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPipelineEndpointConnectionsRequest,
   output: ListPipelineEndpointConnectionsResponse,
   errors: [
@@ -1654,27 +1639,13 @@ export type ListPipelineEndpointsError =
 /**
  * Lists all pipeline endpoints in your account.
  */
-export const listPipelineEndpoints: API.OperationMethod<
+export const listPipelineEndpoints: API.PaginatedOperationMethod<
   ListPipelineEndpointsRequest,
   ListPipelineEndpointsResponse,
   ListPipelineEndpointsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPipelineEndpointsRequest,
-  ) => stream.Stream<
-    ListPipelineEndpointsResponse,
-    ListPipelineEndpointsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPipelineEndpointsRequest,
-  ) => stream.Stream<
-    PipelineEndpoint,
-    ListPipelineEndpointsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  PipelineEndpoint
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPipelineEndpointsRequest,
   output: ListPipelineEndpointsResponse,
   errors: [
@@ -1707,27 +1678,13 @@ export type ListPipelinesError =
  * For more information, see Viewing Amazon OpenSearch
  * Ingestion pipelines.
  */
-export const listPipelines: API.OperationMethod<
+export const listPipelines: API.PaginatedOperationMethod<
   ListPipelinesRequest,
   ListPipelinesResponse,
   ListPipelinesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPipelinesRequest,
-  ) => stream.Stream<
-    ListPipelinesResponse,
-    ListPipelinesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPipelinesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListPipelinesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPipelinesRequest,
   output: ListPipelinesResponse,
   errors: [

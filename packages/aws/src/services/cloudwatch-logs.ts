@@ -7944,27 +7944,13 @@ export type DescribeConfigurationTemplatesError =
  * delivery sources, delivery destinations, and deliveries. For more information about
  * deliveries, see CreateDelivery.
  */
-export const describeConfigurationTemplates: API.OperationMethod<
+export const describeConfigurationTemplates: API.PaginatedOperationMethod<
   DescribeConfigurationTemplatesRequest,
   DescribeConfigurationTemplatesResponse,
   DescribeConfigurationTemplatesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeConfigurationTemplatesRequest,
-  ) => stream.Stream<
-    DescribeConfigurationTemplatesResponse,
-    DescribeConfigurationTemplatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeConfigurationTemplatesRequest,
-  ) => stream.Stream<
-    ConfigurationTemplate,
-    DescribeConfigurationTemplatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ConfigurationTemplate
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeConfigurationTemplatesRequest,
   output: DescribeConfigurationTemplatesResponse,
   errors: [
@@ -8005,27 +7991,13 @@ export type DescribeDeliveriesError =
  * configured as a delivery source. These services are listed in Enable logging from
  * Amazon Web Services services.
  */
-export const describeDeliveries: API.OperationMethod<
+export const describeDeliveries: API.PaginatedOperationMethod<
   DescribeDeliveriesRequest,
   DescribeDeliveriesResponse,
   DescribeDeliveriesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeDeliveriesRequest,
-  ) => stream.Stream<
-    DescribeDeliveriesResponse,
-    DescribeDeliveriesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeDeliveriesRequest,
-  ) => stream.Stream<
-    Delivery,
-    DescribeDeliveriesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Delivery
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeDeliveriesRequest,
   output: DescribeDeliveriesResponse,
   errors: [
@@ -8055,27 +8027,13 @@ export type DescribeDeliveryDestinationsError =
  * Retrieves a list of the delivery destinations that have been created in the
  * account.
  */
-export const describeDeliveryDestinations: API.OperationMethod<
+export const describeDeliveryDestinations: API.PaginatedOperationMethod<
   DescribeDeliveryDestinationsRequest,
   DescribeDeliveryDestinationsResponse,
   DescribeDeliveryDestinationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeDeliveryDestinationsRequest,
-  ) => stream.Stream<
-    DescribeDeliveryDestinationsResponse,
-    DescribeDeliveryDestinationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeDeliveryDestinationsRequest,
-  ) => stream.Stream<
-    DeliveryDestination,
-    DescribeDeliveryDestinationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  DeliveryDestination
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeDeliveryDestinationsRequest,
   output: DescribeDeliveryDestinationsResponse,
   errors: [
@@ -8104,27 +8062,13 @@ export type DescribeDeliverySourcesError =
 /**
  * Retrieves a list of the delivery sources that have been created in the account.
  */
-export const describeDeliverySources: API.OperationMethod<
+export const describeDeliverySources: API.PaginatedOperationMethod<
   DescribeDeliverySourcesRequest,
   DescribeDeliverySourcesResponse,
   DescribeDeliverySourcesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeDeliverySourcesRequest,
-  ) => stream.Stream<
-    DescribeDeliverySourcesResponse,
-    DescribeDeliverySourcesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeDeliverySourcesRequest,
-  ) => stream.Stream<
-    DeliverySource,
-    DescribeDeliverySourcesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  DeliverySource
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeDeliverySourcesRequest,
   output: DescribeDeliverySourcesResponse,
   errors: [
@@ -8152,27 +8096,13 @@ export type DescribeDestinationsError =
  * Lists all your destinations. The results are ASCII-sorted by destination
  * name.
  */
-export const describeDestinations: API.OperationMethod<
+export const describeDestinations: API.PaginatedOperationMethod<
   DescribeDestinationsRequest,
   DescribeDestinationsResponse,
   DescribeDestinationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeDestinationsRequest,
-  ) => stream.Stream<
-    DescribeDestinationsResponse,
-    DescribeDestinationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeDestinationsRequest,
-  ) => stream.Stream<
-    Destination,
-    DescribeDestinationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Destination
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeDestinationsRequest,
   output: DescribeDestinationsResponse,
   errors: [InvalidParameterException, ServiceUnavailableException],
@@ -8363,27 +8293,13 @@ export type DescribeLogGroupsError =
  * in a monitoring account and view data from the linked source accounts. For more information,
  * see CloudWatch cross-account observability.
  */
-export const describeLogGroups: API.OperationMethod<
+export const describeLogGroups: API.PaginatedOperationMethod<
   DescribeLogGroupsRequest,
   DescribeLogGroupsResponse,
   DescribeLogGroupsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeLogGroupsRequest,
-  ) => stream.Stream<
-    DescribeLogGroupsResponse,
-    DescribeLogGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeLogGroupsRequest,
-  ) => stream.Stream<
-    LogGroup,
-    DescribeLogGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  LogGroup
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeLogGroupsRequest,
   output: DescribeLogGroupsResponse,
   errors: [InvalidParameterException, ServiceUnavailableException],
@@ -8418,27 +8334,13 @@ export type DescribeLogStreamsError =
  * in a monitoring account and view data from the linked source accounts. For more information,
  * see CloudWatch cross-account observability.
  */
-export const describeLogStreams: API.OperationMethod<
+export const describeLogStreams: API.PaginatedOperationMethod<
   DescribeLogStreamsRequest,
   DescribeLogStreamsResponse,
   DescribeLogStreamsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeLogStreamsRequest,
-  ) => stream.Stream<
-    DescribeLogStreamsResponse,
-    DescribeLogStreamsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeLogStreamsRequest,
-  ) => stream.Stream<
-    LogStream,
-    DescribeLogStreamsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  LogStream
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeLogStreamsRequest,
   output: DescribeLogStreamsResponse,
   errors: [
@@ -8496,27 +8398,13 @@ export type DescribeMetricFiltersError =
  * the results by log name, prefix, metric name, or metric namespace. The results are
  * ASCII-sorted by filter name.
  */
-export const describeMetricFilters: API.OperationMethod<
+export const describeMetricFilters: API.PaginatedOperationMethod<
   DescribeMetricFiltersRequest,
   DescribeMetricFiltersResponse,
   DescribeMetricFiltersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeMetricFiltersRequest,
-  ) => stream.Stream<
-    DescribeMetricFiltersResponse,
-    DescribeMetricFiltersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeMetricFiltersRequest,
-  ) => stream.Stream<
-    MetricFilter,
-    DescribeMetricFiltersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  MetricFilter
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeMetricFiltersRequest,
   output: DescribeMetricFiltersResponse,
   errors: [
@@ -8625,27 +8513,13 @@ export type DescribeSubscriptionFiltersError =
  * subscription filters or filter the results by prefix. The results are ASCII-sorted by filter
  * name.
  */
-export const describeSubscriptionFilters: API.OperationMethod<
+export const describeSubscriptionFilters: API.PaginatedOperationMethod<
   DescribeSubscriptionFiltersRequest,
   DescribeSubscriptionFiltersResponse,
   DescribeSubscriptionFiltersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeSubscriptionFiltersRequest,
-  ) => stream.Stream<
-    DescribeSubscriptionFiltersResponse,
-    DescribeSubscriptionFiltersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeSubscriptionFiltersRequest,
-  ) => stream.Stream<
-    SubscriptionFilter,
-    DescribeSubscriptionFiltersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  SubscriptionFilter
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeSubscriptionFiltersRequest,
   output: DescribeSubscriptionFiltersResponse,
   errors: [
@@ -8797,27 +8671,13 @@ export type FilterLogEventsError =
  * versions, you must use a CloudWatch Logs
  * query.
  */
-export const filterLogEvents: API.OperationMethod<
+export const filterLogEvents: API.PaginatedOperationMethod<
   FilterLogEventsRequest,
   FilterLogEventsResponse,
   FilterLogEventsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: FilterLogEventsRequest,
-  ) => stream.Stream<
-    FilterLogEventsResponse,
-    FilterLogEventsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: FilterLogEventsRequest,
-  ) => stream.Stream<
-    unknown,
-    FilterLogEventsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: FilterLogEventsRequest,
   output: FilterLogEventsResponse,
   errors: [
@@ -9088,27 +8948,13 @@ export type GetLogEventsError =
  * must use a CloudWatch Logs
  * query.
  */
-export const getLogEvents: API.OperationMethod<
+export const getLogEvents: API.PaginatedOperationMethod<
   GetLogEventsRequest,
   GetLogEventsResponse,
   GetLogEventsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetLogEventsRequest,
-  ) => stream.Stream<
-    GetLogEventsResponse,
-    GetLogEventsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetLogEventsRequest,
-  ) => stream.Stream<
-    OutputLogEvent,
-    GetLogEventsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  OutputLogEvent
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetLogEventsRequest,
   output: GetLogEventsResponse,
   errors: [
@@ -9406,27 +9252,13 @@ export type GetScheduledQueryHistoryError =
  * Retrieves the execution history of a scheduled query within a specified time range,
  * including query results and destination processing status.
  */
-export const getScheduledQueryHistory: API.OperationMethod<
+export const getScheduledQueryHistory: API.PaginatedOperationMethod<
   GetScheduledQueryHistoryRequest,
   GetScheduledQueryHistoryResponse,
   GetScheduledQueryHistoryError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetScheduledQueryHistoryRequest,
-  ) => stream.Stream<
-    GetScheduledQueryHistoryResponse,
-    GetScheduledQueryHistoryError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetScheduledQueryHistoryRequest,
-  ) => stream.Stream<
-    TriggerHistoryRecord,
-    GetScheduledQueryHistoryError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  TriggerHistoryRecord
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetScheduledQueryHistoryRequest,
   output: GetScheduledQueryHistoryResponse,
   errors: [
@@ -9497,27 +9329,13 @@ export type ListAggregateLogGroupSummariesError =
  * results. By default, it returns up to 50 results and includes a token to retrieve more
  * results.
  */
-export const listAggregateLogGroupSummaries: API.OperationMethod<
+export const listAggregateLogGroupSummaries: API.PaginatedOperationMethod<
   ListAggregateLogGroupSummariesRequest,
   ListAggregateLogGroupSummariesResponse,
   ListAggregateLogGroupSummariesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAggregateLogGroupSummariesRequest,
-  ) => stream.Stream<
-    ListAggregateLogGroupSummariesResponse,
-    ListAggregateLogGroupSummariesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAggregateLogGroupSummariesRequest,
-  ) => stream.Stream<
-    AggregateLogGroupSummary,
-    ListAggregateLogGroupSummariesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AggregateLogGroupSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAggregateLogGroupSummariesRequest,
   output: ListAggregateLogGroupSummariesResponse,
   errors: [
@@ -9547,27 +9365,13 @@ export type ListAnomaliesError =
  * structure format of each anomaly object that is returned, see the example in this
  * section.
  */
-export const listAnomalies: API.OperationMethod<
+export const listAnomalies: API.PaginatedOperationMethod<
   ListAnomaliesRequest,
   ListAnomaliesResponse,
   ListAnomaliesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAnomaliesRequest,
-  ) => stream.Stream<
-    ListAnomaliesResponse,
-    ListAnomaliesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAnomaliesRequest,
-  ) => stream.Stream<
-    Anomaly,
-    ListAnomaliesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Anomaly
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAnomaliesRequest,
   output: ListAnomaliesResponse,
   errors: [
@@ -9619,27 +9423,13 @@ export type ListLogAnomalyDetectorsError =
 /**
  * Retrieves a list of the log anomaly detectors in the account.
  */
-export const listLogAnomalyDetectors: API.OperationMethod<
+export const listLogAnomalyDetectors: API.PaginatedOperationMethod<
   ListLogAnomalyDetectorsRequest,
   ListLogAnomalyDetectorsResponse,
   ListLogAnomalyDetectorsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListLogAnomalyDetectorsRequest,
-  ) => stream.Stream<
-    ListLogAnomalyDetectorsResponse,
-    ListLogAnomalyDetectorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListLogAnomalyDetectorsRequest,
-  ) => stream.Stream<
-    AnomalyDetector,
-    ListLogAnomalyDetectorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AnomalyDetector
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLogAnomalyDetectorsRequest,
   output: ListLogAnomalyDetectorsResponse,
   errors: [
@@ -9706,27 +9496,13 @@ export type ListLogGroupsForQueryError =
  * For more information about field indexes, see Create field indexes
  * to improve query performance and reduce costs.
  */
-export const listLogGroupsForQuery: API.OperationMethod<
+export const listLogGroupsForQuery: API.PaginatedOperationMethod<
   ListLogGroupsForQueryRequest,
   ListLogGroupsForQueryResponse,
   ListLogGroupsForQueryError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListLogGroupsForQueryRequest,
-  ) => stream.Stream<
-    ListLogGroupsForQueryResponse,
-    ListLogGroupsForQueryError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListLogGroupsForQueryRequest,
-  ) => stream.Stream<
-    LogGroupIdentifier,
-    ListLogGroupsForQueryError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  LogGroupIdentifier
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLogGroupsForQueryRequest,
   output: ListLogGroupsForQueryResponse,
   errors: [
@@ -9756,27 +9532,13 @@ export type ListScheduledQueriesError =
  * Lists all scheduled queries in your account and region. You can filter results by state to
  * show only enabled or disabled queries.
  */
-export const listScheduledQueries: API.OperationMethod<
+export const listScheduledQueries: API.PaginatedOperationMethod<
   ListScheduledQueriesRequest,
   ListScheduledQueriesResponse,
   ListScheduledQueriesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListScheduledQueriesRequest,
-  ) => stream.Stream<
-    ListScheduledQueriesResponse,
-    ListScheduledQueriesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListScheduledQueriesRequest,
-  ) => stream.Stream<
-    ScheduledQuerySummary,
-    ListScheduledQueriesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ScheduledQuerySummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListScheduledQueriesRequest,
   output: ListScheduledQueriesResponse,
   errors: [
@@ -9807,27 +9569,13 @@ export type ListSourcesForS3TableIntegrationError =
  * Returns a list of data source associations for a specified S3 Table Integration, showing
  * which data sources are currently associated for query access.
  */
-export const listSourcesForS3TableIntegration: API.OperationMethod<
+export const listSourcesForS3TableIntegration: API.PaginatedOperationMethod<
   ListSourcesForS3TableIntegrationRequest,
   ListSourcesForS3TableIntegrationResponse,
   ListSourcesForS3TableIntegrationError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSourcesForS3TableIntegrationRequest,
-  ) => stream.Stream<
-    ListSourcesForS3TableIntegrationResponse,
-    ListSourcesForS3TableIntegrationError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSourcesForS3TableIntegrationRequest,
-  ) => stream.Stream<
-    S3TableIntegrationSource,
-    ListSourcesForS3TableIntegrationError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  S3TableIntegrationSource
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSourcesForS3TableIntegrationRequest,
   output: ListSourcesForS3TableIntegrationResponse,
   errors: [

@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -5681,27 +5680,13 @@ export type DescribeAddonVersionsError =
  * `owner`, `publisher`, and the `type` of the add-on
  * are returned.
  */
-export const describeAddonVersions: API.OperationMethod<
+export const describeAddonVersions: API.PaginatedOperationMethod<
   DescribeAddonVersionsRequest,
   DescribeAddonVersionsResponse,
   DescribeAddonVersionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeAddonVersionsRequest,
-  ) => stream.Stream<
-    DescribeAddonVersionsResponse,
-    DescribeAddonVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeAddonVersionsRequest,
-  ) => stream.Stream<
-    AddonInfo,
-    DescribeAddonVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AddonInfo
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeAddonVersionsRequest,
   output: DescribeAddonVersionsResponse,
   errors: [
@@ -5792,27 +5777,13 @@ export type DescribeClusterVersionsError =
 /**
  * Lists available Kubernetes versions for Amazon EKS clusters.
  */
-export const describeClusterVersions: API.OperationMethod<
+export const describeClusterVersions: API.PaginatedOperationMethod<
   DescribeClusterVersionsRequest,
   DescribeClusterVersionsResponse,
   DescribeClusterVersionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeClusterVersionsRequest,
-  ) => stream.Stream<
-    DescribeClusterVersionsResponse,
-    DescribeClusterVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeClusterVersionsRequest,
-  ) => stream.Stream<
-    ClusterVersionInformation,
-    DescribeClusterVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ClusterVersionInformation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeClusterVersionsRequest,
   output: DescribeClusterVersionsResponse,
   errors: [InvalidParameterException, InvalidRequestException, ServerException],
@@ -6133,27 +6104,13 @@ export type ListAccessEntriesError =
 /**
  * Lists the access entries for your cluster.
  */
-export const listAccessEntries: API.OperationMethod<
+export const listAccessEntries: API.PaginatedOperationMethod<
   ListAccessEntriesRequest,
   ListAccessEntriesResponse,
   ListAccessEntriesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAccessEntriesRequest,
-  ) => stream.Stream<
-    ListAccessEntriesResponse,
-    ListAccessEntriesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAccessEntriesRequest,
-  ) => stream.Stream<
-    string,
-    ListAccessEntriesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  string
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccessEntriesRequest,
   output: ListAccessEntriesResponse,
   errors: [
@@ -6177,27 +6134,13 @@ export type ListAccessPoliciesError = ServerException | CommonErrors;
 /**
  * Lists the available access policies.
  */
-export const listAccessPolicies: API.OperationMethod<
+export const listAccessPolicies: API.PaginatedOperationMethod<
   ListAccessPoliciesRequest,
   ListAccessPoliciesResponse,
   ListAccessPoliciesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAccessPoliciesRequest,
-  ) => stream.Stream<
-    ListAccessPoliciesResponse,
-    ListAccessPoliciesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAccessPoliciesRequest,
-  ) => stream.Stream<
-    AccessPolicy,
-    ListAccessPoliciesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AccessPolicy
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccessPoliciesRequest,
   output: ListAccessPoliciesResponse,
   errors: [ServerException],
@@ -6222,27 +6165,13 @@ export type ListAddonsError =
 /**
  * Lists the installed add-ons.
  */
-export const listAddons: API.OperationMethod<
+export const listAddons: API.PaginatedOperationMethod<
   ListAddonsRequest,
   ListAddonsResponse,
   ListAddonsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAddonsRequest,
-  ) => stream.Stream<
-    ListAddonsResponse,
-    ListAddonsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAddonsRequest,
-  ) => stream.Stream<
-    string,
-    ListAddonsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  string
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAddonsRequest,
   output: ListAddonsResponse,
   errors: [
@@ -6271,27 +6200,13 @@ export type ListAssociatedAccessPoliciesError =
 /**
  * Lists the access policies associated with an access entry.
  */
-export const listAssociatedAccessPolicies: API.OperationMethod<
+export const listAssociatedAccessPolicies: API.PaginatedOperationMethod<
   ListAssociatedAccessPoliciesRequest,
   ListAssociatedAccessPoliciesResponse,
   ListAssociatedAccessPoliciesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAssociatedAccessPoliciesRequest,
-  ) => stream.Stream<
-    ListAssociatedAccessPoliciesResponse,
-    ListAssociatedAccessPoliciesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAssociatedAccessPoliciesRequest,
-  ) => stream.Stream<
-    AssociatedAccessPolicy,
-    ListAssociatedAccessPoliciesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AssociatedAccessPolicy
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAssociatedAccessPoliciesRequest,
   output: ListAssociatedAccessPoliciesResponse,
   errors: [InvalidRequestException, ResourceNotFoundException, ServerException],
@@ -6313,27 +6228,13 @@ export type ListCapabilitiesError =
 /**
  * Lists all managed capabilities in your Amazon EKS cluster. You can use this operation to get an overview of all capabilities and their current status.
  */
-export const listCapabilities: API.OperationMethod<
+export const listCapabilities: API.PaginatedOperationMethod<
   ListCapabilitiesRequest,
   ListCapabilitiesResponse,
   ListCapabilitiesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCapabilitiesRequest,
-  ) => stream.Stream<
-    ListCapabilitiesResponse,
-    ListCapabilitiesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCapabilitiesRequest,
-  ) => stream.Stream<
-    CapabilitySummary,
-    ListCapabilitiesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  CapabilitySummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCapabilitiesRequest,
   output: ListCapabilitiesResponse,
   errors: [InvalidParameterException, ServerException],
@@ -6357,27 +6258,13 @@ export type ListClustersError =
 /**
  * Lists the Amazon EKS clusters in your Amazon Web Services account in the specified Amazon Web Services Region.
  */
-export const listClusters: API.OperationMethod<
+export const listClusters: API.PaginatedOperationMethod<
   ListClustersRequest,
   ListClustersResponse,
   ListClustersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListClustersRequest,
-  ) => stream.Stream<
-    ListClustersResponse,
-    ListClustersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListClustersRequest,
-  ) => stream.Stream<
-    string,
-    ListClustersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  string
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListClustersRequest,
   output: ListClustersResponse,
   errors: [
@@ -6406,27 +6293,13 @@ export type ListEksAnywhereSubscriptionsError =
 /**
  * Displays the full description of the subscription.
  */
-export const listEksAnywhereSubscriptions: API.OperationMethod<
+export const listEksAnywhereSubscriptions: API.PaginatedOperationMethod<
   ListEksAnywhereSubscriptionsRequest,
   ListEksAnywhereSubscriptionsResponse,
   ListEksAnywhereSubscriptionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEksAnywhereSubscriptionsRequest,
-  ) => stream.Stream<
-    ListEksAnywhereSubscriptionsResponse,
-    ListEksAnywhereSubscriptionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEksAnywhereSubscriptionsRequest,
-  ) => stream.Stream<
-    EksAnywhereSubscription,
-    ListEksAnywhereSubscriptionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  EksAnywhereSubscription
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEksAnywhereSubscriptionsRequest,
   output: ListEksAnywhereSubscriptionsResponse,
   errors: [
@@ -6456,27 +6329,13 @@ export type ListFargateProfilesError =
  * Lists the Fargate profiles associated with the specified cluster in your Amazon Web Services
  * account in the specified Amazon Web Services Region.
  */
-export const listFargateProfiles: API.OperationMethod<
+export const listFargateProfiles: API.PaginatedOperationMethod<
   ListFargateProfilesRequest,
   ListFargateProfilesResponse,
   ListFargateProfilesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListFargateProfilesRequest,
-  ) => stream.Stream<
-    ListFargateProfilesResponse,
-    ListFargateProfilesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListFargateProfilesRequest,
-  ) => stream.Stream<
-    string,
-    ListFargateProfilesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  string
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFargateProfilesRequest,
   output: ListFargateProfilesResponse,
   errors: [
@@ -6506,27 +6365,13 @@ export type ListIdentityProviderConfigsError =
 /**
  * Lists the identity provider configurations for your cluster.
  */
-export const listIdentityProviderConfigs: API.OperationMethod<
+export const listIdentityProviderConfigs: API.PaginatedOperationMethod<
   ListIdentityProviderConfigsRequest,
   ListIdentityProviderConfigsResponse,
   ListIdentityProviderConfigsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListIdentityProviderConfigsRequest,
-  ) => stream.Stream<
-    ListIdentityProviderConfigsResponse,
-    ListIdentityProviderConfigsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListIdentityProviderConfigsRequest,
-  ) => stream.Stream<
-    IdentityProviderConfig,
-    ListIdentityProviderConfigsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  IdentityProviderConfig
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListIdentityProviderConfigsRequest,
   output: ListIdentityProviderConfigsResponse,
   errors: [
@@ -6567,27 +6412,13 @@ export type ListInsightsError =
  * Hybrid Nodes setup that could impair functionality of your cluster or
  * workloads. These are called configuration insights.
  */
-export const listInsights: API.OperationMethod<
+export const listInsights: API.PaginatedOperationMethod<
   ListInsightsRequest,
   ListInsightsResponse,
   ListInsightsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListInsightsRequest,
-  ) => stream.Stream<
-    ListInsightsResponse,
-    ListInsightsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListInsightsRequest,
-  ) => stream.Stream<
-    InsightSummary,
-    ListInsightsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  InsightSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListInsightsRequest,
   output: ListInsightsResponse,
   errors: [
@@ -6618,27 +6449,13 @@ export type ListNodegroupsError =
  * Lists the managed node groups associated with the specified cluster in your Amazon Web Services
  * account in the specified Amazon Web Services Region. Self-managed node groups aren't listed.
  */
-export const listNodegroups: API.OperationMethod<
+export const listNodegroups: API.PaginatedOperationMethod<
   ListNodegroupsRequest,
   ListNodegroupsResponse,
   ListNodegroupsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListNodegroupsRequest,
-  ) => stream.Stream<
-    ListNodegroupsResponse,
-    ListNodegroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListNodegroupsRequest,
-  ) => stream.Stream<
-    string,
-    ListNodegroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  string
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListNodegroupsRequest,
   output: ListNodegroupsResponse,
   errors: [
@@ -6669,27 +6486,13 @@ export type ListPodIdentityAssociationsError =
  * List the EKS Pod Identity associations in a cluster. You can filter the list by the namespace that the
  * association is in or the service account that the association uses.
  */
-export const listPodIdentityAssociations: API.OperationMethod<
+export const listPodIdentityAssociations: API.PaginatedOperationMethod<
   ListPodIdentityAssociationsRequest,
   ListPodIdentityAssociationsResponse,
   ListPodIdentityAssociationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPodIdentityAssociationsRequest,
-  ) => stream.Stream<
-    ListPodIdentityAssociationsResponse,
-    ListPodIdentityAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPodIdentityAssociationsRequest,
-  ) => stream.Stream<
-    PodIdentityAssociationSummary,
-    ListPodIdentityAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  PodIdentityAssociationSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPodIdentityAssociationsRequest,
   output: ListPodIdentityAssociationsResponse,
   errors: [
@@ -6740,27 +6543,13 @@ export type ListUpdatesError =
  * Lists the updates associated with an Amazon EKS resource in your Amazon Web Services account, in the
  * specified Amazon Web Services Region.
  */
-export const listUpdates: API.OperationMethod<
+export const listUpdates: API.PaginatedOperationMethod<
   ListUpdatesRequest,
   ListUpdatesResponse,
   ListUpdatesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListUpdatesRequest,
-  ) => stream.Stream<
-    ListUpdatesResponse,
-    ListUpdatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListUpdatesRequest,
-  ) => stream.Stream<
-    string,
-    ListUpdatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  string
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListUpdatesRequest,
   output: ListUpdatesResponse,
   errors: [

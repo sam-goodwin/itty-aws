@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -2915,27 +2914,13 @@ export type ListLibraryItemsError =
 /**
  * Lists the library items for Amazon Q Apps that are published and available for users in your Amazon Web Services account.
  */
-export const listLibraryItems: API.OperationMethod<
+export const listLibraryItems: API.PaginatedOperationMethod<
   ListLibraryItemsInput,
   ListLibraryItemsOutput,
   ListLibraryItemsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListLibraryItemsInput,
-  ) => stream.Stream<
-    ListLibraryItemsOutput,
-    ListLibraryItemsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListLibraryItemsInput,
-  ) => stream.Stream<
-    LibraryItemMember,
-    ListLibraryItemsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  LibraryItemMember
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLibraryItemsInput,
   output: ListLibraryItemsOutput,
   errors: [
@@ -2967,27 +2952,13 @@ export type ListQAppsError =
 /**
  * Lists the Amazon Q Apps owned by or associated with the user either because they created it or because they used it from the library in the past. The user identity is extracted from the credentials used to invoke this operation..
  */
-export const listQApps: API.OperationMethod<
+export const listQApps: API.PaginatedOperationMethod<
   ListQAppsInput,
   ListQAppsOutput,
   ListQAppsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListQAppsInput,
-  ) => stream.Stream<
-    ListQAppsOutput,
-    ListQAppsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListQAppsInput,
-  ) => stream.Stream<
-    UserAppItem,
-    ListQAppsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  UserAppItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListQAppsInput,
   output: ListQAppsOutput,
   errors: [

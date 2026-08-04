@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -4015,27 +4014,13 @@ export type GetQueryResultsError =
  * ensure that Amazon S3 permissions to the Athena query location
  * are denied.
  */
-export const getQueryResults: API.OperationMethod<
+export const getQueryResults: API.PaginatedOperationMethod<
   GetQueryResultsInput,
   GetQueryResultsOutput,
   GetQueryResultsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetQueryResultsInput,
-  ) => stream.Stream<
-    GetQueryResultsOutput,
-    GetQueryResultsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetQueryResultsInput,
-  ) => stream.Stream<
-    unknown,
-    GetQueryResultsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetQueryResultsInput,
   output: GetQueryResultsOutput,
   errors: [
@@ -4269,27 +4254,13 @@ export type ListApplicationDPUSizesError =
  * Returns the supported DPU sizes for the supported application runtimes (for example,
  * `Athena notebook version 1`).
  */
-export const listApplicationDPUSizes: API.OperationMethod<
+export const listApplicationDPUSizes: API.PaginatedOperationMethod<
   ListApplicationDPUSizesInput,
   ListApplicationDPUSizesOutput,
   ListApplicationDPUSizesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListApplicationDPUSizesInput,
-  ) => stream.Stream<
-    ListApplicationDPUSizesOutput,
-    ListApplicationDPUSizesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListApplicationDPUSizesInput,
-  ) => stream.Stream<
-    unknown,
-    ListApplicationDPUSizesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListApplicationDPUSizesInput,
   output: ListApplicationDPUSizesOutput,
   errors: [
@@ -4316,27 +4287,13 @@ export type ListCalculationExecutionsError =
  * Lists the calculations that have been submitted to a session in descending order.
  * Newer calculations are listed first; older calculations are listed later.
  */
-export const listCalculationExecutions: API.OperationMethod<
+export const listCalculationExecutions: API.PaginatedOperationMethod<
   ListCalculationExecutionsRequest,
   ListCalculationExecutionsResponse,
   ListCalculationExecutionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCalculationExecutionsRequest,
-  ) => stream.Stream<
-    ListCalculationExecutionsResponse,
-    ListCalculationExecutionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCalculationExecutionsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListCalculationExecutionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCalculationExecutionsRequest,
   output: ListCalculationExecutionsResponse,
   errors: [
@@ -4361,27 +4318,13 @@ export type ListCapacityReservationsError =
 /**
  * Lists the capacity reservations for the current account.
  */
-export const listCapacityReservations: API.OperationMethod<
+export const listCapacityReservations: API.PaginatedOperationMethod<
   ListCapacityReservationsInput,
   ListCapacityReservationsOutput,
   ListCapacityReservationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCapacityReservationsInput,
-  ) => stream.Stream<
-    ListCapacityReservationsOutput,
-    ListCapacityReservationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCapacityReservationsInput,
-  ) => stream.Stream<
-    unknown,
-    ListCapacityReservationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCapacityReservationsInput,
   output: ListCapacityReservationsOutput,
   errors: [InternalServerException, InvalidRequestException],
@@ -4403,27 +4346,13 @@ export type ListDatabasesError =
 /**
  * Lists the databases in the specified data catalog.
  */
-export const listDatabases: API.OperationMethod<
+export const listDatabases: API.PaginatedOperationMethod<
   ListDatabasesInput,
   ListDatabasesOutput,
   ListDatabasesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDatabasesInput,
-  ) => stream.Stream<
-    ListDatabasesOutput,
-    ListDatabasesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDatabasesInput,
-  ) => stream.Stream<
-    Database,
-    ListDatabasesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Database
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDatabasesInput,
   output: ListDatabasesOutput,
   errors: [InternalServerException, InvalidRequestException, MetadataException],
@@ -4448,27 +4377,13 @@ export type ListDataCatalogsError =
  * In the Athena console, data catalogs are listed as "data sources" on
  * the **Data sources** page under the **Data source name** column.
  */
-export const listDataCatalogs: API.OperationMethod<
+export const listDataCatalogs: API.PaginatedOperationMethod<
   ListDataCatalogsInput,
   ListDataCatalogsOutput,
   ListDataCatalogsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDataCatalogsInput,
-  ) => stream.Stream<
-    ListDataCatalogsOutput,
-    ListDataCatalogsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDataCatalogsInput,
-  ) => stream.Stream<
-    DataCatalogSummary,
-    ListDataCatalogsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  DataCatalogSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDataCatalogsInput,
   output: ListDataCatalogsOutput,
   errors: [InternalServerException, InvalidRequestException],
@@ -4491,27 +4406,13 @@ export type ListEngineVersionsError =
  * Returns a list of engine versions that are available to choose from, including the
  * Auto option.
  */
-export const listEngineVersions: API.OperationMethod<
+export const listEngineVersions: API.PaginatedOperationMethod<
   ListEngineVersionsInput,
   ListEngineVersionsOutput,
   ListEngineVersionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEngineVersionsInput,
-  ) => stream.Stream<
-    ListEngineVersionsOutput,
-    ListEngineVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEngineVersionsInput,
-  ) => stream.Stream<
-    unknown,
-    ListEngineVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEngineVersionsInput,
   output: ListEngineVersionsOutput,
   errors: [InternalServerException, InvalidRequestException],
@@ -4535,27 +4436,13 @@ export type ListExecutorsError =
  * listed first; older executors are listed later. The result can be optionally filtered by
  * state.
  */
-export const listExecutors: API.OperationMethod<
+export const listExecutors: API.PaginatedOperationMethod<
   ListExecutorsRequest,
   ListExecutorsResponse,
   ListExecutorsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListExecutorsRequest,
-  ) => stream.Stream<
-    ListExecutorsResponse,
-    ListExecutorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListExecutorsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListExecutorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListExecutorsRequest,
   output: ListExecutorsResponse,
   errors: [
@@ -4582,27 +4469,13 @@ export type ListNamedQueriesError =
  * workgroup. Requires that you have access to the specified workgroup. If a workgroup is
  * not specified, lists the saved queries for the primary workgroup.
  */
-export const listNamedQueries: API.OperationMethod<
+export const listNamedQueries: API.PaginatedOperationMethod<
   ListNamedQueriesInput,
   ListNamedQueriesOutput,
   ListNamedQueriesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListNamedQueriesInput,
-  ) => stream.Stream<
-    ListNamedQueriesOutput,
-    ListNamedQueriesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListNamedQueriesInput,
-  ) => stream.Stream<
-    unknown,
-    ListNamedQueriesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListNamedQueriesInput,
   output: ListNamedQueriesOutput,
   errors: [InternalServerException, InvalidRequestException],
@@ -4678,27 +4551,13 @@ export type ListPreparedStatementsError =
 /**
  * Lists the prepared statements in the specified workgroup.
  */
-export const listPreparedStatements: API.OperationMethod<
+export const listPreparedStatements: API.PaginatedOperationMethod<
   ListPreparedStatementsInput,
   ListPreparedStatementsOutput,
   ListPreparedStatementsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPreparedStatementsInput,
-  ) => stream.Stream<
-    ListPreparedStatementsOutput,
-    ListPreparedStatementsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPreparedStatementsInput,
-  ) => stream.Stream<
-    unknown,
-    ListPreparedStatementsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPreparedStatementsInput,
   output: ListPreparedStatementsOutput,
   errors: [InternalServerException, InvalidRequestException],
@@ -4722,27 +4581,13 @@ export type ListQueryExecutionsError =
  * specified, returns a list of query execution IDs for the primary workgroup. Requires you
  * to have access to the workgroup in which the queries ran.
  */
-export const listQueryExecutions: API.OperationMethod<
+export const listQueryExecutions: API.PaginatedOperationMethod<
   ListQueryExecutionsInput,
   ListQueryExecutionsOutput,
   ListQueryExecutionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListQueryExecutionsInput,
-  ) => stream.Stream<
-    ListQueryExecutionsOutput,
-    ListQueryExecutionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListQueryExecutionsInput,
-  ) => stream.Stream<
-    unknown,
-    ListQueryExecutionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListQueryExecutionsInput,
   output: ListQueryExecutionsOutput,
   errors: [InternalServerException, InvalidRequestException],
@@ -4767,27 +4612,13 @@ export type ListSessionsError =
  * `BUSY`. Newer sessions are listed first; older sessions are listed
  * later.
  */
-export const listSessions: API.OperationMethod<
+export const listSessions: API.PaginatedOperationMethod<
   ListSessionsRequest,
   ListSessionsResponse,
   ListSessionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSessionsRequest,
-  ) => stream.Stream<
-    ListSessionsResponse,
-    ListSessionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSessionsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListSessionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSessionsRequest,
   output: ListSessionsResponse,
   errors: [
@@ -4813,27 +4644,13 @@ export type ListTableMetadataError =
 /**
  * Lists the metadata for the tables in the specified data catalog database.
  */
-export const listTableMetadata: API.OperationMethod<
+export const listTableMetadata: API.PaginatedOperationMethod<
   ListTableMetadataInput,
   ListTableMetadataOutput,
   ListTableMetadataError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTableMetadataInput,
-  ) => stream.Stream<
-    ListTableMetadataOutput,
-    ListTableMetadataError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTableMetadataInput,
-  ) => stream.Stream<
-    TableMetadata,
-    ListTableMetadataError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  TableMetadata
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTableMetadataInput,
   output: ListTableMetadataOutput,
   errors: [InternalServerException, InvalidRequestException, MetadataException],
@@ -4856,27 +4673,13 @@ export type ListTagsForResourceError =
 /**
  * Lists the tags associated with an Athena resource.
  */
-export const listTagsForResource: API.OperationMethod<
+export const listTagsForResource: API.PaginatedOperationMethod<
   ListTagsForResourceInput,
   ListTagsForResourceOutput,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTagsForResourceInput,
-  ) => stream.Stream<
-    ListTagsForResourceOutput,
-    ListTagsForResourceError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTagsForResourceInput,
-  ) => stream.Stream<
-    Tag,
-    ListTagsForResourceError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Tag
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTagsForResourceInput,
   output: ListTagsForResourceOutput,
   errors: [
@@ -4902,27 +4705,13 @@ export type ListWorkGroupsError =
 /**
  * Lists available workgroups for the account.
  */
-export const listWorkGroups: API.OperationMethod<
+export const listWorkGroups: API.PaginatedOperationMethod<
   ListWorkGroupsInput,
   ListWorkGroupsOutput,
   ListWorkGroupsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListWorkGroupsInput,
-  ) => stream.Stream<
-    ListWorkGroupsOutput,
-    ListWorkGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListWorkGroupsInput,
-  ) => stream.Stream<
-    unknown,
-    ListWorkGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListWorkGroupsInput,
   output: ListWorkGroupsOutput,
   errors: [InternalServerException, InvalidRequestException],

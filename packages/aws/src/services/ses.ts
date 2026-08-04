@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -4298,27 +4297,13 @@ export type ListCustomVerificationEmailTemplatesError = CommonErrors;
  *
  * You can execute this operation no more than once per second.
  */
-export const listCustomVerificationEmailTemplates: API.OperationMethod<
+export const listCustomVerificationEmailTemplates: API.PaginatedOperationMethod<
   ListCustomVerificationEmailTemplatesRequest,
   ListCustomVerificationEmailTemplatesResponse,
   ListCustomVerificationEmailTemplatesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCustomVerificationEmailTemplatesRequest,
-  ) => stream.Stream<
-    ListCustomVerificationEmailTemplatesResponse,
-    ListCustomVerificationEmailTemplatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCustomVerificationEmailTemplatesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListCustomVerificationEmailTemplatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCustomVerificationEmailTemplatesRequest,
   output: ListCustomVerificationEmailTemplatesResponse,
   errors: [],
@@ -4348,27 +4333,13 @@ export type ListIdentitiesError = CommonErrors;
  * original call, then continue to not provide it for successive pagination calls.
  * Using this protocol will ensure consistent results.
  */
-export const listIdentities: API.OperationMethod<
+export const listIdentities: API.PaginatedOperationMethod<
   ListIdentitiesRequest,
   ListIdentitiesResponse,
   ListIdentitiesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListIdentitiesRequest,
-  ) => stream.Stream<
-    ListIdentitiesResponse,
-    ListIdentitiesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListIdentitiesRequest,
-  ) => stream.Stream<
-    Identity,
-    ListIdentitiesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Identity
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListIdentitiesRequest,
   output: ListIdentitiesResponse,
   errors: [],

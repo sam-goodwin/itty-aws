@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -3485,27 +3484,13 @@ export type ListAgentsError =
  * In situations like this, you can always confirm whether an agent has been created (or deleted)
  * by using DescribeAgent.
  */
-export const listAgents: API.OperationMethod<
+export const listAgents: API.PaginatedOperationMethod<
   ListAgentsRequest,
   ListAgentsResponse,
   ListAgentsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAgentsRequest,
-  ) => stream.Stream<
-    ListAgentsResponse,
-    ListAgentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAgentsRequest,
-  ) => stream.Stream<
-    AgentListEntry,
-    ListAgentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AgentListEntry
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAgentsRequest,
   output: ListAgentsResponse,
   errors: [InternalException, InvalidRequestException],
@@ -3531,27 +3516,13 @@ export type ListLocationsError =
  * returns only a truncated list of your agents), the response contains a token that you can
  * specify in your next request to fetch the next page of locations.
  */
-export const listLocations: API.OperationMethod<
+export const listLocations: API.PaginatedOperationMethod<
   ListLocationsRequest,
   ListLocationsResponse,
   ListLocationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListLocationsRequest,
-  ) => stream.Stream<
-    ListLocationsResponse,
-    ListLocationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListLocationsRequest,
-  ) => stream.Stream<
-    LocationListEntry,
-    ListLocationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  LocationListEntry
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLocationsRequest,
   output: ListLocationsResponse,
   errors: [InternalException, InvalidRequestException],
@@ -3573,27 +3544,13 @@ export type ListTagsForResourceError =
 /**
  * Returns all the tags associated with an Amazon Web Services resource.
  */
-export const listTagsForResource: API.OperationMethod<
+export const listTagsForResource: API.PaginatedOperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTagsForResourceRequest,
-  ) => stream.Stream<
-    ListTagsForResourceResponse,
-    ListTagsForResourceError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTagsForResourceRequest,
-  ) => stream.Stream<
-    TagListEntry,
-    ListTagsForResourceError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  TagListEntry
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [InternalException, InvalidRequestException],
@@ -3615,27 +3572,13 @@ export type ListTaskExecutionsError =
 /**
  * Returns a list of executions for an DataSync transfer task.
  */
-export const listTaskExecutions: API.OperationMethod<
+export const listTaskExecutions: API.PaginatedOperationMethod<
   ListTaskExecutionsRequest,
   ListTaskExecutionsResponse,
   ListTaskExecutionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTaskExecutionsRequest,
-  ) => stream.Stream<
-    ListTaskExecutionsResponse,
-    ListTaskExecutionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTaskExecutionsRequest,
-  ) => stream.Stream<
-    TaskExecutionListEntry,
-    ListTaskExecutionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  TaskExecutionListEntry
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTaskExecutionsRequest,
   output: ListTaskExecutionsResponse,
   errors: [InternalException, InvalidRequestException],
@@ -3657,27 +3600,13 @@ export type ListTasksError =
 /**
  * Returns a list of the DataSync tasks you created.
  */
-export const listTasks: API.OperationMethod<
+export const listTasks: API.PaginatedOperationMethod<
   ListTasksRequest,
   ListTasksResponse,
   ListTasksError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTasksRequest,
-  ) => stream.Stream<
-    ListTasksResponse,
-    ListTasksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTasksRequest,
-  ) => stream.Stream<
-    TaskListEntry,
-    ListTasksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  TaskListEntry
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTasksRequest,
   output: ListTasksResponse,
   errors: [InternalException, InvalidRequestException],

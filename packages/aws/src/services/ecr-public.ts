@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -1545,27 +1544,13 @@ export type DescribeImagesError =
  * command shows the uncompressed image size. Therefore, it might return a larger image
  * size than the image sizes that are returned by DescribeImages.
  */
-export const describeImages: API.OperationMethod<
+export const describeImages: API.PaginatedOperationMethod<
   DescribeImagesRequest,
   DescribeImagesResponse,
   DescribeImagesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeImagesRequest,
-  ) => stream.Stream<
-    DescribeImagesResponse,
-    DescribeImagesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeImagesRequest,
-  ) => stream.Stream<
-    ImageDetail,
-    DescribeImagesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ImageDetail
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeImagesRequest,
   output: DescribeImagesResponse,
   errors: [
@@ -1595,27 +1580,13 @@ export type DescribeImageTagsError =
 /**
  * Returns the image tag details for a repository in a public registry.
  */
-export const describeImageTags: API.OperationMethod<
+export const describeImageTags: API.PaginatedOperationMethod<
   DescribeImageTagsRequest,
   DescribeImageTagsResponse,
   DescribeImageTagsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeImageTagsRequest,
-  ) => stream.Stream<
-    DescribeImageTagsResponse,
-    DescribeImageTagsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeImageTagsRequest,
-  ) => stream.Stream<
-    ImageTagDetail,
-    DescribeImageTagsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ImageTagDetail
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeImageTagsRequest,
   output: DescribeImageTagsResponse,
   errors: [
@@ -1643,27 +1614,13 @@ export type DescribeRegistriesError =
 /**
  * Returns details for a public registry.
  */
-export const describeRegistries: API.OperationMethod<
+export const describeRegistries: API.PaginatedOperationMethod<
   DescribeRegistriesRequest,
   DescribeRegistriesResponse,
   DescribeRegistriesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeRegistriesRequest,
-  ) => stream.Stream<
-    DescribeRegistriesResponse,
-    DescribeRegistriesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeRegistriesRequest,
-  ) => stream.Stream<
-    Registry,
-    DescribeRegistriesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Registry
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeRegistriesRequest,
   output: DescribeRegistriesResponse,
   errors: [
@@ -1691,27 +1648,13 @@ export type DescribeRepositoriesError =
 /**
  * Describes repositories that are in a public registry.
  */
-export const describeRepositories: API.OperationMethod<
+export const describeRepositories: API.PaginatedOperationMethod<
   DescribeRepositoriesRequest,
   DescribeRepositoriesResponse,
   DescribeRepositoriesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeRepositoriesRequest,
-  ) => stream.Stream<
-    DescribeRepositoriesResponse,
-    DescribeRepositoriesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeRepositoriesRequest,
-  ) => stream.Stream<
-    Repository,
-    DescribeRepositoriesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Repository
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeRepositoriesRequest,
   output: DescribeRepositoriesResponse,
   errors: [

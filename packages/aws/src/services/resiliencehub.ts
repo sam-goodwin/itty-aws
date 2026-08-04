@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -4939,27 +4938,13 @@ export type ListAlarmRecommendationsError =
 /**
  * Lists the alarm recommendations for an Resilience Hub application.
  */
-export const listAlarmRecommendations: API.OperationMethod<
+export const listAlarmRecommendations: API.PaginatedOperationMethod<
   ListAlarmRecommendationsRequest,
   ListAlarmRecommendationsResponse,
   ListAlarmRecommendationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAlarmRecommendationsRequest,
-  ) => stream.Stream<
-    ListAlarmRecommendationsResponse,
-    ListAlarmRecommendationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAlarmRecommendationsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListAlarmRecommendationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAlarmRecommendationsRequest,
   output: ListAlarmRecommendationsResponse,
   errors: [
@@ -4989,27 +4974,13 @@ export type ListAppAssessmentComplianceDriftsError =
  * List of compliance drifts that were detected while running an
  * assessment.
  */
-export const listAppAssessmentComplianceDrifts: API.OperationMethod<
+export const listAppAssessmentComplianceDrifts: API.PaginatedOperationMethod<
   ListAppAssessmentComplianceDriftsRequest,
   ListAppAssessmentComplianceDriftsResponse,
   ListAppAssessmentComplianceDriftsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAppAssessmentComplianceDriftsRequest,
-  ) => stream.Stream<
-    ListAppAssessmentComplianceDriftsResponse,
-    ListAppAssessmentComplianceDriftsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAppAssessmentComplianceDriftsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListAppAssessmentComplianceDriftsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAppAssessmentComplianceDriftsRequest,
   output: ListAppAssessmentComplianceDriftsResponse,
   errors: [
@@ -5038,27 +5009,13 @@ export type ListAppAssessmentResourceDriftsError =
  * List of resource drifts that were detected while running an
  * assessment.
  */
-export const listAppAssessmentResourceDrifts: API.OperationMethod<
+export const listAppAssessmentResourceDrifts: API.PaginatedOperationMethod<
   ListAppAssessmentResourceDriftsRequest,
   ListAppAssessmentResourceDriftsResponse,
   ListAppAssessmentResourceDriftsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAppAssessmentResourceDriftsRequest,
-  ) => stream.Stream<
-    ListAppAssessmentResourceDriftsResponse,
-    ListAppAssessmentResourceDriftsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAppAssessmentResourceDriftsRequest,
-  ) => stream.Stream<
-    ResourceDrift,
-    ListAppAssessmentResourceDriftsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ResourceDrift
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAppAssessmentResourceDriftsRequest,
   output: ListAppAssessmentResourceDriftsResponse,
   errors: [
@@ -5089,27 +5046,13 @@ export type ListAppAssessmentsError =
  * Lists the assessments for an Resilience Hub application. You can use request
  * parameters to refine the results for the response object.
  */
-export const listAppAssessments: API.OperationMethod<
+export const listAppAssessments: API.PaginatedOperationMethod<
   ListAppAssessmentsRequest,
   ListAppAssessmentsResponse,
   ListAppAssessmentsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAppAssessmentsRequest,
-  ) => stream.Stream<
-    ListAppAssessmentsResponse,
-    ListAppAssessmentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAppAssessmentsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListAppAssessmentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAppAssessmentsRequest,
   output: ListAppAssessmentsResponse,
   errors: [
@@ -5139,27 +5082,13 @@ export type ListAppComponentCompliancesError =
 /**
  * Lists the compliances for an Resilience Hub Application Component.
  */
-export const listAppComponentCompliances: API.OperationMethod<
+export const listAppComponentCompliances: API.PaginatedOperationMethod<
   ListAppComponentCompliancesRequest,
   ListAppComponentCompliancesResponse,
   ListAppComponentCompliancesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAppComponentCompliancesRequest,
-  ) => stream.Stream<
-    ListAppComponentCompliancesResponse,
-    ListAppComponentCompliancesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAppComponentCompliancesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListAppComponentCompliancesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAppComponentCompliancesRequest,
   output: ListAppComponentCompliancesResponse,
   errors: [
@@ -5189,27 +5118,13 @@ export type ListAppComponentRecommendationsError =
 /**
  * Lists the recommendations for an Resilience Hub Application Component.
  */
-export const listAppComponentRecommendations: API.OperationMethod<
+export const listAppComponentRecommendations: API.PaginatedOperationMethod<
   ListAppComponentRecommendationsRequest,
   ListAppComponentRecommendationsResponse,
   ListAppComponentRecommendationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAppComponentRecommendationsRequest,
-  ) => stream.Stream<
-    ListAppComponentRecommendationsResponse,
-    ListAppComponentRecommendationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAppComponentRecommendationsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListAppComponentRecommendationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAppComponentRecommendationsRequest,
   output: ListAppComponentRecommendationsResponse,
   errors: [
@@ -5241,27 +5156,13 @@ export type ListAppInputSourcesError =
  * information about the input sources supported by Resilience Hub, see Discover
  * the structure and describe your Resilience Hub application.
  */
-export const listAppInputSources: API.OperationMethod<
+export const listAppInputSources: API.PaginatedOperationMethod<
   ListAppInputSourcesRequest,
   ListAppInputSourcesResponse,
   ListAppInputSourcesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAppInputSourcesRequest,
-  ) => stream.Stream<
-    ListAppInputSourcesResponse,
-    ListAppInputSourcesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAppInputSourcesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListAppInputSourcesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAppInputSourcesRequest,
   output: ListAppInputSourcesResponse,
   errors: [
@@ -5297,27 +5198,13 @@ export type ListAppsError =
  * An error occurred (ValidationException) when calling the ListApps operation: Only
  * one filter is supported for this operation.
  */
-export const listApps: API.OperationMethod<
+export const listApps: API.PaginatedOperationMethod<
   ListAppsRequest,
   ListAppsResponse,
   ListAppsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAppsRequest,
-  ) => stream.Stream<
-    ListAppsResponse,
-    ListAppsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAppsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListAppsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAppsRequest,
   output: ListAppsResponse,
   errors: [
@@ -5347,27 +5234,13 @@ export type ListAppVersionAppComponentsError =
 /**
  * Lists all the Application Components in the Resilience Hub application.
  */
-export const listAppVersionAppComponents: API.OperationMethod<
+export const listAppVersionAppComponents: API.PaginatedOperationMethod<
   ListAppVersionAppComponentsRequest,
   ListAppVersionAppComponentsResponse,
   ListAppVersionAppComponentsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAppVersionAppComponentsRequest,
-  ) => stream.Stream<
-    ListAppVersionAppComponentsResponse,
-    ListAppVersionAppComponentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAppVersionAppComponentsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListAppVersionAppComponentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAppVersionAppComponentsRequest,
   output: ListAppVersionAppComponentsResponse,
   errors: [
@@ -5400,27 +5273,13 @@ export type ListAppVersionResourceMappingsError =
  * physical resource identifiers, CloudFormation stacks, resource-groups, or an application registry
  * app.
  */
-export const listAppVersionResourceMappings: API.OperationMethod<
+export const listAppVersionResourceMappings: API.PaginatedOperationMethod<
   ListAppVersionResourceMappingsRequest,
   ListAppVersionResourceMappingsResponse,
   ListAppVersionResourceMappingsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAppVersionResourceMappingsRequest,
-  ) => stream.Stream<
-    ListAppVersionResourceMappingsResponse,
-    ListAppVersionResourceMappingsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAppVersionResourceMappingsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListAppVersionResourceMappingsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAppVersionResourceMappingsRequest,
   output: ListAppVersionResourceMappingsResponse,
   errors: [
@@ -5451,27 +5310,13 @@ export type ListAppVersionResourcesError =
 /**
  * Lists all the resources in an Resilience Hub application.
  */
-export const listAppVersionResources: API.OperationMethod<
+export const listAppVersionResources: API.PaginatedOperationMethod<
   ListAppVersionResourcesRequest,
   ListAppVersionResourcesResponse,
   ListAppVersionResourcesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAppVersionResourcesRequest,
-  ) => stream.Stream<
-    ListAppVersionResourcesResponse,
-    ListAppVersionResourcesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAppVersionResourcesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListAppVersionResourcesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAppVersionResourcesRequest,
   output: ListAppVersionResourcesResponse,
   errors: [
@@ -5501,27 +5346,13 @@ export type ListAppVersionsError =
 /**
  * Lists the different versions for the Resilience Hub applications.
  */
-export const listAppVersions: API.OperationMethod<
+export const listAppVersions: API.PaginatedOperationMethod<
   ListAppVersionsRequest,
   ListAppVersionsResponse,
   ListAppVersionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAppVersionsRequest,
-  ) => stream.Stream<
-    ListAppVersionsResponse,
-    ListAppVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAppVersionsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListAppVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAppVersionsRequest,
   output: ListAppVersionsResponse,
   errors: [
@@ -5549,27 +5380,13 @@ export type ListMetricsError =
 /**
  * Lists the metrics that can be exported.
  */
-export const listMetrics: API.OperationMethod<
+export const listMetrics: API.PaginatedOperationMethod<
   ListMetricsRequest,
   ListMetricsResponse,
   ListMetricsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListMetricsRequest,
-  ) => stream.Stream<
-    ListMetricsResponse,
-    ListMetricsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListMetricsRequest,
-  ) => stream.Stream<
-    String255[],
-    ListMetricsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  String255[]
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMetricsRequest,
   output: ListMetricsResponse,
   errors: [
@@ -5598,27 +5415,13 @@ export type ListRecommendationTemplatesError =
 /**
  * Lists the recommendation templates for the Resilience Hub applications.
  */
-export const listRecommendationTemplates: API.OperationMethod<
+export const listRecommendationTemplates: API.PaginatedOperationMethod<
   ListRecommendationTemplatesRequest,
   ListRecommendationTemplatesResponse,
   ListRecommendationTemplatesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRecommendationTemplatesRequest,
-  ) => stream.Stream<
-    ListRecommendationTemplatesResponse,
-    ListRecommendationTemplatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRecommendationTemplatesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListRecommendationTemplatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRecommendationTemplatesRequest,
   output: ListRecommendationTemplatesResponse,
   errors: [
@@ -5647,27 +5450,13 @@ export type ListResiliencyPoliciesError =
 /**
  * Lists the resiliency policies for the Resilience Hub applications.
  */
-export const listResiliencyPolicies: API.OperationMethod<
+export const listResiliencyPolicies: API.PaginatedOperationMethod<
   ListResiliencyPoliciesRequest,
   ListResiliencyPoliciesResponse,
   ListResiliencyPoliciesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListResiliencyPoliciesRequest,
-  ) => stream.Stream<
-    ListResiliencyPoliciesResponse,
-    ListResiliencyPoliciesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListResiliencyPoliciesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListResiliencyPoliciesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListResiliencyPoliciesRequest,
   output: ListResiliencyPoliciesResponse,
   errors: [
@@ -5697,27 +5486,13 @@ export type ListResourceGroupingRecommendationsError =
 /**
  * Lists the resource grouping recommendations suggested by Resilience Hub for your application.
  */
-export const listResourceGroupingRecommendations: API.OperationMethod<
+export const listResourceGroupingRecommendations: API.PaginatedOperationMethod<
   ListResourceGroupingRecommendationsRequest,
   ListResourceGroupingRecommendationsResponse,
   ListResourceGroupingRecommendationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListResourceGroupingRecommendationsRequest,
-  ) => stream.Stream<
-    ListResourceGroupingRecommendationsResponse,
-    ListResourceGroupingRecommendationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListResourceGroupingRecommendationsRequest,
-  ) => stream.Stream<
-    GroupingRecommendation,
-    ListResourceGroupingRecommendationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  GroupingRecommendation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListResourceGroupingRecommendationsRequest,
   output: ListResourceGroupingRecommendationsResponse,
   errors: [
@@ -5749,27 +5524,13 @@ export type ListSopRecommendationsError =
 /**
  * Lists the standard operating procedure (SOP) recommendations for the Resilience Hub applications.
  */
-export const listSopRecommendations: API.OperationMethod<
+export const listSopRecommendations: API.PaginatedOperationMethod<
   ListSopRecommendationsRequest,
   ListSopRecommendationsResponse,
   ListSopRecommendationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSopRecommendationsRequest,
-  ) => stream.Stream<
-    ListSopRecommendationsResponse,
-    ListSopRecommendationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSopRecommendationsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListSopRecommendationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSopRecommendationsRequest,
   output: ListSopRecommendationsResponse,
   errors: [
@@ -5801,27 +5562,13 @@ export type ListSuggestedResiliencyPoliciesError =
  * Lists the suggested resiliency policies for the Resilience Hub
  * applications.
  */
-export const listSuggestedResiliencyPolicies: API.OperationMethod<
+export const listSuggestedResiliencyPolicies: API.PaginatedOperationMethod<
   ListSuggestedResiliencyPoliciesRequest,
   ListSuggestedResiliencyPoliciesResponse,
   ListSuggestedResiliencyPoliciesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSuggestedResiliencyPoliciesRequest,
-  ) => stream.Stream<
-    ListSuggestedResiliencyPoliciesResponse,
-    ListSuggestedResiliencyPoliciesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSuggestedResiliencyPoliciesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListSuggestedResiliencyPoliciesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSuggestedResiliencyPoliciesRequest,
   output: ListSuggestedResiliencyPoliciesResponse,
   errors: [
@@ -5882,27 +5629,13 @@ export type ListTestRecommendationsError =
 /**
  * Lists the test recommendations for the Resilience Hub application.
  */
-export const listTestRecommendations: API.OperationMethod<
+export const listTestRecommendations: API.PaginatedOperationMethod<
   ListTestRecommendationsRequest,
   ListTestRecommendationsResponse,
   ListTestRecommendationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTestRecommendationsRequest,
-  ) => stream.Stream<
-    ListTestRecommendationsResponse,
-    ListTestRecommendationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTestRecommendationsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListTestRecommendationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTestRecommendationsRequest,
   output: ListTestRecommendationsResponse,
   errors: [
@@ -5936,27 +5669,13 @@ export type ListUnsupportedAppVersionResourcesError =
  * unsupported resource is a resource that exists in the object that was used to create an app,
  * but is not supported by Resilience Hub.
  */
-export const listUnsupportedAppVersionResources: API.OperationMethod<
+export const listUnsupportedAppVersionResources: API.PaginatedOperationMethod<
   ListUnsupportedAppVersionResourcesRequest,
   ListUnsupportedAppVersionResourcesResponse,
   ListUnsupportedAppVersionResourcesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListUnsupportedAppVersionResourcesRequest,
-  ) => stream.Stream<
-    ListUnsupportedAppVersionResourcesResponse,
-    ListUnsupportedAppVersionResourcesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListUnsupportedAppVersionResourcesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListUnsupportedAppVersionResourcesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListUnsupportedAppVersionResourcesRequest,
   output: ListUnsupportedAppVersionResourcesResponse,
   errors: [

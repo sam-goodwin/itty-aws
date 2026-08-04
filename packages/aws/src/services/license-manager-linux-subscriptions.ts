@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -701,27 +700,13 @@ export type ListLinuxSubscriptionInstancesError =
  * Lists the running Amazon EC2 instances that were discovered with commercial Linux
  * subscriptions.
  */
-export const listLinuxSubscriptionInstances: API.OperationMethod<
+export const listLinuxSubscriptionInstances: API.PaginatedOperationMethod<
   ListLinuxSubscriptionInstancesRequest,
   ListLinuxSubscriptionInstancesResponse,
   ListLinuxSubscriptionInstancesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListLinuxSubscriptionInstancesRequest,
-  ) => stream.Stream<
-    ListLinuxSubscriptionInstancesResponse,
-    ListLinuxSubscriptionInstancesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListLinuxSubscriptionInstancesRequest,
-  ) => stream.Stream<
-    Instance,
-    ListLinuxSubscriptionInstancesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Instance
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLinuxSubscriptionInstancesRequest,
   output: ListLinuxSubscriptionInstancesResponse,
   errors: [InternalServerException, ThrottlingException, ValidationException],
@@ -746,27 +731,13 @@ export type ListLinuxSubscriptionsError =
  * organization, the returned results will include data aggregated across your accounts in
  * Organizations.
  */
-export const listLinuxSubscriptions: API.OperationMethod<
+export const listLinuxSubscriptions: API.PaginatedOperationMethod<
   ListLinuxSubscriptionsRequest,
   ListLinuxSubscriptionsResponse,
   ListLinuxSubscriptionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListLinuxSubscriptionsRequest,
-  ) => stream.Stream<
-    ListLinuxSubscriptionsResponse,
-    ListLinuxSubscriptionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListLinuxSubscriptionsRequest,
-  ) => stream.Stream<
-    Subscription,
-    ListLinuxSubscriptionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Subscription
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLinuxSubscriptionsRequest,
   output: ListLinuxSubscriptionsResponse,
   errors: [InternalServerException, ThrottlingException, ValidationException],
@@ -789,27 +760,13 @@ export type ListRegisteredSubscriptionProvidersError =
 /**
  * List Bring Your Own License (BYOL) subscription registration resources for your account.
  */
-export const listRegisteredSubscriptionProviders: API.OperationMethod<
+export const listRegisteredSubscriptionProviders: API.PaginatedOperationMethod<
   ListRegisteredSubscriptionProvidersRequest,
   ListRegisteredSubscriptionProvidersResponse,
   ListRegisteredSubscriptionProvidersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRegisteredSubscriptionProvidersRequest,
-  ) => stream.Stream<
-    ListRegisteredSubscriptionProvidersResponse,
-    ListRegisteredSubscriptionProvidersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRegisteredSubscriptionProvidersRequest,
-  ) => stream.Stream<
-    RegisteredSubscriptionProvider,
-    ListRegisteredSubscriptionProvidersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  RegisteredSubscriptionProvider
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRegisteredSubscriptionProvidersRequest,
   output: ListRegisteredSubscriptionProvidersResponse,
   errors: [InternalServerException, ThrottlingException, ValidationException],

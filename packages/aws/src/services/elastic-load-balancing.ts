@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -2124,27 +2123,13 @@ export type DescribeLoadBalancersError =
 /**
  * Describes the specified the load balancers. If no load balancers are specified, the call describes all of your load balancers.
  */
-export const describeLoadBalancers: API.OperationMethod<
+export const describeLoadBalancers: API.PaginatedOperationMethod<
   DescribeAccessPointsInput,
   DescribeAccessPointsOutput,
   DescribeLoadBalancersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeAccessPointsInput,
-  ) => stream.Stream<
-    DescribeAccessPointsOutput,
-    DescribeLoadBalancersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeAccessPointsInput,
-  ) => stream.Stream<
-    LoadBalancerDescription,
-    DescribeLoadBalancersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  LoadBalancerDescription
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeAccessPointsInput,
   output: DescribeAccessPointsOutput,
   errors: [AccessPointNotFoundException, DependencyThrottleException],

@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -3393,27 +3392,13 @@ export type ListDataIngestionJobsError =
  * Provides a list of all data ingestion jobs, including dataset name and ARN, S3 location
  * of the input data, status, and so on.
  */
-export const listDataIngestionJobs: API.OperationMethod<
+export const listDataIngestionJobs: API.PaginatedOperationMethod<
   ListDataIngestionJobsRequest,
   ListDataIngestionJobsResponse,
   ListDataIngestionJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDataIngestionJobsRequest,
-  ) => stream.Stream<
-    ListDataIngestionJobsResponse,
-    ListDataIngestionJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDataIngestionJobsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListDataIngestionJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDataIngestionJobsRequest,
   output: ListDataIngestionJobsResponse,
   errors: [
@@ -3441,27 +3426,13 @@ export type ListDatasetsError =
 /**
  * Lists all datasets currently available in your account, filtering on the dataset name.
  */
-export const listDatasets: API.OperationMethod<
+export const listDatasets: API.PaginatedOperationMethod<
   ListDatasetsRequest,
   ListDatasetsResponse,
   ListDatasetsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDatasetsRequest,
-  ) => stream.Stream<
-    ListDatasetsResponse,
-    ListDatasetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDatasetsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListDatasetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDatasetsRequest,
   output: ListDatasetsResponse,
   errors: [
@@ -3490,27 +3461,13 @@ export type ListInferenceEventsError =
 /**
  * Lists all inference events that have been found for the specified inference scheduler.
  */
-export const listInferenceEvents: API.OperationMethod<
+export const listInferenceEvents: API.PaginatedOperationMethod<
   ListInferenceEventsRequest,
   ListInferenceEventsResponse,
   ListInferenceEventsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListInferenceEventsRequest,
-  ) => stream.Stream<
-    ListInferenceEventsResponse,
-    ListInferenceEventsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListInferenceEventsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListInferenceEventsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListInferenceEventsRequest,
   output: ListInferenceEventsResponse,
   errors: [
@@ -3541,27 +3498,13 @@ export type ListInferenceExecutionsError =
  * Lists all inference executions that have been performed by the specified inference
  * scheduler.
  */
-export const listInferenceExecutions: API.OperationMethod<
+export const listInferenceExecutions: API.PaginatedOperationMethod<
   ListInferenceExecutionsRequest,
   ListInferenceExecutionsResponse,
   ListInferenceExecutionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListInferenceExecutionsRequest,
-  ) => stream.Stream<
-    ListInferenceExecutionsResponse,
-    ListInferenceExecutionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListInferenceExecutionsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListInferenceExecutionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListInferenceExecutionsRequest,
   output: ListInferenceExecutionsResponse,
   errors: [
@@ -3590,27 +3533,13 @@ export type ListInferenceSchedulersError =
 /**
  * Retrieves a list of all inference schedulers currently available for your account.
  */
-export const listInferenceSchedulers: API.OperationMethod<
+export const listInferenceSchedulers: API.PaginatedOperationMethod<
   ListInferenceSchedulersRequest,
   ListInferenceSchedulersResponse,
   ListInferenceSchedulersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListInferenceSchedulersRequest,
-  ) => stream.Stream<
-    ListInferenceSchedulersResponse,
-    ListInferenceSchedulersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListInferenceSchedulersRequest,
-  ) => stream.Stream<
-    unknown,
-    ListInferenceSchedulersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListInferenceSchedulersRequest,
   output: ListInferenceSchedulersResponse,
   errors: [
@@ -3638,27 +3567,13 @@ export type ListLabelGroupsError =
 /**
  * Returns a list of the label groups.
  */
-export const listLabelGroups: API.OperationMethod<
+export const listLabelGroups: API.PaginatedOperationMethod<
   ListLabelGroupsRequest,
   ListLabelGroupsResponse,
   ListLabelGroupsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListLabelGroupsRequest,
-  ) => stream.Stream<
-    ListLabelGroupsResponse,
-    ListLabelGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListLabelGroupsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListLabelGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLabelGroupsRequest,
   output: ListLabelGroupsResponse,
   errors: [
@@ -3686,27 +3601,13 @@ export type ListLabelsError =
 /**
  * Provides a list of labels.
  */
-export const listLabels: API.OperationMethod<
+export const listLabels: API.PaginatedOperationMethod<
   ListLabelsRequest,
   ListLabelsResponse,
   ListLabelsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListLabelsRequest,
-  ) => stream.Stream<
-    ListLabelsResponse,
-    ListLabelsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListLabelsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListLabelsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLabelsRequest,
   output: ListLabelsResponse,
   errors: [
@@ -3735,27 +3636,13 @@ export type ListModelsError =
  * Generates a list of all models in the account, including model name and ARN, dataset,
  * and status.
  */
-export const listModels: API.OperationMethod<
+export const listModels: API.PaginatedOperationMethod<
   ListModelsRequest,
   ListModelsResponse,
   ListModelsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListModelsRequest,
-  ) => stream.Stream<
-    ListModelsResponse,
-    ListModelsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListModelsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListModelsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListModelsRequest,
   output: ListModelsResponse,
   errors: [
@@ -3786,27 +3673,13 @@ export type ListModelVersionsError =
  * model version ARN, and status. To list a subset of versions, use the
  * `MaxModelVersion` and `MinModelVersion` fields.
  */
-export const listModelVersions: API.OperationMethod<
+export const listModelVersions: API.PaginatedOperationMethod<
   ListModelVersionsRequest,
   ListModelVersionsResponse,
   ListModelVersionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListModelVersionsRequest,
-  ) => stream.Stream<
-    ListModelVersionsResponse,
-    ListModelVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListModelVersionsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListModelVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListModelVersionsRequest,
   output: ListModelVersionsResponse,
   errors: [
@@ -3836,27 +3709,13 @@ export type ListRetrainingSchedulersError =
  * Lists all retraining schedulers in your account, filtering by model name prefix and
  * status.
  */
-export const listRetrainingSchedulers: API.OperationMethod<
+export const listRetrainingSchedulers: API.PaginatedOperationMethod<
   ListRetrainingSchedulersRequest,
   ListRetrainingSchedulersResponse,
   ListRetrainingSchedulersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRetrainingSchedulersRequest,
-  ) => stream.Stream<
-    ListRetrainingSchedulersResponse,
-    ListRetrainingSchedulersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRetrainingSchedulersRequest,
-  ) => stream.Stream<
-    unknown,
-    ListRetrainingSchedulersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRetrainingSchedulersRequest,
   output: ListRetrainingSchedulersResponse,
   errors: [
@@ -3887,27 +3746,13 @@ export type ListSensorStatisticsError =
  * successfully ingested in the particular dataset. Can also be used to retreive Sensor
  * Statistics for a previous ingestion job.
  */
-export const listSensorStatistics: API.OperationMethod<
+export const listSensorStatistics: API.PaginatedOperationMethod<
   ListSensorStatisticsRequest,
   ListSensorStatisticsResponse,
   ListSensorStatisticsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSensorStatisticsRequest,
-  ) => stream.Stream<
-    ListSensorStatisticsResponse,
-    ListSensorStatisticsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSensorStatisticsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListSensorStatisticsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSensorStatisticsRequest,
   output: ListSensorStatisticsResponse,
   errors: [

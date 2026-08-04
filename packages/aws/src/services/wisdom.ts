@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -3079,27 +3078,13 @@ export type ListAssistantAssociationsError =
 /**
  * Lists information about assistant associations.
  */
-export const listAssistantAssociations: API.OperationMethod<
+export const listAssistantAssociations: API.PaginatedOperationMethod<
   ListAssistantAssociationsRequest,
   ListAssistantAssociationsResponse,
   ListAssistantAssociationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAssistantAssociationsRequest,
-  ) => stream.Stream<
-    ListAssistantAssociationsResponse,
-    ListAssistantAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAssistantAssociationsRequest,
-  ) => stream.Stream<
-    AssistantAssociationSummary,
-    ListAssistantAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AssistantAssociationSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAssistantAssociationsRequest,
   output: ListAssistantAssociationsResponse,
   errors: [
@@ -3125,27 +3110,13 @@ export type ListAssistantsError =
 /**
  * Lists information about assistants.
  */
-export const listAssistants: API.OperationMethod<
+export const listAssistants: API.PaginatedOperationMethod<
   ListAssistantsRequest,
   ListAssistantsResponse,
   ListAssistantsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAssistantsRequest,
-  ) => stream.Stream<
-    ListAssistantsResponse,
-    ListAssistantsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAssistantsRequest,
-  ) => stream.Stream<
-    AssistantSummary,
-    ListAssistantsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AssistantSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAssistantsRequest,
   output: ListAssistantsResponse,
   errors: [AccessDeniedException, ValidationException],
@@ -3168,27 +3139,13 @@ export type ListContentsError =
 /**
  * Lists the content.
  */
-export const listContents: API.OperationMethod<
+export const listContents: API.PaginatedOperationMethod<
   ListContentsRequest,
   ListContentsResponse,
   ListContentsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListContentsRequest,
-  ) => stream.Stream<
-    ListContentsResponse,
-    ListContentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListContentsRequest,
-  ) => stream.Stream<
-    ContentSummary,
-    ListContentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ContentSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListContentsRequest,
   output: ListContentsResponse,
   errors: [
@@ -3214,27 +3171,13 @@ export type ListImportJobsError =
 /**
  * Lists information about import jobs.
  */
-export const listImportJobs: API.OperationMethod<
+export const listImportJobs: API.PaginatedOperationMethod<
   ListImportJobsRequest,
   ListImportJobsResponse,
   ListImportJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListImportJobsRequest,
-  ) => stream.Stream<
-    ListImportJobsResponse,
-    ListImportJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListImportJobsRequest,
-  ) => stream.Stream<
-    ImportJobSummary,
-    ListImportJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ImportJobSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListImportJobsRequest,
   output: ListImportJobsResponse,
   errors: [AccessDeniedException, ValidationException],
@@ -3256,27 +3199,13 @@ export type ListKnowledgeBasesError =
 /**
  * Lists the knowledge bases.
  */
-export const listKnowledgeBases: API.OperationMethod<
+export const listKnowledgeBases: API.PaginatedOperationMethod<
   ListKnowledgeBasesRequest,
   ListKnowledgeBasesResponse,
   ListKnowledgeBasesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListKnowledgeBasesRequest,
-  ) => stream.Stream<
-    ListKnowledgeBasesResponse,
-    ListKnowledgeBasesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListKnowledgeBasesRequest,
-  ) => stream.Stream<
-    KnowledgeBaseSummary,
-    ListKnowledgeBasesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  KnowledgeBaseSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListKnowledgeBasesRequest,
   output: ListKnowledgeBasesResponse,
   errors: [AccessDeniedException, ValidationException],
@@ -3299,27 +3228,13 @@ export type ListQuickResponsesError =
 /**
  * Lists information about quick response.
  */
-export const listQuickResponses: API.OperationMethod<
+export const listQuickResponses: API.PaginatedOperationMethod<
   ListQuickResponsesRequest,
   ListQuickResponsesResponse,
   ListQuickResponsesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListQuickResponsesRequest,
-  ) => stream.Stream<
-    ListQuickResponsesResponse,
-    ListQuickResponsesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListQuickResponsesRequest,
-  ) => stream.Stream<
-    QuickResponseSummary,
-    ListQuickResponsesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  QuickResponseSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListQuickResponsesRequest,
   output: ListQuickResponsesResponse,
   errors: [
@@ -3394,27 +3309,13 @@ export type QueryAssistantError =
  * Performs a manual search against the specified assistant. To retrieve recommendations for
  * an assistant, use GetRecommendations.
  */
-export const queryAssistant: API.OperationMethod<
+export const queryAssistant: API.PaginatedOperationMethod<
   QueryAssistantRequest,
   QueryAssistantResponse,
   QueryAssistantError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: QueryAssistantRequest,
-  ) => stream.Stream<
-    QueryAssistantResponse,
-    QueryAssistantError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: QueryAssistantRequest,
-  ) => stream.Stream<
-    ResultData,
-    QueryAssistantError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ResultData
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: QueryAssistantRequest,
   output: QueryAssistantResponse,
   errors: [
@@ -3469,27 +3370,13 @@ export type SearchContentError =
  * Searches for content in a specified knowledge base. Can be used to get a specific content
  * resource by its name.
  */
-export const searchContent: API.OperationMethod<
+export const searchContent: API.PaginatedOperationMethod<
   SearchContentRequest,
   SearchContentResponse,
   SearchContentError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: SearchContentRequest,
-  ) => stream.Stream<
-    SearchContentResponse,
-    SearchContentError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: SearchContentRequest,
-  ) => stream.Stream<
-    ContentSummary,
-    SearchContentError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ContentSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchContentRequest,
   output: SearchContentResponse,
   errors: [
@@ -3517,27 +3404,13 @@ export type SearchQuickResponsesError =
 /**
  * Searches existing Wisdom quick responses in a Wisdom knowledge base.
  */
-export const searchQuickResponses: API.OperationMethod<
+export const searchQuickResponses: API.PaginatedOperationMethod<
   SearchQuickResponsesRequest,
   SearchQuickResponsesResponse,
   SearchQuickResponsesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: SearchQuickResponsesRequest,
-  ) => stream.Stream<
-    SearchQuickResponsesResponse,
-    SearchQuickResponsesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: SearchQuickResponsesRequest,
-  ) => stream.Stream<
-    QuickResponseSearchResultData,
-    SearchQuickResponsesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  QuickResponseSearchResultData
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchQuickResponsesRequest,
   output: SearchQuickResponsesResponse,
   errors: [
@@ -3565,27 +3438,13 @@ export type SearchSessionsError =
 /**
  * Searches for sessions.
  */
-export const searchSessions: API.OperationMethod<
+export const searchSessions: API.PaginatedOperationMethod<
   SearchSessionsRequest,
   SearchSessionsResponse,
   SearchSessionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: SearchSessionsRequest,
-  ) => stream.Stream<
-    SearchSessionsResponse,
-    SearchSessionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: SearchSessionsRequest,
-  ) => stream.Stream<
-    SessionSummary,
-    SearchSessionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  SessionSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchSessionsRequest,
   output: SearchSessionsResponse,
   errors: [

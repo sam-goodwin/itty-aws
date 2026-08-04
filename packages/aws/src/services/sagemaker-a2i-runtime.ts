@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -430,27 +429,13 @@ export type ListHumanLoopsError =
 /**
  * Returns information about human loops, given the specified parameters. If a human loop was deleted, it will not be included.
  */
-export const listHumanLoops: API.OperationMethod<
+export const listHumanLoops: API.PaginatedOperationMethod<
   ListHumanLoopsRequest,
   ListHumanLoopsResponse,
   ListHumanLoopsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListHumanLoopsRequest,
-  ) => stream.Stream<
-    ListHumanLoopsResponse,
-    ListHumanLoopsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListHumanLoopsRequest,
-  ) => stream.Stream<
-    HumanLoopSummary,
-    ListHumanLoopsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  HumanLoopSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListHumanLoopsRequest,
   output: ListHumanLoopsResponse,
   errors: [

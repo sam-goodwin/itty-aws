@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -667,27 +666,13 @@ export type ListSlackChannelConfigurationsError =
 /**
  * Lists the Slack channel configurations for an Amazon Web Services account.
  */
-export const listSlackChannelConfigurations: API.OperationMethod<
+export const listSlackChannelConfigurations: API.PaginatedOperationMethod<
   ListSlackChannelConfigurationsRequest,
   ListSlackChannelConfigurationsResult,
   ListSlackChannelConfigurationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSlackChannelConfigurationsRequest,
-  ) => stream.Stream<
-    ListSlackChannelConfigurationsResult,
-    ListSlackChannelConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSlackChannelConfigurationsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListSlackChannelConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSlackChannelConfigurationsRequest,
   output: ListSlackChannelConfigurationsResult,
   errors: [AccessDeniedException, InternalServerException],
@@ -704,27 +689,13 @@ export type ListSlackWorkspaceConfigurationsError =
 /**
  * Lists the Slack workspace configurations for an Amazon Web Services account.
  */
-export const listSlackWorkspaceConfigurations: API.OperationMethod<
+export const listSlackWorkspaceConfigurations: API.PaginatedOperationMethod<
   ListSlackWorkspaceConfigurationsRequest,
   ListSlackWorkspaceConfigurationsResult,
   ListSlackWorkspaceConfigurationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSlackWorkspaceConfigurationsRequest,
-  ) => stream.Stream<
-    ListSlackWorkspaceConfigurationsResult,
-    ListSlackWorkspaceConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSlackWorkspaceConfigurationsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListSlackWorkspaceConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSlackWorkspaceConfigurationsRequest,
   output: ListSlackWorkspaceConfigurationsResult,
   errors: [AccessDeniedException, InternalServerException],

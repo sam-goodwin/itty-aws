@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -3374,27 +3373,13 @@ export type GetOutpostBillingInformationError =
 /**
  * Gets current and historical billing information about the specified Outpost.
  */
-export const getOutpostBillingInformation: API.OperationMethod<
+export const getOutpostBillingInformation: API.PaginatedOperationMethod<
   GetOutpostBillingInformationInput,
   GetOutpostBillingInformationOutput,
   GetOutpostBillingInformationError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetOutpostBillingInformationInput,
-  ) => stream.Stream<
-    GetOutpostBillingInformationOutput,
-    GetOutpostBillingInformationError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetOutpostBillingInformationInput,
-  ) => stream.Stream<
-    Subscription,
-    GetOutpostBillingInformationError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Subscription
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetOutpostBillingInformationInput,
   output: GetOutpostBillingInformationOutput,
   errors: [AccessDeniedException, InternalServerException, NotFoundException],
@@ -3418,27 +3403,13 @@ export type GetOutpostInstanceTypesError =
 /**
  * Gets the instance types for the specified Outpost.
  */
-export const getOutpostInstanceTypes: API.OperationMethod<
+export const getOutpostInstanceTypes: API.PaginatedOperationMethod<
   GetOutpostInstanceTypesInput,
   GetOutpostInstanceTypesOutput,
   GetOutpostInstanceTypesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetOutpostInstanceTypesInput,
-  ) => stream.Stream<
-    GetOutpostInstanceTypesOutput,
-    GetOutpostInstanceTypesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetOutpostInstanceTypesInput,
-  ) => stream.Stream<
-    InstanceTypeItem,
-    GetOutpostInstanceTypesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  InstanceTypeItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetOutpostInstanceTypesInput,
   output: GetOutpostInstanceTypesOutput,
   errors: [
@@ -3469,27 +3440,13 @@ export type GetOutpostSupportedInstanceTypesError =
  * This will generally include instance types that are not currently configured and therefore
  * cannot be launched with the current Outpost capacity configuration.
  */
-export const getOutpostSupportedInstanceTypes: API.OperationMethod<
+export const getOutpostSupportedInstanceTypes: API.PaginatedOperationMethod<
   GetOutpostSupportedInstanceTypesInput,
   GetOutpostSupportedInstanceTypesOutput,
   GetOutpostSupportedInstanceTypesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetOutpostSupportedInstanceTypesInput,
-  ) => stream.Stream<
-    GetOutpostSupportedInstanceTypesOutput,
-    GetOutpostSupportedInstanceTypesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetOutpostSupportedInstanceTypesInput,
-  ) => stream.Stream<
-    InstanceTypeItem,
-    GetOutpostSupportedInstanceTypesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  InstanceTypeItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetOutpostSupportedInstanceTypesInput,
   output: GetOutpostSupportedInstanceTypesOutput,
   errors: [
@@ -3631,27 +3588,13 @@ export type ListAssetInstancesError =
  * A list of Amazon EC2 instances, belonging to all accounts, running on the specified Outpost.
  * Does not include Amazon EBS or Amazon S3 instances.
  */
-export const listAssetInstances: API.OperationMethod<
+export const listAssetInstances: API.PaginatedOperationMethod<
   ListAssetInstancesInput,
   ListAssetInstancesOutput,
   ListAssetInstancesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAssetInstancesInput,
-  ) => stream.Stream<
-    ListAssetInstancesOutput,
-    ListAssetInstancesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAssetInstancesInput,
-  ) => stream.Stream<
-    AssetInstance,
-    ListAssetInstancesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AssetInstance
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAssetInstancesInput,
   output: ListAssetInstancesOutput,
   errors: [
@@ -3684,27 +3627,13 @@ export type ListAssetsError =
  * all of the specified filters. For a filter where you can specify multiple values, the results include
  * items that match any of the values that you specify for the filter.
  */
-export const listAssets: API.OperationMethod<
+export const listAssets: API.PaginatedOperationMethod<
   ListAssetsInput,
   ListAssetsOutput,
   ListAssetsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAssetsInput,
-  ) => stream.Stream<
-    ListAssetsOutput,
-    ListAssetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAssetsInput,
-  ) => stream.Stream<
-    AssetInfo,
-    ListAssetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AssetInfo
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAssetsInput,
   output: ListAssetsOutput,
   errors: [
@@ -3735,27 +3664,13 @@ export type ListBlockingInstancesForCapacityTaskError =
  * initiated the capacity task. Use this list to specify the instances you cannot stop to free up
  * capacity to run the capacity task.
  */
-export const listBlockingInstancesForCapacityTask: API.OperationMethod<
+export const listBlockingInstancesForCapacityTask: API.PaginatedOperationMethod<
   ListBlockingInstancesForCapacityTaskInput,
   ListBlockingInstancesForCapacityTaskOutput,
   ListBlockingInstancesForCapacityTaskError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListBlockingInstancesForCapacityTaskInput,
-  ) => stream.Stream<
-    ListBlockingInstancesForCapacityTaskOutput,
-    ListBlockingInstancesForCapacityTaskError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListBlockingInstancesForCapacityTaskInput,
-  ) => stream.Stream<
-    BlockingInstance,
-    ListBlockingInstancesForCapacityTaskError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  BlockingInstance
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBlockingInstancesForCapacityTaskInput,
   output: ListBlockingInstancesForCapacityTaskOutput,
   errors: [
@@ -3788,27 +3703,13 @@ export type ListCapacityTasksError =
  * all of the specified filters. For a filter where you can specify multiple values, the results include
  * items that match any of the values that you specify for the filter.
  */
-export const listCapacityTasks: API.OperationMethod<
+export const listCapacityTasks: API.PaginatedOperationMethod<
   ListCapacityTasksInput,
   ListCapacityTasksOutput,
   ListCapacityTasksError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCapacityTasksInput,
-  ) => stream.Stream<
-    ListCapacityTasksOutput,
-    ListCapacityTasksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCapacityTasksInput,
-  ) => stream.Stream<
-    CapacityTaskSummary,
-    ListCapacityTasksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  CapacityTaskSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCapacityTasksInput,
   output: ListCapacityTasksOutput,
   errors: [
@@ -3841,27 +3742,13 @@ export type ListCatalogItemsError =
  * all of the specified filters. For a filter where you can specify multiple values, the results include
  * items that match any of the values that you specify for the filter.
  */
-export const listCatalogItems: API.OperationMethod<
+export const listCatalogItems: API.PaginatedOperationMethod<
   ListCatalogItemsInput,
   ListCatalogItemsOutput,
   ListCatalogItemsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCatalogItemsInput,
-  ) => stream.Stream<
-    ListCatalogItemsOutput,
-    ListCatalogItemsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCatalogItemsInput,
-  ) => stream.Stream<
-    CatalogItem,
-    ListCatalogItemsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  CatalogItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCatalogItemsInput,
   output: ListCatalogItemsOutput,
   errors: [
@@ -3891,27 +3778,13 @@ export type ListOrderableInstanceTypesError =
  * Lists the instance types that can be ordered for an Outpost. You can filter the results
  * by Outpost generation.
  */
-export const listOrderableInstanceTypes: API.OperationMethod<
+export const listOrderableInstanceTypes: API.PaginatedOperationMethod<
   ListOrderableInstanceTypesInput,
   ListOrderableInstanceTypesOutput,
   ListOrderableInstanceTypesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListOrderableInstanceTypesInput,
-  ) => stream.Stream<
-    ListOrderableInstanceTypesOutput,
-    ListOrderableInstanceTypesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListOrderableInstanceTypesInput,
-  ) => stream.Stream<
-    DetailedInstanceTypeItem,
-    ListOrderableInstanceTypesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  DetailedInstanceTypeItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrderableInstanceTypesInput,
   output: ListOrderableInstanceTypesOutput,
   errors: [
@@ -3940,27 +3813,13 @@ export type ListOrdersError =
 /**
  * Lists the Outpost orders for your Amazon Web Services account.
  */
-export const listOrders: API.OperationMethod<
+export const listOrders: API.PaginatedOperationMethod<
   ListOrdersInput,
   ListOrdersOutput,
   ListOrdersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListOrdersInput,
-  ) => stream.Stream<
-    ListOrdersOutput,
-    ListOrdersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListOrdersInput,
-  ) => stream.Stream<
-    OrderSummary,
-    ListOrdersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  OrderSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrdersInput,
   output: ListOrdersOutput,
   errors: [
@@ -3992,27 +3851,13 @@ export type ListOutpostsError =
  * all of the specified filters. For a filter where you can specify multiple values, the results include
  * items that match any of the values that you specify for the filter.
  */
-export const listOutposts: API.OperationMethod<
+export const listOutposts: API.PaginatedOperationMethod<
   ListOutpostsInput,
   ListOutpostsOutput,
   ListOutpostsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListOutpostsInput,
-  ) => stream.Stream<
-    ListOutpostsOutput,
-    ListOutpostsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListOutpostsInput,
-  ) => stream.Stream<
-    Outpost,
-    ListOutpostsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Outpost
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOutpostsInput,
   output: ListOutpostsOutput,
   errors: [AccessDeniedException, InternalServerException, ValidationException],
@@ -4034,27 +3879,13 @@ export type ListQuotesError =
 /**
  * Lists the quotes for your Amazon Web Services account.
  */
-export const listQuotes: API.OperationMethod<
+export const listQuotes: API.PaginatedOperationMethod<
   ListQuotesInput,
   ListQuotesOutput,
   ListQuotesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListQuotesInput,
-  ) => stream.Stream<
-    ListQuotesOutput,
-    ListQuotesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListQuotesInput,
-  ) => stream.Stream<
-    QuoteSummary,
-    ListQuotesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  QuoteSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListQuotesInput,
   output: ListQuotesOutput,
   errors: [AccessDeniedException, InternalServerException],
@@ -4082,27 +3913,13 @@ export type ListSitesError =
  * all of the specified filters. For a filter where you can specify multiple values, the results include
  * items that match any of the values that you specify for the filter.
  */
-export const listSites: API.OperationMethod<
+export const listSites: API.PaginatedOperationMethod<
   ListSitesInput,
   ListSitesOutput,
   ListSitesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSitesInput,
-  ) => stream.Stream<
-    ListSitesOutput,
-    ListSitesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSitesInput,
-  ) => stream.Stream<
-    Site,
-    ListSitesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Site
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSitesInput,
   output: ListSitesOutput,
   errors: [AccessDeniedException, InternalServerException, ValidationException],

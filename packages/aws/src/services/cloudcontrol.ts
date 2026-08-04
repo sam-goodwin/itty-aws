@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -893,27 +892,13 @@ export type ListResourceRequestsError = CommonErrors;
  *
  * Resource operation requests expire after 7 days.
  */
-export const listResourceRequests: API.OperationMethod<
+export const listResourceRequests: API.PaginatedOperationMethod<
   ListResourceRequestsInput,
   ListResourceRequestsOutput,
   ListResourceRequestsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListResourceRequestsInput,
-  ) => stream.Stream<
-    ListResourceRequestsOutput,
-    ListResourceRequestsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListResourceRequestsInput,
-  ) => stream.Stream<
-    ProgressEvent,
-    ListResourceRequestsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ProgressEvent
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListResourceRequestsInput,
   output: ListResourceRequestsOutput,
   errors: [],
@@ -953,27 +938,13 @@ export type ListResourcesError =
  * You can use this action to return information about existing resources in your account and
  * Amazon Web Services Region, whether those resources were provisioned using Cloud Control API.
  */
-export const listResources: API.OperationMethod<
+export const listResources: API.PaginatedOperationMethod<
   ListResourcesInput,
   ListResourcesOutput,
   ListResourcesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListResourcesInput,
-  ) => stream.Stream<
-    ListResourcesOutput,
-    ListResourcesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListResourcesInput,
-  ) => stream.Stream<
-    ResourceDescription,
-    ListResourcesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ResourceDescription
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListResourcesInput,
   output: ListResourcesOutput,
   errors: [

@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -6030,27 +6029,13 @@ export type DescribeTopicPartitionsError =
 /**
  * Returns partition details of this topic on a MSK cluster.
  */
-export const describeTopicPartitions: API.OperationMethod<
+export const describeTopicPartitions: API.PaginatedOperationMethod<
   DescribeTopicPartitionsRequest,
   DescribeTopicPartitionsResponse,
   DescribeTopicPartitionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeTopicPartitionsRequest,
-  ) => stream.Stream<
-    DescribeTopicPartitionsResponse,
-    DescribeTopicPartitionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeTopicPartitionsRequest,
-  ) => stream.Stream<
-    TopicPartitionInfo,
-    DescribeTopicPartitionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  TopicPartitionInfo
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeTopicPartitionsRequest,
   output: DescribeTopicPartitionsResponse,
   errors: [
@@ -6207,27 +6192,13 @@ export type ListClientVpcConnectionsError =
 /**
  * Returns a list of all the VPC connections in this Region.
  */
-export const listClientVpcConnections: API.OperationMethod<
+export const listClientVpcConnections: API.PaginatedOperationMethod<
   ListClientVpcConnectionsRequest,
   ListClientVpcConnectionsResponse,
   ListClientVpcConnectionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListClientVpcConnectionsRequest,
-  ) => stream.Stream<
-    ListClientVpcConnectionsResponse,
-    ListClientVpcConnectionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListClientVpcConnectionsRequest,
-  ) => stream.Stream<
-    ClientVpcConnection,
-    ListClientVpcConnectionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ClientVpcConnection
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListClientVpcConnectionsRequest,
   output: ListClientVpcConnectionsResponse,
   errors: [
@@ -6257,27 +6228,13 @@ export type ListClusterOperationsError =
 /**
  * Returns a list of all the operations that have been performed on the specified MSK cluster.
  */
-export const listClusterOperations: API.OperationMethod<
+export const listClusterOperations: API.PaginatedOperationMethod<
   ListClusterOperationsRequest,
   ListClusterOperationsResponse,
   ListClusterOperationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListClusterOperationsRequest,
-  ) => stream.Stream<
-    ListClusterOperationsResponse,
-    ListClusterOperationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListClusterOperationsRequest,
-  ) => stream.Stream<
-    ClusterOperationInfo,
-    ListClusterOperationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ClusterOperationInfo
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListClusterOperationsRequest,
   output: ListClusterOperationsResponse,
   errors: [
@@ -6309,27 +6266,13 @@ export type ListClusterOperationsV2Error =
 /**
  * Returns a list of all the operations that have been performed on the specified MSK cluster.
  */
-export const listClusterOperationsV2: API.OperationMethod<
+export const listClusterOperationsV2: API.PaginatedOperationMethod<
   ListClusterOperationsV2Request,
   ListClusterOperationsV2Response,
   ListClusterOperationsV2Error,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListClusterOperationsV2Request,
-  ) => stream.Stream<
-    ListClusterOperationsV2Response,
-    ListClusterOperationsV2Error,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListClusterOperationsV2Request,
-  ) => stream.Stream<
-    ClusterOperationV2Summary,
-    ListClusterOperationsV2Error,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ClusterOperationV2Summary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListClusterOperationsV2Request,
   output: ListClusterOperationsV2Response,
   errors: [
@@ -6361,27 +6304,13 @@ export type ListClustersError =
 /**
  * Returns a list of all the MSK clusters in the current Region.
  */
-export const listClusters: API.OperationMethod<
+export const listClusters: API.PaginatedOperationMethod<
   ListClustersRequest,
   ListClustersResponse,
   ListClustersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListClustersRequest,
-  ) => stream.Stream<
-    ListClustersResponse,
-    ListClustersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListClustersRequest,
-  ) => stream.Stream<
-    ClusterInfo,
-    ListClustersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ClusterInfo
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListClustersRequest,
   output: ListClustersResponse,
   errors: [
@@ -6410,27 +6339,13 @@ export type ListClustersV2Error =
 /**
  * Returns a list of all the MSK clusters in the current Region.
  */
-export const listClustersV2: API.OperationMethod<
+export const listClustersV2: API.PaginatedOperationMethod<
   ListClustersV2Request,
   ListClustersV2Response,
   ListClustersV2Error,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListClustersV2Request,
-  ) => stream.Stream<
-    ListClustersV2Response,
-    ListClustersV2Error,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListClustersV2Request,
-  ) => stream.Stream<
-    Cluster,
-    ListClustersV2Error,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Cluster
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListClustersV2Request,
   output: ListClustersV2Response,
   errors: [
@@ -6461,27 +6376,13 @@ export type ListConfigurationRevisionsError =
 /**
  * Returns a list of all the MSK configurations in this Region.
  */
-export const listConfigurationRevisions: API.OperationMethod<
+export const listConfigurationRevisions: API.PaginatedOperationMethod<
   ListConfigurationRevisionsRequest,
   ListConfigurationRevisionsResponse,
   ListConfigurationRevisionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListConfigurationRevisionsRequest,
-  ) => stream.Stream<
-    ListConfigurationRevisionsResponse,
-    ListConfigurationRevisionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListConfigurationRevisionsRequest,
-  ) => stream.Stream<
-    ConfigurationRevision,
-    ListConfigurationRevisionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ConfigurationRevision
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListConfigurationRevisionsRequest,
   output: ListConfigurationRevisionsResponse,
   errors: [
@@ -6513,27 +6414,13 @@ export type ListConfigurationsError =
 /**
  * Returns a list of all the MSK configurations in this Region.
  */
-export const listConfigurations: API.OperationMethod<
+export const listConfigurations: API.PaginatedOperationMethod<
   ListConfigurationsRequest,
   ListConfigurationsResponse,
   ListConfigurationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListConfigurationsRequest,
-  ) => stream.Stream<
-    ListConfigurationsResponse,
-    ListConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListConfigurationsRequest,
-  ) => stream.Stream<
-    Configuration,
-    ListConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Configuration
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListConfigurationsRequest,
   output: ListConfigurationsResponse,
   errors: [
@@ -6563,27 +6450,13 @@ export type ListKafkaVersionsError =
 /**
  * Returns a list of Apache Kafka versions.
  */
-export const listKafkaVersions: API.OperationMethod<
+export const listKafkaVersions: API.PaginatedOperationMethod<
   ListKafkaVersionsRequest,
   ListKafkaVersionsResponse,
   ListKafkaVersionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListKafkaVersionsRequest,
-  ) => stream.Stream<
-    ListKafkaVersionsResponse,
-    ListKafkaVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListKafkaVersionsRequest,
-  ) => stream.Stream<
-    KafkaVersion,
-    ListKafkaVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  KafkaVersion
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListKafkaVersionsRequest,
   output: ListKafkaVersionsResponse,
   errors: [
@@ -6612,27 +6485,13 @@ export type ListNodesError =
 /**
  * Returns a list of the broker nodes in the cluster.
  */
-export const listNodes: API.OperationMethod<
+export const listNodes: API.PaginatedOperationMethod<
   ListNodesRequest,
   ListNodesResponse,
   ListNodesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListNodesRequest,
-  ) => stream.Stream<
-    ListNodesResponse,
-    ListNodesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListNodesRequest,
-  ) => stream.Stream<
-    NodeInfo,
-    ListNodesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  NodeInfo
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListNodesRequest,
   output: ListNodesResponse,
   errors: [
@@ -6664,27 +6523,13 @@ export type ListReplicatorsError =
 /**
  * Lists the replicators.
  */
-export const listReplicators: API.OperationMethod<
+export const listReplicators: API.PaginatedOperationMethod<
   ListReplicatorsRequest,
   ListReplicatorsResponse,
   ListReplicatorsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListReplicatorsRequest,
-  ) => stream.Stream<
-    ListReplicatorsResponse,
-    ListReplicatorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListReplicatorsRequest,
-  ) => stream.Stream<
-    ReplicatorSummary,
-    ListReplicatorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ReplicatorSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListReplicatorsRequest,
   output: ListReplicatorsResponse,
   errors: [
@@ -6719,27 +6564,13 @@ export type ListScramSecretsError =
 /**
  * Returns a list of the Scram Secrets associated with an Amazon MSK cluster.
  */
-export const listScramSecrets: API.OperationMethod<
+export const listScramSecrets: API.PaginatedOperationMethod<
   ListScramSecretsRequest,
   ListScramSecretsResponse,
   ListScramSecretsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListScramSecretsRequest,
-  ) => stream.Stream<
-    ListScramSecretsResponse,
-    ListScramSecretsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListScramSecretsRequest,
-  ) => stream.Stream<
-    string,
-    ListScramSecretsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  string
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListScramSecretsRequest,
   output: ListScramSecretsResponse,
   errors: [
@@ -6799,27 +6630,13 @@ export type ListTopicsError =
 /**
  * List topics in a MSK cluster.
  */
-export const listTopics: API.OperationMethod<
+export const listTopics: API.PaginatedOperationMethod<
   ListTopicsRequest,
   ListTopicsResponse,
   ListTopicsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTopicsRequest,
-  ) => stream.Stream<
-    ListTopicsResponse,
-    ListTopicsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTopicsRequest,
-  ) => stream.Stream<
-    TopicInfo,
-    ListTopicsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  TopicInfo
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTopicsRequest,
   output: ListTopicsResponse,
   errors: [
@@ -6851,27 +6668,13 @@ export type ListVpcConnectionsError =
 /**
  * Returns a list of all the VPC connections in this Region.
  */
-export const listVpcConnections: API.OperationMethod<
+export const listVpcConnections: API.PaginatedOperationMethod<
   ListVpcConnectionsRequest,
   ListVpcConnectionsResponse,
   ListVpcConnectionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListVpcConnectionsRequest,
-  ) => stream.Stream<
-    ListVpcConnectionsResponse,
-    ListVpcConnectionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListVpcConnectionsRequest,
-  ) => stream.Stream<
-    VpcConnection,
-    ListVpcConnectionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  VpcConnection
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListVpcConnectionsRequest,
   output: ListVpcConnectionsResponse,
   errors: [

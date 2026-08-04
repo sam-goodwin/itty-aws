@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -6209,27 +6208,13 @@ export type GetApiKeysError =
 /**
  * Gets information about the current ApiKeys resource.
  */
-export const getApiKeys: API.OperationMethod<
+export const getApiKeys: API.PaginatedOperationMethod<
   GetApiKeysRequest,
   ApiKeys,
   GetApiKeysError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetApiKeysRequest,
-  ) => stream.Stream<
-    ApiKeys,
-    GetApiKeysError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetApiKeysRequest,
-  ) => stream.Stream<
-    ApiKey,
-    GetApiKeysError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ApiKey
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetApiKeysRequest,
   output: ApiKeys,
   errors: [
@@ -6342,27 +6327,13 @@ export type GetBasePathMappingsError =
 /**
  * Represents a collection of BasePathMapping resources.
  */
-export const getBasePathMappings: API.OperationMethod<
+export const getBasePathMappings: API.PaginatedOperationMethod<
   GetBasePathMappingsRequest,
   BasePathMappings,
   GetBasePathMappingsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetBasePathMappingsRequest,
-  ) => stream.Stream<
-    BasePathMappings,
-    GetBasePathMappingsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetBasePathMappingsRequest,
-  ) => stream.Stream<
-    BasePathMapping,
-    GetBasePathMappingsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  BasePathMapping
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetBasePathMappingsRequest,
   output: BasePathMappings,
   errors: [
@@ -6419,27 +6390,13 @@ export type GetClientCertificatesError =
 /**
  * Gets a collection of ClientCertificate resources.
  */
-export const getClientCertificates: API.OperationMethod<
+export const getClientCertificates: API.PaginatedOperationMethod<
   GetClientCertificatesRequest,
   ClientCertificates,
   GetClientCertificatesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetClientCertificatesRequest,
-  ) => stream.Stream<
-    ClientCertificates,
-    GetClientCertificatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetClientCertificatesRequest,
-  ) => stream.Stream<
-    ClientCertificate,
-    GetClientCertificatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ClientCertificate
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetClientCertificatesRequest,
   output: ClientCertificates,
   errors: [
@@ -6499,27 +6456,13 @@ export type GetDeploymentsError =
 /**
  * Gets information about a Deployments collection.
  */
-export const getDeployments: API.OperationMethod<
+export const getDeployments: API.PaginatedOperationMethod<
   GetDeploymentsRequest,
   Deployments,
   GetDeploymentsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetDeploymentsRequest,
-  ) => stream.Stream<
-    Deployments,
-    GetDeploymentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetDeploymentsRequest,
-  ) => stream.Stream<
-    Deployment,
-    GetDeploymentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Deployment
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetDeploymentsRequest,
   output: Deployments,
   errors: [
@@ -6711,27 +6654,13 @@ export type GetDomainNamesError =
 /**
  * Represents a collection of DomainName resources.
  */
-export const getDomainNames: API.OperationMethod<
+export const getDomainNames: API.PaginatedOperationMethod<
   GetDomainNamesRequest,
   DomainNames,
   GetDomainNamesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetDomainNamesRequest,
-  ) => stream.Stream<
-    DomainNames,
-    GetDomainNamesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetDomainNamesRequest,
-  ) => stream.Stream<
-    DomainName,
-    GetDomainNamesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  DomainName
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetDomainNamesRequest,
   output: DomainNames,
   errors: [
@@ -6976,27 +6905,13 @@ export type GetModelsError =
 /**
  * Describes existing Models defined for a RestApi resource.
  */
-export const getModels: API.OperationMethod<
+export const getModels: API.PaginatedOperationMethod<
   GetModelsRequest,
   Models,
   GetModelsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetModelsRequest,
-  ) => stream.Stream<
-    Models,
-    GetModelsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetModelsRequest,
-  ) => stream.Stream<
-    Model,
-    GetModelsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Model
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetModelsRequest,
   output: Models,
   errors: [
@@ -7131,27 +7046,13 @@ export type GetResourcesError =
 /**
  * Lists information about a collection of Resource resources.
  */
-export const getResources: API.OperationMethod<
+export const getResources: API.PaginatedOperationMethod<
   GetResourcesRequest,
   Resources,
   GetResourcesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetResourcesRequest,
-  ) => stream.Stream<
-    Resources,
-    GetResourcesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetResourcesRequest,
-  ) => stream.Stream<
-    Resource,
-    GetResourcesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Resource
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetResourcesRequest,
   output: Resources,
   errors: [
@@ -7208,27 +7109,13 @@ export type GetRestApisError =
 /**
  * Lists the RestApis resources for your collection.
  */
-export const getRestApis: API.OperationMethod<
+export const getRestApis: API.PaginatedOperationMethod<
   GetRestApisRequest,
   RestApis,
   GetRestApisError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetRestApisRequest,
-  ) => stream.Stream<
-    RestApis,
-    GetRestApisError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetRestApisRequest,
-  ) => stream.Stream<
-    RestApi,
-    GetRestApisError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  RestApi
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetRestApisRequest,
   output: RestApis,
   errors: [
@@ -7437,27 +7324,13 @@ export type GetUsageError =
 /**
  * Gets the usage data of a usage plan in a specified time interval.
  */
-export const getUsage: API.OperationMethod<
+export const getUsage: API.PaginatedOperationMethod<
   GetUsageRequest,
   Usage,
   GetUsageError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetUsageRequest,
-  ) => stream.Stream<
-    Usage,
-    GetUsageError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetUsageRequest,
-  ) => stream.Stream<
-    unknown,
-    GetUsageError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetUsageRequest,
   output: Usage,
   errors: [
@@ -7542,27 +7415,13 @@ export type GetUsagePlanKeysError =
 /**
  * Gets all the usage plan keys representing the API keys added to a specified usage plan.
  */
-export const getUsagePlanKeys: API.OperationMethod<
+export const getUsagePlanKeys: API.PaginatedOperationMethod<
   GetUsagePlanKeysRequest,
   UsagePlanKeys,
   GetUsagePlanKeysError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetUsagePlanKeysRequest,
-  ) => stream.Stream<
-    UsagePlanKeys,
-    GetUsagePlanKeysError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetUsagePlanKeysRequest,
-  ) => stream.Stream<
-    UsagePlanKey,
-    GetUsagePlanKeysError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  UsagePlanKey
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetUsagePlanKeysRequest,
   output: UsagePlanKeys,
   errors: [
@@ -7591,27 +7450,13 @@ export type GetUsagePlansError =
 /**
  * Gets all the usage plans of the caller's account.
  */
-export const getUsagePlans: API.OperationMethod<
+export const getUsagePlans: API.PaginatedOperationMethod<
   GetUsagePlansRequest,
   UsagePlans,
   GetUsagePlansError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetUsagePlansRequest,
-  ) => stream.Stream<
-    UsagePlans,
-    GetUsagePlansError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetUsagePlansRequest,
-  ) => stream.Stream<
-    UsagePlan,
-    GetUsagePlansError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  UsagePlan
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetUsagePlansRequest,
   output: UsagePlans,
   errors: [
@@ -7668,27 +7513,13 @@ export type GetVpcLinksError =
 /**
  * Gets the VpcLinks collection under the caller's account in a selected region.
  */
-export const getVpcLinks: API.OperationMethod<
+export const getVpcLinks: API.PaginatedOperationMethod<
   GetVpcLinksRequest,
   VpcLinks,
   GetVpcLinksError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetVpcLinksRequest,
-  ) => stream.Stream<
-    VpcLinks,
-    GetVpcLinksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetVpcLinksRequest,
-  ) => stream.Stream<
-    VpcLink,
-    GetVpcLinksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  VpcLink
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetVpcLinksRequest,
   output: VpcLinks,
   errors: [

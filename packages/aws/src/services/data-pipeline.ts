@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -1164,27 +1163,13 @@ export type DescribeObjectsError =
  * ]
  * }
  */
-export const describeObjects: API.OperationMethod<
+export const describeObjects: API.PaginatedOperationMethod<
   DescribeObjectsInput,
   DescribeObjectsOutput,
   DescribeObjectsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeObjectsInput,
-  ) => stream.Stream<
-    DescribeObjectsOutput,
-    DescribeObjectsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeObjectsInput,
-  ) => stream.Stream<
-    PipelineObject,
-    DescribeObjectsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  PipelineObject
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeObjectsInput,
   output: DescribeObjectsOutput,
   errors: [
@@ -1448,27 +1433,13 @@ export type ListPipelinesError =
  * ]
  * }
  */
-export const listPipelines: API.OperationMethod<
+export const listPipelines: API.PaginatedOperationMethod<
   ListPipelinesInput,
   ListPipelinesOutput,
   ListPipelinesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPipelinesInput,
-  ) => stream.Stream<
-    ListPipelinesOutput,
-    ListPipelinesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPipelinesInput,
-  ) => stream.Stream<
-    PipelineIdName,
-    ListPipelinesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  PipelineIdName
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPipelinesInput,
   output: ListPipelinesOutput,
   errors: [InternalServiceError, InvalidRequestException],
@@ -1780,27 +1751,13 @@ export type QueryObjectsError =
  * ["@SayHello_1_2012-09-25T17:00:00"]
  * }
  */
-export const queryObjects: API.OperationMethod<
+export const queryObjects: API.PaginatedOperationMethod<
   QueryObjectsInput,
   QueryObjectsOutput,
   QueryObjectsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: QueryObjectsInput,
-  ) => stream.Stream<
-    QueryObjectsOutput,
-    QueryObjectsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: QueryObjectsInput,
-  ) => stream.Stream<
-    Id,
-    QueryObjectsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Id
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: QueryObjectsInput,
   output: QueryObjectsOutput,
   errors: [

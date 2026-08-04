@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -5767,27 +5766,13 @@ export type DescribeTapeArchivesError =
  * If a specific `TapeARN` is not specified, Storage Gateway returns a
  * description of all virtual tapes found in the VTS associated with your account.
  */
-export const describeTapeArchives: API.OperationMethod<
+export const describeTapeArchives: API.PaginatedOperationMethod<
   DescribeTapeArchivesInput,
   DescribeTapeArchivesOutput,
   DescribeTapeArchivesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeTapeArchivesInput,
-  ) => stream.Stream<
-    DescribeTapeArchivesOutput,
-    DescribeTapeArchivesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeTapeArchivesInput,
-  ) => stream.Stream<
-    TapeArchive,
-    DescribeTapeArchivesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  TapeArchive
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeTapeArchivesInput,
   output: DescribeTapeArchivesOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
@@ -5815,27 +5800,13 @@ export type DescribeTapeRecoveryPointsError =
  * points can be recovered to a new gateway. This operation is only supported in the tape
  * gateway type.
  */
-export const describeTapeRecoveryPoints: API.OperationMethod<
+export const describeTapeRecoveryPoints: API.PaginatedOperationMethod<
   DescribeTapeRecoveryPointsInput,
   DescribeTapeRecoveryPointsOutput,
   DescribeTapeRecoveryPointsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeTapeRecoveryPointsInput,
-  ) => stream.Stream<
-    DescribeTapeRecoveryPointsOutput,
-    DescribeTapeRecoveryPointsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeTapeRecoveryPointsInput,
-  ) => stream.Stream<
-    TapeRecoveryPointInfo,
-    DescribeTapeRecoveryPointsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  TapeRecoveryPointInfo
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeTapeRecoveryPointsInput,
   output: DescribeTapeRecoveryPointsOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
@@ -5867,27 +5838,13 @@ export type DescribeTapesError =
  * `Marker` value in your subsequent request to retrieve the next set of
  * tapes.
  */
-export const describeTapes: API.OperationMethod<
+export const describeTapes: API.PaginatedOperationMethod<
   DescribeTapesInput,
   DescribeTapesOutput,
   DescribeTapesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeTapesInput,
-  ) => stream.Stream<
-    DescribeTapesOutput,
-    DescribeTapesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeTapesInput,
-  ) => stream.Stream<
-    Tape,
-    DescribeTapesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Tape
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeTapesInput,
   output: DescribeTapesOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
@@ -5937,27 +5894,13 @@ export type DescribeVTLDevicesError =
  *
  * This operation is only supported in the tape gateway type.
  */
-export const describeVTLDevices: API.OperationMethod<
+export const describeVTLDevices: API.PaginatedOperationMethod<
   DescribeVTLDevicesInput,
   DescribeVTLDevicesOutput,
   DescribeVTLDevicesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeVTLDevicesInput,
-  ) => stream.Stream<
-    DescribeVTLDevicesOutput,
-    DescribeVTLDevicesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeVTLDevicesInput,
-  ) => stream.Stream<
-    VTLDevice,
-    DescribeVTLDevicesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  VTLDevice
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeVTLDevicesInput,
   output: DescribeVTLDevicesOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
@@ -6173,27 +6116,13 @@ export type ListCacheReportsError =
  * `DescribeCacheReport` action, such as report name, status, completion
  * progress, start time, end time, filters, and tags.
  */
-export const listCacheReports: API.OperationMethod<
+export const listCacheReports: API.PaginatedOperationMethod<
   ListCacheReportsInput,
   ListCacheReportsOutput,
   ListCacheReportsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCacheReportsInput,
-  ) => stream.Stream<
-    ListCacheReportsOutput,
-    ListCacheReportsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCacheReportsInput,
-  ) => stream.Stream<
-    CacheReportInfo,
-    ListCacheReportsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  CacheReportInfo
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCacheReportsInput,
   output: ListCacheReportsOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
@@ -6216,27 +6145,13 @@ export type ListFileSharesError =
  * shares that belong to the calling Amazon Web Services account. This operation is only
  * supported for S3 File Gateways.
  */
-export const listFileShares: API.OperationMethod<
+export const listFileShares: API.PaginatedOperationMethod<
   ListFileSharesInput,
   ListFileSharesOutput,
   ListFileSharesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListFileSharesInput,
-  ) => stream.Stream<
-    ListFileSharesOutput,
-    ListFileSharesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListFileSharesInput,
-  ) => stream.Stream<
-    FileShareInfo,
-    ListFileSharesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  FileShareInfo
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFileSharesInput,
   output: ListFileSharesOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
@@ -6260,27 +6175,13 @@ export type ListFileSystemAssociationsError =
  * summary of a file system association. This operation is only supported for FSx File
  * Gateways.
  */
-export const listFileSystemAssociations: API.OperationMethod<
+export const listFileSystemAssociations: API.PaginatedOperationMethod<
   ListFileSystemAssociationsInput,
   ListFileSystemAssociationsOutput,
   ListFileSystemAssociationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListFileSystemAssociationsInput,
-  ) => stream.Stream<
-    ListFileSystemAssociationsOutput,
-    ListFileSystemAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListFileSystemAssociationsInput,
-  ) => stream.Stream<
-    FileSystemAssociationSummary,
-    ListFileSystemAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  FileSystemAssociationSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFileSystemAssociationsInput,
   output: ListFileSystemAssociationsOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
@@ -6312,27 +6213,13 @@ export type ListGatewaysError =
  * only a truncated list of your gateways), the response contains a marker that you can
  * specify in your next request to fetch the next page of gateways.
  */
-export const listGateways: API.OperationMethod<
+export const listGateways: API.PaginatedOperationMethod<
   ListGatewaysInput,
   ListGatewaysOutput,
   ListGatewaysError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListGatewaysInput,
-  ) => stream.Stream<
-    ListGatewaysOutput,
-    ListGatewaysError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListGatewaysInput,
-  ) => stream.Stream<
-    GatewayInfo,
-    ListGatewaysError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  GatewayInfo
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListGatewaysInput,
   output: ListGatewaysOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
@@ -6384,27 +6271,13 @@ export type ListTagsForResourceError =
  * Lists the tags that have been added to the specified resource. This operation is
  * supported in storage gateways of all types.
  */
-export const listTagsForResource: API.OperationMethod<
+export const listTagsForResource: API.PaginatedOperationMethod<
   ListTagsForResourceInput,
   ListTagsForResourceOutput,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTagsForResourceInput,
-  ) => stream.Stream<
-    ListTagsForResourceOutput,
-    ListTagsForResourceError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTagsForResourceInput,
-  ) => stream.Stream<
-    Tag,
-    ListTagsForResourceError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Tag
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTagsForResourceInput,
   output: ListTagsForResourceOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
@@ -6434,27 +6307,13 @@ export type ListTapePoolsError =
  * `Marker` element that you can use in your subsequent request to retrieve the
  * next set of tape pools.
  */
-export const listTapePools: API.OperationMethod<
+export const listTapePools: API.PaginatedOperationMethod<
   ListTapePoolsInput,
   ListTapePoolsOutput,
   ListTapePoolsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTapePoolsInput,
-  ) => stream.Stream<
-    ListTapePoolsOutput,
-    ListTapePoolsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTapePoolsInput,
-  ) => stream.Stream<
-    PoolInfo,
-    ListTapePoolsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  PoolInfo
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTapePoolsInput,
   output: ListTapePoolsOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
@@ -6486,27 +6345,13 @@ export type ListTapesError =
  * subsequent request to retrieve the next set of tapes. This operation is only supported in
  * the tape gateway type.
  */
-export const listTapes: API.OperationMethod<
+export const listTapes: API.PaginatedOperationMethod<
   ListTapesInput,
   ListTapesOutput,
   ListTapesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTapesInput,
-  ) => stream.Stream<
-    ListTapesOutput,
-    ListTapesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTapesInput,
-  ) => stream.Stream<
-    TapeInfo,
-    ListTapesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  TapeInfo
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTapesInput,
   output: ListTapesOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
@@ -6587,27 +6432,13 @@ export type ListVolumesError =
  * subsequent request to retrieve the next set of volumes. This operation is only supported in
  * the cached volume and stored volume gateway types.
  */
-export const listVolumes: API.OperationMethod<
+export const listVolumes: API.PaginatedOperationMethod<
   ListVolumesInput,
   ListVolumesOutput,
   ListVolumesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListVolumesInput,
-  ) => stream.Stream<
-    ListVolumesOutput,
-    ListVolumesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListVolumesInput,
-  ) => stream.Stream<
-    VolumeInfo,
-    ListVolumesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  VolumeInfo
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListVolumesInput,
   output: ListVolumesOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],

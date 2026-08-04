@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -1484,27 +1483,13 @@ export type ListApplicationDependenciesError =
 /**
  * Retrieves the list of applications nested in the containing application.
  */
-export const listApplicationDependencies: API.OperationMethod<
+export const listApplicationDependencies: API.PaginatedOperationMethod<
   ListApplicationDependenciesRequest,
   ListApplicationDependenciesResponse,
   ListApplicationDependenciesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListApplicationDependenciesRequest,
-  ) => stream.Stream<
-    ListApplicationDependenciesResponse,
-    ListApplicationDependenciesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListApplicationDependenciesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListApplicationDependenciesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListApplicationDependenciesRequest,
   output: ListApplicationDependenciesResponse,
   errors: [
@@ -1533,27 +1518,13 @@ export type ListApplicationsError =
 /**
  * Lists applications owned by the requester.
  */
-export const listApplications: API.OperationMethod<
+export const listApplications: API.PaginatedOperationMethod<
   ListApplicationsRequest,
   ListApplicationsResponse,
   ListApplicationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListApplicationsRequest,
-  ) => stream.Stream<
-    ListApplicationsResponse,
-    ListApplicationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListApplicationsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListApplicationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListApplicationsRequest,
   output: ListApplicationsResponse,
   errors: [
@@ -1582,27 +1553,13 @@ export type ListApplicationVersionsError =
 /**
  * Lists versions for the specified application.
  */
-export const listApplicationVersions: API.OperationMethod<
+export const listApplicationVersions: API.PaginatedOperationMethod<
   ListApplicationVersionsRequest,
   ListApplicationVersionsResponse,
   ListApplicationVersionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListApplicationVersionsRequest,
-  ) => stream.Stream<
-    ListApplicationVersionsResponse,
-    ListApplicationVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListApplicationVersionsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListApplicationVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListApplicationVersionsRequest,
   output: ListApplicationVersionsResponse,
   errors: [

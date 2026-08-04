@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -2799,27 +2798,13 @@ export type ExportComponentsError =
 /**
  * Exports component configurations to code that is ready to integrate into an Amplify app.
  */
-export const exportComponents: API.OperationMethod<
+export const exportComponents: API.PaginatedOperationMethod<
   ExportComponentsRequest,
   ExportComponentsResponse,
   ExportComponentsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ExportComponentsRequest,
-  ) => stream.Stream<
-    ExportComponentsResponse,
-    ExportComponentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ExportComponentsRequest,
-  ) => stream.Stream<
-    Component,
-    ExportComponentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Component
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ExportComponentsRequest,
   output: ExportComponentsResponse,
   errors: [InternalServerException, InvalidParameterException],
@@ -2840,27 +2825,13 @@ export type ExportFormsError =
 /**
  * Exports form configurations to code that is ready to integrate into an Amplify app.
  */
-export const exportForms: API.OperationMethod<
+export const exportForms: API.PaginatedOperationMethod<
   ExportFormsRequest,
   ExportFormsResponse,
   ExportFormsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ExportFormsRequest,
-  ) => stream.Stream<
-    ExportFormsResponse,
-    ExportFormsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ExportFormsRequest,
-  ) => stream.Stream<
-    Form,
-    ExportFormsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Form
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ExportFormsRequest,
   output: ExportFormsResponse,
   errors: [InternalServerException, InvalidParameterException],
@@ -2881,27 +2852,13 @@ export type ExportThemesError =
 /**
  * Exports theme configurations to code that is ready to integrate into an Amplify app.
  */
-export const exportThemes: API.OperationMethod<
+export const exportThemes: API.PaginatedOperationMethod<
   ExportThemesRequest,
   ExportThemesResponse,
   ExportThemesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ExportThemesRequest,
-  ) => stream.Stream<
-    ExportThemesResponse,
-    ExportThemesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ExportThemesRequest,
-  ) => stream.Stream<
-    Theme,
-    ExportThemesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Theme
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ExportThemesRequest,
   output: ExportThemesResponse,
   errors: [InternalServerException, InvalidParameterException],
@@ -3050,27 +3007,13 @@ export type ListCodegenJobsError =
 /**
  * Retrieves a list of code generation jobs for a specified Amplify app and backend environment.
  */
-export const listCodegenJobs: API.OperationMethod<
+export const listCodegenJobs: API.PaginatedOperationMethod<
   ListCodegenJobsRequest,
   ListCodegenJobsResponse,
   ListCodegenJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCodegenJobsRequest,
-  ) => stream.Stream<
-    ListCodegenJobsResponse,
-    ListCodegenJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCodegenJobsRequest,
-  ) => stream.Stream<
-    CodegenJobSummary,
-    ListCodegenJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  CodegenJobSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCodegenJobsRequest,
   output: ListCodegenJobsResponse,
   errors: [
@@ -3097,27 +3040,13 @@ export type ListComponentsError =
  * Retrieves a list of components for a specified Amplify app and backend
  * environment.
  */
-export const listComponents: API.OperationMethod<
+export const listComponents: API.PaginatedOperationMethod<
   ListComponentsRequest,
   ListComponentsResponse,
   ListComponentsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListComponentsRequest,
-  ) => stream.Stream<
-    ListComponentsResponse,
-    ListComponentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListComponentsRequest,
-  ) => stream.Stream<
-    ComponentSummary,
-    ListComponentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ComponentSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListComponentsRequest,
   output: ListComponentsResponse,
   errors: [InternalServerException, InvalidParameterException],
@@ -3139,27 +3068,13 @@ export type ListFormsError =
 /**
  * Retrieves a list of forms for a specified Amplify app and backend environment.
  */
-export const listForms: API.OperationMethod<
+export const listForms: API.PaginatedOperationMethod<
   ListFormsRequest,
   ListFormsResponse,
   ListFormsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListFormsRequest,
-  ) => stream.Stream<
-    ListFormsResponse,
-    ListFormsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListFormsRequest,
-  ) => stream.Stream<
-    FormSummary,
-    ListFormsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  FormSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFormsRequest,
   output: ListFormsResponse,
   errors: [InternalServerException, InvalidParameterException],
@@ -3212,27 +3127,13 @@ export type ListThemesError =
  * Retrieves a list of themes for a specified Amplify app and backend
  * environment.
  */
-export const listThemes: API.OperationMethod<
+export const listThemes: API.PaginatedOperationMethod<
   ListThemesRequest,
   ListThemesResponse,
   ListThemesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListThemesRequest,
-  ) => stream.Stream<
-    ListThemesResponse,
-    ListThemesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListThemesRequest,
-  ) => stream.Stream<
-    ThemeSummary,
-    ListThemesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ThemeSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListThemesRequest,
   output: ListThemesResponse,
   errors: [InternalServerException, InvalidParameterException],

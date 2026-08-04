@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -2093,27 +2092,13 @@ export type ListJobRunsError =
  * Lists job runs based on a set of parameters. A job run is a unit of work, such as a
  * Spark jar, PySpark script, or SparkSQL query, that you submit to Amazon EMR on EKS.
  */
-export const listJobRuns: API.OperationMethod<
+export const listJobRuns: API.PaginatedOperationMethod<
   ListJobRunsRequest,
   ListJobRunsResponse,
   ListJobRunsError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListJobRunsRequest,
-  ) => stream.Stream<
-    ListJobRunsResponse,
-    ListJobRunsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListJobRunsRequest,
-  ) => stream.Stream<
-    JobRun,
-    ListJobRunsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Region | HttpClient.HttpClient,
+  JobRun
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListJobRunsRequest,
   output: ListJobRunsResponse,
   errors: [
@@ -2143,27 +2128,13 @@ export type ListJobTemplatesError =
  * allows two use cases: avoid repeating recurring StartJobRun API request values, enforcing
  * certain values in StartJobRun API request.
  */
-export const listJobTemplates: API.OperationMethod<
+export const listJobTemplates: API.PaginatedOperationMethod<
   ListJobTemplatesRequest,
   ListJobTemplatesResponse,
   ListJobTemplatesError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListJobTemplatesRequest,
-  ) => stream.Stream<
-    ListJobTemplatesResponse,
-    ListJobTemplatesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListJobTemplatesRequest,
-  ) => stream.Stream<
-    JobTemplate,
-    ListJobTemplatesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Region | HttpClient.HttpClient,
+  JobTemplate
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListJobTemplatesRequest,
   output: ListJobTemplatesResponse,
   errors: [
@@ -2191,27 +2162,13 @@ export type ListManagedEndpointsError =
  * Lists managed endpoints based on a set of parameters. A managed endpoint is a gateway
  * that connects Amazon EMR Studio to Amazon EMR on EKS so that Amazon EMR Studio can communicate with your virtual cluster.
  */
-export const listManagedEndpoints: API.OperationMethod<
+export const listManagedEndpoints: API.PaginatedOperationMethod<
   ListManagedEndpointsRequest,
   ListManagedEndpointsResponse,
   ListManagedEndpointsError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListManagedEndpointsRequest,
-  ) => stream.Stream<
-    ListManagedEndpointsResponse,
-    ListManagedEndpointsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListManagedEndpointsRequest,
-  ) => stream.Stream<
-    Endpoint,
-    ListManagedEndpointsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Region | HttpClient.HttpClient,
+  Endpoint
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListManagedEndpointsRequest,
   output: ListManagedEndpointsResponse,
   errors: [
@@ -2242,27 +2199,13 @@ export type ListSecurityConfigurationsError =
  * create a security configuration to re-use a security setup each time you create a virtual
  * cluster.
  */
-export const listSecurityConfigurations: API.OperationMethod<
+export const listSecurityConfigurations: API.PaginatedOperationMethod<
   ListSecurityConfigurationsRequest,
   ListSecurityConfigurationsResponse,
   ListSecurityConfigurationsError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSecurityConfigurationsRequest,
-  ) => stream.Stream<
-    ListSecurityConfigurationsResponse,
-    ListSecurityConfigurationsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSecurityConfigurationsRequest,
-  ) => stream.Stream<
-    SecurityConfiguration,
-    ListSecurityConfigurationsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Region | HttpClient.HttpClient,
+  SecurityConfiguration
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSecurityConfigurationsRequest,
   output: ListSecurityConfigurationsResponse,
   errors: [
@@ -2322,27 +2265,13 @@ export type ListVirtualClustersError =
  * virtual clusters the same way you model Kubernetes namespaces to meet your
  * requirements.
  */
-export const listVirtualClusters: API.OperationMethod<
+export const listVirtualClusters: API.PaginatedOperationMethod<
   ListVirtualClustersRequest,
   ListVirtualClustersResponse,
   ListVirtualClustersError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListVirtualClustersRequest,
-  ) => stream.Stream<
-    ListVirtualClustersResponse,
-    ListVirtualClustersError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListVirtualClustersRequest,
-  ) => stream.Stream<
-    VirtualCluster,
-    ListVirtualClustersError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Region | HttpClient.HttpClient,
+  VirtualCluster
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListVirtualClustersRequest,
   output: ListVirtualClustersResponse,
   errors: [

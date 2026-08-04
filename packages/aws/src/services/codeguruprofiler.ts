@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -1508,27 +1507,13 @@ export type GetFindingsReportAccountSummaryError =
  *
  * objects that contain analysis results for all profiling groups in your AWS account.
  */
-export const getFindingsReportAccountSummary: API.OperationMethod<
+export const getFindingsReportAccountSummary: API.PaginatedOperationMethod<
   GetFindingsReportAccountSummaryRequest,
   GetFindingsReportAccountSummaryResponse,
   GetFindingsReportAccountSummaryError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetFindingsReportAccountSummaryRequest,
-  ) => stream.Stream<
-    GetFindingsReportAccountSummaryResponse,
-    GetFindingsReportAccountSummaryError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetFindingsReportAccountSummaryRequest,
-  ) => stream.Stream<
-    unknown,
-    GetFindingsReportAccountSummaryError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetFindingsReportAccountSummaryRequest,
   output: GetFindingsReportAccountSummaryResponse,
   errors: [InternalServerException, ThrottlingException, ValidationException],
@@ -1709,27 +1694,13 @@ export type ListFindingsReportsError =
 /**
  * List the available reports for a given profiling group and time range.
  */
-export const listFindingsReports: API.OperationMethod<
+export const listFindingsReports: API.PaginatedOperationMethod<
   ListFindingsReportsRequest,
   ListFindingsReportsResponse,
   ListFindingsReportsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListFindingsReportsRequest,
-  ) => stream.Stream<
-    ListFindingsReportsResponse,
-    ListFindingsReportsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListFindingsReportsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListFindingsReportsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFindingsReportsRequest,
   output: ListFindingsReportsResponse,
   errors: [
@@ -1758,27 +1729,13 @@ export type ListProfileTimesError =
  * Lists the start times of the available aggregated profiles of a profiling group
  * for an aggregation period within the specified time range.
  */
-export const listProfileTimes: API.OperationMethod<
+export const listProfileTimes: API.PaginatedOperationMethod<
   ListProfileTimesRequest,
   ListProfileTimesResponse,
   ListProfileTimesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListProfileTimesRequest,
-  ) => stream.Stream<
-    ListProfileTimesResponse,
-    ListProfileTimesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListProfileTimesRequest,
-  ) => stream.Stream<
-    ProfileTime,
-    ListProfileTimesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ProfileTime
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProfileTimesRequest,
   output: ListProfileTimesResponse,
   errors: [
@@ -1809,27 +1766,13 @@ export type ListProfilingGroupsError =
  *
  * objects.
  */
-export const listProfilingGroups: API.OperationMethod<
+export const listProfilingGroups: API.PaginatedOperationMethod<
   ListProfilingGroupsRequest,
   ListProfilingGroupsResponse,
   ListProfilingGroupsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListProfilingGroupsRequest,
-  ) => stream.Stream<
-    ListProfilingGroupsResponse,
-    ListProfilingGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListProfilingGroupsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListProfilingGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProfilingGroupsRequest,
   output: ListProfilingGroupsResponse,
   errors: [InternalServerException, ThrottlingException],

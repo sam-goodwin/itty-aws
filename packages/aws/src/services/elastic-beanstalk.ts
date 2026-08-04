@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -3718,27 +3717,13 @@ export type DescribeEnvironmentManagedActionHistoryError =
 /**
  * Lists an environment's completed and failed managed actions.
  */
-export const describeEnvironmentManagedActionHistory: API.OperationMethod<
+export const describeEnvironmentManagedActionHistory: API.PaginatedOperationMethod<
   DescribeEnvironmentManagedActionHistoryRequest,
   DescribeEnvironmentManagedActionHistoryResult,
   DescribeEnvironmentManagedActionHistoryError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeEnvironmentManagedActionHistoryRequest,
-  ) => stream.Stream<
-    DescribeEnvironmentManagedActionHistoryResult,
-    DescribeEnvironmentManagedActionHistoryError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeEnvironmentManagedActionHistoryRequest,
-  ) => stream.Stream<
-    ManagedActionHistoryItem,
-    DescribeEnvironmentManagedActionHistoryError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ManagedActionHistoryItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeEnvironmentManagedActionHistoryRequest,
   output: DescribeEnvironmentManagedActionHistoryResult,
   errors: [ElasticBeanstalkServiceException],
@@ -3818,27 +3803,13 @@ export type DescribeEventsError = CommonErrors;
  * This action returns the most recent 1,000 events from the specified
  * `NextToken`.
  */
-export const describeEvents: API.OperationMethod<
+export const describeEvents: API.PaginatedOperationMethod<
   DescribeEventsMessage,
   EventDescriptionsMessage,
   DescribeEventsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeEventsMessage,
-  ) => stream.Stream<
-    EventDescriptionsMessage,
-    DescribeEventsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeEventsMessage,
-  ) => stream.Stream<
-    EventDescription,
-    DescribeEventsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  EventDescription
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeEventsMessage,
   output: EventDescriptionsMessage,
   errors: [],
@@ -3951,27 +3922,13 @@ export type ListPlatformBranchesError = CommonErrors;
  * For definitions of platform branch and other platform-related terms, see AWS Elastic Beanstalk
  * Platforms Glossary.
  */
-export const listPlatformBranches: API.OperationMethod<
+export const listPlatformBranches: API.PaginatedOperationMethod<
   ListPlatformBranchesRequest,
   ListPlatformBranchesResult,
   ListPlatformBranchesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPlatformBranchesRequest,
-  ) => stream.Stream<
-    ListPlatformBranchesResult,
-    ListPlatformBranchesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPlatformBranchesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListPlatformBranchesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPlatformBranchesRequest,
   output: ListPlatformBranchesResult,
   errors: [],
@@ -3997,27 +3954,13 @@ export type ListPlatformVersionsError =
  * For definitions of platform version and other platform-related terms, see AWS Elastic Beanstalk
  * Platforms Glossary.
  */
-export const listPlatformVersions: API.OperationMethod<
+export const listPlatformVersions: API.PaginatedOperationMethod<
   ListPlatformVersionsRequest,
   ListPlatformVersionsResult,
   ListPlatformVersionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPlatformVersionsRequest,
-  ) => stream.Stream<
-    ListPlatformVersionsResult,
-    ListPlatformVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPlatformVersionsRequest,
-  ) => stream.Stream<
-    PlatformSummary,
-    ListPlatformVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  PlatformSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPlatformVersionsRequest,
   output: ListPlatformVersionsResult,
   errors: [ElasticBeanstalkServiceException, InsufficientPrivilegesException],

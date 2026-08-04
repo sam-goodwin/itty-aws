@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -4303,27 +4302,13 @@ export type GetChangeLogsError =
 /**
  * Gets a list of changelogs from Audit Manager.
  */
-export const getChangeLogs: API.OperationMethod<
+export const getChangeLogs: API.PaginatedOperationMethod<
   GetChangeLogsRequest,
   GetChangeLogsResponse,
   GetChangeLogsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetChangeLogsRequest,
-  ) => stream.Stream<
-    GetChangeLogsResponse,
-    GetChangeLogsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetChangeLogsRequest,
-  ) => stream.Stream<
-    unknown,
-    GetChangeLogsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetChangeLogsRequest,
   output: GetChangeLogsResponse,
   errors: [
@@ -4378,27 +4363,13 @@ export type GetDelegationsError =
 /**
  * Gets a list of delegations from an audit owner to a delegate.
  */
-export const getDelegations: API.OperationMethod<
+export const getDelegations: API.PaginatedOperationMethod<
   GetDelegationsRequest,
   GetDelegationsResponse,
   GetDelegationsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetDelegationsRequest,
-  ) => stream.Stream<
-    GetDelegationsResponse,
-    GetDelegationsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetDelegationsRequest,
-  ) => stream.Stream<
-    unknown,
-    GetDelegationsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetDelegationsRequest,
   output: GetDelegationsResponse,
   errors: [AccessDeniedException, InternalServerException, ValidationException],
@@ -4449,27 +4420,13 @@ export type GetEvidenceByEvidenceFolderError =
 /**
  * Gets all evidence from a specified evidence folder in Audit Manager.
  */
-export const getEvidenceByEvidenceFolder: API.OperationMethod<
+export const getEvidenceByEvidenceFolder: API.PaginatedOperationMethod<
   GetEvidenceByEvidenceFolderRequest,
   GetEvidenceByEvidenceFolderResponse,
   GetEvidenceByEvidenceFolderError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetEvidenceByEvidenceFolderRequest,
-  ) => stream.Stream<
-    GetEvidenceByEvidenceFolderResponse,
-    GetEvidenceByEvidenceFolderError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetEvidenceByEvidenceFolderRequest,
-  ) => stream.Stream<
-    unknown,
-    GetEvidenceByEvidenceFolderError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetEvidenceByEvidenceFolderRequest,
   output: GetEvidenceByEvidenceFolderResponse,
   errors: [
@@ -4566,27 +4523,13 @@ export type GetEvidenceFoldersByAssessmentError =
 /**
  * Gets the evidence folders from a specified assessment in Audit Manager.
  */
-export const getEvidenceFoldersByAssessment: API.OperationMethod<
+export const getEvidenceFoldersByAssessment: API.PaginatedOperationMethod<
   GetEvidenceFoldersByAssessmentRequest,
   GetEvidenceFoldersByAssessmentResponse,
   GetEvidenceFoldersByAssessmentError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetEvidenceFoldersByAssessmentRequest,
-  ) => stream.Stream<
-    GetEvidenceFoldersByAssessmentResponse,
-    GetEvidenceFoldersByAssessmentError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetEvidenceFoldersByAssessmentRequest,
-  ) => stream.Stream<
-    unknown,
-    GetEvidenceFoldersByAssessmentError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetEvidenceFoldersByAssessmentRequest,
   output: GetEvidenceFoldersByAssessmentResponse,
   errors: [
@@ -4615,27 +4558,13 @@ export type GetEvidenceFoldersByAssessmentControlError =
  * Gets a list of evidence folders that are associated with a specified control in an
  * Audit Manager assessment.
  */
-export const getEvidenceFoldersByAssessmentControl: API.OperationMethod<
+export const getEvidenceFoldersByAssessmentControl: API.PaginatedOperationMethod<
   GetEvidenceFoldersByAssessmentControlRequest,
   GetEvidenceFoldersByAssessmentControlResponse,
   GetEvidenceFoldersByAssessmentControlError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetEvidenceFoldersByAssessmentControlRequest,
-  ) => stream.Stream<
-    GetEvidenceFoldersByAssessmentControlResponse,
-    GetEvidenceFoldersByAssessmentControlError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetEvidenceFoldersByAssessmentControlRequest,
-  ) => stream.Stream<
-    unknown,
-    GetEvidenceFoldersByAssessmentControlError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetEvidenceFoldersByAssessmentControlRequest,
   output: GetEvidenceFoldersByAssessmentControlResponse,
   errors: [
@@ -4801,27 +4730,13 @@ export type ListAssessmentControlInsightsByControlDomainError =
  * `lastUpdated` date of `controlInsightsByAssessment`. If neither
  * of these conditions are met, no data is listed for that control.
  */
-export const listAssessmentControlInsightsByControlDomain: API.OperationMethod<
+export const listAssessmentControlInsightsByControlDomain: API.PaginatedOperationMethod<
   ListAssessmentControlInsightsByControlDomainRequest,
   ListAssessmentControlInsightsByControlDomainResponse,
   ListAssessmentControlInsightsByControlDomainError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAssessmentControlInsightsByControlDomainRequest,
-  ) => stream.Stream<
-    ListAssessmentControlInsightsByControlDomainResponse,
-    ListAssessmentControlInsightsByControlDomainError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAssessmentControlInsightsByControlDomainRequest,
-  ) => stream.Stream<
-    unknown,
-    ListAssessmentControlInsightsByControlDomainError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAssessmentControlInsightsByControlDomainRequest,
   output: ListAssessmentControlInsightsByControlDomainResponse,
   errors: [
@@ -4849,27 +4764,13 @@ export type ListAssessmentFrameworksError =
  * Returns a list of the frameworks that are available in the Audit Manager framework
  * library.
  */
-export const listAssessmentFrameworks: API.OperationMethod<
+export const listAssessmentFrameworks: API.PaginatedOperationMethod<
   ListAssessmentFrameworksRequest,
   ListAssessmentFrameworksResponse,
   ListAssessmentFrameworksError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAssessmentFrameworksRequest,
-  ) => stream.Stream<
-    ListAssessmentFrameworksResponse,
-    ListAssessmentFrameworksError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAssessmentFrameworksRequest,
-  ) => stream.Stream<
-    unknown,
-    ListAssessmentFrameworksError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAssessmentFrameworksRequest,
   output: ListAssessmentFrameworksResponse,
   errors: [AccessDeniedException, InternalServerException, ValidationException],
@@ -4891,27 +4792,13 @@ export type ListAssessmentFrameworkShareRequestsError =
 /**
  * Returns a list of sent or received share requests for custom frameworks in Audit Manager.
  */
-export const listAssessmentFrameworkShareRequests: API.OperationMethod<
+export const listAssessmentFrameworkShareRequests: API.PaginatedOperationMethod<
   ListAssessmentFrameworkShareRequestsRequest,
   ListAssessmentFrameworkShareRequestsResponse,
   ListAssessmentFrameworkShareRequestsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAssessmentFrameworkShareRequestsRequest,
-  ) => stream.Stream<
-    ListAssessmentFrameworkShareRequestsResponse,
-    ListAssessmentFrameworkShareRequestsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAssessmentFrameworkShareRequestsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListAssessmentFrameworkShareRequestsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAssessmentFrameworkShareRequestsRequest,
   output: ListAssessmentFrameworkShareRequestsResponse,
   errors: [AccessDeniedException, InternalServerException, ValidationException],
@@ -4933,27 +4820,13 @@ export type ListAssessmentReportsError =
 /**
  * Returns a list of assessment reports created in Audit Manager.
  */
-export const listAssessmentReports: API.OperationMethod<
+export const listAssessmentReports: API.PaginatedOperationMethod<
   ListAssessmentReportsRequest,
   ListAssessmentReportsResponse,
   ListAssessmentReportsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAssessmentReportsRequest,
-  ) => stream.Stream<
-    ListAssessmentReportsResponse,
-    ListAssessmentReportsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAssessmentReportsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListAssessmentReportsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAssessmentReportsRequest,
   output: ListAssessmentReportsResponse,
   errors: [AccessDeniedException, InternalServerException, ValidationException],
@@ -4975,27 +4848,13 @@ export type ListAssessmentsError =
 /**
  * Returns a list of current and past assessments from Audit Manager.
  */
-export const listAssessments: API.OperationMethod<
+export const listAssessments: API.PaginatedOperationMethod<
   ListAssessmentsRequest,
   ListAssessmentsResponse,
   ListAssessmentsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAssessmentsRequest,
-  ) => stream.Stream<
-    ListAssessmentsResponse,
-    ListAssessmentsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAssessmentsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListAssessmentsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAssessmentsRequest,
   output: ListAssessmentsResponse,
   errors: [AccessDeniedException, InternalServerException, ValidationException],
@@ -5031,27 +4890,13 @@ export type ListControlDomainInsightsError =
  * `controlDomainInsights`. If this condition isn’t met, no data is listed
  * for that control domain.
  */
-export const listControlDomainInsights: API.OperationMethod<
+export const listControlDomainInsights: API.PaginatedOperationMethod<
   ListControlDomainInsightsRequest,
   ListControlDomainInsightsResponse,
   ListControlDomainInsightsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListControlDomainInsightsRequest,
-  ) => stream.Stream<
-    ListControlDomainInsightsResponse,
-    ListControlDomainInsightsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListControlDomainInsightsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListControlDomainInsightsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListControlDomainInsightsRequest,
   output: ListControlDomainInsightsResponse,
   errors: [
@@ -5091,27 +4936,13 @@ export type ListControlDomainInsightsByAssessmentError =
  * `controlDomainInsights`. If this condition isn’t met, no data is listed
  * for that domain.
  */
-export const listControlDomainInsightsByAssessment: API.OperationMethod<
+export const listControlDomainInsightsByAssessment: API.PaginatedOperationMethod<
   ListControlDomainInsightsByAssessmentRequest,
   ListControlDomainInsightsByAssessmentResponse,
   ListControlDomainInsightsByAssessmentError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListControlDomainInsightsByAssessmentRequest,
-  ) => stream.Stream<
-    ListControlDomainInsightsByAssessmentResponse,
-    ListControlDomainInsightsByAssessmentError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListControlDomainInsightsByAssessmentRequest,
-  ) => stream.Stream<
-    unknown,
-    ListControlDomainInsightsByAssessmentError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListControlDomainInsightsByAssessmentRequest,
   output: ListControlDomainInsightsByAssessmentResponse,
   errors: [
@@ -5145,27 +4976,13 @@ export type ListControlInsightsByControlDomainError =
  * `controlInsightsMetadata`. If neither of these conditions are met, no data
  * is listed for that control.
  */
-export const listControlInsightsByControlDomain: API.OperationMethod<
+export const listControlInsightsByControlDomain: API.PaginatedOperationMethod<
   ListControlInsightsByControlDomainRequest,
   ListControlInsightsByControlDomainResponse,
   ListControlInsightsByControlDomainError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListControlInsightsByControlDomainRequest,
-  ) => stream.Stream<
-    ListControlInsightsByControlDomainResponse,
-    ListControlInsightsByControlDomainError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListControlInsightsByControlDomainRequest,
-  ) => stream.Stream<
-    unknown,
-    ListControlInsightsByControlDomainError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListControlInsightsByControlDomainRequest,
   output: ListControlInsightsByControlDomainResponse,
   errors: [
@@ -5192,27 +5009,13 @@ export type ListControlsError =
 /**
  * Returns a list of controls from Audit Manager.
  */
-export const listControls: API.OperationMethod<
+export const listControls: API.PaginatedOperationMethod<
   ListControlsRequest,
   ListControlsResponse,
   ListControlsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListControlsRequest,
-  ) => stream.Stream<
-    ListControlsResponse,
-    ListControlsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListControlsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListControlsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListControlsRequest,
   output: ListControlsResponse,
   errors: [AccessDeniedException, InternalServerException, ValidationException],
@@ -5235,27 +5038,13 @@ export type ListKeywordsForDataSourceError =
  * Returns a list of keywords that are pre-mapped to the specified control data
  * source.
  */
-export const listKeywordsForDataSource: API.OperationMethod<
+export const listKeywordsForDataSource: API.PaginatedOperationMethod<
   ListKeywordsForDataSourceRequest,
   ListKeywordsForDataSourceResponse,
   ListKeywordsForDataSourceError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListKeywordsForDataSourceRequest,
-  ) => stream.Stream<
-    ListKeywordsForDataSourceResponse,
-    ListKeywordsForDataSourceError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListKeywordsForDataSourceRequest,
-  ) => stream.Stream<
-    unknown,
-    ListKeywordsForDataSourceError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListKeywordsForDataSourceRequest,
   output: ListKeywordsForDataSourceResponse,
   errors: [AccessDeniedException, InternalServerException, ValidationException],
@@ -5277,27 +5066,13 @@ export type ListNotificationsError =
 /**
  * Returns a list of all Audit Manager notifications.
  */
-export const listNotifications: API.OperationMethod<
+export const listNotifications: API.PaginatedOperationMethod<
   ListNotificationsRequest,
   ListNotificationsResponse,
   ListNotificationsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListNotificationsRequest,
-  ) => stream.Stream<
-    ListNotificationsResponse,
-    ListNotificationsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListNotificationsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListNotificationsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListNotificationsRequest,
   output: ListNotificationsResponse,
   errors: [AccessDeniedException, InternalServerException, ValidationException],

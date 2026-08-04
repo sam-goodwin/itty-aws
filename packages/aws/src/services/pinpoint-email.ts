@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -2551,27 +2550,13 @@ export type GetDedicatedIpsError =
  * List the dedicated IP addresses that are associated with your Amazon Pinpoint
  * account.
  */
-export const getDedicatedIps: API.OperationMethod<
+export const getDedicatedIps: API.PaginatedOperationMethod<
   GetDedicatedIpsRequest,
   GetDedicatedIpsResponse,
   GetDedicatedIpsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetDedicatedIpsRequest,
-  ) => stream.Stream<
-    GetDedicatedIpsResponse,
-    GetDedicatedIpsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetDedicatedIpsRequest,
-  ) => stream.Stream<
-    unknown,
-    GetDedicatedIpsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetDedicatedIpsRequest,
   output: GetDedicatedIpsResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
@@ -2726,27 +2711,13 @@ export type ListConfigurationSetsError =
  * configuration set to an email, all of the rules in that configuration set are applied to
  * the email.
  */
-export const listConfigurationSets: API.OperationMethod<
+export const listConfigurationSets: API.PaginatedOperationMethod<
   ListConfigurationSetsRequest,
   ListConfigurationSetsResponse,
   ListConfigurationSetsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListConfigurationSetsRequest,
-  ) => stream.Stream<
-    ListConfigurationSetsResponse,
-    ListConfigurationSetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListConfigurationSetsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListConfigurationSetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListConfigurationSetsRequest,
   output: ListConfigurationSetsResponse,
   errors: [BadRequestException, TooManyRequestsException],
@@ -2768,27 +2739,13 @@ export type ListDedicatedIpPoolsError =
  * List all of the dedicated IP pools that exist in your Amazon Pinpoint account in the current
  * AWS Region.
  */
-export const listDedicatedIpPools: API.OperationMethod<
+export const listDedicatedIpPools: API.PaginatedOperationMethod<
   ListDedicatedIpPoolsRequest,
   ListDedicatedIpPoolsResponse,
   ListDedicatedIpPoolsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDedicatedIpPoolsRequest,
-  ) => stream.Stream<
-    ListDedicatedIpPoolsResponse,
-    ListDedicatedIpPoolsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDedicatedIpPoolsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListDedicatedIpPoolsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDedicatedIpPoolsRequest,
   output: ListDedicatedIpPoolsResponse,
   errors: [BadRequestException, TooManyRequestsException],
@@ -2812,27 +2769,13 @@ export type ListDeliverabilityTestReportsError =
  * predictive inbox placement tests that are complete, you can use the `GetDeliverabilityTestReport`
  * operation to view the results.
  */
-export const listDeliverabilityTestReports: API.OperationMethod<
+export const listDeliverabilityTestReports: API.PaginatedOperationMethod<
   ListDeliverabilityTestReportsRequest,
   ListDeliverabilityTestReportsResponse,
   ListDeliverabilityTestReportsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDeliverabilityTestReportsRequest,
-  ) => stream.Stream<
-    ListDeliverabilityTestReportsResponse,
-    ListDeliverabilityTestReportsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDeliverabilityTestReportsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListDeliverabilityTestReportsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDeliverabilityTestReportsRequest,
   output: ListDeliverabilityTestReportsResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
@@ -2857,27 +2800,13 @@ export type ListDomainDeliverabilityCampaignsError =
  * enabled the Deliverability dashboard (`PutDeliverabilityDashboardOption` operation)
  * for the domain.
  */
-export const listDomainDeliverabilityCampaigns: API.OperationMethod<
+export const listDomainDeliverabilityCampaigns: API.PaginatedOperationMethod<
   ListDomainDeliverabilityCampaignsRequest,
   ListDomainDeliverabilityCampaignsResponse,
   ListDomainDeliverabilityCampaignsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDomainDeliverabilityCampaignsRequest,
-  ) => stream.Stream<
-    ListDomainDeliverabilityCampaignsResponse,
-    ListDomainDeliverabilityCampaignsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDomainDeliverabilityCampaignsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListDomainDeliverabilityCampaignsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDomainDeliverabilityCampaignsRequest,
   output: ListDomainDeliverabilityCampaignsResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
@@ -2900,27 +2829,13 @@ export type ListEmailIdentitiesError =
  * account. An identity can be either an email address or a domain. This operation returns
  * identities that are verified as well as those that aren't.
  */
-export const listEmailIdentities: API.OperationMethod<
+export const listEmailIdentities: API.PaginatedOperationMethod<
   ListEmailIdentitiesRequest,
   ListEmailIdentitiesResponse,
   ListEmailIdentitiesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEmailIdentitiesRequest,
-  ) => stream.Stream<
-    ListEmailIdentitiesResponse,
-    ListEmailIdentitiesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEmailIdentitiesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListEmailIdentitiesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEmailIdentitiesRequest,
   output: ListEmailIdentitiesResponse,
   errors: [BadRequestException, TooManyRequestsException],

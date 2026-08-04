@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -1200,27 +1199,13 @@ export type ListDictionariesError =
 /**
  * Lists the dictionaries in your account.
  */
-export const listDictionaries: API.OperationMethod<
+export const listDictionaries: API.PaginatedOperationMethod<
   ListDictionariesRequest,
   ListDictionariesResponse,
   ListDictionariesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDictionariesRequest,
-  ) => stream.Stream<
-    ListDictionariesResponse,
-    ListDictionariesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDictionariesRequest,
-  ) => stream.Stream<
-    DictionarySummary,
-    ListDictionariesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  DictionarySummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDictionariesRequest,
   output: ListDictionariesResponse,
   errors: [
@@ -1250,27 +1235,13 @@ export type ListFeedsError =
 /**
  * Displays a list of feeds that belong to this AWS account.
  */
-export const listFeeds: API.OperationMethod<
+export const listFeeds: API.PaginatedOperationMethod<
   ListFeedsRequest,
   ListFeedsResponse,
   ListFeedsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListFeedsRequest,
-  ) => stream.Stream<
-    ListFeedsResponse,
-    ListFeedsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListFeedsRequest,
-  ) => stream.Stream<
-    FeedSummary,
-    ListFeedsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  FeedSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFeedsRequest,
   output: ListFeedsResponse,
   errors: [

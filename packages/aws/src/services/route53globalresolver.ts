@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -3884,27 +3883,13 @@ export type ListAccessSourcesError =
  *
  * Route 53 Global Resolver is a global service that supports resolvers in multiple Amazon Web Services Regions but you must specify the US East (Ohio) Region to create, update, or otherwise work with Route 53 Global Resolver resources. That is, for example, specify `--region us-east-2` on Amazon Web Services CLI commands.
  */
-export const listAccessSources: API.OperationMethod<
+export const listAccessSources: API.PaginatedOperationMethod<
   ListAccessSourcesInput,
   ListAccessSourcesOutput,
   ListAccessSourcesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAccessSourcesInput,
-  ) => stream.Stream<
-    ListAccessSourcesOutput,
-    ListAccessSourcesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAccessSourcesInput,
-  ) => stream.Stream<
-    AccessSourcesItem,
-    ListAccessSourcesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  AccessSourcesItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccessSourcesInput,
   output: ListAccessSourcesOutput,
   errors: [
@@ -3936,27 +3921,13 @@ export type ListAccessTokensError =
  *
  * Route 53 Global Resolver is a global service that supports resolvers in multiple Amazon Web Services Regions but you must specify the US East (Ohio) Region to create, update, or otherwise work with Route 53 Global Resolver resources. That is, for example, specify `--region us-east-2` on Amazon Web Services CLI commands.
  */
-export const listAccessTokens: API.OperationMethod<
+export const listAccessTokens: API.PaginatedOperationMethod<
   ListAccessTokensInput,
   ListAccessTokensOutput,
   ListAccessTokensError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAccessTokensInput,
-  ) => stream.Stream<
-    ListAccessTokensOutput,
-    ListAccessTokensError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAccessTokensInput,
-  ) => stream.Stream<
-    AccessTokenItem,
-    ListAccessTokensError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  AccessTokenItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccessTokensInput,
   output: ListAccessTokensOutput,
   errors: [
@@ -3989,27 +3960,13 @@ export type ListDNSViewsError =
  *
  * Route 53 Global Resolver is a global service that supports resolvers in multiple Amazon Web Services Regions but you must specify the US East (Ohio) Region to create, update, or otherwise work with Route 53 Global Resolver resources. That is, for example, specify `--region us-east-2` on Amazon Web Services CLI commands.
  */
-export const listDNSViews: API.OperationMethod<
+export const listDNSViews: API.PaginatedOperationMethod<
   ListDNSViewsInput,
   ListDNSViewsOutput,
   ListDNSViewsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDNSViewsInput,
-  ) => stream.Stream<
-    ListDNSViewsOutput,
-    ListDNSViewsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDNSViewsInput,
-  ) => stream.Stream<
-    DNSViewSummary,
-    ListDNSViewsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  DNSViewSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDNSViewsInput,
   output: ListDNSViewsOutput,
   errors: [
@@ -4042,27 +3999,13 @@ export type ListFirewallDomainListsError =
  *
  * Route 53 Global Resolver is a global service that supports resolvers in multiple Amazon Web Services Regions but you must specify the US East (Ohio) Region to create, update, or otherwise work with Route 53 Global Resolver resources. That is, for example, specify `--region us-east-2` on Amazon Web Services CLI commands.
  */
-export const listFirewallDomainLists: API.OperationMethod<
+export const listFirewallDomainLists: API.PaginatedOperationMethod<
   ListFirewallDomainListsInput,
   ListFirewallDomainListsOutput,
   ListFirewallDomainListsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListFirewallDomainListsInput,
-  ) => stream.Stream<
-    ListFirewallDomainListsOutput,
-    ListFirewallDomainListsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListFirewallDomainListsInput,
-  ) => stream.Stream<
-    FirewallDomainListsItem,
-    ListFirewallDomainListsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  FirewallDomainListsItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFirewallDomainListsInput,
   output: ListFirewallDomainListsOutput,
   errors: [
@@ -4095,27 +4038,13 @@ export type ListFirewallDomainsError =
  *
  * Route 53 Global Resolver is a global service that supports resolvers in multiple Amazon Web Services Regions but you must specify the US East (Ohio) Region to create, update, or otherwise work with Route 53 Global Resolver resources. That is, for example, specify `--region us-east-2` on Amazon Web Services CLI commands.
  */
-export const listFirewallDomains: API.OperationMethod<
+export const listFirewallDomains: API.PaginatedOperationMethod<
   ListFirewallDomainsInput,
   ListFirewallDomainsOutput,
   ListFirewallDomainsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListFirewallDomainsInput,
-  ) => stream.Stream<
-    ListFirewallDomainsOutput,
-    ListFirewallDomainsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListFirewallDomainsInput,
-  ) => stream.Stream<
-    Domain,
-    ListFirewallDomainsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  Domain
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFirewallDomainsInput,
   output: ListFirewallDomainsOutput,
   errors: [
@@ -4148,27 +4077,13 @@ export type ListFirewallRulesError =
  *
  * Route 53 Global Resolver is a global service that supports resolvers in multiple Amazon Web Services Regions but you must specify the US East (Ohio) Region to create, update, or otherwise work with Route 53 Global Resolver resources. That is, for example, specify `--region us-east-2` on Amazon Web Services CLI commands.
  */
-export const listFirewallRules: API.OperationMethod<
+export const listFirewallRules: API.PaginatedOperationMethod<
   ListFirewallRulesInput,
   ListFirewallRulesOutput,
   ListFirewallRulesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListFirewallRulesInput,
-  ) => stream.Stream<
-    ListFirewallRulesOutput,
-    ListFirewallRulesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListFirewallRulesInput,
-  ) => stream.Stream<
-    FirewallRulesItem,
-    ListFirewallRulesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  FirewallRulesItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFirewallRulesInput,
   output: ListFirewallRulesOutput,
   errors: [
@@ -4200,27 +4115,13 @@ export type ListGlobalResolversError =
  *
  * Route 53 Global Resolver is a global service that supports resolvers in multiple Amazon Web Services Regions but you must specify the US East (Ohio) Region to create, update, or otherwise work with Route 53 Global Resolver resources. That is, for example, specify `--region us-east-2` on Amazon Web Services CLI commands.
  */
-export const listGlobalResolvers: API.OperationMethod<
+export const listGlobalResolvers: API.PaginatedOperationMethod<
   ListGlobalResolversInput,
   ListGlobalResolversOutput,
   ListGlobalResolversError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListGlobalResolversInput,
-  ) => stream.Stream<
-    ListGlobalResolversOutput,
-    ListGlobalResolversError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListGlobalResolversInput,
-  ) => stream.Stream<
-    GlobalResolversItem,
-    ListGlobalResolversError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  GlobalResolversItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListGlobalResolversInput,
   output: ListGlobalResolversOutput,
   errors: [
@@ -4252,27 +4153,13 @@ export type ListHostedZoneAssociationsError =
  *
  * Route 53 Global Resolver is a global service that supports resolvers in multiple Amazon Web Services Regions but you must specify the US East (Ohio) Region to create, update, or otherwise work with Route 53 Global Resolver resources. That is, for example, specify `--region us-east-2` on Amazon Web Services CLI commands.
  */
-export const listHostedZoneAssociations: API.OperationMethod<
+export const listHostedZoneAssociations: API.PaginatedOperationMethod<
   ListHostedZoneAssociationsInput,
   ListHostedZoneAssociationsOutput,
   ListHostedZoneAssociationsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListHostedZoneAssociationsInput,
-  ) => stream.Stream<
-    ListHostedZoneAssociationsOutput,
-    ListHostedZoneAssociationsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListHostedZoneAssociationsInput,
-  ) => stream.Stream<
-    HostedZoneAssociationSummary,
-    ListHostedZoneAssociationsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  HostedZoneAssociationSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListHostedZoneAssociationsInput,
   output: ListHostedZoneAssociationsOutput,
   errors: [
@@ -4304,27 +4191,13 @@ export type ListManagedFirewallDomainListsError =
  *
  * Route 53 Global Resolver is a global service that supports resolvers in multiple Amazon Web Services Regions but you must specify the US East (Ohio) Region to create, update, or otherwise work with Route 53 Global Resolver resources. That is, for example, specify `--region us-east-2` on Amazon Web Services CLI commands.
  */
-export const listManagedFirewallDomainLists: API.OperationMethod<
+export const listManagedFirewallDomainLists: API.PaginatedOperationMethod<
   ListManagedFirewallDomainListsInput,
   ListManagedFirewallDomainListsOutput,
   ListManagedFirewallDomainListsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListManagedFirewallDomainListsInput,
-  ) => stream.Stream<
-    ListManagedFirewallDomainListsOutput,
-    ListManagedFirewallDomainListsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListManagedFirewallDomainListsInput,
-  ) => stream.Stream<
-    ManagedFirewallDomainListsItem,
-    ListManagedFirewallDomainListsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  ManagedFirewallDomainListsItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListManagedFirewallDomainListsInput,
   output: ListManagedFirewallDomainListsOutput,
   errors: [

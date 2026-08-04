@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -1674,27 +1673,13 @@ export type ListApplicationsError =
 /**
  * Retrieves a list of all of your applications. Results are paginated.
  */
-export const listApplications: API.OperationMethod<
+export const listApplications: API.PaginatedOperationMethod<
   ListApplicationsRequest,
   ListApplicationsResponse,
   ListApplicationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListApplicationsRequest,
-  ) => stream.Stream<
-    ListApplicationsResponse,
-    ListApplicationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListApplicationsRequest,
-  ) => stream.Stream<
-    ApplicationSummary,
-    ListApplicationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ApplicationSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListApplicationsRequest,
   output: ListApplicationsResponse,
   errors: [InternalServerException, ValidationException],
@@ -1717,27 +1702,13 @@ export type ListAssociatedAttributeGroupsError =
 /**
  * Lists all attribute groups that are associated with specified application. Results are paginated.
  */
-export const listAssociatedAttributeGroups: API.OperationMethod<
+export const listAssociatedAttributeGroups: API.PaginatedOperationMethod<
   ListAssociatedAttributeGroupsRequest,
   ListAssociatedAttributeGroupsResponse,
   ListAssociatedAttributeGroupsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAssociatedAttributeGroupsRequest,
-  ) => stream.Stream<
-    ListAssociatedAttributeGroupsResponse,
-    ListAssociatedAttributeGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAssociatedAttributeGroupsRequest,
-  ) => stream.Stream<
-    AttributeGroupId,
-    ListAssociatedAttributeGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AttributeGroupId
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAssociatedAttributeGroupsRequest,
   output: ListAssociatedAttributeGroupsResponse,
   errors: [
@@ -1779,27 +1750,13 @@ export type ListAssociatedResourcesError =
  * with it
  * using this API.
  */
-export const listAssociatedResources: API.OperationMethod<
+export const listAssociatedResources: API.PaginatedOperationMethod<
   ListAssociatedResourcesRequest,
   ListAssociatedResourcesResponse,
   ListAssociatedResourcesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAssociatedResourcesRequest,
-  ) => stream.Stream<
-    ListAssociatedResourcesResponse,
-    ListAssociatedResourcesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAssociatedResourcesRequest,
-  ) => stream.Stream<
-    ResourceInfo,
-    ListAssociatedResourcesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ResourceInfo
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAssociatedResourcesRequest,
   output: ListAssociatedResourcesResponse,
   errors: [
@@ -1825,27 +1782,13 @@ export type ListAttributeGroupsError =
 /**
  * Lists all attribute groups which you have access to. Results are paginated.
  */
-export const listAttributeGroups: API.OperationMethod<
+export const listAttributeGroups: API.PaginatedOperationMethod<
   ListAttributeGroupsRequest,
   ListAttributeGroupsResponse,
   ListAttributeGroupsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAttributeGroupsRequest,
-  ) => stream.Stream<
-    ListAttributeGroupsResponse,
-    ListAttributeGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAttributeGroupsRequest,
-  ) => stream.Stream<
-    AttributeGroupSummary,
-    ListAttributeGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AttributeGroupSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAttributeGroupsRequest,
   output: ListAttributeGroupsResponse,
   errors: [InternalServerException, ValidationException],
@@ -1868,27 +1811,13 @@ export type ListAttributeGroupsForApplicationError =
 /**
  * Lists the details of all attribute groups associated with a specific application. The results display in pages.
  */
-export const listAttributeGroupsForApplication: API.OperationMethod<
+export const listAttributeGroupsForApplication: API.PaginatedOperationMethod<
   ListAttributeGroupsForApplicationRequest,
   ListAttributeGroupsForApplicationResponse,
   ListAttributeGroupsForApplicationError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAttributeGroupsForApplicationRequest,
-  ) => stream.Stream<
-    ListAttributeGroupsForApplicationResponse,
-    ListAttributeGroupsForApplicationError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAttributeGroupsForApplicationRequest,
-  ) => stream.Stream<
-    AttributeGroupDetails,
-    ListAttributeGroupsForApplicationError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AttributeGroupDetails
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAttributeGroupsForApplicationRequest,
   output: ListAttributeGroupsForApplicationResponse,
   errors: [

@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -474,27 +473,13 @@ export type ListReportDefinitionsError =
  *
  * The maximum number of reports is one.
  */
-export const listReportDefinitions: API.OperationMethod<
+export const listReportDefinitions: API.PaginatedOperationMethod<
   ListReportDefinitionsRequest,
   ListReportDefinitionsResult,
   ListReportDefinitionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListReportDefinitionsRequest,
-  ) => stream.Stream<
-    ListReportDefinitionsResult,
-    ListReportDefinitionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListReportDefinitionsRequest,
-  ) => stream.Stream<
-    ReportDefinition,
-    ListReportDefinitionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ReportDefinition
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListReportDefinitionsRequest,
   output: ListReportDefinitionsResult,
   errors: [

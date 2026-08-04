@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -1044,27 +1043,13 @@ export type GetImagesError =
  * Retrieves a list of images corresponding to each timestamp for a given time range,
  * sampling interval, and image format configuration.
  */
-export const getImages: API.OperationMethod<
+export const getImages: API.PaginatedOperationMethod<
   GetImagesInput,
   GetImagesOutput,
   GetImagesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetImagesInput,
-  ) => stream.Stream<
-    GetImagesOutput,
-    GetImagesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetImagesInput,
-  ) => stream.Stream<
-    Image,
-    GetImagesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Image
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetImagesInput,
   output: GetImagesOutput,
   errors: [
@@ -1178,27 +1163,13 @@ export type ListFragmentsError =
  * For more information, see the **Errors** section at
  * the bottom of this topic, as well as Common Errors.
  */
-export const listFragments: API.OperationMethod<
+export const listFragments: API.PaginatedOperationMethod<
   ListFragmentsInput,
   ListFragmentsOutput,
   ListFragmentsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListFragmentsInput,
-  ) => stream.Stream<
-    ListFragmentsOutput,
-    ListFragmentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListFragmentsInput,
-  ) => stream.Stream<
-    Fragment,
-    ListFragmentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Fragment
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFragmentsInput,
   output: ListFragmentsOutput,
   errors: [

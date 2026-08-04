@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -6247,27 +6246,13 @@ export type DescribeApplicationAssociationsError =
 /**
  * Describes the associations between the application and the specified associated resources.
  */
-export const describeApplicationAssociations: API.OperationMethod<
+export const describeApplicationAssociations: API.PaginatedOperationMethod<
   DescribeApplicationAssociationsRequest,
   DescribeApplicationAssociationsResult,
   DescribeApplicationAssociationsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeApplicationAssociationsRequest,
-  ) => stream.Stream<
-    DescribeApplicationAssociationsResult,
-    DescribeApplicationAssociationsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeApplicationAssociationsRequest,
-  ) => stream.Stream<
-    unknown,
-    DescribeApplicationAssociationsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeApplicationAssociationsRequest,
   output: DescribeApplicationAssociationsResult,
   errors: [
@@ -6295,27 +6280,13 @@ export type DescribeApplicationsError =
 /**
  * Describes the specified applications by filtering based on their compute types, license availability, operating systems, and owners.
  */
-export const describeApplications: API.OperationMethod<
+export const describeApplications: API.PaginatedOperationMethod<
   DescribeApplicationsRequest,
   DescribeApplicationsResult,
   DescribeApplicationsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeApplicationsRequest,
-  ) => stream.Stream<
-    DescribeApplicationsResult,
-    DescribeApplicationsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeApplicationsRequest,
-  ) => stream.Stream<
-    unknown,
-    DescribeApplicationsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeApplicationsRequest,
   output: DescribeApplicationsResult,
   errors: [
@@ -6629,27 +6600,13 @@ export type DescribeWorkspaceBundlesError =
  *
  * You can filter the results using either bundle ID or owner, but not both.
  */
-export const describeWorkspaceBundles: API.OperationMethod<
+export const describeWorkspaceBundles: API.PaginatedOperationMethod<
   DescribeWorkspaceBundlesRequest,
   DescribeWorkspaceBundlesResult,
   DescribeWorkspaceBundlesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeWorkspaceBundlesRequest,
-  ) => stream.Stream<
-    DescribeWorkspaceBundlesResult,
-    DescribeWorkspaceBundlesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeWorkspaceBundlesRequest,
-  ) => stream.Stream<
-    WorkspaceBundle,
-    DescribeWorkspaceBundlesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  WorkspaceBundle
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeWorkspaceBundlesRequest,
   output: DescribeWorkspaceBundlesResult,
   errors: [InvalidParameterValuesException],
@@ -6669,27 +6626,13 @@ export type DescribeWorkspaceDirectoriesError =
 /**
  * Describes the available directories that are registered with Amazon WorkSpaces.
  */
-export const describeWorkspaceDirectories: API.OperationMethod<
+export const describeWorkspaceDirectories: API.PaginatedOperationMethod<
   DescribeWorkspaceDirectoriesRequest,
   DescribeWorkspaceDirectoriesResult,
   DescribeWorkspaceDirectoriesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeWorkspaceDirectoriesRequest,
-  ) => stream.Stream<
-    DescribeWorkspaceDirectoriesResult,
-    DescribeWorkspaceDirectoriesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeWorkspaceDirectoriesRequest,
-  ) => stream.Stream<
-    WorkspaceDirectory,
-    DescribeWorkspaceDirectoriesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  WorkspaceDirectory
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeWorkspaceDirectoriesRequest,
   output: DescribeWorkspaceDirectoriesResult,
   errors: [InvalidParameterValuesException],
@@ -6758,27 +6701,13 @@ export type DescribeWorkspacesError =
  * You can filter the results by using the bundle identifier, directory identifier, or
  * owner, but you can specify only one filter at a time.
  */
-export const describeWorkspaces: API.OperationMethod<
+export const describeWorkspaces: API.PaginatedOperationMethod<
   DescribeWorkspacesRequest,
   DescribeWorkspacesResult,
   DescribeWorkspacesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeWorkspacesRequest,
-  ) => stream.Stream<
-    DescribeWorkspacesResult,
-    DescribeWorkspacesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeWorkspacesRequest,
-  ) => stream.Stream<
-    Workspace,
-    DescribeWorkspacesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  Workspace
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeWorkspacesRequest,
   output: DescribeWorkspacesResult,
   errors: [InvalidParameterValuesException, ResourceUnavailableException],
@@ -7144,27 +7073,13 @@ export type ListAccountLinksError =
 /**
  * Lists all account links.
  */
-export const listAccountLinks: API.OperationMethod<
+export const listAccountLinks: API.PaginatedOperationMethod<
   ListAccountLinksRequest,
   ListAccountLinksResult,
   ListAccountLinksError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAccountLinksRequest,
-  ) => stream.Stream<
-    ListAccountLinksResult,
-    ListAccountLinksError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAccountLinksRequest,
-  ) => stream.Stream<
-    AccountLink,
-    ListAccountLinksError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  AccountLink
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountLinksRequest,
   output: ListAccountLinksResult,
   errors: [AccessDeniedException, InternalServerException, ValidationException],

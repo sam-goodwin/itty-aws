@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -1165,27 +1164,13 @@ export type ListClustersError = ResourceNotFoundException | CommonErrors;
 /**
  * Retrieves information about a list of clusters.
  */
-export const listClusters: API.OperationMethod<
+export const listClusters: API.PaginatedOperationMethod<
   ListClustersInput,
   ListClustersOutput,
   ListClustersError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListClustersInput,
-  ) => stream.Stream<
-    ListClustersOutput,
-    ListClustersError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListClustersInput,
-  ) => stream.Stream<
-    ClusterSummary,
-    ListClustersError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  ClusterSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListClustersInput,
   output: ListClustersOutput,
   errors: [ResourceNotFoundException],
@@ -1204,27 +1189,13 @@ export type ListStreamsError = ResourceNotFoundException | CommonErrors;
 /**
  * Retrieves information about a list of streams for a cluster.
  */
-export const listStreams: API.OperationMethod<
+export const listStreams: API.PaginatedOperationMethod<
   ListStreamsInput,
   ListStreamsOutput,
   ListStreamsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListStreamsInput,
-  ) => stream.Stream<
-    ListStreamsOutput,
-    ListStreamsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListStreamsInput,
-  ) => stream.Stream<
-    StreamSummary,
-    ListStreamsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  StreamSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListStreamsInput,
   output: ListStreamsOutput,
   errors: [ResourceNotFoundException],

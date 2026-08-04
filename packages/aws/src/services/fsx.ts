@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -6933,27 +6932,13 @@ export type DescribeBackupsError =
  * `DescribeBackups` call and the order of the backups returned
  * across the responses of a multi-call iteration is unspecified.
  */
-export const describeBackups: API.OperationMethod<
+export const describeBackups: API.PaginatedOperationMethod<
   DescribeBackupsRequest,
   DescribeBackupsResponse,
   DescribeBackupsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeBackupsRequest,
-  ) => stream.Stream<
-    DescribeBackupsResponse,
-    DescribeBackupsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeBackupsRequest,
-  ) => stream.Stream<
-    unknown,
-    DescribeBackupsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeBackupsRequest,
   output: DescribeBackupsResponse,
   errors: [
@@ -7003,27 +6988,13 @@ export type DescribeDataRepositoryAssociationsError =
  * request with the `NextToken` request parameter set to the value of
  * `NextToken` from the last response.
  */
-export const describeDataRepositoryAssociations: API.OperationMethod<
+export const describeDataRepositoryAssociations: API.PaginatedOperationMethod<
   DescribeDataRepositoryAssociationsRequest,
   DescribeDataRepositoryAssociationsResponse,
   DescribeDataRepositoryAssociationsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeDataRepositoryAssociationsRequest,
-  ) => stream.Stream<
-    DescribeDataRepositoryAssociationsResponse,
-    DescribeDataRepositoryAssociationsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeDataRepositoryAssociationsRequest,
-  ) => stream.Stream<
-    unknown,
-    DescribeDataRepositoryAssociationsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeDataRepositoryAssociationsRequest,
   output: DescribeDataRepositoryAssociationsResponse,
   errors: [
@@ -7062,27 +7033,13 @@ export type DescribeDataRepositoryTasksError =
  * request with the `NextToken` request parameter set to the value of
  * `NextToken` from the last response.
  */
-export const describeDataRepositoryTasks: API.OperationMethod<
+export const describeDataRepositoryTasks: API.PaginatedOperationMethod<
   DescribeDataRepositoryTasksRequest,
   DescribeDataRepositoryTasksResponse,
   DescribeDataRepositoryTasksError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeDataRepositoryTasksRequest,
-  ) => stream.Stream<
-    DescribeDataRepositoryTasksResponse,
-    DescribeDataRepositoryTasksError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeDataRepositoryTasksRequest,
-  ) => stream.Stream<
-    unknown,
-    DescribeDataRepositoryTasksError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeDataRepositoryTasksRequest,
   output: DescribeDataRepositoryTasksResponse,
   errors: [
@@ -7135,27 +7092,13 @@ export type DescribeFileCachesError =
  * `DescribeFileCaches` call and the order of caches returned
  * across the responses of a multicall iteration is unspecified.
  */
-export const describeFileCaches: API.OperationMethod<
+export const describeFileCaches: API.PaginatedOperationMethod<
   DescribeFileCachesRequest,
   DescribeFileCachesResponse,
   DescribeFileCachesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeFileCachesRequest,
-  ) => stream.Stream<
-    DescribeFileCachesResponse,
-    DescribeFileCachesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeFileCachesRequest,
-  ) => stream.Stream<
-    unknown,
-    DescribeFileCachesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeFileCachesRequest,
   output: DescribeFileCachesResponse,
   errors: [BadRequest, FileCacheNotFound, InternalServerError],
@@ -7179,27 +7122,13 @@ export type DescribeFileSystemAliasesError =
  * all DNS aliases that have been associated with and disassociated from the file system is available in the list of AdministrativeAction
  * provided in the DescribeFileSystems operation response.
  */
-export const describeFileSystemAliases: API.OperationMethod<
+export const describeFileSystemAliases: API.PaginatedOperationMethod<
   DescribeFileSystemAliasesRequest,
   DescribeFileSystemAliasesResponse,
   DescribeFileSystemAliasesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeFileSystemAliasesRequest,
-  ) => stream.Stream<
-    DescribeFileSystemAliasesResponse,
-    DescribeFileSystemAliasesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeFileSystemAliasesRequest,
-  ) => stream.Stream<
-    unknown,
-    DescribeFileSystemAliasesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeFileSystemAliasesRequest,
   output: DescribeFileSystemAliasesResponse,
   errors: [BadRequest, FileSystemNotFound, InternalServerError],
@@ -7247,27 +7176,13 @@ export type DescribeFileSystemsError =
  * `DescribeFileSystems` call and the order of file systems returned
  * across the responses of a multicall iteration is unspecified.
  */
-export const describeFileSystems: API.OperationMethod<
+export const describeFileSystems: API.PaginatedOperationMethod<
   DescribeFileSystemsRequest,
   DescribeFileSystemsResponse,
   DescribeFileSystemsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeFileSystemsRequest,
-  ) => stream.Stream<
-    DescribeFileSystemsResponse,
-    DescribeFileSystemsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeFileSystemsRequest,
-  ) => stream.Stream<
-    unknown,
-    DescribeFileSystemsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeFileSystemsRequest,
   output: DescribeFileSystemsResponse,
   errors: [BadRequest, FileSystemNotFound, InternalServerError],
@@ -7294,27 +7209,13 @@ export type DescribeS3AccessPointAttachmentsError =
  *
  * - `fsx:DescribeS3AccessPointAttachments`
  */
-export const describeS3AccessPointAttachments: API.OperationMethod<
+export const describeS3AccessPointAttachments: API.PaginatedOperationMethod<
   DescribeS3AccessPointAttachmentsRequest,
   DescribeS3AccessPointAttachmentsResponse,
   DescribeS3AccessPointAttachmentsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeS3AccessPointAttachmentsRequest,
-  ) => stream.Stream<
-    DescribeS3AccessPointAttachmentsResponse,
-    DescribeS3AccessPointAttachmentsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeS3AccessPointAttachmentsRequest,
-  ) => stream.Stream<
-    S3AccessPointAttachment,
-    DescribeS3AccessPointAttachmentsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  S3AccessPointAttachment
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeS3AccessPointAttachmentsRequest,
   output: DescribeS3AccessPointAttachmentsResponse,
   errors: [
@@ -7389,27 +7290,13 @@ export type DescribeSnapshotsError =
  * `DescribeSnapshots` call and the order of backups returned across
  * the responses of a multi-call iteration is unspecified.
  */
-export const describeSnapshots: API.OperationMethod<
+export const describeSnapshots: API.PaginatedOperationMethod<
   DescribeSnapshotsRequest,
   DescribeSnapshotsResponse,
   DescribeSnapshotsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeSnapshotsRequest,
-  ) => stream.Stream<
-    DescribeSnapshotsResponse,
-    DescribeSnapshotsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeSnapshotsRequest,
-  ) => stream.Stream<
-    Snapshot,
-    DescribeSnapshotsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  Snapshot
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeSnapshotsRequest,
   output: DescribeSnapshotsResponse,
   errors: [BadRequest, InternalServerError, SnapshotNotFound],
@@ -7432,27 +7319,13 @@ export type DescribeStorageVirtualMachinesError =
 /**
  * Describes one or more Amazon FSx for NetApp ONTAP storage virtual machines (SVMs).
  */
-export const describeStorageVirtualMachines: API.OperationMethod<
+export const describeStorageVirtualMachines: API.PaginatedOperationMethod<
   DescribeStorageVirtualMachinesRequest,
   DescribeStorageVirtualMachinesResponse,
   DescribeStorageVirtualMachinesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeStorageVirtualMachinesRequest,
-  ) => stream.Stream<
-    DescribeStorageVirtualMachinesResponse,
-    DescribeStorageVirtualMachinesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeStorageVirtualMachinesRequest,
-  ) => stream.Stream<
-    StorageVirtualMachine,
-    DescribeStorageVirtualMachinesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  StorageVirtualMachine
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeStorageVirtualMachinesRequest,
   output: DescribeStorageVirtualMachinesResponse,
   errors: [BadRequest, InternalServerError, StorageVirtualMachineNotFound],
@@ -7476,27 +7349,13 @@ export type DescribeVolumesError =
  * Describes one or more Amazon FSx for NetApp ONTAP or Amazon FSx for
  * OpenZFS volumes.
  */
-export const describeVolumes: API.OperationMethod<
+export const describeVolumes: API.PaginatedOperationMethod<
   DescribeVolumesRequest,
   DescribeVolumesResponse,
   DescribeVolumesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeVolumesRequest,
-  ) => stream.Stream<
-    DescribeVolumesResponse,
-    DescribeVolumesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeVolumesRequest,
-  ) => stream.Stream<
-    Volume,
-    DescribeVolumesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  Volume
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeVolumesRequest,
   output: DescribeVolumesResponse,
   errors: [BadRequest, InternalServerError, VolumeNotFound],
@@ -7610,27 +7469,13 @@ export type ListTagsForResourceError =
  * `ListTagsForResource` call and the order of tags returned across
  * the responses of a multi-call iteration is unspecified.
  */
-export const listTagsForResource: API.OperationMethod<
+export const listTagsForResource: API.PaginatedOperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTagsForResourceRequest,
-  ) => stream.Stream<
-    ListTagsForResourceResponse,
-    ListTagsForResourceError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTagsForResourceRequest,
-  ) => stream.Stream<
-    unknown,
-    ListTagsForResourceError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [

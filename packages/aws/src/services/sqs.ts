@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -1902,27 +1901,13 @@ export type ListDeadLetterSourceQueuesError =
  * For more information about using dead-letter queues, see Using Amazon SQS Dead-Letter Queues in the Amazon SQS Developer
  * Guide.
  */
-export const listDeadLetterSourceQueues: API.OperationMethod<
+export const listDeadLetterSourceQueues: API.PaginatedOperationMethod<
   ListDeadLetterSourceQueuesRequest,
   ListDeadLetterSourceQueuesResult,
   ListDeadLetterSourceQueuesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDeadLetterSourceQueuesRequest,
-  ) => stream.Stream<
-    ListDeadLetterSourceQueuesResult,
-    ListDeadLetterSourceQueuesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDeadLetterSourceQueuesRequest,
-  ) => stream.Stream<
-    string,
-    ListDeadLetterSourceQueuesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  string
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDeadLetterSourceQueuesRequest,
   output: ListDeadLetterSourceQueuesResult,
   errors: [
@@ -2010,27 +1995,13 @@ export type ListQueuesError =
  * see Grant
  * cross-account permissions to a role and a username in the *Amazon SQS Developer Guide*.
  */
-export const listQueues: API.OperationMethod<
+export const listQueues: API.PaginatedOperationMethod<
   ListQueuesRequest,
   ListQueuesResult,
   ListQueuesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListQueuesRequest,
-  ) => stream.Stream<
-    ListQueuesResult,
-    ListQueuesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListQueuesRequest,
-  ) => stream.Stream<
-    string,
-    ListQueuesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  string
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListQueuesRequest,
   output: ListQueuesResult,
   errors: [

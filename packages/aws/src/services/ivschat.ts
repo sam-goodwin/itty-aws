@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -1295,27 +1294,13 @@ export type ListLoggingConfigurationsError =
  * Gets summary information about all your logging configurations in the AWS region where
  * the API request is processed.
  */
-export const listLoggingConfigurations: API.OperationMethod<
+export const listLoggingConfigurations: API.PaginatedOperationMethod<
   ListLoggingConfigurationsRequest,
   ListLoggingConfigurationsResponse,
   ListLoggingConfigurationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListLoggingConfigurationsRequest,
-  ) => stream.Stream<
-    ListLoggingConfigurationsResponse,
-    ListLoggingConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListLoggingConfigurationsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListLoggingConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLoggingConfigurationsRequest,
   output: ListLoggingConfigurationsResponse,
   errors: [AccessDeniedException, ValidationException, ThrottlingException],
@@ -1339,27 +1324,13 @@ export type ListRoomsError =
  * Gets summary information about all your rooms in the AWS region where the API request is
  * processed. Results are sorted in descending order of `updateTime`.
  */
-export const listRooms: API.OperationMethod<
+export const listRooms: API.PaginatedOperationMethod<
   ListRoomsRequest,
   ListRoomsResponse,
   ListRoomsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRoomsRequest,
-  ) => stream.Stream<
-    ListRoomsResponse,
-    ListRoomsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRoomsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListRoomsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRoomsRequest,
   output: ListRoomsResponse,
   errors: [

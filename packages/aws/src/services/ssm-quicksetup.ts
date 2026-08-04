@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -945,27 +944,13 @@ export type ListConfigurationManagersError =
 /**
  * Returns Quick Setup configuration managers.
  */
-export const listConfigurationManagers: API.OperationMethod<
+export const listConfigurationManagers: API.PaginatedOperationMethod<
   ListConfigurationManagersInput,
   ListConfigurationManagersOutput,
   ListConfigurationManagersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListConfigurationManagersInput,
-  ) => stream.Stream<
-    ListConfigurationManagersOutput,
-    ListConfigurationManagersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListConfigurationManagersInput,
-  ) => stream.Stream<
-    ConfigurationManagerSummary,
-    ListConfigurationManagersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ConfigurationManagerSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListConfigurationManagersInput,
   output: ListConfigurationManagersOutput,
   errors: [
@@ -996,27 +981,13 @@ export type ListConfigurationsError =
 /**
  * Returns configurations deployed by Quick Setup in the requesting Amazon Web Services account and Amazon Web Services Region.
  */
-export const listConfigurations: API.OperationMethod<
+export const listConfigurations: API.PaginatedOperationMethod<
   ListConfigurationsInput,
   ListConfigurationsOutput,
   ListConfigurationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListConfigurationsInput,
-  ) => stream.Stream<
-    ListConfigurationsOutput,
-    ListConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListConfigurationsInput,
-  ) => stream.Stream<
-    ConfigurationSummary,
-    ListConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ConfigurationSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListConfigurationsInput,
   output: ListConfigurationsOutput,
   errors: [

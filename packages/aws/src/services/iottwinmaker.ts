@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -3555,27 +3554,13 @@ export type ExecuteQueryError =
  * The ExecuteQuery action only works with Amazon Web Services Java SDK2.
  * ExecuteQuery will not work with any Amazon Web Services Java SDK version < 2.x.
  */
-export const executeQuery: API.OperationMethod<
+export const executeQuery: API.PaginatedOperationMethod<
   ExecuteQueryRequest,
   ExecuteQueryResponse,
   ExecuteQueryError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ExecuteQueryRequest,
-  ) => stream.Stream<
-    ExecuteQueryResponse,
-    ExecuteQueryError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ExecuteQueryRequest,
-  ) => stream.Stream<
-    unknown,
-    ExecuteQueryError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ExecuteQueryRequest,
   output: ExecuteQueryResponse,
   errors: [
@@ -3734,27 +3719,13 @@ export type GetPropertyValueError =
  * You must specify a value for either `componentName`,
  * `componentTypeId`, `entityId`, or `workspaceId`.
  */
-export const getPropertyValue: API.OperationMethod<
+export const getPropertyValue: API.PaginatedOperationMethod<
   GetPropertyValueRequest,
   GetPropertyValueResponse,
   GetPropertyValueError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetPropertyValueRequest,
-  ) => stream.Stream<
-    GetPropertyValueResponse,
-    GetPropertyValueError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetPropertyValueRequest,
-  ) => stream.Stream<
-    unknown,
-    GetPropertyValueError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetPropertyValueRequest,
   output: GetPropertyValueResponse,
   errors: [
@@ -3794,27 +3765,13 @@ export type GetPropertyValueHistoryError =
  * specify values for `componentName` and `entityId`. For cross-entity
  * quries, specify a value for `componentTypeId`.
  */
-export const getPropertyValueHistory: API.OperationMethod<
+export const getPropertyValueHistory: API.PaginatedOperationMethod<
   GetPropertyValueHistoryRequest,
   GetPropertyValueHistoryResponse,
   GetPropertyValueHistoryError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetPropertyValueHistoryRequest,
-  ) => stream.Stream<
-    GetPropertyValueHistoryResponse,
-    GetPropertyValueHistoryError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetPropertyValueHistoryRequest,
-  ) => stream.Stream<
-    unknown,
-    GetPropertyValueHistoryError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetPropertyValueHistoryRequest,
   output: GetPropertyValueHistoryResponse,
   errors: [
@@ -3942,27 +3899,13 @@ export type ListComponentsError =
 /**
  * This API lists the components of an entity.
  */
-export const listComponents: API.OperationMethod<
+export const listComponents: API.PaginatedOperationMethod<
   ListComponentsRequest,
   ListComponentsResponse,
   ListComponentsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListComponentsRequest,
-  ) => stream.Stream<
-    ListComponentsResponse,
-    ListComponentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListComponentsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListComponentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListComponentsRequest,
   output: ListComponentsResponse,
   errors: [
@@ -3992,27 +3935,13 @@ export type ListComponentTypesError =
 /**
  * Lists all component types in a workspace.
  */
-export const listComponentTypes: API.OperationMethod<
+export const listComponentTypes: API.PaginatedOperationMethod<
   ListComponentTypesRequest,
   ListComponentTypesResponse,
   ListComponentTypesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListComponentTypesRequest,
-  ) => stream.Stream<
-    ListComponentTypesResponse,
-    ListComponentTypesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListComponentTypesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListComponentTypesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListComponentTypesRequest,
   output: ListComponentTypesResponse,
   errors: [
@@ -4041,27 +3970,13 @@ export type ListEntitiesError =
 /**
  * Lists all entities in a workspace.
  */
-export const listEntities: API.OperationMethod<
+export const listEntities: API.PaginatedOperationMethod<
   ListEntitiesRequest,
   ListEntitiesResponse,
   ListEntitiesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEntitiesRequest,
-  ) => stream.Stream<
-    ListEntitiesResponse,
-    ListEntitiesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEntitiesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListEntitiesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEntitiesRequest,
   output: ListEntitiesResponse,
   errors: [
@@ -4090,27 +4005,13 @@ export type ListMetadataTransferJobsError =
 /**
  * Lists the metadata transfer jobs.
  */
-export const listMetadataTransferJobs: API.OperationMethod<
+export const listMetadataTransferJobs: API.PaginatedOperationMethod<
   ListMetadataTransferJobsRequest,
   ListMetadataTransferJobsResponse,
   ListMetadataTransferJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListMetadataTransferJobsRequest,
-  ) => stream.Stream<
-    ListMetadataTransferJobsResponse,
-    ListMetadataTransferJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListMetadataTransferJobsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListMetadataTransferJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMetadataTransferJobsRequest,
   output: ListMetadataTransferJobsResponse,
   errors: [
@@ -4140,27 +4041,13 @@ export type ListPropertiesError =
 /**
  * This API lists the properties of a component.
  */
-export const listProperties: API.OperationMethod<
+export const listProperties: API.PaginatedOperationMethod<
   ListPropertiesRequest,
   ListPropertiesResponse,
   ListPropertiesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPropertiesRequest,
-  ) => stream.Stream<
-    ListPropertiesResponse,
-    ListPropertiesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPropertiesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListPropertiesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPropertiesRequest,
   output: ListPropertiesResponse,
   errors: [
@@ -4190,27 +4077,13 @@ export type ListScenesError =
 /**
  * Lists all scenes in a workspace.
  */
-export const listScenes: API.OperationMethod<
+export const listScenes: API.PaginatedOperationMethod<
   ListScenesRequest,
   ListScenesResponse,
   ListScenesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListScenesRequest,
-  ) => stream.Stream<
-    ListScenesResponse,
-    ListScenesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListScenesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListScenesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListScenesRequest,
   output: ListScenesResponse,
   errors: [
@@ -4240,27 +4113,13 @@ export type ListSyncJobsError =
 /**
  * List all SyncJobs.
  */
-export const listSyncJobs: API.OperationMethod<
+export const listSyncJobs: API.PaginatedOperationMethod<
   ListSyncJobsRequest,
   ListSyncJobsResponse,
   ListSyncJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSyncJobsRequest,
-  ) => stream.Stream<
-    ListSyncJobsResponse,
-    ListSyncJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSyncJobsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListSyncJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSyncJobsRequest,
   output: ListSyncJobsResponse,
   errors: [
@@ -4291,27 +4150,13 @@ export type ListSyncResourcesError =
 /**
  * Lists the sync resources.
  */
-export const listSyncResources: API.OperationMethod<
+export const listSyncResources: API.PaginatedOperationMethod<
   ListSyncResourcesRequest,
   ListSyncResourcesResponse,
   ListSyncResourcesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSyncResourcesRequest,
-  ) => stream.Stream<
-    ListSyncResourcesResponse,
-    ListSyncResourcesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSyncResourcesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListSyncResourcesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSyncResourcesRequest,
   output: ListSyncResourcesResponse,
   errors: [
@@ -4363,27 +4208,13 @@ export type ListWorkspacesError =
 /**
  * Retrieves information about workspaces in the current account.
  */
-export const listWorkspaces: API.OperationMethod<
+export const listWorkspaces: API.PaginatedOperationMethod<
   ListWorkspacesRequest,
   ListWorkspacesResponse,
   ListWorkspacesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListWorkspacesRequest,
-  ) => stream.Stream<
-    ListWorkspacesResponse,
-    ListWorkspacesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListWorkspacesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListWorkspacesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListWorkspacesRequest,
   output: ListWorkspacesResponse,
   errors: [

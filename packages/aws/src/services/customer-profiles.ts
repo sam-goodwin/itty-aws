@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -9526,27 +9525,13 @@ export type GetSimilarProfilesError =
  * matching that you want for finding similar profiles using either
  * `RULE_BASED_MATCHING` or `ML_BASED_MATCHING`.
  */
-export const getSimilarProfiles: API.OperationMethod<
+export const getSimilarProfiles: API.PaginatedOperationMethod<
   GetSimilarProfilesRequest,
   GetSimilarProfilesResponse,
   GetSimilarProfilesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetSimilarProfilesRequest,
-  ) => stream.Stream<
-    GetSimilarProfilesResponse,
-    GetSimilarProfilesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetSimilarProfilesRequest,
-  ) => stream.Stream<
-    Uuid,
-    GetSimilarProfilesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Uuid
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetSimilarProfilesRequest,
   output: GetSimilarProfilesResponse,
   errors: [
@@ -9789,27 +9774,13 @@ export type ListDomainLayoutsError =
  * Lists the existing layouts that can be used to view data for a specific domain. This API
  * can only be invoked from the Amazon Connect admin website.
  */
-export const listDomainLayouts: API.OperationMethod<
+export const listDomainLayouts: API.PaginatedOperationMethod<
   ListDomainLayoutsRequest,
   ListDomainLayoutsResponse,
   ListDomainLayoutsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDomainLayoutsRequest,
-  ) => stream.Stream<
-    ListDomainLayoutsResponse,
-    ListDomainLayoutsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDomainLayoutsRequest,
-  ) => stream.Stream<
-    LayoutItem,
-    ListDomainLayoutsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  LayoutItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDomainLayoutsRequest,
   output: ListDomainLayoutsResponse,
   errors: [
@@ -9840,27 +9811,13 @@ export type ListDomainObjectTypesError =
 /**
  * List all DomainObjectType(s) in a Customer Profiles domain.
  */
-export const listDomainObjectTypes: API.OperationMethod<
+export const listDomainObjectTypes: API.PaginatedOperationMethod<
   ListDomainObjectTypesRequest,
   ListDomainObjectTypesResponse,
   ListDomainObjectTypesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDomainObjectTypesRequest,
-  ) => stream.Stream<
-    ListDomainObjectTypesResponse,
-    ListDomainObjectTypesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDomainObjectTypesRequest,
-  ) => stream.Stream<
-    DomainObjectTypesListItem,
-    ListDomainObjectTypesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  DomainObjectTypesListItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDomainObjectTypesRequest,
   output: ListDomainObjectTypesResponse,
   errors: [
@@ -9921,27 +9878,13 @@ export type ListEventStreamsError =
 /**
  * Returns a list of all the event streams in a specific domain.
  */
-export const listEventStreams: API.OperationMethod<
+export const listEventStreams: API.PaginatedOperationMethod<
   ListEventStreamsRequest,
   ListEventStreamsResponse,
   ListEventStreamsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEventStreamsRequest,
-  ) => stream.Stream<
-    ListEventStreamsResponse,
-    ListEventStreamsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEventStreamsRequest,
-  ) => stream.Stream<
-    EventStreamSummary,
-    ListEventStreamsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  EventStreamSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEventStreamsRequest,
   output: ListEventStreamsResponse,
   errors: [
@@ -9972,27 +9915,13 @@ export type ListEventTriggersError =
 /**
  * List all Event Triggers under a domain.
  */
-export const listEventTriggers: API.OperationMethod<
+export const listEventTriggers: API.PaginatedOperationMethod<
   ListEventTriggersRequest,
   ListEventTriggersResponse,
   ListEventTriggersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEventTriggersRequest,
-  ) => stream.Stream<
-    ListEventTriggersResponse,
-    ListEventTriggersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEventTriggersRequest,
-  ) => stream.Stream<
-    EventTriggerSummaryItem,
-    ListEventTriggersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  EventTriggerSummaryItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEventTriggersRequest,
   output: ListEventTriggersResponse,
   errors: [
@@ -10084,27 +10013,13 @@ export type ListObjectTypeAttributesError =
 /**
  * Fetch the possible attribute values given the attribute name.
  */
-export const listObjectTypeAttributes: API.OperationMethod<
+export const listObjectTypeAttributes: API.PaginatedOperationMethod<
   ListObjectTypeAttributesRequest,
   ListObjectTypeAttributesResponse,
   ListObjectTypeAttributesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListObjectTypeAttributesRequest,
-  ) => stream.Stream<
-    ListObjectTypeAttributesResponse,
-    ListObjectTypeAttributesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListObjectTypeAttributesRequest,
-  ) => stream.Stream<
-    ListObjectTypeAttributeItem,
-    ListObjectTypeAttributesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ListObjectTypeAttributeItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListObjectTypeAttributesRequest,
   output: ListObjectTypeAttributesResponse,
   errors: [
@@ -10315,27 +10230,13 @@ export type ListRecommenderFiltersError =
 /**
  * Returns a list of recommender filters in the specified domain.
  */
-export const listRecommenderFilters: API.OperationMethod<
+export const listRecommenderFilters: API.PaginatedOperationMethod<
   ListRecommenderFiltersRequest,
   ListRecommenderFiltersResponse,
   ListRecommenderFiltersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRecommenderFiltersRequest,
-  ) => stream.Stream<
-    ListRecommenderFiltersResponse,
-    ListRecommenderFiltersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRecommenderFiltersRequest,
-  ) => stream.Stream<
-    RecommenderFilterSummary,
-    ListRecommenderFiltersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  RecommenderFilterSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRecommenderFiltersRequest,
   output: ListRecommenderFiltersResponse,
   errors: [
@@ -10365,27 +10266,13 @@ export type ListRecommenderRecipesError =
 /**
  * Returns a list of available recommender recipes that can be used to create recommenders.
  */
-export const listRecommenderRecipes: API.OperationMethod<
+export const listRecommenderRecipes: API.PaginatedOperationMethod<
   ListRecommenderRecipesRequest,
   ListRecommenderRecipesResponse,
   ListRecommenderRecipesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRecommenderRecipesRequest,
-  ) => stream.Stream<
-    ListRecommenderRecipesResponse,
-    ListRecommenderRecipesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRecommenderRecipesRequest,
-  ) => stream.Stream<
-    RecommenderRecipe,
-    ListRecommenderRecipesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  RecommenderRecipe
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRecommenderRecipesRequest,
   output: ListRecommenderRecipesResponse,
   errors: [
@@ -10415,27 +10302,13 @@ export type ListRecommendersError =
 /**
  * Returns a list of recommenders in the specified domain.
  */
-export const listRecommenders: API.OperationMethod<
+export const listRecommenders: API.PaginatedOperationMethod<
   ListRecommendersRequest,
   ListRecommendersResponse,
   ListRecommendersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRecommendersRequest,
-  ) => stream.Stream<
-    ListRecommendersResponse,
-    ListRecommendersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRecommendersRequest,
-  ) => stream.Stream<
-    RecommenderSummary,
-    ListRecommendersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  RecommenderSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRecommendersRequest,
   output: ListRecommendersResponse,
   errors: [
@@ -10466,27 +10339,13 @@ export type ListRecommenderSchemasError =
 /**
  * Returns a list of recommender schemas in the specified domain.
  */
-export const listRecommenderSchemas: API.OperationMethod<
+export const listRecommenderSchemas: API.PaginatedOperationMethod<
   ListRecommenderSchemasRequest,
   ListRecommenderSchemasResponse,
   ListRecommenderSchemasError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRecommenderSchemasRequest,
-  ) => stream.Stream<
-    ListRecommenderSchemasResponse,
-    ListRecommenderSchemasError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRecommenderSchemasRequest,
-  ) => stream.Stream<
-    RecommenderSchemaSummary,
-    ListRecommenderSchemasError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  RecommenderSchemaSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRecommenderSchemasRequest,
   output: ListRecommenderSchemasResponse,
   errors: [
@@ -10517,27 +10376,13 @@ export type ListRuleBasedMatchesError =
 /**
  * Returns a set of `MatchIds` that belong to the given domain.
  */
-export const listRuleBasedMatches: API.OperationMethod<
+export const listRuleBasedMatches: API.PaginatedOperationMethod<
   ListRuleBasedMatchesRequest,
   ListRuleBasedMatchesResponse,
   ListRuleBasedMatchesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRuleBasedMatchesRequest,
-  ) => stream.Stream<
-    ListRuleBasedMatchesResponse,
-    ListRuleBasedMatchesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRuleBasedMatchesRequest,
-  ) => stream.Stream<
-    String1To255,
-    ListRuleBasedMatchesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  String1To255
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRuleBasedMatchesRequest,
   output: ListRuleBasedMatchesResponse,
   errors: [
@@ -10568,27 +10413,13 @@ export type ListSegmentDefinitionsError =
 /**
  * Lists all segment definitions under a domain.
  */
-export const listSegmentDefinitions: API.OperationMethod<
+export const listSegmentDefinitions: API.PaginatedOperationMethod<
   ListSegmentDefinitionsRequest,
   ListSegmentDefinitionsResponse,
   ListSegmentDefinitionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSegmentDefinitionsRequest,
-  ) => stream.Stream<
-    ListSegmentDefinitionsResponse,
-    ListSegmentDefinitionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSegmentDefinitionsRequest,
-  ) => stream.Stream<
-    SegmentDefinitionItem,
-    ListSegmentDefinitionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  SegmentDefinitionItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSegmentDefinitionsRequest,
   output: ListSegmentDefinitionsResponse,
   errors: [
@@ -10646,27 +10477,13 @@ export type ListUploadJobsError =
 /**
  * This API retrieves a list of upload jobs for the specified domain.
  */
-export const listUploadJobs: API.OperationMethod<
+export const listUploadJobs: API.PaginatedOperationMethod<
   ListUploadJobsRequest,
   ListUploadJobsResponse,
   ListUploadJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListUploadJobsRequest,
-  ) => stream.Stream<
-    ListUploadJobsResponse,
-    ListUploadJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListUploadJobsRequest,
-  ) => stream.Stream<
-    UploadJobItem,
-    ListUploadJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  UploadJobItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListUploadJobsRequest,
   output: ListUploadJobsResponse,
   errors: [

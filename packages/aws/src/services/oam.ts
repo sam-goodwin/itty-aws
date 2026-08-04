@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -1008,27 +1007,13 @@ export type ListAttachedLinksError =
  *
  * To find a list of links for one source account, use ListLinks.
  */
-export const listAttachedLinks: API.OperationMethod<
+export const listAttachedLinks: API.PaginatedOperationMethod<
   ListAttachedLinksInput,
   ListAttachedLinksOutput,
   ListAttachedLinksError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAttachedLinksInput,
-  ) => stream.Stream<
-    ListAttachedLinksOutput,
-    ListAttachedLinksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAttachedLinksInput,
-  ) => stream.Stream<
-    ListAttachedLinksItem,
-    ListAttachedLinksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ListAttachedLinksItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAttachedLinksInput,
   output: ListAttachedLinksOutput,
   errors: [
@@ -1060,27 +1045,13 @@ export type ListLinksError =
  *
  * To find a list of links for one monitoring account sink, use ListAttachedLinks from within the monitoring account.
  */
-export const listLinks: API.OperationMethod<
+export const listLinks: API.PaginatedOperationMethod<
   ListLinksInput,
   ListLinksOutput,
   ListLinksError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListLinksInput,
-  ) => stream.Stream<
-    ListLinksOutput,
-    ListLinksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListLinksInput,
-  ) => stream.Stream<
-    ListLinksItem,
-    ListLinksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ListLinksItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLinksInput,
   output: ListLinksOutput,
   errors: [
@@ -1109,27 +1080,13 @@ export type ListSinksError =
 /**
  * Use this operation in a monitoring account to return the list of sinks created in that account.
  */
-export const listSinks: API.OperationMethod<
+export const listSinks: API.PaginatedOperationMethod<
   ListSinksInput,
   ListSinksOutput,
   ListSinksError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSinksInput,
-  ) => stream.Stream<
-    ListSinksOutput,
-    ListSinksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSinksInput,
-  ) => stream.Stream<
-    ListSinksItem,
-    ListSinksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ListSinksItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSinksInput,
   output: ListSinksOutput,
   errors: [

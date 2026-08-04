@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -14354,27 +14353,13 @@ export type DescribeBlueGreenDeploymentsError =
  *
  * For more information, see Using Amazon RDS Blue/Green Deployments for database updates in the *Amazon RDS User Guide* and Using Amazon RDS Blue/Green Deployments for database updates in the *Amazon Aurora User Guide*.
  */
-export const describeBlueGreenDeployments: API.OperationMethod<
+export const describeBlueGreenDeployments: API.PaginatedOperationMethod<
   DescribeBlueGreenDeploymentsRequest,
   DescribeBlueGreenDeploymentsResponse,
   DescribeBlueGreenDeploymentsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeBlueGreenDeploymentsRequest,
-  ) => stream.Stream<
-    DescribeBlueGreenDeploymentsResponse,
-    DescribeBlueGreenDeploymentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeBlueGreenDeploymentsRequest,
-  ) => stream.Stream<
-    BlueGreenDeployment,
-    DescribeBlueGreenDeploymentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  BlueGreenDeployment
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeBlueGreenDeploymentsRequest,
   output: DescribeBlueGreenDeploymentsResponse,
   errors: [BlueGreenDeploymentNotFoundFault],
@@ -14395,27 +14380,13 @@ export type DescribeCertificatesError = CertificateNotFoundFault | CommonErrors;
  *
  * For more information, see Using SSL/TLS to encrypt a connection to a DB instance in the *Amazon RDS User Guide* and Using SSL/TLS to encrypt a connection to a DB cluster in the *Amazon Aurora User Guide*.
  */
-export const describeCertificates: API.OperationMethod<
+export const describeCertificates: API.PaginatedOperationMethod<
   DescribeCertificatesMessage,
   CertificateMessage,
   DescribeCertificatesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeCertificatesMessage,
-  ) => stream.Stream<
-    CertificateMessage,
-    DescribeCertificatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeCertificatesMessage,
-  ) => stream.Stream<
-    Certificate,
-    DescribeCertificatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Certificate
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeCertificatesMessage,
   output: CertificateMessage,
   errors: [CertificateNotFoundFault],
@@ -14438,27 +14409,13 @@ export type DescribeDBClusterAutomatedBackupsError =
  *
  * All parameters are optional.
  */
-export const describeDBClusterAutomatedBackups: API.OperationMethod<
+export const describeDBClusterAutomatedBackups: API.PaginatedOperationMethod<
   DescribeDBClusterAutomatedBackupsMessage,
   DBClusterAutomatedBackupMessage,
   DescribeDBClusterAutomatedBackupsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeDBClusterAutomatedBackupsMessage,
-  ) => stream.Stream<
-    DBClusterAutomatedBackupMessage,
-    DescribeDBClusterAutomatedBackupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeDBClusterAutomatedBackupsMessage,
-  ) => stream.Stream<
-    DBClusterAutomatedBackup,
-    DescribeDBClusterAutomatedBackupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  DBClusterAutomatedBackup
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeDBClusterAutomatedBackupsMessage,
   output: DBClusterAutomatedBackupMessage,
   errors: [DBClusterAutomatedBackupNotFoundFault],
@@ -14484,27 +14441,13 @@ export type DescribeDBClusterBacktracksError =
  *
  * This action only applies to Aurora MySQL DB clusters.
  */
-export const describeDBClusterBacktracks: API.OperationMethod<
+export const describeDBClusterBacktracks: API.PaginatedOperationMethod<
   DescribeDBClusterBacktracksMessage,
   DBClusterBacktrackMessage,
   DescribeDBClusterBacktracksError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeDBClusterBacktracksMessage,
-  ) => stream.Stream<
-    DBClusterBacktrackMessage,
-    DescribeDBClusterBacktracksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeDBClusterBacktracksMessage,
-  ) => stream.Stream<
-    DBClusterBacktrack,
-    DescribeDBClusterBacktracksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  DBClusterBacktrack
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeDBClusterBacktracksMessage,
   output: DBClusterBacktrackMessage,
   errors: [DBClusterBacktrackNotFoundFault, DBClusterNotFoundFault],
@@ -14527,27 +14470,13 @@ export type DescribeDBClusterEndpointsError =
  *
  * This action only applies to Aurora DB clusters.
  */
-export const describeDBClusterEndpoints: API.OperationMethod<
+export const describeDBClusterEndpoints: API.PaginatedOperationMethod<
   DescribeDBClusterEndpointsMessage,
   DBClusterEndpointMessage,
   DescribeDBClusterEndpointsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeDBClusterEndpointsMessage,
-  ) => stream.Stream<
-    DBClusterEndpointMessage,
-    DescribeDBClusterEndpointsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeDBClusterEndpointsMessage,
-  ) => stream.Stream<
-    DBClusterEndpoint,
-    DescribeDBClusterEndpointsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  DBClusterEndpoint
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeDBClusterEndpointsMessage,
   output: DBClusterEndpointMessage,
   errors: [DBClusterNotFoundFault],
@@ -14572,27 +14501,13 @@ export type DescribeDBClusterParameterGroupsError =
  *
  * For more information on Multi-AZ DB clusters, see Multi-AZ DB cluster deployments in the *Amazon RDS User Guide*.
  */
-export const describeDBClusterParameterGroups: API.OperationMethod<
+export const describeDBClusterParameterGroups: API.PaginatedOperationMethod<
   DescribeDBClusterParameterGroupsMessage,
   DBClusterParameterGroupsMessage,
   DescribeDBClusterParameterGroupsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeDBClusterParameterGroupsMessage,
-  ) => stream.Stream<
-    DBClusterParameterGroupsMessage,
-    DescribeDBClusterParameterGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeDBClusterParameterGroupsMessage,
-  ) => stream.Stream<
-    DBClusterParameterGroup,
-    DescribeDBClusterParameterGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  DBClusterParameterGroup
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeDBClusterParameterGroupsMessage,
   output: DBClusterParameterGroupsMessage,
   errors: [DBParameterGroupNotFoundFault],
@@ -14617,27 +14532,13 @@ export type DescribeDBClusterParametersError =
  *
  * For more information on Multi-AZ DB clusters, see Multi-AZ DB cluster deployments in the *Amazon RDS User Guide*.
  */
-export const describeDBClusterParameters: API.OperationMethod<
+export const describeDBClusterParameters: API.PaginatedOperationMethod<
   DescribeDBClusterParametersMessage,
   DBClusterParameterGroupDetails,
   DescribeDBClusterParametersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeDBClusterParametersMessage,
-  ) => stream.Stream<
-    DBClusterParameterGroupDetails,
-    DescribeDBClusterParametersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeDBClusterParametersMessage,
-  ) => stream.Stream<
-    Parameter,
-    DescribeDBClusterParametersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Parameter
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeDBClusterParametersMessage,
   output: DBClusterParameterGroupDetails,
   errors: [DBParameterGroupNotFoundFault],
@@ -14662,27 +14563,13 @@ export type DescribeDBClustersError = DBClusterNotFoundFault | CommonErrors;
  *
  * This operation can also return information for Amazon Neptune DB instances and Amazon DocumentDB instances.
  */
-export const describeDBClusters: API.OperationMethod<
+export const describeDBClusters: API.PaginatedOperationMethod<
   DescribeDBClustersMessage,
   DBClusterMessage,
   DescribeDBClustersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeDBClustersMessage,
-  ) => stream.Stream<
-    DBClusterMessage,
-    DescribeDBClustersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeDBClustersMessage,
-  ) => stream.Stream<
-    DBCluster,
-    DescribeDBClustersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  DBCluster
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeDBClustersMessage,
   output: DBClusterMessage,
   errors: [DBClusterNotFoundFault],
@@ -14731,27 +14618,13 @@ export type DescribeDBClusterSnapshotsError =
  *
  * For more information on Multi-AZ DB clusters, see Multi-AZ DB cluster deployments in the *Amazon RDS User Guide*.
  */
-export const describeDBClusterSnapshots: API.OperationMethod<
+export const describeDBClusterSnapshots: API.PaginatedOperationMethod<
   DescribeDBClusterSnapshotsMessage,
   DBClusterSnapshotMessage,
   DescribeDBClusterSnapshotsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeDBClusterSnapshotsMessage,
-  ) => stream.Stream<
-    DBClusterSnapshotMessage,
-    DescribeDBClusterSnapshotsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeDBClusterSnapshotsMessage,
-  ) => stream.Stream<
-    DBClusterSnapshot,
-    DescribeDBClusterSnapshotsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  DBClusterSnapshot
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeDBClusterSnapshotsMessage,
   output: DBClusterSnapshotMessage,
   errors: [DBClusterSnapshotNotFoundFault],
@@ -14770,27 +14643,13 @@ export type DescribeDBEngineVersionsError = CommonErrors;
 /**
  * Describes the properties of specific versions of DB engines.
  */
-export const describeDBEngineVersions: API.OperationMethod<
+export const describeDBEngineVersions: API.PaginatedOperationMethod<
   DescribeDBEngineVersionsMessage,
   DBEngineVersionMessage,
   DescribeDBEngineVersionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeDBEngineVersionsMessage,
-  ) => stream.Stream<
-    DBEngineVersionMessage,
-    DescribeDBEngineVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeDBEngineVersionsMessage,
-  ) => stream.Stream<
-    DBEngineVersion,
-    DescribeDBEngineVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  DBEngineVersion
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeDBEngineVersionsMessage,
   output: DBEngineVersionMessage,
   errors: [],
@@ -14813,27 +14672,13 @@ export type DescribeDBInstanceAutomatedBackupsError =
  *
  * All parameters are optional.
  */
-export const describeDBInstanceAutomatedBackups: API.OperationMethod<
+export const describeDBInstanceAutomatedBackups: API.PaginatedOperationMethod<
   DescribeDBInstanceAutomatedBackupsMessage,
   DBInstanceAutomatedBackupMessage,
   DescribeDBInstanceAutomatedBackupsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeDBInstanceAutomatedBackupsMessage,
-  ) => stream.Stream<
-    DBInstanceAutomatedBackupMessage,
-    DescribeDBInstanceAutomatedBackupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeDBInstanceAutomatedBackupsMessage,
-  ) => stream.Stream<
-    DBInstanceAutomatedBackup,
-    DescribeDBInstanceAutomatedBackupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  DBInstanceAutomatedBackup
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeDBInstanceAutomatedBackupsMessage,
   output: DBInstanceAutomatedBackupMessage,
   errors: [DBInstanceAutomatedBackupNotFoundFault],
@@ -14854,27 +14699,13 @@ export type DescribeDBInstancesError = DBInstanceNotFoundFault | CommonErrors;
  *
  * This operation can also return information for Amazon Neptune DB instances and Amazon DocumentDB instances.
  */
-export const describeDBInstances: API.OperationMethod<
+export const describeDBInstances: API.PaginatedOperationMethod<
   DescribeDBInstancesMessage,
   DBInstanceMessage,
   DescribeDBInstancesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeDBInstancesMessage,
-  ) => stream.Stream<
-    DBInstanceMessage,
-    DescribeDBInstancesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeDBInstancesMessage,
-  ) => stream.Stream<
-    DBInstance,
-    DescribeDBInstancesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  DBInstance
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeDBInstancesMessage,
   output: DBInstanceMessage,
   errors: [DBInstanceNotFoundFault],
@@ -14898,27 +14729,13 @@ export type DescribeDBLogFilesError =
  *
  * This command doesn't apply to RDS Custom.
  */
-export const describeDBLogFiles: API.OperationMethod<
+export const describeDBLogFiles: API.PaginatedOperationMethod<
   DescribeDBLogFilesMessage,
   DescribeDBLogFilesResponse,
   DescribeDBLogFilesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeDBLogFilesMessage,
-  ) => stream.Stream<
-    DescribeDBLogFilesResponse,
-    DescribeDBLogFilesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeDBLogFilesMessage,
-  ) => stream.Stream<
-    DescribeDBLogFilesDetails,
-    DescribeDBLogFilesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  DescribeDBLogFilesDetails
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeDBLogFilesMessage,
   output: DescribeDBLogFilesResponse,
   errors: [DBInstanceNotFoundFault, DBInstanceNotReadyFault],
@@ -14937,27 +14754,13 @@ export type DescribeDBMajorEngineVersionsError = CommonErrors;
 /**
  * Describes the properties of specific major versions of DB engines.
  */
-export const describeDBMajorEngineVersions: API.OperationMethod<
+export const describeDBMajorEngineVersions: API.PaginatedOperationMethod<
   DescribeDBMajorEngineVersionsRequest,
   DescribeDBMajorEngineVersionsResponse,
   DescribeDBMajorEngineVersionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeDBMajorEngineVersionsRequest,
-  ) => stream.Stream<
-    DescribeDBMajorEngineVersionsResponse,
-    DescribeDBMajorEngineVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeDBMajorEngineVersionsRequest,
-  ) => stream.Stream<
-    DBMajorEngineVersion,
-    DescribeDBMajorEngineVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  DBMajorEngineVersion
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeDBMajorEngineVersionsRequest,
   output: DescribeDBMajorEngineVersionsResponse,
   errors: [],
@@ -14978,27 +14781,13 @@ export type DescribeDBParameterGroupsError =
 /**
  * Returns a list of `DBParameterGroup` descriptions. If a `DBParameterGroupName` is specified, the list will contain only the description of the specified DB parameter group.
  */
-export const describeDBParameterGroups: API.OperationMethod<
+export const describeDBParameterGroups: API.PaginatedOperationMethod<
   DescribeDBParameterGroupsMessage,
   DBParameterGroupsMessage,
   DescribeDBParameterGroupsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeDBParameterGroupsMessage,
-  ) => stream.Stream<
-    DBParameterGroupsMessage,
-    DescribeDBParameterGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeDBParameterGroupsMessage,
-  ) => stream.Stream<
-    DBParameterGroup,
-    DescribeDBParameterGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  DBParameterGroup
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeDBParameterGroupsMessage,
   output: DBParameterGroupsMessage,
   errors: [DBParameterGroupNotFoundFault],
@@ -15019,27 +14808,13 @@ export type DescribeDBParametersError =
 /**
  * Returns the detailed parameter list for a particular DB parameter group.
  */
-export const describeDBParameters: API.OperationMethod<
+export const describeDBParameters: API.PaginatedOperationMethod<
   DescribeDBParametersMessage,
   DBParameterGroupDetails,
   DescribeDBParametersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeDBParametersMessage,
-  ) => stream.Stream<
-    DBParameterGroupDetails,
-    DescribeDBParametersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeDBParametersMessage,
-  ) => stream.Stream<
-    Parameter,
-    DescribeDBParametersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Parameter
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeDBParametersMessage,
   output: DBParameterGroupDetails,
   errors: [DBParameterGroupNotFoundFault],
@@ -15058,27 +14833,13 @@ export type DescribeDBProxiesError = DBProxyNotFoundFault | CommonErrors;
 /**
  * Returns information about DB proxies.
  */
-export const describeDBProxies: API.OperationMethod<
+export const describeDBProxies: API.PaginatedOperationMethod<
   DescribeDBProxiesRequest,
   DescribeDBProxiesResponse,
   DescribeDBProxiesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeDBProxiesRequest,
-  ) => stream.Stream<
-    DescribeDBProxiesResponse,
-    DescribeDBProxiesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeDBProxiesRequest,
-  ) => stream.Stream<
-    DBProxy,
-    DescribeDBProxiesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  DBProxy
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeDBProxiesRequest,
   output: DescribeDBProxiesResponse,
   errors: [DBProxyNotFoundFault],
@@ -15100,27 +14861,13 @@ export type DescribeDBProxyEndpointsError =
 /**
  * Returns information about DB proxy endpoints.
  */
-export const describeDBProxyEndpoints: API.OperationMethod<
+export const describeDBProxyEndpoints: API.PaginatedOperationMethod<
   DescribeDBProxyEndpointsRequest,
   DescribeDBProxyEndpointsResponse,
   DescribeDBProxyEndpointsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeDBProxyEndpointsRequest,
-  ) => stream.Stream<
-    DescribeDBProxyEndpointsResponse,
-    DescribeDBProxyEndpointsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeDBProxyEndpointsRequest,
-  ) => stream.Stream<
-    DBProxyEndpoint,
-    DescribeDBProxyEndpointsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  DBProxyEndpoint
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeDBProxyEndpointsRequest,
   output: DescribeDBProxyEndpointsResponse,
   errors: [DBProxyEndpointNotFoundFault, DBProxyNotFoundFault],
@@ -15143,27 +14890,13 @@ export type DescribeDBProxyTargetGroupsError =
 /**
  * Returns information about DB proxy target groups, represented by `DBProxyTargetGroup` data structures.
  */
-export const describeDBProxyTargetGroups: API.OperationMethod<
+export const describeDBProxyTargetGroups: API.PaginatedOperationMethod<
   DescribeDBProxyTargetGroupsRequest,
   DescribeDBProxyTargetGroupsResponse,
   DescribeDBProxyTargetGroupsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeDBProxyTargetGroupsRequest,
-  ) => stream.Stream<
-    DescribeDBProxyTargetGroupsResponse,
-    DescribeDBProxyTargetGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeDBProxyTargetGroupsRequest,
-  ) => stream.Stream<
-    DBProxyTargetGroup,
-    DescribeDBProxyTargetGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  DBProxyTargetGroup
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeDBProxyTargetGroupsRequest,
   output: DescribeDBProxyTargetGroupsResponse,
   errors: [
@@ -15191,27 +14924,13 @@ export type DescribeDBProxyTargetsError =
 /**
  * Returns information about `DBProxyTarget` objects. This API supports pagination.
  */
-export const describeDBProxyTargets: API.OperationMethod<
+export const describeDBProxyTargets: API.PaginatedOperationMethod<
   DescribeDBProxyTargetsRequest,
   DescribeDBProxyTargetsResponse,
   DescribeDBProxyTargetsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeDBProxyTargetsRequest,
-  ) => stream.Stream<
-    DescribeDBProxyTargetsResponse,
-    DescribeDBProxyTargetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeDBProxyTargetsRequest,
-  ) => stream.Stream<
-    DBProxyTarget,
-    DescribeDBProxyTargetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  DBProxyTarget
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeDBProxyTargetsRequest,
   output: DescribeDBProxyTargetsResponse,
   errors: [
@@ -15235,27 +14954,13 @@ export type DescribeDBRecommendationsError = CommonErrors;
 /**
  * Describes the recommendations to resolve the issues for your DB instances, DB clusters, and DB parameter groups.
  */
-export const describeDBRecommendations: API.OperationMethod<
+export const describeDBRecommendations: API.PaginatedOperationMethod<
   DescribeDBRecommendationsMessage,
   DBRecommendationsMessage,
   DescribeDBRecommendationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeDBRecommendationsMessage,
-  ) => stream.Stream<
-    DBRecommendationsMessage,
-    DescribeDBRecommendationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeDBRecommendationsMessage,
-  ) => stream.Stream<
-    DBRecommendation,
-    DescribeDBRecommendationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  DBRecommendation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeDBRecommendationsMessage,
   output: DBRecommendationsMessage,
   errors: [],
@@ -15278,27 +14983,13 @@ export type DescribeDBSecurityGroupsError =
  *
  * EC2-Classic was retired on August 15, 2022. If you haven't migrated from EC2-Classic to a VPC, we recommend that you migrate as soon as possible. For more information, see Migrate from EC2-Classic to a VPC in the *Amazon EC2 User Guide*, the blog EC2-Classic Networking is Retiring – Here’s How to Prepare, and Moving a DB instance not in a VPC into a VPC in the *Amazon RDS User Guide*.
  */
-export const describeDBSecurityGroups: API.OperationMethod<
+export const describeDBSecurityGroups: API.PaginatedOperationMethod<
   DescribeDBSecurityGroupsMessage,
   DBSecurityGroupMessage,
   DescribeDBSecurityGroupsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeDBSecurityGroupsMessage,
-  ) => stream.Stream<
-    DBSecurityGroupMessage,
-    DescribeDBSecurityGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeDBSecurityGroupsMessage,
-  ) => stream.Stream<
-    DBSecurityGroup,
-    DescribeDBSecurityGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  DBSecurityGroup
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeDBSecurityGroupsMessage,
   output: DBSecurityGroupMessage,
   errors: [DBSecurityGroupNotFoundFault],
@@ -15362,27 +15053,13 @@ export type DescribeDBSnapshotsError = DBSnapshotNotFoundFault | CommonErrors;
 /**
  * Returns information about DB snapshots. This API action supports pagination.
  */
-export const describeDBSnapshots: API.OperationMethod<
+export const describeDBSnapshots: API.PaginatedOperationMethod<
   DescribeDBSnapshotsMessage,
   DBSnapshotMessage,
   DescribeDBSnapshotsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeDBSnapshotsMessage,
-  ) => stream.Stream<
-    DBSnapshotMessage,
-    DescribeDBSnapshotsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeDBSnapshotsMessage,
-  ) => stream.Stream<
-    DBSnapshot,
-    DescribeDBSnapshotsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  DBSnapshot
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeDBSnapshotsMessage,
   output: DBSnapshotMessage,
   errors: [DBSnapshotNotFoundFault],
@@ -15405,27 +15082,13 @@ export type DescribeDBSnapshotTenantDatabasesError =
  *
  * You can use this command to inspect the tenant databases within a snapshot before restoring it. You can't directly interact with the tenant databases in a DB snapshot. If you restore a snapshot that was taken from DB instance using the multi-tenant configuration, you restore all its tenant databases.
  */
-export const describeDBSnapshotTenantDatabases: API.OperationMethod<
+export const describeDBSnapshotTenantDatabases: API.PaginatedOperationMethod<
   DescribeDBSnapshotTenantDatabasesMessage,
   DBSnapshotTenantDatabasesMessage,
   DescribeDBSnapshotTenantDatabasesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeDBSnapshotTenantDatabasesMessage,
-  ) => stream.Stream<
-    DBSnapshotTenantDatabasesMessage,
-    DescribeDBSnapshotTenantDatabasesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeDBSnapshotTenantDatabasesMessage,
-  ) => stream.Stream<
-    DBSnapshotTenantDatabase,
-    DescribeDBSnapshotTenantDatabasesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  DBSnapshotTenantDatabase
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeDBSnapshotTenantDatabasesMessage,
   output: DBSnapshotTenantDatabasesMessage,
   errors: [DBSnapshotNotFoundFault],
@@ -15448,27 +15111,13 @@ export type DescribeDBSubnetGroupsError =
  *
  * For an overview of CIDR ranges, go to the Wikipedia Tutorial.
  */
-export const describeDBSubnetGroups: API.OperationMethod<
+export const describeDBSubnetGroups: API.PaginatedOperationMethod<
   DescribeDBSubnetGroupsMessage,
   DBSubnetGroupMessage,
   DescribeDBSubnetGroupsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeDBSubnetGroupsMessage,
-  ) => stream.Stream<
-    DBSubnetGroupMessage,
-    DescribeDBSubnetGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeDBSubnetGroupsMessage,
-  ) => stream.Stream<
-    DBSubnetGroup,
-    DescribeDBSubnetGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  DBSubnetGroup
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeDBSubnetGroupsMessage,
   output: DBSubnetGroupMessage,
   errors: [DBSubnetGroupNotFoundFault],
@@ -15489,27 +15138,13 @@ export type DescribeEngineDefaultClusterParametersError = CommonErrors;
  *
  * For more information on Amazon Aurora, see What is Amazon Aurora? in the *Amazon Aurora User Guide*.
  */
-export const describeEngineDefaultClusterParameters: API.OperationMethod<
+export const describeEngineDefaultClusterParameters: API.PaginatedOperationMethod<
   DescribeEngineDefaultClusterParametersMessage,
   DescribeEngineDefaultClusterParametersResult,
   DescribeEngineDefaultClusterParametersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeEngineDefaultClusterParametersMessage,
-  ) => stream.Stream<
-    DescribeEngineDefaultClusterParametersResult,
-    DescribeEngineDefaultClusterParametersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeEngineDefaultClusterParametersMessage,
-  ) => stream.Stream<
-    unknown,
-    DescribeEngineDefaultClusterParametersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeEngineDefaultClusterParametersMessage,
   output: DescribeEngineDefaultClusterParametersResult,
   errors: [],
@@ -15528,27 +15163,13 @@ export type DescribeEngineDefaultParametersError = CommonErrors;
 /**
  * Returns the default engine and system parameter information for the specified database engine.
  */
-export const describeEngineDefaultParameters: API.OperationMethod<
+export const describeEngineDefaultParameters: API.PaginatedOperationMethod<
   DescribeEngineDefaultParametersMessage,
   DescribeEngineDefaultParametersResult,
   DescribeEngineDefaultParametersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeEngineDefaultParametersMessage,
-  ) => stream.Stream<
-    DescribeEngineDefaultParametersResult,
-    DescribeEngineDefaultParametersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeEngineDefaultParametersMessage,
-  ) => stream.Stream<
-    unknown,
-    DescribeEngineDefaultParametersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeEngineDefaultParametersMessage,
   output: DescribeEngineDefaultParametersResult,
   errors: [],
@@ -15589,27 +15210,13 @@ export type DescribeEventsError = CommonErrors;
  *
  * By default, RDS returns events that were generated in the past hour.
  */
-export const describeEvents: API.OperationMethod<
+export const describeEvents: API.PaginatedOperationMethod<
   DescribeEventsMessage,
   EventsMessage,
   DescribeEventsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeEventsMessage,
-  ) => stream.Stream<
-    EventsMessage,
-    DescribeEventsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeEventsMessage,
-  ) => stream.Stream<
-    Event,
-    DescribeEventsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Event
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeEventsMessage,
   output: EventsMessage,
   errors: [],
@@ -15632,27 +15239,13 @@ export type DescribeEventSubscriptionsError =
  *
  * If you specify a `SubscriptionName`, lists the description for that subscription.
  */
-export const describeEventSubscriptions: API.OperationMethod<
+export const describeEventSubscriptions: API.PaginatedOperationMethod<
   DescribeEventSubscriptionsMessage,
   EventSubscriptionsMessage,
   DescribeEventSubscriptionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeEventSubscriptionsMessage,
-  ) => stream.Stream<
-    EventSubscriptionsMessage,
-    DescribeEventSubscriptionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeEventSubscriptionsMessage,
-  ) => stream.Stream<
-    EventSubscription,
-    DescribeEventSubscriptionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  EventSubscription
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeEventSubscriptionsMessage,
   output: EventSubscriptionsMessage,
   errors: [SubscriptionNotFoundFault],
@@ -15671,27 +15264,13 @@ export type DescribeExportTasksError = ExportTaskNotFoundFault | CommonErrors;
 /**
  * Returns information about a snapshot or cluster export to Amazon S3. This API operation supports pagination.
  */
-export const describeExportTasks: API.OperationMethod<
+export const describeExportTasks: API.PaginatedOperationMethod<
   DescribeExportTasksMessage,
   ExportTasksMessage,
   DescribeExportTasksError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeExportTasksMessage,
-  ) => stream.Stream<
-    ExportTasksMessage,
-    DescribeExportTasksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeExportTasksMessage,
-  ) => stream.Stream<
-    ExportTask,
-    DescribeExportTasksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ExportTask
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeExportTasksMessage,
   output: ExportTasksMessage,
   errors: [ExportTaskNotFoundFault],
@@ -15716,27 +15295,13 @@ export type DescribeGlobalClustersError =
  *
  * This action only applies to Aurora DB clusters.
  */
-export const describeGlobalClusters: API.OperationMethod<
+export const describeGlobalClusters: API.PaginatedOperationMethod<
   DescribeGlobalClustersMessage,
   GlobalClustersMessage,
   DescribeGlobalClustersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeGlobalClustersMessage,
-  ) => stream.Stream<
-    GlobalClustersMessage,
-    DescribeGlobalClustersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeGlobalClustersMessage,
-  ) => stream.Stream<
-    GlobalCluster,
-    DescribeGlobalClustersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  GlobalCluster
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeGlobalClustersMessage,
   output: GlobalClustersMessage,
   errors: [GlobalClusterNotFoundFault],
@@ -15755,27 +15320,13 @@ export type DescribeIntegrationsError = IntegrationNotFoundFault | CommonErrors;
 /**
  * Describe one or more zero-ETL integrations with Amazon Redshift.
  */
-export const describeIntegrations: API.OperationMethod<
+export const describeIntegrations: API.PaginatedOperationMethod<
   DescribeIntegrationsMessage,
   DescribeIntegrationsResponse,
   DescribeIntegrationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeIntegrationsMessage,
-  ) => stream.Stream<
-    DescribeIntegrationsResponse,
-    DescribeIntegrationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeIntegrationsMessage,
-  ) => stream.Stream<
-    Integration,
-    DescribeIntegrationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Integration
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeIntegrationsMessage,
   output: DescribeIntegrationsResponse,
   errors: [IntegrationNotFoundFault],
@@ -15794,27 +15345,13 @@ export type DescribeOptionGroupOptionsError = CommonErrors;
 /**
  * Describes all available options for the specified engine.
  */
-export const describeOptionGroupOptions: API.OperationMethod<
+export const describeOptionGroupOptions: API.PaginatedOperationMethod<
   DescribeOptionGroupOptionsMessage,
   OptionGroupOptionsMessage,
   DescribeOptionGroupOptionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeOptionGroupOptionsMessage,
-  ) => stream.Stream<
-    OptionGroupOptionsMessage,
-    DescribeOptionGroupOptionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeOptionGroupOptionsMessage,
-  ) => stream.Stream<
-    OptionGroupOption,
-    DescribeOptionGroupOptionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  OptionGroupOption
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeOptionGroupOptionsMessage,
   output: OptionGroupOptionsMessage,
   errors: [],
@@ -15833,27 +15370,13 @@ export type DescribeOptionGroupsError = OptionGroupNotFoundFault | CommonErrors;
 /**
  * Describes the available option groups.
  */
-export const describeOptionGroups: API.OperationMethod<
+export const describeOptionGroups: API.PaginatedOperationMethod<
   DescribeOptionGroupsMessage,
   OptionGroups,
   DescribeOptionGroupsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeOptionGroupsMessage,
-  ) => stream.Stream<
-    OptionGroups,
-    DescribeOptionGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeOptionGroupsMessage,
-  ) => stream.Stream<
-    OptionGroup,
-    DescribeOptionGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  OptionGroup
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeOptionGroupsMessage,
   output: OptionGroups,
   errors: [OptionGroupNotFoundFault],
@@ -15872,27 +15395,13 @@ export type DescribeOrderableDBInstanceOptionsError = CommonErrors;
 /**
  * Describes the orderable DB instance options for a specified DB engine.
  */
-export const describeOrderableDBInstanceOptions: API.OperationMethod<
+export const describeOrderableDBInstanceOptions: API.PaginatedOperationMethod<
   DescribeOrderableDBInstanceOptionsMessage,
   OrderableDBInstanceOptionsMessage,
   DescribeOrderableDBInstanceOptionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeOrderableDBInstanceOptionsMessage,
-  ) => stream.Stream<
-    OrderableDBInstanceOptionsMessage,
-    DescribeOrderableDBInstanceOptionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeOrderableDBInstanceOptionsMessage,
-  ) => stream.Stream<
-    OrderableDBInstanceOption,
-    DescribeOrderableDBInstanceOptionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  OrderableDBInstanceOption
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeOrderableDBInstanceOptionsMessage,
   output: OrderableDBInstanceOptionsMessage,
   errors: [],
@@ -15915,27 +15424,13 @@ export type DescribePendingMaintenanceActionsError =
  *
  * This API follows an eventual consistency model. This means that the result of the `DescribePendingMaintenanceActions` command might not be immediately visible to all subsequent RDS commands. Keep this in mind when you use `DescribePendingMaintenanceActions` immediately after using a previous API command such as `ApplyPendingMaintenanceActions`.
  */
-export const describePendingMaintenanceActions: API.OperationMethod<
+export const describePendingMaintenanceActions: API.PaginatedOperationMethod<
   DescribePendingMaintenanceActionsMessage,
   PendingMaintenanceActionsMessage,
   DescribePendingMaintenanceActionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribePendingMaintenanceActionsMessage,
-  ) => stream.Stream<
-    PendingMaintenanceActionsMessage,
-    DescribePendingMaintenanceActionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribePendingMaintenanceActionsMessage,
-  ) => stream.Stream<
-    ResourcePendingMaintenanceActions,
-    DescribePendingMaintenanceActionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ResourcePendingMaintenanceActions
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribePendingMaintenanceActionsMessage,
   output: PendingMaintenanceActionsMessage,
   errors: [ResourceNotFoundFault],
@@ -15956,27 +15451,13 @@ export type DescribeReservedDBInstancesError =
 /**
  * Returns information about reserved DB instances for this account, or about a specified reserved DB instance.
  */
-export const describeReservedDBInstances: API.OperationMethod<
+export const describeReservedDBInstances: API.PaginatedOperationMethod<
   DescribeReservedDBInstancesMessage,
   ReservedDBInstanceMessage,
   DescribeReservedDBInstancesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeReservedDBInstancesMessage,
-  ) => stream.Stream<
-    ReservedDBInstanceMessage,
-    DescribeReservedDBInstancesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeReservedDBInstancesMessage,
-  ) => stream.Stream<
-    ReservedDBInstance,
-    DescribeReservedDBInstancesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ReservedDBInstance
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeReservedDBInstancesMessage,
   output: ReservedDBInstanceMessage,
   errors: [ReservedDBInstanceNotFoundFault],
@@ -15997,27 +15478,13 @@ export type DescribeReservedDBInstancesOfferingsError =
 /**
  * Lists available reserved DB instance offerings.
  */
-export const describeReservedDBInstancesOfferings: API.OperationMethod<
+export const describeReservedDBInstancesOfferings: API.PaginatedOperationMethod<
   DescribeReservedDBInstancesOfferingsMessage,
   ReservedDBInstancesOfferingMessage,
   DescribeReservedDBInstancesOfferingsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeReservedDBInstancesOfferingsMessage,
-  ) => stream.Stream<
-    ReservedDBInstancesOfferingMessage,
-    DescribeReservedDBInstancesOfferingsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeReservedDBInstancesOfferingsMessage,
-  ) => stream.Stream<
-    ReservedDBInstancesOffering,
-    DescribeReservedDBInstancesOfferingsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ReservedDBInstancesOffering
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeReservedDBInstancesOfferingsMessage,
   output: ReservedDBInstancesOfferingMessage,
   errors: [ReservedDBInstancesOfferingNotFoundFault],
@@ -16036,27 +15503,13 @@ export type DescribeServerlessV2PlatformVersionsError = CommonErrors;
 /**
  * Describes the properties of specific platform versions for Aurora Serverless v2.
  */
-export const describeServerlessV2PlatformVersions: API.OperationMethod<
+export const describeServerlessV2PlatformVersions: API.PaginatedOperationMethod<
   DescribeServerlessV2PlatformVersionsMessage,
   ServerlessV2PlatformVersionsMessage,
   DescribeServerlessV2PlatformVersionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeServerlessV2PlatformVersionsMessage,
-  ) => stream.Stream<
-    ServerlessV2PlatformVersionsMessage,
-    DescribeServerlessV2PlatformVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeServerlessV2PlatformVersionsMessage,
-  ) => stream.Stream<
-    ServerlessV2PlatformVersionInfo,
-    DescribeServerlessV2PlatformVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ServerlessV2PlatformVersionInfo
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeServerlessV2PlatformVersionsMessage,
   output: ServerlessV2PlatformVersionsMessage,
   errors: [],
@@ -16079,27 +15532,13 @@ export type DescribeSourceRegionsError = CommonErrors;
  *
  * To return information about the Regions that are enabled for your account, or all Regions, use the EC2 operation `DescribeRegions`. For more information, see DescribeRegions in the *Amazon EC2 API Reference*.
  */
-export const describeSourceRegions: API.OperationMethod<
+export const describeSourceRegions: API.PaginatedOperationMethod<
   DescribeSourceRegionsMessage,
   SourceRegionMessage,
   DescribeSourceRegionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeSourceRegionsMessage,
-  ) => stream.Stream<
-    SourceRegionMessage,
-    DescribeSourceRegionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeSourceRegionsMessage,
-  ) => stream.Stream<
-    SourceRegion,
-    DescribeSourceRegionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  SourceRegion
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeSourceRegionsMessage,
   output: SourceRegionMessage,
   errors: [],
@@ -16120,27 +15559,13 @@ export type DescribeTenantDatabasesError =
 /**
  * Describes the tenant databases in a DB instance that uses the multi-tenant configuration. Only RDS for Oracle CDB instances are supported.
  */
-export const describeTenantDatabases: API.OperationMethod<
+export const describeTenantDatabases: API.PaginatedOperationMethod<
   DescribeTenantDatabasesMessage,
   TenantDatabasesMessage,
   DescribeTenantDatabasesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeTenantDatabasesMessage,
-  ) => stream.Stream<
-    TenantDatabasesMessage,
-    DescribeTenantDatabasesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeTenantDatabasesMessage,
-  ) => stream.Stream<
-    TenantDatabase,
-    DescribeTenantDatabasesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  TenantDatabase
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeTenantDatabasesMessage,
   output: TenantDatabasesMessage,
   errors: [DBInstanceNotFoundFault],
@@ -16215,27 +15640,13 @@ export type DownloadDBLogFilePortionError =
  *
  * This operation uses resources on database instances. Because of this, we recommend publishing database logs to CloudWatch and then using the GetLogEvents operation. For more information, see GetLogEvents in the *Amazon CloudWatch Logs API Reference*.
  */
-export const downloadDBLogFilePortion: API.OperationMethod<
+export const downloadDBLogFilePortion: API.PaginatedOperationMethod<
   DownloadDBLogFilePortionMessage,
   DownloadDBLogFilePortionDetails,
   DownloadDBLogFilePortionError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DownloadDBLogFilePortionMessage,
-  ) => stream.Stream<
-    DownloadDBLogFilePortionDetails,
-    DownloadDBLogFilePortionError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DownloadDBLogFilePortionMessage,
-  ) => stream.Stream<
-    unknown,
-    DownloadDBLogFilePortionError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DownloadDBLogFilePortionMessage,
   output: DownloadDBLogFilePortionDetails,
   errors: [

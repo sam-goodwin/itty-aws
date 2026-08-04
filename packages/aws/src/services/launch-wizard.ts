@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -1100,27 +1099,13 @@ export type ListDeploymentEventsError =
 /**
  * Lists the events of a deployment.
  */
-export const listDeploymentEvents: API.OperationMethod<
+export const listDeploymentEvents: API.PaginatedOperationMethod<
   ListDeploymentEventsInput,
   ListDeploymentEventsOutput,
   ListDeploymentEventsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDeploymentEventsInput,
-  ) => stream.Stream<
-    ListDeploymentEventsOutput,
-    ListDeploymentEventsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDeploymentEventsInput,
-  ) => stream.Stream<
-    DeploymentEventDataSummary,
-    ListDeploymentEventsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  DeploymentEventDataSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDeploymentEventsInput,
   output: ListDeploymentEventsOutput,
   errors: [
@@ -1147,27 +1132,13 @@ export type ListDeploymentPatternVersionsError =
 /**
  * Lists the deployment pattern versions.
  */
-export const listDeploymentPatternVersions: API.OperationMethod<
+export const listDeploymentPatternVersions: API.PaginatedOperationMethod<
   ListDeploymentPatternVersionsInput,
   ListDeploymentPatternVersionsOutput,
   ListDeploymentPatternVersionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDeploymentPatternVersionsInput,
-  ) => stream.Stream<
-    ListDeploymentPatternVersionsOutput,
-    ListDeploymentPatternVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDeploymentPatternVersionsInput,
-  ) => stream.Stream<
-    DeploymentPatternVersionDataSummary,
-    ListDeploymentPatternVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  DeploymentPatternVersionDataSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDeploymentPatternVersionsInput,
   output: ListDeploymentPatternVersionsOutput,
   errors: [
@@ -1193,27 +1164,13 @@ export type ListDeploymentsError =
 /**
  * Lists the deployments that have been created.
  */
-export const listDeployments: API.OperationMethod<
+export const listDeployments: API.PaginatedOperationMethod<
   ListDeploymentsInput,
   ListDeploymentsOutput,
   ListDeploymentsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDeploymentsInput,
-  ) => stream.Stream<
-    ListDeploymentsOutput,
-    ListDeploymentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDeploymentsInput,
-  ) => stream.Stream<
-    DeploymentDataSummary,
-    ListDeploymentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  DeploymentDataSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDeploymentsInput,
   output: ListDeploymentsOutput,
   errors: [InternalServerException, ValidationException],
@@ -1262,27 +1219,13 @@ export type ListWorkloadDeploymentPatternsError =
 /**
  * Lists the workload deployment patterns for a given workload name. You can use the ListWorkloads operation to discover the available workload names.
  */
-export const listWorkloadDeploymentPatterns: API.OperationMethod<
+export const listWorkloadDeploymentPatterns: API.PaginatedOperationMethod<
   ListWorkloadDeploymentPatternsInput,
   ListWorkloadDeploymentPatternsOutput,
   ListWorkloadDeploymentPatternsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListWorkloadDeploymentPatternsInput,
-  ) => stream.Stream<
-    ListWorkloadDeploymentPatternsOutput,
-    ListWorkloadDeploymentPatternsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListWorkloadDeploymentPatternsInput,
-  ) => stream.Stream<
-    WorkloadDeploymentPatternDataSummary,
-    ListWorkloadDeploymentPatternsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  WorkloadDeploymentPatternDataSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListWorkloadDeploymentPatternsInput,
   output: ListWorkloadDeploymentPatternsOutput,
   errors: [
@@ -1308,27 +1251,13 @@ export type ListWorkloadsError =
 /**
  * Lists the available workload names. You can use the ListWorkloadDeploymentPatterns operation to discover the available deployment patterns for a given workload.
  */
-export const listWorkloads: API.OperationMethod<
+export const listWorkloads: API.PaginatedOperationMethod<
   ListWorkloadsInput,
   ListWorkloadsOutput,
   ListWorkloadsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListWorkloadsInput,
-  ) => stream.Stream<
-    ListWorkloadsOutput,
-    ListWorkloadsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListWorkloadsInput,
-  ) => stream.Stream<
-    WorkloadDataSummary,
-    ListWorkloadsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  WorkloadDataSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListWorkloadsInput,
   output: ListWorkloadsOutput,
   errors: [InternalServerException, ValidationException],

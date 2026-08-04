@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -2469,27 +2468,13 @@ export type GetPlanEvaluationStatusError =
 /**
  * Retrieves the evaluation status of a Region switch plan. The evaluation status provides information about the last time the plan was evaluated and any warnings or issues detected.
  */
-export const getPlanEvaluationStatus: API.OperationMethod<
+export const getPlanEvaluationStatus: API.PaginatedOperationMethod<
   GetPlanEvaluationStatusRequest,
   GetPlanEvaluationStatusResponse,
   GetPlanEvaluationStatusError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetPlanEvaluationStatusRequest,
-  ) => stream.Stream<
-    GetPlanEvaluationStatusResponse,
-    GetPlanEvaluationStatusError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetPlanEvaluationStatusRequest,
-  ) => stream.Stream<
-    ResourceWarning,
-    GetPlanEvaluationStatusError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  ResourceWarning
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetPlanEvaluationStatusRequest,
   output: GetPlanEvaluationStatusResponse,
   errors: [AccessDeniedException, ResourceNotFoundException],
@@ -2511,27 +2496,13 @@ export type GetPlanExecutionError =
 /**
  * Retrieves detailed information about a specific plan execution. You must specify the plan ARN and execution ID.
  */
-export const getPlanExecution: API.OperationMethod<
+export const getPlanExecution: API.PaginatedOperationMethod<
   GetPlanExecutionRequest,
   GetPlanExecutionResponse,
   GetPlanExecutionError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetPlanExecutionRequest,
-  ) => stream.Stream<
-    GetPlanExecutionResponse,
-    GetPlanExecutionError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetPlanExecutionRequest,
-  ) => stream.Stream<
-    StepState,
-    GetPlanExecutionError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  StepState
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetPlanExecutionRequest,
   output: GetPlanExecutionResponse,
   errors: [AccessDeniedException, ResourceNotFoundException],
@@ -2574,27 +2545,13 @@ export type ListPlanExecutionEventsError =
 /**
  * Lists the events that occurred during a plan execution. These events provide a detailed timeline of the execution process.
  */
-export const listPlanExecutionEvents: API.OperationMethod<
+export const listPlanExecutionEvents: API.PaginatedOperationMethod<
   ListPlanExecutionEventsRequest,
   ListPlanExecutionEventsResponse,
   ListPlanExecutionEventsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPlanExecutionEventsRequest,
-  ) => stream.Stream<
-    ListPlanExecutionEventsResponse,
-    ListPlanExecutionEventsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPlanExecutionEventsRequest,
-  ) => stream.Stream<
-    ExecutionEvent,
-    ListPlanExecutionEventsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  ExecutionEvent
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPlanExecutionEventsRequest,
   output: ListPlanExecutionEventsResponse,
   errors: [AccessDeniedException, ResourceNotFoundException],
@@ -2616,27 +2573,13 @@ export type ListPlanExecutionsError =
 /**
  * Lists the executions of a Region switch plan. This operation returns information about both current and historical executions.
  */
-export const listPlanExecutions: API.OperationMethod<
+export const listPlanExecutions: API.PaginatedOperationMethod<
   ListPlanExecutionsRequest,
   ListPlanExecutionsResponse,
   ListPlanExecutionsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPlanExecutionsRequest,
-  ) => stream.Stream<
-    ListPlanExecutionsResponse,
-    ListPlanExecutionsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPlanExecutionsRequest,
-  ) => stream.Stream<
-    AbbreviatedExecution,
-    ListPlanExecutionsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  AbbreviatedExecution
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPlanExecutionsRequest,
   output: ListPlanExecutionsResponse,
   errors: [AccessDeniedException, ResourceNotFoundException],
@@ -2655,27 +2598,13 @@ export type ListPlansError = CommonErrors;
 /**
  * Lists all Region switch plans in your Amazon Web Services account.
  */
-export const listPlans: API.OperationMethod<
+export const listPlans: API.PaginatedOperationMethod<
   ListPlansRequest,
   ListPlansResponse,
   ListPlansError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPlansRequest,
-  ) => stream.Stream<
-    ListPlansResponse,
-    ListPlansError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPlansRequest,
-  ) => stream.Stream<
-    AbbreviatedPlan,
-    ListPlansError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  AbbreviatedPlan
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPlansRequest,
   output: ListPlansResponse,
   errors: [],
@@ -2694,27 +2623,13 @@ export type ListPlansInRegionError = AccessDeniedException | CommonErrors;
 /**
  * Lists all Region switch plans in your Amazon Web Services account that are available in the current Amazon Web Services Region.
  */
-export const listPlansInRegion: API.OperationMethod<
+export const listPlansInRegion: API.PaginatedOperationMethod<
   ListPlansInRegionRequest,
   ListPlansInRegionResponse,
   ListPlansInRegionError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPlansInRegionRequest,
-  ) => stream.Stream<
-    ListPlansInRegionResponse,
-    ListPlansInRegionError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPlansInRegionRequest,
-  ) => stream.Stream<
-    AbbreviatedPlan,
-    ListPlansInRegionError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  AbbreviatedPlan
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPlansInRegionRequest,
   output: ListPlansInRegionResponse,
   errors: [AccessDeniedException],
@@ -2738,27 +2653,13 @@ export type ListRoute53HealthChecksError =
 /**
  * List the Amazon Route 53 health checks.
  */
-export const listRoute53HealthChecks: API.OperationMethod<
+export const listRoute53HealthChecks: API.PaginatedOperationMethod<
   ListRoute53HealthChecksRequest,
   ListRoute53HealthChecksResponse,
   ListRoute53HealthChecksError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRoute53HealthChecksRequest,
-  ) => stream.Stream<
-    ListRoute53HealthChecksResponse,
-    ListRoute53HealthChecksError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRoute53HealthChecksRequest,
-  ) => stream.Stream<
-    Route53HealthCheck,
-    ListRoute53HealthChecksError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  Route53HealthCheck
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRoute53HealthChecksRequest,
   output: ListRoute53HealthChecksResponse,
   errors: [
@@ -2787,27 +2688,13 @@ export type ListRoute53HealthChecksInRegionError =
 /**
  * List the Amazon Route 53 health checks in a specific Amazon Web Services Region.
  */
-export const listRoute53HealthChecksInRegion: API.OperationMethod<
+export const listRoute53HealthChecksInRegion: API.PaginatedOperationMethod<
   ListRoute53HealthChecksInRegionRequest,
   ListRoute53HealthChecksInRegionResponse,
   ListRoute53HealthChecksInRegionError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRoute53HealthChecksInRegionRequest,
-  ) => stream.Stream<
-    ListRoute53HealthChecksInRegionResponse,
-    ListRoute53HealthChecksInRegionError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRoute53HealthChecksInRegionRequest,
-  ) => stream.Stream<
-    Route53HealthCheck,
-    ListRoute53HealthChecksInRegionError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  Route53HealthCheck
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRoute53HealthChecksInRegionRequest,
   output: ListRoute53HealthChecksInRegionResponse,
   errors: [

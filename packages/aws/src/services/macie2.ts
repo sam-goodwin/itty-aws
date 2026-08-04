@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -5878,27 +5877,13 @@ export type DescribeBucketsError =
 /**
  * Retrieves (queries) statistical data and other information about one or more S3 buckets that Amazon Macie monitors and analyzes for an account.
  */
-export const describeBuckets: API.OperationMethod<
+export const describeBuckets: API.PaginatedOperationMethod<
   DescribeBucketsRequest,
   DescribeBucketsResponse,
   DescribeBucketsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeBucketsRequest,
-  ) => stream.Stream<
-    DescribeBucketsResponse,
-    DescribeBucketsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeBucketsRequest,
-  ) => stream.Stream<
-    BucketMetadata,
-    DescribeBucketsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  BucketMetadata
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeBucketsRequest,
   output: DescribeBucketsResponse,
   errors: [
@@ -6885,27 +6870,13 @@ export type GetUsageStatisticsError =
 /**
  * Retrieves (queries) quotas and aggregated usage data for one or more accounts.
  */
-export const getUsageStatistics: API.OperationMethod<
+export const getUsageStatistics: API.PaginatedOperationMethod<
   GetUsageStatisticsRequest,
   GetUsageStatisticsResponse,
   GetUsageStatisticsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetUsageStatisticsRequest,
-  ) => stream.Stream<
-    GetUsageStatisticsResponse,
-    GetUsageStatisticsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetUsageStatisticsRequest,
-  ) => stream.Stream<
-    UsageRecord,
-    GetUsageStatisticsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  UsageRecord
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetUsageStatisticsRequest,
   output: GetUsageStatisticsResponse,
   errors: [
@@ -6971,27 +6942,13 @@ export type ListAllowListsError =
 /**
  * Retrieves a subset of information about all the allow lists for an account.
  */
-export const listAllowLists: API.OperationMethod<
+export const listAllowLists: API.PaginatedOperationMethod<
   ListAllowListsRequest,
   ListAllowListsResponse,
   ListAllowListsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAllowListsRequest,
-  ) => stream.Stream<
-    ListAllowListsResponse,
-    ListAllowListsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAllowListsRequest,
-  ) => stream.Stream<
-    AllowListSummary,
-    ListAllowListsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AllowListSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAllowListsRequest,
   output: ListAllowListsResponse,
   errors: [
@@ -7021,27 +6978,13 @@ export type ListAutomatedDiscoveryAccountsError =
 /**
  * Retrieves the status of automated sensitive data discovery for one or more accounts.
  */
-export const listAutomatedDiscoveryAccounts: API.OperationMethod<
+export const listAutomatedDiscoveryAccounts: API.PaginatedOperationMethod<
   ListAutomatedDiscoveryAccountsRequest,
   ListAutomatedDiscoveryAccountsResponse,
   ListAutomatedDiscoveryAccountsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAutomatedDiscoveryAccountsRequest,
-  ) => stream.Stream<
-    ListAutomatedDiscoveryAccountsResponse,
-    ListAutomatedDiscoveryAccountsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAutomatedDiscoveryAccountsRequest,
-  ) => stream.Stream<
-    AutomatedDiscoveryAccount,
-    ListAutomatedDiscoveryAccountsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AutomatedDiscoveryAccount
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAutomatedDiscoveryAccountsRequest,
   output: ListAutomatedDiscoveryAccountsResponse,
   errors: [
@@ -7074,27 +7017,13 @@ export type ListClassificationJobsError =
 /**
  * Retrieves a subset of information about one or more classification jobs.
  */
-export const listClassificationJobs: API.OperationMethod<
+export const listClassificationJobs: API.PaginatedOperationMethod<
   ListClassificationJobsRequest,
   ListClassificationJobsResponse,
   ListClassificationJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListClassificationJobsRequest,
-  ) => stream.Stream<
-    ListClassificationJobsResponse,
-    ListClassificationJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListClassificationJobsRequest,
-  ) => stream.Stream<
-    JobSummary,
-    ListClassificationJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  JobSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListClassificationJobsRequest,
   output: ListClassificationJobsResponse,
   errors: [
@@ -7126,27 +7055,13 @@ export type ListClassificationScopesError =
 /**
  * Retrieves a subset of information about the classification scope for an account.
  */
-export const listClassificationScopes: API.OperationMethod<
+export const listClassificationScopes: API.PaginatedOperationMethod<
   ListClassificationScopesRequest,
   ListClassificationScopesResponse,
   ListClassificationScopesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListClassificationScopesRequest,
-  ) => stream.Stream<
-    ListClassificationScopesResponse,
-    ListClassificationScopesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListClassificationScopesRequest,
-  ) => stream.Stream<
-    ClassificationScopeSummary,
-    ListClassificationScopesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ClassificationScopeSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListClassificationScopesRequest,
   output: ListClassificationScopesResponse,
   errors: [
@@ -7177,27 +7092,13 @@ export type ListCustomDataIdentifiersError =
 /**
  * Retrieves a subset of information about the custom data identifiers for an account.
  */
-export const listCustomDataIdentifiers: API.OperationMethod<
+export const listCustomDataIdentifiers: API.PaginatedOperationMethod<
   ListCustomDataIdentifiersRequest,
   ListCustomDataIdentifiersResponse,
   ListCustomDataIdentifiersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCustomDataIdentifiersRequest,
-  ) => stream.Stream<
-    ListCustomDataIdentifiersResponse,
-    ListCustomDataIdentifiersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCustomDataIdentifiersRequest,
-  ) => stream.Stream<
-    CustomDataIdentifierSummary,
-    ListCustomDataIdentifiersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  CustomDataIdentifierSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCustomDataIdentifiersRequest,
   output: ListCustomDataIdentifiersResponse,
   errors: [
@@ -7232,27 +7133,13 @@ export type ListFindingsError =
 /**
  * Retrieves a subset of information about one or more findings.
  */
-export const listFindings: API.OperationMethod<
+export const listFindings: API.PaginatedOperationMethod<
   ListFindingsRequest,
   ListFindingsResponse,
   ListFindingsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListFindingsRequest,
-  ) => stream.Stream<
-    ListFindingsResponse,
-    ListFindingsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListFindingsRequest,
-  ) => stream.Stream<
-    string,
-    ListFindingsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  string
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFindingsRequest,
   output: ListFindingsResponse,
   errors: [
@@ -7287,27 +7174,13 @@ export type ListFindingsFiltersError =
 /**
  * Retrieves a subset of information about all the findings filters for an account.
  */
-export const listFindingsFilters: API.OperationMethod<
+export const listFindingsFilters: API.PaginatedOperationMethod<
   ListFindingsFiltersRequest,
   ListFindingsFiltersResponse,
   ListFindingsFiltersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListFindingsFiltersRequest,
-  ) => stream.Stream<
-    ListFindingsFiltersResponse,
-    ListFindingsFiltersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListFindingsFiltersRequest,
-  ) => stream.Stream<
-    FindingsFilterListItem,
-    ListFindingsFiltersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  FindingsFilterListItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFindingsFiltersRequest,
   output: ListFindingsFiltersResponse,
   errors: [
@@ -7342,27 +7215,13 @@ export type ListInvitationsError =
 /**
  * Retrieves information about Amazon Macie membership invitations that were received by an account.
  */
-export const listInvitations: API.OperationMethod<
+export const listInvitations: API.PaginatedOperationMethod<
   ListInvitationsRequest,
   ListInvitationsResponse,
   ListInvitationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListInvitationsRequest,
-  ) => stream.Stream<
-    ListInvitationsResponse,
-    ListInvitationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListInvitationsRequest,
-  ) => stream.Stream<
-    Invitation,
-    ListInvitationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Invitation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListInvitationsRequest,
   output: ListInvitationsResponse,
   errors: [
@@ -7389,27 +7248,13 @@ export type ListManagedDataIdentifiersError = CommonErrors;
 /**
  * Retrieves information about all the managed data identifiers that Amazon Macie currently provides.
  */
-export const listManagedDataIdentifiers: API.OperationMethod<
+export const listManagedDataIdentifiers: API.PaginatedOperationMethod<
   ListManagedDataIdentifiersRequest,
   ListManagedDataIdentifiersResponse,
   ListManagedDataIdentifiersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListManagedDataIdentifiersRequest,
-  ) => stream.Stream<
-    ListManagedDataIdentifiersResponse,
-    ListManagedDataIdentifiersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListManagedDataIdentifiersRequest,
-  ) => stream.Stream<
-    ManagedDataIdentifierSummary,
-    ListManagedDataIdentifiersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ManagedDataIdentifierSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListManagedDataIdentifiersRequest,
   output: ListManagedDataIdentifiersResponse,
   errors: [],
@@ -7435,27 +7280,13 @@ export type ListMembersError =
 /**
  * Retrieves information about the accounts that are associated with an Amazon Macie administrator account.
  */
-export const listMembers: API.OperationMethod<
+export const listMembers: API.PaginatedOperationMethod<
   ListMembersRequest,
   ListMembersResponse,
   ListMembersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListMembersRequest,
-  ) => stream.Stream<
-    ListMembersResponse,
-    ListMembersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListMembersRequest,
-  ) => stream.Stream<
-    Member,
-    ListMembersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Member
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMembersRequest,
   output: ListMembersResponse,
   errors: [
@@ -7490,27 +7321,13 @@ export type ListOrganizationAdminAccountsError =
 /**
  * Retrieves information about the delegated Amazon Macie administrator account for an organization in Organizations.
  */
-export const listOrganizationAdminAccounts: API.OperationMethod<
+export const listOrganizationAdminAccounts: API.PaginatedOperationMethod<
   ListOrganizationAdminAccountsRequest,
   ListOrganizationAdminAccountsResponse,
   ListOrganizationAdminAccountsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListOrganizationAdminAccountsRequest,
-  ) => stream.Stream<
-    ListOrganizationAdminAccountsResponse,
-    ListOrganizationAdminAccountsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListOrganizationAdminAccountsRequest,
-  ) => stream.Stream<
-    AdminAccount,
-    ListOrganizationAdminAccountsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AdminAccount
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationAdminAccountsRequest,
   output: ListOrganizationAdminAccountsResponse,
   errors: [
@@ -7543,27 +7360,13 @@ export type ListResourceProfileArtifactsError =
 /**
  * Retrieves information about objects that Amazon Macie selected from an S3 bucket for automated sensitive data discovery.
  */
-export const listResourceProfileArtifacts: API.OperationMethod<
+export const listResourceProfileArtifacts: API.PaginatedOperationMethod<
   ListResourceProfileArtifactsRequest,
   ListResourceProfileArtifactsResponse,
   ListResourceProfileArtifactsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListResourceProfileArtifactsRequest,
-  ) => stream.Stream<
-    ListResourceProfileArtifactsResponse,
-    ListResourceProfileArtifactsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListResourceProfileArtifactsRequest,
-  ) => stream.Stream<
-    ResourceProfileArtifact,
-    ListResourceProfileArtifactsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ResourceProfileArtifact
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListResourceProfileArtifactsRequest,
   output: ListResourceProfileArtifactsResponse,
   errors: [
@@ -7594,27 +7397,13 @@ export type ListResourceProfileDetectionsError =
 /**
  * Retrieves information about the types and amount of sensitive data that Amazon Macie found in an S3 bucket.
  */
-export const listResourceProfileDetections: API.OperationMethod<
+export const listResourceProfileDetections: API.PaginatedOperationMethod<
   ListResourceProfileDetectionsRequest,
   ListResourceProfileDetectionsResponse,
   ListResourceProfileDetectionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListResourceProfileDetectionsRequest,
-  ) => stream.Stream<
-    ListResourceProfileDetectionsResponse,
-    ListResourceProfileDetectionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListResourceProfileDetectionsRequest,
-  ) => stream.Stream<
-    Detection,
-    ListResourceProfileDetectionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Detection
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListResourceProfileDetectionsRequest,
   output: ListResourceProfileDetectionsResponse,
   errors: [
@@ -7646,27 +7435,13 @@ export type ListSensitivityInspectionTemplatesError =
 /**
  * Retrieves a subset of information about the sensitivity inspection template for an account.
  */
-export const listSensitivityInspectionTemplates: API.OperationMethod<
+export const listSensitivityInspectionTemplates: API.PaginatedOperationMethod<
   ListSensitivityInspectionTemplatesRequest,
   ListSensitivityInspectionTemplatesResponse,
   ListSensitivityInspectionTemplatesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSensitivityInspectionTemplatesRequest,
-  ) => stream.Stream<
-    ListSensitivityInspectionTemplatesResponse,
-    ListSensitivityInspectionTemplatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSensitivityInspectionTemplatesRequest,
-  ) => stream.Stream<
-    SensitivityInspectionTemplatesEntry,
-    ListSensitivityInspectionTemplatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  SensitivityInspectionTemplatesEntry
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSensitivityInspectionTemplatesRequest,
   output: ListSensitivityInspectionTemplatesResponse,
   errors: [
@@ -7785,27 +7560,13 @@ export type SearchResourcesError =
 /**
  * Retrieves (queries) statistical data and other information about Amazon Web Services resources that Amazon Macie monitors and analyzes for an account.
  */
-export const searchResources: API.OperationMethod<
+export const searchResources: API.PaginatedOperationMethod<
   SearchResourcesRequest,
   SearchResourcesResponse,
   SearchResourcesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: SearchResourcesRequest,
-  ) => stream.Stream<
-    SearchResourcesResponse,
-    SearchResourcesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: SearchResourcesRequest,
-  ) => stream.Stream<
-    MatchingResource,
-    SearchResourcesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  MatchingResource
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchResourcesRequest,
   output: SearchResourcesResponse,
   errors: [

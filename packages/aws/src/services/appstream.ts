@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -5454,27 +5453,13 @@ export type DescribeAppBlockBuilderAppBlockAssociationsError =
 /**
  * Retrieves a list that describes one or more app block builder associations.
  */
-export const describeAppBlockBuilderAppBlockAssociations: API.OperationMethod<
+export const describeAppBlockBuilderAppBlockAssociations: API.PaginatedOperationMethod<
   DescribeAppBlockBuilderAppBlockAssociationsRequest,
   DescribeAppBlockBuilderAppBlockAssociationsResult,
   DescribeAppBlockBuilderAppBlockAssociationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeAppBlockBuilderAppBlockAssociationsRequest,
-  ) => stream.Stream<
-    DescribeAppBlockBuilderAppBlockAssociationsResult,
-    DescribeAppBlockBuilderAppBlockAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeAppBlockBuilderAppBlockAssociationsRequest,
-  ) => stream.Stream<
-    unknown,
-    DescribeAppBlockBuilderAppBlockAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeAppBlockBuilderAppBlockAssociationsRequest,
   output: DescribeAppBlockBuilderAppBlockAssociationsResult,
   errors: [
@@ -5498,27 +5483,13 @@ export type DescribeAppBlockBuildersError =
 /**
  * Retrieves a list that describes one or more app block builders.
  */
-export const describeAppBlockBuilders: API.OperationMethod<
+export const describeAppBlockBuilders: API.PaginatedOperationMethod<
   DescribeAppBlockBuildersRequest,
   DescribeAppBlockBuildersResult,
   DescribeAppBlockBuildersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeAppBlockBuildersRequest,
-  ) => stream.Stream<
-    DescribeAppBlockBuildersResult,
-    DescribeAppBlockBuildersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeAppBlockBuildersRequest,
-  ) => stream.Stream<
-    unknown,
-    DescribeAppBlockBuildersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeAppBlockBuildersRequest,
   output: DescribeAppBlockBuildersResult,
   errors: [OperationNotPermittedException, ResourceNotFoundException],
@@ -5716,27 +5687,13 @@ export type DescribeImagePermissionsError =
 /**
  * Retrieves a list that describes the permissions for shared AWS account IDs on a private image that you own.
  */
-export const describeImagePermissions: API.OperationMethod<
+export const describeImagePermissions: API.PaginatedOperationMethod<
   DescribeImagePermissionsRequest,
   DescribeImagePermissionsResult,
   DescribeImagePermissionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeImagePermissionsRequest,
-  ) => stream.Stream<
-    DescribeImagePermissionsResult,
-    DescribeImagePermissionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeImagePermissionsRequest,
-  ) => stream.Stream<
-    unknown,
-    DescribeImagePermissionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeImagePermissionsRequest,
   output: DescribeImagePermissionsResult,
   errors: [ResourceNotFoundException],
@@ -5757,27 +5714,13 @@ export type DescribeImagesError =
 /**
  * Retrieves a list that describes one or more specified images, if the image names or image ARNs are provided. Otherwise, all images in the account are described.
  */
-export const describeImages: API.OperationMethod<
+export const describeImages: API.PaginatedOperationMethod<
   DescribeImagesRequest,
   DescribeImagesResult,
   DescribeImagesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeImagesRequest,
-  ) => stream.Stream<
-    DescribeImagesResult,
-    DescribeImagesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeImagesRequest,
-  ) => stream.Stream<
-    unknown,
-    DescribeImagesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeImagesRequest,
   output: DescribeImagesResult,
   errors: [InvalidParameterCombinationException, ResourceNotFoundException],

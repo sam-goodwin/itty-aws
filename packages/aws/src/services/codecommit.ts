@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -6005,27 +6004,13 @@ export type DescribeMergeConflictsError =
  * commit specifiers using the squash or three-way merge strategy. If the merge option for
  * the attempted merge is specified as FAST_FORWARD_MERGE, an exception is thrown.
  */
-export const describeMergeConflicts: API.OperationMethod<
+export const describeMergeConflicts: API.PaginatedOperationMethod<
   DescribeMergeConflictsInput,
   DescribeMergeConflictsOutput,
   DescribeMergeConflictsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeMergeConflictsInput,
-  ) => stream.Stream<
-    DescribeMergeConflictsOutput,
-    DescribeMergeConflictsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeMergeConflictsInput,
-  ) => stream.Stream<
-    unknown,
-    DescribeMergeConflictsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeMergeConflictsInput,
   output: DescribeMergeConflictsOutput,
   errors: [
@@ -6081,27 +6066,13 @@ export type DescribePullRequestEventsError =
 /**
  * Returns information about one or more pull request events.
  */
-export const describePullRequestEvents: API.OperationMethod<
+export const describePullRequestEvents: API.PaginatedOperationMethod<
   DescribePullRequestEventsInput,
   DescribePullRequestEventsOutput,
   DescribePullRequestEventsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribePullRequestEventsInput,
-  ) => stream.Stream<
-    DescribePullRequestEventsOutput,
-    DescribePullRequestEventsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribePullRequestEventsInput,
-  ) => stream.Stream<
-    unknown,
-    DescribePullRequestEventsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribePullRequestEventsInput,
   output: DescribePullRequestEventsOutput,
   errors: [
@@ -6381,27 +6352,13 @@ export type GetCommentReactionsError =
 /**
  * Returns information about reactions to a specified comment ID. Reactions from users who have been deleted will not be included in the count.
  */
-export const getCommentReactions: API.OperationMethod<
+export const getCommentReactions: API.PaginatedOperationMethod<
   GetCommentReactionsInput,
   GetCommentReactionsOutput,
   GetCommentReactionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetCommentReactionsInput,
-  ) => stream.Stream<
-    GetCommentReactionsOutput,
-    GetCommentReactionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetCommentReactionsInput,
-  ) => stream.Stream<
-    unknown,
-    GetCommentReactionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetCommentReactionsInput,
   output: GetCommentReactionsOutput,
   errors: [
@@ -6444,27 +6401,13 @@ export type GetCommentsForComparedCommitError =
  * Reaction counts might include numbers from user identities who were deleted after the reaction was made. For a count of
  * reactions from active identities, use GetCommentReactions.
  */
-export const getCommentsForComparedCommit: API.OperationMethod<
+export const getCommentsForComparedCommit: API.PaginatedOperationMethod<
   GetCommentsForComparedCommitInput,
   GetCommentsForComparedCommitOutput,
   GetCommentsForComparedCommitError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetCommentsForComparedCommitInput,
-  ) => stream.Stream<
-    GetCommentsForComparedCommitOutput,
-    GetCommentsForComparedCommitError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetCommentsForComparedCommitInput,
-  ) => stream.Stream<
-    unknown,
-    GetCommentsForComparedCommitError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetCommentsForComparedCommitInput,
   output: GetCommentsForComparedCommitOutput,
   errors: [
@@ -6517,27 +6460,13 @@ export type GetCommentsForPullRequestError =
  * Reaction counts might include numbers from user identities who were deleted after the reaction was made. For a count of
  * reactions from active identities, use GetCommentReactions.
  */
-export const getCommentsForPullRequest: API.OperationMethod<
+export const getCommentsForPullRequest: API.PaginatedOperationMethod<
   GetCommentsForPullRequestInput,
   GetCommentsForPullRequestOutput,
   GetCommentsForPullRequestError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetCommentsForPullRequestInput,
-  ) => stream.Stream<
-    GetCommentsForPullRequestOutput,
-    GetCommentsForPullRequestError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetCommentsForPullRequestInput,
-  ) => stream.Stream<
-    unknown,
-    GetCommentsForPullRequestError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetCommentsForPullRequestInput,
   output: GetCommentsForPullRequestOutput,
   errors: [
@@ -6634,27 +6563,13 @@ export type GetDifferencesError =
  * branch, tag, HEAD, commit ID, or other fully qualified reference). Results can be
  * limited to a specified path.
  */
-export const getDifferences: API.OperationMethod<
+export const getDifferences: API.PaginatedOperationMethod<
   GetDifferencesInput,
   GetDifferencesOutput,
   GetDifferencesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetDifferencesInput,
-  ) => stream.Stream<
-    GetDifferencesOutput,
-    GetDifferencesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetDifferencesInput,
-  ) => stream.Stream<
-    unknown,
-    GetDifferencesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetDifferencesInput,
   output: GetDifferencesOutput,
   errors: [
@@ -6852,27 +6767,13 @@ export type GetMergeConflictsError =
 /**
  * Returns information about merge conflicts between the before and after commit IDs for a pull request in a repository.
  */
-export const getMergeConflicts: API.OperationMethod<
+export const getMergeConflicts: API.PaginatedOperationMethod<
   GetMergeConflictsInput,
   GetMergeConflictsOutput,
   GetMergeConflictsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetMergeConflictsInput,
-  ) => stream.Stream<
-    GetMergeConflictsOutput,
-    GetMergeConflictsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetMergeConflictsInput,
-  ) => stream.Stream<
-    unknown,
-    GetMergeConflictsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetMergeConflictsInput,
   output: GetMergeConflictsOutput,
   errors: [
@@ -7167,27 +7068,13 @@ export type ListApprovalRuleTemplatesError =
  * Lists all approval rule templates in the specified Amazon Web Services Region in your Amazon Web Services account. If
  * an Amazon Web Services Region is not specified, the Amazon Web Services Region where you are signed in is used.
  */
-export const listApprovalRuleTemplates: API.OperationMethod<
+export const listApprovalRuleTemplates: API.PaginatedOperationMethod<
   ListApprovalRuleTemplatesInput,
   ListApprovalRuleTemplatesOutput,
   ListApprovalRuleTemplatesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListApprovalRuleTemplatesInput,
-  ) => stream.Stream<
-    ListApprovalRuleTemplatesOutput,
-    ListApprovalRuleTemplatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListApprovalRuleTemplatesInput,
-  ) => stream.Stream<
-    unknown,
-    ListApprovalRuleTemplatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListApprovalRuleTemplatesInput,
   output: ListApprovalRuleTemplatesOutput,
   errors: [InvalidContinuationTokenException, InvalidMaxResultsException],
@@ -7216,27 +7103,13 @@ export type ListAssociatedApprovalRuleTemplatesForRepositoryError =
 /**
  * Lists all approval rule templates that are associated with a specified repository.
  */
-export const listAssociatedApprovalRuleTemplatesForRepository: API.OperationMethod<
+export const listAssociatedApprovalRuleTemplatesForRepository: API.PaginatedOperationMethod<
   ListAssociatedApprovalRuleTemplatesForRepositoryInput,
   ListAssociatedApprovalRuleTemplatesForRepositoryOutput,
   ListAssociatedApprovalRuleTemplatesForRepositoryError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAssociatedApprovalRuleTemplatesForRepositoryInput,
-  ) => stream.Stream<
-    ListAssociatedApprovalRuleTemplatesForRepositoryOutput,
-    ListAssociatedApprovalRuleTemplatesForRepositoryError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAssociatedApprovalRuleTemplatesForRepositoryInput,
-  ) => stream.Stream<
-    unknown,
-    ListAssociatedApprovalRuleTemplatesForRepositoryError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAssociatedApprovalRuleTemplatesForRepositoryInput,
   output: ListAssociatedApprovalRuleTemplatesForRepositoryOutput,
   errors: [
@@ -7275,27 +7148,13 @@ export type ListBranchesError =
 /**
  * Gets information about one or more branches in a repository.
  */
-export const listBranches: API.OperationMethod<
+export const listBranches: API.PaginatedOperationMethod<
   ListBranchesInput,
   ListBranchesOutput,
   ListBranchesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListBranchesInput,
-  ) => stream.Stream<
-    ListBranchesOutput,
-    ListBranchesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListBranchesInput,
-  ) => stream.Stream<
-    BranchName,
-    ListBranchesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  BranchName
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBranchesInput,
   output: ListBranchesOutput,
   errors: [
@@ -7338,27 +7197,13 @@ export type ListFileCommitHistoryError =
 /**
  * Retrieves a list of commits and changes to a specified file.
  */
-export const listFileCommitHistory: API.OperationMethod<
+export const listFileCommitHistory: API.PaginatedOperationMethod<
   ListFileCommitHistoryRequest,
   ListFileCommitHistoryResponse,
   ListFileCommitHistoryError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListFileCommitHistoryRequest,
-  ) => stream.Stream<
-    ListFileCommitHistoryResponse,
-    ListFileCommitHistoryError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListFileCommitHistoryRequest,
-  ) => stream.Stream<
-    unknown,
-    ListFileCommitHistoryError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFileCommitHistoryRequest,
   output: ListFileCommitHistoryResponse,
   errors: [
@@ -7406,27 +7251,13 @@ export type ListPullRequestsError =
  * Returns a list of pull requests for a specified repository. The return list can be refined by pull request
  * status or pull request author ARN.
  */
-export const listPullRequests: API.OperationMethod<
+export const listPullRequests: API.PaginatedOperationMethod<
   ListPullRequestsInput,
   ListPullRequestsOutput,
   ListPullRequestsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPullRequestsInput,
-  ) => stream.Stream<
-    ListPullRequestsOutput,
-    ListPullRequestsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPullRequestsInput,
-  ) => stream.Stream<
-    unknown,
-    ListPullRequestsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPullRequestsInput,
   output: ListPullRequestsOutput,
   errors: [
@@ -7462,27 +7293,13 @@ export type ListRepositoriesError =
 /**
  * Gets information about one or more repositories.
  */
-export const listRepositories: API.OperationMethod<
+export const listRepositories: API.PaginatedOperationMethod<
   ListRepositoriesInput,
   ListRepositoriesOutput,
   ListRepositoriesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRepositoriesInput,
-  ) => stream.Stream<
-    ListRepositoriesOutput,
-    ListRepositoriesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRepositoriesInput,
-  ) => stream.Stream<
-    RepositoryNameIdPair,
-    ListRepositoriesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  RepositoryNameIdPair
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRepositoriesInput,
   output: ListRepositoriesOutput,
   errors: [
@@ -7515,27 +7332,13 @@ export type ListRepositoriesForApprovalRuleTemplateError =
 /**
  * Lists all repositories associated with the specified approval rule template.
  */
-export const listRepositoriesForApprovalRuleTemplate: API.OperationMethod<
+export const listRepositoriesForApprovalRuleTemplate: API.PaginatedOperationMethod<
   ListRepositoriesForApprovalRuleTemplateInput,
   ListRepositoriesForApprovalRuleTemplateOutput,
   ListRepositoriesForApprovalRuleTemplateError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRepositoriesForApprovalRuleTemplateInput,
-  ) => stream.Stream<
-    ListRepositoriesForApprovalRuleTemplateOutput,
-    ListRepositoriesForApprovalRuleTemplateError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRepositoriesForApprovalRuleTemplateInput,
-  ) => stream.Stream<
-    unknown,
-    ListRepositoriesForApprovalRuleTemplateError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRepositoriesForApprovalRuleTemplateInput,
   output: ListRepositoriesForApprovalRuleTemplateOutput,
   errors: [

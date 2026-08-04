@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -2840,27 +2839,13 @@ export type ListBlueprintsError =
 /**
  * Lists all existing Amazon Bedrock Data Automation Blueprints
  */
-export const listBlueprints: API.OperationMethod<
+export const listBlueprints: API.PaginatedOperationMethod<
   ListBlueprintsRequest,
   ListBlueprintsResponse,
   ListBlueprintsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListBlueprintsRequest,
-  ) => stream.Stream<
-    ListBlueprintsResponse,
-    ListBlueprintsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListBlueprintsRequest,
-  ) => stream.Stream<
-    BlueprintSummary,
-    ListBlueprintsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  BlueprintSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBlueprintsRequest,
   output: ListBlueprintsResponse,
   errors: [
@@ -2890,27 +2875,13 @@ export type ListDataAutomationLibrariesError =
 /**
  * Lists all existing Amazon Bedrock Data Automation Libraries
  */
-export const listDataAutomationLibraries: API.OperationMethod<
+export const listDataAutomationLibraries: API.PaginatedOperationMethod<
   ListDataAutomationLibrariesRequest,
   ListDataAutomationLibrariesResponse,
   ListDataAutomationLibrariesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDataAutomationLibrariesRequest,
-  ) => stream.Stream<
-    ListDataAutomationLibrariesResponse,
-    ListDataAutomationLibrariesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDataAutomationLibrariesRequest,
-  ) => stream.Stream<
-    DataAutomationLibrarySummary,
-    ListDataAutomationLibrariesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  DataAutomationLibrarySummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDataAutomationLibrariesRequest,
   output: ListDataAutomationLibrariesResponse,
   errors: [
@@ -2940,27 +2911,13 @@ export type ListDataAutomationLibraryEntitiesError =
 /**
  * Lists all stored entities in the library
  */
-export const listDataAutomationLibraryEntities: API.OperationMethod<
+export const listDataAutomationLibraryEntities: API.PaginatedOperationMethod<
   ListDataAutomationLibraryEntitiesRequest,
   ListDataAutomationLibraryEntitiesResponse,
   ListDataAutomationLibraryEntitiesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDataAutomationLibraryEntitiesRequest,
-  ) => stream.Stream<
-    ListDataAutomationLibraryEntitiesResponse,
-    ListDataAutomationLibraryEntitiesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDataAutomationLibraryEntitiesRequest,
-  ) => stream.Stream<
-    DataAutomationLibraryEntitySummary,
-    ListDataAutomationLibraryEntitiesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  DataAutomationLibraryEntitySummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDataAutomationLibraryEntitiesRequest,
   output: ListDataAutomationLibraryEntitiesResponse,
   errors: [
@@ -2991,27 +2948,13 @@ export type ListDataAutomationLibraryIngestionJobsError =
 /**
  * Lists all data automation library ingestion jobs
  */
-export const listDataAutomationLibraryIngestionJobs: API.OperationMethod<
+export const listDataAutomationLibraryIngestionJobs: API.PaginatedOperationMethod<
   ListDataAutomationLibraryIngestionJobsRequest,
   ListDataAutomationLibraryIngestionJobsResponse,
   ListDataAutomationLibraryIngestionJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDataAutomationLibraryIngestionJobsRequest,
-  ) => stream.Stream<
-    ListDataAutomationLibraryIngestionJobsResponse,
-    ListDataAutomationLibraryIngestionJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDataAutomationLibraryIngestionJobsRequest,
-  ) => stream.Stream<
-    DataAutomationLibraryIngestionJobSummary,
-    ListDataAutomationLibraryIngestionJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  DataAutomationLibraryIngestionJobSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDataAutomationLibraryIngestionJobsRequest,
   output: ListDataAutomationLibraryIngestionJobsResponse,
   errors: [
@@ -3042,27 +2985,13 @@ export type ListDataAutomationProjectsError =
 /**
  * Lists all existing Amazon Bedrock Data Automation Projects
  */
-export const listDataAutomationProjects: API.OperationMethod<
+export const listDataAutomationProjects: API.PaginatedOperationMethod<
   ListDataAutomationProjectsRequest,
   ListDataAutomationProjectsResponse,
   ListDataAutomationProjectsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDataAutomationProjectsRequest,
-  ) => stream.Stream<
-    ListDataAutomationProjectsResponse,
-    ListDataAutomationProjectsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDataAutomationProjectsRequest,
-  ) => stream.Stream<
-    DataAutomationProjectSummary,
-    ListDataAutomationProjectsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  DataAutomationProjectSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDataAutomationProjectsRequest,
   output: ListDataAutomationProjectsResponse,
   errors: [

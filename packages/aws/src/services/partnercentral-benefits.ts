@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -1602,27 +1601,13 @@ export type ListBenefitAllocationsError =
 /**
  * Retrieves a paginated list of benefit allocations based on specified filter criteria.
  */
-export const listBenefitAllocations: API.OperationMethod<
+export const listBenefitAllocations: API.PaginatedOperationMethod<
   ListBenefitAllocationsInput,
   ListBenefitAllocationsOutput,
   ListBenefitAllocationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListBenefitAllocationsInput,
-  ) => stream.Stream<
-    ListBenefitAllocationsOutput,
-    ListBenefitAllocationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListBenefitAllocationsInput,
-  ) => stream.Stream<
-    BenefitAllocationSummary,
-    ListBenefitAllocationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  BenefitAllocationSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBenefitAllocationsInput,
   output: ListBenefitAllocationsOutput,
   errors: [
@@ -1653,27 +1638,13 @@ export type ListBenefitApplicationsError =
 /**
  * Retrieves a paginated list of benefit applications based on specified filter criteria.
  */
-export const listBenefitApplications: API.OperationMethod<
+export const listBenefitApplications: API.PaginatedOperationMethod<
   ListBenefitApplicationsInput,
   ListBenefitApplicationsOutput,
   ListBenefitApplicationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListBenefitApplicationsInput,
-  ) => stream.Stream<
-    ListBenefitApplicationsOutput,
-    ListBenefitApplicationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListBenefitApplicationsInput,
-  ) => stream.Stream<
-    BenefitApplicationSummary,
-    ListBenefitApplicationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  BenefitApplicationSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBenefitApplicationsInput,
   output: ListBenefitApplicationsOutput,
   errors: [
@@ -1704,27 +1675,13 @@ export type ListBenefitsError =
 /**
  * Retrieves a paginated list of available benefits based on specified filter criteria.
  */
-export const listBenefits: API.OperationMethod<
+export const listBenefits: API.PaginatedOperationMethod<
   ListBenefitsInput,
   ListBenefitsOutput,
   ListBenefitsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListBenefitsInput,
-  ) => stream.Stream<
-    ListBenefitsOutput,
-    ListBenefitsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListBenefitsInput,
-  ) => stream.Stream<
-    BenefitSummary,
-    ListBenefitsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  BenefitSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBenefitsInput,
   output: ListBenefitsOutput,
   errors: [

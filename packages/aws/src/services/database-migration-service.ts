@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -8939,27 +8938,13 @@ export type DescribeApplicableIndividualAssessmentsError =
  * migration task. The specified task definition then determines the default list of
  * individual assessments that you can specify in an assessment run for the task.
  */
-export const describeApplicableIndividualAssessments: API.OperationMethod<
+export const describeApplicableIndividualAssessments: API.PaginatedOperationMethod<
   DescribeApplicableIndividualAssessmentsMessage,
   DescribeApplicableIndividualAssessmentsResponse,
   DescribeApplicableIndividualAssessmentsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeApplicableIndividualAssessmentsMessage,
-  ) => stream.Stream<
-    DescribeApplicableIndividualAssessmentsResponse,
-    DescribeApplicableIndividualAssessmentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeApplicableIndividualAssessmentsMessage,
-  ) => stream.Stream<
-    unknown,
-    DescribeApplicableIndividualAssessmentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeApplicableIndividualAssessmentsMessage,
   output: DescribeApplicableIndividualAssessmentsResponse,
   errors: [AccessDeniedFault, InvalidResourceStateFault, ResourceNotFoundFault],
@@ -8977,27 +8962,13 @@ export type DescribeCertificatesError = ResourceNotFoundFault | CommonErrors;
 /**
  * Provides a description of the certificate.
  */
-export const describeCertificates: API.OperationMethod<
+export const describeCertificates: API.PaginatedOperationMethod<
   DescribeCertificatesMessage,
   DescribeCertificatesResponse,
   DescribeCertificatesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeCertificatesMessage,
-  ) => stream.Stream<
-    DescribeCertificatesResponse,
-    DescribeCertificatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeCertificatesMessage,
-  ) => stream.Stream<
-    unknown,
-    DescribeCertificatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeCertificatesMessage,
   output: DescribeCertificatesResponse,
   errors: [ResourceNotFoundFault],
@@ -9016,27 +8987,13 @@ export type DescribeConnectionsError = ResourceNotFoundFault | CommonErrors;
  * Describes the status of the connections that have been made between the replication
  * instance and an endpoint. Connections are created when you test an endpoint.
  */
-export const describeConnections: API.OperationMethod<
+export const describeConnections: API.PaginatedOperationMethod<
   DescribeConnectionsMessage,
   DescribeConnectionsResponse,
   DescribeConnectionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeConnectionsMessage,
-  ) => stream.Stream<
-    DescribeConnectionsResponse,
-    DescribeConnectionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeConnectionsMessage,
-  ) => stream.Stream<
-    unknown,
-    DescribeConnectionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeConnectionsMessage,
   output: DescribeConnectionsResponse,
   errors: [ResourceNotFoundFault],
@@ -9078,27 +9035,13 @@ export type DescribeDataMigrationsError =
 /**
  * Returns information about data migrations.
  */
-export const describeDataMigrations: API.OperationMethod<
+export const describeDataMigrations: API.PaginatedOperationMethod<
   DescribeDataMigrationsMessage,
   DescribeDataMigrationsResponse,
   DescribeDataMigrationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeDataMigrationsMessage,
-  ) => stream.Stream<
-    DescribeDataMigrationsResponse,
-    DescribeDataMigrationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeDataMigrationsMessage,
-  ) => stream.Stream<
-    DataMigration,
-    DescribeDataMigrationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  DataMigration
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeDataMigrationsMessage,
   output: DescribeDataMigrationsResponse,
   errors: [
@@ -9126,27 +9069,13 @@ export type DescribeDataProvidersError =
  * Returns a paginated list of data providers for your account in the current
  * region.
  */
-export const describeDataProviders: API.OperationMethod<
+export const describeDataProviders: API.PaginatedOperationMethod<
   DescribeDataProvidersMessage,
   DescribeDataProvidersResponse,
   DescribeDataProvidersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeDataProvidersMessage,
-  ) => stream.Stream<
-    DescribeDataProvidersResponse,
-    DescribeDataProvidersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeDataProvidersMessage,
-  ) => stream.Stream<
-    unknown,
-    DescribeDataProvidersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeDataProvidersMessage,
   output: DescribeDataProvidersResponse,
   errors: [AccessDeniedFault, FailedDependencyFault, ResourceNotFoundFault],
@@ -9164,27 +9093,13 @@ export type DescribeEndpointsError = ResourceNotFoundFault | CommonErrors;
 /**
  * Returns information about the endpoints for your account in the current region.
  */
-export const describeEndpoints: API.OperationMethod<
+export const describeEndpoints: API.PaginatedOperationMethod<
   DescribeEndpointsMessage,
   DescribeEndpointsResponse,
   DescribeEndpointsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeEndpointsMessage,
-  ) => stream.Stream<
-    DescribeEndpointsResponse,
-    DescribeEndpointsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeEndpointsMessage,
-  ) => stream.Stream<
-    unknown,
-    DescribeEndpointsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeEndpointsMessage,
   output: DescribeEndpointsResponse,
   errors: [ResourceNotFoundFault],
@@ -9203,27 +9118,13 @@ export type DescribeEndpointSettingsError = CommonErrors;
  * Returns information about the possible endpoint settings available when you create an
  * endpoint for a specific database engine.
  */
-export const describeEndpointSettings: API.OperationMethod<
+export const describeEndpointSettings: API.PaginatedOperationMethod<
   DescribeEndpointSettingsMessage,
   DescribeEndpointSettingsResponse,
   DescribeEndpointSettingsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeEndpointSettingsMessage,
-  ) => stream.Stream<
-    DescribeEndpointSettingsResponse,
-    DescribeEndpointSettingsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeEndpointSettingsMessage,
-  ) => stream.Stream<
-    unknown,
-    DescribeEndpointSettingsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeEndpointSettingsMessage,
   output: DescribeEndpointSettingsResponse,
   errors: [],
@@ -9241,27 +9142,13 @@ export type DescribeEndpointTypesError = CommonErrors;
 /**
  * Returns information about the type of endpoints available.
  */
-export const describeEndpointTypes: API.OperationMethod<
+export const describeEndpointTypes: API.PaginatedOperationMethod<
   DescribeEndpointTypesMessage,
   DescribeEndpointTypesResponse,
   DescribeEndpointTypesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeEndpointTypesMessage,
-  ) => stream.Stream<
-    DescribeEndpointTypesResponse,
-    DescribeEndpointTypesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeEndpointTypesMessage,
-  ) => stream.Stream<
-    unknown,
-    DescribeEndpointTypesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeEndpointTypesMessage,
   output: DescribeEndpointTypesResponse,
   errors: [],
@@ -9279,27 +9166,13 @@ export type DescribeEngineVersionsError = CommonErrors;
 /**
  * Returns information about the replication instance versions used in the project.
  */
-export const describeEngineVersions: API.OperationMethod<
+export const describeEngineVersions: API.PaginatedOperationMethod<
   DescribeEngineVersionsMessage,
   DescribeEngineVersionsResponse,
   DescribeEngineVersionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeEngineVersionsMessage,
-  ) => stream.Stream<
-    DescribeEngineVersionsResponse,
-    DescribeEngineVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeEngineVersionsMessage,
-  ) => stream.Stream<
-    unknown,
-    DescribeEngineVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeEngineVersionsMessage,
   output: DescribeEngineVersionsResponse,
   errors: [],
@@ -9339,27 +9212,13 @@ export type DescribeEventsError = CommonErrors;
  * start and end time. For more information on DMS events, see Working with Events and
  * Notifications in the *Database Migration Service User Guide.*
  */
-export const describeEvents: API.OperationMethod<
+export const describeEvents: API.PaginatedOperationMethod<
   DescribeEventsMessage,
   DescribeEventsResponse,
   DescribeEventsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeEventsMessage,
-  ) => stream.Stream<
-    DescribeEventsResponse,
-    DescribeEventsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeEventsMessage,
-  ) => stream.Stream<
-    unknown,
-    DescribeEventsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeEventsMessage,
   output: DescribeEventsResponse,
   errors: [],
@@ -9385,27 +9244,13 @@ export type DescribeEventSubscriptionsError =
  * If you specify `SubscriptionName`, this action lists the description for that
  * subscription.
  */
-export const describeEventSubscriptions: API.OperationMethod<
+export const describeEventSubscriptions: API.PaginatedOperationMethod<
   DescribeEventSubscriptionsMessage,
   DescribeEventSubscriptionsResponse,
   DescribeEventSubscriptionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeEventSubscriptionsMessage,
-  ) => stream.Stream<
-    DescribeEventSubscriptionsResponse,
-    DescribeEventSubscriptionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeEventSubscriptionsMessage,
-  ) => stream.Stream<
-    unknown,
-    DescribeEventSubscriptionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeEventSubscriptionsMessage,
   output: DescribeEventSubscriptionsResponse,
   errors: [ResourceNotFoundFault],
@@ -9425,27 +9270,13 @@ export type DescribeExtensionPackAssociationsError = CommonErrors;
  * project. An extension pack is an add-on module that emulates functions present in a source
  * database that are required when converting objects to the target database.
  */
-export const describeExtensionPackAssociations: API.OperationMethod<
+export const describeExtensionPackAssociations: API.PaginatedOperationMethod<
   DescribeExtensionPackAssociationsMessage,
   DescribeExtensionPackAssociationsResponse,
   DescribeExtensionPackAssociationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeExtensionPackAssociationsMessage,
-  ) => stream.Stream<
-    DescribeExtensionPackAssociationsResponse,
-    DescribeExtensionPackAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeExtensionPackAssociationsMessage,
-  ) => stream.Stream<
-    unknown,
-    DescribeExtensionPackAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeExtensionPackAssociationsMessage,
   output: DescribeExtensionPackAssociationsResponse,
   errors: [],
@@ -9467,27 +9298,13 @@ export type DescribeFleetAdvisorCollectorsError =
  *
  * Returns a list of the Fleet Advisor collectors in your account.
  */
-export const describeFleetAdvisorCollectors: API.OperationMethod<
+export const describeFleetAdvisorCollectors: API.PaginatedOperationMethod<
   DescribeFleetAdvisorCollectorsRequest,
   DescribeFleetAdvisorCollectorsResponse,
   DescribeFleetAdvisorCollectorsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeFleetAdvisorCollectorsRequest,
-  ) => stream.Stream<
-    DescribeFleetAdvisorCollectorsResponse,
-    DescribeFleetAdvisorCollectorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeFleetAdvisorCollectorsRequest,
-  ) => stream.Stream<
-    unknown,
-    DescribeFleetAdvisorCollectorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeFleetAdvisorCollectorsRequest,
   output: DescribeFleetAdvisorCollectorsResponse,
   errors: [InvalidResourceStateFault],
@@ -9509,27 +9326,13 @@ export type DescribeFleetAdvisorDatabasesError =
  *
  * Returns a list of Fleet Advisor databases in your account.
  */
-export const describeFleetAdvisorDatabases: API.OperationMethod<
+export const describeFleetAdvisorDatabases: API.PaginatedOperationMethod<
   DescribeFleetAdvisorDatabasesRequest,
   DescribeFleetAdvisorDatabasesResponse,
   DescribeFleetAdvisorDatabasesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeFleetAdvisorDatabasesRequest,
-  ) => stream.Stream<
-    DescribeFleetAdvisorDatabasesResponse,
-    DescribeFleetAdvisorDatabasesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeFleetAdvisorDatabasesRequest,
-  ) => stream.Stream<
-    unknown,
-    DescribeFleetAdvisorDatabasesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeFleetAdvisorDatabasesRequest,
   output: DescribeFleetAdvisorDatabasesResponse,
   errors: [InvalidResourceStateFault],
@@ -9552,27 +9355,13 @@ export type DescribeFleetAdvisorLsaAnalysisError =
  * Provides descriptions of large-scale assessment (LSA) analyses produced by your Fleet
  * Advisor collectors.
  */
-export const describeFleetAdvisorLsaAnalysis: API.OperationMethod<
+export const describeFleetAdvisorLsaAnalysis: API.PaginatedOperationMethod<
   DescribeFleetAdvisorLsaAnalysisRequest,
   DescribeFleetAdvisorLsaAnalysisResponse,
   DescribeFleetAdvisorLsaAnalysisError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeFleetAdvisorLsaAnalysisRequest,
-  ) => stream.Stream<
-    DescribeFleetAdvisorLsaAnalysisResponse,
-    DescribeFleetAdvisorLsaAnalysisError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeFleetAdvisorLsaAnalysisRequest,
-  ) => stream.Stream<
-    unknown,
-    DescribeFleetAdvisorLsaAnalysisError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeFleetAdvisorLsaAnalysisRequest,
   output: DescribeFleetAdvisorLsaAnalysisResponse,
   errors: [InvalidResourceStateFault],
@@ -9595,27 +9384,13 @@ export type DescribeFleetAdvisorSchemaObjectSummaryError =
  * Provides descriptions of the schemas discovered by your Fleet Advisor
  * collectors.
  */
-export const describeFleetAdvisorSchemaObjectSummary: API.OperationMethod<
+export const describeFleetAdvisorSchemaObjectSummary: API.PaginatedOperationMethod<
   DescribeFleetAdvisorSchemaObjectSummaryRequest,
   DescribeFleetAdvisorSchemaObjectSummaryResponse,
   DescribeFleetAdvisorSchemaObjectSummaryError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeFleetAdvisorSchemaObjectSummaryRequest,
-  ) => stream.Stream<
-    DescribeFleetAdvisorSchemaObjectSummaryResponse,
-    DescribeFleetAdvisorSchemaObjectSummaryError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeFleetAdvisorSchemaObjectSummaryRequest,
-  ) => stream.Stream<
-    unknown,
-    DescribeFleetAdvisorSchemaObjectSummaryError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeFleetAdvisorSchemaObjectSummaryRequest,
   output: DescribeFleetAdvisorSchemaObjectSummaryResponse,
   errors: [InvalidResourceStateFault],
@@ -9637,27 +9412,13 @@ export type DescribeFleetAdvisorSchemasError =
  *
  * Returns a list of schemas detected by Fleet Advisor Collectors in your account.
  */
-export const describeFleetAdvisorSchemas: API.OperationMethod<
+export const describeFleetAdvisorSchemas: API.PaginatedOperationMethod<
   DescribeFleetAdvisorSchemasRequest,
   DescribeFleetAdvisorSchemasResponse,
   DescribeFleetAdvisorSchemasError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeFleetAdvisorSchemasRequest,
-  ) => stream.Stream<
-    DescribeFleetAdvisorSchemasResponse,
-    DescribeFleetAdvisorSchemasError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeFleetAdvisorSchemasRequest,
-  ) => stream.Stream<
-    unknown,
-    DescribeFleetAdvisorSchemasError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeFleetAdvisorSchemasRequest,
   output: DescribeFleetAdvisorSchemasResponse,
   errors: [InvalidResourceStateFault],
@@ -9680,27 +9441,13 @@ export type DescribeInstanceProfilesError =
  * Returns a paginated list of instance profiles for your account in the current
  * region.
  */
-export const describeInstanceProfiles: API.OperationMethod<
+export const describeInstanceProfiles: API.PaginatedOperationMethod<
   DescribeInstanceProfilesMessage,
   DescribeInstanceProfilesResponse,
   DescribeInstanceProfilesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeInstanceProfilesMessage,
-  ) => stream.Stream<
-    DescribeInstanceProfilesResponse,
-    DescribeInstanceProfilesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeInstanceProfilesMessage,
-  ) => stream.Stream<
-    unknown,
-    DescribeInstanceProfilesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeInstanceProfilesMessage,
   output: DescribeInstanceProfilesResponse,
   errors: [AccessDeniedFault, FailedDependencyFault, ResourceNotFoundFault],
@@ -9742,27 +9489,13 @@ export type DescribeMetadataModelAssessmentsError =
  * Returns a paginated list of metadata model assessments for your account in the current
  * region.
  */
-export const describeMetadataModelAssessments: API.OperationMethod<
+export const describeMetadataModelAssessments: API.PaginatedOperationMethod<
   DescribeMetadataModelAssessmentsMessage,
   DescribeMetadataModelAssessmentsResponse,
   DescribeMetadataModelAssessmentsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeMetadataModelAssessmentsMessage,
-  ) => stream.Stream<
-    DescribeMetadataModelAssessmentsResponse,
-    DescribeMetadataModelAssessmentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeMetadataModelAssessmentsMessage,
-  ) => stream.Stream<
-    unknown,
-    DescribeMetadataModelAssessmentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeMetadataModelAssessmentsMessage,
   output: DescribeMetadataModelAssessmentsResponse,
   errors: [ResourceNotFoundFault],
@@ -9783,27 +9516,13 @@ export type DescribeMetadataModelChildrenError =
 /**
  * Gets a list of child metadata models for the specified metadata model in the database hierarchy.
  */
-export const describeMetadataModelChildren: API.OperationMethod<
+export const describeMetadataModelChildren: API.PaginatedOperationMethod<
   DescribeMetadataModelChildrenMessage,
   DescribeMetadataModelChildrenResponse,
   DescribeMetadataModelChildrenError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeMetadataModelChildrenMessage,
-  ) => stream.Stream<
-    DescribeMetadataModelChildrenResponse,
-    DescribeMetadataModelChildrenError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeMetadataModelChildrenMessage,
-  ) => stream.Stream<
-    MetadataModelReference,
-    DescribeMetadataModelChildrenError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  MetadataModelReference
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeMetadataModelChildrenMessage,
   output: DescribeMetadataModelChildrenResponse,
   errors: [AccessDeniedFault, ResourceNotFoundFault],
@@ -9824,27 +9543,13 @@ export type DescribeMetadataModelConversionsError =
 /**
  * Returns a paginated list of metadata model conversions for a migration project.
  */
-export const describeMetadataModelConversions: API.OperationMethod<
+export const describeMetadataModelConversions: API.PaginatedOperationMethod<
   DescribeMetadataModelConversionsMessage,
   DescribeMetadataModelConversionsResponse,
   DescribeMetadataModelConversionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeMetadataModelConversionsMessage,
-  ) => stream.Stream<
-    DescribeMetadataModelConversionsResponse,
-    DescribeMetadataModelConversionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeMetadataModelConversionsMessage,
-  ) => stream.Stream<
-    unknown,
-    DescribeMetadataModelConversionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeMetadataModelConversionsMessage,
   output: DescribeMetadataModelConversionsResponse,
   errors: [ResourceNotFoundFault],
@@ -9865,27 +9570,13 @@ export type DescribeMetadataModelCreationsError =
 /**
  * Returns a paginated list of metadata model creation requests for a migration project.
  */
-export const describeMetadataModelCreations: API.OperationMethod<
+export const describeMetadataModelCreations: API.PaginatedOperationMethod<
   DescribeMetadataModelCreationsMessage,
   DescribeMetadataModelCreationsResponse,
   DescribeMetadataModelCreationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeMetadataModelCreationsMessage,
-  ) => stream.Stream<
-    DescribeMetadataModelCreationsResponse,
-    DescribeMetadataModelCreationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeMetadataModelCreationsMessage,
-  ) => stream.Stream<
-    SchemaConversionRequest,
-    DescribeMetadataModelCreationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  SchemaConversionRequest
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeMetadataModelCreationsMessage,
   output: DescribeMetadataModelCreationsResponse,
   errors: [AccessDeniedFault, ResourceNotFoundFault],
@@ -9906,27 +9597,13 @@ export type DescribeMetadataModelExportsAsScriptError =
 /**
  * Returns a paginated list of metadata model exports.
  */
-export const describeMetadataModelExportsAsScript: API.OperationMethod<
+export const describeMetadataModelExportsAsScript: API.PaginatedOperationMethod<
   DescribeMetadataModelExportsAsScriptMessage,
   DescribeMetadataModelExportsAsScriptResponse,
   DescribeMetadataModelExportsAsScriptError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeMetadataModelExportsAsScriptMessage,
-  ) => stream.Stream<
-    DescribeMetadataModelExportsAsScriptResponse,
-    DescribeMetadataModelExportsAsScriptError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeMetadataModelExportsAsScriptMessage,
-  ) => stream.Stream<
-    unknown,
-    DescribeMetadataModelExportsAsScriptError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeMetadataModelExportsAsScriptMessage,
   output: DescribeMetadataModelExportsAsScriptResponse,
   errors: [ResourceNotFoundFault],
@@ -9946,27 +9623,13 @@ export type DescribeMetadataModelExportsToTargetError =
 /**
  * Returns a paginated list of metadata model exports.
  */
-export const describeMetadataModelExportsToTarget: API.OperationMethod<
+export const describeMetadataModelExportsToTarget: API.PaginatedOperationMethod<
   DescribeMetadataModelExportsToTargetMessage,
   DescribeMetadataModelExportsToTargetResponse,
   DescribeMetadataModelExportsToTargetError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeMetadataModelExportsToTargetMessage,
-  ) => stream.Stream<
-    DescribeMetadataModelExportsToTargetResponse,
-    DescribeMetadataModelExportsToTargetError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeMetadataModelExportsToTargetMessage,
-  ) => stream.Stream<
-    unknown,
-    DescribeMetadataModelExportsToTargetError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeMetadataModelExportsToTargetMessage,
   output: DescribeMetadataModelExportsToTargetResponse,
   errors: [ResourceNotFoundFault],
@@ -9986,27 +9649,13 @@ export type DescribeMetadataModelImportsError =
 /**
  * Returns a paginated list of metadata model imports.
  */
-export const describeMetadataModelImports: API.OperationMethod<
+export const describeMetadataModelImports: API.PaginatedOperationMethod<
   DescribeMetadataModelImportsMessage,
   DescribeMetadataModelImportsResponse,
   DescribeMetadataModelImportsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeMetadataModelImportsMessage,
-  ) => stream.Stream<
-    DescribeMetadataModelImportsResponse,
-    DescribeMetadataModelImportsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeMetadataModelImportsMessage,
-  ) => stream.Stream<
-    unknown,
-    DescribeMetadataModelImportsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeMetadataModelImportsMessage,
   output: DescribeMetadataModelImportsResponse,
   errors: [ResourceNotFoundFault],
@@ -10029,27 +9678,13 @@ export type DescribeMigrationProjectsError =
  * Returns a paginated list of migration projects for your account in the current
  * region.
  */
-export const describeMigrationProjects: API.OperationMethod<
+export const describeMigrationProjects: API.PaginatedOperationMethod<
   DescribeMigrationProjectsMessage,
   DescribeMigrationProjectsResponse,
   DescribeMigrationProjectsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeMigrationProjectsMessage,
-  ) => stream.Stream<
-    DescribeMigrationProjectsResponse,
-    DescribeMigrationProjectsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeMigrationProjectsMessage,
-  ) => stream.Stream<
-    unknown,
-    DescribeMigrationProjectsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeMigrationProjectsMessage,
   output: DescribeMigrationProjectsResponse,
   errors: [AccessDeniedFault, FailedDependencyFault, ResourceNotFoundFault],
@@ -10068,27 +9703,13 @@ export type DescribeOrderableReplicationInstancesError = CommonErrors;
  * Returns information about the replication instance types that can be created in the
  * specified region.
  */
-export const describeOrderableReplicationInstances: API.OperationMethod<
+export const describeOrderableReplicationInstances: API.PaginatedOperationMethod<
   DescribeOrderableReplicationInstancesMessage,
   DescribeOrderableReplicationInstancesResponse,
   DescribeOrderableReplicationInstancesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeOrderableReplicationInstancesMessage,
-  ) => stream.Stream<
-    DescribeOrderableReplicationInstancesResponse,
-    DescribeOrderableReplicationInstancesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeOrderableReplicationInstancesMessage,
-  ) => stream.Stream<
-    unknown,
-    DescribeOrderableReplicationInstancesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeOrderableReplicationInstancesMessage,
   output: DescribeOrderableReplicationInstancesResponse,
   errors: [],
@@ -10109,27 +9730,13 @@ export type DescribePendingMaintenanceActionsError =
  * Returns a list of upcoming maintenance events for replication instances in your account
  * in the current Region.
  */
-export const describePendingMaintenanceActions: API.OperationMethod<
+export const describePendingMaintenanceActions: API.PaginatedOperationMethod<
   DescribePendingMaintenanceActionsMessage,
   DescribePendingMaintenanceActionsResponse,
   DescribePendingMaintenanceActionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribePendingMaintenanceActionsMessage,
-  ) => stream.Stream<
-    DescribePendingMaintenanceActionsResponse,
-    DescribePendingMaintenanceActionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribePendingMaintenanceActionsMessage,
-  ) => stream.Stream<
-    unknown,
-    DescribePendingMaintenanceActionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribePendingMaintenanceActionsMessage,
   output: DescribePendingMaintenanceActionsResponse,
   errors: [ResourceNotFoundFault],
@@ -10153,27 +9760,13 @@ export type DescribeRecommendationLimitationsError =
  * Returns a paginated list of limitations for recommendations of target Amazon Web Services
  * engines.
  */
-export const describeRecommendationLimitations: API.OperationMethod<
+export const describeRecommendationLimitations: API.PaginatedOperationMethod<
   DescribeRecommendationLimitationsRequest,
   DescribeRecommendationLimitationsResponse,
   DescribeRecommendationLimitationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeRecommendationLimitationsRequest,
-  ) => stream.Stream<
-    DescribeRecommendationLimitationsResponse,
-    DescribeRecommendationLimitationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeRecommendationLimitationsRequest,
-  ) => stream.Stream<
-    unknown,
-    DescribeRecommendationLimitationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeRecommendationLimitationsRequest,
   output: DescribeRecommendationLimitationsResponse,
   errors: [AccessDeniedFault, InvalidResourceStateFault],
@@ -10197,27 +9790,13 @@ export type DescribeRecommendationsError =
  * Returns a paginated list of target engine recommendations for your source
  * databases.
  */
-export const describeRecommendations: API.OperationMethod<
+export const describeRecommendations: API.PaginatedOperationMethod<
   DescribeRecommendationsRequest,
   DescribeRecommendationsResponse,
   DescribeRecommendationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeRecommendationsRequest,
-  ) => stream.Stream<
-    DescribeRecommendationsResponse,
-    DescribeRecommendationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeRecommendationsRequest,
-  ) => stream.Stream<
-    unknown,
-    DescribeRecommendationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeRecommendationsRequest,
   output: DescribeRecommendationsResponse,
   errors: [AccessDeniedFault, InvalidResourceStateFault],
@@ -10259,27 +9838,13 @@ export type DescribeReplicationConfigsError =
  * Returns one or more existing DMS Serverless replication configurations as a list of
  * structures.
  */
-export const describeReplicationConfigs: API.OperationMethod<
+export const describeReplicationConfigs: API.PaginatedOperationMethod<
   DescribeReplicationConfigsMessage,
   DescribeReplicationConfigsResponse,
   DescribeReplicationConfigsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeReplicationConfigsMessage,
-  ) => stream.Stream<
-    DescribeReplicationConfigsResponse,
-    DescribeReplicationConfigsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeReplicationConfigsMessage,
-  ) => stream.Stream<
-    unknown,
-    DescribeReplicationConfigsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeReplicationConfigsMessage,
   output: DescribeReplicationConfigsResponse,
   errors: [ResourceNotFoundFault],
@@ -10300,27 +9865,13 @@ export type DescribeReplicationInstancesError =
  * Returns information about replication instances for your account in the current
  * region.
  */
-export const describeReplicationInstances: API.OperationMethod<
+export const describeReplicationInstances: API.PaginatedOperationMethod<
   DescribeReplicationInstancesMessage,
   DescribeReplicationInstancesResponse,
   DescribeReplicationInstancesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeReplicationInstancesMessage,
-  ) => stream.Stream<
-    DescribeReplicationInstancesResponse,
-    DescribeReplicationInstancesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeReplicationInstancesMessage,
-  ) => stream.Stream<
-    unknown,
-    DescribeReplicationInstancesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeReplicationInstancesMessage,
   output: DescribeReplicationInstancesResponse,
   errors: [ResourceNotFoundFault],
@@ -10341,27 +9892,13 @@ export type DescribeReplicationInstanceTaskLogsError =
 /**
  * Returns information about the task logs for the specified task.
  */
-export const describeReplicationInstanceTaskLogs: API.OperationMethod<
+export const describeReplicationInstanceTaskLogs: API.PaginatedOperationMethod<
   DescribeReplicationInstanceTaskLogsMessage,
   DescribeReplicationInstanceTaskLogsResponse,
   DescribeReplicationInstanceTaskLogsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeReplicationInstanceTaskLogsMessage,
-  ) => stream.Stream<
-    DescribeReplicationInstanceTaskLogsResponse,
-    DescribeReplicationInstanceTaskLogsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeReplicationInstanceTaskLogsMessage,
-  ) => stream.Stream<
-    unknown,
-    DescribeReplicationInstanceTaskLogsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeReplicationInstanceTaskLogsMessage,
   output: DescribeReplicationInstanceTaskLogsResponse,
   errors: [InvalidResourceStateFault, ResourceNotFoundFault],
@@ -10380,27 +9917,13 @@ export type DescribeReplicationsError = ResourceNotFoundFault | CommonErrors;
  * Provides details on replication progress by returning status information for one or more
  * provisioned DMS Serverless replications.
  */
-export const describeReplications: API.OperationMethod<
+export const describeReplications: API.PaginatedOperationMethod<
   DescribeReplicationsMessage,
   DescribeReplicationsResponse,
   DescribeReplicationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeReplicationsMessage,
-  ) => stream.Stream<
-    DescribeReplicationsResponse,
-    DescribeReplicationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeReplicationsMessage,
-  ) => stream.Stream<
-    unknown,
-    DescribeReplicationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeReplicationsMessage,
   output: DescribeReplicationsResponse,
   errors: [ResourceNotFoundFault],
@@ -10420,27 +9943,13 @@ export type DescribeReplicationSubnetGroupsError =
 /**
  * Returns information about the replication subnet groups.
  */
-export const describeReplicationSubnetGroups: API.OperationMethod<
+export const describeReplicationSubnetGroups: API.PaginatedOperationMethod<
   DescribeReplicationSubnetGroupsMessage,
   DescribeReplicationSubnetGroupsResponse,
   DescribeReplicationSubnetGroupsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeReplicationSubnetGroupsMessage,
-  ) => stream.Stream<
-    DescribeReplicationSubnetGroupsResponse,
-    DescribeReplicationSubnetGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeReplicationSubnetGroupsMessage,
-  ) => stream.Stream<
-    unknown,
-    DescribeReplicationSubnetGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeReplicationSubnetGroupsMessage,
   output: DescribeReplicationSubnetGroupsResponse,
   errors: [ResourceNotFoundFault],
@@ -10462,27 +9971,13 @@ export type DescribeReplicationTableStatisticsError =
  * Returns table and schema statistics for one or more provisioned replications that use a
  * given DMS Serverless replication configuration.
  */
-export const describeReplicationTableStatistics: API.OperationMethod<
+export const describeReplicationTableStatistics: API.PaginatedOperationMethod<
   DescribeReplicationTableStatisticsMessage,
   DescribeReplicationTableStatisticsResponse,
   DescribeReplicationTableStatisticsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeReplicationTableStatisticsMessage,
-  ) => stream.Stream<
-    DescribeReplicationTableStatisticsResponse,
-    DescribeReplicationTableStatisticsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeReplicationTableStatisticsMessage,
-  ) => stream.Stream<
-    unknown,
-    DescribeReplicationTableStatisticsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeReplicationTableStatisticsMessage,
   output: DescribeReplicationTableStatisticsResponse,
   errors: [InvalidResourceStateFault, ResourceNotFoundFault],
@@ -10506,27 +10001,13 @@ export type DescribeReplicationTaskAssessmentResultsError =
  * For more information about DMS task assessments, see Creating a task assessment
  * report in the *Database Migration Service User Guide*.
  */
-export const describeReplicationTaskAssessmentResults: API.OperationMethod<
+export const describeReplicationTaskAssessmentResults: API.PaginatedOperationMethod<
   DescribeReplicationTaskAssessmentResultsMessage,
   DescribeReplicationTaskAssessmentResultsResponse,
   DescribeReplicationTaskAssessmentResultsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeReplicationTaskAssessmentResultsMessage,
-  ) => stream.Stream<
-    DescribeReplicationTaskAssessmentResultsResponse,
-    DescribeReplicationTaskAssessmentResultsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeReplicationTaskAssessmentResultsMessage,
-  ) => stream.Stream<
-    unknown,
-    DescribeReplicationTaskAssessmentResultsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeReplicationTaskAssessmentResultsMessage,
   output: DescribeReplicationTaskAssessmentResultsResponse,
   errors: [ResourceNotFoundFault],
@@ -10554,27 +10035,13 @@ export type DescribeReplicationTaskAssessmentRunsError =
  * information, see the `DescribeReplicationTaskIndividualAssessments`
  * operation.
  */
-export const describeReplicationTaskAssessmentRuns: API.OperationMethod<
+export const describeReplicationTaskAssessmentRuns: API.PaginatedOperationMethod<
   DescribeReplicationTaskAssessmentRunsMessage,
   DescribeReplicationTaskAssessmentRunsResponse,
   DescribeReplicationTaskAssessmentRunsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeReplicationTaskAssessmentRunsMessage,
-  ) => stream.Stream<
-    DescribeReplicationTaskAssessmentRunsResponse,
-    DescribeReplicationTaskAssessmentRunsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeReplicationTaskAssessmentRunsMessage,
-  ) => stream.Stream<
-    unknown,
-    DescribeReplicationTaskAssessmentRunsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeReplicationTaskAssessmentRunsMessage,
   output: DescribeReplicationTaskAssessmentRunsResponse,
   errors: [ResourceNotFoundFault],
@@ -10597,27 +10064,13 @@ export type DescribeReplicationTaskIndividualAssessmentsError =
  * These filter settings can specify a combination of premigration assessment runs,
  * migration tasks, and assessment status values.
  */
-export const describeReplicationTaskIndividualAssessments: API.OperationMethod<
+export const describeReplicationTaskIndividualAssessments: API.PaginatedOperationMethod<
   DescribeReplicationTaskIndividualAssessmentsMessage,
   DescribeReplicationTaskIndividualAssessmentsResponse,
   DescribeReplicationTaskIndividualAssessmentsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeReplicationTaskIndividualAssessmentsMessage,
-  ) => stream.Stream<
-    DescribeReplicationTaskIndividualAssessmentsResponse,
-    DescribeReplicationTaskIndividualAssessmentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeReplicationTaskIndividualAssessmentsMessage,
-  ) => stream.Stream<
-    unknown,
-    DescribeReplicationTaskIndividualAssessmentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeReplicationTaskIndividualAssessmentsMessage,
   output: DescribeReplicationTaskIndividualAssessmentsResponse,
   errors: [ResourceNotFoundFault],
@@ -10638,27 +10091,13 @@ export type DescribeReplicationTasksError =
  * Returns information about replication tasks for your account in the current
  * region.
  */
-export const describeReplicationTasks: API.OperationMethod<
+export const describeReplicationTasks: API.PaginatedOperationMethod<
   DescribeReplicationTasksMessage,
   DescribeReplicationTasksResponse,
   DescribeReplicationTasksError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeReplicationTasksMessage,
-  ) => stream.Stream<
-    DescribeReplicationTasksResponse,
-    DescribeReplicationTasksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeReplicationTasksMessage,
-  ) => stream.Stream<
-    unknown,
-    DescribeReplicationTasksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeReplicationTasksMessage,
   output: DescribeReplicationTasksResponse,
   errors: [ResourceNotFoundFault],
@@ -10679,27 +10118,13 @@ export type DescribeSchemasError =
 /**
  * Returns information about the schema for the specified endpoint.
  */
-export const describeSchemas: API.OperationMethod<
+export const describeSchemas: API.PaginatedOperationMethod<
   DescribeSchemasMessage,
   DescribeSchemasResponse,
   DescribeSchemasError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeSchemasMessage,
-  ) => stream.Stream<
-    DescribeSchemasResponse,
-    DescribeSchemasError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeSchemasMessage,
-  ) => stream.Stream<
-    unknown,
-    DescribeSchemasError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeSchemasMessage,
   output: DescribeSchemasResponse,
   errors: [InvalidResourceStateFault, ResourceNotFoundFault],
@@ -10726,27 +10151,13 @@ export type DescribeTableStatisticsError =
  * last updated the table statistics record for a table. It does not indicate the time of the
  * last update to the table.
  */
-export const describeTableStatistics: API.OperationMethod<
+export const describeTableStatistics: API.PaginatedOperationMethod<
   DescribeTableStatisticsMessage,
   DescribeTableStatisticsResponse,
   DescribeTableStatisticsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeTableStatisticsMessage,
-  ) => stream.Stream<
-    DescribeTableStatisticsResponse,
-    DescribeTableStatisticsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeTableStatisticsMessage,
-  ) => stream.Stream<
-    unknown,
-    DescribeTableStatisticsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeTableStatisticsMessage,
   output: DescribeTableStatisticsResponse,
   errors: [AccessDeniedFault, InvalidResourceStateFault, ResourceNotFoundFault],

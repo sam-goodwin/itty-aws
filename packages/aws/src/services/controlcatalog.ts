@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -757,27 +756,13 @@ export type ListCommonControlsError =
  *
  * You can apply an optional filter to see common controls that have a specific objective. If you don’t provide a filter, the operation returns all common controls.
  */
-export const listCommonControls: API.OperationMethod<
+export const listCommonControls: API.PaginatedOperationMethod<
   ListCommonControlsRequest,
   ListCommonControlsResponse,
   ListCommonControlsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCommonControlsRequest,
-  ) => stream.Stream<
-    ListCommonControlsResponse,
-    ListCommonControlsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCommonControlsRequest,
-  ) => stream.Stream<
-    CommonControlSummary,
-    ListCommonControlsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  CommonControlSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCommonControlsRequest,
   output: ListCommonControlsResponse,
   errors: [
@@ -806,27 +791,13 @@ export type ListControlMappingsError =
 /**
  * Returns a paginated list of control mappings from the Control Catalog. Control mappings show relationships between controls and other entities, such as common controls or compliance frameworks.
  */
-export const listControlMappings: API.OperationMethod<
+export const listControlMappings: API.PaginatedOperationMethod<
   ListControlMappingsRequest,
   ListControlMappingsResponse,
   ListControlMappingsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListControlMappingsRequest,
-  ) => stream.Stream<
-    ListControlMappingsResponse,
-    ListControlMappingsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListControlMappingsRequest,
-  ) => stream.Stream<
-    ControlMapping,
-    ListControlMappingsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ControlMapping
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListControlMappingsRequest,
   output: ListControlMappingsResponse,
   errors: [
@@ -855,27 +826,13 @@ export type ListControlsError =
 /**
  * Returns a paginated list of all available controls in the Control Catalog library. Allows you to discover available controls. The list of controls is given as structures of type *controlSummary*. The ARN is returned in the global *controlcatalog* format, as shown in the examples.
  */
-export const listControls: API.OperationMethod<
+export const listControls: API.PaginatedOperationMethod<
   ListControlsRequest,
   ListControlsResponse,
   ListControlsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListControlsRequest,
-  ) => stream.Stream<
-    ListControlsResponse,
-    ListControlsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListControlsRequest,
-  ) => stream.Stream<
-    ControlSummary,
-    ListControlsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ControlSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListControlsRequest,
   output: ListControlsResponse,
   errors: [
@@ -904,27 +861,13 @@ export type ListDomainsError =
 /**
  * Returns a paginated list of domains from the Control Catalog.
  */
-export const listDomains: API.OperationMethod<
+export const listDomains: API.PaginatedOperationMethod<
   ListDomainsRequest,
   ListDomainsResponse,
   ListDomainsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDomainsRequest,
-  ) => stream.Stream<
-    ListDomainsResponse,
-    ListDomainsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDomainsRequest,
-  ) => stream.Stream<
-    DomainSummary,
-    ListDomainsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  DomainSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDomainsRequest,
   output: ListDomainsResponse,
   errors: [
@@ -955,27 +898,13 @@ export type ListObjectivesError =
  *
  * You can apply an optional filter to see the objectives that belong to a specific domain. If you don’t provide a filter, the operation returns all objectives.
  */
-export const listObjectives: API.OperationMethod<
+export const listObjectives: API.PaginatedOperationMethod<
   ListObjectivesRequest,
   ListObjectivesResponse,
   ListObjectivesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListObjectivesRequest,
-  ) => stream.Stream<
-    ListObjectivesResponse,
-    ListObjectivesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListObjectivesRequest,
-  ) => stream.Stream<
-    ObjectiveSummary,
-    ListObjectivesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ObjectiveSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListObjectivesRequest,
   output: ListObjectivesResponse,
   errors: [

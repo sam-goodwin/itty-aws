@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -3262,27 +3261,13 @@ export type GetBotAliasesError =
  * This operation requires permissions for the
  * `lex:GetBotAliases` action.
  */
-export const getBotAliases: API.OperationMethod<
+export const getBotAliases: API.PaginatedOperationMethod<
   GetBotAliasesRequest,
   GetBotAliasesResponse,
   GetBotAliasesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetBotAliasesRequest,
-  ) => stream.Stream<
-    GetBotAliasesResponse,
-    GetBotAliasesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetBotAliasesRequest,
-  ) => stream.Stream<
-    unknown,
-    GetBotAliasesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetBotAliasesRequest,
   output: GetBotAliasesResponse,
   errors: [
@@ -3345,27 +3330,13 @@ export type GetBotChannelAssociationsError =
  * permissions for the `lex:GetBotChannelAssociations`
  * action.
  */
-export const getBotChannelAssociations: API.OperationMethod<
+export const getBotChannelAssociations: API.PaginatedOperationMethod<
   GetBotChannelAssociationsRequest,
   GetBotChannelAssociationsResponse,
   GetBotChannelAssociationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetBotChannelAssociationsRequest,
-  ) => stream.Stream<
-    GetBotChannelAssociationsResponse,
-    GetBotChannelAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetBotChannelAssociationsRequest,
-  ) => stream.Stream<
-    unknown,
-    GetBotChannelAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetBotChannelAssociationsRequest,
   output: GetBotChannelAssociationsResponse,
   errors: [
@@ -3403,27 +3374,13 @@ export type GetBotsError =
  * This operation requires permission for the `lex:GetBots`
  * action.
  */
-export const getBots: API.OperationMethod<
+export const getBots: API.PaginatedOperationMethod<
   GetBotsRequest,
   GetBotsResponse,
   GetBotsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetBotsRequest,
-  ) => stream.Stream<
-    GetBotsResponse,
-    GetBotsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetBotsRequest,
-  ) => stream.Stream<
-    unknown,
-    GetBotsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetBotsRequest,
   output: GetBotsResponse,
   errors: [
@@ -3464,27 +3421,13 @@ export type GetBotVersionsError =
  * This operation requires permissions for the
  * `lex:GetBotVersions` action.
  */
-export const getBotVersions: API.OperationMethod<
+export const getBotVersions: API.PaginatedOperationMethod<
   GetBotVersionsRequest,
   GetBotVersionsResponse,
   GetBotVersionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetBotVersionsRequest,
-  ) => stream.Stream<
-    GetBotVersionsResponse,
-    GetBotVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetBotVersionsRequest,
-  ) => stream.Stream<
-    unknown,
-    GetBotVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetBotVersionsRequest,
   output: GetBotVersionsResponse,
   errors: [
@@ -3546,27 +3489,13 @@ export type GetBuiltinIntentsError =
  * This operation requires permission for the
  * `lex:GetBuiltinIntents` action.
  */
-export const getBuiltinIntents: API.OperationMethod<
+export const getBuiltinIntents: API.PaginatedOperationMethod<
   GetBuiltinIntentsRequest,
   GetBuiltinIntentsResponse,
   GetBuiltinIntentsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetBuiltinIntentsRequest,
-  ) => stream.Stream<
-    GetBuiltinIntentsResponse,
-    GetBuiltinIntentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetBuiltinIntentsRequest,
-  ) => stream.Stream<
-    unknown,
-    GetBuiltinIntentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetBuiltinIntentsRequest,
   output: GetBuiltinIntentsResponse,
   errors: [
@@ -3599,27 +3528,13 @@ export type GetBuiltinSlotTypesError =
  * This operation requires permission for the
  * `lex:GetBuiltInSlotTypes` action.
  */
-export const getBuiltinSlotTypes: API.OperationMethod<
+export const getBuiltinSlotTypes: API.PaginatedOperationMethod<
   GetBuiltinSlotTypesRequest,
   GetBuiltinSlotTypesResponse,
   GetBuiltinSlotTypesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetBuiltinSlotTypesRequest,
-  ) => stream.Stream<
-    GetBuiltinSlotTypesResponse,
-    GetBuiltinSlotTypesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetBuiltinSlotTypesRequest,
-  ) => stream.Stream<
-    unknown,
-    GetBuiltinSlotTypesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetBuiltinSlotTypesRequest,
   output: GetBuiltinSlotTypesResponse,
   errors: [
@@ -3746,27 +3661,13 @@ export type GetIntentsError =
  * The operation requires permission for the
  * `lex:GetIntents` action.
  */
-export const getIntents: API.OperationMethod<
+export const getIntents: API.PaginatedOperationMethod<
   GetIntentsRequest,
   GetIntentsResponse,
   GetIntentsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetIntentsRequest,
-  ) => stream.Stream<
-    GetIntentsResponse,
-    GetIntentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetIntentsRequest,
-  ) => stream.Stream<
-    unknown,
-    GetIntentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetIntentsRequest,
   output: GetIntentsResponse,
   errors: [
@@ -3807,27 +3708,13 @@ export type GetIntentVersionsError =
  * This operation requires permissions for the
  * `lex:GetIntentVersions` action.
  */
-export const getIntentVersions: API.OperationMethod<
+export const getIntentVersions: API.PaginatedOperationMethod<
   GetIntentVersionsRequest,
   GetIntentVersionsResponse,
   GetIntentVersionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetIntentVersionsRequest,
-  ) => stream.Stream<
-    GetIntentVersionsResponse,
-    GetIntentVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetIntentVersionsRequest,
-  ) => stream.Stream<
-    unknown,
-    GetIntentVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetIntentVersionsRequest,
   output: GetIntentVersionsResponse,
   errors: [
@@ -3884,27 +3771,13 @@ export type GetMigrationsError =
 /**
  * Gets a list of migrations between Amazon Lex V1 and Amazon Lex V2.
  */
-export const getMigrations: API.OperationMethod<
+export const getMigrations: API.PaginatedOperationMethod<
   GetMigrationsRequest,
   GetMigrationsResponse,
   GetMigrationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetMigrationsRequest,
-  ) => stream.Stream<
-    GetMigrationsResponse,
-    GetMigrationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetMigrationsRequest,
-  ) => stream.Stream<
-    unknown,
-    GetMigrationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetMigrationsRequest,
   output: GetMigrationsResponse,
   errors: [
@@ -3975,27 +3848,13 @@ export type GetSlotTypesError =
  * The operation requires permission for the
  * `lex:GetSlotTypes` action.
  */
-export const getSlotTypes: API.OperationMethod<
+export const getSlotTypes: API.PaginatedOperationMethod<
   GetSlotTypesRequest,
   GetSlotTypesResponse,
   GetSlotTypesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetSlotTypesRequest,
-  ) => stream.Stream<
-    GetSlotTypesResponse,
-    GetSlotTypesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetSlotTypesRequest,
-  ) => stream.Stream<
-    unknown,
-    GetSlotTypesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetSlotTypesRequest,
   output: GetSlotTypesResponse,
   errors: [
@@ -4036,27 +3895,13 @@ export type GetSlotTypeVersionsError =
  * This operation requires permissions for the
  * `lex:GetSlotTypeVersions` action.
  */
-export const getSlotTypeVersions: API.OperationMethod<
+export const getSlotTypeVersions: API.PaginatedOperationMethod<
   GetSlotTypeVersionsRequest,
   GetSlotTypeVersionsResponse,
   GetSlotTypeVersionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetSlotTypeVersionsRequest,
-  ) => stream.Stream<
-    GetSlotTypeVersionsResponse,
-    GetSlotTypeVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetSlotTypeVersionsRequest,
-  ) => stream.Stream<
-    unknown,
-    GetSlotTypeVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetSlotTypeVersionsRequest,
   output: GetSlotTypeVersionsResponse,
   errors: [

@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -1325,27 +1324,13 @@ export type DescribeCasesError =
  * `SubscriptionRequiredException` error message appears. For
  * information about changing your support plan, see Amazon Web Services Support.
  */
-export const describeCases: API.OperationMethod<
+export const describeCases: API.PaginatedOperationMethod<
   DescribeCasesRequest,
   DescribeCasesResponse,
   DescribeCasesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeCasesRequest,
-  ) => stream.Stream<
-    DescribeCasesResponse,
-    DescribeCasesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeCasesRequest,
-  ) => stream.Stream<
-    CaseDetails,
-    DescribeCasesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  CaseDetails
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeCasesRequest,
   output: DescribeCasesResponse,
   errors: [CaseIdNotFound, InternalServerError],
@@ -1386,27 +1371,13 @@ export type DescribeCommunicationsError =
  * `SubscriptionRequiredException` error message appears. For
  * information about changing your support plan, see Amazon Web Services Support.
  */
-export const describeCommunications: API.OperationMethod<
+export const describeCommunications: API.PaginatedOperationMethod<
   DescribeCommunicationsRequest,
   DescribeCommunicationsResponse,
   DescribeCommunicationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeCommunicationsRequest,
-  ) => stream.Stream<
-    DescribeCommunicationsResponse,
-    DescribeCommunicationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeCommunicationsRequest,
-  ) => stream.Stream<
-    Communication,
-    DescribeCommunicationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Communication
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeCommunicationsRequest,
   output: DescribeCommunicationsResponse,
   errors: [CaseIdNotFound, InternalServerError],

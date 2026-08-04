@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -898,27 +897,13 @@ export type ListChallengeMetadataError =
 /**
  * Retrieves the challenge metadata for the specified ARN.
  */
-export const listChallengeMetadata: API.OperationMethod<
+export const listChallengeMetadata: API.PaginatedOperationMethod<
   ListChallengeMetadataRequest,
   ListChallengeMetadataResponse,
   ListChallengeMetadataError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListChallengeMetadataRequest,
-  ) => stream.Stream<
-    ListChallengeMetadataResponse,
-    ListChallengeMetadataError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListChallengeMetadataRequest,
-  ) => stream.Stream<
-    ChallengeMetadataSummary,
-    ListChallengeMetadataError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ChallengeMetadataSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListChallengeMetadataRequest,
   output: ListChallengeMetadataResponse,
   errors: [
@@ -948,27 +933,13 @@ export type ListConnectorsError =
 /**
  * Lists the connectors belonging to your Amazon Web Services account.
  */
-export const listConnectors: API.OperationMethod<
+export const listConnectors: API.PaginatedOperationMethod<
   ListConnectorsRequest,
   ListConnectorsResponse,
   ListConnectorsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListConnectorsRequest,
-  ) => stream.Stream<
-    ListConnectorsResponse,
-    ListConnectorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListConnectorsRequest,
-  ) => stream.Stream<
-    ConnectorSummary,
-    ListConnectorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ConnectorSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListConnectorsRequest,
   output: ListConnectorsResponse,
   errors: [

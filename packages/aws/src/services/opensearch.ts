@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -7525,27 +7524,13 @@ export type DescribeDomainAutoTunesError =
  * Service domain. For more information, see Auto-Tune for Amazon
  * OpenSearch Service.
  */
-export const describeDomainAutoTunes: API.OperationMethod<
+export const describeDomainAutoTunes: API.PaginatedOperationMethod<
   DescribeDomainAutoTunesRequest,
   DescribeDomainAutoTunesResponse,
   DescribeDomainAutoTunesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeDomainAutoTunesRequest,
-  ) => stream.Stream<
-    DescribeDomainAutoTunesResponse,
-    DescribeDomainAutoTunesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeDomainAutoTunesRequest,
-  ) => stream.Stream<
-    unknown,
-    DescribeDomainAutoTunesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeDomainAutoTunesRequest,
   output: DescribeDomainAutoTunesResponse,
   errors: [
@@ -7748,27 +7733,13 @@ export type DescribeInboundConnectionsError =
  * Lists all the inbound cross-cluster search connections for a destination (remote)
  * Amazon OpenSearch Service domain. For more information, see Cross-cluster search for Amazon OpenSearch Service.
  */
-export const describeInboundConnections: API.OperationMethod<
+export const describeInboundConnections: API.PaginatedOperationMethod<
   DescribeInboundConnectionsRequest,
   DescribeInboundConnectionsResponse,
   DescribeInboundConnectionsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeInboundConnectionsRequest,
-  ) => stream.Stream<
-    DescribeInboundConnectionsResponse,
-    DescribeInboundConnectionsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeInboundConnectionsRequest,
-  ) => stream.Stream<
-    unknown,
-    DescribeInboundConnectionsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeInboundConnectionsRequest,
   output: DescribeInboundConnectionsResponse,
   errors: [DisabledOperationException, InvalidPaginationTokenException],
@@ -7857,27 +7828,13 @@ export type DescribeOutboundConnectionsError =
  * Lists all the outbound cross-cluster connections for a local (source) Amazon
  * OpenSearch Service domain. For more information, see Cross-cluster search for Amazon OpenSearch Service.
  */
-export const describeOutboundConnections: API.OperationMethod<
+export const describeOutboundConnections: API.PaginatedOperationMethod<
   DescribeOutboundConnectionsRequest,
   DescribeOutboundConnectionsResponse,
   DescribeOutboundConnectionsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeOutboundConnectionsRequest,
-  ) => stream.Stream<
-    DescribeOutboundConnectionsResponse,
-    DescribeOutboundConnectionsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeOutboundConnectionsRequest,
-  ) => stream.Stream<
-    unknown,
-    DescribeOutboundConnectionsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeOutboundConnectionsRequest,
   output: DescribeOutboundConnectionsResponse,
   errors: [DisabledOperationException, InvalidPaginationTokenException],
@@ -7903,27 +7860,13 @@ export type DescribePackagesError =
  * Custom packages
  * for Amazon OpenSearch Service.
  */
-export const describePackages: API.OperationMethod<
+export const describePackages: API.PaginatedOperationMethod<
   DescribePackagesRequest,
   DescribePackagesResponse,
   DescribePackagesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribePackagesRequest,
-  ) => stream.Stream<
-    DescribePackagesResponse,
-    DescribePackagesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribePackagesRequest,
-  ) => stream.Stream<
-    unknown,
-    DescribePackagesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribePackagesRequest,
   output: DescribePackagesResponse,
   errors: [
@@ -7954,27 +7897,13 @@ export type DescribeReservedInstanceOfferingsError =
  * given Region. For more information, see Reserved Instances in Amazon
  * OpenSearch Service.
  */
-export const describeReservedInstanceOfferings: API.OperationMethod<
+export const describeReservedInstanceOfferings: API.PaginatedOperationMethod<
   DescribeReservedInstanceOfferingsRequest,
   DescribeReservedInstanceOfferingsResponse,
   DescribeReservedInstanceOfferingsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeReservedInstanceOfferingsRequest,
-  ) => stream.Stream<
-    DescribeReservedInstanceOfferingsResponse,
-    DescribeReservedInstanceOfferingsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeReservedInstanceOfferingsRequest,
-  ) => stream.Stream<
-    unknown,
-    DescribeReservedInstanceOfferingsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeReservedInstanceOfferingsRequest,
   output: DescribeReservedInstanceOfferingsResponse,
   errors: [
@@ -8004,27 +7933,13 @@ export type DescribeReservedInstancesError =
  * Region. For more information, see Reserved Instances in Amazon
  * OpenSearch Service.
  */
-export const describeReservedInstances: API.OperationMethod<
+export const describeReservedInstances: API.PaginatedOperationMethod<
   DescribeReservedInstancesRequest,
   DescribeReservedInstancesResponse,
   DescribeReservedInstancesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeReservedInstancesRequest,
-  ) => stream.Stream<
-    DescribeReservedInstancesResponse,
-    DescribeReservedInstancesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeReservedInstancesRequest,
-  ) => stream.Stream<
-    unknown,
-    DescribeReservedInstancesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeReservedInstancesRequest,
   output: DescribeReservedInstancesResponse,
   errors: [
@@ -8435,27 +8350,13 @@ export type GetPackageVersionHistoryError =
  * information, see Custom packages for Amazon
  * OpenSearch Service.
  */
-export const getPackageVersionHistory: API.OperationMethod<
+export const getPackageVersionHistory: API.PaginatedOperationMethod<
   GetPackageVersionHistoryRequest,
   GetPackageVersionHistoryResponse,
   GetPackageVersionHistoryError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetPackageVersionHistoryRequest,
-  ) => stream.Stream<
-    GetPackageVersionHistoryResponse,
-    GetPackageVersionHistoryError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetPackageVersionHistoryRequest,
-  ) => stream.Stream<
-    unknown,
-    GetPackageVersionHistoryError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetPackageVersionHistoryRequest,
   output: GetPackageVersionHistoryResponse,
   errors: [
@@ -8486,27 +8387,13 @@ export type GetUpgradeHistoryError =
  * Retrieves the complete history of the last 10 upgrades performed on an Amazon OpenSearch
  * Service domain.
  */
-export const getUpgradeHistory: API.OperationMethod<
+export const getUpgradeHistory: API.PaginatedOperationMethod<
   GetUpgradeHistoryRequest,
   GetUpgradeHistoryResponse,
   GetUpgradeHistoryError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetUpgradeHistoryRequest,
-  ) => stream.Stream<
-    GetUpgradeHistoryResponse,
-    GetUpgradeHistoryError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetUpgradeHistoryRequest,
-  ) => stream.Stream<
-    unknown,
-    GetUpgradeHistoryError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetUpgradeHistoryRequest,
   output: GetUpgradeHistoryResponse,
   errors: [
@@ -8568,27 +8455,13 @@ export type ListApplicationsError =
 /**
  * Lists all OpenSearch applications under your account.
  */
-export const listApplications: API.OperationMethod<
+export const listApplications: API.PaginatedOperationMethod<
   ListApplicationsRequest,
   ListApplicationsResponse,
   ListApplicationsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListApplicationsRequest,
-  ) => stream.Stream<
-    ListApplicationsResponse,
-    ListApplicationsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListApplicationsRequest,
-  ) => stream.Stream<
-    ApplicationSummary,
-    ListApplicationsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  ApplicationSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListApplicationsRequest,
   output: ListApplicationsResponse,
   errors: [
@@ -8715,27 +8588,13 @@ export type ListDomainMaintenancesError =
 /**
  * A list of maintenance actions for the domain.
  */
-export const listDomainMaintenances: API.OperationMethod<
+export const listDomainMaintenances: API.PaginatedOperationMethod<
   ListDomainMaintenancesRequest,
   ListDomainMaintenancesResponse,
   ListDomainMaintenancesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDomainMaintenancesRequest,
-  ) => stream.Stream<
-    ListDomainMaintenancesResponse,
-    ListDomainMaintenancesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDomainMaintenancesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListDomainMaintenancesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDomainMaintenancesRequest,
   output: ListDomainMaintenancesResponse,
   errors: [
@@ -8789,27 +8648,13 @@ export type ListDomainsForPackageError =
  * information, see Custom packages
  * for Amazon OpenSearch Service.
  */
-export const listDomainsForPackage: API.OperationMethod<
+export const listDomainsForPackage: API.PaginatedOperationMethod<
   ListDomainsForPackageRequest,
   ListDomainsForPackageResponse,
   ListDomainsForPackageError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDomainsForPackageRequest,
-  ) => stream.Stream<
-    ListDomainsForPackageResponse,
-    ListDomainsForPackageError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDomainsForPackageRequest,
-  ) => stream.Stream<
-    unknown,
-    ListDomainsForPackageError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDomainsForPackageRequest,
   output: ListDomainsForPackageResponse,
   errors: [
@@ -8873,27 +8718,13 @@ export type ListInstanceTypeDetailsError =
  * Lists all instance types and available features for a given OpenSearch or
  * Elasticsearch version.
  */
-export const listInstanceTypeDetails: API.OperationMethod<
+export const listInstanceTypeDetails: API.PaginatedOperationMethod<
   ListInstanceTypeDetailsRequest,
   ListInstanceTypeDetailsResponse,
   ListInstanceTypeDetailsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListInstanceTypeDetailsRequest,
-  ) => stream.Stream<
-    ListInstanceTypeDetailsResponse,
-    ListInstanceTypeDetailsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListInstanceTypeDetailsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListInstanceTypeDetailsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListInstanceTypeDetailsRequest,
   output: ListInstanceTypeDetailsResponse,
   errors: [
@@ -8924,27 +8755,13 @@ export type ListPackagesForDomainError =
  * information, see Custom packages
  * for Amazon OpenSearch Service.
  */
-export const listPackagesForDomain: API.OperationMethod<
+export const listPackagesForDomain: API.PaginatedOperationMethod<
   ListPackagesForDomainRequest,
   ListPackagesForDomainResponse,
   ListPackagesForDomainError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPackagesForDomainRequest,
-  ) => stream.Stream<
-    ListPackagesForDomainResponse,
-    ListPackagesForDomainError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPackagesForDomainRequest,
-  ) => stream.Stream<
-    unknown,
-    ListPackagesForDomainError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPackagesForDomainRequest,
   output: ListPackagesForDomainResponse,
   errors: [
@@ -8976,27 +8793,13 @@ export type ListScheduledActionsError =
  * changes can be service
  * software updates or blue/green Auto-Tune enhancements.
  */
-export const listScheduledActions: API.OperationMethod<
+export const listScheduledActions: API.PaginatedOperationMethod<
   ListScheduledActionsRequest,
   ListScheduledActionsResponse,
   ListScheduledActionsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListScheduledActionsRequest,
-  ) => stream.Stream<
-    ListScheduledActionsResponse,
-    ListScheduledActionsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListScheduledActionsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListScheduledActionsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListScheduledActionsRequest,
   output: ListScheduledActionsResponse,
   errors: [
@@ -9055,27 +8858,13 @@ export type ListVersionsError =
  * Lists all versions of OpenSearch and Elasticsearch that Amazon OpenSearch Service
  * supports.
  */
-export const listVersions: API.OperationMethod<
+export const listVersions: API.PaginatedOperationMethod<
   ListVersionsRequest,
   ListVersionsResponse,
   ListVersionsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListVersionsRequest,
-  ) => stream.Stream<
-    ListVersionsResponse,
-    ListVersionsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListVersionsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListVersionsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListVersionsRequest,
   output: ListVersionsResponse,
   errors: [

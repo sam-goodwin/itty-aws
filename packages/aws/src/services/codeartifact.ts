@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -3641,27 +3640,13 @@ export type ListAllowedRepositoriesForGroupError =
  * Lists the repositories in the added repositories list of the specified restriction type for a package group. For more information about restriction types
  * and added repository lists, see Package group origin controls in the *CodeArtifact User Guide*.
  */
-export const listAllowedRepositoriesForGroup: API.OperationMethod<
+export const listAllowedRepositoriesForGroup: API.PaginatedOperationMethod<
   ListAllowedRepositoriesForGroupRequest,
   ListAllowedRepositoriesForGroupResult,
   ListAllowedRepositoriesForGroupError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAllowedRepositoriesForGroupRequest,
-  ) => stream.Stream<
-    ListAllowedRepositoriesForGroupResult,
-    ListAllowedRepositoriesForGroupError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAllowedRepositoriesForGroupRequest,
-  ) => stream.Stream<
-    RepositoryName,
-    ListAllowedRepositoriesForGroupError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  RepositoryName
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAllowedRepositoriesForGroupRequest,
   output: ListAllowedRepositoriesForGroupResult,
   errors: [
@@ -3694,27 +3679,13 @@ export type ListAssociatedPackagesError =
  * Package group
  * definition syntax and matching behavior in the *CodeArtifact User Guide*.
  */
-export const listAssociatedPackages: API.OperationMethod<
+export const listAssociatedPackages: API.PaginatedOperationMethod<
   ListAssociatedPackagesRequest,
   ListAssociatedPackagesResult,
   ListAssociatedPackagesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAssociatedPackagesRequest,
-  ) => stream.Stream<
-    ListAssociatedPackagesResult,
-    ListAssociatedPackagesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAssociatedPackagesRequest,
-  ) => stream.Stream<
-    AssociatedPackage,
-    ListAssociatedPackagesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AssociatedPackage
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAssociatedPackagesRequest,
   output: ListAssociatedPackagesResult,
   errors: [
@@ -3745,27 +3716,13 @@ export type ListDomainsError =
  * this call. Each returned `DomainSummary` object contains information about a
  * domain.
  */
-export const listDomains: API.OperationMethod<
+export const listDomains: API.PaginatedOperationMethod<
   ListDomainsRequest,
   ListDomainsResult,
   ListDomainsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDomainsRequest,
-  ) => stream.Stream<
-    ListDomainsResult,
-    ListDomainsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDomainsRequest,
-  ) => stream.Stream<
-    DomainSummary,
-    ListDomainsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  DomainSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDomainsRequest,
   output: ListDomainsResult,
   errors: [
@@ -3795,27 +3752,13 @@ export type ListPackageGroupsError =
 /**
  * Returns a list of package groups in the requested domain.
  */
-export const listPackageGroups: API.OperationMethod<
+export const listPackageGroups: API.PaginatedOperationMethod<
   ListPackageGroupsRequest,
   ListPackageGroupsResult,
   ListPackageGroupsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPackageGroupsRequest,
-  ) => stream.Stream<
-    ListPackageGroupsResult,
-    ListPackageGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPackageGroupsRequest,
-  ) => stream.Stream<
-    PackageGroupSummary,
-    ListPackageGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  PackageGroupSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPackageGroupsRequest,
   output: ListPackageGroupsResult,
   errors: [
@@ -3848,27 +3791,13 @@ export type ListPackagesError =
  * PackageSummary
  * objects for packages in a repository that match the request parameters.
  */
-export const listPackages: API.OperationMethod<
+export const listPackages: API.PaginatedOperationMethod<
   ListPackagesRequest,
   ListPackagesResult,
   ListPackagesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPackagesRequest,
-  ) => stream.Stream<
-    ListPackagesResult,
-    ListPackagesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPackagesRequest,
-  ) => stream.Stream<
-    PackageSummary,
-    ListPackagesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  PackageSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPackagesRequest,
   output: ListPackagesResult,
   errors: [
@@ -3901,27 +3830,13 @@ export type ListPackageVersionAssetsError =
  * AssetSummary
  * objects for assets in a package version.
  */
-export const listPackageVersionAssets: API.OperationMethod<
+export const listPackageVersionAssets: API.PaginatedOperationMethod<
   ListPackageVersionAssetsRequest,
   ListPackageVersionAssetsResult,
   ListPackageVersionAssetsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPackageVersionAssetsRequest,
-  ) => stream.Stream<
-    ListPackageVersionAssetsResult,
-    ListPackageVersionAssetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPackageVersionAssetsRequest,
-  ) => stream.Stream<
-    AssetSummary,
-    ListPackageVersionAssetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AssetSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPackageVersionAssetsRequest,
   output: ListPackageVersionAssetsResult,
   errors: [
@@ -3988,27 +3903,13 @@ export type ListPackageVersionsError =
  * PackageVersionSummary
  * objects for package versions in a repository that match the request parameters. Package versions of all statuses will be returned by default when calling `list-package-versions` with no `--status` parameter.
  */
-export const listPackageVersions: API.OperationMethod<
+export const listPackageVersions: API.PaginatedOperationMethod<
   ListPackageVersionsRequest,
   ListPackageVersionsResult,
   ListPackageVersionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPackageVersionsRequest,
-  ) => stream.Stream<
-    ListPackageVersionsResult,
-    ListPackageVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPackageVersionsRequest,
-  ) => stream.Stream<
-    PackageVersionSummary,
-    ListPackageVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  PackageVersionSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPackageVersionsRequest,
   output: ListPackageVersionsResult,
   errors: [
@@ -4041,27 +3942,13 @@ export type ListRepositoriesError =
  * objects. Each `RepositorySummary` contains information about a repository in the specified Amazon Web Services account and that matches the input
  * parameters.
  */
-export const listRepositories: API.OperationMethod<
+export const listRepositories: API.PaginatedOperationMethod<
   ListRepositoriesRequest,
   ListRepositoriesResult,
   ListRepositoriesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRepositoriesRequest,
-  ) => stream.Stream<
-    ListRepositoriesResult,
-    ListRepositoriesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRepositoriesRequest,
-  ) => stream.Stream<
-    RepositorySummary,
-    ListRepositoriesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  RepositorySummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRepositoriesRequest,
   output: ListRepositoriesResult,
   errors: [
@@ -4094,27 +3981,13 @@ export type ListRepositoriesInDomainError =
  * objects. Each `RepositorySummary` contains information about a repository in the specified domain and that matches the input
  * parameters.
  */
-export const listRepositoriesInDomain: API.OperationMethod<
+export const listRepositoriesInDomain: API.PaginatedOperationMethod<
   ListRepositoriesInDomainRequest,
   ListRepositoriesInDomainResult,
   ListRepositoriesInDomainError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRepositoriesInDomainRequest,
-  ) => stream.Stream<
-    ListRepositoriesInDomainResult,
-    ListRepositoriesInDomainError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRepositoriesInDomainRequest,
-  ) => stream.Stream<
-    RepositorySummary,
-    ListRepositoriesInDomainError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  RepositorySummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRepositoriesInDomainRequest,
   output: ListRepositoriesInDomainResult,
   errors: [
@@ -4149,27 +4022,13 @@ export type ListSubPackageGroupsError =
  * Package group
  * definition syntax and matching behavior in the *CodeArtifact User Guide*.
  */
-export const listSubPackageGroups: API.OperationMethod<
+export const listSubPackageGroups: API.PaginatedOperationMethod<
   ListSubPackageGroupsRequest,
   ListSubPackageGroupsResult,
   ListSubPackageGroupsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSubPackageGroupsRequest,
-  ) => stream.Stream<
-    ListSubPackageGroupsResult,
-    ListSubPackageGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSubPackageGroupsRequest,
-  ) => stream.Stream<
-    PackageGroupSummary,
-    ListSubPackageGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  PackageGroupSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSubPackageGroupsRequest,
   output: ListSubPackageGroupsResult,
   errors: [

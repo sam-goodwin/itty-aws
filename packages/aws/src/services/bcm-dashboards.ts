@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -1273,27 +1272,13 @@ export type ListDashboardsError =
 /**
  * Returns a list of all dashboards in your account.
  */
-export const listDashboards: API.OperationMethod<
+export const listDashboards: API.PaginatedOperationMethod<
   ListDashboardsRequest,
   ListDashboardsResponse,
   ListDashboardsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDashboardsRequest,
-  ) => stream.Stream<
-    ListDashboardsResponse,
-    ListDashboardsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDashboardsRequest,
-  ) => stream.Stream<
-    DashboardReference,
-    ListDashboardsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  DashboardReference
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDashboardsRequest,
   output: ListDashboardsResponse,
   errors: [
@@ -1322,27 +1307,13 @@ export type ListScheduledReportsError =
 /**
  * Returns a list of scheduled reports in your account.
  */
-export const listScheduledReports: API.OperationMethod<
+export const listScheduledReports: API.PaginatedOperationMethod<
   ListScheduledReportsRequest,
   ListScheduledReportsResponse,
   ListScheduledReportsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListScheduledReportsRequest,
-  ) => stream.Stream<
-    ListScheduledReportsResponse,
-    ListScheduledReportsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListScheduledReportsRequest,
-  ) => stream.Stream<
-    ScheduledReportSummary,
-    ListScheduledReportsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ScheduledReportSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListScheduledReportsRequest,
   output: ListScheduledReportsResponse,
   errors: [

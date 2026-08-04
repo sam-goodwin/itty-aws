@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -4002,27 +4001,13 @@ export type ListApplicationOperationsError =
  *
  * This operation is supported only for Managed Service for Apache Flink.
  */
-export const listApplicationOperations: API.OperationMethod<
+export const listApplicationOperations: API.PaginatedOperationMethod<
   ListApplicationOperationsRequest,
   ListApplicationOperationsResponse,
   ListApplicationOperationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListApplicationOperationsRequest,
-  ) => stream.Stream<
-    ListApplicationOperationsResponse,
-    ListApplicationOperationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListApplicationOperationsRequest,
-  ) => stream.Stream<
-    ApplicationOperationInfo,
-    ListApplicationOperationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ApplicationOperationInfo
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListApplicationOperationsRequest,
   output: ListApplicationOperationsResponse,
   errors: [
@@ -4050,27 +4035,13 @@ export type ListApplicationsError = InvalidRequestException | CommonErrors;
  * If you want detailed information about a specific application, use
  * DescribeApplication.
  */
-export const listApplications: API.OperationMethod<
+export const listApplications: API.PaginatedOperationMethod<
   ListApplicationsRequest,
   ListApplicationsResponse,
   ListApplicationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListApplicationsRequest,
-  ) => stream.Stream<
-    ListApplicationsResponse,
-    ListApplicationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListApplicationsRequest,
-  ) => stream.Stream<
-    ApplicationSummary,
-    ListApplicationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ApplicationSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListApplicationsRequest,
   output: ListApplicationsResponse,
   errors: [InvalidRequestException],
@@ -4092,27 +4063,13 @@ export type ListApplicationSnapshotsError =
 /**
  * Lists information about the current application snapshots.
  */
-export const listApplicationSnapshots: API.OperationMethod<
+export const listApplicationSnapshots: API.PaginatedOperationMethod<
   ListApplicationSnapshotsRequest,
   ListApplicationSnapshotsResponse,
   ListApplicationSnapshotsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListApplicationSnapshotsRequest,
-  ) => stream.Stream<
-    ListApplicationSnapshotsResponse,
-    ListApplicationSnapshotsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListApplicationSnapshotsRequest,
-  ) => stream.Stream<
-    SnapshotDetails,
-    ListApplicationSnapshotsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  SnapshotDetails
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListApplicationSnapshotsRequest,
   output: ListApplicationSnapshotsResponse,
   errors: [InvalidArgumentException, UnsupportedOperationException],
@@ -4140,27 +4097,13 @@ export type ListApplicationVersionsError =
  *
  * This operation is supported only for Managed Service for Apache Flink.
  */
-export const listApplicationVersions: API.OperationMethod<
+export const listApplicationVersions: API.PaginatedOperationMethod<
   ListApplicationVersionsRequest,
   ListApplicationVersionsResponse,
   ListApplicationVersionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListApplicationVersionsRequest,
-  ) => stream.Stream<
-    ListApplicationVersionsResponse,
-    ListApplicationVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListApplicationVersionsRequest,
-  ) => stream.Stream<
-    ApplicationVersionSummary,
-    ListApplicationVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ApplicationVersionSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListApplicationVersionsRequest,
   output: ListApplicationVersionsResponse,
   errors: [

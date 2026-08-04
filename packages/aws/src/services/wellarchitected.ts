@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -5452,27 +5451,13 @@ export type GetConsolidatedReportError =
  *
  * You can optionally choose to include workloads that have been shared with you.
  */
-export const getConsolidatedReport: API.OperationMethod<
+export const getConsolidatedReport: API.PaginatedOperationMethod<
   GetConsolidatedReportInput,
   GetConsolidatedReportOutput,
   GetConsolidatedReportError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetConsolidatedReportInput,
-  ) => stream.Stream<
-    GetConsolidatedReportOutput,
-    GetConsolidatedReportError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetConsolidatedReportInput,
-  ) => stream.Stream<
-    unknown,
-    GetConsolidatedReportError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetConsolidatedReportInput,
   output: GetConsolidatedReportOutput,
   errors: [
@@ -5915,27 +5900,13 @@ export type ListAnswersError =
 /**
  * List of answers for a particular workload and lens.
  */
-export const listAnswers: API.OperationMethod<
+export const listAnswers: API.PaginatedOperationMethod<
   ListAnswersInput,
   ListAnswersOutput,
   ListAnswersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAnswersInput,
-  ) => stream.Stream<
-    ListAnswersOutput,
-    ListAnswersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAnswersInput,
-  ) => stream.Stream<
-    unknown,
-    ListAnswersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAnswersInput,
   output: ListAnswersOutput,
   errors: [
@@ -5965,27 +5936,13 @@ export type ListCheckDetailsError =
 /**
  * List of Trusted Advisor check details by account related to the workload.
  */
-export const listCheckDetails: API.OperationMethod<
+export const listCheckDetails: API.PaginatedOperationMethod<
   ListCheckDetailsInput,
   ListCheckDetailsOutput,
   ListCheckDetailsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCheckDetailsInput,
-  ) => stream.Stream<
-    ListCheckDetailsOutput,
-    ListCheckDetailsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCheckDetailsInput,
-  ) => stream.Stream<
-    unknown,
-    ListCheckDetailsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCheckDetailsInput,
   output: ListCheckDetailsOutput,
   errors: [
@@ -6015,27 +5972,13 @@ export type ListCheckSummariesError =
 /**
  * List of Trusted Advisor checks summarized for all accounts related to the workload.
  */
-export const listCheckSummaries: API.OperationMethod<
+export const listCheckSummaries: API.PaginatedOperationMethod<
   ListCheckSummariesInput,
   ListCheckSummariesOutput,
   ListCheckSummariesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCheckSummariesInput,
-  ) => stream.Stream<
-    ListCheckSummariesOutput,
-    ListCheckSummariesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCheckSummariesInput,
-  ) => stream.Stream<
-    unknown,
-    ListCheckSummariesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCheckSummariesInput,
   output: ListCheckSummariesOutput,
   errors: [
@@ -6064,27 +6007,13 @@ export type ListLensesError =
 /**
  * List the available lenses.
  */
-export const listLenses: API.OperationMethod<
+export const listLenses: API.PaginatedOperationMethod<
   ListLensesInput,
   ListLensesOutput,
   ListLensesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListLensesInput,
-  ) => stream.Stream<
-    ListLensesOutput,
-    ListLensesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListLensesInput,
-  ) => stream.Stream<
-    unknown,
-    ListLensesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLensesInput,
   output: ListLensesOutput,
   errors: [
@@ -6113,27 +6042,13 @@ export type ListLensReviewImprovementsError =
 /**
  * List the improvements of a particular lens review.
  */
-export const listLensReviewImprovements: API.OperationMethod<
+export const listLensReviewImprovements: API.PaginatedOperationMethod<
   ListLensReviewImprovementsInput,
   ListLensReviewImprovementsOutput,
   ListLensReviewImprovementsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListLensReviewImprovementsInput,
-  ) => stream.Stream<
-    ListLensReviewImprovementsOutput,
-    ListLensReviewImprovementsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListLensReviewImprovementsInput,
-  ) => stream.Stream<
-    unknown,
-    ListLensReviewImprovementsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLensReviewImprovementsInput,
   output: ListLensReviewImprovementsOutput,
   errors: [
@@ -6163,27 +6078,13 @@ export type ListLensReviewsError =
 /**
  * List lens reviews for a particular workload.
  */
-export const listLensReviews: API.OperationMethod<
+export const listLensReviews: API.PaginatedOperationMethod<
   ListLensReviewsInput,
   ListLensReviewsOutput,
   ListLensReviewsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListLensReviewsInput,
-  ) => stream.Stream<
-    ListLensReviewsOutput,
-    ListLensReviewsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListLensReviewsInput,
-  ) => stream.Stream<
-    unknown,
-    ListLensReviewsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLensReviewsInput,
   output: ListLensReviewsOutput,
   errors: [
@@ -6213,27 +6114,13 @@ export type ListLensSharesError =
 /**
  * List the lens shares associated with the lens.
  */
-export const listLensShares: API.OperationMethod<
+export const listLensShares: API.PaginatedOperationMethod<
   ListLensSharesInput,
   ListLensSharesOutput,
   ListLensSharesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListLensSharesInput,
-  ) => stream.Stream<
-    ListLensSharesOutput,
-    ListLensSharesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListLensSharesInput,
-  ) => stream.Stream<
-    unknown,
-    ListLensSharesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLensSharesInput,
   output: ListLensSharesOutput,
   errors: [
@@ -6263,27 +6150,13 @@ export type ListMilestonesError =
 /**
  * List all milestones for an existing workload.
  */
-export const listMilestones: API.OperationMethod<
+export const listMilestones: API.PaginatedOperationMethod<
   ListMilestonesInput,
   ListMilestonesOutput,
   ListMilestonesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListMilestonesInput,
-  ) => stream.Stream<
-    ListMilestonesOutput,
-    ListMilestonesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListMilestonesInput,
-  ) => stream.Stream<
-    unknown,
-    ListMilestonesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMilestonesInput,
   output: ListMilestonesOutput,
   errors: [
@@ -6312,27 +6185,13 @@ export type ListNotificationsError =
 /**
  * List lens notifications.
  */
-export const listNotifications: API.OperationMethod<
+export const listNotifications: API.PaginatedOperationMethod<
   ListNotificationsInput,
   ListNotificationsOutput,
   ListNotificationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListNotificationsInput,
-  ) => stream.Stream<
-    ListNotificationsOutput,
-    ListNotificationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListNotificationsInput,
-  ) => stream.Stream<
-    unknown,
-    ListNotificationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListNotificationsInput,
   output: ListNotificationsOutput,
   errors: [
@@ -6360,27 +6219,13 @@ export type ListProfileNotificationsError =
 /**
  * List profile notifications.
  */
-export const listProfileNotifications: API.OperationMethod<
+export const listProfileNotifications: API.PaginatedOperationMethod<
   ListProfileNotificationsInput,
   ListProfileNotificationsOutput,
   ListProfileNotificationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListProfileNotificationsInput,
-  ) => stream.Stream<
-    ListProfileNotificationsOutput,
-    ListProfileNotificationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListProfileNotificationsInput,
-  ) => stream.Stream<
-    unknown,
-    ListProfileNotificationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProfileNotificationsInput,
   output: ListProfileNotificationsOutput,
   errors: [
@@ -6408,27 +6253,13 @@ export type ListProfilesError =
 /**
  * List profiles.
  */
-export const listProfiles: API.OperationMethod<
+export const listProfiles: API.PaginatedOperationMethod<
   ListProfilesInput,
   ListProfilesOutput,
   ListProfilesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListProfilesInput,
-  ) => stream.Stream<
-    ListProfilesOutput,
-    ListProfilesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListProfilesInput,
-  ) => stream.Stream<
-    unknown,
-    ListProfilesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProfilesInput,
   output: ListProfilesOutput,
   errors: [
@@ -6457,27 +6288,13 @@ export type ListProfileSharesError =
 /**
  * List profile shares.
  */
-export const listProfileShares: API.OperationMethod<
+export const listProfileShares: API.PaginatedOperationMethod<
   ListProfileSharesInput,
   ListProfileSharesOutput,
   ListProfileSharesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListProfileSharesInput,
-  ) => stream.Stream<
-    ListProfileSharesOutput,
-    ListProfileSharesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListProfileSharesInput,
-  ) => stream.Stream<
-    unknown,
-    ListProfileSharesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProfileSharesInput,
   output: ListProfileSharesOutput,
   errors: [
@@ -6507,27 +6324,13 @@ export type ListReviewTemplateAnswersError =
 /**
  * List the answers of a review template.
  */
-export const listReviewTemplateAnswers: API.OperationMethod<
+export const listReviewTemplateAnswers: API.PaginatedOperationMethod<
   ListReviewTemplateAnswersInput,
   ListReviewTemplateAnswersOutput,
   ListReviewTemplateAnswersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListReviewTemplateAnswersInput,
-  ) => stream.Stream<
-    ListReviewTemplateAnswersOutput,
-    ListReviewTemplateAnswersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListReviewTemplateAnswersInput,
-  ) => stream.Stream<
-    unknown,
-    ListReviewTemplateAnswersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListReviewTemplateAnswersInput,
   output: ListReviewTemplateAnswersOutput,
   errors: [
@@ -6556,27 +6359,13 @@ export type ListReviewTemplatesError =
 /**
  * List review templates.
  */
-export const listReviewTemplates: API.OperationMethod<
+export const listReviewTemplates: API.PaginatedOperationMethod<
   ListReviewTemplatesInput,
   ListReviewTemplatesOutput,
   ListReviewTemplatesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListReviewTemplatesInput,
-  ) => stream.Stream<
-    ListReviewTemplatesOutput,
-    ListReviewTemplatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListReviewTemplatesInput,
-  ) => stream.Stream<
-    unknown,
-    ListReviewTemplatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListReviewTemplatesInput,
   output: ListReviewTemplatesOutput,
   errors: [
@@ -6608,27 +6397,13 @@ export type ListShareInvitationsError =
  * `ProfileNamePrefix`, and `TemplateNamePrefix` are mutually
  * exclusive. Use the parameter that matches your `ShareResourceType`.
  */
-export const listShareInvitations: API.OperationMethod<
+export const listShareInvitations: API.PaginatedOperationMethod<
   ListShareInvitationsInput,
   ListShareInvitationsOutput,
   ListShareInvitationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListShareInvitationsInput,
-  ) => stream.Stream<
-    ListShareInvitationsOutput,
-    ListShareInvitationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListShareInvitationsInput,
-  ) => stream.Stream<
-    unknown,
-    ListShareInvitationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListShareInvitationsInput,
   output: ListShareInvitationsOutput,
   errors: [
@@ -6680,27 +6455,13 @@ export type ListTemplateSharesError =
 /**
  * List review template shares.
  */
-export const listTemplateShares: API.OperationMethod<
+export const listTemplateShares: API.PaginatedOperationMethod<
   ListTemplateSharesInput,
   ListTemplateSharesOutput,
   ListTemplateSharesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTemplateSharesInput,
-  ) => stream.Stream<
-    ListTemplateSharesOutput,
-    ListTemplateSharesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTemplateSharesInput,
-  ) => stream.Stream<
-    unknown,
-    ListTemplateSharesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTemplateSharesInput,
   output: ListTemplateSharesOutput,
   errors: [
@@ -6729,27 +6490,13 @@ export type ListWorkloadsError =
 /**
  * Paginated list of workloads.
  */
-export const listWorkloads: API.OperationMethod<
+export const listWorkloads: API.PaginatedOperationMethod<
   ListWorkloadsInput,
   ListWorkloadsOutput,
   ListWorkloadsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListWorkloadsInput,
-  ) => stream.Stream<
-    ListWorkloadsOutput,
-    ListWorkloadsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListWorkloadsInput,
-  ) => stream.Stream<
-    unknown,
-    ListWorkloadsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListWorkloadsInput,
   output: ListWorkloadsOutput,
   errors: [
@@ -6778,27 +6525,13 @@ export type ListWorkloadSharesError =
 /**
  * List the workload shares associated with the workload.
  */
-export const listWorkloadShares: API.OperationMethod<
+export const listWorkloadShares: API.PaginatedOperationMethod<
   ListWorkloadSharesInput,
   ListWorkloadSharesOutput,
   ListWorkloadSharesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListWorkloadSharesInput,
-  ) => stream.Stream<
-    ListWorkloadSharesOutput,
-    ListWorkloadSharesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListWorkloadSharesInput,
-  ) => stream.Stream<
-    unknown,
-    ListWorkloadSharesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListWorkloadSharesInput,
   output: ListWorkloadSharesOutput,
   errors: [
