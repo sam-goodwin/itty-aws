@@ -59,63 +59,63 @@ import { validatePaginated } from "./pagination.ts";
 const PAGINATED_TRAIT = "smithy.api#paginated";
 
 /**
- * Error-category trait, read from any model.
+ * Error categories, derived from the STANDARD Smithy error traits.
  *
- * Smithy classifies errors only as `client`/`server` plus `httpError` and
- * `retryable`, which is too coarse for the categories the runtime acts on —
- * `core/retry.ts` retries on `isTransientError`, and `core/category.ts`
- * distinguishes not-found from quota from conflict. There is no Smithy
- * vocabulary for that, so it rides as a namespaced trait, the same way
- * `com.cloudflare.protocols#errorMatchers` and `aws.auth#sigv2` do.
+ * `smithy.api#httpError` and `smithy.api#retryable` are how every Smithy
+ * model — AWS's included — says what kind of failure an error is. The
+ * categories the runtime acts on (`core/category.ts`, and `isTransientError`
+ * in `core/retry.ts`) are a reading of those two traits, so the reading
+ * belongs here, once, for every provider.
  *
- * A model or a patch says:
+ * A model that wants its errors classified states the status the API
+ * actually returns:
  *
- *   "traits": { "distilled.cloud#category": ["NotFoundError"] }
+ *   "traits": { "smithy.api#error": "client", "smithy.api#httpError": 404 }
  *
- * and the error class is emitted with `.pipe(C.withNotFoundError)`.
+ * and the error class is emitted with `.pipe(C.withNotFoundError)`. A model
+ * with no `httpError` gets no categories — the same as today.
  */
-export const CATEGORY_TRAIT = "distilled.cloud#category";
-
-/**
- * Category names accepted in {@link CATEGORY_TRAIT}, each mapping to the
- * `with<Name>` decorator exported by `@distilled.cloud/core/category`.
- * Listed explicitly so a typo in a patch fails the generate run rather than
- * emitting a call to a decorator that doesn't exist.
- */
-const CATEGORY_NAMES = new Set([
-  "AbortedError",
-  "AlreadyExistsError",
-  "AuthError",
-  "BadRequestError",
-  "ConflictError",
-  "DependencyViolationError",
-  "NetworkError",
-  "NotFoundError",
-  "QuotaError",
-  "RetryableError",
-  "ServerError",
-  "ThrottlingError",
-  "TimeoutError",
-]);
-
-/** `["NotFoundError"]` → `.pipe(C.withNotFoundError)` — validated. */
-const categoryPipes = (traits: Record<string, any> | undefined): string[] => {
-  const raw = traits?.[CATEGORY_TRAIT];
-  if (raw === undefined) return [];
-  if (!Array.isArray(raw)) {
-    throw new Error(
-      `${CATEGORY_TRAIT} must be an array of category names, got ${JSON.stringify(raw)}`,
-    );
+export const errorCategories = (
+  traits: Record<string, any> | undefined,
+  /** Categories a provider knows that the traits don't say (AWS's spec file). */
+  extra: readonly string[] = [],
+): string[] => {
+  const categories: string[] = [];
+  const add = (name: string) => {
+    if (!categories.includes(name)) categories.push(name);
+  };
+  const status = traits?.["smithy.api#httpError"] as number | undefined;
+  if (typeof status === "number") {
+    if (status === 401 || status === 403) add("AuthError");
+    else if (status === 402) add("QuotaError");
+    else if (
+      status === 400 ||
+      status === 404 ||
+      status === 405 ||
+      status === 406 ||
+      status === 410 ||
+      status === 413 ||
+      status === 415 ||
+      status === 422
+    ) {
+      add("BadRequestError");
+    } else if (status === 408 || status === 504) add("TimeoutError");
+    else if (status === 409) add("ConflictError");
+    else if (status === 429) add("ThrottlingError");
+    else if (status >= 500 && status < 600) add("ServerError");
   }
-  return raw.map((name) => {
-    if (typeof name !== "string" || !CATEGORY_NAMES.has(name)) {
-      throw new Error(
-        `unknown error category ${JSON.stringify(name)} — expected one of ${[...CATEGORY_NAMES].sort().join(", ")}`,
-      );
-    }
-    return `C.with${name}`;
-  });
+  const retryable = traits?.["smithy.api#retryable"];
+  if (retryable !== undefined) {
+    add("RetryableError");
+    if (retryable?.throttling) add("ThrottlingError");
+  }
+  for (const name of extra) add(name);
+  return categories;
 };
+
+/** `["NotFoundError"]` → `C.withNotFoundError`. */
+const categoryPipes = (traits: Record<string, any> | undefined): string[] =>
+  errorCategories(traits).map((name) => `C.with${name}`);
 
 /** A member's resolved binding. The four generic kinds plus provider extras. */
 export type MemberBinding =
