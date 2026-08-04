@@ -7,7 +7,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 const svc = T.AwsApiService({
   sdkId: "neptunedata",
   serviceShapeName: "AmazonNeptuneDataplane",
@@ -2522,7 +2521,7 @@ export const cancelGremlinQuery: API.OperationMethod<
   CancelGremlinQueryInput,
   CancelGremlinQueryOutput,
   CancelGremlinQueryError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CancelGremlinQueryInput,
   output: CancelGremlinQueryOutput,
@@ -2571,7 +2570,7 @@ export const cancelLoaderJob: API.OperationMethod<
   CancelLoaderJobInput,
   CancelLoaderJobOutput,
   CancelLoaderJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CancelLoaderJobInput,
   output: CancelLoaderJobOutput,
@@ -2617,7 +2616,7 @@ export const cancelMLDataProcessingJob: API.OperationMethod<
   CancelMLDataProcessingJobInput,
   CancelMLDataProcessingJobOutput,
   CancelMLDataProcessingJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CancelMLDataProcessingJobInput,
   output: CancelMLDataProcessingJobOutput,
@@ -2661,7 +2660,7 @@ export const cancelMLModelTrainingJob: API.OperationMethod<
   CancelMLModelTrainingJobInput,
   CancelMLModelTrainingJobOutput,
   CancelMLModelTrainingJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CancelMLModelTrainingJobInput,
   output: CancelMLModelTrainingJobOutput,
@@ -2705,7 +2704,7 @@ export const cancelMLModelTransformJob: API.OperationMethod<
   CancelMLModelTransformJobInput,
   CancelMLModelTransformJobOutput,
   CancelMLModelTransformJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CancelMLModelTransformJobInput,
   output: CancelMLModelTransformJobOutput,
@@ -2753,7 +2752,7 @@ export const cancelOpenCypherQuery: API.OperationMethod<
   CancelOpenCypherQueryInput,
   CancelOpenCypherQueryOutput,
   CancelOpenCypherQueryError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CancelOpenCypherQueryInput,
   output: CancelOpenCypherQueryOutput,
@@ -2801,7 +2800,7 @@ export const createMLEndpoint: API.OperationMethod<
   CreateMLEndpointInput,
   CreateMLEndpointOutput,
   CreateMLEndpointError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateMLEndpointInput,
   output: CreateMLEndpointOutput,
@@ -2845,7 +2844,7 @@ export const deleteMLEndpoint: API.OperationMethod<
   DeleteMLEndpointInput,
   DeleteMLEndpointOutput,
   DeleteMLEndpointError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteMLEndpointInput,
   output: DeleteMLEndpointOutput,
@@ -2891,7 +2890,7 @@ export const deletePropertygraphStatistics: API.OperationMethod<
   DeletePropertygraphStatisticsRequest,
   DeletePropertygraphStatisticsOutput,
   DeletePropertygraphStatisticsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeletePropertygraphStatisticsRequest,
   output: DeletePropertygraphStatisticsOutput,
@@ -2939,7 +2938,7 @@ export const deleteSparqlStatistics: API.OperationMethod<
   DeleteSparqlStatisticsRequest,
   DeleteSparqlStatisticsOutput,
   DeleteSparqlStatisticsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteSparqlStatisticsRequest,
   output: DeleteSparqlStatisticsOutput,
@@ -2989,7 +2988,7 @@ export const executeFastReset: API.OperationMethod<
   ExecuteFastResetInput,
   ExecuteFastResetOutput,
   ExecuteFastResetError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ExecuteFastResetInput,
   output: ExecuteFastResetOutput,
@@ -3056,7 +3055,7 @@ export const executeGremlinExplainQuery: API.OperationMethod<
   ExecuteGremlinExplainQueryInput,
   ExecuteGremlinExplainQueryOutput,
   ExecuteGremlinExplainQueryError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ExecuteGremlinExplainQueryInput,
   output: ExecuteGremlinExplainQueryOutput,
@@ -3120,7 +3119,7 @@ export const executeGremlinProfileQuery: API.OperationMethod<
   ExecuteGremlinProfileQueryInput,
   ExecuteGremlinProfileQueryOutput,
   ExecuteGremlinProfileQueryError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ExecuteGremlinProfileQueryInput,
   output: ExecuteGremlinProfileQueryOutput,
@@ -3190,7 +3189,7 @@ export const executeGremlinQuery: API.OperationMethod<
   ExecuteGremlinQueryInput,
   ExecuteGremlinQueryOutput,
   ExecuteGremlinQueryError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ExecuteGremlinQueryInput,
   output: ExecuteGremlinQueryOutput,
@@ -3255,7 +3254,7 @@ export const executeOpenCypherExplainQuery: API.OperationMethod<
   ExecuteOpenCypherExplainQueryInput,
   ExecuteOpenCypherExplainQueryOutput,
   ExecuteOpenCypherExplainQueryError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ExecuteOpenCypherExplainQueryInput,
   output: ExecuteOpenCypherExplainQueryOutput,
@@ -3331,7 +3330,7 @@ export const executeOpenCypherQuery: API.OperationMethod<
   ExecuteOpenCypherQueryInput,
   ExecuteOpenCypherQueryOutput,
   ExecuteOpenCypherQueryError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ExecuteOpenCypherQueryInput,
   output: ExecuteOpenCypherQueryOutput,
@@ -3382,7 +3381,7 @@ export const getEngineStatus: API.OperationMethod<
   GetEngineStatusRequest,
   GetEngineStatusOutput,
   GetEngineStatusError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetEngineStatusRequest,
   output: GetEngineStatusOutput,
@@ -3430,7 +3429,7 @@ export const getGremlinQueryStatus: API.OperationMethod<
   GetGremlinQueryStatusInput,
   GetGremlinQueryStatusOutput,
   GetGremlinQueryStatusError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetGremlinQueryStatusInput,
   output: GetGremlinQueryStatusOutput,
@@ -3483,7 +3482,7 @@ export const getLoaderJobStatus: API.OperationMethod<
   GetLoaderJobStatusInput,
   GetLoaderJobStatusOutput,
   GetLoaderJobStatusError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetLoaderJobStatusInput,
   output: GetLoaderJobStatusOutput,
@@ -3529,7 +3528,7 @@ export const getMLDataProcessingJob: API.OperationMethod<
   GetMLDataProcessingJobInput,
   GetMLDataProcessingJobOutput,
   GetMLDataProcessingJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetMLDataProcessingJobInput,
   output: GetMLDataProcessingJobOutput,
@@ -3573,7 +3572,7 @@ export const getMLEndpoint: API.OperationMethod<
   GetMLEndpointInput,
   GetMLEndpointOutput,
   GetMLEndpointError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetMLEndpointInput,
   output: GetMLEndpointOutput,
@@ -3617,7 +3616,7 @@ export const getMLModelTrainingJob: API.OperationMethod<
   GetMLModelTrainingJobInput,
   GetMLModelTrainingJobOutput,
   GetMLModelTrainingJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetMLModelTrainingJobInput,
   output: GetMLModelTrainingJobOutput,
@@ -3661,7 +3660,7 @@ export const getMLModelTransformJob: API.OperationMethod<
   GetMLModelTransformJobInput,
   GetMLModelTransformJobOutput,
   GetMLModelTransformJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetMLModelTransformJobInput,
   output: GetMLModelTransformJobOutput,
@@ -3713,7 +3712,7 @@ export const getOpenCypherQueryStatus: API.OperationMethod<
   GetOpenCypherQueryStatusInput,
   GetOpenCypherQueryStatusOutput,
   GetOpenCypherQueryStatusError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetOpenCypherQueryStatusInput,
   output: GetOpenCypherQueryStatusOutput,
@@ -3765,7 +3764,7 @@ export const getPropertygraphStatistics: API.OperationMethod<
   GetPropertygraphStatisticsRequest,
   GetPropertygraphStatisticsOutput,
   GetPropertygraphStatisticsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetPropertygraphStatisticsRequest,
   output: GetPropertygraphStatisticsOutput,
@@ -3828,7 +3827,7 @@ export const getPropertygraphStream: API.OperationMethod<
   GetPropertygraphStreamInput,
   GetPropertygraphStreamOutput,
   GetPropertygraphStreamError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetPropertygraphStreamInput,
   output: GetPropertygraphStreamOutput,
@@ -3875,7 +3874,7 @@ export const getPropertygraphSummary: API.OperationMethod<
   GetPropertygraphSummaryInput,
   GetPropertygraphSummaryOutput,
   GetPropertygraphSummaryError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetPropertygraphSummaryInput,
   output: GetPropertygraphSummaryOutput,
@@ -3923,7 +3922,7 @@ export const getRDFGraphSummary: API.OperationMethod<
   GetRDFGraphSummaryInput,
   GetRDFGraphSummaryOutput,
   GetRDFGraphSummaryError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetRDFGraphSummaryInput,
   output: GetRDFGraphSummaryOutput,
@@ -3969,7 +3968,7 @@ export const getSparqlStatistics: API.OperationMethod<
   GetSparqlStatisticsRequest,
   GetSparqlStatisticsOutput,
   GetSparqlStatisticsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetSparqlStatisticsRequest,
   output: GetSparqlStatisticsOutput,
@@ -4024,7 +4023,7 @@ export const getSparqlStream: API.OperationMethod<
   GetSparqlStreamInput,
   GetSparqlStreamOutput,
   GetSparqlStreamError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetSparqlStreamInput,
   output: GetSparqlStreamOutput,
@@ -4076,7 +4075,7 @@ export const listGremlinQueries: API.OperationMethod<
   ListGremlinQueriesInput,
   ListGremlinQueriesOutput,
   ListGremlinQueriesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListGremlinQueriesInput,
   output: ListGremlinQueriesOutput,
@@ -4126,7 +4125,7 @@ export const listLoaderJobs: API.OperationMethod<
   ListLoaderJobsInput,
   ListLoaderJobsOutput,
   ListLoaderJobsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListLoaderJobsInput,
   output: ListLoaderJobsOutput,
@@ -4171,7 +4170,7 @@ export const listMLDataProcessingJobs: API.OperationMethod<
   ListMLDataProcessingJobsInput,
   ListMLDataProcessingJobsOutput,
   ListMLDataProcessingJobsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListMLDataProcessingJobsInput,
   output: ListMLDataProcessingJobsOutput,
@@ -4215,7 +4214,7 @@ export const listMLEndpoints: API.OperationMethod<
   ListMLEndpointsInput,
   ListMLEndpointsOutput,
   ListMLEndpointsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListMLEndpointsInput,
   output: ListMLEndpointsOutput,
@@ -4259,7 +4258,7 @@ export const listMLModelTrainingJobs: API.OperationMethod<
   ListMLModelTrainingJobsInput,
   ListMLModelTrainingJobsOutput,
   ListMLModelTrainingJobsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListMLModelTrainingJobsInput,
   output: ListMLModelTrainingJobsOutput,
@@ -4303,7 +4302,7 @@ export const listMLModelTransformJobs: API.OperationMethod<
   ListMLModelTransformJobsInput,
   ListMLModelTransformJobsOutput,
   ListMLModelTransformJobsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListMLModelTransformJobsInput,
   output: ListMLModelTransformJobsOutput,
@@ -4355,7 +4354,7 @@ export const listOpenCypherQueries: API.OperationMethod<
   ListOpenCypherQueriesInput,
   ListOpenCypherQueriesOutput,
   ListOpenCypherQueriesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListOpenCypherQueriesInput,
   output: ListOpenCypherQueriesOutput,
@@ -4407,7 +4406,7 @@ export const managePropertygraphStatistics: API.OperationMethod<
   ManagePropertygraphStatisticsInput,
   ManagePropertygraphStatisticsOutput,
   ManagePropertygraphStatisticsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ManagePropertygraphStatisticsInput,
   output: ManagePropertygraphStatisticsOutput,
@@ -4455,7 +4454,7 @@ export const manageSparqlStatistics: API.OperationMethod<
   ManageSparqlStatisticsInput,
   ManageSparqlStatisticsOutput,
   ManageSparqlStatisticsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ManageSparqlStatisticsInput,
   output: ManageSparqlStatisticsOutput,
@@ -4504,7 +4503,7 @@ export const startLoaderJob: API.OperationMethod<
   StartLoaderJobInput,
   StartLoaderJobOutput,
   StartLoaderJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartLoaderJobInput,
   output: StartLoaderJobOutput,
@@ -4551,7 +4550,7 @@ export const startMLDataProcessingJob: API.OperationMethod<
   StartMLDataProcessingJobInput,
   StartMLDataProcessingJobOutput,
   StartMLDataProcessingJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartMLDataProcessingJobInput,
   output: StartMLDataProcessingJobOutput,
@@ -4595,7 +4594,7 @@ export const startMLModelTrainingJob: API.OperationMethod<
   StartMLModelTrainingJobInput,
   StartMLModelTrainingJobOutput,
   StartMLModelTrainingJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartMLModelTrainingJobInput,
   output: StartMLModelTrainingJobOutput,
@@ -4639,7 +4638,7 @@ export const startMLModelTransformJob: API.OperationMethod<
   StartMLModelTransformJobInput,
   StartMLModelTransformJobOutput,
   StartMLModelTransformJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartMLModelTransformJobInput,
   output: StartMLModelTransformJobOutput,

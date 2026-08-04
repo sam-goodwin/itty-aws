@@ -7,7 +7,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 const svc = T.AwsApiService({
   sdkId: "IoTTwinMaker",
   serviceShapeName: "AWSIoTTwinMaker",
@@ -3133,7 +3132,7 @@ export const batchPutPropertyValues: API.OperationMethod<
   BatchPutPropertyValuesRequest,
   BatchPutPropertyValuesResponse,
   BatchPutPropertyValuesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: BatchPutPropertyValuesRequest,
   output: BatchPutPropertyValuesResponse,
@@ -3164,7 +3163,7 @@ export const cancelMetadataTransferJob: API.OperationMethod<
   CancelMetadataTransferJobRequest,
   CancelMetadataTransferJobResponse,
   CancelMetadataTransferJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CancelMetadataTransferJobRequest,
   output: CancelMetadataTransferJobResponse,
@@ -3197,7 +3196,7 @@ export const createComponentType: API.OperationMethod<
   CreateComponentTypeRequest,
   CreateComponentTypeResponse,
   CreateComponentTypeError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateComponentTypeRequest,
   output: CreateComponentTypeResponse,
@@ -3230,7 +3229,7 @@ export const createEntity: API.OperationMethod<
   CreateEntityRequest,
   CreateEntityResponse,
   CreateEntityError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateEntityRequest,
   output: CreateEntityResponse,
@@ -3264,7 +3263,7 @@ export const createMetadataTransferJob: API.OperationMethod<
   CreateMetadataTransferJobRequest,
   CreateMetadataTransferJobResponse,
   CreateMetadataTransferJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateMetadataTransferJobRequest,
   output: CreateMetadataTransferJobResponse,
@@ -3298,7 +3297,7 @@ export const createScene: API.OperationMethod<
   CreateSceneRequest,
   CreateSceneResponse,
   CreateSceneError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateSceneRequest,
   output: CreateSceneResponse,
@@ -3331,7 +3330,7 @@ export const createSyncJob: API.OperationMethod<
   CreateSyncJobRequest,
   CreateSyncJobResponse,
   CreateSyncJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateSyncJobRequest,
   output: CreateSyncJobResponse,
@@ -3364,7 +3363,7 @@ export const createWorkspace: API.OperationMethod<
   CreateWorkspaceRequest,
   CreateWorkspaceResponse,
   CreateWorkspaceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateWorkspaceRequest,
   output: CreateWorkspaceResponse,
@@ -3396,7 +3395,7 @@ export const deleteComponentType: API.OperationMethod<
   DeleteComponentTypeRequest,
   DeleteComponentTypeResponse,
   DeleteComponentTypeError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteComponentTypeRequest,
   output: DeleteComponentTypeResponse,
@@ -3427,7 +3426,7 @@ export const deleteEntity: API.OperationMethod<
   DeleteEntityRequest,
   DeleteEntityResponse,
   DeleteEntityError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteEntityRequest,
   output: DeleteEntityResponse,
@@ -3458,7 +3457,7 @@ export const deleteScene: API.OperationMethod<
   DeleteSceneRequest,
   DeleteSceneResponse,
   DeleteSceneError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteSceneRequest,
   output: DeleteSceneResponse,
@@ -3490,7 +3489,7 @@ export const deleteSyncJob: API.OperationMethod<
   DeleteSyncJobRequest,
   DeleteSyncJobResponse,
   DeleteSyncJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteSyncJobRequest,
   output: DeleteSyncJobResponse,
@@ -3522,7 +3521,7 @@ export const deleteWorkspace: API.OperationMethod<
   DeleteWorkspaceRequest,
   DeleteWorkspaceResponse,
   DeleteWorkspaceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteWorkspaceRequest,
   output: DeleteWorkspaceResponse,
@@ -3558,7 +3557,7 @@ export const executeQuery: API.PaginatedOperationMethod<
   ExecuteQueryRequest,
   ExecuteQueryResponse,
   ExecuteQueryError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ExecuteQueryRequest,
@@ -3596,7 +3595,7 @@ export const getComponentType: API.OperationMethod<
   GetComponentTypeRequest,
   GetComponentTypeResponse,
   GetComponentTypeError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetComponentTypeRequest,
   output: GetComponentTypeResponse,
@@ -3627,7 +3626,7 @@ export const getEntity: API.OperationMethod<
   GetEntityRequest,
   GetEntityResponse,
   GetEntityError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetEntityRequest,
   output: GetEntityResponse,
@@ -3658,7 +3657,7 @@ export const getMetadataTransferJob: API.OperationMethod<
   GetMetadataTransferJobRequest,
   GetMetadataTransferJobResponse,
   GetMetadataTransferJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetMetadataTransferJobRequest,
   output: GetMetadataTransferJobResponse,
@@ -3688,7 +3687,7 @@ export const getPricingPlan: API.OperationMethod<
   GetPricingPlanRequest,
   GetPricingPlanResponse,
   GetPricingPlanError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetPricingPlanRequest,
   output: GetPricingPlanResponse,
@@ -3723,7 +3722,7 @@ export const getPropertyValue: API.PaginatedOperationMethod<
   GetPropertyValueRequest,
   GetPropertyValueResponse,
   GetPropertyValueError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetPropertyValueRequest,
@@ -3769,7 +3768,7 @@ export const getPropertyValueHistory: API.PaginatedOperationMethod<
   GetPropertyValueHistoryRequest,
   GetPropertyValueHistoryResponse,
   GetPropertyValueHistoryError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetPropertyValueHistoryRequest,
@@ -3808,7 +3807,7 @@ export const getScene: API.OperationMethod<
   GetSceneRequest,
   GetSceneResponse,
   GetSceneError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetSceneRequest,
   output: GetSceneResponse,
@@ -3840,7 +3839,7 @@ export const getSyncJob: API.OperationMethod<
   GetSyncJobRequest,
   GetSyncJobResponse,
   GetSyncJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetSyncJobRequest,
   output: GetSyncJobResponse,
@@ -3872,7 +3871,7 @@ export const getWorkspace: API.OperationMethod<
   GetWorkspaceRequest,
   GetWorkspaceResponse,
   GetWorkspaceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetWorkspaceRequest,
   output: GetWorkspaceResponse,
@@ -3903,7 +3902,7 @@ export const listComponents: API.PaginatedOperationMethod<
   ListComponentsRequest,
   ListComponentsResponse,
   ListComponentsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListComponentsRequest,
@@ -3939,7 +3938,7 @@ export const listComponentTypes: API.PaginatedOperationMethod<
   ListComponentTypesRequest,
   ListComponentTypesResponse,
   ListComponentTypesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListComponentTypesRequest,
@@ -3974,7 +3973,7 @@ export const listEntities: API.PaginatedOperationMethod<
   ListEntitiesRequest,
   ListEntitiesResponse,
   ListEntitiesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEntitiesRequest,
@@ -4009,7 +4008,7 @@ export const listMetadataTransferJobs: API.PaginatedOperationMethod<
   ListMetadataTransferJobsRequest,
   ListMetadataTransferJobsResponse,
   ListMetadataTransferJobsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMetadataTransferJobsRequest,
@@ -4045,7 +4044,7 @@ export const listProperties: API.PaginatedOperationMethod<
   ListPropertiesRequest,
   ListPropertiesResponse,
   ListPropertiesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPropertiesRequest,
@@ -4081,7 +4080,7 @@ export const listScenes: API.PaginatedOperationMethod<
   ListScenesRequest,
   ListScenesResponse,
   ListScenesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListScenesRequest,
@@ -4117,7 +4116,7 @@ export const listSyncJobs: API.PaginatedOperationMethod<
   ListSyncJobsRequest,
   ListSyncJobsResponse,
   ListSyncJobsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSyncJobsRequest,
@@ -4154,7 +4153,7 @@ export const listSyncResources: API.PaginatedOperationMethod<
   ListSyncResourcesRequest,
   ListSyncResourcesResponse,
   ListSyncResourcesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSyncResourcesRequest,
@@ -4188,7 +4187,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -4212,7 +4211,7 @@ export const listWorkspaces: API.PaginatedOperationMethod<
   ListWorkspacesRequest,
   ListWorkspacesResponse,
   ListWorkspacesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListWorkspacesRequest,
@@ -4246,7 +4245,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -4272,7 +4271,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -4298,7 +4297,7 @@ export const updateComponentType: API.OperationMethod<
   UpdateComponentTypeRequest,
   UpdateComponentTypeResponse,
   UpdateComponentTypeError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateComponentTypeRequest,
   output: UpdateComponentTypeResponse,
@@ -4332,7 +4331,7 @@ export const updateEntity: API.OperationMethod<
   UpdateEntityRequest,
   UpdateEntityResponse,
   UpdateEntityError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateEntityRequest,
   output: UpdateEntityResponse,
@@ -4364,7 +4363,7 @@ export const updatePricingPlan: API.OperationMethod<
   UpdatePricingPlanRequest,
   UpdatePricingPlanResponse,
   UpdatePricingPlanError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdatePricingPlanRequest,
   output: UpdatePricingPlanResponse,
@@ -4394,7 +4393,7 @@ export const updateScene: API.OperationMethod<
   UpdateSceneRequest,
   UpdateSceneResponse,
   UpdateSceneError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateSceneRequest,
   output: UpdateSceneResponse,
@@ -4426,7 +4425,7 @@ export const updateWorkspace: API.OperationMethod<
   UpdateWorkspaceRequest,
   UpdateWorkspaceResponse,
   UpdateWorkspaceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateWorkspaceRequest,
   output: UpdateWorkspaceResponse,

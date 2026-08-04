@@ -7,7 +7,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 const ns = T.XmlNamespace("https://route53.amazonaws.com/doc/2013-04-01/");
 const svc = T.AwsApiService({
   sdkId: "Route 53",
@@ -4291,7 +4290,7 @@ export const activateKeySigningKey: API.OperationMethod<
   ActivateKeySigningKeyRequest,
   ActivateKeySigningKeyResponse,
   ActivateKeySigningKeyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ActivateKeySigningKeyRequest,
   output: ActivateKeySigningKeyResponse,
@@ -4349,7 +4348,7 @@ export const associateVPCWithHostedZone: API.OperationMethod<
   AssociateVPCWithHostedZoneRequest,
   AssociateVPCWithHostedZoneResponse,
   AssociateVPCWithHostedZoneError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: AssociateVPCWithHostedZoneRequest,
   output: AssociateVPCWithHostedZoneResponse,
@@ -4402,7 +4401,7 @@ export const changeCidrCollection: API.OperationMethod<
   ChangeCidrCollectionRequest,
   ChangeCidrCollectionResponse,
   ChangeCidrCollectionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ChangeCidrCollectionRequest,
   output: ChangeCidrCollectionResponse,
@@ -4516,7 +4515,7 @@ export const changeResourceRecordSets: API.OperationMethod<
   ChangeResourceRecordSetsRequest,
   ChangeResourceRecordSetsResponse,
   ChangeResourceRecordSetsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ChangeResourceRecordSetsRequest,
   output: ChangeResourceRecordSetsResponse,
@@ -4549,7 +4548,7 @@ export const changeTagsForResource: API.OperationMethod<
   ChangeTagsForResourceRequest,
   ChangeTagsForResourceResponse,
   ChangeTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ChangeTagsForResourceRequest,
   output: ChangeTagsForResourceResponse,
@@ -4578,7 +4577,7 @@ export const createCidrCollection: API.OperationMethod<
   CreateCidrCollectionRequest,
   CreateCidrCollectionResponse,
   CreateCidrCollectionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateCidrCollectionRequest,
   output: CreateCidrCollectionResponse,
@@ -4635,7 +4634,7 @@ export const createHealthCheck: API.OperationMethod<
   CreateHealthCheckRequest,
   CreateHealthCheckResponse,
   CreateHealthCheckError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateHealthCheckRequest,
   output: CreateHealthCheckResponse,
@@ -4717,7 +4716,7 @@ export const createHostedZone: API.OperationMethod<
   CreateHostedZoneRequest,
   CreateHostedZoneResponse,
   CreateHostedZoneError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateHostedZoneRequest,
   output: CreateHostedZoneResponse,
@@ -4757,7 +4756,7 @@ export const createKeySigningKey: API.OperationMethod<
   CreateKeySigningKeyRequest,
   CreateKeySigningKeyResponse,
   CreateKeySigningKeyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateKeySigningKeyRequest,
   output: CreateKeySigningKeyResponse,
@@ -4933,7 +4932,7 @@ export const createQueryLoggingConfig: API.OperationMethod<
   CreateQueryLoggingConfigRequest,
   CreateQueryLoggingConfigResponse,
   CreateQueryLoggingConfigError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateQueryLoggingConfigRequest,
   output: CreateQueryLoggingConfigResponse,
@@ -5013,7 +5012,7 @@ export const createReusableDelegationSet: API.OperationMethod<
   CreateReusableDelegationSetRequest,
   CreateReusableDelegationSetResponse,
   CreateReusableDelegationSetError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateReusableDelegationSetRequest,
   output: CreateReusableDelegationSetResponse,
@@ -5046,7 +5045,7 @@ export const createTrafficPolicy: API.OperationMethod<
   CreateTrafficPolicyRequest,
   CreateTrafficPolicyResponse,
   CreateTrafficPolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateTrafficPolicyRequest,
   output: CreateTrafficPolicyResponse,
@@ -5087,7 +5086,7 @@ export const createTrafficPolicyInstance: API.OperationMethod<
   CreateTrafficPolicyInstanceRequest,
   CreateTrafficPolicyInstanceResponse,
   CreateTrafficPolicyInstanceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateTrafficPolicyInstanceRequest,
   output: CreateTrafficPolicyInstanceResponse,
@@ -5123,7 +5122,7 @@ export const createTrafficPolicyVersion: API.OperationMethod<
   CreateTrafficPolicyVersionRequest,
   CreateTrafficPolicyVersionResponse,
   CreateTrafficPolicyVersionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateTrafficPolicyVersionRequest,
   output: CreateTrafficPolicyVersionResponse,
@@ -5162,7 +5161,7 @@ export const createVPCAssociationAuthorization: API.OperationMethod<
   CreateVPCAssociationAuthorizationRequest,
   CreateVPCAssociationAuthorizationResponse,
   CreateVPCAssociationAuthorizationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateVPCAssociationAuthorizationRequest,
   output: CreateVPCAssociationAuthorizationResponse,
@@ -5195,7 +5194,7 @@ export const deactivateKeySigningKey: API.OperationMethod<
   DeactivateKeySigningKeyRequest,
   DeactivateKeySigningKeyResponse,
   DeactivateKeySigningKeyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeactivateKeySigningKeyRequest,
   output: DeactivateKeySigningKeyResponse,
@@ -5227,7 +5226,7 @@ export const deleteCidrCollection: API.OperationMethod<
   DeleteCidrCollectionRequest,
   DeleteCidrCollectionResponse,
   DeleteCidrCollectionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteCidrCollectionRequest,
   output: DeleteCidrCollectionResponse,
@@ -5268,7 +5267,7 @@ export const deleteHealthCheck: API.OperationMethod<
   DeleteHealthCheckRequest,
   DeleteHealthCheckResponse,
   DeleteHealthCheckError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteHealthCheckRequest,
   output: DeleteHealthCheckResponse,
@@ -5333,7 +5332,7 @@ export const deleteHostedZone: API.OperationMethod<
   DeleteHostedZoneRequest,
   DeleteHostedZoneResponse,
   DeleteHostedZoneError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteHostedZoneRequest,
   output: DeleteHostedZoneResponse,
@@ -5371,7 +5370,7 @@ export const deleteKeySigningKey: API.OperationMethod<
   DeleteKeySigningKeyRequest,
   DeleteKeySigningKeyResponse,
   DeleteKeySigningKeyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteKeySigningKeyRequest,
   output: DeleteKeySigningKeyResponse,
@@ -5404,7 +5403,7 @@ export const deleteQueryLoggingConfig: API.OperationMethod<
   DeleteQueryLoggingConfigRequest,
   DeleteQueryLoggingConfigResponse,
   DeleteQueryLoggingConfigError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteQueryLoggingConfigRequest,
   output: DeleteQueryLoggingConfigResponse,
@@ -5434,7 +5433,7 @@ export const deleteReusableDelegationSet: API.OperationMethod<
   DeleteReusableDelegationSetRequest,
   DeleteReusableDelegationSetResponse,
   DeleteReusableDelegationSetError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteReusableDelegationSetRequest,
   output: DeleteReusableDelegationSetResponse,
@@ -5473,7 +5472,7 @@ export const deleteTrafficPolicy: API.OperationMethod<
   DeleteTrafficPolicyRequest,
   DeleteTrafficPolicyResponse,
   DeleteTrafficPolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteTrafficPolicyRequest,
   output: DeleteTrafficPolicyResponse,
@@ -5504,7 +5503,7 @@ export const deleteTrafficPolicyInstance: API.OperationMethod<
   DeleteTrafficPolicyInstanceRequest,
   DeleteTrafficPolicyInstanceResponse,
   DeleteTrafficPolicyInstanceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteTrafficPolicyInstanceRequest,
   output: DeleteTrafficPolicyInstanceResponse,
@@ -5538,7 +5537,7 @@ export const deleteVPCAssociationAuthorization: API.OperationMethod<
   DeleteVPCAssociationAuthorizationRequest,
   DeleteVPCAssociationAuthorizationResponse,
   DeleteVPCAssociationAuthorizationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteVPCAssociationAuthorizationRequest,
   output: DeleteVPCAssociationAuthorizationResponse,
@@ -5572,7 +5571,7 @@ export const disableHostedZoneDNSSEC: API.OperationMethod<
   DisableHostedZoneDNSSECRequest,
   DisableHostedZoneDNSSECResponse,
   DisableHostedZoneDNSSECError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DisableHostedZoneDNSSECRequest,
   output: DisableHostedZoneDNSSECResponse,
@@ -5641,7 +5640,7 @@ export const disassociateVPCFromHostedZone: API.OperationMethod<
   DisassociateVPCFromHostedZoneRequest,
   DisassociateVPCFromHostedZoneResponse,
   DisassociateVPCFromHostedZoneError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DisassociateVPCFromHostedZoneRequest,
   output: DisassociateVPCFromHostedZoneResponse,
@@ -5675,7 +5674,7 @@ export const enableHostedZoneDNSSEC: API.OperationMethod<
   EnableHostedZoneDNSSECRequest,
   EnableHostedZoneDNSSECResponse,
   EnableHostedZoneDNSSECError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: EnableHostedZoneDNSSECRequest,
   output: EnableHostedZoneDNSSECResponse,
@@ -5711,7 +5710,7 @@ export const getAccountLimit: API.OperationMethod<
   GetAccountLimitRequest,
   GetAccountLimitResponse,
   GetAccountLimitError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetAccountLimitRequest,
   output: GetAccountLimitResponse,
@@ -5737,7 +5736,7 @@ export const getChange: API.OperationMethod<
   GetChangeRequest,
   GetChangeResponse,
   GetChangeError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetChangeRequest,
   output: GetChangeResponse,
@@ -5762,7 +5761,7 @@ export const getCheckerIpRanges: API.OperationMethod<
   GetCheckerIpRangesRequest,
   GetCheckerIpRangesResponse,
   GetCheckerIpRangesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetCheckerIpRangesRequest,
   output: GetCheckerIpRangesResponse,
@@ -5785,7 +5784,7 @@ export const getDNSSEC: API.OperationMethod<
   GetDNSSECRequest,
   GetDNSSECResponse,
   GetDNSSECError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetDNSSECRequest,
   output: GetDNSSECResponse,
@@ -5829,7 +5828,7 @@ export const getGeoLocation: API.OperationMethod<
   GetGeoLocationRequest,
   GetGeoLocationResponse,
   GetGeoLocationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetGeoLocationRequest,
   output: GetGeoLocationResponse,
@@ -5851,7 +5850,7 @@ export const getHealthCheck: API.OperationMethod<
   GetHealthCheckRequest,
   GetHealthCheckResponse,
   GetHealthCheckError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetHealthCheckRequest,
   output: GetHealthCheckResponse,
@@ -5869,7 +5868,7 @@ export const getHealthCheckCount: API.OperationMethod<
   GetHealthCheckCountRequest,
   GetHealthCheckCountResponse,
   GetHealthCheckCountError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetHealthCheckCountRequest,
   output: GetHealthCheckCountResponse,
@@ -5890,7 +5889,7 @@ export const getHealthCheckLastFailureReason: API.OperationMethod<
   GetHealthCheckLastFailureReasonRequest,
   GetHealthCheckLastFailureReasonResponse,
   GetHealthCheckLastFailureReasonError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetHealthCheckLastFailureReasonRequest,
   output: GetHealthCheckLastFailureReasonResponse,
@@ -5915,7 +5914,7 @@ export const getHealthCheckStatus: API.OperationMethod<
   GetHealthCheckStatusRequest,
   GetHealthCheckStatusResponse,
   GetHealthCheckStatusError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetHealthCheckStatusRequest,
   output: GetHealthCheckStatusResponse,
@@ -5937,7 +5936,7 @@ export const getHostedZone: API.OperationMethod<
   GetHostedZoneRequest,
   GetHostedZoneResponse,
   GetHostedZoneError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetHostedZoneRequest,
   output: GetHostedZoneResponse,
@@ -5955,7 +5954,7 @@ export const getHostedZoneCount: API.OperationMethod<
   GetHostedZoneCountRequest,
   GetHostedZoneCountResponse,
   GetHostedZoneCountError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetHostedZoneCountRequest,
   output: GetHostedZoneCountResponse,
@@ -5982,7 +5981,7 @@ export const getHostedZoneLimit: API.OperationMethod<
   GetHostedZoneLimitRequest,
   GetHostedZoneLimitResponse,
   GetHostedZoneLimitError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetHostedZoneLimitRequest,
   output: GetHostedZoneLimitResponse,
@@ -6006,7 +6005,7 @@ export const getQueryLoggingConfig: API.OperationMethod<
   GetQueryLoggingConfigRequest,
   GetQueryLoggingConfigResponse,
   GetQueryLoggingConfigError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetQueryLoggingConfigRequest,
   output: GetQueryLoggingConfigResponse,
@@ -6029,7 +6028,7 @@ export const getReusableDelegationSet: API.OperationMethod<
   GetReusableDelegationSetRequest,
   GetReusableDelegationSetResponse,
   GetReusableDelegationSetError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetReusableDelegationSetRequest,
   output: GetReusableDelegationSetResponse,
@@ -6055,7 +6054,7 @@ export const getReusableDelegationSetLimit: API.OperationMethod<
   GetReusableDelegationSetLimitRequest,
   GetReusableDelegationSetLimitResponse,
   GetReusableDelegationSetLimitError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetReusableDelegationSetLimitRequest,
   output: GetReusableDelegationSetLimitResponse,
@@ -6079,7 +6078,7 @@ export const getTrafficPolicy: API.OperationMethod<
   GetTrafficPolicyRequest,
   GetTrafficPolicyResponse,
   GetTrafficPolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetTrafficPolicyRequest,
   output: GetTrafficPolicyResponse,
@@ -6108,7 +6107,7 @@ export const getTrafficPolicyInstance: API.OperationMethod<
   GetTrafficPolicyInstanceRequest,
   GetTrafficPolicyInstanceResponse,
   GetTrafficPolicyInstanceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetTrafficPolicyInstanceRequest,
   output: GetTrafficPolicyInstanceResponse,
@@ -6127,7 +6126,7 @@ export const getTrafficPolicyInstanceCount: API.OperationMethod<
   GetTrafficPolicyInstanceCountRequest,
   GetTrafficPolicyInstanceCountResponse,
   GetTrafficPolicyInstanceCountError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetTrafficPolicyInstanceCountRequest,
   output: GetTrafficPolicyInstanceCountResponse,
@@ -6149,7 +6148,7 @@ export const listCidrBlocks: API.PaginatedOperationMethod<
   ListCidrBlocksRequest,
   ListCidrBlocksResponse,
   ListCidrBlocksError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   CidrBlockSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCidrBlocksRequest,
@@ -6179,7 +6178,7 @@ export const listCidrCollections: API.PaginatedOperationMethod<
   ListCidrCollectionsRequest,
   ListCidrCollectionsResponse,
   ListCidrCollectionsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   CollectionSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCidrCollectionsRequest,
@@ -6208,7 +6207,7 @@ export const listCidrLocations: API.PaginatedOperationMethod<
   ListCidrLocationsRequest,
   ListCidrLocationsResponse,
   ListCidrLocationsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   LocationSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCidrLocationsRequest,
@@ -6244,7 +6243,7 @@ export const listGeoLocations: API.OperationMethod<
   ListGeoLocationsRequest,
   ListGeoLocationsResponse,
   ListGeoLocationsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListGeoLocationsRequest,
   output: ListGeoLocationsResponse,
@@ -6265,7 +6264,7 @@ export const listHealthChecks: API.PaginatedOperationMethod<
   ListHealthChecksRequest,
   ListHealthChecksResponse,
   ListHealthChecksError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   HealthCheck
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListHealthChecksRequest,
@@ -6300,7 +6299,7 @@ export const listHostedZones: API.PaginatedOperationMethod<
   ListHostedZonesRequest,
   ListHostedZonesResponse,
   ListHostedZonesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   HostedZone
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListHostedZonesRequest,
@@ -6380,7 +6379,7 @@ export const listHostedZonesByName: API.OperationMethod<
   ListHostedZonesByNameRequest,
   ListHostedZonesByNameResponse,
   ListHostedZonesByNameError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListHostedZonesByNameRequest,
   output: ListHostedZonesByNameResponse,
@@ -6432,7 +6431,7 @@ export const listHostedZonesByVPC: API.OperationMethod<
   ListHostedZonesByVPCRequest,
   ListHostedZonesByVPCResponse,
   ListHostedZonesByVPCError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListHostedZonesByVPCRequest,
   output: ListHostedZonesByVPCResponse,
@@ -6460,7 +6459,7 @@ export const listQueryLoggingConfigs: API.PaginatedOperationMethod<
   ListQueryLoggingConfigsRequest,
   ListQueryLoggingConfigsResponse,
   ListQueryLoggingConfigsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   QueryLoggingConfig
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListQueryLoggingConfigsRequest,
@@ -6557,7 +6556,7 @@ export const listResourceRecordSets: API.OperationMethod<
   ListResourceRecordSetsRequest,
   ListResourceRecordSetsResponse,
   ListResourceRecordSetsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListResourceRecordSetsRequest,
   output: ListResourceRecordSetsResponse,
@@ -6576,7 +6575,7 @@ export const listReusableDelegationSets: API.OperationMethod<
   ListReusableDelegationSetsRequest,
   ListReusableDelegationSetsResponse,
   ListReusableDelegationSetsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListReusableDelegationSetsRequest,
   output: ListReusableDelegationSetsResponse,
@@ -6603,7 +6602,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -6636,7 +6635,7 @@ export const listTagsForResources: API.OperationMethod<
   ListTagsForResourcesRequest,
   ListTagsForResourcesResponse,
   ListTagsForResourcesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourcesRequest,
   output: ListTagsForResourcesResponse,
@@ -6665,7 +6664,7 @@ export const listTrafficPolicies: API.OperationMethod<
   ListTrafficPoliciesRequest,
   ListTrafficPoliciesResponse,
   ListTrafficPoliciesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListTrafficPoliciesRequest,
   output: ListTrafficPoliciesResponse,
@@ -6696,7 +6695,7 @@ export const listTrafficPolicyInstances: API.OperationMethod<
   ListTrafficPolicyInstancesRequest,
   ListTrafficPolicyInstancesResponse,
   ListTrafficPolicyInstancesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListTrafficPolicyInstancesRequest,
   output: ListTrafficPolicyInstancesResponse,
@@ -6729,7 +6728,7 @@ export const listTrafficPolicyInstancesByHostedZone: API.OperationMethod<
   ListTrafficPolicyInstancesByHostedZoneRequest,
   ListTrafficPolicyInstancesByHostedZoneResponse,
   ListTrafficPolicyInstancesByHostedZoneError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListTrafficPolicyInstancesByHostedZoneRequest,
   output: ListTrafficPolicyInstancesByHostedZoneResponse,
@@ -6762,7 +6761,7 @@ export const listTrafficPolicyInstancesByPolicy: API.OperationMethod<
   ListTrafficPolicyInstancesByPolicyRequest,
   ListTrafficPolicyInstancesByPolicyResponse,
   ListTrafficPolicyInstancesByPolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListTrafficPolicyInstancesByPolicyRequest,
   output: ListTrafficPolicyInstancesByPolicyResponse,
@@ -6786,7 +6785,7 @@ export const listTrafficPolicyVersions: API.OperationMethod<
   ListTrafficPolicyVersionsRequest,
   ListTrafficPolicyVersionsResponse,
   ListTrafficPolicyVersionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListTrafficPolicyVersionsRequest,
   output: ListTrafficPolicyVersionsResponse,
@@ -6813,7 +6812,7 @@ export const listVPCAssociationAuthorizations: API.OperationMethod<
   ListVPCAssociationAuthorizationsRequest,
   ListVPCAssociationAuthorizationsResponse,
   ListVPCAssociationAuthorizationsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListVPCAssociationAuthorizationsRequest,
   output: ListVPCAssociationAuthorizationsResponse,
@@ -6840,7 +6839,7 @@ export const testDNSAnswer: API.OperationMethod<
   TestDNSAnswerRequest,
   TestDNSAnswerResponse,
   TestDNSAnswerError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: TestDNSAnswerRequest,
   output: TestDNSAnswerResponse,
@@ -6866,7 +6865,7 @@ export const updateHealthCheck: API.OperationMethod<
   UpdateHealthCheckRequest,
   UpdateHealthCheckResponse,
   UpdateHealthCheckError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateHealthCheckRequest,
   output: UpdateHealthCheckResponse,
@@ -6888,7 +6887,7 @@ export const updateHostedZoneComment: API.OperationMethod<
   UpdateHostedZoneCommentRequest,
   UpdateHostedZoneCommentResponse,
   UpdateHostedZoneCommentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateHostedZoneCommentRequest,
   output: UpdateHostedZoneCommentResponse,
@@ -6913,7 +6912,7 @@ export const updateHostedZoneFeatures: API.OperationMethod<
   UpdateHostedZoneFeaturesRequest,
   UpdateHostedZoneFeaturesResponse,
   UpdateHostedZoneFeaturesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateHostedZoneFeaturesRequest,
   output: UpdateHostedZoneFeaturesResponse,
@@ -6940,7 +6939,7 @@ export const updateTrafficPolicyComment: API.OperationMethod<
   UpdateTrafficPolicyCommentRequest,
   UpdateTrafficPolicyCommentResponse,
   UpdateTrafficPolicyCommentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateTrafficPolicyCommentRequest,
   output: UpdateTrafficPolicyCommentResponse,
@@ -6986,7 +6985,7 @@ export const updateTrafficPolicyInstance: API.OperationMethod<
   UpdateTrafficPolicyInstanceRequest,
   UpdateTrafficPolicyInstanceResponse,
   UpdateTrafficPolicyInstanceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateTrafficPolicyInstanceRequest,
   output: UpdateTrafficPolicyInstanceResponse,

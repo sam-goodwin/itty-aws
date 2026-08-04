@@ -7,7 +7,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 const svc = T.AwsApiService({ sdkId: "Braket", serviceShapeName: "Braket" });
 const auth = T.AwsAuthSigv4({ name: "braket" });
 const ver = T.ServiceVersion("2019-09-01");
@@ -1228,7 +1227,7 @@ export const cancelJob: API.OperationMethod<
   CancelJobRequest,
   CancelJobResponse,
   CancelJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CancelJobRequest,
   output: CancelJobResponse,
@@ -1260,7 +1259,7 @@ export const cancelQuantumTask: API.OperationMethod<
   CancelQuantumTaskRequest,
   CancelQuantumTaskResponse,
   CancelQuantumTaskError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CancelQuantumTaskRequest,
   output: CancelQuantumTaskResponse,
@@ -1294,7 +1293,7 @@ export const createJob: API.OperationMethod<
   CreateJobRequest,
   CreateJobResponse,
   CreateJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateJobRequest,
   output: CreateJobResponse,
@@ -1329,7 +1328,7 @@ export const createQuantumTask: API.OperationMethod<
   CreateQuantumTaskRequest,
   CreateQuantumTaskResponse,
   CreateQuantumTaskError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateQuantumTaskRequest,
   output: CreateQuantumTaskResponse,
@@ -1361,7 +1360,7 @@ export const createSpendingLimit: API.OperationMethod<
   CreateSpendingLimitRequest,
   CreateSpendingLimitResponse,
   CreateSpendingLimitError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateSpendingLimitRequest,
   output: CreateSpendingLimitResponse,
@@ -1391,7 +1390,7 @@ export const deleteSpendingLimit: API.OperationMethod<
   DeleteSpendingLimitRequest,
   DeleteSpendingLimitResponse,
   DeleteSpendingLimitError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteSpendingLimitRequest,
   output: DeleteSpendingLimitResponse,
@@ -1423,7 +1422,7 @@ export const getDevice: API.OperationMethod<
   GetDeviceRequest,
   GetDeviceResponse,
   GetDeviceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetDeviceRequest,
   output: GetDeviceResponse,
@@ -1453,7 +1452,7 @@ export const getJob: API.OperationMethod<
   GetJobRequest,
   GetJobResponse,
   GetJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetJobRequest,
   output: GetJobResponse,
@@ -1483,7 +1482,7 @@ export const getQuantumTask: API.OperationMethod<
   GetQuantumTaskRequest,
   GetQuantumTaskResponse,
   GetQuantumTaskError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetQuantumTaskRequest,
   output: GetQuantumTaskResponse,
@@ -1511,7 +1510,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -1538,7 +1537,7 @@ export const searchDevices: API.PaginatedOperationMethod<
   SearchDevicesRequest,
   SearchDevicesResponse,
   SearchDevicesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   DeviceSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchDevicesRequest,
@@ -1573,7 +1572,7 @@ export const searchJobs: API.PaginatedOperationMethod<
   SearchJobsRequest,
   SearchJobsResponse,
   SearchJobsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   JobSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchJobsRequest,
@@ -1608,7 +1607,7 @@ export const searchQuantumTasks: API.PaginatedOperationMethod<
   SearchQuantumTasksRequest,
   SearchQuantumTasksResponse,
   SearchQuantumTasksError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   QuantumTaskSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchQuantumTasksRequest,
@@ -1643,7 +1642,7 @@ export const searchSpendingLimits: API.PaginatedOperationMethod<
   SearchSpendingLimitsRequest,
   SearchSpendingLimitsResponse,
   SearchSpendingLimitsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   SpendingLimitSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchSpendingLimitsRequest,
@@ -1677,7 +1676,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -1703,7 +1702,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -1731,7 +1730,7 @@ export const updateSpendingLimit: API.OperationMethod<
   UpdateSpendingLimitRequest,
   UpdateSpendingLimitResponse,
   UpdateSpendingLimitError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateSpendingLimitRequest,
   output: UpdateSpendingLimitResponse,

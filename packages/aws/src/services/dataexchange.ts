@@ -8,7 +8,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 import { SensitiveString } from "../sensitive.ts";
 const svc = T.AwsApiService({
   sdkId: "DataExchange",
@@ -2930,7 +2929,7 @@ export const acceptDataGrant: API.OperationMethod<
   AcceptDataGrantRequest,
   AcceptDataGrantResponse,
   AcceptDataGrantError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: AcceptDataGrantRequest,
   output: AcceptDataGrantResponse,
@@ -2961,7 +2960,7 @@ export const cancelJob: API.OperationMethod<
   CancelJobRequest,
   CancelJobResponse,
   CancelJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CancelJobRequest,
   output: CancelJobResponse,
@@ -2992,7 +2991,7 @@ export const createDataGrant: API.OperationMethod<
   CreateDataGrantRequest,
   CreateDataGrantResponse,
   CreateDataGrantError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateDataGrantRequest,
   output: CreateDataGrantResponse,
@@ -3023,7 +3022,7 @@ export const createDataSet: API.OperationMethod<
   CreateDataSetRequest,
   CreateDataSetResponse,
   CreateDataSetError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateDataSetRequest,
   output: CreateDataSetResponse,
@@ -3053,7 +3052,7 @@ export const createEventAction: API.OperationMethod<
   CreateEventActionRequest,
   CreateEventActionResponse,
   CreateEventActionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateEventActionRequest,
   output: CreateEventActionResponse,
@@ -3084,7 +3083,7 @@ export const createJob: API.OperationMethod<
   CreateJobRequest,
   CreateJobResponse,
   CreateJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateJobRequest,
   output: CreateJobResponse,
@@ -3115,7 +3114,7 @@ export const createRevision: API.OperationMethod<
   CreateRevisionRequest,
   CreateRevisionResponse,
   CreateRevisionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateRevisionRequest,
   output: CreateRevisionResponse,
@@ -3146,7 +3145,7 @@ export const deleteAsset: API.OperationMethod<
   DeleteAssetRequest,
   DeleteAssetResponse,
   DeleteAssetError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteAssetRequest,
   output: DeleteAssetResponse,
@@ -3177,7 +3176,7 @@ export const deleteDataGrant: API.OperationMethod<
   DeleteDataGrantRequest,
   DeleteDataGrantResponse,
   DeleteDataGrantError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteDataGrantRequest,
   output: DeleteDataGrantResponse,
@@ -3208,7 +3207,7 @@ export const deleteDataSet: API.OperationMethod<
   DeleteDataSetRequest,
   DeleteDataSetResponse,
   DeleteDataSetError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteDataSetRequest,
   output: DeleteDataSetResponse,
@@ -3238,7 +3237,7 @@ export const deleteEventAction: API.OperationMethod<
   DeleteEventActionRequest,
   DeleteEventActionResponse,
   DeleteEventActionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteEventActionRequest,
   output: DeleteEventActionResponse,
@@ -3268,7 +3267,7 @@ export const deleteRevision: API.OperationMethod<
   DeleteRevisionRequest,
   DeleteRevisionResponse,
   DeleteRevisionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteRevisionRequest,
   output: DeleteRevisionResponse,
@@ -3298,7 +3297,7 @@ export const getAsset: API.OperationMethod<
   GetAssetRequest,
   GetAssetResponse,
   GetAssetError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetAssetRequest,
   output: GetAssetResponse,
@@ -3327,7 +3326,7 @@ export const getDataGrant: API.OperationMethod<
   GetDataGrantRequest,
   GetDataGrantResponse,
   GetDataGrantError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetDataGrantRequest,
   output: GetDataGrantResponse,
@@ -3356,7 +3355,7 @@ export const getDataSet: API.OperationMethod<
   GetDataSetRequest,
   GetDataSetResponse,
   GetDataSetError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetDataSetRequest,
   output: GetDataSetResponse,
@@ -3384,7 +3383,7 @@ export const getEventAction: API.OperationMethod<
   GetEventActionRequest,
   GetEventActionResponse,
   GetEventActionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetEventActionRequest,
   output: GetEventActionResponse,
@@ -3412,7 +3411,7 @@ export const getJob: API.OperationMethod<
   GetJobRequest,
   GetJobResponse,
   GetJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetJobRequest,
   output: GetJobResponse,
@@ -3441,7 +3440,7 @@ export const getReceivedDataGrant: API.OperationMethod<
   GetReceivedDataGrantRequest,
   GetReceivedDataGrantResponse,
   GetReceivedDataGrantError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetReceivedDataGrantRequest,
   output: GetReceivedDataGrantResponse,
@@ -3470,7 +3469,7 @@ export const getRevision: API.OperationMethod<
   GetRevisionRequest,
   GetRevisionResponse,
   GetRevisionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetRevisionRequest,
   output: GetRevisionResponse,
@@ -3499,7 +3498,7 @@ export const listDataGrants: API.PaginatedOperationMethod<
   ListDataGrantsRequest,
   ListDataGrantsResponse,
   ListDataGrantsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   DataGrantSummaryEntry
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDataGrantsRequest,
@@ -3535,7 +3534,7 @@ export const listDataSetRevisions: API.PaginatedOperationMethod<
   ListDataSetRevisionsRequest,
   ListDataSetRevisionsResponse,
   ListDataSetRevisionsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   RevisionEntry
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDataSetRevisionsRequest,
@@ -3570,7 +3569,7 @@ export const listDataSets: API.PaginatedOperationMethod<
   ListDataSetsRequest,
   ListDataSetsResponse,
   ListDataSetsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   DataSetEntry
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDataSetsRequest,
@@ -3605,7 +3604,7 @@ export const listEventActions: API.PaginatedOperationMethod<
   ListEventActionsRequest,
   ListEventActionsResponse,
   ListEventActionsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   EventActionEntry
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEventActionsRequest,
@@ -3640,7 +3639,7 @@ export const listJobs: API.PaginatedOperationMethod<
   ListJobsRequest,
   ListJobsResponse,
   ListJobsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   JobEntry
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListJobsRequest,
@@ -3676,7 +3675,7 @@ export const listReceivedDataGrants: API.PaginatedOperationMethod<
   ListReceivedDataGrantsRequest,
   ListReceivedDataGrantsResponse,
   ListReceivedDataGrantsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ReceivedDataGrantSummariesEntry
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListReceivedDataGrantsRequest,
@@ -3712,7 +3711,7 @@ export const listRevisionAssets: API.PaginatedOperationMethod<
   ListRevisionAssetsRequest,
   ListRevisionAssetsResponse,
   ListRevisionAssetsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   AssetEntry
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRevisionAssetsRequest,
@@ -3742,7 +3741,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -3767,7 +3766,7 @@ export const revokeRevision: API.OperationMethod<
   RevokeRevisionRequest,
   RevokeRevisionResponse,
   RevokeRevisionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: RevokeRevisionRequest,
   output: RevokeRevisionResponse,
@@ -3798,7 +3797,7 @@ export const sendApiAsset: API.OperationMethod<
   SendApiAssetRequest,
   SendApiAssetResponse,
   SendApiAssetError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: SendApiAssetRequest,
   output: SendApiAssetResponse,
@@ -3830,7 +3829,7 @@ export const sendDataSetNotification: API.OperationMethod<
   SendDataSetNotificationRequest,
   SendDataSetNotificationResponse,
   SendDataSetNotificationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: SendDataSetNotificationRequest,
   output: SendDataSetNotificationResponse,
@@ -3862,7 +3861,7 @@ export const startJob: API.OperationMethod<
   StartJobRequest,
   StartJobResponse,
   StartJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartJobRequest,
   output: StartJobResponse,
@@ -3887,7 +3886,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -3905,7 +3904,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -3930,7 +3929,7 @@ export const updateAsset: API.OperationMethod<
   UpdateAssetRequest,
   UpdateAssetResponse,
   UpdateAssetError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateAssetRequest,
   output: UpdateAssetResponse,
@@ -3961,7 +3960,7 @@ export const updateDataSet: API.OperationMethod<
   UpdateDataSetRequest,
   UpdateDataSetResponse,
   UpdateDataSetError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateDataSetRequest,
   output: UpdateDataSetResponse,
@@ -3991,7 +3990,7 @@ export const updateEventAction: API.OperationMethod<
   UpdateEventActionRequest,
   UpdateEventActionResponse,
   UpdateEventActionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateEventActionRequest,
   output: UpdateEventActionResponse,
@@ -4022,7 +4021,7 @@ export const updateRevision: API.OperationMethod<
   UpdateRevisionRequest,
   UpdateRevisionResponse,
   UpdateRevisionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateRevisionRequest,
   output: UpdateRevisionResponse,

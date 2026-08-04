@@ -7,7 +7,6 @@ import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 import { SensitiveString } from "../sensitive.ts";
 const svc = T.AwsApiService({
   sdkId: "CodeCatalyst",
@@ -2120,7 +2119,7 @@ export const createAccessToken: API.OperationMethod<
   CreateAccessTokenRequest,
   CreateAccessTokenResponse,
   CreateAccessTokenError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateAccessTokenRequest,
   output: CreateAccessTokenResponse,
@@ -2142,7 +2141,7 @@ export const createDevEnvironment: API.OperationMethod<
   CreateDevEnvironmentRequest,
   CreateDevEnvironmentResponse,
   CreateDevEnvironmentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateDevEnvironmentRequest,
   output: CreateDevEnvironmentResponse,
@@ -2160,7 +2159,7 @@ export const createProject: API.OperationMethod<
   CreateProjectRequest,
   CreateProjectResponse,
   CreateProjectError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateProjectRequest,
   output: CreateProjectResponse,
@@ -2179,7 +2178,7 @@ export const createSourceRepository: API.OperationMethod<
   CreateSourceRepositoryRequest,
   CreateSourceRepositoryResponse,
   CreateSourceRepositoryError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateSourceRepositoryRequest,
   output: CreateSourceRepositoryResponse,
@@ -2199,7 +2198,7 @@ export const createSourceRepositoryBranch: API.OperationMethod<
   CreateSourceRepositoryBranchRequest,
   CreateSourceRepositoryBranchResponse,
   CreateSourceRepositoryBranchError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateSourceRepositoryBranchRequest,
   output: CreateSourceRepositoryBranchResponse,
@@ -2217,7 +2216,7 @@ export const deleteAccessToken: API.OperationMethod<
   DeleteAccessTokenRequest,
   DeleteAccessTokenResponse,
   DeleteAccessTokenError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteAccessTokenRequest,
   output: DeleteAccessTokenResponse,
@@ -2235,7 +2234,7 @@ export const deleteDevEnvironment: API.OperationMethod<
   DeleteDevEnvironmentRequest,
   DeleteDevEnvironmentResponse,
   DeleteDevEnvironmentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteDevEnvironmentRequest,
   output: DeleteDevEnvironmentResponse,
@@ -2253,7 +2252,7 @@ export const deleteProject: API.OperationMethod<
   DeleteProjectRequest,
   DeleteProjectResponse,
   DeleteProjectError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteProjectRequest,
   output: DeleteProjectResponse,
@@ -2271,7 +2270,7 @@ export const deleteSourceRepository: API.OperationMethod<
   DeleteSourceRepositoryRequest,
   DeleteSourceRepositoryResponse,
   DeleteSourceRepositoryError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteSourceRepositoryRequest,
   output: DeleteSourceRepositoryResponse,
@@ -2291,7 +2290,7 @@ export const deleteSpace: API.OperationMethod<
   DeleteSpaceRequest,
   DeleteSpaceResponse,
   DeleteSpaceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteSpaceRequest,
   output: DeleteSpaceResponse,
@@ -2309,7 +2308,7 @@ export const getDevEnvironment: API.OperationMethod<
   GetDevEnvironmentRequest,
   GetDevEnvironmentResponse,
   GetDevEnvironmentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetDevEnvironmentRequest,
   output: GetDevEnvironmentResponse,
@@ -2327,7 +2326,7 @@ export const getProject: API.OperationMethod<
   GetProjectRequest,
   GetProjectResponse,
   GetProjectError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetProjectRequest,
   output: GetProjectResponse,
@@ -2345,7 +2344,7 @@ export const getSourceRepository: API.OperationMethod<
   GetSourceRepositoryRequest,
   GetSourceRepositoryResponse,
   GetSourceRepositoryError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetSourceRepositoryRequest,
   output: GetSourceRepositoryResponse,
@@ -2364,7 +2363,7 @@ export const getSourceRepositoryCloneUrls: API.OperationMethod<
   GetSourceRepositoryCloneUrlsRequest,
   GetSourceRepositoryCloneUrlsResponse,
   GetSourceRepositoryCloneUrlsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetSourceRepositoryCloneUrlsRequest,
   output: GetSourceRepositoryCloneUrlsResponse,
@@ -2382,7 +2381,7 @@ export const getSpace: API.OperationMethod<
   GetSpaceRequest,
   GetSpaceResponse,
   GetSpaceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetSpaceRequest,
   output: GetSpaceResponse,
@@ -2401,7 +2400,7 @@ export const getSubscription: API.OperationMethod<
   GetSubscriptionRequest,
   GetSubscriptionResponse,
   GetSubscriptionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetSubscriptionRequest,
   output: GetSubscriptionResponse,
@@ -2419,7 +2418,7 @@ export const getUserDetails: API.OperationMethod<
   GetUserDetailsRequest,
   GetUserDetailsResponse,
   GetUserDetailsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetUserDetailsRequest,
   output: GetUserDetailsResponse,
@@ -2437,7 +2436,7 @@ export const getWorkflow: API.OperationMethod<
   GetWorkflowRequest,
   GetWorkflowResponse,
   GetWorkflowError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetWorkflowRequest,
   output: GetWorkflowResponse,
@@ -2455,7 +2454,7 @@ export const getWorkflowRun: API.OperationMethod<
   GetWorkflowRunRequest,
   GetWorkflowRunResponse,
   GetWorkflowRunError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetWorkflowRunRequest,
   output: GetWorkflowRunResponse,
@@ -2473,7 +2472,7 @@ export const listAccessTokens: API.PaginatedOperationMethod<
   ListAccessTokensRequest,
   ListAccessTokensResponse,
   ListAccessTokensError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   AccessTokenSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccessTokensRequest,
@@ -2498,7 +2497,7 @@ export const listDevEnvironments: API.PaginatedOperationMethod<
   ListDevEnvironmentsRequest,
   ListDevEnvironmentsResponse,
   ListDevEnvironmentsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   DevEnvironmentSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDevEnvironmentsRequest,
@@ -2523,7 +2522,7 @@ export const listDevEnvironmentSessions: API.PaginatedOperationMethod<
   ListDevEnvironmentSessionsRequest,
   ListDevEnvironmentSessionsResponse,
   ListDevEnvironmentSessionsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   DevEnvironmentSessionSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDevEnvironmentSessionsRequest,
@@ -2556,7 +2555,7 @@ export const listEventLogs: API.PaginatedOperationMethod<
   ListEventLogsRequest,
   ListEventLogsResponse,
   ListEventLogsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   EventLogEntry
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEventLogsRequest,
@@ -2581,7 +2580,7 @@ export const listProjects: API.PaginatedOperationMethod<
   ListProjectsRequest,
   ListProjectsResponse,
   ListProjectsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ProjectSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsRequest,
@@ -2606,7 +2605,7 @@ export const listSourceRepositories: API.PaginatedOperationMethod<
   ListSourceRepositoriesRequest,
   ListSourceRepositoriesResponse,
   ListSourceRepositoriesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ListSourceRepositoriesItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSourceRepositoriesRequest,
@@ -2631,7 +2630,7 @@ export const listSourceRepositoryBranches: API.PaginatedOperationMethod<
   ListSourceRepositoryBranchesRequest,
   ListSourceRepositoryBranchesResponse,
   ListSourceRepositoryBranchesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ListSourceRepositoryBranchesItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSourceRepositoryBranchesRequest,
@@ -2656,7 +2655,7 @@ export const listSpaces: API.PaginatedOperationMethod<
   ListSpacesRequest,
   ListSpacesResponse,
   ListSpacesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   SpaceSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSpacesRequest,
@@ -2680,7 +2679,7 @@ export const listWorkflowRuns: API.PaginatedOperationMethod<
   ListWorkflowRunsRequest,
   ListWorkflowRunsResponse,
   ListWorkflowRunsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   WorkflowRunSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListWorkflowRunsRequest,
@@ -2705,7 +2704,7 @@ export const listWorkflows: API.PaginatedOperationMethod<
   ListWorkflowsRequest,
   ListWorkflowsResponse,
   ListWorkflowsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   WorkflowSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListWorkflowsRequest,
@@ -2730,7 +2729,7 @@ export const startDevEnvironment: API.OperationMethod<
   StartDevEnvironmentRequest,
   StartDevEnvironmentResponse,
   StartDevEnvironmentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartDevEnvironmentRequest,
   output: StartDevEnvironmentResponse,
@@ -2748,7 +2747,7 @@ export const startDevEnvironmentSession: API.OperationMethod<
   StartDevEnvironmentSessionRequest,
   StartDevEnvironmentSessionResponse,
   StartDevEnvironmentSessionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartDevEnvironmentSessionRequest,
   output: StartDevEnvironmentSessionResponse,
@@ -2766,7 +2765,7 @@ export const startWorkflowRun: API.OperationMethod<
   StartWorkflowRunRequest,
   StartWorkflowRunResponse,
   StartWorkflowRunError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartWorkflowRunRequest,
   output: StartWorkflowRunResponse,
@@ -2784,7 +2783,7 @@ export const stopDevEnvironment: API.OperationMethod<
   StopDevEnvironmentRequest,
   StopDevEnvironmentResponse,
   StopDevEnvironmentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StopDevEnvironmentRequest,
   output: StopDevEnvironmentResponse,
@@ -2802,7 +2801,7 @@ export const stopDevEnvironmentSession: API.OperationMethod<
   StopDevEnvironmentSessionRequest,
   StopDevEnvironmentSessionResponse,
   StopDevEnvironmentSessionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StopDevEnvironmentSessionRequest,
   output: StopDevEnvironmentSessionResponse,
@@ -2820,7 +2819,7 @@ export const updateDevEnvironment: API.OperationMethod<
   UpdateDevEnvironmentRequest,
   UpdateDevEnvironmentResponse,
   UpdateDevEnvironmentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateDevEnvironmentRequest,
   output: UpdateDevEnvironmentResponse,
@@ -2838,7 +2837,7 @@ export const updateProject: API.OperationMethod<
   UpdateProjectRequest,
   UpdateProjectResponse,
   UpdateProjectError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateProjectRequest,
   output: UpdateProjectResponse,
@@ -2856,7 +2855,7 @@ export const updateSpace: API.OperationMethod<
   UpdateSpaceRequest,
   UpdateSpaceResponse,
   UpdateSpaceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateSpaceRequest,
   output: UpdateSpaceResponse,
@@ -2874,7 +2873,7 @@ export const verifySession: API.OperationMethod<
   VerifySessionRequest,
   VerifySessionResponse,
   VerifySessionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: VerifySessionRequest,
   output: VerifySessionResponse,

@@ -8,7 +8,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region as Rgn } from "../region.ts";
 import { SensitiveString } from "../sensitive.ts";
 const svc = T.AwsApiService({
   sdkId: "SSO OIDC",
@@ -526,7 +525,7 @@ export const createToken: API.OperationMethod<
   CreateTokenRequest,
   CreateTokenResponse,
   CreateTokenError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateTokenRequest,
   output: CreateTokenResponse,
@@ -575,7 +574,7 @@ export const createTokenWithIAM: API.OperationMethod<
   CreateTokenWithIAMRequest,
   CreateTokenWithIAMResponse,
   CreateTokenWithIAMError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateTokenWithIAMRequest,
   output: CreateTokenWithIAMResponse,
@@ -616,7 +615,7 @@ export const registerClient: API.OperationMethod<
   RegisterClientRequest,
   RegisterClientResponse,
   RegisterClientError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: RegisterClientRequest,
   output: RegisterClientResponse,
@@ -649,7 +648,7 @@ export const startDeviceAuthorization: API.OperationMethod<
   StartDeviceAuthorizationRequest,
   StartDeviceAuthorizationResponse,
   StartDeviceAuthorizationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartDeviceAuthorizationRequest,
   output: StartDeviceAuthorizationResponse,

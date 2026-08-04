@@ -7,7 +7,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 const svc = T.AwsApiService({
   sdkId: "Sustainability",
   serviceShapeName: "AwsSustainabilityApiService",
@@ -352,7 +351,7 @@ export const getEstimatedCarbonEmissions: API.PaginatedOperationMethod<
   GetEstimatedCarbonEmissionsRequest,
   GetEstimatedCarbonEmissionsResponse,
   GetEstimatedCarbonEmissionsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   EstimatedCarbonEmissions
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetEstimatedCarbonEmissionsRequest,
@@ -387,7 +386,7 @@ export const getEstimatedCarbonEmissionsDimensionValues: API.PaginatedOperationM
   GetEstimatedCarbonEmissionsDimensionValuesRequest,
   GetEstimatedCarbonEmissionsDimensionValuesResponse,
   GetEstimatedCarbonEmissionsDimensionValuesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   DimensionEntry
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetEstimatedCarbonEmissionsDimensionValuesRequest,

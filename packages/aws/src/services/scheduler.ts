@@ -7,7 +7,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 const svc = T.AwsApiService({
   sdkId: "Scheduler",
   serviceShapeName: "AWSChronosService",
@@ -905,7 +904,7 @@ export const createSchedule: API.OperationMethod<
   CreateScheduleInput,
   CreateScheduleOutput,
   CreateScheduleError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateScheduleInput,
   output: CreateScheduleOutput,
@@ -936,7 +935,7 @@ export const createScheduleGroup: API.OperationMethod<
   CreateScheduleGroupInput,
   CreateScheduleGroupOutput,
   CreateScheduleGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateScheduleGroupInput,
   output: CreateScheduleGroupOutput,
@@ -966,7 +965,7 @@ export const deleteSchedule: API.OperationMethod<
   DeleteScheduleInput,
   DeleteScheduleOutput,
   DeleteScheduleError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteScheduleInput,
   output: DeleteScheduleOutput,
@@ -1001,7 +1000,7 @@ export const deleteScheduleGroup: API.OperationMethod<
   DeleteScheduleGroupInput,
   DeleteScheduleGroupOutput,
   DeleteScheduleGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteScheduleGroupInput,
   output: DeleteScheduleGroupOutput,
@@ -1030,7 +1029,7 @@ export const getSchedule: API.OperationMethod<
   GetScheduleInput,
   GetScheduleOutput,
   GetScheduleError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetScheduleInput,
   output: GetScheduleOutput,
@@ -1058,7 +1057,7 @@ export const getScheduleGroup: API.OperationMethod<
   GetScheduleGroupInput,
   GetScheduleGroupOutput,
   GetScheduleGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetScheduleGroupInput,
   output: GetScheduleGroupOutput,
@@ -1085,7 +1084,7 @@ export const listScheduleGroups: API.PaginatedOperationMethod<
   ListScheduleGroupsInput,
   ListScheduleGroupsOutput,
   ListScheduleGroupsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ScheduleGroupSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListScheduleGroupsInput,
@@ -1115,7 +1114,7 @@ export const listSchedules: API.PaginatedOperationMethod<
   ListSchedulesInput,
   ListSchedulesOutput,
   ListSchedulesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ScheduleSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSchedulesInput,
@@ -1150,7 +1149,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceInput,
   ListTagsForResourceOutput,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceInput,
   output: ListTagsForResourceOutput,
@@ -1179,7 +1178,7 @@ export const tagResource: API.OperationMethod<
   TagResourceInput,
   TagResourceOutput,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: TagResourceInput,
   output: TagResourceOutput,
@@ -1209,7 +1208,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceInput,
   UntagResourceOutput,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceInput,
   output: UntagResourceOutput,
@@ -1244,7 +1243,7 @@ export const updateSchedule: API.OperationMethod<
   UpdateScheduleInput,
   UpdateScheduleOutput,
   UpdateScheduleError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateScheduleInput,
   output: UpdateScheduleOutput,

@@ -7,7 +7,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 const svc = T.AwsApiService({
   sdkId: "Artifact",
   serviceShapeName: "Artifact",
@@ -635,7 +634,7 @@ export const getAccountSettings: API.OperationMethod<
   GetAccountSettingsRequest,
   GetAccountSettingsResponse,
   GetAccountSettingsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetAccountSettingsRequest,
   output: GetAccountSettingsResponse,
@@ -669,7 +668,7 @@ export const getReport: API.OperationMethod<
   GetReportRequest,
   GetReportResponse,
   GetReportError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetReportRequest,
   output: GetReportResponse,
@@ -702,7 +701,7 @@ export const getReportMetadata: API.OperationMethod<
   GetReportMetadataRequest,
   GetReportMetadataResponse,
   GetReportMetadataError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetReportMetadataRequest,
   output: GetReportMetadataResponse,
@@ -735,7 +734,7 @@ export const getTermForReport: API.OperationMethod<
   GetTermForReportRequest,
   GetTermForReportResponse,
   GetTermForReportError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetTermForReportRequest,
   output: GetTermForReportResponse,
@@ -766,7 +765,7 @@ export const listCustomerAgreements: API.PaginatedOperationMethod<
   ListCustomerAgreementsRequest,
   ListCustomerAgreementsResponse,
   ListCustomerAgreementsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   CustomerAgreementSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCustomerAgreementsRequest,
@@ -803,7 +802,7 @@ export const listReports: API.PaginatedOperationMethod<
   ListReportsRequest,
   ListReportsResponse,
   ListReportsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ReportSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListReportsRequest,
@@ -842,7 +841,7 @@ export const listReportVersions: API.PaginatedOperationMethod<
   ListReportVersionsRequest,
   ListReportVersionsResponse,
   ListReportVersionsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ReportSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListReportVersionsRequest,
@@ -882,7 +881,7 @@ export const putAccountSettings: API.OperationMethod<
   PutAccountSettingsRequest,
   PutAccountSettingsResponse,
   PutAccountSettingsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PutAccountSettingsRequest,
   output: PutAccountSettingsResponse,

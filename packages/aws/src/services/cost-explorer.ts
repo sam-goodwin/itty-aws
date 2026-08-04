@@ -7,7 +7,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 const svc = T.AwsApiService({
   sdkId: "Cost Explorer",
   serviceShapeName: "AWSInsightsIndexService",
@@ -4072,7 +4071,7 @@ export const createAnomalyMonitor: API.OperationMethod<
   CreateAnomalyMonitorRequest,
   CreateAnomalyMonitorResponse,
   CreateAnomalyMonitorError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateAnomalyMonitorRequest,
   output: CreateAnomalyMonitorResponse,
@@ -4096,7 +4095,7 @@ export const createAnomalySubscription: API.OperationMethod<
   CreateAnomalySubscriptionRequest,
   CreateAnomalySubscriptionResponse,
   CreateAnomalySubscriptionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateAnomalySubscriptionRequest,
   output: CreateAnomalySubscriptionResponse,
@@ -4121,7 +4120,7 @@ export const createCostCategoryDefinition: API.OperationMethod<
   CreateCostCategoryDefinitionRequest,
   CreateCostCategoryDefinitionResponse,
   CreateCostCategoryDefinitionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateCostCategoryDefinitionRequest,
   output: CreateCostCategoryDefinitionResponse,
@@ -4142,7 +4141,7 @@ export const deleteAnomalyMonitor: API.OperationMethod<
   DeleteAnomalyMonitorRequest,
   DeleteAnomalyMonitorResponse,
   DeleteAnomalyMonitorError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteAnomalyMonitorRequest,
   output: DeleteAnomalyMonitorResponse,
@@ -4163,7 +4162,7 @@ export const deleteAnomalySubscription: API.OperationMethod<
   DeleteAnomalySubscriptionRequest,
   DeleteAnomalySubscriptionResponse,
   DeleteAnomalySubscriptionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteAnomalySubscriptionRequest,
   output: DeleteAnomalySubscriptionResponse,
@@ -4185,7 +4184,7 @@ export const deleteCostCategoryDefinition: API.OperationMethod<
   DeleteCostCategoryDefinitionRequest,
   DeleteCostCategoryDefinitionResponse,
   DeleteCostCategoryDefinitionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteCostCategoryDefinitionRequest,
   output: DeleteCostCategoryDefinitionResponse,
@@ -4212,7 +4211,7 @@ export const describeCostCategoryDefinition: API.OperationMethod<
   DescribeCostCategoryDefinitionRequest,
   DescribeCostCategoryDefinitionResponse,
   DescribeCostCategoryDefinitionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeCostCategoryDefinitionRequest,
   output: DescribeCostCategoryDefinitionResponse,
@@ -4235,7 +4234,7 @@ export const getAnomalies: API.PaginatedOperationMethod<
   GetAnomaliesRequest,
   GetAnomaliesResponse,
   GetAnomaliesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   Anomaly
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetAnomaliesRequest,
@@ -4265,7 +4264,7 @@ export const getAnomalyMonitors: API.PaginatedOperationMethod<
   GetAnomalyMonitorsRequest,
   GetAnomalyMonitorsResponse,
   GetAnomalyMonitorsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   AnomalyMonitor
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetAnomalyMonitorsRequest,
@@ -4299,7 +4298,7 @@ export const getAnomalySubscriptions: API.PaginatedOperationMethod<
   GetAnomalySubscriptionsRequest,
   GetAnomalySubscriptionsResponse,
   GetAnomalySubscriptionsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   AnomalySubscription
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetAnomalySubscriptionsRequest,
@@ -4332,7 +4331,7 @@ export const getApproximateUsageRecords: API.OperationMethod<
   GetApproximateUsageRecordsRequest,
   GetApproximateUsageRecordsResponse,
   GetApproximateUsageRecordsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetApproximateUsageRecordsRequest,
   output: GetApproximateUsageRecordsResponse,
@@ -4355,7 +4354,7 @@ export const getCommitmentPurchaseAnalysis: API.OperationMethod<
   GetCommitmentPurchaseAnalysisRequest,
   GetCommitmentPurchaseAnalysisResponse,
   GetCommitmentPurchaseAnalysisError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetCommitmentPurchaseAnalysisRequest,
   output: GetCommitmentPurchaseAnalysisResponse,
@@ -4392,7 +4391,7 @@ export const getCostAndUsage: API.OperationMethod<
   GetCostAndUsageRequest,
   GetCostAndUsageResponse,
   GetCostAndUsageError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetCostAndUsageRequest,
   output: GetCostAndUsageResponse,
@@ -4426,7 +4425,7 @@ export const getCostAndUsageComparisons: API.PaginatedOperationMethod<
   GetCostAndUsageComparisonsRequest,
   GetCostAndUsageComparisonsResponse,
   GetCostAndUsageComparisonsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   CostAndUsageComparison
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetCostAndUsageComparisonsRequest,
@@ -4478,7 +4477,7 @@ export const getCostAndUsageWithResources: API.OperationMethod<
   GetCostAndUsageWithResourcesRequest,
   GetCostAndUsageWithResourcesResponse,
   GetCostAndUsageWithResourcesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetCostAndUsageWithResourcesRequest,
   output: GetCostAndUsageWithResourcesResponse,
@@ -4515,7 +4514,7 @@ export const getCostCategories: API.OperationMethod<
   GetCostCategoriesRequest,
   GetCostCategoriesResponse,
   GetCostCategoriesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetCostCategoriesRequest,
   output: GetCostCategoriesResponse,
@@ -4549,7 +4548,7 @@ export const getCostComparisonDrivers: API.PaginatedOperationMethod<
   GetCostComparisonDriversRequest,
   GetCostComparisonDriversResponse,
   GetCostComparisonDriversError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   CostComparisonDriver
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetCostComparisonDriversRequest,
@@ -4586,7 +4585,7 @@ export const getCostForecast: API.OperationMethod<
   GetCostForecastRequest,
   GetCostForecastResponse,
   GetCostForecastError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetCostForecastRequest,
   output: GetCostForecastResponse,
@@ -4618,7 +4617,7 @@ export const getDimensionValues: API.OperationMethod<
   GetDimensionValuesRequest,
   GetDimensionValuesResponse,
   GetDimensionValuesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetDimensionValuesRequest,
   output: GetDimensionValuesResponse,
@@ -4680,7 +4679,7 @@ export const getReservationCoverage: API.OperationMethod<
   GetReservationCoverageRequest,
   GetReservationCoverageResponse,
   GetReservationCoverageError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetReservationCoverageRequest,
   output: GetReservationCoverageResponse,
@@ -4723,7 +4722,7 @@ export const getReservationPurchaseRecommendation: API.PaginatedOperationMethod<
   GetReservationPurchaseRecommendationRequest,
   GetReservationPurchaseRecommendationResponse,
   GetReservationPurchaseRecommendationError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ReservationPurchaseRecommendation
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetReservationPurchaseRecommendationRequest,
@@ -4759,7 +4758,7 @@ export const getReservationUtilization: API.OperationMethod<
   GetReservationUtilizationRequest,
   GetReservationUtilizationResponse,
   GetReservationUtilizationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetReservationUtilizationRequest,
   output: GetReservationUtilizationResponse,
@@ -4790,7 +4789,7 @@ export const getRightsizingRecommendation: API.PaginatedOperationMethod<
   GetRightsizingRecommendationRequest,
   GetRightsizingRecommendationResponse,
   GetRightsizingRecommendationError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   RightsizingRecommendation
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetRightsizingRecommendationRequest,
@@ -4823,7 +4822,7 @@ export const getSavingsPlanPurchaseRecommendationDetails: API.OperationMethod<
   GetSavingsPlanPurchaseRecommendationDetailsRequest,
   GetSavingsPlanPurchaseRecommendationDetailsResponse,
   GetSavingsPlanPurchaseRecommendationDetailsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetSavingsPlanPurchaseRecommendationDetailsRequest,
   output: GetSavingsPlanPurchaseRecommendationDetailsResponse,
@@ -4860,7 +4859,7 @@ export const getSavingsPlansCoverage: API.PaginatedOperationMethod<
   GetSavingsPlansCoverageRequest,
   GetSavingsPlansCoverageResponse,
   GetSavingsPlansCoverageError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetSavingsPlansCoverageRequest,
@@ -4894,7 +4893,7 @@ export const getSavingsPlansPurchaseRecommendation: API.OperationMethod<
   GetSavingsPlansPurchaseRecommendationRequest,
   GetSavingsPlansPurchaseRecommendationResponse,
   GetSavingsPlansPurchaseRecommendationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetSavingsPlansPurchaseRecommendationRequest,
   output: GetSavingsPlansPurchaseRecommendationResponse,
@@ -4921,7 +4920,7 @@ export const getSavingsPlansUtilization: API.OperationMethod<
   GetSavingsPlansUtilizationRequest,
   GetSavingsPlansUtilizationResponse,
   GetSavingsPlansUtilizationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetSavingsPlansUtilizationRequest,
   output: GetSavingsPlansUtilizationResponse,
@@ -4952,7 +4951,7 @@ export const getSavingsPlansUtilizationDetails: API.PaginatedOperationMethod<
   GetSavingsPlansUtilizationDetailsRequest,
   GetSavingsPlansUtilizationDetailsResponse,
   GetSavingsPlansUtilizationDetailsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetSavingsPlansUtilizationDetailsRequest,
@@ -4989,7 +4988,7 @@ export const getTags: API.OperationMethod<
   GetTagsRequest,
   GetTagsResponse,
   GetTagsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetTagsRequest,
   output: GetTagsResponse,
@@ -5022,7 +5021,7 @@ export const getUsageForecast: API.OperationMethod<
   GetUsageForecastRequest,
   GetUsageForecastResponse,
   GetUsageForecastError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetUsageForecastRequest,
   output: GetUsageForecastResponse,
@@ -5050,7 +5049,7 @@ export const listCommitmentPurchaseAnalyses: API.PaginatedOperationMethod<
   ListCommitmentPurchaseAnalysesRequest,
   ListCommitmentPurchaseAnalysesResponse,
   ListCommitmentPurchaseAnalysesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   AnalysisSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCommitmentPurchaseAnalysesRequest,
@@ -5082,7 +5081,7 @@ export const listCostAllocationTagBackfillHistory: API.PaginatedOperationMethod<
   ListCostAllocationTagBackfillHistoryRequest,
   ListCostAllocationTagBackfillHistoryResponse,
   ListCostAllocationTagBackfillHistoryError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   CostAllocationTagBackfillRequest
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCostAllocationTagBackfillHistoryRequest,
@@ -5111,7 +5110,7 @@ export const listCostAllocationTags: API.PaginatedOperationMethod<
   ListCostAllocationTagsRequest,
   ListCostAllocationTagsResponse,
   ListCostAllocationTagsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   CostAllocationTag
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCostAllocationTagsRequest,
@@ -5144,7 +5143,7 @@ export const listCostCategoryDefinitions: API.PaginatedOperationMethod<
   ListCostCategoryDefinitionsRequest,
   ListCostCategoryDefinitionsResponse,
   ListCostCategoryDefinitionsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   CostCategoryReference
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCostCategoryDefinitionsRequest,
@@ -5172,7 +5171,7 @@ export const listCostCategoryResourceAssociations: API.PaginatedOperationMethod<
   ListCostCategoryResourceAssociationsRequest,
   ListCostCategoryResourceAssociationsResponse,
   ListCostCategoryResourceAssociationsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   CostCategoryResourceAssociation
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCostCategoryResourceAssociationsRequest,
@@ -5202,7 +5201,7 @@ export const listSavingsPlansPurchaseRecommendationGeneration: API.PaginatedOper
   ListSavingsPlansPurchaseRecommendationGenerationRequest,
   ListSavingsPlansPurchaseRecommendationGenerationResponse,
   ListSavingsPlansPurchaseRecommendationGenerationError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   GenerationSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSavingsPlansPurchaseRecommendationGenerationRequest,
@@ -5235,7 +5234,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -5253,7 +5252,7 @@ export const provideAnomalyFeedback: API.OperationMethod<
   ProvideAnomalyFeedbackRequest,
   ProvideAnomalyFeedbackResponse,
   ProvideAnomalyFeedbackError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ProvideAnomalyFeedbackRequest,
   output: ProvideAnomalyFeedbackResponse,
@@ -5278,7 +5277,7 @@ export const startCommitmentPurchaseAnalysis: API.OperationMethod<
   StartCommitmentPurchaseAnalysisRequest,
   StartCommitmentPurchaseAnalysisResponse,
   StartCommitmentPurchaseAnalysisError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartCommitmentPurchaseAnalysisRequest,
   output: StartCommitmentPurchaseAnalysisResponse,
@@ -5306,7 +5305,7 @@ export const startCostAllocationTagBackfill: API.OperationMethod<
   StartCostAllocationTagBackfillRequest,
   StartCostAllocationTagBackfillResponse,
   StartCostAllocationTagBackfillError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartCostAllocationTagBackfillRequest,
   output: StartCostAllocationTagBackfillResponse,
@@ -5335,7 +5334,7 @@ export const startSavingsPlansPurchaseRecommendationGeneration: API.OperationMet
   StartSavingsPlansPurchaseRecommendationGenerationRequest,
   StartSavingsPlansPurchaseRecommendationGenerationResponse,
   StartSavingsPlansPurchaseRecommendationGenerationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartSavingsPlansPurchaseRecommendationGenerationRequest,
   output: StartSavingsPlansPurchaseRecommendationGenerationResponse,
@@ -5370,7 +5369,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -5396,7 +5395,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -5418,7 +5417,7 @@ export const updateAnomalyMonitor: API.OperationMethod<
   UpdateAnomalyMonitorRequest,
   UpdateAnomalyMonitorResponse,
   UpdateAnomalyMonitorError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateAnomalyMonitorRequest,
   output: UpdateAnomalyMonitorResponse,
@@ -5444,7 +5443,7 @@ export const updateAnomalySubscription: API.OperationMethod<
   UpdateAnomalySubscriptionRequest,
   UpdateAnomalySubscriptionResponse,
   UpdateAnomalySubscriptionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateAnomalySubscriptionRequest,
   output: UpdateAnomalySubscriptionResponse,
@@ -5471,7 +5470,7 @@ export const updateCostAllocationTagsStatus: API.OperationMethod<
   UpdateCostAllocationTagsStatusRequest,
   UpdateCostAllocationTagsStatusResponse,
   UpdateCostAllocationTagsStatusError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateCostAllocationTagsStatusRequest,
   output: UpdateCostAllocationTagsStatusResponse,
@@ -5495,7 +5494,7 @@ export const updateCostCategoryDefinition: API.OperationMethod<
   UpdateCostCategoryDefinitionRequest,
   UpdateCostCategoryDefinitionResponse,
   UpdateCostCategoryDefinitionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateCostCategoryDefinitionRequest,
   output: UpdateCostCategoryDefinitionResponse,

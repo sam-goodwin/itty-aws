@@ -8,7 +8,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 import { SensitiveString } from "../sensitive.ts";
 const svc = T.AwsApiService({
   sdkId: "Resource Explorer 2",
@@ -1461,7 +1460,7 @@ export const associateDefaultView: API.OperationMethod<
   AssociateDefaultViewInput,
   AssociateDefaultViewOutput,
   AssociateDefaultViewError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: AssociateDefaultViewInput,
   output: AssociateDefaultViewOutput,
@@ -1491,7 +1490,7 @@ export const batchGetView: API.OperationMethod<
   BatchGetViewInput,
   BatchGetViewOutput,
   BatchGetViewError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: BatchGetViewInput,
   output: BatchGetViewOutput,
@@ -1541,7 +1540,7 @@ export const createIndex: API.OperationMethod<
   CreateIndexInput,
   CreateIndexOutput,
   CreateIndexError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateIndexInput,
   output: CreateIndexOutput,
@@ -1571,7 +1570,7 @@ export const createResourceExplorerSetup: API.OperationMethod<
   CreateResourceExplorerSetupInput,
   CreateResourceExplorerSetupOutput,
   CreateResourceExplorerSetupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateResourceExplorerSetupInput,
   output: CreateResourceExplorerSetupOutput,
@@ -1605,7 +1604,7 @@ export const createView: API.OperationMethod<
   CreateViewInput,
   CreateViewOutput,
   CreateViewError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateViewInput,
   output: CreateViewOutput,
@@ -1639,7 +1638,7 @@ export const deleteIndex: API.OperationMethod<
   DeleteIndexInput,
   DeleteIndexOutput,
   DeleteIndexError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteIndexInput,
   output: DeleteIndexOutput,
@@ -1669,7 +1668,7 @@ export const deleteResourceExplorerSetup: API.OperationMethod<
   DeleteResourceExplorerSetupInput,
   DeleteResourceExplorerSetupOutput,
   DeleteResourceExplorerSetupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteResourceExplorerSetupInput,
   output: DeleteResourceExplorerSetupOutput,
@@ -1702,7 +1701,7 @@ export const deleteView: API.OperationMethod<
   DeleteViewInput,
   DeleteViewOutput,
   DeleteViewError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteViewInput,
   output: DeleteViewOutput,
@@ -1735,7 +1734,7 @@ export const disassociateDefaultView: API.OperationMethod<
   DisassociateDefaultViewRequest,
   DisassociateDefaultViewResponse,
   DisassociateDefaultViewError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DisassociateDefaultViewRequest,
   output: DisassociateDefaultViewResponse,
@@ -1764,7 +1763,7 @@ export const getAccountLevelServiceConfiguration: API.OperationMethod<
   GetAccountLevelServiceConfigurationRequest,
   GetAccountLevelServiceConfigurationOutput,
   GetAccountLevelServiceConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetAccountLevelServiceConfigurationRequest,
   output: GetAccountLevelServiceConfigurationOutput,
@@ -1793,7 +1792,7 @@ export const getDefaultView: API.OperationMethod<
   GetDefaultViewRequest,
   GetDefaultViewOutput,
   GetDefaultViewError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetDefaultViewRequest,
   output: GetDefaultViewOutput,
@@ -1823,7 +1822,7 @@ export const getIndex: API.OperationMethod<
   GetIndexRequest,
   GetIndexOutput,
   GetIndexError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetIndexRequest,
   output: GetIndexOutput,
@@ -1854,7 +1853,7 @@ export const getManagedView: API.OperationMethod<
   GetManagedViewInput,
   GetManagedViewOutput,
   GetManagedViewError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetManagedViewInput,
   output: GetManagedViewOutput,
@@ -1885,7 +1884,7 @@ export const getResourceExplorerSetup: API.PaginatedOperationMethod<
   GetResourceExplorerSetupInput,
   GetResourceExplorerSetupOutput,
   GetResourceExplorerSetupError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   RegionStatus
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetResourceExplorerSetupInput,
@@ -1922,7 +1921,7 @@ export const getServiceIndex: API.OperationMethod<
   GetServiceIndexRequest,
   GetServiceIndexOutput,
   GetServiceIndexError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetServiceIndexRequest,
   output: GetServiceIndexOutput,
@@ -1952,7 +1951,7 @@ export const getServiceView: API.OperationMethod<
   GetServiceViewInput,
   GetServiceViewOutput,
   GetServiceViewError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetServiceViewInput,
   output: GetServiceViewOutput,
@@ -1983,7 +1982,7 @@ export const getView: API.OperationMethod<
   GetViewInput,
   GetViewOutput,
   GetViewError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetViewInput,
   output: GetViewOutput,
@@ -2013,7 +2012,7 @@ export const listIndexes: API.PaginatedOperationMethod<
   ListIndexesInput,
   ListIndexesOutput,
   ListIndexesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   Index
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListIndexesInput,
@@ -2048,7 +2047,7 @@ export const listIndexesForMembers: API.PaginatedOperationMethod<
   ListIndexesForMembersInput,
   ListIndexesForMembersOutput,
   ListIndexesForMembersError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   MemberIndex
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListIndexesForMembersInput,
@@ -2084,7 +2083,7 @@ export const listManagedViews: API.PaginatedOperationMethod<
   ListManagedViewsInput,
   ListManagedViewsOutput,
   ListManagedViewsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   string
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListManagedViewsInput,
@@ -2122,7 +2121,7 @@ export const listResources: API.PaginatedOperationMethod<
   ListResourcesInput,
   ListResourcesOutput,
   ListResourcesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   Resource
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListResourcesInput,
@@ -2159,7 +2158,7 @@ export const listServiceIndexes: API.PaginatedOperationMethod<
   ListServiceIndexesInput,
   ListServiceIndexesOutput,
   ListServiceIndexesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   Index
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListServiceIndexesInput,
@@ -2194,7 +2193,7 @@ export const listServiceViews: API.PaginatedOperationMethod<
   ListServiceViewsInput,
   ListServiceViewsOutput,
   ListServiceViewsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   string
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListServiceViewsInput,
@@ -2228,7 +2227,7 @@ export const listStreamingAccessForServices: API.PaginatedOperationMethod<
   ListStreamingAccessForServicesInput,
   ListStreamingAccessForServicesOutput,
   ListStreamingAccessForServicesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   StreamingAccessDetails
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListStreamingAccessForServicesInput,
@@ -2258,7 +2257,7 @@ export const listSupportedResourceTypes: API.PaginatedOperationMethod<
   ListSupportedResourceTypesInput,
   ListSupportedResourceTypesOutput,
   ListSupportedResourceTypesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   SupportedResourceType
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSupportedResourceTypesInput,
@@ -2295,7 +2294,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceInput,
   ListTagsForResourceOutput,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceInput,
   output: ListTagsForResourceOutput,
@@ -2327,7 +2326,7 @@ export const listViews: API.PaginatedOperationMethod<
   ListViewsInput,
   ListViewsOutput,
   ListViewsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   string
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListViewsInput,
@@ -2370,7 +2369,7 @@ export const search: API.PaginatedOperationMethod<
   SearchInput,
   SearchOutput,
   SearchError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   Resource
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchInput,
@@ -2409,7 +2408,7 @@ export const tagResource: API.OperationMethod<
   TagResourceInput,
   TagResourceOutput,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: TagResourceInput,
   output: TagResourceOutput,
@@ -2441,7 +2440,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceInput,
   UntagResourceOutput,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceInput,
   output: UntagResourceOutput,
@@ -2490,7 +2489,7 @@ export const updateIndexType: API.OperationMethod<
   UpdateIndexTypeInput,
   UpdateIndexTypeOutput,
   UpdateIndexTypeError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateIndexTypeInput,
   output: UpdateIndexTypeOutput,
@@ -2523,7 +2522,7 @@ export const updateView: API.OperationMethod<
   UpdateViewInput,
   UpdateViewOutput,
   UpdateViewError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateViewInput,
   output: UpdateViewOutput,

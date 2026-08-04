@@ -8,7 +8,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 import { SensitiveString } from "../sensitive.ts";
 const ns = T.XmlNamespace("http://events.amazonaws.com/doc/2015-10-07");
 const svc = T.AwsApiService({ sdkId: "Pipes", serviceShapeName: "Pipes" });
@@ -1906,7 +1905,7 @@ export const createPipe: API.OperationMethod<
   CreatePipeRequest,
   CreatePipeResponse,
   CreatePipeError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreatePipeRequest,
   output: CreatePipeResponse,
@@ -1937,7 +1936,7 @@ export const deletePipe: API.OperationMethod<
   DeletePipeRequest,
   DeletePipeResponse,
   DeletePipeError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeletePipeRequest,
   output: DeletePipeResponse,
@@ -1966,7 +1965,7 @@ export const describePipe: API.OperationMethod<
   DescribePipeRequest,
   DescribePipeResponse,
   DescribePipeError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribePipeRequest,
   output: DescribePipeResponse,
@@ -1993,7 +1992,7 @@ export const listPipes: API.PaginatedOperationMethod<
   ListPipesRequest,
   ListPipesResponse,
   ListPipesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   Pipe
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPipesRequest,
@@ -2022,7 +2021,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -2046,7 +2045,7 @@ export const startPipe: API.OperationMethod<
   StartPipeRequest,
   StartPipeResponse,
   StartPipeError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartPipeRequest,
   output: StartPipeResponse,
@@ -2076,7 +2075,7 @@ export const stopPipe: API.OperationMethod<
   StopPipeRequest,
   StopPipeResponse,
   StopPipeError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StopPipeRequest,
   output: StopPipeResponse,
@@ -2117,7 +2116,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -2139,7 +2138,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -2175,7 +2174,7 @@ export const updatePipe: API.OperationMethod<
   UpdatePipeRequest,
   UpdatePipeResponse,
   UpdatePipeError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdatePipeRequest,
   output: UpdatePipeResponse,

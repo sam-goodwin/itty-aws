@@ -8,7 +8,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region as Rgn } from "../region.ts";
 import { SensitiveString } from "../sensitive.ts";
 const svc = T.AwsApiService({
   sdkId: "Panorama",
@@ -2204,7 +2203,7 @@ export const createApplicationInstance: API.OperationMethod<
   CreateApplicationInstanceRequest,
   CreateApplicationInstanceResponse,
   CreateApplicationInstanceError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateApplicationInstanceRequest,
   output: CreateApplicationInstanceResponse,
@@ -2233,7 +2232,7 @@ export const createJobForDevices: API.OperationMethod<
   CreateJobForDevicesRequest,
   CreateJobForDevicesResponse,
   CreateJobForDevicesError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateJobForDevicesRequest,
   output: CreateJobForDevicesResponse,
@@ -2262,7 +2261,7 @@ export const createNodeFromTemplateJob: API.OperationMethod<
   CreateNodeFromTemplateJobRequest,
   CreateNodeFromTemplateJobResponse,
   CreateNodeFromTemplateJobError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateNodeFromTemplateJobRequest,
   output: CreateNodeFromTemplateJobResponse,
@@ -2290,7 +2289,7 @@ export const createPackage: API.OperationMethod<
   CreatePackageRequest,
   CreatePackageResponse,
   CreatePackageError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreatePackageRequest,
   output: CreatePackageResponse,
@@ -2318,7 +2317,7 @@ export const createPackageImportJob: API.OperationMethod<
   CreatePackageImportJobRequest,
   CreatePackageImportJobResponse,
   CreatePackageImportJobError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreatePackageImportJobRequest,
   output: CreatePackageImportJobResponse,
@@ -2347,7 +2346,7 @@ export const deleteDevice: API.OperationMethod<
   DeleteDeviceRequest,
   DeleteDeviceResponse,
   DeleteDeviceError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteDeviceRequest,
   output: DeleteDeviceResponse,
@@ -2380,7 +2379,7 @@ export const deletePackage: API.OperationMethod<
   DeletePackageRequest,
   DeletePackageResponse,
   DeletePackageError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeletePackageRequest,
   output: DeletePackageResponse,
@@ -2410,7 +2409,7 @@ export const deregisterPackageVersion: API.OperationMethod<
   DeregisterPackageVersionRequest,
   DeregisterPackageVersionResponse,
   DeregisterPackageVersionError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeregisterPackageVersionRequest,
   output: DeregisterPackageVersionResponse,
@@ -2440,7 +2439,7 @@ export const describeApplicationInstance: API.OperationMethod<
   DescribeApplicationInstanceRequest,
   DescribeApplicationInstanceResponse,
   DescribeApplicationInstanceError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeApplicationInstanceRequest,
   output: DescribeApplicationInstanceResponse,
@@ -2470,7 +2469,7 @@ export const describeApplicationInstanceDetails: API.OperationMethod<
   DescribeApplicationInstanceDetailsRequest,
   DescribeApplicationInstanceDetailsResponse,
   DescribeApplicationInstanceDetailsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeApplicationInstanceDetailsRequest,
   output: DescribeApplicationInstanceDetailsResponse,
@@ -2499,7 +2498,7 @@ export const describeDevice: API.OperationMethod<
   DescribeDeviceRequest,
   DescribeDeviceResponse,
   DescribeDeviceError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeDeviceRequest,
   output: DescribeDeviceResponse,
@@ -2528,7 +2527,7 @@ export const describeDeviceJob: API.OperationMethod<
   DescribeDeviceJobRequest,
   DescribeDeviceJobResponse,
   DescribeDeviceJobError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeDeviceJobRequest,
   output: DescribeDeviceJobResponse,
@@ -2558,7 +2557,7 @@ export const describeNode: API.OperationMethod<
   DescribeNodeRequest,
   DescribeNodeResponse,
   DescribeNodeError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeNodeRequest,
   output: DescribeNodeResponse,
@@ -2587,7 +2586,7 @@ export const describeNodeFromTemplateJob: API.OperationMethod<
   DescribeNodeFromTemplateJobRequest,
   DescribeNodeFromTemplateJobResponse,
   DescribeNodeFromTemplateJobError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeNodeFromTemplateJobRequest,
   output: DescribeNodeFromTemplateJobResponse,
@@ -2616,7 +2615,7 @@ export const describePackage: API.OperationMethod<
   DescribePackageRequest,
   DescribePackageResponse,
   DescribePackageError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribePackageRequest,
   output: DescribePackageResponse,
@@ -2645,7 +2644,7 @@ export const describePackageImportJob: API.OperationMethod<
   DescribePackageImportJobRequest,
   DescribePackageImportJobResponse,
   DescribePackageImportJobError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribePackageImportJobRequest,
   output: DescribePackageImportJobResponse,
@@ -2674,7 +2673,7 @@ export const describePackageVersion: API.OperationMethod<
   DescribePackageVersionRequest,
   DescribePackageVersionResponse,
   DescribePackageVersionError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribePackageVersionRequest,
   output: DescribePackageVersionResponse,
@@ -2701,7 +2700,7 @@ export const listApplicationInstanceDependencies: API.PaginatedOperationMethod<
   ListApplicationInstanceDependenciesRequest,
   ListApplicationInstanceDependenciesResponse,
   ListApplicationInstanceDependenciesError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListApplicationInstanceDependenciesRequest,
@@ -2728,7 +2727,7 @@ export const listApplicationInstanceNodeInstances: API.PaginatedOperationMethod<
   ListApplicationInstanceNodeInstancesRequest,
   ListApplicationInstanceNodeInstancesResponse,
   ListApplicationInstanceNodeInstancesError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListApplicationInstanceNodeInstancesRequest,
@@ -2755,7 +2754,7 @@ export const listApplicationInstances: API.PaginatedOperationMethod<
   ListApplicationInstancesRequest,
   ListApplicationInstancesResponse,
   ListApplicationInstancesError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListApplicationInstancesRequest,
@@ -2784,7 +2783,7 @@ export const listDevices: API.PaginatedOperationMethod<
   ListDevicesRequest,
   ListDevicesResponse,
   ListDevicesError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDevicesRequest,
@@ -2819,7 +2818,7 @@ export const listDevicesJobs: API.PaginatedOperationMethod<
   ListDevicesJobsRequest,
   ListDevicesJobsResponse,
   ListDevicesJobsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDevicesJobsRequest,
@@ -2854,7 +2853,7 @@ export const listNodeFromTemplateJobs: API.PaginatedOperationMethod<
   ListNodeFromTemplateJobsRequest,
   ListNodeFromTemplateJobsResponse,
   ListNodeFromTemplateJobsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListNodeFromTemplateJobsRequest,
@@ -2887,7 +2886,7 @@ export const listNodes: API.PaginatedOperationMethod<
   ListNodesRequest,
   ListNodesResponse,
   ListNodesError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListNodesRequest,
@@ -2916,7 +2915,7 @@ export const listPackageImportJobs: API.PaginatedOperationMethod<
   ListPackageImportJobsRequest,
   ListPackageImportJobsResponse,
   ListPackageImportJobsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPackageImportJobsRequest,
@@ -2951,7 +2950,7 @@ export const listPackages: API.PaginatedOperationMethod<
   ListPackagesRequest,
   ListPackagesResponse,
   ListPackagesError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPackagesRequest,
@@ -2985,7 +2984,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -3016,7 +3015,7 @@ export const provisionDevice: API.OperationMethod<
   ProvisionDeviceRequest,
   ProvisionDeviceResponse,
   ProvisionDeviceError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ProvisionDeviceRequest,
   output: ProvisionDeviceResponse,
@@ -3045,7 +3044,7 @@ export const registerPackageVersion: API.OperationMethod<
   RegisterPackageVersionRequest,
   RegisterPackageVersionResponse,
   RegisterPackageVersionError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: RegisterPackageVersionRequest,
   output: RegisterPackageVersionResponse,
@@ -3074,7 +3073,7 @@ export const removeApplicationInstance: API.OperationMethod<
   RemoveApplicationInstanceRequest,
   RemoveApplicationInstanceResponse,
   RemoveApplicationInstanceError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: RemoveApplicationInstanceRequest,
   output: RemoveApplicationInstanceResponse,
@@ -3103,7 +3102,7 @@ export const signalApplicationInstanceNodeInstances: API.OperationMethod<
   SignalApplicationInstanceNodeInstancesRequest,
   SignalApplicationInstanceNodeInstancesResponse,
   SignalApplicationInstanceNodeInstancesError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: SignalApplicationInstanceNodeInstancesRequest,
   output: SignalApplicationInstanceNodeInstancesResponse,
@@ -3130,7 +3129,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -3156,7 +3155,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -3184,7 +3183,7 @@ export const updateDeviceMetadata: API.OperationMethod<
   UpdateDeviceMetadataRequest,
   UpdateDeviceMetadataResponse,
   UpdateDeviceMetadataError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateDeviceMetadataRequest,
   output: UpdateDeviceMetadataResponse,

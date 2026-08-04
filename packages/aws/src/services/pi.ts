@@ -7,7 +7,6 @@ import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 import { SensitiveString } from "../sensitive.ts";
 const ns = T.XmlNamespace("http://pi.amazonaws.com/doc/2018-02-27/");
 const svc = T.AwsApiService({
@@ -1073,7 +1072,7 @@ export const createPerformanceAnalysisReport: API.OperationMethod<
   CreatePerformanceAnalysisReportRequest,
   CreatePerformanceAnalysisReportResponse,
   CreatePerformanceAnalysisReportError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreatePerformanceAnalysisReportRequest,
   output: CreatePerformanceAnalysisReportResponse,
@@ -1099,7 +1098,7 @@ export const deletePerformanceAnalysisReport: API.OperationMethod<
   DeletePerformanceAnalysisReportRequest,
   DeletePerformanceAnalysisReportResponse,
   DeletePerformanceAnalysisReportError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeletePerformanceAnalysisReportRequest,
   output: DeletePerformanceAnalysisReportResponse,
@@ -1128,7 +1127,7 @@ export const describeDimensionKeys: API.PaginatedOperationMethod<
   DescribeDimensionKeysRequest,
   DescribeDimensionKeysResponse,
   DescribeDimensionKeysError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeDimensionKeysRequest,
@@ -1163,7 +1162,7 @@ export const getDimensionKeyDetails: API.OperationMethod<
   GetDimensionKeyDetailsRequest,
   GetDimensionKeyDetailsResponse,
   GetDimensionKeyDetailsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetDimensionKeyDetailsRequest,
   output: GetDimensionKeyDetailsResponse,
@@ -1192,7 +1191,7 @@ export const getPerformanceAnalysisReport: API.OperationMethod<
   GetPerformanceAnalysisReportRequest,
   GetPerformanceAnalysisReportResponse,
   GetPerformanceAnalysisReportError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetPerformanceAnalysisReportRequest,
   output: GetPerformanceAnalysisReportResponse,
@@ -1219,7 +1218,7 @@ export const getResourceMetadata: API.OperationMethod<
   GetResourceMetadataRequest,
   GetResourceMetadataResponse,
   GetResourceMetadataError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetResourceMetadataRequest,
   output: GetResourceMetadataResponse,
@@ -1250,7 +1249,7 @@ export const getResourceMetrics: API.PaginatedOperationMethod<
   GetResourceMetricsRequest,
   GetResourceMetricsResponse,
   GetResourceMetricsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetResourceMetricsRequest,
@@ -1282,7 +1281,7 @@ export const listAvailableResourceDimensions: API.PaginatedOperationMethod<
   ListAvailableResourceDimensionsRequest,
   ListAvailableResourceDimensionsResponse,
   ListAvailableResourceDimensionsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAvailableResourceDimensionsRequest,
@@ -1314,7 +1313,7 @@ export const listAvailableResourceMetrics: API.PaginatedOperationMethod<
   ListAvailableResourceMetricsRequest,
   ListAvailableResourceMetricsResponse,
   ListAvailableResourceMetricsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAvailableResourceMetricsRequest,
@@ -1346,7 +1345,7 @@ export const listPerformanceAnalysisReportRecommendations: API.PaginatedOperatio
   ListPerformanceAnalysisReportRecommendationsRequest,
   ListPerformanceAnalysisReportRecommendationsResponse,
   ListPerformanceAnalysisReportRecommendationsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   Recommendation
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPerformanceAnalysisReportRecommendationsRequest,
@@ -1379,7 +1378,7 @@ export const listPerformanceAnalysisReports: API.PaginatedOperationMethod<
   ListPerformanceAnalysisReportsRequest,
   ListPerformanceAnalysisReportsResponse,
   ListPerformanceAnalysisReportsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPerformanceAnalysisReportsRequest,
@@ -1411,7 +1410,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -1437,7 +1436,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -1463,7 +1462,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,

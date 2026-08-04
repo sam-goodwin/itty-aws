@@ -7,7 +7,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 const svc = T.AwsApiService({
   sdkId: "resiliencehubv2",
   serviceShapeName: "NGRHServiceCore",
@@ -4088,7 +4087,7 @@ export const createAssertion: API.OperationMethod<
   CreateAssertionRequest,
   CreateAssertionResponse,
   CreateAssertionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateAssertionRequest,
   output: CreateAssertionResponse,
@@ -4120,7 +4119,7 @@ export const createInputSource: API.OperationMethod<
   CreateInputSourceRequest,
   CreateInputSourceResponse,
   CreateInputSourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateInputSourceRequest,
   output: CreateInputSourceResponse,
@@ -4152,7 +4151,7 @@ export const createPolicy: API.OperationMethod<
   CreatePolicyRequest,
   CreatePolicyResponse,
   CreatePolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreatePolicyRequest,
   output: CreatePolicyResponse,
@@ -4184,7 +4183,7 @@ export const createReport: API.OperationMethod<
   CreateReportRequest,
   CreateReportResponse,
   CreateReportError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateReportRequest,
   output: CreateReportResponse,
@@ -4216,7 +4215,7 @@ export const createService: API.OperationMethod<
   CreateServiceRequest,
   CreateServiceResponse,
   CreateServiceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateServiceRequest,
   output: CreateServiceResponse,
@@ -4248,7 +4247,7 @@ export const createServiceFunction: API.OperationMethod<
   CreateServiceFunctionRequest,
   CreateServiceFunctionResponse,
   CreateServiceFunctionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateServiceFunctionRequest,
   output: CreateServiceFunctionResponse,
@@ -4279,7 +4278,7 @@ export const createServiceFunctionResources: API.OperationMethod<
   CreateServiceFunctionResourcesRequest,
   CreateServiceFunctionResourcesResponse,
   CreateServiceFunctionResourcesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateServiceFunctionResourcesRequest,
   output: CreateServiceFunctionResourcesResponse,
@@ -4310,7 +4309,7 @@ export const createSystem: API.OperationMethod<
   CreateSystemRequest,
   CreateSystemResponse,
   CreateSystemError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateSystemRequest,
   output: CreateSystemResponse,
@@ -4342,7 +4341,7 @@ export const createUserJourney: API.OperationMethod<
   CreateUserJourneyRequest,
   CreateUserJourneyResponse,
   CreateUserJourneyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateUserJourneyRequest,
   output: CreateUserJourneyResponse,
@@ -4372,7 +4371,7 @@ export const deleteAssertion: API.OperationMethod<
   DeleteAssertionRequest,
   DeleteAssertionResponse,
   DeleteAssertionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteAssertionRequest,
   output: DeleteAssertionResponse,
@@ -4400,7 +4399,7 @@ export const deleteInputSource: API.OperationMethod<
   DeleteInputSourceRequest,
   DeleteInputSourceResponse,
   DeleteInputSourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteInputSourceRequest,
   output: DeleteInputSourceResponse,
@@ -4429,7 +4428,7 @@ export const deletePolicy: API.OperationMethod<
   DeletePolicyRequest,
   DeletePolicyResponse,
   DeletePolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeletePolicyRequest,
   output: DeletePolicyResponse,
@@ -4459,7 +4458,7 @@ export const deleteService: API.OperationMethod<
   DeleteServiceRequest,
   DeleteServiceResponse,
   DeleteServiceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteServiceRequest,
   output: DeleteServiceResponse,
@@ -4489,7 +4488,7 @@ export const deleteServiceFunction: API.OperationMethod<
   DeleteServiceFunctionRequest,
   DeleteServiceFunctionResponse,
   DeleteServiceFunctionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteServiceFunctionRequest,
   output: DeleteServiceFunctionResponse,
@@ -4519,7 +4518,7 @@ export const deleteServiceFunctionResources: API.OperationMethod<
   DeleteServiceFunctionResourcesRequest,
   DeleteServiceFunctionResourcesResponse,
   DeleteServiceFunctionResourcesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteServiceFunctionResourcesRequest,
   output: DeleteServiceFunctionResourcesResponse,
@@ -4549,7 +4548,7 @@ export const deleteSystem: API.OperationMethod<
   DeleteSystemRequest,
   DeleteSystemResponse,
   DeleteSystemError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteSystemRequest,
   output: DeleteSystemResponse,
@@ -4579,7 +4578,7 @@ export const deleteUserJourney: API.OperationMethod<
   DeleteUserJourneyRequest,
   DeleteUserJourneyResponse,
   DeleteUserJourneyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteUserJourneyRequest,
   output: DeleteUserJourneyResponse,
@@ -4608,7 +4607,7 @@ export const getFailureModeFinding: API.OperationMethod<
   GetFailureModeFindingRequest,
   GetFailureModeFindingResponse,
   GetFailureModeFindingError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetFailureModeFindingRequest,
   output: GetFailureModeFindingResponse,
@@ -4636,7 +4635,7 @@ export const getPolicy: API.OperationMethod<
   GetPolicyRequest,
   GetPolicyResponse,
   GetPolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetPolicyRequest,
   output: GetPolicyResponse,
@@ -4664,7 +4663,7 @@ export const getService: API.OperationMethod<
   GetServiceRequest,
   GetServiceResponse,
   GetServiceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetServiceRequest,
   output: GetServiceResponse,
@@ -4692,7 +4691,7 @@ export const getSystem: API.OperationMethod<
   GetSystemRequest,
   GetSystemResponse,
   GetSystemError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetSystemRequest,
   output: GetSystemResponse,
@@ -4720,7 +4719,7 @@ export const getUserJourney: API.OperationMethod<
   GetUserJourneyRequest,
   GetUserJourneyResponse,
   GetUserJourneyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetUserJourneyRequest,
   output: GetUserJourneyResponse,
@@ -4749,7 +4748,7 @@ export const importApp: API.OperationMethod<
   ImportAppRequest,
   ImportAppResponse,
   ImportAppError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ImportAppRequest,
   output: ImportAppResponse,
@@ -4779,7 +4778,7 @@ export const importPolicy: API.OperationMethod<
   ImportPolicyRequest,
   ImportPolicyResponse,
   ImportPolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ImportPolicyRequest,
   output: ImportPolicyResponse,
@@ -4808,7 +4807,7 @@ export const listAssertions: API.PaginatedOperationMethod<
   ListAssertionsRequest,
   ListAssertionsResponse,
   ListAssertionsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   Assertion
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAssertionsRequest,
@@ -4843,7 +4842,7 @@ export const listDependencies: API.PaginatedOperationMethod<
   ListDependenciesRequest,
   ListDependenciesResponse,
   ListDependenciesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   DependencySummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDependenciesRequest,
@@ -4878,7 +4877,7 @@ export const listFailureModeAssessments: API.PaginatedOperationMethod<
   ListFailureModeAssessmentsRequest,
   ListFailureModeAssessmentsResponse,
   ListFailureModeAssessmentsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   AssessmentSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFailureModeAssessmentsRequest,
@@ -4913,7 +4912,7 @@ export const listFailureModeFindings: API.PaginatedOperationMethod<
   ListFailureModeFindingsRequest,
   ListFailureModeFindingsResponse,
   ListFailureModeFindingsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   FindingSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFailureModeFindingsRequest,
@@ -4948,7 +4947,7 @@ export const listInputSources: API.PaginatedOperationMethod<
   ListInputSourcesRequest,
   ListInputSourcesResponse,
   ListInputSourcesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   InputSourceSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListInputSourcesRequest,
@@ -4982,7 +4981,7 @@ export const listPolicies: API.PaginatedOperationMethod<
   ListPoliciesRequest,
   ListPoliciesResponse,
   ListPoliciesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   PolicySummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPoliciesRequest,
@@ -5013,7 +5012,7 @@ export const listReports: API.PaginatedOperationMethod<
   ListReportsRequest,
   ListReportsResponse,
   ListReportsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ReportGenerationResult
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListReportsRequest,
@@ -5049,7 +5048,7 @@ export const listResources: API.PaginatedOperationMethod<
   ListResourcesRequest,
   ListResourcesResponse,
   ListResourcesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ServiceResource
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListResourcesRequest,
@@ -5084,7 +5083,7 @@ export const listServiceEvents: API.PaginatedOperationMethod<
   ListServiceEventsRequest,
   ListServiceEventsResponse,
   ListServiceEventsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ServiceEvent
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListServiceEventsRequest,
@@ -5119,7 +5118,7 @@ export const listServiceFunctions: API.PaginatedOperationMethod<
   ListServiceFunctionsRequest,
   ListServiceFunctionsResponse,
   ListServiceFunctionsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ServiceFunction
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListServiceFunctionsRequest,
@@ -5153,7 +5152,7 @@ export const listServices: API.PaginatedOperationMethod<
   ListServicesRequest,
   ListServicesResponse,
   ListServicesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ServiceSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListServicesRequest,
@@ -5182,7 +5181,7 @@ export const listServiceTopologyEdges: API.PaginatedOperationMethod<
   ListServiceTopologyEdgesRequest,
   ListServiceTopologyEdgesResponse,
   ListServiceTopologyEdgesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ServiceTopologyEdgeSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListServiceTopologyEdgesRequest,
@@ -5212,7 +5211,7 @@ export const listSystemEvents: API.PaginatedOperationMethod<
   ListSystemEventsRequest,
   ListSystemEventsResponse,
   ListSystemEventsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   SystemEvent
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSystemEventsRequest,
@@ -5246,7 +5245,7 @@ export const listSystems: API.PaginatedOperationMethod<
   ListSystemsRequest,
   ListSystemsResponse,
   ListSystemsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   SystemSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSystemsRequest,
@@ -5277,7 +5276,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -5306,7 +5305,7 @@ export const listUserJourneys: API.PaginatedOperationMethod<
   ListUserJourneysRequest,
   ListUserJourneysResponse,
   ListUserJourneysError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   UserJourneySummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListUserJourneysRequest,
@@ -5343,7 +5342,7 @@ export const startFailureModeAssessment: API.OperationMethod<
   StartFailureModeAssessmentRequest,
   StartFailureModeAssessmentResponse,
   StartFailureModeAssessmentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartFailureModeAssessmentRequest,
   output: StartFailureModeAssessmentResponse,
@@ -5374,7 +5373,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -5404,7 +5403,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -5434,7 +5433,7 @@ export const updateAssertion: API.OperationMethod<
   UpdateAssertionRequest,
   UpdateAssertionResponse,
   UpdateAssertionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateAssertionRequest,
   output: UpdateAssertionResponse,
@@ -5464,7 +5463,7 @@ export const updateDependency: API.OperationMethod<
   UpdateDependencyRequest,
   UpdateDependencyResponse,
   UpdateDependencyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateDependencyRequest,
   output: UpdateDependencyResponse,
@@ -5494,7 +5493,7 @@ export const updateFailureModeFinding: API.OperationMethod<
   UpdateFailureModeFindingRequest,
   UpdateFailureModeFindingResponse,
   UpdateFailureModeFindingError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateFailureModeFindingRequest,
   output: UpdateFailureModeFindingResponse,
@@ -5524,7 +5523,7 @@ export const updatePolicy: API.OperationMethod<
   UpdatePolicyRequest,
   UpdatePolicyResponse,
   UpdatePolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdatePolicyRequest,
   output: UpdatePolicyResponse,
@@ -5555,7 +5554,7 @@ export const updateService: API.OperationMethod<
   UpdateServiceRequest,
   UpdateServiceResponse,
   UpdateServiceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateServiceRequest,
   output: UpdateServiceResponse,
@@ -5586,7 +5585,7 @@ export const updateServiceFunction: API.OperationMethod<
   UpdateServiceFunctionRequest,
   UpdateServiceFunctionResponse,
   UpdateServiceFunctionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateServiceFunctionRequest,
   output: UpdateServiceFunctionResponse,
@@ -5616,7 +5615,7 @@ export const updateSystem: API.OperationMethod<
   UpdateSystemRequest,
   UpdateSystemResponse,
   UpdateSystemError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateSystemRequest,
   output: UpdateSystemResponse,
@@ -5646,7 +5645,7 @@ export const updateUserJourney: API.OperationMethod<
   UpdateUserJourneyRequest,
   UpdateUserJourneyResponse,
   UpdateUserJourneyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateUserJourneyRequest,
   output: UpdateUserJourneyResponse,

@@ -8,7 +8,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 import { SensitiveString } from "../sensitive.ts";
 const svc = T.AwsApiService({
   sdkId: "AppFabric",
@@ -1414,7 +1413,7 @@ export const batchGetUserAccessTasks: API.OperationMethod<
   BatchGetUserAccessTasksRequest,
   BatchGetUserAccessTasksResponse,
   BatchGetUserAccessTasksError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: BatchGetUserAccessTasksRequest,
   output: BatchGetUserAccessTasksResponse,
@@ -1445,7 +1444,7 @@ export const connectAppAuthorization: API.OperationMethod<
   ConnectAppAuthorizationRequest,
   ConnectAppAuthorizationResponse,
   ConnectAppAuthorizationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ConnectAppAuthorizationRequest,
   output: ConnectAppAuthorizationResponse,
@@ -1478,7 +1477,7 @@ export const createAppAuthorization: API.OperationMethod<
   CreateAppAuthorizationRequest,
   CreateAppAuthorizationResponse,
   CreateAppAuthorizationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateAppAuthorizationRequest,
   output: CreateAppAuthorizationResponse,
@@ -1511,7 +1510,7 @@ export const createAppBundle: API.OperationMethod<
   CreateAppBundleRequest,
   CreateAppBundleResponse,
   CreateAppBundleError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateAppBundleRequest,
   output: CreateAppBundleResponse,
@@ -1543,7 +1542,7 @@ export const createIngestion: API.OperationMethod<
   CreateIngestionRequest,
   CreateIngestionResponse,
   CreateIngestionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateIngestionRequest,
   output: CreateIngestionResponse,
@@ -1576,7 +1575,7 @@ export const createIngestionDestination: API.OperationMethod<
   CreateIngestionDestinationRequest,
   CreateIngestionDestinationResponse,
   CreateIngestionDestinationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateIngestionDestinationRequest,
   output: CreateIngestionDestinationResponse,
@@ -1608,7 +1607,7 @@ export const deleteAppAuthorization: API.OperationMethod<
   DeleteAppAuthorizationRequest,
   DeleteAppAuthorizationResponse,
   DeleteAppAuthorizationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteAppAuthorizationRequest,
   output: DeleteAppAuthorizationResponse,
@@ -1639,7 +1638,7 @@ export const deleteAppBundle: API.OperationMethod<
   DeleteAppBundleRequest,
   DeleteAppBundleResponse,
   DeleteAppBundleError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteAppBundleRequest,
   output: DeleteAppBundleResponse,
@@ -1670,7 +1669,7 @@ export const deleteIngestion: API.OperationMethod<
   DeleteIngestionRequest,
   DeleteIngestionResponse,
   DeleteIngestionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteIngestionRequest,
   output: DeleteIngestionResponse,
@@ -1705,7 +1704,7 @@ export const deleteIngestionDestination: API.OperationMethod<
   DeleteIngestionDestinationRequest,
   DeleteIngestionDestinationResponse,
   DeleteIngestionDestinationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteIngestionDestinationRequest,
   output: DeleteIngestionDestinationResponse,
@@ -1735,7 +1734,7 @@ export const getAppAuthorization: API.OperationMethod<
   GetAppAuthorizationRequest,
   GetAppAuthorizationResponse,
   GetAppAuthorizationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetAppAuthorizationRequest,
   output: GetAppAuthorizationResponse,
@@ -1765,7 +1764,7 @@ export const getAppBundle: API.OperationMethod<
   GetAppBundleRequest,
   GetAppBundleResponse,
   GetAppBundleError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetAppBundleRequest,
   output: GetAppBundleResponse,
@@ -1795,7 +1794,7 @@ export const getIngestion: API.OperationMethod<
   GetIngestionRequest,
   GetIngestionResponse,
   GetIngestionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetIngestionRequest,
   output: GetIngestionResponse,
@@ -1825,7 +1824,7 @@ export const getIngestionDestination: API.OperationMethod<
   GetIngestionDestinationRequest,
   GetIngestionDestinationResponse,
   GetIngestionDestinationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetIngestionDestinationRequest,
   output: GetIngestionDestinationResponse,
@@ -1855,7 +1854,7 @@ export const listAppAuthorizations: API.PaginatedOperationMethod<
   ListAppAuthorizationsRequest,
   ListAppAuthorizationsResponse,
   ListAppAuthorizationsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   AppAuthorizationSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAppAuthorizationsRequest,
@@ -1891,7 +1890,7 @@ export const listAppBundles: API.PaginatedOperationMethod<
   ListAppBundlesRequest,
   ListAppBundlesResponse,
   ListAppBundlesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   AppBundleSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAppBundlesRequest,
@@ -1927,7 +1926,7 @@ export const listIngestionDestinations: API.PaginatedOperationMethod<
   ListIngestionDestinationsRequest,
   ListIngestionDestinationsResponse,
   ListIngestionDestinationsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   IngestionDestinationSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListIngestionDestinationsRequest,
@@ -1964,7 +1963,7 @@ export const listIngestions: API.PaginatedOperationMethod<
   ListIngestionsRequest,
   ListIngestionsResponse,
   ListIngestionsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   IngestionSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListIngestionsRequest,
@@ -2001,7 +2000,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -2032,7 +2031,7 @@ export const startIngestion: API.OperationMethod<
   StartIngestionRequest,
   StartIngestionResponse,
   StartIngestionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartIngestionRequest,
   output: StartIngestionResponse,
@@ -2066,7 +2065,7 @@ export const startUserAccessTasks: API.OperationMethod<
   StartUserAccessTasksRequest,
   StartUserAccessTasksResponse,
   StartUserAccessTasksError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartUserAccessTasksRequest,
   output: StartUserAccessTasksResponse,
@@ -2097,7 +2096,7 @@ export const stopIngestion: API.OperationMethod<
   StopIngestionRequest,
   StopIngestionResponse,
   StopIngestionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StopIngestionRequest,
   output: StopIngestionResponse,
@@ -2128,7 +2127,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -2158,7 +2157,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -2192,7 +2191,7 @@ export const updateAppAuthorization: API.OperationMethod<
   UpdateAppAuthorizationRequest,
   UpdateAppAuthorizationResponse,
   UpdateAppAuthorizationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateAppAuthorizationRequest,
   output: UpdateAppAuthorizationResponse,
@@ -2225,7 +2224,7 @@ export const updateIngestionDestination: API.OperationMethod<
   UpdateIngestionDestinationRequest,
   UpdateIngestionDestinationResponse,
   UpdateIngestionDestinationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateIngestionDestinationRequest,
   output: UpdateIngestionDestinationResponse,

@@ -7,7 +7,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 const svc = T.AwsApiService({
   sdkId: "Route53 Recovery Cluster",
   serviceShapeName: "ToggleCustomerAPI",
@@ -366,7 +365,7 @@ export const getRoutingControlState: API.OperationMethod<
   GetRoutingControlStateRequest,
   GetRoutingControlStateResponse,
   GetRoutingControlStateError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetRoutingControlStateRequest,
   output: GetRoutingControlStateResponse,
@@ -423,7 +422,7 @@ export const listRoutingControls: API.PaginatedOperationMethod<
   ListRoutingControlsRequest,
   ListRoutingControlsResponse,
   ListRoutingControlsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   RoutingControl
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRoutingControlsRequest,
@@ -490,7 +489,7 @@ export const updateRoutingControlState: API.OperationMethod<
   UpdateRoutingControlStateRequest,
   UpdateRoutingControlStateResponse,
   UpdateRoutingControlStateError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateRoutingControlStateRequest,
   output: UpdateRoutingControlStateResponse,
@@ -552,7 +551,7 @@ export const updateRoutingControlStates: API.OperationMethod<
   UpdateRoutingControlStatesRequest,
   UpdateRoutingControlStatesResponse,
   UpdateRoutingControlStatesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateRoutingControlStatesRequest,
   output: UpdateRoutingControlStatesResponse,

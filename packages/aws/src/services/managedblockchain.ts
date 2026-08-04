@@ -8,7 +8,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 import { SensitiveString } from "../sensitive.ts";
 const svc = T.AwsApiService({
   sdkId: "ManagedBlockchain",
@@ -1746,7 +1745,7 @@ export const createAccessor: API.OperationMethod<
   CreateAccessorInput,
   CreateAccessorOutput,
   CreateAccessorError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateAccessorInput,
   output: CreateAccessorOutput,
@@ -1784,7 +1783,7 @@ export const createMember: API.OperationMethod<
   CreateMemberInput,
   CreateMemberOutput,
   CreateMemberError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateMemberInput,
   output: CreateMemberOutput,
@@ -1822,7 +1821,7 @@ export const createNetwork: API.OperationMethod<
   CreateNetworkInput,
   CreateNetworkOutput,
   CreateNetworkError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateNetworkInput,
   output: CreateNetworkOutput,
@@ -1860,7 +1859,7 @@ export const createNode: API.OperationMethod<
   CreateNodeInput,
   CreateNodeOutput,
   CreateNodeError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateNodeInput,
   output: CreateNodeOutput,
@@ -1898,7 +1897,7 @@ export const createProposal: API.OperationMethod<
   CreateProposalInput,
   CreateProposalOutput,
   CreateProposalError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateProposalInput,
   output: CreateProposalOutput,
@@ -1936,7 +1935,7 @@ export const deleteAccessor: API.OperationMethod<
   DeleteAccessorInput,
   DeleteAccessorOutput,
   DeleteAccessorError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteAccessorInput,
   output: DeleteAccessorOutput,
@@ -1969,7 +1968,7 @@ export const deleteMember: API.OperationMethod<
   DeleteMemberInput,
   DeleteMemberOutput,
   DeleteMemberError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteMemberInput,
   output: DeleteMemberOutput,
@@ -2003,7 +2002,7 @@ export const deleteNode: API.OperationMethod<
   DeleteNodeInput,
   DeleteNodeOutput,
   DeleteNodeError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteNodeInput,
   output: DeleteNodeOutput,
@@ -2035,7 +2034,7 @@ export const getAccessor: API.OperationMethod<
   GetAccessorInput,
   GetAccessorOutput,
   GetAccessorError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetAccessorInput,
   output: GetAccessorOutput,
@@ -2067,7 +2066,7 @@ export const getMember: API.OperationMethod<
   GetMemberInput,
   GetMemberOutput,
   GetMemberError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetMemberInput,
   output: GetMemberOutput,
@@ -2099,7 +2098,7 @@ export const getNetwork: API.OperationMethod<
   GetNetworkInput,
   GetNetworkOutput,
   GetNetworkError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetNetworkInput,
   output: GetNetworkOutput,
@@ -2131,7 +2130,7 @@ export const getNode: API.OperationMethod<
   GetNodeInput,
   GetNodeOutput,
   GetNodeError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetNodeInput,
   output: GetNodeOutput,
@@ -2163,7 +2162,7 @@ export const getProposal: API.OperationMethod<
   GetProposalInput,
   GetProposalOutput,
   GetProposalError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetProposalInput,
   output: GetProposalOutput,
@@ -2193,7 +2192,7 @@ export const listAccessors: API.PaginatedOperationMethod<
   ListAccessorsInput,
   ListAccessorsOutput,
   ListAccessorsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   AccessorSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccessorsInput,
@@ -2232,7 +2231,7 @@ export const listInvitations: API.PaginatedOperationMethod<
   ListInvitationsInput,
   ListInvitationsOutput,
   ListInvitationsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListInvitationsInput,
@@ -2270,7 +2269,7 @@ export const listMembers: API.PaginatedOperationMethod<
   ListMembersInput,
   ListMembersOutput,
   ListMembersError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMembersInput,
@@ -2306,7 +2305,7 @@ export const listNetworks: API.PaginatedOperationMethod<
   ListNetworksInput,
   ListNetworksOutput,
   ListNetworksError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListNetworksInput,
@@ -2342,7 +2341,7 @@ export const listNodes: API.PaginatedOperationMethod<
   ListNodesInput,
   ListNodesOutput,
   ListNodesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListNodesInput,
@@ -2379,7 +2378,7 @@ export const listProposals: API.PaginatedOperationMethod<
   ListProposalsInput,
   ListProposalsOutput,
   ListProposalsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProposalsInput,
@@ -2416,7 +2415,7 @@ export const listProposalVotes: API.PaginatedOperationMethod<
   ListProposalVotesInput,
   ListProposalVotesOutput,
   ListProposalVotesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProposalVotesInput,
@@ -2452,7 +2451,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -2484,7 +2483,7 @@ export const rejectInvitation: API.OperationMethod<
   RejectInvitationInput,
   RejectInvitationOutput,
   RejectInvitationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: RejectInvitationInput,
   output: RejectInvitationOutput,
@@ -2521,7 +2520,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -2552,7 +2551,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -2583,7 +2582,7 @@ export const updateMember: API.OperationMethod<
   UpdateMemberInput,
   UpdateMemberOutput,
   UpdateMemberError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateMemberInput,
   output: UpdateMemberOutput,
@@ -2615,7 +2614,7 @@ export const updateNode: API.OperationMethod<
   UpdateNodeInput,
   UpdateNodeOutput,
   UpdateNodeError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateNodeInput,
   output: UpdateNodeOutput,
@@ -2648,7 +2647,7 @@ export const voteOnProposal: API.OperationMethod<
   VoteOnProposalInput,
   VoteOnProposalOutput,
   VoteOnProposalError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: VoteOnProposalInput,
   output: VoteOnProposalOutput,

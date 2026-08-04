@@ -8,7 +8,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 import { SensitiveString } from "../sensitive.ts";
 const svc = T.AwsApiService({
   sdkId: "CloudFront KeyValueStore",
@@ -457,7 +456,7 @@ export const deleteKey: API.OperationMethod<
   DeleteKeyRequest,
   DeleteKeyResponse,
   DeleteKeyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteKeyRequest,
   output: DeleteKeyResponse,
@@ -487,7 +486,7 @@ export const describeKeyValueStore: API.OperationMethod<
   DescribeKeyValueStoreRequest,
   DescribeKeyValueStoreResponse,
   DescribeKeyValueStoreError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeKeyValueStoreRequest,
   output: DescribeKeyValueStoreResponse,
@@ -515,7 +514,7 @@ export const getKey: API.OperationMethod<
   GetKeyRequest,
   GetKeyResponse,
   GetKeyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetKeyRequest,
   output: GetKeyResponse,
@@ -544,7 +543,7 @@ export const listKeys: API.PaginatedOperationMethod<
   ListKeysRequest,
   ListKeysResponse,
   ListKeysError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ListKeysResponseListItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListKeysRequest,
@@ -582,7 +581,7 @@ export const putKey: API.OperationMethod<
   PutKeyRequest,
   PutKeyResponse,
   PutKeyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PutKeyRequest,
   output: PutKeyResponse,
@@ -614,7 +613,7 @@ export const updateKeys: API.OperationMethod<
   UpdateKeysRequest,
   UpdateKeysResponse,
   UpdateKeysError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateKeysRequest,
   output: UpdateKeysResponse,

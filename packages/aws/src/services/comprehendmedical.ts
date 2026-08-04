@@ -7,7 +7,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 const svc = T.AwsApiService({
   sdkId: "ComprehendMedical",
   serviceShapeName: "ComprehendMedical_20181030",
@@ -1460,7 +1459,7 @@ export const describeEntitiesDetectionV2Job: API.OperationMethod<
   DescribeEntitiesDetectionV2JobRequest,
   DescribeEntitiesDetectionV2JobResponse,
   DescribeEntitiesDetectionV2JobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeEntitiesDetectionV2JobRequest,
   output: DescribeEntitiesDetectionV2JobResponse,
@@ -1489,7 +1488,7 @@ export const describeICD10CMInferenceJob: API.OperationMethod<
   DescribeICD10CMInferenceJobRequest,
   DescribeICD10CMInferenceJobResponse,
   DescribeICD10CMInferenceJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeICD10CMInferenceJobRequest,
   output: DescribeICD10CMInferenceJobResponse,
@@ -1518,7 +1517,7 @@ export const describePHIDetectionJob: API.OperationMethod<
   DescribePHIDetectionJobRequest,
   DescribePHIDetectionJobResponse,
   DescribePHIDetectionJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribePHIDetectionJobRequest,
   output: DescribePHIDetectionJobResponse,
@@ -1547,7 +1546,7 @@ export const describeRxNormInferenceJob: API.OperationMethod<
   DescribeRxNormInferenceJobRequest,
   DescribeRxNormInferenceJobResponse,
   DescribeRxNormInferenceJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeRxNormInferenceJobRequest,
   output: DescribeRxNormInferenceJobResponse,
@@ -1575,7 +1574,7 @@ export const describeSNOMEDCTInferenceJob: API.OperationMethod<
   DescribeSNOMEDCTInferenceJobRequest,
   DescribeSNOMEDCTInferenceJobResponse,
   DescribeSNOMEDCTInferenceJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeSNOMEDCTInferenceJobRequest,
   output: DescribeSNOMEDCTInferenceJobResponse,
@@ -1609,7 +1608,7 @@ export const detectEntities: API.OperationMethod<
   DetectEntitiesRequest,
   DetectEntitiesResponse,
   DetectEntitiesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DetectEntitiesRequest,
   output: DetectEntitiesResponse,
@@ -1652,7 +1651,7 @@ export const detectEntitiesV2: API.OperationMethod<
   DetectEntitiesV2Request,
   DetectEntitiesV2Response,
   DetectEntitiesV2Error,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DetectEntitiesV2Request,
   output: DetectEntitiesV2Response,
@@ -1686,7 +1685,7 @@ export const detectPHI: API.OperationMethod<
   DetectPHIRequest,
   DetectPHIResponse,
   DetectPHIError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DetectPHIRequest,
   output: DetectPHIResponse,
@@ -1721,7 +1720,7 @@ export const inferICD10CM: API.OperationMethod<
   InferICD10CMRequest,
   InferICD10CMResponse,
   InferICD10CMError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: InferICD10CMRequest,
   output: InferICD10CMResponse,
@@ -1755,7 +1754,7 @@ export const inferRxNorm: API.OperationMethod<
   InferRxNormRequest,
   InferRxNormResponse,
   InferRxNormError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: InferRxNormRequest,
   output: InferRxNormResponse,
@@ -1787,7 +1786,7 @@ export const inferSNOMEDCT: API.OperationMethod<
   InferSNOMEDCTRequest,
   InferSNOMEDCTResponse,
   InferSNOMEDCTError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: InferSNOMEDCTRequest,
   output: InferSNOMEDCTResponse,
@@ -1817,7 +1816,7 @@ export const listEntitiesDetectionV2Jobs: API.OperationMethod<
   ListEntitiesDetectionV2JobsRequest,
   ListEntitiesDetectionV2JobsResponse,
   ListEntitiesDetectionV2JobsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListEntitiesDetectionV2JobsRequest,
   output: ListEntitiesDetectionV2JobsResponse,
@@ -1845,7 +1844,7 @@ export const listICD10CMInferenceJobs: API.OperationMethod<
   ListICD10CMInferenceJobsRequest,
   ListICD10CMInferenceJobsResponse,
   ListICD10CMInferenceJobsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListICD10CMInferenceJobsRequest,
   output: ListICD10CMInferenceJobsResponse,
@@ -1874,7 +1873,7 @@ export const listPHIDetectionJobs: API.OperationMethod<
   ListPHIDetectionJobsRequest,
   ListPHIDetectionJobsResponse,
   ListPHIDetectionJobsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListPHIDetectionJobsRequest,
   output: ListPHIDetectionJobsResponse,
@@ -1902,7 +1901,7 @@ export const listRxNormInferenceJobs: API.OperationMethod<
   ListRxNormInferenceJobsRequest,
   ListRxNormInferenceJobsResponse,
   ListRxNormInferenceJobsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListRxNormInferenceJobsRequest,
   output: ListRxNormInferenceJobsResponse,
@@ -1930,7 +1929,7 @@ export const listSNOMEDCTInferenceJobs: API.OperationMethod<
   ListSNOMEDCTInferenceJobsRequest,
   ListSNOMEDCTInferenceJobsResponse,
   ListSNOMEDCTInferenceJobsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListSNOMEDCTInferenceJobsRequest,
   output: ListSNOMEDCTInferenceJobsResponse,
@@ -1959,7 +1958,7 @@ export const startEntitiesDetectionV2Job: API.OperationMethod<
   StartEntitiesDetectionV2JobRequest,
   StartEntitiesDetectionV2JobResponse,
   StartEntitiesDetectionV2JobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartEntitiesDetectionV2JobRequest,
   output: StartEntitiesDetectionV2JobResponse,
@@ -1989,7 +1988,7 @@ export const startICD10CMInferenceJob: API.OperationMethod<
   StartICD10CMInferenceJobRequest,
   StartICD10CMInferenceJobResponse,
   StartICD10CMInferenceJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartICD10CMInferenceJobRequest,
   output: StartICD10CMInferenceJobResponse,
@@ -2018,7 +2017,7 @@ export const startPHIDetectionJob: API.OperationMethod<
   StartPHIDetectionJobRequest,
   StartPHIDetectionJobResponse,
   StartPHIDetectionJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartPHIDetectionJobRequest,
   output: StartPHIDetectionJobResponse,
@@ -2048,7 +2047,7 @@ export const startRxNormInferenceJob: API.OperationMethod<
   StartRxNormInferenceJobRequest,
   StartRxNormInferenceJobResponse,
   StartRxNormInferenceJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartRxNormInferenceJobRequest,
   output: StartRxNormInferenceJobResponse,
@@ -2076,7 +2075,7 @@ export const startSNOMEDCTInferenceJob: API.OperationMethod<
   StartSNOMEDCTInferenceJobRequest,
   StartSNOMEDCTInferenceJobResponse,
   StartSNOMEDCTInferenceJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartSNOMEDCTInferenceJobRequest,
   output: StartSNOMEDCTInferenceJobResponse,
@@ -2103,7 +2102,7 @@ export const stopEntitiesDetectionV2Job: API.OperationMethod<
   StopEntitiesDetectionV2JobRequest,
   StopEntitiesDetectionV2JobResponse,
   StopEntitiesDetectionV2JobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StopEntitiesDetectionV2JobRequest,
   output: StopEntitiesDetectionV2JobResponse,
@@ -2129,7 +2128,7 @@ export const stopICD10CMInferenceJob: API.OperationMethod<
   StopICD10CMInferenceJobRequest,
   StopICD10CMInferenceJobResponse,
   StopICD10CMInferenceJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StopICD10CMInferenceJobRequest,
   output: StopICD10CMInferenceJobResponse,
@@ -2155,7 +2154,7 @@ export const stopPHIDetectionJob: API.OperationMethod<
   StopPHIDetectionJobRequest,
   StopPHIDetectionJobResponse,
   StopPHIDetectionJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StopPHIDetectionJobRequest,
   output: StopPHIDetectionJobResponse,
@@ -2181,7 +2180,7 @@ export const stopRxNormInferenceJob: API.OperationMethod<
   StopRxNormInferenceJobRequest,
   StopRxNormInferenceJobResponse,
   StopRxNormInferenceJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StopRxNormInferenceJobRequest,
   output: StopRxNormInferenceJobResponse,
@@ -2208,7 +2207,7 @@ export const stopSNOMEDCTInferenceJob: API.OperationMethod<
   StopSNOMEDCTInferenceJobRequest,
   StopSNOMEDCTInferenceJobResponse,
   StopSNOMEDCTInferenceJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StopSNOMEDCTInferenceJobRequest,
   output: StopSNOMEDCTInferenceJobResponse,

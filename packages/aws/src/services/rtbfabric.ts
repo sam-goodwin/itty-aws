@@ -8,7 +8,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 import { SensitiveString } from "../sensitive.ts";
 const svc = T.AwsApiService({
   sdkId: "RTBFabric",
@@ -2166,7 +2165,7 @@ export const acceptLink: API.OperationMethod<
   AcceptLinkRequest,
   AcceptLinkResponse,
   AcceptLinkError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: AcceptLinkRequest,
   output: AcceptLinkResponse,
@@ -2199,7 +2198,7 @@ export const associateCertificate: API.OperationMethod<
   AssociateCertificateRequest,
   AssociateCertificateResponse,
   AssociateCertificateError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: AssociateCertificateRequest,
   output: AssociateCertificateResponse,
@@ -2233,7 +2232,7 @@ export const createInboundExternalLink: API.OperationMethod<
   CreateInboundExternalLinkRequest,
   CreateInboundExternalLinkResponse,
   CreateInboundExternalLinkError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateInboundExternalLinkRequest,
   output: CreateInboundExternalLinkResponse,
@@ -2269,7 +2268,7 @@ export const createLink: API.OperationMethod<
   CreateLinkRequest,
   CreateLinkResponse,
   CreateLinkError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateLinkRequest,
   output: CreateLinkResponse,
@@ -2305,7 +2304,7 @@ export const createLinkRoutingRule: API.OperationMethod<
   CreateLinkRoutingRuleRequest,
   CreateLinkRoutingRuleResponse,
   CreateLinkRoutingRuleError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateLinkRoutingRuleRequest,
   output: CreateLinkRoutingRuleResponse,
@@ -2339,7 +2338,7 @@ export const createOutboundExternalLink: API.OperationMethod<
   CreateOutboundExternalLinkRequest,
   CreateOutboundExternalLinkResponse,
   CreateOutboundExternalLinkError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateOutboundExternalLinkRequest,
   output: CreateOutboundExternalLinkResponse,
@@ -2372,7 +2371,7 @@ export const createRequesterGateway: API.OperationMethod<
   CreateRequesterGatewayRequest,
   CreateRequesterGatewayResponse,
   CreateRequesterGatewayError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateRequesterGatewayRequest,
   output: CreateRequesterGatewayResponse,
@@ -2406,7 +2405,7 @@ export const createResponderGateway: API.OperationMethod<
   CreateResponderGatewayRequest,
   CreateResponderGatewayResponse,
   CreateResponderGatewayError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateResponderGatewayRequest,
   output: CreateResponderGatewayResponse,
@@ -2438,7 +2437,7 @@ export const deleteInboundExternalLink: API.OperationMethod<
   DeleteInboundExternalLinkRequest,
   DeleteInboundExternalLinkResponse,
   DeleteInboundExternalLinkError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteInboundExternalLinkRequest,
   output: DeleteInboundExternalLinkResponse,
@@ -2472,7 +2471,7 @@ export const deleteLink: API.OperationMethod<
   DeleteLinkRequest,
   DeleteLinkResponse,
   DeleteLinkError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteLinkRequest,
   output: DeleteLinkResponse,
@@ -2504,7 +2503,7 @@ export const deleteLinkRoutingRule: API.OperationMethod<
   DeleteLinkRoutingRuleRequest,
   DeleteLinkRoutingRuleResponse,
   DeleteLinkRoutingRuleError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteLinkRoutingRuleRequest,
   output: DeleteLinkRoutingRuleResponse,
@@ -2536,7 +2535,7 @@ export const deleteOutboundExternalLink: API.OperationMethod<
   DeleteOutboundExternalLinkRequest,
   DeleteOutboundExternalLinkResponse,
   DeleteOutboundExternalLinkError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteOutboundExternalLinkRequest,
   output: DeleteOutboundExternalLinkResponse,
@@ -2568,7 +2567,7 @@ export const deleteRequesterGateway: API.OperationMethod<
   DeleteRequesterGatewayRequest,
   DeleteRequesterGatewayResponse,
   DeleteRequesterGatewayError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteRequesterGatewayRequest,
   output: DeleteRequesterGatewayResponse,
@@ -2600,7 +2599,7 @@ export const deleteResponderGateway: API.OperationMethod<
   DeleteResponderGatewayRequest,
   DeleteResponderGatewayResponse,
   DeleteResponderGatewayError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteResponderGatewayRequest,
   output: DeleteResponderGatewayResponse,
@@ -2633,7 +2632,7 @@ export const disassociateCertificate: API.OperationMethod<
   DisassociateCertificateRequest,
   DisassociateCertificateResponse,
   DisassociateCertificateError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DisassociateCertificateRequest,
   output: DisassociateCertificateResponse,
@@ -2665,7 +2664,7 @@ export const getCertificateAssociation: API.OperationMethod<
   GetCertificateAssociationRequest,
   GetCertificateAssociationResponse,
   GetCertificateAssociationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetCertificateAssociationRequest,
   output: GetCertificateAssociationResponse,
@@ -2695,7 +2694,7 @@ export const getInboundExternalLink: API.OperationMethod<
   GetInboundExternalLinkRequest,
   GetInboundExternalLinkResponse,
   GetInboundExternalLinkError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetInboundExternalLinkRequest,
   output: GetInboundExternalLinkResponse,
@@ -2728,7 +2727,7 @@ export const getLink: API.OperationMethod<
   GetLinkRequest,
   GetLinkResponse,
   GetLinkError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetLinkRequest,
   output: GetLinkResponse,
@@ -2759,7 +2758,7 @@ export const getLinkRoutingRule: API.OperationMethod<
   GetLinkRoutingRuleRequest,
   GetLinkRoutingRuleResponse,
   GetLinkRoutingRuleError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetLinkRoutingRuleRequest,
   output: GetLinkRoutingRuleResponse,
@@ -2789,7 +2788,7 @@ export const getOutboundExternalLink: API.OperationMethod<
   GetOutboundExternalLinkRequest,
   GetOutboundExternalLinkResponse,
   GetOutboundExternalLinkError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetOutboundExternalLinkRequest,
   output: GetOutboundExternalLinkResponse,
@@ -2819,7 +2818,7 @@ export const getRequesterGateway: API.OperationMethod<
   GetRequesterGatewayRequest,
   GetRequesterGatewayResponse,
   GetRequesterGatewayError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetRequesterGatewayRequest,
   output: GetRequesterGatewayResponse,
@@ -2849,7 +2848,7 @@ export const getResponderGateway: API.OperationMethod<
   GetResponderGatewayRequest,
   GetResponderGatewayResponse,
   GetResponderGatewayError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetResponderGatewayRequest,
   output: GetResponderGatewayResponse,
@@ -2879,7 +2878,7 @@ export const listCertificateAssociations: API.PaginatedOperationMethod<
   ListCertificateAssociationsRequest,
   ListCertificateAssociationsResponse,
   ListCertificateAssociationsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   CertificateAssociationSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCertificateAssociationsRequest,
@@ -2916,7 +2915,7 @@ export const listLinkRoutingRules: API.PaginatedOperationMethod<
   ListLinkRoutingRulesRequest,
   ListLinkRoutingRulesResponse,
   ListLinkRoutingRulesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   LinkRoutingRuleSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLinkRoutingRulesRequest,
@@ -2955,7 +2954,7 @@ export const listLinks: API.PaginatedOperationMethod<
   ListLinksRequest,
   ListLinksResponse,
   ListLinksError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ListLinksResponseStructure
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLinksRequest,
@@ -2989,7 +2988,7 @@ export const listRequesterGateways: API.PaginatedOperationMethod<
   ListRequesterGatewaysRequest,
   ListRequesterGatewaysResponse,
   ListRequesterGatewaysError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   GatewayId
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRequesterGatewaysRequest,
@@ -3017,7 +3016,7 @@ export const listResponderGateways: API.PaginatedOperationMethod<
   ListResponderGatewaysRequest,
   ListResponderGatewaysResponse,
   ListResponderGatewaysError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   GatewayId
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListResponderGatewaysRequest,
@@ -3048,7 +3047,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -3081,7 +3080,7 @@ export const rejectLink: API.OperationMethod<
   RejectLinkRequest,
   RejectLinkResponse,
   RejectLinkError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: RejectLinkRequest,
   output: RejectLinkResponse,
@@ -3112,7 +3111,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -3142,7 +3141,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -3175,7 +3174,7 @@ export const updateLink: API.OperationMethod<
   UpdateLinkRequest,
   UpdateLinkResponse,
   UpdateLinkError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateLinkRequest,
   output: UpdateLinkResponse,
@@ -3208,7 +3207,7 @@ export const updateLinkModuleFlow: API.OperationMethod<
   UpdateLinkModuleFlowRequest,
   UpdateLinkModuleFlowResponse,
   UpdateLinkModuleFlowError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateLinkModuleFlowRequest,
   output: UpdateLinkModuleFlowResponse,
@@ -3241,7 +3240,7 @@ export const updateLinkRoutingRule: API.OperationMethod<
   UpdateLinkRoutingRuleRequest,
   UpdateLinkRoutingRuleResponse,
   UpdateLinkRoutingRuleError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateLinkRoutingRuleRequest,
   output: UpdateLinkRoutingRuleResponse,
@@ -3273,7 +3272,7 @@ export const updateRequesterGateway: API.OperationMethod<
   UpdateRequesterGatewayRequest,
   UpdateRequesterGatewayResponse,
   UpdateRequesterGatewayError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateRequesterGatewayRequest,
   output: UpdateRequesterGatewayResponse,
@@ -3305,7 +3304,7 @@ export const updateResponderGateway: API.OperationMethod<
   UpdateResponderGatewayRequest,
   UpdateResponderGatewayResponse,
   UpdateResponderGatewayError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateResponderGatewayRequest,
   output: UpdateResponderGatewayResponse,

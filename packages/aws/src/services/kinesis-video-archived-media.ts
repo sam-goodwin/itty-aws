@@ -7,7 +7,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 const svc = T.AwsApiService({
   sdkId: "Kinesis Video Archived Media",
   serviceShapeName: "AWSAcuityReader",
@@ -656,7 +655,7 @@ export const getClip: API.OperationMethod<
   GetClipInput,
   GetClipOutput,
   GetClipError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetClipInput,
   output: GetClipOutput,
@@ -815,7 +814,7 @@ export const getDASHStreamingSessionURL: API.OperationMethod<
   GetDASHStreamingSessionURLInput,
   GetDASHStreamingSessionURLOutput,
   GetDASHStreamingSessionURLError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetDASHStreamingSessionURLInput,
   output: GetDASHStreamingSessionURLOutput,
@@ -1013,7 +1012,7 @@ export const getHLSStreamingSessionURL: API.OperationMethod<
   GetHLSStreamingSessionURLInput,
   GetHLSStreamingSessionURLOutput,
   GetHLSStreamingSessionURLError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetHLSStreamingSessionURLInput,
   output: GetHLSStreamingSessionURLOutput,
@@ -1047,7 +1046,7 @@ export const getImages: API.PaginatedOperationMethod<
   GetImagesInput,
   GetImagesOutput,
   GetImagesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   Image
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetImagesInput,
@@ -1110,7 +1109,7 @@ export const getMediaForFragmentList: API.OperationMethod<
   GetMediaForFragmentListInput,
   GetMediaForFragmentListOutput,
   GetMediaForFragmentListError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetMediaForFragmentListInput,
   output: GetMediaForFragmentListOutput,
@@ -1167,7 +1166,7 @@ export const listFragments: API.PaginatedOperationMethod<
   ListFragmentsInput,
   ListFragmentsOutput,
   ListFragmentsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   Fragment
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFragmentsInput,

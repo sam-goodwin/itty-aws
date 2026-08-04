@@ -8,7 +8,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 import { SensitiveString, SensitiveBlob } from "../sensitive.ts";
 const svc = T.AwsApiService({
   sdkId: "Bedrock Agent",
@@ -8451,7 +8450,7 @@ export const associateAgentCollaborator: API.OperationMethod<
   AssociateAgentCollaboratorRequest,
   AssociateAgentCollaboratorResponse,
   AssociateAgentCollaboratorError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: AssociateAgentCollaboratorRequest,
   output: AssociateAgentCollaboratorResponse,
@@ -8485,7 +8484,7 @@ export const associateAgentKnowledgeBase: API.OperationMethod<
   AssociateAgentKnowledgeBaseRequest,
   AssociateAgentKnowledgeBaseResponse,
   AssociateAgentKnowledgeBaseError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: AssociateAgentKnowledgeBaseRequest,
   output: AssociateAgentKnowledgeBaseResponse,
@@ -8534,7 +8533,7 @@ export const createAgent: API.OperationMethod<
   CreateAgentRequest,
   CreateAgentResponse,
   CreateAgentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateAgentRequest,
   output: CreateAgentResponse,
@@ -8573,7 +8572,7 @@ export const createAgentActionGroup: API.OperationMethod<
   CreateAgentActionGroupRequest,
   CreateAgentActionGroupResponse,
   CreateAgentActionGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateAgentActionGroupRequest,
   output: CreateAgentActionGroupResponse,
@@ -8607,7 +8606,7 @@ export const createAgentAlias: API.OperationMethod<
   CreateAgentAliasRequest,
   CreateAgentAliasResponse,
   CreateAgentAliasError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateAgentAliasRequest,
   output: CreateAgentAliasResponse,
@@ -8643,7 +8642,7 @@ export const createDataSource: API.OperationMethod<
   CreateDataSourceRequest,
   CreateDataSourceResponse,
   CreateDataSourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateDataSourceRequest,
   output: CreateDataSourceResponse,
@@ -8676,7 +8675,7 @@ export const createFlow: API.OperationMethod<
   CreateFlowRequest,
   CreateFlowResponse,
   CreateFlowError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateFlowRequest,
   output: CreateFlowResponse,
@@ -8709,7 +8708,7 @@ export const createFlowAlias: API.OperationMethod<
   CreateFlowAliasRequest,
   CreateFlowAliasResponse,
   CreateFlowAliasError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateFlowAliasRequest,
   output: CreateFlowAliasResponse,
@@ -8743,7 +8742,7 @@ export const createFlowVersion: API.OperationMethod<
   CreateFlowVersionRequest,
   CreateFlowVersionResponse,
   CreateFlowVersionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateFlowVersionRequest,
   output: CreateFlowVersionResponse,
@@ -8796,7 +8795,7 @@ export const createKnowledgeBase: API.OperationMethod<
   CreateKnowledgeBaseRequest,
   CreateKnowledgeBaseResponse,
   CreateKnowledgeBaseError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateKnowledgeBaseRequest,
   output: CreateKnowledgeBaseResponse,
@@ -8828,7 +8827,7 @@ export const createPrompt: API.OperationMethod<
   CreatePromptRequest,
   CreatePromptResponse,
   CreatePromptError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreatePromptRequest,
   output: CreatePromptResponse,
@@ -8861,7 +8860,7 @@ export const createPromptVersion: API.OperationMethod<
   CreatePromptVersionRequest,
   CreatePromptVersionResponse,
   CreatePromptVersionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreatePromptVersionRequest,
   output: CreatePromptVersionResponse,
@@ -8894,7 +8893,7 @@ export const deleteAgent: API.OperationMethod<
   DeleteAgentRequest,
   DeleteAgentResponse,
   DeleteAgentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteAgentRequest,
   output: DeleteAgentResponse,
@@ -8926,7 +8925,7 @@ export const deleteAgentActionGroup: API.OperationMethod<
   DeleteAgentActionGroupRequest,
   DeleteAgentActionGroupResponse,
   DeleteAgentActionGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteAgentActionGroupRequest,
   output: DeleteAgentActionGroupResponse,
@@ -8957,7 +8956,7 @@ export const deleteAgentAlias: API.OperationMethod<
   DeleteAgentAliasRequest,
   DeleteAgentAliasResponse,
   DeleteAgentAliasError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteAgentAliasRequest,
   output: DeleteAgentAliasResponse,
@@ -8988,7 +8987,7 @@ export const deleteAgentVersion: API.OperationMethod<
   DeleteAgentVersionRequest,
   DeleteAgentVersionResponse,
   DeleteAgentVersionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteAgentVersionRequest,
   output: DeleteAgentVersionResponse,
@@ -9020,7 +9019,7 @@ export const deleteDataSource: API.OperationMethod<
   DeleteDataSourceRequest,
   DeleteDataSourceResponse,
   DeleteDataSourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteDataSourceRequest,
   output: DeleteDataSourceResponse,
@@ -9052,7 +9051,7 @@ export const deleteFlow: API.OperationMethod<
   DeleteFlowRequest,
   DeleteFlowResponse,
   DeleteFlowError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteFlowRequest,
   output: DeleteFlowResponse,
@@ -9084,7 +9083,7 @@ export const deleteFlowAlias: API.OperationMethod<
   DeleteFlowAliasRequest,
   DeleteFlowAliasResponse,
   DeleteFlowAliasError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteFlowAliasRequest,
   output: DeleteFlowAliasResponse,
@@ -9116,7 +9115,7 @@ export const deleteFlowVersion: API.OperationMethod<
   DeleteFlowVersionRequest,
   DeleteFlowVersionResponse,
   DeleteFlowVersionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteFlowVersionRequest,
   output: DeleteFlowVersionResponse,
@@ -9148,7 +9147,7 @@ export const deleteKnowledgeBase: API.OperationMethod<
   DeleteKnowledgeBaseRequest,
   DeleteKnowledgeBaseResponse,
   DeleteKnowledgeBaseError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteKnowledgeBaseRequest,
   output: DeleteKnowledgeBaseResponse,
@@ -9180,7 +9179,7 @@ export const deleteKnowledgeBaseDocuments: API.OperationMethod<
   DeleteKnowledgeBaseDocumentsRequest,
   DeleteKnowledgeBaseDocumentsResponse,
   DeleteKnowledgeBaseDocumentsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteKnowledgeBaseDocumentsRequest,
   output: DeleteKnowledgeBaseDocumentsResponse,
@@ -9212,7 +9211,7 @@ export const deletePrompt: API.OperationMethod<
   DeletePromptRequest,
   DeletePromptResponse,
   DeletePromptError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeletePromptRequest,
   output: DeletePromptResponse,
@@ -9244,7 +9243,7 @@ export const deleteResourcePolicy: API.OperationMethod<
   DeleteResourcePolicyRequest,
   DeleteResourcePolicyResponse,
   DeleteResourcePolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteResourcePolicyRequest,
   output: DeleteResourcePolicyResponse,
@@ -9276,7 +9275,7 @@ export const disassociateAgentCollaborator: API.OperationMethod<
   DisassociateAgentCollaboratorRequest,
   DisassociateAgentCollaboratorResponse,
   DisassociateAgentCollaboratorError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DisassociateAgentCollaboratorRequest,
   output: DisassociateAgentCollaboratorResponse,
@@ -9308,7 +9307,7 @@ export const disassociateAgentKnowledgeBase: API.OperationMethod<
   DisassociateAgentKnowledgeBaseRequest,
   DisassociateAgentKnowledgeBaseResponse,
   DisassociateAgentKnowledgeBaseError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DisassociateAgentKnowledgeBaseRequest,
   output: DisassociateAgentKnowledgeBaseResponse,
@@ -9339,7 +9338,7 @@ export const getAgent: API.OperationMethod<
   GetAgentRequest,
   GetAgentResponse,
   GetAgentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetAgentRequest,
   output: GetAgentResponse,
@@ -9369,7 +9368,7 @@ export const getAgentActionGroup: API.OperationMethod<
   GetAgentActionGroupRequest,
   GetAgentActionGroupResponse,
   GetAgentActionGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetAgentActionGroupRequest,
   output: GetAgentActionGroupResponse,
@@ -9399,7 +9398,7 @@ export const getAgentAlias: API.OperationMethod<
   GetAgentAliasRequest,
   GetAgentAliasResponse,
   GetAgentAliasError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetAgentAliasRequest,
   output: GetAgentAliasResponse,
@@ -9429,7 +9428,7 @@ export const getAgentCollaborator: API.OperationMethod<
   GetAgentCollaboratorRequest,
   GetAgentCollaboratorResponse,
   GetAgentCollaboratorError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetAgentCollaboratorRequest,
   output: GetAgentCollaboratorResponse,
@@ -9459,7 +9458,7 @@ export const getAgentKnowledgeBase: API.OperationMethod<
   GetAgentKnowledgeBaseRequest,
   GetAgentKnowledgeBaseResponse,
   GetAgentKnowledgeBaseError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetAgentKnowledgeBaseRequest,
   output: GetAgentKnowledgeBaseResponse,
@@ -9489,7 +9488,7 @@ export const getAgentVersion: API.OperationMethod<
   GetAgentVersionRequest,
   GetAgentVersionResponse,
   GetAgentVersionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetAgentVersionRequest,
   output: GetAgentVersionResponse,
@@ -9519,7 +9518,7 @@ export const getDataSource: API.OperationMethod<
   GetDataSourceRequest,
   GetDataSourceResponse,
   GetDataSourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetDataSourceRequest,
   output: GetDataSourceResponse,
@@ -9549,7 +9548,7 @@ export const getFlow: API.OperationMethod<
   GetFlowRequest,
   GetFlowResponse,
   GetFlowError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetFlowRequest,
   output: GetFlowResponse,
@@ -9579,7 +9578,7 @@ export const getFlowAlias: API.OperationMethod<
   GetFlowAliasRequest,
   GetFlowAliasResponse,
   GetFlowAliasError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetFlowAliasRequest,
   output: GetFlowAliasResponse,
@@ -9609,7 +9608,7 @@ export const getFlowVersion: API.OperationMethod<
   GetFlowVersionRequest,
   GetFlowVersionResponse,
   GetFlowVersionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetFlowVersionRequest,
   output: GetFlowVersionResponse,
@@ -9639,7 +9638,7 @@ export const getIngestionJob: API.OperationMethod<
   GetIngestionJobRequest,
   GetIngestionJobResponse,
   GetIngestionJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetIngestionJobRequest,
   output: GetIngestionJobResponse,
@@ -9669,7 +9668,7 @@ export const getKnowledgeBase: API.OperationMethod<
   GetKnowledgeBaseRequest,
   GetKnowledgeBaseResponse,
   GetKnowledgeBaseError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetKnowledgeBaseRequest,
   output: GetKnowledgeBaseResponse,
@@ -9700,7 +9699,7 @@ export const getKnowledgeBaseDocuments: API.OperationMethod<
   GetKnowledgeBaseDocumentsRequest,
   GetKnowledgeBaseDocumentsResponse,
   GetKnowledgeBaseDocumentsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetKnowledgeBaseDocumentsRequest,
   output: GetKnowledgeBaseDocumentsResponse,
@@ -9731,7 +9730,7 @@ export const getPrompt: API.OperationMethod<
   GetPromptRequest,
   GetPromptResponse,
   GetPromptError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetPromptRequest,
   output: GetPromptResponse,
@@ -9761,7 +9760,7 @@ export const getResourcePolicy: API.OperationMethod<
   GetResourcePolicyRequest,
   GetResourcePolicyResponse,
   GetResourcePolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetResourcePolicyRequest,
   output: GetResourcePolicyResponse,
@@ -9792,7 +9791,7 @@ export const ingestKnowledgeBaseDocuments: API.OperationMethod<
   IngestKnowledgeBaseDocumentsRequest,
   IngestKnowledgeBaseDocumentsResponse,
   IngestKnowledgeBaseDocumentsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: IngestKnowledgeBaseDocumentsRequest,
   output: IngestKnowledgeBaseDocumentsResponse,
@@ -9823,7 +9822,7 @@ export const listAgentActionGroups: API.PaginatedOperationMethod<
   ListAgentActionGroupsRequest,
   ListAgentActionGroupsResponse,
   ListAgentActionGroupsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ActionGroupSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAgentActionGroupsRequest,
@@ -9860,7 +9859,7 @@ export const listAgentAliases: API.PaginatedOperationMethod<
   ListAgentAliasesRequest,
   ListAgentAliasesResponse,
   ListAgentAliasesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   AgentAliasSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAgentAliasesRequest,
@@ -9897,7 +9896,7 @@ export const listAgentCollaborators: API.PaginatedOperationMethod<
   ListAgentCollaboratorsRequest,
   ListAgentCollaboratorsResponse,
   ListAgentCollaboratorsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   AgentCollaboratorSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAgentCollaboratorsRequest,
@@ -9934,7 +9933,7 @@ export const listAgentKnowledgeBases: API.PaginatedOperationMethod<
   ListAgentKnowledgeBasesRequest,
   ListAgentKnowledgeBasesResponse,
   ListAgentKnowledgeBasesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   AgentKnowledgeBaseSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAgentKnowledgeBasesRequest,
@@ -9970,7 +9969,7 @@ export const listAgents: API.PaginatedOperationMethod<
   ListAgentsRequest,
   ListAgentsResponse,
   ListAgentsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   AgentSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAgentsRequest,
@@ -10006,7 +10005,7 @@ export const listAgentVersions: API.PaginatedOperationMethod<
   ListAgentVersionsRequest,
   ListAgentVersionsResponse,
   ListAgentVersionsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   AgentVersionSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAgentVersionsRequest,
@@ -10043,7 +10042,7 @@ export const listDataSources: API.PaginatedOperationMethod<
   ListDataSourcesRequest,
   ListDataSourcesResponse,
   ListDataSourcesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   DataSourceSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDataSourcesRequest,
@@ -10080,7 +10079,7 @@ export const listFlowAliases: API.PaginatedOperationMethod<
   ListFlowAliasesRequest,
   ListFlowAliasesResponse,
   ListFlowAliasesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   FlowAliasSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFlowAliasesRequest,
@@ -10116,7 +10115,7 @@ export const listFlows: API.PaginatedOperationMethod<
   ListFlowsRequest,
   ListFlowsResponse,
   ListFlowsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   FlowSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFlowsRequest,
@@ -10152,7 +10151,7 @@ export const listFlowVersions: API.PaginatedOperationMethod<
   ListFlowVersionsRequest,
   ListFlowVersionsResponse,
   ListFlowVersionsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   FlowVersionSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFlowVersionsRequest,
@@ -10189,7 +10188,7 @@ export const listIngestionJobs: API.PaginatedOperationMethod<
   ListIngestionJobsRequest,
   ListIngestionJobsResponse,
   ListIngestionJobsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   IngestionJobSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListIngestionJobsRequest,
@@ -10227,7 +10226,7 @@ export const listKnowledgeBaseDocuments: API.PaginatedOperationMethod<
   ListKnowledgeBaseDocumentsRequest,
   ListKnowledgeBaseDocumentsResponse,
   ListKnowledgeBaseDocumentsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   KnowledgeBaseDocumentDetail
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListKnowledgeBaseDocumentsRequest,
@@ -10264,7 +10263,7 @@ export const listKnowledgeBases: API.PaginatedOperationMethod<
   ListKnowledgeBasesRequest,
   ListKnowledgeBasesResponse,
   ListKnowledgeBasesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   KnowledgeBaseSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListKnowledgeBasesRequest,
@@ -10300,7 +10299,7 @@ export const listPrompts: API.PaginatedOperationMethod<
   ListPromptsRequest,
   ListPromptsResponse,
   ListPromptsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   PromptSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPromptsRequest,
@@ -10337,7 +10336,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -10369,7 +10368,7 @@ export const prepareAgent: API.OperationMethod<
   PrepareAgentRequest,
   PrepareAgentResponse,
   PrepareAgentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PrepareAgentRequest,
   output: PrepareAgentResponse,
@@ -10403,7 +10402,7 @@ export const prepareFlow: API.OperationMethod<
   PrepareFlowRequest,
   PrepareFlowResponse,
   PrepareFlowError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PrepareFlowRequest,
   output: PrepareFlowResponse,
@@ -10436,7 +10435,7 @@ export const putResourcePolicy: API.OperationMethod<
   PutResourcePolicyRequest,
   PutResourcePolicyResponse,
   PutResourcePolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PutResourcePolicyRequest,
   output: PutResourcePolicyResponse,
@@ -10469,7 +10468,7 @@ export const startIngestionJob: API.OperationMethod<
   StartIngestionJobRequest,
   StartIngestionJobResponse,
   StartIngestionJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartIngestionJobRequest,
   output: StartIngestionJobResponse,
@@ -10502,7 +10501,7 @@ export const stopIngestionJob: API.OperationMethod<
   StopIngestionJobRequest,
   StopIngestionJobResponse,
   StopIngestionJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StopIngestionJobRequest,
   output: StopIngestionJobResponse,
@@ -10534,7 +10533,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -10565,7 +10564,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -10597,7 +10596,7 @@ export const updateAgent: API.OperationMethod<
   UpdateAgentRequest,
   UpdateAgentResponse,
   UpdateAgentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateAgentRequest,
   output: UpdateAgentResponse,
@@ -10631,7 +10630,7 @@ export const updateAgentActionGroup: API.OperationMethod<
   UpdateAgentActionGroupRequest,
   UpdateAgentActionGroupResponse,
   UpdateAgentActionGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateAgentActionGroupRequest,
   output: UpdateAgentActionGroupResponse,
@@ -10665,7 +10664,7 @@ export const updateAgentAlias: API.OperationMethod<
   UpdateAgentAliasRequest,
   UpdateAgentAliasResponse,
   UpdateAgentAliasError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateAgentAliasRequest,
   output: UpdateAgentAliasResponse,
@@ -10699,7 +10698,7 @@ export const updateAgentCollaborator: API.OperationMethod<
   UpdateAgentCollaboratorRequest,
   UpdateAgentCollaboratorResponse,
   UpdateAgentCollaboratorError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateAgentCollaboratorRequest,
   output: UpdateAgentCollaboratorResponse,
@@ -10732,7 +10731,7 @@ export const updateAgentKnowledgeBase: API.OperationMethod<
   UpdateAgentKnowledgeBaseRequest,
   UpdateAgentKnowledgeBaseResponse,
   UpdateAgentKnowledgeBaseError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateAgentKnowledgeBaseRequest,
   output: UpdateAgentKnowledgeBaseResponse,
@@ -10766,7 +10765,7 @@ export const updateDataSource: API.OperationMethod<
   UpdateDataSourceRequest,
   UpdateDataSourceResponse,
   UpdateDataSourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateDataSourceRequest,
   output: UpdateDataSourceResponse,
@@ -10799,7 +10798,7 @@ export const updateFlow: API.OperationMethod<
   UpdateFlowRequest,
   UpdateFlowResponse,
   UpdateFlowError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateFlowRequest,
   output: UpdateFlowResponse,
@@ -10833,7 +10832,7 @@ export const updateFlowAlias: API.OperationMethod<
   UpdateFlowAliasRequest,
   UpdateFlowAliasResponse,
   UpdateFlowAliasError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateFlowAliasRequest,
   output: UpdateFlowAliasResponse,
@@ -10876,7 +10875,7 @@ export const updateKnowledgeBase: API.OperationMethod<
   UpdateKnowledgeBaseRequest,
   UpdateKnowledgeBaseResponse,
   UpdateKnowledgeBaseError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateKnowledgeBaseRequest,
   output: UpdateKnowledgeBaseResponse,
@@ -10909,7 +10908,7 @@ export const updatePrompt: API.OperationMethod<
   UpdatePromptRequest,
   UpdatePromptResponse,
   UpdatePromptError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdatePromptRequest,
   output: UpdatePromptResponse,
@@ -10940,7 +10939,7 @@ export const validateFlowDefinition: API.OperationMethod<
   ValidateFlowDefinitionRequest,
   ValidateFlowDefinitionResponse,
   ValidateFlowDefinitionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ValidateFlowDefinitionRequest,
   output: ValidateFlowDefinitionResponse,

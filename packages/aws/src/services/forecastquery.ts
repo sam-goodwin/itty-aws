@@ -7,7 +7,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 const svc = T.AwsApiService({
   sdkId: "forecastquery",
   serviceShapeName: "AmazonForecastRuntime",
@@ -229,7 +228,7 @@ export const queryForecast: API.OperationMethod<
   QueryForecastRequest,
   QueryForecastResponse,
   QueryForecastError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: QueryForecastRequest,
   output: QueryForecastResponse,
@@ -259,7 +258,7 @@ export const queryWhatIfForecast: API.OperationMethod<
   QueryWhatIfForecastRequest,
   QueryWhatIfForecastResponse,
   QueryWhatIfForecastError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: QueryWhatIfForecastRequest,
   output: QueryWhatIfForecastResponse,

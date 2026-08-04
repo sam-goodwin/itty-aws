@@ -6,7 +6,6 @@ import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region as Rgn } from "../region.ts";
 const svc = T.AwsApiService({
   sdkId: "Resource Groups Tagging API",
   serviceShapeName: "ResourceGroupsTaggingAPI_20170126",
@@ -592,7 +591,7 @@ export const describeReportCreation: API.OperationMethod<
   DescribeReportCreationInput,
   DescribeReportCreationOutput,
   DescribeReportCreationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeReportCreationInput,
   output: DescribeReportCreationOutput,
@@ -634,7 +633,7 @@ export const getComplianceSummary: API.PaginatedOperationMethod<
   GetComplianceSummaryInput,
   GetComplianceSummaryOutput,
   GetComplianceSummaryError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   Summary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetComplianceSummaryInput,
@@ -693,7 +692,7 @@ export const getResources: API.PaginatedOperationMethod<
   GetResourcesInput,
   GetResourcesOutput,
   GetResourcesError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ResourceTagMapping
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetResourcesInput,
@@ -736,7 +735,7 @@ export const getTagKeys: API.PaginatedOperationMethod<
   GetTagKeysInput,
   GetTagKeysOutput,
   GetTagKeysError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   TagKey
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetTagKeysInput,
@@ -778,7 +777,7 @@ export const getTagValues: API.PaginatedOperationMethod<
   GetTagValuesInput,
   GetTagValuesOutput,
   GetTagValuesError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   TagValue
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetTagValuesInput,
@@ -812,7 +811,7 @@ export const listRequiredTags: API.PaginatedOperationMethod<
   ListRequiredTagsInput,
   ListRequiredTagsOutput,
   ListRequiredTagsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   RequiredTag
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRequiredTagsInput,
@@ -868,7 +867,7 @@ export const startReportCreation: API.OperationMethod<
   StartReportCreationInput,
   StartReportCreationOutput,
   StartReportCreationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartReportCreationInput,
   output: StartReportCreationOutput,
@@ -945,7 +944,7 @@ export const tagResources: API.OperationMethod<
   TagResourcesInput,
   TagResourcesOutput,
   TagResourcesError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: TagResourcesInput,
   output: TagResourcesOutput,
@@ -1000,7 +999,7 @@ export const untagResources: API.OperationMethod<
   UntagResourcesInput,
   UntagResourcesOutput,
   UntagResourcesError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UntagResourcesInput,
   output: UntagResourcesOutput,

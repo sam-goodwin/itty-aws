@@ -8,7 +8,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 import { SensitiveString } from "../sensitive.ts";
 const svc = T.AwsApiService({
   sdkId: "SupplyChain",
@@ -1854,7 +1853,7 @@ export const createBillOfMaterialsImportJob: API.OperationMethod<
   CreateBillOfMaterialsImportJobRequest,
   CreateBillOfMaterialsImportJobResponse,
   CreateBillOfMaterialsImportJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateBillOfMaterialsImportJobRequest,
   output: CreateBillOfMaterialsImportJobResponse,
@@ -1886,7 +1885,7 @@ export const createDataIntegrationFlow: API.OperationMethod<
   CreateDataIntegrationFlowRequest,
   CreateDataIntegrationFlowResponse,
   CreateDataIntegrationFlowError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateDataIntegrationFlowRequest,
   output: CreateDataIntegrationFlowResponse,
@@ -1919,7 +1918,7 @@ export const createDataLakeDataset: API.OperationMethod<
   CreateDataLakeDatasetRequest,
   CreateDataLakeDatasetResponse,
   CreateDataLakeDatasetError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateDataLakeDatasetRequest,
   output: CreateDataLakeDatasetResponse,
@@ -1952,7 +1951,7 @@ export const createDataLakeNamespace: API.OperationMethod<
   CreateDataLakeNamespaceRequest,
   CreateDataLakeNamespaceResponse,
   CreateDataLakeNamespaceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateDataLakeNamespaceRequest,
   output: CreateDataLakeNamespaceResponse,
@@ -1986,7 +1985,7 @@ export const createInstance: API.OperationMethod<
   CreateInstanceRequest,
   CreateInstanceResponse,
   CreateInstanceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateInstanceRequest,
   output: CreateInstanceResponse,
@@ -2016,7 +2015,7 @@ export const deleteDataIntegrationFlow: API.OperationMethod<
   DeleteDataIntegrationFlowRequest,
   DeleteDataIntegrationFlowResponse,
   DeleteDataIntegrationFlowError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteDataIntegrationFlowRequest,
   output: DeleteDataIntegrationFlowResponse,
@@ -2045,7 +2044,7 @@ export const deleteDataLakeDataset: API.OperationMethod<
   DeleteDataLakeDatasetRequest,
   DeleteDataLakeDatasetResponse,
   DeleteDataLakeDatasetError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteDataLakeDatasetRequest,
   output: DeleteDataLakeDatasetResponse,
@@ -2075,7 +2074,7 @@ export const deleteDataLakeNamespace: API.OperationMethod<
   DeleteDataLakeNamespaceRequest,
   DeleteDataLakeNamespaceResponse,
   DeleteDataLakeNamespaceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteDataLakeNamespaceRequest,
   output: DeleteDataLakeNamespaceResponse,
@@ -2107,7 +2106,7 @@ export const deleteInstance: API.OperationMethod<
   DeleteInstanceRequest,
   DeleteInstanceResponse,
   DeleteInstanceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteInstanceRequest,
   output: DeleteInstanceResponse,
@@ -2137,7 +2136,7 @@ export const getBillOfMaterialsImportJob: API.OperationMethod<
   GetBillOfMaterialsImportJobRequest,
   GetBillOfMaterialsImportJobResponse,
   GetBillOfMaterialsImportJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetBillOfMaterialsImportJobRequest,
   output: GetBillOfMaterialsImportJobResponse,
@@ -2167,7 +2166,7 @@ export const getDataIntegrationEvent: API.OperationMethod<
   GetDataIntegrationEventRequest,
   GetDataIntegrationEventResponse,
   GetDataIntegrationEventError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetDataIntegrationEventRequest,
   output: GetDataIntegrationEventResponse,
@@ -2197,7 +2196,7 @@ export const getDataIntegrationFlow: API.OperationMethod<
   GetDataIntegrationFlowRequest,
   GetDataIntegrationFlowResponse,
   GetDataIntegrationFlowError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetDataIntegrationFlowRequest,
   output: GetDataIntegrationFlowResponse,
@@ -2227,7 +2226,7 @@ export const getDataIntegrationFlowExecution: API.OperationMethod<
   GetDataIntegrationFlowExecutionRequest,
   GetDataIntegrationFlowExecutionResponse,
   GetDataIntegrationFlowExecutionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetDataIntegrationFlowExecutionRequest,
   output: GetDataIntegrationFlowExecutionResponse,
@@ -2257,7 +2256,7 @@ export const getDataLakeDataset: API.OperationMethod<
   GetDataLakeDatasetRequest,
   GetDataLakeDatasetResponse,
   GetDataLakeDatasetError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetDataLakeDatasetRequest,
   output: GetDataLakeDatasetResponse,
@@ -2287,7 +2286,7 @@ export const getDataLakeNamespace: API.OperationMethod<
   GetDataLakeNamespaceRequest,
   GetDataLakeNamespaceResponse,
   GetDataLakeNamespaceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetDataLakeNamespaceRequest,
   output: GetDataLakeNamespaceResponse,
@@ -2317,7 +2316,7 @@ export const getInstance: API.OperationMethod<
   GetInstanceRequest,
   GetInstanceResponse,
   GetInstanceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetInstanceRequest,
   output: GetInstanceResponse,
@@ -2346,7 +2345,7 @@ export const listDataIntegrationEvents: API.PaginatedOperationMethod<
   ListDataIntegrationEventsRequest,
   ListDataIntegrationEventsResponse,
   ListDataIntegrationEventsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   DataIntegrationEvent
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDataIntegrationEventsRequest,
@@ -2382,7 +2381,7 @@ export const listDataIntegrationFlowExecutions: API.PaginatedOperationMethod<
   ListDataIntegrationFlowExecutionsRequest,
   ListDataIntegrationFlowExecutionsResponse,
   ListDataIntegrationFlowExecutionsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   DataIntegrationFlowExecution
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDataIntegrationFlowExecutionsRequest,
@@ -2418,7 +2417,7 @@ export const listDataIntegrationFlows: API.PaginatedOperationMethod<
   ListDataIntegrationFlowsRequest,
   ListDataIntegrationFlowsResponse,
   ListDataIntegrationFlowsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   DataIntegrationFlow
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDataIntegrationFlowsRequest,
@@ -2454,7 +2453,7 @@ export const listDataLakeDatasets: API.PaginatedOperationMethod<
   ListDataLakeDatasetsRequest,
   ListDataLakeDatasetsResponse,
   ListDataLakeDatasetsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   DataLakeDataset
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDataLakeDatasetsRequest,
@@ -2490,7 +2489,7 @@ export const listDataLakeNamespaces: API.PaginatedOperationMethod<
   ListDataLakeNamespacesRequest,
   ListDataLakeNamespacesResponse,
   ListDataLakeNamespacesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   DataLakeNamespace
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDataLakeNamespacesRequest,
@@ -2525,7 +2524,7 @@ export const listInstances: API.PaginatedOperationMethod<
   ListInstancesRequest,
   ListInstancesResponse,
   ListInstancesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   Instance
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListInstancesRequest,
@@ -2561,7 +2560,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -2593,7 +2592,7 @@ export const sendDataIntegrationEvent: API.OperationMethod<
   SendDataIntegrationEventRequest,
   SendDataIntegrationEventResponse,
   SendDataIntegrationEventError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: SendDataIntegrationEventRequest,
   output: SendDataIntegrationEventResponse,
@@ -2625,7 +2624,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -2655,7 +2654,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -2685,7 +2684,7 @@ export const updateDataIntegrationFlow: API.OperationMethod<
   UpdateDataIntegrationFlowRequest,
   UpdateDataIntegrationFlowResponse,
   UpdateDataIntegrationFlowError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateDataIntegrationFlowRequest,
   output: UpdateDataIntegrationFlowResponse,
@@ -2715,7 +2714,7 @@ export const updateDataLakeDataset: API.OperationMethod<
   UpdateDataLakeDatasetRequest,
   UpdateDataLakeDatasetResponse,
   UpdateDataLakeDatasetError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateDataLakeDatasetRequest,
   output: UpdateDataLakeDatasetResponse,
@@ -2745,7 +2744,7 @@ export const updateDataLakeNamespace: API.OperationMethod<
   UpdateDataLakeNamespaceRequest,
   UpdateDataLakeNamespaceResponse,
   UpdateDataLakeNamespaceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateDataLakeNamespaceRequest,
   output: UpdateDataLakeNamespaceResponse,
@@ -2775,7 +2774,7 @@ export const updateInstance: API.OperationMethod<
   UpdateInstanceRequest,
   UpdateInstanceResponse,
   UpdateInstanceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateInstanceRequest,
   output: UpdateInstanceResponse,

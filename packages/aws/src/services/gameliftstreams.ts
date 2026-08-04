@@ -8,7 +8,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 import { SensitiveString } from "../sensitive.ts";
 const svc = T.AwsApiService({
   sdkId: "GameLiftStreams",
@@ -1513,7 +1512,7 @@ export const addStreamGroupLocations: API.OperationMethod<
   AddStreamGroupLocationsInput,
   AddStreamGroupLocationsOutput,
   AddStreamGroupLocationsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: AddStreamGroupLocationsInput,
   output: AddStreamGroupLocationsOutput,
@@ -1547,7 +1546,7 @@ export const associateApplications: API.OperationMethod<
   AssociateApplicationsInput,
   AssociateApplicationsOutput,
   AssociateApplicationsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: AssociateApplicationsInput,
   output: AssociateApplicationsOutput,
@@ -1585,7 +1584,7 @@ export const createApplication: API.OperationMethod<
   CreateApplicationInput,
   CreateApplicationOutput,
   CreateApplicationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateApplicationInput,
   output: CreateApplicationOutput,
@@ -1634,7 +1633,7 @@ export const createStreamGroup: API.OperationMethod<
   CreateStreamGroupInput,
   CreateStreamGroupOutput,
   CreateStreamGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateStreamGroupInput,
   output: CreateStreamGroupOutput,
@@ -1693,7 +1692,7 @@ export const createStreamSessionConnection: API.OperationMethod<
   CreateStreamSessionConnectionInput,
   CreateStreamSessionConnectionOutput,
   CreateStreamSessionConnectionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateStreamSessionConnectionInput,
   output: CreateStreamSessionConnectionOutput,
@@ -1737,7 +1736,7 @@ export const deleteApplication: API.OperationMethod<
   DeleteApplicationInput,
   DeleteApplicationResponse,
   DeleteApplicationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteApplicationInput,
   output: DeleteApplicationResponse,
@@ -1769,7 +1768,7 @@ export const deleteStreamGroup: API.OperationMethod<
   DeleteStreamGroupInput,
   DeleteStreamGroupResponse,
   DeleteStreamGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteStreamGroupInput,
   output: DeleteStreamGroupResponse,
@@ -1802,7 +1801,7 @@ export const disassociateApplications: API.OperationMethod<
   DisassociateApplicationsInput,
   DisassociateApplicationsOutput,
   DisassociateApplicationsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DisassociateApplicationsInput,
   output: DisassociateApplicationsOutput,
@@ -1846,7 +1845,7 @@ export const exportStreamSessionFiles: API.OperationMethod<
   ExportStreamSessionFilesInput,
   ExportStreamSessionFilesOutput,
   ExportStreamSessionFilesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ExportStreamSessionFilesInput,
   output: ExportStreamSessionFilesOutput,
@@ -1876,7 +1875,7 @@ export const getApplication: API.OperationMethod<
   GetApplicationInput,
   GetApplicationOutput,
   GetApplicationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetApplicationInput,
   output: GetApplicationOutput,
@@ -1906,7 +1905,7 @@ export const getStreamGroup: API.OperationMethod<
   GetStreamGroupInput,
   GetStreamGroupOutput,
   GetStreamGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetStreamGroupInput,
   output: GetStreamGroupOutput,
@@ -1936,7 +1935,7 @@ export const getStreamSession: API.OperationMethod<
   GetStreamSessionInput,
   GetStreamSessionOutput,
   GetStreamSessionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetStreamSessionInput,
   output: GetStreamSessionOutput,
@@ -1965,7 +1964,7 @@ export const listApplications: API.PaginatedOperationMethod<
   ListApplicationsInput,
   ListApplicationsOutput,
   ListApplicationsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ApplicationSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListApplicationsInput,
@@ -2000,7 +1999,7 @@ export const listStreamGroups: API.PaginatedOperationMethod<
   ListStreamGroupsInput,
   ListStreamGroupsOutput,
   ListStreamGroupsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   StreamGroupSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListStreamGroupsInput,
@@ -2040,7 +2039,7 @@ export const listStreamSessions: API.PaginatedOperationMethod<
   ListStreamSessionsInput,
   ListStreamSessionsOutput,
   ListStreamSessionsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   StreamSessionSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListStreamSessionsInput,
@@ -2080,7 +2079,7 @@ export const listStreamSessionsByAccount: API.PaginatedOperationMethod<
   ListStreamSessionsByAccountInput,
   ListStreamSessionsByAccountOutput,
   ListStreamSessionsByAccountError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   StreamSessionSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListStreamSessionsByAccountInput,
@@ -2121,7 +2120,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -2152,7 +2151,7 @@ export const removeStreamGroupLocations: API.OperationMethod<
   RemoveStreamGroupLocationsInput,
   RemoveStreamGroupLocationsResponse,
   RemoveStreamGroupLocationsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: RemoveStreamGroupLocationsInput,
   output: RemoveStreamGroupLocationsResponse,
@@ -2237,7 +2236,7 @@ export const startStreamSession: API.OperationMethod<
   StartStreamSessionInput,
   StartStreamSessionOutput,
   StartStreamSessionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartStreamSessionInput,
   output: StartStreamSessionOutput,
@@ -2277,7 +2276,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -2306,7 +2305,7 @@ export const terminateStreamSession: API.OperationMethod<
   TerminateStreamSessionInput,
   TerminateStreamSessionResponse,
   TerminateStreamSessionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: TerminateStreamSessionInput,
   output: TerminateStreamSessionResponse,
@@ -2335,7 +2334,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -2366,7 +2365,7 @@ export const updateApplication: API.OperationMethod<
   UpdateApplicationInput,
   UpdateApplicationOutput,
   UpdateApplicationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateApplicationInput,
   output: UpdateApplicationOutput,
@@ -2410,7 +2409,7 @@ export const updateStreamGroup: API.OperationMethod<
   UpdateStreamGroupInput,
   UpdateStreamGroupOutput,
   UpdateStreamGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateStreamGroupInput,
   output: UpdateStreamGroupOutput,

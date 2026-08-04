@@ -7,7 +7,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 const svc = T.AwsApiService({
   sdkId: "Inspector",
   serviceShapeName: "InspectorService",
@@ -1917,7 +1916,7 @@ export const addAttributesToFindings: API.OperationMethod<
   AddAttributesToFindingsRequest,
   AddAttributesToFindingsResponse,
   AddAttributesToFindingsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: AddAttributesToFindingsRequest,
   output: AddAttributesToFindingsResponse,
@@ -1956,7 +1955,7 @@ export const createAssessmentTarget: API.OperationMethod<
   CreateAssessmentTargetRequest,
   CreateAssessmentTargetResponse,
   CreateAssessmentTargetError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateAssessmentTargetRequest,
   output: CreateAssessmentTargetResponse,
@@ -1992,7 +1991,7 @@ export const createAssessmentTemplate: API.OperationMethod<
   CreateAssessmentTemplateRequest,
   CreateAssessmentTemplateResponse,
   CreateAssessmentTemplateError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateAssessmentTemplateRequest,
   output: CreateAssessmentTemplateResponse,
@@ -2026,7 +2025,7 @@ export const createExclusionsPreview: API.OperationMethod<
   CreateExclusionsPreviewRequest,
   CreateExclusionsPreviewResponse,
   CreateExclusionsPreviewError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateExclusionsPreviewRequest,
   output: CreateExclusionsPreviewResponse,
@@ -2060,7 +2059,7 @@ export const createResourceGroup: API.OperationMethod<
   CreateResourceGroupRequest,
   CreateResourceGroupResponse,
   CreateResourceGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateResourceGroupRequest,
   output: CreateResourceGroupResponse,
@@ -2092,7 +2091,7 @@ export const deleteAssessmentRun: API.OperationMethod<
   DeleteAssessmentRunRequest,
   DeleteAssessmentRunResponse,
   DeleteAssessmentRunError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteAssessmentRunRequest,
   output: DeleteAssessmentRunResponse,
@@ -2125,7 +2124,7 @@ export const deleteAssessmentTarget: API.OperationMethod<
   DeleteAssessmentTargetRequest,
   DeleteAssessmentTargetResponse,
   DeleteAssessmentTargetError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteAssessmentTargetRequest,
   output: DeleteAssessmentTargetResponse,
@@ -2158,7 +2157,7 @@ export const deleteAssessmentTemplate: API.OperationMethod<
   DeleteAssessmentTemplateRequest,
   DeleteAssessmentTemplateResponse,
   DeleteAssessmentTemplateError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteAssessmentTemplateRequest,
   output: DeleteAssessmentTemplateResponse,
@@ -2187,7 +2186,7 @@ export const describeAssessmentRuns: API.OperationMethod<
   DescribeAssessmentRunsRequest,
   DescribeAssessmentRunsResponse,
   DescribeAssessmentRunsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeAssessmentRunsRequest,
   output: DescribeAssessmentRunsResponse,
@@ -2209,7 +2208,7 @@ export const describeAssessmentTargets: API.OperationMethod<
   DescribeAssessmentTargetsRequest,
   DescribeAssessmentTargetsResponse,
   DescribeAssessmentTargetsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeAssessmentTargetsRequest,
   output: DescribeAssessmentTargetsResponse,
@@ -2231,7 +2230,7 @@ export const describeAssessmentTemplates: API.OperationMethod<
   DescribeAssessmentTemplatesRequest,
   DescribeAssessmentTemplatesResponse,
   DescribeAssessmentTemplatesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeAssessmentTemplatesRequest,
   output: DescribeAssessmentTemplatesResponse,
@@ -2252,7 +2251,7 @@ export const describeCrossAccountAccessRole: API.OperationMethod<
   DescribeCrossAccountAccessRoleRequest,
   DescribeCrossAccountAccessRoleResponse,
   DescribeCrossAccountAccessRoleError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeCrossAccountAccessRoleRequest,
   output: DescribeCrossAccountAccessRoleResponse,
@@ -2273,7 +2272,7 @@ export const describeExclusions: API.OperationMethod<
   DescribeExclusionsRequest,
   DescribeExclusionsResponse,
   DescribeExclusionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeExclusionsRequest,
   output: DescribeExclusionsResponse,
@@ -2294,7 +2293,7 @@ export const describeFindings: API.OperationMethod<
   DescribeFindingsRequest,
   DescribeFindingsResponse,
   DescribeFindingsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeFindingsRequest,
   output: DescribeFindingsResponse,
@@ -2316,7 +2315,7 @@ export const describeResourceGroups: API.OperationMethod<
   DescribeResourceGroupsRequest,
   DescribeResourceGroupsResponse,
   DescribeResourceGroupsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeResourceGroupsRequest,
   output: DescribeResourceGroupsResponse,
@@ -2338,7 +2337,7 @@ export const describeRulesPackages: API.OperationMethod<
   DescribeRulesPackagesRequest,
   DescribeRulesPackagesResponse,
   DescribeRulesPackagesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeRulesPackagesRequest,
   output: DescribeRulesPackagesResponse,
@@ -2365,7 +2364,7 @@ export const getAssessmentReport: API.OperationMethod<
   GetAssessmentReportRequest,
   GetAssessmentReportResponse,
   GetAssessmentReportError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetAssessmentReportRequest,
   output: GetAssessmentReportResponse,
@@ -2398,7 +2397,7 @@ export const getExclusionsPreview: API.PaginatedOperationMethod<
   GetExclusionsPreviewRequest,
   GetExclusionsPreviewResponse,
   GetExclusionsPreviewError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetExclusionsPreviewRequest,
@@ -2433,7 +2432,7 @@ export const getTelemetryMetadata: API.OperationMethod<
   GetTelemetryMetadataRequest,
   GetTelemetryMetadataResponse,
   GetTelemetryMetadataError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetTelemetryMetadataRequest,
   output: GetTelemetryMetadataResponse,
@@ -2462,7 +2461,7 @@ export const listAssessmentRunAgents: API.PaginatedOperationMethod<
   ListAssessmentRunAgentsRequest,
   ListAssessmentRunAgentsResponse,
   ListAssessmentRunAgentsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAssessmentRunAgentsRequest,
@@ -2497,7 +2496,7 @@ export const listAssessmentRuns: API.PaginatedOperationMethod<
   ListAssessmentRunsRequest,
   ListAssessmentRunsResponse,
   ListAssessmentRunsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAssessmentRunsRequest,
@@ -2532,7 +2531,7 @@ export const listAssessmentTargets: API.PaginatedOperationMethod<
   ListAssessmentTargetsRequest,
   ListAssessmentTargetsResponse,
   ListAssessmentTargetsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAssessmentTargetsRequest,
@@ -2562,7 +2561,7 @@ export const listAssessmentTemplates: API.PaginatedOperationMethod<
   ListAssessmentTemplatesRequest,
   ListAssessmentTemplatesResponse,
   ListAssessmentTemplatesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAssessmentTemplatesRequest,
@@ -2597,7 +2596,7 @@ export const listEventSubscriptions: API.PaginatedOperationMethod<
   ListEventSubscriptionsRequest,
   ListEventSubscriptionsResponse,
   ListEventSubscriptionsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEventSubscriptionsRequest,
@@ -2631,7 +2630,7 @@ export const listExclusions: API.PaginatedOperationMethod<
   ListExclusionsRequest,
   ListExclusionsResponse,
   ListExclusionsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListExclusionsRequest,
@@ -2666,7 +2665,7 @@ export const listFindings: API.PaginatedOperationMethod<
   ListFindingsRequest,
   ListFindingsResponse,
   ListFindingsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFindingsRequest,
@@ -2699,7 +2698,7 @@ export const listRulesPackages: API.PaginatedOperationMethod<
   ListRulesPackagesRequest,
   ListRulesPackagesResponse,
   ListRulesPackagesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRulesPackagesRequest,
@@ -2728,7 +2727,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -2758,7 +2757,7 @@ export const previewAgents: API.PaginatedOperationMethod<
   PreviewAgentsRequest,
   PreviewAgentsResponse,
   PreviewAgentsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: PreviewAgentsRequest,
@@ -2795,7 +2794,7 @@ export const registerCrossAccountAccessRole: API.OperationMethod<
   RegisterCrossAccountAccessRoleRequest,
   RegisterCrossAccountAccessRoleResponse,
   RegisterCrossAccountAccessRoleError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: RegisterCrossAccountAccessRoleRequest,
   output: RegisterCrossAccountAccessRoleResponse,
@@ -2826,7 +2825,7 @@ export const removeAttributesFromFindings: API.OperationMethod<
   RemoveAttributesFromFindingsRequest,
   RemoveAttributesFromFindingsResponse,
   RemoveAttributesFromFindingsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: RemoveAttributesFromFindingsRequest,
   output: RemoveAttributesFromFindingsResponse,
@@ -2857,7 +2856,7 @@ export const setTagsForResource: API.OperationMethod<
   SetTagsForResourceRequest,
   SetTagsForResourceResponse,
   SetTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: SetTagsForResourceRequest,
   output: SetTagsForResourceResponse,
@@ -2892,7 +2891,7 @@ export const startAssessmentRun: API.OperationMethod<
   StartAssessmentRunRequest,
   StartAssessmentRunResponse,
   StartAssessmentRunError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartAssessmentRunRequest,
   output: StartAssessmentRunResponse,
@@ -2926,7 +2925,7 @@ export const stopAssessmentRun: API.OperationMethod<
   StopAssessmentRunRequest,
   StopAssessmentRunResponse,
   StopAssessmentRunError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StopAssessmentRunRequest,
   output: StopAssessmentRunResponse,
@@ -2958,7 +2957,7 @@ export const subscribeToEvent: API.OperationMethod<
   SubscribeToEventRequest,
   SubscribeToEventResponse,
   SubscribeToEventError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: SubscribeToEventRequest,
   output: SubscribeToEventResponse,
@@ -2990,7 +2989,7 @@ export const unsubscribeFromEvent: API.OperationMethod<
   UnsubscribeFromEventRequest,
   UnsubscribeFromEventResponse,
   UnsubscribeFromEventError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UnsubscribeFromEventRequest,
   output: UnsubscribeFromEventResponse,
@@ -3024,7 +3023,7 @@ export const updateAssessmentTarget: API.OperationMethod<
   UpdateAssessmentTargetRequest,
   UpdateAssessmentTargetResponse,
   UpdateAssessmentTargetError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateAssessmentTargetRequest,
   output: UpdateAssessmentTargetResponse,

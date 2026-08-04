@@ -8,7 +8,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 import { SensitiveString } from "../sensitive.ts";
 const svc = T.AwsApiService({
   sdkId: "LakeFormation",
@@ -3203,7 +3202,7 @@ export const addLFTagsToResource: API.OperationMethod<
   AddLFTagsToResourceRequest,
   AddLFTagsToResourceResponse,
   AddLFTagsToResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: AddLFTagsToResourceRequest,
   output: AddLFTagsToResourceResponse,
@@ -3249,7 +3248,7 @@ export const assumeDecoratedRoleWithSAML: API.OperationMethod<
   AssumeDecoratedRoleWithSAMLRequest,
   AssumeDecoratedRoleWithSAMLResponse,
   AssumeDecoratedRoleWithSAMLError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: AssumeDecoratedRoleWithSAMLRequest,
   output: AssumeDecoratedRoleWithSAMLResponse,
@@ -3276,7 +3275,7 @@ export const batchGrantPermissions: API.OperationMethod<
   BatchGrantPermissionsRequest,
   BatchGrantPermissionsResponse,
   BatchGrantPermissionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: BatchGrantPermissionsRequest,
   output: BatchGrantPermissionsResponse,
@@ -3297,7 +3296,7 @@ export const batchRevokePermissions: API.OperationMethod<
   BatchRevokePermissionsRequest,
   BatchRevokePermissionsResponse,
   BatchRevokePermissionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: BatchRevokePermissionsRequest,
   output: BatchRevokePermissionsResponse,
@@ -3323,7 +3322,7 @@ export const cancelTransaction: API.OperationMethod<
   CancelTransactionRequest,
   CancelTransactionResponse,
   CancelTransactionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CancelTransactionRequest,
   output: CancelTransactionResponse,
@@ -3356,7 +3355,7 @@ export const commitTransaction: API.OperationMethod<
   CommitTransactionRequest,
   CommitTransactionResponse,
   CommitTransactionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CommitTransactionRequest,
   output: CommitTransactionResponse,
@@ -3389,7 +3388,7 @@ export const createDataCellsFilter: API.OperationMethod<
   CreateDataCellsFilterRequest,
   CreateDataCellsFilterResponse,
   CreateDataCellsFilterError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateDataCellsFilterRequest,
   output: CreateDataCellsFilterResponse,
@@ -3422,7 +3421,7 @@ export const createLakeFormationIdentityCenterConfiguration: API.OperationMethod
   CreateLakeFormationIdentityCenterConfigurationRequest,
   CreateLakeFormationIdentityCenterConfigurationResponse,
   CreateLakeFormationIdentityCenterConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateLakeFormationIdentityCenterConfigurationRequest,
   output: CreateLakeFormationIdentityCenterConfigurationResponse,
@@ -3456,7 +3455,7 @@ export const createLakeFormationOptIn: API.OperationMethod<
   CreateLakeFormationOptInRequest,
   CreateLakeFormationOptInResponse,
   CreateLakeFormationOptInError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateLakeFormationOptInRequest,
   output: CreateLakeFormationOptInResponse,
@@ -3490,7 +3489,7 @@ export const createLFTag: API.OperationMethod<
   CreateLFTagRequest,
   CreateLFTagResponse,
   CreateLFTagError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateLFTagRequest,
   output: CreateLFTagResponse,
@@ -3530,7 +3529,7 @@ export const createLFTagExpression: API.OperationMethod<
   CreateLFTagExpressionRequest,
   CreateLFTagExpressionResponse,
   CreateLFTagExpressionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateLFTagExpressionRequest,
   output: CreateLFTagExpressionResponse,
@@ -3561,7 +3560,7 @@ export const deleteDataCellsFilter: API.OperationMethod<
   DeleteDataCellsFilterRequest,
   DeleteDataCellsFilterResponse,
   DeleteDataCellsFilterError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteDataCellsFilterRequest,
   output: DeleteDataCellsFilterResponse,
@@ -3592,7 +3591,7 @@ export const deleteLakeFormationIdentityCenterConfiguration: API.OperationMethod
   DeleteLakeFormationIdentityCenterConfigurationRequest,
   DeleteLakeFormationIdentityCenterConfigurationResponse,
   DeleteLakeFormationIdentityCenterConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteLakeFormationIdentityCenterConfigurationRequest,
   output: DeleteLakeFormationIdentityCenterConfigurationResponse,
@@ -3625,7 +3624,7 @@ export const deleteLakeFormationOptIn: API.OperationMethod<
   DeleteLakeFormationOptInRequest,
   DeleteLakeFormationOptInResponse,
   DeleteLakeFormationOptInError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteLakeFormationOptInRequest,
   output: DeleteLakeFormationOptInResponse,
@@ -3663,7 +3662,7 @@ export const deleteLFTag: API.OperationMethod<
   DeleteLFTagRequest,
   DeleteLFTagResponse,
   DeleteLFTagError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteLFTagRequest,
   output: DeleteLFTagResponse,
@@ -3694,7 +3693,7 @@ export const deleteLFTagExpression: API.OperationMethod<
   DeleteLFTagExpressionRequest,
   DeleteLFTagExpressionResponse,
   DeleteLFTagExpressionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteLFTagExpressionRequest,
   output: DeleteLFTagExpressionResponse,
@@ -3732,7 +3731,7 @@ export const deleteObjectsOnCancel: API.OperationMethod<
   DeleteObjectsOnCancelRequest,
   DeleteObjectsOnCancelResponse,
   DeleteObjectsOnCancelError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteObjectsOnCancelRequest,
   output: DeleteObjectsOnCancelResponse,
@@ -3767,7 +3766,7 @@ export const deregisterResource: API.OperationMethod<
   DeregisterResourceRequest,
   DeregisterResourceResponse,
   DeregisterResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeregisterResourceRequest,
   output: DeregisterResourceResponse,
@@ -3797,7 +3796,7 @@ export const describeLakeFormationIdentityCenterConfiguration: API.OperationMeth
   DescribeLakeFormationIdentityCenterConfigurationRequest,
   DescribeLakeFormationIdentityCenterConfigurationResponse,
   DescribeLakeFormationIdentityCenterConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeLakeFormationIdentityCenterConfigurationRequest,
   output: DescribeLakeFormationIdentityCenterConfigurationResponse,
@@ -3826,7 +3825,7 @@ export const describeResource: API.OperationMethod<
   DescribeResourceRequest,
   DescribeResourceResponse,
   DescribeResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeResourceRequest,
   output: DescribeResourceResponse,
@@ -3854,7 +3853,7 @@ export const describeTransaction: API.OperationMethod<
   DescribeTransactionRequest,
   DescribeTransactionResponse,
   DescribeTransactionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeTransactionRequest,
   output: DescribeTransactionResponse,
@@ -3887,7 +3886,7 @@ export const extendTransaction: API.OperationMethod<
   ExtendTransactionRequest,
   ExtendTransactionResponse,
   ExtendTransactionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ExtendTransactionRequest,
   output: ExtendTransactionResponse,
@@ -3919,7 +3918,7 @@ export const getDataCellsFilter: API.OperationMethod<
   GetDataCellsFilterRequest,
   GetDataCellsFilterResponse,
   GetDataCellsFilterError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetDataCellsFilterRequest,
   output: GetDataCellsFilterResponse,
@@ -3947,7 +3946,7 @@ export const getDataLakePrincipal: API.OperationMethod<
   GetDataLakePrincipalRequest,
   GetDataLakePrincipalResponse,
   GetDataLakePrincipalError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetDataLakePrincipalRequest,
   output: GetDataLakePrincipalResponse,
@@ -3973,7 +3972,7 @@ export const getDataLakeSettings: API.OperationMethod<
   GetDataLakeSettingsRequest,
   GetDataLakeSettingsResponse,
   GetDataLakeSettingsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetDataLakeSettingsRequest,
   output: GetDataLakeSettingsResponse,
@@ -4001,7 +4000,7 @@ export const getEffectivePermissionsForPath: API.PaginatedOperationMethod<
   GetEffectivePermissionsForPathRequest,
   GetEffectivePermissionsForPathResponse,
   GetEffectivePermissionsForPathError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetEffectivePermissionsForPathRequest,
@@ -4036,7 +4035,7 @@ export const getLFTag: API.OperationMethod<
   GetLFTagRequest,
   GetLFTagResponse,
   GetLFTagError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetLFTagRequest,
   output: GetLFTagResponse,
@@ -4066,7 +4065,7 @@ export const getLFTagExpression: API.OperationMethod<
   GetLFTagExpressionRequest,
   GetLFTagExpressionResponse,
   GetLFTagExpressionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetLFTagExpressionRequest,
   output: GetLFTagExpressionResponse,
@@ -4094,7 +4093,7 @@ export const getQueryState: API.OperationMethod<
   GetQueryStateRequest,
   GetQueryStateResponse,
   GetQueryStateError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetQueryStateRequest,
   output: GetQueryStateResponse,
@@ -4124,7 +4123,7 @@ export const getQueryStatistics: API.OperationMethod<
   GetQueryStatisticsRequest,
   GetQueryStatisticsResponse,
   GetQueryStatisticsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetQueryStatisticsRequest,
   output: GetQueryStatisticsResponse,
@@ -4157,7 +4156,7 @@ export const getResourceLFTags: API.OperationMethod<
   GetResourceLFTagsRequest,
   GetResourceLFTagsResponse,
   GetResourceLFTagsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetResourceLFTagsRequest,
   output: GetResourceLFTagsResponse,
@@ -4190,7 +4189,7 @@ export const getTableObjects: API.PaginatedOperationMethod<
   GetTableObjectsRequest,
   GetTableObjectsResponse,
   GetTableObjectsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetTableObjectsRequest,
@@ -4249,7 +4248,7 @@ export const getTemporaryDataLocationCredentials: API.OperationMethod<
   GetTemporaryDataLocationCredentialsRequest,
   GetTemporaryDataLocationCredentialsResponse,
   GetTemporaryDataLocationCredentialsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetTemporaryDataLocationCredentialsRequest,
   output: GetTemporaryDataLocationCredentialsResponse,
@@ -4282,7 +4281,7 @@ export const getTemporaryGluePartitionCredentials: API.OperationMethod<
   GetTemporaryGluePartitionCredentialsRequest,
   GetTemporaryGluePartitionCredentialsResponse,
   GetTemporaryGluePartitionCredentialsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetTemporaryGluePartitionCredentialsRequest,
   output: GetTemporaryGluePartitionCredentialsResponse,
@@ -4316,7 +4315,7 @@ export const getTemporaryGlueTableCredentials: API.OperationMethod<
   GetTemporaryGlueTableCredentialsRequest,
   GetTemporaryGlueTableCredentialsResponse,
   GetTemporaryGlueTableCredentialsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetTemporaryGlueTableCredentialsRequest,
   output: GetTemporaryGlueTableCredentialsResponse,
@@ -4347,7 +4346,7 @@ export const getWorkUnitResults: API.OperationMethod<
   GetWorkUnitResultsRequest,
   GetWorkUnitResultsResponse,
   GetWorkUnitResultsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetWorkUnitResultsRequest,
   output: GetWorkUnitResultsResponse,
@@ -4378,7 +4377,7 @@ export const getWorkUnits: API.PaginatedOperationMethod<
   GetWorkUnitsRequest,
   GetWorkUnitsResponse,
   GetWorkUnitsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   WorkUnitRange
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetWorkUnitsRequest,
@@ -4417,7 +4416,7 @@ export const grantPermissions: API.OperationMethod<
   GrantPermissionsRequest,
   GrantPermissionsResponse,
   GrantPermissionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GrantPermissionsRequest,
   output: GrantPermissionsResponse,
@@ -4445,7 +4444,7 @@ export const listDataCellsFilter: API.PaginatedOperationMethod<
   ListDataCellsFilterRequest,
   ListDataCellsFilterResponse,
   ListDataCellsFilterError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   DataCellsFilter
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDataCellsFilterRequest,
@@ -4482,7 +4481,7 @@ export const listLakeFormationOptIns: API.PaginatedOperationMethod<
   ListLakeFormationOptInsRequest,
   ListLakeFormationOptInsResponse,
   ListLakeFormationOptInsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLakeFormationOptInsRequest,
@@ -4519,7 +4518,7 @@ export const listLFTagExpressions: API.PaginatedOperationMethod<
   ListLFTagExpressionsRequest,
   ListLFTagExpressionsResponse,
   ListLFTagExpressionsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   LFTagExpression
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLFTagExpressionsRequest,
@@ -4556,7 +4555,7 @@ export const listLFTags: API.PaginatedOperationMethod<
   ListLFTagsRequest,
   ListLFTagsResponse,
   ListLFTagsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   LFTagPair
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLFTagsRequest,
@@ -4598,7 +4597,7 @@ export const listPermissions: API.PaginatedOperationMethod<
   ListPermissionsRequest,
   ListPermissionsResponse,
   ListPermissionsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPermissionsRequest,
@@ -4631,7 +4630,7 @@ export const listResources: API.PaginatedOperationMethod<
   ListResourcesRequest,
   ListResourcesResponse,
   ListResourcesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListResourcesRequest,
@@ -4664,7 +4663,7 @@ export const listTableStorageOptimizers: API.PaginatedOperationMethod<
   ListTableStorageOptimizersRequest,
   ListTableStorageOptimizersResponse,
   ListTableStorageOptimizersError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTableStorageOptimizersRequest,
@@ -4699,7 +4698,7 @@ export const listTransactions: API.PaginatedOperationMethod<
   ListTransactionsRequest,
   ListTransactionsResponse,
   ListTransactionsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTransactionsRequest,
@@ -4733,7 +4732,7 @@ export const putDataLakeSettings: API.OperationMethod<
   PutDataLakeSettingsRequest,
   PutDataLakeSettingsResponse,
   PutDataLakeSettingsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PutDataLakeSettingsRequest,
   output: PutDataLakeSettingsResponse,
@@ -4774,7 +4773,7 @@ export const registerResource: API.OperationMethod<
   RegisterResourceRequest,
   RegisterResourceResponse,
   RegisterResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: RegisterResourceRequest,
   output: RegisterResourceResponse,
@@ -4808,7 +4807,7 @@ export const removeLFTagsFromResource: API.OperationMethod<
   RemoveLFTagsFromResourceRequest,
   RemoveLFTagsFromResourceResponse,
   RemoveLFTagsFromResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: RemoveLFTagsFromResourceRequest,
   output: RemoveLFTagsFromResourceResponse,
@@ -4839,7 +4838,7 @@ export const revokePermissions: API.OperationMethod<
   RevokePermissionsRequest,
   RevokePermissionsResponse,
   RevokePermissionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: RevokePermissionsRequest,
   output: RevokePermissionsResponse,
@@ -4869,7 +4868,7 @@ export const searchDatabasesByLFTags: API.PaginatedOperationMethod<
   SearchDatabasesByLFTagsRequest,
   SearchDatabasesByLFTagsResponse,
   SearchDatabasesByLFTagsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   TaggedDatabase
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchDatabasesByLFTagsRequest,
@@ -4908,7 +4907,7 @@ export const searchTablesByLFTags: API.PaginatedOperationMethod<
   SearchTablesByLFTagsRequest,
   SearchTablesByLFTagsResponse,
   SearchTablesByLFTagsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   TaggedTable
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchTablesByLFTagsRequest,
@@ -4947,7 +4946,7 @@ export const startQueryPlanning: API.OperationMethod<
   StartQueryPlanningRequest,
   StartQueryPlanningResponse,
   StartQueryPlanningError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartQueryPlanningRequest,
   output: StartQueryPlanningResponse,
@@ -4974,7 +4973,7 @@ export const startTransaction: API.OperationMethod<
   StartTransactionRequest,
   StartTransactionResponse,
   StartTransactionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartTransactionRequest,
   output: StartTransactionResponse,
@@ -4999,7 +4998,7 @@ export const updateDataCellsFilter: API.OperationMethod<
   UpdateDataCellsFilterRequest,
   UpdateDataCellsFilterResponse,
   UpdateDataCellsFilterError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateDataCellsFilterRequest,
   output: UpdateDataCellsFilterResponse,
@@ -5031,7 +5030,7 @@ export const updateLakeFormationIdentityCenterConfiguration: API.OperationMethod
   UpdateLakeFormationIdentityCenterConfigurationRequest,
   UpdateLakeFormationIdentityCenterConfigurationResponse,
   UpdateLakeFormationIdentityCenterConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateLakeFormationIdentityCenterConfigurationRequest,
   output: UpdateLakeFormationIdentityCenterConfigurationResponse,
@@ -5063,7 +5062,7 @@ export const updateLFTag: API.OperationMethod<
   UpdateLFTagRequest,
   UpdateLFTagResponse,
   UpdateLFTagError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateLFTagRequest,
   output: UpdateLFTagResponse,
@@ -5096,7 +5095,7 @@ export const updateLFTagExpression: API.OperationMethod<
   UpdateLFTagExpressionRequest,
   UpdateLFTagExpressionResponse,
   UpdateLFTagExpressionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateLFTagExpressionRequest,
   output: UpdateLFTagExpressionResponse,
@@ -5126,7 +5125,7 @@ export const updateResource: API.OperationMethod<
   UpdateResourceRequest,
   UpdateResourceResponse,
   UpdateResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateResourceRequest,
   output: UpdateResourceResponse,
@@ -5159,7 +5158,7 @@ export const updateTableObjects: API.OperationMethod<
   UpdateTableObjectsRequest,
   UpdateTableObjectsResponse,
   UpdateTableObjectsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateTableObjectsRequest,
   output: UpdateTableObjectsResponse,
@@ -5192,7 +5191,7 @@ export const updateTableStorageOptimizer: API.OperationMethod<
   UpdateTableStorageOptimizerRequest,
   UpdateTableStorageOptimizerResponse,
   UpdateTableStorageOptimizerError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateTableStorageOptimizerRequest,
   output: UpdateTableStorageOptimizerResponse,

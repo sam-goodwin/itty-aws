@@ -7,7 +7,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 const svc = T.AwsApiService({
   sdkId: "DevOps Guru",
   serviceShapeName: "CapstoneControlPlaneService",
@@ -2951,7 +2950,7 @@ export const addNotificationChannel: API.OperationMethod<
   AddNotificationChannelRequest,
   AddNotificationChannelResponse,
   AddNotificationChannelError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: AddNotificationChannelRequest,
   output: AddNotificationChannelResponse,
@@ -2984,7 +2983,7 @@ export const deleteInsight: API.OperationMethod<
   DeleteInsightRequest,
   DeleteInsightResponse,
   DeleteInsightError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteInsightRequest,
   output: DeleteInsightResponse,
@@ -3016,7 +3015,7 @@ export const describeAccountHealth: API.OperationMethod<
   DescribeAccountHealthRequest,
   DescribeAccountHealthResponse,
   DescribeAccountHealthError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeAccountHealthRequest,
   output: DescribeAccountHealthResponse,
@@ -3046,7 +3045,7 @@ export const describeAccountOverview: API.OperationMethod<
   DescribeAccountOverviewRequest,
   DescribeAccountOverviewResponse,
   DescribeAccountOverviewError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeAccountOverviewRequest,
   output: DescribeAccountOverviewResponse,
@@ -3075,7 +3074,7 @@ export const describeAnomaly: API.OperationMethod<
   DescribeAnomalyRequest,
   DescribeAnomalyResponse,
   DescribeAnomalyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeAnomalyRequest,
   output: DescribeAnomalyResponse,
@@ -3107,7 +3106,7 @@ export const describeEventSourcesConfig: API.OperationMethod<
   DescribeEventSourcesConfigRequest,
   DescribeEventSourcesConfigResponse,
   DescribeEventSourcesConfigError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeEventSourcesConfigRequest,
   output: DescribeEventSourcesConfigResponse,
@@ -3136,7 +3135,7 @@ export const describeFeedback: API.OperationMethod<
   DescribeFeedbackRequest,
   DescribeFeedbackResponse,
   DescribeFeedbackError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeFeedbackRequest,
   output: DescribeFeedbackResponse,
@@ -3166,7 +3165,7 @@ export const describeInsight: API.OperationMethod<
   DescribeInsightRequest,
   DescribeInsightResponse,
   DescribeInsightError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeInsightRequest,
   output: DescribeInsightResponse,
@@ -3196,7 +3195,7 @@ export const describeOrganizationHealth: API.OperationMethod<
   DescribeOrganizationHealthRequest,
   DescribeOrganizationHealthResponse,
   DescribeOrganizationHealthError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeOrganizationHealthRequest,
   output: DescribeOrganizationHealthResponse,
@@ -3225,7 +3224,7 @@ export const describeOrganizationOverview: API.OperationMethod<
   DescribeOrganizationOverviewRequest,
   DescribeOrganizationOverviewResponse,
   DescribeOrganizationOverviewError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeOrganizationOverviewRequest,
   output: DescribeOrganizationOverviewResponse,
@@ -3255,7 +3254,7 @@ export const describeOrganizationResourceCollectionHealth: API.PaginatedOperatio
   DescribeOrganizationResourceCollectionHealthRequest,
   DescribeOrganizationResourceCollectionHealthResponse,
   DescribeOrganizationResourceCollectionHealthError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeOrganizationResourceCollectionHealthRequest,
@@ -3289,7 +3288,7 @@ export const describeResourceCollectionHealth: API.PaginatedOperationMethod<
   DescribeResourceCollectionHealthRequest,
   DescribeResourceCollectionHealthResponse,
   DescribeResourceCollectionHealthError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeResourceCollectionHealthRequest,
@@ -3322,7 +3321,7 @@ export const describeServiceIntegration: API.OperationMethod<
   DescribeServiceIntegrationRequest,
   DescribeServiceIntegrationResponse,
   DescribeServiceIntegrationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeServiceIntegrationRequest,
   output: DescribeServiceIntegrationResponse,
@@ -3356,7 +3355,7 @@ export const getCostEstimation: API.PaginatedOperationMethod<
   GetCostEstimationRequest,
   GetCostEstimationResponse,
   GetCostEstimationError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetCostEstimationRequest,
@@ -3391,7 +3390,7 @@ export const getResourceCollection: API.PaginatedOperationMethod<
   GetResourceCollectionRequest,
   GetResourceCollectionResponse,
   GetResourceCollectionError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetResourceCollectionRequest,
@@ -3424,7 +3423,7 @@ export const listAnomaliesForInsight: API.PaginatedOperationMethod<
   ListAnomaliesForInsightRequest,
   ListAnomaliesForInsightResponse,
   ListAnomaliesForInsightError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAnomaliesForInsightRequest,
@@ -3460,7 +3459,7 @@ export const listAnomalousLogGroups: API.PaginatedOperationMethod<
   ListAnomalousLogGroupsRequest,
   ListAnomalousLogGroupsResponse,
   ListAnomalousLogGroupsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAnomalousLogGroupsRequest,
@@ -3497,7 +3496,7 @@ export const listEvents: API.PaginatedOperationMethod<
   ListEventsRequest,
   ListEventsResponse,
   ListEventsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   Event
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEventsRequest,
@@ -3535,7 +3534,7 @@ export const listInsights: API.PaginatedOperationMethod<
   ListInsightsRequest,
   ListInsightsResponse,
   ListInsightsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListInsightsRequest,
@@ -3569,7 +3568,7 @@ export const listMonitoredResources: API.PaginatedOperationMethod<
   ListMonitoredResourcesRequest,
   ListMonitoredResourcesResponse,
   ListMonitoredResourcesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMonitoredResourcesRequest,
@@ -3606,7 +3605,7 @@ export const listNotificationChannels: API.PaginatedOperationMethod<
   ListNotificationChannelsRequest,
   ListNotificationChannelsResponse,
   ListNotificationChannelsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   NotificationChannel
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListNotificationChannelsRequest,
@@ -3640,7 +3639,7 @@ export const listOrganizationInsights: API.PaginatedOperationMethod<
   ListOrganizationInsightsRequest,
   ListOrganizationInsightsResponse,
   ListOrganizationInsightsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationInsightsRequest,
@@ -3676,7 +3675,7 @@ export const listRecommendations: API.PaginatedOperationMethod<
   ListRecommendationsRequest,
   ListRecommendationsResponse,
   ListRecommendationsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   Recommendation
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRecommendationsRequest,
@@ -3713,7 +3712,7 @@ export const putFeedback: API.OperationMethod<
   PutFeedbackRequest,
   PutFeedbackResponse,
   PutFeedbackError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PutFeedbackRequest,
   output: PutFeedbackResponse,
@@ -3747,7 +3746,7 @@ export const removeNotificationChannel: API.OperationMethod<
   RemoveNotificationChannelRequest,
   RemoveNotificationChannelResponse,
   RemoveNotificationChannelError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: RemoveNotificationChannelRequest,
   output: RemoveNotificationChannelResponse,
@@ -3784,7 +3783,7 @@ export const searchInsights: API.PaginatedOperationMethod<
   SearchInsightsRequest,
   SearchInsightsResponse,
   SearchInsightsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchInsightsRequest,
@@ -3826,7 +3825,7 @@ export const searchOrganizationInsights: API.PaginatedOperationMethod<
   SearchOrganizationInsightsRequest,
   SearchOrganizationInsightsResponse,
   SearchOrganizationInsightsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchOrganizationInsightsRequest,
@@ -3863,7 +3862,7 @@ export const startCostEstimation: API.OperationMethod<
   StartCostEstimationRequest,
   StartCostEstimationResponse,
   StartCostEstimationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartCostEstimationRequest,
   output: StartCostEstimationResponse,
@@ -3895,7 +3894,7 @@ export const updateEventSourcesConfig: API.OperationMethod<
   UpdateEventSourcesConfigRequest,
   UpdateEventSourcesConfigResponse,
   UpdateEventSourcesConfigError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateEventSourcesConfigRequest,
   output: UpdateEventSourcesConfigResponse,
@@ -3928,7 +3927,7 @@ export const updateResourceCollection: API.OperationMethod<
   UpdateResourceCollectionRequest,
   UpdateResourceCollectionResponse,
   UpdateResourceCollectionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateResourceCollectionRequest,
   output: UpdateResourceCollectionResponse,
@@ -3960,7 +3959,7 @@ export const updateServiceIntegration: API.OperationMethod<
   UpdateServiceIntegrationRequest,
   UpdateServiceIntegrationResponse,
   UpdateServiceIntegrationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateServiceIntegrationRequest,
   output: UpdateServiceIntegrationResponse,

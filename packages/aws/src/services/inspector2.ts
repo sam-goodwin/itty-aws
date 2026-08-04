@@ -8,7 +8,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 import { SensitiveString } from "../sensitive.ts";
 const svc = T.AwsApiService({
   sdkId: "Inspector2",
@@ -6439,7 +6438,7 @@ export const associateMember: API.OperationMethod<
   AssociateMemberRequest,
   AssociateMemberResponse,
   AssociateMemberError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: AssociateMemberRequest,
   output: AssociateMemberResponse,
@@ -6471,7 +6470,7 @@ export const batchAssociateCodeSecurityScanConfiguration: API.OperationMethod<
   BatchAssociateCodeSecurityScanConfigurationRequest,
   BatchAssociateCodeSecurityScanConfigurationResponse,
   BatchAssociateCodeSecurityScanConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: BatchAssociateCodeSecurityScanConfigurationRequest,
   output: BatchAssociateCodeSecurityScanConfigurationResponse,
@@ -6504,7 +6503,7 @@ export const batchDisassociateCodeSecurityScanConfiguration: API.OperationMethod
   BatchDisassociateCodeSecurityScanConfigurationRequest,
   BatchDisassociateCodeSecurityScanConfigurationResponse,
   BatchDisassociateCodeSecurityScanConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: BatchDisassociateCodeSecurityScanConfigurationRequest,
   output: BatchDisassociateCodeSecurityScanConfigurationResponse,
@@ -6535,7 +6534,7 @@ export const batchGetAccountStatus: API.OperationMethod<
   BatchGetAccountStatusRequest,
   BatchGetAccountStatusResponse,
   BatchGetAccountStatusError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: BatchGetAccountStatusRequest,
   output: BatchGetAccountStatusResponse,
@@ -6565,7 +6564,7 @@ export const batchGetCodeSnippet: API.OperationMethod<
   BatchGetCodeSnippetRequest,
   BatchGetCodeSnippetResponse,
   BatchGetCodeSnippetError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: BatchGetCodeSnippetRequest,
   output: BatchGetCodeSnippetResponse,
@@ -6593,7 +6592,7 @@ export const batchGetFindingDetails: API.OperationMethod<
   BatchGetFindingDetailsRequest,
   BatchGetFindingDetailsResponse,
   BatchGetFindingDetailsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: BatchGetFindingDetailsRequest,
   output: BatchGetFindingDetailsResponse,
@@ -6621,7 +6620,7 @@ export const batchGetFreeTrialInfo: API.OperationMethod<
   BatchGetFreeTrialInfoRequest,
   BatchGetFreeTrialInfoResponse,
   BatchGetFreeTrialInfoError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: BatchGetFreeTrialInfoRequest,
   output: BatchGetFreeTrialInfoResponse,
@@ -6651,7 +6650,7 @@ export const batchGetMemberEc2DeepInspectionStatus: API.OperationMethod<
   BatchGetMemberEc2DeepInspectionStatusRequest,
   BatchGetMemberEc2DeepInspectionStatusResponse,
   BatchGetMemberEc2DeepInspectionStatusError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: BatchGetMemberEc2DeepInspectionStatusRequest,
   output: BatchGetMemberEc2DeepInspectionStatusResponse,
@@ -6681,7 +6680,7 @@ export const batchUpdateMemberEc2DeepInspectionStatus: API.OperationMethod<
   BatchUpdateMemberEc2DeepInspectionStatusRequest,
   BatchUpdateMemberEc2DeepInspectionStatusResponse,
   BatchUpdateMemberEc2DeepInspectionStatusError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: BatchUpdateMemberEc2DeepInspectionStatusRequest,
   output: BatchUpdateMemberEc2DeepInspectionStatusResponse,
@@ -6710,7 +6709,7 @@ export const cancelFindingsReport: API.OperationMethod<
   CancelFindingsReportRequest,
   CancelFindingsReportResponse,
   CancelFindingsReportError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CancelFindingsReportRequest,
   output: CancelFindingsReportResponse,
@@ -6740,7 +6739,7 @@ export const cancelSbomExport: API.OperationMethod<
   CancelSbomExportRequest,
   CancelSbomExportResponse,
   CancelSbomExportError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CancelSbomExportRequest,
   output: CancelSbomExportResponse,
@@ -6769,7 +6768,7 @@ export const createCisScanConfiguration: API.OperationMethod<
   CreateCisScanConfigurationRequest,
   CreateCisScanConfigurationResponse,
   CreateCisScanConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateCisScanConfigurationRequest,
   output: CreateCisScanConfigurationResponse,
@@ -6804,7 +6803,7 @@ export const createCodeSecurityIntegration: API.OperationMethod<
   CreateCodeSecurityIntegrationRequest,
   CreateCodeSecurityIntegrationResponse,
   CreateCodeSecurityIntegrationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateCodeSecurityIntegrationRequest,
   output: CreateCodeSecurityIntegrationResponse,
@@ -6836,7 +6835,7 @@ export const createCodeSecurityScanConfiguration: API.OperationMethod<
   CreateCodeSecurityScanConfigurationRequest,
   CreateCodeSecurityScanConfigurationResponse,
   CreateCodeSecurityScanConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateCodeSecurityScanConfigurationRequest,
   output: CreateCodeSecurityScanConfigurationResponse,
@@ -6869,7 +6868,7 @@ export const createFilter: API.OperationMethod<
   CreateFilterRequest,
   CreateFilterResponse,
   CreateFilterError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateFilterRequest,
   output: CreateFilterResponse,
@@ -6902,7 +6901,7 @@ export const createFindingsReport: API.OperationMethod<
   CreateFindingsReportRequest,
   CreateFindingsReportResponse,
   CreateFindingsReportError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateFindingsReportRequest,
   output: CreateFindingsReportResponse,
@@ -6932,7 +6931,7 @@ export const createSbomExport: API.OperationMethod<
   CreateSbomExportRequest,
   CreateSbomExportResponse,
   CreateSbomExportError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateSbomExportRequest,
   output: CreateSbomExportResponse,
@@ -6962,7 +6961,7 @@ export const deleteCisScanConfiguration: API.OperationMethod<
   DeleteCisScanConfigurationRequest,
   DeleteCisScanConfigurationResponse,
   DeleteCisScanConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteCisScanConfigurationRequest,
   output: DeleteCisScanConfigurationResponse,
@@ -6992,7 +6991,7 @@ export const deleteCodeSecurityIntegration: API.OperationMethod<
   DeleteCodeSecurityIntegrationRequest,
   DeleteCodeSecurityIntegrationResponse,
   DeleteCodeSecurityIntegrationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteCodeSecurityIntegrationRequest,
   output: DeleteCodeSecurityIntegrationResponse,
@@ -7022,7 +7021,7 @@ export const deleteCodeSecurityScanConfiguration: API.OperationMethod<
   DeleteCodeSecurityScanConfigurationRequest,
   DeleteCodeSecurityScanConfigurationResponse,
   DeleteCodeSecurityScanConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteCodeSecurityScanConfigurationRequest,
   output: DeleteCodeSecurityScanConfigurationResponse,
@@ -7052,7 +7051,7 @@ export const deleteFilter: API.OperationMethod<
   DeleteFilterRequest,
   DeleteFilterResponse,
   DeleteFilterError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteFilterRequest,
   output: DeleteFilterResponse,
@@ -7081,7 +7080,7 @@ export const describeOrganizationConfiguration: API.OperationMethod<
   DescribeOrganizationConfigurationRequest,
   DescribeOrganizationConfigurationResponse,
   DescribeOrganizationConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeOrganizationConfigurationRequest,
   output: DescribeOrganizationConfigurationResponse,
@@ -7111,7 +7110,7 @@ export const disable: API.OperationMethod<
   DisableRequest,
   DisableResponse,
   DisableError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DisableRequest,
   output: DisableResponse,
@@ -7142,7 +7141,7 @@ export const disableDelegatedAdminAccount: API.OperationMethod<
   DisableDelegatedAdminAccountRequest,
   DisableDelegatedAdminAccountResponse,
   DisableDelegatedAdminAccountError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DisableDelegatedAdminAccountRequest,
   output: DisableDelegatedAdminAccountResponse,
@@ -7172,7 +7171,7 @@ export const disassociateMember: API.OperationMethod<
   DisassociateMemberRequest,
   DisassociateMemberResponse,
   DisassociateMemberError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DisassociateMemberRequest,
   output: DisassociateMemberResponse,
@@ -7201,7 +7200,7 @@ export const enable: API.OperationMethod<
   EnableRequest,
   EnableResponse,
   EnableError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: EnableRequest,
   output: EnableResponse,
@@ -7232,7 +7231,7 @@ export const enableDelegatedAdminAccount: API.OperationMethod<
   EnableDelegatedAdminAccountRequest,
   EnableDelegatedAdminAccountResponse,
   EnableDelegatedAdminAccountError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: EnableDelegatedAdminAccountRequest,
   output: EnableDelegatedAdminAccountResponse,
@@ -7263,7 +7262,7 @@ export const getCisScanReport: API.OperationMethod<
   GetCisScanReportRequest,
   GetCisScanReportResponse,
   GetCisScanReportError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetCisScanReportRequest,
   output: GetCisScanReportResponse,
@@ -7292,7 +7291,7 @@ export const getCisScanResultDetails: API.PaginatedOperationMethod<
   GetCisScanResultDetailsRequest,
   GetCisScanResultDetailsResponse,
   GetCisScanResultDetailsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   CisScanResultDetails
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetCisScanResultDetailsRequest,
@@ -7327,7 +7326,7 @@ export const getClustersForImage: API.PaginatedOperationMethod<
   GetClustersForImageRequest,
   GetClustersForImageResponse,
   GetClustersForImageError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ClusterInformation
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetClustersForImageRequest,
@@ -7363,7 +7362,7 @@ export const getCodeSecurityIntegration: API.OperationMethod<
   GetCodeSecurityIntegrationRequest,
   GetCodeSecurityIntegrationResponse,
   GetCodeSecurityIntegrationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetCodeSecurityIntegrationRequest,
   output: GetCodeSecurityIntegrationResponse,
@@ -7394,7 +7393,7 @@ export const getCodeSecurityScan: API.OperationMethod<
   GetCodeSecurityScanRequest,
   GetCodeSecurityScanResponse,
   GetCodeSecurityScanError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetCodeSecurityScanRequest,
   output: GetCodeSecurityScanResponse,
@@ -7425,7 +7424,7 @@ export const getCodeSecurityScanConfiguration: API.OperationMethod<
   GetCodeSecurityScanConfigurationRequest,
   GetCodeSecurityScanConfigurationResponse,
   GetCodeSecurityScanConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetCodeSecurityScanConfigurationRequest,
   output: GetCodeSecurityScanConfigurationResponse,
@@ -7453,7 +7452,7 @@ export const getConfiguration: API.OperationMethod<
   GetConfigurationRequest,
   GetConfigurationResponse,
   GetConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetConfigurationRequest,
   output: GetConfigurationResponse,
@@ -7482,7 +7481,7 @@ export const getDelegatedAdminAccount: API.OperationMethod<
   GetDelegatedAdminAccountRequest,
   GetDelegatedAdminAccountResponse,
   GetDelegatedAdminAccountError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetDelegatedAdminAccountRequest,
   output: GetDelegatedAdminAccountResponse,
@@ -7512,7 +7511,7 @@ export const getEc2DeepInspectionConfiguration: API.OperationMethod<
   GetEc2DeepInspectionConfigurationRequest,
   GetEc2DeepInspectionConfigurationResponse,
   GetEc2DeepInspectionConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetEc2DeepInspectionConfigurationRequest,
   output: GetEc2DeepInspectionConfigurationResponse,
@@ -7541,7 +7540,7 @@ export const getEncryptionKey: API.OperationMethod<
   GetEncryptionKeyRequest,
   GetEncryptionKeyResponse,
   GetEncryptionKeyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetEncryptionKeyRequest,
   output: GetEncryptionKeyResponse,
@@ -7571,7 +7570,7 @@ export const getFindingsReportStatus: API.OperationMethod<
   GetFindingsReportStatusRequest,
   GetFindingsReportStatusResponse,
   GetFindingsReportStatusError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetFindingsReportStatusRequest,
   output: GetFindingsReportStatusResponse,
@@ -7601,7 +7600,7 @@ export const getMember: API.OperationMethod<
   GetMemberRequest,
   GetMemberResponse,
   GetMemberError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetMemberRequest,
   output: GetMemberResponse,
@@ -7631,7 +7630,7 @@ export const getSbomExport: API.OperationMethod<
   GetSbomExportRequest,
   GetSbomExportResponse,
   GetSbomExportError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetSbomExportRequest,
   output: GetSbomExportResponse,
@@ -7661,7 +7660,7 @@ export const listAccountPermissions: API.PaginatedOperationMethod<
   ListAccountPermissionsRequest,
   ListAccountPermissionsResponse,
   ListAccountPermissionsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   Permission
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountPermissionsRequest,
@@ -7696,7 +7695,7 @@ export const listCisScanConfigurations: API.PaginatedOperationMethod<
   ListCisScanConfigurationsRequest,
   ListCisScanConfigurationsResponse,
   ListCisScanConfigurationsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   CisScanConfiguration
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCisScanConfigurationsRequest,
@@ -7731,7 +7730,7 @@ export const listCisScanResultsAggregatedByChecks: API.PaginatedOperationMethod<
   ListCisScanResultsAggregatedByChecksRequest,
   ListCisScanResultsAggregatedByChecksResponse,
   ListCisScanResultsAggregatedByChecksError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   CisCheckAggregation
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCisScanResultsAggregatedByChecksRequest,
@@ -7766,7 +7765,7 @@ export const listCisScanResultsAggregatedByTargetResource: API.PaginatedOperatio
   ListCisScanResultsAggregatedByTargetResourceRequest,
   ListCisScanResultsAggregatedByTargetResourceResponse,
   ListCisScanResultsAggregatedByTargetResourceError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   CisTargetResourceAggregation
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCisScanResultsAggregatedByTargetResourceRequest,
@@ -7801,7 +7800,7 @@ export const listCisScans: API.PaginatedOperationMethod<
   ListCisScansRequest,
   ListCisScansResponse,
   ListCisScansError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   CisScan
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCisScansRequest,
@@ -7836,7 +7835,7 @@ export const listCodeSecurityIntegrations: API.OperationMethod<
   ListCodeSecurityIntegrationsRequest,
   ListCodeSecurityIntegrationsResponse,
   ListCodeSecurityIntegrationsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListCodeSecurityIntegrationsRequest,
   output: ListCodeSecurityIntegrationsResponse,
@@ -7866,7 +7865,7 @@ export const listCodeSecurityScanConfigurationAssociations: API.OperationMethod<
   ListCodeSecurityScanConfigurationAssociationsRequest,
   ListCodeSecurityScanConfigurationAssociationsResponse,
   ListCodeSecurityScanConfigurationAssociationsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListCodeSecurityScanConfigurationAssociationsRequest,
   output: ListCodeSecurityScanConfigurationAssociationsResponse,
@@ -7896,7 +7895,7 @@ export const listCodeSecurityScanConfigurations: API.OperationMethod<
   ListCodeSecurityScanConfigurationsRequest,
   ListCodeSecurityScanConfigurationsResponse,
   ListCodeSecurityScanConfigurationsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListCodeSecurityScanConfigurationsRequest,
   output: ListCodeSecurityScanConfigurationsResponse,
@@ -7924,7 +7923,7 @@ export const listCoverage: API.PaginatedOperationMethod<
   ListCoverageRequest,
   ListCoverageResponse,
   ListCoverageError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   CoveredResource
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCoverageRequest,
@@ -7953,7 +7952,7 @@ export const listCoverageStatistics: API.PaginatedOperationMethod<
   ListCoverageStatisticsRequest,
   ListCoverageStatisticsResponse,
   ListCoverageStatisticsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   Counts
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCoverageStatisticsRequest,
@@ -7982,7 +7981,7 @@ export const listDelegatedAdminAccounts: API.PaginatedOperationMethod<
   ListDelegatedAdminAccountsRequest,
   ListDelegatedAdminAccountsResponse,
   ListDelegatedAdminAccountsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   DelegatedAdminAccount
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDelegatedAdminAccountsRequest,
@@ -8017,7 +8016,7 @@ export const listFilters: API.PaginatedOperationMethod<
   ListFiltersRequest,
   ListFiltersResponse,
   ListFiltersError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   Filter
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFiltersRequest,
@@ -8051,7 +8050,7 @@ export const listFindingAggregations: API.PaginatedOperationMethod<
   ListFindingAggregationsRequest,
   ListFindingAggregationsResponse,
   ListFindingAggregationsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   AggregationResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFindingAggregationsRequest,
@@ -8080,7 +8079,7 @@ export const listFindings: API.PaginatedOperationMethod<
   ListFindingsRequest,
   ListFindingsResponse,
   ListFindingsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   Finding
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFindingsRequest,
@@ -8111,7 +8110,7 @@ export const listMembers: API.PaginatedOperationMethod<
   ListMembersRequest,
   ListMembersResponse,
   ListMembersError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   Member
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMembersRequest,
@@ -8146,7 +8145,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -8174,7 +8173,7 @@ export const listUsageTotals: API.PaginatedOperationMethod<
   ListUsageTotalsRequest,
   ListUsageTotalsResponse,
   ListUsageTotalsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   UsageTotal
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListUsageTotalsRequest,
@@ -8211,7 +8210,7 @@ export const resetEncryptionKey: API.OperationMethod<
   ResetEncryptionKeyRequest,
   ResetEncryptionKeyResponse,
   ResetEncryptionKeyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ResetEncryptionKeyRequest,
   output: ResetEncryptionKeyResponse,
@@ -8240,7 +8239,7 @@ export const searchVulnerabilities: API.PaginatedOperationMethod<
   SearchVulnerabilitiesRequest,
   SearchVulnerabilitiesResponse,
   SearchVulnerabilitiesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   Vulnerability
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchVulnerabilitiesRequest,
@@ -8277,7 +8276,7 @@ export const sendCisSessionHealth: API.OperationMethod<
   SendCisSessionHealthRequest,
   SendCisSessionHealthResponse,
   SendCisSessionHealthError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: SendCisSessionHealthRequest,
   output: SendCisSessionHealthResponse,
@@ -8309,7 +8308,7 @@ export const sendCisSessionTelemetry: API.OperationMethod<
   SendCisSessionTelemetryRequest,
   SendCisSessionTelemetryResponse,
   SendCisSessionTelemetryError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: SendCisSessionTelemetryRequest,
   output: SendCisSessionTelemetryResponse,
@@ -8341,7 +8340,7 @@ export const startCisSession: API.OperationMethod<
   StartCisSessionRequest,
   StartCisSessionResponse,
   StartCisSessionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartCisSessionRequest,
   output: StartCisSessionResponse,
@@ -8372,7 +8371,7 @@ export const startCodeSecurityScan: API.OperationMethod<
   StartCodeSecurityScanRequest,
   StartCodeSecurityScanResponse,
   StartCodeSecurityScanError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartCodeSecurityScanRequest,
   output: StartCodeSecurityScanResponse,
@@ -8405,7 +8404,7 @@ export const stopCisSession: API.OperationMethod<
   StopCisSessionRequest,
   StopCisSessionResponse,
   StopCisSessionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StopCisSessionRequest,
   output: StopCisSessionResponse,
@@ -8435,7 +8434,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -8464,7 +8463,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -8493,7 +8492,7 @@ export const updateCisScanConfiguration: API.OperationMethod<
   UpdateCisScanConfigurationRequest,
   UpdateCisScanConfigurationResponse,
   UpdateCisScanConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateCisScanConfigurationRequest,
   output: UpdateCisScanConfigurationResponse,
@@ -8529,7 +8528,7 @@ export const updateCodeSecurityIntegration: API.OperationMethod<
   UpdateCodeSecurityIntegrationRequest,
   UpdateCodeSecurityIntegrationResponse,
   UpdateCodeSecurityIntegrationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateCodeSecurityIntegrationRequest,
   output: UpdateCodeSecurityIntegrationResponse,
@@ -8561,7 +8560,7 @@ export const updateCodeSecurityScanConfiguration: API.OperationMethod<
   UpdateCodeSecurityScanConfigurationRequest,
   UpdateCodeSecurityScanConfigurationResponse,
   UpdateCodeSecurityScanConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateCodeSecurityScanConfigurationRequest,
   output: UpdateCodeSecurityScanConfigurationResponse,
@@ -8593,7 +8592,7 @@ export const updateConfiguration: API.OperationMethod<
   UpdateConfigurationRequest,
   UpdateConfigurationResponse,
   UpdateConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateConfigurationRequest,
   output: UpdateConfigurationResponse,
@@ -8621,7 +8620,7 @@ export const updateEc2DeepInspectionConfiguration: API.OperationMethod<
   UpdateEc2DeepInspectionConfigurationRequest,
   UpdateEc2DeepInspectionConfigurationResponse,
   UpdateEc2DeepInspectionConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateEc2DeepInspectionConfigurationRequest,
   output: UpdateEc2DeepInspectionConfigurationResponse,
@@ -8651,7 +8650,7 @@ export const updateEncryptionKey: API.OperationMethod<
   UpdateEncryptionKeyRequest,
   UpdateEncryptionKeyResponse,
   UpdateEncryptionKeyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateEncryptionKeyRequest,
   output: UpdateEncryptionKeyResponse,
@@ -8681,7 +8680,7 @@ export const updateFilter: API.OperationMethod<
   UpdateFilterRequest,
   UpdateFilterResponse,
   UpdateFilterError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateFilterRequest,
   output: UpdateFilterResponse,
@@ -8710,7 +8709,7 @@ export const updateOrganizationConfiguration: API.OperationMethod<
   UpdateOrganizationConfigurationRequest,
   UpdateOrganizationConfigurationResponse,
   UpdateOrganizationConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateOrganizationConfigurationRequest,
   output: UpdateOrganizationConfigurationResponse,
@@ -8739,7 +8738,7 @@ export const updateOrgEc2DeepInspectionConfiguration: API.OperationMethod<
   UpdateOrgEc2DeepInspectionConfigurationRequest,
   UpdateOrgEc2DeepInspectionConfigurationResponse,
   UpdateOrgEc2DeepInspectionConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateOrgEc2DeepInspectionConfigurationRequest,
   output: UpdateOrgEc2DeepInspectionConfigurationResponse,

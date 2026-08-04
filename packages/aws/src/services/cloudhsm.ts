@@ -6,7 +6,6 @@ import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 const svc = T.AwsApiService({
   sdkId: "CloudHSM",
   serviceShapeName: "CloudHsmFrontendService",
@@ -715,7 +714,7 @@ export const addTagsToResource: API.OperationMethod<
   AddTagsToResourceRequest,
   AddTagsToResourceResponse,
   AddTagsToResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: AddTagsToResourceRequest,
   output: AddTagsToResourceResponse,
@@ -753,7 +752,7 @@ export const createHapg: API.OperationMethod<
   CreateHapgRequest,
   CreateHapgResponse,
   CreateHapgError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateHapgRequest,
   output: CreateHapgResponse,
@@ -799,7 +798,7 @@ export const createHsm: API.OperationMethod<
   CreateHsmRequest,
   CreateHsmResponse,
   CreateHsmError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateHsmRequest,
   output: CreateHsmResponse,
@@ -836,7 +835,7 @@ export const createLunaClient: API.OperationMethod<
   CreateLunaClientRequest,
   CreateLunaClientResponse,
   CreateLunaClientError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateLunaClientRequest,
   output: CreateLunaClientResponse,
@@ -873,7 +872,7 @@ export const deleteHapg: API.OperationMethod<
   DeleteHapgRequest,
   DeleteHapgResponse,
   DeleteHapgError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteHapgRequest,
   output: DeleteHapgResponse,
@@ -911,7 +910,7 @@ export const deleteHsm: API.OperationMethod<
   DeleteHsmRequest,
   DeleteHsmResponse,
   DeleteHsmError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteHsmRequest,
   output: DeleteHsmResponse,
@@ -948,7 +947,7 @@ export const deleteLunaClient: API.OperationMethod<
   DeleteLunaClientRequest,
   DeleteLunaClientResponse,
   DeleteLunaClientError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteLunaClientRequest,
   output: DeleteLunaClientResponse,
@@ -985,7 +984,7 @@ export const describeHapg: API.OperationMethod<
   DescribeHapgRequest,
   DescribeHapgResponse,
   DescribeHapgError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeHapgRequest,
   output: DescribeHapgResponse,
@@ -1023,7 +1022,7 @@ export const describeHsm: API.OperationMethod<
   DescribeHsmRequest,
   DescribeHsmResponse,
   DescribeHsmError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeHsmRequest,
   output: DescribeHsmResponse,
@@ -1060,7 +1059,7 @@ export const describeLunaClient: API.OperationMethod<
   DescribeLunaClientRequest,
   DescribeLunaClientResponse,
   DescribeLunaClientError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeLunaClientRequest,
   output: DescribeLunaClientResponse,
@@ -1098,7 +1097,7 @@ export const getConfig: API.OperationMethod<
   GetConfigRequest,
   GetConfigResponse,
   GetConfigError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetConfigRequest,
   output: GetConfigResponse,
@@ -1135,7 +1134,7 @@ export const listAvailableZones: API.OperationMethod<
   ListAvailableZonesRequest,
   ListAvailableZonesResponse,
   ListAvailableZonesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListAvailableZonesRequest,
   output: ListAvailableZonesResponse,
@@ -1177,7 +1176,7 @@ export const listHapgs: API.OperationMethod<
   ListHapgsRequest,
   ListHapgsResponse,
   ListHapgsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListHapgsRequest,
   output: ListHapgsResponse,
@@ -1220,7 +1219,7 @@ export const listHsms: API.OperationMethod<
   ListHsmsRequest,
   ListHsmsResponse,
   ListHsmsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListHsmsRequest,
   output: ListHsmsResponse,
@@ -1262,7 +1261,7 @@ export const listLunaClients: API.OperationMethod<
   ListLunaClientsRequest,
   ListLunaClientsResponse,
   ListLunaClientsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListLunaClientsRequest,
   output: ListLunaClientsResponse,
@@ -1299,7 +1298,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -1336,7 +1335,7 @@ export const modifyHapg: API.OperationMethod<
   ModifyHapgRequest,
   ModifyHapgResponse,
   ModifyHapgError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyHapgRequest,
   output: ModifyHapgResponse,
@@ -1378,7 +1377,7 @@ export const modifyHsm: API.OperationMethod<
   ModifyHsmRequest,
   ModifyHsmResponse,
   ModifyHsmError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyHsmRequest,
   output: ModifyHsmResponse,
@@ -1414,7 +1413,7 @@ export const modifyLunaClient: API.OperationMethod<
   ModifyLunaClientRequest,
   ModifyLunaClientResponse,
   ModifyLunaClientError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyLunaClientRequest,
   output: ModifyLunaClientResponse,
@@ -1450,7 +1449,7 @@ export const removeTagsFromResource: API.OperationMethod<
   RemoveTagsFromResourceRequest,
   RemoveTagsFromResourceResponse,
   RemoveTagsFromResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: RemoveTagsFromResourceRequest,
   output: RemoveTagsFromResourceResponse,

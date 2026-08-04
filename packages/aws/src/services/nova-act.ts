@@ -8,7 +8,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 import { SensitiveString } from "../sensitive.ts";
 const svc = T.AwsApiService({
   sdkId: "Nova Act",
@@ -1088,7 +1087,7 @@ export const createAct: API.OperationMethod<
   CreateActRequest,
   CreateActResponse,
   CreateActError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateActRequest,
   output: CreateActResponse,
@@ -1122,7 +1121,7 @@ export const createSession: API.OperationMethod<
   CreateSessionRequest,
   CreateSessionResponse,
   CreateSessionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateSessionRequest,
   output: CreateSessionResponse,
@@ -1155,7 +1154,7 @@ export const createWorkflowDefinition: API.OperationMethod<
   CreateWorkflowDefinitionRequest,
   CreateWorkflowDefinitionResponse,
   CreateWorkflowDefinitionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateWorkflowDefinitionRequest,
   output: CreateWorkflowDefinitionResponse,
@@ -1187,7 +1186,7 @@ export const createWorkflowRun: API.OperationMethod<
   CreateWorkflowRunRequest,
   CreateWorkflowRunResponse,
   CreateWorkflowRunError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateWorkflowRunRequest,
   output: CreateWorkflowRunResponse,
@@ -1219,7 +1218,7 @@ export const deleteWorkflowDefinition: API.OperationMethod<
   DeleteWorkflowDefinitionRequest,
   DeleteWorkflowDefinitionResponse,
   DeleteWorkflowDefinitionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteWorkflowDefinitionRequest,
   output: DeleteWorkflowDefinitionResponse,
@@ -1251,7 +1250,7 @@ export const deleteWorkflowRun: API.OperationMethod<
   DeleteWorkflowRunRequest,
   DeleteWorkflowRunResponse,
   DeleteWorkflowRunError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteWorkflowRunRequest,
   output: DeleteWorkflowRunResponse,
@@ -1282,7 +1281,7 @@ export const getWorkflowDefinition: API.OperationMethod<
   GetWorkflowDefinitionRequest,
   GetWorkflowDefinitionResponse,
   GetWorkflowDefinitionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetWorkflowDefinitionRequest,
   output: GetWorkflowDefinitionResponse,
@@ -1313,7 +1312,7 @@ export const getWorkflowRun: API.OperationMethod<
   GetWorkflowRunRequest,
   GetWorkflowRunResponse,
   GetWorkflowRunError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetWorkflowRunRequest,
   output: GetWorkflowRunResponse,
@@ -1346,7 +1345,7 @@ export const invokeActStep: API.OperationMethod<
   InvokeActStepRequest,
   InvokeActStepResponse,
   InvokeActStepError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: InvokeActStepRequest,
   output: InvokeActStepResponse,
@@ -1379,7 +1378,7 @@ export const listActs: API.PaginatedOperationMethod<
   ListActsRequest,
   ListActsResponse,
   ListActsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ActSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListActsRequest,
@@ -1415,7 +1414,7 @@ export const listModels: API.OperationMethod<
   ListModelsRequest,
   ListModelsResponse,
   ListModelsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListModelsRequest,
   output: ListModelsResponse,
@@ -1440,7 +1439,7 @@ export const listSessions: API.PaginatedOperationMethod<
   ListSessionsRequest,
   ListSessionsResponse,
   ListSessionsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   SessionSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSessionsRequest,
@@ -1477,7 +1476,7 @@ export const listWorkflowDefinitions: API.PaginatedOperationMethod<
   ListWorkflowDefinitionsRequest,
   ListWorkflowDefinitionsResponse,
   ListWorkflowDefinitionsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   WorkflowDefinitionSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListWorkflowDefinitionsRequest,
@@ -1514,7 +1513,7 @@ export const listWorkflowRuns: API.PaginatedOperationMethod<
   ListWorkflowRunsRequest,
   ListWorkflowRunsResponse,
   ListWorkflowRunsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   WorkflowRunSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListWorkflowRunsRequest,
@@ -1553,7 +1552,7 @@ export const updateAct: API.OperationMethod<
   UpdateActRequest,
   UpdateActResponse,
   UpdateActError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateActRequest,
   output: UpdateActResponse,
@@ -1585,7 +1584,7 @@ export const updateWorkflowRun: API.OperationMethod<
   UpdateWorkflowRunRequest,
   UpdateWorkflowRunResponse,
   UpdateWorkflowRunError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateWorkflowRunRequest,
   output: UpdateWorkflowRunResponse,

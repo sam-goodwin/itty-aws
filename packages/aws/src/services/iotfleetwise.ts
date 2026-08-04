@@ -8,7 +8,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 import { SensitiveString } from "../sensitive.ts";
 const svc = T.AwsApiService({
   sdkId: "IoTFleetWise",
@@ -3782,7 +3781,7 @@ export const associateVehicleFleet: API.OperationMethod<
   AssociateVehicleFleetRequest,
   AssociateVehicleFleetResponse,
   AssociateVehicleFleetError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: AssociateVehicleFleetRequest,
   output: AssociateVehicleFleetResponse,
@@ -3819,7 +3818,7 @@ export const batchCreateVehicle: API.OperationMethod<
   BatchCreateVehicleRequest,
   BatchCreateVehicleResponse,
   BatchCreateVehicleError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: BatchCreateVehicleRequest,
   output: BatchCreateVehicleResponse,
@@ -3855,7 +3854,7 @@ export const batchUpdateVehicle: API.OperationMethod<
   BatchUpdateVehicleRequest,
   BatchUpdateVehicleResponse,
   BatchUpdateVehicleError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: BatchUpdateVehicleRequest,
   output: BatchUpdateVehicleResponse,
@@ -3894,7 +3893,7 @@ export const createCampaign: API.OperationMethod<
   CreateCampaignRequest,
   CreateCampaignResponse,
   CreateCampaignError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateCampaignRequest,
   output: CreateCampaignResponse,
@@ -3936,7 +3935,7 @@ export const createDecoderManifest: API.OperationMethod<
   CreateDecoderManifestRequest,
   CreateDecoderManifestResponse,
   CreateDecoderManifestError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateDecoderManifestRequest,
   output: CreateDecoderManifestResponse,
@@ -3975,7 +3974,7 @@ export const createFleet: API.OperationMethod<
   CreateFleetRequest,
   CreateFleetResponse,
   CreateFleetError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateFleetRequest,
   output: CreateFleetResponse,
@@ -4013,7 +4012,7 @@ export const createModelManifest: API.OperationMethod<
   CreateModelManifestRequest,
   CreateModelManifestResponse,
   CreateModelManifestError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateModelManifestRequest,
   output: CreateModelManifestResponse,
@@ -4048,7 +4047,7 @@ export const createSignalCatalog: API.OperationMethod<
   CreateSignalCatalogRequest,
   CreateSignalCatalogResponse,
   CreateSignalCatalogError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateSignalCatalogRequest,
   output: CreateSignalCatalogResponse,
@@ -4085,7 +4084,7 @@ export const createStateTemplate: API.OperationMethod<
   CreateStateTemplateRequest,
   CreateStateTemplateResponse,
   CreateStateTemplateError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateStateTemplateRequest,
   output: CreateStateTemplateResponse,
@@ -4128,7 +4127,7 @@ export const createVehicle: API.OperationMethod<
   CreateVehicleRequest,
   CreateVehicleResponse,
   CreateVehicleError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateVehicleRequest,
   output: CreateVehicleResponse,
@@ -4160,7 +4159,7 @@ export const deleteCampaign: API.OperationMethod<
   DeleteCampaignRequest,
   DeleteCampaignResponse,
   DeleteCampaignError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteCampaignRequest,
   output: DeleteCampaignResponse,
@@ -4190,7 +4189,7 @@ export const deleteDecoderManifest: API.OperationMethod<
   DeleteDecoderManifestRequest,
   DeleteDecoderManifestResponse,
   DeleteDecoderManifestError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteDecoderManifestRequest,
   output: DeleteDecoderManifestResponse,
@@ -4221,7 +4220,7 @@ export const deleteFleet: API.OperationMethod<
   DeleteFleetRequest,
   DeleteFleetResponse,
   DeleteFleetError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteFleetRequest,
   output: DeleteFleetResponse,
@@ -4250,7 +4249,7 @@ export const deleteModelManifest: API.OperationMethod<
   DeleteModelManifestRequest,
   DeleteModelManifestResponse,
   DeleteModelManifestError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteModelManifestRequest,
   output: DeleteModelManifestResponse,
@@ -4280,7 +4279,7 @@ export const deleteSignalCatalog: API.OperationMethod<
   DeleteSignalCatalogRequest,
   DeleteSignalCatalogResponse,
   DeleteSignalCatalogError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteSignalCatalogRequest,
   output: DeleteSignalCatalogResponse,
@@ -4309,7 +4308,7 @@ export const deleteStateTemplate: API.OperationMethod<
   DeleteStateTemplateRequest,
   DeleteStateTemplateResponse,
   DeleteStateTemplateError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteStateTemplateRequest,
   output: DeleteStateTemplateResponse,
@@ -4337,7 +4336,7 @@ export const deleteVehicle: API.OperationMethod<
   DeleteVehicleRequest,
   DeleteVehicleResponse,
   DeleteVehicleError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteVehicleRequest,
   output: DeleteVehicleResponse,
@@ -4367,7 +4366,7 @@ export const disassociateVehicleFleet: API.OperationMethod<
   DisassociateVehicleFleetRequest,
   DisassociateVehicleFleetResponse,
   DisassociateVehicleFleetError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DisassociateVehicleFleetRequest,
   output: DisassociateVehicleFleetResponse,
@@ -4398,7 +4397,7 @@ export const getCampaign: API.OperationMethod<
   GetCampaignRequest,
   GetCampaignResponse,
   GetCampaignError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetCampaignRequest,
   output: GetCampaignResponse,
@@ -4426,7 +4425,7 @@ export const getDecoderManifest: API.OperationMethod<
   GetDecoderManifestRequest,
   GetDecoderManifestResponse,
   GetDecoderManifestError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetDecoderManifestRequest,
   output: GetDecoderManifestResponse,
@@ -4455,7 +4454,7 @@ export const getEncryptionConfiguration: API.OperationMethod<
   GetEncryptionConfigurationRequest,
   GetEncryptionConfigurationResponse,
   GetEncryptionConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetEncryptionConfigurationRequest,
   output: GetEncryptionConfigurationResponse,
@@ -4485,7 +4484,7 @@ export const getFleet: API.OperationMethod<
   GetFleetRequest,
   GetFleetResponse,
   GetFleetError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetFleetRequest,
   output: GetFleetResponse,
@@ -4512,7 +4511,7 @@ export const getLoggingOptions: API.OperationMethod<
   GetLoggingOptionsRequest,
   GetLoggingOptionsResponse,
   GetLoggingOptionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetLoggingOptionsRequest,
   output: GetLoggingOptionsResponse,
@@ -4535,7 +4534,7 @@ export const getModelManifest: API.OperationMethod<
   GetModelManifestRequest,
   GetModelManifestResponse,
   GetModelManifestError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetModelManifestRequest,
   output: GetModelManifestResponse,
@@ -4570,7 +4569,7 @@ export const getRegisterAccountStatus: API.OperationMethod<
   GetRegisterAccountStatusRequest,
   GetRegisterAccountStatusResponse,
   GetRegisterAccountStatusError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetRegisterAccountStatusRequest,
   output: GetRegisterAccountStatusResponse,
@@ -4599,7 +4598,7 @@ export const getSignalCatalog: API.OperationMethod<
   GetSignalCatalogRequest,
   GetSignalCatalogResponse,
   GetSignalCatalogError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetSignalCatalogRequest,
   output: GetSignalCatalogResponse,
@@ -4630,7 +4629,7 @@ export const getStateTemplate: API.OperationMethod<
   GetStateTemplateRequest,
   GetStateTemplateResponse,
   GetStateTemplateError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetStateTemplateRequest,
   output: GetStateTemplateResponse,
@@ -4660,7 +4659,7 @@ export const getVehicle: API.OperationMethod<
   GetVehicleRequest,
   GetVehicleResponse,
   GetVehicleError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetVehicleRequest,
   output: GetVehicleResponse,
@@ -4690,7 +4689,7 @@ export const getVehicleStatus: API.PaginatedOperationMethod<
   GetVehicleStatusRequest,
   GetVehicleStatusResponse,
   GetVehicleStatusError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   VehicleStatus
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetVehicleStatusRequest,
@@ -4730,7 +4729,7 @@ export const importDecoderManifest: API.OperationMethod<
   ImportDecoderManifestRequest,
   ImportDecoderManifestResponse,
   ImportDecoderManifestError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ImportDecoderManifestRequest,
   output: ImportDecoderManifestResponse,
@@ -4766,7 +4765,7 @@ export const importSignalCatalog: API.OperationMethod<
   ImportSignalCatalogRequest,
   ImportSignalCatalogResponse,
   ImportSignalCatalogError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ImportSignalCatalogRequest,
   output: ImportSignalCatalogResponse,
@@ -4799,7 +4798,7 @@ export const listCampaigns: API.PaginatedOperationMethod<
   ListCampaignsRequest,
   ListCampaignsResponse,
   ListCampaignsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   CampaignSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCampaignsRequest,
@@ -4832,7 +4831,7 @@ export const listDecoderManifestNetworkInterfaces: API.PaginatedOperationMethod<
   ListDecoderManifestNetworkInterfacesRequest,
   ListDecoderManifestNetworkInterfacesResponse,
   ListDecoderManifestNetworkInterfacesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   NetworkInterface
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDecoderManifestNetworkInterfacesRequest,
@@ -4870,7 +4869,7 @@ export const listDecoderManifests: API.PaginatedOperationMethod<
   ListDecoderManifestsRequest,
   ListDecoderManifestsResponse,
   ListDecoderManifestsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   DecoderManifestSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDecoderManifestsRequest,
@@ -4908,7 +4907,7 @@ export const listDecoderManifestSignals: API.PaginatedOperationMethod<
   ListDecoderManifestSignalsRequest,
   ListDecoderManifestSignalsResponse,
   ListDecoderManifestSignalsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   SignalDecoder
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDecoderManifestSignalsRequest,
@@ -4947,7 +4946,7 @@ export const listFleets: API.PaginatedOperationMethod<
   ListFleetsRequest,
   ListFleetsResponse,
   ListFleetsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   FleetSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFleetsRequest,
@@ -4986,7 +4985,7 @@ export const listFleetsForVehicle: API.PaginatedOperationMethod<
   ListFleetsForVehicleRequest,
   ListFleetsForVehicleResponse,
   ListFleetsForVehicleError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   FleetId
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFleetsForVehicleRequest,
@@ -5026,7 +5025,7 @@ export const listModelManifestNodes: API.PaginatedOperationMethod<
   ListModelManifestNodesRequest,
   ListModelManifestNodesResponse,
   ListModelManifestNodesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   Node
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListModelManifestNodesRequest,
@@ -5065,7 +5064,7 @@ export const listModelManifests: API.PaginatedOperationMethod<
   ListModelManifestsRequest,
   ListModelManifestsResponse,
   ListModelManifestsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ModelManifestSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListModelManifestsRequest,
@@ -5104,7 +5103,7 @@ export const listSignalCatalogNodes: API.PaginatedOperationMethod<
   ListSignalCatalogNodesRequest,
   ListSignalCatalogNodesResponse,
   ListSignalCatalogNodesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   Node
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSignalCatalogNodesRequest,
@@ -5146,7 +5145,7 @@ export const listSignalCatalogs: API.PaginatedOperationMethod<
   ListSignalCatalogsRequest,
   ListSignalCatalogsResponse,
   ListSignalCatalogsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   SignalCatalogSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSignalCatalogsRequest,
@@ -5183,7 +5182,7 @@ export const listStateTemplates: API.PaginatedOperationMethod<
   ListStateTemplatesRequest,
   ListStateTemplatesResponse,
   ListStateTemplatesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   StateTemplateSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListStateTemplatesRequest,
@@ -5219,7 +5218,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -5250,7 +5249,7 @@ export const listVehicles: API.PaginatedOperationMethod<
   ListVehiclesRequest,
   ListVehiclesResponse,
   ListVehiclesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   VehicleSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListVehiclesRequest,
@@ -5288,7 +5287,7 @@ export const listVehiclesInFleet: API.PaginatedOperationMethod<
   ListVehiclesInFleetRequest,
   ListVehiclesInFleetResponse,
   ListVehiclesInFleetError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   VehicleName
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListVehiclesInFleetRequest,
@@ -5329,7 +5328,7 @@ export const putEncryptionConfiguration: API.OperationMethod<
   PutEncryptionConfigurationRequest,
   PutEncryptionConfigurationResponse,
   PutEncryptionConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PutEncryptionConfigurationRequest,
   output: PutEncryptionConfigurationResponse,
@@ -5360,7 +5359,7 @@ export const putLoggingOptions: API.OperationMethod<
   PutLoggingOptionsRequest,
   PutLoggingOptionsResponse,
   PutLoggingOptionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PutLoggingOptionsRequest,
   output: PutLoggingOptionsResponse,
@@ -5413,7 +5412,7 @@ export const registerAccount: API.OperationMethod<
   RegisterAccountRequest,
   RegisterAccountResponse,
   RegisterAccountError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: RegisterAccountRequest,
   output: RegisterAccountResponse,
@@ -5445,7 +5444,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -5475,7 +5474,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -5505,7 +5504,7 @@ export const updateCampaign: API.OperationMethod<
   UpdateCampaignRequest,
   UpdateCampaignResponse,
   UpdateCampaignError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateCampaignRequest,
   output: UpdateCampaignResponse,
@@ -5540,7 +5539,7 @@ export const updateDecoderManifest: API.OperationMethod<
   UpdateDecoderManifestRequest,
   UpdateDecoderManifestResponse,
   UpdateDecoderManifestError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateDecoderManifestRequest,
   output: UpdateDecoderManifestResponse,
@@ -5573,7 +5572,7 @@ export const updateFleet: API.OperationMethod<
   UpdateFleetRequest,
   UpdateFleetResponse,
   UpdateFleetError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateFleetRequest,
   output: UpdateFleetResponse,
@@ -5607,7 +5606,7 @@ export const updateModelManifest: API.OperationMethod<
   UpdateModelManifestRequest,
   UpdateModelManifestResponse,
   UpdateModelManifestError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateModelManifestRequest,
   output: UpdateModelManifestResponse,
@@ -5643,7 +5642,7 @@ export const updateSignalCatalog: API.OperationMethod<
   UpdateSignalCatalogRequest,
   UpdateSignalCatalogResponse,
   UpdateSignalCatalogError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateSignalCatalogRequest,
   output: UpdateSignalCatalogResponse,
@@ -5681,7 +5680,7 @@ export const updateStateTemplate: API.OperationMethod<
   UpdateStateTemplateRequest,
   UpdateStateTemplateResponse,
   UpdateStateTemplateError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateStateTemplateRequest,
   output: UpdateStateTemplateResponse,
@@ -5717,7 +5716,7 @@ export const updateVehicle: API.OperationMethod<
   UpdateVehicleRequest,
   UpdateVehicleResponse,
   UpdateVehicleError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateVehicleRequest,
   output: UpdateVehicleResponse,

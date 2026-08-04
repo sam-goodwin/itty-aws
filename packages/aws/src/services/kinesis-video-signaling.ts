@@ -8,7 +8,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 import { SensitiveString } from "../sensitive.ts";
 const svc = T.AwsApiService({
   sdkId: "Kinesis Video Signaling",
@@ -246,7 +245,7 @@ export const getIceServerConfig: API.OperationMethod<
   GetIceServerConfigRequest,
   GetIceServerConfigResponse,
   GetIceServerConfigError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetIceServerConfigRequest,
   output: GetIceServerConfigResponse,
@@ -281,7 +280,7 @@ export const sendAlexaOfferToMaster: API.OperationMethod<
   SendAlexaOfferToMasterRequest,
   SendAlexaOfferToMasterResponse,
   SendAlexaOfferToMasterError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: SendAlexaOfferToMasterRequest,
   output: SendAlexaOfferToMasterResponse,

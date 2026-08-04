@@ -7,7 +7,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 const svc = T.AwsApiService({
   sdkId: "Kendra Ranking",
   serviceShapeName: "AWSKendraRerankingFrontendService",
@@ -505,7 +504,7 @@ export const createRescoreExecutionPlan: API.OperationMethod<
   CreateRescoreExecutionPlanRequest,
   CreateRescoreExecutionPlanResponse,
   CreateRescoreExecutionPlanError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateRescoreExecutionPlanRequest,
   output: CreateRescoreExecutionPlanResponse,
@@ -539,7 +538,7 @@ export const deleteRescoreExecutionPlan: API.OperationMethod<
   DeleteRescoreExecutionPlanRequest,
   DeleteRescoreExecutionPlanResponse,
   DeleteRescoreExecutionPlanError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteRescoreExecutionPlanRequest,
   output: DeleteRescoreExecutionPlanResponse,
@@ -572,7 +571,7 @@ export const describeRescoreExecutionPlan: API.OperationMethod<
   DescribeRescoreExecutionPlanRequest,
   DescribeRescoreExecutionPlanResponse,
   DescribeRescoreExecutionPlanError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeRescoreExecutionPlanRequest,
   output: DescribeRescoreExecutionPlanResponse,
@@ -603,7 +602,7 @@ export const listRescoreExecutionPlans: API.PaginatedOperationMethod<
   ListRescoreExecutionPlansRequest,
   ListRescoreExecutionPlansResponse,
   ListRescoreExecutionPlansError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRescoreExecutionPlansRequest,
@@ -640,7 +639,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -674,7 +673,7 @@ export const rescore: API.OperationMethod<
   RescoreRequest,
   RescoreResult,
   RescoreError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: RescoreRequest,
   output: RescoreResult,
@@ -709,7 +708,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -742,7 +741,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -779,7 +778,7 @@ export const updateRescoreExecutionPlan: API.OperationMethod<
   UpdateRescoreExecutionPlanRequest,
   UpdateRescoreExecutionPlanResponse,
   UpdateRescoreExecutionPlanError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateRescoreExecutionPlanRequest,
   output: UpdateRescoreExecutionPlanResponse,

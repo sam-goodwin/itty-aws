@@ -8,7 +8,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 import { SensitiveString } from "../sensitive.ts";
 const ns = T.XmlNamespace("http://memorydb.amazonaws.com/doc/2021-01-01/");
 const svc = T.AwsApiService({
@@ -3182,7 +3181,7 @@ export const batchUpdateCluster: API.OperationMethod<
   BatchUpdateClusterRequest,
   BatchUpdateClusterResponse,
   BatchUpdateClusterError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: BatchUpdateClusterRequest,
   output: BatchUpdateClusterResponse,
@@ -3213,7 +3212,7 @@ export const copySnapshot: API.OperationMethod<
   CopySnapshotRequest,
   CopySnapshotResponse,
   CopySnapshotError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CopySnapshotRequest,
   output: CopySnapshotResponse,
@@ -3248,7 +3247,7 @@ export const createACL: API.OperationMethod<
   CreateACLRequest,
   CreateACLResponse,
   CreateACLError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateACLRequest,
   output: CreateACLResponse,
@@ -3293,7 +3292,7 @@ export const createCluster: API.OperationMethod<
   CreateClusterRequest,
   CreateClusterResponse,
   CreateClusterError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateClusterRequest,
   output: CreateClusterResponse,
@@ -3337,7 +3336,7 @@ export const createMultiRegionCluster: API.OperationMethod<
   CreateMultiRegionClusterRequest,
   CreateMultiRegionClusterResponse,
   CreateMultiRegionClusterError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateMultiRegionClusterRequest,
   output: CreateMultiRegionClusterResponse,
@@ -3371,7 +3370,7 @@ export const createParameterGroup: API.OperationMethod<
   CreateParameterGroupRequest,
   CreateParameterGroupResponse,
   CreateParameterGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateParameterGroupRequest,
   output: CreateParameterGroupResponse,
@@ -3406,7 +3405,7 @@ export const createSnapshot: API.OperationMethod<
   CreateSnapshotRequest,
   CreateSnapshotResponse,
   CreateSnapshotError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateSnapshotRequest,
   output: CreateSnapshotResponse,
@@ -3444,7 +3443,7 @@ export const createSubnetGroup: API.OperationMethod<
   CreateSubnetGroupRequest,
   CreateSubnetGroupResponse,
   CreateSubnetGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateSubnetGroupRequest,
   output: CreateSubnetGroupResponse,
@@ -3477,7 +3476,7 @@ export const createUser: API.OperationMethod<
   CreateUserRequest,
   CreateUserResponse,
   CreateUserError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateUserRequest,
   output: CreateUserResponse,
@@ -3506,7 +3505,7 @@ export const deleteACL: API.OperationMethod<
   DeleteACLRequest,
   DeleteACLResponse,
   DeleteACLError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteACLRequest,
   output: DeleteACLResponse,
@@ -3538,7 +3537,7 @@ export const deleteCluster: API.OperationMethod<
   DeleteClusterRequest,
   DeleteClusterResponse,
   DeleteClusterError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteClusterRequest,
   output: DeleteClusterResponse,
@@ -3567,7 +3566,7 @@ export const deleteMultiRegionCluster: API.OperationMethod<
   DeleteMultiRegionClusterRequest,
   DeleteMultiRegionClusterResponse,
   DeleteMultiRegionClusterError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteMultiRegionClusterRequest,
   output: DeleteMultiRegionClusterResponse,
@@ -3596,7 +3595,7 @@ export const deleteParameterGroup: API.OperationMethod<
   DeleteParameterGroupRequest,
   DeleteParameterGroupResponse,
   DeleteParameterGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteParameterGroupRequest,
   output: DeleteParameterGroupResponse,
@@ -3626,7 +3625,7 @@ export const deleteSnapshot: API.OperationMethod<
   DeleteSnapshotRequest,
   DeleteSnapshotResponse,
   DeleteSnapshotError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteSnapshotRequest,
   output: DeleteSnapshotResponse,
@@ -3654,7 +3653,7 @@ export const deleteSubnetGroup: API.OperationMethod<
   DeleteSubnetGroupRequest,
   DeleteSubnetGroupResponse,
   DeleteSubnetGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteSubnetGroupRequest,
   output: DeleteSubnetGroupResponse,
@@ -3680,7 +3679,7 @@ export const deleteUser: API.OperationMethod<
   DeleteUserRequest,
   DeleteUserResponse,
   DeleteUserError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteUserRequest,
   output: DeleteUserResponse,
@@ -3705,7 +3704,7 @@ export const describeACLs: API.PaginatedOperationMethod<
   DescribeACLsRequest,
   DescribeACLsResponse,
   DescribeACLsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ACL
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeACLsRequest,
@@ -3735,7 +3734,7 @@ export const describeClusters: API.PaginatedOperationMethod<
   DescribeClustersRequest,
   DescribeClustersResponse,
   DescribeClustersError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   Cluster
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeClustersRequest,
@@ -3769,7 +3768,7 @@ export const describeEngineVersions: API.PaginatedOperationMethod<
   DescribeEngineVersionsRequest,
   DescribeEngineVersionsResponse,
   DescribeEngineVersionsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   EngineVersionInfo
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeEngineVersionsRequest,
@@ -3804,7 +3803,7 @@ export const describeEvents: API.PaginatedOperationMethod<
   DescribeEventsRequest,
   DescribeEventsResponse,
   DescribeEventsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   Event
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeEventsRequest,
@@ -3838,7 +3837,7 @@ export const describeMultiRegionClusters: API.PaginatedOperationMethod<
   DescribeMultiRegionClustersRequest,
   DescribeMultiRegionClustersResponse,
   DescribeMultiRegionClustersError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   MultiRegionCluster
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeMultiRegionClustersRequest,
@@ -3873,7 +3872,7 @@ export const describeMultiRegionParameterGroups: API.OperationMethod<
   DescribeMultiRegionParameterGroupsRequest,
   DescribeMultiRegionParameterGroupsResponse,
   DescribeMultiRegionParameterGroupsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeMultiRegionParameterGroupsRequest,
   output: DescribeMultiRegionParameterGroupsResponse,
@@ -3901,7 +3900,7 @@ export const describeMultiRegionParameters: API.OperationMethod<
   DescribeMultiRegionParametersRequest,
   DescribeMultiRegionParametersResponse,
   DescribeMultiRegionParametersError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeMultiRegionParametersRequest,
   output: DescribeMultiRegionParametersResponse,
@@ -3929,7 +3928,7 @@ export const describeParameterGroups: API.PaginatedOperationMethod<
   DescribeParameterGroupsRequest,
   DescribeParameterGroupsResponse,
   DescribeParameterGroupsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ParameterGroup
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeParameterGroupsRequest,
@@ -3964,7 +3963,7 @@ export const describeParameters: API.PaginatedOperationMethod<
   DescribeParametersRequest,
   DescribeParametersResponse,
   DescribeParametersError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   Parameter
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeParametersRequest,
@@ -3999,7 +3998,7 @@ export const describeReservedNodes: API.PaginatedOperationMethod<
   DescribeReservedNodesRequest,
   DescribeReservedNodesResponse,
   DescribeReservedNodesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ReservedNode
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeReservedNodesRequest,
@@ -4034,7 +4033,7 @@ export const describeReservedNodesOfferings: API.PaginatedOperationMethod<
   DescribeReservedNodesOfferingsRequest,
   DescribeReservedNodesOfferingsResponse,
   DescribeReservedNodesOfferingsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ReservedNodesOffering
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeReservedNodesOfferingsRequest,
@@ -4067,7 +4066,7 @@ export const describeServiceUpdates: API.PaginatedOperationMethod<
   DescribeServiceUpdatesRequest,
   DescribeServiceUpdatesResponse,
   DescribeServiceUpdatesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ServiceUpdate
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeServiceUpdatesRequest,
@@ -4101,7 +4100,7 @@ export const describeSnapshots: API.PaginatedOperationMethod<
   DescribeSnapshotsRequest,
   DescribeSnapshotsResponse,
   DescribeSnapshotsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   Snapshot
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeSnapshotsRequest,
@@ -4134,7 +4133,7 @@ export const describeSubnetGroups: API.PaginatedOperationMethod<
   DescribeSubnetGroupsRequest,
   DescribeSubnetGroupsResponse,
   DescribeSubnetGroupsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   SubnetGroup
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeSubnetGroupsRequest,
@@ -4162,7 +4161,7 @@ export const describeUsers: API.PaginatedOperationMethod<
   DescribeUsersRequest,
   DescribeUsersResponse,
   DescribeUsersError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   User
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeUsersRequest,
@@ -4197,7 +4196,7 @@ export const failoverShard: API.OperationMethod<
   FailoverShardRequest,
   FailoverShardResponse,
   FailoverShardError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: FailoverShardRequest,
   output: FailoverShardResponse,
@@ -4228,7 +4227,7 @@ export const listAllowedMultiRegionClusterUpdates: API.OperationMethod<
   ListAllowedMultiRegionClusterUpdatesRequest,
   ListAllowedMultiRegionClusterUpdatesResponse,
   ListAllowedMultiRegionClusterUpdatesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListAllowedMultiRegionClusterUpdatesRequest,
   output: ListAllowedMultiRegionClusterUpdatesResponse,
@@ -4257,7 +4256,7 @@ export const listAllowedNodeTypeUpdates: API.OperationMethod<
   ListAllowedNodeTypeUpdatesRequest,
   ListAllowedNodeTypeUpdatesResponse,
   ListAllowedNodeTypeUpdatesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListAllowedNodeTypeUpdatesRequest,
   output: ListAllowedNodeTypeUpdatesResponse,
@@ -4294,7 +4293,7 @@ export const listTags: API.OperationMethod<
   ListTagsRequest,
   ListTagsResponse,
   ListTagsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListTagsRequest,
   output: ListTagsResponse,
@@ -4332,7 +4331,7 @@ export const purchaseReservedNodesOffering: API.OperationMethod<
   PurchaseReservedNodesOfferingRequest,
   PurchaseReservedNodesOfferingResponse,
   PurchaseReservedNodesOfferingError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PurchaseReservedNodesOfferingRequest,
   output: PurchaseReservedNodesOfferingResponse,
@@ -4364,7 +4363,7 @@ export const resetParameterGroup: API.OperationMethod<
   ResetParameterGroupRequest,
   ResetParameterGroupResponse,
   ResetParameterGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ResetParameterGroupRequest,
   output: ResetParameterGroupResponse,
@@ -4410,7 +4409,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -4464,7 +4463,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -4504,7 +4503,7 @@ export const updateACL: API.OperationMethod<
   UpdateACLRequest,
   UpdateACLResponse,
   UpdateACLError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateACLRequest,
   output: UpdateACLResponse,
@@ -4547,7 +4546,7 @@ export const updateCluster: API.OperationMethod<
   UpdateClusterRequest,
   UpdateClusterResponse,
   UpdateClusterError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateClusterRequest,
   output: UpdateClusterResponse,
@@ -4588,7 +4587,7 @@ export const updateMultiRegionCluster: API.OperationMethod<
   UpdateMultiRegionClusterRequest,
   UpdateMultiRegionClusterResponse,
   UpdateMultiRegionClusterError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateMultiRegionClusterRequest,
   output: UpdateMultiRegionClusterResponse,
@@ -4618,7 +4617,7 @@ export const updateParameterGroup: API.OperationMethod<
   UpdateParameterGroupRequest,
   UpdateParameterGroupResponse,
   UpdateParameterGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateParameterGroupRequest,
   output: UpdateParameterGroupResponse,
@@ -4649,7 +4648,7 @@ export const updateSubnetGroup: API.OperationMethod<
   UpdateSubnetGroupRequest,
   UpdateSubnetGroupResponse,
   UpdateSubnetGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateSubnetGroupRequest,
   output: UpdateSubnetGroupResponse,
@@ -4679,7 +4678,7 @@ export const updateUser: API.OperationMethod<
   UpdateUserRequest,
   UpdateUserResponse,
   UpdateUserError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateUserRequest,
   output: UpdateUserResponse,

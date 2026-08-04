@@ -8,7 +8,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region as Rgn } from "../region.ts";
 import { SensitiveString } from "../sensitive.ts";
 const ns = T.XmlNamespace("http://ec2.amazonaws.com/doc/2016-11-15");
 const svc = T.AwsApiService({ sdkId: "EC2", serviceShapeName: "AmazonEC2" });
@@ -74447,7 +74446,7 @@ export const acceptAddressTransfer: API.OperationMethod<
   AcceptAddressTransferRequest,
   AcceptAddressTransferResult,
   AcceptAddressTransferError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: AcceptAddressTransferRequest,
   output: AcceptAddressTransferResult,
@@ -74476,7 +74475,7 @@ export const acceptCapacityReservationBillingOwnership: API.OperationMethod<
   AcceptCapacityReservationBillingOwnershipRequest,
   AcceptCapacityReservationBillingOwnershipResult,
   AcceptCapacityReservationBillingOwnershipError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: AcceptCapacityReservationBillingOwnershipRequest,
   output: AcceptCapacityReservationBillingOwnershipResult,
@@ -74502,7 +74501,7 @@ export const acceptReservedInstancesExchangeQuote: API.OperationMethod<
   AcceptReservedInstancesExchangeQuoteRequest,
   AcceptReservedInstancesExchangeQuoteResult,
   AcceptReservedInstancesExchangeQuoteError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: AcceptReservedInstancesExchangeQuoteRequest,
   output: AcceptReservedInstancesExchangeQuoteResult,
@@ -74524,7 +74523,7 @@ export const acceptTransitGatewayClientVpnAttachment: API.OperationMethod<
   AcceptTransitGatewayClientVpnAttachmentRequest,
   AcceptTransitGatewayClientVpnAttachmentResult,
   AcceptTransitGatewayClientVpnAttachmentError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: AcceptTransitGatewayClientVpnAttachmentRequest,
   output: AcceptTransitGatewayClientVpnAttachmentResult,
@@ -74546,7 +74545,7 @@ export const acceptTransitGatewayMulticastDomainAssociations: API.OperationMetho
   AcceptTransitGatewayMulticastDomainAssociationsRequest,
   AcceptTransitGatewayMulticastDomainAssociationsResult,
   AcceptTransitGatewayMulticastDomainAssociationsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: AcceptTransitGatewayMulticastDomainAssociationsRequest,
   output: AcceptTransitGatewayMulticastDomainAssociationsResult,
@@ -74569,7 +74568,7 @@ export const acceptTransitGatewayPeeringAttachment: API.OperationMethod<
   AcceptTransitGatewayPeeringAttachmentRequest,
   AcceptTransitGatewayPeeringAttachmentResult,
   AcceptTransitGatewayPeeringAttachmentError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: AcceptTransitGatewayPeeringAttachmentRequest,
   output: AcceptTransitGatewayPeeringAttachmentResult,
@@ -74599,7 +74598,7 @@ export const acceptTransitGatewayVpcAttachment: API.OperationMethod<
   AcceptTransitGatewayVpcAttachmentRequest,
   AcceptTransitGatewayVpcAttachmentResult,
   AcceptTransitGatewayVpcAttachmentError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: AcceptTransitGatewayVpcAttachmentRequest,
   output: AcceptTransitGatewayVpcAttachmentResult,
@@ -74626,7 +74625,7 @@ export const acceptVpcEndpointConnections: API.OperationMethod<
   AcceptVpcEndpointConnectionsRequest,
   AcceptVpcEndpointConnectionsResult,
   AcceptVpcEndpointConnectionsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: AcceptVpcEndpointConnectionsRequest,
   output: AcceptVpcEndpointConnectionsResult,
@@ -74660,7 +74659,7 @@ export const acceptVpcPeeringConnection: API.OperationMethod<
   AcceptVpcPeeringConnectionRequest,
   AcceptVpcPeeringConnectionResult,
   AcceptVpcPeeringConnectionError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: AcceptVpcPeeringConnectionRequest,
   output: AcceptVpcPeeringConnectionResult,
@@ -74698,7 +74697,7 @@ export const advertiseByoipCidr: API.OperationMethod<
   AdvertiseByoipCidrRequest,
   AdvertiseByoipCidrResult,
   AdvertiseByoipCidrError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: AdvertiseByoipCidrRequest,
   output: AdvertiseByoipCidrResult,
@@ -74744,7 +74743,7 @@ export const allocateAddress: API.OperationMethod<
   AllocateAddressRequest,
   AllocateAddressResult,
   AllocateAddressError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: AllocateAddressRequest,
   output: AllocateAddressResult,
@@ -74769,7 +74768,7 @@ export const allocateHosts: API.OperationMethod<
   AllocateHostsRequest,
   AllocateHostsResult,
   AllocateHostsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: AllocateHostsRequest,
   output: AllocateHostsResult,
@@ -74800,7 +74799,7 @@ export const allocateIpamPoolCidr: API.OperationMethod<
   AllocateIpamPoolCidrRequest,
   AllocateIpamPoolCidrResult,
   AllocateIpamPoolCidrError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: AllocateIpamPoolCidrRequest,
   output: AllocateIpamPoolCidrResult,
@@ -74827,7 +74826,7 @@ export const applySecurityGroupsToClientVpnTargetNetwork: API.OperationMethod<
   ApplySecurityGroupsToClientVpnTargetNetworkRequest,
   ApplySecurityGroupsToClientVpnTargetNetworkResult,
   ApplySecurityGroupsToClientVpnTargetNetworkError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ApplySecurityGroupsToClientVpnTargetNetworkRequest,
   output: ApplySecurityGroupsToClientVpnTargetNetworkResult,
@@ -74861,7 +74860,7 @@ export const assignIpv6Addresses: API.OperationMethod<
   AssignIpv6AddressesRequest,
   AssignIpv6AddressesResult,
   AssignIpv6AddressesError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: AssignIpv6AddressesRequest,
   output: AssignIpv6AddressesResult,
@@ -74913,7 +74912,7 @@ export const assignPrivateIpAddresses: API.OperationMethod<
   AssignPrivateIpAddressesRequest,
   AssignPrivateIpAddressesResult,
   AssignPrivateIpAddressesError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: AssignPrivateIpAddressesRequest,
   output: AssignPrivateIpAddressesResult,
@@ -74942,7 +74941,7 @@ export const assignPrivateNatGatewayAddress: API.OperationMethod<
   AssignPrivateNatGatewayAddressRequest,
   AssignPrivateNatGatewayAddressResult,
   AssignPrivateNatGatewayAddressError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: AssignPrivateNatGatewayAddressRequest,
   output: AssignPrivateNatGatewayAddressResult,
@@ -74986,7 +74985,7 @@ export const associateAddress: API.OperationMethod<
   AssociateAddressRequest,
   AssociateAddressResult,
   AssociateAddressError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: AssociateAddressRequest,
   output: AssociateAddressResult,
@@ -75019,7 +75018,7 @@ export const associateCapacityReservationBillingOwner: API.OperationMethod<
   AssociateCapacityReservationBillingOwnerRequest,
   AssociateCapacityReservationBillingOwnerResult,
   AssociateCapacityReservationBillingOwnerError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: AssociateCapacityReservationBillingOwnerRequest,
   output: AssociateCapacityReservationBillingOwnerResult,
@@ -75049,7 +75048,7 @@ export const associateClientVpnTargetNetwork: API.OperationMethod<
   AssociateClientVpnTargetNetworkRequest,
   AssociateClientVpnTargetNetworkResult,
   AssociateClientVpnTargetNetworkError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: AssociateClientVpnTargetNetworkRequest,
   output: AssociateClientVpnTargetNetworkResult,
@@ -75083,7 +75082,7 @@ export const associateDhcpOptions: API.OperationMethod<
   AssociateDhcpOptionsRequest,
   AssociateDhcpOptionsResponse,
   AssociateDhcpOptionsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: AssociateDhcpOptionsRequest,
   output: AssociateDhcpOptionsResponse,
@@ -75126,7 +75125,7 @@ export const associateEnclaveCertificateIamRole: API.OperationMethod<
   AssociateEnclaveCertificateIamRoleRequest,
   AssociateEnclaveCertificateIamRoleResult,
   AssociateEnclaveCertificateIamRoleError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: AssociateEnclaveCertificateIamRoleRequest,
   output: AssociateEnclaveCertificateIamRoleResult,
@@ -75154,7 +75153,7 @@ export const associateIamInstanceProfile: API.OperationMethod<
   AssociateIamInstanceProfileRequest,
   AssociateIamInstanceProfileResult,
   AssociateIamInstanceProfileError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: AssociateIamInstanceProfileRequest,
   output: AssociateIamInstanceProfileResult,
@@ -75180,7 +75179,7 @@ export const associateInstanceEventWindow: API.OperationMethod<
   AssociateInstanceEventWindowRequest,
   AssociateInstanceEventWindowResult,
   AssociateInstanceEventWindowError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: AssociateInstanceEventWindowRequest,
   output: AssociateInstanceEventWindowResult,
@@ -75206,7 +75205,7 @@ export const associateIpamByoasn: API.OperationMethod<
   AssociateIpamByoasnRequest,
   AssociateIpamByoasnResult,
   AssociateIpamByoasnError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: AssociateIpamByoasnRequest,
   output: AssociateIpamByoasnResult,
@@ -75229,7 +75228,7 @@ export const associateIpamResourceDiscovery: API.OperationMethod<
   AssociateIpamResourceDiscoveryRequest,
   AssociateIpamResourceDiscoveryResult,
   AssociateIpamResourceDiscoveryError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: AssociateIpamResourceDiscoveryRequest,
   output: AssociateIpamResourceDiscoveryResult,
@@ -75268,7 +75267,7 @@ export const associateNatGatewayAddress: API.OperationMethod<
   AssociateNatGatewayAddressRequest,
   AssociateNatGatewayAddressResult,
   AssociateNatGatewayAddressError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: AssociateNatGatewayAddressRequest,
   output: AssociateNatGatewayAddressResult,
@@ -75300,7 +75299,7 @@ export const associateRouteServer: API.OperationMethod<
   AssociateRouteServerRequest,
   AssociateRouteServerResult,
   AssociateRouteServerError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: AssociateRouteServerRequest,
   output: AssociateRouteServerResult,
@@ -75340,7 +75339,7 @@ export const associateRouteTable: API.OperationMethod<
   AssociateRouteTableRequest,
   AssociateRouteTableResult,
   AssociateRouteTableError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: AssociateRouteTableRequest,
   output: AssociateRouteTableResult,
@@ -75384,7 +75383,7 @@ export const associateSecurityGroupVpc: API.OperationMethod<
   AssociateSecurityGroupVpcRequest,
   AssociateSecurityGroupVpcResult,
   AssociateSecurityGroupVpcError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: AssociateSecurityGroupVpcRequest,
   output: AssociateSecurityGroupVpcResult,
@@ -75413,7 +75412,7 @@ export const associateSubnetCidrBlock: API.OperationMethod<
   AssociateSubnetCidrBlockRequest,
   AssociateSubnetCidrBlockResult,
   AssociateSubnetCidrBlockError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: AssociateSubnetCidrBlockRequest,
   output: AssociateSubnetCidrBlockResult,
@@ -75443,7 +75442,7 @@ export const associateTransitGatewayMulticastDomain: API.OperationMethod<
   AssociateTransitGatewayMulticastDomainRequest,
   AssociateTransitGatewayMulticastDomainResult,
   AssociateTransitGatewayMulticastDomainError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: AssociateTransitGatewayMulticastDomainRequest,
   output: AssociateTransitGatewayMulticastDomainResult,
@@ -75470,7 +75469,7 @@ export const associateTransitGatewayPolicyTable: API.OperationMethod<
   AssociateTransitGatewayPolicyTableRequest,
   AssociateTransitGatewayPolicyTableResult,
   AssociateTransitGatewayPolicyTableError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: AssociateTransitGatewayPolicyTableRequest,
   output: AssociateTransitGatewayPolicyTableResult,
@@ -75498,7 +75497,7 @@ export const associateTransitGatewayRouteTable: API.OperationMethod<
   AssociateTransitGatewayRouteTableRequest,
   AssociateTransitGatewayRouteTableResult,
   AssociateTransitGatewayRouteTableError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: AssociateTransitGatewayRouteTableRequest,
   output: AssociateTransitGatewayRouteTableResult,
@@ -75529,7 +75528,7 @@ export const associateTrunkInterface: API.OperationMethod<
   AssociateTrunkInterfaceRequest,
   AssociateTrunkInterfaceResult,
   AssociateTrunkInterfaceError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: AssociateTrunkInterfaceRequest,
   output: AssociateTrunkInterfaceResult,
@@ -75564,7 +75563,7 @@ export const associateVpcCidrBlock: API.OperationMethod<
   AssociateVpcCidrBlockRequest,
   AssociateVpcCidrBlockResult,
   AssociateVpcCidrBlockError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: AssociateVpcCidrBlockRequest,
   output: AssociateVpcCidrBlockResult,
@@ -75605,7 +75604,7 @@ export const attachClassicLinkVpc: API.OperationMethod<
   AttachClassicLinkVpcRequest,
   AttachClassicLinkVpcResult,
   AttachClassicLinkVpcError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: AttachClassicLinkVpcRequest,
   output: AttachClassicLinkVpcResult,
@@ -75634,7 +75633,7 @@ export const attachImageWatermark: API.OperationMethod<
   AttachImageWatermarkRequest,
   AttachImageWatermarkResult,
   AttachImageWatermarkError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: AttachImageWatermarkRequest,
   output: AttachImageWatermarkResult,
@@ -75661,7 +75660,7 @@ export const attachInternetGateway: API.OperationMethod<
   AttachInternetGatewayRequest,
   AttachInternetGatewayResponse,
   AttachInternetGatewayError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: AttachInternetGatewayRequest,
   output: AttachInternetGatewayResponse,
@@ -75692,7 +75691,7 @@ export const attachNetworkInterface: API.OperationMethod<
   AttachNetworkInterfaceRequest,
   AttachNetworkInterfaceResult,
   AttachNetworkInterfaceError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: AttachNetworkInterfaceRequest,
   output: AttachNetworkInterfaceResult,
@@ -75720,7 +75719,7 @@ export const attachVerifiedAccessTrustProvider: API.OperationMethod<
   AttachVerifiedAccessTrustProviderRequest,
   AttachVerifiedAccessTrustProviderResult,
   AttachVerifiedAccessTrustProviderError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: AttachVerifiedAccessTrustProviderRequest,
   output: AttachVerifiedAccessTrustProviderResult,
@@ -75775,7 +75774,7 @@ export const attachVolume: API.OperationMethod<
   AttachVolumeRequest,
   VolumeAttachment,
   AttachVolumeError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: AttachVolumeRequest,
   output: VolumeAttachment,
@@ -75809,7 +75808,7 @@ export const attachVpnGateway: API.OperationMethod<
   AttachVpnGatewayRequest,
   AttachVpnGatewayResult,
   AttachVpnGatewayError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: AttachVpnGatewayRequest,
   output: AttachVpnGatewayResult,
@@ -75838,7 +75837,7 @@ export const authorizeClientVpnIngress: API.OperationMethod<
   AuthorizeClientVpnIngressRequest,
   AuthorizeClientVpnIngressResult,
   AuthorizeClientVpnIngressError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: AuthorizeClientVpnIngressRequest,
   output: AuthorizeClientVpnIngressResult,
@@ -75880,7 +75879,7 @@ export const authorizeSecurityGroupEgress: API.OperationMethod<
   AuthorizeSecurityGroupEgressRequest,
   AuthorizeSecurityGroupEgressResult,
   AuthorizeSecurityGroupEgressError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: AuthorizeSecurityGroupEgressRequest,
   output: AuthorizeSecurityGroupEgressResult,
@@ -75929,7 +75928,7 @@ export const authorizeSecurityGroupIngress: API.OperationMethod<
   AuthorizeSecurityGroupIngressRequest,
   AuthorizeSecurityGroupIngressResult,
   AuthorizeSecurityGroupIngressError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: AuthorizeSecurityGroupIngressRequest,
   output: AuthorizeSecurityGroupIngressResult,
@@ -75966,7 +75965,7 @@ export const bundleInstance: API.OperationMethod<
   BundleInstanceRequest,
   BundleInstanceResult,
   BundleInstanceError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: BundleInstanceRequest,
   output: BundleInstanceResult,
@@ -75989,7 +75988,7 @@ export const cancelBundleTask: API.OperationMethod<
   CancelBundleTaskRequest,
   CancelBundleTaskResult,
   CancelBundleTaskError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CancelBundleTaskRequest,
   output: CancelBundleTaskResult,
@@ -76045,7 +76044,7 @@ export const cancelCapacityReservation: API.OperationMethod<
   CancelCapacityReservationRequest,
   CancelCapacityReservationResult,
   CancelCapacityReservationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CancelCapacityReservationRequest,
   output: CancelCapacityReservationResult,
@@ -76082,7 +76081,7 @@ export const cancelCapacityReservationFleets: API.OperationMethod<
   CancelCapacityReservationFleetsRequest,
   CancelCapacityReservationFleetsResult,
   CancelCapacityReservationFleetsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CancelCapacityReservationFleetsRequest,
   output: CancelCapacityReservationFleetsResult,
@@ -76110,7 +76109,7 @@ export const cancelConversionTask: API.OperationMethod<
   CancelConversionRequest,
   CancelConversionTaskResponse,
   CancelConversionTaskError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CancelConversionRequest,
   output: CancelConversionTaskResponse,
@@ -76139,7 +76138,7 @@ export const cancelDeclarativePoliciesReport: API.OperationMethod<
   CancelDeclarativePoliciesReportRequest,
   CancelDeclarativePoliciesReportResult,
   CancelDeclarativePoliciesReportError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CancelDeclarativePoliciesReportRequest,
   output: CancelDeclarativePoliciesReportResult,
@@ -76167,7 +76166,7 @@ export const cancelExportTask: API.OperationMethod<
   CancelExportTaskRequest,
   CancelExportTaskResponse,
   CancelExportTaskError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CancelExportTaskRequest,
   output: CancelExportTaskResponse,
@@ -76191,7 +76190,7 @@ export const cancelImageLaunchPermission: API.OperationMethod<
   CancelImageLaunchPermissionRequest,
   CancelImageLaunchPermissionResult,
   CancelImageLaunchPermissionError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CancelImageLaunchPermissionRequest,
   output: CancelImageLaunchPermissionResult,
@@ -76213,7 +76212,7 @@ export const cancelImportTask: API.OperationMethod<
   CancelImportTaskRequest,
   CancelImportTaskResult,
   CancelImportTaskError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CancelImportTaskRequest,
   output: CancelImportTaskResult,
@@ -76243,7 +76242,7 @@ export const cancelReservedInstancesListing: API.OperationMethod<
   CancelReservedInstancesListingRequest,
   CancelReservedInstancesListingResult,
   CancelReservedInstancesListingError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CancelReservedInstancesListingRequest,
   output: CancelReservedInstancesListingResult,
@@ -76290,7 +76289,7 @@ export const cancelSpotFleetRequests: API.OperationMethod<
   CancelSpotFleetRequestsRequest,
   CancelSpotFleetRequestsResponse,
   CancelSpotFleetRequestsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CancelSpotFleetRequestsRequest,
   output: CancelSpotFleetRequestsResponse,
@@ -76321,7 +76320,7 @@ export const cancelSpotInstanceRequests: API.OperationMethod<
   CancelSpotInstanceRequestsRequest,
   CancelSpotInstanceRequestsResult,
   CancelSpotInstanceRequestsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CancelSpotInstanceRequestsRequest,
   output: CancelSpotInstanceRequestsResult,
@@ -76350,7 +76349,7 @@ export const confirmProductInstance: API.OperationMethod<
   ConfirmProductInstanceRequest,
   ConfirmProductInstanceResult,
   ConfirmProductInstanceError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ConfirmProductInstanceRequest,
   output: ConfirmProductInstanceResult,
@@ -76372,7 +76371,7 @@ export const copyFpgaImage: API.OperationMethod<
   CopyFpgaImageRequest,
   CopyFpgaImageResult,
   CopyFpgaImageError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CopyFpgaImageRequest,
   output: CopyFpgaImageResult,
@@ -76462,7 +76461,7 @@ export const copyImage: API.OperationMethod<
   CopyImageRequest,
   CopyImageResult,
   CopyImageError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CopyImageRequest,
   output: CopyImageResult,
@@ -76521,7 +76520,7 @@ export const copySnapshot: API.OperationMethod<
   CopySnapshotRequest,
   CopySnapshotResult,
   CopySnapshotError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CopySnapshotRequest,
   output: CopySnapshotResult,
@@ -76551,7 +76550,7 @@ export const copyVolumes: API.OperationMethod<
   CopyVolumesRequest,
   CopyVolumesResult,
   CopyVolumesError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CopyVolumesRequest,
   output: CopyVolumesResult,
@@ -76578,7 +76577,7 @@ export const createCapacityManagerDataExport: API.OperationMethod<
   CreateCapacityManagerDataExportRequest,
   CreateCapacityManagerDataExportResult,
   CreateCapacityManagerDataExportError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateCapacityManagerDataExportRequest,
   output: CreateCapacityManagerDataExportResult,
@@ -76623,7 +76622,7 @@ export const createCapacityReservation: API.OperationMethod<
   CreateCapacityReservationRequest,
   CreateCapacityReservationResult,
   CreateCapacityReservationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateCapacityReservationRequest,
   output: CreateCapacityReservationResult,
@@ -76649,7 +76648,7 @@ export const createCapacityReservationBySplitting: API.OperationMethod<
   CreateCapacityReservationBySplittingRequest,
   CreateCapacityReservationBySplittingResult,
   CreateCapacityReservationBySplittingError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateCapacityReservationBySplittingRequest,
   output: CreateCapacityReservationBySplittingResult,
@@ -76675,7 +76674,7 @@ export const createCapacityReservationCancellationQuote: API.OperationMethod<
   CreateCapacityReservationCancellationQuoteRequest,
   CreateCapacityReservationCancellationQuoteResult,
   CreateCapacityReservationCancellationQuoteError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateCapacityReservationCancellationQuoteRequest,
   output: CreateCapacityReservationCancellationQuoteResult,
@@ -76699,7 +76698,7 @@ export const createCapacityReservationFleet: API.OperationMethod<
   CreateCapacityReservationFleetRequest,
   CreateCapacityReservationFleetResult,
   CreateCapacityReservationFleetError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateCapacityReservationFleetRequest,
   output: CreateCapacityReservationFleetResult,
@@ -76724,7 +76723,7 @@ export const createCarrierGateway: API.OperationMethod<
   CreateCarrierGatewayRequest,
   CreateCarrierGatewayResult,
   CreateCarrierGatewayError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateCarrierGatewayRequest,
   output: CreateCarrierGatewayResult,
@@ -76755,7 +76754,7 @@ export const createClientVpnEndpoint: API.OperationMethod<
   CreateClientVpnEndpointRequest,
   CreateClientVpnEndpointResult,
   CreateClientVpnEndpointError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateClientVpnEndpointRequest,
   output: CreateClientVpnEndpointResult,
@@ -76778,7 +76777,7 @@ export const createClientVpnRoute: API.OperationMethod<
   CreateClientVpnRouteRequest,
   CreateClientVpnRouteResult,
   CreateClientVpnRouteError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateClientVpnRouteRequest,
   output: CreateClientVpnRouteResult,
@@ -76806,7 +76805,7 @@ export const createCoipCidr: API.OperationMethod<
   CreateCoipCidrRequest,
   CreateCoipCidrResult,
   CreateCoipCidrError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateCoipCidrRequest,
   output: CreateCoipCidrResult,
@@ -76836,7 +76835,7 @@ export const createCoipPool: API.OperationMethod<
   CreateCoipPoolRequest,
   CreateCoipPoolResult,
   CreateCoipPoolError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateCoipPoolRequest,
   output: CreateCoipPoolResult,
@@ -76880,7 +76879,7 @@ export const createCustomerGateway: API.OperationMethod<
   CreateCustomerGatewayRequest,
   CreateCustomerGatewayResult,
   CreateCustomerGatewayError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateCustomerGatewayRequest,
   output: CreateCustomerGatewayResult,
@@ -76911,7 +76910,7 @@ export const createDefaultSubnet: API.OperationMethod<
   CreateDefaultSubnetRequest,
   CreateDefaultSubnetResult,
   CreateDefaultSubnetError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateDefaultSubnetRequest,
   output: CreateDefaultSubnetResult,
@@ -76945,7 +76944,7 @@ export const createDefaultVpc: API.OperationMethod<
   CreateDefaultVpcRequest,
   CreateDefaultVpcResult,
   CreateDefaultVpcError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateDefaultVpcRequest,
   output: CreateDefaultVpcResult,
@@ -76972,7 +76971,7 @@ export const createDelegateMacVolumeOwnershipTask: API.OperationMethod<
   CreateDelegateMacVolumeOwnershipTaskRequest,
   CreateDelegateMacVolumeOwnershipTaskResult,
   CreateDelegateMacVolumeOwnershipTaskError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateDelegateMacVolumeOwnershipTaskRequest,
   output: CreateDelegateMacVolumeOwnershipTaskResult,
@@ -77032,7 +77031,7 @@ export const createDhcpOptions: API.OperationMethod<
   CreateDhcpOptionsRequest,
   CreateDhcpOptionsResult,
   CreateDhcpOptionsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateDhcpOptionsRequest,
   output: CreateDhcpOptionsResult,
@@ -77065,7 +77064,7 @@ export const createEgressOnlyInternetGateway: API.OperationMethod<
   CreateEgressOnlyInternetGatewayRequest,
   CreateEgressOnlyInternetGatewayResult,
   CreateEgressOnlyInternetGatewayError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateEgressOnlyInternetGatewayRequest,
   output: CreateEgressOnlyInternetGatewayResult,
@@ -77100,7 +77099,7 @@ export const createFleet: API.OperationMethod<
   CreateFleetRequest,
   CreateFleetResult,
   CreateFleetError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateFleetRequest,
   output: CreateFleetResult,
@@ -77138,7 +77137,7 @@ export const createFlowLogs: API.OperationMethod<
   CreateFlowLogsRequest,
   CreateFlowLogsResult,
   CreateFlowLogsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateFlowLogsRequest,
   output: CreateFlowLogsResult,
@@ -77173,7 +77172,7 @@ export const createFpgaImage: API.OperationMethod<
   CreateFpgaImageRequest,
   CreateFpgaImageResult,
   CreateFpgaImageError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateFpgaImageRequest,
   output: CreateFpgaImageResult,
@@ -77214,7 +77213,7 @@ export const createImage: API.OperationMethod<
   CreateImageRequest,
   CreateImageResult,
   CreateImageError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateImageRequest,
   output: CreateImageResult,
@@ -77246,7 +77245,7 @@ export const createImageUsageReport: API.OperationMethod<
   CreateImageUsageReportRequest,
   CreateImageUsageReportResult,
   CreateImageUsageReportError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateImageUsageReportRequest,
   output: CreateImageUsageReportResult,
@@ -77275,7 +77274,7 @@ export const createInstanceConnectEndpoint: API.OperationMethod<
   CreateInstanceConnectEndpointRequest,
   CreateInstanceConnectEndpointResult,
   CreateInstanceConnectEndpointError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateInstanceConnectEndpointRequest,
   output: CreateInstanceConnectEndpointResult,
@@ -77325,7 +77324,7 @@ export const createInstanceEventWindow: API.OperationMethod<
   CreateInstanceEventWindowRequest,
   CreateInstanceEventWindowResult,
   CreateInstanceEventWindowError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateInstanceEventWindowRequest,
   output: CreateInstanceEventWindowResult,
@@ -77351,7 +77350,7 @@ export const createInstanceExportTask: API.OperationMethod<
   CreateInstanceExportTaskRequest,
   CreateInstanceExportTaskResult,
   CreateInstanceExportTaskError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateInstanceExportTaskRequest,
   output: CreateInstanceExportTaskResult,
@@ -77378,7 +77377,7 @@ export const createInternetGateway: API.OperationMethod<
   CreateInternetGatewayRequest,
   CreateInternetGatewayResult,
   CreateInternetGatewayError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateInternetGatewayRequest,
   output: CreateInternetGatewayResult,
@@ -77405,7 +77404,7 @@ export const createInterruptibleCapacityReservationAllocation: API.OperationMeth
   CreateInterruptibleCapacityReservationAllocationRequest,
   CreateInterruptibleCapacityReservationAllocationResult,
   CreateInterruptibleCapacityReservationAllocationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateInterruptibleCapacityReservationAllocationRequest,
   output: CreateInterruptibleCapacityReservationAllocationResult,
@@ -77438,7 +77437,7 @@ export const createIpam: API.OperationMethod<
   CreateIpamRequest,
   CreateIpamResult,
   CreateIpamError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateIpamRequest,
   output: CreateIpamResult,
@@ -77469,7 +77468,7 @@ export const createIpamExternalResourceVerificationToken: API.OperationMethod<
   CreateIpamExternalResourceVerificationTokenRequest,
   CreateIpamExternalResourceVerificationTokenResult,
   CreateIpamExternalResourceVerificationTokenError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateIpamExternalResourceVerificationTokenRequest,
   output: CreateIpamExternalResourceVerificationTokenResult,
@@ -77501,7 +77500,7 @@ export const createIpamPolicy: API.OperationMethod<
   CreateIpamPolicyRequest,
   CreateIpamPolicyResult,
   CreateIpamPolicyError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateIpamPolicyRequest,
   output: CreateIpamPolicyResult,
@@ -77531,7 +77530,7 @@ export const createIpamPool: API.OperationMethod<
   CreateIpamPoolRequest,
   CreateIpamPoolResult,
   CreateIpamPoolError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateIpamPoolRequest,
   output: CreateIpamPoolResult,
@@ -77562,7 +77561,7 @@ export const createIpamPrefixListResolver: API.OperationMethod<
   CreateIpamPrefixListResolverRequest,
   CreateIpamPrefixListResolverResult,
   CreateIpamPrefixListResolverError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateIpamPrefixListResolverRequest,
   output: CreateIpamPrefixListResolverResult,
@@ -77590,7 +77589,7 @@ export const createIpamPrefixListResolverTarget: API.OperationMethod<
   CreateIpamPrefixListResolverTargetRequest,
   CreateIpamPrefixListResolverTargetResult,
   CreateIpamPrefixListResolverTargetError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateIpamPrefixListResolverTargetRequest,
   output: CreateIpamPrefixListResolverTargetResult,
@@ -77618,7 +77617,7 @@ export const createIpamResourceDiscovery: API.OperationMethod<
   CreateIpamResourceDiscoveryRequest,
   CreateIpamResourceDiscoveryResult,
   CreateIpamResourceDiscoveryError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateIpamResourceDiscoveryRequest,
   output: CreateIpamResourceDiscoveryResult,
@@ -77643,7 +77642,7 @@ export const createIpamScope: API.OperationMethod<
   CreateIpamScopeRequest,
   CreateIpamScopeResult,
   CreateIpamScopeError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateIpamScopeRequest,
   output: CreateIpamScopeResult,
@@ -77683,7 +77682,7 @@ export const createKeyPair: API.OperationMethod<
   CreateKeyPairRequest,
   KeyPair,
   CreateKeyPairError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateKeyPairRequest,
   output: KeyPair,
@@ -77720,7 +77719,7 @@ export const createLaunchTemplate: API.OperationMethod<
   CreateLaunchTemplateRequest,
   CreateLaunchTemplateResult,
   CreateLaunchTemplateError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateLaunchTemplateRequest,
   output: CreateLaunchTemplateResult,
@@ -77751,7 +77750,7 @@ export const createLaunchTemplateVersion: API.OperationMethod<
   CreateLaunchTemplateVersionRequest,
   CreateLaunchTemplateVersionResult,
   CreateLaunchTemplateVersionError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateLaunchTemplateVersionRequest,
   output: CreateLaunchTemplateVersionResult,
@@ -77779,7 +77778,7 @@ export const createLocalGatewayRoute: API.OperationMethod<
   CreateLocalGatewayRouteRequest,
   CreateLocalGatewayRouteResult,
   CreateLocalGatewayRouteError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateLocalGatewayRouteRequest,
   output: CreateLocalGatewayRouteResult,
@@ -77808,7 +77807,7 @@ export const createLocalGatewayRouteTable: API.OperationMethod<
   CreateLocalGatewayRouteTableRequest,
   CreateLocalGatewayRouteTableResult,
   CreateLocalGatewayRouteTableError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateLocalGatewayRouteTableRequest,
   output: CreateLocalGatewayRouteTableResult,
@@ -77838,7 +77837,7 @@ export const createLocalGatewayRouteTableVirtualInterfaceGroupAssociation: API.O
   CreateLocalGatewayRouteTableVirtualInterfaceGroupAssociationRequest,
   CreateLocalGatewayRouteTableVirtualInterfaceGroupAssociationResult,
   CreateLocalGatewayRouteTableVirtualInterfaceGroupAssociationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateLocalGatewayRouteTableVirtualInterfaceGroupAssociationRequest,
   output: CreateLocalGatewayRouteTableVirtualInterfaceGroupAssociationResult,
@@ -77869,7 +77868,7 @@ export const createLocalGatewayRouteTableVpcAssociation: API.OperationMethod<
   CreateLocalGatewayRouteTableVpcAssociationRequest,
   CreateLocalGatewayRouteTableVpcAssociationResult,
   CreateLocalGatewayRouteTableVpcAssociationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateLocalGatewayRouteTableVpcAssociationRequest,
   output: CreateLocalGatewayRouteTableVpcAssociationResult,
@@ -77900,7 +77899,7 @@ export const createLocalGatewayVirtualInterface: API.OperationMethod<
   CreateLocalGatewayVirtualInterfaceRequest,
   CreateLocalGatewayVirtualInterfaceResult,
   CreateLocalGatewayVirtualInterfaceError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateLocalGatewayVirtualInterfaceRequest,
   output: CreateLocalGatewayVirtualInterfaceResult,
@@ -77929,7 +77928,7 @@ export const createLocalGatewayVirtualInterfaceGroup: API.OperationMethod<
   CreateLocalGatewayVirtualInterfaceGroupRequest,
   CreateLocalGatewayVirtualInterfaceGroupResult,
   CreateLocalGatewayVirtualInterfaceGroupError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateLocalGatewayVirtualInterfaceGroupRequest,
   output: CreateLocalGatewayVirtualInterfaceGroupResult,
@@ -77986,7 +77985,7 @@ export const createMacSystemIntegrityProtectionModificationTask: API.OperationMe
   CreateMacSystemIntegrityProtectionModificationTaskRequest,
   CreateMacSystemIntegrityProtectionModificationTaskResult,
   CreateMacSystemIntegrityProtectionModificationTaskError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateMacSystemIntegrityProtectionModificationTaskRequest,
   output: CreateMacSystemIntegrityProtectionModificationTaskResult,
@@ -78010,7 +78009,7 @@ export const createManagedPrefixList: API.OperationMethod<
   CreateManagedPrefixListRequest,
   CreateManagedPrefixListResult,
   CreateManagedPrefixListError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateManagedPrefixListRequest,
   output: CreateManagedPrefixListResult,
@@ -78061,7 +78060,7 @@ export const createNatGateway: API.OperationMethod<
   CreateNatGatewayRequest,
   CreateNatGatewayResult,
   CreateNatGatewayError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateNatGatewayRequest,
   output: CreateNatGatewayResult,
@@ -78096,7 +78095,7 @@ export const createNetworkAcl: API.OperationMethod<
   CreateNetworkAclRequest,
   CreateNetworkAclResult,
   CreateNetworkAclError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateNetworkAclRequest,
   output: CreateNetworkAclResult,
@@ -78136,7 +78135,7 @@ export const createNetworkAclEntry: API.OperationMethod<
   CreateNetworkAclEntryRequest,
   CreateNetworkAclEntryResponse,
   CreateNetworkAclEntryError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateNetworkAclEntryRequest,
   output: CreateNetworkAclEntryResponse,
@@ -78163,7 +78162,7 @@ export const createNetworkInsightsAccessScope: API.OperationMethod<
   CreateNetworkInsightsAccessScopeRequest,
   CreateNetworkInsightsAccessScopeResult,
   CreateNetworkInsightsAccessScopeError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateNetworkInsightsAccessScopeRequest,
   output: CreateNetworkInsightsAccessScopeResult,
@@ -78190,7 +78189,7 @@ export const createNetworkInsightsPath: API.OperationMethod<
   CreateNetworkInsightsPathRequest,
   CreateNetworkInsightsPathResult,
   CreateNetworkInsightsPathError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateNetworkInsightsPathRequest,
   output: CreateNetworkInsightsPathResult,
@@ -78225,7 +78224,7 @@ export const createNetworkInterface: API.OperationMethod<
   CreateNetworkInterfaceRequest,
   CreateNetworkInterfaceResult,
   CreateNetworkInterfaceError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateNetworkInterfaceRequest,
   output: CreateNetworkInterfaceResult,
@@ -78257,7 +78256,7 @@ export const createNetworkInterfacePermission: API.OperationMethod<
   CreateNetworkInterfacePermissionRequest,
   CreateNetworkInterfacePermissionResult,
   CreateNetworkInterfacePermissionError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateNetworkInterfacePermissionRequest,
   output: CreateNetworkInterfacePermissionResult,
@@ -78293,7 +78292,7 @@ export const createPlacementGroup: API.OperationMethod<
   CreatePlacementGroupRequest,
   CreatePlacementGroupResult,
   CreatePlacementGroupError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreatePlacementGroupRequest,
   output: CreatePlacementGroupResult,
@@ -78316,7 +78315,7 @@ export const createPublicIpv4Pool: API.OperationMethod<
   CreatePublicIpv4PoolRequest,
   CreatePublicIpv4PoolResult,
   CreatePublicIpv4PoolError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreatePublicIpv4PoolRequest,
   output: CreatePublicIpv4PoolResult,
@@ -78343,7 +78342,7 @@ export const createReplaceRootVolumeTask: API.OperationMethod<
   CreateReplaceRootVolumeTaskRequest,
   CreateReplaceRootVolumeTaskResult,
   CreateReplaceRootVolumeTaskError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateReplaceRootVolumeTaskRequest,
   output: CreateReplaceRootVolumeTaskResult,
@@ -78389,7 +78388,7 @@ export const createReservedInstancesListing: API.OperationMethod<
   CreateReservedInstancesListingRequest,
   CreateReservedInstancesListingResult,
   CreateReservedInstancesListingError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateReservedInstancesListingRequest,
   output: CreateReservedInstancesListingResult,
@@ -78418,7 +78417,7 @@ export const createRestoreImageTask: API.OperationMethod<
   CreateRestoreImageTaskRequest,
   CreateRestoreImageTaskResult,
   CreateRestoreImageTaskError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateRestoreImageTaskRequest,
   output: CreateRestoreImageTaskResult,
@@ -78466,7 +78465,7 @@ export const createRoute: API.OperationMethod<
   CreateRouteRequest,
   CreateRouteResult,
   CreateRouteError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateRouteRequest,
   output: CreateRouteResult,
@@ -78515,7 +78514,7 @@ export const createRouteServer: API.OperationMethod<
   CreateRouteServerRequest,
   CreateRouteServerResult,
   CreateRouteServerError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateRouteServerRequest,
   output: CreateRouteServerResult,
@@ -78544,7 +78543,7 @@ export const createRouteServerEndpoint: API.OperationMethod<
   CreateRouteServerEndpointRequest,
   CreateRouteServerEndpointResult,
   CreateRouteServerEndpointError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateRouteServerEndpointRequest,
   output: CreateRouteServerEndpointResult,
@@ -78583,7 +78582,7 @@ export const createRouteServerPeer: API.OperationMethod<
   CreateRouteServerPeerRequest,
   CreateRouteServerPeerResult,
   CreateRouteServerPeerError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateRouteServerPeerRequest,
   output: CreateRouteServerPeerResult,
@@ -78610,7 +78609,7 @@ export const createRouteTable: API.OperationMethod<
   CreateRouteTableRequest,
   CreateRouteTableResult,
   CreateRouteTableError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateRouteTableRequest,
   output: CreateRouteTableResult,
@@ -78636,7 +78635,7 @@ export const createSecondaryNetwork: API.OperationMethod<
   CreateSecondaryNetworkRequest,
   CreateSecondaryNetworkResult,
   CreateSecondaryNetworkError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateSecondaryNetworkRequest,
   output: CreateSecondaryNetworkResult,
@@ -78658,7 +78657,7 @@ export const createSecondarySubnet: API.OperationMethod<
   CreateSecondarySubnetRequest,
   CreateSecondarySubnetResult,
   CreateSecondarySubnetError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateSecondarySubnetRequest,
   output: CreateSecondarySubnetResult,
@@ -78708,7 +78707,7 @@ export const createSecurityGroup: API.OperationMethod<
   CreateSecurityGroupRequest,
   CreateSecurityGroupResult,
   CreateSecurityGroupError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateSecurityGroupRequest,
   output: CreateSecurityGroupResult,
@@ -78774,7 +78773,7 @@ export const createSnapshot: API.OperationMethod<
   CreateSnapshotRequest,
   Snapshot,
   CreateSnapshotError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateSnapshotRequest,
   output: Snapshot,
@@ -78817,7 +78816,7 @@ export const createSnapshots: API.OperationMethod<
   CreateSnapshotsRequest,
   CreateSnapshotsResult,
   CreateSnapshotsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateSnapshotsRequest,
   output: CreateSnapshotsResult,
@@ -78842,7 +78841,7 @@ export const createSpotDatafeedSubscription: API.OperationMethod<
   CreateSpotDatafeedSubscriptionRequest,
   CreateSpotDatafeedSubscriptionResult,
   CreateSpotDatafeedSubscriptionError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateSpotDatafeedSubscriptionRequest,
   output: CreateSpotDatafeedSubscriptionResult,
@@ -78874,7 +78873,7 @@ export const createStoreImageTask: API.OperationMethod<
   CreateStoreImageTaskRequest,
   CreateStoreImageTaskResult,
   CreateStoreImageTaskError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateStoreImageTaskRequest,
   output: CreateStoreImageTaskResult,
@@ -78922,7 +78921,7 @@ export const createSubnet: API.OperationMethod<
   CreateSubnetRequest,
   CreateSubnetResult,
   CreateSubnetError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateSubnetRequest,
   output: CreateSubnetResult,
@@ -78956,7 +78955,7 @@ export const createSubnetCidrReservation: API.OperationMethod<
   CreateSubnetCidrReservationRequest,
   CreateSubnetCidrReservationResult,
   CreateSubnetCidrReservationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateSubnetCidrReservationRequest,
   output: CreateSubnetCidrReservationResult,
@@ -78994,7 +78993,7 @@ export const createTags: API.OperationMethod<
   CreateTagsRequest,
   CreateTagsResponse,
   CreateTagsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateTagsRequest,
   output: CreateTagsResponse,
@@ -79027,7 +79026,7 @@ export const createTrafficMirrorFilter: API.OperationMethod<
   CreateTrafficMirrorFilterRequest,
   CreateTrafficMirrorFilterResult,
   CreateTrafficMirrorFilterError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateTrafficMirrorFilterRequest,
   output: CreateTrafficMirrorFilterResult,
@@ -79053,7 +79052,7 @@ export const createTrafficMirrorFilterRule: API.OperationMethod<
   CreateTrafficMirrorFilterRuleRequest,
   CreateTrafficMirrorFilterRuleResult,
   CreateTrafficMirrorFilterRuleError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateTrafficMirrorFilterRuleRequest,
   output: CreateTrafficMirrorFilterRuleResult,
@@ -79086,7 +79085,7 @@ export const createTrafficMirrorSession: API.OperationMethod<
   CreateTrafficMirrorSessionRequest,
   CreateTrafficMirrorSessionResult,
   CreateTrafficMirrorSessionError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateTrafficMirrorSessionRequest,
   output: CreateTrafficMirrorSessionResult,
@@ -79122,7 +79121,7 @@ export const createTrafficMirrorTarget: API.OperationMethod<
   CreateTrafficMirrorTargetRequest,
   CreateTrafficMirrorTargetResult,
   CreateTrafficMirrorTargetError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateTrafficMirrorTargetRequest,
   output: CreateTrafficMirrorTargetResult,
@@ -79165,7 +79164,7 @@ export const createTransitGateway: API.OperationMethod<
   CreateTransitGatewayRequest,
   CreateTransitGatewayResult,
   CreateTransitGatewayError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateTransitGatewayRequest,
   output: CreateTransitGatewayResult,
@@ -79194,7 +79193,7 @@ export const createTransitGatewayConnect: API.OperationMethod<
   CreateTransitGatewayConnectRequest,
   CreateTransitGatewayConnectResult,
   CreateTransitGatewayConnectError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateTransitGatewayConnectRequest,
   output: CreateTransitGatewayConnectResult,
@@ -79222,7 +79221,7 @@ export const createTransitGatewayConnectPeer: API.OperationMethod<
   CreateTransitGatewayConnectPeerRequest,
   CreateTransitGatewayConnectPeerResult,
   CreateTransitGatewayConnectPeerError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateTransitGatewayConnectPeerRequest,
   output: CreateTransitGatewayConnectPeerResult,
@@ -79246,7 +79245,7 @@ export const createTransitGatewayMeteringPolicy: API.OperationMethod<
   CreateTransitGatewayMeteringPolicyRequest,
   CreateTransitGatewayMeteringPolicyResult,
   CreateTransitGatewayMeteringPolicyError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateTransitGatewayMeteringPolicyRequest,
   output: CreateTransitGatewayMeteringPolicyResult,
@@ -79274,7 +79273,7 @@ export const createTransitGatewayMeteringPolicyEntry: API.OperationMethod<
   CreateTransitGatewayMeteringPolicyEntryRequest,
   CreateTransitGatewayMeteringPolicyEntryResult,
   CreateTransitGatewayMeteringPolicyEntryError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateTransitGatewayMeteringPolicyEntryRequest,
   output: CreateTransitGatewayMeteringPolicyEntryResult,
@@ -79301,7 +79300,7 @@ export const createTransitGatewayMulticastDomain: API.OperationMethod<
   CreateTransitGatewayMulticastDomainRequest,
   CreateTransitGatewayMulticastDomainResult,
   CreateTransitGatewayMulticastDomainError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateTransitGatewayMulticastDomainRequest,
   output: CreateTransitGatewayMulticastDomainResult,
@@ -79337,7 +79336,7 @@ export const createTransitGatewayPeeringAttachment: API.OperationMethod<
   CreateTransitGatewayPeeringAttachmentRequest,
   CreateTransitGatewayPeeringAttachmentResult,
   CreateTransitGatewayPeeringAttachmentError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateTransitGatewayPeeringAttachmentRequest,
   output: CreateTransitGatewayPeeringAttachmentResult,
@@ -79367,7 +79366,7 @@ export const createTransitGatewayPolicyTable: API.OperationMethod<
   CreateTransitGatewayPolicyTableRequest,
   CreateTransitGatewayPolicyTableResult,
   CreateTransitGatewayPolicyTableError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateTransitGatewayPolicyTableRequest,
   output: CreateTransitGatewayPolicyTableResult,
@@ -79395,7 +79394,7 @@ export const createTransitGatewayPrefixListReference: API.OperationMethod<
   CreateTransitGatewayPrefixListReferenceRequest,
   CreateTransitGatewayPrefixListReferenceResult,
   CreateTransitGatewayPrefixListReferenceError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateTransitGatewayPrefixListReferenceRequest,
   output: CreateTransitGatewayPrefixListReferenceResult,
@@ -79418,7 +79417,7 @@ export const createTransitGatewayRoute: API.OperationMethod<
   CreateTransitGatewayRouteRequest,
   CreateTransitGatewayRouteResult,
   CreateTransitGatewayRouteError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateTransitGatewayRouteRequest,
   output: CreateTransitGatewayRouteResult,
@@ -79448,7 +79447,7 @@ export const createTransitGatewayRouteTable: API.OperationMethod<
   CreateTransitGatewayRouteTableRequest,
   CreateTransitGatewayRouteTableResult,
   CreateTransitGatewayRouteTableError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateTransitGatewayRouteTableRequest,
   output: CreateTransitGatewayRouteTableResult,
@@ -79479,7 +79478,7 @@ export const createTransitGatewayRouteTableAnnouncement: API.OperationMethod<
   CreateTransitGatewayRouteTableAnnouncementRequest,
   CreateTransitGatewayRouteTableAnnouncementResult,
   CreateTransitGatewayRouteTableAnnouncementError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateTransitGatewayRouteTableAnnouncementRequest,
   output: CreateTransitGatewayRouteTableAnnouncementResult,
@@ -79514,7 +79513,7 @@ export const createTransitGatewayVpcAttachment: API.OperationMethod<
   CreateTransitGatewayVpcAttachmentRequest,
   CreateTransitGatewayVpcAttachmentResult,
   CreateTransitGatewayVpcAttachmentError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateTransitGatewayVpcAttachmentRequest,
   output: CreateTransitGatewayVpcAttachmentResult,
@@ -79542,7 +79541,7 @@ export const createVerifiedAccessEndpoint: API.OperationMethod<
   CreateVerifiedAccessEndpointRequest,
   CreateVerifiedAccessEndpointResult,
   CreateVerifiedAccessEndpointError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateVerifiedAccessEndpointRequest,
   output: CreateVerifiedAccessEndpointResult,
@@ -79569,7 +79568,7 @@ export const createVerifiedAccessGroup: API.OperationMethod<
   CreateVerifiedAccessGroupRequest,
   CreateVerifiedAccessGroupResult,
   CreateVerifiedAccessGroupError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateVerifiedAccessGroupRequest,
   output: CreateVerifiedAccessGroupResult,
@@ -79599,7 +79598,7 @@ export const createVerifiedAccessInstance: API.OperationMethod<
   CreateVerifiedAccessInstanceRequest,
   CreateVerifiedAccessInstanceResult,
   CreateVerifiedAccessInstanceError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateVerifiedAccessInstanceRequest,
   output: CreateVerifiedAccessInstanceResult,
@@ -79629,7 +79628,7 @@ export const createVerifiedAccessTrustProvider: API.OperationMethod<
   CreateVerifiedAccessTrustProviderRequest,
   CreateVerifiedAccessTrustProviderResult,
   CreateVerifiedAccessTrustProviderError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateVerifiedAccessTrustProviderRequest,
   output: CreateVerifiedAccessTrustProviderResult,
@@ -79666,7 +79665,7 @@ export const createVolume: API.OperationMethod<
   CreateVolumeRequest,
   Volume,
   CreateVolumeError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateVolumeRequest,
   output: Volume,
@@ -79711,7 +79710,7 @@ export const createVpc: API.OperationMethod<
   CreateVpcRequest,
   CreateVpcResult,
   CreateVpcError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateVpcRequest,
   output: CreateVpcResult,
@@ -79741,7 +79740,7 @@ export const createVpcBlockPublicAccessExclusion: API.OperationMethod<
   CreateVpcBlockPublicAccessExclusionRequest,
   CreateVpcBlockPublicAccessExclusionResult,
   CreateVpcBlockPublicAccessExclusionError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateVpcBlockPublicAccessExclusionRequest,
   output: CreateVpcBlockPublicAccessExclusionResult,
@@ -79771,7 +79770,7 @@ export const createVpcEncryptionControl: API.OperationMethod<
   CreateVpcEncryptionControlRequest,
   CreateVpcEncryptionControlResult,
   CreateVpcEncryptionControlError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateVpcEncryptionControlRequest,
   output: CreateVpcEncryptionControlResult,
@@ -79805,7 +79804,7 @@ export const createVpcEndpoint: API.OperationMethod<
   CreateVpcEndpointRequest,
   CreateVpcEndpointResult,
   CreateVpcEndpointError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateVpcEndpointRequest,
   output: CreateVpcEndpointResult,
@@ -79840,7 +79839,7 @@ export const createVpcEndpointConnectionNotification: API.OperationMethod<
   CreateVpcEndpointConnectionNotificationRequest,
   CreateVpcEndpointConnectionNotificationResult,
   CreateVpcEndpointConnectionNotificationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateVpcEndpointConnectionNotificationRequest,
   output: CreateVpcEndpointConnectionNotificationResult,
@@ -79877,7 +79876,7 @@ export const createVpcEndpointServiceConfiguration: API.OperationMethod<
   CreateVpcEndpointServiceConfigurationRequest,
   CreateVpcEndpointServiceConfigurationResult,
   CreateVpcEndpointServiceConfigurationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateVpcEndpointServiceConfigurationRequest,
   output: CreateVpcEndpointServiceConfigurationResult,
@@ -79915,7 +79914,7 @@ export const createVpcPeeringConnection: API.OperationMethod<
   CreateVpcPeeringConnectionRequest,
   CreateVpcPeeringConnectionResult,
   CreateVpcPeeringConnectionError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateVpcPeeringConnectionRequest,
   output: CreateVpcPeeringConnectionResult,
@@ -79944,7 +79943,7 @@ export const createVpnConcentrator: API.OperationMethod<
   CreateVpnConcentratorRequest,
   CreateVpnConcentratorResult,
   CreateVpnConcentratorError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateVpnConcentratorRequest,
   output: CreateVpnConcentratorResult,
@@ -79988,7 +79987,7 @@ export const createVpnConnection: API.OperationMethod<
   CreateVpnConnectionRequest,
   CreateVpnConnectionResult,
   CreateVpnConnectionError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateVpnConnectionRequest,
   output: CreateVpnConnectionResult,
@@ -80023,7 +80022,7 @@ export const createVpnConnectionRoute: API.OperationMethod<
   CreateVpnConnectionRouteRequest,
   CreateVpnConnectionRouteResponse,
   CreateVpnConnectionRouteError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateVpnConnectionRouteRequest,
   output: CreateVpnConnectionRouteResponse,
@@ -80056,7 +80055,7 @@ export const createVpnGateway: API.OperationMethod<
   CreateVpnGatewayRequest,
   CreateVpnGatewayResult,
   CreateVpnGatewayError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateVpnGatewayRequest,
   output: CreateVpnGatewayResult,
@@ -80084,7 +80083,7 @@ export const deleteCapacityManagerDataExport: API.OperationMethod<
   DeleteCapacityManagerDataExportRequest,
   DeleteCapacityManagerDataExportResult,
   DeleteCapacityManagerDataExportError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteCapacityManagerDataExportRequest,
   output: DeleteCapacityManagerDataExportResult,
@@ -80117,7 +80116,7 @@ export const deleteCarrierGateway: API.OperationMethod<
   DeleteCarrierGatewayRequest,
   DeleteCarrierGatewayResult,
   DeleteCarrierGatewayError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteCarrierGatewayRequest,
   output: DeleteCarrierGatewayResult,
@@ -80146,7 +80145,7 @@ export const deleteClientVpnEndpoint: API.OperationMethod<
   DeleteClientVpnEndpointRequest,
   DeleteClientVpnEndpointResult,
   DeleteClientVpnEndpointError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteClientVpnEndpointRequest,
   output: DeleteClientVpnEndpointResult,
@@ -80175,7 +80174,7 @@ export const deleteClientVpnRoute: API.OperationMethod<
   DeleteClientVpnRouteRequest,
   DeleteClientVpnRouteResult,
   DeleteClientVpnRouteError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteClientVpnRouteRequest,
   output: DeleteClientVpnRouteResult,
@@ -80203,7 +80202,7 @@ export const deleteCoipCidr: API.OperationMethod<
   DeleteCoipCidrRequest,
   DeleteCoipCidrResult,
   DeleteCoipCidrError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteCoipCidrRequest,
   output: DeleteCoipCidrResult,
@@ -80233,7 +80232,7 @@ export const deleteCoipPool: API.OperationMethod<
   DeleteCoipPoolRequest,
   DeleteCoipPoolResult,
   DeleteCoipPoolError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteCoipPoolRequest,
   output: DeleteCoipPoolResult,
@@ -80264,7 +80263,7 @@ export const deleteCustomerGateway: API.OperationMethod<
   DeleteCustomerGatewayRequest,
   DeleteCustomerGatewayResponse,
   DeleteCustomerGatewayError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteCustomerGatewayRequest,
   output: DeleteCustomerGatewayResponse,
@@ -80295,7 +80294,7 @@ export const deleteDhcpOptions: API.OperationMethod<
   DeleteDhcpOptionsRequest,
   DeleteDhcpOptionsResponse,
   DeleteDhcpOptionsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteDhcpOptionsRequest,
   output: DeleteDhcpOptionsResponse,
@@ -80329,7 +80328,7 @@ export const deleteEgressOnlyInternetGateway: API.OperationMethod<
   DeleteEgressOnlyInternetGatewayRequest,
   DeleteEgressOnlyInternetGatewayResult,
   DeleteEgressOnlyInternetGatewayError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteEgressOnlyInternetGatewayRequest,
   output: DeleteEgressOnlyInternetGatewayResult,
@@ -80402,7 +80401,7 @@ export const deleteFleets: API.OperationMethod<
   DeleteFleetsRequest,
   DeleteFleetsResult,
   DeleteFleetsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteFleetsRequest,
   output: DeleteFleetsResult,
@@ -80428,7 +80427,7 @@ export const deleteFlowLogs: API.OperationMethod<
   DeleteFlowLogsRequest,
   DeleteFlowLogsResult,
   DeleteFlowLogsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteFlowLogsRequest,
   output: DeleteFlowLogsResult,
@@ -80454,7 +80453,7 @@ export const deleteFpgaImage: API.OperationMethod<
   DeleteFpgaImageRequest,
   DeleteFpgaImageResult,
   DeleteFpgaImageError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteFpgaImageRequest,
   output: DeleteFpgaImageResult,
@@ -80484,7 +80483,7 @@ export const deleteImageUsageReport: API.OperationMethod<
   DeleteImageUsageReportRequest,
   DeleteImageUsageReportResult,
   DeleteImageUsageReportError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteImageUsageReportRequest,
   output: DeleteImageUsageReportResult,
@@ -80514,7 +80513,7 @@ export const deleteInstanceConnectEndpoint: API.OperationMethod<
   DeleteInstanceConnectEndpointRequest,
   DeleteInstanceConnectEndpointResult,
   DeleteInstanceConnectEndpointError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteInstanceConnectEndpointRequest,
   output: DeleteInstanceConnectEndpointResult,
@@ -80547,7 +80546,7 @@ export const deleteInstanceEventWindow: API.OperationMethod<
   DeleteInstanceEventWindowRequest,
   DeleteInstanceEventWindowResult,
   DeleteInstanceEventWindowError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteInstanceEventWindowRequest,
   output: DeleteInstanceEventWindowResult,
@@ -80577,7 +80576,7 @@ export const deleteInternetGateway: API.OperationMethod<
   DeleteInternetGatewayRequest,
   DeleteInternetGatewayResponse,
   DeleteInternetGatewayError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteInternetGatewayRequest,
   output: DeleteInternetGatewayResponse,
@@ -80609,7 +80608,7 @@ export const deleteIpam: API.OperationMethod<
   DeleteIpamRequest,
   DeleteIpamResult,
   DeleteIpamError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteIpamRequest,
   output: DeleteIpamResult,
@@ -80641,7 +80640,7 @@ export const deleteIpamExternalResourceVerificationToken: API.OperationMethod<
   DeleteIpamExternalResourceVerificationTokenRequest,
   DeleteIpamExternalResourceVerificationTokenResult,
   DeleteIpamExternalResourceVerificationTokenError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteIpamExternalResourceVerificationTokenRequest,
   output: DeleteIpamExternalResourceVerificationTokenResult,
@@ -80673,7 +80672,7 @@ export const deleteIpamPolicy: API.OperationMethod<
   DeleteIpamPolicyRequest,
   DeleteIpamPolicyResult,
   DeleteIpamPolicyError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteIpamPolicyRequest,
   output: DeleteIpamPolicyResult,
@@ -80709,7 +80708,7 @@ export const deleteIpamPool: API.OperationMethod<
   DeleteIpamPoolRequest,
   DeleteIpamPoolResult,
   DeleteIpamPoolError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteIpamPoolRequest,
   output: DeleteIpamPoolResult,
@@ -80739,7 +80738,7 @@ export const deleteIpamPrefixListResolver: API.OperationMethod<
   DeleteIpamPrefixListResolverRequest,
   DeleteIpamPrefixListResolverResult,
   DeleteIpamPrefixListResolverError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteIpamPrefixListResolverRequest,
   output: DeleteIpamPrefixListResolverResult,
@@ -80770,7 +80769,7 @@ export const deleteIpamPrefixListResolverTarget: API.OperationMethod<
   DeleteIpamPrefixListResolverTargetRequest,
   DeleteIpamPrefixListResolverTargetResult,
   DeleteIpamPrefixListResolverTargetError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteIpamPrefixListResolverTargetRequest,
   output: DeleteIpamPrefixListResolverTargetResult,
@@ -80798,7 +80797,7 @@ export const deleteIpamResourceDiscovery: API.OperationMethod<
   DeleteIpamResourceDiscoveryRequest,
   DeleteIpamResourceDiscoveryResult,
   DeleteIpamResourceDiscoveryError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteIpamResourceDiscoveryRequest,
   output: DeleteIpamResourceDiscoveryResult,
@@ -80830,7 +80829,7 @@ export const deleteIpamScope: API.OperationMethod<
   DeleteIpamScopeRequest,
   DeleteIpamScopeResult,
   DeleteIpamScopeError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteIpamScopeRequest,
   output: DeleteIpamScopeResult,
@@ -80859,7 +80858,7 @@ export const deleteKeyPair: API.OperationMethod<
   DeleteKeyPairRequest,
   DeleteKeyPairResult,
   DeleteKeyPairError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteKeyPairRequest,
   output: DeleteKeyPairResult,
@@ -80883,7 +80882,7 @@ export const deleteLaunchTemplate: API.OperationMethod<
   DeleteLaunchTemplateRequest,
   DeleteLaunchTemplateResult,
   DeleteLaunchTemplateError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteLaunchTemplateRequest,
   output: DeleteLaunchTemplateResult,
@@ -80921,7 +80920,7 @@ export const deleteLaunchTemplateVersions: API.OperationMethod<
   DeleteLaunchTemplateVersionsRequest,
   DeleteLaunchTemplateVersionsResult,
   DeleteLaunchTemplateVersionsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteLaunchTemplateVersionsRequest,
   output: DeleteLaunchTemplateVersionsResult,
@@ -80943,7 +80942,7 @@ export const deleteLocalGatewayRoute: API.OperationMethod<
   DeleteLocalGatewayRouteRequest,
   DeleteLocalGatewayRouteResult,
   DeleteLocalGatewayRouteError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteLocalGatewayRouteRequest,
   output: DeleteLocalGatewayRouteResult,
@@ -80966,7 +80965,7 @@ export const deleteLocalGatewayRouteTable: API.OperationMethod<
   DeleteLocalGatewayRouteTableRequest,
   DeleteLocalGatewayRouteTableResult,
   DeleteLocalGatewayRouteTableError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteLocalGatewayRouteTableRequest,
   output: DeleteLocalGatewayRouteTableResult,
@@ -80995,7 +80994,7 @@ export const deleteLocalGatewayRouteTableVirtualInterfaceGroupAssociation: API.O
   DeleteLocalGatewayRouteTableVirtualInterfaceGroupAssociationRequest,
   DeleteLocalGatewayRouteTableVirtualInterfaceGroupAssociationResult,
   DeleteLocalGatewayRouteTableVirtualInterfaceGroupAssociationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteLocalGatewayRouteTableVirtualInterfaceGroupAssociationRequest,
   output: DeleteLocalGatewayRouteTableVirtualInterfaceGroupAssociationResult,
@@ -81025,7 +81024,7 @@ export const deleteLocalGatewayRouteTableVpcAssociation: API.OperationMethod<
   DeleteLocalGatewayRouteTableVpcAssociationRequest,
   DeleteLocalGatewayRouteTableVpcAssociationResult,
   DeleteLocalGatewayRouteTableVpcAssociationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteLocalGatewayRouteTableVpcAssociationRequest,
   output: DeleteLocalGatewayRouteTableVpcAssociationResult,
@@ -81055,7 +81054,7 @@ export const deleteLocalGatewayVirtualInterface: API.OperationMethod<
   DeleteLocalGatewayVirtualInterfaceRequest,
   DeleteLocalGatewayVirtualInterfaceResult,
   DeleteLocalGatewayVirtualInterfaceError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteLocalGatewayVirtualInterfaceRequest,
   output: DeleteLocalGatewayVirtualInterfaceResult,
@@ -81085,7 +81084,7 @@ export const deleteLocalGatewayVirtualInterfaceGroup: API.OperationMethod<
   DeleteLocalGatewayVirtualInterfaceGroupRequest,
   DeleteLocalGatewayVirtualInterfaceGroupResult,
   DeleteLocalGatewayVirtualInterfaceGroupError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteLocalGatewayVirtualInterfaceGroupRequest,
   output: DeleteLocalGatewayVirtualInterfaceGroupResult,
@@ -81115,7 +81114,7 @@ export const deleteManagedPrefixList: API.OperationMethod<
   DeleteManagedPrefixListRequest,
   DeleteManagedPrefixListResult,
   DeleteManagedPrefixListError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteManagedPrefixListRequest,
   output: DeleteManagedPrefixListResult,
@@ -81150,7 +81149,7 @@ export const deleteNatGateway: API.OperationMethod<
   DeleteNatGatewayRequest,
   DeleteNatGatewayResult,
   DeleteNatGatewayError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteNatGatewayRequest,
   output: DeleteNatGatewayResult,
@@ -81186,7 +81185,7 @@ export const deleteNetworkAcl: API.OperationMethod<
   DeleteNetworkAclRequest,
   DeleteNetworkAclResponse,
   DeleteNetworkAclError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteNetworkAclRequest,
   output: DeleteNetworkAclResponse,
@@ -81220,7 +81219,7 @@ export const deleteNetworkAclEntry: API.OperationMethod<
   DeleteNetworkAclEntryRequest,
   DeleteNetworkAclEntryResponse,
   DeleteNetworkAclEntryError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteNetworkAclEntryRequest,
   output: DeleteNetworkAclEntryResponse,
@@ -81250,7 +81249,7 @@ export const deleteNetworkInsightsAccessScope: API.OperationMethod<
   DeleteNetworkInsightsAccessScopeRequest,
   DeleteNetworkInsightsAccessScopeResult,
   DeleteNetworkInsightsAccessScopeError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteNetworkInsightsAccessScopeRequest,
   output: DeleteNetworkInsightsAccessScopeResult,
@@ -81278,7 +81277,7 @@ export const deleteNetworkInsightsAccessScopeAnalysis: API.OperationMethod<
   DeleteNetworkInsightsAccessScopeAnalysisRequest,
   DeleteNetworkInsightsAccessScopeAnalysisResult,
   DeleteNetworkInsightsAccessScopeAnalysisError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteNetworkInsightsAccessScopeAnalysisRequest,
   output: DeleteNetworkInsightsAccessScopeAnalysisResult,
@@ -81306,7 +81305,7 @@ export const deleteNetworkInsightsAnalysis: API.OperationMethod<
   DeleteNetworkInsightsAnalysisRequest,
   DeleteNetworkInsightsAnalysisResult,
   DeleteNetworkInsightsAnalysisError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteNetworkInsightsAnalysisRequest,
   output: DeleteNetworkInsightsAnalysisResult,
@@ -81334,7 +81333,7 @@ export const deleteNetworkInsightsPath: API.OperationMethod<
   DeleteNetworkInsightsPathRequest,
   DeleteNetworkInsightsPathResult,
   DeleteNetworkInsightsPathError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteNetworkInsightsPathRequest,
   output: DeleteNetworkInsightsPathResult,
@@ -81366,7 +81365,7 @@ export const deleteNetworkInterface: API.OperationMethod<
   DeleteNetworkInterfaceRequest,
   DeleteNetworkInterfaceResponse,
   DeleteNetworkInterfaceError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteNetworkInterfaceRequest,
   output: DeleteNetworkInterfaceResponse,
@@ -81401,7 +81400,7 @@ export const deleteNetworkInterfacePermission: API.OperationMethod<
   DeleteNetworkInterfacePermissionRequest,
   DeleteNetworkInterfacePermissionResult,
   DeleteNetworkInterfacePermissionError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteNetworkInterfacePermissionRequest,
   output: DeleteNetworkInterfacePermissionResult,
@@ -81433,7 +81432,7 @@ export const deletePlacementGroup: API.OperationMethod<
   DeletePlacementGroupRequest,
   DeletePlacementGroupResponse,
   DeletePlacementGroupError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeletePlacementGroupRequest,
   output: DeletePlacementGroupResponse,
@@ -81460,7 +81459,7 @@ export const deletePublicIpv4Pool: API.OperationMethod<
   DeletePublicIpv4PoolRequest,
   DeletePublicIpv4PoolResult,
   DeletePublicIpv4PoolError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeletePublicIpv4PoolRequest,
   output: DeletePublicIpv4PoolResult,
@@ -81487,7 +81486,7 @@ export const deleteQueuedReservedInstances: API.OperationMethod<
   DeleteQueuedReservedInstancesRequest,
   DeleteQueuedReservedInstancesResult,
   DeleteQueuedReservedInstancesError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteQueuedReservedInstancesRequest,
   output: DeleteQueuedReservedInstancesResult,
@@ -81518,7 +81517,7 @@ export const deleteRoute: API.OperationMethod<
   DeleteRouteRequest,
   DeleteRouteResponse,
   DeleteRouteError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteRouteRequest,
   output: DeleteRouteResponse,
@@ -81565,7 +81564,7 @@ export const deleteRouteServer: API.OperationMethod<
   DeleteRouteServerRequest,
   DeleteRouteServerResult,
   DeleteRouteServerError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteRouteServerRequest,
   output: DeleteRouteServerResult,
@@ -81595,7 +81594,7 @@ export const deleteRouteServerEndpoint: API.OperationMethod<
   DeleteRouteServerEndpointRequest,
   DeleteRouteServerEndpointResult,
   DeleteRouteServerEndpointError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteRouteServerEndpointRequest,
   output: DeleteRouteServerEndpointResult,
@@ -81632,7 +81631,7 @@ export const deleteRouteServerPeer: API.OperationMethod<
   DeleteRouteServerPeerRequest,
   DeleteRouteServerPeerResult,
   DeleteRouteServerPeerError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteRouteServerPeerRequest,
   output: DeleteRouteServerPeerResult,
@@ -81662,7 +81661,7 @@ export const deleteRouteTable: API.OperationMethod<
   DeleteRouteTableRequest,
   DeleteRouteTableResponse,
   DeleteRouteTableError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteRouteTableRequest,
   output: DeleteRouteTableResponse,
@@ -81686,7 +81685,7 @@ export const deleteSecondaryNetwork: API.OperationMethod<
   DeleteSecondaryNetworkRequest,
   DeleteSecondaryNetworkResult,
   DeleteSecondaryNetworkError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteSecondaryNetworkRequest,
   output: DeleteSecondaryNetworkResult,
@@ -81704,7 +81703,7 @@ export const deleteSecondarySubnet: API.OperationMethod<
   DeleteSecondarySubnetRequest,
   DeleteSecondarySubnetResult,
   DeleteSecondarySubnetError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteSecondarySubnetRequest,
   output: DeleteSecondarySubnetResult,
@@ -81735,7 +81734,7 @@ export const deleteSecurityGroup: API.OperationMethod<
   DeleteSecurityGroupRequest,
   DeleteSecurityGroupResult,
   DeleteSecurityGroupError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteSecurityGroupRequest,
   output: DeleteSecurityGroupResult,
@@ -81780,7 +81779,7 @@ export const deleteSnapshot: API.OperationMethod<
   DeleteSnapshotRequest,
   DeleteSnapshotResponse,
   DeleteSnapshotError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteSnapshotRequest,
   output: DeleteSnapshotResponse,
@@ -81804,7 +81803,7 @@ export const deleteSpotDatafeedSubscription: API.OperationMethod<
   DeleteSpotDatafeedSubscriptionRequest,
   DeleteSpotDatafeedSubscriptionResponse,
   DeleteSpotDatafeedSubscriptionError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteSpotDatafeedSubscriptionRequest,
   output: DeleteSpotDatafeedSubscriptionResponse,
@@ -81829,7 +81828,7 @@ export const deleteSubnet: API.OperationMethod<
   DeleteSubnetRequest,
   DeleteSubnetResponse,
   DeleteSubnetError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteSubnetRequest,
   output: DeleteSubnetResponse,
@@ -81860,7 +81859,7 @@ export const deleteSubnetCidrReservation: API.OperationMethod<
   DeleteSubnetCidrReservationRequest,
   DeleteSubnetCidrReservationResult,
   DeleteSubnetCidrReservationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteSubnetCidrReservationRequest,
   output: DeleteSubnetCidrReservationResult,
@@ -81894,7 +81893,7 @@ export const deleteTags: API.OperationMethod<
   DeleteTagsRequest,
   DeleteTagsResponse,
   DeleteTagsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteTagsRequest,
   output: DeleteTagsResponse,
@@ -81924,7 +81923,7 @@ export const deleteTrafficMirrorFilter: API.OperationMethod<
   DeleteTrafficMirrorFilterRequest,
   DeleteTrafficMirrorFilterResult,
   DeleteTrafficMirrorFilterError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteTrafficMirrorFilterRequest,
   output: DeleteTrafficMirrorFilterResult,
@@ -81953,7 +81952,7 @@ export const deleteTrafficMirrorFilterRule: API.OperationMethod<
   DeleteTrafficMirrorFilterRuleRequest,
   DeleteTrafficMirrorFilterRuleResult,
   DeleteTrafficMirrorFilterRuleError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteTrafficMirrorFilterRuleRequest,
   output: DeleteTrafficMirrorFilterRuleResult,
@@ -81983,7 +81982,7 @@ export const deleteTrafficMirrorSession: API.OperationMethod<
   DeleteTrafficMirrorSessionRequest,
   DeleteTrafficMirrorSessionResult,
   DeleteTrafficMirrorSessionError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteTrafficMirrorSessionRequest,
   output: DeleteTrafficMirrorSessionResult,
@@ -82015,7 +82014,7 @@ export const deleteTrafficMirrorTarget: API.OperationMethod<
   DeleteTrafficMirrorTargetRequest,
   DeleteTrafficMirrorTargetResult,
   DeleteTrafficMirrorTargetError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteTrafficMirrorTargetRequest,
   output: DeleteTrafficMirrorTargetResult,
@@ -82047,7 +82046,7 @@ export const deleteTransitGateway: API.OperationMethod<
   DeleteTransitGatewayRequest,
   DeleteTransitGatewayResult,
   DeleteTransitGatewayError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteTransitGatewayRequest,
   output: DeleteTransitGatewayResult,
@@ -82073,7 +82072,7 @@ export const deleteTransitGatewayClientVpnAttachment: API.OperationMethod<
   DeleteTransitGatewayClientVpnAttachmentRequest,
   DeleteTransitGatewayClientVpnAttachmentResult,
   DeleteTransitGatewayClientVpnAttachmentError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteTransitGatewayClientVpnAttachmentRequest,
   output: DeleteTransitGatewayClientVpnAttachmentResult,
@@ -82096,7 +82095,7 @@ export const deleteTransitGatewayConnect: API.OperationMethod<
   DeleteTransitGatewayConnectRequest,
   DeleteTransitGatewayConnectResult,
   DeleteTransitGatewayConnectError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteTransitGatewayConnectRequest,
   output: DeleteTransitGatewayConnectResult,
@@ -82123,7 +82122,7 @@ export const deleteTransitGatewayConnectPeer: API.OperationMethod<
   DeleteTransitGatewayConnectPeerRequest,
   DeleteTransitGatewayConnectPeerResult,
   DeleteTransitGatewayConnectPeerError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteTransitGatewayConnectPeerRequest,
   output: DeleteTransitGatewayConnectPeerResult,
@@ -82152,7 +82151,7 @@ export const deleteTransitGatewayMeteringPolicy: API.OperationMethod<
   DeleteTransitGatewayMeteringPolicyRequest,
   DeleteTransitGatewayMeteringPolicyResult,
   DeleteTransitGatewayMeteringPolicyError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteTransitGatewayMeteringPolicyRequest,
   output: DeleteTransitGatewayMeteringPolicyResult,
@@ -82182,7 +82181,7 @@ export const deleteTransitGatewayMeteringPolicyEntry: API.OperationMethod<
   DeleteTransitGatewayMeteringPolicyEntryRequest,
   DeleteTransitGatewayMeteringPolicyEntryResult,
   DeleteTransitGatewayMeteringPolicyEntryError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteTransitGatewayMeteringPolicyEntryRequest,
   output: DeleteTransitGatewayMeteringPolicyEntryResult,
@@ -82211,7 +82210,7 @@ export const deleteTransitGatewayMulticastDomain: API.OperationMethod<
   DeleteTransitGatewayMulticastDomainRequest,
   DeleteTransitGatewayMulticastDomainResult,
   DeleteTransitGatewayMulticastDomainError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteTransitGatewayMulticastDomainRequest,
   output: DeleteTransitGatewayMulticastDomainResult,
@@ -82238,7 +82237,7 @@ export const deleteTransitGatewayPeeringAttachment: API.OperationMethod<
   DeleteTransitGatewayPeeringAttachmentRequest,
   DeleteTransitGatewayPeeringAttachmentResult,
   DeleteTransitGatewayPeeringAttachmentError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteTransitGatewayPeeringAttachmentRequest,
   output: DeleteTransitGatewayPeeringAttachmentResult,
@@ -82266,7 +82265,7 @@ export const deleteTransitGatewayPolicyTable: API.OperationMethod<
   DeleteTransitGatewayPolicyTableRequest,
   DeleteTransitGatewayPolicyTableResult,
   DeleteTransitGatewayPolicyTableError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteTransitGatewayPolicyTableRequest,
   output: DeleteTransitGatewayPolicyTableResult,
@@ -82295,7 +82294,7 @@ export const deleteTransitGatewayPrefixListReference: API.OperationMethod<
   DeleteTransitGatewayPrefixListReferenceRequest,
   DeleteTransitGatewayPrefixListReferenceResult,
   DeleteTransitGatewayPrefixListReferenceError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteTransitGatewayPrefixListReferenceRequest,
   output: DeleteTransitGatewayPrefixListReferenceResult,
@@ -82323,7 +82322,7 @@ export const deleteTransitGatewayRoute: API.OperationMethod<
   DeleteTransitGatewayRouteRequest,
   DeleteTransitGatewayRouteResult,
   DeleteTransitGatewayRouteError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteTransitGatewayRouteRequest,
   output: DeleteTransitGatewayRouteResult,
@@ -82355,7 +82354,7 @@ export const deleteTransitGatewayRouteTable: API.OperationMethod<
   DeleteTransitGatewayRouteTableRequest,
   DeleteTransitGatewayRouteTableResult,
   DeleteTransitGatewayRouteTableError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteTransitGatewayRouteTableRequest,
   output: DeleteTransitGatewayRouteTableResult,
@@ -82386,7 +82385,7 @@ export const deleteTransitGatewayRouteTableAnnouncement: API.OperationMethod<
   DeleteTransitGatewayRouteTableAnnouncementRequest,
   DeleteTransitGatewayRouteTableAnnouncementResult,
   DeleteTransitGatewayRouteTableAnnouncementError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteTransitGatewayRouteTableAnnouncementRequest,
   output: DeleteTransitGatewayRouteTableAnnouncementResult,
@@ -82414,7 +82413,7 @@ export const deleteTransitGatewayVpcAttachment: API.OperationMethod<
   DeleteTransitGatewayVpcAttachmentRequest,
   DeleteTransitGatewayVpcAttachmentResult,
   DeleteTransitGatewayVpcAttachmentError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteTransitGatewayVpcAttachmentRequest,
   output: DeleteTransitGatewayVpcAttachmentResult,
@@ -82443,7 +82442,7 @@ export const deleteVerifiedAccessEndpoint: API.OperationMethod<
   DeleteVerifiedAccessEndpointRequest,
   DeleteVerifiedAccessEndpointResult,
   DeleteVerifiedAccessEndpointError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteVerifiedAccessEndpointRequest,
   output: DeleteVerifiedAccessEndpointResult,
@@ -82472,7 +82471,7 @@ export const deleteVerifiedAccessGroup: API.OperationMethod<
   DeleteVerifiedAccessGroupRequest,
   DeleteVerifiedAccessGroupResult,
   DeleteVerifiedAccessGroupError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteVerifiedAccessGroupRequest,
   output: DeleteVerifiedAccessGroupResult,
@@ -82499,7 +82498,7 @@ export const deleteVerifiedAccessInstance: API.OperationMethod<
   DeleteVerifiedAccessInstanceRequest,
   DeleteVerifiedAccessInstanceResult,
   DeleteVerifiedAccessInstanceError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteVerifiedAccessInstanceRequest,
   output: DeleteVerifiedAccessInstanceResult,
@@ -82525,7 +82524,7 @@ export const deleteVerifiedAccessTrustProvider: API.OperationMethod<
   DeleteVerifiedAccessTrustProviderRequest,
   DeleteVerifiedAccessTrustProviderResult,
   DeleteVerifiedAccessTrustProviderError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteVerifiedAccessTrustProviderRequest,
   output: DeleteVerifiedAccessTrustProviderResult,
@@ -82559,7 +82558,7 @@ export const deleteVolume: API.OperationMethod<
   DeleteVolumeRequest,
   DeleteVolumeResponse,
   DeleteVolumeError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteVolumeRequest,
   output: DeleteVolumeResponse,
@@ -82598,7 +82597,7 @@ export const deleteVpc: API.OperationMethod<
   DeleteVpcRequest,
   DeleteVpcResponse,
   DeleteVpcError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteVpcRequest,
   output: DeleteVpcResponse,
@@ -82629,7 +82628,7 @@ export const deleteVpcBlockPublicAccessExclusion: API.OperationMethod<
   DeleteVpcBlockPublicAccessExclusionRequest,
   DeleteVpcBlockPublicAccessExclusionResult,
   DeleteVpcBlockPublicAccessExclusionError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteVpcBlockPublicAccessExclusionRequest,
   output: DeleteVpcBlockPublicAccessExclusionResult,
@@ -82660,7 +82659,7 @@ export const deleteVpcEncryptionControl: API.OperationMethod<
   DeleteVpcEncryptionControlRequest,
   DeleteVpcEncryptionControlResult,
   DeleteVpcEncryptionControlError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteVpcEncryptionControlRequest,
   output: DeleteVpcEncryptionControlResult,
@@ -82684,7 +82683,7 @@ export const deleteVpcEndpointConnectionNotifications: API.OperationMethod<
   DeleteVpcEndpointConnectionNotificationsRequest,
   DeleteVpcEndpointConnectionNotificationsResult,
   DeleteVpcEndpointConnectionNotificationsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteVpcEndpointConnectionNotificationsRequest,
   output: DeleteVpcEndpointConnectionNotificationsResult,
@@ -82714,7 +82713,7 @@ export const deleteVpcEndpoints: API.OperationMethod<
   DeleteVpcEndpointsRequest,
   DeleteVpcEndpointsResult,
   DeleteVpcEndpointsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteVpcEndpointsRequest,
   output: DeleteVpcEndpointsResult,
@@ -82740,7 +82739,7 @@ export const deleteVpcEndpointServiceConfigurations: API.OperationMethod<
   DeleteVpcEndpointServiceConfigurationsRequest,
   DeleteVpcEndpointServiceConfigurationsResult,
   DeleteVpcEndpointServiceConfigurationsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteVpcEndpointServiceConfigurationsRequest,
   output: DeleteVpcEndpointServiceConfigurationsResult,
@@ -82768,7 +82767,7 @@ export const deleteVpcPeeringConnection: API.OperationMethod<
   DeleteVpcPeeringConnectionRequest,
   DeleteVpcPeeringConnectionResult,
   DeleteVpcPeeringConnectionError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteVpcPeeringConnectionRequest,
   output: DeleteVpcPeeringConnectionResult,
@@ -82796,7 +82795,7 @@ export const deleteVpnConcentrator: API.OperationMethod<
   DeleteVpnConcentratorRequest,
   DeleteVpnConcentratorResult,
   DeleteVpnConcentratorError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteVpnConcentratorRequest,
   output: DeleteVpnConcentratorResult,
@@ -82835,7 +82834,7 @@ export const deleteVpnConnection: API.OperationMethod<
   DeleteVpnConnectionRequest,
   DeleteVpnConnectionResponse,
   DeleteVpnConnectionError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteVpnConnectionRequest,
   output: DeleteVpnConnectionResponse,
@@ -82866,7 +82865,7 @@ export const deleteVpnConnectionRoute: API.OperationMethod<
   DeleteVpnConnectionRouteRequest,
   DeleteVpnConnectionRouteResponse,
   DeleteVpnConnectionRouteError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteVpnConnectionRouteRequest,
   output: DeleteVpnConnectionRouteResponse,
@@ -82897,7 +82896,7 @@ export const deleteVpnGateway: API.OperationMethod<
   DeleteVpnGatewayRequest,
   DeleteVpnGatewayResponse,
   DeleteVpnGatewayError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteVpnGatewayRequest,
   output: DeleteVpnGatewayResponse,
@@ -82927,7 +82926,7 @@ export const deprovisionByoipCidr: API.OperationMethod<
   DeprovisionByoipCidrRequest,
   DeprovisionByoipCidrResult,
   DeprovisionByoipCidrError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeprovisionByoipCidrRequest,
   output: DeprovisionByoipCidrResult,
@@ -82951,7 +82950,7 @@ export const deprovisionIpamByoasn: API.OperationMethod<
   DeprovisionIpamByoasnRequest,
   DeprovisionIpamByoasnResult,
   DeprovisionIpamByoasnError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeprovisionIpamByoasnRequest,
   output: DeprovisionIpamByoasnResult,
@@ -82979,7 +82978,7 @@ export const deprovisionIpamPoolCidr: API.OperationMethod<
   DeprovisionIpamPoolCidrRequest,
   DeprovisionIpamPoolCidrResult,
   DeprovisionIpamPoolCidrError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeprovisionIpamPoolCidrRequest,
   output: DeprovisionIpamPoolCidrResult,
@@ -83008,7 +83007,7 @@ export const deprovisionPublicIpv4PoolCidr: API.OperationMethod<
   DeprovisionPublicIpv4PoolCidrRequest,
   DeprovisionPublicIpv4PoolCidrResult,
   DeprovisionPublicIpv4PoolCidrError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeprovisionPublicIpv4PoolCidrRequest,
   output: DeprovisionPublicIpv4PoolCidrResult,
@@ -83064,7 +83063,7 @@ export const deregisterImage: API.OperationMethod<
   DeregisterImageRequest,
   DeregisterImageResult,
   DeregisterImageError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeregisterImageRequest,
   output: DeregisterImageResult,
@@ -83093,7 +83092,7 @@ export const deregisterInstanceEventNotificationAttributes: API.OperationMethod<
   DeregisterInstanceEventNotificationAttributesRequest,
   DeregisterInstanceEventNotificationAttributesResult,
   DeregisterInstanceEventNotificationAttributesError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeregisterInstanceEventNotificationAttributesRequest,
   output: DeregisterInstanceEventNotificationAttributesResult,
@@ -83115,7 +83114,7 @@ export const deregisterTransitGatewayMulticastGroupMembers: API.OperationMethod<
   DeregisterTransitGatewayMulticastGroupMembersRequest,
   DeregisterTransitGatewayMulticastGroupMembersResult,
   DeregisterTransitGatewayMulticastGroupMembersError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeregisterTransitGatewayMulticastGroupMembersRequest,
   output: DeregisterTransitGatewayMulticastGroupMembersResult,
@@ -83137,7 +83136,7 @@ export const deregisterTransitGatewayMulticastGroupSources: API.OperationMethod<
   DeregisterTransitGatewayMulticastGroupSourcesRequest,
   DeregisterTransitGatewayMulticastGroupSourcesResult,
   DeregisterTransitGatewayMulticastGroupSourcesError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeregisterTransitGatewayMulticastGroupSourcesRequest,
   output: DeregisterTransitGatewayMulticastGroupSourcesResult,
@@ -83175,7 +83174,7 @@ export const describeAccountAttributes: API.OperationMethod<
   DescribeAccountAttributesRequest,
   DescribeAccountAttributesResult,
   DescribeAccountAttributesError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeAccountAttributesRequest,
   output: DescribeAccountAttributesResult,
@@ -83197,7 +83196,7 @@ export const describeAddresses: API.OperationMethod<
   DescribeAddressesRequest,
   DescribeAddressesResult,
   DescribeAddressesError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeAddressesRequest,
   output: DescribeAddressesResult,
@@ -83223,7 +83222,7 @@ export const describeAddressesAttribute: API.PaginatedOperationMethod<
   DescribeAddressesAttributeRequest,
   DescribeAddressesAttributeResult,
   DescribeAddressesAttributeError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   AddressAttribute
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeAddressesAttributeRequest,
@@ -83262,7 +83261,7 @@ export const describeAddressTransfers: API.PaginatedOperationMethod<
   DescribeAddressTransfersRequest,
   DescribeAddressTransfersResult,
   DescribeAddressTransfersError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   AddressTransfer
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeAddressTransfersRequest,
@@ -83305,7 +83304,7 @@ export const describeAggregateIdFormat: API.OperationMethod<
   DescribeAggregateIdFormatRequest,
   DescribeAggregateIdFormatResult,
   DescribeAggregateIdFormatError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeAggregateIdFormatRequest,
   output: DescribeAggregateIdFormatResult,
@@ -83337,7 +83336,7 @@ export const describeAvailabilityZones: API.OperationMethod<
   DescribeAvailabilityZonesRequest,
   DescribeAvailabilityZonesResult,
   DescribeAvailabilityZonesError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeAvailabilityZonesRequest,
   output: DescribeAvailabilityZonesResult,
@@ -83361,7 +83360,7 @@ export const describeAwsNetworkPerformanceMetricSubscriptions: API.PaginatedOper
   DescribeAwsNetworkPerformanceMetricSubscriptionsRequest,
   DescribeAwsNetworkPerformanceMetricSubscriptionsResult,
   DescribeAwsNetworkPerformanceMetricSubscriptionsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   Subscription
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeAwsNetworkPerformanceMetricSubscriptionsRequest,
@@ -83399,7 +83398,7 @@ export const describeBundleTasks: API.OperationMethod<
   DescribeBundleTasksRequest,
   DescribeBundleTasksResult,
   DescribeBundleTasksError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeBundleTasksRequest,
   output: DescribeBundleTasksResult,
@@ -83427,7 +83426,7 @@ export const describeByoipCidrs: API.PaginatedOperationMethod<
   DescribeByoipCidrsRequest,
   DescribeByoipCidrsResult,
   DescribeByoipCidrsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ByoipCidr
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeByoipCidrsRequest,
@@ -83457,7 +83456,7 @@ export const describeCapacityBlockExtensionHistory: API.PaginatedOperationMethod
   DescribeCapacityBlockExtensionHistoryRequest,
   DescribeCapacityBlockExtensionHistoryResult,
   DescribeCapacityBlockExtensionHistoryError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   CapacityBlockExtension
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeCapacityBlockExtensionHistoryRequest,
@@ -83491,7 +83490,7 @@ export const describeCapacityBlockExtensionOfferings: API.PaginatedOperationMeth
   DescribeCapacityBlockExtensionOfferingsRequest,
   DescribeCapacityBlockExtensionOfferingsResult,
   DescribeCapacityBlockExtensionOfferingsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   CapacityBlockExtensionOffering
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeCapacityBlockExtensionOfferingsRequest,
@@ -83528,7 +83527,7 @@ export const describeCapacityBlockOfferings: API.PaginatedOperationMethod<
   DescribeCapacityBlockOfferingsRequest,
   DescribeCapacityBlockOfferingsResult,
   DescribeCapacityBlockOfferingsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   CapacityBlockOffering
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeCapacityBlockOfferingsRequest,
@@ -83557,7 +83556,7 @@ export const describeCapacityBlocks: API.PaginatedOperationMethod<
   DescribeCapacityBlocksRequest,
   DescribeCapacityBlocksResult,
   DescribeCapacityBlocksError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   CapacityBlock
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeCapacityBlocksRequest,
@@ -83590,7 +83589,7 @@ export const describeCapacityBlockStatus: API.PaginatedOperationMethod<
   DescribeCapacityBlockStatusRequest,
   DescribeCapacityBlockStatusResult,
   DescribeCapacityBlockStatusError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   CapacityBlockStatus
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeCapacityBlockStatusRequest,
@@ -83623,7 +83622,7 @@ export const describeCapacityManagerDataExports: API.PaginatedOperationMethod<
   DescribeCapacityManagerDataExportsRequest,
   DescribeCapacityManagerDataExportsResult,
   DescribeCapacityManagerDataExportsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   CapacityManagerDataExportResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeCapacityManagerDataExportsRequest,
@@ -83658,7 +83657,7 @@ export const describeCapacityReservationBillingRequests: API.PaginatedOperationM
   DescribeCapacityReservationBillingRequestsRequest,
   DescribeCapacityReservationBillingRequestsResult,
   DescribeCapacityReservationBillingRequestsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   CapacityReservationBillingRequest
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeCapacityReservationBillingRequestsRequest,
@@ -83685,7 +83684,7 @@ export const describeCapacityReservationCancellationQuotes: API.OperationMethod<
   DescribeCapacityReservationCancellationQuotesRequest,
   DescribeCapacityReservationCancellationQuotesResult,
   DescribeCapacityReservationCancellationQuotesError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeCapacityReservationCancellationQuotesRequest,
   output: DescribeCapacityReservationCancellationQuotesResult,
@@ -83707,7 +83706,7 @@ export const describeCapacityReservationFleets: API.PaginatedOperationMethod<
   DescribeCapacityReservationFleetsRequest,
   DescribeCapacityReservationFleetsResult,
   DescribeCapacityReservationFleetsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   CapacityReservationFleet
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeCapacityReservationFleetsRequest,
@@ -83742,7 +83741,7 @@ export const describeCapacityReservations: API.PaginatedOperationMethod<
   DescribeCapacityReservationsRequest,
   DescribeCapacityReservationsResult,
   DescribeCapacityReservationsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   CapacityReservation
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeCapacityReservationsRequest,
@@ -83792,7 +83791,7 @@ export const describeCapacityReservationTopology: API.OperationMethod<
   DescribeCapacityReservationTopologyRequest,
   DescribeCapacityReservationTopologyResult,
   DescribeCapacityReservationTopologyError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeCapacityReservationTopologyRequest,
   output: DescribeCapacityReservationTopologyResult,
@@ -83816,7 +83815,7 @@ export const describeCarrierGateways: API.PaginatedOperationMethod<
   DescribeCarrierGatewaysRequest,
   DescribeCarrierGatewaysResult,
   DescribeCarrierGatewaysError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   CarrierGateway
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeCarrierGatewaysRequest,
@@ -83855,7 +83854,7 @@ export const describeClassicLinkInstances: API.PaginatedOperationMethod<
   DescribeClassicLinkInstancesRequest,
   DescribeClassicLinkInstancesResult,
   DescribeClassicLinkInstancesError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ClassicLinkInstance
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeClassicLinkInstancesRequest,
@@ -83888,7 +83887,7 @@ export const describeClientVpnAuthorizationRules: API.PaginatedOperationMethod<
   DescribeClientVpnAuthorizationRulesRequest,
   DescribeClientVpnAuthorizationRulesResult,
   DescribeClientVpnAuthorizationRulesError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   AuthorizationRule
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeClientVpnAuthorizationRulesRequest,
@@ -83923,7 +83922,7 @@ export const describeClientVpnConnections: API.PaginatedOperationMethod<
   DescribeClientVpnConnectionsRequest,
   DescribeClientVpnConnectionsResult,
   DescribeClientVpnConnectionsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ClientVpnConnection
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeClientVpnConnectionsRequest,
@@ -83957,7 +83956,7 @@ export const describeClientVpnEndpoints: API.PaginatedOperationMethod<
   DescribeClientVpnEndpointsRequest,
   DescribeClientVpnEndpointsResult,
   DescribeClientVpnEndpointsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ClientVpnEndpoint
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeClientVpnEndpointsRequest,
@@ -83991,7 +83990,7 @@ export const describeClientVpnRoutes: API.PaginatedOperationMethod<
   DescribeClientVpnRoutesRequest,
   DescribeClientVpnRoutesResult,
   DescribeClientVpnRoutesError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ClientVpnRoute
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeClientVpnRoutesRequest,
@@ -84026,7 +84025,7 @@ export const describeClientVpnTargetNetworks: API.PaginatedOperationMethod<
   DescribeClientVpnTargetNetworksRequest,
   DescribeClientVpnTargetNetworksResult,
   DescribeClientVpnTargetNetworksError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   TargetNetwork
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeClientVpnTargetNetworksRequest,
@@ -84060,7 +84059,7 @@ export const describeCoipPools: API.PaginatedOperationMethod<
   DescribeCoipPoolsRequest,
   DescribeCoipPoolsResult,
   DescribeCoipPoolsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   CoipPool
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeCoipPoolsRequest,
@@ -84088,7 +84087,7 @@ export const describeConversionTasks: API.OperationMethod<
   DescribeConversionTasksRequest,
   DescribeConversionTasksResult,
   DescribeConversionTasksError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeConversionTasksRequest,
   output: DescribeConversionTasksResult,
@@ -84114,7 +84113,7 @@ export const describeCustomerGateways: API.OperationMethod<
   DescribeCustomerGatewaysRequest,
   DescribeCustomerGatewaysResult,
   DescribeCustomerGatewaysError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeCustomerGatewaysRequest,
   output: DescribeCustomerGatewaysResult,
@@ -84152,7 +84151,7 @@ export const describeDeclarativePoliciesReports: API.OperationMethod<
   DescribeDeclarativePoliciesReportsRequest,
   DescribeDeclarativePoliciesReportsResult,
   DescribeDeclarativePoliciesReportsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeDeclarativePoliciesReportsRequest,
   output: DescribeDeclarativePoliciesReportsResult,
@@ -84182,7 +84181,7 @@ export const describeDhcpOptions: API.PaginatedOperationMethod<
   DescribeDhcpOptionsRequest,
   DescribeDhcpOptionsResult,
   DescribeDhcpOptionsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   DhcpOptions
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeDhcpOptionsRequest,
@@ -84222,7 +84221,7 @@ export const describeEgressOnlyInternetGateways: API.PaginatedOperationMethod<
   DescribeEgressOnlyInternetGatewaysRequest,
   DescribeEgressOnlyInternetGatewaysResult,
   DescribeEgressOnlyInternetGatewaysError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   EgressOnlyInternetGateway
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeEgressOnlyInternetGatewaysRequest,
@@ -84259,7 +84258,7 @@ export const describeElasticGpus: API.OperationMethod<
   DescribeElasticGpusRequest,
   DescribeElasticGpusResult,
   DescribeElasticGpusError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeElasticGpusRequest,
   output: DescribeElasticGpusResult,
@@ -84281,7 +84280,7 @@ export const describeExportImageTasks: API.PaginatedOperationMethod<
   DescribeExportImageTasksRequest,
   DescribeExportImageTasksResult,
   DescribeExportImageTasksError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ExportImageTask
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeExportImageTasksRequest,
@@ -84314,7 +84313,7 @@ export const describeExportTasks: API.OperationMethod<
   DescribeExportTasksRequest,
   DescribeExportTasksResult,
   DescribeExportTasksError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeExportTasksRequest,
   output: DescribeExportTasksResult,
@@ -84340,7 +84339,7 @@ export const describeFastLaunchImages: API.PaginatedOperationMethod<
   DescribeFastLaunchImagesRequest,
   DescribeFastLaunchImagesResult,
   DescribeFastLaunchImagesError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   DescribeFastLaunchImagesSuccessItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeFastLaunchImagesRequest,
@@ -84365,7 +84364,7 @@ export const describeFastSnapshotRestores: API.PaginatedOperationMethod<
   DescribeFastSnapshotRestoresRequest,
   DescribeFastSnapshotRestoresResult,
   DescribeFastSnapshotRestoresError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   DescribeFastSnapshotRestoreSuccessItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeFastSnapshotRestoresRequest,
@@ -84401,7 +84400,7 @@ export const describeFleetHistory: API.OperationMethod<
   DescribeFleetHistoryRequest,
   DescribeFleetHistoryResult,
   DescribeFleetHistoryError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeFleetHistoryRequest,
   output: DescribeFleetHistoryResult,
@@ -84434,7 +84433,7 @@ export const describeFleetInstances: API.OperationMethod<
   DescribeFleetInstancesRequest,
   DescribeFleetInstancesResult,
   DescribeFleetInstancesError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeFleetInstancesRequest,
   output: DescribeFleetInstancesResult,
@@ -84466,7 +84465,7 @@ export const describeFleets: API.PaginatedOperationMethod<
   DescribeFleetsRequest,
   DescribeFleetsResult,
   DescribeFleetsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   FleetData
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeFleetsRequest,
@@ -84503,7 +84502,7 @@ export const describeFlowLogs: API.PaginatedOperationMethod<
   DescribeFlowLogsRequest,
   DescribeFlowLogsResult,
   DescribeFlowLogsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   FlowLog
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeFlowLogsRequest,
@@ -84538,7 +84537,7 @@ export const describeFpgaImageAttribute: API.OperationMethod<
   DescribeFpgaImageAttributeRequest,
   DescribeFpgaImageAttributeResult,
   DescribeFpgaImageAttributeError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeFpgaImageAttributeRequest,
   output: DescribeFpgaImageAttributeResult,
@@ -84567,7 +84566,7 @@ export const describeFpgaImages: API.PaginatedOperationMethod<
   DescribeFpgaImagesRequest,
   DescribeFpgaImagesResult,
   DescribeFpgaImagesError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   FpgaImage
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeFpgaImagesRequest,
@@ -84607,7 +84606,7 @@ export const describeHostReservationOfferings: API.PaginatedOperationMethod<
   DescribeHostReservationOfferingsRequest,
   DescribeHostReservationOfferingsResult,
   DescribeHostReservationOfferingsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   HostOffering
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeHostReservationOfferingsRequest,
@@ -84637,7 +84636,7 @@ export const describeHostReservations: API.PaginatedOperationMethod<
   DescribeHostReservationsRequest,
   DescribeHostReservationsResult,
   DescribeHostReservationsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   HostReservation
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeHostReservationsRequest,
@@ -84670,7 +84669,7 @@ export const describeHosts: API.PaginatedOperationMethod<
   DescribeHostsRequest,
   DescribeHostsResult,
   DescribeHostsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   Host
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeHostsRequest,
@@ -84699,7 +84698,7 @@ export const describeIamInstanceProfileAssociations: API.PaginatedOperationMetho
   DescribeIamInstanceProfileAssociationsRequest,
   DescribeIamInstanceProfileAssociationsResult,
   DescribeIamInstanceProfileAssociationsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   IamInstanceProfileAssociation
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeIamInstanceProfileAssociationsRequest,
@@ -84748,7 +84747,7 @@ export const describeIdentityIdFormat: API.OperationMethod<
   DescribeIdentityIdFormatRequest,
   DescribeIdentityIdFormatResult,
   DescribeIdentityIdFormatError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeIdentityIdFormatRequest,
   output: DescribeIdentityIdFormatResult,
@@ -84791,7 +84790,7 @@ export const describeIdFormat: API.OperationMethod<
   DescribeIdFormatRequest,
   DescribeIdFormatResult,
   DescribeIdFormatError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeIdFormatRequest,
   output: DescribeIdFormatResult,
@@ -84818,7 +84817,7 @@ export const describeImageAttribute: API.OperationMethod<
   DescribeImageAttributeRequest,
   ImageAttribute,
   DescribeImageAttributeError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeImageAttributeRequest,
   output: ImageAttribute,
@@ -84848,7 +84847,7 @@ export const describeImageReferences: API.PaginatedOperationMethod<
   DescribeImageReferencesRequest,
   DescribeImageReferencesResult,
   DescribeImageReferencesError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ImageReference
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeImageReferencesRequest,
@@ -84906,7 +84905,7 @@ export const describeImages: API.PaginatedOperationMethod<
   DescribeImagesRequest,
   DescribeImagesResult,
   DescribeImagesError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   Image
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeImagesRequest,
@@ -84944,7 +84943,7 @@ export const describeImageUsageReportEntries: API.PaginatedOperationMethod<
   DescribeImageUsageReportEntriesRequest,
   DescribeImageUsageReportEntriesResult,
   DescribeImageUsageReportEntriesError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ImageUsageReportEntry
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeImageUsageReportEntriesRequest,
@@ -84977,7 +84976,7 @@ export const describeImageUsageReports: API.PaginatedOperationMethod<
   DescribeImageUsageReportsRequest,
   DescribeImageUsageReportsResult,
   DescribeImageUsageReportsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ImageUsageReport
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeImageUsageReportsRequest,
@@ -85006,7 +85005,7 @@ export const describeImportImageTasks: API.PaginatedOperationMethod<
   DescribeImportImageTasksRequest,
   DescribeImportImageTasksResult,
   DescribeImportImageTasksError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ImportImageTask
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeImportImageTasksRequest,
@@ -85035,7 +85034,7 @@ export const describeImportSnapshotTasks: API.PaginatedOperationMethod<
   DescribeImportSnapshotTasksRequest,
   DescribeImportSnapshotTasksResult,
   DescribeImportSnapshotTasksError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ImportSnapshotTask
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeImportSnapshotTasksRequest,
@@ -85067,7 +85066,7 @@ export const describeInstanceAttribute: API.OperationMethod<
   DescribeInstanceAttributeRequest,
   InstanceAttribute,
   DescribeInstanceAttributeError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeInstanceAttributeRequest,
   output: InstanceAttribute,
@@ -85094,7 +85093,7 @@ export const describeInstanceConnectEndpoints: API.PaginatedOperationMethod<
   DescribeInstanceConnectEndpointsRequest,
   DescribeInstanceConnectEndpointsResult,
   DescribeInstanceConnectEndpointsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   Ec2InstanceConnectEndpoint
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeInstanceConnectEndpointsRequest,
@@ -85151,7 +85150,7 @@ export const describeInstanceCreditSpecifications: API.PaginatedOperationMethod<
   DescribeInstanceCreditSpecificationsRequest,
   DescribeInstanceCreditSpecificationsResult,
   DescribeInstanceCreditSpecificationsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   InstanceCreditSpecification
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeInstanceCreditSpecificationsRequest,
@@ -85181,7 +85180,7 @@ export const describeInstanceEventNotificationAttributes: API.OperationMethod<
   DescribeInstanceEventNotificationAttributesRequest,
   DescribeInstanceEventNotificationAttributesResult,
   DescribeInstanceEventNotificationAttributesError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeInstanceEventNotificationAttributesRequest,
   output: DescribeInstanceEventNotificationAttributesResult,
@@ -85213,7 +85212,7 @@ export const describeInstanceEventWindows: API.PaginatedOperationMethod<
   DescribeInstanceEventWindowsRequest,
   DescribeInstanceEventWindowsResult,
   DescribeInstanceEventWindowsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   InstanceEventWindow
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeInstanceEventWindowsRequest,
@@ -85268,7 +85267,7 @@ export const describeInstanceImageMetadata: API.PaginatedOperationMethod<
   DescribeInstanceImageMetadataRequest,
   DescribeInstanceImageMetadataResult,
   DescribeInstanceImageMetadataError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   InstanceImageMetadata
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeInstanceImageMetadataRequest,
@@ -85339,7 +85338,7 @@ export const describeInstances: API.PaginatedOperationMethod<
   DescribeInstancesRequest,
   DescribeInstancesResult,
   DescribeInstancesError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   Reservation
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeInstancesRequest,
@@ -85375,7 +85374,7 @@ export const describeInstanceSqlHaHistoryStates: API.OperationMethod<
   DescribeInstanceSqlHaHistoryStatesRequest,
   DescribeInstanceSqlHaHistoryStatesResult,
   DescribeInstanceSqlHaHistoryStatesError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeInstanceSqlHaHistoryStatesRequest,
   output: DescribeInstanceSqlHaHistoryStatesResult,
@@ -85402,7 +85401,7 @@ export const describeInstanceSqlHaStates: API.OperationMethod<
   DescribeInstanceSqlHaStatesRequest,
   DescribeInstanceSqlHaStatesResult,
   DescribeInstanceSqlHaStatesError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeInstanceSqlHaStatesRequest,
   output: DescribeInstanceSqlHaStatesResult,
@@ -85461,7 +85460,7 @@ export const describeInstanceStatus: API.PaginatedOperationMethod<
   DescribeInstanceStatusRequest,
   DescribeInstanceStatusResult,
   DescribeInstanceStatusError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   InstanceStatus
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeInstanceStatusRequest,
@@ -85511,7 +85510,7 @@ export const describeInstanceTopology: API.PaginatedOperationMethod<
   DescribeInstanceTopologyRequest,
   DescribeInstanceTopologyResult,
   DescribeInstanceTopologyError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   InstanceTopology
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeInstanceTopologyRequest,
@@ -85538,7 +85537,7 @@ export const describeInstanceTypeOfferings: API.PaginatedOperationMethod<
   DescribeInstanceTypeOfferingsRequest,
   DescribeInstanceTypeOfferingsResult,
   DescribeInstanceTypeOfferingsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   InstanceTypeOffering
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeInstanceTypeOfferingsRequest,
@@ -85566,7 +85565,7 @@ export const describeInstanceTypes: API.PaginatedOperationMethod<
   DescribeInstanceTypesRequest,
   DescribeInstanceTypesResult,
   DescribeInstanceTypesError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   InstanceTypeInfo
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeInstanceTypesRequest,
@@ -85598,7 +85597,7 @@ export const describeInternetGateways: API.PaginatedOperationMethod<
   DescribeInternetGatewaysRequest,
   DescribeInternetGatewaysResult,
   DescribeInternetGatewaysError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   InternetGateway
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeInternetGatewaysRequest,
@@ -85628,7 +85627,7 @@ export const describeIpamByoasn: API.OperationMethod<
   DescribeIpamByoasnRequest,
   DescribeIpamByoasnResult,
   DescribeIpamByoasnError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeIpamByoasnRequest,
   output: DescribeIpamByoasnResult,
@@ -85652,7 +85651,7 @@ export const describeIpamExternalResourceVerificationTokens: API.OperationMethod
   DescribeIpamExternalResourceVerificationTokensRequest,
   DescribeIpamExternalResourceVerificationTokensResult,
   DescribeIpamExternalResourceVerificationTokensError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeIpamExternalResourceVerificationTokensRequest,
   output: DescribeIpamExternalResourceVerificationTokensResult,
@@ -85680,7 +85679,7 @@ export const describeIpamPolicies: API.OperationMethod<
   DescribeIpamPoliciesRequest,
   DescribeIpamPoliciesResult,
   DescribeIpamPoliciesError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeIpamPoliciesRequest,
   output: DescribeIpamPoliciesResult,
@@ -85706,7 +85705,7 @@ export const describeIpamPoolAllocations: API.PaginatedOperationMethod<
   DescribeIpamPoolAllocationsRequest,
   DescribeIpamPoolAllocationsResult,
   DescribeIpamPoolAllocationsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   IpamPoolAllocation
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeIpamPoolAllocationsRequest,
@@ -85735,7 +85734,7 @@ export const describeIpamPools: API.PaginatedOperationMethod<
   DescribeIpamPoolsRequest,
   DescribeIpamPoolsResult,
   DescribeIpamPoolsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   IpamPool
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeIpamPoolsRequest,
@@ -85768,7 +85767,7 @@ export const describeIpamPrefixListResolvers: API.PaginatedOperationMethod<
   DescribeIpamPrefixListResolversRequest,
   DescribeIpamPrefixListResolversResult,
   DescribeIpamPrefixListResolversError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   IpamPrefixListResolver
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeIpamPrefixListResolversRequest,
@@ -85801,7 +85800,7 @@ export const describeIpamPrefixListResolverTargets: API.PaginatedOperationMethod
   DescribeIpamPrefixListResolverTargetsRequest,
   DescribeIpamPrefixListResolverTargetsResult,
   DescribeIpamPrefixListResolverTargetsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   IpamPrefixListResolverTarget
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeIpamPrefixListResolverTargetsRequest,
@@ -85834,7 +85833,7 @@ export const describeIpamResourceDiscoveries: API.PaginatedOperationMethod<
   DescribeIpamResourceDiscoveriesRequest,
   DescribeIpamResourceDiscoveriesResult,
   DescribeIpamResourceDiscoveriesError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   IpamResourceDiscovery
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeIpamResourceDiscoveriesRequest,
@@ -85867,7 +85866,7 @@ export const describeIpamResourceDiscoveryAssociations: API.PaginatedOperationMe
   DescribeIpamResourceDiscoveryAssociationsRequest,
   DescribeIpamResourceDiscoveryAssociationsResult,
   DescribeIpamResourceDiscoveryAssociationsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   IpamResourceDiscoveryAssociation
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeIpamResourceDiscoveryAssociationsRequest,
@@ -85902,7 +85901,7 @@ export const describeIpams: API.PaginatedOperationMethod<
   DescribeIpamsRequest,
   DescribeIpamsResult,
   DescribeIpamsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   Ipam
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeIpamsRequest,
@@ -85931,7 +85930,7 @@ export const describeIpamScopes: API.PaginatedOperationMethod<
   DescribeIpamScopesRequest,
   DescribeIpamScopesResult,
   DescribeIpamScopesError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   IpamScope
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeIpamScopesRequest,
@@ -85964,7 +85963,7 @@ export const describeIpv6Pools: API.PaginatedOperationMethod<
   DescribeIpv6PoolsRequest,
   DescribeIpv6PoolsResult,
   DescribeIpv6PoolsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   Ipv6Pool
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeIpv6PoolsRequest,
@@ -86001,7 +86000,7 @@ export const describeKeyPairs: API.OperationMethod<
   DescribeKeyPairsRequest,
   DescribeKeyPairsResult,
   DescribeKeyPairsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeKeyPairsRequest,
   output: DescribeKeyPairsResult,
@@ -86031,7 +86030,7 @@ export const describeLaunchTemplates: API.PaginatedOperationMethod<
   DescribeLaunchTemplatesRequest,
   DescribeLaunchTemplatesResult,
   DescribeLaunchTemplatesError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   LaunchTemplate
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeLaunchTemplatesRequest,
@@ -86071,7 +86070,7 @@ export const describeLaunchTemplateVersions: API.PaginatedOperationMethod<
   DescribeLaunchTemplateVersionsRequest,
   DescribeLaunchTemplateVersionsResult,
   DescribeLaunchTemplateVersionsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   LaunchTemplateVersion
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeLaunchTemplateVersionsRequest,
@@ -86102,7 +86101,7 @@ export const describeLocalGatewayRouteTables: API.PaginatedOperationMethod<
   DescribeLocalGatewayRouteTablesRequest,
   DescribeLocalGatewayRouteTablesResult,
   DescribeLocalGatewayRouteTablesError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   LocalGatewayRouteTable
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeLocalGatewayRouteTablesRequest,
@@ -86128,7 +86127,7 @@ export const describeLocalGatewayRouteTableVirtualInterfaceGroupAssociations: AP
   DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsRequest,
   DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsResult,
   DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   LocalGatewayRouteTableVirtualInterfaceGroupAssociation
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsRequest,
@@ -86154,7 +86153,7 @@ export const describeLocalGatewayRouteTableVpcAssociations: API.PaginatedOperati
   DescribeLocalGatewayRouteTableVpcAssociationsRequest,
   DescribeLocalGatewayRouteTableVpcAssociationsResult,
   DescribeLocalGatewayRouteTableVpcAssociationsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   LocalGatewayRouteTableVpcAssociation
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeLocalGatewayRouteTableVpcAssociationsRequest,
@@ -86180,7 +86179,7 @@ export const describeLocalGateways: API.PaginatedOperationMethod<
   DescribeLocalGatewaysRequest,
   DescribeLocalGatewaysResult,
   DescribeLocalGatewaysError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   LocalGateway
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeLocalGatewaysRequest,
@@ -86205,7 +86204,7 @@ export const describeLocalGatewayVirtualInterfaceGroups: API.PaginatedOperationM
   DescribeLocalGatewayVirtualInterfaceGroupsRequest,
   DescribeLocalGatewayVirtualInterfaceGroupsResult,
   DescribeLocalGatewayVirtualInterfaceGroupsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   LocalGatewayVirtualInterfaceGroup
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeLocalGatewayVirtualInterfaceGroupsRequest,
@@ -86230,7 +86229,7 @@ export const describeLocalGatewayVirtualInterfaces: API.PaginatedOperationMethod
   DescribeLocalGatewayVirtualInterfacesRequest,
   DescribeLocalGatewayVirtualInterfacesResult,
   DescribeLocalGatewayVirtualInterfacesError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   LocalGatewayVirtualInterface
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeLocalGatewayVirtualInterfacesRequest,
@@ -86259,7 +86258,7 @@ export const describeLockedSnapshots: API.OperationMethod<
   DescribeLockedSnapshotsRequest,
   DescribeLockedSnapshotsResult,
   DescribeLockedSnapshotsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeLockedSnapshotsRequest,
   output: DescribeLockedSnapshotsResult,
@@ -86281,7 +86280,7 @@ export const describeMacHosts: API.PaginatedOperationMethod<
   DescribeMacHostsRequest,
   DescribeMacHostsResult,
   DescribeMacHostsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   MacHost
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeMacHostsRequest,
@@ -86312,7 +86311,7 @@ export const describeMacModificationTasks: API.PaginatedOperationMethod<
   DescribeMacModificationTasksRequest,
   DescribeMacModificationTasksResult,
   DescribeMacModificationTasksError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   MacModificationTask
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeMacModificationTasksRequest,
@@ -86342,7 +86341,7 @@ export const describeManagedPrefixLists: API.PaginatedOperationMethod<
   DescribeManagedPrefixListsRequest,
   DescribeManagedPrefixListsResult,
   DescribeManagedPrefixListsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ManagedPrefixList
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeManagedPrefixListsRequest,
@@ -86379,7 +86378,7 @@ export const describeMovingAddresses: API.PaginatedOperationMethod<
   DescribeMovingAddressesRequest,
   DescribeMovingAddressesResult,
   DescribeMovingAddressesError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   MovingAddressStatus
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeMovingAddressesRequest,
@@ -86415,7 +86414,7 @@ export const describeNatGateways: API.PaginatedOperationMethod<
   DescribeNatGatewaysRequest,
   DescribeNatGatewaysResult,
   DescribeNatGatewaysError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   NatGateway
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeNatGatewaysRequest,
@@ -86460,7 +86459,7 @@ export const describeNetworkAcls: API.PaginatedOperationMethod<
   DescribeNetworkAclsRequest,
   DescribeNetworkAclsResult,
   DescribeNetworkAclsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   NetworkAcl
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeNetworkAclsRequest,
@@ -86495,7 +86494,7 @@ export const describeNetworkInsightsAccessScopeAnalyses: API.PaginatedOperationM
   DescribeNetworkInsightsAccessScopeAnalysesRequest,
   DescribeNetworkInsightsAccessScopeAnalysesResult,
   DescribeNetworkInsightsAccessScopeAnalysesError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   NetworkInsightsAccessScopeAnalysis
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeNetworkInsightsAccessScopeAnalysesRequest,
@@ -86524,7 +86523,7 @@ export const describeNetworkInsightsAccessScopes: API.PaginatedOperationMethod<
   DescribeNetworkInsightsAccessScopesRequest,
   DescribeNetworkInsightsAccessScopesResult,
   DescribeNetworkInsightsAccessScopesError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   NetworkInsightsAccessScope
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeNetworkInsightsAccessScopesRequest,
@@ -86553,7 +86552,7 @@ export const describeNetworkInsightsAnalyses: API.PaginatedOperationMethod<
   DescribeNetworkInsightsAnalysesRequest,
   DescribeNetworkInsightsAnalysesResult,
   DescribeNetworkInsightsAnalysesError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   NetworkInsightsAnalysis
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeNetworkInsightsAnalysesRequest,
@@ -86582,7 +86581,7 @@ export const describeNetworkInsightsPaths: API.PaginatedOperationMethod<
   DescribeNetworkInsightsPathsRequest,
   DescribeNetworkInsightsPathsResult,
   DescribeNetworkInsightsPathsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   NetworkInsightsPath
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeNetworkInsightsPathsRequest,
@@ -86614,7 +86613,7 @@ export const describeNetworkInterfaceAttribute: API.OperationMethod<
   DescribeNetworkInterfaceAttributeRequest,
   DescribeNetworkInterfaceAttributeResult,
   DescribeNetworkInterfaceAttributeError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeNetworkInterfaceAttributeRequest,
   output: DescribeNetworkInterfaceAttributeResult,
@@ -86642,7 +86641,7 @@ export const describeNetworkInterfacePermissions: API.PaginatedOperationMethod<
   DescribeNetworkInterfacePermissionsRequest,
   DescribeNetworkInterfacePermissionsResult,
   DescribeNetworkInterfacePermissionsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   NetworkInterfacePermission
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeNetworkInterfacePermissionsRequest,
@@ -86686,7 +86685,7 @@ export const describeNetworkInterfaces: API.PaginatedOperationMethod<
   DescribeNetworkInterfacesRequest,
   DescribeNetworkInterfacesResult,
   DescribeNetworkInterfacesError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   NetworkInterface
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeNetworkInterfacesRequest,
@@ -86723,7 +86722,7 @@ export const describeOutpostLags: API.OperationMethod<
   DescribeOutpostLagsRequest,
   DescribeOutpostLagsResult,
   DescribeOutpostLagsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeOutpostLagsRequest,
   output: DescribeOutpostLagsResult,
@@ -86759,7 +86758,7 @@ export const describePlacementGroups: API.OperationMethod<
   DescribePlacementGroupsRequest,
   DescribePlacementGroupsResult,
   DescribePlacementGroupsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribePlacementGroupsRequest,
   output: DescribePlacementGroupsResult,
@@ -86787,7 +86786,7 @@ export const describePrefixLists: API.PaginatedOperationMethod<
   DescribePrefixListsRequest,
   DescribePrefixListsResult,
   DescribePrefixListsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   PrefixList
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribePrefixListsRequest,
@@ -86835,7 +86834,7 @@ export const describePrincipalIdFormat: API.PaginatedOperationMethod<
   DescribePrincipalIdFormatRequest,
   DescribePrincipalIdFormatResult,
   DescribePrincipalIdFormatError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   PrincipalIdFormat
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribePrincipalIdFormatRequest,
@@ -86864,7 +86863,7 @@ export const describePublicIpv4Pools: API.PaginatedOperationMethod<
   DescribePublicIpv4PoolsRequest,
   DescribePublicIpv4PoolsResult,
   DescribePublicIpv4PoolsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   PublicIpv4Pool
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribePublicIpv4PoolsRequest,
@@ -86905,7 +86904,7 @@ export const describeRegions: API.OperationMethod<
   DescribeRegionsRequest,
   DescribeRegionsResult,
   DescribeRegionsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeRegionsRequest,
   output: DescribeRegionsResult,
@@ -86928,7 +86927,7 @@ export const describeReplaceRootVolumeTasks: API.PaginatedOperationMethod<
   DescribeReplaceRootVolumeTasksRequest,
   DescribeReplaceRootVolumeTasksResult,
   DescribeReplaceRootVolumeTasksError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ReplaceRootVolumeTask
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeReplaceRootVolumeTasksRequest,
@@ -86963,7 +86962,7 @@ export const describeReservedInstances: API.OperationMethod<
   DescribeReservedInstancesRequest,
   DescribeReservedInstancesResult,
   DescribeReservedInstancesError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeReservedInstancesRequest,
   output: DescribeReservedInstancesResult,
@@ -87003,7 +87002,7 @@ export const describeReservedInstancesListings: API.OperationMethod<
   DescribeReservedInstancesListingsRequest,
   DescribeReservedInstancesListingsResult,
   DescribeReservedInstancesListingsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeReservedInstancesListingsRequest,
   output: DescribeReservedInstancesListingsResult,
@@ -87034,7 +87033,7 @@ export const describeReservedInstancesModifications: API.PaginatedOperationMetho
   DescribeReservedInstancesModificationsRequest,
   DescribeReservedInstancesModificationsResult,
   DescribeReservedInstancesModificationsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ReservedInstancesModification
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeReservedInstancesModificationsRequest,
@@ -87075,7 +87074,7 @@ export const describeReservedInstancesOfferings: API.PaginatedOperationMethod<
   DescribeReservedInstancesOfferingsRequest,
   DescribeReservedInstancesOfferingsResult,
   DescribeReservedInstancesOfferingsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ReservedInstancesOffering
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeReservedInstancesOfferingsRequest,
@@ -87108,7 +87107,7 @@ export const describeRouteServerEndpoints: API.PaginatedOperationMethod<
   DescribeRouteServerEndpointsRequest,
   DescribeRouteServerEndpointsResult,
   DescribeRouteServerEndpointsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   RouteServerEndpoint
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeRouteServerEndpointsRequest,
@@ -87151,7 +87150,7 @@ export const describeRouteServerPeers: API.PaginatedOperationMethod<
   DescribeRouteServerPeersRequest,
   DescribeRouteServerPeersResult,
   DescribeRouteServerPeersError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   RouteServerPeer
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeRouteServerPeersRequest,
@@ -87199,7 +87198,7 @@ export const describeRouteServers: API.PaginatedOperationMethod<
   DescribeRouteServersRequest,
   DescribeRouteServersResult,
   DescribeRouteServersError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   RouteServer
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeRouteServersRequest,
@@ -87240,7 +87239,7 @@ export const describeRouteTables: API.PaginatedOperationMethod<
   DescribeRouteTablesRequest,
   DescribeRouteTablesResult,
   DescribeRouteTablesError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   RouteTable
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeRouteTablesRequest,
@@ -87275,7 +87274,7 @@ export const describeScheduledInstanceAvailability: API.PaginatedOperationMethod
   DescribeScheduledInstanceAvailabilityRequest,
   DescribeScheduledInstanceAvailabilityResult,
   DescribeScheduledInstanceAvailabilityError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ScheduledInstanceAvailability
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeScheduledInstanceAvailabilityRequest,
@@ -87300,7 +87299,7 @@ export const describeScheduledInstances: API.PaginatedOperationMethod<
   DescribeScheduledInstancesRequest,
   DescribeScheduledInstancesResult,
   DescribeScheduledInstancesError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ScheduledInstance
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeScheduledInstancesRequest,
@@ -87325,7 +87324,7 @@ export const describeSecondaryInterfaces: API.PaginatedOperationMethod<
   DescribeSecondaryInterfacesRequest,
   DescribeSecondaryInterfacesResult,
   DescribeSecondaryInterfacesError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   SecondaryInterface
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeSecondaryInterfacesRequest,
@@ -87350,7 +87349,7 @@ export const describeSecondaryNetworks: API.PaginatedOperationMethod<
   DescribeSecondaryNetworksRequest,
   DescribeSecondaryNetworksResult,
   DescribeSecondaryNetworksError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   SecondaryNetwork
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeSecondaryNetworksRequest,
@@ -87375,7 +87374,7 @@ export const describeSecondarySubnets: API.PaginatedOperationMethod<
   DescribeSecondarySubnetsRequest,
   DescribeSecondarySubnetsResult,
   DescribeSecondarySubnetsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   SecondarySubnet
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeSecondarySubnetsRequest,
@@ -87400,7 +87399,7 @@ export const describeSecurityGroupReferences: API.OperationMethod<
   DescribeSecurityGroupReferencesRequest,
   DescribeSecurityGroupReferencesResult,
   DescribeSecurityGroupReferencesError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeSecurityGroupReferencesRequest,
   output: DescribeSecurityGroupReferencesResult,
@@ -87422,7 +87421,7 @@ export const describeSecurityGroupRules: API.PaginatedOperationMethod<
   DescribeSecurityGroupRulesRequest,
   DescribeSecurityGroupRulesResult,
   DescribeSecurityGroupRulesError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   SecurityGroupRule
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeSecurityGroupRulesRequest,
@@ -87458,7 +87457,7 @@ export const describeSecurityGroups: API.PaginatedOperationMethod<
   DescribeSecurityGroupsRequest,
   DescribeSecurityGroupsResult,
   DescribeSecurityGroupsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   SecurityGroup
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeSecurityGroupsRequest,
@@ -87490,7 +87489,7 @@ export const describeSecurityGroupVpcAssociations: API.PaginatedOperationMethod<
   DescribeSecurityGroupVpcAssociationsRequest,
   DescribeSecurityGroupVpcAssociationsResult,
   DescribeSecurityGroupVpcAssociationsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   SecurityGroupVpcAssociation
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeSecurityGroupVpcAssociationsRequest,
@@ -87519,7 +87518,7 @@ export const describeServiceLinkVirtualInterfaces: API.OperationMethod<
   DescribeServiceLinkVirtualInterfacesRequest,
   DescribeServiceLinkVirtualInterfacesResult,
   DescribeServiceLinkVirtualInterfacesError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeServiceLinkVirtualInterfacesRequest,
   output: DescribeServiceLinkVirtualInterfacesResult,
@@ -87550,7 +87549,7 @@ export const describeSnapshotAttribute: API.OperationMethod<
   DescribeSnapshotAttributeRequest,
   DescribeSnapshotAttributeResult,
   DescribeSnapshotAttributeError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeSnapshotAttributeRequest,
   output: DescribeSnapshotAttributeResult,
@@ -87623,7 +87622,7 @@ export const describeSnapshots: API.PaginatedOperationMethod<
   DescribeSnapshotsRequest,
   DescribeSnapshotsResult,
   DescribeSnapshotsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   Snapshot
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeSnapshotsRequest,
@@ -87653,7 +87652,7 @@ export const describeSnapshotTierStatus: API.PaginatedOperationMethod<
   DescribeSnapshotTierStatusRequest,
   DescribeSnapshotTierStatusResult,
   DescribeSnapshotTierStatusError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   SnapshotTierStatus
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeSnapshotTierStatusRequest,
@@ -87683,7 +87682,7 @@ export const describeSpotDatafeedSubscription: API.OperationMethod<
   DescribeSpotDatafeedSubscriptionRequest,
   DescribeSpotDatafeedSubscriptionResult,
   DescribeSpotDatafeedSubscriptionError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeSpotDatafeedSubscriptionRequest,
   output: DescribeSpotDatafeedSubscriptionResult,
@@ -87709,7 +87708,7 @@ export const describeSpotFleetInstances: API.OperationMethod<
   DescribeSpotFleetInstancesRequest,
   DescribeSpotFleetInstancesResponse,
   DescribeSpotFleetInstancesError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeSpotFleetInstancesRequest,
   output: DescribeSpotFleetInstancesResponse,
@@ -87739,7 +87738,7 @@ export const describeSpotFleetRequestHistory: API.OperationMethod<
   DescribeSpotFleetRequestHistoryRequest,
   DescribeSpotFleetRequestHistoryResponse,
   DescribeSpotFleetRequestHistoryError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeSpotFleetRequestHistoryRequest,
   output: DescribeSpotFleetRequestHistoryResponse,
@@ -87765,7 +87764,7 @@ export const describeSpotFleetRequests: API.PaginatedOperationMethod<
   DescribeSpotFleetRequestsRequest,
   DescribeSpotFleetRequestsResponse,
   DescribeSpotFleetRequestsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   SpotFleetRequestConfig
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeSpotFleetRequestsRequest,
@@ -87818,7 +87817,7 @@ export const describeSpotInstanceRequests: API.PaginatedOperationMethod<
   DescribeSpotInstanceRequestsRequest,
   DescribeSpotInstanceRequestsResult,
   DescribeSpotInstanceRequestsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   SpotInstanceRequest
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeSpotInstanceRequestsRequest,
@@ -87853,7 +87852,7 @@ export const describeSpotPriceHistory: API.PaginatedOperationMethod<
   DescribeSpotPriceHistoryRequest,
   DescribeSpotPriceHistoryResult,
   DescribeSpotPriceHistoryError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   SpotPrice
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeSpotPriceHistoryRequest,
@@ -87889,7 +87888,7 @@ export const describeStaleSecurityGroups: API.PaginatedOperationMethod<
   DescribeStaleSecurityGroupsRequest,
   DescribeStaleSecurityGroupsResult,
   DescribeStaleSecurityGroupsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   StaleSecurityGroup
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeStaleSecurityGroupsRequest,
@@ -87929,7 +87928,7 @@ export const describeStoreImageTasks: API.PaginatedOperationMethod<
   DescribeStoreImageTasksRequest,
   DescribeStoreImageTasksResult,
   DescribeStoreImageTasksError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   StoreImageTaskResult
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeStoreImageTasksRequest,
@@ -87964,7 +87963,7 @@ export const describeSubnets: API.PaginatedOperationMethod<
   DescribeSubnetsRequest,
   DescribeSubnetsResult,
   DescribeSubnetsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   Subnet
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeSubnetsRequest,
@@ -88008,7 +88007,7 @@ export const describeTags: API.PaginatedOperationMethod<
   DescribeTagsRequest,
   DescribeTagsResult,
   DescribeTagsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   TagDescription
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeTagsRequest,
@@ -88033,7 +88032,7 @@ export const describeTrafficMirrorFilterRules: API.OperationMethod<
   DescribeTrafficMirrorFilterRulesRequest,
   DescribeTrafficMirrorFilterRulesResult,
   DescribeTrafficMirrorFilterRulesError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeTrafficMirrorFilterRulesRequest,
   output: DescribeTrafficMirrorFilterRulesResult,
@@ -88055,7 +88054,7 @@ export const describeTrafficMirrorFilters: API.PaginatedOperationMethod<
   DescribeTrafficMirrorFiltersRequest,
   DescribeTrafficMirrorFiltersResult,
   DescribeTrafficMirrorFiltersError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   TrafficMirrorFilter
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeTrafficMirrorFiltersRequest,
@@ -88088,7 +88087,7 @@ export const describeTrafficMirrorSessions: API.PaginatedOperationMethod<
   DescribeTrafficMirrorSessionsRequest,
   DescribeTrafficMirrorSessionsResult,
   DescribeTrafficMirrorSessionsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   TrafficMirrorSession
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeTrafficMirrorSessionsRequest,
@@ -88121,7 +88120,7 @@ export const describeTrafficMirrorTargets: API.PaginatedOperationMethod<
   DescribeTrafficMirrorTargetsRequest,
   DescribeTrafficMirrorTargetsResult,
   DescribeTrafficMirrorTargetsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   TrafficMirrorTarget
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeTrafficMirrorTargetsRequest,
@@ -88156,7 +88155,7 @@ export const describeTransitGatewayAttachments: API.PaginatedOperationMethod<
   DescribeTransitGatewayAttachmentsRequest,
   DescribeTransitGatewayAttachmentsResult,
   DescribeTransitGatewayAttachmentsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   TransitGatewayAttachment
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeTransitGatewayAttachmentsRequest,
@@ -88190,7 +88189,7 @@ export const describeTransitGatewayConnectPeers: API.PaginatedOperationMethod<
   DescribeTransitGatewayConnectPeersRequest,
   DescribeTransitGatewayConnectPeersResult,
   DescribeTransitGatewayConnectPeersError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   TransitGatewayConnectPeer
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeTransitGatewayConnectPeersRequest,
@@ -88223,7 +88222,7 @@ export const describeTransitGatewayConnects: API.PaginatedOperationMethod<
   DescribeTransitGatewayConnectsRequest,
   DescribeTransitGatewayConnectsResult,
   DescribeTransitGatewayConnectsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   TransitGatewayConnect
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeTransitGatewayConnectsRequest,
@@ -88256,7 +88255,7 @@ export const describeTransitGatewayMeteringPolicies: API.OperationMethod<
   DescribeTransitGatewayMeteringPoliciesRequest,
   DescribeTransitGatewayMeteringPoliciesResult,
   DescribeTransitGatewayMeteringPoliciesError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeTransitGatewayMeteringPoliciesRequest,
   output: DescribeTransitGatewayMeteringPoliciesResult,
@@ -88282,7 +88281,7 @@ export const describeTransitGatewayMulticastDomains: API.PaginatedOperationMetho
   DescribeTransitGatewayMulticastDomainsRequest,
   DescribeTransitGatewayMulticastDomainsResult,
   DescribeTransitGatewayMulticastDomainsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   TransitGatewayMulticastDomain
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeTransitGatewayMulticastDomainsRequest,
@@ -88315,7 +88314,7 @@ export const describeTransitGatewayPeeringAttachments: API.PaginatedOperationMet
   DescribeTransitGatewayPeeringAttachmentsRequest,
   DescribeTransitGatewayPeeringAttachmentsResult,
   DescribeTransitGatewayPeeringAttachmentsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   TransitGatewayPeeringAttachment
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeTransitGatewayPeeringAttachmentsRequest,
@@ -88348,7 +88347,7 @@ export const describeTransitGatewayPolicyTables: API.PaginatedOperationMethod<
   DescribeTransitGatewayPolicyTablesRequest,
   DescribeTransitGatewayPolicyTablesResult,
   DescribeTransitGatewayPolicyTablesError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   TransitGatewayPolicyTable
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeTransitGatewayPolicyTablesRequest,
@@ -88381,7 +88380,7 @@ export const describeTransitGatewayRouteTableAnnouncements: API.PaginatedOperati
   DescribeTransitGatewayRouteTableAnnouncementsRequest,
   DescribeTransitGatewayRouteTableAnnouncementsResult,
   DescribeTransitGatewayRouteTableAnnouncementsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   TransitGatewayRouteTableAnnouncement
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeTransitGatewayRouteTableAnnouncementsRequest,
@@ -88416,7 +88415,7 @@ export const describeTransitGatewayRouteTables: API.PaginatedOperationMethod<
   DescribeTransitGatewayRouteTablesRequest,
   DescribeTransitGatewayRouteTablesResult,
   DescribeTransitGatewayRouteTablesError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   TransitGatewayRouteTable
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeTransitGatewayRouteTablesRequest,
@@ -88452,7 +88451,7 @@ export const describeTransitGateways: API.PaginatedOperationMethod<
   DescribeTransitGatewaysRequest,
   DescribeTransitGatewaysResult,
   DescribeTransitGatewaysError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   TransitGateway
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeTransitGatewaysRequest,
@@ -88487,7 +88486,7 @@ export const describeTransitGatewayVpcAttachments: API.PaginatedOperationMethod<
   DescribeTransitGatewayVpcAttachmentsRequest,
   DescribeTransitGatewayVpcAttachmentsResult,
   DescribeTransitGatewayVpcAttachmentsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   TransitGatewayVpcAttachment
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeTransitGatewayVpcAttachmentsRequest,
@@ -88520,7 +88519,7 @@ export const describeTrunkInterfaceAssociations: API.PaginatedOperationMethod<
   DescribeTrunkInterfaceAssociationsRequest,
   DescribeTrunkInterfaceAssociationsResult,
   DescribeTrunkInterfaceAssociationsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   TrunkInterfaceAssociation
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeTrunkInterfaceAssociationsRequest,
@@ -88549,7 +88548,7 @@ export const describeVerifiedAccessEndpoints: API.PaginatedOperationMethod<
   DescribeVerifiedAccessEndpointsRequest,
   DescribeVerifiedAccessEndpointsResult,
   DescribeVerifiedAccessEndpointsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   VerifiedAccessEndpoint
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeVerifiedAccessEndpointsRequest,
@@ -88582,7 +88581,7 @@ export const describeVerifiedAccessGroups: API.PaginatedOperationMethod<
   DescribeVerifiedAccessGroupsRequest,
   DescribeVerifiedAccessGroupsResult,
   DescribeVerifiedAccessGroupsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   VerifiedAccessGroup
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeVerifiedAccessGroupsRequest,
@@ -88615,7 +88614,7 @@ export const describeVerifiedAccessInstanceLoggingConfigurations: API.PaginatedO
   DescribeVerifiedAccessInstanceLoggingConfigurationsRequest,
   DescribeVerifiedAccessInstanceLoggingConfigurationsResult,
   DescribeVerifiedAccessInstanceLoggingConfigurationsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   VerifiedAccessInstanceLoggingConfiguration
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeVerifiedAccessInstanceLoggingConfigurationsRequest,
@@ -88648,7 +88647,7 @@ export const describeVerifiedAccessInstances: API.PaginatedOperationMethod<
   DescribeVerifiedAccessInstancesRequest,
   DescribeVerifiedAccessInstancesResult,
   DescribeVerifiedAccessInstancesError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   VerifiedAccessInstance
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeVerifiedAccessInstancesRequest,
@@ -88681,7 +88680,7 @@ export const describeVerifiedAccessTrustProviders: API.PaginatedOperationMethod<
   DescribeVerifiedAccessTrustProvidersRequest,
   DescribeVerifiedAccessTrustProvidersResult,
   DescribeVerifiedAccessTrustProvidersError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   VerifiedAccessTrustProvider
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeVerifiedAccessTrustProvidersRequest,
@@ -88719,7 +88718,7 @@ export const describeVolumeAttribute: API.OperationMethod<
   DescribeVolumeAttributeRequest,
   DescribeVolumeAttributeResult,
   DescribeVolumeAttributeError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeVolumeAttributeRequest,
   output: DescribeVolumeAttributeResult,
@@ -88761,7 +88760,7 @@ export const describeVolumes: API.PaginatedOperationMethod<
   DescribeVolumesRequest,
   DescribeVolumesResult,
   DescribeVolumesError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   Volume
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeVolumesRequest,
@@ -88799,7 +88798,7 @@ export const describeVolumesModifications: API.PaginatedOperationMethod<
   DescribeVolumesModificationsRequest,
   DescribeVolumesModificationsResult,
   DescribeVolumesModificationsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   VolumeModification
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeVolumesModificationsRequest,
@@ -88871,7 +88870,7 @@ export const describeVolumeStatus: API.PaginatedOperationMethod<
   DescribeVolumeStatusRequest,
   DescribeVolumeStatusResult,
   DescribeVolumeStatusError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   VolumeStatusItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeVolumeStatusRequest,
@@ -88905,7 +88904,7 @@ export const describeVpcAttribute: API.OperationMethod<
   DescribeVpcAttributeRequest,
   DescribeVpcAttributeResult,
   DescribeVpcAttributeError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeVpcAttributeRequest,
   output: DescribeVpcAttributeResult,
@@ -88933,7 +88932,7 @@ export const describeVpcBlockPublicAccessExclusions: API.OperationMethod<
   DescribeVpcBlockPublicAccessExclusionsRequest,
   DescribeVpcBlockPublicAccessExclusionsResult,
   DescribeVpcBlockPublicAccessExclusionsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeVpcBlockPublicAccessExclusionsRequest,
   output: DescribeVpcBlockPublicAccessExclusionsResult,
@@ -88956,7 +88955,7 @@ export const describeVpcBlockPublicAccessOptions: API.OperationMethod<
   DescribeVpcBlockPublicAccessOptionsRequest,
   DescribeVpcBlockPublicAccessOptionsResult,
   DescribeVpcBlockPublicAccessOptionsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeVpcBlockPublicAccessOptionsRequest,
   output: DescribeVpcBlockPublicAccessOptionsResult,
@@ -88981,7 +88980,7 @@ export const describeVpcClassicLink: API.OperationMethod<
   DescribeVpcClassicLinkRequest,
   DescribeVpcClassicLinkResult,
   DescribeVpcClassicLinkError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeVpcClassicLinkRequest,
   output: DescribeVpcClassicLinkResult,
@@ -89014,7 +89013,7 @@ export const describeVpcClassicLinkDnsSupport: API.PaginatedOperationMethod<
   DescribeVpcClassicLinkDnsSupportRequest,
   DescribeVpcClassicLinkDnsSupportResult,
   DescribeVpcClassicLinkDnsSupportError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ClassicLinkDnsSupport
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeVpcClassicLinkDnsSupportRequest,
@@ -89045,7 +89044,7 @@ export const describeVpcEncryptionControls: API.OperationMethod<
   DescribeVpcEncryptionControlsRequest,
   DescribeVpcEncryptionControlsResult,
   DescribeVpcEncryptionControlsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeVpcEncryptionControlsRequest,
   output: DescribeVpcEncryptionControlsResult,
@@ -89068,7 +89067,7 @@ export const describeVpcEndpointAssociations: API.OperationMethod<
   DescribeVpcEndpointAssociationsRequest,
   DescribeVpcEndpointAssociationsResult,
   DescribeVpcEndpointAssociationsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeVpcEndpointAssociationsRequest,
   output: DescribeVpcEndpointAssociationsResult,
@@ -89091,7 +89090,7 @@ export const describeVpcEndpointConnectionNotifications: API.PaginatedOperationM
   DescribeVpcEndpointConnectionNotificationsRequest,
   DescribeVpcEndpointConnectionNotificationsResult,
   DescribeVpcEndpointConnectionNotificationsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ConnectionNotification
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeVpcEndpointConnectionNotificationsRequest,
@@ -89121,7 +89120,7 @@ export const describeVpcEndpointConnections: API.PaginatedOperationMethod<
   DescribeVpcEndpointConnectionsRequest,
   DescribeVpcEndpointConnectionsResult,
   DescribeVpcEndpointConnectionsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   VpcEndpointConnection
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeVpcEndpointConnectionsRequest,
@@ -89153,7 +89152,7 @@ export const describeVpcEndpoints: API.PaginatedOperationMethod<
   DescribeVpcEndpointsRequest,
   DescribeVpcEndpointsResult,
   DescribeVpcEndpointsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   VpcEndpoint
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeVpcEndpointsRequest,
@@ -89187,7 +89186,7 @@ export const describeVpcEndpointServiceConfigurations: API.PaginatedOperationMet
   DescribeVpcEndpointServiceConfigurationsRequest,
   DescribeVpcEndpointServiceConfigurationsResult,
   DescribeVpcEndpointServiceConfigurationsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ServiceConfiguration
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeVpcEndpointServiceConfigurationsRequest,
@@ -89222,7 +89221,7 @@ export const describeVpcEndpointServicePermissions: API.PaginatedOperationMethod
   DescribeVpcEndpointServicePermissionsRequest,
   DescribeVpcEndpointServicePermissionsResult,
   DescribeVpcEndpointServicePermissionsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   AllowedPrincipal
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeVpcEndpointServicePermissionsRequest,
@@ -89264,7 +89263,7 @@ export const describeVpcEndpointServices: API.OperationMethod<
   DescribeVpcEndpointServicesRequest,
   DescribeVpcEndpointServicesResult,
   DescribeVpcEndpointServicesError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeVpcEndpointServicesRequest,
   output: DescribeVpcEndpointServicesResult,
@@ -89290,7 +89289,7 @@ export const describeVpcPeeringConnections: API.PaginatedOperationMethod<
   DescribeVpcPeeringConnectionsRequest,
   DescribeVpcPeeringConnectionsResult,
   DescribeVpcPeeringConnectionsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   VpcPeeringConnection
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeVpcPeeringConnectionsRequest,
@@ -89329,7 +89328,7 @@ export const describeVpcs: API.PaginatedOperationMethod<
   DescribeVpcsRequest,
   DescribeVpcsResult,
   DescribeVpcsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   Vpc
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeVpcsRequest,
@@ -89364,7 +89363,7 @@ export const describeVpnConcentrators: API.PaginatedOperationMethod<
   DescribeVpnConcentratorsRequest,
   DescribeVpnConcentratorsResult,
   DescribeVpnConcentratorsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   VpnConcentrator
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeVpnConcentratorsRequest,
@@ -89400,7 +89399,7 @@ export const describeVpnConnections: API.OperationMethod<
   DescribeVpnConnectionsRequest,
   DescribeVpnConnectionsResult,
   DescribeVpnConnectionsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeVpnConnectionsRequest,
   output: DescribeVpnConnectionsResult,
@@ -89430,7 +89429,7 @@ export const describeVpnGateways: API.OperationMethod<
   DescribeVpnGatewaysRequest,
   DescribeVpnGatewaysResult,
   DescribeVpnGatewaysError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeVpnGatewaysRequest,
   output: DescribeVpnGatewaysResult,
@@ -89464,7 +89463,7 @@ export const detachClassicLinkVpc: API.OperationMethod<
   DetachClassicLinkVpcRequest,
   DetachClassicLinkVpcResult,
   DetachClassicLinkVpcError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DetachClassicLinkVpcRequest,
   output: DetachClassicLinkVpcResult,
@@ -89495,7 +89494,7 @@ export const detachImageWatermark: API.OperationMethod<
   DetachImageWatermarkRequest,
   DetachImageWatermarkResult,
   DetachImageWatermarkError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DetachImageWatermarkRequest,
   output: DetachImageWatermarkResult,
@@ -89523,7 +89522,7 @@ export const detachInternetGateway: API.OperationMethod<
   DetachInternetGatewayRequest,
   DetachInternetGatewayResponse,
   DetachInternetGatewayError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DetachInternetGatewayRequest,
   output: DetachInternetGatewayResponse,
@@ -89555,7 +89554,7 @@ export const detachNetworkInterface: API.OperationMethod<
   DetachNetworkInterfaceRequest,
   DetachNetworkInterfaceResponse,
   DetachNetworkInterfaceError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DetachNetworkInterfaceRequest,
   output: DetachNetworkInterfaceResponse,
@@ -89584,7 +89583,7 @@ export const detachVerifiedAccessTrustProvider: API.OperationMethod<
   DetachVerifiedAccessTrustProviderRequest,
   DetachVerifiedAccessTrustProviderResult,
   DetachVerifiedAccessTrustProviderError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DetachVerifiedAccessTrustProviderRequest,
   output: DetachVerifiedAccessTrustProviderResult,
@@ -89630,7 +89629,7 @@ export const detachVolume: API.OperationMethod<
   DetachVolumeRequest,
   VolumeAttachment,
   DetachVolumeError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DetachVolumeRequest,
   output: VolumeAttachment,
@@ -89668,7 +89667,7 @@ export const detachVpnGateway: API.OperationMethod<
   DetachVpnGatewayRequest,
   DetachVpnGatewayResponse,
   DetachVpnGatewayError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DetachVpnGatewayRequest,
   output: DetachVpnGatewayResponse,
@@ -89697,7 +89696,7 @@ export const disableAddressTransfer: API.OperationMethod<
   DisableAddressTransferRequest,
   DisableAddressTransferResult,
   DisableAddressTransferError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DisableAddressTransferRequest,
   output: DisableAddressTransferResult,
@@ -89730,7 +89729,7 @@ export const disableAllowedImagesSettings: API.OperationMethod<
   DisableAllowedImagesSettingsRequest,
   DisableAllowedImagesSettingsResult,
   DisableAllowedImagesSettingsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DisableAllowedImagesSettingsRequest,
   output: DisableAllowedImagesSettingsResult,
@@ -89752,7 +89751,7 @@ export const disableAwsNetworkPerformanceMetricSubscription: API.OperationMethod
   DisableAwsNetworkPerformanceMetricSubscriptionRequest,
   DisableAwsNetworkPerformanceMetricSubscriptionResult,
   DisableAwsNetworkPerformanceMetricSubscriptionError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DisableAwsNetworkPerformanceMetricSubscriptionRequest,
   output: DisableAwsNetworkPerformanceMetricSubscriptionResult,
@@ -89775,7 +89774,7 @@ export const disableCapacityManager: API.OperationMethod<
   DisableCapacityManagerRequest,
   DisableCapacityManagerResult,
   DisableCapacityManagerError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DisableCapacityManagerRequest,
   output: DisableCapacityManagerResult,
@@ -89806,7 +89805,7 @@ export const disableEbsEncryptionByDefault: API.OperationMethod<
   DisableEbsEncryptionByDefaultRequest,
   DisableEbsEncryptionByDefaultResult,
   DisableEbsEncryptionByDefaultError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DisableEbsEncryptionByDefaultRequest,
   output: DisableEbsEncryptionByDefaultResult,
@@ -89834,7 +89833,7 @@ export const disableFastLaunch: API.OperationMethod<
   DisableFastLaunchRequest,
   DisableFastLaunchResult,
   DisableFastLaunchError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DisableFastLaunchRequest,
   output: DisableFastLaunchResult,
@@ -89856,7 +89855,7 @@ export const disableFastSnapshotRestores: API.OperationMethod<
   DisableFastSnapshotRestoresRequest,
   DisableFastSnapshotRestoresResult,
   DisableFastSnapshotRestoresError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DisableFastSnapshotRestoresRequest,
   output: DisableFastSnapshotRestoresResult,
@@ -89893,7 +89892,7 @@ export const disableImage: API.OperationMethod<
   DisableImageRequest,
   DisableImageResult,
   DisableImageError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DisableImageRequest,
   output: DisableImageResult,
@@ -89917,7 +89916,7 @@ export const disableImageBlockPublicAccess: API.OperationMethod<
   DisableImageBlockPublicAccessRequest,
   DisableImageBlockPublicAccessResult,
   DisableImageBlockPublicAccessError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DisableImageBlockPublicAccessRequest,
   output: DisableImageBlockPublicAccessResult,
@@ -89942,7 +89941,7 @@ export const disableImageDeprecation: API.OperationMethod<
   DisableImageDeprecationRequest,
   DisableImageDeprecationResult,
   DisableImageDeprecationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DisableImageDeprecationRequest,
   output: DisableImageDeprecationResult,
@@ -89972,7 +89971,7 @@ export const disableImageDeregistrationProtection: API.OperationMethod<
   DisableImageDeregistrationProtectionRequest,
   DisableImageDeregistrationProtectionResult,
   DisableImageDeregistrationProtectionError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DisableImageDeregistrationProtectionRequest,
   output: DisableImageDeregistrationProtectionResult,
@@ -89997,7 +89996,7 @@ export const disableInstanceSqlHaStandbyDetections: API.OperationMethod<
   DisableInstanceSqlHaStandbyDetectionsRequest,
   DisableInstanceSqlHaStandbyDetectionsResult,
   DisableInstanceSqlHaStandbyDetectionsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DisableInstanceSqlHaStandbyDetectionsRequest,
   output: DisableInstanceSqlHaStandbyDetectionsResult,
@@ -90023,7 +90022,7 @@ export const disableIpamOrganizationAdminAccount: API.OperationMethod<
   DisableIpamOrganizationAdminAccountRequest,
   DisableIpamOrganizationAdminAccountResult,
   DisableIpamOrganizationAdminAccountError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DisableIpamOrganizationAdminAccountRequest,
   output: DisableIpamOrganizationAdminAccountResult,
@@ -90048,7 +90047,7 @@ export const disableIpamPolicy: API.OperationMethod<
   DisableIpamPolicyRequest,
   DisableIpamPolicyResult,
   DisableIpamPolicyError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DisableIpamPolicyRequest,
   output: DisableIpamPolicyResult,
@@ -90092,7 +90091,7 @@ export const disableRouteServerPropagation: API.OperationMethod<
   DisableRouteServerPropagationRequest,
   DisableRouteServerPropagationResult,
   DisableRouteServerPropagationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DisableRouteServerPropagationRequest,
   output: DisableRouteServerPropagationResult,
@@ -90117,7 +90116,7 @@ export const disableSerialConsoleAccess: API.OperationMethod<
   DisableSerialConsoleAccessRequest,
   DisableSerialConsoleAccessResult,
   DisableSerialConsoleAccessError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DisableSerialConsoleAccessRequest,
   output: DisableSerialConsoleAccessResult,
@@ -90149,7 +90148,7 @@ export const disableSnapshotBlockPublicAccess: API.OperationMethod<
   DisableSnapshotBlockPublicAccessRequest,
   DisableSnapshotBlockPublicAccessResult,
   DisableSnapshotBlockPublicAccessError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DisableSnapshotBlockPublicAccessRequest,
   output: DisableSnapshotBlockPublicAccessResult,
@@ -90172,7 +90171,7 @@ export const disableTransitGatewayRouteTablePropagation: API.OperationMethod<
   DisableTransitGatewayRouteTablePropagationRequest,
   DisableTransitGatewayRouteTablePropagationResult,
   DisableTransitGatewayRouteTablePropagationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DisableTransitGatewayRouteTablePropagationRequest,
   output: DisableTransitGatewayRouteTablePropagationResult,
@@ -90195,7 +90194,7 @@ export const disableVgwRoutePropagation: API.OperationMethod<
   DisableVgwRoutePropagationRequest,
   DisableVgwRoutePropagationResponse,
   DisableVgwRoutePropagationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DisableVgwRoutePropagationRequest,
   output: DisableVgwRoutePropagationResponse,
@@ -90225,7 +90224,7 @@ export const disableVpcClassicLink: API.OperationMethod<
   DisableVpcClassicLinkRequest,
   DisableVpcClassicLinkResult,
   DisableVpcClassicLinkError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DisableVpcClassicLinkRequest,
   output: DisableVpcClassicLinkResult,
@@ -90259,7 +90258,7 @@ export const disableVpcClassicLinkDnsSupport: API.OperationMethod<
   DisableVpcClassicLinkDnsSupportRequest,
   DisableVpcClassicLinkDnsSupportResult,
   DisableVpcClassicLinkDnsSupportError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DisableVpcClassicLinkDnsSupportRequest,
   output: DisableVpcClassicLinkDnsSupportResult,
@@ -90297,7 +90296,7 @@ export const disassociateAddress: API.OperationMethod<
   DisassociateAddressRequest,
   DisassociateAddressResponse,
   DisassociateAddressError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DisassociateAddressRequest,
   output: DisassociateAddressResponse,
@@ -90328,7 +90327,7 @@ export const disassociateCapacityReservationBillingOwner: API.OperationMethod<
   DisassociateCapacityReservationBillingOwnerRequest,
   DisassociateCapacityReservationBillingOwnerResult,
   DisassociateCapacityReservationBillingOwnerError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DisassociateCapacityReservationBillingOwnerRequest,
   output: DisassociateCapacityReservationBillingOwnerResult,
@@ -90365,7 +90364,7 @@ export const disassociateClientVpnTargetNetwork: API.OperationMethod<
   DisassociateClientVpnTargetNetworkRequest,
   DisassociateClientVpnTargetNetworkResult,
   DisassociateClientVpnTargetNetworkError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DisassociateClientVpnTargetNetworkRequest,
   output: DisassociateClientVpnTargetNetworkResult,
@@ -90397,7 +90396,7 @@ export const disassociateEnclaveCertificateIamRole: API.OperationMethod<
   DisassociateEnclaveCertificateIamRoleRequest,
   DisassociateEnclaveCertificateIamRoleResult,
   DisassociateEnclaveCertificateIamRoleError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DisassociateEnclaveCertificateIamRoleRequest,
   output: DisassociateEnclaveCertificateIamRoleResult,
@@ -90427,7 +90426,7 @@ export const disassociateIamInstanceProfile: API.OperationMethod<
   DisassociateIamInstanceProfileRequest,
   DisassociateIamInstanceProfileResult,
   DisassociateIamInstanceProfileError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DisassociateIamInstanceProfileRequest,
   output: DisassociateIamInstanceProfileResult,
@@ -90453,7 +90452,7 @@ export const disassociateInstanceEventWindow: API.OperationMethod<
   DisassociateInstanceEventWindowRequest,
   DisassociateInstanceEventWindowResult,
   DisassociateInstanceEventWindowError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DisassociateInstanceEventWindowRequest,
   output: DisassociateInstanceEventWindowResult,
@@ -90481,7 +90480,7 @@ export const disassociateIpamByoasn: API.OperationMethod<
   DisassociateIpamByoasnRequest,
   DisassociateIpamByoasnResult,
   DisassociateIpamByoasnError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DisassociateIpamByoasnRequest,
   output: DisassociateIpamByoasnResult,
@@ -90504,7 +90503,7 @@ export const disassociateIpamResourceDiscovery: API.OperationMethod<
   DisassociateIpamResourceDiscoveryRequest,
   DisassociateIpamResourceDiscoveryResult,
   DisassociateIpamResourceDiscoveryError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DisassociateIpamResourceDiscoveryRequest,
   output: DisassociateIpamResourceDiscoveryResult,
@@ -90542,7 +90541,7 @@ export const disassociateNatGatewayAddress: API.OperationMethod<
   DisassociateNatGatewayAddressRequest,
   DisassociateNatGatewayAddressResult,
   DisassociateNatGatewayAddressError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DisassociateNatGatewayAddressRequest,
   output: DisassociateNatGatewayAddressResult,
@@ -90576,7 +90575,7 @@ export const disassociateRouteServer: API.OperationMethod<
   DisassociateRouteServerRequest,
   DisassociateRouteServerResult,
   DisassociateRouteServerError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DisassociateRouteServerRequest,
   output: DisassociateRouteServerResult,
@@ -90611,7 +90610,7 @@ export const disassociateRouteTable: API.OperationMethod<
   DisassociateRouteTableRequest,
   DisassociateRouteTableResponse,
   DisassociateRouteTableError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DisassociateRouteTableRequest,
   output: DisassociateRouteTableResponse,
@@ -90642,7 +90641,7 @@ export const disassociateSecurityGroupVpc: API.OperationMethod<
   DisassociateSecurityGroupVpcRequest,
   DisassociateSecurityGroupVpcResult,
   DisassociateSecurityGroupVpcError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DisassociateSecurityGroupVpcRequest,
   output: DisassociateSecurityGroupVpcResult,
@@ -90670,7 +90669,7 @@ export const disassociateSubnetCidrBlock: API.OperationMethod<
   DisassociateSubnetCidrBlockRequest,
   DisassociateSubnetCidrBlockResult,
   DisassociateSubnetCidrBlockError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DisassociateSubnetCidrBlockRequest,
   output: DisassociateSubnetCidrBlockResult,
@@ -90698,7 +90697,7 @@ export const disassociateTransitGatewayMulticastDomain: API.OperationMethod<
   DisassociateTransitGatewayMulticastDomainRequest,
   DisassociateTransitGatewayMulticastDomainResult,
   DisassociateTransitGatewayMulticastDomainError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DisassociateTransitGatewayMulticastDomainRequest,
   output: DisassociateTransitGatewayMulticastDomainResult,
@@ -90727,7 +90726,7 @@ export const disassociateTransitGatewayPolicyTable: API.OperationMethod<
   DisassociateTransitGatewayPolicyTableRequest,
   DisassociateTransitGatewayPolicyTableResult,
   DisassociateTransitGatewayPolicyTableError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DisassociateTransitGatewayPolicyTableRequest,
   output: DisassociateTransitGatewayPolicyTableResult,
@@ -90756,7 +90755,7 @@ export const disassociateTransitGatewayRouteTable: API.OperationMethod<
   DisassociateTransitGatewayRouteTableRequest,
   DisassociateTransitGatewayRouteTableResult,
   DisassociateTransitGatewayRouteTableError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DisassociateTransitGatewayRouteTableRequest,
   output: DisassociateTransitGatewayRouteTableResult,
@@ -90783,7 +90782,7 @@ export const disassociateTrunkInterface: API.OperationMethod<
   DisassociateTrunkInterfaceRequest,
   DisassociateTrunkInterfaceResult,
   DisassociateTrunkInterfaceError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DisassociateTrunkInterfaceRequest,
   output: DisassociateTrunkInterfaceResult,
@@ -90814,7 +90813,7 @@ export const disassociateVpcCidrBlock: API.OperationMethod<
   DisassociateVpcCidrBlockRequest,
   DisassociateVpcCidrBlockResult,
   DisassociateVpcCidrBlockError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DisassociateVpcCidrBlockRequest,
   output: DisassociateVpcCidrBlockResult,
@@ -90843,7 +90842,7 @@ export const enableAddressTransfer: API.OperationMethod<
   EnableAddressTransferRequest,
   EnableAddressTransferResult,
   EnableAddressTransferError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: EnableAddressTransferRequest,
   output: EnableAddressTransferResult,
@@ -90884,7 +90883,7 @@ export const enableAllowedImagesSettings: API.OperationMethod<
   EnableAllowedImagesSettingsRequest,
   EnableAllowedImagesSettingsResult,
   EnableAllowedImagesSettingsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: EnableAllowedImagesSettingsRequest,
   output: EnableAllowedImagesSettingsResult,
@@ -90906,7 +90905,7 @@ export const enableAwsNetworkPerformanceMetricSubscription: API.OperationMethod<
   EnableAwsNetworkPerformanceMetricSubscriptionRequest,
   EnableAwsNetworkPerformanceMetricSubscriptionResult,
   EnableAwsNetworkPerformanceMetricSubscriptionError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: EnableAwsNetworkPerformanceMetricSubscriptionRequest,
   output: EnableAwsNetworkPerformanceMetricSubscriptionResult,
@@ -90925,7 +90924,7 @@ export const enableCapacityManager: API.OperationMethod<
   EnableCapacityManagerRequest,
   EnableCapacityManagerResult,
   EnableCapacityManagerError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: EnableCapacityManagerRequest,
   output: EnableCapacityManagerResult,
@@ -90955,7 +90954,7 @@ export const enableEbsEncryptionByDefault: API.OperationMethod<
   EnableEbsEncryptionByDefaultRequest,
   EnableEbsEncryptionByDefaultResult,
   EnableEbsEncryptionByDefaultError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: EnableEbsEncryptionByDefaultRequest,
   output: EnableEbsEncryptionByDefaultResult,
@@ -90985,7 +90984,7 @@ export const enableFastLaunch: API.OperationMethod<
   EnableFastLaunchRequest,
   EnableFastLaunchResult,
   EnableFastLaunchError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: EnableFastLaunchRequest,
   output: EnableFastLaunchResult,
@@ -91012,7 +91011,7 @@ export const enableFastSnapshotRestores: API.OperationMethod<
   EnableFastSnapshotRestoresRequest,
   EnableFastSnapshotRestoresResult,
   EnableFastSnapshotRestoresError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: EnableFastSnapshotRestoresRequest,
   output: EnableFastSnapshotRestoresResult,
@@ -91043,7 +91042,7 @@ export const enableImage: API.OperationMethod<
   EnableImageRequest,
   EnableImageResult,
   EnableImageError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: EnableImageRequest,
   output: EnableImageResult,
@@ -91075,7 +91074,7 @@ export const enableImageBlockPublicAccess: API.OperationMethod<
   EnableImageBlockPublicAccessRequest,
   EnableImageBlockPublicAccessResult,
   EnableImageBlockPublicAccessError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: EnableImageBlockPublicAccessRequest,
   output: EnableImageBlockPublicAccessResult,
@@ -91100,7 +91099,7 @@ export const enableImageDeprecation: API.OperationMethod<
   EnableImageDeprecationRequest,
   EnableImageDeprecationResult,
   EnableImageDeprecationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: EnableImageDeprecationRequest,
   output: EnableImageDeprecationResult,
@@ -91128,7 +91127,7 @@ export const enableImageDeregistrationProtection: API.OperationMethod<
   EnableImageDeregistrationProtectionRequest,
   EnableImageDeregistrationProtectionResult,
   EnableImageDeregistrationProtectionError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: EnableImageDeregistrationProtectionRequest,
   output: EnableImageDeregistrationProtectionResult,
@@ -91160,7 +91159,7 @@ export const enableInstanceSqlHaStandbyDetections: API.OperationMethod<
   EnableInstanceSqlHaStandbyDetectionsRequest,
   EnableInstanceSqlHaStandbyDetectionsResult,
   EnableInstanceSqlHaStandbyDetectionsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: EnableInstanceSqlHaStandbyDetectionsRequest,
   output: EnableInstanceSqlHaStandbyDetectionsResult,
@@ -91186,7 +91185,7 @@ export const enableIpamOrganizationAdminAccount: API.OperationMethod<
   EnableIpamOrganizationAdminAccountRequest,
   EnableIpamOrganizationAdminAccountResult,
   EnableIpamOrganizationAdminAccountError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: EnableIpamOrganizationAdminAccountRequest,
   output: EnableIpamOrganizationAdminAccountResult,
@@ -91213,7 +91212,7 @@ export const enableIpamPolicy: API.OperationMethod<
   EnableIpamPolicyRequest,
   EnableIpamPolicyResult,
   EnableIpamPolicyError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: EnableIpamPolicyRequest,
   output: EnableIpamPolicyResult,
@@ -91241,7 +91240,7 @@ export const enableReachabilityAnalyzerOrganizationSharing: API.OperationMethod<
   EnableReachabilityAnalyzerOrganizationSharingRequest,
   EnableReachabilityAnalyzerOrganizationSharingResult,
   EnableReachabilityAnalyzerOrganizationSharingError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: EnableReachabilityAnalyzerOrganizationSharingRequest,
   output: EnableReachabilityAnalyzerOrganizationSharingResult,
@@ -91267,7 +91266,7 @@ export const enableRouteServerPropagation: API.OperationMethod<
   EnableRouteServerPropagationRequest,
   EnableRouteServerPropagationResult,
   EnableRouteServerPropagationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: EnableRouteServerPropagationRequest,
   output: EnableRouteServerPropagationResult,
@@ -91291,7 +91290,7 @@ export const enableSerialConsoleAccess: API.OperationMethod<
   EnableSerialConsoleAccessRequest,
   EnableSerialConsoleAccessResult,
   EnableSerialConsoleAccessError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: EnableSerialConsoleAccessRequest,
   output: EnableSerialConsoleAccessResult,
@@ -91330,7 +91329,7 @@ export const enableSnapshotBlockPublicAccess: API.OperationMethod<
   EnableSnapshotBlockPublicAccessRequest,
   EnableSnapshotBlockPublicAccessResult,
   EnableSnapshotBlockPublicAccessError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: EnableSnapshotBlockPublicAccessRequest,
   output: EnableSnapshotBlockPublicAccessResult,
@@ -91353,7 +91352,7 @@ export const enableTransitGatewayRouteTablePropagation: API.OperationMethod<
   EnableTransitGatewayRouteTablePropagationRequest,
   EnableTransitGatewayRouteTablePropagationResult,
   EnableTransitGatewayRouteTablePropagationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: EnableTransitGatewayRouteTablePropagationRequest,
   output: EnableTransitGatewayRouteTablePropagationResult,
@@ -91376,7 +91375,7 @@ export const enableVgwRoutePropagation: API.OperationMethod<
   EnableVgwRoutePropagationRequest,
   EnableVgwRoutePropagationResponse,
   EnableVgwRoutePropagationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: EnableVgwRoutePropagationRequest,
   output: EnableVgwRoutePropagationResponse,
@@ -91399,7 +91398,7 @@ export const enableVolumeIO: API.OperationMethod<
   EnableVolumeIORequest,
   EnableVolumeIOResponse,
   EnableVolumeIOError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: EnableVolumeIORequest,
   output: EnableVolumeIOResponse,
@@ -91429,7 +91428,7 @@ export const enableVpcClassicLink: API.OperationMethod<
   EnableVpcClassicLinkRequest,
   EnableVpcClassicLinkResult,
   EnableVpcClassicLinkError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: EnableVpcClassicLinkRequest,
   output: EnableVpcClassicLinkResult,
@@ -91465,7 +91464,7 @@ export const enableVpcClassicLinkDnsSupport: API.OperationMethod<
   EnableVpcClassicLinkDnsSupportRequest,
   EnableVpcClassicLinkDnsSupportResult,
   EnableVpcClassicLinkDnsSupportError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: EnableVpcClassicLinkDnsSupportRequest,
   output: EnableVpcClassicLinkDnsSupportResult,
@@ -91492,7 +91491,7 @@ export const exportClientVpnClientCertificateRevocationList: API.OperationMethod
   ExportClientVpnClientCertificateRevocationListRequest,
   ExportClientVpnClientCertificateRevocationListResult,
   ExportClientVpnClientCertificateRevocationListError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ExportClientVpnClientCertificateRevocationListRequest,
   output: ExportClientVpnClientCertificateRevocationListResult,
@@ -91520,7 +91519,7 @@ export const exportClientVpnClientConfiguration: API.OperationMethod<
   ExportClientVpnClientConfigurationRequest,
   ExportClientVpnClientConfigurationResult,
   ExportClientVpnClientConfigurationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ExportClientVpnClientConfigurationRequest,
   output: ExportClientVpnClientConfigurationResult,
@@ -91548,7 +91547,7 @@ export const exportImage: API.OperationMethod<
   ExportImageRequest,
   ExportImageResult,
   ExportImageError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ExportImageRequest,
   output: ExportImageResult,
@@ -91575,7 +91574,7 @@ export const exportTransitGatewayRoutes: API.OperationMethod<
   ExportTransitGatewayRoutesRequest,
   ExportTransitGatewayRoutesResult,
   ExportTransitGatewayRoutesError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ExportTransitGatewayRoutesRequest,
   output: ExportTransitGatewayRoutesResult,
@@ -91601,7 +91600,7 @@ export const exportVerifiedAccessInstanceClientConfiguration: API.OperationMetho
   ExportVerifiedAccessInstanceClientConfigurationRequest,
   ExportVerifiedAccessInstanceClientConfigurationResult,
   ExportVerifiedAccessInstanceClientConfigurationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ExportVerifiedAccessInstanceClientConfigurationRequest,
   output: ExportVerifiedAccessInstanceClientConfigurationResult,
@@ -91627,7 +91626,7 @@ export const getActiveVpnTunnelStatus: API.OperationMethod<
   GetActiveVpnTunnelStatusRequest,
   GetActiveVpnTunnelStatusResult,
   GetActiveVpnTunnelStatusError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetActiveVpnTunnelStatusRequest,
   output: GetActiveVpnTunnelStatusResult,
@@ -91658,7 +91657,7 @@ export const getAllowedImagesSettings: API.OperationMethod<
   GetAllowedImagesSettingsRequest,
   GetAllowedImagesSettingsResult,
   GetAllowedImagesSettingsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetAllowedImagesSettingsRequest,
   output: GetAllowedImagesSettingsResult,
@@ -91683,7 +91682,7 @@ export const getAssociatedEnclaveCertificateIamRoles: API.OperationMethod<
   GetAssociatedEnclaveCertificateIamRolesRequest,
   GetAssociatedEnclaveCertificateIamRolesResult,
   GetAssociatedEnclaveCertificateIamRolesError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetAssociatedEnclaveCertificateIamRolesRequest,
   output: GetAssociatedEnclaveCertificateIamRolesResult,
@@ -91709,7 +91708,7 @@ export const getAssociatedIpv6PoolCidrs: API.PaginatedOperationMethod<
   GetAssociatedIpv6PoolCidrsRequest,
   GetAssociatedIpv6PoolCidrsResult,
   GetAssociatedIpv6PoolCidrsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   Ipv6CidrAssociation
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetAssociatedIpv6PoolCidrsRequest,
@@ -91742,7 +91741,7 @@ export const getAwsNetworkPerformanceData: API.PaginatedOperationMethod<
   GetAwsNetworkPerformanceDataRequest,
   GetAwsNetworkPerformanceDataResult,
   GetAwsNetworkPerformanceDataError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   DataResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetAwsNetworkPerformanceDataRequest,
@@ -91767,7 +91766,7 @@ export const getCapacityManagerAttributes: API.OperationMethod<
   GetCapacityManagerAttributesRequest,
   GetCapacityManagerAttributesResult,
   GetCapacityManagerAttributesError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetCapacityManagerAttributesRequest,
   output: GetCapacityManagerAttributesResult,
@@ -91790,7 +91789,7 @@ export const getCapacityManagerMetricData: API.PaginatedOperationMethod<
   GetCapacityManagerMetricDataRequest,
   GetCapacityManagerMetricDataResult,
   GetCapacityManagerMetricDataError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   MetricDataResult
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetCapacityManagerMetricDataRequest,
@@ -91820,7 +91819,7 @@ export const getCapacityManagerMetricDimensions: API.PaginatedOperationMethod<
   GetCapacityManagerMetricDimensionsRequest,
   GetCapacityManagerMetricDimensionsResult,
   GetCapacityManagerMetricDimensionsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   CapacityManagerDimension
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetCapacityManagerMetricDimensionsRequest,
@@ -91845,7 +91844,7 @@ export const getCapacityManagerMonitoredTagKeys: API.PaginatedOperationMethod<
   GetCapacityManagerMonitoredTagKeysRequest,
   GetCapacityManagerMonitoredTagKeysResult,
   GetCapacityManagerMonitoredTagKeysError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   CapacityManagerMonitoredTagKey
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetCapacityManagerMonitoredTagKeysRequest,
@@ -91876,7 +91875,7 @@ export const getCapacityReservationUsage: API.OperationMethod<
   GetCapacityReservationUsageRequest,
   GetCapacityReservationUsageResult,
   GetCapacityReservationUsageError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetCapacityReservationUsageRequest,
   output: GetCapacityReservationUsageResult,
@@ -91902,7 +91901,7 @@ export const getCoipPoolUsage: API.OperationMethod<
   GetCoipPoolUsageRequest,
   GetCoipPoolUsageResult,
   GetCoipPoolUsageError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetCoipPoolUsageRequest,
   output: GetCoipPoolUsageResult,
@@ -91931,7 +91930,7 @@ export const getConsoleOutput: API.OperationMethod<
   GetConsoleOutputRequest,
   GetConsoleOutputResult,
   GetConsoleOutputError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetConsoleOutputRequest,
   output: GetConsoleOutputResult,
@@ -91964,7 +91963,7 @@ export const getConsoleScreenshot: API.OperationMethod<
   GetConsoleScreenshotRequest,
   GetConsoleScreenshotResult,
   GetConsoleScreenshotError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetConsoleScreenshotRequest,
   output: GetConsoleScreenshotResult,
@@ -92001,7 +92000,7 @@ export const getDeclarativePoliciesReportSummary: API.OperationMethod<
   GetDeclarativePoliciesReportSummaryRequest,
   GetDeclarativePoliciesReportSummaryResult,
   GetDeclarativePoliciesReportSummaryError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetDeclarativePoliciesReportSummaryRequest,
   output: GetDeclarativePoliciesReportSummaryResult,
@@ -92031,7 +92030,7 @@ export const getDefaultCreditSpecification: API.OperationMethod<
   GetDefaultCreditSpecificationRequest,
   GetDefaultCreditSpecificationResult,
   GetDefaultCreditSpecificationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetDefaultCreditSpecificationRequest,
   output: GetDefaultCreditSpecificationResult,
@@ -92052,7 +92051,7 @@ export const getEbsDefaultKmsKeyId: API.OperationMethod<
   GetEbsDefaultKmsKeyIdRequest,
   GetEbsDefaultKmsKeyIdResult,
   GetEbsDefaultKmsKeyIdError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetEbsDefaultKmsKeyIdRequest,
   output: GetEbsDefaultKmsKeyIdResult,
@@ -92074,7 +92073,7 @@ export const getEbsEncryptionByDefault: API.OperationMethod<
   GetEbsEncryptionByDefaultRequest,
   GetEbsEncryptionByDefaultResult,
   GetEbsEncryptionByDefaultError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetEbsEncryptionByDefaultRequest,
   output: GetEbsEncryptionByDefaultResult,
@@ -92094,7 +92093,7 @@ export const getEnabledIpamPolicy: API.OperationMethod<
   GetEnabledIpamPolicyRequest,
   GetEnabledIpamPolicyResult,
   GetEnabledIpamPolicyError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetEnabledIpamPolicyRequest,
   output: GetEnabledIpamPolicyResult,
@@ -92126,7 +92125,7 @@ export const getFlowLogsIntegrationTemplate: API.OperationMethod<
   GetFlowLogsIntegrationTemplateRequest,
   GetFlowLogsIntegrationTemplateResult,
   GetFlowLogsIntegrationTemplateError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetFlowLogsIntegrationTemplateRequest,
   output: GetFlowLogsIntegrationTemplateResult,
@@ -92148,7 +92147,7 @@ export const getGroupsForCapacityReservation: API.PaginatedOperationMethod<
   GetGroupsForCapacityReservationRequest,
   GetGroupsForCapacityReservationResult,
   GetGroupsForCapacityReservationError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   CapacityReservationGroup
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetGroupsForCapacityReservationRequest,
@@ -92182,7 +92181,7 @@ export const getHostReservationPurchasePreview: API.OperationMethod<
   GetHostReservationPurchasePreviewRequest,
   GetHostReservationPurchasePreviewResult,
   GetHostReservationPurchasePreviewError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetHostReservationPurchasePreviewRequest,
   output: GetHostReservationPurchasePreviewResult,
@@ -92206,7 +92205,7 @@ export const getImageAncestry: API.OperationMethod<
   GetImageAncestryRequest,
   GetImageAncestryResult,
   GetImageAncestryError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetImageAncestryRequest,
   output: GetImageAncestryResult,
@@ -92228,7 +92227,7 @@ export const getImageBlockPublicAccessState: API.OperationMethod<
   GetImageBlockPublicAccessStateRequest,
   GetImageBlockPublicAccessStateResult,
   GetImageBlockPublicAccessStateError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetImageBlockPublicAccessStateRequest,
   output: GetImageBlockPublicAccessStateResult,
@@ -92251,7 +92250,7 @@ export const getInstanceMetadataDefaults: API.OperationMethod<
   GetInstanceMetadataDefaultsRequest,
   GetInstanceMetadataDefaultsResult,
   GetInstanceMetadataDefaultsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetInstanceMetadataDefaultsRequest,
   output: GetInstanceMetadataDefaultsResult,
@@ -92274,7 +92273,7 @@ export const getInstanceTpmEkPub: API.OperationMethod<
   GetInstanceTpmEkPubRequest,
   GetInstanceTpmEkPubResult,
   GetInstanceTpmEkPubError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetInstanceTpmEkPubRequest,
   output: GetInstanceTpmEkPubResult,
@@ -92307,7 +92306,7 @@ export const getInstanceTypesFromInstanceRequirements: API.PaginatedOperationMet
   GetInstanceTypesFromInstanceRequirementsRequest,
   GetInstanceTypesFromInstanceRequirementsResult,
   GetInstanceTypesFromInstanceRequirementsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   InstanceTypeInfoFromInstanceRequirements
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetInstanceTypesFromInstanceRequirementsRequest,
@@ -92348,7 +92347,7 @@ export const getInstanceUefiData: API.OperationMethod<
   GetInstanceUefiDataRequest,
   GetInstanceUefiDataResult,
   GetInstanceUefiDataError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetInstanceUefiDataRequest,
   output: GetInstanceUefiDataResult,
@@ -92374,7 +92373,7 @@ export const getIpamAddressHistory: API.PaginatedOperationMethod<
   GetIpamAddressHistoryRequest,
   GetIpamAddressHistoryResult,
   GetIpamAddressHistoryError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   IpamAddressHistoryRecord
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetIpamAddressHistoryRequest,
@@ -92408,7 +92407,7 @@ export const getIpamDiscoveredAccounts: API.PaginatedOperationMethod<
   GetIpamDiscoveredAccountsRequest,
   GetIpamDiscoveredAccountsResult,
   GetIpamDiscoveredAccountsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   IpamDiscoveredAccount
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetIpamDiscoveredAccountsRequest,
@@ -92443,7 +92442,7 @@ export const getIpamDiscoveredPublicAddresses: API.OperationMethod<
   GetIpamDiscoveredPublicAddressesRequest,
   GetIpamDiscoveredPublicAddressesResult,
   GetIpamDiscoveredPublicAddressesError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetIpamDiscoveredPublicAddressesRequest,
   output: GetIpamDiscoveredPublicAddressesResult,
@@ -92471,7 +92470,7 @@ export const getIpamDiscoveredResourceCidrs: API.PaginatedOperationMethod<
   GetIpamDiscoveredResourceCidrsRequest,
   GetIpamDiscoveredResourceCidrsResult,
   GetIpamDiscoveredResourceCidrsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   IpamDiscoveredResourceCidr
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetIpamDiscoveredResourceCidrsRequest,
@@ -92510,7 +92509,7 @@ export const getIpamPolicyAllocationRules: API.OperationMethod<
   GetIpamPolicyAllocationRulesRequest,
   GetIpamPolicyAllocationRulesResult,
   GetIpamPolicyAllocationRulesError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetIpamPolicyAllocationRulesRequest,
   output: GetIpamPolicyAllocationRulesResult,
@@ -92542,7 +92541,7 @@ export const getIpamPolicyOrganizationTargets: API.OperationMethod<
   GetIpamPolicyOrganizationTargetsRequest,
   GetIpamPolicyOrganizationTargetsResult,
   GetIpamPolicyOrganizationTargetsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetIpamPolicyOrganizationTargetsRequest,
   output: GetIpamPolicyOrganizationTargetsResult,
@@ -92572,7 +92571,7 @@ export const getIpamPoolAllocations: API.PaginatedOperationMethod<
   GetIpamPoolAllocationsRequest,
   GetIpamPoolAllocationsResult,
   GetIpamPoolAllocationsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   IpamPoolAllocation
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetIpamPoolAllocationsRequest,
@@ -92607,7 +92606,7 @@ export const getIpamPoolCidrs: API.PaginatedOperationMethod<
   GetIpamPoolCidrsRequest,
   GetIpamPoolCidrsResult,
   GetIpamPoolCidrsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   IpamPoolCidr
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetIpamPoolCidrsRequest,
@@ -92642,7 +92641,7 @@ export const getIpamPrefixListResolverRules: API.PaginatedOperationMethod<
   GetIpamPrefixListResolverRulesRequest,
   GetIpamPrefixListResolverRulesResult,
   GetIpamPrefixListResolverRulesError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   IpamPrefixListResolverRule
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetIpamPrefixListResolverRulesRequest,
@@ -92676,7 +92675,7 @@ export const getIpamPrefixListResolverVersionEntries: API.PaginatedOperationMeth
   GetIpamPrefixListResolverVersionEntriesRequest,
   GetIpamPrefixListResolverVersionEntriesResult,
   GetIpamPrefixListResolverVersionEntriesError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   IpamPrefixListResolverVersionEntry
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetIpamPrefixListResolverVersionEntriesRequest,
@@ -92733,7 +92732,7 @@ export const getIpamPrefixListResolverVersions: API.PaginatedOperationMethod<
   GetIpamPrefixListResolverVersionsRequest,
   GetIpamPrefixListResolverVersionsResult,
   GetIpamPrefixListResolverVersionsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   IpamPrefixListResolverVersion
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetIpamPrefixListResolverVersionsRequest,
@@ -92768,7 +92767,7 @@ export const getIpamResourceCidrs: API.PaginatedOperationMethod<
   GetIpamResourceCidrsRequest,
   GetIpamResourceCidrsResult,
   GetIpamResourceCidrsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   IpamResourceCidr
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetIpamResourceCidrsRequest,
@@ -92810,7 +92809,7 @@ export const getLaunchTemplateData: API.OperationMethod<
   GetLaunchTemplateDataRequest,
   GetLaunchTemplateDataResult,
   GetLaunchTemplateDataError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetLaunchTemplateDataRequest,
   output: GetLaunchTemplateDataResult,
@@ -92837,7 +92836,7 @@ export const getManagedPrefixListAssociations: API.PaginatedOperationMethod<
   GetManagedPrefixListAssociationsRequest,
   GetManagedPrefixListAssociationsResult,
   GetManagedPrefixListAssociationsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   PrefixListAssociation
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetManagedPrefixListAssociationsRequest,
@@ -92873,7 +92872,7 @@ export const getManagedPrefixListEntries: API.PaginatedOperationMethod<
   GetManagedPrefixListEntriesRequest,
   GetManagedPrefixListEntriesResult,
   GetManagedPrefixListEntriesError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   PrefixListEntry
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetManagedPrefixListEntriesRequest,
@@ -92905,7 +92904,7 @@ export const getManagedResourceVisibility: API.OperationMethod<
   GetManagedResourceVisibilityRequest,
   GetManagedResourceVisibilityResult,
   GetManagedResourceVisibilityError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetManagedResourceVisibilityRequest,
   output: GetManagedResourceVisibilityResult,
@@ -92927,7 +92926,7 @@ export const getNetworkInsightsAccessScopeAnalysisFindings: API.PaginatedOperati
   GetNetworkInsightsAccessScopeAnalysisFindingsRequest,
   GetNetworkInsightsAccessScopeAnalysisFindingsResult,
   GetNetworkInsightsAccessScopeAnalysisFindingsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   AccessScopeAnalysisFinding
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetNetworkInsightsAccessScopeAnalysisFindingsRequest,
@@ -92956,7 +92955,7 @@ export const getNetworkInsightsAccessScopeContent: API.OperationMethod<
   GetNetworkInsightsAccessScopeContentRequest,
   GetNetworkInsightsAccessScopeContentResult,
   GetNetworkInsightsAccessScopeContentError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetNetworkInsightsAccessScopeContentRequest,
   output: GetNetworkInsightsAccessScopeContentResult,
@@ -92995,7 +92994,7 @@ export const getPasswordData: API.OperationMethod<
   GetPasswordDataRequest,
   GetPasswordDataResult,
   GetPasswordDataError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetPasswordDataRequest,
   output: GetPasswordDataResult,
@@ -93024,7 +93023,7 @@ export const getReservedInstancesExchangeQuote: API.OperationMethod<
   GetReservedInstancesExchangeQuoteRequest,
   GetReservedInstancesExchangeQuoteResult,
   GetReservedInstancesExchangeQuoteError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetReservedInstancesExchangeQuoteRequest,
   output: GetReservedInstancesExchangeQuoteResult,
@@ -93054,7 +93053,7 @@ export const getRouteServerAssociations: API.OperationMethod<
   GetRouteServerAssociationsRequest,
   GetRouteServerAssociationsResult,
   GetRouteServerAssociationsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetRouteServerAssociationsRequest,
   output: GetRouteServerAssociationsResult,
@@ -93095,7 +93094,7 @@ export const getRouteServerPropagations: API.OperationMethod<
   GetRouteServerPropagationsRequest,
   GetRouteServerPropagationsResult,
   GetRouteServerPropagationsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetRouteServerPropagationsRequest,
   output: GetRouteServerPropagationsResult,
@@ -93134,7 +93133,7 @@ export const getRouteServerRoutingDatabase: API.OperationMethod<
   GetRouteServerRoutingDatabaseRequest,
   GetRouteServerRoutingDatabaseResult,
   GetRouteServerRoutingDatabaseError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetRouteServerRoutingDatabaseRequest,
   output: GetRouteServerRoutingDatabaseResult,
@@ -93161,7 +93160,7 @@ export const getSecurityGroupsForVpc: API.PaginatedOperationMethod<
   GetSecurityGroupsForVpcRequest,
   GetSecurityGroupsForVpcResult,
   GetSecurityGroupsForVpcError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   SecurityGroupForVpc
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetSecurityGroupsForVpcRequest,
@@ -93194,7 +93193,7 @@ export const getSerialConsoleAccessStatus: API.OperationMethod<
   GetSerialConsoleAccessStatusRequest,
   GetSerialConsoleAccessStatusResult,
   GetSerialConsoleAccessStatusError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetSerialConsoleAccessStatusRequest,
   output: GetSerialConsoleAccessStatusResult,
@@ -93216,7 +93215,7 @@ export const getSnapshotBlockPublicAccessState: API.OperationMethod<
   GetSnapshotBlockPublicAccessStateRequest,
   GetSnapshotBlockPublicAccessStateResult,
   GetSnapshotBlockPublicAccessStateError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetSnapshotBlockPublicAccessStateRequest,
   output: GetSnapshotBlockPublicAccessStateResult,
@@ -93243,7 +93242,7 @@ export const getSpotPlacementScores: API.PaginatedOperationMethod<
   GetSpotPlacementScoresRequest,
   GetSpotPlacementScoresResult,
   GetSpotPlacementScoresError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   SpotPlacementScore
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetSpotPlacementScoresRequest,
@@ -93273,7 +93272,7 @@ export const getSubnetCidrReservations: API.OperationMethod<
   GetSubnetCidrReservationsRequest,
   GetSubnetCidrReservationsResult,
   GetSubnetCidrReservationsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetSubnetCidrReservationsRequest,
   output: GetSubnetCidrReservationsResult,
@@ -93300,7 +93299,7 @@ export const getTransitGatewayAttachmentPropagations: API.PaginatedOperationMeth
   GetTransitGatewayAttachmentPropagationsRequest,
   GetTransitGatewayAttachmentPropagationsResult,
   GetTransitGatewayAttachmentPropagationsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   TransitGatewayAttachmentPropagation
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetTransitGatewayAttachmentPropagationsRequest,
@@ -93334,7 +93333,7 @@ export const getTransitGatewayMeteringPolicyEntries: API.OperationMethod<
   GetTransitGatewayMeteringPolicyEntriesRequest,
   GetTransitGatewayMeteringPolicyEntriesResult,
   GetTransitGatewayMeteringPolicyEntriesError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetTransitGatewayMeteringPolicyEntriesRequest,
   output: GetTransitGatewayMeteringPolicyEntriesResult,
@@ -93363,7 +93362,7 @@ export const getTransitGatewayMulticastDomainAssociations: API.PaginatedOperatio
   GetTransitGatewayMulticastDomainAssociationsRequest,
   GetTransitGatewayMulticastDomainAssociationsResult,
   GetTransitGatewayMulticastDomainAssociationsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   TransitGatewayMulticastDomainAssociation
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetTransitGatewayMulticastDomainAssociationsRequest,
@@ -93399,7 +93398,7 @@ export const getTransitGatewayPolicyTableAssociations: API.PaginatedOperationMet
   GetTransitGatewayPolicyTableAssociationsRequest,
   GetTransitGatewayPolicyTableAssociationsResult,
   GetTransitGatewayPolicyTableAssociationsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   TransitGatewayPolicyTableAssociation
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetTransitGatewayPolicyTableAssociationsRequest,
@@ -93434,7 +93433,7 @@ export const getTransitGatewayPolicyTableEntries: API.OperationMethod<
   GetTransitGatewayPolicyTableEntriesRequest,
   GetTransitGatewayPolicyTableEntriesResult,
   GetTransitGatewayPolicyTableEntriesError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetTransitGatewayPolicyTableEntriesRequest,
   output: GetTransitGatewayPolicyTableEntriesResult,
@@ -93462,7 +93461,7 @@ export const getTransitGatewayPrefixListReferences: API.PaginatedOperationMethod
   GetTransitGatewayPrefixListReferencesRequest,
   GetTransitGatewayPrefixListReferencesResult,
   GetTransitGatewayPrefixListReferencesError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   TransitGatewayPrefixListReference
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetTransitGatewayPrefixListReferencesRequest,
@@ -93496,7 +93495,7 @@ export const getTransitGatewayRouteTableAssociations: API.PaginatedOperationMeth
   GetTransitGatewayRouteTableAssociationsRequest,
   GetTransitGatewayRouteTableAssociationsResult,
   GetTransitGatewayRouteTableAssociationsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   TransitGatewayRouteTableAssociation
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetTransitGatewayRouteTableAssociationsRequest,
@@ -93529,7 +93528,7 @@ export const getTransitGatewayRouteTablePropagations: API.PaginatedOperationMeth
   GetTransitGatewayRouteTablePropagationsRequest,
   GetTransitGatewayRouteTablePropagationsResult,
   GetTransitGatewayRouteTablePropagationsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   TransitGatewayRouteTablePropagation
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetTransitGatewayRouteTablePropagationsRequest,
@@ -93563,7 +93562,7 @@ export const getVerifiedAccessEndpointPolicy: API.OperationMethod<
   GetVerifiedAccessEndpointPolicyRequest,
   GetVerifiedAccessEndpointPolicyResult,
   GetVerifiedAccessEndpointPolicyError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetVerifiedAccessEndpointPolicyRequest,
   output: GetVerifiedAccessEndpointPolicyResult,
@@ -93590,7 +93589,7 @@ export const getVerifiedAccessEndpointTargets: API.OperationMethod<
   GetVerifiedAccessEndpointTargetsRequest,
   GetVerifiedAccessEndpointTargetsResult,
   GetVerifiedAccessEndpointTargetsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetVerifiedAccessEndpointTargetsRequest,
   output: GetVerifiedAccessEndpointTargetsResult,
@@ -93616,7 +93615,7 @@ export const getVerifiedAccessGroupPolicy: API.OperationMethod<
   GetVerifiedAccessGroupPolicyRequest,
   GetVerifiedAccessGroupPolicyResult,
   GetVerifiedAccessGroupPolicyError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetVerifiedAccessGroupPolicyRequest,
   output: GetVerifiedAccessGroupPolicyResult,
@@ -93644,7 +93643,7 @@ export const getVpcResourcesBlockingEncryptionEnforcement: API.OperationMethod<
   GetVpcResourcesBlockingEncryptionEnforcementRequest,
   GetVpcResourcesBlockingEncryptionEnforcementResult,
   GetVpcResourcesBlockingEncryptionEnforcementError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetVpcResourcesBlockingEncryptionEnforcementRequest,
   output: GetVpcResourcesBlockingEncryptionEnforcementResult,
@@ -93667,7 +93666,7 @@ export const getVpnConnectionDeviceSampleConfiguration: API.OperationMethod<
   GetVpnConnectionDeviceSampleConfigurationRequest,
   GetVpnConnectionDeviceSampleConfigurationResult,
   GetVpnConnectionDeviceSampleConfigurationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetVpnConnectionDeviceSampleConfigurationRequest,
   output: GetVpnConnectionDeviceSampleConfigurationResult,
@@ -93692,7 +93691,7 @@ export const getVpnConnectionDeviceTypes: API.PaginatedOperationMethod<
   GetVpnConnectionDeviceTypesRequest,
   GetVpnConnectionDeviceTypesResult,
   GetVpnConnectionDeviceTypesError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   VpnConnectionDeviceType
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetVpnConnectionDeviceTypesRequest,
@@ -93721,7 +93720,7 @@ export const getVpnTunnelReplacementStatus: API.OperationMethod<
   GetVpnTunnelReplacementStatusRequest,
   GetVpnTunnelReplacementStatusResult,
   GetVpnTunnelReplacementStatusError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetVpnTunnelReplacementStatusRequest,
   output: GetVpnTunnelReplacementStatusResult,
@@ -93745,7 +93744,7 @@ export const importClientVpnClientCertificateRevocationList: API.OperationMethod
   ImportClientVpnClientCertificateRevocationListRequest,
   ImportClientVpnClientCertificateRevocationListResult,
   ImportClientVpnClientCertificateRevocationListError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ImportClientVpnClientCertificateRevocationListRequest,
   output: ImportClientVpnClientCertificateRevocationListResult,
@@ -93785,7 +93784,7 @@ export const importImage: API.OperationMethod<
   ImportImageRequest,
   ImportImageResult,
   ImportImageError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ImportImageRequest,
   output: ImportImageResult,
@@ -93824,7 +93823,7 @@ export const importInstance: API.OperationMethod<
   ImportInstanceRequest,
   ImportInstanceResult,
   ImportInstanceError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ImportInstanceRequest,
   output: ImportInstanceResult,
@@ -93849,7 +93848,7 @@ export const importKeyPair: API.OperationMethod<
   ImportKeyPairRequest,
   ImportKeyPairResult,
   ImportKeyPairError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ImportKeyPairRequest,
   output: ImportKeyPairResult,
@@ -93878,7 +93877,7 @@ export const importSnapshot: API.OperationMethod<
   ImportSnapshotRequest,
   ImportSnapshotResult,
   ImportSnapshotError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ImportSnapshotRequest,
   output: ImportSnapshotResult,
@@ -93904,7 +93903,7 @@ export const importVolume: API.OperationMethod<
   ImportVolumeRequest,
   ImportVolumeResult,
   ImportVolumeError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ImportVolumeRequest,
   output: ImportVolumeResult,
@@ -93928,7 +93927,7 @@ export const listImagesInRecycleBin: API.PaginatedOperationMethod<
   ListImagesInRecycleBinRequest,
   ListImagesInRecycleBinResult,
   ListImagesInRecycleBinError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ImageRecycleBinInfo
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListImagesInRecycleBinRequest,
@@ -93957,7 +93956,7 @@ export const listSnapshotsInRecycleBin: API.PaginatedOperationMethod<
   ListSnapshotsInRecycleBinRequest,
   ListSnapshotsInRecycleBinResult,
   ListSnapshotsInRecycleBinError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   SnapshotRecycleBinInfo
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSnapshotsInRecycleBinRequest,
@@ -93990,7 +93989,7 @@ export const listVolumesInRecycleBin: API.OperationMethod<
   ListVolumesInRecycleBinRequest,
   ListVolumesInRecycleBinResult,
   ListVolumesInRecycleBinError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListVolumesInRecycleBinRequest,
   output: ListVolumesInRecycleBinResult,
@@ -94030,7 +94029,7 @@ export const lockSnapshot: API.OperationMethod<
   LockSnapshotRequest,
   LockSnapshotResult,
   LockSnapshotError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: LockSnapshotRequest,
   output: LockSnapshotResult,
@@ -94053,7 +94052,7 @@ export const modifyAddressAttribute: API.OperationMethod<
   ModifyAddressAttributeRequest,
   ModifyAddressAttributeResult,
   ModifyAddressAttributeError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyAddressAttributeRequest,
   output: ModifyAddressAttributeResult,
@@ -94080,7 +94079,7 @@ export const modifyAvailabilityZoneGroup: API.OperationMethod<
   ModifyAvailabilityZoneGroupRequest,
   ModifyAvailabilityZoneGroupResult,
   ModifyAvailabilityZoneGroupError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyAvailabilityZoneGroupRequest,
   output: ModifyAvailabilityZoneGroupResult,
@@ -94127,7 +94126,7 @@ export const modifyCapacityReservation: API.OperationMethod<
   ModifyCapacityReservationRequest,
   ModifyCapacityReservationResult,
   ModifyCapacityReservationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyCapacityReservationRequest,
   output: ModifyCapacityReservationResult,
@@ -94159,7 +94158,7 @@ export const modifyCapacityReservationFleet: API.OperationMethod<
   ModifyCapacityReservationFleetRequest,
   ModifyCapacityReservationFleetResult,
   ModifyCapacityReservationFleetError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyCapacityReservationFleetRequest,
   output: ModifyCapacityReservationFleetResult,
@@ -94185,7 +94184,7 @@ export const modifyClientVpnEndpoint: API.OperationMethod<
   ModifyClientVpnEndpointRequest,
   ModifyClientVpnEndpointResult,
   ModifyClientVpnEndpointError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyClientVpnEndpointRequest,
   output: ModifyClientVpnEndpointResult,
@@ -94225,7 +94224,7 @@ export const modifyDefaultCreditSpecification: API.OperationMethod<
   ModifyDefaultCreditSpecificationRequest,
   ModifyDefaultCreditSpecificationResult,
   ModifyDefaultCreditSpecificationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyDefaultCreditSpecificationRequest,
   output: ModifyDefaultCreditSpecificationResult,
@@ -94257,7 +94256,7 @@ export const modifyEbsDefaultKmsKeyId: API.OperationMethod<
   ModifyEbsDefaultKmsKeyIdRequest,
   ModifyEbsDefaultKmsKeyIdResult,
   ModifyEbsDefaultKmsKeyIdError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyEbsDefaultKmsKeyIdRequest,
   output: ModifyEbsDefaultKmsKeyIdResult,
@@ -94305,7 +94304,7 @@ export const modifyFleet: API.OperationMethod<
   ModifyFleetRequest,
   ModifyFleetResult,
   ModifyFleetError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyFleetRequest,
   output: ModifyFleetResult,
@@ -94332,7 +94331,7 @@ export const modifyFpgaImageAttribute: API.OperationMethod<
   ModifyFpgaImageAttributeRequest,
   ModifyFpgaImageAttributeResult,
   ModifyFpgaImageAttributeError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyFpgaImageAttributeRequest,
   output: ModifyFpgaImageAttributeResult,
@@ -94364,7 +94363,7 @@ export const modifyHosts: API.OperationMethod<
   ModifyHostsRequest,
   ModifyHostsResult,
   ModifyHostsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyHostsRequest,
   output: ModifyHostsResult,
@@ -94407,7 +94406,7 @@ export const modifyIdentityIdFormat: API.OperationMethod<
   ModifyIdentityIdFormatRequest,
   ModifyIdentityIdFormatResponse,
   ModifyIdentityIdFormatError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyIdentityIdFormatRequest,
   output: ModifyIdentityIdFormatResponse,
@@ -94451,7 +94450,7 @@ export const modifyIdFormat: API.OperationMethod<
   ModifyIdFormatRequest,
   ModifyIdFormatResponse,
   ModifyIdFormatError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyIdFormatRequest,
   output: ModifyIdFormatResponse,
@@ -94485,7 +94484,7 @@ export const modifyImageAttribute: API.OperationMethod<
   ModifyImageAttributeRequest,
   ModifyImageAttributeResponse,
   ModifyImageAttributeError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyImageAttributeRequest,
   output: ModifyImageAttributeResponse,
@@ -94525,7 +94524,7 @@ export const modifyInstanceAttribute: API.OperationMethod<
   ModifyInstanceAttributeRequest,
   ModifyInstanceAttributeResponse,
   ModifyInstanceAttributeError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyInstanceAttributeRequest,
   output: ModifyInstanceAttributeResponse,
@@ -94555,7 +94554,7 @@ export const modifyInstanceCapacityReservationAttributes: API.OperationMethod<
   ModifyInstanceCapacityReservationAttributesRequest,
   ModifyInstanceCapacityReservationAttributesResult,
   ModifyInstanceCapacityReservationAttributesError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyInstanceCapacityReservationAttributesRequest,
   output: ModifyInstanceCapacityReservationAttributesResult,
@@ -94582,7 +94581,7 @@ export const modifyInstanceConnectEndpoint: API.OperationMethod<
   ModifyInstanceConnectEndpointRequest,
   ModifyInstanceConnectEndpointResult,
   ModifyInstanceConnectEndpointError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyInstanceConnectEndpointRequest,
   output: ModifyInstanceConnectEndpointResult,
@@ -94618,7 +94617,7 @@ export const modifyInstanceCpuOptions: API.OperationMethod<
   ModifyInstanceCpuOptionsRequest,
   ModifyInstanceCpuOptionsResult,
   ModifyInstanceCpuOptionsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyInstanceCpuOptionsRequest,
   output: ModifyInstanceCpuOptionsResult,
@@ -94645,7 +94644,7 @@ export const modifyInstanceCreditSpecification: API.OperationMethod<
   ModifyInstanceCreditSpecificationRequest,
   ModifyInstanceCreditSpecificationResult,
   ModifyInstanceCreditSpecificationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyInstanceCreditSpecificationRequest,
   output: ModifyInstanceCreditSpecificationResult,
@@ -94667,7 +94666,7 @@ export const modifyInstanceEventStartTime: API.OperationMethod<
   ModifyInstanceEventStartTimeRequest,
   ModifyInstanceEventStartTimeResult,
   ModifyInstanceEventStartTimeError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyInstanceEventStartTimeRequest,
   output: ModifyInstanceEventStartTimeResult,
@@ -94701,7 +94700,7 @@ export const modifyInstanceEventWindow: API.OperationMethod<
   ModifyInstanceEventWindowRequest,
   ModifyInstanceEventWindowResult,
   ModifyInstanceEventWindowError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyInstanceEventWindowRequest,
   output: ModifyInstanceEventWindowResult,
@@ -94734,7 +94733,7 @@ export const modifyInstanceMaintenanceOptions: API.OperationMethod<
   ModifyInstanceMaintenanceOptionsRequest,
   ModifyInstanceMaintenanceOptionsResult,
   ModifyInstanceMaintenanceOptionsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyInstanceMaintenanceOptionsRequest,
   output: ModifyInstanceMaintenanceOptionsResult,
@@ -94768,7 +94767,7 @@ export const modifyInstanceMetadataDefaults: API.OperationMethod<
   ModifyInstanceMetadataDefaultsRequest,
   ModifyInstanceMetadataDefaultsResult,
   ModifyInstanceMetadataDefaultsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyInstanceMetadataDefaultsRequest,
   output: ModifyInstanceMetadataDefaultsResult,
@@ -94796,7 +94795,7 @@ export const modifyInstanceMetadataOptions: API.OperationMethod<
   ModifyInstanceMetadataOptionsRequest,
   ModifyInstanceMetadataOptionsResult,
   ModifyInstanceMetadataOptionsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyInstanceMetadataOptionsRequest,
   output: ModifyInstanceMetadataOptionsResult,
@@ -94823,7 +94822,7 @@ export const modifyInstanceNetworkPerformanceOptions: API.OperationMethod<
   ModifyInstanceNetworkPerformanceRequest,
   ModifyInstanceNetworkPerformanceResult,
   ModifyInstanceNetworkPerformanceOptionsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyInstanceNetworkPerformanceRequest,
   output: ModifyInstanceNetworkPerformanceResult,
@@ -94866,7 +94865,7 @@ export const modifyInstancePlacement: API.OperationMethod<
   ModifyInstancePlacementRequest,
   ModifyInstancePlacementResult,
   ModifyInstancePlacementError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyInstancePlacementRequest,
   output: ModifyInstancePlacementResult,
@@ -94892,7 +94891,7 @@ export const modifyIpam: API.OperationMethod<
   ModifyIpamRequest,
   ModifyIpamResult,
   ModifyIpamError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyIpamRequest,
   output: ModifyIpamResult,
@@ -94922,7 +94921,7 @@ export const modifyIpamPolicyAllocationRules: API.OperationMethod<
   ModifyIpamPolicyAllocationRulesRequest,
   ModifyIpamPolicyAllocationRulesResult,
   ModifyIpamPolicyAllocationRulesError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyIpamPolicyAllocationRulesRequest,
   output: ModifyIpamPolicyAllocationRulesResult,
@@ -94946,7 +94945,7 @@ export const modifyIpamPool: API.OperationMethod<
   ModifyIpamPoolRequest,
   ModifyIpamPoolResult,
   ModifyIpamPoolError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyIpamPoolRequest,
   output: ModifyIpamPoolResult,
@@ -94968,7 +94967,7 @@ export const modifyIpamPoolAllocation: API.OperationMethod<
   ModifyIpamPoolAllocationRequest,
   ModifyIpamPoolAllocationResult,
   ModifyIpamPoolAllocationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyIpamPoolAllocationRequest,
   output: ModifyIpamPoolAllocationResult,
@@ -94991,7 +94990,7 @@ export const modifyIpamPrefixListResolver: API.OperationMethod<
   ModifyIpamPrefixListResolverRequest,
   ModifyIpamPrefixListResolverResult,
   ModifyIpamPrefixListResolverError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyIpamPrefixListResolverRequest,
   output: ModifyIpamPrefixListResolverResult,
@@ -95018,7 +95017,7 @@ export const modifyIpamPrefixListResolverTarget: API.OperationMethod<
   ModifyIpamPrefixListResolverTargetRequest,
   ModifyIpamPrefixListResolverTargetResult,
   ModifyIpamPrefixListResolverTargetError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyIpamPrefixListResolverTargetRequest,
   output: ModifyIpamPrefixListResolverTargetResult,
@@ -95047,7 +95046,7 @@ export const modifyIpamResourceCidr: API.OperationMethod<
   ModifyIpamResourceCidrRequest,
   ModifyIpamResourceCidrResult,
   ModifyIpamResourceCidrError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyIpamResourceCidrRequest,
   output: ModifyIpamResourceCidrResult,
@@ -95075,7 +95074,7 @@ export const modifyIpamResourceDiscovery: API.OperationMethod<
   ModifyIpamResourceDiscoveryRequest,
   ModifyIpamResourceDiscoveryResult,
   ModifyIpamResourceDiscoveryError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyIpamResourceDiscoveryRequest,
   output: ModifyIpamResourceDiscoveryResult,
@@ -95102,7 +95101,7 @@ export const modifyIpamScope: API.OperationMethod<
   ModifyIpamScopeRequest,
   ModifyIpamScopeResult,
   ModifyIpamScopeError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyIpamScopeRequest,
   output: ModifyIpamScopeResult,
@@ -95130,7 +95129,7 @@ export const modifyLaunchTemplate: API.OperationMethod<
   ModifyLaunchTemplateRequest,
   ModifyLaunchTemplateResult,
   ModifyLaunchTemplateError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyLaunchTemplateRequest,
   output: ModifyLaunchTemplateResult,
@@ -95152,7 +95151,7 @@ export const modifyLocalGatewayRoute: API.OperationMethod<
   ModifyLocalGatewayRouteRequest,
   ModifyLocalGatewayRouteResult,
   ModifyLocalGatewayRouteError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyLocalGatewayRouteRequest,
   output: ModifyLocalGatewayRouteResult,
@@ -95182,7 +95181,7 @@ export const modifyManagedPrefixList: API.OperationMethod<
   ModifyManagedPrefixListRequest,
   ModifyManagedPrefixListResult,
   ModifyManagedPrefixListError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyManagedPrefixListRequest,
   output: ModifyManagedPrefixListResult,
@@ -95209,7 +95208,7 @@ export const modifyManagedResourceVisibility: API.OperationMethod<
   ModifyManagedResourceVisibilityRequest,
   ModifyManagedResourceVisibilityResult,
   ModifyManagedResourceVisibilityError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyManagedResourceVisibilityRequest,
   output: ModifyManagedResourceVisibilityResult,
@@ -95235,7 +95234,7 @@ export const modifyNetworkInterfaceAttribute: API.OperationMethod<
   ModifyNetworkInterfaceAttributeRequest,
   ModifyNetworkInterfaceAttributeResponse,
   ModifyNetworkInterfaceAttributeError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyNetworkInterfaceAttributeRequest,
   output: ModifyNetworkInterfaceAttributeResponse,
@@ -95263,7 +95262,7 @@ export const modifyPrivateDnsNameOptions: API.OperationMethod<
   ModifyPrivateDnsNameOptionsRequest,
   ModifyPrivateDnsNameOptionsResult,
   ModifyPrivateDnsNameOptionsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyPrivateDnsNameOptionsRequest,
   output: ModifyPrivateDnsNameOptionsResult,
@@ -95285,7 +95284,7 @@ export const modifyPublicIpDnsNameOptions: API.OperationMethod<
   ModifyPublicIpDnsNameOptionsRequest,
   ModifyPublicIpDnsNameOptionsResult,
   ModifyPublicIpDnsNameOptionsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyPublicIpDnsNameOptionsRequest,
   output: ModifyPublicIpDnsNameOptionsResult,
@@ -95312,7 +95311,7 @@ export const modifyReservedInstances: API.OperationMethod<
   ModifyReservedInstancesRequest,
   ModifyReservedInstancesResult,
   ModifyReservedInstancesError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyReservedInstancesRequest,
   output: ModifyReservedInstancesResult,
@@ -95349,7 +95348,7 @@ export const modifyRouteServer: API.OperationMethod<
   ModifyRouteServerRequest,
   ModifyRouteServerResult,
   ModifyRouteServerError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyRouteServerRequest,
   output: ModifyRouteServerResult,
@@ -95375,7 +95374,7 @@ export const modifySecurityGroupRules: API.OperationMethod<
   ModifySecurityGroupRulesRequest,
   ModifySecurityGroupRulesResult,
   ModifySecurityGroupRulesError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifySecurityGroupRulesRequest,
   output: ModifySecurityGroupRulesResult,
@@ -95407,7 +95406,7 @@ export const modifySnapshotAttribute: API.OperationMethod<
   ModifySnapshotAttributeRequest,
   ModifySnapshotAttributeResponse,
   ModifySnapshotAttributeError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifySnapshotAttributeRequest,
   output: ModifySnapshotAttributeResponse,
@@ -95438,7 +95437,7 @@ export const modifySnapshotTier: API.OperationMethod<
   ModifySnapshotTierRequest,
   ModifySnapshotTierResult,
   ModifySnapshotTierError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifySnapshotTierRequest,
   output: ModifySnapshotTierResult,
@@ -95489,7 +95488,7 @@ export const modifySpotFleetRequest: API.OperationMethod<
   ModifySpotFleetRequestRequest,
   ModifySpotFleetRequestResponse,
   ModifySpotFleetRequestError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifySpotFleetRequestRequest,
   output: ModifySpotFleetRequestResponse,
@@ -95529,7 +95528,7 @@ export const modifySubnetAttribute: API.OperationMethod<
   ModifySubnetAttributeRequest,
   ModifySubnetAttributeResponse,
   ModifySubnetAttributeError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifySubnetAttributeRequest,
   output: ModifySubnetAttributeResponse,
@@ -95559,7 +95558,7 @@ export const modifyTrafficMirrorFilterNetworkServices: API.OperationMethod<
   ModifyTrafficMirrorFilterNetworkServicesRequest,
   ModifyTrafficMirrorFilterNetworkServicesResult,
   ModifyTrafficMirrorFilterNetworkServicesError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyTrafficMirrorFilterNetworkServicesRequest,
   output: ModifyTrafficMirrorFilterNetworkServicesResult,
@@ -95585,7 +95584,7 @@ export const modifyTrafficMirrorFilterRule: API.OperationMethod<
   ModifyTrafficMirrorFilterRuleRequest,
   ModifyTrafficMirrorFilterRuleResult,
   ModifyTrafficMirrorFilterRuleError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyTrafficMirrorFilterRuleRequest,
   output: ModifyTrafficMirrorFilterRuleResult,
@@ -95612,7 +95611,7 @@ export const modifyTrafficMirrorSession: API.OperationMethod<
   ModifyTrafficMirrorSessionRequest,
   ModifyTrafficMirrorSessionResult,
   ModifyTrafficMirrorSessionError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyTrafficMirrorSessionRequest,
   output: ModifyTrafficMirrorSessionResult,
@@ -95634,7 +95633,7 @@ export const modifyTransitGateway: API.OperationMethod<
   ModifyTransitGatewayRequest,
   ModifyTransitGatewayResult,
   ModifyTransitGatewayError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyTransitGatewayRequest,
   output: ModifyTransitGatewayResult,
@@ -95657,7 +95656,7 @@ export const modifyTransitGatewayMeteringPolicy: API.OperationMethod<
   ModifyTransitGatewayMeteringPolicyRequest,
   ModifyTransitGatewayMeteringPolicyResult,
   ModifyTransitGatewayMeteringPolicyError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyTransitGatewayMeteringPolicyRequest,
   output: ModifyTransitGatewayMeteringPolicyResult,
@@ -95684,7 +95683,7 @@ export const modifyTransitGatewayPrefixListReference: API.OperationMethod<
   ModifyTransitGatewayPrefixListReferenceRequest,
   ModifyTransitGatewayPrefixListReferenceResult,
   ModifyTransitGatewayPrefixListReferenceError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyTransitGatewayPrefixListReferenceRequest,
   output: ModifyTransitGatewayPrefixListReferenceResult,
@@ -95706,7 +95705,7 @@ export const modifyTransitGatewayVpcAttachment: API.OperationMethod<
   ModifyTransitGatewayVpcAttachmentRequest,
   ModifyTransitGatewayVpcAttachmentResult,
   ModifyTransitGatewayVpcAttachmentError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyTransitGatewayVpcAttachmentRequest,
   output: ModifyTransitGatewayVpcAttachmentResult,
@@ -95733,7 +95732,7 @@ export const modifyVerifiedAccessEndpoint: API.OperationMethod<
   ModifyVerifiedAccessEndpointRequest,
   ModifyVerifiedAccessEndpointResult,
   ModifyVerifiedAccessEndpointError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyVerifiedAccessEndpointRequest,
   output: ModifyVerifiedAccessEndpointResult,
@@ -95761,7 +95760,7 @@ export const modifyVerifiedAccessEndpointPolicy: API.OperationMethod<
   ModifyVerifiedAccessEndpointPolicyRequest,
   ModifyVerifiedAccessEndpointPolicyResult,
   ModifyVerifiedAccessEndpointPolicyError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyVerifiedAccessEndpointPolicyRequest,
   output: ModifyVerifiedAccessEndpointPolicyResult,
@@ -95788,7 +95787,7 @@ export const modifyVerifiedAccessGroup: API.OperationMethod<
   ModifyVerifiedAccessGroupRequest,
   ModifyVerifiedAccessGroupResult,
   ModifyVerifiedAccessGroupError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyVerifiedAccessGroupRequest,
   output: ModifyVerifiedAccessGroupResult,
@@ -95814,7 +95813,7 @@ export const modifyVerifiedAccessGroupPolicy: API.OperationMethod<
   ModifyVerifiedAccessGroupPolicyRequest,
   ModifyVerifiedAccessGroupPolicyResult,
   ModifyVerifiedAccessGroupPolicyError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyVerifiedAccessGroupPolicyRequest,
   output: ModifyVerifiedAccessGroupPolicyResult,
@@ -95840,7 +95839,7 @@ export const modifyVerifiedAccessInstance: API.OperationMethod<
   ModifyVerifiedAccessInstanceRequest,
   ModifyVerifiedAccessInstanceResult,
   ModifyVerifiedAccessInstanceError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyVerifiedAccessInstanceRequest,
   output: ModifyVerifiedAccessInstanceResult,
@@ -95866,7 +95865,7 @@ export const modifyVerifiedAccessInstanceLoggingConfiguration: API.OperationMeth
   ModifyVerifiedAccessInstanceLoggingConfigurationRequest,
   ModifyVerifiedAccessInstanceLoggingConfigurationResult,
   ModifyVerifiedAccessInstanceLoggingConfigurationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyVerifiedAccessInstanceLoggingConfigurationRequest,
   output: ModifyVerifiedAccessInstanceLoggingConfigurationResult,
@@ -95888,7 +95887,7 @@ export const modifyVerifiedAccessTrustProvider: API.OperationMethod<
   ModifyVerifiedAccessTrustProviderRequest,
   ModifyVerifiedAccessTrustProviderResult,
   ModifyVerifiedAccessTrustProviderError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyVerifiedAccessTrustProviderRequest,
   output: ModifyVerifiedAccessTrustProviderResult,
@@ -95935,7 +95934,7 @@ export const modifyVolume: API.OperationMethod<
   ModifyVolumeRequest,
   ModifyVolumeResult,
   ModifyVolumeError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyVolumeRequest,
   output: ModifyVolumeResult,
@@ -95972,7 +95971,7 @@ export const modifyVolumeAttribute: API.OperationMethod<
   ModifyVolumeAttributeRequest,
   ModifyVolumeAttributeResponse,
   ModifyVolumeAttributeError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyVolumeAttributeRequest,
   output: ModifyVolumeAttributeResponse,
@@ -96000,7 +95999,7 @@ export const modifyVpcAttribute: API.OperationMethod<
   ModifyVpcAttributeRequest,
   ModifyVpcAttributeResponse,
   ModifyVpcAttributeError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyVpcAttributeRequest,
   output: ModifyVpcAttributeResponse,
@@ -96023,7 +96022,7 @@ export const modifyVpcBlockPublicAccessExclusion: API.OperationMethod<
   ModifyVpcBlockPublicAccessExclusionRequest,
   ModifyVpcBlockPublicAccessExclusionResult,
   ModifyVpcBlockPublicAccessExclusionError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyVpcBlockPublicAccessExclusionRequest,
   output: ModifyVpcBlockPublicAccessExclusionResult,
@@ -96041,7 +96040,7 @@ export const modifyVpcBlockPublicAccessOptions: API.OperationMethod<
   ModifyVpcBlockPublicAccessOptionsRequest,
   ModifyVpcBlockPublicAccessOptionsResult,
   ModifyVpcBlockPublicAccessOptionsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyVpcBlockPublicAccessOptionsRequest,
   output: ModifyVpcBlockPublicAccessOptionsResult,
@@ -96066,7 +96065,7 @@ export const modifyVpcEncryptionControl: API.OperationMethod<
   ModifyVpcEncryptionControlRequest,
   ModifyVpcEncryptionControlResult,
   ModifyVpcEncryptionControlError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyVpcEncryptionControlRequest,
   output: ModifyVpcEncryptionControlResult,
@@ -96096,7 +96095,7 @@ export const modifyVpcEndpoint: API.OperationMethod<
   ModifyVpcEndpointRequest,
   ModifyVpcEndpointResult,
   ModifyVpcEndpointError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyVpcEndpointRequest,
   output: ModifyVpcEndpointResult,
@@ -96124,7 +96123,7 @@ export const modifyVpcEndpointConnectionNotification: API.OperationMethod<
   ModifyVpcEndpointConnectionNotificationRequest,
   ModifyVpcEndpointConnectionNotificationResult,
   ModifyVpcEndpointConnectionNotificationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyVpcEndpointConnectionNotificationRequest,
   output: ModifyVpcEndpointConnectionNotificationResult,
@@ -96155,7 +96154,7 @@ export const modifyVpcEndpointServiceConfiguration: API.OperationMethod<
   ModifyVpcEndpointServiceConfigurationRequest,
   ModifyVpcEndpointServiceConfigurationResult,
   ModifyVpcEndpointServiceConfigurationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyVpcEndpointServiceConfigurationRequest,
   output: ModifyVpcEndpointServiceConfigurationResult,
@@ -96182,7 +96181,7 @@ export const modifyVpcEndpointServicePayerResponsibility: API.OperationMethod<
   ModifyVpcEndpointServicePayerResponsibilityRequest,
   ModifyVpcEndpointServicePayerResponsibilityResult,
   ModifyVpcEndpointServicePayerResponsibilityError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyVpcEndpointServicePayerResponsibilityRequest,
   output: ModifyVpcEndpointServicePayerResponsibilityResult,
@@ -96211,7 +96210,7 @@ export const modifyVpcEndpointServicePermissions: API.OperationMethod<
   ModifyVpcEndpointServicePermissionsRequest,
   ModifyVpcEndpointServicePermissionsResult,
   ModifyVpcEndpointServicePermissionsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyVpcEndpointServicePermissionsRequest,
   output: ModifyVpcEndpointServicePermissionsResult,
@@ -96250,7 +96249,7 @@ export const modifyVpcPeeringConnectionOptions: API.OperationMethod<
   ModifyVpcPeeringConnectionOptionsRequest,
   ModifyVpcPeeringConnectionOptionsResult,
   ModifyVpcPeeringConnectionOptionsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyVpcPeeringConnectionOptionsRequest,
   output: ModifyVpcPeeringConnectionOptionsResult,
@@ -96287,7 +96286,7 @@ export const modifyVpcTenancy: API.OperationMethod<
   ModifyVpcTenancyRequest,
   ModifyVpcTenancyResult,
   ModifyVpcTenancyError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyVpcTenancyRequest,
   output: ModifyVpcTenancyResult,
@@ -96351,7 +96350,7 @@ export const modifyVpnConnection: API.OperationMethod<
   ModifyVpnConnectionRequest,
   ModifyVpnConnectionResult,
   ModifyVpnConnectionError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyVpnConnectionRequest,
   output: ModifyVpnConnectionResult,
@@ -96378,7 +96377,7 @@ export const modifyVpnConnectionOptions: API.OperationMethod<
   ModifyVpnConnectionOptionsRequest,
   ModifyVpnConnectionOptionsResult,
   ModifyVpnConnectionOptionsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyVpnConnectionOptionsRequest,
   output: ModifyVpnConnectionOptionsResult,
@@ -96404,7 +96403,7 @@ export const modifyVpnTunnelCertificate: API.OperationMethod<
   ModifyVpnTunnelCertificateRequest,
   ModifyVpnTunnelCertificateResult,
   ModifyVpnTunnelCertificateError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyVpnTunnelCertificateRequest,
   output: ModifyVpnTunnelCertificateResult,
@@ -96429,7 +96428,7 @@ export const modifyVpnTunnelOptions: API.OperationMethod<
   ModifyVpnTunnelOptionsRequest,
   ModifyVpnTunnelOptionsResult,
   ModifyVpnTunnelOptionsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyVpnTunnelOptionsRequest,
   output: ModifyVpnTunnelOptionsResult,
@@ -96456,7 +96455,7 @@ export const monitorInstances: API.OperationMethod<
   MonitorInstancesRequest,
   MonitorInstancesResult,
   MonitorInstancesError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: MonitorInstancesRequest,
   output: MonitorInstancesResult,
@@ -96489,7 +96488,7 @@ export const moveAddressToVpc: API.OperationMethod<
   MoveAddressToVpcRequest,
   MoveAddressToVpcResult,
   MoveAddressToVpcError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: MoveAddressToVpcRequest,
   output: MoveAddressToVpcResult,
@@ -96513,7 +96512,7 @@ export const moveByoipCidrToIpam: API.OperationMethod<
   MoveByoipCidrToIpamRequest,
   MoveByoipCidrToIpamResult,
   MoveByoipCidrToIpamError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: MoveByoipCidrToIpamRequest,
   output: MoveByoipCidrToIpamResult,
@@ -96554,7 +96553,7 @@ export const moveCapacityReservationInstances: API.OperationMethod<
   MoveCapacityReservationInstancesRequest,
   MoveCapacityReservationInstancesResult,
   MoveCapacityReservationInstancesError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: MoveCapacityReservationInstancesRequest,
   output: MoveCapacityReservationInstancesResult,
@@ -96591,7 +96590,7 @@ export const provisionByoipCidr: API.OperationMethod<
   ProvisionByoipCidrRequest,
   ProvisionByoipCidrResult,
   ProvisionByoipCidrError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ProvisionByoipCidrRequest,
   output: ProvisionByoipCidrResult,
@@ -96613,7 +96612,7 @@ export const provisionIpamByoasn: API.OperationMethod<
   ProvisionIpamByoasnRequest,
   ProvisionIpamByoasnResult,
   ProvisionIpamByoasnError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ProvisionIpamByoasnRequest,
   output: ProvisionIpamByoasnResult,
@@ -96638,7 +96637,7 @@ export const provisionIpamPoolCidr: API.OperationMethod<
   ProvisionIpamPoolCidrRequest,
   ProvisionIpamPoolCidrResult,
   ProvisionIpamPoolCidrError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ProvisionIpamPoolCidrRequest,
   output: ProvisionIpamPoolCidrResult,
@@ -96668,7 +96667,7 @@ export const provisionPublicIpv4PoolCidr: API.OperationMethod<
   ProvisionPublicIpv4PoolCidrRequest,
   ProvisionPublicIpv4PoolCidrResult,
   ProvisionPublicIpv4PoolCidrError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ProvisionPublicIpv4PoolCidrRequest,
   output: ProvisionPublicIpv4PoolCidrResult,
@@ -96697,7 +96696,7 @@ export const purchaseCapacityBlock: API.OperationMethod<
   PurchaseCapacityBlockRequest,
   PurchaseCapacityBlockResult,
   PurchaseCapacityBlockError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PurchaseCapacityBlockRequest,
   output: PurchaseCapacityBlockResult,
@@ -96720,7 +96719,7 @@ export const purchaseCapacityBlockExtension: API.OperationMethod<
   PurchaseCapacityBlockExtensionRequest,
   PurchaseCapacityBlockExtensionResult,
   PurchaseCapacityBlockExtensionError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PurchaseCapacityBlockExtensionRequest,
   output: PurchaseCapacityBlockExtensionResult,
@@ -96745,7 +96744,7 @@ export const purchaseHostReservation: API.OperationMethod<
   PurchaseHostReservationRequest,
   PurchaseHostReservationResult,
   PurchaseHostReservationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PurchaseHostReservationRequest,
   output: PurchaseHostReservationResult,
@@ -96779,7 +96778,7 @@ export const purchaseReservedInstancesOffering: API.OperationMethod<
   PurchaseReservedInstancesOfferingRequest,
   PurchaseReservedInstancesOfferingResult,
   PurchaseReservedInstancesOfferingError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PurchaseReservedInstancesOfferingRequest,
   output: PurchaseReservedInstancesOfferingResult,
@@ -96810,7 +96809,7 @@ export const purchaseScheduledInstances: API.OperationMethod<
   PurchaseScheduledInstancesRequest,
   PurchaseScheduledInstancesResult,
   PurchaseScheduledInstancesError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PurchaseScheduledInstancesRequest,
   output: PurchaseScheduledInstancesResult,
@@ -96847,7 +96846,7 @@ export const rebootInstances: API.OperationMethod<
   RebootInstancesRequest,
   RebootInstancesResponse,
   RebootInstancesError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: RebootInstancesRequest,
   output: RebootInstancesResponse,
@@ -96916,7 +96915,7 @@ export const registerImage: API.OperationMethod<
   RegisterImageRequest,
   RegisterImageResult,
   RegisterImageError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: RegisterImageRequest,
   output: RegisterImageResult,
@@ -96945,7 +96944,7 @@ export const registerInstanceEventNotificationAttributes: API.OperationMethod<
   RegisterInstanceEventNotificationAttributesRequest,
   RegisterInstanceEventNotificationAttributesResult,
   RegisterInstanceEventNotificationAttributesError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: RegisterInstanceEventNotificationAttributesRequest,
   output: RegisterInstanceEventNotificationAttributesResult,
@@ -96974,7 +96973,7 @@ export const registerTransitGatewayMulticastGroupMembers: API.OperationMethod<
   RegisterTransitGatewayMulticastGroupMembersRequest,
   RegisterTransitGatewayMulticastGroupMembersResult,
   RegisterTransitGatewayMulticastGroupMembersError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: RegisterTransitGatewayMulticastGroupMembersRequest,
   output: RegisterTransitGatewayMulticastGroupMembersResult,
@@ -97009,7 +97008,7 @@ export const registerTransitGatewayMulticastGroupSources: API.OperationMethod<
   RegisterTransitGatewayMulticastGroupSourcesRequest,
   RegisterTransitGatewayMulticastGroupSourcesResult,
   RegisterTransitGatewayMulticastGroupSourcesError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: RegisterTransitGatewayMulticastGroupSourcesRequest,
   output: RegisterTransitGatewayMulticastGroupSourcesResult,
@@ -97038,7 +97037,7 @@ export const rejectCapacityReservationBillingOwnership: API.OperationMethod<
   RejectCapacityReservationBillingOwnershipRequest,
   RejectCapacityReservationBillingOwnershipResult,
   RejectCapacityReservationBillingOwnershipError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: RejectCapacityReservationBillingOwnershipRequest,
   output: RejectCapacityReservationBillingOwnershipResult,
@@ -97060,7 +97059,7 @@ export const rejectTransitGatewayClientVpnAttachment: API.OperationMethod<
   RejectTransitGatewayClientVpnAttachmentRequest,
   RejectTransitGatewayClientVpnAttachmentResult,
   RejectTransitGatewayClientVpnAttachmentError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: RejectTransitGatewayClientVpnAttachmentRequest,
   output: RejectTransitGatewayClientVpnAttachmentResult,
@@ -97082,7 +97081,7 @@ export const rejectTransitGatewayMulticastDomainAssociations: API.OperationMetho
   RejectTransitGatewayMulticastDomainAssociationsRequest,
   RejectTransitGatewayMulticastDomainAssociationsResult,
   RejectTransitGatewayMulticastDomainAssociationsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: RejectTransitGatewayMulticastDomainAssociationsRequest,
   output: RejectTransitGatewayMulticastDomainAssociationsResult,
@@ -97105,7 +97104,7 @@ export const rejectTransitGatewayPeeringAttachment: API.OperationMethod<
   RejectTransitGatewayPeeringAttachmentRequest,
   RejectTransitGatewayPeeringAttachmentResult,
   RejectTransitGatewayPeeringAttachmentError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: RejectTransitGatewayPeeringAttachmentRequest,
   output: RejectTransitGatewayPeeringAttachmentResult,
@@ -97137,7 +97136,7 @@ export const rejectTransitGatewayVpcAttachment: API.OperationMethod<
   RejectTransitGatewayVpcAttachmentRequest,
   RejectTransitGatewayVpcAttachmentResult,
   RejectTransitGatewayVpcAttachmentError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: RejectTransitGatewayVpcAttachmentRequest,
   output: RejectTransitGatewayVpcAttachmentResult,
@@ -97165,7 +97164,7 @@ export const rejectVpcEndpointConnections: API.OperationMethod<
   RejectVpcEndpointConnectionsRequest,
   RejectVpcEndpointConnectionsResult,
   RejectVpcEndpointConnectionsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: RejectVpcEndpointConnectionsRequest,
   output: RejectVpcEndpointConnectionsResult,
@@ -97197,7 +97196,7 @@ export const rejectVpcPeeringConnection: API.OperationMethod<
   RejectVpcPeeringConnectionRequest,
   RejectVpcPeeringConnectionResult,
   RejectVpcPeeringConnectionError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: RejectVpcPeeringConnectionRequest,
   output: RejectVpcPeeringConnectionResult,
@@ -97248,7 +97247,7 @@ export const releaseAddress: API.OperationMethod<
   ReleaseAddressRequest,
   ReleaseAddressResponse,
   ReleaseAddressError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ReleaseAddressRequest,
   output: ReleaseAddressResponse,
@@ -97292,7 +97291,7 @@ export const releaseHosts: API.OperationMethod<
   ReleaseHostsRequest,
   ReleaseHostsResult,
   ReleaseHostsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ReleaseHostsRequest,
   output: ReleaseHostsResult,
@@ -97316,7 +97315,7 @@ export const releaseIpamPoolAllocation: API.OperationMethod<
   ReleaseIpamPoolAllocationRequest,
   ReleaseIpamPoolAllocationResult,
   ReleaseIpamPoolAllocationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ReleaseIpamPoolAllocationRequest,
   output: ReleaseIpamPoolAllocationResult,
@@ -97343,7 +97342,7 @@ export const replaceIamInstanceProfileAssociation: API.OperationMethod<
   ReplaceIamInstanceProfileAssociationRequest,
   ReplaceIamInstanceProfileAssociationResult,
   ReplaceIamInstanceProfileAssociationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ReplaceIamInstanceProfileAssociationRequest,
   output: ReplaceIamInstanceProfileAssociationResult,
@@ -97373,7 +97372,7 @@ export const replaceImageCriteriaInAllowedImagesSettings: API.OperationMethod<
   ReplaceImageCriteriaInAllowedImagesSettingsRequest,
   ReplaceImageCriteriaInAllowedImagesSettingsResult,
   ReplaceImageCriteriaInAllowedImagesSettingsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ReplaceImageCriteriaInAllowedImagesSettingsRequest,
   output: ReplaceImageCriteriaInAllowedImagesSettingsResult,
@@ -97401,7 +97400,7 @@ export const replaceNetworkAclAssociation: API.OperationMethod<
   ReplaceNetworkAclAssociationRequest,
   ReplaceNetworkAclAssociationResult,
   ReplaceNetworkAclAssociationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ReplaceNetworkAclAssociationRequest,
   output: ReplaceNetworkAclAssociationResult,
@@ -97431,7 +97430,7 @@ export const replaceNetworkAclEntry: API.OperationMethod<
   ReplaceNetworkAclEntryRequest,
   ReplaceNetworkAclEntryResponse,
   ReplaceNetworkAclEntryError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ReplaceNetworkAclEntryRequest,
   output: ReplaceNetworkAclEntryResponse,
@@ -97466,7 +97465,7 @@ export const replaceRoute: API.OperationMethod<
   ReplaceRouteRequest,
   ReplaceRouteResponse,
   ReplaceRouteError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ReplaceRouteRequest,
   output: ReplaceRouteResponse,
@@ -97499,7 +97498,7 @@ export const replaceRouteTableAssociation: API.OperationMethod<
   ReplaceRouteTableAssociationRequest,
   ReplaceRouteTableAssociationResult,
   ReplaceRouteTableAssociationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ReplaceRouteTableAssociationRequest,
   output: ReplaceRouteTableAssociationResult,
@@ -97526,7 +97525,7 @@ export const replaceTransitGatewayRoute: API.OperationMethod<
   ReplaceTransitGatewayRouteRequest,
   ReplaceTransitGatewayRouteResult,
   ReplaceTransitGatewayRouteError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ReplaceTransitGatewayRouteRequest,
   output: ReplaceTransitGatewayRouteResult,
@@ -97552,7 +97551,7 @@ export const replaceVpnTunnel: API.OperationMethod<
   ReplaceVpnTunnelRequest,
   ReplaceVpnTunnelResult,
   ReplaceVpnTunnelError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ReplaceVpnTunnelRequest,
   output: ReplaceVpnTunnelResult,
@@ -97579,7 +97578,7 @@ export const reportInstanceStatus: API.OperationMethod<
   ReportInstanceStatusRequest,
   ReportInstanceStatusResponse,
   ReportInstanceStatusError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ReportInstanceStatusRequest,
   output: ReportInstanceStatusResponse,
@@ -97632,7 +97631,7 @@ export const requestSpotFleet: API.OperationMethod<
   RequestSpotFleetRequest,
   RequestSpotFleetResponse,
   RequestSpotFleetError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: RequestSpotFleetRequest,
   output: RequestSpotFleetResponse,
@@ -97663,7 +97662,7 @@ export const requestSpotInstances: API.OperationMethod<
   RequestSpotInstancesRequest,
   RequestSpotInstancesResult,
   RequestSpotInstancesError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: RequestSpotInstancesRequest,
   output: RequestSpotInstancesResult,
@@ -97685,7 +97684,7 @@ export const resetAddressAttribute: API.OperationMethod<
   ResetAddressAttributeRequest,
   ResetAddressAttributeResult,
   ResetAddressAttributeError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ResetAddressAttributeRequest,
   output: ResetAddressAttributeResult,
@@ -97709,7 +97708,7 @@ export const resetEbsDefaultKmsKeyId: API.OperationMethod<
   ResetEbsDefaultKmsKeyIdRequest,
   ResetEbsDefaultKmsKeyIdResult,
   ResetEbsDefaultKmsKeyIdError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ResetEbsDefaultKmsKeyIdRequest,
   output: ResetEbsDefaultKmsKeyIdResult,
@@ -97732,7 +97731,7 @@ export const resetFpgaImageAttribute: API.OperationMethod<
   ResetFpgaImageAttributeRequest,
   ResetFpgaImageAttributeResult,
   ResetFpgaImageAttributeError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ResetFpgaImageAttributeRequest,
   output: ResetFpgaImageAttributeResult,
@@ -97760,7 +97759,7 @@ export const resetImageAttribute: API.OperationMethod<
   ResetImageAttributeRequest,
   ResetImageAttributeResponse,
   ResetImageAttributeError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ResetImageAttributeRequest,
   output: ResetImageAttributeResponse,
@@ -97797,7 +97796,7 @@ export const resetInstanceAttribute: API.OperationMethod<
   ResetInstanceAttributeRequest,
   ResetInstanceAttributeResponse,
   ResetInstanceAttributeError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ResetInstanceAttributeRequest,
   output: ResetInstanceAttributeResponse,
@@ -97820,7 +97819,7 @@ export const resetNetworkInterfaceAttribute: API.OperationMethod<
   ResetNetworkInterfaceAttributeRequest,
   ResetNetworkInterfaceAttributeResponse,
   ResetNetworkInterfaceAttributeError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ResetNetworkInterfaceAttributeRequest,
   output: ResetNetworkInterfaceAttributeResponse,
@@ -97851,7 +97850,7 @@ export const resetSnapshotAttribute: API.OperationMethod<
   ResetSnapshotAttributeRequest,
   ResetSnapshotAttributeResponse,
   ResetSnapshotAttributeError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ResetSnapshotAttributeRequest,
   output: ResetSnapshotAttributeResponse,
@@ -97881,7 +97880,7 @@ export const restoreAddressToClassic: API.OperationMethod<
   RestoreAddressToClassicRequest,
   RestoreAddressToClassicResult,
   RestoreAddressToClassicError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: RestoreAddressToClassicRequest,
   output: RestoreAddressToClassicResult,
@@ -97905,7 +97904,7 @@ export const restoreImageFromRecycleBin: API.OperationMethod<
   RestoreImageFromRecycleBinRequest,
   RestoreImageFromRecycleBinResult,
   RestoreImageFromRecycleBinError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: RestoreImageFromRecycleBinRequest,
   output: RestoreImageFromRecycleBinResult,
@@ -97927,7 +97926,7 @@ export const restoreManagedPrefixListVersion: API.OperationMethod<
   RestoreManagedPrefixListVersionRequest,
   RestoreManagedPrefixListVersionResult,
   RestoreManagedPrefixListVersionError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: RestoreManagedPrefixListVersionRequest,
   output: RestoreManagedPrefixListVersionResult,
@@ -97950,7 +97949,7 @@ export const restoreSnapshotFromRecycleBin: API.OperationMethod<
   RestoreSnapshotFromRecycleBinRequest,
   RestoreSnapshotFromRecycleBinResult,
   RestoreSnapshotFromRecycleBinError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: RestoreSnapshotFromRecycleBinRequest,
   output: RestoreSnapshotFromRecycleBinResult,
@@ -97981,7 +97980,7 @@ export const restoreSnapshotTier: API.OperationMethod<
   RestoreSnapshotTierRequest,
   RestoreSnapshotTierResult,
   RestoreSnapshotTierError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: RestoreSnapshotTierRequest,
   output: RestoreSnapshotTierResult,
@@ -98008,7 +98007,7 @@ export const restoreVolumeFromRecycleBin: API.OperationMethod<
   RestoreVolumeFromRecycleBinRequest,
   RestoreVolumeFromRecycleBinResult,
   RestoreVolumeFromRecycleBinError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: RestoreVolumeFromRecycleBinRequest,
   output: RestoreVolumeFromRecycleBinResult,
@@ -98034,7 +98033,7 @@ export const revokeClientVpnIngress: API.OperationMethod<
   RevokeClientVpnIngressRequest,
   RevokeClientVpnIngressResult,
   RevokeClientVpnIngressError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: RevokeClientVpnIngressRequest,
   output: RevokeClientVpnIngressResult,
@@ -98079,7 +98078,7 @@ export const revokeSecurityGroupEgress: API.OperationMethod<
   RevokeSecurityGroupEgressRequest,
   RevokeSecurityGroupEgressResult,
   RevokeSecurityGroupEgressError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: RevokeSecurityGroupEgressRequest,
   output: RevokeSecurityGroupEgressResult,
@@ -98137,7 +98136,7 @@ export const revokeSecurityGroupIngress: API.OperationMethod<
   RevokeSecurityGroupIngressRequest,
   RevokeSecurityGroupIngressResult,
   RevokeSecurityGroupIngressError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: RevokeSecurityGroupIngressRequest,
   output: RevokeSecurityGroupIngressResult,
@@ -98220,7 +98219,7 @@ export const runInstances: API.OperationMethod<
   RunInstancesRequest,
   Reservation,
   RunInstancesError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: RunInstancesRequest,
   output: Reservation,
@@ -98257,7 +98256,7 @@ export const runScheduledInstances: API.OperationMethod<
   RunScheduledInstancesRequest,
   RunScheduledInstancesResult,
   RunScheduledInstancesError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: RunScheduledInstancesRequest,
   output: RunScheduledInstancesResult,
@@ -98284,7 +98283,7 @@ export const searchLocalGatewayRoutes: API.PaginatedOperationMethod<
   SearchLocalGatewayRoutesRequest,
   SearchLocalGatewayRoutesResult,
   SearchLocalGatewayRoutesError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   LocalGatewayRoute
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchLocalGatewayRoutesRequest,
@@ -98319,7 +98318,7 @@ export const searchTransitGatewayMulticastGroups: API.PaginatedOperationMethod<
   SearchTransitGatewayMulticastGroupsRequest,
   SearchTransitGatewayMulticastGroupsResult,
   SearchTransitGatewayMulticastGroupsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   TransitGatewayMulticastGroup
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchTransitGatewayMulticastGroupsRequest,
@@ -98354,7 +98353,7 @@ export const searchTransitGatewayRoutes: API.PaginatedOperationMethod<
   SearchTransitGatewayRoutesRequest,
   SearchTransitGatewayRoutesResult,
   SearchTransitGatewayRoutesError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   TransitGatewayRoute
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchTransitGatewayRoutesRequest,
@@ -98404,7 +98403,7 @@ export const sendDiagnosticInterrupt: API.OperationMethod<
   SendDiagnosticInterruptRequest,
   SendDiagnosticInterruptResponse,
   SendDiagnosticInterruptError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: SendDiagnosticInterruptRequest,
   output: SendDiagnosticInterruptResponse,
@@ -98468,7 +98467,7 @@ export const startDeclarativePoliciesReport: API.OperationMethod<
   StartDeclarativePoliciesReportRequest,
   StartDeclarativePoliciesReportResult,
   StartDeclarativePoliciesReportError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartDeclarativePoliciesReportRequest,
   output: StartDeclarativePoliciesReportResult,
@@ -98519,7 +98518,7 @@ export const startInstances: API.OperationMethod<
   StartInstancesRequest,
   StartInstancesResult,
   StartInstancesError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartInstancesRequest,
   output: StartInstancesResult,
@@ -98548,7 +98547,7 @@ export const startNetworkInsightsAccessScopeAnalysis: API.OperationMethod<
   StartNetworkInsightsAccessScopeAnalysisRequest,
   StartNetworkInsightsAccessScopeAnalysisResult,
   StartNetworkInsightsAccessScopeAnalysisError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartNetworkInsightsAccessScopeAnalysisRequest,
   output: StartNetworkInsightsAccessScopeAnalysisResult,
@@ -98577,7 +98576,7 @@ export const startNetworkInsightsAnalysis: API.OperationMethod<
   StartNetworkInsightsAnalysisRequest,
   StartNetworkInsightsAnalysisResult,
   StartNetworkInsightsAnalysisError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartNetworkInsightsAnalysisRequest,
   output: StartNetworkInsightsAnalysisResult,
@@ -98610,7 +98609,7 @@ export const startVpcEndpointServicePrivateDnsVerification: API.OperationMethod<
   StartVpcEndpointServicePrivateDnsVerificationRequest,
   StartVpcEndpointServicePrivateDnsVerificationResult,
   StartVpcEndpointServicePrivateDnsVerificationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartVpcEndpointServicePrivateDnsVerificationRequest,
   output: StartVpcEndpointServicePrivateDnsVerificationResult,
@@ -98675,7 +98674,7 @@ export const stopInstances: API.OperationMethod<
   StopInstancesRequest,
   StopInstancesResult,
   StopInstancesError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StopInstancesRequest,
   output: StopInstancesResult,
@@ -98703,7 +98702,7 @@ export const terminateClientVpnConnections: API.OperationMethod<
   TerminateClientVpnConnectionsRequest,
   TerminateClientVpnConnectionsResult,
   TerminateClientVpnConnectionsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: TerminateClientVpnConnectionsRequest,
   output: TerminateClientVpnConnectionsResult,
@@ -98799,7 +98798,7 @@ export const terminateInstances: API.OperationMethod<
   TerminateInstancesRequest,
   TerminateInstancesResult,
   TerminateInstancesError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: TerminateInstancesRequest,
   output: TerminateInstancesResult,
@@ -98829,7 +98828,7 @@ export const unassignIpv6Addresses: API.OperationMethod<
   UnassignIpv6AddressesRequest,
   UnassignIpv6AddressesResult,
   UnassignIpv6AddressesError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UnassignIpv6AddressesRequest,
   output: UnassignIpv6AddressesResult,
@@ -98859,7 +98858,7 @@ export const unassignPrivateIpAddresses: API.OperationMethod<
   UnassignPrivateIpAddressesRequest,
   UnassignPrivateIpAddressesResponse,
   UnassignPrivateIpAddressesError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UnassignPrivateIpAddressesRequest,
   output: UnassignPrivateIpAddressesResponse,
@@ -98893,7 +98892,7 @@ export const unassignPrivateNatGatewayAddress: API.OperationMethod<
   UnassignPrivateNatGatewayAddressRequest,
   UnassignPrivateNatGatewayAddressResult,
   UnassignPrivateNatGatewayAddressError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UnassignPrivateNatGatewayAddressRequest,
   output: UnassignPrivateNatGatewayAddressResult,
@@ -98917,7 +98916,7 @@ export const unlockSnapshot: API.OperationMethod<
   UnlockSnapshotRequest,
   UnlockSnapshotResult,
   UnlockSnapshotError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UnlockSnapshotRequest,
   output: UnlockSnapshotResult,
@@ -98946,7 +98945,7 @@ export const unmonitorInstances: API.OperationMethod<
   UnmonitorInstancesRequest,
   UnmonitorInstancesResult,
   UnmonitorInstancesError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UnmonitorInstancesRequest,
   output: UnmonitorInstancesResult,
@@ -98969,7 +98968,7 @@ export const updateCapacityManagerMonitoredTagKeys: API.OperationMethod<
   UpdateCapacityManagerMonitoredTagKeysRequest,
   UpdateCapacityManagerMonitoredTagKeysResult,
   UpdateCapacityManagerMonitoredTagKeysError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateCapacityManagerMonitoredTagKeysRequest,
   output: UpdateCapacityManagerMonitoredTagKeysResult,
@@ -98992,7 +98991,7 @@ export const updateCapacityManagerOrganizationsAccess: API.OperationMethod<
   UpdateCapacityManagerOrganizationsAccessRequest,
   UpdateCapacityManagerOrganizationsAccessResult,
   UpdateCapacityManagerOrganizationsAccessError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateCapacityManagerOrganizationsAccessRequest,
   output: UpdateCapacityManagerOrganizationsAccessResult,
@@ -99014,7 +99013,7 @@ export const updateInterruptibleCapacityReservationAllocation: API.OperationMeth
   UpdateInterruptibleCapacityReservationAllocationRequest,
   UpdateInterruptibleCapacityReservationAllocationResult,
   UpdateInterruptibleCapacityReservationAllocationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateInterruptibleCapacityReservationAllocationRequest,
   output: UpdateInterruptibleCapacityReservationAllocationResult,
@@ -99043,7 +99042,7 @@ export const updateSecurityGroupRuleDescriptionsEgress: API.OperationMethod<
   UpdateSecurityGroupRuleDescriptionsEgressRequest,
   UpdateSecurityGroupRuleDescriptionsEgressResult,
   UpdateSecurityGroupRuleDescriptionsEgressError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateSecurityGroupRuleDescriptionsEgressRequest,
   output: UpdateSecurityGroupRuleDescriptionsEgressResult,
@@ -99068,7 +99067,7 @@ export const updateSecurityGroupRuleDescriptionsIngress: API.OperationMethod<
   UpdateSecurityGroupRuleDescriptionsIngressRequest,
   UpdateSecurityGroupRuleDescriptionsIngressResult,
   UpdateSecurityGroupRuleDescriptionsIngressError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateSecurityGroupRuleDescriptionsIngressRequest,
   output: UpdateSecurityGroupRuleDescriptionsIngressResult,
@@ -99095,7 +99094,7 @@ export const withdrawByoipCidr: API.OperationMethod<
   WithdrawByoipCidrRequest,
   WithdrawByoipCidrResult,
   WithdrawByoipCidrError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: WithdrawByoipCidrRequest,
   output: WithdrawByoipCidrResult,

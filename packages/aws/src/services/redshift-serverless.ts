@@ -8,7 +8,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 import { SensitiveString } from "../sensitive.ts";
 const svc = T.AwsApiService({
   sdkId: "Redshift Serverless",
@@ -2550,7 +2549,7 @@ export const convertRecoveryPointToSnapshot: API.OperationMethod<
   ConvertRecoveryPointToSnapshotRequest,
   ConvertRecoveryPointToSnapshotResponse,
   ConvertRecoveryPointToSnapshotError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ConvertRecoveryPointToSnapshotRequest,
   output: ConvertRecoveryPointToSnapshotResponse,
@@ -2582,7 +2581,7 @@ export const createCustomDomainAssociation: API.OperationMethod<
   CreateCustomDomainAssociationRequest,
   CreateCustomDomainAssociationResponse,
   CreateCustomDomainAssociationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateCustomDomainAssociationRequest,
   output: CreateCustomDomainAssociationResponse,
@@ -2614,7 +2613,7 @@ export const createEndpointAccess: API.OperationMethod<
   CreateEndpointAccessRequest,
   CreateEndpointAccessResponse,
   CreateEndpointAccessError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateEndpointAccessRequest,
   output: CreateEndpointAccessResponse,
@@ -2644,7 +2643,7 @@ export const createNamespace: API.OperationMethod<
   CreateNamespaceRequest,
   CreateNamespaceResponse,
   CreateNamespaceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateNamespaceRequest,
   output: CreateNamespaceResponse,
@@ -2675,7 +2674,7 @@ export const createReservation: API.OperationMethod<
   CreateReservationRequest,
   CreateReservationResponse,
   CreateReservationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateReservationRequest,
   output: CreateReservationResponse,
@@ -2706,7 +2705,7 @@ export const createScheduledAction: API.OperationMethod<
   CreateScheduledActionRequest,
   CreateScheduledActionResponse,
   CreateScheduledActionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateScheduledActionRequest,
   output: CreateScheduledActionResponse,
@@ -2736,7 +2735,7 @@ export const createSnapshot: API.OperationMethod<
   CreateSnapshotRequest,
   CreateSnapshotResponse,
   CreateSnapshotError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateSnapshotRequest,
   output: CreateSnapshotResponse,
@@ -2768,7 +2767,7 @@ export const createSnapshotCopyConfiguration: API.OperationMethod<
   CreateSnapshotCopyConfigurationRequest,
   CreateSnapshotCopyConfigurationResponse,
   CreateSnapshotCopyConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateSnapshotCopyConfigurationRequest,
   output: CreateSnapshotCopyConfigurationResponse,
@@ -2799,7 +2798,7 @@ export const createUsageLimit: API.OperationMethod<
   CreateUsageLimitRequest,
   CreateUsageLimitResponse,
   CreateUsageLimitError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateUsageLimitRequest,
   output: CreateUsageLimitResponse,
@@ -2841,7 +2840,7 @@ export const createWorkgroup: API.OperationMethod<
   CreateWorkgroupRequest,
   CreateWorkgroupResponse,
   CreateWorkgroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateWorkgroupRequest,
   output: CreateWorkgroupResponse,
@@ -2874,7 +2873,7 @@ export const deleteCustomDomainAssociation: API.OperationMethod<
   DeleteCustomDomainAssociationRequest,
   DeleteCustomDomainAssociationResponse,
   DeleteCustomDomainAssociationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteCustomDomainAssociationRequest,
   output: DeleteCustomDomainAssociationResponse,
@@ -2904,7 +2903,7 @@ export const deleteEndpointAccess: API.OperationMethod<
   DeleteEndpointAccessRequest,
   DeleteEndpointAccessResponse,
   DeleteEndpointAccessError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteEndpointAccessRequest,
   output: DeleteEndpointAccessResponse,
@@ -2932,7 +2931,7 @@ export const deleteNamespace: API.OperationMethod<
   DeleteNamespaceRequest,
   DeleteNamespaceResponse,
   DeleteNamespaceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteNamespaceRequest,
   output: DeleteNamespaceResponse,
@@ -2959,7 +2958,7 @@ export const deleteResourcePolicy: API.OperationMethod<
   DeleteResourcePolicyRequest,
   DeleteResourcePolicyResponse,
   DeleteResourcePolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteResourcePolicyRequest,
   output: DeleteResourcePolicyResponse,
@@ -2985,7 +2984,7 @@ export const deleteScheduledAction: API.OperationMethod<
   DeleteScheduledActionRequest,
   DeleteScheduledActionResponse,
   DeleteScheduledActionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteScheduledActionRequest,
   output: DeleteScheduledActionResponse,
@@ -3012,7 +3011,7 @@ export const deleteSnapshot: API.OperationMethod<
   DeleteSnapshotRequest,
   DeleteSnapshotResponse,
   DeleteSnapshotError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteSnapshotRequest,
   output: DeleteSnapshotResponse,
@@ -3041,7 +3040,7 @@ export const deleteSnapshotCopyConfiguration: API.OperationMethod<
   DeleteSnapshotCopyConfigurationRequest,
   DeleteSnapshotCopyConfigurationResponse,
   DeleteSnapshotCopyConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteSnapshotCopyConfigurationRequest,
   output: DeleteSnapshotCopyConfigurationResponse,
@@ -3070,7 +3069,7 @@ export const deleteUsageLimit: API.OperationMethod<
   DeleteUsageLimitRequest,
   DeleteUsageLimitResponse,
   DeleteUsageLimitError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteUsageLimitRequest,
   output: DeleteUsageLimitResponse,
@@ -3098,7 +3097,7 @@ export const deleteWorkgroup: API.OperationMethod<
   DeleteWorkgroupRequest,
   DeleteWorkgroupResponse,
   DeleteWorkgroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteWorkgroupRequest,
   output: DeleteWorkgroupResponse,
@@ -3131,7 +3130,7 @@ export const getCredentials: API.OperationMethod<
   GetCredentialsRequest,
   GetCredentialsResponse,
   GetCredentialsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetCredentialsRequest,
   output: GetCredentialsResponse,
@@ -3160,7 +3159,7 @@ export const getCustomDomainAssociation: API.OperationMethod<
   GetCustomDomainAssociationRequest,
   GetCustomDomainAssociationResponse,
   GetCustomDomainAssociationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetCustomDomainAssociationRequest,
   output: GetCustomDomainAssociationResponse,
@@ -3190,7 +3189,7 @@ export const getEndpointAccess: API.OperationMethod<
   GetEndpointAccessRequest,
   GetEndpointAccessResponse,
   GetEndpointAccessError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetEndpointAccessRequest,
   output: GetEndpointAccessResponse,
@@ -3225,7 +3224,7 @@ export const getIdentityCenterAuthToken: API.OperationMethod<
   GetIdentityCenterAuthTokenRequest,
   GetIdentityCenterAuthTokenResponse,
   GetIdentityCenterAuthTokenError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetIdentityCenterAuthTokenRequest,
   output: GetIdentityCenterAuthTokenResponse,
@@ -3255,7 +3254,7 @@ export const getNamespace: API.OperationMethod<
   GetNamespaceRequest,
   GetNamespaceResponse,
   GetNamespaceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetNamespaceRequest,
   output: GetNamespaceResponse,
@@ -3282,7 +3281,7 @@ export const getRecoveryPoint: API.OperationMethod<
   GetRecoveryPointRequest,
   GetRecoveryPointResponse,
   GetRecoveryPointError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetRecoveryPointRequest,
   output: GetRecoveryPointResponse,
@@ -3310,7 +3309,7 @@ export const getReservation: API.OperationMethod<
   GetReservationRequest,
   GetReservationResponse,
   GetReservationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetReservationRequest,
   output: GetReservationResponse,
@@ -3338,7 +3337,7 @@ export const getReservationOffering: API.OperationMethod<
   GetReservationOfferingRequest,
   GetReservationOfferingResponse,
   GetReservationOfferingError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetReservationOfferingRequest,
   output: GetReservationOfferingResponse,
@@ -3365,7 +3364,7 @@ export const getResourcePolicy: API.OperationMethod<
   GetResourcePolicyRequest,
   GetResourcePolicyResponse,
   GetResourcePolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetResourcePolicyRequest,
   output: GetResourcePolicyResponse,
@@ -3391,7 +3390,7 @@ export const getScheduledAction: API.OperationMethod<
   GetScheduledActionRequest,
   GetScheduledActionResponse,
   GetScheduledActionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetScheduledActionRequest,
   output: GetScheduledActionResponse,
@@ -3417,7 +3416,7 @@ export const getSnapshot: API.OperationMethod<
   GetSnapshotRequest,
   GetSnapshotResponse,
   GetSnapshotError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetSnapshotRequest,
   output: GetSnapshotResponse,
@@ -3442,7 +3441,7 @@ export const getTableRestoreStatus: API.OperationMethod<
   GetTableRestoreStatusRequest,
   GetTableRestoreStatusResponse,
   GetTableRestoreStatusError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetTableRestoreStatusRequest,
   output: GetTableRestoreStatusResponse,
@@ -3468,7 +3467,7 @@ export const getTrack: API.OperationMethod<
   GetTrackRequest,
   GetTrackResponse,
   GetTrackError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetTrackRequest,
   output: GetTrackResponse,
@@ -3499,7 +3498,7 @@ export const getUsageLimit: API.OperationMethod<
   GetUsageLimitRequest,
   GetUsageLimitResponse,
   GetUsageLimitError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetUsageLimitRequest,
   output: GetUsageLimitResponse,
@@ -3526,7 +3525,7 @@ export const getWorkgroup: API.OperationMethod<
   GetWorkgroupRequest,
   GetWorkgroupResponse,
   GetWorkgroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetWorkgroupRequest,
   output: GetWorkgroupResponse,
@@ -3554,7 +3553,7 @@ export const listCustomDomainAssociations: API.PaginatedOperationMethod<
   ListCustomDomainAssociationsRequest,
   ListCustomDomainAssociationsResponse,
   ListCustomDomainAssociationsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   Association
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCustomDomainAssociationsRequest,
@@ -3590,7 +3589,7 @@ export const listEndpointAccess: API.PaginatedOperationMethod<
   ListEndpointAccessRequest,
   ListEndpointAccessResponse,
   ListEndpointAccessError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   EndpointAccess
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEndpointAccessRequest,
@@ -3623,7 +3622,7 @@ export const listManagedWorkgroups: API.PaginatedOperationMethod<
   ListManagedWorkgroupsRequest,
   ListManagedWorkgroupsResponse,
   ListManagedWorkgroupsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ManagedWorkgroupListItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListManagedWorkgroupsRequest,
@@ -3651,7 +3650,7 @@ export const listNamespaces: API.PaginatedOperationMethod<
   ListNamespacesRequest,
   ListNamespacesResponse,
   ListNamespacesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   Namespace
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListNamespacesRequest,
@@ -3679,7 +3678,7 @@ export const listRecoveryPoints: API.PaginatedOperationMethod<
   ListRecoveryPointsRequest,
   ListRecoveryPointsResponse,
   ListRecoveryPointsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   RecoveryPoint
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRecoveryPointsRequest,
@@ -3708,7 +3707,7 @@ export const listReservationOfferings: API.PaginatedOperationMethod<
   ListReservationOfferingsRequest,
   ListReservationOfferingsResponse,
   ListReservationOfferingsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ReservationOffering
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListReservationOfferingsRequest,
@@ -3737,7 +3736,7 @@ export const listReservations: API.PaginatedOperationMethod<
   ListReservationsRequest,
   ListReservationsResponse,
   ListReservationsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   Reservation
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListReservationsRequest,
@@ -3767,7 +3766,7 @@ export const listScheduledActions: API.PaginatedOperationMethod<
   ListScheduledActionsRequest,
   ListScheduledActionsResponse,
   ListScheduledActionsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ScheduledActionAssociation
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListScheduledActionsRequest,
@@ -3803,7 +3802,7 @@ export const listSnapshotCopyConfigurations: API.PaginatedOperationMethod<
   ListSnapshotCopyConfigurationsRequest,
   ListSnapshotCopyConfigurationsResponse,
   ListSnapshotCopyConfigurationsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   SnapshotCopyConfiguration
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSnapshotCopyConfigurationsRequest,
@@ -3838,7 +3837,7 @@ export const listSnapshots: API.PaginatedOperationMethod<
   ListSnapshotsRequest,
   ListSnapshotsResponse,
   ListSnapshotsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   Snapshot
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSnapshotsRequest,
@@ -3871,7 +3870,7 @@ export const listTableRestoreStatus: API.PaginatedOperationMethod<
   ListTableRestoreStatusRequest,
   ListTableRestoreStatusResponse,
   ListTableRestoreStatusError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   TableRestoreStatus
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTableRestoreStatusRequest,
@@ -3905,7 +3904,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -3934,7 +3933,7 @@ export const listTracks: API.PaginatedOperationMethod<
   ListTracksRequest,
   ListTracksResponse,
   ListTracksError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ServerlessTrack
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTracksRequest,
@@ -3971,7 +3970,7 @@ export const listUsageLimits: API.PaginatedOperationMethod<
   ListUsageLimitsRequest,
   ListUsageLimitsResponse,
   ListUsageLimitsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   UsageLimit
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListUsageLimitsRequest,
@@ -4005,7 +4004,7 @@ export const listWorkgroups: API.PaginatedOperationMethod<
   ListWorkgroupsRequest,
   ListWorkgroupsResponse,
   ListWorkgroupsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   Workgroup
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListWorkgroupsRequest,
@@ -4036,7 +4035,7 @@ export const putResourcePolicy: API.OperationMethod<
   PutResourcePolicyRequest,
   PutResourcePolicyResponse,
   PutResourcePolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PutResourcePolicyRequest,
   output: PutResourcePolicyResponse,
@@ -4065,7 +4064,7 @@ export const restoreFromRecoveryPoint: API.OperationMethod<
   RestoreFromRecoveryPointRequest,
   RestoreFromRecoveryPointResponse,
   RestoreFromRecoveryPointError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: RestoreFromRecoveryPointRequest,
   output: RestoreFromRecoveryPointResponse,
@@ -4094,7 +4093,7 @@ export const restoreFromSnapshot: API.OperationMethod<
   RestoreFromSnapshotRequest,
   RestoreFromSnapshotResponse,
   RestoreFromSnapshotError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: RestoreFromSnapshotRequest,
   output: RestoreFromSnapshotResponse,
@@ -4123,7 +4122,7 @@ export const restoreTableFromRecoveryPoint: API.OperationMethod<
   RestoreTableFromRecoveryPointRequest,
   RestoreTableFromRecoveryPointResponse,
   RestoreTableFromRecoveryPointError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: RestoreTableFromRecoveryPointRequest,
   output: RestoreTableFromRecoveryPointResponse,
@@ -4151,7 +4150,7 @@ export const restoreTableFromSnapshot: API.OperationMethod<
   RestoreTableFromSnapshotRequest,
   RestoreTableFromSnapshotResponse,
   RestoreTableFromSnapshotError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: RestoreTableFromSnapshotRequest,
   output: RestoreTableFromSnapshotResponse,
@@ -4180,7 +4179,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -4209,7 +4208,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -4239,7 +4238,7 @@ export const updateCustomDomainAssociation: API.OperationMethod<
   UpdateCustomDomainAssociationRequest,
   UpdateCustomDomainAssociationResponse,
   UpdateCustomDomainAssociationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateCustomDomainAssociationRequest,
   output: UpdateCustomDomainAssociationResponse,
@@ -4270,7 +4269,7 @@ export const updateEndpointAccess: API.OperationMethod<
   UpdateEndpointAccessRequest,
   UpdateEndpointAccessResponse,
   UpdateEndpointAccessError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateEndpointAccessRequest,
   output: UpdateEndpointAccessResponse,
@@ -4300,7 +4299,7 @@ export const updateLakehouseConfiguration: API.OperationMethod<
   UpdateLakehouseConfigurationRequest,
   UpdateLakehouseConfigurationResponse,
   UpdateLakehouseConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateLakehouseConfigurationRequest,
   output: UpdateLakehouseConfigurationResponse,
@@ -4329,7 +4328,7 @@ export const updateNamespace: API.OperationMethod<
   UpdateNamespaceRequest,
   UpdateNamespaceResponse,
   UpdateNamespaceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateNamespaceRequest,
   output: UpdateNamespaceResponse,
@@ -4357,7 +4356,7 @@ export const updateScheduledAction: API.OperationMethod<
   UpdateScheduledActionRequest,
   UpdateScheduledActionResponse,
   UpdateScheduledActionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateScheduledActionRequest,
   output: UpdateScheduledActionResponse,
@@ -4385,7 +4384,7 @@ export const updateSnapshot: API.OperationMethod<
   UpdateSnapshotRequest,
   UpdateSnapshotResponse,
   UpdateSnapshotError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateSnapshotRequest,
   output: UpdateSnapshotResponse,
@@ -4414,7 +4413,7 @@ export const updateSnapshotCopyConfiguration: API.OperationMethod<
   UpdateSnapshotCopyConfigurationRequest,
   UpdateSnapshotCopyConfigurationResponse,
   UpdateSnapshotCopyConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateSnapshotCopyConfigurationRequest,
   output: UpdateSnapshotCopyConfigurationResponse,
@@ -4443,7 +4442,7 @@ export const updateUsageLimit: API.OperationMethod<
   UpdateUsageLimitRequest,
   UpdateUsageLimitResponse,
   UpdateUsageLimitError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateUsageLimitRequest,
   output: UpdateUsageLimitResponse,
@@ -4483,7 +4482,7 @@ export const updateWorkgroup: API.OperationMethod<
   UpdateWorkgroupRequest,
   UpdateWorkgroupResponse,
   UpdateWorkgroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateWorkgroupRequest,
   output: UpdateWorkgroupResponse,

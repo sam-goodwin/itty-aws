@@ -8,7 +8,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 import { SensitiveString, SensitiveBlob } from "../sensitive.ts";
 const svc = T.AwsApiService({
   sdkId: "Bedrock",
@@ -9748,7 +9747,7 @@ export const batchDeleteAdvancedPromptOptimizationJob: API.OperationMethod<
   BatchDeleteAdvancedPromptOptimizationJobRequest,
   BatchDeleteAdvancedPromptOptimizationJobResponse,
   BatchDeleteAdvancedPromptOptimizationJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: BatchDeleteAdvancedPromptOptimizationJobRequest,
   output: BatchDeleteAdvancedPromptOptimizationJobResponse,
@@ -9778,7 +9777,7 @@ export const batchDeleteEvaluationJob: API.OperationMethod<
   BatchDeleteEvaluationJobRequest,
   BatchDeleteEvaluationJobResponse,
   BatchDeleteEvaluationJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: BatchDeleteEvaluationJobRequest,
   output: BatchDeleteEvaluationJobResponse,
@@ -9809,7 +9808,7 @@ export const cancelAutomatedReasoningPolicyBuildWorkflow: API.OperationMethod<
   CancelAutomatedReasoningPolicyBuildWorkflowRequest,
   CancelAutomatedReasoningPolicyBuildWorkflowResponse,
   CancelAutomatedReasoningPolicyBuildWorkflowError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CancelAutomatedReasoningPolicyBuildWorkflowRequest,
   output: CancelAutomatedReasoningPolicyBuildWorkflowResponse,
@@ -9842,7 +9841,7 @@ export const createAdvancedPromptOptimizationJob: API.OperationMethod<
   CreateAdvancedPromptOptimizationJobRequest,
   CreateAdvancedPromptOptimizationJobResponse,
   CreateAdvancedPromptOptimizationJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateAdvancedPromptOptimizationJobRequest,
   output: CreateAdvancedPromptOptimizationJobResponse,
@@ -9880,7 +9879,7 @@ export const createAutomatedReasoningPolicy: API.OperationMethod<
   CreateAutomatedReasoningPolicyRequest,
   CreateAutomatedReasoningPolicyResponse,
   CreateAutomatedReasoningPolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateAutomatedReasoningPolicyRequest,
   output: CreateAutomatedReasoningPolicyResponse,
@@ -9915,7 +9914,7 @@ export const createAutomatedReasoningPolicyTestCase: API.OperationMethod<
   CreateAutomatedReasoningPolicyTestCaseRequest,
   CreateAutomatedReasoningPolicyTestCaseResponse,
   CreateAutomatedReasoningPolicyTestCaseError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateAutomatedReasoningPolicyTestCaseRequest,
   output: CreateAutomatedReasoningPolicyTestCaseResponse,
@@ -9950,7 +9949,7 @@ export const createAutomatedReasoningPolicyVersion: API.OperationMethod<
   CreateAutomatedReasoningPolicyVersionRequest,
   CreateAutomatedReasoningPolicyVersionResponse,
   CreateAutomatedReasoningPolicyVersionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateAutomatedReasoningPolicyVersionRequest,
   output: CreateAutomatedReasoningPolicyVersionResponse,
@@ -10010,7 +10009,7 @@ export const createCustomModel: API.OperationMethod<
   CreateCustomModelRequest,
   CreateCustomModelResponse,
   CreateCustomModelError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateCustomModelRequest,
   output: CreateCustomModelResponse,
@@ -10055,7 +10054,7 @@ export const createCustomModelDeployment: API.OperationMethod<
   CreateCustomModelDeploymentRequest,
   CreateCustomModelDeploymentResponse,
   CreateCustomModelDeploymentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateCustomModelDeploymentRequest,
   output: CreateCustomModelDeploymentResponse,
@@ -10089,7 +10088,7 @@ export const createEvaluationJob: API.OperationMethod<
   CreateEvaluationJobRequest,
   CreateEvaluationJobResponse,
   CreateEvaluationJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateEvaluationJobRequest,
   output: CreateEvaluationJobResponse,
@@ -10122,7 +10121,7 @@ export const createFoundationModelAgreement: API.OperationMethod<
   CreateFoundationModelAgreementRequest,
   CreateFoundationModelAgreementResponse,
   CreateFoundationModelAgreementError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateFoundationModelAgreementRequest,
   output: CreateFoundationModelAgreementResponse,
@@ -10170,7 +10169,7 @@ export const createGuardrail: API.OperationMethod<
   CreateGuardrailRequest,
   CreateGuardrailResponse,
   CreateGuardrailError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateGuardrailRequest,
   output: CreateGuardrailResponse,
@@ -10205,7 +10204,7 @@ export const createGuardrailVersion: API.OperationMethod<
   CreateGuardrailVersionRequest,
   CreateGuardrailVersionResponse,
   CreateGuardrailVersionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateGuardrailVersionRequest,
   output: CreateGuardrailVersionResponse,
@@ -10240,7 +10239,7 @@ export const createInferenceProfile: API.OperationMethod<
   CreateInferenceProfileRequest,
   CreateInferenceProfileResponse,
   CreateInferenceProfileError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateInferenceProfileRequest,
   output: CreateInferenceProfileResponse,
@@ -10275,7 +10274,7 @@ export const createMarketplaceModelEndpoint: API.OperationMethod<
   CreateMarketplaceModelEndpointRequest,
   CreateMarketplaceModelEndpointResponse,
   CreateMarketplaceModelEndpointError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateMarketplaceModelEndpointRequest,
   output: CreateMarketplaceModelEndpointResponse,
@@ -10306,7 +10305,7 @@ export const createModelCopyJob: API.OperationMethod<
   CreateModelCopyJobRequest,
   CreateModelCopyJobResponse,
   CreateModelCopyJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateModelCopyJobRequest,
   output: CreateModelCopyJobResponse,
@@ -10346,7 +10345,7 @@ export const createModelCustomizationJob: API.OperationMethod<
   CreateModelCustomizationJobRequest,
   CreateModelCustomizationJobResponse,
   CreateModelCustomizationJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateModelCustomizationJobRequest,
   output: CreateModelCustomizationJobResponse,
@@ -10382,7 +10381,7 @@ export const createModelImportJob: API.OperationMethod<
   CreateModelImportJobRequest,
   CreateModelImportJobResponse,
   CreateModelImportJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateModelImportJobRequest,
   output: CreateModelImportJobResponse,
@@ -10419,7 +10418,7 @@ export const createModelInvocationJob: API.OperationMethod<
   CreateModelInvocationJobRequest,
   CreateModelInvocationJobResponse,
   CreateModelInvocationJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateModelInvocationJobRequest,
   output: CreateModelInvocationJobResponse,
@@ -10454,7 +10453,7 @@ export const createPromptRouter: API.OperationMethod<
   CreatePromptRouterRequest,
   CreatePromptRouterResponse,
   CreatePromptRouterError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreatePromptRouterRequest,
   output: CreatePromptRouterResponse,
@@ -10489,7 +10488,7 @@ export const createProvisionedModelThroughput: API.OperationMethod<
   CreateProvisionedModelThroughputRequest,
   CreateProvisionedModelThroughputResponse,
   CreateProvisionedModelThroughputError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateProvisionedModelThroughputRequest,
   output: CreateProvisionedModelThroughputResponse,
@@ -10523,7 +10522,7 @@ export const deleteAutomatedReasoningPolicy: API.OperationMethod<
   DeleteAutomatedReasoningPolicyRequest,
   DeleteAutomatedReasoningPolicyResponse,
   DeleteAutomatedReasoningPolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteAutomatedReasoningPolicyRequest,
   output: DeleteAutomatedReasoningPolicyResponse,
@@ -10557,7 +10556,7 @@ export const deleteAutomatedReasoningPolicyBuildWorkflow: API.OperationMethod<
   DeleteAutomatedReasoningPolicyBuildWorkflowRequest,
   DeleteAutomatedReasoningPolicyBuildWorkflowResponse,
   DeleteAutomatedReasoningPolicyBuildWorkflowError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteAutomatedReasoningPolicyBuildWorkflowRequest,
   output: DeleteAutomatedReasoningPolicyBuildWorkflowResponse,
@@ -10591,7 +10590,7 @@ export const deleteAutomatedReasoningPolicyTestCase: API.OperationMethod<
   DeleteAutomatedReasoningPolicyTestCaseRequest,
   DeleteAutomatedReasoningPolicyTestCaseResponse,
   DeleteAutomatedReasoningPolicyTestCaseError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteAutomatedReasoningPolicyTestCaseRequest,
   output: DeleteAutomatedReasoningPolicyTestCaseResponse,
@@ -10624,7 +10623,7 @@ export const deleteCustomModel: API.OperationMethod<
   DeleteCustomModelRequest,
   DeleteCustomModelResponse,
   DeleteCustomModelError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteCustomModelRequest,
   output: DeleteCustomModelResponse,
@@ -10664,7 +10663,7 @@ export const deleteCustomModelDeployment: API.OperationMethod<
   DeleteCustomModelDeploymentRequest,
   DeleteCustomModelDeploymentResponse,
   DeleteCustomModelDeploymentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteCustomModelDeploymentRequest,
   output: DeleteCustomModelDeploymentResponse,
@@ -10695,7 +10694,7 @@ export const deleteEnforcedGuardrailConfiguration: API.OperationMethod<
   DeleteEnforcedGuardrailConfigurationRequest,
   DeleteEnforcedGuardrailConfigurationResponse,
   DeleteEnforcedGuardrailConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteEnforcedGuardrailConfigurationRequest,
   output: DeleteEnforcedGuardrailConfigurationResponse,
@@ -10726,7 +10725,7 @@ export const deleteFoundationModelAgreement: API.OperationMethod<
   DeleteFoundationModelAgreementRequest,
   DeleteFoundationModelAgreementResponse,
   DeleteFoundationModelAgreementError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteFoundationModelAgreementRequest,
   output: DeleteFoundationModelAgreementResponse,
@@ -10763,7 +10762,7 @@ export const deleteGuardrail: API.OperationMethod<
   DeleteGuardrailRequest,
   DeleteGuardrailResponse,
   DeleteGuardrailError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteGuardrailRequest,
   output: DeleteGuardrailResponse,
@@ -10796,7 +10795,7 @@ export const deleteImportedModel: API.OperationMethod<
   DeleteImportedModelRequest,
   DeleteImportedModelResponse,
   DeleteImportedModelError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteImportedModelRequest,
   output: DeleteImportedModelResponse,
@@ -10828,7 +10827,7 @@ export const deleteInferenceProfile: API.OperationMethod<
   DeleteInferenceProfileRequest,
   DeleteInferenceProfileResponse,
   DeleteInferenceProfileError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteInferenceProfileRequest,
   output: DeleteInferenceProfileResponse,
@@ -10859,7 +10858,7 @@ export const deleteMarketplaceModelEndpoint: API.OperationMethod<
   DeleteMarketplaceModelEndpointRequest,
   DeleteMarketplaceModelEndpointResponse,
   DeleteMarketplaceModelEndpointError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteMarketplaceModelEndpointRequest,
   output: DeleteMarketplaceModelEndpointResponse,
@@ -10887,7 +10886,7 @@ export const deleteModelInvocationLoggingConfiguration: API.OperationMethod<
   DeleteModelInvocationLoggingConfigurationRequest,
   DeleteModelInvocationLoggingConfigurationResponse,
   DeleteModelInvocationLoggingConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteModelInvocationLoggingConfigurationRequest,
   output: DeleteModelInvocationLoggingConfigurationResponse,
@@ -10911,7 +10910,7 @@ export const deletePromptRouter: API.OperationMethod<
   DeletePromptRouterRequest,
   DeletePromptRouterResponse,
   DeletePromptRouterError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeletePromptRouterRequest,
   output: DeletePromptRouterResponse,
@@ -10942,7 +10941,7 @@ export const deleteProvisionedModelThroughput: API.OperationMethod<
   DeleteProvisionedModelThroughputRequest,
   DeleteProvisionedModelThroughputResponse,
   DeleteProvisionedModelThroughputError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteProvisionedModelThroughputRequest,
   output: DeleteProvisionedModelThroughputResponse,
@@ -10973,7 +10972,7 @@ export const deleteResourcePolicy: API.OperationMethod<
   DeleteResourcePolicyRequest,
   DeleteResourcePolicyResponse,
   DeleteResourcePolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteResourcePolicyRequest,
   output: DeleteResourcePolicyResponse,
@@ -11004,7 +11003,7 @@ export const deregisterMarketplaceModelEndpoint: API.OperationMethod<
   DeregisterMarketplaceModelEndpointRequest,
   DeregisterMarketplaceModelEndpointResponse,
   DeregisterMarketplaceModelEndpointError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeregisterMarketplaceModelEndpointRequest,
   output: DeregisterMarketplaceModelEndpointResponse,
@@ -11035,7 +11034,7 @@ export const exportAutomatedReasoningPolicyVersion: API.OperationMethod<
   ExportAutomatedReasoningPolicyVersionRequest,
   ExportAutomatedReasoningPolicyVersionResponse,
   ExportAutomatedReasoningPolicyVersionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ExportAutomatedReasoningPolicyVersionRequest,
   output: ExportAutomatedReasoningPolicyVersionResponse,
@@ -11064,7 +11063,7 @@ export const getAccountDataRetention: API.OperationMethod<
   GetAccountDataRetentionRequest,
   GetAccountDataRetentionResponse,
   GetAccountDataRetentionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetAccountDataRetentionRequest,
   output: GetAccountDataRetentionResponse,
@@ -11093,7 +11092,7 @@ export const getAdvancedPromptOptimizationJob: API.OperationMethod<
   GetAdvancedPromptOptimizationJobRequest,
   GetAdvancedPromptOptimizationJobResponse,
   GetAdvancedPromptOptimizationJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetAdvancedPromptOptimizationJobRequest,
   output: GetAdvancedPromptOptimizationJobResponse,
@@ -11123,7 +11122,7 @@ export const getAutomatedReasoningPolicy: API.OperationMethod<
   GetAutomatedReasoningPolicyRequest,
   GetAutomatedReasoningPolicyResponse,
   GetAutomatedReasoningPolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetAutomatedReasoningPolicyRequest,
   output: GetAutomatedReasoningPolicyResponse,
@@ -11153,7 +11152,7 @@ export const getAutomatedReasoningPolicyAnnotations: API.OperationMethod<
   GetAutomatedReasoningPolicyAnnotationsRequest,
   GetAutomatedReasoningPolicyAnnotationsResponse,
   GetAutomatedReasoningPolicyAnnotationsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetAutomatedReasoningPolicyAnnotationsRequest,
   output: GetAutomatedReasoningPolicyAnnotationsResponse,
@@ -11183,7 +11182,7 @@ export const getAutomatedReasoningPolicyBuildWorkflow: API.OperationMethod<
   GetAutomatedReasoningPolicyBuildWorkflowRequest,
   GetAutomatedReasoningPolicyBuildWorkflowResponse,
   GetAutomatedReasoningPolicyBuildWorkflowError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetAutomatedReasoningPolicyBuildWorkflowRequest,
   output: GetAutomatedReasoningPolicyBuildWorkflowResponse,
@@ -11213,7 +11212,7 @@ export const getAutomatedReasoningPolicyBuildWorkflowResultAssets: API.Operation
   GetAutomatedReasoningPolicyBuildWorkflowResultAssetsRequest,
   GetAutomatedReasoningPolicyBuildWorkflowResultAssetsResponse,
   GetAutomatedReasoningPolicyBuildWorkflowResultAssetsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetAutomatedReasoningPolicyBuildWorkflowResultAssetsRequest,
   output: GetAutomatedReasoningPolicyBuildWorkflowResultAssetsResponse,
@@ -11243,7 +11242,7 @@ export const getAutomatedReasoningPolicyNextScenario: API.OperationMethod<
   GetAutomatedReasoningPolicyNextScenarioRequest,
   GetAutomatedReasoningPolicyNextScenarioResponse,
   GetAutomatedReasoningPolicyNextScenarioError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetAutomatedReasoningPolicyNextScenarioRequest,
   output: GetAutomatedReasoningPolicyNextScenarioResponse,
@@ -11273,7 +11272,7 @@ export const getAutomatedReasoningPolicyTestCase: API.OperationMethod<
   GetAutomatedReasoningPolicyTestCaseRequest,
   GetAutomatedReasoningPolicyTestCaseResponse,
   GetAutomatedReasoningPolicyTestCaseError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetAutomatedReasoningPolicyTestCaseRequest,
   output: GetAutomatedReasoningPolicyTestCaseResponse,
@@ -11303,7 +11302,7 @@ export const getAutomatedReasoningPolicyTestResult: API.OperationMethod<
   GetAutomatedReasoningPolicyTestResultRequest,
   GetAutomatedReasoningPolicyTestResultResponse,
   GetAutomatedReasoningPolicyTestResultError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetAutomatedReasoningPolicyTestResultRequest,
   output: GetAutomatedReasoningPolicyTestResultResponse,
@@ -11333,7 +11332,7 @@ export const getCustomModel: API.OperationMethod<
   GetCustomModelRequest,
   GetCustomModelResponse,
   GetCustomModelError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetCustomModelRequest,
   output: GetCustomModelResponse,
@@ -11371,7 +11370,7 @@ export const getCustomModelDeployment: API.OperationMethod<
   GetCustomModelDeploymentRequest,
   GetCustomModelDeploymentResponse,
   GetCustomModelDeploymentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetCustomModelDeploymentRequest,
   output: GetCustomModelDeploymentResponse,
@@ -11401,7 +11400,7 @@ export const getEvaluationJob: API.OperationMethod<
   GetEvaluationJobRequest,
   GetEvaluationJobResponse,
   GetEvaluationJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetEvaluationJobRequest,
   output: GetEvaluationJobResponse,
@@ -11431,7 +11430,7 @@ export const getFoundationModel: API.OperationMethod<
   GetFoundationModelRequest,
   GetFoundationModelResponse,
   GetFoundationModelError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetFoundationModelRequest,
   output: GetFoundationModelResponse,
@@ -11461,7 +11460,7 @@ export const getFoundationModelAvailability: API.OperationMethod<
   GetFoundationModelAvailabilityRequest,
   GetFoundationModelAvailabilityResponse,
   GetFoundationModelAvailabilityError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetFoundationModelAvailabilityRequest,
   output: GetFoundationModelAvailabilityResponse,
@@ -11491,7 +11490,7 @@ export const getGuardrail: API.OperationMethod<
   GetGuardrailRequest,
   GetGuardrailResponse,
   GetGuardrailError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetGuardrailRequest,
   output: GetGuardrailResponse,
@@ -11521,7 +11520,7 @@ export const getImportedModel: API.OperationMethod<
   GetImportedModelRequest,
   GetImportedModelResponse,
   GetImportedModelError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetImportedModelRequest,
   output: GetImportedModelResponse,
@@ -11551,7 +11550,7 @@ export const getInferenceProfile: API.OperationMethod<
   GetInferenceProfileRequest,
   GetInferenceProfileResponse,
   GetInferenceProfileError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetInferenceProfileRequest,
   output: GetInferenceProfileResponse,
@@ -11581,7 +11580,7 @@ export const getMarketplaceModelEndpoint: API.OperationMethod<
   GetMarketplaceModelEndpointRequest,
   GetMarketplaceModelEndpointResponse,
   GetMarketplaceModelEndpointError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetMarketplaceModelEndpointRequest,
   output: GetMarketplaceModelEndpointResponse,
@@ -11611,7 +11610,7 @@ export const getModelCopyJob: API.OperationMethod<
   GetModelCopyJobRequest,
   GetModelCopyJobResponse,
   GetModelCopyJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetModelCopyJobRequest,
   output: GetModelCopyJobResponse,
@@ -11641,7 +11640,7 @@ export const getModelCustomizationJob: API.OperationMethod<
   GetModelCustomizationJobRequest,
   GetModelCustomizationJobResponse,
   GetModelCustomizationJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetModelCustomizationJobRequest,
   output: GetModelCustomizationJobResponse,
@@ -11671,7 +11670,7 @@ export const getModelImportJob: API.OperationMethod<
   GetModelImportJobRequest,
   GetModelImportJobResponse,
   GetModelImportJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetModelImportJobRequest,
   output: GetModelImportJobResponse,
@@ -11701,7 +11700,7 @@ export const getModelInvocationJob: API.OperationMethod<
   GetModelInvocationJobRequest,
   GetModelInvocationJobResponse,
   GetModelInvocationJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetModelInvocationJobRequest,
   output: GetModelInvocationJobResponse,
@@ -11729,7 +11728,7 @@ export const getModelInvocationLoggingConfiguration: API.OperationMethod<
   GetModelInvocationLoggingConfigurationRequest,
   GetModelInvocationLoggingConfigurationResponse,
   GetModelInvocationLoggingConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetModelInvocationLoggingConfigurationRequest,
   output: GetModelInvocationLoggingConfigurationResponse,
@@ -11753,7 +11752,7 @@ export const getPromptRouter: API.OperationMethod<
   GetPromptRouterRequest,
   GetPromptRouterResponse,
   GetPromptRouterError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetPromptRouterRequest,
   output: GetPromptRouterResponse,
@@ -11783,7 +11782,7 @@ export const getProvisionedModelThroughput: API.OperationMethod<
   GetProvisionedModelThroughputRequest,
   GetProvisionedModelThroughputResponse,
   GetProvisionedModelThroughputError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetProvisionedModelThroughputRequest,
   output: GetProvisionedModelThroughputResponse,
@@ -11813,7 +11812,7 @@ export const getResourcePolicy: API.OperationMethod<
   GetResourcePolicyRequest,
   GetResourcePolicyResponse,
   GetResourcePolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetResourcePolicyRequest,
   output: GetResourcePolicyResponse,
@@ -11842,7 +11841,7 @@ export const getUseCaseForModelAccess: API.OperationMethod<
   GetUseCaseForModelAccessRequest,
   GetUseCaseForModelAccessResponse,
   GetUseCaseForModelAccessError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetUseCaseForModelAccessRequest,
   output: GetUseCaseForModelAccessResponse,
@@ -11870,7 +11869,7 @@ export const listAdvancedPromptOptimizationJobs: API.PaginatedOperationMethod<
   ListAdvancedPromptOptimizationJobsRequest,
   ListAdvancedPromptOptimizationJobsResponse,
   ListAdvancedPromptOptimizationJobsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   AdvancedPromptOptimizationJobSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAdvancedPromptOptimizationJobsRequest,
@@ -11906,7 +11905,7 @@ export const listAutomatedReasoningPolicies: API.PaginatedOperationMethod<
   ListAutomatedReasoningPoliciesRequest,
   ListAutomatedReasoningPoliciesResponse,
   ListAutomatedReasoningPoliciesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   AutomatedReasoningPolicySummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAutomatedReasoningPoliciesRequest,
@@ -11943,7 +11942,7 @@ export const listAutomatedReasoningPolicyBuildWorkflows: API.PaginatedOperationM
   ListAutomatedReasoningPolicyBuildWorkflowsRequest,
   ListAutomatedReasoningPolicyBuildWorkflowsResponse,
   ListAutomatedReasoningPolicyBuildWorkflowsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   AutomatedReasoningPolicyBuildWorkflowSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAutomatedReasoningPolicyBuildWorkflowsRequest,
@@ -11980,7 +11979,7 @@ export const listAutomatedReasoningPolicyTestCases: API.PaginatedOperationMethod
   ListAutomatedReasoningPolicyTestCasesRequest,
   ListAutomatedReasoningPolicyTestCasesResponse,
   ListAutomatedReasoningPolicyTestCasesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   AutomatedReasoningPolicyTestCase
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAutomatedReasoningPolicyTestCasesRequest,
@@ -12018,7 +12017,7 @@ export const listAutomatedReasoningPolicyTestResults: API.PaginatedOperationMeth
   ListAutomatedReasoningPolicyTestResultsRequest,
   ListAutomatedReasoningPolicyTestResultsResponse,
   ListAutomatedReasoningPolicyTestResultsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   AutomatedReasoningPolicyTestResult
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAutomatedReasoningPolicyTestResultsRequest,
@@ -12065,7 +12064,7 @@ export const listCustomModelDeployments: API.PaginatedOperationMethod<
   ListCustomModelDeploymentsRequest,
   ListCustomModelDeploymentsResponse,
   ListCustomModelDeploymentsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   CustomModelDeploymentSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCustomModelDeploymentsRequest,
@@ -12102,7 +12101,7 @@ export const listCustomModels: API.PaginatedOperationMethod<
   ListCustomModelsRequest,
   ListCustomModelsResponse,
   ListCustomModelsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   CustomModelSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCustomModelsRequest,
@@ -12138,7 +12137,7 @@ export const listEnforcedGuardrailsConfiguration: API.PaginatedOperationMethod<
   ListEnforcedGuardrailsConfigurationRequest,
   ListEnforcedGuardrailsConfigurationResponse,
   ListEnforcedGuardrailsConfigurationError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   AccountEnforcedGuardrailOutputConfiguration
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEnforcedGuardrailsConfigurationRequest,
@@ -12173,7 +12172,7 @@ export const listEvaluationJobs: API.PaginatedOperationMethod<
   ListEvaluationJobsRequest,
   ListEvaluationJobsResponse,
   ListEvaluationJobsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   EvaluationSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEvaluationJobsRequest,
@@ -12209,7 +12208,7 @@ export const listFoundationModelAgreementOffers: API.OperationMethod<
   ListFoundationModelAgreementOffersRequest,
   ListFoundationModelAgreementOffersResponse,
   ListFoundationModelAgreementOffersError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListFoundationModelAgreementOffersRequest,
   output: ListFoundationModelAgreementOffersResponse,
@@ -12238,7 +12237,7 @@ export const listFoundationModels: API.OperationMethod<
   ListFoundationModelsRequest,
   ListFoundationModelsResponse,
   ListFoundationModelsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListFoundationModelsRequest,
   output: ListFoundationModelsResponse,
@@ -12269,7 +12268,7 @@ export const listGuardrails: API.PaginatedOperationMethod<
   ListGuardrailsRequest,
   ListGuardrailsResponse,
   ListGuardrailsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   GuardrailSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListGuardrailsRequest,
@@ -12305,7 +12304,7 @@ export const listImportedModels: API.PaginatedOperationMethod<
   ListImportedModelsRequest,
   ListImportedModelsResponse,
   ListImportedModelsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ImportedModelSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListImportedModelsRequest,
@@ -12340,7 +12339,7 @@ export const listInferenceProfiles: API.PaginatedOperationMethod<
   ListInferenceProfilesRequest,
   ListInferenceProfilesResponse,
   ListInferenceProfilesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   InferenceProfileSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListInferenceProfilesRequest,
@@ -12376,7 +12375,7 @@ export const listMarketplaceModelEndpoints: API.PaginatedOperationMethod<
   ListMarketplaceModelEndpointsRequest,
   ListMarketplaceModelEndpointsResponse,
   ListMarketplaceModelEndpointsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   MarketplaceModelEndpointSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMarketplaceModelEndpointsRequest,
@@ -12413,7 +12412,7 @@ export const listModelCopyJobs: API.PaginatedOperationMethod<
   ListModelCopyJobsRequest,
   ListModelCopyJobsResponse,
   ListModelCopyJobsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ModelCopyJobSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListModelCopyJobsRequest,
@@ -12451,7 +12450,7 @@ export const listModelCustomizationJobs: API.PaginatedOperationMethod<
   ListModelCustomizationJobsRequest,
   ListModelCustomizationJobsResponse,
   ListModelCustomizationJobsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ModelCustomizationJobSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListModelCustomizationJobsRequest,
@@ -12486,7 +12485,7 @@ export const listModelImportJobs: API.PaginatedOperationMethod<
   ListModelImportJobsRequest,
   ListModelImportJobsResponse,
   ListModelImportJobsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ModelImportJobSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListModelImportJobsRequest,
@@ -12521,7 +12520,7 @@ export const listModelInvocationJobs: API.PaginatedOperationMethod<
   ListModelInvocationJobsRequest,
   ListModelInvocationJobsResponse,
   ListModelInvocationJobsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ModelInvocationJobSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListModelInvocationJobsRequest,
@@ -12556,7 +12555,7 @@ export const listPromptRouters: API.PaginatedOperationMethod<
   ListPromptRoutersRequest,
   ListPromptRoutersResponse,
   ListPromptRoutersError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   PromptRouterSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPromptRoutersRequest,
@@ -12591,7 +12590,7 @@ export const listProvisionedModelThroughputs: API.PaginatedOperationMethod<
   ListProvisionedModelThroughputsRequest,
   ListProvisionedModelThroughputsResponse,
   ListProvisionedModelThroughputsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ProvisionedModelSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProvisionedModelThroughputsRequest,
@@ -12629,7 +12628,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -12658,7 +12657,7 @@ export const putAccountDataRetention: API.OperationMethod<
   PutAccountDataRetentionRequest,
   PutAccountDataRetentionResponse,
   PutAccountDataRetentionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PutAccountDataRetentionRequest,
   output: PutAccountDataRetentionResponse,
@@ -12688,7 +12687,7 @@ export const putEnforcedGuardrailConfiguration: API.OperationMethod<
   PutEnforcedGuardrailConfigurationRequest,
   PutEnforcedGuardrailConfigurationResponse,
   PutEnforcedGuardrailConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PutEnforcedGuardrailConfigurationRequest,
   output: PutEnforcedGuardrailConfigurationResponse,
@@ -12718,7 +12717,7 @@ export const putModelInvocationLoggingConfiguration: API.OperationMethod<
   PutModelInvocationLoggingConfigurationRequest,
   PutModelInvocationLoggingConfigurationResponse,
   PutModelInvocationLoggingConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PutModelInvocationLoggingConfigurationRequest,
   output: PutModelInvocationLoggingConfigurationResponse,
@@ -12747,7 +12746,7 @@ export const putResourcePolicy: API.OperationMethod<
   PutResourcePolicyRequest,
   PutResourcePolicyResponse,
   PutResourcePolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PutResourcePolicyRequest,
   output: PutResourcePolicyResponse,
@@ -12776,7 +12775,7 @@ export const putUseCaseForModelAccess: API.OperationMethod<
   PutUseCaseForModelAccessRequest,
   PutUseCaseForModelAccessResponse,
   PutUseCaseForModelAccessError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PutUseCaseForModelAccessRequest,
   output: PutUseCaseForModelAccessResponse,
@@ -12806,7 +12805,7 @@ export const registerMarketplaceModelEndpoint: API.OperationMethod<
   RegisterMarketplaceModelEndpointRequest,
   RegisterMarketplaceModelEndpointResponse,
   RegisterMarketplaceModelEndpointError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: RegisterMarketplaceModelEndpointRequest,
   output: RegisterMarketplaceModelEndpointResponse,
@@ -12840,7 +12839,7 @@ export const startAutomatedReasoningPolicyBuildWorkflow: API.OperationMethod<
   StartAutomatedReasoningPolicyBuildWorkflowRequest,
   StartAutomatedReasoningPolicyBuildWorkflowResponse,
   StartAutomatedReasoningPolicyBuildWorkflowError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartAutomatedReasoningPolicyBuildWorkflowRequest,
   output: StartAutomatedReasoningPolicyBuildWorkflowResponse,
@@ -12874,7 +12873,7 @@ export const startAutomatedReasoningPolicyTestWorkflow: API.OperationMethod<
   StartAutomatedReasoningPolicyTestWorkflowRequest,
   StartAutomatedReasoningPolicyTestWorkflowResponse,
   StartAutomatedReasoningPolicyTestWorkflowError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartAutomatedReasoningPolicyTestWorkflowRequest,
   output: StartAutomatedReasoningPolicyTestWorkflowResponse,
@@ -12906,7 +12905,7 @@ export const stopAdvancedPromptOptimizationJob: API.OperationMethod<
   StopAdvancedPromptOptimizationJobRequest,
   StopAdvancedPromptOptimizationJobResponse,
   StopAdvancedPromptOptimizationJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StopAdvancedPromptOptimizationJobRequest,
   output: StopAdvancedPromptOptimizationJobResponse,
@@ -12938,7 +12937,7 @@ export const stopEvaluationJob: API.OperationMethod<
   StopEvaluationJobRequest,
   StopEvaluationJobResponse,
   StopEvaluationJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StopEvaluationJobRequest,
   output: StopEvaluationJobResponse,
@@ -12970,7 +12969,7 @@ export const stopModelCustomizationJob: API.OperationMethod<
   StopModelCustomizationJobRequest,
   StopModelCustomizationJobResponse,
   StopModelCustomizationJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StopModelCustomizationJobRequest,
   output: StopModelCustomizationJobResponse,
@@ -13002,7 +13001,7 @@ export const stopModelInvocationJob: API.OperationMethod<
   StopModelInvocationJobRequest,
   StopModelInvocationJobResponse,
   StopModelInvocationJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StopModelInvocationJobRequest,
   output: StopModelInvocationJobResponse,
@@ -13034,7 +13033,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -13065,7 +13064,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -13097,7 +13096,7 @@ export const updateAutomatedReasoningPolicy: API.OperationMethod<
   UpdateAutomatedReasoningPolicyRequest,
   UpdateAutomatedReasoningPolicyResponse,
   UpdateAutomatedReasoningPolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateAutomatedReasoningPolicyRequest,
   output: UpdateAutomatedReasoningPolicyResponse,
@@ -13130,7 +13129,7 @@ export const updateAutomatedReasoningPolicyAnnotations: API.OperationMethod<
   UpdateAutomatedReasoningPolicyAnnotationsRequest,
   UpdateAutomatedReasoningPolicyAnnotationsResponse,
   UpdateAutomatedReasoningPolicyAnnotationsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateAutomatedReasoningPolicyAnnotationsRequest,
   output: UpdateAutomatedReasoningPolicyAnnotationsResponse,
@@ -13163,7 +13162,7 @@ export const updateAutomatedReasoningPolicyTestCase: API.OperationMethod<
   UpdateAutomatedReasoningPolicyTestCaseRequest,
   UpdateAutomatedReasoningPolicyTestCaseResponse,
   UpdateAutomatedReasoningPolicyTestCaseError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateAutomatedReasoningPolicyTestCaseRequest,
   output: UpdateAutomatedReasoningPolicyTestCaseResponse,
@@ -13195,7 +13194,7 @@ export const updateCustomModelDeployment: API.OperationMethod<
   UpdateCustomModelDeploymentRequest,
   UpdateCustomModelDeploymentResponse,
   UpdateCustomModelDeploymentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateCustomModelDeploymentRequest,
   output: UpdateCustomModelDeploymentResponse,
@@ -13247,7 +13246,7 @@ export const updateGuardrail: API.OperationMethod<
   UpdateGuardrailRequest,
   UpdateGuardrailResponse,
   UpdateGuardrailError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateGuardrailRequest,
   output: UpdateGuardrailResponse,
@@ -13281,7 +13280,7 @@ export const updateMarketplaceModelEndpoint: API.OperationMethod<
   UpdateMarketplaceModelEndpointRequest,
   UpdateMarketplaceModelEndpointResponse,
   UpdateMarketplaceModelEndpointError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateMarketplaceModelEndpointRequest,
   output: UpdateMarketplaceModelEndpointResponse,
@@ -13313,7 +13312,7 @@ export const updateProvisionedModelThroughput: API.OperationMethod<
   UpdateProvisionedModelThroughputRequest,
   UpdateProvisionedModelThroughputResponse,
   UpdateProvisionedModelThroughputError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateProvisionedModelThroughputRequest,
   output: UpdateProvisionedModelThroughputResponse,

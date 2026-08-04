@@ -8,7 +8,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 import { SensitiveString } from "../sensitive.ts";
 const svc = T.AwsApiService({ sdkId: "b2bi", serviceShapeName: "B2BI" });
 const auth = T.AwsAuthSigv4({ name: "b2bi" });
@@ -2352,7 +2351,7 @@ export const createCapability: API.OperationMethod<
   CreateCapabilityRequest,
   CreateCapabilityResponse,
   CreateCapabilityError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateCapabilityRequest,
   output: CreateCapabilityResponse,
@@ -2386,7 +2385,7 @@ export const createPartnership: API.OperationMethod<
   CreatePartnershipRequest,
   CreatePartnershipResponse,
   CreatePartnershipError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreatePartnershipRequest,
   output: CreatePartnershipResponse,
@@ -2420,7 +2419,7 @@ export const createProfile: API.OperationMethod<
   CreateProfileRequest,
   CreateProfileResponse,
   CreateProfileError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateProfileRequest,
   output: CreateProfileResponse,
@@ -2457,7 +2456,7 @@ export const createStarterMappingTemplate: API.OperationMethod<
   CreateStarterMappingTemplateRequest,
   CreateStarterMappingTemplateResponse,
   CreateStarterMappingTemplateError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateStarterMappingTemplateRequest,
   output: CreateStarterMappingTemplateResponse,
@@ -2500,7 +2499,7 @@ export const createTransformer: API.OperationMethod<
   CreateTransformerRequest,
   CreateTransformerResponse,
   CreateTransformerError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateTransformerRequest,
   output: CreateTransformerResponse,
@@ -2533,7 +2532,7 @@ export const deleteCapability: API.OperationMethod<
   DeleteCapabilityRequest,
   DeleteCapabilityResponse,
   DeleteCapabilityError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteCapabilityRequest,
   output: DeleteCapabilityResponse,
@@ -2565,7 +2564,7 @@ export const deletePartnership: API.OperationMethod<
   DeletePartnershipRequest,
   DeletePartnershipResponse,
   DeletePartnershipError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeletePartnershipRequest,
   output: DeletePartnershipResponse,
@@ -2597,7 +2596,7 @@ export const deleteProfile: API.OperationMethod<
   DeleteProfileRequest,
   DeleteProfileResponse,
   DeleteProfileError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteProfileRequest,
   output: DeleteProfileResponse,
@@ -2629,7 +2628,7 @@ export const deleteTransformer: API.OperationMethod<
   DeleteTransformerRequest,
   DeleteTransformerResponse,
   DeleteTransformerError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteTransformerRequest,
   output: DeleteTransformerResponse,
@@ -2669,7 +2668,7 @@ export const generateMapping: API.OperationMethod<
   GenerateMappingRequest,
   GenerateMappingResponse,
   GenerateMappingError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GenerateMappingRequest,
   output: GenerateMappingResponse,
@@ -2698,7 +2697,7 @@ export const getCapability: API.OperationMethod<
   GetCapabilityRequest,
   GetCapabilityResponse,
   GetCapabilityError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetCapabilityRequest,
   output: GetCapabilityResponse,
@@ -2728,7 +2727,7 @@ export const getPartnership: API.OperationMethod<
   GetPartnershipRequest,
   GetPartnershipResponse,
   GetPartnershipError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetPartnershipRequest,
   output: GetPartnershipResponse,
@@ -2758,7 +2757,7 @@ export const getProfile: API.OperationMethod<
   GetProfileRequest,
   GetProfileResponse,
   GetProfileError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetProfileRequest,
   output: GetProfileResponse,
@@ -2788,7 +2787,7 @@ export const getTransformer: API.OperationMethod<
   GetTransformerRequest,
   GetTransformerResponse,
   GetTransformerError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetTransformerRequest,
   output: GetTransformerResponse,
@@ -2820,7 +2819,7 @@ export const getTransformerJob: API.OperationMethod<
   GetTransformerJobRequest,
   GetTransformerJobResponse,
   GetTransformerJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetTransformerJobRequest,
   output: GetTransformerJobResponse,
@@ -2849,7 +2848,7 @@ export const listCapabilities: API.PaginatedOperationMethod<
   ListCapabilitiesRequest,
   ListCapabilitiesResponse,
   ListCapabilitiesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   CapabilitySummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCapabilitiesRequest,
@@ -2885,7 +2884,7 @@ export const listPartnerships: API.PaginatedOperationMethod<
   ListPartnershipsRequest,
   ListPartnershipsResponse,
   ListPartnershipsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   PartnershipSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPartnershipsRequest,
@@ -2921,7 +2920,7 @@ export const listProfiles: API.PaginatedOperationMethod<
   ListProfilesRequest,
   ListProfilesResponse,
   ListProfilesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ProfileSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProfilesRequest,
@@ -2955,7 +2954,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -2982,7 +2981,7 @@ export const listTransformers: API.PaginatedOperationMethod<
   ListTransformersRequest,
   ListTransformersResponse,
   ListTransformersError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   TransformerSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTransformersRequest,
@@ -3023,7 +3022,7 @@ export const startTransformerJob: API.OperationMethod<
   StartTransformerJobRequest,
   StartTransformerJobResponse,
   StartTransformerJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartTransformerJobRequest,
   output: StartTransformerJobResponse,
@@ -3055,7 +3054,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -3084,7 +3083,7 @@ export const testConversion: API.OperationMethod<
   TestConversionRequest,
   TestConversionResponse,
   TestConversionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: TestConversionRequest,
   output: TestConversionResponse,
@@ -3114,7 +3113,7 @@ export const testMapping: API.OperationMethod<
   TestMappingRequest,
   TestMappingResponse,
   TestMappingError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: TestMappingRequest,
   output: TestMappingResponse,
@@ -3144,7 +3143,7 @@ export const testParsing: API.OperationMethod<
   TestParsingRequest,
   TestParsingResponse,
   TestParsingError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: TestParsingRequest,
   output: TestParsingResponse,
@@ -3172,7 +3171,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -3202,7 +3201,7 @@ export const updateCapability: API.OperationMethod<
   UpdateCapabilityRequest,
   UpdateCapabilityResponse,
   UpdateCapabilityError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateCapabilityRequest,
   output: UpdateCapabilityResponse,
@@ -3236,7 +3235,7 @@ export const updatePartnership: API.OperationMethod<
   UpdatePartnershipRequest,
   UpdatePartnershipResponse,
   UpdatePartnershipError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdatePartnershipRequest,
   output: UpdatePartnershipResponse,
@@ -3270,7 +3269,7 @@ export const updateProfile: API.OperationMethod<
   UpdateProfileRequest,
   UpdateProfileResponse,
   UpdateProfileError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateProfileRequest,
   output: UpdateProfileResponse,
@@ -3304,7 +3303,7 @@ export const updateTransformer: API.OperationMethod<
   UpdateTransformerRequest,
   UpdateTransformerResponse,
   UpdateTransformerError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateTransformerRequest,
   output: UpdateTransformerResponse,

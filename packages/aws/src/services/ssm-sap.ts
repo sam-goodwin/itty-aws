@@ -8,7 +8,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 import { SensitiveString } from "../sensitive.ts";
 const svc = T.AwsApiService({ sdkId: "Ssm Sap", serviceShapeName: "SsmSap" });
 const auth = T.AwsAuthSigv4({ name: "ssm-sap" });
@@ -1674,7 +1673,7 @@ export const deleteResourcePermission: API.OperationMethod<
   DeleteResourcePermissionInput,
   DeleteResourcePermissionOutput,
   DeleteResourcePermissionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteResourcePermissionInput,
   output: DeleteResourcePermissionOutput,
@@ -1700,7 +1699,7 @@ export const deregisterApplication: API.OperationMethod<
   DeregisterApplicationInput,
   DeregisterApplicationOutput,
   DeregisterApplicationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeregisterApplicationInput,
   output: DeregisterApplicationOutput,
@@ -1721,7 +1720,7 @@ export const getApplication: API.OperationMethod<
   GetApplicationInput,
   GetApplicationOutput,
   GetApplicationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetApplicationInput,
   output: GetApplicationOutput,
@@ -1743,7 +1742,7 @@ export const getComponent: API.OperationMethod<
   GetComponentInput,
   GetComponentOutput,
   GetComponentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetComponentInput,
   output: GetComponentOutput,
@@ -1764,7 +1763,7 @@ export const getConfigurationCheckOperation: API.OperationMethod<
   GetConfigurationCheckOperationInput,
   GetConfigurationCheckOperationOutput,
   GetConfigurationCheckOperationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetConfigurationCheckOperationInput,
   output: GetConfigurationCheckOperationOutput,
@@ -1785,7 +1784,7 @@ export const getDatabase: API.OperationMethod<
   GetDatabaseInput,
   GetDatabaseOutput,
   GetDatabaseError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetDatabaseInput,
   output: GetDatabaseOutput,
@@ -1806,7 +1805,7 @@ export const getOperation: API.OperationMethod<
   GetOperationInput,
   GetOperationOutput,
   GetOperationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetOperationInput,
   output: GetOperationOutput,
@@ -1828,7 +1827,7 @@ export const getResourcePermission: API.OperationMethod<
   GetResourcePermissionInput,
   GetResourcePermissionOutput,
   GetResourcePermissionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetResourcePermissionInput,
   output: GetResourcePermissionOutput,
@@ -1854,7 +1853,7 @@ export const listApplications: API.PaginatedOperationMethod<
   ListApplicationsInput,
   ListApplicationsOutput,
   ListApplicationsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ApplicationSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListApplicationsInput,
@@ -1888,7 +1887,7 @@ export const listComponents: API.PaginatedOperationMethod<
   ListComponentsInput,
   ListComponentsOutput,
   ListComponentsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ComponentSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListComponentsInput,
@@ -1921,7 +1920,7 @@ export const listConfigurationCheckDefinitions: API.PaginatedOperationMethod<
   ListConfigurationCheckDefinitionsInput,
   ListConfigurationCheckDefinitionsOutput,
   ListConfigurationCheckDefinitionsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ConfigurationCheckDefinition
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListConfigurationCheckDefinitionsInput,
@@ -1950,7 +1949,7 @@ export const listConfigurationCheckOperations: API.PaginatedOperationMethod<
   ListConfigurationCheckOperationsInput,
   ListConfigurationCheckOperationsOutput,
   ListConfigurationCheckOperationsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ConfigurationCheckOperation
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListConfigurationCheckOperationsInput,
@@ -1983,7 +1982,7 @@ export const listDatabases: API.PaginatedOperationMethod<
   ListDatabasesInput,
   ListDatabasesOutput,
   ListDatabasesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   DatabaseSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDatabasesInput,
@@ -2017,7 +2016,7 @@ export const listOperationEvents: API.PaginatedOperationMethod<
   ListOperationEventsInput,
   ListOperationEventsOutput,
   ListOperationEventsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   OperationEvent
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOperationEventsInput,
@@ -2045,7 +2044,7 @@ export const listOperations: API.PaginatedOperationMethod<
   ListOperationsInput,
   ListOperationsOutput,
   ListOperationsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   Operation
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOperationsInput,
@@ -2073,7 +2072,7 @@ export const listSubCheckResults: API.PaginatedOperationMethod<
   ListSubCheckResultsInput,
   ListSubCheckResultsOutput,
   ListSubCheckResultsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   SubCheckResult
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSubCheckResultsInput,
@@ -2101,7 +2100,7 @@ export const listSubCheckRuleResults: API.PaginatedOperationMethod<
   ListSubCheckRuleResultsInput,
   ListSubCheckRuleResultsOutput,
   ListSubCheckRuleResultsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   RuleResult
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSubCheckRuleResultsInput,
@@ -2130,7 +2129,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -2152,7 +2151,7 @@ export const putResourcePermission: API.OperationMethod<
   PutResourcePermissionInput,
   PutResourcePermissionOutput,
   PutResourcePermissionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PutResourcePermissionInput,
   output: PutResourcePermissionOutput,
@@ -2185,7 +2184,7 @@ export const registerApplication: API.OperationMethod<
   RegisterApplicationInput,
   RegisterApplicationOutput,
   RegisterApplicationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: RegisterApplicationInput,
   output: RegisterApplicationOutput,
@@ -2215,7 +2214,7 @@ export const startApplication: API.OperationMethod<
   StartApplicationInput,
   StartApplicationOutput,
   StartApplicationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartApplicationInput,
   output: StartApplicationOutput,
@@ -2244,7 +2243,7 @@ export const startApplicationRefresh: API.OperationMethod<
   StartApplicationRefreshInput,
   StartApplicationRefreshOutput,
   StartApplicationRefreshError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartApplicationRefreshInput,
   output: StartApplicationRefreshOutput,
@@ -2273,7 +2272,7 @@ export const startConfigurationChecks: API.OperationMethod<
   StartConfigurationChecksInput,
   StartConfigurationChecksOutput,
   StartConfigurationChecksError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartConfigurationChecksInput,
   output: StartConfigurationChecksOutput,
@@ -2303,7 +2302,7 @@ export const stopApplication: API.OperationMethod<
   StopApplicationInput,
   StopApplicationOutput,
   StopApplicationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StopApplicationInput,
   output: StopApplicationOutput,
@@ -2330,7 +2329,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -2352,7 +2351,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -2376,7 +2375,7 @@ export const updateApplicationSettings: API.OperationMethod<
   UpdateApplicationSettingsInput,
   UpdateApplicationSettingsOutput,
   UpdateApplicationSettingsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateApplicationSettingsInput,
   output: UpdateApplicationSettingsOutput,

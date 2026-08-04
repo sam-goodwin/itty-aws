@@ -7,7 +7,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 const svc = T.AwsApiService({
   sdkId: "Kinesis Video Media",
   serviceShapeName: "AWSAcuityInletService",
@@ -230,7 +229,7 @@ export const getMedia: API.OperationMethod<
   GetMediaInput,
   GetMediaOutput,
   GetMediaError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetMediaInput,
   output: GetMediaOutput,

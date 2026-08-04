@@ -7,7 +7,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 const svc = T.AwsApiService({ sdkId: "schemas", serviceShapeName: "schemas" });
 const auth = T.AwsAuthSigv4({ name: "schemas" });
 const ver = T.ServiceVersion("2019-12-02");
@@ -1494,7 +1493,7 @@ export const createDiscoverer: API.OperationMethod<
   CreateDiscovererRequest,
   CreateDiscovererResponse,
   CreateDiscovererError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateDiscovererRequest,
   output: CreateDiscovererResponse,
@@ -1526,7 +1525,7 @@ export const createRegistry: API.OperationMethod<
   CreateRegistryRequest,
   CreateRegistryResponse,
   CreateRegistryError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateRegistryRequest,
   output: CreateRegistryResponse,
@@ -1558,7 +1557,7 @@ export const createSchema: API.OperationMethod<
   CreateSchemaRequest,
   CreateSchemaResponse,
   CreateSchemaError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateSchemaRequest,
   output: CreateSchemaResponse,
@@ -1588,7 +1587,7 @@ export const deleteDiscoverer: API.OperationMethod<
   DeleteDiscovererRequest,
   DeleteDiscovererResponse,
   DeleteDiscovererError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteDiscovererRequest,
   output: DeleteDiscovererResponse,
@@ -1620,7 +1619,7 @@ export const deleteRegistry: API.OperationMethod<
   DeleteRegistryRequest,
   DeleteRegistryResponse,
   DeleteRegistryError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteRegistryRequest,
   output: DeleteRegistryResponse,
@@ -1652,7 +1651,7 @@ export const deleteResourcePolicy: API.OperationMethod<
   DeleteResourcePolicyRequest,
   DeleteResourcePolicyResponse,
   DeleteResourcePolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteResourcePolicyRequest,
   output: DeleteResourcePolicyResponse,
@@ -1684,7 +1683,7 @@ export const deleteSchema: API.OperationMethod<
   DeleteSchemaRequest,
   DeleteSchemaResponse,
   DeleteSchemaError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteSchemaRequest,
   output: DeleteSchemaResponse,
@@ -1716,7 +1715,7 @@ export const deleteSchemaVersion: API.OperationMethod<
   DeleteSchemaVersionRequest,
   DeleteSchemaVersionResponse,
   DeleteSchemaVersionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteSchemaVersionRequest,
   output: DeleteSchemaVersionResponse,
@@ -1748,7 +1747,7 @@ export const describeCodeBinding: API.OperationMethod<
   DescribeCodeBindingRequest,
   DescribeCodeBindingResponse,
   DescribeCodeBindingError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeCodeBindingRequest,
   output: DescribeCodeBindingResponse,
@@ -1780,7 +1779,7 @@ export const describeDiscoverer: API.OperationMethod<
   DescribeDiscovererRequest,
   DescribeDiscovererResponse,
   DescribeDiscovererError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeDiscovererRequest,
   output: DescribeDiscovererResponse,
@@ -1812,7 +1811,7 @@ export const describeRegistry: API.OperationMethod<
   DescribeRegistryRequest,
   DescribeRegistryResponse,
   DescribeRegistryError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeRegistryRequest,
   output: DescribeRegistryResponse,
@@ -1844,7 +1843,7 @@ export const describeSchema: API.OperationMethod<
   DescribeSchemaRequest,
   DescribeSchemaResponse,
   DescribeSchemaError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeSchemaRequest,
   output: DescribeSchemaResponse,
@@ -1877,7 +1876,7 @@ export const exportSchema: API.OperationMethod<
   ExportSchemaRequest,
   ExportSchemaResponse,
   ExportSchemaError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ExportSchemaRequest,
   output: ExportSchemaResponse,
@@ -1910,7 +1909,7 @@ export const getCodeBindingSource: API.OperationMethod<
   GetCodeBindingSourceRequest,
   GetCodeBindingSourceResponse,
   GetCodeBindingSourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetCodeBindingSourceRequest,
   output: GetCodeBindingSourceResponse,
@@ -1941,7 +1940,7 @@ export const getDiscoveredSchema: API.OperationMethod<
   GetDiscoveredSchemaRequest,
   GetDiscoveredSchemaResponse,
   GetDiscoveredSchemaError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetDiscoveredSchemaRequest,
   output: GetDiscoveredSchemaResponse,
@@ -1972,7 +1971,7 @@ export const getResourcePolicy: API.OperationMethod<
   GetResourcePolicyRequest,
   GetResourcePolicyResponse,
   GetResourcePolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetResourcePolicyRequest,
   output: GetResourcePolicyResponse,
@@ -2003,7 +2002,7 @@ export const listDiscoverers: API.PaginatedOperationMethod<
   ListDiscoverersRequest,
   ListDiscoverersResponse,
   ListDiscoverersError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   DiscovererSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDiscoverersRequest,
@@ -2040,7 +2039,7 @@ export const listRegistries: API.PaginatedOperationMethod<
   ListRegistriesRequest,
   ListRegistriesResponse,
   ListRegistriesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   RegistrySummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRegistriesRequest,
@@ -2077,7 +2076,7 @@ export const listSchemas: API.PaginatedOperationMethod<
   ListSchemasRequest,
   ListSchemasResponse,
   ListSchemasError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   SchemaSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSchemasRequest,
@@ -2115,7 +2114,7 @@ export const listSchemaVersions: API.PaginatedOperationMethod<
   ListSchemaVersionsRequest,
   ListSchemaVersionsResponse,
   ListSchemaVersionsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   SchemaVersionSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSchemaVersionsRequest,
@@ -2152,7 +2151,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -2184,7 +2183,7 @@ export const putCodeBinding: API.OperationMethod<
   PutCodeBindingRequest,
   PutCodeBindingResponse,
   PutCodeBindingError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PutCodeBindingRequest,
   output: PutCodeBindingResponse,
@@ -2219,7 +2218,7 @@ export const putResourcePolicy: API.OperationMethod<
   PutResourcePolicyRequest,
   PutResourcePolicyResponse,
   PutResourcePolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PutResourcePolicyRequest,
   output: PutResourcePolicyResponse,
@@ -2251,7 +2250,7 @@ export const searchSchemas: API.PaginatedOperationMethod<
   SearchSchemasRequest,
   SearchSchemasResponse,
   SearchSchemasError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   SearchSchemaSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchSchemasRequest,
@@ -2289,7 +2288,7 @@ export const startDiscoverer: API.OperationMethod<
   StartDiscovererRequest,
   StartDiscovererResponse,
   StartDiscovererError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartDiscovererRequest,
   output: StartDiscovererResponse,
@@ -2321,7 +2320,7 @@ export const stopDiscoverer: API.OperationMethod<
   StopDiscovererRequest,
   StopDiscovererResponse,
   StopDiscovererError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StopDiscovererRequest,
   output: StopDiscovererResponse,
@@ -2351,7 +2350,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -2379,7 +2378,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -2409,7 +2408,7 @@ export const updateDiscoverer: API.OperationMethod<
   UpdateDiscovererRequest,
   UpdateDiscovererResponse,
   UpdateDiscovererError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateDiscovererRequest,
   output: UpdateDiscovererResponse,
@@ -2441,7 +2440,7 @@ export const updateRegistry: API.OperationMethod<
   UpdateRegistryRequest,
   UpdateRegistryResponse,
   UpdateRegistryError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateRegistryRequest,
   output: UpdateRegistryResponse,
@@ -2474,7 +2473,7 @@ export const updateSchema: API.OperationMethod<
   UpdateSchemaRequest,
   UpdateSchemaResponse,
   UpdateSchemaError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateSchemaRequest,
   output: UpdateSchemaResponse,

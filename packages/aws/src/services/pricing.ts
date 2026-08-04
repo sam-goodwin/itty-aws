@@ -7,7 +7,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 const svc = T.AwsApiService({
   sdkId: "Pricing",
   serviceShapeName: "AWSPriceListService",
@@ -376,7 +375,7 @@ export const describeServices: API.PaginatedOperationMethod<
   DescribeServicesRequest,
   DescribeServicesResponse,
   DescribeServicesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   Service
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeServicesRequest,
@@ -417,7 +416,7 @@ export const getAttributeValues: API.PaginatedOperationMethod<
   GetAttributeValuesRequest,
   GetAttributeValuesResponse,
   GetAttributeValuesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   AttributeValue
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetAttributeValuesRequest,
@@ -459,7 +458,7 @@ export const getPriceListFileUrl: API.OperationMethod<
   GetPriceListFileUrlRequest,
   GetPriceListFileUrlResponse,
   GetPriceListFileUrlError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetPriceListFileUrlRequest,
   output: GetPriceListFileUrlResponse,
@@ -492,7 +491,7 @@ export const getProducts: API.PaginatedOperationMethod<
   GetProductsRequest,
   GetProductsResponse,
   GetProductsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   SynthesizedJsonPriceListJsonItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetProductsRequest,
@@ -536,7 +535,7 @@ export const listPriceLists: API.PaginatedOperationMethod<
   ListPriceListsRequest,
   ListPriceListsResponse,
   ListPriceListsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   PriceList
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPriceListsRequest,

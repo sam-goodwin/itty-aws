@@ -7,7 +7,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region as Rgn } from "../region.ts";
 const svc = T.AwsApiService({
   sdkId: "ARC Region switch",
   serviceShapeName: "ArcRegionSwitch",
@@ -2367,7 +2366,7 @@ export const approvePlanExecutionStep: API.OperationMethod<
   ApprovePlanExecutionStepRequest,
   ApprovePlanExecutionStepResponse,
   ApprovePlanExecutionStepError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ApprovePlanExecutionStepRequest,
   output: ApprovePlanExecutionStepResponse,
@@ -2390,7 +2389,7 @@ export const cancelPlanExecution: API.OperationMethod<
   CancelPlanExecutionRequest,
   CancelPlanExecutionResponse,
   CancelPlanExecutionError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CancelPlanExecutionRequest,
   output: CancelPlanExecutionResponse,
@@ -2410,7 +2409,7 @@ export const createPlan: API.OperationMethod<
   CreatePlanRequest,
   CreatePlanResponse,
   CreatePlanError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreatePlanRequest,
   output: CreatePlanResponse,
@@ -2433,7 +2432,7 @@ export const deletePlan: API.OperationMethod<
   DeletePlanRequest,
   DeletePlanResponse,
   DeletePlanError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeletePlanRequest,
   output: DeletePlanResponse,
@@ -2451,7 +2450,7 @@ export const getPlan: API.OperationMethod<
   GetPlanRequest,
   GetPlanResponse,
   GetPlanError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetPlanRequest,
   output: GetPlanResponse,
@@ -2472,7 +2471,7 @@ export const getPlanEvaluationStatus: API.PaginatedOperationMethod<
   GetPlanEvaluationStatusRequest,
   GetPlanEvaluationStatusResponse,
   GetPlanEvaluationStatusError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ResourceWarning
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetPlanEvaluationStatusRequest,
@@ -2500,7 +2499,7 @@ export const getPlanExecution: API.PaginatedOperationMethod<
   GetPlanExecutionRequest,
   GetPlanExecutionResponse,
   GetPlanExecutionError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   StepState
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetPlanExecutionRequest,
@@ -2528,7 +2527,7 @@ export const getPlanInRegion: API.OperationMethod<
   GetPlanInRegionRequest,
   GetPlanInRegionResponse,
   GetPlanInRegionError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetPlanInRegionRequest,
   output: GetPlanInRegionResponse,
@@ -2549,7 +2548,7 @@ export const listPlanExecutionEvents: API.PaginatedOperationMethod<
   ListPlanExecutionEventsRequest,
   ListPlanExecutionEventsResponse,
   ListPlanExecutionEventsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ExecutionEvent
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPlanExecutionEventsRequest,
@@ -2577,7 +2576,7 @@ export const listPlanExecutions: API.PaginatedOperationMethod<
   ListPlanExecutionsRequest,
   ListPlanExecutionsResponse,
   ListPlanExecutionsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   AbbreviatedExecution
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPlanExecutionsRequest,
@@ -2602,7 +2601,7 @@ export const listPlans: API.PaginatedOperationMethod<
   ListPlansRequest,
   ListPlansResponse,
   ListPlansError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   AbbreviatedPlan
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPlansRequest,
@@ -2627,7 +2626,7 @@ export const listPlansInRegion: API.PaginatedOperationMethod<
   ListPlansInRegionRequest,
   ListPlansInRegionResponse,
   ListPlansInRegionError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   AbbreviatedPlan
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPlansInRegionRequest,
@@ -2657,7 +2656,7 @@ export const listRoute53HealthChecks: API.PaginatedOperationMethod<
   ListRoute53HealthChecksRequest,
   ListRoute53HealthChecksResponse,
   ListRoute53HealthChecksError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   Route53HealthCheck
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRoute53HealthChecksRequest,
@@ -2692,7 +2691,7 @@ export const listRoute53HealthChecksInRegion: API.PaginatedOperationMethod<
   ListRoute53HealthChecksInRegionRequest,
   ListRoute53HealthChecksInRegionResponse,
   ListRoute53HealthChecksInRegionError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   Route53HealthCheck
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRoute53HealthChecksInRegionRequest,
@@ -2725,7 +2724,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -2750,7 +2749,7 @@ export const startPlanExecution: API.OperationMethod<
   StartPlanExecutionRequest,
   StartPlanExecutionResponse,
   StartPlanExecutionError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartPlanExecutionRequest,
   output: StartPlanExecutionResponse,
@@ -2776,7 +2775,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -2797,7 +2796,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -2815,7 +2814,7 @@ export const updatePlan: API.OperationMethod<
   UpdatePlanRequest,
   UpdatePlanResponse,
   UpdatePlanError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdatePlanRequest,
   output: UpdatePlanResponse,
@@ -2837,7 +2836,7 @@ export const updatePlanExecution: API.OperationMethod<
   UpdatePlanExecutionRequest,
   UpdatePlanExecutionResponse,
   UpdatePlanExecutionError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdatePlanExecutionRequest,
   output: UpdatePlanExecutionResponse,
@@ -2862,7 +2861,7 @@ export const updatePlanExecutionStep: API.OperationMethod<
   UpdatePlanExecutionStepRequest,
   UpdatePlanExecutionStepResponse,
   UpdatePlanExecutionStepError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdatePlanExecutionStepRequest,
   output: UpdatePlanExecutionStepResponse,

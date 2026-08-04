@@ -8,7 +8,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 import { SensitiveString } from "../sensitive.ts";
 const svc = T.AwsApiService({
   sdkId: "TrustedAdvisor",
@@ -1136,7 +1135,7 @@ export const batchUpdateRecommendationResourceExclusion: API.OperationMethod<
   BatchUpdateRecommendationResourceExclusionRequest,
   BatchUpdateRecommendationResourceExclusionResponse,
   BatchUpdateRecommendationResourceExclusionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: BatchUpdateRecommendationResourceExclusionRequest,
   output: BatchUpdateRecommendationResourceExclusionResponse,
@@ -1166,7 +1165,7 @@ export const getOrganizationRecommendation: API.OperationMethod<
   GetOrganizationRecommendationRequest,
   GetOrganizationRecommendationResponse,
   GetOrganizationRecommendationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetOrganizationRecommendationRequest,
   output: GetOrganizationRecommendationResponse,
@@ -1196,7 +1195,7 @@ export const getRecommendation: API.OperationMethod<
   GetRecommendationRequest,
   GetRecommendationResponse,
   GetRecommendationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetRecommendationRequest,
   output: GetRecommendationResponse,
@@ -1225,7 +1224,7 @@ export const listChecks: API.PaginatedOperationMethod<
   ListChecksRequest,
   ListChecksResponse,
   ListChecksError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   CheckSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListChecksRequest,
@@ -1261,7 +1260,7 @@ export const listOrganizationRecommendationAccounts: API.PaginatedOperationMetho
   ListOrganizationRecommendationAccountsRequest,
   ListOrganizationRecommendationAccountsResponse,
   ListOrganizationRecommendationAccountsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   AccountRecommendationLifecycleSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationRecommendationAccountsRequest,
@@ -1298,7 +1297,7 @@ export const listOrganizationRecommendationResources: API.PaginatedOperationMeth
   ListOrganizationRecommendationResourcesRequest,
   ListOrganizationRecommendationResourcesResponse,
   ListOrganizationRecommendationResourcesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   OrganizationRecommendationResourceSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationRecommendationResourcesRequest,
@@ -1334,7 +1333,7 @@ export const listOrganizationRecommendations: API.PaginatedOperationMethod<
   ListOrganizationRecommendationsRequest,
   ListOrganizationRecommendationsResponse,
   ListOrganizationRecommendationsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   OrganizationRecommendationSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationRecommendationsRequest,
@@ -1370,7 +1369,7 @@ export const listRecommendationResources: API.PaginatedOperationMethod<
   ListRecommendationResourcesRequest,
   ListRecommendationResourcesResponse,
   ListRecommendationResourcesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   RecommendationResourceSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRecommendationResourcesRequest,
@@ -1406,7 +1405,7 @@ export const listRecommendations: API.PaginatedOperationMethod<
   ListRecommendationsRequest,
   ListRecommendationsResponse,
   ListRecommendationsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   RecommendationSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRecommendationsRequest,
@@ -1443,7 +1442,7 @@ export const updateOrganizationRecommendationLifecycle: API.OperationMethod<
   UpdateOrganizationRecommendationLifecycleRequest,
   UpdateOrganizationRecommendationLifecycleResponse,
   UpdateOrganizationRecommendationLifecycleError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateOrganizationRecommendationLifecycleRequest,
   output: UpdateOrganizationRecommendationLifecycleResponse,
@@ -1475,7 +1474,7 @@ export const updateRecommendationLifecycle: API.OperationMethod<
   UpdateRecommendationLifecycleRequest,
   UpdateRecommendationLifecycleResponse,
   UpdateRecommendationLifecycleError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateRecommendationLifecycleRequest,
   output: UpdateRecommendationLifecycleResponse,

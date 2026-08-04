@@ -8,7 +8,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 const svc = T.AwsApiService({
   sdkId: "Transcribe Streaming",
   serviceShapeName: "Transcribe",
@@ -2002,7 +2001,7 @@ export const getMedicalScribeStream: API.OperationMethod<
   GetMedicalScribeStreamRequest,
   GetMedicalScribeStreamResponse,
   GetMedicalScribeStreamError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetMedicalScribeStreamRequest,
   output: GetMedicalScribeStreamResponse,
@@ -2043,7 +2042,7 @@ export const startCallAnalyticsStreamTranscription: API.OperationMethod<
   StartCallAnalyticsStreamTranscriptionRequest,
   StartCallAnalyticsStreamTranscriptionResponse,
   StartCallAnalyticsStreamTranscriptionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartCallAnalyticsStreamTranscriptionRequest,
   output: StartCallAnalyticsStreamTranscriptionResponse,
@@ -2101,7 +2100,7 @@ export const startMedicalScribeStream: API.OperationMethod<
   StartMedicalScribeStreamRequest,
   StartMedicalScribeStreamResponse,
   StartMedicalScribeStreamError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartMedicalScribeStreamRequest,
   output: StartMedicalScribeStreamResponse,
@@ -2145,7 +2144,7 @@ export const startMedicalStreamTranscription: API.OperationMethod<
   StartMedicalStreamTranscriptionRequest,
   StartMedicalStreamTranscriptionResponse,
   StartMedicalStreamTranscriptionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartMedicalStreamTranscriptionRequest,
   output: StartMedicalStreamTranscriptionResponse,
@@ -2186,7 +2185,7 @@ export const startStreamTranscription: API.OperationMethod<
   StartStreamTranscriptionRequest,
   StartStreamTranscriptionResponse,
   StartStreamTranscriptionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartStreamTranscriptionRequest,
   output: StartStreamTranscriptionResponse,

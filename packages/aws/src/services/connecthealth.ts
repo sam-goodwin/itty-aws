@@ -9,7 +9,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 import { SensitiveString } from "../sensitive.ts";
 const svc = T.AwsApiService({
   sdkId: "ConnectHealth",
@@ -1371,7 +1370,7 @@ export const activateSubscription: API.OperationMethod<
   ActivateSubscriptionInput,
   ActivateSubscriptionOutput,
   ActivateSubscriptionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ActivateSubscriptionInput,
   output: ActivateSubscriptionOutput,
@@ -1394,7 +1393,7 @@ export const createDomain: API.OperationMethod<
   CreateDomainInput,
   CreateDomainOutput,
   CreateDomainError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateDomainInput,
   output: CreateDomainOutput,
@@ -1418,7 +1417,7 @@ export const createSubscription: API.OperationMethod<
   CreateSubscriptionInput,
   CreateSubscriptionOutput,
   CreateSubscriptionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateSubscriptionInput,
   output: CreateSubscriptionOutput,
@@ -1447,7 +1446,7 @@ export const deactivateSubscription: API.OperationMethod<
   DeactivateSubscriptionInput,
   DeactivateSubscriptionOutput,
   DeactivateSubscriptionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeactivateSubscriptionInput,
   output: DeactivateSubscriptionOutput,
@@ -1470,7 +1469,7 @@ export const deleteDomain: API.OperationMethod<
   DeleteDomainInput,
   DeleteDomainOutput,
   DeleteDomainError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteDomainInput,
   output: DeleteDomainOutput,
@@ -1488,7 +1487,7 @@ export const getDomain: API.OperationMethod<
   GetDomainInput,
   GetDomainOutput,
   GetDomainError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetDomainInput,
   output: GetDomainOutput,
@@ -1512,7 +1511,7 @@ export const getMedicalScribeListeningSession: API.OperationMethod<
   GetMedicalScribeListeningSessionInput,
   GetMedicalScribeListeningSessionOutput,
   GetMedicalScribeListeningSessionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetMedicalScribeListeningSessionInput,
   output: GetMedicalScribeListeningSessionOutput,
@@ -1543,7 +1542,7 @@ export const getPatientInsightsJob: API.OperationMethod<
   GetPatientInsightsJobRequest,
   GetPatientInsightsJobResponse,
   GetPatientInsightsJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetPatientInsightsJobRequest,
   output: GetPatientInsightsJobResponse,
@@ -1573,7 +1572,7 @@ export const getSubscription: API.OperationMethod<
   GetSubscriptionInput,
   GetSubscriptionOutput,
   GetSubscriptionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetSubscriptionInput,
   output: GetSubscriptionOutput,
@@ -1596,7 +1595,7 @@ export const listDomains: API.PaginatedOperationMethod<
   ListDomainsInput,
   ListDomainsOutput,
   ListDomainsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   DomainSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDomainsInput,
@@ -1626,7 +1625,7 @@ export const listSubscriptions: API.PaginatedOperationMethod<
   ListSubscriptionsInput,
   ListSubscriptionsOutput,
   ListSubscriptionsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   SubscriptionDescription
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSubscriptionsInput,
@@ -1656,7 +1655,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceInput,
   ListTagsForResourceOutput,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceInput,
   output: ListTagsForResourceOutput,
@@ -1681,7 +1680,7 @@ export const startMedicalScribeListeningSession: API.OperationMethod<
   StartMedicalScribeListeningSessionInput,
   StartMedicalScribeListeningSessionOutput,
   StartMedicalScribeListeningSessionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartMedicalScribeListeningSessionInput,
   output: StartMedicalScribeListeningSessionOutput,
@@ -1714,7 +1713,7 @@ export const startPatientInsightsJob: API.OperationMethod<
   StartPatientInsightsJobRequest,
   StartPatientInsightsJobResponse,
   StartPatientInsightsJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartPatientInsightsJobRequest,
   output: StartPatientInsightsJobResponse,
@@ -1740,7 +1739,7 @@ export const tagResource: API.OperationMethod<
   TagResourceInput,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: TagResourceInput,
   output: TagResourceResponse,
@@ -1758,7 +1757,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceInput,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceInput,
   output: UntagResourceResponse,

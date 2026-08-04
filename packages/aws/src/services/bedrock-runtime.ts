@@ -9,7 +9,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 import { SensitiveString, SensitiveBlob } from "../sensitive.ts";
 const svc = T.AwsApiService({
   sdkId: "Bedrock Runtime",
@@ -3680,7 +3679,7 @@ export const applyGuardrail: API.OperationMethod<
   ApplyGuardrailRequest,
   ApplyGuardrailResponse,
   ApplyGuardrailError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ApplyGuardrailRequest,
   output: ApplyGuardrailResponse,
@@ -3732,7 +3731,7 @@ export const converse: API.OperationMethod<
   ConverseRequest,
   ConverseResponse,
   ConverseError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ConverseRequest,
   output: ConverseResponse,
@@ -3790,7 +3789,7 @@ export const converseStream: API.OperationMethod<
   ConverseStreamRequest,
   ConverseStreamResponse,
   ConverseStreamError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ConverseStreamRequest,
   output: ConverseStreamResponse,
@@ -3843,7 +3842,7 @@ export const countTokens: API.OperationMethod<
   CountTokensRequest,
   CountTokensResponse,
   CountTokensError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CountTokensRequest,
   output: CountTokensResponse,
@@ -3873,7 +3872,7 @@ export const getAsyncInvoke: API.OperationMethod<
   GetAsyncInvokeRequest,
   GetAsyncInvokeResponse,
   GetAsyncInvokeError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetAsyncInvokeRequest,
   output: GetAsyncInvokeResponse,
@@ -3902,7 +3901,7 @@ export const invokeGuardrailChecks: API.OperationMethod<
   InvokeGuardrailChecksRequest,
   InvokeGuardrailChecksResponse,
   InvokeGuardrailChecksError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: InvokeGuardrailChecksRequest,
   output: InvokeGuardrailChecksResponse,
@@ -3945,7 +3944,7 @@ export const invokeModel: API.OperationMethod<
   InvokeModelRequest,
   InvokeModelResponse,
   InvokeModelError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: InvokeModelRequest,
   output: InvokeModelResponse,
@@ -3988,7 +3987,7 @@ export const invokeModelWithBidirectionalStream: API.OperationMethod<
   InvokeModelWithBidirectionalStreamRequest,
   InvokeModelWithBidirectionalStreamResponse,
   InvokeModelWithBidirectionalStreamError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: InvokeModelWithBidirectionalStreamRequest,
   output: InvokeModelWithBidirectionalStreamResponse,
@@ -4042,7 +4041,7 @@ export const invokeModelWithResponseStream: API.OperationMethod<
   InvokeModelWithResponseStreamRequest,
   InvokeModelWithResponseStreamResponse,
   InvokeModelWithResponseStreamError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: InvokeModelWithResponseStreamRequest,
   output: InvokeModelWithResponseStreamResponse,
@@ -4077,7 +4076,7 @@ export const listAsyncInvokes: API.PaginatedOperationMethod<
   ListAsyncInvokesRequest,
   ListAsyncInvokesResponse,
   ListAsyncInvokesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   AsyncInvokeSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAsyncInvokesRequest,
@@ -4120,7 +4119,7 @@ export const startAsyncInvoke: API.OperationMethod<
   StartAsyncInvokeRequest,
   StartAsyncInvokeResponse,
   StartAsyncInvokeError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartAsyncInvokeRequest,
   output: StartAsyncInvokeResponse,

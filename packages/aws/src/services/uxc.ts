@@ -7,7 +7,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region as Rgn } from "../region.ts";
 const svc = T.AwsApiService({
   sdkId: "uxc",
   serviceShapeName: "AWSAccountUXSetting",
@@ -230,7 +229,7 @@ export const getAccountCustomizations: API.OperationMethod<
   GetAccountCustomizationsInput,
   GetAccountCustomizationsOutput,
   GetAccountCustomizationsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetAccountCustomizationsInput,
   output: GetAccountCustomizationsOutput,
@@ -260,7 +259,7 @@ export const listServices: API.PaginatedOperationMethod<
   ListServicesInput,
   ListServicesOutput,
   ListServicesError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   Service
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListServicesInput,
@@ -296,7 +295,7 @@ export const updateAccountCustomizations: API.OperationMethod<
   UpdateAccountCustomizationsInput,
   UpdateAccountCustomizationsOutput,
   UpdateAccountCustomizationsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateAccountCustomizationsInput,
   output: UpdateAccountCustomizationsOutput,

@@ -7,7 +7,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 const ns = T.XmlNamespace("http://ec2.amazon.com/awsposiedon/V2015_11_01/");
 const svc = T.AwsApiService({
   sdkId: "Application Discovery Service",
@@ -1781,7 +1780,7 @@ export const associateConfigurationItemsToApplication: API.OperationMethod<
   AssociateConfigurationItemsToApplicationRequest,
   AssociateConfigurationItemsToApplicationResponse,
   AssociateConfigurationItemsToApplicationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: AssociateConfigurationItemsToApplicationRequest,
   output: AssociateConfigurationItemsToApplicationResponse,
@@ -1812,7 +1811,7 @@ export const batchDeleteAgents: API.OperationMethod<
   BatchDeleteAgentsRequest,
   BatchDeleteAgentsResponse,
   BatchDeleteAgentsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: BatchDeleteAgentsRequest,
   output: BatchDeleteAgentsResponse,
@@ -1848,7 +1847,7 @@ export const batchDeleteImportData: API.OperationMethod<
   BatchDeleteImportDataRequest,
   BatchDeleteImportDataResponse,
   BatchDeleteImportDataError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: BatchDeleteImportDataRequest,
   output: BatchDeleteImportDataResponse,
@@ -1878,7 +1877,7 @@ export const createApplication: API.OperationMethod<
   CreateApplicationRequest,
   CreateApplicationResponse,
   CreateApplicationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateApplicationRequest,
   output: CreateApplicationResponse,
@@ -1912,7 +1911,7 @@ export const createTags: API.OperationMethod<
   CreateTagsRequest,
   CreateTagsResponse,
   CreateTagsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateTagsRequest,
   output: CreateTagsResponse,
@@ -1944,7 +1943,7 @@ export const deleteApplications: API.OperationMethod<
   DeleteApplicationsRequest,
   DeleteApplicationsResponse,
   DeleteApplicationsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteApplicationsRequest,
   output: DeleteApplicationsResponse,
@@ -1976,7 +1975,7 @@ export const deleteTags: API.OperationMethod<
   DeleteTagsRequest,
   DeleteTagsResponse,
   DeleteTagsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteTagsRequest,
   output: DeleteTagsResponse,
@@ -2009,7 +2008,7 @@ export const describeAgents: API.PaginatedOperationMethod<
   DescribeAgentsRequest,
   DescribeAgentsResponse,
   DescribeAgentsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   AgentInfo
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeAgentsRequest,
@@ -2045,7 +2044,7 @@ export const describeBatchDeleteConfigurationTask: API.OperationMethod<
   DescribeBatchDeleteConfigurationTaskRequest,
   DescribeBatchDeleteConfigurationTaskResponse,
   DescribeBatchDeleteConfigurationTaskError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeBatchDeleteConfigurationTaskRequest,
   output: DescribeBatchDeleteConfigurationTaskResponse,
@@ -2092,7 +2091,7 @@ export const describeConfigurations: API.OperationMethod<
   DescribeConfigurationsRequest,
   DescribeConfigurationsResponse,
   DescribeConfigurationsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeConfigurationsRequest,
   output: DescribeConfigurationsResponse,
@@ -2126,7 +2125,7 @@ export const describeContinuousExports: API.PaginatedOperationMethod<
   DescribeContinuousExportsRequest,
   DescribeContinuousExportsResponse,
   DescribeContinuousExportsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ContinuousExportDescription
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeContinuousExportsRequest,
@@ -2166,7 +2165,7 @@ export const describeExportConfigurations: API.PaginatedOperationMethod<
   DescribeExportConfigurationsRequest,
   DescribeExportConfigurationsResponse,
   DescribeExportConfigurationsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ExportInfo
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeExportConfigurationsRequest,
@@ -2205,7 +2204,7 @@ export const describeExportTasks: API.PaginatedOperationMethod<
   DescribeExportTasksRequest,
   DescribeExportTasksResponse,
   DescribeExportTasksError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ExportInfo
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeExportTasksRequest,
@@ -2243,7 +2242,7 @@ export const describeImportTasks: API.PaginatedOperationMethod<
   DescribeImportTasksRequest,
   DescribeImportTasksResponse,
   DescribeImportTasksError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ImportTask
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeImportTasksRequest,
@@ -2293,7 +2292,7 @@ export const describeTags: API.PaginatedOperationMethod<
   DescribeTagsRequest,
   DescribeTagsResponse,
   DescribeTagsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ConfigurationTag
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeTagsRequest,
@@ -2331,7 +2330,7 @@ export const disassociateConfigurationItemsFromApplication: API.OperationMethod<
   DisassociateConfigurationItemsFromApplicationRequest,
   DisassociateConfigurationItemsFromApplicationResponse,
   DisassociateConfigurationItemsFromApplicationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DisassociateConfigurationItemsFromApplicationRequest,
   output: DisassociateConfigurationItemsFromApplicationResponse,
@@ -2368,7 +2367,7 @@ export const exportConfigurations: API.OperationMethod<
   ExportConfigurationsRequest,
   ExportConfigurationsResponse,
   ExportConfigurationsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ExportConfigurationsRequest,
   output: ExportConfigurationsResponse,
@@ -2402,7 +2401,7 @@ export const getDiscoverySummary: API.OperationMethod<
   GetDiscoverySummaryRequest,
   GetDiscoverySummaryResponse,
   GetDiscoverySummaryError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetDiscoverySummaryRequest,
   output: GetDiscoverySummaryResponse,
@@ -2435,7 +2434,7 @@ export const listConfigurations: API.PaginatedOperationMethod<
   ListConfigurationsRequest,
   ListConfigurationsResponse,
   ListConfigurationsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   { [key: string]: string | undefined }
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListConfigurationsRequest,
@@ -2474,7 +2473,7 @@ export const listServerNeighbors: API.OperationMethod<
   ListServerNeighborsRequest,
   ListServerNeighborsResponse,
   ListServerNeighborsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListServerNeighborsRequest,
   output: ListServerNeighborsResponse,
@@ -2507,7 +2506,7 @@ export const startBatchDeleteConfigurationTask: API.OperationMethod<
   StartBatchDeleteConfigurationTaskRequest,
   StartBatchDeleteConfigurationTaskResponse,
   StartBatchDeleteConfigurationTaskError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartBatchDeleteConfigurationTaskRequest,
   output: StartBatchDeleteConfigurationTaskResponse,
@@ -2542,7 +2541,7 @@ export const startContinuousExport: API.OperationMethod<
   StartContinuousExportRequest,
   StartContinuousExportResponse,
   StartContinuousExportError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartContinuousExportRequest,
   output: StartContinuousExportResponse,
@@ -2575,7 +2574,7 @@ export const startDataCollectionByAgentIds: API.OperationMethod<
   StartDataCollectionByAgentIdsRequest,
   StartDataCollectionByAgentIdsResponse,
   StartDataCollectionByAgentIdsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartDataCollectionByAgentIdsRequest,
   output: StartDataCollectionByAgentIdsResponse,
@@ -2629,7 +2628,7 @@ export const startExportTask: API.OperationMethod<
   StartExportTaskRequest,
   StartExportTaskResponse,
   StartExportTaskError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartExportTaskRequest,
   output: StartExportTaskResponse,
@@ -2688,7 +2687,7 @@ export const startImportTask: API.OperationMethod<
   StartImportTaskRequest,
   StartImportTaskResponse,
   StartImportTaskError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartImportTaskRequest,
   output: StartImportTaskResponse,
@@ -2722,7 +2721,7 @@ export const stopContinuousExport: API.OperationMethod<
   StopContinuousExportRequest,
   StopContinuousExportResponse,
   StopContinuousExportError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StopContinuousExportRequest,
   output: StopContinuousExportResponse,
@@ -2755,7 +2754,7 @@ export const stopDataCollectionByAgentIds: API.OperationMethod<
   StopDataCollectionByAgentIdsRequest,
   StopDataCollectionByAgentIdsResponse,
   StopDataCollectionByAgentIdsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StopDataCollectionByAgentIdsRequest,
   output: StopDataCollectionByAgentIdsResponse,
@@ -2785,7 +2784,7 @@ export const updateApplication: API.OperationMethod<
   UpdateApplicationRequest,
   UpdateApplicationResponse,
   UpdateApplicationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateApplicationRequest,
   output: UpdateApplicationResponse,

@@ -7,7 +7,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 const svc = T.AwsApiService({
   sdkId: "Route53Profiles",
   serviceShapeName: "Route53Profiles",
@@ -833,7 +832,7 @@ export const associateProfile: API.OperationMethod<
   AssociateProfileRequest,
   AssociateProfileResponse,
   AssociateProfileError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: AssociateProfileRequest,
   output: AssociateProfileResponse,
@@ -869,7 +868,7 @@ export const associateResourceToProfile: API.OperationMethod<
   AssociateResourceToProfileRequest,
   AssociateResourceToProfileResponse,
   AssociateResourceToProfileError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: AssociateResourceToProfileRequest,
   output: AssociateResourceToProfileResponse,
@@ -902,7 +901,7 @@ export const createProfile: API.OperationMethod<
   CreateProfileRequest,
   CreateProfileResponse,
   CreateProfileError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateProfileRequest,
   output: CreateProfileResponse,
@@ -932,7 +931,7 @@ export const deleteProfile: API.OperationMethod<
   DeleteProfileRequest,
   DeleteProfileResponse,
   DeleteProfileError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteProfileRequest,
   output: DeleteProfileResponse,
@@ -963,7 +962,7 @@ export const disassociateProfile: API.OperationMethod<
   DisassociateProfileRequest,
   DisassociateProfileResponse,
   DisassociateProfileError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DisassociateProfileRequest,
   output: DisassociateProfileResponse,
@@ -997,7 +996,7 @@ export const disassociateResourceFromProfile: API.OperationMethod<
   DisassociateResourceFromProfileRequest,
   DisassociateResourceFromProfileResponse,
   DisassociateResourceFromProfileError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DisassociateResourceFromProfileRequest,
   output: DisassociateResourceFromProfileResponse,
@@ -1029,7 +1028,7 @@ export const getProfile: API.OperationMethod<
   GetProfileRequest,
   GetProfileResponse,
   GetProfileError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetProfileRequest,
   output: GetProfileResponse,
@@ -1057,7 +1056,7 @@ export const getProfileAssociation: API.OperationMethod<
   GetProfileAssociationRequest,
   GetProfileAssociationResponse,
   GetProfileAssociationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetProfileAssociationRequest,
   output: GetProfileAssociationResponse,
@@ -1086,7 +1085,7 @@ export const getProfileResourceAssociation: API.OperationMethod<
   GetProfileResourceAssociationRequest,
   GetProfileResourceAssociationResponse,
   GetProfileResourceAssociationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetProfileResourceAssociationRequest,
   output: GetProfileResourceAssociationResponse,
@@ -1116,7 +1115,7 @@ export const listProfileAssociations: API.PaginatedOperationMethod<
   ListProfileAssociationsRequest,
   ListProfileAssociationsResponse,
   ListProfileAssociationsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ProfileAssociation
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProfileAssociationsRequest,
@@ -1155,7 +1154,7 @@ export const listProfileResourceAssociations: API.PaginatedOperationMethod<
   ListProfileResourceAssociationsRequest,
   ListProfileResourceAssociationsResponse,
   ListProfileResourceAssociationsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ProfileResourceAssociation
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProfileResourceAssociationsRequest,
@@ -1194,7 +1193,7 @@ export const listProfiles: API.PaginatedOperationMethod<
   ListProfilesRequest,
   ListProfilesResponse,
   ListProfilesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ProfileSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProfilesRequest,
@@ -1231,7 +1230,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -1260,7 +1259,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -1289,7 +1288,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -1322,7 +1321,7 @@ export const updateProfileResourceAssociation: API.OperationMethod<
   UpdateProfileResourceAssociationRequest,
   UpdateProfileResourceAssociationResponse,
   UpdateProfileResourceAssociationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateProfileResourceAssociationRequest,
   output: UpdateProfileResourceAssociationResponse,

@@ -8,7 +8,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 import { SensitiveString, SensitiveBlob } from "../sensitive.ts";
 const svc = T.AwsApiService({
   sdkId: "Medical Imaging",
@@ -1465,7 +1464,7 @@ export const copyImageSet: API.OperationMethod<
   CopyImageSetRequest,
   CopyImageSetResponse,
   CopyImageSetError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CopyImageSetRequest,
   output: CopyImageSetResponse,
@@ -1500,7 +1499,7 @@ export const createDatastore: API.OperationMethod<
   CreateDatastoreRequest,
   CreateDatastoreResponse,
   CreateDatastoreError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateDatastoreRequest,
   output: CreateDatastoreResponse,
@@ -1535,7 +1534,7 @@ export const deleteDatastore: API.OperationMethod<
   DeleteDatastoreRequest,
   DeleteDatastoreResponse,
   DeleteDatastoreError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteDatastoreRequest,
   output: DeleteDatastoreResponse,
@@ -1567,7 +1566,7 @@ export const deleteImageSet: API.OperationMethod<
   DeleteImageSetRequest,
   DeleteImageSetResponse,
   DeleteImageSetError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteImageSetRequest,
   output: DeleteImageSetResponse,
@@ -1599,7 +1598,7 @@ export const getDatastore: API.OperationMethod<
   GetDatastoreRequest,
   GetDatastoreResponse,
   GetDatastoreError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetDatastoreRequest,
   output: GetDatastoreResponse,
@@ -1632,7 +1631,7 @@ export const getDICOMImportJob: API.OperationMethod<
   GetDICOMImportJobRequest,
   GetDICOMImportJobResponse,
   GetDICOMImportJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetDICOMImportJobRequest,
   output: GetDICOMImportJobResponse,
@@ -1666,7 +1665,7 @@ export const getImageFrame: API.OperationMethod<
   GetImageFrameRequest,
   GetImageFrameResponse,
   GetImageFrameError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetImageFrameRequest,
   output: GetImageFrameResponse,
@@ -1701,7 +1700,7 @@ export const getImageSet: API.OperationMethod<
   GetImageSetRequest,
   GetImageSetResponse,
   GetImageSetError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetImageSetRequest,
   output: GetImageSetResponse,
@@ -1734,7 +1733,7 @@ export const getImageSetMetadata: API.OperationMethod<
   GetImageSetMetadataRequest,
   GetImageSetMetadataResponse,
   GetImageSetMetadataError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetImageSetMetadataRequest,
   output: GetImageSetMetadataResponse,
@@ -1765,7 +1764,7 @@ export const listDatastores: API.PaginatedOperationMethod<
   ListDatastoresRequest,
   ListDatastoresResponse,
   ListDatastoresError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   DatastoreSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDatastoresRequest,
@@ -1802,7 +1801,7 @@ export const listDICOMImportJobs: API.PaginatedOperationMethod<
   ListDICOMImportJobsRequest,
   ListDICOMImportJobsResponse,
   ListDICOMImportJobsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   DICOMImportJobSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDICOMImportJobsRequest,
@@ -1841,7 +1840,7 @@ export const listImageSetVersions: API.PaginatedOperationMethod<
   ListImageSetVersionsRequest,
   ListImageSetVersionsResponse,
   ListImageSetVersionsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ImageSetProperties
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListImageSetVersionsRequest,
@@ -1880,7 +1879,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -1915,7 +1914,7 @@ export const searchImageSets: API.PaginatedOperationMethod<
   SearchImageSetsRequest,
   SearchImageSetsResponse,
   SearchImageSetsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ImageSetsMetadataSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchImageSetsRequest,
@@ -1956,7 +1955,7 @@ export const startDICOMImportJob: API.OperationMethod<
   StartDICOMImportJobRequest,
   StartDICOMImportJobResponse,
   StartDICOMImportJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartDICOMImportJobRequest,
   output: StartDICOMImportJobResponse,
@@ -1988,7 +1987,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -2018,7 +2017,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -2050,7 +2049,7 @@ export const updateImageSetMetadata: API.OperationMethod<
   UpdateImageSetMetadataRequest,
   UpdateImageSetMetadataResponse,
   UpdateImageSetMetadataError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateImageSetMetadataRequest,
   output: UpdateImageSetMetadataResponse,

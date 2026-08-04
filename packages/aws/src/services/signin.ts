@@ -8,7 +8,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 import { SensitiveString } from "../sensitive.ts";
 const svc = T.AwsApiService({ sdkId: "Signin", serviceShapeName: "Signin" });
 const auth = T.AwsAuthSigv4({ name: "signin" });
@@ -848,7 +847,7 @@ export const createOAuth2Token: API.OperationMethod<
   CreateOAuth2TokenRequest,
   CreateOAuth2TokenResponse,
   CreateOAuth2TokenError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateOAuth2TokenRequest,
   output: CreateOAuth2TokenResponse,
@@ -877,7 +876,7 @@ export const deleteConsoleAuthorizationConfiguration: API.OperationMethod<
   DeleteConsoleAuthorizationConfigurationInput,
   DeleteConsoleAuthorizationConfigurationOutput,
   DeleteConsoleAuthorizationConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteConsoleAuthorizationConfigurationInput,
   output: DeleteConsoleAuthorizationConfigurationOutput,
@@ -907,7 +906,7 @@ export const deleteResourcePermissionStatement: API.OperationMethod<
   DeleteResourcePermissionStatementInput,
   DeleteResourcePermissionStatementOutput,
   DeleteResourcePermissionStatementError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteResourcePermissionStatementInput,
   output: DeleteResourcePermissionStatementOutput,
@@ -937,7 +936,7 @@ export const getConsoleAuthorizationConfiguration: API.OperationMethod<
   GetConsoleAuthorizationConfigurationInput,
   GetConsoleAuthorizationConfigurationOutput,
   GetConsoleAuthorizationConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetConsoleAuthorizationConfigurationInput,
   output: GetConsoleAuthorizationConfigurationOutput,
@@ -966,7 +965,7 @@ export const getResourcePolicy: API.OperationMethod<
   GetResourcePolicyInput,
   GetResourcePolicyOutput,
   GetResourcePolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetResourcePolicyInput,
   output: GetResourcePolicyOutput,
@@ -995,7 +994,7 @@ export const listResourcePermissionStatements: API.PaginatedOperationMethod<
   ListResourcePermissionStatementsInput,
   ListResourcePermissionStatementsOutput,
   ListResourcePermissionStatementsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   PermissionStatementSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListResourcePermissionStatementsInput,
@@ -1033,7 +1032,7 @@ export const putConsoleAuthorizationConfiguration: API.OperationMethod<
   PutConsoleAuthorizationConfigurationInput,
   PutConsoleAuthorizationConfigurationOutput,
   PutConsoleAuthorizationConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PutConsoleAuthorizationConfigurationInput,
   output: PutConsoleAuthorizationConfigurationOutput,
@@ -1065,7 +1064,7 @@ export const putResourcePermissionStatement: API.OperationMethod<
   PutResourcePermissionStatementInput,
   PutResourcePermissionStatementOutput,
   PutResourcePermissionStatementError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PutResourcePermissionStatementInput,
   output: PutResourcePermissionStatementOutput,

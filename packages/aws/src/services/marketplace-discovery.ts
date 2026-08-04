@@ -7,7 +7,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 const svc = T.AwsApiService({
   sdkId: "Marketplace Discovery",
   serviceShapeName: "AWSMarketplaceDiscovery",
@@ -2150,7 +2149,7 @@ export const getListing: API.OperationMethod<
   GetListingInput,
   GetListingOutput,
   GetListingError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetListingInput,
   output: GetListingOutput,
@@ -2168,7 +2167,7 @@ export const getOffer: API.OperationMethod<
   GetOfferInput,
   GetOfferOutput,
   GetOfferError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetOfferInput,
   output: GetOfferOutput,
@@ -2186,7 +2185,7 @@ export const getOfferSet: API.OperationMethod<
   GetOfferSetInput,
   GetOfferSetOutput,
   GetOfferSetError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetOfferSetInput,
   output: GetOfferSetOutput,
@@ -2204,7 +2203,7 @@ export const getOfferTerms: API.PaginatedOperationMethod<
   GetOfferTermsInput,
   GetOfferTermsOutput,
   GetOfferTermsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   OfferTerm
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetOfferTermsInput,
@@ -2228,7 +2227,7 @@ export const getProduct: API.OperationMethod<
   GetProductInput,
   GetProductOutput,
   GetProductError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetProductInput,
   output: GetProductOutput,
@@ -2248,7 +2247,7 @@ export const listFulfillmentOptions: API.PaginatedOperationMethod<
   ListFulfillmentOptionsInput,
   ListFulfillmentOptionsOutput,
   ListFulfillmentOptionsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   FulfillmentOption
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFulfillmentOptionsInput,
@@ -2275,7 +2274,7 @@ export const listPurchaseOptions: API.PaginatedOperationMethod<
   ListPurchaseOptionsInput,
   ListPurchaseOptionsOutput,
   ListPurchaseOptionsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   PurchaseOptionSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPurchaseOptionsInput,
@@ -2299,7 +2298,7 @@ export const searchFacets: API.PaginatedOperationMethod<
   SearchFacetsInput,
   SearchFacetsOutput,
   SearchFacetsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchFacetsInput,
@@ -2323,7 +2322,7 @@ export const searchListings: API.PaginatedOperationMethod<
   SearchListingsInput,
   SearchListingsOutput,
   SearchListingsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ListingSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchListingsInput,

@@ -11,6 +11,8 @@ import * as Layer from "effect/Layer";
 import type { PlatformError } from "effect/PlatformError";
 import * as Redacted from "effect/Redacted";
 import type { HttpClientError } from "effect/unstable/http/HttpClientError";
+import { fromEnvironment as regionFromEnvironment } from "./region.ts";
+import type { RegionName } from "./region.ts";
 export * as AWSTypes from "@aws-sdk/types";
 
 export interface AwsCredentials {
@@ -21,11 +23,18 @@ export interface AwsCredentials {
 
 /**
  * Resolved credential values ready for request signing.
+ *
+ * `region` is not optional. Authenticating always establishes one — from the
+ * environment, the profile, or the SSO session — and carrying it here is what
+ * lets operations drop `Region` from their requirements: the region an
+ * operation uses is the one its credentials came with, unless a `Region`
+ * override says otherwise.
  */
 export interface ResolvedCredentials {
   readonly accessKeyId: Redacted.Redacted<string>;
   readonly secretAccessKey: Redacted.Redacted<string>;
   readonly sessionToken: Redacted.Redacted<string> | undefined;
+  readonly region: RegionName;
   readonly expiration?: number;
 }
 
@@ -38,6 +47,7 @@ export interface ResolvedCredentials {
  */
 export type CredentialsError =
   | AwsCredentialProviderError
+  | MissingRegion
   | ProfileNotFound
   | InvalidSSOProfile
   | InvalidSSOToken
@@ -59,22 +69,62 @@ export const mock = Layer.succeed(
     accessKeyId: Redacted.make("test"),
     secretAccessKey: Redacted.make("test"),
     sessionToken: Redacted.make("test"),
+    region: "us-east-1" as RegionName,
   }),
 );
 
 /**
  * Create resolved credentials from an AWS credential identity.
+ *
+ * The identity carries no region — `AwsCredentialIdentity` never has one —
+ * so the provider that resolved it supplies the region it authenticated
+ * against.
  */
 export const fromAwsCredentialIdentity = (
   identity: AwsCredentialIdentity,
+  region: RegionName,
 ): ResolvedCredentials => ({
   accessKeyId: Redacted.make(identity.accessKeyId),
   secretAccessKey: Redacted.make(identity.secretAccessKey),
   sessionToken: identity.sessionToken
     ? Redacted.make(identity.sessionToken)
     : undefined,
+  region,
   expiration: identity.expiration?.getTime(),
 });
+
+/**
+ * A credentials layer resolved a set of credentials but could not determine
+ * which region they belong to.
+ *
+ * A credential-resolution failure like any other, rather than a defect: the
+ * caller's fix is the same shape as for a missing key — configure the
+ * environment, the profile, or pass it explicitly.
+ */
+export class MissingRegion extends Data.TaggedError(
+  "Alchemy::AWS::MissingRegion",
+)<{
+  message: string;
+  hints?: ReadonlyArray<string>;
+}> {}
+
+/**
+ * The region a credentials provider authenticated against, from the
+ * environment. Node providers that read a profile override this with the
+ * profile's own region.
+ */
+export const regionFromEnv = regionFromEnvironment.pipe(
+  Effect.catchCause(
+    () =>
+      new MissingRegion({
+        message: "Resolved credentials, but no region is configured.",
+        hints: [
+          "Set AWS_REGION (or AWS_DEFAULT_REGION).",
+          'Or provide one explicitly with Region.of("us-east-1").',
+        ],
+      }),
+  ),
+);
 
 type ProviderName =
   | "env"
@@ -155,6 +205,11 @@ export const createCachedCredentialsEffect = <E, R>(
 export const createLazyProvider = (
   provider: (config: {}) => AwsCredentialIdentityProvider,
   providerName: ProviderName,
+  /**
+   * Where this provider's region comes from. Defaults to the environment;
+   * providers that read a profile pass the profile's region instead.
+   */
+  region: Effect.Effect<RegionName, CredentialsError> = regionFromEnv,
 ): Layer.Layer<Credentials> => {
   const resolve = Effect.gen(function* () {
     const hints = providerHints(providerName);
@@ -168,7 +223,7 @@ export const createLazyProvider = (
           hints,
         }),
     });
-    return fromAwsCredentialIdentity(identity);
+    return fromAwsCredentialIdentity(identity, yield* region);
   });
 
   return Layer.succeed(Credentials, createCachedCredentialsEffect(resolve));
@@ -180,10 +235,15 @@ export const createLazyProvider = (
  */
 export const fromCredentials = (
   credentials: AwsCredentialIdentity,
+  /** Defaults to the environment, like every other provider. */
+  region?: RegionName,
 ): Layer.Layer<Credentials> =>
   Layer.succeed(
     Credentials,
-    Effect.succeed(fromAwsCredentialIdentity(credentials)),
+    Effect.map(
+      region === undefined ? regionFromEnv : Effect.succeed(region),
+      (resolved) => fromAwsCredentialIdentity(credentials, resolved),
+    ),
   );
 
 export const fromHttp = () => createLazyProvider(_fromHttp, "http");

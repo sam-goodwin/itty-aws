@@ -8,7 +8,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 import { SensitiveString } from "../sensitive.ts";
 const ns = T.XmlNamespace("http://devicefarm.amazonaws.com/doc/2015-06-23/");
 const svc = T.AwsApiService({
@@ -3938,7 +3937,7 @@ export const createDevicePool: API.OperationMethod<
   CreateDevicePoolRequest,
   CreateDevicePoolResult,
   CreateDevicePoolError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateDevicePoolRequest,
   output: CreateDevicePoolResult,
@@ -3967,7 +3966,7 @@ export const createInstanceProfile: API.OperationMethod<
   CreateInstanceProfileRequest,
   CreateInstanceProfileResult,
   CreateInstanceProfileError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateInstanceProfileRequest,
   output: CreateInstanceProfileResult,
@@ -3995,7 +3994,7 @@ export const createNetworkProfile: API.OperationMethod<
   CreateNetworkProfileRequest,
   CreateNetworkProfileResult,
   CreateNetworkProfileError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateNetworkProfileRequest,
   output: CreateNetworkProfileResult,
@@ -4024,7 +4023,7 @@ export const createProject: API.OperationMethod<
   CreateProjectRequest,
   CreateProjectResult,
   CreateProjectError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateProjectRequest,
   output: CreateProjectResult,
@@ -4053,7 +4052,7 @@ export const createRemoteAccessSession: API.OperationMethod<
   CreateRemoteAccessSessionRequest,
   CreateRemoteAccessSessionResult,
   CreateRemoteAccessSessionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateRemoteAccessSessionRequest,
   output: CreateRemoteAccessSessionResult,
@@ -4081,7 +4080,7 @@ export const createTestGridProject: API.OperationMethod<
   CreateTestGridProjectRequest,
   CreateTestGridProjectResult,
   CreateTestGridProjectError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateTestGridProjectRequest,
   output: CreateTestGridProjectResult,
@@ -4104,7 +4103,7 @@ export const createTestGridUrl: API.OperationMethod<
   CreateTestGridUrlRequest,
   CreateTestGridUrlResult,
   CreateTestGridUrlError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateTestGridUrlRequest,
   output: CreateTestGridUrlResult,
@@ -4127,7 +4126,7 @@ export const createUpload: API.OperationMethod<
   CreateUploadRequest,
   CreateUploadResult,
   CreateUploadError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateUploadRequest,
   output: CreateUploadResult,
@@ -4155,7 +4154,7 @@ export const createVPCEConfiguration: API.OperationMethod<
   CreateVPCEConfigurationRequest,
   CreateVPCEConfigurationResult,
   CreateVPCEConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateVPCEConfigurationRequest,
   output: CreateVPCEConfigurationResult,
@@ -4179,7 +4178,7 @@ export const deleteDevicePool: API.OperationMethod<
   DeleteDevicePoolRequest,
   DeleteDevicePoolResult,
   DeleteDevicePoolError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteDevicePoolRequest,
   output: DeleteDevicePoolResult,
@@ -4207,7 +4206,7 @@ export const deleteInstanceProfile: API.OperationMethod<
   DeleteInstanceProfileRequest,
   DeleteInstanceProfileResult,
   DeleteInstanceProfileError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteInstanceProfileRequest,
   output: DeleteInstanceProfileResult,
@@ -4235,7 +4234,7 @@ export const deleteNetworkProfile: API.OperationMethod<
   DeleteNetworkProfileRequest,
   DeleteNetworkProfileResult,
   DeleteNetworkProfileError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteNetworkProfileRequest,
   output: DeleteNetworkProfileResult,
@@ -4265,7 +4264,7 @@ export const deleteProject: API.OperationMethod<
   DeleteProjectRequest,
   DeleteProjectResult,
   DeleteProjectError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteProjectRequest,
   output: DeleteProjectResult,
@@ -4295,7 +4294,7 @@ export const deleteRemoteAccessSession: API.OperationMethod<
   DeleteRemoteAccessSessionRequest,
   DeleteRemoteAccessSessionResult,
   DeleteRemoteAccessSessionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteRemoteAccessSessionRequest,
   output: DeleteRemoteAccessSessionResult,
@@ -4325,7 +4324,7 @@ export const deleteRun: API.OperationMethod<
   DeleteRunRequest,
   DeleteRunResult,
   DeleteRunError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteRunRequest,
   output: DeleteRunResult,
@@ -4355,7 +4354,7 @@ export const deleteTestGridProject: API.OperationMethod<
   DeleteTestGridProjectRequest,
   DeleteTestGridProjectResult,
   DeleteTestGridProjectError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteTestGridProjectRequest,
   output: DeleteTestGridProjectResult,
@@ -4383,7 +4382,7 @@ export const deleteUpload: API.OperationMethod<
   DeleteUploadRequest,
   DeleteUploadResult,
   DeleteUploadError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteUploadRequest,
   output: DeleteUploadResult,
@@ -4411,7 +4410,7 @@ export const deleteVPCEConfiguration: API.OperationMethod<
   DeleteVPCEConfigurationRequest,
   DeleteVPCEConfigurationResult,
   DeleteVPCEConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteVPCEConfigurationRequest,
   output: DeleteVPCEConfigurationResult,
@@ -4440,7 +4439,7 @@ export const getAccountSettings: API.OperationMethod<
   GetAccountSettingsRequest,
   GetAccountSettingsResult,
   GetAccountSettingsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetAccountSettingsRequest,
   output: GetAccountSettingsResult,
@@ -4468,7 +4467,7 @@ export const getDevice: API.OperationMethod<
   GetDeviceRequest,
   GetDeviceResult,
   GetDeviceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetDeviceRequest,
   output: GetDeviceResult,
@@ -4496,7 +4495,7 @@ export const getDeviceInstance: API.OperationMethod<
   GetDeviceInstanceRequest,
   GetDeviceInstanceResult,
   GetDeviceInstanceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetDeviceInstanceRequest,
   output: GetDeviceInstanceResult,
@@ -4524,7 +4523,7 @@ export const getDevicePool: API.OperationMethod<
   GetDevicePoolRequest,
   GetDevicePoolResult,
   GetDevicePoolError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetDevicePoolRequest,
   output: GetDevicePoolResult,
@@ -4552,7 +4551,7 @@ export const getDevicePoolCompatibility: API.OperationMethod<
   GetDevicePoolCompatibilityRequest,
   GetDevicePoolCompatibilityResult,
   GetDevicePoolCompatibilityError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetDevicePoolCompatibilityRequest,
   output: GetDevicePoolCompatibilityResult,
@@ -4580,7 +4579,7 @@ export const getInstanceProfile: API.OperationMethod<
   GetInstanceProfileRequest,
   GetInstanceProfileResult,
   GetInstanceProfileError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetInstanceProfileRequest,
   output: GetInstanceProfileResult,
@@ -4608,7 +4607,7 @@ export const getJob: API.OperationMethod<
   GetJobRequest,
   GetJobResult,
   GetJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetJobRequest,
   output: GetJobResult,
@@ -4636,7 +4635,7 @@ export const getNetworkProfile: API.OperationMethod<
   GetNetworkProfileRequest,
   GetNetworkProfileResult,
   GetNetworkProfileError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetNetworkProfileRequest,
   output: GetNetworkProfileResult,
@@ -4668,7 +4667,7 @@ export const getOfferingStatus: API.PaginatedOperationMethod<
   GetOfferingStatusRequest,
   GetOfferingStatusResult,
   GetOfferingStatusError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetOfferingStatusRequest,
@@ -4699,7 +4698,7 @@ export const getProject: API.OperationMethod<
   GetProjectRequest,
   GetProjectResult,
   GetProjectError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetProjectRequest,
   output: GetProjectResult,
@@ -4727,7 +4726,7 @@ export const getRemoteAccessSession: API.OperationMethod<
   GetRemoteAccessSessionRequest,
   GetRemoteAccessSessionResult,
   GetRemoteAccessSessionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetRemoteAccessSessionRequest,
   output: GetRemoteAccessSessionResult,
@@ -4755,7 +4754,7 @@ export const getRun: API.OperationMethod<
   GetRunRequest,
   GetRunResult,
   GetRunError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetRunRequest,
   output: GetRunResult,
@@ -4783,7 +4782,7 @@ export const getSuite: API.OperationMethod<
   GetSuiteRequest,
   GetSuiteResult,
   GetSuiteError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetSuiteRequest,
   output: GetSuiteResult,
@@ -4811,7 +4810,7 @@ export const getTest: API.OperationMethod<
   GetTestRequest,
   GetTestResult,
   GetTestError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetTestRequest,
   output: GetTestResult,
@@ -4838,7 +4837,7 @@ export const getTestGridProject: API.OperationMethod<
   GetTestGridProjectRequest,
   GetTestGridProjectResult,
   GetTestGridProjectError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetTestGridProjectRequest,
   output: GetTestGridProjectResult,
@@ -4864,7 +4863,7 @@ export const getTestGridSession: API.OperationMethod<
   GetTestGridSessionRequest,
   GetTestGridSessionResult,
   GetTestGridSessionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetTestGridSessionRequest,
   output: GetTestGridSessionResult,
@@ -4887,7 +4886,7 @@ export const getUpload: API.OperationMethod<
   GetUploadRequest,
   GetUploadResult,
   GetUploadError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetUploadRequest,
   output: GetUploadResult,
@@ -4915,7 +4914,7 @@ export const getVPCEConfiguration: API.OperationMethod<
   GetVPCEConfigurationRequest,
   GetVPCEConfigurationResult,
   GetVPCEConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetVPCEConfigurationRequest,
   output: GetVPCEConfigurationResult,
@@ -4940,7 +4939,7 @@ export const installToRemoteAccessSession: API.OperationMethod<
   InstallToRemoteAccessSessionRequest,
   InstallToRemoteAccessSessionResult,
   InstallToRemoteAccessSessionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: InstallToRemoteAccessSessionRequest,
   output: InstallToRemoteAccessSessionResult,
@@ -4968,7 +4967,7 @@ export const listArtifacts: API.PaginatedOperationMethod<
   ListArtifactsRequest,
   ListArtifactsResult,
   ListArtifactsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   Artifact
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListArtifactsRequest,
@@ -5003,7 +5002,7 @@ export const listDeviceInstances: API.OperationMethod<
   ListDeviceInstancesRequest,
   ListDeviceInstancesResult,
   ListDeviceInstancesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListDeviceInstancesRequest,
   output: ListDeviceInstancesResult,
@@ -5031,7 +5030,7 @@ export const listDevicePools: API.PaginatedOperationMethod<
   ListDevicePoolsRequest,
   ListDevicePoolsResult,
   ListDevicePoolsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   DevicePool
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDevicePoolsRequest,
@@ -5065,7 +5064,7 @@ export const listDevices: API.PaginatedOperationMethod<
   ListDevicesRequest,
   ListDevicesResult,
   ListDevicesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   Device
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDevicesRequest,
@@ -5099,7 +5098,7 @@ export const listInstanceProfiles: API.OperationMethod<
   ListInstanceProfilesRequest,
   ListInstanceProfilesResult,
   ListInstanceProfilesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListInstanceProfilesRequest,
   output: ListInstanceProfilesResult,
@@ -5127,7 +5126,7 @@ export const listJobs: API.PaginatedOperationMethod<
   ListJobsRequest,
   ListJobsResult,
   ListJobsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   Job
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListJobsRequest,
@@ -5161,7 +5160,7 @@ export const listNetworkProfiles: API.OperationMethod<
   ListNetworkProfilesRequest,
   ListNetworkProfilesResult,
   ListNetworkProfilesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListNetworkProfilesRequest,
   output: ListNetworkProfilesResult,
@@ -5192,7 +5191,7 @@ export const listOfferingPromotions: API.OperationMethod<
   ListOfferingPromotionsRequest,
   ListOfferingPromotionsResult,
   ListOfferingPromotionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListOfferingPromotionsRequest,
   output: ListOfferingPromotionsResult,
@@ -5225,7 +5224,7 @@ export const listOfferings: API.PaginatedOperationMethod<
   ListOfferingsRequest,
   ListOfferingsResult,
   ListOfferingsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   Offering
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOfferingsRequest,
@@ -5264,7 +5263,7 @@ export const listOfferingTransactions: API.PaginatedOperationMethod<
   ListOfferingTransactionsRequest,
   ListOfferingTransactionsResult,
   ListOfferingTransactionsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   OfferingTransaction
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOfferingTransactionsRequest,
@@ -5299,7 +5298,7 @@ export const listProjects: API.PaginatedOperationMethod<
   ListProjectsRequest,
   ListProjectsResult,
   ListProjectsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   Project
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsRequest,
@@ -5333,7 +5332,7 @@ export const listRemoteAccessSessions: API.OperationMethod<
   ListRemoteAccessSessionsRequest,
   ListRemoteAccessSessionsResult,
   ListRemoteAccessSessionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListRemoteAccessSessionsRequest,
   output: ListRemoteAccessSessionsResult,
@@ -5361,7 +5360,7 @@ export const listRuns: API.PaginatedOperationMethod<
   ListRunsRequest,
   ListRunsResult,
   ListRunsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   Run
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRunsRequest,
@@ -5395,7 +5394,7 @@ export const listSamples: API.PaginatedOperationMethod<
   ListSamplesRequest,
   ListSamplesResult,
   ListSamplesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   Sample
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSamplesRequest,
@@ -5429,7 +5428,7 @@ export const listSuites: API.PaginatedOperationMethod<
   ListSuitesRequest,
   ListSuitesResult,
   ListSuitesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   Suite
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSuitesRequest,
@@ -5462,7 +5461,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -5483,7 +5482,7 @@ export const listTestGridProjects: API.PaginatedOperationMethod<
   ListTestGridProjectsRequest,
   ListTestGridProjectsResult,
   ListTestGridProjectsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTestGridProjectsRequest,
@@ -5511,7 +5510,7 @@ export const listTestGridSessionActions: API.PaginatedOperationMethod<
   ListTestGridSessionActionsRequest,
   ListTestGridSessionActionsResult,
   ListTestGridSessionActionsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTestGridSessionActionsRequest,
@@ -5539,7 +5538,7 @@ export const listTestGridSessionArtifacts: API.PaginatedOperationMethod<
   ListTestGridSessionArtifactsRequest,
   ListTestGridSessionArtifactsResult,
   ListTestGridSessionArtifactsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTestGridSessionArtifactsRequest,
@@ -5567,7 +5566,7 @@ export const listTestGridSessions: API.PaginatedOperationMethod<
   ListTestGridSessionsRequest,
   ListTestGridSessionsResult,
   ListTestGridSessionsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTestGridSessionsRequest,
@@ -5596,7 +5595,7 @@ export const listTests: API.PaginatedOperationMethod<
   ListTestsRequest,
   ListTestsResult,
   ListTestsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   Test
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTestsRequest,
@@ -5635,7 +5634,7 @@ export const listUniqueProblems: API.PaginatedOperationMethod<
   ListUniqueProblemsRequest,
   ListUniqueProblemsResult,
   ListUniqueProblemsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListUniqueProblemsRequest,
@@ -5669,7 +5668,7 @@ export const listUploads: API.PaginatedOperationMethod<
   ListUploadsRequest,
   ListUploadsResult,
   ListUploadsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   Upload
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListUploadsRequest,
@@ -5702,7 +5701,7 @@ export const listVPCEConfigurations: API.OperationMethod<
   ListVPCEConfigurationsRequest,
   ListVPCEConfigurationsResult,
   ListVPCEConfigurationsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListVPCEConfigurationsRequest,
   output: ListVPCEConfigurationsResult,
@@ -5729,7 +5728,7 @@ export const purchaseOffering: API.OperationMethod<
   PurchaseOfferingRequest,
   PurchaseOfferingResult,
   PurchaseOfferingError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PurchaseOfferingRequest,
   output: PurchaseOfferingResult,
@@ -5761,7 +5760,7 @@ export const renewOffering: API.OperationMethod<
   RenewOfferingRequest,
   RenewOfferingResult,
   RenewOfferingError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: RenewOfferingRequest,
   output: RenewOfferingResult,
@@ -5791,7 +5790,7 @@ export const scheduleRun: API.OperationMethod<
   ScheduleRunRequest,
   ScheduleRunResult,
   ScheduleRunError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ScheduleRunRequest,
   output: ScheduleRunResult,
@@ -5823,7 +5822,7 @@ export const stopJob: API.OperationMethod<
   StopJobRequest,
   StopJobResult,
   StopJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StopJobRequest,
   output: StopJobResult,
@@ -5851,7 +5850,7 @@ export const stopRemoteAccessSession: API.OperationMethod<
   StopRemoteAccessSessionRequest,
   StopRemoteAccessSessionResult,
   StopRemoteAccessSessionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StopRemoteAccessSessionRequest,
   output: StopRemoteAccessSessionResult,
@@ -5882,7 +5881,7 @@ export const stopRun: API.OperationMethod<
   StopRunRequest,
   StopRunResult,
   StopRunError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StopRunRequest,
   output: StopRunResult,
@@ -5913,7 +5912,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -5941,7 +5940,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -5964,7 +5963,7 @@ export const updateDeviceInstance: API.OperationMethod<
   UpdateDeviceInstanceRequest,
   UpdateDeviceInstanceResult,
   UpdateDeviceInstanceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateDeviceInstanceRequest,
   output: UpdateDeviceInstanceResult,
@@ -5994,7 +5993,7 @@ export const updateDevicePool: API.OperationMethod<
   UpdateDevicePoolRequest,
   UpdateDevicePoolResult,
   UpdateDevicePoolError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateDevicePoolRequest,
   output: UpdateDevicePoolResult,
@@ -6022,7 +6021,7 @@ export const updateInstanceProfile: API.OperationMethod<
   UpdateInstanceProfileRequest,
   UpdateInstanceProfileResult,
   UpdateInstanceProfileError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateInstanceProfileRequest,
   output: UpdateInstanceProfileResult,
@@ -6050,7 +6049,7 @@ export const updateNetworkProfile: API.OperationMethod<
   UpdateNetworkProfileRequest,
   UpdateNetworkProfileResult,
   UpdateNetworkProfileError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateNetworkProfileRequest,
   output: UpdateNetworkProfileResult,
@@ -6079,7 +6078,7 @@ export const updateProject: API.OperationMethod<
   UpdateProjectRequest,
   UpdateProjectResult,
   UpdateProjectError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateProjectRequest,
   output: UpdateProjectResult,
@@ -6107,7 +6106,7 @@ export const updateTestGridProject: API.OperationMethod<
   UpdateTestGridProjectRequest,
   UpdateTestGridProjectResult,
   UpdateTestGridProjectError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateTestGridProjectRequest,
   output: UpdateTestGridProjectResult,
@@ -6135,7 +6134,7 @@ export const updateUpload: API.OperationMethod<
   UpdateUploadRequest,
   UpdateUploadResult,
   UpdateUploadError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateUploadRequest,
   output: UpdateUploadResult,
@@ -6163,7 +6162,7 @@ export const updateVPCEConfiguration: API.OperationMethod<
   UpdateVPCEConfigurationRequest,
   UpdateVPCEConfigurationResult,
   UpdateVPCEConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateVPCEConfigurationRequest,
   output: UpdateVPCEConfigurationResult,

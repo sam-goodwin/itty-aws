@@ -8,7 +8,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 import { SensitiveString } from "../sensitive.ts";
 const svc = T.AwsApiService({
   sdkId: "TaxSettings",
@@ -1603,7 +1602,7 @@ export const batchDeleteTaxRegistration: API.OperationMethod<
   BatchDeleteTaxRegistrationRequest,
   BatchDeleteTaxRegistrationResponse,
   BatchDeleteTaxRegistrationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: BatchDeleteTaxRegistrationRequest,
   output: BatchDeleteTaxRegistrationResponse,
@@ -1625,7 +1624,7 @@ export const batchGetTaxExemptions: API.OperationMethod<
   BatchGetTaxExemptionsRequest,
   BatchGetTaxExemptionsResponse,
   BatchGetTaxExemptionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: BatchGetTaxExemptionsRequest,
   output: BatchGetTaxExemptionsResponse,
@@ -1785,7 +1784,7 @@ export const batchPutTaxRegistration: API.OperationMethod<
   BatchPutTaxRegistrationRequest,
   BatchPutTaxRegistrationResponse,
   BatchPutTaxRegistrationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: BatchPutTaxRegistrationRequest,
   output: BatchPutTaxRegistrationResponse,
@@ -1808,7 +1807,7 @@ export const deleteSupplementalTaxRegistration: API.OperationMethod<
   DeleteSupplementalTaxRegistrationRequest,
   DeleteSupplementalTaxRegistrationResponse,
   DeleteSupplementalTaxRegistrationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteSupplementalTaxRegistrationRequest,
   output: DeleteSupplementalTaxRegistrationResponse,
@@ -1838,7 +1837,7 @@ export const deleteTaxRegistration: API.OperationMethod<
   DeleteTaxRegistrationRequest,
   DeleteTaxRegistrationResponse,
   DeleteTaxRegistrationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteTaxRegistrationRequest,
   output: DeleteTaxRegistrationResponse,
@@ -1865,7 +1864,7 @@ export const getTaxExemptionTypes: API.OperationMethod<
   GetTaxExemptionTypesRequest,
   GetTaxExemptionTypesResponse,
   GetTaxExemptionTypesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetTaxExemptionTypesRequest,
   output: GetTaxExemptionTypesResponse,
@@ -1891,7 +1890,7 @@ export const getTaxInheritance: API.OperationMethod<
   GetTaxInheritanceRequest,
   GetTaxInheritanceResponse,
   GetTaxInheritanceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetTaxInheritanceRequest,
   output: GetTaxInheritanceResponse,
@@ -1917,7 +1916,7 @@ export const getTaxRegistration: API.OperationMethod<
   GetTaxRegistrationRequest,
   GetTaxRegistrationResponse,
   GetTaxRegistrationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetTaxRegistrationRequest,
   output: GetTaxRegistrationResponse,
@@ -1942,7 +1941,7 @@ export const getTaxRegistrationDocument: API.OperationMethod<
   GetTaxRegistrationDocumentRequest,
   GetTaxRegistrationDocumentResponse,
   GetTaxRegistrationDocumentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetTaxRegistrationDocumentRequest,
   output: GetTaxRegistrationDocumentResponse,
@@ -1964,7 +1963,7 @@ export const listSupplementalTaxRegistrations: API.PaginatedOperationMethod<
   ListSupplementalTaxRegistrationsRequest,
   ListSupplementalTaxRegistrationsResponse,
   ListSupplementalTaxRegistrationsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   SupplementalTaxRegistration
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSupplementalTaxRegistrationsRequest,
@@ -1997,7 +1996,7 @@ export const listTaxExemptions: API.PaginatedOperationMethod<
   ListTaxExemptionsRequest,
   ListTaxExemptionsResponse,
   ListTaxExemptionsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTaxExemptionsRequest,
@@ -2030,7 +2029,7 @@ export const listTaxRegistrations: API.PaginatedOperationMethod<
   ListTaxRegistrationsRequest,
   ListTaxRegistrationsResponse,
   ListTaxRegistrationsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   AccountDetails
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTaxRegistrationsRequest,
@@ -2063,7 +2062,7 @@ export const putSupplementalTaxRegistration: API.OperationMethod<
   PutSupplementalTaxRegistrationRequest,
   PutSupplementalTaxRegistrationResponse,
   PutSupplementalTaxRegistrationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PutSupplementalTaxRegistrationRequest,
   output: PutSupplementalTaxRegistrationResponse,
@@ -2088,7 +2087,7 @@ export const putTaxExemption: API.OperationMethod<
   PutTaxExemptionRequest,
   PutTaxExemptionResponse,
   PutTaxExemptionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PutTaxExemptionRequest,
   output: PutTaxExemptionResponse,
@@ -2118,7 +2117,7 @@ export const putTaxInheritance: API.OperationMethod<
   PutTaxInheritanceRequest,
   PutTaxInheritanceResponse,
   PutTaxInheritanceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PutTaxInheritanceRequest,
   output: PutTaxInheritanceResponse,
@@ -2279,7 +2278,7 @@ export const putTaxRegistration: API.OperationMethod<
   PutTaxRegistrationRequest,
   PutTaxRegistrationResponse,
   PutTaxRegistrationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PutTaxRegistrationRequest,
   output: PutTaxRegistrationResponse,

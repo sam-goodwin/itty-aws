@@ -8,7 +8,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 import { SensitiveString, SensitiveBlob } from "../sensitive.ts";
 const svc = T.AwsApiService({ sdkId: "odb", serviceShapeName: "Odb" });
 const auth = T.AwsAuthSigv4({ name: "odb" });
@@ -5222,7 +5221,7 @@ export const acceptMarketplaceRegistration: API.OperationMethod<
   AcceptMarketplaceRegistrationInput,
   AcceptMarketplaceRegistrationOutput,
   AcceptMarketplaceRegistrationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: AcceptMarketplaceRegistrationInput,
   output: AcceptMarketplaceRegistrationOutput,
@@ -5253,7 +5252,7 @@ export const associateIamRoleToResource: API.OperationMethod<
   AssociateIamRoleToResourceInput,
   AssociateIamRoleToResourceOutput,
   AssociateIamRoleToResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: AssociateIamRoleToResourceInput,
   output: AssociateIamRoleToResourceOutput,
@@ -5286,7 +5285,7 @@ export const createAutonomousDatabase: API.OperationMethod<
   CreateAutonomousDatabaseInput,
   CreateAutonomousDatabaseOutput,
   CreateAutonomousDatabaseError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateAutonomousDatabaseInput,
   output: CreateAutonomousDatabaseOutput,
@@ -5320,7 +5319,7 @@ export const createAutonomousDatabaseBackup: API.OperationMethod<
   CreateAutonomousDatabaseBackupInput,
   CreateAutonomousDatabaseBackupOutput,
   CreateAutonomousDatabaseBackupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateAutonomousDatabaseBackupInput,
   output: CreateAutonomousDatabaseBackupOutput,
@@ -5352,7 +5351,7 @@ export const createAutonomousDatabaseWallet: API.OperationMethod<
   CreateAutonomousDatabaseWalletInput,
   CreateAutonomousDatabaseWalletOutput,
   CreateAutonomousDatabaseWalletError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateAutonomousDatabaseWalletInput,
   output: CreateAutonomousDatabaseWalletOutput,
@@ -5384,7 +5383,7 @@ export const createCloudAutonomousVmCluster: API.OperationMethod<
   CreateCloudAutonomousVmClusterInput,
   CreateCloudAutonomousVmClusterOutput,
   CreateCloudAutonomousVmClusterError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateCloudAutonomousVmClusterInput,
   output: CreateCloudAutonomousVmClusterOutput,
@@ -5417,7 +5416,7 @@ export const createCloudExadataInfrastructure: API.OperationMethod<
   CreateCloudExadataInfrastructureInput,
   CreateCloudExadataInfrastructureOutput,
   CreateCloudExadataInfrastructureError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateCloudExadataInfrastructureInput,
   output: CreateCloudExadataInfrastructureOutput,
@@ -5450,7 +5449,7 @@ export const createCloudVmCluster: API.OperationMethod<
   CreateCloudVmClusterInput,
   CreateCloudVmClusterOutput,
   CreateCloudVmClusterError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateCloudVmClusterInput,
   output: CreateCloudVmClusterOutput,
@@ -5483,7 +5482,7 @@ export const createOdbNetwork: API.OperationMethod<
   CreateOdbNetworkInput,
   CreateOdbNetworkOutput,
   CreateOdbNetworkError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateOdbNetworkInput,
   output: CreateOdbNetworkOutput,
@@ -5517,7 +5516,7 @@ export const createOdbPeeringConnection: API.OperationMethod<
   CreateOdbPeeringConnectionInput,
   CreateOdbPeeringConnectionOutput,
   CreateOdbPeeringConnectionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateOdbPeeringConnectionInput,
   output: CreateOdbPeeringConnectionOutput,
@@ -5549,7 +5548,7 @@ export const deleteAutonomousDatabase: API.OperationMethod<
   DeleteAutonomousDatabaseInput,
   DeleteAutonomousDatabaseOutput,
   DeleteAutonomousDatabaseError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteAutonomousDatabaseInput,
   output: DeleteAutonomousDatabaseOutput,
@@ -5581,7 +5580,7 @@ export const deleteAutonomousDatabaseBackup: API.OperationMethod<
   DeleteAutonomousDatabaseBackupInput,
   DeleteAutonomousDatabaseBackupOutput,
   DeleteAutonomousDatabaseBackupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteAutonomousDatabaseBackupInput,
   output: DeleteAutonomousDatabaseBackupOutput,
@@ -5612,7 +5611,7 @@ export const deleteCloudAutonomousVmCluster: API.OperationMethod<
   DeleteCloudAutonomousVmClusterInput,
   DeleteCloudAutonomousVmClusterOutput,
   DeleteCloudAutonomousVmClusterError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteCloudAutonomousVmClusterInput,
   output: DeleteCloudAutonomousVmClusterOutput,
@@ -5643,7 +5642,7 @@ export const deleteCloudExadataInfrastructure: API.OperationMethod<
   DeleteCloudExadataInfrastructureInput,
   DeleteCloudExadataInfrastructureOutput,
   DeleteCloudExadataInfrastructureError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteCloudExadataInfrastructureInput,
   output: DeleteCloudExadataInfrastructureOutput,
@@ -5674,7 +5673,7 @@ export const deleteCloudVmCluster: API.OperationMethod<
   DeleteCloudVmClusterInput,
   DeleteCloudVmClusterOutput,
   DeleteCloudVmClusterError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteCloudVmClusterInput,
   output: DeleteCloudVmClusterOutput,
@@ -5704,7 +5703,7 @@ export const deleteOdbNetwork: API.OperationMethod<
   DeleteOdbNetworkInput,
   DeleteOdbNetworkOutput,
   DeleteOdbNetworkError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteOdbNetworkInput,
   output: DeleteOdbNetworkOutput,
@@ -5736,7 +5735,7 @@ export const deleteOdbPeeringConnection: API.OperationMethod<
   DeleteOdbPeeringConnectionInput,
   DeleteOdbPeeringConnectionOutput,
   DeleteOdbPeeringConnectionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteOdbPeeringConnectionInput,
   output: DeleteOdbPeeringConnectionOutput,
@@ -5767,7 +5766,7 @@ export const disassociateIamRoleFromResource: API.OperationMethod<
   DisassociateIamRoleFromResourceInput,
   DisassociateIamRoleFromResourceOutput,
   DisassociateIamRoleFromResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DisassociateIamRoleFromResourceInput,
   output: DisassociateIamRoleFromResourceOutput,
@@ -5799,7 +5798,7 @@ export const failoverAutonomousDatabase: API.OperationMethod<
   FailoverAutonomousDatabaseInput,
   FailoverAutonomousDatabaseOutput,
   FailoverAutonomousDatabaseError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: FailoverAutonomousDatabaseInput,
   output: FailoverAutonomousDatabaseOutput,
@@ -5830,7 +5829,7 @@ export const getAutonomousDatabase: API.OperationMethod<
   GetAutonomousDatabaseInput,
   GetAutonomousDatabaseOutput,
   GetAutonomousDatabaseError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetAutonomousDatabaseInput,
   output: GetAutonomousDatabaseOutput,
@@ -5860,7 +5859,7 @@ export const getAutonomousDatabaseBackup: API.OperationMethod<
   GetAutonomousDatabaseBackupInput,
   GetAutonomousDatabaseBackupOutput,
   GetAutonomousDatabaseBackupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetAutonomousDatabaseBackupInput,
   output: GetAutonomousDatabaseBackupOutput,
@@ -5890,7 +5889,7 @@ export const getAutonomousDatabaseWalletDetails: API.OperationMethod<
   GetAutonomousDatabaseWalletDetailsInput,
   GetAutonomousDatabaseWalletDetailsOutput,
   GetAutonomousDatabaseWalletDetailsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetAutonomousDatabaseWalletDetailsInput,
   output: GetAutonomousDatabaseWalletDetailsOutput,
@@ -5920,7 +5919,7 @@ export const getCloudAutonomousVmCluster: API.OperationMethod<
   GetCloudAutonomousVmClusterInput,
   GetCloudAutonomousVmClusterOutput,
   GetCloudAutonomousVmClusterError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetCloudAutonomousVmClusterInput,
   output: GetCloudAutonomousVmClusterOutput,
@@ -5950,7 +5949,7 @@ export const getCloudExadataInfrastructure: API.OperationMethod<
   GetCloudExadataInfrastructureInput,
   GetCloudExadataInfrastructureOutput,
   GetCloudExadataInfrastructureError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetCloudExadataInfrastructureInput,
   output: GetCloudExadataInfrastructureOutput,
@@ -5980,7 +5979,7 @@ export const getCloudExadataInfrastructureUnallocatedResources: API.OperationMet
   GetCloudExadataInfrastructureUnallocatedResourcesInput,
   GetCloudExadataInfrastructureUnallocatedResourcesOutput,
   GetCloudExadataInfrastructureUnallocatedResourcesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetCloudExadataInfrastructureUnallocatedResourcesInput,
   output: GetCloudExadataInfrastructureUnallocatedResourcesOutput,
@@ -6010,7 +6009,7 @@ export const getCloudVmCluster: API.OperationMethod<
   GetCloudVmClusterInput,
   GetCloudVmClusterOutput,
   GetCloudVmClusterError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetCloudVmClusterInput,
   output: GetCloudVmClusterOutput,
@@ -6040,7 +6039,7 @@ export const getDbNode: API.OperationMethod<
   GetDbNodeInput,
   GetDbNodeOutput,
   GetDbNodeError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetDbNodeInput,
   output: GetDbNodeOutput,
@@ -6070,7 +6069,7 @@ export const getDbServer: API.OperationMethod<
   GetDbServerInput,
   GetDbServerOutput,
   GetDbServerError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetDbServerInput,
   output: GetDbServerOutput,
@@ -6099,7 +6098,7 @@ export const getOciOnboardingStatus: API.OperationMethod<
   GetOciOnboardingStatusInput,
   GetOciOnboardingStatusOutput,
   GetOciOnboardingStatusError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetOciOnboardingStatusInput,
   output: GetOciOnboardingStatusOutput,
@@ -6128,7 +6127,7 @@ export const getOdbNetwork: API.OperationMethod<
   GetOdbNetworkInput,
   GetOdbNetworkOutput,
   GetOdbNetworkError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetOdbNetworkInput,
   output: GetOdbNetworkOutput,
@@ -6158,7 +6157,7 @@ export const getOdbPeeringConnection: API.OperationMethod<
   GetOdbPeeringConnectionInput,
   GetOdbPeeringConnectionOutput,
   GetOdbPeeringConnectionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetOdbPeeringConnectionInput,
   output: GetOdbPeeringConnectionOutput,
@@ -6187,7 +6186,7 @@ export const initializeService: API.OperationMethod<
   InitializeServiceInput,
   InitializeServiceOutput,
   InitializeServiceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: InitializeServiceInput,
   output: InitializeServiceOutput,
@@ -6216,7 +6215,7 @@ export const listAutonomousDatabaseBackups: API.PaginatedOperationMethod<
   ListAutonomousDatabaseBackupsInput,
   ListAutonomousDatabaseBackupsOutput,
   ListAutonomousDatabaseBackupsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   AutonomousDatabaseBackupSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAutonomousDatabaseBackupsInput,
@@ -6252,7 +6251,7 @@ export const listAutonomousDatabaseCharacterSets: API.PaginatedOperationMethod<
   ListAutonomousDatabaseCharacterSetsInput,
   ListAutonomousDatabaseCharacterSetsOutput,
   ListAutonomousDatabaseCharacterSetsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   AutonomousDatabaseCharacterSetSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAutonomousDatabaseCharacterSetsInput,
@@ -6288,7 +6287,7 @@ export const listAutonomousDatabaseClones: API.PaginatedOperationMethod<
   ListAutonomousDatabaseClonesInput,
   ListAutonomousDatabaseClonesOutput,
   ListAutonomousDatabaseClonesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   AutonomousDatabaseSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAutonomousDatabaseClonesInput,
@@ -6325,7 +6324,7 @@ export const listAutonomousDatabasePeers: API.PaginatedOperationMethod<
   ListAutonomousDatabasePeersInput,
   ListAutonomousDatabasePeersOutput,
   ListAutonomousDatabasePeersError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   AutonomousDatabasePeerSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAutonomousDatabasePeersInput,
@@ -6361,7 +6360,7 @@ export const listAutonomousDatabases: API.PaginatedOperationMethod<
   ListAutonomousDatabasesInput,
   ListAutonomousDatabasesOutput,
   ListAutonomousDatabasesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   AutonomousDatabaseSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAutonomousDatabasesInput,
@@ -6396,7 +6395,7 @@ export const listAutonomousDatabaseVersions: API.PaginatedOperationMethod<
   ListAutonomousDatabaseVersionsInput,
   ListAutonomousDatabaseVersionsOutput,
   ListAutonomousDatabaseVersionsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   AutonomousDatabaseVersionSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAutonomousDatabaseVersionsInput,
@@ -6432,7 +6431,7 @@ export const listAutonomousVirtualMachines: API.PaginatedOperationMethod<
   ListAutonomousVirtualMachinesInput,
   ListAutonomousVirtualMachinesOutput,
   ListAutonomousVirtualMachinesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   AutonomousVirtualMachineSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAutonomousVirtualMachinesInput,
@@ -6469,7 +6468,7 @@ export const listCloudAutonomousVmClusters: API.PaginatedOperationMethod<
   ListCloudAutonomousVmClustersInput,
   ListCloudAutonomousVmClustersOutput,
   ListCloudAutonomousVmClustersError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   CloudAutonomousVmClusterSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCloudAutonomousVmClustersInput,
@@ -6505,7 +6504,7 @@ export const listCloudExadataInfrastructures: API.PaginatedOperationMethod<
   ListCloudExadataInfrastructuresInput,
   ListCloudExadataInfrastructuresOutput,
   ListCloudExadataInfrastructuresError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   CloudExadataInfrastructureSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCloudExadataInfrastructuresInput,
@@ -6541,7 +6540,7 @@ export const listCloudVmClusters: API.PaginatedOperationMethod<
   ListCloudVmClustersInput,
   ListCloudVmClustersOutput,
   ListCloudVmClustersError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   CloudVmClusterSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCloudVmClustersInput,
@@ -6578,7 +6577,7 @@ export const listDbNodes: API.PaginatedOperationMethod<
   ListDbNodesInput,
   ListDbNodesOutput,
   ListDbNodesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   DbNodeSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDbNodesInput,
@@ -6615,7 +6614,7 @@ export const listDbServers: API.PaginatedOperationMethod<
   ListDbServersInput,
   ListDbServersOutput,
   ListDbServersError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   DbServerSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDbServersInput,
@@ -6651,7 +6650,7 @@ export const listDbSystemShapes: API.PaginatedOperationMethod<
   ListDbSystemShapesInput,
   ListDbSystemShapesOutput,
   ListDbSystemShapesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   DbSystemShapeSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDbSystemShapesInput,
@@ -6686,7 +6685,7 @@ export const listGiVersions: API.PaginatedOperationMethod<
   ListGiVersionsInput,
   ListGiVersionsOutput,
   ListGiVersionsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   GiVersionSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListGiVersionsInput,
@@ -6721,7 +6720,7 @@ export const listOdbNetworks: API.PaginatedOperationMethod<
   ListOdbNetworksInput,
   ListOdbNetworksOutput,
   ListOdbNetworksError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   OdbNetworkSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOdbNetworksInput,
@@ -6757,7 +6756,7 @@ export const listOdbPeeringConnections: API.PaginatedOperationMethod<
   ListOdbPeeringConnectionsInput,
   ListOdbPeeringConnectionsOutput,
   ListOdbPeeringConnectionsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   OdbPeeringConnectionSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOdbPeeringConnectionsInput,
@@ -6794,7 +6793,7 @@ export const listSystemVersions: API.PaginatedOperationMethod<
   ListSystemVersionsInput,
   ListSystemVersionsOutput,
   ListSystemVersionsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   SystemVersionSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSystemVersionsInput,
@@ -6825,7 +6824,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -6850,7 +6849,7 @@ export const rebootAutonomousDatabase: API.OperationMethod<
   RebootAutonomousDatabaseInput,
   RebootAutonomousDatabaseOutput,
   RebootAutonomousDatabaseError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: RebootAutonomousDatabaseInput,
   output: RebootAutonomousDatabaseOutput,
@@ -6881,7 +6880,7 @@ export const rebootDbNode: API.OperationMethod<
   RebootDbNodeInput,
   RebootDbNodeOutput,
   RebootDbNodeError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: RebootDbNodeInput,
   output: RebootDbNodeOutput,
@@ -6912,7 +6911,7 @@ export const restoreAutonomousDatabase: API.OperationMethod<
   RestoreAutonomousDatabaseInput,
   RestoreAutonomousDatabaseOutput,
   RestoreAutonomousDatabaseError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: RestoreAutonomousDatabaseInput,
   output: RestoreAutonomousDatabaseOutput,
@@ -6944,7 +6943,7 @@ export const shrinkAutonomousDatabase: API.OperationMethod<
   ShrinkAutonomousDatabaseInput,
   ShrinkAutonomousDatabaseOutput,
   ShrinkAutonomousDatabaseError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ShrinkAutonomousDatabaseInput,
   output: ShrinkAutonomousDatabaseOutput,
@@ -6976,7 +6975,7 @@ export const startAutonomousDatabase: API.OperationMethod<
   StartAutonomousDatabaseInput,
   StartAutonomousDatabaseOutput,
   StartAutonomousDatabaseError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartAutonomousDatabaseInput,
   output: StartAutonomousDatabaseOutput,
@@ -7007,7 +7006,7 @@ export const startDbNode: API.OperationMethod<
   StartDbNodeInput,
   StartDbNodeOutput,
   StartDbNodeError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartDbNodeInput,
   output: StartDbNodeOutput,
@@ -7038,7 +7037,7 @@ export const stopAutonomousDatabase: API.OperationMethod<
   StopAutonomousDatabaseInput,
   StopAutonomousDatabaseOutput,
   StopAutonomousDatabaseError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StopAutonomousDatabaseInput,
   output: StopAutonomousDatabaseOutput,
@@ -7069,7 +7068,7 @@ export const stopDbNode: API.OperationMethod<
   StopDbNodeInput,
   StopDbNodeOutput,
   StopDbNodeError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StopDbNodeInput,
   output: StopDbNodeOutput,
@@ -7100,7 +7099,7 @@ export const switchoverAutonomousDatabase: API.OperationMethod<
   SwitchoverAutonomousDatabaseInput,
   SwitchoverAutonomousDatabaseOutput,
   SwitchoverAutonomousDatabaseError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: SwitchoverAutonomousDatabaseInput,
   output: SwitchoverAutonomousDatabaseOutput,
@@ -7128,7 +7127,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -7146,7 +7145,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -7171,7 +7170,7 @@ export const updateAutonomousDatabase: API.OperationMethod<
   UpdateAutonomousDatabaseInput,
   UpdateAutonomousDatabaseOutput,
   UpdateAutonomousDatabaseError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateAutonomousDatabaseInput,
   output: UpdateAutonomousDatabaseOutput,
@@ -7203,7 +7202,7 @@ export const updateAutonomousDatabaseBackup: API.OperationMethod<
   UpdateAutonomousDatabaseBackupInput,
   UpdateAutonomousDatabaseBackupOutput,
   UpdateAutonomousDatabaseBackupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateAutonomousDatabaseBackupInput,
   output: UpdateAutonomousDatabaseBackupOutput,
@@ -7235,7 +7234,7 @@ export const updateCloudExadataInfrastructure: API.OperationMethod<
   UpdateCloudExadataInfrastructureInput,
   UpdateCloudExadataInfrastructureOutput,
   UpdateCloudExadataInfrastructureError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateCloudExadataInfrastructureInput,
   output: UpdateCloudExadataInfrastructureOutput,
@@ -7267,7 +7266,7 @@ export const updateOdbNetwork: API.OperationMethod<
   UpdateOdbNetworkInput,
   UpdateOdbNetworkOutput,
   UpdateOdbNetworkError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateOdbNetworkInput,
   output: UpdateOdbNetworkOutput,
@@ -7299,7 +7298,7 @@ export const updateOdbPeeringConnection: API.OperationMethod<
   UpdateOdbPeeringConnectionInput,
   UpdateOdbPeeringConnectionOutput,
   UpdateOdbPeeringConnectionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateOdbPeeringConnectionInput,
   output: UpdateOdbPeeringConnectionOutput,

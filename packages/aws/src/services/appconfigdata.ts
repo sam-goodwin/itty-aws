@@ -7,7 +7,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 const svc = T.AwsApiService({
   sdkId: "AppConfigData",
   serviceShapeName: "AppConfigData",
@@ -258,7 +257,7 @@ export const getLatestConfiguration: API.OperationMethod<
   GetLatestConfigurationRequest,
   GetLatestConfigurationResponse,
   GetLatestConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetLatestConfigurationRequest,
   output: GetLatestConfigurationResponse,
@@ -289,7 +288,7 @@ export const startConfigurationSession: API.OperationMethod<
   StartConfigurationSessionRequest,
   StartConfigurationSessionResponse,
   StartConfigurationSessionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartConfigurationSessionRequest,
   output: StartConfigurationSessionResponse,

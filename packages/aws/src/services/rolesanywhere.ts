@@ -8,7 +8,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 import { SensitiveString } from "../sensitive.ts";
 const svc = T.AwsApiService({
   sdkId: "RolesAnywhere",
@@ -966,7 +965,7 @@ export const createProfile: API.OperationMethod<
   CreateProfileRequest,
   ProfileDetailResponse,
   CreateProfileError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateProfileRequest,
   output: ProfileDetailResponse,
@@ -989,7 +988,7 @@ export const createTrustAnchor: API.OperationMethod<
   CreateTrustAnchorRequest,
   TrustAnchorDetailResponse,
   CreateTrustAnchorError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateTrustAnchorRequest,
   output: TrustAnchorDetailResponse,
@@ -1011,7 +1010,7 @@ export const deleteAttributeMapping: API.OperationMethod<
   DeleteAttributeMappingRequest,
   DeleteAttributeMappingResponse,
   DeleteAttributeMappingError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteAttributeMappingRequest,
   output: DeleteAttributeMappingResponse,
@@ -1038,7 +1037,7 @@ export const deleteCrl: API.OperationMethod<
   ScalarCrlRequest,
   CrlDetailResponse,
   DeleteCrlError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ScalarCrlRequest,
   output: CrlDetailResponse,
@@ -1061,7 +1060,7 @@ export const deleteProfile: API.OperationMethod<
   ScalarProfileRequest,
   ProfileDetailResponse,
   DeleteProfileError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ScalarProfileRequest,
   output: ProfileDetailResponse,
@@ -1084,7 +1083,7 @@ export const deleteTrustAnchor: API.OperationMethod<
   ScalarTrustAnchorRequest,
   TrustAnchorDetailResponse,
   DeleteTrustAnchorError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ScalarTrustAnchorRequest,
   output: TrustAnchorDetailResponse,
@@ -1113,7 +1112,7 @@ export const disableCrl: API.OperationMethod<
   DisableCrlRequest,
   CrlDetailResponse,
   DisableCrlError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DisableCrlRequest,
   output: CrlDetailResponse,
@@ -1142,7 +1141,7 @@ export const disableProfile: API.OperationMethod<
   DisableProfileRequest,
   ProfileDetailResponse,
   DisableProfileError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DisableProfileRequest,
   output: ProfileDetailResponse,
@@ -1172,7 +1171,7 @@ export const disableTrustAnchor: API.OperationMethod<
   DisableTrustAnchorRequest,
   TrustAnchorDetailResponse,
   DisableTrustAnchorError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DisableTrustAnchorRequest,
   output: TrustAnchorDetailResponse,
@@ -1201,7 +1200,7 @@ export const enableCrl: API.OperationMethod<
   EnableCrlRequest,
   CrlDetailResponse,
   EnableCrlError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: EnableCrlRequest,
   output: CrlDetailResponse,
@@ -1230,7 +1229,7 @@ export const enableProfile: API.OperationMethod<
   EnableProfileRequest,
   ProfileDetailResponse,
   EnableProfileError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: EnableProfileRequest,
   output: ProfileDetailResponse,
@@ -1260,7 +1259,7 @@ export const enableTrustAnchor: API.OperationMethod<
   EnableTrustAnchorRequest,
   TrustAnchorDetailResponse,
   EnableTrustAnchorError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: EnableTrustAnchorRequest,
   output: TrustAnchorDetailResponse,
@@ -1284,7 +1283,7 @@ export const getCrl: API.OperationMethod<
   GetCrlRequest,
   CrlDetailResponse,
   GetCrlError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetCrlRequest,
   output: CrlDetailResponse,
@@ -1313,7 +1312,7 @@ export const getProfile: API.OperationMethod<
   GetProfileRequest,
   ProfileDetailResponse,
   GetProfileError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetProfileRequest,
   output: ProfileDetailResponse,
@@ -1336,7 +1335,7 @@ export const getSubject: API.OperationMethod<
   ScalarSubjectRequest,
   SubjectDetailResponse,
   GetSubjectError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ScalarSubjectRequest,
   output: SubjectDetailResponse,
@@ -1367,7 +1366,7 @@ export const getTrustAnchor: API.OperationMethod<
   GetTrustAnchorRequest,
   TrustAnchorDetailResponse,
   GetTrustAnchorError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetTrustAnchorRequest,
   output: TrustAnchorDetailResponse,
@@ -1394,7 +1393,7 @@ export const importCrl: API.OperationMethod<
   ImportCrlRequest,
   CrlDetailResponse,
   ImportCrlError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ImportCrlRequest,
   output: CrlDetailResponse,
@@ -1417,7 +1416,7 @@ export const listCrls: API.PaginatedOperationMethod<
   ListRequest,
   ListCrlsResponse,
   ListCrlsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   CrlDetail
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRequest,
@@ -1452,7 +1451,7 @@ export const listProfiles: API.PaginatedOperationMethod<
   ListProfilesRequest,
   ListProfilesResponse,
   ListProfilesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ProfileDetail
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProfilesRequest,
@@ -1487,7 +1486,7 @@ export const listSubjects: API.PaginatedOperationMethod<
   ListSubjectsRequest,
   ListSubjectsResponse,
   ListSubjectsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   SubjectSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSubjectsRequest,
@@ -1517,7 +1516,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -1550,7 +1549,7 @@ export const listTrustAnchors: API.PaginatedOperationMethod<
   ListTrustAnchorsRequest,
   ListTrustAnchorsResponse,
   ListTrustAnchorsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   TrustAnchorDetail
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTrustAnchorsRequest,
@@ -1578,7 +1577,7 @@ export const putAttributeMapping: API.OperationMethod<
   PutAttributeMappingRequest,
   PutAttributeMappingResponse,
   PutAttributeMappingError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PutAttributeMappingRequest,
   output: PutAttributeMappingResponse,
@@ -1608,7 +1607,7 @@ export const putNotificationSettings: API.OperationMethod<
   PutNotificationSettingsRequest,
   PutNotificationSettingsResponse,
   PutNotificationSettingsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PutNotificationSettingsRequest,
   output: PutNotificationSettingsResponse,
@@ -1636,7 +1635,7 @@ export const resetNotificationSettings: API.OperationMethod<
   ResetNotificationSettingsRequest,
   ResetNotificationSettingsResponse,
   ResetNotificationSettingsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ResetNotificationSettingsRequest,
   output: ResetNotificationSettingsResponse,
@@ -1665,7 +1664,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -1694,7 +1693,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -1722,7 +1721,7 @@ export const updateCrl: API.OperationMethod<
   UpdateCrlRequest,
   CrlDetailResponse,
   UpdateCrlError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateCrlRequest,
   output: CrlDetailResponse,
@@ -1750,7 +1749,7 @@ export const updateProfile: API.OperationMethod<
   UpdateProfileRequest,
   ProfileDetailResponse,
   UpdateProfileError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateProfileRequest,
   output: ProfileDetailResponse,
@@ -1778,7 +1777,7 @@ export const updateTrustAnchor: API.OperationMethod<
   UpdateTrustAnchorRequest,
   TrustAnchorDetailResponse,
   UpdateTrustAnchorError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateTrustAnchorRequest,
   output: TrustAnchorDetailResponse,

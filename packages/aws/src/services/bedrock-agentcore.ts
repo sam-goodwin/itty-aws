@@ -9,7 +9,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 import { SensitiveString, SensitiveBlob } from "../sensitive.ts";
 const svc = T.AwsApiService({
   sdkId: "Bedrock AgentCore",
@@ -7274,7 +7273,7 @@ export const batchCreateMemoryRecords: API.OperationMethod<
   BatchCreateMemoryRecordsInput,
   BatchCreateMemoryRecordsOutput,
   BatchCreateMemoryRecordsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: BatchCreateMemoryRecordsInput,
   output: BatchCreateMemoryRecordsOutput,
@@ -7306,7 +7305,7 @@ export const batchDeleteMemoryRecords: API.OperationMethod<
   BatchDeleteMemoryRecordsInput,
   BatchDeleteMemoryRecordsOutput,
   BatchDeleteMemoryRecordsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: BatchDeleteMemoryRecordsInput,
   output: BatchDeleteMemoryRecordsOutput,
@@ -7338,7 +7337,7 @@ export const batchUpdateMemoryRecords: API.OperationMethod<
   BatchUpdateMemoryRecordsInput,
   BatchUpdateMemoryRecordsOutput,
   BatchUpdateMemoryRecordsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: BatchUpdateMemoryRecordsInput,
   output: BatchUpdateMemoryRecordsOutput,
@@ -7370,7 +7369,7 @@ export const completeResourceTokenAuth: API.OperationMethod<
   CompleteResourceTokenAuthRequest,
   CompleteResourceTokenAuthResponse,
   CompleteResourceTokenAuthError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CompleteResourceTokenAuthRequest,
   output: CompleteResourceTokenAuthResponse,
@@ -7403,7 +7402,7 @@ export const createABTest: API.OperationMethod<
   CreateABTestRequest,
   CreateABTestResponse,
   CreateABTestError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateABTestRequest,
   output: CreateABTestResponse,
@@ -7442,7 +7441,7 @@ export const createEvent: API.OperationMethod<
   CreateEventInput,
   CreateEventOutput,
   CreateEventError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateEventInput,
   output: CreateEventOutput,
@@ -7476,7 +7475,7 @@ export const createPaymentInstrument: API.OperationMethod<
   CreatePaymentInstrumentRequest,
   CreatePaymentInstrumentResponse,
   CreatePaymentInstrumentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreatePaymentInstrumentRequest,
   output: CreatePaymentInstrumentResponse,
@@ -7508,7 +7507,7 @@ export const createPaymentSession: API.OperationMethod<
   CreatePaymentSessionRequest,
   CreatePaymentSessionResponse,
   CreatePaymentSessionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreatePaymentSessionRequest,
   output: CreatePaymentSessionResponse,
@@ -7541,7 +7540,7 @@ export const deleteABTest: API.OperationMethod<
   DeleteABTestRequest,
   DeleteABTestResponse,
   DeleteABTestError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteABTestRequest,
   output: DeleteABTestResponse,
@@ -7575,7 +7574,7 @@ export const deleteBatchEvaluation: API.OperationMethod<
   DeleteBatchEvaluationRequest,
   DeleteBatchEvaluationResponse,
   DeleteBatchEvaluationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteBatchEvaluationRequest,
   output: DeleteBatchEvaluationResponse,
@@ -7611,7 +7610,7 @@ export const deleteEvent: API.OperationMethod<
   DeleteEventInput,
   DeleteEventOutput,
   DeleteEventError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteEventInput,
   output: DeleteEventOutput,
@@ -7647,7 +7646,7 @@ export const deleteMemoryRecord: API.OperationMethod<
   DeleteMemoryRecordInput,
   DeleteMemoryRecordOutput,
   DeleteMemoryRecordError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteMemoryRecordInput,
   output: DeleteMemoryRecordOutput,
@@ -7679,7 +7678,7 @@ export const deletePaymentInstrument: API.OperationMethod<
   DeletePaymentInstrumentRequest,
   DeletePaymentInstrumentResponse,
   DeletePaymentInstrumentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeletePaymentInstrumentRequest,
   output: DeletePaymentInstrumentResponse,
@@ -7709,7 +7708,7 @@ export const deletePaymentSession: API.OperationMethod<
   DeletePaymentSessionRequest,
   DeletePaymentSessionResponse,
   DeletePaymentSessionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeletePaymentSessionRequest,
   output: DeletePaymentSessionResponse,
@@ -7740,7 +7739,7 @@ export const deleteRecommendation: API.OperationMethod<
   DeleteRecommendationRequest,
   DeleteRecommendationResponse,
   DeleteRecommendationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteRecommendationRequest,
   output: DeleteRecommendationResponse,
@@ -7775,7 +7774,7 @@ export const evaluate: API.OperationMethod<
   EvaluateRequest,
   EvaluateResponse,
   EvaluateError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: EvaluateRequest,
   output: EvaluateResponse,
@@ -7810,7 +7809,7 @@ export const getABTest: API.OperationMethod<
   GetABTestRequest,
   GetABTestResponse,
   GetABTestError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetABTestRequest,
   output: GetABTestResponse,
@@ -7844,7 +7843,7 @@ export const getAgentCard: API.OperationMethod<
   GetAgentCardRequest,
   GetAgentCardResponse,
   GetAgentCardError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetAgentCardRequest,
   output: GetAgentCardResponse,
@@ -7878,7 +7877,7 @@ export const getBatchEvaluation: API.OperationMethod<
   GetBatchEvaluationRequest,
   GetBatchEvaluationResponse,
   GetBatchEvaluationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetBatchEvaluationRequest,
   output: GetBatchEvaluationResponse,
@@ -7919,7 +7918,7 @@ export const getBrowserSession: API.OperationMethod<
   GetBrowserSessionRequest,
   GetBrowserSessionResponse,
   GetBrowserSessionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetBrowserSessionRequest,
   output: GetBrowserSessionResponse,
@@ -7959,7 +7958,7 @@ export const getCodeInterpreterSession: API.OperationMethod<
   GetCodeInterpreterSessionRequest,
   GetCodeInterpreterSessionResponse,
   GetCodeInterpreterSessionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetCodeInterpreterSessionRequest,
   output: GetCodeInterpreterSessionResponse,
@@ -7993,7 +7992,7 @@ export const getEvent: API.OperationMethod<
   GetEventInput,
   GetEventOutput,
   GetEventError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetEventInput,
   output: GetEventOutput,
@@ -8029,7 +8028,7 @@ export const getMemoryRecord: API.OperationMethod<
   GetMemoryRecordInput,
   GetMemoryRecordOutput,
   GetMemoryRecordError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetMemoryRecordInput,
   output: GetMemoryRecordOutput,
@@ -8061,7 +8060,7 @@ export const getPaymentInstrument: API.OperationMethod<
   GetPaymentInstrumentRequest,
   GetPaymentInstrumentResponse,
   GetPaymentInstrumentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetPaymentInstrumentRequest,
   output: GetPaymentInstrumentResponse,
@@ -8091,7 +8090,7 @@ export const getPaymentInstrumentBalance: API.OperationMethod<
   GetPaymentInstrumentBalanceRequest,
   GetPaymentInstrumentBalanceResponse,
   GetPaymentInstrumentBalanceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetPaymentInstrumentBalanceRequest,
   output: GetPaymentInstrumentBalanceResponse,
@@ -8121,7 +8120,7 @@ export const getPaymentSession: API.OperationMethod<
   GetPaymentSessionRequest,
   GetPaymentSessionResponse,
   GetPaymentSessionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetPaymentSessionRequest,
   output: GetPaymentSessionResponse,
@@ -8151,7 +8150,7 @@ export const getRecommendation: API.OperationMethod<
   GetRecommendationRequest,
   GetRecommendationResponse,
   GetRecommendationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetRecommendationRequest,
   output: GetRecommendationResponse,
@@ -8182,7 +8181,7 @@ export const getResourceApiKey: API.OperationMethod<
   GetResourceApiKeyRequest,
   GetResourceApiKeyResponse,
   GetResourceApiKeyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetResourceApiKeyRequest,
   output: GetResourceApiKeyResponse,
@@ -8214,7 +8213,7 @@ export const getResourceOauth2Token: API.OperationMethod<
   GetResourceOauth2TokenRequest,
   GetResourceOauth2TokenResponse,
   GetResourceOauth2TokenError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetResourceOauth2TokenRequest,
   output: GetResourceOauth2TokenResponse,
@@ -8246,7 +8245,7 @@ export const getResourcePaymentToken: API.OperationMethod<
   GetResourcePaymentTokenRequest,
   GetResourcePaymentTokenResponse,
   GetResourcePaymentTokenError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetResourcePaymentTokenRequest,
   output: GetResourcePaymentTokenResponse,
@@ -8278,7 +8277,7 @@ export const getWorkloadAccessToken: API.OperationMethod<
   GetWorkloadAccessTokenRequest,
   GetWorkloadAccessTokenResponse,
   GetWorkloadAccessTokenError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetWorkloadAccessTokenRequest,
   output: GetWorkloadAccessTokenResponse,
@@ -8310,7 +8309,7 @@ export const getWorkloadAccessTokenForJWT: API.OperationMethod<
   GetWorkloadAccessTokenForJWTRequest,
   GetWorkloadAccessTokenForJWTResponse,
   GetWorkloadAccessTokenForJWTError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetWorkloadAccessTokenForJWTRequest,
   output: GetWorkloadAccessTokenForJWTResponse,
@@ -8342,7 +8341,7 @@ export const getWorkloadAccessTokenForUserId: API.OperationMethod<
   GetWorkloadAccessTokenForUserIdRequest,
   GetWorkloadAccessTokenForUserIdResponse,
   GetWorkloadAccessTokenForUserIdError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetWorkloadAccessTokenForUserIdRequest,
   output: GetWorkloadAccessTokenForUserIdResponse,
@@ -8386,7 +8385,7 @@ export const invokeAgentRuntime: API.OperationMethod<
   InvokeAgentRuntimeRequest,
   InvokeAgentRuntimeResponse,
   InvokeAgentRuntimeError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: InvokeAgentRuntimeRequest,
   output: InvokeAgentRuntimeResponse,
@@ -8426,7 +8425,7 @@ export const invokeAgentRuntimeCommand: API.OperationMethod<
   InvokeAgentRuntimeCommandRequest,
   InvokeAgentRuntimeCommandResponse,
   InvokeAgentRuntimeCommandError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: InvokeAgentRuntimeCommandRequest,
   output: InvokeAgentRuntimeCommandResponse,
@@ -8470,7 +8469,7 @@ export const invokeBrowser: API.OperationMethod<
   InvokeBrowserRequest,
   InvokeBrowserResponse,
   InvokeBrowserError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: InvokeBrowserRequest,
   output: InvokeBrowserResponse,
@@ -8513,7 +8512,7 @@ export const invokeCodeInterpreter: API.OperationMethod<
   InvokeCodeInterpreterRequest,
   InvokeCodeInterpreterResponse,
   InvokeCodeInterpreterError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: InvokeCodeInterpreterRequest,
   output: InvokeCodeInterpreterResponse,
@@ -8547,7 +8546,7 @@ export const invokeHarness: API.OperationMethod<
   InvokeHarnessRequest,
   InvokeHarnessResponse,
   InvokeHarnessError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: InvokeHarnessRequest,
   output: InvokeHarnessResponse,
@@ -8579,7 +8578,7 @@ export const listABTests: API.PaginatedOperationMethod<
   ListABTestsRequest,
   ListABTestsResponse,
   ListABTestsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ABTestSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListABTestsRequest,
@@ -8620,7 +8619,7 @@ export const listActors: API.PaginatedOperationMethod<
   ListActorsInput,
   ListActorsOutput,
   ListActorsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ActorSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListActorsInput,
@@ -8659,7 +8658,7 @@ export const listBatchEvaluations: API.PaginatedOperationMethod<
   ListBatchEvaluationsRequest,
   ListBatchEvaluationsResponse,
   ListBatchEvaluationsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   BatchEvaluationSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBatchEvaluationsRequest,
@@ -8706,7 +8705,7 @@ export const listBrowserSessions: API.OperationMethod<
   ListBrowserSessionsRequest,
   ListBrowserSessionsResponse,
   ListBrowserSessionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListBrowserSessionsRequest,
   output: ListBrowserSessionsResponse,
@@ -8746,7 +8745,7 @@ export const listCodeInterpreterSessions: API.OperationMethod<
   ListCodeInterpreterSessionsRequest,
   ListCodeInterpreterSessionsResponse,
   ListCodeInterpreterSessionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListCodeInterpreterSessionsRequest,
   output: ListCodeInterpreterSessionsResponse,
@@ -8780,7 +8779,7 @@ export const listEvents: API.PaginatedOperationMethod<
   ListEventsInput,
   ListEventsOutput,
   ListEventsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   Event
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEventsInput,
@@ -8822,7 +8821,7 @@ export const listMemoryExtractionJobs: API.PaginatedOperationMethod<
   ListMemoryExtractionJobsInput,
   ListMemoryExtractionJobsOutput,
   ListMemoryExtractionJobsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ExtractionJobMetadata
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMemoryExtractionJobsInput,
@@ -8864,7 +8863,7 @@ export const listMemoryRecords: API.PaginatedOperationMethod<
   ListMemoryRecordsInput,
   ListMemoryRecordsOutput,
   ListMemoryRecordsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   MemoryRecordSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMemoryRecordsInput,
@@ -8902,7 +8901,7 @@ export const listPaymentInstruments: API.PaginatedOperationMethod<
   ListPaymentInstrumentsRequest,
   ListPaymentInstrumentsResponse,
   ListPaymentInstrumentsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   PaymentInstrumentSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPaymentInstrumentsRequest,
@@ -8937,7 +8936,7 @@ export const listPaymentSessions: API.PaginatedOperationMethod<
   ListPaymentSessionsRequest,
   ListPaymentSessionsResponse,
   ListPaymentSessionsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   PaymentSessionSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPaymentSessionsRequest,
@@ -8972,7 +8971,7 @@ export const listRecommendations: API.PaginatedOperationMethod<
   ListRecommendationsRequest,
   ListRecommendationsResponse,
   ListRecommendationsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   RecommendationSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRecommendationsRequest,
@@ -9014,7 +9013,7 @@ export const listSessions: API.PaginatedOperationMethod<
   ListSessionsInput,
   ListSessionsOutput,
   ListSessionsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   SessionSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSessionsInput,
@@ -9054,7 +9053,7 @@ export const processPayment: API.OperationMethod<
   ProcessPaymentRequest,
   ProcessPaymentResponse,
   ProcessPaymentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ProcessPaymentRequest,
   output: ProcessPaymentResponse,
@@ -9089,7 +9088,7 @@ export const retrieveMemoryRecords: API.PaginatedOperationMethod<
   RetrieveMemoryRecordsInput,
   RetrieveMemoryRecordsOutput,
   RetrieveMemoryRecordsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   MemoryRecordSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: RetrieveMemoryRecordsInput,
@@ -9139,7 +9138,7 @@ export const saveBrowserSessionProfile: API.OperationMethod<
   SaveBrowserSessionProfileRequest,
   SaveBrowserSessionProfileResponse,
   SaveBrowserSessionProfileError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: SaveBrowserSessionProfileRequest,
   output: SaveBrowserSessionProfileResponse,
@@ -9171,7 +9170,7 @@ export const searchRegistryRecords: API.OperationMethod<
   SearchRegistryRecordsRequest,
   SearchRegistryRecordsResponse,
   SearchRegistryRecordsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: SearchRegistryRecordsRequest,
   output: SearchRegistryRecordsResponse,
@@ -9204,7 +9203,7 @@ export const startBatchEvaluation: API.OperationMethod<
   StartBatchEvaluationRequest,
   StartBatchEvaluationResponse,
   StartBatchEvaluationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartBatchEvaluationRequest,
   output: StartBatchEvaluationResponse,
@@ -9252,7 +9251,7 @@ export const startBrowserSession: API.OperationMethod<
   StartBrowserSessionRequest,
   StartBrowserSessionResponse,
   StartBrowserSessionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartBrowserSessionRequest,
   output: StartBrowserSessionResponse,
@@ -9296,7 +9295,7 @@ export const startCodeInterpreterSession: API.OperationMethod<
   StartCodeInterpreterSessionRequest,
   StartCodeInterpreterSessionResponse,
   StartCodeInterpreterSessionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartCodeInterpreterSessionRequest,
   output: StartCodeInterpreterSessionResponse,
@@ -9331,7 +9330,7 @@ export const startMemoryExtractionJob: API.OperationMethod<
   StartMemoryExtractionJobInput,
   StartMemoryExtractionJobOutput,
   StartMemoryExtractionJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartMemoryExtractionJobInput,
   output: StartMemoryExtractionJobOutput,
@@ -9363,7 +9362,7 @@ export const startRecommendation: API.OperationMethod<
   StartRecommendationRequest,
   StartRecommendationResponse,
   StartRecommendationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartRecommendationRequest,
   output: StartRecommendationResponse,
@@ -9396,7 +9395,7 @@ export const stopBatchEvaluation: API.OperationMethod<
   StopBatchEvaluationRequest,
   StopBatchEvaluationResponse,
   StopBatchEvaluationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StopBatchEvaluationRequest,
   output: StopBatchEvaluationResponse,
@@ -9438,7 +9437,7 @@ export const stopBrowserSession: API.OperationMethod<
   StopBrowserSessionRequest,
   StopBrowserSessionResponse,
   StopBrowserSessionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StopBrowserSessionRequest,
   output: StopBrowserSessionResponse,
@@ -9480,7 +9479,7 @@ export const stopCodeInterpreterSession: API.OperationMethod<
   StopCodeInterpreterSessionRequest,
   StopCodeInterpreterSessionResponse,
   StopCodeInterpreterSessionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StopCodeInterpreterSessionRequest,
   output: StopCodeInterpreterSessionResponse,
@@ -9517,7 +9516,7 @@ export const stopRuntimeSession: API.OperationMethod<
   StopRuntimeSessionRequest,
   StopRuntimeSessionResponse,
   StopRuntimeSessionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StopRuntimeSessionRequest,
   output: StopRuntimeSessionResponse,
@@ -9555,7 +9554,7 @@ export const updateABTest: API.OperationMethod<
   UpdateABTestRequest,
   UpdateABTestResponse,
   UpdateABTestError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateABTestRequest,
   output: UpdateABTestResponse,
@@ -9590,7 +9589,7 @@ export const updateBrowserStream: API.OperationMethod<
   UpdateBrowserStreamRequest,
   UpdateBrowserStreamResponse,
   UpdateBrowserStreamError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateBrowserStreamRequest,
   output: UpdateBrowserStreamResponse,

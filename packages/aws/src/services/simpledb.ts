@@ -7,7 +7,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 const ns = T.XmlNamespace("http://sdb.amazonaws.com/doc/2009-04-15/");
 const svc = T.AwsApiService({
   sdkId: "SimpleDB",
@@ -635,7 +634,7 @@ export const batchDeleteAttributes: API.OperationMethod<
   BatchDeleteAttributesRequest,
   BatchDeleteAttributesResponse,
   BatchDeleteAttributesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: BatchDeleteAttributesRequest,
   output: BatchDeleteAttributesResponse,
@@ -663,7 +662,7 @@ export const batchPutAttributes: API.OperationMethod<
   BatchPutAttributesRequest,
   BatchPutAttributesResponse,
   BatchPutAttributesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: BatchPutAttributesRequest,
   output: BatchPutAttributesResponse,
@@ -695,7 +694,7 @@ export const createDomain: API.OperationMethod<
   CreateDomainRequest,
   CreateDomainResponse,
   CreateDomainError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateDomainRequest,
   output: CreateDomainResponse,
@@ -718,7 +717,7 @@ export const deleteAttributes: API.OperationMethod<
   DeleteAttributesRequest,
   DeleteAttributesResponse,
   DeleteAttributesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteAttributesRequest,
   output: DeleteAttributesResponse,
@@ -741,7 +740,7 @@ export const deleteDomain: API.OperationMethod<
   DeleteDomainRequest,
   DeleteDomainResponse,
   DeleteDomainError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteDomainRequest,
   output: DeleteDomainResponse,
@@ -762,7 +761,7 @@ export const domainMetadata: API.OperationMethod<
   DomainMetadataRequest,
   DomainMetadataResponse,
   DomainMetadataError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DomainMetadataRequest,
   output: DomainMetadataResponse,
@@ -784,7 +783,7 @@ export const getAttributes: API.OperationMethod<
   GetAttributesRequest,
   GetAttributesResponse,
   GetAttributesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetAttributesRequest,
   output: GetAttributesResponse,
@@ -805,7 +804,7 @@ export const listDomains: API.PaginatedOperationMethod<
   ListDomainsRequest,
   ListDomainsResponse,
   ListDomainsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   string
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDomainsRequest,
@@ -838,7 +837,7 @@ export const putAttributes: API.OperationMethod<
   PutAttributesRequest,
   PutAttributesResponse,
   PutAttributesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PutAttributesRequest,
   output: PutAttributesResponse,
@@ -874,7 +873,7 @@ export const select: API.PaginatedOperationMethod<
   SelectRequest,
   SelectResponse,
   SelectError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   Item
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: SelectRequest,

@@ -8,7 +8,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region as Rgn } from "../region.ts";
 import { SensitiveString } from "../sensitive.ts";
 const svc = T.AwsApiService({
   sdkId: "deadline",
@@ -9144,7 +9143,7 @@ export const associateMemberToFarm: API.OperationMethod<
   AssociateMemberToFarmRequest,
   AssociateMemberToFarmResponse,
   AssociateMemberToFarmError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: AssociateMemberToFarmRequest,
   output: AssociateMemberToFarmResponse,
@@ -9177,7 +9176,7 @@ export const associateMemberToFleet: API.OperationMethod<
   AssociateMemberToFleetRequest,
   AssociateMemberToFleetResponse,
   AssociateMemberToFleetError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: AssociateMemberToFleetRequest,
   output: AssociateMemberToFleetResponse,
@@ -9210,7 +9209,7 @@ export const associateMemberToJob: API.OperationMethod<
   AssociateMemberToJobRequest,
   AssociateMemberToJobResponse,
   AssociateMemberToJobError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: AssociateMemberToJobRequest,
   output: AssociateMemberToJobResponse,
@@ -9243,7 +9242,7 @@ export const associateMemberToQueue: API.OperationMethod<
   AssociateMemberToQueueRequest,
   AssociateMemberToQueueResponse,
   AssociateMemberToQueueError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: AssociateMemberToQueueRequest,
   output: AssociateMemberToQueueResponse,
@@ -9275,7 +9274,7 @@ export const assumeFleetRoleForRead: API.OperationMethod<
   AssumeFleetRoleForReadRequest,
   AssumeFleetRoleForReadResponse,
   AssumeFleetRoleForReadError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: AssumeFleetRoleForReadRequest,
   output: AssumeFleetRoleForReadResponse,
@@ -9307,7 +9306,7 @@ export const assumeFleetRoleForWorker: API.OperationMethod<
   AssumeFleetRoleForWorkerRequest,
   AssumeFleetRoleForWorkerResponse,
   AssumeFleetRoleForWorkerError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: AssumeFleetRoleForWorkerRequest,
   output: AssumeFleetRoleForWorkerResponse,
@@ -9339,7 +9338,7 @@ export const assumeQueueRoleForRead: API.OperationMethod<
   AssumeQueueRoleForReadRequest,
   AssumeQueueRoleForReadResponse,
   AssumeQueueRoleForReadError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: AssumeQueueRoleForReadRequest,
   output: AssumeQueueRoleForReadResponse,
@@ -9370,7 +9369,7 @@ export const assumeQueueRoleForUser: API.OperationMethod<
   AssumeQueueRoleForUserRequest,
   AssumeQueueRoleForUserResponse,
   AssumeQueueRoleForUserError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: AssumeQueueRoleForUserRequest,
   output: AssumeQueueRoleForUserResponse,
@@ -9402,7 +9401,7 @@ export const assumeQueueRoleForWorker: API.OperationMethod<
   AssumeQueueRoleForWorkerRequest,
   AssumeQueueRoleForWorkerResponse,
   AssumeQueueRoleForWorkerError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: AssumeQueueRoleForWorkerRequest,
   output: AssumeQueueRoleForWorkerResponse,
@@ -9435,7 +9434,7 @@ export const batchGetJob: API.OperationMethod<
   BatchGetJobRequest,
   BatchGetJobResponse,
   BatchGetJobError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: BatchGetJobRequest,
   output: BatchGetJobResponse,
@@ -9465,7 +9464,7 @@ export const batchGetJobEntity: API.OperationMethod<
   BatchGetJobEntityRequest,
   BatchGetJobEntityResponse,
   BatchGetJobEntityError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: BatchGetJobEntityRequest,
   output: BatchGetJobEntityResponse,
@@ -9497,7 +9496,7 @@ export const batchGetSession: API.OperationMethod<
   BatchGetSessionRequest,
   BatchGetSessionResponse,
   BatchGetSessionError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: BatchGetSessionRequest,
   output: BatchGetSessionResponse,
@@ -9528,7 +9527,7 @@ export const batchGetSessionAction: API.OperationMethod<
   BatchGetSessionActionRequest,
   BatchGetSessionActionResponse,
   BatchGetSessionActionError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: BatchGetSessionActionRequest,
   output: BatchGetSessionActionResponse,
@@ -9559,7 +9558,7 @@ export const batchGetStep: API.OperationMethod<
   BatchGetStepRequest,
   BatchGetStepResponse,
   BatchGetStepError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: BatchGetStepRequest,
   output: BatchGetStepResponse,
@@ -9590,7 +9589,7 @@ export const batchGetTask: API.OperationMethod<
   BatchGetTaskRequest,
   BatchGetTaskResponse,
   BatchGetTaskError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: BatchGetTaskRequest,
   output: BatchGetTaskResponse,
@@ -9621,7 +9620,7 @@ export const batchGetWorker: API.OperationMethod<
   BatchGetWorkerRequest,
   BatchGetWorkerResponse,
   BatchGetWorkerError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: BatchGetWorkerRequest,
   output: BatchGetWorkerResponse,
@@ -9656,7 +9655,7 @@ export const batchUpdateJob: API.OperationMethod<
   BatchUpdateJobRequest,
   BatchUpdateJobResponse,
   BatchUpdateJobError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: BatchUpdateJobRequest,
   output: BatchUpdateJobResponse,
@@ -9687,7 +9686,7 @@ export const batchUpdateTask: API.OperationMethod<
   BatchUpdateTaskRequest,
   BatchUpdateTaskResponse,
   BatchUpdateTaskError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: BatchUpdateTaskRequest,
   output: BatchUpdateTaskResponse,
@@ -9717,7 +9716,7 @@ export const copyJobTemplate: API.OperationMethod<
   CopyJobTemplateRequest,
   CopyJobTemplateResponse,
   CopyJobTemplateError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CopyJobTemplateRequest,
   output: CopyJobTemplateResponse,
@@ -9750,7 +9749,7 @@ export const createBudget: API.OperationMethod<
   CreateBudgetRequest,
   CreateBudgetResponse,
   CreateBudgetError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateBudgetRequest,
   output: CreateBudgetResponse,
@@ -9784,7 +9783,7 @@ export const createFarm: API.OperationMethod<
   CreateFarmRequest,
   CreateFarmResponse,
   CreateFarmError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateFarmRequest,
   output: CreateFarmResponse,
@@ -9818,7 +9817,7 @@ export const createFleet: API.OperationMethod<
   CreateFleetRequest,
   CreateFleetResponse,
   CreateFleetError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateFleetRequest,
   output: CreateFleetResponse,
@@ -9852,7 +9851,7 @@ export const createJob: API.OperationMethod<
   CreateJobRequest,
   CreateJobResponse,
   CreateJobError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateJobRequest,
   output: CreateJobResponse,
@@ -9885,7 +9884,7 @@ export const createLicenseEndpoint: API.OperationMethod<
   CreateLicenseEndpointRequest,
   CreateLicenseEndpointResponse,
   CreateLicenseEndpointError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateLicenseEndpointRequest,
   output: CreateLicenseEndpointResponse,
@@ -9920,7 +9919,7 @@ export const createLimit: API.OperationMethod<
   CreateLimitRequest,
   CreateLimitResponse,
   CreateLimitError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateLimitRequest,
   output: CreateLimitResponse,
@@ -9953,7 +9952,7 @@ export const createMonitor: API.OperationMethod<
   CreateMonitorRequest,
   CreateMonitorResponse,
   CreateMonitorError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateMonitorRequest,
   output: CreateMonitorResponse,
@@ -9987,7 +9986,7 @@ export const createQueue: API.OperationMethod<
   CreateQueueRequest,
   CreateQueueResponse,
   CreateQueueError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateQueueRequest,
   output: CreateQueueResponse,
@@ -10021,7 +10020,7 @@ export const createQueueEnvironment: API.OperationMethod<
   CreateQueueEnvironmentRequest,
   CreateQueueEnvironmentResponse,
   CreateQueueEnvironmentError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateQueueEnvironmentRequest,
   output: CreateQueueEnvironmentResponse,
@@ -10053,7 +10052,7 @@ export const createQueueFleetAssociation: API.OperationMethod<
   CreateQueueFleetAssociationRequest,
   CreateQueueFleetAssociationResponse,
   CreateQueueFleetAssociationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateQueueFleetAssociationRequest,
   output: CreateQueueFleetAssociationResponse,
@@ -10084,7 +10083,7 @@ export const createQueueLimitAssociation: API.OperationMethod<
   CreateQueueLimitAssociationRequest,
   CreateQueueLimitAssociationResponse,
   CreateQueueLimitAssociationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateQueueLimitAssociationRequest,
   output: CreateQueueLimitAssociationResponse,
@@ -10117,7 +10116,7 @@ export const createStorageProfile: API.OperationMethod<
   CreateStorageProfileRequest,
   CreateStorageProfileResponse,
   CreateStorageProfileError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateStorageProfileRequest,
   output: CreateStorageProfileResponse,
@@ -10153,7 +10152,7 @@ export const createWorker: API.OperationMethod<
   CreateWorkerRequest,
   CreateWorkerResponse,
   CreateWorkerError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateWorkerRequest,
   output: CreateWorkerResponse,
@@ -10186,7 +10185,7 @@ export const deleteBudget: API.OperationMethod<
   DeleteBudgetRequest,
   DeleteBudgetResponse,
   DeleteBudgetError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteBudgetRequest,
   output: DeleteBudgetResponse,
@@ -10219,7 +10218,7 @@ export const deleteFarm: API.OperationMethod<
   DeleteFarmRequest,
   DeleteFarmResponse,
   DeleteFarmError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteFarmRequest,
   output: DeleteFarmResponse,
@@ -10252,7 +10251,7 @@ export const deleteFleet: API.OperationMethod<
   DeleteFleetRequest,
   DeleteFleetResponse,
   DeleteFleetError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteFleetRequest,
   output: DeleteFleetResponse,
@@ -10285,7 +10284,7 @@ export const deleteLicenseEndpoint: API.OperationMethod<
   DeleteLicenseEndpointRequest,
   DeleteLicenseEndpointResponse,
   DeleteLicenseEndpointError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteLicenseEndpointRequest,
   output: DeleteLicenseEndpointResponse,
@@ -10316,7 +10315,7 @@ export const deleteLimit: API.OperationMethod<
   DeleteLimitRequest,
   DeleteLimitResponse,
   DeleteLimitError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteLimitRequest,
   output: DeleteLimitResponse,
@@ -10346,7 +10345,7 @@ export const deleteMeteredProduct: API.OperationMethod<
   DeleteMeteredProductRequest,
   DeleteMeteredProductResponse,
   DeleteMeteredProductError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteMeteredProductRequest,
   output: DeleteMeteredProductResponse,
@@ -10378,7 +10377,7 @@ export const deleteMonitor: API.OperationMethod<
   DeleteMonitorRequest,
   DeleteMonitorResponse,
   DeleteMonitorError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteMonitorRequest,
   output: DeleteMonitorResponse,
@@ -10413,7 +10412,7 @@ export const deleteQueue: API.OperationMethod<
   DeleteQueueRequest,
   DeleteQueueResponse,
   DeleteQueueError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteQueueRequest,
   output: DeleteQueueResponse,
@@ -10444,7 +10443,7 @@ export const deleteQueueEnvironment: API.OperationMethod<
   DeleteQueueEnvironmentRequest,
   DeleteQueueEnvironmentResponse,
   DeleteQueueEnvironmentError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteQueueEnvironmentRequest,
   output: DeleteQueueEnvironmentResponse,
@@ -10475,7 +10474,7 @@ export const deleteQueueFleetAssociation: API.OperationMethod<
   DeleteQueueFleetAssociationRequest,
   DeleteQueueFleetAssociationResponse,
   DeleteQueueFleetAssociationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteQueueFleetAssociationRequest,
   output: DeleteQueueFleetAssociationResponse,
@@ -10508,7 +10507,7 @@ export const deleteQueueLimitAssociation: API.OperationMethod<
   DeleteQueueLimitAssociationRequest,
   DeleteQueueLimitAssociationResponse,
   DeleteQueueLimitAssociationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteQueueLimitAssociationRequest,
   output: DeleteQueueLimitAssociationResponse,
@@ -10541,7 +10540,7 @@ export const deleteStorageProfile: API.OperationMethod<
   DeleteStorageProfileRequest,
   DeleteStorageProfileResponse,
   DeleteStorageProfileError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteStorageProfileRequest,
   output: DeleteStorageProfileResponse,
@@ -10574,7 +10573,7 @@ export const deleteVolume: API.OperationMethod<
   DeleteVolumeRequest,
   DeleteVolumeResponse,
   DeleteVolumeError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteVolumeRequest,
   output: DeleteVolumeResponse,
@@ -10607,7 +10606,7 @@ export const deleteWorker: API.OperationMethod<
   DeleteWorkerRequest,
   DeleteWorkerResponse,
   DeleteWorkerError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteWorkerRequest,
   output: DeleteWorkerResponse,
@@ -10639,7 +10638,7 @@ export const disassociateMemberFromFarm: API.OperationMethod<
   DisassociateMemberFromFarmRequest,
   DisassociateMemberFromFarmResponse,
   DisassociateMemberFromFarmError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DisassociateMemberFromFarmRequest,
   output: DisassociateMemberFromFarmResponse,
@@ -10671,7 +10670,7 @@ export const disassociateMemberFromFleet: API.OperationMethod<
   DisassociateMemberFromFleetRequest,
   DisassociateMemberFromFleetResponse,
   DisassociateMemberFromFleetError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DisassociateMemberFromFleetRequest,
   output: DisassociateMemberFromFleetResponse,
@@ -10703,7 +10702,7 @@ export const disassociateMemberFromJob: API.OperationMethod<
   DisassociateMemberFromJobRequest,
   DisassociateMemberFromJobResponse,
   DisassociateMemberFromJobError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DisassociateMemberFromJobRequest,
   output: DisassociateMemberFromJobResponse,
@@ -10735,7 +10734,7 @@ export const disassociateMemberFromQueue: API.OperationMethod<
   DisassociateMemberFromQueueRequest,
   DisassociateMemberFromQueueResponse,
   DisassociateMemberFromQueueError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DisassociateMemberFromQueueRequest,
   output: DisassociateMemberFromQueueResponse,
@@ -10767,7 +10766,7 @@ export const getBudget: API.OperationMethod<
   GetBudgetRequest,
   GetBudgetResponse,
   GetBudgetError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetBudgetRequest,
   output: GetBudgetResponse,
@@ -10798,7 +10797,7 @@ export const getFarm: API.OperationMethod<
   GetFarmRequest,
   GetFarmResponse,
   GetFarmError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetFarmRequest,
   output: GetFarmResponse,
@@ -10829,7 +10828,7 @@ export const getFleet: API.OperationMethod<
   GetFleetRequest,
   GetFleetResponse,
   GetFleetError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetFleetRequest,
   output: GetFleetResponse,
@@ -10860,7 +10859,7 @@ export const getJob: API.OperationMethod<
   GetJobRequest,
   GetJobResponse,
   GetJobError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetJobRequest,
   output: GetJobResponse,
@@ -10891,7 +10890,7 @@ export const getLicenseEndpoint: API.OperationMethod<
   GetLicenseEndpointRequest,
   GetLicenseEndpointResponse,
   GetLicenseEndpointError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetLicenseEndpointRequest,
   output: GetLicenseEndpointResponse,
@@ -10922,7 +10921,7 @@ export const getLimit: API.OperationMethod<
   GetLimitRequest,
   GetLimitResponse,
   GetLimitError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetLimitRequest,
   output: GetLimitResponse,
@@ -10953,7 +10952,7 @@ export const getMonitor: API.OperationMethod<
   GetMonitorRequest,
   GetMonitorResponse,
   GetMonitorError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetMonitorRequest,
   output: GetMonitorResponse,
@@ -10984,7 +10983,7 @@ export const getMonitorSettings: API.OperationMethod<
   GetMonitorSettingsRequest,
   GetMonitorSettingsResponse,
   GetMonitorSettingsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetMonitorSettingsRequest,
   output: GetMonitorSettingsResponse,
@@ -11015,7 +11014,7 @@ export const getQueue: API.OperationMethod<
   GetQueueRequest,
   GetQueueResponse,
   GetQueueError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetQueueRequest,
   output: GetQueueResponse,
@@ -11046,7 +11045,7 @@ export const getQueueEnvironment: API.OperationMethod<
   GetQueueEnvironmentRequest,
   GetQueueEnvironmentResponse,
   GetQueueEnvironmentError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetQueueEnvironmentRequest,
   output: GetQueueEnvironmentResponse,
@@ -11077,7 +11076,7 @@ export const getQueueFleetAssociation: API.OperationMethod<
   GetQueueFleetAssociationRequest,
   GetQueueFleetAssociationResponse,
   GetQueueFleetAssociationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetQueueFleetAssociationRequest,
   output: GetQueueFleetAssociationResponse,
@@ -11108,7 +11107,7 @@ export const getQueueLimitAssociation: API.OperationMethod<
   GetQueueLimitAssociationRequest,
   GetQueueLimitAssociationResponse,
   GetQueueLimitAssociationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetQueueLimitAssociationRequest,
   output: GetQueueLimitAssociationResponse,
@@ -11139,7 +11138,7 @@ export const getSession: API.OperationMethod<
   GetSessionRequest,
   GetSessionResponse,
   GetSessionError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetSessionRequest,
   output: GetSessionResponse,
@@ -11170,7 +11169,7 @@ export const getSessionAction: API.OperationMethod<
   GetSessionActionRequest,
   GetSessionActionResponse,
   GetSessionActionError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetSessionActionRequest,
   output: GetSessionActionResponse,
@@ -11201,7 +11200,7 @@ export const getSessionsStatisticsAggregation: API.PaginatedOperationMethod<
   GetSessionsStatisticsAggregationRequest,
   GetSessionsStatisticsAggregationResponse,
   GetSessionsStatisticsAggregationError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   Statistics
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetSessionsStatisticsAggregationRequest,
@@ -11239,7 +11238,7 @@ export const getStep: API.OperationMethod<
   GetStepRequest,
   GetStepResponse,
   GetStepError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetStepRequest,
   output: GetStepResponse,
@@ -11270,7 +11269,7 @@ export const getStorageProfile: API.OperationMethod<
   GetStorageProfileRequest,
   GetStorageProfileResponse,
   GetStorageProfileError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetStorageProfileRequest,
   output: GetStorageProfileResponse,
@@ -11301,7 +11300,7 @@ export const getStorageProfileForQueue: API.OperationMethod<
   GetStorageProfileForQueueRequest,
   GetStorageProfileForQueueResponse,
   GetStorageProfileForQueueError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetStorageProfileForQueueRequest,
   output: GetStorageProfileForQueueResponse,
@@ -11332,7 +11331,7 @@ export const getTask: API.OperationMethod<
   GetTaskRequest,
   GetTaskResponse,
   GetTaskError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetTaskRequest,
   output: GetTaskResponse,
@@ -11363,7 +11362,7 @@ export const getVolume: API.OperationMethod<
   GetVolumeRequest,
   GetVolumeResponse,
   GetVolumeError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetVolumeRequest,
   output: GetVolumeResponse,
@@ -11394,7 +11393,7 @@ export const getWorker: API.OperationMethod<
   GetWorkerRequest,
   GetWorkerResponse,
   GetWorkerError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetWorkerRequest,
   output: GetWorkerResponse,
@@ -11422,7 +11421,7 @@ export const listAvailableMeteredProducts: API.PaginatedOperationMethod<
   ListAvailableMeteredProductsRequest,
   ListAvailableMeteredProductsResponse,
   ListAvailableMeteredProductsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   MeteredProductSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAvailableMeteredProductsRequest,
@@ -11454,7 +11453,7 @@ export const listBudgets: API.PaginatedOperationMethod<
   ListBudgetsRequest,
   ListBudgetsResponse,
   ListBudgetsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   BudgetSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBudgetsRequest,
@@ -11492,7 +11491,7 @@ export const listFarmMembers: API.PaginatedOperationMethod<
   ListFarmMembersRequest,
   ListFarmMembersResponse,
   ListFarmMembersError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   FarmMember
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFarmMembersRequest,
@@ -11529,7 +11528,7 @@ export const listFarms: API.PaginatedOperationMethod<
   ListFarmsRequest,
   ListFarmsResponse,
   ListFarmsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   FarmSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFarmsRequest,
@@ -11566,7 +11565,7 @@ export const listFleetMembers: API.PaginatedOperationMethod<
   ListFleetMembersRequest,
   ListFleetMembersResponse,
   ListFleetMembersError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   FleetMember
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFleetMembersRequest,
@@ -11604,7 +11603,7 @@ export const listFleets: API.PaginatedOperationMethod<
   ListFleetsRequest,
   ListFleetsResponse,
   ListFleetsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   FleetSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFleetsRequest,
@@ -11642,7 +11641,7 @@ export const listJobMembers: API.PaginatedOperationMethod<
   ListJobMembersRequest,
   ListJobMembersResponse,
   ListJobMembersError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   JobMember
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListJobMembersRequest,
@@ -11680,7 +11679,7 @@ export const listJobParameterDefinitions: API.PaginatedOperationMethod<
   ListJobParameterDefinitionsRequest,
   ListJobParameterDefinitionsResponse,
   ListJobParameterDefinitionsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListJobParameterDefinitionsRequest,
@@ -11718,7 +11717,7 @@ export const listJobs: API.PaginatedOperationMethod<
   ListJobsRequest,
   ListJobsResponse,
   ListJobsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   JobSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListJobsRequest,
@@ -11756,7 +11755,7 @@ export const listLicenseEndpoints: API.PaginatedOperationMethod<
   ListLicenseEndpointsRequest,
   ListLicenseEndpointsResponse,
   ListLicenseEndpointsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   LicenseEndpointSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLicenseEndpointsRequest,
@@ -11794,7 +11793,7 @@ export const listLimits: API.PaginatedOperationMethod<
   ListLimitsRequest,
   ListLimitsResponse,
   ListLimitsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   LimitSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLimitsRequest,
@@ -11832,7 +11831,7 @@ export const listMeteredProducts: API.PaginatedOperationMethod<
   ListMeteredProductsRequest,
   ListMeteredProductsResponse,
   ListMeteredProductsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   MeteredProductSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMeteredProductsRequest,
@@ -11869,7 +11868,7 @@ export const listMonitors: API.PaginatedOperationMethod<
   ListMonitorsRequest,
   ListMonitorsResponse,
   ListMonitorsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   MonitorSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMonitorsRequest,
@@ -11906,7 +11905,7 @@ export const listQueueEnvironments: API.PaginatedOperationMethod<
   ListQueueEnvironmentsRequest,
   ListQueueEnvironmentsResponse,
   ListQueueEnvironmentsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   QueueEnvironmentSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListQueueEnvironmentsRequest,
@@ -11943,7 +11942,7 @@ export const listQueueFleetAssociations: API.PaginatedOperationMethod<
   ListQueueFleetAssociationsRequest,
   ListQueueFleetAssociationsResponse,
   ListQueueFleetAssociationsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   QueueFleetAssociationSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListQueueFleetAssociationsRequest,
@@ -11979,7 +11978,7 @@ export const listQueueLimitAssociations: API.PaginatedOperationMethod<
   ListQueueLimitAssociationsRequest,
   ListQueueLimitAssociationsResponse,
   ListQueueLimitAssociationsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   QueueLimitAssociationSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListQueueLimitAssociationsRequest,
@@ -12016,7 +12015,7 @@ export const listQueueMembers: API.PaginatedOperationMethod<
   ListQueueMembersRequest,
   ListQueueMembersResponse,
   ListQueueMembersError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   QueueMember
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListQueueMembersRequest,
@@ -12054,7 +12053,7 @@ export const listQueues: API.PaginatedOperationMethod<
   ListQueuesRequest,
   ListQueuesResponse,
   ListQueuesError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   QueueSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListQueuesRequest,
@@ -12092,7 +12091,7 @@ export const listSessionActions: API.PaginatedOperationMethod<
   ListSessionActionsRequest,
   ListSessionActionsResponse,
   ListSessionActionsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   SessionActionSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSessionActionsRequest,
@@ -12130,7 +12129,7 @@ export const listSessions: API.PaginatedOperationMethod<
   ListSessionsRequest,
   ListSessionsResponse,
   ListSessionsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   SessionSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSessionsRequest,
@@ -12168,7 +12167,7 @@ export const listSessionsForWorker: API.PaginatedOperationMethod<
   ListSessionsForWorkerRequest,
   ListSessionsForWorkerResponse,
   ListSessionsForWorkerError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   WorkerSessionSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSessionsForWorkerRequest,
@@ -12206,7 +12205,7 @@ export const listStepConsumers: API.PaginatedOperationMethod<
   ListStepConsumersRequest,
   ListStepConsumersResponse,
   ListStepConsumersError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   StepConsumer
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListStepConsumersRequest,
@@ -12244,7 +12243,7 @@ export const listStepDependencies: API.PaginatedOperationMethod<
   ListStepDependenciesRequest,
   ListStepDependenciesResponse,
   ListStepDependenciesError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   StepDependency
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListStepDependenciesRequest,
@@ -12282,7 +12281,7 @@ export const listSteps: API.PaginatedOperationMethod<
   ListStepsRequest,
   ListStepsResponse,
   ListStepsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   StepSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListStepsRequest,
@@ -12320,7 +12319,7 @@ export const listStorageProfiles: API.PaginatedOperationMethod<
   ListStorageProfilesRequest,
   ListStorageProfilesResponse,
   ListStorageProfilesError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   StorageProfileSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListStorageProfilesRequest,
@@ -12358,7 +12357,7 @@ export const listStorageProfilesForQueue: API.PaginatedOperationMethod<
   ListStorageProfilesForQueueRequest,
   ListStorageProfilesForQueueResponse,
   ListStorageProfilesForQueueError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   StorageProfileSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListStorageProfilesForQueueRequest,
@@ -12396,7 +12395,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -12427,7 +12426,7 @@ export const listTasks: API.PaginatedOperationMethod<
   ListTasksRequest,
   ListTasksResponse,
   ListTasksError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   TaskSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTasksRequest,
@@ -12465,7 +12464,7 @@ export const listVolumes: API.PaginatedOperationMethod<
   ListVolumesRequest,
   ListVolumesResponse,
   ListVolumesError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   VolumeSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListVolumesRequest,
@@ -12503,7 +12502,7 @@ export const listWorkers: API.PaginatedOperationMethod<
   ListWorkersRequest,
   ListWorkersResponse,
   ListWorkersError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   WorkerSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListWorkersRequest,
@@ -12541,7 +12540,7 @@ export const putMeteredProduct: API.OperationMethod<
   PutMeteredProductRequest,
   PutMeteredProductResponse,
   PutMeteredProductError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PutMeteredProductRequest,
   output: PutMeteredProductResponse,
@@ -12572,7 +12571,7 @@ export const searchJobs: API.OperationMethod<
   SearchJobsRequest,
   SearchJobsResponse,
   SearchJobsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: SearchJobsRequest,
   output: SearchJobsResponse,
@@ -12603,7 +12602,7 @@ export const searchSteps: API.OperationMethod<
   SearchStepsRequest,
   SearchStepsResponse,
   SearchStepsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: SearchStepsRequest,
   output: SearchStepsResponse,
@@ -12634,7 +12633,7 @@ export const searchTasks: API.OperationMethod<
   SearchTasksRequest,
   SearchTasksResponse,
   SearchTasksError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: SearchTasksRequest,
   output: SearchTasksResponse,
@@ -12665,7 +12664,7 @@ export const searchWorkers: API.OperationMethod<
   SearchWorkersRequest,
   SearchWorkersResponse,
   SearchWorkersError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: SearchWorkersRequest,
   output: SearchWorkersResponse,
@@ -12696,7 +12695,7 @@ export const startSessionsStatisticsAggregation: API.OperationMethod<
   StartSessionsStatisticsAggregationRequest,
   StartSessionsStatisticsAggregationResponse,
   StartSessionsStatisticsAggregationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartSessionsStatisticsAggregationRequest,
   output: StartSessionsStatisticsAggregationResponse,
@@ -12728,7 +12727,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -12761,7 +12760,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -12795,7 +12794,7 @@ export const updateBudget: API.OperationMethod<
   UpdateBudgetRequest,
   UpdateBudgetResponse,
   UpdateBudgetError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateBudgetRequest,
   output: UpdateBudgetResponse,
@@ -12829,7 +12828,7 @@ export const updateFarm: API.OperationMethod<
   UpdateFarmRequest,
   UpdateFarmResponse,
   UpdateFarmError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateFarmRequest,
   output: UpdateFarmResponse,
@@ -12862,7 +12861,7 @@ export const updateFleet: API.OperationMethod<
   UpdateFleetRequest,
   UpdateFleetResponse,
   UpdateFleetError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateFleetRequest,
   output: UpdateFleetResponse,
@@ -12899,7 +12898,7 @@ export const updateJob: API.OperationMethod<
   UpdateJobRequest,
   UpdateJobResponse,
   UpdateJobError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateJobRequest,
   output: UpdateJobResponse,
@@ -12931,7 +12930,7 @@ export const updateLimit: API.OperationMethod<
   UpdateLimitRequest,
   UpdateLimitResponse,
   UpdateLimitError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateLimitRequest,
   output: UpdateLimitResponse,
@@ -12963,7 +12962,7 @@ export const updateMonitor: API.OperationMethod<
   UpdateMonitorRequest,
   UpdateMonitorResponse,
   UpdateMonitorError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateMonitorRequest,
   output: UpdateMonitorResponse,
@@ -12995,7 +12994,7 @@ export const updateMonitorSettings: API.OperationMethod<
   UpdateMonitorSettingsRequest,
   UpdateMonitorSettingsResponse,
   UpdateMonitorSettingsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateMonitorSettingsRequest,
   output: UpdateMonitorSettingsResponse,
@@ -13026,7 +13025,7 @@ export const updateQueue: API.OperationMethod<
   UpdateQueueRequest,
   UpdateQueueResponse,
   UpdateQueueError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateQueueRequest,
   output: UpdateQueueResponse,
@@ -13057,7 +13056,7 @@ export const updateQueueEnvironment: API.OperationMethod<
   UpdateQueueEnvironmentRequest,
   UpdateQueueEnvironmentResponse,
   UpdateQueueEnvironmentError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateQueueEnvironmentRequest,
   output: UpdateQueueEnvironmentResponse,
@@ -13088,7 +13087,7 @@ export const updateQueueFleetAssociation: API.OperationMethod<
   UpdateQueueFleetAssociationRequest,
   UpdateQueueFleetAssociationResponse,
   UpdateQueueFleetAssociationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateQueueFleetAssociationRequest,
   output: UpdateQueueFleetAssociationResponse,
@@ -13119,7 +13118,7 @@ export const updateQueueLimitAssociation: API.OperationMethod<
   UpdateQueueLimitAssociationRequest,
   UpdateQueueLimitAssociationResponse,
   UpdateQueueLimitAssociationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateQueueLimitAssociationRequest,
   output: UpdateQueueLimitAssociationResponse,
@@ -13151,7 +13150,7 @@ export const updateSession: API.OperationMethod<
   UpdateSessionRequest,
   UpdateSessionResponse,
   UpdateSessionError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateSessionRequest,
   output: UpdateSessionResponse,
@@ -13184,7 +13183,7 @@ export const updateStep: API.OperationMethod<
   UpdateStepRequest,
   UpdateStepResponse,
   UpdateStepError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateStepRequest,
   output: UpdateStepResponse,
@@ -13217,7 +13216,7 @@ export const updateStorageProfile: API.OperationMethod<
   UpdateStorageProfileRequest,
   UpdateStorageProfileResponse,
   UpdateStorageProfileError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateStorageProfileRequest,
   output: UpdateStorageProfileResponse,
@@ -13250,7 +13249,7 @@ export const updateTask: API.OperationMethod<
   UpdateTaskRequest,
   UpdateTaskResponse,
   UpdateTaskError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateTaskRequest,
   output: UpdateTaskResponse,
@@ -13283,7 +13282,7 @@ export const updateWorker: API.OperationMethod<
   UpdateWorkerRequest,
   UpdateWorkerResponse,
   UpdateWorkerError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateWorkerRequest,
   output: UpdateWorkerResponse,
@@ -13316,7 +13315,7 @@ export const updateWorkerSchedule: API.OperationMethod<
   UpdateWorkerScheduleRequest,
   UpdateWorkerScheduleResponse,
   UpdateWorkerScheduleError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateWorkerScheduleRequest,
   output: UpdateWorkerScheduleResponse,

@@ -7,7 +7,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 const svc = T.AwsApiService({ sdkId: "RUM", serviceShapeName: "RUM" });
 const auth = T.AwsAuthSigv4({ name: "rum" });
 const ver = T.ServiceVersion("2018-05-10");
@@ -1215,7 +1214,7 @@ export const batchCreateRumMetricDefinitions: API.OperationMethod<
   BatchCreateRumMetricDefinitionsRequest,
   BatchCreateRumMetricDefinitionsResponse,
   BatchCreateRumMetricDefinitionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: BatchCreateRumMetricDefinitionsRequest,
   output: BatchCreateRumMetricDefinitionsResponse,
@@ -1252,7 +1251,7 @@ export const batchDeleteRumMetricDefinitions: API.OperationMethod<
   BatchDeleteRumMetricDefinitionsRequest,
   BatchDeleteRumMetricDefinitionsResponse,
   BatchDeleteRumMetricDefinitionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: BatchDeleteRumMetricDefinitionsRequest,
   output: BatchDeleteRumMetricDefinitionsResponse,
@@ -1282,7 +1281,7 @@ export const batchGetRumMetricDefinitions: API.PaginatedOperationMethod<
   BatchGetRumMetricDefinitionsRequest,
   BatchGetRumMetricDefinitionsResponse,
   BatchGetRumMetricDefinitionsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   MetricDefinition
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: BatchGetRumMetricDefinitionsRequest,
@@ -1324,7 +1323,7 @@ export const createAppMonitor: API.OperationMethod<
   CreateAppMonitorRequest,
   CreateAppMonitorResponse,
   CreateAppMonitorError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateAppMonitorRequest,
   output: CreateAppMonitorResponse,
@@ -1357,7 +1356,7 @@ export const deleteAppMonitor: API.OperationMethod<
   DeleteAppMonitorRequest,
   DeleteAppMonitorResponse,
   DeleteAppMonitorError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteAppMonitorRequest,
   output: DeleteAppMonitorResponse,
@@ -1391,7 +1390,7 @@ export const deleteResourcePolicy: API.OperationMethod<
   DeleteResourcePolicyRequest,
   DeleteResourcePolicyResponse,
   DeleteResourcePolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteResourcePolicyRequest,
   output: DeleteResourcePolicyResponse,
@@ -1425,7 +1424,7 @@ export const deleteRumMetricsDestination: API.OperationMethod<
   DeleteRumMetricsDestinationRequest,
   DeleteRumMetricsDestinationResponse,
   DeleteRumMetricsDestinationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteRumMetricsDestinationRequest,
   output: DeleteRumMetricsDestinationResponse,
@@ -1456,7 +1455,7 @@ export const getAppMonitor: API.OperationMethod<
   GetAppMonitorRequest,
   GetAppMonitorResponse,
   GetAppMonitorError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetAppMonitorRequest,
   output: GetAppMonitorResponse,
@@ -1486,7 +1485,7 @@ export const getAppMonitorData: API.PaginatedOperationMethod<
   GetAppMonitorDataRequest,
   GetAppMonitorDataResponse,
   GetAppMonitorDataError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   EventData
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetAppMonitorDataRequest,
@@ -1525,7 +1524,7 @@ export const getResourcePolicy: API.OperationMethod<
   GetResourcePolicyRequest,
   GetResourcePolicyResponse,
   GetResourcePolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetResourcePolicyRequest,
   output: GetResourcePolicyResponse,
@@ -1556,7 +1555,7 @@ export const listAppMonitors: API.PaginatedOperationMethod<
   ListAppMonitorsRequest,
   ListAppMonitorsResponse,
   ListAppMonitorsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   AppMonitorSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAppMonitorsRequest,
@@ -1593,7 +1592,7 @@ export const listRumMetricsDestinations: API.PaginatedOperationMethod<
   ListRumMetricsDestinationsRequest,
   ListRumMetricsDestinationsResponse,
   ListRumMetricsDestinationsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   MetricDestinationSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRumMetricsDestinationsRequest,
@@ -1627,7 +1626,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -1659,7 +1658,7 @@ export const putResourcePolicy: API.OperationMethod<
   PutResourcePolicyRequest,
   PutResourcePolicyResponse,
   PutResourcePolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PutResourcePolicyRequest,
   output: PutResourcePolicyResponse,
@@ -1695,7 +1694,7 @@ export const putRumEvents: API.OperationMethod<
   PutRumEventsRequest,
   PutRumEventsResponse,
   PutRumEventsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PutRumEventsRequest,
   output: PutRumEventsResponse,
@@ -1729,7 +1728,7 @@ export const putRumMetricsDestination: API.OperationMethod<
   PutRumMetricsDestinationRequest,
   PutRumMetricsDestinationResponse,
   PutRumMetricsDestinationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PutRumMetricsDestinationRequest,
   output: PutRumMetricsDestinationResponse,
@@ -1768,7 +1767,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -1794,7 +1793,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -1829,7 +1828,7 @@ export const updateAppMonitor: API.OperationMethod<
   UpdateAppMonitorRequest,
   UpdateAppMonitorResponse,
   UpdateAppMonitorError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateAppMonitorRequest,
   output: UpdateAppMonitorResponse,
@@ -1862,7 +1861,7 @@ export const updateRumMetricDefinition: API.OperationMethod<
   UpdateRumMetricDefinitionRequest,
   UpdateRumMetricDefinitionResponse,
   UpdateRumMetricDefinitionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateRumMetricDefinitionRequest,
   output: UpdateRumMetricDefinitionResponse,

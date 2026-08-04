@@ -7,7 +7,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 const svc = T.AwsApiService({
   sdkId: "IoT Jobs Data Plane",
   serviceShapeName: "IotLaserThingJobManagerExternalService",
@@ -493,7 +492,7 @@ export const describeJobExecution: API.OperationMethod<
   DescribeJobExecutionRequest,
   DescribeJobExecutionResponse,
   DescribeJobExecutionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeJobExecutionRequest,
   output: DescribeJobExecutionResponse,
@@ -526,7 +525,7 @@ export const getPendingJobExecutions: API.OperationMethod<
   GetPendingJobExecutionsRequest,
   GetPendingJobExecutionsResponse,
   GetPendingJobExecutionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetPendingJobExecutionsRequest,
   output: GetPendingJobExecutionsResponse,
@@ -558,7 +557,7 @@ export const startCommandExecution: API.OperationMethod<
   StartCommandExecutionRequest,
   StartCommandExecutionResponse,
   StartCommandExecutionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartCommandExecutionRequest,
   output: StartCommandExecutionResponse,
@@ -592,7 +591,7 @@ export const startNextPendingJobExecution: API.OperationMethod<
   StartNextPendingJobExecutionRequest,
   StartNextPendingJobExecutionResponse,
   StartNextPendingJobExecutionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartNextPendingJobExecutionRequest,
   output: StartNextPendingJobExecutionResponse,
@@ -625,7 +624,7 @@ export const updateJobExecution: API.OperationMethod<
   UpdateJobExecutionRequest,
   UpdateJobExecutionResponse,
   UpdateJobExecutionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateJobExecutionRequest,
   output: UpdateJobExecutionResponse,

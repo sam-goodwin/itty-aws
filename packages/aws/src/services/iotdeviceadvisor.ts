@@ -7,7 +7,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 const svc = T.AwsApiService({
   sdkId: "IotDeviceAdvisor",
   serviceShapeName: "IotSenateService",
@@ -896,7 +895,7 @@ export const createSuiteDefinition: API.OperationMethod<
   CreateSuiteDefinitionRequest,
   CreateSuiteDefinitionResponse,
   CreateSuiteDefinitionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateSuiteDefinitionRequest,
   output: CreateSuiteDefinitionResponse,
@@ -919,7 +918,7 @@ export const deleteSuiteDefinition: API.OperationMethod<
   DeleteSuiteDefinitionRequest,
   DeleteSuiteDefinitionResponse,
   DeleteSuiteDefinitionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteSuiteDefinitionRequest,
   output: DeleteSuiteDefinitionResponse,
@@ -941,7 +940,7 @@ export const getEndpoint: API.OperationMethod<
   GetEndpointRequest,
   GetEndpointResponse,
   GetEndpointError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetEndpointRequest,
   output: GetEndpointResponse,
@@ -969,7 +968,7 @@ export const getSuiteDefinition: API.OperationMethod<
   GetSuiteDefinitionRequest,
   GetSuiteDefinitionResponse,
   GetSuiteDefinitionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetSuiteDefinitionRequest,
   output: GetSuiteDefinitionResponse,
@@ -997,7 +996,7 @@ export const getSuiteRun: API.OperationMethod<
   GetSuiteRunRequest,
   GetSuiteRunResponse,
   GetSuiteRunError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetSuiteRunRequest,
   output: GetSuiteRunResponse,
@@ -1025,7 +1024,7 @@ export const getSuiteRunReport: API.OperationMethod<
   GetSuiteRunReportRequest,
   GetSuiteRunReportResponse,
   GetSuiteRunReportError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetSuiteRunReportRequest,
   output: GetSuiteRunReportResponse,
@@ -1052,7 +1051,7 @@ export const listSuiteDefinitions: API.PaginatedOperationMethod<
   ListSuiteDefinitionsRequest,
   ListSuiteDefinitionsResponse,
   ListSuiteDefinitionsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSuiteDefinitionsRequest,
@@ -1082,7 +1081,7 @@ export const listSuiteRuns: API.PaginatedOperationMethod<
   ListSuiteRunsRequest,
   ListSuiteRunsResponse,
   ListSuiteRunsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSuiteRunsRequest,
@@ -1112,7 +1111,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -1140,7 +1139,7 @@ export const startSuiteRun: API.OperationMethod<
   StartSuiteRunRequest,
   StartSuiteRunResponse,
   StartSuiteRunError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartSuiteRunRequest,
   output: StartSuiteRunResponse,
@@ -1164,7 +1163,7 @@ export const stopSuiteRun: API.OperationMethod<
   StopSuiteRunRequest,
   StopSuiteRunResponse,
   StopSuiteRunError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StopSuiteRunRequest,
   output: StopSuiteRunResponse,
@@ -1192,7 +1191,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -1220,7 +1219,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -1247,7 +1246,7 @@ export const updateSuiteDefinition: API.OperationMethod<
   UpdateSuiteDefinitionRequest,
   UpdateSuiteDefinitionResponse,
   UpdateSuiteDefinitionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateSuiteDefinitionRequest,
   output: UpdateSuiteDefinitionResponse,

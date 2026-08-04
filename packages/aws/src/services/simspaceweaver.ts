@@ -8,7 +8,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 import { SensitiveString } from "../sensitive.ts";
 const svc = T.AwsApiService({
   sdkId: "SimSpaceWeaver",
@@ -856,7 +855,7 @@ export const createSnapshot: API.OperationMethod<
   CreateSnapshotInput,
   CreateSnapshotOutput,
   CreateSnapshotError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateSnapshotInput,
   output: CreateSnapshotOutput,
@@ -886,7 +885,7 @@ export const deleteApp: API.OperationMethod<
   DeleteAppInput,
   DeleteAppOutput,
   DeleteAppError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteAppInput,
   output: DeleteAppOutput,
@@ -919,7 +918,7 @@ export const deleteSimulation: API.OperationMethod<
   DeleteSimulationInput,
   DeleteSimulationOutput,
   DeleteSimulationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteSimulationInput,
   output: DeleteSimulationOutput,
@@ -948,7 +947,7 @@ export const describeApp: API.OperationMethod<
   DescribeAppInput,
   DescribeAppOutput,
   DescribeAppError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeAppInput,
   output: DescribeAppOutput,
@@ -976,7 +975,7 @@ export const describeSimulation: API.OperationMethod<
   DescribeSimulationInput,
   DescribeSimulationOutput,
   DescribeSimulationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeSimulationInput,
   output: DescribeSimulationOutput,
@@ -1004,7 +1003,7 @@ export const listApps: API.PaginatedOperationMethod<
   ListAppsInput,
   ListAppsOutput,
   ListAppsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAppsInput,
@@ -1037,7 +1036,7 @@ export const listSimulations: API.PaginatedOperationMethod<
   ListSimulationsInput,
   ListSimulationsOutput,
   ListSimulationsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSimulationsInput,
@@ -1064,7 +1063,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceInput,
   ListTagsForResourceOutput,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceInput,
   output: ListTagsForResourceOutput,
@@ -1088,7 +1087,7 @@ export const startApp: API.OperationMethod<
   StartAppInput,
   StartAppOutput,
   StartAppError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartAppInput,
   output: StartAppOutput,
@@ -1118,7 +1117,7 @@ export const startClock: API.OperationMethod<
   StartClockInput,
   StartClockOutput,
   StartClockError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartClockInput,
   output: StartClockOutput,
@@ -1153,7 +1152,7 @@ export const startSimulation: API.OperationMethod<
   StartSimulationInput,
   StartSimulationOutput,
   StartSimulationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartSimulationInput,
   output: StartSimulationOutput,
@@ -1183,7 +1182,7 @@ export const stopApp: API.OperationMethod<
   StopAppInput,
   StopAppOutput,
   StopAppError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StopAppInput,
   output: StopAppOutput,
@@ -1213,7 +1212,7 @@ export const stopClock: API.OperationMethod<
   StopClockInput,
   StopClockOutput,
   StopClockError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StopClockInput,
   output: StopClockOutput,
@@ -1246,7 +1245,7 @@ export const stopSimulation: API.OperationMethod<
   StopSimulationInput,
   StopSimulationOutput,
   StopSimulationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StopSimulationInput,
   output: StopSimulationOutput,
@@ -1275,7 +1274,7 @@ export const tagResource: API.OperationMethod<
   TagResourceInput,
   TagResourceOutput,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: TagResourceInput,
   output: TagResourceOutput,
@@ -1301,7 +1300,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceInput,
   UntagResourceOutput,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceInput,
   output: UntagResourceOutput,

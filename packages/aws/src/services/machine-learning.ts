@@ -8,7 +8,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 import { SensitiveString } from "../sensitive.ts";
 const ns = T.XmlNamespace(
   "http://machinelearning.amazonaws.com/doc/2014-12-12/",
@@ -1768,7 +1767,7 @@ export const addTags: API.OperationMethod<
   AddTagsInput,
   AddTagsOutput,
   AddTagsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: AddTagsInput,
   output: AddTagsOutput,
@@ -1805,7 +1804,7 @@ export const createBatchPrediction: API.OperationMethod<
   CreateBatchPredictionInput,
   CreateBatchPredictionOutput,
   CreateBatchPredictionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateBatchPredictionInput,
   output: CreateBatchPredictionOutput,
@@ -1839,7 +1838,7 @@ export const createDataSourceFromRDS: API.OperationMethod<
   CreateDataSourceFromRDSInput,
   CreateDataSourceFromRDSOutput,
   CreateDataSourceFromRDSError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateDataSourceFromRDSInput,
   output: CreateDataSourceFromRDSOutput,
@@ -1894,7 +1893,7 @@ export const createDataSourceFromRedshift: API.OperationMethod<
   CreateDataSourceFromRedshiftInput,
   CreateDataSourceFromRedshiftOutput,
   CreateDataSourceFromRedshiftError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateDataSourceFromRedshiftInput,
   output: CreateDataSourceFromRedshiftOutput,
@@ -1950,7 +1949,7 @@ export const createDataSourceFromS3: API.OperationMethod<
   CreateDataSourceFromS3Input,
   CreateDataSourceFromS3Output,
   CreateDataSourceFromS3Error,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateDataSourceFromS3Input,
   output: CreateDataSourceFromS3Output,
@@ -1985,7 +1984,7 @@ export const createEvaluation: API.OperationMethod<
   CreateEvaluationInput,
   CreateEvaluationOutput,
   CreateEvaluationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateEvaluationInput,
   output: CreateEvaluationOutput,
@@ -2030,7 +2029,7 @@ export const createMLModel: API.OperationMethod<
   CreateMLModelInput,
   CreateMLModelOutput,
   CreateMLModelError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateMLModelInput,
   output: CreateMLModelOutput,
@@ -2056,7 +2055,7 @@ export const createRealtimeEndpoint: API.OperationMethod<
   CreateRealtimeEndpointInput,
   CreateRealtimeEndpointOutput,
   CreateRealtimeEndpointError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateRealtimeEndpointInput,
   output: CreateRealtimeEndpointOutput,
@@ -2087,7 +2086,7 @@ export const deleteBatchPrediction: API.OperationMethod<
   DeleteBatchPredictionInput,
   DeleteBatchPredictionOutput,
   DeleteBatchPredictionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteBatchPredictionInput,
   output: DeleteBatchPredictionOutput,
@@ -2117,7 +2116,7 @@ export const deleteDataSource: API.OperationMethod<
   DeleteDataSourceInput,
   DeleteDataSourceOutput,
   DeleteDataSourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteDataSourceInput,
   output: DeleteDataSourceOutput,
@@ -2148,7 +2147,7 @@ export const deleteEvaluation: API.OperationMethod<
   DeleteEvaluationInput,
   DeleteEvaluationOutput,
   DeleteEvaluationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteEvaluationInput,
   output: DeleteEvaluationOutput,
@@ -2179,7 +2178,7 @@ export const deleteMLModel: API.OperationMethod<
   DeleteMLModelInput,
   DeleteMLModelOutput,
   DeleteMLModelError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteMLModelInput,
   output: DeleteMLModelOutput,
@@ -2205,7 +2204,7 @@ export const deleteRealtimeEndpoint: API.OperationMethod<
   DeleteRealtimeEndpointInput,
   DeleteRealtimeEndpointOutput,
   DeleteRealtimeEndpointError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteRealtimeEndpointInput,
   output: DeleteRealtimeEndpointOutput,
@@ -2234,7 +2233,7 @@ export const deleteTags: API.OperationMethod<
   DeleteTagsInput,
   DeleteTagsOutput,
   DeleteTagsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteTagsInput,
   output: DeleteTagsOutput,
@@ -2260,7 +2259,7 @@ export const describeBatchPredictions: API.PaginatedOperationMethod<
   DescribeBatchPredictionsInput,
   DescribeBatchPredictionsOutput,
   DescribeBatchPredictionsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   BatchPrediction
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeBatchPredictionsInput,
@@ -2288,7 +2287,7 @@ export const describeDataSources: API.PaginatedOperationMethod<
   DescribeDataSourcesInput,
   DescribeDataSourcesOutput,
   DescribeDataSourcesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   DataSource
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeDataSourcesInput,
@@ -2316,7 +2315,7 @@ export const describeEvaluations: API.PaginatedOperationMethod<
   DescribeEvaluationsInput,
   DescribeEvaluationsOutput,
   DescribeEvaluationsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   Evaluation
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeEvaluationsInput,
@@ -2344,7 +2343,7 @@ export const describeMLModels: API.PaginatedOperationMethod<
   DescribeMLModelsInput,
   DescribeMLModelsOutput,
   DescribeMLModelsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   MLModel
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeMLModelsInput,
@@ -2373,7 +2372,7 @@ export const describeTags: API.OperationMethod<
   DescribeTagsInput,
   DescribeTagsOutput,
   DescribeTagsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeTagsInput,
   output: DescribeTagsOutput,
@@ -2400,7 +2399,7 @@ export const getBatchPrediction: API.OperationMethod<
   GetBatchPredictionInput,
   GetBatchPredictionOutput,
   GetBatchPredictionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetBatchPredictionInput,
   output: GetBatchPredictionOutput,
@@ -2429,7 +2428,7 @@ export const getDataSource: API.OperationMethod<
   GetDataSourceInput,
   GetDataSourceOutput,
   GetDataSourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetDataSourceInput,
   output: GetDataSourceOutput,
@@ -2455,7 +2454,7 @@ export const getEvaluation: API.OperationMethod<
   GetEvaluationInput,
   GetEvaluationOutput,
   GetEvaluationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetEvaluationInput,
   output: GetEvaluationOutput,
@@ -2483,7 +2482,7 @@ export const getMLModel: API.OperationMethod<
   GetMLModelInput,
   GetMLModelOutput,
   GetMLModelError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetMLModelInput,
   output: GetMLModelOutput,
@@ -2514,7 +2513,7 @@ export const predict: API.OperationMethod<
   PredictInput,
   PredictOutput,
   PredictError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PredictInput,
   output: PredictOutput,
@@ -2544,7 +2543,7 @@ export const updateBatchPrediction: API.OperationMethod<
   UpdateBatchPredictionInput,
   UpdateBatchPredictionOutput,
   UpdateBatchPredictionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateBatchPredictionInput,
   output: UpdateBatchPredictionOutput,
@@ -2572,7 +2571,7 @@ export const updateDataSource: API.OperationMethod<
   UpdateDataSourceInput,
   UpdateDataSourceOutput,
   UpdateDataSourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateDataSourceInput,
   output: UpdateDataSourceOutput,
@@ -2600,7 +2599,7 @@ export const updateEvaluation: API.OperationMethod<
   UpdateEvaluationInput,
   UpdateEvaluationOutput,
   UpdateEvaluationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateEvaluationInput,
   output: UpdateEvaluationOutput,
@@ -2628,7 +2627,7 @@ export const updateMLModel: API.OperationMethod<
   UpdateMLModelInput,
   UpdateMLModelOutput,
   UpdateMLModelError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateMLModelInput,
   output: UpdateMLModelOutput,

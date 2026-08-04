@@ -8,7 +8,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 import { SensitiveString } from "../sensitive.ts";
 const svc = T.AwsApiService({
   sdkId: "Lambda Microvms",
@@ -1681,7 +1680,7 @@ export const createMicrovmAuthToken: API.OperationMethod<
   CreateMicrovmAuthTokenRequest,
   CreateMicrovmAuthTokenResponse,
   CreateMicrovmAuthTokenError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateMicrovmAuthTokenRequest,
   output: CreateMicrovmAuthTokenResponse,
@@ -1713,7 +1712,7 @@ export const createMicrovmImage: API.OperationMethod<
   CreateMicrovmImageRequest,
   CreateMicrovmImageResponse,
   CreateMicrovmImageError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateMicrovmImageRequest,
   output: CreateMicrovmImageResponse,
@@ -1745,7 +1744,7 @@ export const createMicrovmShellAuthToken: API.OperationMethod<
   CreateMicrovmShellAuthTokenRequest,
   CreateMicrovmShellAuthTokenResponse,
   CreateMicrovmShellAuthTokenError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateMicrovmShellAuthTokenRequest,
   output: CreateMicrovmShellAuthTokenResponse,
@@ -1776,7 +1775,7 @@ export const deleteMicrovmImage: API.OperationMethod<
   DeleteMicrovmImageInput,
   DeleteMicrovmImageOutput,
   DeleteMicrovmImageError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteMicrovmImageInput,
   output: DeleteMicrovmImageOutput,
@@ -1808,7 +1807,7 @@ export const deleteMicrovmImageVersion: API.OperationMethod<
   DeleteMicrovmImageVersionInput,
   DeleteMicrovmImageVersionOutput,
   DeleteMicrovmImageVersionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteMicrovmImageVersionInput,
   output: DeleteMicrovmImageVersionOutput,
@@ -1839,7 +1838,7 @@ export const getMicrovm: API.OperationMethod<
   GetMicrovmRequest,
   GetMicrovmResponse,
   GetMicrovmError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetMicrovmRequest,
   output: GetMicrovmResponse,
@@ -1869,7 +1868,7 @@ export const getMicrovmImage: API.OperationMethod<
   GetMicrovmImageInput,
   GetMicrovmImageOutput,
   GetMicrovmImageError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetMicrovmImageInput,
   output: GetMicrovmImageOutput,
@@ -1899,7 +1898,7 @@ export const getMicrovmImageBuild: API.OperationMethod<
   GetMicrovmImageBuildInput,
   GetMicrovmImageBuildOutput,
   GetMicrovmImageBuildError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetMicrovmImageBuildInput,
   output: GetMicrovmImageBuildOutput,
@@ -1929,7 +1928,7 @@ export const getMicrovmImageVersion: API.OperationMethod<
   GetMicrovmImageVersionInput,
   GetMicrovmImageVersionOutput,
   GetMicrovmImageVersionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetMicrovmImageVersionInput,
   output: GetMicrovmImageVersionOutput,
@@ -1958,7 +1957,7 @@ export const listManagedMicrovmImages: API.PaginatedOperationMethod<
   ListManagedMicrovmImagesInput,
   ListManagedMicrovmImagesOutput,
   ListManagedMicrovmImagesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ManagedMicrovmImageSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListManagedMicrovmImagesInput,
@@ -1994,7 +1993,7 @@ export const listManagedMicrovmImageVersions: API.PaginatedOperationMethod<
   ListManagedMicrovmImageVersionsInput,
   ListManagedMicrovmImageVersionsOutput,
   ListManagedMicrovmImageVersionsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ManagedMicrovmImageVersion
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListManagedMicrovmImageVersionsInput,
@@ -2031,7 +2030,7 @@ export const listMicrovmImageBuilds: API.PaginatedOperationMethod<
   ListMicrovmImageBuildsInput,
   ListMicrovmImageBuildsOutput,
   ListMicrovmImageBuildsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   MicrovmImageBuildSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMicrovmImageBuildsInput,
@@ -2067,7 +2066,7 @@ export const listMicrovmImages: API.PaginatedOperationMethod<
   ListMicrovmImagesRequest,
   ListMicrovmImagesResponse,
   ListMicrovmImagesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   MicrovmImageSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMicrovmImagesRequest,
@@ -2103,7 +2102,7 @@ export const listMicrovmImageVersions: API.PaginatedOperationMethod<
   ListMicrovmImageVersionsInput,
   ListMicrovmImageVersionsOutput,
   ListMicrovmImageVersionsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   MicrovmImageVersionSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMicrovmImageVersionsInput,
@@ -2140,7 +2139,7 @@ export const listMicrovms: API.PaginatedOperationMethod<
   ListMicrovmsRequest,
   ListMicrovmsResponse,
   ListMicrovmsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   MicrovmItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMicrovmsRequest,
@@ -2176,7 +2175,7 @@ export const listTags: API.OperationMethod<
   ListTagsRequest,
   ListTagsResponse,
   ListTagsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListTagsRequest,
   output: ListTagsResponse,
@@ -2206,7 +2205,7 @@ export const resumeMicrovm: API.OperationMethod<
   ResumeMicrovmRequest,
   ResumeMicrovmResponse,
   ResumeMicrovmError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ResumeMicrovmRequest,
   output: ResumeMicrovmResponse,
@@ -2239,7 +2238,7 @@ export const runMicrovm: API.OperationMethod<
   RunMicrovmRequest,
   RunMicrovmResponse,
   RunMicrovmError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: RunMicrovmRequest,
   output: RunMicrovmResponse,
@@ -2272,7 +2271,7 @@ export const suspendMicrovm: API.OperationMethod<
   SuspendMicrovmRequest,
   SuspendMicrovmResponse,
   SuspendMicrovmError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: SuspendMicrovmRequest,
   output: SuspendMicrovmResponse,
@@ -2303,7 +2302,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -2334,7 +2333,7 @@ export const terminateMicrovm: API.OperationMethod<
   TerminateMicrovmRequest,
   TerminateMicrovmResponse,
   TerminateMicrovmError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: TerminateMicrovmRequest,
   output: TerminateMicrovmResponse,
@@ -2365,7 +2364,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -2397,7 +2396,7 @@ export const updateMicrovmImage: API.OperationMethod<
   UpdateMicrovmImageRequest,
   UpdateMicrovmImageResponse,
   UpdateMicrovmImageError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateMicrovmImageRequest,
   output: UpdateMicrovmImageResponse,
@@ -2430,7 +2429,7 @@ export const updateMicrovmImageVersion: API.OperationMethod<
   UpdateMicrovmImageVersionRequest,
   UpdateMicrovmImageVersionResponse,
   UpdateMicrovmImageVersionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateMicrovmImageVersionRequest,
   output: UpdateMicrovmImageVersionResponse,

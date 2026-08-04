@@ -20,6 +20,7 @@ import {
   InvalidSSOProfile,
   InvalidSSOToken,
   ProfileNotFound,
+  regionFromEnv,
   SsoPortalError,
   SsoRegion,
   SsoStartUrl,
@@ -152,6 +153,13 @@ export const makeAuthService = () =>
 
       const profile = yield* loadProfile(profileName);
 
+      // The region these credentials belong to. An SSO profile always
+      // configures one (`sso_region` is required); `region` overrides it when
+      // the profile calls a different region than its SSO portal lives in.
+      // The environment is the last resort, for a profile carrying neither.
+      const region =
+        profile.region ?? profile.sso_region ?? (yield* regionFromEnv);
+
       // Both SSO formats cache the access token under sha1 of the cache key: the
       // `sso_session` name (modern) or the `sso_start_url` (legacy inline format).
       const ssoCacheKey = profile.sso_session ?? profile.sso_start_url;
@@ -194,6 +202,7 @@ export const makeAuthService = () =>
             sessionToken: cachedCreds.sessionToken
               ? Redacted.make(cachedCreds.sessionToken)
               : undefined,
+            region,
             expiration: cachedCreds.expiry,
           } satisfies ResolvedCredentials;
         }
@@ -279,6 +288,7 @@ export const makeAuthService = () =>
           accessKeyId: Redacted.make(credentials.accessKeyId),
           secretAccessKey: Redacted.make(credentials.secretAccessKey),
           sessionToken: Redacted.make(credentials.sessionToken),
+          region,
           expiration: credentials.expiration,
         } satisfies ResolvedCredentials;
       }

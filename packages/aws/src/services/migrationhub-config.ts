@@ -7,7 +7,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 const svc = T.AwsApiService({
   sdkId: "MigrationHub Config",
   serviceShapeName: "AWSMigrationHubMultiAccountService",
@@ -258,7 +257,7 @@ export const createHomeRegionControl: API.OperationMethod<
   CreateHomeRegionControlRequest,
   CreateHomeRegionControlResult,
   CreateHomeRegionControlError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateHomeRegionControlRequest,
   output: CreateHomeRegionControlResult,
@@ -289,7 +288,7 @@ export const deleteHomeRegionControl: API.OperationMethod<
   DeleteHomeRegionControlRequest,
   DeleteHomeRegionControlResult,
   DeleteHomeRegionControlError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteHomeRegionControlRequest,
   output: DeleteHomeRegionControlResult,
@@ -320,7 +319,7 @@ export const describeHomeRegionControls: API.PaginatedOperationMethod<
   DescribeHomeRegionControlsRequest,
   DescribeHomeRegionControlsResult,
   DescribeHomeRegionControlsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeHomeRegionControlsRequest,
@@ -360,7 +359,7 @@ export const getHomeRegion: API.OperationMethod<
   GetHomeRegionRequest,
   GetHomeRegionResult,
   GetHomeRegionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetHomeRegionRequest,
   output: GetHomeRegionResult,

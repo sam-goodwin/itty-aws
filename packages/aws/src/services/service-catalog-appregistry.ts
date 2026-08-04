@@ -7,7 +7,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 const svc = T.AwsApiService({
   sdkId: "Service Catalog AppRegistry",
   serviceShapeName: "AWS242AppRegistry",
@@ -1290,7 +1289,7 @@ export const associateAttributeGroup: API.OperationMethod<
   AssociateAttributeGroupRequest,
   AssociateAttributeGroupResponse,
   AssociateAttributeGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: AssociateAttributeGroupRequest,
   output: AssociateAttributeGroupResponse,
@@ -1344,7 +1343,7 @@ export const associateResource: API.OperationMethod<
   AssociateResourceRequest,
   AssociateResourceResponse,
   AssociateResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: AssociateResourceRequest,
   output: AssociateResourceResponse,
@@ -1375,7 +1374,7 @@ export const createApplication: API.OperationMethod<
   CreateApplicationRequest,
   CreateApplicationResponse,
   CreateApplicationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateApplicationRequest,
   output: CreateApplicationResponse,
@@ -1407,7 +1406,7 @@ export const createAttributeGroup: API.OperationMethod<
   CreateAttributeGroupRequest,
   CreateAttributeGroupResponse,
   CreateAttributeGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateAttributeGroupRequest,
   output: CreateAttributeGroupResponse,
@@ -1434,7 +1433,7 @@ export const deleteApplication: API.OperationMethod<
   DeleteApplicationRequest,
   DeleteApplicationResponse,
   DeleteApplicationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteApplicationRequest,
   output: DeleteApplicationResponse,
@@ -1460,7 +1459,7 @@ export const deleteAttributeGroup: API.OperationMethod<
   DeleteAttributeGroupRequest,
   DeleteAttributeGroupResponse,
   DeleteAttributeGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteAttributeGroupRequest,
   output: DeleteAttributeGroupResponse,
@@ -1486,7 +1485,7 @@ export const disassociateAttributeGroup: API.OperationMethod<
   DisassociateAttributeGroupRequest,
   DisassociateAttributeGroupResponse,
   DisassociateAttributeGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DisassociateAttributeGroupRequest,
   output: DisassociateAttributeGroupResponse,
@@ -1534,7 +1533,7 @@ export const disassociateResource: API.OperationMethod<
   DisassociateResourceRequest,
   DisassociateResourceResponse,
   DisassociateResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DisassociateResourceRequest,
   output: DisassociateResourceResponse,
@@ -1578,7 +1577,7 @@ export const getApplication: API.OperationMethod<
   GetApplicationRequest,
   GetApplicationResponse,
   GetApplicationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetApplicationRequest,
   output: GetApplicationResponse,
@@ -1605,7 +1604,7 @@ export const getAssociatedResource: API.OperationMethod<
   GetAssociatedResourceRequest,
   GetAssociatedResourceResponse,
   GetAssociatedResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetAssociatedResourceRequest,
   output: GetAssociatedResourceResponse,
@@ -1635,7 +1634,7 @@ export const getAttributeGroup: API.OperationMethod<
   GetAttributeGroupRequest,
   GetAttributeGroupResponse,
   GetAttributeGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetAttributeGroupRequest,
   output: GetAttributeGroupResponse,
@@ -1659,7 +1658,7 @@ export const getConfiguration: API.OperationMethod<
   GetConfigurationRequest,
   GetConfigurationResponse,
   GetConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetConfigurationRequest,
   output: GetConfigurationResponse,
@@ -1680,7 +1679,7 @@ export const listApplications: API.PaginatedOperationMethod<
   ListApplicationsRequest,
   ListApplicationsResponse,
   ListApplicationsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ApplicationSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListApplicationsRequest,
@@ -1709,7 +1708,7 @@ export const listAssociatedAttributeGroups: API.PaginatedOperationMethod<
   ListAssociatedAttributeGroupsRequest,
   ListAssociatedAttributeGroupsResponse,
   ListAssociatedAttributeGroupsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   AttributeGroupId
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAssociatedAttributeGroupsRequest,
@@ -1757,7 +1756,7 @@ export const listAssociatedResources: API.PaginatedOperationMethod<
   ListAssociatedResourcesRequest,
   ListAssociatedResourcesResponse,
   ListAssociatedResourcesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ResourceInfo
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAssociatedResourcesRequest,
@@ -1789,7 +1788,7 @@ export const listAttributeGroups: API.PaginatedOperationMethod<
   ListAttributeGroupsRequest,
   ListAttributeGroupsResponse,
   ListAttributeGroupsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   AttributeGroupSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAttributeGroupsRequest,
@@ -1818,7 +1817,7 @@ export const listAttributeGroupsForApplication: API.PaginatedOperationMethod<
   ListAttributeGroupsForApplicationRequest,
   ListAttributeGroupsForApplicationResponse,
   ListAttributeGroupsForApplicationError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   AttributeGroupDetails
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAttributeGroupsForApplicationRequest,
@@ -1851,7 +1850,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -1878,7 +1877,7 @@ export const putConfiguration: API.OperationMethod<
   PutConfigurationRequest,
   PutConfigurationResponse,
   PutConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PutConfigurationRequest,
   output: PutConfigurationResponse,
@@ -1904,7 +1903,7 @@ export const syncResource: API.OperationMethod<
   SyncResourceRequest,
   SyncResourceResponse,
   SyncResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: SyncResourceRequest,
   output: SyncResourceResponse,
@@ -1936,7 +1935,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -1964,7 +1963,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -1992,7 +1991,7 @@ export const updateApplication: API.OperationMethod<
   UpdateApplicationRequest,
   UpdateApplicationResponse,
   UpdateApplicationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateApplicationRequest,
   output: UpdateApplicationResponse,
@@ -2021,7 +2020,7 @@ export const updateAttributeGroup: API.OperationMethod<
   UpdateAttributeGroupRequest,
   UpdateAttributeGroupResponse,
   UpdateAttributeGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateAttributeGroupRequest,
   output: UpdateAttributeGroupResponse,

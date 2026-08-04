@@ -7,7 +7,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 const svc = T.AwsApiService({
   sdkId: "Lambda Core",
   serviceShapeName: "LambdaCoreApiService",
@@ -534,7 +533,7 @@ export const createNetworkConnector: API.OperationMethod<
   CreateNetworkConnectorRequest,
   CreateNetworkConnectorResponse,
   CreateNetworkConnectorError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateNetworkConnectorRequest,
   output: CreateNetworkConnectorResponse,
@@ -566,7 +565,7 @@ export const deleteNetworkConnector: API.OperationMethod<
   DeleteNetworkConnectorRequest,
   DeleteNetworkConnectorResponse,
   DeleteNetworkConnectorError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteNetworkConnectorRequest,
   output: DeleteNetworkConnectorResponse,
@@ -597,7 +596,7 @@ export const getNetworkConnector: API.OperationMethod<
   GetNetworkConnectorRequest,
   GetNetworkConnectorResponse,
   GetNetworkConnectorError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetNetworkConnectorRequest,
   output: GetNetworkConnectorResponse,
@@ -626,7 +625,7 @@ export const listNetworkConnectors: API.PaginatedOperationMethod<
   ListNetworkConnectorsRequest,
   ListNetworkConnectorsResponse,
   ListNetworkConnectorsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   NetworkConnectorSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListNetworkConnectorsRequest,
@@ -663,7 +662,7 @@ export const updateNetworkConnector: API.OperationMethod<
   UpdateNetworkConnectorRequest,
   UpdateNetworkConnectorResponse,
   UpdateNetworkConnectorError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateNetworkConnectorRequest,
   output: UpdateNetworkConnectorResponse,

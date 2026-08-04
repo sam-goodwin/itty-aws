@@ -8,7 +8,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 const ns = T.XmlNamespace("http://kinesis.amazonaws.com/doc/2013-12-02");
 const svc = T.AwsApiService({
   sdkId: "Kinesis",
@@ -2755,7 +2754,7 @@ export const addTagsToStream: API.OperationMethod<
   AddTagsToStreamInput,
   AddTagsToStreamResponse,
   AddTagsToStreamError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: AddTagsToStreamInput,
   output: AddTagsToStreamResponse,
@@ -2822,7 +2821,7 @@ export const createStream: API.OperationMethod<
   CreateStreamInput,
   CreateStreamResponse,
   CreateStreamError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateStreamInput,
   output: CreateStreamResponse,
@@ -2861,7 +2860,7 @@ export const decreaseStreamRetentionPeriod: API.OperationMethod<
   DecreaseStreamRetentionPeriodInput,
   DecreaseStreamRetentionPeriodResponse,
   DecreaseStreamRetentionPeriodError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DecreaseStreamRetentionPeriodInput,
   output: DecreaseStreamRetentionPeriodResponse,
@@ -2895,7 +2894,7 @@ export const deleteResourcePolicy: API.OperationMethod<
   DeleteResourcePolicyInput,
   DeleteResourcePolicyResponse,
   DeleteResourcePolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteResourcePolicyInput,
   output: DeleteResourcePolicyResponse,
@@ -2950,7 +2949,7 @@ export const deleteStream: API.OperationMethod<
   DeleteStreamInput,
   DeleteStreamResponse,
   DeleteStreamError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteStreamInput,
   output: DeleteStreamResponse,
@@ -2986,7 +2985,7 @@ export const deregisterStreamConsumer: API.OperationMethod<
   DeregisterStreamConsumerInput,
   DeregisterStreamConsumerResponse,
   DeregisterStreamConsumerError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeregisterStreamConsumerInput,
   output: DeregisterStreamConsumerResponse,
@@ -3012,7 +3011,7 @@ export const describeAccountSettings: API.OperationMethod<
   DescribeAccountSettingsInput,
   DescribeAccountSettingsOutput,
   DescribeAccountSettingsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeAccountSettingsInput,
   output: DescribeAccountSettingsOutput,
@@ -3035,7 +3034,7 @@ export const describeLimits: API.OperationMethod<
   DescribeLimitsInput,
   DescribeLimitsOutput,
   DescribeLimitsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeLimitsInput,
   output: DescribeLimitsOutput,
@@ -3084,7 +3083,7 @@ export const describeStream: API.OperationMethod<
   DescribeStreamInput,
   DescribeStreamOutput,
   DescribeStreamError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeStreamInput,
   output: DescribeStreamOutput,
@@ -3121,7 +3120,7 @@ export const describeStreamConsumer: API.OperationMethod<
   DescribeStreamConsumerInput,
   DescribeStreamConsumerOutput,
   DescribeStreamConsumerError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeStreamConsumerInput,
   output: DescribeStreamConsumerOutput,
@@ -3160,7 +3159,7 @@ export const describeStreamSummary: API.OperationMethod<
   DescribeStreamSummaryInput,
   DescribeStreamSummaryOutput,
   DescribeStreamSummaryError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeStreamSummaryInput,
   output: DescribeStreamSummaryOutput,
@@ -3193,7 +3192,7 @@ export const disableEnhancedMonitoring: API.OperationMethod<
   DisableEnhancedMonitoringInput,
   EnhancedMonitoringOutput,
   DisableEnhancedMonitoringError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DisableEnhancedMonitoringInput,
   output: EnhancedMonitoringOutput,
@@ -3227,7 +3226,7 @@ export const enableEnhancedMonitoring: API.OperationMethod<
   EnableEnhancedMonitoringInput,
   EnhancedMonitoringOutput,
   EnableEnhancedMonitoringError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: EnableEnhancedMonitoringInput,
   output: EnhancedMonitoringOutput,
@@ -3322,7 +3321,7 @@ export const getRecords: API.OperationMethod<
   GetRecordsInput,
   GetRecordsOutput,
   GetRecordsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetRecordsInput,
   output: GetRecordsOutput,
@@ -3363,7 +3362,7 @@ export const getResourcePolicy: API.OperationMethod<
   GetResourcePolicyInput,
   GetResourcePolicyOutput,
   GetResourcePolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetResourcePolicyInput,
   output: GetResourcePolicyOutput,
@@ -3435,7 +3434,7 @@ export const getShardIterator: API.OperationMethod<
   GetShardIteratorInput,
   GetShardIteratorOutput,
   GetShardIteratorError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetShardIteratorInput,
   output: GetShardIteratorOutput,
@@ -3478,7 +3477,7 @@ export const increaseStreamRetentionPeriod: API.OperationMethod<
   IncreaseStreamRetentionPeriodInput,
   IncreaseStreamRetentionPeriodResponse,
   IncreaseStreamRetentionPeriodError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: IncreaseStreamRetentionPeriodInput,
   output: IncreaseStreamRetentionPeriodResponse,
@@ -3523,7 +3522,7 @@ export const listShards: API.OperationMethod<
   ListShardsInput,
   ListShardsOutput,
   ListShardsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListShardsInput,
   output: ListShardsOutput,
@@ -3557,7 +3556,7 @@ export const listStreamConsumers: API.PaginatedOperationMethod<
   ListStreamConsumersInput,
   ListStreamConsumersOutput,
   ListStreamConsumersError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListStreamConsumersInput,
@@ -3608,7 +3607,7 @@ export const listStreams: API.PaginatedOperationMethod<
   ListStreamsInput,
   ListStreamsOutput,
   ListStreamsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListStreamsInput,
@@ -3644,7 +3643,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceInput,
   ListTagsForResourceOutput,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceInput,
   output: ListTagsForResourceOutput,
@@ -3678,7 +3677,7 @@ export const listTagsForStream: API.OperationMethod<
   ListTagsForStreamInput,
   ListTagsForStreamOutput,
   ListTagsForStreamError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForStreamInput,
   output: ListTagsForStreamOutput,
@@ -3752,7 +3751,7 @@ export const mergeShards: API.OperationMethod<
   MergeShardsInput,
   MergeShardsResponse,
   MergeShardsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: MergeShardsInput,
   output: MergeShardsResponse,
@@ -3834,7 +3833,7 @@ export const putRecord: API.OperationMethod<
   PutRecordInput,
   PutRecordOutput,
   PutRecordError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PutRecordInput,
   output: PutRecordOutput,
@@ -3944,7 +3943,7 @@ export const putRecords: API.OperationMethod<
   PutRecordsInput,
   PutRecordsOutput,
   PutRecordsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PutRecordsInput,
   output: PutRecordsOutput,
@@ -3992,7 +3991,7 @@ export const putResourcePolicy: API.OperationMethod<
   PutResourcePolicyInput,
   PutResourcePolicyResponse,
   PutResourcePolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PutResourcePolicyInput,
   output: PutResourcePolicyResponse,
@@ -4039,7 +4038,7 @@ export const registerStreamConsumer: API.OperationMethod<
   RegisterStreamConsumerInput,
   RegisterStreamConsumerOutput,
   RegisterStreamConsumerError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: RegisterStreamConsumerInput,
   output: RegisterStreamConsumerOutput,
@@ -4078,7 +4077,7 @@ export const removeTagsFromStream: API.OperationMethod<
   RemoveTagsFromStreamInput,
   RemoveTagsFromStreamResponse,
   RemoveTagsFromStreamError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: RemoveTagsFromStreamInput,
   output: RemoveTagsFromStreamResponse,
@@ -4159,7 +4158,7 @@ export const splitShard: API.OperationMethod<
   SplitShardInput,
   SplitShardResponse,
   SplitShardError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: SplitShardInput,
   output: SplitShardResponse,
@@ -4218,7 +4217,7 @@ export const startStreamEncryption: API.OperationMethod<
   StartStreamEncryptionInput,
   StartStreamEncryptionResponse,
   StartStreamEncryptionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartStreamEncryptionInput,
   output: StartStreamEncryptionResponse,
@@ -4275,7 +4274,7 @@ export const stopStreamEncryption: API.OperationMethod<
   StopStreamEncryptionInput,
   StopStreamEncryptionResponse,
   StopStreamEncryptionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StopStreamEncryptionInput,
   output: StopStreamEncryptionResponse,
@@ -4331,7 +4330,7 @@ export const subscribeToShard: API.OperationMethod<
   SubscribeToShardInput,
   SubscribeToShardOutput,
   SubscribeToShardError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: SubscribeToShardInput,
   output: SubscribeToShardOutput,
@@ -4361,7 +4360,7 @@ export const tagResource: API.OperationMethod<
   TagResourceInput,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: TagResourceInput,
   output: TagResourceResponse,
@@ -4391,7 +4390,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceInput,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceInput,
   output: UntagResourceResponse,
@@ -4427,7 +4426,7 @@ export const updateAccountSettings: API.OperationMethod<
   UpdateAccountSettingsInput,
   UpdateAccountSettingsOutput,
   UpdateAccountSettingsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateAccountSettingsInput,
   output: UpdateAccountSettingsOutput,
@@ -4456,7 +4455,7 @@ export const updateMaxRecordSize: API.OperationMethod<
   UpdateMaxRecordSizeInput,
   UpdateMaxRecordSizeResponse,
   UpdateMaxRecordSizeError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateMaxRecordSizeInput,
   output: UpdateMaxRecordSizeResponse,
@@ -4534,7 +4533,7 @@ export const updateShardCount: API.OperationMethod<
   UpdateShardCountInput,
   UpdateShardCountOutput,
   UpdateShardCountError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateShardCountInput,
   output: UpdateShardCountOutput,
@@ -4569,7 +4568,7 @@ export const updateStreamMode: API.OperationMethod<
   UpdateStreamModeInput,
   UpdateStreamModeResponse,
   UpdateStreamModeError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateStreamModeInput,
   output: UpdateStreamModeResponse,
@@ -4615,7 +4614,7 @@ export const updateStreamWarmThroughput: API.OperationMethod<
   UpdateStreamWarmThroughputInput,
   UpdateStreamWarmThroughputOutput,
   UpdateStreamWarmThroughputError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateStreamWarmThroughputInput,
   output: UpdateStreamWarmThroughputOutput,

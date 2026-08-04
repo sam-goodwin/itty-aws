@@ -7,7 +7,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 const svc = T.AwsApiService({
   sdkId: "fis",
   serviceShapeName: "FaultInjectionSimulator",
@@ -2378,7 +2377,7 @@ export const createExperimentTemplate: API.OperationMethod<
   CreateExperimentTemplateRequest,
   CreateExperimentTemplateResponse,
   CreateExperimentTemplateError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateExperimentTemplateRequest,
   output: CreateExperimentTemplateResponse,
@@ -2409,7 +2408,7 @@ export const createTargetAccountConfiguration: API.OperationMethod<
   CreateTargetAccountConfigurationRequest,
   CreateTargetAccountConfigurationResponse,
   CreateTargetAccountConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateTargetAccountConfigurationRequest,
   output: CreateTargetAccountConfigurationResponse,
@@ -2435,7 +2434,7 @@ export const deleteExperimentTemplate: API.OperationMethod<
   DeleteExperimentTemplateRequest,
   DeleteExperimentTemplateResponse,
   DeleteExperimentTemplateError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteExperimentTemplateRequest,
   output: DeleteExperimentTemplateResponse,
@@ -2456,7 +2455,7 @@ export const deleteTargetAccountConfiguration: API.OperationMethod<
   DeleteTargetAccountConfigurationRequest,
   DeleteTargetAccountConfigurationResponse,
   DeleteTargetAccountConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteTargetAccountConfigurationRequest,
   output: DeleteTargetAccountConfigurationResponse,
@@ -2477,7 +2476,7 @@ export const getAction: API.OperationMethod<
   GetActionRequest,
   GetActionResponse,
   GetActionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetActionRequest,
   output: GetActionResponse,
@@ -2498,7 +2497,7 @@ export const getExperiment: API.OperationMethod<
   GetExperimentRequest,
   GetExperimentResponse,
   GetExperimentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetExperimentRequest,
   output: GetExperimentResponse,
@@ -2519,7 +2518,7 @@ export const getExperimentTargetAccountConfiguration: API.OperationMethod<
   GetExperimentTargetAccountConfigurationRequest,
   GetExperimentTargetAccountConfigurationResponse,
   GetExperimentTargetAccountConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetExperimentTargetAccountConfigurationRequest,
   output: GetExperimentTargetAccountConfigurationResponse,
@@ -2540,7 +2539,7 @@ export const getExperimentTemplate: API.OperationMethod<
   GetExperimentTemplateRequest,
   GetExperimentTemplateResponse,
   GetExperimentTemplateError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetExperimentTemplateRequest,
   output: GetExperimentTemplateResponse,
@@ -2558,7 +2557,7 @@ export const getSafetyLever: API.OperationMethod<
   GetSafetyLeverRequest,
   GetSafetyLeverResponse,
   GetSafetyLeverError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetSafetyLeverRequest,
   output: GetSafetyLeverResponse,
@@ -2579,7 +2578,7 @@ export const getTargetAccountConfiguration: API.OperationMethod<
   GetTargetAccountConfigurationRequest,
   GetTargetAccountConfigurationResponse,
   GetTargetAccountConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetTargetAccountConfigurationRequest,
   output: GetTargetAccountConfigurationResponse,
@@ -2600,7 +2599,7 @@ export const getTargetResourceType: API.OperationMethod<
   GetTargetResourceTypeRequest,
   GetTargetResourceTypeResponse,
   GetTargetResourceTypeError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetTargetResourceTypeRequest,
   output: GetTargetResourceTypeResponse,
@@ -2618,7 +2617,7 @@ export const listActions: API.PaginatedOperationMethod<
   ListActionsRequest,
   ListActionsResponse,
   ListActionsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ActionSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListActionsRequest,
@@ -2646,7 +2645,7 @@ export const listExperimentResolvedTargets: API.PaginatedOperationMethod<
   ListExperimentResolvedTargetsRequest,
   ListExperimentResolvedTargetsResponse,
   ListExperimentResolvedTargetsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ResolvedTarget
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListExperimentResolvedTargetsRequest,
@@ -2671,7 +2670,7 @@ export const listExperiments: API.PaginatedOperationMethod<
   ListExperimentsRequest,
   ListExperimentsResponse,
   ListExperimentsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ExperimentSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListExperimentsRequest,
@@ -2699,7 +2698,7 @@ export const listExperimentTargetAccountConfigurations: API.OperationMethod<
   ListExperimentTargetAccountConfigurationsRequest,
   ListExperimentTargetAccountConfigurationsResponse,
   ListExperimentTargetAccountConfigurationsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListExperimentTargetAccountConfigurationsRequest,
   output: ListExperimentTargetAccountConfigurationsResponse,
@@ -2717,7 +2716,7 @@ export const listExperimentTemplates: API.PaginatedOperationMethod<
   ListExperimentTemplatesRequest,
   ListExperimentTemplatesResponse,
   ListExperimentTemplatesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ExperimentTemplateSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListExperimentTemplatesRequest,
@@ -2742,7 +2741,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -2763,7 +2762,7 @@ export const listTargetAccountConfigurations: API.PaginatedOperationMethod<
   ListTargetAccountConfigurationsRequest,
   ListTargetAccountConfigurationsResponse,
   ListTargetAccountConfigurationsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   TargetAccountConfigurationSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTargetAccountConfigurationsRequest,
@@ -2788,7 +2787,7 @@ export const listTargetResourceTypes: API.PaginatedOperationMethod<
   ListTargetResourceTypesRequest,
   ListTargetResourceTypesResponse,
   ListTargetResourceTypesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   TargetResourceTypeSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTargetResourceTypesRequest,
@@ -2818,7 +2817,7 @@ export const startExperiment: API.OperationMethod<
   StartExperimentRequest,
   StartExperimentResponse,
   StartExperimentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartExperimentRequest,
   output: StartExperimentResponse,
@@ -2844,7 +2843,7 @@ export const stopExperiment: API.OperationMethod<
   StopExperimentRequest,
   StopExperimentResponse,
   StopExperimentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StopExperimentRequest,
   output: StopExperimentResponse,
@@ -2862,7 +2861,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -2880,7 +2879,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -2902,7 +2901,7 @@ export const updateExperimentTemplate: API.OperationMethod<
   UpdateExperimentTemplateRequest,
   UpdateExperimentTemplateResponse,
   UpdateExperimentTemplateError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateExperimentTemplateRequest,
   output: UpdateExperimentTemplateResponse,
@@ -2928,7 +2927,7 @@ export const updateSafetyLeverState: API.OperationMethod<
   UpdateSafetyLeverStateRequest,
   UpdateSafetyLeverStateResponse,
   UpdateSafetyLeverStateError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateSafetyLeverStateRequest,
   output: UpdateSafetyLeverStateResponse,
@@ -2949,7 +2948,7 @@ export const updateTargetAccountConfiguration: API.OperationMethod<
   UpdateTargetAccountConfigurationRequest,
   UpdateTargetAccountConfigurationResponse,
   UpdateTargetAccountConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateTargetAccountConfigurationRequest,
   output: UpdateTargetAccountConfigurationResponse,

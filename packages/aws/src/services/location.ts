@@ -8,7 +8,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 import { SensitiveString, SensitiveBlob } from "../sensitive.ts";
 const svc = T.AwsApiService({
   sdkId: "Location",
@@ -3828,7 +3827,7 @@ export const associateTrackerConsumer: API.OperationMethod<
   AssociateTrackerConsumerRequest,
   AssociateTrackerConsumerResponse,
   AssociateTrackerConsumerError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: AssociateTrackerConsumerRequest,
   output: AssociateTrackerConsumerResponse,
@@ -3861,7 +3860,7 @@ export const batchDeleteDevicePositionHistory: API.OperationMethod<
   BatchDeleteDevicePositionHistoryRequest,
   BatchDeleteDevicePositionHistoryResponse,
   BatchDeleteDevicePositionHistoryError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: BatchDeleteDevicePositionHistoryRequest,
   output: BatchDeleteDevicePositionHistoryResponse,
@@ -3894,7 +3893,7 @@ export const batchDeleteGeofence: API.OperationMethod<
   BatchDeleteGeofenceRequest,
   BatchDeleteGeofenceResponse,
   BatchDeleteGeofenceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: BatchDeleteGeofenceRequest,
   output: BatchDeleteGeofenceResponse,
@@ -3937,7 +3936,7 @@ export const batchEvaluateGeofences: API.OperationMethod<
   BatchEvaluateGeofencesRequest,
   BatchEvaluateGeofencesResponse,
   BatchEvaluateGeofencesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: BatchEvaluateGeofencesRequest,
   output: BatchEvaluateGeofencesResponse,
@@ -3968,7 +3967,7 @@ export const batchGetDevicePosition: API.OperationMethod<
   BatchGetDevicePositionRequest,
   BatchGetDevicePositionResponse,
   BatchGetDevicePositionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: BatchGetDevicePositionRequest,
   output: BatchGetDevicePositionResponse,
@@ -3999,7 +3998,7 @@ export const batchPutGeofence: API.OperationMethod<
   BatchPutGeofenceRequest,
   BatchPutGeofenceResponse,
   BatchPutGeofenceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: BatchPutGeofenceRequest,
   output: BatchPutGeofenceResponse,
@@ -4036,7 +4035,7 @@ export const batchUpdateDevicePosition: API.OperationMethod<
   BatchUpdateDevicePositionRequest,
   BatchUpdateDevicePositionResponse,
   BatchUpdateDevicePositionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: BatchUpdateDevicePositionRequest,
   output: BatchUpdateDevicePositionResponse,
@@ -4089,7 +4088,7 @@ export const calculateRoute: API.OperationMethod<
   CalculateRouteRequest,
   CalculateRouteResponse,
   CalculateRouteError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CalculateRouteRequest,
   output: CalculateRouteResponse,
@@ -4146,7 +4145,7 @@ export const calculateRouteMatrix: API.OperationMethod<
   CalculateRouteMatrixRequest,
   CalculateRouteMatrixResponse,
   CalculateRouteMatrixError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CalculateRouteMatrixRequest,
   output: CalculateRouteMatrixResponse,
@@ -4179,7 +4178,7 @@ export const cancelJob: API.OperationMethod<
   CancelJobRequest,
   CancelJobResponse,
   CancelJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CancelJobRequest,
   output: CancelJobResponse,
@@ -4211,7 +4210,7 @@ export const createGeofenceCollection: API.OperationMethod<
   CreateGeofenceCollectionRequest,
   CreateGeofenceCollectionResponse,
   CreateGeofenceCollectionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateGeofenceCollectionRequest,
   output: CreateGeofenceCollectionResponse,
@@ -4246,7 +4245,7 @@ export const createKey: API.OperationMethod<
   CreateKeyRequest,
   CreateKeyResponse,
   CreateKeyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateKeyRequest,
   output: CreateKeyResponse,
@@ -4293,7 +4292,7 @@ export const createMap: API.OperationMethod<
   CreateMapRequest,
   CreateMapResponse,
   CreateMapError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateMapRequest,
   output: CreateMapResponse,
@@ -4340,7 +4339,7 @@ export const createPlaceIndex: API.OperationMethod<
   CreatePlaceIndexRequest,
   CreatePlaceIndexResponse,
   CreatePlaceIndexError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreatePlaceIndexRequest,
   output: CreatePlaceIndexResponse,
@@ -4389,7 +4388,7 @@ export const createRouteCalculator: API.OperationMethod<
   CreateRouteCalculatorRequest,
   CreateRouteCalculatorResponse,
   CreateRouteCalculatorError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateRouteCalculatorRequest,
   output: CreateRouteCalculatorResponse,
@@ -4422,7 +4421,7 @@ export const createTracker: API.OperationMethod<
   CreateTrackerRequest,
   CreateTrackerResponse,
   CreateTrackerError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateTrackerRequest,
   output: CreateTrackerResponse,
@@ -4456,7 +4455,7 @@ export const deleteGeofenceCollection: API.OperationMethod<
   DeleteGeofenceCollectionRequest,
   DeleteGeofenceCollectionResponse,
   DeleteGeofenceCollectionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteGeofenceCollectionRequest,
   output: DeleteGeofenceCollectionResponse,
@@ -4489,7 +4488,7 @@ export const deleteKey: API.OperationMethod<
   DeleteKeyRequest,
   DeleteKeyResponse,
   DeleteKeyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteKeyRequest,
   output: DeleteKeyResponse,
@@ -4534,7 +4533,7 @@ export const deleteMap: API.OperationMethod<
   DeleteMapRequest,
   DeleteMapResponse,
   DeleteMapError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteMapRequest,
   output: DeleteMapResponse,
@@ -4579,7 +4578,7 @@ export const deletePlaceIndex: API.OperationMethod<
   DeletePlaceIndexRequest,
   DeletePlaceIndexResponse,
   DeletePlaceIndexError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeletePlaceIndexRequest,
   output: DeletePlaceIndexResponse,
@@ -4624,7 +4623,7 @@ export const deleteRouteCalculator: API.OperationMethod<
   DeleteRouteCalculatorRequest,
   DeleteRouteCalculatorResponse,
   DeleteRouteCalculatorError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteRouteCalculatorRequest,
   output: DeleteRouteCalculatorResponse,
@@ -4657,7 +4656,7 @@ export const deleteTracker: API.OperationMethod<
   DeleteTrackerRequest,
   DeleteTrackerResponse,
   DeleteTrackerError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteTrackerRequest,
   output: DeleteTrackerResponse,
@@ -4688,7 +4687,7 @@ export const describeGeofenceCollection: API.OperationMethod<
   DescribeGeofenceCollectionRequest,
   DescribeGeofenceCollectionResponse,
   DescribeGeofenceCollectionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeGeofenceCollectionRequest,
   output: DescribeGeofenceCollectionResponse,
@@ -4721,7 +4720,7 @@ export const describeKey: API.OperationMethod<
   DescribeKeyRequest,
   DescribeKeyResponse,
   DescribeKeyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeKeyRequest,
   output: DescribeKeyResponse,
@@ -4764,7 +4763,7 @@ export const describeMap: API.OperationMethod<
   DescribeMapRequest,
   DescribeMapResponse,
   DescribeMapError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeMapRequest,
   output: DescribeMapResponse,
@@ -4807,7 +4806,7 @@ export const describePlaceIndex: API.OperationMethod<
   DescribePlaceIndexRequest,
   DescribePlaceIndexResponse,
   DescribePlaceIndexError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribePlaceIndexRequest,
   output: DescribePlaceIndexResponse,
@@ -4850,7 +4849,7 @@ export const describeRouteCalculator: API.OperationMethod<
   DescribeRouteCalculatorRequest,
   DescribeRouteCalculatorResponse,
   DescribeRouteCalculatorError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeRouteCalculatorRequest,
   output: DescribeRouteCalculatorResponse,
@@ -4881,7 +4880,7 @@ export const describeTracker: API.OperationMethod<
   DescribeTrackerRequest,
   DescribeTrackerResponse,
   DescribeTrackerError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeTrackerRequest,
   output: DescribeTrackerResponse,
@@ -4914,7 +4913,7 @@ export const disassociateTrackerConsumer: API.OperationMethod<
   DisassociateTrackerConsumerRequest,
   DisassociateTrackerConsumerResponse,
   DisassociateTrackerConsumerError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DisassociateTrackerConsumerRequest,
   output: DisassociateTrackerConsumerResponse,
@@ -4953,7 +4952,7 @@ export const forecastGeofenceEvents: API.PaginatedOperationMethod<
   ForecastGeofenceEventsRequest,
   ForecastGeofenceEventsResponse,
   ForecastGeofenceEventsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ForecastedEvent
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ForecastGeofenceEventsRequest,
@@ -4993,7 +4992,7 @@ export const getDevicePosition: API.OperationMethod<
   GetDevicePositionRequest,
   GetDevicePositionResponse,
   GetDevicePositionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetDevicePositionRequest,
   output: GetDevicePositionResponse,
@@ -5026,7 +5025,7 @@ export const getDevicePositionHistory: API.PaginatedOperationMethod<
   GetDevicePositionHistoryRequest,
   GetDevicePositionHistoryResponse,
   GetDevicePositionHistoryError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   DevicePosition
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetDevicePositionHistoryRequest,
@@ -5066,7 +5065,7 @@ export const getGeofence: API.OperationMethod<
   GetGeofenceRequest,
   GetGeofenceResponse,
   GetGeofenceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetGeofenceRequest,
   output: GetGeofenceResponse,
@@ -5099,7 +5098,7 @@ export const getJob: API.OperationMethod<
   GetJobRequest,
   GetJobResponse,
   GetJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetJobRequest,
   output: GetJobResponse,
@@ -5142,7 +5141,7 @@ export const getMapGlyphs: API.OperationMethod<
   GetMapGlyphsRequest,
   GetMapGlyphsResponse,
   GetMapGlyphsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetMapGlyphsRequest,
   output: GetMapGlyphsResponse,
@@ -5185,7 +5184,7 @@ export const getMapSprites: API.OperationMethod<
   GetMapSpritesRequest,
   GetMapSpritesResponse,
   GetMapSpritesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetMapSpritesRequest,
   output: GetMapSpritesResponse,
@@ -5230,7 +5229,7 @@ export const getMapStyleDescriptor: API.OperationMethod<
   GetMapStyleDescriptorRequest,
   GetMapStyleDescriptorResponse,
   GetMapStyleDescriptorError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetMapStyleDescriptorRequest,
   output: GetMapStyleDescriptorResponse,
@@ -5275,7 +5274,7 @@ export const getMapTile: API.OperationMethod<
   GetMapTileRequest,
   GetMapTileResponse,
   GetMapTileError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetMapTileRequest,
   output: GetMapTileResponse,
@@ -5328,7 +5327,7 @@ export const getPlace: API.OperationMethod<
   GetPlaceRequest,
   GetPlaceResponse,
   GetPlaceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetPlaceRequest,
   output: GetPlaceResponse,
@@ -5358,7 +5357,7 @@ export const listDevicePositions: API.PaginatedOperationMethod<
   ListDevicePositionsRequest,
   ListDevicePositionsResponse,
   ListDevicePositionsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ListDevicePositionsResponseEntry
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDevicePositionsRequest,
@@ -5394,7 +5393,7 @@ export const listGeofenceCollections: API.PaginatedOperationMethod<
   ListGeofenceCollectionsRequest,
   ListGeofenceCollectionsResponse,
   ListGeofenceCollectionsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ListGeofenceCollectionsResponseEntry
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListGeofenceCollectionsRequest,
@@ -5431,7 +5430,7 @@ export const listGeofences: API.PaginatedOperationMethod<
   ListGeofencesRequest,
   ListGeofencesResponse,
   ListGeofencesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ListGeofenceResponseEntry
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListGeofencesRequest,
@@ -5470,7 +5469,7 @@ export const listJobs: API.PaginatedOperationMethod<
   ListJobsRequest,
   ListJobsResponse,
   ListJobsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ListJobsResponseEntry
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListJobsRequest,
@@ -5508,7 +5507,7 @@ export const listKeys: API.PaginatedOperationMethod<
   ListKeysRequest,
   ListKeysResponse,
   ListKeysError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ListKeysResponseEntry
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListKeysRequest,
@@ -5556,7 +5555,7 @@ export const listMaps: API.PaginatedOperationMethod<
   ListMapsRequest,
   ListMapsResponse,
   ListMapsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ListMapsResponseEntry
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMapsRequest,
@@ -5604,7 +5603,7 @@ export const listPlaceIndexes: API.PaginatedOperationMethod<
   ListPlaceIndexesRequest,
   ListPlaceIndexesResponse,
   ListPlaceIndexesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ListPlaceIndexesResponseEntry
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPlaceIndexesRequest,
@@ -5652,7 +5651,7 @@ export const listRouteCalculators: API.PaginatedOperationMethod<
   ListRouteCalculatorsRequest,
   ListRouteCalculatorsResponse,
   ListRouteCalculatorsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ListRouteCalculatorsResponseEntry
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRouteCalculatorsRequest,
@@ -5689,7 +5688,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -5720,7 +5719,7 @@ export const listTrackerConsumers: API.PaginatedOperationMethod<
   ListTrackerConsumersRequest,
   ListTrackerConsumersResponse,
   ListTrackerConsumersError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   Arn
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTrackerConsumersRequest,
@@ -5757,7 +5756,7 @@ export const listTrackers: API.PaginatedOperationMethod<
   ListTrackersRequest,
   ListTrackersResponse,
   ListTrackersError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ListTrackersResponseEntry
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTrackersRequest,
@@ -5795,7 +5794,7 @@ export const putGeofence: API.OperationMethod<
   PutGeofenceRequest,
   PutGeofenceResponse,
   PutGeofenceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PutGeofenceRequest,
   output: PutGeofenceResponse,
@@ -5837,7 +5836,7 @@ export const searchPlaceIndexForPosition: API.OperationMethod<
   SearchPlaceIndexForPositionRequest,
   SearchPlaceIndexForPositionResponse,
   SearchPlaceIndexForPositionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: SearchPlaceIndexForPositionRequest,
   output: SearchPlaceIndexForPositionResponse,
@@ -5882,7 +5881,7 @@ export const searchPlaceIndexForSuggestions: API.OperationMethod<
   SearchPlaceIndexForSuggestionsRequest,
   SearchPlaceIndexForSuggestionsResponse,
   SearchPlaceIndexForSuggestionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: SearchPlaceIndexForSuggestionsRequest,
   output: SearchPlaceIndexForSuggestionsResponse,
@@ -5929,7 +5928,7 @@ export const searchPlaceIndexForText: API.OperationMethod<
   SearchPlaceIndexForTextRequest,
   SearchPlaceIndexForTextResponse,
   SearchPlaceIndexForTextError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: SearchPlaceIndexForTextRequest,
   output: SearchPlaceIndexForTextResponse,
@@ -5961,7 +5960,7 @@ export const startJob: API.OperationMethod<
   StartJobRequest,
   StartJobResponse,
   StartJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartJobRequest,
   output: StartJobResponse,
@@ -5997,7 +5996,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -6028,7 +6027,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -6059,7 +6058,7 @@ export const updateGeofenceCollection: API.OperationMethod<
   UpdateGeofenceCollectionRequest,
   UpdateGeofenceCollectionResponse,
   UpdateGeofenceCollectionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateGeofenceCollectionRequest,
   output: UpdateGeofenceCollectionResponse,
@@ -6090,7 +6089,7 @@ export const updateKey: API.OperationMethod<
   UpdateKeyRequest,
   UpdateKeyResponse,
   UpdateKeyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateKeyRequest,
   output: UpdateKeyResponse,
@@ -6133,7 +6132,7 @@ export const updateMap: API.OperationMethod<
   UpdateMapRequest,
   UpdateMapResponse,
   UpdateMapError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateMapRequest,
   output: UpdateMapResponse,
@@ -6176,7 +6175,7 @@ export const updatePlaceIndex: API.OperationMethod<
   UpdatePlaceIndexRequest,
   UpdatePlaceIndexResponse,
   UpdatePlaceIndexError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdatePlaceIndexRequest,
   output: UpdatePlaceIndexResponse,
@@ -6219,7 +6218,7 @@ export const updateRouteCalculator: API.OperationMethod<
   UpdateRouteCalculatorRequest,
   UpdateRouteCalculatorResponse,
   UpdateRouteCalculatorError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateRouteCalculatorRequest,
   output: UpdateRouteCalculatorResponse,
@@ -6250,7 +6249,7 @@ export const updateTracker: API.OperationMethod<
   UpdateTrackerRequest,
   UpdateTrackerResponse,
   UpdateTrackerError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateTrackerRequest,
   output: UpdateTrackerResponse,
@@ -6283,7 +6282,7 @@ export const verifyDevicePosition: API.OperationMethod<
   VerifyDevicePositionRequest,
   VerifyDevicePositionResponse,
   VerifyDevicePositionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: VerifyDevicePositionRequest,
   output: VerifyDevicePositionResponse,

@@ -9,7 +9,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 import { SensitiveString, SensitiveBlob } from "../sensitive.ts";
 const svc = T.AwsApiService({
   sdkId: "Lambda",
@@ -6097,7 +6096,7 @@ export const addLayerVersionPermission: API.OperationMethod<
   AddLayerVersionPermissionRequest,
   AddLayerVersionPermissionResponse,
   AddLayerVersionPermissionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: AddLayerVersionPermissionRequest,
   output: AddLayerVersionPermissionResponse,
@@ -6140,7 +6139,7 @@ export const addPermission: API.OperationMethod<
   AddPermissionRequest,
   AddPermissionResponse,
   AddPermissionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: AddPermissionRequest,
   output: AddPermissionResponse,
@@ -6175,7 +6174,7 @@ export const checkpointDurableExecution: API.OperationMethod<
   CheckpointDurableExecutionRequest,
   CheckpointDurableExecutionResponse,
   CheckpointDurableExecutionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CheckpointDurableExecutionRequest,
   output: CheckpointDurableExecutionResponse,
@@ -6208,7 +6207,7 @@ export const createAlias: API.OperationMethod<
   CreateAliasRequest,
   AliasConfiguration,
   CreateAliasError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateAliasRequest,
   output: AliasConfiguration,
@@ -6241,7 +6240,7 @@ export const createCapacityProvider: API.OperationMethod<
   CreateCapacityProviderRequest,
   CreateCapacityProviderResponse,
   CreateCapacityProviderError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateCapacityProviderRequest,
   output: CreateCapacityProviderResponse,
@@ -6268,7 +6267,7 @@ export const createCodeSigningConfig: API.OperationMethod<
   CreateCodeSigningConfigRequest,
   CreateCodeSigningConfigResponse,
   CreateCodeSigningConfigError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateCodeSigningConfigRequest,
   output: CreateCodeSigningConfigResponse,
@@ -6340,7 +6339,7 @@ export const createEventSourceMapping: API.OperationMethod<
   CreateEventSourceMappingRequest,
   EventSourceMappingConfiguration,
   CreateEventSourceMappingError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateEventSourceMappingRequest,
   output: EventSourceMappingConfiguration,
@@ -6393,7 +6392,7 @@ export const createFunction: API.OperationMethod<
   CreateFunctionRequest,
   FunctionConfiguration,
   CreateFunctionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateFunctionRequest,
   output: FunctionConfiguration,
@@ -6430,7 +6429,7 @@ export const createFunctionUrlConfig: API.OperationMethod<
   CreateFunctionUrlConfigRequest,
   CreateFunctionUrlConfigResponse,
   CreateFunctionUrlConfigError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateFunctionUrlConfigRequest,
   output: CreateFunctionUrlConfigResponse,
@@ -6463,7 +6462,7 @@ export const deleteAlias: API.OperationMethod<
   DeleteAliasRequest,
   DeleteAliasResponse,
   DeleteAliasError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteAliasRequest,
   output: DeleteAliasResponse,
@@ -6494,7 +6493,7 @@ export const deleteCapacityProvider: API.OperationMethod<
   DeleteCapacityProviderRequest,
   DeleteCapacityProviderResponse,
   DeleteCapacityProviderError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteCapacityProviderRequest,
   output: DeleteCapacityProviderResponse,
@@ -6525,7 +6524,7 @@ export const deleteCodeSigningConfig: API.OperationMethod<
   DeleteCodeSigningConfigRequest,
   DeleteCodeSigningConfigResponse,
   DeleteCodeSigningConfigError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteCodeSigningConfigRequest,
   output: DeleteCodeSigningConfigResponse,
@@ -6559,7 +6558,7 @@ export const deleteEventSourceMapping: API.OperationMethod<
   DeleteEventSourceMappingRequest,
   EventSourceMappingConfiguration,
   DeleteEventSourceMappingError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteEventSourceMappingRequest,
   output: EventSourceMappingConfiguration,
@@ -6594,7 +6593,7 @@ export const deleteFunction: API.OperationMethod<
   DeleteFunctionRequest,
   DeleteFunctionResponse,
   DeleteFunctionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteFunctionRequest,
   output: DeleteFunctionResponse,
@@ -6625,7 +6624,7 @@ export const deleteFunctionCodeSigningConfig: API.OperationMethod<
   DeleteFunctionCodeSigningConfigRequest,
   DeleteFunctionCodeSigningConfigResponse,
   DeleteFunctionCodeSigningConfigError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteFunctionCodeSigningConfigRequest,
   output: DeleteFunctionCodeSigningConfigResponse,
@@ -6658,7 +6657,7 @@ export const deleteFunctionConcurrency: API.OperationMethod<
   DeleteFunctionConcurrencyRequest,
   DeleteFunctionConcurrencyResponse,
   DeleteFunctionConcurrencyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteFunctionConcurrencyRequest,
   output: DeleteFunctionConcurrencyResponse,
@@ -6694,7 +6693,7 @@ export const deleteFunctionEventInvokeConfig: API.OperationMethod<
   DeleteFunctionEventInvokeConfigRequest,
   DeleteFunctionEventInvokeConfigResponse,
   DeleteFunctionEventInvokeConfigError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteFunctionEventInvokeConfigRequest,
   output: DeleteFunctionEventInvokeConfigResponse,
@@ -6728,7 +6727,7 @@ export const deleteFunctionUrlConfig: API.OperationMethod<
   DeleteFunctionUrlConfigRequest,
   DeleteFunctionUrlConfigResponse,
   DeleteFunctionUrlConfigError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteFunctionUrlConfigRequest,
   output: DeleteFunctionUrlConfigResponse,
@@ -6761,7 +6760,7 @@ export const deleteLayerVersion: API.OperationMethod<
   DeleteLayerVersionRequest,
   DeleteLayerVersionResponse,
   DeleteLayerVersionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteLayerVersionRequest,
   output: DeleteLayerVersionResponse,
@@ -6794,7 +6793,7 @@ export const deleteProvisionedConcurrencyConfig: API.OperationMethod<
   DeleteProvisionedConcurrencyConfigRequest,
   DeleteProvisionedConcurrencyConfigResponse,
   DeleteProvisionedConcurrencyConfigError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteProvisionedConcurrencyConfigRequest,
   output: DeleteProvisionedConcurrencyConfigResponse,
@@ -6823,7 +6822,7 @@ export const getAccountSettings: API.OperationMethod<
   GetAccountSettingsRequest,
   GetAccountSettingsResponse,
   GetAccountSettingsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetAccountSettingsRequest,
   output: GetAccountSettingsResponse,
@@ -6846,7 +6845,7 @@ export const getAlias: API.OperationMethod<
   GetAliasRequest,
   AliasConfiguration,
   GetAliasError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetAliasRequest,
   output: AliasConfiguration,
@@ -6874,7 +6873,7 @@ export const getCapacityProvider: API.OperationMethod<
   GetCapacityProviderRequest,
   GetCapacityProviderResponse,
   GetCapacityProviderError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetCapacityProviderRequest,
   output: GetCapacityProviderResponse,
@@ -6903,7 +6902,7 @@ export const getCodeSigningConfig: API.OperationMethod<
   GetCodeSigningConfigRequest,
   GetCodeSigningConfigResponse,
   GetCodeSigningConfigError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetCodeSigningConfigRequest,
   output: GetCodeSigningConfigResponse,
@@ -6932,7 +6931,7 @@ export const getDurableExecution: API.OperationMethod<
   GetDurableExecutionRequest,
   GetDurableExecutionResponse,
   GetDurableExecutionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetDurableExecutionRequest,
   output: GetDurableExecutionResponse,
@@ -6962,7 +6961,7 @@ export const getDurableExecutionHistory: API.PaginatedOperationMethod<
   GetDurableExecutionHistoryRequest,
   GetDurableExecutionHistoryResponse,
   GetDurableExecutionHistoryError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   Event
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetDurableExecutionHistoryRequest,
@@ -6998,7 +6997,7 @@ export const getDurableExecutionState: API.PaginatedOperationMethod<
   GetDurableExecutionStateRequest,
   GetDurableExecutionStateResponse,
   GetDurableExecutionStateError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   Operation
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetDurableExecutionStateRequest,
@@ -7032,7 +7031,7 @@ export const getEventSourceMapping: API.OperationMethod<
   GetEventSourceMappingRequest,
   EventSourceMappingConfiguration,
   GetEventSourceMappingError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetEventSourceMappingRequest,
   output: EventSourceMappingConfiguration,
@@ -7060,7 +7059,7 @@ export const getFunction: API.OperationMethod<
   GetFunctionRequest,
   GetFunctionResponse,
   GetFunctionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetFunctionRequest,
   output: GetFunctionResponse,
@@ -7089,7 +7088,7 @@ export const getFunctionCodeSigningConfig: API.OperationMethod<
   GetFunctionCodeSigningConfigRequest,
   GetFunctionCodeSigningConfigResponse,
   GetFunctionCodeSigningConfigError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetFunctionCodeSigningConfigRequest,
   output: GetFunctionCodeSigningConfigResponse,
@@ -7120,7 +7119,7 @@ export const getFunctionConcurrency: API.OperationMethod<
   GetFunctionConcurrencyRequest,
   GetFunctionConcurrencyResponse,
   GetFunctionConcurrencyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetFunctionConcurrencyRequest,
   output: GetFunctionConcurrencyResponse,
@@ -7152,7 +7151,7 @@ export const getFunctionConfiguration: API.OperationMethod<
   GetFunctionConfigurationRequest,
   FunctionConfiguration,
   GetFunctionConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetFunctionConfigurationRequest,
   output: FunctionConfiguration,
@@ -7184,7 +7183,7 @@ export const getFunctionEventInvokeConfig: API.OperationMethod<
   GetFunctionEventInvokeConfigRequest,
   FunctionEventInvokeConfig,
   GetFunctionEventInvokeConfigError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetFunctionEventInvokeConfigRequest,
   output: FunctionEventInvokeConfig,
@@ -7216,7 +7215,7 @@ export const getFunctionRecursionConfig: API.OperationMethod<
   GetFunctionRecursionConfigRequest,
   GetFunctionRecursionConfigResponse,
   GetFunctionRecursionConfigError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetFunctionRecursionConfigRequest,
   output: GetFunctionRecursionConfigResponse,
@@ -7246,7 +7245,7 @@ export const getFunctionScalingConfig: API.OperationMethod<
   GetFunctionScalingConfigRequest,
   GetFunctionScalingConfigResponse,
   GetFunctionScalingConfigError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetFunctionScalingConfigRequest,
   output: GetFunctionScalingConfigResponse,
@@ -7274,7 +7273,7 @@ export const getFunctionUrlConfig: API.OperationMethod<
   GetFunctionUrlConfigRequest,
   GetFunctionUrlConfigResponse,
   GetFunctionUrlConfigError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetFunctionUrlConfigRequest,
   output: GetFunctionUrlConfigResponse,
@@ -7304,7 +7303,7 @@ export const getLayerVersion: API.OperationMethod<
   GetLayerVersionRequest,
   GetLayerVersionResponse,
   GetLayerVersionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetLayerVersionRequest,
   output: GetLayerVersionResponse,
@@ -7334,7 +7333,7 @@ export const getLayerVersionByArn: API.OperationMethod<
   GetLayerVersionByArnRequest,
   GetLayerVersionResponse,
   GetLayerVersionByArnError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetLayerVersionByArnRequest,
   output: GetLayerVersionResponse,
@@ -7364,7 +7363,7 @@ export const getLayerVersionPolicy: API.OperationMethod<
   GetLayerVersionPolicyRequest,
   GetLayerVersionPolicyResponse,
   GetLayerVersionPolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetLayerVersionPolicyRequest,
   output: GetLayerVersionPolicyResponse,
@@ -7394,7 +7393,7 @@ export const getPolicy: API.OperationMethod<
   GetPolicyRequest,
   GetPolicyResponse,
   GetPolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetPolicyRequest,
   output: GetPolicyResponse,
@@ -7425,7 +7424,7 @@ export const getProvisionedConcurrencyConfig: API.OperationMethod<
   GetProvisionedConcurrencyConfigRequest,
   GetProvisionedConcurrencyConfigResponse,
   GetProvisionedConcurrencyConfigError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetProvisionedConcurrencyConfigRequest,
   output: GetProvisionedConcurrencyConfigResponse,
@@ -7456,7 +7455,7 @@ export const getRuntimeManagementConfig: API.OperationMethod<
   GetRuntimeManagementConfigRequest,
   GetRuntimeManagementConfigResponse,
   GetRuntimeManagementConfigError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetRuntimeManagementConfigRequest,
   output: GetRuntimeManagementConfigResponse,
@@ -7539,7 +7538,7 @@ export const invoke: API.OperationMethod<
   InvocationRequest,
   InvocationResponse,
   InvokeError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: InvocationRequest,
   output: InvocationResponse,
@@ -7639,7 +7638,7 @@ export const invokeAsync: API.OperationMethod<
   InvokeAsyncRequest,
   InvokeAsyncResponse,
   InvokeAsyncError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: InvokeAsyncRequest,
   output: InvokeAsyncResponse,
@@ -7727,7 +7726,7 @@ export const invokeWithResponseStream: API.OperationMethod<
   InvokeWithResponseStreamRequest,
   InvokeWithResponseStreamResponse,
   InvokeWithResponseStreamError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: InvokeWithResponseStreamRequest,
   output: InvokeWithResponseStreamResponse,
@@ -7788,7 +7787,7 @@ export const listAliases: API.PaginatedOperationMethod<
   ListAliasesRequest,
   ListAliasesResponse,
   ListAliasesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   AliasConfiguration
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAliasesRequest,
@@ -7822,7 +7821,7 @@ export const listCapacityProviders: API.PaginatedOperationMethod<
   ListCapacityProvidersRequest,
   ListCapacityProvidersResponse,
   ListCapacityProvidersError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   CapacityProvider
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCapacityProvidersRequest,
@@ -7854,7 +7853,7 @@ export const listCodeSigningConfigs: API.PaginatedOperationMethod<
   ListCodeSigningConfigsRequest,
   ListCodeSigningConfigsResponse,
   ListCodeSigningConfigsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   CodeSigningConfig
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCodeSigningConfigsRequest,
@@ -7884,7 +7883,7 @@ export const listDurableExecutionsByFunction: API.PaginatedOperationMethod<
   ListDurableExecutionsByFunctionRequest,
   ListDurableExecutionsByFunctionResponse,
   ListDurableExecutionsByFunctionError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   Execution
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDurableExecutionsByFunctionRequest,
@@ -7919,7 +7918,7 @@ export const listEventSourceMappings: API.PaginatedOperationMethod<
   ListEventSourceMappingsRequest,
   ListEventSourceMappingsResponse,
   ListEventSourceMappingsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   EventSourceMappingConfiguration
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEventSourceMappingsRequest,
@@ -7958,7 +7957,7 @@ export const listFunctionEventInvokeConfigs: API.PaginatedOperationMethod<
   ListFunctionEventInvokeConfigsRequest,
   ListFunctionEventInvokeConfigsResponse,
   ListFunctionEventInvokeConfigsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   FunctionEventInvokeConfig
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFunctionEventInvokeConfigsRequest,
@@ -7998,7 +7997,7 @@ export const listFunctions: API.PaginatedOperationMethod<
   ListFunctionsRequest,
   ListFunctionsResponse,
   ListFunctionsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   FunctionConfiguration
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFunctionsRequest,
@@ -8031,7 +8030,7 @@ export const listFunctionsByCodeSigningConfig: API.PaginatedOperationMethod<
   ListFunctionsByCodeSigningConfigRequest,
   ListFunctionsByCodeSigningConfigResponse,
   ListFunctionsByCodeSigningConfigError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   FunctionArn
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFunctionsByCodeSigningConfigRequest,
@@ -8065,7 +8064,7 @@ export const listFunctionUrlConfigs: API.PaginatedOperationMethod<
   ListFunctionUrlConfigsRequest,
   ListFunctionUrlConfigsResponse,
   ListFunctionUrlConfigsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   FunctionUrlConfig
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFunctionUrlConfigsRequest,
@@ -8100,7 +8099,7 @@ export const listFunctionVersionsByCapacityProvider: API.PaginatedOperationMetho
   ListFunctionVersionsByCapacityProviderRequest,
   ListFunctionVersionsByCapacityProviderResponse,
   ListFunctionVersionsByCapacityProviderError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   FunctionVersionsByCapacityProviderListItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFunctionVersionsByCapacityProviderRequest,
@@ -8134,7 +8133,7 @@ export const listLayers: API.PaginatedOperationMethod<
   ListLayersRequest,
   ListLayersResponse,
   ListLayersError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   LayersListItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLayersRequest,
@@ -8170,7 +8169,7 @@ export const listLayerVersions: API.PaginatedOperationMethod<
   ListLayerVersionsRequest,
   ListLayerVersionsResponse,
   ListLayerVersionsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   LayerVersionsListItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLayerVersionsRequest,
@@ -8209,7 +8208,7 @@ export const listProvisionedConcurrencyConfigs: API.PaginatedOperationMethod<
   ListProvisionedConcurrencyConfigsRequest,
   ListProvisionedConcurrencyConfigsResponse,
   ListProvisionedConcurrencyConfigsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ProvisionedConcurrencyConfigListItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProvisionedConcurrencyConfigsRequest,
@@ -8248,7 +8247,7 @@ export const listTags: API.OperationMethod<
   ListTagsRequest,
   ListTagsResponse,
   ListTagsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListTagsRequest,
   output: ListTagsResponse,
@@ -8278,7 +8277,7 @@ export const listVersionsByFunction: API.PaginatedOperationMethod<
   ListVersionsByFunctionRequest,
   ListVersionsByFunctionResponse,
   ListVersionsByFunctionError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   FunctionConfiguration
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListVersionsByFunctionRequest,
@@ -8318,7 +8317,7 @@ export const publishLayerVersion: API.OperationMethod<
   PublishLayerVersionRequest,
   PublishLayerVersionResponse,
   PublishLayerVersionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PublishLayerVersionRequest,
   output: PublishLayerVersionResponse,
@@ -8359,7 +8358,7 @@ export const publishVersion: API.OperationMethod<
   PublishVersionRequest,
   FunctionConfiguration,
   PublishVersionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PublishVersionRequest,
   output: FunctionConfiguration,
@@ -8397,7 +8396,7 @@ export const putFunctionCodeSigningConfig: API.OperationMethod<
   PutFunctionCodeSigningConfigRequest,
   PutFunctionCodeSigningConfigResponse,
   PutFunctionCodeSigningConfigError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PutFunctionCodeSigningConfigRequest,
   output: PutFunctionCodeSigningConfigResponse,
@@ -8436,7 +8435,7 @@ export const putFunctionConcurrency: API.OperationMethod<
   PutFunctionConcurrencyRequest,
   Concurrency,
   PutFunctionConcurrencyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PutFunctionConcurrencyRequest,
   output: Concurrency,
@@ -8476,7 +8475,7 @@ export const putFunctionEventInvokeConfig: API.OperationMethod<
   PutFunctionEventInvokeConfigRequest,
   FunctionEventInvokeConfig,
   PutFunctionEventInvokeConfigError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PutFunctionEventInvokeConfigRequest,
   output: FunctionEventInvokeConfig,
@@ -8514,7 +8513,7 @@ export const putFunctionRecursionConfig: API.OperationMethod<
   PutFunctionRecursionConfigRequest,
   PutFunctionRecursionConfigResponse,
   PutFunctionRecursionConfigError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PutFunctionRecursionConfigRequest,
   output: PutFunctionRecursionConfigResponse,
@@ -8546,7 +8545,7 @@ export const putFunctionScalingConfig: API.OperationMethod<
   PutFunctionScalingConfigRequest,
   PutFunctionScalingConfigResponse,
   PutFunctionScalingConfigError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PutFunctionScalingConfigRequest,
   output: PutFunctionScalingConfigResponse,
@@ -8578,7 +8577,7 @@ export const putProvisionedConcurrencyConfig: API.OperationMethod<
   PutProvisionedConcurrencyConfigRequest,
   PutProvisionedConcurrencyConfigResponse,
   PutProvisionedConcurrencyConfigError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PutProvisionedConcurrencyConfigRequest,
   output: PutProvisionedConcurrencyConfigResponse,
@@ -8610,7 +8609,7 @@ export const putRuntimeManagementConfig: API.OperationMethod<
   PutRuntimeManagementConfigRequest,
   PutRuntimeManagementConfigResponse,
   PutRuntimeManagementConfigError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PutRuntimeManagementConfigRequest,
   output: PutRuntimeManagementConfigResponse,
@@ -8642,7 +8641,7 @@ export const removeLayerVersionPermission: API.OperationMethod<
   RemoveLayerVersionPermissionRequest,
   RemoveLayerVersionPermissionResponse,
   RemoveLayerVersionPermissionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: RemoveLayerVersionPermissionRequest,
   output: RemoveLayerVersionPermissionResponse,
@@ -8675,7 +8674,7 @@ export const removePermission: API.OperationMethod<
   RemovePermissionRequest,
   RemovePermissionResponse,
   RemovePermissionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: RemovePermissionRequest,
   output: RemovePermissionResponse,
@@ -8706,7 +8705,7 @@ export const sendDurableExecutionCallbackFailure: API.OperationMethod<
   SendDurableExecutionCallbackFailureRequest,
   SendDurableExecutionCallbackFailureResponse,
   SendDurableExecutionCallbackFailureError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: SendDurableExecutionCallbackFailureRequest,
   output: SendDurableExecutionCallbackFailureResponse,
@@ -8736,7 +8735,7 @@ export const sendDurableExecutionCallbackHeartbeat: API.OperationMethod<
   SendDurableExecutionCallbackHeartbeatRequest,
   SendDurableExecutionCallbackHeartbeatResponse,
   SendDurableExecutionCallbackHeartbeatError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: SendDurableExecutionCallbackHeartbeatRequest,
   output: SendDurableExecutionCallbackHeartbeatResponse,
@@ -8766,7 +8765,7 @@ export const sendDurableExecutionCallbackSuccess: API.OperationMethod<
   SendDurableExecutionCallbackSuccessRequest,
   SendDurableExecutionCallbackSuccessResponse,
   SendDurableExecutionCallbackSuccessError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: SendDurableExecutionCallbackSuccessRequest,
   output: SendDurableExecutionCallbackSuccessResponse,
@@ -8795,7 +8794,7 @@ export const stopDurableExecution: API.OperationMethod<
   StopDurableExecutionRequest,
   StopDurableExecutionResponse,
   StopDurableExecutionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StopDurableExecutionRequest,
   output: StopDurableExecutionResponse,
@@ -8826,7 +8825,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -8860,7 +8859,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -8895,7 +8894,7 @@ export const updateAlias: API.OperationMethod<
   UpdateAliasRequest,
   AliasConfiguration,
   UpdateAliasError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateAliasRequest,
   output: AliasConfiguration,
@@ -8928,7 +8927,7 @@ export const updateCapacityProvider: API.OperationMethod<
   UpdateCapacityProviderRequest,
   UpdateCapacityProviderResponse,
   UpdateCapacityProviderError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateCapacityProviderRequest,
   output: UpdateCapacityProviderResponse,
@@ -8956,7 +8955,7 @@ export const updateCodeSigningConfig: API.OperationMethod<
   UpdateCodeSigningConfigRequest,
   UpdateCodeSigningConfigResponse,
   UpdateCodeSigningConfigError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateCodeSigningConfigRequest,
   output: UpdateCodeSigningConfigResponse,
@@ -9033,7 +9032,7 @@ export const updateEventSourceMapping: API.OperationMethod<
   UpdateEventSourceMappingRequest,
   EventSourceMappingConfiguration,
   UpdateEventSourceMappingError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateEventSourceMappingRequest,
   output: EventSourceMappingConfiguration,
@@ -9083,7 +9082,7 @@ export const updateFunctionCode: API.OperationMethod<
   UpdateFunctionCodeRequest,
   FunctionConfiguration,
   UpdateFunctionCodeError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateFunctionCodeRequest,
   output: FunctionConfiguration,
@@ -9132,7 +9131,7 @@ export const updateFunctionConfiguration: API.OperationMethod<
   UpdateFunctionConfigurationRequest,
   FunctionConfiguration,
   UpdateFunctionConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateFunctionConfigurationRequest,
   output: FunctionConfiguration,
@@ -9170,7 +9169,7 @@ export const updateFunctionEventInvokeConfig: API.OperationMethod<
   UpdateFunctionEventInvokeConfigRequest,
   FunctionEventInvokeConfig,
   UpdateFunctionEventInvokeConfigError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateFunctionEventInvokeConfigRequest,
   output: FunctionEventInvokeConfig,
@@ -9202,7 +9201,7 @@ export const updateFunctionUrlConfig: API.OperationMethod<
   UpdateFunctionUrlConfigRequest,
   UpdateFunctionUrlConfigResponse,
   UpdateFunctionUrlConfigError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateFunctionUrlConfigRequest,
   output: UpdateFunctionUrlConfigResponse,

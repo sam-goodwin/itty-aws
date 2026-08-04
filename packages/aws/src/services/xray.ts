@@ -7,7 +7,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 const svc = T.AwsApiService({ sdkId: "XRay", serviceShapeName: "AWSXRay" });
 const auth = T.AwsAuthSigv4({ name: "xray" });
 const ver = T.ServiceVersion("2016-04-12");
@@ -2651,7 +2650,7 @@ export const batchGetTraces: API.PaginatedOperationMethod<
   BatchGetTracesRequest,
   BatchGetTracesResult,
   BatchGetTracesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   Trace
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: BatchGetTracesRequest,
@@ -2679,7 +2678,7 @@ export const cancelTraceRetrieval: API.OperationMethod<
   CancelTraceRetrievalRequest,
   CancelTraceRetrievalResult,
   CancelTraceRetrievalError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CancelTraceRetrievalRequest,
   output: CancelTraceRetrievalResult,
@@ -2705,7 +2704,7 @@ export const createGroup: API.OperationMethod<
   CreateGroupRequest,
   CreateGroupResult,
   CreateGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateGroupRequest,
   output: CreateGroupResult,
@@ -2734,7 +2733,7 @@ export const createSamplingRule: API.OperationMethod<
   CreateSamplingRuleRequest,
   CreateSamplingRuleResult,
   CreateSamplingRuleError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateSamplingRuleRequest,
   output: CreateSamplingRuleResult,
@@ -2761,7 +2760,7 @@ export const deleteGroup: API.OperationMethod<
   DeleteGroupRequest,
   DeleteGroupResult,
   DeleteGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteGroupRequest,
   output: DeleteGroupResult,
@@ -2783,7 +2782,7 @@ export const deleteResourcePolicy: API.OperationMethod<
   DeleteResourcePolicyRequest,
   DeleteResourcePolicyResult,
   DeleteResourcePolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteResourcePolicyRequest,
   output: DeleteResourcePolicyResult,
@@ -2809,7 +2808,7 @@ export const deleteSamplingRule: API.OperationMethod<
   DeleteSamplingRuleRequest,
   DeleteSamplingRuleResult,
   DeleteSamplingRuleError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteSamplingRuleRequest,
   output: DeleteSamplingRuleResult,
@@ -2830,7 +2829,7 @@ export const getEncryptionConfig: API.OperationMethod<
   GetEncryptionConfigRequest,
   GetEncryptionConfigResult,
   GetEncryptionConfigError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetEncryptionConfigRequest,
   output: GetEncryptionConfigResult,
@@ -2852,7 +2851,7 @@ export const getGroup: API.OperationMethod<
   GetGroupRequest,
   GetGroupResult,
   GetGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetGroupRequest,
   output: GetGroupResult,
@@ -2873,7 +2872,7 @@ export const getGroups: API.PaginatedOperationMethod<
   GetGroupsRequest,
   GetGroupsResult,
   GetGroupsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   GroupSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetGroupsRequest,
@@ -2902,7 +2901,7 @@ export const getIndexingRules: API.OperationMethod<
   GetIndexingRulesRequest,
   GetIndexingRulesResult,
   GetIndexingRulesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetIndexingRulesRequest,
   output: GetIndexingRulesResult,
@@ -2925,7 +2924,7 @@ export const getInsight: API.OperationMethod<
   GetInsightRequest,
   GetInsightResult,
   GetInsightError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetInsightRequest,
   output: GetInsightResult,
@@ -2948,7 +2947,7 @@ export const getInsightEvents: API.PaginatedOperationMethod<
   GetInsightEventsRequest,
   GetInsightEventsResult,
   GetInsightEventsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetInsightEventsRequest,
@@ -2976,7 +2975,7 @@ export const getInsightImpactGraph: API.OperationMethod<
   GetInsightImpactGraphRequest,
   GetInsightImpactGraphResult,
   GetInsightImpactGraphError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetInsightImpactGraphRequest,
   output: GetInsightImpactGraphResult,
@@ -2997,7 +2996,7 @@ export const getInsightSummaries: API.PaginatedOperationMethod<
   GetInsightSummariesRequest,
   GetInsightSummariesResult,
   GetInsightSummariesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetInsightSummariesRequest,
@@ -3033,7 +3032,7 @@ export const getRetrievedTracesGraph: API.OperationMethod<
   GetRetrievedTracesGraphRequest,
   GetRetrievedTracesGraphResult,
   GetRetrievedTracesGraphError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetRetrievedTracesGraphRequest,
   output: GetRetrievedTracesGraphResult,
@@ -3058,7 +3057,7 @@ export const getSamplingRules: API.PaginatedOperationMethod<
   GetSamplingRulesRequest,
   GetSamplingRulesResult,
   GetSamplingRulesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   SamplingRuleRecord
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetSamplingRulesRequest,
@@ -3085,7 +3084,7 @@ export const getSamplingStatisticSummaries: API.PaginatedOperationMethod<
   GetSamplingStatisticSummariesRequest,
   GetSamplingStatisticSummariesResult,
   GetSamplingStatisticSummariesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   SamplingStatisticSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetSamplingStatisticSummariesRequest,
@@ -3112,7 +3111,7 @@ export const getSamplingTargets: API.OperationMethod<
   GetSamplingTargetsRequest,
   GetSamplingTargetsResult,
   GetSamplingTargetsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetSamplingTargetsRequest,
   output: GetSamplingTargetsResult,
@@ -3137,7 +3136,7 @@ export const getServiceGraph: API.PaginatedOperationMethod<
   GetServiceGraphRequest,
   GetServiceGraphResult,
   GetServiceGraphError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   Service
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetServiceGraphRequest,
@@ -3165,7 +3164,7 @@ export const getTimeSeriesServiceStatistics: API.PaginatedOperationMethod<
   GetTimeSeriesServiceStatisticsRequest,
   GetTimeSeriesServiceStatisticsResult,
   GetTimeSeriesServiceStatisticsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   TimeSeriesServiceStatistics
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetTimeSeriesServiceStatisticsRequest,
@@ -3192,7 +3191,7 @@ export const getTraceGraph: API.PaginatedOperationMethod<
   GetTraceGraphRequest,
   GetTraceGraphResult,
   GetTraceGraphError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   Service
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetTraceGraphRequest,
@@ -3219,7 +3218,7 @@ export const getTraceSegmentDestination: API.OperationMethod<
   GetTraceSegmentDestinationRequest,
   GetTraceSegmentDestinationResult,
   GetTraceSegmentDestinationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetTraceSegmentDestinationRequest,
   output: GetTraceSegmentDestinationResult,
@@ -3257,7 +3256,7 @@ export const getTraceSummaries: API.PaginatedOperationMethod<
   GetTraceSummariesRequest,
   GetTraceSummariesResult,
   GetTraceSummariesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   TraceSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetTraceSummariesRequest,
@@ -3284,7 +3283,7 @@ export const listResourcePolicies: API.PaginatedOperationMethod<
   ListResourcePoliciesRequest,
   ListResourcePoliciesResult,
   ListResourcePoliciesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ResourcePolicy
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListResourcePoliciesRequest,
@@ -3320,7 +3319,7 @@ export const listRetrievedTraces: API.OperationMethod<
   ListRetrievedTracesRequest,
   ListRetrievedTracesResult,
   ListRetrievedTracesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListRetrievedTracesRequest,
   output: ListRetrievedTracesResult,
@@ -3346,7 +3345,7 @@ export const listTagsForResource: API.PaginatedOperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   Tag
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTagsForResourceRequest,
@@ -3377,7 +3376,7 @@ export const putEncryptionConfig: API.OperationMethod<
   PutEncryptionConfigRequest,
   PutEncryptionConfigResult,
   PutEncryptionConfigError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PutEncryptionConfigRequest,
   output: PutEncryptionConfigResult,
@@ -3405,7 +3404,7 @@ export const putResourcePolicy: API.OperationMethod<
   PutResourcePolicyRequest,
   PutResourcePolicyResult,
   PutResourcePolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PutResourcePolicyRequest,
   output: PutResourcePolicyResult,
@@ -3433,7 +3432,7 @@ export const putTelemetryRecords: API.OperationMethod<
   PutTelemetryRecordsRequest,
   PutTelemetryRecordsResult,
   PutTelemetryRecordsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PutTelemetryRecordsRequest,
   output: PutTelemetryRecordsResult,
@@ -3505,7 +3504,7 @@ export const putTraceSegments: API.OperationMethod<
   PutTraceSegmentsRequest,
   PutTraceSegmentsResult,
   PutTraceSegmentsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PutTraceSegmentsRequest,
   output: PutTraceSegmentsResult,
@@ -3533,7 +3532,7 @@ export const startTraceRetrieval: API.OperationMethod<
   StartTraceRetrievalRequest,
   StartTraceRetrievalResult,
   StartTraceRetrievalError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartTraceRetrievalRequest,
   output: StartTraceRetrievalResult,
@@ -3560,7 +3559,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -3588,7 +3587,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -3614,7 +3613,7 @@ export const updateGroup: API.OperationMethod<
   UpdateGroupRequest,
   UpdateGroupResult,
   UpdateGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateGroupRequest,
   output: UpdateGroupResult,
@@ -3638,7 +3637,7 @@ export const updateIndexingRule: API.OperationMethod<
   UpdateIndexingRuleRequest,
   UpdateIndexingRuleResult,
   UpdateIndexingRuleError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateIndexingRuleRequest,
   output: UpdateIndexingRuleResult,
@@ -3664,7 +3663,7 @@ export const updateSamplingRule: API.OperationMethod<
   UpdateSamplingRuleRequest,
   UpdateSamplingRuleResult,
   UpdateSamplingRuleError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateSamplingRuleRequest,
   output: UpdateSamplingRuleResult,
@@ -3685,7 +3684,7 @@ export const updateTraceSegmentDestination: API.OperationMethod<
   UpdateTraceSegmentDestinationRequest,
   UpdateTraceSegmentDestinationResult,
   UpdateTraceSegmentDestinationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateTraceSegmentDestinationRequest,
   output: UpdateTraceSegmentDestinationResult,

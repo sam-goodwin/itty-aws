@@ -7,7 +7,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region as Rgn } from "../region.ts";
 const svc = T.AwsApiService({ sdkId: "DSQL", serviceShapeName: "DSQL" });
 const auth = T.AwsAuthSigv4({ name: "dsql" });
 const ver = T.ServiceVersion("2018-05-10");
@@ -953,7 +952,7 @@ export const createCluster: API.OperationMethod<
   CreateClusterInput,
   CreateClusterOutput,
   CreateClusterError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateClusterInput,
   output: CreateClusterOutput,
@@ -1000,7 +999,7 @@ export const createStream: API.OperationMethod<
   CreateStreamInput,
   CreateStreamOutput,
   CreateStreamError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateStreamInput,
   output: CreateStreamOutput,
@@ -1026,7 +1025,7 @@ export const deleteCluster: API.OperationMethod<
   DeleteClusterInput,
   DeleteClusterOutput,
   DeleteClusterError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteClusterInput,
   output: DeleteClusterOutput,
@@ -1048,7 +1047,7 @@ export const deleteClusterPolicy: API.OperationMethod<
   DeleteClusterPolicyInput,
   DeleteClusterPolicyOutput,
   DeleteClusterPolicyError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteClusterPolicyInput,
   output: DeleteClusterPolicyOutput,
@@ -1069,7 +1068,7 @@ export const deleteStream: API.OperationMethod<
   DeleteStreamInput,
   DeleteStreamOutput,
   DeleteStreamError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteStreamInput,
   output: DeleteStreamOutput,
@@ -1087,7 +1086,7 @@ export const getCluster: API.OperationMethod<
   GetClusterInput,
   GetClusterOutput,
   GetClusterError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetClusterInput,
   output: GetClusterOutput,
@@ -1108,7 +1107,7 @@ export const getClusterPolicy: API.OperationMethod<
   GetClusterPolicyInput,
   GetClusterPolicyOutput,
   GetClusterPolicyError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetClusterPolicyInput,
   output: GetClusterPolicyOutput,
@@ -1126,7 +1125,7 @@ export const getStream: API.OperationMethod<
   GetStreamInput,
   GetStreamOutput,
   GetStreamError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetStreamInput,
   output: GetStreamOutput,
@@ -1149,7 +1148,7 @@ export const getVpcEndpointServiceName: API.OperationMethod<
   GetVpcEndpointServiceNameInput,
   GetVpcEndpointServiceNameOutput,
   GetVpcEndpointServiceNameError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetVpcEndpointServiceNameInput,
   output: GetVpcEndpointServiceNameOutput,
@@ -1172,7 +1171,7 @@ export const listClusters: API.PaginatedOperationMethod<
   ListClustersInput,
   ListClustersOutput,
   ListClustersError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ClusterSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListClustersInput,
@@ -1197,7 +1196,7 @@ export const listStreams: API.PaginatedOperationMethod<
   ListStreamsInput,
   ListStreamsOutput,
   ListStreamsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   StreamSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListStreamsInput,
@@ -1222,7 +1221,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceInput,
   ListTagsForResourceOutput,
   ListTagsForResourceError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceInput,
   output: ListTagsForResourceOutput,
@@ -1244,7 +1243,7 @@ export const putClusterPolicy: API.OperationMethod<
   PutClusterPolicyInput,
   PutClusterPolicyOutput,
   PutClusterPolicyError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PutClusterPolicyInput,
   output: PutClusterPolicyOutput,
@@ -1265,7 +1264,7 @@ export const tagResource: API.OperationMethod<
   TagResourceInput,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: TagResourceInput,
   output: TagResourceResponse,
@@ -1283,7 +1282,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceInput,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceInput,
   output: UntagResourceResponse,
@@ -1359,7 +1358,7 @@ export const updateCluster: API.OperationMethod<
   UpdateClusterInput,
   UpdateClusterOutput,
   UpdateClusterError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateClusterInput,
   output: UpdateClusterOutput,
