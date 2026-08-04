@@ -2120,12 +2120,12 @@ export const awsSpec = (
         const keptMembers = errorPatches
           ? members.filter((m) => !(m.name in errorPatches))
           : members;
-        let fields = keptMembers.length
-          ? `{${keptMembers.map((m) => `${m.name}: ${m.schemaExpr}`).join(", ")}}`
-          : "{}";
+
+        const errorFields: Array<{ name: string; expr: string }> =
+          keptMembers.map((m) => ({ name: m.name, expr: m.schemaExpr }));
 
         if (errorPatches) {
-          const patchedFields: string[] = [];
+          const patchedFields: Array<{ name: string; expr: string }> = [];
           for (const [memberName, patch] of Object.entries(errorPatches)) {
             const traitPipes: string[] = [];
             if (patch.httpHeader) {
@@ -2141,19 +2141,51 @@ export const awsSpec = (
               patch.optional !== false
                 ? `S.optional(${schemaType})`
                 : schemaType;
-            patchedFields.push(
-              `${memberName}: ${
+            patchedFields.push({
+              name: memberName,
+              expr:
                 traitPipes.length > 0
                   ? `${optionalWrapped}.pipe(${traitPipes.join(", ")})`
-                  : optionalWrapped
-              }`,
-            );
+                  : optionalWrapped,
+            });
           }
-          fields =
-            fields === "{}"
-              ? `{${patchedFields.join(", ")}}`
-              : fields.replace(/^\{/, `{${patchedFields.join(", ")}, `);
+          // Patched members lead, matching the previous emission order.
+          errorFields.unshift(...patchedFields);
         }
+
+        // Canonical message member. AWS spells this `message` in most models,
+        // `Message` in the XML-era ones, and omits it entirely from others —
+        // every ec2 error shape declares no members at all. The struct decode
+        // in the response parser drops any key the schema doesn't declare, so
+        // an undeclared message is silently discarded and the caller gets a
+        // typed error carrying nothing (distilled #160).
+        //
+        // Normalize to a single tagged `message` member so `Error.message` is
+        // always the service's real message and consumers never have to know
+        // which spelling a given service used. `Message` is renamed rather
+        // than duplicated — carrying the same text on two properties is what
+        // made the old parser heuristics necessary in the first place. The
+        // response parser folds the `Message` wire key onto `message` before
+        // decoding, so the rename costs nothing on the wire.
+        const messageIdx = errorFields.findIndex((f) => f.name === "message");
+        const capitalIdx = errorFields.findIndex((f) => f.name === "Message");
+        if (messageIdx >= 0) {
+          const f = errorFields[messageIdx]!;
+          f.expr = `${f.expr}.pipe(T.ErrorMessage())`;
+        } else if (capitalIdx >= 0) {
+          const f = errorFields[capitalIdx]!;
+          f.name = "message";
+          f.expr = `${f.expr}.pipe(T.ErrorMessage())`;
+        } else {
+          errorFields.push({
+            name: "message",
+            expr: "S.optional(S.String).pipe(T.ErrorMessage())",
+          });
+        }
+
+        const fields = `{${errorFields
+          .map((f) => `${f.name}: ${f.expr}`)
+          .join(", ")}}`;
 
         const errorTraits = errorShapeIds.get(id);
         const annotations: string[] = [];
