@@ -21,6 +21,7 @@ import { Console, Effect, Option, Schema as S } from "effect";
 import * as FileSystem from "effect/FileSystem";
 import * as Path from "effect/Path";
 import { barrel } from "@distilled.cloud/core/codegen/emit";
+import { lintAndFormatGenerated } from "@distilled.cloud/core/codegen/format";
 import { generateService } from "@distilled.cloud/core/codegen/generator";
 import { loadServiceSpecPatch } from "./spec-schema.ts";
 import { SmithyModel, type ServiceShape } from "./model-schema.ts";
@@ -210,5 +211,9 @@ BunRuntime.runMain(
     );
 
     yield* Console.log(`✅ index.ts`);
+
+    // Same closing step as the shared generator CLI, plus the lint-fix pass
+    // this package has always run over its generated output.
+    yield* lintAndFormatGenerated(RESULT_ROOT_PATH);
   }).pipe(Effect.provide(BunServices.layer)),
 );
