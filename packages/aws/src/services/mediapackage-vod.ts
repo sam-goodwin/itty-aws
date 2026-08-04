@@ -87,37 +87,37 @@ const rules = T.EndpointResolver((p, _) => {
 export class ForbiddenException
   extends /*@__PURE__*/ S.TaggedErrorClass<ForbiddenException>()(
     "ForbiddenException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class InternalServerErrorException
   extends /*@__PURE__*/ S.TaggedErrorClass<InternalServerErrorException>()(
     "InternalServerErrorException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class NotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<NotFoundException>()(
     "NotFoundException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ServiceUnavailableException
   extends /*@__PURE__*/ S.TaggedErrorClass<ServiceUnavailableException>()(
     "ServiceUnavailableException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(503),
   ).pipe(C.withServerError) {}
 export class TooManyRequestsException
   extends /*@__PURE__*/ S.TaggedErrorClass<TooManyRequestsException>()(
     "TooManyRequestsException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export class UnprocessableEntityException
   extends /*@__PURE__*/ S.TaggedErrorClass<UnprocessableEntityException>()(
     "UnprocessableEntityException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(422),
   ).pipe(C.withBadRequestError) {}
 export interface EgressAccessLogs {

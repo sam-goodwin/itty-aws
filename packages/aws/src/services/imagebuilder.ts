@@ -90,121 +90,121 @@ const rules = T.EndpointResolver((p, _) => {
 export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedErrorClass<AccessDeniedException>()(
     "AccessDeniedException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class CallRateLimitExceededException
   extends /*@__PURE__*/ S.TaggedErrorClass<CallRateLimitExceededException>()(
     "CallRateLimitExceededException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export class ClientException
   extends /*@__PURE__*/ S.TaggedErrorClass<ClientException>()(
     "ClientException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class DryRunOperationException
   extends /*@__PURE__*/ S.TaggedErrorClass<DryRunOperationException>()(
     "DryRunOperationException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(412),
   ) {}
 export class ForbiddenException
   extends /*@__PURE__*/ S.TaggedErrorClass<ForbiddenException>()(
     "ForbiddenException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class IdempotentParameterMismatchException
   extends /*@__PURE__*/ S.TaggedErrorClass<IdempotentParameterMismatchException>()(
     "IdempotentParameterMismatchException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidPaginationTokenException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidPaginationTokenException>()(
     "InvalidPaginationTokenException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidParameterCombinationException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidParameterCombinationException>()(
     "InvalidParameterCombinationException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidParameterException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidParameterException>()(
     "InvalidParameterException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidParameterValueException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidParameterValueException>()(
     "InvalidParameterValueException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidRequestException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidRequestException>()(
     "InvalidRequestException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidVersionNumberException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidVersionNumberException>()(
     "InvalidVersionNumberException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ResourceAlreadyExistsException
   extends /*@__PURE__*/ S.TaggedErrorClass<ResourceAlreadyExistsException>()(
     "ResourceAlreadyExistsException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
 export class ResourceDependencyException
   extends /*@__PURE__*/ S.TaggedErrorClass<ResourceDependencyException>()(
     "ResourceDependencyException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ResourceInUseException
   extends /*@__PURE__*/ S.TaggedErrorClass<ResourceInUseException>()(
     "ResourceInUseException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
     "ResourceNotFoundException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ServiceException
   extends /*@__PURE__*/ S.TaggedErrorClass<ServiceException>()(
     "ServiceException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class ServiceQuotaExceededException
   extends /*@__PURE__*/ S.TaggedErrorClass<ServiceQuotaExceededException>()(
     "ServiceQuotaExceededException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(402),
   ).pipe(C.withQuotaError) {}
 export class ServiceUnavailableException
   extends /*@__PURE__*/ S.TaggedErrorClass<ServiceUnavailableException>()(
     "ServiceUnavailableException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(503),
   ).pipe(C.withServerError) {}
 export class TooManyRequestsException
   extends /*@__PURE__*/ S.TaggedErrorClass<TooManyRequestsException>()(
     "TooManyRequestsException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export type ImageBuildVersionArn = string;

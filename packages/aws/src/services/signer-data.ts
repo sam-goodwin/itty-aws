@@ -57,25 +57,37 @@ const rules = T.EndpointResolver((p, _) => {
 export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedErrorClass<AccessDeniedException>()(
     "AccessDeniedException",
-    { message: S.optional(S.String), code: S.optional(S.String) },
+    {
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      code: S.optional(S.String),
+    },
     T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class InternalServiceErrorException
   extends /*@__PURE__*/ S.TaggedErrorClass<InternalServiceErrorException>()(
     "InternalServiceErrorException",
-    { message: S.optional(S.String), code: S.optional(S.String) },
+    {
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      code: S.optional(S.String),
+    },
     T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class TooManyRequestsException
   extends /*@__PURE__*/ S.TaggedErrorClass<TooManyRequestsException>()(
     "TooManyRequestsException",
-    { message: S.optional(S.String), code: S.optional(S.String) },
+    {
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      code: S.optional(S.String),
+    },
     T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export class ValidationException
   extends /*@__PURE__*/ S.TaggedErrorClass<ValidationException>()(
     "ValidationException",
-    { message: S.optional(S.String), code: S.optional(S.String) },
+    {
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      code: S.optional(S.String),
+    },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export type PlatformId = string;

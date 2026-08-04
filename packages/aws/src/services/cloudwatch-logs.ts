@@ -95,49 +95,49 @@ const rules = T.EndpointResolver((p, _) => {
 export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedErrorClass<AccessDeniedException>()(
     "AccessDeniedException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withAuthError) {}
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedErrorClass<ConflictException>()(
     "ConflictException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withConflictError) {}
 export class DataAlreadyAcceptedException
   extends /*@__PURE__*/ S.TaggedErrorClass<DataAlreadyAcceptedException>()(
     "DataAlreadyAcceptedException",
     {
       expectedSequenceToken: S.optional(S.String),
-      message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
     },
   ).pipe(C.withConflictError) {}
 export class InternalServerException
   extends /*@__PURE__*/ S.TaggedErrorClass<InternalServerException>()(
     "InternalServerException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class InvalidOperationException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidOperationException>()(
     "InvalidOperationException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withBadRequestError) {}
 export class InvalidParameterException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidParameterException>()(
     "InvalidParameterException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withBadRequestError) {}
 export class InvalidSequenceTokenException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidSequenceTokenException>()(
     "InvalidSequenceTokenException",
     {
       expectedSequenceToken: S.optional(S.String),
-      message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
     },
   ).pipe(C.withBadRequestError) {}
 export class LimitExceededException
   extends /*@__PURE__*/ S.TaggedErrorClass<LimitExceededException>()(
     "LimitExceededException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withQuotaError) {}
 export class MalformedQueryException
   extends /*@__PURE__*/ S.TaggedErrorClass<MalformedQueryException>()(
@@ -148,54 +148,57 @@ export class MalformedQueryException
           identifier: "QueryCompileError",
         }),
       ),
-      message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
     },
   ).pipe(C.withBadRequestError) {}
 export class OperationAbortedException
   extends /*@__PURE__*/ S.TaggedErrorClass<OperationAbortedException>()(
     "OperationAbortedException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withConflictError, C.withRetryableError) {}
 export class ResourceAlreadyExistsException
   extends /*@__PURE__*/ S.TaggedErrorClass<ResourceAlreadyExistsException>()(
     "ResourceAlreadyExistsException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withAlreadyExistsError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
     "ResourceNotFoundException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withNotFoundError) {}
 export class ServiceQuotaExceededException
   extends /*@__PURE__*/ S.TaggedErrorClass<ServiceQuotaExceededException>()(
     "ServiceQuotaExceededException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withQuotaError) {}
 export class ServiceUnavailableException
   extends /*@__PURE__*/ S.TaggedErrorClass<ServiceUnavailableException>()(
     "ServiceUnavailableException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withServerError) {}
 export class ThrottlingException
   extends /*@__PURE__*/ S.TaggedErrorClass<ThrottlingException>()(
     "ThrottlingException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withThrottlingError, C.withRetryableError) {}
 export class TooManyTagsException
   extends /*@__PURE__*/ S.TaggedErrorClass<TooManyTagsException>()(
     "TooManyTagsException",
-    { message: S.optional(S.String), resourceName: S.optional(S.String) },
+    {
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      resourceName: S.optional(S.String),
+    },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class UnrecognizedClientException
   extends /*@__PURE__*/ S.TaggedErrorClass<UnrecognizedClientException>()(
     "UnrecognizedClientException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withAuthError) {}
 export class ValidationException
   extends /*@__PURE__*/ S.TaggedErrorClass<ValidationException>()(
     "ValidationException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withBadRequestError) {}
 export type LogGroupName = string;
 export type KmsKeyId = string;

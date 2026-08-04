@@ -87,14 +87,14 @@ const rules = T.EndpointResolver((p, _) => {
 export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedErrorClass<AccessDeniedException>()(
     "AccessDeniedException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedErrorClass<ConflictException>()(
     "ConflictException",
     {
-      Message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
       ResourceId: S.optional(S.String),
       ResourceType: S.optional(S.String),
     },
@@ -103,14 +103,14 @@ export class ConflictException
 export class InternalServerException
   extends /*@__PURE__*/ S.TaggedErrorClass<InternalServerException>()(
     "InternalServerException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
     "ResourceNotFoundException",
     {
-      Message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
       ResourceId: S.optional(S.String),
       ResourceType: S.optional(S.String),
     },
@@ -120,7 +120,7 @@ export class ServiceQuotaExceededException
   extends /*@__PURE__*/ S.TaggedErrorClass<ServiceQuotaExceededException>()(
     "ServiceQuotaExceededException",
     {
-      Message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
       ResourceId: S.optional(S.String),
       ResourceType: S.optional(S.String),
       QuotaCode: S.optional(S.String),
@@ -132,7 +132,7 @@ export class ThrottlingException
   extends /*@__PURE__*/ S.TaggedErrorClass<ThrottlingException>()(
     "ThrottlingException",
     {
-      Message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
       QuotaCode: S.optional(S.String),
       ServiceCode: S.optional(S.String),
     },
@@ -142,7 +142,7 @@ export class ValidationException
   extends /*@__PURE__*/ S.TaggedErrorClass<ValidationException>()(
     "ValidationException",
     {
-      Message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
       Reason: S.optional(
         S.suspend(() => ValidationExceptionReason).annotate({
           identifier: "ValidationExceptionReason",

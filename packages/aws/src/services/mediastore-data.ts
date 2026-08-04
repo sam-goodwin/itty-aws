@@ -90,24 +90,24 @@ const rules = T.EndpointResolver((p, _) => {
 export class ContainerNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<ContainerNotFoundException>()(
     "ContainerNotFoundException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class InternalServerError
   extends /*@__PURE__*/ S.TaggedErrorClass<InternalServerError>()(
     "InternalServerError",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class ObjectNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<ObjectNotFoundException>()(
     "ObjectNotFoundException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class RequestedRangeNotSatisfiableException
   extends /*@__PURE__*/ S.TaggedErrorClass<RequestedRangeNotSatisfiableException>()(
     "RequestedRangeNotSatisfiableException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(416),
   ) {}
 export type PathNaming = string;

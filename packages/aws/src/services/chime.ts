@@ -112,7 +112,7 @@ export class AccessDeniedException
       Code: S.optional(
         S.suspend(() => ErrorCode).annotate({ identifier: "ErrorCode" }),
       ),
-      Message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
     },
     T.HttpError(403),
   ).pipe(C.withAuthError) {}
@@ -123,7 +123,7 @@ export class BadRequestException
       Code: S.optional(
         S.suspend(() => ErrorCode).annotate({ identifier: "ErrorCode" }),
       ),
-      Message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
     },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
@@ -134,7 +134,7 @@ export class ConflictException
       Code: S.optional(
         S.suspend(() => ErrorCode).annotate({ identifier: "ErrorCode" }),
       ),
-      Message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
     },
     T.HttpError(409),
   ).pipe(C.withConflictError) {}
@@ -145,7 +145,7 @@ export class ForbiddenException
       Code: S.optional(
         S.suspend(() => ErrorCode).annotate({ identifier: "ErrorCode" }),
       ),
-      Message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
     },
     T.HttpError(403),
   ).pipe(C.withAuthError) {}
@@ -156,7 +156,7 @@ export class NotFoundException
       Code: S.optional(
         S.suspend(() => ErrorCode).annotate({ identifier: "ErrorCode" }),
       ),
-      Message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
     },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
@@ -167,7 +167,7 @@ export class ResourceLimitExceededException
       Code: S.optional(
         S.suspend(() => ErrorCode).annotate({ identifier: "ErrorCode" }),
       ),
-      Message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
     },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
@@ -178,7 +178,7 @@ export class ServiceFailureException
       Code: S.optional(
         S.suspend(() => ErrorCode).annotate({ identifier: "ErrorCode" }),
       ),
-      Message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
     },
     T.HttpError(500),
   ).pipe(C.withServerError) {}
@@ -189,7 +189,7 @@ export class ServiceUnavailableException
       Code: S.optional(
         S.suspend(() => ErrorCode).annotate({ identifier: "ErrorCode" }),
       ),
-      Message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
     },
     T.HttpError(503),
   ).pipe(C.withServerError) {}
@@ -200,7 +200,7 @@ export class ThrottledClientException
       Code: S.optional(
         S.suspend(() => ErrorCode).annotate({ identifier: "ErrorCode" }),
       ),
-      Message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
     },
     T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
@@ -211,7 +211,7 @@ export class UnauthorizedClientException
       Code: S.optional(
         S.suspend(() => ErrorCode).annotate({ identifier: "ErrorCode" }),
       ),
-      Message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
     },
     T.HttpError(401),
   ).pipe(C.withAuthError) {}
@@ -222,7 +222,7 @@ export class UnprocessableEntityException
       Code: S.optional(
         S.suspend(() => ErrorCode).annotate({ identifier: "ErrorCode" }),
       ),
-      Message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
     },
     T.HttpError(422),
   ).pipe(C.withBadRequestError) {}

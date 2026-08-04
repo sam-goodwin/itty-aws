@@ -88,7 +88,7 @@ export class BadRequestException
     "BadRequestException",
     {
       ErrorAttribute: S.optional(S.String),
-      Message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
       ResourceShareErrors: S.optional(
         S.suspend(() => __listOfResourceShareError).annotate({
           identifier: "__listOfResourceShareError",
@@ -102,7 +102,7 @@ export class ConflictException
     "ConflictException",
     {
       ErrorAttribute: S.optional(S.String),
-      Message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
       ResourceShareErrors: S.optional(
         S.suspend(() => __listOfResourceShareError).annotate({
           identifier: "__listOfResourceShareError",
@@ -116,7 +116,7 @@ export class ForbiddenException
     "ForbiddenException",
     {
       ErrorAttribute: S.optional(S.String),
-      Message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
       ResourceShareErrors: S.optional(
         S.suspend(() => __listOfResourceShareError).annotate({
           identifier: "__listOfResourceShareError",
@@ -130,7 +130,7 @@ export class InternalServerErrorException
     "InternalServerErrorException",
     {
       ErrorAttribute: S.optional(S.String),
-      Message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
       ResourceShareErrors: S.optional(
         S.suspend(() => __listOfResourceShareError).annotate({
           identifier: "__listOfResourceShareError",
@@ -144,7 +144,7 @@ export class NotFoundException
     "NotFoundException",
     {
       ErrorAttribute: S.optional(S.String),
-      Message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
       ResourceShareErrors: S.optional(
         S.suspend(() => __listOfResourceShareError).annotate({
           identifier: "__listOfResourceShareError",
@@ -158,7 +158,7 @@ export class UnauthorizedException
     "UnauthorizedException",
     {
       ErrorAttribute: S.optional(S.String),
-      Message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
       ResourceShareErrors: S.optional(
         S.suspend(() => __listOfResourceShareError).annotate({
           identifier: "__listOfResourceShareError",

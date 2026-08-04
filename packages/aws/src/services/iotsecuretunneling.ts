@@ -111,7 +111,7 @@ const rules = T.EndpointResolver((p, _) => {
 export class LimitExceededException
   extends /*@__PURE__*/ S.TaggedErrorClass<LimitExceededException>()(
     "LimitExceededException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({
         code: "LimitExceededException",
@@ -123,7 +123,7 @@ export class LimitExceededException
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
     "ResourceNotFoundException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({
         code: "ResourceNotFoundException",

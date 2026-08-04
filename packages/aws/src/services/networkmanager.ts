@@ -159,20 +159,24 @@ const rules = T.EndpointResolver((p, _) => {
 export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedErrorClass<AccessDeniedException>()(
     "AccessDeniedException",
-    { Message: S.String },
+    { message: S.String.pipe(T.ErrorMessage()) },
     T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedErrorClass<ConflictException>()(
     "ConflictException",
-    { Message: S.String, ResourceId: S.String, ResourceType: S.String },
+    {
+      message: S.String.pipe(T.ErrorMessage()),
+      ResourceId: S.String,
+      ResourceType: S.String,
+    },
     T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class CoreNetworkPolicyException
   extends /*@__PURE__*/ S.TaggedErrorClass<CoreNetworkPolicyException>()(
     "CoreNetworkPolicyException",
     {
-      Message: S.String,
+      message: S.String.pipe(T.ErrorMessage()),
       Errors: S.optional(
         S.suspend(() => CoreNetworkPolicyErrorList).annotate({
           identifier: "CoreNetworkPolicyErrorList",
@@ -185,7 +189,7 @@ export class InternalServerException
   extends /*@__PURE__*/ S.TaggedErrorClass<InternalServerException>()(
     "InternalServerException",
     {
-      Message: S.String,
+      message: S.String.pipe(T.ErrorMessage()),
       RetryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
     },
     T.HttpError(500),
@@ -194,7 +198,7 @@ export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
     "ResourceNotFoundException",
     {
-      Message: S.String,
+      message: S.String.pipe(T.ErrorMessage()),
       ResourceId: S.String,
       ResourceType: S.String,
       Context: S.optional(
@@ -209,7 +213,7 @@ export class ServiceQuotaExceededException
   extends /*@__PURE__*/ S.TaggedErrorClass<ServiceQuotaExceededException>()(
     "ServiceQuotaExceededException",
     {
-      Message: S.String,
+      message: S.String.pipe(T.ErrorMessage()),
       ResourceId: S.optional(S.String),
       ResourceType: S.optional(S.String),
       LimitCode: S.String,
@@ -221,7 +225,7 @@ export class ThrottlingException
   extends /*@__PURE__*/ S.TaggedErrorClass<ThrottlingException>()(
     "ThrottlingException",
     {
-      Message: S.String,
+      message: S.String.pipe(T.ErrorMessage()),
       RetryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
     },
     T.HttpError(429),
@@ -230,7 +234,7 @@ export class ValidationException
   extends /*@__PURE__*/ S.TaggedErrorClass<ValidationException>()(
     "ValidationException",
     {
-      Message: S.String,
+      message: S.String.pipe(T.ErrorMessage()),
       Reason: S.optional(
         S.suspend(() => ValidationExceptionReason).annotate({
           identifier: "ValidationExceptionReason",

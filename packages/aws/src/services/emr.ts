@@ -95,7 +95,10 @@ const rules = T.EndpointResolver((p, _) => {
 export class ClusterNotFound
   extends /*@__PURE__*/ S.TaggedErrorClass<ClusterNotFound>()(
     "ClusterNotFound",
-    { ErrorCode: S.optional(S.String), Message: S.optional(S.String) },
+    {
+      ErrorCode: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+    },
     T.SyntheticError({
       from: "InvalidRequestException",
       message: { matches: "^Cluster id .* is not valid" },
@@ -104,7 +107,7 @@ export class ClusterNotFound
 export class InternalServerError
   extends /*@__PURE__*/ S.TaggedErrorClass<InternalServerError>()(
     "InternalServerError",
-    {},
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "InternalFailure", httpResponseCode: 500 }),
       T.HttpError(500),
@@ -113,17 +116,20 @@ export class InternalServerError
 export class InternalServerException
   extends /*@__PURE__*/ S.TaggedErrorClass<InternalServerException>()(
     "InternalServerException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidRequestException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidRequestException>()(
     "InvalidRequestException",
-    { ErrorCode: S.optional(S.String), Message: S.optional(S.String) },
+    {
+      ErrorCode: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+    },
   ) {}
 export class JobFlowNotFound
   extends /*@__PURE__*/ S.TaggedErrorClass<JobFlowNotFound>()(
     "JobFlowNotFound",
-    {},
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.SyntheticError({
       from: "ValidationException",
       message: { includes: "Specified job flow ID not valid" },
@@ -132,7 +138,10 @@ export class JobFlowNotFound
 export class SecurityConfigurationAlreadyExists
   extends /*@__PURE__*/ S.TaggedErrorClass<SecurityConfigurationAlreadyExists>()(
     "SecurityConfigurationAlreadyExists",
-    { ErrorCode: S.optional(S.String), Message: S.optional(S.String) },
+    {
+      ErrorCode: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+    },
     T.SyntheticError({
       from: "InvalidRequestException",
       message: {
@@ -143,7 +152,10 @@ export class SecurityConfigurationAlreadyExists
 export class SecurityConfigurationNotFound
   extends /*@__PURE__*/ S.TaggedErrorClass<SecurityConfigurationNotFound>()(
     "SecurityConfigurationNotFound",
-    { ErrorCode: S.optional(S.String), Message: S.optional(S.String) },
+    {
+      ErrorCode: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+    },
     T.SyntheticError({
       from: "InvalidRequestException",
       message: {
@@ -154,7 +166,10 @@ export class SecurityConfigurationNotFound
 export class StudioNotFound
   extends /*@__PURE__*/ S.TaggedErrorClass<StudioNotFound>()(
     "StudioNotFound",
-    { ErrorCode: S.optional(S.String), Message: S.optional(S.String) },
+    {
+      ErrorCode: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+    },
     T.SyntheticError({
       from: "InvalidRequestException",
       message: { includes: "Studio does not exist" },
@@ -163,7 +178,10 @@ export class StudioNotFound
 export class StudioServiceRoleMissingS3Access
   extends /*@__PURE__*/ S.TaggedErrorClass<StudioServiceRoleMissingS3Access>()(
     "StudioServiceRoleMissingS3Access",
-    { ErrorCode: S.optional(S.String), Message: S.optional(S.String) },
+    {
+      ErrorCode: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+    },
     T.SyntheticError({
       from: "InvalidRequestException",
       message: {
@@ -174,7 +192,10 @@ export class StudioServiceRoleMissingS3Access
 export class StudioServiceRoleNotAssumable
   extends /*@__PURE__*/ S.TaggedErrorClass<StudioServiceRoleNotAssumable>()(
     "StudioServiceRoleNotAssumable",
-    { ErrorCode: S.optional(S.String), Message: S.optional(S.String) },
+    {
+      ErrorCode: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+    },
     T.SyntheticError({
       from: "InvalidRequestException",
       message: { includes: "does not have permissions to assume role" },

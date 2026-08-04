@@ -54,7 +54,7 @@ const rules = T.EndpointResolver((p, _) => {
 export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedErrorClass<AccessDeniedException>()(
     "AccessDeniedException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "AccessDenied", httpResponseCode: 403 }),
       T.HttpError(403),
@@ -63,31 +63,35 @@ export class AccessDeniedException
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedErrorClass<ConflictException>()(
     "ConflictException",
-    { Message: S.String },
+    { message: S.String.pipe(T.ErrorMessage()) },
     T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
     "ResourceNotFoundException",
-    { ResourceType: S.String, ResourceId: S.String, Message: S.String },
+    {
+      ResourceType: S.String,
+      ResourceId: S.String,
+      message: S.String.pipe(T.ErrorMessage()),
+    },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ServiceQuotaExceededException
   extends /*@__PURE__*/ S.TaggedErrorClass<ServiceQuotaExceededException>()(
     "ServiceQuotaExceededException",
-    { Message: S.String },
+    { message: S.String.pipe(T.ErrorMessage()) },
     T.HttpError(402),
   ).pipe(C.withQuotaError) {}
 export class ThrottlingException
   extends /*@__PURE__*/ S.TaggedErrorClass<ThrottlingException>()(
     "ThrottlingException",
-    { Message: S.String },
+    { message: S.String.pipe(T.ErrorMessage()) },
     T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export class ValidationException
   extends /*@__PURE__*/ S.TaggedErrorClass<ValidationException>()(
     "ValidationException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "ValidationError", httpResponseCode: 400 }),
       T.HttpError(400),

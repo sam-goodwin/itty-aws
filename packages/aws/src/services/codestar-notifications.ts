@@ -89,49 +89,49 @@ const rules = T.EndpointResolver((p, _) => {
 export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedErrorClass<AccessDeniedException>()(
     "AccessDeniedException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class ConcurrentModificationException
   extends /*@__PURE__*/ S.TaggedErrorClass<ConcurrentModificationException>()(
     "ConcurrentModificationException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ConfigurationException
   extends /*@__PURE__*/ S.TaggedErrorClass<ConfigurationException>()(
     "ConfigurationException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidNextTokenException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidNextTokenException>()(
     "InvalidNextTokenException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class LimitExceededException
   extends /*@__PURE__*/ S.TaggedErrorClass<LimitExceededException>()(
     "LimitExceededException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ResourceAlreadyExistsException
   extends /*@__PURE__*/ S.TaggedErrorClass<ResourceAlreadyExistsException>()(
     "ResourceAlreadyExistsException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(409),
   ).pipe(C.withConflictError, C.withAlreadyExistsError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
     "ResourceNotFoundException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ValidationException
   extends /*@__PURE__*/ S.TaggedErrorClass<ValidationException>()(
     "ValidationException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export type NotificationRuleName = string | redacted.Redacted<string>;

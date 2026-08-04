@@ -92,31 +92,46 @@ const rules = T.EndpointResolver((p, _) => {
 export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedErrorClass<AccessDeniedException>()(
     "AccessDeniedException",
-    { Message: S.optional(S.String), Type: S.optional(S.String) },
+    {
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      Type: S.optional(S.String),
+    },
     T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class BadRequestException
   extends /*@__PURE__*/ S.TaggedErrorClass<BadRequestException>()(
     "BadRequestException",
-    { Message: S.optional(S.String), Type: S.optional(S.String) },
+    {
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      Type: S.optional(S.String),
+    },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedErrorClass<ConflictException>()(
     "ConflictException",
-    { Message: S.optional(S.String), Type: S.optional(S.String) },
+    {
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      Type: S.optional(S.String),
+    },
     T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class InternalServerErrorException
   extends /*@__PURE__*/ S.TaggedErrorClass<InternalServerErrorException>()(
     "InternalServerErrorException",
-    { Message: S.optional(S.String), Type: S.optional(S.String) },
+    {
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      Type: S.optional(S.String),
+    },
     T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
     "ResourceNotFoundException",
-    { Message: S.optional(S.String), Type: S.optional(S.String) },
+    {
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      Type: S.optional(S.String),
+    },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export type DetectorId = string;

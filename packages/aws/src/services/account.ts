@@ -103,7 +103,7 @@ export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedErrorClass<AccessDeniedException>()(
     "AccessDeniedException",
     {
-      message: S.String,
+      message: S.String.pipe(T.ErrorMessage()),
       errorType: S.optional(S.String).pipe(T.HttpHeader("x-amzn-ErrorType")),
     },
     T.HttpError(403),
@@ -112,7 +112,7 @@ export class ConflictException
   extends /*@__PURE__*/ S.TaggedErrorClass<ConflictException>()(
     "ConflictException",
     {
-      message: S.String,
+      message: S.String.pipe(T.ErrorMessage()),
       errorType: S.optional(S.String).pipe(T.HttpHeader("x-amzn-ErrorType")),
     },
     T.HttpError(409),
@@ -121,7 +121,7 @@ export class InternalServerException
   extends /*@__PURE__*/ S.TaggedErrorClass<InternalServerException>()(
     "InternalServerException",
     {
-      message: S.String,
+      message: S.String.pipe(T.ErrorMessage()),
       errorType: S.optional(S.String).pipe(T.HttpHeader("x-amzn-ErrorType")),
     },
     T.all(T.HttpError(500), T.Retryable()),
@@ -130,7 +130,7 @@ export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
     "ResourceNotFoundException",
     {
-      message: S.String,
+      message: S.String.pipe(T.ErrorMessage()),
       errorType: S.optional(S.String).pipe(T.HttpHeader("x-amzn-ErrorType")),
     },
     T.HttpError(404),
@@ -139,7 +139,7 @@ export class ResourceUnavailableException
   extends /*@__PURE__*/ S.TaggedErrorClass<ResourceUnavailableException>()(
     "ResourceUnavailableException",
     {
-      message: S.String,
+      message: S.String.pipe(T.ErrorMessage()),
       errorType: S.optional(S.String).pipe(T.HttpHeader("x-amzn-ErrorType")),
     },
     T.HttpError(424),
@@ -148,7 +148,7 @@ export class TooManyRequestsException
   extends /*@__PURE__*/ S.TaggedErrorClass<TooManyRequestsException>()(
     "TooManyRequestsException",
     {
-      message: S.String,
+      message: S.String.pipe(T.ErrorMessage()),
       errorType: S.optional(S.String).pipe(T.HttpHeader("x-amzn-ErrorType")),
     },
     T.all(T.HttpError(429), T.Retryable({ throttling: true })),
@@ -157,7 +157,7 @@ export class ValidationException
   extends /*@__PURE__*/ S.TaggedErrorClass<ValidationException>()(
     "ValidationException",
     {
-      message: SensitiveString,
+      message: SensitiveString.pipe(T.ErrorMessage()),
       reason: S.optional(S.String),
       fieldList: S.optional(
         S.suspend(() => ValidationExceptionFieldList).annotate({

@@ -105,44 +105,44 @@ const rules = T.EndpointResolver((p, _) => {
 export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedErrorClass<AccessDeniedException>()(
     "AccessDeniedException",
-    { message: SensitiveString },
+    { message: SensitiveString.pipe(T.ErrorMessage()) },
     T.HttpError(401),
   ).pipe(C.withAuthError) {}
 export class AttachmentUploadException
   extends /*@__PURE__*/ S.TaggedErrorClass<AttachmentUploadException>()(
     "AttachmentUploadException",
-    { message: SensitiveString },
+    { message: SensitiveString.pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class CaseCreationLimitExceededException
   extends /*@__PURE__*/ S.TaggedErrorClass<CaseCreationLimitExceededException>()(
     "CaseCreationLimitExceededException",
-    { message: SensitiveString },
+    { message: SensitiveString.pipe(T.ErrorMessage()) },
     T.HttpError(413),
   ).pipe(C.withBadRequestError) {}
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedErrorClass<ConflictException>()(
     "ConflictException",
-    { message: SensitiveString, errorCode: S.String },
+    { message: SensitiveString.pipe(T.ErrorMessage()), errorCode: S.String },
     T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class InternalServerException
   extends /*@__PURE__*/ S.TaggedErrorClass<InternalServerException>()(
     "InternalServerException",
-    { message: SensitiveString, errorCode: S.String },
+    { message: SensitiveString.pipe(T.ErrorMessage()), errorCode: S.String },
     T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
     "ResourceNotFoundException",
-    { message: SensitiveString, errorCode: S.String },
+    { message: SensitiveString.pipe(T.ErrorMessage()), errorCode: S.String },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ValidationException
   extends /*@__PURE__*/ S.TaggedErrorClass<ValidationException>()(
     "ValidationException",
     {
-      message: SensitiveString,
+      message: SensitiveString.pipe(T.ErrorMessage()),
       errorCode: S.suspend(() => ValidationExceptionErrorCode).annotate({
         identifier: "ValidationExceptionErrorCode",
       }),

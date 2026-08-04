@@ -89,13 +89,13 @@ const rules = T.EndpointResolver((p, _) => {
 export class BadRequestException
   extends /*@__PURE__*/ S.TaggedErrorClass<BadRequestException>()(
     "BadRequestException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedErrorClass<ConflictException>()(
     "ConflictException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class LimitExceededException
@@ -103,14 +103,14 @@ export class LimitExceededException
     "LimitExceededException",
     {
       retryAfterSeconds: S.optional(S.String).pipe(T.HttpHeader("Retry-After")),
-      message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
     },
     T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export class NotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<NotFoundException>()(
     "NotFoundException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ServiceUnavailableException
@@ -118,7 +118,7 @@ export class ServiceUnavailableException
     "ServiceUnavailableException",
     {
       retryAfterSeconds: S.optional(S.String).pipe(T.HttpHeader("Retry-After")),
-      message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
     },
     T.HttpError(503),
   ).pipe(C.withServerError) {}
@@ -127,14 +127,14 @@ export class TooManyRequestsException
     "TooManyRequestsException",
     {
       retryAfterSeconds: S.optional(S.String).pipe(T.HttpHeader("Retry-After")),
-      message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
     },
     T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export class UnauthorizedException
   extends /*@__PURE__*/ S.TaggedErrorClass<UnauthorizedException>()(
     "UnauthorizedException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(401),
   ).pipe(C.withAuthError) {}
 export interface StageKey {

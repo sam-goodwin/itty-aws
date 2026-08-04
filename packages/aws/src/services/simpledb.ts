@@ -51,96 +51,147 @@ const rules = T.EndpointResolver((p, _) => {
 export class AttributeDoesNotExist
   extends /*@__PURE__*/ S.TaggedErrorClass<AttributeDoesNotExist>()(
     "AttributeDoesNotExist",
-    { message: S.optional(S.String), BoxUsage: S.optional(S.String) },
+    {
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      BoxUsage: S.optional(S.String),
+    },
   ).pipe(C.withNotFoundError) {}
 export class DuplicateItemName
   extends /*@__PURE__*/ S.TaggedErrorClass<DuplicateItemName>()(
     "DuplicateItemName",
-    { message: S.optional(S.String), BoxUsage: S.optional(S.String) },
+    {
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      BoxUsage: S.optional(S.String),
+    },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidNextToken
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidNextToken>()(
     "InvalidNextToken",
-    { message: S.optional(S.String), BoxUsage: S.optional(S.String) },
+    {
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      BoxUsage: S.optional(S.String),
+    },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidNumberPredicates
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidNumberPredicates>()(
     "InvalidNumberPredicates",
-    { message: S.optional(S.String), BoxUsage: S.optional(S.String) },
+    {
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      BoxUsage: S.optional(S.String),
+    },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidNumberValueTests
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidNumberValueTests>()(
     "InvalidNumberValueTests",
-    { message: S.optional(S.String), BoxUsage: S.optional(S.String) },
+    {
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      BoxUsage: S.optional(S.String),
+    },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidParameterValue
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidParameterValue>()(
     "InvalidParameterValue",
-    { message: S.optional(S.String), BoxUsage: S.optional(S.String) },
+    {
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      BoxUsage: S.optional(S.String),
+    },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidQueryExpression
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidQueryExpression>()(
     "InvalidQueryExpression",
-    { message: S.optional(S.String), BoxUsage: S.optional(S.String) },
+    {
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      BoxUsage: S.optional(S.String),
+    },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class MissingParameter
   extends /*@__PURE__*/ S.TaggedErrorClass<MissingParameter>()(
     "MissingParameter",
-    { message: S.optional(S.String), BoxUsage: S.optional(S.String) },
+    {
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      BoxUsage: S.optional(S.String),
+    },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class NoSuchDomain
   extends /*@__PURE__*/ S.TaggedErrorClass<NoSuchDomain>()(
     "NoSuchDomain",
-    { message: S.optional(S.String), BoxUsage: S.optional(S.String) },
+    {
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      BoxUsage: S.optional(S.String),
+    },
     T.HttpError(400),
   ).pipe(C.withBadRequestError, C.withNotFoundError) {}
 export class NumberDomainAttributesExceeded
   extends /*@__PURE__*/ S.TaggedErrorClass<NumberDomainAttributesExceeded>()(
     "NumberDomainAttributesExceeded",
-    { message: S.optional(S.String), BoxUsage: S.optional(S.String) },
+    {
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      BoxUsage: S.optional(S.String),
+    },
   ).pipe(C.withQuotaError) {}
 export class NumberDomainBytesExceeded
   extends /*@__PURE__*/ S.TaggedErrorClass<NumberDomainBytesExceeded>()(
     "NumberDomainBytesExceeded",
-    { message: S.optional(S.String), BoxUsage: S.optional(S.String) },
+    {
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      BoxUsage: S.optional(S.String),
+    },
   ).pipe(C.withQuotaError) {}
 export class NumberDomainsExceeded
   extends /*@__PURE__*/ S.TaggedErrorClass<NumberDomainsExceeded>()(
     "NumberDomainsExceeded",
-    { message: S.optional(S.String), BoxUsage: S.optional(S.String) },
+    {
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      BoxUsage: S.optional(S.String),
+    },
   ).pipe(C.withQuotaError) {}
 export class NumberItemAttributesExceeded
   extends /*@__PURE__*/ S.TaggedErrorClass<NumberItemAttributesExceeded>()(
     "NumberItemAttributesExceeded",
-    { message: S.optional(S.String), BoxUsage: S.optional(S.String) },
+    {
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      BoxUsage: S.optional(S.String),
+    },
   ).pipe(C.withQuotaError) {}
 export class NumberSubmittedAttributesExceeded
   extends /*@__PURE__*/ S.TaggedErrorClass<NumberSubmittedAttributesExceeded>()(
     "NumberSubmittedAttributesExceeded",
-    { message: S.optional(S.String), BoxUsage: S.optional(S.String) },
+    {
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      BoxUsage: S.optional(S.String),
+    },
   ).pipe(C.withQuotaError) {}
 export class NumberSubmittedItemsExceeded
   extends /*@__PURE__*/ S.TaggedErrorClass<NumberSubmittedItemsExceeded>()(
     "NumberSubmittedItemsExceeded",
-    { message: S.optional(S.String), BoxUsage: S.optional(S.String) },
+    {
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      BoxUsage: S.optional(S.String),
+    },
   ).pipe(C.withQuotaError) {}
 export class RequestTimeout
   extends /*@__PURE__*/ S.TaggedErrorClass<RequestTimeout>()(
     "RequestTimeout",
-    { message: S.optional(S.String), BoxUsage: S.optional(S.String) },
+    {
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      BoxUsage: S.optional(S.String),
+    },
     T.HttpError(408),
   ).pipe(C.withTimeoutError) {}
 export class TooManyRequestedAttributes
   extends /*@__PURE__*/ S.TaggedErrorClass<TooManyRequestedAttributes>()(
     "TooManyRequestedAttributes",
-    { message: S.optional(S.String), BoxUsage: S.optional(S.String) },
+    {
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      BoxUsage: S.optional(S.String),
+    },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export type DomainName = string;

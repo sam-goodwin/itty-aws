@@ -89,19 +89,28 @@ const rules = T.EndpointResolver((p, _) => {
 export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedErrorClass<AccessDeniedException>()(
     "AccessDeniedException",
-    { ErrorCode: S.String, Message: S.optional(S.String) },
+    {
+      ErrorCode: S.String,
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+    },
     T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedErrorClass<ConflictException>()(
     "ConflictException",
-    { ErrorCode: S.String, Message: S.optional(S.String) },
+    {
+      ErrorCode: S.String,
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+    },
     T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
     "ResourceNotFoundException",
-    { ErrorCode: S.optional(S.String), Message: S.optional(S.String) },
+    {
+      ErrorCode: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+    },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export type GatewayArn = string;

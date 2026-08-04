@@ -87,48 +87,48 @@ const rules = T.EndpointResolver((p, _) => {
 export class BadRequestException
   extends /*@__PURE__*/ S.TaggedErrorClass<BadRequestException>()(
     "BadRequestException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class DependentServiceFailureException
   extends /*@__PURE__*/ S.TaggedErrorClass<DependentServiceFailureException>()(
     "DependentServiceFailureException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(503),
   ).pipe(C.withServerError) {}
 export class InternalFailureException
   extends /*@__PURE__*/ S.TaggedErrorClass<InternalFailureException>()(
     "InternalFailureException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class LimitExceededException
   extends /*@__PURE__*/ S.TaggedErrorClass<LimitExceededException>()(
     "LimitExceededException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export class NotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<NotFoundException>()(
     "NotFoundException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
     "ResourceNotFoundException",
-    { code: S.String, message: S.String },
+    { code: S.String, message: S.String.pipe(T.ErrorMessage()) },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class TimeoutException
   extends /*@__PURE__*/ S.TaggedErrorClass<TimeoutException>()(
     "TimeoutException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class UnauthorizedException
   extends /*@__PURE__*/ S.TaggedErrorClass<UnauthorizedException>()(
     "UnauthorizedException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(401),
   ).pipe(C.withAuthError) {}
 export type Name = string;

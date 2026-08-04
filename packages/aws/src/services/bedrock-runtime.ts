@@ -90,26 +90,26 @@ const rules = T.EndpointResolver((p, _) => {
 export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedErrorClass<AccessDeniedException>()(
     "AccessDeniedException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedErrorClass<ConflictException>()(
     "ConflictException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InternalServerException
   extends /*@__PURE__*/ S.TaggedErrorClass<InternalServerException>()(
     "InternalServerException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class ModelErrorException
   extends /*@__PURE__*/ S.TaggedErrorClass<ModelErrorException>()(
     "ModelErrorException",
     {
-      message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
       originalStatusCode: S.optional(S.Number),
       resourceName: S.optional(S.String),
     },
@@ -118,14 +118,14 @@ export class ModelErrorException
 export class ModelNotReadyException
   extends /*@__PURE__*/ S.TaggedErrorClass<ModelNotReadyException>()(
     "ModelNotReadyException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(T.HttpError(429), T.Retryable()),
   ).pipe(C.withThrottlingError, C.withRetryableError) {}
 export class ModelStreamErrorException
   extends /*@__PURE__*/ S.TaggedErrorClass<ModelStreamErrorException>()(
     "ModelStreamErrorException",
     {
-      message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
       originalStatusCode: S.optional(S.Number),
       originalMessage: S.optional(S.String),
     },
@@ -134,37 +134,37 @@ export class ModelStreamErrorException
 export class ModelTimeoutException
   extends /*@__PURE__*/ S.TaggedErrorClass<ModelTimeoutException>()(
     "ModelTimeoutException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(408),
   ).pipe(C.withTimeoutError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
     "ResourceNotFoundException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ServiceQuotaExceededException
   extends /*@__PURE__*/ S.TaggedErrorClass<ServiceQuotaExceededException>()(
     "ServiceQuotaExceededException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ServiceUnavailableException
   extends /*@__PURE__*/ S.TaggedErrorClass<ServiceUnavailableException>()(
     "ServiceUnavailableException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(503),
   ).pipe(C.withServerError) {}
 export class ThrottlingException
   extends /*@__PURE__*/ S.TaggedErrorClass<ThrottlingException>()(
     "ThrottlingException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export class ValidationException
   extends /*@__PURE__*/ S.TaggedErrorClass<ValidationException>()(
     "ValidationException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export type GuardrailIdentifier = string;

@@ -86,62 +86,62 @@ const rules = T.EndpointResolver((p, _) => {
 export class InsufficientCapacityException
   extends /*@__PURE__*/ S.TaggedErrorClass<InsufficientCapacityException>()(
     "InsufficientCapacityException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InternalServerError
   extends /*@__PURE__*/ S.TaggedErrorClass<InternalServerError>()(
     "InternalServerError",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidOperationException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidOperationException>()(
     "InvalidOperationException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidRequestException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidRequestException>()(
     "InvalidRequestException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidResourcePolicyException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidResourcePolicyException>()(
     "InvalidResourcePolicyException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidTokenException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidTokenException>()(
     "InvalidTokenException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class LimitExceededException
   extends /*@__PURE__*/ S.TaggedErrorClass<LimitExceededException>()(
     "LimitExceededException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class LogDestinationPermissionException
   extends /*@__PURE__*/ S.TaggedErrorClass<LogDestinationPermissionException>()(
     "LogDestinationPermissionException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
     "ResourceNotFoundException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class ResourceOwnerCheckException
   extends /*@__PURE__*/ S.TaggedErrorClass<ResourceOwnerCheckException>()(
     "ResourceOwnerCheckException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class ThrottlingException
   extends /*@__PURE__*/ S.TaggedErrorClass<ThrottlingException>()(
     "ThrottlingException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class UnsupportedOperationException
   extends /*@__PURE__*/ S.TaggedErrorClass<UnsupportedOperationException>()(
     "UnsupportedOperationException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export type TransitGatewayAttachmentId = string;
 export interface AcceptNetworkFirewallTransitGatewayAttachmentRequest {

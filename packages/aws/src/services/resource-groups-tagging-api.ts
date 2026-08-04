@@ -86,32 +86,32 @@ const rules = T.EndpointResolver((p, _) => {
 export class ConcurrentModificationException
   extends /*@__PURE__*/ S.TaggedErrorClass<ConcurrentModificationException>()(
     "ConcurrentModificationException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class ConstraintViolationException
   extends /*@__PURE__*/ S.TaggedErrorClass<ConstraintViolationException>()(
     "ConstraintViolationException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InternalServiceException
   extends /*@__PURE__*/ S.TaggedErrorClass<InternalServiceException>()(
     "InternalServiceException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidParameterException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidParameterException>()(
     "InvalidParameterException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class PaginationTokenExpiredException
   extends /*@__PURE__*/ S.TaggedErrorClass<PaginationTokenExpiredException>()(
     "PaginationTokenExpiredException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class ThrottledException
   extends /*@__PURE__*/ S.TaggedErrorClass<ThrottledException>()(
     "ThrottledException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export interface DescribeReportCreationInput {}
 export const DescribeReportCreationInput = /*@__PURE__*/ S.suspend(() =>

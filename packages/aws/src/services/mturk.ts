@@ -91,7 +91,10 @@ const rules = T.EndpointResolver((p, _) => {
 export class RequestError
   extends /*@__PURE__*/ S.TaggedErrorClass<RequestError>()(
     "RequestError",
-    { Message: S.optional(S.String), TurkErrorCode: S.optional(S.String) },
+    {
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      TurkErrorCode: S.optional(S.String),
+    },
     T.all(
       T.AwsQueryError({ code: "RequestError", httpResponseCode: 400 }),
       T.HttpError(400),
@@ -100,7 +103,10 @@ export class RequestError
 export class ServiceFault
   extends /*@__PURE__*/ S.TaggedErrorClass<ServiceFault>()(
     "ServiceFault",
-    { Message: S.optional(S.String), TurkErrorCode: S.optional(S.String) },
+    {
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      TurkErrorCode: S.optional(S.String),
+    },
     T.all(
       T.AwsQueryError({ code: "ServiceFault", httpResponseCode: 500 }),
       T.HttpError(500),

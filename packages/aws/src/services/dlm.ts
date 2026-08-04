@@ -87,14 +87,17 @@ const rules = T.EndpointResolver((p, _) => {
 export class InternalServerException
   extends /*@__PURE__*/ S.TaggedErrorClass<InternalServerException>()(
     "InternalServerException",
-    { Message: S.optional(S.String), Code: S.optional(S.String) },
+    {
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      Code: S.optional(S.String),
+    },
     T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class InvalidRequestException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidRequestException>()(
     "InvalidRequestException",
     {
-      Message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
       Code: S.optional(S.String),
       RequiredParameters: S.optional(
         S.suspend(() => ParameterList).annotate({
@@ -113,7 +116,7 @@ export class LimitExceededException
   extends /*@__PURE__*/ S.TaggedErrorClass<LimitExceededException>()(
     "LimitExceededException",
     {
-      Message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
       Code: S.optional(S.String),
       ResourceType: S.optional(S.String),
     },
@@ -123,7 +126,7 @@ export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
     "ResourceNotFoundException",
     {
-      Message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
       Code: S.optional(S.String),
       ResourceType: S.optional(S.String),
       ResourceIds: S.optional(

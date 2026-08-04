@@ -93,7 +93,7 @@ export class ConflictException
   extends /*@__PURE__*/ S.TaggedErrorClass<ConflictException>()(
     "ConflictException",
     {
-      Message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
       RequestId: S.optional(S.String),
       Reason: S.optional(
         S.suspend(() => ConflictExceptionReason).annotate({
@@ -116,7 +116,7 @@ export class ResourceNotFoundException
           identifier: "ResourceNotFoundExceptionReason",
         }),
       ),
-      Message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
       RequestId: S.optional(S.String),
     },
     T.HttpError(404),
@@ -124,14 +124,17 @@ export class ResourceNotFoundException
 export class ServiceQuotaExceededException
   extends /*@__PURE__*/ S.TaggedErrorClass<ServiceQuotaExceededException>()(
     "ServiceQuotaExceededException",
-    { Message: S.optional(S.String), RequestId: S.optional(S.String) },
+    {
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      RequestId: S.optional(S.String),
+    },
     T.HttpError(402),
   ).pipe(C.withQuotaError) {}
 export class ValidationException
   extends /*@__PURE__*/ S.TaggedErrorClass<ValidationException>()(
     "ValidationException",
     {
-      Message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
       RequestId: S.optional(S.String),
       Reason: S.optional(
         S.suspend(() => ValidationExceptionReason).annotate({

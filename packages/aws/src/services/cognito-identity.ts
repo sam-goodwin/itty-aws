@@ -107,66 +107,66 @@ const rules = T.EndpointResolver((p, _) => {
 export class ConcurrentModificationException
   extends /*@__PURE__*/ S.TaggedErrorClass<ConcurrentModificationException>()(
     "ConcurrentModificationException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class DeveloperUserAlreadyRegisteredException
   extends /*@__PURE__*/ S.TaggedErrorClass<DeveloperUserAlreadyRegisteredException>()(
     "DeveloperUserAlreadyRegisteredException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ExternalServiceException
   extends /*@__PURE__*/ S.TaggedErrorClass<ExternalServiceException>()(
     "ExternalServiceException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InternalErrorException
   extends /*@__PURE__*/ S.TaggedErrorClass<InternalErrorException>()(
     "InternalErrorException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withServerError) {}
 export class InvalidIdentityPoolConfigurationException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidIdentityPoolConfigurationException>()(
     "InvalidIdentityPoolConfigurationException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidParameterException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidParameterException>()(
     "InvalidParameterException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class LimitExceededException
   extends /*@__PURE__*/ S.TaggedErrorClass<LimitExceededException>()(
     "LimitExceededException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class NotAuthorizedException
   extends /*@__PURE__*/ S.TaggedErrorClass<NotAuthorizedException>()(
     "NotAuthorizedException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class ResourceConflictException
   extends /*@__PURE__*/ S.TaggedErrorClass<ResourceConflictException>()(
     "ResourceConflictException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
     "ResourceNotFoundException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class TooManyRequestsException
   extends /*@__PURE__*/ S.TaggedErrorClass<TooManyRequestsException>()(
     "TooManyRequestsException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export type IdentityPoolName = string;

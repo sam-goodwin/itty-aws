@@ -54,55 +54,55 @@ const rules = T.EndpointResolver((p, _) => {
 export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedErrorClass<AccessDeniedException>()(
     "AccessDeniedException",
-    { message: S.String },
+    { message: S.String.pipe(T.ErrorMessage()) },
     T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedErrorClass<ConflictException>()(
     "ConflictException",
-    { message: S.String },
+    { message: S.String.pipe(T.ErrorMessage()) },
     T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class KmsDisabledException
   extends /*@__PURE__*/ S.TaggedErrorClass<KmsDisabledException>()(
     "KmsDisabledException",
-    { message: S.String },
+    { message: S.String.pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class KmsInvalidKeyUsageException
   extends /*@__PURE__*/ S.TaggedErrorClass<KmsInvalidKeyUsageException>()(
     "KmsInvalidKeyUsageException",
-    { message: S.String },
+    { message: S.String.pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class KmsInvalidStateException
   extends /*@__PURE__*/ S.TaggedErrorClass<KmsInvalidStateException>()(
     "KmsInvalidStateException",
-    { message: S.String },
+    { message: S.String.pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class KmsNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<KmsNotFoundException>()(
     "KmsNotFoundException",
-    { message: S.String },
+    { message: S.String.pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class NotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<NotFoundException>()(
     "NotFoundException",
-    { message: S.String },
+    { message: S.String.pipe(T.ErrorMessage()) },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ServiceQuotaExceededException
   extends /*@__PURE__*/ S.TaggedErrorClass<ServiceQuotaExceededException>()(
     "ServiceQuotaExceededException",
-    { message: S.String },
+    { message: S.String.pipe(T.ErrorMessage()) },
     T.HttpError(402),
   ).pipe(C.withQuotaError) {}
 export class ServiceUnavailableException
   extends /*@__PURE__*/ S.TaggedErrorClass<ServiceUnavailableException>()(
     "ServiceUnavailableException",
-    { message: S.String },
+    { message: S.String.pipe(T.ErrorMessage()) },
     T.all(T.HttpError(503), T.Retryable()),
   ).pipe(C.withServerError, C.withRetryableError) {}
 export type VectorBucketName = string;

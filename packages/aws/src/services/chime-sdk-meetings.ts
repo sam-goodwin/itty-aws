@@ -91,7 +91,7 @@ export class BadRequestException
     "BadRequestException",
     {
       Code: S.optional(S.String),
-      Message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
       RequestId: S.optional(S.String),
     },
     T.HttpError(400),
@@ -101,7 +101,7 @@ export class ConflictException
     "ConflictException",
     {
       Code: S.optional(S.String),
-      Message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
       RequestId: S.optional(S.String),
     },
     T.HttpError(409),
@@ -111,7 +111,7 @@ export class ForbiddenException
     "ForbiddenException",
     {
       Code: S.optional(S.String),
-      Message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
       RequestId: S.optional(S.String),
     },
     T.HttpError(403),
@@ -121,7 +121,7 @@ export class LimitExceededException
     "LimitExceededException",
     {
       Code: S.optional(S.String),
-      Message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
       RequestId: S.optional(S.String),
     },
     T.HttpError(400),
@@ -131,7 +131,7 @@ export class NotFoundException
     "NotFoundException",
     {
       Code: S.optional(S.String),
-      Message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
       RequestId: S.optional(S.String),
     },
     T.HttpError(404),
@@ -141,7 +141,7 @@ export class ResourceNotFoundException
     "ResourceNotFoundException",
     {
       Code: S.optional(S.String),
-      Message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
       RequestId: S.optional(S.String),
       ResourceName: S.optional(S.String),
     },
@@ -152,7 +152,7 @@ export class ServiceFailureException
     "ServiceFailureException",
     {
       Code: S.optional(S.String),
-      Message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
       RequestId: S.optional(S.String),
     },
     T.HttpError(500),
@@ -162,7 +162,7 @@ export class ServiceUnavailableException
     "ServiceUnavailableException",
     {
       Code: S.optional(S.String),
-      Message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
       RequestId: S.optional(S.String),
       RetryAfterSeconds: S.optional(S.String).pipe(T.HttpHeader("Retry-After")),
     },
@@ -173,7 +173,7 @@ export class ThrottlingException
     "ThrottlingException",
     {
       Code: S.optional(S.String),
-      Message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
       RequestId: S.optional(S.String),
     },
     T.HttpError(429),
@@ -183,7 +183,7 @@ export class TooManyTagsException
     "TooManyTagsException",
     {
       Code: S.optional(S.String),
-      Message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
       RequestId: S.optional(S.String),
       ResourceName: S.optional(S.String),
     },
@@ -194,7 +194,7 @@ export class UnauthorizedException
     "UnauthorizedException",
     {
       Code: S.optional(S.String),
-      Message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
       RequestId: S.optional(S.String),
     },
     T.HttpError(401),
@@ -204,7 +204,7 @@ export class UnprocessableEntityException
     "UnprocessableEntityException",
     {
       Code: S.optional(S.String),
-      Message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
       RequestId: S.optional(S.String),
     },
     T.HttpError(422),

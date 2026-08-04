@@ -87,22 +87,34 @@ const rules = T.EndpointResolver((p, _) => {
 export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedErrorClass<AccessDeniedException>()(
     "AccessDeniedException",
-    { Message: S.optional(S.String), Code: S.optional(S.String) },
+    {
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      Code: S.optional(S.String),
+    },
   ).pipe(C.withAuthError) {}
 export class BadDocumentException
   extends /*@__PURE__*/ S.TaggedErrorClass<BadDocumentException>()(
     "BadDocumentException",
-    { Message: S.optional(S.String), Code: S.optional(S.String) },
+    {
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      Code: S.optional(S.String),
+    },
   ) {}
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedErrorClass<ConflictException>()(
     "ConflictException",
-    { Message: S.optional(S.String), Code: S.optional(S.String) },
+    {
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      Code: S.optional(S.String),
+    },
   ) {}
 export class DocumentTooLargeException
   extends /*@__PURE__*/ S.TaggedErrorClass<DocumentTooLargeException>()(
     "DocumentTooLargeException",
-    { Message: S.optional(S.String), Code: S.optional(S.String) },
+    {
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      Code: S.optional(S.String),
+    },
   ) {}
 export class HumanLoopQuotaExceededException
   extends /*@__PURE__*/ S.TaggedErrorClass<HumanLoopQuotaExceededException>()(
@@ -111,7 +123,7 @@ export class HumanLoopQuotaExceededException
       ResourceType: S.optional(S.String),
       QuotaCode: S.optional(S.String),
       ServiceCode: S.optional(S.String),
-      Message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
       Code: S.optional(S.String),
     },
     T.HttpError(402),
@@ -119,67 +131,106 @@ export class HumanLoopQuotaExceededException
 export class IdempotentParameterMismatchException
   extends /*@__PURE__*/ S.TaggedErrorClass<IdempotentParameterMismatchException>()(
     "IdempotentParameterMismatchException",
-    { Message: S.optional(S.String), Code: S.optional(S.String) },
+    {
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      Code: S.optional(S.String),
+    },
   ) {}
 export class InternalServerError
   extends /*@__PURE__*/ S.TaggedErrorClass<InternalServerError>()(
     "InternalServerError",
-    { Message: S.optional(S.String), Code: S.optional(S.String) },
+    {
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      Code: S.optional(S.String),
+    },
   ) {}
 export class InvalidJobIdException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidJobIdException>()(
     "InvalidJobIdException",
-    { Message: S.optional(S.String), Code: S.optional(S.String) },
+    {
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      Code: S.optional(S.String),
+    },
   ) {}
 export class InvalidKMSKeyException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidKMSKeyException>()(
     "InvalidKMSKeyException",
-    { Message: S.optional(S.String), Code: S.optional(S.String) },
+    {
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      Code: S.optional(S.String),
+    },
   ) {}
 export class InvalidParameterException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidParameterException>()(
     "InvalidParameterException",
-    { Message: S.optional(S.String), Code: S.optional(S.String) },
+    {
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      Code: S.optional(S.String),
+    },
   ) {}
 export class InvalidS3ObjectException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidS3ObjectException>()(
     "InvalidS3ObjectException",
-    { Message: S.optional(S.String), Code: S.optional(S.String) },
+    {
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      Code: S.optional(S.String),
+    },
   ) {}
 export class LimitExceededException
   extends /*@__PURE__*/ S.TaggedErrorClass<LimitExceededException>()(
     "LimitExceededException",
-    { Message: S.optional(S.String), Code: S.optional(S.String) },
+    {
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      Code: S.optional(S.String),
+    },
   ) {}
 export class ProvisionedThroughputExceededException
   extends /*@__PURE__*/ S.TaggedErrorClass<ProvisionedThroughputExceededException>()(
     "ProvisionedThroughputExceededException",
-    { Message: S.optional(S.String), Code: S.optional(S.String) },
+    {
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      Code: S.optional(S.String),
+    },
   ) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
     "ResourceNotFoundException",
-    { Message: S.optional(S.String), Code: S.optional(S.String) },
+    {
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      Code: S.optional(S.String),
+    },
   ) {}
 export class ServiceQuotaExceededException
   extends /*@__PURE__*/ S.TaggedErrorClass<ServiceQuotaExceededException>()(
     "ServiceQuotaExceededException",
-    { Message: S.optional(S.String), Code: S.optional(S.String) },
+    {
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      Code: S.optional(S.String),
+    },
   ) {}
 export class ThrottlingException
   extends /*@__PURE__*/ S.TaggedErrorClass<ThrottlingException>()(
     "ThrottlingException",
-    { Message: S.optional(S.String), Code: S.optional(S.String) },
+    {
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      Code: S.optional(S.String),
+    },
   ) {}
 export class UnsupportedDocumentException
   extends /*@__PURE__*/ S.TaggedErrorClass<UnsupportedDocumentException>()(
     "UnsupportedDocumentException",
-    { Message: S.optional(S.String), Code: S.optional(S.String) },
+    {
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      Code: S.optional(S.String),
+    },
   ) {}
 export class ValidationException
   extends /*@__PURE__*/ S.TaggedErrorClass<ValidationException>()(
     "ValidationException",
-    { Message: S.optional(S.String), Code: S.optional(S.String) },
+    {
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      Code: S.optional(S.String),
+    },
   ) {}
 export type ImageBlob = Uint8Array;
 export type S3Bucket = string;

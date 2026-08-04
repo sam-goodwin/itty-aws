@@ -91,7 +91,7 @@ const rules = T.EndpointResolver((p, _) => {
 export class ActiveInstanceRefreshNotFoundFault
   extends /*@__PURE__*/ S.TaggedErrorClass<ActiveInstanceRefreshNotFoundFault>()(
     "ActiveInstanceRefreshNotFoundFault",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({
         code: "ActiveInstanceRefreshNotFound",
@@ -103,7 +103,7 @@ export class ActiveInstanceRefreshNotFoundFault
 export class AlreadyExistsFault
   extends /*@__PURE__*/ S.TaggedErrorClass<AlreadyExistsFault>()(
     "AlreadyExistsFault",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "AlreadyExists", httpResponseCode: 400 }),
       T.HttpError(400),
@@ -112,7 +112,7 @@ export class AlreadyExistsFault
 export class AutoScalingGroupNotFound
   extends /*@__PURE__*/ S.TaggedErrorClass<AutoScalingGroupNotFound>()(
     "AutoScalingGroupNotFound",
-    {},
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.SyntheticError({
       from: "ValidationError",
       message: { includes: "not found" },
@@ -121,7 +121,7 @@ export class AutoScalingGroupNotFound
 export class IdempotentParameterMismatchError
   extends /*@__PURE__*/ S.TaggedErrorClass<IdempotentParameterMismatchError>()(
     "IdempotentParameterMismatchError",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({
         code: "IdempotentParameterMismatch",
@@ -133,7 +133,7 @@ export class IdempotentParameterMismatchError
 export class InstanceRefreshInProgressFault
   extends /*@__PURE__*/ S.TaggedErrorClass<InstanceRefreshInProgressFault>()(
     "InstanceRefreshInProgressFault",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({
         code: "InstanceRefreshInProgress",
@@ -145,7 +145,7 @@ export class InstanceRefreshInProgressFault
 export class InvalidNextToken
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidNextToken>()(
     "InvalidNextToken",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "InvalidNextToken", httpResponseCode: 400 }),
       T.HttpError(400),
@@ -154,7 +154,7 @@ export class InvalidNextToken
 export class IrreversibleInstanceRefreshFault
   extends /*@__PURE__*/ S.TaggedErrorClass<IrreversibleInstanceRefreshFault>()(
     "IrreversibleInstanceRefreshFault",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({
         code: "IrreversibleInstanceRefresh",
@@ -166,7 +166,7 @@ export class IrreversibleInstanceRefreshFault
 export class LimitExceededFault
   extends /*@__PURE__*/ S.TaggedErrorClass<LimitExceededFault>()(
     "LimitExceededFault",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "LimitExceeded", httpResponseCode: 400 }),
       T.HttpError(400),
@@ -175,7 +175,7 @@ export class LimitExceededFault
 export class ResourceContentionFault
   extends /*@__PURE__*/ S.TaggedErrorClass<ResourceContentionFault>()(
     "ResourceContentionFault",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "ResourceContention", httpResponseCode: 500 }),
       T.HttpError(500),
@@ -184,7 +184,7 @@ export class ResourceContentionFault
 export class ResourceInUseFault
   extends /*@__PURE__*/ S.TaggedErrorClass<ResourceInUseFault>()(
     "ResourceInUseFault",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "ResourceInUse", httpResponseCode: 400 }),
       T.HttpError(400),
@@ -193,7 +193,7 @@ export class ResourceInUseFault
 export class ScalingActivityInProgressFault
   extends /*@__PURE__*/ S.TaggedErrorClass<ScalingActivityInProgressFault>()(
     "ScalingActivityInProgressFault",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({
         code: "ScalingActivityInProgress",
@@ -205,7 +205,7 @@ export class ScalingActivityInProgressFault
 export class ServiceLinkedRoleFailure
   extends /*@__PURE__*/ S.TaggedErrorClass<ServiceLinkedRoleFailure>()(
     "ServiceLinkedRoleFailure",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({
         code: "ServiceLinkedRoleFailure",

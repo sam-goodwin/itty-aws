@@ -90,49 +90,49 @@ const rules = T.EndpointResolver((p, _) => {
 export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedErrorClass<AccessDeniedException>()(
     "AccessDeniedException",
-    { message: S.String },
+    { message: S.String.pipe(T.ErrorMessage()) },
     T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class BadGatewayException
   extends /*@__PURE__*/ S.TaggedErrorClass<BadGatewayException>()(
     "BadGatewayException",
-    { message: S.String },
+    { message: S.String.pipe(T.ErrorMessage()) },
     T.HttpError(502),
   ).pipe(C.withServerError) {}
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedErrorClass<ConflictException>()(
     "ConflictException",
-    { message: S.String },
+    { message: S.String.pipe(T.ErrorMessage()) },
     T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class DependencyFailedException
   extends /*@__PURE__*/ S.TaggedErrorClass<DependencyFailedException>()(
     "DependencyFailedException",
-    { message: S.String },
+    { message: S.String.pipe(T.ErrorMessage()) },
     T.HttpError(424),
   ) {}
 export class InternalServerException
   extends /*@__PURE__*/ S.TaggedErrorClass<InternalServerException>()(
     "InternalServerException",
-    { message: S.String },
+    { message: S.String.pipe(T.ErrorMessage()) },
     T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
     "ResourceNotFoundException",
-    { message: S.String },
+    { message: S.String.pipe(T.ErrorMessage()) },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ThrottlingException
   extends /*@__PURE__*/ S.TaggedErrorClass<ThrottlingException>()(
     "ThrottlingException",
-    { message: S.String },
+    { message: S.String.pipe(T.ErrorMessage()) },
     T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export class ValidationException
   extends /*@__PURE__*/ S.TaggedErrorClass<ValidationException>()(
     "ValidationException",
-    { message: S.String },
+    { message: S.String.pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export type BotIdentifier = string;

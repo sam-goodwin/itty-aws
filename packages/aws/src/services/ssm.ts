@@ -90,24 +90,24 @@ const rules = T.EndpointResolver((p, _) => {
 export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedErrorClass<AccessDeniedException>()(
     "AccessDeniedException",
-    { Message: S.String },
+    { message: S.String.pipe(T.ErrorMessage()) },
   ).pipe(C.withAuthError) {}
 export class AlreadyExistsException
   extends /*@__PURE__*/ S.TaggedErrorClass<AlreadyExistsException>()(
     "AlreadyExistsException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.AwsQueryError({ code: "AlreadyExistsException", httpResponseCode: 400 }),
   ).pipe(C.withAlreadyExistsError) {}
 export class AssociatedInstances
   extends /*@__PURE__*/ S.TaggedErrorClass<AssociatedInstances>()(
     "AssociatedInstances",
-    {},
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.AwsQueryError({ code: "AssociatedInstances", httpResponseCode: 400 }),
   ) {}
 export class AssociationAlreadyExists
   extends /*@__PURE__*/ S.TaggedErrorClass<AssociationAlreadyExists>()(
     "AssociationAlreadyExists",
-    {},
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.AwsQueryError({
       code: "AssociationAlreadyExists",
       httpResponseCode: 400,
@@ -116,13 +116,13 @@ export class AssociationAlreadyExists
 export class AssociationDoesNotExist
   extends /*@__PURE__*/ S.TaggedErrorClass<AssociationDoesNotExist>()(
     "AssociationDoesNotExist",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.AwsQueryError({ code: "AssociationDoesNotExist", httpResponseCode: 404 }),
   ) {}
 export class AssociationExecutionDoesNotExist
   extends /*@__PURE__*/ S.TaggedErrorClass<AssociationExecutionDoesNotExist>()(
     "AssociationExecutionDoesNotExist",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.AwsQueryError({
       code: "AssociationExecutionDoesNotExist",
       httpResponseCode: 404,
@@ -131,7 +131,7 @@ export class AssociationExecutionDoesNotExist
 export class AssociationLimitExceeded
   extends /*@__PURE__*/ S.TaggedErrorClass<AssociationLimitExceeded>()(
     "AssociationLimitExceeded",
-    {},
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.AwsQueryError({
       code: "AssociationLimitExceeded",
       httpResponseCode: 400,
@@ -140,7 +140,7 @@ export class AssociationLimitExceeded
 export class AssociationVersionLimitExceeded
   extends /*@__PURE__*/ S.TaggedErrorClass<AssociationVersionLimitExceeded>()(
     "AssociationVersionLimitExceeded",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.AwsQueryError({
       code: "AssociationVersionLimitExceeded",
       httpResponseCode: 400,
@@ -149,7 +149,7 @@ export class AssociationVersionLimitExceeded
 export class AutomationDefinitionNotApprovedException
   extends /*@__PURE__*/ S.TaggedErrorClass<AutomationDefinitionNotApprovedException>()(
     "AutomationDefinitionNotApprovedException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.AwsQueryError({
       code: "AutomationDefinitionNotApproved",
       httpResponseCode: 400,
@@ -158,7 +158,7 @@ export class AutomationDefinitionNotApprovedException
 export class AutomationDefinitionNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<AutomationDefinitionNotFoundException>()(
     "AutomationDefinitionNotFoundException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.AwsQueryError({
       code: "AutomationDefinitionNotFound",
       httpResponseCode: 404,
@@ -167,7 +167,7 @@ export class AutomationDefinitionNotFoundException
 export class AutomationDefinitionVersionNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<AutomationDefinitionVersionNotFoundException>()(
     "AutomationDefinitionVersionNotFoundException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.AwsQueryError({
       code: "AutomationDefinitionVersionNotFound",
       httpResponseCode: 404,
@@ -176,7 +176,7 @@ export class AutomationDefinitionVersionNotFoundException
 export class AutomationExecutionLimitExceededException
   extends /*@__PURE__*/ S.TaggedErrorClass<AutomationExecutionLimitExceededException>()(
     "AutomationExecutionLimitExceededException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.AwsQueryError({
       code: "AutomationExecutionLimitExceeded",
       httpResponseCode: 429,
@@ -185,7 +185,7 @@ export class AutomationExecutionLimitExceededException
 export class AutomationExecutionNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<AutomationExecutionNotFoundException>()(
     "AutomationExecutionNotFoundException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.AwsQueryError({
       code: "AutomationExecutionNotFound",
       httpResponseCode: 404,
@@ -194,7 +194,7 @@ export class AutomationExecutionNotFoundException
 export class AutomationStepNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<AutomationStepNotFoundException>()(
     "AutomationStepNotFoundException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.AwsQueryError({
       code: "AutomationStepNotFoundException",
       httpResponseCode: 404,
@@ -203,7 +203,7 @@ export class AutomationStepNotFoundException
 export class ComplianceTypeCountLimitExceededException
   extends /*@__PURE__*/ S.TaggedErrorClass<ComplianceTypeCountLimitExceededException>()(
     "ComplianceTypeCountLimitExceededException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.AwsQueryError({
       code: "ComplianceTypeCountLimitExceeded",
       httpResponseCode: 400,
@@ -212,7 +212,7 @@ export class ComplianceTypeCountLimitExceededException
 export class CustomSchemaCountLimitExceededException
   extends /*@__PURE__*/ S.TaggedErrorClass<CustomSchemaCountLimitExceededException>()(
     "CustomSchemaCountLimitExceededException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.AwsQueryError({
       code: "CustomSchemaCountLimitExceeded",
       httpResponseCode: 400,
@@ -221,25 +221,25 @@ export class CustomSchemaCountLimitExceededException
 export class DocumentAlreadyExists
   extends /*@__PURE__*/ S.TaggedErrorClass<DocumentAlreadyExists>()(
     "DocumentAlreadyExists",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.AwsQueryError({ code: "DocumentAlreadyExists", httpResponseCode: 400 }),
   ).pipe(C.withAlreadyExistsError) {}
 export class DocumentLimitExceeded
   extends /*@__PURE__*/ S.TaggedErrorClass<DocumentLimitExceeded>()(
     "DocumentLimitExceeded",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.AwsQueryError({ code: "DocumentLimitExceeded", httpResponseCode: 400 }),
   ).pipe(C.withThrottlingError) {}
 export class DocumentPermissionLimit
   extends /*@__PURE__*/ S.TaggedErrorClass<DocumentPermissionLimit>()(
     "DocumentPermissionLimit",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.AwsQueryError({ code: "DocumentPermissionLimit", httpResponseCode: 400 }),
   ) {}
 export class DocumentVersionLimitExceeded
   extends /*@__PURE__*/ S.TaggedErrorClass<DocumentVersionLimitExceeded>()(
     "DocumentVersionLimitExceeded",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.AwsQueryError({
       code: "DocumentVersionLimitExceeded",
       httpResponseCode: 400,
@@ -248,13 +248,13 @@ export class DocumentVersionLimitExceeded
 export class DoesNotExistException
   extends /*@__PURE__*/ S.TaggedErrorClass<DoesNotExistException>()(
     "DoesNotExistException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.AwsQueryError({ code: "DoesNotExistException", httpResponseCode: 404 }),
   ) {}
 export class DuplicateDocumentContent
   extends /*@__PURE__*/ S.TaggedErrorClass<DuplicateDocumentContent>()(
     "DuplicateDocumentContent",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.AwsQueryError({
       code: "DuplicateDocumentContent",
       httpResponseCode: 400,
@@ -263,7 +263,7 @@ export class DuplicateDocumentContent
 export class DuplicateDocumentVersionName
   extends /*@__PURE__*/ S.TaggedErrorClass<DuplicateDocumentVersionName>()(
     "DuplicateDocumentVersionName",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.AwsQueryError({
       code: "DuplicateDocumentVersionName",
       httpResponseCode: 400,
@@ -272,13 +272,13 @@ export class DuplicateDocumentVersionName
 export class DuplicateInstanceId
   extends /*@__PURE__*/ S.TaggedErrorClass<DuplicateInstanceId>()(
     "DuplicateInstanceId",
-    {},
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.AwsQueryError({ code: "DuplicateInstanceId", httpResponseCode: 404 }),
   ) {}
 export class FeatureNotAvailableException
   extends /*@__PURE__*/ S.TaggedErrorClass<FeatureNotAvailableException>()(
     "FeatureNotAvailableException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.AwsQueryError({
       code: "FeatureNotAvailableException",
       httpResponseCode: 400,
@@ -287,7 +287,7 @@ export class FeatureNotAvailableException
 export class HierarchyLevelLimitExceededException
   extends /*@__PURE__*/ S.TaggedErrorClass<HierarchyLevelLimitExceededException>()(
     "HierarchyLevelLimitExceededException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.AwsQueryError({
       code: "HierarchyLevelLimitExceededException",
       httpResponseCode: 400,
@@ -296,7 +296,7 @@ export class HierarchyLevelLimitExceededException
 export class HierarchyTypeMismatchException
   extends /*@__PURE__*/ S.TaggedErrorClass<HierarchyTypeMismatchException>()(
     "HierarchyTypeMismatchException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.AwsQueryError({
       code: "HierarchyTypeMismatchException",
       httpResponseCode: 400,
@@ -305,7 +305,7 @@ export class HierarchyTypeMismatchException
 export class IdempotentParameterMismatch
   extends /*@__PURE__*/ S.TaggedErrorClass<IdempotentParameterMismatch>()(
     "IdempotentParameterMismatch",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.AwsQueryError({
       code: "IdempotentParameterMismatch",
       httpResponseCode: 400,
@@ -314,7 +314,7 @@ export class IdempotentParameterMismatch
 export class IncompatiblePolicyException
   extends /*@__PURE__*/ S.TaggedErrorClass<IncompatiblePolicyException>()(
     "IncompatiblePolicyException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.AwsQueryError({
       code: "IncompatiblePolicyException",
       httpResponseCode: 400,
@@ -323,31 +323,31 @@ export class IncompatiblePolicyException
 export class InternalServerError
   extends /*@__PURE__*/ S.TaggedErrorClass<InternalServerError>()(
     "InternalServerError",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.AwsQueryError({ code: "InternalServerError", httpResponseCode: 500 }),
   ) {}
 export class InvalidActivation
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidActivation>()(
     "InvalidActivation",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.AwsQueryError({ code: "InvalidActivation", httpResponseCode: 404 }),
   ) {}
 export class InvalidActivationId
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidActivationId>()(
     "InvalidActivationId",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.AwsQueryError({ code: "InvalidActivationId", httpResponseCode: 404 }),
   ) {}
 export class InvalidAggregatorException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidAggregatorException>()(
     "InvalidAggregatorException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.AwsQueryError({ code: "InvalidAggregator", httpResponseCode: 400 }),
   ) {}
 export class InvalidAllowedPatternException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidAllowedPatternException>()(
     "InvalidAllowedPatternException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.AwsQueryError({
       code: "InvalidAllowedPatternException",
       httpResponseCode: 400,
@@ -356,13 +356,13 @@ export class InvalidAllowedPatternException
 export class InvalidAssociation
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidAssociation>()(
     "InvalidAssociation",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.AwsQueryError({ code: "InvalidAssociation", httpResponseCode: 400 }),
   ) {}
 export class InvalidAssociationVersion
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidAssociationVersion>()(
     "InvalidAssociationVersion",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.AwsQueryError({
       code: "InvalidAssociationVersion",
       httpResponseCode: 400,
@@ -371,7 +371,7 @@ export class InvalidAssociationVersion
 export class InvalidAutomationExecutionParametersException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidAutomationExecutionParametersException>()(
     "InvalidAutomationExecutionParametersException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.AwsQueryError({
       code: "InvalidAutomationExecutionParameters",
       httpResponseCode: 400,
@@ -380,7 +380,7 @@ export class InvalidAutomationExecutionParametersException
 export class InvalidAutomationSignalException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidAutomationSignalException>()(
     "InvalidAutomationSignalException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.AwsQueryError({
       code: "InvalidAutomationSignalException",
       httpResponseCode: 400,
@@ -389,7 +389,7 @@ export class InvalidAutomationSignalException
 export class InvalidAutomationStatusUpdateException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidAutomationStatusUpdateException>()(
     "InvalidAutomationStatusUpdateException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.AwsQueryError({
       code: "InvalidAutomationStatusUpdateException",
       httpResponseCode: 400,
@@ -398,13 +398,13 @@ export class InvalidAutomationStatusUpdateException
 export class InvalidCommandId
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidCommandId>()(
     "InvalidCommandId",
-    {},
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.AwsQueryError({ code: "InvalidCommandId", httpResponseCode: 404 }),
   ) {}
 export class InvalidDeleteInventoryParametersException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidDeleteInventoryParametersException>()(
     "InvalidDeleteInventoryParametersException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.AwsQueryError({
       code: "InvalidDeleteInventoryParameters",
       httpResponseCode: 400,
@@ -413,25 +413,25 @@ export class InvalidDeleteInventoryParametersException
 export class InvalidDeletionIdException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidDeletionIdException>()(
     "InvalidDeletionIdException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.AwsQueryError({ code: "InvalidDeletionId", httpResponseCode: 400 }),
   ) {}
 export class InvalidDocument
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidDocument>()(
     "InvalidDocument",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.AwsQueryError({ code: "InvalidDocument", httpResponseCode: 404 }),
   ) {}
 export class InvalidDocumentContent
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidDocumentContent>()(
     "InvalidDocumentContent",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.AwsQueryError({ code: "InvalidDocumentContent", httpResponseCode: 400 }),
   ) {}
 export class InvalidDocumentOperation
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidDocumentOperation>()(
     "InvalidDocumentOperation",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.AwsQueryError({
       code: "InvalidDocumentOperation",
       httpResponseCode: 403,
@@ -440,7 +440,7 @@ export class InvalidDocumentOperation
 export class InvalidDocumentSchemaVersion
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidDocumentSchemaVersion>()(
     "InvalidDocumentSchemaVersion",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.AwsQueryError({
       code: "InvalidDocumentSchemaVersion",
       httpResponseCode: 400,
@@ -449,49 +449,49 @@ export class InvalidDocumentSchemaVersion
 export class InvalidDocumentType
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidDocumentType>()(
     "InvalidDocumentType",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.AwsQueryError({ code: "InvalidDocumentType", httpResponseCode: 400 }),
   ) {}
 export class InvalidDocumentVersion
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidDocumentVersion>()(
     "InvalidDocumentVersion",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.AwsQueryError({ code: "InvalidDocumentVersion", httpResponseCode: 400 }),
   ) {}
 export class InvalidFilter
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidFilter>()(
     "InvalidFilter",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.AwsQueryError({ code: "InvalidFilter", httpResponseCode: 441 }),
   ) {}
 export class InvalidFilterKey
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidFilterKey>()(
     "InvalidFilterKey",
-    {},
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.AwsQueryError({ code: "InvalidFilterKey", httpResponseCode: 400 }),
   ) {}
 export class InvalidFilterOption
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidFilterOption>()(
     "InvalidFilterOption",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.AwsQueryError({ code: "InvalidFilterOption", httpResponseCode: 400 }),
   ) {}
 export class InvalidFilterValue
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidFilterValue>()(
     "InvalidFilterValue",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.AwsQueryError({ code: "InvalidFilterValue", httpResponseCode: 400 }),
   ) {}
 export class InvalidInstanceId
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidInstanceId>()(
     "InvalidInstanceId",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.AwsQueryError({ code: "InvalidInstanceId", httpResponseCode: 404 }),
   ) {}
 export class InvalidInstanceInformationFilterValue
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidInstanceInformationFilterValue>()(
     "InvalidInstanceInformationFilterValue",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.AwsQueryError({
       code: "InvalidInstanceInformationFilterValue",
       httpResponseCode: 400,
@@ -500,7 +500,7 @@ export class InvalidInstanceInformationFilterValue
 export class InvalidInstancePropertyFilterValue
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidInstancePropertyFilterValue>()(
     "InvalidInstancePropertyFilterValue",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.AwsQueryError({
       code: "InvalidInstancePropertyFilterValue",
       httpResponseCode: 400,
@@ -509,13 +509,13 @@ export class InvalidInstancePropertyFilterValue
 export class InvalidInventoryGroupException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidInventoryGroupException>()(
     "InvalidInventoryGroupException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.AwsQueryError({ code: "InvalidInventoryGroup", httpResponseCode: 400 }),
   ) {}
 export class InvalidInventoryItemContextException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidInventoryItemContextException>()(
     "InvalidInventoryItemContextException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.AwsQueryError({
       code: "InvalidInventoryItemContext",
       httpResponseCode: 400,
@@ -524,31 +524,34 @@ export class InvalidInventoryItemContextException
 export class InvalidInventoryRequestException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidInventoryRequestException>()(
     "InvalidInventoryRequestException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.AwsQueryError({ code: "InvalidInventoryRequest", httpResponseCode: 400 }),
   ) {}
 export class InvalidItemContentException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidItemContentException>()(
     "InvalidItemContentException",
-    { TypeName: S.optional(S.String), Message: S.optional(S.String) },
+    {
+      TypeName: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+    },
     T.AwsQueryError({ code: "InvalidItemContent", httpResponseCode: 400 }),
   ) {}
 export class InvalidKeyId
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidKeyId>()(
     "InvalidKeyId",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.AwsQueryError({ code: "InvalidKeyId", httpResponseCode: 400 }),
   ) {}
 export class InvalidNextToken
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidNextToken>()(
     "InvalidNextToken",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.AwsQueryError({ code: "InvalidNextToken", httpResponseCode: 400 }),
   ) {}
 export class InvalidNotificationConfig
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidNotificationConfig>()(
     "InvalidNotificationConfig",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.AwsQueryError({
       code: "InvalidNotificationConfig",
       httpResponseCode: 400,
@@ -557,43 +560,43 @@ export class InvalidNotificationConfig
 export class InvalidOptionException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidOptionException>()(
     "InvalidOptionException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.AwsQueryError({ code: "InvalidOption", httpResponseCode: 400 }),
   ) {}
 export class InvalidOutputFolder
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidOutputFolder>()(
     "InvalidOutputFolder",
-    {},
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.AwsQueryError({ code: "InvalidOutputFolder", httpResponseCode: 400 }),
   ) {}
 export class InvalidOutputLocation
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidOutputLocation>()(
     "InvalidOutputLocation",
-    {},
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.AwsQueryError({ code: "InvalidOutputLocation", httpResponseCode: 400 }),
   ) {}
 export class InvalidParameters
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidParameters>()(
     "InvalidParameters",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.AwsQueryError({ code: "InvalidParameters", httpResponseCode: 400 }),
   ) {}
 export class InvalidPermissionType
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidPermissionType>()(
     "InvalidPermissionType",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.AwsQueryError({ code: "InvalidPermissionType", httpResponseCode: 400 }),
   ) {}
 export class InvalidPluginName
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidPluginName>()(
     "InvalidPluginName",
-    {},
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.AwsQueryError({ code: "InvalidPluginName", httpResponseCode: 404 }),
   ) {}
 export class InvalidPolicyAttributeException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidPolicyAttributeException>()(
     "InvalidPolicyAttributeException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.AwsQueryError({
       code: "InvalidPolicyAttributeException",
       httpResponseCode: 400,
@@ -602,7 +605,7 @@ export class InvalidPolicyAttributeException
 export class InvalidPolicyTypeException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidPolicyTypeException>()(
     "InvalidPolicyTypeException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.AwsQueryError({
       code: "InvalidPolicyTypeException",
       httpResponseCode: 400,
@@ -611,85 +614,91 @@ export class InvalidPolicyTypeException
 export class InvalidResourceId
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidResourceId>()(
     "InvalidResourceId",
-    {},
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.AwsQueryError({ code: "InvalidResourceId", httpResponseCode: 400 }),
   ) {}
 export class InvalidResourceType
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidResourceType>()(
     "InvalidResourceType",
-    {},
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.AwsQueryError({ code: "InvalidResourceType", httpResponseCode: 400 }),
   ) {}
 export class InvalidResultAttributeException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidResultAttributeException>()(
     "InvalidResultAttributeException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.AwsQueryError({ code: "InvalidResultAttribute", httpResponseCode: 400 }),
   ) {}
 export class InvalidRole
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidRole>()(
     "InvalidRole",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.AwsQueryError({ code: "InvalidRole", httpResponseCode: 400 }),
   ) {}
 export class InvalidSchedule
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidSchedule>()(
     "InvalidSchedule",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.AwsQueryError({ code: "InvalidSchedule", httpResponseCode: 400 }),
   ) {}
 export class InvalidTag
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidTag>()(
     "InvalidTag",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.AwsQueryError({ code: "InvalidTag", httpResponseCode: 400 }),
   ) {}
 export class InvalidTarget
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidTarget>()(
     "InvalidTarget",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.AwsQueryError({ code: "InvalidTarget", httpResponseCode: 400 }),
   ) {}
 export class InvalidTargetMaps
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidTargetMaps>()(
     "InvalidTargetMaps",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.AwsQueryError({ code: "InvalidTargetMaps", httpResponseCode: 400 }),
   ) {}
 export class InvalidTypeNameException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidTypeNameException>()(
     "InvalidTypeNameException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.AwsQueryError({ code: "InvalidTypeName", httpResponseCode: 400 }),
   ) {}
 export class InvalidUpdate
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidUpdate>()(
     "InvalidUpdate",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.AwsQueryError({ code: "InvalidUpdate", httpResponseCode: 400 }),
   ) {}
 export class InvocationDoesNotExist
   extends /*@__PURE__*/ S.TaggedErrorClass<InvocationDoesNotExist>()(
     "InvocationDoesNotExist",
-    {},
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.AwsQueryError({ code: "InvocationDoesNotExist", httpResponseCode: 400 }),
   ) {}
 export class ItemContentMismatchException
   extends /*@__PURE__*/ S.TaggedErrorClass<ItemContentMismatchException>()(
     "ItemContentMismatchException",
-    { TypeName: S.optional(S.String), Message: S.optional(S.String) },
+    {
+      TypeName: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+    },
     T.AwsQueryError({ code: "ItemContentMismatch", httpResponseCode: 400 }),
   ) {}
 export class ItemSizeLimitExceededException
   extends /*@__PURE__*/ S.TaggedErrorClass<ItemSizeLimitExceededException>()(
     "ItemSizeLimitExceededException",
-    { TypeName: S.optional(S.String), Message: S.optional(S.String) },
+    {
+      TypeName: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+    },
     T.AwsQueryError({ code: "ItemSizeLimitExceeded", httpResponseCode: 400 }),
   ) {}
 export class MalformedResourcePolicyDocumentException
   extends /*@__PURE__*/ S.TaggedErrorClass<MalformedResourcePolicyDocumentException>()(
     "MalformedResourcePolicyDocumentException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.AwsQueryError({
       code: "MalformedResourcePolicyDocumentException",
       httpResponseCode: 400,
@@ -698,19 +707,19 @@ export class MalformedResourcePolicyDocumentException
 export class MaxDocumentSizeExceeded
   extends /*@__PURE__*/ S.TaggedErrorClass<MaxDocumentSizeExceeded>()(
     "MaxDocumentSizeExceeded",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.AwsQueryError({ code: "MaxDocumentSizeExceeded", httpResponseCode: 400 }),
   ) {}
 export class NoLongerSupportedException
   extends /*@__PURE__*/ S.TaggedErrorClass<NoLongerSupportedException>()(
     "NoLongerSupportedException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.AwsQueryError({ code: "NoLongerSupported", httpResponseCode: 400 }),
   ) {}
 export class OpsItemAccessDeniedException
   extends /*@__PURE__*/ S.TaggedErrorClass<OpsItemAccessDeniedException>()(
     "OpsItemAccessDeniedException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.AwsQueryError({
       code: "OpsItemAccessDeniedException",
       httpResponseCode: 403,
@@ -719,7 +728,10 @@ export class OpsItemAccessDeniedException
 export class OpsItemAlreadyExistsException
   extends /*@__PURE__*/ S.TaggedErrorClass<OpsItemAlreadyExistsException>()(
     "OpsItemAlreadyExistsException",
-    { Message: S.optional(S.String), OpsItemId: S.optional(S.String) },
+    {
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      OpsItemId: S.optional(S.String),
+    },
     T.AwsQueryError({
       code: "OpsItemAlreadyExistsException",
       httpResponseCode: 400,
@@ -728,7 +740,7 @@ export class OpsItemAlreadyExistsException
 export class OpsItemConflictException
   extends /*@__PURE__*/ S.TaggedErrorClass<OpsItemConflictException>()(
     "OpsItemConflictException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.AwsQueryError({
       code: "OpsItemConflictException",
       httpResponseCode: 409,
@@ -743,7 +755,7 @@ export class OpsItemInvalidParameterException
           identifier: "OpsItemParameterNamesList",
         }),
       ),
-      Message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
     },
     T.AwsQueryError({
       code: "OpsItemInvalidParameterException",
@@ -761,7 +773,7 @@ export class OpsItemLimitExceededException
       ),
       Limit: S.optional(S.Number),
       LimitType: S.optional(S.String),
-      Message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
     },
     T.AwsQueryError({
       code: "OpsItemLimitExceededException",
@@ -771,7 +783,7 @@ export class OpsItemLimitExceededException
 export class OpsItemNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<OpsItemNotFoundException>()(
     "OpsItemNotFoundException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.AwsQueryError({
       code: "OpsItemNotFoundException",
       httpResponseCode: 400,
@@ -781,7 +793,7 @@ export class OpsItemRelatedItemAlreadyExistsException
   extends /*@__PURE__*/ S.TaggedErrorClass<OpsItemRelatedItemAlreadyExistsException>()(
     "OpsItemRelatedItemAlreadyExistsException",
     {
-      Message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
       ResourceUri: S.optional(S.String),
       OpsItemId: S.optional(S.String),
     },
@@ -793,7 +805,7 @@ export class OpsItemRelatedItemAlreadyExistsException
 export class OpsItemRelatedItemAssociationNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<OpsItemRelatedItemAssociationNotFoundException>()(
     "OpsItemRelatedItemAssociationNotFoundException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.AwsQueryError({
       code: "OpsItemRelatedItemAssociationNotFoundException",
       httpResponseCode: 400,
@@ -802,7 +814,7 @@ export class OpsItemRelatedItemAssociationNotFoundException
 export class OpsMetadataAlreadyExistsException
   extends /*@__PURE__*/ S.TaggedErrorClass<OpsMetadataAlreadyExistsException>()(
     "OpsMetadataAlreadyExistsException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.AwsQueryError({
       code: "OpsMetadataAlreadyExistsException",
       httpResponseCode: 400,
@@ -811,7 +823,7 @@ export class OpsMetadataAlreadyExistsException
 export class OpsMetadataInvalidArgumentException
   extends /*@__PURE__*/ S.TaggedErrorClass<OpsMetadataInvalidArgumentException>()(
     "OpsMetadataInvalidArgumentException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.AwsQueryError({
       code: "OpsMetadataInvalidArgumentException",
       httpResponseCode: 400,
@@ -820,7 +832,7 @@ export class OpsMetadataInvalidArgumentException
 export class OpsMetadataKeyLimitExceededException
   extends /*@__PURE__*/ S.TaggedErrorClass<OpsMetadataKeyLimitExceededException>()(
     "OpsMetadataKeyLimitExceededException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.AwsQueryError({
       code: "OpsMetadataKeyLimitExceededException",
       httpResponseCode: 429,
@@ -829,7 +841,7 @@ export class OpsMetadataKeyLimitExceededException
 export class OpsMetadataLimitExceededException
   extends /*@__PURE__*/ S.TaggedErrorClass<OpsMetadataLimitExceededException>()(
     "OpsMetadataLimitExceededException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.AwsQueryError({
       code: "OpsMetadataLimitExceededException",
       httpResponseCode: 429,
@@ -838,7 +850,7 @@ export class OpsMetadataLimitExceededException
 export class OpsMetadataNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<OpsMetadataNotFoundException>()(
     "OpsMetadataNotFoundException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.AwsQueryError({
       code: "OpsMetadataNotFoundException",
       httpResponseCode: 404,
@@ -847,7 +859,7 @@ export class OpsMetadataNotFoundException
 export class OpsMetadataTooManyUpdatesException
   extends /*@__PURE__*/ S.TaggedErrorClass<OpsMetadataTooManyUpdatesException>()(
     "OpsMetadataTooManyUpdatesException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.AwsQueryError({
       code: "OpsMetadataTooManyUpdatesException",
       httpResponseCode: 429,
@@ -856,19 +868,19 @@ export class OpsMetadataTooManyUpdatesException
 export class ParameterAlreadyExists
   extends /*@__PURE__*/ S.TaggedErrorClass<ParameterAlreadyExists>()(
     "ParameterAlreadyExists",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.AwsQueryError({ code: "ParameterAlreadyExists", httpResponseCode: 400 }),
   ).pipe(C.withAlreadyExistsError) {}
 export class ParameterLimitExceeded
   extends /*@__PURE__*/ S.TaggedErrorClass<ParameterLimitExceeded>()(
     "ParameterLimitExceeded",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.AwsQueryError({ code: "ParameterLimitExceeded", httpResponseCode: 429 }),
   ).pipe(C.withThrottlingError) {}
 export class ParameterMaxVersionLimitExceeded
   extends /*@__PURE__*/ S.TaggedErrorClass<ParameterMaxVersionLimitExceeded>()(
     "ParameterMaxVersionLimitExceeded",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.AwsQueryError({
       code: "ParameterMaxVersionLimitExceeded",
       httpResponseCode: 400,
@@ -877,13 +889,13 @@ export class ParameterMaxVersionLimitExceeded
 export class ParameterNotFound
   extends /*@__PURE__*/ S.TaggedErrorClass<ParameterNotFound>()(
     "ParameterNotFound",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.AwsQueryError({ code: "ParameterNotFound", httpResponseCode: 404 }),
   ) {}
 export class ParameterPatternMismatchException
   extends /*@__PURE__*/ S.TaggedErrorClass<ParameterPatternMismatchException>()(
     "ParameterPatternMismatchException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.AwsQueryError({
       code: "ParameterPatternMismatchException",
       httpResponseCode: 400,
@@ -892,7 +904,7 @@ export class ParameterPatternMismatchException
 export class ParameterVersionLabelLimitExceeded
   extends /*@__PURE__*/ S.TaggedErrorClass<ParameterVersionLabelLimitExceeded>()(
     "ParameterVersionLabelLimitExceeded",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.AwsQueryError({
       code: "ParameterVersionLabelLimitExceeded",
       httpResponseCode: 400,
@@ -901,7 +913,7 @@ export class ParameterVersionLabelLimitExceeded
 export class ParameterVersionNotFound
   extends /*@__PURE__*/ S.TaggedErrorClass<ParameterVersionNotFound>()(
     "ParameterVersionNotFound",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.AwsQueryError({
       code: "ParameterVersionNotFound",
       httpResponseCode: 400,
@@ -910,7 +922,7 @@ export class ParameterVersionNotFound
 export class PoliciesLimitExceededException
   extends /*@__PURE__*/ S.TaggedErrorClass<PoliciesLimitExceededException>()(
     "PoliciesLimitExceededException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.AwsQueryError({
       code: "PoliciesLimitExceededException",
       httpResponseCode: 400,
@@ -919,7 +931,10 @@ export class PoliciesLimitExceededException
 export class ResourceDataSyncAlreadyExistsException
   extends /*@__PURE__*/ S.TaggedErrorClass<ResourceDataSyncAlreadyExistsException>()(
     "ResourceDataSyncAlreadyExistsException",
-    { SyncName: S.optional(S.String) },
+    {
+      SyncName: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+    },
     T.AwsQueryError({
       code: "ResourceDataSyncAlreadyExists",
       httpResponseCode: 400,
@@ -928,7 +943,7 @@ export class ResourceDataSyncAlreadyExistsException
 export class ResourceDataSyncConflictException
   extends /*@__PURE__*/ S.TaggedErrorClass<ResourceDataSyncConflictException>()(
     "ResourceDataSyncConflictException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.AwsQueryError({
       code: "ResourceDataSyncConflictException",
       httpResponseCode: 409,
@@ -937,7 +952,7 @@ export class ResourceDataSyncConflictException
 export class ResourceDataSyncCountExceededException
   extends /*@__PURE__*/ S.TaggedErrorClass<ResourceDataSyncCountExceededException>()(
     "ResourceDataSyncCountExceededException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.AwsQueryError({
       code: "ResourceDataSyncCountExceeded",
       httpResponseCode: 400,
@@ -946,7 +961,7 @@ export class ResourceDataSyncCountExceededException
 export class ResourceDataSyncInvalidConfigurationException
   extends /*@__PURE__*/ S.TaggedErrorClass<ResourceDataSyncInvalidConfigurationException>()(
     "ResourceDataSyncInvalidConfigurationException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.AwsQueryError({
       code: "ResourceDataSyncInvalidConfiguration",
       httpResponseCode: 400,
@@ -958,7 +973,7 @@ export class ResourceDataSyncNotFoundException
     {
       SyncName: S.optional(S.String),
       SyncType: S.optional(S.String),
-      Message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
     },
     T.AwsQueryError({
       code: "ResourceDataSyncNotFound",
@@ -968,13 +983,13 @@ export class ResourceDataSyncNotFoundException
 export class ResourceInUseException
   extends /*@__PURE__*/ S.TaggedErrorClass<ResourceInUseException>()(
     "ResourceInUseException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.AwsQueryError({ code: "ResourceInUseException", httpResponseCode: 400 }),
   ) {}
 export class ResourceLimitExceededException
   extends /*@__PURE__*/ S.TaggedErrorClass<ResourceLimitExceededException>()(
     "ResourceLimitExceededException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.AwsQueryError({
       code: "ResourceLimitExceededException",
       httpResponseCode: 400,
@@ -983,7 +998,7 @@ export class ResourceLimitExceededException
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
     "ResourceNotFoundException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.AwsQueryError({
       code: "ResourceNotFoundException",
       httpResponseCode: 404,
@@ -992,7 +1007,7 @@ export class ResourceNotFoundException
 export class ResourcePolicyConflictException
   extends /*@__PURE__*/ S.TaggedErrorClass<ResourcePolicyConflictException>()(
     "ResourcePolicyConflictException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.AwsQueryError({
       code: "ResourcePolicyConflictException",
       httpResponseCode: 400,
@@ -1007,7 +1022,7 @@ export class ResourcePolicyInvalidParameterException
           identifier: "ResourcePolicyParameterNamesList",
         }),
       ),
-      Message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
     },
     T.AwsQueryError({
       code: "ResourcePolicyInvalidParameterException",
@@ -1020,7 +1035,7 @@ export class ResourcePolicyLimitExceededException
     {
       Limit: S.optional(S.Number),
       LimitType: S.optional(S.String),
-      Message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
     },
     T.AwsQueryError({
       code: "ResourcePolicyLimitExceededException",
@@ -1030,7 +1045,7 @@ export class ResourcePolicyLimitExceededException
 export class ResourcePolicyNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<ResourcePolicyNotFoundException>()(
     "ResourcePolicyNotFoundException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.AwsQueryError({
       code: "ResourcePolicyNotFoundException",
       httpResponseCode: 404,
@@ -1040,7 +1055,7 @@ export class ServiceQuotaExceededException
   extends /*@__PURE__*/ S.TaggedErrorClass<ServiceQuotaExceededException>()(
     "ServiceQuotaExceededException",
     {
-      Message: S.String,
+      message: S.String.pipe(T.ErrorMessage()),
       ResourceId: S.optional(S.String),
       ResourceType: S.optional(S.String),
       QuotaCode: S.String,
@@ -1050,19 +1065,19 @@ export class ServiceQuotaExceededException
 export class ServiceSettingNotFound
   extends /*@__PURE__*/ S.TaggedErrorClass<ServiceSettingNotFound>()(
     "ServiceSettingNotFound",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.AwsQueryError({ code: "ServiceSettingNotFound", httpResponseCode: 400 }),
   ) {}
 export class StatusUnchanged
   extends /*@__PURE__*/ S.TaggedErrorClass<StatusUnchanged>()(
     "StatusUnchanged",
-    {},
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.AwsQueryError({ code: "StatusUnchanged", httpResponseCode: 400 }),
   ) {}
 export class SubTypeCountLimitExceededException
   extends /*@__PURE__*/ S.TaggedErrorClass<SubTypeCountLimitExceededException>()(
     "SubTypeCountLimitExceededException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.AwsQueryError({
       code: "SubTypeCountLimitExceeded",
       httpResponseCode: 400,
@@ -1071,20 +1086,20 @@ export class SubTypeCountLimitExceededException
 export class TargetInUseException
   extends /*@__PURE__*/ S.TaggedErrorClass<TargetInUseException>()(
     "TargetInUseException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.AwsQueryError({ code: "TargetInUseException", httpResponseCode: 400 }),
   ) {}
 export class TargetNotConnected
   extends /*@__PURE__*/ S.TaggedErrorClass<TargetNotConnected>()(
     "TargetNotConnected",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.AwsQueryError({ code: "TargetNotConnected", httpResponseCode: 430 }),
   ) {}
 export class ThrottlingException
   extends /*@__PURE__*/ S.TaggedErrorClass<ThrottlingException>()(
     "ThrottlingException",
     {
-      Message: S.String,
+      message: S.String.pipe(T.ErrorMessage()),
       QuotaCode: S.optional(S.String),
       ServiceCode: S.optional(S.String),
     },
@@ -1092,25 +1107,25 @@ export class ThrottlingException
 export class TooManyTagsError
   extends /*@__PURE__*/ S.TaggedErrorClass<TooManyTagsError>()(
     "TooManyTagsError",
-    {},
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.AwsQueryError({ code: "TooManyTagsError", httpResponseCode: 400 }),
   ) {}
 export class TooManyUpdates
   extends /*@__PURE__*/ S.TaggedErrorClass<TooManyUpdates>()(
     "TooManyUpdates",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.AwsQueryError({ code: "TooManyUpdates", httpResponseCode: 429 }),
   ) {}
 export class TotalSizeLimitExceededException
   extends /*@__PURE__*/ S.TaggedErrorClass<TotalSizeLimitExceededException>()(
     "TotalSizeLimitExceededException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.AwsQueryError({ code: "TotalSizeLimitExceeded", httpResponseCode: 400 }),
   ) {}
 export class UnsupportedCalendarException
   extends /*@__PURE__*/ S.TaggedErrorClass<UnsupportedCalendarException>()(
     "UnsupportedCalendarException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.AwsQueryError({
       code: "UnsupportedCalendarException",
       httpResponseCode: 400,
@@ -1119,7 +1134,7 @@ export class UnsupportedCalendarException
 export class UnsupportedFeatureRequiredException
   extends /*@__PURE__*/ S.TaggedErrorClass<UnsupportedFeatureRequiredException>()(
     "UnsupportedFeatureRequiredException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.AwsQueryError({
       code: "UnsupportedFeatureRequiredException",
       httpResponseCode: 400,
@@ -1128,7 +1143,10 @@ export class UnsupportedFeatureRequiredException
 export class UnsupportedInventoryItemContextException
   extends /*@__PURE__*/ S.TaggedErrorClass<UnsupportedInventoryItemContextException>()(
     "UnsupportedInventoryItemContextException",
-    { TypeName: S.optional(S.String), Message: S.optional(S.String) },
+    {
+      TypeName: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+    },
     T.AwsQueryError({
       code: "UnsupportedInventoryItemContext",
       httpResponseCode: 400,
@@ -1137,7 +1155,7 @@ export class UnsupportedInventoryItemContextException
 export class UnsupportedInventorySchemaVersionException
   extends /*@__PURE__*/ S.TaggedErrorClass<UnsupportedInventorySchemaVersionException>()(
     "UnsupportedInventorySchemaVersionException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.AwsQueryError({
       code: "UnsupportedInventorySchemaVersion",
       httpResponseCode: 400,
@@ -1146,7 +1164,7 @@ export class UnsupportedInventorySchemaVersionException
 export class UnsupportedOperatingSystem
   extends /*@__PURE__*/ S.TaggedErrorClass<UnsupportedOperatingSystem>()(
     "UnsupportedOperatingSystem",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.AwsQueryError({
       code: "UnsupportedOperatingSystem",
       httpResponseCode: 400,
@@ -1155,13 +1173,13 @@ export class UnsupportedOperatingSystem
 export class UnsupportedOperationException
   extends /*@__PURE__*/ S.TaggedErrorClass<UnsupportedOperationException>()(
     "UnsupportedOperationException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.AwsQueryError({ code: "UnsupportedOperation", httpResponseCode: 400 }),
   ) {}
 export class UnsupportedParameterType
   extends /*@__PURE__*/ S.TaggedErrorClass<UnsupportedParameterType>()(
     "UnsupportedParameterType",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.AwsQueryError({
       code: "UnsupportedParameterType",
       httpResponseCode: 400,
@@ -1170,13 +1188,16 @@ export class UnsupportedParameterType
 export class UnsupportedPlatformType
   extends /*@__PURE__*/ S.TaggedErrorClass<UnsupportedPlatformType>()(
     "UnsupportedPlatformType",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.AwsQueryError({ code: "UnsupportedPlatformType", httpResponseCode: 400 }),
   ) {}
 export class ValidationException
   extends /*@__PURE__*/ S.TaggedErrorClass<ValidationException>()(
     "ValidationException",
-    { Message: S.optional(S.String), ReasonCode: S.optional(S.String) },
+    {
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      ReasonCode: S.optional(S.String),
+    },
     T.AwsQueryError({ code: "ValidationException", httpResponseCode: 400 }),
   ) {}
 export type ResourceTypeForTagging =

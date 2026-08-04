@@ -127,7 +127,7 @@ export class BadRequestException
       ErrorDetails: S.optional(
         S.suspend(() => ErrorDetails).annotate({ identifier: "ErrorDetails" }),
       ),
-      Message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
     },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
@@ -138,7 +138,7 @@ export class InternalServerErrorException
       ErrorDetails: S.optional(
         S.suspend(() => ErrorDetails).annotate({ identifier: "ErrorDetails" }),
       ),
-      Message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
     },
     T.HttpError(500),
   ).pipe(C.withServerError) {}

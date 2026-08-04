@@ -94,13 +94,13 @@ const rules = T.EndpointResolver((p, _) => {
 export class ClientException
   extends /*@__PURE__*/ S.TaggedErrorClass<ClientException>()(
     "ClientException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ComputeEnvironmentBeingModified
   extends /*@__PURE__*/ S.TaggedErrorClass<ComputeEnvironmentBeingModified>()(
     "ComputeEnvironmentBeingModified",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.SyntheticError({
       from: "ClientException",
       message: { includes: "is being modified" },
@@ -109,7 +109,7 @@ export class ComputeEnvironmentBeingModified
 export class ComputeEnvironmentInUse
   extends /*@__PURE__*/ S.TaggedErrorClass<ComputeEnvironmentInUse>()(
     "ComputeEnvironmentInUse",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.SyntheticError({
       from: "ClientException",
       message: { includes: "found existing JobQueue relationship" },
@@ -118,7 +118,7 @@ export class ComputeEnvironmentInUse
 export class ComputeEnvironmentNotFound
   extends /*@__PURE__*/ S.TaggedErrorClass<ComputeEnvironmentNotFound>()(
     "ComputeEnvironmentNotFound",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.SyntheticError({
       from: "ClientException",
       message: { matches: "compute-environment/.* does not exist" },
@@ -127,7 +127,7 @@ export class ComputeEnvironmentNotFound
 export class ComputeEnvironmentNotValid
   extends /*@__PURE__*/ S.TaggedErrorClass<ComputeEnvironmentNotValid>()(
     "ComputeEnvironmentNotValid",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.SyntheticError({
       from: "ClientException",
       message: { matches: "must be (created and )?valid before attaching" },
@@ -136,7 +136,7 @@ export class ComputeEnvironmentNotValid
 export class JobQueueAlreadyExists
   extends /*@__PURE__*/ S.TaggedErrorClass<JobQueueAlreadyExists>()(
     "JobQueueAlreadyExists",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.SyntheticError({
       from: "ClientException",
       message: { includes: "already exists" },
@@ -145,7 +145,7 @@ export class JobQueueAlreadyExists
 export class JobQueueBeingModified
   extends /*@__PURE__*/ S.TaggedErrorClass<JobQueueBeingModified>()(
     "JobQueueBeingModified",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.SyntheticError({
       from: "ClientException",
       message: { includes: "is being modified" },
@@ -154,7 +154,7 @@ export class JobQueueBeingModified
 export class JobQueueNotFound
   extends /*@__PURE__*/ S.TaggedErrorClass<JobQueueNotFound>()(
     "JobQueueNotFound",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.SyntheticError({
       from: "ClientException",
       message: { matches: "job-queue/.* does not exist" },
@@ -163,7 +163,7 @@ export class JobQueueNotFound
 export class ServerException
   extends /*@__PURE__*/ S.TaggedErrorClass<ServerException>()(
     "ServerException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(500),
   ).pipe(C.withServerError) {}
 export interface CancelJobRequest {

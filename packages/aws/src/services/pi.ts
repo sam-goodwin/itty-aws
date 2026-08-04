@@ -89,17 +89,17 @@ const rules = T.EndpointResolver((p, _) => {
 export class InternalServiceError
   extends /*@__PURE__*/ S.TaggedErrorClass<InternalServiceError>()(
     "InternalServiceError",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidArgumentException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidArgumentException>()(
     "InvalidArgumentException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class NotAuthorizedException
   extends /*@__PURE__*/ S.TaggedErrorClass<NotAuthorizedException>()(
     "NotAuthorizedException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export type ServiceType = "RDS" | "DOCDB" | (string & {});
 export const ServiceType = /*@__PURE__*/ S.String;

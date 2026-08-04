@@ -90,7 +90,7 @@ export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedErrorClass<AccessDeniedException>()(
     "AccessDeniedException",
     {
-      Message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
       Code: S.optional(S.String),
       Logref: S.optional(S.String),
     },
@@ -99,7 +99,7 @@ export class ConflictException
   extends /*@__PURE__*/ S.TaggedErrorClass<ConflictException>()(
     "ConflictException",
     {
-      Message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
       Code: S.optional(S.String),
       Logref: S.optional(S.String),
     },
@@ -111,7 +111,7 @@ export class HumanLoopQuotaExceededException
       ResourceType: S.optional(S.String),
       QuotaCode: S.optional(S.String),
       ServiceCode: S.optional(S.String),
-      Message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
       Code: S.optional(S.String),
       Logref: S.optional(S.String),
     },
@@ -121,7 +121,7 @@ export class IdempotentParameterMismatchException
   extends /*@__PURE__*/ S.TaggedErrorClass<IdempotentParameterMismatchException>()(
     "IdempotentParameterMismatchException",
     {
-      Message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
       Code: S.optional(S.String),
       Logref: S.optional(S.String),
     },
@@ -130,7 +130,7 @@ export class ImageTooLargeException
   extends /*@__PURE__*/ S.TaggedErrorClass<ImageTooLargeException>()(
     "ImageTooLargeException",
     {
-      Message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
       Code: S.optional(S.String),
       Logref: S.optional(S.String),
     },
@@ -139,7 +139,7 @@ export class InternalServerError
   extends /*@__PURE__*/ S.TaggedErrorClass<InternalServerError>()(
     "InternalServerError",
     {
-      Message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
       Code: S.optional(S.String),
       Logref: S.optional(S.String),
     },
@@ -148,7 +148,7 @@ export class InvalidImageFormatException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidImageFormatException>()(
     "InvalidImageFormatException",
     {
-      Message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
       Code: S.optional(S.String),
       Logref: S.optional(S.String),
     },
@@ -157,7 +157,7 @@ export class InvalidManifestException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidManifestException>()(
     "InvalidManifestException",
     {
-      Message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
       Code: S.optional(S.String),
       Logref: S.optional(S.String),
     },
@@ -166,7 +166,7 @@ export class InvalidPaginationTokenException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidPaginationTokenException>()(
     "InvalidPaginationTokenException",
     {
-      Message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
       Code: S.optional(S.String),
       Logref: S.optional(S.String),
     },
@@ -175,7 +175,7 @@ export class InvalidParameterException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidParameterException>()(
     "InvalidParameterException",
     {
-      Message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
       Code: S.optional(S.String),
       Logref: S.optional(S.String),
     },
@@ -184,7 +184,7 @@ export class InvalidPolicyRevisionIdException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidPolicyRevisionIdException>()(
     "InvalidPolicyRevisionIdException",
     {
-      Message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
       Code: S.optional(S.String),
       Logref: S.optional(S.String),
     },
@@ -193,7 +193,7 @@ export class InvalidS3ObjectException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidS3ObjectException>()(
     "InvalidS3ObjectException",
     {
-      Message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
       Code: S.optional(S.String),
       Logref: S.optional(S.String),
     },
@@ -202,7 +202,7 @@ export class LimitExceededException
   extends /*@__PURE__*/ S.TaggedErrorClass<LimitExceededException>()(
     "LimitExceededException",
     {
-      Message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
       Code: S.optional(S.String),
       Logref: S.optional(S.String),
     },
@@ -211,7 +211,7 @@ export class MalformedPolicyDocumentException
   extends /*@__PURE__*/ S.TaggedErrorClass<MalformedPolicyDocumentException>()(
     "MalformedPolicyDocumentException",
     {
-      Message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
       Code: S.optional(S.String),
       Logref: S.optional(S.String),
     },
@@ -220,7 +220,7 @@ export class ProvisionedThroughputExceededException
   extends /*@__PURE__*/ S.TaggedErrorClass<ProvisionedThroughputExceededException>()(
     "ProvisionedThroughputExceededException",
     {
-      Message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
       Code: S.optional(S.String),
       Logref: S.optional(S.String),
     },
@@ -229,7 +229,7 @@ export class ResourceAlreadyExistsException
   extends /*@__PURE__*/ S.TaggedErrorClass<ResourceAlreadyExistsException>()(
     "ResourceAlreadyExistsException",
     {
-      Message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
       Code: S.optional(S.String),
       Logref: S.optional(S.String),
     },
@@ -238,7 +238,7 @@ export class ResourceInUseException
   extends /*@__PURE__*/ S.TaggedErrorClass<ResourceInUseException>()(
     "ResourceInUseException",
     {
-      Message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
       Code: S.optional(S.String),
       Logref: S.optional(S.String),
     },
@@ -247,7 +247,7 @@ export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
     "ResourceNotFoundException",
     {
-      Message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
       Code: S.optional(S.String),
       Logref: S.optional(S.String),
     },
@@ -256,7 +256,7 @@ export class ResourceNotReadyException
   extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotReadyException>()(
     "ResourceNotReadyException",
     {
-      Message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
       Code: S.optional(S.String),
       Logref: S.optional(S.String),
     },
@@ -265,7 +265,7 @@ export class ServiceQuotaExceededException
   extends /*@__PURE__*/ S.TaggedErrorClass<ServiceQuotaExceededException>()(
     "ServiceQuotaExceededException",
     {
-      Message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
       Code: S.optional(S.String),
       Logref: S.optional(S.String),
     },
@@ -274,7 +274,7 @@ export class SessionNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<SessionNotFoundException>()(
     "SessionNotFoundException",
     {
-      Message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
       Code: S.optional(S.String),
       Logref: S.optional(S.String),
     },
@@ -283,7 +283,7 @@ export class ThrottlingException
   extends /*@__PURE__*/ S.TaggedErrorClass<ThrottlingException>()(
     "ThrottlingException",
     {
-      Message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
       Code: S.optional(S.String),
       Logref: S.optional(S.String),
     },
@@ -292,7 +292,7 @@ export class VideoTooLargeException
   extends /*@__PURE__*/ S.TaggedErrorClass<VideoTooLargeException>()(
     "VideoTooLargeException",
     {
-      Message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
       Code: S.optional(S.String),
       Logref: S.optional(S.String),
     },

@@ -89,86 +89,86 @@ const rules = T.EndpointResolver((p, _) => {
 export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedErrorClass<AccessDeniedException>()(
     "AccessDeniedException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class ConcurrentModificationException
   extends /*@__PURE__*/ S.TaggedErrorClass<ConcurrentModificationException>()(
     "ConcurrentModificationException",
-    { message: S.String },
+    { message: S.String.pipe(T.ErrorMessage()) },
     T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedErrorClass<ConflictException>()(
     "ConflictException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class DecryptionFailure
   extends /*@__PURE__*/ S.TaggedErrorClass<DecryptionFailure>()(
     "DecryptionFailure",
-    { message: S.String },
+    { message: S.String.pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class EncryptionFailure
   extends /*@__PURE__*/ S.TaggedErrorClass<EncryptionFailure>()(
     "EncryptionFailure",
-    { message: S.String },
+    { message: S.String.pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InternalServerException
   extends /*@__PURE__*/ S.TaggedErrorClass<InternalServerException>()(
     "InternalServerException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class ResourceLimitExceededException
   extends /*@__PURE__*/ S.TaggedErrorClass<ResourceLimitExceededException>()(
     "ResourceLimitExceededException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
     "ResourceNotFoundException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ServiceException
   extends /*@__PURE__*/ S.TaggedErrorClass<ServiceException>()(
     "ServiceException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(T.HttpError(500), T.Retryable()),
   ).pipe(C.withServerError, C.withRetryableError) {}
 export class ServiceQuotaExceededException
   extends /*@__PURE__*/ S.TaggedErrorClass<ServiceQuotaExceededException>()(
     "ServiceQuotaExceededException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(402),
   ).pipe(C.withQuotaError) {}
 export class ThrottledException
   extends /*@__PURE__*/ S.TaggedErrorClass<ThrottledException>()(
     "ThrottledException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(T.HttpError(429), T.Retryable()),
   ).pipe(C.withThrottlingError, C.withRetryableError) {}
 export class ThrottlingException
   extends /*@__PURE__*/ S.TaggedErrorClass<ThrottlingException>()(
     "ThrottlingException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export class UnauthorizedException
   extends /*@__PURE__*/ S.TaggedErrorClass<UnauthorizedException>()(
     "UnauthorizedException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(401),
   ).pipe(C.withAuthError) {}
 export class ValidationException
   extends /*@__PURE__*/ S.TaggedErrorClass<ValidationException>()(
     "ValidationException",
     {
-      message: S.String,
+      message: S.String.pipe(T.ErrorMessage()),
       reason: S.suspend(() => ValidationExceptionReason).annotate({
         identifier: "ValidationExceptionReason",
       }),

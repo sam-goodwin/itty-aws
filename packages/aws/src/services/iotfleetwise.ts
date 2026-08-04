@@ -89,13 +89,17 @@ const rules = T.EndpointResolver((p, _) => {
 export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedErrorClass<AccessDeniedException>()(
     "AccessDeniedException",
-    { message: S.String },
+    { message: S.String.pipe(T.ErrorMessage()) },
     T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedErrorClass<ConflictException>()(
     "ConflictException",
-    { message: S.String, resource: S.String, resourceType: S.String },
+    {
+      message: S.String.pipe(T.ErrorMessage()),
+      resource: S.String,
+      resourceType: S.String,
+    },
     T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class DecoderManifestValidationException
@@ -112,7 +116,7 @@ export class DecoderManifestValidationException
           identifier: "InvalidNetworkInterfaces",
         }),
       ),
-      message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
     },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
@@ -120,7 +124,7 @@ export class InternalServerException
   extends /*@__PURE__*/ S.TaggedErrorClass<InternalServerException>()(
     "InternalServerException",
     {
-      message: S.String,
+      message: S.String.pipe(T.ErrorMessage()),
       retryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
     },
     T.HttpError(500),
@@ -133,7 +137,7 @@ export class InvalidNodeException
         S.suspend(() => Nodes).annotate({ identifier: "Nodes" }),
       ),
       reason: S.optional(S.String),
-      message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
     },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
@@ -141,7 +145,7 @@ export class InvalidSignalsException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidSignalsException>()(
     "InvalidSignalsException",
     {
-      message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
       invalidSignals: S.optional(
         S.suspend(() => InvalidSignals).annotate({
           identifier: "InvalidSignals",
@@ -153,20 +157,28 @@ export class InvalidSignalsException
 export class LimitExceededException
   extends /*@__PURE__*/ S.TaggedErrorClass<LimitExceededException>()(
     "LimitExceededException",
-    { message: S.String, resourceId: S.String, resourceType: S.String },
+    {
+      message: S.String.pipe(T.ErrorMessage()),
+      resourceId: S.String,
+      resourceType: S.String,
+    },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
     "ResourceNotFoundException",
-    { message: S.String, resourceId: S.String, resourceType: S.String },
+    {
+      message: S.String.pipe(T.ErrorMessage()),
+      resourceId: S.String,
+      resourceType: S.String,
+    },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ThrottlingException
   extends /*@__PURE__*/ S.TaggedErrorClass<ThrottlingException>()(
     "ThrottlingException",
     {
-      message: S.String,
+      message: S.String.pipe(T.ErrorMessage()),
       quotaCode: S.optional(S.String),
       serviceCode: S.optional(S.String),
       retryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
@@ -177,7 +189,7 @@ export class ValidationException
   extends /*@__PURE__*/ S.TaggedErrorClass<ValidationException>()(
     "ValidationException",
     {
-      message: S.String,
+      message: S.String.pipe(T.ErrorMessage()),
       reason: S.optional(
         S.suspend(() => ValidationExceptionReason).annotate({
           identifier: "ValidationExceptionReason",

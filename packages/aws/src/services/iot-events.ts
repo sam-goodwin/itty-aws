@@ -87,26 +87,26 @@ const rules = T.EndpointResolver((p, _) => {
 export class InternalFailureException
   extends /*@__PURE__*/ S.TaggedErrorClass<InternalFailureException>()(
     "InternalFailureException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class InvalidRequestException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidRequestException>()(
     "InvalidRequestException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class LimitExceededException
   extends /*@__PURE__*/ S.TaggedErrorClass<LimitExceededException>()(
     "LimitExceededException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(410),
   ).pipe(C.withBadRequestError) {}
 export class ResourceAlreadyExistsException
   extends /*@__PURE__*/ S.TaggedErrorClass<ResourceAlreadyExistsException>()(
     "ResourceAlreadyExistsException",
     {
-      message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
       resourceId: S.optional(S.String),
       resourceArn: S.optional(S.String),
     },
@@ -115,31 +115,31 @@ export class ResourceAlreadyExistsException
 export class ResourceInUseException
   extends /*@__PURE__*/ S.TaggedErrorClass<ResourceInUseException>()(
     "ResourceInUseException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
     "ResourceNotFoundException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ServiceUnavailableException
   extends /*@__PURE__*/ S.TaggedErrorClass<ServiceUnavailableException>()(
     "ServiceUnavailableException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(503),
   ).pipe(C.withServerError) {}
 export class ThrottlingException
   extends /*@__PURE__*/ S.TaggedErrorClass<ThrottlingException>()(
     "ThrottlingException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export class UnsupportedOperationException
   extends /*@__PURE__*/ S.TaggedErrorClass<UnsupportedOperationException>()(
     "UnsupportedOperationException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(501),
   ).pipe(C.withServerError) {}
 export type AlarmModelName = string;

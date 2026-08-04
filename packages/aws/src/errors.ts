@@ -1,6 +1,18 @@
 import * as S from "effect/Schema";
 import type * as HttpClientError from "effect/unstable/http/HttpClientError";
 import * as Category from "./category.ts";
+// Imported from the leaf module, not `traits.ts`: that one imports every
+// protocol, and each protocol imports this file, so the annotation would not
+// yet exist when these classes are built. See error-message.ts.
+import * as T from "./error-message.ts";
+
+/**
+ * The canonical message member every error class carries.
+ *
+ * Tagged with `T.ErrorMessage` so the response parser can find the message
+ * without guessing at spelling — see the trait's docs and distilled #160.
+ */
+const ErrorMessage = /*@__PURE__*/ S.optional(S.String).pipe(T.ErrorMessage());
 
 //==== Common AWS Errors ====
 export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
@@ -8,90 +20,90 @@ export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedExcept
   {
     // AWS explains WHICH action/resource was denied in the message — keep it
     // so callers (and test logs) can see the actual authorization failure.
-    Message: S.optional(S.String),
+    message: ErrorMessage,
   },
 ).pipe(Category.withAuthError) {}
 
 export class ExpiredTokenException extends S.TaggedErrorClass<ExpiredTokenException>()(
   "ExpiredTokenException",
-  {},
+  { message: ErrorMessage },
 ).pipe(Category.withAuthError) {}
 
 export class IncompleteSignature extends S.TaggedErrorClass<IncompleteSignature>()(
   "IncompleteSignature",
-  {},
+  { message: ErrorMessage },
 ).pipe(Category.withAuthError) {}
 
 export class InternalFailure extends S.TaggedErrorClass<InternalFailure>()(
   "InternalFailure",
-  {},
+  { message: ErrorMessage },
 ).pipe(Category.withServerError) {}
 
 export class MalformedHttpRequestException extends S.TaggedErrorClass<MalformedHttpRequestException>()(
   "MalformedHttpRequestException",
-  {},
+  { message: ErrorMessage },
 ).pipe(Category.withBadRequestError) {}
 
 export class NotAuthorized extends S.TaggedErrorClass<NotAuthorized>()(
   "NotAuthorized",
-  {},
+  { message: ErrorMessage },
 ).pipe(Category.withAuthError) {}
 
 export class OptInRequired extends S.TaggedErrorClass<OptInRequired>()(
   "OptInRequired",
-  {},
+  { message: ErrorMessage },
 ).pipe(Category.withAuthError) {}
 
 export class RequestAbortedException extends S.TaggedErrorClass<RequestAbortedException>()(
   "RequestAbortedException",
-  {},
+  { message: ErrorMessage },
 ).pipe(Category.withAbortedError) {}
 
 export class RequestEntityTooLargeException extends S.TaggedErrorClass<RequestEntityTooLargeException>()(
   "RequestEntityTooLargeException",
-  {},
+  { message: ErrorMessage },
 ).pipe(Category.withBadRequestError) {}
 
 export class RequestExpired extends S.TaggedErrorClass<RequestExpired>()(
   "RequestExpired",
-  {},
+  { message: ErrorMessage },
 ).pipe(Category.withBadRequestError, Category.withTimeoutError) {}
 
 export class RequestTimeoutException extends S.TaggedErrorClass<RequestTimeoutException>()(
   "RequestTimeoutException",
-  {},
+  { message: ErrorMessage },
 ).pipe(Category.withTimeoutError) {}
 
 export class ServiceUnavailable extends S.TaggedErrorClass<ServiceUnavailable>()(
   "ServiceUnavailable",
-  {},
+  { message: ErrorMessage },
 ).pipe(Category.withServerError) {}
 
 export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
   "ThrottlingException",
-  {},
+  { message: ErrorMessage },
 ).pipe(Category.withThrottlingError) {}
 
 export class UnrecognizedClientException extends S.TaggedErrorClass<UnrecognizedClientException>()(
   "UnrecognizedClientException",
-  {},
+  { message: ErrorMessage },
 ).pipe(Category.withAuthError) {}
 
 export class UnknownOperationException extends S.TaggedErrorClass<UnknownOperationException>()(
   "UnknownOperationException",
-  {},
+  { message: ErrorMessage },
 ).pipe(Category.withBadRequestError) {}
 
 export class ValidationError extends S.TaggedErrorClass<ValidationError>()(
   "ValidationError",
-  {},
+  { message: ErrorMessage },
 ).pipe(Category.withBadRequestError) {}
 
 export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
   "ValidationException",
   {
     /** The human-readable validation failure reason from the service. */
-    message: S.optional(S.String),
+    message: ErrorMessage,
     /** Machine-readable reason code (e.g. "FIELD_VALIDATION_FAILED"). */
     reason: S.optional(S.String),
     /** Per-field validation failures, when the service reports them. */
@@ -101,7 +113,7 @@ export class ValidationException extends S.TaggedErrorClass<ValidationException>
 
 export class OperationAborted extends S.TaggedErrorClass<OperationAborted>()(
   "OperationAborted",
-  {},
+  { message: ErrorMessage },
 ).pipe(Category.withAbortedError) {}
 
 export class UnknownAwsError extends S.TaggedErrorClass<UnknownAwsError>()(
@@ -113,7 +125,7 @@ export class UnknownAwsError extends S.TaggedErrorClass<UnknownAwsError>()(
     service: S.optional(S.String),
     /** The operation name (e.g., "createBucket", "putObject") */
     operation: S.optional(S.String),
-    message: S.String,
+    message: S.String.pipe(T.ErrorMessage()),
   },
 ) {}
 
@@ -148,30 +160,30 @@ export const isTransientNetworkError = (err: unknown): boolean => {
 export class TransientFetchError extends S.TaggedErrorClass<TransientFetchError>()(
   "TransientFetchError",
   {
-    message: S.String,
+    message: S.String.pipe(T.ErrorMessage()),
     cause: S.Any,
   },
 ).pipe(Category.withNetworkError) {}
 
 export class InternalError extends S.TaggedErrorClass<InternalError>()(
   "InternalError",
-  {},
+  { message: ErrorMessage },
 ).pipe(Category.withServerError) {}
 
 /** Error when endpoint resolution fails due to a rule error */
 export class EndpointError extends S.TaggedErrorClass<EndpointError>()(
   "EndpointError",
-  { message: S.String },
+  { message: S.String.pipe(T.ErrorMessage()) },
 ).pipe(Category.withServerError) {}
 
 /** Error when no rule matches in the ruleset */
 export class NoMatchingRuleError extends S.TaggedErrorClass<NoMatchingRuleError>()(
   "NoMatchingRuleError",
-  {},
+  { message: ErrorMessage },
 ) {}
 
 export class ParseError extends S.TaggedErrorClass<ParseError>()("ParseError", {
-  message: S.String,
+  message: S.String.pipe(T.ErrorMessage()),
 }) {}
 
 export const COMMON_ERRORS = [

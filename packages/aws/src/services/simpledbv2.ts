@@ -94,43 +94,43 @@ const rules = T.EndpointResolver((p, _) => {
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedErrorClass<ConflictException>()(
     "ConflictException",
-    { message: S.String },
+    { message: S.String.pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidNextTokenException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidNextTokenException>()(
     "InvalidNextTokenException",
-    { message: S.String },
+    { message: S.String.pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidParameterCombinationException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidParameterCombinationException>()(
     "InvalidParameterCombinationException",
-    { message: S.String },
+    { message: S.String.pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidParameterValueException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidParameterValueException>()(
     "InvalidParameterValueException",
-    { message: S.String },
+    { message: S.String.pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class NoSuchDomainException
   extends /*@__PURE__*/ S.TaggedErrorClass<NoSuchDomainException>()(
     "NoSuchDomainException",
-    { message: S.String },
+    { message: S.String.pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class NoSuchExportException
   extends /*@__PURE__*/ S.TaggedErrorClass<NoSuchExportException>()(
     "NoSuchExportException",
-    { message: S.String },
+    { message: S.String.pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class NumberExportsLimitExceeded
   extends /*@__PURE__*/ S.TaggedErrorClass<NumberExportsLimitExceeded>()(
     "NumberExportsLimitExceeded",
-    { message: S.String },
+    { message: S.String.pipe(T.ErrorMessage()) },
     T.HttpError(409),
   ).pipe(C.withConflictError, C.withThrottlingError) {}
 export type ExportArn = string;

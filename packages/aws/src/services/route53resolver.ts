@@ -93,87 +93,105 @@ const rules = T.EndpointResolver((p, _) => {
 export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedErrorClass<AccessDeniedException>()(
     "AccessDeniedException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withAuthError) {}
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedErrorClass<ConflictException>()(
     "ConflictException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InternalServiceErrorException
   extends /*@__PURE__*/ S.TaggedErrorClass<InternalServiceErrorException>()(
     "InternalServiceErrorException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidNextTokenException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidNextTokenException>()(
     "InvalidNextTokenException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidParameterException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidParameterException>()(
     "InvalidParameterException",
-    { Message: S.String, FieldName: S.optional(S.String) },
+    {
+      message: S.String.pipe(T.ErrorMessage()),
+      FieldName: S.optional(S.String),
+    },
   ) {}
 export class InvalidPolicyDocument
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidPolicyDocument>()(
     "InvalidPolicyDocument",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidRequestException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidRequestException>()(
     "InvalidRequestException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidTagException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidTagException>()(
     "InvalidTagException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class LimitExceededException
   extends /*@__PURE__*/ S.TaggedErrorClass<LimitExceededException>()(
     "LimitExceededException",
-    { Message: S.optional(S.String), ResourceType: S.optional(S.String) },
+    {
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      ResourceType: S.optional(S.String),
+    },
   ) {}
 export class ResourceExistsException
   extends /*@__PURE__*/ S.TaggedErrorClass<ResourceExistsException>()(
     "ResourceExistsException",
-    { Message: S.optional(S.String), ResourceType: S.optional(S.String) },
+    {
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      ResourceType: S.optional(S.String),
+    },
   ) {}
 export class ResourceInUseException
   extends /*@__PURE__*/ S.TaggedErrorClass<ResourceInUseException>()(
     "ResourceInUseException",
-    { Message: S.optional(S.String), ResourceType: S.optional(S.String) },
+    {
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      ResourceType: S.optional(S.String),
+    },
   ) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
     "ResourceNotFoundException",
-    { Message: S.optional(S.String), ResourceType: S.optional(S.String) },
+    {
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      ResourceType: S.optional(S.String),
+    },
   ) {}
 export class ResourceUnavailableException
   extends /*@__PURE__*/ S.TaggedErrorClass<ResourceUnavailableException>()(
     "ResourceUnavailableException",
-    { Message: S.optional(S.String), ResourceType: S.optional(S.String) },
+    {
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      ResourceType: S.optional(S.String),
+    },
   ) {}
 export class ServiceQuotaExceededException
   extends /*@__PURE__*/ S.TaggedErrorClass<ServiceQuotaExceededException>()(
     "ServiceQuotaExceededException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class ThrottlingException
   extends /*@__PURE__*/ S.TaggedErrorClass<ThrottlingException>()(
     "ThrottlingException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class UnknownResourceException
   extends /*@__PURE__*/ S.TaggedErrorClass<UnknownResourceException>()(
     "UnknownResourceException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class ValidationException
   extends /*@__PURE__*/ S.TaggedErrorClass<ValidationException>()(
     "ValidationException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export type CreatorRequestId = string;
 export type ResourceId = string;

@@ -161,17 +161,17 @@ const rules = T.EndpointResolver((p, _) => {
 export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedErrorClass<AccessDeniedException>()(
     "AccessDeniedException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withAuthError) {}
 export class ConcurrentModificationException
   extends /*@__PURE__*/ S.TaggedErrorClass<ConcurrentModificationException>()(
     "ConcurrentModificationException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withConflictError, C.withRetryableError) {}
 export class EventBusHasRules
   extends /*@__PURE__*/ S.TaggedErrorClass<EventBusHasRules>()(
     "EventBusHasRules",
-    {},
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.SyntheticError({
       from: "ValidationException",
       message: { includes: "has rules" },
@@ -180,57 +180,57 @@ export class EventBusHasRules
 export class IllegalStatusException
   extends /*@__PURE__*/ S.TaggedErrorClass<IllegalStatusException>()(
     "IllegalStatusException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withConflictError) {}
 export class InternalException
   extends /*@__PURE__*/ S.TaggedErrorClass<InternalException>()(
     "InternalException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withServerError, C.withRetryableError) {}
 export class InvalidEventPatternException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidEventPatternException>()(
     "InvalidEventPatternException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withBadRequestError) {}
 export class InvalidStateException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidStateException>()(
     "InvalidStateException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withConflictError) {}
 export class LimitExceededException
   extends /*@__PURE__*/ S.TaggedErrorClass<LimitExceededException>()(
     "LimitExceededException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withQuotaError) {}
 export class ManagedRuleException
   extends /*@__PURE__*/ S.TaggedErrorClass<ManagedRuleException>()(
     "ManagedRuleException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withBadRequestError) {}
 export class OperationDisabledException
   extends /*@__PURE__*/ S.TaggedErrorClass<OperationDisabledException>()(
     "OperationDisabledException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withBadRequestError) {}
 export class PolicyLengthExceededException
   extends /*@__PURE__*/ S.TaggedErrorClass<PolicyLengthExceededException>()(
     "PolicyLengthExceededException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withQuotaError) {}
 export class ResourceAlreadyExistsException
   extends /*@__PURE__*/ S.TaggedErrorClass<ResourceAlreadyExistsException>()(
     "ResourceAlreadyExistsException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withAlreadyExistsError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
     "ResourceNotFoundException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class ThrottlingException
   extends /*@__PURE__*/ S.TaggedErrorClass<ThrottlingException>()(
     "ThrottlingException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withThrottlingError, C.withRetryableError) {}
 export type EventSourceName = string;
 export interface ActivateEventSourceRequest {

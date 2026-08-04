@@ -88,29 +88,29 @@ const rules = T.EndpointResolver((p, _) => {
 export class DirectConnectClientException
   extends /*@__PURE__*/ S.TaggedErrorClass<DirectConnectClientException>()(
     "DirectConnectClientException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class DirectConnectServerException
   extends /*@__PURE__*/ S.TaggedErrorClass<DirectConnectServerException>()(
     "DirectConnectServerException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class DuplicateTagKeysException
   extends /*@__PURE__*/ S.TaggedErrorClass<DuplicateTagKeysException>()(
     "DuplicateTagKeysException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class LimitExceededException
   extends /*@__PURE__*/ S.TaggedErrorClass<LimitExceededException>()(
     "LimitExceededException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TooManyTagsException
   extends /*@__PURE__*/ S.TaggedErrorClass<TooManyTagsException>()(
     "TooManyTagsException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export type DirectConnectGatewayId = string;
 export type DirectConnectGatewayAssociationProposalId = string;

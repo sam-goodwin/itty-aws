@@ -88,552 +88,552 @@ const rules = T.EndpointResolver((p, _) => {
 export class AlarmsLimitExceededException
   extends /*@__PURE__*/ S.TaggedErrorClass<AlarmsLimitExceededException>()(
     "AlarmsLimitExceededException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class ApplicationAlreadyExistsException
   extends /*@__PURE__*/ S.TaggedErrorClass<ApplicationAlreadyExistsException>()(
     "ApplicationAlreadyExistsException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withAlreadyExistsError) {}
 export class ApplicationDoesNotExistException
   extends /*@__PURE__*/ S.TaggedErrorClass<ApplicationDoesNotExistException>()(
     "ApplicationDoesNotExistException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class ApplicationLimitExceededException
   extends /*@__PURE__*/ S.TaggedErrorClass<ApplicationLimitExceededException>()(
     "ApplicationLimitExceededException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class ApplicationNameRequiredException
   extends /*@__PURE__*/ S.TaggedErrorClass<ApplicationNameRequiredException>()(
     "ApplicationNameRequiredException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class ArnNotSupportedException
   extends /*@__PURE__*/ S.TaggedErrorClass<ArnNotSupportedException>()(
     "ArnNotSupportedException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class BatchLimitExceededException
   extends /*@__PURE__*/ S.TaggedErrorClass<BatchLimitExceededException>()(
     "BatchLimitExceededException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class BucketNameFilterRequiredException
   extends /*@__PURE__*/ S.TaggedErrorClass<BucketNameFilterRequiredException>()(
     "BucketNameFilterRequiredException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class DeploymentAlreadyCompletedException
   extends /*@__PURE__*/ S.TaggedErrorClass<DeploymentAlreadyCompletedException>()(
     "DeploymentAlreadyCompletedException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class DeploymentConfigAlreadyExistsException
   extends /*@__PURE__*/ S.TaggedErrorClass<DeploymentConfigAlreadyExistsException>()(
     "DeploymentConfigAlreadyExistsException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withAlreadyExistsError) {}
 export class DeploymentConfigDoesNotExistException
   extends /*@__PURE__*/ S.TaggedErrorClass<DeploymentConfigDoesNotExistException>()(
     "DeploymentConfigDoesNotExistException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class DeploymentConfigInUseException
   extends /*@__PURE__*/ S.TaggedErrorClass<DeploymentConfigInUseException>()(
     "DeploymentConfigInUseException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class DeploymentConfigLimitExceededException
   extends /*@__PURE__*/ S.TaggedErrorClass<DeploymentConfigLimitExceededException>()(
     "DeploymentConfigLimitExceededException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class DeploymentConfigNameRequiredException
   extends /*@__PURE__*/ S.TaggedErrorClass<DeploymentConfigNameRequiredException>()(
     "DeploymentConfigNameRequiredException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class DeploymentDoesNotExistException
   extends /*@__PURE__*/ S.TaggedErrorClass<DeploymentDoesNotExistException>()(
     "DeploymentDoesNotExistException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class DeploymentGroupAlreadyExistsException
   extends /*@__PURE__*/ S.TaggedErrorClass<DeploymentGroupAlreadyExistsException>()(
     "DeploymentGroupAlreadyExistsException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withAlreadyExistsError) {}
 export class DeploymentGroupDoesNotExistException
   extends /*@__PURE__*/ S.TaggedErrorClass<DeploymentGroupDoesNotExistException>()(
     "DeploymentGroupDoesNotExistException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class DeploymentGroupLimitExceededException
   extends /*@__PURE__*/ S.TaggedErrorClass<DeploymentGroupLimitExceededException>()(
     "DeploymentGroupLimitExceededException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class DeploymentGroupNameRequiredException
   extends /*@__PURE__*/ S.TaggedErrorClass<DeploymentGroupNameRequiredException>()(
     "DeploymentGroupNameRequiredException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class DeploymentIdRequiredException
   extends /*@__PURE__*/ S.TaggedErrorClass<DeploymentIdRequiredException>()(
     "DeploymentIdRequiredException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class DeploymentIsNotInReadyStateException
   extends /*@__PURE__*/ S.TaggedErrorClass<DeploymentIsNotInReadyStateException>()(
     "DeploymentIsNotInReadyStateException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class DeploymentLimitExceededException
   extends /*@__PURE__*/ S.TaggedErrorClass<DeploymentLimitExceededException>()(
     "DeploymentLimitExceededException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class DeploymentNotStartedException
   extends /*@__PURE__*/ S.TaggedErrorClass<DeploymentNotStartedException>()(
     "DeploymentNotStartedException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class DeploymentTargetDoesNotExistException
   extends /*@__PURE__*/ S.TaggedErrorClass<DeploymentTargetDoesNotExistException>()(
     "DeploymentTargetDoesNotExistException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class DeploymentTargetIdRequiredException
   extends /*@__PURE__*/ S.TaggedErrorClass<DeploymentTargetIdRequiredException>()(
     "DeploymentTargetIdRequiredException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class DeploymentTargetListSizeExceededException
   extends /*@__PURE__*/ S.TaggedErrorClass<DeploymentTargetListSizeExceededException>()(
     "DeploymentTargetListSizeExceededException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class DescriptionTooLongException
   extends /*@__PURE__*/ S.TaggedErrorClass<DescriptionTooLongException>()(
     "DescriptionTooLongException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class ECSServiceMappingLimitExceededException
   extends /*@__PURE__*/ S.TaggedErrorClass<ECSServiceMappingLimitExceededException>()(
     "ECSServiceMappingLimitExceededException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class GitHubAccountTokenDoesNotExistException
   extends /*@__PURE__*/ S.TaggedErrorClass<GitHubAccountTokenDoesNotExistException>()(
     "GitHubAccountTokenDoesNotExistException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class GitHubAccountTokenNameRequiredException
   extends /*@__PURE__*/ S.TaggedErrorClass<GitHubAccountTokenNameRequiredException>()(
     "GitHubAccountTokenNameRequiredException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class IamArnRequiredException
   extends /*@__PURE__*/ S.TaggedErrorClass<IamArnRequiredException>()(
     "IamArnRequiredException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class IamSessionArnAlreadyRegisteredException
   extends /*@__PURE__*/ S.TaggedErrorClass<IamSessionArnAlreadyRegisteredException>()(
     "IamSessionArnAlreadyRegisteredException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class IamUserArnAlreadyRegisteredException
   extends /*@__PURE__*/ S.TaggedErrorClass<IamUserArnAlreadyRegisteredException>()(
     "IamUserArnAlreadyRegisteredException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class IamUserArnRequiredException
   extends /*@__PURE__*/ S.TaggedErrorClass<IamUserArnRequiredException>()(
     "IamUserArnRequiredException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InstanceDoesNotExistException
   extends /*@__PURE__*/ S.TaggedErrorClass<InstanceDoesNotExistException>()(
     "InstanceDoesNotExistException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InstanceIdRequiredException
   extends /*@__PURE__*/ S.TaggedErrorClass<InstanceIdRequiredException>()(
     "InstanceIdRequiredException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InstanceLimitExceededException
   extends /*@__PURE__*/ S.TaggedErrorClass<InstanceLimitExceededException>()(
     "InstanceLimitExceededException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InstanceNameAlreadyRegisteredException
   extends /*@__PURE__*/ S.TaggedErrorClass<InstanceNameAlreadyRegisteredException>()(
     "InstanceNameAlreadyRegisteredException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InstanceNameRequiredException
   extends /*@__PURE__*/ S.TaggedErrorClass<InstanceNameRequiredException>()(
     "InstanceNameRequiredException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InstanceNotRegisteredException
   extends /*@__PURE__*/ S.TaggedErrorClass<InstanceNotRegisteredException>()(
     "InstanceNotRegisteredException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidAlarmConfigException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidAlarmConfigException>()(
     "InvalidAlarmConfigException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidApplicationNameException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidApplicationNameException>()(
     "InvalidApplicationNameException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidArnException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidArnException>()(
     "InvalidArnException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidAutoRollbackConfigException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidAutoRollbackConfigException>()(
     "InvalidAutoRollbackConfigException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidAutoScalingGroupException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidAutoScalingGroupException>()(
     "InvalidAutoScalingGroupException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidBlueGreenDeploymentConfigurationException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidBlueGreenDeploymentConfigurationException>()(
     "InvalidBlueGreenDeploymentConfigurationException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidBucketNameFilterException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidBucketNameFilterException>()(
     "InvalidBucketNameFilterException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidComputePlatformException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidComputePlatformException>()(
     "InvalidComputePlatformException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidDeployedStateFilterException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidDeployedStateFilterException>()(
     "InvalidDeployedStateFilterException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidDeploymentConfigNameException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidDeploymentConfigNameException>()(
     "InvalidDeploymentConfigNameException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidDeploymentGroupNameException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidDeploymentGroupNameException>()(
     "InvalidDeploymentGroupNameException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidDeploymentIdException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidDeploymentIdException>()(
     "InvalidDeploymentIdException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidDeploymentInstanceTypeException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidDeploymentInstanceTypeException>()(
     "InvalidDeploymentInstanceTypeException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidDeploymentStatusException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidDeploymentStatusException>()(
     "InvalidDeploymentStatusException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidDeploymentStyleException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidDeploymentStyleException>()(
     "InvalidDeploymentStyleException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidDeploymentTargetIdException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidDeploymentTargetIdException>()(
     "InvalidDeploymentTargetIdException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidDeploymentWaitTypeException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidDeploymentWaitTypeException>()(
     "InvalidDeploymentWaitTypeException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidEC2TagCombinationException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidEC2TagCombinationException>()(
     "InvalidEC2TagCombinationException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidEC2TagException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidEC2TagException>()(
     "InvalidEC2TagException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidECSServiceException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidECSServiceException>()(
     "InvalidECSServiceException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidExternalIdException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidExternalIdException>()(
     "InvalidExternalIdException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidFileExistsBehaviorException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidFileExistsBehaviorException>()(
     "InvalidFileExistsBehaviorException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidGitHubAccountTokenException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidGitHubAccountTokenException>()(
     "InvalidGitHubAccountTokenException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidGitHubAccountTokenNameException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidGitHubAccountTokenNameException>()(
     "InvalidGitHubAccountTokenNameException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidIamSessionArnException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidIamSessionArnException>()(
     "InvalidIamSessionArnException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidIamUserArnException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidIamUserArnException>()(
     "InvalidIamUserArnException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidIgnoreApplicationStopFailuresValueException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidIgnoreApplicationStopFailuresValueException>()(
     "InvalidIgnoreApplicationStopFailuresValueException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidInputException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidInputException>()(
     "InvalidInputException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidInstanceNameException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidInstanceNameException>()(
     "InvalidInstanceNameException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidInstanceStatusException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidInstanceStatusException>()(
     "InvalidInstanceStatusException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidInstanceTypeException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidInstanceTypeException>()(
     "InvalidInstanceTypeException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidKeyPrefixFilterException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidKeyPrefixFilterException>()(
     "InvalidKeyPrefixFilterException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidLifecycleEventHookExecutionIdException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidLifecycleEventHookExecutionIdException>()(
     "InvalidLifecycleEventHookExecutionIdException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidLifecycleEventHookExecutionStatusException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidLifecycleEventHookExecutionStatusException>()(
     "InvalidLifecycleEventHookExecutionStatusException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidLoadBalancerInfoException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidLoadBalancerInfoException>()(
     "InvalidLoadBalancerInfoException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidMinimumHealthyHostValueException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidMinimumHealthyHostValueException>()(
     "InvalidMinimumHealthyHostValueException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidNextTokenException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidNextTokenException>()(
     "InvalidNextTokenException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidOnPremisesTagCombinationException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidOnPremisesTagCombinationException>()(
     "InvalidOnPremisesTagCombinationException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidOperationException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidOperationException>()(
     "InvalidOperationException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidRegistrationStatusException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidRegistrationStatusException>()(
     "InvalidRegistrationStatusException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidRevisionException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidRevisionException>()(
     "InvalidRevisionException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidRoleException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidRoleException>()(
     "InvalidRoleException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidSortByException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidSortByException>()(
     "InvalidSortByException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidSortOrderException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidSortOrderException>()(
     "InvalidSortOrderException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidTagException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidTagException>()(
     "InvalidTagException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidTagFilterException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidTagFilterException>()(
     "InvalidTagFilterException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidTagsToAddException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidTagsToAddException>()(
     "InvalidTagsToAddException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidTargetFilterNameException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidTargetFilterNameException>()(
     "InvalidTargetFilterNameException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidTargetGroupPairException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidTargetGroupPairException>()(
     "InvalidTargetGroupPairException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidTargetInstancesException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidTargetInstancesException>()(
     "InvalidTargetInstancesException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidTimeRangeException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidTimeRangeException>()(
     "InvalidTimeRangeException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidTrafficRoutingConfigurationException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidTrafficRoutingConfigurationException>()(
     "InvalidTrafficRoutingConfigurationException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidTriggerConfigException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidTriggerConfigException>()(
     "InvalidTriggerConfigException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidUpdateOutdatedInstancesOnlyValueException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidUpdateOutdatedInstancesOnlyValueException>()(
     "InvalidUpdateOutdatedInstancesOnlyValueException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidZonalDeploymentConfigurationException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidZonalDeploymentConfigurationException>()(
     "InvalidZonalDeploymentConfigurationException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class LifecycleEventAlreadyCompletedException
   extends /*@__PURE__*/ S.TaggedErrorClass<LifecycleEventAlreadyCompletedException>()(
     "LifecycleEventAlreadyCompletedException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class LifecycleHookLimitExceededException
   extends /*@__PURE__*/ S.TaggedErrorClass<LifecycleHookLimitExceededException>()(
     "LifecycleHookLimitExceededException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class MultipleIamArnsProvidedException
   extends /*@__PURE__*/ S.TaggedErrorClass<MultipleIamArnsProvidedException>()(
     "MultipleIamArnsProvidedException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class OperationNotSupportedException
   extends /*@__PURE__*/ S.TaggedErrorClass<OperationNotSupportedException>()(
     "OperationNotSupportedException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class ResourceArnRequiredException
   extends /*@__PURE__*/ S.TaggedErrorClass<ResourceArnRequiredException>()(
     "ResourceArnRequiredException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class ResourceValidationException
   extends /*@__PURE__*/ S.TaggedErrorClass<ResourceValidationException>()(
     "ResourceValidationException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class RevisionDoesNotExistException
   extends /*@__PURE__*/ S.TaggedErrorClass<RevisionDoesNotExistException>()(
     "RevisionDoesNotExistException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class RevisionRequiredException
   extends /*@__PURE__*/ S.TaggedErrorClass<RevisionRequiredException>()(
     "RevisionRequiredException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class RoleRequiredException
   extends /*@__PURE__*/ S.TaggedErrorClass<RoleRequiredException>()(
     "RoleRequiredException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class TagLimitExceededException
   extends /*@__PURE__*/ S.TaggedErrorClass<TagLimitExceededException>()(
     "TagLimitExceededException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class TagRequiredException
   extends /*@__PURE__*/ S.TaggedErrorClass<TagRequiredException>()(
     "TagRequiredException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class TagSetListLimitExceededException
   extends /*@__PURE__*/ S.TaggedErrorClass<TagSetListLimitExceededException>()(
     "TagSetListLimitExceededException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class ThrottlingException
   extends /*@__PURE__*/ S.TaggedErrorClass<ThrottlingException>()(
     "ThrottlingException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class TriggerTargetsLimitExceededException
   extends /*@__PURE__*/ S.TaggedErrorClass<TriggerTargetsLimitExceededException>()(
     "TriggerTargetsLimitExceededException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class UnsupportedActionForDeploymentTypeException
   extends /*@__PURE__*/ S.TaggedErrorClass<UnsupportedActionForDeploymentTypeException>()(
     "UnsupportedActionForDeploymentTypeException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export type Key = string;
 export type Value = string;

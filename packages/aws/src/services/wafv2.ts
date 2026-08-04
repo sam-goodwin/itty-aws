@@ -88,28 +88,28 @@ const rules = T.EndpointResolver((p, _) => {
 export class WAFAssociatedItemException
   extends /*@__PURE__*/ S.TaggedErrorClass<WAFAssociatedItemException>()(
     "WAFAssociatedItemException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class WAFConfigurationWarningException
   extends /*@__PURE__*/ S.TaggedErrorClass<WAFConfigurationWarningException>()(
     "WAFConfigurationWarningException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class WAFDuplicateItemException
   extends /*@__PURE__*/ S.TaggedErrorClass<WAFDuplicateItemException>()(
     "WAFDuplicateItemException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class WAFExpiredManagedRuleGroupVersionException
   extends /*@__PURE__*/ S.TaggedErrorClass<WAFExpiredManagedRuleGroupVersionException>()(
     "WAFExpiredManagedRuleGroupVersionException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class WAFFeatureNotIncludedInPricingPlanException
   extends /*@__PURE__*/ S.TaggedErrorClass<WAFFeatureNotIncludedInPricingPlanException>()(
     "WAFFeatureNotIncludedInPricingPlanException",
     {
-      Message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
       DisallowedFeatures: S.optional(
         S.suspend(() => DisallowedFeatures).annotate({
           identifier: "DisallowedFeatures",
@@ -120,18 +120,18 @@ export class WAFFeatureNotIncludedInPricingPlanException
 export class WAFInternalErrorException
   extends /*@__PURE__*/ S.TaggedErrorClass<WAFInternalErrorException>()(
     "WAFInternalErrorException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withServerError) {}
 export class WAFInvalidOperationException
   extends /*@__PURE__*/ S.TaggedErrorClass<WAFInvalidOperationException>()(
     "WAFInvalidOperationException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class WAFInvalidParameterException
   extends /*@__PURE__*/ S.TaggedErrorClass<WAFInvalidParameterException>()(
     "WAFInvalidParameterException",
     {
-      message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
       Field: S.optional(
         S.suspend(() => ParameterExceptionField).annotate({
           identifier: "ParameterExceptionField",
@@ -144,62 +144,65 @@ export class WAFInvalidParameterException
 export class WAFInvalidPermissionPolicyException
   extends /*@__PURE__*/ S.TaggedErrorClass<WAFInvalidPermissionPolicyException>()(
     "WAFInvalidPermissionPolicyException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class WAFInvalidResourceException
   extends /*@__PURE__*/ S.TaggedErrorClass<WAFInvalidResourceException>()(
     "WAFInvalidResourceException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class WAFLimitsExceededException
   extends /*@__PURE__*/ S.TaggedErrorClass<WAFLimitsExceededException>()(
     "WAFLimitsExceededException",
-    { Message: S.optional(S.String), SourceType: S.optional(S.String) },
+    {
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      SourceType: S.optional(S.String),
+    },
   ) {}
 export class WAFLogDestinationPermissionIssueException
   extends /*@__PURE__*/ S.TaggedErrorClass<WAFLogDestinationPermissionIssueException>()(
     "WAFLogDestinationPermissionIssueException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class WAFNonexistentItemException
   extends /*@__PURE__*/ S.TaggedErrorClass<WAFNonexistentItemException>()(
     "WAFNonexistentItemException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class WAFOptimisticLockException
   extends /*@__PURE__*/ S.TaggedErrorClass<WAFOptimisticLockException>()(
     "WAFOptimisticLockException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class WAFServiceLinkedRoleErrorException
   extends /*@__PURE__*/ S.TaggedErrorClass<WAFServiceLinkedRoleErrorException>()(
     "WAFServiceLinkedRoleErrorException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class WAFSubscriptionNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<WAFSubscriptionNotFoundException>()(
     "WAFSubscriptionNotFoundException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class WAFTagOperationException
   extends /*@__PURE__*/ S.TaggedErrorClass<WAFTagOperationException>()(
     "WAFTagOperationException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class WAFTagOperationInternalErrorException
   extends /*@__PURE__*/ S.TaggedErrorClass<WAFTagOperationInternalErrorException>()(
     "WAFTagOperationInternalErrorException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withServerError) {}
 export class WAFUnavailableEntityException
   extends /*@__PURE__*/ S.TaggedErrorClass<WAFUnavailableEntityException>()(
     "WAFUnavailableEntityException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class WAFUnsupportedAggregateKeyTypeException
   extends /*@__PURE__*/ S.TaggedErrorClass<WAFUnsupportedAggregateKeyTypeException>()(
     "WAFUnsupportedAggregateKeyTypeException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export type ResourceArn = string;
 export interface AssociateWebACLRequest {

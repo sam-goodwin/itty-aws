@@ -89,14 +89,14 @@ const rules = T.EndpointResolver((p, _) => {
 export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedErrorClass<AccessDeniedException>()(
     "AccessDeniedException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedErrorClass<ConflictException>()(
     "ConflictException",
     {
-      message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
       resourceId: S.optional(S.String),
       resourceType: S.optional(S.String),
     },
@@ -106,7 +106,7 @@ export class InternalServerException
   extends /*@__PURE__*/ S.TaggedErrorClass<InternalServerException>()(
     "InternalServerException",
     {
-      message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
       retryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
     },
     T.all(T.HttpError(500), T.Retryable()),
@@ -114,20 +114,26 @@ export class InternalServerException
 export class InvalidParameterValueException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidParameterValueException>()(
     "InvalidParameterValueException",
-    { Type: S.optional(S.String), message: S.optional(S.String) },
+    {
+      Type: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+    },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ResourceConflictException
   extends /*@__PURE__*/ S.TaggedErrorClass<ResourceConflictException>()(
     "ResourceConflictException",
-    { Type: S.optional(S.String), message: S.optional(S.String) },
+    {
+      Type: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+    },
     T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
     "ResourceNotFoundException",
     {
-      message: S.String,
+      message: S.String.pipe(T.ErrorMessage()),
       resourceType: S.optional(S.String),
       resourceId: S.optional(S.String),
     },
@@ -136,14 +142,17 @@ export class ResourceNotFoundException
 export class ServiceException
   extends /*@__PURE__*/ S.TaggedErrorClass<ServiceException>()(
     "ServiceException",
-    { Type: S.optional(S.String), message: S.optional(S.String) },
+    {
+      Type: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+    },
     T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class ServiceQuotaExceededException
   extends /*@__PURE__*/ S.TaggedErrorClass<ServiceQuotaExceededException>()(
     "ServiceQuotaExceededException",
     {
-      message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
       resourceId: S.optional(S.String),
       resourceType: S.optional(S.String),
       serviceCode: S.optional(S.String),
@@ -155,7 +164,7 @@ export class ThrottlingException
   extends /*@__PURE__*/ S.TaggedErrorClass<ThrottlingException>()(
     "ThrottlingException",
     {
-      message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
       serviceCode: S.optional(S.String),
       quotaCode: S.optional(S.String),
       retryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
@@ -165,13 +174,16 @@ export class ThrottlingException
 export class TooManyRequestsException
   extends /*@__PURE__*/ S.TaggedErrorClass<TooManyRequestsException>()(
     "TooManyRequestsException",
-    { Type: S.optional(S.String), message: S.optional(S.String) },
+    {
+      Type: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+    },
     T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export class ValidationException
   extends /*@__PURE__*/ S.TaggedErrorClass<ValidationException>()(
     "ValidationException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export type MicrovmIdentifier = string;

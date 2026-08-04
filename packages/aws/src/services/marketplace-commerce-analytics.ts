@@ -86,7 +86,7 @@ const rules = T.EndpointResolver((p, _) => {
 export class MarketplaceCommerceAnalyticsException
   extends /*@__PURE__*/ S.TaggedErrorClass<MarketplaceCommerceAnalyticsException>()(
     "MarketplaceCommerceAnalyticsException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export type DataSetType =
   | "customer_subscriber_hourly_monthly_subscriptions"

@@ -91,7 +91,7 @@ export class AccessDeniedException
     "AccessDeniedException",
     {
       errorCode: S.String,
-      message: S.String,
+      message: S.String.pipe(T.ErrorMessage()),
       resourceId: S.optional(S.String),
       resourceType: S.optional(S.String),
     },
@@ -102,7 +102,7 @@ export class ConflictException
     "ConflictException",
     {
       errorCode: S.String,
-      message: S.String,
+      message: S.String.pipe(T.ErrorMessage()),
       resourceId: S.String,
       resourceType: S.String,
     },
@@ -111,7 +111,10 @@ export class ConflictException
 export class InternalServerException
   extends /*@__PURE__*/ S.TaggedErrorClass<InternalServerException>()(
     "InternalServerException",
-    { error: S.optional(S.String), message: S.optional(S.String) },
+    {
+      error: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+    },
     T.all(T.HttpError(500), T.Retryable()),
   ).pipe(C.withServerError, C.withRetryableError) {}
 export class ResourceNotFoundException
@@ -119,7 +122,7 @@ export class ResourceNotFoundException
     "ResourceNotFoundException",
     {
       errorCode: S.String,
-      message: S.String,
+      message: S.String.pipe(T.ErrorMessage()),
       resourceId: S.String,
       resourceType: S.String,
     },
@@ -130,7 +133,7 @@ export class ThrottlingException
     "ThrottlingException",
     {
       errorCode: S.String,
-      message: S.String,
+      message: S.String.pipe(T.ErrorMessage()),
       serviceCode: S.optional(S.String),
       quotaCode: S.optional(S.String),
     },
@@ -141,7 +144,7 @@ export class ValidationException
     "ValidationException",
     {
       errorCode: S.String,
-      message: S.String,
+      message: S.String.pipe(T.ErrorMessage()),
       reason: S.suspend(() => ValidationExceptionReason).annotate({
         identifier: "ValidationExceptionReason",
       }),

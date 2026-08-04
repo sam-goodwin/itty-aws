@@ -3,6 +3,7 @@ import * as S from "effect/Schema";
 import * as AST from "effect/SchemaAST";
 import * as SchemaTransformation from "effect/SchemaTransformation";
 import * as Stream from "effect/Stream";
+import { ErrorMessage, errorMessageSymbol } from "./error-message.ts";
 import type { Protocol } from "./client/protocol.ts";
 import type { Request as ProtocolRequest } from "./client/request.ts";
 import { applyHttpChecksum } from "./middleware/checksum.ts";
@@ -33,6 +34,10 @@ import {
 // objects, the `all` combinator) is core's; this module supplies the AWS
 // trait vocabulary on top of it.
 export { all, type Annotation };
+
+// The canonical-message trait is defined in a leaf module so `errors.ts` can
+// reach it without importing this one — see its header for the cycle.
+export { ErrorMessage, errorMessageSymbol };
 
 /**
  * Any type that has an .annotate() method returning itself.
@@ -1130,6 +1135,10 @@ export const getSyntheticError = (
   ast: AST.AST,
 ): SyntheticErrorTrait | undefined =>
   getAnnotationUnwrap<SyntheticErrorTrait>(ast, syntheticErrorSymbol);
+
+/** True when this member is the error shape's canonical message. */
+export const hasErrorMessage = (prop: AST.PropertySignature): boolean =>
+  hasPropAnnotation(prop, errorMessageSymbol);
 
 export const getTimestampFormat = (
   prop: AST.PropertySignature,

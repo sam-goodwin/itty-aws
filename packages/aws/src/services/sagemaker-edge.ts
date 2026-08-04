@@ -86,7 +86,7 @@ const rules = T.EndpointResolver((p, _) => {
 export class InternalServiceException
   extends /*@__PURE__*/ S.TaggedErrorClass<InternalServiceException>()(
     "InternalServiceException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export type DeviceName = string;
 export type DeviceFleetName = string;

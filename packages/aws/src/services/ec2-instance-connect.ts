@@ -87,7 +87,7 @@ const rules = T.EndpointResolver((p, _) => {
 export class AuthException
   extends /*@__PURE__*/ S.TaggedErrorClass<AuthException>()(
     "AuthException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "Forbidden", httpResponseCode: 403 }),
       T.HttpError(403),
@@ -96,7 +96,7 @@ export class AuthException
 export class EC2InstanceNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<EC2InstanceNotFoundException>()(
     "EC2InstanceNotFoundException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "EC2InstanceNotFound", httpResponseCode: 404 }),
       T.HttpError(404),
@@ -105,7 +105,7 @@ export class EC2InstanceNotFoundException
 export class EC2InstanceStateInvalidException
   extends /*@__PURE__*/ S.TaggedErrorClass<EC2InstanceStateInvalidException>()(
     "EC2InstanceStateInvalidException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({
         code: "EC2InstanceStateInvalid",
@@ -117,7 +117,7 @@ export class EC2InstanceStateInvalidException
 export class EC2InstanceTypeInvalidException
   extends /*@__PURE__*/ S.TaggedErrorClass<EC2InstanceTypeInvalidException>()(
     "EC2InstanceTypeInvalidException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({
         code: "EC2InstanceTypeInvalid",
@@ -129,7 +129,7 @@ export class EC2InstanceTypeInvalidException
 export class EC2InstanceUnavailableException
   extends /*@__PURE__*/ S.TaggedErrorClass<EC2InstanceUnavailableException>()(
     "EC2InstanceUnavailableException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({
         code: "EC2InstanceUnavailable",
@@ -141,7 +141,7 @@ export class EC2InstanceUnavailableException
 export class InvalidArgsException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidArgsException>()(
     "InvalidArgsException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "InvalidArguments", httpResponseCode: 400 }),
       T.HttpError(400),
@@ -150,7 +150,7 @@ export class InvalidArgsException
 export class SerialConsoleAccessDisabledException
   extends /*@__PURE__*/ S.TaggedErrorClass<SerialConsoleAccessDisabledException>()(
     "SerialConsoleAccessDisabledException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({
         code: "SerialConsoleAccessDisabled",
@@ -162,7 +162,7 @@ export class SerialConsoleAccessDisabledException
 export class SerialConsoleSessionLimitExceededException
   extends /*@__PURE__*/ S.TaggedErrorClass<SerialConsoleSessionLimitExceededException>()(
     "SerialConsoleSessionLimitExceededException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({
         code: "SerialConsoleSessionLimitExceeded",
@@ -174,7 +174,7 @@ export class SerialConsoleSessionLimitExceededException
 export class SerialConsoleSessionUnavailableException
   extends /*@__PURE__*/ S.TaggedErrorClass<SerialConsoleSessionUnavailableException>()(
     "SerialConsoleSessionUnavailableException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({
         code: "SerialConsoleSessionUnavailable",
@@ -186,7 +186,7 @@ export class SerialConsoleSessionUnavailableException
 export class SerialConsoleSessionUnsupportedException
   extends /*@__PURE__*/ S.TaggedErrorClass<SerialConsoleSessionUnsupportedException>()(
     "SerialConsoleSessionUnsupportedException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({
         code: "SerialConsoleSessionUnsupported",
@@ -198,7 +198,7 @@ export class SerialConsoleSessionUnsupportedException
 export class ServiceException
   extends /*@__PURE__*/ S.TaggedErrorClass<ServiceException>()(
     "ServiceException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "InternalServerError", httpResponseCode: 500 }),
       T.HttpError(500),
@@ -207,7 +207,7 @@ export class ServiceException
 export class ThrottlingException
   extends /*@__PURE__*/ S.TaggedErrorClass<ThrottlingException>()(
     "ThrottlingException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "TooManyRequests", httpResponseCode: 429 }),
       T.HttpError(429),

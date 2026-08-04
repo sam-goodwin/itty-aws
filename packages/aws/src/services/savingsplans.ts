@@ -128,7 +128,7 @@ const rules = T.EndpointResolver((p, _) => {
 export class InternalServerException
   extends /*@__PURE__*/ S.TaggedErrorClass<InternalServerException>()(
     "InternalServerException",
-    { message: S.String },
+    { message: S.String.pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({
         code: "InternalServerException",
@@ -140,7 +140,7 @@ export class InternalServerException
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
     "ResourceNotFoundException",
-    { message: S.String },
+    { message: S.String.pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({
         code: "ResourceNotFoundException",
@@ -152,7 +152,7 @@ export class ResourceNotFoundException
 export class ServiceQuotaExceededException
   extends /*@__PURE__*/ S.TaggedErrorClass<ServiceQuotaExceededException>()(
     "ServiceQuotaExceededException",
-    { message: S.String },
+    { message: S.String.pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({
         code: "ServiceQuotaExceededException",
@@ -164,7 +164,7 @@ export class ServiceQuotaExceededException
 export class ValidationException
   extends /*@__PURE__*/ S.TaggedErrorClass<ValidationException>()(
     "ValidationException",
-    { message: S.String },
+    { message: S.String.pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "ValidationException", httpResponseCode: 400 }),
       T.HttpError(400),

@@ -88,7 +88,7 @@ const rules = T.EndpointResolver((p, _) => {
 export class AlreadyStreamedException
   extends /*@__PURE__*/ S.TaggedErrorClass<AlreadyStreamedException>()(
     "AlreadyStreamedException",
-    { message: S.String },
+    { message: S.String.pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "AlreadyStreamed", httpResponseCode: 400 }),
       T.HttpError(400),
@@ -97,7 +97,7 @@ export class AlreadyStreamedException
 export class ConcurrentModificationException
   extends /*@__PURE__*/ S.TaggedErrorClass<ConcurrentModificationException>()(
     "ConcurrentModificationException",
-    { message: S.String },
+    { message: S.String.pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({
         code: "ConcurrentModification",
@@ -109,7 +109,7 @@ export class ConcurrentModificationException
 export class DuplicateRequestException
   extends /*@__PURE__*/ S.TaggedErrorClass<DuplicateRequestException>()(
     "DuplicateRequestException",
-    { message: S.String },
+    { message: S.String.pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "DuplicateRequest", httpResponseCode: 400 }),
       T.HttpError(400),
@@ -118,7 +118,7 @@ export class DuplicateRequestException
 export class InternalErrorException
   extends /*@__PURE__*/ S.TaggedErrorClass<InternalErrorException>()(
     "InternalErrorException",
-    { message: S.String },
+    { message: S.String.pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "InternalError", httpResponseCode: 500 }),
       T.HttpError(500),
@@ -127,7 +127,7 @@ export class InternalErrorException
 export class InvalidConfigurationException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidConfigurationException>()(
     "InvalidConfigurationException",
-    { message: S.String },
+    { message: S.String.pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "InvalidConfiguration", httpResponseCode: 400 }),
       T.HttpError(400),
@@ -136,7 +136,7 @@ export class InvalidConfigurationException
 export class InvalidLambdaFunctionOutputException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidLambdaFunctionOutputException>()(
     "InvalidLambdaFunctionOutputException",
-    { message: S.String },
+    { message: S.String.pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({
         code: "InvalidLambdaFunctionOutput",
@@ -148,7 +148,7 @@ export class InvalidLambdaFunctionOutputException
 export class InvalidParameterException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidParameterException>()(
     "InvalidParameterException",
-    { message: S.String },
+    { message: S.String.pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "InvalidParameter", httpResponseCode: 400 }),
       T.HttpError(400),
@@ -157,7 +157,7 @@ export class InvalidParameterException
 export class LambdaThrottledException
   extends /*@__PURE__*/ S.TaggedErrorClass<LambdaThrottledException>()(
     "LambdaThrottledException",
-    { message: S.String },
+    { message: S.String.pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "LambdaThrottled", httpResponseCode: 429 }),
       T.HttpError(429),
@@ -166,7 +166,7 @@ export class LambdaThrottledException
 export class LimitExceededException
   extends /*@__PURE__*/ S.TaggedErrorClass<LimitExceededException>()(
     "LimitExceededException",
-    { message: S.String },
+    { message: S.String.pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "LimitExceeded", httpResponseCode: 400 }),
       T.HttpError(400),
@@ -175,7 +175,7 @@ export class LimitExceededException
 export class NotAuthorizedException
   extends /*@__PURE__*/ S.TaggedErrorClass<NotAuthorizedException>()(
     "NotAuthorizedException",
-    { message: S.String },
+    { message: S.String.pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "NotAuthorizedError", httpResponseCode: 403 }),
       T.HttpError(403),
@@ -184,7 +184,7 @@ export class NotAuthorizedException
 export class ResourceConflictException
   extends /*@__PURE__*/ S.TaggedErrorClass<ResourceConflictException>()(
     "ResourceConflictException",
-    { message: S.String },
+    { message: S.String.pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "ResourceConflict", httpResponseCode: 409 }),
       T.HttpError(409),
@@ -193,7 +193,7 @@ export class ResourceConflictException
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
     "ResourceNotFoundException",
-    { message: S.String },
+    { message: S.String.pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "ResourceNotFound", httpResponseCode: 404 }),
       T.HttpError(404),
@@ -202,7 +202,7 @@ export class ResourceNotFoundException
 export class TooManyRequestsException
   extends /*@__PURE__*/ S.TaggedErrorClass<TooManyRequestsException>()(
     "TooManyRequestsException",
-    { message: S.String },
+    { message: S.String.pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "TooManyRequests", httpResponseCode: 429 }),
       T.HttpError(429),

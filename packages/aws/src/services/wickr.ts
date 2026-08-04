@@ -89,37 +89,37 @@ const rules = T.EndpointResolver((p, _) => {
 export class BadRequestError
   extends /*@__PURE__*/ S.TaggedErrorClass<BadRequestError>()(
     "BadRequestError",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ForbiddenError
   extends /*@__PURE__*/ S.TaggedErrorClass<ForbiddenError>()(
     "ForbiddenError",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class InternalServerError
   extends /*@__PURE__*/ S.TaggedErrorClass<InternalServerError>()(
     "InternalServerError",
-    { message: S.String },
+    { message: S.String.pipe(T.ErrorMessage()) },
     T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class RateLimitError
   extends /*@__PURE__*/ S.TaggedErrorClass<RateLimitError>()(
     "RateLimitError",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export class ResourceNotFoundError
   extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundError>()(
     "ResourceNotFoundError",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class UnauthorizedError
   extends /*@__PURE__*/ S.TaggedErrorClass<UnauthorizedError>()(
     "UnauthorizedError",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(401),
   ).pipe(C.withAuthError) {}
 export class ValidationError
@@ -131,7 +131,7 @@ export class ValidationError
           identifier: "ErrorDetailList",
         }),
       ),
-      message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
     },
     T.HttpError(422),
   ).pipe(C.withBadRequestError) {}

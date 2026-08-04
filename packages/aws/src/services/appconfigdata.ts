@@ -91,7 +91,7 @@ export class BadRequestException
   extends /*@__PURE__*/ S.TaggedErrorClass<BadRequestException>()(
     "BadRequestException",
     {
-      Message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
       Reason: S.optional(S.String),
       Details: S.optional(
         S.suspend(() => BadRequestDetails).annotate({
@@ -104,14 +104,14 @@ export class BadRequestException
 export class InternalServerException
   extends /*@__PURE__*/ S.TaggedErrorClass<InternalServerException>()(
     "InternalServerException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
     "ResourceNotFoundException",
     {
-      Message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
       ResourceType: S.optional(S.String),
       ReferencedBy: S.optional(
         S.suspend(() => StringMap).annotate({ identifier: "StringMap" }),
@@ -122,7 +122,7 @@ export class ResourceNotFoundException
 export class ThrottlingException
   extends /*@__PURE__*/ S.TaggedErrorClass<ThrottlingException>()(
     "ThrottlingException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export type Token = string;

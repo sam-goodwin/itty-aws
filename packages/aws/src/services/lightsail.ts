@@ -92,7 +92,7 @@ export class AccessDeniedException
     {
       code: S.optional(S.String),
       docs: S.optional(S.String),
-      message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
       tip: S.optional(S.String),
     },
     T.HttpError(403),
@@ -103,7 +103,7 @@ export class AccountSetupInProgressException
     {
       code: S.optional(S.String),
       docs: S.optional(S.String),
-      message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
       tip: S.optional(S.String),
     },
     T.HttpError(428),
@@ -114,7 +114,7 @@ export class InvalidInputException
     {
       code: S.optional(S.String),
       docs: S.optional(S.String),
-      message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
       tip: S.optional(S.String),
     },
     T.HttpError(400),
@@ -125,7 +125,7 @@ export class NotFoundException
     {
       code: S.optional(S.String),
       docs: S.optional(S.String),
-      message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
       tip: S.optional(S.String),
     },
     T.HttpError(404),
@@ -136,7 +136,7 @@ export class OperationFailureException
     {
       code: S.optional(S.String),
       docs: S.optional(S.String),
-      message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
       tip: S.optional(S.String),
     },
     T.HttpError(400),
@@ -147,7 +147,7 @@ export class RegionSetupInProgressException
     {
       code: S.optional(S.String),
       docs: S.optional(S.String),
-      message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
       tip: S.optional(S.String),
     },
     T.HttpError(428),
@@ -158,7 +158,7 @@ export class ServiceException
     {
       code: S.optional(S.String),
       docs: S.optional(S.String),
-      message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
       tip: S.optional(S.String),
     },
     T.HttpError(500),
@@ -169,7 +169,7 @@ export class UnauthenticatedException
     {
       code: S.optional(S.String),
       docs: S.optional(S.String),
-      message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
       tip: S.optional(S.String),
     },
     T.HttpError(401),

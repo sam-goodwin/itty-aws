@@ -92,48 +92,63 @@ const rules = T.EndpointResolver((p, _) => {
 export class IdempotentParameterMismatchException
   extends /*@__PURE__*/ S.TaggedErrorClass<IdempotentParameterMismatchException>()(
     "IdempotentParameterMismatchException",
-    { message: S.optional(S.String), code: S.optional(S.Number) },
+    {
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      code: S.optional(S.Number),
+    },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InternalServerException
   extends /*@__PURE__*/ S.TaggedErrorClass<InternalServerException>()(
     "InternalServerException",
-    { message: S.optional(S.String), code: S.optional(S.Number) },
+    {
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      code: S.optional(S.Number),
+    },
     T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class InvalidInputException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidInputException>()(
     "InvalidInputException",
-    { message: S.optional(S.String), code: S.optional(S.Number) },
+    {
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      code: S.optional(S.Number),
+    },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidTagException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidTagException>()(
     "InvalidTagException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class LimitExceededException
   extends /*@__PURE__*/ S.TaggedErrorClass<LimitExceededException>()(
     "LimitExceededException",
-    { message: S.optional(S.String), code: S.optional(S.Number) },
+    {
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      code: S.optional(S.Number),
+    },
     T.HttpError(417),
   ) {}
 export class PredictorNotMountedException
   extends /*@__PURE__*/ S.TaggedErrorClass<PredictorNotMountedException>()(
     "PredictorNotMountedException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
     "ResourceNotFoundException",
-    { message: S.optional(S.String), code: S.optional(S.Number) },
+    {
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      code: S.optional(S.Number),
+    },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class TagLimitExceededException
   extends /*@__PURE__*/ S.TaggedErrorClass<TagLimitExceededException>()(
     "TagLimitExceededException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export type TagKey = string;
 export type TagValue = string;

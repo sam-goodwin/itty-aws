@@ -89,43 +89,43 @@ const rules = T.EndpointResolver((p, _) => {
 export class AccessDeniedByMetaException
   extends /*@__PURE__*/ S.TaggedErrorClass<AccessDeniedByMetaException>()(
     "AccessDeniedByMetaException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class DependencyException
   extends /*@__PURE__*/ S.TaggedErrorClass<DependencyException>()(
     "DependencyException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(T.HttpError(502), T.Retryable()),
   ).pipe(C.withServerError, C.withRetryableError) {}
 export class InternalServiceException
   extends /*@__PURE__*/ S.TaggedErrorClass<InternalServiceException>()(
     "InternalServiceException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(T.HttpError(500), T.Retryable()),
   ).pipe(C.withServerError, C.withRetryableError) {}
 export class InvalidParametersException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidParametersException>()(
     "InvalidParametersException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class LimitExceededException
   extends /*@__PURE__*/ S.TaggedErrorClass<LimitExceededException>()(
     "LimitExceededException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
     "ResourceNotFoundException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ThrottledRequestException
   extends /*@__PURE__*/ S.TaggedErrorClass<ThrottledRequestException>()(
     "ThrottledRequestException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(T.HttpError(429), T.Retryable()),
   ).pipe(C.withThrottlingError, C.withRetryableError) {}
 export interface WhatsAppSignupCallback {

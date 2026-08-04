@@ -89,14 +89,14 @@ const rules = T.EndpointResolver((p, _) => {
 export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedErrorClass<AccessDeniedException>()(
     "AccessDeniedException",
-    { message: S.String },
+    { message: S.String.pipe(T.ErrorMessage()) },
     T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedErrorClass<ConflictException>()(
     "ConflictException",
     {
-      message: S.String,
+      message: S.String.pipe(T.ErrorMessage()),
       resources: S.suspend(() => ResourceConflictList).annotate({
         identifier: "ResourceConflictList",
       }),
@@ -106,20 +106,20 @@ export class ConflictException
 export class InternalServerException
   extends /*@__PURE__*/ S.TaggedErrorClass<InternalServerException>()(
     "InternalServerException",
-    { message: S.String },
+    { message: S.String.pipe(T.ErrorMessage()) },
     T.all(T.HttpError(500), T.Retryable()),
   ).pipe(C.withServerError, C.withRetryableError) {}
 export class InvalidStateException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidStateException>()(
     "InvalidStateException",
-    { message: S.String },
+    { message: S.String.pipe(T.ErrorMessage()) },
     T.HttpError(406),
   ).pipe(C.withBadRequestError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
     "ResourceNotFoundException",
     {
-      message: S.String,
+      message: S.String.pipe(T.ErrorMessage()),
       resourceId: S.String,
       resourceType: S.suspend(() => ResourceType).annotate({
         identifier: "ResourceType",
@@ -131,7 +131,7 @@ export class ServiceQuotaExceededException
   extends /*@__PURE__*/ S.TaggedErrorClass<ServiceQuotaExceededException>()(
     "ServiceQuotaExceededException",
     {
-      message: S.String,
+      message: S.String.pipe(T.ErrorMessage()),
       resourceId: S.optional(S.String),
       resourceType: S.suspend(() => ResourceType).annotate({
         identifier: "ResourceType",
@@ -145,7 +145,7 @@ export class ThrottlingException
   extends /*@__PURE__*/ S.TaggedErrorClass<ThrottlingException>()(
     "ThrottlingException",
     {
-      message: S.String,
+      message: S.String.pipe(T.ErrorMessage()),
       serviceCode: S.optional(S.String),
       quotaCode: S.optional(S.String),
     },
@@ -154,13 +154,16 @@ export class ThrottlingException
 export class TooManyTagsException
   extends /*@__PURE__*/ S.TaggedErrorClass<TooManyTagsException>()(
     "TooManyTagsException",
-    { message: S.optional(S.String), resourceName: S.optional(S.String) },
+    {
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      resourceName: S.optional(S.String),
+    },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ValidationException
   extends /*@__PURE__*/ S.TaggedErrorClass<ValidationException>()(
     "ValidationException",
-    {},
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export type PolicyStoreId = string;
 export type PolicyId = string;

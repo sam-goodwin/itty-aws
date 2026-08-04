@@ -98,25 +98,25 @@ const rules = T.EndpointResolver((p, _) => {
 export class InternalDependencyException
   extends /*@__PURE__*/ S.TaggedErrorClass<InternalDependencyException>()(
     "InternalDependencyException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(530),
   ).pipe(C.withServerError) {}
 export class InternalFailure
   extends /*@__PURE__*/ S.TaggedErrorClass<InternalFailure>()(
     "InternalFailure",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class InternalStreamFailure
   extends /*@__PURE__*/ S.TaggedErrorClass<InternalStreamFailure>()(
     "InternalStreamFailure",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class ModelError
   extends /*@__PURE__*/ S.TaggedErrorClass<ModelError>()(
     "ModelError",
     {
-      Message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
       OriginalStatusCode: S.optional(S.Number),
       OriginalMessage: S.optional(S.String),
       LogStreamArn: S.optional(S.String),
@@ -126,7 +126,7 @@ export class ModelError
 export class ModelNotReadyException
   extends /*@__PURE__*/ S.TaggedErrorClass<ModelNotReadyException>()(
     "ModelNotReadyException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({
         code: "ModelNotReadyException",
@@ -138,18 +138,21 @@ export class ModelNotReadyException
 export class ModelStreamError
   extends /*@__PURE__*/ S.TaggedErrorClass<ModelStreamError>()(
     "ModelStreamError",
-    { Message: S.optional(S.String), ErrorCode: S.optional(S.String) },
+    {
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      ErrorCode: S.optional(S.String),
+    },
   ) {}
 export class ServiceUnavailable
   extends /*@__PURE__*/ S.TaggedErrorClass<ServiceUnavailable>()(
     "ServiceUnavailable",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(503),
   ).pipe(C.withServerError) {}
 export class ValidationError
   extends /*@__PURE__*/ S.TaggedErrorClass<ValidationError>()(
     "ValidationError",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export type EndpointName = string;

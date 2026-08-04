@@ -95,19 +95,19 @@ const rules = T.EndpointResolver((p, _) => {
 export class EKSRequestThrottledException
   extends /*@__PURE__*/ S.TaggedErrorClass<EKSRequestThrottledException>()(
     "EKSRequestThrottledException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export class InternalServerException
   extends /*@__PURE__*/ S.TaggedErrorClass<InternalServerException>()(
     "InternalServerException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class InvalidResourceArn
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidResourceArn>()(
     "InvalidResourceArn",
-    {},
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.SyntheticError({
       from: "BadRequestException",
       message: { includes: "Invalid input resource arn" },
@@ -116,24 +116,24 @@ export class InvalidResourceArn
 export class RequestThrottledException
   extends /*@__PURE__*/ S.TaggedErrorClass<RequestThrottledException>()(
     "RequestThrottledException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
     "ResourceNotFoundException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TooManyRequestsException
   extends /*@__PURE__*/ S.TaggedErrorClass<TooManyRequestsException>()(
     "TooManyRequestsException",
-    {},
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withThrottlingError, C.withRetryableError) {}
 export class ValidationException
   extends /*@__PURE__*/ S.TaggedErrorClass<ValidationException>()(
     "ValidationException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export type ResourceIdString = string;

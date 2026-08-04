@@ -88,7 +88,7 @@ const rules = T.EndpointResolver((p, _) => {
 export class AccountSendingPausedException
   extends /*@__PURE__*/ S.TaggedErrorClass<AccountSendingPausedException>()(
     "AccountSendingPausedException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({
         code: "AccountSendingPausedException",
@@ -100,7 +100,10 @@ export class AccountSendingPausedException
 export class AlreadyExistsException
   extends /*@__PURE__*/ S.TaggedErrorClass<AlreadyExistsException>()(
     "AlreadyExistsException",
-    { Name: S.optional(S.String), message: S.optional(S.String) },
+    {
+      Name: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+    },
     T.all(
       T.AwsQueryError({ code: "AlreadyExists", httpResponseCode: 400 }),
       T.HttpError(400),
@@ -109,7 +112,10 @@ export class AlreadyExistsException
 export class CannotDeleteException
   extends /*@__PURE__*/ S.TaggedErrorClass<CannotDeleteException>()(
     "CannotDeleteException",
-    { Name: S.optional(S.String), message: S.optional(S.String) },
+    {
+      Name: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+    },
     T.all(
       T.AwsQueryError({ code: "CannotDelete", httpResponseCode: 400 }),
       T.HttpError(400),
@@ -120,7 +126,7 @@ export class ConfigurationSetAlreadyExistsException
     "ConfigurationSetAlreadyExistsException",
     {
       ConfigurationSetName: S.optional(S.String),
-      message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
     },
     T.all(
       T.AwsQueryError({
@@ -135,7 +141,7 @@ export class ConfigurationSetDoesNotExistException
     "ConfigurationSetDoesNotExistException",
     {
       ConfigurationSetName: S.optional(S.String),
-      message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
     },
     T.all(
       T.AwsQueryError({
@@ -150,7 +156,7 @@ export class ConfigurationSetSendingPausedException
     "ConfigurationSetSendingPausedException",
     {
       ConfigurationSetName: S.optional(S.String),
-      message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
     },
     T.all(
       T.AwsQueryError({
@@ -163,7 +169,7 @@ export class ConfigurationSetSendingPausedException
 export class CustomVerificationEmailInvalidContentException
   extends /*@__PURE__*/ S.TaggedErrorClass<CustomVerificationEmailInvalidContentException>()(
     "CustomVerificationEmailInvalidContentException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({
         code: "CustomVerificationEmailInvalidContent",
@@ -177,7 +183,7 @@ export class CustomVerificationEmailTemplateAlreadyExistsException
     "CustomVerificationEmailTemplateAlreadyExistsException",
     {
       CustomVerificationEmailTemplateName: S.optional(S.String),
-      message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
     },
     T.all(
       T.AwsQueryError({
@@ -192,7 +198,7 @@ export class CustomVerificationEmailTemplateDoesNotExistException
     "CustomVerificationEmailTemplateDoesNotExistException",
     {
       CustomVerificationEmailTemplateName: S.optional(S.String),
-      message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
     },
     T.all(
       T.AwsQueryError({
@@ -208,7 +214,7 @@ export class EventDestinationAlreadyExistsException
     {
       ConfigurationSetName: S.optional(S.String),
       EventDestinationName: S.optional(S.String),
-      message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
     },
     T.all(
       T.AwsQueryError({
@@ -224,7 +230,7 @@ export class EventDestinationDoesNotExistException
     {
       ConfigurationSetName: S.optional(S.String),
       EventDestinationName: S.optional(S.String),
-      message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
     },
     T.all(
       T.AwsQueryError({
@@ -237,7 +243,10 @@ export class EventDestinationDoesNotExistException
 export class FromEmailAddressNotVerifiedException
   extends /*@__PURE__*/ S.TaggedErrorClass<FromEmailAddressNotVerifiedException>()(
     "FromEmailAddressNotVerifiedException",
-    { FromEmailAddress: S.optional(S.String), message: S.optional(S.String) },
+    {
+      FromEmailAddress: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+    },
     T.all(
       T.AwsQueryError({
         code: "FromEmailAddressNotVerified",
@@ -249,7 +258,7 @@ export class FromEmailAddressNotVerifiedException
 export class IdentityNotVerified
   extends /*@__PURE__*/ S.TaggedErrorClass<IdentityNotVerified>()(
     "IdentityNotVerified",
-    {},
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.SyntheticError({
       from: "InvalidParameterValue",
       message: { includes: "Identity is not verified" },
@@ -261,7 +270,7 @@ export class InvalidCloudWatchDestinationException
     {
       ConfigurationSetName: S.optional(S.String),
       EventDestinationName: S.optional(S.String),
-      message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
     },
     T.all(
       T.AwsQueryError({
@@ -274,7 +283,7 @@ export class InvalidCloudWatchDestinationException
 export class InvalidConfigurationSetException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidConfigurationSetException>()(
     "InvalidConfigurationSetException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({
         code: "InvalidConfigurationSet",
@@ -286,7 +295,7 @@ export class InvalidConfigurationSetException
 export class InvalidDeliveryOptionsException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidDeliveryOptionsException>()(
     "InvalidDeliveryOptionsException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({
         code: "InvalidDeliveryOptions",
@@ -301,7 +310,7 @@ export class InvalidFirehoseDestinationException
     {
       ConfigurationSetName: S.optional(S.String),
       EventDestinationName: S.optional(S.String),
-      message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
     },
     T.all(
       T.AwsQueryError({
@@ -314,7 +323,10 @@ export class InvalidFirehoseDestinationException
 export class InvalidLambdaFunctionException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidLambdaFunctionException>()(
     "InvalidLambdaFunctionException",
-    { FunctionArn: S.optional(S.String), message: S.optional(S.String) },
+    {
+      FunctionArn: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+    },
     T.all(
       T.AwsQueryError({ code: "InvalidLambdaFunction", httpResponseCode: 400 }),
       T.HttpError(400),
@@ -323,12 +335,12 @@ export class InvalidLambdaFunctionException
 export class InvalidParameterValue
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidParameterValue>()(
     "InvalidParameterValue",
-    {},
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidPolicyException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidPolicyException>()(
     "InvalidPolicyException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "InvalidPolicy", httpResponseCode: 400 }),
       T.HttpError(400),
@@ -337,7 +349,10 @@ export class InvalidPolicyException
 export class InvalidRenderingParameterException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidRenderingParameterException>()(
     "InvalidRenderingParameterException",
-    { TemplateName: S.optional(S.String), message: S.optional(S.String) },
+    {
+      TemplateName: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+    },
     T.all(
       T.AwsQueryError({
         code: "InvalidRenderingParameter",
@@ -349,7 +364,10 @@ export class InvalidRenderingParameterException
 export class InvalidS3ConfigurationException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidS3ConfigurationException>()(
     "InvalidS3ConfigurationException",
-    { Bucket: S.optional(S.String), message: S.optional(S.String) },
+    {
+      Bucket: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+    },
     T.all(
       T.AwsQueryError({
         code: "InvalidS3Configuration",
@@ -364,7 +382,7 @@ export class InvalidSNSDestinationException
     {
       ConfigurationSetName: S.optional(S.String),
       EventDestinationName: S.optional(S.String),
-      message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
     },
     T.all(
       T.AwsQueryError({ code: "InvalidSNSDestination", httpResponseCode: 400 }),
@@ -374,7 +392,10 @@ export class InvalidSNSDestinationException
 export class InvalidSnsTopicException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidSnsTopicException>()(
     "InvalidSnsTopicException",
-    { Topic: S.optional(S.String), message: S.optional(S.String) },
+    {
+      Topic: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+    },
     T.all(
       T.AwsQueryError({ code: "InvalidSnsTopic", httpResponseCode: 400 }),
       T.HttpError(400),
@@ -383,7 +404,10 @@ export class InvalidSnsTopicException
 export class InvalidTemplateException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidTemplateException>()(
     "InvalidTemplateException",
-    { TemplateName: S.optional(S.String), message: S.optional(S.String) },
+    {
+      TemplateName: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+    },
     T.all(
       T.AwsQueryError({ code: "InvalidTemplate", httpResponseCode: 400 }),
       T.HttpError(400),
@@ -392,7 +416,7 @@ export class InvalidTemplateException
 export class InvalidTrackingOptionsException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidTrackingOptionsException>()(
     "InvalidTrackingOptionsException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({
         code: "InvalidTrackingOptions",
@@ -404,7 +428,7 @@ export class InvalidTrackingOptionsException
 export class LimitExceededException
   extends /*@__PURE__*/ S.TaggedErrorClass<LimitExceededException>()(
     "LimitExceededException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "LimitExceeded", httpResponseCode: 400 }),
       T.HttpError(400),
@@ -413,7 +437,7 @@ export class LimitExceededException
 export class MailFromDomainNotVerifiedException
   extends /*@__PURE__*/ S.TaggedErrorClass<MailFromDomainNotVerifiedException>()(
     "MailFromDomainNotVerifiedException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({
         code: "MailFromDomainNotVerifiedException",
@@ -425,7 +449,7 @@ export class MailFromDomainNotVerifiedException
 export class MessageRejected
   extends /*@__PURE__*/ S.TaggedErrorClass<MessageRejected>()(
     "MessageRejected",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "MessageRejected", httpResponseCode: 400 }),
       T.HttpError(400),
@@ -434,7 +458,10 @@ export class MessageRejected
 export class MissingRenderingAttributeException
   extends /*@__PURE__*/ S.TaggedErrorClass<MissingRenderingAttributeException>()(
     "MissingRenderingAttributeException",
-    { TemplateName: S.optional(S.String), message: S.optional(S.String) },
+    {
+      TemplateName: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+    },
     T.all(
       T.AwsQueryError({
         code: "MissingRenderingAttribute",
@@ -446,7 +473,7 @@ export class MissingRenderingAttributeException
 export class ProductionAccessNotGrantedException
   extends /*@__PURE__*/ S.TaggedErrorClass<ProductionAccessNotGrantedException>()(
     "ProductionAccessNotGrantedException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({
         code: "ProductionAccessNotGranted",
@@ -458,7 +485,10 @@ export class ProductionAccessNotGrantedException
 export class RuleDoesNotExistException
   extends /*@__PURE__*/ S.TaggedErrorClass<RuleDoesNotExistException>()(
     "RuleDoesNotExistException",
-    { Name: S.optional(S.String), message: S.optional(S.String) },
+    {
+      Name: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+    },
     T.all(
       T.AwsQueryError({ code: "RuleDoesNotExist", httpResponseCode: 400 }),
       T.HttpError(400),
@@ -467,7 +497,10 @@ export class RuleDoesNotExistException
 export class RuleSetDoesNotExistException
   extends /*@__PURE__*/ S.TaggedErrorClass<RuleSetDoesNotExistException>()(
     "RuleSetDoesNotExistException",
-    { Name: S.optional(S.String), message: S.optional(S.String) },
+    {
+      Name: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+    },
     T.all(
       T.AwsQueryError({ code: "RuleSetDoesNotExist", httpResponseCode: 400 }),
       T.HttpError(400),
@@ -476,7 +509,10 @@ export class RuleSetDoesNotExistException
 export class TemplateDoesNotExistException
   extends /*@__PURE__*/ S.TaggedErrorClass<TemplateDoesNotExistException>()(
     "TemplateDoesNotExistException",
-    { TemplateName: S.optional(S.String), message: S.optional(S.String) },
+    {
+      TemplateName: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+    },
     T.all(
       T.AwsQueryError({ code: "TemplateDoesNotExist", httpResponseCode: 400 }),
       T.HttpError(400),
@@ -487,7 +523,7 @@ export class TrackingOptionsAlreadyExistsException
     "TrackingOptionsAlreadyExistsException",
     {
       ConfigurationSetName: S.optional(S.String),
-      message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
     },
     T.all(
       T.AwsQueryError({
@@ -502,7 +538,7 @@ export class TrackingOptionsDoesNotExistException
     "TrackingOptionsDoesNotExistException",
     {
       ConfigurationSetName: S.optional(S.String),
-      message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
     },
     T.all(
       T.AwsQueryError({

@@ -25,6 +25,7 @@ import {
   getHttpHeader,
   getProtocol,
   getSyntheticError,
+  hasErrorMessage,
   type SyntheticErrorTrait,
 } from "../traits.ts";
 import {
@@ -211,8 +212,11 @@ export const makeResponseParser = <A>(
     // Error path
     const { errorCode, data } = yield* protocol.deserializeError(response);
 
-    // Normalize XML-style Message (capital M) to message (lowercase) for Error.message
-    // AWS XML protocols use <Message> but JS Error expects .message
+    // Fold the XML-style `Message` wire key onto `message`. AWS XML protocols
+    // send <Message> while JS expects .message, and the generator names every
+    // error class's canonical message member `message` regardless of which
+    // spelling the service model used — so this is what lets a `Message` wire
+    // key reach the renamed member during decode.
     if (
       data &&
       typeof (data as Record<string, unknown>).Message === "string" &&
@@ -318,16 +322,21 @@ export const makeResponseParser = <A>(
       const decoded = yield* Schema.decodeUnknownEffect(errorSchema)(
         dataWithTag,
       ).pipe(Effect.catch(() => Effect.succeed(dataWithTag)));
-      // Set Error.message from Message (capital M) if the schema uses Message instead of message
-      // AWS XML uses <Message> but JS Error expects .message (lowercase)
-      if (
-        decoded instanceof Error &&
-        !decoded.message &&
-        typeof (decoded as unknown as Record<string, unknown>).Message ===
-          "string"
-      ) {
-        decoded.message = (decoded as unknown as Record<string, unknown>)
-          .Message as string;
+      // Ensure the JS `Error.message` carries the service's message. The
+      // generator tags exactly one member per error class as the canonical
+      // message (T.ErrorMessage) and normalizes its name to `message`, so
+      // this reads the tag rather than guessing by spelling the way the old
+      // `Message`-only fallback did. Without it an error whose class carries
+      // the text in a field the Error constructor didn't pick up stringifies
+      // as a bare tag, which is what made a typed error less useful than the
+      // UnknownAwsError it replaced (distilled #160).
+      if (decoded instanceof Error && !decoded.message) {
+        const record = decoded as unknown as Record<string, unknown>;
+        const canonical = errorProps.find(hasErrorMessage);
+        const value = canonical ? record[String(canonical.name)] : undefined;
+        if (typeof value === "string" && value !== "") {
+          decoded.message = value;
+        }
       }
       return yield* Effect.fail(decoded);
     }

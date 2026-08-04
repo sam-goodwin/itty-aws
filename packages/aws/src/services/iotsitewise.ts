@@ -90,85 +90,100 @@ const rules = T.EndpointResolver((p, _) => {
 export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedErrorClass<AccessDeniedException>()(
     "AccessDeniedException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class ConflictingOperationException
   extends /*@__PURE__*/ S.TaggedErrorClass<ConflictingOperationException>()(
     "ConflictingOperationException",
-    { message: S.String, resourceId: S.String, resourceArn: S.String },
+    {
+      message: S.String.pipe(T.ErrorMessage()),
+      resourceId: S.String,
+      resourceArn: S.String,
+    },
     T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class InternalFailureException
   extends /*@__PURE__*/ S.TaggedErrorClass<InternalFailureException>()(
     "InternalFailureException",
-    { message: S.String },
+    { message: S.String.pipe(T.ErrorMessage()) },
     T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class InvalidRequestException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidRequestException>()(
     "InvalidRequestException",
-    { message: S.String },
+    { message: S.String.pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class LimitExceededException
   extends /*@__PURE__*/ S.TaggedErrorClass<LimitExceededException>()(
     "LimitExceededException",
-    { message: S.String },
+    { message: S.String.pipe(T.ErrorMessage()) },
     T.HttpError(410),
   ).pipe(C.withBadRequestError) {}
 export class PreconditionFailedException
   extends /*@__PURE__*/ S.TaggedErrorClass<PreconditionFailedException>()(
     "PreconditionFailedException",
-    { message: S.String, resourceId: S.String, resourceArn: S.String },
+    {
+      message: S.String.pipe(T.ErrorMessage()),
+      resourceId: S.String,
+      resourceArn: S.String,
+    },
     T.HttpError(412),
   ) {}
 export class QueryTimeoutException
   extends /*@__PURE__*/ S.TaggedErrorClass<QueryTimeoutException>()(
     "QueryTimeoutException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ResourceAlreadyExistsException
   extends /*@__PURE__*/ S.TaggedErrorClass<ResourceAlreadyExistsException>()(
     "ResourceAlreadyExistsException",
-    { message: S.String, resourceId: S.String, resourceArn: S.String },
+    {
+      message: S.String.pipe(T.ErrorMessage()),
+      resourceId: S.String,
+      resourceArn: S.String,
+    },
     T.HttpError(409),
   ).pipe(C.withConflictError, C.withAlreadyExistsError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
     "ResourceNotFoundException",
-    { message: S.String },
+    { message: S.String.pipe(T.ErrorMessage()) },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ServiceUnavailableException
   extends /*@__PURE__*/ S.TaggedErrorClass<ServiceUnavailableException>()(
     "ServiceUnavailableException",
-    { message: S.String },
+    { message: S.String.pipe(T.ErrorMessage()) },
     T.HttpError(503),
   ).pipe(C.withServerError) {}
 export class ThrottlingException
   extends /*@__PURE__*/ S.TaggedErrorClass<ThrottlingException>()(
     "ThrottlingException",
-    { message: S.String },
+    { message: S.String.pipe(T.ErrorMessage()) },
     T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export class TooManyTagsException
   extends /*@__PURE__*/ S.TaggedErrorClass<TooManyTagsException>()(
     "TooManyTagsException",
-    { message: S.optional(S.String), resourceName: S.optional(S.String) },
+    {
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      resourceName: S.optional(S.String),
+    },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class UnauthorizedException
   extends /*@__PURE__*/ S.TaggedErrorClass<UnauthorizedException>()(
     "UnauthorizedException",
-    { message: S.String },
+    { message: S.String.pipe(T.ErrorMessage()) },
     T.HttpError(401),
   ).pipe(C.withAuthError) {}
 export class ValidationException
   extends /*@__PURE__*/ S.TaggedErrorClass<ValidationException>()(
     "ValidationException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export type CustomID = string;

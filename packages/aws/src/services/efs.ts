@@ -143,7 +143,7 @@ export class AccessPointAlreadyExists
     "AccessPointAlreadyExists",
     {
       ErrorCode: S.String,
-      Message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
       AccessPointId: S.String,
     },
     T.HttpError(409),
@@ -151,37 +151,55 @@ export class AccessPointAlreadyExists
 export class AccessPointLimitExceeded
   extends /*@__PURE__*/ S.TaggedErrorClass<AccessPointLimitExceeded>()(
     "AccessPointLimitExceeded",
-    { ErrorCode: S.String, Message: S.optional(S.String) },
+    {
+      ErrorCode: S.String,
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+    },
     T.HttpError(403),
   ).pipe(C.withAuthError, C.withThrottlingError) {}
 export class AccessPointNotFound
   extends /*@__PURE__*/ S.TaggedErrorClass<AccessPointNotFound>()(
     "AccessPointNotFound",
-    { ErrorCode: S.String, Message: S.optional(S.String) },
+    {
+      ErrorCode: S.String,
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+    },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class AvailabilityZonesMismatch
   extends /*@__PURE__*/ S.TaggedErrorClass<AvailabilityZonesMismatch>()(
     "AvailabilityZonesMismatch",
-    { ErrorCode: S.optional(S.String), Message: S.optional(S.String) },
+    {
+      ErrorCode: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+    },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class BadRequest
   extends /*@__PURE__*/ S.TaggedErrorClass<BadRequest>()(
     "BadRequest",
-    { ErrorCode: S.String, Message: S.optional(S.String) },
+    {
+      ErrorCode: S.String,
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+    },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedErrorClass<ConflictException>()(
     "ConflictException",
-    { ErrorCode: S.optional(S.String), Message: S.optional(S.String) },
+    {
+      ErrorCode: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+    },
     T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class DependencyTimeout
   extends /*@__PURE__*/ S.TaggedErrorClass<DependencyTimeout>()(
     "DependencyTimeout",
-    { ErrorCode: S.String, Message: S.optional(S.String) },
+    {
+      ErrorCode: S.String,
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+    },
     T.HttpError(504),
   ).pipe(C.withTimeoutError) {}
 export class FileSystemAlreadyExists
@@ -189,7 +207,7 @@ export class FileSystemAlreadyExists
     "FileSystemAlreadyExists",
     {
       ErrorCode: S.String,
-      Message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
       FileSystemId: S.String,
     },
     T.HttpError(409),
@@ -197,145 +215,217 @@ export class FileSystemAlreadyExists
 export class FileSystemInUse
   extends /*@__PURE__*/ S.TaggedErrorClass<FileSystemInUse>()(
     "FileSystemInUse",
-    { ErrorCode: S.String, Message: S.optional(S.String) },
+    {
+      ErrorCode: S.String,
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+    },
     T.HttpError(409),
   ).pipe(C.withConflictError, C.withDependencyViolationError) {}
 export class FileSystemLimitExceeded
   extends /*@__PURE__*/ S.TaggedErrorClass<FileSystemLimitExceeded>()(
     "FileSystemLimitExceeded",
-    { ErrorCode: S.String, Message: S.optional(S.String) },
+    {
+      ErrorCode: S.String,
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+    },
     T.HttpError(403),
   ).pipe(C.withAuthError, C.withThrottlingError) {}
 export class FileSystemNotFound
   extends /*@__PURE__*/ S.TaggedErrorClass<FileSystemNotFound>()(
     "FileSystemNotFound",
-    { ErrorCode: S.String, Message: S.optional(S.String) },
+    {
+      ErrorCode: S.String,
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+    },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class IncorrectFileSystemLifeCycleState
   extends /*@__PURE__*/ S.TaggedErrorClass<IncorrectFileSystemLifeCycleState>()(
     "IncorrectFileSystemLifeCycleState",
-    { ErrorCode: S.String, Message: S.optional(S.String) },
+    {
+      ErrorCode: S.String,
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+    },
     T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class IncorrectMountTargetState
   extends /*@__PURE__*/ S.TaggedErrorClass<IncorrectMountTargetState>()(
     "IncorrectMountTargetState",
-    { ErrorCode: S.String, Message: S.optional(S.String) },
+    {
+      ErrorCode: S.String,
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+    },
     T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class InsufficientThroughputCapacity
   extends /*@__PURE__*/ S.TaggedErrorClass<InsufficientThroughputCapacity>()(
     "InsufficientThroughputCapacity",
-    { ErrorCode: S.String, Message: S.optional(S.String) },
+    {
+      ErrorCode: S.String,
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+    },
     T.HttpError(503),
   ).pipe(C.withServerError) {}
 export class InternalServerError
   extends /*@__PURE__*/ S.TaggedErrorClass<InternalServerError>()(
     "InternalServerError",
-    { ErrorCode: S.String, Message: S.optional(S.String) },
+    {
+      ErrorCode: S.String,
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+    },
     T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class InvalidPolicyException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidPolicyException>()(
     "InvalidPolicyException",
-    { ErrorCode: S.optional(S.String), Message: S.optional(S.String) },
+    {
+      ErrorCode: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+    },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class IpAddressInUse
   extends /*@__PURE__*/ S.TaggedErrorClass<IpAddressInUse>()(
     "IpAddressInUse",
-    { ErrorCode: S.String, Message: S.optional(S.String) },
+    {
+      ErrorCode: S.String,
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+    },
     T.HttpError(409),
   ).pipe(C.withConflictError, C.withDependencyViolationError) {}
 export class MountTargetConflict
   extends /*@__PURE__*/ S.TaggedErrorClass<MountTargetConflict>()(
     "MountTargetConflict",
-    { ErrorCode: S.String, Message: S.optional(S.String) },
+    {
+      ErrorCode: S.String,
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+    },
     T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class MountTargetNotFound
   extends /*@__PURE__*/ S.TaggedErrorClass<MountTargetNotFound>()(
     "MountTargetNotFound",
-    { ErrorCode: S.String, Message: S.optional(S.String) },
+    {
+      ErrorCode: S.String,
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+    },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class NetworkInterfaceLimitExceeded
   extends /*@__PURE__*/ S.TaggedErrorClass<NetworkInterfaceLimitExceeded>()(
     "NetworkInterfaceLimitExceeded",
-    { ErrorCode: S.String, Message: S.optional(S.String) },
+    {
+      ErrorCode: S.String,
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+    },
     T.HttpError(409),
   ).pipe(C.withConflictError, C.withThrottlingError) {}
 export class NoFreeAddressesInSubnet
   extends /*@__PURE__*/ S.TaggedErrorClass<NoFreeAddressesInSubnet>()(
     "NoFreeAddressesInSubnet",
-    { ErrorCode: S.String, Message: S.optional(S.String) },
+    {
+      ErrorCode: S.String,
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+    },
     T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class PolicyNotFound
   extends /*@__PURE__*/ S.TaggedErrorClass<PolicyNotFound>()(
     "PolicyNotFound",
-    { ErrorCode: S.optional(S.String), Message: S.optional(S.String) },
+    {
+      ErrorCode: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+    },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ReplicationAlreadyExists
   extends /*@__PURE__*/ S.TaggedErrorClass<ReplicationAlreadyExists>()(
     "ReplicationAlreadyExists",
-    { ErrorCode: S.optional(S.String), Message: S.optional(S.String) },
+    {
+      ErrorCode: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+    },
     T.HttpError(409),
   ).pipe(C.withConflictError, C.withAlreadyExistsError) {}
 export class ReplicationNotFound
   extends /*@__PURE__*/ S.TaggedErrorClass<ReplicationNotFound>()(
     "ReplicationNotFound",
-    { ErrorCode: S.optional(S.String), Message: S.optional(S.String) },
+    {
+      ErrorCode: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+    },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class SecurityGroupLimitExceeded
   extends /*@__PURE__*/ S.TaggedErrorClass<SecurityGroupLimitExceeded>()(
     "SecurityGroupLimitExceeded",
-    { ErrorCode: S.String, Message: S.optional(S.String) },
+    {
+      ErrorCode: S.String,
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+    },
     T.HttpError(400),
   ).pipe(C.withBadRequestError, C.withThrottlingError) {}
 export class SecurityGroupNotFound
   extends /*@__PURE__*/ S.TaggedErrorClass<SecurityGroupNotFound>()(
     "SecurityGroupNotFound",
-    { ErrorCode: S.String, Message: S.optional(S.String) },
+    {
+      ErrorCode: S.String,
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+    },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class SubnetNotFound
   extends /*@__PURE__*/ S.TaggedErrorClass<SubnetNotFound>()(
     "SubnetNotFound",
-    { ErrorCode: S.String, Message: S.optional(S.String) },
+    {
+      ErrorCode: S.String,
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+    },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ThrottlingException
   extends /*@__PURE__*/ S.TaggedErrorClass<ThrottlingException>()(
     "ThrottlingException",
-    { ErrorCode: S.optional(S.String), Message: S.optional(S.String) },
+    {
+      ErrorCode: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+    },
     T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export class ThroughputLimitExceeded
   extends /*@__PURE__*/ S.TaggedErrorClass<ThroughputLimitExceeded>()(
     "ThroughputLimitExceeded",
-    { ErrorCode: S.String, Message: S.optional(S.String) },
+    {
+      ErrorCode: S.String,
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+    },
     T.HttpError(400),
   ).pipe(C.withBadRequestError, C.withThrottlingError) {}
 export class TooManyRequests
   extends /*@__PURE__*/ S.TaggedErrorClass<TooManyRequests>()(
     "TooManyRequests",
-    { ErrorCode: S.String, Message: S.optional(S.String) },
+    {
+      ErrorCode: S.String,
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+    },
     T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export class UnsupportedAvailabilityZone
   extends /*@__PURE__*/ S.TaggedErrorClass<UnsupportedAvailabilityZone>()(
     "UnsupportedAvailabilityZone",
-    { ErrorCode: S.String, Message: S.optional(S.String) },
+    {
+      ErrorCode: S.String,
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+    },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ValidationException
   extends /*@__PURE__*/ S.TaggedErrorClass<ValidationException>()(
     "ValidationException",
-    { ErrorCode: S.String, Message: S.optional(S.String) },
+    {
+      ErrorCode: S.String,
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+    },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export type ClientToken = string;

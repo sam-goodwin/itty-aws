@@ -89,7 +89,7 @@ const rules = T.EndpointResolver((p, _) => {
 export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedErrorClass<AccessDeniedException>()(
     "AccessDeniedException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "AccessDenied", httpResponseCode: 403 }),
       T.HttpError(403),
@@ -98,43 +98,51 @@ export class AccessDeniedException
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedErrorClass<ConflictException>()(
     "ConflictException",
-    { Message: S.String },
+    { message: S.String.pipe(T.ErrorMessage()) },
     T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class InternalServiceError
   extends /*@__PURE__*/ S.TaggedErrorClass<InternalServiceError>()(
     "InternalServiceError",
-    { Message: S.String },
+    { message: S.String.pipe(T.ErrorMessage()) },
     T.HttpError(503),
   ).pipe(C.withServerError) {}
 export class InvalidNextTokenException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidNextTokenException>()(
     "InvalidNextTokenException",
-    { Message: S.String },
+    { message: S.String.pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidRequestException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidRequestException>()(
     "InvalidRequestException",
-    { Message: S.String },
+    { message: S.String.pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ResourceExistsException
   extends /*@__PURE__*/ S.TaggedErrorClass<ResourceExistsException>()(
     "ResourceExistsException",
-    { Message: S.String, Resource: S.String, ResourceType: S.String },
+    {
+      message: S.String.pipe(T.ErrorMessage()),
+      Resource: S.String,
+      ResourceType: S.String,
+    },
     T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
     "ResourceNotFoundException",
-    { Message: S.String, Resource: S.String, ResourceType: S.String },
+    {
+      message: S.String.pipe(T.ErrorMessage()),
+      Resource: S.String,
+      ResourceType: S.String,
+    },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ServiceUnavailableException
   extends /*@__PURE__*/ S.TaggedErrorClass<ServiceUnavailableException>()(
     "ServiceUnavailableException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "ServiceUnavailable", httpResponseCode: 503 }),
       T.HttpError(503),
@@ -145,6 +153,7 @@ export class ThrottlingException
     "ThrottlingException",
     {
       RetryAfterSeconds: S.optional(S.String).pipe(T.HttpHeader("Retry-After")),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
     },
     T.HttpError(429),
   ).pipe(C.withThrottlingError) {}

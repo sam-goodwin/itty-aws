@@ -89,14 +89,14 @@ const rules = T.EndpointResolver((p, _) => {
 export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedErrorClass<AccessDeniedException>()(
     "AccessDeniedException",
-    { message: S.String },
+    { message: S.String.pipe(T.ErrorMessage()) },
     T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class AuditManagerMaintenanceMode
   extends /*@__PURE__*/ S.TaggedErrorClass<AuditManagerMaintenanceMode>()(
     "AuditManagerMaintenanceMode",
     {
-      message: S.String,
+      message: S.String.pipe(T.ErrorMessage()),
       reason: S.optional(
         S.suspend(() => ValidationExceptionReason).annotate({
           identifier: "ValidationExceptionReason",
@@ -116,32 +116,36 @@ export class AuditManagerMaintenanceMode
 export class InternalServerException
   extends /*@__PURE__*/ S.TaggedErrorClass<InternalServerException>()(
     "InternalServerException",
-    { message: S.String },
+    { message: S.String.pipe(T.ErrorMessage()) },
     T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
     "ResourceNotFoundException",
-    { message: S.String, resourceId: S.String, resourceType: S.String },
+    {
+      message: S.String.pipe(T.ErrorMessage()),
+      resourceId: S.String,
+      resourceType: S.String,
+    },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ServiceQuotaExceededException
   extends /*@__PURE__*/ S.TaggedErrorClass<ServiceQuotaExceededException>()(
     "ServiceQuotaExceededException",
-    { message: S.String },
+    { message: S.String.pipe(T.ErrorMessage()) },
     T.HttpError(402),
   ).pipe(C.withQuotaError) {}
 export class ThrottlingException
   extends /*@__PURE__*/ S.TaggedErrorClass<ThrottlingException>()(
     "ThrottlingException",
-    { message: S.String },
+    { message: S.String.pipe(T.ErrorMessage()) },
     T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export class ValidationException
   extends /*@__PURE__*/ S.TaggedErrorClass<ValidationException>()(
     "ValidationException",
     {
-      message: S.String,
+      message: S.String.pipe(T.ErrorMessage()),
       reason: S.optional(
         S.suspend(() => ValidationExceptionReason).annotate({
           identifier: "ValidationExceptionReason",

@@ -87,7 +87,7 @@ const rules = T.EndpointResolver((p, _) => {
 export class BatchEntryIdsNotDistinct
   extends /*@__PURE__*/ S.TaggedErrorClass<BatchEntryIdsNotDistinct>()(
     "BatchEntryIdsNotDistinct",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({
         code: "AWS.SimpleQueueService.BatchEntryIdsNotDistinct",
@@ -99,7 +99,7 @@ export class BatchEntryIdsNotDistinct
 export class BatchRequestTooLong
   extends /*@__PURE__*/ S.TaggedErrorClass<BatchRequestTooLong>()(
     "BatchRequestTooLong",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({
         code: "AWS.SimpleQueueService.BatchRequestTooLong",
@@ -111,12 +111,12 @@ export class BatchRequestTooLong
 export class CommonServiceException
   extends /*@__PURE__*/ S.TaggedErrorClass<CommonServiceException>()(
     "CommonServiceException",
-    {},
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withServerError) {}
 export class EmptyBatchRequest
   extends /*@__PURE__*/ S.TaggedErrorClass<EmptyBatchRequest>()(
     "EmptyBatchRequest",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({
         code: "AWS.SimpleQueueService.EmptyBatchRequest",
@@ -128,7 +128,7 @@ export class EmptyBatchRequest
 export class InvalidAddress
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidAddress>()(
     "InvalidAddress",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "InvalidAddress", httpResponseCode: 404 }),
       T.HttpError(404),
@@ -137,17 +137,17 @@ export class InvalidAddress
 export class InvalidAttributeName
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidAttributeName>()(
     "InvalidAttributeName",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withBadRequestError) {}
 export class InvalidAttributeValue
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidAttributeValue>()(
     "InvalidAttributeValue",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withBadRequestError) {}
 export class InvalidBatchEntryId
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidBatchEntryId>()(
     "InvalidBatchEntryId",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({
         code: "AWS.SimpleQueueService.InvalidBatchEntryId",
@@ -159,22 +159,22 @@ export class InvalidBatchEntryId
 export class InvalidIdFormat
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidIdFormat>()(
     "InvalidIdFormat",
-    {},
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withBadRequestError) {}
 export class InvalidMessageContents
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidMessageContents>()(
     "InvalidMessageContents",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withBadRequestError) {}
 export class InvalidParameterValueException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidParameterValueException>()(
     "InvalidParameterValueException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withBadRequestError) {}
 export class InvalidSecurity
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidSecurity>()(
     "InvalidSecurity",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "InvalidSecurity", httpResponseCode: 403 }),
       T.HttpError(403),
@@ -183,7 +183,7 @@ export class InvalidSecurity
 export class KmsAccessDenied
   extends /*@__PURE__*/ S.TaggedErrorClass<KmsAccessDenied>()(
     "KmsAccessDenied",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({
         code: "KMS.AccessDeniedException",
@@ -195,7 +195,7 @@ export class KmsAccessDenied
 export class KmsDisabled
   extends /*@__PURE__*/ S.TaggedErrorClass<KmsDisabled>()(
     "KmsDisabled",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "KMS.DisabledException", httpResponseCode: 400 }),
       T.HttpError(400),
@@ -204,7 +204,7 @@ export class KmsDisabled
 export class KmsInvalidKeyUsage
   extends /*@__PURE__*/ S.TaggedErrorClass<KmsInvalidKeyUsage>()(
     "KmsInvalidKeyUsage",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({
         code: "KMS.InvalidKeyUsageException",
@@ -216,7 +216,7 @@ export class KmsInvalidKeyUsage
 export class KmsInvalidState
   extends /*@__PURE__*/ S.TaggedErrorClass<KmsInvalidState>()(
     "KmsInvalidState",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({
         code: "KMS.InvalidStateException",
@@ -228,7 +228,7 @@ export class KmsInvalidState
 export class KmsNotFound
   extends /*@__PURE__*/ S.TaggedErrorClass<KmsNotFound>()(
     "KmsNotFound",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "KMS.NotFoundException", httpResponseCode: 400 }),
       T.HttpError(400),
@@ -237,7 +237,7 @@ export class KmsNotFound
 export class KmsOptInRequired
   extends /*@__PURE__*/ S.TaggedErrorClass<KmsOptInRequired>()(
     "KmsOptInRequired",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "KMS.OptInRequired", httpResponseCode: 403 }),
       T.HttpError(403),
@@ -246,7 +246,7 @@ export class KmsOptInRequired
 export class KmsThrottled
   extends /*@__PURE__*/ S.TaggedErrorClass<KmsThrottled>()(
     "KmsThrottled",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({
         code: "KMS.ThrottlingException",
@@ -258,7 +258,7 @@ export class KmsThrottled
 export class MessageNotInflight
   extends /*@__PURE__*/ S.TaggedErrorClass<MessageNotInflight>()(
     "MessageNotInflight",
-    {},
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({
         code: "AWS.SimpleQueueService.MessageNotInflight",
@@ -270,23 +270,25 @@ export class MessageNotInflight
 export class MissingRequiredParameterException
   extends /*@__PURE__*/ S.TaggedErrorClass<MissingRequiredParameterException>()(
     "MissingRequiredParameterException",
-    {},
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withBadRequestError) {}
 export class OverLimit
   extends /*@__PURE__*/ S.TaggedErrorClass<OverLimit>()(
     "OverLimit",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "OverLimit", httpResponseCode: 403 }),
       T.HttpError(403),
     ),
   ).pipe(C.withAuthError, C.withQuotaError) {}
 export class ParseError
-  extends /*@__PURE__*/ S.TaggedErrorClass<ParseError>()("ParseError", {}) {}
+  extends /*@__PURE__*/ S.TaggedErrorClass<ParseError>()("ParseError", {
+    message: S.optional(S.String).pipe(T.ErrorMessage()),
+  }) {}
 export class PurgeQueueInProgress
   extends /*@__PURE__*/ S.TaggedErrorClass<PurgeQueueInProgress>()(
     "PurgeQueueInProgress",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({
         code: "AWS.SimpleQueueService.PurgeQueueInProgress",
@@ -298,7 +300,7 @@ export class PurgeQueueInProgress
 export class QueueDeletedRecently
   extends /*@__PURE__*/ S.TaggedErrorClass<QueueDeletedRecently>()(
     "QueueDeletedRecently",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({
         code: "AWS.SimpleQueueService.QueueDeletedRecently",
@@ -310,7 +312,7 @@ export class QueueDeletedRecently
 export class QueueDoesNotExist
   extends /*@__PURE__*/ S.TaggedErrorClass<QueueDoesNotExist>()(
     "QueueDoesNotExist",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({
         code: "AWS.SimpleQueueService.NonExistentQueue",
@@ -322,7 +324,7 @@ export class QueueDoesNotExist
 export class QueueNameExists
   extends /*@__PURE__*/ S.TaggedErrorClass<QueueNameExists>()(
     "QueueNameExists",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "QueueAlreadyExists", httpResponseCode: 400 }),
       T.HttpError(400),
@@ -331,7 +333,7 @@ export class QueueNameExists
 export class ReceiptHandleIsInvalid
   extends /*@__PURE__*/ S.TaggedErrorClass<ReceiptHandleIsInvalid>()(
     "ReceiptHandleIsInvalid",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({
         code: "ReceiptHandleIsInvalid",
@@ -343,12 +345,12 @@ export class ReceiptHandleIsInvalid
 export class RequestLimitExceeded
   extends /*@__PURE__*/ S.TaggedErrorClass<RequestLimitExceeded>()(
     "RequestLimitExceeded",
-    {},
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withThrottlingError) {}
 export class RequestThrottled
   extends /*@__PURE__*/ S.TaggedErrorClass<RequestThrottled>()(
     "RequestThrottled",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "RequestThrottled", httpResponseCode: 403 }),
       T.HttpError(403),
@@ -357,7 +359,7 @@ export class RequestThrottled
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
     "ResourceNotFoundException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({
         code: "ResourceNotFoundException",
@@ -369,7 +371,7 @@ export class ResourceNotFoundException
 export class TooManyEntriesInBatchRequest
   extends /*@__PURE__*/ S.TaggedErrorClass<TooManyEntriesInBatchRequest>()(
     "TooManyEntriesInBatchRequest",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({
         code: "AWS.SimpleQueueService.TooManyEntriesInBatchRequest",
@@ -381,7 +383,7 @@ export class TooManyEntriesInBatchRequest
 export class UnsupportedOperation
   extends /*@__PURE__*/ S.TaggedErrorClass<UnsupportedOperation>()(
     "UnsupportedOperation",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({
         code: "AWS.SimpleQueueService.UnsupportedOperation",

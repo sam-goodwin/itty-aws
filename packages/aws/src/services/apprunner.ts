@@ -90,7 +90,7 @@ const rules = T.EndpointResolver((p, _) => {
 export class InternalServiceErrorException
   extends /*@__PURE__*/ S.TaggedErrorClass<InternalServiceErrorException>()(
     "InternalServiceErrorException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "InternalServiceError", httpResponseCode: 500 }),
       T.HttpError(500),
@@ -99,7 +99,7 @@ export class InternalServiceErrorException
 export class InvalidRequestException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidRequestException>()(
     "InvalidRequestException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "InvalidRequest", httpResponseCode: 400 }),
       T.HttpError(400),
@@ -108,7 +108,7 @@ export class InvalidRequestException
 export class InvalidStateException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidStateException>()(
     "InvalidStateException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "InvalidState", httpResponseCode: 400 }),
       T.HttpError(400),
@@ -117,7 +117,7 @@ export class InvalidStateException
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
     "ResourceNotFoundException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "ResourceNotfound", httpResponseCode: 400 }),
       T.HttpError(400),
@@ -126,7 +126,7 @@ export class ResourceNotFoundException
 export class ServiceQuotaExceededException
   extends /*@__PURE__*/ S.TaggedErrorClass<ServiceQuotaExceededException>()(
     "ServiceQuotaExceededException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "ServiceQuotaExceeded", httpResponseCode: 402 }),
       T.HttpError(402),

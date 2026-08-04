@@ -94,7 +94,7 @@ const rules = T.EndpointResolver((p, _) => {
 export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedErrorClass<AccessDeniedException>()(
     "AccessDeniedException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "ResourceAccessDenied", httpResponseCode: 403 }),
       T.HttpError(403),
@@ -103,7 +103,7 @@ export class AccessDeniedException
 export class AccountHasOngoingImportException
   extends /*@__PURE__*/ S.TaggedErrorClass<AccountHasOngoingImportException>()(
     "AccountHasOngoingImportException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({
         code: "AccountHasOngoingImport",
@@ -115,7 +115,7 @@ export class AccountHasOngoingImportException
 export class AccountNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<AccountNotFoundException>()(
     "AccountNotFoundException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "AccountNotFound", httpResponseCode: 404 }),
       T.HttpError(404),
@@ -124,7 +124,7 @@ export class AccountNotFoundException
 export class AccountNotRegisteredException
   extends /*@__PURE__*/ S.TaggedErrorClass<AccountNotRegisteredException>()(
     "AccountNotRegisteredException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "AccountNotRegistered", httpResponseCode: 400 }),
       T.HttpError(400),
@@ -133,7 +133,7 @@ export class AccountNotRegisteredException
 export class AccountRegisteredException
   extends /*@__PURE__*/ S.TaggedErrorClass<AccountRegisteredException>()(
     "AccountRegisteredException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "AccountRegistered", httpResponseCode: 400 }),
       T.HttpError(400),
@@ -142,7 +142,7 @@ export class AccountRegisteredException
 export class CannotDelegateManagementAccountException
   extends /*@__PURE__*/ S.TaggedErrorClass<CannotDelegateManagementAccountException>()(
     "CannotDelegateManagementAccountException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({
         code: "CannotDelegateManagementAccount",
@@ -154,7 +154,7 @@ export class CannotDelegateManagementAccountException
 export class ChannelAlreadyExistsException
   extends /*@__PURE__*/ S.TaggedErrorClass<ChannelAlreadyExistsException>()(
     "ChannelAlreadyExistsException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "ChannelAlreadyExists", httpResponseCode: 400 }),
       T.HttpError(400),
@@ -163,7 +163,7 @@ export class ChannelAlreadyExistsException
 export class ChannelARNInvalidException
   extends /*@__PURE__*/ S.TaggedErrorClass<ChannelARNInvalidException>()(
     "ChannelARNInvalidException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "ChannelARNInvalid", httpResponseCode: 400 }),
       T.HttpError(400),
@@ -172,7 +172,7 @@ export class ChannelARNInvalidException
 export class ChannelExistsForEDSException
   extends /*@__PURE__*/ S.TaggedErrorClass<ChannelExistsForEDSException>()(
     "ChannelExistsForEDSException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "ChannelExistsForEDS", httpResponseCode: 400 }),
       T.HttpError(400),
@@ -181,7 +181,7 @@ export class ChannelExistsForEDSException
 export class ChannelMaxLimitExceededException
   extends /*@__PURE__*/ S.TaggedErrorClass<ChannelMaxLimitExceededException>()(
     "ChannelMaxLimitExceededException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({
         code: "ChannelMaxLimitExceeded",
@@ -193,7 +193,7 @@ export class ChannelMaxLimitExceededException
 export class ChannelNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<ChannelNotFoundException>()(
     "ChannelNotFoundException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "ChannelNotFound", httpResponseCode: 404 }),
       T.HttpError(404),
@@ -202,7 +202,7 @@ export class ChannelNotFoundException
 export class CloudTrailAccessNotEnabledException
   extends /*@__PURE__*/ S.TaggedErrorClass<CloudTrailAccessNotEnabledException>()(
     "CloudTrailAccessNotEnabledException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({
         code: "CloudTrailAccessNotEnabled",
@@ -214,7 +214,7 @@ export class CloudTrailAccessNotEnabledException
 export class CloudTrailARNInvalidException
   extends /*@__PURE__*/ S.TaggedErrorClass<CloudTrailARNInvalidException>()(
     "CloudTrailARNInvalidException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "CloudTrailARNInvalid", httpResponseCode: 400 }),
       T.HttpError(400),
@@ -223,7 +223,7 @@ export class CloudTrailARNInvalidException
 export class CloudTrailInvalidClientTokenIdException
   extends /*@__PURE__*/ S.TaggedErrorClass<CloudTrailInvalidClientTokenIdException>()(
     "CloudTrailInvalidClientTokenIdException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({
         code: "CloudTrailInvalidClientTokenId",
@@ -235,7 +235,7 @@ export class CloudTrailInvalidClientTokenIdException
 export class CloudTrailLakeOnboardingClosed
   extends /*@__PURE__*/ S.TaggedErrorClass<CloudTrailLakeOnboardingClosed>()(
     "CloudTrailLakeOnboardingClosed",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.SyntheticError({
       from: "InvalidParameterException",
       message: { includes: "no longer accepting new customers" },
@@ -244,7 +244,7 @@ export class CloudTrailLakeOnboardingClosed
 export class CloudWatchLogsDeliveryUnavailableException
   extends /*@__PURE__*/ S.TaggedErrorClass<CloudWatchLogsDeliveryUnavailableException>()(
     "CloudWatchLogsDeliveryUnavailableException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({
         code: "CloudWatchLogsDeliveryUnavailable",
@@ -256,7 +256,7 @@ export class CloudWatchLogsDeliveryUnavailableException
 export class ConcurrentModificationException
   extends /*@__PURE__*/ S.TaggedErrorClass<ConcurrentModificationException>()(
     "ConcurrentModificationException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({
         code: "ConcurrentModification",
@@ -268,7 +268,7 @@ export class ConcurrentModificationException
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedErrorClass<ConflictException>()(
     "ConflictException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "ConflictException", httpResponseCode: 409 }),
       T.HttpError(409),
@@ -277,7 +277,7 @@ export class ConflictException
 export class DelegatedAdminAccountLimitExceededException
   extends /*@__PURE__*/ S.TaggedErrorClass<DelegatedAdminAccountLimitExceededException>()(
     "DelegatedAdminAccountLimitExceededException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({
         code: "DelegatedAdminAccountLimitExceeded",
@@ -289,7 +289,7 @@ export class DelegatedAdminAccountLimitExceededException
 export class EventDataStoreAlreadyExistsException
   extends /*@__PURE__*/ S.TaggedErrorClass<EventDataStoreAlreadyExistsException>()(
     "EventDataStoreAlreadyExistsException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({
         code: "EventDataStoreAlreadyExists",
@@ -301,7 +301,7 @@ export class EventDataStoreAlreadyExistsException
 export class EventDataStoreARNInvalidException
   extends /*@__PURE__*/ S.TaggedErrorClass<EventDataStoreARNInvalidException>()(
     "EventDataStoreARNInvalidException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({
         code: "EventDataStoreARNInvalid",
@@ -313,7 +313,7 @@ export class EventDataStoreARNInvalidException
 export class EventDataStoreFederationEnabledException
   extends /*@__PURE__*/ S.TaggedErrorClass<EventDataStoreFederationEnabledException>()(
     "EventDataStoreFederationEnabledException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({
         code: "EventDataStoreFederationEnabled",
@@ -325,7 +325,7 @@ export class EventDataStoreFederationEnabledException
 export class EventDataStoreHasOngoingImportException
   extends /*@__PURE__*/ S.TaggedErrorClass<EventDataStoreHasOngoingImportException>()(
     "EventDataStoreHasOngoingImportException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({
         code: "EventDataStoreHasOngoingImport",
@@ -337,7 +337,7 @@ export class EventDataStoreHasOngoingImportException
 export class EventDataStoreMaxLimitExceededException
   extends /*@__PURE__*/ S.TaggedErrorClass<EventDataStoreMaxLimitExceededException>()(
     "EventDataStoreMaxLimitExceededException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({
         code: "EventDataStoreMaxLimitExceeded",
@@ -349,7 +349,7 @@ export class EventDataStoreMaxLimitExceededException
 export class EventDataStoreNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<EventDataStoreNotFoundException>()(
     "EventDataStoreNotFoundException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({
         code: "EventDataStoreNotFound",
@@ -361,7 +361,7 @@ export class EventDataStoreNotFoundException
 export class EventDataStoreTerminationProtectedException
   extends /*@__PURE__*/ S.TaggedErrorClass<EventDataStoreTerminationProtectedException>()(
     "EventDataStoreTerminationProtectedException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({
         code: "EventDataStoreTerminationProtectedException",
@@ -373,7 +373,7 @@ export class EventDataStoreTerminationProtectedException
 export class GenerateResponseException
   extends /*@__PURE__*/ S.TaggedErrorClass<GenerateResponseException>()(
     "GenerateResponseException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "GenerateResponse", httpResponseCode: 400 }),
       T.HttpError(400),
@@ -382,7 +382,7 @@ export class GenerateResponseException
 export class ImportNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<ImportNotFoundException>()(
     "ImportNotFoundException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "ImportNotFound", httpResponseCode: 404 }),
       T.HttpError(404),
@@ -391,7 +391,7 @@ export class ImportNotFoundException
 export class InactiveEventDataStoreException
   extends /*@__PURE__*/ S.TaggedErrorClass<InactiveEventDataStoreException>()(
     "InactiveEventDataStoreException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({
         code: "InactiveEventDataStore",
@@ -403,7 +403,7 @@ export class InactiveEventDataStoreException
 export class InactiveQueryException
   extends /*@__PURE__*/ S.TaggedErrorClass<InactiveQueryException>()(
     "InactiveQueryException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "InactiveQuery", httpResponseCode: 400 }),
       T.HttpError(400),
@@ -412,7 +412,7 @@ export class InactiveQueryException
 export class InsightNotEnabledException
   extends /*@__PURE__*/ S.TaggedErrorClass<InsightNotEnabledException>()(
     "InsightNotEnabledException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "InsightNotEnabled", httpResponseCode: 400 }),
       T.HttpError(400),
@@ -421,7 +421,7 @@ export class InsightNotEnabledException
 export class InsufficientDependencyServiceAccessPermissionException
   extends /*@__PURE__*/ S.TaggedErrorClass<InsufficientDependencyServiceAccessPermissionException>()(
     "InsufficientDependencyServiceAccessPermissionException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({
         code: "InsufficientDependencyServiceAccessPermission",
@@ -433,7 +433,7 @@ export class InsufficientDependencyServiceAccessPermissionException
 export class InsufficientEncryptionPolicyException
   extends /*@__PURE__*/ S.TaggedErrorClass<InsufficientEncryptionPolicyException>()(
     "InsufficientEncryptionPolicyException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({
         code: "InsufficientEncryptionPolicy",
@@ -445,7 +445,7 @@ export class InsufficientEncryptionPolicyException
 export class InsufficientIAMAccessPermissionException
   extends /*@__PURE__*/ S.TaggedErrorClass<InsufficientIAMAccessPermissionException>()(
     "InsufficientIAMAccessPermissionException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({
         code: "InsufficientIAMAccessPermission",
@@ -457,7 +457,7 @@ export class InsufficientIAMAccessPermissionException
 export class InsufficientS3BucketPolicyException
   extends /*@__PURE__*/ S.TaggedErrorClass<InsufficientS3BucketPolicyException>()(
     "InsufficientS3BucketPolicyException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({
         code: "InsufficientS3BucketPolicy",
@@ -469,7 +469,7 @@ export class InsufficientS3BucketPolicyException
 export class InsufficientSnsTopicPolicyException
   extends /*@__PURE__*/ S.TaggedErrorClass<InsufficientSnsTopicPolicyException>()(
     "InsufficientSnsTopicPolicyException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({
         code: "InsufficientSnsTopicPolicy",
@@ -481,7 +481,7 @@ export class InsufficientSnsTopicPolicyException
 export class InvalidCloudWatchLogsLogGroupArnException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidCloudWatchLogsLogGroupArnException>()(
     "InvalidCloudWatchLogsLogGroupArnException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({
         code: "InvalidCloudWatchLogsLogGroupArn",
@@ -493,7 +493,7 @@ export class InvalidCloudWatchLogsLogGroupArnException
 export class InvalidCloudWatchLogsRoleArnException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidCloudWatchLogsRoleArnException>()(
     "InvalidCloudWatchLogsRoleArnException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({
         code: "InvalidCloudWatchLogsRoleArn",
@@ -505,7 +505,7 @@ export class InvalidCloudWatchLogsRoleArnException
 export class InvalidDateRangeException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidDateRangeException>()(
     "InvalidDateRangeException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "InvalidDateRange", httpResponseCode: 400 }),
       T.HttpError(400),
@@ -514,7 +514,7 @@ export class InvalidDateRangeException
 export class InvalidEventCategoryException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidEventCategoryException>()(
     "InvalidEventCategoryException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "InvalidEventCategory", httpResponseCode: 400 }),
       T.HttpError(400),
@@ -523,7 +523,7 @@ export class InvalidEventCategoryException
 export class InvalidEventDataStoreCategoryException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidEventDataStoreCategoryException>()(
     "InvalidEventDataStoreCategoryException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({
         code: "InvalidEventDataStoreCategory",
@@ -535,7 +535,7 @@ export class InvalidEventDataStoreCategoryException
 export class InvalidEventDataStoreStatusException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidEventDataStoreStatusException>()(
     "InvalidEventDataStoreStatusException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({
         code: "InvalidEventDataStoreStatus",
@@ -547,7 +547,7 @@ export class InvalidEventDataStoreStatusException
 export class InvalidEventSelectorsException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidEventSelectorsException>()(
     "InvalidEventSelectorsException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "InvalidEventSelectors", httpResponseCode: 400 }),
       T.HttpError(400),
@@ -556,7 +556,7 @@ export class InvalidEventSelectorsException
 export class InvalidHomeRegionException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidHomeRegionException>()(
     "InvalidHomeRegionException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "InvalidHomeRegion", httpResponseCode: 400 }),
       T.HttpError(400),
@@ -565,7 +565,7 @@ export class InvalidHomeRegionException
 export class InvalidImportSourceException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidImportSourceException>()(
     "InvalidImportSourceException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "InvalidImportSource", httpResponseCode: 400 }),
       T.HttpError(400),
@@ -574,7 +574,7 @@ export class InvalidImportSourceException
 export class InvalidInsightSelectorsException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidInsightSelectorsException>()(
     "InvalidInsightSelectorsException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({
         code: "InvalidInsightSelectors",
@@ -586,7 +586,7 @@ export class InvalidInsightSelectorsException
 export class InvalidKmsKeyIdException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidKmsKeyIdException>()(
     "InvalidKmsKeyIdException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "InvalidKmsKeyId", httpResponseCode: 400 }),
       T.HttpError(400),
@@ -595,7 +595,7 @@ export class InvalidKmsKeyIdException
 export class InvalidLookupAttributesException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidLookupAttributesException>()(
     "InvalidLookupAttributesException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({
         code: "InvalidLookupAttributes",
@@ -607,7 +607,7 @@ export class InvalidLookupAttributesException
 export class InvalidMaxResultsException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidMaxResultsException>()(
     "InvalidMaxResultsException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "InvalidMaxResults", httpResponseCode: 400 }),
       T.HttpError(400),
@@ -616,7 +616,7 @@ export class InvalidMaxResultsException
 export class InvalidNextTokenException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidNextTokenException>()(
     "InvalidNextTokenException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "InvalidNextToken", httpResponseCode: 400 }),
       T.HttpError(400),
@@ -625,7 +625,7 @@ export class InvalidNextTokenException
 export class InvalidParameterCombinationException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidParameterCombinationException>()(
     "InvalidParameterCombinationException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({
         code: "InvalidParameterCombinationError",
@@ -637,7 +637,7 @@ export class InvalidParameterCombinationException
 export class InvalidParameterException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidParameterException>()(
     "InvalidParameterException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "InvalidParameter", httpResponseCode: 400 }),
       T.HttpError(400),
@@ -646,7 +646,7 @@ export class InvalidParameterException
 export class InvalidQueryStatementException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidQueryStatementException>()(
     "InvalidQueryStatementException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "InvalidQueryStatement", httpResponseCode: 400 }),
       T.HttpError(400),
@@ -655,7 +655,7 @@ export class InvalidQueryStatementException
 export class InvalidQueryStatusException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidQueryStatusException>()(
     "InvalidQueryStatusException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "InvalidQueryStatus", httpResponseCode: 400 }),
       T.HttpError(400),
@@ -664,7 +664,7 @@ export class InvalidQueryStatusException
 export class InvalidS3BucketNameException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidS3BucketNameException>()(
     "InvalidS3BucketNameException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "InvalidS3BucketName", httpResponseCode: 400 }),
       T.HttpError(400),
@@ -673,7 +673,7 @@ export class InvalidS3BucketNameException
 export class InvalidS3PrefixException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidS3PrefixException>()(
     "InvalidS3PrefixException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "InvalidS3Prefix", httpResponseCode: 400 }),
       T.HttpError(400),
@@ -682,7 +682,7 @@ export class InvalidS3PrefixException
 export class InvalidSnsTopicNameException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidSnsTopicNameException>()(
     "InvalidSnsTopicNameException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "InvalidSnsTopicName", httpResponseCode: 400 }),
       T.HttpError(400),
@@ -691,7 +691,7 @@ export class InvalidSnsTopicNameException
 export class InvalidSourceException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidSourceException>()(
     "InvalidSourceException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "InvalidSource", httpResponseCode: 400 }),
       T.HttpError(400),
@@ -700,7 +700,7 @@ export class InvalidSourceException
 export class InvalidTagParameterException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidTagParameterException>()(
     "InvalidTagParameterException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "InvalidTagParameter", httpResponseCode: 400 }),
       T.HttpError(400),
@@ -709,7 +709,7 @@ export class InvalidTagParameterException
 export class InvalidTimeRangeException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidTimeRangeException>()(
     "InvalidTimeRangeException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "InvalidTimeRange", httpResponseCode: 400 }),
       T.HttpError(400),
@@ -718,7 +718,7 @@ export class InvalidTimeRangeException
 export class InvalidTokenException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidTokenException>()(
     "InvalidTokenException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "InvalidToken", httpResponseCode: 400 }),
       T.HttpError(400),
@@ -727,7 +727,7 @@ export class InvalidTokenException
 export class InvalidTrailNameException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidTrailNameException>()(
     "InvalidTrailNameException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "InvalidTrailName", httpResponseCode: 400 }),
       T.HttpError(400),
@@ -736,7 +736,7 @@ export class InvalidTrailNameException
 export class KmsException
   extends /*@__PURE__*/ S.TaggedErrorClass<KmsException>()(
     "KmsException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "KmsException", httpResponseCode: 400 }),
       T.HttpError(400),
@@ -745,7 +745,7 @@ export class KmsException
 export class KmsKeyDisabledException
   extends /*@__PURE__*/ S.TaggedErrorClass<KmsKeyDisabledException>()(
     "KmsKeyDisabledException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "KmsKeyDisabled", httpResponseCode: 400 }),
       T.HttpError(400),
@@ -754,7 +754,7 @@ export class KmsKeyDisabledException
 export class KmsKeyNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<KmsKeyNotFoundException>()(
     "KmsKeyNotFoundException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "KmsKeyNotFound", httpResponseCode: 400 }),
       T.HttpError(400),
@@ -763,7 +763,7 @@ export class KmsKeyNotFoundException
 export class MaxConcurrentQueriesException
   extends /*@__PURE__*/ S.TaggedErrorClass<MaxConcurrentQueriesException>()(
     "MaxConcurrentQueriesException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "MaxConcurrentQueries", httpResponseCode: 429 }),
       T.HttpError(429),
@@ -772,7 +772,7 @@ export class MaxConcurrentQueriesException
 export class MaximumNumberOfTrailsExceededException
   extends /*@__PURE__*/ S.TaggedErrorClass<MaximumNumberOfTrailsExceededException>()(
     "MaximumNumberOfTrailsExceededException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({
         code: "MaximumNumberOfTrailsExceeded",
@@ -784,7 +784,7 @@ export class MaximumNumberOfTrailsExceededException
 export class NoManagementAccountSLRExistsException
   extends /*@__PURE__*/ S.TaggedErrorClass<NoManagementAccountSLRExistsException>()(
     "NoManagementAccountSLRExistsException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({
         code: "NoManagementAccountSLRExists",
@@ -796,7 +796,7 @@ export class NoManagementAccountSLRExistsException
 export class NotOrganizationManagementAccountException
   extends /*@__PURE__*/ S.TaggedErrorClass<NotOrganizationManagementAccountException>()(
     "NotOrganizationManagementAccountException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({
         code: "NotOrganizationManagementAccount",
@@ -808,7 +808,7 @@ export class NotOrganizationManagementAccountException
 export class NotOrganizationMasterAccountException
   extends /*@__PURE__*/ S.TaggedErrorClass<NotOrganizationMasterAccountException>()(
     "NotOrganizationMasterAccountException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({
         code: "NotOrganizationMasterAccount",
@@ -820,7 +820,7 @@ export class NotOrganizationMasterAccountException
 export class OperationNotPermittedException
   extends /*@__PURE__*/ S.TaggedErrorClass<OperationNotPermittedException>()(
     "OperationNotPermittedException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "OperationNotPermitted", httpResponseCode: 400 }),
       T.HttpError(400),
@@ -829,7 +829,7 @@ export class OperationNotPermittedException
 export class OrganizationNotInAllFeaturesModeException
   extends /*@__PURE__*/ S.TaggedErrorClass<OrganizationNotInAllFeaturesModeException>()(
     "OrganizationNotInAllFeaturesModeException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({
         code: "OrganizationNotInAllFeaturesMode",
@@ -841,7 +841,7 @@ export class OrganizationNotInAllFeaturesModeException
 export class OrganizationsNotInUseException
   extends /*@__PURE__*/ S.TaggedErrorClass<OrganizationsNotInUseException>()(
     "OrganizationsNotInUseException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "OrganizationsNotInUse", httpResponseCode: 404 }),
       T.HttpError(404),
@@ -850,7 +850,7 @@ export class OrganizationsNotInUseException
 export class QueryIdNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<QueryIdNotFoundException>()(
     "QueryIdNotFoundException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "QueryIdNotFound", httpResponseCode: 404 }),
       T.HttpError(404),
@@ -859,7 +859,7 @@ export class QueryIdNotFoundException
 export class ResourceARNNotValidException
   extends /*@__PURE__*/ S.TaggedErrorClass<ResourceARNNotValidException>()(
     "ResourceARNNotValidException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "ResourceARNNotValid", httpResponseCode: 400 }),
       T.HttpError(400),
@@ -868,7 +868,7 @@ export class ResourceARNNotValidException
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
     "ResourceNotFoundException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "ResourceNotFound", httpResponseCode: 400 }),
       T.HttpError(400),
@@ -877,7 +877,7 @@ export class ResourceNotFoundException
 export class ResourcePolicyNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<ResourcePolicyNotFoundException>()(
     "ResourcePolicyNotFoundException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({
         code: "ResourcePolicyNotFound",
@@ -889,7 +889,7 @@ export class ResourcePolicyNotFoundException
 export class ResourcePolicyNotValidException
   extends /*@__PURE__*/ S.TaggedErrorClass<ResourcePolicyNotValidException>()(
     "ResourcePolicyNotValidException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({
         code: "ResourcePolicyNotValid",
@@ -901,7 +901,7 @@ export class ResourcePolicyNotValidException
 export class ResourceTypeNotSupportedException
   extends /*@__PURE__*/ S.TaggedErrorClass<ResourceTypeNotSupportedException>()(
     "ResourceTypeNotSupportedException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({
         code: "ResourceTypeNotSupported",
@@ -913,7 +913,7 @@ export class ResourceTypeNotSupportedException
 export class S3BucketDoesNotExistException
   extends /*@__PURE__*/ S.TaggedErrorClass<S3BucketDoesNotExistException>()(
     "S3BucketDoesNotExistException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "S3BucketDoesNotExist", httpResponseCode: 404 }),
       T.HttpError(404),
@@ -922,7 +922,7 @@ export class S3BucketDoesNotExistException
 export class ServiceQuotaExceededException
   extends /*@__PURE__*/ S.TaggedErrorClass<ServiceQuotaExceededException>()(
     "ServiceQuotaExceededException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "ServiceQuotaExceeded", httpResponseCode: 400 }),
       T.HttpError(400),
@@ -931,7 +931,7 @@ export class ServiceQuotaExceededException
 export class TagsLimitExceededException
   extends /*@__PURE__*/ S.TaggedErrorClass<TagsLimitExceededException>()(
     "TagsLimitExceededException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "TagsLimitExceeded", httpResponseCode: 400 }),
       T.HttpError(400),
@@ -940,7 +940,7 @@ export class TagsLimitExceededException
 export class ThrottlingException
   extends /*@__PURE__*/ S.TaggedErrorClass<ThrottlingException>()(
     "ThrottlingException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "ThrottlingException", httpResponseCode: 429 }),
       T.HttpError(429),
@@ -949,7 +949,7 @@ export class ThrottlingException
 export class TrailAlreadyExistsException
   extends /*@__PURE__*/ S.TaggedErrorClass<TrailAlreadyExistsException>()(
     "TrailAlreadyExistsException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "TrailAlreadyExists", httpResponseCode: 400 }),
       T.HttpError(400),
@@ -958,7 +958,7 @@ export class TrailAlreadyExistsException
 export class TrailNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<TrailNotFoundException>()(
     "TrailNotFoundException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "TrailNotFound", httpResponseCode: 404 }),
       T.HttpError(404),
@@ -967,7 +967,7 @@ export class TrailNotFoundException
 export class TrailNotProvidedException
   extends /*@__PURE__*/ S.TaggedErrorClass<TrailNotProvidedException>()(
     "TrailNotProvidedException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "TrailNotProvided", httpResponseCode: 404 }),
       T.HttpError(404),
@@ -976,7 +976,7 @@ export class TrailNotProvidedException
 export class UnsupportedOperationException
   extends /*@__PURE__*/ S.TaggedErrorClass<UnsupportedOperationException>()(
     "UnsupportedOperationException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "UnsupportedOperation", httpResponseCode: 400 }),
       T.HttpError(400),

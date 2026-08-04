@@ -96,19 +96,19 @@ const rules = T.EndpointResolver((p, _) => {
 export class BadRequestException
   extends /*@__PURE__*/ S.TaggedErrorClass<BadRequestException>()(
     "BadRequestException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ChannelNotFound
   extends /*@__PURE__*/ S.TaggedErrorClass<ChannelNotFound>()(
     "ChannelNotFound",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.SyntheticError({ from: "NotFoundException", message: { matches: ".*" } }),
   ).pipe(C.withNotFoundError) {}
 export class PlaybackConfigurationNotFound
   extends /*@__PURE__*/ S.TaggedErrorClass<PlaybackConfigurationNotFound>()(
     "PlaybackConfigurationNotFound",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.SyntheticError({
       from: "NotFoundException",
       message: { includes: "not found" },
@@ -117,13 +117,13 @@ export class PlaybackConfigurationNotFound
 export class PrefetchScheduleNotFound
   extends /*@__PURE__*/ S.TaggedErrorClass<PrefetchScheduleNotFound>()(
     "PrefetchScheduleNotFound",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.SyntheticError({ from: "NotFoundException", message: { matches: ".*" } }),
   ).pipe(C.withNotFoundError) {}
 export class ProgramNotFound
   extends /*@__PURE__*/ S.TaggedErrorClass<ProgramNotFound>()(
     "ProgramNotFound",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.SyntheticError({ from: "NotFoundException", message: { matches: ".*" } }),
   ).pipe(C.withNotFoundError) {}
 export type LogType = "AS_RUN" | (string & {});

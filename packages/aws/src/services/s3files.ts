@@ -54,7 +54,7 @@ export class ConflictException
     "ConflictException",
     {
       errorCode: S.String,
-      message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
       resourceId: S.optional(S.String),
       resourceType: S.optional(S.String),
     },
@@ -63,25 +63,37 @@ export class ConflictException
 export class InternalServerException
   extends /*@__PURE__*/ S.TaggedErrorClass<InternalServerException>()(
     "InternalServerException",
-    { errorCode: S.String, message: S.optional(S.String) },
+    {
+      errorCode: S.String,
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+    },
     T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
     "ResourceNotFoundException",
-    { errorCode: S.String, message: S.optional(S.String) },
+    {
+      errorCode: S.String,
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+    },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ServiceQuotaExceededException
   extends /*@__PURE__*/ S.TaggedErrorClass<ServiceQuotaExceededException>()(
     "ServiceQuotaExceededException",
-    { errorCode: S.String, message: S.optional(S.String) },
+    {
+      errorCode: S.String,
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+    },
     T.HttpError(402),
   ).pipe(C.withQuotaError) {}
 export class ValidationException
   extends /*@__PURE__*/ S.TaggedErrorClass<ValidationException>()(
     "ValidationException",
-    { errorCode: S.String, message: S.optional(S.String) },
+    {
+      errorCode: S.String,
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+    },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export type ClientToken = string;

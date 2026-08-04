@@ -9349,6 +9349,16 @@ exports[`JSON Schema Generation > Error Schemas (TaggedError) > BucketAlreadyExi
           ],
           "type": "string",
         },
+        "message": {
+          "anyOf": [
+            {
+              "type": "string",
+            },
+            {
+              "type": "null",
+            },
+          ],
+        },
       },
       "required": [
         "_tag",

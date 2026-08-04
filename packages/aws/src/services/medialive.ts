@@ -89,44 +89,44 @@ const rules = T.EndpointResolver((p, _) => {
 export class BadGatewayException
   extends /*@__PURE__*/ S.TaggedErrorClass<BadGatewayException>()(
     "BadGatewayException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(502),
   ).pipe(C.withServerError) {}
 export class BadRequestException
   extends /*@__PURE__*/ S.TaggedErrorClass<BadRequestException>()(
     "BadRequestException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedErrorClass<ConflictException>()(
     "ConflictException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class ForbiddenException
   extends /*@__PURE__*/ S.TaggedErrorClass<ForbiddenException>()(
     "ForbiddenException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class GatewayTimeoutException
   extends /*@__PURE__*/ S.TaggedErrorClass<GatewayTimeoutException>()(
     "GatewayTimeoutException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(504),
   ).pipe(C.withTimeoutError) {}
 export class InternalServerErrorException
   extends /*@__PURE__*/ S.TaggedErrorClass<InternalServerErrorException>()(
     "InternalServerErrorException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class MediaLiveRoleNotYetTrusted
   extends /*@__PURE__*/ S.TaggedErrorClass<MediaLiveRoleNotYetTrusted>()(
     "MediaLiveRoleNotYetTrusted",
     {
-      Message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
       ValidationErrors: S.optional(
         S.suspend(() => __listOfValidationError).annotate({
           identifier: "__listOfValidationError",
@@ -141,20 +141,20 @@ export class MediaLiveRoleNotYetTrusted
 export class NotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<NotFoundException>()(
     "NotFoundException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class TooManyRequestsException
   extends /*@__PURE__*/ S.TaggedErrorClass<TooManyRequestsException>()(
     "TooManyRequestsException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export class UnprocessableEntityException
   extends /*@__PURE__*/ S.TaggedErrorClass<UnprocessableEntityException>()(
     "UnprocessableEntityException",
     {
-      Message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
       ValidationErrors: S.optional(
         S.suspend(() => __listOfValidationError).annotate({
           identifier: "__listOfValidationError",

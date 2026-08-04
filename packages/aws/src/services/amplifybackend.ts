@@ -87,25 +87,31 @@ const rules = T.EndpointResolver((p, _) => {
 export class BadRequestException
   extends /*@__PURE__*/ S.TaggedErrorClass<BadRequestException>()(
     "BadRequestException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class GatewayTimeoutException
   extends /*@__PURE__*/ S.TaggedErrorClass<GatewayTimeoutException>()(
     "GatewayTimeoutException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(504),
   ).pipe(C.withTimeoutError) {}
 export class NotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<NotFoundException>()(
     "NotFoundException",
-    { Message: S.optional(S.String), ResourceType: S.optional(S.String) },
+    {
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      ResourceType: S.optional(S.String),
+    },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class TooManyRequestsException
   extends /*@__PURE__*/ S.TaggedErrorClass<TooManyRequestsException>()(
     "TooManyRequestsException",
-    { LimitType: S.optional(S.String), Message: S.optional(S.String) },
+    {
+      LimitType: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+    },
     T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export interface CloneBackendRequest {

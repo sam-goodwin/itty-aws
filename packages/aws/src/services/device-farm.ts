@@ -90,66 +90,75 @@ const rules = T.EndpointResolver((p, _) => {
 export class ArgumentException
   extends /*@__PURE__*/ S.TaggedErrorClass<ArgumentException>()(
     "ArgumentException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class CannotDeleteException
   extends /*@__PURE__*/ S.TaggedErrorClass<CannotDeleteException>()(
     "CannotDeleteException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class IdempotencyException
   extends /*@__PURE__*/ S.TaggedErrorClass<IdempotencyException>()(
     "IdempotencyException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InternalServiceException
   extends /*@__PURE__*/ S.TaggedErrorClass<InternalServiceException>()(
     "InternalServiceException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class InvalidOperationException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidOperationException>()(
     "InvalidOperationException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class LimitExceededException
   extends /*@__PURE__*/ S.TaggedErrorClass<LimitExceededException>()(
     "LimitExceededException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class NotEligibleException
   extends /*@__PURE__*/ S.TaggedErrorClass<NotEligibleException>()(
     "NotEligibleException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class NotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<NotFoundException>()(
     "NotFoundException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class ServiceAccountException
   extends /*@__PURE__*/ S.TaggedErrorClass<ServiceAccountException>()(
     "ServiceAccountException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class TagOperationException
   extends /*@__PURE__*/ S.TaggedErrorClass<TagOperationException>()(
     "TagOperationException",
-    { message: S.optional(S.String), resourceName: S.optional(S.String) },
+    {
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      resourceName: S.optional(S.String),
+    },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TagPolicyException
   extends /*@__PURE__*/ S.TaggedErrorClass<TagPolicyException>()(
     "TagPolicyException",
-    { message: S.optional(S.String), resourceName: S.optional(S.String) },
+    {
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      resourceName: S.optional(S.String),
+    },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TooManyTagsException
   extends /*@__PURE__*/ S.TaggedErrorClass<TooManyTagsException>()(
     "TooManyTagsException",
-    { message: S.optional(S.String), resourceName: S.optional(S.String) },
+    {
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      resourceName: S.optional(S.String),
+    },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export type AmazonResourceName = string;

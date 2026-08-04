@@ -183,51 +183,51 @@ const rules = T.EndpointResolver((p, _) => {
 export class AttachmentIdNotFound
   extends /*@__PURE__*/ S.TaggedErrorClass<AttachmentIdNotFound>()(
     "AttachmentIdNotFound",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class AttachmentLimitExceeded
   extends /*@__PURE__*/ S.TaggedErrorClass<AttachmentLimitExceeded>()(
     "AttachmentLimitExceeded",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withThrottlingError) {}
 export class AttachmentSetExpired
   extends /*@__PURE__*/ S.TaggedErrorClass<AttachmentSetExpired>()(
     "AttachmentSetExpired",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class AttachmentSetIdNotFound
   extends /*@__PURE__*/ S.TaggedErrorClass<AttachmentSetIdNotFound>()(
     "AttachmentSetIdNotFound",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class AttachmentSetSizeLimitExceeded
   extends /*@__PURE__*/ S.TaggedErrorClass<AttachmentSetSizeLimitExceeded>()(
     "AttachmentSetSizeLimitExceeded",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withThrottlingError) {}
 export class CaseCreationLimitExceeded
   extends /*@__PURE__*/ S.TaggedErrorClass<CaseCreationLimitExceeded>()(
     "CaseCreationLimitExceeded",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withThrottlingError) {}
 export class CaseIdNotFound
   extends /*@__PURE__*/ S.TaggedErrorClass<CaseIdNotFound>()("CaseIdNotFound", {
-    message: S.optional(S.String),
+    message: S.optional(S.String).pipe(T.ErrorMessage()),
   }) {}
 export class DescribeAttachmentLimitExceeded
   extends /*@__PURE__*/ S.TaggedErrorClass<DescribeAttachmentLimitExceeded>()(
     "DescribeAttachmentLimitExceeded",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withThrottlingError) {}
 export class InternalServerError
   extends /*@__PURE__*/ S.TaggedErrorClass<InternalServerError>()(
     "InternalServerError",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class ThrottlingException
   extends /*@__PURE__*/ S.TaggedErrorClass<ThrottlingException>()(
     "ThrottlingException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "Throttling", httpResponseCode: 400 }),
       T.HttpError(400),

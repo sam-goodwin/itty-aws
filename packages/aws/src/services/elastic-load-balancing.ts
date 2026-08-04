@@ -93,7 +93,7 @@ const rules = T.EndpointResolver((p, _) => {
 export class AccessPointNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<AccessPointNotFoundException>()(
     "AccessPointNotFoundException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "LoadBalancerNotFound", httpResponseCode: 400 }),
       T.HttpError(400),
@@ -102,7 +102,7 @@ export class AccessPointNotFoundException
 export class CertificateNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<CertificateNotFoundException>()(
     "CertificateNotFoundException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "CertificateNotFound", httpResponseCode: 400 }),
       T.HttpError(400),
@@ -111,7 +111,7 @@ export class CertificateNotFoundException
 export class DependencyThrottleException
   extends /*@__PURE__*/ S.TaggedErrorClass<DependencyThrottleException>()(
     "DependencyThrottleException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "DependencyThrottle", httpResponseCode: 400 }),
       T.HttpError(400),
@@ -120,7 +120,7 @@ export class DependencyThrottleException
 export class DuplicateAccessPointNameException
   extends /*@__PURE__*/ S.TaggedErrorClass<DuplicateAccessPointNameException>()(
     "DuplicateAccessPointNameException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({
         code: "DuplicateLoadBalancerName",
@@ -132,7 +132,7 @@ export class DuplicateAccessPointNameException
 export class DuplicateListenerException
   extends /*@__PURE__*/ S.TaggedErrorClass<DuplicateListenerException>()(
     "DuplicateListenerException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "DuplicateListener", httpResponseCode: 400 }),
       T.HttpError(400),
@@ -141,7 +141,7 @@ export class DuplicateListenerException
 export class DuplicatePolicyNameException
   extends /*@__PURE__*/ S.TaggedErrorClass<DuplicatePolicyNameException>()(
     "DuplicatePolicyNameException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "DuplicatePolicyName", httpResponseCode: 400 }),
       T.HttpError(400),
@@ -150,7 +150,7 @@ export class DuplicatePolicyNameException
 export class DuplicateTagKeysException
   extends /*@__PURE__*/ S.TaggedErrorClass<DuplicateTagKeysException>()(
     "DuplicateTagKeysException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "DuplicateTagKeys", httpResponseCode: 400 }),
       T.HttpError(400),
@@ -159,7 +159,7 @@ export class DuplicateTagKeysException
 export class InvalidConfigurationRequestException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidConfigurationRequestException>()(
     "InvalidConfigurationRequestException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({
         code: "InvalidConfigurationRequest",
@@ -171,7 +171,7 @@ export class InvalidConfigurationRequestException
 export class InvalidEndPointException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidEndPointException>()(
     "InvalidEndPointException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "InvalidInstance", httpResponseCode: 400 }),
       T.HttpError(400),
@@ -180,7 +180,7 @@ export class InvalidEndPointException
 export class InvalidSchemeException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidSchemeException>()(
     "InvalidSchemeException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "InvalidScheme", httpResponseCode: 400 }),
       T.HttpError(400),
@@ -189,7 +189,7 @@ export class InvalidSchemeException
 export class InvalidSecurityGroupException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidSecurityGroupException>()(
     "InvalidSecurityGroupException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "InvalidSecurityGroup", httpResponseCode: 400 }),
       T.HttpError(400),
@@ -198,7 +198,7 @@ export class InvalidSecurityGroupException
 export class InvalidSubnetException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidSubnetException>()(
     "InvalidSubnetException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "InvalidSubnet", httpResponseCode: 400 }),
       T.HttpError(400),
@@ -207,7 +207,7 @@ export class InvalidSubnetException
 export class ListenerNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<ListenerNotFoundException>()(
     "ListenerNotFoundException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "ListenerNotFound", httpResponseCode: 400 }),
       T.HttpError(400),
@@ -216,7 +216,7 @@ export class ListenerNotFoundException
 export class LoadBalancerAttributeNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<LoadBalancerAttributeNotFoundException>()(
     "LoadBalancerAttributeNotFoundException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({
         code: "LoadBalancerAttributeNotFound",
@@ -228,7 +228,7 @@ export class LoadBalancerAttributeNotFoundException
 export class OperationNotPermittedException
   extends /*@__PURE__*/ S.TaggedErrorClass<OperationNotPermittedException>()(
     "OperationNotPermittedException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "OperationNotPermitted", httpResponseCode: 400 }),
       T.HttpError(400),
@@ -237,7 +237,7 @@ export class OperationNotPermittedException
 export class PolicyNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<PolicyNotFoundException>()(
     "PolicyNotFoundException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "PolicyNotFound", httpResponseCode: 400 }),
       T.HttpError(400),
@@ -246,7 +246,7 @@ export class PolicyNotFoundException
 export class PolicyTypeNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<PolicyTypeNotFoundException>()(
     "PolicyTypeNotFoundException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "PolicyTypeNotFound", httpResponseCode: 400 }),
       T.HttpError(400),
@@ -255,7 +255,7 @@ export class PolicyTypeNotFoundException
 export class SubnetNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<SubnetNotFoundException>()(
     "SubnetNotFoundException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "SubnetNotFound", httpResponseCode: 400 }),
       T.HttpError(400),
@@ -264,7 +264,7 @@ export class SubnetNotFoundException
 export class TooManyAccessPointsException
   extends /*@__PURE__*/ S.TaggedErrorClass<TooManyAccessPointsException>()(
     "TooManyAccessPointsException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "TooManyLoadBalancers", httpResponseCode: 400 }),
       T.HttpError(400),
@@ -273,7 +273,7 @@ export class TooManyAccessPointsException
 export class TooManyPoliciesException
   extends /*@__PURE__*/ S.TaggedErrorClass<TooManyPoliciesException>()(
     "TooManyPoliciesException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "TooManyPolicies", httpResponseCode: 400 }),
       T.HttpError(400),
@@ -282,7 +282,7 @@ export class TooManyPoliciesException
 export class TooManyTagsException
   extends /*@__PURE__*/ S.TaggedErrorClass<TooManyTagsException>()(
     "TooManyTagsException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "TooManyTags", httpResponseCode: 400 }),
       T.HttpError(400),
@@ -291,7 +291,7 @@ export class TooManyTagsException
 export class UnsupportedProtocolException
   extends /*@__PURE__*/ S.TaggedErrorClass<UnsupportedProtocolException>()(
     "UnsupportedProtocolException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "UnsupportedProtocol", httpResponseCode: 400 }),
       T.HttpError(400),
