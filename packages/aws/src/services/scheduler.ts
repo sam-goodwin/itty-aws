@@ -89,6 +89,17 @@ export class ConflictException
     { message: S.String.pipe(T.ErrorMessage()) },
     T.HttpError(409),
   ).pipe(C.withConflictError, C.withRetryableError) {}
+export class ExecutionRoleNotAssumable
+  extends /*@__PURE__*/ S.TaggedErrorClass<ExecutionRoleNotAssumable>()(
+    "ExecutionRoleNotAssumable",
+    { message: S.String.pipe(T.ErrorMessage()) },
+    T.SyntheticError({
+      from: "ValidationException",
+      message: {
+        includes: "must allow AWS EventBridge Scheduler to assume the role",
+      },
+    }),
+  ) {}
 export class InternalServerException
   extends /*@__PURE__*/ S.TaggedErrorClass<InternalServerException>()(
     "InternalServerException",
@@ -896,6 +907,7 @@ export type CreateScheduleError =
   | ServiceQuotaExceededException
   | ThrottlingException
   | ValidationException
+  | ExecutionRoleNotAssumable
   | CommonErrors;
 /**
  * Creates the specified schedule.
@@ -915,6 +927,7 @@ export const createSchedule: API.OperationMethod<
     ServiceQuotaExceededException,
     ThrottlingException,
     ValidationException,
+    ExecutionRoleNotAssumable,
   ],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1230,6 +1243,7 @@ export type UpdateScheduleError =
   | ResourceNotFoundException
   | ThrottlingException
   | ValidationException
+  | ExecutionRoleNotAssumable
   | CommonErrors;
 /**
  * Updates the specified schedule. When you call `UpdateSchedule`, EventBridge Scheduler uses all values, including empty values, specified in the request and
@@ -1253,6 +1267,7 @@ export const updateSchedule: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
     ValidationException,
+    ExecutionRoleNotAssumable,
   ],
   protocol: AwsProtocol,
   retry: Retry,
