@@ -41,7 +41,10 @@ import {
   suspendRef,
   PURE,
 } from "@distilled.cloud/core/codegen/emit";
-import type { SdkSpec } from "@distilled.cloud/core/codegen/generator";
+import {
+  errorCategories,
+  type SdkSpec,
+} from "@distilled.cloud/core/codegen/generator";
 import { generateRuleSetCode, type RuleSetObject } from "./compile-rules.ts";
 import type { ServiceSpec, SyntheticError } from "./spec-schema.ts";
 import type { SmithyModel, ServiceShape } from "./model-schema.ts";
@@ -306,15 +309,15 @@ function inferCategoriesFromName(errorName: string): string[] {
 
   // DependencyViolationError - resource can't be deleted/modified because something depends on it
   if (name === "dependencyviolation" || name.endsWith("inuse")) {
-    categories.push("C.withDependencyViolationError");
+    categories.push("DependencyViolationError");
   }
   // AlreadyExistsError - trying to create something that already exists
   if (name.includes("alreadyexists") || name.endsWith("duplicate")) {
-    categories.push("C.withAlreadyExistsError");
+    categories.push("AlreadyExistsError");
   }
   // ConflictError - general conflicts (not dependency or already-exists)
   if (name === "cidrconflict" || name === "idempotentparametermismatch") {
-    categories.push("C.withConflictError");
+    categories.push("ConflictError");
   }
   // AuthError patterns - access denied, unauthorized, auth failures
   if (
@@ -324,15 +327,15 @@ function inferCategoriesFromName(errorName: string): string[] {
     name === "invalidclienttokenid" ||
     name === "signaturedoesnotmatch"
   ) {
-    categories.push("C.withAuthError");
+    categories.push("AuthError");
   }
   // ThrottlingError patterns - rate/quota limits exceeded
   if (name.endsWith("limitexceeded")) {
-    categories.push("C.withThrottlingError");
+    categories.push("ThrottlingError");
   }
   // ServerError patterns - internal errors, service unavailable
   if (name.includes("internalerror") || name.includes("serviceunavailable")) {
-    categories.push("C.withServerError");
+    categories.push("ServerError");
   }
 
   return categories;
@@ -2219,56 +2222,24 @@ export const awsSpec = (
           );
         }
 
-        // HTTP status → category decorators
-        if (errorTraits?.httpError) {
-          const code = errorTraits.httpError;
-          if (code === 401 || code === 403) {
-            categories.push("C.withAuthError");
-          } else if (code === 402) {
-            categories.push("C.withQuotaError");
-          } else if (
-            code === 400 ||
-            code === 404 ||
-            code === 405 ||
-            code === 406 ||
-            code === 410 ||
-            code === 413 ||
-            code === 415 ||
-            code === 422
-          ) {
-            categories.push("C.withBadRequestError");
-          } else if (code === 408 || code === 504) {
-            categories.push("C.withTimeoutError");
-          } else if (code === 409) {
-            categories.push("C.withConflictError");
-          } else if (code === 429) {
-            categories.push("C.withThrottlingError");
-          } else if (code >= 500 && code < 600) {
-            categories.push("C.withServerError");
-          }
-        }
-        if (errorTraits?.retryable) {
-          categories.push("C.withRetryableError");
-          if (
-            errorTraits.retryable.throttling &&
-            !categories.includes("C.withThrottlingError")
-          ) {
-            categories.push("C.withThrottlingError");
-          }
-        }
-        // Spec-file categories (exactly as specified), then name heuristics
-        const specCategories = serviceSpec.errorCategories?.[name] ?? [];
-        for (const cat of specCategories) {
-          const categoryDecorator = `C.with${cat}`;
-          if (!categories.includes(categoryDecorator)) {
-            categories.push(categoryDecorator);
-          }
-        }
-        for (const cat of inferCategoriesFromName(name)) {
-          if (!categories.includes(cat)) {
-            categories.push(cat);
-          }
-        }
+        // Categories come from the shared reading of the standard Smithy
+        // error traits (`smithy.api#httpError` / `smithy.api#retryable`) —
+        // the same one every other SDK uses. The spec file supplies what
+        // this service's model doesn't state, and the name heuristics run
+        // last. `errorTraits` is passed rather than `def.traits` because
+        // spec-file `errorHttpStatus` patches land there.
+        categories.push(
+          ...errorCategories(
+            {
+              "smithy.api#httpError": errorTraits?.httpError,
+              "smithy.api#retryable": errorTraits?.retryable,
+            },
+            [
+              ...(serviceSpec.errorCategories?.[name] ?? []),
+              ...inferCategoriesFromName(name),
+            ],
+          ).map((cat) => `C.with${cat}`),
+        );
 
         let annotationsArg = "";
         if (annotations.length === 1) {
