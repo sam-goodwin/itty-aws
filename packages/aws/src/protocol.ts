@@ -156,7 +156,13 @@ const encode = ({
     yield* Effect.logDebug("Built Request", request);
 
     const credentials = yield* yield* Credentials.Credentials;
-    const region = yield* Region.resolve;
+    // The region the credentials authenticated against, unless this scope
+    // provides a `Region` override. `Region` is optional — it isn't in any
+    // operation's requirements — so it's read with `serviceOption`.
+    const regionOverride = yield* Effect.serviceOption(Region.Region);
+    const region = Option.isSome(regionOverride)
+      ? yield* regionOverride.value
+      : credentials.region;
     const serviceName = sigv4?.name ?? "s3";
 
     // Resolve endpoint and adjust request path if needed
