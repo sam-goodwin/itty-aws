@@ -69,8 +69,7 @@
     "convert": "bun scripts/convert.ts",
     "generate": "bun scripts/generate.ts",
     "typecheck": "tsc -p tsconfig.json",
-    "specs:fetch": "git submodule update --force --init --recursive --depth=1 specs/distilled-spec-mongodb-atlas",
-    "specs:update": "git -C specs/distilled-spec-mongodb-atlas fetch && git -C specs/distilled-spec-mongodb-atlas checkout main && git -C specs/distilled-spec-mongodb-atlas pull"
+    "specs:fetch": "bun scripts/fetch-specs.ts"
   },
   "dependencies": {
     "@distilled.cloud/core": "workspace:*",

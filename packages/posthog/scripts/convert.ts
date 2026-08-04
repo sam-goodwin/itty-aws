@@ -32,10 +32,7 @@ import {
 import { convertOpenApiToSmithy } from "@distilled.cloud/core/codegen/openapi";
 
 const rootDir = path.resolve(import.meta.dir, "..");
-const specPath = path.join(
-  rootDir,
-  "specs/distilled-spec-posthog/specs/openapi.json",
-);
+const specPath = path.join(rootDir, "specs/openapi.json");
 const patchDir = path.join(rootDir, "patches");
 const outDir = path.join(rootDir, ".generated-specs");
 

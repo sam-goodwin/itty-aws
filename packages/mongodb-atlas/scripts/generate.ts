@@ -68,7 +68,7 @@ const atlasSpec: SdkSpec = {
     retry: "Retry.Retry",
   },
 
-  sourceNote: ".generated-specs (specs/distilled-spec-mongodb-atlas)",
+  sourceNote: ".generated-specs (specs)",
 
   // Sensitive member types reference Redacted; pull the import in when used.
   postProcess: (code) =>

@@ -100,7 +100,7 @@ const makePlanetScaleSpec = (): SdkSpec => {
       },
     },
 
-    sourceNote: ".generated-specs (specs/distilled-spec-planetscale)",
+    sourceNote: ".generated-specs (specs)",
 
     // v0 surface parity: `<Op>Input` / `<Op>Output` type aliases for every
     // operation (the converter names I/O shapes `<Op>Request` /

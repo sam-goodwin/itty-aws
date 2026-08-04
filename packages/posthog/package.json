@@ -69,7 +69,7 @@
     "convert": "bun scripts/convert.ts",
     "generate": "bun scripts/generate.ts",
     "typecheck": "tsc -p tsconfig.json",
-    "specs:fetch": "git submodule update --force --init --recursive --depth=1 specs/distilled-spec-posthog"
+    "specs:fetch": "bun scripts/fetch-specs.ts"
   },
   "dependencies": {
     "@distilled.cloud/core": "workspace:*",
@@ -78,6 +78,7 @@
   },
   "devDependencies": {
     "@types/bun": "catalog:",
-    "@types/node": "catalog:"
+    "@types/node": "catalog:",
+    "yaml": "^2.6.0"
   }
 }

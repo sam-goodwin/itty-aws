@@ -62,8 +62,7 @@
     "convert": "bun scripts/convert.ts",
     "generate": "bun scripts/convert.ts && bun scripts/generate.ts",
     "typecheck": "tsc -p tsconfig.json",
-    "specs:fetch": "git submodule update --force --init --recursive --depth=1 specs/distilled-spec-neon && git -C specs/distilled-spec-neon checkout -- .",
-    "specs:update": "git -C specs/distilled-spec-neon fetch && git -C specs/distilled-spec-neon checkout main && git -C specs/distilled-spec-neon pull"
+    "specs:fetch": "bun scripts/fetch-specs.ts"
   },
   "dependencies": {
     "@distilled.cloud/core": "workspace:*",

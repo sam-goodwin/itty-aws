@@ -2,7 +2,7 @@
 /**
  * convert — turn the Fly.io Machines OpenAPI spec into a Smithy JSON model.
  *
- * Input:  specs/distilled-spec-fly-io/specs/openapi.json  (OAS 3.0)
+ * Input:  specs/openapi.json  (OAS 3.0)
  * Output: .generated-specs/machines.json
  *
  * The RFC-6902 patch chain in `patches/` (ported verbatim from distilled v0)
@@ -18,7 +18,7 @@ await runOpenApiConvert({
   specs: [
     {
       name: "machines",
-      specPath: "specs/distilled-spec-fly-io/specs/openapi.json",
+      specPath: "specs/openapi.json",
     },
   ],
   options: {

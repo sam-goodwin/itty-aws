@@ -211,6 +211,7 @@
       "devDependencies": {
         "@types/bun": "catalog:",
         "@types/node": "catalog:",
+        "yaml": "^2.6.0",
       },
     },
     "packages/prisma-postgres": {

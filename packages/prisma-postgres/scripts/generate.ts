@@ -57,8 +57,7 @@ const spec: SdkSpec = {
         )
       : code,
 
-  sourceNote:
-    ".generated-specs (converted from specs/distilled-spec-prisma-postgres)",
+  sourceNote: ".generated-specs (converted from specs)",
 
   // Structural unions (the spec's oneOf database-source variants): a plain
   // TS union + `S.Union([...])` over the named case shapes — Prisma returns
