@@ -1,0 +1,15 @@
+{
+  "extends": "../../tsconfig.base.json",
+  // The core tests are type-level as much as runtime — `.pages`/`.items` on
+  // both call styles, with the right element type — so they need to be part
+  // of the `typecheck:ci` program, not just something `bun test` transpiles.
+  "include": ["src/**/*.ts", "test/**/*.ts"],
+  "compilerOptions": {
+    "composite": true,
+    "noEmit": false,
+    "emitDeclarationOnly": true,
+    "outDir": "./.test-types",
+    "rootDir": ".",
+    "tsBuildInfoFile": "./.test-types/tsconfig.test.tsbuildinfo"
+  }
+}
