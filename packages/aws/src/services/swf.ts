@@ -7,7 +7,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 const ns = T.XmlNamespace("http://swf.amazonaws.com/doc/2012-01-25");
 const svc = T.AwsApiService({
   sdkId: "SWF",
@@ -3388,7 +3387,7 @@ export const countClosedWorkflowExecutions: API.OperationMethod<
   CountClosedWorkflowExecutionsInput,
   WorkflowExecutionCount,
   CountClosedWorkflowExecutionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CountClosedWorkflowExecutionsInput,
   output: WorkflowExecutionCount,
@@ -3442,7 +3441,7 @@ export const countOpenWorkflowExecutions: API.OperationMethod<
   CountOpenWorkflowExecutionsInput,
   WorkflowExecutionCount,
   CountOpenWorkflowExecutionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CountOpenWorkflowExecutionsInput,
   output: WorkflowExecutionCount,
@@ -3486,7 +3485,7 @@ export const countPendingActivityTasks: API.OperationMethod<
   CountPendingActivityTasksInput,
   PendingTaskCount,
   CountPendingActivityTasksError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CountPendingActivityTasksInput,
   output: PendingTaskCount,
@@ -3530,7 +3529,7 @@ export const countPendingDecisionTasks: API.OperationMethod<
   CountPendingDecisionTasksInput,
   PendingTaskCount,
   CountPendingDecisionTasksError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CountPendingDecisionTasksInput,
   output: PendingTaskCount,
@@ -3581,7 +3580,7 @@ export const deleteActivityType: API.OperationMethod<
   DeleteActivityTypeInput,
   DeleteActivityTypeResponse,
   DeleteActivityTypeError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteActivityTypeInput,
   output: DeleteActivityTypeResponse,
@@ -3637,7 +3636,7 @@ export const deleteWorkflowType: API.OperationMethod<
   DeleteWorkflowTypeInput,
   DeleteWorkflowTypeResponse,
   DeleteWorkflowTypeError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteWorkflowTypeInput,
   output: DeleteWorkflowTypeResponse,
@@ -3691,7 +3690,7 @@ export const deprecateActivityType: API.OperationMethod<
   DeprecateActivityTypeInput,
   DeprecateActivityTypeResponse,
   DeprecateActivityTypeError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeprecateActivityTypeInput,
   output: DeprecateActivityTypeResponse,
@@ -3743,7 +3742,7 @@ export const deprecateDomain: API.OperationMethod<
   DeprecateDomainInput,
   DeprecateDomainResponse,
   DeprecateDomainError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeprecateDomainInput,
   output: DeprecateDomainResponse,
@@ -3801,7 +3800,7 @@ export const deprecateWorkflowType: API.OperationMethod<
   DeprecateWorkflowTypeInput,
   DeprecateWorkflowTypeResponse,
   DeprecateWorkflowTypeError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeprecateWorkflowTypeInput,
   output: DeprecateWorkflowTypeResponse,
@@ -3854,7 +3853,7 @@ export const describeActivityType: API.OperationMethod<
   DescribeActivityTypeInput,
   ActivityTypeDetail,
   DescribeActivityTypeError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeActivityTypeInput,
   output: ActivityTypeDetail,
@@ -3895,7 +3894,7 @@ export const describeDomain: API.OperationMethod<
   DescribeDomainInput,
   DomainDetail,
   DescribeDomainError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeDomainInput,
   output: DomainDetail,
@@ -3939,7 +3938,7 @@ export const describeWorkflowExecution: API.OperationMethod<
   DescribeWorkflowExecutionInput,
   WorkflowExecutionDetail,
   DescribeWorkflowExecutionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeWorkflowExecutionInput,
   output: WorkflowExecutionDetail,
@@ -3988,7 +3987,7 @@ export const describeWorkflowType: API.OperationMethod<
   DescribeWorkflowTypeInput,
   WorkflowTypeDetail,
   DescribeWorkflowTypeError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeWorkflowTypeInput,
   output: WorkflowTypeDetail,
@@ -4033,7 +4032,7 @@ export const getWorkflowExecutionHistory: API.PaginatedOperationMethod<
   GetWorkflowExecutionHistoryInput,
   History,
   GetWorkflowExecutionHistoryError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   HistoryEvent
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetWorkflowExecutionHistoryInput,
@@ -4084,7 +4083,7 @@ export const listActivityTypes: API.PaginatedOperationMethod<
   ListActivityTypesInput,
   ActivityTypeInfos,
   ListActivityTypesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ActivityTypeInfo
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListActivityTypesInput,
@@ -4146,7 +4145,7 @@ export const listClosedWorkflowExecutions: API.PaginatedOperationMethod<
   ListClosedWorkflowExecutionsInput,
   WorkflowExecutionInfos,
   ListClosedWorkflowExecutionsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   WorkflowExecutionInfo
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListClosedWorkflowExecutionsInput,
@@ -4197,7 +4196,7 @@ export const listDomains: API.PaginatedOperationMethod<
   ListDomainsInput,
   DomainInfos,
   ListDomainsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   DomainInfo
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDomainsInput,
@@ -4259,7 +4258,7 @@ export const listOpenWorkflowExecutions: API.PaginatedOperationMethod<
   ListOpenWorkflowExecutionsInput,
   WorkflowExecutionInfos,
   ListOpenWorkflowExecutionsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   WorkflowExecutionInfo
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOpenWorkflowExecutionsInput,
@@ -4288,7 +4287,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceInput,
   ListTagsForResourceOutput,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceInput,
   output: ListTagsForResourceOutput,
@@ -4333,7 +4332,7 @@ export const listWorkflowTypes: API.PaginatedOperationMethod<
   ListWorkflowTypesInput,
   WorkflowTypeInfos,
   ListWorkflowTypesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   WorkflowTypeInfo
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListWorkflowTypesInput,
@@ -4392,7 +4391,7 @@ export const pollForActivityTask: API.OperationMethod<
   PollForActivityTaskInput,
   ActivityTask,
   PollForActivityTaskError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PollForActivityTaskInput,
   output: ActivityTask,
@@ -4460,7 +4459,7 @@ export const pollForDecisionTask: API.PaginatedOperationMethod<
   PollForDecisionTaskInput,
   DecisionTask,
   PollForDecisionTaskError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   HistoryEvent
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: PollForDecisionTaskInput,
@@ -4534,7 +4533,7 @@ export const recordActivityTaskHeartbeat: API.OperationMethod<
   RecordActivityTaskHeartbeatInput,
   ActivityTaskStatus,
   RecordActivityTaskHeartbeatError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: RecordActivityTaskHeartbeatInput,
   output: ActivityTaskStatus,
@@ -4590,7 +4589,7 @@ export const registerActivityType: API.OperationMethod<
   RegisterActivityTypeInput,
   RegisterActivityTypeResponse,
   RegisterActivityTypeError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: RegisterActivityTypeInput,
   output: RegisterActivityTypeResponse,
@@ -4637,7 +4636,7 @@ export const registerDomain: API.OperationMethod<
   RegisterDomainInput,
   RegisterDomainResponse,
   RegisterDomainError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: RegisterDomainInput,
   output: RegisterDomainResponse,
@@ -4700,7 +4699,7 @@ export const registerWorkflowType: API.OperationMethod<
   RegisterWorkflowTypeInput,
   RegisterWorkflowTypeResponse,
   RegisterWorkflowTypeError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: RegisterWorkflowTypeInput,
   output: RegisterWorkflowTypeResponse,
@@ -4756,7 +4755,7 @@ export const requestCancelWorkflowExecution: API.OperationMethod<
   RequestCancelWorkflowExecutionInput,
   RequestCancelWorkflowExecutionResponse,
   RequestCancelWorkflowExecutionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: RequestCancelWorkflowExecutionInput,
   output: RequestCancelWorkflowExecutionResponse,
@@ -4811,7 +4810,7 @@ export const respondActivityTaskCanceled: API.OperationMethod<
   RespondActivityTaskCanceledInput,
   RespondActivityTaskCanceledResponse,
   RespondActivityTaskCanceledError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: RespondActivityTaskCanceledInput,
   output: RespondActivityTaskCanceledResponse,
@@ -4864,7 +4863,7 @@ export const respondActivityTaskCompleted: API.OperationMethod<
   RespondActivityTaskCompletedInput,
   RespondActivityTaskCompletedResponse,
   RespondActivityTaskCompletedError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: RespondActivityTaskCompletedInput,
   output: RespondActivityTaskCompletedResponse,
@@ -4912,7 +4911,7 @@ export const respondActivityTaskFailed: API.OperationMethod<
   RespondActivityTaskFailedInput,
   RespondActivityTaskFailedResponse,
   RespondActivityTaskFailedError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: RespondActivityTaskFailedInput,
   output: RespondActivityTaskFailedResponse,
@@ -4950,7 +4949,7 @@ export const respondDecisionTaskCompleted: API.OperationMethod<
   RespondDecisionTaskCompletedInput,
   RespondDecisionTaskCompletedResponse,
   RespondDecisionTaskCompletedError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: RespondDecisionTaskCompletedInput,
   output: RespondDecisionTaskCompletedResponse,
@@ -5000,7 +4999,7 @@ export const signalWorkflowExecution: API.OperationMethod<
   SignalWorkflowExecutionInput,
   SignalWorkflowExecutionResponse,
   SignalWorkflowExecutionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: SignalWorkflowExecutionInput,
   output: SignalWorkflowExecutionResponse,
@@ -5067,7 +5066,7 @@ export const startWorkflowExecution: API.OperationMethod<
   StartWorkflowExecutionInput,
   Run,
   StartWorkflowExecutionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartWorkflowExecutionInput,
   output: Run,
@@ -5099,7 +5098,7 @@ export const tagResource: API.OperationMethod<
   TagResourceInput,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: TagResourceInput,
   output: TagResourceResponse,
@@ -5157,7 +5156,7 @@ export const terminateWorkflowExecution: API.OperationMethod<
   TerminateWorkflowExecutionInput,
   TerminateWorkflowExecutionResponse,
   TerminateWorkflowExecutionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: TerminateWorkflowExecutionInput,
   output: TerminateWorkflowExecutionResponse,
@@ -5209,7 +5208,7 @@ export const undeprecateActivityType: API.OperationMethod<
   UndeprecateActivityTypeInput,
   UndeprecateActivityTypeResponse,
   UndeprecateActivityTypeError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UndeprecateActivityTypeInput,
   output: UndeprecateActivityTypeResponse,
@@ -5258,7 +5257,7 @@ export const undeprecateDomain: API.OperationMethod<
   UndeprecateDomainInput,
   UndeprecateDomainResponse,
   UndeprecateDomainError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UndeprecateDomainInput,
   output: UndeprecateDomainResponse,
@@ -5314,7 +5313,7 @@ export const undeprecateWorkflowType: API.OperationMethod<
   UndeprecateWorkflowTypeInput,
   UndeprecateWorkflowTypeResponse,
   UndeprecateWorkflowTypeError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UndeprecateWorkflowTypeInput,
   output: UndeprecateWorkflowTypeResponse,
@@ -5340,7 +5339,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceInput,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceInput,
   output: UntagResourceResponse,

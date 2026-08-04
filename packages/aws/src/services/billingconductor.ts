@@ -8,7 +8,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 import { SensitiveString } from "../sensitive.ts";
 const svc = T.AwsApiService({
   sdkId: "billingconductor",
@@ -2351,7 +2350,7 @@ export const associateAccounts: API.OperationMethod<
   AssociateAccountsInput,
   AssociateAccountsOutput,
   AssociateAccountsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: AssociateAccountsInput,
   output: AssociateAccountsOutput,
@@ -2385,7 +2384,7 @@ export const associatePricingRules: API.OperationMethod<
   AssociatePricingRulesInput,
   AssociatePricingRulesOutput,
   AssociatePricingRulesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: AssociatePricingRulesInput,
   output: AssociatePricingRulesOutput,
@@ -2419,7 +2418,7 @@ export const batchAssociateResourcesToCustomLineItem: API.OperationMethod<
   BatchAssociateResourcesToCustomLineItemInput,
   BatchAssociateResourcesToCustomLineItemOutput,
   BatchAssociateResourcesToCustomLineItemError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: BatchAssociateResourcesToCustomLineItemInput,
   output: BatchAssociateResourcesToCustomLineItemOutput,
@@ -2452,7 +2451,7 @@ export const batchDisassociateResourcesFromCustomLineItem: API.OperationMethod<
   BatchDisassociateResourcesFromCustomLineItemInput,
   BatchDisassociateResourcesFromCustomLineItemOutput,
   BatchDisassociateResourcesFromCustomLineItemError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: BatchDisassociateResourcesFromCustomLineItemInput,
   output: BatchDisassociateResourcesFromCustomLineItemOutput,
@@ -2484,7 +2483,7 @@ export const createBillingGroup: API.OperationMethod<
   CreateBillingGroupInput,
   CreateBillingGroupOutput,
   CreateBillingGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateBillingGroupInput,
   output: CreateBillingGroupOutput,
@@ -2516,7 +2515,7 @@ export const createCustomLineItem: API.OperationMethod<
   CreateCustomLineItemInput,
   CreateCustomLineItemOutput,
   CreateCustomLineItemError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateCustomLineItemInput,
   output: CreateCustomLineItemOutput,
@@ -2549,7 +2548,7 @@ export const createPricingPlan: API.OperationMethod<
   CreatePricingPlanInput,
   CreatePricingPlanOutput,
   CreatePricingPlanError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreatePricingPlanInput,
   output: CreatePricingPlanOutput,
@@ -2582,7 +2581,7 @@ export const createPricingRule: API.OperationMethod<
   CreatePricingRuleInput,
   CreatePricingRuleOutput,
   CreatePricingRuleError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreatePricingRuleInput,
   output: CreatePricingRuleOutput,
@@ -2612,7 +2611,7 @@ export const deleteBillingGroup: API.OperationMethod<
   DeleteBillingGroupInput,
   DeleteBillingGroupOutput,
   DeleteBillingGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteBillingGroupInput,
   output: DeleteBillingGroupOutput,
@@ -2641,7 +2640,7 @@ export const deleteCustomLineItem: API.OperationMethod<
   DeleteCustomLineItemInput,
   DeleteCustomLineItemOutput,
   DeleteCustomLineItemError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteCustomLineItemInput,
   output: DeleteCustomLineItemOutput,
@@ -2671,7 +2670,7 @@ export const deletePricingPlan: API.OperationMethod<
   DeletePricingPlanInput,
   DeletePricingPlanOutput,
   DeletePricingPlanError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeletePricingPlanInput,
   output: DeletePricingPlanOutput,
@@ -2701,7 +2700,7 @@ export const deletePricingRule: API.OperationMethod<
   DeletePricingRuleInput,
   DeletePricingRuleOutput,
   DeletePricingRuleError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeletePricingRuleInput,
   output: DeletePricingRuleOutput,
@@ -2732,7 +2731,7 @@ export const disassociateAccounts: API.OperationMethod<
   DisassociateAccountsInput,
   DisassociateAccountsOutput,
   DisassociateAccountsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DisassociateAccountsInput,
   output: DisassociateAccountsOutput,
@@ -2764,7 +2763,7 @@ export const disassociatePricingRules: API.OperationMethod<
   DisassociatePricingRulesInput,
   DisassociatePricingRulesOutput,
   DisassociatePricingRulesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DisassociatePricingRulesInput,
   output: DisassociatePricingRulesOutput,
@@ -2795,7 +2794,7 @@ export const getBillingGroupCostReport: API.PaginatedOperationMethod<
   GetBillingGroupCostReportInput,
   GetBillingGroupCostReportOutput,
   GetBillingGroupCostReportError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   BillingGroupCostReportResultElement
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetBillingGroupCostReportInput,
@@ -2832,7 +2831,7 @@ export const listAccountAssociations: API.PaginatedOperationMethod<
   ListAccountAssociationsInput,
   ListAccountAssociationsOutput,
   ListAccountAssociationsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   AccountAssociationsListElement
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountAssociationsInput,
@@ -2868,7 +2867,7 @@ export const listBillingGroupCostReports: API.PaginatedOperationMethod<
   ListBillingGroupCostReportsInput,
   ListBillingGroupCostReportsOutput,
   ListBillingGroupCostReportsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   BillingGroupCostReportElement
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBillingGroupCostReportsInput,
@@ -2905,7 +2904,7 @@ export const listBillingGroups: API.PaginatedOperationMethod<
   ListBillingGroupsInput,
   ListBillingGroupsOutput,
   ListBillingGroupsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   BillingGroupListElement
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBillingGroupsInput,
@@ -2942,7 +2941,7 @@ export const listCustomLineItems: API.PaginatedOperationMethod<
   ListCustomLineItemsInput,
   ListCustomLineItemsOutput,
   ListCustomLineItemsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   CustomLineItemListElement
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCustomLineItemsInput,
@@ -2978,7 +2977,7 @@ export const listCustomLineItemVersions: API.PaginatedOperationMethod<
   ListCustomLineItemVersionsInput,
   ListCustomLineItemVersionsOutput,
   ListCustomLineItemVersionsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   CustomLineItemVersionListElement
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCustomLineItemVersionsInput,
@@ -3013,7 +3012,7 @@ export const listPricingPlans: API.PaginatedOperationMethod<
   ListPricingPlansInput,
   ListPricingPlansOutput,
   ListPricingPlansError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   PricingPlanListElement
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPricingPlansInput,
@@ -3049,7 +3048,7 @@ export const listPricingPlansAssociatedWithPricingRule: API.PaginatedOperationMe
   ListPricingPlansAssociatedWithPricingRuleInput,
   ListPricingPlansAssociatedWithPricingRuleOutput,
   ListPricingPlansAssociatedWithPricingRuleError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   PricingPlanArn
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPricingPlansAssociatedWithPricingRuleInput,
@@ -3085,7 +3084,7 @@ export const listPricingRules: API.PaginatedOperationMethod<
   ListPricingRulesInput,
   ListPricingRulesOutput,
   ListPricingRulesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   PricingRuleListElement
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPricingRulesInput,
@@ -3121,7 +3120,7 @@ export const listPricingRulesAssociatedToPricingPlan: API.PaginatedOperationMeth
   ListPricingRulesAssociatedToPricingPlanInput,
   ListPricingRulesAssociatedToPricingPlanOutput,
   ListPricingRulesAssociatedToPricingPlanError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   PricingRuleArn
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPricingRulesAssociatedToPricingPlanInput,
@@ -3158,7 +3157,7 @@ export const listResourcesAssociatedToCustomLineItem: API.PaginatedOperationMeth
   ListResourcesAssociatedToCustomLineItemInput,
   ListResourcesAssociatedToCustomLineItemOutput,
   ListResourcesAssociatedToCustomLineItemError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ListResourcesAssociatedToCustomLineItemResponseElement
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListResourcesAssociatedToCustomLineItemInput,
@@ -3195,7 +3194,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -3225,7 +3224,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -3255,7 +3254,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -3286,7 +3285,7 @@ export const updateBillingGroup: API.OperationMethod<
   UpdateBillingGroupInput,
   UpdateBillingGroupOutput,
   UpdateBillingGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateBillingGroupInput,
   output: UpdateBillingGroupOutput,
@@ -3318,7 +3317,7 @@ export const updateCustomLineItem: API.OperationMethod<
   UpdateCustomLineItemInput,
   UpdateCustomLineItemOutput,
   UpdateCustomLineItemError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateCustomLineItemInput,
   output: UpdateCustomLineItemOutput,
@@ -3350,7 +3349,7 @@ export const updatePricingPlan: API.OperationMethod<
   UpdatePricingPlanInput,
   UpdatePricingPlanOutput,
   UpdatePricingPlanError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdatePricingPlanInput,
   output: UpdatePricingPlanOutput,
@@ -3382,7 +3381,7 @@ export const updatePricingRule: API.OperationMethod<
   UpdatePricingRuleInput,
   UpdatePricingRuleOutput,
   UpdatePricingRuleError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdatePricingRuleInput,
   output: UpdatePricingRuleOutput,

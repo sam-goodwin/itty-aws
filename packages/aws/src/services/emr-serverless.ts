@@ -8,7 +8,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 import { SensitiveString } from "../sensitive.ts";
 const svc = T.AwsApiService({
   sdkId: "EMR Serverless",
@@ -1756,7 +1755,7 @@ export const cancelJobRun: API.OperationMethod<
   CancelJobRunRequest,
   CancelJobRunResponse,
   CancelJobRunError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CancelJobRunRequest,
   output: CancelJobRunResponse,
@@ -1783,7 +1782,7 @@ export const createApplication: API.OperationMethod<
   CreateApplicationRequest,
   CreateApplicationResponse,
   CreateApplicationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateApplicationRequest,
   output: CreateApplicationResponse,
@@ -1810,7 +1809,7 @@ export const deleteApplication: API.OperationMethod<
   DeleteApplicationRequest,
   DeleteApplicationResponse,
   DeleteApplicationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteApplicationRequest,
   output: DeleteApplicationResponse,
@@ -1836,7 +1835,7 @@ export const getApplication: API.OperationMethod<
   GetApplicationRequest,
   GetApplicationResponse,
   GetApplicationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetApplicationRequest,
   output: GetApplicationResponse,
@@ -1866,7 +1865,7 @@ export const getDashboardForJobRun: API.OperationMethod<
   GetDashboardForJobRunRequest,
   GetDashboardForJobRunResponse,
   GetDashboardForJobRunError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetDashboardForJobRunRequest,
   output: GetDashboardForJobRunResponse,
@@ -1892,7 +1891,7 @@ export const getJobRun: API.OperationMethod<
   GetJobRunRequest,
   GetJobRunResponse,
   GetJobRunError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetJobRunRequest,
   output: GetJobRunResponse,
@@ -1922,7 +1921,7 @@ export const getResourceDashboard: API.OperationMethod<
   GetResourceDashboardRequest,
   GetResourceDashboardResponse,
   GetResourceDashboardError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetResourceDashboardRequest,
   output: GetResourceDashboardResponse,
@@ -1948,7 +1947,7 @@ export const getSession: API.OperationMethod<
   GetSessionRequest,
   GetSessionResponse,
   GetSessionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetSessionRequest,
   output: GetSessionResponse,
@@ -1974,7 +1973,7 @@ export const getSessionEndpoint: API.OperationMethod<
   GetSessionEndpointRequest,
   GetSessionEndpointResponse,
   GetSessionEndpointError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetSessionEndpointRequest,
   output: GetSessionEndpointResponse,
@@ -1999,7 +1998,7 @@ export const listApplications: API.PaginatedOperationMethod<
   ListApplicationsRequest,
   ListApplicationsResponse,
   ListApplicationsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ApplicationSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListApplicationsRequest,
@@ -2028,7 +2027,7 @@ export const listJobRunAttempts: API.PaginatedOperationMethod<
   ListJobRunAttemptsRequest,
   ListJobRunAttemptsResponse,
   ListJobRunAttemptsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   JobRunAttemptSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListJobRunAttemptsRequest,
@@ -2060,7 +2059,7 @@ export const listJobRuns: API.PaginatedOperationMethod<
   ListJobRunsRequest,
   ListJobRunsResponse,
   ListJobRunsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   JobRunSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListJobRunsRequest,
@@ -2089,7 +2088,7 @@ export const listSessions: API.PaginatedOperationMethod<
   ListSessionsRequest,
   ListSessionsResponse,
   ListSessionsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   SessionSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSessionsRequest,
@@ -2122,7 +2121,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -2149,7 +2148,7 @@ export const startApplication: API.OperationMethod<
   StartApplicationRequest,
   StartApplicationResponse,
   StartApplicationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartApplicationRequest,
   output: StartApplicationResponse,
@@ -2177,7 +2176,7 @@ export const startJobRun: API.OperationMethod<
   StartJobRunRequest,
   StartJobRunResponse,
   StartJobRunError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartJobRunRequest,
   output: StartJobRunResponse,
@@ -2206,7 +2205,7 @@ export const startSession: API.OperationMethod<
   StartSessionRequest,
   StartSessionResponse,
   StartSessionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartSessionRequest,
   output: StartSessionResponse,
@@ -2234,7 +2233,7 @@ export const stopApplication: API.OperationMethod<
   StopApplicationRequest,
   StopApplicationResponse,
   StopApplicationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StopApplicationRequest,
   output: StopApplicationResponse,
@@ -2260,7 +2259,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -2286,7 +2285,7 @@ export const terminateSession: API.OperationMethod<
   TerminateSessionRequest,
   TerminateSessionResponse,
   TerminateSessionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: TerminateSessionRequest,
   output: TerminateSessionResponse,
@@ -2312,7 +2311,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -2338,7 +2337,7 @@ export const updateApplication: API.OperationMethod<
   UpdateApplicationRequest,
   UpdateApplicationResponse,
   UpdateApplicationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateApplicationRequest,
   output: UpdateApplicationResponse,

@@ -6,7 +6,6 @@ import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 const ns = T.XmlNamespace("http://cloudsearch.amazonaws.com/doc/2013-01-01/");
 const svc = T.AwsApiService({
   sdkId: "CloudSearch Domain",
@@ -432,7 +431,7 @@ export const search: API.OperationMethod<
   SearchRequest,
   SearchResponse,
   SearchError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: SearchRequest,
   output: SearchResponse,
@@ -454,7 +453,7 @@ export const suggest: API.OperationMethod<
   SuggestRequest,
   SuggestResponse,
   SuggestError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: SuggestRequest,
   output: SuggestResponse,
@@ -477,7 +476,7 @@ export const uploadDocuments: API.OperationMethod<
   UploadDocumentsRequest,
   UploadDocumentsResponse,
   UploadDocumentsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UploadDocumentsRequest,
   output: UploadDocumentsResponse,

@@ -948,7 +948,6 @@ export const awsSpec = (
 
   // Import refs aliased only where a generated schema name conflicts.
   const credsRef = allSchemaNames.has("Credentials") ? "Creds" : "Credentials";
-  const rgnRef = allSchemaNames.has("Region") ? "Rgn" : "Region";
   const commonErrorsRef = allSchemaNames.has("CommonErrors")
     ? "CommonErr"
     : "CommonErrors";
@@ -2397,7 +2396,9 @@ export const awsSpec = (
 
       // Explicit type annotations avoid TypeScript resolving internal
       // imports in emitted .d.ts files (type portability for consumers).
-      const depsType = `${credsRef} | ${rgnRef} | HttpClient.HttpClient`;
+      // `Region` is NOT listed: it's an override resolved with
+      // `Effect.serviceOption`, falling back to AWS_REGION (see region.ts).
+      const depsType = `${credsRef} | HttpClient.HttpClient`;
       let typeAnnotation: string;
       if (paginatedTrait) {
         const itemType = resolvePaginatedItemType(
@@ -2435,10 +2436,6 @@ export const awsSpec = (
         credsRef === "Creds"
           ? 'import type { Credentials as Creds } from "../credentials.ts";'
           : 'import type { Credentials } from "../credentials.ts";';
-      const regionImport =
-        rgnRef === "Rgn"
-          ? 'import type { Region as Rgn } from "../region.ts";'
-          : 'import type { Region } from "../region.ts";';
       const commonErrorsImport =
         commonErrorsRef === "CommonErr"
           ? 'import type { CommonErrors as CommonErr } from "../errors.ts";'
@@ -2460,7 +2457,6 @@ export const awsSpec = (
         "__CATEGORY_IMPORT__",
         credentialsImport,
         commonErrorsImport,
-        regionImport,
         "__SENSITIVE_IMPORT__",
       ].join("\n");
 

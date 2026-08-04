@@ -9,7 +9,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 import { SensitiveString } from "../sensitive.ts";
 const svc = T.AwsApiService({
   sdkId: "DevOps Agent",
@@ -5563,7 +5562,7 @@ export const associateService: API.OperationMethod<
   AssociateServiceInput,
   AssociateServiceOutput,
   AssociateServiceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: AssociateServiceInput,
   output: AssociateServiceOutput,
@@ -5596,7 +5595,7 @@ export const createAgentSpace: API.OperationMethod<
   CreateAgentSpaceInput,
   CreateAgentSpaceOutput,
   CreateAgentSpaceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateAgentSpaceInput,
   output: CreateAgentSpaceOutput,
@@ -5628,7 +5627,7 @@ export const createAsset: API.OperationMethod<
   CreateAssetRequest,
   CreateAssetResponse,
   CreateAssetError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateAssetRequest,
   output: CreateAssetResponse,
@@ -5661,7 +5660,7 @@ export const createAssetFile: API.OperationMethod<
   CreateAssetFileRequest,
   CreateAssetFileResponse,
   CreateAssetFileError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateAssetFileRequest,
   output: CreateAssetFileResponse,
@@ -5695,7 +5694,7 @@ export const createBacklogTask: API.OperationMethod<
   CreateBacklogTaskRequest,
   CreateBacklogTaskResponse,
   CreateBacklogTaskError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateBacklogTaskRequest,
   output: CreateBacklogTaskResponse,
@@ -5726,7 +5725,7 @@ export const createChat: API.OperationMethod<
   CreateChatRequest,
   CreateChatResponse,
   CreateChatError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateChatRequest,
   output: CreateChatResponse,
@@ -5755,7 +5754,7 @@ export const createPrivateConnection: API.OperationMethod<
   CreatePrivateConnectionInput,
   CreatePrivateConnectionOutput,
   CreatePrivateConnectionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreatePrivateConnectionInput,
   output: CreatePrivateConnectionOutput,
@@ -5786,7 +5785,7 @@ export const createTrigger: API.OperationMethod<
   CreateTriggerRequest,
   CreateTriggerResponse,
   CreateTriggerError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateTriggerRequest,
   output: CreateTriggerResponse,
@@ -5818,7 +5817,7 @@ export const deleteAgentSpace: API.OperationMethod<
   DeleteAgentSpaceInput,
   DeleteAgentSpaceOutput,
   DeleteAgentSpaceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteAgentSpaceInput,
   output: DeleteAgentSpaceOutput,
@@ -5850,7 +5849,7 @@ export const deleteAsset: API.OperationMethod<
   DeleteAssetRequest,
   DeleteAssetResponse,
   DeleteAssetError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteAssetRequest,
   output: DeleteAssetResponse,
@@ -5882,7 +5881,7 @@ export const deleteAssetFile: API.OperationMethod<
   DeleteAssetFileRequest,
   DeleteAssetFileResponse,
   DeleteAssetFileError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteAssetFileRequest,
   output: DeleteAssetFileResponse,
@@ -5913,7 +5912,7 @@ export const deletePrivateConnection: API.OperationMethod<
   DeletePrivateConnectionInput,
   DeletePrivateConnectionOutput,
   DeletePrivateConnectionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeletePrivateConnectionInput,
   output: DeletePrivateConnectionOutput,
@@ -5945,7 +5944,7 @@ export const deleteTrigger: API.OperationMethod<
   DeleteTriggerRequest,
   DeleteTriggerResponse,
   DeleteTriggerError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteTriggerRequest,
   output: DeleteTriggerResponse,
@@ -5977,7 +5976,7 @@ export const deregisterService: API.OperationMethod<
   DeregisterServiceInput,
   DeregisterServiceOutput,
   DeregisterServiceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeregisterServiceInput,
   output: DeregisterServiceOutput,
@@ -6008,7 +6007,7 @@ export const describePrivateConnection: API.OperationMethod<
   DescribePrivateConnectionInput,
   DescribePrivateConnectionOutput,
   DescribePrivateConnectionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribePrivateConnectionInput,
   output: DescribePrivateConnectionOutput,
@@ -6038,7 +6037,7 @@ export const disableOperatorApp: API.OperationMethod<
   DisableOperatorAppInput,
   DisableOperatorAppResponse,
   DisableOperatorAppError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DisableOperatorAppInput,
   output: DisableOperatorAppResponse,
@@ -6067,7 +6066,7 @@ export const disassociateService: API.OperationMethod<
   DisassociateServiceInput,
   DisassociateServiceOutput,
   DisassociateServiceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DisassociateServiceInput,
   output: DisassociateServiceOutput,
@@ -6096,7 +6095,7 @@ export const enableOperatorApp: API.OperationMethod<
   EnableOperatorAppInput,
   EnableOperatorAppOutput,
   EnableOperatorAppError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: EnableOperatorAppInput,
   output: EnableOperatorAppOutput,
@@ -6126,7 +6125,7 @@ export const getAccountUsage: API.OperationMethod<
   GetAccountUsageInput,
   GetAccountUsageOutput,
   GetAccountUsageError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetAccountUsageInput,
   output: GetAccountUsageOutput,
@@ -6156,7 +6155,7 @@ export const getAgentSpace: API.OperationMethod<
   GetAgentSpaceInput,
   GetAgentSpaceOutput,
   GetAgentSpaceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetAgentSpaceInput,
   output: GetAgentSpaceOutput,
@@ -6186,7 +6185,7 @@ export const getAsset: API.OperationMethod<
   GetAssetRequest,
   GetAssetResponse,
   GetAssetError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetAssetRequest,
   output: GetAssetResponse,
@@ -6217,7 +6216,7 @@ export const getAssetContent: API.OperationMethod<
   GetAssetContentRequest,
   GetAssetContentResponse,
   GetAssetContentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetAssetContentRequest,
   output: GetAssetContentResponse,
@@ -6248,7 +6247,7 @@ export const getAssetFile: API.OperationMethod<
   GetAssetFileRequest,
   GetAssetFileResponse,
   GetAssetFileError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetAssetFileRequest,
   output: GetAssetFileResponse,
@@ -6278,7 +6277,7 @@ export const getAssociation: API.OperationMethod<
   GetAssociationInput,
   GetAssociationOutput,
   GetAssociationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetAssociationInput,
   output: GetAssociationOutput,
@@ -6309,7 +6308,7 @@ export const getBacklogTask: API.OperationMethod<
   GetBacklogTaskRequest,
   GetBacklogTaskResponse,
   GetBacklogTaskError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetBacklogTaskRequest,
   output: GetBacklogTaskResponse,
@@ -6339,7 +6338,7 @@ export const getOperatorApp: API.OperationMethod<
   GetOperatorAppInput,
   GetOperatorAppOutput,
   GetOperatorAppError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetOperatorAppInput,
   output: GetOperatorAppOutput,
@@ -6364,7 +6363,7 @@ export const getRecommendation: API.OperationMethod<
   GetRecommendationRequest,
   GetRecommendationResponse,
   GetRecommendationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetRecommendationRequest,
   output: GetRecommendationResponse,
@@ -6394,7 +6393,7 @@ export const getService: API.OperationMethod<
   GetServiceInput,
   GetServiceOutput,
   GetServiceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetServiceInput,
   output: GetServiceOutput,
@@ -6424,7 +6423,7 @@ export const getTrigger: API.OperationMethod<
   GetTriggerRequest,
   GetTriggerResponse,
   GetTriggerError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetTriggerRequest,
   output: GetTriggerResponse,
@@ -6453,7 +6452,7 @@ export const listAgentSpaces: API.PaginatedOperationMethod<
   ListAgentSpacesInput,
   ListAgentSpacesOutput,
   ListAgentSpacesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   AgentSpace
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAgentSpacesInput,
@@ -6485,7 +6484,7 @@ export const listAssetFiles: API.PaginatedOperationMethod<
   ListAssetFilesRequest,
   ListAssetFilesResponse,
   ListAssetFilesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   AssetFileSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAssetFilesRequest,
@@ -6522,7 +6521,7 @@ export const listAssets: API.PaginatedOperationMethod<
   ListAssetsRequest,
   ListAssetsResponse,
   ListAssetsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   Asset
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAssetsRequest,
@@ -6558,7 +6557,7 @@ export const listAssetTypes: API.PaginatedOperationMethod<
   ListAssetTypesRequest,
   ListAssetTypesResponse,
   ListAssetTypesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   AssetTypeSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAssetTypesRequest,
@@ -6595,7 +6594,7 @@ export const listAssetVersions: API.PaginatedOperationMethod<
   ListAssetVersionsRequest,
   ListAssetVersionsResponse,
   ListAssetVersionsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   AssetVersionMetadata
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAssetVersionsRequest,
@@ -6632,7 +6631,7 @@ export const listAssociations: API.PaginatedOperationMethod<
   ListAssociationsInput,
   ListAssociationsOutput,
   ListAssociationsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   Association
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAssociationsInput,
@@ -6668,7 +6667,7 @@ export const listBacklogTasks: API.PaginatedOperationMethod<
   ListBacklogTasksRequest,
   ListBacklogTasksResponse,
   ListBacklogTasksError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   Task
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBacklogTasksRequest,
@@ -6704,7 +6703,7 @@ export const listChats: API.OperationMethod<
   ListChatsRequest,
   ListChatsResponse,
   ListChatsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListChatsRequest,
   output: ListChatsResponse,
@@ -6734,7 +6733,7 @@ export const listExecutions: API.PaginatedOperationMethod<
   ListExecutionsRequest,
   ListExecutionsResponse,
   ListExecutionsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   Execution
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListExecutionsRequest,
@@ -6771,7 +6770,7 @@ export const listGoals: API.PaginatedOperationMethod<
   ListGoalsRequest,
   ListGoalsResponse,
   ListGoalsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   Goal
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListGoalsRequest,
@@ -6808,7 +6807,7 @@ export const listJournalRecords: API.PaginatedOperationMethod<
   ListJournalRecordsRequest,
   ListJournalRecordsResponse,
   ListJournalRecordsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   JournalRecord
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListJournalRecordsRequest,
@@ -6846,7 +6845,7 @@ export const listPendingMessages: API.OperationMethod<
   ListPendingMessagesRequest,
   ListPendingMessagesResponse,
   ListPendingMessagesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListPendingMessagesRequest,
   output: ListPendingMessagesResponse,
@@ -6876,7 +6875,7 @@ export const listPrivateConnections: API.OperationMethod<
   ListPrivateConnectionsInput,
   ListPrivateConnectionsOutput,
   ListPrivateConnectionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListPrivateConnectionsInput,
   output: ListPrivateConnectionsOutput,
@@ -6905,7 +6904,7 @@ export const listRecommendations: API.OperationMethod<
   ListRecommendationsRequest,
   ListRecommendationsResponse,
   ListRecommendationsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListRecommendationsRequest,
   output: ListRecommendationsResponse,
@@ -6933,7 +6932,7 @@ export const listServices: API.PaginatedOperationMethod<
   ListServicesInput,
   ListServicesOutput,
   ListServicesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   RegisteredService
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListServicesInput,
@@ -6964,7 +6963,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -6994,7 +6993,7 @@ export const listTriggers: API.PaginatedOperationMethod<
   ListTriggersRequest,
   ListTriggersResponse,
   ListTriggersError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   Trigger
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTriggersRequest,
@@ -7031,7 +7030,7 @@ export const listWebhooks: API.OperationMethod<
   ListWebhooksInput,
   ListWebhooksOutput,
   ListWebhooksError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListWebhooksInput,
   output: ListWebhooksOutput,
@@ -7060,7 +7059,7 @@ export const registerService: API.OperationMethod<
   RegisterServiceInput,
   RegisterServiceOutput,
   RegisterServiceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: RegisterServiceInput,
   output: RegisterServiceOutput,
@@ -7091,7 +7090,7 @@ export const sendMessage: API.OperationMethod<
   SendMessageRequest,
   SendMessageResponse,
   SendMessageError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: SendMessageRequest,
   output: SendMessageResponse,
@@ -7122,7 +7121,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -7151,7 +7150,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -7181,7 +7180,7 @@ export const updateAgentSpace: API.OperationMethod<
   UpdateAgentSpaceInput,
   UpdateAgentSpaceOutput,
   UpdateAgentSpaceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateAgentSpaceInput,
   output: UpdateAgentSpaceOutput,
@@ -7213,7 +7212,7 @@ export const updateAsset: API.OperationMethod<
   UpdateAssetRequest,
   UpdateAssetResponse,
   UpdateAssetError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateAssetRequest,
   output: UpdateAssetResponse,
@@ -7247,7 +7246,7 @@ export const updateAssetFile: API.OperationMethod<
   UpdateAssetFileRequest,
   UpdateAssetFileResponse,
   UpdateAssetFileError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateAssetFileRequest,
   output: UpdateAssetFileResponse,
@@ -7279,7 +7278,7 @@ export const updateAssociation: API.OperationMethod<
   UpdateAssociationInput,
   UpdateAssociationOutput,
   UpdateAssociationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateAssociationInput,
   output: UpdateAssociationOutput,
@@ -7310,7 +7309,7 @@ export const updateBacklogTask: API.OperationMethod<
   UpdateBacklogTaskRequest,
   UpdateBacklogTaskResponse,
   UpdateBacklogTaskError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateBacklogTaskRequest,
   output: UpdateBacklogTaskResponse,
@@ -7343,7 +7342,7 @@ export const updateGoal: API.OperationMethod<
   UpdateGoalRequest,
   UpdateGoalResponse,
   UpdateGoalError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateGoalRequest,
   output: UpdateGoalResponse,
@@ -7374,7 +7373,7 @@ export const updateOperatorAppIdpConfig: API.OperationMethod<
   UpdateOperatorAppIdpConfigInput,
   UpdateOperatorAppIdpConfigOutput,
   UpdateOperatorAppIdpConfigError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateOperatorAppIdpConfigInput,
   output: UpdateOperatorAppIdpConfigOutput,
@@ -7404,7 +7403,7 @@ export const updatePrivateConnectionCertificate: API.OperationMethod<
   UpdatePrivateConnectionCertificateInput,
   UpdatePrivateConnectionCertificateOutput,
   UpdatePrivateConnectionCertificateError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdatePrivateConnectionCertificateInput,
   output: UpdatePrivateConnectionCertificateOutput,
@@ -7436,7 +7435,7 @@ export const updateRecommendation: API.OperationMethod<
   UpdateRecommendationRequest,
   UpdateRecommendationResponse,
   UpdateRecommendationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateRecommendationRequest,
   output: UpdateRecommendationResponse,
@@ -7468,7 +7467,7 @@ export const updateTrigger: API.OperationMethod<
   UpdateTriggerRequest,
   UpdateTriggerResponse,
   UpdateTriggerError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateTriggerRequest,
   output: UpdateTriggerResponse,
@@ -7498,7 +7497,7 @@ export const validateAwsAssociations: API.OperationMethod<
   ValidateAwsAssociationsInput,
   ValidateAwsAssociationsOutput,
   ValidateAwsAssociationsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ValidateAwsAssociationsInput,
   output: ValidateAwsAssociationsOutput,

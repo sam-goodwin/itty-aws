@@ -8,7 +8,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 import { SensitiveString } from "../sensitive.ts";
 const svc = T.AwsApiService({
   sdkId: "SSO",
@@ -302,7 +301,7 @@ export const getRoleCredentials: API.OperationMethod<
   GetRoleCredentialsRequest,
   GetRoleCredentialsResponse,
   GetRoleCredentialsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetRoleCredentialsRequest,
   output: GetRoleCredentialsResponse,
@@ -330,7 +329,7 @@ export const listAccountRoles: API.PaginatedOperationMethod<
   ListAccountRolesRequest,
   ListAccountRolesResponse,
   ListAccountRolesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   RoleInfo
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountRolesRequest,
@@ -367,7 +366,7 @@ export const listAccounts: API.PaginatedOperationMethod<
   ListAccountsRequest,
   ListAccountsResponse,
   ListAccountsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   AccountInfo
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsRequest,
@@ -414,7 +413,7 @@ export const logout: API.OperationMethod<
   LogoutRequest,
   LogoutResponse,
   LogoutError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: LogoutRequest,
   output: LogoutResponse,

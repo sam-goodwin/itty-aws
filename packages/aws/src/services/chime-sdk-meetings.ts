@@ -8,7 +8,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 import { SensitiveString } from "../sensitive.ts";
 const svc = T.AwsApiService({
   sdkId: "Chime SDK Meetings",
@@ -1133,7 +1132,7 @@ export const batchCreateAttendee: API.OperationMethod<
   BatchCreateAttendeeRequest,
   BatchCreateAttendeeResponse,
   BatchCreateAttendeeError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: BatchCreateAttendeeRequest,
   output: BatchCreateAttendeeResponse,
@@ -1199,7 +1198,7 @@ export const batchUpdateAttendeeCapabilitiesExcept: API.OperationMethod<
   BatchUpdateAttendeeCapabilitiesExceptRequest,
   BatchUpdateAttendeeCapabilitiesExceptResponse,
   BatchUpdateAttendeeCapabilitiesExceptError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: BatchUpdateAttendeeCapabilitiesExceptRequest,
   output: BatchUpdateAttendeeCapabilitiesExceptResponse,
@@ -1239,7 +1238,7 @@ export const createAttendee: API.OperationMethod<
   CreateAttendeeRequest,
   CreateAttendeeResponse,
   CreateAttendeeError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateAttendeeRequest,
   output: CreateAttendeeResponse,
@@ -1289,7 +1288,7 @@ export const createMeeting: API.OperationMethod<
   CreateMeetingRequest,
   CreateMeetingResponse,
   CreateMeetingError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateMeetingRequest,
   output: CreateMeetingResponse,
@@ -1338,7 +1337,7 @@ export const createMeetingWithAttendees: API.OperationMethod<
   CreateMeetingWithAttendeesRequest,
   CreateMeetingWithAttendeesResponse,
   CreateMeetingWithAttendeesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateMeetingWithAttendeesRequest,
   output: CreateMeetingWithAttendeesResponse,
@@ -1376,7 +1375,7 @@ export const deleteAttendee: API.OperationMethod<
   DeleteAttendeeRequest,
   DeleteAttendeeResponse,
   DeleteAttendeeError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteAttendeeRequest,
   output: DeleteAttendeeResponse,
@@ -1413,7 +1412,7 @@ export const deleteMeeting: API.OperationMethod<
   DeleteMeetingRequest,
   DeleteMeetingResponse,
   DeleteMeetingError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteMeetingRequest,
   output: DeleteMeetingResponse,
@@ -1449,7 +1448,7 @@ export const getAttendee: API.OperationMethod<
   GetAttendeeRequest,
   GetAttendeeResponse,
   GetAttendeeError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetAttendeeRequest,
   output: GetAttendeeResponse,
@@ -1485,7 +1484,7 @@ export const getMeeting: API.OperationMethod<
   GetMeetingRequest,
   GetMeetingResponse,
   GetMeetingError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetMeetingRequest,
   output: GetMeetingResponse,
@@ -1521,7 +1520,7 @@ export const listAttendees: API.PaginatedOperationMethod<
   ListAttendeesRequest,
   ListAttendeesResponse,
   ListAttendeesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAttendeesRequest,
@@ -1562,7 +1561,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -1613,7 +1612,7 @@ export const startMeetingTranscription: API.OperationMethod<
   StartMeetingTranscriptionRequest,
   StartMeetingTranscriptionResponse,
   StartMeetingTranscriptionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartMeetingTranscriptionRequest,
   output: StartMeetingTranscriptionResponse,
@@ -1659,7 +1658,7 @@ export const stopMeetingTranscription: API.OperationMethod<
   StopMeetingTranscriptionRequest,
   StopMeetingTranscriptionResponse,
   StopMeetingTranscriptionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StopMeetingTranscriptionRequest,
   output: StopMeetingTranscriptionResponse,
@@ -1696,7 +1695,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -1748,7 +1747,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -1813,7 +1812,7 @@ export const updateAttendeeCapabilities: API.OperationMethod<
   UpdateAttendeeCapabilitiesRequest,
   UpdateAttendeeCapabilitiesResponse,
   UpdateAttendeeCapabilitiesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateAttendeeCapabilitiesRequest,
   output: UpdateAttendeeCapabilitiesResponse,

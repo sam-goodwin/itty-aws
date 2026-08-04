@@ -7,7 +7,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 const ns = T.XmlNamespace("http://monitoring.amazonaws.com/doc/2010-08-01/");
 const svc = T.AwsApiService({
   sdkId: "CloudWatch",
@@ -3368,7 +3367,7 @@ export const associateDatasetKmsKey: API.OperationMethod<
   AssociateDatasetKmsKeyInput,
   AssociateDatasetKmsKeyOutput,
   AssociateDatasetKmsKeyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: AssociateDatasetKmsKeyInput,
   output: AssociateDatasetKmsKeyOutput,
@@ -3404,7 +3403,7 @@ export const deleteAlarmMuteRule: API.OperationMethod<
   DeleteAlarmMuteRuleInput,
   DeleteAlarmMuteRuleResponse,
   DeleteAlarmMuteRuleError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteAlarmMuteRuleInput,
   output: DeleteAlarmMuteRuleResponse,
@@ -3446,7 +3445,7 @@ export const deleteAlarms: API.OperationMethod<
   DeleteAlarmsInput,
   DeleteAlarmsResponse,
   DeleteAlarmsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteAlarmsInput,
   output: DeleteAlarmsResponse,
@@ -3472,7 +3471,7 @@ export const deleteAnomalyDetector: API.OperationMethod<
   DeleteAnomalyDetectorInput,
   DeleteAnomalyDetectorOutput,
   DeleteAnomalyDetectorError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteAnomalyDetectorInput,
   output: DeleteAnomalyDetectorOutput,
@@ -3502,7 +3501,7 @@ export const deleteDashboards: API.OperationMethod<
   DeleteDashboardsInput,
   DeleteDashboardsOutput,
   DeleteDashboardsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteDashboardsInput,
   output: DeleteDashboardsOutput,
@@ -3530,7 +3529,7 @@ export const deleteInsightRules: API.OperationMethod<
   DeleteInsightRulesInput,
   DeleteInsightRulesOutput,
   DeleteInsightRulesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteInsightRulesInput,
   output: DeleteInsightRulesOutput,
@@ -3552,7 +3551,7 @@ export const deleteMetricStream: API.OperationMethod<
   DeleteMetricStreamInput,
   DeleteMetricStreamOutput,
   DeleteMetricStreamError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteMetricStreamInput,
   output: DeleteMetricStreamOutput,
@@ -3580,7 +3579,7 @@ export const describeAlarmContributors: API.OperationMethod<
   DescribeAlarmContributorsInput,
   DescribeAlarmContributorsOutput,
   DescribeAlarmContributorsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeAlarmContributorsInput,
   output: DescribeAlarmContributorsOutput,
@@ -3607,7 +3606,7 @@ export const describeAlarmHistory: API.PaginatedOperationMethod<
   DescribeAlarmHistoryInput,
   DescribeAlarmHistoryOutput,
   DescribeAlarmHistoryError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   AlarmHistoryItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeAlarmHistoryInput,
@@ -3638,7 +3637,7 @@ export const describeAlarms: API.PaginatedOperationMethod<
   DescribeAlarmsInput,
   DescribeAlarmsOutput,
   DescribeAlarmsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeAlarmsInput,
@@ -3667,7 +3666,7 @@ export const describeAlarmsForMetric: API.OperationMethod<
   DescribeAlarmsForMetricInput,
   DescribeAlarmsForMetricOutput,
   DescribeAlarmsForMetricError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeAlarmsForMetricInput,
   output: DescribeAlarmsForMetricOutput,
@@ -3695,7 +3694,7 @@ export const describeAnomalyDetectors: API.PaginatedOperationMethod<
   DescribeAnomalyDetectorsInput,
   DescribeAnomalyDetectorsOutput,
   DescribeAnomalyDetectorsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   AnomalyDetector
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeAnomalyDetectorsInput,
@@ -3728,7 +3727,7 @@ export const describeInsightRules: API.PaginatedOperationMethod<
   DescribeInsightRulesInput,
   DescribeInsightRulesOutput,
   DescribeInsightRulesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeInsightRulesInput,
@@ -3753,7 +3752,7 @@ export const disableAlarmActions: API.OperationMethod<
   DisableAlarmActionsInput,
   DisableAlarmActionsResponse,
   DisableAlarmActionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DisableAlarmActionsInput,
   output: DisableAlarmActionsResponse,
@@ -3775,7 +3774,7 @@ export const disableInsightRules: API.OperationMethod<
   DisableInsightRulesInput,
   DisableInsightRulesOutput,
   DisableInsightRulesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DisableInsightRulesInput,
   output: DisableInsightRulesOutput,
@@ -3823,7 +3822,7 @@ export const disassociateDatasetKmsKey: API.OperationMethod<
   DisassociateDatasetKmsKeyInput,
   DisassociateDatasetKmsKeyOutput,
   DisassociateDatasetKmsKeyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DisassociateDatasetKmsKeyInput,
   output: DisassociateDatasetKmsKeyOutput,
@@ -3841,7 +3840,7 @@ export const enableAlarmActions: API.OperationMethod<
   EnableAlarmActionsInput,
   EnableAlarmActionsResponse,
   EnableAlarmActionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: EnableAlarmActionsInput,
   output: EnableAlarmActionsResponse,
@@ -3864,7 +3863,7 @@ export const enableInsightRules: API.OperationMethod<
   EnableInsightRulesInput,
   EnableInsightRulesOutput,
   EnableInsightRulesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: EnableInsightRulesInput,
   output: EnableInsightRulesOutput,
@@ -3906,7 +3905,7 @@ export const getAlarmMuteRule: API.OperationMethod<
   GetAlarmMuteRuleInput,
   GetAlarmMuteRuleOutput,
   GetAlarmMuteRuleError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetAlarmMuteRuleInput,
   output: GetAlarmMuteRuleOutput,
@@ -3932,7 +3931,7 @@ export const getDashboard: API.OperationMethod<
   GetDashboardInput,
   GetDashboardOutput,
   GetDashboardError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetDashboardInput,
   output: GetDashboardOutput,
@@ -3966,7 +3965,7 @@ export const getDataset: API.OperationMethod<
   GetDatasetInput,
   GetDatasetOutput,
   GetDatasetError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetDatasetInput,
   output: GetDatasetOutput,
@@ -4019,7 +4018,7 @@ export const getInsightRuleReport: API.OperationMethod<
   GetInsightRuleReportInput,
   GetInsightRuleReportOutput,
   GetInsightRuleReportError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetInsightRuleReportInput,
   output: GetInsightRuleReportOutput,
@@ -4104,7 +4103,7 @@ export const getMetricData: API.PaginatedOperationMethod<
   GetMetricDataInput,
   GetMetricDataOutput,
   GetMetricDataError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetMetricDataInput,
@@ -4187,7 +4186,7 @@ export const getMetricStatistics: API.OperationMethod<
   GetMetricStatisticsInput,
   GetMetricStatisticsOutput,
   GetMetricStatisticsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetMetricStatisticsInput,
   output: GetMetricStatisticsOutput,
@@ -4216,7 +4215,7 @@ export const getMetricStream: API.OperationMethod<
   GetMetricStreamInput,
   GetMetricStreamOutput,
   GetMetricStreamError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetMetricStreamInput,
   output: GetMetricStreamOutput,
@@ -4254,7 +4253,7 @@ export const getMetricWidgetImage: API.OperationMethod<
   GetMetricWidgetImageInput,
   GetMetricWidgetImageOutput,
   GetMetricWidgetImageError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetMetricWidgetImageInput,
   output: GetMetricWidgetImageOutput,
@@ -4274,7 +4273,7 @@ export const getOTelEnrichment: API.OperationMethod<
   GetOTelEnrichmentInput,
   GetOTelEnrichmentOutput,
   GetOTelEnrichmentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetOTelEnrichmentInput,
   output: GetOTelEnrichmentOutput,
@@ -4307,7 +4306,7 @@ export const listAlarmMuteRules: API.PaginatedOperationMethod<
   ListAlarmMuteRulesInput,
   ListAlarmMuteRulesOutput,
   ListAlarmMuteRulesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   AlarmMuteRuleSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAlarmMuteRulesInput,
@@ -4342,7 +4341,7 @@ export const listDashboards: API.PaginatedOperationMethod<
   ListDashboardsInput,
   ListDashboardsOutput,
   ListDashboardsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   DashboardEntry
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDashboardsInput,
@@ -4371,7 +4370,7 @@ export const listManagedInsightRules: API.PaginatedOperationMethod<
   ListManagedInsightRulesInput,
   ListManagedInsightRulesOutput,
   ListManagedInsightRulesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListManagedInsightRulesInput,
@@ -4415,7 +4414,7 @@ export const listMetrics: API.PaginatedOperationMethod<
   ListMetricsInput,
   ListMetricsOutput,
   ListMetricsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMetricsInput,
@@ -4440,7 +4439,7 @@ export const listMetricStreams: API.PaginatedOperationMethod<
   ListMetricStreamsInput,
   ListMetricStreamsOutput,
   ListMetricStreamsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMetricStreamsInput,
@@ -4474,7 +4473,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceInput,
   ListTagsForResourceOutput,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceInput,
   output: ListTagsForResourceOutput,
@@ -4528,7 +4527,7 @@ export const putAlarmMuteRule: API.OperationMethod<
   PutAlarmMuteRuleInput,
   PutAlarmMuteRuleResponse,
   PutAlarmMuteRuleError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PutAlarmMuteRuleInput,
   output: PutAlarmMuteRuleResponse,
@@ -4560,7 +4559,7 @@ export const putAnomalyDetector: API.OperationMethod<
   PutAnomalyDetectorInput,
   PutAnomalyDetectorOutput,
   PutAnomalyDetectorError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PutAnomalyDetectorInput,
   output: PutAnomalyDetectorOutput,
@@ -4639,7 +4638,7 @@ export const putCompositeAlarm: API.OperationMethod<
   PutCompositeAlarmInput,
   PutCompositeAlarmResponse,
   PutCompositeAlarmError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PutCompositeAlarmInput,
   output: PutCompositeAlarmResponse,
@@ -4679,7 +4678,7 @@ export const putDashboard: API.OperationMethod<
   PutDashboardInput,
   PutDashboardOutput,
   PutDashboardError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PutDashboardInput,
   output: PutDashboardOutput,
@@ -4707,7 +4706,7 @@ export const putInsightRule: API.OperationMethod<
   PutInsightRuleInput,
   PutInsightRuleOutput,
   PutInsightRuleError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PutInsightRuleInput,
   output: PutInsightRuleOutput,
@@ -4742,7 +4741,7 @@ export const putLogAlarm: API.OperationMethod<
   PutLogAlarmInput,
   PutLogAlarmResponse,
   PutLogAlarmError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PutLogAlarmInput,
   output: PutLogAlarmResponse,
@@ -4770,7 +4769,7 @@ export const putManagedInsightRules: API.OperationMethod<
   PutManagedInsightRulesInput,
   PutManagedInsightRulesOutput,
   PutManagedInsightRulesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PutManagedInsightRulesInput,
   output: PutManagedInsightRulesOutput,
@@ -4836,7 +4835,7 @@ export const putMetricAlarm: API.OperationMethod<
   PutMetricAlarmInput,
   PutMetricAlarmResponse,
   PutMetricAlarmError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PutMetricAlarmInput,
   output: PutMetricAlarmResponse,
@@ -4911,7 +4910,7 @@ export const putMetricData: API.OperationMethod<
   PutMetricDataInput,
   PutMetricDataResponse,
   PutMetricDataError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PutMetricDataInput,
   output: PutMetricDataResponse,
@@ -4974,7 +4973,7 @@ export const putMetricStream: API.OperationMethod<
   PutMetricStreamInput,
   PutMetricStreamOutput,
   PutMetricStreamError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PutMetricStreamInput,
   output: PutMetricStreamOutput,
@@ -5019,7 +5018,7 @@ export const setAlarmState: API.OperationMethod<
   SetAlarmStateInput,
   SetAlarmStateResponse,
   SetAlarmStateError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: SetAlarmStateInput,
   output: SetAlarmStateResponse,
@@ -5041,7 +5040,7 @@ export const startMetricStreams: API.OperationMethod<
   StartMetricStreamsInput,
   StartMetricStreamsOutput,
   StartMetricStreamsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartMetricStreamsInput,
   output: StartMetricStreamsOutput,
@@ -5070,7 +5069,7 @@ export const startOTelEnrichment: API.OperationMethod<
   StartOTelEnrichmentInput,
   StartOTelEnrichmentOutput,
   StartOTelEnrichmentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartOTelEnrichmentInput,
   output: StartOTelEnrichmentOutput,
@@ -5092,7 +5091,7 @@ export const stopMetricStreams: API.OperationMethod<
   StopMetricStreamsInput,
   StopMetricStreamsOutput,
   StopMetricStreamsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StopMetricStreamsInput,
   output: StopMetricStreamsOutput,
@@ -5116,7 +5115,7 @@ export const stopOTelEnrichment: API.OperationMethod<
   StopOTelEnrichmentInput,
   StopOTelEnrichmentOutput,
   StopOTelEnrichmentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StopOTelEnrichmentInput,
   output: StopOTelEnrichmentOutput,
@@ -5157,7 +5156,7 @@ export const tagResource: API.OperationMethod<
   TagResourceInput,
   TagResourceOutput,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: TagResourceInput,
   output: TagResourceOutput,
@@ -5188,7 +5187,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceInput,
   UntagResourceOutput,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceInput,
   output: UntagResourceOutput,

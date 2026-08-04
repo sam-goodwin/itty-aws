@@ -8,7 +8,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 import { SensitiveString } from "../sensitive.ts";
 const svc = T.AwsApiService({
   sdkId: "Billing",
@@ -759,7 +758,7 @@ export const associateSourceViews: API.OperationMethod<
   AssociateSourceViewsRequest,
   AssociateSourceViewsResponse,
   AssociateSourceViewsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: AssociateSourceViewsRequest,
   output: AssociateSourceViewsResponse,
@@ -795,7 +794,7 @@ export const createBillingView: API.OperationMethod<
   CreateBillingViewRequest,
   CreateBillingViewResponse,
   CreateBillingViewError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateBillingViewRequest,
   output: CreateBillingViewResponse,
@@ -828,7 +827,7 @@ export const deleteBillingView: API.OperationMethod<
   DeleteBillingViewRequest,
   DeleteBillingViewResponse,
   DeleteBillingViewError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteBillingViewRequest,
   output: DeleteBillingViewResponse,
@@ -860,7 +859,7 @@ export const disassociateSourceViews: API.OperationMethod<
   DisassociateSourceViewsRequest,
   DisassociateSourceViewsResponse,
   DisassociateSourceViewsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DisassociateSourceViewsRequest,
   output: DisassociateSourceViewsResponse,
@@ -892,7 +891,7 @@ export const getBillingView: API.OperationMethod<
   GetBillingViewRequest,
   GetBillingViewResponse,
   GetBillingViewError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetBillingViewRequest,
   output: GetBillingViewResponse,
@@ -922,7 +921,7 @@ export const getResourcePolicy: API.OperationMethod<
   GetResourcePolicyRequest,
   GetResourcePolicyResponse,
   GetResourcePolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetResourcePolicyRequest,
   output: GetResourcePolicyResponse,
@@ -953,7 +952,7 @@ export const listBillingViews: API.PaginatedOperationMethod<
   ListBillingViewsRequest,
   ListBillingViewsResponse,
   ListBillingViewsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   BillingViewListElement
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBillingViewsRequest,
@@ -989,7 +988,7 @@ export const listSourceViewsForBillingView: API.PaginatedOperationMethod<
   ListSourceViewsForBillingViewRequest,
   ListSourceViewsForBillingViewResponse,
   ListSourceViewsForBillingViewError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   BillingViewArn
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSourceViewsForBillingViewRequest,
@@ -1026,7 +1025,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -1056,7 +1055,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -1086,7 +1085,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -1119,7 +1118,7 @@ export const updateBillingView: API.OperationMethod<
   UpdateBillingViewRequest,
   UpdateBillingViewResponse,
   UpdateBillingViewError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateBillingViewRequest,
   output: UpdateBillingViewResponse,

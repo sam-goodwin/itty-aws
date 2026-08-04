@@ -7,7 +7,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 const svc = T.AwsApiService({
   sdkId: "Connect Contact Lens",
   serviceShapeName: "AmazonConnectContactLens",
@@ -346,7 +345,7 @@ export const listRealtimeContactAnalysisSegments: API.PaginatedOperationMethod<
   ListRealtimeContactAnalysisSegmentsRequest,
   ListRealtimeContactAnalysisSegmentsResponse,
   ListRealtimeContactAnalysisSegmentsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRealtimeContactAnalysisSegmentsRequest,

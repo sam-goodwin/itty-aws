@@ -7,7 +7,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 const svc = T.AwsApiService({
   sdkId: "IoT Events",
   serviceShapeName: "IotColumboService",
@@ -1941,7 +1940,7 @@ export const createAlarmModel: API.OperationMethod<
   CreateAlarmModelRequest,
   CreateAlarmModelResponse,
   CreateAlarmModelError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateAlarmModelRequest,
   output: CreateAlarmModelResponse,
@@ -1975,7 +1974,7 @@ export const createDetectorModel: API.OperationMethod<
   CreateDetectorModelRequest,
   CreateDetectorModelResponse,
   CreateDetectorModelError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateDetectorModelRequest,
   output: CreateDetectorModelResponse,
@@ -2007,7 +2006,7 @@ export const createInput: API.OperationMethod<
   CreateInputRequest,
   CreateInputResponse,
   CreateInputError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateInputRequest,
   output: CreateInputResponse,
@@ -2039,7 +2038,7 @@ export const deleteAlarmModel: API.OperationMethod<
   DeleteAlarmModelRequest,
   DeleteAlarmModelResponse,
   DeleteAlarmModelError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteAlarmModelRequest,
   output: DeleteAlarmModelResponse,
@@ -2072,7 +2071,7 @@ export const deleteDetectorModel: API.OperationMethod<
   DeleteDetectorModelRequest,
   DeleteDetectorModelResponse,
   DeleteDetectorModelError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteDetectorModelRequest,
   output: DeleteDetectorModelResponse,
@@ -2104,7 +2103,7 @@ export const deleteInput: API.OperationMethod<
   DeleteInputRequest,
   DeleteInputResponse,
   DeleteInputError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteInputRequest,
   output: DeleteInputResponse,
@@ -2136,7 +2135,7 @@ export const describeAlarmModel: API.OperationMethod<
   DescribeAlarmModelRequest,
   DescribeAlarmModelResponse,
   DescribeAlarmModelError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeAlarmModelRequest,
   output: DescribeAlarmModelResponse,
@@ -2167,7 +2166,7 @@ export const describeDetectorModel: API.OperationMethod<
   DescribeDetectorModelRequest,
   DescribeDetectorModelResponse,
   DescribeDetectorModelError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeDetectorModelRequest,
   output: DescribeDetectorModelResponse,
@@ -2199,7 +2198,7 @@ export const describeDetectorModelAnalysis: API.OperationMethod<
   DescribeDetectorModelAnalysisRequest,
   DescribeDetectorModelAnalysisResponse,
   DescribeDetectorModelAnalysisError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeDetectorModelAnalysisRequest,
   output: DescribeDetectorModelAnalysisResponse,
@@ -2229,7 +2228,7 @@ export const describeInput: API.OperationMethod<
   DescribeInputRequest,
   DescribeInputResponse,
   DescribeInputError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeInputRequest,
   output: DescribeInputResponse,
@@ -2260,7 +2259,7 @@ export const describeLoggingOptions: API.OperationMethod<
   DescribeLoggingOptionsRequest,
   DescribeLoggingOptionsResponse,
   DescribeLoggingOptionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeLoggingOptionsRequest,
   output: DescribeLoggingOptionsResponse,
@@ -2293,7 +2292,7 @@ export const getDetectorModelAnalysisResults: API.OperationMethod<
   GetDetectorModelAnalysisResultsRequest,
   GetDetectorModelAnalysisResultsResponse,
   GetDetectorModelAnalysisResultsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetDetectorModelAnalysisResultsRequest,
   output: GetDetectorModelAnalysisResultsResponse,
@@ -2323,7 +2322,7 @@ export const listAlarmModels: API.OperationMethod<
   ListAlarmModelsRequest,
   ListAlarmModelsResponse,
   ListAlarmModelsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListAlarmModelsRequest,
   output: ListAlarmModelsResponse,
@@ -2353,7 +2352,7 @@ export const listAlarmModelVersions: API.OperationMethod<
   ListAlarmModelVersionsRequest,
   ListAlarmModelVersionsResponse,
   ListAlarmModelVersionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListAlarmModelVersionsRequest,
   output: ListAlarmModelVersionsResponse,
@@ -2383,7 +2382,7 @@ export const listDetectorModels: API.OperationMethod<
   ListDetectorModelsRequest,
   ListDetectorModelsResponse,
   ListDetectorModelsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListDetectorModelsRequest,
   output: ListDetectorModelsResponse,
@@ -2413,7 +2412,7 @@ export const listDetectorModelVersions: API.OperationMethod<
   ListDetectorModelVersionsRequest,
   ListDetectorModelVersionsResponse,
   ListDetectorModelVersionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListDetectorModelVersionsRequest,
   output: ListDetectorModelVersionsResponse,
@@ -2443,7 +2442,7 @@ export const listInputRoutings: API.OperationMethod<
   ListInputRoutingsRequest,
   ListInputRoutingsResponse,
   ListInputRoutingsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListInputRoutingsRequest,
   output: ListInputRoutingsResponse,
@@ -2472,7 +2471,7 @@ export const listInputs: API.OperationMethod<
   ListInputsRequest,
   ListInputsResponse,
   ListInputsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListInputsRequest,
   output: ListInputsResponse,
@@ -2501,7 +2500,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -2537,7 +2536,7 @@ export const putLoggingOptions: API.OperationMethod<
   PutLoggingOptionsRequest,
   PutLoggingOptionsResponse,
   PutLoggingOptionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PutLoggingOptionsRequest,
   output: PutLoggingOptionsResponse,
@@ -2570,7 +2569,7 @@ export const startDetectorModelAnalysis: API.OperationMethod<
   StartDetectorModelAnalysisRequest,
   StartDetectorModelAnalysisResponse,
   StartDetectorModelAnalysisError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartDetectorModelAnalysisRequest,
   output: StartDetectorModelAnalysisResponse,
@@ -2602,7 +2601,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -2633,7 +2632,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -2665,7 +2664,7 @@ export const updateAlarmModel: API.OperationMethod<
   UpdateAlarmModelRequest,
   UpdateAlarmModelResponse,
   UpdateAlarmModelError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateAlarmModelRequest,
   output: UpdateAlarmModelResponse,
@@ -2698,7 +2697,7 @@ export const updateDetectorModel: API.OperationMethod<
   UpdateDetectorModelRequest,
   UpdateDetectorModelResponse,
   UpdateDetectorModelError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateDetectorModelRequest,
   output: UpdateDetectorModelResponse,
@@ -2730,7 +2729,7 @@ export const updateInput: API.OperationMethod<
   UpdateInputRequest,
   UpdateInputResponse,
   UpdateInputError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateInputRequest,
   output: UpdateInputResponse,

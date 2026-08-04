@@ -7,7 +7,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 const ns = T.XmlNamespace("http://codecommit.amazonaws.com/doc/2015-04-13");
 const svc = T.AwsApiService({
   sdkId: "CodeCommit",
@@ -5025,7 +5024,7 @@ export const associateApprovalRuleTemplateWithRepository: API.OperationMethod<
   AssociateApprovalRuleTemplateWithRepositoryInput,
   AssociateApprovalRuleTemplateWithRepositoryResponse,
   AssociateApprovalRuleTemplateWithRepositoryError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: AssociateApprovalRuleTemplateWithRepositoryInput,
   output: AssociateApprovalRuleTemplateWithRepositoryResponse,
@@ -5067,7 +5066,7 @@ export const batchAssociateApprovalRuleTemplateWithRepositories: API.OperationMe
   BatchAssociateApprovalRuleTemplateWithRepositoriesInput,
   BatchAssociateApprovalRuleTemplateWithRepositoriesOutput,
   BatchAssociateApprovalRuleTemplateWithRepositoriesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: BatchAssociateApprovalRuleTemplateWithRepositoriesInput,
   output: BatchAssociateApprovalRuleTemplateWithRepositoriesOutput,
@@ -5118,7 +5117,7 @@ export const batchDescribeMergeConflicts: API.OperationMethod<
   BatchDescribeMergeConflictsInput,
   BatchDescribeMergeConflictsOutput,
   BatchDescribeMergeConflictsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: BatchDescribeMergeConflictsInput,
   output: BatchDescribeMergeConflictsOutput,
@@ -5169,7 +5168,7 @@ export const batchDisassociateApprovalRuleTemplateFromRepositories: API.Operatio
   BatchDisassociateApprovalRuleTemplateFromRepositoriesInput,
   BatchDisassociateApprovalRuleTemplateFromRepositoriesOutput,
   BatchDisassociateApprovalRuleTemplateFromRepositoriesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: BatchDisassociateApprovalRuleTemplateFromRepositoriesInput,
   output: BatchDisassociateApprovalRuleTemplateFromRepositoriesOutput,
@@ -5209,7 +5208,7 @@ export const batchGetCommits: API.OperationMethod<
   BatchGetCommitsInput,
   BatchGetCommitsOutput,
   BatchGetCommitsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: BatchGetCommitsInput,
   output: BatchGetCommitsOutput,
@@ -5253,7 +5252,7 @@ export const batchGetRepositories: API.OperationMethod<
   BatchGetRepositoriesInput,
   BatchGetRepositoriesOutput,
   BatchGetRepositoriesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: BatchGetRepositoriesInput,
   output: BatchGetRepositoriesOutput,
@@ -5292,7 +5291,7 @@ export const createApprovalRuleTemplate: API.OperationMethod<
   CreateApprovalRuleTemplateInput,
   CreateApprovalRuleTemplateOutput,
   CreateApprovalRuleTemplateError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateApprovalRuleTemplateInput,
   output: CreateApprovalRuleTemplateOutput,
@@ -5335,7 +5334,7 @@ export const createBranch: API.OperationMethod<
   CreateBranchInput,
   CreateBranchResponse,
   CreateBranchError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateBranchInput,
   output: CreateBranchResponse,
@@ -5407,7 +5406,7 @@ export const createCommit: API.OperationMethod<
   CreateCommitInput,
   CreateCommitOutput,
   CreateCommitError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateCommitInput,
   output: CreateCommitOutput,
@@ -5490,7 +5489,7 @@ export const createPullRequest: API.OperationMethod<
   CreatePullRequestInput,
   CreatePullRequestOutput,
   CreatePullRequestError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreatePullRequestInput,
   output: CreatePullRequestOutput,
@@ -5550,7 +5549,7 @@ export const createPullRequestApprovalRule: API.OperationMethod<
   CreatePullRequestApprovalRuleInput,
   CreatePullRequestApprovalRuleOutput,
   CreatePullRequestApprovalRuleError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreatePullRequestApprovalRuleInput,
   output: CreatePullRequestApprovalRuleOutput,
@@ -5602,7 +5601,7 @@ export const createRepository: API.OperationMethod<
   CreateRepositoryInput,
   CreateRepositoryOutput,
   CreateRepositoryError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateRepositoryInput,
   output: CreateRepositoryOutput,
@@ -5681,7 +5680,7 @@ export const createUnreferencedMergeCommit: API.OperationMethod<
   CreateUnreferencedMergeCommitInput,
   CreateUnreferencedMergeCommitOutput,
   CreateUnreferencedMergeCommitError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateUnreferencedMergeCommitInput,
   output: CreateUnreferencedMergeCommitOutput,
@@ -5740,7 +5739,7 @@ export const deleteApprovalRuleTemplate: API.OperationMethod<
   DeleteApprovalRuleTemplateInput,
   DeleteApprovalRuleTemplateOutput,
   DeleteApprovalRuleTemplateError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteApprovalRuleTemplateInput,
   output: DeleteApprovalRuleTemplateOutput,
@@ -5774,7 +5773,7 @@ export const deleteBranch: API.OperationMethod<
   DeleteBranchInput,
   DeleteBranchOutput,
   DeleteBranchError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteBranchInput,
   output: DeleteBranchOutput,
@@ -5809,7 +5808,7 @@ export const deleteCommentContent: API.OperationMethod<
   DeleteCommentContentInput,
   DeleteCommentContentOutput,
   DeleteCommentContentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteCommentContentInput,
   output: DeleteCommentContentOutput,
@@ -5857,7 +5856,7 @@ export const deleteFile: API.OperationMethod<
   DeleteFileInput,
   DeleteFileOutput,
   DeleteFileError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteFileInput,
   output: DeleteFileOutput,
@@ -5913,7 +5912,7 @@ export const deletePullRequestApprovalRule: API.OperationMethod<
   DeletePullRequestApprovalRuleInput,
   DeletePullRequestApprovalRuleOutput,
   DeletePullRequestApprovalRuleError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeletePullRequestApprovalRuleInput,
   output: DeletePullRequestApprovalRuleOutput,
@@ -5956,7 +5955,7 @@ export const deleteRepository: API.OperationMethod<
   DeleteRepositoryInput,
   DeleteRepositoryOutput,
   DeleteRepositoryError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteRepositoryInput,
   output: DeleteRepositoryOutput,
@@ -6008,7 +6007,7 @@ export const describeMergeConflicts: API.PaginatedOperationMethod<
   DescribeMergeConflictsInput,
   DescribeMergeConflictsOutput,
   DescribeMergeConflictsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeMergeConflictsInput,
@@ -6070,7 +6069,7 @@ export const describePullRequestEvents: API.PaginatedOperationMethod<
   DescribePullRequestEventsInput,
   DescribePullRequestEventsOutput,
   DescribePullRequestEventsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribePullRequestEventsInput,
@@ -6123,7 +6122,7 @@ export const disassociateApprovalRuleTemplateFromRepository: API.OperationMethod
   DisassociateApprovalRuleTemplateFromRepositoryInput,
   DisassociateApprovalRuleTemplateFromRepositoryResponse,
   DisassociateApprovalRuleTemplateFromRepositoryError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DisassociateApprovalRuleTemplateFromRepositoryInput,
   output: DisassociateApprovalRuleTemplateFromRepositoryResponse,
@@ -6165,7 +6164,7 @@ export const evaluatePullRequestApprovalRules: API.OperationMethod<
   EvaluatePullRequestApprovalRulesInput,
   EvaluatePullRequestApprovalRulesOutput,
   EvaluatePullRequestApprovalRulesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: EvaluatePullRequestApprovalRulesInput,
   output: EvaluatePullRequestApprovalRulesOutput,
@@ -6199,7 +6198,7 @@ export const getApprovalRuleTemplate: API.OperationMethod<
   GetApprovalRuleTemplateInput,
   GetApprovalRuleTemplateOutput,
   GetApprovalRuleTemplateError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetApprovalRuleTemplateInput,
   output: GetApprovalRuleTemplateOutput,
@@ -6234,7 +6233,7 @@ export const getBlob: API.OperationMethod<
   GetBlobInput,
   GetBlobOutput,
   GetBlobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetBlobInput,
   output: GetBlobOutput,
@@ -6277,7 +6276,7 @@ export const getBranch: API.OperationMethod<
   GetBranchInput,
   GetBranchOutput,
   GetBranchError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetBranchInput,
   output: GetBranchOutput,
@@ -6320,7 +6319,7 @@ export const getComment: API.OperationMethod<
   GetCommentInput,
   GetCommentOutput,
   GetCommentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetCommentInput,
   output: GetCommentOutput,
@@ -6356,7 +6355,7 @@ export const getCommentReactions: API.PaginatedOperationMethod<
   GetCommentReactionsInput,
   GetCommentReactionsOutput,
   GetCommentReactionsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetCommentReactionsInput,
@@ -6405,7 +6404,7 @@ export const getCommentsForComparedCommit: API.PaginatedOperationMethod<
   GetCommentsForComparedCommitInput,
   GetCommentsForComparedCommitOutput,
   GetCommentsForComparedCommitError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetCommentsForComparedCommitInput,
@@ -6464,7 +6463,7 @@ export const getCommentsForPullRequest: API.PaginatedOperationMethod<
   GetCommentsForPullRequestInput,
   GetCommentsForPullRequestOutput,
   GetCommentsForPullRequestError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetCommentsForPullRequestInput,
@@ -6518,7 +6517,7 @@ export const getCommit: API.OperationMethod<
   GetCommitInput,
   GetCommitOutput,
   GetCommitError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetCommitInput,
   output: GetCommitOutput,
@@ -6567,7 +6566,7 @@ export const getDifferences: API.PaginatedOperationMethod<
   GetDifferencesInput,
   GetDifferencesOutput,
   GetDifferencesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetDifferencesInput,
@@ -6623,7 +6622,7 @@ export const getFile: API.OperationMethod<
   GetFileInput,
   GetFileOutput,
   GetFileError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetFileInput,
   output: GetFileOutput,
@@ -6670,7 +6669,7 @@ export const getFolder: API.OperationMethod<
   GetFolderInput,
   GetFolderOutput,
   GetFolderError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetFolderInput,
   output: GetFolderOutput,
@@ -6716,7 +6715,7 @@ export const getMergeCommit: API.OperationMethod<
   GetMergeCommitInput,
   GetMergeCommitOutput,
   GetMergeCommitError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetMergeCommitInput,
   output: GetMergeCommitOutput,
@@ -6771,7 +6770,7 @@ export const getMergeConflicts: API.PaginatedOperationMethod<
   GetMergeConflictsInput,
   GetMergeConflictsOutput,
   GetMergeConflictsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetMergeConflictsInput,
@@ -6837,7 +6836,7 @@ export const getMergeOptions: API.OperationMethod<
   GetMergeOptionsInput,
   GetMergeOptionsOutput,
   GetMergeOptionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetMergeOptionsInput,
   output: GetMergeOptionsOutput,
@@ -6881,7 +6880,7 @@ export const getPullRequest: API.OperationMethod<
   GetPullRequestInput,
   GetPullRequestOutput,
   GetPullRequestError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetPullRequestInput,
   output: GetPullRequestOutput,
@@ -6920,7 +6919,7 @@ export const getPullRequestApprovalStates: API.OperationMethod<
   GetPullRequestApprovalStatesInput,
   GetPullRequestApprovalStatesOutput,
   GetPullRequestApprovalStatesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetPullRequestApprovalStatesInput,
   output: GetPullRequestApprovalStatesOutput,
@@ -6961,7 +6960,7 @@ export const getPullRequestOverrideState: API.OperationMethod<
   GetPullRequestOverrideStateInput,
   GetPullRequestOverrideStateOutput,
   GetPullRequestOverrideStateError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetPullRequestOverrideStateInput,
   output: GetPullRequestOverrideStateOutput,
@@ -7005,7 +7004,7 @@ export const getRepository: API.OperationMethod<
   GetRepositoryInput,
   GetRepositoryOutput,
   GetRepositoryError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetRepositoryInput,
   output: GetRepositoryOutput,
@@ -7041,7 +7040,7 @@ export const getRepositoryTriggers: API.OperationMethod<
   GetRepositoryTriggersInput,
   GetRepositoryTriggersOutput,
   GetRepositoryTriggersError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetRepositoryTriggersInput,
   output: GetRepositoryTriggersOutput,
@@ -7072,7 +7071,7 @@ export const listApprovalRuleTemplates: API.PaginatedOperationMethod<
   ListApprovalRuleTemplatesInput,
   ListApprovalRuleTemplatesOutput,
   ListApprovalRuleTemplatesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListApprovalRuleTemplatesInput,
@@ -7107,7 +7106,7 @@ export const listAssociatedApprovalRuleTemplatesForRepository: API.PaginatedOper
   ListAssociatedApprovalRuleTemplatesForRepositoryInput,
   ListAssociatedApprovalRuleTemplatesForRepositoryOutput,
   ListAssociatedApprovalRuleTemplatesForRepositoryError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAssociatedApprovalRuleTemplatesForRepositoryInput,
@@ -7152,7 +7151,7 @@ export const listBranches: API.PaginatedOperationMethod<
   ListBranchesInput,
   ListBranchesOutput,
   ListBranchesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   BranchName
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBranchesInput,
@@ -7201,7 +7200,7 @@ export const listFileCommitHistory: API.PaginatedOperationMethod<
   ListFileCommitHistoryRequest,
   ListFileCommitHistoryResponse,
   ListFileCommitHistoryError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFileCommitHistoryRequest,
@@ -7255,7 +7254,7 @@ export const listPullRequests: API.PaginatedOperationMethod<
   ListPullRequestsInput,
   ListPullRequestsOutput,
   ListPullRequestsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPullRequestsInput,
@@ -7297,7 +7296,7 @@ export const listRepositories: API.PaginatedOperationMethod<
   ListRepositoriesInput,
   ListRepositoriesOutput,
   ListRepositoriesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   RepositoryNameIdPair
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRepositoriesInput,
@@ -7336,7 +7335,7 @@ export const listRepositoriesForApprovalRuleTemplate: API.PaginatedOperationMeth
   ListRepositoriesForApprovalRuleTemplateInput,
   ListRepositoriesForApprovalRuleTemplateOutput,
   ListRepositoriesForApprovalRuleTemplateError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRepositoriesForApprovalRuleTemplateInput,
@@ -7377,7 +7376,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceInput,
   ListTagsForResourceOutput,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceInput,
   output: ListTagsForResourceOutput,
@@ -7420,7 +7419,7 @@ export const mergeBranchesByFastForward: API.OperationMethod<
   MergeBranchesByFastForwardInput,
   MergeBranchesByFastForwardOutput,
   MergeBranchesByFastForwardError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: MergeBranchesByFastForwardInput,
   output: MergeBranchesByFastForwardOutput,
@@ -7498,7 +7497,7 @@ export const mergeBranchesBySquash: API.OperationMethod<
   MergeBranchesBySquashInput,
   MergeBranchesBySquashOutput,
   MergeBranchesBySquashError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: MergeBranchesBySquashInput,
   output: MergeBranchesBySquashOutput,
@@ -7596,7 +7595,7 @@ export const mergeBranchesByThreeWay: API.OperationMethod<
   MergeBranchesByThreeWayInput,
   MergeBranchesByThreeWayOutput,
   MergeBranchesByThreeWayError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: MergeBranchesByThreeWayInput,
   output: MergeBranchesByThreeWayOutput,
@@ -7675,7 +7674,7 @@ export const mergePullRequestByFastForward: API.OperationMethod<
   MergePullRequestByFastForwardInput,
   MergePullRequestByFastForwardOutput,
   MergePullRequestByFastForwardError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: MergePullRequestByFastForwardInput,
   output: MergePullRequestByFastForwardOutput,
@@ -7753,7 +7752,7 @@ export const mergePullRequestBySquash: API.OperationMethod<
   MergePullRequestBySquashInput,
   MergePullRequestBySquashOutput,
   MergePullRequestBySquashError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: MergePullRequestBySquashInput,
   output: MergePullRequestBySquashOutput,
@@ -7850,7 +7849,7 @@ export const mergePullRequestByThreeWay: API.OperationMethod<
   MergePullRequestByThreeWayInput,
   MergePullRequestByThreeWayOutput,
   MergePullRequestByThreeWayError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: MergePullRequestByThreeWayInput,
   output: MergePullRequestByThreeWayOutput,
@@ -7923,7 +7922,7 @@ export const overridePullRequestApprovalRules: API.OperationMethod<
   OverridePullRequestApprovalRulesInput,
   OverridePullRequestApprovalRulesResponse,
   OverridePullRequestApprovalRulesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: OverridePullRequestApprovalRulesInput,
   output: OverridePullRequestApprovalRulesResponse,
@@ -7981,7 +7980,7 @@ export const postCommentForComparedCommit: API.OperationMethod<
   PostCommentForComparedCommitInput,
   PostCommentForComparedCommitOutput,
   PostCommentForComparedCommitError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PostCommentForComparedCommitInput,
   output: PostCommentForComparedCommitOutput,
@@ -8051,7 +8050,7 @@ export const postCommentForPullRequest: API.OperationMethod<
   PostCommentForPullRequestInput,
   PostCommentForPullRequestOutput,
   PostCommentForPullRequestError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PostCommentForPullRequestInput,
   output: PostCommentForPullRequestOutput,
@@ -8106,7 +8105,7 @@ export const postCommentReply: API.OperationMethod<
   PostCommentReplyInput,
   PostCommentReplyOutput,
   PostCommentReplyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PostCommentReplyInput,
   output: PostCommentReplyOutput,
@@ -8142,7 +8141,7 @@ export const putCommentReaction: API.OperationMethod<
   PutCommentReactionInput,
   PutCommentReactionResponse,
   PutCommentReactionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PutCommentReactionInput,
   output: PutCommentReactionResponse,
@@ -8199,7 +8198,7 @@ export const putFile: API.OperationMethod<
   PutFileInput,
   PutFileOutput,
   PutFileError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PutFileInput,
   output: PutFileOutput,
@@ -8270,7 +8269,7 @@ export const putRepositoryTriggers: API.OperationMethod<
   PutRepositoryTriggersInput,
   PutRepositoryTriggersOutput,
   PutRepositoryTriggersError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PutRepositoryTriggersInput,
   output: PutRepositoryTriggersOutput,
@@ -8322,7 +8321,7 @@ export const tagResource: API.OperationMethod<
   TagResourceInput,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: TagResourceInput,
   output: TagResourceResponse,
@@ -8374,7 +8373,7 @@ export const testRepositoryTriggers: API.OperationMethod<
   TestRepositoryTriggersInput,
   TestRepositoryTriggersOutput,
   TestRepositoryTriggersError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: TestRepositoryTriggersInput,
   output: TestRepositoryTriggersOutput,
@@ -8425,7 +8424,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceInput,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceInput,
   output: UntagResourceResponse,
@@ -8462,7 +8461,7 @@ export const updateApprovalRuleTemplateContent: API.OperationMethod<
   UpdateApprovalRuleTemplateContentInput,
   UpdateApprovalRuleTemplateContentOutput,
   UpdateApprovalRuleTemplateContentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateApprovalRuleTemplateContentInput,
   output: UpdateApprovalRuleTemplateContentOutput,
@@ -8492,7 +8491,7 @@ export const updateApprovalRuleTemplateDescription: API.OperationMethod<
   UpdateApprovalRuleTemplateDescriptionInput,
   UpdateApprovalRuleTemplateDescriptionOutput,
   UpdateApprovalRuleTemplateDescriptionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateApprovalRuleTemplateDescriptionInput,
   output: UpdateApprovalRuleTemplateDescriptionOutput,
@@ -8520,7 +8519,7 @@ export const updateApprovalRuleTemplateName: API.OperationMethod<
   UpdateApprovalRuleTemplateNameInput,
   UpdateApprovalRuleTemplateNameOutput,
   UpdateApprovalRuleTemplateNameError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateApprovalRuleTemplateNameInput,
   output: UpdateApprovalRuleTemplateNameOutput,
@@ -8551,7 +8550,7 @@ export const updateComment: API.OperationMethod<
   UpdateCommentInput,
   UpdateCommentOutput,
   UpdateCommentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateCommentInput,
   output: UpdateCommentOutput,
@@ -8591,7 +8590,7 @@ export const updateDefaultBranch: API.OperationMethod<
   UpdateDefaultBranchInput,
   UpdateDefaultBranchResponse,
   UpdateDefaultBranchError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateDefaultBranchInput,
   output: UpdateDefaultBranchResponse,
@@ -8639,7 +8638,7 @@ export const updatePullRequestApprovalRuleContent: API.OperationMethod<
   UpdatePullRequestApprovalRuleContentInput,
   UpdatePullRequestApprovalRuleContentOutput,
   UpdatePullRequestApprovalRuleContentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdatePullRequestApprovalRuleContentInput,
   output: UpdatePullRequestApprovalRuleContentOutput,
@@ -8691,7 +8690,7 @@ export const updatePullRequestApprovalState: API.OperationMethod<
   UpdatePullRequestApprovalStateInput,
   UpdatePullRequestApprovalStateResponse,
   UpdatePullRequestApprovalStateError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdatePullRequestApprovalStateInput,
   output: UpdatePullRequestApprovalStateResponse,
@@ -8732,7 +8731,7 @@ export const updatePullRequestDescription: API.OperationMethod<
   UpdatePullRequestDescriptionInput,
   UpdatePullRequestDescriptionOutput,
   UpdatePullRequestDescriptionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdatePullRequestDescriptionInput,
   output: UpdatePullRequestDescriptionOutput,
@@ -8768,7 +8767,7 @@ export const updatePullRequestStatus: API.OperationMethod<
   UpdatePullRequestStatusInput,
   UpdatePullRequestStatusOutput,
   UpdatePullRequestStatusError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdatePullRequestStatusInput,
   output: UpdatePullRequestStatusOutput,
@@ -8805,7 +8804,7 @@ export const updatePullRequestTitle: API.OperationMethod<
   UpdatePullRequestTitleInput,
   UpdatePullRequestTitleOutput,
   UpdatePullRequestTitleError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdatePullRequestTitleInput,
   output: UpdatePullRequestTitleOutput,
@@ -8846,7 +8845,7 @@ export const updateRepositoryDescription: API.OperationMethod<
   UpdateRepositoryDescriptionInput,
   UpdateRepositoryDescriptionResponse,
   UpdateRepositoryDescriptionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateRepositoryDescriptionInput,
   output: UpdateRepositoryDescriptionResponse,
@@ -8886,7 +8885,7 @@ export const updateRepositoryEncryptionKey: API.OperationMethod<
   UpdateRepositoryEncryptionKeyInput,
   UpdateRepositoryEncryptionKeyOutput,
   UpdateRepositoryEncryptionKeyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateRepositoryEncryptionKeyInput,
   output: UpdateRepositoryEncryptionKeyOutput,
@@ -8925,7 +8924,7 @@ export const updateRepositoryName: API.OperationMethod<
   UpdateRepositoryNameInput,
   UpdateRepositoryNameResponse,
   UpdateRepositoryNameError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateRepositoryNameInput,
   output: UpdateRepositoryNameResponse,

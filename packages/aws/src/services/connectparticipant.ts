@@ -8,7 +8,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 import { SensitiveString } from "../sensitive.ts";
 const svc = T.AwsApiService({
   sdkId: "ConnectParticipant",
@@ -880,7 +879,7 @@ export const cancelParticipantAuthentication: API.OperationMethod<
   CancelParticipantAuthenticationRequest,
   CancelParticipantAuthenticationResponse,
   CancelParticipantAuthenticationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CancelParticipantAuthenticationRequest,
   output: CancelParticipantAuthenticationResponse,
@@ -920,7 +919,7 @@ export const completeAttachmentUpload: API.OperationMethod<
   CompleteAttachmentUploadRequest,
   CompleteAttachmentUploadResponse,
   CompleteAttachmentUploadError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CompleteAttachmentUploadRequest,
   output: CompleteAttachmentUploadResponse,
@@ -1013,7 +1012,7 @@ export const createParticipantConnection: API.OperationMethod<
   CreateParticipantConnectionRequest,
   CreateParticipantConnectionResponse,
   CreateParticipantConnectionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateParticipantConnectionRequest,
   output: CreateParticipantConnectionResponse,
@@ -1044,7 +1043,7 @@ export const describeView: API.OperationMethod<
   DescribeViewRequest,
   DescribeViewResponse,
   DescribeViewError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeViewRequest,
   output: DescribeViewResponse,
@@ -1081,7 +1080,7 @@ export const disconnectParticipant: API.OperationMethod<
   DisconnectParticipantRequest,
   DisconnectParticipantResponse,
   DisconnectParticipantError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DisconnectParticipantRequest,
   output: DisconnectParticipantResponse,
@@ -1123,7 +1122,7 @@ export const getAttachment: API.OperationMethod<
   GetAttachmentRequest,
   GetAttachmentResponse,
   GetAttachmentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetAttachmentRequest,
   output: GetAttachmentResponse,
@@ -1166,7 +1165,7 @@ export const getAuthenticationUrl: API.OperationMethod<
   GetAuthenticationUrlRequest,
   GetAuthenticationUrlResponse,
   GetAuthenticationUrlError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetAuthenticationUrlRequest,
   output: GetAuthenticationUrlResponse,
@@ -1220,7 +1219,7 @@ export const getTranscript: API.PaginatedOperationMethod<
   GetTranscriptRequest,
   GetTranscriptResponse,
   GetTranscriptError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetTranscriptRequest,
@@ -1270,7 +1269,7 @@ export const sendEvent: API.OperationMethod<
   SendEventRequest,
   SendEventResponse,
   SendEventError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: SendEventRequest,
   output: SendEventResponse,
@@ -1307,7 +1306,7 @@ export const sendMessage: API.OperationMethod<
   SendMessageRequest,
   SendMessageResponse,
   SendMessageError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: SendMessageRequest,
   output: SendMessageResponse,
@@ -1345,7 +1344,7 @@ export const startAttachmentUpload: API.OperationMethod<
   StartAttachmentUploadRequest,
   StartAttachmentUploadResponse,
   StartAttachmentUploadError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartAttachmentUploadRequest,
   output: StartAttachmentUploadResponse,

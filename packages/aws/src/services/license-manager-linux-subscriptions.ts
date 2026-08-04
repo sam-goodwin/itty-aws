@@ -6,7 +6,6 @@ import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 const svc = T.AwsApiService({
   sdkId: "License Manager Linux Subscriptions",
   serviceShapeName: "LicenseManagerLinuxSubscriptions",
@@ -626,7 +625,7 @@ export const deregisterSubscriptionProvider: API.OperationMethod<
   DeregisterSubscriptionProviderRequest,
   DeregisterSubscriptionProviderResponse,
   DeregisterSubscriptionProviderError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeregisterSubscriptionProviderRequest,
   output: DeregisterSubscriptionProviderResponse,
@@ -654,7 +653,7 @@ export const getRegisteredSubscriptionProvider: API.OperationMethod<
   GetRegisteredSubscriptionProviderRequest,
   GetRegisteredSubscriptionProviderResponse,
   GetRegisteredSubscriptionProviderError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetRegisteredSubscriptionProviderRequest,
   output: GetRegisteredSubscriptionProviderResponse,
@@ -681,7 +680,7 @@ export const getServiceSettings: API.OperationMethod<
   GetServiceSettingsRequest,
   GetServiceSettingsResponse,
   GetServiceSettingsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetServiceSettingsRequest,
   output: GetServiceSettingsResponse,
@@ -704,7 +703,7 @@ export const listLinuxSubscriptionInstances: API.PaginatedOperationMethod<
   ListLinuxSubscriptionInstancesRequest,
   ListLinuxSubscriptionInstancesResponse,
   ListLinuxSubscriptionInstancesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   Instance
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLinuxSubscriptionInstancesRequest,
@@ -735,7 +734,7 @@ export const listLinuxSubscriptions: API.PaginatedOperationMethod<
   ListLinuxSubscriptionsRequest,
   ListLinuxSubscriptionsResponse,
   ListLinuxSubscriptionsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   Subscription
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLinuxSubscriptionsRequest,
@@ -764,7 +763,7 @@ export const listRegisteredSubscriptionProviders: API.PaginatedOperationMethod<
   ListRegisteredSubscriptionProvidersRequest,
   ListRegisteredSubscriptionProvidersResponse,
   ListRegisteredSubscriptionProvidersError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   RegisteredSubscriptionProvider
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRegisteredSubscriptionProvidersRequest,
@@ -794,7 +793,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -820,7 +819,7 @@ export const registerSubscriptionProvider: API.OperationMethod<
   RegisterSubscriptionProviderRequest,
   RegisterSubscriptionProviderResponse,
   RegisterSubscriptionProviderError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: RegisterSubscriptionProviderRequest,
   output: RegisterSubscriptionProviderResponse,
@@ -842,7 +841,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -867,7 +866,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -889,7 +888,7 @@ export const updateServiceSettings: API.OperationMethod<
   UpdateServiceSettingsRequest,
   UpdateServiceSettingsResponse,
   UpdateServiceSettingsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateServiceSettingsRequest,
   output: UpdateServiceSettingsResponse,

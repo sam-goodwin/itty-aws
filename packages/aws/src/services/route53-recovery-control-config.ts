@@ -7,7 +7,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 const svc = T.AwsApiService({
   sdkId: "Route53 Recovery Control Config",
   serviceShapeName: "Route53RecoveryControlConfig",
@@ -1277,7 +1276,7 @@ export const createCluster: API.OperationMethod<
   CreateClusterRequest,
   CreateClusterResponse,
   CreateClusterError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateClusterRequest,
   output: CreateClusterResponse,
@@ -1311,7 +1310,7 @@ export const createControlPanel: API.OperationMethod<
   CreateControlPanelRequest,
   CreateControlPanelResponse,
   CreateControlPanelError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateControlPanelRequest,
   output: CreateControlPanelResponse,
@@ -1349,7 +1348,7 @@ export const createRoutingControl: API.OperationMethod<
   CreateRoutingControlRequest,
   CreateRoutingControlResponse,
   CreateRoutingControlError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateRoutingControlRequest,
   output: CreateRoutingControlResponse,
@@ -1386,7 +1385,7 @@ export const createSafetyRule: API.OperationMethod<
   CreateSafetyRuleRequest,
   CreateSafetyRuleResponse,
   CreateSafetyRuleError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateSafetyRuleRequest,
   output: CreateSafetyRuleResponse,
@@ -1411,7 +1410,7 @@ export const deleteCluster: API.OperationMethod<
   DeleteClusterRequest,
   DeleteClusterResponse,
   DeleteClusterError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteClusterRequest,
   output: DeleteClusterResponse,
@@ -1443,7 +1442,7 @@ export const deleteControlPanel: API.OperationMethod<
   DeleteControlPanelRequest,
   DeleteControlPanelResponse,
   DeleteControlPanelError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteControlPanelRequest,
   output: DeleteControlPanelResponse,
@@ -1475,7 +1474,7 @@ export const deleteRoutingControl: API.OperationMethod<
   DeleteRoutingControlRequest,
   DeleteRoutingControlResponse,
   DeleteRoutingControlError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteRoutingControlRequest,
   output: DeleteRoutingControlResponse,
@@ -1505,7 +1504,7 @@ export const deleteSafetyRule: API.OperationMethod<
   DeleteSafetyRuleRequest,
   DeleteSafetyRuleResponse,
   DeleteSafetyRuleError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteSafetyRuleRequest,
   output: DeleteSafetyRuleResponse,
@@ -1534,7 +1533,7 @@ export const describeCluster: API.OperationMethod<
   DescribeClusterRequest,
   DescribeClusterResponse,
   DescribeClusterError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeClusterRequest,
   output: DescribeClusterResponse,
@@ -1566,7 +1565,7 @@ export const describeControlPanel: API.OperationMethod<
   DescribeControlPanelRequest,
   DescribeControlPanelResponse,
   DescribeControlPanelError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeControlPanelRequest,
   output: DescribeControlPanelResponse,
@@ -1600,7 +1599,7 @@ export const describeRoutingControl: API.OperationMethod<
   DescribeRoutingControlRequest,
   DescribeRoutingControlResponse,
   DescribeRoutingControlError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeRoutingControlRequest,
   output: DescribeRoutingControlResponse,
@@ -1628,7 +1627,7 @@ export const describeSafetyRule: API.OperationMethod<
   DescribeSafetyRuleRequest,
   DescribeSafetyRuleResponse,
   DescribeSafetyRuleError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeSafetyRuleRequest,
   output: DescribeSafetyRuleResponse,
@@ -1649,7 +1648,7 @@ export const getResourcePolicy: API.OperationMethod<
   GetResourcePolicyRequest,
   GetResourcePolicyResponse,
   GetResourcePolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetResourcePolicyRequest,
   output: GetResourcePolicyResponse,
@@ -1671,7 +1670,7 @@ export const listAssociatedRoute53HealthChecks: API.PaginatedOperationMethod<
   ListAssociatedRoute53HealthChecksRequest,
   ListAssociatedRoute53HealthChecksResponse,
   ListAssociatedRoute53HealthChecksError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   __stringMax36PatternS
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAssociatedRoute53HealthChecksRequest,
@@ -1706,7 +1705,7 @@ export const listClusters: API.PaginatedOperationMethod<
   ListClustersRequest,
   ListClustersResponse,
   ListClustersError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   Cluster
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListClustersRequest,
@@ -1743,7 +1742,7 @@ export const listControlPanels: API.PaginatedOperationMethod<
   ListControlPanelsRequest,
   ListControlPanelsResponse,
   ListControlPanelsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ControlPanel
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListControlPanelsRequest,
@@ -1780,7 +1779,7 @@ export const listRoutingControls: API.PaginatedOperationMethod<
   ListRoutingControlsRequest,
   ListRoutingControlsResponse,
   ListRoutingControlsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   RoutingControl
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRoutingControlsRequest,
@@ -1817,7 +1816,7 @@ export const listSafetyRules: API.PaginatedOperationMethod<
   ListSafetyRulesRequest,
   ListSafetyRulesResponse,
   ListSafetyRulesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   Rule
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSafetyRulesRequest,
@@ -1852,7 +1851,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -1878,7 +1877,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -1904,7 +1903,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -1933,7 +1932,7 @@ export const updateCluster: API.OperationMethod<
   UpdateClusterRequest,
   UpdateClusterResponse,
   UpdateClusterError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateClusterRequest,
   output: UpdateClusterResponse,
@@ -1965,7 +1964,7 @@ export const updateControlPanel: API.OperationMethod<
   UpdateControlPanelRequest,
   UpdateControlPanelResponse,
   UpdateControlPanelError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateControlPanelRequest,
   output: UpdateControlPanelResponse,
@@ -1997,7 +1996,7 @@ export const updateRoutingControl: API.OperationMethod<
   UpdateRoutingControlRequest,
   UpdateRoutingControlResponse,
   UpdateRoutingControlError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateRoutingControlRequest,
   output: UpdateRoutingControlResponse,
@@ -2026,7 +2025,7 @@ export const updateSafetyRule: API.OperationMethod<
   UpdateSafetyRuleRequest,
   UpdateSafetyRuleResponse,
   UpdateSafetyRuleError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateSafetyRuleRequest,
   output: UpdateSafetyRuleResponse,

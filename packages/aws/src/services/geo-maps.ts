@@ -8,7 +8,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 import { SensitiveString } from "../sensitive.ts";
 const svc = T.AwsApiService({
   sdkId: "Geo Maps",
@@ -513,7 +512,7 @@ export const getGlyphs: API.OperationMethod<
   GetGlyphsRequest,
   GetGlyphsResponse,
   GetGlyphsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetGlyphsRequest,
   output: GetGlyphsResponse,
@@ -533,7 +532,7 @@ export const getSprites: API.OperationMethod<
   GetSpritesRequest,
   GetSpritesResponse,
   GetSpritesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetSpritesRequest,
   output: GetSpritesResponse,
@@ -566,7 +565,7 @@ export const getStaticMap: API.OperationMethod<
   GetStaticMapRequest,
   GetStaticMapResponse,
   GetStaticMapError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetStaticMapRequest,
   output: GetStaticMapResponse,
@@ -591,7 +590,7 @@ export const getStyleDescriptor: API.OperationMethod<
   GetStyleDescriptorRequest,
   GetStyleDescriptorResponse,
   GetStyleDescriptorError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetStyleDescriptorRequest,
   output: GetStyleDescriptorResponse,
@@ -617,7 +616,7 @@ export const getTile: API.OperationMethod<
   GetTileRequest,
   GetTileResponse,
   GetTileError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetTileRequest,
   output: GetTileResponse,

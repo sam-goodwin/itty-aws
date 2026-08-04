@@ -9,7 +9,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 import { SensitiveString } from "../sensitive.ts";
 const svc = T.AwsApiService({
   sdkId: "QBusiness",
@@ -6225,7 +6224,7 @@ export const associatePermission: API.OperationMethod<
   AssociatePermissionRequest,
   AssociatePermissionResponse,
   AssociatePermissionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: AssociatePermissionRequest,
   output: AssociatePermissionResponse,
@@ -6260,7 +6259,7 @@ export const batchDeleteDocument: API.OperationMethod<
   BatchDeleteDocumentRequest,
   BatchDeleteDocumentResponse,
   BatchDeleteDocumentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: BatchDeleteDocumentRequest,
   output: BatchDeleteDocumentResponse,
@@ -6303,7 +6302,7 @@ export const batchPutDocument: API.OperationMethod<
   BatchPutDocumentRequest,
   BatchPutDocumentResponse,
   BatchPutDocumentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: BatchPutDocumentRequest,
   output: BatchPutDocumentResponse,
@@ -6335,7 +6334,7 @@ export const cancelSubscription: API.OperationMethod<
   CancelSubscriptionRequest,
   CancelSubscriptionResponse,
   CancelSubscriptionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CancelSubscriptionRequest,
   output: CancelSubscriptionResponse,
@@ -6368,7 +6367,7 @@ export const chat: API.OperationMethod<
   ChatInput,
   ChatOutput,
   ChatError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ChatInput,
   output: ChatOutput,
@@ -6404,7 +6403,7 @@ export const chatSync: API.OperationMethod<
   ChatSyncInput,
   ChatSyncOutput,
   ChatSyncError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ChatSyncInput,
   output: ChatSyncOutput,
@@ -6437,7 +6436,7 @@ export const checkDocumentAccess: API.OperationMethod<
   CheckDocumentAccessRequest,
   CheckDocumentAccessResponse,
   CheckDocumentAccessError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CheckDocumentAccessRequest,
   output: CheckDocumentAccessResponse,
@@ -6468,7 +6467,7 @@ export const createAnonymousWebExperienceUrl: API.OperationMethod<
   CreateAnonymousWebExperienceUrlRequest,
   CreateAnonymousWebExperienceUrlResponse,
   CreateAnonymousWebExperienceUrlError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateAnonymousWebExperienceUrlRequest,
   output: CreateAnonymousWebExperienceUrlResponse,
@@ -6507,7 +6506,7 @@ export const createApplication: API.OperationMethod<
   CreateApplicationRequest,
   CreateApplicationResponse,
   CreateApplicationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateApplicationRequest,
   output: CreateApplicationResponse,
@@ -6541,7 +6540,7 @@ export const createChatResponseConfiguration: API.OperationMethod<
   CreateChatResponseConfigurationRequest,
   CreateChatResponseConfigurationResponse,
   CreateChatResponseConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateChatResponseConfigurationRequest,
   output: CreateChatResponseConfigurationResponse,
@@ -6575,7 +6574,7 @@ export const createDataAccessor: API.OperationMethod<
   CreateDataAccessorRequest,
   CreateDataAccessorResponse,
   CreateDataAccessorError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateDataAccessorRequest,
   output: CreateDataAccessorResponse,
@@ -6611,7 +6610,7 @@ export const createDataSource: API.OperationMethod<
   CreateDataSourceRequest,
   CreateDataSourceResponse,
   CreateDataSourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateDataSourceRequest,
   output: CreateDataSourceResponse,
@@ -6649,7 +6648,7 @@ export const createIndex: API.OperationMethod<
   CreateIndexRequest,
   CreateIndexResponse,
   CreateIndexError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateIndexRequest,
   output: CreateIndexResponse,
@@ -6683,7 +6682,7 @@ export const createPlugin: API.OperationMethod<
   CreatePluginRequest,
   CreatePluginResponse,
   CreatePluginError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreatePluginRequest,
   output: CreatePluginResponse,
@@ -6717,7 +6716,7 @@ export const createRetriever: API.OperationMethod<
   CreateRetrieverRequest,
   CreateRetrieverResponse,
   CreateRetrieverError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateRetrieverRequest,
   output: CreateRetrieverResponse,
@@ -6754,7 +6753,7 @@ export const createSubscription: API.OperationMethod<
   CreateSubscriptionRequest,
   CreateSubscriptionResponse,
   CreateSubscriptionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateSubscriptionRequest,
   output: CreateSubscriptionResponse,
@@ -6787,7 +6786,7 @@ export const createUser: API.OperationMethod<
   CreateUserRequest,
   CreateUserResponse,
   CreateUserError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateUserRequest,
   output: CreateUserResponse,
@@ -6821,7 +6820,7 @@ export const createWebExperience: API.OperationMethod<
   CreateWebExperienceRequest,
   CreateWebExperienceResponse,
   CreateWebExperienceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateWebExperienceRequest,
   output: CreateWebExperienceResponse,
@@ -6854,7 +6853,7 @@ export const deleteApplication: API.OperationMethod<
   DeleteApplicationRequest,
   DeleteApplicationResponse,
   DeleteApplicationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteApplicationRequest,
   output: DeleteApplicationResponse,
@@ -6886,7 +6885,7 @@ export const deleteAttachment: API.OperationMethod<
   DeleteAttachmentRequest,
   DeleteAttachmentResponse,
   DeleteAttachmentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteAttachmentRequest,
   output: DeleteAttachmentResponse,
@@ -6917,7 +6916,7 @@ export const deleteChatControlsConfiguration: API.OperationMethod<
   DeleteChatControlsConfigurationRequest,
   DeleteChatControlsConfigurationResponse,
   DeleteChatControlsConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteChatControlsConfigurationRequest,
   output: DeleteChatControlsConfigurationResponse,
@@ -6948,7 +6947,7 @@ export const deleteChatResponseConfiguration: API.OperationMethod<
   DeleteChatResponseConfigurationRequest,
   DeleteChatResponseConfigurationResponse,
   DeleteChatResponseConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteChatResponseConfigurationRequest,
   output: DeleteChatResponseConfigurationResponse,
@@ -6981,7 +6980,7 @@ export const deleteConversation: API.OperationMethod<
   DeleteConversationRequest,
   DeleteConversationResponse,
   DeleteConversationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteConversationRequest,
   output: DeleteConversationResponse,
@@ -7014,7 +7013,7 @@ export const deleteDataAccessor: API.OperationMethod<
   DeleteDataAccessorRequest,
   DeleteDataAccessorResponse,
   DeleteDataAccessorError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteDataAccessorRequest,
   output: DeleteDataAccessorResponse,
@@ -7046,7 +7045,7 @@ export const deleteDataSource: API.OperationMethod<
   DeleteDataSourceRequest,
   DeleteDataSourceResponse,
   DeleteDataSourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteDataSourceRequest,
   output: DeleteDataSourceResponse,
@@ -7080,7 +7079,7 @@ export const deleteGroup: API.OperationMethod<
   DeleteGroupRequest,
   DeleteGroupResponse,
   DeleteGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteGroupRequest,
   output: DeleteGroupResponse,
@@ -7112,7 +7111,7 @@ export const deleteIndex: API.OperationMethod<
   DeleteIndexRequest,
   DeleteIndexResponse,
   DeleteIndexError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteIndexRequest,
   output: DeleteIndexResponse,
@@ -7144,7 +7143,7 @@ export const deletePlugin: API.OperationMethod<
   DeletePluginRequest,
   DeletePluginResponse,
   DeletePluginError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeletePluginRequest,
   output: DeletePluginResponse,
@@ -7176,7 +7175,7 @@ export const deleteRetriever: API.OperationMethod<
   DeleteRetrieverRequest,
   DeleteRetrieverResponse,
   DeleteRetrieverError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteRetrieverRequest,
   output: DeleteRetrieverResponse,
@@ -7208,7 +7207,7 @@ export const deleteUser: API.OperationMethod<
   DeleteUserRequest,
   DeleteUserResponse,
   DeleteUserError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteUserRequest,
   output: DeleteUserResponse,
@@ -7240,7 +7239,7 @@ export const deleteWebExperience: API.OperationMethod<
   DeleteWebExperienceRequest,
   DeleteWebExperienceResponse,
   DeleteWebExperienceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteWebExperienceRequest,
   output: DeleteWebExperienceResponse,
@@ -7272,7 +7271,7 @@ export const disassociatePermission: API.OperationMethod<
   DisassociatePermissionRequest,
   DisassociatePermissionResponse,
   DisassociatePermissionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DisassociatePermissionRequest,
   output: DisassociatePermissionResponse,
@@ -7303,7 +7302,7 @@ export const getApplication: API.OperationMethod<
   GetApplicationRequest,
   GetApplicationResponse,
   GetApplicationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetApplicationRequest,
   output: GetApplicationResponse,
@@ -7333,7 +7332,7 @@ export const getChatControlsConfiguration: API.PaginatedOperationMethod<
   GetChatControlsConfigurationRequest,
   GetChatControlsConfigurationResponse,
   GetChatControlsConfigurationError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   TopicConfiguration
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetChatControlsConfigurationRequest,
@@ -7370,7 +7369,7 @@ export const getChatResponseConfiguration: API.OperationMethod<
   GetChatResponseConfigurationRequest,
   GetChatResponseConfigurationResponse,
   GetChatResponseConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetChatResponseConfigurationRequest,
   output: GetChatResponseConfigurationResponse,
@@ -7400,7 +7399,7 @@ export const getDataAccessor: API.OperationMethod<
   GetDataAccessorRequest,
   GetDataAccessorResponse,
   GetDataAccessorError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetDataAccessorRequest,
   output: GetDataAccessorResponse,
@@ -7430,7 +7429,7 @@ export const getDataSource: API.OperationMethod<
   GetDataSourceRequest,
   GetDataSourceResponse,
   GetDataSourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetDataSourceRequest,
   output: GetDataSourceResponse,
@@ -7460,7 +7459,7 @@ export const getDocumentContent: API.OperationMethod<
   GetDocumentContentRequest,
   GetDocumentContentResponse,
   GetDocumentContentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetDocumentContentRequest,
   output: GetDocumentContentResponse,
@@ -7491,7 +7490,7 @@ export const getGroup: API.OperationMethod<
   GetGroupRequest,
   GetGroupResponse,
   GetGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetGroupRequest,
   output: GetGroupResponse,
@@ -7522,7 +7521,7 @@ export const getIndex: API.OperationMethod<
   GetIndexRequest,
   GetIndexResponse,
   GetIndexError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetIndexRequest,
   output: GetIndexResponse,
@@ -7556,7 +7555,7 @@ export const getMedia: API.OperationMethod<
   GetMediaRequest,
   GetMediaResponse,
   GetMediaError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetMediaRequest,
   output: GetMediaResponse,
@@ -7588,7 +7587,7 @@ export const getPlugin: API.OperationMethod<
   GetPluginRequest,
   GetPluginResponse,
   GetPluginError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetPluginRequest,
   output: GetPluginResponse,
@@ -7618,7 +7617,7 @@ export const getPolicy: API.OperationMethod<
   GetPolicyRequest,
   GetPolicyResponse,
   GetPolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetPolicyRequest,
   output: GetPolicyResponse,
@@ -7648,7 +7647,7 @@ export const getRetriever: API.OperationMethod<
   GetRetrieverRequest,
   GetRetrieverResponse,
   GetRetrieverError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetRetrieverRequest,
   output: GetRetrieverResponse,
@@ -7679,7 +7678,7 @@ export const getUser: API.OperationMethod<
   GetUserRequest,
   GetUserResponse,
   GetUserError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetUserRequest,
   output: GetUserResponse,
@@ -7710,7 +7709,7 @@ export const getWebExperience: API.OperationMethod<
   GetWebExperienceRequest,
   GetWebExperienceResponse,
   GetWebExperienceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetWebExperienceRequest,
   output: GetWebExperienceResponse,
@@ -7741,7 +7740,7 @@ export const listApplications: API.PaginatedOperationMethod<
   ListApplicationsRequest,
   ListApplicationsResponse,
   ListApplicationsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   Application
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListApplicationsRequest,
@@ -7778,7 +7777,7 @@ export const listAttachments: API.PaginatedOperationMethod<
   ListAttachmentsRequest,
   ListAttachmentsResponse,
   ListAttachmentsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   Attachment
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAttachmentsRequest,
@@ -7816,7 +7815,7 @@ export const listChatResponseConfigurations: API.PaginatedOperationMethod<
   ListChatResponseConfigurationsRequest,
   ListChatResponseConfigurationsResponse,
   ListChatResponseConfigurationsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ChatResponseConfiguration
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListChatResponseConfigurationsRequest,
@@ -7854,7 +7853,7 @@ export const listConversations: API.PaginatedOperationMethod<
   ListConversationsRequest,
   ListConversationsResponse,
   ListConversationsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   Conversation
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListConversationsRequest,
@@ -7892,7 +7891,7 @@ export const listDataAccessors: API.PaginatedOperationMethod<
   ListDataAccessorsRequest,
   ListDataAccessorsResponse,
   ListDataAccessorsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   DataAccessor
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDataAccessorsRequest,
@@ -7929,7 +7928,7 @@ export const listDataSources: API.PaginatedOperationMethod<
   ListDataSourcesRequest,
   ListDataSourcesResponse,
   ListDataSourcesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   DataSource
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDataSourcesRequest,
@@ -7967,7 +7966,7 @@ export const listDataSourceSyncJobs: API.PaginatedOperationMethod<
   ListDataSourceSyncJobsRequest,
   ListDataSourceSyncJobsResponse,
   ListDataSourceSyncJobsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   DataSourceSyncJob
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDataSourceSyncJobsRequest,
@@ -8005,7 +8004,7 @@ export const listDocuments: API.PaginatedOperationMethod<
   ListDocumentsRequest,
   ListDocumentsResponse,
   ListDocumentsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   DocumentDetails
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDocumentsRequest,
@@ -8043,7 +8042,7 @@ export const listGroups: API.PaginatedOperationMethod<
   ListGroupsRequest,
   ListGroupsResponse,
   ListGroupsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   GroupSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListGroupsRequest,
@@ -8081,7 +8080,7 @@ export const listIndices: API.PaginatedOperationMethod<
   ListIndicesRequest,
   ListIndicesResponse,
   ListIndicesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   Index
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListIndicesRequest,
@@ -8119,7 +8118,7 @@ export const listMessages: API.PaginatedOperationMethod<
   ListMessagesRequest,
   ListMessagesResponse,
   ListMessagesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   Message
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMessagesRequest,
@@ -8157,7 +8156,7 @@ export const listPluginActions: API.PaginatedOperationMethod<
   ListPluginActionsRequest,
   ListPluginActionsResponse,
   ListPluginActionsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ActionSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPluginActionsRequest,
@@ -8194,7 +8193,7 @@ export const listPlugins: API.PaginatedOperationMethod<
   ListPluginsRequest,
   ListPluginsResponse,
   ListPluginsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   Plugin
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPluginsRequest,
@@ -8230,7 +8229,7 @@ export const listPluginTypeActions: API.PaginatedOperationMethod<
   ListPluginTypeActionsRequest,
   ListPluginTypeActionsResponse,
   ListPluginTypeActionsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ActionSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPluginTypeActionsRequest,
@@ -8265,7 +8264,7 @@ export const listPluginTypeMetadata: API.PaginatedOperationMethod<
   ListPluginTypeMetadataRequest,
   ListPluginTypeMetadataResponse,
   ListPluginTypeMetadataError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   PluginTypeMetadataSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPluginTypeMetadataRequest,
@@ -8301,7 +8300,7 @@ export const listRetrievers: API.PaginatedOperationMethod<
   ListRetrieversRequest,
   ListRetrieversResponse,
   ListRetrieversError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   Retriever
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRetrieversRequest,
@@ -8339,7 +8338,7 @@ export const listSubscriptions: API.PaginatedOperationMethod<
   ListSubscriptionsRequest,
   ListSubscriptionsResponse,
   ListSubscriptionsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   Subscription
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSubscriptionsRequest,
@@ -8377,7 +8376,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -8407,7 +8406,7 @@ export const listWebExperiences: API.PaginatedOperationMethod<
   ListWebExperiencesRequest,
   ListWebExperiencesResponse,
   ListWebExperiencesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   WebExperience
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListWebExperiencesRequest,
@@ -8444,7 +8443,7 @@ export const putFeedback: API.OperationMethod<
   PutFeedbackRequest,
   PutFeedbackResponse,
   PutFeedbackError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PutFeedbackRequest,
   output: PutFeedbackResponse,
@@ -8480,7 +8479,7 @@ export const putGroup: API.OperationMethod<
   PutGroupRequest,
   PutGroupResponse,
   PutGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PutGroupRequest,
   output: PutGroupResponse,
@@ -8513,7 +8512,7 @@ export const searchRelevantContent: API.PaginatedOperationMethod<
   SearchRelevantContentRequest,
   SearchRelevantContentResponse,
   SearchRelevantContentError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   RelevantContent
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchRelevantContentRequest,
@@ -8553,7 +8552,7 @@ export const startDataSourceSyncJob: API.OperationMethod<
   StartDataSourceSyncJobRequest,
   StartDataSourceSyncJobResponse,
   StartDataSourceSyncJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartDataSourceSyncJobRequest,
   output: StartDataSourceSyncJobResponse,
@@ -8586,7 +8585,7 @@ export const stopDataSourceSyncJob: API.OperationMethod<
   StopDataSourceSyncJobRequest,
   StopDataSourceSyncJobResponse,
   StopDataSourceSyncJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StopDataSourceSyncJobRequest,
   output: StopDataSourceSyncJobResponse,
@@ -8618,7 +8617,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -8649,7 +8648,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -8684,7 +8683,7 @@ export const updateApplication: API.OperationMethod<
   UpdateApplicationRequest,
   UpdateApplicationResponse,
   UpdateApplicationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateApplicationRequest,
   output: UpdateApplicationResponse,
@@ -8717,7 +8716,7 @@ export const updateChatControlsConfiguration: API.OperationMethod<
   UpdateChatControlsConfigurationRequest,
   UpdateChatControlsConfigurationResponse,
   UpdateChatControlsConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateChatControlsConfigurationRequest,
   output: UpdateChatControlsConfigurationResponse,
@@ -8750,7 +8749,7 @@ export const updateChatResponseConfiguration: API.OperationMethod<
   UpdateChatResponseConfigurationRequest,
   UpdateChatResponseConfigurationResponse,
   UpdateChatResponseConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateChatResponseConfigurationRequest,
   output: UpdateChatResponseConfigurationResponse,
@@ -8782,7 +8781,7 @@ export const updateDataAccessor: API.OperationMethod<
   UpdateDataAccessorRequest,
   UpdateDataAccessorResponse,
   UpdateDataAccessorError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateDataAccessorRequest,
   output: UpdateDataAccessorResponse,
@@ -8814,7 +8813,7 @@ export const updateDataSource: API.OperationMethod<
   UpdateDataSourceRequest,
   UpdateDataSourceResponse,
   UpdateDataSourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateDataSourceRequest,
   output: UpdateDataSourceResponse,
@@ -8847,7 +8846,7 @@ export const updateIndex: API.OperationMethod<
   UpdateIndexRequest,
   UpdateIndexResponse,
   UpdateIndexError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateIndexRequest,
   output: UpdateIndexResponse,
@@ -8881,7 +8880,7 @@ export const updatePlugin: API.OperationMethod<
   UpdatePluginRequest,
   UpdatePluginResponse,
   UpdatePluginError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdatePluginRequest,
   output: UpdatePluginResponse,
@@ -8915,7 +8914,7 @@ export const updateRetriever: API.OperationMethod<
   UpdateRetrieverRequest,
   UpdateRetrieverResponse,
   UpdateRetrieverError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateRetrieverRequest,
   output: UpdateRetrieverResponse,
@@ -8948,7 +8947,7 @@ export const updateSubscription: API.OperationMethod<
   UpdateSubscriptionRequest,
   UpdateSubscriptionResponse,
   UpdateSubscriptionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateSubscriptionRequest,
   output: UpdateSubscriptionResponse,
@@ -8981,7 +8980,7 @@ export const updateUser: API.OperationMethod<
   UpdateUserRequest,
   UpdateUserResponse,
   UpdateUserError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateUserRequest,
   output: UpdateUserResponse,
@@ -9014,7 +9013,7 @@ export const updateWebExperience: API.OperationMethod<
   UpdateWebExperienceRequest,
   UpdateWebExperienceResponse,
   UpdateWebExperienceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateWebExperienceRequest,
   output: UpdateWebExperienceResponse,

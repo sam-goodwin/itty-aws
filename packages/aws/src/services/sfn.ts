@@ -8,7 +8,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 import { SensitiveString } from "../sensitive.ts";
 const ns = T.XmlNamespace("http://swf.amazonaws.com/doc/2015-07-20/");
 const svc = T.AwsApiService({
@@ -2964,7 +2963,7 @@ export const createActivity: API.OperationMethod<
   CreateActivityInput,
   CreateActivityOutput,
   CreateActivityError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateActivityInput,
   output: CreateActivityOutput,
@@ -3027,7 +3026,7 @@ export const createStateMachine: API.OperationMethod<
   CreateStateMachineInput,
   CreateStateMachineOutput,
   CreateStateMachineError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateStateMachineInput,
   output: CreateStateMachineOutput,
@@ -3097,7 +3096,7 @@ export const createStateMachineAlias: API.OperationMethod<
   CreateStateMachineAliasInput,
   CreateStateMachineAliasOutput,
   CreateStateMachineAliasError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateStateMachineAliasInput,
   output: CreateStateMachineAliasOutput,
@@ -3123,7 +3122,7 @@ export const deleteActivity: API.OperationMethod<
   DeleteActivityInput,
   DeleteActivityOutput,
   DeleteActivityError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteActivityInput,
   output: DeleteActivityOutput,
@@ -3165,7 +3164,7 @@ export const deleteStateMachine: API.OperationMethod<
   DeleteStateMachineInput,
   DeleteStateMachineOutput,
   DeleteStateMachineError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteStateMachineInput,
   output: DeleteStateMachineOutput,
@@ -3202,7 +3201,7 @@ export const deleteStateMachineAlias: API.OperationMethod<
   DeleteStateMachineAliasInput,
   DeleteStateMachineAliasOutput,
   DeleteStateMachineAliasError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteStateMachineAliasInput,
   output: DeleteStateMachineAliasOutput,
@@ -3241,7 +3240,7 @@ export const deleteStateMachineVersion: API.OperationMethod<
   DeleteStateMachineVersionInput,
   DeleteStateMachineVersionOutput,
   DeleteStateMachineVersionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteStateMachineVersionInput,
   output: DeleteStateMachineVersionOutput,
@@ -3264,7 +3263,7 @@ export const describeActivity: API.OperationMethod<
   DescribeActivityInput,
   DescribeActivityOutput,
   DescribeActivityError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeActivityInput,
   output: DescribeActivityOutput,
@@ -3295,7 +3294,7 @@ export const describeExecution: API.OperationMethod<
   DescribeExecutionInput,
   DescribeExecutionOutput,
   DescribeExecutionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeExecutionInput,
   output: DescribeExecutionOutput,
@@ -3319,7 +3318,7 @@ export const describeMapRun: API.OperationMethod<
   DescribeMapRunInput,
   DescribeMapRunOutput,
   DescribeMapRunError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeMapRunInput,
   output: DescribeMapRunOutput,
@@ -3368,7 +3367,7 @@ export const describeStateMachine: API.OperationMethod<
   DescribeStateMachineInput,
   DescribeStateMachineOutput,
   DescribeStateMachineError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeStateMachineInput,
   output: DescribeStateMachineOutput,
@@ -3406,7 +3405,7 @@ export const describeStateMachineAlias: API.OperationMethod<
   DescribeStateMachineAliasInput,
   DescribeStateMachineAliasOutput,
   DescribeStateMachineAliasError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeStateMachineAliasInput,
   output: DescribeStateMachineAliasOutput,
@@ -3437,7 +3436,7 @@ export const describeStateMachineForExecution: API.OperationMethod<
   DescribeStateMachineForExecutionInput,
   DescribeStateMachineForExecutionOutput,
   DescribeStateMachineForExecutionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeStateMachineForExecutionInput,
   output: DescribeStateMachineForExecutionOutput,
@@ -3482,7 +3481,7 @@ export const getActivityTask: API.OperationMethod<
   GetActivityTaskInput,
   GetActivityTaskOutput,
   GetActivityTaskError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetActivityTaskInput,
   output: GetActivityTaskOutput,
@@ -3521,7 +3520,7 @@ export const getExecutionHistory: API.PaginatedOperationMethod<
   GetExecutionHistoryInput,
   GetExecutionHistoryOutput,
   GetExecutionHistoryError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   HistoryEvent
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetExecutionHistoryInput,
@@ -3558,7 +3557,7 @@ export const listActivities: API.PaginatedOperationMethod<
   ListActivitiesInput,
   ListActivitiesOutput,
   ListActivitiesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ActivityListItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListActivitiesInput,
@@ -3602,7 +3601,7 @@ export const listExecutions: API.PaginatedOperationMethod<
   ListExecutionsInput,
   ListExecutionsOutput,
   ListExecutionsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ExecutionListItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListExecutionsInput,
@@ -3638,7 +3637,7 @@ export const listMapRuns: API.PaginatedOperationMethod<
   ListMapRunsInput,
   ListMapRunsOutput,
   ListMapRunsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   MapRunListItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMapRunsInput,
@@ -3684,7 +3683,7 @@ export const listStateMachineAliases: API.OperationMethod<
   ListStateMachineAliasesInput,
   ListStateMachineAliasesOutput,
   ListStateMachineAliasesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListStateMachineAliasesInput,
   output: ListStateMachineAliasesOutput,
@@ -3713,7 +3712,7 @@ export const listStateMachines: API.PaginatedOperationMethod<
   ListStateMachinesInput,
   ListStateMachinesOutput,
   ListStateMachinesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   StateMachineListItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListStateMachinesInput,
@@ -3753,7 +3752,7 @@ export const listStateMachineVersions: API.OperationMethod<
   ListStateMachineVersionsInput,
   ListStateMachineVersionsOutput,
   ListStateMachineVersionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListStateMachineVersionsInput,
   output: ListStateMachineVersionsOutput,
@@ -3776,7 +3775,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceInput,
   ListTagsForResourceOutput,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceInput,
   output: ListTagsForResourceOutput,
@@ -3819,7 +3818,7 @@ export const publishStateMachineVersion: API.OperationMethod<
   PublishStateMachineVersionInput,
   PublishStateMachineVersionOutput,
   PublishStateMachineVersionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PublishStateMachineVersionInput,
   output: PublishStateMachineVersionOutput,
@@ -3868,7 +3867,7 @@ export const redriveExecution: API.OperationMethod<
   RedriveExecutionInput,
   RedriveExecutionOutput,
   RedriveExecutionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: RedriveExecutionInput,
   output: RedriveExecutionOutput,
@@ -3904,7 +3903,7 @@ export const sendTaskFailure: API.OperationMethod<
   SendTaskFailureInput,
   SendTaskFailureOutput,
   SendTaskFailureError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: SendTaskFailureInput,
   output: SendTaskFailureOutput,
@@ -3946,7 +3945,7 @@ export const sendTaskHeartbeat: API.OperationMethod<
   SendTaskHeartbeatInput,
   SendTaskHeartbeatOutput,
   SendTaskHeartbeatError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: SendTaskHeartbeatInput,
   output: SendTaskHeartbeatOutput,
@@ -3974,7 +3973,7 @@ export const sendTaskSuccess: API.OperationMethod<
   SendTaskSuccessInput,
   SendTaskSuccessOutput,
   SendTaskSuccessError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: SendTaskSuccessInput,
   output: SendTaskSuccessOutput,
@@ -4045,7 +4044,7 @@ export const startExecution: API.OperationMethod<
   StartExecutionInput,
   StartExecutionOutput,
   StartExecutionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartExecutionInput,
   output: StartExecutionOutput,
@@ -4094,7 +4093,7 @@ export const startSyncExecution: API.OperationMethod<
   StartSyncExecutionInput,
   StartSyncExecutionOutput,
   StartSyncExecutionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartSyncExecutionInput,
   output: StartSyncExecutionOutput,
@@ -4136,7 +4135,7 @@ export const stopExecution: API.OperationMethod<
   StopExecutionInput,
   StopExecutionOutput,
   StopExecutionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StopExecutionInput,
   output: StopExecutionOutput,
@@ -4172,7 +4171,7 @@ export const tagResource: API.OperationMethod<
   TagResourceInput,
   TagResourceOutput,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: TagResourceInput,
   output: TagResourceOutput,
@@ -4222,7 +4221,7 @@ export const testState: API.OperationMethod<
   TestStateInput,
   TestStateOutput,
   TestStateError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: TestStateInput,
   output: TestStateOutput,
@@ -4246,7 +4245,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceInput,
   UntagResourceOutput,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceInput,
   output: UntagResourceOutput,
@@ -4268,7 +4267,7 @@ export const updateMapRun: API.OperationMethod<
   UpdateMapRunInput,
   UpdateMapRunOutput,
   UpdateMapRunError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateMapRunInput,
   output: UpdateMapRunOutput,
@@ -4337,7 +4336,7 @@ export const updateStateMachine: API.OperationMethod<
   UpdateStateMachineInput,
   UpdateStateMachineOutput,
   UpdateStateMachineError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateStateMachineInput,
   output: UpdateStateMachineOutput,
@@ -4397,7 +4396,7 @@ export const updateStateMachineAlias: API.OperationMethod<
   UpdateStateMachineAliasInput,
   UpdateStateMachineAliasOutput,
   UpdateStateMachineAliasError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateStateMachineAliasInput,
   output: UpdateStateMachineAliasOutput,
@@ -4454,7 +4453,7 @@ export const validateStateMachineDefinition: API.OperationMethod<
   ValidateStateMachineDefinitionInput,
   ValidateStateMachineDefinitionOutput,
   ValidateStateMachineDefinitionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ValidateStateMachineDefinitionInput,
   output: ValidateStateMachineDefinitionOutput,

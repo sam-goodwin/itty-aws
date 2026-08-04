@@ -7,7 +7,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 const svc = T.AwsApiService({
   sdkId: "SagemakerJobRuntime",
   serviceShapeName: "AgenticRFTRuntimeService",
@@ -268,7 +267,7 @@ export const completeRollout: API.OperationMethod<
   CompleteRolloutRequest,
   CompleteRolloutResponse,
   CompleteRolloutError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CompleteRolloutRequest,
   output: CompleteRolloutResponse,
@@ -303,7 +302,7 @@ export const sample: API.OperationMethod<
   SampleRequest,
   SampleResponse,
   SampleError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: SampleRequest,
   output: SampleResponse,
@@ -337,7 +336,7 @@ export const sampleWithResponseStream: API.OperationMethod<
   SampleWithResponseStreamRequest,
   SampleWithResponseStreamResponse,
   SampleWithResponseStreamError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: SampleWithResponseStreamRequest,
   output: SampleWithResponseStreamResponse,
@@ -372,7 +371,7 @@ export const updateReward: API.OperationMethod<
   UpdateRewardRequest,
   UpdateRewardResponse,
   UpdateRewardError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateRewardRequest,
   output: UpdateRewardResponse,

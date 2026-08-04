@@ -8,7 +8,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 import { SensitiveString } from "../sensitive.ts";
 const svc = T.AwsApiService({ sdkId: "MWAA", serviceShapeName: "AmazonMWAA" });
 const auth = T.AwsAuthSigv4({ name: "airflow" });
@@ -870,7 +869,7 @@ export const createCliToken: API.OperationMethod<
   CreateCliTokenRequest,
   CreateCliTokenResponse,
   CreateCliTokenError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateCliTokenRequest,
   output: CreateCliTokenResponse,
@@ -893,7 +892,7 @@ export const createEnvironment: API.OperationMethod<
   CreateEnvironmentInput,
   CreateEnvironmentOutput,
   CreateEnvironmentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateEnvironmentInput,
   output: CreateEnvironmentOutput,
@@ -921,7 +920,7 @@ export const createWebLoginToken: API.OperationMethod<
   CreateWebLoginTokenRequest,
   CreateWebLoginTokenResponse,
   CreateWebLoginTokenError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateWebLoginTokenRequest,
   output: CreateWebLoginTokenResponse,
@@ -950,7 +949,7 @@ export const deleteEnvironment: API.OperationMethod<
   DeleteEnvironmentInput,
   DeleteEnvironmentOutput,
   DeleteEnvironmentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteEnvironmentInput,
   output: DeleteEnvironmentOutput,
@@ -978,7 +977,7 @@ export const getEnvironment: API.OperationMethod<
   GetEnvironmentInput,
   GetEnvironmentOutput,
   GetEnvironmentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetEnvironmentInput,
   output: GetEnvironmentOutput,
@@ -1008,7 +1007,7 @@ export const invokeRestApi: API.OperationMethod<
   InvokeRestApiRequest,
   InvokeRestApiResponse,
   InvokeRestApiError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: InvokeRestApiRequest,
   output: InvokeRestApiResponse,
@@ -1037,7 +1036,7 @@ export const listEnvironments: API.PaginatedOperationMethod<
   ListEnvironmentsInput,
   ListEnvironmentsOutput,
   ListEnvironmentsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   EnvironmentName
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEnvironmentsInput,
@@ -1067,7 +1066,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceInput,
   ListTagsForResourceOutput,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceInput,
   output: ListTagsForResourceOutput,
@@ -1093,7 +1092,7 @@ export const publishMetrics: API.OperationMethod<
   PublishMetricsInput,
   PublishMetricsOutput,
   PublishMetricsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PublishMetricsInput,
   output: PublishMetricsOutput,
@@ -1116,7 +1115,7 @@ export const tagResource: API.OperationMethod<
   TagResourceInput,
   TagResourceOutput,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: TagResourceInput,
   output: TagResourceOutput,
@@ -1143,7 +1142,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceInput,
   UntagResourceOutput,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceInput,
   output: UntagResourceOutput,
@@ -1171,7 +1170,7 @@ export const updateEnvironment: API.OperationMethod<
   UpdateEnvironmentInput,
   UpdateEnvironmentOutput,
   UpdateEnvironmentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateEnvironmentInput,
   output: UpdateEnvironmentOutput,

@@ -7,7 +7,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 const svc = T.AwsApiService({
   sdkId: "Pca Connector Ad",
   serviceShapeName: "PcaConnectorAd",
@@ -1910,7 +1909,7 @@ export const createConnector: API.OperationMethod<
   CreateConnectorRequest,
   CreateConnectorResponse,
   CreateConnectorError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateConnectorRequest,
   output: CreateConnectorResponse,
@@ -1944,7 +1943,7 @@ export const createDirectoryRegistration: API.OperationMethod<
   CreateDirectoryRegistrationRequest,
   CreateDirectoryRegistrationResponse,
   CreateDirectoryRegistrationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateDirectoryRegistrationRequest,
   output: CreateDirectoryRegistrationResponse,
@@ -1978,7 +1977,7 @@ export const createServicePrincipalName: API.OperationMethod<
   CreateServicePrincipalNameRequest,
   CreateServicePrincipalNameResponse,
   CreateServicePrincipalNameError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateServicePrincipalNameRequest,
   output: CreateServicePrincipalNameResponse,
@@ -2012,7 +2011,7 @@ export const createTemplate: API.OperationMethod<
   CreateTemplateRequest,
   CreateTemplateResponse,
   CreateTemplateError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateTemplateRequest,
   output: CreateTemplateResponse,
@@ -2047,7 +2046,7 @@ export const createTemplateGroupAccessControlEntry: API.OperationMethod<
   CreateTemplateGroupAccessControlEntryRequest,
   CreateTemplateGroupAccessControlEntryResponse,
   CreateTemplateGroupAccessControlEntryError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateTemplateGroupAccessControlEntryRequest,
   output: CreateTemplateGroupAccessControlEntryResponse,
@@ -2084,7 +2083,7 @@ export const deleteConnector: API.OperationMethod<
   DeleteConnectorRequest,
   DeleteConnectorResponse,
   DeleteConnectorError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteConnectorRequest,
   output: DeleteConnectorResponse,
@@ -2116,7 +2115,7 @@ export const deleteDirectoryRegistration: API.OperationMethod<
   DeleteDirectoryRegistrationRequest,
   DeleteDirectoryRegistrationResponse,
   DeleteDirectoryRegistrationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteDirectoryRegistrationRequest,
   output: DeleteDirectoryRegistrationResponse,
@@ -2147,7 +2146,7 @@ export const deleteServicePrincipalName: API.OperationMethod<
   DeleteServicePrincipalNameRequest,
   DeleteServicePrincipalNameResponse,
   DeleteServicePrincipalNameError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteServicePrincipalNameRequest,
   output: DeleteServicePrincipalNameResponse,
@@ -2179,7 +2178,7 @@ export const deleteTemplate: API.OperationMethod<
   DeleteTemplateRequest,
   DeleteTemplateResponse,
   DeleteTemplateError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteTemplateRequest,
   output: DeleteTemplateResponse,
@@ -2211,7 +2210,7 @@ export const deleteTemplateGroupAccessControlEntry: API.OperationMethod<
   DeleteTemplateGroupAccessControlEntryRequest,
   DeleteTemplateGroupAccessControlEntryResponse,
   DeleteTemplateGroupAccessControlEntryError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteTemplateGroupAccessControlEntryRequest,
   output: DeleteTemplateGroupAccessControlEntryResponse,
@@ -2243,7 +2242,7 @@ export const getConnector: API.OperationMethod<
   GetConnectorRequest,
   GetConnectorResponse,
   GetConnectorError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetConnectorRequest,
   output: GetConnectorResponse,
@@ -2273,7 +2272,7 @@ export const getDirectoryRegistration: API.OperationMethod<
   GetDirectoryRegistrationRequest,
   GetDirectoryRegistrationResponse,
   GetDirectoryRegistrationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetDirectoryRegistrationRequest,
   output: GetDirectoryRegistrationResponse,
@@ -2304,7 +2303,7 @@ export const getServicePrincipalName: API.OperationMethod<
   GetServicePrincipalNameRequest,
   GetServicePrincipalNameResponse,
   GetServicePrincipalNameError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetServicePrincipalNameRequest,
   output: GetServicePrincipalNameResponse,
@@ -2335,7 +2334,7 @@ export const getTemplate: API.OperationMethod<
   GetTemplateRequest,
   GetTemplateResponse,
   GetTemplateError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetTemplateRequest,
   output: GetTemplateResponse,
@@ -2365,7 +2364,7 @@ export const getTemplateGroupAccessControlEntry: API.OperationMethod<
   GetTemplateGroupAccessControlEntryRequest,
   GetTemplateGroupAccessControlEntryResponse,
   GetTemplateGroupAccessControlEntryError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetTemplateGroupAccessControlEntryRequest,
   output: GetTemplateGroupAccessControlEntryResponse,
@@ -2394,7 +2393,7 @@ export const listConnectors: API.PaginatedOperationMethod<
   ListConnectorsRequest,
   ListConnectorsResponse,
   ListConnectorsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ConnectorSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListConnectorsRequest,
@@ -2430,7 +2429,7 @@ export const listDirectoryRegistrations: API.PaginatedOperationMethod<
   ListDirectoryRegistrationsRequest,
   ListDirectoryRegistrationsResponse,
   ListDirectoryRegistrationsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   DirectoryRegistrationSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDirectoryRegistrationsRequest,
@@ -2467,7 +2466,7 @@ export const listServicePrincipalNames: API.PaginatedOperationMethod<
   ListServicePrincipalNamesRequest,
   ListServicePrincipalNamesResponse,
   ListServicePrincipalNamesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ServicePrincipalNameSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListServicePrincipalNamesRequest,
@@ -2504,7 +2503,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -2534,7 +2533,7 @@ export const listTemplateGroupAccessControlEntries: API.PaginatedOperationMethod
   ListTemplateGroupAccessControlEntriesRequest,
   ListTemplateGroupAccessControlEntriesResponse,
   ListTemplateGroupAccessControlEntriesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   AccessControlEntrySummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTemplateGroupAccessControlEntriesRequest,
@@ -2571,7 +2570,7 @@ export const listTemplates: API.PaginatedOperationMethod<
   ListTemplatesRequest,
   ListTemplatesResponse,
   ListTemplatesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   TemplateSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTemplatesRequest,
@@ -2608,7 +2607,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -2638,7 +2637,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -2669,7 +2668,7 @@ export const updateTemplate: API.OperationMethod<
   UpdateTemplateRequest,
   UpdateTemplateResponse,
   UpdateTemplateError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateTemplateRequest,
   output: UpdateTemplateResponse,
@@ -2701,7 +2700,7 @@ export const updateTemplateGroupAccessControlEntry: API.OperationMethod<
   UpdateTemplateGroupAccessControlEntryRequest,
   UpdateTemplateGroupAccessControlEntryResponse,
   UpdateTemplateGroupAccessControlEntryError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateTemplateGroupAccessControlEntryRequest,
   output: UpdateTemplateGroupAccessControlEntryResponse,

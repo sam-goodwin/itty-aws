@@ -8,7 +8,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 import { SensitiveString } from "../sensitive.ts";
 const svc = T.AwsApiService({
   sdkId: "AmplifyUIBuilder",
@@ -2620,7 +2619,7 @@ export const createComponent: API.OperationMethod<
   CreateComponentRequest,
   CreateComponentResponse,
   CreateComponentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateComponentRequest,
   output: CreateComponentResponse,
@@ -2648,7 +2647,7 @@ export const createForm: API.OperationMethod<
   CreateFormRequest,
   CreateFormResponse,
   CreateFormError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateFormRequest,
   output: CreateFormResponse,
@@ -2676,7 +2675,7 @@ export const createTheme: API.OperationMethod<
   CreateThemeRequest,
   CreateThemeResponse,
   CreateThemeError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateThemeRequest,
   output: CreateThemeResponse,
@@ -2703,7 +2702,7 @@ export const deleteComponent: API.OperationMethod<
   DeleteComponentRequest,
   DeleteComponentResponse,
   DeleteComponentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteComponentRequest,
   output: DeleteComponentResponse,
@@ -2729,7 +2728,7 @@ export const deleteForm: API.OperationMethod<
   DeleteFormRequest,
   DeleteFormResponse,
   DeleteFormError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteFormRequest,
   output: DeleteFormResponse,
@@ -2755,7 +2754,7 @@ export const deleteTheme: API.OperationMethod<
   DeleteThemeRequest,
   DeleteThemeResponse,
   DeleteThemeError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteThemeRequest,
   output: DeleteThemeResponse,
@@ -2781,7 +2780,7 @@ export const exchangeCodeForToken: API.OperationMethod<
   ExchangeCodeForTokenRequest,
   ExchangeCodeForTokenResponse,
   ExchangeCodeForTokenError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ExchangeCodeForTokenRequest,
   output: ExchangeCodeForTokenResponse,
@@ -2802,7 +2801,7 @@ export const exportComponents: API.PaginatedOperationMethod<
   ExportComponentsRequest,
   ExportComponentsResponse,
   ExportComponentsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   Component
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ExportComponentsRequest,
@@ -2829,7 +2828,7 @@ export const exportForms: API.PaginatedOperationMethod<
   ExportFormsRequest,
   ExportFormsResponse,
   ExportFormsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   Form
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ExportFormsRequest,
@@ -2856,7 +2855,7 @@ export const exportThemes: API.PaginatedOperationMethod<
   ExportThemesRequest,
   ExportThemesResponse,
   ExportThemesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   Theme
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ExportThemesRequest,
@@ -2885,7 +2884,7 @@ export const getCodegenJob: API.OperationMethod<
   GetCodegenJobRequest,
   GetCodegenJobResponse,
   GetCodegenJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetCodegenJobRequest,
   output: GetCodegenJobResponse,
@@ -2912,7 +2911,7 @@ export const getComponent: API.OperationMethod<
   GetComponentRequest,
   GetComponentResponse,
   GetComponentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetComponentRequest,
   output: GetComponentResponse,
@@ -2938,7 +2937,7 @@ export const getForm: API.OperationMethod<
   GetFormRequest,
   GetFormResponse,
   GetFormError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetFormRequest,
   output: GetFormResponse,
@@ -2963,7 +2962,7 @@ export const getMetadata: API.OperationMethod<
   GetMetadataRequest,
   GetMetadataResponse,
   GetMetadataError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetMetadataRequest,
   output: GetMetadataResponse,
@@ -2985,7 +2984,7 @@ export const getTheme: API.OperationMethod<
   GetThemeRequest,
   GetThemeResponse,
   GetThemeError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetThemeRequest,
   output: GetThemeResponse,
@@ -3011,7 +3010,7 @@ export const listCodegenJobs: API.PaginatedOperationMethod<
   ListCodegenJobsRequest,
   ListCodegenJobsResponse,
   ListCodegenJobsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   CodegenJobSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCodegenJobsRequest,
@@ -3044,7 +3043,7 @@ export const listComponents: API.PaginatedOperationMethod<
   ListComponentsRequest,
   ListComponentsResponse,
   ListComponentsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ComponentSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListComponentsRequest,
@@ -3072,7 +3071,7 @@ export const listForms: API.PaginatedOperationMethod<
   ListFormsRequest,
   ListFormsResponse,
   ListFormsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   FormSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFormsRequest,
@@ -3103,7 +3102,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -3131,7 +3130,7 @@ export const listThemes: API.PaginatedOperationMethod<
   ListThemesRequest,
   ListThemesResponse,
   ListThemesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ThemeSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListThemesRequest,
@@ -3159,7 +3158,7 @@ export const putMetadataFlag: API.OperationMethod<
   PutMetadataFlagRequest,
   PutMetadataFlagResponse,
   PutMetadataFlagError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PutMetadataFlagRequest,
   output: PutMetadataFlagResponse,
@@ -3179,7 +3178,7 @@ export const refreshToken: API.OperationMethod<
   RefreshTokenRequest,
   RefreshTokenResponse,
   RefreshTokenError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: RefreshTokenRequest,
   output: RefreshTokenResponse,
@@ -3201,7 +3200,7 @@ export const startCodegenJob: API.OperationMethod<
   StartCodegenJobRequest,
   StartCodegenJobResponse,
   StartCodegenJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartCodegenJobRequest,
   output: StartCodegenJobResponse,
@@ -3229,7 +3228,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -3259,7 +3258,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -3287,7 +3286,7 @@ export const updateComponent: API.OperationMethod<
   UpdateComponentRequest,
   UpdateComponentResponse,
   UpdateComponentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateComponentRequest,
   output: UpdateComponentResponse,
@@ -3313,7 +3312,7 @@ export const updateForm: API.OperationMethod<
   UpdateFormRequest,
   UpdateFormResponse,
   UpdateFormError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateFormRequest,
   output: UpdateFormResponse,
@@ -3339,7 +3338,7 @@ export const updateTheme: API.OperationMethod<
   UpdateThemeRequest,
   UpdateThemeResponse,
   UpdateThemeError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateThemeRequest,
   output: UpdateThemeResponse,

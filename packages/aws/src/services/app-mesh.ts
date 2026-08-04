@@ -7,7 +7,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 const svc = T.AwsApiService({ sdkId: "App Mesh", serviceShapeName: "AppMesh" });
 const auth = T.AwsAuthSigv4({ name: "appmesh" });
 const ver = T.ServiceVersion("2019-01-25");
@@ -3497,7 +3496,7 @@ export const createGatewayRoute: API.OperationMethod<
   CreateGatewayRouteInput,
   CreateGatewayRouteOutput,
   CreateGatewayRouteError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateGatewayRouteInput,
   output: CreateGatewayRouteOutput,
@@ -3540,7 +3539,7 @@ export const createMesh: API.OperationMethod<
   CreateMeshInput,
   CreateMeshOutput,
   CreateMeshError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateMeshInput,
   output: CreateMeshOutput,
@@ -3581,7 +3580,7 @@ export const createRoute: API.OperationMethod<
   CreateRouteInput,
   CreateRouteOutput,
   CreateRouteError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateRouteInput,
   output: CreateRouteOutput,
@@ -3624,7 +3623,7 @@ export const createVirtualGateway: API.OperationMethod<
   CreateVirtualGatewayInput,
   CreateVirtualGatewayOutput,
   CreateVirtualGatewayError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateVirtualGatewayInput,
   output: CreateVirtualGatewayOutput,
@@ -3686,7 +3685,7 @@ export const createVirtualNode: API.OperationMethod<
   CreateVirtualNodeInput,
   CreateVirtualNodeOutput,
   CreateVirtualNodeError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateVirtualNodeInput,
   output: CreateVirtualNodeOutput,
@@ -3730,7 +3729,7 @@ export const createVirtualRouter: API.OperationMethod<
   CreateVirtualRouterInput,
   CreateVirtualRouterOutput,
   CreateVirtualRouterError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateVirtualRouterInput,
   output: CreateVirtualRouterOutput,
@@ -3774,7 +3773,7 @@ export const createVirtualService: API.OperationMethod<
   CreateVirtualServiceInput,
   CreateVirtualServiceOutput,
   CreateVirtualServiceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateVirtualServiceInput,
   output: CreateVirtualServiceOutput,
@@ -3809,7 +3808,7 @@ export const deleteGatewayRoute: API.OperationMethod<
   DeleteGatewayRouteInput,
   DeleteGatewayRouteOutput,
   DeleteGatewayRouteError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteGatewayRouteInput,
   output: DeleteGatewayRouteOutput,
@@ -3846,7 +3845,7 @@ export const deleteMesh: API.OperationMethod<
   DeleteMeshInput,
   DeleteMeshOutput,
   DeleteMeshError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteMeshInput,
   output: DeleteMeshOutput,
@@ -3880,7 +3879,7 @@ export const deleteRoute: API.OperationMethod<
   DeleteRouteInput,
   DeleteRouteOutput,
   DeleteRouteError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteRouteInput,
   output: DeleteRouteOutput,
@@ -3915,7 +3914,7 @@ export const deleteVirtualGateway: API.OperationMethod<
   DeleteVirtualGatewayInput,
   DeleteVirtualGatewayOutput,
   DeleteVirtualGatewayError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteVirtualGatewayInput,
   output: DeleteVirtualGatewayOutput,
@@ -3952,7 +3951,7 @@ export const deleteVirtualNode: API.OperationMethod<
   DeleteVirtualNodeInput,
   DeleteVirtualNodeOutput,
   DeleteVirtualNodeError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteVirtualNodeInput,
   output: DeleteVirtualNodeOutput,
@@ -3989,7 +3988,7 @@ export const deleteVirtualRouter: API.OperationMethod<
   DeleteVirtualRouterInput,
   DeleteVirtualRouterOutput,
   DeleteVirtualRouterError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteVirtualRouterInput,
   output: DeleteVirtualRouterOutput,
@@ -4023,7 +4022,7 @@ export const deleteVirtualService: API.OperationMethod<
   DeleteVirtualServiceInput,
   DeleteVirtualServiceOutput,
   DeleteVirtualServiceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteVirtualServiceInput,
   output: DeleteVirtualServiceOutput,
@@ -4056,7 +4055,7 @@ export const describeGatewayRoute: API.OperationMethod<
   DescribeGatewayRouteInput,
   DescribeGatewayRouteOutput,
   DescribeGatewayRouteError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeGatewayRouteInput,
   output: DescribeGatewayRouteOutput,
@@ -4088,7 +4087,7 @@ export const describeMesh: API.OperationMethod<
   DescribeMeshInput,
   DescribeMeshOutput,
   DescribeMeshError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeMeshInput,
   output: DescribeMeshOutput,
@@ -4120,7 +4119,7 @@ export const describeRoute: API.OperationMethod<
   DescribeRouteInput,
   DescribeRouteOutput,
   DescribeRouteError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeRouteInput,
   output: DescribeRouteOutput,
@@ -4152,7 +4151,7 @@ export const describeVirtualGateway: API.OperationMethod<
   DescribeVirtualGatewayInput,
   DescribeVirtualGatewayOutput,
   DescribeVirtualGatewayError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeVirtualGatewayInput,
   output: DescribeVirtualGatewayOutput,
@@ -4184,7 +4183,7 @@ export const describeVirtualNode: API.OperationMethod<
   DescribeVirtualNodeInput,
   DescribeVirtualNodeOutput,
   DescribeVirtualNodeError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeVirtualNodeInput,
   output: DescribeVirtualNodeOutput,
@@ -4216,7 +4215,7 @@ export const describeVirtualRouter: API.OperationMethod<
   DescribeVirtualRouterInput,
   DescribeVirtualRouterOutput,
   DescribeVirtualRouterError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeVirtualRouterInput,
   output: DescribeVirtualRouterOutput,
@@ -4248,7 +4247,7 @@ export const describeVirtualService: API.OperationMethod<
   DescribeVirtualServiceInput,
   DescribeVirtualServiceOutput,
   DescribeVirtualServiceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeVirtualServiceInput,
   output: DescribeVirtualServiceOutput,
@@ -4281,7 +4280,7 @@ export const listGatewayRoutes: API.PaginatedOperationMethod<
   ListGatewayRoutesInput,
   ListGatewayRoutesOutput,
   ListGatewayRoutesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   GatewayRouteRef
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListGatewayRoutesInput,
@@ -4320,7 +4319,7 @@ export const listMeshes: API.PaginatedOperationMethod<
   ListMeshesInput,
   ListMeshesOutput,
   ListMeshesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   MeshRef
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMeshesInput,
@@ -4359,7 +4358,7 @@ export const listRoutes: API.PaginatedOperationMethod<
   ListRoutesInput,
   ListRoutesOutput,
   ListRoutesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   RouteRef
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRoutesInput,
@@ -4398,7 +4397,7 @@ export const listTagsForResource: API.PaginatedOperationMethod<
   ListTagsForResourceInput,
   ListTagsForResourceOutput,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   TagRef
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTagsForResourceInput,
@@ -4437,7 +4436,7 @@ export const listVirtualGateways: API.PaginatedOperationMethod<
   ListVirtualGatewaysInput,
   ListVirtualGatewaysOutput,
   ListVirtualGatewaysError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   VirtualGatewayRef
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListVirtualGatewaysInput,
@@ -4476,7 +4475,7 @@ export const listVirtualNodes: API.PaginatedOperationMethod<
   ListVirtualNodesInput,
   ListVirtualNodesOutput,
   ListVirtualNodesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   VirtualNodeRef
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListVirtualNodesInput,
@@ -4515,7 +4514,7 @@ export const listVirtualRouters: API.PaginatedOperationMethod<
   ListVirtualRoutersInput,
   ListVirtualRoutersOutput,
   ListVirtualRoutersError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   VirtualRouterRef
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListVirtualRoutersInput,
@@ -4554,7 +4553,7 @@ export const listVirtualServices: API.PaginatedOperationMethod<
   ListVirtualServicesInput,
   ListVirtualServicesOutput,
   ListVirtualServicesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   VirtualServiceRef
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListVirtualServicesInput,
@@ -4597,7 +4596,7 @@ export const tagResource: API.OperationMethod<
   TagResourceInput,
   TagResourceOutput,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: TagResourceInput,
   output: TagResourceOutput,
@@ -4630,7 +4629,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceInput,
   UntagResourceOutput,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceInput,
   output: UntagResourceOutput,
@@ -4665,7 +4664,7 @@ export const updateGatewayRoute: API.OperationMethod<
   UpdateGatewayRouteInput,
   UpdateGatewayRouteOutput,
   UpdateGatewayRouteError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateGatewayRouteInput,
   output: UpdateGatewayRouteOutput,
@@ -4700,7 +4699,7 @@ export const updateMesh: API.OperationMethod<
   UpdateMeshInput,
   UpdateMeshOutput,
   UpdateMeshError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateMeshInput,
   output: UpdateMeshOutput,
@@ -4735,7 +4734,7 @@ export const updateRoute: API.OperationMethod<
   UpdateRouteInput,
   UpdateRouteOutput,
   UpdateRouteError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateRouteInput,
   output: UpdateRouteOutput,
@@ -4771,7 +4770,7 @@ export const updateVirtualGateway: API.OperationMethod<
   UpdateVirtualGatewayInput,
   UpdateVirtualGatewayOutput,
   UpdateVirtualGatewayError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateVirtualGatewayInput,
   output: UpdateVirtualGatewayOutput,
@@ -4807,7 +4806,7 @@ export const updateVirtualNode: API.OperationMethod<
   UpdateVirtualNodeInput,
   UpdateVirtualNodeOutput,
   UpdateVirtualNodeError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateVirtualNodeInput,
   output: UpdateVirtualNodeOutput,
@@ -4843,7 +4842,7 @@ export const updateVirtualRouter: API.OperationMethod<
   UpdateVirtualRouterInput,
   UpdateVirtualRouterOutput,
   UpdateVirtualRouterError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateVirtualRouterInput,
   output: UpdateVirtualRouterOutput,
@@ -4879,7 +4878,7 @@ export const updateVirtualService: API.OperationMethod<
   UpdateVirtualServiceInput,
   UpdateVirtualServiceOutput,
   UpdateVirtualServiceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateVirtualServiceInput,
   output: UpdateVirtualServiceOutput,

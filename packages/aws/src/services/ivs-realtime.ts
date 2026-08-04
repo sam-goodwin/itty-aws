@@ -8,7 +8,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 import { SensitiveString } from "../sensitive.ts";
 const svc = T.AwsApiService({
   sdkId: "IVS RealTime",
@@ -2483,7 +2482,7 @@ export const createEncoderConfiguration: API.OperationMethod<
   CreateEncoderConfigurationRequest,
   CreateEncoderConfigurationResponse,
   CreateEncoderConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateEncoderConfigurationRequest,
   output: CreateEncoderConfigurationResponse,
@@ -2514,7 +2513,7 @@ export const createIngestConfiguration: API.OperationMethod<
   CreateIngestConfigurationRequest,
   CreateIngestConfigurationResponse,
   CreateIngestConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateIngestConfigurationRequest,
   output: CreateIngestConfigurationResponse,
@@ -2548,7 +2547,7 @@ export const createParticipantToken: API.OperationMethod<
   CreateParticipantTokenRequest,
   CreateParticipantTokenResponse,
   CreateParticipantTokenError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateParticipantTokenRequest,
   output: CreateParticipantTokenResponse,
@@ -2578,7 +2577,7 @@ export const createStage: API.OperationMethod<
   CreateStageRequest,
   CreateStageResponse,
   CreateStageError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateStageRequest,
   output: CreateStageResponse,
@@ -2612,7 +2611,7 @@ export const createStorageConfiguration: API.OperationMethod<
   CreateStorageConfigurationRequest,
   CreateStorageConfigurationResponse,
   CreateStorageConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateStorageConfigurationRequest,
   output: CreateStorageConfigurationResponse,
@@ -2646,7 +2645,7 @@ export const deleteEncoderConfiguration: API.OperationMethod<
   DeleteEncoderConfigurationRequest,
   DeleteEncoderConfigurationResponse,
   DeleteEncoderConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteEncoderConfigurationRequest,
   output: DeleteEncoderConfigurationResponse,
@@ -2677,7 +2676,7 @@ export const deleteIngestConfiguration: API.OperationMethod<
   DeleteIngestConfigurationRequest,
   DeleteIngestConfigurationResponse,
   DeleteIngestConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteIngestConfigurationRequest,
   output: DeleteIngestConfigurationResponse,
@@ -2708,7 +2707,7 @@ export const deletePublicKey: API.OperationMethod<
   DeletePublicKeyRequest,
   DeletePublicKeyResponse,
   DeletePublicKeyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeletePublicKeyRequest,
   output: DeletePublicKeyResponse,
@@ -2741,7 +2740,7 @@ export const deleteStage: API.OperationMethod<
   DeleteStageRequest,
   DeleteStageResponse,
   DeleteStageError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteStageRequest,
   output: DeleteStageResponse,
@@ -2777,7 +2776,7 @@ export const deleteStorageConfiguration: API.OperationMethod<
   DeleteStorageConfigurationRequest,
   DeleteStorageConfigurationResponse,
   DeleteStorageConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteStorageConfigurationRequest,
   output: DeleteStorageConfigurationResponse,
@@ -2809,7 +2808,7 @@ export const disconnectParticipant: API.OperationMethod<
   DisconnectParticipantRequest,
   DisconnectParticipantResponse,
   DisconnectParticipantError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DisconnectParticipantRequest,
   output: DisconnectParticipantResponse,
@@ -2839,7 +2838,7 @@ export const getComposition: API.OperationMethod<
   GetCompositionRequest,
   GetCompositionResponse,
   GetCompositionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetCompositionRequest,
   output: GetCompositionResponse,
@@ -2871,7 +2870,7 @@ export const getEncoderConfiguration: API.OperationMethod<
   GetEncoderConfigurationRequest,
   GetEncoderConfigurationResponse,
   GetEncoderConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetEncoderConfigurationRequest,
   output: GetEncoderConfigurationResponse,
@@ -2900,7 +2899,7 @@ export const getIngestConfiguration: API.OperationMethod<
   GetIngestConfigurationRequest,
   GetIngestConfigurationResponse,
   GetIngestConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetIngestConfigurationRequest,
   output: GetIngestConfigurationResponse,
@@ -2926,7 +2925,7 @@ export const getParticipant: API.OperationMethod<
   GetParticipantRequest,
   GetParticipantResponse,
   GetParticipantError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetParticipantRequest,
   output: GetParticipantResponse,
@@ -2952,7 +2951,7 @@ export const getPublicKey: API.OperationMethod<
   GetPublicKeyRequest,
   GetPublicKeyResponse,
   GetPublicKeyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetPublicKeyRequest,
   output: GetPublicKeyResponse,
@@ -2979,7 +2978,7 @@ export const getStage: API.OperationMethod<
   GetStageRequest,
   GetStageResponse,
   GetStageError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetStageRequest,
   output: GetStageResponse,
@@ -3006,7 +3005,7 @@ export const getStageSession: API.OperationMethod<
   GetStageSessionRequest,
   GetStageSessionResponse,
   GetStageSessionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetStageSessionRequest,
   output: GetStageSessionResponse,
@@ -3035,7 +3034,7 @@ export const getStorageConfiguration: API.OperationMethod<
   GetStorageConfigurationRequest,
   GetStorageConfigurationResponse,
   GetStorageConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetStorageConfigurationRequest,
   output: GetStorageConfigurationResponse,
@@ -3066,7 +3065,7 @@ export const importPublicKey: API.OperationMethod<
   ImportPublicKeyRequest,
   ImportPublicKeyResponse,
   ImportPublicKeyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ImportPublicKeyRequest,
   output: ImportPublicKeyResponse,
@@ -3097,7 +3096,7 @@ export const listCompositions: API.PaginatedOperationMethod<
   ListCompositionsRequest,
   ListCompositionsResponse,
   ListCompositionsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCompositionsRequest,
@@ -3134,7 +3133,7 @@ export const listEncoderConfigurations: API.PaginatedOperationMethod<
   ListEncoderConfigurationsRequest,
   ListEncoderConfigurationsResponse,
   ListEncoderConfigurationsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEncoderConfigurationsRequest,
@@ -3167,7 +3166,7 @@ export const listIngestConfigurations: API.PaginatedOperationMethod<
   ListIngestConfigurationsRequest,
   ListIngestConfigurationsResponse,
   ListIngestConfigurationsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   IngestConfigurationSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListIngestConfigurationsRequest,
@@ -3196,7 +3195,7 @@ export const listParticipantEvents: API.PaginatedOperationMethod<
   ListParticipantEventsRequest,
   ListParticipantEventsResponse,
   ListParticipantEventsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListParticipantEventsRequest,
@@ -3223,7 +3222,7 @@ export const listParticipantReplicas: API.PaginatedOperationMethod<
   ListParticipantReplicasRequest,
   ListParticipantReplicasResponse,
   ListParticipantReplicasError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ParticipantReplica
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListParticipantReplicasRequest,
@@ -3251,7 +3250,7 @@ export const listParticipants: API.PaginatedOperationMethod<
   ListParticipantsRequest,
   ListParticipantsResponse,
   ListParticipantsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListParticipantsRequest,
@@ -3278,7 +3277,7 @@ export const listPublicKeys: API.PaginatedOperationMethod<
   ListPublicKeysRequest,
   ListPublicKeysResponse,
   ListPublicKeysError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   PublicKeySummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPublicKeysRequest,
@@ -3309,7 +3308,7 @@ export const listStages: API.PaginatedOperationMethod<
   ListStagesRequest,
   ListStagesResponse,
   ListStagesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListStagesRequest,
@@ -3341,7 +3340,7 @@ export const listStageSessions: API.PaginatedOperationMethod<
   ListStageSessionsRequest,
   ListStageSessionsResponse,
   ListStageSessionsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListStageSessionsRequest,
@@ -3372,7 +3371,7 @@ export const listStorageConfigurations: API.PaginatedOperationMethod<
   ListStorageConfigurationsRequest,
   ListStorageConfigurationsResponse,
   ListStorageConfigurationsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListStorageConfigurationsRequest,
@@ -3407,7 +3406,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -3455,7 +3454,7 @@ export const startComposition: API.OperationMethod<
   StartCompositionRequest,
   StartCompositionResponse,
   StartCompositionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartCompositionRequest,
   output: StartCompositionResponse,
@@ -3489,7 +3488,7 @@ export const startParticipantReplication: API.OperationMethod<
   StartParticipantReplicationRequest,
   StartParticipantReplicationResponse,
   StartParticipantReplicationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartParticipantReplicationRequest,
   output: StartParticipantReplicationResponse,
@@ -3523,7 +3522,7 @@ export const stopComposition: API.OperationMethod<
   StopCompositionRequest,
   StopCompositionResponse,
   StopCompositionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StopCompositionRequest,
   output: StopCompositionResponse,
@@ -3553,7 +3552,7 @@ export const stopParticipantReplication: API.OperationMethod<
   StopParticipantReplicationRequest,
   StopParticipantReplicationResponse,
   StopParticipantReplicationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StopParticipantReplicationRequest,
   output: StopParticipantReplicationResponse,
@@ -3581,7 +3580,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -3609,7 +3608,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -3638,7 +3637,7 @@ export const updateIngestConfiguration: API.OperationMethod<
   UpdateIngestConfigurationRequest,
   UpdateIngestConfigurationResponse,
   UpdateIngestConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateIngestConfigurationRequest,
   output: UpdateIngestConfigurationResponse,
@@ -3670,7 +3669,7 @@ export const updateStage: API.OperationMethod<
   UpdateStageRequest,
   UpdateStageResponse,
   UpdateStageError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateStageRequest,
   output: UpdateStageResponse,

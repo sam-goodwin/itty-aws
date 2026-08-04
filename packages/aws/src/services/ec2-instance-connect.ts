@@ -7,7 +7,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 const svc = T.AwsApiService({
   sdkId: "EC2 Instance Connect",
   serviceShapeName: "AWSEC2InstanceConnectService",
@@ -301,7 +300,7 @@ export const sendSerialConsoleSSHPublicKey: API.OperationMethod<
   SendSerialConsoleSSHPublicKeyRequest,
   SendSerialConsoleSSHPublicKeyResponse,
   SendSerialConsoleSSHPublicKeyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: SendSerialConsoleSSHPublicKeyRequest,
   output: SendSerialConsoleSSHPublicKeyResponse,
@@ -343,7 +342,7 @@ export const sendSSHPublicKey: API.OperationMethod<
   SendSSHPublicKeyRequest,
   SendSSHPublicKeyResponse,
   SendSSHPublicKeyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: SendSSHPublicKeyRequest,
   output: SendSSHPublicKeyResponse,

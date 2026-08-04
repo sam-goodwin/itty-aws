@@ -8,7 +8,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 import { SensitiveString } from "../sensitive.ts";
 const ns = T.XmlNamespace("http://dms.amazonaws.com/doc/2016-01-01/");
 const svc = T.AwsApiService({
@@ -7959,7 +7958,7 @@ export const addTagsToResource: API.OperationMethod<
   AddTagsToResourceMessage,
   AddTagsToResourceResponse,
   AddTagsToResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: AddTagsToResourceMessage,
   output: AddTagsToResourceResponse,
@@ -7980,7 +7979,7 @@ export const applyPendingMaintenanceAction: API.OperationMethod<
   ApplyPendingMaintenanceActionMessage,
   ApplyPendingMaintenanceActionResponse,
   ApplyPendingMaintenanceActionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ApplyPendingMaintenanceActionMessage,
   output: ApplyPendingMaintenanceActionResponse,
@@ -8010,7 +8009,7 @@ export const batchStartRecommendations: API.OperationMethod<
   BatchStartRecommendationsRequest,
   BatchStartRecommendationsResponse,
   BatchStartRecommendationsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: BatchStartRecommendationsRequest,
   output: BatchStartRecommendationsResponse,
@@ -8032,7 +8031,7 @@ export const cancelMetadataModelConversion: API.OperationMethod<
   CancelMetadataModelConversionMessage,
   CancelMetadataModelConversionResponse,
   CancelMetadataModelConversionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CancelMetadataModelConversionMessage,
   output: CancelMetadataModelConversionResponse,
@@ -8054,7 +8053,7 @@ export const cancelMetadataModelCreation: API.OperationMethod<
   CancelMetadataModelCreationMessage,
   CancelMetadataModelCreationResponse,
   CancelMetadataModelCreationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CancelMetadataModelCreationMessage,
   output: CancelMetadataModelCreationResponse,
@@ -8080,7 +8079,7 @@ export const cancelReplicationTaskAssessmentRun: API.OperationMethod<
   CancelReplicationTaskAssessmentRunMessage,
   CancelReplicationTaskAssessmentRunResponse,
   CancelReplicationTaskAssessmentRunError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CancelReplicationTaskAssessmentRunMessage,
   output: CancelReplicationTaskAssessmentRunResponse,
@@ -8104,7 +8103,7 @@ export const createDataMigration: API.OperationMethod<
   CreateDataMigrationMessage,
   CreateDataMigrationResponse,
   CreateDataMigrationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateDataMigrationMessage,
   output: CreateDataMigrationResponse,
@@ -8134,7 +8133,7 @@ export const createDataProvider: API.OperationMethod<
   CreateDataProviderMessage,
   CreateDataProviderResponse,
   CreateDataProviderError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateDataProviderMessage,
   output: CreateDataProviderResponse,
@@ -8172,7 +8171,7 @@ export const createEndpoint: API.OperationMethod<
   CreateEndpointMessage,
   CreateEndpointResponse,
   CreateEndpointError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateEndpointMessage,
   output: CreateEndpointResponse,
@@ -8224,7 +8223,7 @@ export const createEventSubscription: API.OperationMethod<
   CreateEventSubscriptionMessage,
   CreateEventSubscriptionResponse,
   CreateEventSubscriptionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateEventSubscriptionMessage,
   output: CreateEventSubscriptionResponse,
@@ -8261,7 +8260,7 @@ export const createFleetAdvisorCollector: API.OperationMethod<
   CreateFleetAdvisorCollectorRequest,
   CreateFleetAdvisorCollectorResponse,
   CreateFleetAdvisorCollectorError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateFleetAdvisorCollectorRequest,
   output: CreateFleetAdvisorCollectorResponse,
@@ -8295,7 +8294,7 @@ export const createInstanceProfile: API.OperationMethod<
   CreateInstanceProfileMessage,
   CreateInstanceProfileResponse,
   CreateInstanceProfileError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateInstanceProfileMessage,
   output: CreateInstanceProfileResponse,
@@ -8334,7 +8333,7 @@ export const createMigrationProject: API.OperationMethod<
   CreateMigrationProjectMessage,
   CreateMigrationProjectResponse,
   CreateMigrationProjectError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateMigrationProjectMessage,
   output: CreateMigrationProjectResponse,
@@ -8371,7 +8370,7 @@ export const createReplicationConfig: API.OperationMethod<
   CreateReplicationConfigMessage,
   CreateReplicationConfigResponse,
   CreateReplicationConfigError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateReplicationConfigMessage,
   output: CreateReplicationConfigResponse,
@@ -8418,7 +8417,7 @@ export const createReplicationInstance: API.OperationMethod<
   CreateReplicationInstanceMessage,
   CreateReplicationInstanceResponse,
   CreateReplicationInstanceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateReplicationInstanceMessage,
   output: CreateReplicationInstanceResponse,
@@ -8464,7 +8463,7 @@ export const createReplicationSubnetGroup: API.OperationMethod<
   CreateReplicationSubnetGroupMessage,
   CreateReplicationSubnetGroupResponse,
   CreateReplicationSubnetGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateReplicationSubnetGroupMessage,
   output: CreateReplicationSubnetGroupResponse,
@@ -8496,7 +8495,7 @@ export const createReplicationTask: API.OperationMethod<
   CreateReplicationTaskMessage,
   CreateReplicationTaskResponse,
   CreateReplicationTaskError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateReplicationTaskMessage,
   output: CreateReplicationTaskResponse,
@@ -8524,7 +8523,7 @@ export const deleteCertificate: API.OperationMethod<
   DeleteCertificateMessage,
   DeleteCertificateResponse,
   DeleteCertificateError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteCertificateMessage,
   output: DeleteCertificateResponse,
@@ -8546,7 +8545,7 @@ export const deleteConnection: API.OperationMethod<
   DeleteConnectionMessage,
   DeleteConnectionResponse,
   DeleteConnectionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteConnectionMessage,
   output: DeleteConnectionResponse,
@@ -8568,7 +8567,7 @@ export const deleteDataMigration: API.OperationMethod<
   DeleteDataMigrationMessage,
   DeleteDataMigrationResponse,
   DeleteDataMigrationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteDataMigrationMessage,
   output: DeleteDataMigrationResponse,
@@ -8598,7 +8597,7 @@ export const deleteDataProvider: API.OperationMethod<
   DeleteDataProviderMessage,
   DeleteDataProviderResponse,
   DeleteDataProviderError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteDataProviderMessage,
   output: DeleteDataProviderResponse,
@@ -8627,7 +8626,7 @@ export const deleteEndpoint: API.OperationMethod<
   DeleteEndpointMessage,
   DeleteEndpointResponse,
   DeleteEndpointError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteEndpointMessage,
   output: DeleteEndpointResponse,
@@ -8649,7 +8648,7 @@ export const deleteEventSubscription: API.OperationMethod<
   DeleteEventSubscriptionMessage,
   DeleteEventSubscriptionResponse,
   DeleteEventSubscriptionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteEventSubscriptionMessage,
   output: DeleteEventSubscriptionResponse,
@@ -8673,7 +8672,7 @@ export const deleteFleetAdvisorCollector: API.OperationMethod<
   DeleteCollectorRequest,
   DeleteFleetAdvisorCollectorResponse,
   DeleteFleetAdvisorCollectorError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteCollectorRequest,
   output: DeleteFleetAdvisorCollectorResponse,
@@ -8701,7 +8700,7 @@ export const deleteFleetAdvisorDatabases: API.OperationMethod<
   DeleteFleetAdvisorDatabasesRequest,
   DeleteFleetAdvisorDatabasesResponse,
   DeleteFleetAdvisorDatabasesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteFleetAdvisorDatabasesRequest,
   output: DeleteFleetAdvisorDatabasesResponse,
@@ -8727,7 +8726,7 @@ export const deleteInstanceProfile: API.OperationMethod<
   DeleteInstanceProfileMessage,
   DeleteInstanceProfileResponse,
   DeleteInstanceProfileError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteInstanceProfileMessage,
   output: DeleteInstanceProfileResponse,
@@ -8757,7 +8756,7 @@ export const deleteMigrationProject: API.OperationMethod<
   DeleteMigrationProjectMessage,
   DeleteMigrationProjectResponse,
   DeleteMigrationProjectError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteMigrationProjectMessage,
   output: DeleteMigrationProjectResponse,
@@ -8787,7 +8786,7 @@ export const deleteReplicationConfig: API.OperationMethod<
   DeleteReplicationConfigMessage,
   DeleteReplicationConfigResponse,
   DeleteReplicationConfigError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteReplicationConfigMessage,
   output: DeleteReplicationConfigResponse,
@@ -8811,7 +8810,7 @@ export const deleteReplicationInstance: API.OperationMethod<
   DeleteReplicationInstanceMessage,
   DeleteReplicationInstanceResponse,
   DeleteReplicationInstanceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteReplicationInstanceMessage,
   output: DeleteReplicationInstanceResponse,
@@ -8833,7 +8832,7 @@ export const deleteReplicationSubnetGroup: API.OperationMethod<
   DeleteReplicationSubnetGroupMessage,
   DeleteReplicationSubnetGroupResponse,
   DeleteReplicationSubnetGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteReplicationSubnetGroupMessage,
   output: DeleteReplicationSubnetGroupResponse,
@@ -8854,7 +8853,7 @@ export const deleteReplicationTask: API.OperationMethod<
   DeleteReplicationTaskMessage,
   DeleteReplicationTaskResponse,
   DeleteReplicationTaskError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteReplicationTaskMessage,
   output: DeleteReplicationTaskResponse,
@@ -8880,7 +8879,7 @@ export const deleteReplicationTaskAssessmentRun: API.OperationMethod<
   DeleteReplicationTaskAssessmentRunMessage,
   DeleteReplicationTaskAssessmentRunResponse,
   DeleteReplicationTaskAssessmentRunError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteReplicationTaskAssessmentRunMessage,
   output: DeleteReplicationTaskAssessmentRunResponse,
@@ -8905,7 +8904,7 @@ export const describeAccountAttributes: API.OperationMethod<
   DescribeAccountAttributesMessage,
   DescribeAccountAttributesResponse,
   DescribeAccountAttributesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeAccountAttributesMessage,
   output: DescribeAccountAttributesResponse,
@@ -8945,7 +8944,7 @@ export const describeApplicableIndividualAssessments: API.PaginatedOperationMeth
   DescribeApplicableIndividualAssessmentsMessage,
   DescribeApplicableIndividualAssessmentsResponse,
   DescribeApplicableIndividualAssessmentsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeApplicableIndividualAssessmentsMessage,
@@ -8969,7 +8968,7 @@ export const describeCertificates: API.PaginatedOperationMethod<
   DescribeCertificatesMessage,
   DescribeCertificatesResponse,
   DescribeCertificatesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeCertificatesMessage,
@@ -8994,7 +8993,7 @@ export const describeConnections: API.PaginatedOperationMethod<
   DescribeConnectionsMessage,
   DescribeConnectionsResponse,
   DescribeConnectionsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeConnectionsMessage,
@@ -9020,7 +9019,7 @@ export const describeConversionConfiguration: API.OperationMethod<
   DescribeConversionConfigurationMessage,
   DescribeConversionConfigurationResponse,
   DescribeConversionConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeConversionConfigurationMessage,
   output: DescribeConversionConfigurationResponse,
@@ -9042,7 +9041,7 @@ export const describeDataMigrations: API.PaginatedOperationMethod<
   DescribeDataMigrationsMessage,
   DescribeDataMigrationsResponse,
   DescribeDataMigrationsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   DataMigration
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeDataMigrationsMessage,
@@ -9076,7 +9075,7 @@ export const describeDataProviders: API.PaginatedOperationMethod<
   DescribeDataProvidersMessage,
   DescribeDataProvidersResponse,
   DescribeDataProvidersError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeDataProvidersMessage,
@@ -9100,7 +9099,7 @@ export const describeEndpoints: API.PaginatedOperationMethod<
   DescribeEndpointsMessage,
   DescribeEndpointsResponse,
   DescribeEndpointsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeEndpointsMessage,
@@ -9125,7 +9124,7 @@ export const describeEndpointSettings: API.PaginatedOperationMethod<
   DescribeEndpointSettingsMessage,
   DescribeEndpointSettingsResponse,
   DescribeEndpointSettingsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeEndpointSettingsMessage,
@@ -9149,7 +9148,7 @@ export const describeEndpointTypes: API.PaginatedOperationMethod<
   DescribeEndpointTypesMessage,
   DescribeEndpointTypesResponse,
   DescribeEndpointTypesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeEndpointTypesMessage,
@@ -9173,7 +9172,7 @@ export const describeEngineVersions: API.PaginatedOperationMethod<
   DescribeEngineVersionsMessage,
   DescribeEngineVersionsResponse,
   DescribeEngineVersionsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeEngineVersionsMessage,
@@ -9199,7 +9198,7 @@ export const describeEventCategories: API.OperationMethod<
   DescribeEventCategoriesMessage,
   DescribeEventCategoriesResponse,
   DescribeEventCategoriesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeEventCategoriesMessage,
   output: DescribeEventCategoriesResponse,
@@ -9219,7 +9218,7 @@ export const describeEvents: API.PaginatedOperationMethod<
   DescribeEventsMessage,
   DescribeEventsResponse,
   DescribeEventsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeEventsMessage,
@@ -9251,7 +9250,7 @@ export const describeEventSubscriptions: API.PaginatedOperationMethod<
   DescribeEventSubscriptionsMessage,
   DescribeEventSubscriptionsResponse,
   DescribeEventSubscriptionsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeEventSubscriptionsMessage,
@@ -9277,7 +9276,7 @@ export const describeExtensionPackAssociations: API.PaginatedOperationMethod<
   DescribeExtensionPackAssociationsMessage,
   DescribeExtensionPackAssociationsResponse,
   DescribeExtensionPackAssociationsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeExtensionPackAssociationsMessage,
@@ -9305,7 +9304,7 @@ export const describeFleetAdvisorCollectors: API.PaginatedOperationMethod<
   DescribeFleetAdvisorCollectorsRequest,
   DescribeFleetAdvisorCollectorsResponse,
   DescribeFleetAdvisorCollectorsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeFleetAdvisorCollectorsRequest,
@@ -9333,7 +9332,7 @@ export const describeFleetAdvisorDatabases: API.PaginatedOperationMethod<
   DescribeFleetAdvisorDatabasesRequest,
   DescribeFleetAdvisorDatabasesResponse,
   DescribeFleetAdvisorDatabasesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeFleetAdvisorDatabasesRequest,
@@ -9362,7 +9361,7 @@ export const describeFleetAdvisorLsaAnalysis: API.PaginatedOperationMethod<
   DescribeFleetAdvisorLsaAnalysisRequest,
   DescribeFleetAdvisorLsaAnalysisResponse,
   DescribeFleetAdvisorLsaAnalysisError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeFleetAdvisorLsaAnalysisRequest,
@@ -9391,7 +9390,7 @@ export const describeFleetAdvisorSchemaObjectSummary: API.PaginatedOperationMeth
   DescribeFleetAdvisorSchemaObjectSummaryRequest,
   DescribeFleetAdvisorSchemaObjectSummaryResponse,
   DescribeFleetAdvisorSchemaObjectSummaryError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeFleetAdvisorSchemaObjectSummaryRequest,
@@ -9419,7 +9418,7 @@ export const describeFleetAdvisorSchemas: API.PaginatedOperationMethod<
   DescribeFleetAdvisorSchemasRequest,
   DescribeFleetAdvisorSchemasResponse,
   DescribeFleetAdvisorSchemasError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeFleetAdvisorSchemasRequest,
@@ -9448,7 +9447,7 @@ export const describeInstanceProfiles: API.PaginatedOperationMethod<
   DescribeInstanceProfilesMessage,
   DescribeInstanceProfilesResponse,
   DescribeInstanceProfilesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeInstanceProfilesMessage,
@@ -9475,7 +9474,7 @@ export const describeMetadataModel: API.OperationMethod<
   DescribeMetadataModelMessage,
   DescribeMetadataModelResponse,
   DescribeMetadataModelError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeMetadataModelMessage,
   output: DescribeMetadataModelResponse,
@@ -9496,7 +9495,7 @@ export const describeMetadataModelAssessments: API.PaginatedOperationMethod<
   DescribeMetadataModelAssessmentsMessage,
   DescribeMetadataModelAssessmentsResponse,
   DescribeMetadataModelAssessmentsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeMetadataModelAssessmentsMessage,
@@ -9523,7 +9522,7 @@ export const describeMetadataModelChildren: API.PaginatedOperationMethod<
   DescribeMetadataModelChildrenMessage,
   DescribeMetadataModelChildrenResponse,
   DescribeMetadataModelChildrenError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   MetadataModelReference
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeMetadataModelChildrenMessage,
@@ -9550,7 +9549,7 @@ export const describeMetadataModelConversions: API.PaginatedOperationMethod<
   DescribeMetadataModelConversionsMessage,
   DescribeMetadataModelConversionsResponse,
   DescribeMetadataModelConversionsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeMetadataModelConversionsMessage,
@@ -9577,7 +9576,7 @@ export const describeMetadataModelCreations: API.PaginatedOperationMethod<
   DescribeMetadataModelCreationsMessage,
   DescribeMetadataModelCreationsResponse,
   DescribeMetadataModelCreationsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   SchemaConversionRequest
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeMetadataModelCreationsMessage,
@@ -9604,7 +9603,7 @@ export const describeMetadataModelExportsAsScript: API.PaginatedOperationMethod<
   DescribeMetadataModelExportsAsScriptMessage,
   DescribeMetadataModelExportsAsScriptResponse,
   DescribeMetadataModelExportsAsScriptError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeMetadataModelExportsAsScriptMessage,
@@ -9630,7 +9629,7 @@ export const describeMetadataModelExportsToTarget: API.PaginatedOperationMethod<
   DescribeMetadataModelExportsToTargetMessage,
   DescribeMetadataModelExportsToTargetResponse,
   DescribeMetadataModelExportsToTargetError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeMetadataModelExportsToTargetMessage,
@@ -9656,7 +9655,7 @@ export const describeMetadataModelImports: API.PaginatedOperationMethod<
   DescribeMetadataModelImportsMessage,
   DescribeMetadataModelImportsResponse,
   DescribeMetadataModelImportsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeMetadataModelImportsMessage,
@@ -9685,7 +9684,7 @@ export const describeMigrationProjects: API.PaginatedOperationMethod<
   DescribeMigrationProjectsMessage,
   DescribeMigrationProjectsResponse,
   DescribeMigrationProjectsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeMigrationProjectsMessage,
@@ -9710,7 +9709,7 @@ export const describeOrderableReplicationInstances: API.PaginatedOperationMethod
   DescribeOrderableReplicationInstancesMessage,
   DescribeOrderableReplicationInstancesResponse,
   DescribeOrderableReplicationInstancesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeOrderableReplicationInstancesMessage,
@@ -9737,7 +9736,7 @@ export const describePendingMaintenanceActions: API.PaginatedOperationMethod<
   DescribePendingMaintenanceActionsMessage,
   DescribePendingMaintenanceActionsResponse,
   DescribePendingMaintenanceActionsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribePendingMaintenanceActionsMessage,
@@ -9767,7 +9766,7 @@ export const describeRecommendationLimitations: API.PaginatedOperationMethod<
   DescribeRecommendationLimitationsRequest,
   DescribeRecommendationLimitationsResponse,
   DescribeRecommendationLimitationsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeRecommendationLimitationsRequest,
@@ -9797,7 +9796,7 @@ export const describeRecommendations: API.PaginatedOperationMethod<
   DescribeRecommendationsRequest,
   DescribeRecommendationsResponse,
   DescribeRecommendationsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeRecommendationsRequest,
@@ -9824,7 +9823,7 @@ export const describeRefreshSchemasStatus: API.OperationMethod<
   DescribeRefreshSchemasStatusMessage,
   DescribeRefreshSchemasStatusResponse,
   DescribeRefreshSchemasStatusError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeRefreshSchemasStatusMessage,
   output: DescribeRefreshSchemasStatusResponse,
@@ -9845,7 +9844,7 @@ export const describeReplicationConfigs: API.PaginatedOperationMethod<
   DescribeReplicationConfigsMessage,
   DescribeReplicationConfigsResponse,
   DescribeReplicationConfigsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeReplicationConfigsMessage,
@@ -9872,7 +9871,7 @@ export const describeReplicationInstances: API.PaginatedOperationMethod<
   DescribeReplicationInstancesMessage,
   DescribeReplicationInstancesResponse,
   DescribeReplicationInstancesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeReplicationInstancesMessage,
@@ -9899,7 +9898,7 @@ export const describeReplicationInstanceTaskLogs: API.PaginatedOperationMethod<
   DescribeReplicationInstanceTaskLogsMessage,
   DescribeReplicationInstanceTaskLogsResponse,
   DescribeReplicationInstanceTaskLogsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeReplicationInstanceTaskLogsMessage,
@@ -9924,7 +9923,7 @@ export const describeReplications: API.PaginatedOperationMethod<
   DescribeReplicationsMessage,
   DescribeReplicationsResponse,
   DescribeReplicationsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeReplicationsMessage,
@@ -9950,7 +9949,7 @@ export const describeReplicationSubnetGroups: API.PaginatedOperationMethod<
   DescribeReplicationSubnetGroupsMessage,
   DescribeReplicationSubnetGroupsResponse,
   DescribeReplicationSubnetGroupsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeReplicationSubnetGroupsMessage,
@@ -9978,7 +9977,7 @@ export const describeReplicationTableStatistics: API.PaginatedOperationMethod<
   DescribeReplicationTableStatisticsMessage,
   DescribeReplicationTableStatisticsResponse,
   DescribeReplicationTableStatisticsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeReplicationTableStatisticsMessage,
@@ -10008,7 +10007,7 @@ export const describeReplicationTaskAssessmentResults: API.PaginatedOperationMet
   DescribeReplicationTaskAssessmentResultsMessage,
   DescribeReplicationTaskAssessmentResultsResponse,
   DescribeReplicationTaskAssessmentResultsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeReplicationTaskAssessmentResultsMessage,
@@ -10042,7 +10041,7 @@ export const describeReplicationTaskAssessmentRuns: API.PaginatedOperationMethod
   DescribeReplicationTaskAssessmentRunsMessage,
   DescribeReplicationTaskAssessmentRunsResponse,
   DescribeReplicationTaskAssessmentRunsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeReplicationTaskAssessmentRunsMessage,
@@ -10071,7 +10070,7 @@ export const describeReplicationTaskIndividualAssessments: API.PaginatedOperatio
   DescribeReplicationTaskIndividualAssessmentsMessage,
   DescribeReplicationTaskIndividualAssessmentsResponse,
   DescribeReplicationTaskIndividualAssessmentsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeReplicationTaskIndividualAssessmentsMessage,
@@ -10098,7 +10097,7 @@ export const describeReplicationTasks: API.PaginatedOperationMethod<
   DescribeReplicationTasksMessage,
   DescribeReplicationTasksResponse,
   DescribeReplicationTasksError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeReplicationTasksMessage,
@@ -10125,7 +10124,7 @@ export const describeSchemas: API.PaginatedOperationMethod<
   DescribeSchemasMessage,
   DescribeSchemasResponse,
   DescribeSchemasError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeSchemasMessage,
@@ -10158,7 +10157,7 @@ export const describeTableStatistics: API.PaginatedOperationMethod<
   DescribeTableStatisticsMessage,
   DescribeTableStatisticsResponse,
   DescribeTableStatisticsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeTableStatisticsMessage,
@@ -10185,7 +10184,7 @@ export const exportMetadataModelAssessment: API.OperationMethod<
   ExportMetadataModelAssessmentMessage,
   ExportMetadataModelAssessmentResponse,
   ExportMetadataModelAssessmentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ExportMetadataModelAssessmentMessage,
   output: ExportMetadataModelAssessmentResponse,
@@ -10207,7 +10206,7 @@ export const getTargetSelectionRules: API.OperationMethod<
   GetTargetSelectionRulesMessage,
   GetTargetSelectionRulesResponse,
   GetTargetSelectionRulesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetTargetSelectionRulesMessage,
   output: GetTargetSelectionRulesResponse,
@@ -10230,7 +10229,7 @@ export const importCertificate: API.OperationMethod<
   ImportCertificateMessage,
   ImportCertificateResponse,
   ImportCertificateError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ImportCertificateMessage,
   output: ImportCertificateResponse,
@@ -10260,7 +10259,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceMessage,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceMessage,
   output: ListTagsForResourceResponse,
@@ -10281,7 +10280,7 @@ export const modifyConversionConfiguration: API.OperationMethod<
   ModifyConversionConfigurationMessage,
   ModifyConversionConfigurationResponse,
   ModifyConversionConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyConversionConfigurationMessage,
   output: ModifyConversionConfigurationResponse,
@@ -10303,7 +10302,7 @@ export const modifyDataMigration: API.OperationMethod<
   ModifyDataMigrationMessage,
   ModifyDataMigrationResponse,
   ModifyDataMigrationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyDataMigrationMessage,
   output: ModifyDataMigrationResponse,
@@ -10333,7 +10332,7 @@ export const modifyDataProvider: API.OperationMethod<
   ModifyDataProviderMessage,
   ModifyDataProviderResponse,
   ModifyDataProviderError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyDataProviderMessage,
   output: ModifyDataProviderResponse,
@@ -10369,7 +10368,7 @@ export const modifyEndpoint: API.OperationMethod<
   ModifyEndpointMessage,
   ModifyEndpointResponse,
   ModifyEndpointError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyEndpointMessage,
   output: ModifyEndpointResponse,
@@ -10404,7 +10403,7 @@ export const modifyEventSubscription: API.OperationMethod<
   ModifyEventSubscriptionMessage,
   ModifyEventSubscriptionResponse,
   ModifyEventSubscriptionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyEventSubscriptionMessage,
   output: ModifyEventSubscriptionResponse,
@@ -10444,7 +10443,7 @@ export const modifyInstanceProfile: API.OperationMethod<
   ModifyInstanceProfileMessage,
   ModifyInstanceProfileResponse,
   ModifyInstanceProfileError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyInstanceProfileMessage,
   output: ModifyInstanceProfileResponse,
@@ -10479,7 +10478,7 @@ export const modifyMigrationProject: API.OperationMethod<
   ModifyMigrationProjectMessage,
   ModifyMigrationProjectResponse,
   ModifyMigrationProjectError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyMigrationProjectMessage,
   output: ModifyMigrationProjectResponse,
@@ -10519,7 +10518,7 @@ export const modifyReplicationConfig: API.OperationMethod<
   ModifyReplicationConfigMessage,
   ModifyReplicationConfigResponse,
   ModifyReplicationConfigError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyReplicationConfigMessage,
   output: ModifyReplicationConfigResponse,
@@ -10555,7 +10554,7 @@ export const modifyReplicationInstance: API.OperationMethod<
   ModifyReplicationInstanceMessage,
   ModifyReplicationInstanceResponse,
   ModifyReplicationInstanceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyReplicationInstanceMessage,
   output: ModifyReplicationInstanceResponse,
@@ -10588,7 +10587,7 @@ export const modifyReplicationSubnetGroup: API.OperationMethod<
   ModifyReplicationSubnetGroupMessage,
   ModifyReplicationSubnetGroupResponse,
   ModifyReplicationSubnetGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyReplicationSubnetGroupMessage,
   output: ModifyReplicationSubnetGroupResponse,
@@ -10623,7 +10622,7 @@ export const modifyReplicationTask: API.OperationMethod<
   ModifyReplicationTaskMessage,
   ModifyReplicationTaskResponse,
   ModifyReplicationTaskError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyReplicationTaskMessage,
   output: ModifyReplicationTaskResponse,
@@ -10654,7 +10653,7 @@ export const moveReplicationTask: API.OperationMethod<
   MoveReplicationTaskMessage,
   MoveReplicationTaskResponse,
   MoveReplicationTaskError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: MoveReplicationTaskMessage,
   output: MoveReplicationTaskResponse,
@@ -10682,7 +10681,7 @@ export const rebootReplicationInstance: API.OperationMethod<
   RebootReplicationInstanceMessage,
   RebootReplicationInstanceResponse,
   RebootReplicationInstanceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: RebootReplicationInstanceMessage,
   output: RebootReplicationInstanceResponse,
@@ -10707,7 +10706,7 @@ export const refreshSchemas: API.OperationMethod<
   RefreshSchemasMessage,
   RefreshSchemasResponse,
   RefreshSchemasError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: RefreshSchemasMessage,
   output: RefreshSchemasResponse,
@@ -10737,7 +10736,7 @@ export const reloadReplicationTables: API.OperationMethod<
   ReloadReplicationTablesMessage,
   ReloadReplicationTablesResponse,
   ReloadReplicationTablesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ReloadReplicationTablesMessage,
   output: ReloadReplicationTablesResponse,
@@ -10761,7 +10760,7 @@ export const reloadTables: API.OperationMethod<
   ReloadTablesMessage,
   ReloadTablesResponse,
   ReloadTablesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ReloadTablesMessage,
   output: ReloadTablesResponse,
@@ -10786,7 +10785,7 @@ export const removeTagsFromResource: API.OperationMethod<
   RemoveTagsFromResourceMessage,
   RemoveTagsFromResourceResponse,
   RemoveTagsFromResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: RemoveTagsFromResourceMessage,
   output: RemoveTagsFromResourceResponse,
@@ -10809,7 +10808,7 @@ export const runFleetAdvisorLsaAnalysis: API.OperationMethod<
   RunFleetAdvisorLsaAnalysisRequest,
   RunFleetAdvisorLsaAnalysisResponse,
   RunFleetAdvisorLsaAnalysisError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: RunFleetAdvisorLsaAnalysisRequest,
   output: RunFleetAdvisorLsaAnalysisResponse,
@@ -10833,7 +10832,7 @@ export const startDataMigration: API.OperationMethod<
   StartDataMigrationMessage,
   StartDataMigrationResponse,
   StartDataMigrationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartDataMigrationMessage,
   output: StartDataMigrationResponse,
@@ -10868,7 +10867,7 @@ export const startExtensionPackAssociation: API.OperationMethod<
   StartExtensionPackAssociationMessage,
   StartExtensionPackAssociationResponse,
   StartExtensionPackAssociationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartExtensionPackAssociationMessage,
   output: StartExtensionPackAssociationResponse,
@@ -10907,7 +10906,7 @@ export const startMetadataModelAssessment: API.OperationMethod<
   StartMetadataModelAssessmentMessage,
   StartMetadataModelAssessmentResponse,
   StartMetadataModelAssessmentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartMetadataModelAssessmentMessage,
   output: StartMetadataModelAssessmentResponse,
@@ -10943,7 +10942,7 @@ export const startMetadataModelConversion: API.OperationMethod<
   StartMetadataModelConversionMessage,
   StartMetadataModelConversionResponse,
   StartMetadataModelConversionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartMetadataModelConversionMessage,
   output: StartMetadataModelConversionResponse,
@@ -10977,7 +10976,7 @@ export const startMetadataModelCreation: API.OperationMethod<
   StartMetadataModelCreationMessage,
   StartMetadataModelCreationResponse,
   StartMetadataModelCreationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartMetadataModelCreationMessage,
   output: StartMetadataModelCreationResponse,
@@ -11010,7 +11009,7 @@ export const startMetadataModelExportAsScript: API.OperationMethod<
   StartMetadataModelExportAsScriptMessage,
   StartMetadataModelExportAsScriptResponse,
   StartMetadataModelExportAsScriptError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartMetadataModelExportAsScriptMessage,
   output: StartMetadataModelExportAsScriptResponse,
@@ -11046,7 +11045,7 @@ export const startMetadataModelExportToTarget: API.OperationMethod<
   StartMetadataModelExportToTargetMessage,
   StartMetadataModelExportToTargetResponse,
   StartMetadataModelExportToTargetError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartMetadataModelExportToTargetMessage,
   output: StartMetadataModelExportToTargetResponse,
@@ -11085,7 +11084,7 @@ export const startMetadataModelImport: API.OperationMethod<
   StartMetadataModelImportMessage,
   StartMetadataModelImportResponse,
   StartMetadataModelImportError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartMetadataModelImportMessage,
   output: StartMetadataModelImportResponse,
@@ -11121,7 +11120,7 @@ export const startRecommendations: API.OperationMethod<
   StartRecommendationsRequest,
   StartRecommendationsResponse,
   StartRecommendationsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartRecommendationsRequest,
   output: StartRecommendationsResponse,
@@ -11147,7 +11146,7 @@ export const startReplication: API.OperationMethod<
   StartReplicationMessage,
   StartReplicationResponse,
   StartReplicationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartReplicationMessage,
   output: StartReplicationResponse,
@@ -11172,7 +11171,7 @@ export const startReplicationTask: API.OperationMethod<
   StartReplicationTaskMessage,
   StartReplicationTaskResponse,
   StartReplicationTaskError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartReplicationTaskMessage,
   output: StartReplicationTaskResponse,
@@ -11206,7 +11205,7 @@ export const startReplicationTaskAssessment: API.OperationMethod<
   StartReplicationTaskAssessmentMessage,
   StartReplicationTaskAssessmentResponse,
   StartReplicationTaskAssessmentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartReplicationTaskAssessmentMessage,
   output: StartReplicationTaskAssessmentResponse,
@@ -11244,7 +11243,7 @@ export const startReplicationTaskAssessmentRun: API.OperationMethod<
   StartReplicationTaskAssessmentRunMessage,
   StartReplicationTaskAssessmentRunResponse,
   StartReplicationTaskAssessmentRunError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartReplicationTaskAssessmentRunMessage,
   output: StartReplicationTaskAssessmentRunResponse,
@@ -11279,7 +11278,7 @@ export const stopDataMigration: API.OperationMethod<
   StopDataMigrationMessage,
   StopDataMigrationResponse,
   StopDataMigrationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StopDataMigrationMessage,
   output: StopDataMigrationResponse,
@@ -11307,7 +11306,7 @@ export const stopReplication: API.OperationMethod<
   StopReplicationMessage,
   StopReplicationResponse,
   StopReplicationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StopReplicationMessage,
   output: StopReplicationResponse,
@@ -11328,7 +11327,7 @@ export const stopReplicationTask: API.OperationMethod<
   StopReplicationTaskMessage,
   StopReplicationTaskResponse,
   StopReplicationTaskError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StopReplicationTaskMessage,
   output: StopReplicationTaskResponse,
@@ -11352,7 +11351,7 @@ export const testConnection: API.OperationMethod<
   TestConnectionMessage,
   TestConnectionResponse,
   TestConnectionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: TestConnectionMessage,
   output: TestConnectionResponse,
@@ -11390,7 +11389,7 @@ export const updateSubscriptionsToEventBridge: API.OperationMethod<
   UpdateSubscriptionsToEventBridgeMessage,
   UpdateSubscriptionsToEventBridgeResponse,
   UpdateSubscriptionsToEventBridgeError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateSubscriptionsToEventBridgeMessage,
   output: UpdateSubscriptionsToEventBridgeResponse,

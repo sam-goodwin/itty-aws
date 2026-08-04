@@ -7,7 +7,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 const svc = T.AwsApiService({
   sdkId: "ARC Zonal Shift",
   serviceShapeName: "PercDataPlane",
@@ -943,7 +942,7 @@ export const cancelPracticeRun: API.OperationMethod<
   CancelPracticeRunRequest,
   CancelPracticeRunResponse,
   CancelPracticeRunError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CancelPracticeRunRequest,
   output: CancelPracticeRunResponse,
@@ -977,7 +976,7 @@ export const cancelZonalShift: API.OperationMethod<
   CancelZonalShiftRequest,
   ZonalShift,
   CancelZonalShiftError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CancelZonalShiftRequest,
   output: ZonalShift,
@@ -1013,7 +1012,7 @@ export const createPracticeRunConfiguration: API.OperationMethod<
   CreatePracticeRunConfigurationRequest,
   CreatePracticeRunConfigurationResponse,
   CreatePracticeRunConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreatePracticeRunConfigurationRequest,
   output: CreatePracticeRunConfigurationResponse,
@@ -1045,7 +1044,7 @@ export const deletePracticeRunConfiguration: API.OperationMethod<
   DeletePracticeRunConfigurationRequest,
   DeletePracticeRunConfigurationResponse,
   DeletePracticeRunConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeletePracticeRunConfigurationRequest,
   output: DeletePracticeRunConfigurationResponse,
@@ -1074,7 +1073,7 @@ export const getAutoshiftObserverNotificationStatus: API.OperationMethod<
   GetAutoshiftObserverNotificationStatusRequest,
   GetAutoshiftObserverNotificationStatusResponse,
   GetAutoshiftObserverNotificationStatusError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetAutoshiftObserverNotificationStatusRequest,
   output: GetAutoshiftObserverNotificationStatusResponse,
@@ -1098,7 +1097,7 @@ export const getManagedResource: API.OperationMethod<
   GetManagedResourceRequest,
   GetManagedResourceResponse,
   GetManagedResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetManagedResourceRequest,
   output: GetManagedResourceResponse,
@@ -1127,7 +1126,7 @@ export const listAutoshifts: API.PaginatedOperationMethod<
   ListAutoshiftsRequest,
   ListAutoshiftsResponse,
   ListAutoshiftsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   AutoshiftSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAutoshiftsRequest,
@@ -1162,7 +1161,7 @@ export const listManagedResources: API.PaginatedOperationMethod<
   ListManagedResourcesRequest,
   ListManagedResourcesResponse,
   ListManagedResourcesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ManagedResourceSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListManagedResourcesRequest,
@@ -1199,7 +1198,7 @@ export const listZonalShifts: API.PaginatedOperationMethod<
   ListZonalShiftsRequest,
   ListZonalShiftsResponse,
   ListZonalShiftsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ZonalShiftSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListZonalShiftsRequest,
@@ -1238,7 +1237,7 @@ export const startPracticeRun: API.OperationMethod<
   StartPracticeRunRequest,
   StartPracticeRunResponse,
   StartPracticeRunError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartPracticeRunRequest,
   output: StartPracticeRunResponse,
@@ -1284,7 +1283,7 @@ export const startZonalShift: API.OperationMethod<
   StartZonalShiftRequest,
   ZonalShift,
   StartZonalShiftError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartZonalShiftRequest,
   output: ZonalShift,
@@ -1318,7 +1317,7 @@ export const updateAutoshiftObserverNotificationStatus: API.OperationMethod<
   UpdateAutoshiftObserverNotificationStatusRequest,
   UpdateAutoshiftObserverNotificationStatusResponse,
   UpdateAutoshiftObserverNotificationStatusError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateAutoshiftObserverNotificationStatusRequest,
   output: UpdateAutoshiftObserverNotificationStatusResponse,
@@ -1348,7 +1347,7 @@ export const updatePracticeRunConfiguration: API.OperationMethod<
   UpdatePracticeRunConfigurationRequest,
   UpdatePracticeRunConfigurationResponse,
   UpdatePracticeRunConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdatePracticeRunConfigurationRequest,
   output: UpdatePracticeRunConfigurationResponse,
@@ -1382,7 +1381,7 @@ export const updateZonalAutoshiftConfiguration: API.OperationMethod<
   UpdateZonalAutoshiftConfigurationRequest,
   UpdateZonalAutoshiftConfigurationResponse,
   UpdateZonalAutoshiftConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateZonalAutoshiftConfigurationRequest,
   output: UpdateZonalAutoshiftConfigurationResponse,
@@ -1414,7 +1413,7 @@ export const updateZonalShift: API.OperationMethod<
   UpdateZonalShiftRequest,
   ZonalShift,
   UpdateZonalShiftError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateZonalShiftRequest,
   output: ZonalShift,

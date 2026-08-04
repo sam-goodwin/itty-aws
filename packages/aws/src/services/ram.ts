@@ -7,7 +7,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 const svc = T.AwsApiService({
   sdkId: "RAM",
   serviceShapeName: "AmazonResourceSharing",
@@ -2235,7 +2234,7 @@ export const acceptResourceShareInvitation: API.OperationMethod<
   AcceptResourceShareInvitationRequest,
   AcceptResourceShareInvitationResponse,
   AcceptResourceShareInvitationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: AcceptResourceShareInvitationRequest,
   output: AcceptResourceShareInvitationResponse,
@@ -2278,7 +2277,7 @@ export const associateResourceShare: API.OperationMethod<
   AssociateResourceShareRequest,
   AssociateResourceShareResponse,
   AssociateResourceShareError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: AssociateResourceShareRequest,
   output: AssociateResourceShareResponse,
@@ -2319,7 +2318,7 @@ export const associateResourceSharePermission: API.OperationMethod<
   AssociateResourceSharePermissionRequest,
   AssociateResourceSharePermissionResponse,
   AssociateResourceSharePermissionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: AssociateResourceSharePermissionRequest,
   output: AssociateResourceSharePermissionResponse,
@@ -2357,7 +2356,7 @@ export const createPermission: API.OperationMethod<
   CreatePermissionRequest,
   CreatePermissionResponse,
   CreatePermissionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreatePermissionRequest,
   output: CreatePermissionResponse,
@@ -2403,7 +2402,7 @@ export const createPermissionVersion: API.OperationMethod<
   CreatePermissionVersionRequest,
   CreatePermissionVersionResponse,
   CreatePermissionVersionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreatePermissionVersionRequest,
   output: CreatePermissionVersionResponse,
@@ -2452,7 +2451,7 @@ export const createResourceShare: API.OperationMethod<
   CreateResourceShareRequest,
   CreateResourceShareResponse,
   CreateResourceShareError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateResourceShareRequest,
   output: CreateResourceShareResponse,
@@ -2494,7 +2493,7 @@ export const deletePermission: API.OperationMethod<
   DeletePermissionRequest,
   DeletePermissionResponse,
   DeletePermissionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeletePermissionRequest,
   output: DeletePermissionResponse,
@@ -2533,7 +2532,7 @@ export const deletePermissionVersion: API.OperationMethod<
   DeletePermissionVersionRequest,
   DeletePermissionVersionResponse,
   DeletePermissionVersionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeletePermissionVersionRequest,
   output: DeletePermissionVersionResponse,
@@ -2574,7 +2573,7 @@ export const deleteResourceShare: API.OperationMethod<
   DeleteResourceShareRequest,
   DeleteResourceShareResponse,
   DeleteResourceShareError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteResourceShareRequest,
   output: DeleteResourceShareResponse,
@@ -2616,7 +2615,7 @@ export const disassociateResourceShare: API.OperationMethod<
   DisassociateResourceShareRequest,
   DisassociateResourceShareResponse,
   DisassociateResourceShareError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DisassociateResourceShareRequest,
   output: DisassociateResourceShareResponse,
@@ -2657,7 +2656,7 @@ export const disassociateResourceSharePermission: API.OperationMethod<
   DisassociateResourceSharePermissionRequest,
   DisassociateResourceSharePermissionResponse,
   DisassociateResourceSharePermissionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DisassociateResourceSharePermissionRequest,
   output: DisassociateResourceSharePermissionResponse,
@@ -2698,7 +2697,7 @@ export const enableSharingWithAwsOrganization: API.OperationMethod<
   EnableSharingWithAwsOrganizationRequest,
   EnableSharingWithAwsOrganizationResponse,
   EnableSharingWithAwsOrganizationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: EnableSharingWithAwsOrganizationRequest,
   output: EnableSharingWithAwsOrganizationResponse,
@@ -2727,7 +2726,7 @@ export const getPermission: API.OperationMethod<
   GetPermissionRequest,
   GetPermissionResponse,
   GetPermissionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetPermissionRequest,
   output: GetPermissionResponse,
@@ -2766,7 +2765,7 @@ export const getResourcePolicies: API.PaginatedOperationMethod<
   GetResourcePoliciesRequest,
   GetResourcePoliciesResponse,
   GetResourcePoliciesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetResourcePoliciesRequest,
@@ -2812,7 +2811,7 @@ export const getResourceShareAssociations: API.PaginatedOperationMethod<
   GetResourceShareAssociationsRequest,
   GetResourceShareAssociationsResponse,
   GetResourceShareAssociationsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetResourceShareAssociationsRequest,
@@ -2859,7 +2858,7 @@ export const getResourceShareInvitations: API.PaginatedOperationMethod<
   GetResourceShareInvitationsRequest,
   GetResourceShareInvitationsResponse,
   GetResourceShareInvitationsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetResourceShareInvitationsRequest,
@@ -2905,7 +2904,7 @@ export const getResourceShares: API.PaginatedOperationMethod<
   GetResourceSharesRequest,
   GetResourceSharesResponse,
   GetResourceSharesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetResourceSharesRequest,
@@ -2954,7 +2953,7 @@ export const listPendingInvitationResources: API.PaginatedOperationMethod<
   ListPendingInvitationResourcesRequest,
   ListPendingInvitationResourcesResponse,
   ListPendingInvitationResourcesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPendingInvitationResourcesRequest,
@@ -3002,7 +3001,7 @@ export const listPermissionAssociations: API.PaginatedOperationMethod<
   ListPermissionAssociationsRequest,
   ListPermissionAssociationsResponse,
   ListPermissionAssociationsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPermissionAssociationsRequest,
@@ -3045,7 +3044,7 @@ export const listPermissions: API.PaginatedOperationMethod<
   ListPermissionsRequest,
   ListPermissionsResponse,
   ListPermissionsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPermissionsRequest,
@@ -3089,7 +3088,7 @@ export const listPermissionVersions: API.PaginatedOperationMethod<
   ListPermissionVersionsRequest,
   ListPermissionVersionsResponse,
   ListPermissionVersionsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPermissionVersionsRequest,
@@ -3135,7 +3134,7 @@ export const listPrincipals: API.PaginatedOperationMethod<
   ListPrincipalsRequest,
   ListPrincipalsResponse,
   ListPrincipalsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPrincipalsRequest,
@@ -3178,7 +3177,7 @@ export const listReplacePermissionAssociationsWork: API.PaginatedOperationMethod
   ListReplacePermissionAssociationsWorkRequest,
   ListReplacePermissionAssociationsWorkResponse,
   ListReplacePermissionAssociationsWorkError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListReplacePermissionAssociationsWorkRequest,
@@ -3222,7 +3221,7 @@ export const listResources: API.PaginatedOperationMethod<
   ListResourcesRequest,
   ListResourcesResponse,
   ListResourcesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListResourcesRequest,
@@ -3268,7 +3267,7 @@ export const listResourceSharePermissions: API.PaginatedOperationMethod<
   ListResourceSharePermissionsRequest,
   ListResourceSharePermissionsResponse,
   ListResourceSharePermissionsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListResourceSharePermissionsRequest,
@@ -3305,7 +3304,7 @@ export const listResourceTypes: API.PaginatedOperationMethod<
   ListResourceTypesRequest,
   ListResourceTypesResponse,
   ListResourceTypesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListResourceTypesRequest,
@@ -3343,7 +3342,7 @@ export const listSourceAssociations: API.PaginatedOperationMethod<
   ListSourceAssociationsRequest,
   ListSourceAssociationsResponse,
   ListSourceAssociationsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   AssociatedSource
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSourceAssociationsRequest,
@@ -3410,7 +3409,7 @@ export const promotePermissionCreatedFromPolicy: API.OperationMethod<
   PromotePermissionCreatedFromPolicyRequest,
   PromotePermissionCreatedFromPolicyResponse,
   PromotePermissionCreatedFromPolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PromotePermissionCreatedFromPolicyRequest,
   output: PromotePermissionCreatedFromPolicyResponse,
@@ -3461,7 +3460,7 @@ export const promoteResourceShareCreatedFromPolicy: API.OperationMethod<
   PromoteResourceShareCreatedFromPolicyRequest,
   PromoteResourceShareCreatedFromPolicyResponse,
   PromoteResourceShareCreatedFromPolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PromoteResourceShareCreatedFromPolicyRequest,
   output: PromoteResourceShareCreatedFromPolicyResponse,
@@ -3501,7 +3500,7 @@ export const rejectResourceShareInvitation: API.OperationMethod<
   RejectResourceShareInvitationRequest,
   RejectResourceShareInvitationResponse,
   RejectResourceShareInvitationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: RejectResourceShareInvitationRequest,
   output: RejectResourceShareInvitationResponse,
@@ -3554,7 +3553,7 @@ export const replacePermissionAssociations: API.OperationMethod<
   ReplacePermissionAssociationsRequest,
   ReplacePermissionAssociationsResponse,
   ReplacePermissionAssociationsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ReplacePermissionAssociationsRequest,
   output: ReplacePermissionAssociationsResponse,
@@ -3591,7 +3590,7 @@ export const setDefaultPermissionVersion: API.OperationMethod<
   SetDefaultPermissionVersionRequest,
   SetDefaultPermissionVersionResponse,
   SetDefaultPermissionVersionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: SetDefaultPermissionVersionRequest,
   output: SetDefaultPermissionVersionResponse,
@@ -3629,7 +3628,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -3662,7 +3661,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -3696,7 +3695,7 @@ export const updateResourceShare: API.OperationMethod<
   UpdateResourceShareRequest,
   UpdateResourceShareResponse,
   UpdateResourceShareError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateResourceShareRequest,
   output: UpdateResourceShareResponse,

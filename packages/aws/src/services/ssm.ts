@@ -8,7 +8,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials as Creds } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region as Rgn } from "../region.ts";
 import { SensitiveString, SensitiveBlob } from "../sensitive.ts";
 const ns = T.XmlNamespace("http://ssm.amazonaws.com/doc/2014-11-06/");
 const svc = T.AwsApiService({ sdkId: "SSM", serviceShapeName: "AmazonSSM" });
@@ -12118,7 +12117,7 @@ export const addTagsToResource: API.OperationMethod<
   AddTagsToResourceRequest,
   AddTagsToResourceResult,
   AddTagsToResourceError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: AddTagsToResourceRequest,
   output: AddTagsToResourceResult,
@@ -12151,7 +12150,7 @@ export const associateOpsItemRelatedItem: API.OperationMethod<
   AssociateOpsItemRelatedItemRequest,
   AssociateOpsItemRelatedItemResponse,
   AssociateOpsItemRelatedItemError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: AssociateOpsItemRelatedItemRequest,
   output: AssociateOpsItemRelatedItemResponse,
@@ -12182,7 +12181,7 @@ export const cancelCommand: API.OperationMethod<
   CancelCommandRequest,
   CancelCommandResult,
   CancelCommandError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CancelCommandRequest,
   output: CancelCommandResult,
@@ -12210,7 +12209,7 @@ export const cancelMaintenanceWindowExecution: API.OperationMethod<
   CancelMaintenanceWindowExecutionRequest,
   CancelMaintenanceWindowExecutionResult,
   CancelMaintenanceWindowExecutionError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CancelMaintenanceWindowExecutionRequest,
   output: CancelMaintenanceWindowExecutionResult,
@@ -12239,7 +12238,7 @@ export const createActivation: API.OperationMethod<
   CreateActivationRequest,
   CreateActivationResult,
   CreateActivationError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateActivationRequest,
   output: CreateActivationResult,
@@ -12280,7 +12279,7 @@ export const createAssociation: API.OperationMethod<
   CreateAssociationRequest,
   CreateAssociationResult,
   CreateAssociationError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateAssociationRequest,
   output: CreateAssociationResult,
@@ -12333,7 +12332,7 @@ export const createAssociationBatch: API.OperationMethod<
   CreateAssociationBatchRequest,
   CreateAssociationBatchResult,
   CreateAssociationBatchError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateAssociationBatchRequest,
   output: CreateAssociationBatchResult,
@@ -12376,7 +12375,7 @@ export const createDocument: API.OperationMethod<
   CreateDocumentRequest,
   CreateDocumentResult,
   CreateDocumentError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateDocumentRequest,
   output: CreateDocumentResult,
@@ -12414,7 +12413,7 @@ export const createMaintenanceWindow: API.OperationMethod<
   CreateMaintenanceWindowRequest,
   CreateMaintenanceWindowResult,
   CreateMaintenanceWindowError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateMaintenanceWindowRequest,
   output: CreateMaintenanceWindowResult,
@@ -12448,7 +12447,7 @@ export const createOpsItem: API.OperationMethod<
   CreateOpsItemRequest,
   CreateOpsItemResponse,
   CreateOpsItemError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateOpsItemRequest,
   output: CreateOpsItemResponse,
@@ -12479,7 +12478,7 @@ export const createOpsMetadata: API.OperationMethod<
   CreateOpsMetadataRequest,
   CreateOpsMetadataResult,
   CreateOpsMetadataError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateOpsMetadataRequest,
   output: CreateOpsMetadataResult,
@@ -12510,7 +12509,7 @@ export const createPatchBaseline: API.OperationMethod<
   CreatePatchBaselineRequest,
   CreatePatchBaselineResult,
   CreatePatchBaselineError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreatePatchBaselineRequest,
   output: CreatePatchBaselineResult,
@@ -12559,7 +12558,7 @@ export const createResourceDataSync: API.OperationMethod<
   CreateResourceDataSyncRequest,
   CreateResourceDataSyncResult,
   CreateResourceDataSyncError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateResourceDataSyncRequest,
   output: CreateResourceDataSyncResult,
@@ -12589,7 +12588,7 @@ export const deleteActivation: API.OperationMethod<
   DeleteActivationRequest,
   DeleteActivationResult,
   DeleteActivationError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteActivationRequest,
   output: DeleteActivationResult,
@@ -12625,7 +12624,7 @@ export const deleteAssociation: API.OperationMethod<
   DeleteAssociationRequest,
   DeleteAssociationResult,
   DeleteAssociationError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteAssociationRequest,
   output: DeleteAssociationResult,
@@ -12658,7 +12657,7 @@ export const deleteDocument: API.OperationMethod<
   DeleteDocumentRequest,
   DeleteDocumentResult,
   DeleteDocumentError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteDocumentRequest,
   output: DeleteDocumentResult,
@@ -12689,7 +12688,7 @@ export const deleteInventory: API.OperationMethod<
   DeleteInventoryRequest,
   DeleteInventoryResult,
   DeleteInventoryError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteInventoryRequest,
   output: DeleteInventoryResult,
@@ -12713,7 +12712,7 @@ export const deleteMaintenanceWindow: API.OperationMethod<
   DeleteMaintenanceWindowRequest,
   DeleteMaintenanceWindowResult,
   DeleteMaintenanceWindowError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteMaintenanceWindowRequest,
   output: DeleteMaintenanceWindowResult,
@@ -12754,7 +12753,7 @@ export const deleteOpsItem: API.OperationMethod<
   DeleteOpsItemRequest,
   DeleteOpsItemResponse,
   DeleteOpsItemError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteOpsItemRequest,
   output: DeleteOpsItemResponse,
@@ -12776,7 +12775,7 @@ export const deleteOpsMetadata: API.OperationMethod<
   DeleteOpsMetadataRequest,
   DeleteOpsMetadataResult,
   DeleteOpsMetadataError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteOpsMetadataRequest,
   output: DeleteOpsMetadataResult,
@@ -12802,7 +12801,7 @@ export const deleteParameter: API.OperationMethod<
   DeleteParameterRequest,
   DeleteParameterResult,
   DeleteParameterError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteParameterRequest,
   output: DeleteParameterResult,
@@ -12821,7 +12820,7 @@ export const deleteParameters: API.OperationMethod<
   DeleteParametersRequest,
   DeleteParametersResult,
   DeleteParametersError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteParametersRequest,
   output: DeleteParametersResult,
@@ -12842,7 +12841,7 @@ export const deletePatchBaseline: API.OperationMethod<
   DeletePatchBaselineRequest,
   DeletePatchBaselineResult,
   DeletePatchBaselineError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeletePatchBaselineRequest,
   output: DeletePatchBaselineResult,
@@ -12866,7 +12865,7 @@ export const deleteResourceDataSync: API.OperationMethod<
   DeleteResourceDataSyncRequest,
   DeleteResourceDataSyncResult,
   DeleteResourceDataSyncError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteResourceDataSyncRequest,
   output: DeleteResourceDataSyncResult,
@@ -12904,7 +12903,7 @@ export const deleteResourcePolicy: API.OperationMethod<
   DeleteResourcePolicyRequest,
   DeleteResourcePolicyResponse,
   DeleteResourcePolicyError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteResourcePolicyRequest,
   output: DeleteResourcePolicyResponse,
@@ -12939,7 +12938,7 @@ export const deregisterManagedInstance: API.OperationMethod<
   DeregisterManagedInstanceRequest,
   DeregisterManagedInstanceResult,
   DeregisterManagedInstanceError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeregisterManagedInstanceRequest,
   output: DeregisterManagedInstanceResult,
@@ -12960,7 +12959,7 @@ export const deregisterPatchBaselineForPatchGroup: API.OperationMethod<
   DeregisterPatchBaselineForPatchGroupRequest,
   DeregisterPatchBaselineForPatchGroupResult,
   DeregisterPatchBaselineForPatchGroupError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeregisterPatchBaselineForPatchGroupRequest,
   output: DeregisterPatchBaselineForPatchGroupResult,
@@ -12982,7 +12981,7 @@ export const deregisterTargetFromMaintenanceWindow: API.OperationMethod<
   DeregisterTargetFromMaintenanceWindowRequest,
   DeregisterTargetFromMaintenanceWindowResult,
   DeregisterTargetFromMaintenanceWindowError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeregisterTargetFromMaintenanceWindowRequest,
   output: DeregisterTargetFromMaintenanceWindowResult,
@@ -13003,7 +13002,7 @@ export const deregisterTaskFromMaintenanceWindow: API.OperationMethod<
   DeregisterTaskFromMaintenanceWindowRequest,
   DeregisterTaskFromMaintenanceWindowResult,
   DeregisterTaskFromMaintenanceWindowError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeregisterTaskFromMaintenanceWindowRequest,
   output: DeregisterTaskFromMaintenanceWindowResult,
@@ -13028,7 +13027,7 @@ export const describeActivations: API.PaginatedOperationMethod<
   DescribeActivationsRequest,
   DescribeActivationsResult,
   DescribeActivationsError,
-  Creds | Rgn | HttpClient.HttpClient,
+  Creds | HttpClient.HttpClient,
   Activation
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeActivationsRequest,
@@ -13061,7 +13060,7 @@ export const describeAssociation: API.OperationMethod<
   DescribeAssociationRequest,
   DescribeAssociationResult,
   DescribeAssociationError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeAssociationRequest,
   output: DescribeAssociationResult,
@@ -13089,7 +13088,7 @@ export const describeAssociationExecutions: API.PaginatedOperationMethod<
   DescribeAssociationExecutionsRequest,
   DescribeAssociationExecutionsResult,
   DescribeAssociationExecutionsError,
-  Creds | Rgn | HttpClient.HttpClient,
+  Creds | HttpClient.HttpClient,
   AssociationExecution
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeAssociationExecutionsRequest,
@@ -13119,7 +13118,7 @@ export const describeAssociationExecutionTargets: API.PaginatedOperationMethod<
   DescribeAssociationExecutionTargetsRequest,
   DescribeAssociationExecutionTargetsResult,
   DescribeAssociationExecutionTargetsError,
-  Creds | Rgn | HttpClient.HttpClient,
+  Creds | HttpClient.HttpClient,
   AssociationExecutionTarget
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeAssociationExecutionTargetsRequest,
@@ -13154,7 +13153,7 @@ export const describeAutomationExecutions: API.PaginatedOperationMethod<
   DescribeAutomationExecutionsRequest,
   DescribeAutomationExecutionsResult,
   DescribeAutomationExecutionsError,
-  Creds | Rgn | HttpClient.HttpClient,
+  Creds | HttpClient.HttpClient,
   AutomationExecutionMetadata
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeAutomationExecutionsRequest,
@@ -13191,7 +13190,7 @@ export const describeAutomationStepExecutions: API.PaginatedOperationMethod<
   DescribeAutomationStepExecutionsRequest,
   DescribeAutomationStepExecutionsResult,
   DescribeAutomationStepExecutionsError,
-  Creds | Rgn | HttpClient.HttpClient,
+  Creds | HttpClient.HttpClient,
   StepExecution
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeAutomationStepExecutionsRequest,
@@ -13225,7 +13224,7 @@ export const describeAvailablePatches: API.PaginatedOperationMethod<
   DescribeAvailablePatchesRequest,
   DescribeAvailablePatchesResult,
   DescribeAvailablePatchesError,
-  Creds | Rgn | HttpClient.HttpClient,
+  Creds | HttpClient.HttpClient,
   Patch
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeAvailablePatchesRequest,
@@ -13254,7 +13253,7 @@ export const describeDocument: API.OperationMethod<
   DescribeDocumentRequest,
   DescribeDocumentResult,
   DescribeDocumentError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeDocumentRequest,
   output: DescribeDocumentResult,
@@ -13280,7 +13279,7 @@ export const describeDocumentPermission: API.OperationMethod<
   DescribeDocumentPermissionRequest,
   DescribeDocumentPermissionResponse,
   DescribeDocumentPermissionError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeDocumentPermissionRequest,
   output: DescribeDocumentPermissionResponse,
@@ -13308,7 +13307,7 @@ export const describeEffectiveInstanceAssociations: API.PaginatedOperationMethod
   DescribeEffectiveInstanceAssociationsRequest,
   DescribeEffectiveInstanceAssociationsResult,
   DescribeEffectiveInstanceAssociationsError,
-  Creds | Rgn | HttpClient.HttpClient,
+  Creds | HttpClient.HttpClient,
   InstanceAssociation
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeEffectiveInstanceAssociationsRequest,
@@ -13339,7 +13338,7 @@ export const describeEffectivePatchesForPatchBaseline: API.PaginatedOperationMet
   DescribeEffectivePatchesForPatchBaselineRequest,
   DescribeEffectivePatchesForPatchBaselineResult,
   DescribeEffectivePatchesForPatchBaselineError,
-  Creds | Rgn | HttpClient.HttpClient,
+  Creds | HttpClient.HttpClient,
   EffectivePatch
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeEffectivePatchesForPatchBaselineRequest,
@@ -13373,7 +13372,7 @@ export const describeInstanceAssociationsStatus: API.PaginatedOperationMethod<
   DescribeInstanceAssociationsStatusRequest,
   DescribeInstanceAssociationsStatusResult,
   DescribeInstanceAssociationsStatusError,
-  Creds | Rgn | HttpClient.HttpClient,
+  Creds | HttpClient.HttpClient,
   InstanceAssociationStatusInfo
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeInstanceAssociationsStatusRequest,
@@ -13414,7 +13413,7 @@ export const describeInstanceInformation: API.PaginatedOperationMethod<
   DescribeInstanceInformationRequest,
   DescribeInstanceInformationResult,
   DescribeInstanceInformationError,
-  Creds | Rgn | HttpClient.HttpClient,
+  Creds | HttpClient.HttpClient,
   InstanceInformation
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeInstanceInformationRequest,
@@ -13451,7 +13450,7 @@ export const describeInstancePatches: API.PaginatedOperationMethod<
   DescribeInstancePatchesRequest,
   DescribeInstancePatchesResult,
   DescribeInstancePatchesError,
-  Creds | Rgn | HttpClient.HttpClient,
+  Creds | HttpClient.HttpClient,
   PatchComplianceData
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeInstancePatchesRequest,
@@ -13484,7 +13483,7 @@ export const describeInstancePatchStates: API.PaginatedOperationMethod<
   DescribeInstancePatchStatesRequest,
   DescribeInstancePatchStatesResult,
   DescribeInstancePatchStatesError,
-  Creds | Rgn | HttpClient.HttpClient,
+  Creds | HttpClient.HttpClient,
   InstancePatchState
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeInstancePatchStatesRequest,
@@ -13514,7 +13513,7 @@ export const describeInstancePatchStatesForPatchGroup: API.PaginatedOperationMet
   DescribeInstancePatchStatesForPatchGroupRequest,
   DescribeInstancePatchStatesForPatchGroupResult,
   DescribeInstancePatchStatesForPatchGroupError,
-  Creds | Rgn | HttpClient.HttpClient,
+  Creds | HttpClient.HttpClient,
   InstancePatchState
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeInstancePatchStatesForPatchGroupRequest,
@@ -13548,7 +13547,7 @@ export const describeInstanceProperties: API.PaginatedOperationMethod<
   DescribeInstancePropertiesRequest,
   DescribeInstancePropertiesResult,
   DescribeInstancePropertiesError,
-  Creds | Rgn | HttpClient.HttpClient,
+  Creds | HttpClient.HttpClient,
   InstanceProperty
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeInstancePropertiesRequest,
@@ -13585,7 +13584,7 @@ export const describeInventoryDeletions: API.PaginatedOperationMethod<
   DescribeInventoryDeletionsRequest,
   DescribeInventoryDeletionsResult,
   DescribeInventoryDeletionsError,
-  Creds | Rgn | HttpClient.HttpClient,
+  Creds | HttpClient.HttpClient,
   InventoryDeletionStatusItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeInventoryDeletionsRequest,
@@ -13614,7 +13613,7 @@ export const describeMaintenanceWindowExecutions: API.PaginatedOperationMethod<
   DescribeMaintenanceWindowExecutionsRequest,
   DescribeMaintenanceWindowExecutionsResult,
   DescribeMaintenanceWindowExecutionsError,
-  Creds | Rgn | HttpClient.HttpClient,
+  Creds | HttpClient.HttpClient,
   MaintenanceWindowExecution
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeMaintenanceWindowExecutionsRequest,
@@ -13643,7 +13642,7 @@ export const describeMaintenanceWindowExecutionTaskInvocations: API.PaginatedOpe
   DescribeMaintenanceWindowExecutionTaskInvocationsRequest,
   DescribeMaintenanceWindowExecutionTaskInvocationsResult,
   DescribeMaintenanceWindowExecutionTaskInvocationsError,
-  Creds | Rgn | HttpClient.HttpClient,
+  Creds | HttpClient.HttpClient,
   MaintenanceWindowExecutionTaskInvocationIdentity
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeMaintenanceWindowExecutionTaskInvocationsRequest,
@@ -13671,7 +13670,7 @@ export const describeMaintenanceWindowExecutionTasks: API.PaginatedOperationMeth
   DescribeMaintenanceWindowExecutionTasksRequest,
   DescribeMaintenanceWindowExecutionTasksResult,
   DescribeMaintenanceWindowExecutionTasksError,
-  Creds | Rgn | HttpClient.HttpClient,
+  Creds | HttpClient.HttpClient,
   MaintenanceWindowExecutionTaskIdentity
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeMaintenanceWindowExecutionTasksRequest,
@@ -13698,7 +13697,7 @@ export const describeMaintenanceWindows: API.PaginatedOperationMethod<
   DescribeMaintenanceWindowsRequest,
   DescribeMaintenanceWindowsResult,
   DescribeMaintenanceWindowsError,
-  Creds | Rgn | HttpClient.HttpClient,
+  Creds | HttpClient.HttpClient,
   MaintenanceWindowIdentity
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeMaintenanceWindowsRequest,
@@ -13726,7 +13725,7 @@ export const describeMaintenanceWindowSchedule: API.PaginatedOperationMethod<
   DescribeMaintenanceWindowScheduleRequest,
   DescribeMaintenanceWindowScheduleResult,
   DescribeMaintenanceWindowScheduleError,
-  Creds | Rgn | HttpClient.HttpClient,
+  Creds | HttpClient.HttpClient,
   ScheduledWindowExecution
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeMaintenanceWindowScheduleRequest,
@@ -13754,7 +13753,7 @@ export const describeMaintenanceWindowsForTarget: API.PaginatedOperationMethod<
   DescribeMaintenanceWindowsForTargetRequest,
   DescribeMaintenanceWindowsForTargetResult,
   DescribeMaintenanceWindowsForTargetError,
-  Creds | Rgn | HttpClient.HttpClient,
+  Creds | HttpClient.HttpClient,
   MaintenanceWindowIdentityForTarget
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeMaintenanceWindowsForTargetRequest,
@@ -13782,7 +13781,7 @@ export const describeMaintenanceWindowTargets: API.PaginatedOperationMethod<
   DescribeMaintenanceWindowTargetsRequest,
   DescribeMaintenanceWindowTargetsResult,
   DescribeMaintenanceWindowTargetsError,
-  Creds | Rgn | HttpClient.HttpClient,
+  Creds | HttpClient.HttpClient,
   MaintenanceWindowTarget
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeMaintenanceWindowTargetsRequest,
@@ -13815,7 +13814,7 @@ export const describeMaintenanceWindowTasks: API.PaginatedOperationMethod<
   DescribeMaintenanceWindowTasksRequest,
   DescribeMaintenanceWindowTasksResult,
   DescribeMaintenanceWindowTasksError,
-  Creds | Rgn | HttpClient.HttpClient,
+  Creds | HttpClient.HttpClient,
   MaintenanceWindowTask
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeMaintenanceWindowTasksRequest,
@@ -13846,7 +13845,7 @@ export const describeOpsItems: API.PaginatedOperationMethod<
   DescribeOpsItemsRequest,
   DescribeOpsItemsResponse,
   DescribeOpsItemsError,
-  Creds | Rgn | HttpClient.HttpClient,
+  Creds | HttpClient.HttpClient,
   OpsItemSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeOpsItemsRequest,
@@ -13894,7 +13893,7 @@ export const describeParameters: API.PaginatedOperationMethod<
   DescribeParametersRequest,
   DescribeParametersResult,
   DescribeParametersError,
-  Creds | Rgn | HttpClient.HttpClient,
+  Creds | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeParametersRequest,
@@ -13924,7 +13923,7 @@ export const describePatchBaselines: API.PaginatedOperationMethod<
   DescribePatchBaselinesRequest,
   DescribePatchBaselinesResult,
   DescribePatchBaselinesError,
-  Creds | Rgn | HttpClient.HttpClient,
+  Creds | HttpClient.HttpClient,
   PatchBaselineIdentity
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribePatchBaselinesRequest,
@@ -13949,7 +13948,7 @@ export const describePatchGroups: API.PaginatedOperationMethod<
   DescribePatchGroupsRequest,
   DescribePatchGroupsResult,
   DescribePatchGroupsError,
-  Creds | Rgn | HttpClient.HttpClient,
+  Creds | HttpClient.HttpClient,
   PatchGroupPatchBaselineMapping
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribePatchGroupsRequest,
@@ -13977,7 +13976,7 @@ export const describePatchGroupState: API.OperationMethod<
   DescribePatchGroupStateRequest,
   DescribePatchGroupStateResult,
   DescribePatchGroupStateError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribePatchGroupStateRequest,
   output: DescribePatchGroupStateResult,
@@ -14052,7 +14051,7 @@ export const describePatchProperties: API.PaginatedOperationMethod<
   DescribePatchPropertiesRequest,
   DescribePatchPropertiesResult,
   DescribePatchPropertiesError,
-  Creds | Rgn | HttpClient.HttpClient,
+  Creds | HttpClient.HttpClient,
   { [key: string]: string | undefined }
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribePatchPropertiesRequest,
@@ -14082,7 +14081,7 @@ export const describeSessions: API.PaginatedOperationMethod<
   DescribeSessionsRequest,
   DescribeSessionsResponse,
   DescribeSessionsError,
-  Creds | Rgn | HttpClient.HttpClient,
+  Creds | HttpClient.HttpClient,
   Session
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeSessionsRequest,
@@ -14115,7 +14114,7 @@ export const disassociateOpsItemRelatedItem: API.OperationMethod<
   DisassociateOpsItemRelatedItemRequest,
   DisassociateOpsItemRelatedItemResponse,
   DisassociateOpsItemRelatedItemError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DisassociateOpsItemRelatedItemRequest,
   output: DisassociateOpsItemRelatedItemResponse,
@@ -14145,7 +14144,7 @@ export const getAccessToken: API.OperationMethod<
   GetAccessTokenRequest,
   GetAccessTokenResponse,
   GetAccessTokenError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetAccessTokenRequest,
   output: GetAccessTokenResponse,
@@ -14172,7 +14171,7 @@ export const getAutomationExecution: API.OperationMethod<
   GetAutomationExecutionRequest,
   GetAutomationExecutionResult,
   GetAutomationExecutionError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetAutomationExecutionRequest,
   output: GetAutomationExecutionResult,
@@ -14205,7 +14204,7 @@ export const getCalendarState: API.OperationMethod<
   GetCalendarStateRequest,
   GetCalendarStateResponse,
   GetCalendarStateError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetCalendarStateRequest,
   output: GetCalendarStateResponse,
@@ -14243,7 +14242,7 @@ export const getCommandInvocation: API.OperationMethod<
   GetCommandInvocationRequest,
   GetCommandInvocationResult,
   GetCommandInvocationError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetCommandInvocationRequest,
   output: GetCommandInvocationResult,
@@ -14268,7 +14267,7 @@ export const getConnectionStatus: API.OperationMethod<
   GetConnectionStatusRequest,
   GetConnectionStatusResponse,
   GetConnectionStatusError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetConnectionStatusRequest,
   output: GetConnectionStatusResponse,
@@ -14290,7 +14289,7 @@ export const getDefaultPatchBaseline: API.OperationMethod<
   GetDefaultPatchBaselineRequest,
   GetDefaultPatchBaselineResult,
   GetDefaultPatchBaselineError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetDefaultPatchBaselineRequest,
   output: GetDefaultPatchBaselineResult,
@@ -14319,7 +14318,7 @@ export const getDeployablePatchSnapshotForInstance: API.OperationMethod<
   GetDeployablePatchSnapshotForInstanceRequest,
   GetDeployablePatchSnapshotForInstanceResult,
   GetDeployablePatchSnapshotForInstanceError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetDeployablePatchSnapshotForInstanceRequest,
   output: GetDeployablePatchSnapshotForInstanceResult,
@@ -14345,7 +14344,7 @@ export const getDocument: API.OperationMethod<
   GetDocumentRequest,
   GetDocumentResult,
   GetDocumentError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetDocumentRequest,
   output: GetDocumentResult,
@@ -14367,7 +14366,7 @@ export const getExecutionPreview: API.OperationMethod<
   GetExecutionPreviewRequest,
   GetExecutionPreviewResponse,
   GetExecutionPreviewError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetExecutionPreviewRequest,
   output: GetExecutionPreviewResponse,
@@ -14394,7 +14393,7 @@ export const getInventory: API.PaginatedOperationMethod<
   GetInventoryRequest,
   GetInventoryResult,
   GetInventoryError,
-  Creds | Rgn | HttpClient.HttpClient,
+  Creds | HttpClient.HttpClient,
   InventoryResultEntity
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetInventoryRequest,
@@ -14432,7 +14431,7 @@ export const getInventorySchema: API.PaginatedOperationMethod<
   GetInventorySchemaRequest,
   GetInventorySchemaResult,
   GetInventorySchemaError,
-  Creds | Rgn | HttpClient.HttpClient,
+  Creds | HttpClient.HttpClient,
   InventoryItemSchema
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetInventorySchemaRequest,
@@ -14460,7 +14459,7 @@ export const getMaintenanceWindow: API.OperationMethod<
   GetMaintenanceWindowRequest,
   GetMaintenanceWindowResult,
   GetMaintenanceWindowError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetMaintenanceWindowRequest,
   output: GetMaintenanceWindowResult,
@@ -14481,7 +14480,7 @@ export const getMaintenanceWindowExecution: API.OperationMethod<
   GetMaintenanceWindowExecutionRequest,
   GetMaintenanceWindowExecutionResult,
   GetMaintenanceWindowExecutionError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetMaintenanceWindowExecutionRequest,
   output: GetMaintenanceWindowExecutionResult,
@@ -14503,7 +14502,7 @@ export const getMaintenanceWindowExecutionTask: API.OperationMethod<
   GetMaintenanceWindowExecutionTaskRequest,
   GetMaintenanceWindowExecutionTaskResult,
   GetMaintenanceWindowExecutionTaskError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetMaintenanceWindowExecutionTaskRequest,
   output: GetMaintenanceWindowExecutionTaskResult,
@@ -14524,7 +14523,7 @@ export const getMaintenanceWindowExecutionTaskInvocation: API.OperationMethod<
   GetMaintenanceWindowExecutionTaskInvocationRequest,
   GetMaintenanceWindowExecutionTaskInvocationResult,
   GetMaintenanceWindowExecutionTaskInvocationError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetMaintenanceWindowExecutionTaskInvocationRequest,
   output: GetMaintenanceWindowExecutionTaskInvocationResult,
@@ -14552,7 +14551,7 @@ export const getMaintenanceWindowTask: API.OperationMethod<
   GetMaintenanceWindowTaskRequest,
   GetMaintenanceWindowTaskResult,
   GetMaintenanceWindowTaskError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetMaintenanceWindowTaskRequest,
   output: GetMaintenanceWindowTaskResult,
@@ -14581,7 +14580,7 @@ export const getOpsItem: API.OperationMethod<
   GetOpsItemRequest,
   GetOpsItemResponse,
   GetOpsItemError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetOpsItemRequest,
   output: GetOpsItemResponse,
@@ -14607,7 +14606,7 @@ export const getOpsMetadata: API.OperationMethod<
   GetOpsMetadataRequest,
   GetOpsMetadataResult,
   GetOpsMetadataError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetOpsMetadataRequest,
   output: GetOpsMetadataResult,
@@ -14639,7 +14638,7 @@ export const getOpsSummary: API.PaginatedOperationMethod<
   GetOpsSummaryRequest,
   GetOpsSummaryResult,
   GetOpsSummaryError,
-  Creds | Rgn | HttpClient.HttpClient,
+  Creds | HttpClient.HttpClient,
   OpsEntity
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetOpsSummaryRequest,
@@ -14682,7 +14681,7 @@ export const getParameter: API.OperationMethod<
   GetParameterRequest,
   GetParameterResult,
   GetParameterError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetParameterRequest,
   output: GetParameterResult,
@@ -14719,7 +14718,7 @@ export const getParameterHistory: API.PaginatedOperationMethod<
   GetParameterHistoryRequest,
   GetParameterHistoryResult,
   GetParameterHistoryError,
-  Creds | Rgn | HttpClient.HttpClient,
+  Creds | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetParameterHistoryRequest,
@@ -14758,7 +14757,7 @@ export const getParameters: API.OperationMethod<
   GetParametersRequest,
   GetParametersResult,
   GetParametersError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetParametersRequest,
   output: GetParametersResult,
@@ -14794,7 +14793,7 @@ export const getParametersByPath: API.PaginatedOperationMethod<
   GetParametersByPathRequest,
   GetParametersByPathResult,
   GetParametersByPathError,
-  Creds | Rgn | HttpClient.HttpClient,
+  Creds | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetParametersByPathRequest,
@@ -14829,7 +14828,7 @@ export const getPatchBaseline: API.OperationMethod<
   GetPatchBaselineRequest,
   GetPatchBaselineResult,
   GetPatchBaselineError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetPatchBaselineRequest,
   output: GetPatchBaselineResult,
@@ -14849,7 +14848,7 @@ export const getPatchBaselineForPatchGroup: API.OperationMethod<
   GetPatchBaselineForPatchGroupRequest,
   GetPatchBaselineForPatchGroupResult,
   GetPatchBaselineForPatchGroupError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetPatchBaselineForPatchGroupRequest,
   output: GetPatchBaselineForPatchGroupResult,
@@ -14871,7 +14870,7 @@ export const getResourcePolicies: API.PaginatedOperationMethod<
   GetResourcePoliciesRequest,
   GetResourcePoliciesResponse,
   GetResourcePoliciesError,
-  Creds | Rgn | HttpClient.HttpClient,
+  Creds | HttpClient.HttpClient,
   GetResourcePoliciesResponseEntry
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetResourcePoliciesRequest,
@@ -14917,7 +14916,7 @@ export const getServiceSetting: API.OperationMethod<
   GetServiceSettingRequest,
   GetServiceSettingResult,
   GetServiceSettingError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetServiceSettingRequest,
   output: GetServiceSettingResult,
@@ -14972,7 +14971,7 @@ export const labelParameterVersion: API.OperationMethod<
   LabelParameterVersionRequest,
   LabelParameterVersionResult,
   LabelParameterVersionError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: LabelParameterVersionRequest,
   output: LabelParameterVersionResult,
@@ -15001,7 +15000,7 @@ export const listAssociations: API.PaginatedOperationMethod<
   ListAssociationsRequest,
   ListAssociationsResult,
   ListAssociationsError,
-  Creds | Rgn | HttpClient.HttpClient,
+  Creds | HttpClient.HttpClient,
   Association
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAssociationsRequest,
@@ -15030,7 +15029,7 @@ export const listAssociationVersions: API.PaginatedOperationMethod<
   ListAssociationVersionsRequest,
   ListAssociationVersionsResult,
   ListAssociationVersionsError,
-  Creds | Rgn | HttpClient.HttpClient,
+  Creds | HttpClient.HttpClient,
   AssociationVersionInfo
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAssociationVersionsRequest,
@@ -15065,7 +15064,7 @@ export const listCommandInvocations: API.PaginatedOperationMethod<
   ListCommandInvocationsRequest,
   ListCommandInvocationsResult,
   ListCommandInvocationsError,
-  Creds | Rgn | HttpClient.HttpClient,
+  Creds | HttpClient.HttpClient,
   CommandInvocation
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCommandInvocationsRequest,
@@ -15102,7 +15101,7 @@ export const listCommands: API.PaginatedOperationMethod<
   ListCommandsRequest,
   ListCommandsResult,
   ListCommandsError,
-  Creds | Rgn | HttpClient.HttpClient,
+  Creds | HttpClient.HttpClient,
   Command
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCommandsRequest,
@@ -15141,7 +15140,7 @@ export const listComplianceItems: API.PaginatedOperationMethod<
   ListComplianceItemsRequest,
   ListComplianceItemsResult,
   ListComplianceItemsError,
-  Creds | Rgn | HttpClient.HttpClient,
+  Creds | HttpClient.HttpClient,
   ComplianceItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListComplianceItemsRequest,
@@ -15178,7 +15177,7 @@ export const listComplianceSummaries: API.PaginatedOperationMethod<
   ListComplianceSummariesRequest,
   ListComplianceSummariesResult,
   ListComplianceSummariesError,
-  Creds | Rgn | HttpClient.HttpClient,
+  Creds | HttpClient.HttpClient,
   ComplianceSummaryItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListComplianceSummariesRequest,
@@ -15212,7 +15211,7 @@ export const listDocumentMetadataHistory: API.OperationMethod<
   ListDocumentMetadataHistoryRequest,
   ListDocumentMetadataHistoryResponse,
   ListDocumentMetadataHistoryError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListDocumentMetadataHistoryRequest,
   output: ListDocumentMetadataHistoryResponse,
@@ -15240,7 +15239,7 @@ export const listDocuments: API.PaginatedOperationMethod<
   ListDocumentsRequest,
   ListDocumentsResult,
   ListDocumentsError,
-  Creds | Rgn | HttpClient.HttpClient,
+  Creds | HttpClient.HttpClient,
   DocumentIdentifier
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDocumentsRequest,
@@ -15269,7 +15268,7 @@ export const listDocumentVersions: API.PaginatedOperationMethod<
   ListDocumentVersionsRequest,
   ListDocumentVersionsResult,
   ListDocumentVersionsError,
-  Creds | Rgn | HttpClient.HttpClient,
+  Creds | HttpClient.HttpClient,
   DocumentVersionInfo
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDocumentVersionsRequest,
@@ -15300,7 +15299,7 @@ export const listInventoryEntries: API.OperationMethod<
   ListInventoryEntriesRequest,
   ListInventoryEntriesResult,
   ListInventoryEntriesError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListInventoryEntriesRequest,
   output: ListInventoryEntriesResult,
@@ -15330,7 +15329,7 @@ export const listNodes: API.PaginatedOperationMethod<
   ListNodesRequest,
   ListNodesResult,
   ListNodesError,
-  Creds | Rgn | HttpClient.HttpClient,
+  Creds | HttpClient.HttpClient,
   Node
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListNodesRequest,
@@ -15369,7 +15368,7 @@ export const listNodesSummary: API.PaginatedOperationMethod<
   ListNodesSummaryRequest,
   ListNodesSummaryResult,
   ListNodesSummaryError,
-  Creds | Rgn | HttpClient.HttpClient,
+  Creds | HttpClient.HttpClient,
   { [key: string]: string | undefined }
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListNodesSummaryRequest,
@@ -15407,7 +15406,7 @@ export const listOpsItemEvents: API.PaginatedOperationMethod<
   ListOpsItemEventsRequest,
   ListOpsItemEventsResponse,
   ListOpsItemEventsError,
-  Creds | Rgn | HttpClient.HttpClient,
+  Creds | HttpClient.HttpClient,
   OpsItemEventSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOpsItemEventsRequest,
@@ -15441,7 +15440,7 @@ export const listOpsItemRelatedItems: API.PaginatedOperationMethod<
   ListOpsItemRelatedItemsRequest,
   ListOpsItemRelatedItemsResponse,
   ListOpsItemRelatedItemsError,
-  Creds | Rgn | HttpClient.HttpClient,
+  Creds | HttpClient.HttpClient,
   OpsItemRelatedItemSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOpsItemRelatedItemsRequest,
@@ -15470,7 +15469,7 @@ export const listOpsMetadata: API.PaginatedOperationMethod<
   ListOpsMetadataRequest,
   ListOpsMetadataResult,
   ListOpsMetadataError,
-  Creds | Rgn | HttpClient.HttpClient,
+  Creds | HttpClient.HttpClient,
   OpsMetadata
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOpsMetadataRequest,
@@ -15501,7 +15500,7 @@ export const listResourceComplianceSummaries: API.PaginatedOperationMethod<
   ListResourceComplianceSummariesRequest,
   ListResourceComplianceSummariesResult,
   ListResourceComplianceSummariesError,
-  Creds | Rgn | HttpClient.HttpClient,
+  Creds | HttpClient.HttpClient,
   ResourceComplianceSummaryItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListResourceComplianceSummariesRequest,
@@ -15539,7 +15538,7 @@ export const listResourceDataSync: API.PaginatedOperationMethod<
   ListResourceDataSyncRequest,
   ListResourceDataSyncResult,
   ListResourceDataSyncError,
-  Creds | Rgn | HttpClient.HttpClient,
+  Creds | HttpClient.HttpClient,
   ResourceDataSyncItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListResourceDataSyncRequest,
@@ -15574,7 +15573,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResult,
   ListTagsForResourceError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResult,
@@ -15601,7 +15600,7 @@ export const modifyDocumentPermission: API.OperationMethod<
   ModifyDocumentPermissionRequest,
   ModifyDocumentPermissionResponse,
   ModifyDocumentPermissionError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyDocumentPermissionRequest,
   output: ModifyDocumentPermissionResponse,
@@ -15679,7 +15678,7 @@ export const putComplianceItems: API.OperationMethod<
   PutComplianceItemsRequest,
   PutComplianceItemsResult,
   PutComplianceItemsError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PutComplianceItemsRequest,
   output: PutComplianceItemsResult,
@@ -15720,7 +15719,7 @@ export const putInventory: API.OperationMethod<
   PutInventoryRequest,
   PutInventoryResult,
   PutInventoryError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PutInventoryRequest,
   output: PutInventoryResult,
@@ -15767,7 +15766,7 @@ export const putParameter: API.OperationMethod<
   PutParameterRequest,
   PutParameterResult,
   PutParameterError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PutParameterRequest,
   output: PutParameterResult,
@@ -15835,7 +15834,7 @@ export const putResourcePolicy: API.OperationMethod<
   PutResourcePolicyRequest,
   PutResourcePolicyResponse,
   PutResourcePolicyError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PutResourcePolicyRequest,
   output: PutResourcePolicyResponse,
@@ -15870,7 +15869,7 @@ export const registerDefaultPatchBaseline: API.OperationMethod<
   RegisterDefaultPatchBaselineRequest,
   RegisterDefaultPatchBaselineResult,
   RegisterDefaultPatchBaselineError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: RegisterDefaultPatchBaselineRequest,
   output: RegisterDefaultPatchBaselineResult,
@@ -15894,7 +15893,7 @@ export const registerPatchBaselineForPatchGroup: API.OperationMethod<
   RegisterPatchBaselineForPatchGroupRequest,
   RegisterPatchBaselineForPatchGroupResult,
   RegisterPatchBaselineForPatchGroupError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: RegisterPatchBaselineForPatchGroupRequest,
   output: RegisterPatchBaselineForPatchGroupResult,
@@ -15923,7 +15922,7 @@ export const registerTargetWithMaintenanceWindow: API.OperationMethod<
   RegisterTargetWithMaintenanceWindowRequest,
   RegisterTargetWithMaintenanceWindowResult,
   RegisterTargetWithMaintenanceWindowError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: RegisterTargetWithMaintenanceWindowRequest,
   output: RegisterTargetWithMaintenanceWindowResult,
@@ -15952,7 +15951,7 @@ export const registerTaskWithMaintenanceWindow: API.OperationMethod<
   RegisterTaskWithMaintenanceWindowRequest,
   RegisterTaskWithMaintenanceWindowResult,
   RegisterTaskWithMaintenanceWindowError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: RegisterTaskWithMaintenanceWindowRequest,
   output: RegisterTaskWithMaintenanceWindowResult,
@@ -15981,7 +15980,7 @@ export const removeTagsFromResource: API.OperationMethod<
   RemoveTagsFromResourceRequest,
   RemoveTagsFromResourceResult,
   RemoveTagsFromResourceError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: RemoveTagsFromResourceRequest,
   output: RemoveTagsFromResourceResult,
@@ -16023,7 +16022,7 @@ export const resetServiceSetting: API.OperationMethod<
   ResetServiceSettingRequest,
   ResetServiceSettingResult,
   ResetServiceSettingError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ResetServiceSettingRequest,
   output: ResetServiceSettingResult,
@@ -16048,7 +16047,7 @@ export const resumeSession: API.OperationMethod<
   ResumeSessionRequest,
   ResumeSessionResponse,
   ResumeSessionError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ResumeSessionRequest,
   output: ResumeSessionResponse,
@@ -16072,7 +16071,7 @@ export const sendAutomationSignal: API.OperationMethod<
   SendAutomationSignalRequest,
   SendAutomationSignalResult,
   SendAutomationSignalError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: SendAutomationSignalRequest,
   output: SendAutomationSignalResult,
@@ -16107,7 +16106,7 @@ export const sendCommand: API.OperationMethod<
   SendCommandRequest,
   SendCommandResult,
   SendCommandError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: SendCommandRequest,
   output: SendCommandResult,
@@ -16144,7 +16143,7 @@ export const startAccessRequest: API.OperationMethod<
   StartAccessRequestRequest,
   StartAccessRequestResponse,
   StartAccessRequestError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartAccessRequestRequest,
   output: StartAccessRequestResponse,
@@ -16173,7 +16172,7 @@ export const startAssociationsOnce: API.OperationMethod<
   StartAssociationsOnceRequest,
   StartAssociationsOnceResult,
   StartAssociationsOnceError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartAssociationsOnceRequest,
   output: StartAssociationsOnceResult,
@@ -16199,7 +16198,7 @@ export const startAutomationExecution: API.OperationMethod<
   StartAutomationExecutionRequest,
   StartAutomationExecutionResult,
   StartAutomationExecutionError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartAutomationExecutionRequest,
   output: StartAutomationExecutionResult,
@@ -16240,7 +16239,7 @@ export const startChangeRequestExecution: API.OperationMethod<
   StartChangeRequestExecutionRequest,
   StartChangeRequestExecutionResult,
   StartChangeRequestExecutionError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartChangeRequestExecutionRequest,
   output: StartChangeRequestExecutionResult,
@@ -16271,7 +16270,7 @@ export const startExecutionPreview: API.OperationMethod<
   StartExecutionPreviewRequest,
   StartExecutionPreviewResponse,
   StartExecutionPreviewError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartExecutionPreviewRequest,
   output: StartExecutionPreviewResponse,
@@ -16302,7 +16301,7 @@ export const startSession: API.OperationMethod<
   StartSessionRequest,
   StartSessionResponse,
   StartSessionError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartSessionRequest,
   output: StartSessionResponse,
@@ -16324,7 +16323,7 @@ export const stopAutomationExecution: API.OperationMethod<
   StopAutomationExecutionRequest,
   StopAutomationExecutionResult,
   StopAutomationExecutionError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StopAutomationExecutionRequest,
   output: StopAutomationExecutionResult,
@@ -16347,7 +16346,7 @@ export const terminateSession: API.OperationMethod<
   TerminateSessionRequest,
   TerminateSessionResponse,
   TerminateSessionError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: TerminateSessionRequest,
   output: TerminateSessionResponse,
@@ -16374,7 +16373,7 @@ export const unlabelParameterVersion: API.OperationMethod<
   UnlabelParameterVersionRequest,
   UnlabelParameterVersionResult,
   UnlabelParameterVersionError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UnlabelParameterVersionRequest,
   output: UnlabelParameterVersionResult,
@@ -16428,7 +16427,7 @@ export const updateAssociation: API.OperationMethod<
   UpdateAssociationRequest,
   UpdateAssociationResult,
   UpdateAssociationError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateAssociationRequest,
   output: UpdateAssociationResult,
@@ -16472,7 +16471,7 @@ export const updateAssociationStatus: API.OperationMethod<
   UpdateAssociationStatusRequest,
   UpdateAssociationStatusResult,
   UpdateAssociationStatusError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateAssociationStatusRequest,
   output: UpdateAssociationStatusResult,
@@ -16508,7 +16507,7 @@ export const updateDocument: API.OperationMethod<
   UpdateDocumentRequest,
   UpdateDocumentResult,
   UpdateDocumentError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateDocumentRequest,
   output: UpdateDocumentResult,
@@ -16546,7 +16545,7 @@ export const updateDocumentDefaultVersion: API.OperationMethod<
   UpdateDocumentDefaultVersionRequest,
   UpdateDocumentDefaultVersionResult,
   UpdateDocumentDefaultVersionError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateDocumentDefaultVersionRequest,
   output: UpdateDocumentDefaultVersionResult,
@@ -16580,7 +16579,7 @@ export const updateDocumentMetadata: API.OperationMethod<
   UpdateDocumentMetadataRequest,
   UpdateDocumentMetadataResponse,
   UpdateDocumentMetadataError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateDocumentMetadataRequest,
   output: UpdateDocumentMetadataResponse,
@@ -16614,7 +16613,7 @@ export const updateMaintenanceWindow: API.OperationMethod<
   UpdateMaintenanceWindowRequest,
   UpdateMaintenanceWindowResult,
   UpdateMaintenanceWindowError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateMaintenanceWindowRequest,
   output: UpdateMaintenanceWindowResult,
@@ -16651,7 +16650,7 @@ export const updateMaintenanceWindowTarget: API.OperationMethod<
   UpdateMaintenanceWindowTargetRequest,
   UpdateMaintenanceWindowTargetResult,
   UpdateMaintenanceWindowTargetError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateMaintenanceWindowTargetRequest,
   output: UpdateMaintenanceWindowTargetResult,
@@ -16707,7 +16706,7 @@ export const updateMaintenanceWindowTask: API.OperationMethod<
   UpdateMaintenanceWindowTaskRequest,
   UpdateMaintenanceWindowTaskResult,
   UpdateMaintenanceWindowTaskError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateMaintenanceWindowTaskRequest,
   output: UpdateMaintenanceWindowTaskResult,
@@ -16730,7 +16729,7 @@ export const updateManagedInstanceRole: API.OperationMethod<
   UpdateManagedInstanceRoleRequest,
   UpdateManagedInstanceRoleResult,
   UpdateManagedInstanceRoleError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateManagedInstanceRoleRequest,
   output: UpdateManagedInstanceRoleResult,
@@ -16762,7 +16761,7 @@ export const updateOpsItem: API.OperationMethod<
   UpdateOpsItemRequest,
   UpdateOpsItemResponse,
   UpdateOpsItemError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateOpsItemRequest,
   output: UpdateOpsItemResponse,
@@ -16794,7 +16793,7 @@ export const updateOpsMetadata: API.OperationMethod<
   UpdateOpsMetadataRequest,
   UpdateOpsMetadataResult,
   UpdateOpsMetadataError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateOpsMetadataRequest,
   output: UpdateOpsMetadataResult,
@@ -16825,7 +16824,7 @@ export const updatePatchBaseline: API.OperationMethod<
   UpdatePatchBaselineRequest,
   UpdatePatchBaselineResult,
   UpdatePatchBaselineError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdatePatchBaselineRequest,
   output: UpdatePatchBaselineResult,
@@ -16856,7 +16855,7 @@ export const updateResourceDataSync: API.OperationMethod<
   UpdateResourceDataSyncRequest,
   UpdateResourceDataSyncResult,
   UpdateResourceDataSyncError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateResourceDataSyncRequest,
   output: UpdateResourceDataSyncResult,
@@ -16897,7 +16896,7 @@ export const updateServiceSetting: API.OperationMethod<
   UpdateServiceSettingRequest,
   UpdateServiceSettingResult,
   UpdateServiceSettingError,
-  Creds | Rgn | HttpClient.HttpClient
+  Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateServiceSettingRequest,
   output: UpdateServiceSettingResult,

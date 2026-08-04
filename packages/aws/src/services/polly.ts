@@ -9,7 +9,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 import { SensitiveString } from "../sensitive.ts";
 const ns = T.XmlNamespace("http://polly.amazonaws.com/doc/v1");
 const svc = T.AwsApiService({ sdkId: "Polly", serviceShapeName: "Parrot_v1" });
@@ -1158,7 +1157,7 @@ export const deleteLexicon: API.OperationMethod<
   DeleteLexiconInput,
   DeleteLexiconOutput,
   DeleteLexiconError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteLexiconInput,
   output: DeleteLexiconOutput,
@@ -1198,7 +1197,7 @@ export const describeVoices: API.OperationMethod<
   DescribeVoicesInput,
   DescribeVoicesOutput,
   DescribeVoicesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeVoicesInput,
   output: DescribeVoicesOutput,
@@ -1220,7 +1219,7 @@ export const getLexicon: API.OperationMethod<
   GetLexiconInput,
   GetLexiconOutput,
   GetLexiconError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetLexiconInput,
   output: GetLexiconOutput,
@@ -1245,7 +1244,7 @@ export const getSpeechSynthesisTask: API.OperationMethod<
   GetSpeechSynthesisTaskInput,
   GetSpeechSynthesisTaskOutput,
   GetSpeechSynthesisTaskError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetSpeechSynthesisTaskInput,
   output: GetSpeechSynthesisTaskOutput,
@@ -1270,7 +1269,7 @@ export const listLexicons: API.OperationMethod<
   ListLexiconsInput,
   ListLexiconsOutput,
   ListLexiconsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListLexiconsInput,
   output: ListLexiconsOutput,
@@ -1293,7 +1292,7 @@ export const listSpeechSynthesisTasks: API.PaginatedOperationMethod<
   ListSpeechSynthesisTasksInput,
   ListSpeechSynthesisTasksOutput,
   ListSpeechSynthesisTasksError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSpeechSynthesisTasksInput,
@@ -1331,7 +1330,7 @@ export const putLexicon: API.OperationMethod<
   PutLexiconInput,
   PutLexiconOutput,
   PutLexiconError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PutLexiconInput,
   output: PutLexiconOutput,
@@ -1368,7 +1367,7 @@ export const startSpeechSynthesisStream: API.OperationMethod<
   StartSpeechSynthesisStreamInput,
   StartSpeechSynthesisStreamOutput,
   StartSpeechSynthesisStreamError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartSpeechSynthesisStreamInput,
   output: StartSpeechSynthesisStreamOutput,
@@ -1413,7 +1412,7 @@ export const startSpeechSynthesisTask: API.OperationMethod<
   StartSpeechSynthesisTaskInput,
   StartSpeechSynthesisTaskOutput,
   StartSpeechSynthesisTaskError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartSpeechSynthesisTaskInput,
   output: StartSpeechSynthesisTaskOutput,
@@ -1458,7 +1457,7 @@ export const synthesizeSpeech: API.OperationMethod<
   SynthesizeSpeechInput,
   SynthesizeSpeechOutput,
   SynthesizeSpeechError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: SynthesizeSpeechInput,
   output: SynthesizeSpeechOutput,

@@ -7,7 +7,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 const svc = T.AwsApiService({
   sdkId: "Application Signals",
   serviceShapeName: "ApplicationSignals",
@@ -2716,7 +2715,7 @@ export const batchDeleteInstrumentationConfigurations: API.OperationMethod<
   BatchDeleteInstrumentationConfigurationsRequest,
   BatchDeleteInstrumentationConfigurationsResponse,
   BatchDeleteInstrumentationConfigurationsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: BatchDeleteInstrumentationConfigurationsRequest,
   output: BatchDeleteInstrumentationConfigurationsResponse,
@@ -2743,7 +2742,7 @@ export const batchGetServiceLevelObjectiveBudgetReport: API.OperationMethod<
   BatchGetServiceLevelObjectiveBudgetReportInput,
   BatchGetServiceLevelObjectiveBudgetReportOutput,
   BatchGetServiceLevelObjectiveBudgetReportError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: BatchGetServiceLevelObjectiveBudgetReportInput,
   output: BatchGetServiceLevelObjectiveBudgetReportOutput,
@@ -2765,7 +2764,7 @@ export const batchUpdateExclusionWindows: API.OperationMethod<
   BatchUpdateExclusionWindowsInput,
   BatchUpdateExclusionWindowsOutput,
   BatchUpdateExclusionWindowsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: BatchUpdateExclusionWindowsInput,
   output: BatchUpdateExclusionWindowsOutput,
@@ -2792,7 +2791,7 @@ export const createInstrumentationConfiguration: API.OperationMethod<
   CreateInstrumentationConfigurationRequest,
   CreateInstrumentationConfigurationResponse,
   CreateInstrumentationConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateInstrumentationConfigurationRequest,
   output: CreateInstrumentationConfigurationResponse,
@@ -2863,7 +2862,7 @@ export const createServiceLevelObjective: API.OperationMethod<
   CreateServiceLevelObjectiveInput,
   CreateServiceLevelObjectiveOutput,
   CreateServiceLevelObjectiveError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateServiceLevelObjectiveInput,
   output: CreateServiceLevelObjectiveOutput,
@@ -2891,7 +2890,7 @@ export const deleteGroupingConfiguration: API.OperationMethod<
   DeleteGroupingConfigurationRequest,
   DeleteGroupingConfigurationOutput,
   DeleteGroupingConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteGroupingConfigurationRequest,
   output: DeleteGroupingConfigurationOutput,
@@ -2913,7 +2912,7 @@ export const deleteInstrumentationConfiguration: API.OperationMethod<
   DeleteInstrumentationConfigurationRequest,
   DeleteInstrumentationConfigurationResponse,
   DeleteInstrumentationConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteInstrumentationConfigurationRequest,
   output: DeleteInstrumentationConfigurationResponse,
@@ -2935,7 +2934,7 @@ export const deleteServiceLevelObjective: API.OperationMethod<
   DeleteServiceLevelObjectiveInput,
   DeleteServiceLevelObjectiveOutput,
   DeleteServiceLevelObjectiveError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteServiceLevelObjectiveInput,
   output: DeleteServiceLevelObjectiveOutput,
@@ -2957,7 +2956,7 @@ export const getInstrumentationConfiguration: API.OperationMethod<
   GetInstrumentationConfigurationRequest,
   GetInstrumentationConfigurationResponse,
   GetInstrumentationConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetInstrumentationConfigurationRequest,
   output: GetInstrumentationConfigurationResponse,
@@ -2981,7 +2980,7 @@ export const getInstrumentationConfigurationStatus: API.PaginatedOperationMethod
   GetInstrumentationConfigurationStatusRequest,
   GetInstrumentationConfigurationStatusResponse,
   GetInstrumentationConfigurationStatusError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   InstrumentationStatusEvent
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetInstrumentationConfigurationStatusRequest,
@@ -3009,7 +3008,7 @@ export const getService: API.OperationMethod<
   GetServiceInput,
   GetServiceOutput,
   GetServiceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetServiceInput,
   output: GetServiceOutput,
@@ -3031,7 +3030,7 @@ export const getServiceLevelObjective: API.OperationMethod<
   GetServiceLevelObjectiveInput,
   GetServiceLevelObjectiveOutput,
   GetServiceLevelObjectiveError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetServiceLevelObjectiveInput,
   output: GetServiceLevelObjectiveOutput,
@@ -3052,7 +3051,7 @@ export const listAuditFindings: API.OperationMethod<
   ListAuditFindingsInput,
   ListAuditFindingsOutput,
   ListAuditFindingsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListAuditFindingsInput,
   output: ListAuditFindingsOutput,
@@ -3073,7 +3072,7 @@ export const listEntityEvents: API.PaginatedOperationMethod<
   ListEntityEventsInput,
   ListEntityEventsOutput,
   ListEntityEventsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ChangeEvent
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEntityEventsInput,
@@ -3102,7 +3101,7 @@ export const listGroupingAttributeDefinitions: API.OperationMethod<
   ListGroupingAttributeDefinitionsInput,
   ListGroupingAttributeDefinitionsOutput,
   ListGroupingAttributeDefinitionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListGroupingAttributeDefinitionsInput,
   output: ListGroupingAttributeDefinitionsOutput,
@@ -3126,7 +3125,7 @@ export const listInstrumentationConfigurations: API.PaginatedOperationMethod<
   ListInstrumentationConfigurationsRequest,
   InstrumentationConfigurationsPage,
   ListInstrumentationConfigurationsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   InstrumentationConfigurationWithoutServiceEnv
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListInstrumentationConfigurationsRequest,
@@ -3154,7 +3153,7 @@ export const listServiceDependencies: API.PaginatedOperationMethod<
   ListServiceDependenciesInput,
   ListServiceDependenciesOutput,
   ListServiceDependenciesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ServiceDependency
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListServiceDependenciesInput,
@@ -3182,7 +3181,7 @@ export const listServiceDependents: API.PaginatedOperationMethod<
   ListServiceDependentsInput,
   ListServiceDependentsOutput,
   ListServiceDependentsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ServiceDependent
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListServiceDependentsInput,
@@ -3211,7 +3210,7 @@ export const listServiceLevelObjectiveExclusionWindows: API.PaginatedOperationMe
   ListServiceLevelObjectiveExclusionWindowsInput,
   ListServiceLevelObjectiveExclusionWindowsOutput,
   ListServiceLevelObjectiveExclusionWindowsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ExclusionWindow
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListServiceLevelObjectiveExclusionWindowsInput,
@@ -3239,7 +3238,7 @@ export const listServiceLevelObjectives: API.PaginatedOperationMethod<
   ListServiceLevelObjectivesInput,
   ListServiceLevelObjectivesOutput,
   ListServiceLevelObjectivesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ServiceLevelObjectiveSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListServiceLevelObjectivesInput,
@@ -3267,7 +3266,7 @@ export const listServiceOperations: API.PaginatedOperationMethod<
   ListServiceOperationsInput,
   ListServiceOperationsOutput,
   ListServiceOperationsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ServiceOperation
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListServiceOperationsInput,
@@ -3295,7 +3294,7 @@ export const listServices: API.PaginatedOperationMethod<
   ListServicesInput,
   ListServicesOutput,
   ListServicesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ServiceSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListServicesInput,
@@ -3323,7 +3322,7 @@ export const listServiceStates: API.PaginatedOperationMethod<
   ListServiceStatesInput,
   ListServiceStatesOutput,
   ListServiceStatesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ServiceState
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListServiceStatesInput,
@@ -3351,7 +3350,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -3373,7 +3372,7 @@ export const putGroupingConfiguration: API.OperationMethod<
   PutGroupingConfigurationInput,
   PutGroupingConfigurationOutput,
   PutGroupingConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PutGroupingConfigurationInput,
   output: PutGroupingConfigurationOutput,
@@ -3396,7 +3395,7 @@ export const reportInstrumentationConfigurationStatus: API.OperationMethod<
   ReportInstrumentationConfigurationStatusRequest,
   ReportInstrumentationConfigurationStatusResponse,
   ReportInstrumentationConfigurationStatusError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ReportInstrumentationConfigurationStatusRequest,
   output: ReportInstrumentationConfigurationStatusResponse,
@@ -3436,7 +3435,7 @@ export const startDiscovery: API.OperationMethod<
   StartDiscoveryInput,
   StartDiscoveryOutput,
   StartDiscoveryError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartDiscoveryInput,
   output: StartDiscoveryOutput,
@@ -3466,7 +3465,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -3491,7 +3490,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -3515,7 +3514,7 @@ export const updateServiceLevelObjective: API.OperationMethod<
   UpdateServiceLevelObjectiveInput,
   UpdateServiceLevelObjectiveOutput,
   UpdateServiceLevelObjectiveError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateServiceLevelObjectiveInput,
   output: UpdateServiceLevelObjectiveOutput,

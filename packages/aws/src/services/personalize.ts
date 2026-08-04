@@ -8,7 +8,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 import { SensitiveString } from "../sensitive.ts";
 const svc = T.AwsApiService({
   sdkId: "Personalize",
@@ -3473,7 +3472,7 @@ export const createBatchInferenceJob: API.OperationMethod<
   CreateBatchInferenceJobRequest,
   CreateBatchInferenceJobResponse,
   CreateBatchInferenceJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateBatchInferenceJobRequest,
   output: CreateBatchInferenceJobResponse,
@@ -3507,7 +3506,7 @@ export const createBatchSegmentJob: API.OperationMethod<
   CreateBatchSegmentJobRequest,
   CreateBatchSegmentJobResponse,
   CreateBatchSegmentJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateBatchSegmentJobRequest,
   output: CreateBatchSegmentJobResponse,
@@ -3593,7 +3592,7 @@ export const createCampaign: API.OperationMethod<
   CreateCampaignRequest,
   CreateCampaignResponse,
   CreateCampaignError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateCampaignRequest,
   output: CreateCampaignResponse,
@@ -3659,7 +3658,7 @@ export const createDataDeletionJob: API.OperationMethod<
   CreateDataDeletionJobRequest,
   CreateDataDeletionJobResponse,
   CreateDataDeletionJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateDataDeletionJobRequest,
   output: CreateDataDeletionJobResponse,
@@ -3728,7 +3727,7 @@ export const createDataset: API.OperationMethod<
   CreateDatasetRequest,
   CreateDatasetResponse,
   CreateDatasetError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateDatasetRequest,
   output: CreateDatasetResponse,
@@ -3776,7 +3775,7 @@ export const createDatasetExportJob: API.OperationMethod<
   CreateDatasetExportJobRequest,
   CreateDatasetExportJobResponse,
   CreateDatasetExportJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateDatasetExportJobRequest,
   output: CreateDatasetExportJobResponse,
@@ -3860,7 +3859,7 @@ export const createDatasetGroup: API.OperationMethod<
   CreateDatasetGroupRequest,
   CreateDatasetGroupResponse,
   CreateDatasetGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateDatasetGroupRequest,
   output: CreateDatasetGroupResponse,
@@ -3927,7 +3926,7 @@ export const createDatasetImportJob: API.OperationMethod<
   CreateDatasetImportJobRequest,
   CreateDatasetImportJobResponse,
   CreateDatasetImportJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateDatasetImportJobRequest,
   output: CreateDatasetImportJobResponse,
@@ -3988,7 +3987,7 @@ export const createEventTracker: API.OperationMethod<
   CreateEventTrackerRequest,
   CreateEventTrackerResponse,
   CreateEventTrackerError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateEventTrackerRequest,
   output: CreateEventTrackerResponse,
@@ -4019,7 +4018,7 @@ export const createFilter: API.OperationMethod<
   CreateFilterRequest,
   CreateFilterResponse,
   CreateFilterError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateFilterRequest,
   output: CreateFilterResponse,
@@ -4051,7 +4050,7 @@ export const createMetricAttribution: API.OperationMethod<
   CreateMetricAttributionRequest,
   CreateMetricAttributionResponse,
   CreateMetricAttributionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateMetricAttributionRequest,
   output: CreateMetricAttributionResponse,
@@ -4135,7 +4134,7 @@ export const createRecommender: API.OperationMethod<
   CreateRecommenderRequest,
   CreateRecommenderResponse,
   CreateRecommenderError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateRecommenderRequest,
   output: CreateRecommenderResponse,
@@ -4178,7 +4177,7 @@ export const createSchema: API.OperationMethod<
   CreateSchemaRequest,
   CreateSchemaResponse,
   CreateSchemaError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateSchemaRequest,
   output: CreateSchemaResponse,
@@ -4263,7 +4262,7 @@ export const createSolution: API.OperationMethod<
   CreateSolutionRequest,
   CreateSolutionResponse,
   CreateSolutionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateSolutionRequest,
   output: CreateSolutionResponse,
@@ -4334,7 +4333,7 @@ export const createSolutionVersion: API.OperationMethod<
   CreateSolutionVersionRequest,
   CreateSolutionVersionResponse,
   CreateSolutionVersionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateSolutionVersionRequest,
   output: CreateSolutionVersionResponse,
@@ -4368,7 +4367,7 @@ export const deleteCampaign: API.OperationMethod<
   DeleteCampaignRequest,
   DeleteCampaignResponse,
   DeleteCampaignError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteCampaignRequest,
   output: DeleteCampaignResponse,
@@ -4397,7 +4396,7 @@ export const deleteDataset: API.OperationMethod<
   DeleteDatasetRequest,
   DeleteDatasetResponse,
   DeleteDatasetError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteDatasetRequest,
   output: DeleteDatasetResponse,
@@ -4430,7 +4429,7 @@ export const deleteDatasetGroup: API.OperationMethod<
   DeleteDatasetGroupRequest,
   DeleteDatasetGroupResponse,
   DeleteDatasetGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteDatasetGroupRequest,
   output: DeleteDatasetGroupResponse,
@@ -4458,7 +4457,7 @@ export const deleteEventTracker: API.OperationMethod<
   DeleteEventTrackerRequest,
   DeleteEventTrackerResponse,
   DeleteEventTrackerError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteEventTrackerRequest,
   output: DeleteEventTrackerResponse,
@@ -4484,7 +4483,7 @@ export const deleteFilter: API.OperationMethod<
   DeleteFilterRequest,
   DeleteFilterResponse,
   DeleteFilterError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteFilterRequest,
   output: DeleteFilterResponse,
@@ -4510,7 +4509,7 @@ export const deleteMetricAttribution: API.OperationMethod<
   DeleteMetricAttributionRequest,
   DeleteMetricAttributionResponse,
   DeleteMetricAttributionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteMetricAttributionRequest,
   output: DeleteMetricAttributionResponse,
@@ -4537,7 +4536,7 @@ export const deleteRecommender: API.OperationMethod<
   DeleteRecommenderRequest,
   DeleteRecommenderResponse,
   DeleteRecommenderError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteRecommenderRequest,
   output: DeleteRecommenderResponse,
@@ -4565,7 +4564,7 @@ export const deleteSchema: API.OperationMethod<
   DeleteSchemaRequest,
   DeleteSchemaResponse,
   DeleteSchemaError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteSchemaRequest,
   output: DeleteSchemaResponse,
@@ -4597,7 +4596,7 @@ export const deleteSolution: API.OperationMethod<
   DeleteSolutionRequest,
   DeleteSolutionResponse,
   DeleteSolutionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteSolutionRequest,
   output: DeleteSolutionResponse,
@@ -4622,7 +4621,7 @@ export const describeAlgorithm: API.OperationMethod<
   DescribeAlgorithmRequest,
   DescribeAlgorithmResponse,
   DescribeAlgorithmError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeAlgorithmRequest,
   output: DescribeAlgorithmResponse,
@@ -4645,7 +4644,7 @@ export const describeBatchInferenceJob: API.OperationMethod<
   DescribeBatchInferenceJobRequest,
   DescribeBatchInferenceJobResponse,
   DescribeBatchInferenceJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeBatchInferenceJobRequest,
   output: DescribeBatchInferenceJobResponse,
@@ -4668,7 +4667,7 @@ export const describeBatchSegmentJob: API.OperationMethod<
   DescribeBatchSegmentJobRequest,
   DescribeBatchSegmentJobResponse,
   DescribeBatchSegmentJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeBatchSegmentJobRequest,
   output: DescribeBatchSegmentJobResponse,
@@ -4700,7 +4699,7 @@ export const describeCampaign: API.OperationMethod<
   DescribeCampaignRequest,
   DescribeCampaignResponse,
   DescribeCampaignError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeCampaignRequest,
   output: DescribeCampaignResponse,
@@ -4721,7 +4720,7 @@ export const describeDataDeletionJob: API.OperationMethod<
   DescribeDataDeletionJobRequest,
   DescribeDataDeletionJobResponse,
   DescribeDataDeletionJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeDataDeletionJobRequest,
   output: DescribeDataDeletionJobResponse,
@@ -4743,7 +4742,7 @@ export const describeDataset: API.OperationMethod<
   DescribeDatasetRequest,
   DescribeDatasetResponse,
   DescribeDatasetError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeDatasetRequest,
   output: DescribeDatasetResponse,
@@ -4764,7 +4763,7 @@ export const describeDatasetExportJob: API.OperationMethod<
   DescribeDatasetExportJobRequest,
   DescribeDatasetExportJobResponse,
   DescribeDatasetExportJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeDatasetExportJobRequest,
   output: DescribeDatasetExportJobResponse,
@@ -4786,7 +4785,7 @@ export const describeDatasetGroup: API.OperationMethod<
   DescribeDatasetGroupRequest,
   DescribeDatasetGroupResponse,
   DescribeDatasetGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeDatasetGroupRequest,
   output: DescribeDatasetGroupResponse,
@@ -4807,7 +4806,7 @@ export const describeDatasetImportJob: API.OperationMethod<
   DescribeDatasetImportJobRequest,
   DescribeDatasetImportJobResponse,
   DescribeDatasetImportJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeDatasetImportJobRequest,
   output: DescribeDatasetImportJobResponse,
@@ -4830,7 +4829,7 @@ export const describeEventTracker: API.OperationMethod<
   DescribeEventTrackerRequest,
   DescribeEventTrackerResponse,
   DescribeEventTrackerError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeEventTrackerRequest,
   output: DescribeEventTrackerResponse,
@@ -4851,7 +4850,7 @@ export const describeFeatureTransformation: API.OperationMethod<
   DescribeFeatureTransformationRequest,
   DescribeFeatureTransformationResponse,
   DescribeFeatureTransformationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeFeatureTransformationRequest,
   output: DescribeFeatureTransformationResponse,
@@ -4872,7 +4871,7 @@ export const describeFilter: API.OperationMethod<
   DescribeFilterRequest,
   DescribeFilterResponse,
   DescribeFilterError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeFilterRequest,
   output: DescribeFilterResponse,
@@ -4893,7 +4892,7 @@ export const describeMetricAttribution: API.OperationMethod<
   DescribeMetricAttributionRequest,
   DescribeMetricAttributionResponse,
   DescribeMetricAttributionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeMetricAttributionRequest,
   output: DescribeMetricAttributionResponse,
@@ -4929,7 +4928,7 @@ export const describeRecipe: API.OperationMethod<
   DescribeRecipeRequest,
   DescribeRecipeResponse,
   DescribeRecipeError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeRecipeRequest,
   output: DescribeRecipeResponse,
@@ -4966,7 +4965,7 @@ export const describeRecommender: API.OperationMethod<
   DescribeRecommenderRequest,
   DescribeRecommenderResponse,
   DescribeRecommenderError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeRecommenderRequest,
   output: DescribeRecommenderResponse,
@@ -4988,7 +4987,7 @@ export const describeSchema: API.OperationMethod<
   DescribeSchemaRequest,
   DescribeSchemaResponse,
   DescribeSchemaError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeSchemaRequest,
   output: DescribeSchemaResponse,
@@ -5010,7 +5009,7 @@ export const describeSolution: API.OperationMethod<
   DescribeSolutionRequest,
   DescribeSolutionResponse,
   DescribeSolutionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeSolutionRequest,
   output: DescribeSolutionResponse,
@@ -5031,7 +5030,7 @@ export const describeSolutionVersion: API.OperationMethod<
   DescribeSolutionVersionRequest,
   DescribeSolutionVersionResponse,
   DescribeSolutionVersionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeSolutionVersionRequest,
   output: DescribeSolutionVersionResponse,
@@ -5053,7 +5052,7 @@ export const getSolutionMetrics: API.OperationMethod<
   GetSolutionMetricsRequest,
   GetSolutionMetricsResponse,
   GetSolutionMetricsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetSolutionMetricsRequest,
   output: GetSolutionMetricsResponse,
@@ -5079,7 +5078,7 @@ export const listBatchInferenceJobs: API.PaginatedOperationMethod<
   ListBatchInferenceJobsRequest,
   ListBatchInferenceJobsResponse,
   ListBatchInferenceJobsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   BatchInferenceJobSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBatchInferenceJobsRequest,
@@ -5108,7 +5107,7 @@ export const listBatchSegmentJobs: API.PaginatedOperationMethod<
   ListBatchSegmentJobsRequest,
   ListBatchSegmentJobsResponse,
   ListBatchSegmentJobsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   BatchSegmentJobSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBatchSegmentJobsRequest,
@@ -5139,7 +5138,7 @@ export const listCampaigns: API.PaginatedOperationMethod<
   ListCampaignsRequest,
   ListCampaignsResponse,
   ListCampaignsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   CampaignSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCampaignsRequest,
@@ -5173,7 +5172,7 @@ export const listDataDeletionJobs: API.OperationMethod<
   ListDataDeletionJobsRequest,
   ListDataDeletionJobsResponse,
   ListDataDeletionJobsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListDataDeletionJobsRequest,
   output: ListDataDeletionJobsResponse,
@@ -5199,7 +5198,7 @@ export const listDatasetExportJobs: API.PaginatedOperationMethod<
   ListDatasetExportJobsRequest,
   ListDatasetExportJobsResponse,
   ListDatasetExportJobsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   DatasetExportJobSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDatasetExportJobsRequest,
@@ -5226,7 +5225,7 @@ export const listDatasetGroups: API.PaginatedOperationMethod<
   ListDatasetGroupsRequest,
   ListDatasetGroupsResponse,
   ListDatasetGroupsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   DatasetGroupSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDatasetGroupsRequest,
@@ -5259,7 +5258,7 @@ export const listDatasetImportJobs: API.PaginatedOperationMethod<
   ListDatasetImportJobsRequest,
   ListDatasetImportJobsResponse,
   ListDatasetImportJobsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   DatasetImportJobSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDatasetImportJobsRequest,
@@ -5289,7 +5288,7 @@ export const listDatasets: API.PaginatedOperationMethod<
   ListDatasetsRequest,
   ListDatasetsResponse,
   ListDatasetsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   DatasetSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDatasetsRequest,
@@ -5320,7 +5319,7 @@ export const listEventTrackers: API.PaginatedOperationMethod<
   ListEventTrackersRequest,
   ListEventTrackersResponse,
   ListEventTrackersError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   EventTrackerSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEventTrackersRequest,
@@ -5348,7 +5347,7 @@ export const listFilters: API.PaginatedOperationMethod<
   ListFiltersRequest,
   ListFiltersResponse,
   ListFiltersError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   FilterSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFiltersRequest,
@@ -5376,7 +5375,7 @@ export const listMetricAttributionMetrics: API.PaginatedOperationMethod<
   ListMetricAttributionMetricsRequest,
   ListMetricAttributionMetricsResponse,
   ListMetricAttributionMetricsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   MetricAttribute
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMetricAttributionMetricsRequest,
@@ -5404,7 +5403,7 @@ export const listMetricAttributions: API.PaginatedOperationMethod<
   ListMetricAttributionsRequest,
   ListMetricAttributionsResponse,
   ListMetricAttributionsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   MetricAttributionSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMetricAttributionsRequest,
@@ -5433,7 +5432,7 @@ export const listRecipes: API.PaginatedOperationMethod<
   ListRecipesRequest,
   ListRecipesResponse,
   ListRecipesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   RecipeSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRecipesRequest,
@@ -5464,7 +5463,7 @@ export const listRecommenders: API.PaginatedOperationMethod<
   ListRecommendersRequest,
   ListRecommendersResponse,
   ListRecommendersError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   RecommenderSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRecommendersRequest,
@@ -5491,7 +5490,7 @@ export const listSchemas: API.PaginatedOperationMethod<
   ListSchemasRequest,
   ListSchemasResponse,
   ListSchemasError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   DatasetSchemaSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSchemasRequest,
@@ -5522,7 +5521,7 @@ export const listSolutions: API.PaginatedOperationMethod<
   ListSolutionsRequest,
   ListSolutionsResponse,
   ListSolutionsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   SolutionSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSolutionsRequest,
@@ -5553,7 +5552,7 @@ export const listSolutionVersions: API.PaginatedOperationMethod<
   ListSolutionVersionsRequest,
   ListSolutionVersionsResponse,
   ListSolutionVersionsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   SolutionVersionSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSolutionVersionsRequest,
@@ -5586,7 +5585,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -5613,7 +5612,7 @@ export const startRecommender: API.OperationMethod<
   StartRecommenderRequest,
   StartRecommenderResponse,
   StartRecommenderError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartRecommenderRequest,
   output: StartRecommenderResponse,
@@ -5639,7 +5638,7 @@ export const stopRecommender: API.OperationMethod<
   StopRecommenderRequest,
   StopRecommenderResponse,
   StopRecommenderError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StopRecommenderRequest,
   output: StopRecommenderResponse,
@@ -5676,7 +5675,7 @@ export const stopSolutionVersionCreation: API.OperationMethod<
   StopSolutionVersionCreationRequest,
   StopSolutionVersionCreationResponse,
   StopSolutionVersionCreationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StopSolutionVersionCreationRequest,
   output: StopSolutionVersionCreationResponse,
@@ -5704,7 +5703,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -5733,7 +5732,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -5777,7 +5776,7 @@ export const updateCampaign: API.OperationMethod<
   UpdateCampaignRequest,
   UpdateCampaignResponse,
   UpdateCampaignError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateCampaignRequest,
   output: UpdateCampaignResponse,
@@ -5803,7 +5802,7 @@ export const updateDataset: API.OperationMethod<
   UpdateDatasetRequest,
   UpdateDatasetResponse,
   UpdateDatasetError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateDatasetRequest,
   output: UpdateDatasetResponse,
@@ -5830,7 +5829,7 @@ export const updateMetricAttribution: API.OperationMethod<
   UpdateMetricAttributionRequest,
   UpdateMetricAttributionResponse,
   UpdateMetricAttributionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateMetricAttributionRequest,
   output: UpdateMetricAttributionResponse,
@@ -5863,7 +5862,7 @@ export const updateRecommender: API.OperationMethod<
   UpdateRecommenderRequest,
   UpdateRecommenderResponse,
   UpdateRecommenderError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateRecommenderRequest,
   output: UpdateRecommenderResponse,
@@ -5902,7 +5901,7 @@ export const updateSolution: API.OperationMethod<
   UpdateSolutionRequest,
   UpdateSolutionResponse,
   UpdateSolutionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateSolutionRequest,
   output: UpdateSolutionResponse,

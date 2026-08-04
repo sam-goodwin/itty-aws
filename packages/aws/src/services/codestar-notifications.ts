@@ -8,7 +8,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 import { SensitiveString } from "../sensitive.ts";
 const svc = T.AwsApiService({
   sdkId: "codestar notifications",
@@ -728,7 +727,7 @@ export const createNotificationRule: API.OperationMethod<
   CreateNotificationRuleRequest,
   CreateNotificationRuleResult,
   CreateNotificationRuleError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateNotificationRuleRequest,
   output: CreateNotificationRuleResult,
@@ -757,7 +756,7 @@ export const deleteNotificationRule: API.OperationMethod<
   DeleteNotificationRuleRequest,
   DeleteNotificationRuleResult,
   DeleteNotificationRuleError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteNotificationRuleRequest,
   output: DeleteNotificationRuleResult,
@@ -779,7 +778,7 @@ export const deleteTarget: API.OperationMethod<
   DeleteTargetRequest,
   DeleteTargetResult,
   DeleteTargetError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteTargetRequest,
   output: DeleteTargetResult,
@@ -800,7 +799,7 @@ export const describeNotificationRule: API.OperationMethod<
   DescribeNotificationRuleRequest,
   DescribeNotificationRuleResult,
   DescribeNotificationRuleError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeNotificationRuleRequest,
   output: DescribeNotificationRuleResult,
@@ -821,7 +820,7 @@ export const listEventTypes: API.PaginatedOperationMethod<
   ListEventTypesRequest,
   ListEventTypesResult,
   ListEventTypesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   EventTypeSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEventTypesRequest,
@@ -849,7 +848,7 @@ export const listNotificationRules: API.PaginatedOperationMethod<
   ListNotificationRulesRequest,
   ListNotificationRulesResult,
   ListNotificationRulesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   NotificationRuleSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListNotificationRulesRequest,
@@ -877,7 +876,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResult,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResult,
@@ -898,7 +897,7 @@ export const listTargets: API.PaginatedOperationMethod<
   ListTargetsRequest,
   ListTargetsResult,
   ListTargetsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   TargetSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTargetsRequest,
@@ -929,7 +928,7 @@ export const subscribe: API.OperationMethod<
   SubscribeRequest,
   SubscribeResult,
   SubscribeError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: SubscribeRequest,
   output: SubscribeResult,
@@ -956,7 +955,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResult,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResult,
@@ -981,7 +980,7 @@ export const unsubscribe: API.OperationMethod<
   UnsubscribeRequest,
   UnsubscribeResult,
   UnsubscribeError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UnsubscribeRequest,
   output: UnsubscribeResult,
@@ -1005,7 +1004,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResult,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResult,
@@ -1036,7 +1035,7 @@ export const updateNotificationRule: API.OperationMethod<
   UpdateNotificationRuleRequest,
   UpdateNotificationRuleResult,
   UpdateNotificationRuleError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateNotificationRuleRequest,
   output: UpdateNotificationRuleResult,

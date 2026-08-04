@@ -8,7 +8,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 import { SensitiveString } from "../sensitive.ts";
 const svc = T.AwsApiService({ sdkId: "AIOps", serviceShapeName: "AIOps" });
 const auth = T.AwsAuthSigv4({ name: "aiops" });
@@ -598,7 +597,7 @@ export const createInvestigationGroup: API.OperationMethod<
   CreateInvestigationGroupInput,
   CreateInvestigationGroupOutput,
   CreateInvestigationGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateInvestigationGroupInput,
   output: CreateInvestigationGroupOutput,
@@ -630,7 +629,7 @@ export const deleteInvestigationGroup: API.OperationMethod<
   DeleteInvestigationGroupRequest,
   DeleteInvestigationGroupResponse,
   DeleteInvestigationGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteInvestigationGroupRequest,
   output: DeleteInvestigationGroupResponse,
@@ -661,7 +660,7 @@ export const deleteInvestigationGroupPolicy: API.OperationMethod<
   DeleteInvestigationGroupPolicyRequest,
   DeleteInvestigationGroupPolicyOutput,
   DeleteInvestigationGroupPolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteInvestigationGroupPolicyRequest,
   output: DeleteInvestigationGroupPolicyOutput,
@@ -692,7 +691,7 @@ export const getInvestigationGroup: API.OperationMethod<
   GetInvestigationGroupRequest,
   GetInvestigationGroupResponse,
   GetInvestigationGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetInvestigationGroupRequest,
   output: GetInvestigationGroupResponse,
@@ -723,7 +722,7 @@ export const getInvestigationGroupPolicy: API.OperationMethod<
   GetInvestigationGroupPolicyRequest,
   GetInvestigationGroupPolicyResponse,
   GetInvestigationGroupPolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetInvestigationGroupPolicyRequest,
   output: GetInvestigationGroupPolicyResponse,
@@ -752,7 +751,7 @@ export const listInvestigationGroups: API.PaginatedOperationMethod<
   ListInvestigationGroupsInput,
   ListInvestigationGroupsOutput,
   ListInvestigationGroupsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ListInvestigationGroupsModel
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListInvestigationGroupsInput,
@@ -784,7 +783,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceOutput,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceOutput,
@@ -821,7 +820,7 @@ export const putInvestigationGroupPolicy: API.OperationMethod<
   PutInvestigationGroupPolicyRequest,
   PutInvestigationGroupPolicyResponse,
   PutInvestigationGroupPolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PutInvestigationGroupPolicyRequest,
   output: PutInvestigationGroupPolicyResponse,
@@ -860,7 +859,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -892,7 +891,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -925,7 +924,7 @@ export const updateInvestigationGroup: API.OperationMethod<
   UpdateInvestigationGroupRequest,
   UpdateInvestigationGroupOutput,
   UpdateInvestigationGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateInvestigationGroupRequest,
   output: UpdateInvestigationGroupOutput,

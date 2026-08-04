@@ -7,7 +7,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 const svc = T.AwsApiService({
   sdkId: "synthetics",
   serviceShapeName: "Synthetics",
@@ -1568,7 +1567,7 @@ export const associateResource: API.OperationMethod<
   AssociateResourceRequest,
   AssociateResourceResponse,
   AssociateResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: AssociateResourceRequest,
   output: AssociateResourceResponse,
@@ -1612,7 +1611,7 @@ export const createCanary: API.OperationMethod<
   CreateCanaryRequest,
   CreateCanaryResponse,
   CreateCanaryError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateCanaryRequest,
   output: CreateCanaryResponse,
@@ -1654,7 +1653,7 @@ export const createGroup: API.OperationMethod<
   CreateGroupRequest,
   CreateGroupResponse,
   CreateGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateGroupRequest,
   output: CreateGroupResponse,
@@ -1707,7 +1706,7 @@ export const deleteCanary: API.OperationMethod<
   DeleteCanaryRequest,
   DeleteCanaryResponse,
   DeleteCanaryError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteCanaryRequest,
   output: DeleteCanaryResponse,
@@ -1739,7 +1738,7 @@ export const deleteGroup: API.OperationMethod<
   DeleteGroupRequest,
   DeleteGroupResponse,
   DeleteGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteGroupRequest,
   output: DeleteGroupResponse,
@@ -1776,7 +1775,7 @@ export const describeCanaries: API.PaginatedOperationMethod<
   DescribeCanariesRequest,
   DescribeCanariesResponse,
   DescribeCanariesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeCanariesRequest,
@@ -1813,7 +1812,7 @@ export const describeCanariesLastRun: API.PaginatedOperationMethod<
   DescribeCanariesLastRunRequest,
   DescribeCanariesLastRunResponse,
   DescribeCanariesLastRunError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeCanariesLastRunRequest,
@@ -1842,7 +1841,7 @@ export const describeRuntimeVersions: API.PaginatedOperationMethod<
   DescribeRuntimeVersionsRequest,
   DescribeRuntimeVersionsResponse,
   DescribeRuntimeVersionsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeRuntimeVersionsRequest,
@@ -1871,7 +1870,7 @@ export const disassociateResource: API.OperationMethod<
   DisassociateResourceRequest,
   DisassociateResourceResponse,
   DisassociateResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DisassociateResourceRequest,
   output: DisassociateResourceResponse,
@@ -1900,7 +1899,7 @@ export const getCanary: API.OperationMethod<
   GetCanaryRequest,
   GetCanaryResponse,
   GetCanaryError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetCanaryRequest,
   output: GetCanaryResponse,
@@ -1926,7 +1925,7 @@ export const getCanaryRuns: API.PaginatedOperationMethod<
   GetCanaryRunsRequest,
   GetCanaryRunsResponse,
   GetCanaryRunsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetCanaryRunsRequest,
@@ -1960,7 +1959,7 @@ export const getGroup: API.OperationMethod<
   GetGroupRequest,
   GetGroupResponse,
   GetGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetGroupRequest,
   output: GetGroupResponse,
@@ -1988,7 +1987,7 @@ export const listAssociatedGroups: API.PaginatedOperationMethod<
   ListAssociatedGroupsRequest,
   ListAssociatedGroupsResponse,
   ListAssociatedGroupsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAssociatedGroupsRequest,
@@ -2021,7 +2020,7 @@ export const listGroupResources: API.PaginatedOperationMethod<
   ListGroupResourcesRequest,
   ListGroupResourcesResponse,
   ListGroupResourcesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListGroupResourcesRequest,
@@ -2054,7 +2053,7 @@ export const listGroups: API.PaginatedOperationMethod<
   ListGroupsRequest,
   ListGroupsResponse,
   ListGroupsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListGroupsRequest,
@@ -2084,7 +2083,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -2115,7 +2114,7 @@ export const startCanary: API.OperationMethod<
   StartCanaryRequest,
   StartCanaryResponse,
   StartCanaryError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartCanaryRequest,
   output: StartCanaryResponse,
@@ -2144,7 +2143,7 @@ export const startCanaryDryRun: API.OperationMethod<
   StartCanaryDryRunRequest,
   StartCanaryDryRunResponse,
   StartCanaryDryRunError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartCanaryDryRunRequest,
   output: StartCanaryDryRunResponse,
@@ -2178,7 +2177,7 @@ export const stopCanary: API.OperationMethod<
   StopCanaryRequest,
   StopCanaryResponse,
   StopCanaryError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StopCanaryRequest,
   output: StopCanaryResponse,
@@ -2222,7 +2221,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -2252,7 +2251,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -2294,7 +2293,7 @@ export const updateCanary: API.OperationMethod<
   UpdateCanaryRequest,
   UpdateCanaryResponse,
   UpdateCanaryError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateCanaryRequest,
   output: UpdateCanaryResponse,

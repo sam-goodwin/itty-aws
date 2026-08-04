@@ -7,7 +7,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 const svc = T.AwsApiService({
   sdkId: "SSM Incidents",
   serviceShapeName: "SSMIncidents",
@@ -1759,7 +1758,7 @@ export const batchGetIncidentFindings: API.OperationMethod<
   BatchGetIncidentFindingsInput,
   BatchGetIncidentFindingsOutput,
   BatchGetIncidentFindingsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: BatchGetIncidentFindingsInput,
   output: BatchGetIncidentFindingsOutput,
@@ -1792,7 +1791,7 @@ export const createReplicationSet: API.OperationMethod<
   CreateReplicationSetInput,
   CreateReplicationSetOutput,
   CreateReplicationSetError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateReplicationSetInput,
   output: CreateReplicationSetOutput,
@@ -1827,7 +1826,7 @@ export const createResponsePlan: API.OperationMethod<
   CreateResponsePlanInput,
   CreateResponsePlanOutput,
   CreateResponsePlanError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateResponsePlanInput,
   output: CreateResponsePlanOutput,
@@ -1862,7 +1861,7 @@ export const createTimelineEvent: API.OperationMethod<
   CreateTimelineEventInput,
   CreateTimelineEventOutput,
   CreateTimelineEventError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateTimelineEventInput,
   output: CreateTimelineEventOutput,
@@ -1892,7 +1891,7 @@ export const deleteIncidentRecord: API.OperationMethod<
   DeleteIncidentRecordInput,
   DeleteIncidentRecordOutput,
   DeleteIncidentRecordError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteIncidentRecordInput,
   output: DeleteIncidentRecordOutput,
@@ -1922,7 +1921,7 @@ export const deleteReplicationSet: API.OperationMethod<
   DeleteReplicationSetInput,
   DeleteReplicationSetOutput,
   DeleteReplicationSetError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteReplicationSetInput,
   output: DeleteReplicationSetOutput,
@@ -1953,7 +1952,7 @@ export const deleteResourcePolicy: API.OperationMethod<
   DeleteResourcePolicyInput,
   DeleteResourcePolicyOutput,
   DeleteResourcePolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteResourcePolicyInput,
   output: DeleteResourcePolicyOutput,
@@ -1983,7 +1982,7 @@ export const deleteResponsePlan: API.OperationMethod<
   DeleteResponsePlanInput,
   DeleteResponsePlanOutput,
   DeleteResponsePlanError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteResponsePlanInput,
   output: DeleteResponsePlanOutput,
@@ -2011,7 +2010,7 @@ export const deleteTimelineEvent: API.OperationMethod<
   DeleteTimelineEventInput,
   DeleteTimelineEventOutput,
   DeleteTimelineEventError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteTimelineEventInput,
   output: DeleteTimelineEventOutput,
@@ -2040,7 +2039,7 @@ export const getIncidentRecord: API.OperationMethod<
   GetIncidentRecordInput,
   GetIncidentRecordOutput,
   GetIncidentRecordError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetIncidentRecordInput,
   output: GetIncidentRecordOutput,
@@ -2070,7 +2069,7 @@ export const getReplicationSet: API.OperationMethod<
   GetReplicationSetInput,
   GetReplicationSetOutput,
   GetReplicationSetError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetReplicationSetInput,
   output: GetReplicationSetOutput,
@@ -2100,7 +2099,7 @@ export const getResourcePolicies: API.PaginatedOperationMethod<
   GetResourcePoliciesInput,
   GetResourcePoliciesOutput,
   GetResourcePoliciesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ResourcePolicy
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetResourcePoliciesInput,
@@ -2137,7 +2136,7 @@ export const getResponsePlan: API.OperationMethod<
   GetResponsePlanInput,
   GetResponsePlanOutput,
   GetResponsePlanError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetResponsePlanInput,
   output: GetResponsePlanOutput,
@@ -2167,7 +2166,7 @@ export const getTimelineEvent: API.OperationMethod<
   GetTimelineEventInput,
   GetTimelineEventOutput,
   GetTimelineEventError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetTimelineEventInput,
   output: GetTimelineEventOutput,
@@ -2200,7 +2199,7 @@ export const listIncidentFindings: API.PaginatedOperationMethod<
   ListIncidentFindingsInput,
   ListIncidentFindingsOutput,
   ListIncidentFindingsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   FindingSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListIncidentFindingsInput,
@@ -2237,7 +2236,7 @@ export const listIncidentRecords: API.PaginatedOperationMethod<
   ListIncidentRecordsInput,
   ListIncidentRecordsOutput,
   ListIncidentRecordsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   IncidentRecordSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListIncidentRecordsInput,
@@ -2272,7 +2271,7 @@ export const listRelatedItems: API.PaginatedOperationMethod<
   ListRelatedItemsInput,
   ListRelatedItemsOutput,
   ListRelatedItemsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   RelatedItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRelatedItemsInput,
@@ -2307,7 +2306,7 @@ export const listReplicationSets: API.PaginatedOperationMethod<
   ListReplicationSetsInput,
   ListReplicationSetsOutput,
   ListReplicationSetsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   Arn
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListReplicationSetsInput,
@@ -2342,7 +2341,7 @@ export const listResponsePlans: API.PaginatedOperationMethod<
   ListResponsePlansInput,
   ListResponsePlansOutput,
   ListResponsePlansError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ResponsePlanSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListResponsePlansInput,
@@ -2378,7 +2377,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -2407,7 +2406,7 @@ export const listTimelineEvents: API.PaginatedOperationMethod<
   ListTimelineEventsInput,
   ListTimelineEventsOutput,
   ListTimelineEventsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   EventSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTimelineEventsInput,
@@ -2445,7 +2444,7 @@ export const putResourcePolicy: API.OperationMethod<
   PutResourcePolicyInput,
   PutResourcePolicyOutput,
   PutResourcePolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PutResourcePolicyInput,
   output: PutResourcePolicyOutput,
@@ -2477,7 +2476,7 @@ export const startIncident: API.OperationMethod<
   StartIncidentInput,
   StartIncidentOutput,
   StartIncidentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartIncidentInput,
   output: StartIncidentOutput,
@@ -2510,7 +2509,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -2543,7 +2542,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -2575,7 +2574,7 @@ export const updateDeletionProtection: API.OperationMethod<
   UpdateDeletionProtectionInput,
   UpdateDeletionProtectionOutput,
   UpdateDeletionProtectionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateDeletionProtectionInput,
   output: UpdateDeletionProtectionOutput,
@@ -2608,7 +2607,7 @@ export const updateIncidentRecord: API.OperationMethod<
   UpdateIncidentRecordInput,
   UpdateIncidentRecordOutput,
   UpdateIncidentRecordError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateIncidentRecordInput,
   output: UpdateIncidentRecordOutput,
@@ -2640,7 +2639,7 @@ export const updateRelatedItems: API.OperationMethod<
   UpdateRelatedItemsInput,
   UpdateRelatedItemsOutput,
   UpdateRelatedItemsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateRelatedItemsInput,
   output: UpdateRelatedItemsOutput,
@@ -2672,7 +2671,7 @@ export const updateReplicationSet: API.OperationMethod<
   UpdateReplicationSetInput,
   UpdateReplicationSetOutput,
   UpdateReplicationSetError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateReplicationSetInput,
   output: UpdateReplicationSetOutput,
@@ -2704,7 +2703,7 @@ export const updateResponsePlan: API.OperationMethod<
   UpdateResponsePlanInput,
   UpdateResponsePlanOutput,
   UpdateResponsePlanError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateResponsePlanInput,
   output: UpdateResponsePlanOutput,
@@ -2736,7 +2735,7 @@ export const updateTimelineEvent: API.OperationMethod<
   UpdateTimelineEventInput,
   UpdateTimelineEventOutput,
   UpdateTimelineEventError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateTimelineEventInput,
   output: UpdateTimelineEventOutput,

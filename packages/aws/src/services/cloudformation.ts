@@ -7,7 +7,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region as Rgn } from "../region.ts";
 const ns = T.XmlNamespace(
   "http://cloudformation.amazonaws.com/doc/2010-05-15/",
 );
@@ -6733,7 +6732,7 @@ export const activateOrganizationsAccess: API.OperationMethod<
   ActivateOrganizationsAccessInput,
   ActivateOrganizationsAccessOutput,
   ActivateOrganizationsAccessError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ActivateOrganizationsAccessInput,
   output: ActivateOrganizationsAccessOutput,
@@ -6767,7 +6766,7 @@ export const activateType: API.OperationMethod<
   ActivateTypeInput,
   ActivateTypeOutput,
   ActivateTypeError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ActivateTypeInput,
   output: ActivateTypeOutput,
@@ -6793,7 +6792,7 @@ export const batchDescribeTypeConfigurations: API.OperationMethod<
   BatchDescribeTypeConfigurationsInput,
   BatchDescribeTypeConfigurationsOutput,
   BatchDescribeTypeConfigurationsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: BatchDescribeTypeConfigurationsInput,
   output: BatchDescribeTypeConfigurationsOutput,
@@ -6814,7 +6813,7 @@ export const cancelUpdateStack: API.OperationMethod<
   CancelUpdateStackInput,
   CancelUpdateStackResponse,
   CancelUpdateStackError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CancelUpdateStackInput,
   output: CancelUpdateStackResponse,
@@ -6847,7 +6846,7 @@ export const continueUpdateRollback: API.OperationMethod<
   ContinueUpdateRollbackInput,
   ContinueUpdateRollbackOutput,
   ContinueUpdateRollbackError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ContinueUpdateRollbackInput,
   output: ContinueUpdateRollbackOutput,
@@ -6890,7 +6889,7 @@ export const createChangeSet: API.OperationMethod<
   CreateChangeSetInput,
   CreateChangeSetOutput,
   CreateChangeSetError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateChangeSetInput,
   output: CreateChangeSetOutput,
@@ -6918,7 +6917,7 @@ export const createGeneratedTemplate: API.OperationMethod<
   CreateGeneratedTemplateInput,
   CreateGeneratedTemplateOutput,
   CreateGeneratedTemplateError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateGeneratedTemplateInput,
   output: CreateGeneratedTemplateOutput,
@@ -6950,7 +6949,7 @@ export const createStack: API.OperationMethod<
   CreateStackInput,
   CreateStackOutput,
   CreateStackError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateStackInput,
   output: CreateStackOutput,
@@ -6995,7 +6994,7 @@ export const createStackInstances: API.OperationMethod<
   CreateStackInstancesInput,
   CreateStackInstancesOutput,
   CreateStackInstancesError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateStackInstancesInput,
   output: CreateStackInstancesOutput,
@@ -7021,7 +7020,7 @@ export const createStackRefactor: API.OperationMethod<
   CreateStackRefactorInput,
   CreateStackRefactorOutput,
   CreateStackRefactorError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateStackRefactorInput,
   output: CreateStackRefactorOutput,
@@ -7043,7 +7042,7 @@ export const createStackSet: API.OperationMethod<
   CreateStackSetInput,
   CreateStackSetOutput,
   CreateStackSetError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateStackSetInput,
   output: CreateStackSetOutput,
@@ -7070,7 +7069,7 @@ export const deactivateOrganizationsAccess: API.OperationMethod<
   DeactivateOrganizationsAccessInput,
   DeactivateOrganizationsAccessOutput,
   DeactivateOrganizationsAccessError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeactivateOrganizationsAccessInput,
   output: DeactivateOrganizationsAccessOutput,
@@ -7102,7 +7101,7 @@ export const deactivateType: API.OperationMethod<
   DeactivateTypeInput,
   DeactivateTypeOutput,
   DeactivateTypeError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeactivateTypeInput,
   output: DeactivateTypeOutput,
@@ -7130,7 +7129,7 @@ export const deleteChangeSet: API.OperationMethod<
   DeleteChangeSetInput,
   DeleteChangeSetOutput,
   DeleteChangeSetError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteChangeSetInput,
   output: DeleteChangeSetOutput,
@@ -7151,7 +7150,7 @@ export const deleteGeneratedTemplate: API.OperationMethod<
   DeleteGeneratedTemplateInput,
   DeleteGeneratedTemplateResponse,
   DeleteGeneratedTemplateError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteGeneratedTemplateInput,
   output: DeleteGeneratedTemplateResponse,
@@ -7177,7 +7176,7 @@ export const deleteStack: API.OperationMethod<
   DeleteStackInput,
   DeleteStackResponse,
   DeleteStackError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteStackInput,
   output: DeleteStackResponse,
@@ -7213,7 +7212,7 @@ export const deleteStackInstances: API.OperationMethod<
   DeleteStackInstancesInput,
   DeleteStackInstancesOutput,
   DeleteStackInstancesError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteStackInstancesInput,
   output: DeleteStackInstancesOutput,
@@ -7241,7 +7240,7 @@ export const deleteStackSet: API.OperationMethod<
   DeleteStackSetInput,
   DeleteStackSetOutput,
   DeleteStackSetError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteStackSetInput,
   output: DeleteStackSetOutput,
@@ -7279,7 +7278,7 @@ export const deregisterType: API.OperationMethod<
   DeregisterTypeInput,
   DeregisterTypeOutput,
   DeregisterTypeError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeregisterTypeInput,
   output: DeregisterTypeOutput,
@@ -7298,7 +7297,7 @@ export const describeAccountLimits: API.PaginatedOperationMethod<
   DescribeAccountLimitsInput,
   DescribeAccountLimitsOutput,
   DescribeAccountLimitsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   AccountLimit
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeAccountLimitsInput,
@@ -7325,7 +7324,7 @@ export const describeChangeSet: API.PaginatedOperationMethod<
   DescribeChangeSetInput,
   DescribeChangeSetOutput,
   DescribeChangeSetError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   Change
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeChangeSetInput,
@@ -7352,7 +7351,7 @@ export const describeChangeSetHooks: API.OperationMethod<
   DescribeChangeSetHooksInput,
   DescribeChangeSetHooksOutput,
   DescribeChangeSetHooksError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeChangeSetHooksInput,
   output: DescribeChangeSetHooksOutput,
@@ -7393,7 +7392,7 @@ export const describeEvents: API.PaginatedOperationMethod<
   DescribeEventsInput,
   DescribeEventsOutput,
   DescribeEventsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   OperationEvent
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeEventsInput,
@@ -7422,7 +7421,7 @@ export const describeGeneratedTemplate: API.OperationMethod<
   DescribeGeneratedTemplateInput,
   DescribeGeneratedTemplateOutput,
   DescribeGeneratedTemplateError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeGeneratedTemplateInput,
   output: DescribeGeneratedTemplateOutput,
@@ -7446,7 +7445,7 @@ export const describeOrganizationsAccess: API.OperationMethod<
   DescribeOrganizationsAccessInput,
   DescribeOrganizationsAccessOutput,
   DescribeOrganizationsAccessError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeOrganizationsAccessInput,
   output: DescribeOrganizationsAccessOutput,
@@ -7476,7 +7475,7 @@ export const describePublisher: API.OperationMethod<
   DescribePublisherInput,
   DescribePublisherOutput,
   DescribePublisherError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribePublisherInput,
   output: DescribePublisherOutput,
@@ -7496,7 +7495,7 @@ export const describeResourceScan: API.OperationMethod<
   DescribeResourceScanInput,
   DescribeResourceScanOutput,
   DescribeResourceScanError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeResourceScanInput,
   output: DescribeResourceScanOutput,
@@ -7526,7 +7525,7 @@ export const describeStackDriftDetectionStatus: API.OperationMethod<
   DescribeStackDriftDetectionStatusInput,
   DescribeStackDriftDetectionStatusOutput,
   DescribeStackDriftDetectionStatusError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeStackDriftDetectionStatusInput,
   output: DescribeStackDriftDetectionStatusOutput,
@@ -7549,7 +7548,7 @@ export const describeStackEvents: API.PaginatedOperationMethod<
   DescribeStackEventsInput,
   DescribeStackEventsOutput,
   DescribeStackEventsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   StackEvent
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeStackEventsInput,
@@ -7579,7 +7578,7 @@ export const describeStackInstance: API.OperationMethod<
   DescribeStackInstanceInput,
   DescribeStackInstanceOutput,
   DescribeStackInstanceError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeStackInstanceInput,
   output: DescribeStackInstanceOutput,
@@ -7599,7 +7598,7 @@ export const describeStackRefactor: API.OperationMethod<
   DescribeStackRefactorInput,
   DescribeStackRefactorOutput,
   DescribeStackRefactorError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeStackRefactorInput,
   output: DescribeStackRefactorOutput,
@@ -7620,7 +7619,7 @@ export const describeStackResource: API.OperationMethod<
   DescribeStackResourceInput,
   DescribeStackResourceOutput,
   DescribeStackResourceError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeStackResourceInput,
   output: DescribeStackResourceOutput,
@@ -7650,7 +7649,7 @@ export const describeStackResourceDrifts: API.PaginatedOperationMethod<
   DescribeStackResourceDriftsInput,
   DescribeStackResourceDriftsOutput,
   DescribeStackResourceDriftsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeStackResourceDriftsInput,
@@ -7691,7 +7690,7 @@ export const describeStackResources: API.OperationMethod<
   DescribeStackResourcesInput,
   DescribeStackResourcesOutput,
   DescribeStackResourcesError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeStackResourcesInput,
   output: DescribeStackResourcesOutput,
@@ -7714,7 +7713,7 @@ export const describeStacks: API.PaginatedOperationMethod<
   DescribeStacksInput,
   DescribeStacksOutput,
   DescribeStacksError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   Stack
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeStacksInput,
@@ -7741,7 +7740,7 @@ export const describeStackSet: API.OperationMethod<
   DescribeStackSetInput,
   DescribeStackSetOutput,
   DescribeStackSetError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeStackSetInput,
   output: DescribeStackSetOutput,
@@ -7765,7 +7764,7 @@ export const describeStackSetOperation: API.OperationMethod<
   DescribeStackSetOperationInput,
   DescribeStackSetOperationOutput,
   DescribeStackSetOperationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeStackSetOperationInput,
   output: DescribeStackSetOperationOutput,
@@ -7795,7 +7794,7 @@ export const describeType: API.OperationMethod<
   DescribeTypeInput,
   DescribeTypeOutput,
   DescribeTypeError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeTypeInput,
   output: DescribeTypeOutput,
@@ -7821,7 +7820,7 @@ export const describeTypeRegistration: API.OperationMethod<
   DescribeTypeRegistrationInput,
   DescribeTypeRegistrationOutput,
   DescribeTypeRegistrationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeTypeRegistrationInput,
   output: DescribeTypeRegistrationOutput,
@@ -7863,7 +7862,7 @@ export const detectStackDrift: API.OperationMethod<
   DetectStackDriftInput,
   DetectStackDriftOutput,
   DetectStackDriftError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DetectStackDriftInput,
   output: DetectStackDriftOutput,
@@ -7895,7 +7894,7 @@ export const detectStackResourceDrift: API.OperationMethod<
   DetectStackResourceDriftInput,
   DetectStackResourceDriftOutput,
   DetectStackResourceDriftError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DetectStackResourceDriftInput,
   output: DetectStackResourceDriftOutput,
@@ -7946,7 +7945,7 @@ export const detectStackSetDrift: API.OperationMethod<
   DetectStackSetDriftInput,
   DetectStackSetDriftOutput,
   DetectStackSetDriftError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DetectStackSetDriftInput,
   output: DetectStackSetDriftOutput,
@@ -7970,7 +7969,7 @@ export const estimateTemplateCost: API.OperationMethod<
   EstimateTemplateCostInput,
   EstimateTemplateCostOutput,
   EstimateTemplateCostError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: EstimateTemplateCostInput,
   output: EstimateTemplateCostOutput,
@@ -8004,7 +8003,7 @@ export const executeChangeSet: API.OperationMethod<
   ExecuteChangeSetInput,
   ExecuteChangeSetOutput,
   ExecuteChangeSetError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ExecuteChangeSetInput,
   output: ExecuteChangeSetOutput,
@@ -8027,7 +8026,7 @@ export const executeStackRefactor: API.OperationMethod<
   ExecuteStackRefactorInput,
   ExecuteStackRefactorResponse,
   ExecuteStackRefactorError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ExecuteStackRefactorInput,
   output: ExecuteStackRefactorResponse,
@@ -8050,7 +8049,7 @@ export const getGeneratedTemplate: API.OperationMethod<
   GetGeneratedTemplateInput,
   GetGeneratedTemplateOutput,
   GetGeneratedTemplateError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetGeneratedTemplateInput,
   output: GetGeneratedTemplateOutput,
@@ -8075,7 +8074,7 @@ export const getHookResult: API.OperationMethod<
   GetHookResultInput,
   GetHookResultOutput,
   GetHookResultError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetHookResultInput,
   output: GetHookResultOutput,
@@ -8094,7 +8093,7 @@ export const getStackPolicy: API.OperationMethod<
   GetStackPolicyInput,
   GetStackPolicyOutput,
   GetStackPolicyError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetStackPolicyInput,
   output: GetStackPolicyOutput,
@@ -8118,7 +8117,7 @@ export const getTemplate: API.OperationMethod<
   GetTemplateInput,
   GetTemplateOutput,
   GetTemplateError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetTemplateInput,
   output: GetTemplateOutput,
@@ -8145,7 +8144,7 @@ export const getTemplateSummary: API.OperationMethod<
   GetTemplateSummaryInput,
   GetTemplateSummaryOutput,
   GetTemplateSummaryError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetTemplateSummaryInput,
   output: GetTemplateSummaryOutput,
@@ -8174,7 +8173,7 @@ export const importStacksToStackSet: API.OperationMethod<
   ImportStacksToStackSetInput,
   ImportStacksToStackSetOutput,
   ImportStacksToStackSetError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ImportStacksToStackSetInput,
   output: ImportStacksToStackSetOutput,
@@ -8202,7 +8201,7 @@ export const listChangeSets: API.PaginatedOperationMethod<
   ListChangeSetsInput,
   ListChangeSetsOutput,
   ListChangeSetsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ChangeSetSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListChangeSetsInput,
@@ -8231,7 +8230,7 @@ export const listExports: API.PaginatedOperationMethod<
   ListExportsInput,
   ListExportsOutput,
   ListExportsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   Export
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListExportsInput,
@@ -8255,7 +8254,7 @@ export const listGeneratedTemplates: API.PaginatedOperationMethod<
   ListGeneratedTemplatesInput,
   ListGeneratedTemplatesOutput,
   ListGeneratedTemplatesError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   TemplateSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListGeneratedTemplatesInput,
@@ -8293,7 +8292,7 @@ export const listHookResults: API.OperationMethod<
   ListHookResultsInput,
   ListHookResultsOutput,
   ListHookResultsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListHookResultsInput,
   output: ListHookResultsOutput,
@@ -8315,7 +8314,7 @@ export const listImports: API.PaginatedOperationMethod<
   ListImportsInput,
   ListImportsOutput,
   ListImportsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   StackName
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListImportsInput,
@@ -8343,7 +8342,7 @@ export const listResourceScanRelatedResources: API.PaginatedOperationMethod<
   ListResourceScanRelatedResourcesInput,
   ListResourceScanRelatedResourcesOutput,
   ListResourceScanRelatedResourcesError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ScannedResource
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListResourceScanRelatedResourcesInput,
@@ -8374,7 +8373,7 @@ export const listResourceScanResources: API.PaginatedOperationMethod<
   ListResourceScanResourcesInput,
   ListResourceScanResourcesOutput,
   ListResourceScanResourcesError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ScannedResource
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListResourceScanResourcesInput,
@@ -8400,7 +8399,7 @@ export const listResourceScans: API.PaginatedOperationMethod<
   ListResourceScansInput,
   ListResourceScansOutput,
   ListResourceScansError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ResourceScanSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListResourceScansInput,
@@ -8433,7 +8432,7 @@ export const listStackInstanceResourceDrifts: API.OperationMethod<
   ListStackInstanceResourceDriftsInput,
   ListStackInstanceResourceDriftsOutput,
   ListStackInstanceResourceDriftsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListStackInstanceResourceDriftsInput,
   output: ListStackInstanceResourceDriftsOutput,
@@ -8457,7 +8456,7 @@ export const listStackInstances: API.PaginatedOperationMethod<
   ListStackInstancesInput,
   ListStackInstancesOutput,
   ListStackInstancesError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   StackInstanceSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListStackInstancesInput,
@@ -8482,7 +8481,7 @@ export const listStackRefactorActions: API.PaginatedOperationMethod<
   ListStackRefactorActionsInput,
   ListStackRefactorActionsOutput,
   ListStackRefactorActionsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   StackRefactorAction
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListStackRefactorActionsInput,
@@ -8507,7 +8506,7 @@ export const listStackRefactors: API.PaginatedOperationMethod<
   ListStackRefactorsInput,
   ListStackRefactorsOutput,
   ListStackRefactorsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   StackRefactorSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListStackRefactorsInput,
@@ -8535,7 +8534,7 @@ export const listStackResources: API.PaginatedOperationMethod<
   ListStackResourcesInput,
   ListStackResourcesOutput,
   ListStackResourcesError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   StackResourceSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListStackResourcesInput,
@@ -8563,7 +8562,7 @@ export const listStacks: API.PaginatedOperationMethod<
   ListStacksInput,
   ListStacksOutput,
   ListStacksError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   StackSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListStacksInput,
@@ -8589,7 +8588,7 @@ export const listStackSetAutoDeploymentTargets: API.OperationMethod<
   ListStackSetAutoDeploymentTargetsInput,
   ListStackSetAutoDeploymentTargetsOutput,
   ListStackSetAutoDeploymentTargetsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListStackSetAutoDeploymentTargetsInput,
   output: ListStackSetAutoDeploymentTargetsOutput,
@@ -8613,7 +8612,7 @@ export const listStackSetOperationResults: API.PaginatedOperationMethod<
   ListStackSetOperationResultsInput,
   ListStackSetOperationResultsOutput,
   ListStackSetOperationResultsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   StackSetOperationResultSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListStackSetOperationResultsInput,
@@ -8643,7 +8642,7 @@ export const listStackSetOperations: API.PaginatedOperationMethod<
   ListStackSetOperationsInput,
   ListStackSetOperationsOutput,
   ListStackSetOperationsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   StackSetOperationSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListStackSetOperationsInput,
@@ -8684,7 +8683,7 @@ export const listStackSets: API.PaginatedOperationMethod<
   ListStackSetsInput,
   ListStackSetsOutput,
   ListStackSetsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   StackSetSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListStackSetsInput,
@@ -8709,7 +8708,7 @@ export const listTypeRegistrations: API.PaginatedOperationMethod<
   ListTypeRegistrationsInput,
   ListTypeRegistrationsOutput,
   ListTypeRegistrationsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTypeRegistrationsInput,
@@ -8735,7 +8734,7 @@ export const listTypes: API.PaginatedOperationMethod<
   ListTypesInput,
   ListTypesOutput,
   ListTypesError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   TypeSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTypesInput,
@@ -8760,7 +8759,7 @@ export const listTypeVersions: API.PaginatedOperationMethod<
   ListTypeVersionsInput,
   ListTypeVersionsOutput,
   ListTypeVersionsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTypeVersionsInput,
@@ -8794,7 +8793,7 @@ export const publishType: API.OperationMethod<
   PublishTypeInput,
   PublishTypeOutput,
   PublishTypeError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PublishTypeInput,
   output: PublishTypeOutput,
@@ -8818,7 +8817,7 @@ export const recordHandlerProgress: API.OperationMethod<
   RecordHandlerProgressInput,
   RecordHandlerProgressOutput,
   RecordHandlerProgressError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: RecordHandlerProgressInput,
   output: RecordHandlerProgressOutput,
@@ -8845,7 +8844,7 @@ export const registerPublisher: API.OperationMethod<
   RegisterPublisherInput,
   RegisterPublisherOutput,
   RegisterPublisherError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: RegisterPublisherInput,
   output: RegisterPublisherOutput,
@@ -8887,7 +8886,7 @@ export const registerType: API.OperationMethod<
   RegisterTypeInput,
   RegisterTypeOutput,
   RegisterTypeError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: RegisterTypeInput,
   output: RegisterTypeOutput,
@@ -8924,7 +8923,7 @@ export const rollbackStack: API.OperationMethod<
   RollbackStackInput,
   RollbackStackOutput,
   RollbackStackError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: RollbackStackInput,
   output: RollbackStackOutput,
@@ -8942,7 +8941,7 @@ export const setStackPolicy: API.OperationMethod<
   SetStackPolicyInput,
   SetStackPolicyResponse,
   SetStackPolicyError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: SetStackPolicyInput,
   output: SetStackPolicyResponse,
@@ -8979,7 +8978,7 @@ export const setTypeConfiguration: API.OperationMethod<
   SetTypeConfigurationInput,
   SetTypeConfigurationOutput,
   SetTypeConfigurationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: SetTypeConfigurationInput,
   output: SetTypeConfigurationOutput,
@@ -9001,7 +9000,7 @@ export const setTypeDefaultVersion: API.OperationMethod<
   SetTypeDefaultVersionInput,
   SetTypeDefaultVersionOutput,
   SetTypeDefaultVersionError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: SetTypeDefaultVersionInput,
   output: SetTypeDefaultVersionOutput,
@@ -9024,7 +9023,7 @@ export const signalResource: API.OperationMethod<
   SignalResourceInput,
   SignalResourceResponse,
   SignalResourceError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: SignalResourceInput,
   output: SignalResourceResponse,
@@ -9046,7 +9045,7 @@ export const startResourceScan: API.OperationMethod<
   StartResourceScanInput,
   StartResourceScanOutput,
   StartResourceScanError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartResourceScanInput,
   output: StartResourceScanOutput,
@@ -9070,7 +9069,7 @@ export const stopStackSetOperation: API.OperationMethod<
   StopStackSetOperationInput,
   StopStackSetOperationOutput,
   StopStackSetOperationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StopStackSetOperationInput,
   output: StopStackSetOperationOutput,
@@ -9120,7 +9119,7 @@ export const testType: API.OperationMethod<
   TestTypeInput,
   TestTypeOutput,
   TestTypeError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: TestTypeInput,
   output: TestTypeOutput,
@@ -9145,7 +9144,7 @@ export const updateGeneratedTemplate: API.OperationMethod<
   UpdateGeneratedTemplateInput,
   UpdateGeneratedTemplateOutput,
   UpdateGeneratedTemplateError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateGeneratedTemplateInput,
   output: UpdateGeneratedTemplateOutput,
@@ -9179,7 +9178,7 @@ export const updateStack: API.OperationMethod<
   UpdateStackInput,
   UpdateStackOutput,
   UpdateStackError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateStackInput,
   output: UpdateStackOutput,
@@ -9236,7 +9235,7 @@ export const updateStackInstances: API.OperationMethod<
   UpdateStackInstancesInput,
   UpdateStackInstancesOutput,
   UpdateStackInstancesError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateStackInstancesInput,
   output: UpdateStackInstancesOutput,
@@ -9286,7 +9285,7 @@ export const updateStackSet: API.OperationMethod<
   UpdateStackSetInput,
   UpdateStackSetOutput,
   UpdateStackSetError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateStackSetInput,
   output: UpdateStackSetOutput,
@@ -9318,7 +9317,7 @@ export const updateTerminationProtection: API.OperationMethod<
   UpdateTerminationProtectionInput,
   UpdateTerminationProtectionOutput,
   UpdateTerminationProtectionError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateTerminationProtectionInput,
   output: UpdateTerminationProtectionOutput,
@@ -9338,7 +9337,7 @@ export const validateTemplate: API.OperationMethod<
   ValidateTemplateInput,
   ValidateTemplateOutput,
   ValidateTemplateError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ValidateTemplateInput,
   output: ValidateTemplateOutput,

@@ -8,7 +8,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 import { SensitiveString } from "../sensitive.ts";
 const svc = T.AwsApiService({
   sdkId: "VerifiedPermissions",
@@ -2574,7 +2573,7 @@ export const batchGetPolicy: API.OperationMethod<
   BatchGetPolicyInput,
   BatchGetPolicyOutput,
   BatchGetPolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: BatchGetPolicyInput,
   output: BatchGetPolicyOutput,
@@ -2601,7 +2600,7 @@ export const batchIsAuthorized: API.OperationMethod<
   BatchIsAuthorizedInput,
   BatchIsAuthorizedOutput,
   BatchIsAuthorizedError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: BatchIsAuthorizedInput,
   output: BatchIsAuthorizedOutput,
@@ -2628,7 +2627,7 @@ export const batchIsAuthorizedWithToken: API.OperationMethod<
   BatchIsAuthorizedWithTokenInput,
   BatchIsAuthorizedWithTokenOutput,
   BatchIsAuthorizedWithTokenError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: BatchIsAuthorizedWithTokenInput,
   output: BatchIsAuthorizedWithTokenOutput,
@@ -2663,7 +2662,7 @@ export const createIdentitySource: API.OperationMethod<
   CreateIdentitySourceInput,
   CreateIdentitySourceOutput,
   CreateIdentitySourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateIdentitySourceInput,
   output: CreateIdentitySourceOutput,
@@ -2699,7 +2698,7 @@ export const createPolicy: API.OperationMethod<
   CreatePolicyInput,
   CreatePolicyOutput,
   CreatePolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreatePolicyInput,
   output: CreatePolicyOutput,
@@ -2730,7 +2729,7 @@ export const createPolicyStore: API.OperationMethod<
   CreatePolicyStoreInput,
   CreatePolicyStoreOutput,
   CreatePolicyStoreError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreatePolicyStoreInput,
   output: CreatePolicyStoreOutput,
@@ -2761,7 +2760,7 @@ export const createPolicyStoreAlias: API.OperationMethod<
   CreatePolicyStoreAliasInput,
   CreatePolicyStoreAliasOutput,
   CreatePolicyStoreAliasError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreatePolicyStoreAliasInput,
   output: CreatePolicyStoreAliasOutput,
@@ -2791,7 +2790,7 @@ export const createPolicyTemplate: API.OperationMethod<
   CreatePolicyTemplateInput,
   CreatePolicyTemplateOutput,
   CreatePolicyTemplateError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreatePolicyTemplateInput,
   output: CreatePolicyTemplateOutput,
@@ -2817,7 +2816,7 @@ export const deleteIdentitySource: API.OperationMethod<
   DeleteIdentitySourceInput,
   DeleteIdentitySourceOutput,
   DeleteIdentitySourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteIdentitySourceInput,
   output: DeleteIdentitySourceOutput,
@@ -2840,7 +2839,7 @@ export const deletePolicy: API.OperationMethod<
   DeletePolicyInput,
   DeletePolicyOutput,
   DeletePolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeletePolicyInput,
   output: DeletePolicyOutput,
@@ -2860,7 +2859,7 @@ export const deletePolicyStore: API.OperationMethod<
   DeletePolicyStoreInput,
   DeletePolicyStoreOutput,
   DeletePolicyStoreError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeletePolicyStoreInput,
   output: DeletePolicyStoreOutput,
@@ -2890,7 +2889,7 @@ export const deletePolicyStoreAlias: API.OperationMethod<
   DeletePolicyStoreAliasInput,
   DeletePolicyStoreAliasOutput,
   DeletePolicyStoreAliasError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeletePolicyStoreAliasInput,
   output: DeletePolicyStoreAliasOutput,
@@ -2917,7 +2916,7 @@ export const deletePolicyTemplate: API.OperationMethod<
   DeletePolicyTemplateInput,
   DeletePolicyTemplateOutput,
   DeletePolicyTemplateError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeletePolicyTemplateInput,
   output: DeletePolicyTemplateOutput,
@@ -2935,7 +2934,7 @@ export const getIdentitySource: API.OperationMethod<
   GetIdentitySourceInput,
   GetIdentitySourceOutput,
   GetIdentitySourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetIdentitySourceInput,
   output: GetIdentitySourceOutput,
@@ -2956,7 +2955,7 @@ export const getPolicy: API.OperationMethod<
   GetPolicyInput,
   GetPolicyOutput,
   GetPolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetPolicyInput,
   output: GetPolicyOutput,
@@ -2977,7 +2976,7 @@ export const getPolicyStore: API.OperationMethod<
   GetPolicyStoreInput,
   GetPolicyStoreOutput,
   GetPolicyStoreError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetPolicyStoreInput,
   output: GetPolicyStoreOutput,
@@ -2995,7 +2994,7 @@ export const getPolicyStoreAlias: API.OperationMethod<
   GetPolicyStoreAliasInput,
   GetPolicyStoreAliasOutput,
   GetPolicyStoreAliasError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetPolicyStoreAliasInput,
   output: GetPolicyStoreAliasOutput,
@@ -3013,7 +3012,7 @@ export const getPolicyTemplate: API.OperationMethod<
   GetPolicyTemplateInput,
   GetPolicyTemplateOutput,
   GetPolicyTemplateError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetPolicyTemplateInput,
   output: GetPolicyTemplateOutput,
@@ -3034,7 +3033,7 @@ export const getSchema: API.OperationMethod<
   GetSchemaInput,
   GetSchemaOutput,
   GetSchemaError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetSchemaInput,
   output: GetSchemaOutput,
@@ -3055,7 +3054,7 @@ export const isAuthorized: API.OperationMethod<
   IsAuthorizedInput,
   IsAuthorizedOutput,
   IsAuthorizedError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: IsAuthorizedInput,
   output: IsAuthorizedOutput,
@@ -3080,7 +3079,7 @@ export const isAuthorizedWithToken: API.OperationMethod<
   IsAuthorizedWithTokenInput,
   IsAuthorizedWithTokenOutput,
   IsAuthorizedWithTokenError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: IsAuthorizedWithTokenInput,
   output: IsAuthorizedWithTokenOutput,
@@ -3098,7 +3097,7 @@ export const listIdentitySources: API.PaginatedOperationMethod<
   ListIdentitySourcesInput,
   ListIdentitySourcesOutput,
   ListIdentitySourcesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   IdentitySourceItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListIdentitySourcesInput,
@@ -3123,7 +3122,7 @@ export const listPolicies: API.PaginatedOperationMethod<
   ListPoliciesInput,
   ListPoliciesOutput,
   ListPoliciesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   PolicyItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPoliciesInput,
@@ -3148,7 +3147,7 @@ export const listPolicyStoreAliases: API.PaginatedOperationMethod<
   ListPolicyStoreAliasesInput,
   ListPolicyStoreAliasesOutput,
   ListPolicyStoreAliasesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   PolicyStoreAliasItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPolicyStoreAliasesInput,
@@ -3173,7 +3172,7 @@ export const listPolicyStores: API.PaginatedOperationMethod<
   ListPolicyStoresInput,
   ListPolicyStoresOutput,
   ListPolicyStoresError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   PolicyStoreItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPolicyStoresInput,
@@ -3198,7 +3197,7 @@ export const listPolicyTemplates: API.PaginatedOperationMethod<
   ListPolicyTemplatesInput,
   ListPolicyTemplatesOutput,
   ListPolicyTemplatesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   PolicyTemplateItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPolicyTemplatesInput,
@@ -3228,7 +3227,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceInput,
   ListTagsForResourceOutput,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceInput,
   output: ListTagsForResourceOutput,
@@ -3258,7 +3257,7 @@ export const putSchema: API.OperationMethod<
   PutSchemaInput,
   PutSchemaOutput,
   PutSchemaError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PutSchemaInput,
   output: PutSchemaOutput,
@@ -3293,7 +3292,7 @@ export const tagResource: API.OperationMethod<
   TagResourceInput,
   TagResourceOutput,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: TagResourceInput,
   output: TagResourceOutput,
@@ -3322,7 +3321,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceInput,
   UntagResourceOutput,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceInput,
   output: UntagResourceOutput,
@@ -3351,7 +3350,7 @@ export const updateIdentitySource: API.OperationMethod<
   UpdateIdentitySourceInput,
   UpdateIdentitySourceOutput,
   UpdateIdentitySourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateIdentitySourceInput,
   output: UpdateIdentitySourceOutput,
@@ -3396,7 +3395,7 @@ export const updatePolicy: API.OperationMethod<
   UpdatePolicyInput,
   UpdatePolicyOutput,
   UpdatePolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdatePolicyInput,
   output: UpdatePolicyOutput,
@@ -3425,7 +3424,7 @@ export const updatePolicyStore: API.OperationMethod<
   UpdatePolicyStoreInput,
   UpdatePolicyStoreOutput,
   UpdatePolicyStoreError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdatePolicyStoreInput,
   output: UpdatePolicyStoreOutput,
@@ -3451,7 +3450,7 @@ export const updatePolicyTemplate: API.OperationMethod<
   UpdatePolicyTemplateInput,
   UpdatePolicyTemplateOutput,
   UpdatePolicyTemplateError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdatePolicyTemplateInput,
   output: UpdatePolicyTemplateOutput,

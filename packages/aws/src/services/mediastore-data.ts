@@ -7,7 +7,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 const ns = T.XmlNamespace(
   "https://object.mediastore.amazonaws.com/doc/2017-09-01",
 );
@@ -359,7 +358,7 @@ export const deleteObject: API.OperationMethod<
   DeleteObjectRequest,
   DeleteObjectResponse,
   DeleteObjectError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteObjectRequest,
   output: DeleteObjectResponse,
@@ -385,7 +384,7 @@ export const describeObject: API.OperationMethod<
   DescribeObjectRequest,
   DescribeObjectResponse,
   DescribeObjectError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeObjectRequest,
   output: DescribeObjectResponse,
@@ -412,7 +411,7 @@ export const getObject: API.OperationMethod<
   GetObjectRequest,
   GetObjectResponse,
   GetObjectError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetObjectRequest,
   output: GetObjectResponse,
@@ -439,7 +438,7 @@ export const listItems: API.PaginatedOperationMethod<
   ListItemsRequest,
   ListItemsResponse,
   ListItemsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListItemsRequest,
@@ -466,7 +465,7 @@ export const putObject: API.OperationMethod<
   PutObjectRequest,
   PutObjectResponse,
   PutObjectError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PutObjectRequest,
   output: PutObjectResponse,

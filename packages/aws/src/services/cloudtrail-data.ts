@@ -6,7 +6,6 @@ import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 const svc = T.AwsApiService({
   sdkId: "CloudTrail Data",
   serviceShapeName: "CloudTrailDataService",
@@ -208,7 +207,7 @@ export const putAuditEvents: API.OperationMethod<
   PutAuditEventsRequest,
   PutAuditEventsResponse,
   PutAuditEventsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PutAuditEventsRequest,
   output: PutAuditEventsResponse,

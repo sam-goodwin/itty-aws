@@ -7,7 +7,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 const svc = T.AwsApiService({
   sdkId: "Compute Optimizer Automation",
   serviceShapeName: "ComputeOptimizerAutomationService",
@@ -1612,7 +1611,7 @@ export const associateAccounts: API.OperationMethod<
   AssociateAccountsRequest,
   AssociateAccountsResponse,
   AssociateAccountsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: AssociateAccountsRequest,
   output: AssociateAccountsResponse,
@@ -1653,7 +1652,7 @@ export const createAutomationRule: API.OperationMethod<
   CreateAutomationRuleRequest,
   CreateAutomationRuleResponse,
   CreateAutomationRuleError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateAutomationRuleRequest,
   output: CreateAutomationRuleResponse,
@@ -1694,7 +1693,7 @@ export const deleteAutomationRule: API.OperationMethod<
   DeleteAutomationRuleRequest,
   DeleteAutomationRuleResponse,
   DeleteAutomationRuleError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteAutomationRuleRequest,
   output: DeleteAutomationRuleResponse,
@@ -1736,7 +1735,7 @@ export const disassociateAccounts: API.OperationMethod<
   DisassociateAccountsRequest,
   DisassociateAccountsResponse,
   DisassociateAccountsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DisassociateAccountsRequest,
   output: DisassociateAccountsResponse,
@@ -1774,7 +1773,7 @@ export const getAutomationEvent: API.OperationMethod<
   GetAutomationEventRequest,
   GetAutomationEventResponse,
   GetAutomationEventError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetAutomationEventRequest,
   output: GetAutomationEventResponse,
@@ -1810,7 +1809,7 @@ export const getAutomationRule: API.OperationMethod<
   GetAutomationRuleRequest,
   GetAutomationRuleResponse,
   GetAutomationRuleError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetAutomationRuleRequest,
   output: GetAutomationRuleResponse,
@@ -1846,7 +1845,7 @@ export const getEnrollmentConfiguration: API.OperationMethod<
   GetEnrollmentConfigurationRequest,
   GetEnrollmentConfigurationResponse,
   GetEnrollmentConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetEnrollmentConfigurationRequest,
   output: GetEnrollmentConfigurationResponse,
@@ -1884,7 +1883,7 @@ export const listAccounts: API.PaginatedOperationMethod<
   ListAccountsRequest,
   ListAccountsResponse,
   ListAccountsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   AccountInfo
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsRequest,
@@ -1926,7 +1925,7 @@ export const listAutomationEvents: API.PaginatedOperationMethod<
   ListAutomationEventsRequest,
   ListAutomationEventsResponse,
   ListAutomationEventsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   AutomationEvent
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAutomationEventsRequest,
@@ -1968,7 +1967,7 @@ export const listAutomationEventSteps: API.PaginatedOperationMethod<
   ListAutomationEventStepsRequest,
   ListAutomationEventStepsResponse,
   ListAutomationEventStepsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   AutomationEventStep
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAutomationEventStepsRequest,
@@ -2010,7 +2009,7 @@ export const listAutomationEventSummaries: API.PaginatedOperationMethod<
   ListAutomationEventSummariesRequest,
   ListAutomationEventSummariesResponse,
   ListAutomationEventSummariesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   AutomationEventSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAutomationEventSummariesRequest,
@@ -2051,7 +2050,7 @@ export const listAutomationRulePreview: API.PaginatedOperationMethod<
   ListAutomationRulePreviewRequest,
   ListAutomationRulePreviewResponse,
   ListAutomationRulePreviewError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   PreviewResult
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAutomationRulePreviewRequest,
@@ -2092,7 +2091,7 @@ export const listAutomationRulePreviewSummaries: API.PaginatedOperationMethod<
   ListAutomationRulePreviewSummariesRequest,
   ListAutomationRulePreviewSummariesResponse,
   ListAutomationRulePreviewSummariesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   PreviewResultSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAutomationRulePreviewSummariesRequest,
@@ -2133,7 +2132,7 @@ export const listAutomationRules: API.PaginatedOperationMethod<
   ListAutomationRulesRequest,
   ListAutomationRulesResponse,
   ListAutomationRulesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   AutomationRule
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAutomationRulesRequest,
@@ -2176,7 +2175,7 @@ export const listRecommendedActions: API.PaginatedOperationMethod<
   ListRecommendedActionsRequest,
   ListRecommendedActionsResponse,
   ListRecommendedActionsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   RecommendedAction
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRecommendedActionsRequest,
@@ -2219,7 +2218,7 @@ export const listRecommendedActionSummaries: API.PaginatedOperationMethod<
   ListRecommendedActionSummariesRequest,
   ListRecommendedActionSummariesResponse,
   ListRecommendedActionSummariesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   RecommendedActionSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRecommendedActionSummariesRequest,
@@ -2261,7 +2260,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -2301,7 +2300,7 @@ export const rollbackAutomationEvent: API.OperationMethod<
   RollbackAutomationEventRequest,
   RollbackAutomationEventResponse,
   RollbackAutomationEventError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: RollbackAutomationEventRequest,
   output: RollbackAutomationEventResponse,
@@ -2344,7 +2343,7 @@ export const startAutomationEvent: API.OperationMethod<
   StartAutomationEventRequest,
   StartAutomationEventResponse,
   StartAutomationEventError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartAutomationEventRequest,
   output: StartAutomationEventResponse,
@@ -2385,7 +2384,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -2425,7 +2424,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -2465,7 +2464,7 @@ export const updateAutomationRule: API.OperationMethod<
   UpdateAutomationRuleRequest,
   UpdateAutomationRuleResponse,
   UpdateAutomationRuleError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateAutomationRuleRequest,
   output: UpdateAutomationRuleResponse,
@@ -2506,7 +2505,7 @@ export const updateEnrollmentConfiguration: API.OperationMethod<
   UpdateEnrollmentConfigurationRequest,
   UpdateEnrollmentConfigurationResponse,
   UpdateEnrollmentConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateEnrollmentConfigurationRequest,
   output: UpdateEnrollmentConfigurationResponse,

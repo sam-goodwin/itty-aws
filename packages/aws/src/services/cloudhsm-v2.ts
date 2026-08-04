@@ -7,7 +7,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region as Rgn } from "../region.ts";
 const svc = T.AwsApiService({
   sdkId: "CloudHSM V2",
   serviceShapeName: "BaldrApiService",
@@ -805,7 +804,7 @@ export const copyBackupToRegion: API.OperationMethod<
   CopyBackupToRegionRequest,
   CopyBackupToRegionResponse,
   CopyBackupToRegionError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CopyBackupToRegionRequest,
   output: CopyBackupToRegionResponse,
@@ -840,7 +839,7 @@ export const createCluster: API.OperationMethod<
   CreateClusterRequest,
   CreateClusterResponse,
   CreateClusterError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateClusterRequest,
   output: CreateClusterResponse,
@@ -874,7 +873,7 @@ export const createHsm: API.OperationMethod<
   CreateHsmRequest,
   CreateHsmResponse,
   CreateHsmError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateHsmRequest,
   output: CreateHsmResponse,
@@ -908,7 +907,7 @@ export const deleteBackup: API.OperationMethod<
   DeleteBackupRequest,
   DeleteBackupResponse,
   DeleteBackupError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteBackupRequest,
   output: DeleteBackupResponse,
@@ -942,7 +941,7 @@ export const deleteCluster: API.OperationMethod<
   DeleteClusterRequest,
   DeleteClusterResponse,
   DeleteClusterError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteClusterRequest,
   output: DeleteClusterResponse,
@@ -977,7 +976,7 @@ export const deleteHsm: API.OperationMethod<
   DeleteHsmRequest,
   DeleteHsmResponse,
   DeleteHsmError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteHsmRequest,
   output: DeleteHsmResponse,
@@ -1011,7 +1010,7 @@ export const deleteResourcePolicy: API.OperationMethod<
   DeleteResourcePolicyRequest,
   DeleteResourcePolicyResponse,
   DeleteResourcePolicyError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteResourcePolicyRequest,
   output: DeleteResourcePolicyResponse,
@@ -1050,7 +1049,7 @@ export const describeBackups: API.PaginatedOperationMethod<
   DescribeBackupsRequest,
   DescribeBackupsResponse,
   DescribeBackupsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeBackupsRequest,
@@ -1095,7 +1094,7 @@ export const describeClusters: API.PaginatedOperationMethod<
   DescribeClustersRequest,
   DescribeClustersResponse,
   DescribeClustersError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeClustersRequest,
@@ -1133,7 +1132,7 @@ export const getResourcePolicy: API.OperationMethod<
   GetResourcePolicyRequest,
   GetResourcePolicyResponse,
   GetResourcePolicyError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetResourcePolicyRequest,
   output: GetResourcePolicyResponse,
@@ -1168,7 +1167,7 @@ export const initializeCluster: API.OperationMethod<
   InitializeClusterRequest,
   InitializeClusterResponse,
   InitializeClusterError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: InitializeClusterRequest,
   output: InitializeClusterResponse,
@@ -1207,7 +1206,7 @@ export const listTags: API.PaginatedOperationMethod<
   ListTagsRequest,
   ListTagsResponse,
   ListTagsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTagsRequest,
@@ -1246,7 +1245,7 @@ export const modifyBackupAttributes: API.OperationMethod<
   ModifyBackupAttributesRequest,
   ModifyBackupAttributesResponse,
   ModifyBackupAttributesError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyBackupAttributesRequest,
   output: ModifyBackupAttributesResponse,
@@ -1278,7 +1277,7 @@ export const modifyCluster: API.OperationMethod<
   ModifyClusterRequest,
   ModifyClusterResponse,
   ModifyClusterError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyClusterRequest,
   output: ModifyClusterResponse,
@@ -1324,7 +1323,7 @@ export const putResourcePolicy: API.OperationMethod<
   PutResourcePolicyRequest,
   PutResourcePolicyResponse,
   PutResourcePolicyError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PutResourcePolicyRequest,
   output: PutResourcePolicyResponse,
@@ -1358,7 +1357,7 @@ export const restoreBackup: API.OperationMethod<
   RestoreBackupRequest,
   RestoreBackupResponse,
   RestoreBackupError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: RestoreBackupRequest,
   output: RestoreBackupResponse,
@@ -1392,7 +1391,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -1427,7 +1426,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,

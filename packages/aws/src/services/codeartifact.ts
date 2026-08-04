@@ -8,7 +8,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 import { SensitiveString } from "../sensitive.ts";
 const svc = T.AwsApiService({
   sdkId: "codeartifact",
@@ -2734,7 +2733,7 @@ export const associateExternalConnection: API.OperationMethod<
   AssociateExternalConnectionRequest,
   AssociateExternalConnectionResult,
   AssociateExternalConnectionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: AssociateExternalConnectionRequest,
   output: AssociateExternalConnectionResult,
@@ -2770,7 +2769,7 @@ export const copyPackageVersions: API.OperationMethod<
   CopyPackageVersionsRequest,
   CopyPackageVersionsResult,
   CopyPackageVersionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CopyPackageVersionsRequest,
   output: CopyPackageVersionsResult,
@@ -2811,7 +2810,7 @@ export const createDomain: API.OperationMethod<
   CreateDomainRequest,
   CreateDomainResult,
   CreateDomainError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateDomainRequest,
   output: CreateDomainResult,
@@ -2845,7 +2844,7 @@ export const createPackageGroup: API.OperationMethod<
   CreatePackageGroupRequest,
   CreatePackageGroupResult,
   CreatePackageGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreatePackageGroupRequest,
   output: CreatePackageGroupResult,
@@ -2879,7 +2878,7 @@ export const createRepository: API.OperationMethod<
   CreateRepositoryRequest,
   CreateRepositoryResult,
   CreateRepositoryError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateRepositoryRequest,
   output: CreateRepositoryResult,
@@ -2912,7 +2911,7 @@ export const deleteDomain: API.OperationMethod<
   DeleteDomainRequest,
   DeleteDomainResult,
   DeleteDomainError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteDomainRequest,
   output: DeleteDomainResult,
@@ -2943,7 +2942,7 @@ export const deleteDomainPermissionsPolicy: API.OperationMethod<
   DeleteDomainPermissionsPolicyRequest,
   DeleteDomainPermissionsPolicyResult,
   DeleteDomainPermissionsPolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteDomainPermissionsPolicyRequest,
   output: DeleteDomainPermissionsPolicyResult,
@@ -2976,7 +2975,7 @@ export const deletePackage: API.OperationMethod<
   DeletePackageRequest,
   DeletePackageResult,
   DeletePackageError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeletePackageRequest,
   output: DeletePackageResult,
@@ -3013,7 +3012,7 @@ export const deletePackageGroup: API.OperationMethod<
   DeletePackageGroupRequest,
   DeletePackageGroupResult,
   DeletePackageGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeletePackageGroupRequest,
   output: DeletePackageGroupResult,
@@ -3050,7 +3049,7 @@ export const deletePackageVersions: API.OperationMethod<
   DeletePackageVersionsRequest,
   DeletePackageVersionsResult,
   DeletePackageVersionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeletePackageVersionsRequest,
   output: DeletePackageVersionsResult,
@@ -3082,7 +3081,7 @@ export const deleteRepository: API.OperationMethod<
   DeleteRepositoryRequest,
   DeleteRepositoryResult,
   DeleteRepositoryError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteRepositoryRequest,
   output: DeleteRepositoryResult,
@@ -3118,7 +3117,7 @@ export const deleteRepositoryPermissionsPolicy: API.OperationMethod<
   DeleteRepositoryPermissionsPolicyRequest,
   DeleteRepositoryPermissionsPolicyResult,
   DeleteRepositoryPermissionsPolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteRepositoryPermissionsPolicyRequest,
   output: DeleteRepositoryPermissionsPolicyResult,
@@ -3151,7 +3150,7 @@ export const describeDomain: API.OperationMethod<
   DescribeDomainRequest,
   DescribeDomainResult,
   DescribeDomainError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeDomainRequest,
   output: DescribeDomainResult,
@@ -3183,7 +3182,7 @@ export const describePackage: API.OperationMethod<
   DescribePackageRequest,
   DescribePackageResult,
   DescribePackageError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribePackageRequest,
   output: DescribePackageResult,
@@ -3214,7 +3213,7 @@ export const describePackageGroup: API.OperationMethod<
   DescribePackageGroupRequest,
   DescribePackageGroupResult,
   DescribePackageGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribePackageGroupRequest,
   output: DescribePackageGroupResult,
@@ -3247,7 +3246,7 @@ export const describePackageVersion: API.OperationMethod<
   DescribePackageVersionRequest,
   DescribePackageVersionResult,
   DescribePackageVersionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribePackageVersionRequest,
   output: DescribePackageVersionResult,
@@ -3279,7 +3278,7 @@ export const describeRepository: API.OperationMethod<
   DescribeRepositoryRequest,
   DescribeRepositoryResult,
   DescribeRepositoryError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeRepositoryRequest,
   output: DescribeRepositoryResult,
@@ -3311,7 +3310,7 @@ export const disassociateExternalConnection: API.OperationMethod<
   DisassociateExternalConnectionRequest,
   DisassociateExternalConnectionResult,
   DisassociateExternalConnectionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DisassociateExternalConnectionRequest,
   output: DisassociateExternalConnectionResult,
@@ -3351,7 +3350,7 @@ export const disposePackageVersions: API.OperationMethod<
   DisposePackageVersionsRequest,
   DisposePackageVersionsResult,
   DisposePackageVersionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DisposePackageVersionsRequest,
   output: DisposePackageVersionsResult,
@@ -3387,7 +3386,7 @@ export const getAssociatedPackageGroup: API.OperationMethod<
   GetAssociatedPackageGroupRequest,
   GetAssociatedPackageGroupResult,
   GetAssociatedPackageGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetAssociatedPackageGroupRequest,
   output: GetAssociatedPackageGroupResult,
@@ -3435,7 +3434,7 @@ export const getAuthorizationToken: API.OperationMethod<
   GetAuthorizationTokenRequest,
   GetAuthorizationTokenResult,
   GetAuthorizationTokenError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetAuthorizationTokenRequest,
   output: GetAuthorizationTokenResult,
@@ -3469,7 +3468,7 @@ export const getDomainPermissionsPolicy: API.OperationMethod<
   GetDomainPermissionsPolicyRequest,
   GetDomainPermissionsPolicyResult,
   GetDomainPermissionsPolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetDomainPermissionsPolicyRequest,
   output: GetDomainPermissionsPolicyResult,
@@ -3502,7 +3501,7 @@ export const getPackageVersionAsset: API.OperationMethod<
   GetPackageVersionAssetRequest,
   GetPackageVersionAssetResult,
   GetPackageVersionAssetError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetPackageVersionAssetRequest,
   output: GetPackageVersionAssetResult,
@@ -3535,7 +3534,7 @@ export const getPackageVersionReadme: API.OperationMethod<
   GetPackageVersionReadmeRequest,
   GetPackageVersionReadmeResult,
   GetPackageVersionReadmeError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetPackageVersionReadmeRequest,
   output: GetPackageVersionReadmeResult,
@@ -3582,7 +3581,7 @@ export const getRepositoryEndpoint: API.OperationMethod<
   GetRepositoryEndpointRequest,
   GetRepositoryEndpointResult,
   GetRepositoryEndpointError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetRepositoryEndpointRequest,
   output: GetRepositoryEndpointResult,
@@ -3612,7 +3611,7 @@ export const getRepositoryPermissionsPolicy: API.OperationMethod<
   GetRepositoryPermissionsPolicyRequest,
   GetRepositoryPermissionsPolicyResult,
   GetRepositoryPermissionsPolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetRepositoryPermissionsPolicyRequest,
   output: GetRepositoryPermissionsPolicyResult,
@@ -3644,7 +3643,7 @@ export const listAllowedRepositoriesForGroup: API.PaginatedOperationMethod<
   ListAllowedRepositoriesForGroupRequest,
   ListAllowedRepositoriesForGroupResult,
   ListAllowedRepositoriesForGroupError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   RepositoryName
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAllowedRepositoriesForGroupRequest,
@@ -3683,7 +3682,7 @@ export const listAssociatedPackages: API.PaginatedOperationMethod<
   ListAssociatedPackagesRequest,
   ListAssociatedPackagesResult,
   ListAssociatedPackagesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   AssociatedPackage
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAssociatedPackagesRequest,
@@ -3720,7 +3719,7 @@ export const listDomains: API.PaginatedOperationMethod<
   ListDomainsRequest,
   ListDomainsResult,
   ListDomainsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   DomainSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDomainsRequest,
@@ -3756,7 +3755,7 @@ export const listPackageGroups: API.PaginatedOperationMethod<
   ListPackageGroupsRequest,
   ListPackageGroupsResult,
   ListPackageGroupsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   PackageGroupSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPackageGroupsRequest,
@@ -3795,7 +3794,7 @@ export const listPackages: API.PaginatedOperationMethod<
   ListPackagesRequest,
   ListPackagesResult,
   ListPackagesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   PackageSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPackagesRequest,
@@ -3834,7 +3833,7 @@ export const listPackageVersionAssets: API.PaginatedOperationMethod<
   ListPackageVersionAssetsRequest,
   ListPackageVersionAssetsResult,
   ListPackageVersionAssetsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   AssetSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPackageVersionAssetsRequest,
@@ -3875,7 +3874,7 @@ export const listPackageVersionDependencies: API.OperationMethod<
   ListPackageVersionDependenciesRequest,
   ListPackageVersionDependenciesResult,
   ListPackageVersionDependenciesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListPackageVersionDependenciesRequest,
   output: ListPackageVersionDependenciesResult,
@@ -3907,7 +3906,7 @@ export const listPackageVersions: API.PaginatedOperationMethod<
   ListPackageVersionsRequest,
   ListPackageVersionsResult,
   ListPackageVersionsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   PackageVersionSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPackageVersionsRequest,
@@ -3946,7 +3945,7 @@ export const listRepositories: API.PaginatedOperationMethod<
   ListRepositoriesRequest,
   ListRepositoriesResult,
   ListRepositoriesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   RepositorySummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRepositoriesRequest,
@@ -3985,7 +3984,7 @@ export const listRepositoriesInDomain: API.PaginatedOperationMethod<
   ListRepositoriesInDomainRequest,
   ListRepositoriesInDomainResult,
   ListRepositoriesInDomainError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   RepositorySummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRepositoriesInDomainRequest,
@@ -4026,7 +4025,7 @@ export const listSubPackageGroups: API.PaginatedOperationMethod<
   ListSubPackageGroupsRequest,
   ListSubPackageGroupsResult,
   ListSubPackageGroupsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   PackageGroupSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSubPackageGroupsRequest,
@@ -4062,7 +4061,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResult,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResult,
@@ -4102,7 +4101,7 @@ export const publishPackageVersion: API.OperationMethod<
   PublishPackageVersionRequest,
   PublishPackageVersionResult,
   PublishPackageVersionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PublishPackageVersionRequest,
   output: PublishPackageVersionResult,
@@ -4140,7 +4139,7 @@ export const putDomainPermissionsPolicy: API.OperationMethod<
   PutDomainPermissionsPolicyRequest,
   PutDomainPermissionsPolicyResult,
   PutDomainPermissionsPolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PutDomainPermissionsPolicyRequest,
   output: PutDomainPermissionsPolicyResult,
@@ -4181,7 +4180,7 @@ export const putPackageOriginConfiguration: API.OperationMethod<
   PutPackageOriginConfigurationRequest,
   PutPackageOriginConfigurationResult,
   PutPackageOriginConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PutPackageOriginConfigurationRequest,
   output: PutPackageOriginConfigurationResult,
@@ -4217,7 +4216,7 @@ export const putRepositoryPermissionsPolicy: API.OperationMethod<
   PutRepositoryPermissionsPolicyRequest,
   PutRepositoryPermissionsPolicyResult,
   PutRepositoryPermissionsPolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PutRepositoryPermissionsPolicyRequest,
   output: PutRepositoryPermissionsPolicyResult,
@@ -4249,7 +4248,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResult,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResult,
@@ -4278,7 +4277,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResult,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResult,
@@ -4309,7 +4308,7 @@ export const updatePackageGroup: API.OperationMethod<
   UpdatePackageGroupRequest,
   UpdatePackageGroupResult,
   UpdatePackageGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdatePackageGroupRequest,
   output: UpdatePackageGroupResult,
@@ -4347,7 +4346,7 @@ export const updatePackageGroupOriginConfiguration: API.OperationMethod<
   UpdatePackageGroupOriginConfigurationRequest,
   UpdatePackageGroupOriginConfigurationResult,
   UpdatePackageGroupOriginConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdatePackageGroupOriginConfigurationRequest,
   output: UpdatePackageGroupOriginConfigurationResult,
@@ -4382,7 +4381,7 @@ export const updatePackageVersionsStatus: API.OperationMethod<
   UpdatePackageVersionsStatusRequest,
   UpdatePackageVersionsStatusResult,
   UpdatePackageVersionsStatusError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdatePackageVersionsStatusRequest,
   output: UpdatePackageVersionsStatusResult,
@@ -4415,7 +4414,7 @@ export const updateRepository: API.OperationMethod<
   UpdateRepositoryRequest,
   UpdateRepositoryResult,
   UpdateRepositoryError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateRepositoryRequest,
   output: UpdateRepositoryResult,

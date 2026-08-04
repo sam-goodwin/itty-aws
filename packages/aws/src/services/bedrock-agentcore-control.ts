@@ -8,7 +8,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 import { SensitiveString } from "../sensitive.ts";
 const svc = T.AwsApiService({
   sdkId: "Bedrock AgentCore Control",
@@ -13180,7 +13179,7 @@ export const addDatasetExamples: API.OperationMethod<
   AddDatasetExamplesRequest,
   AddDatasetExamplesResponse,
   AddDatasetExamplesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: AddDatasetExamplesRequest,
   output: AddDatasetExamplesResponse,
@@ -13213,7 +13212,7 @@ export const createAgentRuntime: API.OperationMethod<
   CreateAgentRuntimeRequest,
   CreateAgentRuntimeResponse,
   CreateAgentRuntimeError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateAgentRuntimeRequest,
   output: CreateAgentRuntimeResponse,
@@ -13246,7 +13245,7 @@ export const createAgentRuntimeEndpoint: API.OperationMethod<
   CreateAgentRuntimeEndpointRequest,
   CreateAgentRuntimeEndpointResponse,
   CreateAgentRuntimeEndpointError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateAgentRuntimeEndpointRequest,
   output: CreateAgentRuntimeEndpointResponse,
@@ -13284,7 +13283,7 @@ export const createApiKeyCredentialProvider: API.OperationMethod<
   CreateApiKeyCredentialProviderRequest,
   CreateApiKeyCredentialProviderResponse,
   CreateApiKeyCredentialProviderError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateApiKeyCredentialProviderRequest,
   output: CreateApiKeyCredentialProviderResponse,
@@ -13321,7 +13320,7 @@ export const createBrowser: API.OperationMethod<
   CreateBrowserRequest,
   CreateBrowserResponse,
   CreateBrowserError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateBrowserRequest,
   output: CreateBrowserResponse,
@@ -13353,7 +13352,7 @@ export const createBrowserProfile: API.OperationMethod<
   CreateBrowserProfileRequest,
   CreateBrowserProfileResponse,
   CreateBrowserProfileError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateBrowserProfileRequest,
   output: CreateBrowserProfileResponse,
@@ -13385,7 +13384,7 @@ export const createCodeInterpreter: API.OperationMethod<
   CreateCodeInterpreterRequest,
   CreateCodeInterpreterResponse,
   CreateCodeInterpreterError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateCodeInterpreterRequest,
   output: CreateCodeInterpreterResponse,
@@ -13417,7 +13416,7 @@ export const createConfigurationBundle: API.OperationMethod<
   CreateConfigurationBundleRequest,
   CreateConfigurationBundleResponse,
   CreateConfigurationBundleError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateConfigurationBundleRequest,
   output: CreateConfigurationBundleResponse,
@@ -13449,7 +13448,7 @@ export const createDataset: API.OperationMethod<
   CreateDatasetRequest,
   CreateDatasetResponse,
   CreateDatasetError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateDatasetRequest,
   output: CreateDatasetResponse,
@@ -13482,7 +13481,7 @@ export const createDatasetVersion: API.OperationMethod<
   CreateDatasetVersionRequest,
   CreateDatasetVersionResponse,
   CreateDatasetVersionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateDatasetVersionRequest,
   output: CreateDatasetVersionResponse,
@@ -13515,7 +13514,7 @@ export const createEvaluator: API.OperationMethod<
   CreateEvaluatorRequest,
   CreateEvaluatorResponse,
   CreateEvaluatorError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateEvaluatorRequest,
   output: CreateEvaluatorResponse,
@@ -13549,7 +13548,7 @@ export const createGateway: API.OperationMethod<
   CreateGatewayRequest,
   CreateGatewayResponse,
   CreateGatewayError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateGatewayRequest,
   output: CreateGatewayResponse,
@@ -13582,7 +13581,7 @@ export const createGatewayRule: API.OperationMethod<
   CreateGatewayRuleRequest,
   CreateGatewayRuleResponse,
   CreateGatewayRuleError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateGatewayRuleRequest,
   output: CreateGatewayRuleResponse,
@@ -13616,7 +13615,7 @@ export const createGatewayTarget: API.OperationMethod<
   CreateGatewayTargetRequest,
   CreateGatewayTargetResponse,
   CreateGatewayTargetError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateGatewayTargetRequest,
   output: CreateGatewayTargetResponse,
@@ -13649,7 +13648,7 @@ export const createHarness: API.OperationMethod<
   CreateHarnessRequest,
   CreateHarnessResponse,
   CreateHarnessError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateHarnessRequest,
   output: CreateHarnessResponse,
@@ -13682,7 +13681,7 @@ export const createHarnessEndpoint: API.OperationMethod<
   CreateHarnessEndpointRequest,
   CreateHarnessEndpointResponse,
   CreateHarnessEndpointError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateHarnessEndpointRequest,
   output: CreateHarnessEndpointResponse,
@@ -13716,7 +13715,7 @@ export const createMemory: API.OperationMethod<
   CreateMemoryInput,
   CreateMemoryOutput,
   CreateMemoryError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateMemoryInput,
   output: CreateMemoryOutput,
@@ -13754,7 +13753,7 @@ export const createOauth2CredentialProvider: API.OperationMethod<
   CreateOauth2CredentialProviderRequest,
   CreateOauth2CredentialProviderResponse,
   CreateOauth2CredentialProviderError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateOauth2CredentialProviderRequest,
   output: CreateOauth2CredentialProviderResponse,
@@ -13791,7 +13790,7 @@ export const createOnlineEvaluationConfig: API.OperationMethod<
   CreateOnlineEvaluationConfigRequest,
   CreateOnlineEvaluationConfigResponse,
   CreateOnlineEvaluationConfigError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateOnlineEvaluationConfigRequest,
   output: CreateOnlineEvaluationConfigResponse,
@@ -13824,7 +13823,7 @@ export const createPaymentConnector: API.OperationMethod<
   CreatePaymentConnectorRequest,
   CreatePaymentConnectorResponse,
   CreatePaymentConnectorError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreatePaymentConnectorRequest,
   output: CreatePaymentConnectorResponse,
@@ -13862,7 +13861,7 @@ export const createPaymentCredentialProvider: API.OperationMethod<
   CreatePaymentCredentialProviderRequest,
   CreatePaymentCredentialProviderResponse,
   CreatePaymentCredentialProviderError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreatePaymentCredentialProviderRequest,
   output: CreatePaymentCredentialProviderResponse,
@@ -13901,7 +13900,7 @@ export const createPaymentManager: API.OperationMethod<
   CreatePaymentManagerRequest,
   CreatePaymentManagerResponse,
   CreatePaymentManagerError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreatePaymentManagerRequest,
   output: CreatePaymentManagerResponse,
@@ -13934,7 +13933,7 @@ export const createPolicy: API.OperationMethod<
   CreatePolicyRequest,
   CreatePolicyResponse,
   CreatePolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreatePolicyRequest,
   output: CreatePolicyResponse,
@@ -13967,7 +13966,7 @@ export const createPolicyEngine: API.OperationMethod<
   CreatePolicyEngineRequest,
   CreatePolicyEngineResponse,
   CreatePolicyEngineError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreatePolicyEngineRequest,
   output: CreatePolicyEngineResponse,
@@ -14001,7 +14000,7 @@ export const createRegistry: API.OperationMethod<
   CreateRegistryRequest,
   CreateRegistryResponse,
   CreateRegistryError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateRegistryRequest,
   output: CreateRegistryResponse,
@@ -14036,7 +14035,7 @@ export const createRegistryRecord: API.OperationMethod<
   CreateRegistryRecordRequest,
   CreateRegistryRecordResponse,
   CreateRegistryRecordError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateRegistryRecordRequest,
   output: CreateRegistryRecordResponse,
@@ -14069,7 +14068,7 @@ export const createWorkloadIdentity: API.OperationMethod<
   CreateWorkloadIdentityRequest,
   CreateWorkloadIdentityResponse,
   CreateWorkloadIdentityError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateWorkloadIdentityRequest,
   output: CreateWorkloadIdentityResponse,
@@ -14100,7 +14099,7 @@ export const deleteAgentRuntime: API.OperationMethod<
   DeleteAgentRuntimeRequest,
   DeleteAgentRuntimeResponse,
   DeleteAgentRuntimeError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteAgentRuntimeRequest,
   output: DeleteAgentRuntimeResponse,
@@ -14130,7 +14129,7 @@ export const deleteAgentRuntimeEndpoint: API.OperationMethod<
   DeleteAgentRuntimeEndpointRequest,
   DeleteAgentRuntimeEndpointResponse,
   DeleteAgentRuntimeEndpointError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteAgentRuntimeEndpointRequest,
   output: DeleteAgentRuntimeEndpointResponse,
@@ -14161,7 +14160,7 @@ export const deleteApiKeyCredentialProvider: API.OperationMethod<
   DeleteApiKeyCredentialProviderRequest,
   DeleteApiKeyCredentialProviderResponse,
   DeleteApiKeyCredentialProviderError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteApiKeyCredentialProviderRequest,
   output: DeleteApiKeyCredentialProviderResponse,
@@ -14194,7 +14193,7 @@ export const deleteBrowser: API.OperationMethod<
   DeleteBrowserRequest,
   DeleteBrowserResponse,
   DeleteBrowserError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteBrowserRequest,
   output: DeleteBrowserResponse,
@@ -14227,7 +14226,7 @@ export const deleteBrowserProfile: API.OperationMethod<
   DeleteBrowserProfileRequest,
   DeleteBrowserProfileResponse,
   DeleteBrowserProfileError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteBrowserProfileRequest,
   output: DeleteBrowserProfileResponse,
@@ -14260,7 +14259,7 @@ export const deleteCodeInterpreter: API.OperationMethod<
   DeleteCodeInterpreterRequest,
   DeleteCodeInterpreterResponse,
   DeleteCodeInterpreterError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteCodeInterpreterRequest,
   output: DeleteCodeInterpreterResponse,
@@ -14293,7 +14292,7 @@ export const deleteConfigurationBundle: API.OperationMethod<
   DeleteConfigurationBundleRequest,
   DeleteConfigurationBundleResponse,
   DeleteConfigurationBundleError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteConfigurationBundleRequest,
   output: DeleteConfigurationBundleResponse,
@@ -14325,7 +14324,7 @@ export const deleteDataset: API.OperationMethod<
   DeleteDatasetRequest,
   DeleteDatasetResponse,
   DeleteDatasetError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteDatasetRequest,
   output: DeleteDatasetResponse,
@@ -14357,7 +14356,7 @@ export const deleteDatasetExamples: API.OperationMethod<
   DeleteDatasetExamplesRequest,
   DeleteDatasetExamplesResponse,
   DeleteDatasetExamplesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteDatasetExamplesRequest,
   output: DeleteDatasetExamplesResponse,
@@ -14389,7 +14388,7 @@ export const deleteEvaluator: API.OperationMethod<
   DeleteEvaluatorRequest,
   DeleteEvaluatorResponse,
   DeleteEvaluatorError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteEvaluatorRequest,
   output: DeleteEvaluatorResponse,
@@ -14421,7 +14420,7 @@ export const deleteGateway: API.OperationMethod<
   DeleteGatewayRequest,
   DeleteGatewayResponse,
   DeleteGatewayError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteGatewayRequest,
   output: DeleteGatewayResponse,
@@ -14453,7 +14452,7 @@ export const deleteGatewayRule: API.OperationMethod<
   DeleteGatewayRuleRequest,
   DeleteGatewayRuleResponse,
   DeleteGatewayRuleError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteGatewayRuleRequest,
   output: DeleteGatewayRuleResponse,
@@ -14487,7 +14486,7 @@ export const deleteGatewayTarget: API.OperationMethod<
   DeleteGatewayTargetRequest,
   DeleteGatewayTargetResponse,
   DeleteGatewayTargetError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteGatewayTargetRequest,
   output: DeleteGatewayTargetResponse,
@@ -14519,7 +14518,7 @@ export const deleteHarness: API.OperationMethod<
   DeleteHarnessRequest,
   DeleteHarnessResponse,
   DeleteHarnessError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteHarnessRequest,
   output: DeleteHarnessResponse,
@@ -14551,7 +14550,7 @@ export const deleteHarnessEndpoint: API.OperationMethod<
   DeleteHarnessEndpointRequest,
   DeleteHarnessEndpointResponse,
   DeleteHarnessEndpointError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteHarnessEndpointRequest,
   output: DeleteHarnessEndpointResponse,
@@ -14583,7 +14582,7 @@ export const deleteMemory: API.OperationMethod<
   DeleteMemoryInput,
   DeleteMemoryOutput,
   DeleteMemoryError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteMemoryInput,
   output: DeleteMemoryOutput,
@@ -14616,7 +14615,7 @@ export const deleteOauth2CredentialProvider: API.OperationMethod<
   DeleteOauth2CredentialProviderRequest,
   DeleteOauth2CredentialProviderResponse,
   DeleteOauth2CredentialProviderError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteOauth2CredentialProviderRequest,
   output: DeleteOauth2CredentialProviderResponse,
@@ -14649,7 +14648,7 @@ export const deleteOnlineEvaluationConfig: API.OperationMethod<
   DeleteOnlineEvaluationConfigRequest,
   DeleteOnlineEvaluationConfigResponse,
   DeleteOnlineEvaluationConfigError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteOnlineEvaluationConfigRequest,
   output: DeleteOnlineEvaluationConfigResponse,
@@ -14680,7 +14679,7 @@ export const deletePaymentConnector: API.OperationMethod<
   DeletePaymentConnectorRequest,
   DeletePaymentConnectorResponse,
   DeletePaymentConnectorError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeletePaymentConnectorRequest,
   output: DeletePaymentConnectorResponse,
@@ -14711,7 +14710,7 @@ export const deletePaymentCredentialProvider: API.OperationMethod<
   DeletePaymentCredentialProviderRequest,
   DeletePaymentCredentialProviderResponse,
   DeletePaymentCredentialProviderError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeletePaymentCredentialProviderRequest,
   output: DeletePaymentCredentialProviderResponse,
@@ -14742,7 +14741,7 @@ export const deletePaymentManager: API.OperationMethod<
   DeletePaymentManagerRequest,
   DeletePaymentManagerResponse,
   DeletePaymentManagerError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeletePaymentManagerRequest,
   output: DeletePaymentManagerResponse,
@@ -14773,7 +14772,7 @@ export const deletePolicy: API.OperationMethod<
   DeletePolicyRequest,
   DeletePolicyResponse,
   DeletePolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeletePolicyRequest,
   output: DeletePolicyResponse,
@@ -14805,7 +14804,7 @@ export const deletePolicyEngine: API.OperationMethod<
   DeletePolicyEngineRequest,
   DeletePolicyEngineResponse,
   DeletePolicyEngineError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeletePolicyEngineRequest,
   output: DeletePolicyEngineResponse,
@@ -14837,7 +14836,7 @@ export const deleteRegistry: API.OperationMethod<
   DeleteRegistryRequest,
   DeleteRegistryResponse,
   DeleteRegistryError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteRegistryRequest,
   output: DeleteRegistryResponse,
@@ -14869,7 +14868,7 @@ export const deleteRegistryRecord: API.OperationMethod<
   DeleteRegistryRecordRequest,
   DeleteRegistryRecordResponse,
   DeleteRegistryRecordError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteRegistryRecordRequest,
   output: DeleteRegistryRecordResponse,
@@ -14902,7 +14901,7 @@ export const deleteResourcePolicy: API.OperationMethod<
   DeleteResourcePolicyRequest,
   DeleteResourcePolicyResponse,
   DeleteResourcePolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteResourcePolicyRequest,
   output: DeleteResourcePolicyResponse,
@@ -14933,7 +14932,7 @@ export const deleteWorkloadIdentity: API.OperationMethod<
   DeleteWorkloadIdentityRequest,
   DeleteWorkloadIdentityResponse,
   DeleteWorkloadIdentityError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteWorkloadIdentityRequest,
   output: DeleteWorkloadIdentityResponse,
@@ -14964,7 +14963,7 @@ export const getAgentRuntime: API.OperationMethod<
   GetAgentRuntimeRequest,
   GetAgentRuntimeResponse,
   GetAgentRuntimeError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetAgentRuntimeRequest,
   output: GetAgentRuntimeResponse,
@@ -14994,7 +14993,7 @@ export const getAgentRuntimeEndpoint: API.OperationMethod<
   GetAgentRuntimeEndpointRequest,
   GetAgentRuntimeEndpointResponse,
   GetAgentRuntimeEndpointError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetAgentRuntimeEndpointRequest,
   output: GetAgentRuntimeEndpointResponse,
@@ -15026,7 +15025,7 @@ export const getApiKeyCredentialProvider: API.OperationMethod<
   GetApiKeyCredentialProviderRequest,
   GetApiKeyCredentialProviderResponse,
   GetApiKeyCredentialProviderError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetApiKeyCredentialProviderRequest,
   output: GetApiKeyCredentialProviderResponse,
@@ -15058,7 +15057,7 @@ export const getBrowser: API.OperationMethod<
   GetBrowserRequest,
   GetBrowserResponse,
   GetBrowserError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetBrowserRequest,
   output: GetBrowserResponse,
@@ -15088,7 +15087,7 @@ export const getBrowserProfile: API.OperationMethod<
   GetBrowserProfileRequest,
   GetBrowserProfileResponse,
   GetBrowserProfileError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetBrowserProfileRequest,
   output: GetBrowserProfileResponse,
@@ -15118,7 +15117,7 @@ export const getCodeInterpreter: API.OperationMethod<
   GetCodeInterpreterRequest,
   GetCodeInterpreterResponse,
   GetCodeInterpreterError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetCodeInterpreterRequest,
   output: GetCodeInterpreterResponse,
@@ -15148,7 +15147,7 @@ export const getConfigurationBundle: API.OperationMethod<
   GetConfigurationBundleRequest,
   GetConfigurationBundleResponse,
   GetConfigurationBundleError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetConfigurationBundleRequest,
   output: GetConfigurationBundleResponse,
@@ -15178,7 +15177,7 @@ export const getConfigurationBundleVersion: API.OperationMethod<
   GetConfigurationBundleVersionRequest,
   GetConfigurationBundleVersionResponse,
   GetConfigurationBundleVersionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetConfigurationBundleVersionRequest,
   output: GetConfigurationBundleVersionResponse,
@@ -15209,7 +15208,7 @@ export const getDataset: API.OperationMethod<
   GetDatasetRequest,
   GetDatasetResponse,
   GetDatasetError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetDatasetRequest,
   output: GetDatasetResponse,
@@ -15240,7 +15239,7 @@ export const getEvaluator: API.OperationMethod<
   GetEvaluatorRequest,
   GetEvaluatorResponse,
   GetEvaluatorError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetEvaluatorRequest,
   output: GetEvaluatorResponse,
@@ -15270,7 +15269,7 @@ export const getGateway: API.OperationMethod<
   GetGatewayRequest,
   GetGatewayResponse,
   GetGatewayError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetGatewayRequest,
   output: GetGatewayResponse,
@@ -15300,7 +15299,7 @@ export const getGatewayRule: API.OperationMethod<
   GetGatewayRuleRequest,
   GetGatewayRuleResponse,
   GetGatewayRuleError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetGatewayRuleRequest,
   output: GetGatewayRuleResponse,
@@ -15330,7 +15329,7 @@ export const getGatewayTarget: API.OperationMethod<
   GetGatewayTargetRequest,
   GetGatewayTargetResponse,
   GetGatewayTargetError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetGatewayTargetRequest,
   output: GetGatewayTargetResponse,
@@ -15360,7 +15359,7 @@ export const getHarness: API.OperationMethod<
   GetHarnessRequest,
   GetHarnessResponse,
   GetHarnessError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetHarnessRequest,
   output: GetHarnessResponse,
@@ -15390,7 +15389,7 @@ export const getHarnessEndpoint: API.OperationMethod<
   GetHarnessEndpointRequest,
   GetHarnessEndpointResponse,
   GetHarnessEndpointError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetHarnessEndpointRequest,
   output: GetHarnessEndpointResponse,
@@ -15420,7 +15419,7 @@ export const getMemory: API.OperationMethod<
   GetMemoryInput,
   GetMemoryOutput,
   GetMemoryError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetMemoryInput,
   output: GetMemoryOutput,
@@ -15452,7 +15451,7 @@ export const getOauth2CredentialProvider: API.OperationMethod<
   GetOauth2CredentialProviderRequest,
   GetOauth2CredentialProviderResponse,
   GetOauth2CredentialProviderError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetOauth2CredentialProviderRequest,
   output: GetOauth2CredentialProviderResponse,
@@ -15484,7 +15483,7 @@ export const getOnlineEvaluationConfig: API.OperationMethod<
   GetOnlineEvaluationConfigRequest,
   GetOnlineEvaluationConfigResponse,
   GetOnlineEvaluationConfigError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetOnlineEvaluationConfigRequest,
   output: GetOnlineEvaluationConfigResponse,
@@ -15514,7 +15513,7 @@ export const getPaymentConnector: API.OperationMethod<
   GetPaymentConnectorRequest,
   GetPaymentConnectorResponse,
   GetPaymentConnectorError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetPaymentConnectorRequest,
   output: GetPaymentConnectorResponse,
@@ -15546,7 +15545,7 @@ export const getPaymentCredentialProvider: API.OperationMethod<
   GetPaymentCredentialProviderRequest,
   GetPaymentCredentialProviderResponse,
   GetPaymentCredentialProviderError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetPaymentCredentialProviderRequest,
   output: GetPaymentCredentialProviderResponse,
@@ -15578,7 +15577,7 @@ export const getPaymentManager: API.OperationMethod<
   GetPaymentManagerRequest,
   GetPaymentManagerResponse,
   GetPaymentManagerError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetPaymentManagerRequest,
   output: GetPaymentManagerResponse,
@@ -15608,7 +15607,7 @@ export const getPolicy: API.OperationMethod<
   GetPolicyRequest,
   GetPolicyResponse,
   GetPolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetPolicyRequest,
   output: GetPolicyResponse,
@@ -15638,7 +15637,7 @@ export const getPolicyEngine: API.OperationMethod<
   GetPolicyEngineRequest,
   GetPolicyEngineResponse,
   GetPolicyEngineError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetPolicyEngineRequest,
   output: GetPolicyEngineResponse,
@@ -15668,7 +15667,7 @@ export const getPolicyEngineSummary: API.OperationMethod<
   GetPolicyEngineSummaryRequest,
   GetPolicyEngineSummaryResponse,
   GetPolicyEngineSummaryError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetPolicyEngineSummaryRequest,
   output: GetPolicyEngineSummaryResponse,
@@ -15698,7 +15697,7 @@ export const getPolicyGeneration: API.OperationMethod<
   GetPolicyGenerationRequest,
   GetPolicyGenerationResponse,
   GetPolicyGenerationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetPolicyGenerationRequest,
   output: GetPolicyGenerationResponse,
@@ -15728,7 +15727,7 @@ export const getPolicyGenerationSummary: API.OperationMethod<
   GetPolicyGenerationSummaryRequest,
   GetPolicyGenerationSummaryResponse,
   GetPolicyGenerationSummaryError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetPolicyGenerationSummaryRequest,
   output: GetPolicyGenerationSummaryResponse,
@@ -15758,7 +15757,7 @@ export const getPolicySummary: API.OperationMethod<
   GetPolicySummaryRequest,
   GetPolicySummaryResponse,
   GetPolicySummaryError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetPolicySummaryRequest,
   output: GetPolicySummaryResponse,
@@ -15788,7 +15787,7 @@ export const getRegistry: API.OperationMethod<
   GetRegistryRequest,
   GetRegistryResponse,
   GetRegistryError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetRegistryRequest,
   output: GetRegistryResponse,
@@ -15819,7 +15818,7 @@ export const getRegistryRecord: API.OperationMethod<
   GetRegistryRecordRequest,
   GetRegistryRecordResponse,
   GetRegistryRecordError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetRegistryRecordRequest,
   output: GetRegistryRecordResponse,
@@ -15852,7 +15851,7 @@ export const getResourcePolicy: API.OperationMethod<
   GetResourcePolicyRequest,
   GetResourcePolicyResponse,
   GetResourcePolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetResourcePolicyRequest,
   output: GetResourcePolicyResponse,
@@ -15883,7 +15882,7 @@ export const getTokenVault: API.OperationMethod<
   GetTokenVaultRequest,
   GetTokenVaultResponse,
   GetTokenVaultError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetTokenVaultRequest,
   output: GetTokenVaultResponse,
@@ -15915,7 +15914,7 @@ export const getWorkloadIdentity: API.OperationMethod<
   GetWorkloadIdentityRequest,
   GetWorkloadIdentityResponse,
   GetWorkloadIdentityError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetWorkloadIdentityRequest,
   output: GetWorkloadIdentityResponse,
@@ -15945,7 +15944,7 @@ export const listAgentRuntimeEndpoints: API.PaginatedOperationMethod<
   ListAgentRuntimeEndpointsRequest,
   ListAgentRuntimeEndpointsResponse,
   ListAgentRuntimeEndpointsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   AgentRuntimeEndpoint
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAgentRuntimeEndpointsRequest,
@@ -15980,7 +15979,7 @@ export const listAgentRuntimes: API.PaginatedOperationMethod<
   ListAgentRuntimesRequest,
   ListAgentRuntimesResponse,
   ListAgentRuntimesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   AgentRuntime
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAgentRuntimesRequest,
@@ -16016,7 +16015,7 @@ export const listAgentRuntimeVersions: API.PaginatedOperationMethod<
   ListAgentRuntimeVersionsRequest,
   ListAgentRuntimeVersionsResponse,
   ListAgentRuntimeVersionsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   AgentRuntime
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAgentRuntimeVersionsRequest,
@@ -16054,7 +16053,7 @@ export const listApiKeyCredentialProviders: API.PaginatedOperationMethod<
   ListApiKeyCredentialProvidersRequest,
   ListApiKeyCredentialProvidersResponse,
   ListApiKeyCredentialProvidersError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ApiKeyCredentialProviderItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListApiKeyCredentialProvidersRequest,
@@ -16091,7 +16090,7 @@ export const listBrowserProfiles: API.PaginatedOperationMethod<
   ListBrowserProfilesRequest,
   ListBrowserProfilesResponse,
   ListBrowserProfilesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   BrowserProfileSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBrowserProfilesRequest,
@@ -16126,7 +16125,7 @@ export const listBrowsers: API.PaginatedOperationMethod<
   ListBrowsersRequest,
   ListBrowsersResponse,
   ListBrowsersError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   BrowserSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBrowsersRequest,
@@ -16161,7 +16160,7 @@ export const listCodeInterpreters: API.PaginatedOperationMethod<
   ListCodeInterpretersRequest,
   ListCodeInterpretersResponse,
   ListCodeInterpretersError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   CodeInterpreterSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCodeInterpretersRequest,
@@ -16196,7 +16195,7 @@ export const listConfigurationBundles: API.PaginatedOperationMethod<
   ListConfigurationBundlesRequest,
   ListConfigurationBundlesResponse,
   ListConfigurationBundlesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ConfigurationBundleSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListConfigurationBundlesRequest,
@@ -16232,7 +16231,7 @@ export const listConfigurationBundleVersions: API.PaginatedOperationMethod<
   ListConfigurationBundleVersionsRequest,
   ListConfigurationBundleVersionsResponse,
   ListConfigurationBundleVersionsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ConfigurationBundleVersionSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListConfigurationBundleVersionsRequest,
@@ -16270,7 +16269,7 @@ export const listDatasetExamples: API.PaginatedOperationMethod<
   ListDatasetExamplesRequest,
   ListDatasetExamplesResponse,
   ListDatasetExamplesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDatasetExamplesRequest,
@@ -16307,7 +16306,7 @@ export const listDatasets: API.PaginatedOperationMethod<
   ListDatasetsRequest,
   ListDatasetsResponse,
   ListDatasetsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   DatasetSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDatasetsRequest,
@@ -16343,7 +16342,7 @@ export const listDatasetVersions: API.PaginatedOperationMethod<
   ListDatasetVersionsRequest,
   ListDatasetVersionsResponse,
   ListDatasetVersionsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   DatasetVersionSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDatasetVersionsRequest,
@@ -16379,7 +16378,7 @@ export const listEvaluators: API.PaginatedOperationMethod<
   ListEvaluatorsRequest,
   ListEvaluatorsResponse,
   ListEvaluatorsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   EvaluatorSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEvaluatorsRequest,
@@ -16415,7 +16414,7 @@ export const listGatewayRules: API.PaginatedOperationMethod<
   ListGatewayRulesRequest,
   ListGatewayRulesResponse,
   ListGatewayRulesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   GatewayRuleDetail
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListGatewayRulesRequest,
@@ -16451,7 +16450,7 @@ export const listGateways: API.PaginatedOperationMethod<
   ListGatewaysRequest,
   ListGatewaysResponse,
   ListGatewaysError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   GatewaySummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListGatewaysRequest,
@@ -16487,7 +16486,7 @@ export const listGatewayTargets: API.PaginatedOperationMethod<
   ListGatewayTargetsRequest,
   ListGatewayTargetsResponse,
   ListGatewayTargetsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   TargetSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListGatewayTargetsRequest,
@@ -16524,7 +16523,7 @@ export const listHarnessEndpoints: API.PaginatedOperationMethod<
   ListHarnessEndpointsRequest,
   ListHarnessEndpointsResponse,
   ListHarnessEndpointsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   HarnessEndpoint
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListHarnessEndpointsRequest,
@@ -16560,7 +16559,7 @@ export const listHarnesses: API.PaginatedOperationMethod<
   ListHarnessesRequest,
   ListHarnessesResponse,
   ListHarnessesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   HarnessSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListHarnessesRequest,
@@ -16596,7 +16595,7 @@ export const listHarnessVersions: API.PaginatedOperationMethod<
   ListHarnessVersionsRequest,
   ListHarnessVersionsResponse,
   ListHarnessVersionsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   HarnessVersionSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListHarnessVersionsRequest,
@@ -16633,7 +16632,7 @@ export const listMemories: API.PaginatedOperationMethod<
   ListMemoriesInput,
   ListMemoriesOutput,
   ListMemoriesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   MemorySummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMemoriesInput,
@@ -16671,7 +16670,7 @@ export const listOauth2CredentialProviders: API.PaginatedOperationMethod<
   ListOauth2CredentialProvidersRequest,
   ListOauth2CredentialProvidersResponse,
   ListOauth2CredentialProvidersError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   Oauth2CredentialProviderItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOauth2CredentialProvidersRequest,
@@ -16708,7 +16707,7 @@ export const listOnlineEvaluationConfigs: API.PaginatedOperationMethod<
   ListOnlineEvaluationConfigsRequest,
   ListOnlineEvaluationConfigsResponse,
   ListOnlineEvaluationConfigsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   OnlineEvaluationConfigSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOnlineEvaluationConfigsRequest,
@@ -16743,7 +16742,7 @@ export const listPaymentConnectors: API.PaginatedOperationMethod<
   ListPaymentConnectorsRequest,
   ListPaymentConnectorsResponse,
   ListPaymentConnectorsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   PaymentConnectorSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPaymentConnectorsRequest,
@@ -16780,7 +16779,7 @@ export const listPaymentCredentialProviders: API.PaginatedOperationMethod<
   ListPaymentCredentialProvidersRequest,
   ListPaymentCredentialProvidersResponse,
   ListPaymentCredentialProvidersError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   PaymentCredentialProviderItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPaymentCredentialProvidersRequest,
@@ -16817,7 +16816,7 @@ export const listPaymentManagers: API.PaginatedOperationMethod<
   ListPaymentManagersRequest,
   ListPaymentManagersResponse,
   ListPaymentManagersError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   PaymentManagerSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPaymentManagersRequest,
@@ -16853,7 +16852,7 @@ export const listPolicies: API.PaginatedOperationMethod<
   ListPoliciesRequest,
   ListPoliciesResponse,
   ListPoliciesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   Policy
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPoliciesRequest,
@@ -16889,7 +16888,7 @@ export const listPolicyEngines: API.PaginatedOperationMethod<
   ListPolicyEnginesRequest,
   ListPolicyEnginesResponse,
   ListPolicyEnginesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   PolicyEngine
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPolicyEnginesRequest,
@@ -16924,7 +16923,7 @@ export const listPolicyEngineSummaries: API.PaginatedOperationMethod<
   ListPolicyEngineSummariesRequest,
   ListPolicyEngineSummariesResponse,
   ListPolicyEngineSummariesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   PolicyEngineSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPolicyEngineSummariesRequest,
@@ -16960,7 +16959,7 @@ export const listPolicyGenerationAssets: API.PaginatedOperationMethod<
   ListPolicyGenerationAssetsRequest,
   ListPolicyGenerationAssetsResponse,
   ListPolicyGenerationAssetsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   PolicyGenerationAsset
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPolicyGenerationAssetsRequest,
@@ -16997,7 +16996,7 @@ export const listPolicyGenerations: API.PaginatedOperationMethod<
   ListPolicyGenerationsRequest,
   ListPolicyGenerationsResponse,
   ListPolicyGenerationsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   PolicyGeneration
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPolicyGenerationsRequest,
@@ -17034,7 +17033,7 @@ export const listPolicyGenerationSummaries: API.PaginatedOperationMethod<
   ListPolicyGenerationSummariesRequest,
   ListPolicyGenerationSummariesResponse,
   ListPolicyGenerationSummariesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   PolicyGenerationSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPolicyGenerationSummariesRequest,
@@ -17071,7 +17070,7 @@ export const listPolicySummaries: API.PaginatedOperationMethod<
   ListPolicySummariesRequest,
   ListPolicySummariesResponse,
   ListPolicySummariesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   PolicySummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPolicySummariesRequest,
@@ -17107,7 +17106,7 @@ export const listRegistries: API.PaginatedOperationMethod<
   ListRegistriesRequest,
   ListRegistriesResponse,
   ListRegistriesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   RegistrySummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRegistriesRequest,
@@ -17144,7 +17143,7 @@ export const listRegistryRecords: API.PaginatedOperationMethod<
   ListRegistryRecordsRequest,
   ListRegistryRecordsResponse,
   ListRegistryRecordsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   RegistryRecordSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRegistryRecordsRequest,
@@ -17184,7 +17183,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -17215,7 +17214,7 @@ export const listWorkloadIdentities: API.PaginatedOperationMethod<
   ListWorkloadIdentitiesRequest,
   ListWorkloadIdentitiesResponse,
   ListWorkloadIdentitiesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   WorkloadIdentityType
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListWorkloadIdentitiesRequest,
@@ -17255,7 +17254,7 @@ export const putResourcePolicy: API.OperationMethod<
   PutResourcePolicyRequest,
   PutResourcePolicyResponse,
   PutResourcePolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PutResourcePolicyRequest,
   output: PutResourcePolicyResponse,
@@ -17287,7 +17286,7 @@ export const setTokenVaultCMK: API.OperationMethod<
   SetTokenVaultCMKRequest,
   SetTokenVaultCMKResponse,
   SetTokenVaultCMKError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: SetTokenVaultCMKRequest,
   output: SetTokenVaultCMKResponse,
@@ -17321,7 +17320,7 @@ export const startPolicyGeneration: API.OperationMethod<
   StartPolicyGenerationRequest,
   StartPolicyGenerationResponse,
   StartPolicyGenerationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartPolicyGenerationRequest,
   output: StartPolicyGenerationResponse,
@@ -17354,7 +17353,7 @@ export const submitRegistryRecordForApproval: API.OperationMethod<
   SubmitRegistryRecordForApprovalRequest,
   SubmitRegistryRecordForApprovalResponse,
   SubmitRegistryRecordForApprovalError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: SubmitRegistryRecordForApprovalRequest,
   output: SubmitRegistryRecordForApprovalResponse,
@@ -17391,7 +17390,7 @@ export const synchronizeGatewayTargets: API.OperationMethod<
   SynchronizeGatewayTargetsRequest,
   SynchronizeGatewayTargetsResponse,
   SynchronizeGatewayTargetsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: SynchronizeGatewayTargetsRequest,
   output: SynchronizeGatewayTargetsResponse,
@@ -17426,7 +17425,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -17459,7 +17458,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -17491,7 +17490,7 @@ export const updateAgentRuntime: API.OperationMethod<
   UpdateAgentRuntimeRequest,
   UpdateAgentRuntimeResponse,
   UpdateAgentRuntimeError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateAgentRuntimeRequest,
   output: UpdateAgentRuntimeResponse,
@@ -17525,7 +17524,7 @@ export const updateAgentRuntimeEndpoint: API.OperationMethod<
   UpdateAgentRuntimeEndpointRequest,
   UpdateAgentRuntimeEndpointResponse,
   UpdateAgentRuntimeEndpointError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateAgentRuntimeEndpointRequest,
   output: UpdateAgentRuntimeEndpointResponse,
@@ -17562,7 +17561,7 @@ export const updateApiKeyCredentialProvider: API.OperationMethod<
   UpdateApiKeyCredentialProviderRequest,
   UpdateApiKeyCredentialProviderResponse,
   UpdateApiKeyCredentialProviderError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateApiKeyCredentialProviderRequest,
   output: UpdateApiKeyCredentialProviderResponse,
@@ -17598,7 +17597,7 @@ export const updateConfigurationBundle: API.OperationMethod<
   UpdateConfigurationBundleRequest,
   UpdateConfigurationBundleResponse,
   UpdateConfigurationBundleError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateConfigurationBundleRequest,
   output: UpdateConfigurationBundleResponse,
@@ -17630,7 +17629,7 @@ export const updateDataset: API.OperationMethod<
   UpdateDatasetRequest,
   UpdateDatasetResponse,
   UpdateDatasetError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateDatasetRequest,
   output: UpdateDatasetResponse,
@@ -17663,7 +17662,7 @@ export const updateDatasetExamples: API.OperationMethod<
   UpdateDatasetExamplesRequest,
   UpdateDatasetExamplesResponse,
   UpdateDatasetExamplesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateDatasetExamplesRequest,
   output: UpdateDatasetExamplesResponse,
@@ -17697,7 +17696,7 @@ export const updateEvaluator: API.OperationMethod<
   UpdateEvaluatorRequest,
   UpdateEvaluatorResponse,
   UpdateEvaluatorError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateEvaluatorRequest,
   output: UpdateEvaluatorResponse,
@@ -17731,7 +17730,7 @@ export const updateGateway: API.OperationMethod<
   UpdateGatewayRequest,
   UpdateGatewayResponse,
   UpdateGatewayError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateGatewayRequest,
   output: UpdateGatewayResponse,
@@ -17764,7 +17763,7 @@ export const updateGatewayRule: API.OperationMethod<
   UpdateGatewayRuleRequest,
   UpdateGatewayRuleResponse,
   UpdateGatewayRuleError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateGatewayRuleRequest,
   output: UpdateGatewayRuleResponse,
@@ -17799,7 +17798,7 @@ export const updateGatewayTarget: API.OperationMethod<
   UpdateGatewayTargetRequest,
   UpdateGatewayTargetResponse,
   UpdateGatewayTargetError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateGatewayTargetRequest,
   output: UpdateGatewayTargetResponse,
@@ -17832,7 +17831,7 @@ export const updateHarness: API.OperationMethod<
   UpdateHarnessRequest,
   UpdateHarnessResponse,
   UpdateHarnessError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateHarnessRequest,
   output: UpdateHarnessResponse,
@@ -17865,7 +17864,7 @@ export const updateHarnessEndpoint: API.OperationMethod<
   UpdateHarnessEndpointRequest,
   UpdateHarnessEndpointResponse,
   UpdateHarnessEndpointError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateHarnessEndpointRequest,
   output: UpdateHarnessEndpointResponse,
@@ -17899,7 +17898,7 @@ export const updateMemory: API.OperationMethod<
   UpdateMemoryInput,
   UpdateMemoryOutput,
   UpdateMemoryError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateMemoryInput,
   output: UpdateMemoryOutput,
@@ -17936,7 +17935,7 @@ export const updateOauth2CredentialProvider: API.OperationMethod<
   UpdateOauth2CredentialProviderRequest,
   UpdateOauth2CredentialProviderResponse,
   UpdateOauth2CredentialProviderError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateOauth2CredentialProviderRequest,
   output: UpdateOauth2CredentialProviderResponse,
@@ -17973,7 +17972,7 @@ export const updateOnlineEvaluationConfig: API.OperationMethod<
   UpdateOnlineEvaluationConfigRequest,
   UpdateOnlineEvaluationConfigResponse,
   UpdateOnlineEvaluationConfigError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateOnlineEvaluationConfigRequest,
   output: UpdateOnlineEvaluationConfigResponse,
@@ -18007,7 +18006,7 @@ export const updatePaymentConnector: API.OperationMethod<
   UpdatePaymentConnectorRequest,
   UpdatePaymentConnectorResponse,
   UpdatePaymentConnectorError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdatePaymentConnectorRequest,
   output: UpdatePaymentConnectorResponse,
@@ -18044,7 +18043,7 @@ export const updatePaymentCredentialProvider: API.OperationMethod<
   UpdatePaymentCredentialProviderRequest,
   UpdatePaymentCredentialProviderResponse,
   UpdatePaymentCredentialProviderError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdatePaymentCredentialProviderRequest,
   output: UpdatePaymentCredentialProviderResponse,
@@ -18081,7 +18080,7 @@ export const updatePaymentManager: API.OperationMethod<
   UpdatePaymentManagerRequest,
   UpdatePaymentManagerResponse,
   UpdatePaymentManagerError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdatePaymentManagerRequest,
   output: UpdatePaymentManagerResponse,
@@ -18114,7 +18113,7 @@ export const updatePolicy: API.OperationMethod<
   UpdatePolicyRequest,
   UpdatePolicyResponse,
   UpdatePolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdatePolicyRequest,
   output: UpdatePolicyResponse,
@@ -18146,7 +18145,7 @@ export const updatePolicyEngine: API.OperationMethod<
   UpdatePolicyEngineRequest,
   UpdatePolicyEngineResponse,
   UpdatePolicyEngineError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdatePolicyEngineRequest,
   output: UpdatePolicyEngineResponse,
@@ -18179,7 +18178,7 @@ export const updateRegistry: API.OperationMethod<
   UpdateRegistryRequest,
   UpdateRegistryResponse,
   UpdateRegistryError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateRegistryRequest,
   output: UpdateRegistryResponse,
@@ -18212,7 +18211,7 @@ export const updateRegistryRecord: API.OperationMethod<
   UpdateRegistryRecordRequest,
   UpdateRegistryRecordResponse,
   UpdateRegistryRecordError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateRegistryRecordRequest,
   output: UpdateRegistryRecordResponse,
@@ -18244,7 +18243,7 @@ export const updateRegistryRecordStatus: API.OperationMethod<
   UpdateRegistryRecordStatusRequest,
   UpdateRegistryRecordStatusResponse,
   UpdateRegistryRecordStatusError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateRegistryRecordStatusRequest,
   output: UpdateRegistryRecordStatusResponse,
@@ -18276,7 +18275,7 @@ export const updateWorkloadIdentity: API.OperationMethod<
   UpdateWorkloadIdentityRequest,
   UpdateWorkloadIdentityResponse,
   UpdateWorkloadIdentityError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateWorkloadIdentityRequest,
   output: UpdateWorkloadIdentityResponse,

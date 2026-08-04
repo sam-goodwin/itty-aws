@@ -9,7 +9,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 import { SensitiveBlob } from "../sensitive.ts";
 const svc = T.AwsApiService({
   sdkId: "SageMaker Runtime HTTP2",
@@ -538,7 +537,7 @@ export const invokeEndpointWithBidirectionalStream: API.OperationMethod<
   InvokeEndpointWithBidirectionalStreamInput,
   InvokeEndpointWithBidirectionalStreamOutput,
   InvokeEndpointWithBidirectionalStreamError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: InvokeEndpointWithBidirectionalStreamInput,
   output: InvokeEndpointWithBidirectionalStreamOutput,

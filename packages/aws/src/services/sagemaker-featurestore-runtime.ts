@@ -7,7 +7,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 const svc = T.AwsApiService({
   sdkId: "SageMaker FeatureStore Runtime",
   serviceShapeName: "AmazonSageMakerFeatureStoreRuntime",
@@ -537,7 +536,7 @@ export const batchGetRecord: API.OperationMethod<
   BatchGetRecordRequest,
   BatchGetRecordResponse,
   BatchGetRecordError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: BatchGetRecordRequest,
   output: BatchGetRecordResponse,
@@ -573,7 +572,7 @@ export const batchWriteRecord: API.OperationMethod<
   BatchWriteRecordRequest,
   BatchWriteRecordResponse,
   BatchWriteRecordError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: BatchWriteRecordRequest,
   output: BatchWriteRecordResponse,
@@ -633,7 +632,7 @@ export const deleteRecord: API.OperationMethod<
   DeleteRecordRequest,
   DeleteRecordResponse,
   DeleteRecordError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteRecordRequest,
   output: DeleteRecordResponse,
@@ -666,7 +665,7 @@ export const getRecord: API.OperationMethod<
   GetRecordRequest,
   GetRecordResponse,
   GetRecordError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetRecordRequest,
   output: GetRecordResponse,
@@ -699,7 +698,7 @@ export const listRecords: API.PaginatedOperationMethod<
   ListRecordsRequest,
   ListRecordsResponse,
   ListRecordsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ValueAsString
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRecordsRequest,
@@ -754,7 +753,7 @@ export const putRecord: API.OperationMethod<
   PutRecordRequest,
   PutRecordResponse,
   PutRecordError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PutRecordRequest,
   output: PutRecordResponse,

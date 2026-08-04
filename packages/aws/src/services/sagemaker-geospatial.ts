@@ -8,7 +8,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 import { SensitiveString } from "../sensitive.ts";
 const svc = T.AwsApiService({
   sdkId: "SageMaker Geospatial",
@@ -1755,7 +1754,7 @@ export const deleteEarthObservationJob: API.OperationMethod<
   DeleteEarthObservationJobInput,
   DeleteEarthObservationJobOutput,
   DeleteEarthObservationJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteEarthObservationJobInput,
   output: DeleteEarthObservationJobOutput,
@@ -1787,7 +1786,7 @@ export const deleteVectorEnrichmentJob: API.OperationMethod<
   DeleteVectorEnrichmentJobInput,
   DeleteVectorEnrichmentJobOutput,
   DeleteVectorEnrichmentJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteVectorEnrichmentJobInput,
   output: DeleteVectorEnrichmentJobOutput,
@@ -1820,7 +1819,7 @@ export const exportEarthObservationJob: API.OperationMethod<
   ExportEarthObservationJobInput,
   ExportEarthObservationJobOutput,
   ExportEarthObservationJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ExportEarthObservationJobInput,
   output: ExportEarthObservationJobOutput,
@@ -1854,7 +1853,7 @@ export const exportVectorEnrichmentJob: API.OperationMethod<
   ExportVectorEnrichmentJobInput,
   ExportVectorEnrichmentJobOutput,
   ExportVectorEnrichmentJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ExportVectorEnrichmentJobInput,
   output: ExportVectorEnrichmentJobOutput,
@@ -1886,7 +1885,7 @@ export const getEarthObservationJob: API.OperationMethod<
   GetEarthObservationJobInput,
   GetEarthObservationJobOutput,
   GetEarthObservationJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetEarthObservationJobInput,
   output: GetEarthObservationJobOutput,
@@ -1916,7 +1915,7 @@ export const getRasterDataCollection: API.OperationMethod<
   GetRasterDataCollectionInput,
   GetRasterDataCollectionOutput,
   GetRasterDataCollectionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetRasterDataCollectionInput,
   output: GetRasterDataCollectionOutput,
@@ -1946,7 +1945,7 @@ export const getTile: API.OperationMethod<
   GetTileInput,
   GetTileOutput,
   GetTileError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetTileInput,
   output: GetTileOutput,
@@ -1976,7 +1975,7 @@ export const getVectorEnrichmentJob: API.OperationMethod<
   GetVectorEnrichmentJobInput,
   GetVectorEnrichmentJobOutput,
   GetVectorEnrichmentJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetVectorEnrichmentJobInput,
   output: GetVectorEnrichmentJobOutput,
@@ -2006,7 +2005,7 @@ export const listEarthObservationJobs: API.PaginatedOperationMethod<
   ListEarthObservationJobInput,
   ListEarthObservationJobOutput,
   ListEarthObservationJobsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ListEarthObservationJobOutputConfig
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEarthObservationJobInput,
@@ -2042,7 +2041,7 @@ export const listRasterDataCollections: API.PaginatedOperationMethod<
   ListRasterDataCollectionsInput,
   ListRasterDataCollectionsOutput,
   ListRasterDataCollectionsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   RasterDataCollectionMetadata
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRasterDataCollectionsInput,
@@ -2078,7 +2077,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -2108,7 +2107,7 @@ export const listVectorEnrichmentJobs: API.PaginatedOperationMethod<
   ListVectorEnrichmentJobInput,
   ListVectorEnrichmentJobOutput,
   ListVectorEnrichmentJobsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ListVectorEnrichmentJobOutputConfig
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListVectorEnrichmentJobInput,
@@ -2144,7 +2143,7 @@ export const searchRasterDataCollection: API.PaginatedOperationMethod<
   SearchRasterDataCollectionInput,
   SearchRasterDataCollectionOutput,
   SearchRasterDataCollectionError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchRasterDataCollectionInput,
@@ -2178,7 +2177,7 @@ export const startEarthObservationJob: API.OperationMethod<
   StartEarthObservationJobInput,
   StartEarthObservationJobOutput,
   StartEarthObservationJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartEarthObservationJobInput,
   output: StartEarthObservationJobOutput,
@@ -2212,7 +2211,7 @@ export const startVectorEnrichmentJob: API.OperationMethod<
   StartVectorEnrichmentJobInput,
   StartVectorEnrichmentJobOutput,
   StartVectorEnrichmentJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartVectorEnrichmentJobInput,
   output: StartVectorEnrichmentJobOutput,
@@ -2245,7 +2244,7 @@ export const stopEarthObservationJob: API.OperationMethod<
   StopEarthObservationJobInput,
   StopEarthObservationJobOutput,
   StopEarthObservationJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StopEarthObservationJobInput,
   output: StopEarthObservationJobOutput,
@@ -2277,7 +2276,7 @@ export const stopVectorEnrichmentJob: API.OperationMethod<
   StopVectorEnrichmentJobInput,
   StopVectorEnrichmentJobOutput,
   StopVectorEnrichmentJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StopVectorEnrichmentJobInput,
   output: StopVectorEnrichmentJobOutput,
@@ -2308,7 +2307,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -2338,7 +2337,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,

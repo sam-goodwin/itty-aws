@@ -7,7 +7,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 const svc = T.AwsApiService({
   sdkId: "Route53 Recovery Readiness",
   serviceShapeName: "Route53RecoveryReadiness",
@@ -1778,7 +1777,7 @@ export const createCell: API.OperationMethod<
   CreateCellRequest,
   CreateCellResponse,
   CreateCellError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateCellRequest,
   output: CreateCellResponse,
@@ -1808,7 +1807,7 @@ export const createCrossAccountAuthorization: API.OperationMethod<
   CreateCrossAccountAuthorizationRequest,
   CreateCrossAccountAuthorizationResponse,
   CreateCrossAccountAuthorizationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateCrossAccountAuthorizationRequest,
   output: CreateCrossAccountAuthorizationResponse,
@@ -1838,7 +1837,7 @@ export const createReadinessCheck: API.OperationMethod<
   CreateReadinessCheckRequest,
   CreateReadinessCheckResponse,
   CreateReadinessCheckError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateReadinessCheckRequest,
   output: CreateReadinessCheckResponse,
@@ -1868,7 +1867,7 @@ export const createRecoveryGroup: API.OperationMethod<
   CreateRecoveryGroupRequest,
   CreateRecoveryGroupResponse,
   CreateRecoveryGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateRecoveryGroupRequest,
   output: CreateRecoveryGroupResponse,
@@ -1898,7 +1897,7 @@ export const createResourceSet: API.OperationMethod<
   CreateResourceSetRequest,
   CreateResourceSetResponse,
   CreateResourceSetError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateResourceSetRequest,
   output: CreateResourceSetResponse,
@@ -1928,7 +1927,7 @@ export const deleteCell: API.OperationMethod<
   DeleteCellRequest,
   DeleteCellResponse,
   DeleteCellError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteCellRequest,
   output: DeleteCellResponse,
@@ -1957,7 +1956,7 @@ export const deleteCrossAccountAuthorization: API.OperationMethod<
   DeleteCrossAccountAuthorizationRequest,
   DeleteCrossAccountAuthorizationResponse,
   DeleteCrossAccountAuthorizationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteCrossAccountAuthorizationRequest,
   output: DeleteCrossAccountAuthorizationResponse,
@@ -1986,7 +1985,7 @@ export const deleteReadinessCheck: API.OperationMethod<
   DeleteReadinessCheckRequest,
   DeleteReadinessCheckResponse,
   DeleteReadinessCheckError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteReadinessCheckRequest,
   output: DeleteReadinessCheckResponse,
@@ -2016,7 +2015,7 @@ export const deleteRecoveryGroup: API.OperationMethod<
   DeleteRecoveryGroupRequest,
   DeleteRecoveryGroupResponse,
   DeleteRecoveryGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteRecoveryGroupRequest,
   output: DeleteRecoveryGroupResponse,
@@ -2046,7 +2045,7 @@ export const deleteResourceSet: API.OperationMethod<
   DeleteResourceSetRequest,
   DeleteResourceSetResponse,
   DeleteResourceSetError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteResourceSetRequest,
   output: DeleteResourceSetResponse,
@@ -2076,7 +2075,7 @@ export const getArchitectureRecommendations: API.OperationMethod<
   GetArchitectureRecommendationsRequest,
   GetArchitectureRecommendationsResponse,
   GetArchitectureRecommendationsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetArchitectureRecommendationsRequest,
   output: GetArchitectureRecommendationsResponse,
@@ -2106,7 +2105,7 @@ export const getCell: API.OperationMethod<
   GetCellRequest,
   GetCellResponse,
   GetCellError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetCellRequest,
   output: GetCellResponse,
@@ -2136,7 +2135,7 @@ export const getCellReadinessSummary: API.PaginatedOperationMethod<
   GetCellReadinessSummaryRequest,
   GetCellReadinessSummaryResponse,
   GetCellReadinessSummaryError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ReadinessCheckSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetCellReadinessSummaryRequest,
@@ -2173,7 +2172,7 @@ export const getReadinessCheck: API.OperationMethod<
   GetReadinessCheckRequest,
   GetReadinessCheckResponse,
   GetReadinessCheckError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetReadinessCheckRequest,
   output: GetReadinessCheckResponse,
@@ -2203,7 +2202,7 @@ export const getReadinessCheckResourceStatus: API.PaginatedOperationMethod<
   GetReadinessCheckResourceStatusRequest,
   GetReadinessCheckResourceStatusResponse,
   GetReadinessCheckResourceStatusError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   RuleResult
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetReadinessCheckResourceStatusRequest,
@@ -2240,7 +2239,7 @@ export const getReadinessCheckStatus: API.PaginatedOperationMethod<
   GetReadinessCheckStatusRequest,
   GetReadinessCheckStatusResponse,
   GetReadinessCheckStatusError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ResourceResult
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetReadinessCheckStatusRequest,
@@ -2277,7 +2276,7 @@ export const getRecoveryGroup: API.OperationMethod<
   GetRecoveryGroupRequest,
   GetRecoveryGroupResponse,
   GetRecoveryGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetRecoveryGroupRequest,
   output: GetRecoveryGroupResponse,
@@ -2307,7 +2306,7 @@ export const getRecoveryGroupReadinessSummary: API.PaginatedOperationMethod<
   GetRecoveryGroupReadinessSummaryRequest,
   GetRecoveryGroupReadinessSummaryResponse,
   GetRecoveryGroupReadinessSummaryError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ReadinessCheckSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetRecoveryGroupReadinessSummaryRequest,
@@ -2344,7 +2343,7 @@ export const getResourceSet: API.OperationMethod<
   GetResourceSetRequest,
   GetResourceSetResponse,
   GetResourceSetError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetResourceSetRequest,
   output: GetResourceSetResponse,
@@ -2373,7 +2372,7 @@ export const listCells: API.PaginatedOperationMethod<
   ListCellsRequest,
   ListCellsResponse,
   ListCellsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   CellOutput
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCellsRequest,
@@ -2408,7 +2407,7 @@ export const listCrossAccountAuthorizations: API.PaginatedOperationMethod<
   ListCrossAccountAuthorizationsRequest,
   ListCrossAccountAuthorizationsResponse,
   ListCrossAccountAuthorizationsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   CrossAccountAuthorization
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCrossAccountAuthorizationsRequest,
@@ -2443,7 +2442,7 @@ export const listReadinessChecks: API.PaginatedOperationMethod<
   ListReadinessChecksRequest,
   ListReadinessChecksResponse,
   ListReadinessChecksError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ReadinessCheckOutput
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListReadinessChecksRequest,
@@ -2478,7 +2477,7 @@ export const listRecoveryGroups: API.PaginatedOperationMethod<
   ListRecoveryGroupsRequest,
   ListRecoveryGroupsResponse,
   ListRecoveryGroupsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   RecoveryGroupOutput
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRecoveryGroupsRequest,
@@ -2513,7 +2512,7 @@ export const listResourceSets: API.PaginatedOperationMethod<
   ListResourceSetsRequest,
   ListResourceSetsResponse,
   ListResourceSetsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ResourceSetOutput
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListResourceSetsRequest,
@@ -2548,7 +2547,7 @@ export const listRules: API.PaginatedOperationMethod<
   ListRulesRequest,
   ListRulesResponse,
   ListRulesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ListRulesOutput
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRulesRequest,
@@ -2582,7 +2581,7 @@ export const listTagsForResources: API.OperationMethod<
   ListTagsForResourcesRequest,
   ListTagsForResourcesResponse,
   ListTagsForResourcesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourcesRequest,
   output: ListTagsForResourcesResponse,
@@ -2608,7 +2607,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -2634,7 +2633,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -2662,7 +2661,7 @@ export const updateCell: API.OperationMethod<
   UpdateCellRequest,
   UpdateCellResponse,
   UpdateCellError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateCellRequest,
   output: UpdateCellResponse,
@@ -2692,7 +2691,7 @@ export const updateReadinessCheck: API.OperationMethod<
   UpdateReadinessCheckRequest,
   UpdateReadinessCheckResponse,
   UpdateReadinessCheckError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateReadinessCheckRequest,
   output: UpdateReadinessCheckResponse,
@@ -2722,7 +2721,7 @@ export const updateRecoveryGroup: API.OperationMethod<
   UpdateRecoveryGroupRequest,
   UpdateRecoveryGroupResponse,
   UpdateRecoveryGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateRecoveryGroupRequest,
   output: UpdateRecoveryGroupResponse,
@@ -2752,7 +2751,7 @@ export const updateResourceSet: API.OperationMethod<
   UpdateResourceSetRequest,
   UpdateResourceSetResponse,
   UpdateResourceSetError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateResourceSetRequest,
   output: UpdateResourceSetResponse,

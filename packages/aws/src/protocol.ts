@@ -53,11 +53,15 @@ import {
 } from "./traits.ts";
 import { getIdentifier } from "./util/ast.ts";
 
-/** Context (requirements) shared by every generated AWS operation. */
-export type AwsOpContext =
-  | Credentials.Credentials
-  | Region.Region
-  | HttpClient.HttpClient;
+/**
+ * Context (requirements) shared by every generated AWS operation.
+ *
+ * `Region` is deliberately absent: it is an override read with
+ * `Effect.serviceOption` (see `region.ts`), falling back to the environment,
+ * so callers who already configured a region for their credentials don't
+ * have to state it again.
+ */
+export type AwsOpContext = Credentials.Credentials | HttpClient.HttpClient;
 
 interface Prepared {
   readonly buildRequest: (input: unknown) => Effect.Effect<Request, any, any>;
@@ -152,7 +156,7 @@ const encode = ({
     yield* Effect.logDebug("Built Request", request);
 
     const credentials = yield* yield* Credentials.Credentials;
-    const region = yield* yield* Region.Region;
+    const region = yield* Region.resolve;
     const serviceName = sigv4?.name ?? "s3";
 
     // Resolve endpoint and adjust request path if needed

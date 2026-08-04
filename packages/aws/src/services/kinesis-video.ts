@@ -8,7 +8,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 import { SensitiveString } from "../sensitive.ts";
 const ns = T.XmlNamespace("https://kinesisvideo.amazonaws.com/doc/2017-09-30/");
 const svc = T.AwsApiService({
@@ -1769,7 +1768,7 @@ export const createSignalingChannel: API.OperationMethod<
   CreateSignalingChannelInput,
   CreateSignalingChannelOutput,
   CreateSignalingChannelError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateSignalingChannelInput,
   output: CreateSignalingChannelOutput,
@@ -1812,7 +1811,7 @@ export const createStream: API.OperationMethod<
   CreateStreamInput,
   CreateStreamOutput,
   CreateStreamError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateStreamInput,
   output: CreateStreamOutput,
@@ -1848,7 +1847,7 @@ export const deleteEdgeConfiguration: API.OperationMethod<
   DeleteEdgeConfigurationInput,
   DeleteEdgeConfigurationOutput,
   DeleteEdgeConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteEdgeConfigurationInput,
   output: DeleteEdgeConfigurationOutput,
@@ -1881,7 +1880,7 @@ export const deleteSignalingChannel: API.OperationMethod<
   DeleteSignalingChannelInput,
   DeleteSignalingChannelOutput,
   DeleteSignalingChannelError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteSignalingChannelInput,
   output: DeleteSignalingChannelOutput,
@@ -1924,7 +1923,7 @@ export const deleteStream: API.OperationMethod<
   DeleteStreamInput,
   DeleteStreamOutput,
   DeleteStreamError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteStreamInput,
   output: DeleteStreamOutput,
@@ -1959,7 +1958,7 @@ export const describeEdgeConfiguration: API.OperationMethod<
   DescribeEdgeConfigurationInput,
   DescribeEdgeConfigurationOutput,
   DescribeEdgeConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeEdgeConfigurationInput,
   output: DescribeEdgeConfigurationOutput,
@@ -1988,7 +1987,7 @@ export const describeImageGenerationConfiguration: API.OperationMethod<
   DescribeImageGenerationConfigurationInput,
   DescribeImageGenerationConfigurationOutput,
   DescribeImageGenerationConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeImageGenerationConfigurationInput,
   output: DescribeImageGenerationConfigurationOutput,
@@ -2017,7 +2016,7 @@ export const describeMappedResourceConfiguration: API.PaginatedOperationMethod<
   DescribeMappedResourceConfigurationInput,
   DescribeMappedResourceConfigurationOutput,
   DescribeMappedResourceConfigurationError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   MappedResourceConfigurationListItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeMappedResourceConfigurationInput,
@@ -2053,7 +2052,7 @@ export const describeMediaStorageConfiguration: API.OperationMethod<
   DescribeMediaStorageConfigurationInput,
   DescribeMediaStorageConfigurationOutput,
   DescribeMediaStorageConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeMediaStorageConfigurationInput,
   output: DescribeMediaStorageConfigurationOutput,
@@ -2081,7 +2080,7 @@ export const describeNotificationConfiguration: API.OperationMethod<
   DescribeNotificationConfigurationInput,
   DescribeNotificationConfigurationOutput,
   DescribeNotificationConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeNotificationConfigurationInput,
   output: DescribeNotificationConfigurationOutput,
@@ -2111,7 +2110,7 @@ export const describeSignalingChannel: API.OperationMethod<
   DescribeSignalingChannelInput,
   DescribeSignalingChannelOutput,
   DescribeSignalingChannelError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeSignalingChannelInput,
   output: DescribeSignalingChannelOutput,
@@ -2140,7 +2139,7 @@ export const describeStream: API.OperationMethod<
   DescribeStreamInput,
   DescribeStreamOutput,
   DescribeStreamError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeStreamInput,
   output: DescribeStreamOutput,
@@ -2172,7 +2171,7 @@ export const describeStreamStorageConfiguration: API.OperationMethod<
   DescribeStreamStorageConfigurationInput,
   DescribeStreamStorageConfigurationOutput,
   DescribeStreamStorageConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeStreamStorageConfigurationInput,
   output: DescribeStreamStorageConfigurationOutput,
@@ -2209,7 +2208,7 @@ export const getDataEndpoint: API.OperationMethod<
   GetDataEndpointInput,
   GetDataEndpointOutput,
   GetDataEndpointError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetDataEndpointInput,
   output: GetDataEndpointOutput,
@@ -2252,7 +2251,7 @@ export const getSignalingChannelEndpoint: API.OperationMethod<
   GetSignalingChannelEndpointInput,
   GetSignalingChannelEndpointOutput,
   GetSignalingChannelEndpointError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetSignalingChannelEndpointInput,
   output: GetSignalingChannelEndpointOutput,
@@ -2282,7 +2281,7 @@ export const listEdgeAgentConfigurations: API.PaginatedOperationMethod<
   ListEdgeAgentConfigurationsInput,
   ListEdgeAgentConfigurationsOutput,
   ListEdgeAgentConfigurationsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ListEdgeAgentConfigurationsEdgeConfig
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEdgeAgentConfigurationsInput,
@@ -2317,7 +2316,7 @@ export const listSignalingChannels: API.PaginatedOperationMethod<
   ListSignalingChannelsInput,
   ListSignalingChannelsOutput,
   ListSignalingChannelsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ChannelInfo
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSignalingChannelsInput,
@@ -2351,7 +2350,7 @@ export const listStreams: API.PaginatedOperationMethod<
   ListStreamsInput,
   ListStreamsOutput,
   ListStreamsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   StreamInfo
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListStreamsInput,
@@ -2381,7 +2380,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceInput,
   ListTagsForResourceOutput,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceInput,
   output: ListTagsForResourceOutput,
@@ -2413,7 +2412,7 @@ export const listTagsForStream: API.OperationMethod<
   ListTagsForStreamInput,
   ListTagsForStreamOutput,
   ListTagsForStreamError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForStreamInput,
   output: ListTagsForStreamOutput,
@@ -2459,7 +2458,7 @@ export const startEdgeConfigurationUpdate: API.OperationMethod<
   StartEdgeConfigurationUpdateInput,
   StartEdgeConfigurationUpdateOutput,
   StartEdgeConfigurationUpdateError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartEdgeConfigurationUpdateInput,
   output: StartEdgeConfigurationUpdateOutput,
@@ -2496,7 +2495,7 @@ export const tagResource: API.OperationMethod<
   TagResourceInput,
   TagResourceOutput,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: TagResourceInput,
   output: TagResourceOutput,
@@ -2541,7 +2540,7 @@ export const tagStream: API.OperationMethod<
   TagStreamInput,
   TagStreamOutput,
   TagStreamError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: TagStreamInput,
   output: TagStreamOutput,
@@ -2575,7 +2574,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceInput,
   UntagResourceOutput,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceInput,
   output: UntagResourceOutput,
@@ -2611,7 +2610,7 @@ export const untagStream: API.OperationMethod<
   UntagStreamInput,
   UntagStreamOutput,
   UntagStreamError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UntagStreamInput,
   output: UntagStreamOutput,
@@ -2663,7 +2662,7 @@ export const updateDataRetention: API.OperationMethod<
   UpdateDataRetentionInput,
   UpdateDataRetentionOutput,
   UpdateDataRetentionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateDataRetentionInput,
   output: UpdateDataRetentionOutput,
@@ -2696,7 +2695,7 @@ export const updateImageGenerationConfiguration: API.OperationMethod<
   UpdateImageGenerationConfigurationInput,
   UpdateImageGenerationConfigurationOutput,
   UpdateImageGenerationConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateImageGenerationConfigurationInput,
   output: UpdateImageGenerationConfigurationOutput,
@@ -2741,7 +2740,7 @@ export const updateMediaStorageConfiguration: API.OperationMethod<
   UpdateMediaStorageConfigurationInput,
   UpdateMediaStorageConfigurationOutput,
   UpdateMediaStorageConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateMediaStorageConfigurationInput,
   output: UpdateMediaStorageConfigurationOutput,
@@ -2773,7 +2772,7 @@ export const updateNotificationConfiguration: API.OperationMethod<
   UpdateNotificationConfigurationInput,
   UpdateNotificationConfigurationOutput,
   UpdateNotificationConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateNotificationConfigurationInput,
   output: UpdateNotificationConfigurationOutput,
@@ -2812,7 +2811,7 @@ export const updateSignalingChannel: API.OperationMethod<
   UpdateSignalingChannelInput,
   UpdateSignalingChannelOutput,
   UpdateSignalingChannelError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateSignalingChannelInput,
   output: UpdateSignalingChannelOutput,
@@ -2857,7 +2856,7 @@ export const updateStream: API.OperationMethod<
   UpdateStreamInput,
   UpdateStreamOutput,
   UpdateStreamError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateStreamInput,
   output: UpdateStreamOutput,
@@ -2896,7 +2895,7 @@ export const updateStreamStorageConfiguration: API.OperationMethod<
   UpdateStreamStorageConfigurationInput,
   UpdateStreamStorageConfigurationOutput,
   UpdateStreamStorageConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateStreamStorageConfigurationInput,
   output: UpdateStreamStorageConfigurationOutput,

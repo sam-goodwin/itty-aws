@@ -7,7 +7,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 const svc = T.AwsApiService({
   sdkId: "HealthLake",
   serviceShapeName: "HealthLake",
@@ -861,7 +860,7 @@ export const createFHIRDatastore: API.OperationMethod<
   CreateFHIRDatastoreRequest,
   CreateFHIRDatastoreResponse,
   CreateFHIRDatastoreError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateFHIRDatastoreRequest,
   output: CreateFHIRDatastoreResponse,
@@ -891,7 +890,7 @@ export const deleteFHIRDatastore: API.OperationMethod<
   DeleteFHIRDatastoreRequest,
   DeleteFHIRDatastoreResponse,
   DeleteFHIRDatastoreError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteFHIRDatastoreRequest,
   output: DeleteFHIRDatastoreResponse,
@@ -921,7 +920,7 @@ export const describeFHIRDatastore: API.OperationMethod<
   DescribeFHIRDatastoreRequest,
   DescribeFHIRDatastoreResponse,
   DescribeFHIRDatastoreError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeFHIRDatastoreRequest,
   output: DescribeFHIRDatastoreResponse,
@@ -949,7 +948,7 @@ export const describeFHIRExportJob: API.OperationMethod<
   DescribeFHIRExportJobRequest,
   DescribeFHIRExportJobResponse,
   DescribeFHIRExportJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeFHIRExportJobRequest,
   output: DescribeFHIRExportJobResponse,
@@ -977,7 +976,7 @@ export const describeFHIRImportJob: API.OperationMethod<
   DescribeFHIRImportJobRequest,
   DescribeFHIRImportJobResponse,
   DescribeFHIRImportJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeFHIRImportJobRequest,
   output: DescribeFHIRImportJobResponse,
@@ -1005,7 +1004,7 @@ export const listFHIRDatastores: API.PaginatedOperationMethod<
   ListFHIRDatastoresRequest,
   ListFHIRDatastoresResponse,
   ListFHIRDatastoresError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFHIRDatastoresRequest,
@@ -1035,7 +1034,7 @@ export const listFHIRExportJobs: API.PaginatedOperationMethod<
   ListFHIRExportJobsRequest,
   ListFHIRExportJobsResponse,
   ListFHIRExportJobsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFHIRExportJobsRequest,
@@ -1071,7 +1070,7 @@ export const listFHIRImportJobs: API.PaginatedOperationMethod<
   ListFHIRImportJobsRequest,
   ListFHIRImportJobsResponse,
   ListFHIRImportJobsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFHIRImportJobsRequest,
@@ -1104,7 +1103,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -1128,7 +1127,7 @@ export const startFHIRExportJob: API.OperationMethod<
   StartFHIRExportJobRequest,
   StartFHIRExportJobResponse,
   StartFHIRExportJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartFHIRExportJobRequest,
   output: StartFHIRExportJobResponse,
@@ -1160,7 +1159,7 @@ export const startFHIRImportJob: API.OperationMethod<
   StartFHIRImportJobRequest,
   StartFHIRImportJobResponse,
   StartFHIRImportJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartFHIRImportJobRequest,
   output: StartFHIRImportJobResponse,
@@ -1187,7 +1186,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -1208,7 +1207,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -1233,7 +1232,7 @@ export const updateFHIRDatastore: API.OperationMethod<
   UpdateFHIRDatastoreRequest,
   UpdateFHIRDatastoreResponse,
   UpdateFHIRDatastoreError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateFHIRDatastoreRequest,
   output: UpdateFHIRDatastoreResponse,

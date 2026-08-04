@@ -7,7 +7,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 const svc = T.AwsApiService({ sdkId: "Omics", serviceShapeName: "Omics" });
 const auth = T.AwsAuthSigv4({ name: "omics" });
 const ver = T.ServiceVersion("2022-11-28");
@@ -6661,7 +6660,7 @@ export const abortMultipartReadSetUpload: API.OperationMethod<
   AbortMultipartReadSetUploadRequest,
   AbortMultipartReadSetUploadResponse,
   AbortMultipartReadSetUploadError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: AbortMultipartReadSetUploadRequest,
   output: AbortMultipartReadSetUploadResponse,
@@ -6697,7 +6696,7 @@ export const acceptShare: API.OperationMethod<
   AcceptShareRequest,
   AcceptShareResponse,
   AcceptShareError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: AcceptShareRequest,
   output: AcceptShareResponse,
@@ -6731,7 +6730,7 @@ export const batchDeleteReadSet: API.OperationMethod<
   BatchDeleteReadSetRequest,
   BatchDeleteReadSetResponse,
   BatchDeleteReadSetError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: BatchDeleteReadSetRequest,
   output: BatchDeleteReadSetResponse,
@@ -6765,7 +6764,7 @@ export const cancelAnnotationImportJob: API.OperationMethod<
   CancelAnnotationImportRequest,
   CancelAnnotationImportResponse,
   CancelAnnotationImportJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CancelAnnotationImportRequest,
   output: CancelAnnotationImportResponse,
@@ -6799,7 +6798,7 @@ export const cancelRun: API.OperationMethod<
   CancelRunRequest,
   CancelRunResponse,
   CancelRunError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CancelRunRequest,
   output: CancelRunResponse,
@@ -6838,7 +6837,7 @@ export const cancelRunBatch: API.OperationMethod<
   CancelRunBatchRequest,
   CancelRunBatchResponse,
   CancelRunBatchError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CancelRunBatchRequest,
   output: CancelRunBatchResponse,
@@ -6874,7 +6873,7 @@ export const cancelVariantImportJob: API.OperationMethod<
   CancelVariantImportRequest,
   CancelVariantImportResponse,
   CancelVariantImportJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CancelVariantImportRequest,
   output: CancelVariantImportResponse,
@@ -6910,7 +6909,7 @@ export const completeMultipartReadSetUpload: API.OperationMethod<
   CompleteMultipartReadSetUploadRequest,
   CompleteMultipartReadSetUploadResponse,
   CompleteMultipartReadSetUploadError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CompleteMultipartReadSetUploadRequest,
   output: CompleteMultipartReadSetUploadResponse,
@@ -6948,7 +6947,7 @@ export const createAnnotationStore: API.OperationMethod<
   CreateAnnotationStoreRequest,
   CreateAnnotationStoreResponse,
   CreateAnnotationStoreError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateAnnotationStoreRequest,
   output: CreateAnnotationStoreResponse,
@@ -6983,7 +6982,7 @@ export const createAnnotationStoreVersion: API.OperationMethod<
   CreateAnnotationStoreVersionRequest,
   CreateAnnotationStoreVersionResponse,
   CreateAnnotationStoreVersionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateAnnotationStoreVersionRequest,
   output: CreateAnnotationStoreVersionResponse,
@@ -7019,7 +7018,7 @@ export const createConfiguration: API.OperationMethod<
   CreateConfigurationRequest,
   CreateConfigurationResponse,
   CreateConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateConfigurationRequest,
   output: CreateConfigurationResponse,
@@ -7066,7 +7065,7 @@ export const createMultipartReadSetUpload: API.OperationMethod<
   CreateMultipartReadSetUploadRequest,
   CreateMultipartReadSetUploadResponse,
   CreateMultipartReadSetUploadError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateMultipartReadSetUploadRequest,
   output: CreateMultipartReadSetUploadResponse,
@@ -7103,7 +7102,7 @@ export const createReferenceStore: API.OperationMethod<
   CreateReferenceStoreRequest,
   CreateReferenceStoreResponse,
   CreateReferenceStoreError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateReferenceStoreRequest,
   output: CreateReferenceStoreResponse,
@@ -7140,7 +7139,7 @@ export const createRunCache: API.OperationMethod<
   CreateRunCacheRequest,
   CreateRunCacheResponse,
   CreateRunCacheError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateRunCacheRequest,
   output: CreateRunCacheResponse,
@@ -7177,7 +7176,7 @@ export const createRunGroup: API.OperationMethod<
   CreateRunGroupRequest,
   CreateRunGroupResponse,
   CreateRunGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateRunGroupRequest,
   output: CreateRunGroupResponse,
@@ -7226,7 +7225,7 @@ export const createSequenceStore: API.OperationMethod<
   CreateSequenceStoreRequest,
   CreateSequenceStoreResponse,
   CreateSequenceStoreError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateSequenceStoreRequest,
   output: CreateSequenceStoreResponse,
@@ -7268,7 +7267,7 @@ export const createShare: API.OperationMethod<
   CreateShareRequest,
   CreateShareResponse,
   CreateShareError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateShareRequest,
   output: CreateShareResponse,
@@ -7305,7 +7304,7 @@ export const createVariantStore: API.OperationMethod<
   CreateVariantStoreRequest,
   CreateVariantStoreResponse,
   CreateVariantStoreError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateVariantStoreRequest,
   output: CreateVariantStoreResponse,
@@ -7353,7 +7352,7 @@ export const createWorkflow: API.OperationMethod<
   CreateWorkflowRequest,
   CreateWorkflowResponse,
   CreateWorkflowError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateWorkflowRequest,
   output: CreateWorkflowResponse,
@@ -7398,7 +7397,7 @@ export const createWorkflowVersion: API.OperationMethod<
   CreateWorkflowVersionRequest,
   CreateWorkflowVersionResponse,
   CreateWorkflowVersionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateWorkflowVersionRequest,
   output: CreateWorkflowVersionResponse,
@@ -7435,7 +7434,7 @@ export const deleteAnnotationStore: API.OperationMethod<
   DeleteAnnotationStoreRequest,
   DeleteAnnotationStoreResponse,
   DeleteAnnotationStoreError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteAnnotationStoreRequest,
   output: DeleteAnnotationStoreResponse,
@@ -7468,7 +7467,7 @@ export const deleteAnnotationStoreVersions: API.OperationMethod<
   DeleteAnnotationStoreVersionsRequest,
   DeleteAnnotationStoreVersionsResponse,
   DeleteAnnotationStoreVersionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteAnnotationStoreVersionsRequest,
   output: DeleteAnnotationStoreVersionsResponse,
@@ -7505,7 +7504,7 @@ export const deleteBatch: API.OperationMethod<
   DeleteBatchRequest,
   DeleteBatchResponse,
   DeleteBatchError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteBatchRequest,
   output: DeleteBatchResponse,
@@ -7542,7 +7541,7 @@ export const deleteConfiguration: API.OperationMethod<
   DeleteConfigurationRequest,
   DeleteConfigurationResponse,
   DeleteConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteConfigurationRequest,
   output: DeleteConfigurationResponse,
@@ -7580,7 +7579,7 @@ export const deleteReference: API.OperationMethod<
   DeleteReferenceRequest,
   DeleteReferenceResponse,
   DeleteReferenceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteReferenceRequest,
   output: DeleteReferenceResponse,
@@ -7617,7 +7616,7 @@ export const deleteReferenceStore: API.OperationMethod<
   DeleteReferenceStoreRequest,
   DeleteReferenceStoreResponse,
   DeleteReferenceStoreError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteReferenceStoreRequest,
   output: DeleteReferenceStoreResponse,
@@ -7659,7 +7658,7 @@ export const deleteRun: API.OperationMethod<
   DeleteRunRequest,
   DeleteRunResponse,
   DeleteRunError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteRunRequest,
   output: DeleteRunResponse,
@@ -7698,7 +7697,7 @@ export const deleteRunBatch: API.OperationMethod<
   DeleteRunBatchRequest,
   DeleteRunBatchResponse,
   DeleteRunBatchError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteRunBatchRequest,
   output: DeleteRunBatchResponse,
@@ -7737,7 +7736,7 @@ export const deleteRunCache: API.OperationMethod<
   DeleteRunCacheRequest,
   DeleteRunCacheResponse,
   DeleteRunCacheError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteRunCacheRequest,
   output: DeleteRunCacheResponse,
@@ -7780,7 +7779,7 @@ export const deleteRunGroup: API.OperationMethod<
   DeleteRunGroupRequest,
   DeleteRunGroupResponse,
   DeleteRunGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteRunGroupRequest,
   output: DeleteRunGroupResponse,
@@ -7816,7 +7815,7 @@ export const deleteS3AccessPolicy: API.OperationMethod<
   DeleteS3AccessPolicyRequest,
   DeleteS3AccessPolicyResponse,
   DeleteS3AccessPolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteS3AccessPolicyRequest,
   output: DeleteS3AccessPolicyResponse,
@@ -7855,7 +7854,7 @@ export const deleteSequenceStore: API.OperationMethod<
   DeleteSequenceStoreRequest,
   DeleteSequenceStoreResponse,
   DeleteSequenceStoreError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteSequenceStoreRequest,
   output: DeleteSequenceStoreResponse,
@@ -7890,7 +7889,7 @@ export const deleteShare: API.OperationMethod<
   DeleteShareRequest,
   DeleteShareResponse,
   DeleteShareError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteShareRequest,
   output: DeleteShareResponse,
@@ -7926,7 +7925,7 @@ export const deleteVariantStore: API.OperationMethod<
   DeleteVariantStoreRequest,
   DeleteVariantStoreResponse,
   DeleteVariantStoreError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteVariantStoreRequest,
   output: DeleteVariantStoreResponse,
@@ -7967,7 +7966,7 @@ export const deleteWorkflow: API.OperationMethod<
   DeleteWorkflowRequest,
   DeleteWorkflowResponse,
   DeleteWorkflowError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteWorkflowRequest,
   output: DeleteWorkflowResponse,
@@ -8006,7 +8005,7 @@ export const deleteWorkflowVersion: API.OperationMethod<
   DeleteWorkflowVersionRequest,
   DeleteWorkflowVersionResponse,
   DeleteWorkflowVersionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteWorkflowVersionRequest,
   output: DeleteWorkflowVersionResponse,
@@ -8042,7 +8041,7 @@ export const getAnnotationImportJob: API.OperationMethod<
   GetAnnotationImportRequest,
   GetAnnotationImportResponse,
   GetAnnotationImportJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetAnnotationImportRequest,
   output: GetAnnotationImportResponse,
@@ -8075,7 +8074,7 @@ export const getAnnotationStore: API.OperationMethod<
   GetAnnotationStoreRequest,
   GetAnnotationStoreResponse,
   GetAnnotationStoreError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetAnnotationStoreRequest,
   output: GetAnnotationStoreResponse,
@@ -8106,7 +8105,7 @@ export const getAnnotationStoreVersion: API.OperationMethod<
   GetAnnotationStoreVersionRequest,
   GetAnnotationStoreVersionResponse,
   GetAnnotationStoreVersionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetAnnotationStoreVersionRequest,
   output: GetAnnotationStoreVersionResponse,
@@ -8138,7 +8137,7 @@ export const getBatch: API.OperationMethod<
   GetBatchRequest,
   GetBatchResponse,
   GetBatchError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetBatchRequest,
   output: GetBatchResponse,
@@ -8173,7 +8172,7 @@ export const getConfiguration: API.OperationMethod<
   GetConfigurationRequest,
   GetConfigurationResponse,
   GetConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetConfigurationRequest,
   output: GetConfigurationResponse,
@@ -8210,7 +8209,7 @@ export const getReadSet: API.OperationMethod<
   GetReadSetRequest,
   GetReadSetResponse,
   GetReadSetError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetReadSetRequest,
   output: GetReadSetResponse,
@@ -8245,7 +8244,7 @@ export const getReadSetActivationJob: API.OperationMethod<
   GetReadSetActivationJobRequest,
   GetReadSetActivationJobResponse,
   GetReadSetActivationJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetReadSetActivationJobRequest,
   output: GetReadSetActivationJobResponse,
@@ -8278,7 +8277,7 @@ export const getReadSetExportJob: API.OperationMethod<
   GetReadSetExportJobRequest,
   GetReadSetExportJobResponse,
   GetReadSetExportJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetReadSetExportJobRequest,
   output: GetReadSetExportJobResponse,
@@ -8311,7 +8310,7 @@ export const getReadSetImportJob: API.OperationMethod<
   GetReadSetImportJobRequest,
   GetReadSetImportJobResponse,
   GetReadSetImportJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetReadSetImportJobRequest,
   output: GetReadSetImportJobResponse,
@@ -8344,7 +8343,7 @@ export const getReadSetMetadata: API.OperationMethod<
   GetReadSetMetadataRequest,
   GetReadSetMetadataResponse,
   GetReadSetMetadataError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetReadSetMetadataRequest,
   output: GetReadSetMetadataResponse,
@@ -8380,7 +8379,7 @@ export const getReference: API.OperationMethod<
   GetReferenceRequest,
   GetReferenceResponse,
   GetReferenceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetReferenceRequest,
   output: GetReferenceResponse,
@@ -8414,7 +8413,7 @@ export const getReferenceImportJob: API.OperationMethod<
   GetReferenceImportJobRequest,
   GetReferenceImportJobResponse,
   GetReferenceImportJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetReferenceImportJobRequest,
   output: GetReferenceImportJobResponse,
@@ -8447,7 +8446,7 @@ export const getReferenceMetadata: API.OperationMethod<
   GetReferenceMetadataRequest,
   GetReferenceMetadataResponse,
   GetReferenceMetadataError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetReferenceMetadataRequest,
   output: GetReferenceMetadataResponse,
@@ -8480,7 +8479,7 @@ export const getReferenceStore: API.OperationMethod<
   GetReferenceStoreRequest,
   GetReferenceStoreResponse,
   GetReferenceStoreError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetReferenceStoreRequest,
   output: GetReferenceStoreResponse,
@@ -8517,7 +8516,7 @@ export const getRun: API.OperationMethod<
   GetRunRequest,
   GetRunResponse,
   GetRunError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetRunRequest,
   output: GetRunResponse,
@@ -8556,7 +8555,7 @@ export const getRunCache: API.OperationMethod<
   GetRunCacheRequest,
   GetRunCacheResponse,
   GetRunCacheError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetRunCacheRequest,
   output: GetRunCacheResponse,
@@ -8593,7 +8592,7 @@ export const getRunGroup: API.OperationMethod<
   GetRunGroupRequest,
   GetRunGroupResponse,
   GetRunGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetRunGroupRequest,
   output: GetRunGroupResponse,
@@ -8630,7 +8629,7 @@ export const getRunTask: API.OperationMethod<
   GetRunTaskRequest,
   GetRunTaskResponse,
   GetRunTaskError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetRunTaskRequest,
   output: GetRunTaskResponse,
@@ -8667,7 +8666,7 @@ export const getS3AccessPolicy: API.OperationMethod<
   GetS3AccessPolicyRequest,
   GetS3AccessPolicyResponse,
   GetS3AccessPolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetS3AccessPolicyRequest,
   output: GetS3AccessPolicyResponse,
@@ -8702,7 +8701,7 @@ export const getSequenceStore: API.OperationMethod<
   GetSequenceStoreRequest,
   GetSequenceStoreResponse,
   GetSequenceStoreError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetSequenceStoreRequest,
   output: GetSequenceStoreResponse,
@@ -8736,7 +8735,7 @@ export const getShare: API.OperationMethod<
   GetShareRequest,
   GetShareResponse,
   GetShareError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetShareRequest,
   output: GetShareResponse,
@@ -8771,7 +8770,7 @@ export const getVariantImportJob: API.OperationMethod<
   GetVariantImportRequest,
   GetVariantImportResponse,
   GetVariantImportJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetVariantImportRequest,
   output: GetVariantImportResponse,
@@ -8805,7 +8804,7 @@ export const getVariantStore: API.OperationMethod<
   GetVariantStoreRequest,
   GetVariantStoreResponse,
   GetVariantStoreError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetVariantStoreRequest,
   output: GetVariantStoreResponse,
@@ -8844,7 +8843,7 @@ export const getWorkflow: API.OperationMethod<
   GetWorkflowRequest,
   GetWorkflowResponse,
   GetWorkflowError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetWorkflowRequest,
   output: GetWorkflowResponse,
@@ -8881,7 +8880,7 @@ export const getWorkflowVersion: API.OperationMethod<
   GetWorkflowVersionRequest,
   GetWorkflowVersionResponse,
   GetWorkflowVersionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetWorkflowVersionRequest,
   output: GetWorkflowVersionResponse,
@@ -8917,7 +8916,7 @@ export const listAnnotationImportJobs: API.PaginatedOperationMethod<
   ListAnnotationImportJobsRequest,
   ListAnnotationImportJobsResponse,
   ListAnnotationImportJobsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   AnnotationImportJobItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAnnotationImportJobsRequest,
@@ -8957,7 +8956,7 @@ export const listAnnotationStores: API.PaginatedOperationMethod<
   ListAnnotationStoresRequest,
   ListAnnotationStoresResponse,
   ListAnnotationStoresError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   AnnotationStoreItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAnnotationStoresRequest,
@@ -8995,7 +8994,7 @@ export const listAnnotationStoreVersions: API.PaginatedOperationMethod<
   ListAnnotationStoreVersionsRequest,
   ListAnnotationStoreVersionsResponse,
   ListAnnotationStoreVersionsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   AnnotationStoreVersionItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAnnotationStoreVersionsRequest,
@@ -9033,7 +9032,7 @@ export const listBatch: API.PaginatedOperationMethod<
   ListBatchRequest,
   ListBatchResponse,
   ListBatchError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   BatchListItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBatchRequest,
@@ -9074,7 +9073,7 @@ export const listConfigurations: API.PaginatedOperationMethod<
   ListConfigurationsRequest,
   ListConfigurationsResponse,
   ListConfigurationsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ConfigurationListItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListConfigurationsRequest,
@@ -9118,7 +9117,7 @@ export const listMultipartReadSetUploads: API.PaginatedOperationMethod<
   ListMultipartReadSetUploadsRequest,
   ListMultipartReadSetUploadsResponse,
   ListMultipartReadSetUploadsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   MultipartReadSetUploadListItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMultipartReadSetUploadsRequest,
@@ -9160,7 +9159,7 @@ export const listReadSetActivationJobs: API.PaginatedOperationMethod<
   ListReadSetActivationJobsRequest,
   ListReadSetActivationJobsResponse,
   ListReadSetActivationJobsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ActivateReadSetJobItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListReadSetActivationJobsRequest,
@@ -9200,7 +9199,7 @@ export const listReadSetExportJobs: API.PaginatedOperationMethod<
   ListReadSetExportJobsRequest,
   ListReadSetExportJobsResponse,
   ListReadSetExportJobsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ExportReadSetJobDetail
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListReadSetExportJobsRequest,
@@ -9240,7 +9239,7 @@ export const listReadSetImportJobs: API.PaginatedOperationMethod<
   ListReadSetImportJobsRequest,
   ListReadSetImportJobsResponse,
   ListReadSetImportJobsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ImportReadSetJobItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListReadSetImportJobsRequest,
@@ -9280,7 +9279,7 @@ export const listReadSets: API.PaginatedOperationMethod<
   ListReadSetsRequest,
   ListReadSetsResponse,
   ListReadSetsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ReadSetListItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListReadSetsRequest,
@@ -9322,7 +9321,7 @@ export const listReadSetUploadParts: API.PaginatedOperationMethod<
   ListReadSetUploadPartsRequest,
   ListReadSetUploadPartsResponse,
   ListReadSetUploadPartsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ReadSetUploadPartListItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListReadSetUploadPartsRequest,
@@ -9364,7 +9363,7 @@ export const listReferenceImportJobs: API.PaginatedOperationMethod<
   ListReferenceImportJobsRequest,
   ListReferenceImportJobsResponse,
   ListReferenceImportJobsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ImportReferenceJobItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListReferenceImportJobsRequest,
@@ -9406,7 +9405,7 @@ export const listReferences: API.PaginatedOperationMethod<
   ListReferencesRequest,
   ListReferencesResponse,
   ListReferencesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ReferenceListItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListReferencesRequest,
@@ -9447,7 +9446,7 @@ export const listReferenceStores: API.PaginatedOperationMethod<
   ListReferenceStoresRequest,
   ListReferenceStoresResponse,
   ListReferenceStoresError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ReferenceStoreDetail
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListReferenceStoresRequest,
@@ -9488,7 +9487,7 @@ export const listRunCaches: API.PaginatedOperationMethod<
   ListRunCachesRequest,
   ListRunCachesResponse,
   ListRunCachesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   RunCacheListItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRunCachesRequest,
@@ -9532,7 +9531,7 @@ export const listRunGroups: API.PaginatedOperationMethod<
   ListRunGroupsRequest,
   ListRunGroupsResponse,
   ListRunGroupsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   RunGroupListItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRunGroupsRequest,
@@ -9578,7 +9577,7 @@ export const listRuns: API.PaginatedOperationMethod<
   ListRunsRequest,
   ListRunsResponse,
   ListRunsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   RunListItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRunsRequest,
@@ -9622,7 +9621,7 @@ export const listRunsInBatch: API.PaginatedOperationMethod<
   ListRunsInBatchRequest,
   ListRunsInBatchResponse,
   ListRunsInBatchError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   RunBatchListItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRunsInBatchRequest,
@@ -9666,7 +9665,7 @@ export const listRunTasks: API.PaginatedOperationMethod<
   ListRunTasksRequest,
   ListRunTasksResponse,
   ListRunTasksError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   TaskListItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRunTasksRequest,
@@ -9709,7 +9708,7 @@ export const listSequenceStores: API.PaginatedOperationMethod<
   ListSequenceStoresRequest,
   ListSequenceStoresResponse,
   ListSequenceStoresError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   SequenceStoreDetail
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSequenceStoresRequest,
@@ -9749,7 +9748,7 @@ export const listShares: API.PaginatedOperationMethod<
   ListSharesRequest,
   ListSharesResponse,
   ListSharesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ShareDetails
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSharesRequest,
@@ -9792,7 +9791,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -9828,7 +9827,7 @@ export const listVariantImportJobs: API.PaginatedOperationMethod<
   ListVariantImportJobsRequest,
   ListVariantImportJobsResponse,
   ListVariantImportJobsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   VariantImportJobItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListVariantImportJobsRequest,
@@ -9868,7 +9867,7 @@ export const listVariantStores: API.PaginatedOperationMethod<
   ListVariantStoresRequest,
   ListVariantStoresResponse,
   ListVariantStoresError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   VariantStoreItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListVariantStoresRequest,
@@ -9909,7 +9908,7 @@ export const listWorkflows: API.PaginatedOperationMethod<
   ListWorkflowsRequest,
   ListWorkflowsResponse,
   ListWorkflowsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   WorkflowListItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListWorkflowsRequest,
@@ -9953,7 +9952,7 @@ export const listWorkflowVersions: API.PaginatedOperationMethod<
   ListWorkflowVersionsRequest,
   ListWorkflowVersionsResponse,
   ListWorkflowVersionsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   WorkflowVersionListItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListWorkflowVersionsRequest,
@@ -9996,7 +9995,7 @@ export const putS3AccessPolicy: API.OperationMethod<
   PutS3AccessPolicyRequest,
   PutS3AccessPolicyResponse,
   PutS3AccessPolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PutS3AccessPolicyRequest,
   output: PutS3AccessPolicyResponse,
@@ -10032,7 +10031,7 @@ export const startAnnotationImportJob: API.OperationMethod<
   StartAnnotationImportRequest,
   StartAnnotationImportResponse,
   StartAnnotationImportJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartAnnotationImportRequest,
   output: StartAnnotationImportResponse,
@@ -10068,7 +10067,7 @@ export const startReadSetActivationJob: API.OperationMethod<
   StartReadSetActivationJobRequest,
   StartReadSetActivationJobResponse,
   StartReadSetActivationJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartReadSetActivationJobRequest,
   output: StartReadSetActivationJobResponse,
@@ -10105,7 +10104,7 @@ export const startReadSetExportJob: API.OperationMethod<
   StartReadSetExportJobRequest,
   StartReadSetExportJobResponse,
   StartReadSetExportJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartReadSetExportJobRequest,
   output: StartReadSetExportJobResponse,
@@ -10140,7 +10139,7 @@ export const startReadSetImportJob: API.OperationMethod<
   StartReadSetImportJobRequest,
   StartReadSetImportJobResponse,
   StartReadSetImportJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartReadSetImportJobRequest,
   output: StartReadSetImportJobResponse,
@@ -10175,7 +10174,7 @@ export const startReferenceImportJob: API.OperationMethod<
   StartReferenceImportJobRequest,
   StartReferenceImportJobResponse,
   StartReferenceImportJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartReferenceImportJobRequest,
   output: StartReferenceImportJobResponse,
@@ -10243,7 +10242,7 @@ export const startRun: API.OperationMethod<
   StartRunRequest,
   StartRunResponse,
   StartRunError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartRunRequest,
   output: StartRunResponse,
@@ -10282,7 +10281,7 @@ export const startRunBatch: API.OperationMethod<
   StartRunBatchRequest,
   StartRunBatchResponse,
   StartRunBatchError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartRunBatchRequest,
   output: StartRunBatchResponse,
@@ -10319,7 +10318,7 @@ export const startVariantImportJob: API.OperationMethod<
   StartVariantImportRequest,
   StartVariantImportResponse,
   StartVariantImportJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartVariantImportRequest,
   output: StartVariantImportResponse,
@@ -10354,7 +10353,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -10391,7 +10390,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -10427,7 +10426,7 @@ export const updateAnnotationStore: API.OperationMethod<
   UpdateAnnotationStoreRequest,
   UpdateAnnotationStoreResponse,
   UpdateAnnotationStoreError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateAnnotationStoreRequest,
   output: UpdateAnnotationStoreResponse,
@@ -10458,7 +10457,7 @@ export const updateAnnotationStoreVersion: API.OperationMethod<
   UpdateAnnotationStoreVersionRequest,
   UpdateAnnotationStoreVersionResponse,
   UpdateAnnotationStoreVersionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateAnnotationStoreVersionRequest,
   output: UpdateAnnotationStoreVersionResponse,
@@ -10494,7 +10493,7 @@ export const updateRunCache: API.OperationMethod<
   UpdateRunCacheRequest,
   UpdateRunCacheResponse,
   UpdateRunCacheError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateRunCacheRequest,
   output: UpdateRunCacheResponse,
@@ -10545,7 +10544,7 @@ export const updateRunGroup: API.OperationMethod<
   UpdateRunGroupRequest,
   UpdateRunGroupResponse,
   UpdateRunGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateRunGroupRequest,
   output: UpdateRunGroupResponse,
@@ -10581,7 +10580,7 @@ export const updateSequenceStore: API.OperationMethod<
   UpdateSequenceStoreRequest,
   UpdateSequenceStoreResponse,
   UpdateSequenceStoreError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateSequenceStoreRequest,
   output: UpdateSequenceStoreResponse,
@@ -10616,7 +10615,7 @@ export const updateVariantStore: API.OperationMethod<
   UpdateVariantStoreRequest,
   UpdateVariantStoreResponse,
   UpdateVariantStoreError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateVariantStoreRequest,
   output: UpdateVariantStoreResponse,
@@ -10664,7 +10663,7 @@ export const updateWorkflow: API.OperationMethod<
   UpdateWorkflowRequest,
   UpdateWorkflowResponse,
   UpdateWorkflowError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateWorkflowRequest,
   output: UpdateWorkflowResponse,
@@ -10701,7 +10700,7 @@ export const updateWorkflowVersion: API.OperationMethod<
   UpdateWorkflowVersionRequest,
   UpdateWorkflowVersionResponse,
   UpdateWorkflowVersionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateWorkflowVersionRequest,
   output: UpdateWorkflowVersionResponse,
@@ -10740,7 +10739,7 @@ export const uploadReadSetPart: API.OperationMethod<
   UploadReadSetPartRequest,
   UploadReadSetPartResponse,
   UploadReadSetPartError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UploadReadSetPartRequest,
   output: UploadReadSetPartResponse,

@@ -7,7 +7,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 const svc = T.AwsApiService({
   sdkId: "Marketplace Reporting",
   serviceShapeName: "AWSMarketplaceReporting",
@@ -170,7 +169,7 @@ export const getBuyerDashboard: API.OperationMethod<
   GetBuyerDashboardInput,
   GetBuyerDashboardOutput,
   GetBuyerDashboardError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetBuyerDashboardInput,
   output: GetBuyerDashboardOutput,

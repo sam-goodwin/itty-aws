@@ -7,7 +7,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 const svc = T.AwsApiService({
   sdkId: "ManagedBlockchain Query",
   serviceShapeName: "TietonChainQueryService",
@@ -872,7 +871,7 @@ export const batchGetTokenBalance: API.OperationMethod<
   BatchGetTokenBalanceInput,
   BatchGetTokenBalanceOutput,
   BatchGetTokenBalanceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: BatchGetTokenBalanceInput,
   output: BatchGetTokenBalanceOutput,
@@ -910,7 +909,7 @@ export const getAssetContract: API.OperationMethod<
   GetAssetContractInput,
   GetAssetContractOutput,
   GetAssetContractError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetAssetContractInput,
   output: GetAssetContractOutput,
@@ -945,7 +944,7 @@ export const getTokenBalance: API.OperationMethod<
   GetTokenBalanceInput,
   GetTokenBalanceOutput,
   GetTokenBalanceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetTokenBalanceInput,
   output: GetTokenBalanceOutput,
@@ -981,7 +980,7 @@ export const getTransaction: API.OperationMethod<
   GetTransactionInput,
   GetTransactionOutput,
   GetTransactionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetTransactionInput,
   output: GetTransactionOutput,
@@ -1016,7 +1015,7 @@ export const listAssetContracts: API.PaginatedOperationMethod<
   ListAssetContractsInput,
   ListAssetContractsOutput,
   ListAssetContractsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   AssetContract
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAssetContractsInput,
@@ -1055,7 +1054,7 @@ export const listFilteredTransactionEvents: API.PaginatedOperationMethod<
   ListFilteredTransactionEventsInput,
   ListFilteredTransactionEventsOutput,
   ListFilteredTransactionEventsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   TransactionEvent
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFilteredTransactionEventsInput,
@@ -1102,7 +1101,7 @@ export const listTokenBalances: API.PaginatedOperationMethod<
   ListTokenBalancesInput,
   ListTokenBalancesOutput,
   ListTokenBalancesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   TokenBalance
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTokenBalancesInput,
@@ -1143,7 +1142,7 @@ export const listTransactionEvents: API.PaginatedOperationMethod<
   ListTransactionEventsInput,
   ListTransactionEventsOutput,
   ListTransactionEventsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   TransactionEvent
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTransactionEventsInput,
@@ -1180,7 +1179,7 @@ export const listTransactions: API.PaginatedOperationMethod<
   ListTransactionsInput,
   ListTransactionsOutput,
   ListTransactionsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   TransactionOutputItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTransactionsInput,

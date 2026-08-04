@@ -8,7 +8,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 import { SensitiveString } from "../sensitive.ts";
 const ns = T.XmlNamespace("https://aws.amazon.com/api/v1/");
 const svc = T.AwsApiService({
@@ -2855,7 +2854,7 @@ export const abortDocumentVersionUpload: API.OperationMethod<
   AbortDocumentVersionUploadRequest,
   AbortDocumentVersionUploadResponse,
   AbortDocumentVersionUploadError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: AbortDocumentVersionUploadRequest,
   output: AbortDocumentVersionUploadResponse,
@@ -2888,7 +2887,7 @@ export const activateUser: API.OperationMethod<
   ActivateUserRequest,
   ActivateUserResponse,
   ActivateUserError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ActivateUserRequest,
   output: ActivateUserResponse,
@@ -2920,7 +2919,7 @@ export const addResourcePermissions: API.OperationMethod<
   AddResourcePermissionsRequest,
   AddResourcePermissionsResponse,
   AddResourcePermissionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: AddResourcePermissionsRequest,
   output: AddResourcePermissionsResponse,
@@ -2953,7 +2952,7 @@ export const createComment: API.OperationMethod<
   CreateCommentRequest,
   CreateCommentResponse,
   CreateCommentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateCommentRequest,
   output: CreateCommentResponse,
@@ -2989,7 +2988,7 @@ export const createCustomMetadata: API.OperationMethod<
   CreateCustomMetadataRequest,
   CreateCustomMetadataResponse,
   CreateCustomMetadataError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateCustomMetadataRequest,
   output: CreateCustomMetadataResponse,
@@ -3026,7 +3025,7 @@ export const createFolder: API.OperationMethod<
   CreateFolderRequest,
   CreateFolderResponse,
   CreateFolderError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateFolderRequest,
   output: CreateFolderResponse,
@@ -3063,7 +3062,7 @@ export const createLabels: API.OperationMethod<
   CreateLabelsRequest,
   CreateLabelsResponse,
   CreateLabelsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateLabelsRequest,
   output: CreateLabelsResponse,
@@ -3097,7 +3096,7 @@ export const createNotificationSubscription: API.OperationMethod<
   CreateNotificationSubscriptionRequest,
   CreateNotificationSubscriptionResponse,
   CreateNotificationSubscriptionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateNotificationSubscriptionRequest,
   output: CreateNotificationSubscriptionResponse,
@@ -3127,7 +3126,7 @@ export const createUser: API.OperationMethod<
   CreateUserRequest,
   CreateUserResponse,
   CreateUserError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateUserRequest,
   output: CreateUserResponse,
@@ -3158,7 +3157,7 @@ export const deactivateUser: API.OperationMethod<
   DeactivateUserRequest,
   DeactivateUserResponse,
   DeactivateUserError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeactivateUserRequest,
   output: DeactivateUserResponse,
@@ -3190,7 +3189,7 @@ export const deleteComment: API.OperationMethod<
   DeleteCommentRequest,
   DeleteCommentResponse,
   DeleteCommentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteCommentRequest,
   output: DeleteCommentResponse,
@@ -3223,7 +3222,7 @@ export const deleteCustomMetadata: API.OperationMethod<
   DeleteCustomMetadataRequest,
   DeleteCustomMetadataResponse,
   DeleteCustomMetadataError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteCustomMetadataRequest,
   output: DeleteCustomMetadataResponse,
@@ -3258,7 +3257,7 @@ export const deleteDocument: API.OperationMethod<
   DeleteDocumentRequest,
   DeleteDocumentResponse,
   DeleteDocumentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteDocumentRequest,
   output: DeleteDocumentResponse,
@@ -3295,7 +3294,7 @@ export const deleteDocumentVersion: API.OperationMethod<
   DeleteDocumentVersionRequest,
   DeleteDocumentVersionResponse,
   DeleteDocumentVersionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteDocumentVersionRequest,
   output: DeleteDocumentVersionResponse,
@@ -3332,7 +3331,7 @@ export const deleteFolder: API.OperationMethod<
   DeleteFolderRequest,
   DeleteFolderResponse,
   DeleteFolderError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteFolderRequest,
   output: DeleteFolderResponse,
@@ -3368,7 +3367,7 @@ export const deleteFolderContents: API.OperationMethod<
   DeleteFolderContentsRequest,
   DeleteFolderContentsResponse,
   DeleteFolderContentsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteFolderContentsRequest,
   output: DeleteFolderContentsResponse,
@@ -3401,7 +3400,7 @@ export const deleteLabels: API.OperationMethod<
   DeleteLabelsRequest,
   DeleteLabelsResponse,
   DeleteLabelsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteLabelsRequest,
   output: DeleteLabelsResponse,
@@ -3431,7 +3430,7 @@ export const deleteNotificationSubscription: API.OperationMethod<
   DeleteNotificationSubscriptionRequest,
   DeleteNotificationSubscriptionResponse,
   DeleteNotificationSubscriptionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteNotificationSubscriptionRequest,
   output: DeleteNotificationSubscriptionResponse,
@@ -3462,7 +3461,7 @@ export const deleteUser: API.OperationMethod<
   DeleteUserRequest,
   DeleteUserResponse,
   DeleteUserError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteUserRequest,
   output: DeleteUserResponse,
@@ -3492,7 +3491,7 @@ export const describeActivities: API.PaginatedOperationMethod<
   DescribeActivitiesRequest,
   DescribeActivitiesResponse,
   DescribeActivitiesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   Activity
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeActivitiesRequest,
@@ -3530,7 +3529,7 @@ export const describeComments: API.PaginatedOperationMethod<
   DescribeCommentsRequest,
   DescribeCommentsResponse,
   DescribeCommentsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   Comment
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeCommentsRequest,
@@ -3573,7 +3572,7 @@ export const describeDocumentVersions: API.PaginatedOperationMethod<
   DescribeDocumentVersionsRequest,
   DescribeDocumentVersionsResponse,
   DescribeDocumentVersionsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   DocumentVersionMetadata
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeDocumentVersionsRequest,
@@ -3620,7 +3619,7 @@ export const describeFolderContents: API.PaginatedOperationMethod<
   DescribeFolderContentsRequest,
   DescribeFolderContentsResponse,
   DescribeFolderContentsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeFolderContentsRequest,
@@ -3657,7 +3656,7 @@ export const describeGroups: API.PaginatedOperationMethod<
   DescribeGroupsRequest,
   DescribeGroupsResponse,
   DescribeGroupsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   GroupMetadata
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeGroupsRequest,
@@ -3691,7 +3690,7 @@ export const describeNotificationSubscriptions: API.PaginatedOperationMethod<
   DescribeNotificationSubscriptionsRequest,
   DescribeNotificationSubscriptionsResponse,
   DescribeNotificationSubscriptionsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   Subscription
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeNotificationSubscriptionsRequest,
@@ -3726,7 +3725,7 @@ export const describeResourcePermissions: API.PaginatedOperationMethod<
   DescribeResourcePermissionsRequest,
   DescribeResourcePermissionsResponse,
   DescribeResourcePermissionsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   Principal
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeResourcePermissionsRequest,
@@ -3772,7 +3771,7 @@ export const describeRootFolders: API.PaginatedOperationMethod<
   DescribeRootFoldersRequest,
   DescribeRootFoldersResponse,
   DescribeRootFoldersError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   FolderMetadata
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeRootFoldersRequest,
@@ -3816,7 +3815,7 @@ export const describeUsers: API.PaginatedOperationMethod<
   DescribeUsersRequest,
   DescribeUsersResponse,
   DescribeUsersError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   User
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeUsersRequest,
@@ -3862,7 +3861,7 @@ export const getCurrentUser: API.OperationMethod<
   GetCurrentUserRequest,
   GetCurrentUserResponse,
   GetCurrentUserError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetCurrentUserRequest,
   output: GetCurrentUserResponse,
@@ -3894,7 +3893,7 @@ export const getDocument: API.OperationMethod<
   GetDocumentRequest,
   GetDocumentResponse,
   GetDocumentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetDocumentRequest,
   output: GetDocumentResponse,
@@ -3932,7 +3931,7 @@ export const getDocumentPath: API.OperationMethod<
   GetDocumentPathRequest,
   GetDocumentPathResponse,
   GetDocumentPathError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetDocumentPathRequest,
   output: GetDocumentPathResponse,
@@ -3964,7 +3963,7 @@ export const getDocumentVersion: API.OperationMethod<
   GetDocumentVersionRequest,
   GetDocumentVersionResponse,
   GetDocumentVersionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetDocumentVersionRequest,
   output: GetDocumentVersionResponse,
@@ -3998,7 +3997,7 @@ export const getFolder: API.OperationMethod<
   GetFolderRequest,
   GetFolderResponse,
   GetFolderError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetFolderRequest,
   output: GetFolderResponse,
@@ -4036,7 +4035,7 @@ export const getFolderPath: API.OperationMethod<
   GetFolderPathRequest,
   GetFolderPathResponse,
   GetFolderPathError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetFolderPathRequest,
   output: GetFolderPathResponse,
@@ -4067,7 +4066,7 @@ export const getResources: API.OperationMethod<
   GetResourcesRequest,
   GetResourcesResponse,
   GetResourcesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetResourcesRequest,
   output: GetResourcesResponse,
@@ -4113,7 +4112,7 @@ export const initiateDocumentVersionUpload: API.OperationMethod<
   InitiateDocumentVersionUploadRequest,
   InitiateDocumentVersionUploadResponse,
   InitiateDocumentVersionUploadError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: InitiateDocumentVersionUploadRequest,
   output: InitiateDocumentVersionUploadResponse,
@@ -4151,7 +4150,7 @@ export const removeAllResourcePermissions: API.OperationMethod<
   RemoveAllResourcePermissionsRequest,
   RemoveAllResourcePermissionsResponse,
   RemoveAllResourcePermissionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: RemoveAllResourcePermissionsRequest,
   output: RemoveAllResourcePermissionsResponse,
@@ -4180,7 +4179,7 @@ export const removeResourcePermission: API.OperationMethod<
   RemoveResourcePermissionRequest,
   RemoveResourcePermissionResponse,
   RemoveResourcePermissionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: RemoveResourcePermissionRequest,
   output: RemoveResourcePermissionResponse,
@@ -4212,7 +4211,7 @@ export const restoreDocumentVersions: API.OperationMethod<
   RestoreDocumentVersionsRequest,
   RestoreDocumentVersionsResponse,
   RestoreDocumentVersionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: RestoreDocumentVersionsRequest,
   output: RestoreDocumentVersionsResponse,
@@ -4244,7 +4243,7 @@ export const searchResources: API.PaginatedOperationMethod<
   SearchResourcesRequest,
   SearchResourcesResponse,
   SearchResourcesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ResponseItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchResourcesRequest,
@@ -4286,7 +4285,7 @@ export const updateDocument: API.OperationMethod<
   UpdateDocumentRequest,
   UpdateDocumentResponse,
   UpdateDocumentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateDocumentRequest,
   output: UpdateDocumentResponse,
@@ -4328,7 +4327,7 @@ export const updateDocumentVersion: API.OperationMethod<
   UpdateDocumentVersionRequest,
   UpdateDocumentVersionResponse,
   UpdateDocumentVersionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateDocumentVersionRequest,
   output: UpdateDocumentVersionResponse,
@@ -4367,7 +4366,7 @@ export const updateFolder: API.OperationMethod<
   UpdateFolderRequest,
   UpdateFolderResponse,
   UpdateFolderError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateFolderRequest,
   output: UpdateFolderResponse,
@@ -4407,7 +4406,7 @@ export const updateUser: API.OperationMethod<
   UpdateUserRequest,
   UpdateUserResponse,
   UpdateUserError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateUserRequest,
   output: UpdateUserResponse,

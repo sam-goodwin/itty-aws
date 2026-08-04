@@ -6,7 +6,6 @@ import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 const svc = T.AwsApiService({
   sdkId: "Marketplace Entitlement Service",
   serviceShapeName: "AWSMPEntitlementService",
@@ -235,7 +234,7 @@ export const getEntitlements: API.PaginatedOperationMethod<
   GetEntitlementsRequest,
   GetEntitlementsResult,
   GetEntitlementsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetEntitlementsRequest,

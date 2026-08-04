@@ -8,7 +8,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 import { SensitiveString } from "../sensitive.ts";
 const svc = T.AwsApiService({
   sdkId: "AppConfig",
@@ -2939,7 +2938,7 @@ export const createApplication: API.OperationMethod<
   CreateApplicationRequest,
   Application,
   CreateApplicationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateApplicationRequest,
   output: Application,
@@ -2994,7 +2993,7 @@ export const createConfigurationProfile: API.OperationMethod<
   CreateConfigurationProfileRequest,
   ConfigurationProfile,
   CreateConfigurationProfileError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateConfigurationProfileRequest,
   output: ConfigurationProfile,
@@ -3024,7 +3023,7 @@ export const createDeploymentStrategy: API.OperationMethod<
   CreateDeploymentStrategyRequest,
   DeploymentStrategy,
   CreateDeploymentStrategyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateDeploymentStrategyRequest,
   output: DeploymentStrategy,
@@ -3058,7 +3057,7 @@ export const createEnvironment: API.OperationMethod<
   CreateEnvironmentRequest,
   Environment,
   CreateEnvironmentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateEnvironmentRequest,
   output: Environment,
@@ -3087,7 +3086,7 @@ export const createExperimentDefinition: API.OperationMethod<
   CreateExperimentDefinitionRequest,
   ExperimentDefinition,
   CreateExperimentDefinitionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateExperimentDefinitionRequest,
   output: ExperimentDefinition,
@@ -3136,7 +3135,7 @@ export const createExtension: API.OperationMethod<
   CreateExtensionRequest,
   Extension,
   CreateExtensionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateExtensionRequest,
   output: Extension,
@@ -3175,7 +3174,7 @@ export const createExtensionAssociation: API.OperationMethod<
   CreateExtensionAssociationRequest,
   ExtensionAssociation,
   CreateExtensionAssociationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateExtensionAssociationRequest,
   output: ExtensionAssociation,
@@ -3208,7 +3207,7 @@ export const createHostedConfigurationVersion: API.OperationMethod<
   CreateHostedConfigurationVersionRequest,
   HostedConfigurationVersion,
   CreateHostedConfigurationVersionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateHostedConfigurationVersionRequest,
   output: HostedConfigurationVersion,
@@ -3237,7 +3236,7 @@ export const deleteApplication: API.OperationMethod<
   DeleteApplicationRequest,
   DeleteApplicationResponse,
   DeleteApplicationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteApplicationRequest,
   output: DeleteApplicationResponse,
@@ -3268,7 +3267,7 @@ export const deleteConfigurationProfile: API.OperationMethod<
   DeleteConfigurationProfileRequest,
   DeleteConfigurationProfileResponse,
   DeleteConfigurationProfileError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteConfigurationProfileRequest,
   output: DeleteConfigurationProfileResponse,
@@ -3295,7 +3294,7 @@ export const deleteDeploymentStrategy: API.OperationMethod<
   DeleteDeploymentStrategyRequest,
   DeleteDeploymentStrategyResponse,
   DeleteDeploymentStrategyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteDeploymentStrategyRequest,
   output: DeleteDeploymentStrategyResponse,
@@ -3325,7 +3324,7 @@ export const deleteEnvironment: API.OperationMethod<
   DeleteEnvironmentRequest,
   DeleteEnvironmentResponse,
   DeleteEnvironmentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteEnvironmentRequest,
   output: DeleteEnvironmentResponse,
@@ -3353,7 +3352,7 @@ export const deleteExperimentDefinition: API.OperationMethod<
   DeleteExperimentDefinitionRequest,
   DeleteExperimentDefinitionResponse,
   DeleteExperimentDefinitionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteExperimentDefinitionRequest,
   output: DeleteExperimentDefinitionResponse,
@@ -3381,7 +3380,7 @@ export const deleteExtension: API.OperationMethod<
   DeleteExtensionRequest,
   DeleteExtensionResponse,
   DeleteExtensionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteExtensionRequest,
   output: DeleteExtensionResponse,
@@ -3408,7 +3407,7 @@ export const deleteExtensionAssociation: API.OperationMethod<
   DeleteExtensionAssociationRequest,
   DeleteExtensionAssociationResponse,
   DeleteExtensionAssociationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteExtensionAssociationRequest,
   output: DeleteExtensionAssociationResponse,
@@ -3435,7 +3434,7 @@ export const deleteHostedConfigurationVersion: API.OperationMethod<
   DeleteHostedConfigurationVersionRequest,
   DeleteHostedConfigurationVersionResponse,
   DeleteHostedConfigurationVersionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteHostedConfigurationVersionRequest,
   output: DeleteHostedConfigurationVersionResponse,
@@ -3461,7 +3460,7 @@ export const getAccountSettings: API.OperationMethod<
   GetAccountSettingsRequest,
   AccountSettings,
   GetAccountSettingsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetAccountSettingsRequest,
   output: AccountSettings,
@@ -3483,7 +3482,7 @@ export const getApplication: API.OperationMethod<
   GetApplicationRequest,
   Application,
   GetApplicationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetApplicationRequest,
   output: Application,
@@ -3517,7 +3516,7 @@ export const getConfiguration: API.OperationMethod<
   GetConfigurationRequest,
   Configuration,
   GetConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetConfigurationRequest,
   output: Configuration,
@@ -3543,7 +3542,7 @@ export const getConfigurationProfile: API.OperationMethod<
   GetConfigurationProfileRequest,
   ConfigurationProfile,
   GetConfigurationProfileError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetConfigurationProfileRequest,
   output: ConfigurationProfile,
@@ -3569,7 +3568,7 @@ export const getDeployment: API.OperationMethod<
   GetDeploymentRequest,
   Deployment,
   GetDeploymentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetDeploymentRequest,
   output: Deployment,
@@ -3599,7 +3598,7 @@ export const getDeploymentStrategy: API.OperationMethod<
   GetDeploymentStrategyRequest,
   DeploymentStrategy,
   GetDeploymentStrategyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetDeploymentStrategyRequest,
   output: DeploymentStrategy,
@@ -3630,7 +3629,7 @@ export const getEnvironment: API.OperationMethod<
   GetEnvironmentRequest,
   Environment,
   GetEnvironmentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetEnvironmentRequest,
   output: Environment,
@@ -3656,7 +3655,7 @@ export const getExperimentDefinition: API.OperationMethod<
   GetExperimentDefinitionRequest,
   ExperimentDefinition,
   GetExperimentDefinitionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetExperimentDefinitionRequest,
   output: ExperimentDefinition,
@@ -3682,7 +3681,7 @@ export const getExperimentRun: API.OperationMethod<
   GetExperimentRunRequest,
   ExperimentRun,
   GetExperimentRunError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetExperimentRunRequest,
   output: ExperimentRun,
@@ -3708,7 +3707,7 @@ export const getExtension: API.OperationMethod<
   GetExtensionRequest,
   Extension,
   GetExtensionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetExtensionRequest,
   output: Extension,
@@ -3736,7 +3735,7 @@ export const getExtensionAssociation: API.OperationMethod<
   GetExtensionAssociationRequest,
   ExtensionAssociation,
   GetExtensionAssociationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetExtensionAssociationRequest,
   output: ExtensionAssociation,
@@ -3762,7 +3761,7 @@ export const getHostedConfigurationVersion: API.OperationMethod<
   GetHostedConfigurationVersionRequest,
   HostedConfigurationVersion,
   GetHostedConfigurationVersionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetHostedConfigurationVersionRequest,
   output: HostedConfigurationVersion,
@@ -3787,7 +3786,7 @@ export const listApplications: API.PaginatedOperationMethod<
   ListApplicationsRequest,
   Applications,
   ListApplicationsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   Application
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListApplicationsRequest,
@@ -3816,7 +3815,7 @@ export const listConfigurationProfiles: API.PaginatedOperationMethod<
   ListConfigurationProfilesRequest,
   ConfigurationProfiles,
   ListConfigurationProfilesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ConfigurationProfileSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListConfigurationProfilesRequest,
@@ -3849,7 +3848,7 @@ export const listDeployments: API.PaginatedOperationMethod<
   ListDeploymentsRequest,
   Deployments,
   ListDeploymentsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   DeploymentSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDeploymentsRequest,
@@ -3881,7 +3880,7 @@ export const listDeploymentStrategies: API.PaginatedOperationMethod<
   ListDeploymentStrategiesRequest,
   DeploymentStrategies,
   ListDeploymentStrategiesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   DeploymentStrategy
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDeploymentStrategiesRequest,
@@ -3910,7 +3909,7 @@ export const listEnvironments: API.PaginatedOperationMethod<
   ListEnvironmentsRequest,
   Environments,
   ListEnvironmentsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   Environment
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEnvironmentsRequest,
@@ -3943,7 +3942,7 @@ export const listExperimentDefinitions: API.PaginatedOperationMethod<
   ListExperimentDefinitionsRequest,
   ExperimentDefinitions,
   ListExperimentDefinitionsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ExperimentDefinitionSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListExperimentDefinitionsRequest,
@@ -3976,7 +3975,7 @@ export const listExperimentRunEvents: API.PaginatedOperationMethod<
   ListExperimentRunEventsRequest,
   ExperimentRunEvents,
   ListExperimentRunEventsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ExperimentRunEvent
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListExperimentRunEventsRequest,
@@ -4009,7 +4008,7 @@ export const listExperimentRuns: API.PaginatedOperationMethod<
   ListExperimentRunsRequest,
   ExperimentRuns,
   ListExperimentRunsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ExperimentRunSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListExperimentRunsRequest,
@@ -4043,7 +4042,7 @@ export const listExtensionAssociations: API.PaginatedOperationMethod<
   ListExtensionAssociationsRequest,
   ExtensionAssociations,
   ListExtensionAssociationsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ExtensionAssociationSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListExtensionAssociationsRequest,
@@ -4073,7 +4072,7 @@ export const listExtensions: API.PaginatedOperationMethod<
   ListExtensionsRequest,
   Extensions,
   ListExtensionsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ExtensionSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListExtensionsRequest,
@@ -4103,7 +4102,7 @@ export const listHostedConfigurationVersions: API.PaginatedOperationMethod<
   ListHostedConfigurationVersionsRequest,
   HostedConfigurationVersions,
   ListHostedConfigurationVersionsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   HostedConfigurationVersionSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListHostedConfigurationVersionsRequest,
@@ -4136,7 +4135,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ResourceTags,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ResourceTags,
@@ -4165,7 +4164,7 @@ export const startDeployment: API.OperationMethod<
   StartDeploymentRequest,
   Deployment,
   StartDeploymentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartDeploymentRequest,
   output: Deployment,
@@ -4193,7 +4192,7 @@ export const startExperimentRun: API.OperationMethod<
   StartExperimentRunRequest,
   ExperimentRun,
   StartExperimentRunError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartExperimentRunRequest,
   output: ExperimentRun,
@@ -4225,7 +4224,7 @@ export const stopDeployment: API.OperationMethod<
   StopDeploymentRequest,
   Deployment,
   StopDeploymentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StopDeploymentRequest,
   output: Deployment,
@@ -4251,7 +4250,7 @@ export const stopExperimentRun: API.OperationMethod<
   StopExperimentRunRequest,
   ExperimentRun,
   StopExperimentRunError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StopExperimentRunRequest,
   output: ExperimentRun,
@@ -4279,7 +4278,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -4305,7 +4304,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -4330,7 +4329,7 @@ export const updateAccountSettings: API.OperationMethod<
   UpdateAccountSettingsRequest,
   AccountSettings,
   UpdateAccountSettingsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateAccountSettingsRequest,
   output: AccountSettings,
@@ -4352,7 +4351,7 @@ export const updateApplication: API.OperationMethod<
   UpdateApplicationRequest,
   Application,
   UpdateApplicationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateApplicationRequest,
   output: Application,
@@ -4378,7 +4377,7 @@ export const updateConfigurationProfile: API.OperationMethod<
   UpdateConfigurationProfileRequest,
   ConfigurationProfile,
   UpdateConfigurationProfileError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateConfigurationProfileRequest,
   output: ConfigurationProfile,
@@ -4404,7 +4403,7 @@ export const updateDeploymentStrategy: API.OperationMethod<
   UpdateDeploymentStrategyRequest,
   DeploymentStrategy,
   UpdateDeploymentStrategyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateDeploymentStrategyRequest,
   output: DeploymentStrategy,
@@ -4430,7 +4429,7 @@ export const updateEnvironment: API.OperationMethod<
   UpdateEnvironmentRequest,
   Environment,
   UpdateEnvironmentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateEnvironmentRequest,
   output: Environment,
@@ -4457,7 +4456,7 @@ export const updateExperimentDefinition: API.OperationMethod<
   UpdateExperimentDefinitionRequest,
   ExperimentDefinition,
   UpdateExperimentDefinitionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateExperimentDefinitionRequest,
   output: ExperimentDefinition,
@@ -4485,7 +4484,7 @@ export const updateExperimentRun: API.OperationMethod<
   UpdateExperimentRunRequest,
   ExperimentRun,
   UpdateExperimentRunError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateExperimentRunRequest,
   output: ExperimentRun,
@@ -4515,7 +4514,7 @@ export const updateExtension: API.OperationMethod<
   UpdateExtensionRequest,
   Extension,
   UpdateExtensionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateExtensionRequest,
   output: Extension,
@@ -4544,7 +4543,7 @@ export const updateExtensionAssociation: API.OperationMethod<
   UpdateExtensionAssociationRequest,
   ExtensionAssociation,
   UpdateExtensionAssociationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateExtensionAssociationRequest,
   output: ExtensionAssociation,
@@ -4570,7 +4569,7 @@ export const validateConfiguration: API.OperationMethod<
   ValidateConfigurationRequest,
   ValidateConfigurationResponse,
   ValidateConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ValidateConfigurationRequest,
   output: ValidateConfigurationResponse,

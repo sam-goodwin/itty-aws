@@ -8,7 +8,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 import { SensitiveString } from "../sensitive.ts";
 const svc = T.AwsApiService({
   sdkId: "Security IR",
@@ -1489,7 +1488,7 @@ export const batchGetMemberAccountDetails: API.OperationMethod<
   BatchGetMemberAccountDetailsRequest,
   BatchGetMemberAccountDetailsResponse,
   BatchGetMemberAccountDetailsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: BatchGetMemberAccountDetailsRequest,
   output: BatchGetMemberAccountDetailsResponse,
@@ -1507,7 +1506,7 @@ export const cancelMembership: API.OperationMethod<
   CancelMembershipRequest,
   CancelMembershipResponse,
   CancelMembershipError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CancelMembershipRequest,
   output: CancelMembershipResponse,
@@ -1525,7 +1524,7 @@ export const closeCase: API.OperationMethod<
   CloseCaseRequest,
   CloseCaseResponse,
   CloseCaseError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CloseCaseRequest,
   output: CloseCaseResponse,
@@ -1543,7 +1542,7 @@ export const createCase: API.OperationMethod<
   CreateCaseRequest,
   CreateCaseResponse,
   CreateCaseError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateCaseRequest,
   output: CreateCaseResponse,
@@ -1561,7 +1560,7 @@ export const createCaseComment: API.OperationMethod<
   CreateCaseCommentRequest,
   CreateCaseCommentResponse,
   CreateCaseCommentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateCaseCommentRequest,
   output: CreateCaseCommentResponse,
@@ -1579,7 +1578,7 @@ export const createMembership: API.OperationMethod<
   CreateMembershipRequest,
   CreateMembershipResponse,
   CreateMembershipError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateMembershipRequest,
   output: CreateMembershipResponse,
@@ -1597,7 +1596,7 @@ export const getCase: API.OperationMethod<
   GetCaseRequest,
   GetCaseResponse,
   GetCaseError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetCaseRequest,
   output: GetCaseResponse,
@@ -1615,7 +1614,7 @@ export const getCaseAttachmentDownloadUrl: API.OperationMethod<
   GetCaseAttachmentDownloadUrlRequest,
   GetCaseAttachmentDownloadUrlResponse,
   GetCaseAttachmentDownloadUrlError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetCaseAttachmentDownloadUrlRequest,
   output: GetCaseAttachmentDownloadUrlResponse,
@@ -1633,7 +1632,7 @@ export const getCaseAttachmentUploadUrl: API.OperationMethod<
   GetCaseAttachmentUploadUrlRequest,
   GetCaseAttachmentUploadUrlResponse,
   GetCaseAttachmentUploadUrlError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetCaseAttachmentUploadUrlRequest,
   output: GetCaseAttachmentUploadUrlResponse,
@@ -1651,7 +1650,7 @@ export const getMembership: API.OperationMethod<
   GetMembershipRequest,
   GetMembershipResponse,
   GetMembershipError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetMembershipRequest,
   output: GetMembershipResponse,
@@ -1669,7 +1668,7 @@ export const listCaseEdits: API.PaginatedOperationMethod<
   ListCaseEditsRequest,
   ListCaseEditsResponse,
   ListCaseEditsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   CaseEditItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCaseEditsRequest,
@@ -1694,7 +1693,7 @@ export const listCases: API.PaginatedOperationMethod<
   ListCasesRequest,
   ListCasesResponse,
   ListCasesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ListCasesItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCasesRequest,
@@ -1719,7 +1718,7 @@ export const listComments: API.PaginatedOperationMethod<
   ListCommentsRequest,
   ListCommentsResponse,
   ListCommentsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ListCommentsItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCommentsRequest,
@@ -1744,7 +1743,7 @@ export const listInvestigations: API.PaginatedOperationMethod<
   ListInvestigationsRequest,
   ListInvestigationsResponse,
   ListInvestigationsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   InvestigationAction
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListInvestigationsRequest,
@@ -1769,7 +1768,7 @@ export const listMemberships: API.PaginatedOperationMethod<
   ListMembershipsRequest,
   ListMembershipsResponse,
   ListMembershipsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ListMembershipItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMembershipsRequest,
@@ -1798,7 +1797,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceInput,
   ListTagsForResourceOutput,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceInput,
   output: ListTagsForResourceOutput,
@@ -1820,7 +1819,7 @@ export const sendFeedback: API.OperationMethod<
   SendFeedbackRequest,
   SendFeedbackResponse,
   SendFeedbackError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: SendFeedbackRequest,
   output: SendFeedbackResponse,
@@ -1842,7 +1841,7 @@ export const tagResource: API.OperationMethod<
   TagResourceInput,
   TagResourceOutput,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: TagResourceInput,
   output: TagResourceOutput,
@@ -1868,7 +1867,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceInput,
   UntagResourceOutput,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceInput,
   output: UntagResourceOutput,
@@ -1890,7 +1889,7 @@ export const updateCase: API.OperationMethod<
   UpdateCaseRequest,
   UpdateCaseResponse,
   UpdateCaseError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateCaseRequest,
   output: UpdateCaseResponse,
@@ -1908,7 +1907,7 @@ export const updateCaseComment: API.OperationMethod<
   UpdateCaseCommentRequest,
   UpdateCaseCommentResponse,
   UpdateCaseCommentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateCaseCommentRequest,
   output: UpdateCaseCommentResponse,
@@ -1946,7 +1945,7 @@ export const updateCaseStatus: API.OperationMethod<
   UpdateCaseStatusRequest,
   UpdateCaseStatusResponse,
   UpdateCaseStatusError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateCaseStatusRequest,
   output: UpdateCaseStatusResponse,
@@ -1964,7 +1963,7 @@ export const updateMembership: API.OperationMethod<
   UpdateMembershipRequest,
   UpdateMembershipResponse,
   UpdateMembershipError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateMembershipRequest,
   output: UpdateMembershipResponse,
@@ -1984,7 +1983,7 @@ export const updateResolverType: API.OperationMethod<
   UpdateResolverTypeRequest,
   UpdateResolverTypeResponse,
   UpdateResolverTypeError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateResolverTypeRequest,
   output: UpdateResolverTypeResponse,

@@ -7,7 +7,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region as Rgn } from "../region.ts";
 const ns = T.XmlNamespace("http://directconnect.amazonaws.com/doc/2012-10-25/");
 const svc = T.AwsApiService({
   sdkId: "Direct Connect",
@@ -3020,7 +3019,7 @@ export const acceptDirectConnectGatewayAssociationProposal: API.OperationMethod<
   AcceptDirectConnectGatewayAssociationProposalRequest,
   AcceptDirectConnectGatewayAssociationProposalResult,
   AcceptDirectConnectGatewayAssociationProposalError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: AcceptDirectConnectGatewayAssociationProposalRequest,
   output: AcceptDirectConnectGatewayAssociationProposalResult,
@@ -3047,7 +3046,7 @@ export const allocateConnectionOnInterconnect: API.OperationMethod<
   AllocateConnectionOnInterconnectRequest,
   Connection,
   AllocateConnectionOnInterconnectError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: AllocateConnectionOnInterconnectRequest,
   output: Connection,
@@ -3075,7 +3074,7 @@ export const allocateHostedConnection: API.OperationMethod<
   AllocateHostedConnectionRequest,
   Connection,
   AllocateHostedConnectionError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: AllocateHostedConnectionRequest,
   output: Connection,
@@ -3107,7 +3106,7 @@ export const allocatePrivateVirtualInterface: API.OperationMethod<
   AllocatePrivateVirtualInterfaceRequest,
   VirtualInterface,
   AllocatePrivateVirtualInterfaceError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: AllocatePrivateVirtualInterfaceRequest,
   output: VirtualInterface,
@@ -3145,7 +3144,7 @@ export const allocatePublicVirtualInterface: API.OperationMethod<
   AllocatePublicVirtualInterfaceRequest,
   VirtualInterface,
   AllocatePublicVirtualInterfaceError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: AllocatePublicVirtualInterfaceRequest,
   output: VirtualInterface,
@@ -3179,7 +3178,7 @@ export const allocateTransitVirtualInterface: API.OperationMethod<
   AllocateTransitVirtualInterfaceRequest,
   AllocateTransitVirtualInterfaceResult,
   AllocateTransitVirtualInterfaceError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: AllocateTransitVirtualInterfaceRequest,
   output: AllocateTransitVirtualInterfaceResult,
@@ -3222,7 +3221,7 @@ export const associateConnectionWithLag: API.OperationMethod<
   AssociateConnectionWithLagRequest,
   Connection,
   AssociateConnectionWithLagError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: AssociateConnectionWithLagRequest,
   output: Connection,
@@ -3253,7 +3252,7 @@ export const associateHostedConnection: API.OperationMethod<
   AssociateHostedConnectionRequest,
   Connection,
   AssociateHostedConnectionError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: AssociateHostedConnectionRequest,
   output: Connection,
@@ -3278,7 +3277,7 @@ export const associateMacSecKey: API.OperationMethod<
   AssociateMacSecKeyRequest,
   AssociateMacSecKeyResponse,
   AssociateMacSecKeyError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: AssociateMacSecKeyRequest,
   output: AssociateMacSecKeyResponse,
@@ -3310,7 +3309,7 @@ export const associateVirtualInterface: API.OperationMethod<
   AssociateVirtualInterfaceRequest,
   VirtualInterface,
   AssociateVirtualInterfaceError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: AssociateVirtualInterfaceRequest,
   output: VirtualInterface,
@@ -3334,7 +3333,7 @@ export const confirmConnection: API.OperationMethod<
   ConfirmConnectionRequest,
   ConfirmConnectionResponse,
   ConfirmConnectionError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ConfirmConnectionRequest,
   output: ConfirmConnectionResponse,
@@ -3355,7 +3354,7 @@ export const confirmCustomerAgreement: API.OperationMethod<
   ConfirmCustomerAgreementRequest,
   ConfirmCustomerAgreementResponse,
   ConfirmCustomerAgreementError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ConfirmCustomerAgreementRequest,
   output: ConfirmCustomerAgreementResponse,
@@ -3380,7 +3379,7 @@ export const confirmPrivateVirtualInterface: API.OperationMethod<
   ConfirmPrivateVirtualInterfaceRequest,
   ConfirmPrivateVirtualInterfaceResponse,
   ConfirmPrivateVirtualInterfaceError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ConfirmPrivateVirtualInterfaceRequest,
   output: ConfirmPrivateVirtualInterfaceResponse,
@@ -3404,7 +3403,7 @@ export const confirmPublicVirtualInterface: API.OperationMethod<
   ConfirmPublicVirtualInterfaceRequest,
   ConfirmPublicVirtualInterfaceResponse,
   ConfirmPublicVirtualInterfaceError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ConfirmPublicVirtualInterfaceRequest,
   output: ConfirmPublicVirtualInterfaceResponse,
@@ -3427,7 +3426,7 @@ export const confirmTransitVirtualInterface: API.OperationMethod<
   ConfirmTransitVirtualInterfaceRequest,
   ConfirmTransitVirtualInterfaceResponse,
   ConfirmTransitVirtualInterfaceError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ConfirmTransitVirtualInterfaceRequest,
   output: ConfirmTransitVirtualInterfaceResponse,
@@ -3466,7 +3465,7 @@ export const createBGPPeer: API.OperationMethod<
   CreateBGPPeerRequest,
   CreateBGPPeerResponse,
   CreateBGPPeerError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateBGPPeerRequest,
   output: CreateBGPPeerResponse,
@@ -3499,7 +3498,7 @@ export const createConnection: API.OperationMethod<
   CreateConnectionRequest,
   Connection,
   CreateConnectionError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateConnectionRequest,
   output: Connection,
@@ -3530,7 +3529,7 @@ export const createDirectConnectGateway: API.OperationMethod<
   CreateDirectConnectGatewayRequest,
   CreateDirectConnectGatewayResult,
   CreateDirectConnectGatewayError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateDirectConnectGatewayRequest,
   output: CreateDirectConnectGatewayResult,
@@ -3552,7 +3551,7 @@ export const createDirectConnectGatewayAssociation: API.OperationMethod<
   CreateDirectConnectGatewayAssociationRequest,
   CreateDirectConnectGatewayAssociationResult,
   CreateDirectConnectGatewayAssociationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateDirectConnectGatewayAssociationRequest,
   output: CreateDirectConnectGatewayAssociationResult,
@@ -3575,7 +3574,7 @@ export const createDirectConnectGatewayAssociationProposal: API.OperationMethod<
   CreateDirectConnectGatewayAssociationProposalRequest,
   CreateDirectConnectGatewayAssociationProposalResult,
   CreateDirectConnectGatewayAssociationProposalError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateDirectConnectGatewayAssociationProposalRequest,
   output: CreateDirectConnectGatewayAssociationProposalResult,
@@ -3615,7 +3614,7 @@ export const createInterconnect: API.OperationMethod<
   CreateInterconnectRequest,
   Interconnect,
   CreateInterconnectError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateInterconnectRequest,
   output: Interconnect,
@@ -3665,7 +3664,7 @@ export const createLag: API.OperationMethod<
   CreateLagRequest,
   Lag,
   CreateLagError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateLagRequest,
   output: Lag,
@@ -3705,7 +3704,7 @@ export const createPrivateVirtualInterface: API.OperationMethod<
   CreatePrivateVirtualInterfaceRequest,
   VirtualInterface,
   CreatePrivateVirtualInterfaceError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreatePrivateVirtualInterfaceRequest,
   output: VirtualInterface,
@@ -3739,7 +3738,7 @@ export const createPublicVirtualInterface: API.OperationMethod<
   CreatePublicVirtualInterfaceRequest,
   VirtualInterface,
   CreatePublicVirtualInterfaceError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreatePublicVirtualInterfaceRequest,
   output: VirtualInterface,
@@ -3778,7 +3777,7 @@ export const createTransitVirtualInterface: API.OperationMethod<
   CreateTransitVirtualInterfaceRequest,
   CreateTransitVirtualInterfaceResult,
   CreateTransitVirtualInterfaceError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateTransitVirtualInterfaceRequest,
   output: CreateTransitVirtualInterfaceResult,
@@ -3807,7 +3806,7 @@ export const deleteBGPPeer: API.OperationMethod<
   DeleteBGPPeerRequest,
   DeleteBGPPeerResponse,
   DeleteBGPPeerError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteBGPPeerRequest,
   output: DeleteBGPPeerResponse,
@@ -3832,7 +3831,7 @@ export const deleteConnection: API.OperationMethod<
   DeleteConnectionRequest,
   Connection,
   DeleteConnectionError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteConnectionRequest,
   output: Connection,
@@ -3855,7 +3854,7 @@ export const deleteDirectConnectGateway: API.OperationMethod<
   DeleteDirectConnectGatewayRequest,
   DeleteDirectConnectGatewayResult,
   DeleteDirectConnectGatewayError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteDirectConnectGatewayRequest,
   output: DeleteDirectConnectGatewayResult,
@@ -3878,7 +3877,7 @@ export const deleteDirectConnectGatewayAssociation: API.OperationMethod<
   DeleteDirectConnectGatewayAssociationRequest,
   DeleteDirectConnectGatewayAssociationResult,
   DeleteDirectConnectGatewayAssociationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteDirectConnectGatewayAssociationRequest,
   output: DeleteDirectConnectGatewayAssociationResult,
@@ -3899,7 +3898,7 @@ export const deleteDirectConnectGatewayAssociationProposal: API.OperationMethod<
   DeleteDirectConnectGatewayAssociationProposalRequest,
   DeleteDirectConnectGatewayAssociationProposalResult,
   DeleteDirectConnectGatewayAssociationProposalError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteDirectConnectGatewayAssociationProposalRequest,
   output: DeleteDirectConnectGatewayAssociationProposalResult,
@@ -3923,7 +3922,7 @@ export const deleteInterconnect: API.OperationMethod<
   DeleteInterconnectRequest,
   DeleteInterconnectResponse,
   DeleteInterconnectError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteInterconnectRequest,
   output: DeleteInterconnectResponse,
@@ -3945,7 +3944,7 @@ export const deleteLag: API.OperationMethod<
   DeleteLagRequest,
   Lag,
   DeleteLagError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteLagRequest,
   output: Lag,
@@ -3966,7 +3965,7 @@ export const deleteVirtualInterface: API.OperationMethod<
   DeleteVirtualInterfaceRequest,
   DeleteVirtualInterfaceResponse,
   DeleteVirtualInterfaceError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteVirtualInterfaceRequest,
   output: DeleteVirtualInterfaceResponse,
@@ -3994,7 +3993,7 @@ export const describeConnectionLoa: API.OperationMethod<
   DescribeConnectionLoaRequest,
   DescribeConnectionLoaResponse,
   DescribeConnectionLoaError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeConnectionLoaRequest,
   output: DescribeConnectionLoaResponse,
@@ -4015,7 +4014,7 @@ export const describeConnections: API.OperationMethod<
   DescribeConnectionsRequest,
   Connections,
   DescribeConnectionsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeConnectionsRequest,
   output: Connections,
@@ -4040,7 +4039,7 @@ export const describeConnectionsOnInterconnect: API.OperationMethod<
   DescribeConnectionsOnInterconnectRequest,
   Connections,
   DescribeConnectionsOnInterconnectError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeConnectionsOnInterconnectRequest,
   output: Connections,
@@ -4061,7 +4060,7 @@ export const describeCustomerMetadata: API.OperationMethod<
   DescribeCustomerMetadataRequest,
   DescribeCustomerMetadataResponse,
   DescribeCustomerMetadataError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeCustomerMetadataRequest,
   output: DescribeCustomerMetadataResponse,
@@ -4082,7 +4081,7 @@ export const describeDirectConnectGatewayAssociationProposals: API.OperationMeth
   DescribeDirectConnectGatewayAssociationProposalsRequest,
   DescribeDirectConnectGatewayAssociationProposalsResult,
   DescribeDirectConnectGatewayAssociationProposalsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeDirectConnectGatewayAssociationProposalsRequest,
   output: DescribeDirectConnectGatewayAssociationProposalsResult,
@@ -4131,7 +4130,7 @@ export const describeDirectConnectGatewayAssociations: API.OperationMethod<
   DescribeDirectConnectGatewayAssociationsRequest,
   DescribeDirectConnectGatewayAssociationsResult,
   DescribeDirectConnectGatewayAssociationsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeDirectConnectGatewayAssociationsRequest,
   output: DescribeDirectConnectGatewayAssociationsResult,
@@ -4156,7 +4155,7 @@ export const describeDirectConnectGatewayAttachments: API.OperationMethod<
   DescribeDirectConnectGatewayAttachmentsRequest,
   DescribeDirectConnectGatewayAttachmentsResult,
   DescribeDirectConnectGatewayAttachmentsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeDirectConnectGatewayAttachmentsRequest,
   output: DescribeDirectConnectGatewayAttachmentsResult,
@@ -4177,7 +4176,7 @@ export const describeDirectConnectGateways: API.OperationMethod<
   DescribeDirectConnectGatewaysRequest,
   DescribeDirectConnectGatewaysResult,
   DescribeDirectConnectGatewaysError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeDirectConnectGatewaysRequest,
   output: DescribeDirectConnectGatewaysResult,
@@ -4201,7 +4200,7 @@ export const describeHostedConnections: API.OperationMethod<
   DescribeHostedConnectionsRequest,
   Connections,
   DescribeHostedConnectionsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeHostedConnectionsRequest,
   output: Connections,
@@ -4228,7 +4227,7 @@ export const describeInterconnectLoa: API.OperationMethod<
   DescribeInterconnectLoaRequest,
   DescribeInterconnectLoaResponse,
   DescribeInterconnectLoaError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeInterconnectLoaRequest,
   output: DescribeInterconnectLoaResponse,
@@ -4249,7 +4248,7 @@ export const describeInterconnects: API.OperationMethod<
   DescribeInterconnectsRequest,
   Interconnects,
   DescribeInterconnectsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeInterconnectsRequest,
   output: Interconnects,
@@ -4270,7 +4269,7 @@ export const describeLags: API.OperationMethod<
   DescribeLagsRequest,
   Lags,
   DescribeLagsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeLagsRequest,
   output: Lags,
@@ -4295,7 +4294,7 @@ export const describeLoa: API.OperationMethod<
   DescribeLoaRequest,
   Loa,
   DescribeLoaError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeLoaRequest,
   output: Loa,
@@ -4317,7 +4316,7 @@ export const describeLocations: API.OperationMethod<
   DescribeLocationsRequest,
   Locations,
   DescribeLocationsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeLocationsRequest,
   output: Locations,
@@ -4338,7 +4337,7 @@ export const describeRouterConfiguration: API.OperationMethod<
   DescribeRouterConfigurationRequest,
   DescribeRouterConfigurationResponse,
   DescribeRouterConfigurationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeRouterConfigurationRequest,
   output: DescribeRouterConfigurationResponse,
@@ -4359,7 +4358,7 @@ export const describeTags: API.OperationMethod<
   DescribeTagsRequest,
   DescribeTagsResponse,
   DescribeTagsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeTagsRequest,
   output: DescribeTagsResponse,
@@ -4384,7 +4383,7 @@ export const describeVirtualGateways: API.OperationMethod<
   DescribeVirtualGatewaysRequest,
   VirtualGateways,
   DescribeVirtualGatewaysError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeVirtualGatewaysRequest,
   output: VirtualGateways,
@@ -4414,7 +4413,7 @@ export const describeVirtualInterfaces: API.OperationMethod<
   DescribeVirtualInterfacesRequest,
   VirtualInterfaces,
   DescribeVirtualInterfacesError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeVirtualInterfacesRequest,
   output: VirtualInterfaces,
@@ -4445,7 +4444,7 @@ export const disassociateConnectionFromLag: API.OperationMethod<
   DisassociateConnectionFromLagRequest,
   Connection,
   DisassociateConnectionFromLagError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DisassociateConnectionFromLagRequest,
   output: Connection,
@@ -4466,7 +4465,7 @@ export const disassociateMacSecKey: API.OperationMethod<
   DisassociateMacSecKeyRequest,
   DisassociateMacSecKeyResponse,
   DisassociateMacSecKeyError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DisassociateMacSecKeyRequest,
   output: DisassociateMacSecKeyResponse,
@@ -4487,7 +4486,7 @@ export const listVirtualInterfaceTestHistory: API.OperationMethod<
   ListVirtualInterfaceTestHistoryRequest,
   ListVirtualInterfaceTestHistoryResponse,
   ListVirtualInterfaceTestHistoryError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListVirtualInterfaceTestHistoryRequest,
   output: ListVirtualInterfaceTestHistoryResponse,
@@ -4514,7 +4513,7 @@ export const startBgpFailoverTest: API.OperationMethod<
   StartBgpFailoverTestRequest,
   StartBgpFailoverTestResponse,
   StartBgpFailoverTestError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartBgpFailoverTestRequest,
   output: StartBgpFailoverTestResponse,
@@ -4535,7 +4534,7 @@ export const stopBgpFailoverTest: API.OperationMethod<
   StopBgpFailoverTestRequest,
   StopBgpFailoverTestResponse,
   StopBgpFailoverTestError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StopBgpFailoverTestRequest,
   output: StopBgpFailoverTestResponse,
@@ -4560,7 +4559,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -4586,7 +4585,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -4613,7 +4612,7 @@ export const updateConnection: API.OperationMethod<
   UpdateConnectionRequest,
   Connection,
   UpdateConnectionError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateConnectionRequest,
   output: Connection,
@@ -4634,7 +4633,7 @@ export const updateDirectConnectGateway: API.OperationMethod<
   UpdateDirectConnectGatewayRequest,
   UpdateDirectConnectGatewayResponse,
   UpdateDirectConnectGatewayError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateDirectConnectGatewayRequest,
   output: UpdateDirectConnectGatewayResponse,
@@ -4657,7 +4656,7 @@ export const updateDirectConnectGatewayAssociation: API.OperationMethod<
   UpdateDirectConnectGatewayAssociationRequest,
   UpdateDirectConnectGatewayAssociationResult,
   UpdateDirectConnectGatewayAssociationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateDirectConnectGatewayAssociationRequest,
   output: UpdateDirectConnectGatewayAssociationResult,
@@ -4695,7 +4694,7 @@ export const updateLag: API.OperationMethod<
   UpdateLagRequest,
   Lag,
   UpdateLagError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateLagRequest,
   output: Lag,
@@ -4723,7 +4722,7 @@ export const updateVirtualInterfaceAttributes: API.OperationMethod<
   UpdateVirtualInterfaceAttributesRequest,
   VirtualInterface,
   UpdateVirtualInterfaceAttributesError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateVirtualInterfaceAttributesRequest,
   output: VirtualInterface,

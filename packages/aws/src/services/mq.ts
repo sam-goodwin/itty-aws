@@ -8,7 +8,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 import { SensitiveString } from "../sensitive.ts";
 const svc = T.AwsApiService({ sdkId: "mq", serviceShapeName: "mq" });
 const auth = T.AwsAuthSigv4({ name: "mq" });
@@ -2219,7 +2218,7 @@ export const createBroker: API.OperationMethod<
   CreateBrokerRequest,
   CreateBrokerResponse,
   CreateBrokerError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateBrokerRequest,
   output: CreateBrokerResponse,
@@ -2248,7 +2247,7 @@ export const createConfiguration: API.OperationMethod<
   CreateConfigurationRequest,
   CreateConfigurationResponse,
   CreateConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateConfigurationRequest,
   output: CreateConfigurationResponse,
@@ -2276,7 +2275,7 @@ export const createTags: API.OperationMethod<
   CreateTagsRequest,
   CreateTagsResponse,
   CreateTagsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateTagsRequest,
   output: CreateTagsResponse,
@@ -2307,7 +2306,7 @@ export const createUser: API.OperationMethod<
   CreateUserRequest,
   CreateUserResponse,
   CreateUserError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateUserRequest,
   output: CreateUserResponse,
@@ -2336,7 +2335,7 @@ export const deleteBroker: API.OperationMethod<
   DeleteBrokerRequest,
   DeleteBrokerResponse,
   DeleteBrokerError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteBrokerRequest,
   output: DeleteBrokerResponse,
@@ -2365,7 +2364,7 @@ export const deleteConfiguration: API.OperationMethod<
   DeleteConfigurationRequest,
   DeleteConfigurationResponse,
   DeleteConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteConfigurationRequest,
   output: DeleteConfigurationResponse,
@@ -2394,7 +2393,7 @@ export const deleteTags: API.OperationMethod<
   DeleteTagsRequest,
   DeleteTagsResponse,
   DeleteTagsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteTagsRequest,
   output: DeleteTagsResponse,
@@ -2422,7 +2421,7 @@ export const deleteUser: API.OperationMethod<
   DeleteUserRequest,
   DeleteUserResponse,
   DeleteUserError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteUserRequest,
   output: DeleteUserResponse,
@@ -2450,7 +2449,7 @@ export const describeBroker: API.OperationMethod<
   DescribeBrokerRequest,
   DescribeBrokerResponse,
   DescribeBrokerError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeBrokerRequest,
   output: DescribeBrokerResponse,
@@ -2477,7 +2476,7 @@ export const describeBrokerEngineTypes: API.OperationMethod<
   DescribeBrokerEngineTypesRequest,
   DescribeBrokerEngineTypesResponse,
   DescribeBrokerEngineTypesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeBrokerEngineTypesRequest,
   output: DescribeBrokerEngineTypesResponse,
@@ -2503,7 +2502,7 @@ export const describeBrokerInstanceOptions: API.OperationMethod<
   DescribeBrokerInstanceOptionsRequest,
   DescribeBrokerInstanceOptionsResponse,
   DescribeBrokerInstanceOptionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeBrokerInstanceOptionsRequest,
   output: DescribeBrokerInstanceOptionsResponse,
@@ -2530,7 +2529,7 @@ export const describeConfiguration: API.OperationMethod<
   DescribeConfigurationRequest,
   DescribeConfigurationResponse,
   DescribeConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeConfigurationRequest,
   output: DescribeConfigurationResponse,
@@ -2558,7 +2557,7 @@ export const describeConfigurationRevision: API.OperationMethod<
   DescribeConfigurationRevisionRequest,
   DescribeConfigurationRevisionResponse,
   DescribeConfigurationRevisionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeConfigurationRevisionRequest,
   output: DescribeConfigurationRevisionResponse,
@@ -2586,7 +2585,7 @@ export const describeSharedResources: API.PaginatedOperationMethod<
   DescribeSharedResourcesRequest,
   DescribeSharedResourcesResponse,
   DescribeSharedResourcesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   SharedResource
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeSharedResourcesRequest,
@@ -2621,7 +2620,7 @@ export const describeUser: API.OperationMethod<
   DescribeUserRequest,
   DescribeUserResponse,
   DescribeUserError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeUserRequest,
   output: DescribeUserResponse,
@@ -2648,7 +2647,7 @@ export const listBrokers: API.PaginatedOperationMethod<
   ListBrokersRequest,
   ListBrokersResponse,
   ListBrokersError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   BrokerSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBrokersRequest,
@@ -2682,7 +2681,7 @@ export const listConfigurationRevisions: API.OperationMethod<
   ListConfigurationRevisionsRequest,
   ListConfigurationRevisionsResponse,
   ListConfigurationRevisionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListConfigurationRevisionsRequest,
   output: ListConfigurationRevisionsResponse,
@@ -2709,7 +2708,7 @@ export const listConfigurations: API.OperationMethod<
   ListConfigurationsRequest,
   ListConfigurationsResponse,
   ListConfigurationsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListConfigurationsRequest,
   output: ListConfigurationsResponse,
@@ -2736,7 +2735,7 @@ export const listTags: API.OperationMethod<
   ListTagsRequest,
   ListTagsResponse,
   ListTagsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListTagsRequest,
   output: ListTagsResponse,
@@ -2764,7 +2763,7 @@ export const listUsers: API.OperationMethod<
   ListUsersRequest,
   ListUsersResponse,
   ListUsersError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListUsersRequest,
   output: ListUsersResponse,
@@ -2792,7 +2791,7 @@ export const promote: API.OperationMethod<
   PromoteRequest,
   PromoteResponse,
   PromoteError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PromoteRequest,
   output: PromoteResponse,
@@ -2820,7 +2819,7 @@ export const rebootBroker: API.OperationMethod<
   RebootBrokerRequest,
   RebootBrokerResponse,
   RebootBrokerError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: RebootBrokerRequest,
   output: RebootBrokerResponse,
@@ -2849,7 +2848,7 @@ export const updateBroker: API.OperationMethod<
   UpdateBrokerRequest,
   UpdateBrokerResponse,
   UpdateBrokerError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateBrokerRequest,
   output: UpdateBrokerResponse,
@@ -2879,7 +2878,7 @@ export const updateConfiguration: API.OperationMethod<
   UpdateConfigurationRequest,
   UpdateConfigurationResponse,
   UpdateConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateConfigurationRequest,
   output: UpdateConfigurationResponse,
@@ -2909,7 +2908,7 @@ export const updateUser: API.OperationMethod<
   UpdateUserRequest,
   UpdateUserResponse,
   UpdateUserError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateUserRequest,
   output: UpdateUserResponse,

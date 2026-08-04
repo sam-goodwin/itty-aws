@@ -7,7 +7,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 const svc = T.AwsApiService({
   sdkId: "Transcribe",
   serviceShapeName: "Transcribe",
@@ -2921,7 +2920,7 @@ export const createCallAnalyticsCategory: API.OperationMethod<
   CreateCallAnalyticsCategoryRequest,
   CreateCallAnalyticsCategoryResponse,
   CreateCallAnalyticsCategoryError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateCallAnalyticsCategoryRequest,
   output: CreateCallAnalyticsCategoryResponse,
@@ -2960,7 +2959,7 @@ export const createLanguageModel: API.OperationMethod<
   CreateLanguageModelRequest,
   CreateLanguageModelResponse,
   CreateLanguageModelError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateLanguageModelRequest,
   output: CreateLanguageModelResponse,
@@ -3003,7 +3002,7 @@ export const createMedicalVocabulary: API.OperationMethod<
   CreateMedicalVocabularyRequest,
   CreateMedicalVocabularyResponse,
   CreateMedicalVocabularyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateMedicalVocabularyRequest,
   output: CreateMedicalVocabularyResponse,
@@ -3044,7 +3043,7 @@ export const createVocabulary: API.OperationMethod<
   CreateVocabularyRequest,
   CreateVocabularyResponse,
   CreateVocabularyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateVocabularyRequest,
   output: CreateVocabularyResponse,
@@ -3084,7 +3083,7 @@ export const createVocabularyFilter: API.OperationMethod<
   CreateVocabularyFilterRequest,
   CreateVocabularyFilterResponse,
   CreateVocabularyFilterError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateVocabularyFilterRequest,
   output: CreateVocabularyFilterResponse,
@@ -3114,7 +3113,7 @@ export const deleteCallAnalyticsCategory: API.OperationMethod<
   DeleteCallAnalyticsCategoryRequest,
   DeleteCallAnalyticsCategoryResponse,
   DeleteCallAnalyticsCategoryError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteCallAnalyticsCategoryRequest,
   output: DeleteCallAnalyticsCategoryResponse,
@@ -3143,7 +3142,7 @@ export const deleteCallAnalyticsJob: API.OperationMethod<
   DeleteCallAnalyticsJobRequest,
   DeleteCallAnalyticsJobResponse,
   DeleteCallAnalyticsJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteCallAnalyticsJobRequest,
   output: DeleteCallAnalyticsJobResponse,
@@ -3171,7 +3170,7 @@ export const deleteLanguageModel: API.OperationMethod<
   DeleteLanguageModelRequest,
   DeleteLanguageModelResponse,
   DeleteLanguageModelError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteLanguageModelRequest,
   output: DeleteLanguageModelResponse,
@@ -3199,7 +3198,7 @@ export const deleteMedicalScribeJob: API.OperationMethod<
   DeleteMedicalScribeJobRequest,
   DeleteMedicalScribeJobResponse,
   DeleteMedicalScribeJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteMedicalScribeJobRequest,
   output: DeleteMedicalScribeJobResponse,
@@ -3227,7 +3226,7 @@ export const deleteMedicalTranscriptionJob: API.OperationMethod<
   DeleteMedicalTranscriptionJobRequest,
   DeleteMedicalTranscriptionJobResponse,
   DeleteMedicalTranscriptionJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteMedicalTranscriptionJobRequest,
   output: DeleteMedicalTranscriptionJobResponse,
@@ -3256,7 +3255,7 @@ export const deleteMedicalVocabulary: API.OperationMethod<
   DeleteMedicalVocabularyRequest,
   DeleteMedicalVocabularyResponse,
   DeleteMedicalVocabularyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteMedicalVocabularyRequest,
   output: DeleteMedicalVocabularyResponse,
@@ -3285,7 +3284,7 @@ export const deleteTranscriptionJob: API.OperationMethod<
   DeleteTranscriptionJobRequest,
   DeleteTranscriptionJobResponse,
   DeleteTranscriptionJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteTranscriptionJobRequest,
   output: DeleteTranscriptionJobResponse,
@@ -3314,7 +3313,7 @@ export const deleteVocabulary: API.OperationMethod<
   DeleteVocabularyRequest,
   DeleteVocabularyResponse,
   DeleteVocabularyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteVocabularyRequest,
   output: DeleteVocabularyResponse,
@@ -3344,7 +3343,7 @@ export const deleteVocabularyFilter: API.OperationMethod<
   DeleteVocabularyFilterRequest,
   DeleteVocabularyFilterResponse,
   DeleteVocabularyFilterError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteVocabularyFilterRequest,
   output: DeleteVocabularyFilterResponse,
@@ -3380,7 +3379,7 @@ export const describeLanguageModel: API.OperationMethod<
   DescribeLanguageModelRequest,
   DescribeLanguageModelResponse,
   DescribeLanguageModelError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeLanguageModelRequest,
   output: DescribeLanguageModelResponse,
@@ -3410,7 +3409,7 @@ export const getCallAnalyticsCategory: API.OperationMethod<
   GetCallAnalyticsCategoryRequest,
   GetCallAnalyticsCategoryResponse,
   GetCallAnalyticsCategoryError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetCallAnalyticsCategoryRequest,
   output: GetCallAnalyticsCategoryResponse,
@@ -3453,7 +3452,7 @@ export const getCallAnalyticsJob: API.OperationMethod<
   GetCallAnalyticsJobRequest,
   GetCallAnalyticsJobResponse,
   GetCallAnalyticsJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetCallAnalyticsJobRequest,
   output: GetCallAnalyticsJobResponse,
@@ -3490,7 +3489,7 @@ export const getMedicalScribeJob: API.OperationMethod<
   GetMedicalScribeJobRequest,
   GetMedicalScribeJobResponse,
   GetMedicalScribeJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetMedicalScribeJobRequest,
   output: GetMedicalScribeJobResponse,
@@ -3527,7 +3526,7 @@ export const getMedicalTranscriptionJob: API.OperationMethod<
   GetMedicalTranscriptionJobRequest,
   GetMedicalTranscriptionJobResponse,
   GetMedicalTranscriptionJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetMedicalTranscriptionJobRequest,
   output: GetMedicalTranscriptionJobResponse,
@@ -3562,7 +3561,7 @@ export const getMedicalVocabulary: API.OperationMethod<
   GetMedicalVocabularyRequest,
   GetMedicalVocabularyResponse,
   GetMedicalVocabularyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetMedicalVocabularyRequest,
   output: GetMedicalVocabularyResponse,
@@ -3602,7 +3601,7 @@ export const getTranscriptionJob: API.OperationMethod<
   GetTranscriptionJobRequest,
   GetTranscriptionJobResponse,
   GetTranscriptionJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetTranscriptionJobRequest,
   output: GetTranscriptionJobResponse,
@@ -3638,7 +3637,7 @@ export const getVocabulary: API.OperationMethod<
   GetVocabularyRequest,
   GetVocabularyResponse,
   GetVocabularyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetVocabularyRequest,
   output: GetVocabularyResponse,
@@ -3668,7 +3667,7 @@ export const getVocabularyFilter: API.OperationMethod<
   GetVocabularyFilterRequest,
   GetVocabularyFilterResponse,
   GetVocabularyFilterError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetVocabularyFilterRequest,
   output: GetVocabularyFilterResponse,
@@ -3698,7 +3697,7 @@ export const listCallAnalyticsCategories: API.PaginatedOperationMethod<
   ListCallAnalyticsCategoriesRequest,
   ListCallAnalyticsCategoriesResponse,
   ListCallAnalyticsCategoriesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCallAnalyticsCategoriesRequest,
@@ -3733,7 +3732,7 @@ export const listCallAnalyticsJobs: API.PaginatedOperationMethod<
   ListCallAnalyticsJobsRequest,
   ListCallAnalyticsJobsResponse,
   ListCallAnalyticsJobsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCallAnalyticsJobsRequest,
@@ -3768,7 +3767,7 @@ export const listLanguageModels: API.PaginatedOperationMethod<
   ListLanguageModelsRequest,
   ListLanguageModelsResponse,
   ListLanguageModelsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLanguageModelsRequest,
@@ -3803,7 +3802,7 @@ export const listMedicalScribeJobs: API.PaginatedOperationMethod<
   ListMedicalScribeJobsRequest,
   ListMedicalScribeJobsResponse,
   ListMedicalScribeJobsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMedicalScribeJobsRequest,
@@ -3838,7 +3837,7 @@ export const listMedicalTranscriptionJobs: API.PaginatedOperationMethod<
   ListMedicalTranscriptionJobsRequest,
   ListMedicalTranscriptionJobsResponse,
   ListMedicalTranscriptionJobsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMedicalTranscriptionJobsRequest,
@@ -3873,7 +3872,7 @@ export const listMedicalVocabularies: API.PaginatedOperationMethod<
   ListMedicalVocabulariesRequest,
   ListMedicalVocabulariesResponse,
   ListMedicalVocabulariesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMedicalVocabulariesRequest,
@@ -3910,7 +3909,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -3940,7 +3939,7 @@ export const listTranscriptionJobs: API.PaginatedOperationMethod<
   ListTranscriptionJobsRequest,
   ListTranscriptionJobsResponse,
   ListTranscriptionJobsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTranscriptionJobsRequest,
@@ -3975,7 +3974,7 @@ export const listVocabularies: API.PaginatedOperationMethod<
   ListVocabulariesRequest,
   ListVocabulariesResponse,
   ListVocabulariesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListVocabulariesRequest,
@@ -4010,7 +4009,7 @@ export const listVocabularyFilters: API.PaginatedOperationMethod<
   ListVocabularyFiltersRequest,
   ListVocabularyFiltersResponse,
   ListVocabularyFiltersError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListVocabularyFiltersRequest,
@@ -4085,7 +4084,7 @@ export const startCallAnalyticsJob: API.OperationMethod<
   StartCallAnalyticsJobRequest,
   StartCallAnalyticsJobResponse,
   StartCallAnalyticsJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartCallAnalyticsJobRequest,
   output: StartCallAnalyticsJobResponse,
@@ -4144,7 +4143,7 @@ export const startMedicalScribeJob: API.OperationMethod<
   StartMedicalScribeJobRequest,
   StartMedicalScribeJobResponse,
   StartMedicalScribeJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartMedicalScribeJobRequest,
   output: StartMedicalScribeJobResponse,
@@ -4207,7 +4206,7 @@ export const startMedicalTranscriptionJob: API.OperationMethod<
   StartMedicalTranscriptionJobRequest,
   StartMedicalTranscriptionJobResponse,
   StartMedicalTranscriptionJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartMedicalTranscriptionJobRequest,
   output: StartMedicalTranscriptionJobResponse,
@@ -4262,7 +4261,7 @@ export const startTranscriptionJob: API.OperationMethod<
   StartTranscriptionJobRequest,
   StartTranscriptionJobResponse,
   StartTranscriptionJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartTranscriptionJobRequest,
   output: StartTranscriptionJobResponse,
@@ -4295,7 +4294,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -4328,7 +4327,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -4363,7 +4362,7 @@ export const updateCallAnalyticsCategory: API.OperationMethod<
   UpdateCallAnalyticsCategoryRequest,
   UpdateCallAnalyticsCategoryResponse,
   UpdateCallAnalyticsCategoryError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateCallAnalyticsCategoryRequest,
   output: UpdateCallAnalyticsCategoryResponse,
@@ -4395,7 +4394,7 @@ export const updateMedicalVocabulary: API.OperationMethod<
   UpdateMedicalVocabularyRequest,
   UpdateMedicalVocabularyResponse,
   UpdateMedicalVocabularyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateMedicalVocabularyRequest,
   output: UpdateMedicalVocabularyResponse,
@@ -4427,7 +4426,7 @@ export const updateVocabulary: API.OperationMethod<
   UpdateVocabularyRequest,
   UpdateVocabularyResponse,
   UpdateVocabularyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateVocabularyRequest,
   output: UpdateVocabularyResponse,
@@ -4458,7 +4457,7 @@ export const updateVocabularyFilter: API.OperationMethod<
   UpdateVocabularyFilterRequest,
   UpdateVocabularyFilterResponse,
   UpdateVocabularyFilterError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateVocabularyFilterRequest,
   output: UpdateVocabularyFilterResponse,

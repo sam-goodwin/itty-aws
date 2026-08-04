@@ -6,7 +6,6 @@ import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 const svc = T.AwsApiService({
   sdkId: "SageMaker Metrics",
   serviceShapeName: "SageMakerMetricsService",
@@ -272,7 +271,7 @@ export const batchGetMetrics: API.OperationMethod<
   BatchGetMetricsRequest,
   BatchGetMetricsResponse,
   BatchGetMetricsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: BatchGetMetricsRequest,
   output: BatchGetMetricsResponse,
@@ -290,7 +289,7 @@ export const batchPutMetrics: API.OperationMethod<
   BatchPutMetricsRequest,
   BatchPutMetricsResponse,
   BatchPutMetricsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: BatchPutMetricsRequest,
   output: BatchPutMetricsResponse,

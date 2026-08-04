@@ -7,7 +7,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region as Rgn } from "../region.ts";
 const svc = T.AwsApiService({
   sdkId: "Notifications",
   serviceShapeName: "Notifications",
@@ -2213,7 +2212,7 @@ export const associateChannel: API.OperationMethod<
   AssociateChannelRequest,
   AssociateChannelResponse,
   AssociateChannelError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: AssociateChannelRequest,
   output: AssociateChannelResponse,
@@ -2247,7 +2246,7 @@ export const associateManagedNotificationAccountContact: API.OperationMethod<
   AssociateManagedNotificationAccountContactRequest,
   AssociateManagedNotificationAccountContactResponse,
   AssociateManagedNotificationAccountContactError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: AssociateManagedNotificationAccountContactRequest,
   output: AssociateManagedNotificationAccountContactResponse,
@@ -2283,7 +2282,7 @@ export const associateManagedNotificationAdditionalChannel: API.OperationMethod<
   AssociateManagedNotificationAdditionalChannelRequest,
   AssociateManagedNotificationAdditionalChannelResponse,
   AssociateManagedNotificationAdditionalChannelError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: AssociateManagedNotificationAdditionalChannelRequest,
   output: AssociateManagedNotificationAdditionalChannelResponse,
@@ -2317,7 +2316,7 @@ export const associateOrganizationalUnit: API.OperationMethod<
   AssociateOrganizationalUnitRequest,
   AssociateOrganizationalUnitResponse,
   AssociateOrganizationalUnitError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: AssociateOrganizationalUnitRequest,
   output: AssociateOrganizationalUnitResponse,
@@ -2351,7 +2350,7 @@ export const createEventRule: API.OperationMethod<
   CreateEventRuleRequest,
   CreateEventRuleResponse,
   CreateEventRuleError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateEventRuleRequest,
   output: CreateEventRuleResponse,
@@ -2384,7 +2383,7 @@ export const createNotificationConfiguration: API.OperationMethod<
   CreateNotificationConfigurationRequest,
   CreateNotificationConfigurationResponse,
   CreateNotificationConfigurationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateNotificationConfigurationRequest,
   output: CreateNotificationConfigurationResponse,
@@ -2416,7 +2415,7 @@ export const deleteEventRule: API.OperationMethod<
   DeleteEventRuleRequest,
   DeleteEventRuleResponse,
   DeleteEventRuleError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteEventRuleRequest,
   output: DeleteEventRuleResponse,
@@ -2448,7 +2447,7 @@ export const deleteNotificationConfiguration: API.OperationMethod<
   DeleteNotificationConfigurationRequest,
   DeleteNotificationConfigurationResponse,
   DeleteNotificationConfigurationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteNotificationConfigurationRequest,
   output: DeleteNotificationConfigurationResponse,
@@ -2482,7 +2481,7 @@ export const deregisterNotificationHub: API.OperationMethod<
   DeregisterNotificationHubRequest,
   DeregisterNotificationHubResponse,
   DeregisterNotificationHubError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeregisterNotificationHubRequest,
   output: DeregisterNotificationHubResponse,
@@ -2515,7 +2514,7 @@ export const disableNotificationsAccessForOrganization: API.OperationMethod<
   DisableNotificationsAccessForOrganizationRequest,
   DisableNotificationsAccessForOrganizationResponse,
   DisableNotificationsAccessForOrganizationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DisableNotificationsAccessForOrganizationRequest,
   output: DisableNotificationsAccessForOrganizationResponse,
@@ -2547,7 +2546,7 @@ export const disassociateChannel: API.OperationMethod<
   DisassociateChannelRequest,
   DisassociateChannelResponse,
   DisassociateChannelError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DisassociateChannelRequest,
   output: DisassociateChannelResponse,
@@ -2578,7 +2577,7 @@ export const disassociateManagedNotificationAccountContact: API.OperationMethod<
   DisassociateManagedNotificationAccountContactRequest,
   DisassociateManagedNotificationAccountContactResponse,
   DisassociateManagedNotificationAccountContactError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DisassociateManagedNotificationAccountContactRequest,
   output: DisassociateManagedNotificationAccountContactResponse,
@@ -2611,7 +2610,7 @@ export const disassociateManagedNotificationAdditionalChannel: API.OperationMeth
   DisassociateManagedNotificationAdditionalChannelRequest,
   DisassociateManagedNotificationAdditionalChannelResponse,
   DisassociateManagedNotificationAdditionalChannelError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DisassociateManagedNotificationAdditionalChannelRequest,
   output: DisassociateManagedNotificationAdditionalChannelResponse,
@@ -2641,7 +2640,7 @@ export const disassociateOrganizationalUnit: API.OperationMethod<
   DisassociateOrganizationalUnitRequest,
   DisassociateOrganizationalUnitResponse,
   DisassociateOrganizationalUnitError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DisassociateOrganizationalUnitRequest,
   output: DisassociateOrganizationalUnitResponse,
@@ -2673,7 +2672,7 @@ export const enableNotificationsAccessForOrganization: API.OperationMethod<
   EnableNotificationsAccessForOrganizationRequest,
   EnableNotificationsAccessForOrganizationResponse,
   EnableNotificationsAccessForOrganizationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: EnableNotificationsAccessForOrganizationRequest,
   output: EnableNotificationsAccessForOrganizationResponse,
@@ -2705,7 +2704,7 @@ export const getEventRule: API.OperationMethod<
   GetEventRuleRequest,
   GetEventRuleResponse,
   GetEventRuleError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetEventRuleRequest,
   output: GetEventRuleResponse,
@@ -2735,7 +2734,7 @@ export const getManagedNotificationChildEvent: API.OperationMethod<
   GetManagedNotificationChildEventRequest,
   GetManagedNotificationChildEventResponse,
   GetManagedNotificationChildEventError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetManagedNotificationChildEventRequest,
   output: GetManagedNotificationChildEventResponse,
@@ -2765,7 +2764,7 @@ export const getManagedNotificationConfiguration: API.OperationMethod<
   GetManagedNotificationConfigurationRequest,
   GetManagedNotificationConfigurationResponse,
   GetManagedNotificationConfigurationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetManagedNotificationConfigurationRequest,
   output: GetManagedNotificationConfigurationResponse,
@@ -2795,7 +2794,7 @@ export const getManagedNotificationEvent: API.OperationMethod<
   GetManagedNotificationEventRequest,
   GetManagedNotificationEventResponse,
   GetManagedNotificationEventError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetManagedNotificationEventRequest,
   output: GetManagedNotificationEventResponse,
@@ -2825,7 +2824,7 @@ export const getNotificationConfiguration: API.OperationMethod<
   GetNotificationConfigurationRequest,
   GetNotificationConfigurationResponse,
   GetNotificationConfigurationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetNotificationConfigurationRequest,
   output: GetNotificationConfigurationResponse,
@@ -2857,7 +2856,7 @@ export const getNotificationEvent: API.OperationMethod<
   GetNotificationEventRequest,
   GetNotificationEventResponse,
   GetNotificationEventError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetNotificationEventRequest,
   output: GetNotificationEventResponse,
@@ -2886,7 +2885,7 @@ export const getNotificationsAccessForOrganization: API.OperationMethod<
   GetNotificationsAccessForOrganizationRequest,
   GetNotificationsAccessForOrganizationResponse,
   GetNotificationsAccessForOrganizationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetNotificationsAccessForOrganizationRequest,
   output: GetNotificationsAccessForOrganizationResponse,
@@ -2915,7 +2914,7 @@ export const listChannels: API.PaginatedOperationMethod<
   ListChannelsRequest,
   ListChannelsResponse,
   ListChannelsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ChannelArn
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListChannelsRequest,
@@ -2952,7 +2951,7 @@ export const listEventRules: API.PaginatedOperationMethod<
   ListEventRulesRequest,
   ListEventRulesResponse,
   ListEventRulesError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   EventRuleStructure
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEventRulesRequest,
@@ -2989,7 +2988,7 @@ export const listManagedNotificationChannelAssociations: API.PaginatedOperationM
   ListManagedNotificationChannelAssociationsRequest,
   ListManagedNotificationChannelAssociationsResponse,
   ListManagedNotificationChannelAssociationsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ManagedNotificationChannelAssociationSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListManagedNotificationChannelAssociationsRequest,
@@ -3026,7 +3025,7 @@ export const listManagedNotificationChildEvents: API.PaginatedOperationMethod<
   ListManagedNotificationChildEventsRequest,
   ListManagedNotificationChildEventsResponse,
   ListManagedNotificationChildEventsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ManagedNotificationChildEventOverview
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListManagedNotificationChildEventsRequest,
@@ -3062,7 +3061,7 @@ export const listManagedNotificationConfigurations: API.PaginatedOperationMethod
   ListManagedNotificationConfigurationsRequest,
   ListManagedNotificationConfigurationsResponse,
   ListManagedNotificationConfigurationsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ManagedNotificationConfigurationStructure
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListManagedNotificationConfigurationsRequest,
@@ -3097,7 +3096,7 @@ export const listManagedNotificationEvents: API.PaginatedOperationMethod<
   ListManagedNotificationEventsRequest,
   ListManagedNotificationEventsResponse,
   ListManagedNotificationEventsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ManagedNotificationEventOverview
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListManagedNotificationEventsRequest,
@@ -3133,7 +3132,7 @@ export const listMemberAccounts: API.PaginatedOperationMethod<
   ListMemberAccountsRequest,
   ListMemberAccountsResponse,
   ListMemberAccountsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   MemberAccount
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMemberAccountsRequest,
@@ -3169,7 +3168,7 @@ export const listNotificationConfigurations: API.PaginatedOperationMethod<
   ListNotificationConfigurationsRequest,
   ListNotificationConfigurationsResponse,
   ListNotificationConfigurationsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   NotificationConfigurationStructure
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListNotificationConfigurationsRequest,
@@ -3206,7 +3205,7 @@ export const listNotificationEvents: API.PaginatedOperationMethod<
   ListNotificationEventsRequest,
   ListNotificationEventsResponse,
   ListNotificationEventsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   NotificationEventOverview
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListNotificationEventsRequest,
@@ -3241,7 +3240,7 @@ export const listNotificationHubs: API.PaginatedOperationMethod<
   ListNotificationHubsRequest,
   ListNotificationHubsResponse,
   ListNotificationHubsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   NotificationHubOverview
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListNotificationHubsRequest,
@@ -3277,7 +3276,7 @@ export const listOrganizationalUnits: API.PaginatedOperationMethod<
   ListOrganizationalUnitsRequest,
   ListOrganizationalUnitsResponse,
   ListOrganizationalUnitsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   OrganizationalUnitId
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationalUnitsRequest,
@@ -3318,7 +3317,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -3351,7 +3350,7 @@ export const registerNotificationHub: API.OperationMethod<
   RegisterNotificationHubRequest,
   RegisterNotificationHubResponse,
   RegisterNotificationHubError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: RegisterNotificationHubRequest,
   output: RegisterNotificationHubResponse,
@@ -3386,7 +3385,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -3418,7 +3417,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -3449,7 +3448,7 @@ export const updateEventRule: API.OperationMethod<
   UpdateEventRuleRequest,
   UpdateEventRuleResponse,
   UpdateEventRuleError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateEventRuleRequest,
   output: UpdateEventRuleResponse,
@@ -3481,7 +3480,7 @@ export const updateNotificationConfiguration: API.OperationMethod<
   UpdateNotificationConfigurationRequest,
   UpdateNotificationConfigurationResponse,
   UpdateNotificationConfigurationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateNotificationConfigurationRequest,
   output: UpdateNotificationConfigurationResponse,

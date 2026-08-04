@@ -7,7 +7,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 const svc = T.AwsApiService({
   sdkId: "OpenSearchServerless",
   serviceShapeName: "OpenSearchServerless",
@@ -2278,7 +2277,7 @@ export const batchGetCollection: API.OperationMethod<
   BatchGetCollectionRequest,
   BatchGetCollectionResponse,
   BatchGetCollectionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: BatchGetCollectionRequest,
   output: BatchGetCollectionResponse,
@@ -2299,7 +2298,7 @@ export const batchGetCollectionGroup: API.OperationMethod<
   BatchGetCollectionGroupRequest,
   BatchGetCollectionGroupResponse,
   BatchGetCollectionGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: BatchGetCollectionGroupRequest,
   output: BatchGetCollectionGroupResponse,
@@ -2320,7 +2319,7 @@ export const batchGetEffectiveLifecyclePolicy: API.OperationMethod<
   BatchGetEffectiveLifecyclePolicyRequest,
   BatchGetEffectiveLifecyclePolicyResponse,
   BatchGetEffectiveLifecyclePolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: BatchGetEffectiveLifecyclePolicyRequest,
   output: BatchGetEffectiveLifecyclePolicyResponse,
@@ -2341,7 +2340,7 @@ export const batchGetLifecyclePolicy: API.OperationMethod<
   BatchGetLifecyclePolicyRequest,
   BatchGetLifecyclePolicyResponse,
   BatchGetLifecyclePolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: BatchGetLifecyclePolicyRequest,
   output: BatchGetLifecyclePolicyResponse,
@@ -2362,7 +2361,7 @@ export const batchGetVpcEndpoint: API.OperationMethod<
   BatchGetVpcEndpointRequest,
   BatchGetVpcEndpointResponse,
   BatchGetVpcEndpointError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: BatchGetVpcEndpointRequest,
   output: BatchGetVpcEndpointResponse,
@@ -2385,7 +2384,7 @@ export const createAccessPolicy: API.OperationMethod<
   CreateAccessPolicyRequest,
   CreateAccessPolicyResponse,
   CreateAccessPolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateAccessPolicyRequest,
   output: CreateAccessPolicyResponse,
@@ -2414,7 +2413,7 @@ export const createCollection: API.OperationMethod<
   CreateCollectionRequest,
   CreateCollectionResponse,
   CreateCollectionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateCollectionRequest,
   output: CreateCollectionResponse,
@@ -2445,7 +2444,7 @@ export const createCollectionGroup: API.OperationMethod<
   CreateCollectionGroupRequest,
   CreateCollectionGroupResponse,
   CreateCollectionGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateCollectionGroupRequest,
   output: CreateCollectionGroupResponse,
@@ -2473,7 +2472,7 @@ export const createIndex: API.OperationMethod<
   CreateIndexRequest,
   CreateIndexResponse,
   CreateIndexError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateIndexRequest,
   output: CreateIndexResponse,
@@ -2501,7 +2500,7 @@ export const createLifecyclePolicy: API.OperationMethod<
   CreateLifecyclePolicyRequest,
   CreateLifecyclePolicyResponse,
   CreateLifecyclePolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateLifecyclePolicyRequest,
   output: CreateLifecyclePolicyResponse,
@@ -2529,7 +2528,7 @@ export const createSecurityConfig: API.OperationMethod<
   CreateSecurityConfigRequest,
   CreateSecurityConfigResponse,
   CreateSecurityConfigError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateSecurityConfigRequest,
   output: CreateSecurityConfigResponse,
@@ -2557,7 +2556,7 @@ export const createSecurityPolicy: API.OperationMethod<
   CreateSecurityPolicyRequest,
   CreateSecurityPolicyResponse,
   CreateSecurityPolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateSecurityPolicyRequest,
   output: CreateSecurityPolicyResponse,
@@ -2585,7 +2584,7 @@ export const createVpcEndpoint: API.OperationMethod<
   CreateVpcEndpointRequest,
   CreateVpcEndpointResponse,
   CreateVpcEndpointError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateVpcEndpointRequest,
   output: CreateVpcEndpointResponse,
@@ -2613,7 +2612,7 @@ export const deleteAccessPolicy: API.OperationMethod<
   DeleteAccessPolicyRequest,
   DeleteAccessPolicyResponse,
   DeleteAccessPolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteAccessPolicyRequest,
   output: DeleteAccessPolicyResponse,
@@ -2641,7 +2640,7 @@ export const deleteCollection: API.OperationMethod<
   DeleteCollectionRequest,
   DeleteCollectionResponse,
   DeleteCollectionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteCollectionRequest,
   output: DeleteCollectionResponse,
@@ -2669,7 +2668,7 @@ export const deleteCollectionGroup: API.OperationMethod<
   DeleteCollectionGroupRequest,
   DeleteCollectionGroupResponse,
   DeleteCollectionGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteCollectionGroupRequest,
   output: DeleteCollectionGroupResponse,
@@ -2696,7 +2695,7 @@ export const deleteIndex: API.OperationMethod<
   DeleteIndexRequest,
   DeleteIndexResponse,
   DeleteIndexError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteIndexRequest,
   output: DeleteIndexResponse,
@@ -2723,7 +2722,7 @@ export const deleteLifecyclePolicy: API.OperationMethod<
   DeleteLifecyclePolicyRequest,
   DeleteLifecyclePolicyResponse,
   DeleteLifecyclePolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteLifecyclePolicyRequest,
   output: DeleteLifecyclePolicyResponse,
@@ -2751,7 +2750,7 @@ export const deleteSecurityConfig: API.OperationMethod<
   DeleteSecurityConfigRequest,
   DeleteSecurityConfigResponse,
   DeleteSecurityConfigError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteSecurityConfigRequest,
   output: DeleteSecurityConfigResponse,
@@ -2779,7 +2778,7 @@ export const deleteSecurityPolicy: API.OperationMethod<
   DeleteSecurityPolicyRequest,
   DeleteSecurityPolicyResponse,
   DeleteSecurityPolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteSecurityPolicyRequest,
   output: DeleteSecurityPolicyResponse,
@@ -2807,7 +2806,7 @@ export const deleteVpcEndpoint: API.OperationMethod<
   DeleteVpcEndpointRequest,
   DeleteVpcEndpointResponse,
   DeleteVpcEndpointError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteVpcEndpointRequest,
   output: DeleteVpcEndpointResponse,
@@ -2834,7 +2833,7 @@ export const getAccessPolicy: API.OperationMethod<
   GetAccessPolicyRequest,
   GetAccessPolicyResponse,
   GetAccessPolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetAccessPolicyRequest,
   output: GetAccessPolicyResponse,
@@ -2859,7 +2858,7 @@ export const getAccountSettings: API.OperationMethod<
   GetAccountSettingsRequest,
   GetAccountSettingsResponse,
   GetAccountSettingsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetAccountSettingsRequest,
   output: GetAccountSettingsResponse,
@@ -2881,7 +2880,7 @@ export const getIndex: API.OperationMethod<
   GetIndexRequest,
   GetIndexResponse,
   GetIndexError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetIndexRequest,
   output: GetIndexResponse,
@@ -2903,7 +2902,7 @@ export const getPoliciesStats: API.OperationMethod<
   GetPoliciesStatsRequest,
   GetPoliciesStatsResponse,
   GetPoliciesStatsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetPoliciesStatsRequest,
   output: GetPoliciesStatsResponse,
@@ -2925,7 +2924,7 @@ export const getSecurityConfig: API.OperationMethod<
   GetSecurityConfigRequest,
   GetSecurityConfigResponse,
   GetSecurityConfigError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetSecurityConfigRequest,
   output: GetSecurityConfigResponse,
@@ -2951,7 +2950,7 @@ export const getSecurityPolicy: API.OperationMethod<
   GetSecurityPolicyRequest,
   GetSecurityPolicyResponse,
   GetSecurityPolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetSecurityPolicyRequest,
   output: GetSecurityPolicyResponse,
@@ -2976,7 +2975,7 @@ export const listAccessPolicies: API.PaginatedOperationMethod<
   ListAccessPoliciesRequest,
   ListAccessPoliciesResponse,
   ListAccessPoliciesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccessPoliciesRequest,
@@ -2999,7 +2998,7 @@ export const listCollectionGroups: API.PaginatedOperationMethod<
   ListCollectionGroupsRequest,
   ListCollectionGroupsResponse,
   ListCollectionGroupsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCollectionGroupsRequest,
@@ -3024,7 +3023,7 @@ export const listCollections: API.PaginatedOperationMethod<
   ListCollectionsRequest,
   ListCollectionsResponse,
   ListCollectionsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCollectionsRequest,
@@ -3047,7 +3046,7 @@ export const listLifecyclePolicies: API.PaginatedOperationMethod<
   ListLifecyclePoliciesRequest,
   ListLifecyclePoliciesResponse,
   ListLifecyclePoliciesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLifecyclePoliciesRequest,
@@ -3070,7 +3069,7 @@ export const listSecurityConfigs: API.PaginatedOperationMethod<
   ListSecurityConfigsRequest,
   ListSecurityConfigsResponse,
   ListSecurityConfigsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSecurityConfigsRequest,
@@ -3093,7 +3092,7 @@ export const listSecurityPolicies: API.PaginatedOperationMethod<
   ListSecurityPoliciesRequest,
   ListSecurityPoliciesResponse,
   ListSecurityPoliciesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSecurityPoliciesRequest,
@@ -3117,7 +3116,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -3142,7 +3141,7 @@ export const listVpcEndpoints: API.PaginatedOperationMethod<
   ListVpcEndpointsRequest,
   ListVpcEndpointsResponse,
   ListVpcEndpointsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListVpcEndpointsRequest,
@@ -3168,7 +3167,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -3197,7 +3196,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -3225,7 +3224,7 @@ export const updateAccessPolicy: API.OperationMethod<
   UpdateAccessPolicyRequest,
   UpdateAccessPolicyResponse,
   UpdateAccessPolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateAccessPolicyRequest,
   output: UpdateAccessPolicyResponse,
@@ -3252,7 +3251,7 @@ export const updateAccountSettings: API.OperationMethod<
   UpdateAccountSettingsRequest,
   UpdateAccountSettingsResponse,
   UpdateAccountSettingsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateAccountSettingsRequest,
   output: UpdateAccountSettingsResponse,
@@ -3278,7 +3277,7 @@ export const updateCollection: API.OperationMethod<
   UpdateCollectionRequest,
   UpdateCollectionResponse,
   UpdateCollectionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateCollectionRequest,
   output: UpdateCollectionResponse,
@@ -3301,7 +3300,7 @@ export const updateCollectionGroup: API.OperationMethod<
   UpdateCollectionGroupRequest,
   UpdateCollectionGroupResponse,
   UpdateCollectionGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateCollectionGroupRequest,
   output: UpdateCollectionGroupResponse,
@@ -3328,7 +3327,7 @@ export const updateIndex: API.OperationMethod<
   UpdateIndexRequest,
   UpdateIndexResponse,
   UpdateIndexError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateIndexRequest,
   output: UpdateIndexResponse,
@@ -3356,7 +3355,7 @@ export const updateLifecyclePolicy: API.OperationMethod<
   UpdateLifecyclePolicyRequest,
   UpdateLifecyclePolicyResponse,
   UpdateLifecyclePolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateLifecyclePolicyRequest,
   output: UpdateLifecyclePolicyResponse,
@@ -3385,7 +3384,7 @@ export const updateSecurityConfig: API.OperationMethod<
   UpdateSecurityConfigRequest,
   UpdateSecurityConfigResponse,
   UpdateSecurityConfigError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateSecurityConfigRequest,
   output: UpdateSecurityConfigResponse,
@@ -3414,7 +3413,7 @@ export const updateSecurityPolicy: API.OperationMethod<
   UpdateSecurityPolicyRequest,
   UpdateSecurityPolicyResponse,
   UpdateSecurityPolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateSecurityPolicyRequest,
   output: UpdateSecurityPolicyResponse,
@@ -3442,7 +3441,7 @@ export const updateVpcEndpoint: API.OperationMethod<
   UpdateVpcEndpointRequest,
   UpdateVpcEndpointResponse,
   UpdateVpcEndpointError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateVpcEndpointRequest,
   output: UpdateVpcEndpointResponse,

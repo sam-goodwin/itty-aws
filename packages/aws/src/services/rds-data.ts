@@ -7,7 +7,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 const svc = T.AwsApiService({
   sdkId: "RDS Data",
   serviceShapeName: "RdsDataService",
@@ -893,7 +892,7 @@ export const batchExecuteStatement: API.OperationMethod<
   BatchExecuteStatementRequest,
   BatchExecuteStatementResponse,
   BatchExecuteStatementError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: BatchExecuteStatementRequest,
   output: BatchExecuteStatementResponse,
@@ -949,7 +948,7 @@ export const beginTransaction: API.OperationMethod<
   BeginTransactionRequest,
   BeginTransactionResponse,
   BeginTransactionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: BeginTransactionRequest,
   output: BeginTransactionResponse,
@@ -999,7 +998,7 @@ export const commitTransaction: API.OperationMethod<
   CommitTransactionRequest,
   CommitTransactionResponse,
   CommitTransactionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CommitTransactionRequest,
   output: CommitTransactionResponse,
@@ -1041,7 +1040,7 @@ export const executeSql: API.OperationMethod<
   ExecuteSqlRequest,
   ExecuteSqlResponse,
   ExecuteSqlError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ExecuteSqlRequest,
   output: ExecuteSqlResponse,
@@ -1086,7 +1085,7 @@ export const executeStatement: API.OperationMethod<
   ExecuteStatementRequest,
   ExecuteStatementResponse,
   ExecuteStatementError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ExecuteStatementRequest,
   output: ExecuteStatementResponse,
@@ -1137,7 +1136,7 @@ export const rollbackTransaction: API.OperationMethod<
   RollbackTransactionRequest,
   RollbackTransactionResponse,
   RollbackTransactionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: RollbackTransactionRequest,
   output: RollbackTransactionResponse,

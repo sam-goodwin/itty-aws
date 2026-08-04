@@ -8,7 +8,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 import { SensitiveString } from "../sensitive.ts";
 const ns = T.XmlNamespace("http://ecr-public.amazonaws.com/doc/2020-12-02/");
 const svc = T.AwsApiService({
@@ -1332,7 +1331,7 @@ export const batchCheckLayerAvailability: API.OperationMethod<
   BatchCheckLayerAvailabilityRequest,
   BatchCheckLayerAvailabilityResponse,
   BatchCheckLayerAvailabilityError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: BatchCheckLayerAvailabilityRequest,
   output: BatchCheckLayerAvailabilityResponse,
@@ -1369,7 +1368,7 @@ export const batchDeleteImage: API.OperationMethod<
   BatchDeleteImageRequest,
   BatchDeleteImageResponse,
   BatchDeleteImageError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: BatchDeleteImageRequest,
   output: BatchDeleteImageResponse,
@@ -1410,7 +1409,7 @@ export const completeLayerUpload: API.OperationMethod<
   CompleteLayerUploadRequest,
   CompleteLayerUploadResponse,
   CompleteLayerUploadError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CompleteLayerUploadRequest,
   output: CompleteLayerUploadResponse,
@@ -1448,7 +1447,7 @@ export const createRepository: API.OperationMethod<
   CreateRepositoryRequest,
   CreateRepositoryResponse,
   CreateRepositoryError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateRepositoryRequest,
   output: CreateRepositoryResponse,
@@ -1482,7 +1481,7 @@ export const deleteRepository: API.OperationMethod<
   DeleteRepositoryRequest,
   DeleteRepositoryResponse,
   DeleteRepositoryError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteRepositoryRequest,
   output: DeleteRepositoryResponse,
@@ -1512,7 +1511,7 @@ export const deleteRepositoryPolicy: API.OperationMethod<
   DeleteRepositoryPolicyRequest,
   DeleteRepositoryPolicyResponse,
   DeleteRepositoryPolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteRepositoryPolicyRequest,
   output: DeleteRepositoryPolicyResponse,
@@ -1548,7 +1547,7 @@ export const describeImages: API.PaginatedOperationMethod<
   DescribeImagesRequest,
   DescribeImagesResponse,
   DescribeImagesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ImageDetail
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeImagesRequest,
@@ -1584,7 +1583,7 @@ export const describeImageTags: API.PaginatedOperationMethod<
   DescribeImageTagsRequest,
   DescribeImageTagsResponse,
   DescribeImageTagsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ImageTagDetail
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeImageTagsRequest,
@@ -1618,7 +1617,7 @@ export const describeRegistries: API.PaginatedOperationMethod<
   DescribeRegistriesRequest,
   DescribeRegistriesResponse,
   DescribeRegistriesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   Registry
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeRegistriesRequest,
@@ -1652,7 +1651,7 @@ export const describeRepositories: API.PaginatedOperationMethod<
   DescribeRepositoriesRequest,
   DescribeRepositoriesResponse,
   DescribeRepositoriesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   Repository
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeRepositoriesRequest,
@@ -1690,7 +1689,7 @@ export const getAuthorizationToken: API.OperationMethod<
   GetAuthorizationTokenRequest,
   GetAuthorizationTokenResponse,
   GetAuthorizationTokenError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetAuthorizationTokenRequest,
   output: GetAuthorizationTokenResponse,
@@ -1715,7 +1714,7 @@ export const getRegistryCatalogData: API.OperationMethod<
   GetRegistryCatalogDataRequest,
   GetRegistryCatalogDataResponse,
   GetRegistryCatalogDataError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetRegistryCatalogDataRequest,
   output: GetRegistryCatalogDataResponse,
@@ -1740,7 +1739,7 @@ export const getRepositoryCatalogData: API.OperationMethod<
   GetRepositoryCatalogDataRequest,
   GetRepositoryCatalogDataResponse,
   GetRepositoryCatalogDataError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetRepositoryCatalogDataRequest,
   output: GetRepositoryCatalogDataResponse,
@@ -1770,7 +1769,7 @@ export const getRepositoryPolicy: API.OperationMethod<
   GetRepositoryPolicyRequest,
   GetRepositoryPolicyResponse,
   GetRepositoryPolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetRepositoryPolicyRequest,
   output: GetRepositoryPolicyResponse,
@@ -1806,7 +1805,7 @@ export const initiateLayerUpload: API.OperationMethod<
   InitiateLayerUploadRequest,
   InitiateLayerUploadResponse,
   InitiateLayerUploadError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: InitiateLayerUploadRequest,
   output: InitiateLayerUploadResponse,
@@ -1835,7 +1834,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -1876,7 +1875,7 @@ export const putImage: API.OperationMethod<
   PutImageRequest,
   PutImageResponse,
   PutImageError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PutImageRequest,
   output: PutImageResponse,
@@ -1910,7 +1909,7 @@ export const putRegistryCatalogData: API.OperationMethod<
   PutRegistryCatalogDataRequest,
   PutRegistryCatalogDataResponse,
   PutRegistryCatalogDataError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PutRegistryCatalogDataRequest,
   output: PutRegistryCatalogDataResponse,
@@ -1937,7 +1936,7 @@ export const putRepositoryCatalogData: API.OperationMethod<
   PutRepositoryCatalogDataRequest,
   PutRepositoryCatalogDataResponse,
   PutRepositoryCatalogDataError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PutRepositoryCatalogDataRequest,
   output: PutRepositoryCatalogDataResponse,
@@ -1967,7 +1966,7 @@ export const setRepositoryPolicy: API.OperationMethod<
   SetRepositoryPolicyRequest,
   SetRepositoryPolicyResponse,
   SetRepositoryPolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: SetRepositoryPolicyRequest,
   output: SetRepositoryPolicyResponse,
@@ -2000,7 +1999,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -2032,7 +2031,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -2072,7 +2071,7 @@ export const uploadLayerPart: API.OperationMethod<
   UploadLayerPartRequest,
   UploadLayerPartResponse,
   UploadLayerPartError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UploadLayerPartRequest,
   output: UploadLayerPartResponse,

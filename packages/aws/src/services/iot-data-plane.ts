@@ -7,7 +7,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 const svc = T.AwsApiService({
   sdkId: "IoT Data Plane",
   serviceShapeName: "IotMoonrakerService",
@@ -700,7 +699,7 @@ export const deleteConnection: API.OperationMethod<
   DeleteConnectionRequest,
   DeleteConnectionResponse,
   DeleteConnectionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteConnectionRequest,
   output: DeleteConnectionResponse,
@@ -738,7 +737,7 @@ export const deleteThingShadow: API.OperationMethod<
   DeleteThingShadowRequest,
   DeleteThingShadowResponse,
   DeleteThingShadowError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteThingShadowRequest,
   output: DeleteThingShadowResponse,
@@ -774,7 +773,7 @@ export const getConnection: API.OperationMethod<
   GetConnectionRequest,
   GetConnectionResponse,
   GetConnectionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetConnectionRequest,
   output: GetConnectionResponse,
@@ -816,7 +815,7 @@ export const getRetainedMessage: API.OperationMethod<
   GetRetainedMessageRequest,
   GetRetainedMessageResponse,
   GetRetainedMessageError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetRetainedMessageRequest,
   output: GetRetainedMessageResponse,
@@ -858,7 +857,7 @@ export const getThingShadow: API.OperationMethod<
   GetThingShadowRequest,
   GetThingShadowResponse,
   GetThingShadowError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetThingShadowRequest,
   output: GetThingShadowResponse,
@@ -897,7 +896,7 @@ export const listNamedShadowsForThing: API.OperationMethod<
   ListNamedShadowsForThingRequest,
   ListNamedShadowsForThingResponse,
   ListNamedShadowsForThingError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListNamedShadowsForThingRequest,
   output: ListNamedShadowsForThingResponse,
@@ -945,7 +944,7 @@ export const listRetainedMessages: API.PaginatedOperationMethod<
   ListRetainedMessagesRequest,
   ListRetainedMessagesResponse,
   ListRetainedMessagesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   RetainedMessageSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRetainedMessagesRequest,
@@ -986,7 +985,7 @@ export const listSubscriptions: API.PaginatedOperationMethod<
   ListSubscriptionsRequest,
   ListSubscriptionsResponse,
   ListSubscriptionsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   SubscriptionSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSubscriptionsRequest,
@@ -1033,7 +1032,7 @@ export const publish: API.OperationMethod<
   PublishRequest,
   PublishResponse,
   PublishError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PublishRequest,
   output: PublishResponse,
@@ -1075,7 +1074,7 @@ export const sendDirectMessage: API.OperationMethod<
   SendDirectMessageRequest,
   SendDirectMessageResponse,
   SendDirectMessageError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: SendDirectMessageRequest,
   output: SendDirectMessageResponse,
@@ -1118,7 +1117,7 @@ export const updateThingShadow: API.OperationMethod<
   UpdateThingShadowRequest,
   UpdateThingShadowResponse,
   UpdateThingShadowError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateThingShadowRequest,
   output: UpdateThingShadowResponse,

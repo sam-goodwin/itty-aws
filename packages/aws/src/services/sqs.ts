@@ -7,7 +7,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 const svc = T.AwsApiService({ sdkId: "SQS", serviceShapeName: "AmazonSQS" });
 const auth = T.AwsAuthSigv4({ name: "sqs" });
 const ver = T.ServiceVersion("2012-11-05");
@@ -1389,7 +1388,7 @@ export const addPermission: API.OperationMethod<
   AddPermissionRequest,
   AddPermissionResponse,
   AddPermissionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: AddPermissionRequest,
   output: AddPermissionResponse,
@@ -1433,7 +1432,7 @@ export const cancelMessageMoveTask: API.OperationMethod<
   CancelMessageMoveTaskRequest,
   CancelMessageMoveTaskResult,
   CancelMessageMoveTaskError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CancelMessageMoveTaskRequest,
   output: CancelMessageMoveTaskResult,
@@ -1509,7 +1508,7 @@ export const changeMessageVisibility: API.OperationMethod<
   ChangeMessageVisibilityRequest,
   ChangeMessageVisibilityResponse,
   ChangeMessageVisibilityError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ChangeMessageVisibilityRequest,
   output: ChangeMessageVisibilityResponse,
@@ -1554,7 +1553,7 @@ export const changeMessageVisibilityBatch: API.OperationMethod<
   ChangeMessageVisibilityBatchRequest,
   ChangeMessageVisibilityBatchResult,
   ChangeMessageVisibilityBatchError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ChangeMessageVisibilityBatchRequest,
   output: ChangeMessageVisibilityBatchResult,
@@ -1638,7 +1637,7 @@ export const createQueue: API.OperationMethod<
   CreateQueueRequest,
   CreateQueueResult,
   CreateQueueError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateQueueRequest,
   output: CreateQueueResult,
@@ -1695,7 +1694,7 @@ export const deleteMessage: API.OperationMethod<
   DeleteMessageRequest,
   DeleteMessageResponse,
   DeleteMessageError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteMessageRequest,
   output: DeleteMessageResponse,
@@ -1736,7 +1735,7 @@ export const deleteMessageBatch: API.OperationMethod<
   DeleteMessageBatchRequest,
   DeleteMessageBatchResult,
   DeleteMessageBatchError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteMessageBatchRequest,
   output: DeleteMessageBatchResult,
@@ -1790,7 +1789,7 @@ export const deleteQueue: API.OperationMethod<
   DeleteQueueRequest,
   DeleteQueueResponse,
   DeleteQueueError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteQueueRequest,
   output: DeleteQueueResponse,
@@ -1823,7 +1822,7 @@ export const getQueueAttributes: API.OperationMethod<
   GetQueueAttributesRequest,
   GetQueueAttributesResult,
   GetQueueAttributesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetQueueAttributesRequest,
   output: GetQueueAttributesResult,
@@ -1865,7 +1864,7 @@ export const getQueueUrl: API.OperationMethod<
   GetQueueUrlRequest,
   GetQueueUrlResult,
   GetQueueUrlError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetQueueUrlRequest,
   output: GetQueueUrlResult,
@@ -1907,7 +1906,7 @@ export const listDeadLetterSourceQueues: API.PaginatedOperationMethod<
   ListDeadLetterSourceQueuesRequest,
   ListDeadLetterSourceQueuesResult,
   ListDeadLetterSourceQueuesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   string
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDeadLetterSourceQueuesRequest,
@@ -1955,7 +1954,7 @@ export const listMessageMoveTasks: API.OperationMethod<
   ListMessageMoveTasksRequest,
   ListMessageMoveTasksResult,
   ListMessageMoveTasksError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListMessageMoveTasksRequest,
   output: ListMessageMoveTasksResult,
@@ -2001,7 +2000,7 @@ export const listQueues: API.PaginatedOperationMethod<
   ListQueuesRequest,
   ListQueuesResult,
   ListQueuesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   string
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListQueuesRequest,
@@ -2043,7 +2042,7 @@ export const listQueueTags: API.OperationMethod<
   ListQueueTagsRequest,
   ListQueueTagsResult,
   ListQueueTagsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListQueueTagsRequest,
   output: ListQueueTagsResult,
@@ -2088,7 +2087,7 @@ export const purgeQueue: API.OperationMethod<
   PurgeQueueRequest,
   PurgeQueueResponse,
   PurgeQueueError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PurgeQueueRequest,
   output: PurgeQueueResponse,
@@ -2166,7 +2165,7 @@ export const receiveMessage: API.OperationMethod<
   ReceiveMessageRequest,
   ReceiveMessageResult,
   ReceiveMessageError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ReceiveMessageRequest,
   output: ReceiveMessageResult,
@@ -2215,7 +2214,7 @@ export const removePermission: API.OperationMethod<
   RemovePermissionRequest,
   RemovePermissionResponse,
   RemovePermissionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: RemovePermissionRequest,
   output: RemovePermissionResponse,
@@ -2262,7 +2261,7 @@ export const sendMessage: API.OperationMethod<
   SendMessageRequest,
   SendMessageResult,
   SendMessageError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: SendMessageRequest,
   output: SendMessageResult,
@@ -2338,7 +2337,7 @@ export const sendMessageBatch: API.OperationMethod<
   SendMessageBatchRequest,
   SendMessageBatchResult,
   SendMessageBatchError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: SendMessageBatchRequest,
   output: SendMessageBatchResult,
@@ -2403,7 +2402,7 @@ export const setQueueAttributes: API.OperationMethod<
   SetQueueAttributesRequest,
   SetQueueAttributesResponse,
   SetQueueAttributesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: SetQueueAttributesRequest,
   output: SetQueueAttributesResponse,
@@ -2456,7 +2455,7 @@ export const startMessageMoveTask: API.OperationMethod<
   StartMessageMoveTaskRequest,
   StartMessageMoveTaskResult,
   StartMessageMoveTaskError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartMessageMoveTaskRequest,
   output: StartMessageMoveTaskResult,
@@ -2508,7 +2507,7 @@ export const tagQueue: API.OperationMethod<
   TagQueueRequest,
   TagQueueResponse,
   TagQueueError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: TagQueueRequest,
   output: TagQueueResponse,
@@ -2543,7 +2542,7 @@ export const untagQueue: API.OperationMethod<
   UntagQueueRequest,
   UntagQueueResponse,
   UntagQueueError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UntagQueueRequest,
   output: UntagQueueResponse,

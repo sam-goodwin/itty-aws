@@ -7,7 +7,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 const ns = T.XmlNamespace("http://autoscaling.amazonaws.com/doc/2011-01-01/");
 const svc = T.AwsApiService({
   sdkId: "Auto Scaling",
@@ -4719,7 +4718,7 @@ export const attachInstances: API.OperationMethod<
   AttachInstancesQuery,
   AttachInstancesResponse,
   AttachInstancesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: AttachInstancesQuery,
   output: AttachInstancesResponse,
@@ -4760,7 +4759,7 @@ export const attachLoadBalancers: API.OperationMethod<
   AttachLoadBalancersType,
   AttachLoadBalancersResultType,
   AttachLoadBalancersError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: AttachLoadBalancersType,
   output: AttachLoadBalancersResultType,
@@ -4814,7 +4813,7 @@ export const attachLoadBalancerTargetGroups: API.OperationMethod<
   AttachLoadBalancerTargetGroupsType,
   AttachLoadBalancerTargetGroupsResultType,
   AttachLoadBalancerTargetGroupsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: AttachLoadBalancerTargetGroupsType,
   output: AttachLoadBalancerTargetGroupsResultType,
@@ -4860,7 +4859,7 @@ export const attachTrafficSources: API.OperationMethod<
   AttachTrafficSourcesType,
   AttachTrafficSourcesResultType,
   AttachTrafficSourcesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: AttachTrafficSourcesType,
   output: AttachTrafficSourcesResultType,
@@ -4884,7 +4883,7 @@ export const batchDeleteScheduledAction: API.OperationMethod<
   BatchDeleteScheduledActionType,
   BatchDeleteScheduledActionAnswer,
   BatchDeleteScheduledActionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: BatchDeleteScheduledActionType,
   output: BatchDeleteScheduledActionAnswer,
@@ -4906,7 +4905,7 @@ export const batchPutScheduledUpdateGroupAction: API.OperationMethod<
   BatchPutScheduledUpdateGroupActionType,
   BatchPutScheduledUpdateGroupActionAnswer,
   BatchPutScheduledUpdateGroupActionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: BatchPutScheduledUpdateGroupActionType,
   output: BatchPutScheduledUpdateGroupActionAnswer,
@@ -4937,7 +4936,7 @@ export const cancelInstanceRefresh: API.OperationMethod<
   CancelInstanceRefreshType,
   CancelInstanceRefreshAnswer,
   CancelInstanceRefreshError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CancelInstanceRefreshType,
   output: CancelInstanceRefreshAnswer,
@@ -4990,7 +4989,7 @@ export const completeLifecycleAction: API.OperationMethod<
   CompleteLifecycleActionType,
   CompleteLifecycleActionAnswer,
   CompleteLifecycleActionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CompleteLifecycleActionType,
   output: CompleteLifecycleActionAnswer,
@@ -5029,7 +5028,7 @@ export const createAutoScalingGroup: API.OperationMethod<
   CreateAutoScalingGroupType,
   CreateAutoScalingGroupResponse,
   CreateAutoScalingGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateAutoScalingGroupType,
   output: CreateAutoScalingGroupResponse,
@@ -5069,7 +5068,7 @@ export const createLaunchConfiguration: API.OperationMethod<
   CreateLaunchConfigurationType,
   CreateLaunchConfigurationResponse,
   CreateLaunchConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateLaunchConfigurationType,
   output: CreateLaunchConfigurationResponse,
@@ -5098,7 +5097,7 @@ export const createOrUpdateTags: API.OperationMethod<
   CreateOrUpdateTagsType,
   CreateOrUpdateTagsResponse,
   CreateOrUpdateTagsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateOrUpdateTagsType,
   output: CreateOrUpdateTagsResponse,
@@ -5146,7 +5145,7 @@ export const deleteAutoScalingGroup: API.OperationMethod<
   DeleteAutoScalingGroupType,
   DeleteAutoScalingGroupResponse,
   DeleteAutoScalingGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteAutoScalingGroupType,
   output: DeleteAutoScalingGroupResponse,
@@ -5174,7 +5173,7 @@ export const deleteLaunchConfiguration: API.OperationMethod<
   LaunchConfigurationNameType,
   DeleteLaunchConfigurationResponse,
   DeleteLaunchConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: LaunchConfigurationNameType,
   output: DeleteLaunchConfigurationResponse,
@@ -5199,7 +5198,7 @@ export const deleteLifecycleHook: API.OperationMethod<
   DeleteLifecycleHookType,
   DeleteLifecycleHookAnswer,
   DeleteLifecycleHookError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteLifecycleHookType,
   output: DeleteLifecycleHookAnswer,
@@ -5219,7 +5218,7 @@ export const deleteNotificationConfiguration: API.OperationMethod<
   DeleteNotificationConfigurationType,
   DeleteNotificationConfigurationResponse,
   DeleteNotificationConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteNotificationConfigurationType,
   output: DeleteNotificationConfigurationResponse,
@@ -5247,7 +5246,7 @@ export const deletePolicy: API.OperationMethod<
   DeletePolicyType,
   DeletePolicyResponse,
   DeletePolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeletePolicyType,
   output: DeletePolicyResponse,
@@ -5268,7 +5267,7 @@ export const deleteScheduledAction: API.OperationMethod<
   DeleteScheduledActionType,
   DeleteScheduledActionResponse,
   DeleteScheduledActionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteScheduledActionType,
   output: DeleteScheduledActionResponse,
@@ -5289,7 +5288,7 @@ export const deleteTags: API.OperationMethod<
   DeleteTagsType,
   DeleteTagsResponse,
   DeleteTagsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteTagsType,
   output: DeleteTagsResponse,
@@ -5315,7 +5314,7 @@ export const deleteWarmPool: API.OperationMethod<
   DeleteWarmPoolType,
   DeleteWarmPoolAnswer,
   DeleteWarmPoolError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteWarmPoolType,
   output: DeleteWarmPoolAnswer,
@@ -5343,7 +5342,7 @@ export const describeAccountLimits: API.OperationMethod<
   DescribeAccountLimitsRequest,
   DescribeAccountLimitsAnswer,
   DescribeAccountLimitsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeAccountLimitsRequest,
   output: DescribeAccountLimitsAnswer,
@@ -5372,7 +5371,7 @@ export const describeAdjustmentTypes: API.OperationMethod<
   DescribeAdjustmentTypesRequest,
   DescribeAdjustmentTypesAnswer,
   DescribeAdjustmentTypesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeAdjustmentTypesRequest,
   output: DescribeAdjustmentTypesAnswer,
@@ -5402,7 +5401,7 @@ export const describeAutoScalingGroups: API.PaginatedOperationMethod<
   AutoScalingGroupNamesType,
   AutoScalingGroupsType,
   DescribeAutoScalingGroupsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   AutoScalingGroup
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: AutoScalingGroupNamesType,
@@ -5430,7 +5429,7 @@ export const describeAutoScalingInstances: API.PaginatedOperationMethod<
   DescribeAutoScalingInstancesType,
   AutoScalingInstancesType,
   DescribeAutoScalingInstancesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   AutoScalingInstanceDetails
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeAutoScalingInstancesType,
@@ -5457,7 +5456,7 @@ export const describeAutoScalingNotificationTypes: API.OperationMethod<
   DescribeAutoScalingNotificationTypesRequest,
   DescribeAutoScalingNotificationTypesAnswer,
   DescribeAutoScalingNotificationTypesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeAutoScalingNotificationTypesRequest,
   output: DescribeAutoScalingNotificationTypesAnswer,
@@ -5490,7 +5489,7 @@ export const describeInstanceRefreshes: API.PaginatedOperationMethod<
   DescribeInstanceRefreshesType,
   DescribeInstanceRefreshesAnswer,
   DescribeInstanceRefreshesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeInstanceRefreshesType,
@@ -5517,7 +5516,7 @@ export const describeLaunchConfigurations: API.PaginatedOperationMethod<
   LaunchConfigurationNamesType,
   LaunchConfigurationsType,
   DescribeLaunchConfigurationsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   LaunchConfiguration
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: LaunchConfigurationNamesType,
@@ -5545,7 +5544,7 @@ export const describeLifecycleHooks: API.OperationMethod<
   DescribeLifecycleHooksType,
   DescribeLifecycleHooksAnswer,
   DescribeLifecycleHooksError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeLifecycleHooksType,
   output: DescribeLifecycleHooksAnswer,
@@ -5571,7 +5570,7 @@ export const describeLifecycleHookTypes: API.OperationMethod<
   DescribeLifecycleHookTypesRequest,
   DescribeLifecycleHookTypesAnswer,
   DescribeLifecycleHookTypesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeLifecycleHookTypesRequest,
   output: DescribeLifecycleHookTypesAnswer,
@@ -5625,7 +5624,7 @@ export const describeLoadBalancers: API.PaginatedOperationMethod<
   DescribeLoadBalancersRequest,
   DescribeLoadBalancersResponse,
   DescribeLoadBalancersError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeLoadBalancersRequest,
@@ -5685,7 +5684,7 @@ export const describeLoadBalancerTargetGroups: API.PaginatedOperationMethod<
   DescribeLoadBalancerTargetGroupsRequest,
   DescribeLoadBalancerTargetGroupsResponse,
   DescribeLoadBalancerTargetGroupsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeLoadBalancerTargetGroupsRequest,
@@ -5711,7 +5710,7 @@ export const describeMetricCollectionTypes: API.OperationMethod<
   DescribeMetricCollectionTypesRequest,
   DescribeMetricCollectionTypesAnswer,
   DescribeMetricCollectionTypesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeMetricCollectionTypesRequest,
   output: DescribeMetricCollectionTypesAnswer,
@@ -5733,7 +5732,7 @@ export const describeNotificationConfigurations: API.PaginatedOperationMethod<
   DescribeNotificationConfigurationsType,
   DescribeNotificationConfigurationsAnswer,
   DescribeNotificationConfigurationsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   NotificationConfiguration
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeNotificationConfigurationsType,
@@ -5762,7 +5761,7 @@ export const describePolicies: API.PaginatedOperationMethod<
   DescribePoliciesType,
   PoliciesType,
   DescribePoliciesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ScalingPolicy
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribePoliciesType,
@@ -5800,7 +5799,7 @@ export const describeScalingActivities: API.PaginatedOperationMethod<
   DescribeScalingActivitiesType,
   ActivitiesType,
   DescribeScalingActivitiesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   Activity
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeScalingActivitiesType,
@@ -5828,7 +5827,7 @@ export const describeScalingProcessTypes: API.OperationMethod<
   DescribeScalingProcessTypesRequest,
   ProcessesType,
   DescribeScalingProcessTypesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeScalingProcessTypesRequest,
   output: ProcessesType,
@@ -5854,7 +5853,7 @@ export const describeScheduledActions: API.PaginatedOperationMethod<
   DescribeScheduledActionsType,
   ScheduledActionsType,
   DescribeScheduledActionsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ScheduledUpdateGroupAction
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeScheduledActionsType,
@@ -5893,7 +5892,7 @@ export const describeTags: API.PaginatedOperationMethod<
   DescribeTagsType,
   TagsType,
   DescribeTagsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   TagDescription
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeTagsType,
@@ -5924,7 +5923,7 @@ export const describeTerminationPolicyTypes: API.OperationMethod<
   DescribeTerminationPolicyTypesRequest,
   DescribeTerminationPolicyTypesAnswer,
   DescribeTerminationPolicyTypesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeTerminationPolicyTypesRequest,
   output: DescribeTerminationPolicyTypesAnswer,
@@ -5951,7 +5950,7 @@ export const describeTrafficSources: API.PaginatedOperationMethod<
   DescribeTrafficSourcesRequest,
   DescribeTrafficSourcesResponse,
   DescribeTrafficSourcesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeTrafficSourcesRequest,
@@ -5982,7 +5981,7 @@ export const describeWarmPool: API.PaginatedOperationMethod<
   DescribeWarmPoolType,
   DescribeWarmPoolAnswer,
   DescribeWarmPoolError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   Instance
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeWarmPoolType,
@@ -6020,7 +6019,7 @@ export const detachInstances: API.OperationMethod<
   DetachInstancesQuery,
   DetachInstancesAnswer,
   DetachInstancesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DetachInstancesQuery,
   output: DetachInstancesAnswer,
@@ -6053,7 +6052,7 @@ export const detachLoadBalancers: API.OperationMethod<
   DetachLoadBalancersType,
   DetachLoadBalancersResultType,
   DetachLoadBalancersError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DetachLoadBalancersType,
   output: DetachLoadBalancersResultType,
@@ -6090,7 +6089,7 @@ export const detachLoadBalancerTargetGroups: API.OperationMethod<
   DetachLoadBalancerTargetGroupsType,
   DetachLoadBalancerTargetGroupsResultType,
   DetachLoadBalancerTargetGroupsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DetachLoadBalancerTargetGroupsType,
   output: DetachLoadBalancerTargetGroupsResultType,
@@ -6114,7 +6113,7 @@ export const detachTrafficSources: API.OperationMethod<
   DetachTrafficSourcesType,
   DetachTrafficSourcesResultType,
   DetachTrafficSourcesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DetachTrafficSourcesType,
   output: DetachTrafficSourcesResultType,
@@ -6134,7 +6133,7 @@ export const disableMetricsCollection: API.OperationMethod<
   DisableMetricsCollectionQuery,
   DisableMetricsCollectionResponse,
   DisableMetricsCollectionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DisableMetricsCollectionQuery,
   output: DisableMetricsCollectionResponse,
@@ -6160,7 +6159,7 @@ export const enableMetricsCollection: API.OperationMethod<
   EnableMetricsCollectionQuery,
   EnableMetricsCollectionResponse,
   EnableMetricsCollectionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: EnableMetricsCollectionQuery,
   output: EnableMetricsCollectionResponse,
@@ -6190,7 +6189,7 @@ export const enterStandby: API.OperationMethod<
   EnterStandbyQuery,
   EnterStandbyAnswer,
   EnterStandbyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: EnterStandbyQuery,
   output: EnterStandbyAnswer,
@@ -6212,7 +6211,7 @@ export const executePolicy: API.OperationMethod<
   ExecutePolicyType,
   ExecutePolicyResponse,
   ExecutePolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ExecutePolicyType,
   output: ExecutePolicyResponse,
@@ -6237,7 +6236,7 @@ export const exitStandby: API.OperationMethod<
   ExitStandbyQuery,
   ExitStandbyAnswer,
   ExitStandbyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ExitStandbyQuery,
   output: ExitStandbyAnswer,
@@ -6268,7 +6267,7 @@ export const getPredictiveScalingForecast: API.OperationMethod<
   GetPredictiveScalingForecastType,
   GetPredictiveScalingForecastAnswer,
   GetPredictiveScalingForecastError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetPredictiveScalingForecastType,
   output: GetPredictiveScalingForecastAnswer,
@@ -6290,7 +6289,7 @@ export const launchInstances: API.OperationMethod<
   LaunchInstancesRequest,
   LaunchInstancesResult,
   LaunchInstancesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: LaunchInstancesRequest,
   output: LaunchInstancesResult,
@@ -6350,7 +6349,7 @@ export const putLifecycleHook: API.OperationMethod<
   PutLifecycleHookType,
   PutLifecycleHookAnswer,
   PutLifecycleHookError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PutLifecycleHookType,
   output: PutLifecycleHookAnswer,
@@ -6387,7 +6386,7 @@ export const putNotificationConfiguration: API.OperationMethod<
   PutNotificationConfigurationType,
   PutNotificationConfigurationResponse,
   PutNotificationConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PutNotificationConfigurationType,
   output: PutNotificationConfigurationResponse,
@@ -6426,7 +6425,7 @@ export const putScalingPolicy: API.OperationMethod<
   PutScalingPolicyType,
   PolicyARNType,
   PutScalingPolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PutScalingPolicyType,
   output: PolicyARNType,
@@ -6464,7 +6463,7 @@ export const putScheduledUpdateGroupAction: API.OperationMethod<
   PutScheduledUpdateGroupActionType,
   PutScheduledUpdateGroupActionResponse,
   PutScheduledUpdateGroupActionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PutScheduledUpdateGroupActionType,
   output: PutScheduledUpdateGroupActionResponse,
@@ -6503,7 +6502,7 @@ export const putWarmPool: API.OperationMethod<
   PutWarmPoolType,
   PutWarmPoolAnswer,
   PutWarmPoolError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PutWarmPoolType,
   output: PutWarmPoolAnswer,
@@ -6556,7 +6555,7 @@ export const recordLifecycleActionHeartbeat: API.OperationMethod<
   RecordLifecycleActionHeartbeatType,
   RecordLifecycleActionHeartbeatAnswer,
   RecordLifecycleActionHeartbeatError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: RecordLifecycleActionHeartbeatType,
   output: RecordLifecycleActionHeartbeatAnswer,
@@ -6581,7 +6580,7 @@ export const resumeProcesses: API.OperationMethod<
   ScalingProcessQuery,
   ResumeProcessesResponse,
   ResumeProcessesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ScalingProcessQuery,
   output: ResumeProcessesResponse,
@@ -6625,7 +6624,7 @@ export const rollbackInstanceRefresh: API.OperationMethod<
   RollbackInstanceRefreshType,
   RollbackInstanceRefreshAnswer,
   RollbackInstanceRefreshError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: RollbackInstanceRefreshType,
   output: RollbackInstanceRefreshAnswer,
@@ -6658,7 +6657,7 @@ export const setDesiredCapacity: API.OperationMethod<
   SetDesiredCapacityType,
   SetDesiredCapacityResponse,
   SetDesiredCapacityError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: SetDesiredCapacityType,
   output: SetDesiredCapacityResponse,
@@ -6680,7 +6679,7 @@ export const setInstanceHealth: API.OperationMethod<
   SetInstanceHealthQuery,
   SetInstanceHealthResponse,
   SetInstanceHealthError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: SetInstanceHealthQuery,
   output: SetInstanceHealthResponse,
@@ -6709,7 +6708,7 @@ export const setInstanceProtection: API.OperationMethod<
   SetInstanceProtectionQuery,
   SetInstanceProtectionAnswer,
   SetInstanceProtectionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: SetInstanceProtectionQuery,
   output: SetInstanceProtectionAnswer,
@@ -6757,7 +6756,7 @@ export const startInstanceRefresh: API.OperationMethod<
   StartInstanceRefreshType,
   StartInstanceRefreshAnswer,
   StartInstanceRefreshError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartInstanceRefreshType,
   output: StartInstanceRefreshAnswer,
@@ -6790,7 +6789,7 @@ export const suspendProcesses: API.OperationMethod<
   ScalingProcessQuery,
   SuspendProcessesResponse,
   SuspendProcessesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ScalingProcessQuery,
   output: SuspendProcessesResponse,
@@ -6826,7 +6825,7 @@ export const terminateInstanceInAutoScalingGroup: API.OperationMethod<
   TerminateInstanceInAutoScalingGroupType,
   ActivityType,
   TerminateInstanceInAutoScalingGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: TerminateInstanceInAutoScalingGroupType,
   output: ActivityType,
@@ -6888,7 +6887,7 @@ export const updateAutoScalingGroup: API.OperationMethod<
   UpdateAutoScalingGroupType,
   UpdateAutoScalingGroupResponse,
   UpdateAutoScalingGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateAutoScalingGroupType,
   output: UpdateAutoScalingGroupResponse,

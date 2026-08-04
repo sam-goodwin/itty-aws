@@ -6,7 +6,6 @@ import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region as Rgn } from "../region.ts";
 const svc = T.AwsApiService({
   sdkId: "Health",
   serviceShapeName: "AWSHealth_20160804",
@@ -1122,7 +1121,7 @@ export const describeAffectedAccountsForOrganization: API.PaginatedOperationMeth
   DescribeAffectedAccountsForOrganizationRequest,
   DescribeAffectedAccountsForOrganizationResponse,
   DescribeAffectedAccountsForOrganizationError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   AccountId
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeAffectedAccountsForOrganizationRequest,
@@ -1161,7 +1160,7 @@ export const describeAffectedEntities: API.PaginatedOperationMethod<
   DescribeAffectedEntitiesRequest,
   DescribeAffectedEntitiesResponse,
   DescribeAffectedEntitiesError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   AffectedEntity
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeAffectedEntitiesRequest,
@@ -1203,7 +1202,7 @@ export const describeAffectedEntitiesForOrganization: API.PaginatedOperationMeth
   DescribeAffectedEntitiesForOrganizationRequest,
   DescribeAffectedEntitiesForOrganizationResponse,
   DescribeAffectedEntitiesForOrganizationError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   AffectedEntity
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeAffectedEntitiesForOrganizationRequest,
@@ -1228,7 +1227,7 @@ export const describeEntityAggregates: API.OperationMethod<
   DescribeEntityAggregatesRequest,
   DescribeEntityAggregatesResponse,
   DescribeEntityAggregatesError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeEntityAggregatesRequest,
   output: DescribeEntityAggregatesResponse,
@@ -1246,7 +1245,7 @@ export const describeEntityAggregatesForOrganization: API.OperationMethod<
   DescribeEntityAggregatesForOrganizationRequest,
   DescribeEntityAggregatesForOrganizationResponse,
   DescribeEntityAggregatesForOrganizationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeEntityAggregatesForOrganizationRequest,
   output: DescribeEntityAggregatesForOrganizationResponse,
@@ -1270,7 +1269,7 @@ export const describeEventAggregates: API.PaginatedOperationMethod<
   DescribeEventAggregatesRequest,
   DescribeEventAggregatesResponse,
   DescribeEventAggregatesError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   EventAggregate
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeEventAggregatesRequest,
@@ -1304,7 +1303,7 @@ export const describeEventDetails: API.OperationMethod<
   DescribeEventDetailsRequest,
   DescribeEventDetailsResponse,
   DescribeEventDetailsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeEventDetailsRequest,
   output: DescribeEventDetailsResponse,
@@ -1351,7 +1350,7 @@ export const describeEventDetailsForOrganization: API.OperationMethod<
   DescribeEventDetailsForOrganizationRequest,
   DescribeEventDetailsForOrganizationResponse,
   DescribeEventDetailsForOrganizationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeEventDetailsForOrganizationRequest,
   output: DescribeEventDetailsForOrganizationResponse,
@@ -1389,7 +1388,7 @@ export const describeEvents: API.PaginatedOperationMethod<
   DescribeEventsRequest,
   DescribeEventsResponse,
   DescribeEventsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   Event
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeEventsRequest,
@@ -1439,7 +1438,7 @@ export const describeEventsForOrganization: API.PaginatedOperationMethod<
   DescribeEventsForOrganizationRequest,
   DescribeEventsForOrganizationResponse,
   DescribeEventsForOrganizationError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   OrganizationEvent
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeEventsForOrganizationRequest,
@@ -1473,7 +1472,7 @@ export const describeEventTypes: API.PaginatedOperationMethod<
   DescribeEventTypesRequest,
   DescribeEventTypesResponse,
   DescribeEventTypesError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   EventType
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeEventTypesRequest,
@@ -1500,7 +1499,7 @@ export const describeHealthServiceStatusForOrganization: API.OperationMethod<
   DescribeHealthServiceStatusForOrganizationRequest,
   DescribeHealthServiceStatusForOrganizationResponse,
   DescribeHealthServiceStatusForOrganizationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeHealthServiceStatusForOrganizationRequest,
   output: DescribeHealthServiceStatusForOrganizationResponse,
@@ -1533,7 +1532,7 @@ export const disableHealthServiceAccessForOrganization: API.OperationMethod<
   DisableHealthServiceAccessForOrganizationRequest,
   DisableHealthServiceAccessForOrganizationResponse,
   DisableHealthServiceAccessForOrganizationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DisableHealthServiceAccessForOrganizationRequest,
   output: DisableHealthServiceAccessForOrganizationResponse,
@@ -1572,7 +1571,7 @@ export const enableHealthServiceAccessForOrganization: API.OperationMethod<
   EnableHealthServiceAccessForOrganizationRequest,
   EnableHealthServiceAccessForOrganizationResponse,
   EnableHealthServiceAccessForOrganizationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: EnableHealthServiceAccessForOrganizationRequest,
   output: EnableHealthServiceAccessForOrganizationResponse,

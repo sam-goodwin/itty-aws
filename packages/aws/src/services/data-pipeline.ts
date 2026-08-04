@@ -6,7 +6,6 @@ import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 const ns = T.XmlNamespace("http://datapipeline.amazonaws.com/doc/2012-10-29/");
 const svc = T.AwsApiService({
   sdkId: "Data Pipeline",
@@ -942,7 +941,7 @@ export const activatePipeline: API.OperationMethod<
   ActivatePipelineInput,
   ActivatePipelineOutput,
   ActivatePipelineError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ActivatePipelineInput,
   output: ActivatePipelineOutput,
@@ -970,7 +969,7 @@ export const addTags: API.OperationMethod<
   AddTagsInput,
   AddTagsOutput,
   AddTagsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: AddTagsInput,
   output: AddTagsOutput,
@@ -1016,7 +1015,7 @@ export const createPipeline: API.OperationMethod<
   CreatePipelineInput,
   CreatePipelineOutput,
   CreatePipelineError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreatePipelineInput,
   output: CreatePipelineOutput,
@@ -1043,7 +1042,7 @@ export const deactivatePipeline: API.OperationMethod<
   DeactivatePipelineInput,
   DeactivatePipelineOutput,
   DeactivatePipelineError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeactivatePipelineInput,
   output: DeactivatePipelineOutput,
@@ -1092,7 +1091,7 @@ export const deletePipeline: API.OperationMethod<
   DeletePipelineInput,
   DeletePipelineResponse,
   DeletePipelineError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeletePipelineInput,
   output: DeletePipelineResponse,
@@ -1167,7 +1166,7 @@ export const describeObjects: API.PaginatedOperationMethod<
   DescribeObjectsInput,
   DescribeObjectsOutput,
   DescribeObjectsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   PipelineObject
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeObjectsInput,
@@ -1254,7 +1253,7 @@ export const describePipelines: API.OperationMethod<
   DescribePipelinesInput,
   DescribePipelinesOutput,
   DescribePipelinesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribePipelinesInput,
   output: DescribePipelinesOutput,
@@ -1303,7 +1302,7 @@ export const evaluateExpression: API.OperationMethod<
   EvaluateExpressionInput,
   EvaluateExpressionOutput,
   EvaluateExpressionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: EvaluateExpressionInput,
   output: EvaluateExpressionOutput,
@@ -1386,7 +1385,7 @@ export const getPipelineDefinition: API.OperationMethod<
   GetPipelineDefinitionInput,
   GetPipelineDefinitionOutput,
   GetPipelineDefinitionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetPipelineDefinitionInput,
   output: GetPipelineDefinitionOutput,
@@ -1437,7 +1436,7 @@ export const listPipelines: API.PaginatedOperationMethod<
   ListPipelinesInput,
   ListPipelinesOutput,
   ListPipelinesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   PipelineIdName
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPipelinesInput,
@@ -1533,7 +1532,7 @@ export const pollForTask: API.OperationMethod<
   PollForTaskInput,
   PollForTaskOutput,
   PollForTaskError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PollForTaskInput,
   output: PollForTaskOutput,
@@ -1699,7 +1698,7 @@ export const putPipelineDefinition: API.OperationMethod<
   PutPipelineDefinitionInput,
   PutPipelineDefinitionOutput,
   PutPipelineDefinitionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PutPipelineDefinitionInput,
   output: PutPipelineDefinitionOutput,
@@ -1755,7 +1754,7 @@ export const queryObjects: API.PaginatedOperationMethod<
   QueryObjectsInput,
   QueryObjectsOutput,
   QueryObjectsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   Id
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: QueryObjectsInput,
@@ -1790,7 +1789,7 @@ export const removeTags: API.OperationMethod<
   RemoveTagsInput,
   RemoveTagsOutput,
   RemoveTagsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: RemoveTagsInput,
   output: RemoveTagsOutput,
@@ -1848,7 +1847,7 @@ export const reportTaskProgress: API.OperationMethod<
   ReportTaskProgressInput,
   ReportTaskProgressOutput,
   ReportTaskProgressError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ReportTaskProgressInput,
   output: ReportTaskProgressOutput,
@@ -1897,7 +1896,7 @@ export const reportTaskRunnerHeartbeat: API.OperationMethod<
   ReportTaskRunnerHeartbeatInput,
   ReportTaskRunnerHeartbeatOutput,
   ReportTaskRunnerHeartbeatError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ReportTaskRunnerHeartbeatInput,
   output: ReportTaskRunnerHeartbeatOutput,
@@ -1942,7 +1941,7 @@ export const setStatus: API.OperationMethod<
   SetStatusInput,
   SetStatusResponse,
   SetStatusError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: SetStatusInput,
   output: SetStatusResponse,
@@ -1991,7 +1990,7 @@ export const setTaskStatus: API.OperationMethod<
   SetTaskStatusInput,
   SetTaskStatusOutput,
   SetTaskStatusError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: SetTaskStatusInput,
   output: SetTaskStatusOutput,
@@ -2151,7 +2150,7 @@ export const validatePipelineDefinition: API.OperationMethod<
   ValidatePipelineDefinitionInput,
   ValidatePipelineDefinitionOutput,
   ValidatePipelineDefinitionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ValidatePipelineDefinitionInput,
   output: ValidatePipelineDefinitionOutput,

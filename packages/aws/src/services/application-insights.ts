@@ -7,7 +7,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 const svc = T.AwsApiService({
   sdkId: "Application Insights",
   serviceShapeName: "EC2WindowsBarleyService",
@@ -1584,7 +1583,7 @@ export const addWorkload: API.OperationMethod<
   AddWorkloadRequest,
   AddWorkloadResponse,
   AddWorkloadError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: AddWorkloadRequest,
   output: AddWorkloadResponse,
@@ -1614,7 +1613,7 @@ export const createApplication: API.OperationMethod<
   CreateApplicationRequest,
   CreateApplicationResponse,
   CreateApplicationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateApplicationRequest,
   output: CreateApplicationResponse,
@@ -1644,7 +1643,7 @@ export const createComponent: API.OperationMethod<
   CreateComponentRequest,
   CreateComponentResponse,
   CreateComponentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateComponentRequest,
   output: CreateComponentResponse,
@@ -1672,7 +1671,7 @@ export const createLogPattern: API.OperationMethod<
   CreateLogPatternRequest,
   CreateLogPatternResponse,
   CreateLogPatternError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateLogPatternRequest,
   output: CreateLogPatternResponse,
@@ -1701,7 +1700,7 @@ export const deleteApplication: API.OperationMethod<
   DeleteApplicationRequest,
   DeleteApplicationResponse,
   DeleteApplicationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteApplicationRequest,
   output: DeleteApplicationResponse,
@@ -1730,7 +1729,7 @@ export const deleteComponent: API.OperationMethod<
   DeleteComponentRequest,
   DeleteComponentResponse,
   DeleteComponentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteComponentRequest,
   output: DeleteComponentResponse,
@@ -1757,7 +1756,7 @@ export const deleteLogPattern: API.OperationMethod<
   DeleteLogPatternRequest,
   DeleteLogPatternResponse,
   DeleteLogPatternError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteLogPatternRequest,
   output: DeleteLogPatternResponse,
@@ -1784,7 +1783,7 @@ export const describeApplication: API.OperationMethod<
   DescribeApplicationRequest,
   DescribeApplicationResponse,
   DescribeApplicationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeApplicationRequest,
   output: DescribeApplicationResponse,
@@ -1811,7 +1810,7 @@ export const describeComponent: API.OperationMethod<
   DescribeComponentRequest,
   DescribeComponentResponse,
   DescribeComponentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeComponentRequest,
   output: DescribeComponentResponse,
@@ -1837,7 +1836,7 @@ export const describeComponentConfiguration: API.OperationMethod<
   DescribeComponentConfigurationRequest,
   DescribeComponentConfigurationResponse,
   DescribeComponentConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeComponentConfigurationRequest,
   output: DescribeComponentConfigurationResponse,
@@ -1863,7 +1862,7 @@ export const describeComponentConfigurationRecommendation: API.OperationMethod<
   DescribeComponentConfigurationRecommendationRequest,
   DescribeComponentConfigurationRecommendationResponse,
   DescribeComponentConfigurationRecommendationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeComponentConfigurationRecommendationRequest,
   output: DescribeComponentConfigurationRecommendationResponse,
@@ -1889,7 +1888,7 @@ export const describeLogPattern: API.OperationMethod<
   DescribeLogPatternRequest,
   DescribeLogPatternResponse,
   DescribeLogPatternError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeLogPatternRequest,
   output: DescribeLogPatternResponse,
@@ -1915,7 +1914,7 @@ export const describeObservation: API.OperationMethod<
   DescribeObservationRequest,
   DescribeObservationResponse,
   DescribeObservationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeObservationRequest,
   output: DescribeObservationResponse,
@@ -1941,7 +1940,7 @@ export const describeProblem: API.OperationMethod<
   DescribeProblemRequest,
   DescribeProblemResponse,
   DescribeProblemError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeProblemRequest,
   output: DescribeProblemResponse,
@@ -1967,7 +1966,7 @@ export const describeProblemObservations: API.OperationMethod<
   DescribeProblemObservationsRequest,
   DescribeProblemObservationsResponse,
   DescribeProblemObservationsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeProblemObservationsRequest,
   output: DescribeProblemObservationsResponse,
@@ -1993,7 +1992,7 @@ export const describeWorkload: API.OperationMethod<
   DescribeWorkloadRequest,
   DescribeWorkloadResponse,
   DescribeWorkloadError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeWorkloadRequest,
   output: DescribeWorkloadResponse,
@@ -2018,7 +2017,7 @@ export const listApplications: API.PaginatedOperationMethod<
   ListApplicationsRequest,
   ListApplicationsResponse,
   ListApplicationsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListApplicationsRequest,
@@ -2046,7 +2045,7 @@ export const listComponents: API.PaginatedOperationMethod<
   ListComponentsRequest,
   ListComponentsResponse,
   ListComponentsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListComponentsRequest,
@@ -2086,7 +2085,7 @@ export const listConfigurationHistory: API.PaginatedOperationMethod<
   ListConfigurationHistoryRequest,
   ListConfigurationHistoryResponse,
   ListConfigurationHistoryError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListConfigurationHistoryRequest,
@@ -2118,7 +2117,7 @@ export const listLogPatterns: API.PaginatedOperationMethod<
   ListLogPatternsRequest,
   ListLogPatternsResponse,
   ListLogPatternsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLogPatternsRequest,
@@ -2150,7 +2149,7 @@ export const listLogPatternSets: API.PaginatedOperationMethod<
   ListLogPatternSetsRequest,
   ListLogPatternSetsResponse,
   ListLogPatternSetsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLogPatternSetsRequest,
@@ -2182,7 +2181,7 @@ export const listProblems: API.PaginatedOperationMethod<
   ListProblemsRequest,
   ListProblemsResponse,
   ListProblemsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProblemsRequest,
@@ -2218,7 +2217,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -2240,7 +2239,7 @@ export const listWorkloads: API.PaginatedOperationMethod<
   ListWorkloadsRequest,
   ListWorkloadsResponse,
   ListWorkloadsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListWorkloadsRequest,
@@ -2272,7 +2271,7 @@ export const removeWorkload: API.OperationMethod<
   RemoveWorkloadRequest,
   RemoveWorkloadResponse,
   RemoveWorkloadError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: RemoveWorkloadRequest,
   output: RemoveWorkloadResponse,
@@ -2306,7 +2305,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -2331,7 +2330,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -2353,7 +2352,7 @@ export const updateApplication: API.OperationMethod<
   UpdateApplicationRequest,
   UpdateApplicationResponse,
   UpdateApplicationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateApplicationRequest,
   output: UpdateApplicationResponse,
@@ -2381,7 +2380,7 @@ export const updateComponent: API.OperationMethod<
   UpdateComponentRequest,
   UpdateComponentResponse,
   UpdateComponentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateComponentRequest,
   output: UpdateComponentResponse,
@@ -2411,7 +2410,7 @@ export const updateComponentConfiguration: API.OperationMethod<
   UpdateComponentConfigurationRequest,
   UpdateComponentConfigurationResponse,
   UpdateComponentConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateComponentConfigurationRequest,
   output: UpdateComponentConfigurationResponse,
@@ -2439,7 +2438,7 @@ export const updateLogPattern: API.OperationMethod<
   UpdateLogPatternRequest,
   UpdateLogPatternResponse,
   UpdateLogPatternError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateLogPatternRequest,
   output: UpdateLogPatternResponse,
@@ -2467,7 +2466,7 @@ export const updateProblem: API.OperationMethod<
   UpdateProblemRequest,
   UpdateProblemResponse,
   UpdateProblemError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateProblemRequest,
   output: UpdateProblemResponse,
@@ -2493,7 +2492,7 @@ export const updateWorkload: API.OperationMethod<
   UpdateWorkloadRequest,
   UpdateWorkloadResponse,
   UpdateWorkloadError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateWorkloadRequest,
   output: UpdateWorkloadResponse,

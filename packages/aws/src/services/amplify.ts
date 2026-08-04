@@ -8,7 +8,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 import { SensitiveString } from "../sensitive.ts";
 const ns = T.XmlNamespace("http://amplify.amazonaws.com");
 const svc = T.AwsApiService({ sdkId: "Amplify", serviceShapeName: "Amplify" });
@@ -2143,7 +2142,7 @@ export const createApp: API.OperationMethod<
   CreateAppRequest,
   CreateAppResult,
   CreateAppError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateAppRequest,
   output: CreateAppResult,
@@ -2181,7 +2180,7 @@ export const createBackendEnvironment: API.OperationMethod<
   CreateBackendEnvironmentRequest,
   CreateBackendEnvironmentResult,
   CreateBackendEnvironmentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateBackendEnvironmentRequest,
   output: CreateBackendEnvironmentResult,
@@ -2214,7 +2213,7 @@ export const createBranch: API.OperationMethod<
   CreateBranchRequest,
   CreateBranchResult,
   CreateBranchError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateBranchRequest,
   output: CreateBranchResult,
@@ -2252,7 +2251,7 @@ export const createDeployment: API.OperationMethod<
   CreateDeploymentRequest,
   CreateDeploymentResult,
   CreateDeploymentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateDeploymentRequest,
   output: CreateDeploymentResult,
@@ -2285,7 +2284,7 @@ export const createDomainAssociation: API.OperationMethod<
   CreateDomainAssociationRequest,
   CreateDomainAssociationResult,
   CreateDomainAssociationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateDomainAssociationRequest,
   output: CreateDomainAssociationResult,
@@ -2319,7 +2318,7 @@ export const createWebhook: API.OperationMethod<
   CreateWebhookRequest,
   CreateWebhookResult,
   CreateWebhookError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateWebhookRequest,
   output: CreateWebhookResult,
@@ -2352,7 +2351,7 @@ export const deleteApp: API.OperationMethod<
   DeleteAppRequest,
   DeleteAppResult,
   DeleteAppError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteAppRequest,
   output: DeleteAppResult,
@@ -2390,7 +2389,7 @@ export const deleteBackendEnvironment: API.OperationMethod<
   DeleteBackendEnvironmentRequest,
   DeleteBackendEnvironmentResult,
   DeleteBackendEnvironmentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteBackendEnvironmentRequest,
   output: DeleteBackendEnvironmentResult,
@@ -2422,7 +2421,7 @@ export const deleteBranch: API.OperationMethod<
   DeleteBranchRequest,
   DeleteBranchResult,
   DeleteBranchError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteBranchRequest,
   output: DeleteBranchResult,
@@ -2454,7 +2453,7 @@ export const deleteDomainAssociation: API.OperationMethod<
   DeleteDomainAssociationRequest,
   DeleteDomainAssociationResult,
   DeleteDomainAssociationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteDomainAssociationRequest,
   output: DeleteDomainAssociationResult,
@@ -2486,7 +2485,7 @@ export const deleteJob: API.OperationMethod<
   DeleteJobRequest,
   DeleteJobResult,
   DeleteJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteJobRequest,
   output: DeleteJobResult,
@@ -2518,7 +2517,7 @@ export const deleteWebhook: API.OperationMethod<
   DeleteWebhookRequest,
   DeleteWebhookResult,
   DeleteWebhookError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteWebhookRequest,
   output: DeleteWebhookResult,
@@ -2549,7 +2548,7 @@ export const generateAccessLogs: API.OperationMethod<
   GenerateAccessLogsRequest,
   GenerateAccessLogsResult,
   GenerateAccessLogsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GenerateAccessLogsRequest,
   output: GenerateAccessLogsResult,
@@ -2579,7 +2578,7 @@ export const getApp: API.OperationMethod<
   GetAppRequest,
   GetAppResult,
   GetAppError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetAppRequest,
   output: GetAppResult,
@@ -2610,7 +2609,7 @@ export const getArtifactUrl: API.OperationMethod<
   GetArtifactUrlRequest,
   GetArtifactUrlResult,
   GetArtifactUrlError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetArtifactUrlRequest,
   output: GetArtifactUrlResult,
@@ -2647,7 +2646,7 @@ export const getBackendEnvironment: API.OperationMethod<
   GetBackendEnvironmentRequest,
   GetBackendEnvironmentResult,
   GetBackendEnvironmentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetBackendEnvironmentRequest,
   output: GetBackendEnvironmentResult,
@@ -2677,7 +2676,7 @@ export const getBranch: API.OperationMethod<
   GetBranchRequest,
   GetBranchResult,
   GetBranchError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetBranchRequest,
   output: GetBranchResult,
@@ -2707,7 +2706,7 @@ export const getDomainAssociation: API.OperationMethod<
   GetDomainAssociationRequest,
   GetDomainAssociationResult,
   GetDomainAssociationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetDomainAssociationRequest,
   output: GetDomainAssociationResult,
@@ -2738,7 +2737,7 @@ export const getJob: API.OperationMethod<
   GetJobRequest,
   GetJobResult,
   GetJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetJobRequest,
   output: GetJobResult,
@@ -2770,7 +2769,7 @@ export const getWebhook: API.OperationMethod<
   GetWebhookRequest,
   GetWebhookResult,
   GetWebhookError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetWebhookRequest,
   output: GetWebhookResult,
@@ -2800,7 +2799,7 @@ export const listApps: API.PaginatedOperationMethod<
   ListAppsRequest,
   ListAppsResult,
   ListAppsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   App
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAppsRequest,
@@ -2843,7 +2842,7 @@ export const listArtifacts: API.OperationMethod<
   ListArtifactsRequest,
   ListArtifactsResult,
   ListArtifactsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListArtifactsRequest,
   output: ListArtifactsResult,
@@ -2878,7 +2877,7 @@ export const listBackendEnvironments: API.OperationMethod<
   ListBackendEnvironmentsRequest,
   ListBackendEnvironmentsResult,
   ListBackendEnvironmentsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListBackendEnvironmentsRequest,
   output: ListBackendEnvironmentsResult,
@@ -2906,7 +2905,7 @@ export const listBranches: API.PaginatedOperationMethod<
   ListBranchesRequest,
   ListBranchesResult,
   ListBranchesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   Branch
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBranchesRequest,
@@ -2941,7 +2940,7 @@ export const listDomainAssociations: API.PaginatedOperationMethod<
   ListDomainAssociationsRequest,
   ListDomainAssociationsResult,
   ListDomainAssociationsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   DomainAssociation
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDomainAssociationsRequest,
@@ -2977,7 +2976,7 @@ export const listJobs: API.PaginatedOperationMethod<
   ListJobsRequest,
   ListJobsResult,
   ListJobsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   JobSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListJobsRequest,
@@ -3013,7 +3012,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -3042,7 +3041,7 @@ export const listWebhooks: API.OperationMethod<
   ListWebhooksRequest,
   ListWebhooksResult,
   ListWebhooksError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListWebhooksRequest,
   output: ListWebhooksResult,
@@ -3079,7 +3078,7 @@ export const startDeployment: API.OperationMethod<
   StartDeploymentRequest,
   StartDeploymentResult,
   StartDeploymentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartDeploymentRequest,
   output: StartDeploymentResult,
@@ -3111,7 +3110,7 @@ export const startJob: API.OperationMethod<
   StartJobRequest,
   StartJobResult,
   StartJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartJobRequest,
   output: StartJobResult,
@@ -3143,7 +3142,7 @@ export const stopJob: API.OperationMethod<
   StopJobRequest,
   StopJobResult,
   StopJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StopJobRequest,
   output: StopJobResult,
@@ -3173,7 +3172,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -3201,7 +3200,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -3230,7 +3229,7 @@ export const updateApp: API.OperationMethod<
   UpdateAppRequest,
   UpdateAppResult,
   UpdateAppError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateAppRequest,
   output: UpdateAppResult,
@@ -3261,7 +3260,7 @@ export const updateBranch: API.OperationMethod<
   UpdateBranchRequest,
   UpdateBranchResult,
   UpdateBranchError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateBranchRequest,
   output: UpdateBranchResult,
@@ -3293,7 +3292,7 @@ export const updateDomainAssociation: API.OperationMethod<
   UpdateDomainAssociationRequest,
   UpdateDomainAssociationResult,
   UpdateDomainAssociationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateDomainAssociationRequest,
   output: UpdateDomainAssociationResult,
@@ -3325,7 +3324,7 @@ export const updateWebhook: API.OperationMethod<
   UpdateWebhookRequest,
   UpdateWebhookResult,
   UpdateWebhookError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateWebhookRequest,
   output: UpdateWebhookResult,

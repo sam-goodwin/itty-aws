@@ -7,7 +7,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region as Rgn } from "../region.ts";
 const svc = T.AwsApiService({
   sdkId: "ObservabilityAdmin",
   serviceShapeName: "ObservabilityAdmin",
@@ -2266,7 +2265,7 @@ export const createCentralizationRuleForOrganization: API.OperationMethod<
   CreateCentralizationRuleForOrganizationInput,
   CreateCentralizationRuleForOrganizationOutput,
   CreateCentralizationRuleForOrganizationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateCentralizationRuleForOrganizationInput,
   output: CreateCentralizationRuleForOrganizationOutput,
@@ -2298,7 +2297,7 @@ export const createS3TableIntegration: API.OperationMethod<
   CreateS3TableIntegrationInput,
   CreateS3TableIntegrationOutput,
   CreateS3TableIntegrationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateS3TableIntegrationInput,
   output: CreateS3TableIntegrationOutput,
@@ -2330,7 +2329,7 @@ export const createTelemetryPipeline: API.OperationMethod<
   CreateTelemetryPipelineInput,
   CreateTelemetryPipelineOutput,
   CreateTelemetryPipelineError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateTelemetryPipelineInput,
   output: CreateTelemetryPipelineOutput,
@@ -2362,7 +2361,7 @@ export const createTelemetryRule: API.OperationMethod<
   CreateTelemetryRuleInput,
   CreateTelemetryRuleOutput,
   CreateTelemetryRuleError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateTelemetryRuleInput,
   output: CreateTelemetryRuleOutput,
@@ -2394,7 +2393,7 @@ export const createTelemetryRuleForOrganization: API.OperationMethod<
   CreateTelemetryRuleForOrganizationInput,
   CreateTelemetryRuleForOrganizationOutput,
   CreateTelemetryRuleForOrganizationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateTelemetryRuleForOrganizationInput,
   output: CreateTelemetryRuleForOrganizationOutput,
@@ -2425,7 +2424,7 @@ export const deleteCentralizationRuleForOrganization: API.OperationMethod<
   DeleteCentralizationRuleForOrganizationInput,
   DeleteCentralizationRuleForOrganizationResponse,
   DeleteCentralizationRuleForOrganizationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteCentralizationRuleForOrganizationInput,
   output: DeleteCentralizationRuleForOrganizationResponse,
@@ -2456,7 +2455,7 @@ export const deleteS3TableIntegration: API.OperationMethod<
   DeleteS3TableIntegrationInput,
   DeleteS3TableIntegrationResponse,
   DeleteS3TableIntegrationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteS3TableIntegrationInput,
   output: DeleteS3TableIntegrationResponse,
@@ -2488,7 +2487,7 @@ export const deleteTelemetryPipeline: API.OperationMethod<
   DeleteTelemetryPipelineInput,
   DeleteTelemetryPipelineOutput,
   DeleteTelemetryPipelineError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteTelemetryPipelineInput,
   output: DeleteTelemetryPipelineOutput,
@@ -2519,7 +2518,7 @@ export const deleteTelemetryRule: API.OperationMethod<
   DeleteTelemetryRuleInput,
   DeleteTelemetryRuleResponse,
   DeleteTelemetryRuleError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteTelemetryRuleInput,
   output: DeleteTelemetryRuleResponse,
@@ -2549,7 +2548,7 @@ export const deleteTelemetryRuleForOrganization: API.OperationMethod<
   DeleteTelemetryRuleForOrganizationInput,
   DeleteTelemetryRuleForOrganizationResponse,
   DeleteTelemetryRuleForOrganizationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteTelemetryRuleForOrganizationInput,
   output: DeleteTelemetryRuleForOrganizationResponse,
@@ -2579,7 +2578,7 @@ export const getCentralizationRuleForOrganization: API.OperationMethod<
   GetCentralizationRuleForOrganizationInput,
   GetCentralizationRuleForOrganizationOutput,
   GetCentralizationRuleForOrganizationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetCentralizationRuleForOrganizationInput,
   output: GetCentralizationRuleForOrganizationOutput,
@@ -2609,7 +2608,7 @@ export const getS3TableIntegration: API.OperationMethod<
   GetS3TableIntegrationInput,
   GetS3TableIntegrationOutput,
   GetS3TableIntegrationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetS3TableIntegrationInput,
   output: GetS3TableIntegrationOutput,
@@ -2638,7 +2637,7 @@ export const getTelemetryEnrichmentStatus: API.OperationMethod<
   GetTelemetryEnrichmentStatusRequest,
   GetTelemetryEnrichmentStatusOutput,
   GetTelemetryEnrichmentStatusError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetTelemetryEnrichmentStatusRequest,
   output: GetTelemetryEnrichmentStatusOutput,
@@ -2665,7 +2664,7 @@ export const getTelemetryEvaluationStatus: API.OperationMethod<
   GetTelemetryEvaluationStatusRequest,
   GetTelemetryEvaluationStatusOutput,
   GetTelemetryEvaluationStatusError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetTelemetryEvaluationStatusRequest,
   output: GetTelemetryEvaluationStatusOutput,
@@ -2692,7 +2691,7 @@ export const getTelemetryEvaluationStatusForOrganization: API.OperationMethod<
   GetTelemetryEvaluationStatusForOrganizationRequest,
   GetTelemetryEvaluationStatusForOrganizationOutput,
   GetTelemetryEvaluationStatusForOrganizationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetTelemetryEvaluationStatusForOrganizationRequest,
   output: GetTelemetryEvaluationStatusForOrganizationOutput,
@@ -2721,7 +2720,7 @@ export const getTelemetryPipeline: API.OperationMethod<
   GetTelemetryPipelineInput,
   GetTelemetryPipelineOutput,
   GetTelemetryPipelineError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetTelemetryPipelineInput,
   output: GetTelemetryPipelineOutput,
@@ -2751,7 +2750,7 @@ export const getTelemetryRule: API.OperationMethod<
   GetTelemetryRuleInput,
   GetTelemetryRuleOutput,
   GetTelemetryRuleError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetTelemetryRuleInput,
   output: GetTelemetryRuleOutput,
@@ -2781,7 +2780,7 @@ export const getTelemetryRuleForOrganization: API.OperationMethod<
   GetTelemetryRuleForOrganizationInput,
   GetTelemetryRuleForOrganizationOutput,
   GetTelemetryRuleForOrganizationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetTelemetryRuleForOrganizationInput,
   output: GetTelemetryRuleForOrganizationOutput,
@@ -2810,7 +2809,7 @@ export const listCentralizationRulesForOrganization: API.PaginatedOperationMetho
   ListCentralizationRulesForOrganizationInput,
   ListCentralizationRulesForOrganizationOutput,
   ListCentralizationRulesForOrganizationError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   CentralizationRuleSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCentralizationRulesForOrganizationInput,
@@ -2845,7 +2844,7 @@ export const listResourceTelemetry: API.PaginatedOperationMethod<
   ListResourceTelemetryInput,
   ListResourceTelemetryOutput,
   ListResourceTelemetryError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   TelemetryConfiguration
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListResourceTelemetryInput,
@@ -2880,7 +2879,7 @@ export const listResourceTelemetryForOrganization: API.PaginatedOperationMethod<
   ListResourceTelemetryForOrganizationInput,
   ListResourceTelemetryForOrganizationOutput,
   ListResourceTelemetryForOrganizationError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   TelemetryConfiguration
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListResourceTelemetryForOrganizationInput,
@@ -2915,7 +2914,7 @@ export const listS3TableIntegrations: API.PaginatedOperationMethod<
   ListS3TableIntegrationsInput,
   ListS3TableIntegrationsOutput,
   ListS3TableIntegrationsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   IntegrationSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListS3TableIntegrationsInput,
@@ -2951,7 +2950,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceInput,
   ListTagsForResourceOutput,
   ListTagsForResourceError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceInput,
   output: ListTagsForResourceOutput,
@@ -2980,7 +2979,7 @@ export const listTelemetryPipelines: API.PaginatedOperationMethod<
   ListTelemetryPipelinesInput,
   ListTelemetryPipelinesOutput,
   ListTelemetryPipelinesError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   TelemetryPipelineSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTelemetryPipelinesInput,
@@ -3015,7 +3014,7 @@ export const listTelemetryRules: API.PaginatedOperationMethod<
   ListTelemetryRulesInput,
   ListTelemetryRulesOutput,
   ListTelemetryRulesError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   TelemetryRuleSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTelemetryRulesInput,
@@ -3050,7 +3049,7 @@ export const listTelemetryRulesForOrganization: API.PaginatedOperationMethod<
   ListTelemetryRulesForOrganizationInput,
   ListTelemetryRulesForOrganizationOutput,
   ListTelemetryRulesForOrganizationError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   TelemetryRuleSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTelemetryRulesForOrganizationInput,
@@ -3085,7 +3084,7 @@ export const startTelemetryEnrichment: API.OperationMethod<
   StartTelemetryEnrichmentRequest,
   StartTelemetryEnrichmentOutput,
   StartTelemetryEnrichmentError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartTelemetryEnrichmentRequest,
   output: StartTelemetryEnrichmentOutput,
@@ -3113,7 +3112,7 @@ export const startTelemetryEvaluation: API.OperationMethod<
   StartTelemetryEvaluationInput,
   StartTelemetryEvaluationResponse,
   StartTelemetryEvaluationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartTelemetryEvaluationInput,
   output: StartTelemetryEvaluationResponse,
@@ -3141,7 +3140,7 @@ export const startTelemetryEvaluationForOrganization: API.OperationMethod<
   StartTelemetryEvaluationForOrganizationInput,
   StartTelemetryEvaluationForOrganizationResponse,
   StartTelemetryEvaluationForOrganizationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartTelemetryEvaluationForOrganizationInput,
   output: StartTelemetryEvaluationForOrganizationResponse,
@@ -3169,7 +3168,7 @@ export const stopTelemetryEnrichment: API.OperationMethod<
   StopTelemetryEnrichmentRequest,
   StopTelemetryEnrichmentOutput,
   StopTelemetryEnrichmentError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StopTelemetryEnrichmentRequest,
   output: StopTelemetryEnrichmentOutput,
@@ -3197,7 +3196,7 @@ export const stopTelemetryEvaluation: API.OperationMethod<
   StopTelemetryEvaluationRequest,
   StopTelemetryEvaluationResponse,
   StopTelemetryEvaluationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StopTelemetryEvaluationRequest,
   output: StopTelemetryEvaluationResponse,
@@ -3225,7 +3224,7 @@ export const stopTelemetryEvaluationForOrganization: API.OperationMethod<
   StopTelemetryEvaluationForOrganizationRequest,
   StopTelemetryEvaluationForOrganizationResponse,
   StopTelemetryEvaluationForOrganizationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StopTelemetryEvaluationForOrganizationRequest,
   output: StopTelemetryEvaluationForOrganizationResponse,
@@ -3255,7 +3254,7 @@ export const tagResource: API.OperationMethod<
   TagResourceInput,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: TagResourceInput,
   output: TagResourceResponse,
@@ -3285,7 +3284,7 @@ export const testTelemetryPipeline: API.OperationMethod<
   TestTelemetryPipelineInput,
   TestTelemetryPipelineOutput,
   TestTelemetryPipelineError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: TestTelemetryPipelineInput,
   output: TestTelemetryPipelineOutput,
@@ -3314,7 +3313,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceInput,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceInput,
   output: UntagResourceResponse,
@@ -3345,7 +3344,7 @@ export const updateCentralizationRuleForOrganization: API.OperationMethod<
   UpdateCentralizationRuleForOrganizationInput,
   UpdateCentralizationRuleForOrganizationOutput,
   UpdateCentralizationRuleForOrganizationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateCentralizationRuleForOrganizationInput,
   output: UpdateCentralizationRuleForOrganizationOutput,
@@ -3424,7 +3423,7 @@ export const updateTelemetryPipeline: API.OperationMethod<
   UpdateTelemetryPipelineInput,
   UpdateTelemetryPipelineOutput,
   UpdateTelemetryPipelineError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateTelemetryPipelineInput,
   output: UpdateTelemetryPipelineOutput,
@@ -3456,7 +3455,7 @@ export const updateTelemetryRule: API.OperationMethod<
   UpdateTelemetryRuleInput,
   UpdateTelemetryRuleOutput,
   UpdateTelemetryRuleError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateTelemetryRuleInput,
   output: UpdateTelemetryRuleOutput,
@@ -3489,7 +3488,7 @@ export const updateTelemetryRuleForOrganization: API.OperationMethod<
   UpdateTelemetryRuleForOrganizationInput,
   UpdateTelemetryRuleForOrganizationOutput,
   UpdateTelemetryRuleForOrganizationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateTelemetryRuleForOrganizationInput,
   output: UpdateTelemetryRuleForOrganizationOutput,
@@ -3519,7 +3518,7 @@ export const validateTelemetryPipelineConfiguration: API.OperationMethod<
   ValidateTelemetryPipelineConfigurationInput,
   ValidateTelemetryPipelineConfigurationOutput,
   ValidateTelemetryPipelineConfigurationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ValidateTelemetryPipelineConfigurationInput,
   output: ValidateTelemetryPipelineConfigurationOutput,

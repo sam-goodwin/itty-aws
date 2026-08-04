@@ -8,7 +8,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 import { SensitiveString } from "../sensitive.ts";
 const svc = T.AwsApiService({
   sdkId: "identitystore",
@@ -1052,7 +1051,7 @@ export const createGroup: API.OperationMethod<
   CreateGroupRequest,
   CreateGroupResponse,
   CreateGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateGroupRequest,
   output: CreateGroupResponse,
@@ -1080,7 +1079,7 @@ export const createGroupMembership: API.OperationMethod<
   CreateGroupMembershipRequest,
   CreateGroupMembershipResponse,
   CreateGroupMembershipError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateGroupMembershipRequest,
   output: CreateGroupMembershipResponse,
@@ -1108,7 +1107,7 @@ export const createUser: API.OperationMethod<
   CreateUserRequest,
   CreateUserResponse,
   CreateUserError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateUserRequest,
   output: CreateUserResponse,
@@ -1135,7 +1134,7 @@ export const deleteGroup: API.OperationMethod<
   DeleteGroupRequest,
   DeleteGroupResponse,
   DeleteGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteGroupRequest,
   output: DeleteGroupResponse,
@@ -1157,7 +1156,7 @@ export const deleteGroupMembership: API.OperationMethod<
   DeleteGroupMembershipRequest,
   DeleteGroupMembershipResponse,
   DeleteGroupMembershipError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteGroupMembershipRequest,
   output: DeleteGroupMembershipResponse,
@@ -1179,7 +1178,7 @@ export const deleteUser: API.OperationMethod<
   DeleteUserRequest,
   DeleteUserResponse,
   DeleteUserError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteUserRequest,
   output: DeleteUserResponse,
@@ -1202,7 +1201,7 @@ export const describeGroup: API.OperationMethod<
   DescribeGroupRequest,
   DescribeGroupResponse,
   DescribeGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeGroupRequest,
   output: DescribeGroupResponse,
@@ -1225,7 +1224,7 @@ export const describeGroupMembership: API.OperationMethod<
   DescribeGroupMembershipRequest,
   DescribeGroupMembershipResponse,
   DescribeGroupMembershipError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeGroupMembershipRequest,
   output: DescribeGroupMembershipResponse,
@@ -1248,7 +1247,7 @@ export const describeUser: API.OperationMethod<
   DescribeUserRequest,
   DescribeUserResponse,
   DescribeUserError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeUserRequest,
   output: DescribeUserResponse,
@@ -1271,7 +1270,7 @@ export const getGroupId: API.OperationMethod<
   GetGroupIdRequest,
   GetGroupIdResponse,
   GetGroupIdError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetGroupIdRequest,
   output: GetGroupIdResponse,
@@ -1294,7 +1293,7 @@ export const getGroupMembershipId: API.OperationMethod<
   GetGroupMembershipIdRequest,
   GetGroupMembershipIdResponse,
   GetGroupMembershipIdError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetGroupMembershipIdRequest,
   output: GetGroupMembershipIdResponse,
@@ -1317,7 +1316,7 @@ export const getUserId: API.OperationMethod<
   GetUserIdRequest,
   GetUserIdResponse,
   GetUserIdError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetUserIdRequest,
   output: GetUserIdResponse,
@@ -1340,7 +1339,7 @@ export const isMemberInGroups: API.OperationMethod<
   IsMemberInGroupsRequest,
   IsMemberInGroupsResponse,
   IsMemberInGroupsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: IsMemberInGroupsRequest,
   output: IsMemberInGroupsResponse,
@@ -1363,7 +1362,7 @@ export const listGroupMemberships: API.PaginatedOperationMethod<
   ListGroupMembershipsRequest,
   ListGroupMembershipsResponse,
   ListGroupMembershipsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   GroupMembership
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListGroupMembershipsRequest,
@@ -1393,7 +1392,7 @@ export const listGroupMembershipsForMember: API.PaginatedOperationMethod<
   ListGroupMembershipsForMemberRequest,
   ListGroupMembershipsForMemberResponse,
   ListGroupMembershipsForMemberError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   GroupMembership
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListGroupMembershipsForMemberRequest,
@@ -1423,7 +1422,7 @@ export const listGroups: API.PaginatedOperationMethod<
   ListGroupsRequest,
   ListGroupsResponse,
   ListGroupsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   Group
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListGroupsRequest,
@@ -1453,7 +1452,7 @@ export const listUsers: API.PaginatedOperationMethod<
   ListUsersRequest,
   ListUsersResponse,
   ListUsersError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   User
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListUsersRequest,
@@ -1483,7 +1482,7 @@ export const updateGroup: API.OperationMethod<
   UpdateGroupRequest,
   UpdateGroupResponse,
   UpdateGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateGroupRequest,
   output: UpdateGroupResponse,
@@ -1511,7 +1510,7 @@ export const updateUser: API.OperationMethod<
   UpdateUserRequest,
   UpdateUserResponse,
   UpdateUserError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateUserRequest,
   output: UpdateUserResponse,

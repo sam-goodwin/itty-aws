@@ -8,7 +8,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region as Rgn } from "../region.ts";
 import { SensitiveString } from "../sensitive.ts";
 const svc = T.AwsApiService({
   sdkId: "Route53GlobalResolver",
@@ -2948,7 +2947,7 @@ export const associateHostedZone: API.OperationMethod<
   AssociateHostedZoneInput,
   AssociateHostedZoneOutput,
   AssociateHostedZoneError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: AssociateHostedZoneInput,
   output: AssociateHostedZoneOutput,
@@ -2981,7 +2980,7 @@ export const batchCreateFirewallRule: API.OperationMethod<
   BatchCreateFirewallRuleInput,
   BatchCreateFirewallRuleOutput,
   BatchCreateFirewallRuleError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: BatchCreateFirewallRuleInput,
   output: BatchCreateFirewallRuleOutput,
@@ -3011,7 +3010,7 @@ export const batchDeleteFirewallRule: API.OperationMethod<
   BatchDeleteFirewallRuleInput,
   BatchDeleteFirewallRuleOutput,
   BatchDeleteFirewallRuleError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: BatchDeleteFirewallRuleInput,
   output: BatchDeleteFirewallRuleOutput,
@@ -3041,7 +3040,7 @@ export const batchUpdateFirewallRule: API.OperationMethod<
   BatchUpdateFirewallRuleInput,
   BatchUpdateFirewallRuleOutput,
   BatchUpdateFirewallRuleError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: BatchUpdateFirewallRuleInput,
   output: BatchUpdateFirewallRuleOutput,
@@ -3074,7 +3073,7 @@ export const createAccessSource: API.OperationMethod<
   CreateAccessSourceInput,
   CreateAccessSourceOutput,
   CreateAccessSourceError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateAccessSourceInput,
   output: CreateAccessSourceOutput,
@@ -3110,7 +3109,7 @@ export const createAccessToken: API.OperationMethod<
   CreateAccessTokenInput,
   CreateAccessTokenOutput,
   CreateAccessTokenError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateAccessTokenInput,
   output: CreateAccessTokenOutput,
@@ -3146,7 +3145,7 @@ export const createDNSView: API.OperationMethod<
   CreateDNSViewInput,
   CreateDNSViewOutput,
   CreateDNSViewError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateDNSViewInput,
   output: CreateDNSViewOutput,
@@ -3182,7 +3181,7 @@ export const createFirewallDomainList: API.OperationMethod<
   CreateFirewallDomainListInput,
   CreateFirewallDomainListOutput,
   CreateFirewallDomainListError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateFirewallDomainListInput,
   output: CreateFirewallDomainListOutput,
@@ -3218,7 +3217,7 @@ export const createFirewallRule: API.OperationMethod<
   CreateFirewallRuleInput,
   CreateFirewallRuleOutput,
   CreateFirewallRuleError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateFirewallRuleInput,
   output: CreateFirewallRuleOutput,
@@ -3253,7 +3252,7 @@ export const createGlobalResolver: API.OperationMethod<
   CreateGlobalResolverInput,
   CreateGlobalResolverOutput,
   CreateGlobalResolverError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateGlobalResolverInput,
   output: CreateGlobalResolverOutput,
@@ -3287,7 +3286,7 @@ export const deleteAccessSource: API.OperationMethod<
   DeleteAccessSourceInput,
   DeleteAccessSourceOutput,
   DeleteAccessSourceError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteAccessSourceInput,
   output: DeleteAccessSourceOutput,
@@ -3321,7 +3320,7 @@ export const deleteAccessToken: API.OperationMethod<
   DeleteAccessTokenInput,
   DeleteAccessTokenOutput,
   DeleteAccessTokenError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteAccessTokenInput,
   output: DeleteAccessTokenOutput,
@@ -3355,7 +3354,7 @@ export const deleteDNSView: API.OperationMethod<
   DeleteDNSViewInput,
   DeleteDNSViewOutput,
   DeleteDNSViewError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteDNSViewInput,
   output: DeleteDNSViewOutput,
@@ -3389,7 +3388,7 @@ export const deleteFirewallDomainList: API.OperationMethod<
   DeleteFirewallDomainListInput,
   DeleteFirewallDomainListOutput,
   DeleteFirewallDomainListError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteFirewallDomainListInput,
   output: DeleteFirewallDomainListOutput,
@@ -3423,7 +3422,7 @@ export const deleteFirewallRule: API.OperationMethod<
   DeleteFirewallRuleInput,
   DeleteFirewallRuleOutput,
   DeleteFirewallRuleError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteFirewallRuleInput,
   output: DeleteFirewallRuleOutput,
@@ -3457,7 +3456,7 @@ export const deleteGlobalResolver: API.OperationMethod<
   DeleteGlobalResolverInput,
   DeleteGlobalResolverOutput,
   DeleteGlobalResolverError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteGlobalResolverInput,
   output: DeleteGlobalResolverOutput,
@@ -3492,7 +3491,7 @@ export const disableDNSView: API.OperationMethod<
   DisableDNSViewInput,
   DisableDNSViewOutput,
   DisableDNSViewError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DisableDNSViewInput,
   output: DisableDNSViewOutput,
@@ -3527,7 +3526,7 @@ export const disassociateHostedZone: API.OperationMethod<
   DisassociateHostedZoneInput,
   DisassociateHostedZoneOutput,
   DisassociateHostedZoneError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DisassociateHostedZoneInput,
   output: DisassociateHostedZoneOutput,
@@ -3562,7 +3561,7 @@ export const enableDNSView: API.OperationMethod<
   EnableDNSViewInput,
   EnableDNSViewOutput,
   EnableDNSViewError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: EnableDNSViewInput,
   output: EnableDNSViewOutput,
@@ -3596,7 +3595,7 @@ export const getAccessSource: API.OperationMethod<
   GetAccessSourceInput,
   GetAccessSourceOutput,
   GetAccessSourceError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetAccessSourceInput,
   output: GetAccessSourceOutput,
@@ -3628,7 +3627,7 @@ export const getAccessToken: API.OperationMethod<
   GetAccessTokenInput,
   GetAccessTokenOutput,
   GetAccessTokenError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetAccessTokenInput,
   output: GetAccessTokenOutput,
@@ -3660,7 +3659,7 @@ export const getDNSView: API.OperationMethod<
   GetDNSViewInput,
   GetDNSViewOutput,
   GetDNSViewError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetDNSViewInput,
   output: GetDNSViewOutput,
@@ -3692,7 +3691,7 @@ export const getFirewallDomainList: API.OperationMethod<
   GetFirewallDomainListInput,
   GetFirewallDomainListOutput,
   GetFirewallDomainListError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetFirewallDomainListInput,
   output: GetFirewallDomainListOutput,
@@ -3724,7 +3723,7 @@ export const getFirewallRule: API.OperationMethod<
   GetFirewallRuleInput,
   GetFirewallRuleOutput,
   GetFirewallRuleError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetFirewallRuleInput,
   output: GetFirewallRuleOutput,
@@ -3756,7 +3755,7 @@ export const getGlobalResolver: API.OperationMethod<
   GetGlobalResolverInput,
   GetGlobalResolverOutput,
   GetGlobalResolverError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetGlobalResolverInput,
   output: GetGlobalResolverOutput,
@@ -3788,7 +3787,7 @@ export const getHostedZoneAssociation: API.OperationMethod<
   GetHostedZoneAssociationInput,
   GetHostedZoneAssociationOutput,
   GetHostedZoneAssociationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetHostedZoneAssociationInput,
   output: GetHostedZoneAssociationOutput,
@@ -3820,7 +3819,7 @@ export const getManagedFirewallDomainList: API.OperationMethod<
   GetManagedFirewallDomainListInput,
   GetManagedFirewallDomainListOutput,
   GetManagedFirewallDomainListError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetManagedFirewallDomainListInput,
   output: GetManagedFirewallDomainListOutput,
@@ -3854,7 +3853,7 @@ export const importFirewallDomains: API.OperationMethod<
   ImportFirewallDomainsInput,
   ImportFirewallDomainsOutput,
   ImportFirewallDomainsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ImportFirewallDomainsInput,
   output: ImportFirewallDomainsOutput,
@@ -3887,7 +3886,7 @@ export const listAccessSources: API.PaginatedOperationMethod<
   ListAccessSourcesInput,
   ListAccessSourcesOutput,
   ListAccessSourcesError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   AccessSourcesItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccessSourcesInput,
@@ -3925,7 +3924,7 @@ export const listAccessTokens: API.PaginatedOperationMethod<
   ListAccessTokensInput,
   ListAccessTokensOutput,
   ListAccessTokensError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   AccessTokenItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccessTokensInput,
@@ -3964,7 +3963,7 @@ export const listDNSViews: API.PaginatedOperationMethod<
   ListDNSViewsInput,
   ListDNSViewsOutput,
   ListDNSViewsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   DNSViewSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDNSViewsInput,
@@ -4003,7 +4002,7 @@ export const listFirewallDomainLists: API.PaginatedOperationMethod<
   ListFirewallDomainListsInput,
   ListFirewallDomainListsOutput,
   ListFirewallDomainListsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   FirewallDomainListsItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFirewallDomainListsInput,
@@ -4042,7 +4041,7 @@ export const listFirewallDomains: API.PaginatedOperationMethod<
   ListFirewallDomainsInput,
   ListFirewallDomainsOutput,
   ListFirewallDomainsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   Domain
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFirewallDomainsInput,
@@ -4081,7 +4080,7 @@ export const listFirewallRules: API.PaginatedOperationMethod<
   ListFirewallRulesInput,
   ListFirewallRulesOutput,
   ListFirewallRulesError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   FirewallRulesItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFirewallRulesInput,
@@ -4119,7 +4118,7 @@ export const listGlobalResolvers: API.PaginatedOperationMethod<
   ListGlobalResolversInput,
   ListGlobalResolversOutput,
   ListGlobalResolversError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   GlobalResolversItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListGlobalResolversInput,
@@ -4157,7 +4156,7 @@ export const listHostedZoneAssociations: API.PaginatedOperationMethod<
   ListHostedZoneAssociationsInput,
   ListHostedZoneAssociationsOutput,
   ListHostedZoneAssociationsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   HostedZoneAssociationSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListHostedZoneAssociationsInput,
@@ -4195,7 +4194,7 @@ export const listManagedFirewallDomainLists: API.PaginatedOperationMethod<
   ListManagedFirewallDomainListsInput,
   ListManagedFirewallDomainListsOutput,
   ListManagedFirewallDomainListsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ManagedFirewallDomainListsItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListManagedFirewallDomainListsInput,
@@ -4227,7 +4226,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -4251,7 +4250,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -4278,7 +4277,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -4306,7 +4305,7 @@ export const updateAccessSource: API.OperationMethod<
   UpdateAccessSourceInput,
   UpdateAccessSourceOutput,
   UpdateAccessSourceError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateAccessSourceInput,
   output: UpdateAccessSourceOutput,
@@ -4342,7 +4341,7 @@ export const updateAccessToken: API.OperationMethod<
   UpdateAccessTokenInput,
   UpdateAccessTokenOutput,
   UpdateAccessTokenError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateAccessTokenInput,
   output: UpdateAccessTokenOutput,
@@ -4378,7 +4377,7 @@ export const updateDNSView: API.OperationMethod<
   UpdateDNSViewInput,
   UpdateDNSViewOutput,
   UpdateDNSViewError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateDNSViewInput,
   output: UpdateDNSViewOutput,
@@ -4414,7 +4413,7 @@ export const updateFirewallDomains: API.OperationMethod<
   UpdateFirewallDomainsInput,
   UpdateFirewallDomainsOutput,
   UpdateFirewallDomainsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateFirewallDomainsInput,
   output: UpdateFirewallDomainsOutput,
@@ -4450,7 +4449,7 @@ export const updateFirewallRule: API.OperationMethod<
   UpdateFirewallRuleInput,
   UpdateFirewallRuleOutput,
   UpdateFirewallRuleError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateFirewallRuleInput,
   output: UpdateFirewallRuleOutput,
@@ -4486,7 +4485,7 @@ export const updateGlobalResolver: API.OperationMethod<
   UpdateGlobalResolverInput,
   UpdateGlobalResolverOutput,
   UpdateGlobalResolverError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateGlobalResolverInput,
   output: UpdateGlobalResolverOutput,
@@ -4522,7 +4521,7 @@ export const updateHostedZoneAssociation: API.OperationMethod<
   UpdateHostedZoneAssociationInput,
   UpdateHostedZoneAssociationOutput,
   UpdateHostedZoneAssociationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateHostedZoneAssociationInput,
   output: UpdateHostedZoneAssociationOutput,

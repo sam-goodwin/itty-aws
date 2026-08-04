@@ -9,7 +9,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region as Rgn } from "../region.ts";
 import { SensitiveString } from "../sensitive.ts";
 const ns = T.XmlNamespace("http://s3.amazonaws.com/doc/2006-03-01/");
 const svc = T.AwsApiService({ sdkId: "S3", serviceShapeName: "AmazonS3" });
@@ -13112,7 +13111,7 @@ export const abortMultipartUpload: API.OperationMethod<
   AbortMultipartUploadRequest,
   AbortMultipartUploadOutput,
   AbortMultipartUploadError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: AbortMultipartUploadRequest,
   output: AbortMultipartUploadOutput,
@@ -13246,7 +13245,7 @@ export const completeMultipartUpload: API.OperationMethod<
   CompleteMultipartUploadRequest,
   CompleteMultipartUploadOutput,
   CompleteMultipartUploadError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CompleteMultipartUploadRequest,
   output: CompleteMultipartUploadOutput,
@@ -13428,7 +13427,7 @@ export const copyObject: API.OperationMethod<
   CopyObjectRequest,
   CopyObjectOutput,
   CopyObjectError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CopyObjectRequest,
   output: CopyObjectOutput,
@@ -13572,7 +13571,7 @@ export const createBucket: API.OperationMethod<
   CreateBucketRequest,
   CreateBucketOutput,
   CreateBucketError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateBucketRequest,
   output: CreateBucketOutput,
@@ -13664,7 +13663,7 @@ export const createBucketMetadataConfiguration: API.OperationMethod<
   CreateBucketMetadataConfigurationRequest,
   CreateBucketMetadataConfigurationResponse,
   CreateBucketMetadataConfigurationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateBucketMetadataConfigurationRequest,
   output: CreateBucketMetadataConfigurationResponse,
@@ -13727,7 +13726,7 @@ export const createBucketMetadataTableConfiguration: API.OperationMethod<
   CreateBucketMetadataTableConfigurationRequest,
   CreateBucketMetadataTableConfigurationResponse,
   CreateBucketMetadataTableConfigurationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateBucketMetadataTableConfigurationRequest,
   output: CreateBucketMetadataTableConfigurationResponse,
@@ -13921,7 +13920,7 @@ export const createMultipartUpload: API.OperationMethod<
   CreateMultipartUploadRequest,
   CreateMultipartUploadOutput,
   CreateMultipartUploadError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateMultipartUploadRequest,
   output: CreateMultipartUploadOutput,
@@ -14031,7 +14030,7 @@ export const createSession: API.OperationMethod<
   CreateSessionRequest,
   CreateSessionOutput,
   CreateSessionError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateSessionRequest,
   output: CreateSessionOutput,
@@ -14088,7 +14087,7 @@ export const deleteBucket: API.OperationMethod<
   DeleteBucketRequest,
   DeleteBucketResponse,
   DeleteBucketError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteBucketRequest,
   output: DeleteBucketResponse,
@@ -14138,7 +14137,7 @@ export const deleteBucketAnalyticsConfiguration: API.OperationMethod<
   DeleteBucketAnalyticsConfigurationRequest,
   DeleteBucketAnalyticsConfigurationResponse,
   DeleteBucketAnalyticsConfigurationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteBucketAnalyticsConfigurationRequest,
   output: DeleteBucketAnalyticsConfigurationResponse,
@@ -14176,7 +14175,7 @@ export const deleteBucketCors: API.OperationMethod<
   DeleteBucketCorsRequest,
   DeleteBucketCorsResponse,
   DeleteBucketCorsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteBucketCorsRequest,
   output: DeleteBucketCorsResponse,
@@ -14233,7 +14232,7 @@ export const deleteBucketEncryption: API.OperationMethod<
   DeleteBucketEncryptionRequest,
   DeleteBucketEncryptionResponse,
   DeleteBucketEncryptionError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteBucketEncryptionRequest,
   output: DeleteBucketEncryptionResponse,
@@ -14273,7 +14272,7 @@ export const deleteBucketIntelligentTieringConfiguration: API.OperationMethod<
   DeleteBucketIntelligentTieringConfigurationRequest,
   DeleteBucketIntelligentTieringConfigurationResponse,
   DeleteBucketIntelligentTieringConfigurationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteBucketIntelligentTieringConfigurationRequest,
   output: DeleteBucketIntelligentTieringConfigurationResponse,
@@ -14337,7 +14336,7 @@ export const deleteBucketInventoryConfiguration: API.OperationMethod<
   DeleteBucketInventoryConfigurationRequest,
   DeleteBucketInventoryConfigurationResponse,
   DeleteBucketInventoryConfigurationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteBucketInventoryConfigurationRequest,
   output: DeleteBucketInventoryConfigurationResponse,
@@ -14405,7 +14404,7 @@ export const deleteBucketLifecycle: API.OperationMethod<
   DeleteBucketLifecycleRequest,
   DeleteBucketLifecycleResponse,
   DeleteBucketLifecycleError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteBucketLifecycleRequest,
   output: DeleteBucketLifecycleResponse,
@@ -14455,7 +14454,7 @@ export const deleteBucketMetadataConfiguration: API.OperationMethod<
   DeleteBucketMetadataConfigurationRequest,
   DeleteBucketMetadataConfigurationResponse,
   DeleteBucketMetadataConfigurationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteBucketMetadataConfigurationRequest,
   output: DeleteBucketMetadataConfigurationResponse,
@@ -14511,7 +14510,7 @@ export const deleteBucketMetadataTableConfiguration: API.OperationMethod<
   DeleteBucketMetadataTableConfigurationRequest,
   DeleteBucketMetadataTableConfigurationResponse,
   DeleteBucketMetadataTableConfigurationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteBucketMetadataTableConfigurationRequest,
   output: DeleteBucketMetadataTableConfigurationResponse,
@@ -14576,7 +14575,7 @@ export const deleteBucketMetricsConfiguration: API.OperationMethod<
   DeleteBucketMetricsConfigurationRequest,
   DeleteBucketMetricsConfigurationResponse,
   DeleteBucketMetricsConfigurationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteBucketMetricsConfigurationRequest,
   output: DeleteBucketMetricsConfigurationResponse,
@@ -14613,7 +14612,7 @@ export const deleteBucketOwnershipControls: API.OperationMethod<
   DeleteBucketOwnershipControlsRequest,
   DeleteBucketOwnershipControlsResponse,
   DeleteBucketOwnershipControlsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteBucketOwnershipControlsRequest,
   output: DeleteBucketOwnershipControlsResponse,
@@ -14683,7 +14682,7 @@ export const deleteBucketPolicy: API.OperationMethod<
   DeleteBucketPolicyRequest,
   DeleteBucketPolicyResponse,
   DeleteBucketPolicyError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteBucketPolicyRequest,
   output: DeleteBucketPolicyResponse,
@@ -14731,7 +14730,7 @@ export const deleteBucketReplication: API.OperationMethod<
   DeleteBucketReplicationRequest,
   DeleteBucketReplicationResponse,
   DeleteBucketReplicationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteBucketReplicationRequest,
   output: DeleteBucketReplicationResponse,
@@ -14766,7 +14765,7 @@ export const deleteBucketTagging: API.OperationMethod<
   DeleteBucketTaggingRequest,
   DeleteBucketTaggingResponse,
   DeleteBucketTaggingError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteBucketTaggingRequest,
   output: DeleteBucketTaggingResponse,
@@ -14809,7 +14808,7 @@ export const deleteBucketWebsite: API.OperationMethod<
   DeleteBucketWebsiteRequest,
   DeleteBucketWebsiteResponse,
   DeleteBucketWebsiteError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteBucketWebsiteRequest,
   output: DeleteBucketWebsiteResponse,
@@ -14920,7 +14919,7 @@ export const deleteObject: API.OperationMethod<
   DeleteObjectRequest,
   DeleteObjectOutput,
   DeleteObjectError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteObjectRequest,
   output: DeleteObjectOutput,
@@ -14968,7 +14967,7 @@ export const deleteObjectAnnotation: API.OperationMethod<
   DeleteObjectAnnotationRequest,
   DeleteObjectAnnotationOutput,
   DeleteObjectAnnotationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteObjectAnnotationRequest,
   output: DeleteObjectAnnotationOutput,
@@ -15080,7 +15079,7 @@ export const deleteObjects: API.OperationMethod<
   DeleteObjectsRequest,
   DeleteObjectsOutput,
   DeleteObjectsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteObjectsRequest,
   output: DeleteObjectsOutput,
@@ -15121,7 +15120,7 @@ export const deleteObjectTagging: API.OperationMethod<
   DeleteObjectTaggingRequest,
   DeleteObjectTaggingOutput,
   DeleteObjectTaggingError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteObjectTaggingRequest,
   output: DeleteObjectTaggingOutput,
@@ -15163,7 +15162,7 @@ export const deletePublicAccessBlock: API.OperationMethod<
   DeletePublicAccessBlockRequest,
   DeletePublicAccessBlockResponse,
   DeletePublicAccessBlockError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeletePublicAccessBlockRequest,
   output: DeletePublicAccessBlockResponse,
@@ -15185,7 +15184,7 @@ export const getBucketAbac: API.OperationMethod<
   GetBucketAbacRequest,
   GetBucketAbacOutput,
   GetBucketAbacError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetBucketAbacRequest,
   output: GetBucketAbacOutput,
@@ -15234,7 +15233,7 @@ export const getBucketAccelerateConfiguration: API.OperationMethod<
   GetBucketAccelerateConfigurationRequest,
   GetBucketAccelerateConfigurationOutput,
   GetBucketAccelerateConfigurationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetBucketAccelerateConfigurationRequest,
   output: GetBucketAccelerateConfigurationOutput,
@@ -15281,7 +15280,7 @@ export const getBucketAcl: API.OperationMethod<
   GetBucketAclRequest,
   GetBucketAclOutput,
   GetBucketAclError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetBucketAclRequest,
   output: GetBucketAclOutput,
@@ -15325,7 +15324,7 @@ export const getBucketAnalyticsConfiguration: API.OperationMethod<
   GetBucketAnalyticsConfigurationRequest,
   GetBucketAnalyticsConfigurationOutput,
   GetBucketAnalyticsConfigurationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetBucketAnalyticsConfigurationRequest,
   output: GetBucketAnalyticsConfigurationOutput,
@@ -15372,7 +15371,7 @@ export const getBucketCors: API.OperationMethod<
   GetBucketCorsRequest,
   GetBucketCorsOutput,
   GetBucketCorsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetBucketCorsRequest,
   output: GetBucketCorsOutput,
@@ -15437,7 +15436,7 @@ export const getBucketEncryption: API.OperationMethod<
   GetBucketEncryptionRequest,
   GetBucketEncryptionOutput,
   GetBucketEncryptionError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetBucketEncryptionRequest,
   output: GetBucketEncryptionOutput,
@@ -15484,7 +15483,7 @@ export const getBucketIntelligentTieringConfiguration: API.OperationMethod<
   GetBucketIntelligentTieringConfigurationRequest,
   GetBucketIntelligentTieringConfigurationOutput,
   GetBucketIntelligentTieringConfigurationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetBucketIntelligentTieringConfigurationRequest,
   output: GetBucketIntelligentTieringConfigurationOutput,
@@ -15547,7 +15546,7 @@ export const getBucketInventoryConfiguration: API.OperationMethod<
   GetBucketInventoryConfigurationRequest,
   GetBucketInventoryConfigurationOutput,
   GetBucketInventoryConfigurationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetBucketInventoryConfigurationRequest,
   output: GetBucketInventoryConfigurationOutput,
@@ -15634,7 +15633,7 @@ export const getBucketLifecycleConfiguration: API.OperationMethod<
   GetBucketLifecycleConfigurationRequest,
   GetBucketLifecycleConfigurationOutput,
   GetBucketLifecycleConfigurationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetBucketLifecycleConfigurationRequest,
   output: GetBucketLifecycleConfigurationOutput,
@@ -15694,7 +15693,7 @@ export const getBucketLocation: API.OperationMethod<
   GetBucketLocationRequest,
   GetBucketLocationOutput,
   GetBucketLocationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetBucketLocationRequest,
   output: GetBucketLocationOutput,
@@ -15728,7 +15727,7 @@ export const getBucketLogging: API.OperationMethod<
   GetBucketLoggingRequest,
   GetBucketLoggingOutput,
   GetBucketLoggingError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetBucketLoggingRequest,
   output: GetBucketLoggingOutput,
@@ -15777,7 +15776,7 @@ export const getBucketMetadataConfiguration: API.OperationMethod<
   GetBucketMetadataConfigurationRequest,
   GetBucketMetadataConfigurationOutput,
   GetBucketMetadataConfigurationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetBucketMetadataConfigurationRequest,
   output: GetBucketMetadataConfigurationOutput,
@@ -15832,7 +15831,7 @@ export const getBucketMetadataTableConfiguration: API.OperationMethod<
   GetBucketMetadataTableConfigurationRequest,
   GetBucketMetadataTableConfigurationOutput,
   GetBucketMetadataTableConfigurationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetBucketMetadataTableConfigurationRequest,
   output: GetBucketMetadataTableConfigurationOutput,
@@ -15899,7 +15898,7 @@ export const getBucketMetricsConfiguration: API.OperationMethod<
   GetBucketMetricsConfigurationRequest,
   GetBucketMetricsConfigurationOutput,
   GetBucketMetricsConfigurationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetBucketMetricsConfigurationRequest,
   output: GetBucketMetricsConfigurationOutput,
@@ -15947,7 +15946,7 @@ export const getBucketNotificationConfiguration: API.OperationMethod<
   GetBucketNotificationConfigurationRequest,
   NotificationConfiguration,
   GetBucketNotificationConfigurationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetBucketNotificationConfigurationRequest,
   output: NotificationConfiguration,
@@ -15995,7 +15994,7 @@ export const getBucketOwnershipControls: API.OperationMethod<
   GetBucketOwnershipControlsRequest,
   GetBucketOwnershipControlsOutput,
   GetBucketOwnershipControlsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetBucketOwnershipControlsRequest,
   output: GetBucketOwnershipControlsOutput,
@@ -16077,7 +16076,7 @@ export const getBucketPolicy: API.OperationMethod<
   GetBucketPolicyRequest,
   GetBucketPolicyOutput,
   GetBucketPolicyError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetBucketPolicyRequest,
   output: GetBucketPolicyOutput,
@@ -16126,7 +16125,7 @@ export const getBucketPolicyStatus: API.OperationMethod<
   GetBucketPolicyStatusRequest,
   GetBucketPolicyStatusOutput,
   GetBucketPolicyStatusError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetBucketPolicyStatusRequest,
   output: GetBucketPolicyStatusOutput,
@@ -16176,7 +16175,7 @@ export const getBucketReplication: API.OperationMethod<
   GetBucketReplicationRequest,
   GetBucketReplicationOutput,
   GetBucketReplicationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetBucketReplicationRequest,
   output: GetBucketReplicationOutput,
@@ -16213,7 +16212,7 @@ export const getBucketRequestPayment: API.OperationMethod<
   GetBucketRequestPaymentRequest,
   GetBucketRequestPaymentOutput,
   GetBucketRequestPaymentError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetBucketRequestPaymentRequest,
   output: GetBucketRequestPaymentOutput,
@@ -16256,7 +16255,7 @@ export const getBucketTagging: API.OperationMethod<
   GetBucketTaggingRequest,
   GetBucketTaggingOutput,
   GetBucketTaggingError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetBucketTaggingRequest,
   output: GetBucketTaggingOutput,
@@ -16303,7 +16302,7 @@ export const getBucketVersioning: API.OperationMethod<
   GetBucketVersioningRequest,
   GetBucketVersioningOutput,
   GetBucketVersioningError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetBucketVersioningRequest,
   output: GetBucketVersioningOutput,
@@ -16343,7 +16342,7 @@ export const getBucketWebsite: API.OperationMethod<
   GetBucketWebsiteRequest,
   GetBucketWebsiteOutput,
   GetBucketWebsiteError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetBucketWebsiteRequest,
   output: GetBucketWebsiteOutput,
@@ -16503,7 +16502,7 @@ export const getObject: API.OperationMethod<
   GetObjectRequest,
   GetObjectOutput,
   GetObjectError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetObjectRequest,
   output: GetObjectOutput,
@@ -16561,7 +16560,7 @@ export const getObjectAcl: API.OperationMethod<
   GetObjectAclRequest,
   GetObjectAclOutput,
   GetObjectAclError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetObjectAclRequest,
   output: GetObjectAclOutput,
@@ -16605,7 +16604,7 @@ export const getObjectAnnotation: API.OperationMethod<
   GetObjectAnnotationRequest,
   GetObjectAnnotationOutput,
   GetObjectAnnotationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetObjectAnnotationRequest,
   output: GetObjectAnnotationOutput,
@@ -16760,7 +16759,7 @@ export const getObjectAttributes: API.OperationMethod<
   GetObjectAttributesRequest,
   GetObjectAttributesOutput,
   GetObjectAttributesError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetObjectAttributesRequest,
   output: GetObjectAttributesOutput,
@@ -16792,7 +16791,7 @@ export const getObjectLegalHold: API.OperationMethod<
   GetObjectLegalHoldRequest,
   GetObjectLegalHoldOutput,
   GetObjectLegalHoldError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetObjectLegalHoldRequest,
   output: GetObjectLegalHoldOutput,
@@ -16826,7 +16825,7 @@ export const getObjectLockConfiguration: API.OperationMethod<
   GetObjectLockConfigurationRequest,
   GetObjectLockConfigurationOutput,
   GetObjectLockConfigurationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetObjectLockConfigurationRequest,
   output: GetObjectLockConfigurationOutput,
@@ -16864,7 +16863,7 @@ export const getObjectRetention: API.OperationMethod<
   GetObjectRetentionRequest,
   GetObjectRetentionOutput,
   GetObjectRetentionError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetObjectRetentionRequest,
   output: GetObjectRetentionOutput,
@@ -16911,7 +16910,7 @@ export const getObjectTagging: API.OperationMethod<
   GetObjectTaggingRequest,
   GetObjectTaggingOutput,
   GetObjectTaggingError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetObjectTaggingRequest,
   output: GetObjectTaggingOutput,
@@ -16951,7 +16950,7 @@ export const getObjectTorrent: API.OperationMethod<
   GetObjectTorrentRequest,
   GetObjectTorrentOutput,
   GetObjectTorrentError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetObjectTorrentRequest,
   output: GetObjectTorrentOutput,
@@ -17005,7 +17004,7 @@ export const getPublicAccessBlock: API.OperationMethod<
   GetPublicAccessBlockRequest,
   GetPublicAccessBlockOutput,
   GetPublicAccessBlockError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetPublicAccessBlockRequest,
   output: GetPublicAccessBlockOutput,
@@ -17095,7 +17094,7 @@ export const headBucket: API.OperationMethod<
   HeadBucketRequest,
   HeadBucketOutput,
   HeadBucketError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: HeadBucketRequest,
   output: HeadBucketOutput,
@@ -17224,7 +17223,7 @@ export const headObject: API.OperationMethod<
   HeadObjectRequest,
   HeadObjectOutput,
   HeadObjectError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: HeadObjectRequest,
   output: HeadObjectOutput,
@@ -17275,7 +17274,7 @@ export const listBucketAnalyticsConfigurations: API.OperationMethod<
   ListBucketAnalyticsConfigurationsRequest,
   ListBucketAnalyticsConfigurationsOutput,
   ListBucketAnalyticsConfigurationsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListBucketAnalyticsConfigurationsRequest,
   output: ListBucketAnalyticsConfigurationsOutput,
@@ -17315,7 +17314,7 @@ export const listBucketIntelligentTieringConfigurations: API.OperationMethod<
   ListBucketIntelligentTieringConfigurationsRequest,
   ListBucketIntelligentTieringConfigurationsOutput,
   ListBucketIntelligentTieringConfigurationsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListBucketIntelligentTieringConfigurationsRequest,
   output: ListBucketIntelligentTieringConfigurationsOutput,
@@ -17384,7 +17383,7 @@ export const listBucketInventoryConfigurations: API.OperationMethod<
   ListBucketInventoryConfigurationsRequest,
   ListBucketInventoryConfigurationsOutput,
   ListBucketInventoryConfigurationsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListBucketInventoryConfigurationsRequest,
   output: ListBucketInventoryConfigurationsOutput,
@@ -17455,7 +17454,7 @@ export const listBucketMetricsConfigurations: API.OperationMethod<
   ListBucketMetricsConfigurationsRequest,
   ListBucketMetricsConfigurationsOutput,
   ListBucketMetricsConfigurationsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListBucketMetricsConfigurationsRequest,
   output: ListBucketMetricsConfigurationsOutput,
@@ -17492,7 +17491,7 @@ export const listBuckets: API.PaginatedOperationMethod<
   ListBucketsRequest,
   ListBucketsOutput,
   ListBucketsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   Bucket
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBucketsRequest,
@@ -17541,7 +17540,7 @@ export const listDirectoryBuckets: API.PaginatedOperationMethod<
   ListDirectoryBucketsRequest,
   ListDirectoryBucketsOutput,
   ListDirectoryBucketsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   Bucket
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDirectoryBucketsRequest,
@@ -17655,7 +17654,7 @@ export const listMultipartUploads: API.OperationMethod<
   ListMultipartUploadsRequest,
   ListMultipartUploadsOutput,
   ListMultipartUploadsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListMultipartUploadsRequest,
   output: ListMultipartUploadsOutput,
@@ -17693,7 +17692,7 @@ export const listObjectAnnotations: API.PaginatedOperationMethod<
   ListObjectAnnotationsRequest,
   ListObjectAnnotationsOutput,
   ListObjectAnnotationsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   AnnotationEntry
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListObjectAnnotationsRequest,
@@ -17746,7 +17745,7 @@ export const listObjects: API.OperationMethod<
   ListObjectsRequest,
   ListObjectsOutput,
   ListObjectsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListObjectsRequest,
   output: ListObjectsOutput,
@@ -17832,7 +17831,7 @@ export const listObjectsV2: API.PaginatedOperationMethod<
   ListObjectsV2Request,
   ListObjectsV2Output,
   ListObjectsV2Error,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListObjectsV2Request,
@@ -17884,7 +17883,7 @@ export const listObjectVersions: API.OperationMethod<
   ListObjectVersionsRequest,
   ListObjectVersionsOutput,
   ListObjectVersionsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListObjectVersionsRequest,
   output: ListObjectVersionsOutput,
@@ -17965,7 +17964,7 @@ export const listParts: API.PaginatedOperationMethod<
   ListPartsRequest,
   ListPartsOutput,
   ListPartsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   Part
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPartsRequest,
@@ -17990,7 +17989,7 @@ export const putBucketAbac: API.OperationMethod<
   PutBucketAbacRequest,
   PutBucketAbacResponse,
   PutBucketAbacError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PutBucketAbacRequest,
   output: PutBucketAbacResponse,
@@ -18046,7 +18045,7 @@ export const putBucketAccelerateConfiguration: API.OperationMethod<
   PutBucketAccelerateConfigurationRequest,
   PutBucketAccelerateConfigurationResponse,
   PutBucketAccelerateConfigurationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PutBucketAccelerateConfigurationRequest,
   output: PutBucketAccelerateConfigurationResponse,
@@ -18211,7 +18210,7 @@ export const putBucketAcl: API.OperationMethod<
   PutBucketAclRequest,
   PutBucketAclResponse,
   PutBucketAclError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PutBucketAclRequest,
   output: PutBucketAclResponse,
@@ -18289,7 +18288,7 @@ export const putBucketAnalyticsConfiguration: API.OperationMethod<
   PutBucketAnalyticsConfigurationRequest,
   PutBucketAnalyticsConfigurationResponse,
   PutBucketAnalyticsConfigurationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PutBucketAnalyticsConfigurationRequest,
   output: PutBucketAnalyticsConfigurationResponse,
@@ -18355,7 +18354,7 @@ export const putBucketCors: API.OperationMethod<
   PutBucketCorsRequest,
   PutBucketCorsResponse,
   PutBucketCorsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PutBucketCorsRequest,
   output: PutBucketCorsResponse,
@@ -18460,7 +18459,7 @@ export const putBucketEncryption: API.OperationMethod<
   PutBucketEncryptionRequest,
   PutBucketEncryptionResponse,
   PutBucketEncryptionError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PutBucketEncryptionRequest,
   output: PutBucketEncryptionResponse,
@@ -18526,7 +18525,7 @@ export const putBucketIntelligentTieringConfiguration: API.OperationMethod<
   PutBucketIntelligentTieringConfigurationRequest,
   PutBucketIntelligentTieringConfigurationResponse,
   PutBucketIntelligentTieringConfigurationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PutBucketIntelligentTieringConfigurationRequest,
   output: PutBucketIntelligentTieringConfigurationResponse,
@@ -18635,7 +18634,7 @@ export const putBucketInventoryConfiguration: API.OperationMethod<
   PutBucketInventoryConfigurationRequest,
   PutBucketInventoryConfigurationResponse,
   PutBucketInventoryConfigurationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PutBucketInventoryConfigurationRequest,
   output: PutBucketInventoryConfigurationResponse,
@@ -18753,7 +18752,7 @@ export const putBucketLifecycleConfiguration: API.OperationMethod<
   PutBucketLifecycleConfigurationRequest,
   PutBucketLifecycleConfigurationOutput,
   PutBucketLifecycleConfigurationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PutBucketLifecycleConfigurationRequest,
   output: PutBucketLifecycleConfigurationOutput,
@@ -18848,7 +18847,7 @@ export const putBucketLogging: API.OperationMethod<
   PutBucketLoggingRequest,
   PutBucketLoggingResponse,
   PutBucketLoggingError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PutBucketLoggingRequest,
   output: PutBucketLoggingResponse,
@@ -18922,7 +18921,7 @@ export const putBucketMetricsConfiguration: API.OperationMethod<
   PutBucketMetricsConfigurationRequest,
   PutBucketMetricsConfigurationResponse,
   PutBucketMetricsConfigurationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PutBucketMetricsConfigurationRequest,
   output: PutBucketMetricsConfigurationResponse,
@@ -18994,7 +18993,7 @@ export const putBucketNotificationConfiguration: API.OperationMethod<
   PutBucketNotificationConfigurationRequest,
   PutBucketNotificationConfigurationResponse,
   PutBucketNotificationConfigurationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PutBucketNotificationConfigurationRequest,
   output: PutBucketNotificationConfigurationResponse,
@@ -19030,7 +19029,7 @@ export const putBucketOwnershipControls: API.OperationMethod<
   PutBucketOwnershipControlsRequest,
   PutBucketOwnershipControlsResponse,
   PutBucketOwnershipControlsError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PutBucketOwnershipControlsRequest,
   output: PutBucketOwnershipControlsResponse,
@@ -19113,7 +19112,7 @@ export const putBucketPolicy: API.OperationMethod<
   PutBucketPolicyRequest,
   PutBucketPolicyResponse,
   PutBucketPolicyError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PutBucketPolicyRequest,
   output: PutBucketPolicyResponse,
@@ -19205,7 +19204,7 @@ export const putBucketReplication: API.OperationMethod<
   PutBucketReplicationRequest,
   PutBucketReplicationResponse,
   PutBucketReplicationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PutBucketReplicationRequest,
   output: PutBucketReplicationResponse,
@@ -19241,7 +19240,7 @@ export const putBucketRequestPayment: API.OperationMethod<
   PutBucketRequestPaymentRequest,
   PutBucketRequestPaymentResponse,
   PutBucketRequestPaymentError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PutBucketRequestPaymentRequest,
   output: PutBucketRequestPaymentResponse,
@@ -19303,7 +19302,7 @@ export const putBucketTagging: API.OperationMethod<
   PutBucketTaggingRequest,
   PutBucketTaggingResponse,
   PutBucketTaggingError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PutBucketTaggingRequest,
   output: PutBucketTaggingResponse,
@@ -19366,7 +19365,7 @@ export const putBucketVersioning: API.OperationMethod<
   PutBucketVersioningRequest,
   PutBucketVersioningResponse,
   PutBucketVersioningError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PutBucketVersioningRequest,
   output: PutBucketVersioningResponse,
@@ -19457,7 +19456,7 @@ export const putBucketWebsite: API.OperationMethod<
   PutBucketWebsiteRequest,
   PutBucketWebsiteResponse,
   PutBucketWebsiteError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PutBucketWebsiteRequest,
   output: PutBucketWebsiteResponse,
@@ -19606,7 +19605,7 @@ export const putObject: API.OperationMethod<
   PutObjectRequest,
   PutObjectOutput,
   PutObjectError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PutObjectRequest,
   output: PutObjectOutput,
@@ -19780,7 +19779,7 @@ export const putObjectAcl: API.OperationMethod<
   PutObjectAclRequest,
   PutObjectAclOutput,
   PutObjectAclError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PutObjectAclRequest,
   output: PutObjectAclOutput,
@@ -19830,7 +19829,7 @@ export const putObjectAnnotation: API.OperationMethod<
   PutObjectAnnotationRequest,
   PutObjectAnnotationOutput,
   PutObjectAnnotationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PutObjectAnnotationRequest,
   output: PutObjectAnnotationOutput,
@@ -19867,7 +19866,7 @@ export const putObjectLegalHold: API.OperationMethod<
   PutObjectLegalHoldRequest,
   PutObjectLegalHoldOutput,
   PutObjectLegalHoldError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PutObjectLegalHoldRequest,
   output: PutObjectLegalHoldOutput,
@@ -19907,7 +19906,7 @@ export const putObjectLockConfiguration: API.OperationMethod<
   PutObjectLockConfigurationRequest,
   PutObjectLockConfigurationOutput,
   PutObjectLockConfigurationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PutObjectLockConfigurationRequest,
   output: PutObjectLockConfigurationOutput,
@@ -19944,7 +19943,7 @@ export const putObjectRetention: API.OperationMethod<
   PutObjectRetentionRequest,
   PutObjectRetentionOutput,
   PutObjectRetentionError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PutObjectRetentionRequest,
   output: PutObjectRetentionOutput,
@@ -20004,7 +20003,7 @@ export const putObjectTagging: API.OperationMethod<
   PutObjectTaggingRequest,
   PutObjectTaggingOutput,
   PutObjectTaggingError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PutObjectTaggingRequest,
   output: PutObjectTaggingOutput,
@@ -20054,7 +20053,7 @@ export const putPublicAccessBlock: API.OperationMethod<
   PutPublicAccessBlockRequest,
   PutPublicAccessBlockResponse,
   PutPublicAccessBlockError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PutPublicAccessBlockRequest,
   output: PutPublicAccessBlockResponse,
@@ -20114,7 +20113,7 @@ export const renameObject: API.OperationMethod<
   RenameObjectRequest,
   RenameObjectOutput,
   RenameObjectError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: RenameObjectRequest,
   output: RenameObjectOutput,
@@ -20276,7 +20275,7 @@ export const restoreObject: API.OperationMethod<
   RestoreObjectRequest,
   RestoreObjectOutput,
   RestoreObjectError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: RestoreObjectRequest,
   output: RestoreObjectOutput,
@@ -20393,7 +20392,7 @@ export const selectObjectContent: API.OperationMethod<
   SelectObjectContentRequest,
   SelectObjectContentOutput,
   SelectObjectContentError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: SelectObjectContentRequest,
   output: SelectObjectContentOutput,
@@ -20433,7 +20432,7 @@ export const updateBucketMetadataAnnotationTableConfiguration: API.OperationMeth
   UpdateBucketMetadataAnnotationTableConfigurationRequest,
   UpdateBucketMetadataAnnotationTableConfigurationResponse,
   UpdateBucketMetadataAnnotationTableConfigurationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateBucketMetadataAnnotationTableConfigurationRequest,
   output: UpdateBucketMetadataAnnotationTableConfigurationResponse,
@@ -20494,7 +20493,7 @@ export const updateBucketMetadataInventoryTableConfiguration: API.OperationMetho
   UpdateBucketMetadataInventoryTableConfigurationRequest,
   UpdateBucketMetadataInventoryTableConfigurationResponse,
   UpdateBucketMetadataInventoryTableConfigurationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateBucketMetadataInventoryTableConfigurationRequest,
   output: UpdateBucketMetadataInventoryTableConfigurationResponse,
@@ -20533,7 +20532,7 @@ export const updateBucketMetadataJournalTableConfiguration: API.OperationMethod<
   UpdateBucketMetadataJournalTableConfigurationRequest,
   UpdateBucketMetadataJournalTableConfigurationResponse,
   UpdateBucketMetadataJournalTableConfigurationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateBucketMetadataJournalTableConfigurationRequest,
   output: UpdateBucketMetadataJournalTableConfigurationResponse,
@@ -20663,7 +20662,7 @@ export const updateObjectEncryption: API.OperationMethod<
   UpdateObjectEncryptionRequest,
   UpdateObjectEncryptionResponse,
   UpdateObjectEncryptionError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateObjectEncryptionRequest,
   output: UpdateObjectEncryptionResponse,
@@ -20823,7 +20822,7 @@ export const uploadPart: API.OperationMethod<
   UploadPartRequest,
   UploadPartOutput,
   UploadPartError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UploadPartRequest,
   output: UploadPartOutput,
@@ -21003,7 +21002,7 @@ export const uploadPartCopy: API.OperationMethod<
   UploadPartCopyRequest,
   UploadPartCopyOutput,
   UploadPartCopyError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UploadPartCopyRequest,
   output: UploadPartCopyOutput,
@@ -21061,7 +21060,7 @@ export const writeGetObjectResponse: API.OperationMethod<
   WriteGetObjectResponseRequest,
   WriteGetObjectResponseResponse,
   WriteGetObjectResponseError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: WriteGetObjectResponseRequest,
   output: WriteGetObjectResponseResponse,

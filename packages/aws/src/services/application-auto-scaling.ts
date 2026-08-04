@@ -7,7 +7,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 const svc = T.AwsApiService({
   sdkId: "Application Auto Scaling",
   serviceShapeName: "AnyScaleFrontendService",
@@ -1346,7 +1345,7 @@ export const deleteScalingPolicy: API.OperationMethod<
   DeleteScalingPolicyRequest,
   DeleteScalingPolicyResponse,
   DeleteScalingPolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteScalingPolicyRequest,
   output: DeleteScalingPolicyResponse,
@@ -1376,7 +1375,7 @@ export const deleteScheduledAction: API.OperationMethod<
   DeleteScheduledActionRequest,
   DeleteScheduledActionResponse,
   DeleteScheduledActionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteScheduledActionRequest,
   output: DeleteScheduledActionResponse,
@@ -1408,7 +1407,7 @@ export const deregisterScalableTarget: API.OperationMethod<
   DeregisterScalableTargetRequest,
   DeregisterScalableTargetResponse,
   DeregisterScalableTargetError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeregisterScalableTargetRequest,
   output: DeregisterScalableTargetResponse,
@@ -1439,7 +1438,7 @@ export const describeScalableTargets: API.PaginatedOperationMethod<
   DescribeScalableTargetsRequest,
   DescribeScalableTargetsResponse,
   DescribeScalableTargetsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ScalableTarget
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeScalableTargetsRequest,
@@ -1480,7 +1479,7 @@ export const describeScalingActivities: API.PaginatedOperationMethod<
   DescribeScalingActivitiesRequest,
   DescribeScalingActivitiesResponse,
   DescribeScalingActivitiesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ScalingActivity
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeScalingActivitiesRequest,
@@ -1521,7 +1520,7 @@ export const describeScalingPolicies: API.PaginatedOperationMethod<
   DescribeScalingPoliciesRequest,
   DescribeScalingPoliciesResponse,
   DescribeScalingPoliciesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ScalingPolicy
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeScalingPoliciesRequest,
@@ -1562,7 +1561,7 @@ export const describeScheduledActions: API.PaginatedOperationMethod<
   DescribeScheduledActionsRequest,
   DescribeScheduledActionsResponse,
   DescribeScheduledActionsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ScheduledAction
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeScheduledActionsRequest,
@@ -1604,7 +1603,7 @@ export const getPredictiveScalingForecast: API.OperationMethod<
   GetPredictiveScalingForecastRequest,
   GetPredictiveScalingForecastResponse,
   GetPredictiveScalingForecastError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetPredictiveScalingForecastRequest,
   output: GetPredictiveScalingForecastResponse,
@@ -1629,7 +1628,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -1682,7 +1681,7 @@ export const putScalingPolicy: API.OperationMethod<
   PutScalingPolicyRequest,
   PutScalingPolicyResponse,
   PutScalingPolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PutScalingPolicyRequest,
   output: PutScalingPolicyResponse,
@@ -1730,7 +1729,7 @@ export const putScheduledAction: API.OperationMethod<
   PutScheduledActionRequest,
   PutScheduledActionResponse,
   PutScheduledActionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PutScheduledActionRequest,
   output: PutScheduledActionResponse,
@@ -1795,7 +1794,7 @@ export const registerScalableTarget: API.OperationMethod<
   RegisterScalableTargetRequest,
   RegisterScalableTargetResponse,
   RegisterScalableTargetError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: RegisterScalableTargetRequest,
   output: RegisterScalableTargetResponse,
@@ -1838,7 +1837,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -1864,7 +1863,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,

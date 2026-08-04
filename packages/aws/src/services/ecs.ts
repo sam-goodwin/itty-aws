@@ -8,7 +8,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 import { SensitiveString } from "../sensitive.ts";
 const ns = T.XmlNamespace("http://ecs.amazonaws.com/doc/2014-11-13/");
 const svc = T.AwsApiService({
@@ -7499,7 +7498,7 @@ export const continueServiceDeployment: API.OperationMethod<
   ContinueServiceDeploymentRequest,
   ContinueServiceDeploymentResponse,
   ContinueServiceDeploymentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ContinueServiceDeploymentRequest,
   output: ContinueServiceDeploymentResponse,
@@ -7533,7 +7532,7 @@ export const createCapacityProvider: API.OperationMethod<
   CreateCapacityProviderRequest,
   CreateCapacityProviderResponse,
   CreateCapacityProviderError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateCapacityProviderRequest,
   output: CreateCapacityProviderResponse,
@@ -7568,7 +7567,7 @@ export const createCluster: API.OperationMethod<
   CreateClusterRequest,
   CreateClusterResponse,
   CreateClusterError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateClusterRequest,
   output: CreateClusterResponse,
@@ -7606,7 +7605,7 @@ export const createDaemon: API.OperationMethod<
   CreateDaemonRequest,
   CreateDaemonResponse,
   CreateDaemonError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateDaemonRequest,
   output: CreateDaemonResponse,
@@ -7645,7 +7644,7 @@ export const createExpressGatewayService: API.OperationMethod<
   CreateExpressGatewayServiceRequest,
   CreateExpressGatewayServiceResponse,
   CreateExpressGatewayServiceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateExpressGatewayServiceRequest,
   output: CreateExpressGatewayServiceResponse,
@@ -7774,7 +7773,7 @@ export const createService: API.OperationMethod<
   CreateServiceRequest,
   CreateServiceResponse,
   CreateServiceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateServiceRequest,
   output: CreateServiceResponse,
@@ -7819,7 +7818,7 @@ export const createTaskSet: API.OperationMethod<
   CreateTaskSetRequest,
   CreateTaskSetResponse,
   CreateTaskSetError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateTaskSetRequest,
   output: CreateTaskSetResponse,
@@ -7855,7 +7854,7 @@ export const deleteAccountSetting: API.OperationMethod<
   DeleteAccountSettingRequest,
   DeleteAccountSettingResponse,
   DeleteAccountSettingError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteAccountSettingRequest,
   output: DeleteAccountSettingResponse,
@@ -7885,7 +7884,7 @@ export const deleteAttributes: API.OperationMethod<
   DeleteAttributesRequest,
   DeleteAttributesResponse,
   DeleteAttributesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteAttributesRequest,
   output: DeleteAttributesResponse,
@@ -7922,7 +7921,7 @@ export const deleteCapacityProvider: API.OperationMethod<
   DeleteCapacityProviderRequest,
   DeleteCapacityProviderResponse,
   DeleteCapacityProviderError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteCapacityProviderRequest,
   output: DeleteCapacityProviderResponse,
@@ -7961,7 +7960,7 @@ export const deleteCluster: API.OperationMethod<
   DeleteClusterRequest,
   DeleteClusterResponse,
   DeleteClusterError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteClusterRequest,
   output: DeleteClusterResponse,
@@ -8001,7 +8000,7 @@ export const deleteDaemon: API.OperationMethod<
   DeleteDaemonRequest,
   DeleteDaemonResponse,
   DeleteDaemonError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteDaemonRequest,
   output: DeleteDaemonResponse,
@@ -8035,7 +8034,7 @@ export const deleteDaemonTaskDefinition: API.OperationMethod<
   DeleteDaemonTaskDefinitionRequest,
   DeleteDaemonTaskDefinitionResponse,
   DeleteDaemonTaskDefinitionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteDaemonTaskDefinitionRequest,
   output: DeleteDaemonTaskDefinitionResponse,
@@ -8071,7 +8070,7 @@ export const deleteExpressGatewayService: API.OperationMethod<
   DeleteExpressGatewayServiceRequest,
   DeleteExpressGatewayServiceResponse,
   DeleteExpressGatewayServiceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteExpressGatewayServiceRequest,
   output: DeleteExpressGatewayServiceResponse,
@@ -8109,7 +8108,7 @@ export const deleteService: API.OperationMethod<
   DeleteServiceRequest,
   DeleteServiceResponse,
   DeleteServiceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteServiceRequest,
   output: DeleteServiceResponse,
@@ -8149,7 +8148,7 @@ export const deleteTaskDefinitions: API.OperationMethod<
   DeleteTaskDefinitionsRequest,
   DeleteTaskDefinitionsResponse,
   DeleteTaskDefinitionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteTaskDefinitionsRequest,
   output: DeleteTaskDefinitionsResponse,
@@ -8183,7 +8182,7 @@ export const deleteTaskSet: API.OperationMethod<
   DeleteTaskSetRequest,
   DeleteTaskSetResponse,
   DeleteTaskSetError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteTaskSetRequest,
   output: DeleteTaskSetResponse,
@@ -8224,7 +8223,7 @@ export const deregisterContainerInstance: API.OperationMethod<
   DeregisterContainerInstanceRequest,
   DeregisterContainerInstanceResponse,
   DeregisterContainerInstanceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeregisterContainerInstanceRequest,
   output: DeregisterContainerInstanceResponse,
@@ -8259,7 +8258,7 @@ export const deregisterTaskDefinition: API.OperationMethod<
   DeregisterTaskDefinitionRequest,
   DeregisterTaskDefinitionResponse,
   DeregisterTaskDefinitionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeregisterTaskDefinitionRequest,
   output: DeregisterTaskDefinitionResponse,
@@ -8289,7 +8288,7 @@ export const describeCapacityProviders: API.OperationMethod<
   DescribeCapacityProvidersRequest,
   DescribeCapacityProvidersResponse,
   DescribeCapacityProvidersError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeCapacityProvidersRequest,
   output: DescribeCapacityProvidersResponse,
@@ -8321,7 +8320,7 @@ export const describeClusters: API.OperationMethod<
   DescribeClustersRequest,
   DescribeClustersResponse,
   DescribeClustersError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeClustersRequest,
   output: DescribeClustersResponse,
@@ -8350,7 +8349,7 @@ export const describeContainerInstances: API.OperationMethod<
   DescribeContainerInstancesRequest,
   DescribeContainerInstancesResponse,
   DescribeContainerInstancesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeContainerInstancesRequest,
   output: DescribeContainerInstancesResponse,
@@ -8382,7 +8381,7 @@ export const describeDaemon: API.OperationMethod<
   DescribeDaemonRequest,
   DescribeDaemonResponse,
   DescribeDaemonError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeDaemonRequest,
   output: DescribeDaemonResponse,
@@ -8417,7 +8416,7 @@ export const describeDaemonDeployments: API.OperationMethod<
   DescribeDaemonDeploymentsRequest,
   DescribeDaemonDeploymentsResponse,
   DescribeDaemonDeploymentsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeDaemonDeploymentsRequest,
   output: DescribeDaemonDeploymentsResponse,
@@ -8451,7 +8450,7 @@ export const describeDaemonRevisions: API.OperationMethod<
   DescribeDaemonRevisionsRequest,
   DescribeDaemonRevisionsResponse,
   DescribeDaemonRevisionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeDaemonRevisionsRequest,
   output: DescribeDaemonRevisionsResponse,
@@ -8481,7 +8480,7 @@ export const describeDaemonTaskDefinition: API.OperationMethod<
   DescribeDaemonTaskDefinitionRequest,
   DescribeDaemonTaskDefinitionResponse,
   DescribeDaemonTaskDefinitionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeDaemonTaskDefinitionRequest,
   output: DescribeDaemonTaskDefinitionResponse,
@@ -8516,7 +8515,7 @@ export const describeExpressGatewayService: API.OperationMethod<
   DescribeExpressGatewayServiceRequest,
   DescribeExpressGatewayServiceResponse,
   DescribeExpressGatewayServiceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeExpressGatewayServiceRequest,
   output: DescribeExpressGatewayServiceResponse,
@@ -8552,7 +8551,7 @@ export const describeServiceDeployments: API.OperationMethod<
   DescribeServiceDeploymentsRequest,
   DescribeServiceDeploymentsResponse,
   DescribeServiceDeploymentsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeServiceDeploymentsRequest,
   output: DescribeServiceDeploymentsResponse,
@@ -8590,7 +8589,7 @@ export const describeServiceRevisions: API.OperationMethod<
   DescribeServiceRevisionsRequest,
   DescribeServiceRevisionsResponse,
   DescribeServiceRevisionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeServiceRevisionsRequest,
   output: DescribeServiceRevisionsResponse,
@@ -8622,7 +8621,7 @@ export const describeServices: API.OperationMethod<
   DescribeServicesRequest,
   DescribeServicesResponse,
   DescribeServicesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeServicesRequest,
   output: DescribeServicesResponse,
@@ -8653,7 +8652,7 @@ export const describeTaskDefinition: API.OperationMethod<
   DescribeTaskDefinitionRequest,
   DescribeTaskDefinitionResponse,
   DescribeTaskDefinitionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeTaskDefinitionRequest,
   output: DescribeTaskDefinitionResponse,
@@ -8686,7 +8685,7 @@ export const describeTasks: API.OperationMethod<
   DescribeTasksRequest,
   DescribeTasksResponse,
   DescribeTasksError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeTasksRequest,
   output: DescribeTasksResponse,
@@ -8719,7 +8718,7 @@ export const describeTaskSets: API.OperationMethod<
   DescribeTaskSetsRequest,
   DescribeTaskSetsResponse,
   DescribeTaskSetsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeTaskSetsRequest,
   output: DescribeTaskSetsResponse,
@@ -8753,7 +8752,7 @@ export const discoverPollEndpoint: API.OperationMethod<
   DiscoverPollEndpointRequest,
   DiscoverPollEndpointResponse,
   DiscoverPollEndpointError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DiscoverPollEndpointRequest,
   output: DiscoverPollEndpointResponse,
@@ -8787,7 +8786,7 @@ export const executeCommand: API.OperationMethod<
   ExecuteCommandRequest,
   ExecuteCommandResponse,
   ExecuteCommandError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ExecuteCommandRequest,
   output: ExecuteCommandResponse,
@@ -8820,7 +8819,7 @@ export const getTaskProtection: API.OperationMethod<
   GetTaskProtectionRequest,
   GetTaskProtectionResponse,
   GetTaskProtectionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetTaskProtectionRequest,
   output: GetTaskProtectionResponse,
@@ -8851,7 +8850,7 @@ export const listAccountSettings: API.PaginatedOperationMethod<
   ListAccountSettingsRequest,
   ListAccountSettingsResponse,
   ListAccountSettingsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   Setting
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountSettingsRequest,
@@ -8887,7 +8886,7 @@ export const listAttributes: API.PaginatedOperationMethod<
   ListAttributesRequest,
   ListAttributesResponse,
   ListAttributesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   Attribute
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAttributesRequest,
@@ -8923,7 +8922,7 @@ export const listClusters: API.PaginatedOperationMethod<
   ListClustersRequest,
   ListClustersResponse,
   ListClustersError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   string
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListClustersRequest,
@@ -8959,7 +8958,7 @@ export const listContainerInstances: API.PaginatedOperationMethod<
   ListContainerInstancesRequest,
   ListContainerInstancesResponse,
   ListContainerInstancesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   string
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListContainerInstancesRequest,
@@ -8997,7 +8996,7 @@ export const listDaemonDeployments: API.OperationMethod<
   ListDaemonDeploymentsRequest,
   ListDaemonDeploymentsResponse,
   ListDaemonDeploymentsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListDaemonDeploymentsRequest,
   output: ListDaemonDeploymentsResponse,
@@ -9029,7 +9028,7 @@ export const listDaemons: API.OperationMethod<
   ListDaemonsRequest,
   ListDaemonsResponse,
   ListDaemonsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListDaemonsRequest,
   output: ListDaemonsResponse,
@@ -9059,7 +9058,7 @@ export const listDaemonTaskDefinitions: API.OperationMethod<
   ListDaemonTaskDefinitionsRequest,
   ListDaemonTaskDefinitionsResponse,
   ListDaemonTaskDefinitionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListDaemonTaskDefinitionsRequest,
   output: ListDaemonTaskDefinitionsResponse,
@@ -9094,7 +9093,7 @@ export const listServiceDeployments: API.OperationMethod<
   ListServiceDeploymentsRequest,
   ListServiceDeploymentsResponse,
   ListServiceDeploymentsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListServiceDeploymentsRequest,
   output: ListServiceDeploymentsResponse,
@@ -9126,7 +9125,7 @@ export const listServices: API.PaginatedOperationMethod<
   ListServicesRequest,
   ListServicesResponse,
   ListServicesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   string
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListServicesRequest,
@@ -9163,7 +9162,7 @@ export const listServicesByNamespace: API.PaginatedOperationMethod<
   ListServicesByNamespaceRequest,
   ListServicesByNamespaceResponse,
   ListServicesByNamespaceError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   string
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListServicesByNamespaceRequest,
@@ -9200,7 +9199,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -9231,7 +9230,7 @@ export const listTaskDefinitionFamilies: API.PaginatedOperationMethod<
   ListTaskDefinitionFamiliesRequest,
   ListTaskDefinitionFamiliesResponse,
   ListTaskDefinitionFamiliesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   string
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTaskDefinitionFamiliesRequest,
@@ -9266,7 +9265,7 @@ export const listTaskDefinitions: API.PaginatedOperationMethod<
   ListTaskDefinitionsRequest,
   ListTaskDefinitionsResponse,
   ListTaskDefinitionsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   string
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTaskDefinitionsRequest,
@@ -9305,7 +9304,7 @@ export const listTasks: API.PaginatedOperationMethod<
   ListTasksRequest,
   ListTasksResponse,
   ListTasksError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   string
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTasksRequest,
@@ -9344,7 +9343,7 @@ export const putAccountSetting: API.OperationMethod<
   PutAccountSettingRequest,
   PutAccountSettingResponse,
   PutAccountSettingError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PutAccountSettingRequest,
   output: PutAccountSettingResponse,
@@ -9372,7 +9371,7 @@ export const putAccountSettingDefault: API.OperationMethod<
   PutAccountSettingDefaultRequest,
   PutAccountSettingDefaultResponse,
   PutAccountSettingDefaultError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PutAccountSettingDefaultRequest,
   output: PutAccountSettingDefaultResponse,
@@ -9403,7 +9402,7 @@ export const putAttributes: API.OperationMethod<
   PutAttributesRequest,
   PutAttributesResponse,
   PutAttributesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PutAttributesRequest,
   output: PutAttributesResponse,
@@ -9443,7 +9442,7 @@ export const putClusterCapacityProviders: API.OperationMethod<
   PutClusterCapacityProvidersRequest,
   PutClusterCapacityProvidersResponse,
   PutClusterCapacityProvidersError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PutClusterCapacityProvidersRequest,
   output: PutClusterCapacityProvidersResponse,
@@ -9477,7 +9476,7 @@ export const registerContainerInstance: API.OperationMethod<
   RegisterContainerInstanceRequest,
   RegisterContainerInstanceResponse,
   RegisterContainerInstanceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: RegisterContainerInstanceRequest,
   output: RegisterContainerInstanceResponse,
@@ -9511,7 +9510,7 @@ export const registerDaemonTaskDefinition: API.OperationMethod<
   RegisterDaemonTaskDefinitionRequest,
   RegisterDaemonTaskDefinitionResponse,
   RegisterDaemonTaskDefinitionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: RegisterDaemonTaskDefinitionRequest,
   output: RegisterDaemonTaskDefinitionResponse,
@@ -9545,7 +9544,7 @@ export const registerTaskDefinition: API.OperationMethod<
   RegisterTaskDefinitionRequest,
   RegisterTaskDefinitionResponse,
   RegisterTaskDefinitionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: RegisterTaskDefinitionRequest,
   output: RegisterTaskDefinitionResponse,
@@ -9608,7 +9607,7 @@ export const runTask: API.OperationMethod<
   RunTaskRequest,
   RunTaskResponse,
   RunTaskError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: RunTaskRequest,
   output: RunTaskResponse,
@@ -9653,7 +9652,7 @@ export const startTask: API.OperationMethod<
   StartTaskRequest,
   StartTaskResponse,
   StartTaskError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartTaskRequest,
   output: StartTaskResponse,
@@ -9695,7 +9694,7 @@ export const stopServiceDeployment: API.OperationMethod<
   StopServiceDeploymentRequest,
   StopServiceDeploymentResponse,
   StopServiceDeploymentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StopServiceDeploymentRequest,
   output: StopServiceDeploymentResponse,
@@ -9733,7 +9732,7 @@ export const stopTask: API.OperationMethod<
   StopTaskRequest,
   StopTaskResponse,
   StopTaskError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StopTaskRequest,
   output: StopTaskResponse,
@@ -9765,7 +9764,7 @@ export const submitAttachmentStateChanges: API.OperationMethod<
   SubmitAttachmentStateChangesRequest,
   SubmitAttachmentStateChangesResponse,
   SubmitAttachmentStateChangesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: SubmitAttachmentStateChangesRequest,
   output: SubmitAttachmentStateChangesResponse,
@@ -9797,7 +9796,7 @@ export const submitContainerStateChange: API.OperationMethod<
   SubmitContainerStateChangeRequest,
   SubmitContainerStateChangeResponse,
   SubmitContainerStateChangeError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: SubmitContainerStateChangeRequest,
   output: SubmitContainerStateChangeResponse,
@@ -9829,7 +9828,7 @@ export const submitTaskStateChange: API.OperationMethod<
   SubmitTaskStateChangeRequest,
   SubmitTaskStateChangeResponse,
   SubmitTaskStateChangeError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: SubmitTaskStateChangeRequest,
   output: SubmitTaskStateChangeResponse,
@@ -9861,7 +9860,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -9894,7 +9893,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -9928,7 +9927,7 @@ export const updateCapacityProvider: API.OperationMethod<
   UpdateCapacityProviderRequest,
   UpdateCapacityProviderResponse,
   UpdateCapacityProviderError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateCapacityProviderRequest,
   output: UpdateCapacityProviderResponse,
@@ -9960,7 +9959,7 @@ export const updateCluster: API.OperationMethod<
   UpdateClusterRequest,
   UpdateClusterResponse,
   UpdateClusterError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateClusterRequest,
   output: UpdateClusterResponse,
@@ -9992,7 +9991,7 @@ export const updateClusterSettings: API.OperationMethod<
   UpdateClusterSettingsRequest,
   UpdateClusterSettingsResponse,
   UpdateClusterSettingsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateClusterSettingsRequest,
   output: UpdateClusterSettingsResponse,
@@ -10032,7 +10031,7 @@ export const updateContainerAgent: API.OperationMethod<
   UpdateContainerAgentRequest,
   UpdateContainerAgentResponse,
   UpdateContainerAgentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateContainerAgentRequest,
   output: UpdateContainerAgentResponse,
@@ -10083,7 +10082,7 @@ export const updateContainerInstancesState: API.OperationMethod<
   UpdateContainerInstancesStateRequest,
   UpdateContainerInstancesStateResponse,
   UpdateContainerInstancesStateError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateContainerInstancesStateRequest,
   output: UpdateContainerInstancesStateResponse,
@@ -10123,7 +10122,7 @@ export const updateDaemon: API.OperationMethod<
   UpdateDaemonRequest,
   UpdateDaemonResponse,
   UpdateDaemonError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateDaemonRequest,
   output: UpdateDaemonResponse,
@@ -10164,7 +10163,7 @@ export const updateExpressGatewayService: API.OperationMethod<
   UpdateExpressGatewayServiceRequest,
   UpdateExpressGatewayServiceResponse,
   UpdateExpressGatewayServiceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateExpressGatewayServiceRequest,
   output: UpdateExpressGatewayServiceResponse,
@@ -10245,7 +10244,7 @@ export const updateService: API.OperationMethod<
   UpdateServiceRequest,
   UpdateServiceResponse,
   UpdateServiceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateServiceRequest,
   output: UpdateServiceResponse,
@@ -10285,7 +10284,7 @@ export const updateServicePrimaryTaskSet: API.OperationMethod<
   UpdateServicePrimaryTaskSetRequest,
   UpdateServicePrimaryTaskSetResponse,
   UpdateServicePrimaryTaskSetError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateServicePrimaryTaskSetRequest,
   output: UpdateServicePrimaryTaskSetResponse,
@@ -10331,7 +10330,7 @@ export const updateTaskProtection: API.OperationMethod<
   UpdateTaskProtectionRequest,
   UpdateTaskProtectionResponse,
   UpdateTaskProtectionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateTaskProtectionRequest,
   output: UpdateTaskProtectionResponse,
@@ -10368,7 +10367,7 @@ export const updateTaskSet: API.OperationMethod<
   UpdateTaskSetRequest,
   UpdateTaskSetResponse,
   UpdateTaskSetError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateTaskSetRequest,
   output: UpdateTaskSetResponse,

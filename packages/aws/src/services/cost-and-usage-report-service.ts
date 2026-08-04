@@ -7,7 +7,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 const svc = T.AwsApiService({
   sdkId: "Cost and Usage Report Service",
   serviceShapeName: "AWSOrigamiServiceGatewayService",
@@ -403,7 +402,7 @@ export const deleteReportDefinition: API.OperationMethod<
   DeleteReportDefinitionRequest,
   DeleteReportDefinitionResponse,
   DeleteReportDefinitionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteReportDefinitionRequest,
   output: DeleteReportDefinitionResponse,
@@ -423,7 +422,7 @@ export const describeReportDefinitions: API.PaginatedOperationMethod<
   DescribeReportDefinitionsRequest,
   DescribeReportDefinitionsResponse,
   DescribeReportDefinitionsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeReportDefinitionsRequest,
@@ -451,7 +450,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -477,7 +476,7 @@ export const modifyReportDefinition: API.OperationMethod<
   ModifyReportDefinitionRequest,
   ModifyReportDefinitionResponse,
   ModifyReportDefinitionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyReportDefinitionRequest,
   output: ModifyReportDefinitionResponse,
@@ -506,7 +505,7 @@ export const putReportDefinition: API.OperationMethod<
   PutReportDefinitionRequest,
   PutReportDefinitionResponse,
   PutReportDefinitionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PutReportDefinitionRequest,
   output: PutReportDefinitionResponse,
@@ -535,7 +534,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -561,7 +560,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,

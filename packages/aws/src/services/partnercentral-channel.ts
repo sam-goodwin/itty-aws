@@ -7,7 +7,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 const svc = T.AwsApiService({
   sdkId: "PartnerCentral Channel",
   serviceShapeName: "PartnerCentralChannel",
@@ -1511,7 +1510,7 @@ export const acceptChannelHandshake: API.OperationMethod<
   AcceptChannelHandshakeRequest,
   AcceptChannelHandshakeResponse,
   AcceptChannelHandshakeError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: AcceptChannelHandshakeRequest,
   output: AcceptChannelHandshakeResponse,
@@ -1541,7 +1540,7 @@ export const cancelChannelHandshake: API.OperationMethod<
   CancelChannelHandshakeRequest,
   CancelChannelHandshakeResponse,
   CancelChannelHandshakeError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CancelChannelHandshakeRequest,
   output: CancelChannelHandshakeResponse,
@@ -1573,7 +1572,7 @@ export const createChannelHandshake: API.OperationMethod<
   CreateChannelHandshakeRequest,
   CreateChannelHandshakeResponse,
   CreateChannelHandshakeError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateChannelHandshakeRequest,
   output: CreateChannelHandshakeResponse,
@@ -1607,7 +1606,7 @@ export const createProgramManagementAccount: API.OperationMethod<
   CreateProgramManagementAccountRequest,
   CreateProgramManagementAccountResponse,
   CreateProgramManagementAccountError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateProgramManagementAccountRequest,
   output: CreateProgramManagementAccountResponse,
@@ -1641,7 +1640,7 @@ export const createRelationship: API.OperationMethod<
   CreateRelationshipRequest,
   CreateRelationshipResponse,
   CreateRelationshipError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateRelationshipRequest,
   output: CreateRelationshipResponse,
@@ -1674,7 +1673,7 @@ export const deleteProgramManagementAccount: API.OperationMethod<
   DeleteProgramManagementAccountRequest,
   DeleteProgramManagementAccountResponse,
   DeleteProgramManagementAccountError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteProgramManagementAccountRequest,
   output: DeleteProgramManagementAccountResponse,
@@ -1706,7 +1705,7 @@ export const deleteRelationship: API.OperationMethod<
   DeleteRelationshipRequest,
   DeleteRelationshipResponse,
   DeleteRelationshipError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteRelationshipRequest,
   output: DeleteRelationshipResponse,
@@ -1737,7 +1736,7 @@ export const getRelationship: API.OperationMethod<
   GetRelationshipRequest,
   GetRelationshipResponse,
   GetRelationshipError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetRelationshipRequest,
   output: GetRelationshipResponse,
@@ -1767,7 +1766,7 @@ export const listChannelHandshakes: API.PaginatedOperationMethod<
   ListChannelHandshakesRequest,
   ListChannelHandshakesResponse,
   ListChannelHandshakesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ChannelHandshakeSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListChannelHandshakesRequest,
@@ -1804,7 +1803,7 @@ export const listProgramManagementAccounts: API.PaginatedOperationMethod<
   ListProgramManagementAccountsRequest,
   ListProgramManagementAccountsResponse,
   ListProgramManagementAccountsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ProgramManagementAccountSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProgramManagementAccountsRequest,
@@ -1841,7 +1840,7 @@ export const listRelationships: API.PaginatedOperationMethod<
   ListRelationshipsRequest,
   ListRelationshipsResponse,
   ListRelationshipsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   RelationshipSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRelationshipsRequest,
@@ -1878,7 +1877,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -1908,7 +1907,7 @@ export const rejectChannelHandshake: API.OperationMethod<
   RejectChannelHandshakeRequest,
   RejectChannelHandshakeResponse,
   RejectChannelHandshakeError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: RejectChannelHandshakeRequest,
   output: RejectChannelHandshakeResponse,
@@ -1939,7 +1938,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -1971,7 +1970,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -2003,7 +2002,7 @@ export const updateProgramManagementAccount: API.OperationMethod<
   UpdateProgramManagementAccountRequest,
   UpdateProgramManagementAccountResponse,
   UpdateProgramManagementAccountError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateProgramManagementAccountRequest,
   output: UpdateProgramManagementAccountResponse,
@@ -2035,7 +2034,7 @@ export const updateRelationship: API.OperationMethod<
   UpdateRelationshipRequest,
   UpdateRelationshipResponse,
   UpdateRelationshipError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateRelationshipRequest,
   output: UpdateRelationshipResponse,

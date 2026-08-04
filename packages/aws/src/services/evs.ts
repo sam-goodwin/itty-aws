@@ -8,7 +8,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 import { SensitiveString } from "../sensitive.ts";
 const svc = T.AwsApiService({
   sdkId: "evs",
@@ -1304,7 +1303,7 @@ export const associateEipToVlan: API.OperationMethod<
   AssociateEipToVlanRequest,
   AssociateEipToVlanResponse,
   AssociateEipToVlanError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: AssociateEipToVlanRequest,
   output: AssociateEipToVlanResponse,
@@ -1326,7 +1325,7 @@ export const createEntitlement: API.OperationMethod<
   CreateEntitlementRequest,
   CreateEntitlementResponse,
   CreateEntitlementError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateEntitlementRequest,
   output: CreateEntitlementResponse,
@@ -1352,7 +1351,7 @@ export const createEnvironment: API.OperationMethod<
   CreateEnvironmentRequest,
   CreateEnvironmentResponse,
   CreateEnvironmentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateEnvironmentRequest,
   output: CreateEnvironmentResponse,
@@ -1378,7 +1377,7 @@ export const createEnvironmentConnector: API.OperationMethod<
   CreateEnvironmentConnectorRequest,
   CreateEnvironmentConnectorResponse,
   CreateEnvironmentConnectorError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateEnvironmentConnectorRequest,
   output: CreateEnvironmentConnectorResponse,
@@ -1409,7 +1408,7 @@ export const createEnvironmentHost: API.OperationMethod<
   CreateEnvironmentHostRequest,
   CreateEnvironmentHostResponse,
   CreateEnvironmentHostError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateEnvironmentHostRequest,
   output: CreateEnvironmentHostResponse,
@@ -1431,7 +1430,7 @@ export const deleteEntitlement: API.OperationMethod<
   DeleteEntitlementRequest,
   DeleteEntitlementResponse,
   DeleteEntitlementError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteEntitlementRequest,
   output: DeleteEntitlementResponse,
@@ -1456,7 +1455,7 @@ export const deleteEnvironment: API.OperationMethod<
   DeleteEnvironmentRequest,
   DeleteEnvironmentResponse,
   DeleteEnvironmentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteEnvironmentRequest,
   output: DeleteEnvironmentResponse,
@@ -1480,7 +1479,7 @@ export const deleteEnvironmentConnector: API.OperationMethod<
   DeleteEnvironmentConnectorRequest,
   DeleteEnvironmentConnectorResponse,
   DeleteEnvironmentConnectorError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteEnvironmentConnectorRequest,
   output: DeleteEnvironmentConnectorResponse,
@@ -1503,7 +1502,7 @@ export const deleteEnvironmentHost: API.OperationMethod<
   DeleteEnvironmentHostRequest,
   DeleteEnvironmentHostResponse,
   DeleteEnvironmentHostError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteEnvironmentHostRequest,
   output: DeleteEnvironmentHostResponse,
@@ -1525,7 +1524,7 @@ export const disassociateEipFromVlan: API.OperationMethod<
   DisassociateEipFromVlanRequest,
   DisassociateEipFromVlanResponse,
   DisassociateEipFromVlanError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DisassociateEipFromVlanRequest,
   output: DisassociateEipFromVlanResponse,
@@ -1549,7 +1548,7 @@ export const getDepotUrl: API.OperationMethod<
   GetDepotUrlRequest,
   GetDepotUrlResponse,
   GetDepotUrlError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetDepotUrlRequest,
   output: GetDepotUrlResponse,
@@ -1570,7 +1569,7 @@ export const getEnvironment: API.OperationMethod<
   GetEnvironmentRequest,
   GetEnvironmentResponse,
   GetEnvironmentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetEnvironmentRequest,
   output: GetEnvironmentResponse,
@@ -1591,7 +1590,7 @@ export const getVersions: API.OperationMethod<
   GetVersionsRequest,
   GetVersionsResponse,
   GetVersionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetVersionsRequest,
   output: GetVersionsResponse,
@@ -1612,7 +1611,7 @@ export const listEnvironmentConnectors: API.PaginatedOperationMethod<
   ListEnvironmentConnectorsRequest,
   ListEnvironmentConnectorsResponse,
   ListEnvironmentConnectorsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   Connector
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEnvironmentConnectorsRequest,
@@ -1640,7 +1639,7 @@ export const listEnvironmentHosts: API.PaginatedOperationMethod<
   ListEnvironmentHostsRequest,
   ListEnvironmentHostsResponse,
   ListEnvironmentHostsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   Host
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEnvironmentHostsRequest,
@@ -1665,7 +1664,7 @@ export const listEnvironments: API.PaginatedOperationMethod<
   ListEnvironmentsRequest,
   ListEnvironmentsResponse,
   ListEnvironmentsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   EnvironmentSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEnvironmentsRequest,
@@ -1693,7 +1692,7 @@ export const listEnvironmentVlans: API.PaginatedOperationMethod<
   ListEnvironmentVlansRequest,
   ListEnvironmentVlansResponse,
   ListEnvironmentVlansError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   Vlan
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEnvironmentVlansRequest,
@@ -1718,7 +1717,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -1739,7 +1738,7 @@ export const listVmEntitlements: API.PaginatedOperationMethod<
   ListVmEntitlementsRequest,
   ListVmEntitlementsResponse,
   ListVmEntitlementsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   VmEntitlement
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListVmEntitlementsRequest,
@@ -1769,7 +1768,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -1795,7 +1794,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -1819,7 +1818,7 @@ export const updateEnvironmentConnector: API.OperationMethod<
   UpdateEnvironmentConnectorRequest,
   UpdateEnvironmentConnectorResponse,
   UpdateEnvironmentConnectorError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateEnvironmentConnectorRequest,
   output: UpdateEnvironmentConnectorResponse,

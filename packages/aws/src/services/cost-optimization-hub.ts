@@ -7,7 +7,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 const svc = T.AwsApiService({
   sdkId: "Cost Optimization Hub",
   serviceShapeName: "CostOptimizationHubService",
@@ -2290,7 +2289,7 @@ export const getPreferences: API.OperationMethod<
   GetPreferencesRequest,
   GetPreferencesResponse,
   GetPreferencesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetPreferencesRequest,
   output: GetPreferencesResponse,
@@ -2321,7 +2320,7 @@ export const getRecommendation: API.OperationMethod<
   GetRecommendationRequest,
   GetRecommendationResponse,
   GetRecommendationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetRecommendationRequest,
   output: GetRecommendationResponse,
@@ -2352,7 +2351,7 @@ export const listEfficiencyMetrics: API.PaginatedOperationMethod<
   ListEfficiencyMetricsRequest,
   ListEfficiencyMetricsResponse,
   ListEfficiencyMetricsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   EfficiencyMetricsByGroup
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEfficiencyMetricsRequest,
@@ -2387,7 +2386,7 @@ export const listEnrollmentStatuses: API.PaginatedOperationMethod<
   ListEnrollmentStatusesRequest,
   ListEnrollmentStatusesResponse,
   ListEnrollmentStatusesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   AccountEnrollmentStatus
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEnrollmentStatusesRequest,
@@ -2422,7 +2421,7 @@ export const listRecommendations: API.PaginatedOperationMethod<
   ListRecommendationsRequest,
   ListRecommendationsResponse,
   ListRecommendationsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   Recommendation
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRecommendationsRequest,
@@ -2459,7 +2458,7 @@ export const listRecommendationSummaries: API.PaginatedOperationMethod<
   ListRecommendationSummariesRequest,
   ListRecommendationSummariesResponse,
   ListRecommendationSummariesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   RecommendationSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRecommendationSummariesRequest,
@@ -2498,7 +2497,7 @@ export const updateEnrollmentStatus: API.OperationMethod<
   UpdateEnrollmentStatusRequest,
   UpdateEnrollmentStatusResponse,
   UpdateEnrollmentStatusError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateEnrollmentStatusRequest,
   output: UpdateEnrollmentStatusResponse,
@@ -2526,7 +2525,7 @@ export const updatePreferences: API.OperationMethod<
   UpdatePreferencesRequest,
   UpdatePreferencesResponse,
   UpdatePreferencesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdatePreferencesRequest,
   output: UpdatePreferencesResponse,

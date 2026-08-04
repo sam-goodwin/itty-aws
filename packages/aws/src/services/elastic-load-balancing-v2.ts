@@ -8,7 +8,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 import { SensitiveString } from "../sensitive.ts";
 const ns = T.XmlNamespace(
   "http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/",
@@ -3894,7 +3893,7 @@ export const addListenerCertificates: API.OperationMethod<
   AddListenerCertificatesInput,
   AddListenerCertificatesOutput,
   AddListenerCertificatesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: AddListenerCertificatesInput,
   output: AddListenerCertificatesOutput,
@@ -3929,7 +3928,7 @@ export const addTags: API.OperationMethod<
   AddTagsInput,
   AddTagsOutput,
   AddTagsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: AddTagsInput,
   output: AddTagsOutput,
@@ -3960,7 +3959,7 @@ export const addTrustStoreRevocations: API.OperationMethod<
   AddTrustStoreRevocationsInput,
   AddTrustStoreRevocationsOutput,
   AddTrustStoreRevocationsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: AddTrustStoreRevocationsInput,
   output: AddTrustStoreRevocationsOutput,
@@ -4019,7 +4018,7 @@ export const createListener: API.OperationMethod<
   CreateListenerInput,
   CreateListenerOutput,
   CreateListenerError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateListenerInput,
   output: CreateListenerOutput,
@@ -4086,7 +4085,7 @@ export const createLoadBalancer: API.OperationMethod<
   CreateLoadBalancerInput,
   CreateLoadBalancerOutput,
   CreateLoadBalancerError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateLoadBalancerInput,
   output: CreateLoadBalancerOutput,
@@ -4141,7 +4140,7 @@ export const createRule: API.OperationMethod<
   CreateRuleInput,
   CreateRuleOutput,
   CreateRuleError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateRuleInput,
   output: CreateRuleOutput,
@@ -4194,7 +4193,7 @@ export const createTargetGroup: API.OperationMethod<
   CreateTargetGroupInput,
   CreateTargetGroupOutput,
   CreateTargetGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateTargetGroupInput,
   output: CreateTargetGroupOutput,
@@ -4226,7 +4225,7 @@ export const createTrustStore: API.OperationMethod<
   CreateTrustStoreInput,
   CreateTrustStoreOutput,
   CreateTrustStoreError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateTrustStoreInput,
   output: CreateTrustStoreOutput,
@@ -4257,7 +4256,7 @@ export const deleteListener: API.OperationMethod<
   DeleteListenerInput,
   DeleteListenerOutput,
   DeleteListenerError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteListenerInput,
   output: DeleteListenerOutput,
@@ -4287,7 +4286,7 @@ export const deleteLoadBalancer: API.OperationMethod<
   DeleteLoadBalancerInput,
   DeleteLoadBalancerOutput,
   DeleteLoadBalancerError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteLoadBalancerInput,
   output: DeleteLoadBalancerOutput,
@@ -4314,7 +4313,7 @@ export const deleteRule: API.OperationMethod<
   DeleteRuleInput,
   DeleteRuleOutput,
   DeleteRuleError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteRuleInput,
   output: DeleteRuleOutput,
@@ -4336,7 +4335,7 @@ export const deleteSharedTrustStoreAssociation: API.OperationMethod<
   DeleteSharedTrustStoreAssociationInput,
   DeleteSharedTrustStoreAssociationOutput,
   DeleteSharedTrustStoreAssociationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteSharedTrustStoreAssociationInput,
   output: DeleteSharedTrustStoreAssociationOutput,
@@ -4363,7 +4362,7 @@ export const deleteTargetGroup: API.OperationMethod<
   DeleteTargetGroupInput,
   DeleteTargetGroupOutput,
   DeleteTargetGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteTargetGroupInput,
   output: DeleteTargetGroupOutput,
@@ -4384,7 +4383,7 @@ export const deleteTrustStore: API.OperationMethod<
   DeleteTrustStoreInput,
   DeleteTrustStoreOutput,
   DeleteTrustStoreError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteTrustStoreInput,
   output: DeleteTrustStoreOutput,
@@ -4423,7 +4422,7 @@ export const deregisterTargets: API.OperationMethod<
   DeregisterTargetsInput,
   DeregisterTargetsOutput,
   DeregisterTargetsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeregisterTargetsInput,
   output: DeregisterTargetsOutput,
@@ -4453,7 +4452,7 @@ export const describeAccountLimits: API.PaginatedOperationMethod<
   DescribeAccountLimitsInput,
   DescribeAccountLimitsOutput,
   DescribeAccountLimitsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   Limit
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeAccountLimitsInput,
@@ -4479,7 +4478,7 @@ export const describeCapacityReservation: API.OperationMethod<
   DescribeCapacityReservationInput,
   DescribeCapacityReservationOutput,
   DescribeCapacityReservationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeCapacityReservationInput,
   output: DescribeCapacityReservationOutput,
@@ -4499,7 +4498,7 @@ export const describeListenerAttributes: API.OperationMethod<
   DescribeListenerAttributesInput,
   DescribeListenerAttributesOutput,
   DescribeListenerAttributesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeListenerAttributesInput,
   output: DescribeListenerAttributesOutput,
@@ -4528,7 +4527,7 @@ export const describeListenerCertificates: API.PaginatedOperationMethod<
   DescribeListenerCertificatesInput,
   DescribeListenerCertificatesOutput,
   DescribeListenerCertificatesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   Certificate
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeListenerCertificatesInput,
@@ -4558,7 +4557,7 @@ export const describeListeners: API.PaginatedOperationMethod<
   DescribeListenersInput,
   DescribeListenersOutput,
   DescribeListenersError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   Listener
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeListenersInput,
@@ -4600,7 +4599,7 @@ export const describeLoadBalancerAttributes: API.OperationMethod<
   DescribeLoadBalancerAttributesInput,
   DescribeLoadBalancerAttributesOutput,
   DescribeLoadBalancerAttributesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeLoadBalancerAttributesInput,
   output: DescribeLoadBalancerAttributesOutput,
@@ -4620,7 +4619,7 @@ export const describeLoadBalancers: API.PaginatedOperationMethod<
   DescribeLoadBalancersInput,
   DescribeLoadBalancersOutput,
   DescribeLoadBalancersError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   LoadBalancer
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeLoadBalancersInput,
@@ -4649,7 +4648,7 @@ export const describeRules: API.PaginatedOperationMethod<
   DescribeRulesInput,
   DescribeRulesOutput,
   DescribeRulesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   Rule
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeRulesInput,
@@ -4682,7 +4681,7 @@ export const describeSSLPolicies: API.OperationMethod<
   DescribeSSLPoliciesInput,
   DescribeSSLPoliciesOutput,
   DescribeSSLPoliciesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeSSLPoliciesInput,
   output: DescribeSSLPoliciesOutput,
@@ -4708,7 +4707,7 @@ export const describeTags: API.OperationMethod<
   DescribeTagsInput,
   DescribeTagsOutput,
   DescribeTagsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeTagsInput,
   output: DescribeTagsOutput,
@@ -4745,7 +4744,7 @@ export const describeTargetGroupAttributes: API.OperationMethod<
   DescribeTargetGroupAttributesInput,
   DescribeTargetGroupAttributesOutput,
   DescribeTargetGroupAttributesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeTargetGroupAttributesInput,
   output: DescribeTargetGroupAttributesOutput,
@@ -4769,7 +4768,7 @@ export const describeTargetGroups: API.PaginatedOperationMethod<
   DescribeTargetGroupsInput,
   DescribeTargetGroupsOutput,
   DescribeTargetGroupsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   TargetGroup
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeTargetGroupsInput,
@@ -4797,7 +4796,7 @@ export const describeTargetHealth: API.OperationMethod<
   DescribeTargetHealthInput,
   DescribeTargetHealthOutput,
   DescribeTargetHealthError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeTargetHealthInput,
   output: DescribeTargetHealthOutput,
@@ -4821,7 +4820,7 @@ export const describeTrustStoreAssociations: API.PaginatedOperationMethod<
   DescribeTrustStoreAssociationsInput,
   DescribeTrustStoreAssociationsOutput,
   DescribeTrustStoreAssociationsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   TrustStoreAssociation
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeTrustStoreAssociationsInput,
@@ -4850,7 +4849,7 @@ export const describeTrustStoreRevocations: API.PaginatedOperationMethod<
   DescribeTrustStoreRevocationsInput,
   DescribeTrustStoreRevocationsOutput,
   DescribeTrustStoreRevocationsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   DescribeTrustStoreRevocation
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeTrustStoreRevocationsInput,
@@ -4877,7 +4876,7 @@ export const describeTrustStores: API.PaginatedOperationMethod<
   DescribeTrustStoresInput,
   DescribeTrustStoresOutput,
   DescribeTrustStoresError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   TrustStore
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeTrustStoresInput,
@@ -4902,7 +4901,7 @@ export const getResourcePolicy: API.OperationMethod<
   GetResourcePolicyInput,
   GetResourcePolicyOutput,
   GetResourcePolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetResourcePolicyInput,
   output: GetResourcePolicyOutput,
@@ -4925,7 +4924,7 @@ export const getTrustStoreCaCertificatesBundle: API.OperationMethod<
   GetTrustStoreCaCertificatesBundleInput,
   GetTrustStoreCaCertificatesBundleOutput,
   GetTrustStoreCaCertificatesBundleError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetTrustStoreCaCertificatesBundleInput,
   output: GetTrustStoreCaCertificatesBundleOutput,
@@ -4949,7 +4948,7 @@ export const getTrustStoreRevocationContent: API.OperationMethod<
   GetTrustStoreRevocationContentInput,
   GetTrustStoreRevocationContentOutput,
   GetTrustStoreRevocationContentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetTrustStoreRevocationContentInput,
   output: GetTrustStoreRevocationContentOutput,
@@ -4979,7 +4978,7 @@ export const modifyCapacityReservation: API.OperationMethod<
   ModifyCapacityReservationInput,
   ModifyCapacityReservationOutput,
   ModifyCapacityReservationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyCapacityReservationInput,
   output: ModifyCapacityReservationOutput,
@@ -5006,7 +5005,7 @@ export const modifyIpPools: API.OperationMethod<
   ModifyIpPoolsInput,
   ModifyIpPoolsOutput,
   ModifyIpPoolsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyIpPoolsInput,
   output: ModifyIpPoolsOutput,
@@ -5053,7 +5052,7 @@ export const modifyListener: API.OperationMethod<
   ModifyListenerInput,
   ModifyListenerOutput,
   ModifyListenerError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyListenerInput,
   output: ModifyListenerOutput,
@@ -5094,7 +5093,7 @@ export const modifyListenerAttributes: API.OperationMethod<
   ModifyListenerAttributesInput,
   ModifyListenerAttributesOutput,
   ModifyListenerAttributesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyListenerAttributesInput,
   output: ModifyListenerAttributesOutput,
@@ -5119,7 +5118,7 @@ export const modifyLoadBalancerAttributes: API.OperationMethod<
   ModifyLoadBalancerAttributesInput,
   ModifyLoadBalancerAttributesOutput,
   ModifyLoadBalancerAttributesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyLoadBalancerAttributesInput,
   output: ModifyLoadBalancerAttributesOutput,
@@ -5154,7 +5153,7 @@ export const modifyRule: API.OperationMethod<
   ModifyRuleInput,
   ModifyRuleOutput,
   ModifyRuleError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyRuleInput,
   output: ModifyRuleOutput,
@@ -5188,7 +5187,7 @@ export const modifyTargetGroup: API.OperationMethod<
   ModifyTargetGroupInput,
   ModifyTargetGroupOutput,
   ModifyTargetGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyTargetGroupInput,
   output: ModifyTargetGroupOutput,
@@ -5209,7 +5208,7 @@ export const modifyTargetGroupAttributes: API.OperationMethod<
   ModifyTargetGroupAttributesInput,
   ModifyTargetGroupAttributesOutput,
   ModifyTargetGroupAttributesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyTargetGroupAttributesInput,
   output: ModifyTargetGroupAttributesOutput,
@@ -5231,7 +5230,7 @@ export const modifyTrustStore: API.OperationMethod<
   ModifyTrustStoreInput,
   ModifyTrustStoreOutput,
   ModifyTrustStoreError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyTrustStoreInput,
   output: ModifyTrustStoreOutput,
@@ -5277,7 +5276,7 @@ export const registerTargets: API.OperationMethod<
   RegisterTargetsInput,
   RegisterTargetsOutput,
   RegisterTargetsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: RegisterTargetsInput,
   output: RegisterTargetsOutput,
@@ -5304,7 +5303,7 @@ export const removeListenerCertificates: API.OperationMethod<
   RemoveListenerCertificatesInput,
   RemoveListenerCertificatesOutput,
   RemoveListenerCertificatesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: RemoveListenerCertificatesInput,
   output: RemoveListenerCertificatesOutput,
@@ -5331,7 +5330,7 @@ export const removeTags: API.OperationMethod<
   RemoveTagsInput,
   RemoveTagsOutput,
   RemoveTagsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: RemoveTagsInput,
   output: RemoveTagsOutput,
@@ -5359,7 +5358,7 @@ export const removeTrustStoreRevocations: API.OperationMethod<
   RemoveTrustStoreRevocationsInput,
   RemoveTrustStoreRevocationsOutput,
   RemoveTrustStoreRevocationsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: RemoveTrustStoreRevocationsInput,
   output: RemoveTrustStoreRevocationsOutput,
@@ -5381,7 +5380,7 @@ export const setIpAddressType: API.OperationMethod<
   SetIpAddressTypeInput,
   SetIpAddressTypeOutput,
   SetIpAddressTypeError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: SetIpAddressTypeInput,
   output: SetIpAddressTypeOutput,
@@ -5410,7 +5409,7 @@ export const setRulePriorities: API.OperationMethod<
   SetRulePrioritiesInput,
   SetRulePrioritiesOutput,
   SetRulePrioritiesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: SetRulePrioritiesInput,
   output: SetRulePrioritiesOutput,
@@ -5443,7 +5442,7 @@ export const setSecurityGroups: API.OperationMethod<
   SetSecurityGroupsInput,
   SetSecurityGroupsOutput,
   SetSecurityGroupsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: SetSecurityGroupsInput,
   output: SetSecurityGroupsOutput,
@@ -5475,7 +5474,7 @@ export const setSubnets: API.OperationMethod<
   SetSubnetsInput,
   SetSubnetsOutput,
   SetSubnetsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: SetSubnetsInput,
   output: SetSubnetsOutput,

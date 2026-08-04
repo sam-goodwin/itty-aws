@@ -7,7 +7,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 const svc = T.AwsApiService({
   sdkId: "ElementalInference",
   serviceShapeName: "ElementalInference",
@@ -922,7 +921,7 @@ export const associateFeed: API.OperationMethod<
   AssociateFeedRequest,
   AssociateFeedResponse,
   AssociateFeedError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: AssociateFeedRequest,
   output: AssociateFeedResponse,
@@ -955,7 +954,7 @@ export const createDictionary: API.OperationMethod<
   CreateDictionaryRequest,
   CreateDictionaryResponse,
   CreateDictionaryError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateDictionaryRequest,
   output: CreateDictionaryResponse,
@@ -989,7 +988,7 @@ export const createFeed: API.OperationMethod<
   CreateFeedRequest,
   CreateFeedResponse,
   CreateFeedError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateFeedRequest,
   output: CreateFeedResponse,
@@ -1021,7 +1020,7 @@ export const deleteDictionary: API.OperationMethod<
   DeleteDictionaryRequest,
   DeleteDictionaryResponse,
   DeleteDictionaryError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteDictionaryRequest,
   output: DeleteDictionaryResponse,
@@ -1053,7 +1052,7 @@ export const deleteFeed: API.OperationMethod<
   DeleteFeedRequest,
   DeleteFeedResponse,
   DeleteFeedError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteFeedRequest,
   output: DeleteFeedResponse,
@@ -1085,7 +1084,7 @@ export const disassociateFeed: API.OperationMethod<
   DisassociateFeedRequest,
   DisassociateFeedResponse,
   DisassociateFeedError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DisassociateFeedRequest,
   output: DisassociateFeedResponse,
@@ -1116,7 +1115,7 @@ export const exportDictionaryEntries: API.OperationMethod<
   ExportDictionaryEntriesRequest,
   ExportDictionaryEntriesResponse,
   ExportDictionaryEntriesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ExportDictionaryEntriesRequest,
   output: ExportDictionaryEntriesResponse,
@@ -1146,7 +1145,7 @@ export const getDictionary: API.OperationMethod<
   GetDictionaryRequest,
   GetDictionaryResponse,
   GetDictionaryError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetDictionaryRequest,
   output: GetDictionaryResponse,
@@ -1175,7 +1174,7 @@ export const getFeed: API.OperationMethod<
   GetFeedRequest,
   GetFeedResponse,
   GetFeedError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetFeedRequest,
   output: GetFeedResponse,
@@ -1203,7 +1202,7 @@ export const listDictionaries: API.PaginatedOperationMethod<
   ListDictionariesRequest,
   ListDictionariesResponse,
   ListDictionariesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   DictionarySummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDictionariesRequest,
@@ -1239,7 +1238,7 @@ export const listFeeds: API.PaginatedOperationMethod<
   ListFeedsRequest,
   ListFeedsResponse,
   ListFeedsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   FeedSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFeedsRequest,
@@ -1276,7 +1275,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -1307,7 +1306,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -1339,7 +1338,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -1371,7 +1370,7 @@ export const updateDictionary: API.OperationMethod<
   UpdateDictionaryRequest,
   UpdateDictionaryResponse,
   UpdateDictionaryError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateDictionaryRequest,
   output: UpdateDictionaryResponse,
@@ -1410,7 +1409,7 @@ export const updateFeed: API.OperationMethod<
   UpdateFeedRequest,
   UpdateFeedResponse,
   UpdateFeedError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateFeedRequest,
   output: UpdateFeedResponse,

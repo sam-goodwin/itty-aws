@@ -8,7 +8,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region as Rgn } from "../region.ts";
 import { SensitiveString } from "../sensitive.ts";
 const svc = T.AwsApiService({ sdkId: "Account", serviceShapeName: "Account" });
 const auth = T.AwsAuthSigv4({ name: "account" });
@@ -715,7 +714,7 @@ export const acceptPrimaryEmailUpdate: API.OperationMethod<
   AcceptPrimaryEmailUpdateRequest,
   AcceptPrimaryEmailUpdateResponse,
   AcceptPrimaryEmailUpdateError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: AcceptPrimaryEmailUpdateRequest,
   output: AcceptPrimaryEmailUpdateResponse,
@@ -750,7 +749,7 @@ export const deleteAlternateContact: API.OperationMethod<
   DeleteAlternateContactRequest,
   DeleteAlternateContactResponse,
   DeleteAlternateContactError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteAlternateContactRequest,
   output: DeleteAlternateContactResponse,
@@ -782,7 +781,7 @@ export const disableRegion: API.OperationMethod<
   DisableRegionRequest,
   DisableRegionResponse,
   DisableRegionError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DisableRegionRequest,
   output: DisableRegionResponse,
@@ -812,7 +811,7 @@ export const enableRegion: API.OperationMethod<
   EnableRegionRequest,
   EnableRegionResponse,
   EnableRegionError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: EnableRegionRequest,
   output: EnableRegionResponse,
@@ -841,7 +840,7 @@ export const getAccountInformation: API.OperationMethod<
   GetAccountInformationRequest,
   GetAccountInformationResponse,
   GetAccountInformationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetAccountInformationRequest,
   output: GetAccountInformationResponse,
@@ -874,7 +873,7 @@ export const getAlternateContact: API.OperationMethod<
   GetAlternateContactRequest,
   GetAlternateContactResponse,
   GetAlternateContactError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetAlternateContactRequest,
   output: GetAlternateContactResponse,
@@ -906,7 +905,7 @@ export const getContactInformation: API.OperationMethod<
   GetContactInformationRequest,
   GetContactInformationResponse,
   GetContactInformationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetContactInformationRequest,
   output: GetContactInformationResponse,
@@ -937,7 +936,7 @@ export const getGovCloudAccountInformation: API.OperationMethod<
   GetGovCloudAccountInformationRequest,
   GetGovCloudAccountInformationResponse,
   GetGovCloudAccountInformationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetGovCloudAccountInformationRequest,
   output: GetGovCloudAccountInformationResponse,
@@ -968,7 +967,7 @@ export const getPrimaryEmail: API.OperationMethod<
   GetPrimaryEmailRequest,
   GetPrimaryEmailResponse,
   GetPrimaryEmailError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetPrimaryEmailRequest,
   output: GetPrimaryEmailResponse,
@@ -997,7 +996,7 @@ export const getRegionOptStatus: API.OperationMethod<
   GetRegionOptStatusRequest,
   GetRegionOptStatusResponse,
   GetRegionOptStatusError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetRegionOptStatusRequest,
   output: GetRegionOptStatusResponse,
@@ -1025,7 +1024,7 @@ export const listRegions: API.PaginatedOperationMethod<
   ListRegionsRequest,
   ListRegionsResponse,
   ListRegionsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   Region
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRegionsRequest,
@@ -1060,7 +1059,7 @@ export const putAccountName: API.OperationMethod<
   PutAccountNameRequest,
   PutAccountNameResponse,
   PutAccountNameError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PutAccountNameRequest,
   output: PutAccountNameResponse,
@@ -1092,7 +1091,7 @@ export const putAlternateContact: API.OperationMethod<
   PutAlternateContactRequest,
   PutAlternateContactResponse,
   PutAlternateContactError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PutAlternateContactRequest,
   output: PutAlternateContactResponse,
@@ -1122,7 +1121,7 @@ export const putContactInformation: API.OperationMethod<
   PutContactInformationRequest,
   PutContactInformationResponse,
   PutContactInformationError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PutContactInformationRequest,
   output: PutContactInformationResponse,
@@ -1152,7 +1151,7 @@ export const startPrimaryEmailUpdate: API.OperationMethod<
   StartPrimaryEmailUpdateRequest,
   StartPrimaryEmailUpdateResponse,
   StartPrimaryEmailUpdateError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartPrimaryEmailUpdateRequest,
   output: StartPrimaryEmailUpdateResponse,

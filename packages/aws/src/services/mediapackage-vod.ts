@@ -7,7 +7,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 const svc = T.AwsApiService({
   sdkId: "MediaPackage Vod",
   serviceShapeName: "MediaPackageVod",
@@ -1596,7 +1595,7 @@ export const configureLogs: API.OperationMethod<
   ConfigureLogsRequest,
   ConfigureLogsResponse,
   ConfigureLogsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ConfigureLogsRequest,
   output: ConfigureLogsResponse,
@@ -1628,7 +1627,7 @@ export const createAsset: API.OperationMethod<
   CreateAssetRequest,
   CreateAssetResponse,
   CreateAssetError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateAssetRequest,
   output: CreateAssetResponse,
@@ -1660,7 +1659,7 @@ export const createPackagingConfiguration: API.OperationMethod<
   CreatePackagingConfigurationRequest,
   CreatePackagingConfigurationResponse,
   CreatePackagingConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreatePackagingConfigurationRequest,
   output: CreatePackagingConfigurationResponse,
@@ -1692,7 +1691,7 @@ export const createPackagingGroup: API.OperationMethod<
   CreatePackagingGroupRequest,
   CreatePackagingGroupResponse,
   CreatePackagingGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreatePackagingGroupRequest,
   output: CreatePackagingGroupResponse,
@@ -1724,7 +1723,7 @@ export const deleteAsset: API.OperationMethod<
   DeleteAssetRequest,
   DeleteAssetResponse,
   DeleteAssetError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteAssetRequest,
   output: DeleteAssetResponse,
@@ -1756,7 +1755,7 @@ export const deletePackagingConfiguration: API.OperationMethod<
   DeletePackagingConfigurationRequest,
   DeletePackagingConfigurationResponse,
   DeletePackagingConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeletePackagingConfigurationRequest,
   output: DeletePackagingConfigurationResponse,
@@ -1788,7 +1787,7 @@ export const deletePackagingGroup: API.OperationMethod<
   DeletePackagingGroupRequest,
   DeletePackagingGroupResponse,
   DeletePackagingGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeletePackagingGroupRequest,
   output: DeletePackagingGroupResponse,
@@ -1820,7 +1819,7 @@ export const describeAsset: API.OperationMethod<
   DescribeAssetRequest,
   DescribeAssetResponse,
   DescribeAssetError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeAssetRequest,
   output: DescribeAssetResponse,
@@ -1852,7 +1851,7 @@ export const describePackagingConfiguration: API.OperationMethod<
   DescribePackagingConfigurationRequest,
   DescribePackagingConfigurationResponse,
   DescribePackagingConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribePackagingConfigurationRequest,
   output: DescribePackagingConfigurationResponse,
@@ -1884,7 +1883,7 @@ export const describePackagingGroup: API.OperationMethod<
   DescribePackagingGroupRequest,
   DescribePackagingGroupResponse,
   DescribePackagingGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribePackagingGroupRequest,
   output: DescribePackagingGroupResponse,
@@ -1916,7 +1915,7 @@ export const listAssets: API.PaginatedOperationMethod<
   ListAssetsRequest,
   ListAssetsResponse,
   ListAssetsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   AssetShallow
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAssetsRequest,
@@ -1955,7 +1954,7 @@ export const listPackagingConfigurations: API.PaginatedOperationMethod<
   ListPackagingConfigurationsRequest,
   ListPackagingConfigurationsResponse,
   ListPackagingConfigurationsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   PackagingConfiguration
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPackagingConfigurationsRequest,
@@ -1994,7 +1993,7 @@ export const listPackagingGroups: API.PaginatedOperationMethod<
   ListPackagingGroupsRequest,
   ListPackagingGroupsResponse,
   ListPackagingGroupsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   PackagingGroup
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPackagingGroupsRequest,
@@ -2026,7 +2025,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -2044,7 +2043,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -2062,7 +2061,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -2087,7 +2086,7 @@ export const updatePackagingGroup: API.OperationMethod<
   UpdatePackagingGroupRequest,
   UpdatePackagingGroupResponse,
   UpdatePackagingGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdatePackagingGroupRequest,
   output: UpdatePackagingGroupResponse,

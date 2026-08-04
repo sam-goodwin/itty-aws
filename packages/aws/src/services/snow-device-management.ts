@@ -7,7 +7,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 const svc = T.AwsApiService({
   sdkId: "Snow Device Management",
   serviceShapeName: "SnowDeviceManagement",
@@ -869,7 +868,7 @@ export const cancelTask: API.OperationMethod<
   CancelTaskInput,
   CancelTaskOutput,
   CancelTaskError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CancelTaskInput,
   output: CancelTaskOutput,
@@ -900,7 +899,7 @@ export const createTask: API.OperationMethod<
   CreateTaskInput,
   CreateTaskOutput,
   CreateTaskError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateTaskInput,
   output: CreateTaskOutput,
@@ -932,7 +931,7 @@ export const describeDevice: API.OperationMethod<
   DescribeDeviceInput,
   DescribeDeviceOutput,
   DescribeDeviceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeDeviceInput,
   output: DescribeDeviceOutput,
@@ -964,7 +963,7 @@ export const describeDeviceEc2Instances: API.OperationMethod<
   DescribeDeviceEc2Input,
   DescribeDeviceEc2Output,
   DescribeDeviceEc2InstancesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeDeviceEc2Input,
   output: DescribeDeviceEc2Output,
@@ -994,7 +993,7 @@ export const describeExecution: API.OperationMethod<
   DescribeExecutionInput,
   DescribeExecutionOutput,
   DescribeExecutionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeExecutionInput,
   output: DescribeExecutionOutput,
@@ -1024,7 +1023,7 @@ export const describeTask: API.OperationMethod<
   DescribeTaskInput,
   DescribeTaskOutput,
   DescribeTaskError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeTaskInput,
   output: DescribeTaskOutput,
@@ -1054,7 +1053,7 @@ export const listDeviceResources: API.PaginatedOperationMethod<
   ListDeviceResourcesInput,
   ListDeviceResourcesOutput,
   ListDeviceResourcesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ResourceSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDeviceResourcesInput,
@@ -1091,7 +1090,7 @@ export const listDevices: API.PaginatedOperationMethod<
   ListDevicesInput,
   ListDevicesOutput,
   ListDevicesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   DeviceSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDevicesInput,
@@ -1127,7 +1126,7 @@ export const listExecutions: API.PaginatedOperationMethod<
   ListExecutionsInput,
   ListExecutionsOutput,
   ListExecutionsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ExecutionSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListExecutionsInput,
@@ -1162,7 +1161,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceInput,
   ListTagsForResourceOutput,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceInput,
   output: ListTagsForResourceOutput,
@@ -1189,7 +1188,7 @@ export const listTasks: API.PaginatedOperationMethod<
   ListTasksInput,
   ListTasksOutput,
   ListTasksError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   TaskSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTasksInput,
@@ -1223,7 +1222,7 @@ export const tagResource: API.OperationMethod<
   TagResourceInput,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: TagResourceInput,
   output: TagResourceResponse,
@@ -1249,7 +1248,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceInput,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceInput,
   output: UntagResourceResponse,

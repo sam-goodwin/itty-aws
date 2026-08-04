@@ -8,7 +8,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 import { SensitiveString, SensitiveBlob } from "../sensitive.ts";
 const svc = T.AwsApiService({
   sdkId: "ACM",
@@ -1559,7 +1558,7 @@ export const addTagsToCertificate: API.OperationMethod<
   AddTagsToCertificateRequest,
   AddTagsToCertificateResponse,
   AddTagsToCertificateError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: AddTagsToCertificateRequest,
   output: AddTagsToCertificateResponse,
@@ -1598,7 +1597,7 @@ export const deleteCertificate: API.OperationMethod<
   DeleteCertificateRequest,
   DeleteCertificateResponse,
   DeleteCertificateError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteCertificateRequest,
   output: DeleteCertificateResponse,
@@ -1628,7 +1627,7 @@ export const describeCertificate: API.OperationMethod<
   DescribeCertificateRequest,
   DescribeCertificateResponse,
   DescribeCertificateError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeCertificateRequest,
   output: DescribeCertificateResponse,
@@ -1655,7 +1654,7 @@ export const exportCertificate: API.OperationMethod<
   ExportCertificateRequest,
   ExportCertificateResponse,
   ExportCertificateError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ExportCertificateRequest,
   output: ExportCertificateResponse,
@@ -1681,7 +1680,7 @@ export const getAccountConfiguration: API.OperationMethod<
   GetAccountConfigurationRequest,
   GetAccountConfigurationResponse,
   GetAccountConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetAccountConfigurationRequest,
   output: GetAccountConfigurationResponse,
@@ -1703,7 +1702,7 @@ export const getCertificate: API.OperationMethod<
   GetCertificateRequest,
   GetCertificateResponse,
   GetCertificateError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetCertificateRequest,
   output: GetCertificateResponse,
@@ -1762,7 +1761,7 @@ export const importCertificate: API.OperationMethod<
   ImportCertificateRequest,
   ImportCertificateResponse,
   ImportCertificateError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ImportCertificateRequest,
   output: ImportCertificateResponse,
@@ -1792,7 +1791,7 @@ export const listCertificates: API.PaginatedOperationMethod<
   ListCertificatesRequest,
   ListCertificatesResponse,
   ListCertificatesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   CertificateSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCertificatesRequest,
@@ -1820,7 +1819,7 @@ export const listTagsForCertificate: API.OperationMethod<
   ListTagsForCertificateRequest,
   ListTagsForCertificateResponse,
   ListTagsForCertificateError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForCertificateRequest,
   output: ListTagsForCertificateResponse,
@@ -1845,7 +1844,7 @@ export const putAccountConfiguration: API.OperationMethod<
   PutAccountConfigurationRequest,
   PutAccountConfigurationResponse,
   PutAccountConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PutAccountConfigurationRequest,
   output: PutAccountConfigurationResponse,
@@ -1877,7 +1876,7 @@ export const removeTagsFromCertificate: API.OperationMethod<
   RemoveTagsFromCertificateRequest,
   RemoveTagsFromCertificateResponse,
   RemoveTagsFromCertificateError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: RemoveTagsFromCertificateRequest,
   output: RemoveTagsFromCertificateResponse,
@@ -1906,7 +1905,7 @@ export const renewCertificate: API.OperationMethod<
   RenewCertificateRequest,
   RenewCertificateResponse,
   RenewCertificateError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: RenewCertificateRequest,
   output: RenewCertificateResponse,
@@ -1942,7 +1941,7 @@ export const requestCertificate: API.OperationMethod<
   RequestCertificateRequest,
   RequestCertificateResponse,
   RequestCertificateError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: RequestCertificateRequest,
   output: RequestCertificateResponse,
@@ -1973,7 +1972,7 @@ export const resendValidationEmail: API.OperationMethod<
   ResendValidationEmailRequest,
   ResendValidationEmailResponse,
   ResendValidationEmailError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ResendValidationEmailRequest,
   output: ResendValidationEmailResponse,
@@ -2005,7 +2004,7 @@ export const revokeCertificate: API.OperationMethod<
   RevokeCertificateRequest,
   RevokeCertificateResponse,
   RevokeCertificateError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: RevokeCertificateRequest,
   output: RevokeCertificateResponse,
@@ -2034,7 +2033,7 @@ export const searchCertificates: API.PaginatedOperationMethod<
   SearchCertificatesRequest,
   SearchCertificatesResponse,
   SearchCertificatesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   CertificateSearchResult
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchCertificatesRequest,
@@ -2064,7 +2063,7 @@ export const updateCertificateOptions: API.OperationMethod<
   UpdateCertificateOptionsRequest,
   UpdateCertificateOptionsResponse,
   UpdateCertificateOptionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateCertificateOptionsRequest,
   output: UpdateCertificateOptionsResponse,

@@ -7,7 +7,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 const svc = T.AwsApiService({
   sdkId: "Bedrock Data Automation Runtime",
   serviceShapeName: "AmazonBedrockKeystoneRuntimeService",
@@ -482,7 +481,7 @@ export const getDataAutomationStatus: API.OperationMethod<
   GetDataAutomationStatusRequest,
   GetDataAutomationStatusResponse,
   GetDataAutomationStatusError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetDataAutomationStatusRequest,
   output: GetDataAutomationStatusResponse,
@@ -512,7 +511,7 @@ export const invokeDataAutomation: API.OperationMethod<
   InvokeDataAutomationRequest,
   InvokeDataAutomationResponse,
   InvokeDataAutomationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: InvokeDataAutomationRequest,
   output: InvokeDataAutomationResponse,
@@ -542,7 +541,7 @@ export const invokeDataAutomationAsync: API.OperationMethod<
   InvokeDataAutomationAsyncRequest,
   InvokeDataAutomationAsyncResponse,
   InvokeDataAutomationAsyncError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: InvokeDataAutomationAsyncRequest,
   output: InvokeDataAutomationAsyncResponse,
@@ -572,7 +571,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -603,7 +602,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -634,7 +633,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,

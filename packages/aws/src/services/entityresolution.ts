@@ -7,7 +7,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 const svc = T.AwsApiService({
   sdkId: "EntityResolution",
   serviceShapeName: "AWSVeniceService",
@@ -2492,7 +2491,7 @@ export const addPolicyStatement: API.OperationMethod<
   AddPolicyStatementInput,
   AddPolicyStatementOutput,
   AddPolicyStatementError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: AddPolicyStatementInput,
   output: AddPolicyStatementOutput,
@@ -2521,7 +2520,7 @@ export const batchDeleteUniqueId: API.OperationMethod<
   BatchDeleteUniqueIdInput,
   BatchDeleteUniqueIdOutput,
   BatchDeleteUniqueIdError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: BatchDeleteUniqueIdInput,
   output: BatchDeleteUniqueIdOutput,
@@ -2552,7 +2551,7 @@ export const createIdMappingWorkflow: API.OperationMethod<
   CreateIdMappingWorkflowInput,
   CreateIdMappingWorkflowOutput,
   CreateIdMappingWorkflowError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateIdMappingWorkflowInput,
   output: CreateIdMappingWorkflowOutput,
@@ -2584,7 +2583,7 @@ export const createIdNamespace: API.OperationMethod<
   CreateIdNamespaceInput,
   CreateIdNamespaceOutput,
   CreateIdNamespaceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateIdNamespaceInput,
   output: CreateIdNamespaceOutput,
@@ -2618,7 +2617,7 @@ export const createMatchingWorkflow: API.OperationMethod<
   CreateMatchingWorkflowInput,
   CreateMatchingWorkflowOutput,
   CreateMatchingWorkflowError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateMatchingWorkflowInput,
   output: CreateMatchingWorkflowOutput,
@@ -2650,7 +2649,7 @@ export const createSchemaMapping: API.OperationMethod<
   CreateSchemaMappingInput,
   CreateSchemaMappingOutput,
   CreateSchemaMappingError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateSchemaMappingInput,
   output: CreateSchemaMappingOutput,
@@ -2681,7 +2680,7 @@ export const deleteIdMappingWorkflow: API.OperationMethod<
   DeleteIdMappingWorkflowInput,
   DeleteIdMappingWorkflowOutput,
   DeleteIdMappingWorkflowError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteIdMappingWorkflowInput,
   output: DeleteIdMappingWorkflowOutput,
@@ -2711,7 +2710,7 @@ export const deleteIdNamespace: API.OperationMethod<
   DeleteIdNamespaceInput,
   DeleteIdNamespaceOutput,
   DeleteIdNamespaceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteIdNamespaceInput,
   output: DeleteIdNamespaceOutput,
@@ -2741,7 +2740,7 @@ export const deleteMatchingWorkflow: API.OperationMethod<
   DeleteMatchingWorkflowInput,
   DeleteMatchingWorkflowOutput,
   DeleteMatchingWorkflowError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteMatchingWorkflowInput,
   output: DeleteMatchingWorkflowOutput,
@@ -2772,7 +2771,7 @@ export const deletePolicyStatement: API.OperationMethod<
   DeletePolicyStatementInput,
   DeletePolicyStatementOutput,
   DeletePolicyStatementError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeletePolicyStatementInput,
   output: DeletePolicyStatementOutput,
@@ -2803,7 +2802,7 @@ export const deleteSchemaMapping: API.OperationMethod<
   DeleteSchemaMappingInput,
   DeleteSchemaMappingOutput,
   DeleteSchemaMappingError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteSchemaMappingInput,
   output: DeleteSchemaMappingOutput,
@@ -2835,7 +2834,7 @@ export const generateMatchId: API.OperationMethod<
   GenerateMatchIdInput,
   GenerateMatchIdOutput,
   GenerateMatchIdError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GenerateMatchIdInput,
   output: GenerateMatchIdOutput,
@@ -2865,7 +2864,7 @@ export const getIdMappingJob: API.OperationMethod<
   GetIdMappingJobInput,
   GetIdMappingJobOutput,
   GetIdMappingJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetIdMappingJobInput,
   output: GetIdMappingJobOutput,
@@ -2895,7 +2894,7 @@ export const getIdMappingWorkflow: API.OperationMethod<
   GetIdMappingWorkflowInput,
   GetIdMappingWorkflowOutput,
   GetIdMappingWorkflowError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetIdMappingWorkflowInput,
   output: GetIdMappingWorkflowOutput,
@@ -2925,7 +2924,7 @@ export const getIdNamespace: API.OperationMethod<
   GetIdNamespaceInput,
   GetIdNamespaceOutput,
   GetIdNamespaceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetIdNamespaceInput,
   output: GetIdNamespaceOutput,
@@ -2957,7 +2956,7 @@ export const getMatchId: API.OperationMethod<
   GetMatchIdInput,
   GetMatchIdOutput,
   GetMatchIdError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetMatchIdInput,
   output: GetMatchIdOutput,
@@ -2987,7 +2986,7 @@ export const getMatchingJob: API.OperationMethod<
   GetMatchingJobInput,
   GetMatchingJobOutput,
   GetMatchingJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetMatchingJobInput,
   output: GetMatchingJobOutput,
@@ -3017,7 +3016,7 @@ export const getMatchingWorkflow: API.OperationMethod<
   GetMatchingWorkflowInput,
   GetMatchingWorkflowOutput,
   GetMatchingWorkflowError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetMatchingWorkflowInput,
   output: GetMatchingWorkflowOutput,
@@ -3047,7 +3046,7 @@ export const getPolicy: API.OperationMethod<
   GetPolicyInput,
   GetPolicyOutput,
   GetPolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetPolicyInput,
   output: GetPolicyOutput,
@@ -3077,7 +3076,7 @@ export const getProviderService: API.OperationMethod<
   GetProviderServiceInput,
   GetProviderServiceOutput,
   GetProviderServiceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetProviderServiceInput,
   output: GetProviderServiceOutput,
@@ -3107,7 +3106,7 @@ export const getSchemaMapping: API.OperationMethod<
   GetSchemaMappingInput,
   GetSchemaMappingOutput,
   GetSchemaMappingError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetSchemaMappingInput,
   output: GetSchemaMappingOutput,
@@ -3137,7 +3136,7 @@ export const listIdMappingJobs: API.PaginatedOperationMethod<
   ListIdMappingJobsInput,
   ListIdMappingJobsOutput,
   ListIdMappingJobsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   JobSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListIdMappingJobsInput,
@@ -3173,7 +3172,7 @@ export const listIdMappingWorkflows: API.PaginatedOperationMethod<
   ListIdMappingWorkflowsInput,
   ListIdMappingWorkflowsOutput,
   ListIdMappingWorkflowsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   IdMappingWorkflowSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListIdMappingWorkflowsInput,
@@ -3208,7 +3207,7 @@ export const listIdNamespaces: API.PaginatedOperationMethod<
   ListIdNamespacesInput,
   ListIdNamespacesOutput,
   ListIdNamespacesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   IdNamespaceSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListIdNamespacesInput,
@@ -3244,7 +3243,7 @@ export const listMatchingJobs: API.PaginatedOperationMethod<
   ListMatchingJobsInput,
   ListMatchingJobsOutput,
   ListMatchingJobsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   JobSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMatchingJobsInput,
@@ -3280,7 +3279,7 @@ export const listMatchingWorkflows: API.PaginatedOperationMethod<
   ListMatchingWorkflowsInput,
   ListMatchingWorkflowsOutput,
   ListMatchingWorkflowsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   MatchingWorkflowSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMatchingWorkflowsInput,
@@ -3315,7 +3314,7 @@ export const listProviderServices: API.PaginatedOperationMethod<
   ListProviderServicesInput,
   ListProviderServicesOutput,
   ListProviderServicesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ProviderServiceSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProviderServicesInput,
@@ -3350,7 +3349,7 @@ export const listSchemaMappings: API.PaginatedOperationMethod<
   ListSchemaMappingsInput,
   ListSchemaMappingsOutput,
   ListSchemaMappingsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   SchemaMappingSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSchemaMappingsInput,
@@ -3384,7 +3383,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceInput,
   ListTagsForResourceOutput,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceInput,
   output: ListTagsForResourceOutput,
@@ -3413,7 +3412,7 @@ export const putPolicy: API.OperationMethod<
   PutPolicyInput,
   PutPolicyOutput,
   PutPolicyError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PutPolicyInput,
   output: PutPolicyOutput,
@@ -3446,7 +3445,7 @@ export const startIdMappingJob: API.OperationMethod<
   StartIdMappingJobInput,
   StartIdMappingJobOutput,
   StartIdMappingJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartIdMappingJobInput,
   output: StartIdMappingJobOutput,
@@ -3480,7 +3479,7 @@ export const startMatchingJob: API.OperationMethod<
   StartMatchingJobInput,
   StartMatchingJobOutput,
   StartMatchingJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartMatchingJobInput,
   output: StartMatchingJobOutput,
@@ -3510,7 +3509,7 @@ export const tagResource: API.OperationMethod<
   TagResourceInput,
   TagResourceOutput,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: TagResourceInput,
   output: TagResourceOutput,
@@ -3535,7 +3534,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceInput,
   UntagResourceOutput,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceInput,
   output: UntagResourceOutput,
@@ -3561,7 +3560,7 @@ export const updateIdMappingWorkflow: API.OperationMethod<
   UpdateIdMappingWorkflowInput,
   UpdateIdMappingWorkflowOutput,
   UpdateIdMappingWorkflowError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateIdMappingWorkflowInput,
   output: UpdateIdMappingWorkflowOutput,
@@ -3591,7 +3590,7 @@ export const updateIdNamespace: API.OperationMethod<
   UpdateIdNamespaceInput,
   UpdateIdNamespaceOutput,
   UpdateIdNamespaceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateIdNamespaceInput,
   output: UpdateIdNamespaceOutput,
@@ -3623,7 +3622,7 @@ export const updateMatchingWorkflow: API.OperationMethod<
   UpdateMatchingWorkflowInput,
   UpdateMatchingWorkflowOutput,
   UpdateMatchingWorkflowError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateMatchingWorkflowInput,
   output: UpdateMatchingWorkflowOutput,
@@ -3656,7 +3655,7 @@ export const updateSchemaMapping: API.OperationMethod<
   UpdateSchemaMappingInput,
   UpdateSchemaMappingOutput,
   UpdateSchemaMappingError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateSchemaMappingInput,
   output: UpdateSchemaMappingOutput,

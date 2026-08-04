@@ -7,7 +7,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 const svc = T.AwsApiService({
   sdkId: "SSM GuiConnect",
   serviceShapeName: "SSMGuiConnect",
@@ -278,7 +277,7 @@ export const deleteConnectionRecordingPreferences: API.OperationMethod<
   DeleteConnectionRecordingPreferencesRequest,
   DeleteConnectionRecordingPreferencesResponse,
   DeleteConnectionRecordingPreferencesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteConnectionRecordingPreferencesRequest,
   output: DeleteConnectionRecordingPreferencesResponse,
@@ -312,7 +311,7 @@ export const getConnectionRecordingPreferences: API.OperationMethod<
   GetConnectionRecordingPreferencesRequest,
   GetConnectionRecordingPreferencesResponse,
   GetConnectionRecordingPreferencesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetConnectionRecordingPreferencesRequest,
   output: GetConnectionRecordingPreferencesResponse,
@@ -346,7 +345,7 @@ export const updateConnectionRecordingPreferences: API.OperationMethod<
   UpdateConnectionRecordingPreferencesRequest,
   UpdateConnectionRecordingPreferencesResponse,
   UpdateConnectionRecordingPreferencesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateConnectionRecordingPreferencesRequest,
   output: UpdateConnectionRecordingPreferencesResponse,

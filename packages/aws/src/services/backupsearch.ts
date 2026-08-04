@@ -8,7 +8,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 import { SensitiveString } from "../sensitive.ts";
 const svc = T.AwsApiService({
   sdkId: "BackupSearch",
@@ -871,7 +870,7 @@ export const getSearchJob: API.OperationMethod<
   GetSearchJobInput,
   GetSearchJobOutput,
   GetSearchJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetSearchJobInput,
   output: GetSearchJobOutput,
@@ -895,7 +894,7 @@ export const getSearchResultExportJob: API.OperationMethod<
   GetSearchResultExportJobInput,
   GetSearchResultExportJobOutput,
   GetSearchResultExportJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetSearchResultExportJobInput,
   output: GetSearchResultExportJobOutput,
@@ -919,7 +918,7 @@ export const listSearchJobBackups: API.PaginatedOperationMethod<
   ListSearchJobBackupsInput,
   ListSearchJobBackupsOutput,
   ListSearchJobBackupsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   SearchJobBackupsResult
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSearchJobBackupsInput,
@@ -946,7 +945,7 @@ export const listSearchJobResults: API.PaginatedOperationMethod<
   ListSearchJobResultsInput,
   ListSearchJobResultsOutput,
   ListSearchJobResultsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ResultItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSearchJobResultsInput,
@@ -971,7 +970,7 @@ export const listSearchJobs: API.PaginatedOperationMethod<
   ListSearchJobsInput,
   ListSearchJobsOutput,
   ListSearchJobsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   SearchJobSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSearchJobsInput,
@@ -999,7 +998,7 @@ export const listSearchResultExportJobs: API.PaginatedOperationMethod<
   ListSearchResultExportJobsInput,
   ListSearchResultExportJobsOutput,
   ListSearchResultExportJobsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ExportJobSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSearchResultExportJobsInput,
@@ -1024,7 +1023,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -1048,7 +1047,7 @@ export const startSearchJob: API.OperationMethod<
   StartSearchJobInput,
   StartSearchJobOutput,
   StartSearchJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartSearchJobInput,
   output: StartSearchJobOutput,
@@ -1074,7 +1073,7 @@ export const startSearchResultExportJob: API.OperationMethod<
   StartSearchResultExportJobInput,
   StartSearchResultExportJobOutput,
   StartSearchResultExportJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartSearchResultExportJobInput,
   output: StartSearchResultExportJobOutput,
@@ -1101,7 +1100,7 @@ export const stopSearchJob: API.OperationMethod<
   StopSearchJobInput,
   StopSearchJobOutput,
   StopSearchJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StopSearchJobInput,
   output: StopSearchJobOutput,
@@ -1119,7 +1118,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -1137,7 +1136,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,

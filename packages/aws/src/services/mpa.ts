@@ -8,7 +8,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region as Rgn } from "../region.ts";
 import { SensitiveString } from "../sensitive.ts";
 const svc = T.AwsApiService({
   sdkId: "MPA",
@@ -1524,7 +1523,7 @@ export const cancelSession: API.OperationMethod<
   CancelSessionRequest,
   CancelSessionResponse,
   CancelSessionError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CancelSessionRequest,
   output: CancelSessionResponse,
@@ -1556,7 +1555,7 @@ export const createApprovalTeam: API.OperationMethod<
   CreateApprovalTeamRequest,
   CreateApprovalTeamResponse,
   CreateApprovalTeamError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateApprovalTeamRequest,
   output: CreateApprovalTeamResponse,
@@ -1587,7 +1586,7 @@ export const createIdentitySource: API.OperationMethod<
   CreateIdentitySourceRequest,
   CreateIdentitySourceResponse,
   CreateIdentitySourceError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateIdentitySourceRequest,
   output: CreateIdentitySourceResponse,
@@ -1617,7 +1616,7 @@ export const deleteIdentitySource: API.OperationMethod<
   DeleteIdentitySourceRequest,
   DeleteIdentitySourceResponse,
   DeleteIdentitySourceError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteIdentitySourceRequest,
   output: DeleteIdentitySourceResponse,
@@ -1650,7 +1649,7 @@ export const deleteInactiveApprovalTeamVersion: API.OperationMethod<
   DeleteInactiveApprovalTeamVersionRequest,
   DeleteInactiveApprovalTeamVersionResponse,
   DeleteInactiveApprovalTeamVersionError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteInactiveApprovalTeamVersionRequest,
   output: DeleteInactiveApprovalTeamVersionResponse,
@@ -1681,7 +1680,7 @@ export const getApprovalTeam: API.OperationMethod<
   GetApprovalTeamRequest,
   GetApprovalTeamResponse,
   GetApprovalTeamError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetApprovalTeamRequest,
   output: GetApprovalTeamResponse,
@@ -1711,7 +1710,7 @@ export const getIdentitySource: API.OperationMethod<
   GetIdentitySourceRequest,
   GetIdentitySourceResponse,
   GetIdentitySourceError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetIdentitySourceRequest,
   output: GetIdentitySourceResponse,
@@ -1741,7 +1740,7 @@ export const getPolicyVersion: API.OperationMethod<
   GetPolicyVersionRequest,
   GetPolicyVersionResponse,
   GetPolicyVersionError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetPolicyVersionRequest,
   output: GetPolicyVersionResponse,
@@ -1771,7 +1770,7 @@ export const getResourcePolicy: API.OperationMethod<
   GetResourcePolicyRequest,
   GetResourcePolicyResponse,
   GetResourcePolicyError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetResourcePolicyRequest,
   output: GetResourcePolicyResponse,
@@ -1801,7 +1800,7 @@ export const getSession: API.OperationMethod<
   GetSessionRequest,
   GetSessionResponse,
   GetSessionError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetSessionRequest,
   output: GetSessionResponse,
@@ -1830,7 +1829,7 @@ export const listApprovalTeams: API.PaginatedOperationMethod<
   ListApprovalTeamsRequest,
   ListApprovalTeamsResponse,
   ListApprovalTeamsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ListApprovalTeamsResponseApprovalTeam
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListApprovalTeamsRequest,
@@ -1865,7 +1864,7 @@ export const listIdentitySources: API.PaginatedOperationMethod<
   ListIdentitySourcesRequest,
   ListIdentitySourcesResponse,
   ListIdentitySourcesError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   IdentitySourceForList
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListIdentitySourcesRequest,
@@ -1900,7 +1899,7 @@ export const listPolicies: API.PaginatedOperationMethod<
   ListPoliciesRequest,
   ListPoliciesResponse,
   ListPoliciesError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   Policy
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPoliciesRequest,
@@ -1936,7 +1935,7 @@ export const listPolicyVersions: API.PaginatedOperationMethod<
   ListPolicyVersionsRequest,
   ListPolicyVersionsResponse,
   ListPolicyVersionsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   PolicyVersionSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPolicyVersionsRequest,
@@ -1973,7 +1972,7 @@ export const listResourcePolicies: API.PaginatedOperationMethod<
   ListResourcePoliciesRequest,
   ListResourcePoliciesResponse,
   ListResourcePoliciesError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ListResourcePoliciesResponseResourcePolicy
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListResourcePoliciesRequest,
@@ -2010,7 +2009,7 @@ export const listSessions: API.PaginatedOperationMethod<
   ListSessionsRequest,
   ListSessionsResponse,
   ListSessionsError,
-  Credentials | Rgn | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ListSessionsResponseSession
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSessionsRequest,
@@ -2047,7 +2046,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -2082,7 +2081,7 @@ export const startActiveApprovalTeamDeletion: API.OperationMethod<
   StartActiveApprovalTeamDeletionRequest,
   StartActiveApprovalTeamDeletionResponse,
   StartActiveApprovalTeamDeletionError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartActiveApprovalTeamDeletionRequest,
   output: StartActiveApprovalTeamDeletionResponse,
@@ -2113,7 +2112,7 @@ export const startApprovalTeamBaseline: API.OperationMethod<
   StartApprovalTeamBaselineRequest,
   StartApprovalTeamBaselineResponse,
   StartApprovalTeamBaselineError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartApprovalTeamBaselineRequest,
   output: StartApprovalTeamBaselineResponse,
@@ -2144,7 +2143,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -2175,7 +2174,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -2211,7 +2210,7 @@ export const updateApprovalTeam: API.OperationMethod<
   UpdateApprovalTeamRequest,
   UpdateApprovalTeamResponse,
   UpdateApprovalTeamError,
-  Credentials | Rgn | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateApprovalTeamRequest,
   output: UpdateApprovalTeamResponse,

@@ -7,7 +7,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 const svc = T.AwsApiService({
   sdkId: "AppIntegrations",
   serviceShapeName: "AmazonAppIntegrationService",
@@ -1386,7 +1385,7 @@ export const createApplication: API.OperationMethod<
   CreateApplicationRequest,
   CreateApplicationResponse,
   CreateApplicationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateApplicationRequest,
   output: CreateApplicationResponse,
@@ -1425,7 +1424,7 @@ export const createDataIntegration: API.OperationMethod<
   CreateDataIntegrationRequest,
   CreateDataIntegrationResponse,
   CreateDataIntegrationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateDataIntegrationRequest,
   output: CreateDataIntegrationResponse,
@@ -1459,7 +1458,7 @@ export const createDataIntegrationAssociation: API.OperationMethod<
   CreateDataIntegrationAssociationRequest,
   CreateDataIntegrationAssociationResponse,
   CreateDataIntegrationAssociationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateDataIntegrationAssociationRequest,
   output: CreateDataIntegrationAssociationResponse,
@@ -1496,7 +1495,7 @@ export const createEventIntegration: API.OperationMethod<
   CreateEventIntegrationRequest,
   CreateEventIntegrationResponse,
   CreateEventIntegrationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateEventIntegrationRequest,
   output: CreateEventIntegrationResponse,
@@ -1530,7 +1529,7 @@ export const deleteApplication: API.OperationMethod<
   DeleteApplicationRequest,
   DeleteApplicationResponse,
   DeleteApplicationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteApplicationRequest,
   output: DeleteApplicationResponse,
@@ -1568,7 +1567,7 @@ export const deleteDataIntegration: API.OperationMethod<
   DeleteDataIntegrationRequest,
   DeleteDataIntegrationResponse,
   DeleteDataIntegrationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteDataIntegrationRequest,
   output: DeleteDataIntegrationResponse,
@@ -1601,7 +1600,7 @@ export const deleteEventIntegration: API.OperationMethod<
   DeleteEventIntegrationRequest,
   DeleteEventIntegrationResponse,
   DeleteEventIntegrationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteEventIntegrationRequest,
   output: DeleteEventIntegrationResponse,
@@ -1633,7 +1632,7 @@ export const getApplication: API.OperationMethod<
   GetApplicationRequest,
   GetApplicationResponse,
   GetApplicationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetApplicationRequest,
   output: GetApplicationResponse,
@@ -1669,7 +1668,7 @@ export const getDataIntegration: API.OperationMethod<
   GetDataIntegrationRequest,
   GetDataIntegrationResponse,
   GetDataIntegrationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetDataIntegrationRequest,
   output: GetDataIntegrationResponse,
@@ -1701,7 +1700,7 @@ export const getEventIntegration: API.OperationMethod<
   GetEventIntegrationRequest,
   GetEventIntegrationResponse,
   GetEventIntegrationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetEventIntegrationRequest,
   output: GetEventIntegrationResponse,
@@ -1733,7 +1732,7 @@ export const listApplicationAssociations: API.PaginatedOperationMethod<
   ListApplicationAssociationsRequest,
   ListApplicationAssociationsResponse,
   ListApplicationAssociationsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ApplicationAssociationSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListApplicationAssociationsRequest,
@@ -1771,7 +1770,7 @@ export const listApplications: API.PaginatedOperationMethod<
   ListApplicationsRequest,
   ListApplicationsResponse,
   ListApplicationsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ApplicationSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListApplicationsRequest,
@@ -1813,7 +1812,7 @@ export const listDataIntegrationAssociations: API.PaginatedOperationMethod<
   ListDataIntegrationAssociationsRequest,
   ListDataIntegrationAssociationsResponse,
   ListDataIntegrationAssociationsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   DataIntegrationAssociationSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDataIntegrationAssociationsRequest,
@@ -1855,7 +1854,7 @@ export const listDataIntegrations: API.PaginatedOperationMethod<
   ListDataIntegrationsRequest,
   ListDataIntegrationsResponse,
   ListDataIntegrationsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   DataIntegrationSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDataIntegrationsRequest,
@@ -1893,7 +1892,7 @@ export const listEventIntegrationAssociations: API.PaginatedOperationMethod<
   ListEventIntegrationAssociationsRequest,
   ListEventIntegrationAssociationsResponse,
   ListEventIntegrationAssociationsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   EventIntegrationAssociation
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEventIntegrationAssociationsRequest,
@@ -1931,7 +1930,7 @@ export const listEventIntegrations: API.PaginatedOperationMethod<
   ListEventIntegrationsRequest,
   ListEventIntegrationsResponse,
   ListEventIntegrationsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   EventIntegration
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEventIntegrationsRequest,
@@ -1968,7 +1967,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -1998,7 +1997,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -2028,7 +2027,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -2060,7 +2059,7 @@ export const updateApplication: API.OperationMethod<
   UpdateApplicationRequest,
   UpdateApplicationResponse,
   UpdateApplicationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateApplicationRequest,
   output: UpdateApplicationResponse,
@@ -2097,7 +2096,7 @@ export const updateDataIntegration: API.OperationMethod<
   UpdateDataIntegrationRequest,
   UpdateDataIntegrationResponse,
   UpdateDataIntegrationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateDataIntegrationRequest,
   output: UpdateDataIntegrationResponse,
@@ -2131,7 +2130,7 @@ export const updateDataIntegrationAssociation: API.OperationMethod<
   UpdateDataIntegrationAssociationRequest,
   UpdateDataIntegrationAssociationResponse,
   UpdateDataIntegrationAssociationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateDataIntegrationAssociationRequest,
   output: UpdateDataIntegrationAssociationResponse,
@@ -2163,7 +2162,7 @@ export const updateEventIntegration: API.OperationMethod<
   UpdateEventIntegrationRequest,
   UpdateEventIntegrationResponse,
   UpdateEventIntegrationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateEventIntegrationRequest,
   output: UpdateEventIntegrationResponse,

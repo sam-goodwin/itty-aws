@@ -8,7 +8,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 import { SensitiveString } from "../sensitive.ts";
 const svc = T.AwsApiService({
   sdkId: "drs",
@@ -3052,7 +3051,7 @@ export const associateSourceNetworkStack: API.OperationMethod<
   AssociateSourceNetworkStackRequest,
   AssociateSourceNetworkStackResponse,
   AssociateSourceNetworkStackError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: AssociateSourceNetworkStackRequest,
   output: AssociateSourceNetworkStackResponse,
@@ -3086,7 +3085,7 @@ export const createExtendedSourceServer: API.OperationMethod<
   CreateExtendedSourceServerRequest,
   CreateExtendedSourceServerResponse,
   CreateExtendedSourceServerError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateExtendedSourceServerRequest,
   output: CreateExtendedSourceServerResponse,
@@ -3119,7 +3118,7 @@ export const createLaunchConfigurationTemplate: API.OperationMethod<
   CreateLaunchConfigurationTemplateRequest,
   CreateLaunchConfigurationTemplateResponse,
   CreateLaunchConfigurationTemplateError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateLaunchConfigurationTemplateRequest,
   output: CreateLaunchConfigurationTemplateResponse,
@@ -3151,7 +3150,7 @@ export const createReplicationConfigurationTemplate: API.OperationMethod<
   CreateReplicationConfigurationTemplateRequest,
   ReplicationConfigurationTemplate,
   CreateReplicationConfigurationTemplateError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateReplicationConfigurationTemplateRequest,
   output: ReplicationConfigurationTemplate,
@@ -3184,7 +3183,7 @@ export const createSourceNetwork: API.OperationMethod<
   CreateSourceNetworkRequest,
   CreateSourceNetworkResponse,
   CreateSourceNetworkError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateSourceNetworkRequest,
   output: CreateSourceNetworkResponse,
@@ -3216,7 +3215,7 @@ export const deleteJob: API.OperationMethod<
   DeleteJobRequest,
   DeleteJobResponse,
   DeleteJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteJobRequest,
   output: DeleteJobResponse,
@@ -3246,7 +3245,7 @@ export const deleteLaunchAction: API.OperationMethod<
   DeleteLaunchActionRequest,
   DeleteLaunchActionResponse,
   DeleteLaunchActionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteLaunchActionRequest,
   output: DeleteLaunchActionResponse,
@@ -3276,7 +3275,7 @@ export const deleteLaunchConfigurationTemplate: API.OperationMethod<
   DeleteLaunchConfigurationTemplateRequest,
   DeleteLaunchConfigurationTemplateResponse,
   DeleteLaunchConfigurationTemplateError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteLaunchConfigurationTemplateRequest,
   output: DeleteLaunchConfigurationTemplateResponse,
@@ -3306,7 +3305,7 @@ export const deleteRecoveryInstance: API.OperationMethod<
   DeleteRecoveryInstanceRequest,
   DeleteRecoveryInstanceResponse,
   DeleteRecoveryInstanceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteRecoveryInstanceRequest,
   output: DeleteRecoveryInstanceResponse,
@@ -3336,7 +3335,7 @@ export const deleteReplicationConfigurationTemplate: API.OperationMethod<
   DeleteReplicationConfigurationTemplateRequest,
   DeleteReplicationConfigurationTemplateResponse,
   DeleteReplicationConfigurationTemplateError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteReplicationConfigurationTemplateRequest,
   output: DeleteReplicationConfigurationTemplateResponse,
@@ -3366,7 +3365,7 @@ export const deleteSourceNetwork: API.OperationMethod<
   DeleteSourceNetworkRequest,
   DeleteSourceNetworkResponse,
   DeleteSourceNetworkError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteSourceNetworkRequest,
   output: DeleteSourceNetworkResponse,
@@ -3396,7 +3395,7 @@ export const deleteSourceServer: API.OperationMethod<
   DeleteSourceServerRequest,
   DeleteSourceServerResponse,
   DeleteSourceServerError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteSourceServerRequest,
   output: DeleteSourceServerResponse,
@@ -3425,7 +3424,7 @@ export const describeJobLogItems: API.PaginatedOperationMethod<
   DescribeJobLogItemsRequest,
   DescribeJobLogItemsResponse,
   DescribeJobLogItemsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   JobLog
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeJobLogItemsRequest,
@@ -3460,7 +3459,7 @@ export const describeJobs: API.PaginatedOperationMethod<
   DescribeJobsRequest,
   DescribeJobsResponse,
   DescribeJobsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   Job
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeJobsRequest,
@@ -3496,7 +3495,7 @@ export const describeLaunchConfigurationTemplates: API.PaginatedOperationMethod<
   DescribeLaunchConfigurationTemplatesRequest,
   DescribeLaunchConfigurationTemplatesResponse,
   DescribeLaunchConfigurationTemplatesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   LaunchConfigurationTemplate
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeLaunchConfigurationTemplatesRequest,
@@ -3532,7 +3531,7 @@ export const describeRecoveryInstances: API.PaginatedOperationMethod<
   DescribeRecoveryInstancesRequest,
   DescribeRecoveryInstancesResponse,
   DescribeRecoveryInstancesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   RecoveryInstance
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeRecoveryInstancesRequest,
@@ -3568,7 +3567,7 @@ export const describeRecoverySnapshots: API.PaginatedOperationMethod<
   DescribeRecoverySnapshotsRequest,
   DescribeRecoverySnapshotsResponse,
   DescribeRecoverySnapshotsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   RecoverySnapshot
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeRecoverySnapshotsRequest,
@@ -3605,7 +3604,7 @@ export const describeReplicationConfigurationTemplates: API.PaginatedOperationMe
   DescribeReplicationConfigurationTemplatesRequest,
   DescribeReplicationConfigurationTemplatesResponse,
   DescribeReplicationConfigurationTemplatesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ReplicationConfigurationTemplate
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeReplicationConfigurationTemplatesRequest,
@@ -3641,7 +3640,7 @@ export const describeSourceNetworks: API.PaginatedOperationMethod<
   DescribeSourceNetworksRequest,
   DescribeSourceNetworksResponse,
   DescribeSourceNetworksError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   SourceNetwork
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeSourceNetworksRequest,
@@ -3676,7 +3675,7 @@ export const describeSourceServers: API.PaginatedOperationMethod<
   DescribeSourceServersRequest,
   DescribeSourceServersResponse,
   DescribeSourceServersError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   SourceServer
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeSourceServersRequest,
@@ -3713,7 +3712,7 @@ export const disconnectRecoveryInstance: API.OperationMethod<
   DisconnectRecoveryInstanceRequest,
   DisconnectRecoveryInstanceResponse,
   DisconnectRecoveryInstanceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DisconnectRecoveryInstanceRequest,
   output: DisconnectRecoveryInstanceResponse,
@@ -3744,7 +3743,7 @@ export const disconnectSourceServer: API.OperationMethod<
   DisconnectSourceServerRequest,
   SourceServer,
   DisconnectSourceServerError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DisconnectSourceServerRequest,
   output: SourceServer,
@@ -3775,7 +3774,7 @@ export const exportSourceNetworkCfnTemplate: API.OperationMethod<
   ExportSourceNetworkCfnTemplateRequest,
   ExportSourceNetworkCfnTemplateResponse,
   ExportSourceNetworkCfnTemplateError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ExportSourceNetworkCfnTemplateRequest,
   output: ExportSourceNetworkCfnTemplateResponse,
@@ -3805,7 +3804,7 @@ export const getFailbackReplicationConfiguration: API.OperationMethod<
   GetFailbackReplicationConfigurationRequest,
   GetFailbackReplicationConfigurationResponse,
   GetFailbackReplicationConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetFailbackReplicationConfigurationRequest,
   output: GetFailbackReplicationConfigurationResponse,
@@ -3833,7 +3832,7 @@ export const getLaunchConfiguration: API.OperationMethod<
   GetLaunchConfigurationRequest,
   LaunchConfiguration,
   GetLaunchConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetLaunchConfigurationRequest,
   output: LaunchConfiguration,
@@ -3862,7 +3861,7 @@ export const getReplicationConfiguration: API.OperationMethod<
   GetReplicationConfigurationRequest,
   ReplicationConfiguration,
   GetReplicationConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetReplicationConfigurationRequest,
   output: ReplicationConfiguration,
@@ -3891,7 +3890,7 @@ export const initializeService: API.OperationMethod<
   InitializeServiceRequest,
   InitializeServiceResponse,
   InitializeServiceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: InitializeServiceRequest,
   output: InitializeServiceResponse,
@@ -3920,7 +3919,7 @@ export const listExtensibleSourceServers: API.PaginatedOperationMethod<
   ListExtensibleSourceServersRequest,
   ListExtensibleSourceServersResponse,
   ListExtensibleSourceServersError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   StagingSourceServer
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListExtensibleSourceServersRequest,
@@ -3957,7 +3956,7 @@ export const listLaunchActions: API.PaginatedOperationMethod<
   ListLaunchActionsRequest,
   ListLaunchActionsResponse,
   ListLaunchActionsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   LaunchAction
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLaunchActionsRequest,
@@ -3994,7 +3993,7 @@ export const listStagingAccounts: API.PaginatedOperationMethod<
   ListStagingAccountsRequest,
   ListStagingAccountsResponse,
   ListStagingAccountsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   Account
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListStagingAccountsRequest,
@@ -4031,7 +4030,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -4062,7 +4061,7 @@ export const putLaunchAction: API.OperationMethod<
   PutLaunchActionRequest,
   PutLaunchActionResponse,
   PutLaunchActionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PutLaunchActionRequest,
   output: PutLaunchActionResponse,
@@ -4093,7 +4092,7 @@ export const retryDataReplication: API.OperationMethod<
   RetryDataReplicationRequest,
   SourceServer,
   RetryDataReplicationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: RetryDataReplicationRequest,
   output: SourceServer,
@@ -4125,7 +4124,7 @@ export const reverseReplication: API.OperationMethod<
   ReverseReplicationRequest,
   ReverseReplicationResponse,
   ReverseReplicationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ReverseReplicationRequest,
   output: ReverseReplicationResponse,
@@ -4158,7 +4157,7 @@ export const startFailbackLaunch: API.OperationMethod<
   StartFailbackLaunchRequest,
   StartFailbackLaunchResponse,
   StartFailbackLaunchError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartFailbackLaunchRequest,
   output: StartFailbackLaunchResponse,
@@ -4189,7 +4188,7 @@ export const startRecovery: API.OperationMethod<
   StartRecoveryRequest,
   StartRecoveryResponse,
   StartRecoveryError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartRecoveryRequest,
   output: StartRecoveryResponse,
@@ -4219,7 +4218,7 @@ export const startReplication: API.OperationMethod<
   StartReplicationRequest,
   StartReplicationResponse,
   StartReplicationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartReplicationRequest,
   output: StartReplicationResponse,
@@ -4250,7 +4249,7 @@ export const startSourceNetworkRecovery: API.OperationMethod<
   StartSourceNetworkRecoveryRequest,
   StartSourceNetworkRecoveryResponse,
   StartSourceNetworkRecoveryError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartSourceNetworkRecoveryRequest,
   output: StartSourceNetworkRecoveryResponse,
@@ -4281,7 +4280,7 @@ export const startSourceNetworkReplication: API.OperationMethod<
   StartSourceNetworkReplicationRequest,
   StartSourceNetworkReplicationResponse,
   StartSourceNetworkReplicationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartSourceNetworkReplicationRequest,
   output: StartSourceNetworkReplicationResponse,
@@ -4310,7 +4309,7 @@ export const stopFailback: API.OperationMethod<
   StopFailbackRequest,
   StopFailbackResponse,
   StopFailbackError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StopFailbackRequest,
   output: StopFailbackResponse,
@@ -4339,7 +4338,7 @@ export const stopReplication: API.OperationMethod<
   StopReplicationRequest,
   StopReplicationResponse,
   StopReplicationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StopReplicationRequest,
   output: StopReplicationResponse,
@@ -4370,7 +4369,7 @@ export const stopSourceNetworkReplication: API.OperationMethod<
   StopSourceNetworkReplicationRequest,
   StopSourceNetworkReplicationResponse,
   StopSourceNetworkReplicationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StopSourceNetworkReplicationRequest,
   output: StopSourceNetworkReplicationResponse,
@@ -4401,7 +4400,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -4431,7 +4430,7 @@ export const terminateRecoveryInstances: API.OperationMethod<
   TerminateRecoveryInstancesRequest,
   TerminateRecoveryInstancesResponse,
   TerminateRecoveryInstancesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: TerminateRecoveryInstancesRequest,
   output: TerminateRecoveryInstancesResponse,
@@ -4461,7 +4460,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -4491,7 +4490,7 @@ export const updateFailbackReplicationConfiguration: API.OperationMethod<
   UpdateFailbackReplicationConfigurationRequest,
   UpdateFailbackReplicationConfigurationResponse,
   UpdateFailbackReplicationConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateFailbackReplicationConfigurationRequest,
   output: UpdateFailbackReplicationConfigurationResponse,
@@ -4522,7 +4521,7 @@ export const updateLaunchConfiguration: API.OperationMethod<
   UpdateLaunchConfigurationRequest,
   LaunchConfiguration,
   UpdateLaunchConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateLaunchConfigurationRequest,
   output: LaunchConfiguration,
@@ -4554,7 +4553,7 @@ export const updateLaunchConfigurationTemplate: API.OperationMethod<
   UpdateLaunchConfigurationTemplateRequest,
   UpdateLaunchConfigurationTemplateResponse,
   UpdateLaunchConfigurationTemplateError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateLaunchConfigurationTemplateRequest,
   output: UpdateLaunchConfigurationTemplateResponse,
@@ -4587,7 +4586,7 @@ export const updateReplicationConfiguration: API.OperationMethod<
   UpdateReplicationConfigurationRequest,
   ReplicationConfiguration,
   UpdateReplicationConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateReplicationConfigurationRequest,
   output: ReplicationConfiguration,
@@ -4620,7 +4619,7 @@ export const updateReplicationConfigurationTemplate: API.OperationMethod<
   UpdateReplicationConfigurationTemplateRequest,
   ReplicationConfigurationTemplate,
   UpdateReplicationConfigurationTemplateError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateReplicationConfigurationTemplateRequest,
   output: ReplicationConfigurationTemplate,

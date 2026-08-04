@@ -7,7 +7,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 const svc = T.AwsApiService({
   sdkId: "Launch Wizard",
   serviceShapeName: "LaunchWizard",
@@ -949,7 +948,7 @@ export const createDeployment: API.OperationMethod<
   CreateDeploymentInput,
   CreateDeploymentOutput,
   CreateDeploymentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateDeploymentInput,
   output: CreateDeploymentOutput,
@@ -977,7 +976,7 @@ export const deleteDeployment: API.OperationMethod<
   DeleteDeploymentInput,
   DeleteDeploymentOutput,
   DeleteDeploymentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteDeploymentInput,
   output: DeleteDeploymentOutput,
@@ -1004,7 +1003,7 @@ export const getDeployment: API.OperationMethod<
   GetDeploymentInput,
   GetDeploymentOutput,
   GetDeploymentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetDeploymentInput,
   output: GetDeploymentOutput,
@@ -1029,7 +1028,7 @@ export const getDeploymentPatternVersion: API.OperationMethod<
   GetDeploymentPatternVersionInput,
   GetDeploymentPatternVersionOutput,
   GetDeploymentPatternVersionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetDeploymentPatternVersionInput,
   output: GetDeploymentPatternVersionOutput,
@@ -1051,7 +1050,7 @@ export const getWorkload: API.OperationMethod<
   GetWorkloadInput,
   GetWorkloadOutput,
   GetWorkloadError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetWorkloadInput,
   output: GetWorkloadOutput,
@@ -1077,7 +1076,7 @@ export const getWorkloadDeploymentPattern: API.OperationMethod<
   GetWorkloadDeploymentPatternInput,
   GetWorkloadDeploymentPatternOutput,
   GetWorkloadDeploymentPatternError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetWorkloadDeploymentPatternInput,
   output: GetWorkloadDeploymentPatternOutput,
@@ -1103,7 +1102,7 @@ export const listDeploymentEvents: API.PaginatedOperationMethod<
   ListDeploymentEventsInput,
   ListDeploymentEventsOutput,
   ListDeploymentEventsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   DeploymentEventDataSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDeploymentEventsInput,
@@ -1136,7 +1135,7 @@ export const listDeploymentPatternVersions: API.PaginatedOperationMethod<
   ListDeploymentPatternVersionsInput,
   ListDeploymentPatternVersionsOutput,
   ListDeploymentPatternVersionsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   DeploymentPatternVersionDataSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDeploymentPatternVersionsInput,
@@ -1168,7 +1167,7 @@ export const listDeployments: API.PaginatedOperationMethod<
   ListDeploymentsInput,
   ListDeploymentsOutput,
   ListDeploymentsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   DeploymentDataSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDeploymentsInput,
@@ -1197,7 +1196,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceInput,
   ListTagsForResourceOutput,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceInput,
   output: ListTagsForResourceOutput,
@@ -1223,7 +1222,7 @@ export const listWorkloadDeploymentPatterns: API.PaginatedOperationMethod<
   ListWorkloadDeploymentPatternsInput,
   ListWorkloadDeploymentPatternsOutput,
   ListWorkloadDeploymentPatternsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   WorkloadDeploymentPatternDataSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListWorkloadDeploymentPatternsInput,
@@ -1255,7 +1254,7 @@ export const listWorkloads: API.PaginatedOperationMethod<
   ListWorkloadsInput,
   ListWorkloadsOutput,
   ListWorkloadsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   WorkloadDataSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListWorkloadsInput,
@@ -1284,7 +1283,7 @@ export const tagResource: API.OperationMethod<
   TagResourceInput,
   TagResourceOutput,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: TagResourceInput,
   output: TagResourceOutput,
@@ -1310,7 +1309,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceInput,
   UntagResourceOutput,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceInput,
   output: UntagResourceOutput,
@@ -1337,7 +1336,7 @@ export const updateDeployment: API.OperationMethod<
   UpdateDeploymentInput,
   UpdateDeploymentOutput,
   UpdateDeploymentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateDeploymentInput,
   output: UpdateDeploymentOutput,

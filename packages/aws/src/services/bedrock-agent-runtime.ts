@@ -9,7 +9,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 import { SensitiveString, SensitiveBlob } from "../sensitive.ts";
 const svc = T.AwsApiService({
   sdkId: "Bedrock Agent Runtime",
@@ -7288,7 +7287,7 @@ export const agenticRetrieveStream: API.OperationMethod<
   AgenticRetrieveStreamRequest,
   AgenticRetrieveStreamResponse,
   AgenticRetrieveStreamError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: AgenticRetrieveStreamRequest,
   output: AgenticRetrieveStreamResponse,
@@ -7332,7 +7331,7 @@ export const createInvocation: API.OperationMethod<
   CreateInvocationRequest,
   CreateInvocationResponse,
   CreateInvocationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateInvocationRequest,
   output: CreateInvocationResponse,
@@ -7379,7 +7378,7 @@ export const createSession: API.OperationMethod<
   CreateSessionRequest,
   CreateSessionResponse,
   CreateSessionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateSessionRequest,
   output: CreateSessionResponse,
@@ -7414,7 +7413,7 @@ export const deleteAgentMemory: API.OperationMethod<
   DeleteAgentMemoryRequest,
   DeleteAgentMemoryResponse,
   DeleteAgentMemoryError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteAgentMemoryRequest,
   output: DeleteAgentMemoryResponse,
@@ -7449,7 +7448,7 @@ export const deleteSession: API.OperationMethod<
   DeleteSessionRequest,
   DeleteSessionResponse,
   DeleteSessionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteSessionRequest,
   output: DeleteSessionResponse,
@@ -7481,7 +7480,7 @@ export const endSession: API.OperationMethod<
   EndSessionRequest,
   EndSessionResponse,
   EndSessionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: EndSessionRequest,
   output: EndSessionResponse,
@@ -7516,7 +7515,7 @@ export const generateQuery: API.OperationMethod<
   GenerateQueryRequest,
   GenerateQueryResponse,
   GenerateQueryError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GenerateQueryRequest,
   output: GenerateQueryResponse,
@@ -7554,7 +7553,7 @@ export const getAgentMemory: API.PaginatedOperationMethod<
   GetAgentMemoryRequest,
   GetAgentMemoryResponse,
   GetAgentMemoryError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   Memory
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetAgentMemoryRequest,
@@ -7595,7 +7594,7 @@ export const getDocumentContent: API.OperationMethod<
   GetDocumentContentRequest,
   GetDocumentContentResponse,
   GetDocumentContentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetDocumentContentRequest,
   output: GetDocumentContentResponse,
@@ -7627,7 +7626,7 @@ export const getExecutionFlowSnapshot: API.OperationMethod<
   GetExecutionFlowSnapshotRequest,
   GetExecutionFlowSnapshotResponse,
   GetExecutionFlowSnapshotError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetExecutionFlowSnapshotRequest,
   output: GetExecutionFlowSnapshotResponse,
@@ -7657,7 +7656,7 @@ export const getFlowExecution: API.OperationMethod<
   GetFlowExecutionRequest,
   GetFlowExecutionResponse,
   GetFlowExecutionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetFlowExecutionRequest,
   output: GetFlowExecutionResponse,
@@ -7687,7 +7686,7 @@ export const getInvocationStep: API.OperationMethod<
   GetInvocationStepRequest,
   GetInvocationStepResponse,
   GetInvocationStepError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetInvocationStepRequest,
   output: GetInvocationStepResponse,
@@ -7717,7 +7716,7 @@ export const getSession: API.OperationMethod<
   GetSessionRequest,
   GetSessionResponse,
   GetSessionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetSessionRequest,
   output: GetSessionResponse,
@@ -7772,7 +7771,7 @@ export const invokeAgent: API.OperationMethod<
   InvokeAgentRequest,
   InvokeAgentResponse,
   InvokeAgentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: InvokeAgentRequest,
   output: InvokeAgentResponse,
@@ -7813,7 +7812,7 @@ export const invokeFlow: API.OperationMethod<
   InvokeFlowRequest,
   InvokeFlowResponse,
   InvokeFlowError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: InvokeFlowRequest,
   output: InvokeFlowResponse,
@@ -7861,7 +7860,7 @@ export const invokeInlineAgent: API.OperationMethod<
   InvokeInlineAgentRequest,
   InvokeInlineAgentResponse,
   InvokeInlineAgentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: InvokeInlineAgentRequest,
   output: InvokeInlineAgentResponse,
@@ -7897,7 +7896,7 @@ export const listFlowExecutionEvents: API.PaginatedOperationMethod<
   ListFlowExecutionEventsRequest,
   ListFlowExecutionEventsResponse,
   ListFlowExecutionEventsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   FlowExecutionEvent
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFlowExecutionEventsRequest,
@@ -7936,7 +7935,7 @@ export const listFlowExecutions: API.PaginatedOperationMethod<
   ListFlowExecutionsRequest,
   ListFlowExecutionsResponse,
   ListFlowExecutionsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   FlowExecutionSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFlowExecutionsRequest,
@@ -7973,7 +7972,7 @@ export const listInvocations: API.PaginatedOperationMethod<
   ListInvocationsRequest,
   ListInvocationsResponse,
   ListInvocationsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   InvocationSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListInvocationsRequest,
@@ -8010,7 +8009,7 @@ export const listInvocationSteps: API.PaginatedOperationMethod<
   ListInvocationStepsRequest,
   ListInvocationStepsResponse,
   ListInvocationStepsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   InvocationStepSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListInvocationStepsRequest,
@@ -8046,7 +8045,7 @@ export const listSessions: API.PaginatedOperationMethod<
   ListSessionsRequest,
   ListSessionsResponse,
   ListSessionsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   SessionSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSessionsRequest,
@@ -8082,7 +8081,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -8113,7 +8112,7 @@ export const optimizePrompt: API.OperationMethod<
   OptimizePromptRequest,
   OptimizePromptResponse,
   OptimizePromptError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: OptimizePromptRequest,
   output: OptimizePromptResponse,
@@ -8156,7 +8155,7 @@ export const putInvocationStep: API.OperationMethod<
   PutInvocationStepRequest,
   PutInvocationStepResponse,
   PutInvocationStepError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PutInvocationStepRequest,
   output: PutInvocationStepResponse,
@@ -8192,7 +8191,7 @@ export const rerank: API.PaginatedOperationMethod<
   RerankRequest,
   RerankResponse,
   RerankError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   RerankResult
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: RerankRequest,
@@ -8236,7 +8235,7 @@ export const retrieve: API.PaginatedOperationMethod<
   RetrieveRequest,
   RetrieveResponse,
   RetrieveError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   KnowledgeBaseRetrievalResult
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: RetrieveRequest,
@@ -8282,7 +8281,7 @@ export const retrieveAndGenerate: API.OperationMethod<
   RetrieveAndGenerateRequest,
   RetrieveAndGenerateResponse,
   RetrieveAndGenerateError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: RetrieveAndGenerateRequest,
   output: RetrieveAndGenerateResponse,
@@ -8326,7 +8325,7 @@ export const retrieveAndGenerateStream: API.OperationMethod<
   RetrieveAndGenerateStreamRequest,
   RetrieveAndGenerateStreamResponse,
   RetrieveAndGenerateStreamError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: RetrieveAndGenerateStreamRequest,
   output: RetrieveAndGenerateStreamResponse,
@@ -8368,7 +8367,7 @@ export const startFlowExecution: API.OperationMethod<
   StartFlowExecutionRequest,
   StartFlowExecutionResponse,
   StartFlowExecutionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartFlowExecutionRequest,
   output: StartFlowExecutionResponse,
@@ -8405,7 +8404,7 @@ export const stopFlowExecution: API.OperationMethod<
   StopFlowExecutionRequest,
   StopFlowExecutionResponse,
   StopFlowExecutionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StopFlowExecutionRequest,
   output: StopFlowExecutionResponse,
@@ -8439,7 +8438,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -8470,7 +8469,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -8501,7 +8500,7 @@ export const updateSession: API.OperationMethod<
   UpdateSessionRequest,
   UpdateSessionResponse,
   UpdateSessionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateSessionRequest,
   output: UpdateSessionResponse,

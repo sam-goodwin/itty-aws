@@ -9,7 +9,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 import { SensitiveString } from "../sensitive.ts";
 const svc = T.AwsApiService({
   sdkId: "Lex Runtime V2",
@@ -1385,7 +1384,7 @@ export const deleteSession: API.OperationMethod<
   DeleteSessionRequest,
   DeleteSessionResponse,
   DeleteSessionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteSessionRequest,
   output: DeleteSessionResponse,
@@ -1426,7 +1425,7 @@ export const getSession: API.OperationMethod<
   GetSessionRequest,
   GetSessionResponse,
   GetSessionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetSessionRequest,
   output: GetSessionResponse,
@@ -1461,7 +1460,7 @@ export const putSession: API.OperationMethod<
   PutSessionRequest,
   PutSessionResponse,
   PutSessionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: PutSessionRequest,
   output: PutSessionResponse,
@@ -1522,7 +1521,7 @@ export const recognizeText: API.OperationMethod<
   RecognizeTextRequest,
   RecognizeTextResponse,
   RecognizeTextError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: RecognizeTextRequest,
   output: RecognizeTextResponse,
@@ -1606,7 +1605,7 @@ export const recognizeUtterance: API.OperationMethod<
   RecognizeUtteranceRequest,
   RecognizeUtteranceResponse,
   RecognizeUtteranceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: RecognizeUtteranceRequest,
   output: RecognizeUtteranceResponse,
@@ -1682,7 +1681,7 @@ export const startConversation: API.OperationMethod<
   StartConversationRequest,
   StartConversationResponse,
   StartConversationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: StartConversationRequest,
   output: StartConversationResponse,

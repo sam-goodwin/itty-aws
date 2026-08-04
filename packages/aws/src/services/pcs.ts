@@ -8,7 +8,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 import { SensitiveString } from "../sensitive.ts";
 const svc = T.AwsApiService({
   sdkId: "PCS",
@@ -1329,7 +1328,7 @@ export const createCluster: API.OperationMethod<
   CreateClusterRequest,
   CreateClusterResponse,
   CreateClusterError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateClusterRequest,
   output: CreateClusterResponse,
@@ -1362,7 +1361,7 @@ export const createComputeNodeGroup: API.OperationMethod<
   CreateComputeNodeGroupRequest,
   CreateComputeNodeGroupResponse,
   CreateComputeNodeGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateComputeNodeGroupRequest,
   output: CreateComputeNodeGroupResponse,
@@ -1396,7 +1395,7 @@ export const createQueue: API.OperationMethod<
   CreateQueueRequest,
   CreateQueueResponse,
   CreateQueueError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateQueueRequest,
   output: CreateQueueResponse,
@@ -1429,7 +1428,7 @@ export const deleteCluster: API.OperationMethod<
   DeleteClusterRequest,
   DeleteClusterResponse,
   DeleteClusterError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteClusterRequest,
   output: DeleteClusterResponse,
@@ -1461,7 +1460,7 @@ export const deleteComputeNodeGroup: API.OperationMethod<
   DeleteComputeNodeGroupRequest,
   DeleteComputeNodeGroupResponse,
   DeleteComputeNodeGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteComputeNodeGroupRequest,
   output: DeleteComputeNodeGroupResponse,
@@ -1493,7 +1492,7 @@ export const deleteQueue: API.OperationMethod<
   DeleteQueueRequest,
   DeleteQueueResponse,
   DeleteQueueError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteQueueRequest,
   output: DeleteQueueResponse,
@@ -1525,7 +1524,7 @@ export const getCluster: API.OperationMethod<
   GetClusterRequest,
   GetClusterResponse,
   GetClusterError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetClusterRequest,
   output: GetClusterResponse,
@@ -1557,7 +1556,7 @@ export const getComputeNodeGroup: API.OperationMethod<
   GetComputeNodeGroupRequest,
   GetComputeNodeGroupResponse,
   GetComputeNodeGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetComputeNodeGroupRequest,
   output: GetComputeNodeGroupResponse,
@@ -1589,7 +1588,7 @@ export const getQueue: API.OperationMethod<
   GetQueueRequest,
   GetQueueResponse,
   GetQueueError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetQueueRequest,
   output: GetQueueResponse,
@@ -1621,7 +1620,7 @@ export const listClusters: API.PaginatedOperationMethod<
   ListClustersRequest,
   ListClustersResponse,
   ListClustersError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ClusterSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListClustersRequest,
@@ -1660,7 +1659,7 @@ export const listComputeNodeGroups: API.PaginatedOperationMethod<
   ListComputeNodeGroupsRequest,
   ListComputeNodeGroupsResponse,
   ListComputeNodeGroupsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ComputeNodeGroupSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListComputeNodeGroupsRequest,
@@ -1699,7 +1698,7 @@ export const listQueues: API.PaginatedOperationMethod<
   ListQueuesRequest,
   ListQueuesResponse,
   ListQueuesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   QueueSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListQueuesRequest,
@@ -1731,7 +1730,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -1754,7 +1753,7 @@ export const registerComputeNodeGroupInstance: API.OperationMethod<
   RegisterComputeNodeGroupInstanceRequest,
   RegisterComputeNodeGroupInstanceResponse,
   RegisterComputeNodeGroupInstanceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: RegisterComputeNodeGroupInstanceRequest,
   output: RegisterComputeNodeGroupInstanceResponse,
@@ -1775,7 +1774,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -1793,7 +1792,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -1820,7 +1819,7 @@ export const updateCluster: API.OperationMethod<
   UpdateClusterRequest,
   UpdateClusterResponse,
   UpdateClusterError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateClusterRequest,
   output: UpdateClusterResponse,
@@ -1853,7 +1852,7 @@ export const updateComputeNodeGroup: API.OperationMethod<
   UpdateComputeNodeGroupRequest,
   UpdateComputeNodeGroupResponse,
   UpdateComputeNodeGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateComputeNodeGroupRequest,
   output: UpdateComputeNodeGroupResponse,
@@ -1887,7 +1886,7 @@ export const updateQueue: API.OperationMethod<
   UpdateQueueRequest,
   UpdateQueueResponse,
   UpdateQueueError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateQueueRequest,
   output: UpdateQueueResponse,

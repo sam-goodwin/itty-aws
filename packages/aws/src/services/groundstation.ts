@@ -7,7 +7,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 const svc = T.AwsApiService({
   sdkId: "GroundStation",
   serviceShapeName: "GroundStation",
@@ -3003,7 +3002,7 @@ export const cancelContact: API.OperationMethod<
   CancelContactRequest,
   ContactIdResponse,
   CancelContactError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CancelContactRequest,
   output: ContactIdResponse,
@@ -3032,7 +3031,7 @@ export const createConfig: API.OperationMethod<
   CreateConfigRequest,
   ConfigIdResponse,
   CreateConfigError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateConfigRequest,
   output: ConfigIdResponse,
@@ -3063,7 +3062,7 @@ export const createDataflowEndpointGroup: API.OperationMethod<
   CreateDataflowEndpointGroupRequest,
   DataflowEndpointGroupIdResponse,
   CreateDataflowEndpointGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateDataflowEndpointGroupRequest,
   output: DataflowEndpointGroupIdResponse,
@@ -3094,7 +3093,7 @@ export const createDataflowEndpointGroupV2: API.OperationMethod<
   CreateDataflowEndpointGroupV2Request,
   CreateDataflowEndpointGroupV2Response,
   CreateDataflowEndpointGroupV2Error,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateDataflowEndpointGroupV2Request,
   output: CreateDataflowEndpointGroupV2Response,
@@ -3121,7 +3120,7 @@ export const createEphemeris: API.OperationMethod<
   CreateEphemerisRequest,
   EphemerisIdResponse,
   CreateEphemerisError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateEphemerisRequest,
   output: EphemerisIdResponse,
@@ -3149,7 +3148,7 @@ export const createMissionProfile: API.OperationMethod<
   CreateMissionProfileRequest,
   MissionProfileIdResponse,
   CreateMissionProfileError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateMissionProfileRequest,
   output: MissionProfileIdResponse,
@@ -3175,7 +3174,7 @@ export const deleteConfig: API.OperationMethod<
   DeleteConfigRequest,
   ConfigIdResponse,
   DeleteConfigError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteConfigRequest,
   output: ConfigIdResponse,
@@ -3201,7 +3200,7 @@ export const deleteDataflowEndpointGroup: API.OperationMethod<
   DeleteDataflowEndpointGroupRequest,
   DataflowEndpointGroupIdResponse,
   DeleteDataflowEndpointGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteDataflowEndpointGroupRequest,
   output: DataflowEndpointGroupIdResponse,
@@ -3228,7 +3227,7 @@ export const deleteEphemeris: API.OperationMethod<
   DeleteEphemerisRequest,
   EphemerisIdResponse,
   DeleteEphemerisError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteEphemerisRequest,
   output: EphemerisIdResponse,
@@ -3255,7 +3254,7 @@ export const deleteMissionProfile: API.OperationMethod<
   DeleteMissionProfileRequest,
   MissionProfileIdResponse,
   DeleteMissionProfileError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteMissionProfileRequest,
   output: MissionProfileIdResponse,
@@ -3281,7 +3280,7 @@ export const describeContact: API.OperationMethod<
   DescribeContactRequest,
   DescribeContactResponse,
   DescribeContactError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeContactRequest,
   output: DescribeContactResponse,
@@ -3307,7 +3306,7 @@ export const describeContactVersion: API.OperationMethod<
   DescribeContactVersionRequest,
   DescribeContactVersionResponse,
   DescribeContactVersionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeContactVersionRequest,
   output: DescribeContactVersionResponse,
@@ -3333,7 +3332,7 @@ export const describeEphemeris: API.OperationMethod<
   DescribeEphemerisRequest,
   DescribeEphemerisResponse,
   DescribeEphemerisError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeEphemerisRequest,
   output: DescribeEphemerisResponse,
@@ -3361,7 +3360,7 @@ export const getAgentConfiguration: API.OperationMethod<
   GetAgentConfigurationRequest,
   GetAgentConfigurationResponse,
   GetAgentConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetAgentConfigurationRequest,
   output: GetAgentConfigurationResponse,
@@ -3389,7 +3388,7 @@ export const getAgentTaskResponseUrl: API.OperationMethod<
   GetAgentTaskResponseUrlRequest,
   GetAgentTaskResponseUrlResponse,
   GetAgentTaskResponseUrlError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetAgentTaskResponseUrlRequest,
   output: GetAgentTaskResponseUrlResponse,
@@ -3417,7 +3416,7 @@ export const getConfig: API.OperationMethod<
   GetConfigRequest,
   GetConfigResponse,
   GetConfigError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetConfigRequest,
   output: GetConfigResponse,
@@ -3443,7 +3442,7 @@ export const getDataflowEndpointGroup: API.OperationMethod<
   GetDataflowEndpointGroupRequest,
   GetDataflowEndpointGroupResponse,
   GetDataflowEndpointGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetDataflowEndpointGroupRequest,
   output: GetDataflowEndpointGroupResponse,
@@ -3469,7 +3468,7 @@ export const getMinuteUsage: API.OperationMethod<
   GetMinuteUsageRequest,
   GetMinuteUsageResponse,
   GetMinuteUsageError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetMinuteUsageRequest,
   output: GetMinuteUsageResponse,
@@ -3495,7 +3494,7 @@ export const getMissionProfile: API.OperationMethod<
   GetMissionProfileRequest,
   GetMissionProfileResponse,
   GetMissionProfileError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetMissionProfileRequest,
   output: GetMissionProfileResponse,
@@ -3521,7 +3520,7 @@ export const getSatellite: API.OperationMethod<
   GetSatelliteRequest,
   GetSatelliteResponse,
   GetSatelliteError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetSatelliteRequest,
   output: GetSatelliteResponse,
@@ -3546,7 +3545,7 @@ export const listAntennas: API.PaginatedOperationMethod<
   ListAntennasRequest,
   ListAntennasResponse,
   ListAntennasError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   AntennaListItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAntennasRequest,
@@ -3575,7 +3574,7 @@ export const listConfigs: API.PaginatedOperationMethod<
   ListConfigsRequest,
   ListConfigsResponse,
   ListConfigsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ConfigListItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListConfigsRequest,
@@ -3610,7 +3609,7 @@ export const listContacts: API.PaginatedOperationMethod<
   ListContactsRequest,
   ListContactsResponse,
   ListContactsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ContactData
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListContactsRequest,
@@ -3643,7 +3642,7 @@ export const listContactVersions: API.PaginatedOperationMethod<
   ListContactVersionsRequest,
   ListContactVersionsResponse,
   ListContactVersionsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   ContactVersion
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListContactVersionsRequest,
@@ -3676,7 +3675,7 @@ export const listDataflowEndpointGroups: API.PaginatedOperationMethod<
   ListDataflowEndpointGroupsRequest,
   ListDataflowEndpointGroupsResponse,
   ListDataflowEndpointGroupsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   DataflowEndpointListItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDataflowEndpointGroupsRequest,
@@ -3709,7 +3708,7 @@ export const listEphemerides: API.PaginatedOperationMethod<
   ListEphemeridesRequest,
   ListEphemeridesResponse,
   ListEphemeridesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   EphemerisItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEphemeridesRequest,
@@ -3741,7 +3740,7 @@ export const listGroundStationReservations: API.PaginatedOperationMethod<
   ListGroundStationReservationsRequest,
   ListGroundStationReservationsResponse,
   ListGroundStationReservationsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   GroundStationReservationListItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListGroundStationReservationsRequest,
@@ -3770,7 +3769,7 @@ export const listGroundStations: API.PaginatedOperationMethod<
   ListGroundStationsRequest,
   ListGroundStationsResponse,
   ListGroundStationsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   GroundStationData
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListGroundStationsRequest,
@@ -3803,7 +3802,7 @@ export const listMissionProfiles: API.PaginatedOperationMethod<
   ListMissionProfilesRequest,
   ListMissionProfilesResponse,
   ListMissionProfilesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   MissionProfileListItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMissionProfilesRequest,
@@ -3836,7 +3835,7 @@ export const listSatellites: API.PaginatedOperationMethod<
   ListSatellitesRequest,
   ListSatellitesResponse,
   ListSatellitesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   SatelliteListItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSatellitesRequest,
@@ -3869,7 +3868,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -3897,7 +3896,7 @@ export const registerAgent: API.OperationMethod<
   RegisterAgentRequest,
   RegisterAgentResponse,
   RegisterAgentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: RegisterAgentRequest,
   output: RegisterAgentResponse,
@@ -3924,7 +3923,7 @@ export const reserveContact: API.OperationMethod<
   ReserveContactRequest,
   ContactIdResponse,
   ReserveContactError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ReserveContactRequest,
   output: ContactIdResponse,
@@ -3951,7 +3950,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -3977,7 +3976,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -4005,7 +4004,7 @@ export const updateAgentStatus: API.OperationMethod<
   UpdateAgentStatusRequest,
   UpdateAgentStatusResponse,
   UpdateAgentStatusError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateAgentStatusRequest,
   output: UpdateAgentStatusResponse,
@@ -4033,7 +4032,7 @@ export const updateConfig: API.OperationMethod<
   UpdateConfigRequest,
   ConfigIdResponse,
   UpdateConfigError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateConfigRequest,
   output: ConfigIdResponse,
@@ -4060,7 +4059,7 @@ export const updateContact: API.OperationMethod<
   UpdateContactRequest,
   UpdateContactResponse,
   UpdateContactError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateContactRequest,
   output: UpdateContactResponse,
@@ -4087,7 +4086,7 @@ export const updateEphemeris: API.OperationMethod<
   UpdateEphemerisRequest,
   EphemerisIdResponse,
   UpdateEphemerisError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateEphemerisRequest,
   output: EphemerisIdResponse,
@@ -4115,7 +4114,7 @@ export const updateMissionProfile: API.OperationMethod<
   UpdateMissionProfileRequest,
   MissionProfileIdResponse,
   UpdateMissionProfileError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateMissionProfileRequest,
   output: MissionProfileIdResponse,

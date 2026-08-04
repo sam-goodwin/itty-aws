@@ -7,7 +7,6 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
 const svc = T.AwsApiService({
   sdkId: "BCM Pricing Calculator",
   serviceShapeName: "AWSBCMPricingCalculator",
@@ -2526,7 +2525,7 @@ export const batchCreateBillScenarioCommitmentModification: API.OperationMethod<
   BatchCreateBillScenarioCommitmentModificationRequest,
   BatchCreateBillScenarioCommitmentModificationResponse,
   BatchCreateBillScenarioCommitmentModificationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: BatchCreateBillScenarioCommitmentModificationRequest,
   output: BatchCreateBillScenarioCommitmentModificationResponse,
@@ -2555,7 +2554,7 @@ export const batchCreateBillScenarioUsageModification: API.OperationMethod<
   BatchCreateBillScenarioUsageModificationRequest,
   BatchCreateBillScenarioUsageModificationResponse,
   BatchCreateBillScenarioUsageModificationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: BatchCreateBillScenarioUsageModificationRequest,
   output: BatchCreateBillScenarioUsageModificationResponse,
@@ -2585,7 +2584,7 @@ export const batchCreateWorkloadEstimateUsage: API.OperationMethod<
   BatchCreateWorkloadEstimateUsageRequest,
   BatchCreateWorkloadEstimateUsageResponse,
   BatchCreateWorkloadEstimateUsageError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: BatchCreateWorkloadEstimateUsageRequest,
   output: BatchCreateWorkloadEstimateUsageResponse,
@@ -2614,7 +2613,7 @@ export const batchDeleteBillScenarioCommitmentModification: API.OperationMethod<
   BatchDeleteBillScenarioCommitmentModificationRequest,
   BatchDeleteBillScenarioCommitmentModificationResponse,
   BatchDeleteBillScenarioCommitmentModificationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: BatchDeleteBillScenarioCommitmentModificationRequest,
   output: BatchDeleteBillScenarioCommitmentModificationResponse,
@@ -2643,7 +2642,7 @@ export const batchDeleteBillScenarioUsageModification: API.OperationMethod<
   BatchDeleteBillScenarioUsageModificationRequest,
   BatchDeleteBillScenarioUsageModificationResponse,
   BatchDeleteBillScenarioUsageModificationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: BatchDeleteBillScenarioUsageModificationRequest,
   output: BatchDeleteBillScenarioUsageModificationResponse,
@@ -2672,7 +2671,7 @@ export const batchDeleteWorkloadEstimateUsage: API.OperationMethod<
   BatchDeleteWorkloadEstimateUsageRequest,
   BatchDeleteWorkloadEstimateUsageResponse,
   BatchDeleteWorkloadEstimateUsageError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: BatchDeleteWorkloadEstimateUsageRequest,
   output: BatchDeleteWorkloadEstimateUsageResponse,
@@ -2700,7 +2699,7 @@ export const batchUpdateBillScenarioCommitmentModification: API.OperationMethod<
   BatchUpdateBillScenarioCommitmentModificationRequest,
   BatchUpdateBillScenarioCommitmentModificationResponse,
   BatchUpdateBillScenarioCommitmentModificationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: BatchUpdateBillScenarioCommitmentModificationRequest,
   output: BatchUpdateBillScenarioCommitmentModificationResponse,
@@ -2729,7 +2728,7 @@ export const batchUpdateBillScenarioUsageModification: API.OperationMethod<
   BatchUpdateBillScenarioUsageModificationRequest,
   BatchUpdateBillScenarioUsageModificationResponse,
   BatchUpdateBillScenarioUsageModificationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: BatchUpdateBillScenarioUsageModificationRequest,
   output: BatchUpdateBillScenarioUsageModificationResponse,
@@ -2758,7 +2757,7 @@ export const batchUpdateWorkloadEstimateUsage: API.OperationMethod<
   BatchUpdateWorkloadEstimateUsageRequest,
   BatchUpdateWorkloadEstimateUsageResponse,
   BatchUpdateWorkloadEstimateUsageError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: BatchUpdateWorkloadEstimateUsageRequest,
   output: BatchUpdateWorkloadEstimateUsageResponse,
@@ -2784,7 +2783,7 @@ export const createBillEstimate: API.OperationMethod<
   CreateBillEstimateRequest,
   CreateBillEstimateResponse,
   CreateBillEstimateError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateBillEstimateRequest,
   output: CreateBillEstimateResponse,
@@ -2810,7 +2809,7 @@ export const createBillScenario: API.OperationMethod<
   CreateBillScenarioRequest,
   CreateBillScenarioResponse,
   CreateBillScenarioError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateBillScenarioRequest,
   output: CreateBillScenarioResponse,
@@ -2836,7 +2835,7 @@ export const createWorkloadEstimate: API.OperationMethod<
   CreateWorkloadEstimateRequest,
   CreateWorkloadEstimateResponse,
   CreateWorkloadEstimateError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateWorkloadEstimateRequest,
   output: CreateWorkloadEstimateResponse,
@@ -2861,7 +2860,7 @@ export const deleteBillEstimate: API.OperationMethod<
   DeleteBillEstimateRequest,
   DeleteBillEstimateResponse,
   DeleteBillEstimateError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteBillEstimateRequest,
   output: DeleteBillEstimateResponse,
@@ -2882,7 +2881,7 @@ export const deleteBillScenario: API.OperationMethod<
   DeleteBillScenarioRequest,
   DeleteBillScenarioResponse,
   DeleteBillScenarioError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteBillScenarioRequest,
   output: DeleteBillScenarioResponse,
@@ -2902,7 +2901,7 @@ export const deleteWorkloadEstimate: API.OperationMethod<
   DeleteWorkloadEstimateRequest,
   DeleteWorkloadEstimateResponse,
   DeleteWorkloadEstimateError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteWorkloadEstimateRequest,
   output: DeleteWorkloadEstimateResponse,
@@ -2923,7 +2922,7 @@ export const getBillEstimate: API.OperationMethod<
   GetBillEstimateRequest,
   GetBillEstimateResponse,
   GetBillEstimateError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetBillEstimateRequest,
   output: GetBillEstimateResponse,
@@ -2944,7 +2943,7 @@ export const getBillScenario: API.OperationMethod<
   GetBillScenarioRequest,
   GetBillScenarioResponse,
   GetBillScenarioError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetBillScenarioRequest,
   output: GetBillScenarioResponse,
@@ -2962,7 +2961,7 @@ export const getPreferences: API.OperationMethod<
   GetPreferencesRequest,
   GetPreferencesResponse,
   GetPreferencesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetPreferencesRequest,
   output: GetPreferencesResponse,
@@ -2983,7 +2982,7 @@ export const getWorkloadEstimate: API.OperationMethod<
   GetWorkloadEstimateRequest,
   GetWorkloadEstimateResponse,
   GetWorkloadEstimateError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetWorkloadEstimateRequest,
   output: GetWorkloadEstimateResponse,
@@ -3004,7 +3003,7 @@ export const listBillEstimateCommitments: API.PaginatedOperationMethod<
   ListBillEstimateCommitmentsRequest,
   ListBillEstimateCommitmentsResponse,
   ListBillEstimateCommitmentsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   BillEstimateCommitmentSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBillEstimateCommitmentsRequest,
@@ -3032,7 +3031,7 @@ export const listBillEstimateInputCommitmentModifications: API.PaginatedOperatio
   ListBillEstimateInputCommitmentModificationsRequest,
   ListBillEstimateInputCommitmentModificationsResponse,
   ListBillEstimateInputCommitmentModificationsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   BillEstimateInputCommitmentModificationSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBillEstimateInputCommitmentModificationsRequest,
@@ -3060,7 +3059,7 @@ export const listBillEstimateInputUsageModifications: API.PaginatedOperationMeth
   ListBillEstimateInputUsageModificationsRequest,
   ListBillEstimateInputUsageModificationsResponse,
   ListBillEstimateInputUsageModificationsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   BillEstimateInputUsageModificationSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBillEstimateInputUsageModificationsRequest,
@@ -3088,7 +3087,7 @@ export const listBillEstimateLineItems: API.PaginatedOperationMethod<
   ListBillEstimateLineItemsRequest,
   ListBillEstimateLineItemsResponse,
   ListBillEstimateLineItemsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   BillEstimateLineItemSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBillEstimateLineItemsRequest,
@@ -3113,7 +3112,7 @@ export const listBillEstimates: API.PaginatedOperationMethod<
   ListBillEstimatesRequest,
   ListBillEstimatesResponse,
   ListBillEstimatesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   BillEstimateSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBillEstimatesRequest,
@@ -3141,7 +3140,7 @@ export const listBillScenarioCommitmentModifications: API.PaginatedOperationMeth
   ListBillScenarioCommitmentModificationsRequest,
   ListBillScenarioCommitmentModificationsResponse,
   ListBillScenarioCommitmentModificationsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   BillScenarioCommitmentModificationItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBillScenarioCommitmentModificationsRequest,
@@ -3166,7 +3165,7 @@ export const listBillScenarios: API.PaginatedOperationMethod<
   ListBillScenariosRequest,
   ListBillScenariosResponse,
   ListBillScenariosError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   BillScenarioSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBillScenariosRequest,
@@ -3194,7 +3193,7 @@ export const listBillScenarioUsageModifications: API.PaginatedOperationMethod<
   ListBillScenarioUsageModificationsRequest,
   ListBillScenarioUsageModificationsResponse,
   ListBillScenarioUsageModificationsError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   BillScenarioUsageModificationItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBillScenarioUsageModificationsRequest,
@@ -3219,7 +3218,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -3239,7 +3238,7 @@ export const listWorkloadEstimates: API.PaginatedOperationMethod<
   ListWorkloadEstimatesRequest,
   ListWorkloadEstimatesResponse,
   ListWorkloadEstimatesError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   WorkloadEstimateSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListWorkloadEstimatesRequest,
@@ -3267,7 +3266,7 @@ export const listWorkloadEstimateUsage: API.PaginatedOperationMethod<
   ListWorkloadEstimateUsageRequest,
   ListWorkloadEstimateUsageResponse,
   ListWorkloadEstimateUsageError,
-  Credentials | Region | HttpClient.HttpClient,
+  Credentials | HttpClient.HttpClient,
   WorkloadEstimateUsageItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListWorkloadEstimateUsageRequest,
@@ -3295,7 +3294,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -3313,7 +3312,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -3335,7 +3334,7 @@ export const updateBillEstimate: API.OperationMethod<
   UpdateBillEstimateRequest,
   UpdateBillEstimateResponse,
   UpdateBillEstimateError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateBillEstimateRequest,
   output: UpdateBillEstimateResponse,
@@ -3361,7 +3360,7 @@ export const updateBillScenario: API.OperationMethod<
   UpdateBillScenarioRequest,
   UpdateBillScenarioResponse,
   UpdateBillScenarioError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateBillScenarioRequest,
   output: UpdateBillScenarioResponse,
@@ -3386,7 +3385,7 @@ export const updatePreferences: API.OperationMethod<
   UpdatePreferencesRequest,
   UpdatePreferencesResponse,
   UpdatePreferencesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdatePreferencesRequest,
   output: UpdatePreferencesResponse,
@@ -3408,7 +3407,7 @@ export const updateWorkloadEstimate: API.OperationMethod<
   UpdateWorkloadEstimateRequest,
   UpdateWorkloadEstimateResponse,
   UpdateWorkloadEstimateError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateWorkloadEstimateRequest,
   output: UpdateWorkloadEstimateResponse,
