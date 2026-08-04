@@ -268,24 +268,4 @@ export const getEntitlements: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  GetEntitlementsRequest,
-  GetEntitlementsResult,
-  GetEntitlementsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetEntitlementsRequest,
-  ) => stream.Stream<
-    GetEntitlementsResult,
-    GetEntitlementsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetEntitlementsRequest,
-  ) => stream.Stream<
-    unknown,
-    GetEntitlementsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;

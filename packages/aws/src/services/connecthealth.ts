@@ -1625,27 +1625,7 @@ export const listDomains: API.OperationMethod<
     items: "domains",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListDomainsInput,
-  ListDomainsOutput,
-  ListDomainsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDomainsInput,
-  ) => stream.Stream<
-    ListDomainsOutput,
-    ListDomainsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDomainsInput,
-  ) => stream.Stream<
-    DomainSummary,
-    ListDomainsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListSubscriptionsError =
   | AccessDeniedException
@@ -1694,27 +1674,7 @@ export const listSubscriptions: API.OperationMethod<
     items: "subscriptions",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListSubscriptionsInput,
-  ListSubscriptionsOutput,
-  ListSubscriptionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSubscriptionsInput,
-  ) => stream.Stream<
-    ListSubscriptionsOutput,
-    ListSubscriptionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSubscriptionsInput,
-  ) => stream.Stream<
-    SubscriptionDescription,
-    ListSubscriptionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsForResourceError = CommonErrors;
 /**

@@ -2172,27 +2172,7 @@ export const getCellReadinessSummary: API.OperationMethod<
     items: "ReadinessChecks",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  GetCellReadinessSummaryRequest,
-  GetCellReadinessSummaryResponse,
-  GetCellReadinessSummaryError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetCellReadinessSummaryRequest,
-  ) => stream.Stream<
-    GetCellReadinessSummaryResponse,
-    GetCellReadinessSummaryError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetCellReadinessSummaryRequest,
-  ) => stream.Stream<
-    ReadinessCheckSummary,
-    GetCellReadinessSummaryError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type GetReadinessCheckError =
   | AccessDeniedException
@@ -2273,27 +2253,7 @@ export const getReadinessCheckResourceStatus: API.OperationMethod<
     items: "Rules",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  GetReadinessCheckResourceStatusRequest,
-  GetReadinessCheckResourceStatusResponse,
-  GetReadinessCheckResourceStatusError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetReadinessCheckResourceStatusRequest,
-  ) => stream.Stream<
-    GetReadinessCheckResourceStatusResponse,
-    GetReadinessCheckResourceStatusError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetReadinessCheckResourceStatusRequest,
-  ) => stream.Stream<
-    RuleResult,
-    GetReadinessCheckResourceStatusError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type GetReadinessCheckStatusError =
   | AccessDeniedException
@@ -2344,27 +2304,7 @@ export const getReadinessCheckStatus: API.OperationMethod<
     items: "Resources",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  GetReadinessCheckStatusRequest,
-  GetReadinessCheckStatusResponse,
-  GetReadinessCheckStatusError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetReadinessCheckStatusRequest,
-  ) => stream.Stream<
-    GetReadinessCheckStatusResponse,
-    GetReadinessCheckStatusError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetReadinessCheckStatusRequest,
-  ) => stream.Stream<
-    ResourceResult,
-    GetReadinessCheckStatusError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type GetRecoveryGroupError =
   | AccessDeniedException
@@ -2445,27 +2385,7 @@ export const getRecoveryGroupReadinessSummary: API.OperationMethod<
     items: "ReadinessChecks",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  GetRecoveryGroupReadinessSummaryRequest,
-  GetRecoveryGroupReadinessSummaryResponse,
-  GetRecoveryGroupReadinessSummaryError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetRecoveryGroupReadinessSummaryRequest,
-  ) => stream.Stream<
-    GetRecoveryGroupReadinessSummaryResponse,
-    GetRecoveryGroupReadinessSummaryError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetRecoveryGroupReadinessSummaryRequest,
-  ) => stream.Stream<
-    ReadinessCheckSummary,
-    GetRecoveryGroupReadinessSummaryError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type GetResourceSetError =
   | AccessDeniedException
@@ -2544,27 +2464,7 @@ export const listCells: API.OperationMethod<
     items: "Cells",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListCellsRequest,
-  ListCellsResponse,
-  ListCellsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCellsRequest,
-  ) => stream.Stream<
-    ListCellsResponse,
-    ListCellsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCellsRequest,
-  ) => stream.Stream<
-    CellOutput,
-    ListCellsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListCrossAccountAuthorizationsError =
   | AccessDeniedException
@@ -2613,27 +2513,7 @@ export const listCrossAccountAuthorizations: API.OperationMethod<
     items: "CrossAccountAuthorizations",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListCrossAccountAuthorizationsRequest,
-  ListCrossAccountAuthorizationsResponse,
-  ListCrossAccountAuthorizationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCrossAccountAuthorizationsRequest,
-  ) => stream.Stream<
-    ListCrossAccountAuthorizationsResponse,
-    ListCrossAccountAuthorizationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCrossAccountAuthorizationsRequest,
-  ) => stream.Stream<
-    CrossAccountAuthorization,
-    ListCrossAccountAuthorizationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListReadinessChecksError =
   | AccessDeniedException
@@ -2682,27 +2562,7 @@ export const listReadinessChecks: API.OperationMethod<
     items: "ReadinessChecks",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListReadinessChecksRequest,
-  ListReadinessChecksResponse,
-  ListReadinessChecksError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListReadinessChecksRequest,
-  ) => stream.Stream<
-    ListReadinessChecksResponse,
-    ListReadinessChecksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListReadinessChecksRequest,
-  ) => stream.Stream<
-    ReadinessCheckOutput,
-    ListReadinessChecksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListRecoveryGroupsError =
   | AccessDeniedException
@@ -2751,27 +2611,7 @@ export const listRecoveryGroups: API.OperationMethod<
     items: "RecoveryGroups",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListRecoveryGroupsRequest,
-  ListRecoveryGroupsResponse,
-  ListRecoveryGroupsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRecoveryGroupsRequest,
-  ) => stream.Stream<
-    ListRecoveryGroupsResponse,
-    ListRecoveryGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRecoveryGroupsRequest,
-  ) => stream.Stream<
-    RecoveryGroupOutput,
-    ListRecoveryGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListResourceSetsError =
   | AccessDeniedException
@@ -2820,27 +2660,7 @@ export const listResourceSets: API.OperationMethod<
     items: "ResourceSets",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListResourceSetsRequest,
-  ListResourceSetsResponse,
-  ListResourceSetsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListResourceSetsRequest,
-  ) => stream.Stream<
-    ListResourceSetsResponse,
-    ListResourceSetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListResourceSetsRequest,
-  ) => stream.Stream<
-    ResourceSetOutput,
-    ListResourceSetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListRulesError =
   | AccessDeniedException
@@ -2889,27 +2709,7 @@ export const listRules: API.OperationMethod<
     items: "Rules",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListRulesRequest,
-  ListRulesResponse,
-  ListRulesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRulesRequest,
-  ) => stream.Stream<
-    ListRulesResponse,
-    ListRulesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRulesRequest,
-  ) => stream.Stream<
-    ListRulesOutput,
-    ListRulesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsForResourcesError =
   | InternalServerException

@@ -5800,27 +5800,7 @@ export const describeTapeArchives: API.OperationMethod<
     items: "TapeArchives",
     pageSize: "Limit",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeTapeArchivesInput,
-  DescribeTapeArchivesOutput,
-  DescribeTapeArchivesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeTapeArchivesInput,
-  ) => stream.Stream<
-    DescribeTapeArchivesOutput,
-    DescribeTapeArchivesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeTapeArchivesInput,
-  ) => stream.Stream<
-    TapeArchive,
-    DescribeTapeArchivesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeTapeRecoveryPointsError =
   | InternalServerError
@@ -5868,27 +5848,7 @@ export const describeTapeRecoveryPoints: API.OperationMethod<
     items: "TapeRecoveryPointInfos",
     pageSize: "Limit",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeTapeRecoveryPointsInput,
-  DescribeTapeRecoveryPointsOutput,
-  DescribeTapeRecoveryPointsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeTapeRecoveryPointsInput,
-  ) => stream.Stream<
-    DescribeTapeRecoveryPointsOutput,
-    DescribeTapeRecoveryPointsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeTapeRecoveryPointsInput,
-  ) => stream.Stream<
-    TapeRecoveryPointInfo,
-    DescribeTapeRecoveryPointsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeTapesError =
   | InternalServerError
@@ -5940,27 +5900,7 @@ export const describeTapes: API.OperationMethod<
     items: "Tapes",
     pageSize: "Limit",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeTapesInput,
-  DescribeTapesOutput,
-  DescribeTapesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeTapesInput,
-  ) => stream.Stream<
-    DescribeTapesOutput,
-    DescribeTapesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeTapesInput,
-  ) => stream.Stream<
-    Tape,
-    DescribeTapesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeUploadBufferError =
   | InternalServerError
@@ -6030,27 +5970,7 @@ export const describeVTLDevices: API.OperationMethod<
     items: "VTLDevices",
     pageSize: "Limit",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeVTLDevicesInput,
-  DescribeVTLDevicesOutput,
-  DescribeVTLDevicesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeVTLDevicesInput,
-  ) => stream.Stream<
-    DescribeVTLDevicesOutput,
-    DescribeVTLDevicesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeVTLDevicesInput,
-  ) => stream.Stream<
-    VTLDevice,
-    DescribeVTLDevicesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeWorkingStorageError =
   | InternalServerError
@@ -6285,27 +6205,7 @@ export const listCacheReports: API.OperationMethod<
     outputToken: "Marker",
     items: "CacheReportList",
   } as const,
-})) as any as API.OperationMethod<
-  ListCacheReportsInput,
-  ListCacheReportsOutput,
-  ListCacheReportsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCacheReportsInput,
-  ) => stream.Stream<
-    ListCacheReportsOutput,
-    ListCacheReportsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCacheReportsInput,
-  ) => stream.Stream<
-    CacheReportInfo,
-    ListCacheReportsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListFileSharesError =
   | InternalServerError
@@ -6349,27 +6249,7 @@ export const listFileShares: API.OperationMethod<
     items: "FileShareInfoList",
     pageSize: "Limit",
   } as const,
-})) as any as API.OperationMethod<
-  ListFileSharesInput,
-  ListFileSharesOutput,
-  ListFileSharesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListFileSharesInput,
-  ) => stream.Stream<
-    ListFileSharesOutput,
-    ListFileSharesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListFileSharesInput,
-  ) => stream.Stream<
-    FileShareInfo,
-    ListFileSharesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListFileSystemAssociationsError =
   | InternalServerError
@@ -6413,27 +6293,7 @@ export const listFileSystemAssociations: API.OperationMethod<
     items: "FileSystemAssociationSummaryList",
     pageSize: "Limit",
   } as const,
-})) as any as API.OperationMethod<
-  ListFileSystemAssociationsInput,
-  ListFileSystemAssociationsOutput,
-  ListFileSystemAssociationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListFileSystemAssociationsInput,
-  ) => stream.Stream<
-    ListFileSystemAssociationsOutput,
-    ListFileSystemAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListFileSystemAssociationsInput,
-  ) => stream.Stream<
-    FileSystemAssociationSummary,
-    ListFileSystemAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListGatewaysError =
   | InternalServerError
@@ -6485,27 +6345,7 @@ export const listGateways: API.OperationMethod<
     items: "Gateways",
     pageSize: "Limit",
   } as const,
-})) as any as API.OperationMethod<
-  ListGatewaysInput,
-  ListGatewaysOutput,
-  ListGatewaysError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListGatewaysInput,
-  ) => stream.Stream<
-    ListGatewaysOutput,
-    ListGatewaysError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListGatewaysInput,
-  ) => stream.Stream<
-    GatewayInfo,
-    ListGatewaysError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListLocalDisksError =
   | InternalServerError
@@ -6577,27 +6417,7 @@ export const listTagsForResource: API.OperationMethod<
     items: "Tags",
     pageSize: "Limit",
   } as const,
-})) as any as API.OperationMethod<
-  ListTagsForResourceInput,
-  ListTagsForResourceOutput,
-  ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTagsForResourceInput,
-  ) => stream.Stream<
-    ListTagsForResourceOutput,
-    ListTagsForResourceError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTagsForResourceInput,
-  ) => stream.Stream<
-    Tag,
-    ListTagsForResourceError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTapePoolsError =
   | InternalServerError
@@ -6647,27 +6467,7 @@ export const listTapePools: API.OperationMethod<
     items: "PoolInfos",
     pageSize: "Limit",
   } as const,
-})) as any as API.OperationMethod<
-  ListTapePoolsInput,
-  ListTapePoolsOutput,
-  ListTapePoolsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTapePoolsInput,
-  ) => stream.Stream<
-    ListTapePoolsOutput,
-    ListTapePoolsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTapePoolsInput,
-  ) => stream.Stream<
-    PoolInfo,
-    ListTapePoolsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTapesError =
   | InternalServerError
@@ -6719,27 +6519,7 @@ export const listTapes: API.OperationMethod<
     items: "TapeInfos",
     pageSize: "Limit",
   } as const,
-})) as any as API.OperationMethod<
-  ListTapesInput,
-  ListTapesOutput,
-  ListTapesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTapesInput,
-  ) => stream.Stream<
-    ListTapesOutput,
-    ListTapesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTapesInput,
-  ) => stream.Stream<
-    TapeInfo,
-    ListTapesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListVolumeInitiatorsError =
   | InternalServerError
@@ -6840,27 +6620,7 @@ export const listVolumes: API.OperationMethod<
     items: "VolumeInfos",
     pageSize: "Limit",
   } as const,
-})) as any as API.OperationMethod<
-  ListVolumesInput,
-  ListVolumesOutput,
-  ListVolumesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListVolumesInput,
-  ) => stream.Stream<
-    ListVolumesOutput,
-    ListVolumesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListVolumesInput,
-  ) => stream.Stream<
-    VolumeInfo,
-    ListVolumesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type NotifyWhenUploadedError =
   | InternalServerError

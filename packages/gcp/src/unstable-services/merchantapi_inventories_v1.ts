@@ -546,7 +546,8 @@ export const listAccountsProductsLocalInventories: API.PaginatedOperationMethod<
   ListAccountsProductsLocalInventoriesRequest,
   ListLocalInventoriesResponse,
   ListAccountsProductsLocalInventoriesError,
-  GcpOpContext
+  GcpOpContext,
+  ListLocalInventoriesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsProductsLocalInventoriesRequest,
   output: ListLocalInventoriesResponse,
@@ -557,7 +558,7 @@ export const listAccountsProductsLocalInventories: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListAccountsProductsRegionalInventoriesError =
   | NotFound
@@ -568,7 +569,8 @@ export const listAccountsProductsRegionalInventories: API.PaginatedOperationMeth
   ListAccountsProductsRegionalInventoriesRequest,
   ListRegionalInventoriesResponse,
   ListAccountsProductsRegionalInventoriesError,
-  GcpOpContext
+  GcpOpContext,
+  ListRegionalInventoriesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsProductsRegionalInventoriesRequest,
   output: ListRegionalInventoriesResponse,
@@ -579,4 +581,4 @@ export const listAccountsProductsRegionalInventories: API.PaginatedOperationMeth
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;

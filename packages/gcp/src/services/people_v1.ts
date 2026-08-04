@@ -2969,7 +2969,8 @@ export const listContactGroups: API.PaginatedOperationMethod<
   ListContactGroupsRequest,
   ListContactGroupsResponse,
   ListContactGroupsError,
-  GcpOpContext
+  GcpOpContext,
+  ListContactGroupsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListContactGroupsRequest,
   output: ListContactGroupsResponse,
@@ -2980,7 +2981,7 @@ export const listContactGroups: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListDirectoryPeoplePeopleError = NotFound | Forbidden | GcpOpError;
 /** Provides a list of domain profiles and domain contacts in the authenticated user's domain directory. When the `sync_token` is specified, resources deleted since the last sync will be returned as a person with `PersonMetadata.deleted` set to true. When the `page_token` or `sync_token` is specified, all other request parameters must match the first call. Writes may have a propagation delay of several minutes for sync requests. Incremental syncs are not intended for read-after-write use cases. See example usage at [List the directory people that have changed](/people/v1/directory#list_the_directory_people_that_have_changed). */
@@ -2988,7 +2989,8 @@ export const listDirectoryPeoplePeople: API.PaginatedOperationMethod<
   ListDirectoryPeoplePeopleRequest,
   ListDirectoryPeopleResponse,
   ListDirectoryPeoplePeopleError,
-  GcpOpContext
+  GcpOpContext,
+  ListDirectoryPeopleResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDirectoryPeoplePeopleRequest,
   output: ListDirectoryPeopleResponse,
@@ -2999,7 +3001,7 @@ export const listDirectoryPeoplePeople: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListOtherContactsError = NotFound | Forbidden | GcpOpError;
 /** List all "Other contacts", that is contacts that are not in a contact group. "Other contacts" are typically auto created contacts from interactions. Sync tokens expire 7 days after the full sync. A request with an expired sync token will get an error with an [google.rpc.ErrorInfo](https://cloud.google.com/apis/design/errors#error_info) with reason "EXPIRED_SYNC_TOKEN". In the case of such an error clients should make a full sync request without a `sync_token`. The first page of a full sync request has an additional quota. If the quota is exceeded, a 429 error will be returned. This quota is fixed and can not be increased. When the `sync_token` is specified, resources deleted since the last sync will be returned as a person with `PersonMetadata.deleted` set to true. When the `page_token` or `sync_token` is specified, all other request parameters must match the first call. Writes may have a propagation delay of several minutes for sync requests. Incremental syncs are not intended for read-after-write use cases. See example usage at [List the user's other contacts that have changed](/people/v1/other-contacts#list_the_users_other_contacts_that_have_changed). */
@@ -3007,7 +3009,8 @@ export const listOtherContacts: API.PaginatedOperationMethod<
   ListOtherContactsRequest,
   ListOtherContactsResponse,
   ListOtherContactsError,
-  GcpOpContext
+  GcpOpContext,
+  ListOtherContactsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOtherContactsRequest,
   output: ListOtherContactsResponse,
@@ -3018,7 +3021,7 @@ export const listOtherContacts: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListPeopleConnectionsError = NotFound | Forbidden | GcpOpError;
 /** Provides a list of the authenticated user's contacts. Sync tokens expire 7 days after the full sync. A request with an expired sync token will get an error with an [google.rpc.ErrorInfo](https://cloud.google.com/apis/design/errors#error_info) with reason "EXPIRED_SYNC_TOKEN". In the case of such an error clients should make a full sync request without a `sync_token`. The first page of a full sync request has an additional quota. If the quota is exceeded, a 429 error will be returned. This quota is fixed and can not be increased. When the `sync_token` is specified, resources deleted since the last sync will be returned as a person with `PersonMetadata.deleted` set to true. When the `page_token` or `sync_token` is specified, all other request parameters must match the first call. Writes may have a propagation delay of several minutes for sync requests. Incremental syncs are not intended for read-after-write use cases. See example usage at [List the user's contacts that have changed](/people/v1/contacts#list_the_users_contacts_that_have_changed). */
@@ -3026,7 +3029,8 @@ export const listPeopleConnections: API.PaginatedOperationMethod<
   ListPeopleConnectionsRequest,
   ListConnectionsResponse,
   ListPeopleConnectionsError,
-  GcpOpContext
+  GcpOpContext,
+  ListConnectionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPeopleConnectionsRequest,
   output: ListConnectionsResponse,
@@ -3037,7 +3041,7 @@ export const listPeopleConnections: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ModifyContactGroupsMembersError =
   | NotFound
@@ -3083,7 +3087,8 @@ export const searchDirectoryPeoplePeople: API.PaginatedOperationMethod<
   SearchDirectoryPeoplePeopleRequest,
   SearchDirectoryPeopleResponse,
   SearchDirectoryPeoplePeopleError,
-  GcpOpContext
+  GcpOpContext,
+  SearchDirectoryPeopleResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchDirectoryPeoplePeopleRequest,
   output: SearchDirectoryPeopleResponse,
@@ -3094,7 +3099,7 @@ export const searchDirectoryPeoplePeople: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type SearchOtherContactsError = NotFound | Forbidden | GcpOpError;
 /** Provides a list of contacts in the authenticated user's other contacts that matches the search query. The query matches on a contact's `names`, `emailAddresses`, and `phoneNumbers` fields that are from the OTHER_CONTACT source. **IMPORTANT**: Before searching, clients should send a warmup request with an empty query to update the cache. See https://developers.google.com/people/v1/other-contacts#search_the_users_other_contacts */

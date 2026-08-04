@@ -11108,7 +11108,8 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   ListProjectsLocationsRequest,
   GoogleCloudLocationListLocationsResponse,
   ListProjectsLocationsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudLocationListLocationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsRequest,
   output: GoogleCloudLocationListLocationsResponse,
@@ -11119,7 +11120,7 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsAgentsError =
   | NotFound
@@ -11129,7 +11130,8 @@ export const listProjectsLocationsAgents: API.PaginatedOperationMethod<
   ListProjectsLocationsAgentsRequest,
   GoogleCloudDialogflowCxV3ListAgentsResponse,
   ListProjectsLocationsAgentsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudDialogflowCxV3ListAgentsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsAgentsRequest,
   output: GoogleCloudDialogflowCxV3ListAgentsResponse,
@@ -11140,7 +11142,7 @@ export const listProjectsLocationsAgents: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsAgentsChangelogsError =
   | NotFound
@@ -11150,7 +11152,8 @@ export const listProjectsLocationsAgentsChangelogs: API.PaginatedOperationMethod
   ListProjectsLocationsAgentsChangelogsRequest,
   GoogleCloudDialogflowCxV3ListChangelogsResponse,
   ListProjectsLocationsAgentsChangelogsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudDialogflowCxV3ListChangelogsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsAgentsChangelogsRequest,
   output: GoogleCloudDialogflowCxV3ListChangelogsResponse,
@@ -11161,7 +11164,7 @@ export const listProjectsLocationsAgentsChangelogs: API.PaginatedOperationMethod
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsAgentsEntityTypesError =
   | NotFound
@@ -11171,7 +11174,8 @@ export const listProjectsLocationsAgentsEntityTypes: API.PaginatedOperationMetho
   ListProjectsLocationsAgentsEntityTypesRequest,
   GoogleCloudDialogflowCxV3ListEntityTypesResponse,
   ListProjectsLocationsAgentsEntityTypesError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudDialogflowCxV3ListEntityTypesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsAgentsEntityTypesRequest,
   output: GoogleCloudDialogflowCxV3ListEntityTypesResponse,
@@ -11182,7 +11186,7 @@ export const listProjectsLocationsAgentsEntityTypes: API.PaginatedOperationMetho
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsAgentsEnvironmentsError =
   | NotFound
@@ -11192,7 +11196,8 @@ export const listProjectsLocationsAgentsEnvironments: API.PaginatedOperationMeth
   ListProjectsLocationsAgentsEnvironmentsRequest,
   GoogleCloudDialogflowCxV3ListEnvironmentsResponse,
   ListProjectsLocationsAgentsEnvironmentsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudDialogflowCxV3ListEnvironmentsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsAgentsEnvironmentsRequest,
   output: GoogleCloudDialogflowCxV3ListEnvironmentsResponse,
@@ -11203,7 +11208,7 @@ export const listProjectsLocationsAgentsEnvironments: API.PaginatedOperationMeth
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsAgentsEnvironmentsContinuousTestResultsError =
   | NotFound
@@ -11213,7 +11218,8 @@ export const listProjectsLocationsAgentsEnvironmentsContinuousTestResults: API.P
   ListProjectsLocationsAgentsEnvironmentsContinuousTestResultsRequest,
   GoogleCloudDialogflowCxV3ListContinuousTestResultsResponse,
   ListProjectsLocationsAgentsEnvironmentsContinuousTestResultsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudDialogflowCxV3ListContinuousTestResultsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsAgentsEnvironmentsContinuousTestResultsRequest,
   output: GoogleCloudDialogflowCxV3ListContinuousTestResultsResponse,
@@ -11224,7 +11230,7 @@ export const listProjectsLocationsAgentsEnvironmentsContinuousTestResults: API.P
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsAgentsEnvironmentsDeploymentsError =
   | NotFound
@@ -11234,7 +11240,8 @@ export const listProjectsLocationsAgentsEnvironmentsDeployments: API.PaginatedOp
   ListProjectsLocationsAgentsEnvironmentsDeploymentsRequest,
   GoogleCloudDialogflowCxV3ListDeploymentsResponse,
   ListProjectsLocationsAgentsEnvironmentsDeploymentsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudDialogflowCxV3ListDeploymentsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsAgentsEnvironmentsDeploymentsRequest,
   output: GoogleCloudDialogflowCxV3ListDeploymentsResponse,
@@ -11245,7 +11252,7 @@ export const listProjectsLocationsAgentsEnvironmentsDeployments: API.PaginatedOp
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsAgentsEnvironmentsExperimentsError =
   | NotFound
@@ -11255,7 +11262,8 @@ export const listProjectsLocationsAgentsEnvironmentsExperiments: API.PaginatedOp
   ListProjectsLocationsAgentsEnvironmentsExperimentsRequest,
   GoogleCloudDialogflowCxV3ListExperimentsResponse,
   ListProjectsLocationsAgentsEnvironmentsExperimentsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudDialogflowCxV3ListExperimentsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsAgentsEnvironmentsExperimentsRequest,
   output: GoogleCloudDialogflowCxV3ListExperimentsResponse,
@@ -11266,7 +11274,7 @@ export const listProjectsLocationsAgentsEnvironmentsExperiments: API.PaginatedOp
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsAgentsEnvironmentsSessionsEntityTypesError =
   | NotFound
@@ -11276,7 +11284,8 @@ export const listProjectsLocationsAgentsEnvironmentsSessionsEntityTypes: API.Pag
   ListProjectsLocationsAgentsEnvironmentsSessionsEntityTypesRequest,
   GoogleCloudDialogflowCxV3ListSessionEntityTypesResponse,
   ListProjectsLocationsAgentsEnvironmentsSessionsEntityTypesError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudDialogflowCxV3ListSessionEntityTypesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsAgentsEnvironmentsSessionsEntityTypesRequest,
   output: GoogleCloudDialogflowCxV3ListSessionEntityTypesResponse,
@@ -11287,7 +11296,7 @@ export const listProjectsLocationsAgentsEnvironmentsSessionsEntityTypes: API.Pag
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsAgentsFlowsError =
   | NotFound
@@ -11297,7 +11306,8 @@ export const listProjectsLocationsAgentsFlows: API.PaginatedOperationMethod<
   ListProjectsLocationsAgentsFlowsRequest,
   GoogleCloudDialogflowCxV3ListFlowsResponse,
   ListProjectsLocationsAgentsFlowsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudDialogflowCxV3ListFlowsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsAgentsFlowsRequest,
   output: GoogleCloudDialogflowCxV3ListFlowsResponse,
@@ -11308,7 +11318,7 @@ export const listProjectsLocationsAgentsFlows: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsAgentsFlowsPagesError =
   | NotFound
@@ -11318,7 +11328,8 @@ export const listProjectsLocationsAgentsFlowsPages: API.PaginatedOperationMethod
   ListProjectsLocationsAgentsFlowsPagesRequest,
   GoogleCloudDialogflowCxV3ListPagesResponse,
   ListProjectsLocationsAgentsFlowsPagesError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudDialogflowCxV3ListPagesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsAgentsFlowsPagesRequest,
   output: GoogleCloudDialogflowCxV3ListPagesResponse,
@@ -11329,7 +11340,7 @@ export const listProjectsLocationsAgentsFlowsPages: API.PaginatedOperationMethod
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsAgentsFlowsTransitionRouteGroupsError =
   | NotFound
@@ -11339,7 +11350,8 @@ export const listProjectsLocationsAgentsFlowsTransitionRouteGroups: API.Paginate
   ListProjectsLocationsAgentsFlowsTransitionRouteGroupsRequest,
   GoogleCloudDialogflowCxV3ListTransitionRouteGroupsResponse,
   ListProjectsLocationsAgentsFlowsTransitionRouteGroupsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudDialogflowCxV3ListTransitionRouteGroupsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsAgentsFlowsTransitionRouteGroupsRequest,
   output: GoogleCloudDialogflowCxV3ListTransitionRouteGroupsResponse,
@@ -11350,7 +11362,7 @@ export const listProjectsLocationsAgentsFlowsTransitionRouteGroups: API.Paginate
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsAgentsFlowsVersionsError =
   | NotFound
@@ -11360,7 +11372,8 @@ export const listProjectsLocationsAgentsFlowsVersions: API.PaginatedOperationMet
   ListProjectsLocationsAgentsFlowsVersionsRequest,
   GoogleCloudDialogflowCxV3ListVersionsResponse,
   ListProjectsLocationsAgentsFlowsVersionsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudDialogflowCxV3ListVersionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsAgentsFlowsVersionsRequest,
   output: GoogleCloudDialogflowCxV3ListVersionsResponse,
@@ -11371,7 +11384,7 @@ export const listProjectsLocationsAgentsFlowsVersions: API.PaginatedOperationMet
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsAgentsGeneratorsError =
   | NotFound
@@ -11381,7 +11394,8 @@ export const listProjectsLocationsAgentsGenerators: API.PaginatedOperationMethod
   ListProjectsLocationsAgentsGeneratorsRequest,
   GoogleCloudDialogflowCxV3ListGeneratorsResponse,
   ListProjectsLocationsAgentsGeneratorsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudDialogflowCxV3ListGeneratorsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsAgentsGeneratorsRequest,
   output: GoogleCloudDialogflowCxV3ListGeneratorsResponse,
@@ -11392,7 +11406,7 @@ export const listProjectsLocationsAgentsGenerators: API.PaginatedOperationMethod
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsAgentsIntentsError =
   | NotFound
@@ -11402,7 +11416,8 @@ export const listProjectsLocationsAgentsIntents: API.PaginatedOperationMethod<
   ListProjectsLocationsAgentsIntentsRequest,
   GoogleCloudDialogflowCxV3ListIntentsResponse,
   ListProjectsLocationsAgentsIntentsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudDialogflowCxV3ListIntentsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsAgentsIntentsRequest,
   output: GoogleCloudDialogflowCxV3ListIntentsResponse,
@@ -11413,7 +11428,7 @@ export const listProjectsLocationsAgentsIntents: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsAgentsPlaybooksError =
   | NotFound
@@ -11423,7 +11438,8 @@ export const listProjectsLocationsAgentsPlaybooks: API.PaginatedOperationMethod<
   ListProjectsLocationsAgentsPlaybooksRequest,
   GoogleCloudDialogflowCxV3ListPlaybooksResponse,
   ListProjectsLocationsAgentsPlaybooksError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudDialogflowCxV3ListPlaybooksResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsAgentsPlaybooksRequest,
   output: GoogleCloudDialogflowCxV3ListPlaybooksResponse,
@@ -11434,7 +11450,7 @@ export const listProjectsLocationsAgentsPlaybooks: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsAgentsPlaybooksExamplesError =
   | NotFound
@@ -11444,7 +11460,8 @@ export const listProjectsLocationsAgentsPlaybooksExamples: API.PaginatedOperatio
   ListProjectsLocationsAgentsPlaybooksExamplesRequest,
   GoogleCloudDialogflowCxV3ListExamplesResponse,
   ListProjectsLocationsAgentsPlaybooksExamplesError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudDialogflowCxV3ListExamplesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsAgentsPlaybooksExamplesRequest,
   output: GoogleCloudDialogflowCxV3ListExamplesResponse,
@@ -11455,7 +11472,7 @@ export const listProjectsLocationsAgentsPlaybooksExamples: API.PaginatedOperatio
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsAgentsPlaybooksVersionsError =
   | NotFound
@@ -11465,7 +11482,8 @@ export const listProjectsLocationsAgentsPlaybooksVersions: API.PaginatedOperatio
   ListProjectsLocationsAgentsPlaybooksVersionsRequest,
   GoogleCloudDialogflowCxV3ListPlaybookVersionsResponse,
   ListProjectsLocationsAgentsPlaybooksVersionsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudDialogflowCxV3ListPlaybookVersionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsAgentsPlaybooksVersionsRequest,
   output: GoogleCloudDialogflowCxV3ListPlaybookVersionsResponse,
@@ -11476,7 +11494,7 @@ export const listProjectsLocationsAgentsPlaybooksVersions: API.PaginatedOperatio
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsAgentsSessionsEntityTypesError =
   | NotFound
@@ -11486,7 +11504,8 @@ export const listProjectsLocationsAgentsSessionsEntityTypes: API.PaginatedOperat
   ListProjectsLocationsAgentsSessionsEntityTypesRequest,
   GoogleCloudDialogflowCxV3ListSessionEntityTypesResponse,
   ListProjectsLocationsAgentsSessionsEntityTypesError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudDialogflowCxV3ListSessionEntityTypesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsAgentsSessionsEntityTypesRequest,
   output: GoogleCloudDialogflowCxV3ListSessionEntityTypesResponse,
@@ -11497,7 +11516,7 @@ export const listProjectsLocationsAgentsSessionsEntityTypes: API.PaginatedOperat
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsAgentsTestCasesError =
   | NotFound
@@ -11507,7 +11526,8 @@ export const listProjectsLocationsAgentsTestCases: API.PaginatedOperationMethod<
   ListProjectsLocationsAgentsTestCasesRequest,
   GoogleCloudDialogflowCxV3ListTestCasesResponse,
   ListProjectsLocationsAgentsTestCasesError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudDialogflowCxV3ListTestCasesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsAgentsTestCasesRequest,
   output: GoogleCloudDialogflowCxV3ListTestCasesResponse,
@@ -11518,7 +11538,7 @@ export const listProjectsLocationsAgentsTestCases: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsAgentsTestCasesResultsError =
   | NotFound
@@ -11528,7 +11548,8 @@ export const listProjectsLocationsAgentsTestCasesResults: API.PaginatedOperation
   ListProjectsLocationsAgentsTestCasesResultsRequest,
   GoogleCloudDialogflowCxV3ListTestCaseResultsResponse,
   ListProjectsLocationsAgentsTestCasesResultsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudDialogflowCxV3ListTestCaseResultsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsAgentsTestCasesResultsRequest,
   output: GoogleCloudDialogflowCxV3ListTestCaseResultsResponse,
@@ -11539,7 +11560,7 @@ export const listProjectsLocationsAgentsTestCasesResults: API.PaginatedOperation
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsAgentsToolsError =
   | NotFound
@@ -11549,7 +11570,8 @@ export const listProjectsLocationsAgentsTools: API.PaginatedOperationMethod<
   ListProjectsLocationsAgentsToolsRequest,
   GoogleCloudDialogflowCxV3ListToolsResponse,
   ListProjectsLocationsAgentsToolsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudDialogflowCxV3ListToolsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsAgentsToolsRequest,
   output: GoogleCloudDialogflowCxV3ListToolsResponse,
@@ -11560,7 +11582,7 @@ export const listProjectsLocationsAgentsTools: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsAgentsToolsVersionsError =
   | NotFound
@@ -11570,7 +11592,8 @@ export const listProjectsLocationsAgentsToolsVersions: API.PaginatedOperationMet
   ListProjectsLocationsAgentsToolsVersionsRequest,
   GoogleCloudDialogflowCxV3ListToolVersionsResponse,
   ListProjectsLocationsAgentsToolsVersionsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudDialogflowCxV3ListToolVersionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsAgentsToolsVersionsRequest,
   output: GoogleCloudDialogflowCxV3ListToolVersionsResponse,
@@ -11581,7 +11604,7 @@ export const listProjectsLocationsAgentsToolsVersions: API.PaginatedOperationMet
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsAgentsTransitionRouteGroupsError =
   | NotFound
@@ -11591,7 +11614,8 @@ export const listProjectsLocationsAgentsTransitionRouteGroups: API.PaginatedOper
   ListProjectsLocationsAgentsTransitionRouteGroupsRequest,
   GoogleCloudDialogflowCxV3ListTransitionRouteGroupsResponse,
   ListProjectsLocationsAgentsTransitionRouteGroupsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudDialogflowCxV3ListTransitionRouteGroupsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsAgentsTransitionRouteGroupsRequest,
   output: GoogleCloudDialogflowCxV3ListTransitionRouteGroupsResponse,
@@ -11602,7 +11626,7 @@ export const listProjectsLocationsAgentsTransitionRouteGroups: API.PaginatedOper
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsAgentsWebhooksError =
   | NotFound
@@ -11612,7 +11636,8 @@ export const listProjectsLocationsAgentsWebhooks: API.PaginatedOperationMethod<
   ListProjectsLocationsAgentsWebhooksRequest,
   GoogleCloudDialogflowCxV3ListWebhooksResponse,
   ListProjectsLocationsAgentsWebhooksError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudDialogflowCxV3ListWebhooksResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsAgentsWebhooksRequest,
   output: GoogleCloudDialogflowCxV3ListWebhooksResponse,
@@ -11623,7 +11648,7 @@ export const listProjectsLocationsAgentsWebhooks: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsOperationsError =
   | NotFound
@@ -11633,7 +11658,8 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   ListProjectsLocationsOperationsRequest,
   GoogleLongrunningListOperationsResponse,
   ListProjectsLocationsOperationsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleLongrunningListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsOperationsRequest,
   output: GoogleLongrunningListOperationsResponse,
@@ -11644,7 +11670,7 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsSecuritySettingsError =
   | NotFound
@@ -11654,7 +11680,8 @@ export const listProjectsLocationsSecuritySettings: API.PaginatedOperationMethod
   ListProjectsLocationsSecuritySettingsRequest,
   GoogleCloudDialogflowCxV3ListSecuritySettingsResponse,
   ListProjectsLocationsSecuritySettingsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudDialogflowCxV3ListSecuritySettingsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsSecuritySettingsRequest,
   output: GoogleCloudDialogflowCxV3ListSecuritySettingsResponse,
@@ -11665,14 +11692,15 @@ export const listProjectsLocationsSecuritySettings: API.PaginatedOperationMethod
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsOperationsError = NotFound | Forbidden | GcpOpError;
 export const listProjectsOperations: API.PaginatedOperationMethod<
   ListProjectsOperationsRequest,
   GoogleLongrunningListOperationsResponse,
   ListProjectsOperationsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleLongrunningListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsOperationsRequest,
   output: GoogleLongrunningListOperationsResponse,
@@ -11683,7 +11711,7 @@ export const listProjectsOperations: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type LoadProjectsLocationsAgentsFlowsVersionsError =
   | NotFound
@@ -11712,7 +11740,8 @@ export const lookupEnvironmentHistoryProjectsLocationsAgentsEnvironments: API.Pa
   LookupEnvironmentHistoryProjectsLocationsAgentsEnvironmentsRequest,
   GoogleCloudDialogflowCxV3LookupEnvironmentHistoryResponse,
   LookupEnvironmentHistoryProjectsLocationsAgentsEnvironmentsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudDialogflowCxV3LookupEnvironmentHistoryResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: LookupEnvironmentHistoryProjectsLocationsAgentsEnvironmentsRequest,
   output: GoogleCloudDialogflowCxV3LookupEnvironmentHistoryResponse,
@@ -11723,7 +11752,7 @@ export const lookupEnvironmentHistoryProjectsLocationsAgentsEnvironments: API.Pa
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type MatchIntentProjectsLocationsAgentsEnvironmentsSessionsError =
   | NotFound

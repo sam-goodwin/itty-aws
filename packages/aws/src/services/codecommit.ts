@@ -6061,27 +6061,7 @@ export const describeMergeConflicts: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxMergeHunks",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeMergeConflictsInput,
-  DescribeMergeConflictsOutput,
-  DescribeMergeConflictsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeMergeConflictsInput,
-  ) => stream.Stream<
-    DescribeMergeConflictsOutput,
-    DescribeMergeConflictsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeMergeConflictsInput,
-  ) => stream.Stream<
-    unknown,
-    DescribeMergeConflictsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribePullRequestEventsError =
   | ActorDoesNotExistException
@@ -6147,27 +6127,7 @@ export const describePullRequestEvents: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  DescribePullRequestEventsInput,
-  DescribePullRequestEventsOutput,
-  DescribePullRequestEventsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribePullRequestEventsInput,
-  ) => stream.Stream<
-    DescribePullRequestEventsOutput,
-    DescribePullRequestEventsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribePullRequestEventsInput,
-  ) => stream.Stream<
-    unknown,
-    DescribePullRequestEventsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DisassociateApprovalRuleTemplateFromRepositoryError =
   | ApprovalRuleTemplateDoesNotExistException
@@ -6461,27 +6421,7 @@ export const getCommentReactions: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  GetCommentReactionsInput,
-  GetCommentReactionsOutput,
-  GetCommentReactionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetCommentReactionsInput,
-  ) => stream.Stream<
-    GetCommentReactionsOutput,
-    GetCommentReactionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetCommentReactionsInput,
-  ) => stream.Stream<
-    unknown,
-    GetCommentReactionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type GetCommentsForComparedCommitError =
   | CommitDoesNotExistException
@@ -6550,27 +6490,7 @@ export const getCommentsForComparedCommit: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  GetCommentsForComparedCommitInput,
-  GetCommentsForComparedCommitOutput,
-  GetCommentsForComparedCommitError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetCommentsForComparedCommitInput,
-  ) => stream.Stream<
-    GetCommentsForComparedCommitOutput,
-    GetCommentsForComparedCommitError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetCommentsForComparedCommitInput,
-  ) => stream.Stream<
-    unknown,
-    GetCommentsForComparedCommitError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type GetCommentsForPullRequestError =
   | CommitDoesNotExistException
@@ -6647,27 +6567,7 @@ export const getCommentsForPullRequest: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  GetCommentsForPullRequestInput,
-  GetCommentsForPullRequestOutput,
-  GetCommentsForPullRequestError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetCommentsForPullRequestInput,
-  ) => stream.Stream<
-    GetCommentsForPullRequestOutput,
-    GetCommentsForPullRequestError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetCommentsForPullRequestInput,
-  ) => stream.Stream<
-    unknown,
-    GetCommentsForPullRequestError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type GetCommitError =
   | CommitIdDoesNotExistException
@@ -6783,27 +6683,7 @@ export const getDifferences: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  GetDifferencesInput,
-  GetDifferencesOutput,
-  GetDifferencesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetDifferencesInput,
-  ) => stream.Stream<
-    GetDifferencesOutput,
-    GetDifferencesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetDifferencesInput,
-  ) => stream.Stream<
-    unknown,
-    GetDifferencesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type GetFileError =
   | CommitDoesNotExistException
@@ -7027,27 +6907,7 @@ export const getMergeConflicts: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxConflictFiles",
   } as const,
-})) as any as API.OperationMethod<
-  GetMergeConflictsInput,
-  GetMergeConflictsOutput,
-  GetMergeConflictsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetMergeConflictsInput,
-  ) => stream.Stream<
-    GetMergeConflictsOutput,
-    GetMergeConflictsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetMergeConflictsInput,
-  ) => stream.Stream<
-    unknown,
-    GetMergeConflictsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type GetMergeOptionsError =
   | CommitDoesNotExistException
@@ -7339,27 +7199,7 @@ export const listApprovalRuleTemplates: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListApprovalRuleTemplatesInput,
-  ListApprovalRuleTemplatesOutput,
-  ListApprovalRuleTemplatesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListApprovalRuleTemplatesInput,
-  ) => stream.Stream<
-    ListApprovalRuleTemplatesOutput,
-    ListApprovalRuleTemplatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListApprovalRuleTemplatesInput,
-  ) => stream.Stream<
-    unknown,
-    ListApprovalRuleTemplatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListAssociatedApprovalRuleTemplatesForRepositoryError =
   | EncryptionIntegrityChecksFailedException
@@ -7419,27 +7259,7 @@ export const listAssociatedApprovalRuleTemplatesForRepository: API.OperationMeth
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListAssociatedApprovalRuleTemplatesForRepositoryInput,
-  ListAssociatedApprovalRuleTemplatesForRepositoryOutput,
-  ListAssociatedApprovalRuleTemplatesForRepositoryError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAssociatedApprovalRuleTemplatesForRepositoryInput,
-  ) => stream.Stream<
-    ListAssociatedApprovalRuleTemplatesForRepositoryOutput,
-    ListAssociatedApprovalRuleTemplatesForRepositoryError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAssociatedApprovalRuleTemplatesForRepositoryInput,
-  ) => stream.Stream<
-    unknown,
-    ListAssociatedApprovalRuleTemplatesForRepositoryError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListBranchesError =
   | EncryptionIntegrityChecksFailedException
@@ -7497,27 +7317,7 @@ export const listBranches: API.OperationMethod<
     outputToken: "nextToken",
     items: "branches",
   } as const,
-})) as any as API.OperationMethod<
-  ListBranchesInput,
-  ListBranchesOutput,
-  ListBranchesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListBranchesInput,
-  ) => stream.Stream<
-    ListBranchesOutput,
-    ListBranchesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListBranchesInput,
-  ) => stream.Stream<
-    BranchName,
-    ListBranchesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListFileCommitHistoryError =
   | CommitDoesNotExistException
@@ -7585,27 +7385,7 @@ export const listFileCommitHistory: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListFileCommitHistoryRequest,
-  ListFileCommitHistoryResponse,
-  ListFileCommitHistoryError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListFileCommitHistoryRequest,
-  ) => stream.Stream<
-    ListFileCommitHistoryResponse,
-    ListFileCommitHistoryError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListFileCommitHistoryRequest,
-  ) => stream.Stream<
-    unknown,
-    ListFileCommitHistoryError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListPullRequestsError =
   | AuthorDoesNotExistException
@@ -7672,27 +7452,7 @@ export const listPullRequests: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListPullRequestsInput,
-  ListPullRequestsOutput,
-  ListPullRequestsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPullRequestsInput,
-  ) => stream.Stream<
-    ListPullRequestsOutput,
-    ListPullRequestsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPullRequestsInput,
-  ) => stream.Stream<
-    unknown,
-    ListPullRequestsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListRepositoriesError =
   | InvalidContinuationTokenException
@@ -7738,27 +7498,7 @@ export const listRepositories: API.OperationMethod<
     outputToken: "nextToken",
     items: "repositories",
   } as const,
-})) as any as API.OperationMethod<
-  ListRepositoriesInput,
-  ListRepositoriesOutput,
-  ListRepositoriesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRepositoriesInput,
-  ) => stream.Stream<
-    ListRepositoriesOutput,
-    ListRepositoriesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRepositoriesInput,
-  ) => stream.Stream<
-    RepositoryNameIdPair,
-    ListRepositoriesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListRepositoriesForApprovalRuleTemplateError =
   | ApprovalRuleTemplateDoesNotExistException
@@ -7818,27 +7558,7 @@ export const listRepositoriesForApprovalRuleTemplate: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListRepositoriesForApprovalRuleTemplateInput,
-  ListRepositoriesForApprovalRuleTemplateOutput,
-  ListRepositoriesForApprovalRuleTemplateError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRepositoriesForApprovalRuleTemplateInput,
-  ) => stream.Stream<
-    ListRepositoriesForApprovalRuleTemplateOutput,
-    ListRepositoriesForApprovalRuleTemplateError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRepositoriesForApprovalRuleTemplateInput,
-  ) => stream.Stream<
-    unknown,
-    ListRepositoriesForApprovalRuleTemplateError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsForResourceError =
   | InvalidRepositoryNameException

@@ -5752,7 +5752,8 @@ export const entitiesAccountsContainersWorkspacesFolders: API.PaginatedOperation
   EntitiesAccountsContainersWorkspacesFoldersRequest,
   FolderEntities,
   EntitiesAccountsContainersWorkspacesFoldersError,
-  GcpOpContext
+  GcpOpContext,
+  FolderEntities
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: EntitiesAccountsContainersWorkspacesFoldersRequest,
   output: FolderEntities,
@@ -5763,7 +5764,7 @@ export const entitiesAccountsContainersWorkspacesFolders: API.PaginatedOperation
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type GetAccountsError = NotFound | Forbidden | GcpOpError;
 /** Gets a GTM Account. */
@@ -6129,7 +6130,8 @@ export const listAccounts: API.PaginatedOperationMethod<
   ListAccountsRequest,
   ListAccountsResponse,
   ListAccountsError,
-  GcpOpContext
+  GcpOpContext,
+  ListAccountsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsRequest,
   output: ListAccountsResponse,
@@ -6140,7 +6142,7 @@ export const listAccounts: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListAccountsContainersError = NotFound | Forbidden | GcpOpError;
 /** Lists all Containers that belongs to a GTM Account. */
@@ -6148,7 +6150,8 @@ export const listAccountsContainers: API.PaginatedOperationMethod<
   ListAccountsContainersRequest,
   ListContainersResponse,
   ListAccountsContainersError,
-  GcpOpContext
+  GcpOpContext,
+  ListContainersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsContainersRequest,
   output: ListContainersResponse,
@@ -6159,7 +6162,7 @@ export const listAccountsContainers: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListAccountsContainersDestinationsError =
   | NotFound
@@ -6188,7 +6191,8 @@ export const listAccountsContainersEnvironments: API.PaginatedOperationMethod<
   ListAccountsContainersEnvironmentsRequest,
   ListEnvironmentsResponse,
   ListAccountsContainersEnvironmentsError,
-  GcpOpContext
+  GcpOpContext,
+  ListEnvironmentsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsContainersEnvironmentsRequest,
   output: ListEnvironmentsResponse,
@@ -6199,7 +6203,7 @@ export const listAccountsContainersEnvironments: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListAccountsContainersVersion_headersError =
   | NotFound
@@ -6210,7 +6214,8 @@ export const listAccountsContainersVersion_headers: API.PaginatedOperationMethod
   ListAccountsContainersVersion_headersRequest,
   ListContainerVersionsResponse,
   ListAccountsContainersVersion_headersError,
-  GcpOpContext
+  GcpOpContext,
+  ListContainerVersionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsContainersVersion_headersRequest,
   output: ListContainerVersionsResponse,
@@ -6221,7 +6226,7 @@ export const listAccountsContainersVersion_headers: API.PaginatedOperationMethod
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListAccountsContainersWorkspacesError =
   | NotFound
@@ -6232,7 +6237,8 @@ export const listAccountsContainersWorkspaces: API.PaginatedOperationMethod<
   ListAccountsContainersWorkspacesRequest,
   ListWorkspacesResponse,
   ListAccountsContainersWorkspacesError,
-  GcpOpContext
+  GcpOpContext,
+  ListWorkspacesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsContainersWorkspacesRequest,
   output: ListWorkspacesResponse,
@@ -6243,7 +6249,7 @@ export const listAccountsContainersWorkspaces: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListAccountsContainersWorkspacesBuilt_in_variablesError =
   | NotFound
@@ -6254,7 +6260,8 @@ export const listAccountsContainersWorkspacesBuilt_in_variables: API.PaginatedOp
   ListAccountsContainersWorkspacesBuilt_in_variablesRequest,
   ListEnabledBuiltInVariablesResponse,
   ListAccountsContainersWorkspacesBuilt_in_variablesError,
-  GcpOpContext
+  GcpOpContext,
+  ListEnabledBuiltInVariablesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsContainersWorkspacesBuilt_in_variablesRequest,
   output: ListEnabledBuiltInVariablesResponse,
@@ -6265,7 +6272,7 @@ export const listAccountsContainersWorkspacesBuilt_in_variables: API.PaginatedOp
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListAccountsContainersWorkspacesClientsError =
   | NotFound
@@ -6276,7 +6283,8 @@ export const listAccountsContainersWorkspacesClients: API.PaginatedOperationMeth
   ListAccountsContainersWorkspacesClientsRequest,
   ListClientsResponse,
   ListAccountsContainersWorkspacesClientsError,
-  GcpOpContext
+  GcpOpContext,
+  ListClientsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsContainersWorkspacesClientsRequest,
   output: ListClientsResponse,
@@ -6287,7 +6295,7 @@ export const listAccountsContainersWorkspacesClients: API.PaginatedOperationMeth
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListAccountsContainersWorkspacesFoldersError =
   | NotFound
@@ -6298,7 +6306,8 @@ export const listAccountsContainersWorkspacesFolders: API.PaginatedOperationMeth
   ListAccountsContainersWorkspacesFoldersRequest,
   ListFoldersResponse,
   ListAccountsContainersWorkspacesFoldersError,
-  GcpOpContext
+  GcpOpContext,
+  ListFoldersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsContainersWorkspacesFoldersRequest,
   output: ListFoldersResponse,
@@ -6309,7 +6318,7 @@ export const listAccountsContainersWorkspacesFolders: API.PaginatedOperationMeth
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListAccountsContainersWorkspacesGtag_configError =
   | NotFound
@@ -6320,7 +6329,8 @@ export const listAccountsContainersWorkspacesGtag_config: API.PaginatedOperation
   ListAccountsContainersWorkspacesGtag_configRequest,
   ListGtagConfigResponse,
   ListAccountsContainersWorkspacesGtag_configError,
-  GcpOpContext
+  GcpOpContext,
+  ListGtagConfigResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsContainersWorkspacesGtag_configRequest,
   output: ListGtagConfigResponse,
@@ -6331,7 +6341,7 @@ export const listAccountsContainersWorkspacesGtag_config: API.PaginatedOperation
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListAccountsContainersWorkspacesTagsError =
   | NotFound
@@ -6342,7 +6352,8 @@ export const listAccountsContainersWorkspacesTags: API.PaginatedOperationMethod<
   ListAccountsContainersWorkspacesTagsRequest,
   ListTagsResponse,
   ListAccountsContainersWorkspacesTagsError,
-  GcpOpContext
+  GcpOpContext,
+  ListTagsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsContainersWorkspacesTagsRequest,
   output: ListTagsResponse,
@@ -6353,7 +6364,7 @@ export const listAccountsContainersWorkspacesTags: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListAccountsContainersWorkspacesTemplatesError =
   | NotFound
@@ -6364,7 +6375,8 @@ export const listAccountsContainersWorkspacesTemplates: API.PaginatedOperationMe
   ListAccountsContainersWorkspacesTemplatesRequest,
   ListTemplatesResponse,
   ListAccountsContainersWorkspacesTemplatesError,
-  GcpOpContext
+  GcpOpContext,
+  ListTemplatesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsContainersWorkspacesTemplatesRequest,
   output: ListTemplatesResponse,
@@ -6375,7 +6387,7 @@ export const listAccountsContainersWorkspacesTemplates: API.PaginatedOperationMe
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListAccountsContainersWorkspacesTransformationsError =
   | NotFound
@@ -6386,7 +6398,8 @@ export const listAccountsContainersWorkspacesTransformations: API.PaginatedOpera
   ListAccountsContainersWorkspacesTransformationsRequest,
   ListTransformationsResponse,
   ListAccountsContainersWorkspacesTransformationsError,
-  GcpOpContext
+  GcpOpContext,
+  ListTransformationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsContainersWorkspacesTransformationsRequest,
   output: ListTransformationsResponse,
@@ -6397,7 +6410,7 @@ export const listAccountsContainersWorkspacesTransformations: API.PaginatedOpera
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListAccountsContainersWorkspacesTriggersError =
   | NotFound
@@ -6408,7 +6421,8 @@ export const listAccountsContainersWorkspacesTriggers: API.PaginatedOperationMet
   ListAccountsContainersWorkspacesTriggersRequest,
   ListTriggersResponse,
   ListAccountsContainersWorkspacesTriggersError,
-  GcpOpContext
+  GcpOpContext,
+  ListTriggersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsContainersWorkspacesTriggersRequest,
   output: ListTriggersResponse,
@@ -6419,7 +6433,7 @@ export const listAccountsContainersWorkspacesTriggers: API.PaginatedOperationMet
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListAccountsContainersWorkspacesVariablesError =
   | NotFound
@@ -6430,7 +6444,8 @@ export const listAccountsContainersWorkspacesVariables: API.PaginatedOperationMe
   ListAccountsContainersWorkspacesVariablesRequest,
   ListVariablesResponse,
   ListAccountsContainersWorkspacesVariablesError,
-  GcpOpContext
+  GcpOpContext,
+  ListVariablesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsContainersWorkspacesVariablesRequest,
   output: ListVariablesResponse,
@@ -6441,7 +6456,7 @@ export const listAccountsContainersWorkspacesVariables: API.PaginatedOperationMe
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListAccountsContainersWorkspacesZonesError =
   | NotFound
@@ -6452,7 +6467,8 @@ export const listAccountsContainersWorkspacesZones: API.PaginatedOperationMethod
   ListAccountsContainersWorkspacesZonesRequest,
   ListZonesResponse,
   ListAccountsContainersWorkspacesZonesError,
-  GcpOpContext
+  GcpOpContext,
+  ListZonesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsContainersWorkspacesZonesRequest,
   output: ListZonesResponse,
@@ -6463,7 +6479,7 @@ export const listAccountsContainersWorkspacesZones: API.PaginatedOperationMethod
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListAccountsUser_permissionsError =
   | NotFound
@@ -6474,7 +6490,8 @@ export const listAccountsUser_permissions: API.PaginatedOperationMethod<
   ListAccountsUser_permissionsRequest,
   ListUserPermissionsResponse,
   ListAccountsUser_permissionsError,
-  GcpOpContext
+  GcpOpContext,
+  ListUserPermissionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsUser_permissionsRequest,
   output: ListUserPermissionsResponse,
@@ -6485,7 +6502,7 @@ export const listAccountsUser_permissions: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type LiveAccountsContainersVersionsError =
   | NotFound

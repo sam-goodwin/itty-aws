@@ -851,27 +851,7 @@ export const listEventTypes: API.OperationMethod<
     items: "EventTypes",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListEventTypesRequest,
-  ListEventTypesResult,
-  ListEventTypesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEventTypesRequest,
-  ) => stream.Stream<
-    ListEventTypesResult,
-    ListEventTypesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEventTypesRequest,
-  ) => stream.Stream<
-    EventTypeSummary,
-    ListEventTypesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListNotificationRulesError =
   | InvalidNextTokenException
@@ -913,27 +893,7 @@ export const listNotificationRules: API.OperationMethod<
     items: "NotificationRules",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListNotificationRulesRequest,
-  ListNotificationRulesResult,
-  ListNotificationRulesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListNotificationRulesRequest,
-  ) => stream.Stream<
-    ListNotificationRulesResult,
-    ListNotificationRulesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListNotificationRulesRequest,
-  ) => stream.Stream<
-    NotificationRuleSummary,
-    ListNotificationRulesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsForResourceError =
   | ResourceNotFoundException
@@ -996,27 +956,7 @@ export const listTargets: API.OperationMethod<
     items: "Targets",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListTargetsRequest,
-  ListTargetsResult,
-  ListTargetsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTargetsRequest,
-  ) => stream.Stream<
-    ListTargetsResult,
-    ListTargetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTargetsRequest,
-  ) => stream.Stream<
-    TargetSummary,
-    ListTargetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type SubscribeError =
   | ConfigurationException

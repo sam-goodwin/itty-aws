@@ -1201,27 +1201,7 @@ export const describeObjects: API.OperationMethod<
     outputToken: "marker",
     items: "pipelineObjects",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeObjectsInput,
-  DescribeObjectsOutput,
-  DescribeObjectsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeObjectsInput,
-  ) => stream.Stream<
-    DescribeObjectsOutput,
-    DescribeObjectsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeObjectsInput,
-  ) => stream.Stream<
-    PipelineObject,
-    DescribeObjectsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribePipelinesError =
   | InternalServiceError
@@ -1500,27 +1480,7 @@ export const listPipelines: API.OperationMethod<
     outputToken: "marker",
     items: "pipelineIdList",
   } as const,
-})) as any as API.OperationMethod<
-  ListPipelinesInput,
-  ListPipelinesOutput,
-  ListPipelinesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPipelinesInput,
-  ) => stream.Stream<
-    ListPipelinesOutput,
-    ListPipelinesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPipelinesInput,
-  ) => stream.Stream<
-    PipelineIdName,
-    ListPipelinesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type PollForTaskError =
   | InternalServiceError
@@ -1858,27 +1818,7 @@ export const queryObjects: API.OperationMethod<
     items: "ids",
     pageSize: "limit",
   } as const,
-})) as any as API.OperationMethod<
-  QueryObjectsInput,
-  QueryObjectsOutput,
-  QueryObjectsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: QueryObjectsInput,
-  ) => stream.Stream<
-    QueryObjectsOutput,
-    QueryObjectsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: QueryObjectsInput,
-  ) => stream.Stream<
-    Id,
-    QueryObjectsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type RemoveTagsError =
   | InternalServiceError

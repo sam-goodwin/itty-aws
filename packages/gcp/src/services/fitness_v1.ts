@@ -1087,7 +1087,8 @@ export const getUsersDataSourcesDatasets: API.PaginatedOperationMethod<
   GetUsersDataSourcesDatasetsRequest,
   Dataset,
   GetUsersDataSourcesDatasetsError,
-  GcpOpContext
+  GcpOpContext,
+  Dataset
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetUsersDataSourcesDatasetsRequest,
   output: Dataset,
@@ -1098,7 +1099,7 @@ export const getUsersDataSourcesDatasets: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListUsersDataSourcesError = NotFound | Forbidden | GcpOpError;
 /** Lists all data sources that are visible to the developer, using the OAuth scopes provided. The list is not exhaustive; the user may have private data sources that are only visible to other developers, or calls using other scopes. */
@@ -1124,7 +1125,8 @@ export const listUsersDataSourcesDataPointChanges: API.PaginatedOperationMethod<
   ListUsersDataSourcesDataPointChangesRequest,
   ListDataPointChangesResponse,
   ListUsersDataSourcesDataPointChangesError,
-  GcpOpContext
+  GcpOpContext,
+  ListDataPointChangesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListUsersDataSourcesDataPointChangesRequest,
   output: ListDataPointChangesResponse,
@@ -1135,7 +1137,7 @@ export const listUsersDataSourcesDataPointChanges: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListUsersSessionsError = NotFound | Forbidden | GcpOpError;
 /** Lists sessions previously created. */
@@ -1143,7 +1145,8 @@ export const listUsersSessions: API.PaginatedOperationMethod<
   ListUsersSessionsRequest,
   ListSessionsResponse,
   ListUsersSessionsError,
-  GcpOpContext
+  GcpOpContext,
+  ListSessionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListUsersSessionsRequest,
   output: ListSessionsResponse,
@@ -1154,7 +1157,7 @@ export const listUsersSessions: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type PatchUsersDataSourcesDatasetsError =
   | NotFound

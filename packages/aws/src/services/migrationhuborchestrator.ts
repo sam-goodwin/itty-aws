@@ -2300,27 +2300,7 @@ export const listPlugins: API.OperationMethod<
     items: "plugins",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListPluginsRequest,
-  ListPluginsResponse,
-  ListPluginsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPluginsRequest,
-  ) => stream.Stream<
-    ListPluginsResponse,
-    ListPluginsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPluginsRequest,
-  ) => stream.Stream<
-    PluginSummary,
-    ListPluginsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsForResourceError =
   | ResourceNotFoundException
@@ -2384,27 +2364,7 @@ export const listTemplates: API.OperationMethod<
     items: "templateSummary",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListMigrationWorkflowTemplatesRequest,
-  ListMigrationWorkflowTemplatesResponse,
-  ListTemplatesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListMigrationWorkflowTemplatesRequest,
-  ) => stream.Stream<
-    ListMigrationWorkflowTemplatesResponse,
-    ListTemplatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListMigrationWorkflowTemplatesRequest,
-  ) => stream.Stream<
-    TemplateSummary,
-    ListTemplatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTemplateStepGroupsError =
   | AccessDeniedException
@@ -2453,27 +2413,7 @@ export const listTemplateStepGroups: API.OperationMethod<
     items: "templateStepGroupSummary",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListTemplateStepGroupsRequest,
-  ListTemplateStepGroupsResponse,
-  ListTemplateStepGroupsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTemplateStepGroupsRequest,
-  ) => stream.Stream<
-    ListTemplateStepGroupsResponse,
-    ListTemplateStepGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTemplateStepGroupsRequest,
-  ) => stream.Stream<
-    TemplateStepGroupSummary,
-    ListTemplateStepGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTemplateStepsError =
   | AccessDeniedException
@@ -2524,27 +2464,7 @@ export const listTemplateSteps: API.OperationMethod<
     items: "templateStepSummaryList",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListTemplateStepsRequest,
-  ListTemplateStepsResponse,
-  ListTemplateStepsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTemplateStepsRequest,
-  ) => stream.Stream<
-    ListTemplateStepsResponse,
-    ListTemplateStepsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTemplateStepsRequest,
-  ) => stream.Stream<
-    TemplateStepSummary,
-    ListTemplateStepsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListWorkflowsError =
   | AccessDeniedException
@@ -2595,27 +2515,7 @@ export const listWorkflows: API.OperationMethod<
     items: "migrationWorkflowSummary",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListMigrationWorkflowsRequest,
-  ListMigrationWorkflowsResponse,
-  ListWorkflowsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListMigrationWorkflowsRequest,
-  ) => stream.Stream<
-    ListMigrationWorkflowsResponse,
-    ListWorkflowsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListMigrationWorkflowsRequest,
-  ) => stream.Stream<
-    MigrationWorkflowSummary,
-    ListWorkflowsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListWorkflowStepGroupsError =
   | AccessDeniedException
@@ -2666,27 +2566,7 @@ export const listWorkflowStepGroups: API.OperationMethod<
     items: "workflowStepGroupsSummary",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListWorkflowStepGroupsRequest,
-  ListWorkflowStepGroupsResponse,
-  ListWorkflowStepGroupsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListWorkflowStepGroupsRequest,
-  ) => stream.Stream<
-    ListWorkflowStepGroupsResponse,
-    ListWorkflowStepGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListWorkflowStepGroupsRequest,
-  ) => stream.Stream<
-    WorkflowStepGroupSummary,
-    ListWorkflowStepGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListWorkflowStepsError =
   | AccessDeniedException
@@ -2735,27 +2615,7 @@ export const listWorkflowSteps: API.OperationMethod<
     items: "workflowStepsSummary",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListWorkflowStepsRequest,
-  ListWorkflowStepsResponse,
-  ListWorkflowStepsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListWorkflowStepsRequest,
-  ) => stream.Stream<
-    ListWorkflowStepsResponse,
-    ListWorkflowStepsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListWorkflowStepsRequest,
-  ) => stream.Stream<
-    WorkflowStepSummary,
-    ListWorkflowStepsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type RetryWorkflowStepError =
   | AccessDeniedException

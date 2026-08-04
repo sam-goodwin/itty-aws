@@ -625,7 +625,8 @@ export const listOperations: API.PaginatedOperationMethod<
   ListOperationsRequest,
   ListOperationsResponse,
   ListOperationsError,
-  GcpOpContext
+  GcpOpContext,
+  ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOperationsRequest,
   output: ListOperationsResponse,
@@ -636,7 +637,7 @@ export const listOperations: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type RemovePublicKeyUsersEnvironmentsError =
   | NotFound

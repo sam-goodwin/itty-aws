@@ -646,7 +646,8 @@ export const listAccounts: API.PaginatedOperationMethod<
   ListAccountsRequest,
   ListAccountsResponse,
   ListAccountsError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  AccountsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListAccountsRequest,
@@ -657,7 +658,7 @@ export const listAccounts: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListAccountTypesError = CloudflareOpError;
 /** List of account types available for the Tenant to provision accounts. */
@@ -665,7 +666,8 @@ export const listAccountTypes: API.PaginatedOperationMethod<
   ListAccountTypesRequest,
   ListAccountTypesResponse,
   ListAccountTypesError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  string
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListAccountTypesRequest,
@@ -676,7 +678,7 @@ export const listAccountTypes: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListMembershipsError = CloudflareOpError;
 /** List of active members (Cloudflare users) for the Tenant. */
@@ -684,7 +686,8 @@ export const listMemberships: API.PaginatedOperationMethod<
   ListMembershipsRequest,
   ListMembershipsResponse,
   ListMembershipsError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  MembershipsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListMembershipsRequest,
@@ -695,4 +698,4 @@ export const listMemberships: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;

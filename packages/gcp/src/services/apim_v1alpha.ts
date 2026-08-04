@@ -1597,7 +1597,8 @@ export const listApiObservationTagsProjectsLocations: API.PaginatedOperationMeth
   ListApiObservationTagsProjectsLocationsRequest,
   ListApiObservationTagsResponse,
   ListApiObservationTagsProjectsLocationsError,
-  GcpOpContext
+  GcpOpContext,
+  ListApiObservationTagsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListApiObservationTagsProjectsLocationsRequest,
   output: ListApiObservationTagsResponse,
@@ -1608,7 +1609,7 @@ export const listApiObservationTagsProjectsLocations: API.PaginatedOperationMeth
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsError = NotFound | Forbidden | GcpOpError;
 /** Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the ListLocationsRequest.name field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version. */
@@ -1616,7 +1617,8 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   ListProjectsLocationsRequest,
   ListLocationsResponse,
   ListProjectsLocationsError,
-  GcpOpContext
+  GcpOpContext,
+  ListLocationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsRequest,
   output: ListLocationsResponse,
@@ -1627,7 +1629,7 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsObservationJobsError =
   | NotFound
@@ -1638,7 +1640,8 @@ export const listProjectsLocationsObservationJobs: API.PaginatedOperationMethod<
   ListProjectsLocationsObservationJobsRequest,
   ListObservationJobsResponse,
   ListProjectsLocationsObservationJobsError,
-  GcpOpContext
+  GcpOpContext,
+  ListObservationJobsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsObservationJobsRequest,
   output: ListObservationJobsResponse,
@@ -1649,7 +1652,7 @@ export const listProjectsLocationsObservationJobs: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsObservationJobsApiObservationsError =
   | NotFound
@@ -1660,7 +1663,8 @@ export const listProjectsLocationsObservationJobsApiObservations: API.PaginatedO
   ListProjectsLocationsObservationJobsApiObservationsRequest,
   ListApiObservationsResponse,
   ListProjectsLocationsObservationJobsApiObservationsError,
-  GcpOpContext
+  GcpOpContext,
+  ListApiObservationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsObservationJobsApiObservationsRequest,
   output: ListApiObservationsResponse,
@@ -1671,7 +1675,7 @@ export const listProjectsLocationsObservationJobsApiObservations: API.PaginatedO
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsObservationJobsApiObservationsApiOperationsError =
   NotFound | Forbidden | GcpOpError;
@@ -1680,7 +1684,8 @@ export const listProjectsLocationsObservationJobsApiObservationsApiOperations: A
   ListProjectsLocationsObservationJobsApiObservationsApiOperationsRequest,
   ListApiOperationsResponse,
   ListProjectsLocationsObservationJobsApiObservationsApiOperationsError,
-  GcpOpContext
+  GcpOpContext,
+  ListApiOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input:
     ListProjectsLocationsObservationJobsApiObservationsApiOperationsRequest,
@@ -1692,7 +1697,7 @@ export const listProjectsLocationsObservationJobsApiObservationsApiOperations: A
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsObservationSourcesError =
   | NotFound
@@ -1703,7 +1708,8 @@ export const listProjectsLocationsObservationSources: API.PaginatedOperationMeth
   ListProjectsLocationsObservationSourcesRequest,
   ListObservationSourcesResponse,
   ListProjectsLocationsObservationSourcesError,
-  GcpOpContext
+  GcpOpContext,
+  ListObservationSourcesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsObservationSourcesRequest,
   output: ListObservationSourcesResponse,
@@ -1714,7 +1720,7 @@ export const listProjectsLocationsObservationSources: API.PaginatedOperationMeth
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsOperationsError =
   | NotFound
@@ -1725,7 +1731,8 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   ListProjectsLocationsOperationsRequest,
   ListOperationsResponse,
   ListProjectsLocationsOperationsError,
-  GcpOpContext
+  GcpOpContext,
+  ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsOperationsRequest,
   output: ListOperationsResponse,
@@ -1736,4 +1743,4 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;

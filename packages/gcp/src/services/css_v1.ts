@@ -1190,7 +1190,8 @@ export const listAccountsCssProducts: API.PaginatedOperationMethod<
   ListAccountsCssProductsRequest,
   ListCssProductsResponse,
   ListAccountsCssProductsError,
-  GcpOpContext
+  GcpOpContext,
+  ListCssProductsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsCssProductsRequest,
   output: ListCssProductsResponse,
@@ -1201,7 +1202,7 @@ export const listAccountsCssProducts: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListAccountsLabelsError = NotFound | Forbidden | GcpOpError;
 /** Lists the labels owned by an account. */
@@ -1209,7 +1210,8 @@ export const listAccountsLabels: API.PaginatedOperationMethod<
   ListAccountsLabelsRequest,
   ListAccountLabelsResponse,
   ListAccountsLabelsError,
-  GcpOpContext
+  GcpOpContext,
+  ListAccountLabelsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsLabelsRequest,
   output: ListAccountLabelsResponse,
@@ -1220,7 +1222,7 @@ export const listAccountsLabels: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListAccountsQuotasError = NotFound | Forbidden | GcpOpError;
 /** Lists the daily call quota and usage per group for your CSS Center account. */
@@ -1228,7 +1230,8 @@ export const listAccountsQuotas: API.PaginatedOperationMethod<
   ListAccountsQuotasRequest,
   ListQuotaGroupsResponse,
   ListAccountsQuotasError,
-  GcpOpContext
+  GcpOpContext,
+  ListQuotaGroupsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsQuotasRequest,
   output: ListQuotaGroupsResponse,
@@ -1239,7 +1242,7 @@ export const listAccountsQuotas: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListChildAccountsAccountsError = NotFound | Forbidden | GcpOpError;
 /** Lists all the accounts under the specified CSS account ID, and optionally filters by label ID and account name. */
@@ -1247,7 +1250,8 @@ export const listChildAccountsAccounts: API.PaginatedOperationMethod<
   ListChildAccountsAccountsRequest,
   ListChildAccountsResponse,
   ListChildAccountsAccountsError,
-  GcpOpContext
+  GcpOpContext,
+  ListChildAccountsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListChildAccountsAccountsRequest,
   output: ListChildAccountsResponse,
@@ -1258,7 +1262,7 @@ export const listChildAccountsAccounts: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type PatchAccountsCssProductInputsError =
   | NotFound

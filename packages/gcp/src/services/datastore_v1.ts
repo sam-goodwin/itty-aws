@@ -2081,7 +2081,8 @@ export const listProjectsIndexes: API.PaginatedOperationMethod<
   ListProjectsIndexesRequest,
   GoogleDatastoreAdminV1ListIndexesResponse,
   ListProjectsIndexesError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleDatastoreAdminV1ListIndexesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsIndexesRequest,
   output: GoogleDatastoreAdminV1ListIndexesResponse,
@@ -2092,7 +2093,7 @@ export const listProjectsIndexes: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsOperationsError = NotFound | Forbidden | GcpOpError;
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
@@ -2100,7 +2101,8 @@ export const listProjectsOperations: API.PaginatedOperationMethod<
   ListProjectsOperationsRequest,
   GoogleLongrunningListOperationsResponse,
   ListProjectsOperationsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleLongrunningListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsOperationsRequest,
   output: GoogleLongrunningListOperationsResponse,
@@ -2111,7 +2113,7 @@ export const listProjectsOperations: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type LookupProjectsError =
   | NotFound

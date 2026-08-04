@@ -3628,27 +3628,7 @@ export const listAdminAccountsForOrganization: API.OperationMethod<
     items: "AdminAccounts",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListAdminAccountsForOrganizationRequest,
-  ListAdminAccountsForOrganizationResponse,
-  ListAdminAccountsForOrganizationError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAdminAccountsForOrganizationRequest,
-  ) => stream.Stream<
-    ListAdminAccountsForOrganizationResponse,
-    ListAdminAccountsForOrganizationError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAdminAccountsForOrganizationRequest,
-  ) => stream.Stream<
-    AdminAccountSummary,
-    ListAdminAccountsForOrganizationError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListAdminsManagingAccountError =
   | InternalErrorException
@@ -3695,27 +3675,7 @@ export const listAdminsManagingAccount: API.OperationMethod<
     items: "AdminAccounts",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListAdminsManagingAccountRequest,
-  ListAdminsManagingAccountResponse,
-  ListAdminsManagingAccountError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAdminsManagingAccountRequest,
-  ) => stream.Stream<
-    ListAdminsManagingAccountResponse,
-    ListAdminsManagingAccountError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAdminsManagingAccountRequest,
-  ) => stream.Stream<
-    AWSAccountId,
-    ListAdminsManagingAccountError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListAppsListsError =
   | InternalErrorException
@@ -3764,27 +3724,7 @@ export const listAppsLists: API.OperationMethod<
     items: "AppsLists",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListAppsListsRequest,
-  ListAppsListsResponse,
-  ListAppsListsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAppsListsRequest,
-  ) => stream.Stream<
-    ListAppsListsResponse,
-    ListAppsListsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAppsListsRequest,
-  ) => stream.Stream<
-    AppsListDataSummary,
-    ListAppsListsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListComplianceStatusError =
   | InternalErrorException
@@ -3828,27 +3768,7 @@ export const listComplianceStatus: API.OperationMethod<
     items: "PolicyComplianceStatusList",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListComplianceStatusRequest,
-  ListComplianceStatusResponse,
-  ListComplianceStatusError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListComplianceStatusRequest,
-  ) => stream.Stream<
-    ListComplianceStatusResponse,
-    ListComplianceStatusError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListComplianceStatusRequest,
-  ) => stream.Stream<
-    PolicyComplianceStatus,
-    ListComplianceStatusError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListDiscoveredResourcesError =
   | InternalErrorException
@@ -3919,27 +3839,7 @@ export const listMemberAccounts: API.OperationMethod<
     items: "MemberAccounts",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListMemberAccountsRequest,
-  ListMemberAccountsResponse,
-  ListMemberAccountsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListMemberAccountsRequest,
-  ) => stream.Stream<
-    ListMemberAccountsResponse,
-    ListMemberAccountsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListMemberAccountsRequest,
-  ) => stream.Stream<
-    AWSAccountId,
-    ListMemberAccountsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListPoliciesError =
   | InternalErrorException
@@ -3988,27 +3888,7 @@ export const listPolicies: API.OperationMethod<
     items: "PolicyList",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListPoliciesRequest,
-  ListPoliciesResponse,
-  ListPoliciesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPoliciesRequest,
-  ) => stream.Stream<
-    ListPoliciesResponse,
-    ListPoliciesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPoliciesRequest,
-  ) => stream.Stream<
-    PolicySummary,
-    ListPoliciesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListProtocolsListsError =
   | InternalErrorException
@@ -4055,27 +3935,7 @@ export const listProtocolsLists: API.OperationMethod<
     items: "ProtocolsLists",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListProtocolsListsRequest,
-  ListProtocolsListsResponse,
-  ListProtocolsListsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListProtocolsListsRequest,
-  ) => stream.Stream<
-    ListProtocolsListsResponse,
-    ListProtocolsListsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListProtocolsListsRequest,
-  ) => stream.Stream<
-    ProtocolsListDataSummary,
-    ListProtocolsListsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListResourceSetResourcesError =
   | InternalErrorException
@@ -4206,27 +4066,7 @@ export const listThirdPartyFirewallFirewallPolicies: API.OperationMethod<
     items: "ThirdPartyFirewallFirewallPolicies",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListThirdPartyFirewallFirewallPoliciesRequest,
-  ListThirdPartyFirewallFirewallPoliciesResponse,
-  ListThirdPartyFirewallFirewallPoliciesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListThirdPartyFirewallFirewallPoliciesRequest,
-  ) => stream.Stream<
-    ListThirdPartyFirewallFirewallPoliciesResponse,
-    ListThirdPartyFirewallFirewallPoliciesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListThirdPartyFirewallFirewallPoliciesRequest,
-  ) => stream.Stream<
-    ThirdPartyFirewallFirewallPolicy,
-    ListThirdPartyFirewallFirewallPoliciesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type PutAdminAccountError =
   | InternalErrorException

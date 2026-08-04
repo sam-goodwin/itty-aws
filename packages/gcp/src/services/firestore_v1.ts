@@ -4654,7 +4654,8 @@ export const listDocumentsProjectsDatabasesDocuments: API.PaginatedOperationMeth
   ListDocumentsProjectsDatabasesDocumentsRequest,
   ListDocumentsResponse,
   ListDocumentsProjectsDatabasesDocumentsError,
-  GcpOpContext
+  GcpOpContext,
+  ListDocumentsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDocumentsProjectsDatabasesDocumentsRequest,
   output: ListDocumentsResponse,
@@ -4665,7 +4666,7 @@ export const listDocumentsProjectsDatabasesDocuments: API.PaginatedOperationMeth
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListenProjectsDatabasesDocumentsError =
   | NotFound
@@ -4729,7 +4730,8 @@ export const listProjectsDatabasesCollectionGroupsFields: API.PaginatedOperation
   ListProjectsDatabasesCollectionGroupsFieldsRequest,
   GoogleFirestoreAdminV1ListFieldsResponse,
   ListProjectsDatabasesCollectionGroupsFieldsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleFirestoreAdminV1ListFieldsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsDatabasesCollectionGroupsFieldsRequest,
   output: GoogleFirestoreAdminV1ListFieldsResponse,
@@ -4740,7 +4742,7 @@ export const listProjectsDatabasesCollectionGroupsFields: API.PaginatedOperation
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsDatabasesCollectionGroupsIndexesError =
   | NotFound
@@ -4751,7 +4753,8 @@ export const listProjectsDatabasesCollectionGroupsIndexes: API.PaginatedOperatio
   ListProjectsDatabasesCollectionGroupsIndexesRequest,
   GoogleFirestoreAdminV1ListIndexesResponse,
   ListProjectsDatabasesCollectionGroupsIndexesError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleFirestoreAdminV1ListIndexesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsDatabasesCollectionGroupsIndexesRequest,
   output: GoogleFirestoreAdminV1ListIndexesResponse,
@@ -4762,7 +4765,7 @@ export const listProjectsDatabasesCollectionGroupsIndexes: API.PaginatedOperatio
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsDatabasesDocumentsError =
   | NotFound
@@ -4773,7 +4776,8 @@ export const listProjectsDatabasesDocuments: API.PaginatedOperationMethod<
   ListProjectsDatabasesDocumentsRequest,
   ListDocumentsResponse,
   ListProjectsDatabasesDocumentsError,
-  GcpOpContext
+  GcpOpContext,
+  ListDocumentsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsDatabasesDocumentsRequest,
   output: ListDocumentsResponse,
@@ -4784,7 +4788,7 @@ export const listProjectsDatabasesDocuments: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsDatabasesOperationsError =
   | NotFound
@@ -4795,7 +4799,8 @@ export const listProjectsDatabasesOperations: API.PaginatedOperationMethod<
   ListProjectsDatabasesOperationsRequest,
   GoogleLongrunningListOperationsResponse,
   ListProjectsDatabasesOperationsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleLongrunningListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsDatabasesOperationsRequest,
   output: GoogleLongrunningListOperationsResponse,
@@ -4806,7 +4811,7 @@ export const listProjectsDatabasesOperations: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsDatabasesUserCredsError =
   | NotFound
@@ -4832,7 +4837,8 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   ListProjectsLocationsRequest,
   ListLocationsResponse,
   ListProjectsLocationsError,
-  GcpOpContext
+  GcpOpContext,
+  ListLocationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsRequest,
   output: ListLocationsResponse,
@@ -4843,7 +4849,7 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsBackupsError =
   | NotFound

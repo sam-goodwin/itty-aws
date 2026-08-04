@@ -782,27 +782,7 @@ export const listInvestigationGroups: API.OperationMethod<
     items: "investigationGroups",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListInvestigationGroupsInput,
-  ListInvestigationGroupsOutput,
-  ListInvestigationGroupsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListInvestigationGroupsInput,
-  ) => stream.Stream<
-    ListInvestigationGroupsOutput,
-    ListInvestigationGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListInvestigationGroupsInput,
-  ) => stream.Stream<
-    ListInvestigationGroupsModel,
-    ListInvestigationGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsForResourceError =
   | AccessDeniedException

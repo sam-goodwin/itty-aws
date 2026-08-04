@@ -7276,27 +7276,7 @@ export const batchGetAssetPropertyAggregates: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  BatchGetAssetPropertyAggregatesRequest,
-  BatchGetAssetPropertyAggregatesResponse,
-  BatchGetAssetPropertyAggregatesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: BatchGetAssetPropertyAggregatesRequest,
-  ) => stream.Stream<
-    BatchGetAssetPropertyAggregatesResponse,
-    BatchGetAssetPropertyAggregatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: BatchGetAssetPropertyAggregatesRequest,
-  ) => stream.Stream<
-    unknown,
-    BatchGetAssetPropertyAggregatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type BatchGetAssetPropertyValueError =
   | InternalFailureException
@@ -7342,27 +7322,7 @@ export const batchGetAssetPropertyValue: API.OperationMethod<
   operationName: "BatchGetAssetPropertyValue",
   endpointHostPrefix: "data.",
   pagination: { inputToken: "nextToken", outputToken: "nextToken" } as const,
-})) as any as API.OperationMethod<
-  BatchGetAssetPropertyValueRequest,
-  BatchGetAssetPropertyValueResponse,
-  BatchGetAssetPropertyValueError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: BatchGetAssetPropertyValueRequest,
-  ) => stream.Stream<
-    BatchGetAssetPropertyValueResponse,
-    BatchGetAssetPropertyValueError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: BatchGetAssetPropertyValueRequest,
-  ) => stream.Stream<
-    unknown,
-    BatchGetAssetPropertyValueError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type BatchGetAssetPropertyValueHistoryError =
   | InternalFailureException
@@ -7412,27 +7372,7 @@ export const batchGetAssetPropertyValueHistory: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  BatchGetAssetPropertyValueHistoryRequest,
-  BatchGetAssetPropertyValueHistoryResponse,
-  BatchGetAssetPropertyValueHistoryError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: BatchGetAssetPropertyValueHistoryRequest,
-  ) => stream.Stream<
-    BatchGetAssetPropertyValueHistoryResponse,
-    BatchGetAssetPropertyValueHistoryError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: BatchGetAssetPropertyValueHistoryRequest,
-  ) => stream.Stream<
-    unknown,
-    BatchGetAssetPropertyValueHistoryError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type BatchPutAssetPropertyValueError =
   | ConflictingOperationException
@@ -9157,27 +9097,7 @@ export const executeQuery: API.OperationMethod<
     items: "rows",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ExecuteQueryRequest,
-  ExecuteQueryResponse,
-  ExecuteQueryError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ExecuteQueryRequest,
-  ) => stream.Stream<
-    ExecuteQueryResponse,
-    ExecuteQueryError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ExecuteQueryRequest,
-  ) => stream.Stream<
-    Row,
-    ExecuteQueryError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type GetAssetPropertyAggregatesError =
   | InternalFailureException
@@ -9237,27 +9157,7 @@ export const getAssetPropertyAggregates: API.OperationMethod<
     items: "aggregatedValues",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  GetAssetPropertyAggregatesRequest,
-  GetAssetPropertyAggregatesResponse,
-  GetAssetPropertyAggregatesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetAssetPropertyAggregatesRequest,
-  ) => stream.Stream<
-    GetAssetPropertyAggregatesResponse,
-    GetAssetPropertyAggregatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetAssetPropertyAggregatesRequest,
-  ) => stream.Stream<
-    AggregatedValue,
-    GetAssetPropertyAggregatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type GetAssetPropertyValueError =
   | InternalFailureException
@@ -9356,27 +9256,7 @@ export const getAssetPropertyValueHistory: API.OperationMethod<
     items: "assetPropertyValueHistory",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  GetAssetPropertyValueHistoryRequest,
-  GetAssetPropertyValueHistoryResponse,
-  GetAssetPropertyValueHistoryError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetAssetPropertyValueHistoryRequest,
-  ) => stream.Stream<
-    GetAssetPropertyValueHistoryResponse,
-    GetAssetPropertyValueHistoryError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetAssetPropertyValueHistoryRequest,
-  ) => stream.Stream<
-    AssetPropertyValue,
-    GetAssetPropertyValueHistoryError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type GetInterpolatedAssetPropertyValuesError =
   | InternalFailureException
@@ -9440,27 +9320,7 @@ export const getInterpolatedAssetPropertyValues: API.OperationMethod<
     items: "interpolatedAssetPropertyValues",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  GetInterpolatedAssetPropertyValuesRequest,
-  GetInterpolatedAssetPropertyValuesResponse,
-  GetInterpolatedAssetPropertyValuesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetInterpolatedAssetPropertyValuesRequest,
-  ) => stream.Stream<
-    GetInterpolatedAssetPropertyValuesResponse,
-    GetInterpolatedAssetPropertyValuesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetInterpolatedAssetPropertyValuesRequest,
-  ) => stream.Stream<
-    InterpolatedAssetPropertyValue,
-    GetInterpolatedAssetPropertyValuesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type InvokeAssistantError =
   | AccessDeniedException
@@ -9544,27 +9404,7 @@ export const listAccessPolicies: API.OperationMethod<
     items: "accessPolicySummaries",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListAccessPoliciesRequest,
-  ListAccessPoliciesResponse,
-  ListAccessPoliciesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAccessPoliciesRequest,
-  ) => stream.Stream<
-    ListAccessPoliciesResponse,
-    ListAccessPoliciesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAccessPoliciesRequest,
-  ) => stream.Stream<
-    AccessPolicySummary,
-    ListAccessPoliciesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListActionsError =
   | InternalFailureException
@@ -9614,27 +9454,7 @@ export const listActions: API.OperationMethod<
     items: "actionSummaries",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListActionsRequest,
-  ListActionsResponse,
-  ListActionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListActionsRequest,
-  ) => stream.Stream<
-    ListActionsResponse,
-    ListActionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListActionsRequest,
-  ) => stream.Stream<
-    ActionSummary,
-    ListActionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListAssetModelCompositeModelsError =
   | InternalFailureException
@@ -9684,27 +9504,7 @@ export const listAssetModelCompositeModels: API.OperationMethod<
     items: "assetModelCompositeModelSummaries",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListAssetModelCompositeModelsRequest,
-  ListAssetModelCompositeModelsResponse,
-  ListAssetModelCompositeModelsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAssetModelCompositeModelsRequest,
-  ) => stream.Stream<
-    ListAssetModelCompositeModelsResponse,
-    ListAssetModelCompositeModelsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAssetModelCompositeModelsRequest,
-  ) => stream.Stream<
-    AssetModelCompositeModelSummary,
-    ListAssetModelCompositeModelsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListAssetModelPropertiesError =
   | InternalFailureException
@@ -9756,27 +9556,7 @@ export const listAssetModelProperties: API.OperationMethod<
     items: "assetModelPropertySummaries",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListAssetModelPropertiesRequest,
-  ListAssetModelPropertiesResponse,
-  ListAssetModelPropertiesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAssetModelPropertiesRequest,
-  ) => stream.Stream<
-    ListAssetModelPropertiesResponse,
-    ListAssetModelPropertiesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAssetModelPropertiesRequest,
-  ) => stream.Stream<
-    AssetModelPropertySummary,
-    ListAssetModelPropertiesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListAssetModelsError =
   | InternalFailureException
@@ -9824,27 +9604,7 @@ export const listAssetModels: API.OperationMethod<
     items: "assetModelSummaries",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListAssetModelsRequest,
-  ListAssetModelsResponse,
-  ListAssetModelsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAssetModelsRequest,
-  ) => stream.Stream<
-    ListAssetModelsResponse,
-    ListAssetModelsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAssetModelsRequest,
-  ) => stream.Stream<
-    AssetModelSummary,
-    ListAssetModelsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListAssetPropertiesError =
   | InternalFailureException
@@ -9896,27 +9656,7 @@ export const listAssetProperties: API.OperationMethod<
     items: "assetPropertySummaries",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListAssetPropertiesRequest,
-  ListAssetPropertiesResponse,
-  ListAssetPropertiesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAssetPropertiesRequest,
-  ) => stream.Stream<
-    ListAssetPropertiesResponse,
-    ListAssetPropertiesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAssetPropertiesRequest,
-  ) => stream.Stream<
-    AssetPropertySummary,
-    ListAssetPropertiesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListAssetRelationshipsError =
   | InternalFailureException
@@ -9968,27 +9708,7 @@ export const listAssetRelationships: API.OperationMethod<
     items: "assetRelationshipSummaries",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListAssetRelationshipsRequest,
-  ListAssetRelationshipsResponse,
-  ListAssetRelationshipsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAssetRelationshipsRequest,
-  ) => stream.Stream<
-    ListAssetRelationshipsResponse,
-    ListAssetRelationshipsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAssetRelationshipsRequest,
-  ) => stream.Stream<
-    AssetRelationshipSummary,
-    ListAssetRelationshipsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListAssetsError =
   | InternalFailureException
@@ -10048,27 +9768,7 @@ export const listAssets: API.OperationMethod<
     items: "assetSummaries",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListAssetsRequest,
-  ListAssetsResponse,
-  ListAssetsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAssetsRequest,
-  ) => stream.Stream<
-    ListAssetsResponse,
-    ListAssetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAssetsRequest,
-  ) => stream.Stream<
-    AssetSummary,
-    ListAssetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListAssociatedAssetsError =
   | InternalFailureException
@@ -10124,27 +9824,7 @@ export const listAssociatedAssets: API.OperationMethod<
     items: "assetSummaries",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListAssociatedAssetsRequest,
-  ListAssociatedAssetsResponse,
-  ListAssociatedAssetsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAssociatedAssetsRequest,
-  ) => stream.Stream<
-    ListAssociatedAssetsResponse,
-    ListAssociatedAssetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAssociatedAssetsRequest,
-  ) => stream.Stream<
-    AssociatedAssetsSummary,
-    ListAssociatedAssetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListBulkImportJobsError =
   | InternalFailureException
@@ -10195,27 +9875,7 @@ export const listBulkImportJobs: API.OperationMethod<
     items: "jobSummaries",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListBulkImportJobsRequest,
-  ListBulkImportJobsResponse,
-  ListBulkImportJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListBulkImportJobsRequest,
-  ) => stream.Stream<
-    ListBulkImportJobsResponse,
-    ListBulkImportJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListBulkImportJobsRequest,
-  ) => stream.Stream<
-    JobSummary,
-    ListBulkImportJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListCompositionRelationshipsError =
   | InternalFailureException
@@ -10266,27 +9926,7 @@ export const listCompositionRelationships: API.OperationMethod<
     items: "compositionRelationshipSummaries",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListCompositionRelationshipsRequest,
-  ListCompositionRelationshipsResponse,
-  ListCompositionRelationshipsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCompositionRelationshipsRequest,
-  ) => stream.Stream<
-    ListCompositionRelationshipsResponse,
-    ListCompositionRelationshipsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCompositionRelationshipsRequest,
-  ) => stream.Stream<
-    CompositionRelationshipSummary,
-    ListCompositionRelationshipsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListComputationModelDataBindingUsagesError =
   | InternalFailureException
@@ -10336,27 +9976,7 @@ export const listComputationModelDataBindingUsages: API.OperationMethod<
     items: "dataBindingUsageSummaries",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListComputationModelDataBindingUsagesRequest,
-  ListComputationModelDataBindingUsagesResponse,
-  ListComputationModelDataBindingUsagesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListComputationModelDataBindingUsagesRequest,
-  ) => stream.Stream<
-    ListComputationModelDataBindingUsagesResponse,
-    ListComputationModelDataBindingUsagesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListComputationModelDataBindingUsagesRequest,
-  ) => stream.Stream<
-    ComputationModelDataBindingUsageSummary,
-    ListComputationModelDataBindingUsagesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListComputationModelResolveToResourcesError =
   | InternalFailureException
@@ -10407,27 +10027,7 @@ export const listComputationModelResolveToResources: API.OperationMethod<
     items: "computationModelResolveToResourceSummaries",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListComputationModelResolveToResourcesRequest,
-  ListComputationModelResolveToResourcesResponse,
-  ListComputationModelResolveToResourcesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListComputationModelResolveToResourcesRequest,
-  ) => stream.Stream<
-    ListComputationModelResolveToResourcesResponse,
-    ListComputationModelResolveToResourcesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListComputationModelResolveToResourcesRequest,
-  ) => stream.Stream<
-    ComputationModelResolveToResourceSummary,
-    ListComputationModelResolveToResourcesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListComputationModelsError =
   | InternalFailureException
@@ -10475,27 +10075,7 @@ export const listComputationModels: API.OperationMethod<
     items: "computationModelSummaries",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListComputationModelsRequest,
-  ListComputationModelsResponse,
-  ListComputationModelsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListComputationModelsRequest,
-  ) => stream.Stream<
-    ListComputationModelsResponse,
-    ListComputationModelsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListComputationModelsRequest,
-  ) => stream.Stream<
-    ComputationModelSummary,
-    ListComputationModelsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListDashboardsError =
   | InternalFailureException
@@ -10543,27 +10123,7 @@ export const listDashboards: API.OperationMethod<
     items: "dashboardSummaries",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListDashboardsRequest,
-  ListDashboardsResponse,
-  ListDashboardsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDashboardsRequest,
-  ) => stream.Stream<
-    ListDashboardsResponse,
-    ListDashboardsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDashboardsRequest,
-  ) => stream.Stream<
-    DashboardSummary,
-    ListDashboardsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListDatasetsError =
   | InternalFailureException
@@ -10611,27 +10171,7 @@ export const listDatasets: API.OperationMethod<
     items: "datasetSummaries",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListDatasetsRequest,
-  ListDatasetsResponse,
-  ListDatasetsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDatasetsRequest,
-  ) => stream.Stream<
-    ListDatasetsResponse,
-    ListDatasetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDatasetsRequest,
-  ) => stream.Stream<
-    DatasetSummary,
-    ListDatasetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListExecutionsError =
   | InternalFailureException
@@ -10681,27 +10221,7 @@ export const listExecutions: API.OperationMethod<
     items: "executionSummaries",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListExecutionsRequest,
-  ListExecutionsResponse,
-  ListExecutionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListExecutionsRequest,
-  ) => stream.Stream<
-    ListExecutionsResponse,
-    ListExecutionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListExecutionsRequest,
-  ) => stream.Stream<
-    ExecutionSummary,
-    ListExecutionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListGatewaysError =
   | InternalFailureException
@@ -10749,27 +10269,7 @@ export const listGateways: API.OperationMethod<
     items: "gatewaySummaries",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListGatewaysRequest,
-  ListGatewaysResponse,
-  ListGatewaysError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListGatewaysRequest,
-  ) => stream.Stream<
-    ListGatewaysResponse,
-    ListGatewaysError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListGatewaysRequest,
-  ) => stream.Stream<
-    GatewaySummary,
-    ListGatewaysError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListInterfaceRelationshipsError =
   | InternalFailureException
@@ -10820,27 +10320,7 @@ export const listInterfaceRelationships: API.OperationMethod<
     items: "interfaceRelationshipSummaries",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListInterfaceRelationshipsRequest,
-  ListInterfaceRelationshipsResponse,
-  ListInterfaceRelationshipsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListInterfaceRelationshipsRequest,
-  ) => stream.Stream<
-    ListInterfaceRelationshipsResponse,
-    ListInterfaceRelationshipsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListInterfaceRelationshipsRequest,
-  ) => stream.Stream<
-    InterfaceRelationshipSummary,
-    ListInterfaceRelationshipsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListPortalsError =
   | InternalFailureException
@@ -10888,27 +10368,7 @@ export const listPortals: API.OperationMethod<
     items: "portalSummaries",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListPortalsRequest,
-  ListPortalsResponse,
-  ListPortalsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPortalsRequest,
-  ) => stream.Stream<
-    ListPortalsResponse,
-    ListPortalsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPortalsRequest,
-  ) => stream.Stream<
-    PortalSummary,
-    ListPortalsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListProjectAssetsError =
   | InternalFailureException
@@ -10956,27 +10416,7 @@ export const listProjectAssets: API.OperationMethod<
     items: "assetIds",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListProjectAssetsRequest,
-  ListProjectAssetsResponse,
-  ListProjectAssetsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListProjectAssetsRequest,
-  ) => stream.Stream<
-    ListProjectAssetsResponse,
-    ListProjectAssetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListProjectAssetsRequest,
-  ) => stream.Stream<
-    ID,
-    ListProjectAssetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListProjectsError =
   | InternalFailureException
@@ -11024,27 +10464,7 @@ export const listProjects: API.OperationMethod<
     items: "projectSummaries",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListProjectsRequest,
-  ListProjectsResponse,
-  ListProjectsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListProjectsRequest,
-  ) => stream.Stream<
-    ListProjectsResponse,
-    ListProjectsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListProjectsRequest,
-  ) => stream.Stream<
-    ProjectSummary,
-    ListProjectsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsForResourceError =
   | ConflictingOperationException
@@ -11129,27 +10549,7 @@ export const listTimeSeries: API.OperationMethod<
     items: "TimeSeriesSummaries",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListTimeSeriesRequest,
-  ListTimeSeriesResponse,
-  ListTimeSeriesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTimeSeriesRequest,
-  ) => stream.Stream<
-    ListTimeSeriesResponse,
-    ListTimeSeriesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTimeSeriesRequest,
-  ) => stream.Stream<
-    TimeSeriesSummary,
-    ListTimeSeriesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type PutAssetModelInterfaceRelationshipError =
   | ConflictingOperationException

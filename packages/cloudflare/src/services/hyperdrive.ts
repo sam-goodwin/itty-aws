@@ -1968,7 +1968,8 @@ export const listConfigs: API.PaginatedOperationMethod<
   ListConfigsRequest,
   ListConfigsResponse,
   ListConfigsError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  ConfigsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListConfigsRequest,
@@ -1984,7 +1985,7 @@ export const listConfigs: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type PatchConfigError =
   | PrivateHostNotAllowed

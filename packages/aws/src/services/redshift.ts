@@ -10730,27 +10730,7 @@ export const describeClusterDbRevisions: API.OperationMethod<
     items: "ClusterDbRevisions",
     pageSize: "MaxRecords",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeClusterDbRevisionsMessage,
-  ClusterDbRevisionsMessage,
-  DescribeClusterDbRevisionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeClusterDbRevisionsMessage,
-  ) => stream.Stream<
-    ClusterDbRevisionsMessage,
-    DescribeClusterDbRevisionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeClusterDbRevisionsMessage,
-  ) => stream.Stream<
-    ClusterDbRevision,
-    DescribeClusterDbRevisionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeClusterParameterGroupsError =
   | ClusterParameterGroupNotFoundFault
@@ -10810,27 +10790,7 @@ export const describeClusterParameterGroups: API.OperationMethod<
     items: "ParameterGroups",
     pageSize: "MaxRecords",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeClusterParameterGroupsMessage,
-  ClusterParameterGroupsMessage,
-  DescribeClusterParameterGroupsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeClusterParameterGroupsMessage,
-  ) => stream.Stream<
-    ClusterParameterGroupsMessage,
-    DescribeClusterParameterGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeClusterParameterGroupsMessage,
-  ) => stream.Stream<
-    ClusterParameterGroup,
-    DescribeClusterParameterGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeClusterParametersError =
   | ClusterParameterGroupNotFoundFault
@@ -10883,27 +10843,7 @@ export const describeClusterParameters: API.OperationMethod<
     items: "Parameters",
     pageSize: "MaxRecords",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeClusterParametersMessage,
-  ClusterParameterGroupDetails,
-  DescribeClusterParametersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeClusterParametersMessage,
-  ) => stream.Stream<
-    ClusterParameterGroupDetails,
-    DescribeClusterParametersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeClusterParametersMessage,
-  ) => stream.Stream<
-    Parameter,
-    DescribeClusterParametersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeClustersError =
   | ClusterNotFoundFault
@@ -10959,27 +10899,7 @@ export const describeClusters: API.OperationMethod<
     items: "Clusters",
     pageSize: "MaxRecords",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeClustersMessage,
-  ClustersMessage,
-  DescribeClustersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeClustersMessage,
-  ) => stream.Stream<
-    ClustersMessage,
-    DescribeClustersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeClustersMessage,
-  ) => stream.Stream<
-    Cluster,
-    DescribeClustersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeClusterSecurityGroupsError =
   | ClusterSecurityGroupNotFoundFault
@@ -11037,27 +10957,7 @@ export const describeClusterSecurityGroups: API.OperationMethod<
     items: "ClusterSecurityGroups",
     pageSize: "MaxRecords",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeClusterSecurityGroupsMessage,
-  ClusterSecurityGroupMessage,
-  DescribeClusterSecurityGroupsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeClusterSecurityGroupsMessage,
-  ) => stream.Stream<
-    ClusterSecurityGroupMessage,
-    DescribeClusterSecurityGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeClusterSecurityGroupsMessage,
-  ) => stream.Stream<
-    ClusterSecurityGroup,
-    DescribeClusterSecurityGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeClusterSnapshotsError =
   | ClusterNotFoundFault
@@ -11120,27 +11020,7 @@ export const describeClusterSnapshots: API.OperationMethod<
     items: "Snapshots",
     pageSize: "MaxRecords",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeClusterSnapshotsMessage,
-  SnapshotMessage,
-  DescribeClusterSnapshotsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeClusterSnapshotsMessage,
-  ) => stream.Stream<
-    SnapshotMessage,
-    DescribeClusterSnapshotsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeClusterSnapshotsMessage,
-  ) => stream.Stream<
-    Snapshot,
-    DescribeClusterSnapshotsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeClusterSubnetGroupsError =
   | ClusterSubnetGroupNotFoundFault
@@ -11194,27 +11074,7 @@ export const describeClusterSubnetGroups: API.OperationMethod<
     items: "ClusterSubnetGroups",
     pageSize: "MaxRecords",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeClusterSubnetGroupsMessage,
-  ClusterSubnetGroupMessage,
-  DescribeClusterSubnetGroupsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeClusterSubnetGroupsMessage,
-  ) => stream.Stream<
-    ClusterSubnetGroupMessage,
-    DescribeClusterSubnetGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeClusterSubnetGroupsMessage,
-  ) => stream.Stream<
-    ClusterSubnetGroup,
-    DescribeClusterSubnetGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeClusterTracksError =
   | InvalidClusterTrackFault
@@ -11256,27 +11116,7 @@ export const describeClusterTracks: API.OperationMethod<
     items: "MaintenanceTracks",
     pageSize: "MaxRecords",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeClusterTracksMessage,
-  TrackListMessage,
-  DescribeClusterTracksError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeClusterTracksMessage,
-  ) => stream.Stream<
-    TrackListMessage,
-    DescribeClusterTracksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeClusterTracksMessage,
-  ) => stream.Stream<
-    MaintenanceTrack,
-    DescribeClusterTracksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeClusterVersionsError = CommonErrors;
 /**
@@ -11320,27 +11160,7 @@ export const describeClusterVersions: API.OperationMethod<
     items: "ClusterVersions",
     pageSize: "MaxRecords",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeClusterVersionsMessage,
-  ClusterVersionsMessage,
-  DescribeClusterVersionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeClusterVersionsMessage,
-  ) => stream.Stream<
-    ClusterVersionsMessage,
-    DescribeClusterVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeClusterVersionsMessage,
-  ) => stream.Stream<
-    ClusterVersion,
-    DescribeClusterVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeCustomDomainAssociationsError =
   | CustomDomainAssociationNotFoundFault
@@ -11382,27 +11202,7 @@ export const describeCustomDomainAssociations: API.OperationMethod<
     items: "Associations",
     pageSize: "MaxRecords",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeCustomDomainAssociationsMessage,
-  CustomDomainAssociationsMessage,
-  DescribeCustomDomainAssociationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeCustomDomainAssociationsMessage,
-  ) => stream.Stream<
-    CustomDomainAssociationsMessage,
-    DescribeCustomDomainAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeCustomDomainAssociationsMessage,
-  ) => stream.Stream<
-    Association,
-    DescribeCustomDomainAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeDataSharesError = InvalidDataShareFault | CommonErrors;
 /**
@@ -11442,27 +11242,7 @@ export const describeDataShares: API.OperationMethod<
     items: "DataShares",
     pageSize: "MaxRecords",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeDataSharesMessage,
-  DescribeDataSharesResult,
-  DescribeDataSharesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeDataSharesMessage,
-  ) => stream.Stream<
-    DescribeDataSharesResult,
-    DescribeDataSharesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeDataSharesMessage,
-  ) => stream.Stream<
-    DataShare,
-    DescribeDataSharesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeDataSharesForConsumerError =
   | InvalidNamespaceFault
@@ -11503,27 +11283,7 @@ export const describeDataSharesForConsumer: API.OperationMethod<
     items: "DataShares",
     pageSize: "MaxRecords",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeDataSharesForConsumerMessage,
-  DescribeDataSharesForConsumerResult,
-  DescribeDataSharesForConsumerError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeDataSharesForConsumerMessage,
-  ) => stream.Stream<
-    DescribeDataSharesForConsumerResult,
-    DescribeDataSharesForConsumerError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeDataSharesForConsumerMessage,
-  ) => stream.Stream<
-    DataShare,
-    DescribeDataSharesForConsumerError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeDataSharesForProducerError =
   | InvalidNamespaceFault
@@ -11564,27 +11324,7 @@ export const describeDataSharesForProducer: API.OperationMethod<
     items: "DataShares",
     pageSize: "MaxRecords",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeDataSharesForProducerMessage,
-  DescribeDataSharesForProducerResult,
-  DescribeDataSharesForProducerError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeDataSharesForProducerMessage,
-  ) => stream.Stream<
-    DescribeDataSharesForProducerResult,
-    DescribeDataSharesForProducerError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeDataSharesForProducerMessage,
-  ) => stream.Stream<
-    DataShare,
-    DescribeDataSharesForProducerError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeDefaultClusterParametersError = CommonErrors;
 /**
@@ -11628,27 +11368,7 @@ export const describeDefaultClusterParameters: API.OperationMethod<
     items: "DefaultClusterParameters.Parameters",
     pageSize: "MaxRecords",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeDefaultClusterParametersMessage,
-  DescribeDefaultClusterParametersResult,
-  DescribeDefaultClusterParametersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeDefaultClusterParametersMessage,
-  ) => stream.Stream<
-    DescribeDefaultClusterParametersResult,
-    DescribeDefaultClusterParametersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeDefaultClusterParametersMessage,
-  ) => stream.Stream<
-    unknown,
-    DescribeDefaultClusterParametersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeEndpointAccessError =
   | ClusterNotFoundFault
@@ -11695,27 +11415,7 @@ export const describeEndpointAccess: API.OperationMethod<
     items: "EndpointAccessList",
     pageSize: "MaxRecords",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeEndpointAccessMessage,
-  EndpointAccessList,
-  DescribeEndpointAccessError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeEndpointAccessMessage,
-  ) => stream.Stream<
-    EndpointAccessList,
-    DescribeEndpointAccessError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeEndpointAccessMessage,
-  ) => stream.Stream<
-    EndpointAccess,
-    DescribeEndpointAccessError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeEndpointAuthorizationError =
   | ClusterNotFoundFault
@@ -11757,27 +11457,7 @@ export const describeEndpointAuthorization: API.OperationMethod<
     items: "EndpointAuthorizationList",
     pageSize: "MaxRecords",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeEndpointAuthorizationMessage,
-  EndpointAuthorizationList,
-  DescribeEndpointAuthorizationError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeEndpointAuthorizationMessage,
-  ) => stream.Stream<
-    EndpointAuthorizationList,
-    DescribeEndpointAuthorizationError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeEndpointAuthorizationMessage,
-  ) => stream.Stream<
-    EndpointAuthorization,
-    DescribeEndpointAuthorizationError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeEventCategoriesError = CommonErrors;
 /**
@@ -11839,27 +11519,7 @@ export const describeEvents: API.OperationMethod<
     items: "Events",
     pageSize: "MaxRecords",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeEventsMessage,
-  EventsMessage,
-  DescribeEventsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeEventsMessage,
-  ) => stream.Stream<
-    EventsMessage,
-    DescribeEventsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeEventsMessage,
-  ) => stream.Stream<
-    Event,
-    DescribeEventsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeEventSubscriptionsError =
   | InvalidTagFault
@@ -11913,27 +11573,7 @@ export const describeEventSubscriptions: API.OperationMethod<
     items: "EventSubscriptionsList",
     pageSize: "MaxRecords",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeEventSubscriptionsMessage,
-  EventSubscriptionsMessage,
-  DescribeEventSubscriptionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeEventSubscriptionsMessage,
-  ) => stream.Stream<
-    EventSubscriptionsMessage,
-    DescribeEventSubscriptionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeEventSubscriptionsMessage,
-  ) => stream.Stream<
-    EventSubscription,
-    DescribeEventSubscriptionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeHsmClientCertificatesError =
   | HsmClientCertificateNotFoundFault
@@ -11986,27 +11626,7 @@ export const describeHsmClientCertificates: API.OperationMethod<
     items: "HsmClientCertificates",
     pageSize: "MaxRecords",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeHsmClientCertificatesMessage,
-  HsmClientCertificateMessage,
-  DescribeHsmClientCertificatesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeHsmClientCertificatesMessage,
-  ) => stream.Stream<
-    HsmClientCertificateMessage,
-    DescribeHsmClientCertificatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeHsmClientCertificatesMessage,
-  ) => stream.Stream<
-    HsmClientCertificate,
-    DescribeHsmClientCertificatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeHsmConfigurationsError =
   | HsmConfigurationNotFoundFault
@@ -12060,27 +11680,7 @@ export const describeHsmConfigurations: API.OperationMethod<
     items: "HsmConfigurations",
     pageSize: "MaxRecords",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeHsmConfigurationsMessage,
-  HsmConfigurationMessage,
-  DescribeHsmConfigurationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeHsmConfigurationsMessage,
-  ) => stream.Stream<
-    HsmConfigurationMessage,
-    DescribeHsmConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeHsmConfigurationsMessage,
-  ) => stream.Stream<
-    HsmConfiguration,
-    DescribeHsmConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeInboundIntegrationsError =
   | IntegrationNotFoundFault
@@ -12127,27 +11727,7 @@ export const describeInboundIntegrations: API.OperationMethod<
     items: "InboundIntegrations",
     pageSize: "MaxRecords",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeInboundIntegrationsMessage,
-  InboundIntegrationsMessage,
-  DescribeInboundIntegrationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeInboundIntegrationsMessage,
-  ) => stream.Stream<
-    InboundIntegrationsMessage,
-    DescribeInboundIntegrationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeInboundIntegrationsMessage,
-  ) => stream.Stream<
-    InboundIntegration,
-    DescribeInboundIntegrationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeIntegrationsError =
   | IntegrationNotFoundFault
@@ -12189,27 +11769,7 @@ export const describeIntegrations: API.OperationMethod<
     items: "Integrations",
     pageSize: "MaxRecords",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeIntegrationsMessage,
-  IntegrationsMessage,
-  DescribeIntegrationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeIntegrationsMessage,
-  ) => stream.Stream<
-    IntegrationsMessage,
-    DescribeIntegrationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeIntegrationsMessage,
-  ) => stream.Stream<
-    Integration,
-    DescribeIntegrationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeLoggingStatusError =
   | ClusterNotFoundFault
@@ -12283,27 +11843,7 @@ export const describeNodeConfigurationOptions: API.OperationMethod<
     items: "NodeConfigurationOptionList",
     pageSize: "MaxRecords",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeNodeConfigurationOptionsMessage,
-  NodeConfigurationOptionsMessage,
-  DescribeNodeConfigurationOptionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeNodeConfigurationOptionsMessage,
-  ) => stream.Stream<
-    NodeConfigurationOptionsMessage,
-    DescribeNodeConfigurationOptionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeNodeConfigurationOptionsMessage,
-  ) => stream.Stream<
-    NodeConfigurationOption,
-    DescribeNodeConfigurationOptionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeOrderableClusterOptionsError = CommonErrors;
 /**
@@ -12350,27 +11890,7 @@ export const describeOrderableClusterOptions: API.OperationMethod<
     items: "OrderableClusterOptions",
     pageSize: "MaxRecords",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeOrderableClusterOptionsMessage,
-  OrderableClusterOptionsMessage,
-  DescribeOrderableClusterOptionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeOrderableClusterOptionsMessage,
-  ) => stream.Stream<
-    OrderableClusterOptionsMessage,
-    DescribeOrderableClusterOptionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeOrderableClusterOptionsMessage,
-  ) => stream.Stream<
-    OrderableClusterOption,
-    DescribeOrderableClusterOptionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribePartnersError =
   | ClusterNotFoundFault
@@ -12445,27 +11965,7 @@ export const describeRedshiftIdcApplications: API.OperationMethod<
     items: "RedshiftIdcApplications",
     pageSize: "MaxRecords",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeRedshiftIdcApplicationsMessage,
-  DescribeRedshiftIdcApplicationsResult,
-  DescribeRedshiftIdcApplicationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeRedshiftIdcApplicationsMessage,
-  ) => stream.Stream<
-    DescribeRedshiftIdcApplicationsResult,
-    DescribeRedshiftIdcApplicationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeRedshiftIdcApplicationsMessage,
-  ) => stream.Stream<
-    RedshiftIdcApplication,
-    DescribeRedshiftIdcApplicationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeReservedNodeExchangeStatusError =
   | ReservedNodeExchangeNotFoundFault
@@ -12513,27 +12013,7 @@ export const describeReservedNodeExchangeStatus: API.OperationMethod<
     items: "ReservedNodeExchangeStatusDetails",
     pageSize: "MaxRecords",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeReservedNodeExchangeStatusInputMessage,
-  DescribeReservedNodeExchangeStatusOutputMessage,
-  DescribeReservedNodeExchangeStatusError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeReservedNodeExchangeStatusInputMessage,
-  ) => stream.Stream<
-    DescribeReservedNodeExchangeStatusOutputMessage,
-    DescribeReservedNodeExchangeStatusError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeReservedNodeExchangeStatusInputMessage,
-  ) => stream.Stream<
-    ReservedNodeExchangeStatus,
-    DescribeReservedNodeExchangeStatusError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeReservedNodeOfferingsError =
   | DependentServiceUnavailableFault
@@ -12589,27 +12069,7 @@ export const describeReservedNodeOfferings: API.OperationMethod<
     items: "ReservedNodeOfferings",
     pageSize: "MaxRecords",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeReservedNodeOfferingsMessage,
-  ReservedNodeOfferingsMessage,
-  DescribeReservedNodeOfferingsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeReservedNodeOfferingsMessage,
-  ) => stream.Stream<
-    ReservedNodeOfferingsMessage,
-    DescribeReservedNodeOfferingsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeReservedNodeOfferingsMessage,
-  ) => stream.Stream<
-    ReservedNodeOffering,
-    DescribeReservedNodeOfferingsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeReservedNodesError =
   | DependentServiceUnavailableFault
@@ -12651,27 +12111,7 @@ export const describeReservedNodes: API.OperationMethod<
     items: "ReservedNodes",
     pageSize: "MaxRecords",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeReservedNodesMessage,
-  ReservedNodesMessage,
-  DescribeReservedNodesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeReservedNodesMessage,
-  ) => stream.Stream<
-    ReservedNodesMessage,
-    DescribeReservedNodesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeReservedNodesMessage,
-  ) => stream.Stream<
-    ReservedNode,
-    DescribeReservedNodesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeResizeError =
   | ClusterNotFoundFault
@@ -12745,27 +12185,7 @@ export const describeScheduledActions: API.OperationMethod<
     items: "ScheduledActions",
     pageSize: "MaxRecords",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeScheduledActionsMessage,
-  ScheduledActionsMessage,
-  DescribeScheduledActionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeScheduledActionsMessage,
-  ) => stream.Stream<
-    ScheduledActionsMessage,
-    DescribeScheduledActionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeScheduledActionsMessage,
-  ) => stream.Stream<
-    ScheduledAction,
-    DescribeScheduledActionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeSnapshotCopyGrantsError =
   | InvalidTagFault
@@ -12812,27 +12232,7 @@ export const describeSnapshotCopyGrants: API.OperationMethod<
     items: "SnapshotCopyGrants",
     pageSize: "MaxRecords",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeSnapshotCopyGrantsMessage,
-  SnapshotCopyGrantMessage,
-  DescribeSnapshotCopyGrantsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeSnapshotCopyGrantsMessage,
-  ) => stream.Stream<
-    SnapshotCopyGrantMessage,
-    DescribeSnapshotCopyGrantsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeSnapshotCopyGrantsMessage,
-  ) => stream.Stream<
-    SnapshotCopyGrant,
-    DescribeSnapshotCopyGrantsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeSnapshotSchedulesError = CommonErrors;
 /**
@@ -12871,27 +12271,7 @@ export const describeSnapshotSchedules: API.OperationMethod<
     items: "SnapshotSchedules",
     pageSize: "MaxRecords",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeSnapshotSchedulesMessage,
-  DescribeSnapshotSchedulesOutputMessage,
-  DescribeSnapshotSchedulesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeSnapshotSchedulesMessage,
-  ) => stream.Stream<
-    DescribeSnapshotSchedulesOutputMessage,
-    DescribeSnapshotSchedulesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeSnapshotSchedulesMessage,
-  ) => stream.Stream<
-    SnapshotSchedule,
-    DescribeSnapshotSchedulesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeStorageError = CommonErrors;
 /**
@@ -12956,27 +12336,7 @@ export const describeTableRestoreStatus: API.OperationMethod<
     items: "TableRestoreStatusDetails",
     pageSize: "MaxRecords",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeTableRestoreStatusMessage,
-  TableRestoreStatusMessage,
-  DescribeTableRestoreStatusError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeTableRestoreStatusMessage,
-  ) => stream.Stream<
-    TableRestoreStatusMessage,
-    DescribeTableRestoreStatusError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeTableRestoreStatusMessage,
-  ) => stream.Stream<
-    TableRestoreStatus,
-    DescribeTableRestoreStatusError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeTagsError =
   | InvalidTagFault
@@ -13040,27 +12400,7 @@ export const describeTags: API.OperationMethod<
     items: "TaggedResources",
     pageSize: "MaxRecords",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeTagsMessage,
-  TaggedResourceListMessage,
-  DescribeTagsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeTagsMessage,
-  ) => stream.Stream<
-    TaggedResourceListMessage,
-    DescribeTagsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeTagsMessage,
-  ) => stream.Stream<
-    TaggedResource,
-    DescribeTagsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeUsageLimitsError =
   | ClusterNotFoundFault
@@ -13115,27 +12455,7 @@ export const describeUsageLimits: API.OperationMethod<
     items: "UsageLimits",
     pageSize: "MaxRecords",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeUsageLimitsMessage,
-  UsageLimitList,
-  DescribeUsageLimitsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeUsageLimitsMessage,
-  ) => stream.Stream<
-    UsageLimitList,
-    DescribeUsageLimitsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeUsageLimitsMessage,
-  ) => stream.Stream<
-    UsageLimit,
-    DescribeUsageLimitsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DisableLoggingError =
   | ClusterNotFoundFault
@@ -13498,27 +12818,7 @@ export const getReservedNodeExchangeConfigurationOptions: API.OperationMethod<
     items: "ReservedNodeConfigurationOptionList",
     pageSize: "MaxRecords",
   } as const,
-})) as any as API.OperationMethod<
-  GetReservedNodeExchangeConfigurationOptionsInputMessage,
-  GetReservedNodeExchangeConfigurationOptionsOutputMessage,
-  GetReservedNodeExchangeConfigurationOptionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetReservedNodeExchangeConfigurationOptionsInputMessage,
-  ) => stream.Stream<
-    GetReservedNodeExchangeConfigurationOptionsOutputMessage,
-    GetReservedNodeExchangeConfigurationOptionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetReservedNodeExchangeConfigurationOptionsInputMessage,
-  ) => stream.Stream<
-    ReservedNodeConfigurationOption,
-    GetReservedNodeExchangeConfigurationOptionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type GetReservedNodeExchangeOfferingsError =
   | DependentServiceUnavailableFault
@@ -13572,27 +12872,7 @@ export const getReservedNodeExchangeOfferings: API.OperationMethod<
     items: "ReservedNodeOfferings",
     pageSize: "MaxRecords",
   } as const,
-})) as any as API.OperationMethod<
-  GetReservedNodeExchangeOfferingsInputMessage,
-  GetReservedNodeExchangeOfferingsOutputMessage,
-  GetReservedNodeExchangeOfferingsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetReservedNodeExchangeOfferingsInputMessage,
-  ) => stream.Stream<
-    GetReservedNodeExchangeOfferingsOutputMessage,
-    GetReservedNodeExchangeOfferingsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetReservedNodeExchangeOfferingsInputMessage,
-  ) => stream.Stream<
-    ReservedNodeOffering,
-    GetReservedNodeExchangeOfferingsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type GetResourcePolicyError =
   | InvalidPolicyFault
@@ -13660,27 +12940,7 @@ export const listRecommendations: API.OperationMethod<
     items: "Recommendations",
     pageSize: "MaxRecords",
   } as const,
-})) as any as API.OperationMethod<
-  ListRecommendationsMessage,
-  ListRecommendationsResult,
-  ListRecommendationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRecommendationsMessage,
-  ) => stream.Stream<
-    ListRecommendationsResult,
-    ListRecommendationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRecommendationsMessage,
-  ) => stream.Stream<
-    Recommendation,
-    ListRecommendationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ModifyAquaConfigurationError =
   | ClusterNotFoundFault

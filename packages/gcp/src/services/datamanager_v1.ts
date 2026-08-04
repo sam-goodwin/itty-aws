@@ -3477,7 +3477,8 @@ export const listAccountTypesAccountsUserListDirectLicenses: API.PaginatedOperat
   ListAccountTypesAccountsUserListDirectLicensesRequest,
   ListUserListDirectLicensesResponse,
   ListAccountTypesAccountsUserListDirectLicensesError,
-  GcpOpContext
+  GcpOpContext,
+  ListUserListDirectLicensesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountTypesAccountsUserListDirectLicensesRequest,
   output: ListUserListDirectLicensesResponse,
@@ -3488,7 +3489,7 @@ export const listAccountTypesAccountsUserListDirectLicenses: API.PaginatedOperat
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListAccountTypesAccountsUserListGlobalLicensesError =
   | NotFound
@@ -3499,7 +3500,8 @@ export const listAccountTypesAccountsUserListGlobalLicenses: API.PaginatedOperat
   ListAccountTypesAccountsUserListGlobalLicensesRequest,
   ListUserListGlobalLicensesResponse,
   ListAccountTypesAccountsUserListGlobalLicensesError,
-  GcpOpContext
+  GcpOpContext,
+  ListUserListGlobalLicensesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountTypesAccountsUserListGlobalLicensesRequest,
   output: ListUserListGlobalLicensesResponse,
@@ -3510,7 +3512,7 @@ export const listAccountTypesAccountsUserListGlobalLicenses: API.PaginatedOperat
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListAccountTypesAccountsUserListGlobalLicensesUserListGlobalLicenseCustomerInfosError =
   NotFound | Forbidden | GcpOpError;
@@ -3519,7 +3521,8 @@ export const listAccountTypesAccountsUserListGlobalLicensesUserListGlobalLicense
   ListAccountTypesAccountsUserListGlobalLicensesUserListGlobalLicenseCustomerInfosRequest,
   ListUserListGlobalLicenseCustomerInfosResponse,
   ListAccountTypesAccountsUserListGlobalLicensesUserListGlobalLicenseCustomerInfosError,
-  GcpOpContext
+  GcpOpContext,
+  ListUserListGlobalLicenseCustomerInfosResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input:
     ListAccountTypesAccountsUserListGlobalLicensesUserListGlobalLicenseCustomerInfosRequest,
@@ -3531,7 +3534,7 @@ export const listAccountTypesAccountsUserListGlobalLicensesUserListGlobalLicense
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListAccountTypesAccountsUserListsError =
   | NotFound
@@ -3542,7 +3545,8 @@ export const listAccountTypesAccountsUserLists: API.PaginatedOperationMethod<
   ListAccountTypesAccountsUserListsRequest,
   ListUserListsResponse,
   ListAccountTypesAccountsUserListsError,
-  GcpOpContext
+  GcpOpContext,
+  ListUserListsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountTypesAccountsUserListsRequest,
   output: ListUserListsResponse,
@@ -3553,7 +3557,7 @@ export const listAccountTypesAccountsUserLists: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type PatchAccountTypesAccountsUserListDirectLicensesError =
   | NotFound
@@ -3679,7 +3683,8 @@ export const searchAccountTypesAccountsPartnerLinks: API.PaginatedOperationMetho
   SearchAccountTypesAccountsPartnerLinksRequest,
   SearchPartnerLinksResponse,
   SearchAccountTypesAccountsPartnerLinksError,
-  GcpOpContext
+  GcpOpContext,
+  SearchPartnerLinksResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchAccountTypesAccountsPartnerLinksRequest,
   output: SearchPartnerLinksResponse,
@@ -3690,4 +3695,4 @@ export const searchAccountTypesAccountsPartnerLinks: API.PaginatedOperationMetho
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;

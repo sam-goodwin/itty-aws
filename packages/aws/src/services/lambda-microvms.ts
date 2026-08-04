@@ -1981,27 +1981,7 @@ export const listManagedMicrovmImages: API.OperationMethod<
     items: "items",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListManagedMicrovmImagesInput,
-  ListManagedMicrovmImagesOutput,
-  ListManagedMicrovmImagesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListManagedMicrovmImagesInput,
-  ) => stream.Stream<
-    ListManagedMicrovmImagesOutput,
-    ListManagedMicrovmImagesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListManagedMicrovmImagesInput,
-  ) => stream.Stream<
-    ManagedMicrovmImageSummary,
-    ListManagedMicrovmImagesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListManagedMicrovmImageVersionsError =
   | AccessDeniedException
@@ -2052,27 +2032,7 @@ export const listManagedMicrovmImageVersions: API.OperationMethod<
     items: "items",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListManagedMicrovmImageVersionsInput,
-  ListManagedMicrovmImageVersionsOutput,
-  ListManagedMicrovmImageVersionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListManagedMicrovmImageVersionsInput,
-  ) => stream.Stream<
-    ListManagedMicrovmImageVersionsOutput,
-    ListManagedMicrovmImageVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListManagedMicrovmImageVersionsInput,
-  ) => stream.Stream<
-    ManagedMicrovmImageVersion,
-    ListManagedMicrovmImageVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListMicrovmImageBuildsError =
   | AccessDeniedException
@@ -2123,27 +2083,7 @@ export const listMicrovmImageBuilds: API.OperationMethod<
     items: "items",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListMicrovmImageBuildsInput,
-  ListMicrovmImageBuildsOutput,
-  ListMicrovmImageBuildsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListMicrovmImageBuildsInput,
-  ) => stream.Stream<
-    ListMicrovmImageBuildsOutput,
-    ListMicrovmImageBuildsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListMicrovmImageBuildsInput,
-  ) => stream.Stream<
-    MicrovmImageBuildSummary,
-    ListMicrovmImageBuildsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListMicrovmImagesError =
   | AccessDeniedException
@@ -2192,27 +2132,7 @@ export const listMicrovmImages: API.OperationMethod<
     items: "items",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListMicrovmImagesRequest,
-  ListMicrovmImagesResponse,
-  ListMicrovmImagesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListMicrovmImagesRequest,
-  ) => stream.Stream<
-    ListMicrovmImagesResponse,
-    ListMicrovmImagesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListMicrovmImagesRequest,
-  ) => stream.Stream<
-    MicrovmImageSummary,
-    ListMicrovmImagesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListMicrovmImageVersionsError =
   | AccessDeniedException
@@ -2263,27 +2183,7 @@ export const listMicrovmImageVersions: API.OperationMethod<
     items: "items",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListMicrovmImageVersionsInput,
-  ListMicrovmImageVersionsOutput,
-  ListMicrovmImageVersionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListMicrovmImageVersionsInput,
-  ) => stream.Stream<
-    ListMicrovmImageVersionsOutput,
-    ListMicrovmImageVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListMicrovmImageVersionsInput,
-  ) => stream.Stream<
-    MicrovmImageVersionSummary,
-    ListMicrovmImageVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListMicrovmsError =
   | AccessDeniedException
@@ -2334,27 +2234,7 @@ export const listMicrovms: API.OperationMethod<
     items: "items",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListMicrovmsRequest,
-  ListMicrovmsResponse,
-  ListMicrovmsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListMicrovmsRequest,
-  ) => stream.Stream<
-    ListMicrovmsResponse,
-    ListMicrovmsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListMicrovmsRequest,
-  ) => stream.Stream<
-    MicrovmItem,
-    ListMicrovmsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsError =
   | InvalidParameterValueException

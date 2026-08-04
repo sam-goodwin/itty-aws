@@ -1419,27 +1419,7 @@ export const listCodeReviews: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListCodeReviewsRequest,
-  ListCodeReviewsResponse,
-  ListCodeReviewsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCodeReviewsRequest,
-  ) => stream.Stream<
-    ListCodeReviewsResponse,
-    ListCodeReviewsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCodeReviewsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListCodeReviewsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListRecommendationFeedbackError =
   | AccessDeniedException
@@ -1490,27 +1470,7 @@ export const listRecommendationFeedback: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListRecommendationFeedbackRequest,
-  ListRecommendationFeedbackResponse,
-  ListRecommendationFeedbackError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRecommendationFeedbackRequest,
-  ) => stream.Stream<
-    ListRecommendationFeedbackResponse,
-    ListRecommendationFeedbackError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRecommendationFeedbackRequest,
-  ) => stream.Stream<
-    unknown,
-    ListRecommendationFeedbackError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListRecommendationsError =
   | AccessDeniedException
@@ -1560,27 +1520,7 @@ export const listRecommendations: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListRecommendationsRequest,
-  ListRecommendationsResponse,
-  ListRecommendationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRecommendationsRequest,
-  ) => stream.Stream<
-    ListRecommendationsResponse,
-    ListRecommendationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRecommendationsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListRecommendationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListRepositoryAssociationsError =
   | InternalServerException
@@ -1624,27 +1564,7 @@ export const listRepositoryAssociations: API.OperationMethod<
     items: "RepositoryAssociationSummaries",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListRepositoryAssociationsRequest,
-  ListRepositoryAssociationsResponse,
-  ListRepositoryAssociationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRepositoryAssociationsRequest,
-  ) => stream.Stream<
-    ListRepositoryAssociationsResponse,
-    ListRepositoryAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRepositoryAssociationsRequest,
-  ) => stream.Stream<
-    RepositoryAssociationSummary,
-    ListRepositoryAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsForResourceError =
   | InternalServerException

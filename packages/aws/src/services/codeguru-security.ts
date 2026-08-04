@@ -1087,27 +1087,7 @@ export const getFindings: API.OperationMethod<
     items: "findings",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  GetFindingsRequest,
-  GetFindingsResponse,
-  GetFindingsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetFindingsRequest,
-  ) => stream.Stream<
-    GetFindingsResponse,
-    GetFindingsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetFindingsRequest,
-  ) => stream.Stream<
-    Finding,
-    GetFindingsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type GetMetricsSummaryError =
   | AccessDeniedException
@@ -1214,27 +1194,7 @@ export const listFindingsMetrics: API.OperationMethod<
     items: "findingsMetrics",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListFindingsMetricsRequest,
-  ListFindingsMetricsResponse,
-  ListFindingsMetricsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListFindingsMetricsRequest,
-  ) => stream.Stream<
-    ListFindingsMetricsResponse,
-    ListFindingsMetricsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListFindingsMetricsRequest,
-  ) => stream.Stream<
-    AccountFindingsMetric,
-    ListFindingsMetricsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListScansError =
   | AccessDeniedException
@@ -1283,27 +1243,7 @@ export const listScans: API.OperationMethod<
     items: "summaries",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListScansRequest,
-  ListScansResponse,
-  ListScansError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListScansRequest,
-  ) => stream.Stream<
-    ListScansResponse,
-    ListScansError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListScansRequest,
-  ) => stream.Stream<
-    ScanSummary,
-    ListScansError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsForResourceError =
   | AccessDeniedException

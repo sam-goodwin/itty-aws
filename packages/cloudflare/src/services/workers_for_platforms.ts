@@ -10507,7 +10507,8 @@ export const getDispatchNamespaceScriptBinding: API.PaginatedOperationMethod<
   GetDispatchNamespaceScriptBindingRequest,
   GetDispatchNamespaceScriptBindingResponse,
   GetDispatchNamespaceScriptBindingError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  DispatchNamespacesScriptsBindingsGetResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: GetDispatchNamespaceScriptBindingRequest,
@@ -10518,7 +10519,7 @@ export const getDispatchNamespaceScriptBinding: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type GetDispatchNamespaceScriptContentError = CloudflareOpError;
 /** Fetch script content from a script uploaded to a Workers for Platforms namespace. */
@@ -10581,7 +10582,8 @@ export const listDispatchNamespaces: API.PaginatedOperationMethod<
   ListDispatchNamespacesRequest,
   ListDispatchNamespacesResponse,
   ListDispatchNamespacesError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  DispatchNamespacesListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListDispatchNamespacesRequest,
@@ -10592,7 +10594,7 @@ export const listDispatchNamespaces: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListDispatchNamespaceScriptSecretsError = CloudflareOpError;
 /** List secrets bound to a script uploaded to a Workers for Platforms namespace. */
@@ -10600,7 +10602,8 @@ export const listDispatchNamespaceScriptSecrets: API.PaginatedOperationMethod<
   ListDispatchNamespaceScriptSecretsRequest,
   ListDispatchNamespaceScriptSecretsResponse,
   ListDispatchNamespaceScriptSecretsError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  DispatchNamespacesScriptsSecretsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListDispatchNamespaceScriptSecretsRequest,
@@ -10611,7 +10614,7 @@ export const listDispatchNamespaceScriptSecrets: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListDispatchNamespaceScriptTagsError = CloudflareOpError;
 /** Fetch tags from a script uploaded to a Workers for Platforms namespace. */
@@ -10619,7 +10622,8 @@ export const listDispatchNamespaceScriptTags: API.PaginatedOperationMethod<
   ListDispatchNamespaceScriptTagsRequest,
   ListDispatchNamespaceScriptTagsResponse,
   ListDispatchNamespaceScriptTagsError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  string
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListDispatchNamespaceScriptTagsRequest,
@@ -10630,7 +10634,7 @@ export const listDispatchNamespaceScriptTags: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type PatchDispatchNamespaceScriptSettingError = CloudflareOpError;
 /** Patch script metadata, such as bindings. */
@@ -10726,7 +10730,8 @@ export const putDispatchNamespaceScriptTag: API.PaginatedOperationMethod<
   PutDispatchNamespaceScriptTagRequest,
   PutDispatchNamespaceScriptTagResponse,
   PutDispatchNamespaceScriptTagError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  string
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: PutDispatchNamespaceScriptTagRequest,
@@ -10737,4 +10742,4 @@ export const putDispatchNamespaceScriptTag: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;

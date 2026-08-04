@@ -14126,7 +14126,8 @@ export const getRatePlan: API.PaginatedOperationMethod<
   GetRatePlanRequest,
   GetRatePlanResponse,
   GetRatePlanError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  RatePlansGetResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: GetRatePlanRequest,
@@ -14137,7 +14138,7 @@ export const getRatePlan: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type GetSettingError =
   | InvalidZoneIdentifier
@@ -14213,7 +14214,8 @@ export const listPlans: API.PaginatedOperationMethod<
   ListPlansRequest,
   ListPlansResponse,
   ListPlansError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  PlansListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListPlansRequest,
@@ -14224,7 +14226,7 @@ export const listPlans: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListZonesError = CloudflareOpError;
 /** Lists, searches, sorts, and filters your zones. Listing zones across more than 500 accounts is currently not allowed. */
@@ -14232,7 +14234,8 @@ export const listZones: API.PaginatedOperationMethod<
   ListZonesRequest,
   ListZonesResponse,
   ListZonesError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  ListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListZonesRequest,
@@ -14249,7 +14252,7 @@ export const listZones: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type PatchCtAlertingError = CloudflareOpError;
 /** Create or update the Certificate Transparency alerting subscription for a zone. Enables or disables email notifications when certificates are issued for the zone's domains. For Free and Pro zones, the subscription is toggled on or off using the enabled field. Notification emails are sent to all users with SSL permissions on the zone. For Business and Enterprise zones, the emails field is required and controls which addresses receive alerts. Setting emails to an empty list disables the subscription regardless of the enabled field. A maximum of 10 email addresses may be configured. */
@@ -14356,7 +14359,8 @@ export const putCustomNameserver: API.PaginatedOperationMethod<
   PutCustomNameserverRequest,
   PutCustomNameserverResponse,
   PutCustomNameserverError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  string
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: PutCustomNameserverRequest,
@@ -14373,7 +14377,7 @@ export const putCustomNameserver: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type RollbackEnvironmentError = CloudflareOpError;
 /** Roll back zone environment */

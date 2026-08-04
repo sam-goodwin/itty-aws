@@ -1224,7 +1224,8 @@ export const listCuratorsCuratedPackages: API.PaginatedOperationMethod<
   ListCuratorsCuratedPackagesRequest,
   ListCuratedPackagesResponse,
   ListCuratorsCuratedPackagesError,
-  GcpOpContext
+  GcpOpContext,
+  ListCuratedPackagesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCuratorsCuratedPackagesRequest,
   output: ListCuratedPackagesResponse,
@@ -1235,7 +1236,7 @@ export const listCuratorsCuratedPackages: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListCuratorsDataSegmentsError = NotFound | Forbidden | GcpOpError;
 /** List the data segments owned by a curator. */
@@ -1243,7 +1244,8 @@ export const listCuratorsDataSegments: API.PaginatedOperationMethod<
   ListCuratorsDataSegmentsRequest,
   ListDataSegmentsResponse,
   ListCuratorsDataSegmentsError,
-  GcpOpContext
+  GcpOpContext,
+  ListDataSegmentsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCuratorsDataSegmentsRequest,
   output: ListDataSegmentsResponse,
@@ -1254,7 +1256,7 @@ export const listCuratorsDataSegments: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListMediaPlannersError = NotFound | Forbidden | GcpOpError;
 /** Lists all media planner accounts that the caller has access to. For curators, this will return all media planners that have accepted curator terms. For other accounts, attempting to list media planners will return an error. */
@@ -1262,7 +1264,8 @@ export const listMediaPlanners: API.PaginatedOperationMethod<
   ListMediaPlannersRequest,
   ListMediaPlannersResponse,
   ListMediaPlannersError,
-  GcpOpContext
+  GcpOpContext,
+  ListMediaPlannersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMediaPlannersRequest,
   output: ListMediaPlannersResponse,
@@ -1273,7 +1276,7 @@ export const listMediaPlanners: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type PatchCuratorsCuratedPackagesError =
   | NotFound

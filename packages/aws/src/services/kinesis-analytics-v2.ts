@@ -4039,27 +4039,7 @@ export const listApplicationOperations: API.OperationMethod<
     items: "ApplicationOperationInfoList",
     pageSize: "Limit",
   } as const,
-})) as any as API.OperationMethod<
-  ListApplicationOperationsRequest,
-  ListApplicationOperationsResponse,
-  ListApplicationOperationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListApplicationOperationsRequest,
-  ) => stream.Stream<
-    ListApplicationOperationsResponse,
-    ListApplicationOperationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListApplicationOperationsRequest,
-  ) => stream.Stream<
-    ApplicationOperationInfo,
-    ListApplicationOperationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListApplicationsError = InvalidRequestException | CommonErrors;
 /**
@@ -4103,27 +4083,7 @@ export const listApplications: API.OperationMethod<
     items: "ApplicationSummaries",
     pageSize: "Limit",
   } as const,
-})) as any as API.OperationMethod<
-  ListApplicationsRequest,
-  ListApplicationsResponse,
-  ListApplicationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListApplicationsRequest,
-  ) => stream.Stream<
-    ListApplicationsResponse,
-    ListApplicationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListApplicationsRequest,
-  ) => stream.Stream<
-    ApplicationSummary,
-    ListApplicationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListApplicationSnapshotsError =
   | InvalidArgumentException
@@ -4165,27 +4125,7 @@ export const listApplicationSnapshots: API.OperationMethod<
     items: "SnapshotSummaries",
     pageSize: "Limit",
   } as const,
-})) as any as API.OperationMethod<
-  ListApplicationSnapshotsRequest,
-  ListApplicationSnapshotsResponse,
-  ListApplicationSnapshotsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListApplicationSnapshotsRequest,
-  ) => stream.Stream<
-    ListApplicationSnapshotsResponse,
-    ListApplicationSnapshotsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListApplicationSnapshotsRequest,
-  ) => stream.Stream<
-    SnapshotDetails,
-    ListApplicationSnapshotsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListApplicationVersionsError =
   | InvalidArgumentException
@@ -4237,27 +4177,7 @@ export const listApplicationVersions: API.OperationMethod<
     items: "ApplicationVersionSummaries",
     pageSize: "Limit",
   } as const,
-})) as any as API.OperationMethod<
-  ListApplicationVersionsRequest,
-  ListApplicationVersionsResponse,
-  ListApplicationVersionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListApplicationVersionsRequest,
-  ) => stream.Stream<
-    ListApplicationVersionsResponse,
-    ListApplicationVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListApplicationVersionsRequest,
-  ) => stream.Stream<
-    ApplicationVersionSummary,
-    ListApplicationVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsForResourceError =
   | ConcurrentModificationException

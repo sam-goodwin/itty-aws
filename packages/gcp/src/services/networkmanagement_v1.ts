@@ -4909,7 +4909,8 @@ export const listOrganizationsLocations: API.PaginatedOperationMethod<
   ListOrganizationsLocationsRequest,
   ListLocationsResponse,
   ListOrganizationsLocationsError,
-  GcpOpContext
+  GcpOpContext,
+  ListLocationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsLocationsRequest,
   output: ListLocationsResponse,
@@ -4920,7 +4921,7 @@ export const listOrganizationsLocations: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListOrganizationsLocationsGlobalOperationsError =
   | NotFound
@@ -4931,7 +4932,8 @@ export const listOrganizationsLocationsGlobalOperations: API.PaginatedOperationM
   ListOrganizationsLocationsGlobalOperationsRequest,
   ListOperationsResponse,
   ListOrganizationsLocationsGlobalOperationsError,
-  GcpOpContext
+  GcpOpContext,
+  ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsLocationsGlobalOperationsRequest,
   output: ListOperationsResponse,
@@ -4942,7 +4944,7 @@ export const listOrganizationsLocationsGlobalOperations: API.PaginatedOperationM
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListOrganizationsLocationsVpcFlowLogsConfigsError =
   | NotFound
@@ -4953,7 +4955,8 @@ export const listOrganizationsLocationsVpcFlowLogsConfigs: API.PaginatedOperatio
   ListOrganizationsLocationsVpcFlowLogsConfigsRequest,
   ListVpcFlowLogsConfigsResponse,
   ListOrganizationsLocationsVpcFlowLogsConfigsError,
-  GcpOpContext
+  GcpOpContext,
+  ListVpcFlowLogsConfigsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsLocationsVpcFlowLogsConfigsRequest,
   output: ListVpcFlowLogsConfigsResponse,
@@ -4964,7 +4967,7 @@ export const listOrganizationsLocationsVpcFlowLogsConfigs: API.PaginatedOperatio
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsError = NotFound | Forbidden | GcpOpError;
 /** Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the ListLocationsRequest.name field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version. */
@@ -4972,7 +4975,8 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   ListProjectsLocationsRequest,
   ListLocationsResponse,
   ListProjectsLocationsError,
-  GcpOpContext
+  GcpOpContext,
+  ListLocationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsRequest,
   output: ListLocationsResponse,
@@ -4983,7 +4987,7 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsGlobalConnectivityTestsError =
   | NotFound
@@ -4994,7 +4998,8 @@ export const listProjectsLocationsGlobalConnectivityTests: API.PaginatedOperatio
   ListProjectsLocationsGlobalConnectivityTestsRequest,
   ListConnectivityTestsResponse,
   ListProjectsLocationsGlobalConnectivityTestsError,
-  GcpOpContext
+  GcpOpContext,
+  ListConnectivityTestsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsGlobalConnectivityTestsRequest,
   output: ListConnectivityTestsResponse,
@@ -5005,7 +5010,7 @@ export const listProjectsLocationsGlobalConnectivityTests: API.PaginatedOperatio
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsGlobalOperationsError =
   | NotFound
@@ -5016,7 +5021,8 @@ export const listProjectsLocationsGlobalOperations: API.PaginatedOperationMethod
   ListProjectsLocationsGlobalOperationsRequest,
   ListOperationsResponse,
   ListProjectsLocationsGlobalOperationsError,
-  GcpOpContext
+  GcpOpContext,
+  ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsGlobalOperationsRequest,
   output: ListOperationsResponse,
@@ -5027,7 +5033,7 @@ export const listProjectsLocationsGlobalOperations: API.PaginatedOperationMethod
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsNetworkMonitoringProvidersError =
   | NotFound
@@ -5038,7 +5044,8 @@ export const listProjectsLocationsNetworkMonitoringProviders: API.PaginatedOpera
   ListProjectsLocationsNetworkMonitoringProvidersRequest,
   ListNetworkMonitoringProvidersResponse,
   ListProjectsLocationsNetworkMonitoringProvidersError,
-  GcpOpContext
+  GcpOpContext,
+  ListNetworkMonitoringProvidersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsNetworkMonitoringProvidersRequest,
   output: ListNetworkMonitoringProvidersResponse,
@@ -5049,7 +5056,7 @@ export const listProjectsLocationsNetworkMonitoringProviders: API.PaginatedOpera
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsNetworkMonitoringProvidersMonitoringPointsError =
   NotFound | Forbidden | GcpOpError;
@@ -5058,7 +5065,8 @@ export const listProjectsLocationsNetworkMonitoringProvidersMonitoringPoints: AP
   ListProjectsLocationsNetworkMonitoringProvidersMonitoringPointsRequest,
   ListMonitoringPointsResponse,
   ListProjectsLocationsNetworkMonitoringProvidersMonitoringPointsError,
-  GcpOpContext
+  GcpOpContext,
+  ListMonitoringPointsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsNetworkMonitoringProvidersMonitoringPointsRequest,
   output: ListMonitoringPointsResponse,
@@ -5069,7 +5077,7 @@ export const listProjectsLocationsNetworkMonitoringProvidersMonitoringPoints: AP
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsNetworkMonitoringProvidersNetworkPathsError =
   | NotFound
@@ -5080,7 +5088,8 @@ export const listProjectsLocationsNetworkMonitoringProvidersNetworkPaths: API.Pa
   ListProjectsLocationsNetworkMonitoringProvidersNetworkPathsRequest,
   ListNetworkPathsResponse,
   ListProjectsLocationsNetworkMonitoringProvidersNetworkPathsError,
-  GcpOpContext
+  GcpOpContext,
+  ListNetworkPathsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsNetworkMonitoringProvidersNetworkPathsRequest,
   output: ListNetworkPathsResponse,
@@ -5091,7 +5100,7 @@ export const listProjectsLocationsNetworkMonitoringProvidersNetworkPaths: API.Pa
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsNetworkMonitoringProvidersWebPathsError =
   | NotFound
@@ -5102,7 +5111,8 @@ export const listProjectsLocationsNetworkMonitoringProvidersWebPaths: API.Pagina
   ListProjectsLocationsNetworkMonitoringProvidersWebPathsRequest,
   ListWebPathsResponse,
   ListProjectsLocationsNetworkMonitoringProvidersWebPathsError,
-  GcpOpContext
+  GcpOpContext,
+  ListWebPathsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsNetworkMonitoringProvidersWebPathsRequest,
   output: ListWebPathsResponse,
@@ -5113,7 +5123,7 @@ export const listProjectsLocationsNetworkMonitoringProvidersWebPaths: API.Pagina
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsVpcFlowLogsConfigsError =
   | NotFound
@@ -5124,7 +5134,8 @@ export const listProjectsLocationsVpcFlowLogsConfigs: API.PaginatedOperationMeth
   ListProjectsLocationsVpcFlowLogsConfigsRequest,
   ListVpcFlowLogsConfigsResponse,
   ListProjectsLocationsVpcFlowLogsConfigsError,
-  GcpOpContext
+  GcpOpContext,
+  ListVpcFlowLogsConfigsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsVpcFlowLogsConfigsRequest,
   output: ListVpcFlowLogsConfigsResponse,
@@ -5135,7 +5146,7 @@ export const listProjectsLocationsVpcFlowLogsConfigs: API.PaginatedOperationMeth
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type PatchOrganizationsLocationsVpcFlowLogsConfigsError =
   | NotFound
@@ -5204,7 +5215,8 @@ export const queryOrgVpcFlowLogsConfigsProjectsLocationsVpcFlowLogsConfigs: API.
   QueryOrgVpcFlowLogsConfigsProjectsLocationsVpcFlowLogsConfigsRequest,
   QueryOrgVpcFlowLogsConfigsResponse,
   QueryOrgVpcFlowLogsConfigsProjectsLocationsVpcFlowLogsConfigsError,
-  GcpOpContext
+  GcpOpContext,
+  QueryOrgVpcFlowLogsConfigsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: QueryOrgVpcFlowLogsConfigsProjectsLocationsVpcFlowLogsConfigsRequest,
   output: QueryOrgVpcFlowLogsConfigsResponse,
@@ -5215,7 +5227,7 @@ export const queryOrgVpcFlowLogsConfigsProjectsLocationsVpcFlowLogsConfigs: API.
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type RerunProjectsLocationsGlobalConnectivityTestsError =
   | NotFound
@@ -5264,7 +5276,8 @@ export const showEffectiveFlowLogsConfigsProjectsLocationsVpcFlowLogsConfigs: AP
   ShowEffectiveFlowLogsConfigsProjectsLocationsVpcFlowLogsConfigsRequest,
   ShowEffectiveFlowLogsConfigsResponse,
   ShowEffectiveFlowLogsConfigsProjectsLocationsVpcFlowLogsConfigsError,
-  GcpOpContext
+  GcpOpContext,
+  ShowEffectiveFlowLogsConfigsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ShowEffectiveFlowLogsConfigsProjectsLocationsVpcFlowLogsConfigsRequest,
   output: ShowEffectiveFlowLogsConfigsResponse,
@@ -5275,7 +5288,7 @@ export const showEffectiveFlowLogsConfigsProjectsLocationsVpcFlowLogsConfigs: AP
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type TestIamPermissionsProjectsLocationsGlobalConnectivityTestsError =
   | NotFound

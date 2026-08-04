@@ -322,8 +322,15 @@ export function make<
 //#region MakePaginated
 
 /**
- * The element type `.items()` yields: the array element of the page response
- * itself, of its `result` member, or `unknown` when no items shape applies.
+ * STRUCTURAL fallback for the element type `.items()` yields: the array
+ * element of the page response itself, or of its `result` member.
+ *
+ * It can only see shapes it was taught, so any other envelope
+ * (`{ branches: […] }`, `{ data: […] }`, …) lands on `unknown` — which is
+ * why generators pass the item type EXPLICITLY as
+ * {@link PaginatedOperationMethod}'s `Item` argument, resolved from the
+ * pagination trait's `items` path against the response shape. This default
+ * only applies to hand-written operations.
  */
 export type PaginatedItem<A> =
   A extends ReadonlyArray<infer Item>
@@ -339,14 +346,15 @@ export type PaginatedItem<A> =
  * `.pages(input)` streaming every page response and `.items(input)` streaming
  * the individual items across pages.
  */
-export type PaginatedOperationMethod<I, O, E, R> = OperationMethod<
+export type PaginatedOperationMethod<
   I,
   O,
   E,
-  R
-> & {
+  R,
+  Item = PaginatedItem<O>,
+> = OperationMethod<I, O, E, R> & {
   readonly pages: (input: I) => Stream.Stream<O, E, R>;
-  readonly items: (input: I) => Stream.Stream<PaginatedItem<O>, E, R>;
+  readonly items: (input: I) => Stream.Stream<Item, E, R>;
 };
 
 export interface PaginatedOperationConfig<

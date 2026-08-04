@@ -3146,7 +3146,8 @@ export const listLabels: API.PaginatedOperationMethod<
   ListLabelsRequest,
   GoogleAppsDriveLabelsV2betaListLabelsResponse,
   ListLabelsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleAppsDriveLabelsV2betaListLabelsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLabelsRequest,
   output: GoogleAppsDriveLabelsV2betaListLabelsResponse,
@@ -3157,7 +3158,7 @@ export const listLabels: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListLabelsLocksError = NotFound | Forbidden | GcpOpError;
 /** Lists the label locks on a label. */
@@ -3165,7 +3166,8 @@ export const listLabelsLocks: API.PaginatedOperationMethod<
   ListLabelsLocksRequest,
   GoogleAppsDriveLabelsV2betaListLabelLocksResponse,
   ListLabelsLocksError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleAppsDriveLabelsV2betaListLabelLocksResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLabelsLocksRequest,
   output: GoogleAppsDriveLabelsV2betaListLabelLocksResponse,
@@ -3176,7 +3178,7 @@ export const listLabelsLocks: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListLabelsPermissionsError = NotFound | Forbidden | GcpOpError;
 /** Lists a label's permissions. */
@@ -3184,7 +3186,8 @@ export const listLabelsPermissions: API.PaginatedOperationMethod<
   ListLabelsPermissionsRequest,
   GoogleAppsDriveLabelsV2betaListLabelPermissionsResponse,
   ListLabelsPermissionsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleAppsDriveLabelsV2betaListLabelPermissionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLabelsPermissionsRequest,
   output: GoogleAppsDriveLabelsV2betaListLabelPermissionsResponse,
@@ -3195,7 +3198,7 @@ export const listLabelsPermissions: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListLabelsRevisionsLocksError = NotFound | Forbidden | GcpOpError;
 /** Lists the label locks on a label. */
@@ -3203,7 +3206,8 @@ export const listLabelsRevisionsLocks: API.PaginatedOperationMethod<
   ListLabelsRevisionsLocksRequest,
   GoogleAppsDriveLabelsV2betaListLabelLocksResponse,
   ListLabelsRevisionsLocksError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleAppsDriveLabelsV2betaListLabelLocksResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLabelsRevisionsLocksRequest,
   output: GoogleAppsDriveLabelsV2betaListLabelLocksResponse,
@@ -3214,7 +3218,7 @@ export const listLabelsRevisionsLocks: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListLabelsRevisionsPermissionsError =
   | NotFound
@@ -3225,7 +3229,8 @@ export const listLabelsRevisionsPermissions: API.PaginatedOperationMethod<
   ListLabelsRevisionsPermissionsRequest,
   GoogleAppsDriveLabelsV2betaListLabelPermissionsResponse,
   ListLabelsRevisionsPermissionsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleAppsDriveLabelsV2betaListLabelPermissionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLabelsRevisionsPermissionsRequest,
   output: GoogleAppsDriveLabelsV2betaListLabelPermissionsResponse,
@@ -3236,7 +3241,7 @@ export const listLabelsRevisionsPermissions: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type PublishLabelsError =
   | NotFound

@@ -2310,27 +2310,7 @@ export const listConnectionInvitations: API.OperationMethod<
     items: "ConnectionInvitationSummaries",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListConnectionInvitationsRequest,
-  ListConnectionInvitationsResponse,
-  ListConnectionInvitationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListConnectionInvitationsRequest,
-  ) => stream.Stream<
-    ListConnectionInvitationsResponse,
-    ListConnectionInvitationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListConnectionInvitationsRequest,
-  ) => stream.Stream<
-    ConnectionInvitationSummary,
-    ListConnectionInvitationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListConnectionsError =
   | AccessDeniedException
@@ -2379,27 +2359,7 @@ export const listConnections: API.OperationMethod<
     items: "ConnectionSummaries",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListConnectionsRequest,
-  ListConnectionsResponse,
-  ListConnectionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListConnectionsRequest,
-  ) => stream.Stream<
-    ListConnectionsResponse,
-    ListConnectionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListConnectionsRequest,
-  ) => stream.Stream<
-    ConnectionSummary,
-    ListConnectionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListPartnersError =
   | AccessDeniedException
@@ -2447,27 +2407,7 @@ export const listPartners: API.OperationMethod<
     outputToken: "NextToken",
     items: "PartnerSummaryList",
   } as const,
-})) as any as API.OperationMethod<
-  ListPartnersRequest,
-  ListPartnersResponse,
-  ListPartnersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPartnersRequest,
-  ) => stream.Stream<
-    ListPartnersResponse,
-    ListPartnersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPartnersRequest,
-  ) => stream.Stream<
-    PartnerSummary,
-    ListPartnersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsForResourceError =
   | AccessDeniedException

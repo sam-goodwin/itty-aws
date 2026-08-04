@@ -2647,27 +2647,7 @@ export const listEndpointsByPlatformApplication: API.OperationMethod<
     outputToken: "NextToken",
     items: "Endpoints",
   } as const,
-})) as any as API.OperationMethod<
-  ListEndpointsByPlatformApplicationInput,
-  ListEndpointsByPlatformApplicationResponse,
-  ListEndpointsByPlatformApplicationError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEndpointsByPlatformApplicationInput,
-  ) => stream.Stream<
-    ListEndpointsByPlatformApplicationResponse,
-    ListEndpointsByPlatformApplicationError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEndpointsByPlatformApplicationInput,
-  ) => stream.Stream<
-    Endpoint,
-    ListEndpointsByPlatformApplicationError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListOriginationNumbersError =
   | AuthorizationErrorException
@@ -2720,27 +2700,7 @@ export const listOriginationNumbers: API.OperationMethod<
     items: "PhoneNumbers",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListOriginationNumbersRequest,
-  ListOriginationNumbersResult,
-  ListOriginationNumbersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListOriginationNumbersRequest,
-  ) => stream.Stream<
-    ListOriginationNumbersResult,
-    ListOriginationNumbersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListOriginationNumbersRequest,
-  ) => stream.Stream<
-    PhoneNumberInformation,
-    ListOriginationNumbersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListPhoneNumbersOptedOutError =
   | AuthorizationErrorException
@@ -2796,27 +2756,7 @@ export const listPhoneNumbersOptedOut: API.OperationMethod<
     outputToken: "nextToken",
     items: "phoneNumbers",
   } as const,
-})) as any as API.OperationMethod<
-  ListPhoneNumbersOptedOutInput,
-  ListPhoneNumbersOptedOutResponse,
-  ListPhoneNumbersOptedOutError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPhoneNumbersOptedOutInput,
-  ) => stream.Stream<
-    ListPhoneNumbersOptedOutResponse,
-    ListPhoneNumbersOptedOutError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPhoneNumbersOptedOutInput,
-  ) => stream.Stream<
-    PhoneNumber,
-    ListPhoneNumbersOptedOutError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListPlatformApplicationsError =
   | AuthorizationErrorException
@@ -2872,27 +2812,7 @@ export const listPlatformApplications: API.OperationMethod<
     outputToken: "NextToken",
     items: "PlatformApplications",
   } as const,
-})) as any as API.OperationMethod<
-  ListPlatformApplicationsInput,
-  ListPlatformApplicationsResponse,
-  ListPlatformApplicationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPlatformApplicationsInput,
-  ) => stream.Stream<
-    ListPlatformApplicationsResponse,
-    ListPlatformApplicationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPlatformApplicationsInput,
-  ) => stream.Stream<
-    PlatformApplication,
-    ListPlatformApplicationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListSMSSandboxPhoneNumbersError =
   | AuthorizationErrorException
@@ -2953,27 +2873,7 @@ export const listSMSSandboxPhoneNumbers: API.OperationMethod<
     items: "PhoneNumbers",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListSMSSandboxPhoneNumbersInput,
-  ListSMSSandboxPhoneNumbersResult,
-  ListSMSSandboxPhoneNumbersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSMSSandboxPhoneNumbersInput,
-  ) => stream.Stream<
-    ListSMSSandboxPhoneNumbersResult,
-    ListSMSSandboxPhoneNumbersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSMSSandboxPhoneNumbersInput,
-  ) => stream.Stream<
-    SMSSandboxPhoneNumber,
-    ListSMSSandboxPhoneNumbersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListSubscriptionsError =
   | AuthorizationErrorException
@@ -3024,27 +2924,7 @@ export const listSubscriptions: API.OperationMethod<
     outputToken: "NextToken",
     items: "Subscriptions",
   } as const,
-})) as any as API.OperationMethod<
-  ListSubscriptionsInput,
-  ListSubscriptionsResponse,
-  ListSubscriptionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSubscriptionsInput,
-  ) => stream.Stream<
-    ListSubscriptionsResponse,
-    ListSubscriptionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSubscriptionsInput,
-  ) => stream.Stream<
-    Subscription,
-    ListSubscriptionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListSubscriptionsByTopicError =
   | AuthorizationErrorException
@@ -3101,27 +2981,7 @@ export const listSubscriptionsByTopic: API.OperationMethod<
     outputToken: "NextToken",
     items: "Subscriptions",
   } as const,
-})) as any as API.OperationMethod<
-  ListSubscriptionsByTopicInput,
-  ListSubscriptionsByTopicResponse,
-  ListSubscriptionsByTopicError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSubscriptionsByTopicInput,
-  ) => stream.Stream<
-    ListSubscriptionsByTopicResponse,
-    ListSubscriptionsByTopicError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSubscriptionsByTopicInput,
-  ) => stream.Stream<
-    Subscription,
-    ListSubscriptionsByTopicError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsForResourceError =
   | AuthorizationErrorException
@@ -3207,27 +3067,7 @@ export const listTopics: API.OperationMethod<
     outputToken: "NextToken",
     items: "Topics",
   } as const,
-})) as any as API.OperationMethod<
-  ListTopicsInput,
-  ListTopicsResponse,
-  ListTopicsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTopicsInput,
-  ) => stream.Stream<
-    ListTopicsResponse,
-    ListTopicsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTopicsInput,
-  ) => stream.Stream<
-    Topic,
-    ListTopicsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type OptInPhoneNumberError =
   | AuthorizationErrorException

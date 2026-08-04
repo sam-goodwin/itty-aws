@@ -379,7 +379,8 @@ export const listPlatforms: API.PaginatedOperationMethod<
   ListPlatformsRequest,
   ListPlatformsResponse,
   ListPlatformsError,
-  GcpOpContext
+  GcpOpContext,
+  ListPlatformsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPlatformsRequest,
   output: ListPlatformsResponse,
@@ -390,7 +391,7 @@ export const listPlatforms: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListPlatformsChannelsError = NotFound | Forbidden | GcpOpError;
 /** Returns list of channels that are available for a given platform. */
@@ -398,7 +399,8 @@ export const listPlatformsChannels: API.PaginatedOperationMethod<
   ListPlatformsChannelsRequest,
   ListChannelsResponse,
   ListPlatformsChannelsError,
-  GcpOpContext
+  GcpOpContext,
+  ListChannelsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPlatformsChannelsRequest,
   output: ListChannelsResponse,
@@ -409,7 +411,7 @@ export const listPlatformsChannels: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListPlatformsChannelsVersionsError =
   | NotFound
@@ -420,7 +422,8 @@ export const listPlatformsChannelsVersions: API.PaginatedOperationMethod<
   ListPlatformsChannelsVersionsRequest,
   ListVersionsResponse,
   ListPlatformsChannelsVersionsError,
-  GcpOpContext
+  GcpOpContext,
+  ListVersionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPlatformsChannelsVersionsRequest,
   output: ListVersionsResponse,
@@ -431,7 +434,7 @@ export const listPlatformsChannelsVersions: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListPlatformsChannelsVersionsReleasesError =
   | NotFound
@@ -442,7 +445,8 @@ export const listPlatformsChannelsVersionsReleases: API.PaginatedOperationMethod
   ListPlatformsChannelsVersionsReleasesRequest,
   ListReleasesResponse,
   ListPlatformsChannelsVersionsReleasesError,
-  GcpOpContext
+  GcpOpContext,
+  ListReleasesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPlatformsChannelsVersionsReleasesRequest,
   output: ListReleasesResponse,
@@ -453,4 +457,4 @@ export const listPlatformsChannelsVersionsReleases: API.PaginatedOperationMethod
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;

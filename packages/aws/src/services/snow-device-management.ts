@@ -1090,27 +1090,7 @@ export const listDeviceResources: API.OperationMethod<
     items: "resources",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListDeviceResourcesInput,
-  ListDeviceResourcesOutput,
-  ListDeviceResourcesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDeviceResourcesInput,
-  ) => stream.Stream<
-    ListDeviceResourcesOutput,
-    ListDeviceResourcesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDeviceResourcesInput,
-  ) => stream.Stream<
-    ResourceSummary,
-    ListDeviceResourcesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListDevicesError =
   | AccessDeniedException
@@ -1160,27 +1140,7 @@ export const listDevices: API.OperationMethod<
     items: "devices",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListDevicesInput,
-  ListDevicesOutput,
-  ListDevicesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDevicesInput,
-  ) => stream.Stream<
-    ListDevicesOutput,
-    ListDevicesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDevicesInput,
-  ) => stream.Stream<
-    DeviceSummary,
-    ListDevicesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListExecutionsError =
   | AccessDeniedException
@@ -1231,27 +1191,7 @@ export const listExecutions: API.OperationMethod<
     items: "executions",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListExecutionsInput,
-  ListExecutionsOutput,
-  ListExecutionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListExecutionsInput,
-  ) => stream.Stream<
-    ListExecutionsOutput,
-    ListExecutionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListExecutionsInput,
-  ) => stream.Stream<
-    ExecutionSummary,
-    ListExecutionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsForResourceError =
   | InternalServerException
@@ -1326,27 +1266,7 @@ export const listTasks: API.OperationMethod<
     items: "tasks",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListTasksInput,
-  ListTasksOutput,
-  ListTasksError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTasksInput,
-  ) => stream.Stream<
-    ListTasksOutput,
-    ListTasksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTasksInput,
-  ) => stream.Stream<
-    TaskSummary,
-    ListTasksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type TagResourceError =
   | InternalServerException

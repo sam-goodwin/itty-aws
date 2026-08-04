@@ -710,27 +710,7 @@ export const listAttachPoints: API.OperationMethod<
     items: "attachPoints",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListAttachPointsRequest,
-  ListAttachPointsResponse,
-  ListAttachPointsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAttachPointsRequest,
-  ) => stream.Stream<
-    ListAttachPointsResponse,
-    ListAttachPointsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAttachPointsRequest,
-  ) => stream.Stream<
-    AttachPointDescriptor,
-    ListAttachPointsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListConnectionsError = CommonErrors;
 /**
@@ -781,27 +761,7 @@ export const listConnections: API.OperationMethod<
     items: "connections",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListConnectionsRequest,
-  ListConnectionsResponse,
-  ListConnectionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListConnectionsRequest,
-  ) => stream.Stream<
-    ListConnectionsResponse,
-    ListConnectionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListConnectionsRequest,
-  ) => stream.Stream<
-    ConnectionSummary,
-    ListConnectionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListEnvironmentsError = CommonErrors;
 /**
@@ -840,27 +800,7 @@ export const listEnvironments: API.OperationMethod<
     items: "environments",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListEnvironmentsRequest,
-  ListEnvironmentsResponse,
-  ListEnvironmentsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEnvironmentsRequest,
-  ) => stream.Stream<
-    ListEnvironmentsResponse,
-    ListEnvironmentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEnvironmentsRequest,
-  ) => stream.Stream<
-    Environment,
-    ListEnvironmentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsForResourceError = CommonErrors;
 /**

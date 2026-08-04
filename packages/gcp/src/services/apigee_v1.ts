@@ -22237,7 +22237,8 @@ export const listOrganizationsApimServiceExtensions: API.PaginatedOperationMetho
   ListOrganizationsApimServiceExtensionsRequest,
   GoogleCloudApigeeV1ListApimServiceExtensionsResponse,
   ListOrganizationsApimServiceExtensionsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudApigeeV1ListApimServiceExtensionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsApimServiceExtensionsRequest,
   output: GoogleCloudApigeeV1ListApimServiceExtensionsResponse,
@@ -22248,7 +22249,7 @@ export const listOrganizationsApimServiceExtensions: API.PaginatedOperationMetho
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListOrganizationsApiproductsError =
   | NotFound
@@ -22328,7 +22329,8 @@ export const listOrganizationsApisDebugsessions: API.PaginatedOperationMethod<
   ListOrganizationsApisDebugsessionsRequest,
   GoogleCloudApigeeV1ListApiDebugSessionsResponse,
   ListOrganizationsApisDebugsessionsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudApigeeV1ListApiDebugSessionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsApisDebugsessionsRequest,
   output: GoogleCloudApigeeV1ListApiDebugSessionsResponse,
@@ -22339,7 +22341,7 @@ export const listOrganizationsApisDebugsessions: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListOrganizationsApisDeploymentsError =
   | NotFound
@@ -22368,7 +22370,8 @@ export const listOrganizationsApisKeyvaluemapsEntries: API.PaginatedOperationMet
   ListOrganizationsApisKeyvaluemapsEntriesRequest,
   GoogleCloudApigeeV1ListKeyValueEntriesResponse,
   ListOrganizationsApisKeyvaluemapsEntriesError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudApigeeV1ListKeyValueEntriesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsApisKeyvaluemapsEntriesRequest,
   output: GoogleCloudApigeeV1ListKeyValueEntriesResponse,
@@ -22379,7 +22382,7 @@ export const listOrganizationsApisKeyvaluemapsEntries: API.PaginatedOperationMet
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListOrganizationsApisRevisionsDeploymentsError =
   | NotFound
@@ -22405,7 +22408,8 @@ export const listOrganizationsAppgroups: API.PaginatedOperationMethod<
   ListOrganizationsAppgroupsRequest,
   GoogleCloudApigeeV1ListAppGroupsResponse,
   ListOrganizationsAppgroupsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudApigeeV1ListAppGroupsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsAppgroupsRequest,
   output: GoogleCloudApigeeV1ListAppGroupsResponse,
@@ -22416,7 +22420,7 @@ export const listOrganizationsAppgroups: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListOrganizationsAppgroupsAppsError =
   | NotFound
@@ -22427,7 +22431,8 @@ export const listOrganizationsAppgroupsApps: API.PaginatedOperationMethod<
   ListOrganizationsAppgroupsAppsRequest,
   GoogleCloudApigeeV1ListAppGroupAppsResponse,
   ListOrganizationsAppgroupsAppsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudApigeeV1ListAppGroupAppsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsAppgroupsAppsRequest,
   output: GoogleCloudApigeeV1ListAppGroupAppsResponse,
@@ -22438,7 +22443,7 @@ export const listOrganizationsAppgroupsApps: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListOrganizationsAppgroupsSubscriptionsError =
   | NotFound
@@ -22449,7 +22454,8 @@ export const listOrganizationsAppgroupsSubscriptions: API.PaginatedOperationMeth
   ListOrganizationsAppgroupsSubscriptionsRequest,
   GoogleCloudApigeeV1ListAppGroupSubscriptionsResponse,
   ListOrganizationsAppgroupsSubscriptionsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudApigeeV1ListAppGroupSubscriptionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsAppgroupsSubscriptionsRequest,
   output: GoogleCloudApigeeV1ListAppGroupSubscriptionsResponse,
@@ -22460,7 +22466,7 @@ export const listOrganizationsAppgroupsSubscriptions: API.PaginatedOperationMeth
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListOrganizationsAppsError = NotFound | Forbidden | GcpOpError;
 /** Lists IDs of apps within an organization that have the specified app status (approved or revoked) or are of the specified app type (developer or company). */
@@ -22468,7 +22474,8 @@ export const listOrganizationsApps: API.PaginatedOperationMethod<
   ListOrganizationsAppsRequest,
   GoogleCloudApigeeV1ListAppsResponse,
   ListOrganizationsAppsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudApigeeV1ListAppsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsAppsRequest,
   output: GoogleCloudApigeeV1ListAppsResponse,
@@ -22479,7 +22486,7 @@ export const listOrganizationsApps: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListOrganizationsDatacollectorsError =
   | NotFound
@@ -22490,7 +22497,8 @@ export const listOrganizationsDatacollectors: API.PaginatedOperationMethod<
   ListOrganizationsDatacollectorsRequest,
   GoogleCloudApigeeV1ListDataCollectorsResponse,
   ListOrganizationsDatacollectorsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudApigeeV1ListDataCollectorsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsDatacollectorsRequest,
   output: GoogleCloudApigeeV1ListDataCollectorsResponse,
@@ -22501,7 +22509,7 @@ export const listOrganizationsDatacollectors: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListOrganizationsDeploymentsError =
   | NotFound
@@ -22617,7 +22625,8 @@ export const listOrganizationsDnsZones: API.PaginatedOperationMethod<
   ListOrganizationsDnsZonesRequest,
   GoogleCloudApigeeV1ListDnsZonesResponse,
   ListOrganizationsDnsZonesError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudApigeeV1ListDnsZonesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsDnsZonesRequest,
   output: GoogleCloudApigeeV1ListDnsZonesResponse,
@@ -22628,7 +22637,7 @@ export const listOrganizationsDnsZones: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListOrganizationsEndpointAttachmentsError =
   | NotFound
@@ -22639,7 +22648,8 @@ export const listOrganizationsEndpointAttachments: API.PaginatedOperationMethod<
   ListOrganizationsEndpointAttachmentsRequest,
   GoogleCloudApigeeV1ListEndpointAttachmentsResponse,
   ListOrganizationsEndpointAttachmentsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudApigeeV1ListEndpointAttachmentsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsEndpointAttachmentsRequest,
   output: GoogleCloudApigeeV1ListEndpointAttachmentsResponse,
@@ -22650,7 +22660,7 @@ export const listOrganizationsEndpointAttachments: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListOrganizationsEnvgroupsError = NotFound | Forbidden | GcpOpError;
 /** Lists all environment groups. */
@@ -22658,7 +22668,8 @@ export const listOrganizationsEnvgroups: API.PaginatedOperationMethod<
   ListOrganizationsEnvgroupsRequest,
   GoogleCloudApigeeV1ListEnvironmentGroupsResponse,
   ListOrganizationsEnvgroupsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudApigeeV1ListEnvironmentGroupsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsEnvgroupsRequest,
   output: GoogleCloudApigeeV1ListEnvironmentGroupsResponse,
@@ -22669,7 +22680,7 @@ export const listOrganizationsEnvgroups: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListOrganizationsEnvgroupsAttachmentsError =
   | NotFound
@@ -22680,7 +22691,8 @@ export const listOrganizationsEnvgroupsAttachments: API.PaginatedOperationMethod
   ListOrganizationsEnvgroupsAttachmentsRequest,
   GoogleCloudApigeeV1ListEnvironmentGroupAttachmentsResponse,
   ListOrganizationsEnvgroupsAttachmentsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudApigeeV1ListEnvironmentGroupAttachmentsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsEnvgroupsAttachmentsRequest,
   output: GoogleCloudApigeeV1ListEnvironmentGroupAttachmentsResponse,
@@ -22691,7 +22703,7 @@ export const listOrganizationsEnvgroupsAttachments: API.PaginatedOperationMethod
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListOrganizationsEnvironmentsAnalyticsExportsError =
   | NotFound
@@ -22738,7 +22750,8 @@ export const listOrganizationsEnvironmentsApisRevisionsDebugsessions: API.Pagina
   ListOrganizationsEnvironmentsApisRevisionsDebugsessionsRequest,
   GoogleCloudApigeeV1ListDebugSessionsResponse,
   ListOrganizationsEnvironmentsApisRevisionsDebugsessionsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudApigeeV1ListDebugSessionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsEnvironmentsApisRevisionsDebugsessionsRequest,
   output: GoogleCloudApigeeV1ListDebugSessionsResponse,
@@ -22749,7 +22762,7 @@ export const listOrganizationsEnvironmentsApisRevisionsDebugsessions: API.Pagina
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListOrganizationsEnvironmentsArchiveDeploymentsError =
   | NotFound
@@ -22760,7 +22773,8 @@ export const listOrganizationsEnvironmentsArchiveDeployments: API.PaginatedOpera
   ListOrganizationsEnvironmentsArchiveDeploymentsRequest,
   GoogleCloudApigeeV1ListArchiveDeploymentsResponse,
   ListOrganizationsEnvironmentsArchiveDeploymentsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudApigeeV1ListArchiveDeploymentsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsEnvironmentsArchiveDeploymentsRequest,
   output: GoogleCloudApigeeV1ListArchiveDeploymentsResponse,
@@ -22771,7 +22785,7 @@ export const listOrganizationsEnvironmentsArchiveDeployments: API.PaginatedOpera
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListOrganizationsEnvironmentsDeploymentsError =
   | NotFound
@@ -22800,7 +22814,8 @@ export const listOrganizationsEnvironmentsKeyvaluemapsEntries: API.PaginatedOper
   ListOrganizationsEnvironmentsKeyvaluemapsEntriesRequest,
   GoogleCloudApigeeV1ListKeyValueEntriesResponse,
   ListOrganizationsEnvironmentsKeyvaluemapsEntriesError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudApigeeV1ListKeyValueEntriesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsEnvironmentsKeyvaluemapsEntriesRequest,
   output: GoogleCloudApigeeV1ListKeyValueEntriesResponse,
@@ -22811,7 +22826,7 @@ export const listOrganizationsEnvironmentsKeyvaluemapsEntries: API.PaginatedOper
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListOrganizationsEnvironmentsQueriesError =
   | NotFound
@@ -22858,7 +22873,8 @@ export const listOrganizationsEnvironmentsSecurityActions: API.PaginatedOperatio
   ListOrganizationsEnvironmentsSecurityActionsRequest,
   GoogleCloudApigeeV1ListSecurityActionsResponse,
   ListOrganizationsEnvironmentsSecurityActionsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudApigeeV1ListSecurityActionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsEnvironmentsSecurityActionsRequest,
   output: GoogleCloudApigeeV1ListSecurityActionsResponse,
@@ -22869,7 +22885,7 @@ export const listOrganizationsEnvironmentsSecurityActions: API.PaginatedOperatio
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListOrganizationsEnvironmentsSecurityIncidentsError =
   | NotFound
@@ -22880,7 +22896,8 @@ export const listOrganizationsEnvironmentsSecurityIncidents: API.PaginatedOperat
   ListOrganizationsEnvironmentsSecurityIncidentsRequest,
   GoogleCloudApigeeV1ListSecurityIncidentsResponse,
   ListOrganizationsEnvironmentsSecurityIncidentsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudApigeeV1ListSecurityIncidentsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsEnvironmentsSecurityIncidentsRequest,
   output: GoogleCloudApigeeV1ListSecurityIncidentsResponse,
@@ -22891,7 +22908,7 @@ export const listOrganizationsEnvironmentsSecurityIncidents: API.PaginatedOperat
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListOrganizationsEnvironmentsSecurityReportsError =
   | NotFound
@@ -22902,7 +22919,8 @@ export const listOrganizationsEnvironmentsSecurityReports: API.PaginatedOperatio
   ListOrganizationsEnvironmentsSecurityReportsRequest,
   GoogleCloudApigeeV1ListSecurityReportsResponse,
   ListOrganizationsEnvironmentsSecurityReportsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudApigeeV1ListSecurityReportsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsEnvironmentsSecurityReportsRequest,
   output: GoogleCloudApigeeV1ListSecurityReportsResponse,
@@ -22913,7 +22931,7 @@ export const listOrganizationsEnvironmentsSecurityReports: API.PaginatedOperatio
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListOrganizationsEnvironmentsSharedflowsDeploymentsError =
   | NotFound
@@ -22942,7 +22960,8 @@ export const listOrganizationsEnvironmentsTraceConfigOverrides: API.PaginatedOpe
   ListOrganizationsEnvironmentsTraceConfigOverridesRequest,
   GoogleCloudApigeeV1ListTraceConfigOverridesResponse,
   ListOrganizationsEnvironmentsTraceConfigOverridesError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudApigeeV1ListTraceConfigOverridesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsEnvironmentsTraceConfigOverridesRequest,
   output: GoogleCloudApigeeV1ListTraceConfigOverridesResponse,
@@ -22953,7 +22972,7 @@ export const listOrganizationsEnvironmentsTraceConfigOverrides: API.PaginatedOpe
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListOrganizationsHostQueriesError =
   | NotFound
@@ -22982,7 +23001,8 @@ export const listOrganizationsHostSecurityReports: API.PaginatedOperationMethod<
   ListOrganizationsHostSecurityReportsRequest,
   GoogleCloudApigeeV1ListSecurityReportsResponse,
   ListOrganizationsHostSecurityReportsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudApigeeV1ListSecurityReportsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsHostSecurityReportsRequest,
   output: GoogleCloudApigeeV1ListSecurityReportsResponse,
@@ -22993,7 +23013,7 @@ export const listOrganizationsHostSecurityReports: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListOrganizationsInstancesError = NotFound | Forbidden | GcpOpError;
 /** Lists all Apigee runtime instances for the organization. **Note:** Not supported for Apigee hybrid. */
@@ -23001,7 +23021,8 @@ export const listOrganizationsInstances: API.PaginatedOperationMethod<
   ListOrganizationsInstancesRequest,
   GoogleCloudApigeeV1ListInstancesResponse,
   ListOrganizationsInstancesError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudApigeeV1ListInstancesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsInstancesRequest,
   output: GoogleCloudApigeeV1ListInstancesResponse,
@@ -23012,7 +23033,7 @@ export const listOrganizationsInstances: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListOrganizationsInstancesAttachmentsError =
   | NotFound
@@ -23023,7 +23044,8 @@ export const listOrganizationsInstancesAttachments: API.PaginatedOperationMethod
   ListOrganizationsInstancesAttachmentsRequest,
   GoogleCloudApigeeV1ListInstanceAttachmentsResponse,
   ListOrganizationsInstancesAttachmentsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudApigeeV1ListInstanceAttachmentsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsInstancesAttachmentsRequest,
   output: GoogleCloudApigeeV1ListInstanceAttachmentsResponse,
@@ -23034,7 +23056,7 @@ export const listOrganizationsInstancesAttachments: API.PaginatedOperationMethod
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListOrganizationsInstancesNatAddressesError =
   | NotFound
@@ -23045,7 +23067,8 @@ export const listOrganizationsInstancesNatAddresses: API.PaginatedOperationMetho
   ListOrganizationsInstancesNatAddressesRequest,
   GoogleCloudApigeeV1ListNatAddressesResponse,
   ListOrganizationsInstancesNatAddressesError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudApigeeV1ListNatAddressesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsInstancesNatAddressesRequest,
   output: GoogleCloudApigeeV1ListNatAddressesResponse,
@@ -23056,7 +23079,7 @@ export const listOrganizationsInstancesNatAddresses: API.PaginatedOperationMetho
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListOrganizationsKeyvaluemapsEntriesError =
   | NotFound
@@ -23067,7 +23090,8 @@ export const listOrganizationsKeyvaluemapsEntries: API.PaginatedOperationMethod<
   ListOrganizationsKeyvaluemapsEntriesRequest,
   GoogleCloudApigeeV1ListKeyValueEntriesResponse,
   ListOrganizationsKeyvaluemapsEntriesError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudApigeeV1ListKeyValueEntriesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsKeyvaluemapsEntriesRequest,
   output: GoogleCloudApigeeV1ListKeyValueEntriesResponse,
@@ -23078,7 +23102,7 @@ export const listOrganizationsKeyvaluemapsEntries: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListOrganizationsOperationsError =
   | NotFound
@@ -23089,7 +23113,8 @@ export const listOrganizationsOperations: API.PaginatedOperationMethod<
   ListOrganizationsOperationsRequest,
   GoogleLongrunningListOperationsResponse,
   ListOrganizationsOperationsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleLongrunningListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsOperationsRequest,
   output: GoogleLongrunningListOperationsResponse,
@@ -23100,7 +23125,7 @@ export const listOrganizationsOperations: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListOrganizationsReportsError = NotFound | Forbidden | GcpOpError;
 /** Return a list of Custom Reports */
@@ -23126,7 +23151,8 @@ export const listOrganizationsSecurityFeedback: API.PaginatedOperationMethod<
   ListOrganizationsSecurityFeedbackRequest,
   GoogleCloudApigeeV1ListSecurityFeedbackResponse,
   ListOrganizationsSecurityFeedbackError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudApigeeV1ListSecurityFeedbackResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsSecurityFeedbackRequest,
   output: GoogleCloudApigeeV1ListSecurityFeedbackResponse,
@@ -23137,7 +23163,7 @@ export const listOrganizationsSecurityFeedback: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListOrganizationsSecurityMonitoringConditionsError =
   | NotFound
@@ -23148,7 +23174,8 @@ export const listOrganizationsSecurityMonitoringConditions: API.PaginatedOperati
   ListOrganizationsSecurityMonitoringConditionsRequest,
   GoogleCloudApigeeV1ListSecurityMonitoringConditionsResponse,
   ListOrganizationsSecurityMonitoringConditionsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudApigeeV1ListSecurityMonitoringConditionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsSecurityMonitoringConditionsRequest,
   output: GoogleCloudApigeeV1ListSecurityMonitoringConditionsResponse,
@@ -23159,7 +23186,7 @@ export const listOrganizationsSecurityMonitoringConditions: API.PaginatedOperati
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListOrganizationsSecurityProfilesError =
   | NotFound
@@ -23170,7 +23197,8 @@ export const listOrganizationsSecurityProfiles: API.PaginatedOperationMethod<
   ListOrganizationsSecurityProfilesRequest,
   GoogleCloudApigeeV1ListSecurityProfilesResponse,
   ListOrganizationsSecurityProfilesError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudApigeeV1ListSecurityProfilesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsSecurityProfilesRequest,
   output: GoogleCloudApigeeV1ListSecurityProfilesResponse,
@@ -23181,7 +23209,7 @@ export const listOrganizationsSecurityProfiles: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListOrganizationsSecurityProfilesV2Error =
   | NotFound
@@ -23192,7 +23220,8 @@ export const listOrganizationsSecurityProfilesV2: API.PaginatedOperationMethod<
   ListOrganizationsSecurityProfilesV2Request,
   GoogleCloudApigeeV1ListSecurityProfilesV2Response,
   ListOrganizationsSecurityProfilesV2Error,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudApigeeV1ListSecurityProfilesV2Response
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsSecurityProfilesV2Request,
   output: GoogleCloudApigeeV1ListSecurityProfilesV2Response,
@@ -23203,7 +23232,7 @@ export const listOrganizationsSecurityProfilesV2: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListOrganizationsSharedflowsError =
   | NotFound
@@ -23286,7 +23315,8 @@ export const listOrganizationsSitesApidocs: API.PaginatedOperationMethod<
   ListOrganizationsSitesApidocsRequest,
   GoogleCloudApigeeV1ListApiDocsResponse,
   ListOrganizationsSitesApidocsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudApigeeV1ListApiDocsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsSitesApidocsRequest,
   output: GoogleCloudApigeeV1ListApiDocsResponse,
@@ -23297,7 +23327,7 @@ export const listOrganizationsSitesApidocs: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListOrganizationsSpacesError = NotFound | Forbidden | GcpOpError;
 /** Lists spaces under an organization. */
@@ -23305,7 +23335,8 @@ export const listOrganizationsSpaces: API.PaginatedOperationMethod<
   ListOrganizationsSpacesRequest,
   GoogleCloudApigeeV1ListSpacesResponse,
   ListOrganizationsSpacesError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudApigeeV1ListSpacesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsSpacesRequest,
   output: GoogleCloudApigeeV1ListSpacesResponse,
@@ -23316,7 +23347,7 @@ export const listOrganizationsSpaces: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListRevisionsOrganizationsSecurityProfilesError =
   | NotFound
@@ -23327,7 +23358,8 @@ export const listRevisionsOrganizationsSecurityProfiles: API.PaginatedOperationM
   ListRevisionsOrganizationsSecurityProfilesRequest,
   GoogleCloudApigeeV1ListSecurityProfileRevisionsResponse,
   ListRevisionsOrganizationsSecurityProfilesError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudApigeeV1ListSecurityProfileRevisionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRevisionsOrganizationsSecurityProfilesRequest,
   output: GoogleCloudApigeeV1ListSecurityProfileRevisionsResponse,
@@ -23338,7 +23370,7 @@ export const listRevisionsOrganizationsSecurityProfiles: API.PaginatedOperationM
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ModifyEnvironmentOrganizationsEnvironmentsError =
   | NotFound

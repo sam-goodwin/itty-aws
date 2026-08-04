@@ -483,7 +483,8 @@ export const listProjectsModels: API.PaginatedOperationMethod<
   ListProjectsModelsRequest,
   ListModelsResponse,
   ListProjectsModelsError,
-  GcpOpContext
+  GcpOpContext,
+  ListModelsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsModelsRequest,
   output: ListModelsResponse,
@@ -494,7 +495,7 @@ export const listProjectsModels: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type PatchProjectsModelsError =
   | NotFound

@@ -1932,27 +1932,7 @@ export const getInstancesHealthStatus: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  GetInstancesHealthStatusRequest,
-  GetInstancesHealthStatusResponse,
-  GetInstancesHealthStatusError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetInstancesHealthStatusRequest,
-  ) => stream.Stream<
-    GetInstancesHealthStatusResponse,
-    GetInstancesHealthStatusError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetInstancesHealthStatusRequest,
-  ) => stream.Stream<
-    unknown,
-    GetInstancesHealthStatusError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type GetNamespaceError = InvalidInput | NamespaceNotFound | CommonErrors;
 /**
@@ -2069,27 +2049,7 @@ export const listInstances: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListInstancesRequest,
-  ListInstancesResponse,
-  ListInstancesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListInstancesRequest,
-  ) => stream.Stream<
-    ListInstancesResponse,
-    ListInstancesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListInstancesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListInstancesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListNamespacesError = InvalidInput | CommonErrors;
 /**
@@ -2127,27 +2087,7 @@ export const listNamespaces: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListNamespacesRequest,
-  ListNamespacesResponse,
-  ListNamespacesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListNamespacesRequest,
-  ) => stream.Stream<
-    ListNamespacesResponse,
-    ListNamespacesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListNamespacesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListNamespacesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListOperationsError = InvalidInput | CommonErrors;
 /**
@@ -2185,27 +2125,7 @@ export const listOperations: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListOperationsRequest,
-  ListOperationsResponse,
-  ListOperationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListOperationsRequest,
-  ) => stream.Stream<
-    ListOperationsResponse,
-    ListOperationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListOperationsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListOperationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListServicesError = InvalidInput | CommonErrors;
 /**
@@ -2244,27 +2164,7 @@ export const listServices: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListServicesRequest,
-  ListServicesResponse,
-  ListServicesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListServicesRequest,
-  ) => stream.Stream<
-    ListServicesResponse,
-    ListServicesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListServicesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListServicesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsForResourceError =
   | InvalidInput

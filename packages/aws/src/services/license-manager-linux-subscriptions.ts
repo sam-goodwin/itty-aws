@@ -734,27 +734,7 @@ export const listLinuxSubscriptionInstances: API.OperationMethod<
     items: "Instances",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListLinuxSubscriptionInstancesRequest,
-  ListLinuxSubscriptionInstancesResponse,
-  ListLinuxSubscriptionInstancesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListLinuxSubscriptionInstancesRequest,
-  ) => stream.Stream<
-    ListLinuxSubscriptionInstancesResponse,
-    ListLinuxSubscriptionInstancesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListLinuxSubscriptionInstancesRequest,
-  ) => stream.Stream<
-    Instance,
-    ListLinuxSubscriptionInstancesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListLinuxSubscriptionsError =
   | InternalServerException
@@ -799,27 +779,7 @@ export const listLinuxSubscriptions: API.OperationMethod<
     items: "Subscriptions",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListLinuxSubscriptionsRequest,
-  ListLinuxSubscriptionsResponse,
-  ListLinuxSubscriptionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListLinuxSubscriptionsRequest,
-  ) => stream.Stream<
-    ListLinuxSubscriptionsResponse,
-    ListLinuxSubscriptionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListLinuxSubscriptionsRequest,
-  ) => stream.Stream<
-    Subscription,
-    ListLinuxSubscriptionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListRegisteredSubscriptionProvidersError =
   | InternalServerException
@@ -862,27 +822,7 @@ export const listRegisteredSubscriptionProviders: API.OperationMethod<
     items: "RegisteredSubscriptionProviders",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListRegisteredSubscriptionProvidersRequest,
-  ListRegisteredSubscriptionProvidersResponse,
-  ListRegisteredSubscriptionProvidersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRegisteredSubscriptionProvidersRequest,
-  ) => stream.Stream<
-    ListRegisteredSubscriptionProvidersResponse,
-    ListRegisteredSubscriptionProvidersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRegisteredSubscriptionProvidersRequest,
-  ) => stream.Stream<
-    RegisteredSubscriptionProvider,
-    ListRegisteredSubscriptionProvidersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsForResourceError =
   | InternalServerException

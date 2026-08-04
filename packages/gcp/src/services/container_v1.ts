@@ -8782,7 +8782,8 @@ export const listProjectsAggregatedUsableSubnetworks: API.PaginatedOperationMeth
   ListProjectsAggregatedUsableSubnetworksRequest,
   ListUsableSubnetworksResponse,
   ListProjectsAggregatedUsableSubnetworksError,
-  GcpOpContext
+  GcpOpContext,
+  ListUsableSubnetworksResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsAggregatedUsableSubnetworksRequest,
   output: ListUsableSubnetworksResponse,
@@ -8793,7 +8794,7 @@ export const listProjectsAggregatedUsableSubnetworks: API.PaginatedOperationMeth
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsClustersError =
   | NotFound

@@ -1352,7 +1352,8 @@ export const listConferenceRecords: API.PaginatedOperationMethod<
   ListConferenceRecordsRequest,
   ListConferenceRecordsResponse,
   ListConferenceRecordsError,
-  GcpOpContext
+  GcpOpContext,
+  ListConferenceRecordsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListConferenceRecordsRequest,
   output: ListConferenceRecordsResponse,
@@ -1363,7 +1364,7 @@ export const listConferenceRecords: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListConferenceRecordsParticipantsError =
   | NotFound
@@ -1374,7 +1375,8 @@ export const listConferenceRecordsParticipants: API.PaginatedOperationMethod<
   ListConferenceRecordsParticipantsRequest,
   ListParticipantsResponse,
   ListConferenceRecordsParticipantsError,
-  GcpOpContext
+  GcpOpContext,
+  ListParticipantsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListConferenceRecordsParticipantsRequest,
   output: ListParticipantsResponse,
@@ -1385,7 +1387,7 @@ export const listConferenceRecordsParticipants: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListConferenceRecordsParticipantsParticipantSessionsError =
   | NotFound
@@ -1396,7 +1398,8 @@ export const listConferenceRecordsParticipantsParticipantSessions: API.Paginated
   ListConferenceRecordsParticipantsParticipantSessionsRequest,
   ListParticipantSessionsResponse,
   ListConferenceRecordsParticipantsParticipantSessionsError,
-  GcpOpContext
+  GcpOpContext,
+  ListParticipantSessionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListConferenceRecordsParticipantsParticipantSessionsRequest,
   output: ListParticipantSessionsResponse,
@@ -1407,7 +1410,7 @@ export const listConferenceRecordsParticipantsParticipantSessions: API.Paginated
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListConferenceRecordsRecordingsError =
   | NotFound
@@ -1418,7 +1421,8 @@ export const listConferenceRecordsRecordings: API.PaginatedOperationMethod<
   ListConferenceRecordsRecordingsRequest,
   ListRecordingsResponse,
   ListConferenceRecordsRecordingsError,
-  GcpOpContext
+  GcpOpContext,
+  ListRecordingsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListConferenceRecordsRecordingsRequest,
   output: ListRecordingsResponse,
@@ -1429,7 +1433,7 @@ export const listConferenceRecordsRecordings: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListConferenceRecordsSmartNotesError =
   | NotFound
@@ -1440,7 +1444,8 @@ export const listConferenceRecordsSmartNotes: API.PaginatedOperationMethod<
   ListConferenceRecordsSmartNotesRequest,
   ListSmartNotesResponse,
   ListConferenceRecordsSmartNotesError,
-  GcpOpContext
+  GcpOpContext,
+  ListSmartNotesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListConferenceRecordsSmartNotesRequest,
   output: ListSmartNotesResponse,
@@ -1451,7 +1456,7 @@ export const listConferenceRecordsSmartNotes: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListConferenceRecordsTranscriptsError =
   | NotFound
@@ -1462,7 +1467,8 @@ export const listConferenceRecordsTranscripts: API.PaginatedOperationMethod<
   ListConferenceRecordsTranscriptsRequest,
   ListTranscriptsResponse,
   ListConferenceRecordsTranscriptsError,
-  GcpOpContext
+  GcpOpContext,
+  ListTranscriptsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListConferenceRecordsTranscriptsRequest,
   output: ListTranscriptsResponse,
@@ -1473,7 +1479,7 @@ export const listConferenceRecordsTranscripts: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListConferenceRecordsTranscriptsEntriesError =
   | NotFound
@@ -1484,7 +1490,8 @@ export const listConferenceRecordsTranscriptsEntries: API.PaginatedOperationMeth
   ListConferenceRecordsTranscriptsEntriesRequest,
   ListTranscriptEntriesResponse,
   ListConferenceRecordsTranscriptsEntriesError,
-  GcpOpContext
+  GcpOpContext,
+  ListTranscriptEntriesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListConferenceRecordsTranscriptsEntriesRequest,
   output: ListTranscriptEntriesResponse,
@@ -1495,7 +1502,7 @@ export const listConferenceRecordsTranscriptsEntries: API.PaginatedOperationMeth
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type PatchSpacesError =
   | NotFound

@@ -2337,7 +2337,8 @@ export const listAccounts: API.PaginatedOperationMethod<
   ListAccountsRequest,
   ListAccountsResponse,
   ListAccountsError,
-  GcpOpContext
+  GcpOpContext,
+  ListAccountsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsRequest,
   output: ListAccountsResponse,
@@ -2348,7 +2349,7 @@ export const listAccounts: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListAccountsAdclientsError = NotFound | Forbidden | GcpOpError;
 /** Lists all the ad clients available in an account. */
@@ -2356,7 +2357,8 @@ export const listAccountsAdclients: API.PaginatedOperationMethod<
   ListAccountsAdclientsRequest,
   ListAdClientsResponse,
   ListAccountsAdclientsError,
-  GcpOpContext
+  GcpOpContext,
+  ListAdClientsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsAdclientsRequest,
   output: ListAdClientsResponse,
@@ -2367,7 +2369,7 @@ export const listAccountsAdclients: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListAccountsAdclientsAdunitsError =
   | NotFound
@@ -2378,7 +2380,8 @@ export const listAccountsAdclientsAdunits: API.PaginatedOperationMethod<
   ListAccountsAdclientsAdunitsRequest,
   ListAdUnitsResponse,
   ListAccountsAdclientsAdunitsError,
-  GcpOpContext
+  GcpOpContext,
+  ListAdUnitsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsAdclientsAdunitsRequest,
   output: ListAdUnitsResponse,
@@ -2389,7 +2392,7 @@ export const listAccountsAdclientsAdunits: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListAccountsAdclientsCustomchannelsError =
   | NotFound
@@ -2400,7 +2403,8 @@ export const listAccountsAdclientsCustomchannels: API.PaginatedOperationMethod<
   ListAccountsAdclientsCustomchannelsRequest,
   ListCustomChannelsResponse,
   ListAccountsAdclientsCustomchannelsError,
-  GcpOpContext
+  GcpOpContext,
+  ListCustomChannelsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsAdclientsCustomchannelsRequest,
   output: ListCustomChannelsResponse,
@@ -2411,7 +2415,7 @@ export const listAccountsAdclientsCustomchannels: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListAccountsAdclientsUrlchannelsError =
   | NotFound
@@ -2422,7 +2426,8 @@ export const listAccountsAdclientsUrlchannels: API.PaginatedOperationMethod<
   ListAccountsAdclientsUrlchannelsRequest,
   ListUrlChannelsResponse,
   ListAccountsAdclientsUrlchannelsError,
-  GcpOpContext
+  GcpOpContext,
+  ListUrlChannelsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsAdclientsUrlchannelsRequest,
   output: ListUrlChannelsResponse,
@@ -2433,7 +2438,7 @@ export const listAccountsAdclientsUrlchannels: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListAccountsAlertsError = NotFound | Forbidden | GcpOpError;
 /** Lists all the alerts available in an account. */
@@ -2471,7 +2476,8 @@ export const listAccountsPolicyIssues: API.PaginatedOperationMethod<
   ListAccountsPolicyIssuesRequest,
   ListPolicyIssuesResponse,
   ListAccountsPolicyIssuesError,
-  GcpOpContext
+  GcpOpContext,
+  ListPolicyIssuesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsPolicyIssuesRequest,
   output: ListPolicyIssuesResponse,
@@ -2482,7 +2488,7 @@ export const listAccountsPolicyIssues: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListAccountsReportsSavedError = NotFound | Forbidden | GcpOpError;
 /** Lists saved reports. */
@@ -2490,7 +2496,8 @@ export const listAccountsReportsSaved: API.PaginatedOperationMethod<
   ListAccountsReportsSavedRequest,
   ListSavedReportsResponse,
   ListAccountsReportsSavedError,
-  GcpOpContext
+  GcpOpContext,
+  ListSavedReportsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsReportsSavedRequest,
   output: ListSavedReportsResponse,
@@ -2501,7 +2508,7 @@ export const listAccountsReportsSaved: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListAccountsSitesError = NotFound | Forbidden | GcpOpError;
 /** Lists all the sites available in an account. */
@@ -2509,7 +2516,8 @@ export const listAccountsSites: API.PaginatedOperationMethod<
   ListAccountsSitesRequest,
   ListSitesResponse,
   ListAccountsSitesError,
-  GcpOpContext
+  GcpOpContext,
+  ListSitesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsSitesRequest,
   output: ListSitesResponse,
@@ -2520,7 +2528,7 @@ export const listAccountsSites: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListChildAccountsAccountsError = NotFound | Forbidden | GcpOpError;
 /** Lists all accounts directly managed by the given AdSense account. */
@@ -2528,7 +2536,8 @@ export const listChildAccountsAccounts: API.PaginatedOperationMethod<
   ListChildAccountsAccountsRequest,
   ListChildAccountsResponse,
   ListChildAccountsAccountsError,
-  GcpOpContext
+  GcpOpContext,
+  ListChildAccountsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListChildAccountsAccountsRequest,
   output: ListChildAccountsResponse,
@@ -2539,7 +2548,7 @@ export const listChildAccountsAccounts: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListLinkedAdUnitsAccountsAdclientsCustomchannelsError =
   | NotFound
@@ -2550,7 +2559,8 @@ export const listLinkedAdUnitsAccountsAdclientsCustomchannels: API.PaginatedOper
   ListLinkedAdUnitsAccountsAdclientsCustomchannelsRequest,
   ListLinkedAdUnitsResponse,
   ListLinkedAdUnitsAccountsAdclientsCustomchannelsError,
-  GcpOpContext
+  GcpOpContext,
+  ListLinkedAdUnitsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLinkedAdUnitsAccountsAdclientsCustomchannelsRequest,
   output: ListLinkedAdUnitsResponse,
@@ -2561,7 +2571,7 @@ export const listLinkedAdUnitsAccountsAdclientsCustomchannels: API.PaginatedOper
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListLinkedCustomChannelsAccountsAdclientsAdunitsError =
   | NotFound
@@ -2572,7 +2582,8 @@ export const listLinkedCustomChannelsAccountsAdclientsAdunits: API.PaginatedOper
   ListLinkedCustomChannelsAccountsAdclientsAdunitsRequest,
   ListLinkedCustomChannelsResponse,
   ListLinkedCustomChannelsAccountsAdclientsAdunitsError,
-  GcpOpContext
+  GcpOpContext,
+  ListLinkedCustomChannelsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLinkedCustomChannelsAccountsAdclientsAdunitsRequest,
   output: ListLinkedCustomChannelsResponse,
@@ -2583,7 +2594,7 @@ export const listLinkedCustomChannelsAccountsAdclientsAdunits: API.PaginatedOper
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type PatchAccountsAdclientsAdunitsError =
   | NotFound

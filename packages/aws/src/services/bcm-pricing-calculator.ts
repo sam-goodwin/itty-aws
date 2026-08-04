@@ -3026,27 +3026,7 @@ export const listBillEstimateCommitments: API.OperationMethod<
     items: "items",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListBillEstimateCommitmentsRequest,
-  ListBillEstimateCommitmentsResponse,
-  ListBillEstimateCommitmentsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListBillEstimateCommitmentsRequest,
-  ) => stream.Stream<
-    ListBillEstimateCommitmentsResponse,
-    ListBillEstimateCommitmentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListBillEstimateCommitmentsRequest,
-  ) => stream.Stream<
-    BillEstimateCommitmentSummary,
-    ListBillEstimateCommitmentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListBillEstimateInputCommitmentModificationsError =
   | DataUnavailableException
@@ -3088,27 +3068,7 @@ export const listBillEstimateInputCommitmentModifications: API.OperationMethod<
     items: "items",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListBillEstimateInputCommitmentModificationsRequest,
-  ListBillEstimateInputCommitmentModificationsResponse,
-  ListBillEstimateInputCommitmentModificationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListBillEstimateInputCommitmentModificationsRequest,
-  ) => stream.Stream<
-    ListBillEstimateInputCommitmentModificationsResponse,
-    ListBillEstimateInputCommitmentModificationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListBillEstimateInputCommitmentModificationsRequest,
-  ) => stream.Stream<
-    BillEstimateInputCommitmentModificationSummary,
-    ListBillEstimateInputCommitmentModificationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListBillEstimateInputUsageModificationsError =
   | DataUnavailableException
@@ -3150,27 +3110,7 @@ export const listBillEstimateInputUsageModifications: API.OperationMethod<
     items: "items",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListBillEstimateInputUsageModificationsRequest,
-  ListBillEstimateInputUsageModificationsResponse,
-  ListBillEstimateInputUsageModificationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListBillEstimateInputUsageModificationsRequest,
-  ) => stream.Stream<
-    ListBillEstimateInputUsageModificationsResponse,
-    ListBillEstimateInputUsageModificationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListBillEstimateInputUsageModificationsRequest,
-  ) => stream.Stream<
-    BillEstimateInputUsageModificationSummary,
-    ListBillEstimateInputUsageModificationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListBillEstimateLineItemsError =
   | DataUnavailableException
@@ -3212,27 +3152,7 @@ export const listBillEstimateLineItems: API.OperationMethod<
     items: "items",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListBillEstimateLineItemsRequest,
-  ListBillEstimateLineItemsResponse,
-  ListBillEstimateLineItemsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListBillEstimateLineItemsRequest,
-  ) => stream.Stream<
-    ListBillEstimateLineItemsResponse,
-    ListBillEstimateLineItemsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListBillEstimateLineItemsRequest,
-  ) => stream.Stream<
-    BillEstimateLineItemSummary,
-    ListBillEstimateLineItemsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListBillEstimatesError = DataUnavailableException | CommonErrors;
 /**
@@ -3271,27 +3191,7 @@ export const listBillEstimates: API.OperationMethod<
     items: "items",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListBillEstimatesRequest,
-  ListBillEstimatesResponse,
-  ListBillEstimatesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListBillEstimatesRequest,
-  ) => stream.Stream<
-    ListBillEstimatesResponse,
-    ListBillEstimatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListBillEstimatesRequest,
-  ) => stream.Stream<
-    BillEstimateSummary,
-    ListBillEstimatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListBillScenarioCommitmentModificationsError =
   | DataUnavailableException
@@ -3333,27 +3233,7 @@ export const listBillScenarioCommitmentModifications: API.OperationMethod<
     items: "items",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListBillScenarioCommitmentModificationsRequest,
-  ListBillScenarioCommitmentModificationsResponse,
-  ListBillScenarioCommitmentModificationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListBillScenarioCommitmentModificationsRequest,
-  ) => stream.Stream<
-    ListBillScenarioCommitmentModificationsResponse,
-    ListBillScenarioCommitmentModificationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListBillScenarioCommitmentModificationsRequest,
-  ) => stream.Stream<
-    BillScenarioCommitmentModificationItem,
-    ListBillScenarioCommitmentModificationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListBillScenariosError = DataUnavailableException | CommonErrors;
 /**
@@ -3392,27 +3272,7 @@ export const listBillScenarios: API.OperationMethod<
     items: "items",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListBillScenariosRequest,
-  ListBillScenariosResponse,
-  ListBillScenariosError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListBillScenariosRequest,
-  ) => stream.Stream<
-    ListBillScenariosResponse,
-    ListBillScenariosError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListBillScenariosRequest,
-  ) => stream.Stream<
-    BillScenarioSummary,
-    ListBillScenariosError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListBillScenarioUsageModificationsError =
   | DataUnavailableException
@@ -3454,27 +3314,7 @@ export const listBillScenarioUsageModifications: API.OperationMethod<
     items: "items",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListBillScenarioUsageModificationsRequest,
-  ListBillScenarioUsageModificationsResponse,
-  ListBillScenarioUsageModificationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListBillScenarioUsageModificationsRequest,
-  ) => stream.Stream<
-    ListBillScenarioUsageModificationsResponse,
-    ListBillScenarioUsageModificationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListBillScenarioUsageModificationsRequest,
-  ) => stream.Stream<
-    BillScenarioUsageModificationItem,
-    ListBillScenarioUsageModificationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsForResourceError = ResourceNotFoundException | CommonErrors;
 /**
@@ -3533,27 +3373,7 @@ export const listWorkloadEstimates: API.OperationMethod<
     items: "items",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListWorkloadEstimatesRequest,
-  ListWorkloadEstimatesResponse,
-  ListWorkloadEstimatesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListWorkloadEstimatesRequest,
-  ) => stream.Stream<
-    ListWorkloadEstimatesResponse,
-    ListWorkloadEstimatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListWorkloadEstimatesRequest,
-  ) => stream.Stream<
-    WorkloadEstimateSummary,
-    ListWorkloadEstimatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListWorkloadEstimateUsageError =
   | DataUnavailableException
@@ -3595,27 +3415,7 @@ export const listWorkloadEstimateUsage: API.OperationMethod<
     items: "items",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListWorkloadEstimateUsageRequest,
-  ListWorkloadEstimateUsageResponse,
-  ListWorkloadEstimateUsageError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListWorkloadEstimateUsageRequest,
-  ) => stream.Stream<
-    ListWorkloadEstimateUsageResponse,
-    ListWorkloadEstimateUsageError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListWorkloadEstimateUsageRequest,
-  ) => stream.Stream<
-    WorkloadEstimateUsageItem,
-    ListWorkloadEstimateUsageError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type TagResourceError =
   | ResourceNotFoundException

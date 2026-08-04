@@ -590,7 +590,8 @@ export const listKeylessCertificates: API.PaginatedOperationMethod<
   ListKeylessCertificatesRequest,
   ListKeylessCertificatesResponse,
   ListKeylessCertificatesError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  ListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListKeylessCertificatesRequest,
@@ -601,7 +602,7 @@ export const listKeylessCertificates: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type PatchKeylessCertificateError =
   | KeylessCertificateNotFound

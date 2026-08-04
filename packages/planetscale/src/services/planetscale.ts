@@ -19250,7 +19250,8 @@ export const getDeployQueue: API.PaginatedOperationMethod<
   GetDeployQueueRequest,
   PaginatedDeployment,
   GetDeployQueueError,
-  PlanetScaleOpContext
+  PlanetScaleOpContext,
+  PaginatedDeploymentDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: GetDeployQueueRequest,
@@ -19266,7 +19267,7 @@ export const getDeployQueue: API.PaginatedOperationMethod<
     } as const,
   }),
   paginatePageNumber,
-);
+) as any;
 
 export type GetDeployRequestError = Forbidden | NotFound | PlanetScaleOpError;
 /** Get a deploy request */
@@ -19325,7 +19326,8 @@ export const getInvoiceLineItems: API.PaginatedOperationMethod<
   GetInvoiceLineItemsRequest,
   PaginatedLineItem,
   GetInvoiceLineItemsError,
-  PlanetScaleOpContext
+  PlanetScaleOpContext,
+  PaginatedLineItemDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: GetInvoiceLineItemsRequest,
@@ -19341,7 +19343,7 @@ export const getInvoiceLineItems: API.PaginatedOperationMethod<
     } as const,
   }),
   paginatePageNumber,
-);
+) as any;
 
 export type GetKeyspaceError = Forbidden | NotFound | PlanetScaleOpError;
 /** Get a keyspace */
@@ -19677,7 +19679,8 @@ export const lintBranchSchema: API.PaginatedOperationMethod<
   LintBranchSchemaRequest,
   PaginatedSchemaLintError,
   LintBranchSchemaError,
-  PlanetScaleOpContext
+  PlanetScaleOpContext,
+  PaginatedSchemaLintErrorDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: LintBranchSchemaRequest,
@@ -19693,7 +19696,7 @@ export const lintBranchSchema: API.PaginatedOperationMethod<
     } as const,
   }),
   paginatePageNumber,
-);
+) as any;
 
 export type ListAuditLogsError = Forbidden | NotFound | PlanetScaleOpError;
 /** List audit logs */
@@ -19716,7 +19719,8 @@ export const listBackupPolicies: API.PaginatedOperationMethod<
   ListBackupPoliciesRequest,
   PaginatedBackupPolicy,
   ListBackupPoliciesError,
-  PlanetScaleOpContext
+  PlanetScaleOpContext,
+  PaginatedBackupPolicyDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListBackupPoliciesRequest,
@@ -19732,7 +19736,7 @@ export const listBackupPolicies: API.PaginatedOperationMethod<
     } as const,
   }),
   paginatePageNumber,
-);
+) as any;
 
 export type ListBackupsError = Forbidden | NotFound | PlanetScaleOpError;
 /** List backups */
@@ -19740,7 +19744,8 @@ export const listBackups: API.PaginatedOperationMethod<
   ListBackupsRequest,
   PaginatedBackup,
   ListBackupsError,
-  PlanetScaleOpContext
+  PlanetScaleOpContext,
+  PaginatedBackupDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListBackupsRequest,
@@ -19756,7 +19761,7 @@ export const listBackups: API.PaginatedOperationMethod<
     } as const,
   }),
   paginatePageNumber,
-);
+) as any;
 
 export type ListBouncerResizeRequestsError =
   | Forbidden
@@ -19767,7 +19772,8 @@ export const listBouncerResizeRequests: API.PaginatedOperationMethod<
   ListBouncerResizeRequestsRequest,
   PaginatedPostgresBouncerResizeRequest,
   ListBouncerResizeRequestsError,
-  PlanetScaleOpContext
+  PlanetScaleOpContext,
+  PaginatedPostgresBouncerResizeRequestDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListBouncerResizeRequestsRequest,
@@ -19783,7 +19789,7 @@ export const listBouncerResizeRequests: API.PaginatedOperationMethod<
     } as const,
   }),
   paginatePageNumber,
-);
+) as any;
 
 export type ListBouncersError = Forbidden | NotFound | PlanetScaleOpError;
 /** List bouncers */
@@ -19791,7 +19797,8 @@ export const listBouncers: API.PaginatedOperationMethod<
   ListBouncersRequest,
   PaginatedPostgresBouncer,
   ListBouncersError,
-  PlanetScaleOpContext
+  PlanetScaleOpContext,
+  PaginatedPostgresBouncerDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListBouncersRequest,
@@ -19807,7 +19814,7 @@ export const listBouncers: API.PaginatedOperationMethod<
     } as const,
   }),
   paginatePageNumber,
-);
+) as any;
 
 export type ListBranchBouncerResizeRequestsError =
   | Forbidden
@@ -19818,7 +19825,8 @@ export const listBranchBouncerResizeRequests: API.PaginatedOperationMethod<
   ListBranchBouncerResizeRequestsRequest,
   PaginatedPostgresBouncerResizeRequest,
   ListBranchBouncerResizeRequestsError,
-  PlanetScaleOpContext
+  PlanetScaleOpContext,
+  PaginatedPostgresBouncerResizeRequestDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListBranchBouncerResizeRequestsRequest,
@@ -19834,7 +19842,7 @@ export const listBranchBouncerResizeRequests: API.PaginatedOperationMethod<
     } as const,
   }),
   paginatePageNumber,
-);
+) as any;
 
 export type ListBranchChangeRequestsError =
   | Forbidden
@@ -19845,7 +19853,8 @@ export const listBranchChangeRequests: API.PaginatedOperationMethod<
   ListBranchChangeRequestsRequest,
   PaginatedPostgresClusterResizeRequest,
   ListBranchChangeRequestsError,
-  PlanetScaleOpContext
+  PlanetScaleOpContext,
+  PaginatedPostgresClusterResizeRequestDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListBranchChangeRequestsRequest,
@@ -19861,7 +19870,7 @@ export const listBranchChangeRequests: API.PaginatedOperationMethod<
     } as const,
   }),
   paginatePageNumber,
-);
+) as any;
 
 export type ListBranchesError = Forbidden | NotFound | PlanetScaleOpError;
 /** List branches */
@@ -19869,7 +19878,8 @@ export const listBranches: API.PaginatedOperationMethod<
   ListBranchesRequest,
   PaginatedDatabaseBranch,
   ListBranchesError,
-  PlanetScaleOpContext
+  PlanetScaleOpContext,
+  PaginatedDatabaseBranchDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListBranchesRequest,
@@ -19885,7 +19895,7 @@ export const listBranches: API.PaginatedOperationMethod<
     } as const,
   }),
   paginatePageNumber,
-);
+) as any;
 
 export type ListClusterSizeSkusError =
   | Forbidden
@@ -19915,7 +19925,8 @@ export const listDatabasePostgresCidrs: API.PaginatedOperationMethod<
   ListDatabasePostgresCidrsRequest,
   PaginatedPostgresClusterCidr,
   ListDatabasePostgresCidrsError,
-  PlanetScaleOpContext
+  PlanetScaleOpContext,
+  PaginatedPostgresClusterCidrDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListDatabasePostgresCidrsRequest,
@@ -19931,7 +19942,7 @@ export const listDatabasePostgresCidrs: API.PaginatedOperationMethod<
     } as const,
   }),
   paginatePageNumber,
-);
+) as any;
 
 export type ListDatabaseRegionsError =
   | Forbidden
@@ -19942,7 +19953,8 @@ export const listDatabaseRegions: API.PaginatedOperationMethod<
   ListDatabaseRegionsRequest,
   PaginatedPlanetscaleRegion,
   ListDatabaseRegionsError,
-  PlanetScaleOpContext
+  PlanetScaleOpContext,
+  PaginatedPlanetscaleRegionDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListDatabaseRegionsRequest,
@@ -19958,7 +19970,7 @@ export const listDatabaseRegions: API.PaginatedOperationMethod<
     } as const,
   }),
   paginatePageNumber,
-);
+) as any;
 
 export type ListDatabasesError = Forbidden | NotFound | PlanetScaleOpError;
 /** List databases */
@@ -19966,7 +19978,8 @@ export const listDatabases: API.PaginatedOperationMethod<
   ListDatabasesRequest,
   PaginatedDatabase,
   ListDatabasesError,
-  PlanetScaleOpContext
+  PlanetScaleOpContext,
+  PaginatedDatabaseDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListDatabasesRequest,
@@ -19982,7 +19995,7 @@ export const listDatabases: API.PaginatedOperationMethod<
     } as const,
   }),
   paginatePageNumber,
-);
+) as any;
 
 export type ListDeployOperationsError =
   | Forbidden
@@ -19993,7 +20006,8 @@ export const listDeployOperations: API.PaginatedOperationMethod<
   ListDeployOperationsRequest,
   PaginatedDeployOperation,
   ListDeployOperationsError,
-  PlanetScaleOpContext
+  PlanetScaleOpContext,
+  PaginatedDeployOperationDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListDeployOperationsRequest,
@@ -20009,7 +20023,7 @@ export const listDeployOperations: API.PaginatedOperationMethod<
     } as const,
   }),
   paginatePageNumber,
-);
+) as any;
 
 export type ListDeployRequestReviewsError =
   | Forbidden
@@ -20020,7 +20034,8 @@ export const listDeployRequestReviews: API.PaginatedOperationMethod<
   ListDeployRequestReviewsRequest,
   PaginatedDeployRequestReview,
   ListDeployRequestReviewsError,
-  PlanetScaleOpContext
+  PlanetScaleOpContext,
+  PaginatedDeployRequestReviewDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListDeployRequestReviewsRequest,
@@ -20036,7 +20051,7 @@ export const listDeployRequestReviews: API.PaginatedOperationMethod<
     } as const,
   }),
   paginatePageNumber,
-);
+) as any;
 
 export type ListDeployRequestsError = Forbidden | NotFound | PlanetScaleOpError;
 /** List deploy requests List deploy requests for a database */
@@ -20044,7 +20059,8 @@ export const listDeployRequests: API.PaginatedOperationMethod<
   ListDeployRequestsRequest,
   PaginatedDatabaseDeployRequest,
   ListDeployRequestsError,
-  PlanetScaleOpContext
+  PlanetScaleOpContext,
+  PaginatedDatabaseDeployRequestDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListDeployRequestsRequest,
@@ -20060,7 +20076,7 @@ export const listDeployRequests: API.PaginatedOperationMethod<
     } as const,
   }),
   paginatePageNumber,
-);
+) as any;
 
 export type ListExtensionsError = Forbidden | NotFound | PlanetScaleOpError;
 /** List cluster extensions */
@@ -20101,7 +20117,8 @@ export const listInvoices: API.PaginatedOperationMethod<
   ListInvoicesRequest,
   PaginatedInvoice,
   ListInvoicesError,
-  PlanetScaleOpContext
+  PlanetScaleOpContext,
+  PaginatedInvoiceDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListInvoicesRequest,
@@ -20117,7 +20134,7 @@ export const listInvoices: API.PaginatedOperationMethod<
     } as const,
   }),
   paginatePageNumber,
-);
+) as any;
 
 export type ListKeyspaceResizeRequestsError =
   | Forbidden
@@ -20128,7 +20145,8 @@ export const listKeyspaceResizeRequests: API.PaginatedOperationMethod<
   ListKeyspaceResizeRequestsRequest,
   PaginatedKeyspaceResizeRequest,
   ListKeyspaceResizeRequestsError,
-  PlanetScaleOpContext
+  PlanetScaleOpContext,
+  KeyspaceResizeRequest
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListKeyspaceResizeRequestsRequest,
@@ -20144,7 +20162,7 @@ export const listKeyspaceResizeRequests: API.PaginatedOperationMethod<
     } as const,
   }),
   paginatePageNumber,
-);
+) as any;
 
 export type ListKeyspacesError = Forbidden | NotFound | PlanetScaleOpError;
 /** Get keyspaces */
@@ -20152,7 +20170,8 @@ export const listKeyspaces: API.PaginatedOperationMethod<
   ListKeyspacesRequest,
   PaginatedDatabaseBranchKeyspace,
   ListKeyspacesError,
-  PlanetScaleOpContext
+  PlanetScaleOpContext,
+  PaginatedDatabaseBranchKeyspaceDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListKeyspacesRequest,
@@ -20168,7 +20187,7 @@ export const listKeyspaces: API.PaginatedOperationMethod<
     } as const,
   }),
   paginatePageNumber,
-);
+) as any;
 
 export type ListMaintenanceSchedulesError =
   | Forbidden
@@ -20179,7 +20198,8 @@ export const listMaintenanceSchedules: API.PaginatedOperationMethod<
   ListMaintenanceSchedulesRequest,
   PaginatedBranchMaintenanceSchedule,
   ListMaintenanceSchedulesError,
-  PlanetScaleOpContext
+  PlanetScaleOpContext,
+  PaginatedBranchMaintenanceScheduleDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListMaintenanceSchedulesRequest,
@@ -20195,7 +20215,7 @@ export const listMaintenanceSchedules: API.PaginatedOperationMethod<
     } as const,
   }),
   paginatePageNumber,
-);
+) as any;
 
 export type ListMaintenanceWindowsError =
   | Forbidden
@@ -20206,7 +20226,8 @@ export const listMaintenanceWindows: API.PaginatedOperationMethod<
   ListMaintenanceWindowsRequest,
   PaginatedBranchMaintenanceWindow,
   ListMaintenanceWindowsError,
-  PlanetScaleOpContext
+  PlanetScaleOpContext,
+  PaginatedBranchMaintenanceWindowDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListMaintenanceWindowsRequest,
@@ -20222,7 +20243,7 @@ export const listMaintenanceWindows: API.PaginatedOperationMethod<
     } as const,
   }),
   paginatePageNumber,
-);
+) as any;
 
 export type ListOauthApplicationsError =
   | Forbidden
@@ -20233,7 +20254,8 @@ export const listOauthApplications: API.PaginatedOperationMethod<
   ListOauthApplicationsRequest,
   PaginatedOauthApplication,
   ListOauthApplicationsError,
-  PlanetScaleOpContext
+  PlanetScaleOpContext,
+  PaginatedOauthApplicationDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListOauthApplicationsRequest,
@@ -20249,7 +20271,7 @@ export const listOauthApplications: API.PaginatedOperationMethod<
     } as const,
   }),
   paginatePageNumber,
-);
+) as any;
 
 export type ListOauthTokensError = Forbidden | NotFound | PlanetScaleOpError;
 /** List OAuth tokens List OAuth tokens created by an OAuth application */
@@ -20257,7 +20279,8 @@ export const listOauthTokens: API.PaginatedOperationMethod<
   ListOauthTokensRequest,
   PaginatedServiceToken,
   ListOauthTokensError,
-  PlanetScaleOpContext
+  PlanetScaleOpContext,
+  PaginatedServiceTokenDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListOauthTokensRequest,
@@ -20273,7 +20296,7 @@ export const listOauthTokens: API.PaginatedOperationMethod<
     } as const,
   }),
   paginatePageNumber,
-);
+) as any;
 
 export type ListOrganizationMembersError =
   | Forbidden
@@ -20284,7 +20307,8 @@ export const listOrganizationMembers: API.PaginatedOperationMethod<
   ListOrganizationMembersRequest,
   PaginatedOrganizationMembership,
   ListOrganizationMembersError,
-  PlanetScaleOpContext
+  PlanetScaleOpContext,
+  PaginatedOrganizationMembershipDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListOrganizationMembersRequest,
@@ -20300,7 +20324,7 @@ export const listOrganizationMembers: API.PaginatedOperationMethod<
     } as const,
   }),
   paginatePageNumber,
-);
+) as any;
 
 export type ListOrganizationsError = Forbidden | NotFound | PlanetScaleOpError;
 /** List organizations When using a service token, returns the list of organizations the service token has access to. When using an OAuth token, returns the list of organizations the user has access to. */
@@ -20308,7 +20332,8 @@ export const listOrganizations: API.PaginatedOperationMethod<
   ListOrganizationsRequest,
   PaginatedOrganization,
   ListOrganizationsError,
-  PlanetScaleOpContext
+  PlanetScaleOpContext,
+  PaginatedOrganizationDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListOrganizationsRequest,
@@ -20324,7 +20349,7 @@ export const listOrganizations: API.PaginatedOperationMethod<
     } as const,
   }),
   paginatePageNumber,
-);
+) as any;
 
 export type ListOrganizationTeamMembersError =
   | BadRequest
@@ -20337,7 +20362,8 @@ export const listOrganizationTeamMembers: API.PaginatedOperationMethod<
   ListOrganizationTeamMembersRequest,
   PaginatedOrganizationTeamMembership,
   ListOrganizationTeamMembersError,
-  PlanetScaleOpContext
+  PlanetScaleOpContext,
+  PaginatedOrganizationTeamMembershipDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListOrganizationTeamMembersRequest,
@@ -20359,7 +20385,7 @@ export const listOrganizationTeamMembers: API.PaginatedOperationMethod<
     } as const,
   }),
   paginatePageNumber,
-);
+) as any;
 
 export type ListOrganizationTeamsError =
   | BadRequest
@@ -20372,7 +20398,8 @@ export const listOrganizationTeams: API.PaginatedOperationMethod<
   ListOrganizationTeamsRequest,
   PaginatedOrganizationTeam,
   ListOrganizationTeamsError,
-  PlanetScaleOpContext
+  PlanetScaleOpContext,
+  PaginatedOrganizationTeamDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListOrganizationTeamsRequest,
@@ -20394,7 +20421,7 @@ export const listOrganizationTeams: API.PaginatedOperationMethod<
     } as const,
   }),
   paginatePageNumber,
-);
+) as any;
 
 export type ListParametersError = Forbidden | NotFound | PlanetScaleOpError;
 /** List cluster parameters Returns the parameters for a branch. To update the parameters, use the "Upsert a change request" endpoint. */
@@ -20417,7 +20444,8 @@ export const listPasswords: API.PaginatedOperationMethod<
   ListPasswordsRequest,
   PaginatedDatabaseBranchPassword,
   ListPasswordsError,
-  PlanetScaleOpContext
+  PlanetScaleOpContext,
+  PaginatedDatabaseBranchPasswordDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListPasswordsRequest,
@@ -20433,7 +20461,7 @@ export const listPasswords: API.PaginatedOperationMethod<
     } as const,
   }),
   paginatePageNumber,
-);
+) as any;
 
 export type ListPublicRegionsError = Forbidden | NotFound | PlanetScaleOpError;
 /** List public regions Endpoint is available without authentication. */
@@ -20441,7 +20469,8 @@ export const listPublicRegions: API.PaginatedOperationMethod<
   ListPublicRegionsRequest,
   PaginatedPublicPlanetscaleRegionSerializer,
   ListPublicRegionsError,
-  PlanetScaleOpContext
+  PlanetScaleOpContext,
+  PaginatedPublicPlanetscaleRegionSerializerDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListPublicRegionsRequest,
@@ -20457,7 +20486,7 @@ export const listPublicRegions: API.PaginatedOperationMethod<
     } as const,
   }),
   paginatePageNumber,
-);
+) as any;
 
 export type ListReadOnlyRegionsError =
   | Forbidden
@@ -20468,7 +20497,8 @@ export const listReadOnlyRegions: API.PaginatedOperationMethod<
   ListReadOnlyRegionsRequest,
   PaginatedDatabaseBranchReadOnlyRegion,
   ListReadOnlyRegionsError,
-  PlanetScaleOpContext
+  PlanetScaleOpContext,
+  PaginatedDatabaseBranchReadOnlyRegionDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListReadOnlyRegionsRequest,
@@ -20484,7 +20514,7 @@ export const listReadOnlyRegions: API.PaginatedOperationMethod<
     } as const,
   }),
   paginatePageNumber,
-);
+) as any;
 
 export type ListRegionsForOrganizationError =
   | Forbidden
@@ -20495,7 +20525,8 @@ export const listRegionsForOrganization: API.PaginatedOperationMethod<
   ListRegionsForOrganizationRequest,
   PaginatedPlanetscaleRegion,
   ListRegionsForOrganizationError,
-  PlanetScaleOpContext
+  PlanetScaleOpContext,
+  PaginatedPlanetscaleRegionDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListRegionsForOrganizationRequest,
@@ -20511,7 +20542,7 @@ export const listRegionsForOrganization: API.PaginatedOperationMethod<
     } as const,
   }),
   paginatePageNumber,
-);
+) as any;
 
 export type ListRolesError = Forbidden | NotFound | PlanetScaleOpError;
 /** List roles */
@@ -20519,7 +20550,8 @@ export const listRoles: API.PaginatedOperationMethod<
   ListRolesRequest,
   PaginatedPostgresRole,
   ListRolesError,
-  PlanetScaleOpContext
+  PlanetScaleOpContext,
+  PaginatedPostgresRoleDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListRolesRequest,
@@ -20535,7 +20567,7 @@ export const listRoles: API.PaginatedOperationMethod<
     } as const,
   }),
   paginatePageNumber,
-);
+) as any;
 
 export type ListSchemaRecommendationsError =
   | Forbidden
@@ -20546,7 +20578,8 @@ export const listSchemaRecommendations: API.PaginatedOperationMethod<
   ListSchemaRecommendationsRequest,
   PaginatedSchemaRecommendation,
   ListSchemaRecommendationsError,
-  PlanetScaleOpContext
+  PlanetScaleOpContext,
+  PaginatedSchemaRecommendationDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListSchemaRecommendationsRequest,
@@ -20562,7 +20595,7 @@ export const listSchemaRecommendations: API.PaginatedOperationMethod<
     } as const,
   }),
   paginatePageNumber,
-);
+) as any;
 
 export type ListServiceTokensError = Forbidden | NotFound | PlanetScaleOpError;
 /** List service tokens List service tokens for an organization. */
@@ -20570,7 +20603,8 @@ export const listServiceTokens: API.PaginatedOperationMethod<
   ListServiceTokensRequest,
   PaginatedServiceToken,
   ListServiceTokensError,
-  PlanetScaleOpContext
+  PlanetScaleOpContext,
+  PaginatedServiceTokenDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListServiceTokensRequest,
@@ -20586,7 +20620,7 @@ export const listServiceTokens: API.PaginatedOperationMethod<
     } as const,
   }),
   paginatePageNumber,
-);
+) as any;
 
 export type ListTrafficBudgetsError = Forbidden | NotFound | PlanetScaleOpError;
 /** List traffic budgets */
@@ -20594,7 +20628,8 @@ export const listTrafficBudgets: API.PaginatedOperationMethod<
   ListTrafficBudgetsRequest,
   PaginatedTrafficBudget,
   ListTrafficBudgetsError,
-  PlanetScaleOpContext
+  PlanetScaleOpContext,
+  PaginatedTrafficBudgetDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListTrafficBudgetsRequest,
@@ -20610,7 +20645,7 @@ export const listTrafficBudgets: API.PaginatedOperationMethod<
     } as const,
   }),
   paginatePageNumber,
-);
+) as any;
 
 export type ListWebhooksError = Forbidden | NotFound | PlanetScaleOpError;
 /** List webhooks List webhooks for a database */
@@ -20618,7 +20653,8 @@ export const listWebhooks: API.PaginatedOperationMethod<
   ListWebhooksRequest,
   PaginatedDatabaseWebhook,
   ListWebhooksError,
-  PlanetScaleOpContext
+  PlanetScaleOpContext,
+  PaginatedDatabaseWebhookDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListWebhooksRequest,
@@ -20634,7 +20670,7 @@ export const listWebhooks: API.PaginatedOperationMethod<
     } as const,
   }),
   paginatePageNumber,
-);
+) as any;
 
 export type ListWorkflowsError = Forbidden | NotFound | PlanetScaleOpError;
 /** List workflows */
@@ -20642,7 +20678,8 @@ export const listWorkflows: API.PaginatedOperationMethod<
   ListWorkflowsRequest,
   PaginatedWorkflow,
   ListWorkflowsError,
-  PlanetScaleOpContext
+  PlanetScaleOpContext,
+  PaginatedWorkflowDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListWorkflowsRequest,
@@ -20658,7 +20695,7 @@ export const listWorkflows: API.PaginatedOperationMethod<
     } as const,
   }),
   paginatePageNumber,
-);
+) as any;
 
 export type PromoteBranchError = Forbidden | NotFound | PlanetScaleOpError;
 /** Promote a branch Promotes a branch from development to production */

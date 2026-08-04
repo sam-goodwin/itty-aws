@@ -619,7 +619,8 @@ export const createTraceroute: API.PaginatedOperationMethod<
   CreateTracerouteRequest,
   CreateTracerouteResponse,
   CreateTracerouteError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  TraceroutesCreateResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: CreateTracerouteRequest,
@@ -630,7 +631,7 @@ export const createTraceroute: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type DeleteEndpointHealthcheckError =
   | EndpointHealthcheckNotFound

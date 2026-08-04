@@ -440,7 +440,8 @@ export const searchDocumentChunksDocuments: API.PaginatedOperationMethod<
   SearchDocumentChunksDocumentsRequest,
   SearchDocumentChunksResponse,
   SearchDocumentChunksDocumentsError,
-  GcpOpContext
+  GcpOpContext,
+  SearchDocumentChunksResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchDocumentChunksDocumentsRequest,
   output: SearchDocumentChunksResponse,
@@ -451,4 +452,4 @@ export const searchDocumentChunksDocuments: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;

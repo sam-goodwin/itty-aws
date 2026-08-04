@@ -941,7 +941,8 @@ export const listOperations: API.PaginatedOperationMethod<
   ListOperationsRequest,
   ListOperationsResponse,
   ListOperationsError,
-  GcpOpContext
+  GcpOpContext,
+  ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOperationsRequest,
   output: ListOperationsResponse,
@@ -952,7 +953,7 @@ export const listOperations: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListServicesTenancyUnitsError = NotFound | Forbidden | GcpOpError;
 /** Find the tenancy unit for a managed service and service consumer. This method shouldn't be used in a service producer's runtime path, for example to find the tenant project number when creating VMs. Service producers must persist the tenant project's information after the project is created. */
@@ -960,7 +961,8 @@ export const listServicesTenancyUnits: API.PaginatedOperationMethod<
   ListServicesTenancyUnitsRequest,
   ListTenancyUnitsResponse,
   ListServicesTenancyUnitsError,
-  GcpOpContext
+  GcpOpContext,
+  ListTenancyUnitsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListServicesTenancyUnitsRequest,
   output: ListTenancyUnitsResponse,
@@ -971,7 +973,7 @@ export const listServicesTenancyUnits: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type RemoveProjectServicesTenancyUnitsError =
   | NotFound
@@ -999,7 +1001,8 @@ export const searchServices: API.PaginatedOperationMethod<
   SearchServicesRequest,
   SearchTenancyUnitsResponse,
   SearchServicesError,
-  GcpOpContext
+  GcpOpContext,
+  SearchTenancyUnitsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchServicesRequest,
   output: SearchTenancyUnitsResponse,
@@ -1010,7 +1013,7 @@ export const searchServices: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type UndeleteProjectServicesTenancyUnitsError =
   | NotFound

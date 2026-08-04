@@ -982,7 +982,8 @@ export const createStoreSecret: API.PaginatedOperationMethod<
   CreateStoreSecretRequest,
   CreateStoreSecretResponse,
   CreateStoreSecretError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  StoresSecretsCreateResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: CreateStoreSecretRequest,
@@ -1001,7 +1002,7 @@ export const createStoreSecret: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type DeleteStoreError =
   | StoreNotFound
@@ -1151,7 +1152,8 @@ export const listStores: API.PaginatedOperationMethod<
   ListStoresRequest,
   ListStoresResponse,
   ListStoresError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  StoresListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListStoresRequest,
@@ -1168,7 +1170,7 @@ export const listStores: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListStoreSecretsError =
   | StoreNotFound
@@ -1179,7 +1181,8 @@ export const listStoreSecrets: API.PaginatedOperationMethod<
   ListStoreSecretsRequest,
   ListStoreSecretsResponse,
   ListStoreSecretsError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  StoresSecretsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListStoreSecretsRequest,
@@ -1201,7 +1204,7 @@ export const listStoreSecrets: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type PatchStoreSecretError =
   | StoreNotFound

@@ -199,7 +199,8 @@ export const queryFoldersLocationsActivityTypesActivities: API.PaginatedOperatio
   QueryFoldersLocationsActivityTypesActivitiesRequest,
   GoogleCloudPolicyanalyzerV1QueryActivityResponse,
   QueryFoldersLocationsActivityTypesActivitiesError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudPolicyanalyzerV1QueryActivityResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: QueryFoldersLocationsActivityTypesActivitiesRequest,
   output: GoogleCloudPolicyanalyzerV1QueryActivityResponse,
@@ -210,7 +211,7 @@ export const queryFoldersLocationsActivityTypesActivities: API.PaginatedOperatio
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type QueryOrganizationsLocationsActivityTypesActivitiesError =
   | NotFound
@@ -221,7 +222,8 @@ export const queryOrganizationsLocationsActivityTypesActivities: API.PaginatedOp
   QueryOrganizationsLocationsActivityTypesActivitiesRequest,
   GoogleCloudPolicyanalyzerV1QueryActivityResponse,
   QueryOrganizationsLocationsActivityTypesActivitiesError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudPolicyanalyzerV1QueryActivityResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: QueryOrganizationsLocationsActivityTypesActivitiesRequest,
   output: GoogleCloudPolicyanalyzerV1QueryActivityResponse,
@@ -232,7 +234,7 @@ export const queryOrganizationsLocationsActivityTypesActivities: API.PaginatedOp
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type QueryProjectsLocationsActivityTypesActivitiesError =
   | NotFound
@@ -243,7 +245,8 @@ export const queryProjectsLocationsActivityTypesActivities: API.PaginatedOperati
   QueryProjectsLocationsActivityTypesActivitiesRequest,
   GoogleCloudPolicyanalyzerV1QueryActivityResponse,
   QueryProjectsLocationsActivityTypesActivitiesError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudPolicyanalyzerV1QueryActivityResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: QueryProjectsLocationsActivityTypesActivitiesRequest,
   output: GoogleCloudPolicyanalyzerV1QueryActivityResponse,
@@ -254,4 +257,4 @@ export const queryProjectsLocationsActivityTypesActivities: API.PaginatedOperati
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;

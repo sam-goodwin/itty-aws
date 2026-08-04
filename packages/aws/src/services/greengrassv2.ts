@@ -2791,27 +2791,7 @@ export const listClientDevicesAssociatedWithCoreDevice: API.OperationMethod<
     items: "associatedClientDevices",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListClientDevicesAssociatedWithCoreDeviceRequest,
-  ListClientDevicesAssociatedWithCoreDeviceResponse,
-  ListClientDevicesAssociatedWithCoreDeviceError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListClientDevicesAssociatedWithCoreDeviceRequest,
-  ) => stream.Stream<
-    ListClientDevicesAssociatedWithCoreDeviceResponse,
-    ListClientDevicesAssociatedWithCoreDeviceError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListClientDevicesAssociatedWithCoreDeviceRequest,
-  ) => stream.Stream<
-    AssociatedClientDevice,
-    ListClientDevicesAssociatedWithCoreDeviceError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListComponentsError =
   | AccessDeniedException
@@ -2863,27 +2843,7 @@ export const listComponents: API.OperationMethod<
     items: "components",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListComponentsRequest,
-  ListComponentsResponse,
-  ListComponentsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListComponentsRequest,
-  ) => stream.Stream<
-    ListComponentsResponse,
-    ListComponentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListComponentsRequest,
-  ) => stream.Stream<
-    Component,
-    ListComponentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListComponentVersionsError =
   | AccessDeniedException
@@ -2935,27 +2895,7 @@ export const listComponentVersions: API.OperationMethod<
     items: "componentVersions",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListComponentVersionsRequest,
-  ListComponentVersionsResponse,
-  ListComponentVersionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListComponentVersionsRequest,
-  ) => stream.Stream<
-    ListComponentVersionsResponse,
-    ListComponentVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListComponentVersionsRequest,
-  ) => stream.Stream<
-    ComponentVersionListItem,
-    ListComponentVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListCoreDevicesError =
   | AccessDeniedException
@@ -3028,27 +2968,7 @@ export const listCoreDevices: API.OperationMethod<
     items: "coreDevices",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListCoreDevicesRequest,
-  ListCoreDevicesResponse,
-  ListCoreDevicesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCoreDevicesRequest,
-  ) => stream.Stream<
-    ListCoreDevicesResponse,
-    ListCoreDevicesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCoreDevicesRequest,
-  ) => stream.Stream<
-    CoreDevice,
-    ListCoreDevicesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListDeploymentsError =
   | AccessDeniedException
@@ -3097,27 +3017,7 @@ export const listDeployments: API.OperationMethod<
     items: "deployments",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListDeploymentsRequest,
-  ListDeploymentsResponse,
-  ListDeploymentsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDeploymentsRequest,
-  ) => stream.Stream<
-    ListDeploymentsResponse,
-    ListDeploymentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDeploymentsRequest,
-  ) => stream.Stream<
-    Deployment,
-    ListDeploymentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListEffectiveDeploymentsError =
   | AccessDeniedException
@@ -3168,27 +3068,7 @@ export const listEffectiveDeployments: API.OperationMethod<
     items: "effectiveDeployments",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListEffectiveDeploymentsRequest,
-  ListEffectiveDeploymentsResponse,
-  ListEffectiveDeploymentsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEffectiveDeploymentsRequest,
-  ) => stream.Stream<
-    ListEffectiveDeploymentsResponse,
-    ListEffectiveDeploymentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEffectiveDeploymentsRequest,
-  ) => stream.Stream<
-    EffectiveDeployment,
-    ListEffectiveDeploymentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListInstalledComponentsError =
   | AccessDeniedException
@@ -3261,27 +3141,7 @@ export const listInstalledComponents: API.OperationMethod<
     items: "installedComponents",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListInstalledComponentsRequest,
-  ListInstalledComponentsResponse,
-  ListInstalledComponentsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListInstalledComponentsRequest,
-  ) => stream.Stream<
-    ListInstalledComponentsResponse,
-    ListInstalledComponentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListInstalledComponentsRequest,
-  ) => stream.Stream<
-    InstalledComponent,
-    ListInstalledComponentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsForResourceError =
   | InternalServerException

@@ -3763,7 +3763,8 @@ export const createRule: API.PaginatedOperationMethod<
   CreateRuleRequest,
   CreateRuleResponse,
   CreateRuleError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  RulesCreateResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: CreateRuleRequest,
@@ -3774,7 +3775,7 @@ export const createRule: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type CreateWaitingRoomError =
   | ZoneNotEntitled
@@ -3815,7 +3816,8 @@ export const deleteRule: API.PaginatedOperationMethod<
   DeleteRuleRequest,
   DeleteRuleResponse,
   DeleteRuleError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  RulesDeleteResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: DeleteRuleRequest,
@@ -3826,7 +3828,7 @@ export const deleteRule: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type DeleteWaitingRoomError =
   | WaitingRoomNotFound
@@ -3887,7 +3889,8 @@ export const getRule: API.PaginatedOperationMethod<
   GetRuleRequest,
   GetRuleResponse,
   GetRuleError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  RulesGetResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: GetRuleRequest,
@@ -3898,7 +3901,7 @@ export const getRule: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type GetSettingError = Forbidden | CloudflareOpError;
 /** Gets the zone-level Waiting Room settings that apply as defaults to all waiting rooms on the zone. */
@@ -3959,7 +3962,8 @@ export const listEvents: API.PaginatedOperationMethod<
   ListEventsRequest,
   ListEventsResponse,
   ListEventsError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  EventsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListEventsRequest,
@@ -3976,7 +3980,7 @@ export const listEvents: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListWaitingRoomsForAccountError = Forbidden | CloudflareOpError;
 /** Lists waiting rooms for account or zone. */
@@ -3984,7 +3988,8 @@ export const listWaitingRoomsForAccount: API.PaginatedOperationMethod<
   ListWaitingRoomsForAccountRequest,
   ListWaitingRoomsResponse,
   ListWaitingRoomsForAccountError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  ListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListWaitingRoomsForAccountRequest,
@@ -4001,7 +4006,7 @@ export const listWaitingRoomsForAccount: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListWaitingRoomsForZoneError = Forbidden | CloudflareOpError;
 /** Lists waiting rooms for account or zone. */
@@ -4009,7 +4014,8 @@ export const listWaitingRoomsForZone: API.PaginatedOperationMethod<
   ListWaitingRoomsForZoneRequest,
   ListWaitingRoomsResponse,
   ListWaitingRoomsForZoneError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  ListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListWaitingRoomsForZoneRequest,
@@ -4026,7 +4032,7 @@ export const listWaitingRoomsForZone: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type PatchEventError = CloudflareOpError;
 /** Patches a configured event for a waiting room. */
@@ -4049,7 +4055,8 @@ export const patchRule: API.PaginatedOperationMethod<
   PatchRuleRequest,
   PatchRuleResponse,
   PatchRuleError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  RulesEditResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: PatchRuleRequest,
@@ -4060,7 +4067,7 @@ export const patchRule: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type PatchSettingError = CloudflareOpError;
 /** Partially updates zone-level Waiting Room settings using PATCH semantics. */
@@ -4143,7 +4150,8 @@ export const updateRule: API.PaginatedOperationMethod<
   UpdateRuleRequest,
   UpdateRuleResponse,
   UpdateRuleError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  RulesUpdateResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: UpdateRuleRequest,
@@ -4154,7 +4162,7 @@ export const updateRule: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type UpdateWaitingRoomError =
   | WaitingRoomNotFound

@@ -2344,7 +2344,8 @@ export const listHistories: API.PaginatedOperationMethod<
   ListHistoriesRequest,
   ListHistoriesResponse,
   ListHistoriesError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  HistoryListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListHistoriesRequest,
@@ -2355,7 +2356,7 @@ export const listHistories: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type PutConfigError = CloudflareOpError;
 /** Updates Zaraz configuration for a zone. */

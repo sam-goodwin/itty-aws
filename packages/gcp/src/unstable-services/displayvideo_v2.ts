@@ -14205,7 +14205,8 @@ export const bulkListAdGroupAssignedTargetingOptionsAdvertisersYoutubeAdGroups: 
   BulkListAdGroupAssignedTargetingOptionsAdvertisersYoutubeAdGroupsRequest,
   BulkListAdGroupAssignedTargetingOptionsResponse,
   BulkListAdGroupAssignedTargetingOptionsAdvertisersYoutubeAdGroupsError,
-  GcpOpContext
+  GcpOpContext,
+  BulkListAdGroupAssignedTargetingOptionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input:
     BulkListAdGroupAssignedTargetingOptionsAdvertisersYoutubeAdGroupsRequest,
@@ -14217,7 +14218,7 @@ export const bulkListAdGroupAssignedTargetingOptionsAdvertisersYoutubeAdGroups: 
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type BulkListAssignedTargetingOptionsAdvertisersLineItemsError =
   | NotFound
@@ -14228,7 +14229,8 @@ export const bulkListAssignedTargetingOptionsAdvertisersLineItems: API.Paginated
   BulkListAssignedTargetingOptionsAdvertisersLineItemsRequest,
   BulkListAssignedTargetingOptionsResponse,
   BulkListAssignedTargetingOptionsAdvertisersLineItemsError,
-  GcpOpContext
+  GcpOpContext,
+  BulkListAssignedTargetingOptionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: BulkListAssignedTargetingOptionsAdvertisersLineItemsRequest,
   output: BulkListAssignedTargetingOptionsResponse,
@@ -14239,7 +14241,7 @@ export const bulkListAssignedTargetingOptionsAdvertisersLineItems: API.Paginated
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type BulkUpdateAdvertisersLineItemsError =
   | NotFound
@@ -15650,7 +15652,8 @@ export const listAdvertisers: API.PaginatedOperationMethod<
   ListAdvertisersRequest,
   ListAdvertisersResponse,
   ListAdvertisersError,
-  GcpOpContext
+  GcpOpContext,
+  ListAdvertisersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAdvertisersRequest,
   output: ListAdvertisersResponse,
@@ -15661,7 +15664,7 @@ export const listAdvertisers: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListAdvertisersCampaignsError = NotFound | Forbidden | GcpOpError;
 /** Lists campaigns in an advertiser. The order is defined by the order_by parameter. If a filter by entity_status is not specified, campaigns with `ENTITY_STATUS_ARCHIVED` will not be included in the results. */
@@ -15669,7 +15672,8 @@ export const listAdvertisersCampaigns: API.PaginatedOperationMethod<
   ListAdvertisersCampaignsRequest,
   ListCampaignsResponse,
   ListAdvertisersCampaignsError,
-  GcpOpContext
+  GcpOpContext,
+  ListCampaignsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAdvertisersCampaignsRequest,
   output: ListCampaignsResponse,
@@ -15680,7 +15684,7 @@ export const listAdvertisersCampaigns: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListAdvertisersChannelsError = NotFound | Forbidden | GcpOpError;
 /** Lists channels for a partner or advertiser. */
@@ -15688,7 +15692,8 @@ export const listAdvertisersChannels: API.PaginatedOperationMethod<
   ListAdvertisersChannelsRequest,
   ListChannelsResponse,
   ListAdvertisersChannelsError,
-  GcpOpContext
+  GcpOpContext,
+  ListChannelsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAdvertisersChannelsRequest,
   output: ListChannelsResponse,
@@ -15699,7 +15704,7 @@ export const listAdvertisersChannels: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListAdvertisersChannelsSitesError =
   | NotFound
@@ -15710,7 +15715,8 @@ export const listAdvertisersChannelsSites: API.PaginatedOperationMethod<
   ListAdvertisersChannelsSitesRequest,
   ListSitesResponse,
   ListAdvertisersChannelsSitesError,
-  GcpOpContext
+  GcpOpContext,
+  ListSitesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAdvertisersChannelsSitesRequest,
   output: ListSitesResponse,
@@ -15721,7 +15727,7 @@ export const listAdvertisersChannelsSites: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListAdvertisersCreativesError = NotFound | Forbidden | GcpOpError;
 /** Lists creatives in an advertiser. The order is defined by the order_by parameter. If a filter by entity_status is not specified, creatives with `ENTITY_STATUS_ARCHIVED` will not be included in the results. */
@@ -15729,7 +15735,8 @@ export const listAdvertisersCreatives: API.PaginatedOperationMethod<
   ListAdvertisersCreativesRequest,
   ListCreativesResponse,
   ListAdvertisersCreativesError,
-  GcpOpContext
+  GcpOpContext,
+  ListCreativesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAdvertisersCreativesRequest,
   output: ListCreativesResponse,
@@ -15740,7 +15747,7 @@ export const listAdvertisersCreatives: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListAdvertisersInsertionOrdersError =
   | NotFound
@@ -15751,7 +15758,8 @@ export const listAdvertisersInsertionOrders: API.PaginatedOperationMethod<
   ListAdvertisersInsertionOrdersRequest,
   ListInsertionOrdersResponse,
   ListAdvertisersInsertionOrdersError,
-  GcpOpContext
+  GcpOpContext,
+  ListInsertionOrdersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAdvertisersInsertionOrdersRequest,
   output: ListInsertionOrdersResponse,
@@ -15762,7 +15770,7 @@ export const listAdvertisersInsertionOrders: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListAdvertisersInvoicesError = NotFound | Forbidden | GcpOpError;
 /** Lists invoices posted for an advertiser in a given month. Invoices generated by billing profiles with a "Partner" invoice level are not retrievable through this method. */
@@ -15770,7 +15778,8 @@ export const listAdvertisersInvoices: API.PaginatedOperationMethod<
   ListAdvertisersInvoicesRequest,
   ListInvoicesResponse,
   ListAdvertisersInvoicesError,
-  GcpOpContext
+  GcpOpContext,
+  ListInvoicesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAdvertisersInvoicesRequest,
   output: ListInvoicesResponse,
@@ -15781,7 +15790,7 @@ export const listAdvertisersInvoices: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListAdvertisersLineItemsError = NotFound | Forbidden | GcpOpError;
 /** Lists line items in an advertiser. The order is defined by the order_by parameter. If a filter by entity_status is not specified, line items with `ENTITY_STATUS_ARCHIVED` will not be included in the results. */
@@ -15789,7 +15798,8 @@ export const listAdvertisersLineItems: API.PaginatedOperationMethod<
   ListAdvertisersLineItemsRequest,
   ListLineItemsResponse,
   ListAdvertisersLineItemsError,
-  GcpOpContext
+  GcpOpContext,
+  ListLineItemsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAdvertisersLineItemsRequest,
   output: ListLineItemsResponse,
@@ -15800,7 +15810,7 @@ export const listAdvertisersLineItems: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsError =
   NotFound | Forbidden | GcpOpError;
@@ -15809,7 +15819,8 @@ export const listAdvertisersLineItemsTargetingTypesAssignedTargetingOptions: API
   ListAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsRequest,
   ListLineItemAssignedTargetingOptionsResponse,
   ListAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsError,
-  GcpOpContext
+  GcpOpContext,
+  ListLineItemAssignedTargetingOptionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsRequest,
   output: ListLineItemAssignedTargetingOptionsResponse,
@@ -15820,7 +15831,7 @@ export const listAdvertisersLineItemsTargetingTypesAssignedTargetingOptions: API
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListAdvertisersLocationListsError =
   | NotFound
@@ -15831,7 +15842,8 @@ export const listAdvertisersLocationLists: API.PaginatedOperationMethod<
   ListAdvertisersLocationListsRequest,
   ListLocationListsResponse,
   ListAdvertisersLocationListsError,
-  GcpOpContext
+  GcpOpContext,
+  ListLocationListsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAdvertisersLocationListsRequest,
   output: ListLocationListsResponse,
@@ -15842,7 +15854,7 @@ export const listAdvertisersLocationLists: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListAdvertisersLocationListsAssignedLocationsError =
   | NotFound
@@ -15853,7 +15865,8 @@ export const listAdvertisersLocationListsAssignedLocations: API.PaginatedOperati
   ListAdvertisersLocationListsAssignedLocationsRequest,
   ListAssignedLocationsResponse,
   ListAdvertisersLocationListsAssignedLocationsError,
-  GcpOpContext
+  GcpOpContext,
+  ListAssignedLocationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAdvertisersLocationListsAssignedLocationsRequest,
   output: ListAssignedLocationsResponse,
@@ -15864,7 +15877,7 @@ export const listAdvertisersLocationListsAssignedLocations: API.PaginatedOperati
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListAdvertisersManualTriggersError =
   | NotFound
@@ -15875,7 +15888,8 @@ export const listAdvertisersManualTriggers: API.PaginatedOperationMethod<
   ListAdvertisersManualTriggersRequest,
   ListManualTriggersResponse,
   ListAdvertisersManualTriggersError,
-  GcpOpContext
+  GcpOpContext,
+  ListManualTriggersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAdvertisersManualTriggersRequest,
   output: ListManualTriggersResponse,
@@ -15886,7 +15900,7 @@ export const listAdvertisersManualTriggers: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListAdvertisersNegativeKeywordListsError =
   | NotFound
@@ -15897,7 +15911,8 @@ export const listAdvertisersNegativeKeywordLists: API.PaginatedOperationMethod<
   ListAdvertisersNegativeKeywordListsRequest,
   ListNegativeKeywordListsResponse,
   ListAdvertisersNegativeKeywordListsError,
-  GcpOpContext
+  GcpOpContext,
+  ListNegativeKeywordListsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAdvertisersNegativeKeywordListsRequest,
   output: ListNegativeKeywordListsResponse,
@@ -15908,7 +15923,7 @@ export const listAdvertisersNegativeKeywordLists: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListAdvertisersNegativeKeywordListsNegativeKeywordsError =
   | NotFound
@@ -15919,7 +15934,8 @@ export const listAdvertisersNegativeKeywordListsNegativeKeywords: API.PaginatedO
   ListAdvertisersNegativeKeywordListsNegativeKeywordsRequest,
   ListNegativeKeywordsResponse,
   ListAdvertisersNegativeKeywordListsNegativeKeywordsError,
-  GcpOpContext
+  GcpOpContext,
+  ListNegativeKeywordsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAdvertisersNegativeKeywordListsNegativeKeywordsRequest,
   output: ListNegativeKeywordsResponse,
@@ -15930,7 +15946,7 @@ export const listAdvertisersNegativeKeywordListsNegativeKeywords: API.PaginatedO
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListAdvertisersTargetingTypesAssignedTargetingOptionsError =
   | NotFound
@@ -15941,7 +15957,8 @@ export const listAdvertisersTargetingTypesAssignedTargetingOptions: API.Paginate
   ListAdvertisersTargetingTypesAssignedTargetingOptionsRequest,
   ListAdvertiserAssignedTargetingOptionsResponse,
   ListAdvertisersTargetingTypesAssignedTargetingOptionsError,
-  GcpOpContext
+  GcpOpContext,
+  ListAdvertiserAssignedTargetingOptionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAdvertisersTargetingTypesAssignedTargetingOptionsRequest,
   output: ListAdvertiserAssignedTargetingOptionsResponse,
@@ -15952,7 +15969,7 @@ export const listAdvertisersTargetingTypesAssignedTargetingOptions: API.Paginate
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListAdvertisersYoutubeAdGroupAdsError =
   | NotFound
@@ -15963,7 +15980,8 @@ export const listAdvertisersYoutubeAdGroupAds: API.PaginatedOperationMethod<
   ListAdvertisersYoutubeAdGroupAdsRequest,
   ListYoutubeAdGroupAdsResponse,
   ListAdvertisersYoutubeAdGroupAdsError,
-  GcpOpContext
+  GcpOpContext,
+  ListYoutubeAdGroupAdsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAdvertisersYoutubeAdGroupAdsRequest,
   output: ListYoutubeAdGroupAdsResponse,
@@ -15974,7 +15992,7 @@ export const listAdvertisersYoutubeAdGroupAds: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListAdvertisersYoutubeAdGroupsError =
   | NotFound
@@ -15985,7 +16003,8 @@ export const listAdvertisersYoutubeAdGroups: API.PaginatedOperationMethod<
   ListAdvertisersYoutubeAdGroupsRequest,
   ListYoutubeAdGroupsResponse,
   ListAdvertisersYoutubeAdGroupsError,
-  GcpOpContext
+  GcpOpContext,
+  ListYoutubeAdGroupsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAdvertisersYoutubeAdGroupsRequest,
   output: ListYoutubeAdGroupsResponse,
@@ -15996,7 +16015,7 @@ export const listAdvertisersYoutubeAdGroups: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListAdvertisersYoutubeAdGroupsTargetingTypesAssignedTargetingOptionsError =
   NotFound | Forbidden | GcpOpError;
@@ -16005,7 +16024,8 @@ export const listAdvertisersYoutubeAdGroupsTargetingTypesAssignedTargetingOption
   ListAdvertisersYoutubeAdGroupsTargetingTypesAssignedTargetingOptionsRequest,
   ListYoutubeAdGroupAssignedTargetingOptionsResponse,
   ListAdvertisersYoutubeAdGroupsTargetingTypesAssignedTargetingOptionsError,
-  GcpOpContext
+  GcpOpContext,
+  ListYoutubeAdGroupAssignedTargetingOptionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input:
     ListAdvertisersYoutubeAdGroupsTargetingTypesAssignedTargetingOptionsRequest,
@@ -16017,7 +16037,7 @@ export const listAdvertisersYoutubeAdGroupsTargetingTypesAssignedTargetingOption
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListAssignedTargetingOptionsAdvertisersError =
   | NotFound
@@ -16028,7 +16048,8 @@ export const listAssignedTargetingOptionsAdvertisers: API.PaginatedOperationMeth
   ListAssignedTargetingOptionsAdvertisersRequest,
   BulkListAdvertiserAssignedTargetingOptionsResponse,
   ListAssignedTargetingOptionsAdvertisersError,
-  GcpOpContext
+  GcpOpContext,
+  BulkListAdvertiserAssignedTargetingOptionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAssignedTargetingOptionsAdvertisersRequest,
   output: BulkListAdvertiserAssignedTargetingOptionsResponse,
@@ -16039,7 +16060,7 @@ export const listAssignedTargetingOptionsAdvertisers: API.PaginatedOperationMeth
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListCombinedAudiencesError = NotFound | Forbidden | GcpOpError;
 /** Lists combined audiences. The order is defined by the order_by parameter. */
@@ -16047,7 +16068,8 @@ export const listCombinedAudiences: API.PaginatedOperationMethod<
   ListCombinedAudiencesRequest,
   ListCombinedAudiencesResponse,
   ListCombinedAudiencesError,
-  GcpOpContext
+  GcpOpContext,
+  ListCombinedAudiencesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCombinedAudiencesRequest,
   output: ListCombinedAudiencesResponse,
@@ -16058,7 +16080,7 @@ export const listCombinedAudiences: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListCustomBiddingAlgorithmsError =
   | NotFound
@@ -16069,7 +16091,8 @@ export const listCustomBiddingAlgorithms: API.PaginatedOperationMethod<
   ListCustomBiddingAlgorithmsRequest,
   ListCustomBiddingAlgorithmsResponse,
   ListCustomBiddingAlgorithmsError,
-  GcpOpContext
+  GcpOpContext,
+  ListCustomBiddingAlgorithmsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCustomBiddingAlgorithmsRequest,
   output: ListCustomBiddingAlgorithmsResponse,
@@ -16080,7 +16103,7 @@ export const listCustomBiddingAlgorithms: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListCustomBiddingAlgorithmsScriptsError =
   | NotFound
@@ -16091,7 +16114,8 @@ export const listCustomBiddingAlgorithmsScripts: API.PaginatedOperationMethod<
   ListCustomBiddingAlgorithmsScriptsRequest,
   ListCustomBiddingScriptsResponse,
   ListCustomBiddingAlgorithmsScriptsError,
-  GcpOpContext
+  GcpOpContext,
+  ListCustomBiddingScriptsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCustomBiddingAlgorithmsScriptsRequest,
   output: ListCustomBiddingScriptsResponse,
@@ -16102,7 +16126,7 @@ export const listCustomBiddingAlgorithmsScripts: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListCustomListsError = NotFound | Forbidden | GcpOpError;
 /** Lists custom lists. The order is defined by the order_by parameter. */
@@ -16110,7 +16134,8 @@ export const listCustomLists: API.PaginatedOperationMethod<
   ListCustomListsRequest,
   ListCustomListsResponse,
   ListCustomListsError,
-  GcpOpContext
+  GcpOpContext,
+  ListCustomListsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCustomListsRequest,
   output: ListCustomListsResponse,
@@ -16121,7 +16146,7 @@ export const listCustomLists: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListFloodlightGroupsFloodlightActivitiesError =
   | NotFound
@@ -16132,7 +16157,8 @@ export const listFloodlightGroupsFloodlightActivities: API.PaginatedOperationMet
   ListFloodlightGroupsFloodlightActivitiesRequest,
   ListFloodlightActivitiesResponse,
   ListFloodlightGroupsFloodlightActivitiesError,
-  GcpOpContext
+  GcpOpContext,
+  ListFloodlightActivitiesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFloodlightGroupsFloodlightActivitiesRequest,
   output: ListFloodlightActivitiesResponse,
@@ -16143,7 +16169,7 @@ export const listFloodlightGroupsFloodlightActivities: API.PaginatedOperationMet
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListGoogleAudiencesError = NotFound | Forbidden | GcpOpError;
 /** Lists Google audiences. The order is defined by the order_by parameter. */
@@ -16151,7 +16177,8 @@ export const listGoogleAudiences: API.PaginatedOperationMethod<
   ListGoogleAudiencesRequest,
   ListGoogleAudiencesResponse,
   ListGoogleAudiencesError,
-  GcpOpContext
+  GcpOpContext,
+  ListGoogleAudiencesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListGoogleAudiencesRequest,
   output: ListGoogleAudiencesResponse,
@@ -16162,7 +16189,7 @@ export const listGoogleAudiences: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListGuaranteedOrdersError = NotFound | Forbidden | GcpOpError;
 /** Lists guaranteed orders that are accessible to the current user. The order is defined by the order_by parameter. If a filter by entity_status is not specified, guaranteed orders with entity status `ENTITY_STATUS_ARCHIVED` will not be included in the results. */
@@ -16170,7 +16197,8 @@ export const listGuaranteedOrders: API.PaginatedOperationMethod<
   ListGuaranteedOrdersRequest,
   ListGuaranteedOrdersResponse,
   ListGuaranteedOrdersError,
-  GcpOpContext
+  GcpOpContext,
+  ListGuaranteedOrdersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListGuaranteedOrdersRequest,
   output: ListGuaranteedOrdersResponse,
@@ -16181,7 +16209,7 @@ export const listGuaranteedOrders: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListInventorySourceGroupsError = NotFound | Forbidden | GcpOpError;
 /** Lists inventory source groups that are accessible to the current user. The order is defined by the order_by parameter. */
@@ -16189,7 +16217,8 @@ export const listInventorySourceGroups: API.PaginatedOperationMethod<
   ListInventorySourceGroupsRequest,
   ListInventorySourceGroupsResponse,
   ListInventorySourceGroupsError,
-  GcpOpContext
+  GcpOpContext,
+  ListInventorySourceGroupsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListInventorySourceGroupsRequest,
   output: ListInventorySourceGroupsResponse,
@@ -16200,7 +16229,7 @@ export const listInventorySourceGroups: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListInventorySourceGroupsAssignedInventorySourcesError =
   | NotFound
@@ -16211,7 +16240,8 @@ export const listInventorySourceGroupsAssignedInventorySources: API.PaginatedOpe
   ListInventorySourceGroupsAssignedInventorySourcesRequest,
   ListAssignedInventorySourcesResponse,
   ListInventorySourceGroupsAssignedInventorySourcesError,
-  GcpOpContext
+  GcpOpContext,
+  ListAssignedInventorySourcesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListInventorySourceGroupsAssignedInventorySourcesRequest,
   output: ListAssignedInventorySourcesResponse,
@@ -16222,7 +16252,7 @@ export const listInventorySourceGroupsAssignedInventorySources: API.PaginatedOpe
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListPartnersError = NotFound | Forbidden | GcpOpError;
 /** Lists partners that are accessible to the current user. The order is defined by the order_by parameter. */
@@ -16230,7 +16260,8 @@ export const listPartners: API.PaginatedOperationMethod<
   ListPartnersRequest,
   ListPartnersResponse,
   ListPartnersError,
-  GcpOpContext
+  GcpOpContext,
+  ListPartnersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPartnersRequest,
   output: ListPartnersResponse,
@@ -16241,7 +16272,7 @@ export const listPartners: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListPartnersChannelsError = NotFound | Forbidden | GcpOpError;
 /** Lists channels for a partner or advertiser. */
@@ -16249,7 +16280,8 @@ export const listPartnersChannels: API.PaginatedOperationMethod<
   ListPartnersChannelsRequest,
   ListChannelsResponse,
   ListPartnersChannelsError,
-  GcpOpContext
+  GcpOpContext,
+  ListChannelsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPartnersChannelsRequest,
   output: ListChannelsResponse,
@@ -16260,7 +16292,7 @@ export const listPartnersChannels: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListPartnersChannelsSitesError = NotFound | Forbidden | GcpOpError;
 /** Lists sites in a channel. */
@@ -16268,7 +16300,8 @@ export const listPartnersChannelsSites: API.PaginatedOperationMethod<
   ListPartnersChannelsSitesRequest,
   ListSitesResponse,
   ListPartnersChannelsSitesError,
-  GcpOpContext
+  GcpOpContext,
+  ListSitesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPartnersChannelsSitesRequest,
   output: ListSitesResponse,
@@ -16279,7 +16312,7 @@ export const listPartnersChannelsSites: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListPartnersTargetingTypesAssignedTargetingOptionsError =
   | NotFound
@@ -16290,7 +16323,8 @@ export const listPartnersTargetingTypesAssignedTargetingOptions: API.PaginatedOp
   ListPartnersTargetingTypesAssignedTargetingOptionsRequest,
   ListPartnerAssignedTargetingOptionsResponse,
   ListPartnersTargetingTypesAssignedTargetingOptionsError,
-  GcpOpContext
+  GcpOpContext,
+  ListPartnerAssignedTargetingOptionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPartnersTargetingTypesAssignedTargetingOptionsRequest,
   output: ListPartnerAssignedTargetingOptionsResponse,
@@ -16301,7 +16335,7 @@ export const listPartnersTargetingTypesAssignedTargetingOptions: API.PaginatedOp
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListTargetingTypesTargetingOptionsError =
   | NotFound
@@ -16312,7 +16346,8 @@ export const listTargetingTypesTargetingOptions: API.PaginatedOperationMethod<
   ListTargetingTypesTargetingOptionsRequest,
   ListTargetingOptionsResponse,
   ListTargetingTypesTargetingOptionsError,
-  GcpOpContext
+  GcpOpContext,
+  ListTargetingOptionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTargetingTypesTargetingOptionsRequest,
   output: ListTargetingOptionsResponse,
@@ -16323,7 +16358,7 @@ export const listTargetingTypesTargetingOptions: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListUsersError = NotFound | Forbidden | GcpOpError;
 /** Lists users that are accessible to the current user. If two users have user roles on the same partner or advertiser, they can access each other. This method has unique authentication requirements. Read the prerequisites in our [Managing Users guide](/display-video/api/guides/users/overview#prerequisites) before using this method. The "Try this method" feature does not work for this method. */
@@ -16331,7 +16366,8 @@ export const listUsers: API.PaginatedOperationMethod<
   ListUsersRequest,
   ListUsersResponse,
   ListUsersError,
-  GcpOpContext
+  GcpOpContext,
+  ListUsersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListUsersRequest,
   output: ListUsersResponse,
@@ -16342,7 +16378,7 @@ export const listUsers: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type LookupInvoiceCurrencyAdvertisersInvoicesError =
   | NotFound

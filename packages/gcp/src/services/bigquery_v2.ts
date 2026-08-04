@@ -9419,7 +9419,8 @@ export const listDatasets: API.PaginatedOperationMethod<
   ListDatasetsRequest,
   DatasetList,
   ListDatasetsError,
-  GcpOpContext
+  GcpOpContext,
+  DatasetList
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDatasetsRequest,
   output: DatasetList,
@@ -9430,7 +9431,7 @@ export const listDatasets: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListJobsError = NotFound | Forbidden | GcpOpError;
 /** Lists all jobs that you started in the specified project. Job information is available for a six month period after creation. The job list is sorted in reverse chronological order, by job creation time. Requires the Can View project role, or the Is Owner project role if you set the allUsers property. # IAM Permissions Requires no specific IAM permission(s) to use this method. Users are able to list the jobs they created. Additional access is granted based on the following permissions: - Users with the `bigquery.jobs.listAll` permission can list all jobs with all metadata. - Users with the `bigquery.jobs.list` permission can list all jobs, but with redacted information for jobs they did not create. */
@@ -9438,7 +9439,8 @@ export const listJobs: API.PaginatedOperationMethod<
   ListJobsRequest,
   JobList,
   ListJobsError,
-  GcpOpContext
+  GcpOpContext,
+  JobList
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListJobsRequest,
   output: JobList,
@@ -9449,7 +9451,7 @@ export const listJobs: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListModelsError = NotFound | Forbidden | GcpOpError;
 /** Lists all models in the specified dataset. Requires the READER dataset role. After retrieving the list of models, you can get information about a particular model by calling the models.get method. # IAM Permissions Requires the `bigquery.models.list` permission on the dataset. */
@@ -9457,7 +9459,8 @@ export const listModels: API.PaginatedOperationMethod<
   ListModelsRequest,
   ListModelsResponse,
   ListModelsError,
-  GcpOpContext
+  GcpOpContext,
+  ListModelsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListModelsRequest,
   output: ListModelsResponse,
@@ -9468,7 +9471,7 @@ export const listModels: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsError = NotFound | Forbidden | GcpOpError;
 /** RPC to list projects to which the user has been granted any project role. Users of this method are encouraged to consider the [Resource Manager](https://cloud.google.com/resource-manager/docs/) API, which provides the underlying data for this method and has more capabilities. # IAM Permissions Requires no specific IAM permission(s) to use this method. The results are filtered to only include projects on which the caller has been granted a project-level role such as a BigQuery predefined IAM role or a basic role such as Viewer or Owner. */
@@ -9476,7 +9479,8 @@ export const listProjects: API.PaginatedOperationMethod<
   ListProjectsRequest,
   ProjectList,
   ListProjectsError,
-  GcpOpContext
+  GcpOpContext,
+  ProjectList
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsRequest,
   output: ProjectList,
@@ -9487,7 +9491,7 @@ export const listProjects: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListRoutinesError = NotFound | Forbidden | GcpOpError;
 /** Lists all routines in the specified dataset. Requires the READER dataset role. # IAM Permissions Requires the `bigquery.routines.list` permission on the dataset. */
@@ -9495,7 +9499,8 @@ export const listRoutines: API.PaginatedOperationMethod<
   ListRoutinesRequest,
   ListRoutinesResponse,
   ListRoutinesError,
-  GcpOpContext
+  GcpOpContext,
+  ListRoutinesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRoutinesRequest,
   output: ListRoutinesResponse,
@@ -9506,7 +9511,7 @@ export const listRoutines: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListRowAccessPoliciesError = NotFound | Forbidden | GcpOpError;
 /** Lists all row access policies on the specified table. # IAM Permissions Requires the `bigquery.rowAccessPolicies.list` permission on the table. */
@@ -9514,7 +9519,8 @@ export const listRowAccessPolicies: API.PaginatedOperationMethod<
   ListRowAccessPoliciesRequest,
   ListRowAccessPoliciesResponse,
   ListRowAccessPoliciesError,
-  GcpOpContext
+  GcpOpContext,
+  ListRowAccessPoliciesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRowAccessPoliciesRequest,
   output: ListRowAccessPoliciesResponse,
@@ -9525,7 +9531,7 @@ export const listRowAccessPolicies: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListTabledataError = NotFound | Forbidden | GcpOpError;
 /** List the content of a table in rows. # IAM Permissions Requires the `bigquery.tables.getData` permission on the table. */
@@ -9548,7 +9554,8 @@ export const listTables: API.PaginatedOperationMethod<
   ListTablesRequest,
   TableList,
   ListTablesError,
-  GcpOpContext
+  GcpOpContext,
+  TableList
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTablesRequest,
   output: TableList,
@@ -9559,7 +9566,7 @@ export const listTables: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type PatchDatasetsError =
   | NotFound

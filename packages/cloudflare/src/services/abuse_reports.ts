@@ -1039,7 +1039,8 @@ export const reviewMitigation: API.PaginatedOperationMethod<
   ReviewMitigationRequest,
   ReviewMitigationResponse,
   ReviewMitigationError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  MitigationsReviewResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ReviewMitigationRequest,
@@ -1050,4 +1051,4 @@ export const reviewMitigation: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;

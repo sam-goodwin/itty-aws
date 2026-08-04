@@ -4171,7 +4171,8 @@ export const analyzeOrgPoliciesV1: API.PaginatedOperationMethod<
   AnalyzeOrgPoliciesV1Request,
   AnalyzeOrgPoliciesResponse,
   AnalyzeOrgPoliciesV1Error,
-  GcpOpContext
+  GcpOpContext,
+  AnalyzeOrgPoliciesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: AnalyzeOrgPoliciesV1Request,
   output: AnalyzeOrgPoliciesResponse,
@@ -4182,7 +4183,7 @@ export const analyzeOrgPoliciesV1: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type AnalyzeOrgPolicyGovernedAssetsV1Error =
   | NotFound
@@ -4193,7 +4194,8 @@ export const analyzeOrgPolicyGovernedAssetsV1: API.PaginatedOperationMethod<
   AnalyzeOrgPolicyGovernedAssetsV1Request,
   AnalyzeOrgPolicyGovernedAssetsResponse,
   AnalyzeOrgPolicyGovernedAssetsV1Error,
-  GcpOpContext
+  GcpOpContext,
+  AnalyzeOrgPolicyGovernedAssetsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: AnalyzeOrgPolicyGovernedAssetsV1Request,
   output: AnalyzeOrgPolicyGovernedAssetsResponse,
@@ -4204,7 +4206,7 @@ export const analyzeOrgPolicyGovernedAssetsV1: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type AnalyzeOrgPolicyGovernedContainersV1Error =
   | NotFound
@@ -4215,7 +4217,8 @@ export const analyzeOrgPolicyGovernedContainersV1: API.PaginatedOperationMethod<
   AnalyzeOrgPolicyGovernedContainersV1Request,
   AnalyzeOrgPolicyGovernedContainersResponse,
   AnalyzeOrgPolicyGovernedContainersV1Error,
-  GcpOpContext
+  GcpOpContext,
+  AnalyzeOrgPolicyGovernedContainersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: AnalyzeOrgPolicyGovernedContainersV1Request,
   output: AnalyzeOrgPolicyGovernedContainersResponse,
@@ -4226,7 +4229,7 @@ export const analyzeOrgPolicyGovernedContainersV1: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type BatchGetAssetsHistoryV1Error = NotFound | Forbidden | GcpOpError;
 /** Batch gets the update history of assets that overlap a time window. For IAM_POLICY content, this API outputs history when the asset and its attached IAM POLICY both exist. This can create gaps in the output history. Otherwise, this API outputs history with asset in both non-delete or deleted status. If a specified asset does not exist, this API returns an INVALID_ARGUMENT error. */
@@ -4412,7 +4415,8 @@ export const listAssets: API.PaginatedOperationMethod<
   ListAssetsRequest,
   ListAssetsResponse,
   ListAssetsError,
-  GcpOpContext
+  GcpOpContext,
+  ListAssetsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAssetsRequest,
   output: ListAssetsResponse,
@@ -4423,7 +4427,7 @@ export const listAssets: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListFeedsError = NotFound | Forbidden | GcpOpError;
 /** Lists all asset feeds in a parent project/folder/organization. */
@@ -4446,7 +4450,8 @@ export const listSavedQueries: API.PaginatedOperationMethod<
   ListSavedQueriesRequest,
   ListSavedQueriesResponse,
   ListSavedQueriesError,
-  GcpOpContext
+  GcpOpContext,
+  ListSavedQueriesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSavedQueriesRequest,
   output: ListSavedQueriesResponse,
@@ -4457,7 +4462,7 @@ export const listSavedQueries: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type PatchFeedsError =
   | NotFound
@@ -4525,7 +4530,8 @@ export const searchAllIamPoliciesV1: API.PaginatedOperationMethod<
   SearchAllIamPoliciesV1Request,
   SearchAllIamPoliciesResponse,
   SearchAllIamPoliciesV1Error,
-  GcpOpContext
+  GcpOpContext,
+  SearchAllIamPoliciesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchAllIamPoliciesV1Request,
   output: SearchAllIamPoliciesResponse,
@@ -4536,7 +4542,7 @@ export const searchAllIamPoliciesV1: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type SearchAllResourcesV1Error = NotFound | Forbidden | GcpOpError;
 /** Searches all Google Cloud resources within the specified scope, such as a project, folder, or organization. The caller must be granted the `cloudasset.assets.searchAllResources` permission on the desired scope, otherwise the request will be rejected. */
@@ -4544,7 +4550,8 @@ export const searchAllResourcesV1: API.PaginatedOperationMethod<
   SearchAllResourcesV1Request,
   SearchAllResourcesResponse,
   SearchAllResourcesV1Error,
-  GcpOpContext
+  GcpOpContext,
+  SearchAllResourcesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchAllResourcesV1Request,
   output: SearchAllResourcesResponse,
@@ -4555,4 +4562,4 @@ export const searchAllResourcesV1: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;

@@ -4255,27 +4255,7 @@ export const listActionExecutions: API.OperationMethod<
     items: "actionExecutionDetails",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListActionExecutionsInput,
-  ListActionExecutionsOutput,
-  ListActionExecutionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListActionExecutionsInput,
-  ) => stream.Stream<
-    ListActionExecutionsOutput,
-    ListActionExecutionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListActionExecutionsInput,
-  ) => stream.Stream<
-    ActionExecutionDetail,
-    ListActionExecutionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListActionTypesError =
   | InvalidNextTokenException
@@ -4317,27 +4297,7 @@ export const listActionTypes: API.OperationMethod<
     outputToken: "nextToken",
     items: "actionTypes",
   } as const,
-})) as any as API.OperationMethod<
-  ListActionTypesInput,
-  ListActionTypesOutput,
-  ListActionTypesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListActionTypesInput,
-  ) => stream.Stream<
-    ListActionTypesOutput,
-    ListActionTypesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListActionTypesInput,
-  ) => stream.Stream<
-    ActionType,
-    ListActionTypesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListDeployActionExecutionTargetsError =
   | ActionExecutionNotFoundException
@@ -4386,27 +4346,7 @@ export const listDeployActionExecutionTargets: API.OperationMethod<
     items: "targets",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListDeployActionExecutionTargetsInput,
-  ListDeployActionExecutionTargetsOutput,
-  ListDeployActionExecutionTargetsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDeployActionExecutionTargetsInput,
-  ) => stream.Stream<
-    ListDeployActionExecutionTargetsOutput,
-    ListDeployActionExecutionTargetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDeployActionExecutionTargetsInput,
-  ) => stream.Stream<
-    DeployActionExecutionTarget,
-    ListDeployActionExecutionTargetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListPipelineExecutionsError =
   | InvalidNextTokenException
@@ -4457,27 +4397,7 @@ export const listPipelineExecutions: API.OperationMethod<
     items: "pipelineExecutionSummaries",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListPipelineExecutionsInput,
-  ListPipelineExecutionsOutput,
-  ListPipelineExecutionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPipelineExecutionsInput,
-  ) => stream.Stream<
-    ListPipelineExecutionsOutput,
-    ListPipelineExecutionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPipelineExecutionsInput,
-  ) => stream.Stream<
-    PipelineExecutionSummary,
-    ListPipelineExecutionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListPipelinesError =
   | InvalidNextTokenException
@@ -4519,27 +4439,7 @@ export const listPipelines: API.OperationMethod<
     items: "pipelines",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListPipelinesInput,
-  ListPipelinesOutput,
-  ListPipelinesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPipelinesInput,
-  ) => stream.Stream<
-    ListPipelinesOutput,
-    ListPipelinesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPipelinesInput,
-  ) => stream.Stream<
-    PipelineSummary,
-    ListPipelinesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListRuleExecutionsError =
   | InvalidNextTokenException
@@ -4589,27 +4489,7 @@ export const listRuleExecutions: API.OperationMethod<
     items: "ruleExecutionDetails",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListRuleExecutionsInput,
-  ListRuleExecutionsOutput,
-  ListRuleExecutionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRuleExecutionsInput,
-  ) => stream.Stream<
-    ListRuleExecutionsOutput,
-    ListRuleExecutionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRuleExecutionsInput,
-  ) => stream.Stream<
-    RuleExecutionDetail,
-    ListRuleExecutionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListRuleTypesError =
   | InvalidNextTokenException
@@ -4682,27 +4562,7 @@ export const listTagsForResource: API.OperationMethod<
     items: "tags",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListTagsForResourceInput,
-  ListTagsForResourceOutput,
-  ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTagsForResourceInput,
-  ) => stream.Stream<
-    ListTagsForResourceOutput,
-    ListTagsForResourceError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTagsForResourceInput,
-  ) => stream.Stream<
-    Tag,
-    ListTagsForResourceError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListWebhooksError =
   | InvalidNextTokenException
@@ -4748,27 +4608,7 @@ export const listWebhooks: API.OperationMethod<
     items: "webhooks",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListWebhooksInput,
-  ListWebhooksOutput,
-  ListWebhooksError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListWebhooksInput,
-  ) => stream.Stream<
-    ListWebhooksOutput,
-    ListWebhooksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListWebhooksInput,
-  ) => stream.Stream<
-    ListWebhookItem,
-    ListWebhooksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type OverrideStageConditionError =
   | ConcurrentPipelineExecutionsLimitExceededException

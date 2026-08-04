@@ -2349,7 +2349,8 @@ export const listProjectsTenants: API.PaginatedOperationMethod<
   ListProjectsTenantsRequest,
   ListTenantsResponse,
   ListProjectsTenantsError,
-  GcpOpContext
+  GcpOpContext,
+  ListTenantsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsTenantsRequest,
   output: ListTenantsResponse,
@@ -2360,7 +2361,7 @@ export const listProjectsTenants: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsTenantsCompaniesError =
   | NotFound
@@ -2371,7 +2372,8 @@ export const listProjectsTenantsCompanies: API.PaginatedOperationMethod<
   ListProjectsTenantsCompaniesRequest,
   ListCompaniesResponse,
   ListProjectsTenantsCompaniesError,
-  GcpOpContext
+  GcpOpContext,
+  ListCompaniesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsTenantsCompaniesRequest,
   output: ListCompaniesResponse,
@@ -2382,7 +2384,7 @@ export const listProjectsTenantsCompanies: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsTenantsJobsError = NotFound | Forbidden | GcpOpError;
 /** Lists jobs by filter. */
@@ -2390,7 +2392,8 @@ export const listProjectsTenantsJobs: API.PaginatedOperationMethod<
   ListProjectsTenantsJobsRequest,
   ListJobsResponse,
   ListProjectsTenantsJobsError,
-  GcpOpContext
+  GcpOpContext,
+  ListJobsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsTenantsJobsRequest,
   output: ListJobsResponse,
@@ -2401,7 +2404,7 @@ export const listProjectsTenantsJobs: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type PatchProjectsTenantsError =
   | NotFound

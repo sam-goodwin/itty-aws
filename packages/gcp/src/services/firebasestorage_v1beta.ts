@@ -376,7 +376,8 @@ export const listProjectsBuckets: API.PaginatedOperationMethod<
   ListProjectsBucketsRequest,
   ListBucketsResponse,
   ListProjectsBucketsError,
-  GcpOpContext
+  GcpOpContext,
+  ListBucketsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsBucketsRequest,
   output: ListBucketsResponse,
@@ -387,7 +388,7 @@ export const listProjectsBuckets: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type RemoveFirebaseProjectsBucketsError =
   | NotFound

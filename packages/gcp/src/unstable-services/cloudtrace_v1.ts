@@ -274,7 +274,8 @@ export const listProjectsTraces: API.PaginatedOperationMethod<
   ListProjectsTracesRequest,
   ListTracesResponse,
   ListProjectsTracesError,
-  GcpOpContext
+  GcpOpContext,
+  ListTracesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsTracesRequest,
   output: ListTracesResponse,
@@ -285,7 +286,7 @@ export const listProjectsTraces: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type PatchTracesProjectsError =
   | NotFound

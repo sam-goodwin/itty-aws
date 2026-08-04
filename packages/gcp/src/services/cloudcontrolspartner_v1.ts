@@ -1152,7 +1152,8 @@ export const listOrganizationsLocationsCustomers: API.PaginatedOperationMethod<
   ListOrganizationsLocationsCustomersRequest,
   ListCustomersResponse,
   ListOrganizationsLocationsCustomersError,
-  GcpOpContext
+  GcpOpContext,
+  ListCustomersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsLocationsCustomersRequest,
   output: ListCustomersResponse,
@@ -1163,7 +1164,7 @@ export const listOrganizationsLocationsCustomers: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListOrganizationsLocationsCustomersWorkloadsError =
   | NotFound
@@ -1174,7 +1175,8 @@ export const listOrganizationsLocationsCustomersWorkloads: API.PaginatedOperatio
   ListOrganizationsLocationsCustomersWorkloadsRequest,
   ListWorkloadsResponse,
   ListOrganizationsLocationsCustomersWorkloadsError,
-  GcpOpContext
+  GcpOpContext,
+  ListWorkloadsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsLocationsCustomersWorkloadsRequest,
   output: ListWorkloadsResponse,
@@ -1185,7 +1187,7 @@ export const listOrganizationsLocationsCustomersWorkloads: API.PaginatedOperatio
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListOrganizationsLocationsCustomersWorkloadsAccessApprovalRequestsError =
   NotFound | Forbidden | GcpOpError;
@@ -1194,7 +1196,8 @@ export const listOrganizationsLocationsCustomersWorkloadsAccessApprovalRequests:
   ListOrganizationsLocationsCustomersWorkloadsAccessApprovalRequestsRequest,
   ListAccessApprovalRequestsResponse,
   ListOrganizationsLocationsCustomersWorkloadsAccessApprovalRequestsError,
-  GcpOpContext
+  GcpOpContext,
+  ListAccessApprovalRequestsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input:
     ListOrganizationsLocationsCustomersWorkloadsAccessApprovalRequestsRequest,
@@ -1206,7 +1209,7 @@ export const listOrganizationsLocationsCustomersWorkloadsAccessApprovalRequests:
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListOrganizationsLocationsCustomersWorkloadsViolationsError =
   | NotFound
@@ -1217,7 +1220,8 @@ export const listOrganizationsLocationsCustomersWorkloadsViolations: API.Paginat
   ListOrganizationsLocationsCustomersWorkloadsViolationsRequest,
   ListViolationsResponse,
   ListOrganizationsLocationsCustomersWorkloadsViolationsError,
-  GcpOpContext
+  GcpOpContext,
+  ListViolationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsLocationsCustomersWorkloadsViolationsRequest,
   output: ListViolationsResponse,
@@ -1228,7 +1232,7 @@ export const listOrganizationsLocationsCustomersWorkloadsViolations: API.Paginat
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type PatchOrganizationsLocationsCustomersError =
   | NotFound

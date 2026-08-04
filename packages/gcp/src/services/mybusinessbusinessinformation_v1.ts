@@ -1620,7 +1620,8 @@ export const listAccountsLocations: API.PaginatedOperationMethod<
   ListAccountsLocationsRequest,
   ListLocationsResponse,
   ListAccountsLocationsError,
-  GcpOpContext
+  GcpOpContext,
+  ListLocationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsLocationsRequest,
   output: ListLocationsResponse,
@@ -1631,7 +1632,7 @@ export const listAccountsLocations: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListAttributesError = NotFound | Forbidden | GcpOpError;
 /** Returns the list of attributes that would be available for a location with the given primary category and country. */
@@ -1639,7 +1640,8 @@ export const listAttributes: API.PaginatedOperationMethod<
   ListAttributesRequest,
   ListAttributeMetadataResponse,
   ListAttributesError,
-  GcpOpContext
+  GcpOpContext,
+  ListAttributeMetadataResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAttributesRequest,
   output: ListAttributeMetadataResponse,
@@ -1650,7 +1652,7 @@ export const listAttributes: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListCategoriesError = NotFound | Forbidden | GcpOpError;
 /** Returns a list of business categories. Search will match the category name but not the category ID. Search only matches the front of a category name (that is, 'food' may return 'Food Court' but not 'Fast Food Restaurant'). */
@@ -1658,7 +1660,8 @@ export const listCategories: API.PaginatedOperationMethod<
   ListCategoriesRequest,
   ListCategoriesResponse,
   ListCategoriesError,
-  GcpOpContext
+  GcpOpContext,
+  ListCategoriesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCategoriesRequest,
   output: ListCategoriesResponse,
@@ -1669,7 +1672,7 @@ export const listCategories: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type PatchLocationsError =
   | NotFound

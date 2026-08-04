@@ -2649,27 +2649,7 @@ export const listAliases: API.OperationMethod<
     items: "Aliases",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListAliasesInput,
-  ListAliasesOutput,
-  ListAliasesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAliasesInput,
-  ) => stream.Stream<
-    ListAliasesOutput,
-    ListAliasesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAliasesInput,
-  ) => stream.Stream<
-    Alias,
-    ListAliasesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListKeysError =
   | AccessDeniedException
@@ -2734,27 +2714,7 @@ export const listKeys: API.OperationMethod<
     items: "Keys",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListKeysInput,
-  ListKeysOutput,
-  ListKeysError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListKeysInput,
-  ) => stream.Stream<
-    ListKeysOutput,
-    ListKeysError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListKeysInput,
-  ) => stream.Stream<
-    KeySummary,
-    ListKeysError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsForResourceError =
   | AccessDeniedException
@@ -2817,27 +2777,7 @@ export const listTagsForResource: API.OperationMethod<
     items: "Tags",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListTagsForResourceInput,
-  ListTagsForResourceOutput,
-  ListTagsForResourceError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTagsForResourceInput,
-  ) => stream.Stream<
-    ListTagsForResourceOutput,
-    ListTagsForResourceError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTagsForResourceInput,
-  ) => stream.Stream<
-    Tag,
-    ListTagsForResourceError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type PutResourcePolicyError =
   | AccessDeniedException

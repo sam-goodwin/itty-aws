@@ -600,7 +600,8 @@ export const listHashLists: API.PaginatedOperationMethod<
   ListHashListsRequest,
   GoogleSecuritySafebrowsingV5ListHashListsResponse,
   ListHashListsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleSecuritySafebrowsingV5ListHashListsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListHashListsRequest,
   output: GoogleSecuritySafebrowsingV5ListHashListsResponse,
@@ -611,7 +612,7 @@ export const listHashLists: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type SearchHashesError = NotFound | Forbidden | GcpOpError;
 /** Searches for full hashes matching the specified prefixes. This is a custom method as defined by https://google.aip.dev/136 (the custom method refers to this method having a custom name within Google's general API development nomenclature; it does not refer to using a custom HTTP method). */

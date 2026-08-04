@@ -345,7 +345,8 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   ListProjectsLocationsRequest,
   ListLocationsResponse,
   ListProjectsLocationsError,
-  GcpOpContext
+  GcpOpContext,
+  ListLocationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsRequest,
   output: ListLocationsResponse,
@@ -356,7 +357,7 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsCloudLocationsError =
   | NotFound
@@ -367,7 +368,8 @@ export const listProjectsLocationsCloudLocations: API.PaginatedOperationMethod<
   ListProjectsLocationsCloudLocationsRequest,
   ListCloudLocationsResponse,
   ListProjectsLocationsCloudLocationsError,
-  GcpOpContext
+  GcpOpContext,
+  ListCloudLocationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsCloudLocationsRequest,
   output: ListCloudLocationsResponse,
@@ -378,7 +380,7 @@ export const listProjectsLocationsCloudLocations: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type SearchProjectsLocationsCloudLocationsError =
   | NotFound
@@ -389,7 +391,8 @@ export const searchProjectsLocationsCloudLocations: API.PaginatedOperationMethod
   SearchProjectsLocationsCloudLocationsRequest,
   SearchCloudLocationsResponse,
   SearchProjectsLocationsCloudLocationsError,
-  GcpOpContext
+  GcpOpContext,
+  SearchCloudLocationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchProjectsLocationsCloudLocationsRequest,
   output: SearchCloudLocationsResponse,
@@ -400,4 +403,4 @@ export const searchProjectsLocationsCloudLocations: API.PaginatedOperationMethod
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;

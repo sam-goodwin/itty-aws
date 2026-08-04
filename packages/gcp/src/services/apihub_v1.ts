@@ -7169,7 +7169,8 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   ListProjectsLocationsRequest,
   GoogleCloudLocationListLocationsResponse,
   ListProjectsLocationsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudLocationListLocationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsRequest,
   output: GoogleCloudLocationListLocationsResponse,
@@ -7180,7 +7181,7 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsAddonsError =
   | NotFound
@@ -7191,7 +7192,8 @@ export const listProjectsLocationsAddons: API.PaginatedOperationMethod<
   ListProjectsLocationsAddonsRequest,
   GoogleCloudApihubV1ListAddonsResponse,
   ListProjectsLocationsAddonsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudApihubV1ListAddonsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsAddonsRequest,
   output: GoogleCloudApihubV1ListAddonsResponse,
@@ -7202,7 +7204,7 @@ export const listProjectsLocationsAddons: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsApisError = NotFound | Forbidden | GcpOpError;
 /** List API resources in the API hub. */
@@ -7210,7 +7212,8 @@ export const listProjectsLocationsApis: API.PaginatedOperationMethod<
   ListProjectsLocationsApisRequest,
   GoogleCloudApihubV1ListApisResponse,
   ListProjectsLocationsApisError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudApihubV1ListApisResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsApisRequest,
   output: GoogleCloudApihubV1ListApisResponse,
@@ -7221,7 +7224,7 @@ export const listProjectsLocationsApis: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsApisVersionsError =
   | NotFound
@@ -7232,7 +7235,8 @@ export const listProjectsLocationsApisVersions: API.PaginatedOperationMethod<
   ListProjectsLocationsApisVersionsRequest,
   GoogleCloudApihubV1ListVersionsResponse,
   ListProjectsLocationsApisVersionsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudApihubV1ListVersionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsApisVersionsRequest,
   output: GoogleCloudApihubV1ListVersionsResponse,
@@ -7243,7 +7247,7 @@ export const listProjectsLocationsApisVersions: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsApisVersionsOperationsError =
   | NotFound
@@ -7254,7 +7258,8 @@ export const listProjectsLocationsApisVersionsOperations: API.PaginatedOperation
   ListProjectsLocationsApisVersionsOperationsRequest,
   GoogleCloudApihubV1ListApiOperationsResponse,
   ListProjectsLocationsApisVersionsOperationsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudApihubV1ListApiOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsApisVersionsOperationsRequest,
   output: GoogleCloudApihubV1ListApiOperationsResponse,
@@ -7265,7 +7270,7 @@ export const listProjectsLocationsApisVersionsOperations: API.PaginatedOperation
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsApisVersionsSpecsError =
   | NotFound
@@ -7276,7 +7281,8 @@ export const listProjectsLocationsApisVersionsSpecs: API.PaginatedOperationMetho
   ListProjectsLocationsApisVersionsSpecsRequest,
   GoogleCloudApihubV1ListSpecsResponse,
   ListProjectsLocationsApisVersionsSpecsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudApihubV1ListSpecsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsApisVersionsSpecsRequest,
   output: GoogleCloudApihubV1ListSpecsResponse,
@@ -7287,7 +7293,7 @@ export const listProjectsLocationsApisVersionsSpecs: API.PaginatedOperationMetho
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsAttributesError =
   | NotFound
@@ -7298,7 +7304,8 @@ export const listProjectsLocationsAttributes: API.PaginatedOperationMethod<
   ListProjectsLocationsAttributesRequest,
   GoogleCloudApihubV1ListAttributesResponse,
   ListProjectsLocationsAttributesError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudApihubV1ListAttributesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsAttributesRequest,
   output: GoogleCloudApihubV1ListAttributesResponse,
@@ -7309,7 +7316,7 @@ export const listProjectsLocationsAttributes: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsCurationsError =
   | NotFound
@@ -7320,7 +7327,8 @@ export const listProjectsLocationsCurations: API.PaginatedOperationMethod<
   ListProjectsLocationsCurationsRequest,
   GoogleCloudApihubV1ListCurationsResponse,
   ListProjectsLocationsCurationsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudApihubV1ListCurationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsCurationsRequest,
   output: GoogleCloudApihubV1ListCurationsResponse,
@@ -7331,7 +7339,7 @@ export const listProjectsLocationsCurations: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsDependenciesError =
   | NotFound
@@ -7342,7 +7350,8 @@ export const listProjectsLocationsDependencies: API.PaginatedOperationMethod<
   ListProjectsLocationsDependenciesRequest,
   GoogleCloudApihubV1ListDependenciesResponse,
   ListProjectsLocationsDependenciesError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudApihubV1ListDependenciesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsDependenciesRequest,
   output: GoogleCloudApihubV1ListDependenciesResponse,
@@ -7353,7 +7362,7 @@ export const listProjectsLocationsDependencies: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsDeploymentsError =
   | NotFound
@@ -7364,7 +7373,8 @@ export const listProjectsLocationsDeployments: API.PaginatedOperationMethod<
   ListProjectsLocationsDeploymentsRequest,
   GoogleCloudApihubV1ListDeploymentsResponse,
   ListProjectsLocationsDeploymentsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudApihubV1ListDeploymentsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsDeploymentsRequest,
   output: GoogleCloudApihubV1ListDeploymentsResponse,
@@ -7375,7 +7385,7 @@ export const listProjectsLocationsDeployments: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsDiscoveredApiObservationsError =
   | NotFound
@@ -7386,7 +7396,8 @@ export const listProjectsLocationsDiscoveredApiObservations: API.PaginatedOperat
   ListProjectsLocationsDiscoveredApiObservationsRequest,
   GoogleCloudApihubV1ListDiscoveredApiObservationsResponse,
   ListProjectsLocationsDiscoveredApiObservationsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudApihubV1ListDiscoveredApiObservationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsDiscoveredApiObservationsRequest,
   output: GoogleCloudApihubV1ListDiscoveredApiObservationsResponse,
@@ -7397,7 +7408,7 @@ export const listProjectsLocationsDiscoveredApiObservations: API.PaginatedOperat
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsDiscoveredApiObservationsDiscoveredApiOperationsError =
   NotFound | Forbidden | GcpOpError;
@@ -7406,7 +7417,8 @@ export const listProjectsLocationsDiscoveredApiObservationsDiscoveredApiOperatio
   ListProjectsLocationsDiscoveredApiObservationsDiscoveredApiOperationsRequest,
   GoogleCloudApihubV1ListDiscoveredApiOperationsResponse,
   ListProjectsLocationsDiscoveredApiObservationsDiscoveredApiOperationsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudApihubV1ListDiscoveredApiOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input:
     ListProjectsLocationsDiscoveredApiObservationsDiscoveredApiOperationsRequest,
@@ -7418,7 +7430,7 @@ export const listProjectsLocationsDiscoveredApiObservationsDiscoveredApiOperatio
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsExternalApisError =
   | NotFound
@@ -7429,7 +7441,8 @@ export const listProjectsLocationsExternalApis: API.PaginatedOperationMethod<
   ListProjectsLocationsExternalApisRequest,
   GoogleCloudApihubV1ListExternalApisResponse,
   ListProjectsLocationsExternalApisError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudApihubV1ListExternalApisResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsExternalApisRequest,
   output: GoogleCloudApihubV1ListExternalApisResponse,
@@ -7440,7 +7453,7 @@ export const listProjectsLocationsExternalApis: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsHostProjectRegistrationsError =
   | NotFound
@@ -7451,7 +7464,8 @@ export const listProjectsLocationsHostProjectRegistrations: API.PaginatedOperati
   ListProjectsLocationsHostProjectRegistrationsRequest,
   GoogleCloudApihubV1ListHostProjectRegistrationsResponse,
   ListProjectsLocationsHostProjectRegistrationsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudApihubV1ListHostProjectRegistrationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsHostProjectRegistrationsRequest,
   output: GoogleCloudApihubV1ListHostProjectRegistrationsResponse,
@@ -7462,7 +7476,7 @@ export const listProjectsLocationsHostProjectRegistrations: API.PaginatedOperati
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsOperationsError =
   | NotFound
@@ -7473,7 +7487,8 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   ListProjectsLocationsOperationsRequest,
   GoogleLongrunningListOperationsResponse,
   ListProjectsLocationsOperationsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleLongrunningListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsOperationsRequest,
   output: GoogleLongrunningListOperationsResponse,
@@ -7484,7 +7499,7 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsPluginsError =
   | NotFound
@@ -7495,7 +7510,8 @@ export const listProjectsLocationsPlugins: API.PaginatedOperationMethod<
   ListProjectsLocationsPluginsRequest,
   GoogleCloudApihubV1ListPluginsResponse,
   ListProjectsLocationsPluginsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudApihubV1ListPluginsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsPluginsRequest,
   output: GoogleCloudApihubV1ListPluginsResponse,
@@ -7506,7 +7522,7 @@ export const listProjectsLocationsPlugins: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsPluginsInstancesError =
   | NotFound
@@ -7517,7 +7533,8 @@ export const listProjectsLocationsPluginsInstances: API.PaginatedOperationMethod
   ListProjectsLocationsPluginsInstancesRequest,
   GoogleCloudApihubV1ListPluginInstancesResponse,
   ListProjectsLocationsPluginsInstancesError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudApihubV1ListPluginInstancesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsPluginsInstancesRequest,
   output: GoogleCloudApihubV1ListPluginInstancesResponse,
@@ -7528,7 +7545,7 @@ export const listProjectsLocationsPluginsInstances: API.PaginatedOperationMethod
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsRuntimeProjectAttachmentsError =
   | NotFound
@@ -7539,7 +7556,8 @@ export const listProjectsLocationsRuntimeProjectAttachments: API.PaginatedOperat
   ListProjectsLocationsRuntimeProjectAttachmentsRequest,
   GoogleCloudApihubV1ListRuntimeProjectAttachmentsResponse,
   ListProjectsLocationsRuntimeProjectAttachmentsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudApihubV1ListRuntimeProjectAttachmentsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsRuntimeProjectAttachmentsRequest,
   output: GoogleCloudApihubV1ListRuntimeProjectAttachmentsResponse,
@@ -7550,7 +7568,7 @@ export const listProjectsLocationsRuntimeProjectAttachments: API.PaginatedOperat
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type LookupProjectsLocationsApiHubInstancesError =
   | NotFound
@@ -7857,7 +7875,8 @@ export const retrieveApiViewsProjectsLocations: API.PaginatedOperationMethod<
   RetrieveApiViewsProjectsLocationsRequest,
   GoogleCloudApihubV1RetrieveApiViewsResponse,
   RetrieveApiViewsProjectsLocationsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudApihubV1RetrieveApiViewsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: RetrieveApiViewsProjectsLocationsRequest,
   output: GoogleCloudApihubV1RetrieveApiViewsResponse,
@@ -7868,7 +7887,7 @@ export const retrieveApiViewsProjectsLocations: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type SearchResourcesProjectsLocationsError =
   | NotFound

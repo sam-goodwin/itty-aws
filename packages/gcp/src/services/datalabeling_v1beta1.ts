@@ -4277,7 +4277,8 @@ export const listProjectsAnnotationSpecSets: API.PaginatedOperationMethod<
   ListProjectsAnnotationSpecSetsRequest,
   GoogleCloudDatalabelingV1beta1ListAnnotationSpecSetsResponse,
   ListProjectsAnnotationSpecSetsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudDatalabelingV1beta1ListAnnotationSpecSetsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsAnnotationSpecSetsRequest,
   output: GoogleCloudDatalabelingV1beta1ListAnnotationSpecSetsResponse,
@@ -4288,7 +4289,7 @@ export const listProjectsAnnotationSpecSets: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsDatasetsError = NotFound | Forbidden | GcpOpError;
 /** Lists datasets under a project. Pagination is supported. */
@@ -4296,7 +4297,8 @@ export const listProjectsDatasets: API.PaginatedOperationMethod<
   ListProjectsDatasetsRequest,
   GoogleCloudDatalabelingV1beta1ListDatasetsResponse,
   ListProjectsDatasetsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudDatalabelingV1beta1ListDatasetsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsDatasetsRequest,
   output: GoogleCloudDatalabelingV1beta1ListDatasetsResponse,
@@ -4307,7 +4309,7 @@ export const listProjectsDatasets: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsDatasetsAnnotatedDatasetsError =
   | NotFound
@@ -4318,7 +4320,8 @@ export const listProjectsDatasetsAnnotatedDatasets: API.PaginatedOperationMethod
   ListProjectsDatasetsAnnotatedDatasetsRequest,
   GoogleCloudDatalabelingV1beta1ListAnnotatedDatasetsResponse,
   ListProjectsDatasetsAnnotatedDatasetsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudDatalabelingV1beta1ListAnnotatedDatasetsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsDatasetsAnnotatedDatasetsRequest,
   output: GoogleCloudDatalabelingV1beta1ListAnnotatedDatasetsResponse,
@@ -4329,7 +4332,7 @@ export const listProjectsDatasetsAnnotatedDatasets: API.PaginatedOperationMethod
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsDatasetsAnnotatedDatasetsDataItemsError =
   | NotFound
@@ -4340,7 +4343,8 @@ export const listProjectsDatasetsAnnotatedDatasetsDataItems: API.PaginatedOperat
   ListProjectsDatasetsAnnotatedDatasetsDataItemsRequest,
   GoogleCloudDatalabelingV1beta1ListDataItemsResponse,
   ListProjectsDatasetsAnnotatedDatasetsDataItemsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudDatalabelingV1beta1ListDataItemsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsDatasetsAnnotatedDatasetsDataItemsRequest,
   output: GoogleCloudDatalabelingV1beta1ListDataItemsResponse,
@@ -4351,7 +4355,7 @@ export const listProjectsDatasetsAnnotatedDatasetsDataItems: API.PaginatedOperat
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsDatasetsAnnotatedDatasetsExamplesError =
   | NotFound
@@ -4362,7 +4366,8 @@ export const listProjectsDatasetsAnnotatedDatasetsExamples: API.PaginatedOperati
   ListProjectsDatasetsAnnotatedDatasetsExamplesRequest,
   GoogleCloudDatalabelingV1beta1ListExamplesResponse,
   ListProjectsDatasetsAnnotatedDatasetsExamplesError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudDatalabelingV1beta1ListExamplesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsDatasetsAnnotatedDatasetsExamplesRequest,
   output: GoogleCloudDatalabelingV1beta1ListExamplesResponse,
@@ -4373,7 +4378,7 @@ export const listProjectsDatasetsAnnotatedDatasetsExamples: API.PaginatedOperati
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsDatasetsAnnotatedDatasetsFeedbackThreadsError =
   | NotFound
@@ -4384,7 +4389,8 @@ export const listProjectsDatasetsAnnotatedDatasetsFeedbackThreads: API.Paginated
   ListProjectsDatasetsAnnotatedDatasetsFeedbackThreadsRequest,
   GoogleCloudDatalabelingV1beta1ListFeedbackThreadsResponse,
   ListProjectsDatasetsAnnotatedDatasetsFeedbackThreadsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudDatalabelingV1beta1ListFeedbackThreadsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsDatasetsAnnotatedDatasetsFeedbackThreadsRequest,
   output: GoogleCloudDatalabelingV1beta1ListFeedbackThreadsResponse,
@@ -4395,7 +4401,7 @@ export const listProjectsDatasetsAnnotatedDatasetsFeedbackThreads: API.Paginated
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsDatasetsAnnotatedDatasetsFeedbackThreadsFeedbackMessagesError =
   NotFound | Forbidden | GcpOpError;
@@ -4404,7 +4410,8 @@ export const listProjectsDatasetsAnnotatedDatasetsFeedbackThreadsFeedbackMessage
   ListProjectsDatasetsAnnotatedDatasetsFeedbackThreadsFeedbackMessagesRequest,
   GoogleCloudDatalabelingV1beta1ListFeedbackMessagesResponse,
   ListProjectsDatasetsAnnotatedDatasetsFeedbackThreadsFeedbackMessagesError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudDatalabelingV1beta1ListFeedbackMessagesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input:
     ListProjectsDatasetsAnnotatedDatasetsFeedbackThreadsFeedbackMessagesRequest,
@@ -4416,7 +4423,7 @@ export const listProjectsDatasetsAnnotatedDatasetsFeedbackThreadsFeedbackMessage
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsDatasetsDataItemsError =
   | NotFound
@@ -4427,7 +4434,8 @@ export const listProjectsDatasetsDataItems: API.PaginatedOperationMethod<
   ListProjectsDatasetsDataItemsRequest,
   GoogleCloudDatalabelingV1beta1ListDataItemsResponse,
   ListProjectsDatasetsDataItemsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudDatalabelingV1beta1ListDataItemsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsDatasetsDataItemsRequest,
   output: GoogleCloudDatalabelingV1beta1ListDataItemsResponse,
@@ -4438,7 +4446,7 @@ export const listProjectsDatasetsDataItems: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsEvaluationJobsError = NotFound | Forbidden | GcpOpError;
 /** Lists all evaluation jobs within a project with possible filters. Pagination is supported. */
@@ -4446,7 +4454,8 @@ export const listProjectsEvaluationJobs: API.PaginatedOperationMethod<
   ListProjectsEvaluationJobsRequest,
   GoogleCloudDatalabelingV1beta1ListEvaluationJobsResponse,
   ListProjectsEvaluationJobsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudDatalabelingV1beta1ListEvaluationJobsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsEvaluationJobsRequest,
   output: GoogleCloudDatalabelingV1beta1ListEvaluationJobsResponse,
@@ -4457,7 +4466,7 @@ export const listProjectsEvaluationJobs: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsInstructionsError = NotFound | Forbidden | GcpOpError;
 /** Lists instructions for a project. Pagination is supported. */
@@ -4465,7 +4474,8 @@ export const listProjectsInstructions: API.PaginatedOperationMethod<
   ListProjectsInstructionsRequest,
   GoogleCloudDatalabelingV1beta1ListInstructionsResponse,
   ListProjectsInstructionsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudDatalabelingV1beta1ListInstructionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsInstructionsRequest,
   output: GoogleCloudDatalabelingV1beta1ListInstructionsResponse,
@@ -4476,7 +4486,7 @@ export const listProjectsInstructions: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsOperationsError = NotFound | Forbidden | GcpOpError;
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
@@ -4484,7 +4494,8 @@ export const listProjectsOperations: API.PaginatedOperationMethod<
   ListProjectsOperationsRequest,
   GoogleLongrunningListOperationsResponse,
   ListProjectsOperationsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleLongrunningListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsOperationsRequest,
   output: GoogleLongrunningListOperationsResponse,
@@ -4495,7 +4506,7 @@ export const listProjectsOperations: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type PatchProjectsEvaluationJobsError =
   | NotFound
@@ -4583,7 +4594,8 @@ export const searchProjectsEvaluations: API.PaginatedOperationMethod<
   SearchProjectsEvaluationsRequest,
   GoogleCloudDatalabelingV1beta1SearchEvaluationsResponse,
   SearchProjectsEvaluationsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudDatalabelingV1beta1SearchEvaluationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchProjectsEvaluationsRequest,
   output: GoogleCloudDatalabelingV1beta1SearchEvaluationsResponse,
@@ -4594,4 +4606,4 @@ export const searchProjectsEvaluations: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;

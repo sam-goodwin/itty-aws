@@ -645,27 +645,7 @@ export const listNetworkConnectors: API.OperationMethod<
     items: "NetworkConnectors",
     pageSize: "MaxItems",
   } as const,
-})) as any as API.OperationMethod<
-  ListNetworkConnectorsRequest,
-  ListNetworkConnectorsResponse,
-  ListNetworkConnectorsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListNetworkConnectorsRequest,
-  ) => stream.Stream<
-    ListNetworkConnectorsResponse,
-    ListNetworkConnectorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListNetworkConnectorsRequest,
-  ) => stream.Stream<
-    NetworkConnectorSummary,
-    ListNetworkConnectorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type UpdateNetworkConnectorError =
   | InvalidParameterValueException

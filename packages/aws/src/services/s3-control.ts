@@ -9800,27 +9800,7 @@ export const listAccessGrants: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListAccessGrantsRequest,
-  ListAccessGrantsResult,
-  ListAccessGrantsError,
-  Creds | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAccessGrantsRequest,
-  ) => stream.Stream<
-    ListAccessGrantsResult,
-    ListAccessGrantsError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAccessGrantsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListAccessGrantsError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListAccessGrantsInstancesError = CommonErrors;
 /**
@@ -9863,27 +9843,7 @@ export const listAccessGrantsInstances: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListAccessGrantsInstancesRequest,
-  ListAccessGrantsInstancesResult,
-  ListAccessGrantsInstancesError,
-  Creds | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAccessGrantsInstancesRequest,
-  ) => stream.Stream<
-    ListAccessGrantsInstancesResult,
-    ListAccessGrantsInstancesError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAccessGrantsInstancesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListAccessGrantsInstancesError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListAccessGrantsLocationsError = CommonErrors;
 /**
@@ -9926,27 +9886,7 @@ export const listAccessGrantsLocations: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListAccessGrantsLocationsRequest,
-  ListAccessGrantsLocationsResult,
-  ListAccessGrantsLocationsError,
-  Creds | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAccessGrantsLocationsRequest,
-  ) => stream.Stream<
-    ListAccessGrantsLocationsResult,
-    ListAccessGrantsLocationsError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAccessGrantsLocationsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListAccessGrantsLocationsError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListAccessPointsError = CommonErrors;
 /**
@@ -10003,27 +9943,7 @@ export const listAccessPoints: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListAccessPointsRequest,
-  ListAccessPointsResult,
-  ListAccessPointsError,
-  Creds | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAccessPointsRequest,
-  ) => stream.Stream<
-    ListAccessPointsResult,
-    ListAccessPointsError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAccessPointsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListAccessPointsError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListAccessPointsForDirectoryBucketsError = CommonErrors;
 /**
@@ -10069,27 +9989,7 @@ export const listAccessPointsForDirectoryBuckets: API.OperationMethod<
     items: "AccessPointList",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListAccessPointsForDirectoryBucketsRequest,
-  ListAccessPointsForDirectoryBucketsResult,
-  ListAccessPointsForDirectoryBucketsError,
-  Creds | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAccessPointsForDirectoryBucketsRequest,
-  ) => stream.Stream<
-    ListAccessPointsForDirectoryBucketsResult,
-    ListAccessPointsForDirectoryBucketsError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAccessPointsForDirectoryBucketsRequest,
-  ) => stream.Stream<
-    AccessPoint,
-    ListAccessPointsForDirectoryBucketsError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListAccessPointsForObjectLambdaError = CommonErrors;
 /**
@@ -10142,27 +10042,7 @@ export const listAccessPointsForObjectLambda: API.OperationMethod<
     items: "ObjectLambdaAccessPointList",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListAccessPointsForObjectLambdaRequest,
-  ListAccessPointsForObjectLambdaResult,
-  ListAccessPointsForObjectLambdaError,
-  Creds | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAccessPointsForObjectLambdaRequest,
-  ) => stream.Stream<
-    ListAccessPointsForObjectLambdaResult,
-    ListAccessPointsForObjectLambdaError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAccessPointsForObjectLambdaRequest,
-  ) => stream.Stream<
-    ObjectLambdaAccessPoint,
-    ListAccessPointsForObjectLambdaError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListCallerAccessGrantsError = CommonErrors;
 /**
@@ -10206,27 +10086,7 @@ export const listCallerAccessGrants: API.OperationMethod<
     items: "CallerAccessGrantsList",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListCallerAccessGrantsRequest,
-  ListCallerAccessGrantsResult,
-  ListCallerAccessGrantsError,
-  Creds | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCallerAccessGrantsRequest,
-  ) => stream.Stream<
-    ListCallerAccessGrantsResult,
-    ListCallerAccessGrantsError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCallerAccessGrantsRequest,
-  ) => stream.Stream<
-    ListCallerAccessGrantsEntry,
-    ListCallerAccessGrantsError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListJobsError =
   | InternalServiceException
@@ -10290,27 +10150,7 @@ export const listJobs: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListJobsRequest,
-  ListJobsResult,
-  ListJobsError,
-  Creds | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListJobsRequest,
-  ) => stream.Stream<
-    ListJobsResult,
-    ListJobsError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListJobsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListJobsError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListMultiRegionAccessPointsError = CommonErrors;
 /**
@@ -10367,27 +10207,7 @@ export const listMultiRegionAccessPoints: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListMultiRegionAccessPointsRequest,
-  ListMultiRegionAccessPointsResult,
-  ListMultiRegionAccessPointsError,
-  Creds | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListMultiRegionAccessPointsRequest,
-  ) => stream.Stream<
-    ListMultiRegionAccessPointsResult,
-    ListMultiRegionAccessPointsError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListMultiRegionAccessPointsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListMultiRegionAccessPointsError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListRegionalBucketsError = CommonErrors;
 /**
@@ -10433,27 +10253,7 @@ export const listRegionalBuckets: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListRegionalBucketsRequest,
-  ListRegionalBucketsResult,
-  ListRegionalBucketsError,
-  Creds | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRegionalBucketsRequest,
-  ) => stream.Stream<
-    ListRegionalBucketsResult,
-    ListRegionalBucketsError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRegionalBucketsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListRegionalBucketsError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListStorageLensConfigurationsError = CommonErrors;
 /**
@@ -10498,27 +10298,7 @@ export const listStorageLensConfigurations: API.OperationMethod<
   operationName: "ListStorageLensConfigurations",
   endpointHostPrefix: "{AccountId}.",
   pagination: { inputToken: "NextToken", outputToken: "NextToken" } as const,
-})) as any as API.OperationMethod<
-  ListStorageLensConfigurationsRequest,
-  ListStorageLensConfigurationsResult,
-  ListStorageLensConfigurationsError,
-  Creds | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListStorageLensConfigurationsRequest,
-  ) => stream.Stream<
-    ListStorageLensConfigurationsResult,
-    ListStorageLensConfigurationsError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListStorageLensConfigurationsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListStorageLensConfigurationsError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListStorageLensGroupsError = CommonErrors;
 /**
@@ -10560,27 +10340,7 @@ export const listStorageLensGroups: API.OperationMethod<
   operationName: "ListStorageLensGroups",
   endpointHostPrefix: "{AccountId}.",
   pagination: { inputToken: "NextToken", outputToken: "NextToken" } as const,
-})) as any as API.OperationMethod<
-  ListStorageLensGroupsRequest,
-  ListStorageLensGroupsResult,
-  ListStorageLensGroupsError,
-  Creds | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListStorageLensGroupsRequest,
-  ) => stream.Stream<
-    ListStorageLensGroupsResult,
-    ListStorageLensGroupsError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListStorageLensGroupsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListStorageLensGroupsError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsForResourceError = NoSuchAccessPoint | CommonErrors;
 /**

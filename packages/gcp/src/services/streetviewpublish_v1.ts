@@ -1208,7 +1208,8 @@ export const listPhotos: API.PaginatedOperationMethod<
   ListPhotosRequest,
   ListPhotosResponse,
   ListPhotosError,
-  GcpOpContext
+  GcpOpContext,
+  ListPhotosResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPhotosRequest,
   output: ListPhotosResponse,
@@ -1219,7 +1220,7 @@ export const listPhotos: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListPhotoSequencesError = NotFound | Forbidden | GcpOpError;
 /** Lists all the PhotoSequences that belong to the user, in descending CreatePhotoSequence timestamp order. */
@@ -1227,7 +1228,8 @@ export const listPhotoSequences: API.PaginatedOperationMethod<
   ListPhotoSequencesRequest,
   ListPhotoSequencesResponse,
   ListPhotoSequencesError,
-  GcpOpContext
+  GcpOpContext,
+  ListPhotoSequencesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPhotoSequencesRequest,
   output: ListPhotoSequencesResponse,
@@ -1238,7 +1240,7 @@ export const listPhotoSequences: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type StartUploadPhotoError =
   | NotFound

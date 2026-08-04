@@ -1483,27 +1483,7 @@ export const listAccessPoints: API.OperationMethod<
     items: "accessPoints",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListAccessPointsRequest,
-  ListAccessPointsResponse,
-  ListAccessPointsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAccessPointsRequest,
-  ) => stream.Stream<
-    ListAccessPointsResponse,
-    ListAccessPointsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAccessPointsRequest,
-  ) => stream.Stream<
-    ListAccessPointsDescription,
-    ListAccessPointsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListFileSystemsError =
   | InternalServerException
@@ -1545,27 +1525,7 @@ export const listFileSystems: API.OperationMethod<
     items: "fileSystems",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListFileSystemsRequest,
-  ListFileSystemsResponse,
-  ListFileSystemsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListFileSystemsRequest,
-  ) => stream.Stream<
-    ListFileSystemsResponse,
-    ListFileSystemsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListFileSystemsRequest,
-  ) => stream.Stream<
-    ListFileSystemsDescription,
-    ListFileSystemsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListMountTargetsError =
   | InternalServerException
@@ -1612,27 +1572,7 @@ export const listMountTargets: API.OperationMethod<
     items: "mountTargets",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListMountTargetsRequest,
-  ListMountTargetsResponse,
-  ListMountTargetsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListMountTargetsRequest,
-  ) => stream.Stream<
-    ListMountTargetsResponse,
-    ListMountTargetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListMountTargetsRequest,
-  ) => stream.Stream<
-    ListMountTargetsDescription,
-    ListMountTargetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsForResourceError =
   | InternalServerException
@@ -1679,27 +1619,7 @@ export const listTagsForResource: API.OperationMethod<
     items: "tags",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListTagsForResourceRequest,
-  ListTagsForResourceResponse,
-  ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTagsForResourceRequest,
-  ) => stream.Stream<
-    ListTagsForResourceResponse,
-    ListTagsForResourceError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTagsForResourceRequest,
-  ) => stream.Stream<
-    Tag,
-    ListTagsForResourceError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type PutFileSystemPolicyError =
   | InternalServerException

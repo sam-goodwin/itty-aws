@@ -6033,7 +6033,8 @@ export const bulkCreateLabelUsers: API.PaginatedOperationMethod<
   BulkCreateLabelUsersRequest,
   BulkCreateLabelUsersResponse,
   BulkCreateLabelUsersError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  LabelsUserBulkCreateResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: BulkCreateLabelUsersRequest,
@@ -6049,7 +6050,7 @@ export const bulkCreateLabelUsers: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type BulkCreateOperationLabelsError = CloudflareOpError;
 /** Bulk attach label(s) on operation(s) in endpoint management */
@@ -6057,7 +6058,8 @@ export const bulkCreateOperationLabels: API.PaginatedOperationMethod<
   BulkCreateOperationLabelsRequest,
   BulkCreateOperationLabelsResponse,
   BulkCreateOperationLabelsError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  OperationsLabelsBulkCreateResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: BulkCreateOperationLabelsRequest,
@@ -6068,7 +6070,7 @@ export const bulkCreateOperationLabels: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type BulkCreateOperationsError = CloudflareOpError;
 /** Add one or more operations to a zone. Endpoints can contain path variables. Host, method, endpoint will be normalized to a canoncial form when creating an operation and must be unique on the zone. Inserting an operation that matches an existing one will return the record of the already existing operation and update its last_updated date. */
@@ -6076,7 +6078,8 @@ export const bulkCreateOperations: API.PaginatedOperationMethod<
   BulkCreateOperationsRequest,
   BulkCreateOperationsResponse,
   BulkCreateOperationsError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  OperationsBulkCreateResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: BulkCreateOperationsRequest,
@@ -6087,7 +6090,7 @@ export const bulkCreateOperations: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type BulkDeleteLabelUsersError = CloudflareOpError;
 /** Delete user labels */
@@ -6095,7 +6098,8 @@ export const bulkDeleteLabelUsers: API.PaginatedOperationMethod<
   BulkDeleteLabelUsersRequest,
   BulkDeleteLabelUsersResponse,
   BulkDeleteLabelUsersError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  LabelsUserBulkDeleteResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: BulkDeleteLabelUsersRequest,
@@ -6106,7 +6110,7 @@ export const bulkDeleteLabelUsers: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type BulkDeleteOperationLabelsError = CloudflareOpError;
 /** Bulk remove label(s) on operation(s) in endpoint management */
@@ -6114,7 +6118,8 @@ export const bulkDeleteOperationLabels: API.PaginatedOperationMethod<
   BulkDeleteOperationLabelsRequest,
   BulkDeleteOperationLabelsResponse,
   BulkDeleteOperationLabelsError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  OperationsLabelsBulkDeleteResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: BulkDeleteOperationLabelsRequest,
@@ -6125,7 +6130,7 @@ export const bulkDeleteOperationLabels: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type BulkDeleteOperationsError =
   | InvalidObjectIdentifier
@@ -6173,7 +6178,8 @@ export const bulkUpdateOperationLabels: API.PaginatedOperationMethod<
   BulkUpdateOperationLabelsRequest,
   BulkUpdateOperationLabelsResponse,
   BulkUpdateOperationLabelsError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  OperationsLabelsBulkUpdateResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: BulkUpdateOperationLabelsRequest,
@@ -6184,7 +6190,7 @@ export const bulkUpdateOperationLabels: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type CreateExpressionTemplateFallthroughError =
   | InvalidObjectIdentifier
@@ -6521,7 +6527,8 @@ export const listDiscoveryOperations: API.PaginatedOperationMethod<
   ListDiscoveryOperationsRequest,
   ListDiscoveryOperationsResponse,
   ListDiscoveryOperationsError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  DiscoveryOperationsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListDiscoveryOperationsRequest,
@@ -6538,7 +6545,7 @@ export const listDiscoveryOperations: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListLabelsError =
   | ZonePurged
@@ -6550,7 +6557,8 @@ export const listLabels: API.PaginatedOperationMethod<
   ListLabelsRequest,
   ListLabelsResponse,
   ListLabelsError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  LabelsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListLabelsRequest,
@@ -6573,7 +6581,7 @@ export const listLabels: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListOperationsError = Forbidden | CloudflareOpError;
 /** Lists all API operations tracked by API Shield for a zone with pagination. Returns operation details including method, path, and feature configurations. */
@@ -6581,7 +6589,8 @@ export const listOperations: API.PaginatedOperationMethod<
   ListOperationsRequest,
   ListOperationsResponse,
   ListOperationsError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  OperationsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListOperationsRequest,
@@ -6598,7 +6607,7 @@ export const listOperations: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListSchemasError = InvalidObjectIdentifier | CloudflareOpError;
 /** Retrieves API operations and their features exported as OpenAPI schemas. */
@@ -6621,7 +6630,8 @@ export const listUserSchemaHosts: API.PaginatedOperationMethod<
   ListUserSchemaHostsRequest,
   ListUserSchemaHostsResponse,
   ListUserSchemaHostsError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  UserSchemasHostsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListUserSchemaHostsRequest,
@@ -6638,7 +6648,7 @@ export const listUserSchemaHosts: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListUserSchemaOperationsError = CloudflareOpError;
 /** Retrieves all operations from the schema. Operations that already exist in API Shield Endpoint Management will be returned as full operations. */
@@ -6646,7 +6656,8 @@ export const listUserSchemaOperations: API.PaginatedOperationMethod<
   ListUserSchemaOperationsRequest,
   ListUserSchemaOperationsResponse,
   ListUserSchemaOperationsError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  UserSchemasOperationsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListUserSchemaOperationsRequest,
@@ -6663,7 +6674,7 @@ export const listUserSchemaOperations: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListUserSchemasError = ZonePurged | Forbidden | CloudflareOpError;
 /** Lists all OpenAPI schemas uploaded to API Shield for the zone, including their validation status and associated operations. */
@@ -6671,7 +6682,8 @@ export const listUserSchemas: API.PaginatedOperationMethod<
   ListUserSchemasRequest,
   ListUserSchemasResponse,
   ListUserSchemasError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  UserSchemasListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListUserSchemasRequest,
@@ -6688,7 +6700,7 @@ export const listUserSchemas: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type PatchLabelUserError = LabelNotFound | CloudflareOpError;
 /** Update certain fields on a label */

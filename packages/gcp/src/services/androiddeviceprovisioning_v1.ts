@@ -1757,7 +1757,8 @@ export const listCustomers: API.PaginatedOperationMethod<
   ListCustomersRequest,
   CustomerListCustomersResponse,
   ListCustomersError,
-  GcpOpContext
+  GcpOpContext,
+  CustomerListCustomersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCustomersRequest,
   output: CustomerListCustomersResponse,
@@ -1768,7 +1769,7 @@ export const listCustomers: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListCustomersConfigurationsError =
   | NotFound
@@ -1794,7 +1795,8 @@ export const listCustomersDevices: API.PaginatedOperationMethod<
   ListCustomersDevicesRequest,
   CustomerListDevicesResponse,
   ListCustomersDevicesError,
-  GcpOpContext
+  GcpOpContext,
+  CustomerListDevicesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCustomersDevicesRequest,
   output: CustomerListDevicesResponse,
@@ -1805,7 +1807,7 @@ export const listCustomersDevices: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListCustomersDpcsError = NotFound | Forbidden | GcpOpError;
 /** Lists the DPCs (device policy controllers) that support zero-touch enrollment. */
@@ -1828,7 +1830,8 @@ export const listPartnersCustomers: API.PaginatedOperationMethod<
   ListPartnersCustomersRequest,
   ListCustomersResponse,
   ListPartnersCustomersError,
-  GcpOpContext
+  GcpOpContext,
+  ListCustomersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPartnersCustomersRequest,
   output: ListCustomersResponse,
@@ -1839,7 +1842,7 @@ export const listPartnersCustomers: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListPartnersVendorsError = NotFound | Forbidden | GcpOpError;
 /** Lists the vendors of the partner. */
@@ -1847,7 +1850,8 @@ export const listPartnersVendors: API.PaginatedOperationMethod<
   ListPartnersVendorsRequest,
   ListVendorsResponse,
   ListPartnersVendorsError,
-  GcpOpContext
+  GcpOpContext,
+  ListVendorsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPartnersVendorsRequest,
   output: ListVendorsResponse,
@@ -1858,7 +1862,7 @@ export const listPartnersVendors: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListPartnersVendorsCustomersError =
   | NotFound
@@ -1869,7 +1873,8 @@ export const listPartnersVendorsCustomers: API.PaginatedOperationMethod<
   ListPartnersVendorsCustomersRequest,
   ListVendorCustomersResponse,
   ListPartnersVendorsCustomersError,
-  GcpOpContext
+  GcpOpContext,
+  ListVendorCustomersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPartnersVendorsCustomersRequest,
   output: ListVendorCustomersResponse,
@@ -1880,7 +1885,7 @@ export const listPartnersVendorsCustomers: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type MetadataPartnersDevicesError =
   | NotFound

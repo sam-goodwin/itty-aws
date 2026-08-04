@@ -751,7 +751,8 @@ export const listClientCertificates: API.PaginatedOperationMethod<
   ListClientCertificatesRequest,
   ListClientCertificatesResponse,
   ListClientCertificatesError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  ListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListClientCertificatesRequest,
@@ -768,7 +769,7 @@ export const listClientCertificates: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type PatchClientCertificateError =
   | ClientCertificateNotFound

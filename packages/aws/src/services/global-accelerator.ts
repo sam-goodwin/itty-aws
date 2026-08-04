@@ -3121,27 +3121,7 @@ export const listAccelerators: API.OperationMethod<
     items: "Accelerators",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListAcceleratorsRequest,
-  ListAcceleratorsResponse,
-  ListAcceleratorsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAcceleratorsRequest,
-  ) => stream.Stream<
-    ListAcceleratorsResponse,
-    ListAcceleratorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAcceleratorsRequest,
-  ) => stream.Stream<
-    Accelerator,
-    ListAcceleratorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListByoipCidrsError =
   | AccessDeniedException
@@ -3191,27 +3171,7 @@ export const listByoipCidrs: API.OperationMethod<
     items: "ByoipCidrs",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListByoipCidrsRequest,
-  ListByoipCidrsResponse,
-  ListByoipCidrsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListByoipCidrsRequest,
-  ) => stream.Stream<
-    ListByoipCidrsResponse,
-    ListByoipCidrsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListByoipCidrsRequest,
-  ) => stream.Stream<
-    ByoipCidr,
-    ListByoipCidrsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListCrossAccountAttachmentsError =
   | AccessDeniedException
@@ -3260,27 +3220,7 @@ export const listCrossAccountAttachments: API.OperationMethod<
     items: "CrossAccountAttachments",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListCrossAccountAttachmentsRequest,
-  ListCrossAccountAttachmentsResponse,
-  ListCrossAccountAttachmentsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCrossAccountAttachmentsRequest,
-  ) => stream.Stream<
-    ListCrossAccountAttachmentsResponse,
-    ListCrossAccountAttachmentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCrossAccountAttachmentsRequest,
-  ) => stream.Stream<
-    Attachment,
-    ListCrossAccountAttachmentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListCrossAccountResourceAccountsError =
   | AccessDeniedException
@@ -3356,27 +3296,7 @@ export const listCrossAccountResources: API.OperationMethod<
     items: "CrossAccountResources",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListCrossAccountResourcesRequest,
-  ListCrossAccountResourcesResponse,
-  ListCrossAccountResourcesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCrossAccountResourcesRequest,
-  ) => stream.Stream<
-    ListCrossAccountResourcesResponse,
-    ListCrossAccountResourcesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCrossAccountResourcesRequest,
-  ) => stream.Stream<
-    CrossAccountResource,
-    ListCrossAccountResourcesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListCustomRoutingAcceleratorsError =
   | InternalServiceErrorException
@@ -3423,27 +3343,7 @@ export const listCustomRoutingAccelerators: API.OperationMethod<
     items: "Accelerators",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListCustomRoutingAcceleratorsRequest,
-  ListCustomRoutingAcceleratorsResponse,
-  ListCustomRoutingAcceleratorsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCustomRoutingAcceleratorsRequest,
-  ) => stream.Stream<
-    ListCustomRoutingAcceleratorsResponse,
-    ListCustomRoutingAcceleratorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCustomRoutingAcceleratorsRequest,
-  ) => stream.Stream<
-    CustomRoutingAccelerator,
-    ListCustomRoutingAcceleratorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListCustomRoutingEndpointGroupsError =
   | InternalServiceErrorException
@@ -3492,27 +3392,7 @@ export const listCustomRoutingEndpointGroups: API.OperationMethod<
     items: "EndpointGroups",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListCustomRoutingEndpointGroupsRequest,
-  ListCustomRoutingEndpointGroupsResponse,
-  ListCustomRoutingEndpointGroupsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCustomRoutingEndpointGroupsRequest,
-  ) => stream.Stream<
-    ListCustomRoutingEndpointGroupsResponse,
-    ListCustomRoutingEndpointGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCustomRoutingEndpointGroupsRequest,
-  ) => stream.Stream<
-    CustomRoutingEndpointGroup,
-    ListCustomRoutingEndpointGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListCustomRoutingListenersError =
   | AcceleratorNotFoundException
@@ -3561,27 +3441,7 @@ export const listCustomRoutingListeners: API.OperationMethod<
     items: "Listeners",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListCustomRoutingListenersRequest,
-  ListCustomRoutingListenersResponse,
-  ListCustomRoutingListenersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCustomRoutingListenersRequest,
-  ) => stream.Stream<
-    ListCustomRoutingListenersResponse,
-    ListCustomRoutingListenersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCustomRoutingListenersRequest,
-  ) => stream.Stream<
-    CustomRoutingListener,
-    ListCustomRoutingListenersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListCustomRoutingPortMappingsError =
   | AcceleratorNotFoundException
@@ -3642,27 +3502,7 @@ export const listCustomRoutingPortMappings: API.OperationMethod<
     items: "PortMappings",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListCustomRoutingPortMappingsRequest,
-  ListCustomRoutingPortMappingsResponse,
-  ListCustomRoutingPortMappingsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCustomRoutingPortMappingsRequest,
-  ) => stream.Stream<
-    ListCustomRoutingPortMappingsResponse,
-    ListCustomRoutingPortMappingsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCustomRoutingPortMappingsRequest,
-  ) => stream.Stream<
-    PortMapping,
-    ListCustomRoutingPortMappingsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListCustomRoutingPortMappingsByDestinationError =
   | EndpointNotFoundException
@@ -3714,27 +3554,7 @@ export const listCustomRoutingPortMappingsByDestination: API.OperationMethod<
     items: "DestinationPortMappings",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListCustomRoutingPortMappingsByDestinationRequest,
-  ListCustomRoutingPortMappingsByDestinationResponse,
-  ListCustomRoutingPortMappingsByDestinationError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCustomRoutingPortMappingsByDestinationRequest,
-  ) => stream.Stream<
-    ListCustomRoutingPortMappingsByDestinationResponse,
-    ListCustomRoutingPortMappingsByDestinationError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCustomRoutingPortMappingsByDestinationRequest,
-  ) => stream.Stream<
-    DestinationPortMapping,
-    ListCustomRoutingPortMappingsByDestinationError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListEndpointGroupsError =
   | InternalServiceErrorException
@@ -3783,27 +3603,7 @@ export const listEndpointGroups: API.OperationMethod<
     items: "EndpointGroups",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListEndpointGroupsRequest,
-  ListEndpointGroupsResponse,
-  ListEndpointGroupsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEndpointGroupsRequest,
-  ) => stream.Stream<
-    ListEndpointGroupsResponse,
-    ListEndpointGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEndpointGroupsRequest,
-  ) => stream.Stream<
-    EndpointGroup,
-    ListEndpointGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListListenersError =
   | AcceleratorNotFoundException
@@ -3852,27 +3652,7 @@ export const listListeners: API.OperationMethod<
     items: "Listeners",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListListenersRequest,
-  ListListenersResponse,
-  ListListenersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListListenersRequest,
-  ) => stream.Stream<
-    ListListenersResponse,
-    ListListenersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListListenersRequest,
-  ) => stream.Stream<
-    Listener,
-    ListListenersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsForResourceError =
   | AcceleratorNotFoundException

@@ -414,27 +414,7 @@ export const describeServices: API.OperationMethod<
     items: "Services",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeServicesRequest,
-  DescribeServicesResponse,
-  DescribeServicesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeServicesRequest,
-  ) => stream.Stream<
-    DescribeServicesResponse,
-    DescribeServicesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeServicesRequest,
-  ) => stream.Stream<
-    Service,
-    DescribeServicesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type GetAttributeValuesError =
   | AccessDeniedException
@@ -489,27 +469,7 @@ export const getAttributeValues: API.OperationMethod<
     items: "AttributeValues",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  GetAttributeValuesRequest,
-  GetAttributeValuesResponse,
-  GetAttributeValuesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetAttributeValuesRequest,
-  ) => stream.Stream<
-    GetAttributeValuesResponse,
-    GetAttributeValuesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetAttributeValuesRequest,
-  ) => stream.Stream<
-    AttributeValue,
-    GetAttributeValuesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type GetPriceListFileUrlError =
   | AccessDeniedException
@@ -598,27 +558,7 @@ export const getProducts: API.OperationMethod<
     items: "PriceList",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  GetProductsRequest,
-  GetProductsResponse,
-  GetProductsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetProductsRequest,
-  ) => stream.Stream<
-    GetProductsResponse,
-    GetProductsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetProductsRequest,
-  ) => stream.Stream<
-    SynthesizedJsonPriceListJsonItem,
-    GetProductsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListPriceListsError =
   | AccessDeniedException
@@ -677,24 +617,4 @@ export const listPriceLists: API.OperationMethod<
     items: "PriceLists",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListPriceListsRequest,
-  ListPriceListsResponse,
-  ListPriceListsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPriceListsRequest,
-  ) => stream.Stream<
-    ListPriceListsResponse,
-    ListPriceListsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPriceListsRequest,
-  ) => stream.Stream<
-    PriceList,
-    ListPriceListsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;

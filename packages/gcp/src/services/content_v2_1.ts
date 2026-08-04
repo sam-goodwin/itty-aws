@@ -12689,7 +12689,8 @@ export const listAccounts: API.PaginatedOperationMethod<
   ListAccountsRequest,
   AccountsListResponse,
   ListAccountsError,
-  GcpOpContext
+  GcpOpContext,
+  AccountsListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsRequest,
   output: AccountsListResponse,
@@ -12700,7 +12701,7 @@ export const listAccounts: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListAccountsLabelsError = NotFound | Forbidden | GcpOpError;
 /** Lists the labels assigned to an account. */
@@ -12708,7 +12709,8 @@ export const listAccountsLabels: API.PaginatedOperationMethod<
   ListAccountsLabelsRequest,
   ListAccountLabelsResponse,
   ListAccountsLabelsError,
-  GcpOpContext
+  GcpOpContext,
+  ListAccountLabelsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsLabelsRequest,
   output: ListAccountLabelsResponse,
@@ -12719,7 +12721,7 @@ export const listAccountsLabels: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListAccountsReturncarrierError = NotFound | Forbidden | GcpOpError;
 /** Lists available return carriers in the merchant account. */
@@ -12742,7 +12744,8 @@ export const listAccountstatuses: API.PaginatedOperationMethod<
   ListAccountstatusesRequest,
   AccountstatusesListResponse,
   ListAccountstatusesError,
-  GcpOpContext
+  GcpOpContext,
+  AccountstatusesListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountstatusesRequest,
   output: AccountstatusesListResponse,
@@ -12753,7 +12756,7 @@ export const listAccountstatuses: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListAccounttaxError = NotFound | Forbidden | GcpOpError;
 /** Lists the tax settings of the sub-accounts in your Merchant Center account. */
@@ -12761,7 +12764,8 @@ export const listAccounttax: API.PaginatedOperationMethod<
   ListAccounttaxRequest,
   AccounttaxListResponse,
   ListAccounttaxError,
-  GcpOpContext
+  GcpOpContext,
+  AccounttaxListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccounttaxRequest,
   output: AccounttaxListResponse,
@@ -12772,7 +12776,7 @@ export const listAccounttax: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListCollectionsError = NotFound | Forbidden | GcpOpError;
 /** Lists the collections in your Merchant Center account. The response might contain fewer items than specified by page_size. Rely on next_page_token to determine if there are more items to be requested. */
@@ -12780,7 +12784,8 @@ export const listCollections: API.PaginatedOperationMethod<
   ListCollectionsRequest,
   ListCollectionsResponse,
   ListCollectionsError,
-  GcpOpContext
+  GcpOpContext,
+  ListCollectionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCollectionsRequest,
   output: ListCollectionsResponse,
@@ -12791,7 +12796,7 @@ export const listCollections: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListCollectionstatusesError = NotFound | Forbidden | GcpOpError;
 /** Lists the statuses of the collections in your Merchant Center account. */
@@ -12799,7 +12804,8 @@ export const listCollectionstatuses: API.PaginatedOperationMethod<
   ListCollectionstatusesRequest,
   ListCollectionStatusesResponse,
   ListCollectionstatusesError,
-  GcpOpContext
+  GcpOpContext,
+  ListCollectionStatusesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCollectionstatusesRequest,
   output: ListCollectionStatusesResponse,
@@ -12810,7 +12816,7 @@ export const listCollectionstatuses: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListConversionsourcesError = NotFound | Forbidden | GcpOpError;
 /** Retrieves the list of conversion sources the caller has access to. */
@@ -12818,7 +12824,8 @@ export const listConversionsources: API.PaginatedOperationMethod<
   ListConversionsourcesRequest,
   ListConversionSourcesResponse,
   ListConversionsourcesError,
-  GcpOpContext
+  GcpOpContext,
+  ListConversionSourcesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListConversionsourcesRequest,
   output: ListConversionSourcesResponse,
@@ -12829,7 +12836,7 @@ export const listConversionsources: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListCssesError = NotFound | Forbidden | GcpOpError;
 /** Lists CSS domains affiliated with a CSS group. */
@@ -12837,7 +12844,8 @@ export const listCsses: API.PaginatedOperationMethod<
   ListCssesRequest,
   ListCssesResponse,
   ListCssesError,
-  GcpOpContext
+  GcpOpContext,
+  ListCssesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCssesRequest,
   output: ListCssesResponse,
@@ -12848,7 +12856,7 @@ export const listCsses: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListDatafeedsError = NotFound | Forbidden | GcpOpError;
 /** Lists the configurations for datafeeds in your Merchant Center account. */
@@ -12856,7 +12864,8 @@ export const listDatafeeds: API.PaginatedOperationMethod<
   ListDatafeedsRequest,
   DatafeedsListResponse,
   ListDatafeedsError,
-  GcpOpContext
+  GcpOpContext,
+  DatafeedsListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDatafeedsRequest,
   output: DatafeedsListResponse,
@@ -12867,7 +12876,7 @@ export const listDatafeeds: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListDatafeedstatusesError = NotFound | Forbidden | GcpOpError;
 /** Lists the statuses of the datafeeds in your Merchant Center account. */
@@ -12875,7 +12884,8 @@ export const listDatafeedstatuses: API.PaginatedOperationMethod<
   ListDatafeedstatusesRequest,
   DatafeedstatusesListResponse,
   ListDatafeedstatusesError,
-  GcpOpContext
+  GcpOpContext,
+  DatafeedstatusesListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDatafeedstatusesRequest,
   output: DatafeedstatusesListResponse,
@@ -12886,7 +12896,7 @@ export const listDatafeedstatuses: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListLiasettingsError = NotFound | Forbidden | GcpOpError;
 /** Lists the LIA settings of the sub-accounts in your Merchant Center account. */
@@ -12894,7 +12904,8 @@ export const listLiasettings: API.PaginatedOperationMethod<
   ListLiasettingsRequest,
   LiasettingsListResponse,
   ListLiasettingsError,
-  GcpOpContext
+  GcpOpContext,
+  LiasettingsListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLiasettingsRequest,
   output: LiasettingsListResponse,
@@ -12905,7 +12916,7 @@ export const listLiasettings: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListlinksAccountsError = NotFound | Forbidden | GcpOpError;
 /** Returns the list of accounts linked to your Merchant Center account. */
@@ -12913,7 +12924,8 @@ export const listlinksAccounts: API.PaginatedOperationMethod<
   ListlinksAccountsRequest,
   AccountsListLinksResponse,
   ListlinksAccountsError,
-  GcpOpContext
+  GcpOpContext,
+  AccountsListLinksResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListlinksAccountsRequest,
   output: AccountsListLinksResponse,
@@ -12924,7 +12936,7 @@ export const listlinksAccounts: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListPosError = NotFound | Forbidden | GcpOpError;
 /** Lists the stores of the target merchant. */
@@ -12965,7 +12977,8 @@ export const listProducts: API.PaginatedOperationMethod<
   ListProductsRequest,
   ProductsListResponse,
   ListProductsError,
-  GcpOpContext
+  GcpOpContext,
+  ProductsListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProductsRequest,
   output: ProductsListResponse,
@@ -12976,7 +12989,7 @@ export const listProducts: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProductstatusesError = NotFound | Forbidden | GcpOpError;
 /** Lists the statuses of the products in your Merchant Center account. */
@@ -12984,7 +12997,8 @@ export const listProductstatuses: API.PaginatedOperationMethod<
   ListProductstatusesRequest,
   ProductstatusesListResponse,
   ListProductstatusesError,
-  GcpOpContext
+  GcpOpContext,
+  ProductstatusesListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProductstatusesRequest,
   output: ProductstatusesListResponse,
@@ -12995,7 +13009,7 @@ export const listProductstatuses: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListPromotionsError = NotFound | Forbidden | GcpOpError;
 /** List all promotions from your Merchant Center account. */
@@ -13003,7 +13017,8 @@ export const listPromotions: API.PaginatedOperationMethod<
   ListPromotionsRequest,
   ListPromotionResponse,
   ListPromotionsError,
-  GcpOpContext
+  GcpOpContext,
+  ListPromotionResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPromotionsRequest,
   output: ListPromotionResponse,
@@ -13014,7 +13029,7 @@ export const listPromotions: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListQuotasError = NotFound | Forbidden | GcpOpError;
 /** Lists the daily call quota and usage per method for your Merchant Center account. */
@@ -13022,7 +13037,8 @@ export const listQuotas: API.PaginatedOperationMethod<
   ListQuotasRequest,
   ListMethodQuotasResponse,
   ListQuotasError,
-  GcpOpContext
+  GcpOpContext,
+  ListMethodQuotasResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListQuotasRequest,
   output: ListMethodQuotasResponse,
@@ -13033,7 +13049,7 @@ export const listQuotas: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListRegionsError = NotFound | Forbidden | GcpOpError;
 /** Lists the regions in your Merchant Center account. */
@@ -13041,7 +13057,8 @@ export const listRegions: API.PaginatedOperationMethod<
   ListRegionsRequest,
   ListRegionsResponse,
   ListRegionsError,
-  GcpOpContext
+  GcpOpContext,
+  ListRegionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRegionsRequest,
   output: ListRegionsResponse,
@@ -13052,7 +13069,7 @@ export const listRegions: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListReturnpolicyonlineError = NotFound | Forbidden | GcpOpError;
 /** Lists all existing return policies. */
@@ -13075,7 +13092,8 @@ export const listShippingsettings: API.PaginatedOperationMethod<
   ListShippingsettingsRequest,
   ShippingsettingsListResponse,
   ListShippingsettingsError,
-  GcpOpContext
+  GcpOpContext,
+  ShippingsettingsListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListShippingsettingsRequest,
   output: ShippingsettingsListResponse,
@@ -13086,7 +13104,7 @@ export const listShippingsettings: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type PatchAccountsLabelsError =
   | NotFound

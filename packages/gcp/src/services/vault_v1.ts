@@ -2570,7 +2570,8 @@ export const listMatters: API.PaginatedOperationMethod<
   ListMattersRequest,
   ListMattersResponse,
   ListMattersError,
-  GcpOpContext
+  GcpOpContext,
+  ListMattersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMattersRequest,
   output: ListMattersResponse,
@@ -2581,7 +2582,7 @@ export const listMatters: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListMattersExportsError = NotFound | Forbidden | GcpOpError;
 /** Lists details about the exports in the specified matter. */
@@ -2589,7 +2590,8 @@ export const listMattersExports: API.PaginatedOperationMethod<
   ListMattersExportsRequest,
   ListExportsResponse,
   ListMattersExportsError,
-  GcpOpContext
+  GcpOpContext,
+  ListExportsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMattersExportsRequest,
   output: ListExportsResponse,
@@ -2600,7 +2602,7 @@ export const listMattersExports: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListMattersHoldsError = NotFound | Forbidden | GcpOpError;
 /** Lists the holds in a matter. */
@@ -2608,7 +2610,8 @@ export const listMattersHolds: API.PaginatedOperationMethod<
   ListMattersHoldsRequest,
   ListHoldsResponse,
   ListMattersHoldsError,
-  GcpOpContext
+  GcpOpContext,
+  ListHoldsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMattersHoldsRequest,
   output: ListHoldsResponse,
@@ -2619,7 +2622,7 @@ export const listMattersHolds: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListMattersHoldsAccountsError = NotFound | Forbidden | GcpOpError;
 /** Lists the accounts covered by a hold. This can list only individually-specified accounts covered by the hold. If the hold covers an organizational unit, use the [Admin SDK](https://developers.google.com/admin-sdk/). to list the members of the organizational unit on hold. */
@@ -2642,7 +2645,8 @@ export const listMattersSavedQueries: API.PaginatedOperationMethod<
   ListMattersSavedQueriesRequest,
   ListSavedQueriesResponse,
   ListMattersSavedQueriesError,
-  GcpOpContext
+  GcpOpContext,
+  ListSavedQueriesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMattersSavedQueriesRequest,
   output: ListSavedQueriesResponse,
@@ -2653,7 +2657,7 @@ export const listMattersSavedQueries: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListOperationsError = NotFound | Forbidden | GcpOpError;
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
@@ -2661,7 +2665,8 @@ export const listOperations: API.PaginatedOperationMethod<
   ListOperationsRequest,
   ListOperationsResponse,
   ListOperationsError,
-  GcpOpContext
+  GcpOpContext,
+  ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOperationsRequest,
   output: ListOperationsResponse,
@@ -2672,7 +2677,7 @@ export const listOperations: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type RemoveHeldAccountsMattersHoldsError =
   | NotFound

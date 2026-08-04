@@ -1909,27 +1909,7 @@ export const listDbClusters: API.OperationMethod<
     items: "items",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListDbClustersInput,
-  ListDbClustersOutput,
-  ListDbClustersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDbClustersInput,
-  ) => stream.Stream<
-    ListDbClustersOutput,
-    ListDbClustersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDbClustersInput,
-  ) => stream.Stream<
-    DbClusterSummary,
-    ListDbClustersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListDbInstancesError =
   | AccessDeniedException
@@ -1980,27 +1960,7 @@ export const listDbInstances: API.OperationMethod<
     items: "items",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListDbInstancesInput,
-  ListDbInstancesOutput,
-  ListDbInstancesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDbInstancesInput,
-  ) => stream.Stream<
-    ListDbInstancesOutput,
-    ListDbInstancesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDbInstancesInput,
-  ) => stream.Stream<
-    DbInstanceSummary,
-    ListDbInstancesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListDbInstancesForClusterError =
   | AccessDeniedException
@@ -2051,27 +2011,7 @@ export const listDbInstancesForCluster: API.OperationMethod<
     items: "items",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListDbInstancesForClusterInput,
-  ListDbInstancesForClusterOutput,
-  ListDbInstancesForClusterError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDbInstancesForClusterInput,
-  ) => stream.Stream<
-    ListDbInstancesForClusterOutput,
-    ListDbInstancesForClusterError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDbInstancesForClusterInput,
-  ) => stream.Stream<
-    DbInstanceForClusterSummary,
-    ListDbInstancesForClusterError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListDbParameterGroupsError =
   | AccessDeniedException
@@ -2122,27 +2062,7 @@ export const listDbParameterGroups: API.OperationMethod<
     items: "items",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListDbParameterGroupsInput,
-  ListDbParameterGroupsOutput,
-  ListDbParameterGroupsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDbParameterGroupsInput,
-  ) => stream.Stream<
-    ListDbParameterGroupsOutput,
-    ListDbParameterGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDbParameterGroupsInput,
-  ) => stream.Stream<
-    DbParameterGroupSummary,
-    ListDbParameterGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsForResourceError = ResourceNotFoundException | CommonErrors;
 /**

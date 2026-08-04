@@ -6007,7 +6007,8 @@ export const listCourses: API.PaginatedOperationMethod<
   ListCoursesRequest,
   ListCoursesResponse,
   ListCoursesError,
-  GcpOpContext
+  GcpOpContext,
+  ListCoursesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCoursesRequest,
   output: ListCoursesResponse,
@@ -6018,7 +6019,7 @@ export const listCourses: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListCoursesAliasesError = NotFound | Forbidden | GcpOpError;
 /** Returns a list of aliases for a course. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to access the course or for access errors. * `NOT_FOUND` if the course does not exist. */
@@ -6026,7 +6027,8 @@ export const listCoursesAliases: API.PaginatedOperationMethod<
   ListCoursesAliasesRequest,
   ListCourseAliasesResponse,
   ListCoursesAliasesError,
-  GcpOpContext
+  GcpOpContext,
+  ListCourseAliasesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCoursesAliasesRequest,
   output: ListCourseAliasesResponse,
@@ -6037,7 +6039,7 @@ export const listCoursesAliases: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListCoursesAnnouncementsError = NotFound | Forbidden | GcpOpError;
 /** Returns a list of announcements that the requester is permitted to view. Course students may only view `PUBLISHED` announcements. Course teachers and domain administrators may view all announcements. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course or for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested course does not exist. */
@@ -6045,7 +6047,8 @@ export const listCoursesAnnouncements: API.PaginatedOperationMethod<
   ListCoursesAnnouncementsRequest,
   ListAnnouncementsResponse,
   ListCoursesAnnouncementsError,
-  GcpOpContext
+  GcpOpContext,
+  ListAnnouncementsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCoursesAnnouncementsRequest,
   output: ListAnnouncementsResponse,
@@ -6056,7 +6059,7 @@ export const listCoursesAnnouncements: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListCoursesAnnouncementsAddOnAttachmentsError =
   | NotFound
@@ -6067,7 +6070,8 @@ export const listCoursesAnnouncementsAddOnAttachments: API.PaginatedOperationMet
   ListCoursesAnnouncementsAddOnAttachmentsRequest,
   ListAddOnAttachmentsResponse,
   ListCoursesAnnouncementsAddOnAttachmentsError,
-  GcpOpContext
+  GcpOpContext,
+  ListAddOnAttachmentsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCoursesAnnouncementsAddOnAttachmentsRequest,
   output: ListAddOnAttachmentsResponse,
@@ -6078,7 +6082,7 @@ export const listCoursesAnnouncementsAddOnAttachments: API.PaginatedOperationMet
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListCoursesCourseWorkError = NotFound | Forbidden | GcpOpError;
 /** Returns a list of course work that the requester is permitted to view. Course students may only view `PUBLISHED` course work. Course teachers and domain administrators may view all course work. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course or for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested course does not exist. */
@@ -6086,7 +6090,8 @@ export const listCoursesCourseWork: API.PaginatedOperationMethod<
   ListCoursesCourseWorkRequest,
   ListCourseWorkResponse,
   ListCoursesCourseWorkError,
-  GcpOpContext
+  GcpOpContext,
+  ListCourseWorkResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCoursesCourseWorkRequest,
   output: ListCourseWorkResponse,
@@ -6097,7 +6102,7 @@ export const listCoursesCourseWork: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListCoursesCourseWorkAddOnAttachmentsError =
   | NotFound
@@ -6108,7 +6113,8 @@ export const listCoursesCourseWorkAddOnAttachments: API.PaginatedOperationMethod
   ListCoursesCourseWorkAddOnAttachmentsRequest,
   ListAddOnAttachmentsResponse,
   ListCoursesCourseWorkAddOnAttachmentsError,
-  GcpOpContext
+  GcpOpContext,
+  ListAddOnAttachmentsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCoursesCourseWorkAddOnAttachmentsRequest,
   output: ListAddOnAttachmentsResponse,
@@ -6119,7 +6125,7 @@ export const listCoursesCourseWorkAddOnAttachments: API.PaginatedOperationMethod
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListCoursesCourseWorkMaterialsError =
   | NotFound
@@ -6130,7 +6136,8 @@ export const listCoursesCourseWorkMaterials: API.PaginatedOperationMethod<
   ListCoursesCourseWorkMaterialsRequest,
   ListCourseWorkMaterialResponse,
   ListCoursesCourseWorkMaterialsError,
-  GcpOpContext
+  GcpOpContext,
+  ListCourseWorkMaterialResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCoursesCourseWorkMaterialsRequest,
   output: ListCourseWorkMaterialResponse,
@@ -6141,7 +6148,7 @@ export const listCoursesCourseWorkMaterials: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListCoursesCourseWorkMaterialsAddOnAttachmentsError =
   | NotFound
@@ -6152,7 +6159,8 @@ export const listCoursesCourseWorkMaterialsAddOnAttachments: API.PaginatedOperat
   ListCoursesCourseWorkMaterialsAddOnAttachmentsRequest,
   ListAddOnAttachmentsResponse,
   ListCoursesCourseWorkMaterialsAddOnAttachmentsError,
-  GcpOpContext
+  GcpOpContext,
+  ListAddOnAttachmentsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCoursesCourseWorkMaterialsAddOnAttachmentsRequest,
   output: ListAddOnAttachmentsResponse,
@@ -6163,7 +6171,7 @@ export const listCoursesCourseWorkMaterialsAddOnAttachments: API.PaginatedOperat
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListCoursesCourseWorkRubricsError =
   | NotFound
@@ -6174,7 +6182,8 @@ export const listCoursesCourseWorkRubrics: API.PaginatedOperationMethod<
   ListCoursesCourseWorkRubricsRequest,
   ListRubricsResponse,
   ListCoursesCourseWorkRubricsError,
-  GcpOpContext
+  GcpOpContext,
+  ListRubricsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCoursesCourseWorkRubricsRequest,
   output: ListRubricsResponse,
@@ -6185,7 +6194,7 @@ export const listCoursesCourseWorkRubrics: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListCoursesCourseWorkStudentSubmissionsError =
   | NotFound
@@ -6196,7 +6205,8 @@ export const listCoursesCourseWorkStudentSubmissions: API.PaginatedOperationMeth
   ListCoursesCourseWorkStudentSubmissionsRequest,
   ListStudentSubmissionsResponse,
   ListCoursesCourseWorkStudentSubmissionsError,
-  GcpOpContext
+  GcpOpContext,
+  ListStudentSubmissionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCoursesCourseWorkStudentSubmissionsRequest,
   output: ListStudentSubmissionsResponse,
@@ -6207,7 +6217,7 @@ export const listCoursesCourseWorkStudentSubmissions: API.PaginatedOperationMeth
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListCoursesPostsAddOnAttachmentsError =
   | NotFound
@@ -6218,7 +6228,8 @@ export const listCoursesPostsAddOnAttachments: API.PaginatedOperationMethod<
   ListCoursesPostsAddOnAttachmentsRequest,
   ListAddOnAttachmentsResponse,
   ListCoursesPostsAddOnAttachmentsError,
-  GcpOpContext
+  GcpOpContext,
+  ListAddOnAttachmentsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCoursesPostsAddOnAttachmentsRequest,
   output: ListAddOnAttachmentsResponse,
@@ -6229,7 +6240,7 @@ export const listCoursesPostsAddOnAttachments: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListCoursesStudentGroupsError = NotFound | Forbidden | GcpOpError;
 /** Returns a list of groups in a course. This method returns the following error codes: * `NOT_FOUND` if the course does not exist. */
@@ -6237,7 +6248,8 @@ export const listCoursesStudentGroups: API.PaginatedOperationMethod<
   ListCoursesStudentGroupsRequest,
   ListStudentGroupsResponse,
   ListCoursesStudentGroupsError,
-  GcpOpContext
+  GcpOpContext,
+  ListStudentGroupsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCoursesStudentGroupsRequest,
   output: ListStudentGroupsResponse,
@@ -6248,7 +6260,7 @@ export const listCoursesStudentGroups: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListCoursesStudentGroupsStudentGroupMembersError =
   | NotFound
@@ -6259,7 +6271,8 @@ export const listCoursesStudentGroupsStudentGroupMembers: API.PaginatedOperation
   ListCoursesStudentGroupsStudentGroupMembersRequest,
   ListStudentGroupMembersResponse,
   ListCoursesStudentGroupsStudentGroupMembersError,
-  GcpOpContext
+  GcpOpContext,
+  ListStudentGroupMembersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCoursesStudentGroupsStudentGroupMembersRequest,
   output: ListStudentGroupMembersResponse,
@@ -6270,7 +6283,7 @@ export const listCoursesStudentGroupsStudentGroupMembers: API.PaginatedOperation
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListCoursesStudentsError = NotFound | Forbidden | GcpOpError;
 /** Returns a list of students of this course that the requester is permitted to view. This method returns the following error codes: * `NOT_FOUND` if the course does not exist. * `PERMISSION_DENIED` for access errors. */
@@ -6278,7 +6291,8 @@ export const listCoursesStudents: API.PaginatedOperationMethod<
   ListCoursesStudentsRequest,
   ListStudentsResponse,
   ListCoursesStudentsError,
-  GcpOpContext
+  GcpOpContext,
+  ListStudentsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCoursesStudentsRequest,
   output: ListStudentsResponse,
@@ -6289,7 +6303,7 @@ export const listCoursesStudents: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListCoursesTeachersError = NotFound | Forbidden | GcpOpError;
 /** Returns a list of teachers of this course that the requester is permitted to view. This method returns the following error codes: * `NOT_FOUND` if the course does not exist. * `PERMISSION_DENIED` for access errors. */
@@ -6297,7 +6311,8 @@ export const listCoursesTeachers: API.PaginatedOperationMethod<
   ListCoursesTeachersRequest,
   ListTeachersResponse,
   ListCoursesTeachersError,
-  GcpOpContext
+  GcpOpContext,
+  ListTeachersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCoursesTeachersRequest,
   output: ListTeachersResponse,
@@ -6308,7 +6323,7 @@ export const listCoursesTeachers: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListCoursesTopicsError = NotFound | Forbidden | GcpOpError;
 /** Returns the list of topics that the requester is permitted to view. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course or for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested course does not exist. */
@@ -6316,7 +6331,8 @@ export const listCoursesTopics: API.PaginatedOperationMethod<
   ListCoursesTopicsRequest,
   ListTopicResponse,
   ListCoursesTopicsError,
-  GcpOpContext
+  GcpOpContext,
+  ListTopicResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCoursesTopicsRequest,
   output: ListTopicResponse,
@@ -6327,7 +6343,7 @@ export const listCoursesTopics: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListInvitationsError = NotFound | Forbidden | GcpOpError;
 /** Returns a list of invitations that the requesting user is permitted to view, restricted to those that match the list request. *Note:* At least one of `user_id` or `course_id` must be supplied. Both fields can be supplied. This method returns the following error codes: * `PERMISSION_DENIED` for access errors. */
@@ -6335,7 +6351,8 @@ export const listInvitations: API.PaginatedOperationMethod<
   ListInvitationsRequest,
   ListInvitationsResponse,
   ListInvitationsError,
-  GcpOpContext
+  GcpOpContext,
+  ListInvitationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListInvitationsRequest,
   output: ListInvitationsResponse,
@@ -6346,7 +6363,7 @@ export const listInvitations: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListUserProfilesGuardianInvitationsError =
   | NotFound
@@ -6357,7 +6374,8 @@ export const listUserProfilesGuardianInvitations: API.PaginatedOperationMethod<
   ListUserProfilesGuardianInvitationsRequest,
   ListGuardianInvitationsResponse,
   ListUserProfilesGuardianInvitationsError,
-  GcpOpContext
+  GcpOpContext,
+  ListGuardianInvitationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListUserProfilesGuardianInvitationsRequest,
   output: ListGuardianInvitationsResponse,
@@ -6368,7 +6386,7 @@ export const listUserProfilesGuardianInvitations: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListUserProfilesGuardiansError = NotFound | Forbidden | GcpOpError;
 /** Returns a list of guardians that the requesting user is permitted to view, restricted to those that match the request. To list guardians for any student that the requesting user may view guardians for, use the literal character `-` for the student ID. This method returns the following error codes: * `PERMISSION_DENIED` if a `student_id` is specified, and the requesting user is not permitted to view guardian information for that student, if `"-"` is specified as the `student_id` and the user is not a domain administrator, if guardians are not enabled for the domain in question, if the `invited_email_address` filter is set by a user who is not a domain administrator, or for other access errors. * `INVALID_ARGUMENT` if a `student_id` is specified, but its format cannot be recognized (it is not an email address, nor a `student_id` from the API, nor the literal string `me`). May also be returned if an invalid `page_token` is provided. * `NOT_FOUND` if a `student_id` is specified, and its format can be recognized, but Classroom has no record of that student. */
@@ -6376,7 +6394,8 @@ export const listUserProfilesGuardians: API.PaginatedOperationMethod<
   ListUserProfilesGuardiansRequest,
   ListGuardiansResponse,
   ListUserProfilesGuardiansError,
-  GcpOpContext
+  GcpOpContext,
+  ListGuardiansResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListUserProfilesGuardiansRequest,
   output: ListGuardiansResponse,
@@ -6387,7 +6406,7 @@ export const listUserProfilesGuardians: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ModifyAssigneesCoursesAnnouncementsError =
   | NotFound

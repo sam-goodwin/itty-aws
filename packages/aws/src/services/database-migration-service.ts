@@ -8971,27 +8971,7 @@ export const describeApplicableIndividualAssessments: API.OperationMethod<
     outputToken: "Marker",
     pageSize: "MaxRecords",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeApplicableIndividualAssessmentsMessage,
-  DescribeApplicableIndividualAssessmentsResponse,
-  DescribeApplicableIndividualAssessmentsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeApplicableIndividualAssessmentsMessage,
-  ) => stream.Stream<
-    DescribeApplicableIndividualAssessmentsResponse,
-    DescribeApplicableIndividualAssessmentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeApplicableIndividualAssessmentsMessage,
-  ) => stream.Stream<
-    unknown,
-    DescribeApplicableIndividualAssessmentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeCertificatesError = ResourceNotFoundFault | CommonErrors;
 /**
@@ -9029,27 +9009,7 @@ export const describeCertificates: API.OperationMethod<
     outputToken: "Marker",
     pageSize: "MaxRecords",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeCertificatesMessage,
-  DescribeCertificatesResponse,
-  DescribeCertificatesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeCertificatesMessage,
-  ) => stream.Stream<
-    DescribeCertificatesResponse,
-    DescribeCertificatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeCertificatesMessage,
-  ) => stream.Stream<
-    unknown,
-    DescribeCertificatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeConnectionsError = ResourceNotFoundFault | CommonErrors;
 /**
@@ -9088,27 +9048,7 @@ export const describeConnections: API.OperationMethod<
     outputToken: "Marker",
     pageSize: "MaxRecords",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeConnectionsMessage,
-  DescribeConnectionsResponse,
-  DescribeConnectionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeConnectionsMessage,
-  ) => stream.Stream<
-    DescribeConnectionsResponse,
-    DescribeConnectionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeConnectionsMessage,
-  ) => stream.Stream<
-    unknown,
-    DescribeConnectionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeConversionConfigurationError =
   | ResourceNotFoundFault
@@ -9175,27 +9115,7 @@ export const describeDataMigrations: API.OperationMethod<
     items: "DataMigrations",
     pageSize: "MaxRecords",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeDataMigrationsMessage,
-  DescribeDataMigrationsResponse,
-  DescribeDataMigrationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeDataMigrationsMessage,
-  ) => stream.Stream<
-    DescribeDataMigrationsResponse,
-    DescribeDataMigrationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeDataMigrationsMessage,
-  ) => stream.Stream<
-    DataMigration,
-    DescribeDataMigrationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeDataProvidersError =
   | AccessDeniedFault
@@ -9238,27 +9158,7 @@ export const describeDataProviders: API.OperationMethod<
     outputToken: "Marker",
     pageSize: "MaxRecords",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeDataProvidersMessage,
-  DescribeDataProvidersResponse,
-  DescribeDataProvidersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeDataProvidersMessage,
-  ) => stream.Stream<
-    DescribeDataProvidersResponse,
-    DescribeDataProvidersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeDataProvidersMessage,
-  ) => stream.Stream<
-    unknown,
-    DescribeDataProvidersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeEndpointsError = ResourceNotFoundFault | CommonErrors;
 /**
@@ -9296,27 +9196,7 @@ export const describeEndpoints: API.OperationMethod<
     outputToken: "Marker",
     pageSize: "MaxRecords",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeEndpointsMessage,
-  DescribeEndpointsResponse,
-  DescribeEndpointsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeEndpointsMessage,
-  ) => stream.Stream<
-    DescribeEndpointsResponse,
-    DescribeEndpointsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeEndpointsMessage,
-  ) => stream.Stream<
-    unknown,
-    DescribeEndpointsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeEndpointSettingsError = CommonErrors;
 /**
@@ -9355,27 +9235,7 @@ export const describeEndpointSettings: API.OperationMethod<
     outputToken: "Marker",
     pageSize: "MaxRecords",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeEndpointSettingsMessage,
-  DescribeEndpointSettingsResponse,
-  DescribeEndpointSettingsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeEndpointSettingsMessage,
-  ) => stream.Stream<
-    DescribeEndpointSettingsResponse,
-    DescribeEndpointSettingsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeEndpointSettingsMessage,
-  ) => stream.Stream<
-    unknown,
-    DescribeEndpointSettingsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeEndpointTypesError = CommonErrors;
 /**
@@ -9413,27 +9273,7 @@ export const describeEndpointTypes: API.OperationMethod<
     outputToken: "Marker",
     pageSize: "MaxRecords",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeEndpointTypesMessage,
-  DescribeEndpointTypesResponse,
-  DescribeEndpointTypesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeEndpointTypesMessage,
-  ) => stream.Stream<
-    DescribeEndpointTypesResponse,
-    DescribeEndpointTypesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeEndpointTypesMessage,
-  ) => stream.Stream<
-    unknown,
-    DescribeEndpointTypesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeEngineVersionsError = CommonErrors;
 /**
@@ -9471,27 +9311,7 @@ export const describeEngineVersions: API.OperationMethod<
     outputToken: "Marker",
     pageSize: "MaxRecords",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeEngineVersionsMessage,
-  DescribeEngineVersionsResponse,
-  DescribeEngineVersionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeEngineVersionsMessage,
-  ) => stream.Stream<
-    DescribeEngineVersionsResponse,
-    DescribeEngineVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeEngineVersionsMessage,
-  ) => stream.Stream<
-    unknown,
-    DescribeEngineVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeEventCategoriesError = CommonErrors;
 /**
@@ -9551,27 +9371,7 @@ export const describeEvents: API.OperationMethod<
     outputToken: "Marker",
     pageSize: "MaxRecords",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeEventsMessage,
-  DescribeEventsResponse,
-  DescribeEventsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeEventsMessage,
-  ) => stream.Stream<
-    DescribeEventsResponse,
-    DescribeEventsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeEventsMessage,
-  ) => stream.Stream<
-    unknown,
-    DescribeEventsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeEventSubscriptionsError =
   | ResourceNotFoundFault
@@ -9617,27 +9417,7 @@ export const describeEventSubscriptions: API.OperationMethod<
     outputToken: "Marker",
     pageSize: "MaxRecords",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeEventSubscriptionsMessage,
-  DescribeEventSubscriptionsResponse,
-  DescribeEventSubscriptionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeEventSubscriptionsMessage,
-  ) => stream.Stream<
-    DescribeEventSubscriptionsResponse,
-    DescribeEventSubscriptionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeEventSubscriptionsMessage,
-  ) => stream.Stream<
-    unknown,
-    DescribeEventSubscriptionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeExtensionPackAssociationsError = CommonErrors;
 /**
@@ -9677,27 +9457,7 @@ export const describeExtensionPackAssociations: API.OperationMethod<
     outputToken: "Marker",
     pageSize: "MaxRecords",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeExtensionPackAssociationsMessage,
-  DescribeExtensionPackAssociationsResponse,
-  DescribeExtensionPackAssociationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeExtensionPackAssociationsMessage,
-  ) => stream.Stream<
-    DescribeExtensionPackAssociationsResponse,
-    DescribeExtensionPackAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeExtensionPackAssociationsMessage,
-  ) => stream.Stream<
-    unknown,
-    DescribeExtensionPackAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeFleetAdvisorCollectorsError =
   | InvalidResourceStateFault
@@ -9739,27 +9499,7 @@ export const describeFleetAdvisorCollectors: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxRecords",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeFleetAdvisorCollectorsRequest,
-  DescribeFleetAdvisorCollectorsResponse,
-  DescribeFleetAdvisorCollectorsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeFleetAdvisorCollectorsRequest,
-  ) => stream.Stream<
-    DescribeFleetAdvisorCollectorsResponse,
-    DescribeFleetAdvisorCollectorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeFleetAdvisorCollectorsRequest,
-  ) => stream.Stream<
-    unknown,
-    DescribeFleetAdvisorCollectorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeFleetAdvisorDatabasesError =
   | InvalidResourceStateFault
@@ -9801,27 +9541,7 @@ export const describeFleetAdvisorDatabases: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxRecords",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeFleetAdvisorDatabasesRequest,
-  DescribeFleetAdvisorDatabasesResponse,
-  DescribeFleetAdvisorDatabasesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeFleetAdvisorDatabasesRequest,
-  ) => stream.Stream<
-    DescribeFleetAdvisorDatabasesResponse,
-    DescribeFleetAdvisorDatabasesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeFleetAdvisorDatabasesRequest,
-  ) => stream.Stream<
-    unknown,
-    DescribeFleetAdvisorDatabasesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeFleetAdvisorLsaAnalysisError =
   | InvalidResourceStateFault
@@ -9864,27 +9584,7 @@ export const describeFleetAdvisorLsaAnalysis: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxRecords",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeFleetAdvisorLsaAnalysisRequest,
-  DescribeFleetAdvisorLsaAnalysisResponse,
-  DescribeFleetAdvisorLsaAnalysisError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeFleetAdvisorLsaAnalysisRequest,
-  ) => stream.Stream<
-    DescribeFleetAdvisorLsaAnalysisResponse,
-    DescribeFleetAdvisorLsaAnalysisError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeFleetAdvisorLsaAnalysisRequest,
-  ) => stream.Stream<
-    unknown,
-    DescribeFleetAdvisorLsaAnalysisError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeFleetAdvisorSchemaObjectSummaryError =
   | InvalidResourceStateFault
@@ -9927,27 +9627,7 @@ export const describeFleetAdvisorSchemaObjectSummary: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxRecords",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeFleetAdvisorSchemaObjectSummaryRequest,
-  DescribeFleetAdvisorSchemaObjectSummaryResponse,
-  DescribeFleetAdvisorSchemaObjectSummaryError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeFleetAdvisorSchemaObjectSummaryRequest,
-  ) => stream.Stream<
-    DescribeFleetAdvisorSchemaObjectSummaryResponse,
-    DescribeFleetAdvisorSchemaObjectSummaryError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeFleetAdvisorSchemaObjectSummaryRequest,
-  ) => stream.Stream<
-    unknown,
-    DescribeFleetAdvisorSchemaObjectSummaryError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeFleetAdvisorSchemasError =
   | InvalidResourceStateFault
@@ -9989,27 +9669,7 @@ export const describeFleetAdvisorSchemas: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxRecords",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeFleetAdvisorSchemasRequest,
-  DescribeFleetAdvisorSchemasResponse,
-  DescribeFleetAdvisorSchemasError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeFleetAdvisorSchemasRequest,
-  ) => stream.Stream<
-    DescribeFleetAdvisorSchemasResponse,
-    DescribeFleetAdvisorSchemasError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeFleetAdvisorSchemasRequest,
-  ) => stream.Stream<
-    unknown,
-    DescribeFleetAdvisorSchemasError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeInstanceProfilesError =
   | AccessDeniedFault
@@ -10052,27 +9712,7 @@ export const describeInstanceProfiles: API.OperationMethod<
     outputToken: "Marker",
     pageSize: "MaxRecords",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeInstanceProfilesMessage,
-  DescribeInstanceProfilesResponse,
-  DescribeInstanceProfilesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeInstanceProfilesMessage,
-  ) => stream.Stream<
-    DescribeInstanceProfilesResponse,
-    DescribeInstanceProfilesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeInstanceProfilesMessage,
-  ) => stream.Stream<
-    unknown,
-    DescribeInstanceProfilesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeMetadataModelError =
   | AccessDeniedFault
@@ -10134,27 +9774,7 @@ export const describeMetadataModelAssessments: API.OperationMethod<
     outputToken: "Marker",
     pageSize: "MaxRecords",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeMetadataModelAssessmentsMessage,
-  DescribeMetadataModelAssessmentsResponse,
-  DescribeMetadataModelAssessmentsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeMetadataModelAssessmentsMessage,
-  ) => stream.Stream<
-    DescribeMetadataModelAssessmentsResponse,
-    DescribeMetadataModelAssessmentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeMetadataModelAssessmentsMessage,
-  ) => stream.Stream<
-    unknown,
-    DescribeMetadataModelAssessmentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeMetadataModelChildrenError =
   | AccessDeniedFault
@@ -10196,27 +9816,7 @@ export const describeMetadataModelChildren: API.OperationMethod<
     items: "MetadataModelChildren",
     pageSize: "MaxRecords",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeMetadataModelChildrenMessage,
-  DescribeMetadataModelChildrenResponse,
-  DescribeMetadataModelChildrenError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeMetadataModelChildrenMessage,
-  ) => stream.Stream<
-    DescribeMetadataModelChildrenResponse,
-    DescribeMetadataModelChildrenError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeMetadataModelChildrenMessage,
-  ) => stream.Stream<
-    MetadataModelReference,
-    DescribeMetadataModelChildrenError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeMetadataModelConversionsError =
   | ResourceNotFoundFault
@@ -10256,27 +9856,7 @@ export const describeMetadataModelConversions: API.OperationMethod<
     outputToken: "Marker",
     pageSize: "MaxRecords",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeMetadataModelConversionsMessage,
-  DescribeMetadataModelConversionsResponse,
-  DescribeMetadataModelConversionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeMetadataModelConversionsMessage,
-  ) => stream.Stream<
-    DescribeMetadataModelConversionsResponse,
-    DescribeMetadataModelConversionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeMetadataModelConversionsMessage,
-  ) => stream.Stream<
-    unknown,
-    DescribeMetadataModelConversionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeMetadataModelCreationsError =
   | AccessDeniedFault
@@ -10318,27 +9898,7 @@ export const describeMetadataModelCreations: API.OperationMethod<
     items: "Requests",
     pageSize: "MaxRecords",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeMetadataModelCreationsMessage,
-  DescribeMetadataModelCreationsResponse,
-  DescribeMetadataModelCreationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeMetadataModelCreationsMessage,
-  ) => stream.Stream<
-    DescribeMetadataModelCreationsResponse,
-    DescribeMetadataModelCreationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeMetadataModelCreationsMessage,
-  ) => stream.Stream<
-    SchemaConversionRequest,
-    DescribeMetadataModelCreationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeMetadataModelExportsAsScriptError =
   | ResourceNotFoundFault
@@ -10378,27 +9938,7 @@ export const describeMetadataModelExportsAsScript: API.OperationMethod<
     outputToken: "Marker",
     pageSize: "MaxRecords",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeMetadataModelExportsAsScriptMessage,
-  DescribeMetadataModelExportsAsScriptResponse,
-  DescribeMetadataModelExportsAsScriptError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeMetadataModelExportsAsScriptMessage,
-  ) => stream.Stream<
-    DescribeMetadataModelExportsAsScriptResponse,
-    DescribeMetadataModelExportsAsScriptError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeMetadataModelExportsAsScriptMessage,
-  ) => stream.Stream<
-    unknown,
-    DescribeMetadataModelExportsAsScriptError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeMetadataModelExportsToTargetError =
   | ResourceNotFoundFault
@@ -10438,27 +9978,7 @@ export const describeMetadataModelExportsToTarget: API.OperationMethod<
     outputToken: "Marker",
     pageSize: "MaxRecords",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeMetadataModelExportsToTargetMessage,
-  DescribeMetadataModelExportsToTargetResponse,
-  DescribeMetadataModelExportsToTargetError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeMetadataModelExportsToTargetMessage,
-  ) => stream.Stream<
-    DescribeMetadataModelExportsToTargetResponse,
-    DescribeMetadataModelExportsToTargetError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeMetadataModelExportsToTargetMessage,
-  ) => stream.Stream<
-    unknown,
-    DescribeMetadataModelExportsToTargetError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeMetadataModelImportsError =
   | ResourceNotFoundFault
@@ -10498,27 +10018,7 @@ export const describeMetadataModelImports: API.OperationMethod<
     outputToken: "Marker",
     pageSize: "MaxRecords",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeMetadataModelImportsMessage,
-  DescribeMetadataModelImportsResponse,
-  DescribeMetadataModelImportsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeMetadataModelImportsMessage,
-  ) => stream.Stream<
-    DescribeMetadataModelImportsResponse,
-    DescribeMetadataModelImportsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeMetadataModelImportsMessage,
-  ) => stream.Stream<
-    unknown,
-    DescribeMetadataModelImportsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeMigrationProjectsError =
   | AccessDeniedFault
@@ -10561,27 +10061,7 @@ export const describeMigrationProjects: API.OperationMethod<
     outputToken: "Marker",
     pageSize: "MaxRecords",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeMigrationProjectsMessage,
-  DescribeMigrationProjectsResponse,
-  DescribeMigrationProjectsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeMigrationProjectsMessage,
-  ) => stream.Stream<
-    DescribeMigrationProjectsResponse,
-    DescribeMigrationProjectsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeMigrationProjectsMessage,
-  ) => stream.Stream<
-    unknown,
-    DescribeMigrationProjectsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeOrderableReplicationInstancesError = CommonErrors;
 /**
@@ -10620,27 +10100,7 @@ export const describeOrderableReplicationInstances: API.OperationMethod<
     outputToken: "Marker",
     pageSize: "MaxRecords",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeOrderableReplicationInstancesMessage,
-  DescribeOrderableReplicationInstancesResponse,
-  DescribeOrderableReplicationInstancesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeOrderableReplicationInstancesMessage,
-  ) => stream.Stream<
-    DescribeOrderableReplicationInstancesResponse,
-    DescribeOrderableReplicationInstancesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeOrderableReplicationInstancesMessage,
-  ) => stream.Stream<
-    unknown,
-    DescribeOrderableReplicationInstancesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribePendingMaintenanceActionsError =
   | ResourceNotFoundFault
@@ -10681,27 +10141,7 @@ export const describePendingMaintenanceActions: API.OperationMethod<
     outputToken: "Marker",
     pageSize: "MaxRecords",
   } as const,
-})) as any as API.OperationMethod<
-  DescribePendingMaintenanceActionsMessage,
-  DescribePendingMaintenanceActionsResponse,
-  DescribePendingMaintenanceActionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribePendingMaintenanceActionsMessage,
-  ) => stream.Stream<
-    DescribePendingMaintenanceActionsResponse,
-    DescribePendingMaintenanceActionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribePendingMaintenanceActionsMessage,
-  ) => stream.Stream<
-    unknown,
-    DescribePendingMaintenanceActionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeRecommendationLimitationsError =
   | AccessDeniedFault
@@ -10745,27 +10185,7 @@ export const describeRecommendationLimitations: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxRecords",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeRecommendationLimitationsRequest,
-  DescribeRecommendationLimitationsResponse,
-  DescribeRecommendationLimitationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeRecommendationLimitationsRequest,
-  ) => stream.Stream<
-    DescribeRecommendationLimitationsResponse,
-    DescribeRecommendationLimitationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeRecommendationLimitationsRequest,
-  ) => stream.Stream<
-    unknown,
-    DescribeRecommendationLimitationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeRecommendationsError =
   | AccessDeniedFault
@@ -10809,27 +10229,7 @@ export const describeRecommendations: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxRecords",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeRecommendationsRequest,
-  DescribeRecommendationsResponse,
-  DescribeRecommendationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeRecommendationsRequest,
-  ) => stream.Stream<
-    DescribeRecommendationsResponse,
-    DescribeRecommendationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeRecommendationsRequest,
-  ) => stream.Stream<
-    unknown,
-    DescribeRecommendationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeRefreshSchemasStatusError =
   | InvalidResourceStateFault
@@ -10891,27 +10291,7 @@ export const describeReplicationConfigs: API.OperationMethod<
     outputToken: "Marker",
     pageSize: "MaxRecords",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeReplicationConfigsMessage,
-  DescribeReplicationConfigsResponse,
-  DescribeReplicationConfigsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeReplicationConfigsMessage,
-  ) => stream.Stream<
-    DescribeReplicationConfigsResponse,
-    DescribeReplicationConfigsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeReplicationConfigsMessage,
-  ) => stream.Stream<
-    unknown,
-    DescribeReplicationConfigsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeReplicationInstancesError =
   | ResourceNotFoundFault
@@ -10952,27 +10332,7 @@ export const describeReplicationInstances: API.OperationMethod<
     outputToken: "Marker",
     pageSize: "MaxRecords",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeReplicationInstancesMessage,
-  DescribeReplicationInstancesResponse,
-  DescribeReplicationInstancesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeReplicationInstancesMessage,
-  ) => stream.Stream<
-    DescribeReplicationInstancesResponse,
-    DescribeReplicationInstancesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeReplicationInstancesMessage,
-  ) => stream.Stream<
-    unknown,
-    DescribeReplicationInstancesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeReplicationInstanceTaskLogsError =
   | InvalidResourceStateFault
@@ -11013,27 +10373,7 @@ export const describeReplicationInstanceTaskLogs: API.OperationMethod<
     outputToken: "Marker",
     pageSize: "MaxRecords",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeReplicationInstanceTaskLogsMessage,
-  DescribeReplicationInstanceTaskLogsResponse,
-  DescribeReplicationInstanceTaskLogsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeReplicationInstanceTaskLogsMessage,
-  ) => stream.Stream<
-    DescribeReplicationInstanceTaskLogsResponse,
-    DescribeReplicationInstanceTaskLogsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeReplicationInstanceTaskLogsMessage,
-  ) => stream.Stream<
-    unknown,
-    DescribeReplicationInstanceTaskLogsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeReplicationsError = ResourceNotFoundFault | CommonErrors;
 /**
@@ -11072,27 +10412,7 @@ export const describeReplications: API.OperationMethod<
     outputToken: "Marker",
     pageSize: "MaxRecords",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeReplicationsMessage,
-  DescribeReplicationsResponse,
-  DescribeReplicationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeReplicationsMessage,
-  ) => stream.Stream<
-    DescribeReplicationsResponse,
-    DescribeReplicationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeReplicationsMessage,
-  ) => stream.Stream<
-    unknown,
-    DescribeReplicationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeReplicationSubnetGroupsError =
   | ResourceNotFoundFault
@@ -11132,27 +10452,7 @@ export const describeReplicationSubnetGroups: API.OperationMethod<
     outputToken: "Marker",
     pageSize: "MaxRecords",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeReplicationSubnetGroupsMessage,
-  DescribeReplicationSubnetGroupsResponse,
-  DescribeReplicationSubnetGroupsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeReplicationSubnetGroupsMessage,
-  ) => stream.Stream<
-    DescribeReplicationSubnetGroupsResponse,
-    DescribeReplicationSubnetGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeReplicationSubnetGroupsMessage,
-  ) => stream.Stream<
-    unknown,
-    DescribeReplicationSubnetGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeReplicationTableStatisticsError =
   | InvalidResourceStateFault
@@ -11194,27 +10494,7 @@ export const describeReplicationTableStatistics: API.OperationMethod<
     outputToken: "Marker",
     pageSize: "MaxRecords",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeReplicationTableStatisticsMessage,
-  DescribeReplicationTableStatisticsResponse,
-  DescribeReplicationTableStatisticsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeReplicationTableStatisticsMessage,
-  ) => stream.Stream<
-    DescribeReplicationTableStatisticsResponse,
-    DescribeReplicationTableStatisticsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeReplicationTableStatisticsMessage,
-  ) => stream.Stream<
-    unknown,
-    DescribeReplicationTableStatisticsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeReplicationTaskAssessmentResultsError =
   | ResourceNotFoundFault
@@ -11258,27 +10538,7 @@ export const describeReplicationTaskAssessmentResults: API.OperationMethod<
     outputToken: "Marker",
     pageSize: "MaxRecords",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeReplicationTaskAssessmentResultsMessage,
-  DescribeReplicationTaskAssessmentResultsResponse,
-  DescribeReplicationTaskAssessmentResultsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeReplicationTaskAssessmentResultsMessage,
-  ) => stream.Stream<
-    DescribeReplicationTaskAssessmentResultsResponse,
-    DescribeReplicationTaskAssessmentResultsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeReplicationTaskAssessmentResultsMessage,
-  ) => stream.Stream<
-    unknown,
-    DescribeReplicationTaskAssessmentResultsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeReplicationTaskAssessmentRunsError =
   | ResourceNotFoundFault
@@ -11326,27 +10586,7 @@ export const describeReplicationTaskAssessmentRuns: API.OperationMethod<
     outputToken: "Marker",
     pageSize: "MaxRecords",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeReplicationTaskAssessmentRunsMessage,
-  DescribeReplicationTaskAssessmentRunsResponse,
-  DescribeReplicationTaskAssessmentRunsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeReplicationTaskAssessmentRunsMessage,
-  ) => stream.Stream<
-    DescribeReplicationTaskAssessmentRunsResponse,
-    DescribeReplicationTaskAssessmentRunsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeReplicationTaskAssessmentRunsMessage,
-  ) => stream.Stream<
-    unknown,
-    DescribeReplicationTaskAssessmentRunsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeReplicationTaskIndividualAssessmentsError =
   | ResourceNotFoundFault
@@ -11389,27 +10629,7 @@ export const describeReplicationTaskIndividualAssessments: API.OperationMethod<
     outputToken: "Marker",
     pageSize: "MaxRecords",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeReplicationTaskIndividualAssessmentsMessage,
-  DescribeReplicationTaskIndividualAssessmentsResponse,
-  DescribeReplicationTaskIndividualAssessmentsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeReplicationTaskIndividualAssessmentsMessage,
-  ) => stream.Stream<
-    DescribeReplicationTaskIndividualAssessmentsResponse,
-    DescribeReplicationTaskIndividualAssessmentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeReplicationTaskIndividualAssessmentsMessage,
-  ) => stream.Stream<
-    unknown,
-    DescribeReplicationTaskIndividualAssessmentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeReplicationTasksError =
   | ResourceNotFoundFault
@@ -11450,27 +10670,7 @@ export const describeReplicationTasks: API.OperationMethod<
     outputToken: "Marker",
     pageSize: "MaxRecords",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeReplicationTasksMessage,
-  DescribeReplicationTasksResponse,
-  DescribeReplicationTasksError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeReplicationTasksMessage,
-  ) => stream.Stream<
-    DescribeReplicationTasksResponse,
-    DescribeReplicationTasksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeReplicationTasksMessage,
-  ) => stream.Stream<
-    unknown,
-    DescribeReplicationTasksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeSchemasError =
   | InvalidResourceStateFault
@@ -11511,27 +10711,7 @@ export const describeSchemas: API.OperationMethod<
     outputToken: "Marker",
     pageSize: "MaxRecords",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeSchemasMessage,
-  DescribeSchemasResponse,
-  DescribeSchemasError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeSchemasMessage,
-  ) => stream.Stream<
-    DescribeSchemasResponse,
-    DescribeSchemasError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeSchemasMessage,
-  ) => stream.Stream<
-    unknown,
-    DescribeSchemasError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeTableStatisticsError =
   | AccessDeniedFault
@@ -11578,27 +10758,7 @@ export const describeTableStatistics: API.OperationMethod<
     outputToken: "Marker",
     pageSize: "MaxRecords",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeTableStatisticsMessage,
-  DescribeTableStatisticsResponse,
-  DescribeTableStatisticsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeTableStatisticsMessage,
-  ) => stream.Stream<
-    DescribeTableStatisticsResponse,
-    DescribeTableStatisticsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeTableStatisticsMessage,
-  ) => stream.Stream<
-    unknown,
-    DescribeTableStatisticsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ExportMetadataModelAssessmentError =
   | ResourceNotFoundFault

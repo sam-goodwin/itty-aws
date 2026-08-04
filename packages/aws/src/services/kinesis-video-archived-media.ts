@@ -1083,27 +1083,7 @@ export const getImages: API.OperationMethod<
     items: "Images",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  GetImagesInput,
-  GetImagesOutput,
-  GetImagesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetImagesInput,
-  ) => stream.Stream<
-    GetImagesOutput,
-    GetImagesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetImagesInput,
-  ) => stream.Stream<
-    Image,
-    GetImagesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type GetMediaForFragmentListError =
   | ClientLimitExceededException
@@ -1236,24 +1216,4 @@ export const listFragments: API.OperationMethod<
     items: "Fragments",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListFragmentsInput,
-  ListFragmentsOutput,
-  ListFragmentsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListFragmentsInput,
-  ) => stream.Stream<
-    ListFragmentsOutput,
-    ListFragmentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListFragmentsInput,
-  ) => stream.Stream<
-    Fragment,
-    ListFragmentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;

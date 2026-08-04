@@ -6405,7 +6405,8 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   ListProjectsLocationsRequest,
   GoogleCloudLocationListLocationsResponse,
   ListProjectsLocationsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudLocationListLocationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsRequest,
   output: GoogleCloudLocationListLocationsResponse,
@@ -6416,7 +6417,7 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsOperationsError =
   | NotFound
@@ -6427,7 +6428,8 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   ListProjectsLocationsOperationsRequest,
   GoogleLongrunningListOperationsResponse,
   ListProjectsLocationsOperationsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleLongrunningListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsOperationsRequest,
   output: GoogleLongrunningListOperationsResponse,
@@ -6438,7 +6440,7 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsProcessorsError =
   | NotFound
@@ -6449,7 +6451,8 @@ export const listProjectsLocationsProcessors: API.PaginatedOperationMethod<
   ListProjectsLocationsProcessorsRequest,
   GoogleCloudDocumentaiV1beta3ListProcessorsResponse,
   ListProjectsLocationsProcessorsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudDocumentaiV1beta3ListProcessorsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsProcessorsRequest,
   output: GoogleCloudDocumentaiV1beta3ListProcessorsResponse,
@@ -6460,7 +6463,7 @@ export const listProjectsLocationsProcessors: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsProcessorsProcessorVersionsError =
   | NotFound
@@ -6471,7 +6474,8 @@ export const listProjectsLocationsProcessorsProcessorVersions: API.PaginatedOper
   ListProjectsLocationsProcessorsProcessorVersionsRequest,
   GoogleCloudDocumentaiV1beta3ListProcessorVersionsResponse,
   ListProjectsLocationsProcessorsProcessorVersionsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudDocumentaiV1beta3ListProcessorVersionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsProcessorsProcessorVersionsRequest,
   output: GoogleCloudDocumentaiV1beta3ListProcessorVersionsResponse,
@@ -6482,7 +6486,7 @@ export const listProjectsLocationsProcessorsProcessorVersions: API.PaginatedOper
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsProcessorsProcessorVersionsEvaluationsError =
   | NotFound
@@ -6493,7 +6497,8 @@ export const listProjectsLocationsProcessorsProcessorVersionsEvaluations: API.Pa
   ListProjectsLocationsProcessorsProcessorVersionsEvaluationsRequest,
   GoogleCloudDocumentaiV1beta3ListEvaluationsResponse,
   ListProjectsLocationsProcessorsProcessorVersionsEvaluationsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudDocumentaiV1beta3ListEvaluationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsProcessorsProcessorVersionsEvaluationsRequest,
   output: GoogleCloudDocumentaiV1beta3ListEvaluationsResponse,
@@ -6504,7 +6509,7 @@ export const listProjectsLocationsProcessorsProcessorVersionsEvaluations: API.Pa
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsProcessorTypesError =
   | NotFound
@@ -6515,7 +6520,8 @@ export const listProjectsLocationsProcessorTypes: API.PaginatedOperationMethod<
   ListProjectsLocationsProcessorTypesRequest,
   GoogleCloudDocumentaiV1beta3ListProcessorTypesResponse,
   ListProjectsLocationsProcessorTypesError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudDocumentaiV1beta3ListProcessorTypesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsProcessorTypesRequest,
   output: GoogleCloudDocumentaiV1beta3ListProcessorTypesResponse,
@@ -6526,7 +6532,7 @@ export const listProjectsLocationsProcessorTypes: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsSchemasError =
   | NotFound
@@ -6537,7 +6543,8 @@ export const listProjectsLocationsSchemas: API.PaginatedOperationMethod<
   ListProjectsLocationsSchemasRequest,
   GoogleCloudDocumentaiV1beta3ListSchemasResponse,
   ListProjectsLocationsSchemasError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudDocumentaiV1beta3ListSchemasResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsSchemasRequest,
   output: GoogleCloudDocumentaiV1beta3ListSchemasResponse,
@@ -6548,7 +6555,7 @@ export const listProjectsLocationsSchemas: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsSchemasSchemaVersionsError =
   | NotFound
@@ -6559,7 +6566,8 @@ export const listProjectsLocationsSchemasSchemaVersions: API.PaginatedOperationM
   ListProjectsLocationsSchemasSchemaVersionsRequest,
   GoogleCloudDocumentaiV1beta3ListSchemaVersionsResponse,
   ListProjectsLocationsSchemasSchemaVersionsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudDocumentaiV1beta3ListSchemaVersionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsSchemasSchemaVersionsRequest,
   output: GoogleCloudDocumentaiV1beta3ListSchemaVersionsResponse,
@@ -6570,7 +6578,7 @@ export const listProjectsLocationsSchemasSchemaVersions: API.PaginatedOperationM
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type PatchProjectsLocationsSchemasError =
   | NotFound

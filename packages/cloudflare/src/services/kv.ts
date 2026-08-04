@@ -1389,7 +1389,8 @@ export const listNamespaceKeys: API.PaginatedOperationMethod<
   ListNamespaceKeysRequest,
   ListNamespaceKeysResponse,
   ListNamespaceKeysError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  NamespacesKeysListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListNamespaceKeysRequest,
@@ -1406,7 +1407,7 @@ export const listNamespaceKeys: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListNamespacesError = CloudflareOpError;
 /** Returns the namespaces owned by an account. */
@@ -1414,7 +1415,8 @@ export const listNamespaces: API.PaginatedOperationMethod<
   ListNamespacesRequest,
   ListNamespacesResponse,
   ListNamespacesError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  NamespacesListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListNamespacesRequest,
@@ -1431,7 +1433,7 @@ export const listNamespaces: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type NamespacesKeysBulkDeleteError =
   | NamespaceNotFound

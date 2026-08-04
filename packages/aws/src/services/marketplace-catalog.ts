@@ -2642,27 +2642,7 @@ export const listChangeSets: API.OperationMethod<
     items: "ChangeSetSummaryList",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListChangeSetsRequest,
-  ListChangeSetsResponse,
-  ListChangeSetsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListChangeSetsRequest,
-  ) => stream.Stream<
-    ListChangeSetsResponse,
-    ListChangeSetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListChangeSetsRequest,
-  ) => stream.Stream<
-    ChangeSetSummaryListItem,
-    ListChangeSetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListEntitiesError =
   | AccessDeniedException
@@ -2713,27 +2693,7 @@ export const listEntities: API.OperationMethod<
     items: "EntitySummaryList",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListEntitiesRequest,
-  ListEntitiesResponse,
-  ListEntitiesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEntitiesRequest,
-  ) => stream.Stream<
-    ListEntitiesResponse,
-    ListEntitiesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEntitiesRequest,
-  ) => stream.Stream<
-    EntitySummary,
-    ListEntitiesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsForResourceError =
   | AccessDeniedException

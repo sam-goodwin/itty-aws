@@ -1797,7 +1797,8 @@ export const listProjectsLocationsCapacityCommitments: API.PaginatedOperationMet
   ListProjectsLocationsCapacityCommitmentsRequest,
   ListCapacityCommitmentsResponse,
   ListProjectsLocationsCapacityCommitmentsError,
-  GcpOpContext
+  GcpOpContext,
+  ListCapacityCommitmentsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsCapacityCommitmentsRequest,
   output: ListCapacityCommitmentsResponse,
@@ -1808,7 +1809,7 @@ export const listProjectsLocationsCapacityCommitments: API.PaginatedOperationMet
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsReservationGroupsError =
   | NotFound
@@ -1819,7 +1820,8 @@ export const listProjectsLocationsReservationGroups: API.PaginatedOperationMetho
   ListProjectsLocationsReservationGroupsRequest,
   ListReservationGroupsResponse,
   ListProjectsLocationsReservationGroupsError,
-  GcpOpContext
+  GcpOpContext,
+  ListReservationGroupsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsReservationGroupsRequest,
   output: ListReservationGroupsResponse,
@@ -1830,7 +1832,7 @@ export const listProjectsLocationsReservationGroups: API.PaginatedOperationMetho
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsReservationsError =
   | NotFound
@@ -1841,7 +1843,8 @@ export const listProjectsLocationsReservations: API.PaginatedOperationMethod<
   ListProjectsLocationsReservationsRequest,
   ListReservationsResponse,
   ListProjectsLocationsReservationsError,
-  GcpOpContext
+  GcpOpContext,
+  ListReservationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsReservationsRequest,
   output: ListReservationsResponse,
@@ -1852,7 +1855,7 @@ export const listProjectsLocationsReservations: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsReservationsAssignmentsError =
   | NotFound
@@ -1863,7 +1866,8 @@ export const listProjectsLocationsReservationsAssignments: API.PaginatedOperatio
   ListProjectsLocationsReservationsAssignmentsRequest,
   ListAssignmentsResponse,
   ListProjectsLocationsReservationsAssignmentsError,
-  GcpOpContext
+  GcpOpContext,
+  ListAssignmentsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsReservationsAssignmentsRequest,
   output: ListAssignmentsResponse,
@@ -1874,7 +1878,7 @@ export const listProjectsLocationsReservationsAssignments: API.PaginatedOperatio
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type MergeProjectsLocationsCapacityCommitmentsError =
   | NotFound
@@ -1985,7 +1989,8 @@ export const searchAllAssignmentsProjectsLocations: API.PaginatedOperationMethod
   SearchAllAssignmentsProjectsLocationsRequest,
   SearchAllAssignmentsResponse,
   SearchAllAssignmentsProjectsLocationsError,
-  GcpOpContext
+  GcpOpContext,
+  SearchAllAssignmentsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchAllAssignmentsProjectsLocationsRequest,
   output: SearchAllAssignmentsResponse,
@@ -1996,7 +2001,7 @@ export const searchAllAssignmentsProjectsLocations: API.PaginatedOperationMethod
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type SearchAssignmentsProjectsLocationsError =
   | NotFound
@@ -2007,7 +2012,8 @@ export const searchAssignmentsProjectsLocations: API.PaginatedOperationMethod<
   SearchAssignmentsProjectsLocationsRequest,
   SearchAssignmentsResponse,
   SearchAssignmentsProjectsLocationsError,
-  GcpOpContext
+  GcpOpContext,
+  SearchAssignmentsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchAssignmentsProjectsLocationsRequest,
   output: SearchAssignmentsResponse,
@@ -2018,7 +2024,7 @@ export const searchAssignmentsProjectsLocations: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type SetIamPolicyProjectsLocationsReservationsError =
   | NotFound

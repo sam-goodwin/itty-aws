@@ -4126,27 +4126,7 @@ export const listAddonInstances: API.OperationMethod<
     items: "AddonInstances",
     pageSize: "PageSize",
   } as const,
-})) as any as API.OperationMethod<
-  ListAddonInstancesRequest,
-  ListAddonInstancesResponse,
-  ListAddonInstancesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAddonInstancesRequest,
-  ) => stream.Stream<
-    ListAddonInstancesResponse,
-    ListAddonInstancesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAddonInstancesRequest,
-  ) => stream.Stream<
-    AddonInstance,
-    ListAddonInstancesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListAddonSubscriptionsError = ValidationException | CommonErrors;
 /**
@@ -4185,27 +4165,7 @@ export const listAddonSubscriptions: API.OperationMethod<
     items: "AddonSubscriptions",
     pageSize: "PageSize",
   } as const,
-})) as any as API.OperationMethod<
-  ListAddonSubscriptionsRequest,
-  ListAddonSubscriptionsResponse,
-  ListAddonSubscriptionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAddonSubscriptionsRequest,
-  ) => stream.Stream<
-    ListAddonSubscriptionsResponse,
-    ListAddonSubscriptionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAddonSubscriptionsRequest,
-  ) => stream.Stream<
-    AddonSubscription,
-    ListAddonSubscriptionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListAddressListImportJobsError =
   | AccessDeniedException
@@ -4254,27 +4214,7 @@ export const listAddressListImportJobs: API.OperationMethod<
     items: "ImportJobs",
     pageSize: "PageSize",
   } as const,
-})) as any as API.OperationMethod<
-  ListAddressListImportJobsRequest,
-  ListAddressListImportJobsResponse,
-  ListAddressListImportJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAddressListImportJobsRequest,
-  ) => stream.Stream<
-    ListAddressListImportJobsResponse,
-    ListAddressListImportJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAddressListImportJobsRequest,
-  ) => stream.Stream<
-    ImportJob,
-    ListAddressListImportJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListAddressListsError =
   | AccessDeniedException
@@ -4317,27 +4257,7 @@ export const listAddressLists: API.OperationMethod<
     items: "AddressLists",
     pageSize: "PageSize",
   } as const,
-})) as any as API.OperationMethod<
-  ListAddressListsRequest,
-  ListAddressListsResponse,
-  ListAddressListsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAddressListsRequest,
-  ) => stream.Stream<
-    ListAddressListsResponse,
-    ListAddressListsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAddressListsRequest,
-  ) => stream.Stream<
-    AddressList,
-    ListAddressListsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListArchiveExportsError =
   | AccessDeniedException
@@ -4386,27 +4306,7 @@ export const listArchiveExports: API.OperationMethod<
     items: "Exports",
     pageSize: "PageSize",
   } as const,
-})) as any as API.OperationMethod<
-  ListArchiveExportsRequest,
-  ListArchiveExportsResponse,
-  ListArchiveExportsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListArchiveExportsRequest,
-  ) => stream.Stream<
-    ListArchiveExportsResponse,
-    ListArchiveExportsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListArchiveExportsRequest,
-  ) => stream.Stream<
-    ExportSummary,
-    ListArchiveExportsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListArchivesError =
   | AccessDeniedException
@@ -4449,27 +4349,7 @@ export const listArchives: API.OperationMethod<
     items: "Archives",
     pageSize: "PageSize",
   } as const,
-})) as any as API.OperationMethod<
-  ListArchivesRequest,
-  ListArchivesResponse,
-  ListArchivesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListArchivesRequest,
-  ) => stream.Stream<
-    ListArchivesResponse,
-    ListArchivesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListArchivesRequest,
-  ) => stream.Stream<
-    Archive,
-    ListArchivesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListArchiveSearchesError =
   | AccessDeniedException
@@ -4518,27 +4398,7 @@ export const listArchiveSearches: API.OperationMethod<
     items: "Searches",
     pageSize: "PageSize",
   } as const,
-})) as any as API.OperationMethod<
-  ListArchiveSearchesRequest,
-  ListArchiveSearchesResponse,
-  ListArchiveSearchesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListArchiveSearchesRequest,
-  ) => stream.Stream<
-    ListArchiveSearchesResponse,
-    ListArchiveSearchesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListArchiveSearchesRequest,
-  ) => stream.Stream<
-    SearchSummary,
-    ListArchiveSearchesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListIngressPointsError = ValidationException | CommonErrors;
 /**
@@ -4577,27 +4437,7 @@ export const listIngressPoints: API.OperationMethod<
     items: "IngressPoints",
     pageSize: "PageSize",
   } as const,
-})) as any as API.OperationMethod<
-  ListIngressPointsRequest,
-  ListIngressPointsResponse,
-  ListIngressPointsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListIngressPointsRequest,
-  ) => stream.Stream<
-    ListIngressPointsResponse,
-    ListIngressPointsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListIngressPointsRequest,
-  ) => stream.Stream<
-    IngressPoint,
-    ListIngressPointsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListMembersOfAddressListError =
   | AccessDeniedException
@@ -4646,27 +4486,7 @@ export const listMembersOfAddressList: API.OperationMethod<
     items: "Addresses",
     pageSize: "PageSize",
   } as const,
-})) as any as API.OperationMethod<
-  ListMembersOfAddressListRequest,
-  ListMembersOfAddressListResponse,
-  ListMembersOfAddressListError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListMembersOfAddressListRequest,
-  ) => stream.Stream<
-    ListMembersOfAddressListResponse,
-    ListMembersOfAddressListError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListMembersOfAddressListRequest,
-  ) => stream.Stream<
-    SavedAddress,
-    ListMembersOfAddressListError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListRelaysError = ValidationException | CommonErrors;
 /**
@@ -4705,27 +4525,7 @@ export const listRelays: API.OperationMethod<
     items: "Relays",
     pageSize: "PageSize",
   } as const,
-})) as any as API.OperationMethod<
-  ListRelaysRequest,
-  ListRelaysResponse,
-  ListRelaysError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRelaysRequest,
-  ) => stream.Stream<
-    ListRelaysResponse,
-    ListRelaysError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRelaysRequest,
-  ) => stream.Stream<
-    Relay,
-    ListRelaysError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListRuleSetsError = ValidationException | CommonErrors;
 /**
@@ -4764,27 +4564,7 @@ export const listRuleSets: API.OperationMethod<
     items: "RuleSets",
     pageSize: "PageSize",
   } as const,
-})) as any as API.OperationMethod<
-  ListRuleSetsRequest,
-  ListRuleSetsResponse,
-  ListRuleSetsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRuleSetsRequest,
-  ) => stream.Stream<
-    ListRuleSetsResponse,
-    ListRuleSetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRuleSetsRequest,
-  ) => stream.Stream<
-    RuleSet,
-    ListRuleSetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsForResourceError =
   | ResourceNotFoundException
@@ -4844,27 +4624,7 @@ export const listTrafficPolicies: API.OperationMethod<
     items: "TrafficPolicies",
     pageSize: "PageSize",
   } as const,
-})) as any as API.OperationMethod<
-  ListTrafficPoliciesRequest,
-  ListTrafficPoliciesResponse,
-  ListTrafficPoliciesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTrafficPoliciesRequest,
-  ) => stream.Stream<
-    ListTrafficPoliciesResponse,
-    ListTrafficPoliciesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTrafficPoliciesRequest,
-  ) => stream.Stream<
-    TrafficPolicy,
-    ListTrafficPoliciesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type RegisterMemberToAddressListError =
   | AccessDeniedException

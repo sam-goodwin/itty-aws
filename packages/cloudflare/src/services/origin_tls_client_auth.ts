@@ -1382,7 +1382,8 @@ export const listHostnameCertificates: API.PaginatedOperationMethod<
   ListHostnameCertificatesRequest,
   ListHostnameCertificatesResponse,
   ListHostnameCertificatesError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  HostnameCertificatesListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListHostnameCertificatesRequest,
@@ -1393,7 +1394,7 @@ export const listHostnameCertificates: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListOriginTlsClientAuthsError = Forbidden | CloudflareOpError;
 /** Lists all client certificates configured for zone-level authenticated origin pulls. */
@@ -1401,7 +1402,8 @@ export const listOriginTlsClientAuths: API.PaginatedOperationMethod<
   ListOriginTlsClientAuthsRequest,
   ListOriginTlsClientAuthsResponse,
   ListOriginTlsClientAuthsError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  ListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListOriginTlsClientAuthsRequest,
@@ -1412,7 +1414,7 @@ export const listOriginTlsClientAuths: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type PutHostnameError =
   | HostnameCertificateIdRequired
@@ -1424,7 +1426,8 @@ export const putHostname: API.PaginatedOperationMethod<
   PutHostnameRequest,
   PutHostnameResponse,
   PutHostnameError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  HostnamesUpdateResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: PutHostnameRequest,
@@ -1441,7 +1444,7 @@ export const putHostname: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type PutSettingError = Forbidden | CloudflareOpError;
 /** Enable or disable zone-level authenticated origin pulls. 'enabled' should be set true either before/after the certificate is uploaded to see the certificate in use. */
@@ -1543,7 +1546,8 @@ export const zoneCertificatesList: API.PaginatedOperationMethod<
   ZoneCertificatesListRequest,
   ZoneCertificatesListResponse,
   ZoneCertificatesListError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  ZoneCertificatesListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ZoneCertificatesListRequest,
@@ -1554,7 +1558,7 @@ export const zoneCertificatesList: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 // Alias of createOriginTlsClientAuth (same route, alternate export name upstream).
 export const createZoneCertificate = createOriginTlsClientAuth;

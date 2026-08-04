@@ -5685,7 +5685,8 @@ export const listProjectsLocationsDocumentSchemas: API.PaginatedOperationMethod<
   ListProjectsLocationsDocumentSchemasRequest,
   GoogleCloudContentwarehouseV1ListDocumentSchemasResponse,
   ListProjectsLocationsDocumentSchemasError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudContentwarehouseV1ListDocumentSchemasResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsDocumentSchemasRequest,
   output: GoogleCloudContentwarehouseV1ListDocumentSchemasResponse,
@@ -5696,7 +5697,7 @@ export const listProjectsLocationsDocumentSchemas: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsRuleSetsError =
   | NotFound
@@ -5707,7 +5708,8 @@ export const listProjectsLocationsRuleSets: API.PaginatedOperationMethod<
   ListProjectsLocationsRuleSetsRequest,
   GoogleCloudContentwarehouseV1ListRuleSetsResponse,
   ListProjectsLocationsRuleSetsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudContentwarehouseV1ListRuleSetsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsRuleSetsRequest,
   output: GoogleCloudContentwarehouseV1ListRuleSetsResponse,
@@ -5718,7 +5720,7 @@ export const listProjectsLocationsRuleSets: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsSynonymSetsError =
   | NotFound
@@ -5729,7 +5731,8 @@ export const listProjectsLocationsSynonymSets: API.PaginatedOperationMethod<
   ListProjectsLocationsSynonymSetsRequest,
   GoogleCloudContentwarehouseV1ListSynonymSetsResponse,
   ListProjectsLocationsSynonymSetsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudContentwarehouseV1ListSynonymSetsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsSynonymSetsRequest,
   output: GoogleCloudContentwarehouseV1ListSynonymSetsResponse,
@@ -5740,7 +5743,7 @@ export const listProjectsLocationsSynonymSets: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type LockProjectsLocationsDocumentsError =
   | NotFound

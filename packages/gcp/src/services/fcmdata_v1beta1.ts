@@ -275,7 +275,8 @@ export const listProjectsAndroidAppsDeliveryData: API.PaginatedOperationMethod<
   ListProjectsAndroidAppsDeliveryDataRequest,
   GoogleFirebaseFcmDataV1beta1ListAndroidDeliveryDataResponse,
   ListProjectsAndroidAppsDeliveryDataError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleFirebaseFcmDataV1beta1ListAndroidDeliveryDataResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsAndroidAppsDeliveryDataRequest,
   output: GoogleFirebaseFcmDataV1beta1ListAndroidDeliveryDataResponse,
@@ -286,4 +287,4 @@ export const listProjectsAndroidAppsDeliveryData: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;

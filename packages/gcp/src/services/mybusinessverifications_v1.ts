@@ -714,7 +714,8 @@ export const listLocationsVerifications: API.PaginatedOperationMethod<
   ListLocationsVerificationsRequest,
   ListVerificationsResponse,
   ListLocationsVerificationsError,
-  GcpOpContext
+  GcpOpContext,
+  ListVerificationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLocationsVerificationsRequest,
   output: ListVerificationsResponse,
@@ -725,7 +726,7 @@ export const listLocationsVerifications: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type VerifyLocationsError =
   | NotFound

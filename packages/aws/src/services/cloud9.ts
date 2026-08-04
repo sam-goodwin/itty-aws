@@ -802,27 +802,7 @@ export const describeEnvironmentMemberships: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeEnvironmentMembershipsRequest,
-  DescribeEnvironmentMembershipsResult,
-  DescribeEnvironmentMembershipsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeEnvironmentMembershipsRequest,
-  ) => stream.Stream<
-    DescribeEnvironmentMembershipsResult,
-    DescribeEnvironmentMembershipsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeEnvironmentMembershipsRequest,
-  ) => stream.Stream<
-    unknown,
-    DescribeEnvironmentMembershipsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeEnvironmentsError =
   | BadRequestException
@@ -960,27 +940,7 @@ export const listEnvironments: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListEnvironmentsRequest,
-  ListEnvironmentsResult,
-  ListEnvironmentsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEnvironmentsRequest,
-  ) => stream.Stream<
-    ListEnvironmentsResult,
-    ListEnvironmentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEnvironmentsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListEnvironmentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsForResourceError =
   | BadRequestException

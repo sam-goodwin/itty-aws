@@ -3416,27 +3416,7 @@ export const listMediaCapturePipelines: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListMediaCapturePipelinesRequest,
-  ListMediaCapturePipelinesResponse,
-  ListMediaCapturePipelinesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListMediaCapturePipelinesRequest,
-  ) => stream.Stream<
-    ListMediaCapturePipelinesResponse,
-    ListMediaCapturePipelinesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListMediaCapturePipelinesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListMediaCapturePipelinesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListMediaInsightsPipelineConfigurationsError =
   | BadRequestException
@@ -3490,27 +3470,7 @@ export const listMediaInsightsPipelineConfigurations: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListMediaInsightsPipelineConfigurationsRequest,
-  ListMediaInsightsPipelineConfigurationsResponse,
-  ListMediaInsightsPipelineConfigurationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListMediaInsightsPipelineConfigurationsRequest,
-  ) => stream.Stream<
-    ListMediaInsightsPipelineConfigurationsResponse,
-    ListMediaInsightsPipelineConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListMediaInsightsPipelineConfigurationsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListMediaInsightsPipelineConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListMediaPipelineKinesisVideoStreamPoolsError =
   | BadRequestException
@@ -3564,27 +3524,7 @@ export const listMediaPipelineKinesisVideoStreamPools: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListMediaPipelineKinesisVideoStreamPoolsRequest,
-  ListMediaPipelineKinesisVideoStreamPoolsResponse,
-  ListMediaPipelineKinesisVideoStreamPoolsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListMediaPipelineKinesisVideoStreamPoolsRequest,
-  ) => stream.Stream<
-    ListMediaPipelineKinesisVideoStreamPoolsResponse,
-    ListMediaPipelineKinesisVideoStreamPoolsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListMediaPipelineKinesisVideoStreamPoolsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListMediaPipelineKinesisVideoStreamPoolsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListMediaPipelinesError =
   | BadRequestException
@@ -3638,27 +3578,7 @@ export const listMediaPipelines: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListMediaPipelinesRequest,
-  ListMediaPipelinesResponse,
-  ListMediaPipelinesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListMediaPipelinesRequest,
-  ) => stream.Stream<
-    ListMediaPipelinesResponse,
-    ListMediaPipelinesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListMediaPipelinesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListMediaPipelinesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsForResourceError =
   | BadRequestException

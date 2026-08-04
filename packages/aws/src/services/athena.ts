@@ -4051,27 +4051,7 @@ export const getQueryResults: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  GetQueryResultsInput,
-  GetQueryResultsOutput,
-  GetQueryResultsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetQueryResultsInput,
-  ) => stream.Stream<
-    GetQueryResultsOutput,
-    GetQueryResultsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetQueryResultsInput,
-  ) => stream.Stream<
-    unknown,
-    GetQueryResultsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type GetQueryRuntimeStatisticsError =
   | InternalServerException
@@ -4325,27 +4305,7 @@ export const listApplicationDPUSizes: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListApplicationDPUSizesInput,
-  ListApplicationDPUSizesOutput,
-  ListApplicationDPUSizesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListApplicationDPUSizesInput,
-  ) => stream.Stream<
-    ListApplicationDPUSizesOutput,
-    ListApplicationDPUSizesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListApplicationDPUSizesInput,
-  ) => stream.Stream<
-    unknown,
-    ListApplicationDPUSizesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListCalculationExecutionsError =
   | InternalServerException
@@ -4392,27 +4352,7 @@ export const listCalculationExecutions: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListCalculationExecutionsRequest,
-  ListCalculationExecutionsResponse,
-  ListCalculationExecutionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCalculationExecutionsRequest,
-  ) => stream.Stream<
-    ListCalculationExecutionsResponse,
-    ListCalculationExecutionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCalculationExecutionsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListCalculationExecutionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListCapacityReservationsError =
   | InternalServerException
@@ -4453,27 +4393,7 @@ export const listCapacityReservations: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListCapacityReservationsInput,
-  ListCapacityReservationsOutput,
-  ListCapacityReservationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCapacityReservationsInput,
-  ) => stream.Stream<
-    ListCapacityReservationsOutput,
-    ListCapacityReservationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCapacityReservationsInput,
-  ) => stream.Stream<
-    unknown,
-    ListCapacityReservationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListDatabasesError =
   | InternalServerException
@@ -4516,27 +4436,7 @@ export const listDatabases: API.OperationMethod<
     items: "DatabaseList",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListDatabasesInput,
-  ListDatabasesOutput,
-  ListDatabasesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDatabasesInput,
-  ) => stream.Stream<
-    ListDatabasesOutput,
-    ListDatabasesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDatabasesInput,
-  ) => stream.Stream<
-    Database,
-    ListDatabasesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListDataCatalogsError =
   | InternalServerException
@@ -4581,27 +4481,7 @@ export const listDataCatalogs: API.OperationMethod<
     items: "DataCatalogsSummary",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListDataCatalogsInput,
-  ListDataCatalogsOutput,
-  ListDataCatalogsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDataCatalogsInput,
-  ) => stream.Stream<
-    ListDataCatalogsOutput,
-    ListDataCatalogsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDataCatalogsInput,
-  ) => stream.Stream<
-    DataCatalogSummary,
-    ListDataCatalogsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListEngineVersionsError =
   | InternalServerException
@@ -4643,27 +4523,7 @@ export const listEngineVersions: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListEngineVersionsInput,
-  ListEngineVersionsOutput,
-  ListEngineVersionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEngineVersionsInput,
-  ) => stream.Stream<
-    ListEngineVersionsOutput,
-    ListEngineVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEngineVersionsInput,
-  ) => stream.Stream<
-    unknown,
-    ListEngineVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListExecutorsError =
   | InternalServerException
@@ -4711,27 +4571,7 @@ export const listExecutors: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListExecutorsRequest,
-  ListExecutorsResponse,
-  ListExecutorsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListExecutorsRequest,
-  ) => stream.Stream<
-    ListExecutorsResponse,
-    ListExecutorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListExecutorsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListExecutorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListNamedQueriesError =
   | InternalServerException
@@ -4774,27 +4614,7 @@ export const listNamedQueries: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListNamedQueriesInput,
-  ListNamedQueriesOutput,
-  ListNamedQueriesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListNamedQueriesInput,
-  ) => stream.Stream<
-    ListNamedQueriesOutput,
-    ListNamedQueriesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListNamedQueriesInput,
-  ) => stream.Stream<
-    unknown,
-    ListNamedQueriesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListNotebookMetadataError =
   | InternalServerException
@@ -4890,27 +4710,7 @@ export const listPreparedStatements: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListPreparedStatementsInput,
-  ListPreparedStatementsOutput,
-  ListPreparedStatementsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPreparedStatementsInput,
-  ) => stream.Stream<
-    ListPreparedStatementsOutput,
-    ListPreparedStatementsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPreparedStatementsInput,
-  ) => stream.Stream<
-    unknown,
-    ListPreparedStatementsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListQueryExecutionsError =
   | InternalServerException
@@ -4954,27 +4754,7 @@ export const listQueryExecutions: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListQueryExecutionsInput,
-  ListQueryExecutionsOutput,
-  ListQueryExecutionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListQueryExecutionsInput,
-  ) => stream.Stream<
-    ListQueryExecutionsOutput,
-    ListQueryExecutionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListQueryExecutionsInput,
-  ) => stream.Stream<
-    unknown,
-    ListQueryExecutionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListSessionsError =
   | InternalServerException
@@ -5023,27 +4803,7 @@ export const listSessions: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListSessionsRequest,
-  ListSessionsResponse,
-  ListSessionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSessionsRequest,
-  ) => stream.Stream<
-    ListSessionsResponse,
-    ListSessionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSessionsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListSessionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTableMetadataError =
   | InternalServerException
@@ -5086,27 +4846,7 @@ export const listTableMetadata: API.OperationMethod<
     items: "TableMetadataList",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListTableMetadataInput,
-  ListTableMetadataOutput,
-  ListTableMetadataError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTableMetadataInput,
-  ) => stream.Stream<
-    ListTableMetadataOutput,
-    ListTableMetadataError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTableMetadataInput,
-  ) => stream.Stream<
-    TableMetadata,
-    ListTableMetadataError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsForResourceError =
   | InternalServerException
@@ -5153,27 +4893,7 @@ export const listTagsForResource: API.OperationMethod<
     items: "Tags",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListTagsForResourceInput,
-  ListTagsForResourceOutput,
-  ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTagsForResourceInput,
-  ) => stream.Stream<
-    ListTagsForResourceOutput,
-    ListTagsForResourceError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTagsForResourceInput,
-  ) => stream.Stream<
-    Tag,
-    ListTagsForResourceError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListWorkGroupsError =
   | InternalServerException
@@ -5214,27 +4934,7 @@ export const listWorkGroups: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListWorkGroupsInput,
-  ListWorkGroupsOutput,
-  ListWorkGroupsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListWorkGroupsInput,
-  ) => stream.Stream<
-    ListWorkGroupsOutput,
-    ListWorkGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListWorkGroupsInput,
-  ) => stream.Stream<
-    unknown,
-    ListWorkGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type PutCapacityAssignmentConfigurationError =
   | InternalServerException

@@ -2765,7 +2765,8 @@ export const bulkCreateRules: API.PaginatedOperationMethod<
   BulkCreateRulesRequest,
   BulkCreateRulesResponse,
   BulkCreateRulesError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  RulesBulkCreateResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: BulkCreateRulesRequest,
@@ -2776,7 +2777,7 @@ export const bulkCreateRules: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type BulkPatchRulesError = CloudflareOpError;
 /** Edit token validation rules. A request can update multiple Token Validation Rules. Rules can be re-ordered using the `position` field. Returns all updated rules. */
@@ -2784,7 +2785,8 @@ export const bulkPatchRules: API.PaginatedOperationMethod<
   BulkPatchRulesRequest,
   BulkPatchRulesResponse,
   BulkPatchRulesError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  RulesBulkEditResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: BulkPatchRulesRequest,
@@ -2795,7 +2797,7 @@ export const bulkPatchRules: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type CreateConfigurationError =
   | TokenValidationNotEntitled
@@ -2952,7 +2954,8 @@ export const listConfigurations: API.PaginatedOperationMethod<
   ListConfigurationsRequest,
   ListConfigurationsResponse,
   ListConfigurationsError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  ConfigurationListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListConfigurationsRequest,
@@ -2974,7 +2977,7 @@ export const listConfigurations: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListRulesError =
   | TokenValidationNotEntitled
@@ -2985,7 +2988,8 @@ export const listRules: API.PaginatedOperationMethod<
   ListRulesRequest,
   ListRulesResponse,
   ListRulesError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  RulesListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListRulesRequest,
@@ -3007,7 +3011,7 @@ export const listRules: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type PatchConfigurationError =
   | TokenConfigurationNotFound

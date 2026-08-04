@@ -5005,7 +5005,8 @@ export const listAccountsChannelPartnerLinks: API.PaginatedOperationMethod<
   ListAccountsChannelPartnerLinksRequest,
   GoogleCloudChannelV1ListChannelPartnerLinksResponse,
   ListAccountsChannelPartnerLinksError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudChannelV1ListChannelPartnerLinksResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsChannelPartnerLinksRequest,
   output: GoogleCloudChannelV1ListChannelPartnerLinksResponse,
@@ -5016,7 +5017,7 @@ export const listAccountsChannelPartnerLinks: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListAccountsChannelPartnerLinksChannelPartnerRepricingConfigsError =
   NotFound | Forbidden | GcpOpError;
@@ -5025,7 +5026,8 @@ export const listAccountsChannelPartnerLinksChannelPartnerRepricingConfigs: API.
   ListAccountsChannelPartnerLinksChannelPartnerRepricingConfigsRequest,
   GoogleCloudChannelV1ListChannelPartnerRepricingConfigsResponse,
   ListAccountsChannelPartnerLinksChannelPartnerRepricingConfigsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudChannelV1ListChannelPartnerRepricingConfigsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsChannelPartnerLinksChannelPartnerRepricingConfigsRequest,
   output: GoogleCloudChannelV1ListChannelPartnerRepricingConfigsResponse,
@@ -5036,7 +5038,7 @@ export const listAccountsChannelPartnerLinksChannelPartnerRepricingConfigs: API.
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListAccountsChannelPartnerLinksCustomersError =
   | NotFound
@@ -5047,7 +5049,8 @@ export const listAccountsChannelPartnerLinksCustomers: API.PaginatedOperationMet
   ListAccountsChannelPartnerLinksCustomersRequest,
   GoogleCloudChannelV1ListCustomersResponse,
   ListAccountsChannelPartnerLinksCustomersError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudChannelV1ListCustomersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsChannelPartnerLinksCustomersRequest,
   output: GoogleCloudChannelV1ListCustomersResponse,
@@ -5058,7 +5061,7 @@ export const listAccountsChannelPartnerLinksCustomers: API.PaginatedOperationMet
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListAccountsCustomersError = NotFound | Forbidden | GcpOpError;
 /** List Customers. Possible error codes: * PERMISSION_DENIED: The reseller account making the request is different from the reseller account in the API request. * INVALID_ARGUMENT: Required request parameters are missing or invalid. Return value: List of Customers, or an empty list if there are no customers. */
@@ -5066,7 +5069,8 @@ export const listAccountsCustomers: API.PaginatedOperationMethod<
   ListAccountsCustomersRequest,
   GoogleCloudChannelV1ListCustomersResponse,
   ListAccountsCustomersError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudChannelV1ListCustomersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsCustomersRequest,
   output: GoogleCloudChannelV1ListCustomersResponse,
@@ -5077,7 +5081,7 @@ export const listAccountsCustomers: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListAccountsCustomersCustomerRepricingConfigsError =
   | NotFound
@@ -5088,7 +5092,8 @@ export const listAccountsCustomersCustomerRepricingConfigs: API.PaginatedOperati
   ListAccountsCustomersCustomerRepricingConfigsRequest,
   GoogleCloudChannelV1ListCustomerRepricingConfigsResponse,
   ListAccountsCustomersCustomerRepricingConfigsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudChannelV1ListCustomerRepricingConfigsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsCustomersCustomerRepricingConfigsRequest,
   output: GoogleCloudChannelV1ListCustomerRepricingConfigsResponse,
@@ -5099,7 +5104,7 @@ export const listAccountsCustomersCustomerRepricingConfigs: API.PaginatedOperati
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListAccountsCustomersEntitlementsError =
   | NotFound
@@ -5110,7 +5115,8 @@ export const listAccountsCustomersEntitlements: API.PaginatedOperationMethod<
   ListAccountsCustomersEntitlementsRequest,
   GoogleCloudChannelV1ListEntitlementsResponse,
   ListAccountsCustomersEntitlementsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudChannelV1ListEntitlementsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsCustomersEntitlementsRequest,
   output: GoogleCloudChannelV1ListEntitlementsResponse,
@@ -5121,7 +5127,7 @@ export const listAccountsCustomersEntitlements: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListAccountsOffersError = NotFound | Forbidden | GcpOpError;
 /** Lists the Offers the reseller can sell. Possible error codes: * INVALID_ARGUMENT: Required request parameters are missing or invalid. */
@@ -5129,7 +5135,8 @@ export const listAccountsOffers: API.PaginatedOperationMethod<
   ListAccountsOffersRequest,
   GoogleCloudChannelV1ListOffersResponse,
   ListAccountsOffersError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudChannelV1ListOffersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsOffersRequest,
   output: GoogleCloudChannelV1ListOffersResponse,
@@ -5140,7 +5147,7 @@ export const listAccountsOffers: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListAccountsReportsError = NotFound | Forbidden | GcpOpError;
 /** Lists the reports that RunReportJob can run. These reports include an ID, a description, and the list of columns that will be in the result. Deprecated: Please use [Export Channel Services data to BigQuery](https://cloud.google.com/channel/docs/rebilling/export-data-to-bigquery) instead. */
@@ -5148,7 +5155,8 @@ export const listAccountsReports: API.PaginatedOperationMethod<
   ListAccountsReportsRequest,
   GoogleCloudChannelV1ListReportsResponse,
   ListAccountsReportsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudChannelV1ListReportsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsReportsRequest,
   output: GoogleCloudChannelV1ListReportsResponse,
@@ -5159,7 +5167,7 @@ export const listAccountsReports: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListAccountsSkuGroupsError = NotFound | Forbidden | GcpOpError;
 /** Lists the Rebilling supported SKU groups the account is authorized to sell. Reference: https://cloud.google.com/skus/sku-groups Possible Error Codes: * PERMISSION_DENIED: If the account making the request and the account being queried are different, or the account doesn't exist. * INTERNAL: Any non-user error related to technical issues in the backend. In this case, contact Cloud Channel support. Return Value: If successful, the SkuGroup resources. The data for each resource is displayed in the alphabetical order of SKU group display name. The data for each resource is displayed in the ascending order of SkuGroup.display_name If unsuccessful, returns an error. */
@@ -5167,7 +5175,8 @@ export const listAccountsSkuGroups: API.PaginatedOperationMethod<
   ListAccountsSkuGroupsRequest,
   GoogleCloudChannelV1ListSkuGroupsResponse,
   ListAccountsSkuGroupsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudChannelV1ListSkuGroupsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsSkuGroupsRequest,
   output: GoogleCloudChannelV1ListSkuGroupsResponse,
@@ -5178,7 +5187,7 @@ export const listAccountsSkuGroups: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListAccountsSkuGroupsBillableSkusError =
   | NotFound
@@ -5189,7 +5198,8 @@ export const listAccountsSkuGroupsBillableSkus: API.PaginatedOperationMethod<
   ListAccountsSkuGroupsBillableSkusRequest,
   GoogleCloudChannelV1ListSkuGroupBillableSkusResponse,
   ListAccountsSkuGroupsBillableSkusError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudChannelV1ListSkuGroupBillableSkusResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsSkuGroupsBillableSkusRequest,
   output: GoogleCloudChannelV1ListSkuGroupBillableSkusResponse,
@@ -5200,7 +5210,7 @@ export const listAccountsSkuGroupsBillableSkus: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListEntitlementChangesAccountsCustomersEntitlementsError =
   | NotFound
@@ -5211,7 +5221,8 @@ export const listEntitlementChangesAccountsCustomersEntitlements: API.PaginatedO
   ListEntitlementChangesAccountsCustomersEntitlementsRequest,
   GoogleCloudChannelV1ListEntitlementChangesResponse,
   ListEntitlementChangesAccountsCustomersEntitlementsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudChannelV1ListEntitlementChangesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEntitlementChangesAccountsCustomersEntitlementsRequest,
   output: GoogleCloudChannelV1ListEntitlementChangesResponse,
@@ -5222,7 +5233,7 @@ export const listEntitlementChangesAccountsCustomersEntitlements: API.PaginatedO
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListOperationsError = NotFound | Forbidden | GcpOpError;
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
@@ -5230,7 +5241,8 @@ export const listOperations: API.PaginatedOperationMethod<
   ListOperationsRequest,
   GoogleLongrunningListOperationsResponse,
   ListOperationsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleLongrunningListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOperationsRequest,
   output: GoogleLongrunningListOperationsResponse,
@@ -5241,7 +5253,7 @@ export const listOperations: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProductsError = NotFound | Forbidden | GcpOpError;
 /** Lists the Products the reseller is authorized to sell. Possible error codes: * INVALID_ARGUMENT: Required request parameters are missing or invalid. */
@@ -5249,7 +5261,8 @@ export const listProducts: API.PaginatedOperationMethod<
   ListProductsRequest,
   GoogleCloudChannelV1ListProductsResponse,
   ListProductsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudChannelV1ListProductsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProductsRequest,
   output: GoogleCloudChannelV1ListProductsResponse,
@@ -5260,7 +5273,7 @@ export const listProducts: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProductsSkusError = NotFound | Forbidden | GcpOpError;
 /** Lists the SKUs for a product the reseller is authorized to sell. Possible error codes: * INVALID_ARGUMENT: Required request parameters are missing or invalid. */
@@ -5268,7 +5281,8 @@ export const listProductsSkus: API.PaginatedOperationMethod<
   ListProductsSkusRequest,
   GoogleCloudChannelV1ListSkusResponse,
   ListProductsSkusError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudChannelV1ListSkusResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProductsSkusRequest,
   output: GoogleCloudChannelV1ListSkusResponse,
@@ -5279,7 +5293,7 @@ export const listProductsSkus: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListPurchasableOffersAccountsCustomersError =
   | NotFound
@@ -5290,7 +5304,8 @@ export const listPurchasableOffersAccountsCustomers: API.PaginatedOperationMetho
   ListPurchasableOffersAccountsCustomersRequest,
   GoogleCloudChannelV1ListPurchasableOffersResponse,
   ListPurchasableOffersAccountsCustomersError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudChannelV1ListPurchasableOffersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPurchasableOffersAccountsCustomersRequest,
   output: GoogleCloudChannelV1ListPurchasableOffersResponse,
@@ -5301,7 +5316,7 @@ export const listPurchasableOffersAccountsCustomers: API.PaginatedOperationMetho
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListPurchasableSkusAccountsCustomersError =
   | NotFound
@@ -5312,7 +5327,8 @@ export const listPurchasableSkusAccountsCustomers: API.PaginatedOperationMethod<
   ListPurchasableSkusAccountsCustomersRequest,
   GoogleCloudChannelV1ListPurchasableSkusResponse,
   ListPurchasableSkusAccountsCustomersError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudChannelV1ListPurchasableSkusResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPurchasableSkusAccountsCustomersRequest,
   output: GoogleCloudChannelV1ListPurchasableSkusResponse,
@@ -5323,7 +5339,7 @@ export const listPurchasableSkusAccountsCustomers: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListSubscribersAccountsError = NotFound | Forbidden | GcpOpError;
 /** Lists service accounts with subscriber privileges on the Pub/Sub topic created for this Channel Services account or integrator. Possible error codes: * PERMISSION_DENIED: The reseller account making the request and the provided reseller account are different, or the impersonated user is not a super admin. * INVALID_ARGUMENT: Required request parameters are missing or invalid. * NOT_FOUND: The topic resource doesn't exist. * INTERNAL: Any non-user error related to a technical issue in the backend. Contact Cloud Channel support. * UNKNOWN: Any non-user error related to a technical issue in the backend. Contact Cloud Channel support. Return value: A list of service email addresses. */
@@ -5331,7 +5347,8 @@ export const listSubscribersAccounts: API.PaginatedOperationMethod<
   ListSubscribersAccountsRequest,
   GoogleCloudChannelV1ListSubscribersResponse,
   ListSubscribersAccountsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudChannelV1ListSubscribersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSubscribersAccountsRequest,
   output: GoogleCloudChannelV1ListSubscribersResponse,
@@ -5342,7 +5359,7 @@ export const listSubscribersAccounts: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListSubscribersIntegratorsError = NotFound | Forbidden | GcpOpError;
 /** Lists service accounts with subscriber privileges on the Pub/Sub topic created for this Channel Services account or integrator. Possible error codes: * PERMISSION_DENIED: The reseller account making the request and the provided reseller account are different, or the impersonated user is not a super admin. * INVALID_ARGUMENT: Required request parameters are missing or invalid. * NOT_FOUND: The topic resource doesn't exist. * INTERNAL: Any non-user error related to a technical issue in the backend. Contact Cloud Channel support. * UNKNOWN: Any non-user error related to a technical issue in the backend. Contact Cloud Channel support. Return value: A list of service email addresses. */
@@ -5350,7 +5367,8 @@ export const listSubscribersIntegrators: API.PaginatedOperationMethod<
   ListSubscribersIntegratorsRequest,
   GoogleCloudChannelV1ListSubscribersResponse,
   ListSubscribersIntegratorsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudChannelV1ListSubscribersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSubscribersIntegratorsRequest,
   output: GoogleCloudChannelV1ListSubscribersResponse,
@@ -5361,7 +5379,7 @@ export const listSubscribersIntegrators: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListTransferableOffersAccountsError =
   | NotFound

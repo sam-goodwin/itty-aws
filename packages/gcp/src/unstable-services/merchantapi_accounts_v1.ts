@@ -4997,7 +4997,8 @@ export const findAccountsOmnichannelSettingsLfpProviders: API.PaginatedOperation
   FindAccountsOmnichannelSettingsLfpProvidersRequest,
   FindLfpProvidersResponse,
   FindAccountsOmnichannelSettingsLfpProvidersError,
-  GcpOpContext
+  GcpOpContext,
+  FindLfpProvidersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: FindAccountsOmnichannelSettingsLfpProvidersRequest,
   output: FindLfpProvidersResponse,
@@ -5008,7 +5009,7 @@ export const findAccountsOmnichannelSettingsLfpProviders: API.PaginatedOperation
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type GetAccountForGcpRegistrationAccountsDeveloperRegistrationError =
   | NotFound
@@ -5415,7 +5416,8 @@ export const listAccounts: API.PaginatedOperationMethod<
   ListAccountsRequest,
   ListAccountsResponse,
   ListAccountsError,
-  GcpOpContext
+  GcpOpContext,
+  ListAccountsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsRequest,
   output: ListAccountsResponse,
@@ -5426,7 +5428,7 @@ export const listAccounts: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListAccountsGbpAccountsError = NotFound | Forbidden | GcpOpError;
 /** List the GBP accounts for a given merchant. */
@@ -5434,7 +5436,8 @@ export const listAccountsGbpAccounts: API.PaginatedOperationMethod<
   ListAccountsGbpAccountsRequest,
   ListGbpAccountsResponse,
   ListAccountsGbpAccountsError,
-  GcpOpContext
+  GcpOpContext,
+  ListGbpAccountsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsGbpAccountsRequest,
   output: ListGbpAccountsResponse,
@@ -5445,7 +5448,7 @@ export const listAccountsGbpAccounts: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListAccountsIssuesError = NotFound | Forbidden | GcpOpError;
 /** Lists all account issues of a Merchant Center account. When called on a multi-client account, this method only returns issues belonging to that account, not its sub-accounts. To retrieve issues for sub-accounts, you must first call the accounts.listSubaccounts method to obtain a list of sub-accounts, and then call `accounts.issues.list` for each sub-account individually. */
@@ -5453,7 +5456,8 @@ export const listAccountsIssues: API.PaginatedOperationMethod<
   ListAccountsIssuesRequest,
   ListAccountIssuesResponse,
   ListAccountsIssuesError,
-  GcpOpContext
+  GcpOpContext,
+  ListAccountIssuesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsIssuesRequest,
   output: ListAccountIssuesResponse,
@@ -5464,7 +5468,7 @@ export const listAccountsIssues: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListAccountsOmnichannelSettingsError =
   | NotFound
@@ -5475,7 +5479,8 @@ export const listAccountsOmnichannelSettings: API.PaginatedOperationMethod<
   ListAccountsOmnichannelSettingsRequest,
   ListOmnichannelSettingsResponse,
   ListAccountsOmnichannelSettingsError,
-  GcpOpContext
+  GcpOpContext,
+  ListOmnichannelSettingsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsOmnichannelSettingsRequest,
   output: ListOmnichannelSettingsResponse,
@@ -5486,7 +5491,7 @@ export const listAccountsOmnichannelSettings: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListAccountsOnlineReturnPoliciesError =
   | NotFound
@@ -5497,7 +5502,8 @@ export const listAccountsOnlineReturnPolicies: API.PaginatedOperationMethod<
   ListAccountsOnlineReturnPoliciesRequest,
   ListOnlineReturnPoliciesResponse,
   ListAccountsOnlineReturnPoliciesError,
-  GcpOpContext
+  GcpOpContext,
+  ListOnlineReturnPoliciesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsOnlineReturnPoliciesRequest,
   output: ListOnlineReturnPoliciesResponse,
@@ -5508,7 +5514,7 @@ export const listAccountsOnlineReturnPolicies: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListAccountsProgramsError = NotFound | Forbidden | GcpOpError;
 /** Retrieves all programs for the account. */
@@ -5516,7 +5522,8 @@ export const listAccountsPrograms: API.PaginatedOperationMethod<
   ListAccountsProgramsRequest,
   ListProgramsResponse,
   ListAccountsProgramsError,
-  GcpOpContext
+  GcpOpContext,
+  ListProgramsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsProgramsRequest,
   output: ListProgramsResponse,
@@ -5527,7 +5534,7 @@ export const listAccountsPrograms: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListAccountsRegionsError = NotFound | Forbidden | GcpOpError;
 /** Lists the regions in your Merchant Center account. */
@@ -5535,7 +5542,8 @@ export const listAccountsRegions: API.PaginatedOperationMethod<
   ListAccountsRegionsRequest,
   ListRegionsResponse,
   ListAccountsRegionsError,
-  GcpOpContext
+  GcpOpContext,
+  ListRegionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsRegionsRequest,
   output: ListRegionsResponse,
@@ -5546,7 +5554,7 @@ export const listAccountsRegions: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListAccountsRelationshipsError = NotFound | Forbidden | GcpOpError;
 /** List account relationships for the specified account. */
@@ -5554,7 +5562,8 @@ export const listAccountsRelationships: API.PaginatedOperationMethod<
   ListAccountsRelationshipsRequest,
   ListAccountRelationshipsResponse,
   ListAccountsRelationshipsError,
-  GcpOpContext
+  GcpOpContext,
+  ListAccountRelationshipsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsRelationshipsRequest,
   output: ListAccountRelationshipsResponse,
@@ -5565,7 +5574,7 @@ export const listAccountsRelationships: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListAccountsServicesError = NotFound | Forbidden | GcpOpError;
 /** List account services for the specified accounts. Supports filtering. */
@@ -5573,7 +5582,8 @@ export const listAccountsServices: API.PaginatedOperationMethod<
   ListAccountsServicesRequest,
   ListAccountServicesResponse,
   ListAccountsServicesError,
-  GcpOpContext
+  GcpOpContext,
+  ListAccountServicesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsServicesRequest,
   output: ListAccountServicesResponse,
@@ -5584,7 +5594,7 @@ export const listAccountsServices: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListAccountsUsersError = NotFound | Forbidden | GcpOpError;
 /** Lists all users of a Merchant Center account. */
@@ -5592,7 +5602,8 @@ export const listAccountsUsers: API.PaginatedOperationMethod<
   ListAccountsUsersRequest,
   ListUsersResponse,
   ListAccountsUsersError,
-  GcpOpContext
+  GcpOpContext,
+  ListUsersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsUsersRequest,
   output: ListUsersResponse,
@@ -5603,7 +5614,7 @@ export const listAccountsUsers: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListSubaccountsAccountsError = NotFound | Forbidden | GcpOpError;
 /** List all sub-accounts for a given advanced account. This is a convenience wrapper for the more powerful `accounts.list` method. This method will produce the same results as calling `ListsAccounts` with the following filter: `relationship(providerId={parent} AND service(type="ACCOUNT_AGGREGATION"))` */
@@ -5611,7 +5622,8 @@ export const listSubaccountsAccounts: API.PaginatedOperationMethod<
   ListSubaccountsAccountsRequest,
   ListSubAccountsResponse,
   ListSubaccountsAccountsError,
-  GcpOpContext
+  GcpOpContext,
+  ListSubAccountsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSubaccountsAccountsRequest,
   output: ListSubAccountsResponse,
@@ -5622,7 +5634,7 @@ export const listSubaccountsAccounts: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type PatchAccountsError =
   | NotFound

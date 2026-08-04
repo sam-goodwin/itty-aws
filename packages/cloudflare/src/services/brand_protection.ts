@@ -1258,7 +1258,8 @@ export const urlInfoBrandProtection: API.PaginatedOperationMethod<
   UrlInfoBrandProtectionRequest,
   UrlInfoBrandProtectionResponse,
   UrlInfoBrandProtectionError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  UrlInfoResultItemMap
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: UrlInfoBrandProtectionRequest,
@@ -1269,4 +1270,4 @@ export const urlInfoBrandProtection: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;

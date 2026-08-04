@@ -706,7 +706,8 @@ export const listAchievementConfigurations: API.PaginatedOperationMethod<
   ListAchievementConfigurationsRequest,
   AchievementConfigurationListResponse,
   ListAchievementConfigurationsError,
-  GcpOpContext
+  GcpOpContext,
+  AchievementConfiguration
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAchievementConfigurationsRequest,
   output: AchievementConfigurationListResponse,
@@ -718,7 +719,7 @@ export const listAchievementConfigurations: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListLeaderboardConfigurationsError =
   | NotFound
@@ -729,7 +730,8 @@ export const listLeaderboardConfigurations: API.PaginatedOperationMethod<
   ListLeaderboardConfigurationsRequest,
   LeaderboardConfigurationListResponse,
   ListLeaderboardConfigurationsError,
-  GcpOpContext
+  GcpOpContext,
+  LeaderboardConfiguration
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLeaderboardConfigurationsRequest,
   output: LeaderboardConfigurationListResponse,
@@ -741,7 +743,7 @@ export const listLeaderboardConfigurations: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type UpdateAchievementConfigurationsError =
   | NotFound

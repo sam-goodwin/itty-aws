@@ -1917,27 +1917,7 @@ export const getResourceExplorerSetup: API.OperationMethod<
     items: "Regions",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  GetResourceExplorerSetupInput,
-  GetResourceExplorerSetupOutput,
-  GetResourceExplorerSetupError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetResourceExplorerSetupInput,
-  ) => stream.Stream<
-    GetResourceExplorerSetupOutput,
-    GetResourceExplorerSetupError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetResourceExplorerSetupInput,
-  ) => stream.Stream<
-    RegionStatus,
-    GetResourceExplorerSetupError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type GetServiceIndexError =
   | AccessDeniedException
@@ -2078,27 +2058,7 @@ export const listIndexes: API.OperationMethod<
     items: "Indexes",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListIndexesInput,
-  ListIndexesOutput,
-  ListIndexesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListIndexesInput,
-  ) => stream.Stream<
-    ListIndexesOutput,
-    ListIndexesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListIndexesInput,
-  ) => stream.Stream<
-    Index,
-    ListIndexesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListIndexesForMembersError =
   | AccessDeniedException
@@ -2147,27 +2107,7 @@ export const listIndexesForMembers: API.OperationMethod<
     items: "Indexes",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListIndexesForMembersInput,
-  ListIndexesForMembersOutput,
-  ListIndexesForMembersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListIndexesForMembersInput,
-  ) => stream.Stream<
-    ListIndexesForMembersOutput,
-    ListIndexesForMembersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListIndexesForMembersInput,
-  ) => stream.Stream<
-    MemberIndex,
-    ListIndexesForMembersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListManagedViewsError =
   | AccessDeniedException
@@ -2218,27 +2158,7 @@ export const listManagedViews: API.OperationMethod<
     items: "ManagedViews",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListManagedViewsInput,
-  ListManagedViewsOutput,
-  ListManagedViewsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListManagedViewsInput,
-  ) => stream.Stream<
-    ListManagedViewsOutput,
-    ListManagedViewsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListManagedViewsInput,
-  ) => stream.Stream<
-    string,
-    ListManagedViewsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListResourcesError =
   | AccessDeniedException
@@ -2291,27 +2211,7 @@ export const listResources: API.OperationMethod<
     items: "Resources",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListResourcesInput,
-  ListResourcesOutput,
-  ListResourcesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListResourcesInput,
-  ) => stream.Stream<
-    ListResourcesOutput,
-    ListResourcesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListResourcesInput,
-  ) => stream.Stream<
-    Resource,
-    ListResourcesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListServiceIndexesError =
   | AccessDeniedException
@@ -2360,27 +2260,7 @@ export const listServiceIndexes: API.OperationMethod<
     items: "Indexes",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListServiceIndexesInput,
-  ListServiceIndexesOutput,
-  ListServiceIndexesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListServiceIndexesInput,
-  ) => stream.Stream<
-    ListServiceIndexesOutput,
-    ListServiceIndexesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListServiceIndexesInput,
-  ) => stream.Stream<
-    Index,
-    ListServiceIndexesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListServiceViewsError =
   | AccessDeniedException
@@ -2429,27 +2309,7 @@ export const listServiceViews: API.OperationMethod<
     items: "ServiceViews",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListServiceViewsInput,
-  ListServiceViewsOutput,
-  ListServiceViewsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListServiceViewsInput,
-  ) => stream.Stream<
-    ListServiceViewsOutput,
-    ListServiceViewsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListServiceViewsInput,
-  ) => stream.Stream<
-    string,
-    ListServiceViewsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListStreamingAccessForServicesError =
   | AccessDeniedException
@@ -2492,27 +2352,7 @@ export const listStreamingAccessForServices: API.OperationMethod<
     items: "StreamingAccessForServices",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListStreamingAccessForServicesInput,
-  ListStreamingAccessForServicesOutput,
-  ListStreamingAccessForServicesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListStreamingAccessForServicesInput,
-  ) => stream.Stream<
-    ListStreamingAccessForServicesOutput,
-    ListStreamingAccessForServicesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListStreamingAccessForServicesInput,
-  ) => stream.Stream<
-    StreamingAccessDetails,
-    ListStreamingAccessForServicesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListSupportedResourceTypesError =
   | AccessDeniedException
@@ -2561,27 +2401,7 @@ export const listSupportedResourceTypes: API.OperationMethod<
     items: "ResourceTypes",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListSupportedResourceTypesInput,
-  ListSupportedResourceTypesOutput,
-  ListSupportedResourceTypesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSupportedResourceTypesInput,
-  ) => stream.Stream<
-    ListSupportedResourceTypesOutput,
-    ListSupportedResourceTypesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSupportedResourceTypesInput,
-  ) => stream.Stream<
-    SupportedResourceType,
-    ListSupportedResourceTypesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsForResourceError =
   | AccessDeniedException
@@ -2664,27 +2484,7 @@ export const listViews: API.OperationMethod<
     items: "Views",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListViewsInput,
-  ListViewsOutput,
-  ListViewsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListViewsInput,
-  ) => stream.Stream<
-    ListViewsOutput,
-    ListViewsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListViewsInput,
-  ) => stream.Stream<
-    string,
-    ListViewsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type SearchError =
   | AccessDeniedException
@@ -2743,27 +2543,7 @@ export const search: API.OperationMethod<
     items: "Resources",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  SearchInput,
-  SearchOutput,
-  SearchError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: SearchInput,
-  ) => stream.Stream<
-    SearchOutput,
-    SearchError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: SearchInput,
-  ) => stream.Stream<
-    Resource,
-    SearchError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type TagResourceError =
   | AccessDeniedException

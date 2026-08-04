@@ -5295,27 +5295,7 @@ export const listEngagementByAcceptingInvitationTasks: API.OperationMethod<
     items: "TaskSummaries",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListEngagementByAcceptingInvitationTasksRequest,
-  ListEngagementByAcceptingInvitationTasksResponse,
-  ListEngagementByAcceptingInvitationTasksError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEngagementByAcceptingInvitationTasksRequest,
-  ) => stream.Stream<
-    ListEngagementByAcceptingInvitationTasksResponse,
-    ListEngagementByAcceptingInvitationTasksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEngagementByAcceptingInvitationTasksRequest,
-  ) => stream.Stream<
-    ListEngagementByAcceptingInvitationTaskSummary,
-    ListEngagementByAcceptingInvitationTasksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListEngagementFromOpportunityTasksError =
   | AccessDeniedException
@@ -5366,27 +5346,7 @@ export const listEngagementFromOpportunityTasks: API.OperationMethod<
     items: "TaskSummaries",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListEngagementFromOpportunityTasksRequest,
-  ListEngagementFromOpportunityTasksResponse,
-  ListEngagementFromOpportunityTasksError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEngagementFromOpportunityTasksRequest,
-  ) => stream.Stream<
-    ListEngagementFromOpportunityTasksResponse,
-    ListEngagementFromOpportunityTasksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEngagementFromOpportunityTasksRequest,
-  ) => stream.Stream<
-    ListEngagementFromOpportunityTaskSummary,
-    ListEngagementFromOpportunityTasksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListEngagementInvitationsError =
   | AccessDeniedException
@@ -5437,27 +5397,7 @@ export const listEngagementInvitations: API.OperationMethod<
     items: "EngagementInvitationSummaries",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListEngagementInvitationsRequest,
-  ListEngagementInvitationsResponse,
-  ListEngagementInvitationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEngagementInvitationsRequest,
-  ) => stream.Stream<
-    ListEngagementInvitationsResponse,
-    ListEngagementInvitationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEngagementInvitationsRequest,
-  ) => stream.Stream<
-    EngagementInvitationSummary,
-    ListEngagementInvitationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListEngagementMembersError =
   | AccessDeniedException
@@ -5508,27 +5448,7 @@ export const listEngagementMembers: API.OperationMethod<
     items: "EngagementMemberList",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListEngagementMembersRequest,
-  ListEngagementMembersResponse,
-  ListEngagementMembersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEngagementMembersRequest,
-  ) => stream.Stream<
-    ListEngagementMembersResponse,
-    ListEngagementMembersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEngagementMembersRequest,
-  ) => stream.Stream<
-    EngagementMember,
-    ListEngagementMembersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListEngagementResourceAssociationsError =
   | AccessDeniedException
@@ -5579,27 +5499,7 @@ export const listEngagementResourceAssociations: API.OperationMethod<
     items: "EngagementResourceAssociationSummaries",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListEngagementResourceAssociationsRequest,
-  ListEngagementResourceAssociationsResponse,
-  ListEngagementResourceAssociationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEngagementResourceAssociationsRequest,
-  ) => stream.Stream<
-    ListEngagementResourceAssociationsResponse,
-    ListEngagementResourceAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEngagementResourceAssociationsRequest,
-  ) => stream.Stream<
-    EngagementResourceAssociationSummary,
-    ListEngagementResourceAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListEngagementsError =
   | AccessDeniedException
@@ -5650,27 +5550,7 @@ export const listEngagements: API.OperationMethod<
     items: "EngagementSummaryList",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListEngagementsRequest,
-  ListEngagementsResponse,
-  ListEngagementsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEngagementsRequest,
-  ) => stream.Stream<
-    ListEngagementsResponse,
-    ListEngagementsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEngagementsRequest,
-  ) => stream.Stream<
-    EngagementSummary,
-    ListEngagementsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListOpportunitiesError =
   | AccessDeniedException
@@ -5731,27 +5611,7 @@ export const listOpportunities: API.OperationMethod<
     items: "OpportunitySummaries",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListOpportunitiesRequest,
-  ListOpportunitiesResponse,
-  ListOpportunitiesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListOpportunitiesRequest,
-  ) => stream.Stream<
-    ListOpportunitiesResponse,
-    ListOpportunitiesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListOpportunitiesRequest,
-  ) => stream.Stream<
-    OpportunitySummary,
-    ListOpportunitiesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListOpportunityFromEngagementTasksError =
   | AccessDeniedException
@@ -5802,27 +5662,7 @@ export const listOpportunityFromEngagementTasks: API.OperationMethod<
     items: "TaskSummaries",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListOpportunityFromEngagementTasksRequest,
-  ListOpportunityFromEngagementTasksResponse,
-  ListOpportunityFromEngagementTasksError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListOpportunityFromEngagementTasksRequest,
-  ) => stream.Stream<
-    ListOpportunityFromEngagementTasksResponse,
-    ListOpportunityFromEngagementTasksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListOpportunityFromEngagementTasksRequest,
-  ) => stream.Stream<
-    ListOpportunityFromEngagementTaskSummary,
-    ListOpportunityFromEngagementTasksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListProspectingFromEngagementTasksError =
   | AccessDeniedException
@@ -5871,27 +5711,7 @@ export const listProspectingFromEngagementTasks: API.OperationMethod<
     items: "TaskSummaries",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListProspectingFromEngagementTasksRequest,
-  ListProspectingFromEngagementTasksResponse,
-  ListProspectingFromEngagementTasksError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListProspectingFromEngagementTasksRequest,
-  ) => stream.Stream<
-    ListProspectingFromEngagementTasksResponse,
-    ListProspectingFromEngagementTasksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListProspectingFromEngagementTasksRequest,
-  ) => stream.Stream<
-    ProspectingTaskSummary,
-    ListProspectingFromEngagementTasksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListResourceSnapshotJobsError =
   | AccessDeniedException
@@ -5942,27 +5762,7 @@ export const listResourceSnapshotJobs: API.OperationMethod<
     items: "ResourceSnapshotJobSummaries",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListResourceSnapshotJobsRequest,
-  ListResourceSnapshotJobsResponse,
-  ListResourceSnapshotJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListResourceSnapshotJobsRequest,
-  ) => stream.Stream<
-    ListResourceSnapshotJobsResponse,
-    ListResourceSnapshotJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListResourceSnapshotJobsRequest,
-  ) => stream.Stream<
-    ResourceSnapshotJobSummary,
-    ListResourceSnapshotJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListResourceSnapshotsError =
   | AccessDeniedException
@@ -6023,27 +5823,7 @@ export const listResourceSnapshots: API.OperationMethod<
     items: "ResourceSnapshotSummaries",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListResourceSnapshotsRequest,
-  ListResourceSnapshotsResponse,
-  ListResourceSnapshotsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListResourceSnapshotsRequest,
-  ) => stream.Stream<
-    ListResourceSnapshotsResponse,
-    ListResourceSnapshotsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListResourceSnapshotsRequest,
-  ) => stream.Stream<
-    ResourceSnapshotSummary,
-    ListResourceSnapshotsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListSolutionsError =
   | AccessDeniedException
@@ -6094,27 +5874,7 @@ export const listSolutions: API.OperationMethod<
     items: "SolutionSummaries",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListSolutionsRequest,
-  ListSolutionsResponse,
-  ListSolutionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSolutionsRequest,
-  ) => stream.Stream<
-    ListSolutionsResponse,
-    ListSolutionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSolutionsRequest,
-  ) => stream.Stream<
-    SolutionBase,
-    ListSolutionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsForResourceError =
   | AccessDeniedException

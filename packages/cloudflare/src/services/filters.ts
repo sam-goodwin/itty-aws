@@ -493,7 +493,8 @@ export const bulkPutFilters: API.PaginatedOperationMethod<
   BulkPutFiltersRequest,
   BulkPutFiltersResponse,
   BulkPutFiltersError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  BulkUpdateResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: BulkPutFiltersRequest,
@@ -504,7 +505,7 @@ export const bulkPutFilters: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type CreateFilterError = CloudflareOpError;
 /** Creates one or more filters. */
@@ -512,7 +513,8 @@ export const createFilter: API.PaginatedOperationMethod<
   CreateFilterRequest,
   CreateFilterResponse,
   CreateFilterError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  CreateResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: CreateFilterRequest,
@@ -523,7 +525,7 @@ export const createFilter: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type DeleteFilterError = CloudflareOpError;
 /** Deletes an existing filter. */
@@ -561,7 +563,8 @@ export const listFilters: API.PaginatedOperationMethod<
   ListFiltersRequest,
   ListFiltersResponse,
   ListFiltersError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  ListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListFiltersRequest,
@@ -578,7 +581,7 @@ export const listFilters: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type UpdateFilterError = CloudflareOpError;
 /** Updates an existing filter. */

@@ -5650,7 +5650,8 @@ export const listBucketObjects: API.PaginatedOperationMethod<
   ListBucketObjectsRequest,
   ListBucketObjectsResponse,
   ListBucketObjectsError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  BucketsObjectsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListBucketObjectsRequest,
@@ -5667,7 +5668,7 @@ export const listBucketObjects: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListBucketsError = InvalidRoute | CloudflareOpError;
 /** Lists all R2 buckets on your account. */
@@ -5690,7 +5691,8 @@ export const listSuperSlurperJobLogs: API.PaginatedOperationMethod<
   ListSuperSlurperJobLogsRequest,
   ListSuperSlurperJobLogsResponse,
   ListSuperSlurperJobLogsError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  SuperSlurperJobsLogsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListSuperSlurperJobLogsRequest,
@@ -5701,7 +5703,7 @@ export const listSuperSlurperJobLogs: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListSuperSlurperJobsError = CloudflareOpError;
 /** Lists all R2 Super Slurper migration jobs for the account with their status. */
@@ -5709,7 +5711,8 @@ export const listSuperSlurperJobs: API.PaginatedOperationMethod<
   ListSuperSlurperJobsRequest,
   ListSuperSlurperJobsResponse,
   ListSuperSlurperJobsError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  SuperSlurperJobsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListSuperSlurperJobsRequest,
@@ -5720,7 +5723,7 @@ export const listSuperSlurperJobs: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type PatchBucketError = NoSuchBucket | InvalidRoute | CloudflareOpError;
 /** Updates properties of an existing R2 bucket. */

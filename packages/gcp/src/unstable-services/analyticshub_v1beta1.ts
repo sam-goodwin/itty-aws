@@ -1126,7 +1126,8 @@ export const listOrganizationsLocationsDataExchanges: API.PaginatedOperationMeth
   ListOrganizationsLocationsDataExchangesRequest,
   ListOrgDataExchangesResponse,
   ListOrganizationsLocationsDataExchangesError,
-  GcpOpContext
+  GcpOpContext,
+  ListOrgDataExchangesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsLocationsDataExchangesRequest,
   output: ListOrgDataExchangesResponse,
@@ -1137,7 +1138,7 @@ export const listOrganizationsLocationsDataExchanges: API.PaginatedOperationMeth
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsDataExchangesError =
   | NotFound
@@ -1148,7 +1149,8 @@ export const listProjectsLocationsDataExchanges: API.PaginatedOperationMethod<
   ListProjectsLocationsDataExchangesRequest,
   ListDataExchangesResponse,
   ListProjectsLocationsDataExchangesError,
-  GcpOpContext
+  GcpOpContext,
+  ListDataExchangesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsDataExchangesRequest,
   output: ListDataExchangesResponse,
@@ -1159,7 +1161,7 @@ export const listProjectsLocationsDataExchanges: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsDataExchangesListingsError =
   | NotFound
@@ -1170,7 +1172,8 @@ export const listProjectsLocationsDataExchangesListings: API.PaginatedOperationM
   ListProjectsLocationsDataExchangesListingsRequest,
   ListListingsResponse,
   ListProjectsLocationsDataExchangesListingsError,
-  GcpOpContext
+  GcpOpContext,
+  ListListingsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsDataExchangesListingsRequest,
   output: ListListingsResponse,
@@ -1181,7 +1184,7 @@ export const listProjectsLocationsDataExchangesListings: API.PaginatedOperationM
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type PatchProjectsLocationsDataExchangesError =
   | NotFound

@@ -590,7 +590,8 @@ export const listCustomCsrsForAccount: API.PaginatedOperationMethod<
   ListCustomCsrsForAccountRequest,
   ListCustomCsrsResponse,
   ListCustomCsrsForAccountError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  ListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListCustomCsrsForAccountRequest,
@@ -607,7 +608,7 @@ export const listCustomCsrsForAccount: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListCustomCsrsForZoneError = CloudflareOpError;
 /** List all custom Certificate Signing Requests (CSRs) for an account or zone. */
@@ -615,7 +616,8 @@ export const listCustomCsrsForZone: API.PaginatedOperationMethod<
   ListCustomCsrsForZoneRequest,
   ListCustomCsrsResponse,
   ListCustomCsrsForZoneError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  ListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListCustomCsrsForZoneRequest,
@@ -632,4 +634,4 @@ export const listCustomCsrsForZone: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;

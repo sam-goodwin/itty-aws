@@ -4662,7 +4662,8 @@ export const listCategoryVolumesOnboarding: API.PaginatedOperationMethod<
   ListCategoryVolumesOnboardingRequest,
   Volume2,
   ListCategoryVolumesOnboardingError,
-  GcpOpContext
+  GcpOpContext,
+  Volume
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCategoryVolumesOnboardingRequest,
   output: Volume2,
@@ -4674,7 +4675,7 @@ export const listCategoryVolumesOnboarding: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListLayersError = NotFound | Forbidden | GcpOpError;
 /** List the layer summaries for a volume. */
@@ -4697,7 +4698,8 @@ export const listLayersAnnotationData: API.PaginatedOperationMethod<
   ListLayersAnnotationDataRequest,
   Annotationsdata,
   ListLayersAnnotationDataError,
-  GcpOpContext
+  GcpOpContext,
+  GeoAnnotationdata
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLayersAnnotationDataRequest,
   output: Annotationsdata,
@@ -4709,7 +4711,7 @@ export const listLayersAnnotationData: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListLayersVolumeAnnotationsError =
   | NotFound
@@ -4720,7 +4722,8 @@ export const listLayersVolumeAnnotations: API.PaginatedOperationMethod<
   ListLayersVolumeAnnotationsRequest,
   Volumeannotations,
   ListLayersVolumeAnnotationsError,
-  GcpOpContext
+  GcpOpContext,
+  Volumeannotation
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLayersVolumeAnnotationsRequest,
   output: Volumeannotations,
@@ -4732,7 +4735,7 @@ export const listLayersVolumeAnnotations: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListMylibraryAnnotationsError = NotFound | Forbidden | GcpOpError;
 /** Retrieves a list of annotations, possibly filtered. */
@@ -4740,7 +4743,8 @@ export const listMylibraryAnnotations: API.PaginatedOperationMethod<
   ListMylibraryAnnotationsRequest,
   Annotations,
   ListMylibraryAnnotationsError,
-  GcpOpContext
+  GcpOpContext,
+  Annotation
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMylibraryAnnotationsRequest,
   output: Annotations,
@@ -4752,7 +4756,7 @@ export const listMylibraryAnnotations: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListMylibraryBookshelvesError = NotFound | Forbidden | GcpOpError;
 /** Retrieves a list of bookshelves belonging to the authenticated user. */

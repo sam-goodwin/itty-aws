@@ -2827,27 +2827,7 @@ export const getBillingGroupCostReport: API.OperationMethod<
     items: "BillingGroupCostReportResults",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  GetBillingGroupCostReportInput,
-  GetBillingGroupCostReportOutput,
-  GetBillingGroupCostReportError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetBillingGroupCostReportInput,
-  ) => stream.Stream<
-    GetBillingGroupCostReportOutput,
-    GetBillingGroupCostReportError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetBillingGroupCostReportInput,
-  ) => stream.Stream<
-    BillingGroupCostReportResultElement,
-    GetBillingGroupCostReportError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListAccountAssociationsError =
   | AccessDeniedException
@@ -2897,27 +2877,7 @@ export const listAccountAssociations: API.OperationMethod<
     outputToken: "NextToken",
     items: "LinkedAccounts",
   } as const,
-})) as any as API.OperationMethod<
-  ListAccountAssociationsInput,
-  ListAccountAssociationsOutput,
-  ListAccountAssociationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAccountAssociationsInput,
-  ) => stream.Stream<
-    ListAccountAssociationsOutput,
-    ListAccountAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAccountAssociationsInput,
-  ) => stream.Stream<
-    AccountAssociationsListElement,
-    ListAccountAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListBillingGroupCostReportsError =
   | AccessDeniedException
@@ -2968,27 +2928,7 @@ export const listBillingGroupCostReports: API.OperationMethod<
     items: "BillingGroupCostReports",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListBillingGroupCostReportsInput,
-  ListBillingGroupCostReportsOutput,
-  ListBillingGroupCostReportsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListBillingGroupCostReportsInput,
-  ) => stream.Stream<
-    ListBillingGroupCostReportsOutput,
-    ListBillingGroupCostReportsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListBillingGroupCostReportsInput,
-  ) => stream.Stream<
-    BillingGroupCostReportElement,
-    ListBillingGroupCostReportsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListBillingGroupsError =
   | AccessDeniedException
@@ -3039,27 +2979,7 @@ export const listBillingGroups: API.OperationMethod<
     items: "BillingGroups",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListBillingGroupsInput,
-  ListBillingGroupsOutput,
-  ListBillingGroupsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListBillingGroupsInput,
-  ) => stream.Stream<
-    ListBillingGroupsOutput,
-    ListBillingGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListBillingGroupsInput,
-  ) => stream.Stream<
-    BillingGroupListElement,
-    ListBillingGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListCustomLineItemsError =
   | AccessDeniedException
@@ -3110,27 +3030,7 @@ export const listCustomLineItems: API.OperationMethod<
     items: "CustomLineItems",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListCustomLineItemsInput,
-  ListCustomLineItemsOutput,
-  ListCustomLineItemsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCustomLineItemsInput,
-  ) => stream.Stream<
-    ListCustomLineItemsOutput,
-    ListCustomLineItemsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCustomLineItemsInput,
-  ) => stream.Stream<
-    CustomLineItemListElement,
-    ListCustomLineItemsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListCustomLineItemVersionsError =
   | AccessDeniedException
@@ -3179,27 +3079,7 @@ export const listCustomLineItemVersions: API.OperationMethod<
     items: "CustomLineItemVersions",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListCustomLineItemVersionsInput,
-  ListCustomLineItemVersionsOutput,
-  ListCustomLineItemVersionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCustomLineItemVersionsInput,
-  ) => stream.Stream<
-    ListCustomLineItemVersionsOutput,
-    ListCustomLineItemVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCustomLineItemVersionsInput,
-  ) => stream.Stream<
-    CustomLineItemVersionListElement,
-    ListCustomLineItemVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListPricingPlansError =
   | AccessDeniedException
@@ -3248,27 +3128,7 @@ export const listPricingPlans: API.OperationMethod<
     items: "PricingPlans",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListPricingPlansInput,
-  ListPricingPlansOutput,
-  ListPricingPlansError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPricingPlansInput,
-  ) => stream.Stream<
-    ListPricingPlansOutput,
-    ListPricingPlansError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPricingPlansInput,
-  ) => stream.Stream<
-    PricingPlanListElement,
-    ListPricingPlansError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListPricingPlansAssociatedWithPricingRuleError =
   | AccessDeniedException
@@ -3319,27 +3179,7 @@ export const listPricingPlansAssociatedWithPricingRule: API.OperationMethod<
     items: "PricingPlanArns",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListPricingPlansAssociatedWithPricingRuleInput,
-  ListPricingPlansAssociatedWithPricingRuleOutput,
-  ListPricingPlansAssociatedWithPricingRuleError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPricingPlansAssociatedWithPricingRuleInput,
-  ) => stream.Stream<
-    ListPricingPlansAssociatedWithPricingRuleOutput,
-    ListPricingPlansAssociatedWithPricingRuleError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPricingPlansAssociatedWithPricingRuleInput,
-  ) => stream.Stream<
-    PricingPlanArn,
-    ListPricingPlansAssociatedWithPricingRuleError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListPricingRulesError =
   | AccessDeniedException
@@ -3388,27 +3228,7 @@ export const listPricingRules: API.OperationMethod<
     items: "PricingRules",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListPricingRulesInput,
-  ListPricingRulesOutput,
-  ListPricingRulesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPricingRulesInput,
-  ) => stream.Stream<
-    ListPricingRulesOutput,
-    ListPricingRulesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPricingRulesInput,
-  ) => stream.Stream<
-    PricingRuleListElement,
-    ListPricingRulesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListPricingRulesAssociatedToPricingPlanError =
   | AccessDeniedException
@@ -3459,27 +3279,7 @@ export const listPricingRulesAssociatedToPricingPlan: API.OperationMethod<
     items: "PricingRuleArns",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListPricingRulesAssociatedToPricingPlanInput,
-  ListPricingRulesAssociatedToPricingPlanOutput,
-  ListPricingRulesAssociatedToPricingPlanError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPricingRulesAssociatedToPricingPlanInput,
-  ) => stream.Stream<
-    ListPricingRulesAssociatedToPricingPlanOutput,
-    ListPricingRulesAssociatedToPricingPlanError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPricingRulesAssociatedToPricingPlanInput,
-  ) => stream.Stream<
-    PricingRuleArn,
-    ListPricingRulesAssociatedToPricingPlanError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListResourcesAssociatedToCustomLineItemError =
   | AccessDeniedException
@@ -3530,27 +3330,7 @@ export const listResourcesAssociatedToCustomLineItem: API.OperationMethod<
     items: "AssociatedResources",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListResourcesAssociatedToCustomLineItemInput,
-  ListResourcesAssociatedToCustomLineItemOutput,
-  ListResourcesAssociatedToCustomLineItemError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListResourcesAssociatedToCustomLineItemInput,
-  ) => stream.Stream<
-    ListResourcesAssociatedToCustomLineItemOutput,
-    ListResourcesAssociatedToCustomLineItemError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListResourcesAssociatedToCustomLineItemInput,
-  ) => stream.Stream<
-    ListResourcesAssociatedToCustomLineItemResponseElement,
-    ListResourcesAssociatedToCustomLineItemError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsForResourceError =
   | AccessDeniedException

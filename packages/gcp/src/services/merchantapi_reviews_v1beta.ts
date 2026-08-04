@@ -965,7 +965,8 @@ export const listAccountsMerchantReviews: API.PaginatedOperationMethod<
   ListAccountsMerchantReviewsRequest,
   ListMerchantReviewsResponse,
   ListAccountsMerchantReviewsError,
-  GcpOpContext
+  GcpOpContext,
+  ListMerchantReviewsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsMerchantReviewsRequest,
   output: ListMerchantReviewsResponse,
@@ -976,7 +977,7 @@ export const listAccountsMerchantReviews: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListAccountsProductReviewsError = NotFound | Forbidden | GcpOpError;
 /** Lists product reviews. */
@@ -984,7 +985,8 @@ export const listAccountsProductReviews: API.PaginatedOperationMethod<
   ListAccountsProductReviewsRequest,
   ListProductReviewsResponse,
   ListAccountsProductReviewsError,
-  GcpOpContext
+  GcpOpContext,
+  ListProductReviewsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsProductReviewsRequest,
   output: ListProductReviewsResponse,
@@ -995,4 +997,4 @@ export const listAccountsProductReviews: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;

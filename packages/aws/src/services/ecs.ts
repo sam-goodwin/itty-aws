@@ -8886,27 +8886,7 @@ export const listAccountSettings: API.OperationMethod<
     items: "settings",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListAccountSettingsRequest,
-  ListAccountSettingsResponse,
-  ListAccountSettingsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAccountSettingsRequest,
-  ) => stream.Stream<
-    ListAccountSettingsResponse,
-    ListAccountSettingsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAccountSettingsRequest,
-  ) => stream.Stream<
-    Setting,
-    ListAccountSettingsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListAttributesError =
   | AccessDeniedException
@@ -8957,27 +8937,7 @@ export const listAttributes: API.OperationMethod<
     items: "attributes",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListAttributesRequest,
-  ListAttributesResponse,
-  ListAttributesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAttributesRequest,
-  ) => stream.Stream<
-    ListAttributesResponse,
-    ListAttributesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAttributesRequest,
-  ) => stream.Stream<
-    Attribute,
-    ListAttributesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListClustersError =
   | AccessDeniedException
@@ -9026,27 +8986,7 @@ export const listClusters: API.OperationMethod<
     items: "clusterArns",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListClustersRequest,
-  ListClustersResponse,
-  ListClustersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListClustersRequest,
-  ) => stream.Stream<
-    ListClustersResponse,
-    ListClustersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListClustersRequest,
-  ) => stream.Stream<
-    string,
-    ListClustersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListContainerInstancesError =
   | AccessDeniedException
@@ -9097,27 +9037,7 @@ export const listContainerInstances: API.OperationMethod<
     items: "containerInstanceArns",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListContainerInstancesRequest,
-  ListContainerInstancesResponse,
-  ListContainerInstancesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListContainerInstancesRequest,
-  ) => stream.Stream<
-    ListContainerInstancesResponse,
-    ListContainerInstancesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListContainerInstancesRequest,
-  ) => stream.Stream<
-    string,
-    ListContainerInstancesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListDaemonDeploymentsError =
   | AccessDeniedException
@@ -9298,27 +9218,7 @@ export const listServices: API.OperationMethod<
     items: "serviceArns",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListServicesRequest,
-  ListServicesResponse,
-  ListServicesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListServicesRequest,
-  ) => stream.Stream<
-    ListServicesResponse,
-    ListServicesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListServicesRequest,
-  ) => stream.Stream<
-    string,
-    ListServicesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListServicesByNamespaceError =
   | AccessDeniedException
@@ -9369,27 +9269,7 @@ export const listServicesByNamespace: API.OperationMethod<
     items: "serviceArns",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListServicesByNamespaceRequest,
-  ListServicesByNamespaceResponse,
-  ListServicesByNamespaceError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListServicesByNamespaceRequest,
-  ) => stream.Stream<
-    ListServicesByNamespaceResponse,
-    ListServicesByNamespaceError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListServicesByNamespaceRequest,
-  ) => stream.Stream<
-    string,
-    ListServicesByNamespaceError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsForResourceError =
   | AccessDeniedException
@@ -9470,27 +9350,7 @@ export const listTaskDefinitionFamilies: API.OperationMethod<
     items: "families",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListTaskDefinitionFamiliesRequest,
-  ListTaskDefinitionFamiliesResponse,
-  ListTaskDefinitionFamiliesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTaskDefinitionFamiliesRequest,
-  ) => stream.Stream<
-    ListTaskDefinitionFamiliesResponse,
-    ListTaskDefinitionFamiliesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTaskDefinitionFamiliesRequest,
-  ) => stream.Stream<
-    string,
-    ListTaskDefinitionFamiliesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTaskDefinitionsError =
   | AccessDeniedException
@@ -9539,27 +9399,7 @@ export const listTaskDefinitions: API.OperationMethod<
     items: "taskDefinitionArns",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListTaskDefinitionsRequest,
-  ListTaskDefinitionsResponse,
-  ListTaskDefinitionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTaskDefinitionsRequest,
-  ) => stream.Stream<
-    ListTaskDefinitionsResponse,
-    ListTaskDefinitionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTaskDefinitionsRequest,
-  ) => stream.Stream<
-    string,
-    ListTaskDefinitionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTasksError =
   | AccessDeniedException
@@ -9614,27 +9454,7 @@ export const listTasks: API.OperationMethod<
     items: "taskArns",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListTasksRequest,
-  ListTasksResponse,
-  ListTasksError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTasksRequest,
-  ) => stream.Stream<
-    ListTasksResponse,
-    ListTasksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTasksRequest,
-  ) => stream.Stream<
-    string,
-    ListTasksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type PutAccountSettingError =
   | AccessDeniedException

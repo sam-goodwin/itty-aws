@@ -18631,7 +18631,8 @@ export const createCf1Site: API.PaginatedOperationMethod<
   CreateCf1SiteRequest,
   CreateCf1SiteResponse,
   CreateCf1SiteError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  Cf1SitesCreateResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: CreateCf1SiteRequest,
@@ -18642,7 +18643,7 @@ export const createCf1Site: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type CreateCf1SiteRampError = CloudflareOpError;
 /** Creates ramps (network connections) for a CF1 Site. */
@@ -18650,7 +18651,8 @@ export const createCf1SiteRamp: API.PaginatedOperationMethod<
   CreateCf1SiteRampRequest,
   CreateCf1SiteRampResponse,
   CreateCf1SiteRampError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  Cf1SitesRampsCreateResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: CreateCf1SiteRampRequest,
@@ -18661,7 +18663,7 @@ export const createCf1SiteRamp: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type CreateConnectorError = CloudflareOpError;
 /** Add a connector to your account */
@@ -18832,7 +18834,8 @@ export const createSiteLan: API.PaginatedOperationMethod<
   CreateSiteLanRequest,
   CreateSiteLanResponse,
   CreateSiteLanError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  SitesLansCreateResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: CreateSiteLanRequest,
@@ -18848,7 +18851,7 @@ export const createSiteLan: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type CreateSiteWanError =
   | MagicWanUnauthorized
@@ -18859,7 +18862,8 @@ export const createSiteWan: API.PaginatedOperationMethod<
   CreateSiteWanRequest,
   CreateSiteWanResponse,
   CreateSiteWanError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  SitesWansCreateResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: CreateSiteWanRequest,
@@ -18875,7 +18879,7 @@ export const createSiteWan: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type DeleteAppError =
   | AppNotFound
@@ -19328,7 +19332,8 @@ export const getPcapOwnership: API.PaginatedOperationMethod<
   GetPcapOwnershipRequest,
   GetPcapOwnershipResponse,
   GetPcapOwnershipError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  PcapsOwnershipGetResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: GetPcapOwnershipRequest,
@@ -19339,7 +19344,7 @@ export const getPcapOwnership: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type GetRouteError =
   | RouteNotFound
@@ -19475,7 +19480,8 @@ export const listApps: API.PaginatedOperationMethod<
   ListAppsRequest,
   ListAppsResponse,
   ListAppsError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  AppsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListAppsRequest,
@@ -19491,7 +19497,7 @@ export const listApps: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListCf1SiteRampsError = CloudflareOpError;
 /** Lists ramps (network connections) associated with a CF1 Site. Ramps represent GRE tunnels, IPsec tunnels, interconnects, or MCONN links. */
@@ -19499,7 +19505,8 @@ export const listCf1SiteRamps: API.PaginatedOperationMethod<
   ListCf1SiteRampsRequest,
   ListCf1SiteRampsResponse,
   ListCf1SiteRampsError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  Cf1SitesRampsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListCf1SiteRampsRequest,
@@ -19510,7 +19517,7 @@ export const listCf1SiteRamps: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListCf1SitesError = CloudflareOpError;
 /** Lists CF1 Sites associated with an account. A CF1 Site represents a physical customer network location with optional geographic coordinates. */
@@ -19518,7 +19525,8 @@ export const listCf1Sites: API.PaginatedOperationMethod<
   ListCf1SitesRequest,
   ListCf1SitesResponse,
   ListCf1SitesError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  Cf1SitesListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListCf1SitesRequest,
@@ -19529,7 +19537,7 @@ export const listCf1Sites: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListCfInterconnectsError = CloudflareOpError;
 /** Lists interconnects associated with an account. */
@@ -19582,7 +19590,8 @@ export const listConnectors: API.PaginatedOperationMethod<
   ListConnectorsRequest,
   ListConnectorsResponse,
   ListConnectorsError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  ConnectorsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListConnectorsRequest,
@@ -19593,7 +19602,7 @@ export const listConnectors: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListConnectorSnapshotLatestsError = CloudflareOpError;
 /** Get latest Snapshots */
@@ -19677,7 +19686,8 @@ export const listPcaps: API.PaginatedOperationMethod<
   ListPcapsRequest,
   ListPcapsResponse,
   ListPcapsError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  PcapsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListPcapsRequest,
@@ -19688,7 +19698,7 @@ export const listPcaps: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListRoutesError =
   | MagicTransitNotOnboarded
@@ -19722,7 +19732,8 @@ export const listSiteAcls: API.PaginatedOperationMethod<
   ListSiteAclsRequest,
   ListSiteAclsResponse,
   ListSiteAclsError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  SitesAclsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListSiteAclsRequest,
@@ -19738,7 +19749,7 @@ export const listSiteAcls: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListSiteLansError =
   | MagicWanUnauthorized
@@ -19749,7 +19760,8 @@ export const listSiteLans: API.PaginatedOperationMethod<
   ListSiteLansRequest,
   ListSiteLansResponse,
   ListSiteLansError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  SitesLansListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListSiteLansRequest,
@@ -19765,7 +19777,7 @@ export const listSiteLans: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListSitesError =
   | MagicWanUnauthorized
@@ -19776,7 +19788,8 @@ export const listSites: API.PaginatedOperationMethod<
   ListSitesRequest,
   ListSitesResponse,
   ListSitesError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  SitesListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListSitesRequest,
@@ -19792,7 +19805,7 @@ export const listSites: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListSiteWansError =
   | MagicWanUnauthorized
@@ -19803,7 +19816,8 @@ export const listSiteWans: API.PaginatedOperationMethod<
   ListSiteWansRequest,
   ListSiteWansResponse,
   ListSiteWansError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  SitesWansListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListSiteWansRequest,
@@ -19819,7 +19833,7 @@ export const listSiteWans: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type PatchAppError =
   | AppNotFound

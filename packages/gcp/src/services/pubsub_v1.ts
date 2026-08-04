@@ -2854,7 +2854,8 @@ export const listProjectsSchemas: API.PaginatedOperationMethod<
   ListProjectsSchemasRequest,
   ListSchemasResponse,
   ListProjectsSchemasError,
-  GcpOpContext
+  GcpOpContext,
+  ListSchemasResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsSchemasRequest,
   output: ListSchemasResponse,
@@ -2865,7 +2866,7 @@ export const listProjectsSchemas: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsSnapshotsError = NotFound | Forbidden | GcpOpError;
 /** Lists the existing snapshots. Snapshots are used in [Seek]( https://cloud.google.com/pubsub/docs/replay-overview) operations, which allow you to manage message acknowledgments in bulk. That is, you can set the acknowledgment state of messages in an existing subscription to the state captured by a snapshot. */
@@ -2873,7 +2874,8 @@ export const listProjectsSnapshots: API.PaginatedOperationMethod<
   ListProjectsSnapshotsRequest,
   ListSnapshotsResponse,
   ListProjectsSnapshotsError,
-  GcpOpContext
+  GcpOpContext,
+  ListSnapshotsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsSnapshotsRequest,
   output: ListSnapshotsResponse,
@@ -2884,7 +2886,7 @@ export const listProjectsSnapshots: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsSubscriptionsError = NotFound | Forbidden | GcpOpError;
 /** Lists matching subscriptions. */
@@ -2892,7 +2894,8 @@ export const listProjectsSubscriptions: API.PaginatedOperationMethod<
   ListProjectsSubscriptionsRequest,
   ListSubscriptionsResponse,
   ListProjectsSubscriptionsError,
-  GcpOpContext
+  GcpOpContext,
+  ListSubscriptionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsSubscriptionsRequest,
   output: ListSubscriptionsResponse,
@@ -2903,7 +2906,7 @@ export const listProjectsSubscriptions: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsTopicsError = NotFound | Forbidden | GcpOpError;
 /** Lists matching topics. */
@@ -2911,7 +2914,8 @@ export const listProjectsTopics: API.PaginatedOperationMethod<
   ListProjectsTopicsRequest,
   ListTopicsResponse,
   ListProjectsTopicsError,
-  GcpOpContext
+  GcpOpContext,
+  ListTopicsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsTopicsRequest,
   output: ListTopicsResponse,
@@ -2922,7 +2926,7 @@ export const listProjectsTopics: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsTopicsSnapshotsError =
   | NotFound
@@ -2933,7 +2937,8 @@ export const listProjectsTopicsSnapshots: API.PaginatedOperationMethod<
   ListProjectsTopicsSnapshotsRequest,
   ListTopicSnapshotsResponse,
   ListProjectsTopicsSnapshotsError,
-  GcpOpContext
+  GcpOpContext,
+  ListTopicSnapshotsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsTopicsSnapshotsRequest,
   output: ListTopicSnapshotsResponse,
@@ -2944,7 +2949,7 @@ export const listProjectsTopicsSnapshots: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsTopicsSubscriptionsError =
   | NotFound
@@ -2955,7 +2960,8 @@ export const listProjectsTopicsSubscriptions: API.PaginatedOperationMethod<
   ListProjectsTopicsSubscriptionsRequest,
   ListTopicSubscriptionsResponse,
   ListProjectsTopicsSubscriptionsError,
-  GcpOpContext
+  GcpOpContext,
+  ListTopicSubscriptionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsTopicsSubscriptionsRequest,
   output: ListTopicSubscriptionsResponse,
@@ -2966,7 +2972,7 @@ export const listProjectsTopicsSubscriptions: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListRevisionsProjectsSchemasError =
   | NotFound
@@ -2977,7 +2983,8 @@ export const listRevisionsProjectsSchemas: API.PaginatedOperationMethod<
   ListRevisionsProjectsSchemasRequest,
   ListSchemaRevisionsResponse,
   ListRevisionsProjectsSchemasError,
-  GcpOpContext
+  GcpOpContext,
+  ListSchemaRevisionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRevisionsProjectsSchemasRequest,
   output: ListSchemaRevisionsResponse,
@@ -2988,7 +2995,7 @@ export const listRevisionsProjectsSchemas: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ModifyAckDeadlineProjectsSubscriptionsError =
   | NotFound

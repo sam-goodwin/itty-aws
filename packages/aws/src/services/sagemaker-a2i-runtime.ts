@@ -468,27 +468,7 @@ export const listHumanLoops: API.OperationMethod<
     items: "HumanLoopSummaries",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListHumanLoopsRequest,
-  ListHumanLoopsResponse,
-  ListHumanLoopsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListHumanLoopsRequest,
-  ) => stream.Stream<
-    ListHumanLoopsResponse,
-    ListHumanLoopsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListHumanLoopsRequest,
-  ) => stream.Stream<
-    HumanLoopSummary,
-    ListHumanLoopsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type StartHumanLoopError =
   | ConflictException

@@ -5381,7 +5381,8 @@ export const listConsumers: API.PaginatedOperationMethod<
   ListConsumersRequest,
   ListConsumersResponse,
   ListConsumersError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  ConsumersListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListConsumersRequest,
@@ -5398,7 +5399,7 @@ export const listConsumers: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListQueuesError = InvalidRoute | CloudflareOpError;
 /** Returns the queues owned by an account. */
@@ -5406,7 +5407,8 @@ export const listQueues: API.PaginatedOperationMethod<
   ListQueuesRequest,
   ListQueuesResponse,
   ListQueuesError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  ListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListQueuesRequest,
@@ -5417,7 +5419,7 @@ export const listQueues: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListSubscriptionsError = Forbidden | CloudflareOpError;
 /** Get a paginated list of event subscriptions with optional sorting and filtering */
@@ -5425,7 +5427,8 @@ export const listSubscriptions: API.PaginatedOperationMethod<
   ListSubscriptionsRequest,
   ListSubscriptionsResponse,
   ListSubscriptionsError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  SubscriptionsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListSubscriptionsRequest,
@@ -5442,7 +5445,7 @@ export const listSubscriptions: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type PatchQueueError = QueueNotFound | InvalidRoute | CloudflareOpError;
 /** Updates a Queue. */

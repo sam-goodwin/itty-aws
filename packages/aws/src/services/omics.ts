@@ -8954,27 +8954,7 @@ export const listAnnotationImportJobs: API.OperationMethod<
     items: "annotationImportJobs",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListAnnotationImportJobsRequest,
-  ListAnnotationImportJobsResponse,
-  ListAnnotationImportJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAnnotationImportJobsRequest,
-  ) => stream.Stream<
-    ListAnnotationImportJobsResponse,
-    ListAnnotationImportJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAnnotationImportJobsRequest,
-  ) => stream.Stream<
-    AnnotationImportJobItem,
-    ListAnnotationImportJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListAnnotationStoresError =
   | AccessDeniedException
@@ -9028,27 +9008,7 @@ export const listAnnotationStores: API.OperationMethod<
     items: "annotationStores",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListAnnotationStoresRequest,
-  ListAnnotationStoresResponse,
-  ListAnnotationStoresError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAnnotationStoresRequest,
-  ) => stream.Stream<
-    ListAnnotationStoresResponse,
-    ListAnnotationStoresError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAnnotationStoresRequest,
-  ) => stream.Stream<
-    AnnotationStoreItem,
-    ListAnnotationStoresError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListAnnotationStoreVersionsError =
   | AccessDeniedException
@@ -9100,27 +9060,7 @@ export const listAnnotationStoreVersions: API.OperationMethod<
     items: "annotationStoreVersions",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListAnnotationStoreVersionsRequest,
-  ListAnnotationStoreVersionsResponse,
-  ListAnnotationStoreVersionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAnnotationStoreVersionsRequest,
-  ) => stream.Stream<
-    ListAnnotationStoreVersionsResponse,
-    ListAnnotationStoreVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAnnotationStoreVersionsRequest,
-  ) => stream.Stream<
-    AnnotationStoreVersionItem,
-    ListAnnotationStoreVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListBatchError =
   | AccessDeniedException
@@ -9172,27 +9112,7 @@ export const listBatch: API.OperationMethod<
     items: "items",
     pageSize: "maxItems",
   } as const,
-})) as any as API.OperationMethod<
-  ListBatchRequest,
-  ListBatchResponse,
-  ListBatchError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListBatchRequest,
-  ) => stream.Stream<
-    ListBatchResponse,
-    ListBatchError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListBatchRequest,
-  ) => stream.Stream<
-    BatchListItem,
-    ListBatchError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListConfigurationsError =
   | AccessDeniedException
@@ -9250,27 +9170,7 @@ export const listConfigurations: API.OperationMethod<
     items: "items",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListConfigurationsRequest,
-  ListConfigurationsResponse,
-  ListConfigurationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListConfigurationsRequest,
-  ) => stream.Stream<
-    ListConfigurationsResponse,
-    ListConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListConfigurationsRequest,
-  ) => stream.Stream<
-    ConfigurationListItem,
-    ListConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListMultipartReadSetUploadsError =
   | AccessDeniedException
@@ -9328,27 +9228,7 @@ export const listMultipartReadSetUploads: API.OperationMethod<
     items: "uploads",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListMultipartReadSetUploadsRequest,
-  ListMultipartReadSetUploadsResponse,
-  ListMultipartReadSetUploadsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListMultipartReadSetUploadsRequest,
-  ) => stream.Stream<
-    ListMultipartReadSetUploadsResponse,
-    ListMultipartReadSetUploadsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListMultipartReadSetUploadsRequest,
-  ) => stream.Stream<
-    MultipartReadSetUploadListItem,
-    ListMultipartReadSetUploadsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListReadSetActivationJobsError =
   | AccessDeniedException
@@ -9402,27 +9282,7 @@ export const listReadSetActivationJobs: API.OperationMethod<
     items: "activationJobs",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListReadSetActivationJobsRequest,
-  ListReadSetActivationJobsResponse,
-  ListReadSetActivationJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListReadSetActivationJobsRequest,
-  ) => stream.Stream<
-    ListReadSetActivationJobsResponse,
-    ListReadSetActivationJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListReadSetActivationJobsRequest,
-  ) => stream.Stream<
-    ActivateReadSetJobItem,
-    ListReadSetActivationJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListReadSetExportJobsError =
   | AccessDeniedException
@@ -9476,27 +9336,7 @@ export const listReadSetExportJobs: API.OperationMethod<
     items: "exportJobs",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListReadSetExportJobsRequest,
-  ListReadSetExportJobsResponse,
-  ListReadSetExportJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListReadSetExportJobsRequest,
-  ) => stream.Stream<
-    ListReadSetExportJobsResponse,
-    ListReadSetExportJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListReadSetExportJobsRequest,
-  ) => stream.Stream<
-    ExportReadSetJobDetail,
-    ListReadSetExportJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListReadSetImportJobsError =
   | AccessDeniedException
@@ -9550,27 +9390,7 @@ export const listReadSetImportJobs: API.OperationMethod<
     items: "importJobs",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListReadSetImportJobsRequest,
-  ListReadSetImportJobsResponse,
-  ListReadSetImportJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListReadSetImportJobsRequest,
-  ) => stream.Stream<
-    ListReadSetImportJobsResponse,
-    ListReadSetImportJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListReadSetImportJobsRequest,
-  ) => stream.Stream<
-    ImportReadSetJobItem,
-    ListReadSetImportJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListReadSetsError =
   | AccessDeniedException
@@ -9624,27 +9444,7 @@ export const listReadSets: API.OperationMethod<
     items: "readSets",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListReadSetsRequest,
-  ListReadSetsResponse,
-  ListReadSetsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListReadSetsRequest,
-  ) => stream.Stream<
-    ListReadSetsResponse,
-    ListReadSetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListReadSetsRequest,
-  ) => stream.Stream<
-    ReadSetListItem,
-    ListReadSetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListReadSetUploadPartsError =
   | AccessDeniedException
@@ -9702,27 +9502,7 @@ export const listReadSetUploadParts: API.OperationMethod<
     items: "parts",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListReadSetUploadPartsRequest,
-  ListReadSetUploadPartsResponse,
-  ListReadSetUploadPartsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListReadSetUploadPartsRequest,
-  ) => stream.Stream<
-    ListReadSetUploadPartsResponse,
-    ListReadSetUploadPartsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListReadSetUploadPartsRequest,
-  ) => stream.Stream<
-    ReadSetUploadPartListItem,
-    ListReadSetUploadPartsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListReferenceImportJobsError =
   | AccessDeniedException
@@ -9776,27 +9556,7 @@ export const listReferenceImportJobs: API.OperationMethod<
     items: "importJobs",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListReferenceImportJobsRequest,
-  ListReferenceImportJobsResponse,
-  ListReferenceImportJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListReferenceImportJobsRequest,
-  ) => stream.Stream<
-    ListReferenceImportJobsResponse,
-    ListReferenceImportJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListReferenceImportJobsRequest,
-  ) => stream.Stream<
-    ImportReferenceJobItem,
-    ListReferenceImportJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListReferencesError =
   | AccessDeniedException
@@ -9852,27 +9612,7 @@ export const listReferences: API.OperationMethod<
     items: "references",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListReferencesRequest,
-  ListReferencesResponse,
-  ListReferencesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListReferencesRequest,
-  ) => stream.Stream<
-    ListReferencesResponse,
-    ListReferencesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListReferencesRequest,
-  ) => stream.Stream<
-    ReferenceListItem,
-    ListReferencesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListReferenceStoresError =
   | AccessDeniedException
@@ -9926,27 +9666,7 @@ export const listReferenceStores: API.OperationMethod<
     items: "referenceStores",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListReferenceStoresRequest,
-  ListReferenceStoresResponse,
-  ListReferenceStoresError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListReferenceStoresRequest,
-  ) => stream.Stream<
-    ListReferenceStoresResponse,
-    ListReferenceStoresError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListReferenceStoresRequest,
-  ) => stream.Stream<
-    ReferenceStoreDetail,
-    ListReferenceStoresError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListRunCachesError =
   | AccessDeniedException
@@ -10004,27 +9724,7 @@ export const listRunCaches: API.OperationMethod<
     items: "items",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListRunCachesRequest,
-  ListRunCachesResponse,
-  ListRunCachesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRunCachesRequest,
-  ) => stream.Stream<
-    ListRunCachesResponse,
-    ListRunCachesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRunCachesRequest,
-  ) => stream.Stream<
-    RunCacheListItem,
-    ListRunCachesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListRunGroupsError =
   | AccessDeniedException
@@ -10082,27 +9782,7 @@ export const listRunGroups: API.OperationMethod<
     items: "items",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListRunGroupsRequest,
-  ListRunGroupsResponse,
-  ListRunGroupsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRunGroupsRequest,
-  ) => stream.Stream<
-    ListRunGroupsResponse,
-    ListRunGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRunGroupsRequest,
-  ) => stream.Stream<
-    RunGroupListItem,
-    ListRunGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListRunsError =
   | AccessDeniedException
@@ -10162,27 +9842,7 @@ export const listRuns: API.OperationMethod<
     items: "items",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListRunsRequest,
-  ListRunsResponse,
-  ListRunsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRunsRequest,
-  ) => stream.Stream<
-    ListRunsResponse,
-    ListRunsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRunsRequest,
-  ) => stream.Stream<
-    RunListItem,
-    ListRunsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListRunsInBatchError =
   | AccessDeniedException
@@ -10240,27 +9900,7 @@ export const listRunsInBatch: API.OperationMethod<
     items: "runs",
     pageSize: "maxItems",
   } as const,
-})) as any as API.OperationMethod<
-  ListRunsInBatchRequest,
-  ListRunsInBatchResponse,
-  ListRunsInBatchError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRunsInBatchRequest,
-  ) => stream.Stream<
-    ListRunsInBatchResponse,
-    ListRunsInBatchError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRunsInBatchRequest,
-  ) => stream.Stream<
-    RunBatchListItem,
-    ListRunsInBatchError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListRunTasksError =
   | AccessDeniedException
@@ -10318,27 +9958,7 @@ export const listRunTasks: API.OperationMethod<
     items: "items",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListRunTasksRequest,
-  ListRunTasksResponse,
-  ListRunTasksError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRunTasksRequest,
-  ) => stream.Stream<
-    ListRunTasksResponse,
-    ListRunTasksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRunTasksRequest,
-  ) => stream.Stream<
-    TaskListItem,
-    ListRunTasksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListSequenceStoresError =
   | AccessDeniedException
@@ -10392,27 +10012,7 @@ export const listSequenceStores: API.OperationMethod<
     items: "sequenceStores",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListSequenceStoresRequest,
-  ListSequenceStoresResponse,
-  ListSequenceStoresError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSequenceStoresRequest,
-  ) => stream.Stream<
-    ListSequenceStoresResponse,
-    ListSequenceStoresError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSequenceStoresRequest,
-  ) => stream.Stream<
-    SequenceStoreDetail,
-    ListSequenceStoresError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListSharesError =
   | AccessDeniedException
@@ -10468,27 +10068,7 @@ export const listShares: API.OperationMethod<
     items: "shares",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListSharesRequest,
-  ListSharesResponse,
-  ListSharesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSharesRequest,
-  ) => stream.Stream<
-    ListSharesResponse,
-    ListSharesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSharesRequest,
-  ) => stream.Stream<
-    ShareDetails,
-    ListSharesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsForResourceError =
   | AccessDeniedException
@@ -10579,27 +10159,7 @@ export const listVariantImportJobs: API.OperationMethod<
     items: "variantImportJobs",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListVariantImportJobsRequest,
-  ListVariantImportJobsResponse,
-  ListVariantImportJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListVariantImportJobsRequest,
-  ) => stream.Stream<
-    ListVariantImportJobsResponse,
-    ListVariantImportJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListVariantImportJobsRequest,
-  ) => stream.Stream<
-    VariantImportJobItem,
-    ListVariantImportJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListVariantStoresError =
   | AccessDeniedException
@@ -10653,27 +10213,7 @@ export const listVariantStores: API.OperationMethod<
     items: "variantStores",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListVariantStoresRequest,
-  ListVariantStoresResponse,
-  ListVariantStoresError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListVariantStoresRequest,
-  ) => stream.Stream<
-    ListVariantStoresResponse,
-    ListVariantStoresError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListVariantStoresRequest,
-  ) => stream.Stream<
-    VariantStoreItem,
-    ListVariantStoresError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListWorkflowsError =
   | AccessDeniedException
@@ -10731,27 +10271,7 @@ export const listWorkflows: API.OperationMethod<
     items: "items",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListWorkflowsRequest,
-  ListWorkflowsResponse,
-  ListWorkflowsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListWorkflowsRequest,
-  ) => stream.Stream<
-    ListWorkflowsResponse,
-    ListWorkflowsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListWorkflowsRequest,
-  ) => stream.Stream<
-    WorkflowListItem,
-    ListWorkflowsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListWorkflowVersionsError =
   | AccessDeniedException
@@ -10809,27 +10329,7 @@ export const listWorkflowVersions: API.OperationMethod<
     items: "items",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListWorkflowVersionsRequest,
-  ListWorkflowVersionsResponse,
-  ListWorkflowVersionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListWorkflowVersionsRequest,
-  ) => stream.Stream<
-    ListWorkflowVersionsResponse,
-    ListWorkflowVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListWorkflowVersionsRequest,
-  ) => stream.Stream<
-    WorkflowVersionListItem,
-    ListWorkflowVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type PutS3AccessPolicyError =
   | AccessDeniedException

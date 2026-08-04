@@ -1573,27 +1573,7 @@ export const searchDevices: API.OperationMethod<
     items: "devices",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  SearchDevicesRequest,
-  SearchDevicesResponse,
-  SearchDevicesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: SearchDevicesRequest,
-  ) => stream.Stream<
-    SearchDevicesResponse,
-    SearchDevicesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: SearchDevicesRequest,
-  ) => stream.Stream<
-    DeviceSummary,
-    SearchDevicesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type SearchJobsError =
   | AccessDeniedException
@@ -1642,27 +1622,7 @@ export const searchJobs: API.OperationMethod<
     items: "jobs",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  SearchJobsRequest,
-  SearchJobsResponse,
-  SearchJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: SearchJobsRequest,
-  ) => stream.Stream<
-    SearchJobsResponse,
-    SearchJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: SearchJobsRequest,
-  ) => stream.Stream<
-    JobSummary,
-    SearchJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type SearchQuantumTasksError =
   | AccessDeniedException
@@ -1711,27 +1671,7 @@ export const searchQuantumTasks: API.OperationMethod<
     items: "quantumTasks",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  SearchQuantumTasksRequest,
-  SearchQuantumTasksResponse,
-  SearchQuantumTasksError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: SearchQuantumTasksRequest,
-  ) => stream.Stream<
-    SearchQuantumTasksResponse,
-    SearchQuantumTasksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: SearchQuantumTasksRequest,
-  ) => stream.Stream<
-    QuantumTaskSummary,
-    SearchQuantumTasksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type SearchSpendingLimitsError =
   | AccessDeniedException
@@ -1780,27 +1720,7 @@ export const searchSpendingLimits: API.OperationMethod<
     items: "spendingLimits",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  SearchSpendingLimitsRequest,
-  SearchSpendingLimitsResponse,
-  SearchSpendingLimitsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: SearchSpendingLimitsRequest,
-  ) => stream.Stream<
-    SearchSpendingLimitsResponse,
-    SearchSpendingLimitsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: SearchSpendingLimitsRequest,
-  ) => stream.Stream<
-    SpendingLimitSummary,
-    SearchSpendingLimitsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type TagResourceError =
   | InternalServiceException

@@ -252,7 +252,8 @@ export const listAccountsLimits: API.PaginatedOperationMethod<
   ListAccountsLimitsRequest,
   ListAccountLimitsResponse,
   ListAccountsLimitsError,
-  GcpOpContext
+  GcpOpContext,
+  ListAccountLimitsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsLimitsRequest,
   output: ListAccountLimitsResponse,
@@ -263,7 +264,7 @@ export const listAccountsLimits: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListAccountsQuotasError = NotFound | Forbidden | GcpOpError;
 /** Lists the daily call quota and usage per group for your Merchant Center account. */
@@ -271,7 +272,8 @@ export const listAccountsQuotas: API.PaginatedOperationMethod<
   ListAccountsQuotasRequest,
   ListQuotaGroupsResponse,
   ListAccountsQuotasError,
-  GcpOpContext
+  GcpOpContext,
+  ListQuotaGroupsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsQuotasRequest,
   output: ListQuotaGroupsResponse,
@@ -282,4 +284,4 @@ export const listAccountsQuotas: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;

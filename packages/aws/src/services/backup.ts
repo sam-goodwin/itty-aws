@@ -8239,27 +8239,7 @@ export const listBackupJobs: API.OperationMethod<
     items: "BackupJobs",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListBackupJobsInput,
-  ListBackupJobsOutput,
-  ListBackupJobsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListBackupJobsInput,
-  ) => stream.Stream<
-    ListBackupJobsOutput,
-    ListBackupJobsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListBackupJobsInput,
-  ) => stream.Stream<
-    BackupJob,
-    ListBackupJobsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListBackupJobSummariesError =
   | InvalidParameterValueException
@@ -8308,27 +8288,7 @@ export const listBackupJobSummaries: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListBackupJobSummariesInput,
-  ListBackupJobSummariesOutput,
-  ListBackupJobSummariesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListBackupJobSummariesInput,
-  ) => stream.Stream<
-    ListBackupJobSummariesOutput,
-    ListBackupJobSummariesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListBackupJobSummariesInput,
-  ) => stream.Stream<
-    unknown,
-    ListBackupJobSummariesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListBackupPlansError =
   | InvalidParameterValueException
@@ -8377,27 +8337,7 @@ export const listBackupPlans: API.OperationMethod<
     items: "BackupPlansList",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListBackupPlansInput,
-  ListBackupPlansOutput,
-  ListBackupPlansError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListBackupPlansInput,
-  ) => stream.Stream<
-    ListBackupPlansOutput,
-    ListBackupPlansError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListBackupPlansInput,
-  ) => stream.Stream<
-    BackupPlansListMember,
-    ListBackupPlansError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListBackupPlanTemplatesError =
   | InvalidParameterValueException
@@ -8446,27 +8386,7 @@ export const listBackupPlanTemplates: API.OperationMethod<
     items: "BackupPlanTemplatesList",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListBackupPlanTemplatesInput,
-  ListBackupPlanTemplatesOutput,
-  ListBackupPlanTemplatesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListBackupPlanTemplatesInput,
-  ) => stream.Stream<
-    ListBackupPlanTemplatesOutput,
-    ListBackupPlanTemplatesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListBackupPlanTemplatesInput,
-  ) => stream.Stream<
-    BackupPlanTemplatesListMember,
-    ListBackupPlanTemplatesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListBackupPlanVersionsError =
   | InvalidParameterValueException
@@ -8516,27 +8436,7 @@ export const listBackupPlanVersions: API.OperationMethod<
     items: "BackupPlanVersionsList",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListBackupPlanVersionsInput,
-  ListBackupPlanVersionsOutput,
-  ListBackupPlanVersionsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListBackupPlanVersionsInput,
-  ) => stream.Stream<
-    ListBackupPlanVersionsOutput,
-    ListBackupPlanVersionsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListBackupPlanVersionsInput,
-  ) => stream.Stream<
-    BackupPlansListMember,
-    ListBackupPlanVersionsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListBackupSelectionsError =
   | InvalidParameterValueException
@@ -8586,27 +8486,7 @@ export const listBackupSelections: API.OperationMethod<
     items: "BackupSelectionsList",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListBackupSelectionsInput,
-  ListBackupSelectionsOutput,
-  ListBackupSelectionsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListBackupSelectionsInput,
-  ) => stream.Stream<
-    ListBackupSelectionsOutput,
-    ListBackupSelectionsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListBackupSelectionsInput,
-  ) => stream.Stream<
-    BackupSelectionsListMember,
-    ListBackupSelectionsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListBackupVaultsError =
   | InvalidParameterValueException
@@ -8656,27 +8536,7 @@ export const listBackupVaults: API.OperationMethod<
     items: "BackupVaultList",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListBackupVaultsInput,
-  ListBackupVaultsOutput,
-  ListBackupVaultsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListBackupVaultsInput,
-  ) => stream.Stream<
-    ListBackupVaultsOutput,
-    ListBackupVaultsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListBackupVaultsInput,
-  ) => stream.Stream<
-    BackupVaultListMember,
-    ListBackupVaultsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListCopyJobsError =
   | InvalidParameterValueException
@@ -8718,27 +8578,7 @@ export const listCopyJobs: API.OperationMethod<
     items: "CopyJobs",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListCopyJobsInput,
-  ListCopyJobsOutput,
-  ListCopyJobsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCopyJobsInput,
-  ) => stream.Stream<
-    ListCopyJobsOutput,
-    ListCopyJobsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCopyJobsInput,
-  ) => stream.Stream<
-    CopyJob,
-    ListCopyJobsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListCopyJobSummariesError =
   | InvalidParameterValueException
@@ -8787,27 +8627,7 @@ export const listCopyJobSummaries: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListCopyJobSummariesInput,
-  ListCopyJobSummariesOutput,
-  ListCopyJobSummariesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCopyJobSummariesInput,
-  ) => stream.Stream<
-    ListCopyJobSummariesOutput,
-    ListCopyJobSummariesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCopyJobSummariesInput,
-  ) => stream.Stream<
-    unknown,
-    ListCopyJobSummariesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListFrameworksError =
   | InvalidParameterValueException
@@ -8848,27 +8668,7 @@ export const listFrameworks: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListFrameworksInput,
-  ListFrameworksOutput,
-  ListFrameworksError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListFrameworksInput,
-  ) => stream.Stream<
-    ListFrameworksOutput,
-    ListFrameworksError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListFrameworksInput,
-  ) => stream.Stream<
-    unknown,
-    ListFrameworksError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListIndexedRecoveryPointsError =
   | InvalidParameterValueException
@@ -8920,27 +8720,7 @@ export const listIndexedRecoveryPoints: API.OperationMethod<
     items: "IndexedRecoveryPoints",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListIndexedRecoveryPointsInput,
-  ListIndexedRecoveryPointsOutput,
-  ListIndexedRecoveryPointsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListIndexedRecoveryPointsInput,
-  ) => stream.Stream<
-    ListIndexedRecoveryPointsOutput,
-    ListIndexedRecoveryPointsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListIndexedRecoveryPointsInput,
-  ) => stream.Stream<
-    IndexedRecoveryPoint,
-    ListIndexedRecoveryPointsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListLegalHoldsError =
   | InvalidParameterValueException
@@ -8982,27 +8762,7 @@ export const listLegalHolds: API.OperationMethod<
     items: "LegalHolds",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListLegalHoldsInput,
-  ListLegalHoldsOutput,
-  ListLegalHoldsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListLegalHoldsInput,
-  ) => stream.Stream<
-    ListLegalHoldsOutput,
-    ListLegalHoldsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListLegalHoldsInput,
-  ) => stream.Stream<
-    LegalHold,
-    ListLegalHoldsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListProtectedResourcesError =
   | InvalidParameterValueException
@@ -9046,27 +8806,7 @@ export const listProtectedResources: API.OperationMethod<
     items: "Results",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListProtectedResourcesInput,
-  ListProtectedResourcesOutput,
-  ListProtectedResourcesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListProtectedResourcesInput,
-  ) => stream.Stream<
-    ListProtectedResourcesOutput,
-    ListProtectedResourcesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListProtectedResourcesInput,
-  ) => stream.Stream<
-    ProtectedResource,
-    ListProtectedResourcesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListProtectedResourcesByBackupVaultError =
   | InvalidParameterValueException
@@ -9113,27 +8853,7 @@ export const listProtectedResourcesByBackupVault: API.OperationMethod<
     items: "Results",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListProtectedResourcesByBackupVaultInput,
-  ListProtectedResourcesByBackupVaultOutput,
-  ListProtectedResourcesByBackupVaultError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListProtectedResourcesByBackupVaultInput,
-  ) => stream.Stream<
-    ListProtectedResourcesByBackupVaultOutput,
-    ListProtectedResourcesByBackupVaultError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListProtectedResourcesByBackupVaultInput,
-  ) => stream.Stream<
-    ProtectedResource,
-    ListProtectedResourcesByBackupVaultError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListRecoveryPointsByBackupVaultError =
   | InvalidParameterValueException
@@ -9182,27 +8902,7 @@ export const listRecoveryPointsByBackupVault: API.OperationMethod<
     items: "RecoveryPoints",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListRecoveryPointsByBackupVaultInput,
-  ListRecoveryPointsByBackupVaultOutput,
-  ListRecoveryPointsByBackupVaultError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRecoveryPointsByBackupVaultInput,
-  ) => stream.Stream<
-    ListRecoveryPointsByBackupVaultOutput,
-    ListRecoveryPointsByBackupVaultError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRecoveryPointsByBackupVaultInput,
-  ) => stream.Stream<
-    RecoveryPointByBackupVault,
-    ListRecoveryPointsByBackupVaultError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListRecoveryPointsByLegalHoldError =
   | InvalidParameterValueException
@@ -9250,27 +8950,7 @@ export const listRecoveryPointsByLegalHold: API.OperationMethod<
     items: "RecoveryPoints",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListRecoveryPointsByLegalHoldInput,
-  ListRecoveryPointsByLegalHoldOutput,
-  ListRecoveryPointsByLegalHoldError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRecoveryPointsByLegalHoldInput,
-  ) => stream.Stream<
-    ListRecoveryPointsByLegalHoldOutput,
-    ListRecoveryPointsByLegalHoldError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRecoveryPointsByLegalHoldInput,
-  ) => stream.Stream<
-    RecoveryPointMember,
-    ListRecoveryPointsByLegalHoldError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListRecoveryPointsByResourceError =
   | InvalidParameterValueException
@@ -9323,27 +9003,7 @@ export const listRecoveryPointsByResource: API.OperationMethod<
     items: "RecoveryPoints",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListRecoveryPointsByResourceInput,
-  ListRecoveryPointsByResourceOutput,
-  ListRecoveryPointsByResourceError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRecoveryPointsByResourceInput,
-  ) => stream.Stream<
-    ListRecoveryPointsByResourceOutput,
-    ListRecoveryPointsByResourceError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRecoveryPointsByResourceInput,
-  ) => stream.Stream<
-    RecoveryPointByResource,
-    ListRecoveryPointsByResourceError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListReportJobsError =
   | InvalidParameterValueException
@@ -9389,27 +9049,7 @@ export const listReportJobs: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListReportJobsInput,
-  ListReportJobsOutput,
-  ListReportJobsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListReportJobsInput,
-  ) => stream.Stream<
-    ListReportJobsOutput,
-    ListReportJobsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListReportJobsInput,
-  ) => stream.Stream<
-    unknown,
-    ListReportJobsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListReportPlansError =
   | InvalidParameterValueException
@@ -9451,27 +9091,7 @@ export const listReportPlans: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListReportPlansInput,
-  ListReportPlansOutput,
-  ListReportPlansError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListReportPlansInput,
-  ) => stream.Stream<
-    ListReportPlansOutput,
-    ListReportPlansError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListReportPlansInput,
-  ) => stream.Stream<
-    unknown,
-    ListReportPlansError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListRestoreAccessBackupVaultsError =
   | InvalidParameterValueException
@@ -9520,27 +9140,7 @@ export const listRestoreAccessBackupVaults: API.OperationMethod<
     items: "RestoreAccessBackupVaults",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListRestoreAccessBackupVaultsInput,
-  ListRestoreAccessBackupVaultsOutput,
-  ListRestoreAccessBackupVaultsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRestoreAccessBackupVaultsInput,
-  ) => stream.Stream<
-    ListRestoreAccessBackupVaultsOutput,
-    ListRestoreAccessBackupVaultsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRestoreAccessBackupVaultsInput,
-  ) => stream.Stream<
-    RestoreAccessBackupVaultListMember,
-    ListRestoreAccessBackupVaultsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListRestoreJobsError =
   | InvalidParameterValueException
@@ -9590,27 +9190,7 @@ export const listRestoreJobs: API.OperationMethod<
     items: "RestoreJobs",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListRestoreJobsInput,
-  ListRestoreJobsOutput,
-  ListRestoreJobsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRestoreJobsInput,
-  ) => stream.Stream<
-    ListRestoreJobsOutput,
-    ListRestoreJobsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRestoreJobsInput,
-  ) => stream.Stream<
-    RestoreJobsListMember,
-    ListRestoreJobsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListRestoreJobsByProtectedResourceError =
   | InvalidParameterValueException
@@ -9664,27 +9244,7 @@ export const listRestoreJobsByProtectedResource: API.OperationMethod<
     items: "RestoreJobs",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListRestoreJobsByProtectedResourceInput,
-  ListRestoreJobsByProtectedResourceOutput,
-  ListRestoreJobsByProtectedResourceError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRestoreJobsByProtectedResourceInput,
-  ) => stream.Stream<
-    ListRestoreJobsByProtectedResourceOutput,
-    ListRestoreJobsByProtectedResourceError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRestoreJobsByProtectedResourceInput,
-  ) => stream.Stream<
-    RestoreJobsListMember,
-    ListRestoreJobsByProtectedResourceError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListRestoreJobSummariesError =
   | InvalidParameterValueException
@@ -9733,27 +9293,7 @@ export const listRestoreJobSummaries: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListRestoreJobSummariesInput,
-  ListRestoreJobSummariesOutput,
-  ListRestoreJobSummariesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRestoreJobSummariesInput,
-  ) => stream.Stream<
-    ListRestoreJobSummariesOutput,
-    ListRestoreJobSummariesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRestoreJobSummariesInput,
-  ) => stream.Stream<
-    unknown,
-    ListRestoreJobSummariesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListRestoreTestingPlansError =
   | InvalidParameterValueException
@@ -9795,27 +9335,7 @@ export const listRestoreTestingPlans: API.OperationMethod<
     items: "RestoreTestingPlans",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListRestoreTestingPlansInput,
-  ListRestoreTestingPlansOutput,
-  ListRestoreTestingPlansError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRestoreTestingPlansInput,
-  ) => stream.Stream<
-    ListRestoreTestingPlansOutput,
-    ListRestoreTestingPlansError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRestoreTestingPlansInput,
-  ) => stream.Stream<
-    RestoreTestingPlanForList,
-    ListRestoreTestingPlansError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListRestoreTestingSelectionsError =
   | InvalidParameterValueException
@@ -9863,27 +9383,7 @@ export const listRestoreTestingSelections: API.OperationMethod<
     items: "RestoreTestingSelections",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListRestoreTestingSelectionsInput,
-  ListRestoreTestingSelectionsOutput,
-  ListRestoreTestingSelectionsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRestoreTestingSelectionsInput,
-  ) => stream.Stream<
-    ListRestoreTestingSelectionsOutput,
-    ListRestoreTestingSelectionsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRestoreTestingSelectionsInput,
-  ) => stream.Stream<
-    RestoreTestingSelectionForList,
-    ListRestoreTestingSelectionsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListScanJobsError =
   | InvalidParameterValueException
@@ -9925,27 +9425,7 @@ export const listScanJobs: API.OperationMethod<
     items: "ScanJobs",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListScanJobsInput,
-  ListScanJobsOutput,
-  ListScanJobsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListScanJobsInput,
-  ) => stream.Stream<
-    ListScanJobsOutput,
-    ListScanJobsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListScanJobsInput,
-  ) => stream.Stream<
-    ScanJob,
-    ListScanJobsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListScanJobSummariesError =
   | InvalidParameterValueException
@@ -9987,27 +9467,7 @@ export const listScanJobSummaries: API.OperationMethod<
     items: "ScanJobSummaries",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListScanJobSummariesInput,
-  ListScanJobSummariesOutput,
-  ListScanJobSummariesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListScanJobSummariesInput,
-  ) => stream.Stream<
-    ListScanJobSummariesOutput,
-    ListScanJobSummariesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListScanJobSummariesInput,
-  ) => stream.Stream<
-    ScanJobSummary,
-    ListScanJobSummariesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsError =
   | InvalidParameterValueException
@@ -10069,27 +9529,7 @@ export const listTags: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListTagsInput,
-  ListTagsOutput,
-  ListTagsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTagsInput,
-  ) => stream.Stream<
-    ListTagsOutput,
-    ListTagsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTagsInput,
-  ) => stream.Stream<
-    unknown,
-    ListTagsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTieringConfigurationsError =
   | InvalidParameterValueException
@@ -10131,27 +9571,7 @@ export const listTieringConfigurations: API.OperationMethod<
     items: "TieringConfigurations",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListTieringConfigurationsInput,
-  ListTieringConfigurationsOutput,
-  ListTieringConfigurationsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTieringConfigurationsInput,
-  ) => stream.Stream<
-    ListTieringConfigurationsOutput,
-    ListTieringConfigurationsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTieringConfigurationsInput,
-  ) => stream.Stream<
-    TieringConfigurationsListMember,
-    ListTieringConfigurationsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type PutBackupVaultAccessPolicyError =
   | InvalidParameterValueException

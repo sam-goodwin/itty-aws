@@ -660,7 +660,8 @@ export const listAccountsLfpStores: API.PaginatedOperationMethod<
   ListAccountsLfpStoresRequest,
   ListLfpStoresResponse,
   ListAccountsLfpStoresError,
-  GcpOpContext
+  GcpOpContext,
+  ListLfpStoresResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsLfpStoresRequest,
   output: ListLfpStoresResponse,
@@ -671,4 +672,4 @@ export const listAccountsLfpStores: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;

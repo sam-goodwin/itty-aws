@@ -4330,27 +4330,7 @@ export const listCustomVerificationEmailTemplates: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListCustomVerificationEmailTemplatesRequest,
-  ListCustomVerificationEmailTemplatesResponse,
-  ListCustomVerificationEmailTemplatesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCustomVerificationEmailTemplatesRequest,
-  ) => stream.Stream<
-    ListCustomVerificationEmailTemplatesResponse,
-    ListCustomVerificationEmailTemplatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCustomVerificationEmailTemplatesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListCustomVerificationEmailTemplatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListIdentitiesError = CommonErrors;
 /**
@@ -4401,27 +4381,7 @@ export const listIdentities: API.OperationMethod<
     items: "Identities",
     pageSize: "MaxItems",
   } as const,
-})) as any as API.OperationMethod<
-  ListIdentitiesRequest,
-  ListIdentitiesResponse,
-  ListIdentitiesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListIdentitiesRequest,
-  ) => stream.Stream<
-    ListIdentitiesResponse,
-    ListIdentitiesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListIdentitiesRequest,
-  ) => stream.Stream<
-    Identity,
-    ListIdentitiesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListIdentityPoliciesError = CommonErrors;
 /**

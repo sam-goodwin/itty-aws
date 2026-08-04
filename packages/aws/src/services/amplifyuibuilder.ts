@@ -2831,27 +2831,7 @@ export const exportComponents: API.OperationMethod<
     outputToken: "nextToken",
     items: "entities",
   } as const,
-})) as any as API.OperationMethod<
-  ExportComponentsRequest,
-  ExportComponentsResponse,
-  ExportComponentsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ExportComponentsRequest,
-  ) => stream.Stream<
-    ExportComponentsResponse,
-    ExportComponentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ExportComponentsRequest,
-  ) => stream.Stream<
-    Component,
-    ExportComponentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ExportFormsError =
   | InternalServerException
@@ -2892,27 +2872,7 @@ export const exportForms: API.OperationMethod<
     outputToken: "nextToken",
     items: "entities",
   } as const,
-})) as any as API.OperationMethod<
-  ExportFormsRequest,
-  ExportFormsResponse,
-  ExportFormsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ExportFormsRequest,
-  ) => stream.Stream<
-    ExportFormsResponse,
-    ExportFormsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ExportFormsRequest,
-  ) => stream.Stream<
-    Form,
-    ExportFormsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ExportThemesError =
   | InternalServerException
@@ -2953,27 +2913,7 @@ export const exportThemes: API.OperationMethod<
     outputToken: "nextToken",
     items: "entities",
   } as const,
-})) as any as API.OperationMethod<
-  ExportThemesRequest,
-  ExportThemesResponse,
-  ExportThemesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ExportThemesRequest,
-  ) => stream.Stream<
-    ExportThemesResponse,
-    ExportThemesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ExportThemesRequest,
-  ) => stream.Stream<
-    Theme,
-    ExportThemesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type GetCodegenJobError =
   | InternalServerException
@@ -3147,27 +3087,7 @@ export const listCodegenJobs: API.OperationMethod<
     items: "entities",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListCodegenJobsRequest,
-  ListCodegenJobsResponse,
-  ListCodegenJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCodegenJobsRequest,
-  ) => stream.Stream<
-    ListCodegenJobsResponse,
-    ListCodegenJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCodegenJobsRequest,
-  ) => stream.Stream<
-    CodegenJobSummary,
-    ListCodegenJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListComponentsError =
   | InternalServerException
@@ -3210,27 +3130,7 @@ export const listComponents: API.OperationMethod<
     items: "entities",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListComponentsRequest,
-  ListComponentsResponse,
-  ListComponentsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListComponentsRequest,
-  ) => stream.Stream<
-    ListComponentsResponse,
-    ListComponentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListComponentsRequest,
-  ) => stream.Stream<
-    ComponentSummary,
-    ListComponentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListFormsError =
   | InternalServerException
@@ -3272,27 +3172,7 @@ export const listForms: API.OperationMethod<
     items: "entities",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListFormsRequest,
-  ListFormsResponse,
-  ListFormsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListFormsRequest,
-  ) => stream.Stream<
-    ListFormsResponse,
-    ListFormsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListFormsRequest,
-  ) => stream.Stream<
-    FormSummary,
-    ListFormsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsForResourceError =
   | InternalServerException
@@ -3365,27 +3245,7 @@ export const listThemes: API.OperationMethod<
     items: "entities",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListThemesRequest,
-  ListThemesResponse,
-  ListThemesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListThemesRequest,
-  ) => stream.Stream<
-    ListThemesResponse,
-    ListThemesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListThemesRequest,
-  ) => stream.Stream<
-    ThemeSummary,
-    ListThemesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type PutMetadataFlagError =
   | InvalidParameterException

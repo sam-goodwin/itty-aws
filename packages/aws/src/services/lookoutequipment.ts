@@ -3430,27 +3430,7 @@ export const listDataIngestionJobs: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListDataIngestionJobsRequest,
-  ListDataIngestionJobsResponse,
-  ListDataIngestionJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDataIngestionJobsRequest,
-  ) => stream.Stream<
-    ListDataIngestionJobsResponse,
-    ListDataIngestionJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDataIngestionJobsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListDataIngestionJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListDatasetsError =
   | AccessDeniedException
@@ -3498,27 +3478,7 @@ export const listDatasets: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListDatasetsRequest,
-  ListDatasetsResponse,
-  ListDatasetsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDatasetsRequest,
-  ) => stream.Stream<
-    ListDatasetsResponse,
-    ListDatasetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDatasetsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListDatasetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListInferenceEventsError =
   | AccessDeniedException
@@ -3568,27 +3528,7 @@ export const listInferenceEvents: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListInferenceEventsRequest,
-  ListInferenceEventsResponse,
-  ListInferenceEventsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListInferenceEventsRequest,
-  ) => stream.Stream<
-    ListInferenceEventsResponse,
-    ListInferenceEventsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListInferenceEventsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListInferenceEventsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListInferenceExecutionsError =
   | AccessDeniedException
@@ -3639,27 +3579,7 @@ export const listInferenceExecutions: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListInferenceExecutionsRequest,
-  ListInferenceExecutionsResponse,
-  ListInferenceExecutionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListInferenceExecutionsRequest,
-  ) => stream.Stream<
-    ListInferenceExecutionsResponse,
-    ListInferenceExecutionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListInferenceExecutionsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListInferenceExecutionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListInferenceSchedulersError =
   | AccessDeniedException
@@ -3707,27 +3627,7 @@ export const listInferenceSchedulers: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListInferenceSchedulersRequest,
-  ListInferenceSchedulersResponse,
-  ListInferenceSchedulersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListInferenceSchedulersRequest,
-  ) => stream.Stream<
-    ListInferenceSchedulersResponse,
-    ListInferenceSchedulersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListInferenceSchedulersRequest,
-  ) => stream.Stream<
-    unknown,
-    ListInferenceSchedulersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListLabelGroupsError =
   | AccessDeniedException
@@ -3775,27 +3675,7 @@ export const listLabelGroups: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListLabelGroupsRequest,
-  ListLabelGroupsResponse,
-  ListLabelGroupsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListLabelGroupsRequest,
-  ) => stream.Stream<
-    ListLabelGroupsResponse,
-    ListLabelGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListLabelGroupsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListLabelGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListLabelsError =
   | AccessDeniedException
@@ -3843,27 +3723,7 @@ export const listLabels: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListLabelsRequest,
-  ListLabelsResponse,
-  ListLabelsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListLabelsRequest,
-  ) => stream.Stream<
-    ListLabelsResponse,
-    ListLabelsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListLabelsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListLabelsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListModelsError =
   | AccessDeniedException
@@ -3912,27 +3772,7 @@ export const listModels: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListModelsRequest,
-  ListModelsResponse,
-  ListModelsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListModelsRequest,
-  ) => stream.Stream<
-    ListModelsResponse,
-    ListModelsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListModelsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListModelsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListModelVersionsError =
   | AccessDeniedException
@@ -3984,27 +3824,7 @@ export const listModelVersions: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListModelVersionsRequest,
-  ListModelVersionsResponse,
-  ListModelVersionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListModelVersionsRequest,
-  ) => stream.Stream<
-    ListModelVersionsResponse,
-    ListModelVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListModelVersionsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListModelVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListRetrainingSchedulersError =
   | AccessDeniedException
@@ -4053,27 +3873,7 @@ export const listRetrainingSchedulers: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListRetrainingSchedulersRequest,
-  ListRetrainingSchedulersResponse,
-  ListRetrainingSchedulersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRetrainingSchedulersRequest,
-  ) => stream.Stream<
-    ListRetrainingSchedulersResponse,
-    ListRetrainingSchedulersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRetrainingSchedulersRequest,
-  ) => stream.Stream<
-    unknown,
-    ListRetrainingSchedulersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListSensorStatisticsError =
   | AccessDeniedException
@@ -4125,27 +3925,7 @@ export const listSensorStatistics: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListSensorStatisticsRequest,
-  ListSensorStatisticsResponse,
-  ListSensorStatisticsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSensorStatisticsRequest,
-  ) => stream.Stream<
-    ListSensorStatisticsResponse,
-    ListSensorStatisticsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSensorStatisticsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListSensorStatisticsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsForResourceError =
   | AccessDeniedException

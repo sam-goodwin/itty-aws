@@ -2411,7 +2411,8 @@ export const listCertificatePacks: API.PaginatedOperationMethod<
   ListCertificatePacksRequest,
   ListCertificatePacksResponse,
   ListCertificatePacksError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  CertificatePacksListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListCertificatePacksRequest,
@@ -2428,7 +2429,7 @@ export const listCertificatePacks: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type PatchAutoOriginTlsKexError = CloudflareOpError;
 /** Enable or disable Auto-Origin TLS KEX selection for the zone by sending `{"enabled": true}` or `{"enabled": false}`. When enabled, Cloudflare runs a periodic scan of the zone's origins to determine the preferred key-exchange algorithm and writes that preference to the edge so it is sent first in the TLS ClientHello to the origin. */

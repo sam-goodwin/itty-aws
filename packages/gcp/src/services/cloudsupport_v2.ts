@@ -1481,7 +1481,8 @@ export const listCases: API.PaginatedOperationMethod<
   ListCasesRequest,
   ListCasesResponse,
   ListCasesError,
-  GcpOpContext
+  GcpOpContext,
+  ListCasesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCasesRequest,
   output: ListCasesResponse,
@@ -1492,7 +1493,7 @@ export const listCases: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListCasesAttachmentsError = NotFound | Forbidden | GcpOpError;
 /** List all the attachments associated with a support case. EXAMPLES: cURL: ```shell case="projects/some-project/cases/23598314" curl \ --header "Authorization: Bearer $(gcloud auth print-access-token)" \ "https://cloudsupport.googleapis.com/v2/$case/attachments" ``` Python: ```python import googleapiclient.discovery api_version = "v2" supportApiService = googleapiclient.discovery.build( serviceName="cloudsupport", version=api_version, discoveryServiceUrl=f"https://cloudsupport.googleapis.com/$discovery/rest?version={api_version}", ) request = ( supportApiService.cases() .attachments() .list(parent="projects/some-project/cases/43595344") ) print(request.execute()) ``` */
@@ -1500,7 +1501,8 @@ export const listCasesAttachments: API.PaginatedOperationMethod<
   ListCasesAttachmentsRequest,
   ListAttachmentsResponse,
   ListCasesAttachmentsError,
-  GcpOpContext
+  GcpOpContext,
+  ListAttachmentsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCasesAttachmentsRequest,
   output: ListAttachmentsResponse,
@@ -1511,7 +1513,7 @@ export const listCasesAttachments: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListCasesCommentsError = NotFound | Forbidden | GcpOpError;
 /** List all the comments associated with a case. EXAMPLES: cURL: ```shell case="projects/some-project/cases/43595344" curl \ --header "Authorization: Bearer $(gcloud auth print-access-token)" \ "https://cloudsupport.googleapis.com/v2/$case/comments" ``` Python: ```python import googleapiclient.discovery api_version = "v2" supportApiService = googleapiclient.discovery.build( serviceName="cloudsupport", version=api_version, discoveryServiceUrl=f"https://cloudsupport.googleapis.com/$discovery/rest?version={api_version}", ) request = ( supportApiService.cases() .comments() .list(parent="projects/some-project/cases/43595344") ) print(request.execute()) ``` */
@@ -1519,7 +1521,8 @@ export const listCasesComments: API.PaginatedOperationMethod<
   ListCasesCommentsRequest,
   ListCommentsResponse,
   ListCasesCommentsError,
-  GcpOpContext
+  GcpOpContext,
+  ListCommentsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCasesCommentsRequest,
   output: ListCommentsResponse,
@@ -1530,7 +1533,7 @@ export const listCasesComments: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListSupportEventSubscriptionsError =
   | NotFound
@@ -1541,7 +1544,8 @@ export const listSupportEventSubscriptions: API.PaginatedOperationMethod<
   ListSupportEventSubscriptionsRequest,
   ListSupportEventSubscriptionsResponse,
   ListSupportEventSubscriptionsError,
-  GcpOpContext
+  GcpOpContext,
+  ListSupportEventSubscriptionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSupportEventSubscriptionsRequest,
   output: ListSupportEventSubscriptionsResponse,
@@ -1552,7 +1556,7 @@ export const listSupportEventSubscriptions: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type PatchCasesError =
   | NotFound
@@ -1600,7 +1604,8 @@ export const searchCaseClassifications: API.PaginatedOperationMethod<
   SearchCaseClassificationsRequest,
   SearchCaseClassificationsResponse,
   SearchCaseClassificationsError,
-  GcpOpContext
+  GcpOpContext,
+  SearchCaseClassificationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchCaseClassificationsRequest,
   output: SearchCaseClassificationsResponse,
@@ -1611,7 +1616,7 @@ export const searchCaseClassifications: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type SearchCasesError = NotFound | Forbidden | GcpOpError;
 /** Search for cases using a query. EXAMPLES: cURL: ```shell parent="projects/some-project" curl \ --header "Authorization: Bearer $(gcloud auth print-access-token)" \ "https://cloudsupport.googleapis.com/v2/$parent/cases:search" ``` Python: ```python import googleapiclient.discovery api_version = "v2" supportApiService = googleapiclient.discovery.build( serviceName="cloudsupport", version=api_version, discoveryServiceUrl=f"https://cloudsupport.googleapis.com/$discovery/rest?version={api_version}", ) request = supportApiService.cases().search( parent="projects/some-project", query="state=OPEN" ) print(request.execute()) ``` */
@@ -1619,7 +1624,8 @@ export const searchCases: API.PaginatedOperationMethod<
   SearchCasesRequest,
   SearchCasesResponse,
   SearchCasesError,
-  GcpOpContext
+  GcpOpContext,
+  SearchCasesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchCasesRequest,
   output: SearchCasesResponse,
@@ -1630,7 +1636,7 @@ export const searchCases: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type UndeleteSupportEventSubscriptionsError =
   | NotFound

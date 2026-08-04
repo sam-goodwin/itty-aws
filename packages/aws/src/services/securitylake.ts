@@ -2204,27 +2204,7 @@ export const getDataLakeSources: API.OperationMethod<
     items: "dataLakeSources",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  GetDataLakeSourcesRequest,
-  GetDataLakeSourcesResponse,
-  GetDataLakeSourcesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetDataLakeSourcesRequest,
-  ) => stream.Stream<
-    GetDataLakeSourcesResponse,
-    GetDataLakeSourcesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetDataLakeSourcesRequest,
-  ) => stream.Stream<
-    DataLakeSource,
-    GetDataLakeSourcesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type GetSubscriberError =
   | AccessDeniedException
@@ -2315,27 +2295,7 @@ export const listDataLakeExceptions: API.OperationMethod<
     items: "exceptions",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListDataLakeExceptionsRequest,
-  ListDataLakeExceptionsResponse,
-  ListDataLakeExceptionsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDataLakeExceptionsRequest,
-  ) => stream.Stream<
-    ListDataLakeExceptionsResponse,
-    ListDataLakeExceptionsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDataLakeExceptionsRequest,
-  ) => stream.Stream<
-    DataLakeException,
-    ListDataLakeExceptionsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListDataLakesError =
   | AccessDeniedException
@@ -2425,27 +2385,7 @@ export const listLogSources: API.OperationMethod<
     items: "sources",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListLogSourcesRequest,
-  ListLogSourcesResponse,
-  ListLogSourcesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListLogSourcesRequest,
-  ) => stream.Stream<
-    ListLogSourcesResponse,
-    ListLogSourcesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListLogSourcesRequest,
-  ) => stream.Stream<
-    LogSource,
-    ListLogSourcesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListSubscribersError =
   | AccessDeniedException
@@ -2501,27 +2441,7 @@ export const listSubscribers: API.OperationMethod<
     items: "subscribers",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListSubscribersRequest,
-  ListSubscribersResponse,
-  ListSubscribersError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSubscribersRequest,
-  ) => stream.Stream<
-    ListSubscribersResponse,
-    ListSubscribersError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSubscribersRequest,
-  ) => stream.Stream<
-    SubscriberResource,
-    ListSubscribersError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsForResourceError =
   | AccessDeniedException

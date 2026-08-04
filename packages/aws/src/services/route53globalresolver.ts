@@ -3922,27 +3922,7 @@ export const listAccessSources: API.OperationMethod<
     items: "accessSources",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListAccessSourcesInput,
-  ListAccessSourcesOutput,
-  ListAccessSourcesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAccessSourcesInput,
-  ) => stream.Stream<
-    ListAccessSourcesOutput,
-    ListAccessSourcesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAccessSourcesInput,
-  ) => stream.Stream<
-    AccessSourcesItem,
-    ListAccessSourcesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListAccessTokensError =
   | AccessDeniedException
@@ -3995,27 +3975,7 @@ export const listAccessTokens: API.OperationMethod<
     items: "accessTokens",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListAccessTokensInput,
-  ListAccessTokensOutput,
-  ListAccessTokensError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAccessTokensInput,
-  ) => stream.Stream<
-    ListAccessTokensOutput,
-    ListAccessTokensError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAccessTokensInput,
-  ) => stream.Stream<
-    AccessTokenItem,
-    ListAccessTokensError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListDNSViewsError =
   | AccessDeniedException
@@ -4068,27 +4028,7 @@ export const listDNSViews: API.OperationMethod<
     items: "dnsViews",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListDNSViewsInput,
-  ListDNSViewsOutput,
-  ListDNSViewsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDNSViewsInput,
-  ) => stream.Stream<
-    ListDNSViewsOutput,
-    ListDNSViewsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDNSViewsInput,
-  ) => stream.Stream<
-    DNSViewSummary,
-    ListDNSViewsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListFirewallDomainListsError =
   | AccessDeniedException
@@ -4141,27 +4081,7 @@ export const listFirewallDomainLists: API.OperationMethod<
     items: "firewallDomainLists",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListFirewallDomainListsInput,
-  ListFirewallDomainListsOutput,
-  ListFirewallDomainListsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListFirewallDomainListsInput,
-  ) => stream.Stream<
-    ListFirewallDomainListsOutput,
-    ListFirewallDomainListsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListFirewallDomainListsInput,
-  ) => stream.Stream<
-    FirewallDomainListsItem,
-    ListFirewallDomainListsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListFirewallDomainsError =
   | AccessDeniedException
@@ -4214,27 +4134,7 @@ export const listFirewallDomains: API.OperationMethod<
     items: "domains",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListFirewallDomainsInput,
-  ListFirewallDomainsOutput,
-  ListFirewallDomainsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListFirewallDomainsInput,
-  ) => stream.Stream<
-    ListFirewallDomainsOutput,
-    ListFirewallDomainsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListFirewallDomainsInput,
-  ) => stream.Stream<
-    Domain,
-    ListFirewallDomainsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListFirewallRulesError =
   | AccessDeniedException
@@ -4287,27 +4187,7 @@ export const listFirewallRules: API.OperationMethod<
     items: "firewallRules",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListFirewallRulesInput,
-  ListFirewallRulesOutput,
-  ListFirewallRulesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListFirewallRulesInput,
-  ) => stream.Stream<
-    ListFirewallRulesOutput,
-    ListFirewallRulesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListFirewallRulesInput,
-  ) => stream.Stream<
-    FirewallRulesItem,
-    ListFirewallRulesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListGlobalResolversError =
   | AccessDeniedException
@@ -4358,27 +4238,7 @@ export const listGlobalResolvers: API.OperationMethod<
     items: "globalResolvers",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListGlobalResolversInput,
-  ListGlobalResolversOutput,
-  ListGlobalResolversError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListGlobalResolversInput,
-  ) => stream.Stream<
-    ListGlobalResolversOutput,
-    ListGlobalResolversError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListGlobalResolversInput,
-  ) => stream.Stream<
-    GlobalResolversItem,
-    ListGlobalResolversError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListHostedZoneAssociationsError =
   | AccessDeniedException
@@ -4431,27 +4291,7 @@ export const listHostedZoneAssociations: API.OperationMethod<
     items: "hostedZoneAssociations",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListHostedZoneAssociationsInput,
-  ListHostedZoneAssociationsOutput,
-  ListHostedZoneAssociationsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListHostedZoneAssociationsInput,
-  ) => stream.Stream<
-    ListHostedZoneAssociationsOutput,
-    ListHostedZoneAssociationsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListHostedZoneAssociationsInput,
-  ) => stream.Stream<
-    HostedZoneAssociationSummary,
-    ListHostedZoneAssociationsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListManagedFirewallDomainListsError =
   | AccessDeniedException
@@ -4502,27 +4342,7 @@ export const listManagedFirewallDomainLists: API.OperationMethod<
     items: "managedFirewallDomainLists",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListManagedFirewallDomainListsInput,
-  ListManagedFirewallDomainListsOutput,
-  ListManagedFirewallDomainListsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListManagedFirewallDomainListsInput,
-  ) => stream.Stream<
-    ListManagedFirewallDomainListsOutput,
-    ListManagedFirewallDomainListsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListManagedFirewallDomainListsInput,
-  ) => stream.Stream<
-    ManagedFirewallDomainListsItem,
-    ListManagedFirewallDomainListsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsForResourceError = ResourceNotFoundException | CommonErrors;
 /**

@@ -1641,27 +1641,7 @@ export const listBenefitAllocations: API.OperationMethod<
     items: "BenefitAllocationSummaries",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListBenefitAllocationsInput,
-  ListBenefitAllocationsOutput,
-  ListBenefitAllocationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListBenefitAllocationsInput,
-  ) => stream.Stream<
-    ListBenefitAllocationsOutput,
-    ListBenefitAllocationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListBenefitAllocationsInput,
-  ) => stream.Stream<
-    BenefitAllocationSummary,
-    ListBenefitAllocationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListBenefitApplicationsError =
   | AccessDeniedException
@@ -1712,27 +1692,7 @@ export const listBenefitApplications: API.OperationMethod<
     items: "BenefitApplicationSummaries",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListBenefitApplicationsInput,
-  ListBenefitApplicationsOutput,
-  ListBenefitApplicationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListBenefitApplicationsInput,
-  ) => stream.Stream<
-    ListBenefitApplicationsOutput,
-    ListBenefitApplicationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListBenefitApplicationsInput,
-  ) => stream.Stream<
-    BenefitApplicationSummary,
-    ListBenefitApplicationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListBenefitsError =
   | AccessDeniedException
@@ -1783,27 +1743,7 @@ export const listBenefits: API.OperationMethod<
     items: "BenefitSummaries",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListBenefitsInput,
-  ListBenefitsOutput,
-  ListBenefitsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListBenefitsInput,
-  ) => stream.Stream<
-    ListBenefitsOutput,
-    ListBenefitsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListBenefitsInput,
-  ) => stream.Stream<
-    BenefitSummary,
-    ListBenefitsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsForResourceError =
   | AccessDeniedException

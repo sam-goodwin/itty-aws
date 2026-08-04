@@ -3139,7 +3139,8 @@ export const getScores: API.PaginatedOperationMethod<
   GetScoresRequest,
   PlayerLeaderboardScoreListResponse,
   GetScoresError,
-  GcpOpContext
+  GcpOpContext,
+  PlayerLeaderboardScore
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetScoresRequest,
   output: PlayerLeaderboardScoreListResponse,
@@ -3151,7 +3152,7 @@ export const getScores: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type GetSnapshotsError = NotFound | Forbidden | GcpOpError;
 /** Retrieves the metadata for a given snapshot ID. */
@@ -3247,7 +3248,8 @@ export const listAchievementDefinitions: API.PaginatedOperationMethod<
   ListAchievementDefinitionsRequest,
   AchievementDefinitionsListResponse,
   ListAchievementDefinitionsError,
-  GcpOpContext
+  GcpOpContext,
+  AchievementDefinition
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAchievementDefinitionsRequest,
   output: AchievementDefinitionsListResponse,
@@ -3259,7 +3261,7 @@ export const listAchievementDefinitions: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListAchievementsError = NotFound | Forbidden | GcpOpError;
 /** Lists the progress for all your application's achievements for the currently authenticated player. */
@@ -3267,7 +3269,8 @@ export const listAchievements: API.PaginatedOperationMethod<
   ListAchievementsRequest,
   PlayerAchievementListResponse,
   ListAchievementsError,
-  GcpOpContext
+  GcpOpContext,
+  PlayerAchievement
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAchievementsRequest,
   output: PlayerAchievementListResponse,
@@ -3279,7 +3282,7 @@ export const listAchievements: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListByPlayerEventsError = NotFound | Forbidden | GcpOpError;
 /** Returns a list showing the current progress on events in this application for the currently authenticated user. */
@@ -3287,7 +3290,8 @@ export const listByPlayerEvents: API.PaginatedOperationMethod<
   ListByPlayerEventsRequest,
   PlayerEventListResponse,
   ListByPlayerEventsError,
-  GcpOpContext
+  GcpOpContext,
+  PlayerEvent
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListByPlayerEventsRequest,
   output: PlayerEventListResponse,
@@ -3299,7 +3303,7 @@ export const listByPlayerEvents: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListCategoriesByPlayerMetagameError =
   | NotFound
@@ -3310,7 +3314,8 @@ export const listCategoriesByPlayerMetagame: API.PaginatedOperationMethod<
   ListCategoriesByPlayerMetagameRequest,
   CategoryListResponse,
   ListCategoriesByPlayerMetagameError,
-  GcpOpContext
+  GcpOpContext,
+  Category
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCategoriesByPlayerMetagameRequest,
   output: CategoryListResponse,
@@ -3322,7 +3327,7 @@ export const listCategoriesByPlayerMetagame: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListDefinitionsEventsError = NotFound | Forbidden | GcpOpError;
 /** Returns a list of the event definitions in this application. */
@@ -3330,7 +3335,8 @@ export const listDefinitionsEvents: API.PaginatedOperationMethod<
   ListDefinitionsEventsRequest,
   EventDefinitionListResponse,
   ListDefinitionsEventsError,
-  GcpOpContext
+  GcpOpContext,
+  EventDefinition
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDefinitionsEventsRequest,
   output: EventDefinitionListResponse,
@@ -3342,7 +3348,7 @@ export const listDefinitionsEvents: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListLeaderboardsError = NotFound | Forbidden | GcpOpError;
 /** Lists all the leaderboard metadata for your application. */
@@ -3350,7 +3356,8 @@ export const listLeaderboards: API.PaginatedOperationMethod<
   ListLeaderboardsRequest,
   LeaderboardListResponse,
   ListLeaderboardsError,
-  GcpOpContext
+  GcpOpContext,
+  Leaderboard
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLeaderboardsRequest,
   output: LeaderboardListResponse,
@@ -3362,7 +3369,7 @@ export const listLeaderboards: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListPlayersError = NotFound | Forbidden | GcpOpError;
 /** Get the collection of players for the currently authenticated user. */
@@ -3370,7 +3377,8 @@ export const listPlayers: API.PaginatedOperationMethod<
   ListPlayersRequest,
   PlayerListResponse,
   ListPlayersError,
-  GcpOpContext
+  GcpOpContext,
+  Player
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPlayersRequest,
   output: PlayerListResponse,
@@ -3382,7 +3390,7 @@ export const listPlayers: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListScoresError = NotFound | Forbidden | GcpOpError;
 /** Lists the scores in a leaderboard, starting from the top. */
@@ -3390,7 +3398,8 @@ export const listScores: API.PaginatedOperationMethod<
   ListScoresRequest,
   LeaderboardScores,
   ListScoresError,
-  GcpOpContext
+  GcpOpContext,
+  LeaderboardEntry
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListScoresRequest,
   output: LeaderboardScores,
@@ -3402,7 +3411,7 @@ export const listScores: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListSnapshotsError = NotFound | Forbidden | GcpOpError;
 /** Retrieves a list of snapshots created by your application for the player corresponding to the player ID. */
@@ -3410,7 +3419,8 @@ export const listSnapshots: API.PaginatedOperationMethod<
   ListSnapshotsRequest,
   SnapshotListResponse,
   ListSnapshotsError,
-  GcpOpContext
+  GcpOpContext,
+  Snapshot
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSnapshotsRequest,
   output: SnapshotListResponse,
@@ -3422,7 +3432,7 @@ export const listSnapshots: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListWindowScoresError = NotFound | Forbidden | GcpOpError;
 /** Lists the scores in a leaderboard around (and including) a player's score. */
@@ -3430,7 +3440,8 @@ export const listWindowScores: API.PaginatedOperationMethod<
   ListWindowScoresRequest,
   LeaderboardScores,
   ListWindowScoresError,
-  GcpOpContext
+  GcpOpContext,
+  LeaderboardEntry
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListWindowScoresRequest,
   output: LeaderboardScores,
@@ -3442,7 +3453,7 @@ export const listWindowScores: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type PlayedApplicationsError =
   | NotFound

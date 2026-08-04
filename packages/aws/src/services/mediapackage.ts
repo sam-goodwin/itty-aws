@@ -2483,27 +2483,7 @@ export const listChannels: API.OperationMethod<
     items: "Channels",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListChannelsRequest,
-  ListChannelsResponse,
-  ListChannelsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListChannelsRequest,
-  ) => stream.Stream<
-    ListChannelsResponse,
-    ListChannelsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListChannelsRequest,
-  ) => stream.Stream<
-    Channel,
-    ListChannelsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListHarvestJobsError =
   | ForbiddenException
@@ -2556,27 +2536,7 @@ export const listHarvestJobs: API.OperationMethod<
     items: "HarvestJobs",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListHarvestJobsRequest,
-  ListHarvestJobsResponse,
-  ListHarvestJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListHarvestJobsRequest,
-  ) => stream.Stream<
-    ListHarvestJobsResponse,
-    ListHarvestJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListHarvestJobsRequest,
-  ) => stream.Stream<
-    HarvestJob,
-    ListHarvestJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListOriginEndpointsError =
   | ForbiddenException
@@ -2629,27 +2589,7 @@ export const listOriginEndpoints: API.OperationMethod<
     items: "OriginEndpoints",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListOriginEndpointsRequest,
-  ListOriginEndpointsResponse,
-  ListOriginEndpointsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListOriginEndpointsRequest,
-  ) => stream.Stream<
-    ListOriginEndpointsResponse,
-    ListOriginEndpointsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListOriginEndpointsRequest,
-  ) => stream.Stream<
-    OriginEndpoint,
-    ListOriginEndpointsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsForResourceError = CommonErrors;
 /**

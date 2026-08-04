@@ -6415,7 +6415,8 @@ export const aggregatedProjectsJobs: API.PaginatedOperationMethod<
   AggregatedProjectsJobsRequest,
   ListJobsResponse,
   AggregatedProjectsJobsError,
-  GcpOpContext
+  GcpOpContext,
+  ListJobsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: AggregatedProjectsJobsRequest,
   output: ListJobsResponse,
@@ -6426,7 +6427,7 @@ export const aggregatedProjectsJobs: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type CreateProjectsJobsError =
   | NotFound
@@ -6597,7 +6598,8 @@ export const getExecutionDetailsProjectsLocationsJobs: API.PaginatedOperationMet
   GetExecutionDetailsProjectsLocationsJobsRequest,
   JobExecutionDetails,
   GetExecutionDetailsProjectsLocationsJobsError,
-  GcpOpContext
+  GcpOpContext,
+  JobExecutionDetails
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetExecutionDetailsProjectsLocationsJobsRequest,
   output: JobExecutionDetails,
@@ -6608,7 +6610,7 @@ export const getExecutionDetailsProjectsLocationsJobs: API.PaginatedOperationMet
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type GetExecutionDetailsProjectsLocationsJobsStagesError =
   | NotFound
@@ -6619,7 +6621,8 @@ export const getExecutionDetailsProjectsLocationsJobsStages: API.PaginatedOperat
   GetExecutionDetailsProjectsLocationsJobsStagesRequest,
   StageExecutionDetails,
   GetExecutionDetailsProjectsLocationsJobsStagesError,
-  GcpOpContext
+  GcpOpContext,
+  StageExecutionDetails
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetExecutionDetailsProjectsLocationsJobsStagesRequest,
   output: StageExecutionDetails,
@@ -6630,7 +6633,7 @@ export const getExecutionDetailsProjectsLocationsJobsStages: API.PaginatedOperat
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type GetMetricsProjectsJobsError = NotFound | Forbidden | GcpOpError;
 /** Request the job status. To request the status of a job, we recommend using `projects.locations.jobs.getMetrics` with a [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using `projects.jobs.getMetrics` is not recommended, as you can only request the status of jobs that are running in `us-central1`. */
@@ -6887,7 +6890,8 @@ export const listProjectsJobs: API.PaginatedOperationMethod<
   ListProjectsJobsRequest,
   ListJobsResponse,
   ListProjectsJobsError,
-  GcpOpContext
+  GcpOpContext,
+  ListJobsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsJobsRequest,
   output: ListJobsResponse,
@@ -6898,7 +6902,7 @@ export const listProjectsJobs: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsJobsMessagesError = NotFound | Forbidden | GcpOpError;
 /** Request the job status. To request the status of a job, we recommend using `projects.locations.jobs.messages.list` with a [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using `projects.jobs.messages.list` is not recommended, as you can only request the status of jobs that are running in `us-central1`. */
@@ -6906,7 +6910,8 @@ export const listProjectsJobsMessages: API.PaginatedOperationMethod<
   ListProjectsJobsMessagesRequest,
   ListJobMessagesResponse,
   ListProjectsJobsMessagesError,
-  GcpOpContext
+  GcpOpContext,
+  ListJobMessagesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsJobsMessagesRequest,
   output: ListJobMessagesResponse,
@@ -6917,7 +6922,7 @@ export const listProjectsJobsMessages: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsJobsError = NotFound | Forbidden | GcpOpError;
 /** List the jobs of a project. To list the jobs of a project in a region, we recommend using `projects.locations.jobs.list` with a [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). To list the all jobs across all regions, use `projects.jobs.aggregated`. Using `projects.jobs.list` is not recommended, because you can only get the list of jobs that are running in `us-central1`. `projects.locations.jobs.list` and `projects.jobs.list` support filtering the list of jobs by name. Filtering by name isn't supported by `projects.jobs.aggregated`. */
@@ -6925,7 +6930,8 @@ export const listProjectsLocationsJobs: API.PaginatedOperationMethod<
   ListProjectsLocationsJobsRequest,
   ListJobsResponse,
   ListProjectsLocationsJobsError,
-  GcpOpContext
+  GcpOpContext,
+  ListJobsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsJobsRequest,
   output: ListJobsResponse,
@@ -6936,7 +6942,7 @@ export const listProjectsLocationsJobs: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsJobsMessagesError =
   | NotFound
@@ -6947,7 +6953,8 @@ export const listProjectsLocationsJobsMessages: API.PaginatedOperationMethod<
   ListProjectsLocationsJobsMessagesRequest,
   ListJobMessagesResponse,
   ListProjectsLocationsJobsMessagesError,
-  GcpOpContext
+  GcpOpContext,
+  ListJobMessagesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsJobsMessagesRequest,
   output: ListJobMessagesResponse,
@@ -6958,7 +6965,7 @@ export const listProjectsLocationsJobsMessages: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsJobsSnapshotsError =
   | NotFound

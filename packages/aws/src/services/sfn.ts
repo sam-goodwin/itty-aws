@@ -3552,27 +3552,7 @@ export const getExecutionHistory: API.OperationMethod<
     items: "events",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  GetExecutionHistoryInput,
-  GetExecutionHistoryOutput,
-  GetExecutionHistoryError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetExecutionHistoryInput,
-  ) => stream.Stream<
-    GetExecutionHistoryOutput,
-    GetExecutionHistoryError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetExecutionHistoryInput,
-  ) => stream.Stream<
-    HistoryEvent,
-    GetExecutionHistoryError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListActivitiesError = InvalidToken | CommonErrors;
 /**
@@ -3616,27 +3596,7 @@ export const listActivities: API.OperationMethod<
     items: "activities",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListActivitiesInput,
-  ListActivitiesOutput,
-  ListActivitiesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListActivitiesInput,
-  ) => stream.Stream<
-    ListActivitiesOutput,
-    ListActivitiesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListActivitiesInput,
-  ) => stream.Stream<
-    ActivityListItem,
-    ListActivitiesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListExecutionsError =
   | InvalidArn
@@ -3701,27 +3661,7 @@ export const listExecutions: API.OperationMethod<
     items: "executions",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListExecutionsInput,
-  ListExecutionsOutput,
-  ListExecutionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListExecutionsInput,
-  ) => stream.Stream<
-    ListExecutionsOutput,
-    ListExecutionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListExecutionsInput,
-  ) => stream.Stream<
-    ExecutionListItem,
-    ListExecutionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListMapRunsError =
   | ExecutionDoesNotExist
@@ -3764,27 +3704,7 @@ export const listMapRuns: API.OperationMethod<
     items: "mapRuns",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListMapRunsInput,
-  ListMapRunsOutput,
-  ListMapRunsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListMapRunsInput,
-  ) => stream.Stream<
-    ListMapRunsOutput,
-    ListMapRunsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListMapRunsInput,
-  ) => stream.Stream<
-    MapRunListItem,
-    ListMapRunsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListStateMachineAliasesError =
   | InvalidArn
@@ -3873,27 +3793,7 @@ export const listStateMachines: API.OperationMethod<
     items: "stateMachines",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListStateMachinesInput,
-  ListStateMachinesOutput,
-  ListStateMachinesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListStateMachinesInput,
-  ) => stream.Stream<
-    ListStateMachinesOutput,
-    ListStateMachinesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListStateMachinesInput,
-  ) => stream.Stream<
-    StateMachineListItem,
-    ListStateMachinesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListStateMachineVersionsError =
   | InvalidArn

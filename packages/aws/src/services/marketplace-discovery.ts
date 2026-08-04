@@ -2233,27 +2233,7 @@ export const getOfferTerms: API.OperationMethod<
     outputToken: "nextToken",
     items: "offerTerms",
   } as const,
-})) as any as API.OperationMethod<
-  GetOfferTermsInput,
-  GetOfferTermsOutput,
-  GetOfferTermsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetOfferTermsInput,
-  ) => stream.Stream<
-    GetOfferTermsOutput,
-    GetOfferTermsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetOfferTermsInput,
-  ) => stream.Stream<
-    OfferTerm,
-    GetOfferTermsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type GetProductError = ResourceNotFoundException | CommonErrors;
 /**
@@ -2312,27 +2292,7 @@ export const listFulfillmentOptions: API.OperationMethod<
     items: "fulfillmentOptions",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListFulfillmentOptionsInput,
-  ListFulfillmentOptionsOutput,
-  ListFulfillmentOptionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListFulfillmentOptionsInput,
-  ) => stream.Stream<
-    ListFulfillmentOptionsOutput,
-    ListFulfillmentOptionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListFulfillmentOptionsInput,
-  ) => stream.Stream<
-    FulfillmentOption,
-    ListFulfillmentOptionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListPurchaseOptionsError = CommonErrors;
 /**
@@ -2372,27 +2332,7 @@ export const listPurchaseOptions: API.OperationMethod<
     outputToken: "nextToken",
     items: "purchaseOptions",
   } as const,
-})) as any as API.OperationMethod<
-  ListPurchaseOptionsInput,
-  ListPurchaseOptionsOutput,
-  ListPurchaseOptionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPurchaseOptionsInput,
-  ) => stream.Stream<
-    ListPurchaseOptionsOutput,
-    ListPurchaseOptionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPurchaseOptionsInput,
-  ) => stream.Stream<
-    PurchaseOptionSummary,
-    ListPurchaseOptionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type SearchFacetsError = CommonErrors;
 /**
@@ -2430,27 +2370,7 @@ export const searchFacets: API.OperationMethod<
     outputToken: "nextToken",
     items: "listingFacets",
   } as const,
-})) as any as API.OperationMethod<
-  SearchFacetsInput,
-  SearchFacetsOutput,
-  SearchFacetsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: SearchFacetsInput,
-  ) => stream.Stream<
-    SearchFacetsOutput,
-    SearchFacetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: SearchFacetsInput,
-  ) => stream.Stream<
-    unknown,
-    SearchFacetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type SearchListingsError = CommonErrors;
 /**
@@ -2489,24 +2409,4 @@ export const searchListings: API.OperationMethod<
     items: "listingSummaries",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  SearchListingsInput,
-  SearchListingsOutput,
-  SearchListingsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: SearchListingsInput,
-  ) => stream.Stream<
-    SearchListingsOutput,
-    SearchListingsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: SearchListingsInput,
-  ) => stream.Stream<
-    ListingSummary,
-    SearchListingsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;

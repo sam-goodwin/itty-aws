@@ -3289,7 +3289,8 @@ export const listCompositeTypes: API.PaginatedOperationMethod<
   ListCompositeTypesRequest,
   CompositeTypesListResponse,
   ListCompositeTypesError,
-  GcpOpContext
+  GcpOpContext,
+  CompositeTypesListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCompositeTypesRequest,
   output: CompositeTypesListResponse,
@@ -3300,7 +3301,7 @@ export const listCompositeTypes: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListDeploymentsError = NotFound | Forbidden | GcpOpError;
 /** Lists all deployments for a given project. */
@@ -3308,7 +3309,8 @@ export const listDeployments: API.PaginatedOperationMethod<
   ListDeploymentsRequest,
   DeploymentsListResponse,
   ListDeploymentsError,
-  GcpOpContext
+  GcpOpContext,
+  DeploymentsListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDeploymentsRequest,
   output: DeploymentsListResponse,
@@ -3319,7 +3321,7 @@ export const listDeployments: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListManifestsError = NotFound | Forbidden | GcpOpError;
 /** Lists all manifests for a given deployment. */
@@ -3327,7 +3329,8 @@ export const listManifests: API.PaginatedOperationMethod<
   ListManifestsRequest,
   ManifestsListResponse,
   ListManifestsError,
-  GcpOpContext
+  GcpOpContext,
+  ManifestsListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListManifestsRequest,
   output: ManifestsListResponse,
@@ -3338,7 +3341,7 @@ export const listManifests: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListOperationsError = NotFound | Forbidden | GcpOpError;
 /** Lists all operations for a project. */
@@ -3346,7 +3349,8 @@ export const listOperations: API.PaginatedOperationMethod<
   ListOperationsRequest,
   OperationsListResponse,
   ListOperationsError,
-  GcpOpContext
+  GcpOpContext,
+  OperationsListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOperationsRequest,
   output: OperationsListResponse,
@@ -3357,7 +3361,7 @@ export const listOperations: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListResourcesError = NotFound | Forbidden | GcpOpError;
 /** Lists all resources in a given deployment. */
@@ -3365,7 +3369,8 @@ export const listResources: API.PaginatedOperationMethod<
   ListResourcesRequest,
   ResourcesListResponse,
   ListResourcesError,
-  GcpOpContext
+  GcpOpContext,
+  ResourcesListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListResourcesRequest,
   output: ResourcesListResponse,
@@ -3376,7 +3381,7 @@ export const listResources: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListTypeProvidersError = NotFound | Forbidden | GcpOpError;
 /** Lists all resource type providers for Deployment Manager. */
@@ -3384,7 +3389,8 @@ export const listTypeProviders: API.PaginatedOperationMethod<
   ListTypeProvidersRequest,
   TypeProvidersListResponse,
   ListTypeProvidersError,
-  GcpOpContext
+  GcpOpContext,
+  TypeProvidersListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTypeProvidersRequest,
   output: TypeProvidersListResponse,
@@ -3395,7 +3401,7 @@ export const listTypeProviders: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListTypesError = NotFound | Forbidden | GcpOpError;
 /** Lists all resource types for Deployment Manager. */
@@ -3403,7 +3409,8 @@ export const listTypes: API.PaginatedOperationMethod<
   ListTypesRequest,
   TypesListResponse,
   ListTypesError,
-  GcpOpContext
+  GcpOpContext,
+  TypesListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTypesRequest,
   output: TypesListResponse,
@@ -3414,7 +3421,7 @@ export const listTypes: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListTypesTypeProvidersError = NotFound | Forbidden | GcpOpError;
 /** Lists all the type info for a TypeProvider. */
@@ -3422,7 +3429,8 @@ export const listTypesTypeProviders: API.PaginatedOperationMethod<
   ListTypesTypeProvidersRequest,
   TypeProvidersListTypesResponse,
   ListTypesTypeProvidersError,
-  GcpOpContext
+  GcpOpContext,
+  TypeProvidersListTypesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTypesTypeProvidersRequest,
   output: TypeProvidersListTypesResponse,
@@ -3433,7 +3441,7 @@ export const listTypesTypeProviders: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type PatchCompositeTypesError =
   | NotFound

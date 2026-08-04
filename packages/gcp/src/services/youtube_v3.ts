@@ -9945,7 +9945,8 @@ export const listActivities: API.PaginatedOperationMethod<
   ListActivitiesRequest,
   ActivityListResponse,
   ListActivitiesError,
-  GcpOpContext
+  GcpOpContext,
+  Activity
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListActivitiesRequest,
   output: ActivityListResponse,
@@ -9957,7 +9958,7 @@ export const listActivities: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListCaptionsError = NotFound | Forbidden | GcpOpError;
 /** Retrieves a list of resources, possibly filtered. */
@@ -9980,7 +9981,8 @@ export const listChannels: API.PaginatedOperationMethod<
   ListChannelsRequest,
   ChannelListResponse,
   ListChannelsError,
-  GcpOpContext
+  GcpOpContext,
+  Channel
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListChannelsRequest,
   output: ChannelListResponse,
@@ -9992,7 +9994,7 @@ export const listChannels: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListChannelSectionsError = NotFound | Forbidden | GcpOpError;
 /** Retrieves a list of resources, possibly filtered. */
@@ -10015,7 +10017,8 @@ export const listComments: API.PaginatedOperationMethod<
   ListCommentsRequest,
   CommentListResponse,
   ListCommentsError,
-  GcpOpContext
+  GcpOpContext,
+  Comment
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCommentsRequest,
   output: CommentListResponse,
@@ -10027,7 +10030,7 @@ export const listComments: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListCommentThreadsError = NotFound | Forbidden | GcpOpError;
 /** Retrieves a list of resources, possibly filtered. */
@@ -10035,7 +10038,8 @@ export const listCommentThreads: API.PaginatedOperationMethod<
   ListCommentThreadsRequest,
   CommentThreadListResponse,
   ListCommentThreadsError,
-  GcpOpContext
+  GcpOpContext,
+  CommentThread
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCommentThreadsRequest,
   output: CommentThreadListResponse,
@@ -10047,7 +10051,7 @@ export const listCommentThreads: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListI18nLanguagesError = NotFound | Forbidden | GcpOpError;
 /** Retrieves a list of resources, possibly filtered. */
@@ -10085,7 +10089,8 @@ export const listLiveBroadcasts: API.PaginatedOperationMethod<
   ListLiveBroadcastsRequest,
   LiveBroadcastListResponse,
   ListLiveBroadcastsError,
-  GcpOpContext
+  GcpOpContext,
+  LiveBroadcast
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLiveBroadcastsRequest,
   output: LiveBroadcastListResponse,
@@ -10097,7 +10102,7 @@ export const listLiveBroadcasts: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListLiveChatMessagesError = NotFound | Forbidden | GcpOpError;
 /** Retrieves a list of resources, possibly filtered. */
@@ -10105,7 +10110,8 @@ export const listLiveChatMessages: API.PaginatedOperationMethod<
   ListLiveChatMessagesRequest,
   LiveChatMessageListResponse,
   ListLiveChatMessagesError,
-  GcpOpContext
+  GcpOpContext,
+  LiveChatMessage
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLiveChatMessagesRequest,
   output: LiveChatMessageListResponse,
@@ -10117,7 +10123,7 @@ export const listLiveChatMessages: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListLiveChatModeratorsError = NotFound | Forbidden | GcpOpError;
 /** Retrieves a list of resources, possibly filtered. */
@@ -10125,7 +10131,8 @@ export const listLiveChatModerators: API.PaginatedOperationMethod<
   ListLiveChatModeratorsRequest,
   LiveChatModeratorListResponse,
   ListLiveChatModeratorsError,
-  GcpOpContext
+  GcpOpContext,
+  LiveChatModerator
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLiveChatModeratorsRequest,
   output: LiveChatModeratorListResponse,
@@ -10137,7 +10144,7 @@ export const listLiveChatModerators: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListLiveStreamsError = NotFound | Forbidden | GcpOpError;
 /** Retrieve the list of streams associated with the given channel. -- */
@@ -10145,7 +10152,8 @@ export const listLiveStreams: API.PaginatedOperationMethod<
   ListLiveStreamsRequest,
   LiveStreamListResponse,
   ListLiveStreamsError,
-  GcpOpContext
+  GcpOpContext,
+  LiveStream
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLiveStreamsRequest,
   output: LiveStreamListResponse,
@@ -10157,7 +10165,7 @@ export const listLiveStreams: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListMembersError = NotFound | Forbidden | GcpOpError;
 /** Retrieves a list of members that match the request criteria for a channel. */
@@ -10165,7 +10173,8 @@ export const listMembers: API.PaginatedOperationMethod<
   ListMembersRequest,
   MemberListResponse,
   ListMembersError,
-  GcpOpContext
+  GcpOpContext,
+  Member
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMembersRequest,
   output: MemberListResponse,
@@ -10177,7 +10186,7 @@ export const listMembers: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListMembershipsLevelsError = NotFound | Forbidden | GcpOpError;
 /** Retrieves a list of all pricing levels offered by a creator to the fans. */
@@ -10200,7 +10209,8 @@ export const listPlaylistImages: API.PaginatedOperationMethod<
   ListPlaylistImagesRequest,
   PlaylistImageListResponse,
   ListPlaylistImagesError,
-  GcpOpContext
+  GcpOpContext,
+  PlaylistImage
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPlaylistImagesRequest,
   output: PlaylistImageListResponse,
@@ -10212,7 +10222,7 @@ export const listPlaylistImages: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListPlaylistItemsError = NotFound | Forbidden | GcpOpError;
 /** Retrieves a list of resources, possibly filtered. */
@@ -10220,7 +10230,8 @@ export const listPlaylistItems: API.PaginatedOperationMethod<
   ListPlaylistItemsRequest,
   PlaylistItemListResponse,
   ListPlaylistItemsError,
-  GcpOpContext
+  GcpOpContext,
+  PlaylistItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPlaylistItemsRequest,
   output: PlaylistItemListResponse,
@@ -10232,7 +10243,7 @@ export const listPlaylistItems: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListPlaylistsError = NotFound | Forbidden | GcpOpError;
 /** Retrieves a list of resources, possibly filtered. */
@@ -10240,7 +10251,8 @@ export const listPlaylists: API.PaginatedOperationMethod<
   ListPlaylistsRequest,
   PlaylistListResponse,
   ListPlaylistsError,
-  GcpOpContext
+  GcpOpContext,
+  Playlist
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPlaylistsRequest,
   output: PlaylistListResponse,
@@ -10252,7 +10264,7 @@ export const listPlaylists: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListSearchError = NotFound | Forbidden | GcpOpError;
 /** Retrieves a list of search resources */
@@ -10260,7 +10272,8 @@ export const listSearch: API.PaginatedOperationMethod<
   ListSearchRequest,
   SearchListResponse,
   ListSearchError,
-  GcpOpContext
+  GcpOpContext,
+  SearchResult
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSearchRequest,
   output: SearchListResponse,
@@ -10272,7 +10285,7 @@ export const listSearch: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListSubscriptionsError = NotFound | Forbidden | GcpOpError;
 /** Retrieves a list of resources, possibly filtered. */
@@ -10280,7 +10293,8 @@ export const listSubscriptions: API.PaginatedOperationMethod<
   ListSubscriptionsRequest,
   SubscriptionListResponse,
   ListSubscriptionsError,
-  GcpOpContext
+  GcpOpContext,
+  Subscription
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSubscriptionsRequest,
   output: SubscriptionListResponse,
@@ -10292,7 +10306,7 @@ export const listSubscriptions: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListSuperChatEventsError = NotFound | Forbidden | GcpOpError;
 /** Retrieves a list of resources, possibly filtered. */
@@ -10300,7 +10314,8 @@ export const listSuperChatEvents: API.PaginatedOperationMethod<
   ListSuperChatEventsRequest,
   SuperChatEventListResponse,
   ListSuperChatEventsError,
-  GcpOpContext
+  GcpOpContext,
+  SuperChatEvent
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSuperChatEventsRequest,
   output: SuperChatEventListResponse,
@@ -10312,7 +10327,7 @@ export const listSuperChatEvents: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListThirdPartyLinksError = NotFound | Forbidden | GcpOpError;
 /** Retrieves a list of resources, possibly filtered. */
@@ -10368,7 +10383,8 @@ export const listVideos: API.PaginatedOperationMethod<
   ListVideosRequest,
   VideoListResponse,
   ListVideosError,
-  GcpOpContext
+  GcpOpContext,
+  Video
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListVideosRequest,
   output: VideoListResponse,
@@ -10380,7 +10396,7 @@ export const listVideos: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type MarkAsSpamCommentsError =
   | NotFound
@@ -10511,7 +10527,8 @@ export const streamYoutubeV3LiveChatMessages: API.PaginatedOperationMethod<
   StreamYoutubeV3LiveChatMessagesRequest,
   LiveChatMessageListResponse,
   StreamYoutubeV3LiveChatMessagesError,
-  GcpOpContext
+  GcpOpContext,
+  LiveChatMessage
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: StreamYoutubeV3LiveChatMessagesRequest,
   output: LiveChatMessageListResponse,
@@ -10523,7 +10540,7 @@ export const streamYoutubeV3LiveChatMessages: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type TransitionLiveBroadcastsError =
   | NotFound

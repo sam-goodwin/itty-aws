@@ -10356,7 +10356,8 @@ export const listAccounts: API.PaginatedOperationMethod<
   ListAccountsRequest,
   GoogleAnalyticsAdminV1alphaListAccountsResponse,
   ListAccountsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleAnalyticsAdminV1alphaListAccountsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsRequest,
   output: GoogleAnalyticsAdminV1alphaListAccountsResponse,
@@ -10367,7 +10368,7 @@ export const listAccounts: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListAccountsAccessBindingsError = NotFound | Forbidden | GcpOpError;
 /** Lists all access bindings on an account or property. */
@@ -10375,7 +10376,8 @@ export const listAccountsAccessBindings: API.PaginatedOperationMethod<
   ListAccountsAccessBindingsRequest,
   GoogleAnalyticsAdminV1alphaListAccessBindingsResponse,
   ListAccountsAccessBindingsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleAnalyticsAdminV1alphaListAccessBindingsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsAccessBindingsRequest,
   output: GoogleAnalyticsAdminV1alphaListAccessBindingsResponse,
@@ -10386,7 +10388,7 @@ export const listAccountsAccessBindings: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListAccountSummariesError = NotFound | Forbidden | GcpOpError;
 /** Returns summaries of all accounts accessible by the caller. */
@@ -10394,7 +10396,8 @@ export const listAccountSummaries: API.PaginatedOperationMethod<
   ListAccountSummariesRequest,
   GoogleAnalyticsAdminV1alphaListAccountSummariesResponse,
   ListAccountSummariesError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleAnalyticsAdminV1alphaListAccountSummariesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountSummariesRequest,
   output: GoogleAnalyticsAdminV1alphaListAccountSummariesResponse,
@@ -10405,7 +10408,7 @@ export const listAccountSummaries: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListPropertiesError = NotFound | Forbidden | GcpOpError;
 /** Returns child Properties under the specified parent Account. Properties will be excluded if the caller does not have access. Soft-deleted (ie: "trashed") properties are excluded by default. Returns an empty list if no relevant properties are found. */
@@ -10413,7 +10416,8 @@ export const listProperties: API.PaginatedOperationMethod<
   ListPropertiesRequest,
   GoogleAnalyticsAdminV1alphaListPropertiesResponse,
   ListPropertiesError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleAnalyticsAdminV1alphaListPropertiesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPropertiesRequest,
   output: GoogleAnalyticsAdminV1alphaListPropertiesResponse,
@@ -10424,7 +10428,7 @@ export const listProperties: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListPropertiesAccessBindingsError =
   | NotFound
@@ -10435,7 +10439,8 @@ export const listPropertiesAccessBindings: API.PaginatedOperationMethod<
   ListPropertiesAccessBindingsRequest,
   GoogleAnalyticsAdminV1alphaListAccessBindingsResponse,
   ListPropertiesAccessBindingsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleAnalyticsAdminV1alphaListAccessBindingsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPropertiesAccessBindingsRequest,
   output: GoogleAnalyticsAdminV1alphaListAccessBindingsResponse,
@@ -10446,7 +10451,7 @@ export const listPropertiesAccessBindings: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListPropertiesAdSenseLinksError = NotFound | Forbidden | GcpOpError;
 /** Lists AdSenseLinks on a property. */
@@ -10454,7 +10459,8 @@ export const listPropertiesAdSenseLinks: API.PaginatedOperationMethod<
   ListPropertiesAdSenseLinksRequest,
   GoogleAnalyticsAdminV1alphaListAdSenseLinksResponse,
   ListPropertiesAdSenseLinksError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleAnalyticsAdminV1alphaListAdSenseLinksResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPropertiesAdSenseLinksRequest,
   output: GoogleAnalyticsAdminV1alphaListAdSenseLinksResponse,
@@ -10465,7 +10471,7 @@ export const listPropertiesAdSenseLinks: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListPropertiesAudiencesError = NotFound | Forbidden | GcpOpError;
 /** Lists Audiences on a property. Audiences created before 2020 may not be supported. Default audiences will not show filter definitions. */
@@ -10473,7 +10479,8 @@ export const listPropertiesAudiences: API.PaginatedOperationMethod<
   ListPropertiesAudiencesRequest,
   GoogleAnalyticsAdminV1alphaListAudiencesResponse,
   ListPropertiesAudiencesError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleAnalyticsAdminV1alphaListAudiencesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPropertiesAudiencesRequest,
   output: GoogleAnalyticsAdminV1alphaListAudiencesResponse,
@@ -10484,7 +10491,7 @@ export const listPropertiesAudiences: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListPropertiesBigQueryLinksError =
   | NotFound
@@ -10495,7 +10502,8 @@ export const listPropertiesBigQueryLinks: API.PaginatedOperationMethod<
   ListPropertiesBigQueryLinksRequest,
   GoogleAnalyticsAdminV1alphaListBigQueryLinksResponse,
   ListPropertiesBigQueryLinksError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleAnalyticsAdminV1alphaListBigQueryLinksResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPropertiesBigQueryLinksRequest,
   output: GoogleAnalyticsAdminV1alphaListBigQueryLinksResponse,
@@ -10506,7 +10514,7 @@ export const listPropertiesBigQueryLinks: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListPropertiesCalculatedMetricsError =
   | NotFound
@@ -10517,7 +10525,8 @@ export const listPropertiesCalculatedMetrics: API.PaginatedOperationMethod<
   ListPropertiesCalculatedMetricsRequest,
   GoogleAnalyticsAdminV1alphaListCalculatedMetricsResponse,
   ListPropertiesCalculatedMetricsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleAnalyticsAdminV1alphaListCalculatedMetricsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPropertiesCalculatedMetricsRequest,
   output: GoogleAnalyticsAdminV1alphaListCalculatedMetricsResponse,
@@ -10528,7 +10537,7 @@ export const listPropertiesCalculatedMetrics: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListPropertiesChannelGroupsError =
   | NotFound
@@ -10539,7 +10548,8 @@ export const listPropertiesChannelGroups: API.PaginatedOperationMethod<
   ListPropertiesChannelGroupsRequest,
   GoogleAnalyticsAdminV1alphaListChannelGroupsResponse,
   ListPropertiesChannelGroupsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleAnalyticsAdminV1alphaListChannelGroupsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPropertiesChannelGroupsRequest,
   output: GoogleAnalyticsAdminV1alphaListChannelGroupsResponse,
@@ -10550,7 +10560,7 @@ export const listPropertiesChannelGroups: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListPropertiesConversionEventsError =
   | NotFound
@@ -10561,7 +10571,8 @@ export const listPropertiesConversionEvents: API.PaginatedOperationMethod<
   ListPropertiesConversionEventsRequest,
   GoogleAnalyticsAdminV1alphaListConversionEventsResponse,
   ListPropertiesConversionEventsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleAnalyticsAdminV1alphaListConversionEventsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPropertiesConversionEventsRequest,
   output: GoogleAnalyticsAdminV1alphaListConversionEventsResponse,
@@ -10572,7 +10583,7 @@ export const listPropertiesConversionEvents: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListPropertiesCustomDimensionsError =
   | NotFound
@@ -10583,7 +10594,8 @@ export const listPropertiesCustomDimensions: API.PaginatedOperationMethod<
   ListPropertiesCustomDimensionsRequest,
   GoogleAnalyticsAdminV1alphaListCustomDimensionsResponse,
   ListPropertiesCustomDimensionsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleAnalyticsAdminV1alphaListCustomDimensionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPropertiesCustomDimensionsRequest,
   output: GoogleAnalyticsAdminV1alphaListCustomDimensionsResponse,
@@ -10594,7 +10606,7 @@ export const listPropertiesCustomDimensions: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListPropertiesCustomMetricsError =
   | NotFound
@@ -10605,7 +10617,8 @@ export const listPropertiesCustomMetrics: API.PaginatedOperationMethod<
   ListPropertiesCustomMetricsRequest,
   GoogleAnalyticsAdminV1alphaListCustomMetricsResponse,
   ListPropertiesCustomMetricsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleAnalyticsAdminV1alphaListCustomMetricsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPropertiesCustomMetricsRequest,
   output: GoogleAnalyticsAdminV1alphaListCustomMetricsResponse,
@@ -10616,7 +10629,7 @@ export const listPropertiesCustomMetrics: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListPropertiesDataStreamsError = NotFound | Forbidden | GcpOpError;
 /** Lists DataStreams on a property. */
@@ -10624,7 +10637,8 @@ export const listPropertiesDataStreams: API.PaginatedOperationMethod<
   ListPropertiesDataStreamsRequest,
   GoogleAnalyticsAdminV1alphaListDataStreamsResponse,
   ListPropertiesDataStreamsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleAnalyticsAdminV1alphaListDataStreamsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPropertiesDataStreamsRequest,
   output: GoogleAnalyticsAdminV1alphaListDataStreamsResponse,
@@ -10635,7 +10649,7 @@ export const listPropertiesDataStreams: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListPropertiesDataStreamsEventCreateRulesError =
   | NotFound
@@ -10646,7 +10660,8 @@ export const listPropertiesDataStreamsEventCreateRules: API.PaginatedOperationMe
   ListPropertiesDataStreamsEventCreateRulesRequest,
   GoogleAnalyticsAdminV1alphaListEventCreateRulesResponse,
   ListPropertiesDataStreamsEventCreateRulesError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleAnalyticsAdminV1alphaListEventCreateRulesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPropertiesDataStreamsEventCreateRulesRequest,
   output: GoogleAnalyticsAdminV1alphaListEventCreateRulesResponse,
@@ -10657,7 +10672,7 @@ export const listPropertiesDataStreamsEventCreateRules: API.PaginatedOperationMe
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListPropertiesDataStreamsEventEditRulesError =
   | NotFound
@@ -10668,7 +10683,8 @@ export const listPropertiesDataStreamsEventEditRules: API.PaginatedOperationMeth
   ListPropertiesDataStreamsEventEditRulesRequest,
   GoogleAnalyticsAdminV1alphaListEventEditRulesResponse,
   ListPropertiesDataStreamsEventEditRulesError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleAnalyticsAdminV1alphaListEventEditRulesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPropertiesDataStreamsEventEditRulesRequest,
   output: GoogleAnalyticsAdminV1alphaListEventEditRulesResponse,
@@ -10679,7 +10695,7 @@ export const listPropertiesDataStreamsEventEditRules: API.PaginatedOperationMeth
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListPropertiesDataStreamsMeasurementProtocolSecretsError =
   | NotFound
@@ -10690,7 +10706,8 @@ export const listPropertiesDataStreamsMeasurementProtocolSecrets: API.PaginatedO
   ListPropertiesDataStreamsMeasurementProtocolSecretsRequest,
   GoogleAnalyticsAdminV1alphaListMeasurementProtocolSecretsResponse,
   ListPropertiesDataStreamsMeasurementProtocolSecretsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleAnalyticsAdminV1alphaListMeasurementProtocolSecretsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPropertiesDataStreamsMeasurementProtocolSecretsRequest,
   output: GoogleAnalyticsAdminV1alphaListMeasurementProtocolSecretsResponse,
@@ -10701,7 +10718,7 @@ export const listPropertiesDataStreamsMeasurementProtocolSecrets: API.PaginatedO
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListPropertiesDataStreamsSKAdNetworkConversionValueSchemaError =
   | NotFound
@@ -10712,7 +10729,8 @@ export const listPropertiesDataStreamsSKAdNetworkConversionValueSchema: API.Pagi
   ListPropertiesDataStreamsSKAdNetworkConversionValueSchemaRequest,
   GoogleAnalyticsAdminV1alphaListSKAdNetworkConversionValueSchemasResponse,
   ListPropertiesDataStreamsSKAdNetworkConversionValueSchemaError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleAnalyticsAdminV1alphaListSKAdNetworkConversionValueSchemasResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPropertiesDataStreamsSKAdNetworkConversionValueSchemaRequest,
   output:
@@ -10724,7 +10742,7 @@ export const listPropertiesDataStreamsSKAdNetworkConversionValueSchema: API.Pagi
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListPropertiesDisplayVideo360AdvertiserLinkProposalsError =
   | NotFound
@@ -10735,7 +10753,8 @@ export const listPropertiesDisplayVideo360AdvertiserLinkProposals: API.Paginated
   ListPropertiesDisplayVideo360AdvertiserLinkProposalsRequest,
   GoogleAnalyticsAdminV1alphaListDisplayVideo360AdvertiserLinkProposalsResponse,
   ListPropertiesDisplayVideo360AdvertiserLinkProposalsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleAnalyticsAdminV1alphaListDisplayVideo360AdvertiserLinkProposalsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPropertiesDisplayVideo360AdvertiserLinkProposalsRequest,
   output:
@@ -10747,7 +10766,7 @@ export const listPropertiesDisplayVideo360AdvertiserLinkProposals: API.Paginated
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListPropertiesDisplayVideo360AdvertiserLinksError =
   | NotFound
@@ -10758,7 +10777,8 @@ export const listPropertiesDisplayVideo360AdvertiserLinks: API.PaginatedOperatio
   ListPropertiesDisplayVideo360AdvertiserLinksRequest,
   GoogleAnalyticsAdminV1alphaListDisplayVideo360AdvertiserLinksResponse,
   ListPropertiesDisplayVideo360AdvertiserLinksError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleAnalyticsAdminV1alphaListDisplayVideo360AdvertiserLinksResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPropertiesDisplayVideo360AdvertiserLinksRequest,
   output: GoogleAnalyticsAdminV1alphaListDisplayVideo360AdvertiserLinksResponse,
@@ -10769,7 +10789,7 @@ export const listPropertiesDisplayVideo360AdvertiserLinks: API.PaginatedOperatio
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListPropertiesExpandedDataSetsError =
   | NotFound
@@ -10780,7 +10800,8 @@ export const listPropertiesExpandedDataSets: API.PaginatedOperationMethod<
   ListPropertiesExpandedDataSetsRequest,
   GoogleAnalyticsAdminV1alphaListExpandedDataSetsResponse,
   ListPropertiesExpandedDataSetsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleAnalyticsAdminV1alphaListExpandedDataSetsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPropertiesExpandedDataSetsRequest,
   output: GoogleAnalyticsAdminV1alphaListExpandedDataSetsResponse,
@@ -10791,7 +10812,7 @@ export const listPropertiesExpandedDataSets: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListPropertiesFirebaseLinksError =
   | NotFound
@@ -10802,7 +10823,8 @@ export const listPropertiesFirebaseLinks: API.PaginatedOperationMethod<
   ListPropertiesFirebaseLinksRequest,
   GoogleAnalyticsAdminV1alphaListFirebaseLinksResponse,
   ListPropertiesFirebaseLinksError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleAnalyticsAdminV1alphaListFirebaseLinksResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPropertiesFirebaseLinksRequest,
   output: GoogleAnalyticsAdminV1alphaListFirebaseLinksResponse,
@@ -10813,7 +10835,7 @@ export const listPropertiesFirebaseLinks: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListPropertiesGoogleAdsLinksError =
   | NotFound
@@ -10824,7 +10846,8 @@ export const listPropertiesGoogleAdsLinks: API.PaginatedOperationMethod<
   ListPropertiesGoogleAdsLinksRequest,
   GoogleAnalyticsAdminV1alphaListGoogleAdsLinksResponse,
   ListPropertiesGoogleAdsLinksError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleAnalyticsAdminV1alphaListGoogleAdsLinksResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPropertiesGoogleAdsLinksRequest,
   output: GoogleAnalyticsAdminV1alphaListGoogleAdsLinksResponse,
@@ -10835,7 +10858,7 @@ export const listPropertiesGoogleAdsLinks: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListPropertiesKeyEventsError = NotFound | Forbidden | GcpOpError;
 /** Returns a list of Key Events in the specified parent property. Returns an empty list if no Key Events are found. */
@@ -10843,7 +10866,8 @@ export const listPropertiesKeyEvents: API.PaginatedOperationMethod<
   ListPropertiesKeyEventsRequest,
   GoogleAnalyticsAdminV1alphaListKeyEventsResponse,
   ListPropertiesKeyEventsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleAnalyticsAdminV1alphaListKeyEventsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPropertiesKeyEventsRequest,
   output: GoogleAnalyticsAdminV1alphaListKeyEventsResponse,
@@ -10854,7 +10878,7 @@ export const listPropertiesKeyEvents: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListPropertiesReportingDataAnnotationsError =
   | NotFound
@@ -10865,7 +10889,8 @@ export const listPropertiesReportingDataAnnotations: API.PaginatedOperationMetho
   ListPropertiesReportingDataAnnotationsRequest,
   GoogleAnalyticsAdminV1alphaListReportingDataAnnotationsResponse,
   ListPropertiesReportingDataAnnotationsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleAnalyticsAdminV1alphaListReportingDataAnnotationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPropertiesReportingDataAnnotationsRequest,
   output: GoogleAnalyticsAdminV1alphaListReportingDataAnnotationsResponse,
@@ -10876,7 +10901,7 @@ export const listPropertiesReportingDataAnnotations: API.PaginatedOperationMetho
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListPropertiesRollupPropertySourceLinksError =
   | NotFound
@@ -10887,7 +10912,8 @@ export const listPropertiesRollupPropertySourceLinks: API.PaginatedOperationMeth
   ListPropertiesRollupPropertySourceLinksRequest,
   GoogleAnalyticsAdminV1alphaListRollupPropertySourceLinksResponse,
   ListPropertiesRollupPropertySourceLinksError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleAnalyticsAdminV1alphaListRollupPropertySourceLinksResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPropertiesRollupPropertySourceLinksRequest,
   output: GoogleAnalyticsAdminV1alphaListRollupPropertySourceLinksResponse,
@@ -10898,7 +10924,7 @@ export const listPropertiesRollupPropertySourceLinks: API.PaginatedOperationMeth
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListPropertiesSearchAds360LinksError =
   | NotFound
@@ -10909,7 +10935,8 @@ export const listPropertiesSearchAds360Links: API.PaginatedOperationMethod<
   ListPropertiesSearchAds360LinksRequest,
   GoogleAnalyticsAdminV1alphaListSearchAds360LinksResponse,
   ListPropertiesSearchAds360LinksError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleAnalyticsAdminV1alphaListSearchAds360LinksResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPropertiesSearchAds360LinksRequest,
   output: GoogleAnalyticsAdminV1alphaListSearchAds360LinksResponse,
@@ -10920,7 +10947,7 @@ export const listPropertiesSearchAds360Links: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListPropertiesSubpropertyEventFiltersError =
   | NotFound
@@ -10931,7 +10958,8 @@ export const listPropertiesSubpropertyEventFilters: API.PaginatedOperationMethod
   ListPropertiesSubpropertyEventFiltersRequest,
   GoogleAnalyticsAdminV1alphaListSubpropertyEventFiltersResponse,
   ListPropertiesSubpropertyEventFiltersError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleAnalyticsAdminV1alphaListSubpropertyEventFiltersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPropertiesSubpropertyEventFiltersRequest,
   output: GoogleAnalyticsAdminV1alphaListSubpropertyEventFiltersResponse,
@@ -10942,7 +10970,7 @@ export const listPropertiesSubpropertyEventFilters: API.PaginatedOperationMethod
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListPropertiesSubpropertySyncConfigsError =
   | NotFound
@@ -10953,7 +10981,8 @@ export const listPropertiesSubpropertySyncConfigs: API.PaginatedOperationMethod<
   ListPropertiesSubpropertySyncConfigsRequest,
   GoogleAnalyticsAdminV1alphaListSubpropertySyncConfigsResponse,
   ListPropertiesSubpropertySyncConfigsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleAnalyticsAdminV1alphaListSubpropertySyncConfigsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPropertiesSubpropertySyncConfigsRequest,
   output: GoogleAnalyticsAdminV1alphaListSubpropertySyncConfigsResponse,
@@ -10964,7 +10993,7 @@ export const listPropertiesSubpropertySyncConfigs: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type PatchAccountsError =
   | NotFound

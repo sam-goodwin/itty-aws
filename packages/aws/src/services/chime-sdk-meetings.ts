@@ -1558,27 +1558,7 @@ export const listAttendees: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListAttendeesRequest,
-  ListAttendeesResponse,
-  ListAttendeesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAttendeesRequest,
-  ) => stream.Stream<
-    ListAttendeesResponse,
-    ListAttendeesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAttendeesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListAttendeesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsForResourceError =
   | BadRequestException

@@ -2965,7 +2965,8 @@ export const getSubscription: API.PaginatedOperationMethod<
   GetSubscriptionRequest,
   GetSubscriptionResponse,
   GetSubscriptionError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  SubscriptionsGetResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: GetSubscriptionRequest,
@@ -2976,7 +2977,7 @@ export const getSubscription: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type GetTokenError = InvalidRoute | TokenNotFound | CloudflareOpError;
 /** Get information about a specific token. */
@@ -3029,7 +3030,8 @@ export const listBillingHistories: API.PaginatedOperationMethod<
   ListBillingHistoriesRequest,
   ListBillingHistoriesResponse,
   ListBillingHistoriesError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  BillingHistoryListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListBillingHistoriesRequest,
@@ -3046,7 +3048,7 @@ export const listBillingHistories: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListInvitesError = CloudflareOpError;
 /** Lists all invitations associated with my user. */
@@ -3054,7 +3056,8 @@ export const listInvites: API.PaginatedOperationMethod<
   ListInvitesRequest,
   ListInvitesResponse,
   ListInvitesError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  InvitesListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListInvitesRequest,
@@ -3065,7 +3068,7 @@ export const listInvites: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListOrganizationsError = CloudflareOpError;
 /** Lists organizations the user is associated with. */
@@ -3073,7 +3076,8 @@ export const listOrganizations: API.PaginatedOperationMethod<
   ListOrganizationsRequest,
   ListOrganizationsResponse,
   ListOrganizationsError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  OrganizationsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListOrganizationsRequest,
@@ -3090,7 +3094,7 @@ export const listOrganizations: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListTenantsError = CloudflareOpError;
 /** Retrieves list of tenants the authenticated user / method has access to. */
@@ -3098,7 +3102,8 @@ export const listTenants: API.PaginatedOperationMethod<
   ListTenantsRequest,
   ListTenantsResponse,
   ListTenantsError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  TenantsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListTenantsRequest,
@@ -3109,7 +3114,7 @@ export const listTenants: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListTokenPermissionGroupsError = CloudflareOpError;
 /** Find all available permission groups for API Tokens. */
@@ -3117,7 +3122,8 @@ export const listTokenPermissionGroups: API.PaginatedOperationMethod<
   ListTokenPermissionGroupsRequest,
   ListTokenPermissionGroupsResponse,
   ListTokenPermissionGroupsError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  TokensPermissionGroupsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListTokenPermissionGroupsRequest,
@@ -3128,7 +3134,7 @@ export const listTokenPermissionGroups: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListTokensError = CloudflareOpError;
 /** List all access tokens you created. */
@@ -3136,7 +3142,8 @@ export const listTokens: API.PaginatedOperationMethod<
   ListTokensRequest,
   ListTokensResponse,
   ListTokensError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  TokensListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListTokensRequest,
@@ -3153,7 +3160,7 @@ export const listTokens: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type PatchInviteError = CloudflareOpError;
 /** Responds to an invitation. */

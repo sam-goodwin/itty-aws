@@ -1467,27 +1467,7 @@ export const listInstanceTypes: API.OperationMethod<
     items: "InstanceTypes",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListInstanceTypesRequest,
-  ListInstanceTypesResponse,
-  ListInstanceTypesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListInstanceTypesRequest,
-  ) => stream.Stream<
-    ListInstanceTypesResponse,
-    ListInstanceTypesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListInstanceTypesRequest,
-  ) => stream.Stream<
-    InstanceTypeInfo,
-    ListInstanceTypesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListRegionsError =
   | AccessDeniedException
@@ -1536,27 +1516,7 @@ export const listRegions: API.OperationMethod<
     items: "Regions",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListRegionsRequest,
-  ListRegionsResponse,
-  ListRegionsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRegionsRequest,
-  ) => stream.Stream<
-    ListRegionsResponse,
-    ListRegionsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRegionsRequest,
-  ) => stream.Stream<
-    Region,
-    ListRegionsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsForResourceError =
   | AccessDeniedException
@@ -1635,27 +1595,7 @@ export const listWorkspaceInstances: API.OperationMethod<
     items: "WorkspaceInstances",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListWorkspaceInstancesRequest,
-  ListWorkspaceInstancesResponse,
-  ListWorkspaceInstancesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListWorkspaceInstancesRequest,
-  ) => stream.Stream<
-    ListWorkspaceInstancesResponse,
-    ListWorkspaceInstancesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListWorkspaceInstancesRequest,
-  ) => stream.Stream<
-    WorkspaceInstance,
-    ListWorkspaceInstancesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type TagResourceError =
   | AccessDeniedException

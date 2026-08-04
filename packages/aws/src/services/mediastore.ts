@@ -1120,27 +1120,7 @@ export const listContainers: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListContainersInput,
-  ListContainersOutput,
-  ListContainersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListContainersInput,
-  ) => stream.Stream<
-    ListContainersOutput,
-    ListContainersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListContainersInput,
-  ) => stream.Stream<
-    unknown,
-    ListContainersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsForResourceError =
   | ContainerInUseException

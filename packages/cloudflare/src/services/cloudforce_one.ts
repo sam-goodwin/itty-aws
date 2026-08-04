@@ -4163,7 +4163,8 @@ export const createRequestAsset: API.PaginatedOperationMethod<
   CreateRequestAssetRequest,
   CreateRequestAssetResponse,
   CreateRequestAssetError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  RequestsAssetsCreateResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: CreateRequestAssetRequest,
@@ -4174,7 +4175,7 @@ export const createRequestAsset: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type CreateRequestMessageError = CloudflareOpError;
 /** Adds a message to a Cloudforce One intelligence request conversation. */
@@ -4437,7 +4438,8 @@ export const getRequestMessage: API.PaginatedOperationMethod<
   GetRequestMessageRequest,
   GetRequestMessageResponse,
   GetRequestMessageError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  RequestsMessageGetResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: GetRequestMessageRequest,
@@ -4448,7 +4450,7 @@ export const getRequestMessage: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type GetRequestPriorityError = CloudflareOpError;
 /** Retrieves a specific priority intelligence request from Cloudforce One. */
@@ -4546,7 +4548,8 @@ export const listScanConfigs: API.PaginatedOperationMethod<
   ListScanConfigsRequest,
   ListScanConfigsResponse,
   ListScanConfigsError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  ScansConfigListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListScanConfigsRequest,
@@ -4557,7 +4560,7 @@ export const listScanConfigs: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListThreatEventAttackersError = CloudflareOpError;
 /** Lists attackers across multiple datasets */

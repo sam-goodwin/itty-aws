@@ -2130,27 +2130,7 @@ export const listJobRuns: API.OperationMethod<
     items: "jobRuns",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListJobRunsRequest,
-  ListJobRunsResponse,
-  ListJobRunsError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListJobRunsRequest,
-  ) => stream.Stream<
-    ListJobRunsResponse,
-    ListJobRunsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListJobRunsRequest,
-  ) => stream.Stream<
-    JobRun,
-    ListJobRunsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListJobTemplatesError =
   | InternalServerException
@@ -2200,27 +2180,7 @@ export const listJobTemplates: API.OperationMethod<
     items: "templates",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListJobTemplatesRequest,
-  ListJobTemplatesResponse,
-  ListJobTemplatesError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListJobTemplatesRequest,
-  ) => stream.Stream<
-    ListJobTemplatesResponse,
-    ListJobTemplatesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListJobTemplatesRequest,
-  ) => stream.Stream<
-    JobTemplate,
-    ListJobTemplatesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListManagedEndpointsError =
   | InternalServerException
@@ -2268,27 +2228,7 @@ export const listManagedEndpoints: API.OperationMethod<
     items: "endpoints",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListManagedEndpointsRequest,
-  ListManagedEndpointsResponse,
-  ListManagedEndpointsError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListManagedEndpointsRequest,
-  ) => stream.Stream<
-    ListManagedEndpointsResponse,
-    ListManagedEndpointsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListManagedEndpointsRequest,
-  ) => stream.Stream<
-    Endpoint,
-    ListManagedEndpointsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListSecurityConfigurationsError =
   | InternalServerException
@@ -2339,27 +2279,7 @@ export const listSecurityConfigurations: API.OperationMethod<
     items: "securityConfigurations",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListSecurityConfigurationsRequest,
-  ListSecurityConfigurationsResponse,
-  ListSecurityConfigurationsError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSecurityConfigurationsRequest,
-  ) => stream.Stream<
-    ListSecurityConfigurationsResponse,
-    ListSecurityConfigurationsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSecurityConfigurationsRequest,
-  ) => stream.Stream<
-    SecurityConfiguration,
-    ListSecurityConfigurationsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsForResourceError =
   | InternalServerException
@@ -2439,27 +2359,7 @@ export const listVirtualClusters: API.OperationMethod<
     items: "virtualClusters",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListVirtualClustersRequest,
-  ListVirtualClustersResponse,
-  ListVirtualClustersError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListVirtualClustersRequest,
-  ) => stream.Stream<
-    ListVirtualClustersResponse,
-    ListVirtualClustersError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListVirtualClustersRequest,
-  ) => stream.Stream<
-    VirtualCluster,
-    ListVirtualClustersError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type StartJobRunError =
   | InternalServerException

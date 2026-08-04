@@ -852,7 +852,8 @@ export const listAssetsForAccount: API.PaginatedOperationMethod<
   ListAssetsForAccountRequest,
   ListAssetsResponse,
   ListAssetsForAccountError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  AssetsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListAssetsForAccountRequest,
@@ -869,7 +870,7 @@ export const listAssetsForAccount: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListAssetsForZoneError = CloudflareOpError;
 /** Fetches all the custom assets. */
@@ -877,7 +878,8 @@ export const listAssetsForZone: API.PaginatedOperationMethod<
   ListAssetsForZoneRequest,
   ListAssetsResponse,
   ListAssetsForZoneError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  AssetsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListAssetsForZoneRequest,
@@ -894,7 +896,7 @@ export const listAssetsForZone: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListCustomPagesForAccountError = CloudflareOpError;
 /** Fetches all the custom pages. */
@@ -902,7 +904,8 @@ export const listCustomPagesForAccount: API.PaginatedOperationMethod<
   ListCustomPagesForAccountRequest,
   ListCustomPagesResponse,
   ListCustomPagesForAccountError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  ListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListCustomPagesForAccountRequest,
@@ -913,7 +916,7 @@ export const listCustomPagesForAccount: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListCustomPagesForZoneError = CloudflareOpError;
 /** Fetches all the custom pages. */
@@ -921,7 +924,8 @@ export const listCustomPagesForZone: API.PaginatedOperationMethod<
   ListCustomPagesForZoneRequest,
   ListCustomPagesResponse,
   ListCustomPagesForZoneError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  ListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListCustomPagesForZoneRequest,
@@ -932,7 +936,7 @@ export const listCustomPagesForZone: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type PutCustomPageForAccountError = CloudflareOpError;
 /** Updates the configuration of an existing custom page. */

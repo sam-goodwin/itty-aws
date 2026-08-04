@@ -6272,27 +6272,7 @@ export const listDatasets: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListDatasetsRequest,
-  ListDatasetsResponse,
-  ListDatasetsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDatasetsRequest,
-  ) => stream.Stream<
-    ListDatasetsResponse,
-    ListDatasetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDatasetsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListDatasetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListDocumentClassificationJobsError =
   | InternalServerException
@@ -6340,27 +6320,7 @@ export const listDocumentClassificationJobs: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListDocumentClassificationJobsRequest,
-  ListDocumentClassificationJobsResponse,
-  ListDocumentClassificationJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDocumentClassificationJobsRequest,
-  ) => stream.Stream<
-    ListDocumentClassificationJobsResponse,
-    ListDocumentClassificationJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDocumentClassificationJobsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListDocumentClassificationJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListDocumentClassifiersError =
   | InternalServerException
@@ -6408,27 +6368,7 @@ export const listDocumentClassifiers: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListDocumentClassifiersRequest,
-  ListDocumentClassifiersResponse,
-  ListDocumentClassifiersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDocumentClassifiersRequest,
-  ) => stream.Stream<
-    ListDocumentClassifiersResponse,
-    ListDocumentClassifiersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDocumentClassifiersRequest,
-  ) => stream.Stream<
-    unknown,
-    ListDocumentClassifiersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListDocumentClassifierSummariesError =
   | InternalServerException
@@ -6474,27 +6414,7 @@ export const listDocumentClassifierSummaries: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListDocumentClassifierSummariesRequest,
-  ListDocumentClassifierSummariesResponse,
-  ListDocumentClassifierSummariesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDocumentClassifierSummariesRequest,
-  ) => stream.Stream<
-    ListDocumentClassifierSummariesResponse,
-    ListDocumentClassifierSummariesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDocumentClassifierSummariesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListDocumentClassifierSummariesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListDominantLanguageDetectionJobsError =
   | InternalServerException
@@ -6542,27 +6462,7 @@ export const listDominantLanguageDetectionJobs: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListDominantLanguageDetectionJobsRequest,
-  ListDominantLanguageDetectionJobsResponse,
-  ListDominantLanguageDetectionJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDominantLanguageDetectionJobsRequest,
-  ) => stream.Stream<
-    ListDominantLanguageDetectionJobsResponse,
-    ListDominantLanguageDetectionJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDominantLanguageDetectionJobsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListDominantLanguageDetectionJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListEndpointsError =
   | InternalServerException
@@ -6610,27 +6510,7 @@ export const listEndpoints: API.OperationMethod<
     items: "EndpointPropertiesList",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListEndpointsRequest,
-  ListEndpointsResponse,
-  ListEndpointsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEndpointsRequest,
-  ) => stream.Stream<
-    ListEndpointsResponse,
-    ListEndpointsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEndpointsRequest,
-  ) => stream.Stream<
-    EndpointProperties,
-    ListEndpointsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListEntitiesDetectionJobsError =
   | InternalServerException
@@ -6678,27 +6558,7 @@ export const listEntitiesDetectionJobs: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListEntitiesDetectionJobsRequest,
-  ListEntitiesDetectionJobsResponse,
-  ListEntitiesDetectionJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEntitiesDetectionJobsRequest,
-  ) => stream.Stream<
-    ListEntitiesDetectionJobsResponse,
-    ListEntitiesDetectionJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEntitiesDetectionJobsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListEntitiesDetectionJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListEntityRecognizersError =
   | InternalServerException
@@ -6752,27 +6612,7 @@ export const listEntityRecognizers: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListEntityRecognizersRequest,
-  ListEntityRecognizersResponse,
-  ListEntityRecognizersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEntityRecognizersRequest,
-  ) => stream.Stream<
-    ListEntityRecognizersResponse,
-    ListEntityRecognizersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEntityRecognizersRequest,
-  ) => stream.Stream<
-    unknown,
-    ListEntityRecognizersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListEntityRecognizerSummariesError =
   | InternalServerException
@@ -6818,27 +6658,7 @@ export const listEntityRecognizerSummaries: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListEntityRecognizerSummariesRequest,
-  ListEntityRecognizerSummariesResponse,
-  ListEntityRecognizerSummariesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEntityRecognizerSummariesRequest,
-  ) => stream.Stream<
-    ListEntityRecognizerSummariesResponse,
-    ListEntityRecognizerSummariesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEntityRecognizerSummariesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListEntityRecognizerSummariesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListEventsDetectionJobsError =
   | InternalServerException
@@ -6888,27 +6708,7 @@ export const listEventsDetectionJobs: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListEventsDetectionJobsRequest,
-  ListEventsDetectionJobsResponse,
-  ListEventsDetectionJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEventsDetectionJobsRequest,
-  ) => stream.Stream<
-    ListEventsDetectionJobsResponse,
-    ListEventsDetectionJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEventsDetectionJobsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListEventsDetectionJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListFlywheelIterationHistoryError =
   | InternalServerException
@@ -6960,27 +6760,7 @@ export const listFlywheelIterationHistory: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListFlywheelIterationHistoryRequest,
-  ListFlywheelIterationHistoryResponse,
-  ListFlywheelIterationHistoryError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListFlywheelIterationHistoryRequest,
-  ) => stream.Stream<
-    ListFlywheelIterationHistoryResponse,
-    ListFlywheelIterationHistoryError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListFlywheelIterationHistoryRequest,
-  ) => stream.Stream<
-    unknown,
-    ListFlywheelIterationHistoryError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListFlywheelsError =
   | InternalServerException
@@ -7028,27 +6808,7 @@ export const listFlywheels: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListFlywheelsRequest,
-  ListFlywheelsResponse,
-  ListFlywheelsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListFlywheelsRequest,
-  ) => stream.Stream<
-    ListFlywheelsResponse,
-    ListFlywheelsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListFlywheelsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListFlywheelsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListKeyPhrasesDetectionJobsError =
   | InternalServerException
@@ -7096,27 +6856,7 @@ export const listKeyPhrasesDetectionJobs: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListKeyPhrasesDetectionJobsRequest,
-  ListKeyPhrasesDetectionJobsResponse,
-  ListKeyPhrasesDetectionJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListKeyPhrasesDetectionJobsRequest,
-  ) => stream.Stream<
-    ListKeyPhrasesDetectionJobsResponse,
-    ListKeyPhrasesDetectionJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListKeyPhrasesDetectionJobsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListKeyPhrasesDetectionJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListPiiEntitiesDetectionJobsError =
   | InternalServerException
@@ -7165,27 +6905,7 @@ export const listPiiEntitiesDetectionJobs: API.OperationMethod<
     items: "PiiEntitiesDetectionJobPropertiesList",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListPiiEntitiesDetectionJobsRequest,
-  ListPiiEntitiesDetectionJobsResponse,
-  ListPiiEntitiesDetectionJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPiiEntitiesDetectionJobsRequest,
-  ) => stream.Stream<
-    ListPiiEntitiesDetectionJobsResponse,
-    ListPiiEntitiesDetectionJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPiiEntitiesDetectionJobsRequest,
-  ) => stream.Stream<
-    PiiEntitiesDetectionJobProperties,
-    ListPiiEntitiesDetectionJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListSentimentDetectionJobsError =
   | InternalServerException
@@ -7233,27 +6953,7 @@ export const listSentimentDetectionJobs: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListSentimentDetectionJobsRequest,
-  ListSentimentDetectionJobsResponse,
-  ListSentimentDetectionJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSentimentDetectionJobsRequest,
-  ) => stream.Stream<
-    ListSentimentDetectionJobsResponse,
-    ListSentimentDetectionJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSentimentDetectionJobsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListSentimentDetectionJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsForResourceError =
   | InternalServerException
@@ -7327,27 +7027,7 @@ export const listTargetedSentimentDetectionJobs: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListTargetedSentimentDetectionJobsRequest,
-  ListTargetedSentimentDetectionJobsResponse,
-  ListTargetedSentimentDetectionJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTargetedSentimentDetectionJobsRequest,
-  ) => stream.Stream<
-    ListTargetedSentimentDetectionJobsResponse,
-    ListTargetedSentimentDetectionJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTargetedSentimentDetectionJobsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListTargetedSentimentDetectionJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTopicsDetectionJobsError =
   | InternalServerException
@@ -7395,27 +7075,7 @@ export const listTopicsDetectionJobs: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListTopicsDetectionJobsRequest,
-  ListTopicsDetectionJobsResponse,
-  ListTopicsDetectionJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTopicsDetectionJobsRequest,
-  ) => stream.Stream<
-    ListTopicsDetectionJobsResponse,
-    ListTopicsDetectionJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTopicsDetectionJobsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListTopicsDetectionJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type PutResourcePolicyError =
   | InternalServerException

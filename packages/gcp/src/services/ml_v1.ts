@@ -3624,7 +3624,8 @@ export const listProjectsJobs: API.PaginatedOperationMethod<
   ListProjectsJobsRequest,
   GoogleCloudMlV1__ListJobsResponse,
   ListProjectsJobsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudMlV1__ListJobsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsJobsRequest,
   output: GoogleCloudMlV1__ListJobsResponse,
@@ -3635,7 +3636,7 @@ export const listProjectsJobs: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsError = NotFound | Forbidden | GcpOpError;
 /** List all locations that provides at least one type of CMLE capability. */
@@ -3643,7 +3644,8 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   ListProjectsLocationsRequest,
   GoogleCloudMlV1__ListLocationsResponse,
   ListProjectsLocationsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudMlV1__ListLocationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsRequest,
   output: GoogleCloudMlV1__ListLocationsResponse,
@@ -3654,7 +3656,7 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsStudiesError =
   | NotFound
@@ -3698,7 +3700,8 @@ export const listProjectsModels: API.PaginatedOperationMethod<
   ListProjectsModelsRequest,
   GoogleCloudMlV1__ListModelsResponse,
   ListProjectsModelsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudMlV1__ListModelsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsModelsRequest,
   output: GoogleCloudMlV1__ListModelsResponse,
@@ -3709,7 +3712,7 @@ export const listProjectsModels: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsModelsVersionsError = NotFound | Forbidden | GcpOpError;
 /** Gets basic information about all the versions of a model. If you expect that a model has many versions, or if you need to handle only a limited number of results at a time, you can request that the list be retrieved in batches (called pages). If there are no versions that match the request parameters, the list request returns an empty response body: {}. */
@@ -3717,7 +3720,8 @@ export const listProjectsModelsVersions: API.PaginatedOperationMethod<
   ListProjectsModelsVersionsRequest,
   GoogleCloudMlV1__ListVersionsResponse,
   ListProjectsModelsVersionsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudMlV1__ListVersionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsModelsVersionsRequest,
   output: GoogleCloudMlV1__ListVersionsResponse,
@@ -3728,7 +3732,7 @@ export const listProjectsModelsVersions: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsOperationsError = NotFound | Forbidden | GcpOpError;
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
@@ -3736,7 +3740,8 @@ export const listProjectsOperations: API.PaginatedOperationMethod<
   ListProjectsOperationsRequest,
   GoogleLongrunning__ListOperationsResponse,
   ListProjectsOperationsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleLongrunning__ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsOperationsRequest,
   output: GoogleLongrunning__ListOperationsResponse,
@@ -3747,7 +3752,7 @@ export const listProjectsOperations: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type PatchProjectsJobsError =
   | NotFound

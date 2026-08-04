@@ -635,7 +635,8 @@ export const imageSearchClaims: API.PaginatedOperationMethod<
   ImageSearchClaimsRequest,
   GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponse,
   ImageSearchClaimsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ImageSearchClaimsRequest,
   output:
@@ -647,7 +648,7 @@ export const imageSearchClaims: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListPagesError = NotFound | Forbidden | GcpOpError;
 /** List the `ClaimReview` markup pages for a specific URL or for an organization. */
@@ -655,7 +656,8 @@ export const listPages: API.PaginatedOperationMethod<
   ListPagesRequest,
   GoogleFactcheckingFactchecktoolsV1alpha1ListClaimReviewMarkupPagesResponse,
   ListPagesError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleFactcheckingFactchecktoolsV1alpha1ListClaimReviewMarkupPagesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPagesRequest,
   output:
@@ -667,7 +669,7 @@ export const listPages: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type SearchClaimsError = NotFound | Forbidden | GcpOpError;
 /** Search through fact-checked claims. */
@@ -675,7 +677,8 @@ export const searchClaims: API.PaginatedOperationMethod<
   SearchClaimsRequest,
   GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimSearchResponse,
   SearchClaimsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimSearchResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchClaimsRequest,
   output:
@@ -687,7 +690,7 @@ export const searchClaims: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type UpdatePagesError =
   | NotFound

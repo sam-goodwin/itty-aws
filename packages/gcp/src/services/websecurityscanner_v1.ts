@@ -1182,7 +1182,8 @@ export const listProjectsScanConfigs: API.PaginatedOperationMethod<
   ListProjectsScanConfigsRequest,
   ListScanConfigsResponse,
   ListProjectsScanConfigsError,
-  GcpOpContext
+  GcpOpContext,
+  ListScanConfigsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsScanConfigsRequest,
   output: ListScanConfigsResponse,
@@ -1193,7 +1194,7 @@ export const listProjectsScanConfigs: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsScanConfigsScanRunsError =
   | NotFound
@@ -1204,7 +1205,8 @@ export const listProjectsScanConfigsScanRuns: API.PaginatedOperationMethod<
   ListProjectsScanConfigsScanRunsRequest,
   ListScanRunsResponse,
   ListProjectsScanConfigsScanRunsError,
-  GcpOpContext
+  GcpOpContext,
+  ListScanRunsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsScanConfigsScanRunsRequest,
   output: ListScanRunsResponse,
@@ -1215,7 +1217,7 @@ export const listProjectsScanConfigsScanRuns: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsScanConfigsScanRunsCrawledUrlsError =
   | NotFound
@@ -1226,7 +1228,8 @@ export const listProjectsScanConfigsScanRunsCrawledUrls: API.PaginatedOperationM
   ListProjectsScanConfigsScanRunsCrawledUrlsRequest,
   ListCrawledUrlsResponse,
   ListProjectsScanConfigsScanRunsCrawledUrlsError,
-  GcpOpContext
+  GcpOpContext,
+  ListCrawledUrlsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsScanConfigsScanRunsCrawledUrlsRequest,
   output: ListCrawledUrlsResponse,
@@ -1237,7 +1240,7 @@ export const listProjectsScanConfigsScanRunsCrawledUrls: API.PaginatedOperationM
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsScanConfigsScanRunsFindingsError =
   | NotFound
@@ -1248,7 +1251,8 @@ export const listProjectsScanConfigsScanRunsFindings: API.PaginatedOperationMeth
   ListProjectsScanConfigsScanRunsFindingsRequest,
   ListFindingsResponse,
   ListProjectsScanConfigsScanRunsFindingsError,
-  GcpOpContext
+  GcpOpContext,
+  ListFindingsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsScanConfigsScanRunsFindingsRequest,
   output: ListFindingsResponse,
@@ -1259,7 +1263,7 @@ export const listProjectsScanConfigsScanRunsFindings: API.PaginatedOperationMeth
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsScanConfigsScanRunsFindingTypeStatsError =
   | NotFound

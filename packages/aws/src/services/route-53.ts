@@ -6183,27 +6183,7 @@ export const listCidrBlocks: API.OperationMethod<
     items: "CidrBlocks",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListCidrBlocksRequest,
-  ListCidrBlocksResponse,
-  ListCidrBlocksError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCidrBlocksRequest,
-  ) => stream.Stream<
-    ListCidrBlocksResponse,
-    ListCidrBlocksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCidrBlocksRequest,
-  ) => stream.Stream<
-    CidrBlockSummary,
-    ListCidrBlocksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListCidrCollectionsError = InvalidInput | CommonErrors;
 /**
@@ -6243,27 +6223,7 @@ export const listCidrCollections: API.OperationMethod<
     items: "CidrCollections",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListCidrCollectionsRequest,
-  ListCidrCollectionsResponse,
-  ListCidrCollectionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCidrCollectionsRequest,
-  ) => stream.Stream<
-    ListCidrCollectionsResponse,
-    ListCidrCollectionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCidrCollectionsRequest,
-  ) => stream.Stream<
-    CollectionSummary,
-    ListCidrCollectionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListCidrLocationsError =
   | InvalidInput
@@ -6306,27 +6266,7 @@ export const listCidrLocations: API.OperationMethod<
     items: "CidrLocations",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListCidrLocationsRequest,
-  ListCidrLocationsResponse,
-  ListCidrLocationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCidrLocationsRequest,
-  ) => stream.Stream<
-    ListCidrLocationsResponse,
-    ListCidrLocationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCidrLocationsRequest,
-  ) => stream.Stream<
-    LocationSummary,
-    ListCidrLocationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListGeoLocationsError = InvalidInput | CommonErrors;
 /**
@@ -6397,27 +6337,7 @@ export const listHealthChecks: API.OperationMethod<
     items: "HealthChecks",
     pageSize: "MaxItems",
   } as const,
-})) as any as API.OperationMethod<
-  ListHealthChecksRequest,
-  ListHealthChecksResponse,
-  ListHealthChecksError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListHealthChecksRequest,
-  ) => stream.Stream<
-    ListHealthChecksResponse,
-    ListHealthChecksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListHealthChecksRequest,
-  ) => stream.Stream<
-    HealthCheck,
-    ListHealthChecksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListHostedZonesError =
   | DelegationSetNotReusable
@@ -6466,27 +6386,7 @@ export const listHostedZones: API.OperationMethod<
     items: "HostedZones",
     pageSize: "MaxItems",
   } as const,
-})) as any as API.OperationMethod<
-  ListHostedZonesRequest,
-  ListHostedZonesResponse,
-  ListHostedZonesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListHostedZonesRequest,
-  ) => stream.Stream<
-    ListHostedZonesResponse,
-    ListHostedZonesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListHostedZonesRequest,
-  ) => stream.Stream<
-    HostedZone,
-    ListHostedZonesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListHostedZonesByNameError =
   | InvalidDomainName
@@ -6660,27 +6560,7 @@ export const listQueryLoggingConfigs: API.OperationMethod<
     items: "QueryLoggingConfigs",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListQueryLoggingConfigsRequest,
-  ListQueryLoggingConfigsResponse,
-  ListQueryLoggingConfigsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListQueryLoggingConfigsRequest,
-  ) => stream.Stream<
-    ListQueryLoggingConfigsResponse,
-    ListQueryLoggingConfigsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListQueryLoggingConfigsRequest,
-  ) => stream.Stream<
-    QueryLoggingConfig,
-    ListQueryLoggingConfigsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListResourceRecordSetsError =
   | InvalidInput

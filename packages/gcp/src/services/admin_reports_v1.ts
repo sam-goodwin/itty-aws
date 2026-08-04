@@ -1296,7 +1296,8 @@ export const getCustomerUsageReports: API.PaginatedOperationMethod<
   GetCustomerUsageReportsRequest,
   UsageReports,
   GetCustomerUsageReportsError,
-  GcpOpContext
+  GcpOpContext,
+  UsageReports
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetCustomerUsageReportsRequest,
   output: UsageReports,
@@ -1307,7 +1308,7 @@ export const getCustomerUsageReports: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type GetEntityUsageReportsError = NotFound | Forbidden | GcpOpError;
 /** Retrieves a report which is a collection of properties and statistics for entities used by users within the account. For more information, see the Entities Usage Report guide. For more information about the entities report's parameters, see the Entities Usage parameters reference guides. */
@@ -1315,7 +1316,8 @@ export const getEntityUsageReports: API.PaginatedOperationMethod<
   GetEntityUsageReportsRequest,
   UsageReports,
   GetEntityUsageReportsError,
-  GcpOpContext
+  GcpOpContext,
+  UsageReports
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetEntityUsageReportsRequest,
   output: UsageReports,
@@ -1326,7 +1328,7 @@ export const getEntityUsageReports: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type GetUserUsageReportError = NotFound | Forbidden | GcpOpError;
 /** Retrieves a report which is a collection of properties and statistics for a set of users with the account. For more information, see the User Usage Report guide. For more information about the user report's parameters, see the Users Usage parameters reference guides. */
@@ -1334,7 +1336,8 @@ export const getUserUsageReport: API.PaginatedOperationMethod<
   GetUserUsageReportRequest,
   UsageReports,
   GetUserUsageReportError,
-  GcpOpContext
+  GcpOpContext,
+  UsageReports
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetUserUsageReportRequest,
   output: UsageReports,
@@ -1345,7 +1348,7 @@ export const getUserUsageReport: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListActivitiesError = NotFound | Forbidden | GcpOpError;
 /** Retrieves a list of activities for a specific customer's account and application such as the Admin console application or the Google Drive application. For more information, see the guides for administrator and Google Drive activity reports. For more information about the activity report's parameters, see the activity parameters reference guides. */
@@ -1353,7 +1356,8 @@ export const listActivities: API.PaginatedOperationMethod<
   ListActivitiesRequest,
   Activities,
   ListActivitiesError,
-  GcpOpContext
+  GcpOpContext,
+  Activity
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListActivitiesRequest,
   output: Activities,
@@ -1365,7 +1369,7 @@ export const listActivities: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type StopChannelsError =
   | NotFound

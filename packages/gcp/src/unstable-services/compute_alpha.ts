@@ -98858,7 +98858,8 @@ export const getNatMappingInfoRouters: API.PaginatedOperationMethod<
   GetNatMappingInfoRoutersRequest,
   VmEndpointNatMappingsList,
   GetNatMappingInfoRoutersError,
-  GcpOpContext
+  GcpOpContext,
+  VmEndpointNatMappingsList
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetNatMappingInfoRoutersRequest,
   output: VmEndpointNatMappingsList,
@@ -98869,7 +98870,7 @@ export const getNatMappingInfoRouters: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type GetNetworkAttachmentsError = NotFound | Forbidden | GcpOpError;
 /** Returns the specified NetworkAttachment resource in the given scope. */
@@ -100842,7 +100843,8 @@ export const getXpnResourcesProjects: API.PaginatedOperationMethod<
   GetXpnResourcesProjectsRequest,
   ProjectsGetXpnResources,
   GetXpnResourcesProjectsError,
-  GcpOpContext
+  GcpOpContext,
+  ProjectsGetXpnResources
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetXpnResourcesProjectsRequest,
   output: ProjectsGetXpnResources,
@@ -100853,7 +100855,7 @@ export const getXpnResourcesProjects: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type GetZoneFolderOperationsError = NotFound | Forbidden | GcpOpError;
 /** Retrieves the specified Operations resource. */
@@ -103094,7 +103096,8 @@ export const listAcceleratorTypes: API.PaginatedOperationMethod<
   ListAcceleratorTypesRequest,
   AcceleratorTypeList,
   ListAcceleratorTypesError,
-  GcpOpContext
+  GcpOpContext,
+  AcceleratorType
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAcceleratorTypesRequest,
   output: AcceleratorTypeList,
@@ -103106,7 +103109,7 @@ export const listAcceleratorTypes: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListAddressesError = NotFound | Forbidden | GcpOpError;
 /** Retrieves a list of addresses contained within the specified region. */
@@ -103114,7 +103117,8 @@ export const listAddresses: API.PaginatedOperationMethod<
   ListAddressesRequest,
   AddressList,
   ListAddressesError,
-  GcpOpContext
+  GcpOpContext,
+  Address
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAddressesRequest,
   output: AddressList,
@@ -103126,7 +103130,7 @@ export const listAddresses: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListAssociationsFirewallPoliciesError =
   | NotFound
@@ -103170,7 +103174,8 @@ export const listAutoscalers: API.PaginatedOperationMethod<
   ListAutoscalersRequest,
   AutoscalerList,
   ListAutoscalersError,
-  GcpOpContext
+  GcpOpContext,
+  Autoscaler
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAutoscalersRequest,
   output: AutoscalerList,
@@ -103182,7 +103187,7 @@ export const listAutoscalers: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListAvailableFeaturesRegionSslPoliciesError =
   | NotFound
@@ -103226,7 +103231,8 @@ export const listBackendBuckets: API.PaginatedOperationMethod<
   ListBackendBucketsRequest,
   BackendBucketList,
   ListBackendBucketsError,
-  GcpOpContext
+  GcpOpContext,
+  BackendBucket
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBackendBucketsRequest,
   output: BackendBucketList,
@@ -103238,7 +103244,7 @@ export const listBackendBuckets: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListBackendServicesError = NotFound | Forbidden | GcpOpError;
 /** Retrieves the list of BackendService resources available to the specified project. */
@@ -103246,7 +103252,8 @@ export const listBackendServices: API.PaginatedOperationMethod<
   ListBackendServicesRequest,
   BackendServiceList,
   ListBackendServicesError,
-  GcpOpContext
+  GcpOpContext,
+  BackendService
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBackendServicesRequest,
   output: BackendServiceList,
@@ -103258,7 +103265,7 @@ export const listBackendServices: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListBgpRoutesRoutersError = NotFound | Forbidden | GcpOpError;
 /** Retrieves a list of router bgp routes available to the specified project. */
@@ -103266,7 +103273,8 @@ export const listBgpRoutesRouters: API.PaginatedOperationMethod<
   ListBgpRoutesRoutersRequest,
   RoutersListBgpRoutes,
   ListBgpRoutesRoutersError,
-  GcpOpContext
+  GcpOpContext,
+  RoutersListBgpRoutes
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBgpRoutesRoutersRequest,
   output: RoutersListBgpRoutes,
@@ -103277,7 +103285,7 @@ export const listBgpRoutesRouters: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListCrossSiteNetworksError = NotFound | Forbidden | GcpOpError;
 /** Lists the cross-site networks for a project in the given scope. */
@@ -103285,7 +103293,8 @@ export const listCrossSiteNetworks: API.PaginatedOperationMethod<
   ListCrossSiteNetworksRequest,
   CrossSiteNetworkList,
   ListCrossSiteNetworksError,
-  GcpOpContext
+  GcpOpContext,
+  CrossSiteNetwork
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCrossSiteNetworksRequest,
   output: CrossSiteNetworkList,
@@ -103297,7 +103306,7 @@ export const listCrossSiteNetworks: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListDisksError = NotFound | Forbidden | GcpOpError;
 /** Retrieves a list of persistent disks contained within the specified zone. */
@@ -103305,7 +103314,8 @@ export const listDisks: API.PaginatedOperationMethod<
   ListDisksRequest,
   DiskList,
   ListDisksError,
-  GcpOpContext
+  GcpOpContext,
+  Disk
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDisksRequest,
   output: DiskList,
@@ -103317,7 +103327,7 @@ export const listDisks: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListDisksStoragePoolsError = NotFound | Forbidden | GcpOpError;
 /** Lists the disks in a specified storage pool. */
@@ -103325,7 +103335,8 @@ export const listDisksStoragePools: API.PaginatedOperationMethod<
   ListDisksStoragePoolsRequest,
   StoragePoolListDisks,
   ListDisksStoragePoolsError,
-  GcpOpContext
+  GcpOpContext,
+  StoragePoolDisk
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDisksStoragePoolsRequest,
   output: StoragePoolListDisks,
@@ -103337,7 +103348,7 @@ export const listDisksStoragePools: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListDiskTypesError = NotFound | Forbidden | GcpOpError;
 /** Retrieves a list of disk types available to the specified project. */
@@ -103345,7 +103356,8 @@ export const listDiskTypes: API.PaginatedOperationMethod<
   ListDiskTypesRequest,
   DiskTypeList,
   ListDiskTypesError,
-  GcpOpContext
+  GcpOpContext,
+  DiskType
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDiskTypesRequest,
   output: DiskTypeList,
@@ -103357,7 +103369,7 @@ export const listDiskTypes: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListErrorsInstanceGroupManagersError =
   | NotFound
@@ -103368,7 +103380,8 @@ export const listErrorsInstanceGroupManagers: API.PaginatedOperationMethod<
   ListErrorsInstanceGroupManagersRequest,
   InstanceGroupManagersListErrorsResponse,
   ListErrorsInstanceGroupManagersError,
-  GcpOpContext
+  GcpOpContext,
+  InstanceManagedByIgmError
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListErrorsInstanceGroupManagersRequest,
   output: InstanceGroupManagersListErrorsResponse,
@@ -103380,7 +103393,7 @@ export const listErrorsInstanceGroupManagers: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListErrorsRegionInstanceGroupManagersError =
   | NotFound
@@ -103391,7 +103404,8 @@ export const listErrorsRegionInstanceGroupManagers: API.PaginatedOperationMethod
   ListErrorsRegionInstanceGroupManagersRequest,
   RegionInstanceGroupManagersListErrorsResponse,
   ListErrorsRegionInstanceGroupManagersError,
-  GcpOpContext
+  GcpOpContext,
+  InstanceManagedByIgmError
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListErrorsRegionInstanceGroupManagersRequest,
   output: RegionInstanceGroupManagersListErrorsResponse,
@@ -103403,7 +103417,7 @@ export const listErrorsRegionInstanceGroupManagers: API.PaginatedOperationMethod
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListExternalVpnGatewaysError = NotFound | Forbidden | GcpOpError;
 /** Retrieves the list of ExternalVpnGateway available to the specified project. */
@@ -103411,7 +103425,8 @@ export const listExternalVpnGateways: API.PaginatedOperationMethod<
   ListExternalVpnGatewaysRequest,
   ExternalVpnGatewayList,
   ListExternalVpnGatewaysError,
-  GcpOpContext
+  GcpOpContext,
+  ExternalVpnGateway
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListExternalVpnGatewaysRequest,
   output: ExternalVpnGatewayList,
@@ -103423,7 +103438,7 @@ export const listExternalVpnGateways: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListFirewallPoliciesError = NotFound | Forbidden | GcpOpError;
 /** Lists all the policies that have been configured for the specified folder or organization. */
@@ -103431,7 +103446,8 @@ export const listFirewallPolicies: API.PaginatedOperationMethod<
   ListFirewallPoliciesRequest,
   FirewallPolicyList,
   ListFirewallPoliciesError,
-  GcpOpContext
+  GcpOpContext,
+  FirewallPolicy
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFirewallPoliciesRequest,
   output: FirewallPolicyList,
@@ -103443,7 +103459,7 @@ export const listFirewallPolicies: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListFirewallsError = NotFound | Forbidden | GcpOpError;
 /** Retrieves the list of firewall rules available to the specified project. */
@@ -103451,7 +103467,8 @@ export const listFirewalls: API.PaginatedOperationMethod<
   ListFirewallsRequest,
   FirewallList,
   ListFirewallsError,
-  GcpOpContext
+  GcpOpContext,
+  Firewall
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFirewallsRequest,
   output: FirewallList,
@@ -103463,7 +103480,7 @@ export const listFirewalls: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListFolderGlobalVmExtensionPoliciesError =
   | NotFound
@@ -103474,7 +103491,8 @@ export const listFolderGlobalVmExtensionPolicies: API.PaginatedOperationMethod<
   ListFolderGlobalVmExtensionPoliciesRequest,
   GlobalVmExtensionPolicyList,
   ListFolderGlobalVmExtensionPoliciesError,
-  GcpOpContext
+  GcpOpContext,
+  GlobalVmExtensionPolicy
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFolderGlobalVmExtensionPoliciesRequest,
   output: GlobalVmExtensionPolicyList,
@@ -103486,7 +103504,7 @@ export const listFolderGlobalVmExtensionPolicies: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListFolderZoneVmExtensionPoliciesError =
   | NotFound
@@ -103497,7 +103515,8 @@ export const listFolderZoneVmExtensionPolicies: API.PaginatedOperationMethod<
   ListFolderZoneVmExtensionPoliciesRequest,
   VmExtensionPolicyList,
   ListFolderZoneVmExtensionPoliciesError,
-  GcpOpContext
+  GcpOpContext,
+  VmExtensionPolicy
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFolderZoneVmExtensionPoliciesRequest,
   output: VmExtensionPolicyList,
@@ -103509,7 +103528,7 @@ export const listFolderZoneVmExtensionPolicies: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListForwardingRulesError = NotFound | Forbidden | GcpOpError;
 /** Retrieves a list of ForwardingRule resources available to the specified project and region. */
@@ -103517,7 +103536,8 @@ export const listForwardingRules: API.PaginatedOperationMethod<
   ListForwardingRulesRequest,
   ForwardingRuleList,
   ListForwardingRulesError,
-  GcpOpContext
+  GcpOpContext,
+  ForwardingRule
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListForwardingRulesRequest,
   output: ForwardingRuleList,
@@ -103529,7 +103549,7 @@ export const listForwardingRules: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListFutureReservationsError = NotFound | Forbidden | GcpOpError;
 /** A list of all the future reservations that have been configured for the specified project in specified zone. */
@@ -103537,7 +103557,8 @@ export const listFutureReservations: API.PaginatedOperationMethod<
   ListFutureReservationsRequest,
   FutureReservationsListResponse,
   ListFutureReservationsError,
-  GcpOpContext
+  GcpOpContext,
+  FutureReservation
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFutureReservationsRequest,
   output: FutureReservationsListResponse,
@@ -103549,7 +103570,7 @@ export const listFutureReservations: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListGlobalAddressesError = NotFound | Forbidden | GcpOpError;
 /** Retrieves a list of global addresses. */
@@ -103557,7 +103578,8 @@ export const listGlobalAddresses: API.PaginatedOperationMethod<
   ListGlobalAddressesRequest,
   AddressList,
   ListGlobalAddressesError,
-  GcpOpContext
+  GcpOpContext,
+  Address
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListGlobalAddressesRequest,
   output: AddressList,
@@ -103569,7 +103591,7 @@ export const listGlobalAddresses: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListGlobalFolderOperationsError = NotFound | Forbidden | GcpOpError;
 /** Retrieves a list of Operation resources contained within the specified folder. */
@@ -103577,7 +103599,8 @@ export const listGlobalFolderOperations: API.PaginatedOperationMethod<
   ListGlobalFolderOperationsRequest,
   OperationList,
   ListGlobalFolderOperationsError,
-  GcpOpContext
+  GcpOpContext,
+  Operation
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListGlobalFolderOperationsRequest,
   output: OperationList,
@@ -103589,7 +103612,7 @@ export const listGlobalFolderOperations: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListGlobalForwardingRulesError = NotFound | Forbidden | GcpOpError;
 /** Retrieves a list of GlobalForwardingRule resources available to the specified project. */
@@ -103597,7 +103620,8 @@ export const listGlobalForwardingRules: API.PaginatedOperationMethod<
   ListGlobalForwardingRulesRequest,
   ForwardingRuleList,
   ListGlobalForwardingRulesError,
-  GcpOpContext
+  GcpOpContext,
+  ForwardingRule
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListGlobalForwardingRulesRequest,
   output: ForwardingRuleList,
@@ -103609,7 +103633,7 @@ export const listGlobalForwardingRules: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListGlobalNetworkEndpointGroupsError =
   | NotFound
@@ -103620,7 +103644,8 @@ export const listGlobalNetworkEndpointGroups: API.PaginatedOperationMethod<
   ListGlobalNetworkEndpointGroupsRequest,
   NetworkEndpointGroupList,
   ListGlobalNetworkEndpointGroupsError,
-  GcpOpContext
+  GcpOpContext,
+  NetworkEndpointGroup
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListGlobalNetworkEndpointGroupsRequest,
   output: NetworkEndpointGroupList,
@@ -103632,7 +103657,7 @@ export const listGlobalNetworkEndpointGroups: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListGlobalOperationsError = NotFound | Forbidden | GcpOpError;
 /** Retrieves a list of Operation resources contained within the specified project. */
@@ -103640,7 +103665,8 @@ export const listGlobalOperations: API.PaginatedOperationMethod<
   ListGlobalOperationsRequest,
   OperationList,
   ListGlobalOperationsError,
-  GcpOpContext
+  GcpOpContext,
+  Operation
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListGlobalOperationsRequest,
   output: OperationList,
@@ -103652,7 +103678,7 @@ export const listGlobalOperations: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListGlobalOrganizationOperationsError =
   | NotFound
@@ -103663,7 +103689,8 @@ export const listGlobalOrganizationOperations: API.PaginatedOperationMethod<
   ListGlobalOrganizationOperationsRequest,
   OperationList,
   ListGlobalOrganizationOperationsError,
-  GcpOpContext
+  GcpOpContext,
+  Operation
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListGlobalOrganizationOperationsRequest,
   output: OperationList,
@@ -103675,7 +103702,7 @@ export const listGlobalOrganizationOperations: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListGlobalPublicDelegatedPrefixesError =
   | NotFound
@@ -103686,7 +103713,8 @@ export const listGlobalPublicDelegatedPrefixes: API.PaginatedOperationMethod<
   ListGlobalPublicDelegatedPrefixesRequest,
   PublicDelegatedPrefixList,
   ListGlobalPublicDelegatedPrefixesError,
-  GcpOpContext
+  GcpOpContext,
+  PublicDelegatedPrefix
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListGlobalPublicDelegatedPrefixesRequest,
   output: PublicDelegatedPrefixList,
@@ -103698,7 +103726,7 @@ export const listGlobalPublicDelegatedPrefixes: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListGlobalVmExtensionPoliciesError =
   | NotFound
@@ -103709,7 +103737,8 @@ export const listGlobalVmExtensionPolicies: API.PaginatedOperationMethod<
   ListGlobalVmExtensionPoliciesRequest,
   GlobalVmExtensionPolicyList,
   ListGlobalVmExtensionPoliciesError,
-  GcpOpContext
+  GcpOpContext,
+  GlobalVmExtensionPolicy
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListGlobalVmExtensionPoliciesRequest,
   output: GlobalVmExtensionPolicyList,
@@ -103721,7 +103750,7 @@ export const listGlobalVmExtensionPolicies: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListHaControllersError = NotFound | Forbidden | GcpOpError;
 /** Lists all HaControllers in the specified project in the specified region. */
@@ -103729,7 +103758,8 @@ export const listHaControllers: API.PaginatedOperationMethod<
   ListHaControllersRequest,
   HaControllersList,
   ListHaControllersError,
-  GcpOpContext
+  GcpOpContext,
+  HaController
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListHaControllersRequest,
   output: HaControllersList,
@@ -103741,7 +103771,7 @@ export const listHaControllers: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListHealthChecksError = NotFound | Forbidden | GcpOpError;
 /** Retrieves the list of HealthCheck resources available to the specified project. */
@@ -103749,7 +103779,8 @@ export const listHealthChecks: API.PaginatedOperationMethod<
   ListHealthChecksRequest,
   HealthCheckList,
   ListHealthChecksError,
-  GcpOpContext
+  GcpOpContext,
+  HealthCheck
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListHealthChecksRequest,
   output: HealthCheckList,
@@ -103761,7 +103792,7 @@ export const listHealthChecks: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListHostsError = NotFound | Forbidden | GcpOpError;
 /** Retrieves a list of hosts. */
@@ -103769,7 +103800,8 @@ export const listHosts: API.PaginatedOperationMethod<
   ListHostsRequest,
   HostsListResponse,
   ListHostsError,
-  GcpOpContext
+  GcpOpContext,
+  Host
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListHostsRequest,
   output: HostsListResponse,
@@ -103781,7 +103813,7 @@ export const listHosts: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListHttpHealthChecksError = NotFound | Forbidden | GcpOpError;
 /** Retrieves the list of HttpHealthCheck resources available to the specified project. */
@@ -103789,7 +103821,8 @@ export const listHttpHealthChecks: API.PaginatedOperationMethod<
   ListHttpHealthChecksRequest,
   HttpHealthCheckList,
   ListHttpHealthChecksError,
-  GcpOpContext
+  GcpOpContext,
+  HttpHealthCheck
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListHttpHealthChecksRequest,
   output: HttpHealthCheckList,
@@ -103801,7 +103834,7 @@ export const listHttpHealthChecks: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListHttpsHealthChecksError = NotFound | Forbidden | GcpOpError;
 /** Retrieves the list of HttpsHealthCheck resources available to the specified project. */
@@ -103809,7 +103842,8 @@ export const listHttpsHealthChecks: API.PaginatedOperationMethod<
   ListHttpsHealthChecksRequest,
   HttpsHealthCheckList,
   ListHttpsHealthChecksError,
-  GcpOpContext
+  GcpOpContext,
+  HttpsHealthCheck
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListHttpsHealthChecksRequest,
   output: HttpsHealthCheckList,
@@ -103821,7 +103855,7 @@ export const listHttpsHealthChecks: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListImagesError = NotFound | Forbidden | GcpOpError;
 /** Retrieves the list of custom images available to the specified project. Custom images are images you create that belong to your project. This method does not get any images that belong to other projects, including publicly-available images, like Debian 8. If you want to get a list of publicly-available images, use this method to make a request to the respective image project, such as debian-cloud or windows-cloud. */
@@ -103829,7 +103863,8 @@ export const listImages: API.PaginatedOperationMethod<
   ListImagesRequest,
   ImageList,
   ListImagesError,
-  GcpOpContext
+  GcpOpContext,
+  Image
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListImagesRequest,
   output: ImageList,
@@ -103841,7 +103876,7 @@ export const listImages: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListImageViewsError = NotFound | Forbidden | GcpOpError;
 /** Returns a list of global ImageView resources, with a regional context. */
@@ -103849,7 +103884,8 @@ export const listImageViews: API.PaginatedOperationMethod<
   ListImageViewsRequest,
   ImageViewsListResponse,
   ListImageViewsError,
-  GcpOpContext
+  GcpOpContext,
+  ImageView
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListImageViewsRequest,
   output: ImageViewsListResponse,
@@ -103861,7 +103897,7 @@ export const listImageViews: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListInstanceGroupManagerResizeRequestsError =
   | NotFound
@@ -103872,7 +103908,8 @@ export const listInstanceGroupManagerResizeRequests: API.PaginatedOperationMetho
   ListInstanceGroupManagerResizeRequestsRequest,
   InstanceGroupManagerResizeRequestsListResponse,
   ListInstanceGroupManagerResizeRequestsError,
-  GcpOpContext
+  GcpOpContext,
+  InstanceGroupManagerResizeRequest
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListInstanceGroupManagerResizeRequestsRequest,
   output: InstanceGroupManagerResizeRequestsListResponse,
@@ -103884,7 +103921,7 @@ export const listInstanceGroupManagerResizeRequests: API.PaginatedOperationMetho
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListInstanceGroupManagersError = NotFound | Forbidden | GcpOpError;
 /** Retrieves a list of managed instance groups that are contained within the specified project and zone. */
@@ -103892,7 +103929,8 @@ export const listInstanceGroupManagers: API.PaginatedOperationMethod<
   ListInstanceGroupManagersRequest,
   InstanceGroupManagerList,
   ListInstanceGroupManagersError,
-  GcpOpContext
+  GcpOpContext,
+  InstanceGroupManager
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListInstanceGroupManagersRequest,
   output: InstanceGroupManagerList,
@@ -103904,7 +103942,7 @@ export const listInstanceGroupManagers: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListInstanceGroupsError = NotFound | Forbidden | GcpOpError;
 /** Retrieves the list of zonal instance group resources contained within the specified zone. For managed instance groups, use theinstanceGroupManagers or regionInstanceGroupManagers methods instead. */
@@ -103912,7 +103950,8 @@ export const listInstanceGroups: API.PaginatedOperationMethod<
   ListInstanceGroupsRequest,
   InstanceGroupList,
   ListInstanceGroupsError,
-  GcpOpContext
+  GcpOpContext,
+  InstanceGroup
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListInstanceGroupsRequest,
   output: InstanceGroupList,
@@ -103924,7 +103963,7 @@ export const listInstanceGroups: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListInstancesError = NotFound | Forbidden | GcpOpError;
 /** Retrieves the list of instances contained within the specified zone. */
@@ -103932,7 +103971,8 @@ export const listInstances: API.PaginatedOperationMethod<
   ListInstancesRequest,
   InstanceList,
   ListInstancesError,
-  GcpOpContext
+  GcpOpContext,
+  Instance
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListInstancesRequest,
   output: InstanceList,
@@ -103944,7 +103984,7 @@ export const listInstances: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListInstancesInstanceGroupsError =
   | NotFound
@@ -103957,7 +103997,8 @@ export const listInstancesInstanceGroups: API.PaginatedOperationMethod<
   ListInstancesInstanceGroupsRequest,
   InstanceGroupsListInstances,
   ListInstancesInstanceGroupsError,
-  GcpOpContext
+  GcpOpContext,
+  InstanceWithNamedPorts
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListInstancesInstanceGroupsRequest,
   output: InstanceGroupsListInstances,
@@ -103969,7 +104010,7 @@ export const listInstancesInstanceGroups: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListInstancesRegionInstanceGroupsError =
   | NotFound
@@ -103982,7 +104023,8 @@ export const listInstancesRegionInstanceGroups: API.PaginatedOperationMethod<
   ListInstancesRegionInstanceGroupsRequest,
   RegionInstanceGroupsListInstances,
   ListInstancesRegionInstanceGroupsError,
-  GcpOpContext
+  GcpOpContext,
+  InstanceWithNamedPorts
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListInstancesRegionInstanceGroupsRequest,
   output: RegionInstanceGroupsListInstances,
@@ -103994,7 +104036,7 @@ export const listInstancesRegionInstanceGroups: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListInstanceTemplatesError = NotFound | Forbidden | GcpOpError;
 /** Retrieves a list of instance templates that are contained within the specified project. */
@@ -104002,7 +104044,8 @@ export const listInstanceTemplates: API.PaginatedOperationMethod<
   ListInstanceTemplatesRequest,
   InstanceTemplateList,
   ListInstanceTemplatesError,
-  GcpOpContext
+  GcpOpContext,
+  InstanceTemplate
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListInstanceTemplatesRequest,
   output: InstanceTemplateList,
@@ -104014,7 +104057,7 @@ export const listInstanceTemplates: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListInstantSnapshotGroups_Error = NotFound | Forbidden | GcpOpError;
 /** retrieves the list of InstantSnapshotGroup resources contained within the specified zone. */
@@ -104022,7 +104065,8 @@ export const listInstantSnapshotGroups: API.PaginatedOperationMethod<
   ListInstantSnapshotGroupsRequest,
   ListInstantSnapshotGroups,
   ListInstantSnapshotGroups_Error,
-  GcpOpContext
+  GcpOpContext,
+  InstantSnapshotGroup
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListInstantSnapshotGroupsRequest,
   output: ListInstantSnapshotGroups,
@@ -104034,7 +104078,7 @@ export const listInstantSnapshotGroups: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListInstantSnapshotsError = NotFound | Forbidden | GcpOpError;
 /** Retrieves the list of InstantSnapshot resources contained within the specified zone. */
@@ -104042,7 +104086,8 @@ export const listInstantSnapshots: API.PaginatedOperationMethod<
   ListInstantSnapshotsRequest,
   InstantSnapshotList,
   ListInstantSnapshotsError,
-  GcpOpContext
+  GcpOpContext,
+  InstantSnapshot
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListInstantSnapshotsRequest,
   output: InstantSnapshotList,
@@ -104054,7 +104099,7 @@ export const listInstantSnapshots: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListInterconnectAttachmentGroupsError =
   | NotFound
@@ -104065,7 +104110,8 @@ export const listInterconnectAttachmentGroups: API.PaginatedOperationMethod<
   ListInterconnectAttachmentGroupsRequest,
   InterconnectAttachmentGroupsListResponse,
   ListInterconnectAttachmentGroupsError,
-  GcpOpContext
+  GcpOpContext,
+  InterconnectAttachmentGroup
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListInterconnectAttachmentGroupsRequest,
   output: InterconnectAttachmentGroupsListResponse,
@@ -104077,7 +104123,7 @@ export const listInterconnectAttachmentGroups: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListInterconnectAttachmentsError =
   | NotFound
@@ -104088,7 +104134,8 @@ export const listInterconnectAttachments: API.PaginatedOperationMethod<
   ListInterconnectAttachmentsRequest,
   InterconnectAttachmentList,
   ListInterconnectAttachmentsError,
-  GcpOpContext
+  GcpOpContext,
+  InterconnectAttachment
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListInterconnectAttachmentsRequest,
   output: InterconnectAttachmentList,
@@ -104100,7 +104147,7 @@ export const listInterconnectAttachments: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListInterconnectGroupsError = NotFound | Forbidden | GcpOpError;
 /** Lists the InterconnectGroups for a project in the given scope. */
@@ -104108,7 +104155,8 @@ export const listInterconnectGroups: API.PaginatedOperationMethod<
   ListInterconnectGroupsRequest,
   InterconnectGroupsListResponse,
   ListInterconnectGroupsError,
-  GcpOpContext
+  GcpOpContext,
+  InterconnectGroup
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListInterconnectGroupsRequest,
   output: InterconnectGroupsListResponse,
@@ -104120,7 +104168,7 @@ export const listInterconnectGroups: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListInterconnectLocationsError = NotFound | Forbidden | GcpOpError;
 /** Retrieves the list of interconnect locations available to the specified project. */
@@ -104128,7 +104176,8 @@ export const listInterconnectLocations: API.PaginatedOperationMethod<
   ListInterconnectLocationsRequest,
   InterconnectLocationList,
   ListInterconnectLocationsError,
-  GcpOpContext
+  GcpOpContext,
+  InterconnectLocation
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListInterconnectLocationsRequest,
   output: InterconnectLocationList,
@@ -104140,7 +104189,7 @@ export const listInterconnectLocations: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListInterconnectRemoteLocationsError =
   | NotFound
@@ -104151,7 +104200,8 @@ export const listInterconnectRemoteLocations: API.PaginatedOperationMethod<
   ListInterconnectRemoteLocationsRequest,
   InterconnectRemoteLocationList,
   ListInterconnectRemoteLocationsError,
-  GcpOpContext
+  GcpOpContext,
+  InterconnectRemoteLocation
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListInterconnectRemoteLocationsRequest,
   output: InterconnectRemoteLocationList,
@@ -104163,7 +104213,7 @@ export const listInterconnectRemoteLocations: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListInterconnectsError = NotFound | Forbidden | GcpOpError;
 /** Retrieves the list of Interconnects available to the specified project. */
@@ -104171,7 +104221,8 @@ export const listInterconnects: API.PaginatedOperationMethod<
   ListInterconnectsRequest,
   InterconnectList,
   ListInterconnectsError,
-  GcpOpContext
+  GcpOpContext,
+  Interconnect
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListInterconnectsRequest,
   output: InterconnectList,
@@ -104183,7 +104234,7 @@ export const listInterconnects: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListIpAddressesNetworksError = NotFound | Forbidden | GcpOpError;
 /** Lists the internal IP addresses in the specified network. */
@@ -104191,7 +104242,8 @@ export const listIpAddressesNetworks: API.PaginatedOperationMethod<
   ListIpAddressesNetworksRequest,
   IpAddressesList,
   ListIpAddressesNetworksError,
-  GcpOpContext
+  GcpOpContext,
+  InternalIpAddress
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListIpAddressesNetworksRequest,
   output: IpAddressesList,
@@ -104203,7 +104255,7 @@ export const listIpAddressesNetworks: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListIpOwnersNetworksError = NotFound | Forbidden | GcpOpError;
 /** Lists the internal IP owners in the specified network. */
@@ -104211,7 +104263,8 @@ export const listIpOwnersNetworks: API.PaginatedOperationMethod<
   ListIpOwnersNetworksRequest,
   IpOwnerList,
   ListIpOwnersNetworksError,
-  GcpOpContext
+  GcpOpContext,
+  InternalIpOwner
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListIpOwnersNetworksRequest,
   output: IpOwnerList,
@@ -104223,7 +104276,7 @@ export const listIpOwnersNetworks: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListLicensesError = NotFound | Forbidden | GcpOpError;
 /** Retrieves the list of licenses available in the specified project. This method does not get any licenses that belong to other projects, including licenses attached to publicly-available images, like Debian 9. If you want to get a list of publicly-available licenses, use this method to make a request to the respective image project, such as debian-cloud orwindows-cloud. *Caution* This resource is intended for use only by third-party partners who are creatingCloud Marketplace images. */
@@ -104231,7 +104284,8 @@ export const listLicenses: API.PaginatedOperationMethod<
   ListLicensesRequest,
   LicensesListResponse,
   ListLicensesError,
-  GcpOpContext
+  GcpOpContext,
+  License
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLicensesRequest,
   output: LicensesListResponse,
@@ -104243,7 +104297,7 @@ export const listLicenses: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListMachineImagesError = NotFound | Forbidden | GcpOpError;
 /** Retrieves a list of machine images that are contained within the specified project. */
@@ -104251,7 +104305,8 @@ export const listMachineImages: API.PaginatedOperationMethod<
   ListMachineImagesRequest,
   MachineImageList,
   ListMachineImagesError,
-  GcpOpContext
+  GcpOpContext,
+  MachineImage
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMachineImagesRequest,
   output: MachineImageList,
@@ -104263,7 +104318,7 @@ export const listMachineImages: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListMachineTypesError = NotFound | Forbidden | GcpOpError;
 /** Retrieves a list of machine types available to the specified project. */
@@ -104271,7 +104326,8 @@ export const listMachineTypes: API.PaginatedOperationMethod<
   ListMachineTypesRequest,
   MachineTypeList,
   ListMachineTypesError,
-  GcpOpContext
+  GcpOpContext,
+  MachineType
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMachineTypesRequest,
   output: MachineTypeList,
@@ -104283,7 +104339,7 @@ export const listMachineTypes: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListManagedInstancesInstanceGroupManagersError =
   | NotFound
@@ -104296,7 +104352,8 @@ export const listManagedInstancesInstanceGroupManagers: API.PaginatedOperationMe
   ListManagedInstancesInstanceGroupManagersRequest,
   InstanceGroupManagersListManagedInstancesResponse,
   ListManagedInstancesInstanceGroupManagersError,
-  GcpOpContext
+  GcpOpContext,
+  InstanceGroupManagersListManagedInstancesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListManagedInstancesInstanceGroupManagersRequest,
   output: InstanceGroupManagersListManagedInstancesResponse,
@@ -104307,7 +104364,7 @@ export const listManagedInstancesInstanceGroupManagers: API.PaginatedOperationMe
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListManagedInstancesRegionInstanceGroupManagersError =
   | NotFound
@@ -104320,7 +104377,8 @@ export const listManagedInstancesRegionInstanceGroupManagers: API.PaginatedOpera
   ListManagedInstancesRegionInstanceGroupManagersRequest,
   RegionInstanceGroupManagersListInstancesResponse,
   ListManagedInstancesRegionInstanceGroupManagersError,
-  GcpOpContext
+  GcpOpContext,
+  RegionInstanceGroupManagersListInstancesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListManagedInstancesRegionInstanceGroupManagersRequest,
   output: RegionInstanceGroupManagersListInstancesResponse,
@@ -104331,7 +104389,7 @@ export const listManagedInstancesRegionInstanceGroupManagers: API.PaginatedOpera
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListNamedSetsRoutersError = NotFound | Forbidden | GcpOpError;
 /** Retrieves a list of router named set subresources available to the specified project. */
@@ -104339,7 +104397,8 @@ export const listNamedSetsRouters: API.PaginatedOperationMethod<
   ListNamedSetsRoutersRequest,
   RoutersListNamedSets,
   ListNamedSetsRoutersError,
-  GcpOpContext
+  GcpOpContext,
+  RoutersListNamedSets
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListNamedSetsRoutersRequest,
   output: RoutersListNamedSets,
@@ -104350,7 +104409,7 @@ export const listNamedSetsRouters: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListNetworkAttachmentsError = NotFound | Forbidden | GcpOpError;
 /** Lists the NetworkAttachments for a project in the given scope. */
@@ -104358,7 +104417,8 @@ export const listNetworkAttachments: API.PaginatedOperationMethod<
   ListNetworkAttachmentsRequest,
   NetworkAttachmentList,
   ListNetworkAttachmentsError,
-  GcpOpContext
+  GcpOpContext,
+  NetworkAttachment
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListNetworkAttachmentsRequest,
   output: NetworkAttachmentList,
@@ -104370,7 +104430,7 @@ export const listNetworkAttachments: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListNetworkEndpointGroupsError = NotFound | Forbidden | GcpOpError;
 /** Retrieves the list of network endpoint groups that are located in the specified project and zone. */
@@ -104378,7 +104438,8 @@ export const listNetworkEndpointGroups: API.PaginatedOperationMethod<
   ListNetworkEndpointGroupsRequest,
   NetworkEndpointGroupList,
   ListNetworkEndpointGroupsError,
-  GcpOpContext
+  GcpOpContext,
+  NetworkEndpointGroup
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListNetworkEndpointGroupsRequest,
   output: NetworkEndpointGroupList,
@@ -104390,7 +104451,7 @@ export const listNetworkEndpointGroups: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListNetworkEndpointsGlobalNetworkEndpointGroupsError =
   | NotFound
@@ -104403,7 +104464,8 @@ export const listNetworkEndpointsGlobalNetworkEndpointGroups: API.PaginatedOpera
   ListNetworkEndpointsGlobalNetworkEndpointGroupsRequest,
   NetworkEndpointGroupsListNetworkEndpoints,
   ListNetworkEndpointsGlobalNetworkEndpointGroupsError,
-  GcpOpContext
+  GcpOpContext,
+  NetworkEndpointWithHealthStatus
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListNetworkEndpointsGlobalNetworkEndpointGroupsRequest,
   output: NetworkEndpointGroupsListNetworkEndpoints,
@@ -104415,7 +104477,7 @@ export const listNetworkEndpointsGlobalNetworkEndpointGroups: API.PaginatedOpera
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListNetworkEndpointsNetworkEndpointGroupsError =
   | NotFound
@@ -104428,7 +104490,8 @@ export const listNetworkEndpointsNetworkEndpointGroups: API.PaginatedOperationMe
   ListNetworkEndpointsNetworkEndpointGroupsRequest,
   NetworkEndpointGroupsListNetworkEndpoints,
   ListNetworkEndpointsNetworkEndpointGroupsError,
-  GcpOpContext
+  GcpOpContext,
+  NetworkEndpointWithHealthStatus
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListNetworkEndpointsNetworkEndpointGroupsRequest,
   output: NetworkEndpointGroupsListNetworkEndpoints,
@@ -104440,7 +104503,7 @@ export const listNetworkEndpointsNetworkEndpointGroups: API.PaginatedOperationMe
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListNetworkEndpointsRegionNetworkEndpointGroupsError =
   | NotFound
@@ -104453,7 +104516,8 @@ export const listNetworkEndpointsRegionNetworkEndpointGroups: API.PaginatedOpera
   ListNetworkEndpointsRegionNetworkEndpointGroupsRequest,
   NetworkEndpointGroupsListNetworkEndpoints,
   ListNetworkEndpointsRegionNetworkEndpointGroupsError,
-  GcpOpContext
+  GcpOpContext,
+  NetworkEndpointWithHealthStatus
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListNetworkEndpointsRegionNetworkEndpointGroupsRequest,
   output: NetworkEndpointGroupsListNetworkEndpoints,
@@ -104465,7 +104529,7 @@ export const listNetworkEndpointsRegionNetworkEndpointGroups: API.PaginatedOpera
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListNetworkFirewallPoliciesError =
   | NotFound
@@ -104476,7 +104540,8 @@ export const listNetworkFirewallPolicies: API.PaginatedOperationMethod<
   ListNetworkFirewallPoliciesRequest,
   FirewallPolicyList,
   ListNetworkFirewallPoliciesError,
-  GcpOpContext
+  GcpOpContext,
+  FirewallPolicy
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListNetworkFirewallPoliciesRequest,
   output: FirewallPolicyList,
@@ -104488,7 +104553,7 @@ export const listNetworkFirewallPolicies: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListNetworkProfilesError = NotFound | Forbidden | GcpOpError;
 /** Retrieves a list of network profiles available to the specified project. */
@@ -104496,7 +104561,8 @@ export const listNetworkProfiles: API.PaginatedOperationMethod<
   ListNetworkProfilesRequest,
   NetworkProfilesListResponse,
   ListNetworkProfilesError,
-  GcpOpContext
+  GcpOpContext,
+  NetworkProfile
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListNetworkProfilesRequest,
   output: NetworkProfilesListResponse,
@@ -104508,7 +104574,7 @@ export const listNetworkProfiles: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListNetworksError = NotFound | Forbidden | GcpOpError;
 /** Retrieves the list of networks available to the specified project. */
@@ -104516,7 +104582,8 @@ export const listNetworks: API.PaginatedOperationMethod<
   ListNetworksRequest,
   NetworkList,
   ListNetworksError,
-  GcpOpContext
+  GcpOpContext,
+  Network
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListNetworksRequest,
   output: NetworkList,
@@ -104528,7 +104595,7 @@ export const listNetworks: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListNodeGroupsError = NotFound | Forbidden | GcpOpError;
 /** Retrieves a list of node groups available to the specified project. Note: use nodeGroups.listNodes for more details about each group. */
@@ -104536,7 +104603,8 @@ export const listNodeGroups: API.PaginatedOperationMethod<
   ListNodeGroupsRequest,
   NodeGroupList,
   ListNodeGroupsError,
-  GcpOpContext
+  GcpOpContext,
+  NodeGroup
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListNodeGroupsRequest,
   output: NodeGroupList,
@@ -104548,7 +104616,7 @@ export const listNodeGroups: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListNodesNodeGroupsError =
   | NotFound
@@ -104561,7 +104629,8 @@ export const listNodesNodeGroups: API.PaginatedOperationMethod<
   ListNodesNodeGroupsRequest,
   NodeGroupsListNodes,
   ListNodesNodeGroupsError,
-  GcpOpContext
+  GcpOpContext,
+  NodeGroupNode
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListNodesNodeGroupsRequest,
   output: NodeGroupsListNodes,
@@ -104573,7 +104642,7 @@ export const listNodesNodeGroups: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListNodeTemplatesError = NotFound | Forbidden | GcpOpError;
 /** Retrieves a list of node templates available to the specified project. */
@@ -104581,7 +104650,8 @@ export const listNodeTemplates: API.PaginatedOperationMethod<
   ListNodeTemplatesRequest,
   NodeTemplateList,
   ListNodeTemplatesError,
-  GcpOpContext
+  GcpOpContext,
+  NodeTemplate
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListNodeTemplatesRequest,
   output: NodeTemplateList,
@@ -104593,7 +104663,7 @@ export const listNodeTemplates: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListNodeTypesError = NotFound | Forbidden | GcpOpError;
 /** Retrieves a list of node types available to the specified project. */
@@ -104601,7 +104671,8 @@ export const listNodeTypes: API.PaginatedOperationMethod<
   ListNodeTypesRequest,
   NodeTypeList,
   ListNodeTypesError,
-  GcpOpContext
+  GcpOpContext,
+  NodeType
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListNodeTypesRequest,
   output: NodeTypeList,
@@ -104613,7 +104684,7 @@ export const listNodeTypes: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListOrganizationGlobalVmExtensionPoliciesError =
   | NotFound
@@ -104624,7 +104695,8 @@ export const listOrganizationGlobalVmExtensionPolicies: API.PaginatedOperationMe
   ListOrganizationGlobalVmExtensionPoliciesRequest,
   GlobalVmExtensionPolicyList,
   ListOrganizationGlobalVmExtensionPoliciesError,
-  GcpOpContext
+  GcpOpContext,
+  GlobalVmExtensionPolicy
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationGlobalVmExtensionPoliciesRequest,
   output: GlobalVmExtensionPolicyList,
@@ -104636,7 +104708,7 @@ export const listOrganizationGlobalVmExtensionPolicies: API.PaginatedOperationMe
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListOrganizationRolloutPlansError =
   | NotFound
@@ -104647,7 +104719,8 @@ export const listOrganizationRolloutPlans: API.PaginatedOperationMethod<
   ListOrganizationRolloutPlansRequest,
   RolloutPlansListResponse,
   ListOrganizationRolloutPlansError,
-  GcpOpContext
+  GcpOpContext,
+  RolloutPlan
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationRolloutPlansRequest,
   output: RolloutPlansListResponse,
@@ -104659,7 +104732,7 @@ export const listOrganizationRolloutPlans: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListOrganizationRolloutsError = NotFound | Forbidden | GcpOpError;
 /** Lists Rollouts in a given organization and location. */
@@ -104667,7 +104740,8 @@ export const listOrganizationRollouts: API.PaginatedOperationMethod<
   ListOrganizationRolloutsRequest,
   OrganizationRolloutsListResponse,
   ListOrganizationRolloutsError,
-  GcpOpContext
+  GcpOpContext,
+  Rollout
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationRolloutsRequest,
   output: OrganizationRolloutsListResponse,
@@ -104679,7 +104753,7 @@ export const listOrganizationRollouts: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListOrganizationSecurityPoliciesError =
   | NotFound
@@ -104690,7 +104764,8 @@ export const listOrganizationSecurityPolicies: API.PaginatedOperationMethod<
   ListOrganizationSecurityPoliciesRequest,
   SecurityPolicyList,
   ListOrganizationSecurityPoliciesError,
-  GcpOpContext
+  GcpOpContext,
+  SecurityPolicy
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationSecurityPoliciesRequest,
   output: SecurityPolicyList,
@@ -104702,7 +104777,7 @@ export const listOrganizationSecurityPolicies: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListOrganizationZoneVmExtensionPoliciesError =
   | NotFound
@@ -104713,7 +104788,8 @@ export const listOrganizationZoneVmExtensionPolicies: API.PaginatedOperationMeth
   ListOrganizationZoneVmExtensionPoliciesRequest,
   VmExtensionPolicyList,
   ListOrganizationZoneVmExtensionPoliciesError,
-  GcpOpContext
+  GcpOpContext,
+  VmExtensionPolicy
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationZoneVmExtensionPoliciesRequest,
   output: VmExtensionPolicyList,
@@ -104725,7 +104801,7 @@ export const listOrganizationZoneVmExtensionPolicies: API.PaginatedOperationMeth
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListPacketMirroringsError = NotFound | Forbidden | GcpOpError;
 /** Retrieves a list of PacketMirroring resources available to the specified project and region. */
@@ -104733,7 +104809,8 @@ export const listPacketMirrorings: API.PaginatedOperationMethod<
   ListPacketMirroringsRequest,
   PacketMirroringList,
   ListPacketMirroringsError,
-  GcpOpContext
+  GcpOpContext,
+  PacketMirroring
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPacketMirroringsRequest,
   output: PacketMirroringList,
@@ -104745,7 +104822,7 @@ export const listPacketMirrorings: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListPeeringRoutesNetworksError = NotFound | Forbidden | GcpOpError;
 /** Lists the peering routes exchanged over peering connection. */
@@ -104753,7 +104830,8 @@ export const listPeeringRoutesNetworks: API.PaginatedOperationMethod<
   ListPeeringRoutesNetworksRequest,
   ExchangedPeeringRoutesList,
   ListPeeringRoutesNetworksError,
-  GcpOpContext
+  GcpOpContext,
+  ExchangedPeeringRoute
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPeeringRoutesNetworksRequest,
   output: ExchangedPeeringRoutesList,
@@ -104765,7 +104843,7 @@ export const listPeeringRoutesNetworks: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListPerInstanceConfigsInstanceGroupManagersError =
   | NotFound
@@ -104778,7 +104856,8 @@ export const listPerInstanceConfigsInstanceGroupManagers: API.PaginatedOperation
   ListPerInstanceConfigsInstanceGroupManagersRequest,
   InstanceGroupManagersListPerInstanceConfigsResp,
   ListPerInstanceConfigsInstanceGroupManagersError,
-  GcpOpContext
+  GcpOpContext,
+  PerInstanceConfig
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPerInstanceConfigsInstanceGroupManagersRequest,
   output: InstanceGroupManagersListPerInstanceConfigsResp,
@@ -104790,7 +104869,7 @@ export const listPerInstanceConfigsInstanceGroupManagers: API.PaginatedOperation
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListPerInstanceConfigsRegionInstanceGroupManagersError =
   | NotFound
@@ -104803,7 +104882,8 @@ export const listPerInstanceConfigsRegionInstanceGroupManagers: API.PaginatedOpe
   ListPerInstanceConfigsRegionInstanceGroupManagersRequest,
   RegionInstanceGroupManagersListInstanceConfigsResp,
   ListPerInstanceConfigsRegionInstanceGroupManagersError,
-  GcpOpContext
+  GcpOpContext,
+  PerInstanceConfig
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPerInstanceConfigsRegionInstanceGroupManagersRequest,
   output: RegionInstanceGroupManagersListInstanceConfigsResp,
@@ -104815,7 +104895,7 @@ export const listPerInstanceConfigsRegionInstanceGroupManagers: API.PaginatedOpe
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListPreconfiguredExpressionSetsOrganizationSecurityPoliciesError =
   | NotFound
@@ -104859,7 +104939,8 @@ export const listPreviewFeatures: API.PaginatedOperationMethod<
   ListPreviewFeaturesRequest,
   PreviewFeatureList,
   ListPreviewFeaturesError,
-  GcpOpContext
+  GcpOpContext,
+  PreviewFeature
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPreviewFeaturesRequest,
   output: PreviewFeatureList,
@@ -104871,7 +104952,7 @@ export const listPreviewFeatures: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListPublicAdvertisedPrefixesError =
   | NotFound
@@ -104882,7 +104963,8 @@ export const listPublicAdvertisedPrefixes: API.PaginatedOperationMethod<
   ListPublicAdvertisedPrefixesRequest,
   PublicAdvertisedPrefixList,
   ListPublicAdvertisedPrefixesError,
-  GcpOpContext
+  GcpOpContext,
+  PublicAdvertisedPrefix
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPublicAdvertisedPrefixesRequest,
   output: PublicAdvertisedPrefixList,
@@ -104894,7 +104976,7 @@ export const listPublicAdvertisedPrefixes: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListPublicDelegatedPrefixesError =
   | NotFound
@@ -104905,7 +104987,8 @@ export const listPublicDelegatedPrefixes: API.PaginatedOperationMethod<
   ListPublicDelegatedPrefixesRequest,
   PublicDelegatedPrefixList,
   ListPublicDelegatedPrefixesError,
-  GcpOpContext
+  GcpOpContext,
+  PublicDelegatedPrefix
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPublicDelegatedPrefixesRequest,
   output: PublicDelegatedPrefixList,
@@ -104917,7 +105000,7 @@ export const listPublicDelegatedPrefixes: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListRecoverableSnapshotsError = NotFound | Forbidden | GcpOpError;
 /** Retrieves a list of all of the RecoverableSnapshots in your project. */
@@ -104925,7 +105008,8 @@ export const listRecoverableSnapshots: API.PaginatedOperationMethod<
   ListRecoverableSnapshotsRequest,
   RecoverableSnapshotList,
   ListRecoverableSnapshotsError,
-  GcpOpContext
+  GcpOpContext,
+  RecoverableSnapshot
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRecoverableSnapshotsRequest,
   output: RecoverableSnapshotList,
@@ -104937,7 +105021,7 @@ export const listRecoverableSnapshots: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListReferrersInstancesError = NotFound | Forbidden | GcpOpError;
 /** Retrieves a list of resources that refer to the VM instance specified in the request. For example, if the VM instance is part of a managed or unmanaged instance group, the referrers list includes the instance group. For more information, readViewing referrers to VM instances. */
@@ -104945,7 +105029,8 @@ export const listReferrersInstances: API.PaginatedOperationMethod<
   ListReferrersInstancesRequest,
   InstanceListReferrers,
   ListReferrersInstancesError,
-  GcpOpContext
+  GcpOpContext,
+  Reference
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListReferrersInstancesRequest,
   output: InstanceListReferrers,
@@ -104957,7 +105042,7 @@ export const listReferrersInstances: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListRegionAutoscalersError = NotFound | Forbidden | GcpOpError;
 /** Retrieves a list of autoscalers contained within the specified region. */
@@ -104965,7 +105050,8 @@ export const listRegionAutoscalers: API.PaginatedOperationMethod<
   ListRegionAutoscalersRequest,
   RegionAutoscalerList,
   ListRegionAutoscalersError,
-  GcpOpContext
+  GcpOpContext,
+  Autoscaler
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRegionAutoscalersRequest,
   output: RegionAutoscalerList,
@@ -104977,7 +105063,7 @@ export const listRegionAutoscalers: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListRegionBackendBucketsError = NotFound | Forbidden | GcpOpError;
 /** Retrieves the list of BackendBucket resources available to the specified project in the given region. */
@@ -104985,7 +105071,8 @@ export const listRegionBackendBuckets: API.PaginatedOperationMethod<
   ListRegionBackendBucketsRequest,
   BackendBucketList,
   ListRegionBackendBucketsError,
-  GcpOpContext
+  GcpOpContext,
+  BackendBucket
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRegionBackendBucketsRequest,
   output: BackendBucketList,
@@ -104997,7 +105084,7 @@ export const listRegionBackendBuckets: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListRegionBackendServicesError = NotFound | Forbidden | GcpOpError;
 /** Retrieves the list of regional BackendService resources available to the specified project in the given region. */
@@ -105005,7 +105092,8 @@ export const listRegionBackendServices: API.PaginatedOperationMethod<
   ListRegionBackendServicesRequest,
   BackendServiceList,
   ListRegionBackendServicesError,
-  GcpOpContext
+  GcpOpContext,
+  BackendService
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRegionBackendServicesRequest,
   output: BackendServiceList,
@@ -105017,7 +105105,7 @@ export const listRegionBackendServices: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListRegionCommitmentsError = NotFound | Forbidden | GcpOpError;
 /** Retrieves a list of commitments contained within the specified region. */
@@ -105025,7 +105113,8 @@ export const listRegionCommitments: API.PaginatedOperationMethod<
   ListRegionCommitmentsRequest,
   CommitmentList,
   ListRegionCommitmentsError,
-  GcpOpContext
+  GcpOpContext,
+  Commitment
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRegionCommitmentsRequest,
   output: CommitmentList,
@@ -105037,7 +105126,7 @@ export const listRegionCommitments: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListRegionCompositeHealthChecksError =
   | NotFound
@@ -105048,7 +105137,8 @@ export const listRegionCompositeHealthChecks: API.PaginatedOperationMethod<
   ListRegionCompositeHealthChecksRequest,
   CompositeHealthCheckList,
   ListRegionCompositeHealthChecksError,
-  GcpOpContext
+  GcpOpContext,
+  CompositeHealthCheck
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRegionCompositeHealthChecksRequest,
   output: CompositeHealthCheckList,
@@ -105060,7 +105150,7 @@ export const listRegionCompositeHealthChecks: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListRegionDisksError = NotFound | Forbidden | GcpOpError;
 /** Retrieves the list of persistent disks contained within the specified region. */
@@ -105068,7 +105158,8 @@ export const listRegionDisks: API.PaginatedOperationMethod<
   ListRegionDisksRequest,
   DiskList,
   ListRegionDisksError,
-  GcpOpContext
+  GcpOpContext,
+  Disk
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRegionDisksRequest,
   output: DiskList,
@@ -105080,7 +105171,7 @@ export const listRegionDisks: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListRegionDiskTypesError = NotFound | Forbidden | GcpOpError;
 /** Retrieves a list of regional disk types available to the specified project. */
@@ -105088,7 +105179,8 @@ export const listRegionDiskTypes: API.PaginatedOperationMethod<
   ListRegionDiskTypesRequest,
   RegionDiskTypeList,
   ListRegionDiskTypesError,
-  GcpOpContext
+  GcpOpContext,
+  DiskType
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRegionDiskTypesRequest,
   output: RegionDiskTypeList,
@@ -105100,7 +105192,7 @@ export const listRegionDiskTypes: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListRegionHealthAggregationPoliciesError =
   | NotFound
@@ -105111,7 +105203,8 @@ export const listRegionHealthAggregationPolicies: API.PaginatedOperationMethod<
   ListRegionHealthAggregationPoliciesRequest,
   HealthAggregationPolicyList,
   ListRegionHealthAggregationPoliciesError,
-  GcpOpContext
+  GcpOpContext,
+  HealthAggregationPolicy
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRegionHealthAggregationPoliciesRequest,
   output: HealthAggregationPolicyList,
@@ -105123,7 +105216,7 @@ export const listRegionHealthAggregationPolicies: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListRegionHealthChecksError = NotFound | Forbidden | GcpOpError;
 /** Retrieves the list of HealthCheck resources available to the specified project. */
@@ -105131,7 +105224,8 @@ export const listRegionHealthChecks: API.PaginatedOperationMethod<
   ListRegionHealthChecksRequest,
   HealthCheckList,
   ListRegionHealthChecksError,
-  GcpOpContext
+  GcpOpContext,
+  HealthCheck
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRegionHealthChecksRequest,
   output: HealthCheckList,
@@ -105143,7 +105237,7 @@ export const listRegionHealthChecks: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListRegionHealthCheckServicesError =
   | NotFound
@@ -105154,7 +105248,8 @@ export const listRegionHealthCheckServices: API.PaginatedOperationMethod<
   ListRegionHealthCheckServicesRequest,
   HealthCheckServicesList,
   ListRegionHealthCheckServicesError,
-  GcpOpContext
+  GcpOpContext,
+  HealthCheckService
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRegionHealthCheckServicesRequest,
   output: HealthCheckServicesList,
@@ -105166,7 +105261,7 @@ export const listRegionHealthCheckServices: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListRegionHealthSourcesError = NotFound | Forbidden | GcpOpError;
 /** Lists the HealthSources for a project in the given region. */
@@ -105174,7 +105269,8 @@ export const listRegionHealthSources: API.PaginatedOperationMethod<
   ListRegionHealthSourcesRequest,
   HealthSourceList,
   ListRegionHealthSourcesError,
-  GcpOpContext
+  GcpOpContext,
+  HealthSource
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRegionHealthSourcesRequest,
   output: HealthSourceList,
@@ -105186,7 +105282,7 @@ export const listRegionHealthSources: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListRegionInstanceGroupManagerResizeRequestsError =
   | NotFound
@@ -105197,7 +105293,8 @@ export const listRegionInstanceGroupManagerResizeRequests: API.PaginatedOperatio
   ListRegionInstanceGroupManagerResizeRequestsRequest,
   RegionInstanceGroupManagerResizeRequestsListResponse,
   ListRegionInstanceGroupManagerResizeRequestsError,
-  GcpOpContext
+  GcpOpContext,
+  InstanceGroupManagerResizeRequest
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRegionInstanceGroupManagerResizeRequestsRequest,
   output: RegionInstanceGroupManagerResizeRequestsListResponse,
@@ -105209,7 +105306,7 @@ export const listRegionInstanceGroupManagerResizeRequests: API.PaginatedOperatio
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListRegionInstanceGroupManagersError =
   | NotFound
@@ -105220,7 +105317,8 @@ export const listRegionInstanceGroupManagers: API.PaginatedOperationMethod<
   ListRegionInstanceGroupManagersRequest,
   RegionInstanceGroupManagerList,
   ListRegionInstanceGroupManagersError,
-  GcpOpContext
+  GcpOpContext,
+  InstanceGroupManager
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRegionInstanceGroupManagersRequest,
   output: RegionInstanceGroupManagerList,
@@ -105232,7 +105330,7 @@ export const listRegionInstanceGroupManagers: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListRegionInstanceGroupsError = NotFound | Forbidden | GcpOpError;
 /** Retrieves the list of instance group resources contained within the specified region. */
@@ -105240,7 +105338,8 @@ export const listRegionInstanceGroups: API.PaginatedOperationMethod<
   ListRegionInstanceGroupsRequest,
   RegionInstanceGroupList,
   ListRegionInstanceGroupsError,
-  GcpOpContext
+  GcpOpContext,
+  InstanceGroup
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRegionInstanceGroupsRequest,
   output: RegionInstanceGroupList,
@@ -105252,7 +105351,7 @@ export const listRegionInstanceGroups: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListRegionInstanceTemplatesError =
   | NotFound
@@ -105263,7 +105362,8 @@ export const listRegionInstanceTemplates: API.PaginatedOperationMethod<
   ListRegionInstanceTemplatesRequest,
   InstanceTemplateList,
   ListRegionInstanceTemplatesError,
-  GcpOpContext
+  GcpOpContext,
+  InstanceTemplate
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRegionInstanceTemplatesRequest,
   output: InstanceTemplateList,
@@ -105275,7 +105375,7 @@ export const listRegionInstanceTemplates: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListRegionInstantSnapshotGroupsError =
   | NotFound
@@ -105286,7 +105386,8 @@ export const listRegionInstantSnapshotGroups: API.PaginatedOperationMethod<
   ListRegionInstantSnapshotGroupsRequest,
   ListInstantSnapshotGroups,
   ListRegionInstantSnapshotGroupsError,
-  GcpOpContext
+  GcpOpContext,
+  InstantSnapshotGroup
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRegionInstantSnapshotGroupsRequest,
   output: ListInstantSnapshotGroups,
@@ -105298,7 +105399,7 @@ export const listRegionInstantSnapshotGroups: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListRegionInstantSnapshotsError = NotFound | Forbidden | GcpOpError;
 /** Retrieves the list of InstantSnapshot resources contained within the specified region. */
@@ -105306,7 +105407,8 @@ export const listRegionInstantSnapshots: API.PaginatedOperationMethod<
   ListRegionInstantSnapshotsRequest,
   InstantSnapshotList,
   ListRegionInstantSnapshotsError,
-  GcpOpContext
+  GcpOpContext,
+  InstantSnapshot
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRegionInstantSnapshotsRequest,
   output: InstantSnapshotList,
@@ -105318,7 +105420,7 @@ export const listRegionInstantSnapshots: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListRegionMultiMigMembersError = NotFound | Forbidden | GcpOpError;
 /** Retrieves a list of members of a specific multi-MIG. */
@@ -105326,7 +105428,8 @@ export const listRegionMultiMigMembers: API.PaginatedOperationMethod<
   ListRegionMultiMigMembersRequest,
   MultiMigMemberList,
   ListRegionMultiMigMembersError,
-  GcpOpContext
+  GcpOpContext,
+  MultiMigMember
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRegionMultiMigMembersRequest,
   output: MultiMigMemberList,
@@ -105338,7 +105441,7 @@ export const listRegionMultiMigMembers: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListRegionMultiMigsError = NotFound | Forbidden | GcpOpError;
 /** Retrieves a list of multi-MIGs in a project and region. */
@@ -105346,7 +105449,8 @@ export const listRegionMultiMigs: API.PaginatedOperationMethod<
   ListRegionMultiMigsRequest,
   MultiMigsList,
   ListRegionMultiMigsError,
-  GcpOpContext
+  GcpOpContext,
+  MultiMig
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRegionMultiMigsRequest,
   output: MultiMigsList,
@@ -105358,7 +105462,7 @@ export const listRegionMultiMigs: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListRegionNetworkEndpointGroupsError =
   | NotFound
@@ -105369,7 +105473,8 @@ export const listRegionNetworkEndpointGroups: API.PaginatedOperationMethod<
   ListRegionNetworkEndpointGroupsRequest,
   NetworkEndpointGroupList,
   ListRegionNetworkEndpointGroupsError,
-  GcpOpContext
+  GcpOpContext,
+  NetworkEndpointGroup
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRegionNetworkEndpointGroupsRequest,
   output: NetworkEndpointGroupList,
@@ -105381,7 +105486,7 @@ export const listRegionNetworkEndpointGroups: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListRegionNetworkFirewallPoliciesError =
   | NotFound
@@ -105392,7 +105497,8 @@ export const listRegionNetworkFirewallPolicies: API.PaginatedOperationMethod<
   ListRegionNetworkFirewallPoliciesRequest,
   FirewallPolicyList,
   ListRegionNetworkFirewallPoliciesError,
-  GcpOpContext
+  GcpOpContext,
+  FirewallPolicy
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRegionNetworkFirewallPoliciesRequest,
   output: FirewallPolicyList,
@@ -105404,7 +105510,7 @@ export const listRegionNetworkFirewallPolicies: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListRegionNetworkPoliciesError = NotFound | Forbidden | GcpOpError;
 /** Lists all the policies that have been configured for the specified project in the given region. */
@@ -105412,7 +105518,8 @@ export const listRegionNetworkPolicies: API.PaginatedOperationMethod<
   ListRegionNetworkPoliciesRequest,
   NetworkPolicyList,
   ListRegionNetworkPoliciesError,
-  GcpOpContext
+  GcpOpContext,
+  NetworkPolicy
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRegionNetworkPoliciesRequest,
   output: NetworkPolicyList,
@@ -105424,7 +105531,7 @@ export const listRegionNetworkPolicies: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListRegionNotificationEndpointsError =
   | NotFound
@@ -105435,7 +105542,8 @@ export const listRegionNotificationEndpoints: API.PaginatedOperationMethod<
   ListRegionNotificationEndpointsRequest,
   NotificationEndpointList,
   ListRegionNotificationEndpointsError,
-  GcpOpContext
+  GcpOpContext,
+  NotificationEndpoint
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRegionNotificationEndpointsRequest,
   output: NotificationEndpointList,
@@ -105447,7 +105555,7 @@ export const listRegionNotificationEndpoints: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListRegionOperationsError = NotFound | Forbidden | GcpOpError;
 /** Retrieves a list of Operation resources contained within the specified region. */
@@ -105455,7 +105563,8 @@ export const listRegionOperations: API.PaginatedOperationMethod<
   ListRegionOperationsRequest,
   OperationList,
   ListRegionOperationsError,
-  GcpOpContext
+  GcpOpContext,
+  Operation
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRegionOperationsRequest,
   output: OperationList,
@@ -105467,7 +105576,7 @@ export const listRegionOperations: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListRegionRecoverableSnapshotsError =
   | NotFound
@@ -105478,7 +105587,8 @@ export const listRegionRecoverableSnapshots: API.PaginatedOperationMethod<
   ListRegionRecoverableSnapshotsRequest,
   RecoverableSnapshotList,
   ListRegionRecoverableSnapshotsError,
-  GcpOpContext
+  GcpOpContext,
+  RecoverableSnapshot
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRegionRecoverableSnapshotsRequest,
   output: RecoverableSnapshotList,
@@ -105490,7 +105600,7 @@ export const listRegionRecoverableSnapshots: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListRegionsError = NotFound | Forbidden | GcpOpError;
 /** Retrieves the list of region resources available to the specified project. To decrease latency for this method, you can optionally omit any unneeded information from the response by using a field mask. This practice is especially recommended for unused quota information (the `items.quotas` field). To exclude one or more fields, set your request's `fields` query parameter to only include the fields you need. For example, to only include the `id` and `selfLink` fields, add the query parameter `?fields=id,selfLink` to your request. This method fails if the quota information is unavailable for the region and if the organization policy constraint compute.requireBasicQuotaInResponse is enforced. This constraint, when enforced, disables the fail-open behaviour when quota information (the `items.quotas` field) is unavailable for the region. It is recommended to use the default setting for the constraint unless your application requires the fail-closed behaviour for this method. */
@@ -105498,7 +105608,8 @@ export const listRegions: API.PaginatedOperationMethod<
   ListRegionsRequest,
   RegionList,
   ListRegionsError,
-  GcpOpContext
+  GcpOpContext,
+  Region
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRegionsRequest,
   output: RegionList,
@@ -105510,7 +105621,7 @@ export const listRegions: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListRegionSecurityPoliciesError = NotFound | Forbidden | GcpOpError;
 /** List all the policies that have been configured for the specified project and region. */
@@ -105518,7 +105629,8 @@ export const listRegionSecurityPolicies: API.PaginatedOperationMethod<
   ListRegionSecurityPoliciesRequest,
   SecurityPolicyList,
   ListRegionSecurityPoliciesError,
-  GcpOpContext
+  GcpOpContext,
+  SecurityPolicy
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRegionSecurityPoliciesRequest,
   output: SecurityPolicyList,
@@ -105530,7 +105642,7 @@ export const listRegionSecurityPolicies: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListRegionSnapshotsError = NotFound | Forbidden | GcpOpError;
 /** Retrieves the list of Snapshot resources contained within the specified region. */
@@ -105538,7 +105650,8 @@ export const listRegionSnapshots: API.PaginatedOperationMethod<
   ListRegionSnapshotsRequest,
   SnapshotList,
   ListRegionSnapshotsError,
-  GcpOpContext
+  GcpOpContext,
+  Snapshot
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRegionSnapshotsRequest,
   output: SnapshotList,
@@ -105550,7 +105663,7 @@ export const listRegionSnapshots: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListRegionSslCertificatesError = NotFound | Forbidden | GcpOpError;
 /** Retrieves the list of SslCertificate resources available to the specified project in the specified region. */
@@ -105558,7 +105671,8 @@ export const listRegionSslCertificates: API.PaginatedOperationMethod<
   ListRegionSslCertificatesRequest,
   SslCertificateList,
   ListRegionSslCertificatesError,
-  GcpOpContext
+  GcpOpContext,
+  SslCertificate
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRegionSslCertificatesRequest,
   output: SslCertificateList,
@@ -105570,7 +105684,7 @@ export const listRegionSslCertificates: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListRegionSslPoliciesError = NotFound | Forbidden | GcpOpError;
 /** Lists all the SSL policies that have been configured for the specified project and region. */
@@ -105578,7 +105692,8 @@ export const listRegionSslPolicies: API.PaginatedOperationMethod<
   ListRegionSslPoliciesRequest,
   SslPoliciesList,
   ListRegionSslPoliciesError,
-  GcpOpContext
+  GcpOpContext,
+  SslPolicy
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRegionSslPoliciesRequest,
   output: SslPoliciesList,
@@ -105590,7 +105705,7 @@ export const listRegionSslPolicies: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListRegionTargetHttpProxiesError =
   | NotFound
@@ -105601,7 +105716,8 @@ export const listRegionTargetHttpProxies: API.PaginatedOperationMethod<
   ListRegionTargetHttpProxiesRequest,
   TargetHttpProxyList,
   ListRegionTargetHttpProxiesError,
-  GcpOpContext
+  GcpOpContext,
+  TargetHttpProxy
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRegionTargetHttpProxiesRequest,
   output: TargetHttpProxyList,
@@ -105613,7 +105729,7 @@ export const listRegionTargetHttpProxies: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListRegionTargetHttpsProxiesError =
   | NotFound
@@ -105624,7 +105740,8 @@ export const listRegionTargetHttpsProxies: API.PaginatedOperationMethod<
   ListRegionTargetHttpsProxiesRequest,
   TargetHttpsProxyList,
   ListRegionTargetHttpsProxiesError,
-  GcpOpContext
+  GcpOpContext,
+  TargetHttpsProxy
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRegionTargetHttpsProxiesRequest,
   output: TargetHttpsProxyList,
@@ -105636,7 +105753,7 @@ export const listRegionTargetHttpsProxies: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListRegionTargetTcpProxiesError = NotFound | Forbidden | GcpOpError;
 /** Retrieves a list of TargetTcpProxy resources available to the specified project in a given region. */
@@ -105644,7 +105761,8 @@ export const listRegionTargetTcpProxies: API.PaginatedOperationMethod<
   ListRegionTargetTcpProxiesRequest,
   TargetTcpProxyList,
   ListRegionTargetTcpProxiesError,
-  GcpOpContext
+  GcpOpContext,
+  TargetTcpProxy
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRegionTargetTcpProxiesRequest,
   output: TargetTcpProxyList,
@@ -105656,7 +105774,7 @@ export const listRegionTargetTcpProxies: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListRegionUrlMapsError = NotFound | Forbidden | GcpOpError;
 /** Retrieves the list of UrlMap resources available to the specified project in the specified region. */
@@ -105664,7 +105782,8 @@ export const listRegionUrlMaps: API.PaginatedOperationMethod<
   ListRegionUrlMapsRequest,
   UrlMapList,
   ListRegionUrlMapsError,
-  GcpOpContext
+  GcpOpContext,
+  UrlMap
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRegionUrlMapsRequest,
   output: UrlMapList,
@@ -105676,7 +105795,7 @@ export const listRegionUrlMaps: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListRegionZonesError = NotFound | Forbidden | GcpOpError;
 /** Retrieves the list of Zone resources under the specific region available to the specified project. */
@@ -105684,7 +105803,8 @@ export const listRegionZones: API.PaginatedOperationMethod<
   ListRegionZonesRequest,
   ZoneList,
   ListRegionZonesError,
-  GcpOpContext
+  GcpOpContext,
+  Zone
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRegionZonesRequest,
   output: ZoneList,
@@ -105696,7 +105816,7 @@ export const listRegionZones: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListReliabilityRisksError = NotFound | Forbidden | GcpOpError;
 /** Retrieves the list of reliabilityRisks available in the specified project. */
@@ -105704,7 +105824,8 @@ export const listReliabilityRisks: API.PaginatedOperationMethod<
   ListReliabilityRisksRequest,
   ReliabilityRisksListResponse,
   ListReliabilityRisksError,
-  GcpOpContext
+  GcpOpContext,
+  ReliabilityRisk
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListReliabilityRisksRequest,
   output: ReliabilityRisksListResponse,
@@ -105716,7 +105837,7 @@ export const listReliabilityRisks: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListReservationBlocksError = NotFound | Forbidden | GcpOpError;
 /** Retrieves a list of reservation blocks under a single reservation. */
@@ -105724,7 +105845,8 @@ export const listReservationBlocks: API.PaginatedOperationMethod<
   ListReservationBlocksRequest,
   ReservationBlocksListResponse,
   ListReservationBlocksError,
-  GcpOpContext
+  GcpOpContext,
+  ReservationBlock
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListReservationBlocksRequest,
   output: ReservationBlocksListResponse,
@@ -105736,7 +105858,7 @@ export const listReservationBlocks: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListReservationsError = NotFound | Forbidden | GcpOpError;
 /** A list of all the reservations that have been configured for the specified project in specified zone. */
@@ -105744,7 +105866,8 @@ export const listReservations: API.PaginatedOperationMethod<
   ListReservationsRequest,
   ReservationList,
   ListReservationsError,
-  GcpOpContext
+  GcpOpContext,
+  Reservation
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListReservationsRequest,
   output: ReservationList,
@@ -105756,7 +105879,7 @@ export const listReservations: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListReservationSlotsError = NotFound | Forbidden | GcpOpError;
 /** Retrieves a list of reservation slots under a single reservation. */
@@ -105764,7 +105887,8 @@ export const listReservationSlots: API.PaginatedOperationMethod<
   ListReservationSlotsRequest,
   ReservationSlotsListResponse,
   ListReservationSlotsError,
-  GcpOpContext
+  GcpOpContext,
+  ReservationSlot
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListReservationSlotsRequest,
   output: ReservationSlotsListResponse,
@@ -105776,7 +105900,7 @@ export const listReservationSlots: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListReservationSubBlocksError = NotFound | Forbidden | GcpOpError;
 /** Retrieves a list of reservation subBlocks under a single reservation. */
@@ -105784,7 +105908,8 @@ export const listReservationSubBlocks: API.PaginatedOperationMethod<
   ListReservationSubBlocksRequest,
   ReservationSubBlocksListResponse,
   ListReservationSubBlocksError,
-  GcpOpContext
+  GcpOpContext,
+  ReservationSubBlock
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListReservationSubBlocksRequest,
   output: ReservationSubBlocksListResponse,
@@ -105796,7 +105921,7 @@ export const listReservationSubBlocks: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListResourcePoliciesError = NotFound | Forbidden | GcpOpError;
 /** A list all the resource policies that have been configured for the specified project in specified region. */
@@ -105804,7 +105929,8 @@ export const listResourcePolicies: API.PaginatedOperationMethod<
   ListResourcePoliciesRequest,
   ResourcePolicyList,
   ListResourcePoliciesError,
-  GcpOpContext
+  GcpOpContext,
+  ResourcePolicy
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListResourcePoliciesRequest,
   output: ResourcePolicyList,
@@ -105816,7 +105942,7 @@ export const listResourcePolicies: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListRolloutPlansError = NotFound | Forbidden | GcpOpError;
 /** Lists RolloutPlans in a given project and location. */
@@ -105824,7 +105950,8 @@ export const listRolloutPlans: API.PaginatedOperationMethod<
   ListRolloutPlansRequest,
   RolloutPlansListResponse,
   ListRolloutPlansError,
-  GcpOpContext
+  GcpOpContext,
+  RolloutPlan
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRolloutPlansRequest,
   output: RolloutPlansListResponse,
@@ -105836,7 +105963,7 @@ export const listRolloutPlans: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListRolloutsError = NotFound | Forbidden | GcpOpError;
 /** Lists Rollouts in a given project and location. */
@@ -105844,7 +105971,8 @@ export const listRollouts: API.PaginatedOperationMethod<
   ListRolloutsRequest,
   RolloutsListResponse,
   ListRolloutsError,
-  GcpOpContext
+  GcpOpContext,
+  Rollout
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRolloutsRequest,
   output: RolloutsListResponse,
@@ -105856,7 +105984,7 @@ export const listRollouts: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListRoutePoliciesRoutersError = NotFound | Forbidden | GcpOpError;
 /** Retrieves a list of router route policy subresources available to the specified project. */
@@ -105864,7 +105992,8 @@ export const listRoutePoliciesRouters: API.PaginatedOperationMethod<
   ListRoutePoliciesRoutersRequest,
   RoutersListRoutePolicies,
   ListRoutePoliciesRoutersError,
-  GcpOpContext
+  GcpOpContext,
+  RoutersListRoutePolicies
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRoutePoliciesRoutersRequest,
   output: RoutersListRoutePolicies,
@@ -105875,7 +106004,7 @@ export const listRoutePoliciesRouters: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListRoutersError = NotFound | Forbidden | GcpOpError;
 /** Retrieves a list of Router resources available to the specified project. */
@@ -105883,7 +106012,8 @@ export const listRouters: API.PaginatedOperationMethod<
   ListRoutersRequest,
   RouterList,
   ListRoutersError,
-  GcpOpContext
+  GcpOpContext,
+  Router
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRoutersRequest,
   output: RouterList,
@@ -105895,7 +106025,7 @@ export const listRouters: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListRoutesError = NotFound | Forbidden | GcpOpError;
 /** Retrieves the list of Route resources available to the specified project. */
@@ -105903,7 +106033,8 @@ export const listRoutes: API.PaginatedOperationMethod<
   ListRoutesRequest,
   RouteList,
   ListRoutesError,
-  GcpOpContext
+  GcpOpContext,
+  Route
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRoutesRequest,
   output: RouteList,
@@ -105915,7 +106046,7 @@ export const listRoutes: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListSecurityPoliciesError = NotFound | Forbidden | GcpOpError;
 /** List all the policies that have been configured for the specified project. */
@@ -105923,7 +106054,8 @@ export const listSecurityPolicies: API.PaginatedOperationMethod<
   ListSecurityPoliciesRequest,
   SecurityPolicyList,
   ListSecurityPoliciesError,
-  GcpOpContext
+  GcpOpContext,
+  SecurityPolicy
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSecurityPoliciesRequest,
   output: SecurityPolicyList,
@@ -105935,7 +106067,7 @@ export const listSecurityPolicies: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListServiceAttachmentsError = NotFound | Forbidden | GcpOpError;
 /** Lists the ServiceAttachments for a project in the given scope. */
@@ -105943,7 +106075,8 @@ export const listServiceAttachments: API.PaginatedOperationMethod<
   ListServiceAttachmentsRequest,
   ServiceAttachmentList,
   ListServiceAttachmentsError,
-  GcpOpContext
+  GcpOpContext,
+  ServiceAttachment
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListServiceAttachmentsRequest,
   output: ServiceAttachmentList,
@@ -105955,7 +106088,7 @@ export const listServiceAttachments: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListSnapshotGroups_Error = NotFound | Forbidden | GcpOpError;
 /** retrieves the list of SnapshotGroup resources contained within the specified project. */
@@ -105963,7 +106096,8 @@ export const listSnapshotGroups: API.PaginatedOperationMethod<
   ListSnapshotGroupsRequest,
   ListSnapshotGroups,
   ListSnapshotGroups_Error,
-  GcpOpContext
+  GcpOpContext,
+  SnapshotGroup
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSnapshotGroupsRequest,
   output: ListSnapshotGroups,
@@ -105975,7 +106109,7 @@ export const listSnapshotGroups: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListSnapshotsError = NotFound | Forbidden | GcpOpError;
 /** Retrieves the list of Snapshot resources contained within the specified project. */
@@ -105983,7 +106117,8 @@ export const listSnapshots: API.PaginatedOperationMethod<
   ListSnapshotsRequest,
   SnapshotList,
   ListSnapshotsError,
-  GcpOpContext
+  GcpOpContext,
+  Snapshot
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSnapshotsRequest,
   output: SnapshotList,
@@ -105995,7 +106130,7 @@ export const listSnapshots: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListSslCertificatesError = NotFound | Forbidden | GcpOpError;
 /** Retrieves the list of SslCertificate resources available to the specified project. */
@@ -106003,7 +106138,8 @@ export const listSslCertificates: API.PaginatedOperationMethod<
   ListSslCertificatesRequest,
   SslCertificateList,
   ListSslCertificatesError,
-  GcpOpContext
+  GcpOpContext,
+  SslCertificate
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSslCertificatesRequest,
   output: SslCertificateList,
@@ -106015,7 +106151,7 @@ export const listSslCertificates: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListSslPoliciesError = NotFound | Forbidden | GcpOpError;
 /** Lists all the SSL policies that have been configured for the specified project. */
@@ -106023,7 +106159,8 @@ export const listSslPolicies: API.PaginatedOperationMethod<
   ListSslPoliciesRequest,
   SslPoliciesList,
   ListSslPoliciesError,
-  GcpOpContext
+  GcpOpContext,
+  SslPolicy
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSslPoliciesRequest,
   output: SslPoliciesList,
@@ -106035,7 +106172,7 @@ export const listSslPolicies: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListStoragePoolsError = NotFound | Forbidden | GcpOpError;
 /** Retrieves a list of storage pools contained within the specified zone. */
@@ -106043,7 +106180,8 @@ export const listStoragePools: API.PaginatedOperationMethod<
   ListStoragePoolsRequest,
   StoragePoolList,
   ListStoragePoolsError,
-  GcpOpContext
+  GcpOpContext,
+  StoragePool
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListStoragePoolsRequest,
   output: StoragePoolList,
@@ -106055,7 +106193,7 @@ export const listStoragePools: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListStoragePoolTypesError = NotFound | Forbidden | GcpOpError;
 /** Retrieves a list of storage pool types available to the specified project. */
@@ -106063,7 +106201,8 @@ export const listStoragePoolTypes: API.PaginatedOperationMethod<
   ListStoragePoolTypesRequest,
   StoragePoolTypeList,
   ListStoragePoolTypesError,
-  GcpOpContext
+  GcpOpContext,
+  StoragePoolType
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListStoragePoolTypesRequest,
   output: StoragePoolTypeList,
@@ -106075,7 +106214,7 @@ export const listStoragePoolTypes: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListSubnetworksError = NotFound | Forbidden | GcpOpError;
 /** Retrieves a list of subnetworks available to the specified project. */
@@ -106083,7 +106222,8 @@ export const listSubnetworks: API.PaginatedOperationMethod<
   ListSubnetworksRequest,
   SubnetworkList,
   ListSubnetworksError,
-  GcpOpContext
+  GcpOpContext,
+  Subnetwork
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSubnetworksRequest,
   output: SubnetworkList,
@@ -106095,7 +106235,7 @@ export const listSubnetworks: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListTargetGrpcProxiesError = NotFound | Forbidden | GcpOpError;
 /** Lists the TargetGrpcProxies for a project in the given scope. */
@@ -106103,7 +106243,8 @@ export const listTargetGrpcProxies: API.PaginatedOperationMethod<
   ListTargetGrpcProxiesRequest,
   TargetGrpcProxyList,
   ListTargetGrpcProxiesError,
-  GcpOpContext
+  GcpOpContext,
+  TargetGrpcProxy
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTargetGrpcProxiesRequest,
   output: TargetGrpcProxyList,
@@ -106115,7 +106256,7 @@ export const listTargetGrpcProxies: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListTargetHttpProxiesError = NotFound | Forbidden | GcpOpError;
 /** Retrieves the list of TargetHttpProxy resources available to the specified project. */
@@ -106123,7 +106264,8 @@ export const listTargetHttpProxies: API.PaginatedOperationMethod<
   ListTargetHttpProxiesRequest,
   TargetHttpProxyList,
   ListTargetHttpProxiesError,
-  GcpOpContext
+  GcpOpContext,
+  TargetHttpProxy
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTargetHttpProxiesRequest,
   output: TargetHttpProxyList,
@@ -106135,7 +106277,7 @@ export const listTargetHttpProxies: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListTargetHttpsProxiesError = NotFound | Forbidden | GcpOpError;
 /** Retrieves the list of TargetHttpsProxy resources available to the specified project. */
@@ -106143,7 +106285,8 @@ export const listTargetHttpsProxies: API.PaginatedOperationMethod<
   ListTargetHttpsProxiesRequest,
   TargetHttpsProxyList,
   ListTargetHttpsProxiesError,
-  GcpOpContext
+  GcpOpContext,
+  TargetHttpsProxy
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTargetHttpsProxiesRequest,
   output: TargetHttpsProxyList,
@@ -106155,7 +106298,7 @@ export const listTargetHttpsProxies: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListTargetInstancesError = NotFound | Forbidden | GcpOpError;
 /** Retrieves a list of TargetInstance resources available to the specified project and zone. */
@@ -106163,7 +106306,8 @@ export const listTargetInstances: API.PaginatedOperationMethod<
   ListTargetInstancesRequest,
   TargetInstanceList,
   ListTargetInstancesError,
-  GcpOpContext
+  GcpOpContext,
+  TargetInstance
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTargetInstancesRequest,
   output: TargetInstanceList,
@@ -106175,7 +106319,7 @@ export const listTargetInstances: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListTargetPoolsError = NotFound | Forbidden | GcpOpError;
 /** Retrieves a list of target pools available to the specified project and region. */
@@ -106183,7 +106327,8 @@ export const listTargetPools: API.PaginatedOperationMethod<
   ListTargetPoolsRequest,
   TargetPoolList,
   ListTargetPoolsError,
-  GcpOpContext
+  GcpOpContext,
+  TargetPool
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTargetPoolsRequest,
   output: TargetPoolList,
@@ -106195,7 +106340,7 @@ export const listTargetPools: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListTargetSslProxiesError = NotFound | Forbidden | GcpOpError;
 /** Retrieves the list of TargetSslProxy resources available to the specified project. */
@@ -106203,7 +106348,8 @@ export const listTargetSslProxies: API.PaginatedOperationMethod<
   ListTargetSslProxiesRequest,
   TargetSslProxyList,
   ListTargetSslProxiesError,
-  GcpOpContext
+  GcpOpContext,
+  TargetSslProxy
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTargetSslProxiesRequest,
   output: TargetSslProxyList,
@@ -106215,7 +106361,7 @@ export const listTargetSslProxies: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListTargetTcpProxiesError = NotFound | Forbidden | GcpOpError;
 /** Retrieves the list of TargetTcpProxy resources available to the specified project. */
@@ -106223,7 +106369,8 @@ export const listTargetTcpProxies: API.PaginatedOperationMethod<
   ListTargetTcpProxiesRequest,
   TargetTcpProxyList,
   ListTargetTcpProxiesError,
-  GcpOpContext
+  GcpOpContext,
+  TargetTcpProxy
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTargetTcpProxiesRequest,
   output: TargetTcpProxyList,
@@ -106235,7 +106382,7 @@ export const listTargetTcpProxies: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListTargetVpnGatewaysError = NotFound | Forbidden | GcpOpError;
 /** Retrieves a list of target VPN gateways available to the specified project and region. */
@@ -106243,7 +106390,8 @@ export const listTargetVpnGateways: API.PaginatedOperationMethod<
   ListTargetVpnGatewaysRequest,
   TargetVpnGatewayList,
   ListTargetVpnGatewaysError,
-  GcpOpContext
+  GcpOpContext,
+  TargetVpnGateway
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTargetVpnGatewaysRequest,
   output: TargetVpnGatewayList,
@@ -106255,7 +106403,7 @@ export const listTargetVpnGateways: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListUrlMapsError = NotFound | Forbidden | GcpOpError;
 /** Retrieves the list of UrlMap resources available to the specified project. */
@@ -106263,7 +106411,8 @@ export const listUrlMaps: API.PaginatedOperationMethod<
   ListUrlMapsRequest,
   UrlMapList,
   ListUrlMapsError,
-  GcpOpContext
+  GcpOpContext,
+  UrlMap
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListUrlMapsRequest,
   output: UrlMapList,
@@ -106275,7 +106424,7 @@ export const listUrlMaps: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListUsableBackendBucketsError = NotFound | Forbidden | GcpOpError;
 /** Retrieves a list of all usable backend buckets in the specified project. */
@@ -106283,7 +106432,8 @@ export const listUsableBackendBuckets: API.PaginatedOperationMethod<
   ListUsableBackendBucketsRequest,
   BackendBucketListUsable,
   ListUsableBackendBucketsError,
-  GcpOpContext
+  GcpOpContext,
+  BackendBucket
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListUsableBackendBucketsRequest,
   output: BackendBucketListUsable,
@@ -106295,7 +106445,7 @@ export const listUsableBackendBuckets: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListUsableBackendServicesError = NotFound | Forbidden | GcpOpError;
 /** Retrieves a list of all usable backend services in the specified project. */
@@ -106303,7 +106453,8 @@ export const listUsableBackendServices: API.PaginatedOperationMethod<
   ListUsableBackendServicesRequest,
   BackendServiceListUsable,
   ListUsableBackendServicesError,
-  GcpOpContext
+  GcpOpContext,
+  BackendService
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListUsableBackendServicesRequest,
   output: BackendServiceListUsable,
@@ -106315,7 +106466,7 @@ export const listUsableBackendServices: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListUsableRegionBackendBucketsError =
   | NotFound
@@ -106326,7 +106477,8 @@ export const listUsableRegionBackendBuckets: API.PaginatedOperationMethod<
   ListUsableRegionBackendBucketsRequest,
   BackendBucketListUsable,
   ListUsableRegionBackendBucketsError,
-  GcpOpContext
+  GcpOpContext,
+  BackendBucket
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListUsableRegionBackendBucketsRequest,
   output: BackendBucketListUsable,
@@ -106338,7 +106490,7 @@ export const listUsableRegionBackendBuckets: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListUsableRegionBackendServicesError =
   | NotFound
@@ -106349,7 +106501,8 @@ export const listUsableRegionBackendServices: API.PaginatedOperationMethod<
   ListUsableRegionBackendServicesRequest,
   BackendServiceListUsable,
   ListUsableRegionBackendServicesError,
-  GcpOpContext
+  GcpOpContext,
+  BackendService
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListUsableRegionBackendServicesRequest,
   output: BackendServiceListUsable,
@@ -106361,7 +106514,7 @@ export const listUsableRegionBackendServices: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListUsableSubnetworksError = NotFound | Forbidden | GcpOpError;
 /** Retrieves an aggregated list of all usable subnetworks in the project. */
@@ -106369,7 +106522,8 @@ export const listUsableSubnetworks: API.PaginatedOperationMethod<
   ListUsableSubnetworksRequest,
   UsableSubnetworksAggregatedList,
   ListUsableSubnetworksError,
-  GcpOpContext
+  GcpOpContext,
+  UsableSubnetwork
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListUsableSubnetworksRequest,
   output: UsableSubnetworksAggregatedList,
@@ -106381,7 +106535,7 @@ export const listUsableSubnetworks: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListVmExtensionsFolderGlobalVmExtensionPoliciesError =
   | NotFound
@@ -106392,7 +106546,8 @@ export const listVmExtensionsFolderGlobalVmExtensionPolicies: API.PaginatedOpera
   ListVmExtensionsFolderGlobalVmExtensionPoliciesRequest,
   GlobalListVmExtensionsResponse,
   ListVmExtensionsFolderGlobalVmExtensionPoliciesError,
-  GcpOpContext
+  GcpOpContext,
+  GlobalVmExtension
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListVmExtensionsFolderGlobalVmExtensionPoliciesRequest,
   output: GlobalListVmExtensionsResponse,
@@ -106404,7 +106559,7 @@ export const listVmExtensionsFolderGlobalVmExtensionPolicies: API.PaginatedOpera
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListVmExtensionsFolderZoneVmExtensionPoliciesError =
   | NotFound
@@ -106415,7 +106570,8 @@ export const listVmExtensionsFolderZoneVmExtensionPolicies: API.PaginatedOperati
   ListVmExtensionsFolderZoneVmExtensionPoliciesRequest,
   ListVmExtensionsResponse,
   ListVmExtensionsFolderZoneVmExtensionPoliciesError,
-  GcpOpContext
+  GcpOpContext,
+  VmExtension
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListVmExtensionsFolderZoneVmExtensionPoliciesRequest,
   output: ListVmExtensionsResponse,
@@ -106427,7 +106583,7 @@ export const listVmExtensionsFolderZoneVmExtensionPolicies: API.PaginatedOperati
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListVmExtensionsGlobalVmExtensionPoliciesError =
   | NotFound
@@ -106438,7 +106594,8 @@ export const listVmExtensionsGlobalVmExtensionPolicies: API.PaginatedOperationMe
   ListVmExtensionsGlobalVmExtensionPoliciesRequest,
   GlobalListVmExtensionsResponse,
   ListVmExtensionsGlobalVmExtensionPoliciesError,
-  GcpOpContext
+  GcpOpContext,
+  GlobalVmExtension
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListVmExtensionsGlobalVmExtensionPoliciesRequest,
   output: GlobalListVmExtensionsResponse,
@@ -106450,7 +106607,7 @@ export const listVmExtensionsGlobalVmExtensionPolicies: API.PaginatedOperationMe
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListVmExtensionsOrganizationGlobalVmExtensionPoliciesError =
   | NotFound
@@ -106461,7 +106618,8 @@ export const listVmExtensionsOrganizationGlobalVmExtensionPolicies: API.Paginate
   ListVmExtensionsOrganizationGlobalVmExtensionPoliciesRequest,
   GlobalListVmExtensionsResponse,
   ListVmExtensionsOrganizationGlobalVmExtensionPoliciesError,
-  GcpOpContext
+  GcpOpContext,
+  GlobalVmExtension
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListVmExtensionsOrganizationGlobalVmExtensionPoliciesRequest,
   output: GlobalListVmExtensionsResponse,
@@ -106473,7 +106631,7 @@ export const listVmExtensionsOrganizationGlobalVmExtensionPolicies: API.Paginate
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListVmExtensionsOrganizationZoneVmExtensionPoliciesError =
   | NotFound
@@ -106484,7 +106642,8 @@ export const listVmExtensionsOrganizationZoneVmExtensionPolicies: API.PaginatedO
   ListVmExtensionsOrganizationZoneVmExtensionPoliciesRequest,
   ListVmExtensionsResponse,
   ListVmExtensionsOrganizationZoneVmExtensionPoliciesError,
-  GcpOpContext
+  GcpOpContext,
+  VmExtension
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListVmExtensionsOrganizationZoneVmExtensionPoliciesRequest,
   output: ListVmExtensionsResponse,
@@ -106496,7 +106655,7 @@ export const listVmExtensionsOrganizationZoneVmExtensionPolicies: API.PaginatedO
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListVmExtensionStatesInstancesError =
   | NotFound
@@ -106507,7 +106666,8 @@ export const listVmExtensionStatesInstances: API.PaginatedOperationMethod<
   ListVmExtensionStatesInstancesRequest,
   ListVmExtensionStatesResponse,
   ListVmExtensionStatesInstancesError,
-  GcpOpContext
+  GcpOpContext,
+  VmExtensionState
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListVmExtensionStatesInstancesRequest,
   output: ListVmExtensionStatesResponse,
@@ -106519,7 +106679,7 @@ export const listVmExtensionStatesInstances: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListVmExtensionsZoneVmExtensionPoliciesError =
   | NotFound
@@ -106530,7 +106690,8 @@ export const listVmExtensionsZoneVmExtensionPolicies: API.PaginatedOperationMeth
   ListVmExtensionsZoneVmExtensionPoliciesRequest,
   ListVmExtensionsResponse,
   ListVmExtensionsZoneVmExtensionPoliciesError,
-  GcpOpContext
+  GcpOpContext,
+  VmExtension
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListVmExtensionsZoneVmExtensionPoliciesRequest,
   output: ListVmExtensionsResponse,
@@ -106542,7 +106703,7 @@ export const listVmExtensionsZoneVmExtensionPolicies: API.PaginatedOperationMeth
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListVpnGatewaysError = NotFound | Forbidden | GcpOpError;
 /** Retrieves a list of VPN gateways available to the specified project and region. */
@@ -106550,7 +106711,8 @@ export const listVpnGateways: API.PaginatedOperationMethod<
   ListVpnGatewaysRequest,
   VpnGatewayList,
   ListVpnGatewaysError,
-  GcpOpContext
+  GcpOpContext,
+  VpnGateway
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListVpnGatewaysRequest,
   output: VpnGatewayList,
@@ -106562,7 +106724,7 @@ export const listVpnGateways: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListVpnTunnelsError = NotFound | Forbidden | GcpOpError;
 /** Retrieves a list of VpnTunnel resources contained in the specified project and region. */
@@ -106570,7 +106732,8 @@ export const listVpnTunnels: API.PaginatedOperationMethod<
   ListVpnTunnelsRequest,
   VpnTunnelList,
   ListVpnTunnelsError,
-  GcpOpContext
+  GcpOpContext,
+  VpnTunnel
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListVpnTunnelsRequest,
   output: VpnTunnelList,
@@ -106582,7 +106745,7 @@ export const listVpnTunnels: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListWireGroupsError = NotFound | Forbidden | GcpOpError;
 /** Lists the wire groups for a project in the given scope. */
@@ -106590,7 +106753,8 @@ export const listWireGroups: API.PaginatedOperationMethod<
   ListWireGroupsRequest,
   WireGroupList,
   ListWireGroupsError,
-  GcpOpContext
+  GcpOpContext,
+  WireGroup
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListWireGroupsRequest,
   output: WireGroupList,
@@ -106602,7 +106766,7 @@ export const listWireGroups: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListXpnHostsProjectsError =
   | NotFound
@@ -106615,7 +106779,8 @@ export const listXpnHostsProjects: API.PaginatedOperationMethod<
   ListXpnHostsProjectsRequest,
   XpnHostList,
   ListXpnHostsProjectsError,
-  GcpOpContext
+  GcpOpContext,
+  Project
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListXpnHostsProjectsRequest,
   output: XpnHostList,
@@ -106627,7 +106792,7 @@ export const listXpnHostsProjects: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListZoneFolderOperationsError = NotFound | Forbidden | GcpOpError;
 /** Retrieves a list of Operation resources contained within the specified folder. */
@@ -106635,7 +106800,8 @@ export const listZoneFolderOperations: API.PaginatedOperationMethod<
   ListZoneFolderOperationsRequest,
   OperationList,
   ListZoneFolderOperationsError,
-  GcpOpContext
+  GcpOpContext,
+  Operation
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListZoneFolderOperationsRequest,
   output: OperationList,
@@ -106647,7 +106813,7 @@ export const listZoneFolderOperations: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListZoneOperationsError = NotFound | Forbidden | GcpOpError;
 /** Retrieves a list of Operation resources contained within the specified zone. */
@@ -106655,7 +106821,8 @@ export const listZoneOperations: API.PaginatedOperationMethod<
   ListZoneOperationsRequest,
   OperationList,
   ListZoneOperationsError,
-  GcpOpContext
+  GcpOpContext,
+  Operation
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListZoneOperationsRequest,
   output: OperationList,
@@ -106667,7 +106834,7 @@ export const listZoneOperations: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListZoneOrganizationOperationsError =
   | NotFound
@@ -106678,7 +106845,8 @@ export const listZoneOrganizationOperations: API.PaginatedOperationMethod<
   ListZoneOrganizationOperationsRequest,
   OperationList,
   ListZoneOrganizationOperationsError,
-  GcpOpContext
+  GcpOpContext,
+  Operation
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListZoneOrganizationOperationsRequest,
   output: OperationList,
@@ -106690,7 +106858,7 @@ export const listZoneOrganizationOperations: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListZoneQueuedResourcesError = NotFound | Forbidden | GcpOpError;
 /** Retrieves the list of QueuedResource resources. */
@@ -106698,7 +106866,8 @@ export const listZoneQueuedResources: API.PaginatedOperationMethod<
   ListZoneQueuedResourcesRequest,
   QueuedResourceList,
   ListZoneQueuedResourcesError,
-  GcpOpContext
+  GcpOpContext,
+  QueuedResource
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListZoneQueuedResourcesRequest,
   output: QueuedResourceList,
@@ -106710,7 +106879,7 @@ export const listZoneQueuedResources: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListZonesError = NotFound | Forbidden | GcpOpError;
 /** Retrieves the list of Zone resources available to the specified project. */
@@ -106718,7 +106887,8 @@ export const listZones: API.PaginatedOperationMethod<
   ListZonesRequest,
   ZoneList,
   ListZonesError,
-  GcpOpContext
+  GcpOpContext,
+  Zone
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListZonesRequest,
   output: ZoneList,
@@ -106730,7 +106900,7 @@ export const listZones: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListZoneVmExtensionPoliciesError =
   | NotFound
@@ -106741,7 +106911,8 @@ export const listZoneVmExtensionPolicies: API.PaginatedOperationMethod<
   ListZoneVmExtensionPoliciesRequest,
   VmExtensionPolicyList,
   ListZoneVmExtensionPoliciesError,
-  GcpOpContext
+  GcpOpContext,
+  VmExtensionPolicy
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListZoneVmExtensionPoliciesRequest,
   output: VmExtensionPolicyList,
@@ -106753,7 +106924,7 @@ export const listZoneVmExtensionPolicies: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type MoveAddressesError =
   | NotFound

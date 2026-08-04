@@ -3220,7 +3220,8 @@ export const getAttackSurfaceReportIssueType: API.PaginatedOperationMethod<
   GetAttackSurfaceReportIssueTypeRequest,
   GetAttackSurfaceReportIssueTypeResponse,
   GetAttackSurfaceReportIssueTypeError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  string
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: GetAttackSurfaceReportIssueTypeRequest,
@@ -3231,7 +3232,7 @@ export const getAttackSurfaceReportIssueType: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type GetDomainError = CloudflareOpError;
 /** Gets security details and statistics about a domain. */
@@ -3382,7 +3383,8 @@ export const listIndicatorFeeds: API.PaginatedOperationMethod<
   ListIndicatorFeedsRequest,
   ListIndicatorFeedsResponse,
   ListIndicatorFeedsError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  IndicatorFeedsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListIndicatorFeedsRequest,
@@ -3393,7 +3395,7 @@ export const listIndicatorFeeds: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListSinkholesError = CloudflareOpError;
 /** Lists sinkholes owned by the account for redirecting malicious traffic. */
@@ -3401,7 +3403,8 @@ export const listSinkholes: API.PaginatedOperationMethod<
   ListSinkholesRequest,
   ListSinkholesResponse,
   ListSinkholesError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  SinkholesListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListSinkholesRequest,
@@ -3412,7 +3415,7 @@ export const listSinkholes: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type PutIndicatorFeedSnapshotError =
   | IndicatorFeedNotFound

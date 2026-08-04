@@ -2459,7 +2459,8 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   ListProjectsLocationsRequest,
   ListLocationsResponse,
   ListProjectsLocationsError,
-  GcpOpContext
+  GcpOpContext,
+  ListLocationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsRequest,
   output: ListLocationsResponse,
@@ -2470,7 +2471,7 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsGlobalDomainsError =
   | NotFound
@@ -2481,7 +2482,8 @@ export const listProjectsLocationsGlobalDomains: API.PaginatedOperationMethod<
   ListProjectsLocationsGlobalDomainsRequest,
   ListDomainsResponse,
   ListProjectsLocationsGlobalDomainsError,
-  GcpOpContext
+  GcpOpContext,
+  ListDomainsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsGlobalDomainsRequest,
   output: ListDomainsResponse,
@@ -2492,7 +2494,7 @@ export const listProjectsLocationsGlobalDomains: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsGlobalDomainsBackupsError =
   | NotFound
@@ -2503,7 +2505,8 @@ export const listProjectsLocationsGlobalDomainsBackups: API.PaginatedOperationMe
   ListProjectsLocationsGlobalDomainsBackupsRequest,
   ListBackupsResponse,
   ListProjectsLocationsGlobalDomainsBackupsError,
-  GcpOpContext
+  GcpOpContext,
+  ListBackupsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsGlobalDomainsBackupsRequest,
   output: ListBackupsResponse,
@@ -2514,7 +2517,7 @@ export const listProjectsLocationsGlobalDomainsBackups: API.PaginatedOperationMe
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsGlobalDomainsSqlIntegrationsError =
   | NotFound
@@ -2525,7 +2528,8 @@ export const listProjectsLocationsGlobalDomainsSqlIntegrations: API.PaginatedOpe
   ListProjectsLocationsGlobalDomainsSqlIntegrationsRequest,
   ListSqlIntegrationsResponse,
   ListProjectsLocationsGlobalDomainsSqlIntegrationsError,
-  GcpOpContext
+  GcpOpContext,
+  ListSqlIntegrationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsGlobalDomainsSqlIntegrationsRequest,
   output: ListSqlIntegrationsResponse,
@@ -2536,7 +2540,7 @@ export const listProjectsLocationsGlobalDomainsSqlIntegrations: API.PaginatedOpe
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsGlobalOperationsError =
   | NotFound
@@ -2547,7 +2551,8 @@ export const listProjectsLocationsGlobalOperations: API.PaginatedOperationMethod
   ListProjectsLocationsGlobalOperationsRequest,
   ListOperationsResponse,
   ListProjectsLocationsGlobalOperationsError,
-  GcpOpContext
+  GcpOpContext,
+  ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsGlobalOperationsRequest,
   output: ListOperationsResponse,
@@ -2558,7 +2563,7 @@ export const listProjectsLocationsGlobalOperations: API.PaginatedOperationMethod
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsGlobalPeeringsError =
   | NotFound
@@ -2569,7 +2574,8 @@ export const listProjectsLocationsGlobalPeerings: API.PaginatedOperationMethod<
   ListProjectsLocationsGlobalPeeringsRequest,
   ListPeeringsResponse,
   ListProjectsLocationsGlobalPeeringsError,
-  GcpOpContext
+  GcpOpContext,
+  ListPeeringsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsGlobalPeeringsRequest,
   output: ListPeeringsResponse,
@@ -2580,7 +2586,7 @@ export const listProjectsLocationsGlobalPeerings: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type PatchProjectsLocationsGlobalDomainsError =
   | NotFound

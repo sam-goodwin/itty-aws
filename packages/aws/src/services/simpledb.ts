@@ -784,27 +784,7 @@ export const listDomains: API.OperationMethod<
     items: "DomainNames",
     pageSize: "MaxNumberOfDomains",
   } as const,
-})) as any as API.OperationMethod<
-  ListDomainsRequest,
-  ListDomainsResponse,
-  ListDomainsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDomainsRequest,
-  ) => stream.Stream<
-    ListDomainsResponse,
-    ListDomainsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDomainsRequest,
-  ) => stream.Stream<
-    string,
-    ListDomainsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type PutAttributesError =
   | AttributeDoesNotExist
@@ -896,24 +876,4 @@ export const select: API.OperationMethod<
     outputToken: "NextToken",
     items: "Items",
   } as const,
-})) as any as API.OperationMethod<
-  SelectRequest,
-  SelectResponse,
-  SelectError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: SelectRequest,
-  ) => stream.Stream<
-    SelectResponse,
-    SelectError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: SelectRequest,
-  ) => stream.Stream<
-    Item,
-    SelectError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;

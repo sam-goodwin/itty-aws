@@ -1260,27 +1260,7 @@ export const listChecks: API.OperationMethod<
     items: "checkSummaries",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListChecksRequest,
-  ListChecksResponse,
-  ListChecksError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListChecksRequest,
-  ) => stream.Stream<
-    ListChecksResponse,
-    ListChecksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListChecksRequest,
-  ) => stream.Stream<
-    CheckSummary,
-    ListChecksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListOrganizationRecommendationAccountsError =
   | AccessDeniedException
@@ -1331,27 +1311,7 @@ export const listOrganizationRecommendationAccounts: API.OperationMethod<
     items: "accountRecommendationLifecycleSummaries",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListOrganizationRecommendationAccountsRequest,
-  ListOrganizationRecommendationAccountsResponse,
-  ListOrganizationRecommendationAccountsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListOrganizationRecommendationAccountsRequest,
-  ) => stream.Stream<
-    ListOrganizationRecommendationAccountsResponse,
-    ListOrganizationRecommendationAccountsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListOrganizationRecommendationAccountsRequest,
-  ) => stream.Stream<
-    AccountRecommendationLifecycleSummary,
-    ListOrganizationRecommendationAccountsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListOrganizationRecommendationResourcesError =
   | AccessDeniedException
@@ -1402,27 +1362,7 @@ export const listOrganizationRecommendationResources: API.OperationMethod<
     items: "organizationRecommendationResourceSummaries",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListOrganizationRecommendationResourcesRequest,
-  ListOrganizationRecommendationResourcesResponse,
-  ListOrganizationRecommendationResourcesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListOrganizationRecommendationResourcesRequest,
-  ) => stream.Stream<
-    ListOrganizationRecommendationResourcesResponse,
-    ListOrganizationRecommendationResourcesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListOrganizationRecommendationResourcesRequest,
-  ) => stream.Stream<
-    OrganizationRecommendationResourceSummary,
-    ListOrganizationRecommendationResourcesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListOrganizationRecommendationsError =
   | AccessDeniedException
@@ -1471,27 +1411,7 @@ export const listOrganizationRecommendations: API.OperationMethod<
     items: "organizationRecommendationSummaries",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListOrganizationRecommendationsRequest,
-  ListOrganizationRecommendationsResponse,
-  ListOrganizationRecommendationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListOrganizationRecommendationsRequest,
-  ) => stream.Stream<
-    ListOrganizationRecommendationsResponse,
-    ListOrganizationRecommendationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListOrganizationRecommendationsRequest,
-  ) => stream.Stream<
-    OrganizationRecommendationSummary,
-    ListOrganizationRecommendationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListRecommendationResourcesError =
   | AccessDeniedException
@@ -1542,27 +1462,7 @@ export const listRecommendationResources: API.OperationMethod<
     items: "recommendationResourceSummaries",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListRecommendationResourcesRequest,
-  ListRecommendationResourcesResponse,
-  ListRecommendationResourcesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRecommendationResourcesRequest,
-  ) => stream.Stream<
-    ListRecommendationResourcesResponse,
-    ListRecommendationResourcesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRecommendationResourcesRequest,
-  ) => stream.Stream<
-    RecommendationResourceSummary,
-    ListRecommendationResourcesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListRecommendationsError =
   | AccessDeniedException
@@ -1611,27 +1511,7 @@ export const listRecommendations: API.OperationMethod<
     items: "recommendationSummaries",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListRecommendationsRequest,
-  ListRecommendationsResponse,
-  ListRecommendationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRecommendationsRequest,
-  ) => stream.Stream<
-    ListRecommendationsResponse,
-    ListRecommendationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRecommendationsRequest,
-  ) => stream.Stream<
-    RecommendationSummary,
-    ListRecommendationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type UpdateOrganizationRecommendationLifecycleError =
   | AccessDeniedException

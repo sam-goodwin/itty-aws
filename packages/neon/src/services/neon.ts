@@ -8257,7 +8257,8 @@ export const getConsumptionHistoryPerBranchV2: API.PaginatedOperationMethod<
   GetConsumptionHistoryPerBranchV2Request,
   GetConsumptionHistoryPerBranchV2Response,
   GetConsumptionHistoryPerBranchV2Error,
-  NeonOpContext
+  NeonOpContext,
+  ConsumptionHistoryPerBranchV2
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: GetConsumptionHistoryPerBranchV2Request,
@@ -8273,7 +8274,7 @@ export const getConsumptionHistoryPerBranchV2: API.PaginatedOperationMethod<
     } as const,
   }),
   paginateCursor,
-);
+) as any;
 
 export type GetConsumptionHistoryPerProjectError =
   | Forbidden
@@ -8284,7 +8285,8 @@ export const getConsumptionHistoryPerProject: API.PaginatedOperationMethod<
   GetConsumptionHistoryPerProjectRequest,
   GetConsumptionHistoryPerProjectResponse,
   GetConsumptionHistoryPerProjectError,
-  NeonOpContext
+  NeonOpContext,
+  ConsumptionHistoryPerProject
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: GetConsumptionHistoryPerProjectRequest,
@@ -8300,7 +8302,7 @@ export const getConsumptionHistoryPerProject: API.PaginatedOperationMethod<
     } as const,
   }),
   paginateCursor,
-);
+) as any;
 
 export type GetConsumptionHistoryPerProjectV2Error =
   | Forbidden
@@ -8311,7 +8313,8 @@ export const getConsumptionHistoryPerProjectV2: API.PaginatedOperationMethod<
   GetConsumptionHistoryPerProjectV2Request,
   GetConsumptionHistoryPerProjectV2Response,
   GetConsumptionHistoryPerProjectV2Error,
-  NeonOpContext
+  NeonOpContext,
+  ConsumptionHistoryPerProjectV2
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: GetConsumptionHistoryPerProjectV2Request,
@@ -8327,7 +8330,7 @@ export const getConsumptionHistoryPerProjectV2: API.PaginatedOperationMethod<
     } as const,
   }),
   paginateCursor,
-);
+) as any;
 
 export type GetCurrentUserInfoError = NeonOpError;
 /** Retrieve current user details Retrieves information about the currently authenticated Neon user, including account identifiers, plan details, and linked auth accounts. */
@@ -8530,7 +8533,8 @@ export const getOrganizationMembers: API.PaginatedOperationMethod<
   GetOrganizationMembersRequest,
   GetOrganizationMembersResponse,
   GetOrganizationMembersError,
-  NeonOpContext
+  NeonOpContext,
+  MemberWithUser
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: GetOrganizationMembersRequest,
@@ -8546,7 +8550,7 @@ export const getOrganizationMembers: API.PaginatedOperationMethod<
     } as const,
   }),
   paginateCursor,
-);
+) as any;
 
 export type GetOrganizationSpendingLimitError = NeonOpError;
 /** Retrieve organization spending limit Returns the configured monthly spending limit for the specified organization. `spending_limit_cents: null` indicates that no limit is currently set. Available to organization members with read access on Launch and Scale plans only. */
@@ -8914,7 +8918,8 @@ export const listProjectBranches: API.PaginatedOperationMethod<
   ListProjectBranchesRequest,
   ListProjectBranchesResponse,
   ListProjectBranchesError,
-  NeonOpContext
+  NeonOpContext,
+  Branch
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListProjectBranchesRequest,
@@ -8930,7 +8935,7 @@ export const listProjectBranches: API.PaginatedOperationMethod<
     } as const,
   }),
   paginateCursor,
-);
+) as any;
 
 export type ListProjectBranchRolesError = NotFound | NeonOpError;
 /** List roles Retrieves a list of Postgres roles from the specified branch. For related information, see [Manage roles](https://neon.com/docs/manage/roles/). */
@@ -8968,7 +8973,8 @@ export const listProjectOperations: API.PaginatedOperationMethod<
   ListProjectOperationsRequest,
   ListProjectOperationsResponse,
   ListProjectOperationsError,
-  NeonOpContext
+  NeonOpContext,
+  Operation
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListProjectOperationsRequest,
@@ -8984,7 +8990,7 @@ export const listProjectOperations: API.PaginatedOperationMethod<
     } as const,
   }),
   paginateCursor,
-);
+) as any;
 
 export type ListProjectPermissionsError = NotFound | NeonOpError;
 /** List project access Retrieves details about users who have access to the project, including the permission `id`, the granted-to email address, and the date project access was granted. */
@@ -9007,7 +9013,8 @@ export const listProjects: API.PaginatedOperationMethod<
   ListProjectsRequest,
   ListProjectsResponse,
   ListProjectsError,
-  NeonOpContext
+  NeonOpContext,
+  ProjectListItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListProjectsRequest,
@@ -9023,7 +9030,7 @@ export const listProjects: API.PaginatedOperationMethod<
     } as const,
   }),
   paginateCursor,
-);
+) as any;
 
 export type ListProjectVPCEndpointsError = NeonOpError;
 /** List VPC endpoint restrictions Lists VPC endpoint restrictions for the specified Neon project. */
@@ -9046,7 +9053,8 @@ export const listSharedProjects: API.PaginatedOperationMethod<
   ListSharedProjectsRequest,
   ListSharedProjectsResponse,
   ListSharedProjectsError,
-  NeonOpContext
+  NeonOpContext,
+  ProjectListItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListSharedProjectsRequest,
@@ -9062,7 +9070,7 @@ export const listSharedProjects: API.PaginatedOperationMethod<
     } as const,
   }),
   paginateCursor,
-);
+) as any;
 
 export type ListSnapshotsError = NeonOpError;
 /** List project snapshots Lists the snapshots for the specified project. Each snapshot represents a point-in-time backup of the project data. **Note**: This endpoint is currently in Beta. */

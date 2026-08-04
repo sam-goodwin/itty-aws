@@ -3001,27 +3001,7 @@ export const listAccessPolicies: API.OperationMethod<
   retry: Retry,
   operationName: "ListAccessPolicies",
   pagination: { inputToken: "nextToken", outputToken: "nextToken" } as const,
-})) as any as API.OperationMethod<
-  ListAccessPoliciesRequest,
-  ListAccessPoliciesResponse,
-  ListAccessPoliciesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAccessPoliciesRequest,
-  ) => stream.Stream<
-    ListAccessPoliciesResponse,
-    ListAccessPoliciesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAccessPoliciesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListAccessPoliciesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListCollectionGroupsError =
   | InternalServerException
@@ -3058,27 +3038,7 @@ export const listCollectionGroups: API.OperationMethod<
   retry: Retry,
   operationName: "ListCollectionGroups",
   pagination: { inputToken: "nextToken", outputToken: "nextToken" } as const,
-})) as any as API.OperationMethod<
-  ListCollectionGroupsRequest,
-  ListCollectionGroupsResponse,
-  ListCollectionGroupsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCollectionGroupsRequest,
-  ) => stream.Stream<
-    ListCollectionGroupsResponse,
-    ListCollectionGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCollectionGroupsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListCollectionGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListCollectionsError =
   | InternalServerException
@@ -3117,27 +3077,7 @@ export const listCollections: API.OperationMethod<
   retry: Retry,
   operationName: "ListCollections",
   pagination: { inputToken: "nextToken", outputToken: "nextToken" } as const,
-})) as any as API.OperationMethod<
-  ListCollectionsRequest,
-  ListCollectionsResponse,
-  ListCollectionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCollectionsRequest,
-  ) => stream.Stream<
-    ListCollectionsResponse,
-    ListCollectionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCollectionsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListCollectionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListLifecyclePoliciesError =
   | InternalServerException
@@ -3174,27 +3114,7 @@ export const listLifecyclePolicies: API.OperationMethod<
   retry: Retry,
   operationName: "ListLifecyclePolicies",
   pagination: { inputToken: "nextToken", outputToken: "nextToken" } as const,
-})) as any as API.OperationMethod<
-  ListLifecyclePoliciesRequest,
-  ListLifecyclePoliciesResponse,
-  ListLifecyclePoliciesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListLifecyclePoliciesRequest,
-  ) => stream.Stream<
-    ListLifecyclePoliciesResponse,
-    ListLifecyclePoliciesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListLifecyclePoliciesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListLifecyclePoliciesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListSecurityConfigsError =
   | InternalServerException
@@ -3231,27 +3151,7 @@ export const listSecurityConfigs: API.OperationMethod<
   retry: Retry,
   operationName: "ListSecurityConfigs",
   pagination: { inputToken: "nextToken", outputToken: "nextToken" } as const,
-})) as any as API.OperationMethod<
-  ListSecurityConfigsRequest,
-  ListSecurityConfigsResponse,
-  ListSecurityConfigsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSecurityConfigsRequest,
-  ) => stream.Stream<
-    ListSecurityConfigsResponse,
-    ListSecurityConfigsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSecurityConfigsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListSecurityConfigsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListSecurityPoliciesError =
   | InternalServerException
@@ -3288,27 +3188,7 @@ export const listSecurityPolicies: API.OperationMethod<
   retry: Retry,
   operationName: "ListSecurityPolicies",
   pagination: { inputToken: "nextToken", outputToken: "nextToken" } as const,
-})) as any as API.OperationMethod<
-  ListSecurityPoliciesRequest,
-  ListSecurityPoliciesResponse,
-  ListSecurityPoliciesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSecurityPoliciesRequest,
-  ) => stream.Stream<
-    ListSecurityPoliciesResponse,
-    ListSecurityPoliciesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSecurityPoliciesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListSecurityPoliciesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsForResourceError =
   | InternalServerException
@@ -3371,27 +3251,7 @@ export const listVpcEndpoints: API.OperationMethod<
   retry: Retry,
   operationName: "ListVpcEndpoints",
   pagination: { inputToken: "nextToken", outputToken: "nextToken" } as const,
-})) as any as API.OperationMethod<
-  ListVpcEndpointsRequest,
-  ListVpcEndpointsResponse,
-  ListVpcEndpointsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListVpcEndpointsRequest,
-  ) => stream.Stream<
-    ListVpcEndpointsResponse,
-    ListVpcEndpointsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListVpcEndpointsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListVpcEndpointsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type TagResourceError =
   | ConflictException

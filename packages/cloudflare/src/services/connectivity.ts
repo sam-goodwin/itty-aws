@@ -1531,7 +1531,8 @@ export const listDirectoryServices: API.PaginatedOperationMethod<
   ListDirectoryServicesRequest,
   ListDirectoryServicesResponse,
   ListDirectoryServicesError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  DirectoryServicesListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListDirectoryServicesRequest,
@@ -1548,7 +1549,7 @@ export const listDirectoryServices: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type UpdateDirectoryServiceError =
   | VpcServiceNotFound

@@ -977,7 +977,8 @@ export const listProjectsLocationsConnections: API.PaginatedOperationMethod<
   ListProjectsLocationsConnectionsRequest,
   ListConnectionsResponse,
   ListProjectsLocationsConnectionsError,
-  GcpOpContext
+  GcpOpContext,
+  ListConnectionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsConnectionsRequest,
   output: ListConnectionsResponse,
@@ -988,7 +989,7 @@ export const listProjectsLocationsConnections: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type PatchProjectsLocationsConnectionsError =
   | NotFound

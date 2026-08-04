@@ -1584,27 +1584,7 @@ export const describeImages: API.OperationMethod<
     items: "imageDetails",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeImagesRequest,
-  DescribeImagesResponse,
-  DescribeImagesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeImagesRequest,
-  ) => stream.Stream<
-    DescribeImagesResponse,
-    DescribeImagesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeImagesRequest,
-  ) => stream.Stream<
-    ImageDetail,
-    DescribeImagesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeImageTagsError =
   | InvalidParameterException
@@ -1653,27 +1633,7 @@ export const describeImageTags: API.OperationMethod<
     items: "imageTagDetails",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeImageTagsRequest,
-  DescribeImageTagsResponse,
-  DescribeImageTagsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeImageTagsRequest,
-  ) => stream.Stream<
-    DescribeImageTagsResponse,
-    DescribeImageTagsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeImageTagsRequest,
-  ) => stream.Stream<
-    ImageTagDetail,
-    DescribeImageTagsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeRegistriesError =
   | InvalidParameterException
@@ -1720,27 +1680,7 @@ export const describeRegistries: API.OperationMethod<
     items: "registries",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeRegistriesRequest,
-  DescribeRegistriesResponse,
-  DescribeRegistriesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeRegistriesRequest,
-  ) => stream.Stream<
-    DescribeRegistriesResponse,
-    DescribeRegistriesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeRegistriesRequest,
-  ) => stream.Stream<
-    Registry,
-    DescribeRegistriesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeRepositoriesError =
   | InvalidParameterException
@@ -1789,27 +1729,7 @@ export const describeRepositories: API.OperationMethod<
     items: "repositories",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeRepositoriesRequest,
-  DescribeRepositoriesResponse,
-  DescribeRepositoriesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeRepositoriesRequest,
-  ) => stream.Stream<
-    DescribeRepositoriesResponse,
-    DescribeRepositoriesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeRepositoriesRequest,
-  ) => stream.Stream<
-    Repository,
-    DescribeRepositoriesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type GetAuthorizationTokenError =
   | InvalidParameterException

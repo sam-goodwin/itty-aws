@@ -447,7 +447,8 @@ export const listLogicalProducts: API.PaginatedOperationMethod<
   ListLogicalProductsRequest,
   ListLogicalProductsResponse,
   ListLogicalProductsError,
-  GcpOpContext
+  GcpOpContext,
+  ListLogicalProductsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLogicalProductsRequest,
   output: ListLogicalProductsResponse,
@@ -458,7 +459,7 @@ export const listLogicalProducts: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListLogicalProductsVariantsError =
   | NotFound
@@ -469,7 +470,8 @@ export const listLogicalProductsVariants: API.PaginatedOperationMethod<
   ListLogicalProductsVariantsRequest,
   ListLogicalProductVariantsResponse,
   ListLogicalProductsVariantsError,
-  GcpOpContext
+  GcpOpContext,
+  ListLogicalProductVariantsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLogicalProductsVariantsRequest,
   output: ListLogicalProductVariantsResponse,
@@ -480,7 +482,7 @@ export const listLogicalProductsVariants: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProductSuitesError = NotFound | Forbidden | GcpOpError;
 /** Lists ProductSuites. */
@@ -488,7 +490,8 @@ export const listProductSuites: API.PaginatedOperationMethod<
   ListProductSuitesRequest,
   ListProductSuitesResponse,
   ListProductSuitesError,
-  GcpOpContext
+  GcpOpContext,
+  ListProductSuitesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProductSuitesRequest,
   output: ListProductSuitesResponse,
@@ -499,7 +502,7 @@ export const listProductSuites: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type LookupEntityLogicalProductsError =
   | NotFound

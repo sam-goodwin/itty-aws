@@ -11434,27 +11434,7 @@ export const describeBotAnalyzerRecommendation: API.OperationMethod<
     items: "botAnalyzerRecommendationList",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeBotAnalyzerRecommendationRequest,
-  DescribeBotAnalyzerRecommendationResponse,
-  DescribeBotAnalyzerRecommendationError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeBotAnalyzerRecommendationRequest,
-  ) => stream.Stream<
-    DescribeBotAnalyzerRecommendationResponse,
-    DescribeBotAnalyzerRecommendationError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeBotAnalyzerRecommendationRequest,
-  ) => stream.Stream<
-    BotAnalyzerRecommendation,
-    DescribeBotAnalyzerRecommendationError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeBotLocaleError =
   | InternalServerException
@@ -12065,27 +12045,7 @@ export const listAggregatedUtterances: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListAggregatedUtterancesRequest,
-  ListAggregatedUtterancesResponse,
-  ListAggregatedUtterancesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAggregatedUtterancesRequest,
-  ) => stream.Stream<
-    ListAggregatedUtterancesResponse,
-    ListAggregatedUtterancesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAggregatedUtterancesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListAggregatedUtterancesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListBotAliasesError =
   | InternalServerException
@@ -12135,27 +12095,7 @@ export const listBotAliases: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListBotAliasesRequest,
-  ListBotAliasesResponse,
-  ListBotAliasesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListBotAliasesRequest,
-  ) => stream.Stream<
-    ListBotAliasesResponse,
-    ListBotAliasesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListBotAliasesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListBotAliasesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListBotAliasReplicasError =
   | InternalServerException
@@ -12203,27 +12143,7 @@ export const listBotAliasReplicas: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListBotAliasReplicasRequest,
-  ListBotAliasReplicasResponse,
-  ListBotAliasReplicasError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListBotAliasReplicasRequest,
-  ) => stream.Stream<
-    ListBotAliasReplicasResponse,
-    ListBotAliasReplicasError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListBotAliasReplicasRequest,
-  ) => stream.Stream<
-    unknown,
-    ListBotAliasReplicasError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListBotAnalyzerHistoryError =
   | InternalServerException
@@ -12274,27 +12194,7 @@ export const listBotAnalyzerHistory: API.OperationMethod<
     items: "botAnalyzerHistoryList",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListBotAnalyzerHistoryRequest,
-  ListBotAnalyzerHistoryResponse,
-  ListBotAnalyzerHistoryError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListBotAnalyzerHistoryRequest,
-  ) => stream.Stream<
-    ListBotAnalyzerHistoryResponse,
-    ListBotAnalyzerHistoryError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListBotAnalyzerHistoryRequest,
-  ) => stream.Stream<
-    BotAnalyzerHistorySummary,
-    ListBotAnalyzerHistoryError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListBotLocalesError =
   | InternalServerException
@@ -12342,27 +12242,7 @@ export const listBotLocales: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListBotLocalesRequest,
-  ListBotLocalesResponse,
-  ListBotLocalesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListBotLocalesRequest,
-  ) => stream.Stream<
-    ListBotLocalesResponse,
-    ListBotLocalesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListBotLocalesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListBotLocalesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListBotRecommendationsError =
   | InternalServerException
@@ -12411,27 +12291,7 @@ export const listBotRecommendations: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListBotRecommendationsRequest,
-  ListBotRecommendationsResponse,
-  ListBotRecommendationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListBotRecommendationsRequest,
-  ) => stream.Stream<
-    ListBotRecommendationsResponse,
-    ListBotRecommendationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListBotRecommendationsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListBotRecommendationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListBotReplicasError =
   | InternalServerException
@@ -12507,27 +12367,7 @@ export const listBotResourceGenerations: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListBotResourceGenerationsRequest,
-  ListBotResourceGenerationsResponse,
-  ListBotResourceGenerationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListBotResourceGenerationsRequest,
-  ) => stream.Stream<
-    ListBotResourceGenerationsResponse,
-    ListBotResourceGenerationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListBotResourceGenerationsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListBotResourceGenerationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListBotsError =
   | InternalServerException
@@ -12575,27 +12415,7 @@ export const listBots: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListBotsRequest,
-  ListBotsResponse,
-  ListBotsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListBotsRequest,
-  ) => stream.Stream<
-    ListBotsResponse,
-    ListBotsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListBotsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListBotsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListBotVersionReplicasError =
   | InternalServerException
@@ -12643,27 +12463,7 @@ export const listBotVersionReplicas: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListBotVersionReplicasRequest,
-  ListBotVersionReplicasResponse,
-  ListBotVersionReplicasError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListBotVersionReplicasRequest,
-  ) => stream.Stream<
-    ListBotVersionReplicasResponse,
-    ListBotVersionReplicasError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListBotVersionReplicasRequest,
-  ) => stream.Stream<
-    unknown,
-    ListBotVersionReplicasError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListBotVersionsError =
   | InternalServerException
@@ -12720,27 +12520,7 @@ export const listBotVersions: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListBotVersionsRequest,
-  ListBotVersionsResponse,
-  ListBotVersionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListBotVersionsRequest,
-  ) => stream.Stream<
-    ListBotVersionsResponse,
-    ListBotVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListBotVersionsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListBotVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListBuiltInIntentsError =
   | InternalServerException
@@ -12794,27 +12574,7 @@ export const listBuiltInIntents: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListBuiltInIntentsRequest,
-  ListBuiltInIntentsResponse,
-  ListBuiltInIntentsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListBuiltInIntentsRequest,
-  ) => stream.Stream<
-    ListBuiltInIntentsResponse,
-    ListBuiltInIntentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListBuiltInIntentsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListBuiltInIntentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListBuiltInSlotTypesError =
   | InternalServerException
@@ -12863,27 +12623,7 @@ export const listBuiltInSlotTypes: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListBuiltInSlotTypesRequest,
-  ListBuiltInSlotTypesResponse,
-  ListBuiltInSlotTypesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListBuiltInSlotTypesRequest,
-  ) => stream.Stream<
-    ListBuiltInSlotTypesResponse,
-    ListBuiltInSlotTypesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListBuiltInSlotTypesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListBuiltInSlotTypesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListCustomVocabularyItemsError =
   | InternalServerException
@@ -12934,27 +12674,7 @@ export const listCustomVocabularyItems: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListCustomVocabularyItemsRequest,
-  ListCustomVocabularyItemsResponse,
-  ListCustomVocabularyItemsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCustomVocabularyItemsRequest,
-  ) => stream.Stream<
-    ListCustomVocabularyItemsResponse,
-    ListCustomVocabularyItemsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCustomVocabularyItemsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListCustomVocabularyItemsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListExportsError =
   | InternalServerException
@@ -12997,27 +12717,7 @@ export const listExports: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListExportsRequest,
-  ListExportsResponse,
-  ListExportsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListExportsRequest,
-  ) => stream.Stream<
-    ListExportsResponse,
-    ListExportsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListExportsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListExportsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListImportsError =
   | InternalServerException
@@ -13060,27 +12760,7 @@ export const listImports: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListImportsRequest,
-  ListImportsResponse,
-  ListImportsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListImportsRequest,
-  ) => stream.Stream<
-    ListImportsResponse,
-    ListImportsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListImportsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListImportsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListIntentMetricsError =
   | InternalServerException
@@ -13142,27 +12822,7 @@ export const listIntentMetrics: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListIntentMetricsRequest,
-  ListIntentMetricsResponse,
-  ListIntentMetricsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListIntentMetricsRequest,
-  ) => stream.Stream<
-    ListIntentMetricsResponse,
-    ListIntentMetricsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListIntentMetricsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListIntentMetricsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListIntentPathsError =
   | InternalServerException
@@ -13248,27 +12908,7 @@ export const listIntents: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListIntentsRequest,
-  ListIntentsResponse,
-  ListIntentsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListIntentsRequest,
-  ) => stream.Stream<
-    ListIntentsResponse,
-    ListIntentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListIntentsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListIntentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListIntentStageMetricsError =
   | InternalServerException
@@ -13330,27 +12970,7 @@ export const listIntentStageMetrics: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListIntentStageMetricsRequest,
-  ListIntentStageMetricsResponse,
-  ListIntentStageMetricsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListIntentStageMetricsRequest,
-  ) => stream.Stream<
-    ListIntentStageMetricsResponse,
-    ListIntentStageMetricsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListIntentStageMetricsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListIntentStageMetricsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListRecommendedIntentsError =
   | InternalServerException
@@ -13402,27 +13022,7 @@ export const listRecommendedIntents: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListRecommendedIntentsRequest,
-  ListRecommendedIntentsResponse,
-  ListRecommendedIntentsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRecommendedIntentsRequest,
-  ) => stream.Stream<
-    ListRecommendedIntentsResponse,
-    ListRecommendedIntentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRecommendedIntentsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListRecommendedIntentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListSessionAnalyticsDataError =
   | InternalServerException
@@ -13476,27 +13076,7 @@ export const listSessionAnalyticsData: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListSessionAnalyticsDataRequest,
-  ListSessionAnalyticsDataResponse,
-  ListSessionAnalyticsDataError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSessionAnalyticsDataRequest,
-  ) => stream.Stream<
-    ListSessionAnalyticsDataResponse,
-    ListSessionAnalyticsDataError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSessionAnalyticsDataRequest,
-  ) => stream.Stream<
-    unknown,
-    ListSessionAnalyticsDataError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListSessionMetricsError =
   | InternalServerException
@@ -13558,27 +13138,7 @@ export const listSessionMetrics: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListSessionMetricsRequest,
-  ListSessionMetricsResponse,
-  ListSessionMetricsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSessionMetricsRequest,
-  ) => stream.Stream<
-    ListSessionMetricsResponse,
-    ListSessionMetricsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSessionMetricsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListSessionMetricsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListSlotsError =
   | InternalServerException
@@ -13626,27 +13186,7 @@ export const listSlots: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListSlotsRequest,
-  ListSlotsResponse,
-  ListSlotsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSlotsRequest,
-  ) => stream.Stream<
-    ListSlotsResponse,
-    ListSlotsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSlotsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListSlotsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListSlotTypesError =
   | InternalServerException
@@ -13696,27 +13236,7 @@ export const listSlotTypes: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListSlotTypesRequest,
-  ListSlotTypesResponse,
-  ListSlotTypesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSlotTypesRequest,
-  ) => stream.Stream<
-    ListSlotTypesResponse,
-    ListSlotTypesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSlotTypesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListSlotTypesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsForResourceError =
   | InternalServerException
@@ -13795,27 +13315,7 @@ export const listTestExecutionResultItems: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListTestExecutionResultItemsRequest,
-  ListTestExecutionResultItemsResponse,
-  ListTestExecutionResultItemsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTestExecutionResultItemsRequest,
-  ) => stream.Stream<
-    ListTestExecutionResultItemsResponse,
-    ListTestExecutionResultItemsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTestExecutionResultItemsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListTestExecutionResultItemsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTestExecutionsError =
   | InternalServerException
@@ -13863,27 +13363,7 @@ export const listTestExecutions: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListTestExecutionsRequest,
-  ListTestExecutionsResponse,
-  ListTestExecutionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTestExecutionsRequest,
-  ) => stream.Stream<
-    ListTestExecutionsResponse,
-    ListTestExecutionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTestExecutionsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListTestExecutionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTestSetRecordsError =
   | InternalServerException
@@ -13933,27 +13413,7 @@ export const listTestSetRecords: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListTestSetRecordsRequest,
-  ListTestSetRecordsResponse,
-  ListTestSetRecordsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTestSetRecordsRequest,
-  ) => stream.Stream<
-    ListTestSetRecordsResponse,
-    ListTestSetRecordsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTestSetRecordsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListTestSetRecordsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTestSetsError =
   | InternalServerException
@@ -14001,27 +13461,7 @@ export const listTestSets: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListTestSetsRequest,
-  ListTestSetsResponse,
-  ListTestSetsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTestSetsRequest,
-  ) => stream.Stream<
-    ListTestSetsResponse,
-    ListTestSetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTestSetsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListTestSetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListUtteranceAnalyticsDataError =
   | InternalServerException
@@ -14084,27 +13524,7 @@ export const listUtteranceAnalyticsData: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListUtteranceAnalyticsDataRequest,
-  ListUtteranceAnalyticsDataResponse,
-  ListUtteranceAnalyticsDataError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListUtteranceAnalyticsDataRequest,
-  ) => stream.Stream<
-    ListUtteranceAnalyticsDataResponse,
-    ListUtteranceAnalyticsDataError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListUtteranceAnalyticsDataRequest,
-  ) => stream.Stream<
-    unknown,
-    ListUtteranceAnalyticsDataError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListUtteranceMetricsError =
   | InternalServerException
@@ -14171,27 +13591,7 @@ export const listUtteranceMetrics: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListUtteranceMetricsRequest,
-  ListUtteranceMetricsResponse,
-  ListUtteranceMetricsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListUtteranceMetricsRequest,
-  ) => stream.Stream<
-    ListUtteranceMetricsResponse,
-    ListUtteranceMetricsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListUtteranceMetricsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListUtteranceMetricsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type SearchAssociatedTranscriptsError =
   | InternalServerException

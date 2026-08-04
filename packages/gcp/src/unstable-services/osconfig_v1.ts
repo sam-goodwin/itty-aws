@@ -3396,7 +3396,8 @@ export const listProjectsLocationsInstancesInventories: API.PaginatedOperationMe
   ListProjectsLocationsInstancesInventoriesRequest,
   ListInventoriesResponse,
   ListProjectsLocationsInstancesInventoriesError,
-  GcpOpContext
+  GcpOpContext,
+  ListInventoriesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsInstancesInventoriesRequest,
   output: ListInventoriesResponse,
@@ -3407,7 +3408,7 @@ export const listProjectsLocationsInstancesInventories: API.PaginatedOperationMe
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsInstancesOsPolicyAssignmentsReportsError =
   | NotFound
@@ -3418,7 +3419,8 @@ export const listProjectsLocationsInstancesOsPolicyAssignmentsReports: API.Pagin
   ListProjectsLocationsInstancesOsPolicyAssignmentsReportsRequest,
   ListOSPolicyAssignmentReportsResponse,
   ListProjectsLocationsInstancesOsPolicyAssignmentsReportsError,
-  GcpOpContext
+  GcpOpContext,
+  ListOSPolicyAssignmentReportsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsInstancesOsPolicyAssignmentsReportsRequest,
   output: ListOSPolicyAssignmentReportsResponse,
@@ -3429,7 +3431,7 @@ export const listProjectsLocationsInstancesOsPolicyAssignmentsReports: API.Pagin
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsInstancesVulnerabilityReportsError =
   | NotFound
@@ -3440,7 +3442,8 @@ export const listProjectsLocationsInstancesVulnerabilityReports: API.PaginatedOp
   ListProjectsLocationsInstancesVulnerabilityReportsRequest,
   ListVulnerabilityReportsResponse,
   ListProjectsLocationsInstancesVulnerabilityReportsError,
-  GcpOpContext
+  GcpOpContext,
+  ListVulnerabilityReportsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsInstancesVulnerabilityReportsRequest,
   output: ListVulnerabilityReportsResponse,
@@ -3451,7 +3454,7 @@ export const listProjectsLocationsInstancesVulnerabilityReports: API.PaginatedOp
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsOsPolicyAssignmentsError =
   | NotFound
@@ -3462,7 +3465,8 @@ export const listProjectsLocationsOsPolicyAssignments: API.PaginatedOperationMet
   ListProjectsLocationsOsPolicyAssignmentsRequest,
   ListOSPolicyAssignmentsResponse,
   ListProjectsLocationsOsPolicyAssignmentsError,
-  GcpOpContext
+  GcpOpContext,
+  ListOSPolicyAssignmentsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsOsPolicyAssignmentsRequest,
   output: ListOSPolicyAssignmentsResponse,
@@ -3473,7 +3477,7 @@ export const listProjectsLocationsOsPolicyAssignments: API.PaginatedOperationMet
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsPatchDeploymentsError =
   | NotFound
@@ -3484,7 +3488,8 @@ export const listProjectsPatchDeployments: API.PaginatedOperationMethod<
   ListProjectsPatchDeploymentsRequest,
   ListPatchDeploymentsResponse,
   ListProjectsPatchDeploymentsError,
-  GcpOpContext
+  GcpOpContext,
+  ListPatchDeploymentsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsPatchDeploymentsRequest,
   output: ListPatchDeploymentsResponse,
@@ -3495,7 +3500,7 @@ export const listProjectsPatchDeployments: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsPatchJobsError = NotFound | Forbidden | GcpOpError;
 /** Get a list of patch jobs. */
@@ -3503,7 +3508,8 @@ export const listProjectsPatchJobs: API.PaginatedOperationMethod<
   ListProjectsPatchJobsRequest,
   ListPatchJobsResponse,
   ListProjectsPatchJobsError,
-  GcpOpContext
+  GcpOpContext,
+  ListPatchJobsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsPatchJobsRequest,
   output: ListPatchJobsResponse,
@@ -3514,7 +3520,7 @@ export const listProjectsPatchJobs: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsPatchJobsInstanceDetailsError =
   | NotFound
@@ -3525,7 +3531,8 @@ export const listProjectsPatchJobsInstanceDetails: API.PaginatedOperationMethod<
   ListProjectsPatchJobsInstanceDetailsRequest,
   ListPatchJobInstanceDetailsResponse,
   ListProjectsPatchJobsInstanceDetailsError,
-  GcpOpContext
+  GcpOpContext,
+  ListPatchJobInstanceDetailsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsPatchJobsInstanceDetailsRequest,
   output: ListPatchJobInstanceDetailsResponse,
@@ -3536,7 +3543,7 @@ export const listProjectsPatchJobsInstanceDetails: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListRevisionsProjectsLocationsOsPolicyAssignmentsError =
   | NotFound
@@ -3547,7 +3554,8 @@ export const listRevisionsProjectsLocationsOsPolicyAssignments: API.PaginatedOpe
   ListRevisionsProjectsLocationsOsPolicyAssignmentsRequest,
   ListOSPolicyAssignmentRevisionsResponse,
   ListRevisionsProjectsLocationsOsPolicyAssignmentsError,
-  GcpOpContext
+  GcpOpContext,
+  ListOSPolicyAssignmentRevisionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRevisionsProjectsLocationsOsPolicyAssignmentsRequest,
   output: ListOSPolicyAssignmentRevisionsResponse,
@@ -3558,7 +3566,7 @@ export const listRevisionsProjectsLocationsOsPolicyAssignments: API.PaginatedOpe
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type PatchProjectsLocationsOsPolicyAssignmentsError =
   | NotFound

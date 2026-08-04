@@ -1254,27 +1254,7 @@ export const getTranscript: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  GetTranscriptRequest,
-  GetTranscriptResponse,
-  GetTranscriptError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetTranscriptRequest,
-  ) => stream.Stream<
-    GetTranscriptResponse,
-    GetTranscriptError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetTranscriptRequest,
-  ) => stream.Stream<
-    unknown,
-    GetTranscriptError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type SendEventError =
   | AccessDeniedException

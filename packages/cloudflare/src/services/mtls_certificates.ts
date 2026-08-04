@@ -476,7 +476,8 @@ export const getAssociation: API.PaginatedOperationMethod<
   GetAssociationRequest,
   GetAssociationResponse,
   GetAssociationError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  AssociationsGetResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: GetAssociationRequest,
@@ -487,7 +488,7 @@ export const getAssociation: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type GetMtlsCertificateError = CertificateNotFound | CloudflareOpError;
 /** Fetches a single mTLS certificate uploaded to your account. To get a certificate issued by the Cloudflare managed CA, use the [Client Certificate Details endpoint](/api/resources/client_certificates/methods/get/). */
@@ -510,7 +511,8 @@ export const listMtlsCertificates: API.PaginatedOperationMethod<
   ListMtlsCertificatesRequest,
   ListMtlsCertificatesResponse,
   ListMtlsCertificatesError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  ListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListMtlsCertificatesRequest,
@@ -521,4 +523,4 @@ export const listMtlsCertificates: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;

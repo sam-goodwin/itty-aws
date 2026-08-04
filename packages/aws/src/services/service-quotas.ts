@@ -1623,27 +1623,7 @@ export const listAWSDefaultServiceQuotas: API.OperationMethod<
     items: "Quotas",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListAWSDefaultServiceQuotasRequest,
-  ListAWSDefaultServiceQuotasResponse,
-  ListAWSDefaultServiceQuotasError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAWSDefaultServiceQuotasRequest,
-  ) => stream.Stream<
-    ListAWSDefaultServiceQuotasResponse,
-    ListAWSDefaultServiceQuotasError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAWSDefaultServiceQuotasRequest,
-  ) => stream.Stream<
-    ServiceQuota,
-    ListAWSDefaultServiceQuotasError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListRequestedServiceQuotaChangeHistoryError =
   | AccessDeniedException
@@ -1698,27 +1678,7 @@ export const listRequestedServiceQuotaChangeHistory: API.OperationMethod<
     items: "RequestedQuotas",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListRequestedServiceQuotaChangeHistoryRequest,
-  ListRequestedServiceQuotaChangeHistoryResponse,
-  ListRequestedServiceQuotaChangeHistoryError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRequestedServiceQuotaChangeHistoryRequest,
-  ) => stream.Stream<
-    ListRequestedServiceQuotaChangeHistoryResponse,
-    ListRequestedServiceQuotaChangeHistoryError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRequestedServiceQuotaChangeHistoryRequest,
-  ) => stream.Stream<
-    RequestedServiceQuotaChange,
-    ListRequestedServiceQuotaChangeHistoryError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListRequestedServiceQuotaChangeHistoryByQuotaError =
   | AccessDeniedException
@@ -1772,27 +1732,7 @@ export const listRequestedServiceQuotaChangeHistoryByQuota: API.OperationMethod<
     items: "RequestedQuotas",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListRequestedServiceQuotaChangeHistoryByQuotaRequest,
-  ListRequestedServiceQuotaChangeHistoryByQuotaResponse,
-  ListRequestedServiceQuotaChangeHistoryByQuotaError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRequestedServiceQuotaChangeHistoryByQuotaRequest,
-  ) => stream.Stream<
-    ListRequestedServiceQuotaChangeHistoryByQuotaResponse,
-    ListRequestedServiceQuotaChangeHistoryByQuotaError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRequestedServiceQuotaChangeHistoryByQuotaRequest,
-  ) => stream.Stream<
-    RequestedServiceQuotaChange,
-    ListRequestedServiceQuotaChangeHistoryByQuotaError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListServiceQuotaIncreaseRequestsInTemplateError =
   | AccessDeniedException
@@ -1849,27 +1789,7 @@ export const listServiceQuotaIncreaseRequestsInTemplate: API.OperationMethod<
     items: "ServiceQuotaIncreaseRequestInTemplateList",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListServiceQuotaIncreaseRequestsInTemplateRequest,
-  ListServiceQuotaIncreaseRequestsInTemplateResponse,
-  ListServiceQuotaIncreaseRequestsInTemplateError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListServiceQuotaIncreaseRequestsInTemplateRequest,
-  ) => stream.Stream<
-    ListServiceQuotaIncreaseRequestsInTemplateResponse,
-    ListServiceQuotaIncreaseRequestsInTemplateError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListServiceQuotaIncreaseRequestsInTemplateRequest,
-  ) => stream.Stream<
-    ServiceQuotaIncreaseRequestInTemplate,
-    ListServiceQuotaIncreaseRequestsInTemplateError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListServiceQuotasError =
   | AccessDeniedException
@@ -1925,27 +1845,7 @@ export const listServiceQuotas: API.OperationMethod<
     items: "Quotas",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListServiceQuotasRequest,
-  ListServiceQuotasResponse,
-  ListServiceQuotasError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListServiceQuotasRequest,
-  ) => stream.Stream<
-    ListServiceQuotasResponse,
-    ListServiceQuotasError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListServiceQuotasRequest,
-  ) => stream.Stream<
-    ServiceQuota,
-    ListServiceQuotasError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListServicesError =
   | AccessDeniedException
@@ -1996,27 +1896,7 @@ export const listServices: API.OperationMethod<
     items: "Services",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListServicesRequest,
-  ListServicesResponse,
-  ListServicesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListServicesRequest,
-  ) => stream.Stream<
-    ListServicesResponse,
-    ListServicesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListServicesRequest,
-  ) => stream.Stream<
-    ServiceInfo,
-    ListServicesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsForResourceError =
   | AccessDeniedException

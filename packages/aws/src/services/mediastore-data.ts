@@ -468,27 +468,7 @@ export const listItems: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListItemsRequest,
-  ListItemsResponse,
-  ListItemsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListItemsRequest,
-  ) => stream.Stream<
-    ListItemsResponse,
-    ListItemsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListItemsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListItemsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type PutObjectError =
   | ContainerNotFoundException

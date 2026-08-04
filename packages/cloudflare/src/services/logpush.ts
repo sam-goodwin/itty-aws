@@ -2517,7 +2517,8 @@ export const getDatasetJobForAccount: API.PaginatedOperationMethod<
   GetDatasetJobForAccountRequest,
   GetDatasetJobResponse,
   GetDatasetJobForAccountError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  DatasetsJobsGetResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: GetDatasetJobForAccountRequest,
@@ -2528,7 +2529,7 @@ export const getDatasetJobForAccount: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type GetDatasetJobForZoneError = CloudflareOpError;
 /** Lists Logpush jobs for an account or zone for a dataset. */
@@ -2536,7 +2537,8 @@ export const getDatasetJobForZone: API.PaginatedOperationMethod<
   GetDatasetJobForZoneRequest,
   GetDatasetJobResponse,
   GetDatasetJobForZoneError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  DatasetsJobsGetResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: GetDatasetJobForZoneRequest,
@@ -2547,7 +2549,7 @@ export const getDatasetJobForZone: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type GetEdgeError = CloudflareOpError;
 /** Lists Instant Logs jobs for a zone. */
@@ -2555,7 +2557,8 @@ export const getEdge: API.PaginatedOperationMethod<
   GetEdgeRequest,
   GetEdgeResponse,
   GetEdgeError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  EdgeGetResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: GetEdgeRequest,
@@ -2566,7 +2569,7 @@ export const getEdge: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type GetJobForAccountError = JobNotFound | Forbidden | CloudflareOpError;
 /** Gets the details of a Logpush job. */
@@ -2604,7 +2607,8 @@ export const listJobsForAccount: API.PaginatedOperationMethod<
   ListJobsForAccountRequest,
   ListJobsResponse,
   ListJobsForAccountError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  JobsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListJobsForAccountRequest,
@@ -2615,7 +2619,7 @@ export const listJobsForAccount: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListJobsForZoneError = Forbidden | NotFound | CloudflareOpError;
 /** Lists Logpush jobs for an account or zone. */
@@ -2623,7 +2627,8 @@ export const listJobsForZone: API.PaginatedOperationMethod<
   ListJobsForZoneRequest,
   ListJobsResponse,
   ListJobsForZoneError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  JobsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListJobsForZoneRequest,
@@ -2634,7 +2639,7 @@ export const listJobsForZone: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type OriginValidateForAccountError = CloudflareOpError;
 /** Validates logpull origin with logpull_options. */

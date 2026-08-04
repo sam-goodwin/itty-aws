@@ -1349,27 +1349,7 @@ export const getStream: API.OperationMethod<
     items: "shards",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  GetStreamInput,
-  GetStreamOutput,
-  GetStreamError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetStreamInput,
-  ) => stream.Stream<
-    GetStreamOutput,
-    GetStreamError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetStreamInput,
-  ) => stream.Stream<
-    Shard,
-    GetStreamError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListStreamsError =
   | AccessDeniedException
@@ -1420,24 +1400,4 @@ export const listStreams: API.OperationMethod<
     items: "streams",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListStreamsInput,
-  ListStreamsOutput,
-  ListStreamsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListStreamsInput,
-  ) => stream.Stream<
-    ListStreamsOutput,
-    ListStreamsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListStreamsInput,
-  ) => stream.Stream<
-    Stream,
-    ListStreamsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;

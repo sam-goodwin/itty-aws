@@ -2521,27 +2521,7 @@ export const listAdapters: API.OperationMethod<
     items: "Adapters",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListAdaptersRequest,
-  ListAdaptersResponse,
-  ListAdaptersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAdaptersRequest,
-  ) => stream.Stream<
-    ListAdaptersResponse,
-    ListAdaptersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAdaptersRequest,
-  ) => stream.Stream<
-    AdapterOverview,
-    ListAdaptersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListAdapterVersionsError =
   | AccessDeniedException
@@ -2596,27 +2576,7 @@ export const listAdapterVersions: API.OperationMethod<
     items: "AdapterVersions",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListAdapterVersionsRequest,
-  ListAdapterVersionsResponse,
-  ListAdapterVersionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAdapterVersionsRequest,
-  ) => stream.Stream<
-    ListAdapterVersionsResponse,
-    ListAdapterVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAdapterVersionsRequest,
-  ) => stream.Stream<
-    AdapterVersionOverview,
-    ListAdapterVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsForResourceError =
   | AccessDeniedException

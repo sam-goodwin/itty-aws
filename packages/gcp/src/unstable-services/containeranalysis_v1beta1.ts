@@ -5082,7 +5082,8 @@ export const listProjectsLocationsNotes: API.PaginatedOperationMethod<
   ListProjectsLocationsNotesRequest,
   ListNotesResponse,
   ListProjectsLocationsNotesError,
-  GcpOpContext
+  GcpOpContext,
+  ListNotesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsNotesRequest,
   output: ListNotesResponse,
@@ -5093,7 +5094,7 @@ export const listProjectsLocationsNotes: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsNotesOccurrencesError =
   | NotFound
@@ -5104,7 +5105,8 @@ export const listProjectsLocationsNotesOccurrences: API.PaginatedOperationMethod
   ListProjectsLocationsNotesOccurrencesRequest,
   ListNoteOccurrencesResponse,
   ListProjectsLocationsNotesOccurrencesError,
-  GcpOpContext
+  GcpOpContext,
+  ListNoteOccurrencesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsNotesOccurrencesRequest,
   output: ListNoteOccurrencesResponse,
@@ -5115,7 +5117,7 @@ export const listProjectsLocationsNotesOccurrences: API.PaginatedOperationMethod
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsOccurrencesError =
   | NotFound
@@ -5126,7 +5128,8 @@ export const listProjectsLocationsOccurrences: API.PaginatedOperationMethod<
   ListProjectsLocationsOccurrencesRequest,
   ListOccurrencesResponse,
   ListProjectsLocationsOccurrencesError,
-  GcpOpContext
+  GcpOpContext,
+  ListOccurrencesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsOccurrencesRequest,
   output: ListOccurrencesResponse,
@@ -5137,7 +5140,7 @@ export const listProjectsLocationsOccurrences: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsNotesError = NotFound | Forbidden | GcpOpError;
 /** Lists notes for the specified project. */
@@ -5145,7 +5148,8 @@ export const listProjectsNotes: API.PaginatedOperationMethod<
   ListProjectsNotesRequest,
   ListNotesResponse,
   ListProjectsNotesError,
-  GcpOpContext
+  GcpOpContext,
+  ListNotesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsNotesRequest,
   output: ListNotesResponse,
@@ -5156,7 +5160,7 @@ export const listProjectsNotes: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsNotesOccurrencesError =
   | NotFound
@@ -5167,7 +5171,8 @@ export const listProjectsNotesOccurrences: API.PaginatedOperationMethod<
   ListProjectsNotesOccurrencesRequest,
   ListNoteOccurrencesResponse,
   ListProjectsNotesOccurrencesError,
-  GcpOpContext
+  GcpOpContext,
+  ListNoteOccurrencesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsNotesOccurrencesRequest,
   output: ListNoteOccurrencesResponse,
@@ -5178,7 +5183,7 @@ export const listProjectsNotesOccurrences: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsOccurrencesError = NotFound | Forbidden | GcpOpError;
 /** Lists occurrences for the specified project. */
@@ -5186,7 +5191,8 @@ export const listProjectsOccurrences: API.PaginatedOperationMethod<
   ListProjectsOccurrencesRequest,
   ListOccurrencesResponse,
   ListProjectsOccurrencesError,
-  GcpOpContext
+  GcpOpContext,
+  ListOccurrencesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsOccurrencesRequest,
   output: ListOccurrencesResponse,
@@ -5197,7 +5203,7 @@ export const listProjectsOccurrences: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type PatchProjectsLocationsNotesError =
   | NotFound

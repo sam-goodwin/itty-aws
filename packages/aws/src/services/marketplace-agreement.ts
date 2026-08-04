@@ -2741,27 +2741,7 @@ export const getAgreementEntitlements: API.OperationMethod<
     items: "agreementEntitlements",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  GetAgreementEntitlementsInput,
-  GetAgreementEntitlementsOutput,
-  GetAgreementEntitlementsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetAgreementEntitlementsInput,
-  ) => stream.Stream<
-    GetAgreementEntitlementsOutput,
-    GetAgreementEntitlementsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetAgreementEntitlementsInput,
-  ) => stream.Stream<
-    AgreementEntitlement,
-    GetAgreementEntitlementsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type GetAgreementPaymentRequestError =
   | AccessDeniedException
@@ -2854,27 +2834,7 @@ export const getAgreementTerms: API.OperationMethod<
     items: "acceptedTerms",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  GetAgreementTermsInput,
-  GetAgreementTermsOutput,
-  GetAgreementTermsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetAgreementTermsInput,
-  ) => stream.Stream<
-    GetAgreementTermsOutput,
-    GetAgreementTermsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetAgreementTermsInput,
-  ) => stream.Stream<
-    AcceptedTerm,
-    GetAgreementTermsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type GetBillingAdjustmentRequestError =
   | AccessDeniedException
@@ -2955,27 +2915,7 @@ export const listAgreementCancellationRequests: API.OperationMethod<
     items: "items",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListAgreementCancellationRequestsInput,
-  ListAgreementCancellationRequestsOutput,
-  ListAgreementCancellationRequestsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAgreementCancellationRequestsInput,
-  ) => stream.Stream<
-    ListAgreementCancellationRequestsOutput,
-    ListAgreementCancellationRequestsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAgreementCancellationRequestsInput,
-  ) => stream.Stream<
-    AgreementCancellationRequestSummary,
-    ListAgreementCancellationRequestsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListAgreementChargesError =
   | AccessDeniedException
@@ -3024,27 +2964,7 @@ export const listAgreementCharges: API.OperationMethod<
     items: "items",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListAgreementChargesInput,
-  ListAgreementChargesOutput,
-  ListAgreementChargesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAgreementChargesInput,
-  ) => stream.Stream<
-    ListAgreementChargesOutput,
-    ListAgreementChargesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAgreementChargesInput,
-  ) => stream.Stream<
-    Charge,
-    ListAgreementChargesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListAgreementInvoiceLineItemsError =
   | AccessDeniedException
@@ -3097,27 +3017,7 @@ export const listAgreementInvoiceLineItems: API.OperationMethod<
     items: "agreementInvoiceLineItemGroupSummaries",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListAgreementInvoiceLineItemsInput,
-  ListAgreementInvoiceLineItemsOutput,
-  ListAgreementInvoiceLineItemsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAgreementInvoiceLineItemsInput,
-  ) => stream.Stream<
-    ListAgreementInvoiceLineItemsOutput,
-    ListAgreementInvoiceLineItemsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAgreementInvoiceLineItemsInput,
-  ) => stream.Stream<
-    AgreementInvoiceLineItemGroupSummary,
-    ListAgreementInvoiceLineItemsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListAgreementPaymentRequestsError =
   | AccessDeniedException
@@ -3168,27 +3068,7 @@ export const listAgreementPaymentRequests: API.OperationMethod<
     items: "items",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListAgreementPaymentRequestsInput,
-  ListAgreementPaymentRequestsOutput,
-  ListAgreementPaymentRequestsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAgreementPaymentRequestsInput,
-  ) => stream.Stream<
-    ListAgreementPaymentRequestsOutput,
-    ListAgreementPaymentRequestsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAgreementPaymentRequestsInput,
-  ) => stream.Stream<
-    PaymentRequestSummary,
-    ListAgreementPaymentRequestsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListBillingAdjustmentRequestsError =
   | AccessDeniedException
@@ -3237,27 +3117,7 @@ export const listBillingAdjustmentRequests: API.OperationMethod<
     items: "items",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListBillingAdjustmentRequestsInput,
-  ListBillingAdjustmentRequestsOutput,
-  ListBillingAdjustmentRequestsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListBillingAdjustmentRequestsInput,
-  ) => stream.Stream<
-    ListBillingAdjustmentRequestsOutput,
-    ListBillingAdjustmentRequestsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListBillingAdjustmentRequestsInput,
-  ) => stream.Stream<
-    BillingAdjustmentSummary,
-    ListBillingAdjustmentRequestsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type RejectAgreementCancellationRequestError =
   | AccessDeniedException
@@ -3488,27 +3348,7 @@ export const searchAgreements: API.OperationMethod<
     items: "agreementViewSummaries",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  SearchAgreementsInput,
-  SearchAgreementsOutput,
-  SearchAgreementsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: SearchAgreementsInput,
-  ) => stream.Stream<
-    SearchAgreementsOutput,
-    SearchAgreementsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: SearchAgreementsInput,
-  ) => stream.Stream<
-    AgreementViewSummary,
-    SearchAgreementsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type SendAgreementCancellationRequestError =
   | AccessDeniedException

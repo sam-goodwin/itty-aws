@@ -1094,7 +1094,8 @@ export const listServicesConsumerQuotaMetrics: API.PaginatedOperationMethod<
   ListServicesConsumerQuotaMetricsRequest,
   V1Beta1ListConsumerQuotaMetricsResponse,
   ListServicesConsumerQuotaMetricsError,
-  GcpOpContext
+  GcpOpContext,
+  V1Beta1ListConsumerQuotaMetricsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListServicesConsumerQuotaMetricsRequest,
   output: V1Beta1ListConsumerQuotaMetricsResponse,
@@ -1105,7 +1106,7 @@ export const listServicesConsumerQuotaMetrics: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListServicesConsumerQuotaMetricsLimitsProducerOverridesError =
   | NotFound
@@ -1116,7 +1117,8 @@ export const listServicesConsumerQuotaMetricsLimitsProducerOverrides: API.Pagina
   ListServicesConsumerQuotaMetricsLimitsProducerOverridesRequest,
   V1Beta1ListProducerOverridesResponse,
   ListServicesConsumerQuotaMetricsLimitsProducerOverridesError,
-  GcpOpContext
+  GcpOpContext,
+  V1Beta1ListProducerOverridesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListServicesConsumerQuotaMetricsLimitsProducerOverridesRequest,
   output: V1Beta1ListProducerOverridesResponse,
@@ -1127,7 +1129,7 @@ export const listServicesConsumerQuotaMetricsLimitsProducerOverrides: API.Pagina
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListServicesConsumerQuotaMetricsLimitsProducerQuotaPoliciesError =
   | NotFound
@@ -1138,7 +1140,8 @@ export const listServicesConsumerQuotaMetricsLimitsProducerQuotaPolicies: API.Pa
   ListServicesConsumerQuotaMetricsLimitsProducerQuotaPoliciesRequest,
   V1Beta1ListProducerQuotaPoliciesResponse,
   ListServicesConsumerQuotaMetricsLimitsProducerQuotaPoliciesError,
-  GcpOpContext
+  GcpOpContext,
+  V1Beta1ListProducerQuotaPoliciesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListServicesConsumerQuotaMetricsLimitsProducerQuotaPoliciesRequest,
   output: V1Beta1ListProducerQuotaPoliciesResponse,
@@ -1149,7 +1152,7 @@ export const listServicesConsumerQuotaMetricsLimitsProducerQuotaPolicies: API.Pa
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type PatchServicesConsumerQuotaMetricsLimitsProducerOverridesError =
   | NotFound

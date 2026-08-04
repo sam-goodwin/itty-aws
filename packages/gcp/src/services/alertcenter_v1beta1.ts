@@ -750,7 +750,8 @@ export const listAlerts: API.PaginatedOperationMethod<
   ListAlertsRequest,
   ListAlertsResponse,
   ListAlertsError,
-  GcpOpContext
+  GcpOpContext,
+  ListAlertsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAlertsRequest,
   output: ListAlertsResponse,
@@ -761,7 +762,7 @@ export const listAlerts: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListAlertsFeedbackError = NotFound | Forbidden | GcpOpError;
 /** Lists all the feedback for an alert. Attempting to list feedbacks for a non-existent alert returns `NOT_FOUND` error. */

@@ -1009,27 +1009,7 @@ export const listMonitors: API.OperationMethod<
     items: "monitors",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListMonitorsInput,
-  ListMonitorsOutput,
-  ListMonitorsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListMonitorsInput,
-  ) => stream.Stream<
-    ListMonitorsOutput,
-    ListMonitorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListMonitorsInput,
-  ) => stream.Stream<
-    MonitorSummary,
-    ListMonitorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsForResourceError =
   | AccessDeniedException

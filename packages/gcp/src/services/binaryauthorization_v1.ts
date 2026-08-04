@@ -1775,7 +1775,8 @@ export const listProjectsAttestors: API.PaginatedOperationMethod<
   ListProjectsAttestorsRequest,
   ListAttestorsResponse,
   ListProjectsAttestorsError,
-  GcpOpContext
+  GcpOpContext,
+  ListAttestorsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsAttestorsRequest,
   output: ListAttestorsResponse,
@@ -1786,7 +1787,7 @@ export const listProjectsAttestors: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsPlatformsPoliciesError =
   | NotFound
@@ -1797,7 +1798,8 @@ export const listProjectsPlatformsPolicies: API.PaginatedOperationMethod<
   ListProjectsPlatformsPoliciesRequest,
   ListPlatformPoliciesResponse,
   ListProjectsPlatformsPoliciesError,
-  GcpOpContext
+  GcpOpContext,
+  ListPlatformPoliciesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsPlatformsPoliciesRequest,
   output: ListPlatformPoliciesResponse,
@@ -1808,7 +1810,7 @@ export const listProjectsPlatformsPolicies: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ReplacePlatformPolicyProjectsPlatformsPoliciesError =
   | NotFound

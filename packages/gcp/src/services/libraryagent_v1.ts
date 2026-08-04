@@ -321,7 +321,8 @@ export const listShelves: API.PaginatedOperationMethod<
   ListShelvesRequest,
   GoogleExampleLibraryagentV1ListShelvesResponse,
   ListShelvesError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleExampleLibraryagentV1ListShelvesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListShelvesRequest,
   output: GoogleExampleLibraryagentV1ListShelvesResponse,
@@ -332,7 +333,7 @@ export const listShelves: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListShelvesBooksError = NotFound | Forbidden | GcpOpError;
 /** Lists books in a shelf. The order is unspecified but deterministic. Newly created books will not necessarily be added to the end of this list. Returns NOT_FOUND if the shelf does not exist. */
@@ -340,7 +341,8 @@ export const listShelvesBooks: API.PaginatedOperationMethod<
   ListShelvesBooksRequest,
   GoogleExampleLibraryagentV1ListBooksResponse,
   ListShelvesBooksError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleExampleLibraryagentV1ListBooksResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListShelvesBooksRequest,
   output: GoogleExampleLibraryagentV1ListBooksResponse,
@@ -351,7 +353,7 @@ export const listShelvesBooks: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ReturnShelvesBooksError =
   | NotFound

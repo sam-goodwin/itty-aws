@@ -13986,7 +13986,8 @@ export const listOrganizationsDeidentifyTemplates: API.PaginatedOperationMethod<
   ListOrganizationsDeidentifyTemplatesRequest,
   GooglePrivacyDlpV2ListDeidentifyTemplatesResponse,
   ListOrganizationsDeidentifyTemplatesError,
-  GcpOpContext
+  GcpOpContext,
+  GooglePrivacyDlpV2ListDeidentifyTemplatesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsDeidentifyTemplatesRequest,
   output: GooglePrivacyDlpV2ListDeidentifyTemplatesResponse,
@@ -13997,7 +13998,7 @@ export const listOrganizationsDeidentifyTemplates: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListOrganizationsInspectTemplatesError =
   | NotFound
@@ -14008,7 +14009,8 @@ export const listOrganizationsInspectTemplates: API.PaginatedOperationMethod<
   ListOrganizationsInspectTemplatesRequest,
   GooglePrivacyDlpV2ListInspectTemplatesResponse,
   ListOrganizationsInspectTemplatesError,
-  GcpOpContext
+  GcpOpContext,
+  GooglePrivacyDlpV2ListInspectTemplatesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsInspectTemplatesRequest,
   output: GooglePrivacyDlpV2ListInspectTemplatesResponse,
@@ -14019,7 +14021,7 @@ export const listOrganizationsInspectTemplates: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListOrganizationsLocationsColumnDataProfilesError =
   | NotFound
@@ -14030,7 +14032,8 @@ export const listOrganizationsLocationsColumnDataProfiles: API.PaginatedOperatio
   ListOrganizationsLocationsColumnDataProfilesRequest,
   GooglePrivacyDlpV2ListColumnDataProfilesResponse,
   ListOrganizationsLocationsColumnDataProfilesError,
-  GcpOpContext
+  GcpOpContext,
+  GooglePrivacyDlpV2ListColumnDataProfilesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsLocationsColumnDataProfilesRequest,
   output: GooglePrivacyDlpV2ListColumnDataProfilesResponse,
@@ -14041,7 +14044,7 @@ export const listOrganizationsLocationsColumnDataProfiles: API.PaginatedOperatio
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListOrganizationsLocationsConnectionsError =
   | NotFound
@@ -14052,7 +14055,8 @@ export const listOrganizationsLocationsConnections: API.PaginatedOperationMethod
   ListOrganizationsLocationsConnectionsRequest,
   GooglePrivacyDlpV2ListConnectionsResponse,
   ListOrganizationsLocationsConnectionsError,
-  GcpOpContext
+  GcpOpContext,
+  GooglePrivacyDlpV2ListConnectionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsLocationsConnectionsRequest,
   output: GooglePrivacyDlpV2ListConnectionsResponse,
@@ -14063,7 +14067,7 @@ export const listOrganizationsLocationsConnections: API.PaginatedOperationMethod
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListOrganizationsLocationsDeidentifyTemplatesError =
   | NotFound
@@ -14074,7 +14078,8 @@ export const listOrganizationsLocationsDeidentifyTemplates: API.PaginatedOperati
   ListOrganizationsLocationsDeidentifyTemplatesRequest,
   GooglePrivacyDlpV2ListDeidentifyTemplatesResponse,
   ListOrganizationsLocationsDeidentifyTemplatesError,
-  GcpOpContext
+  GcpOpContext,
+  GooglePrivacyDlpV2ListDeidentifyTemplatesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsLocationsDeidentifyTemplatesRequest,
   output: GooglePrivacyDlpV2ListDeidentifyTemplatesResponse,
@@ -14085,7 +14090,7 @@ export const listOrganizationsLocationsDeidentifyTemplates: API.PaginatedOperati
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListOrganizationsLocationsDiscoveryConfigsError =
   | NotFound
@@ -14096,7 +14101,8 @@ export const listOrganizationsLocationsDiscoveryConfigs: API.PaginatedOperationM
   ListOrganizationsLocationsDiscoveryConfigsRequest,
   GooglePrivacyDlpV2ListDiscoveryConfigsResponse,
   ListOrganizationsLocationsDiscoveryConfigsError,
-  GcpOpContext
+  GcpOpContext,
+  GooglePrivacyDlpV2ListDiscoveryConfigsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsLocationsDiscoveryConfigsRequest,
   output: GooglePrivacyDlpV2ListDiscoveryConfigsResponse,
@@ -14107,7 +14113,7 @@ export const listOrganizationsLocationsDiscoveryConfigs: API.PaginatedOperationM
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListOrganizationsLocationsDlpJobsError =
   | NotFound
@@ -14118,7 +14124,8 @@ export const listOrganizationsLocationsDlpJobs: API.PaginatedOperationMethod<
   ListOrganizationsLocationsDlpJobsRequest,
   GooglePrivacyDlpV2ListDlpJobsResponse,
   ListOrganizationsLocationsDlpJobsError,
-  GcpOpContext
+  GcpOpContext,
+  GooglePrivacyDlpV2ListDlpJobsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsLocationsDlpJobsRequest,
   output: GooglePrivacyDlpV2ListDlpJobsResponse,
@@ -14129,7 +14136,7 @@ export const listOrganizationsLocationsDlpJobs: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListOrganizationsLocationsFileStoreDataProfilesError =
   | NotFound
@@ -14140,7 +14147,8 @@ export const listOrganizationsLocationsFileStoreDataProfiles: API.PaginatedOpera
   ListOrganizationsLocationsFileStoreDataProfilesRequest,
   GooglePrivacyDlpV2ListFileStoreDataProfilesResponse,
   ListOrganizationsLocationsFileStoreDataProfilesError,
-  GcpOpContext
+  GcpOpContext,
+  GooglePrivacyDlpV2ListFileStoreDataProfilesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsLocationsFileStoreDataProfilesRequest,
   output: GooglePrivacyDlpV2ListFileStoreDataProfilesResponse,
@@ -14151,7 +14159,7 @@ export const listOrganizationsLocationsFileStoreDataProfiles: API.PaginatedOpera
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListOrganizationsLocationsInfoTypesError =
   | NotFound
@@ -14180,7 +14188,8 @@ export const listOrganizationsLocationsInspectTemplates: API.PaginatedOperationM
   ListOrganizationsLocationsInspectTemplatesRequest,
   GooglePrivacyDlpV2ListInspectTemplatesResponse,
   ListOrganizationsLocationsInspectTemplatesError,
-  GcpOpContext
+  GcpOpContext,
+  GooglePrivacyDlpV2ListInspectTemplatesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsLocationsInspectTemplatesRequest,
   output: GooglePrivacyDlpV2ListInspectTemplatesResponse,
@@ -14191,7 +14200,7 @@ export const listOrganizationsLocationsInspectTemplates: API.PaginatedOperationM
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListOrganizationsLocationsJobTriggersError =
   | NotFound
@@ -14202,7 +14211,8 @@ export const listOrganizationsLocationsJobTriggers: API.PaginatedOperationMethod
   ListOrganizationsLocationsJobTriggersRequest,
   GooglePrivacyDlpV2ListJobTriggersResponse,
   ListOrganizationsLocationsJobTriggersError,
-  GcpOpContext
+  GcpOpContext,
+  GooglePrivacyDlpV2ListJobTriggersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsLocationsJobTriggersRequest,
   output: GooglePrivacyDlpV2ListJobTriggersResponse,
@@ -14213,7 +14223,7 @@ export const listOrganizationsLocationsJobTriggers: API.PaginatedOperationMethod
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListOrganizationsLocationsProjectDataProfilesError =
   | NotFound
@@ -14224,7 +14234,8 @@ export const listOrganizationsLocationsProjectDataProfiles: API.PaginatedOperati
   ListOrganizationsLocationsProjectDataProfilesRequest,
   GooglePrivacyDlpV2ListProjectDataProfilesResponse,
   ListOrganizationsLocationsProjectDataProfilesError,
-  GcpOpContext
+  GcpOpContext,
+  GooglePrivacyDlpV2ListProjectDataProfilesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsLocationsProjectDataProfilesRequest,
   output: GooglePrivacyDlpV2ListProjectDataProfilesResponse,
@@ -14235,7 +14246,7 @@ export const listOrganizationsLocationsProjectDataProfiles: API.PaginatedOperati
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListOrganizationsLocationsStoredInfoTypesError =
   | NotFound
@@ -14246,7 +14257,8 @@ export const listOrganizationsLocationsStoredInfoTypes: API.PaginatedOperationMe
   ListOrganizationsLocationsStoredInfoTypesRequest,
   GooglePrivacyDlpV2ListStoredInfoTypesResponse,
   ListOrganizationsLocationsStoredInfoTypesError,
-  GcpOpContext
+  GcpOpContext,
+  GooglePrivacyDlpV2ListStoredInfoTypesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsLocationsStoredInfoTypesRequest,
   output: GooglePrivacyDlpV2ListStoredInfoTypesResponse,
@@ -14257,7 +14269,7 @@ export const listOrganizationsLocationsStoredInfoTypes: API.PaginatedOperationMe
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListOrganizationsLocationsTableDataProfilesError =
   | NotFound
@@ -14268,7 +14280,8 @@ export const listOrganizationsLocationsTableDataProfiles: API.PaginatedOperation
   ListOrganizationsLocationsTableDataProfilesRequest,
   GooglePrivacyDlpV2ListTableDataProfilesResponse,
   ListOrganizationsLocationsTableDataProfilesError,
-  GcpOpContext
+  GcpOpContext,
+  GooglePrivacyDlpV2ListTableDataProfilesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsLocationsTableDataProfilesRequest,
   output: GooglePrivacyDlpV2ListTableDataProfilesResponse,
@@ -14279,7 +14292,7 @@ export const listOrganizationsLocationsTableDataProfiles: API.PaginatedOperation
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListOrganizationsStoredInfoTypesError =
   | NotFound
@@ -14290,7 +14303,8 @@ export const listOrganizationsStoredInfoTypes: API.PaginatedOperationMethod<
   ListOrganizationsStoredInfoTypesRequest,
   GooglePrivacyDlpV2ListStoredInfoTypesResponse,
   ListOrganizationsStoredInfoTypesError,
-  GcpOpContext
+  GcpOpContext,
+  GooglePrivacyDlpV2ListStoredInfoTypesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsStoredInfoTypesRequest,
   output: GooglePrivacyDlpV2ListStoredInfoTypesResponse,
@@ -14301,7 +14315,7 @@ export const listOrganizationsStoredInfoTypes: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsDeidentifyTemplatesError =
   | NotFound
@@ -14312,7 +14326,8 @@ export const listProjectsDeidentifyTemplates: API.PaginatedOperationMethod<
   ListProjectsDeidentifyTemplatesRequest,
   GooglePrivacyDlpV2ListDeidentifyTemplatesResponse,
   ListProjectsDeidentifyTemplatesError,
-  GcpOpContext
+  GcpOpContext,
+  GooglePrivacyDlpV2ListDeidentifyTemplatesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsDeidentifyTemplatesRequest,
   output: GooglePrivacyDlpV2ListDeidentifyTemplatesResponse,
@@ -14323,7 +14338,7 @@ export const listProjectsDeidentifyTemplates: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsDlpJobsError = NotFound | Forbidden | GcpOpError;
 /** Lists DlpJobs that match the specified filter in the request. See https://cloud.google.com/sensitive-data-protection/docs/inspecting-storage and https://cloud.google.com/sensitive-data-protection/docs/compute-risk-analysis to learn more. */
@@ -14331,7 +14346,8 @@ export const listProjectsDlpJobs: API.PaginatedOperationMethod<
   ListProjectsDlpJobsRequest,
   GooglePrivacyDlpV2ListDlpJobsResponse,
   ListProjectsDlpJobsError,
-  GcpOpContext
+  GcpOpContext,
+  GooglePrivacyDlpV2ListDlpJobsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsDlpJobsRequest,
   output: GooglePrivacyDlpV2ListDlpJobsResponse,
@@ -14342,7 +14358,7 @@ export const listProjectsDlpJobs: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsInspectTemplatesError =
   | NotFound
@@ -14353,7 +14369,8 @@ export const listProjectsInspectTemplates: API.PaginatedOperationMethod<
   ListProjectsInspectTemplatesRequest,
   GooglePrivacyDlpV2ListInspectTemplatesResponse,
   ListProjectsInspectTemplatesError,
-  GcpOpContext
+  GcpOpContext,
+  GooglePrivacyDlpV2ListInspectTemplatesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsInspectTemplatesRequest,
   output: GooglePrivacyDlpV2ListInspectTemplatesResponse,
@@ -14364,7 +14381,7 @@ export const listProjectsInspectTemplates: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsJobTriggersError = NotFound | Forbidden | GcpOpError;
 /** Lists job triggers. See https://cloud.google.com/sensitive-data-protection/docs/creating-job-triggers to learn more. */
@@ -14372,7 +14389,8 @@ export const listProjectsJobTriggers: API.PaginatedOperationMethod<
   ListProjectsJobTriggersRequest,
   GooglePrivacyDlpV2ListJobTriggersResponse,
   ListProjectsJobTriggersError,
-  GcpOpContext
+  GcpOpContext,
+  GooglePrivacyDlpV2ListJobTriggersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsJobTriggersRequest,
   output: GooglePrivacyDlpV2ListJobTriggersResponse,
@@ -14383,7 +14401,7 @@ export const listProjectsJobTriggers: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsColumnDataProfilesError =
   | NotFound
@@ -14394,7 +14412,8 @@ export const listProjectsLocationsColumnDataProfiles: API.PaginatedOperationMeth
   ListProjectsLocationsColumnDataProfilesRequest,
   GooglePrivacyDlpV2ListColumnDataProfilesResponse,
   ListProjectsLocationsColumnDataProfilesError,
-  GcpOpContext
+  GcpOpContext,
+  GooglePrivacyDlpV2ListColumnDataProfilesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsColumnDataProfilesRequest,
   output: GooglePrivacyDlpV2ListColumnDataProfilesResponse,
@@ -14405,7 +14424,7 @@ export const listProjectsLocationsColumnDataProfiles: API.PaginatedOperationMeth
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsConnectionsError =
   | NotFound
@@ -14416,7 +14435,8 @@ export const listProjectsLocationsConnections: API.PaginatedOperationMethod<
   ListProjectsLocationsConnectionsRequest,
   GooglePrivacyDlpV2ListConnectionsResponse,
   ListProjectsLocationsConnectionsError,
-  GcpOpContext
+  GcpOpContext,
+  GooglePrivacyDlpV2ListConnectionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsConnectionsRequest,
   output: GooglePrivacyDlpV2ListConnectionsResponse,
@@ -14427,7 +14447,7 @@ export const listProjectsLocationsConnections: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsContentPoliciesError =
   | NotFound
@@ -14438,7 +14458,8 @@ export const listProjectsLocationsContentPolicies: API.PaginatedOperationMethod<
   ListProjectsLocationsContentPoliciesRequest,
   GooglePrivacyDlpV2ListContentPoliciesResponse,
   ListProjectsLocationsContentPoliciesError,
-  GcpOpContext
+  GcpOpContext,
+  GooglePrivacyDlpV2ListContentPoliciesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsContentPoliciesRequest,
   output: GooglePrivacyDlpV2ListContentPoliciesResponse,
@@ -14449,7 +14470,7 @@ export const listProjectsLocationsContentPolicies: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsDeidentifyTemplatesError =
   | NotFound
@@ -14460,7 +14481,8 @@ export const listProjectsLocationsDeidentifyTemplates: API.PaginatedOperationMet
   ListProjectsLocationsDeidentifyTemplatesRequest,
   GooglePrivacyDlpV2ListDeidentifyTemplatesResponse,
   ListProjectsLocationsDeidentifyTemplatesError,
-  GcpOpContext
+  GcpOpContext,
+  GooglePrivacyDlpV2ListDeidentifyTemplatesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsDeidentifyTemplatesRequest,
   output: GooglePrivacyDlpV2ListDeidentifyTemplatesResponse,
@@ -14471,7 +14493,7 @@ export const listProjectsLocationsDeidentifyTemplates: API.PaginatedOperationMet
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsDiscoveryConfigsError =
   | NotFound
@@ -14482,7 +14504,8 @@ export const listProjectsLocationsDiscoveryConfigs: API.PaginatedOperationMethod
   ListProjectsLocationsDiscoveryConfigsRequest,
   GooglePrivacyDlpV2ListDiscoveryConfigsResponse,
   ListProjectsLocationsDiscoveryConfigsError,
-  GcpOpContext
+  GcpOpContext,
+  GooglePrivacyDlpV2ListDiscoveryConfigsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsDiscoveryConfigsRequest,
   output: GooglePrivacyDlpV2ListDiscoveryConfigsResponse,
@@ -14493,7 +14516,7 @@ export const listProjectsLocationsDiscoveryConfigs: API.PaginatedOperationMethod
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsDlpJobsError =
   | NotFound
@@ -14504,7 +14527,8 @@ export const listProjectsLocationsDlpJobs: API.PaginatedOperationMethod<
   ListProjectsLocationsDlpJobsRequest,
   GooglePrivacyDlpV2ListDlpJobsResponse,
   ListProjectsLocationsDlpJobsError,
-  GcpOpContext
+  GcpOpContext,
+  GooglePrivacyDlpV2ListDlpJobsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsDlpJobsRequest,
   output: GooglePrivacyDlpV2ListDlpJobsResponse,
@@ -14515,7 +14539,7 @@ export const listProjectsLocationsDlpJobs: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsFileStoreDataProfilesError =
   | NotFound
@@ -14526,7 +14550,8 @@ export const listProjectsLocationsFileStoreDataProfiles: API.PaginatedOperationM
   ListProjectsLocationsFileStoreDataProfilesRequest,
   GooglePrivacyDlpV2ListFileStoreDataProfilesResponse,
   ListProjectsLocationsFileStoreDataProfilesError,
-  GcpOpContext
+  GcpOpContext,
+  GooglePrivacyDlpV2ListFileStoreDataProfilesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsFileStoreDataProfilesRequest,
   output: GooglePrivacyDlpV2ListFileStoreDataProfilesResponse,
@@ -14537,7 +14562,7 @@ export const listProjectsLocationsFileStoreDataProfiles: API.PaginatedOperationM
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsInfoTypesError =
   | NotFound
@@ -14566,7 +14591,8 @@ export const listProjectsLocationsInspectTemplates: API.PaginatedOperationMethod
   ListProjectsLocationsInspectTemplatesRequest,
   GooglePrivacyDlpV2ListInspectTemplatesResponse,
   ListProjectsLocationsInspectTemplatesError,
-  GcpOpContext
+  GcpOpContext,
+  GooglePrivacyDlpV2ListInspectTemplatesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsInspectTemplatesRequest,
   output: GooglePrivacyDlpV2ListInspectTemplatesResponse,
@@ -14577,7 +14603,7 @@ export const listProjectsLocationsInspectTemplates: API.PaginatedOperationMethod
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsJobTriggersError =
   | NotFound
@@ -14588,7 +14614,8 @@ export const listProjectsLocationsJobTriggers: API.PaginatedOperationMethod<
   ListProjectsLocationsJobTriggersRequest,
   GooglePrivacyDlpV2ListJobTriggersResponse,
   ListProjectsLocationsJobTriggersError,
-  GcpOpContext
+  GcpOpContext,
+  GooglePrivacyDlpV2ListJobTriggersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsJobTriggersRequest,
   output: GooglePrivacyDlpV2ListJobTriggersResponse,
@@ -14599,7 +14626,7 @@ export const listProjectsLocationsJobTriggers: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsProjectDataProfilesError =
   | NotFound
@@ -14610,7 +14637,8 @@ export const listProjectsLocationsProjectDataProfiles: API.PaginatedOperationMet
   ListProjectsLocationsProjectDataProfilesRequest,
   GooglePrivacyDlpV2ListProjectDataProfilesResponse,
   ListProjectsLocationsProjectDataProfilesError,
-  GcpOpContext
+  GcpOpContext,
+  GooglePrivacyDlpV2ListProjectDataProfilesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsProjectDataProfilesRequest,
   output: GooglePrivacyDlpV2ListProjectDataProfilesResponse,
@@ -14621,7 +14649,7 @@ export const listProjectsLocationsProjectDataProfiles: API.PaginatedOperationMet
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsStoredInfoTypesError =
   | NotFound
@@ -14632,7 +14660,8 @@ export const listProjectsLocationsStoredInfoTypes: API.PaginatedOperationMethod<
   ListProjectsLocationsStoredInfoTypesRequest,
   GooglePrivacyDlpV2ListStoredInfoTypesResponse,
   ListProjectsLocationsStoredInfoTypesError,
-  GcpOpContext
+  GcpOpContext,
+  GooglePrivacyDlpV2ListStoredInfoTypesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsStoredInfoTypesRequest,
   output: GooglePrivacyDlpV2ListStoredInfoTypesResponse,
@@ -14643,7 +14672,7 @@ export const listProjectsLocationsStoredInfoTypes: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsTableDataProfilesError =
   | NotFound
@@ -14654,7 +14683,8 @@ export const listProjectsLocationsTableDataProfiles: API.PaginatedOperationMetho
   ListProjectsLocationsTableDataProfilesRequest,
   GooglePrivacyDlpV2ListTableDataProfilesResponse,
   ListProjectsLocationsTableDataProfilesError,
-  GcpOpContext
+  GcpOpContext,
+  GooglePrivacyDlpV2ListTableDataProfilesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsTableDataProfilesRequest,
   output: GooglePrivacyDlpV2ListTableDataProfilesResponse,
@@ -14665,7 +14695,7 @@ export const listProjectsLocationsTableDataProfiles: API.PaginatedOperationMetho
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsStoredInfoTypesError =
   | NotFound
@@ -14676,7 +14706,8 @@ export const listProjectsStoredInfoTypes: API.PaginatedOperationMethod<
   ListProjectsStoredInfoTypesRequest,
   GooglePrivacyDlpV2ListStoredInfoTypesResponse,
   ListProjectsStoredInfoTypesError,
-  GcpOpContext
+  GcpOpContext,
+  GooglePrivacyDlpV2ListStoredInfoTypesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsStoredInfoTypesRequest,
   output: GooglePrivacyDlpV2ListStoredInfoTypesResponse,
@@ -14687,7 +14718,7 @@ export const listProjectsStoredInfoTypes: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type PatchOrganizationsDeidentifyTemplatesError =
   | NotFound
@@ -15178,7 +15209,8 @@ export const searchOrganizationsLocationsConnections: API.PaginatedOperationMeth
   SearchOrganizationsLocationsConnectionsRequest,
   GooglePrivacyDlpV2SearchConnectionsResponse,
   SearchOrganizationsLocationsConnectionsError,
-  GcpOpContext
+  GcpOpContext,
+  GooglePrivacyDlpV2SearchConnectionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchOrganizationsLocationsConnectionsRequest,
   output: GooglePrivacyDlpV2SearchConnectionsResponse,
@@ -15189,7 +15221,7 @@ export const searchOrganizationsLocationsConnections: API.PaginatedOperationMeth
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type SearchProjectsLocationsConnectionsError =
   | NotFound
@@ -15200,7 +15232,8 @@ export const searchProjectsLocationsConnections: API.PaginatedOperationMethod<
   SearchProjectsLocationsConnectionsRequest,
   GooglePrivacyDlpV2SearchConnectionsResponse,
   SearchProjectsLocationsConnectionsError,
-  GcpOpContext
+  GcpOpContext,
+  GooglePrivacyDlpV2SearchConnectionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchProjectsLocationsConnectionsRequest,
   output: GooglePrivacyDlpV2SearchConnectionsResponse,
@@ -15211,4 +15244,4 @@ export const searchProjectsLocationsConnections: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;

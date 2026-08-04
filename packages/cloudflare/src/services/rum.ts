@@ -1187,7 +1187,8 @@ export const listSiteInfos: API.PaginatedOperationMethod<
   ListSiteInfosRequest,
   ListSiteInfosResponse,
   ListSiteInfosError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  SiteInfoListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListSiteInfosRequest,
@@ -1204,7 +1205,7 @@ export const listSiteInfos: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type UpdateRuleError = Forbidden | RulesetNotFound | CloudflareOpError;
 /** Updates a rule in a Web Analytics ruleset. */

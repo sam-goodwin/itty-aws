@@ -14122,27 +14122,7 @@ export const listCloudFrontOriginAccessIdentities: API.OperationMethod<
     items: "CloudFrontOriginAccessIdentityList.Items",
     pageSize: "MaxItems",
   } as const,
-})) as any as API.OperationMethod<
-  ListCloudFrontOriginAccessIdentitiesRequest,
-  ListCloudFrontOriginAccessIdentitiesResult,
-  ListCloudFrontOriginAccessIdentitiesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCloudFrontOriginAccessIdentitiesRequest,
-  ) => stream.Stream<
-    ListCloudFrontOriginAccessIdentitiesResult,
-    ListCloudFrontOriginAccessIdentitiesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCloudFrontOriginAccessIdentitiesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListCloudFrontOriginAccessIdentitiesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListConflictingAliasesError =
   | InvalidArgument
@@ -14216,27 +14196,7 @@ export const listConnectionFunctions: API.OperationMethod<
     items: "ConnectionFunctions",
     pageSize: "MaxItems",
   } as const,
-})) as any as API.OperationMethod<
-  ListConnectionFunctionsRequest,
-  ListConnectionFunctionsResult,
-  ListConnectionFunctionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListConnectionFunctionsRequest,
-  ) => stream.Stream<
-    ListConnectionFunctionsResult,
-    ListConnectionFunctionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListConnectionFunctionsRequest,
-  ) => stream.Stream<
-    ConnectionFunctionSummary,
-    ListConnectionFunctionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListConnectionGroupsError =
   | AccessDenied
@@ -14279,27 +14239,7 @@ export const listConnectionGroups: API.OperationMethod<
     items: "ConnectionGroups",
     pageSize: "MaxItems",
   } as const,
-})) as any as API.OperationMethod<
-  ListConnectionGroupsRequest,
-  ListConnectionGroupsResult,
-  ListConnectionGroupsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListConnectionGroupsRequest,
-  ) => stream.Stream<
-    ListConnectionGroupsResult,
-    ListConnectionGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListConnectionGroupsRequest,
-  ) => stream.Stream<
-    ConnectionGroupSummary,
-    ListConnectionGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListContinuousDeploymentPoliciesError =
   | AccessDenied
@@ -14362,27 +14302,7 @@ export const listDistributions: API.OperationMethod<
     items: "DistributionList.Items",
     pageSize: "MaxItems",
   } as const,
-})) as any as API.OperationMethod<
-  ListDistributionsRequest,
-  ListDistributionsResult,
-  ListDistributionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDistributionsRequest,
-  ) => stream.Stream<
-    ListDistributionsResult,
-    ListDistributionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDistributionsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListDistributionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListDistributionsByAnycastIpListIdError =
   | AccessDenied
@@ -14472,27 +14392,7 @@ export const listDistributionsByConnectionFunction: API.OperationMethod<
     items: "DistributionList.Items",
     pageSize: "MaxItems",
   } as const,
-})) as any as API.OperationMethod<
-  ListDistributionsByConnectionFunctionRequest,
-  ListDistributionsByConnectionFunctionResult,
-  ListDistributionsByConnectionFunctionError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDistributionsByConnectionFunctionRequest,
-  ) => stream.Stream<
-    ListDistributionsByConnectionFunctionResult,
-    ListDistributionsByConnectionFunctionError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDistributionsByConnectionFunctionRequest,
-  ) => stream.Stream<
-    unknown,
-    ListDistributionsByConnectionFunctionError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListDistributionsByConnectionModeError =
   | AccessDenied
@@ -14534,27 +14434,7 @@ export const listDistributionsByConnectionMode: API.OperationMethod<
     items: "DistributionList.Items",
     pageSize: "MaxItems",
   } as const,
-})) as any as API.OperationMethod<
-  ListDistributionsByConnectionModeRequest,
-  ListDistributionsByConnectionModeResult,
-  ListDistributionsByConnectionModeError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDistributionsByConnectionModeRequest,
-  ) => stream.Stream<
-    ListDistributionsByConnectionModeResult,
-    ListDistributionsByConnectionModeError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDistributionsByConnectionModeRequest,
-  ) => stream.Stream<
-    unknown,
-    ListDistributionsByConnectionModeError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListDistributionsByKeyGroupError =
   | InvalidArgument
@@ -14715,27 +14595,7 @@ export const listDistributionsByTrustStore: API.OperationMethod<
     items: "DistributionList.Items",
     pageSize: "MaxItems",
   } as const,
-})) as any as API.OperationMethod<
-  ListDistributionsByTrustStoreRequest,
-  ListDistributionsByTrustStoreResult,
-  ListDistributionsByTrustStoreError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDistributionsByTrustStoreRequest,
-  ) => stream.Stream<
-    ListDistributionsByTrustStoreResult,
-    ListDistributionsByTrustStoreError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDistributionsByTrustStoreRequest,
-  ) => stream.Stream<
-    unknown,
-    ListDistributionsByTrustStoreError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListDistributionsByVpcOriginIdError =
   | AccessDenied
@@ -14822,27 +14682,7 @@ export const listDistributionTenants: API.OperationMethod<
     items: "DistributionTenantList",
     pageSize: "MaxItems",
   } as const,
-})) as any as API.OperationMethod<
-  ListDistributionTenantsRequest,
-  ListDistributionTenantsResult,
-  ListDistributionTenantsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDistributionTenantsRequest,
-  ) => stream.Stream<
-    ListDistributionTenantsResult,
-    ListDistributionTenantsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDistributionTenantsRequest,
-  ) => stream.Stream<
-    DistributionTenantSummary,
-    ListDistributionTenantsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListDistributionTenantsByCustomizationError =
   | AccessDenied
@@ -14887,27 +14727,7 @@ export const listDistributionTenantsByCustomization: API.OperationMethod<
     items: "DistributionTenantList",
     pageSize: "MaxItems",
   } as const,
-})) as any as API.OperationMethod<
-  ListDistributionTenantsByCustomizationRequest,
-  ListDistributionTenantsByCustomizationResult,
-  ListDistributionTenantsByCustomizationError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDistributionTenantsByCustomizationRequest,
-  ) => stream.Stream<
-    ListDistributionTenantsByCustomizationResult,
-    ListDistributionTenantsByCustomizationError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDistributionTenantsByCustomizationRequest,
-  ) => stream.Stream<
-    DistributionTenantSummary,
-    ListDistributionTenantsByCustomizationError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListDomainConflictsError =
   | AccessDenied
@@ -14966,27 +14786,7 @@ export const listDomainConflicts: API.OperationMethod<
     items: "DomainConflicts",
     pageSize: "MaxItems",
   } as const,
-})) as any as API.OperationMethod<
-  ListDomainConflictsRequest,
-  ListDomainConflictsResult,
-  ListDomainConflictsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDomainConflictsRequest,
-  ) => stream.Stream<
-    ListDomainConflictsResult,
-    ListDomainConflictsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDomainConflictsRequest,
-  ) => stream.Stream<
-    DomainConflict,
-    ListDomainConflictsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListFieldLevelEncryptionConfigsError =
   | InvalidArgument
@@ -15094,27 +14894,7 @@ export const listInvalidations: API.OperationMethod<
     items: "InvalidationList.Items",
     pageSize: "MaxItems",
   } as const,
-})) as any as API.OperationMethod<
-  ListInvalidationsRequest,
-  ListInvalidationsResult,
-  ListInvalidationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListInvalidationsRequest,
-  ) => stream.Stream<
-    ListInvalidationsResult,
-    ListInvalidationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListInvalidationsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListInvalidationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListInvalidationsForDistributionTenantError =
   | AccessDenied
@@ -15157,27 +14937,7 @@ export const listInvalidationsForDistributionTenant: API.OperationMethod<
     items: "InvalidationList.Items",
     pageSize: "MaxItems",
   } as const,
-})) as any as API.OperationMethod<
-  ListInvalidationsForDistributionTenantRequest,
-  ListInvalidationsForDistributionTenantResult,
-  ListInvalidationsForDistributionTenantError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListInvalidationsForDistributionTenantRequest,
-  ) => stream.Stream<
-    ListInvalidationsForDistributionTenantResult,
-    ListInvalidationsForDistributionTenantError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListInvalidationsForDistributionTenantRequest,
-  ) => stream.Stream<
-    unknown,
-    ListInvalidationsForDistributionTenantError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListKeyGroupsError = InvalidArgument | CommonErrors;
 /**
@@ -15240,27 +15000,7 @@ export const listKeyValueStores: API.OperationMethod<
     items: "KeyValueStoreList.Items",
     pageSize: "MaxItems",
   } as const,
-})) as any as API.OperationMethod<
-  ListKeyValueStoresRequest,
-  ListKeyValueStoresResult,
-  ListKeyValueStoresError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListKeyValueStoresRequest,
-  ) => stream.Stream<
-    ListKeyValueStoresResult,
-    ListKeyValueStoresError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListKeyValueStoresRequest,
-  ) => stream.Stream<
-    unknown,
-    ListKeyValueStoresError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListOriginAccessControlsError = InvalidArgument | CommonErrors;
 /**
@@ -15303,27 +15043,7 @@ export const listOriginAccessControls: API.OperationMethod<
     items: "OriginAccessControlList.Items",
     pageSize: "MaxItems",
   } as const,
-})) as any as API.OperationMethod<
-  ListOriginAccessControlsRequest,
-  ListOriginAccessControlsResult,
-  ListOriginAccessControlsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListOriginAccessControlsRequest,
-  ) => stream.Stream<
-    ListOriginAccessControlsResult,
-    ListOriginAccessControlsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListOriginAccessControlsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListOriginAccessControlsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListOriginRequestPoliciesError =
   | AccessDenied
@@ -15388,27 +15108,7 @@ export const listPublicKeys: API.OperationMethod<
     items: "PublicKeyList.Items",
     pageSize: "MaxItems",
   } as const,
-})) as any as API.OperationMethod<
-  ListPublicKeysRequest,
-  ListPublicKeysResult,
-  ListPublicKeysError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPublicKeysRequest,
-  ) => stream.Stream<
-    ListPublicKeysResult,
-    ListPublicKeysError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPublicKeysRequest,
-  ) => stream.Stream<
-    unknown,
-    ListPublicKeysError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListRealtimeLogConfigsError =
   | AccessDenied
@@ -15497,27 +15197,7 @@ export const listStreamingDistributions: API.OperationMethod<
     items: "StreamingDistributionList.Items",
     pageSize: "MaxItems",
   } as const,
-})) as any as API.OperationMethod<
-  ListStreamingDistributionsRequest,
-  ListStreamingDistributionsResult,
-  ListStreamingDistributionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListStreamingDistributionsRequest,
-  ) => stream.Stream<
-    ListStreamingDistributionsResult,
-    ListStreamingDistributionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListStreamingDistributionsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListStreamingDistributionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsForResourceError =
   | AccessDenied
@@ -15583,27 +15263,7 @@ export const listTrustStores: API.OperationMethod<
     items: "TrustStoreList",
     pageSize: "MaxItems",
   } as const,
-})) as any as API.OperationMethod<
-  ListTrustStoresRequest,
-  ListTrustStoresResult,
-  ListTrustStoresError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTrustStoresRequest,
-  ) => stream.Stream<
-    ListTrustStoresResult,
-    ListTrustStoresError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTrustStoresRequest,
-  ) => stream.Stream<
-    TrustStoreSummary,
-    ListTrustStoresError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListVpcOriginsError =
   | AccessDenied

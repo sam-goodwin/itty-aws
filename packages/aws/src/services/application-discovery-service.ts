@@ -2045,27 +2045,7 @@ export const describeAgents: API.OperationMethod<
     items: "agentsInfo",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeAgentsRequest,
-  DescribeAgentsResponse,
-  DescribeAgentsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeAgentsRequest,
-  ) => stream.Stream<
-    DescribeAgentsResponse,
-    DescribeAgentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeAgentsRequest,
-  ) => stream.Stream<
-    AgentInfo,
-    DescribeAgentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeBatchDeleteConfigurationTaskError =
   | AuthorizationErrorException
@@ -2198,27 +2178,7 @@ export const describeContinuousExports: API.OperationMethod<
     items: "descriptions",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeContinuousExportsRequest,
-  DescribeContinuousExportsResponse,
-  DescribeContinuousExportsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeContinuousExportsRequest,
-  ) => stream.Stream<
-    DescribeContinuousExportsResponse,
-    DescribeContinuousExportsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeContinuousExportsRequest,
-  ) => stream.Stream<
-    ContinuousExportDescription,
-    DescribeContinuousExportsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeExportConfigurationsError =
   | AuthorizationErrorException
@@ -2271,27 +2231,7 @@ export const describeExportConfigurations: API.OperationMethod<
     items: "exportsInfo",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeExportConfigurationsRequest,
-  DescribeExportConfigurationsResponse,
-  DescribeExportConfigurationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeExportConfigurationsRequest,
-  ) => stream.Stream<
-    DescribeExportConfigurationsResponse,
-    DescribeExportConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeExportConfigurationsRequest,
-  ) => stream.Stream<
-    ExportInfo,
-    DescribeExportConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeExportTasksError =
   | AuthorizationErrorException
@@ -2343,27 +2283,7 @@ export const describeExportTasks: API.OperationMethod<
     items: "exportsInfo",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeExportTasksRequest,
-  DescribeExportTasksResponse,
-  DescribeExportTasksError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeExportTasksRequest,
-  ) => stream.Stream<
-    DescribeExportTasksResponse,
-    DescribeExportTasksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeExportTasksRequest,
-  ) => stream.Stream<
-    ExportInfo,
-    DescribeExportTasksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeImportTasksError =
   | AuthorizationErrorException
@@ -2415,27 +2335,7 @@ export const describeImportTasks: API.OperationMethod<
     items: "tasks",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeImportTasksRequest,
-  DescribeImportTasksResponse,
-  DescribeImportTasksError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeImportTasksRequest,
-  ) => stream.Stream<
-    DescribeImportTasksResponse,
-    DescribeImportTasksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeImportTasksRequest,
-  ) => stream.Stream<
-    ImportTask,
-    DescribeImportTasksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeTagsError =
   | AuthorizationErrorException
@@ -2500,27 +2400,7 @@ export const describeTags: API.OperationMethod<
     items: "tags",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeTagsRequest,
-  DescribeTagsResponse,
-  DescribeTagsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeTagsRequest,
-  ) => stream.Stream<
-    DescribeTagsResponse,
-    DescribeTagsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeTagsRequest,
-  ) => stream.Stream<
-    ConfigurationTag,
-    DescribeTagsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DisassociateConfigurationItemsFromApplicationError =
   | AuthorizationErrorException
@@ -2676,27 +2556,7 @@ export const listConfigurations: API.OperationMethod<
     items: "configurations",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListConfigurationsRequest,
-  ListConfigurationsResponse,
-  ListConfigurationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListConfigurationsRequest,
-  ) => stream.Stream<
-    ListConfigurationsResponse,
-    ListConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListConfigurationsRequest,
-  ) => stream.Stream<
-    { [key: string]: string | undefined },
-    ListConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListServerNeighborsError =
   | AuthorizationErrorException

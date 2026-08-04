@@ -4482,27 +4482,7 @@ export const describeAccountLimits: API.OperationMethod<
     outputToken: "NextMarker",
     items: "Limits",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeAccountLimitsInput,
-  DescribeAccountLimitsOutput,
-  DescribeAccountLimitsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeAccountLimitsInput,
-  ) => stream.Stream<
-    DescribeAccountLimitsOutput,
-    DescribeAccountLimitsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeAccountLimitsInput,
-  ) => stream.Stream<
-    Limit,
-    DescribeAccountLimitsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeCapacityReservationError =
   | LoadBalancerNotFoundException
@@ -4591,27 +4571,7 @@ export const describeListenerCertificates: API.OperationMethod<
     outputToken: "NextMarker",
     items: "Certificates",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeListenerCertificatesInput,
-  DescribeListenerCertificatesOutput,
-  DescribeListenerCertificatesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeListenerCertificatesInput,
-  ) => stream.Stream<
-    DescribeListenerCertificatesOutput,
-    DescribeListenerCertificatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeListenerCertificatesInput,
-  ) => stream.Stream<
-    Certificate,
-    DescribeListenerCertificatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeListenersError =
   | ListenerNotFoundException
@@ -4659,27 +4619,7 @@ export const describeListeners: API.OperationMethod<
     outputToken: "NextMarker",
     items: "Listeners",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeListenersInput,
-  DescribeListenersOutput,
-  DescribeListenersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeListenersInput,
-  ) => stream.Stream<
-    DescribeListenersOutput,
-    DescribeListenersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeListenersInput,
-  ) => stream.Stream<
-    Listener,
-    DescribeListenersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeLoadBalancerAttributesError =
   | LoadBalancerNotFoundException
@@ -4751,27 +4691,7 @@ export const describeLoadBalancers: API.OperationMethod<
     outputToken: "NextMarker",
     items: "LoadBalancers",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeLoadBalancersInput,
-  DescribeLoadBalancersOutput,
-  DescribeLoadBalancersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeLoadBalancersInput,
-  ) => stream.Stream<
-    DescribeLoadBalancersOutput,
-    DescribeLoadBalancersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeLoadBalancersInput,
-  ) => stream.Stream<
-    LoadBalancer,
-    DescribeLoadBalancersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeRulesError =
   | ListenerNotFoundException
@@ -4818,27 +4738,7 @@ export const describeRules: API.OperationMethod<
     outputToken: "NextMarker",
     items: "Rules",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeRulesInput,
-  DescribeRulesOutput,
-  DescribeRulesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeRulesInput,
-  ) => stream.Stream<
-    DescribeRulesOutput,
-    DescribeRulesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeRulesInput,
-  ) => stream.Stream<
-    Rule,
-    DescribeRulesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeSSLPoliciesError =
   | SSLPolicyNotFoundException
@@ -4968,27 +4868,7 @@ export const describeTargetGroups: API.OperationMethod<
     outputToken: "NextMarker",
     items: "TargetGroups",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeTargetGroupsInput,
-  DescribeTargetGroupsOutput,
-  DescribeTargetGroupsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeTargetGroupsInput,
-  ) => stream.Stream<
-    DescribeTargetGroupsOutput,
-    DescribeTargetGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeTargetGroupsInput,
-  ) => stream.Stream<
-    TargetGroup,
-    DescribeTargetGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeTargetHealthError =
   | HealthUnavailableException
@@ -5055,27 +4935,7 @@ export const describeTrustStoreAssociations: API.OperationMethod<
     items: "TrustStoreAssociations",
     pageSize: "PageSize",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeTrustStoreAssociationsInput,
-  DescribeTrustStoreAssociationsOutput,
-  DescribeTrustStoreAssociationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeTrustStoreAssociationsInput,
-  ) => stream.Stream<
-    DescribeTrustStoreAssociationsOutput,
-    DescribeTrustStoreAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeTrustStoreAssociationsInput,
-  ) => stream.Stream<
-    TrustStoreAssociation,
-    DescribeTrustStoreAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeTrustStoreRevocationsError =
   | RevocationIdNotFoundException
@@ -5118,27 +4978,7 @@ export const describeTrustStoreRevocations: API.OperationMethod<
     items: "TrustStoreRevocations",
     pageSize: "PageSize",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeTrustStoreRevocationsInput,
-  DescribeTrustStoreRevocationsOutput,
-  DescribeTrustStoreRevocationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeTrustStoreRevocationsInput,
-  ) => stream.Stream<
-    DescribeTrustStoreRevocationsOutput,
-    DescribeTrustStoreRevocationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeTrustStoreRevocationsInput,
-  ) => stream.Stream<
-    DescribeTrustStoreRevocation,
-    DescribeTrustStoreRevocationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeTrustStoresError =
   | TrustStoreNotFoundException
@@ -5179,27 +5019,7 @@ export const describeTrustStores: API.OperationMethod<
     items: "TrustStores",
     pageSize: "PageSize",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeTrustStoresInput,
-  DescribeTrustStoresOutput,
-  DescribeTrustStoresError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeTrustStoresInput,
-  ) => stream.Stream<
-    DescribeTrustStoresOutput,
-    DescribeTrustStoresError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeTrustStoresInput,
-  ) => stream.Stream<
-    TrustStore,
-    DescribeTrustStoresError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type GetResourcePolicyError = ResourceNotFoundException | CommonErrors;
 /**

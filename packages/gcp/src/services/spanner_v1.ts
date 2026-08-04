@@ -6827,7 +6827,8 @@ export const listProjectsInstanceConfigOperations: API.PaginatedOperationMethod<
   ListProjectsInstanceConfigOperationsRequest,
   ListInstanceConfigOperationsResponse,
   ListProjectsInstanceConfigOperationsError,
-  GcpOpContext
+  GcpOpContext,
+  ListInstanceConfigOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsInstanceConfigOperationsRequest,
   output: ListInstanceConfigOperationsResponse,
@@ -6838,7 +6839,7 @@ export const listProjectsInstanceConfigOperations: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsInstanceConfigsError =
   | NotFound
@@ -6849,7 +6850,8 @@ export const listProjectsInstanceConfigs: API.PaginatedOperationMethod<
   ListProjectsInstanceConfigsRequest,
   ListInstanceConfigsResponse,
   ListProjectsInstanceConfigsError,
-  GcpOpContext
+  GcpOpContext,
+  ListInstanceConfigsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsInstanceConfigsRequest,
   output: ListInstanceConfigsResponse,
@@ -6860,7 +6862,7 @@ export const listProjectsInstanceConfigs: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsInstanceConfigsOperationsError =
   | NotFound
@@ -6871,7 +6873,8 @@ export const listProjectsInstanceConfigsOperations: API.PaginatedOperationMethod
   ListProjectsInstanceConfigsOperationsRequest,
   ListOperationsResponse,
   ListProjectsInstanceConfigsOperationsError,
-  GcpOpContext
+  GcpOpContext,
+  ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsInstanceConfigsOperationsRequest,
   output: ListOperationsResponse,
@@ -6882,7 +6885,7 @@ export const listProjectsInstanceConfigsOperations: API.PaginatedOperationMethod
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsInstanceConfigsSsdCachesOperationsError =
   | NotFound
@@ -6893,7 +6896,8 @@ export const listProjectsInstanceConfigsSsdCachesOperations: API.PaginatedOperat
   ListProjectsInstanceConfigsSsdCachesOperationsRequest,
   ListOperationsResponse,
   ListProjectsInstanceConfigsSsdCachesOperationsError,
-  GcpOpContext
+  GcpOpContext,
+  ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsInstanceConfigsSsdCachesOperationsRequest,
   output: ListOperationsResponse,
@@ -6904,7 +6908,7 @@ export const listProjectsInstanceConfigsSsdCachesOperations: API.PaginatedOperat
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsInstancesError = NotFound | Forbidden | GcpOpError;
 /** Lists all instances in the given project. */
@@ -6912,7 +6916,8 @@ export const listProjectsInstances: API.PaginatedOperationMethod<
   ListProjectsInstancesRequest,
   ListInstancesResponse,
   ListProjectsInstancesError,
-  GcpOpContext
+  GcpOpContext,
+  ListInstancesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsInstancesRequest,
   output: ListInstancesResponse,
@@ -6923,7 +6928,7 @@ export const listProjectsInstances: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsInstancesBackupOperationsError =
   | NotFound
@@ -6934,7 +6939,8 @@ export const listProjectsInstancesBackupOperations: API.PaginatedOperationMethod
   ListProjectsInstancesBackupOperationsRequest,
   ListBackupOperationsResponse,
   ListProjectsInstancesBackupOperationsError,
-  GcpOpContext
+  GcpOpContext,
+  ListBackupOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsInstancesBackupOperationsRequest,
   output: ListBackupOperationsResponse,
@@ -6945,7 +6951,7 @@ export const listProjectsInstancesBackupOperations: API.PaginatedOperationMethod
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsInstancesBackupsError =
   | NotFound
@@ -6956,7 +6962,8 @@ export const listProjectsInstancesBackups: API.PaginatedOperationMethod<
   ListProjectsInstancesBackupsRequest,
   ListBackupsResponse,
   ListProjectsInstancesBackupsError,
-  GcpOpContext
+  GcpOpContext,
+  ListBackupsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsInstancesBackupsRequest,
   output: ListBackupsResponse,
@@ -6967,7 +6974,7 @@ export const listProjectsInstancesBackups: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsInstancesBackupsOperationsError =
   | NotFound
@@ -6978,7 +6985,8 @@ export const listProjectsInstancesBackupsOperations: API.PaginatedOperationMetho
   ListProjectsInstancesBackupsOperationsRequest,
   ListOperationsResponse,
   ListProjectsInstancesBackupsOperationsError,
-  GcpOpContext
+  GcpOpContext,
+  ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsInstancesBackupsOperationsRequest,
   output: ListOperationsResponse,
@@ -6989,7 +6997,7 @@ export const listProjectsInstancesBackupsOperations: API.PaginatedOperationMetho
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsInstancesDatabaseOperationsError =
   | NotFound
@@ -7000,7 +7008,8 @@ export const listProjectsInstancesDatabaseOperations: API.PaginatedOperationMeth
   ListProjectsInstancesDatabaseOperationsRequest,
   ListDatabaseOperationsResponse,
   ListProjectsInstancesDatabaseOperationsError,
-  GcpOpContext
+  GcpOpContext,
+  ListDatabaseOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsInstancesDatabaseOperationsRequest,
   output: ListDatabaseOperationsResponse,
@@ -7011,7 +7020,7 @@ export const listProjectsInstancesDatabaseOperations: API.PaginatedOperationMeth
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsInstancesDatabasesError =
   | NotFound
@@ -7022,7 +7031,8 @@ export const listProjectsInstancesDatabases: API.PaginatedOperationMethod<
   ListProjectsInstancesDatabasesRequest,
   ListDatabasesResponse,
   ListProjectsInstancesDatabasesError,
-  GcpOpContext
+  GcpOpContext,
+  ListDatabasesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsInstancesDatabasesRequest,
   output: ListDatabasesResponse,
@@ -7033,7 +7043,7 @@ export const listProjectsInstancesDatabases: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsInstancesDatabasesBackupSchedulesError =
   | NotFound
@@ -7044,7 +7054,8 @@ export const listProjectsInstancesDatabasesBackupSchedules: API.PaginatedOperati
   ListProjectsInstancesDatabasesBackupSchedulesRequest,
   ListBackupSchedulesResponse,
   ListProjectsInstancesDatabasesBackupSchedulesError,
-  GcpOpContext
+  GcpOpContext,
+  ListBackupSchedulesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsInstancesDatabasesBackupSchedulesRequest,
   output: ListBackupSchedulesResponse,
@@ -7055,7 +7066,7 @@ export const listProjectsInstancesDatabasesBackupSchedules: API.PaginatedOperati
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsInstancesDatabasesDatabaseRolesError =
   | NotFound
@@ -7066,7 +7077,8 @@ export const listProjectsInstancesDatabasesDatabaseRoles: API.PaginatedOperation
   ListProjectsInstancesDatabasesDatabaseRolesRequest,
   ListDatabaseRolesResponse,
   ListProjectsInstancesDatabasesDatabaseRolesError,
-  GcpOpContext
+  GcpOpContext,
+  ListDatabaseRolesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsInstancesDatabasesDatabaseRolesRequest,
   output: ListDatabaseRolesResponse,
@@ -7077,7 +7089,7 @@ export const listProjectsInstancesDatabasesDatabaseRoles: API.PaginatedOperation
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsInstancesDatabasesOperationsError =
   | NotFound
@@ -7088,7 +7100,8 @@ export const listProjectsInstancesDatabasesOperations: API.PaginatedOperationMet
   ListProjectsInstancesDatabasesOperationsRequest,
   ListOperationsResponse,
   ListProjectsInstancesDatabasesOperationsError,
-  GcpOpContext
+  GcpOpContext,
+  ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsInstancesDatabasesOperationsRequest,
   output: ListOperationsResponse,
@@ -7099,7 +7112,7 @@ export const listProjectsInstancesDatabasesOperations: API.PaginatedOperationMet
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsInstancesDatabasesSessionsError =
   | NotFound
@@ -7110,7 +7123,8 @@ export const listProjectsInstancesDatabasesSessions: API.PaginatedOperationMetho
   ListProjectsInstancesDatabasesSessionsRequest,
   ListSessionsResponse,
   ListProjectsInstancesDatabasesSessionsError,
-  GcpOpContext
+  GcpOpContext,
+  ListSessionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsInstancesDatabasesSessionsRequest,
   output: ListSessionsResponse,
@@ -7121,7 +7135,7 @@ export const listProjectsInstancesDatabasesSessions: API.PaginatedOperationMetho
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsInstancesInstancePartitionOperationsError =
   | NotFound
@@ -7132,7 +7146,8 @@ export const listProjectsInstancesInstancePartitionOperations: API.PaginatedOper
   ListProjectsInstancesInstancePartitionOperationsRequest,
   ListInstancePartitionOperationsResponse,
   ListProjectsInstancesInstancePartitionOperationsError,
-  GcpOpContext
+  GcpOpContext,
+  ListInstancePartitionOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsInstancesInstancePartitionOperationsRequest,
   output: ListInstancePartitionOperationsResponse,
@@ -7143,7 +7158,7 @@ export const listProjectsInstancesInstancePartitionOperations: API.PaginatedOper
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsInstancesInstancePartitionsError =
   | NotFound
@@ -7154,7 +7169,8 @@ export const listProjectsInstancesInstancePartitions: API.PaginatedOperationMeth
   ListProjectsInstancesInstancePartitionsRequest,
   ListInstancePartitionsResponse,
   ListProjectsInstancesInstancePartitionsError,
-  GcpOpContext
+  GcpOpContext,
+  ListInstancePartitionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsInstancesInstancePartitionsRequest,
   output: ListInstancePartitionsResponse,
@@ -7165,7 +7181,7 @@ export const listProjectsInstancesInstancePartitions: API.PaginatedOperationMeth
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsInstancesInstancePartitionsOperationsError =
   | NotFound
@@ -7176,7 +7192,8 @@ export const listProjectsInstancesInstancePartitionsOperations: API.PaginatedOpe
   ListProjectsInstancesInstancePartitionsOperationsRequest,
   ListOperationsResponse,
   ListProjectsInstancesInstancePartitionsOperationsError,
-  GcpOpContext
+  GcpOpContext,
+  ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsInstancesInstancePartitionsOperationsRequest,
   output: ListOperationsResponse,
@@ -7187,7 +7204,7 @@ export const listProjectsInstancesInstancePartitionsOperations: API.PaginatedOpe
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsInstancesOperationsError =
   | NotFound
@@ -7198,7 +7215,8 @@ export const listProjectsInstancesOperations: API.PaginatedOperationMethod<
   ListProjectsInstancesOperationsRequest,
   ListOperationsResponse,
   ListProjectsInstancesOperationsError,
-  GcpOpContext
+  GcpOpContext,
+  ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsInstancesOperationsRequest,
   output: ListOperationsResponse,
@@ -7209,7 +7227,7 @@ export const listProjectsInstancesOperations: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListScansError = NotFound | Forbidden | GcpOpError;
 /** Return available scans given a Database-specific resource name. */
@@ -7217,7 +7235,8 @@ export const listScans: API.PaginatedOperationMethod<
   ListScansRequest,
   ListScansResponse,
   ListScansError,
-  GcpOpContext
+  GcpOpContext,
+  ListScansResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListScansRequest,
   output: ListScansResponse,
@@ -7228,7 +7247,7 @@ export const listScans: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type MoveProjectsInstancesError =
   | NotFound

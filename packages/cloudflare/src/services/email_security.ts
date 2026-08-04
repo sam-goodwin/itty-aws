@@ -7296,7 +7296,8 @@ export const bulkInvestigateMove: API.PaginatedOperationMethod<
   BulkInvestigateMoveRequest,
   BulkInvestigateMoveResponse,
   BulkInvestigateMoveError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  InvestigateMoveBulkResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: BulkInvestigateMoveRequest,
@@ -7307,7 +7308,7 @@ export const bulkInvestigateMove: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type BulkInvestigateReleaseError = CloudflareOpError;
 /** Releases one or more quarantined messages, delivering them to the intended recipients. Use when a message was incorrectly quarantined. Returns delivery status for each recipient. */
@@ -7315,7 +7316,8 @@ export const bulkInvestigateRelease: API.PaginatedOperationMethod<
   BulkInvestigateReleaseRequest,
   BulkInvestigateReleaseResponse,
   BulkInvestigateReleaseError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  InvestigateReleaseBulkResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: BulkInvestigateReleaseRequest,
@@ -7326,7 +7328,7 @@ export const bulkInvestigateRelease: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type CreateInvestigateBulkError = CloudflareOpError;
 /** Create a bulk action job */
@@ -7364,7 +7366,8 @@ export const createInvestigateMove: API.PaginatedOperationMethod<
   CreateInvestigateMoveRequest,
   CreateInvestigateMoveResponse,
   CreateInvestigateMoveError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  InvestigateMoveCreateResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: CreateInvestigateMoveRequest,
@@ -7375,7 +7378,7 @@ export const createInvestigateMove: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type CreateInvestigatePreviewError = CloudflareOpError;
 /** Generates a preview image for a message that was not flagged as a detection. Useful for investigating benign messages. Returns a base64-encoded PNG screenshot of the email body. */
@@ -7950,7 +7953,8 @@ export const listInvestigateBulkMessages: API.PaginatedOperationMethod<
   ListInvestigateBulkMessagesRequest,
   ListInvestigateBulkMessagesResponse,
   ListInvestigateBulkMessagesError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  InvestigateBulkMessagesListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListInvestigateBulkMessagesRequest,
@@ -7967,7 +7971,7 @@ export const listInvestigateBulkMessages: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListInvestigateBulksError = CloudflareOpError;
 /** List bulk action jobs */
@@ -7975,7 +7979,8 @@ export const listInvestigateBulks: API.PaginatedOperationMethod<
   ListInvestigateBulksRequest,
   ListInvestigateBulksResponse,
   ListInvestigateBulksError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  InvestigateBulkListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListInvestigateBulksRequest,
@@ -7992,7 +7997,7 @@ export const listInvestigateBulks: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListInvestigatesError = CloudflareOpError;
 /** Returns information for each email that matches the search parameter(s). */
@@ -8000,7 +8005,8 @@ export const listInvestigates: API.PaginatedOperationMethod<
   ListInvestigatesRequest,
   ListInvestigatesResponse,
   ListInvestigatesError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  InvestigateListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListInvestigatesRequest,
@@ -8017,7 +8023,7 @@ export const listInvestigates: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListPhishguardReportsError = CloudflareOpError;
 /** Retrieves PhishGuard security alert reports for a specified date range. Reports include detected threats, dispositions, and contextual information. Use for security monitoring and threat analysis. */
@@ -8025,7 +8031,8 @@ export const listPhishguardReports: API.PaginatedOperationMethod<
   ListPhishguardReportsRequest,
   ListPhishguardReportsResponse,
   ListPhishguardReportsError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  PhishguardReportsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListPhishguardReportsRequest,
@@ -8036,7 +8043,7 @@ export const listPhishguardReports: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListSettingAllowPoliciesError =
   | EmailSecurityNotEntitled
@@ -8047,7 +8054,8 @@ export const listSettingAllowPolicies: API.PaginatedOperationMethod<
   ListSettingAllowPoliciesRequest,
   ListSettingAllowPoliciesResponse,
   ListSettingAllowPoliciesError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  SettingsAllowPoliciesListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListSettingAllowPoliciesRequest,
@@ -8069,7 +8077,7 @@ export const listSettingAllowPolicies: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListSettingBlockSendersError =
   | EmailSecurityNotEntitled
@@ -8080,7 +8088,8 @@ export const listSettingBlockSenders: API.PaginatedOperationMethod<
   ListSettingBlockSendersRequest,
   ListSettingBlockSendersResponse,
   ListSettingBlockSendersError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  SettingsBlockSendersListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListSettingBlockSendersRequest,
@@ -8102,7 +8111,7 @@ export const listSettingBlockSenders: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListSettingDomainsError =
   | EmailSecurityNotEntitled
@@ -8113,7 +8122,8 @@ export const listSettingDomains: API.PaginatedOperationMethod<
   ListSettingDomainsRequest,
   ListSettingDomainsResponse,
   ListSettingDomainsError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  SettingsDomainsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListSettingDomainsRequest,
@@ -8135,7 +8145,7 @@ export const listSettingDomains: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListSettingImpersonationRegistriesError =
   | EmailSecurityNotEntitled
@@ -8146,7 +8156,8 @@ export const listSettingImpersonationRegistries: API.PaginatedOperationMethod<
   ListSettingImpersonationRegistriesRequest,
   ListSettingImpersonationRegistriesResponse,
   ListSettingImpersonationRegistriesError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  SettingsImpersonationRegistryListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListSettingImpersonationRegistriesRequest,
@@ -8168,7 +8179,7 @@ export const listSettingImpersonationRegistries: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListSettingSendingDomainRestrictionsError = CloudflareOpError;
 /** Returns a paginated list of sending domain restrictions. These restrictions enforce TLS requirements for emails from specific domains. Mail without TLS from restricted domains will be dropped unless the subdomain is in the exclude list. Supports sorting and searching. */
@@ -8176,7 +8187,8 @@ export const listSettingSendingDomainRestrictions: API.PaginatedOperationMethod<
   ListSettingSendingDomainRestrictionsRequest,
   ListSettingSendingDomainRestrictionsResponse,
   ListSettingSendingDomainRestrictionsError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  SettingsSendingDomainRestrictionsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListSettingSendingDomainRestrictionsRequest,
@@ -8193,7 +8205,7 @@ export const listSettingSendingDomainRestrictions: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListSettingTrustedDomainsError =
   | EmailSecurityNotEntitled
@@ -8204,7 +8216,8 @@ export const listSettingTrustedDomains: API.PaginatedOperationMethod<
   ListSettingTrustedDomainsRequest,
   ListSettingTrustedDomainsResponse,
   ListSettingTrustedDomainsError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  SettingsTrustedDomainsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListSettingTrustedDomainsRequest,
@@ -8226,7 +8239,7 @@ export const listSettingTrustedDomains: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListSettingUrlIgnorePatternsError = CloudflareOpError;
 /** Returns a paginated list of URL rewrite ignore patterns for the account. URLs matching these patterns will not be rewritten. */
@@ -8234,7 +8247,8 @@ export const listSettingUrlIgnorePatterns: API.PaginatedOperationMethod<
   ListSettingUrlIgnorePatternsRequest,
   ListSettingUrlIgnorePatternsResponse,
   ListSettingUrlIgnorePatternsError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  SettingsUrlIgnorePatternsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListSettingUrlIgnorePatternsRequest,
@@ -8251,7 +8265,7 @@ export const listSettingUrlIgnorePatterns: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListSubmissionsError = CloudflareOpError;
 /** Returns information for submissions made to reclassify emails. Shows the status, outcome, and disposition changes for reclassification requests made by users or the security team. Useful for tracking false positive/negative reports. */
@@ -8259,7 +8273,8 @@ export const listSubmissions: API.PaginatedOperationMethod<
   ListSubmissionsRequest,
   ListSubmissionsResponse,
   ListSubmissionsError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  SubmissionsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListSubmissionsRequest,
@@ -8276,7 +8291,7 @@ export const listSubmissions: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type PatchSettingAllowPolicyError =
   | AllowPolicyNotFound

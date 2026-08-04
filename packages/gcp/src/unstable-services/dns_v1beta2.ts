@@ -3087,7 +3087,8 @@ export const listChanges: API.PaginatedOperationMethod<
   ListChangesRequest,
   ChangesListResponse,
   ListChangesError,
-  GcpOpContext
+  GcpOpContext,
+  ChangesListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListChangesRequest,
   output: ChangesListResponse,
@@ -3098,7 +3099,7 @@ export const listChanges: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListDnsKeysError = NotFound | Forbidden | GcpOpError;
 /** Enumerates DnsKeys to a ResourceRecordSet collection. */
@@ -3106,7 +3107,8 @@ export const listDnsKeys: API.PaginatedOperationMethod<
   ListDnsKeysRequest,
   DnsKeysListResponse,
   ListDnsKeysError,
-  GcpOpContext
+  GcpOpContext,
+  DnsKeysListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDnsKeysRequest,
   output: DnsKeysListResponse,
@@ -3117,7 +3119,7 @@ export const listDnsKeys: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListManagedZoneOperationsError = NotFound | Forbidden | GcpOpError;
 /** Enumerates Operations for the given ManagedZone. */
@@ -3125,7 +3127,8 @@ export const listManagedZoneOperations: API.PaginatedOperationMethod<
   ListManagedZoneOperationsRequest,
   ManagedZoneOperationsListResponse,
   ListManagedZoneOperationsError,
-  GcpOpContext
+  GcpOpContext,
+  ManagedZoneOperationsListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListManagedZoneOperationsRequest,
   output: ManagedZoneOperationsListResponse,
@@ -3136,7 +3139,7 @@ export const listManagedZoneOperations: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListManagedZonesError = NotFound | Forbidden | GcpOpError;
 /** Enumerates ManagedZones that have been created but not yet deleted. */
@@ -3144,7 +3147,8 @@ export const listManagedZones: API.PaginatedOperationMethod<
   ListManagedZonesRequest,
   ManagedZonesListResponse,
   ListManagedZonesError,
-  GcpOpContext
+  GcpOpContext,
+  ManagedZonesListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListManagedZonesRequest,
   output: ManagedZonesListResponse,
@@ -3155,7 +3159,7 @@ export const listManagedZones: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListPoliciesError = NotFound | Forbidden | GcpOpError;
 /** Enumerates all policies associated with a project. */
@@ -3163,7 +3167,8 @@ export const listPolicies: API.PaginatedOperationMethod<
   ListPoliciesRequest,
   PoliciesListResponse,
   ListPoliciesError,
-  GcpOpContext
+  GcpOpContext,
+  PoliciesListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPoliciesRequest,
   output: PoliciesListResponse,
@@ -3174,7 +3179,7 @@ export const listPolicies: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListResourceRecordSetsError = NotFound | Forbidden | GcpOpError;
 /** Enumerates ResourceRecordSets that you have created but not yet deleted. */
@@ -3182,7 +3187,8 @@ export const listResourceRecordSets: API.PaginatedOperationMethod<
   ListResourceRecordSetsRequest,
   ResourceRecordSetsListResponse,
   ListResourceRecordSetsError,
-  GcpOpContext
+  GcpOpContext,
+  ResourceRecordSetsListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListResourceRecordSetsRequest,
   output: ResourceRecordSetsListResponse,
@@ -3193,7 +3199,7 @@ export const listResourceRecordSets: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListResponsePoliciesError = NotFound | Forbidden | GcpOpError;
 /** Enumerates all Response Policies associated with a project. */
@@ -3201,7 +3207,8 @@ export const listResponsePolicies: API.PaginatedOperationMethod<
   ListResponsePoliciesRequest,
   ResponsePoliciesListResponse,
   ListResponsePoliciesError,
-  GcpOpContext
+  GcpOpContext,
+  ResponsePoliciesListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListResponsePoliciesRequest,
   output: ResponsePoliciesListResponse,
@@ -3212,7 +3219,7 @@ export const listResponsePolicies: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListResponsePolicyRulesError = NotFound | Forbidden | GcpOpError;
 /** Enumerates all Response Policy Rules associated with a project. */
@@ -3220,7 +3227,8 @@ export const listResponsePolicyRules: API.PaginatedOperationMethod<
   ListResponsePolicyRulesRequest,
   ResponsePolicyRulesListResponse,
   ListResponsePolicyRulesError,
-  GcpOpContext
+  GcpOpContext,
+  ResponsePolicyRulesListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListResponsePolicyRulesRequest,
   output: ResponsePolicyRulesListResponse,
@@ -3231,7 +3239,7 @@ export const listResponsePolicyRules: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type PatchManagedZonesError =
   | NotFound

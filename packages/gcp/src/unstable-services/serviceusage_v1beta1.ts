@@ -2093,7 +2093,8 @@ export const listOperations: API.PaginatedOperationMethod<
   ListOperationsRequest,
   ListOperationsResponse,
   ListOperationsError,
-  GcpOpContext
+  GcpOpContext,
+  ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOperationsRequest,
   output: ListOperationsResponse,
@@ -2104,7 +2105,7 @@ export const listOperations: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListServicesError = NotFound | Forbidden | GcpOpError;
 /** Lists all services available to the specified project, and the current state of those services with respect to the project. The list includes all public services, all services for which the calling user has the `servicemanagement.services.bind` permission, and all services that have already been enabled on the project. The list can be filtered to only include services in a specific state, for example to only include services enabled on the project. */
@@ -2112,7 +2113,8 @@ export const listServices: API.PaginatedOperationMethod<
   ListServicesRequest,
   ListServicesResponse,
   ListServicesError,
-  GcpOpContext
+  GcpOpContext,
+  ListServicesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListServicesRequest,
   output: ListServicesResponse,
@@ -2123,7 +2125,7 @@ export const listServices: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListServicesConsumerQuotaMetricsError =
   | NotFound
@@ -2134,7 +2136,8 @@ export const listServicesConsumerQuotaMetrics: API.PaginatedOperationMethod<
   ListServicesConsumerQuotaMetricsRequest,
   ListConsumerQuotaMetricsResponse,
   ListServicesConsumerQuotaMetricsError,
-  GcpOpContext
+  GcpOpContext,
+  ListConsumerQuotaMetricsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListServicesConsumerQuotaMetricsRequest,
   output: ListConsumerQuotaMetricsResponse,
@@ -2145,7 +2148,7 @@ export const listServicesConsumerQuotaMetrics: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListServicesConsumerQuotaMetricsLimitsAdminOverridesError =
   | NotFound
@@ -2156,7 +2159,8 @@ export const listServicesConsumerQuotaMetricsLimitsAdminOverrides: API.Paginated
   ListServicesConsumerQuotaMetricsLimitsAdminOverridesRequest,
   ListAdminOverridesResponse,
   ListServicesConsumerQuotaMetricsLimitsAdminOverridesError,
-  GcpOpContext
+  GcpOpContext,
+  ListAdminOverridesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListServicesConsumerQuotaMetricsLimitsAdminOverridesRequest,
   output: ListAdminOverridesResponse,
@@ -2167,7 +2171,7 @@ export const listServicesConsumerQuotaMetricsLimitsAdminOverrides: API.Paginated
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListServicesConsumerQuotaMetricsLimitsConsumerOverridesError =
   | NotFound
@@ -2178,7 +2182,8 @@ export const listServicesConsumerQuotaMetricsLimitsConsumerOverrides: API.Pagina
   ListServicesConsumerQuotaMetricsLimitsConsumerOverridesRequest,
   ListConsumerOverridesResponse,
   ListServicesConsumerQuotaMetricsLimitsConsumerOverridesError,
-  GcpOpContext
+  GcpOpContext,
+  ListConsumerOverridesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListServicesConsumerQuotaMetricsLimitsConsumerOverridesRequest,
   output: ListConsumerOverridesResponse,
@@ -2189,7 +2194,7 @@ export const listServicesConsumerQuotaMetricsLimitsConsumerOverrides: API.Pagina
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type PatchServicesConsumerQuotaMetricsLimitsAdminOverridesError =
   | NotFound

@@ -253,7 +253,8 @@ export const deleteTenantCustomNameserver: API.PaginatedOperationMethod<
   DeleteTenantCustomNameserverRequest,
   DeleteTenantCustomNameserverResponse,
   DeleteTenantCustomNameserverError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  string
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: DeleteTenantCustomNameserverRequest,
@@ -264,7 +265,7 @@ export const deleteTenantCustomNameserver: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type GetTenantCustomNameserverError = CloudflareOpError;
 /** List a tenant's custom nameservers. */
@@ -272,7 +273,8 @@ export const getTenantCustomNameserver: API.PaginatedOperationMethod<
   GetTenantCustomNameserverRequest,
   GetTenantCustomNameserverResponse,
   GetTenantCustomNameserverError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  GetResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: GetTenantCustomNameserverRequest,
@@ -283,4 +285,4 @@ export const getTenantCustomNameserver: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;

@@ -1066,27 +1066,7 @@ export const listEnvironments: API.OperationMethod<
     items: "Environments",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListEnvironmentsInput,
-  ListEnvironmentsOutput,
-  ListEnvironmentsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEnvironmentsInput,
-  ) => stream.Stream<
-    ListEnvironmentsOutput,
-    ListEnvironmentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEnvironmentsInput,
-  ) => stream.Stream<
-    EnvironmentName,
-    ListEnvironmentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsForResourceError =
   | InternalServerException

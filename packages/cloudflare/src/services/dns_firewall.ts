@@ -1253,7 +1253,8 @@ export const listDnsFirewalls: API.PaginatedOperationMethod<
   ListDnsFirewallsRequest,
   ListDnsFirewallsResponse,
   ListDnsFirewallsError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  ListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListDnsFirewallsRequest,
@@ -1270,7 +1271,7 @@ export const listDnsFirewalls: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type PatchDnsFirewallError =
   | DnsFirewallNotFound

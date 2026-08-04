@@ -21733,27 +21733,7 @@ export const describeEntity: API.OperationMethod<
     outputToken: "NextToken",
     items: "Fields",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeEntityRequest,
-  DescribeEntityResponse,
-  DescribeEntityError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeEntityRequest,
-  ) => stream.Stream<
-    DescribeEntityResponse,
-    DescribeEntityError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeEntityRequest,
-  ) => stream.Stream<
-    Field,
-    DescribeEntityError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeInboundIntegrationsError =
   | AccessDeniedException
@@ -22019,27 +21999,7 @@ export const getBlueprintRuns: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  GetBlueprintRunsRequest,
-  GetBlueprintRunsResponse,
-  GetBlueprintRunsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetBlueprintRunsRequest,
-  ) => stream.Stream<
-    GetBlueprintRunsResponse,
-    GetBlueprintRunsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetBlueprintRunsRequest,
-  ) => stream.Stream<
-    unknown,
-    GetBlueprintRunsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type GetCatalogError =
   | AccessDeniedException
@@ -22191,27 +22151,7 @@ export const getClassifiers: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  GetClassifiersRequest,
-  GetClassifiersResponse,
-  GetClassifiersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetClassifiersRequest,
-  ) => stream.Stream<
-    GetClassifiersResponse,
-    GetClassifiersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetClassifiersRequest,
-  ) => stream.Stream<
-    unknown,
-    GetClassifiersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type GetColumnStatisticsForPartitionError =
   | EntityNotFoundException
@@ -22341,27 +22281,7 @@ export const getColumnStatisticsTaskRuns: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  GetColumnStatisticsTaskRunsRequest,
-  GetColumnStatisticsTaskRunsResponse,
-  GetColumnStatisticsTaskRunsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetColumnStatisticsTaskRunsRequest,
-  ) => stream.Stream<
-    GetColumnStatisticsTaskRunsResponse,
-    GetColumnStatisticsTaskRunsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetColumnStatisticsTaskRunsRequest,
-  ) => stream.Stream<
-    unknown,
-    GetColumnStatisticsTaskRunsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type GetColumnStatisticsTaskSettingsError =
   | EntityNotFoundException
@@ -22463,27 +22383,7 @@ export const getConnections: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  GetConnectionsRequest,
-  GetConnectionsResponse,
-  GetConnectionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetConnectionsRequest,
-  ) => stream.Stream<
-    GetConnectionsResponse,
-    GetConnectionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetConnectionsRequest,
-  ) => stream.Stream<
-    unknown,
-    GetConnectionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type GetCrawlerError =
   | EntityNotFoundException
@@ -22542,27 +22442,7 @@ export const getCrawlerMetrics: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  GetCrawlerMetricsRequest,
-  GetCrawlerMetricsResponse,
-  GetCrawlerMetricsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetCrawlerMetricsRequest,
-  ) => stream.Stream<
-    GetCrawlerMetricsResponse,
-    GetCrawlerMetricsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetCrawlerMetricsRequest,
-  ) => stream.Stream<
-    unknown,
-    GetCrawlerMetricsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type GetCrawlersError = OperationTimeoutException | CommonErrors;
 /**
@@ -22601,27 +22481,7 @@ export const getCrawlers: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  GetCrawlersRequest,
-  GetCrawlersResponse,
-  GetCrawlersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetCrawlersRequest,
-  ) => stream.Stream<
-    GetCrawlersResponse,
-    GetCrawlersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetCrawlersRequest,
-  ) => stream.Stream<
-    unknown,
-    GetCrawlersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type GetCustomEntityTypeError =
   | AccessDeniedException
@@ -22769,27 +22629,7 @@ export const getDatabases: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  GetDatabasesRequest,
-  GetDatabasesResponse,
-  GetDatabasesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetDatabasesRequest,
-  ) => stream.Stream<
-    GetDatabasesResponse,
-    GetDatabasesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetDatabasesRequest,
-  ) => stream.Stream<
-    unknown,
-    GetDatabasesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type GetDataCatalogEncryptionSettingsError =
   | InternalServiceException
@@ -23093,27 +22933,7 @@ export const getDevEndpoints: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  GetDevEndpointsRequest,
-  GetDevEndpointsResponse,
-  GetDevEndpointsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetDevEndpointsRequest,
-  ) => stream.Stream<
-    GetDevEndpointsResponse,
-    GetDevEndpointsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetDevEndpointsRequest,
-  ) => stream.Stream<
-    unknown,
-    GetDevEndpointsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type GetEntityRecordsError =
   | AccessDeniedException
@@ -23483,27 +23303,7 @@ export const getJobRuns: API.OperationMethod<
     items: "JobRuns",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  GetJobRunsRequest,
-  GetJobRunsResponse,
-  GetJobRunsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetJobRunsRequest,
-  ) => stream.Stream<
-    GetJobRunsResponse,
-    GetJobRunsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetJobRunsRequest,
-  ) => stream.Stream<
-    JobRun,
-    GetJobRunsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type GetJobsError =
   | EntityNotFoundException
@@ -23552,27 +23352,7 @@ export const getJobs: API.OperationMethod<
     items: "Jobs",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  GetJobsRequest,
-  GetJobsResponse,
-  GetJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetJobsRequest,
-  ) => stream.Stream<
-    GetJobsResponse,
-    GetJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetJobsRequest,
-  ) => stream.Stream<
-    Job,
-    GetJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type GetMappingError =
   | EntityNotFoundException
@@ -23714,27 +23494,7 @@ export const getMLTaskRuns: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  GetMLTaskRunsRequest,
-  GetMLTaskRunsResponse,
-  GetMLTaskRunsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetMLTaskRunsRequest,
-  ) => stream.Stream<
-    GetMLTaskRunsResponse,
-    GetMLTaskRunsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetMLTaskRunsRequest,
-  ) => stream.Stream<
-    unknown,
-    GetMLTaskRunsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type GetMLTransformError =
   | EntityNotFoundException
@@ -23818,27 +23578,7 @@ export const getMLTransforms: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  GetMLTransformsRequest,
-  GetMLTransformsResponse,
-  GetMLTransformsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetMLTransformsRequest,
-  ) => stream.Stream<
-    GetMLTransformsResponse,
-    GetMLTransformsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetMLTransformsRequest,
-  ) => stream.Stream<
-    unknown,
-    GetMLTransformsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type GetPartitionError =
   | EntityNotFoundException
@@ -23922,27 +23662,7 @@ export const getPartitionIndexes: API.OperationMethod<
     outputToken: "NextToken",
     items: "PartitionIndexDescriptorList",
   } as const,
-})) as any as API.OperationMethod<
-  GetPartitionIndexesRequest,
-  GetPartitionIndexesResponse,
-  GetPartitionIndexesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetPartitionIndexesRequest,
-  ) => stream.Stream<
-    GetPartitionIndexesResponse,
-    GetPartitionIndexesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetPartitionIndexesRequest,
-  ) => stream.Stream<
-    PartitionIndexDescriptor,
-    GetPartitionIndexesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type GetPartitionsError =
   | EntityNotFoundException
@@ -24000,27 +23720,7 @@ export const getPartitions: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  GetPartitionsRequest,
-  GetPartitionsResponse,
-  GetPartitionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetPartitionsRequest,
-  ) => stream.Stream<
-    GetPartitionsResponse,
-    GetPartitionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetPartitionsRequest,
-  ) => stream.Stream<
-    unknown,
-    GetPartitionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type GetPlanError =
   | InternalServiceException
@@ -24129,27 +23829,7 @@ export const getResourcePolicies: API.OperationMethod<
     items: "GetResourcePoliciesResponseList",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  GetResourcePoliciesRequest,
-  GetResourcePoliciesResponse,
-  GetResourcePoliciesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetResourcePoliciesRequest,
-  ) => stream.Stream<
-    GetResourcePoliciesResponse,
-    GetResourcePoliciesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetResourcePoliciesRequest,
-  ) => stream.Stream<
-    GluePolicy,
-    GetResourcePoliciesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type GetResourcePolicyError =
   | EntityNotFoundException
@@ -24368,27 +24048,7 @@ export const getSecurityConfigurations: API.OperationMethod<
     items: "SecurityConfigurations",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  GetSecurityConfigurationsRequest,
-  GetSecurityConfigurationsResponse,
-  GetSecurityConfigurationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetSecurityConfigurationsRequest,
-  ) => stream.Stream<
-    GetSecurityConfigurationsResponse,
-    GetSecurityConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetSecurityConfigurationsRequest,
-  ) => stream.Stream<
-    SecurityConfiguration,
-    GetSecurityConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type GetSessionError =
   | AccessDeniedException
@@ -24606,27 +24266,7 @@ export const getTables: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  GetTablesRequest,
-  GetTablesResponse,
-  GetTablesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetTablesRequest,
-  ) => stream.Stream<
-    GetTablesResponse,
-    GetTablesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetTablesRequest,
-  ) => stream.Stream<
-    unknown,
-    GetTablesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type GetTableVersionError =
   | EntityNotFoundException
@@ -24707,27 +24347,7 @@ export const getTableVersions: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  GetTableVersionsRequest,
-  GetTableVersionsResponse,
-  GetTableVersionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetTableVersionsRequest,
-  ) => stream.Stream<
-    GetTableVersionsResponse,
-    GetTableVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetTableVersionsRequest,
-  ) => stream.Stream<
-    unknown,
-    GetTableVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type GetTagsError =
   | EntityNotFoundException
@@ -24832,27 +24452,7 @@ export const getTriggers: API.OperationMethod<
     items: "Triggers",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  GetTriggersRequest,
-  GetTriggersResponse,
-  GetTriggersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetTriggersRequest,
-  ) => stream.Stream<
-    GetTriggersResponse,
-    GetTriggersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetTriggersRequest,
-  ) => stream.Stream<
-    Trigger,
-    GetTriggersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type GetUnfilteredPartitionMetadataError =
   | EntityNotFoundException
@@ -24950,27 +24550,7 @@ export const getUnfilteredPartitionsMetadata: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  GetUnfilteredPartitionsMetadataRequest,
-  GetUnfilteredPartitionsMetadataResponse,
-  GetUnfilteredPartitionsMetadataError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetUnfilteredPartitionsMetadataRequest,
-  ) => stream.Stream<
-    GetUnfilteredPartitionsMetadataResponse,
-    GetUnfilteredPartitionsMetadataError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetUnfilteredPartitionsMetadataRequest,
-  ) => stream.Stream<
-    unknown,
-    GetUnfilteredPartitionsMetadataError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type GetUnfilteredTableMetadataError =
   | EntityNotFoundException
@@ -25118,27 +24698,7 @@ export const getUserDefinedFunctions: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  GetUserDefinedFunctionsRequest,
-  GetUserDefinedFunctionsResponse,
-  GetUserDefinedFunctionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetUserDefinedFunctionsRequest,
-  ) => stream.Stream<
-    GetUserDefinedFunctionsResponse,
-    GetUserDefinedFunctionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetUserDefinedFunctionsRequest,
-  ) => stream.Stream<
-    unknown,
-    GetUserDefinedFunctionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type GetWorkflowError =
   | EntityNotFoundException
@@ -25271,27 +24831,7 @@ export const getWorkflowRuns: API.OperationMethod<
     items: "Runs",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  GetWorkflowRunsRequest,
-  GetWorkflowRunsResponse,
-  GetWorkflowRunsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetWorkflowRunsRequest,
-  ) => stream.Stream<
-    GetWorkflowRunsResponse,
-    GetWorkflowRunsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetWorkflowRunsRequest,
-  ) => stream.Stream<
-    WorkflowRun,
-    GetWorkflowRunsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ImportCatalogToGlueError =
   | InternalServiceException
@@ -25361,27 +24901,7 @@ export const listAssetTypes: API.OperationMethod<
     items: "Items",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListAssetTypesRequest,
-  ListAssetTypesResponse,
-  ListAssetTypesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAssetTypesRequest,
-  ) => stream.Stream<
-    ListAssetTypesResponse,
-    ListAssetTypesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAssetTypesRequest,
-  ) => stream.Stream<
-    AssetTypeItem,
-    ListAssetTypesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListBlueprintsError =
   | InternalServiceException
@@ -25428,27 +24948,7 @@ export const listBlueprints: API.OperationMethod<
     items: "Blueprints",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListBlueprintsRequest,
-  ListBlueprintsResponse,
-  ListBlueprintsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListBlueprintsRequest,
-  ) => stream.Stream<
-    ListBlueprintsResponse,
-    ListBlueprintsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListBlueprintsRequest,
-  ) => stream.Stream<
-    OrchestrationNameString,
-    ListBlueprintsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListColumnStatisticsTaskRunsError =
   | OperationTimeoutException
@@ -25488,27 +24988,7 @@ export const listColumnStatisticsTaskRuns: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListColumnStatisticsTaskRunsRequest,
-  ListColumnStatisticsTaskRunsResponse,
-  ListColumnStatisticsTaskRunsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListColumnStatisticsTaskRunsRequest,
-  ) => stream.Stream<
-    ListColumnStatisticsTaskRunsResponse,
-    ListColumnStatisticsTaskRunsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListColumnStatisticsTaskRunsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListColumnStatisticsTaskRunsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListConnectionTypesError =
   | AccessDeniedException
@@ -25552,27 +25032,7 @@ export const listConnectionTypes: API.OperationMethod<
     items: "ConnectionTypes",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListConnectionTypesRequest,
-  ListConnectionTypesResponse,
-  ListConnectionTypesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListConnectionTypesRequest,
-  ) => stream.Stream<
-    ListConnectionTypesResponse,
-    ListConnectionTypesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListConnectionTypesRequest,
-  ) => stream.Stream<
-    ConnectionTypeBrief,
-    ListConnectionTypesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListCrawlersError = OperationTimeoutException | CommonErrors;
 /**
@@ -25616,27 +25076,7 @@ export const listCrawlers: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListCrawlersRequest,
-  ListCrawlersResponse,
-  ListCrawlersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCrawlersRequest,
-  ) => stream.Stream<
-    ListCrawlersResponse,
-    ListCrawlersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCrawlersRequest,
-  ) => stream.Stream<
-    unknown,
-    ListCrawlersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListCrawlsError =
   | EntityNotFoundException
@@ -25718,27 +25158,7 @@ export const listCustomEntityTypes: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListCustomEntityTypesRequest,
-  ListCustomEntityTypesResponse,
-  ListCustomEntityTypesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCustomEntityTypesRequest,
-  ) => stream.Stream<
-    ListCustomEntityTypesResponse,
-    ListCustomEntityTypesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCustomEntityTypesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListCustomEntityTypesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListDataQualityResultsError =
   | InternalServiceException
@@ -25784,27 +25204,7 @@ export const listDataQualityResults: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListDataQualityResultsRequest,
-  ListDataQualityResultsResponse,
-  ListDataQualityResultsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDataQualityResultsRequest,
-  ) => stream.Stream<
-    ListDataQualityResultsResponse,
-    ListDataQualityResultsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDataQualityResultsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListDataQualityResultsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListDataQualityRuleRecommendationRunsError =
   | InternalServiceException
@@ -25850,27 +25250,7 @@ export const listDataQualityRuleRecommendationRuns: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListDataQualityRuleRecommendationRunsRequest,
-  ListDataQualityRuleRecommendationRunsResponse,
-  ListDataQualityRuleRecommendationRunsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDataQualityRuleRecommendationRunsRequest,
-  ) => stream.Stream<
-    ListDataQualityRuleRecommendationRunsResponse,
-    ListDataQualityRuleRecommendationRunsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDataQualityRuleRecommendationRunsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListDataQualityRuleRecommendationRunsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListDataQualityRulesetEvaluationRunsError =
   | InternalServiceException
@@ -25916,27 +25296,7 @@ export const listDataQualityRulesetEvaluationRuns: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListDataQualityRulesetEvaluationRunsRequest,
-  ListDataQualityRulesetEvaluationRunsResponse,
-  ListDataQualityRulesetEvaluationRunsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDataQualityRulesetEvaluationRunsRequest,
-  ) => stream.Stream<
-    ListDataQualityRulesetEvaluationRunsResponse,
-    ListDataQualityRulesetEvaluationRunsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDataQualityRulesetEvaluationRunsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListDataQualityRulesetEvaluationRunsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListDataQualityRulesetsError =
   | EntityNotFoundException
@@ -25984,27 +25344,7 @@ export const listDataQualityRulesets: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListDataQualityRulesetsRequest,
-  ListDataQualityRulesetsResponse,
-  ListDataQualityRulesetsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDataQualityRulesetsRequest,
-  ) => stream.Stream<
-    ListDataQualityRulesetsResponse,
-    ListDataQualityRulesetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDataQualityRulesetsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListDataQualityRulesetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListDataQualityStatisticAnnotationsError =
   | InternalServiceException
@@ -26105,27 +25445,7 @@ export const listDevEndpoints: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListDevEndpointsRequest,
-  ListDevEndpointsResponse,
-  ListDevEndpointsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDevEndpointsRequest,
-  ) => stream.Stream<
-    ListDevEndpointsResponse,
-    ListDevEndpointsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDevEndpointsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListDevEndpointsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListEntitiesError =
   | AccessDeniedException
@@ -26179,27 +25499,7 @@ export const listEntities: API.OperationMethod<
     outputToken: "NextToken",
     items: "Entities",
   } as const,
-})) as any as API.OperationMethod<
-  ListEntitiesRequest,
-  ListEntitiesResponse,
-  ListEntitiesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEntitiesRequest,
-  ) => stream.Stream<
-    ListEntitiesResponse,
-    ListEntitiesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEntitiesRequest,
-  ) => stream.Stream<
-    Entity,
-    ListEntitiesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListFormTypesError =
   | AccessDeniedException
@@ -26248,27 +25548,7 @@ export const listFormTypes: API.OperationMethod<
     items: "Items",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListFormTypesRequest,
-  ListFormTypesResponse,
-  ListFormTypesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListFormTypesRequest,
-  ) => stream.Stream<
-    ListFormTypesResponse,
-    ListFormTypesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListFormTypesRequest,
-  ) => stream.Stream<
-    FormTypeItem,
-    ListFormTypesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListGlossariesError =
   | AccessDeniedException
@@ -26317,27 +25597,7 @@ export const listGlossaries: API.OperationMethod<
     items: "Items",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListGlossariesRequest,
-  ListGlossariesResponse,
-  ListGlossariesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListGlossariesRequest,
-  ) => stream.Stream<
-    ListGlossariesResponse,
-    ListGlossariesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListGlossariesRequest,
-  ) => stream.Stream<
-    GlossaryItem,
-    ListGlossariesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListGlossaryTermsError =
   | AccessDeniedException
@@ -26386,27 +25646,7 @@ export const listGlossaryTerms: API.OperationMethod<
     items: "Items",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListGlossaryTermsRequest,
-  ListGlossaryTermsResponse,
-  ListGlossaryTermsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListGlossaryTermsRequest,
-  ) => stream.Stream<
-    ListGlossaryTermsResponse,
-    ListGlossaryTermsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListGlossaryTermsRequest,
-  ) => stream.Stream<
-    GlossaryTermItem,
-    ListGlossaryTermsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListIntegrationResourcePropertiesError =
   | AccessDeniedException
@@ -26491,27 +25731,7 @@ export const listIterableForms: API.OperationMethod<
     items: "Items",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListIterableFormsRequest,
-  ListIterableFormsResponse,
-  ListIterableFormsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListIterableFormsRequest,
-  ) => stream.Stream<
-    ListIterableFormsResponse,
-    ListIterableFormsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListIterableFormsRequest,
-  ) => stream.Stream<
-    IterableFormListItem,
-    ListIterableFormsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListJobsError =
   | EntityNotFoundException
@@ -26564,27 +25784,7 @@ export const listJobs: API.OperationMethod<
     items: "JobNames",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListJobsRequest,
-  ListJobsResponse,
-  ListJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListJobsRequest,
-  ) => stream.Stream<
-    ListJobsResponse,
-    ListJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListJobsRequest,
-  ) => stream.Stream<
-    NameString,
-    ListJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListMaterializedViewRefreshTaskRunsError =
   | AccessDeniedException
@@ -26631,27 +25831,7 @@ export const listMaterializedViewRefreshTaskRuns: API.OperationMethod<
     items: "MaterializedViewRefreshTaskRuns",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListMaterializedViewRefreshTaskRunsRequest,
-  ListMaterializedViewRefreshTaskRunsResponse,
-  ListMaterializedViewRefreshTaskRunsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListMaterializedViewRefreshTaskRunsRequest,
-  ) => stream.Stream<
-    ListMaterializedViewRefreshTaskRunsResponse,
-    ListMaterializedViewRefreshTaskRunsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListMaterializedViewRefreshTaskRunsRequest,
-  ) => stream.Stream<
-    MaterializedViewRefreshTaskRun,
-    ListMaterializedViewRefreshTaskRunsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListMLTransformsError =
   | EntityNotFoundException
@@ -26702,27 +25882,7 @@ export const listMLTransforms: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListMLTransformsRequest,
-  ListMLTransformsResponse,
-  ListMLTransformsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListMLTransformsRequest,
-  ) => stream.Stream<
-    ListMLTransformsResponse,
-    ListMLTransformsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListMLTransformsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListMLTransformsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListRegistriesError =
   | AccessDeniedException
@@ -26769,27 +25929,7 @@ export const listRegistries: API.OperationMethod<
     items: "Registries",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListRegistriesInput,
-  ListRegistriesResponse,
-  ListRegistriesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRegistriesInput,
-  ) => stream.Stream<
-    ListRegistriesResponse,
-    ListRegistriesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRegistriesInput,
-  ) => stream.Stream<
-    RegistryListItem,
-    ListRegistriesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListSchemasError =
   | AccessDeniedException
@@ -26840,27 +25980,7 @@ export const listSchemas: API.OperationMethod<
     items: "Schemas",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListSchemasInput,
-  ListSchemasResponse,
-  ListSchemasError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSchemasInput,
-  ) => stream.Stream<
-    ListSchemasResponse,
-    ListSchemasError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSchemasInput,
-  ) => stream.Stream<
-    SchemaListItem,
-    ListSchemasError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListSchemaVersionsError =
   | AccessDeniedException
@@ -26909,27 +26029,7 @@ export const listSchemaVersions: API.OperationMethod<
     items: "Schemas",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListSchemaVersionsInput,
-  ListSchemaVersionsResponse,
-  ListSchemaVersionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSchemaVersionsInput,
-  ) => stream.Stream<
-    ListSchemaVersionsResponse,
-    ListSchemaVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSchemaVersionsInput,
-  ) => stream.Stream<
-    SchemaVersionListItem,
-    ListSchemaVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListSessionsError =
   | AccessDeniedException
@@ -26977,27 +26077,7 @@ export const listSessions: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListSessionsRequest,
-  ListSessionsResponse,
-  ListSessionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSessionsRequest,
-  ) => stream.Stream<
-    ListSessionsResponse,
-    ListSessionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSessionsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListSessionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListStatementsError =
   | AccessDeniedException
@@ -27082,27 +26162,7 @@ export const listTableOptimizerRuns: API.OperationMethod<
     items: "TableOptimizerRuns",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListTableOptimizerRunsRequest,
-  ListTableOptimizerRunsResponse,
-  ListTableOptimizerRunsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTableOptimizerRunsRequest,
-  ) => stream.Stream<
-    ListTableOptimizerRunsResponse,
-    ListTableOptimizerRunsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTableOptimizerRunsRequest,
-  ) => stream.Stream<
-    TableOptimizerRun,
-    ListTableOptimizerRunsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTriggersError =
   | EntityNotFoundException
@@ -27155,27 +26215,7 @@ export const listTriggers: API.OperationMethod<
     items: "TriggerNames",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListTriggersRequest,
-  ListTriggersResponse,
-  ListTriggersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTriggersRequest,
-  ) => stream.Stream<
-    ListTriggersResponse,
-    ListTriggersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTriggersRequest,
-  ) => stream.Stream<
-    NameString,
-    ListTriggersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListUsageProfilesError =
   | InternalServiceException
@@ -27224,27 +26264,7 @@ export const listUsageProfiles: API.OperationMethod<
     items: "Profiles",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListUsageProfilesRequest,
-  ListUsageProfilesResponse,
-  ListUsageProfilesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListUsageProfilesRequest,
-  ) => stream.Stream<
-    ListUsageProfilesResponse,
-    ListUsageProfilesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListUsageProfilesRequest,
-  ) => stream.Stream<
-    UsageProfileDefinition,
-    ListUsageProfilesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListWorkflowsError =
   | InternalServiceException
@@ -27291,27 +26311,7 @@ export const listWorkflows: API.OperationMethod<
     items: "Workflows",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListWorkflowsRequest,
-  ListWorkflowsResponse,
-  ListWorkflowsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListWorkflowsRequest,
-  ) => stream.Stream<
-    ListWorkflowsResponse,
-    ListWorkflowsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListWorkflowsRequest,
-  ) => stream.Stream<
-    NameString,
-    ListWorkflowsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ModifyIntegrationError =
   | AccessDeniedException
@@ -27905,27 +26905,7 @@ export const searchAssets: API.OperationMethod<
     items: "Items",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  SearchAssetsInput,
-  SearchAssetsOutput,
-  SearchAssetsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: SearchAssetsInput,
-  ) => stream.Stream<
-    SearchAssetsOutput,
-    SearchAssetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: SearchAssetsInput,
-  ) => stream.Stream<
-    SearchResultItem,
-    SearchAssetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type SearchTablesError =
   | InternalServiceException
@@ -27973,27 +26953,7 @@ export const searchTables: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  SearchTablesRequest,
-  SearchTablesResponse,
-  SearchTablesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: SearchTablesRequest,
-  ) => stream.Stream<
-    SearchTablesResponse,
-    SearchTablesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: SearchTablesRequest,
-  ) => stream.Stream<
-    unknown,
-    SearchTablesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type StartBlueprintRunError =
   | EntityNotFoundException

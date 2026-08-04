@@ -2457,27 +2457,7 @@ export const listAssignmentsForHIT: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListAssignmentsForHITRequest,
-  ListAssignmentsForHITResponse,
-  ListAssignmentsForHITError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAssignmentsForHITRequest,
-  ) => stream.Stream<
-    ListAssignmentsForHITResponse,
-    ListAssignmentsForHITError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAssignmentsForHITRequest,
-  ) => stream.Stream<
-    unknown,
-    ListAssignmentsForHITError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListBonusPaymentsError = RequestError | ServiceFault | CommonErrors;
 /**
@@ -2518,27 +2498,7 @@ export const listBonusPayments: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListBonusPaymentsRequest,
-  ListBonusPaymentsResponse,
-  ListBonusPaymentsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListBonusPaymentsRequest,
-  ) => stream.Stream<
-    ListBonusPaymentsResponse,
-    ListBonusPaymentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListBonusPaymentsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListBonusPaymentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListHITsError = RequestError | ServiceFault | CommonErrors;
 /**
@@ -2580,27 +2540,7 @@ export const listHITs: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListHITsRequest,
-  ListHITsResponse,
-  ListHITsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListHITsRequest,
-  ) => stream.Stream<
-    ListHITsResponse,
-    ListHITsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListHITsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListHITsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListHITsForQualificationTypeError =
   | RequestError
@@ -2644,27 +2584,7 @@ export const listHITsForQualificationType: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListHITsForQualificationTypeRequest,
-  ListHITsForQualificationTypeResponse,
-  ListHITsForQualificationTypeError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListHITsForQualificationTypeRequest,
-  ) => stream.Stream<
-    ListHITsForQualificationTypeResponse,
-    ListHITsForQualificationTypeError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListHITsForQualificationTypeRequest,
-  ) => stream.Stream<
-    unknown,
-    ListHITsForQualificationTypeError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListQualificationRequestsError =
   | RequestError
@@ -2710,27 +2630,7 @@ export const listQualificationRequests: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListQualificationRequestsRequest,
-  ListQualificationRequestsResponse,
-  ListQualificationRequestsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListQualificationRequestsRequest,
-  ) => stream.Stream<
-    ListQualificationRequestsResponse,
-    ListQualificationRequestsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListQualificationRequestsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListQualificationRequestsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListQualificationTypesError =
   | RequestError
@@ -2774,27 +2674,7 @@ export const listQualificationTypes: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListQualificationTypesRequest,
-  ListQualificationTypesResponse,
-  ListQualificationTypesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListQualificationTypesRequest,
-  ) => stream.Stream<
-    ListQualificationTypesResponse,
-    ListQualificationTypesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListQualificationTypesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListQualificationTypesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListReviewableHITsError =
   | RequestError
@@ -2836,27 +2716,7 @@ export const listReviewableHITs: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListReviewableHITsRequest,
-  ListReviewableHITsResponse,
-  ListReviewableHITsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListReviewableHITsRequest,
-  ) => stream.Stream<
-    ListReviewableHITsResponse,
-    ListReviewableHITsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListReviewableHITsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListReviewableHITsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListReviewPolicyResultsForHITError =
   | RequestError
@@ -2901,27 +2761,7 @@ export const listReviewPolicyResultsForHIT: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListReviewPolicyResultsForHITRequest,
-  ListReviewPolicyResultsForHITResponse,
-  ListReviewPolicyResultsForHITError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListReviewPolicyResultsForHITRequest,
-  ) => stream.Stream<
-    ListReviewPolicyResultsForHITResponse,
-    ListReviewPolicyResultsForHITError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListReviewPolicyResultsForHITRequest,
-  ) => stream.Stream<
-    unknown,
-    ListReviewPolicyResultsForHITError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListWorkerBlocksError = RequestError | ServiceFault | CommonErrors;
 /**
@@ -2959,27 +2799,7 @@ export const listWorkerBlocks: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListWorkerBlocksRequest,
-  ListWorkerBlocksResponse,
-  ListWorkerBlocksError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListWorkerBlocksRequest,
-  ) => stream.Stream<
-    ListWorkerBlocksResponse,
-    ListWorkerBlocksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListWorkerBlocksRequest,
-  ) => stream.Stream<
-    unknown,
-    ListWorkerBlocksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListWorkersWithQualificationTypeError =
   | RequestError
@@ -3021,27 +2841,7 @@ export const listWorkersWithQualificationType: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListWorkersWithQualificationTypeRequest,
-  ListWorkersWithQualificationTypeResponse,
-  ListWorkersWithQualificationTypeError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListWorkersWithQualificationTypeRequest,
-  ) => stream.Stream<
-    ListWorkersWithQualificationTypeResponse,
-    ListWorkersWithQualificationTypeError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListWorkersWithQualificationTypeRequest,
-  ) => stream.Stream<
-    unknown,
-    ListWorkersWithQualificationTypeError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type NotifyWorkersError = RequestError | ServiceFault | CommonErrors;
 /**

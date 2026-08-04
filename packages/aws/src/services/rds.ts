@@ -14387,27 +14387,7 @@ export const describeBlueGreenDeployments: API.OperationMethod<
     items: "BlueGreenDeployments",
     pageSize: "MaxRecords",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeBlueGreenDeploymentsRequest,
-  DescribeBlueGreenDeploymentsResponse,
-  DescribeBlueGreenDeploymentsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeBlueGreenDeploymentsRequest,
-  ) => stream.Stream<
-    DescribeBlueGreenDeploymentsResponse,
-    DescribeBlueGreenDeploymentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeBlueGreenDeploymentsRequest,
-  ) => stream.Stream<
-    BlueGreenDeployment,
-    DescribeBlueGreenDeploymentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeCertificatesError = CertificateNotFoundFault | CommonErrors;
 /**
@@ -14448,27 +14428,7 @@ export const describeCertificates: API.OperationMethod<
     items: "Certificates",
     pageSize: "MaxRecords",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeCertificatesMessage,
-  CertificateMessage,
-  DescribeCertificatesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeCertificatesMessage,
-  ) => stream.Stream<
-    CertificateMessage,
-    DescribeCertificatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeCertificatesMessage,
-  ) => stream.Stream<
-    Certificate,
-    DescribeCertificatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeDBClusterAutomatedBackupsError =
   | DBClusterAutomatedBackupNotFoundFault
@@ -14511,27 +14471,7 @@ export const describeDBClusterAutomatedBackups: API.OperationMethod<
     items: "DBClusterAutomatedBackups",
     pageSize: "MaxRecords",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeDBClusterAutomatedBackupsMessage,
-  DBClusterAutomatedBackupMessage,
-  DescribeDBClusterAutomatedBackupsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeDBClusterAutomatedBackupsMessage,
-  ) => stream.Stream<
-    DBClusterAutomatedBackupMessage,
-    DescribeDBClusterAutomatedBackupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeDBClusterAutomatedBackupsMessage,
-  ) => stream.Stream<
-    DBClusterAutomatedBackup,
-    DescribeDBClusterAutomatedBackupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeDBClusterBacktracksError =
   | DBClusterBacktrackNotFoundFault
@@ -14577,27 +14517,7 @@ export const describeDBClusterBacktracks: API.OperationMethod<
     items: "DBClusterBacktracks",
     pageSize: "MaxRecords",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeDBClusterBacktracksMessage,
-  DBClusterBacktrackMessage,
-  DescribeDBClusterBacktracksError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeDBClusterBacktracksMessage,
-  ) => stream.Stream<
-    DBClusterBacktrackMessage,
-    DescribeDBClusterBacktracksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeDBClusterBacktracksMessage,
-  ) => stream.Stream<
-    DBClusterBacktrack,
-    DescribeDBClusterBacktracksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeDBClusterEndpointsError =
   | DBClusterNotFoundFault
@@ -14640,27 +14560,7 @@ export const describeDBClusterEndpoints: API.OperationMethod<
     items: "DBClusterEndpoints",
     pageSize: "MaxRecords",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeDBClusterEndpointsMessage,
-  DBClusterEndpointMessage,
-  DescribeDBClusterEndpointsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeDBClusterEndpointsMessage,
-  ) => stream.Stream<
-    DBClusterEndpointMessage,
-    DescribeDBClusterEndpointsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeDBClusterEndpointsMessage,
-  ) => stream.Stream<
-    DBClusterEndpoint,
-    DescribeDBClusterEndpointsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeDBClusterParameterGroupsError =
   | DBParameterGroupNotFoundFault
@@ -14705,27 +14605,7 @@ export const describeDBClusterParameterGroups: API.OperationMethod<
     items: "DBClusterParameterGroups",
     pageSize: "MaxRecords",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeDBClusterParameterGroupsMessage,
-  DBClusterParameterGroupsMessage,
-  DescribeDBClusterParameterGroupsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeDBClusterParameterGroupsMessage,
-  ) => stream.Stream<
-    DBClusterParameterGroupsMessage,
-    DescribeDBClusterParameterGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeDBClusterParameterGroupsMessage,
-  ) => stream.Stream<
-    DBClusterParameterGroup,
-    DescribeDBClusterParameterGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeDBClusterParametersError =
   | DBParameterGroupNotFoundFault
@@ -14770,27 +14650,7 @@ export const describeDBClusterParameters: API.OperationMethod<
     items: "Parameters",
     pageSize: "MaxRecords",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeDBClusterParametersMessage,
-  DBClusterParameterGroupDetails,
-  DescribeDBClusterParametersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeDBClusterParametersMessage,
-  ) => stream.Stream<
-    DBClusterParameterGroupDetails,
-    DescribeDBClusterParametersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeDBClusterParametersMessage,
-  ) => stream.Stream<
-    Parameter,
-    DescribeDBClusterParametersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeDBClustersError = DBClusterNotFoundFault | CommonErrors;
 /**
@@ -14835,27 +14695,7 @@ export const describeDBClusters: API.OperationMethod<
     items: "DBClusters",
     pageSize: "MaxRecords",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeDBClustersMessage,
-  DBClusterMessage,
-  DescribeDBClustersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeDBClustersMessage,
-  ) => stream.Stream<
-    DBClusterMessage,
-    DescribeDBClustersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeDBClustersMessage,
-  ) => stream.Stream<
-    DBCluster,
-    DescribeDBClustersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeDBClusterSnapshotAttributesError =
   | DBClusterSnapshotNotFoundFault
@@ -14924,27 +14764,7 @@ export const describeDBClusterSnapshots: API.OperationMethod<
     items: "DBClusterSnapshots",
     pageSize: "MaxRecords",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeDBClusterSnapshotsMessage,
-  DBClusterSnapshotMessage,
-  DescribeDBClusterSnapshotsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeDBClusterSnapshotsMessage,
-  ) => stream.Stream<
-    DBClusterSnapshotMessage,
-    DescribeDBClusterSnapshotsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeDBClusterSnapshotsMessage,
-  ) => stream.Stream<
-    DBClusterSnapshot,
-    DescribeDBClusterSnapshotsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeDBEngineVersionsError = CommonErrors;
 /**
@@ -14983,27 +14803,7 @@ export const describeDBEngineVersions: API.OperationMethod<
     items: "DBEngineVersions",
     pageSize: "MaxRecords",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeDBEngineVersionsMessage,
-  DBEngineVersionMessage,
-  DescribeDBEngineVersionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeDBEngineVersionsMessage,
-  ) => stream.Stream<
-    DBEngineVersionMessage,
-    DescribeDBEngineVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeDBEngineVersionsMessage,
-  ) => stream.Stream<
-    DBEngineVersion,
-    DescribeDBEngineVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeDBInstanceAutomatedBackupsError =
   | DBInstanceAutomatedBackupNotFoundFault
@@ -15046,27 +14846,7 @@ export const describeDBInstanceAutomatedBackups: API.OperationMethod<
     items: "DBInstanceAutomatedBackups",
     pageSize: "MaxRecords",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeDBInstanceAutomatedBackupsMessage,
-  DBInstanceAutomatedBackupMessage,
-  DescribeDBInstanceAutomatedBackupsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeDBInstanceAutomatedBackupsMessage,
-  ) => stream.Stream<
-    DBInstanceAutomatedBackupMessage,
-    DescribeDBInstanceAutomatedBackupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeDBInstanceAutomatedBackupsMessage,
-  ) => stream.Stream<
-    DBInstanceAutomatedBackup,
-    DescribeDBInstanceAutomatedBackupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeDBInstancesError = DBInstanceNotFoundFault | CommonErrors;
 /**
@@ -15107,27 +14887,7 @@ export const describeDBInstances: API.OperationMethod<
     items: "DBInstances",
     pageSize: "MaxRecords",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeDBInstancesMessage,
-  DBInstanceMessage,
-  DescribeDBInstancesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeDBInstancesMessage,
-  ) => stream.Stream<
-    DBInstanceMessage,
-    DescribeDBInstancesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeDBInstancesMessage,
-  ) => stream.Stream<
-    DBInstance,
-    DescribeDBInstancesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeDBLogFilesError =
   | DBInstanceNotFoundFault
@@ -15171,27 +14931,7 @@ export const describeDBLogFiles: API.OperationMethod<
     items: "DescribeDBLogFiles",
     pageSize: "MaxRecords",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeDBLogFilesMessage,
-  DescribeDBLogFilesResponse,
-  DescribeDBLogFilesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeDBLogFilesMessage,
-  ) => stream.Stream<
-    DescribeDBLogFilesResponse,
-    DescribeDBLogFilesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeDBLogFilesMessage,
-  ) => stream.Stream<
-    DescribeDBLogFilesDetails,
-    DescribeDBLogFilesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeDBMajorEngineVersionsError = CommonErrors;
 /**
@@ -15230,27 +14970,7 @@ export const describeDBMajorEngineVersions: API.OperationMethod<
     items: "DBMajorEngineVersions",
     pageSize: "MaxRecords",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeDBMajorEngineVersionsRequest,
-  DescribeDBMajorEngineVersionsResponse,
-  DescribeDBMajorEngineVersionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeDBMajorEngineVersionsRequest,
-  ) => stream.Stream<
-    DescribeDBMajorEngineVersionsResponse,
-    DescribeDBMajorEngineVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeDBMajorEngineVersionsRequest,
-  ) => stream.Stream<
-    DBMajorEngineVersion,
-    DescribeDBMajorEngineVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeDBParameterGroupsError =
   | DBParameterGroupNotFoundFault
@@ -15291,27 +15011,7 @@ export const describeDBParameterGroups: API.OperationMethod<
     items: "DBParameterGroups",
     pageSize: "MaxRecords",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeDBParameterGroupsMessage,
-  DBParameterGroupsMessage,
-  DescribeDBParameterGroupsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeDBParameterGroupsMessage,
-  ) => stream.Stream<
-    DBParameterGroupsMessage,
-    DescribeDBParameterGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeDBParameterGroupsMessage,
-  ) => stream.Stream<
-    DBParameterGroup,
-    DescribeDBParameterGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeDBParametersError =
   | DBParameterGroupNotFoundFault
@@ -15352,27 +15052,7 @@ export const describeDBParameters: API.OperationMethod<
     items: "Parameters",
     pageSize: "MaxRecords",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeDBParametersMessage,
-  DBParameterGroupDetails,
-  DescribeDBParametersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeDBParametersMessage,
-  ) => stream.Stream<
-    DBParameterGroupDetails,
-    DescribeDBParametersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeDBParametersMessage,
-  ) => stream.Stream<
-    Parameter,
-    DescribeDBParametersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeDBProxiesError = DBProxyNotFoundFault | CommonErrors;
 /**
@@ -15411,27 +15091,7 @@ export const describeDBProxies: API.OperationMethod<
     items: "DBProxies",
     pageSize: "MaxRecords",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeDBProxiesRequest,
-  DescribeDBProxiesResponse,
-  DescribeDBProxiesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeDBProxiesRequest,
-  ) => stream.Stream<
-    DescribeDBProxiesResponse,
-    DescribeDBProxiesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeDBProxiesRequest,
-  ) => stream.Stream<
-    DBProxy,
-    DescribeDBProxiesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeDBProxyEndpointsError =
   | DBProxyEndpointNotFoundFault
@@ -15473,27 +15133,7 @@ export const describeDBProxyEndpoints: API.OperationMethod<
     items: "DBProxyEndpoints",
     pageSize: "MaxRecords",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeDBProxyEndpointsRequest,
-  DescribeDBProxyEndpointsResponse,
-  DescribeDBProxyEndpointsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeDBProxyEndpointsRequest,
-  ) => stream.Stream<
-    DescribeDBProxyEndpointsResponse,
-    DescribeDBProxyEndpointsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeDBProxyEndpointsRequest,
-  ) => stream.Stream<
-    DBProxyEndpoint,
-    DescribeDBProxyEndpointsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeDBProxyTargetGroupsError =
   | DBProxyNotFoundFault
@@ -15540,27 +15180,7 @@ export const describeDBProxyTargetGroups: API.OperationMethod<
     items: "TargetGroups",
     pageSize: "MaxRecords",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeDBProxyTargetGroupsRequest,
-  DescribeDBProxyTargetGroupsResponse,
-  DescribeDBProxyTargetGroupsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeDBProxyTargetGroupsRequest,
-  ) => stream.Stream<
-    DescribeDBProxyTargetGroupsResponse,
-    DescribeDBProxyTargetGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeDBProxyTargetGroupsRequest,
-  ) => stream.Stream<
-    DBProxyTargetGroup,
-    DescribeDBProxyTargetGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeDBProxyTargetsError =
   | DBProxyNotFoundFault
@@ -15609,27 +15229,7 @@ export const describeDBProxyTargets: API.OperationMethod<
     items: "Targets",
     pageSize: "MaxRecords",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeDBProxyTargetsRequest,
-  DescribeDBProxyTargetsResponse,
-  DescribeDBProxyTargetsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeDBProxyTargetsRequest,
-  ) => stream.Stream<
-    DescribeDBProxyTargetsResponse,
-    DescribeDBProxyTargetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeDBProxyTargetsRequest,
-  ) => stream.Stream<
-    DBProxyTarget,
-    DescribeDBProxyTargetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeDBRecommendationsError = CommonErrors;
 /**
@@ -15668,27 +15268,7 @@ export const describeDBRecommendations: API.OperationMethod<
     items: "DBRecommendations",
     pageSize: "MaxRecords",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeDBRecommendationsMessage,
-  DBRecommendationsMessage,
-  DescribeDBRecommendationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeDBRecommendationsMessage,
-  ) => stream.Stream<
-    DBRecommendationsMessage,
-    DescribeDBRecommendationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeDBRecommendationsMessage,
-  ) => stream.Stream<
-    DBRecommendation,
-    DescribeDBRecommendationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeDBSecurityGroupsError =
   | DBSecurityGroupNotFoundFault
@@ -15731,27 +15311,7 @@ export const describeDBSecurityGroups: API.OperationMethod<
     items: "DBSecurityGroups",
     pageSize: "MaxRecords",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeDBSecurityGroupsMessage,
-  DBSecurityGroupMessage,
-  DescribeDBSecurityGroupsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeDBSecurityGroupsMessage,
-  ) => stream.Stream<
-    DBSecurityGroupMessage,
-    DescribeDBSecurityGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeDBSecurityGroupsMessage,
-  ) => stream.Stream<
-    DBSecurityGroup,
-    DescribeDBSecurityGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeDBShardGroupsError =
   | DBClusterNotFoundFault
@@ -15835,27 +15395,7 @@ export const describeDBSnapshots: API.OperationMethod<
     items: "DBSnapshots",
     pageSize: "MaxRecords",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeDBSnapshotsMessage,
-  DBSnapshotMessage,
-  DescribeDBSnapshotsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeDBSnapshotsMessage,
-  ) => stream.Stream<
-    DBSnapshotMessage,
-    DescribeDBSnapshotsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeDBSnapshotsMessage,
-  ) => stream.Stream<
-    DBSnapshot,
-    DescribeDBSnapshotsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeDBSnapshotTenantDatabasesError =
   | DBSnapshotNotFoundFault
@@ -15898,27 +15438,7 @@ export const describeDBSnapshotTenantDatabases: API.OperationMethod<
     items: "DBSnapshotTenantDatabases",
     pageSize: "MaxRecords",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeDBSnapshotTenantDatabasesMessage,
-  DBSnapshotTenantDatabasesMessage,
-  DescribeDBSnapshotTenantDatabasesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeDBSnapshotTenantDatabasesMessage,
-  ) => stream.Stream<
-    DBSnapshotTenantDatabasesMessage,
-    DescribeDBSnapshotTenantDatabasesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeDBSnapshotTenantDatabasesMessage,
-  ) => stream.Stream<
-    DBSnapshotTenantDatabase,
-    DescribeDBSnapshotTenantDatabasesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeDBSubnetGroupsError =
   | DBSubnetGroupNotFoundFault
@@ -15961,27 +15481,7 @@ export const describeDBSubnetGroups: API.OperationMethod<
     items: "DBSubnetGroups",
     pageSize: "MaxRecords",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeDBSubnetGroupsMessage,
-  DBSubnetGroupMessage,
-  DescribeDBSubnetGroupsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeDBSubnetGroupsMessage,
-  ) => stream.Stream<
-    DBSubnetGroupMessage,
-    DescribeDBSubnetGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeDBSubnetGroupsMessage,
-  ) => stream.Stream<
-    DBSubnetGroup,
-    DescribeDBSubnetGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeEngineDefaultClusterParametersError = CommonErrors;
 /**
@@ -16022,27 +15522,7 @@ export const describeEngineDefaultClusterParameters: API.OperationMethod<
     items: "EngineDefaults.Parameters",
     pageSize: "MaxRecords",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeEngineDefaultClusterParametersMessage,
-  DescribeEngineDefaultClusterParametersResult,
-  DescribeEngineDefaultClusterParametersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeEngineDefaultClusterParametersMessage,
-  ) => stream.Stream<
-    DescribeEngineDefaultClusterParametersResult,
-    DescribeEngineDefaultClusterParametersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeEngineDefaultClusterParametersMessage,
-  ) => stream.Stream<
-    unknown,
-    DescribeEngineDefaultClusterParametersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeEngineDefaultParametersError = CommonErrors;
 /**
@@ -16081,27 +15561,7 @@ export const describeEngineDefaultParameters: API.OperationMethod<
     items: "EngineDefaults.Parameters",
     pageSize: "MaxRecords",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeEngineDefaultParametersMessage,
-  DescribeEngineDefaultParametersResult,
-  DescribeEngineDefaultParametersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeEngineDefaultParametersMessage,
-  ) => stream.Stream<
-    DescribeEngineDefaultParametersResult,
-    DescribeEngineDefaultParametersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeEngineDefaultParametersMessage,
-  ) => stream.Stream<
-    unknown,
-    DescribeEngineDefaultParametersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeEventCategoriesError = CommonErrors;
 /**
@@ -16162,27 +15622,7 @@ export const describeEvents: API.OperationMethod<
     items: "Events",
     pageSize: "MaxRecords",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeEventsMessage,
-  EventsMessage,
-  DescribeEventsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeEventsMessage,
-  ) => stream.Stream<
-    EventsMessage,
-    DescribeEventsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeEventsMessage,
-  ) => stream.Stream<
-    Event,
-    DescribeEventsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeEventSubscriptionsError =
   | SubscriptionNotFoundFault
@@ -16225,27 +15665,7 @@ export const describeEventSubscriptions: API.OperationMethod<
     items: "EventSubscriptionsList",
     pageSize: "MaxRecords",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeEventSubscriptionsMessage,
-  EventSubscriptionsMessage,
-  DescribeEventSubscriptionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeEventSubscriptionsMessage,
-  ) => stream.Stream<
-    EventSubscriptionsMessage,
-    DescribeEventSubscriptionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeEventSubscriptionsMessage,
-  ) => stream.Stream<
-    EventSubscription,
-    DescribeEventSubscriptionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeExportTasksError = ExportTaskNotFoundFault | CommonErrors;
 /**
@@ -16284,27 +15704,7 @@ export const describeExportTasks: API.OperationMethod<
     items: "ExportTasks",
     pageSize: "MaxRecords",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeExportTasksMessage,
-  ExportTasksMessage,
-  DescribeExportTasksError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeExportTasksMessage,
-  ) => stream.Stream<
-    ExportTasksMessage,
-    DescribeExportTasksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeExportTasksMessage,
-  ) => stream.Stream<
-    ExportTask,
-    DescribeExportTasksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeGlobalClustersError =
   | GlobalClusterNotFoundFault
@@ -16349,27 +15749,7 @@ export const describeGlobalClusters: API.OperationMethod<
     items: "GlobalClusters",
     pageSize: "MaxRecords",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeGlobalClustersMessage,
-  GlobalClustersMessage,
-  DescribeGlobalClustersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeGlobalClustersMessage,
-  ) => stream.Stream<
-    GlobalClustersMessage,
-    DescribeGlobalClustersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeGlobalClustersMessage,
-  ) => stream.Stream<
-    GlobalCluster,
-    DescribeGlobalClustersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeIntegrationsError = IntegrationNotFoundFault | CommonErrors;
 /**
@@ -16408,27 +15788,7 @@ export const describeIntegrations: API.OperationMethod<
     items: "Integrations",
     pageSize: "MaxRecords",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeIntegrationsMessage,
-  DescribeIntegrationsResponse,
-  DescribeIntegrationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeIntegrationsMessage,
-  ) => stream.Stream<
-    DescribeIntegrationsResponse,
-    DescribeIntegrationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeIntegrationsMessage,
-  ) => stream.Stream<
-    Integration,
-    DescribeIntegrationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeOptionGroupOptionsError = CommonErrors;
 /**
@@ -16467,27 +15827,7 @@ export const describeOptionGroupOptions: API.OperationMethod<
     items: "OptionGroupOptions",
     pageSize: "MaxRecords",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeOptionGroupOptionsMessage,
-  OptionGroupOptionsMessage,
-  DescribeOptionGroupOptionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeOptionGroupOptionsMessage,
-  ) => stream.Stream<
-    OptionGroupOptionsMessage,
-    DescribeOptionGroupOptionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeOptionGroupOptionsMessage,
-  ) => stream.Stream<
-    OptionGroupOption,
-    DescribeOptionGroupOptionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeOptionGroupsError = OptionGroupNotFoundFault | CommonErrors;
 /**
@@ -16526,27 +15866,7 @@ export const describeOptionGroups: API.OperationMethod<
     items: "OptionGroupsList",
     pageSize: "MaxRecords",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeOptionGroupsMessage,
-  OptionGroups,
-  DescribeOptionGroupsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeOptionGroupsMessage,
-  ) => stream.Stream<
-    OptionGroups,
-    DescribeOptionGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeOptionGroupsMessage,
-  ) => stream.Stream<
-    OptionGroup,
-    DescribeOptionGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeOrderableDBInstanceOptionsError = CommonErrors;
 /**
@@ -16585,27 +15905,7 @@ export const describeOrderableDBInstanceOptions: API.OperationMethod<
     items: "OrderableDBInstanceOptions",
     pageSize: "MaxRecords",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeOrderableDBInstanceOptionsMessage,
-  OrderableDBInstanceOptionsMessage,
-  DescribeOrderableDBInstanceOptionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeOrderableDBInstanceOptionsMessage,
-  ) => stream.Stream<
-    OrderableDBInstanceOptionsMessage,
-    DescribeOrderableDBInstanceOptionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeOrderableDBInstanceOptionsMessage,
-  ) => stream.Stream<
-    OrderableDBInstanceOption,
-    DescribeOrderableDBInstanceOptionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribePendingMaintenanceActionsError =
   | ResourceNotFoundFault
@@ -16648,27 +15948,7 @@ export const describePendingMaintenanceActions: API.OperationMethod<
     items: "PendingMaintenanceActions",
     pageSize: "MaxRecords",
   } as const,
-})) as any as API.OperationMethod<
-  DescribePendingMaintenanceActionsMessage,
-  PendingMaintenanceActionsMessage,
-  DescribePendingMaintenanceActionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribePendingMaintenanceActionsMessage,
-  ) => stream.Stream<
-    PendingMaintenanceActionsMessage,
-    DescribePendingMaintenanceActionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribePendingMaintenanceActionsMessage,
-  ) => stream.Stream<
-    ResourcePendingMaintenanceActions,
-    DescribePendingMaintenanceActionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeReservedDBInstancesError =
   | ReservedDBInstanceNotFoundFault
@@ -16709,27 +15989,7 @@ export const describeReservedDBInstances: API.OperationMethod<
     items: "ReservedDBInstances",
     pageSize: "MaxRecords",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeReservedDBInstancesMessage,
-  ReservedDBInstanceMessage,
-  DescribeReservedDBInstancesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeReservedDBInstancesMessage,
-  ) => stream.Stream<
-    ReservedDBInstanceMessage,
-    DescribeReservedDBInstancesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeReservedDBInstancesMessage,
-  ) => stream.Stream<
-    ReservedDBInstance,
-    DescribeReservedDBInstancesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeReservedDBInstancesOfferingsError =
   | ReservedDBInstancesOfferingNotFoundFault
@@ -16770,27 +16030,7 @@ export const describeReservedDBInstancesOfferings: API.OperationMethod<
     items: "ReservedDBInstancesOfferings",
     pageSize: "MaxRecords",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeReservedDBInstancesOfferingsMessage,
-  ReservedDBInstancesOfferingMessage,
-  DescribeReservedDBInstancesOfferingsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeReservedDBInstancesOfferingsMessage,
-  ) => stream.Stream<
-    ReservedDBInstancesOfferingMessage,
-    DescribeReservedDBInstancesOfferingsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeReservedDBInstancesOfferingsMessage,
-  ) => stream.Stream<
-    ReservedDBInstancesOffering,
-    DescribeReservedDBInstancesOfferingsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeServerlessV2PlatformVersionsError = CommonErrors;
 /**
@@ -16829,27 +16069,7 @@ export const describeServerlessV2PlatformVersions: API.OperationMethod<
     items: "ServerlessV2PlatformVersions",
     pageSize: "MaxRecords",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeServerlessV2PlatformVersionsMessage,
-  ServerlessV2PlatformVersionsMessage,
-  DescribeServerlessV2PlatformVersionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeServerlessV2PlatformVersionsMessage,
-  ) => stream.Stream<
-    ServerlessV2PlatformVersionsMessage,
-    DescribeServerlessV2PlatformVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeServerlessV2PlatformVersionsMessage,
-  ) => stream.Stream<
-    ServerlessV2PlatformVersionInfo,
-    DescribeServerlessV2PlatformVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeSourceRegionsError = CommonErrors;
 /**
@@ -16892,27 +16112,7 @@ export const describeSourceRegions: API.OperationMethod<
     items: "SourceRegions",
     pageSize: "MaxRecords",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeSourceRegionsMessage,
-  SourceRegionMessage,
-  DescribeSourceRegionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeSourceRegionsMessage,
-  ) => stream.Stream<
-    SourceRegionMessage,
-    DescribeSourceRegionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeSourceRegionsMessage,
-  ) => stream.Stream<
-    SourceRegion,
-    DescribeSourceRegionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeTenantDatabasesError =
   | DBInstanceNotFoundFault
@@ -16953,27 +16153,7 @@ export const describeTenantDatabases: API.OperationMethod<
     items: "TenantDatabases",
     pageSize: "MaxRecords",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeTenantDatabasesMessage,
-  TenantDatabasesMessage,
-  DescribeTenantDatabasesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeTenantDatabasesMessage,
-  ) => stream.Stream<
-    TenantDatabasesMessage,
-    DescribeTenantDatabasesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeTenantDatabasesMessage,
-  ) => stream.Stream<
-    TenantDatabase,
-    DescribeTenantDatabasesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeValidDBInstanceModificationsError =
   | DBInstanceNotFoundFault
@@ -17071,27 +16251,7 @@ export const downloadDBLogFilePortion: API.OperationMethod<
     outputToken: "Marker",
     pageSize: "NumberOfLines",
   } as const,
-})) as any as API.OperationMethod<
-  DownloadDBLogFilePortionMessage,
-  DownloadDBLogFilePortionDetails,
-  DownloadDBLogFilePortionError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DownloadDBLogFilePortionMessage,
-  ) => stream.Stream<
-    DownloadDBLogFilePortionDetails,
-    DownloadDBLogFilePortionError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DownloadDBLogFilePortionMessage,
-  ) => stream.Stream<
-    unknown,
-    DownloadDBLogFilePortionError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type EnableHttpEndpointError =
   | InvalidResourceStateFault

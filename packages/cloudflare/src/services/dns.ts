@@ -28546,7 +28546,8 @@ export const listRecords: API.PaginatedOperationMethod<
   ListRecordsRequest,
   ListRecordsResponse,
   ListRecordsError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  RecordsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListRecordsRequest,
@@ -28563,7 +28564,7 @@ export const listRecords: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListSettingAccountViewsError = CloudflareOpError;
 /** List DNS Internal Views for an Account */
@@ -28571,7 +28572,8 @@ export const listSettingAccountViews: API.PaginatedOperationMethod<
   ListSettingAccountViewsRequest,
   ListSettingAccountViewsResponse,
   ListSettingAccountViewsError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  SettingsAccountViewsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListSettingAccountViewsRequest,
@@ -28588,7 +28590,7 @@ export const listSettingAccountViews: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListZoneTransferAclsError = CloudflareOpError;
 /** List ACLs. */
@@ -28596,7 +28598,8 @@ export const listZoneTransferAcls: API.PaginatedOperationMethod<
   ListZoneTransferAclsRequest,
   ListZoneTransferAclsResponse,
   ListZoneTransferAclsError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  ZoneTransfersAclsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListZoneTransferAclsRequest,
@@ -28607,7 +28610,7 @@ export const listZoneTransferAcls: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListZoneTransferPeersError = CloudflareOpError;
 /** List Peers. */
@@ -28615,7 +28618,8 @@ export const listZoneTransferPeers: API.PaginatedOperationMethod<
   ListZoneTransferPeersRequest,
   ListZoneTransferPeersResponse,
   ListZoneTransferPeersError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  ZoneTransfersPeersListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListZoneTransferPeersRequest,
@@ -28626,7 +28630,7 @@ export const listZoneTransferPeers: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListZoneTransferTsigsError = CloudflareOpError;
 /** List TSIGs. */
@@ -28634,7 +28638,8 @@ export const listZoneTransferTsigs: API.PaginatedOperationMethod<
   ListZoneTransferTsigsRequest,
   ListZoneTransferTsigsResponse,
   ListZoneTransferTsigsError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  ZoneTransfersTsigsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListZoneTransferTsigsRequest,
@@ -28645,7 +28650,7 @@ export const listZoneTransferTsigs: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type PatchDnssecError = Forbidden | CloudflareOpError;
 /** Enable or disable DNSSEC. */
@@ -28730,7 +28735,8 @@ export const scanListRecord: API.PaginatedOperationMethod<
   ScanListRecordRequest,
   ScanListRecordResponse,
   ScanListRecordError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  RecordsScanListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ScanListRecordRequest,
@@ -28741,7 +28747,7 @@ export const scanListRecord: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ScanRecordError = CloudflareOpError;
 /** Scan for common DNS records on your domain and automatically add them to your zone. Useful if you haven't updated your nameservers yet. */

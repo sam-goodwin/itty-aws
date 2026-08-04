@@ -4623,27 +4623,7 @@ export const describeImages: API.OperationMethod<
     items: "imageDetails",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeImagesRequest,
-  DescribeImagesResponse,
-  DescribeImagesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeImagesRequest,
-  ) => stream.Stream<
-    DescribeImagesResponse,
-    DescribeImagesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeImagesRequest,
-  ) => stream.Stream<
-    ImageDetail,
-    DescribeImagesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeImageScanFindingsError =
   | ImageNotFoundException
@@ -4695,27 +4675,7 @@ export const describeImageScanFindings: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeImageScanFindingsRequest,
-  DescribeImageScanFindingsResponse,
-  DescribeImageScanFindingsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeImageScanFindingsRequest,
-  ) => stream.Stream<
-    DescribeImageScanFindingsResponse,
-    DescribeImageScanFindingsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeImageScanFindingsRequest,
-  ) => stream.Stream<
-    unknown,
-    DescribeImageScanFindingsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeImageSigningStatusError =
   | ImageNotFoundException
@@ -4799,27 +4759,7 @@ export const describePullThroughCacheRules: API.OperationMethod<
     items: "pullThroughCacheRules",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  DescribePullThroughCacheRulesRequest,
-  DescribePullThroughCacheRulesResponse,
-  DescribePullThroughCacheRulesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribePullThroughCacheRulesRequest,
-  ) => stream.Stream<
-    DescribePullThroughCacheRulesResponse,
-    DescribePullThroughCacheRulesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribePullThroughCacheRulesRequest,
-  ) => stream.Stream<
-    PullThroughCacheRule,
-    DescribePullThroughCacheRulesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeRegistryError =
   | InvalidParameterException
@@ -4890,27 +4830,7 @@ export const describeRepositories: API.OperationMethod<
     items: "repositories",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeRepositoriesRequest,
-  DescribeRepositoriesResponse,
-  DescribeRepositoriesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeRepositoriesRequest,
-  ) => stream.Stream<
-    DescribeRepositoriesResponse,
-    DescribeRepositoriesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeRepositoriesRequest,
-  ) => stream.Stream<
-    Repository,
-    DescribeRepositoriesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeRepositoryCreationTemplatesError =
   | InvalidParameterException
@@ -4955,27 +4875,7 @@ export const describeRepositoryCreationTemplates: API.OperationMethod<
     items: "repositoryCreationTemplates",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeRepositoryCreationTemplatesRequest,
-  DescribeRepositoryCreationTemplatesResponse,
-  DescribeRepositoryCreationTemplatesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeRepositoryCreationTemplatesRequest,
-  ) => stream.Stream<
-    DescribeRepositoryCreationTemplatesResponse,
-    DescribeRepositoryCreationTemplatesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeRepositoryCreationTemplatesRequest,
-  ) => stream.Stream<
-    RepositoryCreationTemplate,
-    DescribeRepositoryCreationTemplatesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type GetAccountSettingError =
   | InvalidParameterException
@@ -5147,27 +5047,7 @@ export const getLifecyclePolicyPreview: API.OperationMethod<
     items: "previewResults",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  GetLifecyclePolicyPreviewRequest,
-  GetLifecyclePolicyPreviewResponse,
-  GetLifecyclePolicyPreviewError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetLifecyclePolicyPreviewRequest,
-  ) => stream.Stream<
-    GetLifecyclePolicyPreviewResponse,
-    GetLifecyclePolicyPreviewError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetLifecyclePolicyPreviewRequest,
-  ) => stream.Stream<
-    LifecyclePolicyPreviewResult,
-    GetLifecyclePolicyPreviewError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type GetRegistryPolicyError =
   | InvalidParameterException
@@ -5398,27 +5278,7 @@ export const listImages: API.OperationMethod<
     items: "imageIds",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListImagesRequest,
-  ListImagesResponse,
-  ListImagesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListImagesRequest,
-  ) => stream.Stream<
-    ListImagesResponse,
-    ListImagesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListImagesRequest,
-  ) => stream.Stream<
-    ImageIdentifier,
-    ListImagesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListPullTimeUpdateExclusionsError =
   | InvalidParameterException

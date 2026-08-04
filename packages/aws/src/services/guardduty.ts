@@ -10531,27 +10531,7 @@ export const describeMalwareScans: API.OperationMethod<
     items: "Scans",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeMalwareScansRequest,
-  DescribeMalwareScansResponse,
-  DescribeMalwareScansError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeMalwareScansRequest,
-  ) => stream.Stream<
-    DescribeMalwareScansResponse,
-    DescribeMalwareScansError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeMalwareScansRequest,
-  ) => stream.Stream<
-    Scan,
-    DescribeMalwareScansError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeOrganizationConfigurationError =
   | BadRequestException
@@ -10594,27 +10574,7 @@ export const describeOrganizationConfiguration: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeOrganizationConfigurationRequest,
-  DescribeOrganizationConfigurationResponse,
-  DescribeOrganizationConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeOrganizationConfigurationRequest,
-  ) => stream.Stream<
-    DescribeOrganizationConfigurationResponse,
-    DescribeOrganizationConfigurationError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeOrganizationConfigurationRequest,
-  ) => stream.Stream<
-    unknown,
-    DescribeOrganizationConfigurationError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribePublishingDestinationError =
   | BadRequestException
@@ -11260,27 +11220,7 @@ export const getUsageStatistics: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  GetUsageStatisticsRequest,
-  GetUsageStatisticsResponse,
-  GetUsageStatisticsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetUsageStatisticsRequest,
-  ) => stream.Stream<
-    GetUsageStatisticsResponse,
-    GetUsageStatisticsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetUsageStatisticsRequest,
-  ) => stream.Stream<
-    unknown,
-    GetUsageStatisticsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type InviteMembersError =
   | BadRequestException
@@ -11353,27 +11293,7 @@ export const listCoverage: API.OperationMethod<
     items: "Resources",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListCoverageRequest,
-  ListCoverageResponse,
-  ListCoverageError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCoverageRequest,
-  ) => stream.Stream<
-    ListCoverageResponse,
-    ListCoverageError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCoverageRequest,
-  ) => stream.Stream<
-    CoverageResource,
-    ListCoverageError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListDetectorsError =
   | BadRequestException
@@ -11415,27 +11335,7 @@ export const listDetectors: API.OperationMethod<
     items: "DetectorIds",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListDetectorsRequest,
-  ListDetectorsResponse,
-  ListDetectorsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDetectorsRequest,
-  ) => stream.Stream<
-    ListDetectorsResponse,
-    ListDetectorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDetectorsRequest,
-  ) => stream.Stream<
-    DetectorId,
-    ListDetectorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListFiltersError =
   | BadRequestException
@@ -11477,27 +11377,7 @@ export const listFilters: API.OperationMethod<
     items: "FilterNames",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListFiltersRequest,
-  ListFiltersResponse,
-  ListFiltersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListFiltersRequest,
-  ) => stream.Stream<
-    ListFiltersResponse,
-    ListFiltersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListFiltersRequest,
-  ) => stream.Stream<
-    FilterName,
-    ListFiltersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListFindingsError =
   | BadRequestException
@@ -11541,27 +11421,7 @@ export const listFindings: API.OperationMethod<
     items: "FindingIds",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListFindingsRequest,
-  ListFindingsResponse,
-  ListFindingsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListFindingsRequest,
-  ) => stream.Stream<
-    ListFindingsResponse,
-    ListFindingsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListFindingsRequest,
-  ) => stream.Stream<
-    FindingId,
-    ListFindingsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListInvestigationsError =
   | AccessDeniedException
@@ -11612,27 +11472,7 @@ export const listInvestigations: API.OperationMethod<
     items: "Investigations",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListInvestigationsRequest,
-  ListInvestigationsResponse,
-  ListInvestigationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListInvestigationsRequest,
-  ) => stream.Stream<
-    ListInvestigationsResponse,
-    ListInvestigationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListInvestigationsRequest,
-  ) => stream.Stream<
-    InvestigationSummary,
-    ListInvestigationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListInvitationsError =
   | BadRequestException
@@ -11674,27 +11514,7 @@ export const listInvitations: API.OperationMethod<
     items: "Invitations",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListInvitationsRequest,
-  ListInvitationsResponse,
-  ListInvitationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListInvitationsRequest,
-  ) => stream.Stream<
-    ListInvitationsResponse,
-    ListInvitationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListInvitationsRequest,
-  ) => stream.Stream<
-    Invitation,
-    ListInvitationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListIPSetsError =
   | BadRequestException
@@ -11736,27 +11556,7 @@ export const listIPSets: API.OperationMethod<
     items: "IpSetIds",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListIPSetsRequest,
-  ListIPSetsResponse,
-  ListIPSetsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListIPSetsRequest,
-  ) => stream.Stream<
-    ListIPSetsResponse,
-    ListIPSetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListIPSetsRequest,
-  ) => stream.Stream<
-    string,
-    ListIPSetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListMalwareProtectionPlansError =
   | AccessDeniedException
@@ -11824,27 +11624,7 @@ export const listMalwareScans: API.OperationMethod<
     items: "Scans",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListMalwareScansRequest,
-  ListMalwareScansResponse,
-  ListMalwareScansError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListMalwareScansRequest,
-  ) => stream.Stream<
-    ListMalwareScansResponse,
-    ListMalwareScansError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListMalwareScansRequest,
-  ) => stream.Stream<
-    MalwareScan,
-    ListMalwareScansError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListMembersError =
   | BadRequestException
@@ -11886,27 +11666,7 @@ export const listMembers: API.OperationMethod<
     items: "Members",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListMembersRequest,
-  ListMembersResponse,
-  ListMembersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListMembersRequest,
-  ) => stream.Stream<
-    ListMembersResponse,
-    ListMembersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListMembersRequest,
-  ) => stream.Stream<
-    Member,
-    ListMembersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListOrganizationAdminAccountsError =
   | BadRequestException
@@ -11948,27 +11708,7 @@ export const listOrganizationAdminAccounts: API.OperationMethod<
     items: "AdminAccounts",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListOrganizationAdminAccountsRequest,
-  ListOrganizationAdminAccountsResponse,
-  ListOrganizationAdminAccountsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListOrganizationAdminAccountsRequest,
-  ) => stream.Stream<
-    ListOrganizationAdminAccountsResponse,
-    ListOrganizationAdminAccountsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListOrganizationAdminAccountsRequest,
-  ) => stream.Stream<
-    AdminAccount,
-    ListOrganizationAdminAccountsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListPublishingDestinationsError =
   | BadRequestException
@@ -12009,27 +11749,7 @@ export const listPublishingDestinations: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListPublishingDestinationsRequest,
-  ListPublishingDestinationsResponse,
-  ListPublishingDestinationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPublishingDestinationsRequest,
-  ) => stream.Stream<
-    ListPublishingDestinationsResponse,
-    ListPublishingDestinationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPublishingDestinationsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListPublishingDestinationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsForResourceError =
   | AccessDeniedException
@@ -12097,27 +11817,7 @@ export const listThreatEntitySets: API.OperationMethod<
     items: "ThreatEntitySetIds",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListThreatEntitySetsRequest,
-  ListThreatEntitySetsResponse,
-  ListThreatEntitySetsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListThreatEntitySetsRequest,
-  ) => stream.Stream<
-    ListThreatEntitySetsResponse,
-    ListThreatEntitySetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListThreatEntitySetsRequest,
-  ) => stream.Stream<
-    string,
-    ListThreatEntitySetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListThreatIntelSetsError =
   | BadRequestException
@@ -12159,27 +11859,7 @@ export const listThreatIntelSets: API.OperationMethod<
     items: "ThreatIntelSetIds",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListThreatIntelSetsRequest,
-  ListThreatIntelSetsResponse,
-  ListThreatIntelSetsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListThreatIntelSetsRequest,
-  ) => stream.Stream<
-    ListThreatIntelSetsResponse,
-    ListThreatIntelSetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListThreatIntelSetsRequest,
-  ) => stream.Stream<
-    string,
-    ListThreatIntelSetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTrustedEntitySetsError =
   | BadRequestException
@@ -12221,27 +11901,7 @@ export const listTrustedEntitySets: API.OperationMethod<
     items: "TrustedEntitySetIds",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListTrustedEntitySetsRequest,
-  ListTrustedEntitySetsResponse,
-  ListTrustedEntitySetsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTrustedEntitySetsRequest,
-  ) => stream.Stream<
-    ListTrustedEntitySetsResponse,
-    ListTrustedEntitySetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTrustedEntitySetsRequest,
-  ) => stream.Stream<
-    string,
-    ListTrustedEntitySetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type SendObjectMalwareScanError =
   | AccessDeniedException

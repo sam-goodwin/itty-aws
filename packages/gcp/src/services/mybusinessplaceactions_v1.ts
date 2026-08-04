@@ -399,7 +399,8 @@ export const listLocationsPlaceActionLinks: API.PaginatedOperationMethod<
   ListLocationsPlaceActionLinksRequest,
   ListPlaceActionLinksResponse,
   ListLocationsPlaceActionLinksError,
-  GcpOpContext
+  GcpOpContext,
+  ListPlaceActionLinksResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLocationsPlaceActionLinksRequest,
   output: ListPlaceActionLinksResponse,
@@ -410,7 +411,7 @@ export const listLocationsPlaceActionLinks: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListPlaceActionTypeMetadataError =
   | NotFound
@@ -421,7 +422,8 @@ export const listPlaceActionTypeMetadata: API.PaginatedOperationMethod<
   ListPlaceActionTypeMetadataRequest,
   ListPlaceActionTypeMetadataResponse,
   ListPlaceActionTypeMetadataError,
-  GcpOpContext
+  GcpOpContext,
+  ListPlaceActionTypeMetadataResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPlaceActionTypeMetadataRequest,
   output: ListPlaceActionTypeMetadataResponse,
@@ -432,7 +434,7 @@ export const listPlaceActionTypeMetadata: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type PatchLocationsPlaceActionLinksError =
   | NotFound

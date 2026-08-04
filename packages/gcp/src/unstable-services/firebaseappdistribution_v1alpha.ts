@@ -2200,7 +2200,8 @@ export const listProjectsAppsReleasesTests: API.PaginatedOperationMethod<
   ListProjectsAppsReleasesTestsRequest,
   GoogleFirebaseAppdistroV1alphaListReleaseTestsResponse,
   ListProjectsAppsReleasesTestsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleFirebaseAppdistroV1alphaListReleaseTestsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsAppsReleasesTestsRequest,
   output: GoogleFirebaseAppdistroV1alphaListReleaseTestsResponse,
@@ -2211,7 +2212,7 @@ export const listProjectsAppsReleasesTests: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsAppsTestCasesError = NotFound | Forbidden | GcpOpError;
 /** List test cases. */
@@ -2219,7 +2220,8 @@ export const listProjectsAppsTestCases: API.PaginatedOperationMethod<
   ListProjectsAppsTestCasesRequest,
   GoogleFirebaseAppdistroV1alphaListTestCasesResponse,
   ListProjectsAppsTestCasesError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleFirebaseAppdistroV1alphaListTestCasesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsAppsTestCasesRequest,
   output: GoogleFirebaseAppdistroV1alphaListTestCasesResponse,
@@ -2230,7 +2232,7 @@ export const listProjectsAppsTestCases: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type PatchProjectsAppsTestCasesError =
   | NotFound

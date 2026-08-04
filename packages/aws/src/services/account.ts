@@ -1060,27 +1060,7 @@ export const listRegions: API.OperationMethod<
     items: "Regions",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListRegionsRequest,
-  ListRegionsResponse,
-  ListRegionsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRegionsRequest,
-  ) => stream.Stream<
-    ListRegionsResponse,
-    ListRegionsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRegionsRequest,
-  ) => stream.Stream<
-    Region,
-    ListRegionsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type PutAccountNameError =
   | AccessDeniedException

@@ -2260,7 +2260,8 @@ export const bulkCreateAdvancedTcpProtectionPrefixes: API.PaginatedOperationMeth
   BulkCreateAdvancedTcpProtectionPrefixesRequest,
   BulkCreateAdvancedTcpProtectionPrefixesResponse,
   BulkCreateAdvancedTcpProtectionPrefixesError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  AdvancedTcpProtectionPrefixesBulkCreateResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: BulkCreateAdvancedTcpProtectionPrefixesRequest,
@@ -2271,7 +2272,7 @@ export const bulkCreateAdvancedTcpProtectionPrefixes: API.PaginatedOperationMeth
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type BulkDeleteAdvancedTcpProtectionAllowlistsError = CloudflareOpError;
 /** Delete all allowlist prefixes for an account. */
@@ -2801,7 +2802,8 @@ export const listAdvancedTcpProtectionAllowlists: API.PaginatedOperationMethod<
   ListAdvancedTcpProtectionAllowlistsRequest,
   ListAdvancedTcpProtectionAllowlistsResponse,
   ListAdvancedTcpProtectionAllowlistsError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  AdvancedTcpProtectionAllowlistListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListAdvancedTcpProtectionAllowlistsRequest,
@@ -2823,7 +2825,7 @@ export const listAdvancedTcpProtectionAllowlists: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListAdvancedTcpProtectionPrefixesError = CloudflareOpError;
 /** List all prefixes for an account. */
@@ -2831,7 +2833,8 @@ export const listAdvancedTcpProtectionPrefixes: API.PaginatedOperationMethod<
   ListAdvancedTcpProtectionPrefixesRequest,
   ListAdvancedTcpProtectionPrefixesResponse,
   ListAdvancedTcpProtectionPrefixesError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  AdvancedTcpProtectionPrefixesListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListAdvancedTcpProtectionPrefixesRequest,
@@ -2848,7 +2851,7 @@ export const listAdvancedTcpProtectionPrefixes: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListAdvancedTcpProtectionSynProtectionFiltersError =
   | AdvancedTcpProtectionNotEntitled
@@ -2859,7 +2862,8 @@ export const listAdvancedTcpProtectionSynProtectionFilters: API.PaginatedOperati
   ListAdvancedTcpProtectionSynProtectionFiltersRequest,
   ListAdvancedTcpProtectionSynProtectionFiltersResponse,
   ListAdvancedTcpProtectionSynProtectionFiltersError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  AdvancedTcpProtectionSynProtectionFiltersListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListAdvancedTcpProtectionSynProtectionFiltersRequest,
@@ -2881,7 +2885,7 @@ export const listAdvancedTcpProtectionSynProtectionFilters: API.PaginatedOperati
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListAdvancedTcpProtectionSynProtectionRulesError =
   | AdvancedTcpProtectionNotEntitled
@@ -2892,7 +2896,8 @@ export const listAdvancedTcpProtectionSynProtectionRules: API.PaginatedOperation
   ListAdvancedTcpProtectionSynProtectionRulesRequest,
   ListAdvancedTcpProtectionSynProtectionRulesResponse,
   ListAdvancedTcpProtectionSynProtectionRulesError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  AdvancedTcpProtectionSynProtectionRulesListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListAdvancedTcpProtectionSynProtectionRulesRequest,
@@ -2914,7 +2919,7 @@ export const listAdvancedTcpProtectionSynProtectionRules: API.PaginatedOperation
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListAdvancedTcpProtectionTcpFlowProtectionFiltersError =
   | AdvancedTcpProtectionNotEntitled
@@ -2925,7 +2930,8 @@ export const listAdvancedTcpProtectionTcpFlowProtectionFilters: API.PaginatedOpe
   ListAdvancedTcpProtectionTcpFlowProtectionFiltersRequest,
   ListAdvancedTcpProtectionTcpFlowProtectionFiltersResponse,
   ListAdvancedTcpProtectionTcpFlowProtectionFiltersError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  AdvancedTcpProtectionTcpFlowProtectionFiltersListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListAdvancedTcpProtectionTcpFlowProtectionFiltersRequest,
@@ -2947,7 +2953,7 @@ export const listAdvancedTcpProtectionTcpFlowProtectionFilters: API.PaginatedOpe
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListAdvancedTcpProtectionTcpFlowProtectionRulesError =
   | AdvancedTcpProtectionNotEntitled
@@ -2958,7 +2964,8 @@ export const listAdvancedTcpProtectionTcpFlowProtectionRules: API.PaginatedOpera
   ListAdvancedTcpProtectionTcpFlowProtectionRulesRequest,
   ListAdvancedTcpProtectionTcpFlowProtectionRulesResponse,
   ListAdvancedTcpProtectionTcpFlowProtectionRulesError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  AdvancedTcpProtectionTcpFlowProtectionRulesListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListAdvancedTcpProtectionTcpFlowProtectionRulesRequest,
@@ -2980,7 +2987,7 @@ export const listAdvancedTcpProtectionTcpFlowProtectionRules: API.PaginatedOpera
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type PatchAdvancedTcpProtectionAllowlistItemError =
   | AllowlistEntryNotFound

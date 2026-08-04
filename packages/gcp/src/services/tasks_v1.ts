@@ -760,7 +760,8 @@ export const listTasklists: API.PaginatedOperationMethod<
   ListTasklistsRequest,
   TaskLists,
   ListTasklistsError,
-  GcpOpContext
+  GcpOpContext,
+  TaskList
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTasklistsRequest,
   output: TaskLists,
@@ -772,7 +773,7 @@ export const listTasklists: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListTasksError = NotFound | Forbidden | GcpOpError;
 /** Returns all tasks in the specified task list. Doesn't return assigned tasks by default (from Docs, Chat Spaces). A user can have up to 20,000 non-hidden tasks per list and up to 100,000 tasks in total at a time. */
@@ -780,7 +781,8 @@ export const listTasks: API.PaginatedOperationMethod<
   ListTasksRequest,
   Tasks,
   ListTasksError,
-  GcpOpContext
+  GcpOpContext,
+  Task
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTasksRequest,
   output: Tasks,
@@ -792,7 +794,7 @@ export const listTasks: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type MoveTasksError =
   | NotFound

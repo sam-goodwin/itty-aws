@@ -468,7 +468,8 @@ export const listRegionalServicePrefixBindings: API.PaginatedOperationMethod<
   ListRegionalServicePrefixBindingsRequest,
   ListRegionalServicePrefixBindingsResponse,
   ListRegionalServicePrefixBindingsError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  RegionalServicesPrefixBindingsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListRegionalServicePrefixBindingsRequest,
@@ -485,7 +486,7 @@ export const listRegionalServicePrefixBindings: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListRegionsError = CloudflareOpError;
 /** List DLS regions for an account */
@@ -493,7 +494,8 @@ export const listRegions: API.PaginatedOperationMethod<
   ListRegionsRequest,
   ListRegionsResponse,
   ListRegionsError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  RegionsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListRegionsRequest,
@@ -510,7 +512,7 @@ export const listRegions: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type PatchRegionalServicePrefixBindingError = CloudflareOpError;
 /** Update a DLS prefix binding */

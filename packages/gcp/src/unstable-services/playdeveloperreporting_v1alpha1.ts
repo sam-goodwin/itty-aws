@@ -2139,7 +2139,8 @@ export const listAnomalies: API.PaginatedOperationMethod<
   ListAnomaliesRequest,
   GooglePlayDeveloperReportingV1alpha1ListAnomaliesResponse,
   ListAnomaliesError,
-  GcpOpContext
+  GcpOpContext,
+  GooglePlayDeveloperReportingV1alpha1ListAnomaliesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAnomaliesRequest,
   output: GooglePlayDeveloperReportingV1alpha1ListAnomaliesResponse,
@@ -2150,7 +2151,7 @@ export const listAnomalies: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type QueryVitalsAnrrateError =
   | NotFound
@@ -2322,7 +2323,8 @@ export const searchApps: API.PaginatedOperationMethod<
   SearchAppsRequest,
   GooglePlayDeveloperReportingV1alpha1SearchAccessibleAppsResponse,
   SearchAppsError,
-  GcpOpContext
+  GcpOpContext,
+  GooglePlayDeveloperReportingV1alpha1SearchAccessibleAppsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchAppsRequest,
   output: GooglePlayDeveloperReportingV1alpha1SearchAccessibleAppsResponse,
@@ -2333,7 +2335,7 @@ export const searchApps: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type SearchVitalsErrorsIssuesError = NotFound | Forbidden | GcpOpError;
 /** Searches all error issues in which reports have been grouped. */
@@ -2341,7 +2343,8 @@ export const searchVitalsErrorsIssues: API.PaginatedOperationMethod<
   SearchVitalsErrorsIssuesRequest,
   GooglePlayDeveloperReportingV1alpha1SearchErrorIssuesResponse,
   SearchVitalsErrorsIssuesError,
-  GcpOpContext
+  GcpOpContext,
+  GooglePlayDeveloperReportingV1alpha1SearchErrorIssuesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchVitalsErrorsIssuesRequest,
   output: GooglePlayDeveloperReportingV1alpha1SearchErrorIssuesResponse,
@@ -2352,7 +2355,7 @@ export const searchVitalsErrorsIssues: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type SearchVitalsErrorsReportsError = NotFound | Forbidden | GcpOpError;
 /** Searches all error reports received for an app. */
@@ -2360,7 +2363,8 @@ export const searchVitalsErrorsReports: API.PaginatedOperationMethod<
   SearchVitalsErrorsReportsRequest,
   GooglePlayDeveloperReportingV1alpha1SearchErrorReportsResponse,
   SearchVitalsErrorsReportsError,
-  GcpOpContext
+  GcpOpContext,
+  GooglePlayDeveloperReportingV1alpha1SearchErrorReportsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchVitalsErrorsReportsRequest,
   output: GooglePlayDeveloperReportingV1alpha1SearchErrorReportsResponse,
@@ -2371,4 +2375,4 @@ export const searchVitalsErrorsReports: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;

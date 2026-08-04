@@ -2453,27 +2453,7 @@ export const listDomains: API.OperationMethod<
     items: "Domains",
     pageSize: "MaxItems",
   } as const,
-})) as any as API.OperationMethod<
-  ListDomainsRequest,
-  ListDomainsResponse,
-  ListDomainsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDomainsRequest,
-  ) => stream.Stream<
-    ListDomainsResponse,
-    ListDomainsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDomainsRequest,
-  ) => stream.Stream<
-    DomainSummary,
-    ListDomainsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListOperationsError = InvalidInput | CommonErrors;
 /**
@@ -2515,27 +2495,7 @@ export const listOperations: API.OperationMethod<
     items: "Operations",
     pageSize: "MaxItems",
   } as const,
-})) as any as API.OperationMethod<
-  ListOperationsRequest,
-  ListOperationsResponse,
-  ListOperationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListOperationsRequest,
-  ) => stream.Stream<
-    ListOperationsResponse,
-    ListOperationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListOperationsRequest,
-  ) => stream.Stream<
-    OperationSummary,
-    ListOperationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListPricesError = InvalidInput | UnsupportedTLD | CommonErrors;
 /**
@@ -2585,27 +2545,7 @@ export const listPrices: API.OperationMethod<
     items: "Prices",
     pageSize: "MaxItems",
   } as const,
-})) as any as API.OperationMethod<
-  ListPricesRequest,
-  ListPricesResponse,
-  ListPricesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPricesRequest,
-  ) => stream.Stream<
-    ListPricesResponse,
-    ListPricesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPricesRequest,
-  ) => stream.Stream<
-    DomainPrice,
-    ListPricesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsForDomainError =
   | InvalidInput
@@ -3163,24 +3103,4 @@ export const viewBilling: API.OperationMethod<
     items: "BillingRecords",
     pageSize: "MaxItems",
   } as const,
-})) as any as API.OperationMethod<
-  ViewBillingRequest,
-  ViewBillingResponse,
-  ViewBillingError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ViewBillingRequest,
-  ) => stream.Stream<
-    ViewBillingResponse,
-    ViewBillingError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ViewBillingRequest,
-  ) => stream.Stream<
-    BillingRecord,
-    ViewBillingError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;

@@ -1140,27 +1140,7 @@ export const listProfileAssociations: API.OperationMethod<
     items: "ProfileAssociations",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListProfileAssociationsRequest,
-  ListProfileAssociationsResponse,
-  ListProfileAssociationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListProfileAssociationsRequest,
-  ) => stream.Stream<
-    ListProfileAssociationsResponse,
-    ListProfileAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListProfileAssociationsRequest,
-  ) => stream.Stream<
-    ProfileAssociation,
-    ListProfileAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListProfileResourceAssociationsError =
   | AccessDeniedException
@@ -1215,27 +1195,7 @@ export const listProfileResourceAssociations: API.OperationMethod<
     items: "ProfileResourceAssociations",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListProfileResourceAssociationsRequest,
-  ListProfileResourceAssociationsResponse,
-  ListProfileResourceAssociationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListProfileResourceAssociationsRequest,
-  ) => stream.Stream<
-    ListProfileResourceAssociationsResponse,
-    ListProfileResourceAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListProfileResourceAssociationsRequest,
-  ) => stream.Stream<
-    ProfileResourceAssociation,
-    ListProfileResourceAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListProfilesError =
   | AccessDeniedException
@@ -1286,27 +1246,7 @@ export const listProfiles: API.OperationMethod<
     items: "ProfileSummaries",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListProfilesRequest,
-  ListProfilesResponse,
-  ListProfilesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListProfilesRequest,
-  ) => stream.Stream<
-    ListProfilesResponse,
-    ListProfilesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListProfilesRequest,
-  ) => stream.Stream<
-    ProfileSummary,
-    ListProfilesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsForResourceError =
   | AccessDeniedException

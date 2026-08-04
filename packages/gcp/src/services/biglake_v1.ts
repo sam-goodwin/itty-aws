@@ -1238,7 +1238,8 @@ export const listProjectsLocationsCatalogs: API.PaginatedOperationMethod<
   ListProjectsLocationsCatalogsRequest,
   ListCatalogsResponse,
   ListProjectsLocationsCatalogsError,
-  GcpOpContext
+  GcpOpContext,
+  ListCatalogsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsCatalogsRequest,
   output: ListCatalogsResponse,
@@ -1249,7 +1250,7 @@ export const listProjectsLocationsCatalogs: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsCatalogsDatabasesError =
   | NotFound
@@ -1260,7 +1261,8 @@ export const listProjectsLocationsCatalogsDatabases: API.PaginatedOperationMetho
   ListProjectsLocationsCatalogsDatabasesRequest,
   ListDatabasesResponse,
   ListProjectsLocationsCatalogsDatabasesError,
-  GcpOpContext
+  GcpOpContext,
+  ListDatabasesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsCatalogsDatabasesRequest,
   output: ListDatabasesResponse,
@@ -1271,7 +1273,7 @@ export const listProjectsLocationsCatalogsDatabases: API.PaginatedOperationMetho
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsCatalogsDatabasesTablesError =
   | NotFound
@@ -1282,7 +1284,8 @@ export const listProjectsLocationsCatalogsDatabasesTables: API.PaginatedOperatio
   ListProjectsLocationsCatalogsDatabasesTablesRequest,
   ListTablesResponse,
   ListProjectsLocationsCatalogsDatabasesTablesError,
-  GcpOpContext
+  GcpOpContext,
+  ListTablesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsCatalogsDatabasesTablesRequest,
   output: ListTablesResponse,
@@ -1293,7 +1296,7 @@ export const listProjectsLocationsCatalogsDatabasesTables: API.PaginatedOperatio
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type PatchProjectsLocationsCatalogsDatabasesError =
   | NotFound

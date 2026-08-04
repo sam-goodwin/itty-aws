@@ -8783,7 +8783,8 @@ export const bulkPatchPools: API.PaginatedOperationMethod<
   BulkPatchPoolsRequest,
   BulkPatchPoolsResponse,
   BulkPatchPoolsError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  PoolsBulkEditResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: BulkPatchPoolsRequest,
@@ -8794,7 +8795,7 @@ export const bulkPatchPools: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type CreateLoadBalancerError =
   | LoadBalancingNotEnabledForZone
@@ -9075,7 +9076,8 @@ export const getMonitorGroupReference: API.PaginatedOperationMethod<
   GetMonitorGroupReferenceRequest,
   GetMonitorGroupReferenceResponse,
   GetMonitorGroupReferenceError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  MonitorGroupsReferencesGetResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: GetMonitorGroupReferenceRequest,
@@ -9086,7 +9088,7 @@ export const getMonitorGroupReference: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type GetMonitorReferenceError = CloudflareOpError;
 /** Get the list of resources that reference the provided monitor. */
@@ -9094,7 +9096,8 @@ export const getMonitorReference: API.PaginatedOperationMethod<
   GetMonitorReferenceRequest,
   GetMonitorReferenceResponse,
   GetMonitorReferenceError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  MonitorsReferencesGetResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: GetMonitorReferenceRequest,
@@ -9105,7 +9108,7 @@ export const getMonitorReference: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type GetPoolError = PoolNotFound | Forbidden | CloudflareOpError;
 /** Fetch a single configured pool. */
@@ -9143,7 +9146,8 @@ export const getPoolReference: API.PaginatedOperationMethod<
   GetPoolReferenceRequest,
   GetPoolReferenceResponse,
   GetPoolReferenceError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  PoolsReferencesGetResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: GetPoolReferenceRequest,
@@ -9154,7 +9158,7 @@ export const getPoolReference: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type GetPreviewError = CloudflareOpError;
 /** Get the result of a previous preview operation using the provided preview_id. */
@@ -9192,7 +9196,8 @@ export const listLoadBalancers: API.PaginatedOperationMethod<
   ListLoadBalancersRequest,
   ListLoadBalancersResponse,
   ListLoadBalancersError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  ListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListLoadBalancersRequest,
@@ -9203,7 +9208,7 @@ export const listLoadBalancers: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListMonitorGroupsError = CloudflareOpError;
 /** List configured monitor groups. */
@@ -9211,7 +9216,8 @@ export const listMonitorGroups: API.PaginatedOperationMethod<
   ListMonitorGroupsRequest,
   ListMonitorGroupsResponse,
   ListMonitorGroupsError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  MonitorGroupsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListMonitorGroupsRequest,
@@ -9222,7 +9228,7 @@ export const listMonitorGroups: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListMonitorsError = CloudflareOpError;
 /** List configured monitors for an account. */
@@ -9230,7 +9236,8 @@ export const listMonitors: API.PaginatedOperationMethod<
   ListMonitorsRequest,
   ListMonitorsResponse,
   ListMonitorsError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  MonitorsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListMonitorsRequest,
@@ -9241,7 +9248,7 @@ export const listMonitors: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListPoolsError = CloudflareOpError;
 /** List configured pools. */
@@ -9249,7 +9256,8 @@ export const listPools: API.PaginatedOperationMethod<
   ListPoolsRequest,
   ListPoolsResponse,
   ListPoolsError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  PoolsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListPoolsRequest,
@@ -9260,7 +9268,7 @@ export const listPools: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListRegionsError = CloudflareOpError;
 /** List all region mappings. */

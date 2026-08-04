@@ -1229,7 +1229,8 @@ export const listLogExplorerDatasetsForAccount: API.PaginatedOperationMethod<
   ListLogExplorerDatasetsForAccountRequest,
   ListLogExplorerDatasetsResponse,
   ListLogExplorerDatasetsForAccountError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  LogExplorerDatasetsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListLogExplorerDatasetsForAccountRequest,
@@ -1240,7 +1241,7 @@ export const listLogExplorerDatasetsForAccount: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListLogExplorerDatasetsForZoneError = CloudflareOpError;
 /** Returns all Log Explorer datasets configured for the account or zone. Pass `include_zones=true` to also include zone-level datasets that belong to this account or zone. List responses omit the `fields` property; use the single-dataset endpoint to retrieve field configuration. */
@@ -1248,7 +1249,8 @@ export const listLogExplorerDatasetsForZone: API.PaginatedOperationMethod<
   ListLogExplorerDatasetsForZoneRequest,
   ListLogExplorerDatasetsResponse,
   ListLogExplorerDatasetsForZoneError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  LogExplorerDatasetsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListLogExplorerDatasetsForZoneRequest,
@@ -1259,7 +1261,7 @@ export const listLogExplorerDatasetsForZone: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type SqlLogExplorerQueryForAccountError = CloudflareOpError;
 /** Run a SQL query against account or zone-level datasets. Timestamp fields are RFC3339 strings. Filter with: WHERE {timestamp_field} >= now() - INTERVAL '30' DAY WHERE {timestamp_field} >= '2026-04-01T00:00:00Z' WHERE {timestamp_field} BETWEEN '2026-04-01T00:00:00Z' AND '2026-04-30T23:59:59Z' Check /account or zones/{account or zone_id}/logs/explorer/datasets to see enabled account or zone level datasets. Zone-level datasets will not appear here. Check /account or zones/{account or zone_id}/logs/explorer/datasets/available for the schemas, and the name of the timestamp fields. For zone-level datasets use the zone-scoped endpoint: POST /zones/{zone_id}/logs/explorer/query/sql For more information about the datasets, and the meaning of each field, check out https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/ */
@@ -1267,7 +1269,8 @@ export const sqlLogExplorerQueryForAccount: API.PaginatedOperationMethod<
   SqlLogExplorerQueryForAccountRequest,
   SqlLogExplorerQueryResponse,
   SqlLogExplorerQueryForAccountError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  LogExplorerQuerySqlResultItemMap
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: SqlLogExplorerQueryForAccountRequest,
@@ -1278,7 +1281,7 @@ export const sqlLogExplorerQueryForAccount: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type SqlLogExplorerQueryForZoneError = CloudflareOpError;
 /** Run a SQL query against account or zone-level datasets. Timestamp fields are RFC3339 strings. Filter with: WHERE {timestamp_field} >= now() - INTERVAL '30' DAY WHERE {timestamp_field} >= '2026-04-01T00:00:00Z' WHERE {timestamp_field} BETWEEN '2026-04-01T00:00:00Z' AND '2026-04-30T23:59:59Z' Check /account or zones/{account or zone_id}/logs/explorer/datasets to see enabled account or zone level datasets. Zone-level datasets will not appear here. Check /account or zones/{account or zone_id}/logs/explorer/datasets/available for the schemas, and the name of the timestamp fields. For zone-level datasets use the zone-scoped endpoint: POST /zones/{zone_id}/logs/explorer/query/sql For more information about the datasets, and the meaning of each field, check out https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/ */
@@ -1286,7 +1289,8 @@ export const sqlLogExplorerQueryForZone: API.PaginatedOperationMethod<
   SqlLogExplorerQueryForZoneRequest,
   SqlLogExplorerQueryResponse,
   SqlLogExplorerQueryForZoneError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  LogExplorerQuerySqlResultItemMap
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: SqlLogExplorerQueryForZoneRequest,
@@ -1297,7 +1301,7 @@ export const sqlLogExplorerQueryForZone: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type UpdateLogExplorerDatasetForAccountError = CloudflareOpError;
 /** Updates the enabled state and/or field configuration of an account or zone dataset. */

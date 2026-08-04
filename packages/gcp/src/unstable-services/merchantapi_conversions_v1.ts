@@ -431,7 +431,8 @@ export const listAccountsConversionSources: API.PaginatedOperationMethod<
   ListAccountsConversionSourcesRequest,
   ListConversionSourcesResponse,
   ListAccountsConversionSourcesError,
-  GcpOpContext
+  GcpOpContext,
+  ListConversionSourcesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsConversionSourcesRequest,
   output: ListConversionSourcesResponse,
@@ -442,7 +443,7 @@ export const listAccountsConversionSources: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type PatchAccountsConversionSourcesError =
   | NotFound

@@ -2056,7 +2056,8 @@ export const listLiens: API.PaginatedOperationMethod<
   ListLiensRequest,
   ListLiensResponse,
   ListLiensError,
-  GcpOpContext
+  GcpOpContext,
+  ListLiensResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLiensRequest,
   output: ListLiensResponse,
@@ -2067,7 +2068,7 @@ export const listLiens: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListOrgPoliciesFoldersError =
   | NotFound
@@ -2135,7 +2136,8 @@ export const listProjects: API.PaginatedOperationMethod<
   ListProjectsRequest,
   ListProjectsResponse,
   ListProjectsError,
-  GcpOpContext
+  GcpOpContext,
+  ListProjectsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsRequest,
   output: ListProjectsResponse,
@@ -2146,7 +2148,7 @@ export const listProjects: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type SearchOrganizationsError =
   | NotFound

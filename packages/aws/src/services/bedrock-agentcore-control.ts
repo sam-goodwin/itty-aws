@@ -15980,27 +15980,7 @@ export const listAgentRuntimeEndpoints: API.OperationMethod<
     items: "runtimeEndpoints",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListAgentRuntimeEndpointsRequest,
-  ListAgentRuntimeEndpointsResponse,
-  ListAgentRuntimeEndpointsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAgentRuntimeEndpointsRequest,
-  ) => stream.Stream<
-    ListAgentRuntimeEndpointsResponse,
-    ListAgentRuntimeEndpointsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAgentRuntimeEndpointsRequest,
-  ) => stream.Stream<
-    AgentRuntimeEndpoint,
-    ListAgentRuntimeEndpointsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListAgentRuntimesError =
   | AccessDeniedException
@@ -16049,27 +16029,7 @@ export const listAgentRuntimes: API.OperationMethod<
     items: "agentRuntimes",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListAgentRuntimesRequest,
-  ListAgentRuntimesResponse,
-  ListAgentRuntimesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAgentRuntimesRequest,
-  ) => stream.Stream<
-    ListAgentRuntimesResponse,
-    ListAgentRuntimesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAgentRuntimesRequest,
-  ) => stream.Stream<
-    AgentRuntime,
-    ListAgentRuntimesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListAgentRuntimeVersionsError =
   | AccessDeniedException
@@ -16120,27 +16080,7 @@ export const listAgentRuntimeVersions: API.OperationMethod<
     items: "agentRuntimes",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListAgentRuntimeVersionsRequest,
-  ListAgentRuntimeVersionsResponse,
-  ListAgentRuntimeVersionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAgentRuntimeVersionsRequest,
-  ) => stream.Stream<
-    ListAgentRuntimeVersionsResponse,
-    ListAgentRuntimeVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAgentRuntimeVersionsRequest,
-  ) => stream.Stream<
-    AgentRuntime,
-    ListAgentRuntimeVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListApiKeyCredentialProvidersError =
   | AccessDeniedException
@@ -16193,27 +16133,7 @@ export const listApiKeyCredentialProviders: API.OperationMethod<
     items: "credentialProviders",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListApiKeyCredentialProvidersRequest,
-  ListApiKeyCredentialProvidersResponse,
-  ListApiKeyCredentialProvidersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListApiKeyCredentialProvidersRequest,
-  ) => stream.Stream<
-    ListApiKeyCredentialProvidersResponse,
-    ListApiKeyCredentialProvidersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListApiKeyCredentialProvidersRequest,
-  ) => stream.Stream<
-    ApiKeyCredentialProviderItem,
-    ListApiKeyCredentialProvidersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListBrowserProfilesError =
   | AccessDeniedException
@@ -16262,27 +16182,7 @@ export const listBrowserProfiles: API.OperationMethod<
     items: "profileSummaries",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListBrowserProfilesRequest,
-  ListBrowserProfilesResponse,
-  ListBrowserProfilesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListBrowserProfilesRequest,
-  ) => stream.Stream<
-    ListBrowserProfilesResponse,
-    ListBrowserProfilesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListBrowserProfilesRequest,
-  ) => stream.Stream<
-    BrowserProfileSummary,
-    ListBrowserProfilesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListBrowsersError =
   | AccessDeniedException
@@ -16331,27 +16231,7 @@ export const listBrowsers: API.OperationMethod<
     items: "browserSummaries",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListBrowsersRequest,
-  ListBrowsersResponse,
-  ListBrowsersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListBrowsersRequest,
-  ) => stream.Stream<
-    ListBrowsersResponse,
-    ListBrowsersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListBrowsersRequest,
-  ) => stream.Stream<
-    BrowserSummary,
-    ListBrowsersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListCodeInterpretersError =
   | AccessDeniedException
@@ -16400,27 +16280,7 @@ export const listCodeInterpreters: API.OperationMethod<
     items: "codeInterpreterSummaries",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListCodeInterpretersRequest,
-  ListCodeInterpretersResponse,
-  ListCodeInterpretersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCodeInterpretersRequest,
-  ) => stream.Stream<
-    ListCodeInterpretersResponse,
-    ListCodeInterpretersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCodeInterpretersRequest,
-  ) => stream.Stream<
-    CodeInterpreterSummary,
-    ListCodeInterpretersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListConfigurationBundlesError =
   | AccessDeniedException
@@ -16469,27 +16329,7 @@ export const listConfigurationBundles: API.OperationMethod<
     items: "bundles",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListConfigurationBundlesRequest,
-  ListConfigurationBundlesResponse,
-  ListConfigurationBundlesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListConfigurationBundlesRequest,
-  ) => stream.Stream<
-    ListConfigurationBundlesResponse,
-    ListConfigurationBundlesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListConfigurationBundlesRequest,
-  ) => stream.Stream<
-    ConfigurationBundleSummary,
-    ListConfigurationBundlesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListConfigurationBundleVersionsError =
   | AccessDeniedException
@@ -16540,27 +16380,7 @@ export const listConfigurationBundleVersions: API.OperationMethod<
     items: "versions",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListConfigurationBundleVersionsRequest,
-  ListConfigurationBundleVersionsResponse,
-  ListConfigurationBundleVersionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListConfigurationBundleVersionsRequest,
-  ) => stream.Stream<
-    ListConfigurationBundleVersionsResponse,
-    ListConfigurationBundleVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListConfigurationBundleVersionsRequest,
-  ) => stream.Stream<
-    ConfigurationBundleVersionSummary,
-    ListConfigurationBundleVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListDatasetExamplesError =
   | AccessDeniedException
@@ -16613,27 +16433,7 @@ export const listDatasetExamples: API.OperationMethod<
     items: "examples",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListDatasetExamplesRequest,
-  ListDatasetExamplesResponse,
-  ListDatasetExamplesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDatasetExamplesRequest,
-  ) => stream.Stream<
-    ListDatasetExamplesResponse,
-    ListDatasetExamplesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDatasetExamplesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListDatasetExamplesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListDatasetsError =
   | AccessDeniedException
@@ -16682,27 +16482,7 @@ export const listDatasets: API.OperationMethod<
     items: "datasets",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListDatasetsRequest,
-  ListDatasetsResponse,
-  ListDatasetsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDatasetsRequest,
-  ) => stream.Stream<
-    ListDatasetsResponse,
-    ListDatasetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDatasetsRequest,
-  ) => stream.Stream<
-    DatasetSummary,
-    ListDatasetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListDatasetVersionsError =
   | AccessDeniedException
@@ -16753,27 +16533,7 @@ export const listDatasetVersions: API.OperationMethod<
     items: "versions",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListDatasetVersionsRequest,
-  ListDatasetVersionsResponse,
-  ListDatasetVersionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDatasetVersionsRequest,
-  ) => stream.Stream<
-    ListDatasetVersionsResponse,
-    ListDatasetVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDatasetVersionsRequest,
-  ) => stream.Stream<
-    DatasetVersionSummary,
-    ListDatasetVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListEvaluatorsError =
   | AccessDeniedException
@@ -16822,27 +16582,7 @@ export const listEvaluators: API.OperationMethod<
     items: "evaluators",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListEvaluatorsRequest,
-  ListEvaluatorsResponse,
-  ListEvaluatorsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEvaluatorsRequest,
-  ) => stream.Stream<
-    ListEvaluatorsResponse,
-    ListEvaluatorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEvaluatorsRequest,
-  ) => stream.Stream<
-    EvaluatorSummary,
-    ListEvaluatorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListGatewayRulesError =
   | AccessDeniedException
@@ -16893,27 +16633,7 @@ export const listGatewayRules: API.OperationMethod<
     items: "gatewayRules",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListGatewayRulesRequest,
-  ListGatewayRulesResponse,
-  ListGatewayRulesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListGatewayRulesRequest,
-  ) => stream.Stream<
-    ListGatewayRulesResponse,
-    ListGatewayRulesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListGatewayRulesRequest,
-  ) => stream.Stream<
-    GatewayRuleDetail,
-    ListGatewayRulesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListGatewaysError =
   | AccessDeniedException
@@ -16962,27 +16682,7 @@ export const listGateways: API.OperationMethod<
     items: "items",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListGatewaysRequest,
-  ListGatewaysResponse,
-  ListGatewaysError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListGatewaysRequest,
-  ) => stream.Stream<
-    ListGatewaysResponse,
-    ListGatewaysError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListGatewaysRequest,
-  ) => stream.Stream<
-    GatewaySummary,
-    ListGatewaysError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListGatewayTargetsError =
   | AccessDeniedException
@@ -17033,27 +16733,7 @@ export const listGatewayTargets: API.OperationMethod<
     items: "items",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListGatewayTargetsRequest,
-  ListGatewayTargetsResponse,
-  ListGatewayTargetsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListGatewayTargetsRequest,
-  ) => stream.Stream<
-    ListGatewayTargetsResponse,
-    ListGatewayTargetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListGatewayTargetsRequest,
-  ) => stream.Stream<
-    TargetSummary,
-    ListGatewayTargetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListHarnessEndpointsError =
   | AccessDeniedException
@@ -17104,27 +16784,7 @@ export const listHarnessEndpoints: API.OperationMethod<
     items: "endpoints",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListHarnessEndpointsRequest,
-  ListHarnessEndpointsResponse,
-  ListHarnessEndpointsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListHarnessEndpointsRequest,
-  ) => stream.Stream<
-    ListHarnessEndpointsResponse,
-    ListHarnessEndpointsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListHarnessEndpointsRequest,
-  ) => stream.Stream<
-    HarnessEndpoint,
-    ListHarnessEndpointsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListHarnessesError =
   | AccessDeniedException
@@ -17173,27 +16833,7 @@ export const listHarnesses: API.OperationMethod<
     items: "harnesses",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListHarnessesRequest,
-  ListHarnessesResponse,
-  ListHarnessesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListHarnessesRequest,
-  ) => stream.Stream<
-    ListHarnessesResponse,
-    ListHarnessesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListHarnessesRequest,
-  ) => stream.Stream<
-    HarnessSummary,
-    ListHarnessesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListHarnessVersionsError =
   | AccessDeniedException
@@ -17244,27 +16884,7 @@ export const listHarnessVersions: API.OperationMethod<
     items: "harnessVersions",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListHarnessVersionsRequest,
-  ListHarnessVersionsResponse,
-  ListHarnessVersionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListHarnessVersionsRequest,
-  ) => stream.Stream<
-    ListHarnessVersionsResponse,
-    ListHarnessVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListHarnessVersionsRequest,
-  ) => stream.Stream<
-    HarnessVersionSummary,
-    ListHarnessVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListMemoriesError =
   | AccessDeniedException
@@ -17315,27 +16935,7 @@ export const listMemories: API.OperationMethod<
     items: "memories",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListMemoriesInput,
-  ListMemoriesOutput,
-  ListMemoriesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListMemoriesInput,
-  ) => stream.Stream<
-    ListMemoriesOutput,
-    ListMemoriesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListMemoriesInput,
-  ) => stream.Stream<
-    MemorySummary,
-    ListMemoriesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListOauth2CredentialProvidersError =
   | AccessDeniedException
@@ -17388,27 +16988,7 @@ export const listOauth2CredentialProviders: API.OperationMethod<
     items: "credentialProviders",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListOauth2CredentialProvidersRequest,
-  ListOauth2CredentialProvidersResponse,
-  ListOauth2CredentialProvidersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListOauth2CredentialProvidersRequest,
-  ) => stream.Stream<
-    ListOauth2CredentialProvidersResponse,
-    ListOauth2CredentialProvidersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListOauth2CredentialProvidersRequest,
-  ) => stream.Stream<
-    Oauth2CredentialProviderItem,
-    ListOauth2CredentialProvidersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListOnlineEvaluationConfigsError =
   | AccessDeniedException
@@ -17457,27 +17037,7 @@ export const listOnlineEvaluationConfigs: API.OperationMethod<
     items: "onlineEvaluationConfigs",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListOnlineEvaluationConfigsRequest,
-  ListOnlineEvaluationConfigsResponse,
-  ListOnlineEvaluationConfigsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListOnlineEvaluationConfigsRequest,
-  ) => stream.Stream<
-    ListOnlineEvaluationConfigsResponse,
-    ListOnlineEvaluationConfigsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListOnlineEvaluationConfigsRequest,
-  ) => stream.Stream<
-    OnlineEvaluationConfigSummary,
-    ListOnlineEvaluationConfigsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListPaymentConnectorsError =
   | AccessDeniedException
@@ -17526,27 +17086,7 @@ export const listPaymentConnectors: API.OperationMethod<
     items: "paymentConnectors",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListPaymentConnectorsRequest,
-  ListPaymentConnectorsResponse,
-  ListPaymentConnectorsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPaymentConnectorsRequest,
-  ) => stream.Stream<
-    ListPaymentConnectorsResponse,
-    ListPaymentConnectorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPaymentConnectorsRequest,
-  ) => stream.Stream<
-    PaymentConnectorSummary,
-    ListPaymentConnectorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListPaymentCredentialProvidersError =
   | AccessDeniedException
@@ -17599,27 +17139,7 @@ export const listPaymentCredentialProviders: API.OperationMethod<
     items: "credentialProviders",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListPaymentCredentialProvidersRequest,
-  ListPaymentCredentialProvidersResponse,
-  ListPaymentCredentialProvidersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPaymentCredentialProvidersRequest,
-  ) => stream.Stream<
-    ListPaymentCredentialProvidersResponse,
-    ListPaymentCredentialProvidersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPaymentCredentialProvidersRequest,
-  ) => stream.Stream<
-    PaymentCredentialProviderItem,
-    ListPaymentCredentialProvidersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListPaymentManagersError =
   | AccessDeniedException
@@ -17668,27 +17188,7 @@ export const listPaymentManagers: API.OperationMethod<
     items: "paymentManagers",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListPaymentManagersRequest,
-  ListPaymentManagersResponse,
-  ListPaymentManagersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPaymentManagersRequest,
-  ) => stream.Stream<
-    ListPaymentManagersResponse,
-    ListPaymentManagersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPaymentManagersRequest,
-  ) => stream.Stream<
-    PaymentManagerSummary,
-    ListPaymentManagersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListPoliciesError =
   | AccessDeniedException
@@ -17739,27 +17239,7 @@ export const listPolicies: API.OperationMethod<
     items: "policies",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListPoliciesRequest,
-  ListPoliciesResponse,
-  ListPoliciesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPoliciesRequest,
-  ) => stream.Stream<
-    ListPoliciesResponse,
-    ListPoliciesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPoliciesRequest,
-  ) => stream.Stream<
-    Policy,
-    ListPoliciesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListPolicyEnginesError =
   | AccessDeniedException
@@ -17808,27 +17288,7 @@ export const listPolicyEngines: API.OperationMethod<
     items: "policyEngines",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListPolicyEnginesRequest,
-  ListPolicyEnginesResponse,
-  ListPolicyEnginesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPolicyEnginesRequest,
-  ) => stream.Stream<
-    ListPolicyEnginesResponse,
-    ListPolicyEnginesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPolicyEnginesRequest,
-  ) => stream.Stream<
-    PolicyEngine,
-    ListPolicyEnginesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListPolicyEngineSummariesError =
   | AccessDeniedException
@@ -17877,27 +17337,7 @@ export const listPolicyEngineSummaries: API.OperationMethod<
     items: "policyEngines",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListPolicyEngineSummariesRequest,
-  ListPolicyEngineSummariesResponse,
-  ListPolicyEngineSummariesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPolicyEngineSummariesRequest,
-  ) => stream.Stream<
-    ListPolicyEngineSummariesResponse,
-    ListPolicyEngineSummariesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPolicyEngineSummariesRequest,
-  ) => stream.Stream<
-    PolicyEngineSummary,
-    ListPolicyEngineSummariesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListPolicyGenerationAssetsError =
   | AccessDeniedException
@@ -17948,27 +17388,7 @@ export const listPolicyGenerationAssets: API.OperationMethod<
     items: "policyGenerationAssets",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListPolicyGenerationAssetsRequest,
-  ListPolicyGenerationAssetsResponse,
-  ListPolicyGenerationAssetsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPolicyGenerationAssetsRequest,
-  ) => stream.Stream<
-    ListPolicyGenerationAssetsResponse,
-    ListPolicyGenerationAssetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPolicyGenerationAssetsRequest,
-  ) => stream.Stream<
-    PolicyGenerationAsset,
-    ListPolicyGenerationAssetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListPolicyGenerationsError =
   | AccessDeniedException
@@ -18019,27 +17439,7 @@ export const listPolicyGenerations: API.OperationMethod<
     items: "policyGenerations",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListPolicyGenerationsRequest,
-  ListPolicyGenerationsResponse,
-  ListPolicyGenerationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPolicyGenerationsRequest,
-  ) => stream.Stream<
-    ListPolicyGenerationsResponse,
-    ListPolicyGenerationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPolicyGenerationsRequest,
-  ) => stream.Stream<
-    PolicyGeneration,
-    ListPolicyGenerationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListPolicyGenerationSummariesError =
   | AccessDeniedException
@@ -18090,27 +17490,7 @@ export const listPolicyGenerationSummaries: API.OperationMethod<
     items: "policyGenerations",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListPolicyGenerationSummariesRequest,
-  ListPolicyGenerationSummariesResponse,
-  ListPolicyGenerationSummariesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPolicyGenerationSummariesRequest,
-  ) => stream.Stream<
-    ListPolicyGenerationSummariesResponse,
-    ListPolicyGenerationSummariesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPolicyGenerationSummariesRequest,
-  ) => stream.Stream<
-    PolicyGenerationSummary,
-    ListPolicyGenerationSummariesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListPolicySummariesError =
   | AccessDeniedException
@@ -18161,27 +17541,7 @@ export const listPolicySummaries: API.OperationMethod<
     items: "policies",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListPolicySummariesRequest,
-  ListPolicySummariesResponse,
-  ListPolicySummariesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPolicySummariesRequest,
-  ) => stream.Stream<
-    ListPolicySummariesResponse,
-    ListPolicySummariesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPolicySummariesRequest,
-  ) => stream.Stream<
-    PolicySummary,
-    ListPolicySummariesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListRegistriesError =
   | AccessDeniedException
@@ -18230,27 +17590,7 @@ export const listRegistries: API.OperationMethod<
     items: "registries",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListRegistriesRequest,
-  ListRegistriesResponse,
-  ListRegistriesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRegistriesRequest,
-  ) => stream.Stream<
-    ListRegistriesResponse,
-    ListRegistriesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRegistriesRequest,
-  ) => stream.Stream<
-    RegistrySummary,
-    ListRegistriesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListRegistryRecordsError =
   | AccessDeniedException
@@ -18303,27 +17643,7 @@ export const listRegistryRecords: API.OperationMethod<
     items: "registryRecords",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListRegistryRecordsRequest,
-  ListRegistryRecordsResponse,
-  ListRegistryRecordsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRegistryRecordsRequest,
-  ) => stream.Stream<
-    ListRegistryRecordsResponse,
-    ListRegistryRecordsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRegistryRecordsRequest,
-  ) => stream.Stream<
-    RegistryRecordSummary,
-    ListRegistryRecordsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsForResourceError =
   | AccessDeniedException
@@ -18408,27 +17728,7 @@ export const listWorkloadIdentities: API.OperationMethod<
     items: "workloadIdentities",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListWorkloadIdentitiesRequest,
-  ListWorkloadIdentitiesResponse,
-  ListWorkloadIdentitiesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListWorkloadIdentitiesRequest,
-  ) => stream.Stream<
-    ListWorkloadIdentitiesResponse,
-    ListWorkloadIdentitiesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListWorkloadIdentitiesRequest,
-  ) => stream.Stream<
-    WorkloadIdentityType,
-    ListWorkloadIdentitiesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type PutResourcePolicyError =
   | AccessDeniedException

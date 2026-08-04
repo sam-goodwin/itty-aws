@@ -380,7 +380,8 @@ export const lookupForecast: API.PaginatedOperationMethod<
   LookupForecastRequest,
   LookupForecastResponse,
   LookupForecastError,
-  GcpOpContext
+  GcpOpContext,
+  LookupForecastResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: LookupForecastRequest,
   output: LookupForecastResponse,
@@ -391,7 +392,7 @@ export const lookupForecast: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type LookupHeatmapTileMapTypesHeatmapTilesError =
   | NotFound

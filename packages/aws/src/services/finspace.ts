@@ -4458,27 +4458,7 @@ export const listKxChangesets: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListKxChangesetsRequest,
-  ListKxChangesetsResponse,
-  ListKxChangesetsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListKxChangesetsRequest,
-  ) => stream.Stream<
-    ListKxChangesetsResponse,
-    ListKxChangesetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListKxChangesetsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListKxChangesetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListKxClusterNodesError =
   | AccessDeniedException
@@ -4530,27 +4510,7 @@ export const listKxClusterNodes: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListKxClusterNodesRequest,
-  ListKxClusterNodesResponse,
-  ListKxClusterNodesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListKxClusterNodesRequest,
-  ) => stream.Stream<
-    ListKxClusterNodesResponse,
-    ListKxClusterNodesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListKxClusterNodesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListKxClusterNodesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListKxClustersError =
   | AccessDeniedException
@@ -4634,27 +4594,7 @@ export const listKxDatabases: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListKxDatabasesRequest,
-  ListKxDatabasesResponse,
-  ListKxDatabasesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListKxDatabasesRequest,
-  ) => stream.Stream<
-    ListKxDatabasesResponse,
-    ListKxDatabasesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListKxDatabasesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListKxDatabasesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListKxDataviewsError =
   | AccessDeniedException
@@ -4704,27 +4644,7 @@ export const listKxDataviews: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListKxDataviewsRequest,
-  ListKxDataviewsResponse,
-  ListKxDataviewsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListKxDataviewsRequest,
-  ) => stream.Stream<
-    ListKxDataviewsResponse,
-    ListKxDataviewsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListKxDataviewsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListKxDataviewsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListKxEnvironmentsError =
   | AccessDeniedException
@@ -4767,27 +4687,7 @@ export const listKxEnvironments: API.OperationMethod<
     items: "environments",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListKxEnvironmentsRequest,
-  ListKxEnvironmentsResponse,
-  ListKxEnvironmentsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListKxEnvironmentsRequest,
-  ) => stream.Stream<
-    ListKxEnvironmentsResponse,
-    ListKxEnvironmentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListKxEnvironmentsRequest,
-  ) => stream.Stream<
-    KxEnvironment,
-    ListKxEnvironmentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListKxScalingGroupsError =
   | AccessDeniedException
@@ -4841,27 +4741,7 @@ export const listKxScalingGroups: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListKxScalingGroupsRequest,
-  ListKxScalingGroupsResponse,
-  ListKxScalingGroupsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListKxScalingGroupsRequest,
-  ) => stream.Stream<
-    ListKxScalingGroupsResponse,
-    ListKxScalingGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListKxScalingGroupsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListKxScalingGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListKxUsersError =
   | AccessDeniedException

@@ -423,7 +423,8 @@ export const searchAccountReports: API.PaginatedOperationMethod<
   SearchAccountReportsRequest,
   GoogleAdsHomeservicesLocalservicesV1SearchAccountReportsResponse,
   SearchAccountReportsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleAdsHomeservicesLocalservicesV1SearchAccountReportsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchAccountReportsRequest,
   output: GoogleAdsHomeservicesLocalservicesV1SearchAccountReportsResponse,
@@ -434,7 +435,7 @@ export const searchAccountReports: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type SearchDetailedLeadReportsError = NotFound | Forbidden | GcpOpError;
 /** Get detailed lead reports containing leads that have been received by all linked GLS accounts. Caller needs to provide their manager customer id and the associated auth credential that allows them read permissions on their linked accounts. */
@@ -442,7 +443,8 @@ export const searchDetailedLeadReports: API.PaginatedOperationMethod<
   SearchDetailedLeadReportsRequest,
   GoogleAdsHomeservicesLocalservicesV1SearchDetailedLeadReportsResponse,
   SearchDetailedLeadReportsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleAdsHomeservicesLocalservicesV1SearchDetailedLeadReportsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchDetailedLeadReportsRequest,
   output: GoogleAdsHomeservicesLocalservicesV1SearchDetailedLeadReportsResponse,
@@ -453,4 +455,4 @@ export const searchDetailedLeadReports: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;

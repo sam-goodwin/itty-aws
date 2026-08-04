@@ -5571,7 +5571,8 @@ export const listChanges: API.PaginatedOperationMethod<
   ListChangesRequest,
   ChangeList,
   ListChangesError,
-  GcpOpContext
+  GcpOpContext,
+  Change
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListChangesRequest,
   output: ChangeList,
@@ -5583,7 +5584,7 @@ export const listChanges: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListChildrenError = NotFound | Forbidden | GcpOpError;
 /** Lists a folder's children. */
@@ -5591,7 +5592,8 @@ export const listChildren: API.PaginatedOperationMethod<
   ListChildrenRequest,
   ChildList,
   ListChildrenError,
-  GcpOpContext
+  GcpOpContext,
+  ChildReference
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListChildrenRequest,
   output: ChildList,
@@ -5603,7 +5605,7 @@ export const listChildren: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListCommentsError = NotFound | Forbidden | GcpOpError;
 /** Lists a file's comments. */
@@ -5611,7 +5613,8 @@ export const listComments: API.PaginatedOperationMethod<
   ListCommentsRequest,
   CommentList,
   ListCommentsError,
-  GcpOpContext
+  GcpOpContext,
+  Comment
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCommentsRequest,
   output: CommentList,
@@ -5623,7 +5626,7 @@ export const listComments: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListDrivesError = NotFound | Forbidden | GcpOpError;
 /** Lists the user's shared drives. This method accepts the `q` parameter, which is a search query combining one or more search terms. For more information, see the [Search for shared drives](https://developers.google.com/workspace/drive/api/guides/search-shareddrives) guide. */
@@ -5631,7 +5634,8 @@ export const listDrives: API.PaginatedOperationMethod<
   ListDrivesRequest,
   DriveList,
   ListDrivesError,
-  GcpOpContext
+  GcpOpContext,
+  Drive
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDrivesRequest,
   output: DriveList,
@@ -5643,7 +5647,7 @@ export const listDrives: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListFilesError = NotFound | Forbidden | GcpOpError;
 /** Lists the user's files. For more information, see [Search for files and folders](https://developers.google.com/workspace/drive/api/guides/search-files). This method accepts the `q` parameter, which is a search query combining one or more search terms. This method returns *all* files by default, including trashed files. If you don't want trashed files to appear in the list, use the `trashed=false` query parameter to remove trashed files from the results. */
@@ -5651,7 +5655,8 @@ export const listFiles: API.PaginatedOperationMethod<
   ListFilesRequest,
   FileList,
   ListFilesError,
-  GcpOpContext
+  GcpOpContext,
+  File
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFilesRequest,
   output: FileList,
@@ -5663,7 +5668,7 @@ export const listFiles: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListLabelsFilesError = NotFound | Forbidden | GcpOpError;
 /** Lists the labels on a file. */
@@ -5671,7 +5676,8 @@ export const listLabelsFiles: API.PaginatedOperationMethod<
   ListLabelsFilesRequest,
   LabelList,
   ListLabelsFilesError,
-  GcpOpContext
+  GcpOpContext,
+  Label
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLabelsFilesRequest,
   output: LabelList,
@@ -5683,7 +5689,7 @@ export const listLabelsFiles: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListParentsError = NotFound | Forbidden | GcpOpError;
 /** Lists a file's parents. */
@@ -5706,7 +5712,8 @@ export const listPermissions: API.PaginatedOperationMethod<
   ListPermissionsRequest,
   PermissionList,
   ListPermissionsError,
-  GcpOpContext
+  GcpOpContext,
+  Permission
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPermissionsRequest,
   output: PermissionList,
@@ -5718,7 +5725,7 @@ export const listPermissions: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListPropertiesError = NotFound | Forbidden | GcpOpError;
 /** Lists a file's properties. */
@@ -5741,7 +5748,8 @@ export const listReplies: API.PaginatedOperationMethod<
   ListRepliesRequest,
   CommentReplyList,
   ListRepliesError,
-  GcpOpContext
+  GcpOpContext,
+  CommentReply
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRepliesRequest,
   output: CommentReplyList,
@@ -5753,7 +5761,7 @@ export const listReplies: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListRevisionsError = NotFound | Forbidden | GcpOpError;
 /** Lists a file's revisions. **Important:** The list of revisions returned by this method might be incomplete for files with a large revision history, including frequently edited Google Docs, Sheets, and Slides. Older revisions might be omitted from the response, meaning the first revision returned may not be the oldest existing revision. The revision history visible in the Workspace editor user interface might be more complete than the list returned by the API. */
@@ -5761,7 +5769,8 @@ export const listRevisions: API.PaginatedOperationMethod<
   ListRevisionsRequest,
   RevisionList,
   ListRevisionsError,
-  GcpOpContext
+  GcpOpContext,
+  Revision
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRevisionsRequest,
   output: RevisionList,
@@ -5773,7 +5782,7 @@ export const listRevisions: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListTeamdrivesError = NotFound | Forbidden | GcpOpError;
 /** Deprecated: Use `drives.list` instead. */
@@ -5781,7 +5790,8 @@ export const listTeamdrives: API.PaginatedOperationMethod<
   ListTeamdrivesRequest,
   TeamDriveList,
   ListTeamdrivesError,
-  GcpOpContext
+  GcpOpContext,
+  TeamDrive
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTeamdrivesRequest,
   output: TeamDriveList,
@@ -5793,7 +5803,7 @@ export const listTeamdrives: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ModifyLabelsFilesError =
   | NotFound

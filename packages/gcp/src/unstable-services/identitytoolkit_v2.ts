@@ -4169,7 +4169,8 @@ export const listDefaultSupportedIdps: API.PaginatedOperationMethod<
   ListDefaultSupportedIdpsRequest,
   GoogleCloudIdentitytoolkitAdminV2ListDefaultSupportedIdpsResponse,
   ListDefaultSupportedIdpsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudIdentitytoolkitAdminV2ListDefaultSupportedIdpsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDefaultSupportedIdpsRequest,
   output: GoogleCloudIdentitytoolkitAdminV2ListDefaultSupportedIdpsResponse,
@@ -4180,7 +4181,7 @@ export const listDefaultSupportedIdps: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsDefaultSupportedIdpConfigsError =
   | NotFound
@@ -4191,7 +4192,8 @@ export const listProjectsDefaultSupportedIdpConfigs: API.PaginatedOperationMetho
   ListProjectsDefaultSupportedIdpConfigsRequest,
   GoogleCloudIdentitytoolkitAdminV2ListDefaultSupportedIdpConfigsResponse,
   ListProjectsDefaultSupportedIdpConfigsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudIdentitytoolkitAdminV2ListDefaultSupportedIdpConfigsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsDefaultSupportedIdpConfigsRequest,
   output:
@@ -4203,7 +4205,7 @@ export const listProjectsDefaultSupportedIdpConfigs: API.PaginatedOperationMetho
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsInboundSamlConfigsError =
   | NotFound
@@ -4214,7 +4216,8 @@ export const listProjectsInboundSamlConfigs: API.PaginatedOperationMethod<
   ListProjectsInboundSamlConfigsRequest,
   GoogleCloudIdentitytoolkitAdminV2ListInboundSamlConfigsResponse,
   ListProjectsInboundSamlConfigsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudIdentitytoolkitAdminV2ListInboundSamlConfigsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsInboundSamlConfigsRequest,
   output: GoogleCloudIdentitytoolkitAdminV2ListInboundSamlConfigsResponse,
@@ -4225,7 +4228,7 @@ export const listProjectsInboundSamlConfigs: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsOauthIdpConfigsError =
   | NotFound
@@ -4236,7 +4239,8 @@ export const listProjectsOauthIdpConfigs: API.PaginatedOperationMethod<
   ListProjectsOauthIdpConfigsRequest,
   GoogleCloudIdentitytoolkitAdminV2ListOAuthIdpConfigsResponse,
   ListProjectsOauthIdpConfigsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudIdentitytoolkitAdminV2ListOAuthIdpConfigsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsOauthIdpConfigsRequest,
   output: GoogleCloudIdentitytoolkitAdminV2ListOAuthIdpConfigsResponse,
@@ -4247,7 +4251,7 @@ export const listProjectsOauthIdpConfigs: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsTenantsError = NotFound | Forbidden | GcpOpError;
 /** List tenants under the given agent project. Requires read permission on the Agent project. */
@@ -4255,7 +4259,8 @@ export const listProjectsTenants: API.PaginatedOperationMethod<
   ListProjectsTenantsRequest,
   GoogleCloudIdentitytoolkitAdminV2ListTenantsResponse,
   ListProjectsTenantsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudIdentitytoolkitAdminV2ListTenantsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsTenantsRequest,
   output: GoogleCloudIdentitytoolkitAdminV2ListTenantsResponse,
@@ -4266,7 +4271,7 @@ export const listProjectsTenants: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsTenantsDefaultSupportedIdpConfigsError =
   | NotFound
@@ -4277,7 +4282,8 @@ export const listProjectsTenantsDefaultSupportedIdpConfigs: API.PaginatedOperati
   ListProjectsTenantsDefaultSupportedIdpConfigsRequest,
   GoogleCloudIdentitytoolkitAdminV2ListDefaultSupportedIdpConfigsResponse,
   ListProjectsTenantsDefaultSupportedIdpConfigsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudIdentitytoolkitAdminV2ListDefaultSupportedIdpConfigsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsTenantsDefaultSupportedIdpConfigsRequest,
   output:
@@ -4289,7 +4295,7 @@ export const listProjectsTenantsDefaultSupportedIdpConfigs: API.PaginatedOperati
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsTenantsInboundSamlConfigsError =
   | NotFound
@@ -4300,7 +4306,8 @@ export const listProjectsTenantsInboundSamlConfigs: API.PaginatedOperationMethod
   ListProjectsTenantsInboundSamlConfigsRequest,
   GoogleCloudIdentitytoolkitAdminV2ListInboundSamlConfigsResponse,
   ListProjectsTenantsInboundSamlConfigsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudIdentitytoolkitAdminV2ListInboundSamlConfigsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsTenantsInboundSamlConfigsRequest,
   output: GoogleCloudIdentitytoolkitAdminV2ListInboundSamlConfigsResponse,
@@ -4311,7 +4318,7 @@ export const listProjectsTenantsInboundSamlConfigs: API.PaginatedOperationMethod
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsTenantsOauthIdpConfigsError =
   | NotFound
@@ -4322,7 +4329,8 @@ export const listProjectsTenantsOauthIdpConfigs: API.PaginatedOperationMethod<
   ListProjectsTenantsOauthIdpConfigsRequest,
   GoogleCloudIdentitytoolkitAdminV2ListOAuthIdpConfigsResponse,
   ListProjectsTenantsOauthIdpConfigsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudIdentitytoolkitAdminV2ListOAuthIdpConfigsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsTenantsOauthIdpConfigsRequest,
   output: GoogleCloudIdentitytoolkitAdminV2ListOAuthIdpConfigsResponse,
@@ -4333,7 +4341,7 @@ export const listProjectsTenantsOauthIdpConfigs: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type PatchProjectsDefaultSupportedIdpConfigsError =
   | NotFound

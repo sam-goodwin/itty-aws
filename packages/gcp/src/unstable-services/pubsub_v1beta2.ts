@@ -1033,7 +1033,8 @@ export const listProjectsSubscriptions: API.PaginatedOperationMethod<
   ListProjectsSubscriptionsRequest,
   ListSubscriptionsResponse,
   ListProjectsSubscriptionsError,
-  GcpOpContext
+  GcpOpContext,
+  ListSubscriptionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsSubscriptionsRequest,
   output: ListSubscriptionsResponse,
@@ -1044,7 +1045,7 @@ export const listProjectsSubscriptions: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsTopicsError = NotFound | Forbidden | GcpOpError;
 /** Lists matching topics. */
@@ -1052,7 +1053,8 @@ export const listProjectsTopics: API.PaginatedOperationMethod<
   ListProjectsTopicsRequest,
   ListTopicsResponse,
   ListProjectsTopicsError,
-  GcpOpContext
+  GcpOpContext,
+  ListTopicsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsTopicsRequest,
   output: ListTopicsResponse,
@@ -1063,7 +1065,7 @@ export const listProjectsTopics: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsTopicsSubscriptionsError =
   | NotFound
@@ -1074,7 +1076,8 @@ export const listProjectsTopicsSubscriptions: API.PaginatedOperationMethod<
   ListProjectsTopicsSubscriptionsRequest,
   ListTopicSubscriptionsResponse,
   ListProjectsTopicsSubscriptionsError,
-  GcpOpContext
+  GcpOpContext,
+  ListTopicSubscriptionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsTopicsSubscriptionsRequest,
   output: ListTopicSubscriptionsResponse,
@@ -1085,7 +1088,7 @@ export const listProjectsTopicsSubscriptions: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ModifyAckDeadlineProjectsSubscriptionsError =
   | NotFound

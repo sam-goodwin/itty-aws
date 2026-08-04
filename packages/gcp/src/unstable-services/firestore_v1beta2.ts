@@ -659,7 +659,8 @@ export const listProjectsDatabasesCollectionGroupsFields: API.PaginatedOperation
   ListProjectsDatabasesCollectionGroupsFieldsRequest,
   GoogleFirestoreAdminV1beta2ListFieldsResponse,
   ListProjectsDatabasesCollectionGroupsFieldsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleFirestoreAdminV1beta2ListFieldsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsDatabasesCollectionGroupsFieldsRequest,
   output: GoogleFirestoreAdminV1beta2ListFieldsResponse,
@@ -670,7 +671,7 @@ export const listProjectsDatabasesCollectionGroupsFields: API.PaginatedOperation
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsDatabasesCollectionGroupsIndexesError =
   | NotFound
@@ -681,7 +682,8 @@ export const listProjectsDatabasesCollectionGroupsIndexes: API.PaginatedOperatio
   ListProjectsDatabasesCollectionGroupsIndexesRequest,
   GoogleFirestoreAdminV1beta2ListIndexesResponse,
   ListProjectsDatabasesCollectionGroupsIndexesError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleFirestoreAdminV1beta2ListIndexesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsDatabasesCollectionGroupsIndexesRequest,
   output: GoogleFirestoreAdminV1beta2ListIndexesResponse,
@@ -692,7 +694,7 @@ export const listProjectsDatabasesCollectionGroupsIndexes: API.PaginatedOperatio
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type PatchProjectsDatabasesCollectionGroupsFieldsError =
   | NotFound

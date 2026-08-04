@@ -7982,27 +7982,7 @@ export const describeConfigurationTemplates: API.OperationMethod<
     items: "configurationTemplates",
     pageSize: "limit",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeConfigurationTemplatesRequest,
-  DescribeConfigurationTemplatesResponse,
-  DescribeConfigurationTemplatesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeConfigurationTemplatesRequest,
-  ) => stream.Stream<
-    DescribeConfigurationTemplatesResponse,
-    DescribeConfigurationTemplatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeConfigurationTemplatesRequest,
-  ) => stream.Stream<
-    ConfigurationTemplate,
-    DescribeConfigurationTemplatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeDeliveriesError =
   | ServiceQuotaExceededException
@@ -8063,27 +8043,7 @@ export const describeDeliveries: API.OperationMethod<
     items: "deliveries",
     pageSize: "limit",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeDeliveriesRequest,
-  DescribeDeliveriesResponse,
-  DescribeDeliveriesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeDeliveriesRequest,
-  ) => stream.Stream<
-    DescribeDeliveriesResponse,
-    DescribeDeliveriesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeDeliveriesRequest,
-  ) => stream.Stream<
-    Delivery,
-    DescribeDeliveriesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeDeliveryDestinationsError =
   | ServiceQuotaExceededException
@@ -8133,27 +8093,7 @@ export const describeDeliveryDestinations: API.OperationMethod<
     items: "deliveryDestinations",
     pageSize: "limit",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeDeliveryDestinationsRequest,
-  DescribeDeliveryDestinationsResponse,
-  DescribeDeliveryDestinationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeDeliveryDestinationsRequest,
-  ) => stream.Stream<
-    DescribeDeliveryDestinationsResponse,
-    DescribeDeliveryDestinationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeDeliveryDestinationsRequest,
-  ) => stream.Stream<
-    DeliveryDestination,
-    DescribeDeliveryDestinationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeDeliverySourcesError =
   | ServiceQuotaExceededException
@@ -8202,27 +8142,7 @@ export const describeDeliverySources: API.OperationMethod<
     items: "deliverySources",
     pageSize: "limit",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeDeliverySourcesRequest,
-  DescribeDeliverySourcesResponse,
-  DescribeDeliverySourcesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeDeliverySourcesRequest,
-  ) => stream.Stream<
-    DescribeDeliverySourcesResponse,
-    DescribeDeliverySourcesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeDeliverySourcesRequest,
-  ) => stream.Stream<
-    DeliverySource,
-    DescribeDeliverySourcesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeDestinationsError =
   | InvalidParameterException
@@ -8265,27 +8185,7 @@ export const describeDestinations: API.OperationMethod<
     items: "destinations",
     pageSize: "limit",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeDestinationsRequest,
-  DescribeDestinationsResponse,
-  DescribeDestinationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeDestinationsRequest,
-  ) => stream.Stream<
-    DescribeDestinationsResponse,
-    DescribeDestinationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeDestinationsRequest,
-  ) => stream.Stream<
-    Destination,
-    DescribeDestinationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeExportTasksError =
   | InvalidParameterException
@@ -8496,27 +8396,7 @@ export const describeLogGroups: API.OperationMethod<
     items: "logGroups",
     pageSize: "limit",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeLogGroupsRequest,
-  DescribeLogGroupsResponse,
-  DescribeLogGroupsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeLogGroupsRequest,
-  ) => stream.Stream<
-    DescribeLogGroupsResponse,
-    DescribeLogGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeLogGroupsRequest,
-  ) => stream.Stream<
-    LogGroup,
-    DescribeLogGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeLogStreamsError =
   | InvalidParameterException
@@ -8575,27 +8455,7 @@ export const describeLogStreams: API.OperationMethod<
     items: "logStreams",
     pageSize: "limit",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeLogStreamsRequest,
-  DescribeLogStreamsResponse,
-  DescribeLogStreamsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeLogStreamsRequest,
-  ) => stream.Stream<
-    DescribeLogStreamsResponse,
-    DescribeLogStreamsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeLogStreamsRequest,
-  ) => stream.Stream<
-    LogStream,
-    DescribeLogStreamsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeLookupTablesError =
   | AccessDeniedException
@@ -8673,27 +8533,7 @@ export const describeMetricFilters: API.OperationMethod<
     items: "metricFilters",
     pageSize: "limit",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeMetricFiltersRequest,
-  DescribeMetricFiltersResponse,
-  DescribeMetricFiltersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeMetricFiltersRequest,
-  ) => stream.Stream<
-    DescribeMetricFiltersResponse,
-    DescribeMetricFiltersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeMetricFiltersRequest,
-  ) => stream.Stream<
-    MetricFilter,
-    DescribeMetricFiltersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeQueriesError =
   | InvalidParameterException
@@ -8822,27 +8662,7 @@ export const describeSubscriptionFilters: API.OperationMethod<
     items: "subscriptionFilters",
     pageSize: "limit",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeSubscriptionFiltersRequest,
-  DescribeSubscriptionFiltersResponse,
-  DescribeSubscriptionFiltersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeSubscriptionFiltersRequest,
-  ) => stream.Stream<
-    DescribeSubscriptionFiltersResponse,
-    DescribeSubscriptionFiltersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeSubscriptionFiltersRequest,
-  ) => stream.Stream<
-    SubscriptionFilter,
-    DescribeSubscriptionFiltersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DisassociateKmsKeyError =
   | InvalidParameterException
@@ -9013,27 +8833,7 @@ export const filterLogEvents: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "limit",
   } as const,
-})) as any as API.OperationMethod<
-  FilterLogEventsRequest,
-  FilterLogEventsResponse,
-  FilterLogEventsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: FilterLogEventsRequest,
-  ) => stream.Stream<
-    FilterLogEventsResponse,
-    FilterLogEventsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: FilterLogEventsRequest,
-  ) => stream.Stream<
-    unknown,
-    FilterLogEventsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type GetDataProtectionPolicyError =
   | InvalidParameterException
@@ -9325,27 +9125,7 @@ export const getLogEvents: API.OperationMethod<
     items: "events",
     pageSize: "limit",
   } as const,
-})) as any as API.OperationMethod<
-  GetLogEventsRequest,
-  GetLogEventsResponse,
-  GetLogEventsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetLogEventsRequest,
-  ) => stream.Stream<
-    GetLogEventsResponse,
-    GetLogEventsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetLogEventsRequest,
-  ) => stream.Stream<
-    OutputLogEvent,
-    GetLogEventsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type GetLogFieldsError =
   | InvalidParameterException
@@ -9665,27 +9445,7 @@ export const getScheduledQueryHistory: API.OperationMethod<
     items: "triggerHistory",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  GetScheduledQueryHistoryRequest,
-  GetScheduledQueryHistoryResponse,
-  GetScheduledQueryHistoryError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetScheduledQueryHistoryRequest,
-  ) => stream.Stream<
-    GetScheduledQueryHistoryResponse,
-    GetScheduledQueryHistoryError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetScheduledQueryHistoryRequest,
-  ) => stream.Stream<
-    TriggerHistoryRecord,
-    GetScheduledQueryHistoryError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type GetTransformerError =
   | InvalidOperationException
@@ -9774,27 +9534,7 @@ export const listAggregateLogGroupSummaries: API.OperationMethod<
     items: "aggregateLogGroupSummaries",
     pageSize: "limit",
   } as const,
-})) as any as API.OperationMethod<
-  ListAggregateLogGroupSummariesRequest,
-  ListAggregateLogGroupSummariesResponse,
-  ListAggregateLogGroupSummariesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAggregateLogGroupSummariesRequest,
-  ) => stream.Stream<
-    ListAggregateLogGroupSummariesResponse,
-    ListAggregateLogGroupSummariesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAggregateLogGroupSummariesRequest,
-  ) => stream.Stream<
-    AggregateLogGroupSummary,
-    ListAggregateLogGroupSummariesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListAnomaliesError =
   | InvalidParameterException
@@ -9845,27 +9585,7 @@ export const listAnomalies: API.OperationMethod<
     items: "anomalies",
     pageSize: "limit",
   } as const,
-})) as any as API.OperationMethod<
-  ListAnomaliesRequest,
-  ListAnomaliesResponse,
-  ListAnomaliesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAnomaliesRequest,
-  ) => stream.Stream<
-    ListAnomaliesResponse,
-    ListAnomaliesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAnomaliesRequest,
-  ) => stream.Stream<
-    Anomaly,
-    ListAnomaliesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListIntegrationsError =
   | InvalidParameterException
@@ -9937,27 +9657,7 @@ export const listLogAnomalyDetectors: API.OperationMethod<
     items: "anomalyDetectors",
     pageSize: "limit",
   } as const,
-})) as any as API.OperationMethod<
-  ListLogAnomalyDetectorsRequest,
-  ListLogAnomalyDetectorsResponse,
-  ListLogAnomalyDetectorsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListLogAnomalyDetectorsRequest,
-  ) => stream.Stream<
-    ListLogAnomalyDetectorsResponse,
-    ListLogAnomalyDetectorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListLogAnomalyDetectorsRequest,
-  ) => stream.Stream<
-    AnomalyDetector,
-    ListLogAnomalyDetectorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListLogGroupsError =
   | InvalidParameterException
@@ -10044,27 +9744,7 @@ export const listLogGroupsForQuery: API.OperationMethod<
     items: "logGroupIdentifiers",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListLogGroupsForQueryRequest,
-  ListLogGroupsForQueryResponse,
-  ListLogGroupsForQueryError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListLogGroupsForQueryRequest,
-  ) => stream.Stream<
-    ListLogGroupsForQueryResponse,
-    ListLogGroupsForQueryError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListLogGroupsForQueryRequest,
-  ) => stream.Stream<
-    LogGroupIdentifier,
-    ListLogGroupsForQueryError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListScheduledQueriesError =
   | AccessDeniedException
@@ -10114,27 +9794,7 @@ export const listScheduledQueries: API.OperationMethod<
     items: "scheduledQueries",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListScheduledQueriesRequest,
-  ListScheduledQueriesResponse,
-  ListScheduledQueriesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListScheduledQueriesRequest,
-  ) => stream.Stream<
-    ListScheduledQueriesResponse,
-    ListScheduledQueriesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListScheduledQueriesRequest,
-  ) => stream.Stream<
-    ScheduledQuerySummary,
-    ListScheduledQueriesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListSourcesForS3TableIntegrationError =
   | AccessDeniedException
@@ -10186,27 +9846,7 @@ export const listSourcesForS3TableIntegration: API.OperationMethod<
     items: "sources",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListSourcesForS3TableIntegrationRequest,
-  ListSourcesForS3TableIntegrationResponse,
-  ListSourcesForS3TableIntegrationError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSourcesForS3TableIntegrationRequest,
-  ) => stream.Stream<
-    ListSourcesForS3TableIntegrationResponse,
-    ListSourcesForS3TableIntegrationError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSourcesForS3TableIntegrationRequest,
-  ) => stream.Stream<
-    S3TableIntegrationSource,
-    ListSourcesForS3TableIntegrationError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListSyslogConfigurationsError =
   | AccessDeniedException

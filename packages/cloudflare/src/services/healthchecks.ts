@@ -2299,7 +2299,8 @@ export const listHealthchecks: API.PaginatedOperationMethod<
   ListHealthchecksRequest,
   ListHealthchecksResponse,
   ListHealthchecksError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  ListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListHealthchecksRequest,
@@ -2316,7 +2317,7 @@ export const listHealthchecks: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type PatchHealthcheckError = CloudflareOpError;
 /** Patch a configured health check. */

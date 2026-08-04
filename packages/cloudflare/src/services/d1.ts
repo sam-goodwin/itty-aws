@@ -1547,7 +1547,8 @@ export const listDatabases: API.PaginatedOperationMethod<
   ListDatabasesRequest,
   ListDatabasesResponse,
   ListDatabasesError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  DatabaseListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListDatabasesRequest,
@@ -1564,7 +1565,7 @@ export const listDatabases: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type PatchDatabaseError =
   | InvalidObjectIdentifier
@@ -1597,7 +1598,8 @@ export const queryDatabase: API.PaginatedOperationMethod<
   QueryDatabaseRequest,
   QueryDatabaseResponse,
   QueryDatabaseError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  DatabaseQueryResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: QueryDatabaseRequest,
@@ -1608,7 +1610,7 @@ export const queryDatabase: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type RawDatabaseError = CloudflareOpError;
 /** Returns the query result rows as arrays rather than objects. This is a performance-optimized version of the /query endpoint. */
@@ -1616,7 +1618,8 @@ export const rawDatabase: API.PaginatedOperationMethod<
   RawDatabaseRequest,
   RawDatabaseResponse,
   RawDatabaseError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  DatabaseRawResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: RawDatabaseRequest,
@@ -1627,7 +1630,7 @@ export const rawDatabase: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type RestoreDatabaseTimeTravelError =
   | InvalidObjectIdentifier

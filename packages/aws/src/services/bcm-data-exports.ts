@@ -926,27 +926,7 @@ export const listExecutions: API.OperationMethod<
     items: "Executions",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListExecutionsRequest,
-  ListExecutionsResponse,
-  ListExecutionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListExecutionsRequest,
-  ) => stream.Stream<
-    ListExecutionsResponse,
-    ListExecutionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListExecutionsRequest,
-  ) => stream.Stream<
-    ExecutionReference,
-    ListExecutionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListExportsError =
   | InternalServerException
@@ -989,27 +969,7 @@ export const listExports: API.OperationMethod<
     items: "Exports",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListExportsRequest,
-  ListExportsResponse,
-  ListExportsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListExportsRequest,
-  ) => stream.Stream<
-    ListExportsResponse,
-    ListExportsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListExportsRequest,
-  ) => stream.Stream<
-    ExportReference,
-    ListExportsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTablesError =
   | InternalServerException
@@ -1052,27 +1012,7 @@ export const listTables: API.OperationMethod<
     items: "Tables",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListTablesRequest,
-  ListTablesResponse,
-  ListTablesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTablesRequest,
-  ) => stream.Stream<
-    ListTablesResponse,
-    ListTablesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTablesRequest,
-  ) => stream.Stream<
-    Table,
-    ListTablesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsForResourceError =
   | AccessDeniedException

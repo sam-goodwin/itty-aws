@@ -1787,7 +1787,8 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   ListProjectsLocationsRequest,
   ListLocationsResponse,
   ListProjectsLocationsError,
-  GcpOpContext
+  GcpOpContext,
+  ListLocationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsRequest,
   output: ListLocationsResponse,
@@ -1798,7 +1799,7 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsSecretsError =
   | NotFound
@@ -1809,7 +1810,8 @@ export const listProjectsLocationsSecrets: API.PaginatedOperationMethod<
   ListProjectsLocationsSecretsRequest,
   ListSecretsResponse,
   ListProjectsLocationsSecretsError,
-  GcpOpContext
+  GcpOpContext,
+  ListSecretsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsSecretsRequest,
   output: ListSecretsResponse,
@@ -1820,7 +1822,7 @@ export const listProjectsLocationsSecrets: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsSecretsVersionsError =
   | NotFound
@@ -1831,7 +1833,8 @@ export const listProjectsLocationsSecretsVersions: API.PaginatedOperationMethod<
   ListProjectsLocationsSecretsVersionsRequest,
   ListSecretVersionsResponse,
   ListProjectsLocationsSecretsVersionsError,
-  GcpOpContext
+  GcpOpContext,
+  ListSecretVersionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsSecretsVersionsRequest,
   output: ListSecretVersionsResponse,
@@ -1842,7 +1845,7 @@ export const listProjectsLocationsSecretsVersions: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsSecretsError = NotFound | Forbidden | GcpOpError;
 /** Lists Secrets. */
@@ -1850,7 +1853,8 @@ export const listProjectsSecrets: API.PaginatedOperationMethod<
   ListProjectsSecretsRequest,
   ListSecretsResponse,
   ListProjectsSecretsError,
-  GcpOpContext
+  GcpOpContext,
+  ListSecretsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsSecretsRequest,
   output: ListSecretsResponse,
@@ -1861,7 +1865,7 @@ export const listProjectsSecrets: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsSecretsVersionsError =
   | NotFound
@@ -1872,7 +1876,8 @@ export const listProjectsSecretsVersions: API.PaginatedOperationMethod<
   ListProjectsSecretsVersionsRequest,
   ListSecretVersionsResponse,
   ListProjectsSecretsVersionsError,
-  GcpOpContext
+  GcpOpContext,
+  ListSecretVersionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsSecretsVersionsRequest,
   output: ListSecretVersionsResponse,
@@ -1883,7 +1888,7 @@ export const listProjectsSecretsVersions: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type PatchProjectsLocationsSecretsError =
   | NotFound

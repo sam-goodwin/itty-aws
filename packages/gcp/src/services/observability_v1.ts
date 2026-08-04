@@ -1909,7 +1909,8 @@ export const listFoldersLocations: API.PaginatedOperationMethod<
   ListFoldersLocationsRequest,
   ListLocationsResponse,
   ListFoldersLocationsError,
-  GcpOpContext
+  GcpOpContext,
+  ListLocationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFoldersLocationsRequest,
   output: ListLocationsResponse,
@@ -1920,7 +1921,7 @@ export const listFoldersLocations: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListFoldersLocationsOperationsError =
   | NotFound
@@ -1931,7 +1932,8 @@ export const listFoldersLocationsOperations: API.PaginatedOperationMethod<
   ListFoldersLocationsOperationsRequest,
   ListOperationsResponse,
   ListFoldersLocationsOperationsError,
-  GcpOpContext
+  GcpOpContext,
+  ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFoldersLocationsOperationsRequest,
   output: ListOperationsResponse,
@@ -1942,7 +1944,7 @@ export const listFoldersLocationsOperations: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListOrganizationsLocationsError = NotFound | Forbidden | GcpOpError;
 /** Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the ListLocationsRequest.name field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version. */
@@ -1950,7 +1952,8 @@ export const listOrganizationsLocations: API.PaginatedOperationMethod<
   ListOrganizationsLocationsRequest,
   ListLocationsResponse,
   ListOrganizationsLocationsError,
-  GcpOpContext
+  GcpOpContext,
+  ListLocationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsLocationsRequest,
   output: ListLocationsResponse,
@@ -1961,7 +1964,7 @@ export const listOrganizationsLocations: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListOrganizationsLocationsOperationsError =
   | NotFound
@@ -1972,7 +1975,8 @@ export const listOrganizationsLocationsOperations: API.PaginatedOperationMethod<
   ListOrganizationsLocationsOperationsRequest,
   ListOperationsResponse,
   ListOrganizationsLocationsOperationsError,
-  GcpOpContext
+  GcpOpContext,
+  ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsLocationsOperationsRequest,
   output: ListOperationsResponse,
@@ -1983,7 +1987,7 @@ export const listOrganizationsLocationsOperations: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsError = NotFound | Forbidden | GcpOpError;
 /** Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the ListLocationsRequest.name field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version. */
@@ -1991,7 +1995,8 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   ListProjectsLocationsRequest,
   ListLocationsResponse,
   ListProjectsLocationsError,
-  GcpOpContext
+  GcpOpContext,
+  ListLocationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsRequest,
   output: ListLocationsResponse,
@@ -2002,7 +2007,7 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsBucketsError =
   | NotFound
@@ -2013,7 +2018,8 @@ export const listProjectsLocationsBuckets: API.PaginatedOperationMethod<
   ListProjectsLocationsBucketsRequest,
   ListBucketsResponse,
   ListProjectsLocationsBucketsError,
-  GcpOpContext
+  GcpOpContext,
+  ListBucketsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsBucketsRequest,
   output: ListBucketsResponse,
@@ -2024,7 +2030,7 @@ export const listProjectsLocationsBuckets: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsBucketsDatasetsError =
   | NotFound
@@ -2035,7 +2041,8 @@ export const listProjectsLocationsBucketsDatasets: API.PaginatedOperationMethod<
   ListProjectsLocationsBucketsDatasetsRequest,
   ListDatasetsResponse,
   ListProjectsLocationsBucketsDatasetsError,
-  GcpOpContext
+  GcpOpContext,
+  ListDatasetsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsBucketsDatasetsRequest,
   output: ListDatasetsResponse,
@@ -2046,7 +2053,7 @@ export const listProjectsLocationsBucketsDatasets: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsBucketsDatasetsLinksError =
   | NotFound
@@ -2057,7 +2064,8 @@ export const listProjectsLocationsBucketsDatasetsLinks: API.PaginatedOperationMe
   ListProjectsLocationsBucketsDatasetsLinksRequest,
   ListLinksResponse,
   ListProjectsLocationsBucketsDatasetsLinksError,
-  GcpOpContext
+  GcpOpContext,
+  ListLinksResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsBucketsDatasetsLinksRequest,
   output: ListLinksResponse,
@@ -2068,7 +2076,7 @@ export const listProjectsLocationsBucketsDatasetsLinks: API.PaginatedOperationMe
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsBucketsDatasetsViewsError =
   | NotFound
@@ -2079,7 +2087,8 @@ export const listProjectsLocationsBucketsDatasetsViews: API.PaginatedOperationMe
   ListProjectsLocationsBucketsDatasetsViewsRequest,
   ListViewsResponse,
   ListProjectsLocationsBucketsDatasetsViewsError,
-  GcpOpContext
+  GcpOpContext,
+  ListViewsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsBucketsDatasetsViewsRequest,
   output: ListViewsResponse,
@@ -2090,7 +2099,7 @@ export const listProjectsLocationsBucketsDatasetsViews: API.PaginatedOperationMe
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsOperationsError =
   | NotFound
@@ -2101,7 +2110,8 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   ListProjectsLocationsOperationsRequest,
   ListOperationsResponse,
   ListProjectsLocationsOperationsError,
-  GcpOpContext
+  GcpOpContext,
+  ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsOperationsRequest,
   output: ListOperationsResponse,
@@ -2112,7 +2122,7 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsTraceScopesError =
   | NotFound
@@ -2123,7 +2133,8 @@ export const listProjectsLocationsTraceScopes: API.PaginatedOperationMethod<
   ListProjectsLocationsTraceScopesRequest,
   ListTraceScopesResponse,
   ListProjectsLocationsTraceScopesError,
-  GcpOpContext
+  GcpOpContext,
+  ListTraceScopesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsTraceScopesRequest,
   output: ListTraceScopesResponse,
@@ -2134,7 +2145,7 @@ export const listProjectsLocationsTraceScopes: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type PatchProjectsLocationsBucketsDatasetsLinksError =
   | NotFound

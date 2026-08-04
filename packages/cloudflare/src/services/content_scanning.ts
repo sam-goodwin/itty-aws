@@ -456,7 +456,8 @@ export const createPayload: API.PaginatedOperationMethod<
   CreatePayloadRequest,
   CreatePayloadResponse,
   CreatePayloadError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  PayloadsCreateResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: CreatePayloadRequest,
@@ -473,7 +474,7 @@ export const createPayload: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type DeletePayloadError =
   | ContentScanningNotEnabled
@@ -484,7 +485,8 @@ export const deletePayload: API.PaginatedOperationMethod<
   DeletePayloadRequest,
   DeletePayloadResponse,
   DeletePayloadError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  PayloadsDeleteResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: DeletePayloadRequest,
@@ -500,7 +502,7 @@ export const deletePayload: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type DisableContentScanningError = CloudflareOpError;
 /** Disable Content Scanning. */
@@ -556,7 +558,8 @@ export const listPayloads: API.PaginatedOperationMethod<
   ListPayloadsRequest,
   ListPayloadsResponse,
   ListPayloadsError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  PayloadsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListPayloadsRequest,
@@ -572,7 +575,7 @@ export const listPayloads: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type SettingsGetError = Forbidden | CloudflareOpError;
 /** Retrieve the current status of Content Scanning. */

@@ -2133,7 +2133,8 @@ export const listByBlogComments: API.PaginatedOperationMethod<
   ListByBlogCommentsRequest,
   CommentList,
   ListByBlogCommentsError,
-  GcpOpContext
+  GcpOpContext,
+  Comment
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListByBlogCommentsRequest,
   output: CommentList,
@@ -2145,7 +2146,7 @@ export const listByBlogComments: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListByUserBlogsError = NotFound | Forbidden | GcpOpError;
 /** Lists blogs by user. */
@@ -2168,7 +2169,8 @@ export const listComments: API.PaginatedOperationMethod<
   ListCommentsRequest,
   CommentList,
   ListCommentsError,
-  GcpOpContext
+  GcpOpContext,
+  Comment
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCommentsRequest,
   output: CommentList,
@@ -2180,7 +2182,7 @@ export const listComments: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListPagesError = NotFound | Forbidden | GcpOpError;
 /** Lists pages. */
@@ -2188,7 +2190,8 @@ export const listPages: API.PaginatedOperationMethod<
   ListPagesRequest,
   PageList,
   ListPagesError,
-  GcpOpContext
+  GcpOpContext,
+  Page
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPagesRequest,
   output: PageList,
@@ -2200,7 +2203,7 @@ export const listPages: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListPostsError = NotFound | Forbidden | GcpOpError;
 /** Lists posts. */
@@ -2208,7 +2211,8 @@ export const listPosts: API.PaginatedOperationMethod<
   ListPostsRequest,
   PostList,
   ListPostsError,
-  GcpOpContext
+  GcpOpContext,
+  Post
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPostsRequest,
   output: PostList,
@@ -2220,7 +2224,7 @@ export const listPosts: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListPostUserInfosError = NotFound | Forbidden | GcpOpError;
 /** Lists post and user info pairs. */
@@ -2228,7 +2232,8 @@ export const listPostUserInfos: API.PaginatedOperationMethod<
   ListPostUserInfosRequest,
   PostUserInfosList,
   ListPostUserInfosError,
-  GcpOpContext
+  GcpOpContext,
+  PostUserInfo
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPostUserInfosRequest,
   output: PostUserInfosList,
@@ -2240,7 +2245,7 @@ export const listPostUserInfos: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type MarkAsSpamCommentsError =
   | NotFound

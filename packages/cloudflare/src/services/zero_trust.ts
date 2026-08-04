@@ -199693,7 +199693,8 @@ export const bulkPutAccessInfrastructureTargets: API.PaginatedOperationMethod<
   BulkPutAccessInfrastructureTargetsRequest,
   BulkPutAccessInfrastructureTargetsResponse,
   BulkPutAccessInfrastructureTargetsError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  AccessInfrastructureTargetsBulkUpdateResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: BulkPutAccessInfrastructureTargetsRequest,
@@ -199704,7 +199705,7 @@ export const bulkPutAccessInfrastructureTargets: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type CasbApplicationsGetError = CloudflareOpError;
 /** Returns full application details including auth methods, use cases, and permissions. */
@@ -200489,7 +200490,8 @@ export const createDlpDatasetVersion: API.PaginatedOperationMethod<
   CreateDlpDatasetVersionRequest,
   CreateDlpDatasetVersionResponse,
   CreateDlpDatasetVersionError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  DlpDatasetsVersionsCreateResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: CreateDlpDatasetVersionRequest,
@@ -200500,7 +200502,7 @@ export const createDlpDatasetVersion: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type CreateDlpDatasetVersionEntryError = CloudflareOpError;
 /** This is used for multi-column EDMv2 datasets. The EDMv2 format can only be created in the Cloudflare dashboard. */
@@ -201472,7 +201474,8 @@ export const deleteDeviceNetwork: API.PaginatedOperationMethod<
   DeleteDeviceNetworkRequest,
   DeleteDeviceNetworkResponse,
   DeleteDeviceNetworkError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  DevicesNetworksDeleteResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: DeleteDeviceNetworkRequest,
@@ -201488,7 +201491,7 @@ export const deleteDeviceNetwork: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type DeleteDevicePolicyCustomError =
   | DevicePolicyNotFound
@@ -201499,7 +201502,8 @@ export const deleteDevicePolicyCustom: API.PaginatedOperationMethod<
   DeleteDevicePolicyCustomRequest,
   DeleteDevicePolicyCustomResponse,
   DeleteDevicePolicyCustomError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  DevicesPoliciesCustomDeleteResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: DeleteDevicePolicyCustomRequest,
@@ -201515,7 +201519,7 @@ export const deleteDevicePolicyCustom: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type DeleteDevicePostureError =
   | PostureRuleNotFound
@@ -202191,7 +202195,8 @@ export const dlpEntriesCustomList: API.PaginatedOperationMethod<
   DlpEntriesCustomListRequest,
   DlpEntriesCustomListResponse,
   DlpEntriesCustomListError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  DlpEntriesCustomListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: DlpEntriesCustomListRequest,
@@ -202202,7 +202207,7 @@ export const dlpEntriesCustomList: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type DlpEntriesIntegrationGetError = CloudflareOpError;
 /** Fetches a DLP entry by ID. */
@@ -202225,7 +202230,8 @@ export const dlpEntriesIntegrationList: API.PaginatedOperationMethod<
   DlpEntriesIntegrationListRequest,
   DlpEntriesIntegrationListResponse,
   DlpEntriesIntegrationListError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  DlpEntriesIntegrationListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: DlpEntriesIntegrationListRequest,
@@ -202236,7 +202242,7 @@ export const dlpEntriesIntegrationList: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type DlpEntriesPredefinedGetError = CloudflareOpError;
 /** Fetches a DLP entry by ID. */
@@ -202259,7 +202265,8 @@ export const dlpEntriesPredefinedList: API.PaginatedOperationMethod<
   DlpEntriesPredefinedListRequest,
   DlpEntriesPredefinedListResponse,
   DlpEntriesPredefinedListError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  DlpEntriesPredefinedListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: DlpEntriesPredefinedListRequest,
@@ -202270,7 +202277,7 @@ export const dlpEntriesPredefinedList: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type EditDlpDatasetUploadError = CloudflareOpError;
 /** This is used for single-column EDMv1 and Custom Word Lists. The EDM format can only be created in the Cloudflare dashboard. For other clients, this operation can only be used for non-secret Custom Word Lists. The body must be a UTF-8 encoded, newline (NL or CRNL) separated list of words to be matched. */
@@ -202447,7 +202454,8 @@ export const getAccessCertificateSettingForAccount: API.PaginatedOperationMethod
   GetAccessCertificateSettingForAccountRequest,
   GetAccessCertificateSettingResponse,
   GetAccessCertificateSettingForAccountError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  AccessCertificatesSettingsGetResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: GetAccessCertificateSettingForAccountRequest,
@@ -202458,7 +202466,7 @@ export const getAccessCertificateSettingForAccount: API.PaginatedOperationMethod
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type GetAccessCertificateSettingForZoneError = CloudflareOpError;
 /** List all mTLS hostname settings for this account or zone. */
@@ -202466,7 +202474,8 @@ export const getAccessCertificateSettingForZone: API.PaginatedOperationMethod<
   GetAccessCertificateSettingForZoneRequest,
   GetAccessCertificateSettingResponse,
   GetAccessCertificateSettingForZoneError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  AccessCertificatesSettingsGetResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: GetAccessCertificateSettingForZoneRequest,
@@ -202477,7 +202486,7 @@ export const getAccessCertificateSettingForZone: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type GetAccessCustomPageError =
   | AccessCustomPageNotFound
@@ -202880,7 +202889,8 @@ export const getDevicePolicyCustomExclude: API.PaginatedOperationMethod<
   GetDevicePolicyCustomExcludeRequest,
   GetDevicePolicyCustomExcludeResponse,
   GetDevicePolicyCustomExcludeError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  DevicesPoliciesCustomExcludesGetResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: GetDevicePolicyCustomExcludeRequest,
@@ -202896,7 +202906,7 @@ export const getDevicePolicyCustomExclude: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type GetDevicePolicyCustomFallbackDomainError =
   | DevicePolicyNotFound
@@ -202907,7 +202917,8 @@ export const getDevicePolicyCustomFallbackDomain: API.PaginatedOperationMethod<
   GetDevicePolicyCustomFallbackDomainRequest,
   GetDevicePolicyCustomFallbackDomainResponse,
   GetDevicePolicyCustomFallbackDomainError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  DevicesPoliciesCustomFallbackDomainsGetResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: GetDevicePolicyCustomFallbackDomainRequest,
@@ -202923,7 +202934,7 @@ export const getDevicePolicyCustomFallbackDomain: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type GetDevicePolicyCustomIncludeError =
   | DevicePolicyNotFound
@@ -202934,7 +202945,8 @@ export const getDevicePolicyCustomInclude: API.PaginatedOperationMethod<
   GetDevicePolicyCustomIncludeRequest,
   GetDevicePolicyCustomIncludeResponse,
   GetDevicePolicyCustomIncludeError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  DevicesPoliciesCustomIncludesGetResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: GetDevicePolicyCustomIncludeRequest,
@@ -202950,7 +202962,7 @@ export const getDevicePolicyCustomInclude: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type GetDevicePolicyDefaultError = CloudflareOpError;
 /** Fetches the default device settings profile for an account. */
@@ -202988,7 +203000,8 @@ export const getDevicePolicyDefaultExclude: API.PaginatedOperationMethod<
   GetDevicePolicyDefaultExcludeRequest,
   GetDevicePolicyDefaultExcludeResponse,
   GetDevicePolicyDefaultExcludeError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  DevicesPoliciesDefaultExcludesGetResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: GetDevicePolicyDefaultExcludeRequest,
@@ -202999,7 +203012,7 @@ export const getDevicePolicyDefaultExclude: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type GetDevicePolicyDefaultFallbackDomainError = CloudflareOpError;
 /** Fetches a list of domains to bypass Gateway DNS resolution. These domains will use the specified local DNS resolver instead. */
@@ -203007,7 +203020,8 @@ export const getDevicePolicyDefaultFallbackDomain: API.PaginatedOperationMethod<
   GetDevicePolicyDefaultFallbackDomainRequest,
   GetDevicePolicyDefaultFallbackDomainResponse,
   GetDevicePolicyDefaultFallbackDomainError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  DevicesPoliciesDefaultFallbackDomainsGetResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: GetDevicePolicyDefaultFallbackDomainRequest,
@@ -203018,7 +203032,7 @@ export const getDevicePolicyDefaultFallbackDomain: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type GetDevicePolicyDefaultIncludeError = CloudflareOpError;
 /** Fetches the list of routes included in the WARP client's tunnel. */
@@ -203026,7 +203040,8 @@ export const getDevicePolicyDefaultInclude: API.PaginatedOperationMethod<
   GetDevicePolicyDefaultIncludeRequest,
   GetDevicePolicyDefaultIncludeResponse,
   GetDevicePolicyDefaultIncludeError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  DevicesPoliciesDefaultIncludesGetResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: GetDevicePolicyDefaultIncludeRequest,
@@ -203037,7 +203052,7 @@ export const getDevicePolicyDefaultInclude: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type GetDevicePostureError =
   | PostureRuleNotFound
@@ -203998,7 +204013,8 @@ export const getTunnelCloudflaredConnection: API.PaginatedOperationMethod<
   GetTunnelCloudflaredConnectionRequest,
   GetTunnelCloudflaredConnectionResponse,
   GetTunnelCloudflaredConnectionError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  TunnelsCloudflaredConnectionsGetResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: GetTunnelCloudflaredConnectionRequest,
@@ -204009,7 +204025,7 @@ export const getTunnelCloudflaredConnection: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type GetTunnelCloudflaredConnectorError = CloudflareOpError;
 /** Fetches connector and connection details for a Cloudflare Tunnel. */
@@ -204082,7 +204098,8 @@ export const getTunnelWarpConnectorConnection: API.PaginatedOperationMethod<
   GetTunnelWarpConnectorConnectionRequest,
   GetTunnelWarpConnectorConnectionResponse,
   GetTunnelWarpConnectorConnectionError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  TunnelsWarpConnectorConnectionsGetResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: GetTunnelWarpConnectorConnectionRequest,
@@ -204093,7 +204110,7 @@ export const getTunnelWarpConnectorConnection: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type GetTunnelWarpConnectorConnectorError = CloudflareOpError;
 /** Fetches connector and connection details for a WARP Connector Tunnel. */
@@ -204134,7 +204151,8 @@ export const listAccessAiControlMcpPortals: API.PaginatedOperationMethod<
   ListAccessAiControlMcpPortalsRequest,
   ListAccessAiControlMcpPortalsResponse,
   ListAccessAiControlMcpPortalsError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  AccessAiControlsMcpPortalsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListAccessAiControlMcpPortalsRequest,
@@ -204151,7 +204169,7 @@ export const listAccessAiControlMcpPortals: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListAccessAiControlMcpServersError = CloudflareOpError;
 /** Lists all MCP portals configured for the account. */
@@ -204159,7 +204177,8 @@ export const listAccessAiControlMcpServers: API.PaginatedOperationMethod<
   ListAccessAiControlMcpServersRequest,
   ListAccessAiControlMcpServersResponse,
   ListAccessAiControlMcpServersError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  AccessAiControlsMcpServersListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListAccessAiControlMcpServersRequest,
@@ -204176,7 +204195,7 @@ export const listAccessAiControlMcpServers: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListAccessApplicationCasForAccountError = CloudflareOpError;
 /** Lists short-lived certificate CAs and their public keys. */
@@ -204184,7 +204203,8 @@ export const listAccessApplicationCasForAccount: API.PaginatedOperationMethod<
   ListAccessApplicationCasForAccountRequest,
   ListAccessApplicationCasResponse,
   ListAccessApplicationCasForAccountError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  AccessApplicationsCasListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListAccessApplicationCasForAccountRequest,
@@ -204201,7 +204221,7 @@ export const listAccessApplicationCasForAccount: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListAccessApplicationCasForZoneError = CloudflareOpError;
 /** Lists short-lived certificate CAs and their public keys. */
@@ -204209,7 +204229,8 @@ export const listAccessApplicationCasForZone: API.PaginatedOperationMethod<
   ListAccessApplicationCasForZoneRequest,
   ListAccessApplicationCasResponse,
   ListAccessApplicationCasForZoneError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  AccessApplicationsCasListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListAccessApplicationCasForZoneRequest,
@@ -204226,7 +204247,7 @@ export const listAccessApplicationCasForZone: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListAccessApplicationPoliciesForAccountError = CloudflareOpError;
 /** Lists Access policies configured for an application. Returns both exclusively scoped and reusable policies used by the application. */
@@ -204234,7 +204255,8 @@ export const listAccessApplicationPoliciesForAccount: API.PaginatedOperationMeth
   ListAccessApplicationPoliciesForAccountRequest,
   ListAccessApplicationPoliciesResponse,
   ListAccessApplicationPoliciesForAccountError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  AccessApplicationsPoliciesListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListAccessApplicationPoliciesForAccountRequest,
@@ -204251,7 +204273,7 @@ export const listAccessApplicationPoliciesForAccount: API.PaginatedOperationMeth
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListAccessApplicationPoliciesForZoneError = CloudflareOpError;
 /** Lists Access policies configured for an application. Returns both exclusively scoped and reusable policies used by the application. */
@@ -204259,7 +204281,8 @@ export const listAccessApplicationPoliciesForZone: API.PaginatedOperationMethod<
   ListAccessApplicationPoliciesForZoneRequest,
   ListAccessApplicationPoliciesResponse,
   ListAccessApplicationPoliciesForZoneError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  AccessApplicationsPoliciesListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListAccessApplicationPoliciesForZoneRequest,
@@ -204276,7 +204299,7 @@ export const listAccessApplicationPoliciesForZone: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListAccessApplicationPolicyTestUsersError = CloudflareOpError;
 /** Fetches a single page of user results from an Access policy test. */
@@ -204284,7 +204307,8 @@ export const listAccessApplicationPolicyTestUsers: API.PaginatedOperationMethod<
   ListAccessApplicationPolicyTestUsersRequest,
   ListAccessApplicationPolicyTestUsersResponse,
   ListAccessApplicationPolicyTestUsersError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  AccessApplicationsPolicyTestsUsersListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListAccessApplicationPolicyTestUsersRequest,
@@ -204301,7 +204325,7 @@ export const listAccessApplicationPolicyTestUsers: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListAccessApplicationsForAccountError =
   | AccessReferenceNotFound
@@ -204311,7 +204335,8 @@ export const listAccessApplicationsForAccount: API.PaginatedOperationMethod<
   ListAccessApplicationsForAccountRequest,
   ListAccessApplicationsResponse,
   ListAccessApplicationsForAccountError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  AccessApplicationsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListAccessApplicationsForAccountRequest,
@@ -204328,7 +204353,7 @@ export const listAccessApplicationsForAccount: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListAccessApplicationsForZoneError =
   | AccessReferenceNotFound
@@ -204338,7 +204363,8 @@ export const listAccessApplicationsForZone: API.PaginatedOperationMethod<
   ListAccessApplicationsForZoneRequest,
   ListAccessApplicationsResponse,
   ListAccessApplicationsForZoneError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  AccessApplicationsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListAccessApplicationsForZoneRequest,
@@ -204355,7 +204381,7 @@ export const listAccessApplicationsForZone: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListAccessApplicationUserPolicyChecksForAccountError =
   CloudflareOpError;
@@ -204395,7 +204421,8 @@ export const listAccessBookmarks: API.PaginatedOperationMethod<
   ListAccessBookmarksRequest,
   ListAccessBookmarksResponse,
   ListAccessBookmarksError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  AccessBookmarksListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListAccessBookmarksRequest,
@@ -204406,7 +204433,7 @@ export const listAccessBookmarks: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListAccessCertificatesForAccountError = CloudflareOpError;
 /** Lists all mTLS root certificates. */
@@ -204414,7 +204441,8 @@ export const listAccessCertificatesForAccount: API.PaginatedOperationMethod<
   ListAccessCertificatesForAccountRequest,
   ListAccessCertificatesResponse,
   ListAccessCertificatesForAccountError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  AccessCertificatesListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListAccessCertificatesForAccountRequest,
@@ -204431,7 +204459,7 @@ export const listAccessCertificatesForAccount: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListAccessCertificatesForZoneError = CloudflareOpError;
 /** Lists all mTLS root certificates. */
@@ -204439,7 +204467,8 @@ export const listAccessCertificatesForZone: API.PaginatedOperationMethod<
   ListAccessCertificatesForZoneRequest,
   ListAccessCertificatesResponse,
   ListAccessCertificatesForZoneError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  AccessCertificatesListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListAccessCertificatesForZoneRequest,
@@ -204456,7 +204485,7 @@ export const listAccessCertificatesForZone: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListAccessCustomPagesError = CloudflareOpError;
 /** List custom pages */
@@ -204464,7 +204493,8 @@ export const listAccessCustomPages: API.PaginatedOperationMethod<
   ListAccessCustomPagesRequest,
   ListAccessCustomPagesResponse,
   ListAccessCustomPagesError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  AccessCustomPagesListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListAccessCustomPagesRequest,
@@ -204481,7 +204511,7 @@ export const listAccessCustomPages: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListAccessGatewayCasError = CloudflareOpError;
 /** Lists SSH Certificate Authorities (CA). */
@@ -204489,7 +204519,8 @@ export const listAccessGatewayCas: API.PaginatedOperationMethod<
   ListAccessGatewayCasRequest,
   ListAccessGatewayCasResponse,
   ListAccessGatewayCasError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  AccessGatewayCaListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListAccessGatewayCasRequest,
@@ -204500,7 +204531,7 @@ export const listAccessGatewayCas: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListAccessGroupsForAccountError = CloudflareOpError;
 /** Lists all Access groups. */
@@ -204508,7 +204539,8 @@ export const listAccessGroupsForAccount: API.PaginatedOperationMethod<
   ListAccessGroupsForAccountRequest,
   ListAccessGroupsResponse,
   ListAccessGroupsForAccountError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  AccessGroupsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListAccessGroupsForAccountRequest,
@@ -204525,7 +204557,7 @@ export const listAccessGroupsForAccount: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListAccessGroupsForZoneError = CloudflareOpError;
 /** Lists all Access groups. */
@@ -204533,7 +204565,8 @@ export const listAccessGroupsForZone: API.PaginatedOperationMethod<
   ListAccessGroupsForZoneRequest,
   ListAccessGroupsResponse,
   ListAccessGroupsForZoneError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  AccessGroupsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListAccessGroupsForZoneRequest,
@@ -204550,7 +204583,7 @@ export const listAccessGroupsForZone: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListAccessIdpFederationGrantsError = CloudflareOpError;
 /** Lists the IdP federation grants owned by the account. */
@@ -204575,7 +204608,8 @@ export const listAccessInfrastructureTargets: API.PaginatedOperationMethod<
   ListAccessInfrastructureTargetsRequest,
   ListAccessInfrastructureTargetsResponse,
   ListAccessInfrastructureTargetsError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  AccessInfrastructureTargetsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListAccessInfrastructureTargetsRequest,
@@ -204592,7 +204626,7 @@ export const listAccessInfrastructureTargets: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListAccessLogAccessRequestsError = CloudflareOpError;
 /** Gets a list of Access authentication audit logs for an account. */
@@ -204615,7 +204649,8 @@ export const listAccessLogScimUpdates: API.PaginatedOperationMethod<
   ListAccessLogScimUpdatesRequest,
   ListAccessLogScimUpdatesResponse,
   ListAccessLogScimUpdatesError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  AccessLogsScimUpdatesListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListAccessLogScimUpdatesRequest,
@@ -204632,7 +204667,7 @@ export const listAccessLogScimUpdates: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListAccessPoliciesError = CloudflareOpError;
 /** Lists Access reusable policies. */
@@ -204640,7 +204675,8 @@ export const listAccessPolicies: API.PaginatedOperationMethod<
   ListAccessPoliciesRequest,
   ListAccessPoliciesResponse,
   ListAccessPoliciesError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  AccessPoliciesListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListAccessPoliciesRequest,
@@ -204657,7 +204693,7 @@ export const listAccessPolicies: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListAccessSamlCertificatesError = CloudflareOpError;
 /** Returns a paginated list of the organization's SAML encryption certificate sets. Each certificate set includes the current and (if present) previous certificates. */
@@ -204665,7 +204701,8 @@ export const listAccessSamlCertificates: API.PaginatedOperationMethod<
   ListAccessSamlCertificatesRequest,
   ListAccessSamlCertificatesResponse,
   ListAccessSamlCertificatesError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  AccessSamlCertificatesListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListAccessSamlCertificatesRequest,
@@ -204682,7 +204719,7 @@ export const listAccessSamlCertificates: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListAccessServiceTokensForAccountError = CloudflareOpError;
 /** Lists all service tokens. */
@@ -204690,7 +204727,8 @@ export const listAccessServiceTokensForAccount: API.PaginatedOperationMethod<
   ListAccessServiceTokensForAccountRequest,
   ListAccessServiceTokensResponse,
   ListAccessServiceTokensForAccountError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  AccessServiceTokensListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListAccessServiceTokensForAccountRequest,
@@ -204707,7 +204745,7 @@ export const listAccessServiceTokensForAccount: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListAccessServiceTokensForZoneError = CloudflareOpError;
 /** Lists all service tokens. */
@@ -204715,7 +204753,8 @@ export const listAccessServiceTokensForZone: API.PaginatedOperationMethod<
   ListAccessServiceTokensForZoneRequest,
   ListAccessServiceTokensResponse,
   ListAccessServiceTokensForZoneError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  AccessServiceTokensListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListAccessServiceTokensForZoneRequest,
@@ -204732,7 +204771,7 @@ export const listAccessServiceTokensForZone: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListAccessTagsError = CloudflareOpError;
 /** List tags */
@@ -204740,7 +204779,8 @@ export const listAccessTags: API.PaginatedOperationMethod<
   ListAccessTagsRequest,
   ListAccessTagsResponse,
   ListAccessTagsError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  AccessTagsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListAccessTagsRequest,
@@ -204757,7 +204797,7 @@ export const listAccessTags: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListAccessUserActiveSessionsError = CloudflareOpError;
 /** Get active sessions for a single user. */
@@ -204765,7 +204805,8 @@ export const listAccessUserActiveSessions: API.PaginatedOperationMethod<
   ListAccessUserActiveSessionsRequest,
   ListAccessUserActiveSessionsResponse,
   ListAccessUserActiveSessionsError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  AccessUsersActiveSessionsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListAccessUserActiveSessionsRequest,
@@ -204776,7 +204817,7 @@ export const listAccessUserActiveSessions: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListAccessUserFailedLoginsError = CloudflareOpError;
 /** Get all failed login attempts for a single user. */
@@ -204784,7 +204825,8 @@ export const listAccessUserFailedLogins: API.PaginatedOperationMethod<
   ListAccessUserFailedLoginsRequest,
   ListAccessUserFailedLoginsResponse,
   ListAccessUserFailedLoginsError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  AccessUsersFailedLoginsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListAccessUserFailedLoginsRequest,
@@ -204795,7 +204837,7 @@ export const listAccessUserFailedLogins: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListAccessUsersError = CloudflareOpError;
 /** Gets a list of users for an account. */
@@ -204803,7 +204845,8 @@ export const listAccessUsers: API.PaginatedOperationMethod<
   ListAccessUsersRequest,
   ListAccessUsersResponse,
   ListAccessUsersError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  AccessUsersListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListAccessUsersRequest,
@@ -204820,7 +204863,7 @@ export const listAccessUsers: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListDeviceDeploymentGroupsError = CloudflareOpError;
 /** Lists all deployment groups for an account. Use deployment groups to assign target WARP client versions to specific devices. This endpoint is in Beta. */
@@ -204828,7 +204871,8 @@ export const listDeviceDeploymentGroups: API.PaginatedOperationMethod<
   ListDeviceDeploymentGroupsRequest,
   ListDeviceDeploymentGroupsResponse,
   ListDeviceDeploymentGroupsError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  DevicesDeploymentGroupsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListDeviceDeploymentGroupsRequest,
@@ -204845,7 +204889,7 @@ export const listDeviceDeploymentGroups: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListDeviceDevicesError = CloudflareOpError;
 /** Lists WARP devices. */
@@ -204853,7 +204897,8 @@ export const listDeviceDevices: API.PaginatedOperationMethod<
   ListDeviceDevicesRequest,
   ListDeviceDevicesResponse,
   ListDeviceDevicesError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  DevicesDevicesListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListDeviceDevicesRequest,
@@ -204870,7 +204915,7 @@ export const listDeviceDevices: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListDeviceDexTestsError = Forbidden | CloudflareOpError;
 /** Fetch all DEX tests. */
@@ -204878,7 +204923,8 @@ export const listDeviceDexTests: API.PaginatedOperationMethod<
   ListDeviceDexTestsRequest,
   ListDeviceDexTestsResponse,
   ListDeviceDexTestsError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  DevicesDexTestsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListDeviceDexTestsRequest,
@@ -204895,7 +204941,7 @@ export const listDeviceDexTests: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListDeviceIpProfilesError = CloudflareOpError;
 /** Lists WARP Device IP profiles. */
@@ -204903,7 +204949,8 @@ export const listDeviceIpProfiles: API.PaginatedOperationMethod<
   ListDeviceIpProfilesRequest,
   ListDeviceIpProfilesResponse,
   ListDeviceIpProfilesError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  DevicesIpProfilesListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListDeviceIpProfilesRequest,
@@ -204920,7 +204967,7 @@ export const listDeviceIpProfiles: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListDeviceNetworksError = Forbidden | CloudflareOpError;
 /** Fetches a list of managed networks for an account. */
@@ -204928,7 +204975,8 @@ export const listDeviceNetworks: API.PaginatedOperationMethod<
   ListDeviceNetworksRequest,
   ListDeviceNetworksResponse,
   ListDeviceNetworksError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  DevicesNetworksListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListDeviceNetworksRequest,
@@ -204939,7 +204987,7 @@ export const listDeviceNetworks: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListDeviceOverrideCodesError = CloudflareOpError;
 /** Fetches a one-time use admin override code for a device. This relies on the **Admin Override** setting being enabled in your device configuration. Not supported when [multi-user mode](https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/deployment/mdm-deployment/windows-multiuser/) is enabled for the account. **Deprecated:** please use GET /accounts/{account_id}/devices/registrations/{registration_id}/override_codes instead. */
@@ -204947,7 +204995,8 @@ export const listDeviceOverrideCodes: API.PaginatedOperationMethod<
   ListDeviceOverrideCodesRequest,
   ListDeviceOverrideCodesResponse,
   ListDeviceOverrideCodesError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  unknown
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListDeviceOverrideCodesRequest,
@@ -204958,7 +205007,7 @@ export const listDeviceOverrideCodes: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListDevicePolicyCustomsError = Forbidden | CloudflareOpError;
 /** Fetches a list of the device settings profiles for an account. */
@@ -204966,7 +205015,8 @@ export const listDevicePolicyCustoms: API.PaginatedOperationMethod<
   ListDevicePolicyCustomsRequest,
   ListDevicePolicyCustomsResponse,
   ListDevicePolicyCustomsError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  DevicesPoliciesCustomListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListDevicePolicyCustomsRequest,
@@ -204977,7 +205027,7 @@ export const listDevicePolicyCustoms: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListDevicePostureIntegrationsError = Forbidden | CloudflareOpError;
 /** Fetches the list of device posture integrations for an account. */
@@ -204985,7 +205035,8 @@ export const listDevicePostureIntegrations: API.PaginatedOperationMethod<
   ListDevicePostureIntegrationsRequest,
   ListDevicePostureIntegrationsResponse,
   ListDevicePostureIntegrationsError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  DevicesPostureIntegrationsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListDevicePostureIntegrationsRequest,
@@ -204996,7 +205047,7 @@ export const listDevicePostureIntegrations: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListDevicePosturesError = Forbidden | CloudflareOpError;
 /** Fetches device posture rules for a Zero Trust account. */
@@ -205004,7 +205055,8 @@ export const listDevicePostures: API.PaginatedOperationMethod<
   ListDevicePosturesRequest,
   ListDevicePosturesResponse,
   ListDevicePosturesError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  DevicesPostureListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListDevicePosturesRequest,
@@ -205015,7 +205067,7 @@ export const listDevicePostures: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListDeviceRegistrationsError = CloudflareOpError;
 /** Lists WARP registrations. */
@@ -205023,7 +205075,8 @@ export const listDeviceRegistrations: API.PaginatedOperationMethod<
   ListDeviceRegistrationsRequest,
   ListDeviceRegistrationsResponse,
   ListDeviceRegistrationsError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  DevicesRegistrationsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListDeviceRegistrationsRequest,
@@ -205040,7 +205093,7 @@ export const listDeviceRegistrations: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListDevicesError = CloudflareOpError;
 /** List WARP devices. Not supported when [multi-user mode](https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/deployment/mdm-deployment/windows-multiuser/) is enabled for the account. **Deprecated**: please use one of the following endpoints instead: - GET /accounts/{account_id}/devices/physical-devices - GET /accounts/{account_id}/devices/registrations */
@@ -205048,7 +205101,8 @@ export const listDevices: API.PaginatedOperationMethod<
   ListDevicesRequest,
   ListDevicesResponse,
   ListDevicesError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  DevicesListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListDevicesRequest,
@@ -205059,7 +205113,7 @@ export const listDevices: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListDexColosError = CloudflareOpError;
 /** List Cloudflare colos that account's devices were connected to during a time period, sorted by usage starting from the most used colo. Colos without traffic are also returned and sorted alphabetically. */
@@ -205067,7 +205121,8 @@ export const listDexColos: API.PaginatedOperationMethod<
   ListDexColosRequest,
   ListDexColosResponse,
   ListDexColosError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  DexColosListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListDexColosRequest,
@@ -205078,7 +205133,7 @@ export const listDexColos: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListDexCommandDevicesError = CloudflareOpError;
 /** List devices with WARP client support for remote captures which have been connected in the last 1 hour. */
@@ -205131,7 +205186,8 @@ export const listDexFleetStatusDevices: API.PaginatedOperationMethod<
   ListDexFleetStatusDevicesRequest,
   ListDexFleetStatusDevicesResponse,
   ListDexFleetStatusDevicesError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  DexFleetStatusDevicesListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListDexFleetStatusDevicesRequest,
@@ -205148,7 +205204,7 @@ export const listDexFleetStatusDevices: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListDexRulesError = CloudflareOpError;
 /** List DEX Rules. */
@@ -205201,7 +205257,8 @@ export const listDlpCustomPromptTopics: API.PaginatedOperationMethod<
   ListDlpCustomPromptTopicsRequest,
   ListDlpCustomPromptTopicsResponse,
   ListDlpCustomPromptTopicsError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  DlpCustomPromptTopicsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListDlpCustomPromptTopicsRequest,
@@ -205212,7 +205269,7 @@ export const listDlpCustomPromptTopics: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListDlpDataClassesError = CloudflareOpError;
 /** Retrieve all data classes in an account */
@@ -205220,7 +205277,8 @@ export const listDlpDataClasses: API.PaginatedOperationMethod<
   ListDlpDataClassesRequest,
   ListDlpDataClassesResponse,
   ListDlpDataClassesError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  DlpDataClassesListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListDlpDataClassesRequest,
@@ -205231,7 +205289,7 @@ export const listDlpDataClasses: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListDlpDatasetsError = CloudflareOpError;
 /** Lists all DLP datasets configured for the account, including custom word lists and EDM datasets. */
@@ -205254,7 +205312,8 @@ export const listDlpDataTagCategories: API.PaginatedOperationMethod<
   ListDlpDataTagCategoriesRequest,
   ListDlpDataTagCategoriesResponse,
   ListDlpDataTagCategoriesError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  DlpDataTagCategoriesListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListDlpDataTagCategoriesRequest,
@@ -205265,7 +205324,7 @@ export const listDlpDataTagCategories: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListDlpDataTagCategoryDataTagsError = CloudflareOpError;
 /** Retrieve all data tags in a data tag category */
@@ -205273,7 +205332,8 @@ export const listDlpDataTagCategoryDataTags: API.PaginatedOperationMethod<
   ListDlpDataTagCategoryDataTagsRequest,
   ListDlpDataTagCategoryDataTagsResponse,
   ListDlpDataTagCategoryDataTagsError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  DlpDataTagCategoriesDataTagsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListDlpDataTagCategoryDataTagsRequest,
@@ -205284,7 +205344,7 @@ export const listDlpDataTagCategoryDataTags: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListDlpEmailRulesError = CloudflareOpError;
 /** Lists all email scanner rules for an account. */
@@ -205292,7 +205352,8 @@ export const listDlpEmailRules: API.PaginatedOperationMethod<
   ListDlpEmailRulesRequest,
   ListDlpEmailRulesResponse,
   ListDlpEmailRulesError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  DlpEmailRulesListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListDlpEmailRulesRequest,
@@ -205303,7 +205364,7 @@ export const listDlpEmailRules: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListDlpEntriesError = CloudflareOpError;
 /** Lists all DLP entries in an account. */
@@ -205311,7 +205372,8 @@ export const listDlpEntries: API.PaginatedOperationMethod<
   ListDlpEntriesRequest,
   ListDlpEntriesResponse,
   ListDlpEntriesError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  DlpEntriesListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListDlpEntriesRequest,
@@ -205322,7 +205384,7 @@ export const listDlpEntries: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListDlpLimitsError = CloudflareOpError;
 /** Retrieves current DLP usage limits and quotas for the account, including maximum allowed counts and current usage for custom entries, dataset cells, and document fingerprints. */
@@ -205345,7 +205407,8 @@ export const listDlpProfiles: API.PaginatedOperationMethod<
   ListDlpProfilesRequest,
   ListDlpProfilesResponse,
   ListDlpProfilesError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  DlpProfilesListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListDlpProfilesRequest,
@@ -205356,7 +205419,7 @@ export const listDlpProfiles: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListDlpSensitivityGroupLevelsError = CloudflareOpError;
 /** Retrieve all sensitivity levels in a sensitivity group */
@@ -205364,7 +205427,8 @@ export const listDlpSensitivityGroupLevels: API.PaginatedOperationMethod<
   ListDlpSensitivityGroupLevelsRequest,
   ListDlpSensitivityGroupLevelsResponse,
   ListDlpSensitivityGroupLevelsError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  DlpSensitivityGroupsLevelsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListDlpSensitivityGroupLevelsRequest,
@@ -205375,7 +205439,7 @@ export const listDlpSensitivityGroupLevels: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListDlpSensitivityGroupsError = CloudflareOpError;
 /** Retrieve all sensitivity groups in an account */
@@ -205383,7 +205447,8 @@ export const listDlpSensitivityGroups: API.PaginatedOperationMethod<
   ListDlpSensitivityGroupsRequest,
   ListDlpSensitivityGroupsResponse,
   ListDlpSensitivityGroupsError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  DlpSensitivityGroupsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListDlpSensitivityGroupsRequest,
@@ -205394,7 +205459,7 @@ export const listDlpSensitivityGroups: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListGatewayAppTypesError = CloudflareOpError;
 /** List all application and application type mappings. */
@@ -205402,7 +205467,8 @@ export const listGatewayAppTypes: API.PaginatedOperationMethod<
   ListGatewayAppTypesRequest,
   ListGatewayAppTypesResponse,
   ListGatewayAppTypesError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  GatewayAppTypesListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListGatewayAppTypesRequest,
@@ -205413,7 +205479,7 @@ export const listGatewayAppTypes: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListGatewayCategoriesError = CloudflareOpError;
 /** List all categories. */
@@ -205421,7 +205487,8 @@ export const listGatewayCategories: API.PaginatedOperationMethod<
   ListGatewayCategoriesRequest,
   ListGatewayCategoriesResponse,
   ListGatewayCategoriesError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  GatewayCategoriesListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListGatewayCategoriesRequest,
@@ -205432,7 +205499,7 @@ export const listGatewayCategories: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListGatewayCertificatesError = CloudflareOpError;
 /** List all Zero Trust certificates for an account. */
@@ -205440,7 +205507,8 @@ export const listGatewayCertificates: API.PaginatedOperationMethod<
   ListGatewayCertificatesRequest,
   ListGatewayCertificatesResponse,
   ListGatewayCertificatesError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  GatewayCertificatesListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListGatewayCertificatesRequest,
@@ -205451,7 +205519,7 @@ export const listGatewayCertificates: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListGatewayListItemsError = GatewayListNotFound | CloudflareOpError;
 /** Fetch all items in a single Zero Trust list. */
@@ -205459,7 +205527,8 @@ export const listGatewayListItems: API.PaginatedOperationMethod<
   ListGatewayListItemsRequest,
   ListGatewayListItemsResponse,
   ListGatewayListItemsError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  GatewayListsItemsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListGatewayListItemsRequest,
@@ -205470,7 +205539,7 @@ export const listGatewayListItems: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListGatewayListsError = CloudflareOpError;
 /** Fetch all Zero Trust lists for an account. */
@@ -205478,7 +205547,8 @@ export const listGatewayLists: API.PaginatedOperationMethod<
   ListGatewayListsRequest,
   ListGatewayListsResponse,
   ListGatewayListsError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  GatewayListsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListGatewayListsRequest,
@@ -205489,7 +205559,7 @@ export const listGatewayLists: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListGatewayLocationsError = CloudflareOpError;
 /** List Zero Trust Gateway locations for an account. */
@@ -205497,7 +205567,8 @@ export const listGatewayLocations: API.PaginatedOperationMethod<
   ListGatewayLocationsRequest,
   ListGatewayLocationsResponse,
   ListGatewayLocationsError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  GatewayLocationsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListGatewayLocationsRequest,
@@ -205508,7 +205579,7 @@ export const listGatewayLocations: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListGatewayPacfilesError = CloudflareOpError;
 /** List all Zero Trust Gateway PAC files for an account. */
@@ -205516,7 +205587,8 @@ export const listGatewayPacfiles: API.PaginatedOperationMethod<
   ListGatewayPacfilesRequest,
   ListGatewayPacfilesResponse,
   ListGatewayPacfilesError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  GatewayPacfilesListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListGatewayPacfilesRequest,
@@ -205527,7 +205599,7 @@ export const listGatewayPacfiles: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListGatewayProxyEndpointsError = CloudflareOpError;
 /** List all Zero Trust Gateway proxy endpoints for an account. */
@@ -205535,7 +205607,8 @@ export const listGatewayProxyEndpoints: API.PaginatedOperationMethod<
   ListGatewayProxyEndpointsRequest,
   ListGatewayProxyEndpointsResponse,
   ListGatewayProxyEndpointsError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  GatewayProxyEndpointsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListGatewayProxyEndpointsRequest,
@@ -205546,7 +205619,7 @@ export const listGatewayProxyEndpoints: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListGatewayRulesError = CloudflareOpError;
 /** List Zero Trust Gateway rules for an account. */
@@ -205554,7 +205627,8 @@ export const listGatewayRules: API.PaginatedOperationMethod<
   ListGatewayRulesRequest,
   ListGatewayRulesResponse,
   ListGatewayRulesError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  GatewayRulesListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListGatewayRulesRequest,
@@ -205565,7 +205639,7 @@ export const listGatewayRules: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListGatewaysError = CloudflareOpError;
 /** Retrieve information about the current Zero Trust account. */
@@ -205588,7 +205662,8 @@ export const listIdentityProviderScimGroups: API.PaginatedOperationMethod<
   ListIdentityProviderScimGroupsRequest,
   ListIdentityProviderScimGroupsResponse,
   ListIdentityProviderScimGroupsError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  IdentityProvidersScimGroupsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListIdentityProviderScimGroupsRequest,
@@ -205605,7 +205680,7 @@ export const listIdentityProviderScimGroups: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListIdentityProviderScimUsersError = CloudflareOpError;
 /** Lists SCIM User resources synced to Cloudflare via the System for Cross-domain Identity Management (SCIM). */
@@ -205613,7 +205688,8 @@ export const listIdentityProviderScimUsers: API.PaginatedOperationMethod<
   ListIdentityProviderScimUsersRequest,
   ListIdentityProviderScimUsersResponse,
   ListIdentityProviderScimUsersError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  IdentityProvidersScimUsersListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListIdentityProviderScimUsersRequest,
@@ -205630,7 +205706,7 @@ export const listIdentityProviderScimUsers: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListIdentityProvidersForAccountError =
   | Forbidden
@@ -205640,7 +205716,8 @@ export const listIdentityProvidersForAccount: API.PaginatedOperationMethod<
   ListIdentityProvidersForAccountRequest,
   ListIdentityProvidersResponse,
   ListIdentityProvidersForAccountError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  IdentityProvidersListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListIdentityProvidersForAccountRequest,
@@ -205657,7 +205734,7 @@ export const listIdentityProvidersForAccount: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListIdentityProvidersForZoneError = Forbidden | CloudflareOpError;
 /** Lists all configured identity providers. */
@@ -205665,7 +205742,8 @@ export const listIdentityProvidersForZone: API.PaginatedOperationMethod<
   ListIdentityProvidersForZoneRequest,
   ListIdentityProvidersResponse,
   ListIdentityProvidersForZoneError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  IdentityProvidersListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListIdentityProvidersForZoneRequest,
@@ -205682,7 +205760,7 @@ export const listIdentityProvidersForZone: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListNetworkHostnameRoutesError = Forbidden | CloudflareOpError;
 /** Lists and filters hostname routes in an account. */
@@ -205690,7 +205768,8 @@ export const listNetworkHostnameRoutes: API.PaginatedOperationMethod<
   ListNetworkHostnameRoutesRequest,
   ListNetworkHostnameRoutesResponse,
   ListNetworkHostnameRoutesError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  NetworksHostnameRoutesListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListNetworkHostnameRoutesRequest,
@@ -205707,7 +205786,7 @@ export const listNetworkHostnameRoutes: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListNetworkRoutesError = CloudflareOpError;
 /** Lists and filters private network routes in an account. */
@@ -205715,7 +205794,8 @@ export const listNetworkRoutes: API.PaginatedOperationMethod<
   ListNetworkRoutesRequest,
   ListNetworkRoutesResponse,
   ListNetworkRoutesError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  NetworksRoutesListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListNetworkRoutesRequest,
@@ -205732,7 +205812,7 @@ export const listNetworkRoutes: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListNetworkSubnetsError = CloudflareOpError;
 /** Lists and filters subnets in an account. */
@@ -205740,7 +205820,8 @@ export const listNetworkSubnets: API.PaginatedOperationMethod<
   ListNetworkSubnetsRequest,
   ListNetworkSubnetsResponse,
   ListNetworkSubnetsError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  NetworksSubnetsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListNetworkSubnetsRequest,
@@ -205757,7 +205838,7 @@ export const listNetworkSubnets: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListNetworkVirtualNetworksError = CloudflareOpError;
 /** Lists and filters virtual networks in an account. */
@@ -205765,7 +205846,8 @@ export const listNetworkVirtualNetworks: API.PaginatedOperationMethod<
   ListNetworkVirtualNetworksRequest,
   ListNetworkVirtualNetworksResponse,
   ListNetworkVirtualNetworksError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  NetworksVirtualNetworksListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListNetworkVirtualNetworksRequest,
@@ -205776,7 +205858,7 @@ export const listNetworkVirtualNetworks: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListOrganizationsForAccountError =
   | OrganizationNotFound
@@ -205818,7 +205900,8 @@ export const listResourceLibraryApplications: API.PaginatedOperationMethod<
   ListResourceLibraryApplicationsRequest,
   ListResourceLibraryApplicationsResponse,
   ListResourceLibraryApplicationsError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  ResourceLibraryApplicationsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListResourceLibraryApplicationsRequest,
@@ -205829,7 +205912,7 @@ export const listResourceLibraryApplications: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListResourceLibraryCategoriesError = CloudflareOpError;
 /** List application categories. */
@@ -205837,7 +205920,8 @@ export const listResourceLibraryCategories: API.PaginatedOperationMethod<
   ListResourceLibraryCategoriesRequest,
   ListResourceLibraryCategoriesResponse,
   ListResourceLibraryCategoriesError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  ResourceLibraryCategoriesListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListResourceLibraryCategoriesRequest,
@@ -205848,7 +205932,7 @@ export const listResourceLibraryCategories: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListRiskScoringIntegrationsError = Forbidden | CloudflareOpError;
 /** Lists all configured Zero Trust risk score integrations for the account. */
@@ -205856,7 +205940,8 @@ export const listRiskScoringIntegrations: API.PaginatedOperationMethod<
   ListRiskScoringIntegrationsRequest,
   ListRiskScoringIntegrationsResponse,
   ListRiskScoringIntegrationsError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  RiskScoringIntegrationsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListRiskScoringIntegrationsRequest,
@@ -205867,7 +205952,7 @@ export const listRiskScoringIntegrations: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListTenantGatewayRuleError = CloudflareOpError;
 /** List Zero Trust Gateway rules for the parent account of an account in the MSP configuration. */
@@ -205875,7 +205960,8 @@ export const listTenantGatewayRule: API.PaginatedOperationMethod<
   ListTenantGatewayRuleRequest,
   ListTenantGatewayRuleResponse,
   ListTenantGatewayRuleError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  GatewayRulesListTenantResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListTenantGatewayRuleRequest,
@@ -205886,7 +205972,7 @@ export const listTenantGatewayRule: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListTunnelCloudflaredsError = CloudflareOpError;
 /** Lists and filters Cloudflare Tunnels in an account. */
@@ -205894,7 +205980,8 @@ export const listTunnelCloudflareds: API.PaginatedOperationMethod<
   ListTunnelCloudflaredsRequest,
   ListTunnelCloudflaredsResponse,
   ListTunnelCloudflaredsError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  TunnelsCloudflaredListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListTunnelCloudflaredsRequest,
@@ -205911,7 +205998,7 @@ export const listTunnelCloudflareds: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListTunnelsError = CloudflareOpError;
 /** Lists and filters all types of Tunnels in an account. */
@@ -205919,7 +206006,8 @@ export const listTunnels: API.PaginatedOperationMethod<
   ListTunnelsRequest,
   ListTunnelsResponse,
   ListTunnelsError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  TunnelsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListTunnelsRequest,
@@ -205936,7 +206024,7 @@ export const listTunnels: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListTunnelWarpConnectorsError = Forbidden | CloudflareOpError;
 /** Lists and filters Warp Connector Tunnels in an account. */
@@ -205944,7 +206032,8 @@ export const listTunnelWarpConnectors: API.PaginatedOperationMethod<
   ListTunnelWarpConnectorsRequest,
   ListTunnelWarpConnectorsResponse,
   ListTunnelWarpConnectorsError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  TunnelsWarpConnectorListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListTunnelWarpConnectorsRequest,
@@ -205961,7 +206050,7 @@ export const listTunnelWarpConnectors: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type LiveDexFleetStatusError = CloudflareOpError;
 /** Get details for live (up to 60 minutes) devices using WARP. */
@@ -206361,7 +206450,8 @@ export const patchSeat: API.PaginatedOperationMethod<
   PatchSeatRequest,
   PatchSeatResponse,
   PatchSeatError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  SeatsEditResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: PatchSeatRequest,
@@ -206372,7 +206462,7 @@ export const patchSeat: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type PatchTunnelCloudflaredError =
   | TunnelNotFound
@@ -206473,7 +206563,8 @@ export const putAccessCertificateSettingForAccount: API.PaginatedOperationMethod
   PutAccessCertificateSettingForAccountRequest,
   PutAccessCertificateSettingResponse,
   PutAccessCertificateSettingForAccountError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  AccessCertificatesSettingsUpdateResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: PutAccessCertificateSettingForAccountRequest,
@@ -206484,7 +206575,7 @@ export const putAccessCertificateSettingForAccount: API.PaginatedOperationMethod
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type PutAccessCertificateSettingForZoneError = CloudflareOpError;
 /** Updates an mTLS certificate's hostname settings. */
@@ -206492,7 +206583,8 @@ export const putAccessCertificateSettingForZone: API.PaginatedOperationMethod<
   PutAccessCertificateSettingForZoneRequest,
   PutAccessCertificateSettingResponse,
   PutAccessCertificateSettingForZoneError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  AccessCertificatesSettingsUpdateResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: PutAccessCertificateSettingForZoneRequest,
@@ -206503,7 +206595,7 @@ export const putAccessCertificateSettingForZone: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type PutAccessKeyError = Forbidden | CloudflareOpError;
 /** Updates the Access key rotation settings for an account. */
@@ -206529,7 +206621,8 @@ export const putDevicePolicyCustomExclude: API.PaginatedOperationMethod<
   PutDevicePolicyCustomExcludeRequest,
   PutDevicePolicyCustomExcludeResponse,
   PutDevicePolicyCustomExcludeError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  DevicesPoliciesCustomExcludesUpdateResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: PutDevicePolicyCustomExcludeRequest,
@@ -206545,7 +206638,7 @@ export const putDevicePolicyCustomExclude: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type PutDevicePolicyCustomFallbackDomainError =
   | DevicePolicyNotFound
@@ -206556,7 +206649,8 @@ export const putDevicePolicyCustomFallbackDomain: API.PaginatedOperationMethod<
   PutDevicePolicyCustomFallbackDomainRequest,
   PutDevicePolicyCustomFallbackDomainResponse,
   PutDevicePolicyCustomFallbackDomainError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  DevicesPoliciesCustomFallbackDomainsUpdateResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: PutDevicePolicyCustomFallbackDomainRequest,
@@ -206572,7 +206666,7 @@ export const putDevicePolicyCustomFallbackDomain: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type PutDevicePolicyCustomIncludeError =
   | DevicePolicyNotFound
@@ -206583,7 +206677,8 @@ export const putDevicePolicyCustomInclude: API.PaginatedOperationMethod<
   PutDevicePolicyCustomIncludeRequest,
   PutDevicePolicyCustomIncludeResponse,
   PutDevicePolicyCustomIncludeError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  DevicesPoliciesCustomIncludesUpdateResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: PutDevicePolicyCustomIncludeRequest,
@@ -206599,7 +206694,7 @@ export const putDevicePolicyCustomInclude: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type PutDevicePolicyDefaultExcludeError = CloudflareOpError;
 /** Sets the list of routes excluded from the WARP client's tunnel. */
@@ -206607,7 +206702,8 @@ export const putDevicePolicyDefaultExclude: API.PaginatedOperationMethod<
   PutDevicePolicyDefaultExcludeRequest,
   PutDevicePolicyDefaultExcludeResponse,
   PutDevicePolicyDefaultExcludeError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  DevicesPoliciesDefaultExcludesUpdateResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: PutDevicePolicyDefaultExcludeRequest,
@@ -206618,7 +206714,7 @@ export const putDevicePolicyDefaultExclude: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type PutDevicePolicyDefaultFallbackDomainError = CloudflareOpError;
 /** Sets the list of domains to bypass Gateway DNS resolution. These domains will use the specified local DNS resolver instead. */
@@ -206626,7 +206722,8 @@ export const putDevicePolicyDefaultFallbackDomain: API.PaginatedOperationMethod<
   PutDevicePolicyDefaultFallbackDomainRequest,
   PutDevicePolicyDefaultFallbackDomainResponse,
   PutDevicePolicyDefaultFallbackDomainError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  DevicesPoliciesDefaultFallbackDomainsUpdateResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: PutDevicePolicyDefaultFallbackDomainRequest,
@@ -206637,7 +206734,7 @@ export const putDevicePolicyDefaultFallbackDomain: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type PutDevicePolicyDefaultIncludeError = CloudflareOpError;
 /** Sets the list of routes included in the WARP client's tunnel. */
@@ -206645,7 +206742,8 @@ export const putDevicePolicyDefaultInclude: API.PaginatedOperationMethod<
   PutDevicePolicyDefaultIncludeRequest,
   PutDevicePolicyDefaultIncludeResponse,
   PutDevicePolicyDefaultIncludeError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  DevicesPoliciesDefaultIncludesUpdateResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: PutDevicePolicyDefaultIncludeRequest,
@@ -206656,7 +206754,7 @@ export const putDevicePolicyDefaultInclude: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type PutDeviceSettingError = Forbidden | CloudflareOpError;
 /** Updates the current device settings for a Zero Trust account. */

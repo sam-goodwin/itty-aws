@@ -2222,27 +2222,7 @@ export const listAccessors: API.OperationMethod<
     items: "Accessors",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListAccessorsInput,
-  ListAccessorsOutput,
-  ListAccessorsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAccessorsInput,
-  ) => stream.Stream<
-    ListAccessorsOutput,
-    ListAccessorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAccessorsInput,
-  ) => stream.Stream<
-    AccessorSummary,
-    ListAccessorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListInvitationsError =
   | AccessDeniedException
@@ -2296,27 +2276,7 @@ export const listInvitations: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListInvitationsInput,
-  ListInvitationsOutput,
-  ListInvitationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListInvitationsInput,
-  ) => stream.Stream<
-    ListInvitationsOutput,
-    ListInvitationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListInvitationsInput,
-  ) => stream.Stream<
-    unknown,
-    ListInvitationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListMembersError =
   | AccessDeniedException
@@ -2366,27 +2326,7 @@ export const listMembers: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListMembersInput,
-  ListMembersOutput,
-  ListMembersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListMembersInput,
-  ) => stream.Stream<
-    ListMembersOutput,
-    ListMembersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListMembersInput,
-  ) => stream.Stream<
-    unknown,
-    ListMembersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListNetworksError =
   | AccessDeniedException
@@ -2436,27 +2376,7 @@ export const listNetworks: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListNetworksInput,
-  ListNetworksOutput,
-  ListNetworksError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListNetworksInput,
-  ) => stream.Stream<
-    ListNetworksOutput,
-    ListNetworksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListNetworksInput,
-  ) => stream.Stream<
-    unknown,
-    ListNetworksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListNodesError =
   | AccessDeniedException
@@ -2506,27 +2426,7 @@ export const listNodes: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListNodesInput,
-  ListNodesOutput,
-  ListNodesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListNodesInput,
-  ) => stream.Stream<
-    ListNodesOutput,
-    ListNodesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListNodesInput,
-  ) => stream.Stream<
-    unknown,
-    ListNodesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListProposalsError =
   | AccessDeniedException
@@ -2578,27 +2478,7 @@ export const listProposals: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListProposalsInput,
-  ListProposalsOutput,
-  ListProposalsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListProposalsInput,
-  ) => stream.Stream<
-    ListProposalsOutput,
-    ListProposalsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListProposalsInput,
-  ) => stream.Stream<
-    unknown,
-    ListProposalsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListProposalVotesError =
   | AccessDeniedException
@@ -2648,27 +2528,7 @@ export const listProposalVotes: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListProposalVotesInput,
-  ListProposalVotesOutput,
-  ListProposalVotesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListProposalVotesInput,
-  ) => stream.Stream<
-    ListProposalVotesOutput,
-    ListProposalVotesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListProposalVotesInput,
-  ) => stream.Stream<
-    unknown,
-    ListProposalVotesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsForResourceError =
   | InternalServiceErrorException

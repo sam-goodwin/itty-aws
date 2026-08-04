@@ -1929,7 +1929,8 @@ export const listOrganizationsLocationsOperations: API.PaginatedOperationMethod<
   ListOrganizationsLocationsOperationsRequest,
   ListOperationsResponse,
   ListOrganizationsLocationsOperationsError,
-  GcpOpContext
+  GcpOpContext,
+  ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsLocationsOperationsRequest,
   output: ListOperationsResponse,
@@ -1940,7 +1941,7 @@ export const listOrganizationsLocationsOperations: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListOrganizationsLocationsPostureDeploymentsError =
   | NotFound
@@ -1951,7 +1952,8 @@ export const listOrganizationsLocationsPostureDeployments: API.PaginatedOperatio
   ListOrganizationsLocationsPostureDeploymentsRequest,
   ListPostureDeploymentsResponse,
   ListOrganizationsLocationsPostureDeploymentsError,
-  GcpOpContext
+  GcpOpContext,
+  ListPostureDeploymentsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsLocationsPostureDeploymentsRequest,
   output: ListPostureDeploymentsResponse,
@@ -1962,7 +1964,7 @@ export const listOrganizationsLocationsPostureDeployments: API.PaginatedOperatio
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListOrganizationsLocationsPosturesError =
   | NotFound
@@ -1973,7 +1975,8 @@ export const listOrganizationsLocationsPostures: API.PaginatedOperationMethod<
   ListOrganizationsLocationsPosturesRequest,
   ListPosturesResponse,
   ListOrganizationsLocationsPosturesError,
-  GcpOpContext
+  GcpOpContext,
+  ListPosturesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsLocationsPosturesRequest,
   output: ListPosturesResponse,
@@ -1984,7 +1987,7 @@ export const listOrganizationsLocationsPostures: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListOrganizationsLocationsPostureTemplatesError =
   | NotFound
@@ -1995,7 +1998,8 @@ export const listOrganizationsLocationsPostureTemplates: API.PaginatedOperationM
   ListOrganizationsLocationsPostureTemplatesRequest,
   ListPostureTemplatesResponse,
   ListOrganizationsLocationsPostureTemplatesError,
-  GcpOpContext
+  GcpOpContext,
+  ListPostureTemplatesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsLocationsPostureTemplatesRequest,
   output: ListPostureTemplatesResponse,
@@ -2006,7 +2010,7 @@ export const listOrganizationsLocationsPostureTemplates: API.PaginatedOperationM
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListOrganizationsLocationsReportsError =
   | NotFound
@@ -2017,7 +2021,8 @@ export const listOrganizationsLocationsReports: API.PaginatedOperationMethod<
   ListOrganizationsLocationsReportsRequest,
   ListReportsResponse,
   ListOrganizationsLocationsReportsError,
-  GcpOpContext
+  GcpOpContext,
+  ListReportsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsLocationsReportsRequest,
   output: ListReportsResponse,
@@ -2028,7 +2033,7 @@ export const listOrganizationsLocationsReports: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsError = NotFound | Forbidden | GcpOpError;
 /** Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the ListLocationsRequest.name field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version. */
@@ -2036,7 +2041,8 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   ListProjectsLocationsRequest,
   ListLocationsResponse,
   ListProjectsLocationsError,
-  GcpOpContext
+  GcpOpContext,
+  ListLocationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsRequest,
   output: ListLocationsResponse,
@@ -2047,7 +2053,7 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListRevisionsOrganizationsLocationsPosturesError =
   | NotFound
@@ -2058,7 +2064,8 @@ export const listRevisionsOrganizationsLocationsPostures: API.PaginatedOperation
   ListRevisionsOrganizationsLocationsPosturesRequest,
   ListPostureRevisionsResponse,
   ListRevisionsOrganizationsLocationsPosturesError,
-  GcpOpContext
+  GcpOpContext,
+  ListPostureRevisionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRevisionsOrganizationsLocationsPosturesRequest,
   output: ListPostureRevisionsResponse,
@@ -2069,7 +2076,7 @@ export const listRevisionsOrganizationsLocationsPostures: API.PaginatedOperation
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type PatchOrganizationsLocationsPostureDeploymentsError =
   | NotFound

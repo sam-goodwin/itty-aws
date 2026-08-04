@@ -1253,27 +1253,7 @@ export const batchGetSecretValue: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  BatchGetSecretValueRequest,
-  BatchGetSecretValueResponse,
-  BatchGetSecretValueError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: BatchGetSecretValueRequest,
-  ) => stream.Stream<
-    BatchGetSecretValueResponse,
-    BatchGetSecretValueError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: BatchGetSecretValueRequest,
-  ) => stream.Stream<
-    unknown,
-    BatchGetSecretValueError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type CancelRotateSecretError =
   | InternalServiceError
@@ -1748,27 +1728,7 @@ export const listSecrets: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListSecretsRequest,
-  ListSecretsResponse,
-  ListSecretsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSecretsRequest,
-  ) => stream.Stream<
-    ListSecretsResponse,
-    ListSecretsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSecretsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListSecretsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListSecretVersionIdsError =
   | InternalServiceError
@@ -1828,27 +1788,7 @@ export const listSecretVersionIds: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListSecretVersionIdsRequest,
-  ListSecretVersionIdsResponse,
-  ListSecretVersionIdsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSecretVersionIdsRequest,
-  ) => stream.Stream<
-    ListSecretVersionIdsResponse,
-    ListSecretVersionIdsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSecretVersionIdsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListSecretVersionIdsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type PutResourcePolicyError =
   | InternalServiceError

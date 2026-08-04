@@ -2835,27 +2835,7 @@ export const listApps: API.OperationMethod<
     items: "apps",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListAppsRequest,
-  ListAppsResult,
-  ListAppsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAppsRequest,
-  ) => stream.Stream<
-    ListAppsResult,
-    ListAppsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAppsRequest,
-  ) => stream.Stream<
-    App,
-    ListAppsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListArtifactsError =
   | BadRequestException
@@ -2975,27 +2955,7 @@ export const listBranches: API.OperationMethod<
     items: "branches",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListBranchesRequest,
-  ListBranchesResult,
-  ListBranchesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListBranchesRequest,
-  ) => stream.Stream<
-    ListBranchesResult,
-    ListBranchesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListBranchesRequest,
-  ) => stream.Stream<
-    Branch,
-    ListBranchesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListDomainAssociationsError =
   | BadRequestException
@@ -3044,27 +3004,7 @@ export const listDomainAssociations: API.OperationMethod<
     items: "domainAssociations",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListDomainAssociationsRequest,
-  ListDomainAssociationsResult,
-  ListDomainAssociationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDomainAssociationsRequest,
-  ) => stream.Stream<
-    ListDomainAssociationsResult,
-    ListDomainAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDomainAssociationsRequest,
-  ) => stream.Stream<
-    DomainAssociation,
-    ListDomainAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListJobsError =
   | BadRequestException
@@ -3115,27 +3055,7 @@ export const listJobs: API.OperationMethod<
     items: "jobSummaries",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListJobsRequest,
-  ListJobsResult,
-  ListJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListJobsRequest,
-  ) => stream.Stream<
-    ListJobsResult,
-    ListJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListJobsRequest,
-  ) => stream.Stream<
-    JobSummary,
-    ListJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsForResourceError =
   | BadRequestException

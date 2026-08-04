@@ -3273,7 +3273,8 @@ export const listCustomHostnames: API.PaginatedOperationMethod<
   ListCustomHostnamesRequest,
   ListCustomHostnamesResponse,
   ListCustomHostnamesError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  ListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListCustomHostnamesRequest,
@@ -3295,7 +3296,7 @@ export const listCustomHostnames: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type PatchCustomHostnameError =
   | CustomHostnameNotFound

@@ -899,7 +899,8 @@ export const listAccountsAggregateProductStatuses: API.PaginatedOperationMethod<
   ListAccountsAggregateProductStatusesRequest,
   ListAggregateProductStatusesResponse,
   ListAccountsAggregateProductStatusesError,
-  GcpOpContext
+  GcpOpContext,
+  ListAggregateProductStatusesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsAggregateProductStatusesRequest,
   output: ListAggregateProductStatusesResponse,
@@ -910,7 +911,7 @@ export const listAccountsAggregateProductStatuses: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type RenderaccountissuesIssueresolutionError =
   | NotFound

@@ -1121,7 +1121,8 @@ export const listAccountsLanguagesProductCertifications: API.PaginatedOperationM
   ListAccountsLanguagesProductCertificationsRequest,
   ListProductCertificationsResponse,
   ListAccountsLanguagesProductCertificationsError,
-  GcpOpContext
+  GcpOpContext,
+  ListProductCertificationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsLanguagesProductCertificationsRequest,
   output: ListProductCertificationsResponse,
@@ -1132,7 +1133,7 @@ export const listAccountsLanguagesProductCertifications: API.PaginatedOperationM
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListAccountsProductsError = NotFound | Forbidden | GcpOpError;
 /** Lists all the products in a Manufacturer Center account. */
@@ -1140,7 +1141,8 @@ export const listAccountsProducts: API.PaginatedOperationMethod<
   ListAccountsProductsRequest,
   ListProductsResponse,
   ListAccountsProductsError,
-  GcpOpContext
+  GcpOpContext,
+  ListProductsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsProductsRequest,
   output: ListProductsResponse,
@@ -1151,7 +1153,7 @@ export const listAccountsProducts: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type PatchAccountsLanguagesProductCertificationsError =
   | NotFound

@@ -1496,27 +1496,7 @@ export const listSigningJobs: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListSigningJobsRequest,
-  ListSigningJobsResponse,
-  ListSigningJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSigningJobsRequest,
-  ) => stream.Stream<
-    ListSigningJobsResponse,
-    ListSigningJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSigningJobsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListSigningJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListSigningPlatformsError =
   | AccessDeniedException
@@ -1570,27 +1550,7 @@ export const listSigningPlatforms: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListSigningPlatformsRequest,
-  ListSigningPlatformsResponse,
-  ListSigningPlatformsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSigningPlatformsRequest,
-  ) => stream.Stream<
-    ListSigningPlatformsResponse,
-    ListSigningPlatformsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSigningPlatformsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListSigningPlatformsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListSigningProfilesError =
   | AccessDeniedException
@@ -1643,27 +1603,7 @@ export const listSigningProfiles: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListSigningProfilesRequest,
-  ListSigningProfilesResponse,
-  ListSigningProfilesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSigningProfilesRequest,
-  ) => stream.Stream<
-    ListSigningProfilesResponse,
-    ListSigningProfilesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSigningProfilesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListSigningProfilesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsForResourceError =
   | BadRequestException

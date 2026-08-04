@@ -3125,27 +3125,7 @@ export const listCompositions: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListCompositionsRequest,
-  ListCompositionsResponse,
-  ListCompositionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCompositionsRequest,
-  ) => stream.Stream<
-    ListCompositionsResponse,
-    ListCompositionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCompositionsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListCompositionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListEncoderConfigurationsError =
   | AccessDeniedException
@@ -3196,27 +3176,7 @@ export const listEncoderConfigurations: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListEncoderConfigurationsRequest,
-  ListEncoderConfigurationsResponse,
-  ListEncoderConfigurationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEncoderConfigurationsRequest,
-  ) => stream.Stream<
-    ListEncoderConfigurationsResponse,
-    ListEncoderConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEncoderConfigurationsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListEncoderConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListIngestConfigurationsError =
   | AccessDeniedException
@@ -3258,27 +3218,7 @@ export const listIngestConfigurations: API.OperationMethod<
     items: "ingestConfigurations",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListIngestConfigurationsRequest,
-  ListIngestConfigurationsResponse,
-  ListIngestConfigurationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListIngestConfigurationsRequest,
-  ) => stream.Stream<
-    ListIngestConfigurationsResponse,
-    ListIngestConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListIngestConfigurationsRequest,
-  ) => stream.Stream<
-    IngestConfigurationSummary,
-    ListIngestConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListParticipantEventsError =
   | AccessDeniedException
@@ -3320,27 +3260,7 @@ export const listParticipantEvents: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListParticipantEventsRequest,
-  ListParticipantEventsResponse,
-  ListParticipantEventsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListParticipantEventsRequest,
-  ) => stream.Stream<
-    ListParticipantEventsResponse,
-    ListParticipantEventsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListParticipantEventsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListParticipantEventsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListParticipantReplicasError =
   | AccessDeniedException
@@ -3382,27 +3302,7 @@ export const listParticipantReplicas: API.OperationMethod<
     items: "replicas",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListParticipantReplicasRequest,
-  ListParticipantReplicasResponse,
-  ListParticipantReplicasError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListParticipantReplicasRequest,
-  ) => stream.Stream<
-    ListParticipantReplicasResponse,
-    ListParticipantReplicasError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListParticipantReplicasRequest,
-  ) => stream.Stream<
-    ParticipantReplica,
-    ListParticipantReplicasError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListParticipantsError =
   | AccessDeniedException
@@ -3443,27 +3343,7 @@ export const listParticipants: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListParticipantsRequest,
-  ListParticipantsResponse,
-  ListParticipantsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListParticipantsRequest,
-  ) => stream.Stream<
-    ListParticipantsResponse,
-    ListParticipantsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListParticipantsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListParticipantsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListPublicKeysError =
   | AccessDeniedException
@@ -3505,27 +3385,7 @@ export const listPublicKeys: API.OperationMethod<
     items: "publicKeys",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListPublicKeysRequest,
-  ListPublicKeysResponse,
-  ListPublicKeysError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPublicKeysRequest,
-  ) => stream.Stream<
-    ListPublicKeysResponse,
-    ListPublicKeysError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPublicKeysRequest,
-  ) => stream.Stream<
-    PublicKeySummary,
-    ListPublicKeysError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListStagesError =
   | AccessDeniedException
@@ -3574,27 +3434,7 @@ export const listStages: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListStagesRequest,
-  ListStagesResponse,
-  ListStagesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListStagesRequest,
-  ) => stream.Stream<
-    ListStagesResponse,
-    ListStagesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListStagesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListStagesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListStageSessionsError =
   | AccessDeniedException
@@ -3635,27 +3475,7 @@ export const listStageSessions: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListStageSessionsRequest,
-  ListStageSessionsResponse,
-  ListStageSessionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListStageSessionsRequest,
-  ) => stream.Stream<
-    ListStageSessionsResponse,
-    ListStageSessionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListStageSessionsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListStageSessionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListStorageConfigurationsError =
   | AccessDeniedException
@@ -3706,27 +3526,7 @@ export const listStorageConfigurations: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListStorageConfigurationsRequest,
-  ListStorageConfigurationsResponse,
-  ListStorageConfigurationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListStorageConfigurationsRequest,
-  ) => stream.Stream<
-    ListStorageConfigurationsResponse,
-    ListStorageConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListStorageConfigurationsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListStorageConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsForResourceError =
   | InternalServerException

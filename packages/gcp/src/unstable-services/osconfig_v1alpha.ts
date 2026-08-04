@@ -2428,7 +2428,8 @@ export const listProjectsLocationsInstanceOSPoliciesCompliances: API.PaginatedOp
   ListProjectsLocationsInstanceOSPoliciesCompliancesRequest,
   ListInstanceOSPoliciesCompliancesResponse,
   ListProjectsLocationsInstanceOSPoliciesCompliancesError,
-  GcpOpContext
+  GcpOpContext,
+  ListInstanceOSPoliciesCompliancesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsInstanceOSPoliciesCompliancesRequest,
   output: ListInstanceOSPoliciesCompliancesResponse,
@@ -2439,7 +2440,7 @@ export const listProjectsLocationsInstanceOSPoliciesCompliances: API.PaginatedOp
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsInstancesInventoriesError =
   | NotFound
@@ -2450,7 +2451,8 @@ export const listProjectsLocationsInstancesInventories: API.PaginatedOperationMe
   ListProjectsLocationsInstancesInventoriesRequest,
   ListInventoriesResponse,
   ListProjectsLocationsInstancesInventoriesError,
-  GcpOpContext
+  GcpOpContext,
+  ListInventoriesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsInstancesInventoriesRequest,
   output: ListInventoriesResponse,
@@ -2461,7 +2463,7 @@ export const listProjectsLocationsInstancesInventories: API.PaginatedOperationMe
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsInstancesOsPolicyAssignmentsReportsError =
   | NotFound
@@ -2472,7 +2474,8 @@ export const listProjectsLocationsInstancesOsPolicyAssignmentsReports: API.Pagin
   ListProjectsLocationsInstancesOsPolicyAssignmentsReportsRequest,
   ListOSPolicyAssignmentReportsResponse,
   ListProjectsLocationsInstancesOsPolicyAssignmentsReportsError,
-  GcpOpContext
+  GcpOpContext,
+  ListOSPolicyAssignmentReportsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsInstancesOsPolicyAssignmentsReportsRequest,
   output: ListOSPolicyAssignmentReportsResponse,
@@ -2483,7 +2486,7 @@ export const listProjectsLocationsInstancesOsPolicyAssignmentsReports: API.Pagin
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsInstancesVulnerabilityReportsError =
   | NotFound
@@ -2494,7 +2497,8 @@ export const listProjectsLocationsInstancesVulnerabilityReports: API.PaginatedOp
   ListProjectsLocationsInstancesVulnerabilityReportsRequest,
   ListVulnerabilityReportsResponse,
   ListProjectsLocationsInstancesVulnerabilityReportsError,
-  GcpOpContext
+  GcpOpContext,
+  ListVulnerabilityReportsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsInstancesVulnerabilityReportsRequest,
   output: ListVulnerabilityReportsResponse,
@@ -2505,7 +2509,7 @@ export const listProjectsLocationsInstancesVulnerabilityReports: API.PaginatedOp
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsOsPolicyAssignmentsError =
   | NotFound
@@ -2516,7 +2520,8 @@ export const listProjectsLocationsOsPolicyAssignments: API.PaginatedOperationMet
   ListProjectsLocationsOsPolicyAssignmentsRequest,
   ListOSPolicyAssignmentsResponse,
   ListProjectsLocationsOsPolicyAssignmentsError,
-  GcpOpContext
+  GcpOpContext,
+  ListOSPolicyAssignmentsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsOsPolicyAssignmentsRequest,
   output: ListOSPolicyAssignmentsResponse,
@@ -2527,7 +2532,7 @@ export const listProjectsLocationsOsPolicyAssignments: API.PaginatedOperationMet
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListRevisionsProjectsLocationsOsPolicyAssignmentsError =
   | NotFound
@@ -2538,7 +2543,8 @@ export const listRevisionsProjectsLocationsOsPolicyAssignments: API.PaginatedOpe
   ListRevisionsProjectsLocationsOsPolicyAssignmentsRequest,
   ListOSPolicyAssignmentRevisionsResponse,
   ListRevisionsProjectsLocationsOsPolicyAssignmentsError,
-  GcpOpContext
+  GcpOpContext,
+  ListOSPolicyAssignmentRevisionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRevisionsProjectsLocationsOsPolicyAssignmentsRequest,
   output: ListOSPolicyAssignmentRevisionsResponse,
@@ -2549,7 +2555,7 @@ export const listRevisionsProjectsLocationsOsPolicyAssignments: API.PaginatedOpe
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type PatchProjectsLocationsOsPolicyAssignmentsError =
   | NotFound

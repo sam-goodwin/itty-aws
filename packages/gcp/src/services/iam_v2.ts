@@ -459,7 +459,8 @@ export const listPoliciesPolicies: API.PaginatedOperationMethod<
   ListPoliciesPoliciesRequest,
   GoogleIamV2ListPoliciesResponse,
   ListPoliciesPoliciesError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleIamV2ListPoliciesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPoliciesPoliciesRequest,
   output: GoogleIamV2ListPoliciesResponse,
@@ -470,7 +471,7 @@ export const listPoliciesPolicies: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type UpdatePoliciesError =
   | NotFound

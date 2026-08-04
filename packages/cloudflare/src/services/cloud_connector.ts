@@ -257,7 +257,8 @@ export const listRules: API.PaginatedOperationMethod<
   ListRulesRequest,
   ListRulesResponse,
   ListRulesError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  RulesListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListRulesRequest,
@@ -273,7 +274,7 @@ export const listRules: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type PutRuleError = Forbidden | CloudflareOpError;
 /** Updates Cloud Connector rules for a zone, replacing the existing rule configuration. */
@@ -281,7 +282,8 @@ export const putRule: API.PaginatedOperationMethod<
   PutRuleRequest,
   PutRuleResponse,
   PutRuleError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  RulesUpdateResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: PutRuleRequest,
@@ -292,4 +294,4 @@ export const putRule: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;

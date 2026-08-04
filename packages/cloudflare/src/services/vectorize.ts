@@ -1129,7 +1129,8 @@ export const listIndexes: API.PaginatedOperationMethod<
   ListIndexesRequest,
   ListIndexesResponse,
   ListIndexesError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  IndexesListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListIndexesRequest,
@@ -1140,7 +1141,7 @@ export const listIndexes: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListIndexMetadataIndexesError = NotFound | Gone | CloudflareOpError;
 /** List Metadata Indexes for the specified Vectorize Index. */

@@ -890,7 +890,8 @@ export const getSubdomainDns: API.PaginatedOperationMethod<
   GetSubdomainDnsRequest,
   GetSubdomainDnsResponse,
   GetSubdomainDnsError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  SubdomainsDnsGetResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: GetSubdomainDnsRequest,
@@ -901,7 +902,7 @@ export const getSubdomainDns: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListSubdomainsError = Forbidden | CloudflareOpError;
 /** Lists all sending-enabled subdomains for the zone. */
@@ -909,7 +910,8 @@ export const listSubdomains: API.PaginatedOperationMethod<
   ListSubdomainsRequest,
   ListSubdomainsResponse,
   ListSubdomainsError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  SubdomainsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListSubdomainsRequest,
@@ -920,7 +922,7 @@ export const listSubdomains: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type SendEmailSendingError = CloudflareOpError;
 /** Send an email */

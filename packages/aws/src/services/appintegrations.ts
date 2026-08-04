@@ -1770,27 +1770,7 @@ export const listApplicationAssociations: API.OperationMethod<
     items: "ApplicationAssociations",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListApplicationAssociationsRequest,
-  ListApplicationAssociationsResponse,
-  ListApplicationAssociationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListApplicationAssociationsRequest,
-  ) => stream.Stream<
-    ListApplicationAssociationsResponse,
-    ListApplicationAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListApplicationAssociationsRequest,
-  ) => stream.Stream<
-    ApplicationAssociationSummary,
-    ListApplicationAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListApplicationsError =
   | AccessDeniedException
@@ -1841,27 +1821,7 @@ export const listApplications: API.OperationMethod<
     items: "Applications",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListApplicationsRequest,
-  ListApplicationsResponse,
-  ListApplicationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListApplicationsRequest,
-  ) => stream.Stream<
-    ListApplicationsResponse,
-    ListApplicationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListApplicationsRequest,
-  ) => stream.Stream<
-    ApplicationSummary,
-    ListApplicationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListDataIntegrationAssociationsError =
   | AccessDeniedException
@@ -1918,27 +1878,7 @@ export const listDataIntegrationAssociations: API.OperationMethod<
     items: "DataIntegrationAssociations",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListDataIntegrationAssociationsRequest,
-  ListDataIntegrationAssociationsResponse,
-  ListDataIntegrationAssociationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDataIntegrationAssociationsRequest,
-  ) => stream.Stream<
-    ListDataIntegrationAssociationsResponse,
-    ListDataIntegrationAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDataIntegrationAssociationsRequest,
-  ) => stream.Stream<
-    DataIntegrationAssociationSummary,
-    ListDataIntegrationAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListDataIntegrationsError =
   | AccessDeniedException
@@ -1993,27 +1933,7 @@ export const listDataIntegrations: API.OperationMethod<
     items: "DataIntegrations",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListDataIntegrationsRequest,
-  ListDataIntegrationsResponse,
-  ListDataIntegrationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDataIntegrationsRequest,
-  ) => stream.Stream<
-    ListDataIntegrationsResponse,
-    ListDataIntegrationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDataIntegrationsRequest,
-  ) => stream.Stream<
-    DataIntegrationSummary,
-    ListDataIntegrationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListEventIntegrationAssociationsError =
   | AccessDeniedException
@@ -2066,27 +1986,7 @@ export const listEventIntegrationAssociations: API.OperationMethod<
     items: "EventIntegrationAssociations",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListEventIntegrationAssociationsRequest,
-  ListEventIntegrationAssociationsResponse,
-  ListEventIntegrationAssociationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEventIntegrationAssociationsRequest,
-  ) => stream.Stream<
-    ListEventIntegrationAssociationsResponse,
-    ListEventIntegrationAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEventIntegrationAssociationsRequest,
-  ) => stream.Stream<
-    EventIntegrationAssociation,
-    ListEventIntegrationAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListEventIntegrationsError =
   | AccessDeniedException
@@ -2137,27 +2037,7 @@ export const listEventIntegrations: API.OperationMethod<
     items: "EventIntegrations",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListEventIntegrationsRequest,
-  ListEventIntegrationsResponse,
-  ListEventIntegrationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEventIntegrationsRequest,
-  ) => stream.Stream<
-    ListEventIntegrationsResponse,
-    ListEventIntegrationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEventIntegrationsRequest,
-  ) => stream.Stream<
-    EventIntegration,
-    ListEventIntegrationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsForResourceError =
   | InternalServiceError

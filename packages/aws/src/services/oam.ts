@@ -1047,27 +1047,7 @@ export const listAttachedLinks: API.OperationMethod<
     items: "Items",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListAttachedLinksInput,
-  ListAttachedLinksOutput,
-  ListAttachedLinksError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAttachedLinksInput,
-  ) => stream.Stream<
-    ListAttachedLinksOutput,
-    ListAttachedLinksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAttachedLinksInput,
-  ) => stream.Stream<
-    ListAttachedLinksItem,
-    ListAttachedLinksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListLinksError =
   | InternalServiceFault
@@ -1118,27 +1098,7 @@ export const listLinks: API.OperationMethod<
     items: "Items",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListLinksInput,
-  ListLinksOutput,
-  ListLinksError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListLinksInput,
-  ) => stream.Stream<
-    ListLinksOutput,
-    ListLinksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListLinksInput,
-  ) => stream.Stream<
-    ListLinksItem,
-    ListLinksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListSinksError =
   | InternalServiceFault
@@ -1187,27 +1147,7 @@ export const listSinks: API.OperationMethod<
     items: "Items",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListSinksInput,
-  ListSinksOutput,
-  ListSinksError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSinksInput,
-  ) => stream.Stream<
-    ListSinksOutput,
-    ListSinksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSinksInput,
-  ) => stream.Stream<
-    ListSinksItem,
-    ListSinksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsForResourceError =
   | ResourceNotFoundException

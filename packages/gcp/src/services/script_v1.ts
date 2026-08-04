@@ -1430,7 +1430,8 @@ export const listProcesses: API.PaginatedOperationMethod<
   ListProcessesRequest,
   ListUserProcessesResponse,
   ListProcessesError,
-  GcpOpContext
+  GcpOpContext,
+  ListUserProcessesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProcessesRequest,
   output: ListUserProcessesResponse,
@@ -1441,7 +1442,7 @@ export const listProcesses: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsDeploymentsError = NotFound | Forbidden | GcpOpError;
 /** Lists the deployments of an Apps Script project. */
@@ -1449,7 +1450,8 @@ export const listProjectsDeployments: API.PaginatedOperationMethod<
   ListProjectsDeploymentsRequest,
   ListDeploymentsResponse,
   ListProjectsDeploymentsError,
-  GcpOpContext
+  GcpOpContext,
+  ListDeploymentsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsDeploymentsRequest,
   output: ListDeploymentsResponse,
@@ -1460,7 +1462,7 @@ export const listProjectsDeployments: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsVersionsError = NotFound | Forbidden | GcpOpError;
 /** List the versions of a script project. */
@@ -1468,7 +1470,8 @@ export const listProjectsVersions: API.PaginatedOperationMethod<
   ListProjectsVersionsRequest,
   ListVersionsResponse,
   ListProjectsVersionsError,
-  GcpOpContext
+  GcpOpContext,
+  ListVersionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsVersionsRequest,
   output: ListVersionsResponse,
@@ -1479,7 +1482,7 @@ export const listProjectsVersions: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListScriptProcessesProcessesError =
   | NotFound
@@ -1490,7 +1493,8 @@ export const listScriptProcessesProcesses: API.PaginatedOperationMethod<
   ListScriptProcessesProcessesRequest,
   ListScriptProcessesResponse,
   ListScriptProcessesProcessesError,
-  GcpOpContext
+  GcpOpContext,
+  ListScriptProcessesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListScriptProcessesProcessesRequest,
   output: ListScriptProcessesResponse,
@@ -1501,7 +1505,7 @@ export const listScriptProcessesProcesses: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type RunScriptsError =
   | NotFound

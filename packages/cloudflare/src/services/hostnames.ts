@@ -362,7 +362,8 @@ export const getSettingTls: API.PaginatedOperationMethod<
   GetSettingTlsRequest,
   GetSettingTlsResponse,
   GetSettingTlsError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  SettingsTlsGetResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: GetSettingTlsRequest,
@@ -378,7 +379,7 @@ export const getSettingTls: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type PutSettingTlsError =
   | AdvancedCertificateManagerRequired

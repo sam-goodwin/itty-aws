@@ -1561,27 +1561,7 @@ export const getQueryResultsMonitorTopContributors: API.OperationMethod<
     items: "topContributors",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  GetQueryResultsMonitorTopContributorsInput,
-  GetQueryResultsMonitorTopContributorsOutput,
-  GetQueryResultsMonitorTopContributorsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetQueryResultsMonitorTopContributorsInput,
-  ) => stream.Stream<
-    GetQueryResultsMonitorTopContributorsOutput,
-    GetQueryResultsMonitorTopContributorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetQueryResultsMonitorTopContributorsInput,
-  ) => stream.Stream<
-    MonitorTopContributorsRow,
-    GetQueryResultsMonitorTopContributorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type GetQueryResultsWorkloadInsightsTopContributorsError =
   | AccessDeniedException
@@ -1640,27 +1620,7 @@ export const getQueryResultsWorkloadInsightsTopContributors: API.OperationMethod
     items: "topContributors",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  GetQueryResultsWorkloadInsightsTopContributorsInput,
-  GetQueryResultsWorkloadInsightsTopContributorsOutput,
-  GetQueryResultsWorkloadInsightsTopContributorsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetQueryResultsWorkloadInsightsTopContributorsInput,
-  ) => stream.Stream<
-    GetQueryResultsWorkloadInsightsTopContributorsOutput,
-    GetQueryResultsWorkloadInsightsTopContributorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetQueryResultsWorkloadInsightsTopContributorsInput,
-  ) => stream.Stream<
-    WorkloadInsightsTopContributorsRow,
-    GetQueryResultsWorkloadInsightsTopContributorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type GetQueryResultsWorkloadInsightsTopContributorsDataError =
   | AccessDeniedException
@@ -1721,27 +1681,7 @@ export const getQueryResultsWorkloadInsightsTopContributorsData: API.OperationMe
     items: "datapoints",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  GetQueryResultsWorkloadInsightsTopContributorsDataInput,
-  GetQueryResultsWorkloadInsightsTopContributorsDataOutput,
-  GetQueryResultsWorkloadInsightsTopContributorsDataError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetQueryResultsWorkloadInsightsTopContributorsDataInput,
-  ) => stream.Stream<
-    GetQueryResultsWorkloadInsightsTopContributorsDataOutput,
-    GetQueryResultsWorkloadInsightsTopContributorsDataError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetQueryResultsWorkloadInsightsTopContributorsDataInput,
-  ) => stream.Stream<
-    WorkloadInsightsTopContributorsDataPoint,
-    GetQueryResultsWorkloadInsightsTopContributorsDataError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type GetQueryStatusMonitorTopContributorsError =
   | AccessDeniedException
@@ -1926,27 +1866,7 @@ export const listMonitors: API.OperationMethod<
     items: "monitors",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListMonitorsInput,
-  ListMonitorsOutput,
-  ListMonitorsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListMonitorsInput,
-  ) => stream.Stream<
-    ListMonitorsOutput,
-    ListMonitorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListMonitorsInput,
-  ) => stream.Stream<
-    MonitorSummary,
-    ListMonitorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListScopesError =
   | AccessDeniedException
@@ -1997,27 +1917,7 @@ export const listScopes: API.OperationMethod<
     items: "scopes",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListScopesInput,
-  ListScopesOutput,
-  ListScopesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListScopesInput,
-  ) => stream.Stream<
-    ListScopesOutput,
-    ListScopesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListScopesInput,
-  ) => stream.Stream<
-    ScopeSummary,
-    ListScopesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsForResourceError =
   | AccessDeniedException

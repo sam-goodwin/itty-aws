@@ -5831,7 +5831,8 @@ export const listKeys: API.PaginatedOperationMethod<
   ListKeysRequest,
   ListKeysResponse,
   ListKeysError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  string
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListKeysRequest,
@@ -5847,7 +5848,7 @@ export const listKeys: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListResourceTaggingsError = CloudflareOpError;
 /** Lists all tagged resources for an account. */
@@ -5855,7 +5856,8 @@ export const listResourceTaggings: API.PaginatedOperationMethod<
   ListResourceTaggingsRequest,
   ListResourceTaggingsResponse,
   ListResourceTaggingsError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  ListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListResourceTaggingsRequest,
@@ -5871,7 +5873,7 @@ export const listResourceTaggings: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListValuesError = CloudflareOpError;
 /** Lists all distinct values for a given tag key, optionally filtered by resource type. */
@@ -5879,7 +5881,8 @@ export const listValues: API.PaginatedOperationMethod<
   ListValuesRequest,
   ListValuesResponse,
   ListValuesError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  string
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListValuesRequest,
@@ -5895,7 +5898,7 @@ export const listValues: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type PutAccountTagError =
   | Forbidden

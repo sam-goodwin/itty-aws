@@ -1319,27 +1319,7 @@ export const getQueryResults: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  GetQueryResultsInput,
-  GetQueryResultsOutput,
-  GetQueryResultsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetQueryResultsInput,
-  ) => stream.Stream<
-    GetQueryResultsOutput,
-    GetQueryResultsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetQueryResultsInput,
-  ) => stream.Stream<
-    unknown,
-    GetQueryResultsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type GetQueryStatusError =
   | AccessDeniedException
@@ -1432,27 +1412,7 @@ export const listHealthEvents: API.OperationMethod<
     items: "HealthEvents",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListHealthEventsInput,
-  ListHealthEventsOutput,
-  ListHealthEventsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListHealthEventsInput,
-  ) => stream.Stream<
-    ListHealthEventsOutput,
-    ListHealthEventsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListHealthEventsInput,
-  ) => stream.Stream<
-    HealthEvent,
-    ListHealthEventsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListInternetEventsError =
   | AccessDeniedException
@@ -1510,27 +1470,7 @@ export const listInternetEvents: API.OperationMethod<
     items: "InternetEvents",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListInternetEventsInput,
-  ListInternetEventsOutput,
-  ListInternetEventsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListInternetEventsInput,
-  ) => stream.Stream<
-    ListInternetEventsOutput,
-    ListInternetEventsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListInternetEventsInput,
-  ) => stream.Stream<
-    InternetEventSummary,
-    ListInternetEventsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListMonitorsError =
   | AccessDeniedException
@@ -1579,27 +1519,7 @@ export const listMonitors: API.OperationMethod<
     items: "Monitors",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListMonitorsInput,
-  ListMonitorsOutput,
-  ListMonitorsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListMonitorsInput,
-  ) => stream.Stream<
-    ListMonitorsOutput,
-    ListMonitorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListMonitorsInput,
-  ) => stream.Stream<
-    Monitor,
-    ListMonitorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsForResourceError =
   | AccessDeniedException

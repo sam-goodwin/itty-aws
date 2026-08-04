@@ -452,27 +452,7 @@ export const describeReportDefinitions: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeReportDefinitionsRequest,
-  DescribeReportDefinitionsResponse,
-  DescribeReportDefinitionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeReportDefinitionsRequest,
-  ) => stream.Stream<
-    DescribeReportDefinitionsResponse,
-    DescribeReportDefinitionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeReportDefinitionsRequest,
-  ) => stream.Stream<
-    unknown,
-    DescribeReportDefinitionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsForResourceError =
   | InternalErrorException

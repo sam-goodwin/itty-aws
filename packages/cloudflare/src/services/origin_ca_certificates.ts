@@ -477,7 +477,8 @@ export const listOriginCaCertificates: API.PaginatedOperationMethod<
   ListOriginCaCertificatesRequest,
   ListOriginCaCertificatesResponse,
   ListOriginCaCertificatesError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  ListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListOriginCaCertificatesRequest,
@@ -494,4 +495,4 @@ export const listOriginCaCertificates: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;

@@ -1313,27 +1313,7 @@ export const listDevices: API.OperationMethod<
     items: "devices",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListDevicesRequest,
-  ListDevicesResponse,
-  ListDevicesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDevicesRequest,
-  ) => stream.Stream<
-    ListDevicesResponse,
-    ListDevicesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDevicesRequest,
-  ) => stream.Stream<
-    DeviceSummary,
-    ListDevicesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListEnvironmentsError =
   | AccessDeniedException
@@ -1383,27 +1363,7 @@ export const listEnvironments: API.OperationMethod<
     items: "environments",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListEnvironmentsRequest,
-  ListEnvironmentsResponse,
-  ListEnvironmentsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEnvironmentsRequest,
-  ) => stream.Stream<
-    ListEnvironmentsResponse,
-    ListEnvironmentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEnvironmentsRequest,
-  ) => stream.Stream<
-    EnvironmentSummary,
-    ListEnvironmentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListSoftwareSetsError =
   | AccessDeniedException
@@ -1453,27 +1413,7 @@ export const listSoftwareSets: API.OperationMethod<
     items: "softwareSets",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListSoftwareSetsRequest,
-  ListSoftwareSetsResponse,
-  ListSoftwareSetsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSoftwareSetsRequest,
-  ) => stream.Stream<
-    ListSoftwareSetsResponse,
-    ListSoftwareSetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSoftwareSetsRequest,
-  ) => stream.Stream<
-    SoftwareSetSummary,
-    ListSoftwareSetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsForResourceError =
   | AccessDeniedException

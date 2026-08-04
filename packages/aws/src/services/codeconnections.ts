@@ -1667,27 +1667,7 @@ export const listConnections: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListConnectionsInput,
-  ListConnectionsOutput,
-  ListConnectionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListConnectionsInput,
-  ) => stream.Stream<
-    ListConnectionsOutput,
-    ListConnectionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListConnectionsInput,
-  ) => stream.Stream<
-    unknown,
-    ListConnectionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListHostsError = CommonErrors;
 /**
@@ -1725,27 +1705,7 @@ export const listHosts: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListHostsInput,
-  ListHostsOutput,
-  ListHostsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListHostsInput,
-  ) => stream.Stream<
-    ListHostsOutput,
-    ListHostsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListHostsInput,
-  ) => stream.Stream<
-    unknown,
-    ListHostsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListRepositoryLinksError =
   | AccessDeniedException
@@ -1797,27 +1757,7 @@ export const listRepositoryLinks: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListRepositoryLinksInput,
-  ListRepositoryLinksOutput,
-  ListRepositoryLinksError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRepositoryLinksInput,
-  ) => stream.Stream<
-    ListRepositoryLinksOutput,
-    ListRepositoryLinksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRepositoryLinksInput,
-  ) => stream.Stream<
-    unknown,
-    ListRepositoryLinksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListRepositorySyncDefinitionsError =
   | AccessDeniedException
@@ -1897,27 +1837,7 @@ export const listSyncConfigurations: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListSyncConfigurationsInput,
-  ListSyncConfigurationsOutput,
-  ListSyncConfigurationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSyncConfigurationsInput,
-  ) => stream.Stream<
-    ListSyncConfigurationsOutput,
-    ListSyncConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSyncConfigurationsInput,
-  ) => stream.Stream<
-    unknown,
-    ListSyncConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsForResourceError = ResourceNotFoundException | CommonErrors;
 /**

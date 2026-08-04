@@ -1390,27 +1390,7 @@ export const listGroupMemberships: API.OperationMethod<
     items: "GroupMemberships",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListGroupMembershipsRequest,
-  ListGroupMembershipsResponse,
-  ListGroupMembershipsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListGroupMembershipsRequest,
-  ) => stream.Stream<
-    ListGroupMembershipsResponse,
-    ListGroupMembershipsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListGroupMembershipsRequest,
-  ) => stream.Stream<
-    GroupMembership,
-    ListGroupMembershipsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListGroupMembershipsForMemberError =
   | ResourceNotFoundException
@@ -1454,27 +1434,7 @@ export const listGroupMembershipsForMember: API.OperationMethod<
     items: "GroupMemberships",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListGroupMembershipsForMemberRequest,
-  ListGroupMembershipsForMemberResponse,
-  ListGroupMembershipsForMemberError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListGroupMembershipsForMemberRequest,
-  ) => stream.Stream<
-    ListGroupMembershipsForMemberResponse,
-    ListGroupMembershipsForMemberError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListGroupMembershipsForMemberRequest,
-  ) => stream.Stream<
-    GroupMembership,
-    ListGroupMembershipsForMemberError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListGroupsError =
   | ResourceNotFoundException
@@ -1518,27 +1478,7 @@ export const listGroups: API.OperationMethod<
     items: "Groups",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListGroupsRequest,
-  ListGroupsResponse,
-  ListGroupsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListGroupsRequest,
-  ) => stream.Stream<
-    ListGroupsResponse,
-    ListGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListGroupsRequest,
-  ) => stream.Stream<
-    Group,
-    ListGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListUsersError =
   | ResourceNotFoundException
@@ -1582,27 +1522,7 @@ export const listUsers: API.OperationMethod<
     items: "Users",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListUsersRequest,
-  ListUsersResponse,
-  ListUsersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListUsersRequest,
-  ) => stream.Stream<
-    ListUsersResponse,
-    ListUsersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListUsersRequest,
-  ) => stream.Stream<
-    User,
-    ListUsersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type UpdateGroupError =
   | ConflictException

@@ -522,27 +522,7 @@ export const listEndpoints: API.OperationMethod<
     items: "Endpoints",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListEndpointsRequest,
-  ListEndpointsResult,
-  ListEndpointsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEndpointsRequest,
-  ) => stream.Stream<
-    ListEndpointsResult,
-    ListEndpointsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEndpointsRequest,
-  ) => stream.Stream<
-    Endpoint,
-    ListEndpointsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListOutpostsWithS3Error =
   | AccessDeniedException
@@ -593,27 +573,7 @@ export const listOutpostsWithS3: API.OperationMethod<
     items: "Outposts",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListOutpostsWithS3Request,
-  ListOutpostsWithS3Result,
-  ListOutpostsWithS3Error,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListOutpostsWithS3Request,
-  ) => stream.Stream<
-    ListOutpostsWithS3Result,
-    ListOutpostsWithS3Error,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListOutpostsWithS3Request,
-  ) => stream.Stream<
-    Outpost,
-    ListOutpostsWithS3Error,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListSharedEndpointsError =
   | AccessDeniedException
@@ -670,24 +630,4 @@ export const listSharedEndpoints: API.OperationMethod<
     items: "Endpoints",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListSharedEndpointsRequest,
-  ListSharedEndpointsResult,
-  ListSharedEndpointsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSharedEndpointsRequest,
-  ) => stream.Stream<
-    ListSharedEndpointsResult,
-    ListSharedEndpointsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSharedEndpointsRequest,
-  ) => stream.Stream<
-    Endpoint,
-    ListSharedEndpointsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;

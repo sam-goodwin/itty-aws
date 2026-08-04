@@ -16522,7 +16522,8 @@ export const listInstanceJobs: API.PaginatedOperationMethod<
   ListInstanceJobsRequest,
   ListInstanceJobsResponse,
   ListInstanceJobsError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  InstancesJobsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListInstanceJobsRequest,
@@ -16539,7 +16540,7 @@ export const listInstanceJobs: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListInstancesError = InvalidRoute | Forbidden | CloudflareOpError;
 /** List instances. */
@@ -16547,7 +16548,8 @@ export const listInstances: API.PaginatedOperationMethod<
   ListInstancesRequest,
   ListInstancesResponse,
   ListInstancesError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  InstancesListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListInstancesRequest,
@@ -16564,7 +16566,7 @@ export const listInstances: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListNamespaceInstanceItemsError = CloudflareOpError;
 /** Lists indexed items in an AI Search instance. */
@@ -16572,7 +16574,8 @@ export const listNamespaceInstanceItems: API.PaginatedOperationMethod<
   ListNamespaceInstanceItemsRequest,
   ListNamespaceInstanceItemsResponse,
   ListNamespaceInstanceItemsError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  NamespacesInstancesItemsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListNamespaceInstanceItemsRequest,
@@ -16589,7 +16592,7 @@ export const listNamespaceInstanceItems: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListNamespaceInstanceJobsError = CloudflareOpError;
 /** Lists indexing jobs for an AI Search instance. */
@@ -16597,7 +16600,8 @@ export const listNamespaceInstanceJobs: API.PaginatedOperationMethod<
   ListNamespaceInstanceJobsRequest,
   ListNamespaceInstanceJobsResponse,
   ListNamespaceInstanceJobsError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  NamespacesInstancesJobsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListNamespaceInstanceJobsRequest,
@@ -16614,7 +16618,7 @@ export const listNamespaceInstanceJobs: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListNamespaceInstancesError =
   | NamespaceNotFound
@@ -16626,7 +16630,8 @@ export const listNamespaceInstances: API.PaginatedOperationMethod<
   ListNamespaceInstancesRequest,
   ListNamespaceInstancesResponse,
   ListNamespaceInstancesError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  NamespacesInstancesListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListNamespaceInstancesRequest,
@@ -16649,7 +16654,7 @@ export const listNamespaceInstances: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListNamespacesError = CloudflareOpError;
 /** List namespaces. */
@@ -16657,7 +16662,8 @@ export const listNamespaces: API.PaginatedOperationMethod<
   ListNamespacesRequest,
   ListNamespacesResponse,
   ListNamespacesError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  NamespacesListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListNamespacesRequest,
@@ -16674,7 +16680,7 @@ export const listNamespaces: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListTokensError = InvalidRoute | Forbidden | CloudflareOpError;
 /** List tokens. */
@@ -16682,7 +16688,8 @@ export const listTokens: API.PaginatedOperationMethod<
   ListTokensRequest,
   ListTokensResponse,
   ListTokensError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  TokensListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListTokensRequest,
@@ -16699,7 +16706,7 @@ export const listTokens: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type LogsInstanceJobError =
   | ValidationError

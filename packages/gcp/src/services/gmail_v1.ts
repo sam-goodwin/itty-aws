@@ -3999,7 +3999,8 @@ export const listUsersDrafts: API.PaginatedOperationMethod<
   ListUsersDraftsRequest,
   ListDraftsResponse,
   ListUsersDraftsError,
-  GcpOpContext
+  GcpOpContext,
+  ListDraftsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListUsersDraftsRequest,
   output: ListDraftsResponse,
@@ -4010,7 +4011,7 @@ export const listUsersDrafts: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListUsersHistoryError = NotFound | Forbidden | GcpOpError;
 /** Lists the history of all changes to the given mailbox. History results are returned in chronological order (increasing `historyId`). For more information, see [Synchronize clients with Gmail](https://developers.google.com/workspace/gmail/api/guides/sync). */
@@ -4018,7 +4019,8 @@ export const listUsersHistory: API.PaginatedOperationMethod<
   ListUsersHistoryRequest,
   ListHistoryResponse,
   ListUsersHistoryError,
-  GcpOpContext
+  GcpOpContext,
+  ListHistoryResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListUsersHistoryRequest,
   output: ListHistoryResponse,
@@ -4029,7 +4031,7 @@ export const listUsersHistory: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListUsersLabelsError = NotFound | Forbidden | GcpOpError;
 /** Lists all labels in the user's mailbox. For more information, see [Manage labels](https://developers.google.com/workspace/gmail/api/guides/labels). */
@@ -4052,7 +4054,8 @@ export const listUsersMessages: API.PaginatedOperationMethod<
   ListUsersMessagesRequest,
   ListMessagesResponse,
   ListUsersMessagesError,
-  GcpOpContext
+  GcpOpContext,
+  ListMessagesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListUsersMessagesRequest,
   output: ListMessagesResponse,
@@ -4063,7 +4066,7 @@ export const listUsersMessages: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListUsersSettingsCseIdentitiesError =
   | NotFound
@@ -4074,7 +4077,8 @@ export const listUsersSettingsCseIdentities: API.PaginatedOperationMethod<
   ListUsersSettingsCseIdentitiesRequest,
   ListCseIdentitiesResponse,
   ListUsersSettingsCseIdentitiesError,
-  GcpOpContext
+  GcpOpContext,
+  ListCseIdentitiesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListUsersSettingsCseIdentitiesRequest,
   output: ListCseIdentitiesResponse,
@@ -4085,7 +4089,7 @@ export const listUsersSettingsCseIdentities: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListUsersSettingsCseKeypairsError =
   | NotFound
@@ -4096,7 +4100,8 @@ export const listUsersSettingsCseKeypairs: API.PaginatedOperationMethod<
   ListUsersSettingsCseKeypairsRequest,
   ListCseKeyPairsResponse,
   ListUsersSettingsCseKeypairsError,
-  GcpOpContext
+  GcpOpContext,
+  ListCseKeyPairsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListUsersSettingsCseKeypairsRequest,
   output: ListCseKeyPairsResponse,
@@ -4107,7 +4112,7 @@ export const listUsersSettingsCseKeypairs: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListUsersSettingsDelegatesError = NotFound | Forbidden | GcpOpError;
 /** Lists the delegates for the specified account. For more information, see [Manage delegates](https://developers.google.com/workspace/gmail/api/guides/delegate_settings). This method is only available to service account clients that have been delegated domain-wide authority. */
@@ -4196,7 +4201,8 @@ export const listUsersThreads: API.PaginatedOperationMethod<
   ListUsersThreadsRequest,
   ListThreadsResponse,
   ListUsersThreadsError,
-  GcpOpContext
+  GcpOpContext,
+  ListThreadsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListUsersThreadsRequest,
   output: ListThreadsResponse,
@@ -4207,7 +4213,7 @@ export const listUsersThreads: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ModifyUsersMessagesError =
   | NotFound

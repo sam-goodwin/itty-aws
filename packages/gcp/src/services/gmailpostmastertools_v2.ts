@@ -1231,7 +1231,8 @@ export const listDomains: API.PaginatedOperationMethod<
   ListDomainsRequest,
   ListDomainsResponse,
   ListDomainsError,
-  GcpOpContext
+  GcpOpContext,
+  ListDomainsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDomainsRequest,
   output: ListDomainsResponse,
@@ -1242,7 +1243,7 @@ export const listDomains: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListDomainsUsersError = NotFound | Forbidden | GcpOpError;
 /** [Developer Preview](https://developers.google.com/workspace/preview): Lists the users that have access to a domain. */
@@ -1250,7 +1251,8 @@ export const listDomainsUsers: API.PaginatedOperationMethod<
   ListDomainsUsersRequest,
   ListUsersResponse,
   ListDomainsUsersError,
-  GcpOpContext
+  GcpOpContext,
+  ListUsersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDomainsUsersRequest,
   output: ListUsersResponse,
@@ -1261,7 +1263,7 @@ export const listDomainsUsers: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type PatchDomainsUsersError =
   | NotFound

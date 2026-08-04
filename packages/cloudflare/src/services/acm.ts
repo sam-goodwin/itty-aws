@@ -677,7 +677,8 @@ export const listCustomTrustStores: API.PaginatedOperationMethod<
   ListCustomTrustStoresRequest,
   ListCustomTrustStoresResponse,
   ListCustomTrustStoresError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  CustomTrustStoreListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListCustomTrustStoresRequest,
@@ -699,7 +700,7 @@ export const listCustomTrustStores: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type TotalTlsUpdateError =
   | InvalidObjectIdentifier

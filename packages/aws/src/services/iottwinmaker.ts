@@ -3595,27 +3595,7 @@ export const executeQuery: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ExecuteQueryRequest,
-  ExecuteQueryResponse,
-  ExecuteQueryError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ExecuteQueryRequest,
-  ) => stream.Stream<
-    ExecuteQueryResponse,
-    ExecuteQueryError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ExecuteQueryRequest,
-  ) => stream.Stream<
-    unknown,
-    ExecuteQueryError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type GetComponentTypeError =
   | AccessDeniedException
@@ -3795,27 +3775,7 @@ export const getPropertyValue: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  GetPropertyValueRequest,
-  GetPropertyValueResponse,
-  GetPropertyValueError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetPropertyValueRequest,
-  ) => stream.Stream<
-    GetPropertyValueResponse,
-    GetPropertyValueError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetPropertyValueRequest,
-  ) => stream.Stream<
-    unknown,
-    GetPropertyValueError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type GetPropertyValueHistoryError =
   | AccessDeniedException
@@ -3875,27 +3835,7 @@ export const getPropertyValueHistory: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  GetPropertyValueHistoryRequest,
-  GetPropertyValueHistoryResponse,
-  GetPropertyValueHistoryError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetPropertyValueHistoryRequest,
-  ) => stream.Stream<
-    GetPropertyValueHistoryResponse,
-    GetPropertyValueHistoryError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetPropertyValueHistoryRequest,
-  ) => stream.Stream<
-    unknown,
-    GetPropertyValueHistoryError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type GetSceneError =
   | AccessDeniedException
@@ -4041,27 +3981,7 @@ export const listComponents: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListComponentsRequest,
-  ListComponentsResponse,
-  ListComponentsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListComponentsRequest,
-  ) => stream.Stream<
-    ListComponentsResponse,
-    ListComponentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListComponentsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListComponentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListComponentTypesError =
   | AccessDeniedException
@@ -4110,27 +4030,7 @@ export const listComponentTypes: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListComponentTypesRequest,
-  ListComponentTypesResponse,
-  ListComponentTypesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListComponentTypesRequest,
-  ) => stream.Stream<
-    ListComponentTypesResponse,
-    ListComponentTypesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListComponentTypesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListComponentTypesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListEntitiesError =
   | InternalServerException
@@ -4179,27 +4079,7 @@ export const listEntities: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListEntitiesRequest,
-  ListEntitiesResponse,
-  ListEntitiesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEntitiesRequest,
-  ) => stream.Stream<
-    ListEntitiesResponse,
-    ListEntitiesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEntitiesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListEntitiesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListMetadataTransferJobsError =
   | AccessDeniedException
@@ -4248,27 +4128,7 @@ export const listMetadataTransferJobs: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListMetadataTransferJobsRequest,
-  ListMetadataTransferJobsResponse,
-  ListMetadataTransferJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListMetadataTransferJobsRequest,
-  ) => stream.Stream<
-    ListMetadataTransferJobsResponse,
-    ListMetadataTransferJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListMetadataTransferJobsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListMetadataTransferJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListPropertiesError =
   | AccessDeniedException
@@ -4319,27 +4179,7 @@ export const listProperties: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListPropertiesRequest,
-  ListPropertiesResponse,
-  ListPropertiesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPropertiesRequest,
-  ) => stream.Stream<
-    ListPropertiesResponse,
-    ListPropertiesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPropertiesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListPropertiesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListScenesError =
   | AccessDeniedException
@@ -4388,27 +4228,7 @@ export const listScenes: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListScenesRequest,
-  ListScenesResponse,
-  ListScenesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListScenesRequest,
-  ) => stream.Stream<
-    ListScenesResponse,
-    ListScenesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListScenesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListScenesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListSyncJobsError =
   | AccessDeniedException
@@ -4459,27 +4279,7 @@ export const listSyncJobs: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListSyncJobsRequest,
-  ListSyncJobsResponse,
-  ListSyncJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSyncJobsRequest,
-  ) => stream.Stream<
-    ListSyncJobsResponse,
-    ListSyncJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSyncJobsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListSyncJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListSyncResourcesError =
   | AccessDeniedException
@@ -4530,27 +4330,7 @@ export const listSyncResources: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListSyncResourcesRequest,
-  ListSyncResourcesResponse,
-  ListSyncResourcesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSyncResourcesRequest,
-  ) => stream.Stream<
-    ListSyncResourcesResponse,
-    ListSyncResourcesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSyncResourcesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListSyncResourcesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsForResourceError =
   | AccessDeniedException
@@ -4621,27 +4401,7 @@ export const listWorkspaces: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListWorkspacesRequest,
-  ListWorkspacesResponse,
-  ListWorkspacesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListWorkspacesRequest,
-  ) => stream.Stream<
-    ListWorkspacesResponse,
-    ListWorkspacesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListWorkspacesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListWorkspacesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type TagResourceError =
   | AccessDeniedException

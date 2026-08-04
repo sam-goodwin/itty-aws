@@ -1161,27 +1161,7 @@ export const describeDimensionKeys: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeDimensionKeysRequest,
-  DescribeDimensionKeysResponse,
-  DescribeDimensionKeysError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeDimensionKeysRequest,
-  ) => stream.Stream<
-    DescribeDimensionKeysResponse,
-    DescribeDimensionKeysError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeDimensionKeysRequest,
-  ) => stream.Stream<
-    unknown,
-    DescribeDimensionKeysError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type GetDimensionKeyDetailsError =
   | InternalServiceError
@@ -1317,27 +1297,7 @@ export const getResourceMetrics: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  GetResourceMetricsRequest,
-  GetResourceMetricsResponse,
-  GetResourceMetricsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetResourceMetricsRequest,
-  ) => stream.Stream<
-    GetResourceMetricsResponse,
-    GetResourceMetricsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetResourceMetricsRequest,
-  ) => stream.Stream<
-    unknown,
-    GetResourceMetricsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListAvailableResourceDimensionsError =
   | InternalServiceError
@@ -1383,27 +1343,7 @@ export const listAvailableResourceDimensions: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListAvailableResourceDimensionsRequest,
-  ListAvailableResourceDimensionsResponse,
-  ListAvailableResourceDimensionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAvailableResourceDimensionsRequest,
-  ) => stream.Stream<
-    ListAvailableResourceDimensionsResponse,
-    ListAvailableResourceDimensionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAvailableResourceDimensionsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListAvailableResourceDimensionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListAvailableResourceMetricsError =
   | InternalServiceError
@@ -1449,27 +1389,7 @@ export const listAvailableResourceMetrics: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListAvailableResourceMetricsRequest,
-  ListAvailableResourceMetricsResponse,
-  ListAvailableResourceMetricsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAvailableResourceMetricsRequest,
-  ) => stream.Stream<
-    ListAvailableResourceMetricsResponse,
-    ListAvailableResourceMetricsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAvailableResourceMetricsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListAvailableResourceMetricsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListPerformanceAnalysisReportRecommendationsError =
   | InternalServiceError
@@ -1516,27 +1436,7 @@ export const listPerformanceAnalysisReportRecommendations: API.OperationMethod<
     items: "Recommendations",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListPerformanceAnalysisReportRecommendationsRequest,
-  ListPerformanceAnalysisReportRecommendationsResponse,
-  ListPerformanceAnalysisReportRecommendationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPerformanceAnalysisReportRecommendationsRequest,
-  ) => stream.Stream<
-    ListPerformanceAnalysisReportRecommendationsResponse,
-    ListPerformanceAnalysisReportRecommendationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPerformanceAnalysisReportRecommendationsRequest,
-  ) => stream.Stream<
-    Recommendation,
-    ListPerformanceAnalysisReportRecommendationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListPerformanceAnalysisReportsError =
   | InternalServiceError
@@ -1582,27 +1482,7 @@ export const listPerformanceAnalysisReports: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListPerformanceAnalysisReportsRequest,
-  ListPerformanceAnalysisReportsResponse,
-  ListPerformanceAnalysisReportsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPerformanceAnalysisReportsRequest,
-  ) => stream.Stream<
-    ListPerformanceAnalysisReportsResponse,
-    ListPerformanceAnalysisReportsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPerformanceAnalysisReportsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListPerformanceAnalysisReportsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsForResourceError =
   | InternalServiceError

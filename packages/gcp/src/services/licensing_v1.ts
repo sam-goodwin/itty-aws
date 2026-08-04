@@ -392,7 +392,8 @@ export const listForProductAndSkuLicenseAssignments: API.PaginatedOperationMetho
   ListForProductAndSkuLicenseAssignmentsRequest,
   LicenseAssignmentList,
   ListForProductAndSkuLicenseAssignmentsError,
-  GcpOpContext
+  GcpOpContext,
+  LicenseAssignment
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListForProductAndSkuLicenseAssignmentsRequest,
   output: LicenseAssignmentList,
@@ -404,7 +405,7 @@ export const listForProductAndSkuLicenseAssignments: API.PaginatedOperationMetho
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListForProductLicenseAssignmentsError =
   | NotFound
@@ -415,7 +416,8 @@ export const listForProductLicenseAssignments: API.PaginatedOperationMethod<
   ListForProductLicenseAssignmentsRequest,
   LicenseAssignmentList,
   ListForProductLicenseAssignmentsError,
-  GcpOpContext
+  GcpOpContext,
+  LicenseAssignment
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListForProductLicenseAssignmentsRequest,
   output: LicenseAssignmentList,
@@ -427,7 +429,7 @@ export const listForProductLicenseAssignments: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type PatchLicenseAssignmentsError =
   | NotFound

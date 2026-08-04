@@ -137,7 +137,8 @@ export const listAccountsQuotas: API.PaginatedOperationMethod<
   ListAccountsQuotasRequest,
   ListQuotaGroupsResponse,
   ListAccountsQuotasError,
-  GcpOpContext
+  GcpOpContext,
+  ListQuotaGroupsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsQuotasRequest,
   output: ListQuotaGroupsResponse,
@@ -148,4 +149,4 @@ export const listAccountsQuotas: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;

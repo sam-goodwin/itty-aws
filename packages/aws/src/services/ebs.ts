@@ -706,27 +706,7 @@ export const listChangedBlocks: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListChangedBlocksRequest,
-  ListChangedBlocksResponse,
-  ListChangedBlocksError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListChangedBlocksRequest,
-  ) => stream.Stream<
-    ListChangedBlocksResponse,
-    ListChangedBlocksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListChangedBlocksRequest,
-  ) => stream.Stream<
-    unknown,
-    ListChangedBlocksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListSnapshotBlocksError =
   | AccessDeniedException
@@ -783,27 +763,7 @@ export const listSnapshotBlocks: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListSnapshotBlocksRequest,
-  ListSnapshotBlocksResponse,
-  ListSnapshotBlocksError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSnapshotBlocksRequest,
-  ) => stream.Stream<
-    ListSnapshotBlocksResponse,
-    ListSnapshotBlocksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSnapshotBlocksRequest,
-  ) => stream.Stream<
-    unknown,
-    ListSnapshotBlocksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type PutSnapshotBlockError =
   | AccessDeniedException

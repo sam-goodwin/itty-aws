@@ -4318,27 +4318,7 @@ export const listGatewayRoutes: API.OperationMethod<
     items: "gatewayRoutes",
     pageSize: "limit",
   } as const,
-})) as any as API.OperationMethod<
-  ListGatewayRoutesInput,
-  ListGatewayRoutesOutput,
-  ListGatewayRoutesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListGatewayRoutesInput,
-  ) => stream.Stream<
-    ListGatewayRoutesOutput,
-    ListGatewayRoutesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListGatewayRoutesInput,
-  ) => stream.Stream<
-    GatewayRouteRef,
-    ListGatewayRoutesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListMeshesError =
   | BadRequestException
@@ -4391,27 +4371,7 @@ export const listMeshes: API.OperationMethod<
     items: "meshes",
     pageSize: "limit",
   } as const,
-})) as any as API.OperationMethod<
-  ListMeshesInput,
-  ListMeshesOutput,
-  ListMeshesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListMeshesInput,
-  ) => stream.Stream<
-    ListMeshesOutput,
-    ListMeshesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListMeshesInput,
-  ) => stream.Stream<
-    MeshRef,
-    ListMeshesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListRoutesError =
   | BadRequestException
@@ -4464,27 +4424,7 @@ export const listRoutes: API.OperationMethod<
     items: "routes",
     pageSize: "limit",
   } as const,
-})) as any as API.OperationMethod<
-  ListRoutesInput,
-  ListRoutesOutput,
-  ListRoutesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRoutesInput,
-  ) => stream.Stream<
-    ListRoutesOutput,
-    ListRoutesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRoutesInput,
-  ) => stream.Stream<
-    RouteRef,
-    ListRoutesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsForResourceError =
   | BadRequestException
@@ -4537,27 +4477,7 @@ export const listTagsForResource: API.OperationMethod<
     items: "tags",
     pageSize: "limit",
   } as const,
-})) as any as API.OperationMethod<
-  ListTagsForResourceInput,
-  ListTagsForResourceOutput,
-  ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTagsForResourceInput,
-  ) => stream.Stream<
-    ListTagsForResourceOutput,
-    ListTagsForResourceError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTagsForResourceInput,
-  ) => stream.Stream<
-    TagRef,
-    ListTagsForResourceError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListVirtualGatewaysError =
   | BadRequestException
@@ -4610,27 +4530,7 @@ export const listVirtualGateways: API.OperationMethod<
     items: "virtualGateways",
     pageSize: "limit",
   } as const,
-})) as any as API.OperationMethod<
-  ListVirtualGatewaysInput,
-  ListVirtualGatewaysOutput,
-  ListVirtualGatewaysError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListVirtualGatewaysInput,
-  ) => stream.Stream<
-    ListVirtualGatewaysOutput,
-    ListVirtualGatewaysError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListVirtualGatewaysInput,
-  ) => stream.Stream<
-    VirtualGatewayRef,
-    ListVirtualGatewaysError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListVirtualNodesError =
   | BadRequestException
@@ -4683,27 +4583,7 @@ export const listVirtualNodes: API.OperationMethod<
     items: "virtualNodes",
     pageSize: "limit",
   } as const,
-})) as any as API.OperationMethod<
-  ListVirtualNodesInput,
-  ListVirtualNodesOutput,
-  ListVirtualNodesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListVirtualNodesInput,
-  ) => stream.Stream<
-    ListVirtualNodesOutput,
-    ListVirtualNodesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListVirtualNodesInput,
-  ) => stream.Stream<
-    VirtualNodeRef,
-    ListVirtualNodesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListVirtualRoutersError =
   | BadRequestException
@@ -4756,27 +4636,7 @@ export const listVirtualRouters: API.OperationMethod<
     items: "virtualRouters",
     pageSize: "limit",
   } as const,
-})) as any as API.OperationMethod<
-  ListVirtualRoutersInput,
-  ListVirtualRoutersOutput,
-  ListVirtualRoutersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListVirtualRoutersInput,
-  ) => stream.Stream<
-    ListVirtualRoutersOutput,
-    ListVirtualRoutersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListVirtualRoutersInput,
-  ) => stream.Stream<
-    VirtualRouterRef,
-    ListVirtualRoutersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListVirtualServicesError =
   | BadRequestException
@@ -4829,27 +4689,7 @@ export const listVirtualServices: API.OperationMethod<
     items: "virtualServices",
     pageSize: "limit",
   } as const,
-})) as any as API.OperationMethod<
-  ListVirtualServicesInput,
-  ListVirtualServicesOutput,
-  ListVirtualServicesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListVirtualServicesInput,
-  ) => stream.Stream<
-    ListVirtualServicesOutput,
-    ListVirtualServicesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListVirtualServicesInput,
-  ) => stream.Stream<
-    VirtualServiceRef,
-    ListVirtualServicesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type TagResourceError =
   | BadRequestException

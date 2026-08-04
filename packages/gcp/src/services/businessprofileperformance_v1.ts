@@ -528,7 +528,8 @@ export const listLocationsSearchkeywordsImpressionsMonthly: API.PaginatedOperati
   ListLocationsSearchkeywordsImpressionsMonthlyRequest,
   ListSearchKeywordImpressionsMonthlyResponse,
   ListLocationsSearchkeywordsImpressionsMonthlyError,
-  GcpOpContext
+  GcpOpContext,
+  ListSearchKeywordImpressionsMonthlyResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLocationsSearchkeywordsImpressionsMonthlyRequest,
   output: ListSearchKeywordImpressionsMonthlyResponse,
@@ -539,4 +540,4 @@ export const listLocationsSearchkeywordsImpressionsMonthly: API.PaginatedOperati
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;

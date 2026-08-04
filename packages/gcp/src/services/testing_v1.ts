@@ -2481,7 +2481,8 @@ export const listProjectsDeviceSessions: API.PaginatedOperationMethod<
   ListProjectsDeviceSessionsRequest,
   ListDeviceSessionsResponse,
   ListProjectsDeviceSessionsError,
-  GcpOpContext
+  GcpOpContext,
+  ListDeviceSessionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsDeviceSessionsRequest,
   output: ListDeviceSessionsResponse,
@@ -2492,7 +2493,7 @@ export const listProjectsDeviceSessions: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type PatchProjectsDeviceSessionsError =
   | NotFound

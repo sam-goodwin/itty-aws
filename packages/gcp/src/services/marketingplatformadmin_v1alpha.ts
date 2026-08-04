@@ -627,7 +627,8 @@ export const listOrganizations: API.PaginatedOperationMethod<
   ListOrganizationsRequest,
   ListOrganizationsResponse,
   ListOrganizationsError,
-  GcpOpContext
+  GcpOpContext,
+  ListOrganizationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsRequest,
   output: ListOrganizationsResponse,
@@ -638,7 +639,7 @@ export const listOrganizations: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListOrganizationsAnalyticsAccountLinksError =
   | NotFound
@@ -649,7 +650,8 @@ export const listOrganizationsAnalyticsAccountLinks: API.PaginatedOperationMetho
   ListOrganizationsAnalyticsAccountLinksRequest,
   ListAnalyticsAccountLinksResponse,
   ListOrganizationsAnalyticsAccountLinksError,
-  GcpOpContext
+  GcpOpContext,
+  ListAnalyticsAccountLinksResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsAnalyticsAccountLinksRequest,
   output: ListAnalyticsAccountLinksResponse,
@@ -660,7 +662,7 @@ export const listOrganizationsAnalyticsAccountLinks: API.PaginatedOperationMetho
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ReportPropertyUsageOrganizationsError =
   | NotFound

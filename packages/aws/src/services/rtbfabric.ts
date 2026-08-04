@@ -2915,27 +2915,7 @@ export const listCertificateAssociations: API.OperationMethod<
     items: "certificateAssociations",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListCertificateAssociationsRequest,
-  ListCertificateAssociationsResponse,
-  ListCertificateAssociationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCertificateAssociationsRequest,
-  ) => stream.Stream<
-    ListCertificateAssociationsResponse,
-    ListCertificateAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCertificateAssociationsRequest,
-  ) => stream.Stream<
-    CertificateAssociationSummary,
-    ListCertificateAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListLinkRoutingRulesError =
   | AccessDeniedException
@@ -2986,27 +2966,7 @@ export const listLinkRoutingRules: API.OperationMethod<
     items: "rules",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListLinkRoutingRulesRequest,
-  ListLinkRoutingRulesResponse,
-  ListLinkRoutingRulesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListLinkRoutingRulesRequest,
-  ) => stream.Stream<
-    ListLinkRoutingRulesResponse,
-    ListLinkRoutingRulesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListLinkRoutingRulesRequest,
-  ) => stream.Stream<
-    LinkRoutingRuleSummary,
-    ListLinkRoutingRulesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListLinksError =
   | AccessDeniedException
@@ -3059,27 +3019,7 @@ export const listLinks: API.OperationMethod<
     items: "links",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListLinksRequest,
-  ListLinksResponse,
-  ListLinksError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListLinksRequest,
-  ) => stream.Stream<
-    ListLinksResponse,
-    ListLinksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListLinksRequest,
-  ) => stream.Stream<
-    ListLinksResponseStructure,
-    ListLinksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListRequesterGatewaysError =
   | InternalServerException
@@ -3121,27 +3061,7 @@ export const listRequesterGateways: API.OperationMethod<
     items: "gatewayIds",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListRequesterGatewaysRequest,
-  ListRequesterGatewaysResponse,
-  ListRequesterGatewaysError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRequesterGatewaysRequest,
-  ) => stream.Stream<
-    ListRequesterGatewaysResponse,
-    ListRequesterGatewaysError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRequesterGatewaysRequest,
-  ) => stream.Stream<
-    GatewayId,
-    ListRequesterGatewaysError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListResponderGatewaysError =
   | InternalServerException
@@ -3183,27 +3103,7 @@ export const listResponderGateways: API.OperationMethod<
     items: "gatewayIds",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListResponderGatewaysRequest,
-  ListResponderGatewaysResponse,
-  ListResponderGatewaysError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListResponderGatewaysRequest,
-  ) => stream.Stream<
-    ListResponderGatewaysResponse,
-    ListResponderGatewaysError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListResponderGatewaysRequest,
-  ) => stream.Stream<
-    GatewayId,
-    ListResponderGatewaysError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsForResourceError =
   | AccessDeniedException
