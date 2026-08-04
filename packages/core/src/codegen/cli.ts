@@ -23,6 +23,7 @@ import {
   type PatchFile,
 } from "../json-patch.ts";
 import { barrel } from "./emit.ts";
+import { formatGenerated } from "./format.ts";
 import { generateService, type SdkSpec } from "./generator.ts";
 
 export interface GeneratorCliOptions {
@@ -246,26 +247,7 @@ export const runGeneratorCli = (options: GeneratorCliOptions): void => {
           ),
         );
 
-        // Format what was just written. The emitter produces a canonical
-        // token stream, not formatted source, so without this every run
-        // leaves the tree dirty against the committed (formatted) output —
-        // which makes a real regeneration diff indistinguishable from
-        // whitespace until someone remembers to run `bun run format`.
-        yield* Console.log(`\n🧹 Formatting ${outDir}`);
-        yield* Effect.tryPromise({
-          try: () =>
-            Bun.spawn(["bunx", "oxfmt", outDir], {
-              stdout: "inherit",
-              stderr: "inherit",
-            }).exited,
-          catch: (cause) => new Error(`oxfmt failed: ${cause}`),
-        }).pipe(
-          Effect.flatMap((code) =>
-            code === 0
-              ? Effect.void
-              : Effect.die(new Error(`oxfmt exited with ${code}`)),
-          ),
-        );
+        yield* formatGenerated(outDir);
 
         yield* Console.log(
           `\n✅ Generated ${totalOps} operations across ${written.length} resource modules` +
