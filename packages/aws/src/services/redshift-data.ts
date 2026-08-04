@@ -88,55 +88,55 @@ const rules = T.EndpointResolver((p, _) => {
 export class ActiveSessionsExceededException
   extends /*@__PURE__*/ S.TaggedErrorClass<ActiveSessionsExceededException>()(
     "ActiveSessionsExceededException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ActiveStatementsExceededException
   extends /*@__PURE__*/ S.TaggedErrorClass<ActiveStatementsExceededException>()(
     "ActiveStatementsExceededException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class BatchExecuteStatementException
   extends /*@__PURE__*/ S.TaggedErrorClass<BatchExecuteStatementException>()(
     "BatchExecuteStatementException",
-    { Message: S.String, StatementId: S.String },
+    { message: S.String.pipe(T.ErrorMessage()), StatementId: S.String },
     T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class DatabaseConnectionException
   extends /*@__PURE__*/ S.TaggedErrorClass<DatabaseConnectionException>()(
     "DatabaseConnectionException",
-    { Message: S.String },
+    { message: S.String.pipe(T.ErrorMessage()) },
     T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class ExecuteStatementException
   extends /*@__PURE__*/ S.TaggedErrorClass<ExecuteStatementException>()(
     "ExecuteStatementException",
-    { Message: S.String, StatementId: S.String },
+    { message: S.String.pipe(T.ErrorMessage()), StatementId: S.String },
     T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class InternalServerException
   extends /*@__PURE__*/ S.TaggedErrorClass<InternalServerException>()(
     "InternalServerException",
-    { Message: S.String },
+    { message: S.String.pipe(T.ErrorMessage()) },
     T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class QueryTimeoutException
   extends /*@__PURE__*/ S.TaggedErrorClass<QueryTimeoutException>()(
     "QueryTimeoutException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
     "ResourceNotFoundException",
-    { Message: S.String, ResourceId: S.String },
+    { message: S.String.pipe(T.ErrorMessage()), ResourceId: S.String },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ValidationException
   extends /*@__PURE__*/ S.TaggedErrorClass<ValidationException>()(
     "ValidationException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export type StatementString = string;

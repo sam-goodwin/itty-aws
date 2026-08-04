@@ -107,7 +107,7 @@ const rules = T.EndpointResolver((p, _) => {
 export class ConcurrentModificationException
   extends /*@__PURE__*/ S.TaggedErrorClass<ConcurrentModificationException>()(
     "ConcurrentModificationException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({
         code: "ConcurrentModificationException",
@@ -119,14 +119,14 @@ export class ConcurrentModificationException
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedErrorClass<ConflictException>()(
     "ConflictException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class DashboardInvalidInputError
   extends /*@__PURE__*/ S.TaggedErrorClass<DashboardInvalidInputError>()(
     "DashboardInvalidInputError",
     {
-      message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
       dashboardValidationMessages: S.optional(
         S.suspend(() => DashboardValidationMessages).annotate({
           identifier: "DashboardValidationMessages",
@@ -141,7 +141,7 @@ export class DashboardInvalidInputError
 export class DashboardNotFoundError
   extends /*@__PURE__*/ S.TaggedErrorClass<DashboardNotFoundError>()(
     "DashboardNotFoundError",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "ResourceNotFound", httpResponseCode: 404 }),
       T.HttpError(404),
@@ -150,7 +150,7 @@ export class DashboardNotFoundError
 export class InternalServiceFault
   extends /*@__PURE__*/ S.TaggedErrorClass<InternalServiceFault>()(
     "InternalServiceFault",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "InternalServiceError", httpResponseCode: 500 }),
       T.HttpError(500),
@@ -159,7 +159,7 @@ export class InternalServiceFault
 export class InvalidFormatFault
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidFormatFault>()(
     "InvalidFormatFault",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "InvalidFormat", httpResponseCode: 400 }),
       T.HttpError(400),
@@ -168,7 +168,7 @@ export class InvalidFormatFault
 export class InvalidNextToken
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidNextToken>()(
     "InvalidNextToken",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "InvalidNextToken", httpResponseCode: 400 }),
       T.HttpError(400),
@@ -177,7 +177,7 @@ export class InvalidNextToken
 export class InvalidParameterCombinationException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidParameterCombinationException>()(
     "InvalidParameterCombinationException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({
         code: "InvalidParameterCombination",
@@ -189,7 +189,7 @@ export class InvalidParameterCombinationException
 export class InvalidParameterValueException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidParameterValueException>()(
     "InvalidParameterValueException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "InvalidParameterValue", httpResponseCode: 400 }),
       T.HttpError(400),
@@ -198,22 +198,22 @@ export class InvalidParameterValueException
 export class KmsAccessDeniedException
   extends /*@__PURE__*/ S.TaggedErrorClass<KmsAccessDeniedException>()(
     "KmsAccessDeniedException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withAuthError) {}
 export class KmsKeyDisabledException
   extends /*@__PURE__*/ S.TaggedErrorClass<KmsKeyDisabledException>()(
     "KmsKeyDisabledException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class KmsKeyNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<KmsKeyNotFoundException>()(
     "KmsKeyNotFoundException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class LimitExceededException
   extends /*@__PURE__*/ S.TaggedErrorClass<LimitExceededException>()(
     "LimitExceededException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({
         code: "LimitExceededException",
@@ -225,7 +225,7 @@ export class LimitExceededException
 export class LimitExceededFault
   extends /*@__PURE__*/ S.TaggedErrorClass<LimitExceededFault>()(
     "LimitExceededFault",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "LimitExceeded", httpResponseCode: 400 }),
       T.HttpError(400),
@@ -234,7 +234,7 @@ export class LimitExceededFault
 export class MissingRequiredParameterException
   extends /*@__PURE__*/ S.TaggedErrorClass<MissingRequiredParameterException>()(
     "MissingRequiredParameterException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "MissingParameter", httpResponseCode: 400 }),
       T.HttpError(400),
@@ -243,7 +243,7 @@ export class MissingRequiredParameterException
 export class ResourceConflict
   extends /*@__PURE__*/ S.TaggedErrorClass<ResourceConflict>()(
     "ResourceConflict",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "ResourceConflict", httpResponseCode: 409 }),
       T.HttpError(409),
@@ -252,7 +252,7 @@ export class ResourceConflict
 export class ResourceNotFound
   extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFound>()(
     "ResourceNotFound",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "ResourceNotFound", httpResponseCode: 404 }),
       T.HttpError(404),
@@ -264,7 +264,7 @@ export class ResourceNotFoundException
     {
       ResourceType: S.optional(S.String),
       ResourceId: S.optional(S.String),
-      Message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
     },
     T.all(
       T.AwsQueryError({
@@ -277,7 +277,7 @@ export class ResourceNotFoundException
 export class ValidationException
   extends /*@__PURE__*/ S.TaggedErrorClass<ValidationException>()(
     "ValidationException",
-    {},
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withBadRequestError) {}
 export type DatasetIdentifier = string;
 export type KmsKeyArn = string;

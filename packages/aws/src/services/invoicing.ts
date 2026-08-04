@@ -69,7 +69,10 @@ const rules = T.EndpointResolver((p, _) => {
 export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedErrorClass<AccessDeniedException>()(
     "AccessDeniedException",
-    { message: S.optional(S.String), resourceName: S.optional(S.String) },
+    {
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      resourceName: S.optional(S.String),
+    },
     T.all(
       T.AwsQueryError({ code: "InvoicingAccessDenied", httpResponseCode: 403 }),
       T.HttpError(403),
@@ -79,7 +82,7 @@ export class ConflictException
   extends /*@__PURE__*/ S.TaggedErrorClass<ConflictException>()(
     "ConflictException",
     {
-      message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
       resourceId: S.optional(S.String),
       resourceType: S.optional(S.String),
     },
@@ -93,7 +96,7 @@ export class InternalServerException
     "InternalServerException",
     {
       retryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
-      message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
     },
     T.all(
       T.AwsQueryError({
@@ -106,7 +109,10 @@ export class InternalServerException
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
     "ResourceNotFoundException",
-    { message: S.optional(S.String), resourceName: S.optional(S.String) },
+    {
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      resourceName: S.optional(S.String),
+    },
     T.all(
       T.AwsQueryError({
         code: "InvoicingResourceNotFound",
@@ -118,7 +124,7 @@ export class ResourceNotFoundException
 export class ServiceQuotaExceededException
   extends /*@__PURE__*/ S.TaggedErrorClass<ServiceQuotaExceededException>()(
     "ServiceQuotaExceededException",
-    { message: S.String },
+    { message: S.String.pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({
         code: "InvoicingServiceQuotaExceeded",
@@ -130,7 +136,7 @@ export class ServiceQuotaExceededException
 export class ThrottlingException
   extends /*@__PURE__*/ S.TaggedErrorClass<ThrottlingException>()(
     "ThrottlingException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "InvoicingThrottling", httpResponseCode: 429 }),
       T.HttpError(429),
@@ -140,7 +146,7 @@ export class ValidationException
   extends /*@__PURE__*/ S.TaggedErrorClass<ValidationException>()(
     "ValidationException",
     {
-      message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
       resourceName: S.optional(S.String),
       reason: S.optional(
         S.suspend(() => ValidationExceptionReason).annotate({

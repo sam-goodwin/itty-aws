@@ -92,7 +92,7 @@ export class AlreadyExistsException
     "AlreadyExistsException",
     {
       Code: S.optional(S.String),
-      Message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
       CreatorRequestId: S.optional(S.String),
       Arn: S.optional(S.String),
       Type: S.optional(S.String),
@@ -104,7 +104,7 @@ export class ConflictException
     "ConflictException",
     {
       Code: S.optional(S.String),
-      Message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
       Type: S.optional(S.String),
       Context: S.optional(S.String),
     },
@@ -118,7 +118,7 @@ export class DependencyFailureException
     "DependencyFailureException",
     {
       Code: S.optional(S.String),
-      Message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
       Type: S.optional(S.String),
       Context: S.optional(S.String),
     },
@@ -128,7 +128,7 @@ export class InvalidParameterValueException
     "InvalidParameterValueException",
     {
       Code: S.optional(S.String),
-      Message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
       Type: S.optional(S.String),
       Context: S.optional(S.String),
     },
@@ -138,7 +138,7 @@ export class InvalidRequestException
     "InvalidRequestException",
     {
       Code: S.optional(S.String),
-      Message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
       Type: S.optional(S.String),
       Context: S.optional(S.String),
     },
@@ -148,7 +148,7 @@ export class InvalidResourceStateException
     "InvalidResourceStateException",
     {
       Code: S.optional(S.String),
-      Message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
       Type: S.optional(S.String),
       Context: S.optional(S.String),
     },
@@ -158,7 +158,7 @@ export class LimitExceededException
     "LimitExceededException",
     {
       Code: S.optional(S.String),
-      Message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
       Type: S.optional(S.String),
       Context: S.optional(S.String),
     },
@@ -168,7 +168,7 @@ export class MissingParameterValueException
     "MissingParameterValueException",
     {
       Code: S.optional(S.String),
-      Message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
       Type: S.optional(S.String),
       Context: S.optional(S.String),
     },
@@ -178,7 +178,7 @@ export class ResourceNotFoundException
     "ResourceNotFoundException",
     {
       Code: S.optional(S.String),
-      Message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
       Type: S.optional(S.String),
       Context: S.optional(S.String),
     },
@@ -188,7 +188,7 @@ export class ServiceUnavailableException
     "ServiceUnavailableException",
     {
       Code: S.optional(S.String),
-      Message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
       Type: S.optional(S.String),
       Context: S.optional(S.String),
     },

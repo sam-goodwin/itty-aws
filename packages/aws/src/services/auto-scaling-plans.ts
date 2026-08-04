@@ -93,7 +93,7 @@ const rules = T.EndpointResolver((p, _) => {
 export class ConcurrentUpdateException
   extends /*@__PURE__*/ S.TaggedErrorClass<ConcurrentUpdateException>()(
     "ConcurrentUpdateException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({
         code: "ConcurrentUpdateException",
@@ -105,7 +105,7 @@ export class ConcurrentUpdateException
 export class InternalServiceException
   extends /*@__PURE__*/ S.TaggedErrorClass<InternalServiceException>()(
     "InternalServiceException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({
         code: "InternalServiceException",
@@ -117,7 +117,7 @@ export class InternalServiceException
 export class InvalidNextTokenException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidNextTokenException>()(
     "InvalidNextTokenException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({
         code: "InvalidNextTokenException",
@@ -129,7 +129,7 @@ export class InvalidNextTokenException
 export class LimitExceededException
   extends /*@__PURE__*/ S.TaggedErrorClass<LimitExceededException>()(
     "LimitExceededException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({
         code: "LimitExceededException",
@@ -141,7 +141,7 @@ export class LimitExceededException
 export class ObjectNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<ObjectNotFoundException>()(
     "ObjectNotFoundException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({
         code: "ObjectNotFoundException",
@@ -153,7 +153,7 @@ export class ObjectNotFoundException
 export class ValidationException
   extends /*@__PURE__*/ S.TaggedErrorClass<ValidationException>()(
     "ValidationException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "ValidationException", httpResponseCode: 400 }),
       T.HttpError(400),

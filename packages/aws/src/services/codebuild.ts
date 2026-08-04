@@ -90,32 +90,32 @@ const rules = T.EndpointResolver((p, _) => {
 export class AccountLimitExceededException
   extends /*@__PURE__*/ S.TaggedErrorClass<AccountLimitExceededException>()(
     "AccountLimitExceededException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class AccountSuspendedException
   extends /*@__PURE__*/ S.TaggedErrorClass<AccountSuspendedException>()(
     "AccountSuspendedException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidInputException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidInputException>()(
     "InvalidInputException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class OAuthProviderException
   extends /*@__PURE__*/ S.TaggedErrorClass<OAuthProviderException>()(
     "OAuthProviderException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class ResourceAlreadyExistsException
   extends /*@__PURE__*/ S.TaggedErrorClass<ResourceAlreadyExistsException>()(
     "ResourceAlreadyExistsException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withAlreadyExistsError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
     "ResourceNotFoundException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export type NonEmptyString = string;
 export type BuildIds = string[];

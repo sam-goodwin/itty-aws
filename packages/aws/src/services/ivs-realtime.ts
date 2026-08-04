@@ -112,6 +112,7 @@ export class AccessDeniedException
         T.HttpHeader("x-amzn-ErrorType"),
       ),
       exceptionMessage: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
     },
     T.HttpError(403),
   ).pipe(C.withAuthError) {}
@@ -140,6 +141,7 @@ export class ConflictException
         T.HttpHeader("x-amzn-ErrorType"),
       ),
       exceptionMessage: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
     },
     T.HttpError(409),
   ).pipe(C.withConflictError) {}
@@ -168,6 +170,7 @@ export class InternalServerException
         T.HttpHeader("x-amzn-ErrorType"),
       ),
       exceptionMessage: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
     },
     T.HttpError(500),
   ).pipe(C.withServerError) {}
@@ -196,6 +199,7 @@ export class PendingVerification
         T.HttpHeader("x-amzn-ErrorType"),
       ),
       exceptionMessage: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
     },
     T.HttpError(403),
   ).pipe(C.withAuthError) {}
@@ -224,6 +228,7 @@ export class ResourceNotFoundException
         T.HttpHeader("x-amzn-ErrorType"),
       ),
       exceptionMessage: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
     },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
@@ -252,13 +257,14 @@ export class ServiceQuotaExceededException
         T.HttpHeader("x-amzn-ErrorType"),
       ),
       exceptionMessage: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
     },
     T.HttpError(402),
   ).pipe(C.withQuotaError) {}
 export class ThrottlingException
   extends /*@__PURE__*/ S.TaggedErrorClass<ThrottlingException>()(
     "ThrottlingException",
-    {},
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class ValidationException
   extends /*@__PURE__*/ S.TaggedErrorClass<ValidationException>()(
@@ -285,6 +291,7 @@ export class ValidationException
         T.HttpHeader("x-amzn-ErrorType"),
       ),
       exceptionMessage: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
     },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}

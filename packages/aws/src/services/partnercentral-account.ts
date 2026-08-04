@@ -58,7 +58,7 @@ export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedErrorClass<AccessDeniedException>()(
     "AccessDeniedException",
     {
-      Message: S.String,
+      message: S.String.pipe(T.ErrorMessage()),
       Reason: S.suspend(() => AccessDeniedExceptionReason).annotate({
         identifier: "AccessDeniedExceptionReason",
       }),
@@ -69,7 +69,7 @@ export class ConflictException
   extends /*@__PURE__*/ S.TaggedErrorClass<ConflictException>()(
     "ConflictException",
     {
-      Message: S.String,
+      message: S.String.pipe(T.ErrorMessage()),
       Reason: S.suspend(() => ConflictExceptionReason).annotate({
         identifier: "ConflictExceptionReason",
       }),
@@ -79,14 +79,14 @@ export class ConflictException
 export class InternalServerException
   extends /*@__PURE__*/ S.TaggedErrorClass<InternalServerException>()(
     "InternalServerException",
-    { Message: S.String },
+    { message: S.String.pipe(T.ErrorMessage()) },
     T.all(T.HttpError(500), T.Retryable()),
   ).pipe(C.withServerError, C.withRetryableError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
     "ResourceNotFoundException",
     {
-      Message: S.String,
+      message: S.String.pipe(T.ErrorMessage()),
       Reason: S.suspend(() => ResourceNotFoundExceptionReason).annotate({
         identifier: "ResourceNotFoundExceptionReason",
       }),
@@ -97,7 +97,7 @@ export class ServiceQuotaExceededException
   extends /*@__PURE__*/ S.TaggedErrorClass<ServiceQuotaExceededException>()(
     "ServiceQuotaExceededException",
     {
-      Message: S.String,
+      message: S.String.pipe(T.ErrorMessage()),
       Reason: S.suspend(() => ServiceQuotaExceededExceptionReason).annotate({
         identifier: "ServiceQuotaExceededExceptionReason",
       }),
@@ -108,7 +108,7 @@ export class ThrottlingException
   extends /*@__PURE__*/ S.TaggedErrorClass<ThrottlingException>()(
     "ThrottlingException",
     {
-      Message: S.String,
+      message: S.String.pipe(T.ErrorMessage()),
       ServiceCode: S.optional(S.String),
       QuotaCode: S.optional(S.String),
     },
@@ -118,7 +118,7 @@ export class ValidationException
   extends /*@__PURE__*/ S.TaggedErrorClass<ValidationException>()(
     "ValidationException",
     {
-      Message: S.String,
+      message: S.String.pipe(T.ErrorMessage()),
       Reason: S.suspend(() => ValidationExceptionReason).annotate({
         identifier: "ValidationExceptionReason",
       }),

@@ -90,13 +90,16 @@ const rules = T.EndpointResolver((p, _) => {
 export class InternalException
   extends /*@__PURE__*/ S.TaggedErrorClass<InternalException>()(
     "InternalException",
-    { message: S.optional(S.String), errorCode: S.optional(S.String) },
+    {
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      errorCode: S.optional(S.String),
+    },
   ) {}
 export class InvalidRequestException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidRequestException>()(
     "InvalidRequestException",
     {
-      message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
       errorCode: S.optional(S.String),
       datasyncErrorCode: S.optional(S.String),
     },
@@ -105,7 +108,7 @@ export class LocationAccessTestFailed
   extends /*@__PURE__*/ S.TaggedErrorClass<LocationAccessTestFailed>()(
     "LocationAccessTestFailed",
     {
-      message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
       errorCode: S.optional(S.String),
       datasyncErrorCode: S.optional(S.String),
     },
@@ -118,7 +121,7 @@ export class LocationNotFound
   extends /*@__PURE__*/ S.TaggedErrorClass<LocationNotFound>()(
     "LocationNotFound",
     {
-      message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
       errorCode: S.optional(S.String),
       datasyncErrorCode: S.optional(S.String),
     },
@@ -131,7 +134,7 @@ export class LocationRoleNotAssumable
   extends /*@__PURE__*/ S.TaggedErrorClass<LocationRoleNotAssumable>()(
     "LocationRoleNotAssumable",
     {
-      message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
       errorCode: S.optional(S.String),
       datasyncErrorCode: S.optional(S.String),
     },
@@ -144,7 +147,7 @@ export class TaskNotFound
   extends /*@__PURE__*/ S.TaggedErrorClass<TaskNotFound>()(
     "TaskNotFound",
     {
-      message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
       errorCode: S.optional(S.String),
       datasyncErrorCode: S.optional(S.String),
     },

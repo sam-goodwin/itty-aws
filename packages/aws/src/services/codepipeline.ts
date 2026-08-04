@@ -91,208 +91,208 @@ const rules = T.EndpointResolver((p, _) => {
 export class ActionExecutionNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<ActionExecutionNotFoundException>()(
     "ActionExecutionNotFoundException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class ActionNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<ActionNotFoundException>()(
     "ActionNotFoundException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class ActionTypeNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<ActionTypeNotFoundException>()(
     "ActionTypeNotFoundException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class ApprovalAlreadyCompletedException
   extends /*@__PURE__*/ S.TaggedErrorClass<ApprovalAlreadyCompletedException>()(
     "ApprovalAlreadyCompletedException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class ConcurrentModificationException
   extends /*@__PURE__*/ S.TaggedErrorClass<ConcurrentModificationException>()(
     "ConcurrentModificationException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class ConcurrentPipelineExecutionsLimitExceededException
   extends /*@__PURE__*/ S.TaggedErrorClass<ConcurrentPipelineExecutionsLimitExceededException>()(
     "ConcurrentPipelineExecutionsLimitExceededException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class ConditionNotOverridableException
   extends /*@__PURE__*/ S.TaggedErrorClass<ConditionNotOverridableException>()(
     "ConditionNotOverridableException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedErrorClass<ConflictException>()(
     "ConflictException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class DuplicatedStopRequestException
   extends /*@__PURE__*/ S.TaggedErrorClass<DuplicatedStopRequestException>()(
     "DuplicatedStopRequestException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidActionDeclarationException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidActionDeclarationException>()(
     "InvalidActionDeclarationException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidApprovalTokenException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidApprovalTokenException>()(
     "InvalidApprovalTokenException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidArnException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidArnException>()(
     "InvalidArnException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidBlockerDeclarationException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidBlockerDeclarationException>()(
     "InvalidBlockerDeclarationException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidClientTokenException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidClientTokenException>()(
     "InvalidClientTokenException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidJobException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidJobException>()(
     "InvalidJobException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidJobStateException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidJobStateException>()(
     "InvalidJobStateException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidNextTokenException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidNextTokenException>()(
     "InvalidNextTokenException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidNonceException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidNonceException>()(
     "InvalidNonceException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidStageDeclarationException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidStageDeclarationException>()(
     "InvalidStageDeclarationException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidStructureException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidStructureException>()(
     "InvalidStructureException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidTagsException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidTagsException>()(
     "InvalidTagsException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidWebhookAuthenticationParametersException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidWebhookAuthenticationParametersException>()(
     "InvalidWebhookAuthenticationParametersException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidWebhookFilterPatternException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidWebhookFilterPatternException>()(
     "InvalidWebhookFilterPatternException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class JobNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<JobNotFoundException>()(
     "JobNotFoundException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class LimitExceededException
   extends /*@__PURE__*/ S.TaggedErrorClass<LimitExceededException>()(
     "LimitExceededException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class NotLatestPipelineExecutionException
   extends /*@__PURE__*/ S.TaggedErrorClass<NotLatestPipelineExecutionException>()(
     "NotLatestPipelineExecutionException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class OutputVariablesSizeExceededException
   extends /*@__PURE__*/ S.TaggedErrorClass<OutputVariablesSizeExceededException>()(
     "OutputVariablesSizeExceededException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class PipelineExecutionNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<PipelineExecutionNotFoundException>()(
     "PipelineExecutionNotFoundException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class PipelineExecutionNotStoppableException
   extends /*@__PURE__*/ S.TaggedErrorClass<PipelineExecutionNotStoppableException>()(
     "PipelineExecutionNotStoppableException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class PipelineExecutionOutdatedException
   extends /*@__PURE__*/ S.TaggedErrorClass<PipelineExecutionOutdatedException>()(
     "PipelineExecutionOutdatedException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class PipelineNameInUseException
   extends /*@__PURE__*/ S.TaggedErrorClass<PipelineNameInUseException>()(
     "PipelineNameInUseException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class PipelineNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<PipelineNotFoundException>()(
     "PipelineNotFoundException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class PipelineVersionNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<PipelineVersionNotFoundException>()(
     "PipelineVersionNotFoundException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class RequestFailedException
   extends /*@__PURE__*/ S.TaggedErrorClass<RequestFailedException>()(
     "RequestFailedException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
     "ResourceNotFoundException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class StageNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<StageNotFoundException>()(
     "StageNotFoundException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class StageNotRetryableException
   extends /*@__PURE__*/ S.TaggedErrorClass<StageNotRetryableException>()(
     "StageNotRetryableException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class TooManyTagsException
   extends /*@__PURE__*/ S.TaggedErrorClass<TooManyTagsException>()(
     "TooManyTagsException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class UnableToRollbackStageException
   extends /*@__PURE__*/ S.TaggedErrorClass<UnableToRollbackStageException>()(
     "UnableToRollbackStageException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class ValidationException
   extends /*@__PURE__*/ S.TaggedErrorClass<ValidationException>()(
     "ValidationException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class WebhookNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<WebhookNotFoundException>()(
     "WebhookNotFoundException",
-    {},
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export type JobId = string;
 export type Nonce = string;

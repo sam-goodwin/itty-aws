@@ -94,32 +94,32 @@ const rules = T.EndpointResolver((p, _) => {
 export class EmptyUploadException
   extends /*@__PURE__*/ S.TaggedErrorClass<EmptyUploadException>()(
     "EmptyUploadException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class ImageAlreadyExistsException
   extends /*@__PURE__*/ S.TaggedErrorClass<ImageAlreadyExistsException>()(
     "ImageAlreadyExistsException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withAlreadyExistsError) {}
 export class ImageDigestDoesNotMatchException
   extends /*@__PURE__*/ S.TaggedErrorClass<ImageDigestDoesNotMatchException>()(
     "ImageDigestDoesNotMatchException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class ImageNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<ImageNotFoundException>()(
     "ImageNotFoundException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class ImageTagAlreadyExistsException
   extends /*@__PURE__*/ S.TaggedErrorClass<ImageTagAlreadyExistsException>()(
     "ImageTagAlreadyExistsException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withAlreadyExistsError) {}
 export class InvalidLayerException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidLayerException>()(
     "InvalidLayerException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidLayerPartException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidLayerPartException>()(
@@ -129,93 +129,93 @@ export class InvalidLayerPartException
       repositoryName: S.optional(S.String),
       uploadId: S.optional(S.String),
       lastValidByteReceived: S.optional(S.Number),
-      message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
     },
   ) {}
 export class InvalidParameterException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidParameterException>()(
     "InvalidParameterException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidTagParameterException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidTagParameterException>()(
     "InvalidTagParameterException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class LayerAlreadyExistsException
   extends /*@__PURE__*/ S.TaggedErrorClass<LayerAlreadyExistsException>()(
     "LayerAlreadyExistsException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withAlreadyExistsError) {}
 export class LayerPartTooSmallException
   extends /*@__PURE__*/ S.TaggedErrorClass<LayerPartTooSmallException>()(
     "LayerPartTooSmallException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class LayersNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<LayersNotFoundException>()(
     "LayersNotFoundException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class LimitExceededException
   extends /*@__PURE__*/ S.TaggedErrorClass<LimitExceededException>()(
     "LimitExceededException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class ReferencedImagesNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<ReferencedImagesNotFoundException>()(
     "ReferencedImagesNotFoundException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class RegistryNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<RegistryNotFoundException>()(
     "RegistryNotFoundException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class RepositoryAlreadyExistsException
   extends /*@__PURE__*/ S.TaggedErrorClass<RepositoryAlreadyExistsException>()(
     "RepositoryAlreadyExistsException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withAlreadyExistsError) {}
 export class RepositoryCatalogDataNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<RepositoryCatalogDataNotFoundException>()(
     "RepositoryCatalogDataNotFoundException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class RepositoryNotEmptyException
   extends /*@__PURE__*/ S.TaggedErrorClass<RepositoryNotEmptyException>()(
     "RepositoryNotEmptyException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class RepositoryNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<RepositoryNotFoundException>()(
     "RepositoryNotFoundException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class RepositoryPolicyNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<RepositoryPolicyNotFoundException>()(
     "RepositoryPolicyNotFoundException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class ServerException
   extends /*@__PURE__*/ S.TaggedErrorClass<ServerException>()(
     "ServerException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class TooManyTagsException
   extends /*@__PURE__*/ S.TaggedErrorClass<TooManyTagsException>()(
     "TooManyTagsException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class UnsupportedCommandException
   extends /*@__PURE__*/ S.TaggedErrorClass<UnsupportedCommandException>()(
     "UnsupportedCommandException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class UploadNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<UploadNotFoundException>()(
     "UploadNotFoundException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export type RegistryIdOrAlias = string;
 export type RepositoryName = string;

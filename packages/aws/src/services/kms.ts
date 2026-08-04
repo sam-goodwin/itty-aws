@@ -88,7 +88,7 @@ const rules = T.EndpointResolver((p, _) => {
 export class AlreadyExistsException
   extends /*@__PURE__*/ S.TaggedErrorClass<AlreadyExistsException>()(
     "AlreadyExistsException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "AlreadyExists", httpResponseCode: 409 }),
       T.HttpError(409),
@@ -97,7 +97,7 @@ export class AlreadyExistsException
 export class CloudHsmClusterInUseException
   extends /*@__PURE__*/ S.TaggedErrorClass<CloudHsmClusterInUseException>()(
     "CloudHsmClusterInUseException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({
         code: "CloudHsmClusterInUseException",
@@ -109,7 +109,7 @@ export class CloudHsmClusterInUseException
 export class CloudHsmClusterInvalidConfigurationException
   extends /*@__PURE__*/ S.TaggedErrorClass<CloudHsmClusterInvalidConfigurationException>()(
     "CloudHsmClusterInvalidConfigurationException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({
         code: "CloudHsmClusterInvalidConfigurationException",
@@ -121,7 +121,7 @@ export class CloudHsmClusterInvalidConfigurationException
 export class CloudHsmClusterNotActiveException
   extends /*@__PURE__*/ S.TaggedErrorClass<CloudHsmClusterNotActiveException>()(
     "CloudHsmClusterNotActiveException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({
         code: "CloudHsmClusterNotActiveException",
@@ -133,7 +133,7 @@ export class CloudHsmClusterNotActiveException
 export class CloudHsmClusterNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<CloudHsmClusterNotFoundException>()(
     "CloudHsmClusterNotFoundException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({
         code: "CloudHsmClusterNotFoundException",
@@ -145,7 +145,7 @@ export class CloudHsmClusterNotFoundException
 export class CloudHsmClusterNotRelatedException
   extends /*@__PURE__*/ S.TaggedErrorClass<CloudHsmClusterNotRelatedException>()(
     "CloudHsmClusterNotRelatedException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({
         code: "CloudHsmClusterNotRelatedException",
@@ -157,7 +157,7 @@ export class CloudHsmClusterNotRelatedException
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedErrorClass<ConflictException>()(
     "ConflictException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "ConflictException", httpResponseCode: 409 }),
       T.HttpError(409),
@@ -166,7 +166,7 @@ export class ConflictException
 export class CustomKeyStoreHasCMKsException
   extends /*@__PURE__*/ S.TaggedErrorClass<CustomKeyStoreHasCMKsException>()(
     "CustomKeyStoreHasCMKsException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({
         code: "CustomKeyStoreHasCMKsException",
@@ -178,7 +178,7 @@ export class CustomKeyStoreHasCMKsException
 export class CustomKeyStoreInvalidStateException
   extends /*@__PURE__*/ S.TaggedErrorClass<CustomKeyStoreInvalidStateException>()(
     "CustomKeyStoreInvalidStateException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({
         code: "CustomKeyStoreInvalidStateException",
@@ -190,7 +190,7 @@ export class CustomKeyStoreInvalidStateException
 export class CustomKeyStoreNameInUseException
   extends /*@__PURE__*/ S.TaggedErrorClass<CustomKeyStoreNameInUseException>()(
     "CustomKeyStoreNameInUseException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({
         code: "CustomKeyStoreNameInUseException",
@@ -202,7 +202,7 @@ export class CustomKeyStoreNameInUseException
 export class CustomKeyStoreNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<CustomKeyStoreNotFoundException>()(
     "CustomKeyStoreNotFoundException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({
         code: "CustomKeyStoreNotFoundException",
@@ -214,7 +214,7 @@ export class CustomKeyStoreNotFoundException
 export class DependencyTimeoutException
   extends /*@__PURE__*/ S.TaggedErrorClass<DependencyTimeoutException>()(
     "DependencyTimeoutException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "DependencyTimeout", httpResponseCode: 503 }),
       T.HttpError(503),
@@ -223,7 +223,7 @@ export class DependencyTimeoutException
 export class DisabledException
   extends /*@__PURE__*/ S.TaggedErrorClass<DisabledException>()(
     "DisabledException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "Disabled", httpResponseCode: 409 }),
       T.HttpError(409),
@@ -232,7 +232,7 @@ export class DisabledException
 export class DryRunOperationException
   extends /*@__PURE__*/ S.TaggedErrorClass<DryRunOperationException>()(
     "DryRunOperationException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "DryRunOperation", httpResponseCode: 412 }),
       T.HttpError(412),
@@ -241,7 +241,7 @@ export class DryRunOperationException
 export class ExpiredImportTokenException
   extends /*@__PURE__*/ S.TaggedErrorClass<ExpiredImportTokenException>()(
     "ExpiredImportTokenException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({
         code: "ExpiredImportTokenException",
@@ -253,7 +253,7 @@ export class ExpiredImportTokenException
 export class IncorrectKeyException
   extends /*@__PURE__*/ S.TaggedErrorClass<IncorrectKeyException>()(
     "IncorrectKeyException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "IncorrectKeyException", httpResponseCode: 400 }),
       T.HttpError(400),
@@ -262,7 +262,7 @@ export class IncorrectKeyException
 export class IncorrectKeyMaterialException
   extends /*@__PURE__*/ S.TaggedErrorClass<IncorrectKeyMaterialException>()(
     "IncorrectKeyMaterialException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({
         code: "IncorrectKeyMaterialException",
@@ -274,7 +274,7 @@ export class IncorrectKeyMaterialException
 export class IncorrectTrustAnchorException
   extends /*@__PURE__*/ S.TaggedErrorClass<IncorrectTrustAnchorException>()(
     "IncorrectTrustAnchorException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({
         code: "IncorrectTrustAnchorException",
@@ -286,7 +286,7 @@ export class IncorrectTrustAnchorException
 export class InvalidAliasNameException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidAliasNameException>()(
     "InvalidAliasNameException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "InvalidAliasName", httpResponseCode: 400 }),
       T.HttpError(400),
@@ -295,7 +295,7 @@ export class InvalidAliasNameException
 export class InvalidArnException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidArnException>()(
     "InvalidArnException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "InvalidArn", httpResponseCode: 400 }),
       T.HttpError(400),
@@ -304,7 +304,7 @@ export class InvalidArnException
 export class InvalidCiphertextException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidCiphertextException>()(
     "InvalidCiphertextException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "InvalidCiphertext", httpResponseCode: 400 }),
       T.HttpError(400),
@@ -313,7 +313,7 @@ export class InvalidCiphertextException
 export class InvalidGrantIdException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidGrantIdException>()(
     "InvalidGrantIdException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "InvalidGrantId", httpResponseCode: 400 }),
       T.HttpError(400),
@@ -322,7 +322,7 @@ export class InvalidGrantIdException
 export class InvalidGrantTokenException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidGrantTokenException>()(
     "InvalidGrantTokenException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "InvalidGrantToken", httpResponseCode: 400 }),
       T.HttpError(400),
@@ -331,7 +331,7 @@ export class InvalidGrantTokenException
 export class InvalidImportTokenException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidImportTokenException>()(
     "InvalidImportTokenException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({
         code: "InvalidImportTokenException",
@@ -343,7 +343,7 @@ export class InvalidImportTokenException
 export class InvalidKeyUsageException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidKeyUsageException>()(
     "InvalidKeyUsageException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "InvalidKeyUsage", httpResponseCode: 400 }),
       T.HttpError(400),
@@ -352,7 +352,7 @@ export class InvalidKeyUsageException
 export class InvalidMarkerException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidMarkerException>()(
     "InvalidMarkerException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "InvalidMarker", httpResponseCode: 400 }),
       T.HttpError(400),
@@ -361,7 +361,7 @@ export class InvalidMarkerException
 export class KeyUnavailableException
   extends /*@__PURE__*/ S.TaggedErrorClass<KeyUnavailableException>()(
     "KeyUnavailableException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "KeyUnavailable", httpResponseCode: 500 }),
       T.HttpError(500),
@@ -370,7 +370,7 @@ export class KeyUnavailableException
 export class KMSInternalException
   extends /*@__PURE__*/ S.TaggedErrorClass<KMSInternalException>()(
     "KMSInternalException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "KMSInternal", httpResponseCode: 500 }),
       T.HttpError(500),
@@ -379,7 +379,7 @@ export class KMSInternalException
 export class KMSInvalidMacException
   extends /*@__PURE__*/ S.TaggedErrorClass<KMSInvalidMacException>()(
     "KMSInvalidMacException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "KMSInvalidMac", httpResponseCode: 400 }),
       T.HttpError(400),
@@ -388,7 +388,7 @@ export class KMSInvalidMacException
 export class KMSInvalidSignatureException
   extends /*@__PURE__*/ S.TaggedErrorClass<KMSInvalidSignatureException>()(
     "KMSInvalidSignatureException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "KMSInvalidSignature", httpResponseCode: 400 }),
       T.HttpError(400),
@@ -397,7 +397,7 @@ export class KMSInvalidSignatureException
 export class KMSInvalidStateException
   extends /*@__PURE__*/ S.TaggedErrorClass<KMSInvalidStateException>()(
     "KMSInvalidStateException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({
         code: "KMSInvalidStateException",
@@ -409,7 +409,7 @@ export class KMSInvalidStateException
 export class LimitExceededException
   extends /*@__PURE__*/ S.TaggedErrorClass<LimitExceededException>()(
     "LimitExceededException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "LimitExceeded", httpResponseCode: 400 }),
       T.HttpError(400),
@@ -418,7 +418,7 @@ export class LimitExceededException
 export class MalformedPolicyDocumentException
   extends /*@__PURE__*/ S.TaggedErrorClass<MalformedPolicyDocumentException>()(
     "MalformedPolicyDocumentException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({
         code: "MalformedPolicyDocument",
@@ -430,7 +430,7 @@ export class MalformedPolicyDocumentException
 export class NotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<NotFoundException>()(
     "NotFoundException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "NotFound", httpResponseCode: 404 }),
       T.HttpError(404),
@@ -439,7 +439,7 @@ export class NotFoundException
 export class TagException
   extends /*@__PURE__*/ S.TaggedErrorClass<TagException>()(
     "TagException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "TagException", httpResponseCode: 400 }),
       T.HttpError(400),
@@ -448,7 +448,7 @@ export class TagException
 export class UnsupportedOperationException
   extends /*@__PURE__*/ S.TaggedErrorClass<UnsupportedOperationException>()(
     "UnsupportedOperationException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "UnsupportedOperation", httpResponseCode: 400 }),
       T.HttpError(400),
@@ -457,7 +457,7 @@ export class UnsupportedOperationException
 export class XksKeyAlreadyInUseException
   extends /*@__PURE__*/ S.TaggedErrorClass<XksKeyAlreadyInUseException>()(
     "XksKeyAlreadyInUseException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "XksKeyAlreadyInUse", httpResponseCode: 400 }),
       T.HttpError(400),
@@ -466,7 +466,7 @@ export class XksKeyAlreadyInUseException
 export class XksKeyInvalidConfigurationException
   extends /*@__PURE__*/ S.TaggedErrorClass<XksKeyInvalidConfigurationException>()(
     "XksKeyInvalidConfigurationException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({
         code: "XksKeyInvalidConfiguration",
@@ -478,7 +478,7 @@ export class XksKeyInvalidConfigurationException
 export class XksKeyNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<XksKeyNotFoundException>()(
     "XksKeyNotFoundException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({
         code: "XksKeyNotFoundException",
@@ -490,7 +490,7 @@ export class XksKeyNotFoundException
 export class XksProxyIncorrectAuthenticationCredentialException
   extends /*@__PURE__*/ S.TaggedErrorClass<XksProxyIncorrectAuthenticationCredentialException>()(
     "XksProxyIncorrectAuthenticationCredentialException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({
         code: "XksProxyIncorrectAuthenticationCredentialException",
@@ -502,7 +502,7 @@ export class XksProxyIncorrectAuthenticationCredentialException
 export class XksProxyInvalidConfigurationException
   extends /*@__PURE__*/ S.TaggedErrorClass<XksProxyInvalidConfigurationException>()(
     "XksProxyInvalidConfigurationException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({
         code: "XksProxyInvalidConfigurationException",
@@ -514,7 +514,7 @@ export class XksProxyInvalidConfigurationException
 export class XksProxyInvalidResponseException
   extends /*@__PURE__*/ S.TaggedErrorClass<XksProxyInvalidResponseException>()(
     "XksProxyInvalidResponseException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({
         code: "XksProxyInvalidResponseException",
@@ -526,7 +526,7 @@ export class XksProxyInvalidResponseException
 export class XksProxyUriEndpointInUseException
   extends /*@__PURE__*/ S.TaggedErrorClass<XksProxyUriEndpointInUseException>()(
     "XksProxyUriEndpointInUseException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({
         code: "XksProxyUriEndpointInUseException",
@@ -538,7 +538,7 @@ export class XksProxyUriEndpointInUseException
 export class XksProxyUriInUseException
   extends /*@__PURE__*/ S.TaggedErrorClass<XksProxyUriInUseException>()(
     "XksProxyUriInUseException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({
         code: "XksProxyUriInUseException",
@@ -550,7 +550,7 @@ export class XksProxyUriInUseException
 export class XksProxyUriUnreachableException
   extends /*@__PURE__*/ S.TaggedErrorClass<XksProxyUriUnreachableException>()(
     "XksProxyUriUnreachableException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({
         code: "XksProxyUriUnreachableException",
@@ -562,7 +562,7 @@ export class XksProxyUriUnreachableException
 export class XksProxyVpcEndpointServiceInUseException
   extends /*@__PURE__*/ S.TaggedErrorClass<XksProxyVpcEndpointServiceInUseException>()(
     "XksProxyVpcEndpointServiceInUseException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({
         code: "XksProxyVpcEndpointServiceInUseException",
@@ -574,7 +574,7 @@ export class XksProxyVpcEndpointServiceInUseException
 export class XksProxyVpcEndpointServiceInvalidConfigurationException
   extends /*@__PURE__*/ S.TaggedErrorClass<XksProxyVpcEndpointServiceInvalidConfigurationException>()(
     "XksProxyVpcEndpointServiceInvalidConfigurationException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({
         code: "XksProxyVpcEndpointServiceInvalidConfigurationException",
@@ -586,7 +586,7 @@ export class XksProxyVpcEndpointServiceInvalidConfigurationException
 export class XksProxyVpcEndpointServiceNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<XksProxyVpcEndpointServiceNotFoundException>()(
     "XksProxyVpcEndpointServiceNotFoundException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({
         code: "XksProxyVpcEndpointServiceNotFoundException",

@@ -90,7 +90,7 @@ export class BadRequestException
   extends /*@__PURE__*/ S.TaggedErrorClass<BadRequestException>()(
     "BadRequestException",
     {
-      message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
       className: S.optional(S.String),
       code: S.optional(S.Number),
     },
@@ -99,7 +99,7 @@ export class ConcurrentAccessException
   extends /*@__PURE__*/ S.TaggedErrorClass<ConcurrentAccessException>()(
     "ConcurrentAccessException",
     {
-      message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
       className: S.optional(S.String),
       code: S.optional(S.Number),
     },
@@ -108,7 +108,7 @@ export class ConflictException
   extends /*@__PURE__*/ S.TaggedErrorClass<ConflictException>()(
     "ConflictException",
     {
-      message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
       className: S.optional(S.String),
       code: S.optional(S.Number),
     },
@@ -117,7 +117,7 @@ export class ForbiddenException
   extends /*@__PURE__*/ S.TaggedErrorClass<ForbiddenException>()(
     "ForbiddenException",
     {
-      message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
       className: S.optional(S.String),
       code: S.optional(S.Number),
     },
@@ -126,7 +126,7 @@ export class InternalServerErrorException
   extends /*@__PURE__*/ S.TaggedErrorClass<InternalServerErrorException>()(
     "InternalServerErrorException",
     {
-      message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
       className: S.optional(S.String),
       code: S.optional(S.Number),
     },
@@ -135,7 +135,7 @@ export class LimitExceededException
   extends /*@__PURE__*/ S.TaggedErrorClass<LimitExceededException>()(
     "LimitExceededException",
     {
-      message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
       className: S.optional(S.String),
       code: S.optional(S.Number),
     },
@@ -144,7 +144,7 @@ export class NotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<NotFoundException>()(
     "NotFoundException",
     {
-      message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
       className: S.optional(S.String),
       code: S.optional(S.Number),
     },
@@ -153,7 +153,7 @@ export class TooManyRequestsException
   extends /*@__PURE__*/ S.TaggedErrorClass<TooManyRequestsException>()(
     "TooManyRequestsException",
     {
-      message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
       className: S.optional(S.String),
       code: S.optional(S.Number),
     },

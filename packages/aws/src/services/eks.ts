@@ -94,13 +94,13 @@ const rules = T.EndpointResolver((p, _) => {
 export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedErrorClass<AccessDeniedException>()(
     "AccessDeniedException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class BadRequestException
   extends /*@__PURE__*/ S.TaggedErrorClass<BadRequestException>()(
     "BadRequestException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ClientException
@@ -111,7 +111,7 @@ export class ClientException
       nodegroupName: S.optional(S.String),
       addonName: S.optional(S.String),
       subscriptionId: S.optional(S.String),
-      message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
     },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
@@ -124,7 +124,7 @@ export class InvalidParameterException
       fargateProfileName: S.optional(S.String),
       addonName: S.optional(S.String),
       subscriptionId: S.optional(S.String),
-      message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
     },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
@@ -136,20 +136,23 @@ export class InvalidRequestException
       nodegroupName: S.optional(S.String),
       addonName: S.optional(S.String),
       subscriptionId: S.optional(S.String),
-      message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
     },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidStateException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidStateException>()(
     "InvalidStateException",
-    { clusterName: S.optional(S.String), message: S.optional(S.String) },
+    {
+      clusterName: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+    },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class NotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<NotFoundException>()(
     "NotFoundException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ResourceInUseException
@@ -159,7 +162,7 @@ export class ResourceInUseException
       clusterName: S.optional(S.String),
       nodegroupName: S.optional(S.String),
       addonName: S.optional(S.String),
-      message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
     },
     T.HttpError(409),
   ).pipe(C.withConflictError) {}
@@ -170,7 +173,7 @@ export class ResourceLimitExceededException
       clusterName: S.optional(S.String),
       nodegroupName: S.optional(S.String),
       subscriptionId: S.optional(S.String),
-      message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
     },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
@@ -183,14 +186,14 @@ export class ResourceNotFoundException
       fargateProfileName: S.optional(S.String),
       addonName: S.optional(S.String),
       subscriptionId: S.optional(S.String),
-      message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
     },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ResourcePropagationDelayException
   extends /*@__PURE__*/ S.TaggedErrorClass<ResourcePropagationDelayException>()(
     "ResourcePropagationDelayException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(428),
   ) {}
 export class ServerException
@@ -201,27 +204,30 @@ export class ServerException
       nodegroupName: S.optional(S.String),
       addonName: S.optional(S.String),
       subscriptionId: S.optional(S.String),
-      message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
     },
     T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class ServiceUnavailableException
   extends /*@__PURE__*/ S.TaggedErrorClass<ServiceUnavailableException>()(
     "ServiceUnavailableException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(503),
   ).pipe(C.withServerError) {}
 export class ThrottlingException
   extends /*@__PURE__*/ S.TaggedErrorClass<ThrottlingException>()(
     "ThrottlingException",
-    { clusterName: S.optional(S.String), message: S.optional(S.String) },
+    {
+      clusterName: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+    },
     T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export class UnsupportedAvailabilityZoneException
   extends /*@__PURE__*/ S.TaggedErrorClass<UnsupportedAvailabilityZoneException>()(
     "UnsupportedAvailabilityZoneException",
     {
-      message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
       clusterName: S.optional(S.String),
       nodegroupName: S.optional(S.String),
       validZones: S.optional(

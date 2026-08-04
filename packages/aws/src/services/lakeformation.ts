@@ -90,56 +90,56 @@ const rules = T.EndpointResolver((p, _) => {
 export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedErrorClass<AccessDeniedException>()(
     "AccessDeniedException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class AlreadyExistsException
   extends /*@__PURE__*/ S.TaggedErrorClass<AlreadyExistsException>()(
     "AlreadyExistsException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withAlreadyExistsError) {}
 export class ConcurrentModificationException
   extends /*@__PURE__*/ S.TaggedErrorClass<ConcurrentModificationException>()(
     "ConcurrentModificationException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedErrorClass<ConflictException>()(
     "ConflictException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class EntityNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<EntityNotFoundException>()(
     "EntityNotFoundException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class ExpiredException
   extends /*@__PURE__*/ S.TaggedErrorClass<ExpiredException>()(
     "ExpiredException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(410),
   ).pipe(C.withBadRequestError) {}
 export class GlueEncryptionException
   extends /*@__PURE__*/ S.TaggedErrorClass<GlueEncryptionException>()(
     "GlueEncryptionException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InternalServiceException
   extends /*@__PURE__*/ S.TaggedErrorClass<InternalServiceException>()(
     "InternalServiceException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class InvalidInputException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidInputException>()(
     "InvalidInputException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidLakeFormationPrincipal
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidLakeFormationPrincipal>()(
     "InvalidLakeFormationPrincipal",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.SyntheticError({
       from: "InvalidInputException",
       message: { includes: "Invalid principal" },
@@ -148,7 +148,7 @@ export class InvalidLakeFormationPrincipal
 export class LastServiceLinkedRoleRegistration
   extends /*@__PURE__*/ S.TaggedErrorClass<LastServiceLinkedRoleRegistration>()(
     "LastServiceLinkedRoleRegistration",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.SyntheticError({
       from: "InvalidInputException",
       message: { includes: "Must manually delete service-linked role" },
@@ -157,58 +157,58 @@ export class LastServiceLinkedRoleRegistration
 export class OperationTimeoutException
   extends /*@__PURE__*/ S.TaggedErrorClass<OperationTimeoutException>()(
     "OperationTimeoutException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class PermissionTypeMismatchException
   extends /*@__PURE__*/ S.TaggedErrorClass<PermissionTypeMismatchException>()(
     "PermissionTypeMismatchException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class ResourceNotReadyException
   extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotReadyException>()(
     "ResourceNotReadyException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ResourceNumberLimitExceededException
   extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNumberLimitExceededException>()(
     "ResourceNumberLimitExceededException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class StatisticsNotReadyYetException
   extends /*@__PURE__*/ S.TaggedErrorClass<StatisticsNotReadyYetException>()(
     "StatisticsNotReadyYetException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(420),
   ) {}
 export class ThrottledException
   extends /*@__PURE__*/ S.TaggedErrorClass<ThrottledException>()(
     "ThrottledException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(T.HttpError(429), T.Retryable({ throttling: true })),
   ).pipe(C.withThrottlingError, C.withRetryableError) {}
 export class TransactionCanceledException
   extends /*@__PURE__*/ S.TaggedErrorClass<TransactionCanceledException>()(
     "TransactionCanceledException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TransactionCommitInProgressException
   extends /*@__PURE__*/ S.TaggedErrorClass<TransactionCommitInProgressException>()(
     "TransactionCommitInProgressException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TransactionCommittedException
   extends /*@__PURE__*/ S.TaggedErrorClass<TransactionCommittedException>()(
     "TransactionCommittedException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class WorkUnitsNotReadyYetException
   extends /*@__PURE__*/ S.TaggedErrorClass<WorkUnitsNotReadyYetException>()(
     "WorkUnitsNotReadyYetException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(420),
   ) {}
 export type CatalogIdString = string;

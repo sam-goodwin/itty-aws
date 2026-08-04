@@ -88,17 +88,17 @@ const rules = T.EndpointResolver((p, _) => {
 export class DuplicateReportNameException
   extends /*@__PURE__*/ S.TaggedErrorClass<DuplicateReportNameException>()(
     "DuplicateReportNameException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InternalErrorException
   extends /*@__PURE__*/ S.TaggedErrorClass<InternalErrorException>()(
     "InternalErrorException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withServerError) {}
 export class ReportBucketNotVerified
   extends /*@__PURE__*/ S.TaggedErrorClass<ReportBucketNotVerified>()(
     "ReportBucketNotVerified",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.SyntheticError({
       from: "ValidationException",
       message: { matches: "[Bb]ucket" },
@@ -107,17 +107,17 @@ export class ReportBucketNotVerified
 export class ReportLimitReachedException
   extends /*@__PURE__*/ S.TaggedErrorClass<ReportLimitReachedException>()(
     "ReportLimitReachedException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
     "ResourceNotFoundException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class ValidationException
   extends /*@__PURE__*/ S.TaggedErrorClass<ValidationException>()(
     "ValidationException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export type ReportName = string;
 export interface DeleteReportDefinitionRequest {

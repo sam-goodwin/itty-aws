@@ -88,37 +88,49 @@ const rules = T.EndpointResolver((p, _) => {
 export class DependencyException
   extends /*@__PURE__*/ S.TaggedErrorClass<DependencyException>()(
     "DependencyException",
-    { message: S.optional(S.String), parameterName: S.optional(S.String) },
+    {
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      parameterName: S.optional(S.String),
+    },
     T.HttpError(531),
   ).pipe(C.withServerError) {}
 export class InvalidParameterException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidParameterException>()(
     "InvalidParameterException",
-    { message: S.optional(S.String), parameterName: S.optional(S.String) },
+    {
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      parameterName: S.optional(S.String),
+    },
     T.HttpError(431),
   ) {}
 export class ResourceInUseException
   extends /*@__PURE__*/ S.TaggedErrorClass<ResourceInUseException>()(
     "ResourceInUseException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class ResourceLimitExceededException
   extends /*@__PURE__*/ S.TaggedErrorClass<ResourceLimitExceededException>()(
     "ResourceLimitExceededException",
-    { message: S.optional(S.String), parameterName: S.optional(S.String) },
+    {
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      parameterName: S.optional(S.String),
+    },
     T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
     "ResourceNotFoundException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(434),
   ) {}
 export class ServiceQuotaExceededException
   extends /*@__PURE__*/ S.TaggedErrorClass<ServiceQuotaExceededException>()(
     "ServiceQuotaExceededException",
-    { message: S.optional(S.String), parameterName: S.optional(S.String) },
+    {
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      parameterName: S.optional(S.String),
+    },
     T.HttpError(402),
   ).pipe(C.withQuotaError) {}
 export type Uuid = string;

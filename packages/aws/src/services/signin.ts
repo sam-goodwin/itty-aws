@@ -299,7 +299,7 @@ export class AccessDeniedException
       error: S.suspend(() => OAuth2ErrorCode).annotate({
         identifier: "OAuth2ErrorCode",
       }),
-      message: S.String,
+      message: S.String.pipe(T.ErrorMessage()),
     },
   ).pipe(C.withAuthError) {}
 export class ConflictException
@@ -309,7 +309,7 @@ export class ConflictException
       error: S.suspend(() => OAuth2ErrorCode).annotate({
         identifier: "OAuth2ErrorCode",
       }),
-      message: S.String,
+      message: S.String.pipe(T.ErrorMessage()),
     },
     T.HttpError(409),
   ).pipe(C.withConflictError) {}
@@ -320,7 +320,7 @@ export class InternalServerException
       error: S.suspend(() => OAuth2ErrorCode).annotate({
         identifier: "OAuth2ErrorCode",
       }),
-      message: S.String,
+      message: S.String.pipe(T.ErrorMessage()),
     },
     T.HttpError(500),
   ).pipe(C.withServerError) {}
@@ -331,7 +331,7 @@ export class ResourceNotFoundException
       error: S.suspend(() => OAuth2ErrorCode).annotate({
         identifier: "OAuth2ErrorCode",
       }),
-      message: S.String,
+      message: S.String.pipe(T.ErrorMessage()),
     },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
@@ -342,7 +342,7 @@ export class ServiceQuotaExceededException
       error: S.suspend(() => OAuth2ErrorCode).annotate({
         identifier: "OAuth2ErrorCode",
       }),
-      message: S.String,
+      message: S.String.pipe(T.ErrorMessage()),
     },
     T.HttpError(402),
   ).pipe(C.withQuotaError) {}
@@ -353,7 +353,7 @@ export class TooManyRequestsError
       error: S.suspend(() => OAuth2ErrorCode).annotate({
         identifier: "OAuth2ErrorCode",
       }),
-      message: S.String,
+      message: S.String.pipe(T.ErrorMessage()),
     },
     T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
@@ -364,7 +364,7 @@ export class ValidationException
       error: S.suspend(() => OAuth2ErrorCode).annotate({
         identifier: "OAuth2ErrorCode",
       }),
-      message: S.String,
+      message: S.String.pipe(T.ErrorMessage()),
     },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}

@@ -87,25 +87,25 @@ const rules = T.EndpointResolver((p, _) => {
 export class ForbiddenException
   extends /*@__PURE__*/ S.TaggedErrorClass<ForbiddenException>()(
     "ForbiddenException",
-    {},
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class GoneException
   extends /*@__PURE__*/ S.TaggedErrorClass<GoneException>()(
     "GoneException",
-    {},
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(410),
   ).pipe(C.withBadRequestError) {}
 export class LimitExceededException
   extends /*@__PURE__*/ S.TaggedErrorClass<LimitExceededException>()(
     "LimitExceededException",
-    {},
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export class PayloadTooLargeException
   extends /*@__PURE__*/ S.TaggedErrorClass<PayloadTooLargeException>()(
     "PayloadTooLargeException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(413),
   ).pipe(C.withBadRequestError) {}
 export interface DeleteConnectionRequest {

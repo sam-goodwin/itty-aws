@@ -90,57 +90,63 @@ const rules = T.EndpointResolver((p, _) => {
 export class ClusterLimitExceededException
   extends /*@__PURE__*/ S.TaggedErrorClass<ClusterLimitExceededException>()(
     "ClusterLimitExceededException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedErrorClass<ConflictException>()(
     "ConflictException",
-    { ConflictResource: S.optional(S.String), Message: S.optional(S.String) },
+    {
+      ConflictResource: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+    },
   ) {}
 export class Ec2RequestFailedException
   extends /*@__PURE__*/ S.TaggedErrorClass<Ec2RequestFailedException>()(
     "Ec2RequestFailedException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidAddressException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidAddressException>()(
     "InvalidAddressException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidInputCombinationException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidInputCombinationException>()(
     "InvalidInputCombinationException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidJobStateException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidJobStateException>()(
     "InvalidJobStateException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidNextTokenException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidNextTokenException>()(
     "InvalidNextTokenException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidResourceException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidResourceException>()(
     "InvalidResourceException",
-    { Message: S.optional(S.String), ResourceType: S.optional(S.String) },
+    {
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      ResourceType: S.optional(S.String),
+    },
   ) {}
 export class KMSRequestFailedException
   extends /*@__PURE__*/ S.TaggedErrorClass<KMSRequestFailedException>()(
     "KMSRequestFailedException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class ReturnShippingLabelAlreadyExistsException
   extends /*@__PURE__*/ S.TaggedErrorClass<ReturnShippingLabelAlreadyExistsException>()(
     "ReturnShippingLabelAlreadyExistsException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withAlreadyExistsError) {}
 export class UnsupportedAddressException
   extends /*@__PURE__*/ S.TaggedErrorClass<UnsupportedAddressException>()(
     "UnsupportedAddressException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export type ClusterId = string;
 export interface CancelClusterRequest {

@@ -1053,57 +1053,56 @@ const rules = T.EndpointResolver((p, _) => {
 export class AccessPointAlreadyOwnedByYou
   extends /*@__PURE__*/ S.TaggedErrorClass<AccessPointAlreadyOwnedByYou>()(
     "AccessPointAlreadyOwnedByYou",
-    {},
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withAlreadyExistsError) {}
 export class BadRequestException
   extends /*@__PURE__*/ S.TaggedErrorClass<BadRequestException>()(
     "BadRequestException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class BucketAlreadyExists
   extends /*@__PURE__*/ S.TaggedErrorClass<BucketAlreadyExists>()(
     "BucketAlreadyExists",
-    {},
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withAlreadyExistsError) {}
 export class BucketAlreadyOwnedByYou
   extends /*@__PURE__*/ S.TaggedErrorClass<BucketAlreadyOwnedByYou>()(
     "BucketAlreadyOwnedByYou",
-    {},
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class IdempotencyException
   extends /*@__PURE__*/ S.TaggedErrorClass<IdempotencyException>()(
     "IdempotencyException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InternalServiceException
   extends /*@__PURE__*/ S.TaggedErrorClass<InternalServiceException>()(
     "InternalServiceException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidNextTokenException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidNextTokenException>()(
     "InvalidNextTokenException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidRequest
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidRequest>()(
-    "InvalidRequest",
-    {},
-  ).pipe(C.withBadRequestError) {}
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidRequest>()("InvalidRequest", {
+    message: S.optional(S.String).pipe(T.ErrorMessage()),
+  }).pipe(C.withBadRequestError) {}
 export class InvalidRequestException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidRequestException>()(
     "InvalidRequestException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class JobStatusException
   extends /*@__PURE__*/ S.TaggedErrorClass<JobStatusException>()(
     "JobStatusException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class JobStatusTransitionForbidden
   extends /*@__PURE__*/ S.TaggedErrorClass<JobStatusTransitionForbidden>()(
     "JobStatusTransitionForbidden",
-    {},
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.SyntheticError({
       from: "InvalidRequest",
       message: { includes: "job status forbidden" },
@@ -1112,48 +1111,48 @@ export class JobStatusTransitionForbidden
 export class MalformedPolicy
   extends /*@__PURE__*/ S.TaggedErrorClass<MalformedPolicy>()(
     "MalformedPolicy",
-    {},
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withBadRequestError) {}
 export class MissingBucketLevelActivityMetrics
   extends /*@__PURE__*/ S.TaggedErrorClass<MissingBucketLevelActivityMetrics>()(
     "MissingBucketLevelActivityMetrics",
-    {},
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withBadRequestError) {}
 export class NoSuchAccessPoint
   extends /*@__PURE__*/ S.TaggedErrorClass<NoSuchAccessPoint>()(
     "NoSuchAccessPoint",
-    {},
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withNotFoundError) {}
 export class NoSuchAccessPointPolicy
   extends /*@__PURE__*/ S.TaggedErrorClass<NoSuchAccessPointPolicy>()(
     "NoSuchAccessPointPolicy",
-    {},
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withNotFoundError) {}
 export class NoSuchConfiguration
   extends /*@__PURE__*/ S.TaggedErrorClass<NoSuchConfiguration>()(
     "NoSuchConfiguration",
-    {},
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withNotFoundError) {}
 export class NoSuchMultiRegionAccessPoint
   extends /*@__PURE__*/ S.TaggedErrorClass<NoSuchMultiRegionAccessPoint>()(
     "NoSuchMultiRegionAccessPoint",
-    {},
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withNotFoundError) {}
 export class NoSuchPublicAccessBlockConfiguration
   extends /*@__PURE__*/ S.TaggedErrorClass<NoSuchPublicAccessBlockConfiguration>()(
     "NoSuchPublicAccessBlockConfiguration",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class NotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<NotFoundException>()(
     "NotFoundException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class ObjectLambdaNotAvailable
   extends /*@__PURE__*/ S.TaggedErrorClass<ObjectLambdaNotAvailable>()(
     "ObjectLambdaNotAvailable",
-    {},
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.SyntheticError({
       from: "AccessDenied",
       message: {
@@ -1164,12 +1163,12 @@ export class ObjectLambdaNotAvailable
 export class TooManyRequestsException
   extends /*@__PURE__*/ S.TaggedErrorClass<TooManyRequestsException>()(
     "TooManyRequestsException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class TooManyTagsException
   extends /*@__PURE__*/ S.TaggedErrorClass<TooManyTagsException>()(
     "TooManyTagsException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export type AccountId = string;
 export type IdentityCenterArn = string;

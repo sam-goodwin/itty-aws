@@ -92,283 +92,283 @@ const rules = T.EndpointResolver((p, _) => {
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedErrorClass<ConflictException>()(
     "ConflictException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class ConformancePackTemplateValidationException
   extends /*@__PURE__*/ S.TaggedErrorClass<ConformancePackTemplateValidationException>()(
     "ConformancePackTemplateValidationException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class IdempotentParameterMismatch
   extends /*@__PURE__*/ S.TaggedErrorClass<IdempotentParameterMismatch>()(
     "IdempotentParameterMismatch",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError, C.withConflictError) {}
 export class InsufficientDeliveryPolicyException
   extends /*@__PURE__*/ S.TaggedErrorClass<InsufficientDeliveryPolicyException>()(
     "InsufficientDeliveryPolicyException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InsufficientPermissionsException
   extends /*@__PURE__*/ S.TaggedErrorClass<InsufficientPermissionsException>()(
     "InsufficientPermissionsException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidConfigurationRecorderNameException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidConfigurationRecorderNameException>()(
     "InvalidConfigurationRecorderNameException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidDeliveryChannelNameException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidDeliveryChannelNameException>()(
     "InvalidDeliveryChannelNameException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidExpressionException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidExpressionException>()(
     "InvalidExpressionException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidLimitException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidLimitException>()(
     "InvalidLimitException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidNextTokenException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidNextTokenException>()(
     "InvalidNextTokenException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidParameterValueException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidParameterValueException>()(
     "InvalidParameterValueException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidRecordingGroupException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidRecordingGroupException>()(
     "InvalidRecordingGroupException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidResultTokenException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidResultTokenException>()(
     "InvalidResultTokenException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidRoleException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidRoleException>()(
     "InvalidRoleException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidS3KeyPrefixException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidS3KeyPrefixException>()(
     "InvalidS3KeyPrefixException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidS3KmsKeyArnException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidS3KmsKeyArnException>()(
     "InvalidS3KmsKeyArnException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidSNSTopicARNException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidSNSTopicARNException>()(
     "InvalidSNSTopicARNException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidTimeRangeException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidTimeRangeException>()(
     "InvalidTimeRangeException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class LastDeliveryChannelDeleteFailedException
   extends /*@__PURE__*/ S.TaggedErrorClass<LastDeliveryChannelDeleteFailedException>()(
     "LastDeliveryChannelDeleteFailedException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class LimitExceededException
   extends /*@__PURE__*/ S.TaggedErrorClass<LimitExceededException>()(
     "LimitExceededException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class MaxActiveResourcesExceededException
   extends /*@__PURE__*/ S.TaggedErrorClass<MaxActiveResourcesExceededException>()(
     "MaxActiveResourcesExceededException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class MaxNumberOfConfigRulesExceededException
   extends /*@__PURE__*/ S.TaggedErrorClass<MaxNumberOfConfigRulesExceededException>()(
     "MaxNumberOfConfigRulesExceededException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class MaxNumberOfConfigurationRecordersExceededException
   extends /*@__PURE__*/ S.TaggedErrorClass<MaxNumberOfConfigurationRecordersExceededException>()(
     "MaxNumberOfConfigurationRecordersExceededException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class MaxNumberOfConformancePacksExceededException
   extends /*@__PURE__*/ S.TaggedErrorClass<MaxNumberOfConformancePacksExceededException>()(
     "MaxNumberOfConformancePacksExceededException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class MaxNumberOfDeliveryChannelsExceededException
   extends /*@__PURE__*/ S.TaggedErrorClass<MaxNumberOfDeliveryChannelsExceededException>()(
     "MaxNumberOfDeliveryChannelsExceededException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class MaxNumberOfOrganizationConfigRulesExceededException
   extends /*@__PURE__*/ S.TaggedErrorClass<MaxNumberOfOrganizationConfigRulesExceededException>()(
     "MaxNumberOfOrganizationConfigRulesExceededException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class MaxNumberOfOrganizationConformancePacksExceededException
   extends /*@__PURE__*/ S.TaggedErrorClass<MaxNumberOfOrganizationConformancePacksExceededException>()(
     "MaxNumberOfOrganizationConformancePacksExceededException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class MaxNumberOfRetentionConfigurationsExceededException
   extends /*@__PURE__*/ S.TaggedErrorClass<MaxNumberOfRetentionConfigurationsExceededException>()(
     "MaxNumberOfRetentionConfigurationsExceededException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class NoAvailableConfigurationRecorderException
   extends /*@__PURE__*/ S.TaggedErrorClass<NoAvailableConfigurationRecorderException>()(
     "NoAvailableConfigurationRecorderException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class NoAvailableDeliveryChannelException
   extends /*@__PURE__*/ S.TaggedErrorClass<NoAvailableDeliveryChannelException>()(
     "NoAvailableDeliveryChannelException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class NoAvailableOrganizationException
   extends /*@__PURE__*/ S.TaggedErrorClass<NoAvailableOrganizationException>()(
     "NoAvailableOrganizationException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class NoRunningConfigurationRecorderException
   extends /*@__PURE__*/ S.TaggedErrorClass<NoRunningConfigurationRecorderException>()(
     "NoRunningConfigurationRecorderException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class NoSuchBucketException
   extends /*@__PURE__*/ S.TaggedErrorClass<NoSuchBucketException>()(
     "NoSuchBucketException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class NoSuchConfigRuleException
   extends /*@__PURE__*/ S.TaggedErrorClass<NoSuchConfigRuleException>()(
     "NoSuchConfigRuleException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class NoSuchConfigRuleInConformancePackException
   extends /*@__PURE__*/ S.TaggedErrorClass<NoSuchConfigRuleInConformancePackException>()(
     "NoSuchConfigRuleInConformancePackException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class NoSuchConfigurationAggregatorException
   extends /*@__PURE__*/ S.TaggedErrorClass<NoSuchConfigurationAggregatorException>()(
     "NoSuchConfigurationAggregatorException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class NoSuchConfigurationRecorderException
   extends /*@__PURE__*/ S.TaggedErrorClass<NoSuchConfigurationRecorderException>()(
     "NoSuchConfigurationRecorderException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class NoSuchConformancePackException
   extends /*@__PURE__*/ S.TaggedErrorClass<NoSuchConformancePackException>()(
     "NoSuchConformancePackException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class NoSuchDeliveryChannelException
   extends /*@__PURE__*/ S.TaggedErrorClass<NoSuchDeliveryChannelException>()(
     "NoSuchDeliveryChannelException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class NoSuchOrganizationConfigRuleException
   extends /*@__PURE__*/ S.TaggedErrorClass<NoSuchOrganizationConfigRuleException>()(
     "NoSuchOrganizationConfigRuleException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class NoSuchOrganizationConformancePackException
   extends /*@__PURE__*/ S.TaggedErrorClass<NoSuchOrganizationConformancePackException>()(
     "NoSuchOrganizationConformancePackException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class NoSuchRemediationConfigurationException
   extends /*@__PURE__*/ S.TaggedErrorClass<NoSuchRemediationConfigurationException>()(
     "NoSuchRemediationConfigurationException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class NoSuchRemediationExceptionException
   extends /*@__PURE__*/ S.TaggedErrorClass<NoSuchRemediationExceptionException>()(
     "NoSuchRemediationExceptionException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class NoSuchRetentionConfigurationException
   extends /*@__PURE__*/ S.TaggedErrorClass<NoSuchRetentionConfigurationException>()(
     "NoSuchRetentionConfigurationException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class OrganizationAccessDeniedException
   extends /*@__PURE__*/ S.TaggedErrorClass<OrganizationAccessDeniedException>()(
     "OrganizationAccessDeniedException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withAuthError) {}
 export class OrganizationAllFeaturesNotEnabledException
   extends /*@__PURE__*/ S.TaggedErrorClass<OrganizationAllFeaturesNotEnabledException>()(
     "OrganizationAllFeaturesNotEnabledException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class OrganizationConformancePackTemplateValidationException
   extends /*@__PURE__*/ S.TaggedErrorClass<OrganizationConformancePackTemplateValidationException>()(
     "OrganizationConformancePackTemplateValidationException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class OversizedConfigurationItemException
   extends /*@__PURE__*/ S.TaggedErrorClass<OversizedConfigurationItemException>()(
     "OversizedConfigurationItemException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class RemediationInProgressException
   extends /*@__PURE__*/ S.TaggedErrorClass<RemediationInProgressException>()(
     "RemediationInProgressException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class ResourceConcurrentModificationException
   extends /*@__PURE__*/ S.TaggedErrorClass<ResourceConcurrentModificationException>()(
     "ResourceConcurrentModificationException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class ResourceInUseException
   extends /*@__PURE__*/ S.TaggedErrorClass<ResourceInUseException>()(
     "ResourceInUseException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class ResourceNotDiscoveredException
   extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotDiscoveredException>()(
     "ResourceNotDiscoveredException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
     "ResourceNotFoundException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class TooManyTagsException
   extends /*@__PURE__*/ S.TaggedErrorClass<TooManyTagsException>()(
     "TooManyTagsException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class UnmodifiableEntityException
   extends /*@__PURE__*/ S.TaggedErrorClass<UnmodifiableEntityException>()(
     "UnmodifiableEntityException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class ValidationException
   extends /*@__PURE__*/ S.TaggedErrorClass<ValidationException>()(
     "ValidationException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export type AmazonResourceName = string;
 export type ResourceType =

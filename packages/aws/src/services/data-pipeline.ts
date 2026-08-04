@@ -88,27 +88,27 @@ const rules = T.EndpointResolver((p, _) => {
 export class InternalServiceError
   extends /*@__PURE__*/ S.TaggedErrorClass<InternalServiceError>()(
     "InternalServiceError",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidRequestException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidRequestException>()(
     "InvalidRequestException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class PipelineDeletedException
   extends /*@__PURE__*/ S.TaggedErrorClass<PipelineDeletedException>()(
     "PipelineDeletedException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class PipelineNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<PipelineNotFoundException>()(
     "PipelineNotFoundException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class TaskNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<TaskNotFoundException>()(
     "TaskNotFoundException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export type Id = string;
 export type FieldNameString = string;

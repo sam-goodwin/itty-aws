@@ -88,14 +88,14 @@ const rules = T.EndpointResolver((p, _) => {
 export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedErrorClass<AccessDeniedException>()(
     "AccessDeniedException",
-    { message: S.String },
+    { message: S.String.pipe(T.ErrorMessage()) },
     T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedErrorClass<ConflictException>()(
     "ConflictException",
     {
-      message: S.String,
+      message: S.String.pipe(T.ErrorMessage()),
       resourceIdentifier: S.optional(S.String),
       resourceType: S.optional(S.String),
       retryAfter: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -105,14 +105,14 @@ export class ConflictException
 export class InternalServerException
   extends /*@__PURE__*/ S.TaggedErrorClass<InternalServerException>()(
     "InternalServerException",
-    { message: S.String },
+    { message: S.String.pipe(T.ErrorMessage()) },
     T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
     "ResourceNotFoundException",
     {
-      message: S.String,
+      message: S.String.pipe(T.ErrorMessage()),
       resourceIdentifier: S.optional(S.String),
       resourceType: S.optional(S.String),
     },
@@ -122,7 +122,7 @@ export class ServiceQuotaExceededException
   extends /*@__PURE__*/ S.TaggedErrorClass<ServiceQuotaExceededException>()(
     "ServiceQuotaExceededException",
     {
-      message: S.String,
+      message: S.String.pipe(T.ErrorMessage()),
       resourceIdentifier: S.optional(S.String),
       resourceType: S.optional(S.String),
       serviceCode: S.String,
@@ -133,18 +133,22 @@ export class ServiceQuotaExceededException
 export class ThrottlingException
   extends /*@__PURE__*/ S.TaggedErrorClass<ThrottlingException>()(
     "ThrottlingException",
-    { message: S.String, serviceCode: S.String, quotaCode: S.String },
+    {
+      message: S.String.pipe(T.ErrorMessage()),
+      serviceCode: S.String,
+      quotaCode: S.String,
+    },
     T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export class UnsupportedOperationException
   extends /*@__PURE__*/ S.TaggedErrorClass<UnsupportedOperationException>()(
     "UnsupportedOperationException",
-    {},
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withBadRequestError) {}
 export class ValidationException
   extends /*@__PURE__*/ S.TaggedErrorClass<ValidationException>()(
     "ValidationException",
-    { message: S.String },
+    { message: S.String.pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export type Arn = string;

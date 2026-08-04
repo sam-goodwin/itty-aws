@@ -67,7 +67,11 @@ const rules = T.EndpointResolver((p, _) => {
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedErrorClass<ConflictException>()(
     "ConflictException",
-    { message: S.String, resourceId: S.String, resourceType: S.String },
+    {
+      message: S.String.pipe(T.ErrorMessage()),
+      resourceId: S.String,
+      resourceType: S.String,
+    },
     T.all(
       T.AwsQueryError({ code: "ConflictCode", httpResponseCode: 409 }),
       T.HttpError(409),
@@ -76,13 +80,17 @@ export class ConflictException
 export class DataUnavailableException
   extends /*@__PURE__*/ S.TaggedErrorClass<DataUnavailableException>()(
     "DataUnavailableException",
-    { message: S.String },
+    { message: S.String.pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
     "ResourceNotFoundException",
-    { message: S.String, resourceId: S.String, resourceType: S.String },
+    {
+      message: S.String.pipe(T.ErrorMessage()),
+      resourceId: S.String,
+      resourceType: S.String,
+    },
     T.all(
       T.AwsQueryError({ code: "ResourceNotFoundCode", httpResponseCode: 404 }),
       T.HttpError(404),
@@ -92,7 +100,7 @@ export class ServiceQuotaExceededException
   extends /*@__PURE__*/ S.TaggedErrorClass<ServiceQuotaExceededException>()(
     "ServiceQuotaExceededException",
     {
-      message: S.String,
+      message: S.String.pipe(T.ErrorMessage()),
       resourceId: S.String,
       resourceType: S.String,
       serviceCode: S.optional(S.String),

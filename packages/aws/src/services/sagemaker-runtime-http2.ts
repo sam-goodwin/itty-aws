@@ -342,25 +342,31 @@ const rules = T.EndpointResolver((p, _) => {
 export class InputValidationError
   extends /*@__PURE__*/ S.TaggedErrorClass<InputValidationError>()(
     "InputValidationError",
-    { Message: S.optional(S.String), ErrorCode: S.optional(S.String) },
+    {
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      ErrorCode: S.optional(S.String),
+    },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InternalServerError
   extends /*@__PURE__*/ S.TaggedErrorClass<InternalServerError>()(
     "InternalServerError",
-    { Message: S.optional(S.String), ErrorCode: S.optional(S.String) },
+    {
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      ErrorCode: S.optional(S.String),
+    },
     T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class InternalStreamFailure
   extends /*@__PURE__*/ S.TaggedErrorClass<InternalStreamFailure>()(
     "InternalStreamFailure",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class ModelError
   extends /*@__PURE__*/ S.TaggedErrorClass<ModelError>()(
     "ModelError",
     {
-      Message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
       OriginalStatusCode: S.optional(S.Number),
       OriginalMessage: S.optional(S.String),
       LogStreamArn: S.optional(S.String),
@@ -371,12 +377,18 @@ export class ModelError
 export class ModelStreamError
   extends /*@__PURE__*/ S.TaggedErrorClass<ModelStreamError>()(
     "ModelStreamError",
-    { Message: S.optional(S.String), ErrorCode: S.optional(S.String) },
+    {
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      ErrorCode: S.optional(S.String),
+    },
   ) {}
 export class ServiceUnavailableError
   extends /*@__PURE__*/ S.TaggedErrorClass<ServiceUnavailableError>()(
     "ServiceUnavailableError",
-    { Message: S.optional(S.String), ErrorCode: S.optional(S.String) },
+    {
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      ErrorCode: S.optional(S.String),
+    },
     T.HttpError(503),
   ).pipe(C.withServerError) {}
 export type SensitiveBlob = Uint8Array | redacted.Redacted<Uint8Array>;

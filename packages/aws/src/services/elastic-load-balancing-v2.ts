@@ -96,7 +96,7 @@ const rules = T.EndpointResolver((p, _) => {
 export class AllocationIdNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<AllocationIdNotFoundException>()(
     "AllocationIdNotFoundException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "AllocationIdNotFound", httpResponseCode: 400 }),
       T.HttpError(400),
@@ -105,7 +105,7 @@ export class AllocationIdNotFoundException
 export class ALPNPolicyNotSupportedException
   extends /*@__PURE__*/ S.TaggedErrorClass<ALPNPolicyNotSupportedException>()(
     "ALPNPolicyNotSupportedException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "ALPNPolicyNotFound", httpResponseCode: 400 }),
       T.HttpError(400),
@@ -114,7 +114,7 @@ export class ALPNPolicyNotSupportedException
 export class AvailabilityZoneNotSupportedException
   extends /*@__PURE__*/ S.TaggedErrorClass<AvailabilityZoneNotSupportedException>()(
     "AvailabilityZoneNotSupportedException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({
         code: "AvailabilityZoneNotSupported",
@@ -126,7 +126,7 @@ export class AvailabilityZoneNotSupportedException
 export class CaCertificatesBundleNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<CaCertificatesBundleNotFoundException>()(
     "CaCertificatesBundleNotFoundException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({
         code: "CaCertificatesBundleNotFound",
@@ -138,7 +138,7 @@ export class CaCertificatesBundleNotFoundException
 export class CapacityDecreaseRequestsLimitExceededException
   extends /*@__PURE__*/ S.TaggedErrorClass<CapacityDecreaseRequestsLimitExceededException>()(
     "CapacityDecreaseRequestsLimitExceededException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({
         code: "CapacityDecreaseRequestLimitExceeded",
@@ -150,7 +150,7 @@ export class CapacityDecreaseRequestsLimitExceededException
 export class CapacityReservationPendingException
   extends /*@__PURE__*/ S.TaggedErrorClass<CapacityReservationPendingException>()(
     "CapacityReservationPendingException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({
         code: "CapacityReservationPending",
@@ -162,7 +162,7 @@ export class CapacityReservationPendingException
 export class CapacityUnitsLimitExceededException
   extends /*@__PURE__*/ S.TaggedErrorClass<CapacityUnitsLimitExceededException>()(
     "CapacityUnitsLimitExceededException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({
         code: "CapacityUnitsLimitExceeded",
@@ -174,7 +174,7 @@ export class CapacityUnitsLimitExceededException
 export class CertificateNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<CertificateNotFoundException>()(
     "CertificateNotFoundException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "CertificateNotFound", httpResponseCode: 400 }),
       T.HttpError(400),
@@ -183,7 +183,7 @@ export class CertificateNotFoundException
 export class DeleteAssociationSameAccountException
   extends /*@__PURE__*/ S.TaggedErrorClass<DeleteAssociationSameAccountException>()(
     "DeleteAssociationSameAccountException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({
         code: "DeleteAssociationSameAccount",
@@ -195,7 +195,7 @@ export class DeleteAssociationSameAccountException
 export class DuplicateListenerException
   extends /*@__PURE__*/ S.TaggedErrorClass<DuplicateListenerException>()(
     "DuplicateListenerException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "DuplicateListener", httpResponseCode: 400 }),
       T.HttpError(400),
@@ -204,7 +204,7 @@ export class DuplicateListenerException
 export class DuplicateLoadBalancerNameException
   extends /*@__PURE__*/ S.TaggedErrorClass<DuplicateLoadBalancerNameException>()(
     "DuplicateLoadBalancerNameException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({
         code: "DuplicateLoadBalancerName",
@@ -216,7 +216,7 @@ export class DuplicateLoadBalancerNameException
 export class DuplicateTagKeysException
   extends /*@__PURE__*/ S.TaggedErrorClass<DuplicateTagKeysException>()(
     "DuplicateTagKeysException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "DuplicateTagKeys", httpResponseCode: 400 }),
       T.HttpError(400),
@@ -225,7 +225,7 @@ export class DuplicateTagKeysException
 export class DuplicateTargetGroupNameException
   extends /*@__PURE__*/ S.TaggedErrorClass<DuplicateTargetGroupNameException>()(
     "DuplicateTargetGroupNameException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({
         code: "DuplicateTargetGroupName",
@@ -237,7 +237,7 @@ export class DuplicateTargetGroupNameException
 export class DuplicateTrustStoreNameException
   extends /*@__PURE__*/ S.TaggedErrorClass<DuplicateTrustStoreNameException>()(
     "DuplicateTrustStoreNameException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({
         code: "DuplicateTrustStoreName",
@@ -249,7 +249,7 @@ export class DuplicateTrustStoreNameException
 export class HealthUnavailableException
   extends /*@__PURE__*/ S.TaggedErrorClass<HealthUnavailableException>()(
     "HealthUnavailableException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "HealthUnavailable", httpResponseCode: 500 }),
       T.HttpError(500),
@@ -258,7 +258,7 @@ export class HealthUnavailableException
 export class IncompatibleProtocolsException
   extends /*@__PURE__*/ S.TaggedErrorClass<IncompatibleProtocolsException>()(
     "IncompatibleProtocolsException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "IncompatibleProtocols", httpResponseCode: 400 }),
       T.HttpError(400),
@@ -267,7 +267,7 @@ export class IncompatibleProtocolsException
 export class InsufficientCapacityException
   extends /*@__PURE__*/ S.TaggedErrorClass<InsufficientCapacityException>()(
     "InsufficientCapacityException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "InsufficientCapacity", httpResponseCode: 500 }),
       T.HttpError(500),
@@ -276,7 +276,7 @@ export class InsufficientCapacityException
 export class InvalidCaCertificatesBundleException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidCaCertificatesBundleException>()(
     "InvalidCaCertificatesBundleException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({
         code: "InvalidCaCertificatesBundle",
@@ -288,7 +288,7 @@ export class InvalidCaCertificatesBundleException
 export class InvalidConfigurationRequestException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidConfigurationRequestException>()(
     "InvalidConfigurationRequestException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({
         code: "InvalidConfigurationRequest",
@@ -300,7 +300,7 @@ export class InvalidConfigurationRequestException
 export class InvalidLoadBalancerActionException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidLoadBalancerActionException>()(
     "InvalidLoadBalancerActionException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({
         code: "InvalidLoadBalancerAction",
@@ -312,7 +312,7 @@ export class InvalidLoadBalancerActionException
 export class InvalidRevocationContentException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidRevocationContentException>()(
     "InvalidRevocationContentException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({
         code: "InvalidRevocationContent",
@@ -324,7 +324,7 @@ export class InvalidRevocationContentException
 export class InvalidSchemeException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidSchemeException>()(
     "InvalidSchemeException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "InvalidScheme", httpResponseCode: 400 }),
       T.HttpError(400),
@@ -333,7 +333,7 @@ export class InvalidSchemeException
 export class InvalidSecurityGroupException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidSecurityGroupException>()(
     "InvalidSecurityGroupException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "InvalidSecurityGroup", httpResponseCode: 400 }),
       T.HttpError(400),
@@ -342,7 +342,7 @@ export class InvalidSecurityGroupException
 export class InvalidSubnetException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidSubnetException>()(
     "InvalidSubnetException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "InvalidSubnet", httpResponseCode: 400 }),
       T.HttpError(400),
@@ -351,7 +351,7 @@ export class InvalidSubnetException
 export class InvalidTargetException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidTargetException>()(
     "InvalidTargetException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "InvalidTarget", httpResponseCode: 400 }),
       T.HttpError(400),
@@ -360,7 +360,7 @@ export class InvalidTargetException
 export class ListenerNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<ListenerNotFoundException>()(
     "ListenerNotFoundException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "ListenerNotFound", httpResponseCode: 400 }),
       T.HttpError(400),
@@ -369,7 +369,7 @@ export class ListenerNotFoundException
 export class LoadBalancerNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<LoadBalancerNotFoundException>()(
     "LoadBalancerNotFoundException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "LoadBalancerNotFound", httpResponseCode: 400 }),
       T.HttpError(400),
@@ -378,7 +378,7 @@ export class LoadBalancerNotFoundException
 export class OperationNotPermittedException
   extends /*@__PURE__*/ S.TaggedErrorClass<OperationNotPermittedException>()(
     "OperationNotPermittedException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "OperationNotPermitted", httpResponseCode: 400 }),
       T.HttpError(400),
@@ -387,7 +387,7 @@ export class OperationNotPermittedException
 export class PriorityInUseException
   extends /*@__PURE__*/ S.TaggedErrorClass<PriorityInUseException>()(
     "PriorityInUseException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "PriorityInUse", httpResponseCode: 400 }),
       T.HttpError(400),
@@ -396,7 +396,7 @@ export class PriorityInUseException
 export class PriorRequestNotCompleteException
   extends /*@__PURE__*/ S.TaggedErrorClass<PriorRequestNotCompleteException>()(
     "PriorRequestNotCompleteException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({
         code: "PriorRequestNotComplete",
@@ -408,7 +408,7 @@ export class PriorRequestNotCompleteException
 export class ResourceInUseException
   extends /*@__PURE__*/ S.TaggedErrorClass<ResourceInUseException>()(
     "ResourceInUseException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "ResourceInUse", httpResponseCode: 400 }),
       T.HttpError(400),
@@ -417,7 +417,7 @@ export class ResourceInUseException
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
     "ResourceNotFoundException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "ResourceNotFound", httpResponseCode: 400 }),
       T.HttpError(400),
@@ -426,7 +426,7 @@ export class ResourceNotFoundException
 export class RevocationContentNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<RevocationContentNotFoundException>()(
     "RevocationContentNotFoundException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({
         code: "RevocationContentNotFound",
@@ -438,7 +438,7 @@ export class RevocationContentNotFoundException
 export class RevocationIdNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<RevocationIdNotFoundException>()(
     "RevocationIdNotFoundException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "RevocationIdNotFound", httpResponseCode: 400 }),
       T.HttpError(400),
@@ -447,7 +447,7 @@ export class RevocationIdNotFoundException
 export class RuleNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<RuleNotFoundException>()(
     "RuleNotFoundException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "RuleNotFound", httpResponseCode: 400 }),
       T.HttpError(400),
@@ -456,7 +456,7 @@ export class RuleNotFoundException
 export class SSLPolicyNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<SSLPolicyNotFoundException>()(
     "SSLPolicyNotFoundException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "SSLPolicyNotFound", httpResponseCode: 400 }),
       T.HttpError(400),
@@ -465,7 +465,7 @@ export class SSLPolicyNotFoundException
 export class SubnetNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<SubnetNotFoundException>()(
     "SubnetNotFoundException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "SubnetNotFound", httpResponseCode: 400 }),
       T.HttpError(400),
@@ -474,7 +474,7 @@ export class SubnetNotFoundException
 export class TargetGroupAssociationLimitException
   extends /*@__PURE__*/ S.TaggedErrorClass<TargetGroupAssociationLimitException>()(
     "TargetGroupAssociationLimitException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({
         code: "TargetGroupAssociationLimit",
@@ -486,7 +486,7 @@ export class TargetGroupAssociationLimitException
 export class TargetGroupNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<TargetGroupNotFoundException>()(
     "TargetGroupNotFoundException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "TargetGroupNotFound", httpResponseCode: 400 }),
       T.HttpError(400),
@@ -495,7 +495,7 @@ export class TargetGroupNotFoundException
 export class TooManyActionsException
   extends /*@__PURE__*/ S.TaggedErrorClass<TooManyActionsException>()(
     "TooManyActionsException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "TooManyActions", httpResponseCode: 400 }),
       T.HttpError(400),
@@ -504,7 +504,7 @@ export class TooManyActionsException
 export class TooManyCertificatesException
   extends /*@__PURE__*/ S.TaggedErrorClass<TooManyCertificatesException>()(
     "TooManyCertificatesException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "TooManyCertificates", httpResponseCode: 400 }),
       T.HttpError(400),
@@ -513,7 +513,7 @@ export class TooManyCertificatesException
 export class TooManyListenersException
   extends /*@__PURE__*/ S.TaggedErrorClass<TooManyListenersException>()(
     "TooManyListenersException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "TooManyListeners", httpResponseCode: 400 }),
       T.HttpError(400),
@@ -522,7 +522,7 @@ export class TooManyListenersException
 export class TooManyLoadBalancersException
   extends /*@__PURE__*/ S.TaggedErrorClass<TooManyLoadBalancersException>()(
     "TooManyLoadBalancersException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "TooManyLoadBalancers", httpResponseCode: 400 }),
       T.HttpError(400),
@@ -531,7 +531,7 @@ export class TooManyLoadBalancersException
 export class TooManyRegistrationsForTargetIdException
   extends /*@__PURE__*/ S.TaggedErrorClass<TooManyRegistrationsForTargetIdException>()(
     "TooManyRegistrationsForTargetIdException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({
         code: "TooManyRegistrationsForTargetId",
@@ -543,7 +543,7 @@ export class TooManyRegistrationsForTargetIdException
 export class TooManyRulesException
   extends /*@__PURE__*/ S.TaggedErrorClass<TooManyRulesException>()(
     "TooManyRulesException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "TooManyRules", httpResponseCode: 400 }),
       T.HttpError(400),
@@ -552,7 +552,7 @@ export class TooManyRulesException
 export class TooManyTagsException
   extends /*@__PURE__*/ S.TaggedErrorClass<TooManyTagsException>()(
     "TooManyTagsException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "TooManyTags", httpResponseCode: 400 }),
       T.HttpError(400),
@@ -561,7 +561,7 @@ export class TooManyTagsException
 export class TooManyTargetGroupsException
   extends /*@__PURE__*/ S.TaggedErrorClass<TooManyTargetGroupsException>()(
     "TooManyTargetGroupsException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "TooManyTargetGroups", httpResponseCode: 400 }),
       T.HttpError(400),
@@ -570,7 +570,7 @@ export class TooManyTargetGroupsException
 export class TooManyTargetsException
   extends /*@__PURE__*/ S.TaggedErrorClass<TooManyTargetsException>()(
     "TooManyTargetsException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "TooManyTargets", httpResponseCode: 400 }),
       T.HttpError(400),
@@ -579,7 +579,7 @@ export class TooManyTargetsException
 export class TooManyTrustStoreRevocationEntriesException
   extends /*@__PURE__*/ S.TaggedErrorClass<TooManyTrustStoreRevocationEntriesException>()(
     "TooManyTrustStoreRevocationEntriesException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({
         code: "TooManyTrustStoreRevocationEntries",
@@ -591,7 +591,7 @@ export class TooManyTrustStoreRevocationEntriesException
 export class TooManyTrustStoresException
   extends /*@__PURE__*/ S.TaggedErrorClass<TooManyTrustStoresException>()(
     "TooManyTrustStoresException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "TooManyTrustStores", httpResponseCode: 400 }),
       T.HttpError(400),
@@ -600,7 +600,7 @@ export class TooManyTrustStoresException
 export class TooManyUniqueTargetGroupsPerLoadBalancerException
   extends /*@__PURE__*/ S.TaggedErrorClass<TooManyUniqueTargetGroupsPerLoadBalancerException>()(
     "TooManyUniqueTargetGroupsPerLoadBalancerException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({
         code: "TooManyUniqueTargetGroupsPerLoadBalancer",
@@ -612,7 +612,7 @@ export class TooManyUniqueTargetGroupsPerLoadBalancerException
 export class TrustStoreAssociationNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<TrustStoreAssociationNotFoundException>()(
     "TrustStoreAssociationNotFoundException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "AssociationNotFound", httpResponseCode: 400 }),
       T.HttpError(400),
@@ -621,7 +621,7 @@ export class TrustStoreAssociationNotFoundException
 export class TrustStoreInUseException
   extends /*@__PURE__*/ S.TaggedErrorClass<TrustStoreInUseException>()(
     "TrustStoreInUseException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "TrustStoreInUse", httpResponseCode: 400 }),
       T.HttpError(400),
@@ -630,7 +630,7 @@ export class TrustStoreInUseException
 export class TrustStoreNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<TrustStoreNotFoundException>()(
     "TrustStoreNotFoundException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "TrustStoreNotFound", httpResponseCode: 400 }),
       T.HttpError(400),
@@ -639,7 +639,7 @@ export class TrustStoreNotFoundException
 export class TrustStoreNotReadyException
   extends /*@__PURE__*/ S.TaggedErrorClass<TrustStoreNotReadyException>()(
     "TrustStoreNotReadyException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "TrustStoreNotReady", httpResponseCode: 400 }),
       T.HttpError(400),
@@ -648,7 +648,7 @@ export class TrustStoreNotReadyException
 export class UnsupportedProtocolException
   extends /*@__PURE__*/ S.TaggedErrorClass<UnsupportedProtocolException>()(
     "UnsupportedProtocolException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "UnsupportedProtocol", httpResponseCode: 400 }),
       T.HttpError(400),

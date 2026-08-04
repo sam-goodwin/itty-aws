@@ -87,68 +87,68 @@ const rules = T.EndpointResolver((p, _) => {
 export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedErrorClass<AccessDeniedException>()(
     "AccessDeniedException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withAuthError) {}
 export class AlreadyExistsException
   extends /*@__PURE__*/ S.TaggedErrorClass<AlreadyExistsException>()(
     "AlreadyExistsException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withAlreadyExistsError) {}
 export class ColumnStatisticsTaskNotRunningException
   extends /*@__PURE__*/ S.TaggedErrorClass<ColumnStatisticsTaskNotRunningException>()(
     "ColumnStatisticsTaskNotRunningException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class ColumnStatisticsTaskRunningException
   extends /*@__PURE__*/ S.TaggedErrorClass<ColumnStatisticsTaskRunningException>()(
     "ColumnStatisticsTaskRunningException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class ColumnStatisticsTaskStoppingException
   extends /*@__PURE__*/ S.TaggedErrorClass<ColumnStatisticsTaskStoppingException>()(
     "ColumnStatisticsTaskStoppingException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class ConcurrentModificationException
   extends /*@__PURE__*/ S.TaggedErrorClass<ConcurrentModificationException>()(
     "ConcurrentModificationException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class ConcurrentRunsExceededException
   extends /*@__PURE__*/ S.TaggedErrorClass<ConcurrentRunsExceededException>()(
     "ConcurrentRunsExceededException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class ConditionCheckFailureException
   extends /*@__PURE__*/ S.TaggedErrorClass<ConditionCheckFailureException>()(
     "ConditionCheckFailureException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedErrorClass<ConflictException>()(
     "ConflictException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class CrawlerNotRunningException
   extends /*@__PURE__*/ S.TaggedErrorClass<CrawlerNotRunningException>()(
     "CrawlerNotRunningException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class CrawlerRunningException
   extends /*@__PURE__*/ S.TaggedErrorClass<CrawlerRunningException>()(
     "CrawlerRunningException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class CrawlerStoppingException
   extends /*@__PURE__*/ S.TaggedErrorClass<CrawlerStoppingException>()(
     "CrawlerStoppingException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class EntityNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<EntityNotFoundException>()(
     "EntityNotFoundException",
     {
-      Message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
       FromFederationSource: S.optional(S.Boolean),
     },
   ) {}
@@ -156,7 +156,7 @@ export class FederatedResourceAlreadyExistsException
   extends /*@__PURE__*/ S.TaggedErrorClass<FederatedResourceAlreadyExistsException>()(
     "FederatedResourceAlreadyExistsException",
     {
-      Message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
       AssociatedGlueResource: S.optional(S.String),
     },
   ).pipe(C.withAlreadyExistsError) {}
@@ -169,24 +169,24 @@ export class FederationSourceException
           identifier: "FederationSourceErrorCode",
         }),
       ),
-      Message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
     },
   ) {}
 export class FederationSourceRetryableException
   extends /*@__PURE__*/ S.TaggedErrorClass<FederationSourceRetryableException>()(
     "FederationSourceRetryableException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class GlueEncryptionException
   extends /*@__PURE__*/ S.TaggedErrorClass<GlueEncryptionException>()(
     "GlueEncryptionException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class GlueRoleNotAssumable
   extends /*@__PURE__*/ S.TaggedErrorClass<GlueRoleNotAssumable>()(
     "GlueRoleNotAssumable",
     {
-      Message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
       FromFederationSource: S.optional(S.Boolean),
     },
     T.SyntheticError({
@@ -198,7 +198,7 @@ export class GlueS3TargetNotReady
   extends /*@__PURE__*/ S.TaggedErrorClass<GlueS3TargetNotReady>()(
     "GlueS3TargetNotReady",
     {
-      Message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
       FromFederationSource: S.optional(S.Boolean),
     },
     T.SyntheticError({
@@ -209,173 +209,173 @@ export class GlueS3TargetNotReady
 export class IdempotentParameterMismatchException
   extends /*@__PURE__*/ S.TaggedErrorClass<IdempotentParameterMismatchException>()(
     "IdempotentParameterMismatchException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class IllegalBlueprintStateException
   extends /*@__PURE__*/ S.TaggedErrorClass<IllegalBlueprintStateException>()(
     "IllegalBlueprintStateException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class IllegalSessionStateException
   extends /*@__PURE__*/ S.TaggedErrorClass<IllegalSessionStateException>()(
     "IllegalSessionStateException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class IllegalWorkflowStateException
   extends /*@__PURE__*/ S.TaggedErrorClass<IllegalWorkflowStateException>()(
     "IllegalWorkflowStateException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class IntegrationConflictOperationFault
   extends /*@__PURE__*/ S.TaggedErrorClass<IntegrationConflictOperationFault>()(
     "IntegrationConflictOperationFault",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class IntegrationNotFoundFault
   extends /*@__PURE__*/ S.TaggedErrorClass<IntegrationNotFoundFault>()(
     "IntegrationNotFoundFault",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class IntegrationQuotaExceededFault
   extends /*@__PURE__*/ S.TaggedErrorClass<IntegrationQuotaExceededFault>()(
     "IntegrationQuotaExceededFault",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(402),
   ).pipe(C.withQuotaError) {}
 export class InternalServerException
   extends /*@__PURE__*/ S.TaggedErrorClass<InternalServerException>()(
     "InternalServerException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class InternalServiceException
   extends /*@__PURE__*/ S.TaggedErrorClass<InternalServiceException>()(
     "InternalServiceException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidInputException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidInputException>()(
     "InvalidInputException",
     {
-      Message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
       FromFederationSource: S.optional(S.Boolean),
     },
   ) {}
 export class InvalidIntegrationStateFault
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidIntegrationStateFault>()(
     "InvalidIntegrationStateFault",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidStateException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidStateException>()(
     "InvalidStateException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class KMSKeyNotAccessibleFault
   extends /*@__PURE__*/ S.TaggedErrorClass<KMSKeyNotAccessibleFault>()(
     "KMSKeyNotAccessibleFault",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class MaterializedViewRefreshTaskNotRunningException
   extends /*@__PURE__*/ S.TaggedErrorClass<MaterializedViewRefreshTaskNotRunningException>()(
     "MaterializedViewRefreshTaskNotRunningException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class MaterializedViewRefreshTaskRunningException
   extends /*@__PURE__*/ S.TaggedErrorClass<MaterializedViewRefreshTaskRunningException>()(
     "MaterializedViewRefreshTaskRunningException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class MaterializedViewRefreshTaskStoppingException
   extends /*@__PURE__*/ S.TaggedErrorClass<MaterializedViewRefreshTaskStoppingException>()(
     "MaterializedViewRefreshTaskStoppingException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class MLTransformNotReadyException
   extends /*@__PURE__*/ S.TaggedErrorClass<MLTransformNotReadyException>()(
     "MLTransformNotReadyException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class NoScheduleException
   extends /*@__PURE__*/ S.TaggedErrorClass<NoScheduleException>()(
     "NoScheduleException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class OperationNotSupportedException
   extends /*@__PURE__*/ S.TaggedErrorClass<OperationNotSupportedException>()(
     "OperationNotSupportedException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class OperationTimeoutException
   extends /*@__PURE__*/ S.TaggedErrorClass<OperationTimeoutException>()(
     "OperationTimeoutException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class PermissionTypeMismatchException
   extends /*@__PURE__*/ S.TaggedErrorClass<PermissionTypeMismatchException>()(
     "PermissionTypeMismatchException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
     "ResourceNotFoundException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ResourceNotReadyException
   extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotReadyException>()(
     "ResourceNotReadyException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class ResourceNumberLimitExceededException
   extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNumberLimitExceededException>()(
     "ResourceNumberLimitExceededException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class SchedulerNotRunningException
   extends /*@__PURE__*/ S.TaggedErrorClass<SchedulerNotRunningException>()(
     "SchedulerNotRunningException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class SchedulerRunningException
   extends /*@__PURE__*/ S.TaggedErrorClass<SchedulerRunningException>()(
     "SchedulerRunningException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class SchedulerTransitioningException
   extends /*@__PURE__*/ S.TaggedErrorClass<SchedulerTransitioningException>()(
     "SchedulerTransitioningException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class SessionBusyException
   extends /*@__PURE__*/ S.TaggedErrorClass<SessionBusyException>()(
     "SessionBusyException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class TargetResourceNotFound
   extends /*@__PURE__*/ S.TaggedErrorClass<TargetResourceNotFound>()(
     "TargetResourceNotFound",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ThrottlingException
   extends /*@__PURE__*/ S.TaggedErrorClass<ThrottlingException>()(
     "ThrottlingException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class ValidationException
   extends /*@__PURE__*/ S.TaggedErrorClass<ValidationException>()(
     "ValidationException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class VersionMismatchException
   extends /*@__PURE__*/ S.TaggedErrorClass<VersionMismatchException>()(
     "VersionMismatchException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export type AssetId = string;
 export type GlossaryTermId = string;

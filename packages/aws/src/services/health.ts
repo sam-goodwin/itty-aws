@@ -143,17 +143,17 @@ const rules = T.EndpointResolver((p, _) => {
 export class ConcurrentModificationException
   extends /*@__PURE__*/ S.TaggedErrorClass<ConcurrentModificationException>()(
     "ConcurrentModificationException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidPaginationToken
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidPaginationToken>()(
     "InvalidPaginationToken",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class UnsupportedLocale
   extends /*@__PURE__*/ S.TaggedErrorClass<UnsupportedLocale>()(
     "UnsupportedLocale",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export type EventArn = string;
 export type NextToken = string;

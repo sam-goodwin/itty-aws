@@ -225,14 +225,14 @@ const rules = T.EndpointResolver((p, _) => {
 export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedErrorClass<AccessDeniedException>()(
     "AccessDeniedException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class AccessDeniedForDependencyException
   extends /*@__PURE__*/ S.TaggedErrorClass<AccessDeniedForDependencyException>()(
     "AccessDeniedForDependencyException",
     {
-      Message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
       Reason: S.optional(
         S.suspend(() => AccessDeniedForDependencyExceptionReason).annotate({
           identifier: "AccessDeniedForDependencyExceptionReason",
@@ -244,68 +244,68 @@ export class AccessDeniedForDependencyException
 export class AccountAlreadyClosedException
   extends /*@__PURE__*/ S.TaggedErrorClass<AccountAlreadyClosedException>()(
     "AccountAlreadyClosedException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class AccountAlreadyRegisteredException
   extends /*@__PURE__*/ S.TaggedErrorClass<AccountAlreadyRegisteredException>()(
     "AccountAlreadyRegisteredException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class AccountNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<AccountNotFoundException>()(
     "AccountNotFoundException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class AccountNotRegisteredException
   extends /*@__PURE__*/ S.TaggedErrorClass<AccountNotRegisteredException>()(
     "AccountNotRegisteredException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class AccountOwnerNotVerifiedException
   extends /*@__PURE__*/ S.TaggedErrorClass<AccountOwnerNotVerifiedException>()(
     "AccountOwnerNotVerifiedException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class AlreadyInOrganizationException
   extends /*@__PURE__*/ S.TaggedErrorClass<AlreadyInOrganizationException>()(
     "AlreadyInOrganizationException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class AWSOrganizationsNotInUseException
   extends /*@__PURE__*/ S.TaggedErrorClass<AWSOrganizationsNotInUseException>()(
     "AWSOrganizationsNotInUseException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ChildNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<ChildNotFoundException>()(
     "ChildNotFoundException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ConcurrentModificationException
   extends /*@__PURE__*/ S.TaggedErrorClass<ConcurrentModificationException>()(
     "ConcurrentModificationException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedErrorClass<ConflictException>()(
     "ConflictException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class ConstraintViolationException
   extends /*@__PURE__*/ S.TaggedErrorClass<ConstraintViolationException>()(
     "ConstraintViolationException",
     {
-      Message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
       Reason: S.optional(
         S.suspend(() => ConstraintViolationExceptionReason).annotate({
           identifier: "ConstraintViolationExceptionReason",
@@ -317,67 +317,67 @@ export class ConstraintViolationException
 export class CreateAccountStatusNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<CreateAccountStatusNotFoundException>()(
     "CreateAccountStatusNotFoundException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class DestinationParentNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<DestinationParentNotFoundException>()(
     "DestinationParentNotFoundException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class DuplicateAccountException
   extends /*@__PURE__*/ S.TaggedErrorClass<DuplicateAccountException>()(
     "DuplicateAccountException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class DuplicateHandshakeException
   extends /*@__PURE__*/ S.TaggedErrorClass<DuplicateHandshakeException>()(
     "DuplicateHandshakeException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class DuplicateOrganizationalUnitException
   extends /*@__PURE__*/ S.TaggedErrorClass<DuplicateOrganizationalUnitException>()(
     "DuplicateOrganizationalUnitException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class DuplicatePolicyAttachmentException
   extends /*@__PURE__*/ S.TaggedErrorClass<DuplicatePolicyAttachmentException>()(
     "DuplicatePolicyAttachmentException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class DuplicatePolicyException
   extends /*@__PURE__*/ S.TaggedErrorClass<DuplicatePolicyException>()(
     "DuplicatePolicyException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class EffectivePolicyNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<EffectivePolicyNotFoundException>()(
     "EffectivePolicyNotFoundException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class FinalizingOrganizationException
   extends /*@__PURE__*/ S.TaggedErrorClass<FinalizingOrganizationException>()(
     "FinalizingOrganizationException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class HandshakeAlreadyInStateException
   extends /*@__PURE__*/ S.TaggedErrorClass<HandshakeAlreadyInStateException>()(
     "HandshakeAlreadyInStateException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class HandshakeConstraintViolationException
   extends /*@__PURE__*/ S.TaggedErrorClass<HandshakeConstraintViolationException>()(
     "HandshakeConstraintViolationException",
     {
-      Message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
       Reason: S.optional(
         S.suspend(() => HandshakeConstraintViolationExceptionReason).annotate({
           identifier: "HandshakeConstraintViolationExceptionReason",
@@ -389,20 +389,20 @@ export class HandshakeConstraintViolationException
 export class HandshakeNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<HandshakeNotFoundException>()(
     "HandshakeNotFoundException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class InvalidHandshakeTransitionException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidHandshakeTransitionException>()(
     "InvalidHandshakeTransitionException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class InvalidInputException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidInputException>()(
     "InvalidInputException",
     {
-      Message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
       Reason: S.optional(
         S.suspend(() => InvalidInputExceptionReason).annotate({
           identifier: "InvalidInputExceptionReason",
@@ -414,138 +414,141 @@ export class InvalidInputException
 export class InvalidResponsibilityTransferTransitionException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidResponsibilityTransferTransitionException>()(
     "InvalidResponsibilityTransferTransitionException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class MalformedPolicyDocumentException
   extends /*@__PURE__*/ S.TaggedErrorClass<MalformedPolicyDocumentException>()(
     "MalformedPolicyDocumentException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class MasterCannotLeaveOrganizationException
   extends /*@__PURE__*/ S.TaggedErrorClass<MasterCannotLeaveOrganizationException>()(
     "MasterCannotLeaveOrganizationException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class OrganizationalUnitNotEmptyException
   extends /*@__PURE__*/ S.TaggedErrorClass<OrganizationalUnitNotEmptyException>()(
     "OrganizationalUnitNotEmptyException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class OrganizationalUnitNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<OrganizationalUnitNotFoundException>()(
     "OrganizationalUnitNotFoundException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class OrganizationNotEmptyException
   extends /*@__PURE__*/ S.TaggedErrorClass<OrganizationNotEmptyException>()(
     "OrganizationNotEmptyException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class ParentNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<ParentNotFoundException>()(
     "ParentNotFoundException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class PolicyChangesInProgressException
   extends /*@__PURE__*/ S.TaggedErrorClass<PolicyChangesInProgressException>()(
     "PolicyChangesInProgressException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class PolicyInUseException
   extends /*@__PURE__*/ S.TaggedErrorClass<PolicyInUseException>()(
     "PolicyInUseException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class PolicyNotAttachedException
   extends /*@__PURE__*/ S.TaggedErrorClass<PolicyNotAttachedException>()(
     "PolicyNotAttachedException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class PolicyNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<PolicyNotFoundException>()(
     "PolicyNotFoundException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class PolicyTypeAlreadyEnabledException
   extends /*@__PURE__*/ S.TaggedErrorClass<PolicyTypeAlreadyEnabledException>()(
     "PolicyTypeAlreadyEnabledException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class PolicyTypeNotAvailableForOrganizationException
   extends /*@__PURE__*/ S.TaggedErrorClass<PolicyTypeNotAvailableForOrganizationException>()(
     "PolicyTypeNotAvailableForOrganizationException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class PolicyTypeNotEnabledException
   extends /*@__PURE__*/ S.TaggedErrorClass<PolicyTypeNotEnabledException>()(
     "PolicyTypeNotEnabledException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class ResourcePolicyNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<ResourcePolicyNotFoundException>()(
     "ResourcePolicyNotFoundException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ResponsibilityTransferAlreadyInStatusException
   extends /*@__PURE__*/ S.TaggedErrorClass<ResponsibilityTransferAlreadyInStatusException>()(
     "ResponsibilityTransferAlreadyInStatusException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class ResponsibilityTransferNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<ResponsibilityTransferNotFoundException>()(
     "ResponsibilityTransferNotFoundException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class RootNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<RootNotFoundException>()(
     "RootNotFoundException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ServiceException
   extends /*@__PURE__*/ S.TaggedErrorClass<ServiceException>()(
     "ServiceException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class SourceParentNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<SourceParentNotFoundException>()(
     "SourceParentNotFoundException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class TargetNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<TargetNotFoundException>()(
     "TargetNotFoundException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class TooManyRequestsException
   extends /*@__PURE__*/ S.TaggedErrorClass<TooManyRequestsException>()(
     "TooManyRequestsException",
-    { Type: S.optional(S.String), Message: S.optional(S.String) },
+    {
+      Type: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+    },
     T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export class UnsupportedAPIEndpointException
   extends /*@__PURE__*/ S.TaggedErrorClass<UnsupportedAPIEndpointException>()(
     "UnsupportedAPIEndpointException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export type HandshakeId = string;

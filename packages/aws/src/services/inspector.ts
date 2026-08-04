@@ -89,7 +89,7 @@ export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedErrorClass<AccessDeniedException>()(
     "AccessDeniedException",
     {
-      message: S.String,
+      message: S.String.pipe(T.ErrorMessage()),
       errorCode: S.suspend(() => AccessDeniedErrorCode).annotate({
         identifier: "AccessDeniedErrorCode",
       }),
@@ -101,7 +101,7 @@ export class AgentsAlreadyRunningAssessmentException
   extends /*@__PURE__*/ S.TaggedErrorClass<AgentsAlreadyRunningAssessmentException>()(
     "AgentsAlreadyRunningAssessmentException",
     {
-      message: S.String,
+      message: S.String.pipe(T.ErrorMessage()),
       agents: S.suspend(() => AgentAlreadyRunningAssessmentList).annotate({
         identifier: "AgentAlreadyRunningAssessmentList",
       }),
@@ -113,7 +113,7 @@ export class AssessmentRunInProgressException
   extends /*@__PURE__*/ S.TaggedErrorClass<AssessmentRunInProgressException>()(
     "AssessmentRunInProgressException",
     {
-      message: S.String,
+      message: S.String.pipe(T.ErrorMessage()),
       assessmentRunArns: S.suspend(
         () => AssessmentRunInProgressArnList,
       ).annotate({ identifier: "AssessmentRunInProgressArnList" }),
@@ -124,13 +124,13 @@ export class AssessmentRunInProgressException
 export class InternalException
   extends /*@__PURE__*/ S.TaggedErrorClass<InternalException>()(
     "InternalException",
-    { message: S.String, canRetry: S.Boolean },
+    { message: S.String.pipe(T.ErrorMessage()), canRetry: S.Boolean },
   ) {}
 export class InvalidCrossAccountRoleException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidCrossAccountRoleException>()(
     "InvalidCrossAccountRoleException",
     {
-      message: S.String,
+      message: S.String.pipe(T.ErrorMessage()),
       errorCode: S.suspend(() => InvalidCrossAccountRoleErrorCode).annotate({
         identifier: "InvalidCrossAccountRoleErrorCode",
       }),
@@ -141,7 +141,7 @@ export class InvalidInputException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidInputException>()(
     "InvalidInputException",
     {
-      message: S.String,
+      message: S.String.pipe(T.ErrorMessage()),
       errorCode: S.suspend(() => InvalidInputErrorCode).annotate({
         identifier: "InvalidInputErrorCode",
       }),
@@ -152,7 +152,7 @@ export class LimitExceededException
   extends /*@__PURE__*/ S.TaggedErrorClass<LimitExceededException>()(
     "LimitExceededException",
     {
-      message: S.String,
+      message: S.String.pipe(T.ErrorMessage()),
       errorCode: S.suspend(() => LimitExceededErrorCode).annotate({
         identifier: "LimitExceededErrorCode",
       }),
@@ -163,7 +163,7 @@ export class NoSuchEntityException
   extends /*@__PURE__*/ S.TaggedErrorClass<NoSuchEntityException>()(
     "NoSuchEntityException",
     {
-      message: S.String,
+      message: S.String.pipe(T.ErrorMessage()),
       errorCode: S.suspend(() => NoSuchEntityErrorCode).annotate({
         identifier: "NoSuchEntityErrorCode",
       }),
@@ -173,18 +173,18 @@ export class NoSuchEntityException
 export class PreviewGenerationInProgressException
   extends /*@__PURE__*/ S.TaggedErrorClass<PreviewGenerationInProgressException>()(
     "PreviewGenerationInProgressException",
-    { message: S.String },
+    { message: S.String.pipe(T.ErrorMessage()) },
   ) {}
 export class ServiceTemporarilyUnavailableException
   extends /*@__PURE__*/ S.TaggedErrorClass<ServiceTemporarilyUnavailableException>()(
     "ServiceTemporarilyUnavailableException",
-    { message: S.String, canRetry: S.Boolean },
+    { message: S.String.pipe(T.ErrorMessage()), canRetry: S.Boolean },
     T.HttpError(503),
   ).pipe(C.withServerError) {}
 export class UnsupportedFeatureException
   extends /*@__PURE__*/ S.TaggedErrorClass<UnsupportedFeatureException>()(
     "UnsupportedFeatureException",
-    { message: S.String, canRetry: S.Boolean },
+    { message: S.String.pipe(T.ErrorMessage()), canRetry: S.Boolean },
   ) {}
 export type Arn = string;
 export type AddRemoveAttributesFindingArnList = string[];

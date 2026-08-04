@@ -92,7 +92,7 @@ export class InsufficientCapacityException
     {
       type: S.optional(S.String),
       code: S.optional(S.String),
-      message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
     },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
@@ -102,7 +102,7 @@ export class InvalidParameterValueException
     {
       type: S.optional(S.String),
       code: S.optional(S.String),
-      message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
     },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
@@ -112,7 +112,7 @@ export class LimitExceededException
     {
       type: S.optional(S.String),
       code: S.optional(S.String),
-      message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
     },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
@@ -122,7 +122,7 @@ export class MissingParameterValueException
     {
       type: S.optional(S.String),
       code: S.optional(S.String),
-      message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
     },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
@@ -132,7 +132,7 @@ export class NoLongerSupportedException
     {
       type: S.optional(S.String),
       code: S.optional(S.String),
-      message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
     },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
@@ -142,7 +142,7 @@ export class PolicyEnforcedException
     {
       type: S.optional(S.String),
       code: S.optional(S.String),
-      message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
     },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
@@ -152,7 +152,7 @@ export class RequestTimeoutException
     {
       type: S.optional(S.String),
       code: S.optional(S.String),
-      message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
     },
     T.HttpError(408),
   ).pipe(C.withTimeoutError) {}
@@ -162,7 +162,7 @@ export class ResourceNotFoundException
     {
       type: S.optional(S.String),
       code: S.optional(S.String),
-      message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
     },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
@@ -172,7 +172,7 @@ export class ServiceUnavailableException
     {
       type: S.optional(S.String),
       code: S.optional(S.String),
-      message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
     },
     T.HttpError(500),
   ).pipe(C.withServerError) {}

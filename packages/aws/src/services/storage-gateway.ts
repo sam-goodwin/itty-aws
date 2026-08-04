@@ -92,7 +92,7 @@ export class InternalServerError
   extends /*@__PURE__*/ S.TaggedErrorClass<InternalServerError>()(
     "InternalServerError",
     {
-      message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
       error: S.optional(
         S.suspend(() => StorageGatewayError).annotate({
           identifier: "StorageGatewayError",
@@ -105,7 +105,7 @@ export class InvalidGatewayRequestException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidGatewayRequestException>()(
     "InvalidGatewayRequestException",
     {
-      message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
       error: S.optional(
         S.suspend(() => StorageGatewayError).annotate({
           identifier: "StorageGatewayError",
@@ -118,7 +118,7 @@ export class ServiceUnavailableError
   extends /*@__PURE__*/ S.TaggedErrorClass<ServiceUnavailableError>()(
     "ServiceUnavailableError",
     {
-      message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
       error: S.optional(
         S.suspend(() => StorageGatewayError).annotate({
           identifier: "StorageGatewayError",

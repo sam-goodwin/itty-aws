@@ -123,7 +123,7 @@ const rules = T.EndpointResolver((p, _) => {
 export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedErrorClass<AccessDeniedException>()(
     "AccessDeniedException",
-    { message: S.String },
+    { message: S.String.pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "BillingAccessDenied", httpResponseCode: 403 }),
       T.HttpError(403),
@@ -132,13 +132,17 @@ export class AccessDeniedException
 export class BillingViewHealthStatusException
   extends /*@__PURE__*/ S.TaggedErrorClass<BillingViewHealthStatusException>()(
     "BillingViewHealthStatusException",
-    { message: S.String },
+    { message: S.String.pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedErrorClass<ConflictException>()(
     "ConflictException",
-    { message: S.String, resourceId: S.String, resourceType: S.String },
+    {
+      message: S.String.pipe(T.ErrorMessage()),
+      resourceId: S.String,
+      resourceType: S.String,
+    },
     T.all(
       T.AwsQueryError({ code: "BillingConflict", httpResponseCode: 409 }),
       T.HttpError(409),
@@ -147,7 +151,7 @@ export class ConflictException
 export class InternalServerException
   extends /*@__PURE__*/ S.TaggedErrorClass<InternalServerException>()(
     "InternalServerException",
-    { message: S.String },
+    { message: S.String.pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "BillingInternalServer", httpResponseCode: 500 }),
       T.HttpError(500),
@@ -156,7 +160,11 @@ export class InternalServerException
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
     "ResourceNotFoundException",
-    { message: S.String, resourceId: S.String, resourceType: S.String },
+    {
+      message: S.String.pipe(T.ErrorMessage()),
+      resourceId: S.String,
+      resourceType: S.String,
+    },
     T.all(
       T.AwsQueryError({
         code: "BillingResourceNotFound",
@@ -169,7 +177,7 @@ export class ServiceQuotaExceededException
   extends /*@__PURE__*/ S.TaggedErrorClass<ServiceQuotaExceededException>()(
     "ServiceQuotaExceededException",
     {
-      message: S.String,
+      message: S.String.pipe(T.ErrorMessage()),
       resourceId: S.String,
       resourceType: S.String,
       serviceCode: S.String,
@@ -186,7 +194,7 @@ export class ServiceQuotaExceededException
 export class ThrottlingException
   extends /*@__PURE__*/ S.TaggedErrorClass<ThrottlingException>()(
     "ThrottlingException",
-    { message: S.String },
+    { message: S.String.pipe(T.ErrorMessage()) },
     T.all(
       T.AwsQueryError({ code: "BillingThrottling", httpResponseCode: 429 }),
       T.HttpError(429),
@@ -196,7 +204,7 @@ export class ValidationException
   extends /*@__PURE__*/ S.TaggedErrorClass<ValidationException>()(
     "ValidationException",
     {
-      message: S.String,
+      message: S.String.pipe(T.ErrorMessage()),
       reason: S.suspend(() => ValidationExceptionReason).annotate({
         identifier: "ValidationExceptionReason",
       }),

@@ -94,37 +94,37 @@ const rules = T.EndpointResolver((p, _) => {
 export class CloudHsmAccessDeniedException
   extends /*@__PURE__*/ S.TaggedErrorClass<CloudHsmAccessDeniedException>()(
     "CloudHsmAccessDeniedException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withAuthError) {}
 export class CloudHsmInternalFailureException
   extends /*@__PURE__*/ S.TaggedErrorClass<CloudHsmInternalFailureException>()(
     "CloudHsmInternalFailureException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class CloudHsmInvalidRequestException
   extends /*@__PURE__*/ S.TaggedErrorClass<CloudHsmInvalidRequestException>()(
     "CloudHsmInvalidRequestException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class CloudHsmResourceLimitExceededException
   extends /*@__PURE__*/ S.TaggedErrorClass<CloudHsmResourceLimitExceededException>()(
     "CloudHsmResourceLimitExceededException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class CloudHsmResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<CloudHsmResourceNotFoundException>()(
     "CloudHsmResourceNotFoundException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class CloudHsmServiceException
   extends /*@__PURE__*/ S.TaggedErrorClass<CloudHsmServiceException>()(
     "CloudHsmServiceException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class CloudHsmTagException
   extends /*@__PURE__*/ S.TaggedErrorClass<CloudHsmTagException>()(
     "CloudHsmTagException",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export type Region = string;
 export type BackupId = string;

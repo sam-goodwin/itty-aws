@@ -88,14 +88,14 @@ const rules = T.EndpointResolver((p, _) => {
 export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedErrorClass<AccessDeniedException>()(
     "AccessDeniedException",
-    { message: S.String },
+    { message: S.String.pipe(T.ErrorMessage()) },
     T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedErrorClass<ConflictException>()(
     "ConflictException",
     {
-      message: S.String,
+      message: S.String.pipe(T.ErrorMessage()),
       resourceId: S.optional(S.String),
       resourceType: S.optional(S.String),
     },
@@ -104,14 +104,14 @@ export class ConflictException
 export class ExecutionTimeoutException
   extends /*@__PURE__*/ S.TaggedErrorClass<ExecutionTimeoutException>()(
     "ExecutionTimeoutException",
-    { message: S.String },
+    { message: S.String.pipe(T.ErrorMessage()) },
     T.all(T.HttpError(504), T.Retryable()),
   ).pipe(C.withTimeoutError, C.withRetryableError) {}
 export class InternalServerException
   extends /*@__PURE__*/ S.TaggedErrorClass<InternalServerException>()(
     "InternalServerException",
     {
-      message: S.String,
+      message: S.String.pipe(T.ErrorMessage()),
       retryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
     },
     T.all(T.HttpError(500), T.Retryable()),
@@ -120,7 +120,7 @@ export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
     "ResourceNotFoundException",
     {
-      message: S.String,
+      message: S.String.pipe(T.ErrorMessage()),
       resourceId: S.optional(S.String),
       resourceType: S.optional(S.String),
     },
@@ -130,7 +130,7 @@ export class ServiceQuotaExceededException
   extends /*@__PURE__*/ S.TaggedErrorClass<ServiceQuotaExceededException>()(
     "ServiceQuotaExceededException",
     {
-      message: S.String,
+      message: S.String.pipe(T.ErrorMessage()),
       resourceId: S.optional(S.String),
       resourceType: S.optional(S.String),
       serviceCode: S.optional(S.String),
@@ -141,14 +141,14 @@ export class ServiceQuotaExceededException
 export class ServiceUnavailableException
   extends /*@__PURE__*/ S.TaggedErrorClass<ServiceUnavailableException>()(
     "ServiceUnavailableException",
-    { message: S.String },
+    { message: S.String.pipe(T.ErrorMessage()) },
     T.all(T.HttpError(503), T.Retryable()),
   ).pipe(C.withServerError, C.withRetryableError) {}
 export class ThrottlingException
   extends /*@__PURE__*/ S.TaggedErrorClass<ThrottlingException>()(
     "ThrottlingException",
     {
-      message: S.String,
+      message: S.String.pipe(T.ErrorMessage()),
       serviceCode: S.optional(S.String),
       quotaCode: S.optional(S.String),
       retryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
@@ -159,7 +159,7 @@ export class ValidationException
   extends /*@__PURE__*/ S.TaggedErrorClass<ValidationException>()(
     "ValidationException",
     {
-      message: S.String,
+      message: S.String.pipe(T.ErrorMessage()),
       reason: S.optional(S.String),
       fieldList: S.optional(
         S.suspend(() => ValidationExceptionFieldList).annotate({

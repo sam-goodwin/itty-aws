@@ -88,104 +88,104 @@ const rules = T.EndpointResolver((p, _) => {
 export class EngineNotSupportedException
   extends /*@__PURE__*/ S.TaggedErrorClass<EngineNotSupportedException>()(
     "EngineNotSupportedException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidLexiconException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidLexiconException>()(
     "InvalidLexiconException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidNextTokenException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidNextTokenException>()(
     "InvalidNextTokenException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidS3BucketException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidS3BucketException>()(
     "InvalidS3BucketException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidS3KeyException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidS3KeyException>()(
     "InvalidS3KeyException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidSampleRateException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidSampleRateException>()(
     "InvalidSampleRateException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidSnsTopicArnException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidSnsTopicArnException>()(
     "InvalidSnsTopicArnException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidSsmlException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidSsmlException>()(
     "InvalidSsmlException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidTaskIdException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidTaskIdException>()(
     "InvalidTaskIdException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class LanguageNotSupportedException
   extends /*@__PURE__*/ S.TaggedErrorClass<LanguageNotSupportedException>()(
     "LanguageNotSupportedException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class LexiconNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<LexiconNotFoundException>()(
     "LexiconNotFoundException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class LexiconSizeExceededException
   extends /*@__PURE__*/ S.TaggedErrorClass<LexiconSizeExceededException>()(
     "LexiconSizeExceededException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class MarksNotSupportedForFormatException
   extends /*@__PURE__*/ S.TaggedErrorClass<MarksNotSupportedForFormatException>()(
     "MarksNotSupportedForFormatException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class MaxLexemeLengthExceededException
   extends /*@__PURE__*/ S.TaggedErrorClass<MaxLexemeLengthExceededException>()(
     "MaxLexemeLengthExceededException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class MaxLexiconsNumberExceededException
   extends /*@__PURE__*/ S.TaggedErrorClass<MaxLexiconsNumberExceededException>()(
     "MaxLexiconsNumberExceededException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ServiceFailureException
   extends /*@__PURE__*/ S.TaggedErrorClass<ServiceFailureException>()(
     "ServiceFailureException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class ServiceQuotaExceededException
   extends /*@__PURE__*/ S.TaggedErrorClass<ServiceQuotaExceededException>()(
     "ServiceQuotaExceededException",
     {
-      message: S.String,
+      message: S.String.pipe(T.ErrorMessage()),
       quotaCode: S.suspend(() => QuotaCode).annotate({
         identifier: "QuotaCode",
       }),
@@ -198,26 +198,26 @@ export class ServiceQuotaExceededException
 export class SsmlMarksNotSupportedForTextTypeException
   extends /*@__PURE__*/ S.TaggedErrorClass<SsmlMarksNotSupportedForTextTypeException>()(
     "SsmlMarksNotSupportedForTextTypeException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class SynthesisTaskNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<SynthesisTaskNotFoundException>()(
     "SynthesisTaskNotFoundException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TextLengthExceededException
   extends /*@__PURE__*/ S.TaggedErrorClass<TextLengthExceededException>()(
     "TextLengthExceededException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ThrottlingException
   extends /*@__PURE__*/ S.TaggedErrorClass<ThrottlingException>()(
     "ThrottlingException",
     {
-      message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
       throttlingReasons: S.optional(
         S.suspend(() => ThrottlingReasonList).annotate({
           identifier: "ThrottlingReasonList",
@@ -232,20 +232,20 @@ export class ThrottlingException
 export class UnsupportedPlsAlphabetException
   extends /*@__PURE__*/ S.TaggedErrorClass<UnsupportedPlsAlphabetException>()(
     "UnsupportedPlsAlphabetException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class UnsupportedPlsLanguageException
   extends /*@__PURE__*/ S.TaggedErrorClass<UnsupportedPlsLanguageException>()(
     "UnsupportedPlsLanguageException",
-    { message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ValidationException
   extends /*@__PURE__*/ S.TaggedErrorClass<ValidationException>()(
     "ValidationException",
     {
-      message: S.String,
+      message: S.String.pipe(T.ErrorMessage()),
       reason: S.suspend(() => ValidationExceptionReason).annotate({
         identifier: "ValidationExceptionReason",
       }),

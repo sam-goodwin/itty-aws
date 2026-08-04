@@ -149,913 +149,913 @@ const rules = T.EndpointResolver((p, _) => {
 export class AccessDenied
   extends /*@__PURE__*/ S.TaggedErrorClass<AccessDenied>()(
     "AccessDenied",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class BatchTooLarge
   extends /*@__PURE__*/ S.TaggedErrorClass<BatchTooLarge>()(
     "BatchTooLarge",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(413),
   ).pipe(C.withBadRequestError) {}
 export class CachePolicyAlreadyExists
   extends /*@__PURE__*/ S.TaggedErrorClass<CachePolicyAlreadyExists>()(
     "CachePolicyAlreadyExists",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(409),
   ).pipe(C.withConflictError, C.withAlreadyExistsError) {}
 export class CachePolicyInUse
   extends /*@__PURE__*/ S.TaggedErrorClass<CachePolicyInUse>()(
     "CachePolicyInUse",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(409),
   ).pipe(C.withConflictError, C.withDependencyViolationError) {}
 export class CannotChangeImmutablePublicKeyFields
   extends /*@__PURE__*/ S.TaggedErrorClass<CannotChangeImmutablePublicKeyFields>()(
     "CannotChangeImmutablePublicKeyFields",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class CannotDeleteEntityWhileInUse
   extends /*@__PURE__*/ S.TaggedErrorClass<CannotDeleteEntityWhileInUse>()(
     "CannotDeleteEntityWhileInUse",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(409),
   ).pipe(C.withConflictError, C.withDependencyViolationError) {}
 export class CannotUpdateEntityWhileInUse
   extends /*@__PURE__*/ S.TaggedErrorClass<CannotUpdateEntityWhileInUse>()(
     "CannotUpdateEntityWhileInUse",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(409),
   ).pipe(C.withConflictError, C.withDependencyViolationError) {}
 export class CloudFrontOriginAccessIdentityAlreadyExists
   extends /*@__PURE__*/ S.TaggedErrorClass<CloudFrontOriginAccessIdentityAlreadyExists>()(
     "CloudFrontOriginAccessIdentityAlreadyExists",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(409),
   ).pipe(C.withConflictError, C.withAlreadyExistsError) {}
 export class CloudFrontOriginAccessIdentityInUse
   extends /*@__PURE__*/ S.TaggedErrorClass<CloudFrontOriginAccessIdentityInUse>()(
     "CloudFrontOriginAccessIdentityInUse",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(409),
   ).pipe(C.withConflictError, C.withDependencyViolationError) {}
 export class CNAMEAlreadyExists
   extends /*@__PURE__*/ S.TaggedErrorClass<CNAMEAlreadyExists>()(
     "CNAMEAlreadyExists",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(409),
   ).pipe(C.withConflictError, C.withAlreadyExistsError) {}
 export class ContinuousDeploymentPolicyAlreadyExists
   extends /*@__PURE__*/ S.TaggedErrorClass<ContinuousDeploymentPolicyAlreadyExists>()(
     "ContinuousDeploymentPolicyAlreadyExists",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(409),
   ).pipe(C.withConflictError, C.withAlreadyExistsError) {}
 export class ContinuousDeploymentPolicyInUse
   extends /*@__PURE__*/ S.TaggedErrorClass<ContinuousDeploymentPolicyInUse>()(
     "ContinuousDeploymentPolicyInUse",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(409),
   ).pipe(C.withConflictError, C.withDependencyViolationError) {}
 export class DistributionAlreadyExists
   extends /*@__PURE__*/ S.TaggedErrorClass<DistributionAlreadyExists>()(
     "DistributionAlreadyExists",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(409),
   ).pipe(C.withConflictError, C.withAlreadyExistsError) {}
 export class DistributionNotDisabled
   extends /*@__PURE__*/ S.TaggedErrorClass<DistributionNotDisabled>()(
     "DistributionNotDisabled",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class EntityAlreadyExists
   extends /*@__PURE__*/ S.TaggedErrorClass<EntityAlreadyExists>()(
     "EntityAlreadyExists",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(409),
   ).pipe(C.withConflictError, C.withAlreadyExistsError) {}
 export class EntityLimitExceeded
   extends /*@__PURE__*/ S.TaggedErrorClass<EntityLimitExceeded>()(
     "EntityLimitExceeded",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError, C.withThrottlingError) {}
 export class EntityNotFound
   extends /*@__PURE__*/ S.TaggedErrorClass<EntityNotFound>()(
     "EntityNotFound",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class EntitySizeLimitExceeded
   extends /*@__PURE__*/ S.TaggedErrorClass<EntitySizeLimitExceeded>()(
     "EntitySizeLimitExceeded",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(413),
   ).pipe(C.withBadRequestError, C.withThrottlingError) {}
 export class FieldLevelEncryptionConfigAlreadyExists
   extends /*@__PURE__*/ S.TaggedErrorClass<FieldLevelEncryptionConfigAlreadyExists>()(
     "FieldLevelEncryptionConfigAlreadyExists",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(409),
   ).pipe(C.withConflictError, C.withAlreadyExistsError) {}
 export class FieldLevelEncryptionConfigInUse
   extends /*@__PURE__*/ S.TaggedErrorClass<FieldLevelEncryptionConfigInUse>()(
     "FieldLevelEncryptionConfigInUse",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(409),
   ).pipe(C.withConflictError, C.withDependencyViolationError) {}
 export class FieldLevelEncryptionProfileAlreadyExists
   extends /*@__PURE__*/ S.TaggedErrorClass<FieldLevelEncryptionProfileAlreadyExists>()(
     "FieldLevelEncryptionProfileAlreadyExists",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(409),
   ).pipe(C.withConflictError, C.withAlreadyExistsError) {}
 export class FieldLevelEncryptionProfileInUse
   extends /*@__PURE__*/ S.TaggedErrorClass<FieldLevelEncryptionProfileInUse>()(
     "FieldLevelEncryptionProfileInUse",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(409),
   ).pipe(C.withConflictError, C.withDependencyViolationError) {}
 export class FieldLevelEncryptionProfileSizeExceeded
   extends /*@__PURE__*/ S.TaggedErrorClass<FieldLevelEncryptionProfileSizeExceeded>()(
     "FieldLevelEncryptionProfileSizeExceeded",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class FunctionAlreadyExists
   extends /*@__PURE__*/ S.TaggedErrorClass<FunctionAlreadyExists>()(
     "FunctionAlreadyExists",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(409),
   ).pipe(C.withConflictError, C.withAlreadyExistsError) {}
 export class FunctionInUse
   extends /*@__PURE__*/ S.TaggedErrorClass<FunctionInUse>()(
     "FunctionInUse",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(409),
   ).pipe(C.withConflictError, C.withDependencyViolationError) {}
 export class FunctionSizeLimitExceeded
   extends /*@__PURE__*/ S.TaggedErrorClass<FunctionSizeLimitExceeded>()(
     "FunctionSizeLimitExceeded",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(413),
   ).pipe(C.withBadRequestError, C.withThrottlingError) {}
 export class IllegalDelete
   extends /*@__PURE__*/ S.TaggedErrorClass<IllegalDelete>()(
     "IllegalDelete",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class IllegalFieldLevelEncryptionConfigAssociationWithCacheBehavior
   extends /*@__PURE__*/ S.TaggedErrorClass<IllegalFieldLevelEncryptionConfigAssociationWithCacheBehavior>()(
     "IllegalFieldLevelEncryptionConfigAssociationWithCacheBehavior",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class IllegalOriginAccessConfiguration
   extends /*@__PURE__*/ S.TaggedErrorClass<IllegalOriginAccessConfiguration>()(
     "IllegalOriginAccessConfiguration",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class IllegalUpdate
   extends /*@__PURE__*/ S.TaggedErrorClass<IllegalUpdate>()(
     "IllegalUpdate",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InconsistentQuantities
   extends /*@__PURE__*/ S.TaggedErrorClass<InconsistentQuantities>()(
     "InconsistentQuantities",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidArgument
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidArgument>()(
     "InvalidArgument",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidAssociation
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidAssociation>()(
     "InvalidAssociation",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class InvalidDefaultRootObject
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidDefaultRootObject>()(
     "InvalidDefaultRootObject",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidDomainNameForOriginAccessControl
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidDomainNameForOriginAccessControl>()(
     "InvalidDomainNameForOriginAccessControl",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidErrorCode
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidErrorCode>()(
     "InvalidErrorCode",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidForwardCookies
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidForwardCookies>()(
     "InvalidForwardCookies",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidFunctionAssociation
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidFunctionAssociation>()(
     "InvalidFunctionAssociation",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidGeoRestrictionParameter
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidGeoRestrictionParameter>()(
     "InvalidGeoRestrictionParameter",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidHeadersForS3Origin
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidHeadersForS3Origin>()(
     "InvalidHeadersForS3Origin",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidIfMatchVersion
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidIfMatchVersion>()(
     "InvalidIfMatchVersion",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidLambdaFunctionAssociation
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidLambdaFunctionAssociation>()(
     "InvalidLambdaFunctionAssociation",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidLocationCode
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidLocationCode>()(
     "InvalidLocationCode",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidMinimumProtocolVersion
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidMinimumProtocolVersion>()(
     "InvalidMinimumProtocolVersion",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidOrigin
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidOrigin>()(
     "InvalidOrigin",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidOriginAccessControl
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidOriginAccessControl>()(
     "InvalidOriginAccessControl",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidOriginAccessIdentity
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidOriginAccessIdentity>()(
     "InvalidOriginAccessIdentity",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidOriginKeepaliveTimeout
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidOriginKeepaliveTimeout>()(
     "InvalidOriginKeepaliveTimeout",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidOriginReadTimeout
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidOriginReadTimeout>()(
     "InvalidOriginReadTimeout",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidProtocolSettings
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidProtocolSettings>()(
     "InvalidProtocolSettings",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidQueryStringParameters
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidQueryStringParameters>()(
     "InvalidQueryStringParameters",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidRelativePath
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidRelativePath>()(
     "InvalidRelativePath",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidRequiredProtocol
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidRequiredProtocol>()(
     "InvalidRequiredProtocol",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidResponseCode
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidResponseCode>()(
     "InvalidResponseCode",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidTagging
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidTagging>()(
     "InvalidTagging",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidTTLOrder
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidTTLOrder>()(
     "InvalidTTLOrder",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidViewerCertificate
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidViewerCertificate>()(
     "InvalidViewerCertificate",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidWebACLId
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidWebACLId>()(
     "InvalidWebACLId",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class KeyGroupAlreadyExists
   extends /*@__PURE__*/ S.TaggedErrorClass<KeyGroupAlreadyExists>()(
     "KeyGroupAlreadyExists",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(409),
   ).pipe(C.withConflictError, C.withAlreadyExistsError) {}
 export class MissingBody
   extends /*@__PURE__*/ S.TaggedErrorClass<MissingBody>()(
     "MissingBody",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class MonitoringSubscriptionAlreadyExists
   extends /*@__PURE__*/ S.TaggedErrorClass<MonitoringSubscriptionAlreadyExists>()(
     "MonitoringSubscriptionAlreadyExists",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(409),
   ).pipe(C.withConflictError, C.withAlreadyExistsError) {}
 export class NoSuchCachePolicy
   extends /*@__PURE__*/ S.TaggedErrorClass<NoSuchCachePolicy>()(
     "NoSuchCachePolicy",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class NoSuchCloudFrontOriginAccessIdentity
   extends /*@__PURE__*/ S.TaggedErrorClass<NoSuchCloudFrontOriginAccessIdentity>()(
     "NoSuchCloudFrontOriginAccessIdentity",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class NoSuchContinuousDeploymentPolicy
   extends /*@__PURE__*/ S.TaggedErrorClass<NoSuchContinuousDeploymentPolicy>()(
     "NoSuchContinuousDeploymentPolicy",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class NoSuchDistribution
   extends /*@__PURE__*/ S.TaggedErrorClass<NoSuchDistribution>()(
     "NoSuchDistribution",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class NoSuchFieldLevelEncryptionConfig
   extends /*@__PURE__*/ S.TaggedErrorClass<NoSuchFieldLevelEncryptionConfig>()(
     "NoSuchFieldLevelEncryptionConfig",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class NoSuchFieldLevelEncryptionProfile
   extends /*@__PURE__*/ S.TaggedErrorClass<NoSuchFieldLevelEncryptionProfile>()(
     "NoSuchFieldLevelEncryptionProfile",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class NoSuchFunctionExists
   extends /*@__PURE__*/ S.TaggedErrorClass<NoSuchFunctionExists>()(
     "NoSuchFunctionExists",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class NoSuchInvalidation
   extends /*@__PURE__*/ S.TaggedErrorClass<NoSuchInvalidation>()(
     "NoSuchInvalidation",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class NoSuchMonitoringSubscription
   extends /*@__PURE__*/ S.TaggedErrorClass<NoSuchMonitoringSubscription>()(
     "NoSuchMonitoringSubscription",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class NoSuchOrigin
   extends /*@__PURE__*/ S.TaggedErrorClass<NoSuchOrigin>()(
     "NoSuchOrigin",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class NoSuchOriginAccessControl
   extends /*@__PURE__*/ S.TaggedErrorClass<NoSuchOriginAccessControl>()(
     "NoSuchOriginAccessControl",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class NoSuchOriginRequestPolicy
   extends /*@__PURE__*/ S.TaggedErrorClass<NoSuchOriginRequestPolicy>()(
     "NoSuchOriginRequestPolicy",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class NoSuchPublicKey
   extends /*@__PURE__*/ S.TaggedErrorClass<NoSuchPublicKey>()(
     "NoSuchPublicKey",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class NoSuchRealtimeLogConfig
   extends /*@__PURE__*/ S.TaggedErrorClass<NoSuchRealtimeLogConfig>()(
     "NoSuchRealtimeLogConfig",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class NoSuchResource
   extends /*@__PURE__*/ S.TaggedErrorClass<NoSuchResource>()(
     "NoSuchResource",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class NoSuchResponseHeadersPolicy
   extends /*@__PURE__*/ S.TaggedErrorClass<NoSuchResponseHeadersPolicy>()(
     "NoSuchResponseHeadersPolicy",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class NoSuchStreamingDistribution
   extends /*@__PURE__*/ S.TaggedErrorClass<NoSuchStreamingDistribution>()(
     "NoSuchStreamingDistribution",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class OriginAccessControlAlreadyExists
   extends /*@__PURE__*/ S.TaggedErrorClass<OriginAccessControlAlreadyExists>()(
     "OriginAccessControlAlreadyExists",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(409),
   ).pipe(C.withConflictError, C.withAlreadyExistsError) {}
 export class OriginAccessControlInUse
   extends /*@__PURE__*/ S.TaggedErrorClass<OriginAccessControlInUse>()(
     "OriginAccessControlInUse",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(409),
   ).pipe(C.withConflictError, C.withDependencyViolationError) {}
 export class OriginRequestPolicyAlreadyExists
   extends /*@__PURE__*/ S.TaggedErrorClass<OriginRequestPolicyAlreadyExists>()(
     "OriginRequestPolicyAlreadyExists",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(409),
   ).pipe(C.withConflictError, C.withAlreadyExistsError) {}
 export class OriginRequestPolicyInUse
   extends /*@__PURE__*/ S.TaggedErrorClass<OriginRequestPolicyInUse>()(
     "OriginRequestPolicyInUse",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(409),
   ).pipe(C.withConflictError, C.withDependencyViolationError) {}
 export class PreconditionFailed
   extends /*@__PURE__*/ S.TaggedErrorClass<PreconditionFailed>()(
     "PreconditionFailed",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(412),
   ) {}
 export class PublicKeyAlreadyExists
   extends /*@__PURE__*/ S.TaggedErrorClass<PublicKeyAlreadyExists>()(
     "PublicKeyAlreadyExists",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(409),
   ).pipe(C.withConflictError, C.withAlreadyExistsError) {}
 export class PublicKeyInUse
   extends /*@__PURE__*/ S.TaggedErrorClass<PublicKeyInUse>()(
     "PublicKeyInUse",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(409),
   ).pipe(C.withConflictError, C.withDependencyViolationError) {}
 export class QueryArgProfileEmpty
   extends /*@__PURE__*/ S.TaggedErrorClass<QueryArgProfileEmpty>()(
     "QueryArgProfileEmpty",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class RealtimeLogConfigAlreadyExists
   extends /*@__PURE__*/ S.TaggedErrorClass<RealtimeLogConfigAlreadyExists>()(
     "RealtimeLogConfigAlreadyExists",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(409),
   ).pipe(C.withConflictError, C.withAlreadyExistsError) {}
 export class RealtimeLogConfigInUse
   extends /*@__PURE__*/ S.TaggedErrorClass<RealtimeLogConfigInUse>()(
     "RealtimeLogConfigInUse",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError, C.withDependencyViolationError) {}
 export class RealtimeLogConfigOwnerMismatch
   extends /*@__PURE__*/ S.TaggedErrorClass<RealtimeLogConfigOwnerMismatch>()(
     "RealtimeLogConfigOwnerMismatch",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(401),
   ).pipe(C.withAuthError) {}
 export class ResourceInUse
   extends /*@__PURE__*/ S.TaggedErrorClass<ResourceInUse>()(
     "ResourceInUse",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(409),
   ).pipe(C.withConflictError, C.withDependencyViolationError) {}
 export class ResourceNotDisabled
   extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotDisabled>()(
     "ResourceNotDisabled",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class ResponseHeadersPolicyAlreadyExists
   extends /*@__PURE__*/ S.TaggedErrorClass<ResponseHeadersPolicyAlreadyExists>()(
     "ResponseHeadersPolicyAlreadyExists",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(409),
   ).pipe(C.withConflictError, C.withAlreadyExistsError) {}
 export class ResponseHeadersPolicyInUse
   extends /*@__PURE__*/ S.TaggedErrorClass<ResponseHeadersPolicyInUse>()(
     "ResponseHeadersPolicyInUse",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(409),
   ).pipe(C.withConflictError, C.withDependencyViolationError) {}
 export class StagingDistributionInUse
   extends /*@__PURE__*/ S.TaggedErrorClass<StagingDistributionInUse>()(
     "StagingDistributionInUse",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(409),
   ).pipe(C.withConflictError, C.withDependencyViolationError) {}
 export class StreamingDistributionAlreadyExists
   extends /*@__PURE__*/ S.TaggedErrorClass<StreamingDistributionAlreadyExists>()(
     "StreamingDistributionAlreadyExists",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(409),
   ).pipe(C.withConflictError, C.withAlreadyExistsError) {}
 export class StreamingDistributionNotDisabled
   extends /*@__PURE__*/ S.TaggedErrorClass<StreamingDistributionNotDisabled>()(
     "StreamingDistributionNotDisabled",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class TestFunctionFailed
   extends /*@__PURE__*/ S.TaggedErrorClass<TestFunctionFailed>()(
     "TestFunctionFailed",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class TooLongCSPInResponseHeadersPolicy
   extends /*@__PURE__*/ S.TaggedErrorClass<TooLongCSPInResponseHeadersPolicy>()(
     "TooLongCSPInResponseHeadersPolicy",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TooManyCacheBehaviors
   extends /*@__PURE__*/ S.TaggedErrorClass<TooManyCacheBehaviors>()(
     "TooManyCacheBehaviors",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TooManyCachePolicies
   extends /*@__PURE__*/ S.TaggedErrorClass<TooManyCachePolicies>()(
     "TooManyCachePolicies",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TooManyCertificates
   extends /*@__PURE__*/ S.TaggedErrorClass<TooManyCertificates>()(
     "TooManyCertificates",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TooManyCloudFrontOriginAccessIdentities
   extends /*@__PURE__*/ S.TaggedErrorClass<TooManyCloudFrontOriginAccessIdentities>()(
     "TooManyCloudFrontOriginAccessIdentities",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TooManyContinuousDeploymentPolicies
   extends /*@__PURE__*/ S.TaggedErrorClass<TooManyContinuousDeploymentPolicies>()(
     "TooManyContinuousDeploymentPolicies",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TooManyCookieNamesInWhiteList
   extends /*@__PURE__*/ S.TaggedErrorClass<TooManyCookieNamesInWhiteList>()(
     "TooManyCookieNamesInWhiteList",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TooManyCookiesInCachePolicy
   extends /*@__PURE__*/ S.TaggedErrorClass<TooManyCookiesInCachePolicy>()(
     "TooManyCookiesInCachePolicy",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TooManyCookiesInOriginRequestPolicy
   extends /*@__PURE__*/ S.TaggedErrorClass<TooManyCookiesInOriginRequestPolicy>()(
     "TooManyCookiesInOriginRequestPolicy",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TooManyCustomHeadersInResponseHeadersPolicy
   extends /*@__PURE__*/ S.TaggedErrorClass<TooManyCustomHeadersInResponseHeadersPolicy>()(
     "TooManyCustomHeadersInResponseHeadersPolicy",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TooManyDistributionCNAMEs
   extends /*@__PURE__*/ S.TaggedErrorClass<TooManyDistributionCNAMEs>()(
     "TooManyDistributionCNAMEs",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TooManyDistributions
   extends /*@__PURE__*/ S.TaggedErrorClass<TooManyDistributions>()(
     "TooManyDistributions",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TooManyDistributionsAssociatedToCachePolicy
   extends /*@__PURE__*/ S.TaggedErrorClass<TooManyDistributionsAssociatedToCachePolicy>()(
     "TooManyDistributionsAssociatedToCachePolicy",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TooManyDistributionsAssociatedToFieldLevelEncryptionConfig
   extends /*@__PURE__*/ S.TaggedErrorClass<TooManyDistributionsAssociatedToFieldLevelEncryptionConfig>()(
     "TooManyDistributionsAssociatedToFieldLevelEncryptionConfig",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TooManyDistributionsAssociatedToKeyGroup
   extends /*@__PURE__*/ S.TaggedErrorClass<TooManyDistributionsAssociatedToKeyGroup>()(
     "TooManyDistributionsAssociatedToKeyGroup",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TooManyDistributionsAssociatedToOriginAccessControl
   extends /*@__PURE__*/ S.TaggedErrorClass<TooManyDistributionsAssociatedToOriginAccessControl>()(
     "TooManyDistributionsAssociatedToOriginAccessControl",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TooManyDistributionsAssociatedToOriginRequestPolicy
   extends /*@__PURE__*/ S.TaggedErrorClass<TooManyDistributionsAssociatedToOriginRequestPolicy>()(
     "TooManyDistributionsAssociatedToOriginRequestPolicy",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TooManyDistributionsAssociatedToResponseHeadersPolicy
   extends /*@__PURE__*/ S.TaggedErrorClass<TooManyDistributionsAssociatedToResponseHeadersPolicy>()(
     "TooManyDistributionsAssociatedToResponseHeadersPolicy",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TooManyDistributionsWithFunctionAssociations
   extends /*@__PURE__*/ S.TaggedErrorClass<TooManyDistributionsWithFunctionAssociations>()(
     "TooManyDistributionsWithFunctionAssociations",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TooManyDistributionsWithLambdaAssociations
   extends /*@__PURE__*/ S.TaggedErrorClass<TooManyDistributionsWithLambdaAssociations>()(
     "TooManyDistributionsWithLambdaAssociations",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TooManyDistributionsWithSingleFunctionARN
   extends /*@__PURE__*/ S.TaggedErrorClass<TooManyDistributionsWithSingleFunctionARN>()(
     "TooManyDistributionsWithSingleFunctionARN",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TooManyFieldLevelEncryptionConfigs
   extends /*@__PURE__*/ S.TaggedErrorClass<TooManyFieldLevelEncryptionConfigs>()(
     "TooManyFieldLevelEncryptionConfigs",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TooManyFieldLevelEncryptionContentTypeProfiles
   extends /*@__PURE__*/ S.TaggedErrorClass<TooManyFieldLevelEncryptionContentTypeProfiles>()(
     "TooManyFieldLevelEncryptionContentTypeProfiles",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TooManyFieldLevelEncryptionEncryptionEntities
   extends /*@__PURE__*/ S.TaggedErrorClass<TooManyFieldLevelEncryptionEncryptionEntities>()(
     "TooManyFieldLevelEncryptionEncryptionEntities",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TooManyFieldLevelEncryptionFieldPatterns
   extends /*@__PURE__*/ S.TaggedErrorClass<TooManyFieldLevelEncryptionFieldPatterns>()(
     "TooManyFieldLevelEncryptionFieldPatterns",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TooManyFieldLevelEncryptionProfiles
   extends /*@__PURE__*/ S.TaggedErrorClass<TooManyFieldLevelEncryptionProfiles>()(
     "TooManyFieldLevelEncryptionProfiles",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TooManyFieldLevelEncryptionQueryArgProfiles
   extends /*@__PURE__*/ S.TaggedErrorClass<TooManyFieldLevelEncryptionQueryArgProfiles>()(
     "TooManyFieldLevelEncryptionQueryArgProfiles",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TooManyFunctionAssociations
   extends /*@__PURE__*/ S.TaggedErrorClass<TooManyFunctionAssociations>()(
     "TooManyFunctionAssociations",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TooManyFunctions
   extends /*@__PURE__*/ S.TaggedErrorClass<TooManyFunctions>()(
     "TooManyFunctions",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TooManyHeadersInCachePolicy
   extends /*@__PURE__*/ S.TaggedErrorClass<TooManyHeadersInCachePolicy>()(
     "TooManyHeadersInCachePolicy",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TooManyHeadersInForwardedValues
   extends /*@__PURE__*/ S.TaggedErrorClass<TooManyHeadersInForwardedValues>()(
     "TooManyHeadersInForwardedValues",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TooManyHeadersInOriginRequestPolicy
   extends /*@__PURE__*/ S.TaggedErrorClass<TooManyHeadersInOriginRequestPolicy>()(
     "TooManyHeadersInOriginRequestPolicy",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TooManyInvalidationsInProgress
   extends /*@__PURE__*/ S.TaggedErrorClass<TooManyInvalidationsInProgress>()(
     "TooManyInvalidationsInProgress",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TooManyKeyGroups
   extends /*@__PURE__*/ S.TaggedErrorClass<TooManyKeyGroups>()(
     "TooManyKeyGroups",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TooManyKeyGroupsAssociatedToDistribution
   extends /*@__PURE__*/ S.TaggedErrorClass<TooManyKeyGroupsAssociatedToDistribution>()(
     "TooManyKeyGroupsAssociatedToDistribution",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TooManyLambdaFunctionAssociations
   extends /*@__PURE__*/ S.TaggedErrorClass<TooManyLambdaFunctionAssociations>()(
     "TooManyLambdaFunctionAssociations",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TooManyOriginAccessControls
   extends /*@__PURE__*/ S.TaggedErrorClass<TooManyOriginAccessControls>()(
     "TooManyOriginAccessControls",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TooManyOriginCustomHeaders
   extends /*@__PURE__*/ S.TaggedErrorClass<TooManyOriginCustomHeaders>()(
     "TooManyOriginCustomHeaders",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TooManyOriginGroupsPerDistribution
   extends /*@__PURE__*/ S.TaggedErrorClass<TooManyOriginGroupsPerDistribution>()(
     "TooManyOriginGroupsPerDistribution",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TooManyOriginRequestPolicies
   extends /*@__PURE__*/ S.TaggedErrorClass<TooManyOriginRequestPolicies>()(
     "TooManyOriginRequestPolicies",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TooManyOrigins
   extends /*@__PURE__*/ S.TaggedErrorClass<TooManyOrigins>()(
     "TooManyOrigins",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TooManyPublicKeys
   extends /*@__PURE__*/ S.TaggedErrorClass<TooManyPublicKeys>()(
     "TooManyPublicKeys",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TooManyPublicKeysInKeyGroup
   extends /*@__PURE__*/ S.TaggedErrorClass<TooManyPublicKeysInKeyGroup>()(
     "TooManyPublicKeysInKeyGroup",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TooManyQueryStringParameters
   extends /*@__PURE__*/ S.TaggedErrorClass<TooManyQueryStringParameters>()(
     "TooManyQueryStringParameters",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TooManyQueryStringsInCachePolicy
   extends /*@__PURE__*/ S.TaggedErrorClass<TooManyQueryStringsInCachePolicy>()(
     "TooManyQueryStringsInCachePolicy",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TooManyQueryStringsInOriginRequestPolicy
   extends /*@__PURE__*/ S.TaggedErrorClass<TooManyQueryStringsInOriginRequestPolicy>()(
     "TooManyQueryStringsInOriginRequestPolicy",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TooManyRealtimeLogConfigs
   extends /*@__PURE__*/ S.TaggedErrorClass<TooManyRealtimeLogConfigs>()(
     "TooManyRealtimeLogConfigs",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TooManyRemoveHeadersInResponseHeadersPolicy
   extends /*@__PURE__*/ S.TaggedErrorClass<TooManyRemoveHeadersInResponseHeadersPolicy>()(
     "TooManyRemoveHeadersInResponseHeadersPolicy",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TooManyResponseHeadersPolicies
   extends /*@__PURE__*/ S.TaggedErrorClass<TooManyResponseHeadersPolicies>()(
     "TooManyResponseHeadersPolicies",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TooManyStreamingDistributionCNAMEs
   extends /*@__PURE__*/ S.TaggedErrorClass<TooManyStreamingDistributionCNAMEs>()(
     "TooManyStreamingDistributionCNAMEs",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TooManyStreamingDistributions
   extends /*@__PURE__*/ S.TaggedErrorClass<TooManyStreamingDistributions>()(
     "TooManyStreamingDistributions",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TooManyTrustedSigners
   extends /*@__PURE__*/ S.TaggedErrorClass<TooManyTrustedSigners>()(
     "TooManyTrustedSigners",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TrustedKeyGroupDoesNotExist
   extends /*@__PURE__*/ S.TaggedErrorClass<TrustedKeyGroupDoesNotExist>()(
     "TrustedKeyGroupDoesNotExist",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TrustedSignerDoesNotExist
   extends /*@__PURE__*/ S.TaggedErrorClass<TrustedSignerDoesNotExist>()(
     "TrustedSignerDoesNotExist",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class UnsupportedOperation
   extends /*@__PURE__*/ S.TaggedErrorClass<UnsupportedOperation>()(
     "UnsupportedOperation",
-    { Message: S.optional(S.String) },
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export interface AssociateAliasRequest {

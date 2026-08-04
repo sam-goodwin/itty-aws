@@ -92,7 +92,7 @@ export class AccessDeniedException
     "AccessDeniedException",
     {
       requestId: S.optional(S.String),
-      message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
       reason: S.optional(
         S.suspend(() => AccessDeniedExceptionReason).annotate({
           identifier: "AccessDeniedExceptionReason",
@@ -106,7 +106,7 @@ export class ConflictException
     "ConflictException",
     {
       requestId: S.optional(S.String),
-      message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
       resourceId: S.optional(S.String),
       resourceType: S.optional(
         S.suspend(() => ResourceType).annotate({ identifier: "ResourceType" }),
@@ -117,7 +117,10 @@ export class ConflictException
 export class InternalServerException
   extends /*@__PURE__*/ S.TaggedErrorClass<InternalServerException>()(
     "InternalServerException",
-    { requestId: S.optional(S.String), message: S.optional(S.String) },
+    {
+      requestId: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+    },
     T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class ResourceNotFoundException
@@ -125,7 +128,7 @@ export class ResourceNotFoundException
     "ResourceNotFoundException",
     {
       requestId: S.optional(S.String),
-      message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
       resourceId: S.optional(S.String),
       resourceType: S.optional(
         S.suspend(() => ResourceType).annotate({ identifier: "ResourceType" }),
@@ -138,7 +141,7 @@ export class ServiceQuotaExceededException
     "ServiceQuotaExceededException",
     {
       requestId: S.optional(S.String),
-      message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
       quotaCode: S.optional(S.String),
       serviceCode: S.optional(S.String),
       resourceType: S.optional(S.String),
@@ -149,7 +152,10 @@ export class ServiceQuotaExceededException
 export class ThrottlingException
   extends /*@__PURE__*/ S.TaggedErrorClass<ThrottlingException>()(
     "ThrottlingException",
-    { requestId: S.optional(S.String), message: S.optional(S.String) },
+    {
+      requestId: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+    },
     T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export class ValidationException
@@ -157,7 +163,7 @@ export class ValidationException
     "ValidationException",
     {
       requestId: S.optional(S.String),
-      message: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
       reason: S.optional(
         S.suspend(() => ValidationExceptionReason).annotate({
           identifier: "ValidationExceptionReason",

@@ -88,12 +88,15 @@ const rules = T.EndpointResolver((p, _) => {
 export class BaseException
   extends /*@__PURE__*/ S.TaggedErrorClass<BaseException>()("BaseException", {
     Code: S.optional(S.String),
-    Message: S.optional(S.String),
+    message: S.optional(S.String).pipe(T.ErrorMessage()),
   }) {}
 export class DisabledOperationException
   extends /*@__PURE__*/ S.TaggedErrorClass<DisabledOperationException>()(
     "DisabledOperationException",
-    { Code: S.optional(S.String), Message: S.optional(S.String) },
+    {
+      Code: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+    },
     T.all(
       T.AwsQueryError({ code: "DisabledAction", httpResponseCode: 409 }),
       T.HttpError(409),
@@ -102,7 +105,10 @@ export class DisabledOperationException
 export class InternalException
   extends /*@__PURE__*/ S.TaggedErrorClass<InternalException>()(
     "InternalException",
-    { Code: S.optional(S.String), Message: S.optional(S.String) },
+    {
+      Code: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+    },
     T.all(
       T.AwsQueryError({ code: "InternalException", httpResponseCode: 500 }),
       T.HttpError(500),
@@ -111,7 +117,10 @@ export class InternalException
 export class InvalidTypeException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidTypeException>()(
     "InvalidTypeException",
-    { Code: S.optional(S.String), Message: S.optional(S.String) },
+    {
+      Code: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+    },
     T.all(
       T.AwsQueryError({ code: "InvalidType", httpResponseCode: 409 }),
       T.HttpError(409),
@@ -120,7 +129,10 @@ export class InvalidTypeException
 export class LimitExceededException
   extends /*@__PURE__*/ S.TaggedErrorClass<LimitExceededException>()(
     "LimitExceededException",
-    { Code: S.optional(S.String), Message: S.optional(S.String) },
+    {
+      Code: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+    },
     T.all(
       T.AwsQueryError({ code: "LimitExceeded", httpResponseCode: 409 }),
       T.HttpError(409),
@@ -129,7 +141,10 @@ export class LimitExceededException
 export class ResourceAlreadyExistsException
   extends /*@__PURE__*/ S.TaggedErrorClass<ResourceAlreadyExistsException>()(
     "ResourceAlreadyExistsException",
-    { Code: S.optional(S.String), Message: S.optional(S.String) },
+    {
+      Code: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+    },
     T.all(
       T.AwsQueryError({ code: "ResourceAlreadyExists", httpResponseCode: 409 }),
       T.HttpError(409),
@@ -138,7 +153,10 @@ export class ResourceAlreadyExistsException
 export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
     "ResourceNotFoundException",
-    { Code: S.optional(S.String), Message: S.optional(S.String) },
+    {
+      Code: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+    },
     T.all(
       T.AwsQueryError({ code: "ResourceNotFound", httpResponseCode: 409 }),
       T.HttpError(409),
@@ -147,7 +165,10 @@ export class ResourceNotFoundException
 export class ValidationException
   extends /*@__PURE__*/ S.TaggedErrorClass<ValidationException>()(
     "ValidationException",
-    { Code: S.optional(S.String), Message: S.optional(S.String) },
+    {
+      Code: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+    },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export type DomainName = string;

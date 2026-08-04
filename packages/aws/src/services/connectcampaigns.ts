@@ -91,7 +91,7 @@ export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedErrorClass<AccessDeniedException>()(
     "AccessDeniedException",
     {
-      message: S.String,
+      message: S.String.pipe(T.ErrorMessage()),
       xAmzErrorType: S.optional(S.String).pipe(
         T.HttpHeader("x-amzn-ErrorType"),
       ),
@@ -102,7 +102,7 @@ export class ConflictException
   extends /*@__PURE__*/ S.TaggedErrorClass<ConflictException>()(
     "ConflictException",
     {
-      message: S.String,
+      message: S.String.pipe(T.ErrorMessage()),
       xAmzErrorType: S.optional(S.String).pipe(
         T.HttpHeader("x-amzn-ErrorType"),
       ),
@@ -113,7 +113,7 @@ export class InternalServerException
   extends /*@__PURE__*/ S.TaggedErrorClass<InternalServerException>()(
     "InternalServerException",
     {
-      message: S.String,
+      message: S.String.pipe(T.ErrorMessage()),
       xAmzErrorType: S.optional(S.String).pipe(
         T.HttpHeader("x-amzn-ErrorType"),
       ),
@@ -125,7 +125,7 @@ export class InvalidCampaignStateException
     "InvalidCampaignStateException",
     {
       state: S.String,
-      message: S.String,
+      message: S.String.pipe(T.ErrorMessage()),
       xAmzErrorType: S.optional(S.String).pipe(
         T.HttpHeader("x-amzn-ErrorType"),
       ),
@@ -136,7 +136,7 @@ export class InvalidStateException
   extends /*@__PURE__*/ S.TaggedErrorClass<InvalidStateException>()(
     "InvalidStateException",
     {
-      message: S.String,
+      message: S.String.pipe(T.ErrorMessage()),
       xAmzErrorType: S.optional(S.String).pipe(
         T.HttpHeader("x-amzn-ErrorType"),
       ),
@@ -147,7 +147,7 @@ export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
     "ResourceNotFoundException",
     {
-      message: S.String,
+      message: S.String.pipe(T.ErrorMessage()),
       xAmzErrorType: S.optional(S.String).pipe(
         T.HttpHeader("x-amzn-ErrorType"),
       ),
@@ -158,7 +158,7 @@ export class ServiceQuotaExceededException
   extends /*@__PURE__*/ S.TaggedErrorClass<ServiceQuotaExceededException>()(
     "ServiceQuotaExceededException",
     {
-      message: S.String,
+      message: S.String.pipe(T.ErrorMessage()),
       xAmzErrorType: S.optional(S.String).pipe(
         T.HttpHeader("x-amzn-ErrorType"),
       ),
@@ -169,7 +169,7 @@ export class ThrottlingException
   extends /*@__PURE__*/ S.TaggedErrorClass<ThrottlingException>()(
     "ThrottlingException",
     {
-      message: S.String,
+      message: S.String.pipe(T.ErrorMessage()),
       xAmzErrorType: S.optional(S.String).pipe(
         T.HttpHeader("x-amzn-ErrorType"),
       ),
@@ -180,7 +180,7 @@ export class ValidationException
   extends /*@__PURE__*/ S.TaggedErrorClass<ValidationException>()(
     "ValidationException",
     {
-      message: S.String,
+      message: S.String.pipe(T.ErrorMessage()),
       xAmzErrorType: S.optional(S.String).pipe(
         T.HttpHeader("x-amzn-ErrorType"),
       ),

@@ -148,103 +148,154 @@ const rules = T.EndpointResolver((p, _) => {
 export class BadRequestException
   extends /*@__PURE__*/ S.TaggedErrorClass<BadRequestException>()(
     "BadRequestException",
-    { InvalidParameter: S.optional(S.String), Message: S.optional(S.String) },
+    {
+      InvalidParameter: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+    },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ClusterConnectivityException
   extends /*@__PURE__*/ S.TaggedErrorClass<ClusterConnectivityException>()(
     "ClusterConnectivityException",
-    { InvalidParameter: S.optional(S.String), Message: S.optional(S.String) },
+    {
+      InvalidParameter: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+    },
     T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedErrorClass<ConflictException>()(
     "ConflictException",
-    { InvalidParameter: S.optional(S.String), Message: S.optional(S.String) },
+    {
+      InvalidParameter: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+    },
     T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class ControllerMovedException
   extends /*@__PURE__*/ S.TaggedErrorClass<ControllerMovedException>()(
     "ControllerMovedException",
-    { InvalidParameter: S.optional(S.String), Message: S.optional(S.String) },
+    {
+      InvalidParameter: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+    },
     T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class ForbiddenException
   extends /*@__PURE__*/ S.TaggedErrorClass<ForbiddenException>()(
     "ForbiddenException",
-    { InvalidParameter: S.optional(S.String), Message: S.optional(S.String) },
+    {
+      InvalidParameter: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+    },
     T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class GroupSubscribedToTopicException
   extends /*@__PURE__*/ S.TaggedErrorClass<GroupSubscribedToTopicException>()(
     "GroupSubscribedToTopicException",
-    { InvalidParameter: S.optional(S.String), Message: S.optional(S.String) },
+    {
+      InvalidParameter: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+    },
     T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class InternalServerErrorException
   extends /*@__PURE__*/ S.TaggedErrorClass<InternalServerErrorException>()(
     "InternalServerErrorException",
-    { InvalidParameter: S.optional(S.String), Message: S.optional(S.String) },
+    {
+      InvalidParameter: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+    },
     T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class KafkaRequestException
   extends /*@__PURE__*/ S.TaggedErrorClass<KafkaRequestException>()(
     "KafkaRequestException",
-    { InvalidParameter: S.optional(S.String), Message: S.optional(S.String) },
+    {
+      InvalidParameter: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+    },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class KafkaTimeoutException
   extends /*@__PURE__*/ S.TaggedErrorClass<KafkaTimeoutException>()(
     "KafkaTimeoutException",
-    { InvalidParameter: S.optional(S.String), Message: S.optional(S.String) },
+    {
+      InvalidParameter: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+    },
     T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class NotControllerException
   extends /*@__PURE__*/ S.TaggedErrorClass<NotControllerException>()(
     "NotControllerException",
-    { InvalidParameter: S.optional(S.String), Message: S.optional(S.String) },
+    {
+      InvalidParameter: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+    },
     T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class NotFoundException
   extends /*@__PURE__*/ S.TaggedErrorClass<NotFoundException>()(
     "NotFoundException",
-    { InvalidParameter: S.optional(S.String), Message: S.optional(S.String) },
+    {
+      InvalidParameter: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+    },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ReassignmentInProgressException
   extends /*@__PURE__*/ S.TaggedErrorClass<ReassignmentInProgressException>()(
     "ReassignmentInProgressException",
-    { InvalidParameter: S.optional(S.String), Message: S.optional(S.String) },
+    {
+      InvalidParameter: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+    },
     T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class ServiceUnavailableException
   extends /*@__PURE__*/ S.TaggedErrorClass<ServiceUnavailableException>()(
     "ServiceUnavailableException",
-    { InvalidParameter: S.optional(S.String), Message: S.optional(S.String) },
+    {
+      InvalidParameter: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+    },
     T.HttpError(503),
   ).pipe(C.withServerError) {}
 export class TooManyRequestsException
   extends /*@__PURE__*/ S.TaggedErrorClass<TooManyRequestsException>()(
     "TooManyRequestsException",
-    { InvalidParameter: S.optional(S.String), Message: S.optional(S.String) },
+    {
+      InvalidParameter: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+    },
     T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export class TopicExistsException
   extends /*@__PURE__*/ S.TaggedErrorClass<TopicExistsException>()(
     "TopicExistsException",
-    { InvalidParameter: S.optional(S.String), Message: S.optional(S.String) },
+    {
+      InvalidParameter: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+    },
     T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class UnauthorizedException
   extends /*@__PURE__*/ S.TaggedErrorClass<UnauthorizedException>()(
     "UnauthorizedException",
-    { InvalidParameter: S.optional(S.String), Message: S.optional(S.String) },
+    {
+      InvalidParameter: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+    },
     T.HttpError(401),
   ).pipe(C.withAuthError) {}
 export class UnknownTopicOrPartitionException
   extends /*@__PURE__*/ S.TaggedErrorClass<UnknownTopicOrPartitionException>()(
     "UnknownTopicOrPartitionException",
-    { InvalidParameter: S.optional(S.String), Message: S.optional(S.String) },
+    {
+      InvalidParameter: S.optional(S.String),
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+    },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export type __listOf__string = string[];
