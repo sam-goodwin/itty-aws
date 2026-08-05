@@ -23,7 +23,11 @@ import * as Redacted from "effect/Redacted";
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as HttpClientResponse from "effect/unstable/http/HttpClientResponse";
 import * as MongodbAtlas from "../src/index.ts";
-import { getGroup, NotFound } from "../src/services/atlas.ts";
+import {
+  getGroup,
+  NotFound,
+  searchOrgInvoiceLineItems,
+} from "../src/services/atlas.ts";
 
 // ---------------------------------------------------------------------------
 // Stub credentials: fixed bearer token, default base URL
@@ -47,16 +51,22 @@ interface Captured {
   method: string;
   url: string;
   headers: Record<string, string>;
+  bodyText?: string;
 }
 
 const captured: Captured[] = [];
 let script: Array<(req: Captured) => Response> = [];
 
 const stubClient = HttpClient.make((request) => {
+  const rawBody = request.body as { _tag: string; body?: Uint8Array };
   const cap: Captured = {
     method: request.method,
     url: request.url,
     headers: { ...request.headers } as Record<string, string>,
+    bodyText:
+      rawBody._tag === "Uint8Array"
+        ? new TextDecoder().decode(rawBody.body)
+        : undefined,
   };
   captured.push(cap);
   const next = script.shift();
@@ -196,6 +206,32 @@ await Effect.runPromise(
         .errorCode === "TEAPOT",
       "errorCode carried from the envelope",
     );
+
+    // (d) A GET that documents a requestBody sends it. Atlas's
+    // `lineItems:search` declares `requestBody` on `get`, so filters/sort
+    // are body members; suppressing bodies on GET dropped them silently and
+    // the search came back unfiltered.
+    console.log("(d) GET with a documented request body");
+    script = [() => json({ results: [], totalCount: 0 })];
+    yield* provide(
+      searchOrgInvoiceLineItems({
+        orgId: "4f8e5f8f8f8f8f8f8f8f8f8f",
+        invoiceId: "5f8e5f8f8f8f8f8f8f8f8f8f",
+        sortField: "created",
+      }),
+    );
+    {
+      const req = captured.at(-1)!;
+      assert(req.method === "GET", `method GET (got ${req.method})`);
+      assert(
+        req.bodyText !== undefined,
+        "a body is sent on GET when the schema declares body members",
+      );
+      assert(
+        JSON.parse(req.bodyText!).sortField === "created",
+        `sortField reaches the body (got ${req.bodyText})`,
+      );
+    }
 
     console.log("\nAll wire-sanity checks passed.");
   }),
