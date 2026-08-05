@@ -1,0 +1,10 @@
+{
+  "kind": "build-policy",
+  "description": "BUILD POLICY — the closed lambda build registers no storage extension, so `sending_queue.storage` has no value the collector would accept.",
+  "patches": [
+    {
+      "op": "remove",
+      "path": "/properties/sending_queue/properties/storage"
+    }
+  ]
+}
