@@ -352,24 +352,16 @@ export const PoliciesCreateRequestMechanismsPagerdutyList =
     PoliciesCreateRequestMechanismsPagerdutyItem,
   ) as any as S.Schema<PoliciesCreateRequestMechanismsPagerdutyList>;
 
-export interface PoliciesCreateRequestMechanismsWebhooksItem {
-  /** UUID */
-  id?: string;
-}
+export type PoliciesCreateRequestMechanismsWebhooksItem =
+  PoliciesCreateRequestMechanismsPagerdutyItem;
 export const PoliciesCreateRequestMechanismsWebhooksItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "PoliciesCreateRequestMechanismsWebhooksItem",
-  }) as any as S.Schema<PoliciesCreateRequestMechanismsWebhooksItem>;
+  PoliciesCreateRequestMechanismsPagerdutyItem;
 
 export type PoliciesCreateRequestMechanismsWebhooksList =
-  Array<PoliciesCreateRequestMechanismsWebhooksItem>;
+  Array<PoliciesCreateRequestMechanismsPagerdutyItem>;
 export const PoliciesCreateRequestMechanismsWebhooksList =
   /*@__PURE__*/ S.Array(
-    PoliciesCreateRequestMechanismsWebhooksItem,
+    PoliciesCreateRequestMechanismsPagerdutyItem,
   ) as any as S.Schema<PoliciesCreateRequestMechanismsWebhooksList>;
 
 export interface PoliciesCreateRequestMechanisms {
@@ -1904,23 +1896,15 @@ export const PoliciesGetResponseMechanismsPagerdutyList = /*@__PURE__*/ S.Array(
   PoliciesGetResponseMechanismsPagerdutyItem,
 ) as any as S.Schema<PoliciesGetResponseMechanismsPagerdutyList>;
 
-export interface PoliciesGetResponseMechanismsWebhooksItem {
-  /** UUID */
-  id?: string | null;
-}
+export type PoliciesGetResponseMechanismsWebhooksItem =
+  PoliciesGetResponseMechanismsPagerdutyItem;
 export const PoliciesGetResponseMechanismsWebhooksItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier: "PoliciesGetResponseMechanismsWebhooksItem",
-  }) as any as S.Schema<PoliciesGetResponseMechanismsWebhooksItem>;
+  PoliciesGetResponseMechanismsPagerdutyItem;
 
 export type PoliciesGetResponseMechanismsWebhooksList =
-  Array<PoliciesGetResponseMechanismsWebhooksItem>;
+  Array<PoliciesGetResponseMechanismsPagerdutyItem>;
 export const PoliciesGetResponseMechanismsWebhooksList = /*@__PURE__*/ S.Array(
-  PoliciesGetResponseMechanismsWebhooksItem,
+  PoliciesGetResponseMechanismsPagerdutyItem,
 ) as any as S.Schema<PoliciesGetResponseMechanismsWebhooksList>;
 
 export interface PoliciesGetResponseMechanisms {
@@ -2922,63 +2906,39 @@ export const PoliciesListResultItemFilters = /*@__PURE__*/ S.suspend(() =>
   identifier: "PoliciesListResultItemFilters",
 }) as any as S.Schema<PoliciesListResultItemFilters>;
 
-export interface PoliciesListResultItemMechanismsEmailItem {
-  /** The email address */
-  id?: string | null;
-}
+export type PoliciesListResultItemMechanismsEmailItem =
+  PoliciesGetResponseMechanismsEmailItem;
 export const PoliciesListResultItemMechanismsEmailItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier: "PoliciesListResultItemMechanismsEmailItem",
-  }) as any as S.Schema<PoliciesListResultItemMechanismsEmailItem>;
+  PoliciesGetResponseMechanismsEmailItem;
 
 export type PoliciesListResultItemMechanismsEmailList =
-  Array<PoliciesListResultItemMechanismsEmailItem>;
+  Array<PoliciesGetResponseMechanismsEmailItem>;
 export const PoliciesListResultItemMechanismsEmailList = /*@__PURE__*/ S.Array(
-  PoliciesListResultItemMechanismsEmailItem,
+  PoliciesGetResponseMechanismsEmailItem,
 ) as any as S.Schema<PoliciesListResultItemMechanismsEmailList>;
 
-export interface PoliciesListResultItemMechanismsPagerdutyItem {
-  /** UUID */
-  id?: string | null;
-}
+export type PoliciesListResultItemMechanismsPagerdutyItem =
+  PoliciesGetResponseMechanismsPagerdutyItem;
 export const PoliciesListResultItemMechanismsPagerdutyItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier: "PoliciesListResultItemMechanismsPagerdutyItem",
-  }) as any as S.Schema<PoliciesListResultItemMechanismsPagerdutyItem>;
+  PoliciesGetResponseMechanismsPagerdutyItem;
 
 export type PoliciesListResultItemMechanismsPagerdutyList =
-  Array<PoliciesListResultItemMechanismsPagerdutyItem>;
+  Array<PoliciesGetResponseMechanismsPagerdutyItem>;
 export const PoliciesListResultItemMechanismsPagerdutyList =
   /*@__PURE__*/ S.Array(
-    PoliciesListResultItemMechanismsPagerdutyItem,
+    PoliciesGetResponseMechanismsPagerdutyItem,
   ) as any as S.Schema<PoliciesListResultItemMechanismsPagerdutyList>;
 
-export interface PoliciesListResultItemMechanismsWebhooksItem {
-  /** UUID */
-  id?: string | null;
-}
+export type PoliciesListResultItemMechanismsWebhooksItem =
+  PoliciesGetResponseMechanismsPagerdutyItem;
 export const PoliciesListResultItemMechanismsWebhooksItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier: "PoliciesListResultItemMechanismsWebhooksItem",
-  }) as any as S.Schema<PoliciesListResultItemMechanismsWebhooksItem>;
+  PoliciesGetResponseMechanismsPagerdutyItem;
 
 export type PoliciesListResultItemMechanismsWebhooksList =
-  Array<PoliciesListResultItemMechanismsWebhooksItem>;
+  Array<PoliciesGetResponseMechanismsPagerdutyItem>;
 export const PoliciesListResultItemMechanismsWebhooksList =
   /*@__PURE__*/ S.Array(
-    PoliciesListResultItemMechanismsWebhooksItem,
+    PoliciesGetResponseMechanismsPagerdutyItem,
   ) as any as S.Schema<PoliciesListResultItemMechanismsWebhooksList>;
 
 export interface PoliciesListResultItemMechanisms {
@@ -3720,63 +3680,39 @@ export const PoliciesUpdateRequestFilters = /*@__PURE__*/ S.suspend(() =>
   identifier: "PoliciesUpdateRequestFilters",
 }) as any as S.Schema<PoliciesUpdateRequestFilters>;
 
-export interface PoliciesUpdateRequestMechanismsEmailItem {
-  /** The email address */
-  id?: string;
-}
-export const PoliciesUpdateRequestMechanismsEmailItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "PoliciesUpdateRequestMechanismsEmailItem",
-}) as any as S.Schema<PoliciesUpdateRequestMechanismsEmailItem>;
+export type PoliciesUpdateRequestMechanismsEmailItem =
+  PoliciesCreateRequestMechanismsEmailItem;
+export const PoliciesUpdateRequestMechanismsEmailItem =
+  PoliciesCreateRequestMechanismsEmailItem;
 
 export type PoliciesUpdateRequestMechanismsEmailList =
-  Array<PoliciesUpdateRequestMechanismsEmailItem>;
+  Array<PoliciesCreateRequestMechanismsEmailItem>;
 export const PoliciesUpdateRequestMechanismsEmailList = /*@__PURE__*/ S.Array(
-  PoliciesUpdateRequestMechanismsEmailItem,
+  PoliciesCreateRequestMechanismsEmailItem,
 ) as any as S.Schema<PoliciesUpdateRequestMechanismsEmailList>;
 
-export interface PoliciesUpdateRequestMechanismsPagerdutyItem {
-  /** UUID */
-  id?: string;
-}
+export type PoliciesUpdateRequestMechanismsPagerdutyItem =
+  PoliciesCreateRequestMechanismsPagerdutyItem;
 export const PoliciesUpdateRequestMechanismsPagerdutyItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "PoliciesUpdateRequestMechanismsPagerdutyItem",
-  }) as any as S.Schema<PoliciesUpdateRequestMechanismsPagerdutyItem>;
+  PoliciesCreateRequestMechanismsPagerdutyItem;
 
 export type PoliciesUpdateRequestMechanismsPagerdutyList =
-  Array<PoliciesUpdateRequestMechanismsPagerdutyItem>;
+  Array<PoliciesCreateRequestMechanismsPagerdutyItem>;
 export const PoliciesUpdateRequestMechanismsPagerdutyList =
   /*@__PURE__*/ S.Array(
-    PoliciesUpdateRequestMechanismsPagerdutyItem,
+    PoliciesCreateRequestMechanismsPagerdutyItem,
   ) as any as S.Schema<PoliciesUpdateRequestMechanismsPagerdutyList>;
 
-export interface PoliciesUpdateRequestMechanismsWebhooksItem {
-  /** UUID */
-  id?: string;
-}
+export type PoliciesUpdateRequestMechanismsWebhooksItem =
+  PoliciesCreateRequestMechanismsPagerdutyItem;
 export const PoliciesUpdateRequestMechanismsWebhooksItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "PoliciesUpdateRequestMechanismsWebhooksItem",
-  }) as any as S.Schema<PoliciesUpdateRequestMechanismsWebhooksItem>;
+  PoliciesCreateRequestMechanismsPagerdutyItem;
 
 export type PoliciesUpdateRequestMechanismsWebhooksList =
-  Array<PoliciesUpdateRequestMechanismsWebhooksItem>;
+  Array<PoliciesCreateRequestMechanismsPagerdutyItem>;
 export const PoliciesUpdateRequestMechanismsWebhooksList =
   /*@__PURE__*/ S.Array(
-    PoliciesUpdateRequestMechanismsWebhooksItem,
+    PoliciesCreateRequestMechanismsPagerdutyItem,
   ) as any as S.Schema<PoliciesUpdateRequestMechanismsWebhooksList>;
 
 export interface PoliciesUpdateRequestMechanisms {
@@ -3899,36 +3835,12 @@ export const UpdateSilenceRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateSilenceRequest",
 }) as any as S.Schema<UpdateSilenceRequest>;
 
-export interface SilencesUpdateResultItem {
-  /** Silence ID */
-  id?: string | null;
-  /** When the silence was created. */
-  createdAt?: string | null;
-  /** When the silence ends. */
-  endTime?: string | null;
-  /** The unique identifier of a notification policy */
-  policyId?: string | null;
-  /** When the silence starts. */
-  startTime?: string | null;
-  /** When the silence was modified. */
-  updatedAt?: string | null;
-}
-export const SilencesUpdateResultItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-    createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
-    endTime: S.optional(S.NullOr(S.String).pipe(T.Body("end_time"))),
-    policyId: S.optional(S.NullOr(S.String).pipe(T.Body("policy_id"))),
-    startTime: S.optional(S.NullOr(S.String).pipe(T.Body("start_time"))),
-    updatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("updated_at"))),
-  }),
-).annotate({
-  identifier: "SilencesUpdateResultItem",
-}) as any as S.Schema<SilencesUpdateResultItem>;
+export type SilencesUpdateResultItem = SilencesListResultItem;
+export const SilencesUpdateResultItem = SilencesListResultItem;
 
-export type SilencesUpdateResultList = Array<SilencesUpdateResultItem>;
+export type SilencesUpdateResultList = Array<SilencesListResultItem>;
 export const SilencesUpdateResultList = /*@__PURE__*/ S.Array(
-  SilencesUpdateResultItem,
+  SilencesListResultItem,
 ) as any as S.Schema<SilencesUpdateResultList>;
 
 export interface UpdateSilenceResponse {
@@ -4389,7 +4301,7 @@ export const updateSilence: API.PaginatedOperationMethod<
   UpdateSilenceResponse,
   UpdateSilenceError,
   CloudflareOpContext,
-  SilencesUpdateResultItem
+  SilencesListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: UpdateSilenceRequest,

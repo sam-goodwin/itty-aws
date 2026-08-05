@@ -133,33 +133,16 @@ export const OriginCloudRegionsBulkDeleteResponseFailedList =
     OriginCloudRegionsBulkDeleteResponseFailedItem,
   ) as any as S.Schema<OriginCloudRegionsBulkDeleteResponseFailedList>;
 
-export interface OriginCloudRegionsBulkDeleteResponseSucceededItem {
-  /** The origin IP address for this item. */
-  originIp: string;
-  /** Error message explaining why the item failed. Present only on failed items. */
-  error?: string | null;
-  /** Cloud vendor region identifier. Present on succeeded items (the new value for upsert, the deleted value for delete). */
-  region?: string | null;
-  /** Cloud vendor identifier. Present on succeeded items (the new value for upsert, the deleted value for delete). */
-  vendor?: string | null;
-}
+export type OriginCloudRegionsBulkDeleteResponseSucceededItem =
+  OriginCloudRegionsBulkDeleteResponseFailedItem;
 export const OriginCloudRegionsBulkDeleteResponseSucceededItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      originIp: S.String.pipe(T.Body("origin_ip")),
-      error: S.optional(S.NullOr(S.String)),
-      region: S.optional(S.NullOr(S.String)),
-      vendor: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier: "OriginCloudRegionsBulkDeleteResponseSucceededItem",
-  }) as any as S.Schema<OriginCloudRegionsBulkDeleteResponseSucceededItem>;
+  OriginCloudRegionsBulkDeleteResponseFailedItem;
 
 export type OriginCloudRegionsBulkDeleteResponseSucceededList =
-  Array<OriginCloudRegionsBulkDeleteResponseSucceededItem>;
+  Array<OriginCloudRegionsBulkDeleteResponseFailedItem>;
 export const OriginCloudRegionsBulkDeleteResponseSucceededList =
   /*@__PURE__*/ S.Array(
-    OriginCloudRegionsBulkDeleteResponseSucceededItem,
+    OriginCloudRegionsBulkDeleteResponseFailedItem,
   ) as any as S.Schema<OriginCloudRegionsBulkDeleteResponseSucceededList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -235,62 +218,28 @@ export const BulkPutOriginCloudRegionsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "BulkPutOriginCloudRegionsRequest",
 }) as any as S.Schema<BulkPutOriginCloudRegionsRequest>;
 
-export interface OriginCloudRegionsBulkUpdateResponseFailedItem {
-  /** The origin IP address for this item. */
-  originIp: string;
-  /** Error message explaining why the item failed. Present only on failed items. */
-  error?: string | null;
-  /** Cloud vendor region identifier. Present on succeeded items (the new value for upsert, the deleted value for delete). */
-  region?: string | null;
-  /** Cloud vendor identifier. Present on succeeded items (the new value for upsert, the deleted value for delete). */
-  vendor?: string | null;
-}
+export type OriginCloudRegionsBulkUpdateResponseFailedItem =
+  OriginCloudRegionsBulkDeleteResponseFailedItem;
 export const OriginCloudRegionsBulkUpdateResponseFailedItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      originIp: S.String.pipe(T.Body("origin_ip")),
-      error: S.optional(S.NullOr(S.String)),
-      region: S.optional(S.NullOr(S.String)),
-      vendor: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier: "OriginCloudRegionsBulkUpdateResponseFailedItem",
-  }) as any as S.Schema<OriginCloudRegionsBulkUpdateResponseFailedItem>;
+  OriginCloudRegionsBulkDeleteResponseFailedItem;
 
 export type OriginCloudRegionsBulkUpdateResponseFailedList =
-  Array<OriginCloudRegionsBulkUpdateResponseFailedItem>;
+  Array<OriginCloudRegionsBulkDeleteResponseFailedItem>;
 export const OriginCloudRegionsBulkUpdateResponseFailedList =
   /*@__PURE__*/ S.Array(
-    OriginCloudRegionsBulkUpdateResponseFailedItem,
+    OriginCloudRegionsBulkDeleteResponseFailedItem,
   ) as any as S.Schema<OriginCloudRegionsBulkUpdateResponseFailedList>;
 
-export interface OriginCloudRegionsBulkUpdateResponseSucceededItem {
-  /** The origin IP address for this item. */
-  originIp: string;
-  /** Error message explaining why the item failed. Present only on failed items. */
-  error?: string | null;
-  /** Cloud vendor region identifier. Present on succeeded items (the new value for upsert, the deleted value for delete). */
-  region?: string | null;
-  /** Cloud vendor identifier. Present on succeeded items (the new value for upsert, the deleted value for delete). */
-  vendor?: string | null;
-}
+export type OriginCloudRegionsBulkUpdateResponseSucceededItem =
+  OriginCloudRegionsBulkDeleteResponseFailedItem;
 export const OriginCloudRegionsBulkUpdateResponseSucceededItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      originIp: S.String.pipe(T.Body("origin_ip")),
-      error: S.optional(S.NullOr(S.String)),
-      region: S.optional(S.NullOr(S.String)),
-      vendor: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier: "OriginCloudRegionsBulkUpdateResponseSucceededItem",
-  }) as any as S.Schema<OriginCloudRegionsBulkUpdateResponseSucceededItem>;
+  OriginCloudRegionsBulkDeleteResponseFailedItem;
 
 export type OriginCloudRegionsBulkUpdateResponseSucceededList =
-  Array<OriginCloudRegionsBulkUpdateResponseSucceededItem>;
+  Array<OriginCloudRegionsBulkDeleteResponseFailedItem>;
 export const OriginCloudRegionsBulkUpdateResponseSucceededList =
   /*@__PURE__*/ S.Array(
-    OriginCloudRegionsBulkUpdateResponseSucceededItem,
+    OriginCloudRegionsBulkDeleteResponseFailedItem,
   ) as any as S.Schema<OriginCloudRegionsBulkUpdateResponseSucceededList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -1002,33 +951,16 @@ export const OriginCloudRegionsBulkDeleteV1ResponseValueFailedList =
     OriginCloudRegionsBulkDeleteV1ResponseValueFailedItem,
   ) as any as S.Schema<OriginCloudRegionsBulkDeleteV1ResponseValueFailedList>;
 
-export interface OriginCloudRegionsBulkDeleteV1ResponseValueSucceededItem {
-  /** The origin IP address for this item. */
-  originIp: string;
-  /** Error message explaining why the item failed. Present only on failed items. */
-  error?: string | null;
-  /** Cloud vendor region identifier. Present on succeeded items for patch operations. */
-  region?: string | null;
-  /** Cloud vendor identifier. Present on succeeded items for patch operations. */
-  vendor?: string | null;
-}
+export type OriginCloudRegionsBulkDeleteV1ResponseValueSucceededItem =
+  OriginCloudRegionsBulkDeleteV1ResponseValueFailedItem;
 export const OriginCloudRegionsBulkDeleteV1ResponseValueSucceededItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      originIp: S.String.pipe(T.Body("origin-ip")),
-      error: S.optional(S.NullOr(S.String)),
-      region: S.optional(S.NullOr(S.String)),
-      vendor: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier: "OriginCloudRegionsBulkDeleteV1ResponseValueSucceededItem",
-  }) as any as S.Schema<OriginCloudRegionsBulkDeleteV1ResponseValueSucceededItem>;
+  OriginCloudRegionsBulkDeleteV1ResponseValueFailedItem;
 
 export type OriginCloudRegionsBulkDeleteV1ResponseValueSucceededList =
-  Array<OriginCloudRegionsBulkDeleteV1ResponseValueSucceededItem>;
+  Array<OriginCloudRegionsBulkDeleteV1ResponseValueFailedItem>;
 export const OriginCloudRegionsBulkDeleteV1ResponseValueSucceededList =
   /*@__PURE__*/ S.Array(
-    OriginCloudRegionsBulkDeleteV1ResponseValueSucceededItem,
+    OriginCloudRegionsBulkDeleteV1ResponseValueFailedItem,
   ) as any as S.Schema<OriginCloudRegionsBulkDeleteV1ResponseValueSucceededList>;
 
 export interface OriginCloudRegionsBulkDeleteV1ResponseValue {
@@ -1128,62 +1060,28 @@ export type OriginCloudRegionsBulkEditV1ResponseId =
   "origin_public_cloud_region";
 export const OriginCloudRegionsBulkEditV1ResponseId = /*@__PURE__*/ S.String;
 
-export interface OriginCloudRegionsBulkEditV1ResponseValueFailedItem {
-  /** The origin IP address for this item. */
-  originIp: string;
-  /** Error message explaining why the item failed. Present only on failed items. */
-  error?: string | null;
-  /** Cloud vendor region identifier. Present on succeeded items for patch operations. */
-  region?: string | null;
-  /** Cloud vendor identifier. Present on succeeded items for patch operations. */
-  vendor?: string | null;
-}
+export type OriginCloudRegionsBulkEditV1ResponseValueFailedItem =
+  OriginCloudRegionsBulkDeleteV1ResponseValueFailedItem;
 export const OriginCloudRegionsBulkEditV1ResponseValueFailedItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      originIp: S.String.pipe(T.Body("origin-ip")),
-      error: S.optional(S.NullOr(S.String)),
-      region: S.optional(S.NullOr(S.String)),
-      vendor: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier: "OriginCloudRegionsBulkEditV1ResponseValueFailedItem",
-  }) as any as S.Schema<OriginCloudRegionsBulkEditV1ResponseValueFailedItem>;
+  OriginCloudRegionsBulkDeleteV1ResponseValueFailedItem;
 
 export type OriginCloudRegionsBulkEditV1ResponseValueFailedList =
-  Array<OriginCloudRegionsBulkEditV1ResponseValueFailedItem>;
+  Array<OriginCloudRegionsBulkDeleteV1ResponseValueFailedItem>;
 export const OriginCloudRegionsBulkEditV1ResponseValueFailedList =
   /*@__PURE__*/ S.Array(
-    OriginCloudRegionsBulkEditV1ResponseValueFailedItem,
+    OriginCloudRegionsBulkDeleteV1ResponseValueFailedItem,
   ) as any as S.Schema<OriginCloudRegionsBulkEditV1ResponseValueFailedList>;
 
-export interface OriginCloudRegionsBulkEditV1ResponseValueSucceededItem {
-  /** The origin IP address for this item. */
-  originIp: string;
-  /** Error message explaining why the item failed. Present only on failed items. */
-  error?: string | null;
-  /** Cloud vendor region identifier. Present on succeeded items for patch operations. */
-  region?: string | null;
-  /** Cloud vendor identifier. Present on succeeded items for patch operations. */
-  vendor?: string | null;
-}
+export type OriginCloudRegionsBulkEditV1ResponseValueSucceededItem =
+  OriginCloudRegionsBulkDeleteV1ResponseValueFailedItem;
 export const OriginCloudRegionsBulkEditV1ResponseValueSucceededItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      originIp: S.String.pipe(T.Body("origin-ip")),
-      error: S.optional(S.NullOr(S.String)),
-      region: S.optional(S.NullOr(S.String)),
-      vendor: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier: "OriginCloudRegionsBulkEditV1ResponseValueSucceededItem",
-  }) as any as S.Schema<OriginCloudRegionsBulkEditV1ResponseValueSucceededItem>;
+  OriginCloudRegionsBulkDeleteV1ResponseValueFailedItem;
 
 export type OriginCloudRegionsBulkEditV1ResponseValueSucceededList =
-  Array<OriginCloudRegionsBulkEditV1ResponseValueSucceededItem>;
+  Array<OriginCloudRegionsBulkDeleteV1ResponseValueFailedItem>;
 export const OriginCloudRegionsBulkEditV1ResponseValueSucceededList =
   /*@__PURE__*/ S.Array(
-    OriginCloudRegionsBulkEditV1ResponseValueSucceededItem,
+    OriginCloudRegionsBulkDeleteV1ResponseValueFailedItem,
   ) as any as S.Schema<OriginCloudRegionsBulkEditV1ResponseValueSucceededList>;
 
 export interface OriginCloudRegionsBulkEditV1ResponseValue {

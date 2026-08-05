@@ -692,26 +692,15 @@ export const ThreatEventsCreateRequestRaw = /*@__PURE__*/ S.suspend(() =>
   identifier: "ThreatEventsCreateRequestRaw",
 }) as any as S.Schema<ThreatEventsCreateRequestRaw>;
 
-export interface ThreatEventsCreateRequestIndicatorsItem {
-  /** The type of indicator (e.g., DOMAIN, IP, JA3, HASH) */
-  indicatorType: string;
-  /** The indicator value (e.g., domain name, IP address, hash) */
-  value: string;
-}
-export const ThreatEventsCreateRequestIndicatorsItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      indicatorType: S.String,
-      value: S.String,
-    }),
-).annotate({
-  identifier: "ThreatEventsCreateRequestIndicatorsItem",
-}) as any as S.Schema<ThreatEventsCreateRequestIndicatorsItem>;
+export type ThreatEventsCreateRequestIndicatorsItem =
+  ThreatEventsBulkCreateRequestDataItemIndicatorsItem;
+export const ThreatEventsCreateRequestIndicatorsItem =
+  ThreatEventsBulkCreateRequestDataItemIndicatorsItem;
 
 export type ThreatEventsCreateRequestIndicatorsList =
-  Array<ThreatEventsCreateRequestIndicatorsItem>;
+  Array<ThreatEventsBulkCreateRequestDataItemIndicatorsItem>;
 export const ThreatEventsCreateRequestIndicatorsList = /*@__PURE__*/ S.Array(
-  ThreatEventsCreateRequestIndicatorsItem,
+  ThreatEventsBulkCreateRequestDataItemIndicatorsItem,
 ) as any as S.Schema<ThreatEventsCreateRequestIndicatorsList>;
 
 export type ThreatEventsCreateRequestTagsList = Array<string>;
@@ -2612,27 +2601,20 @@ export const ListThreatEventIndicatorTypesRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListThreatEventIndicatorTypesRequest",
 }) as any as S.Schema<ListThreatEventIndicatorTypesRequest>;
 
-export interface ThreatEventsIndicatorTypesListResponseItems {
-  type: string;
-}
+export type ThreatEventsIndicatorTypesListResponseItems =
+  ThreatEventsAttackersListResponseItems;
 export const ThreatEventsIndicatorTypesListResponseItems =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: S.String,
-    }),
-  ).annotate({
-    identifier: "ThreatEventsIndicatorTypesListResponseItems",
-  }) as any as S.Schema<ThreatEventsIndicatorTypesListResponseItems>;
+  ThreatEventsAttackersListResponseItems;
 
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface ListThreatEventIndicatorTypesResponse {
-  items: ThreatEventsIndicatorTypesListResponseItems;
+  items: ThreatEventsAttackersListResponseItems;
   type: string;
 }
 export const ListThreatEventIndicatorTypesResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      items: ThreatEventsIndicatorTypesListResponseItems,
+      items: ThreatEventsAttackersListResponseItems,
       type: S.String,
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
@@ -2839,27 +2821,20 @@ export const ListThreatEventTargetIndustriesRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListThreatEventTargetIndustriesRequest",
 }) as any as S.Schema<ListThreatEventTargetIndustriesRequest>;
 
-export interface ThreatEventsTargetIndustriesListResponseItems {
-  type: string;
-}
+export type ThreatEventsTargetIndustriesListResponseItems =
+  ThreatEventsAttackersListResponseItems;
 export const ThreatEventsTargetIndustriesListResponseItems =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: S.String,
-    }),
-  ).annotate({
-    identifier: "ThreatEventsTargetIndustriesListResponseItems",
-  }) as any as S.Schema<ThreatEventsTargetIndustriesListResponseItems>;
+  ThreatEventsAttackersListResponseItems;
 
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface ListThreatEventTargetIndustriesResponse {
-  items: ThreatEventsTargetIndustriesListResponseItems;
+  items: ThreatEventsAttackersListResponseItems;
   type: string;
 }
 export const ListThreatEventTargetIndustriesResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      items: ThreatEventsTargetIndustriesListResponseItems,
+      items: ThreatEventsAttackersListResponseItems,
       type: S.String,
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
@@ -3416,33 +3391,12 @@ export const RequestsAssetsGetRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "RequestsAssetsGetRequest",
 }) as any as S.Schema<RequestsAssetsGetRequest>;
 
-export interface RequestsAssetsGetResultItem {
-  /** Asset ID. */
-  id: number;
-  /** Asset name. */
-  name: string;
-  /** Defines the asset creation time. */
-  created?: string | null;
-  /** Asset description. */
-  description?: string | null;
-  /** Asset file type. */
-  fileType?: string | null;
-}
-export const RequestsAssetsGetResultItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.Number,
-    name: S.String,
-    created: S.optional(S.NullOr(S.String)),
-    description: S.optional(S.NullOr(S.String)),
-    fileType: S.optional(S.NullOr(S.String).pipe(T.Body("file_type"))),
-  }),
-).annotate({
-  identifier: "RequestsAssetsGetResultItem",
-}) as any as S.Schema<RequestsAssetsGetResultItem>;
+export type RequestsAssetsGetResultItem = RequestsAssetsCreateResultItem;
+export const RequestsAssetsGetResultItem = RequestsAssetsCreateResultItem;
 
-export type RequestsAssetsGetResultList = Array<RequestsAssetsGetResultItem>;
+export type RequestsAssetsGetResultList = Array<RequestsAssetsCreateResultItem>;
 export const RequestsAssetsGetResultList = /*@__PURE__*/ S.Array(
-  RequestsAssetsGetResultItem,
+  RequestsAssetsCreateResultItem,
 ) as any as S.Schema<RequestsAssetsGetResultList>;
 
 export type RequestsAssetsGetResponse = RequestsAssetsGetResultList;

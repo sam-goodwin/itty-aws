@@ -507,29 +507,19 @@ export const InstancesGetResponseOutput = /*@__PURE__*/ S.Unknown.pipe(
   T.UnionCases([[], []]),
 );
 
-export interface InstancesGetResponseRollbackError {
-  message: string;
-  name: string;
-}
-export const InstancesGetResponseRollbackError = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.String,
-    name: S.String,
-  }),
-).annotate({
-  identifier: "InstancesGetResponseRollbackError",
-}) as any as S.Schema<InstancesGetResponseRollbackError>;
+export type InstancesGetResponseRollbackError = InstancesGetResponseError;
+export const InstancesGetResponseRollbackError = InstancesGetResponseError;
 
 export type InstancesGetResponseRollbackOutcome = "complete" | "failed";
 export const InstancesGetResponseRollbackOutcome = /*@__PURE__*/ S.String;
 
 export interface InstancesGetResponseRollback {
-  error: InstancesGetResponseRollbackError;
+  error: InstancesGetResponseError;
   outcome: InstancesGetResponseRollbackOutcome;
 }
 export const InstancesGetResponseRollback = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    error: InstancesGetResponseRollbackError,
+    error: InstancesGetResponseError,
     outcome: InstancesGetResponseRollbackOutcome,
   }),
 ).annotate({
@@ -548,23 +538,14 @@ export type InstancesGetResponseStatus =
   | "rollingBack";
 export const InstancesGetResponseStatus = /*@__PURE__*/ S.String;
 
-export interface InstancesGetResponseStepsItemCase0AttemptsItemError {
-  message: string;
-  name: string;
-}
+export type InstancesGetResponseStepsItemCase0AttemptsItemError =
+  InstancesGetResponseError;
 export const InstancesGetResponseStepsItemCase0AttemptsItemError =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      message: S.String,
-      name: S.String,
-    }),
-  ).annotate({
-    identifier: "InstancesGetResponseStepsItemCase0AttemptsItemError",
-  }) as any as S.Schema<InstancesGetResponseStepsItemCase0AttemptsItemError>;
+  InstancesGetResponseError;
 
 export interface InstancesGetResponseStepsItemCase0AttemptsItem {
   end: string;
-  error: InstancesGetResponseStepsItemCase0AttemptsItemError;
+  error: InstancesGetResponseError;
   start: string;
   success: boolean;
 }
@@ -572,7 +553,7 @@ export const InstancesGetResponseStepsItemCase0AttemptsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       end: S.String,
-      error: InstancesGetResponseStepsItemCase0AttemptsItemError,
+      error: InstancesGetResponseError,
       start: S.String,
       success: S.Boolean,
     }),
@@ -675,26 +656,16 @@ export const InstancesGetResponseStepsItemCase0 = /*@__PURE__*/ S.suspend(() =>
   identifier: "InstancesGetResponseStepsItemCase0",
 }) as any as S.Schema<InstancesGetResponseStepsItemCase0>;
 
-export interface InstancesGetResponseStepsItemCase1Error {
-  message: string;
-  name: string;
-}
-export const InstancesGetResponseStepsItemCase1Error = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      message: S.String,
-      name: S.String,
-    }),
-).annotate({
-  identifier: "InstancesGetResponseStepsItemCase1Error",
-}) as any as S.Schema<InstancesGetResponseStepsItemCase1Error>;
+export type InstancesGetResponseStepsItemCase1Error = InstancesGetResponseError;
+export const InstancesGetResponseStepsItemCase1Error =
+  InstancesGetResponseError;
 
 export type InstancesGetResponseStepsItemCase1Type = "sleep";
 export const InstancesGetResponseStepsItemCase1Type = /*@__PURE__*/ S.String;
 
 export interface InstancesGetResponseStepsItemCase1 {
   end: string;
-  error: InstancesGetResponseStepsItemCase1Error;
+  error: InstancesGetResponseError;
   finished: boolean;
   name: string;
   start: string;
@@ -703,7 +674,7 @@ export interface InstancesGetResponseStepsItemCase1 {
 export const InstancesGetResponseStepsItemCase1 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     end: S.String,
-    error: InstancesGetResponseStepsItemCase1Error,
+    error: InstancesGetResponseError,
     finished: S.Boolean,
     name: S.String,
     start: S.String,
@@ -741,26 +712,16 @@ export const InstancesGetResponseStepsItemCase2 = /*@__PURE__*/ S.suspend(() =>
   identifier: "InstancesGetResponseStepsItemCase2",
 }) as any as S.Schema<InstancesGetResponseStepsItemCase2>;
 
-export interface InstancesGetResponseStepsItemCase3Error {
-  message: string;
-  name: string;
-}
-export const InstancesGetResponseStepsItemCase3Error = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      message: S.String,
-      name: S.String,
-    }),
-).annotate({
-  identifier: "InstancesGetResponseStepsItemCase3Error",
-}) as any as S.Schema<InstancesGetResponseStepsItemCase3Error>;
+export type InstancesGetResponseStepsItemCase3Error = InstancesGetResponseError;
+export const InstancesGetResponseStepsItemCase3Error =
+  InstancesGetResponseError;
 
 export type InstancesGetResponseStepsItemCase3Type = "waitForEvent";
 export const InstancesGetResponseStepsItemCase3Type = /*@__PURE__*/ S.String;
 
 export interface InstancesGetResponseStepsItemCase3 {
   end: string;
-  error: InstancesGetResponseStepsItemCase3Error;
+  error: InstancesGetResponseError;
   finished: boolean;
   name: string;
   start: string;
@@ -770,7 +731,7 @@ export interface InstancesGetResponseStepsItemCase3 {
 export const InstancesGetResponseStepsItemCase3 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     end: S.String,
-    error: InstancesGetResponseStepsItemCase3Error,
+    error: InstancesGetResponseError,
     finished: S.Boolean,
     name: S.String,
     start: S.String,
@@ -2143,16 +2104,8 @@ export const ListVersionsRequest = /*@__PURE__*/ S.suspend(() =>
 export type VersionsListResultItemLanguage = "javascript" | "python";
 export const VersionsListResultItemLanguage = /*@__PURE__*/ S.String;
 
-export interface VersionsListResultItemLimits {
-  steps?: number | null;
-}
-export const VersionsListResultItemLimits = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    steps: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({
-  identifier: "VersionsListResultItemLimits",
-}) as any as S.Schema<VersionsListResultItemLimits>;
+export type VersionsListResultItemLimits = VersionsGetResponseLimits;
+export const VersionsListResultItemLimits = VersionsGetResponseLimits;
 
 export interface VersionsListResultItem {
   id: string;
@@ -2163,7 +2116,7 @@ export interface VersionsListResultItem {
   language: VersionsListResultItemLanguage;
   modifiedOn: string;
   workflowId: string;
-  limits?: VersionsListResultItemLimits | null;
+  limits?: VersionsGetResponseLimits | null;
 }
 export const VersionsListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2174,7 +2127,7 @@ export const VersionsListResultItem = /*@__PURE__*/ S.suspend(() =>
     language: VersionsListResultItemLanguage,
     modifiedOn: S.String.pipe(T.Body("modified_on")),
     workflowId: S.String.pipe(T.Body("workflow_id")),
-    limits: S.optional(S.NullOr(VersionsListResultItemLimits)),
+    limits: S.optional(S.NullOr(VersionsGetResponseLimits)),
   }),
 ).annotate({
   identifier: "VersionsListResultItem",
@@ -2226,56 +2179,22 @@ export const ListWorkflowsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListWorkflowsRequest",
 }) as any as S.Schema<ListWorkflowsRequest>;
 
-export interface ListResultItemInstances {
-  complete?: number | null;
-  errored?: number | null;
-  paused?: number | null;
-  queued?: number | null;
-  rollingBack?: number | null;
-  running?: number | null;
-  terminated?: number | null;
-  waiting?: number | null;
-  waitingForPause?: number | null;
-}
-export const ListResultItemInstances = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    complete: S.optional(S.NullOr(S.Number)),
-    errored: S.optional(S.NullOr(S.Number)),
-    paused: S.optional(S.NullOr(S.Number)),
-    queued: S.optional(S.NullOr(S.Number)),
-    rollingBack: S.optional(S.NullOr(S.Number)),
-    running: S.optional(S.NullOr(S.Number)),
-    terminated: S.optional(S.NullOr(S.Number)),
-    waiting: S.optional(S.NullOr(S.Number)),
-    waitingForPause: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({
-  identifier: "ListResultItemInstances",
-}) as any as S.Schema<ListResultItemInstances>;
+export type ListResultItemInstances = GetResponseInstances;
+export const ListResultItemInstances = GetResponseInstances;
 
-export interface ListResultItemSchedulesItem {
-  cron: string;
-  nextInstance: string;
-}
-export const ListResultItemSchedulesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cron: S.String,
-    nextInstance: S.String.pipe(T.Body("next_instance")),
-  }),
-).annotate({
-  identifier: "ListResultItemSchedulesItem",
-}) as any as S.Schema<ListResultItemSchedulesItem>;
+export type ListResultItemSchedulesItem = GetResponseSchedulesItem;
+export const ListResultItemSchedulesItem = GetResponseSchedulesItem;
 
-export type ListResultItemSchedulesList = Array<ListResultItemSchedulesItem>;
+export type ListResultItemSchedulesList = Array<GetResponseSchedulesItem>;
 export const ListResultItemSchedulesList = /*@__PURE__*/ S.Array(
-  ListResultItemSchedulesItem,
+  GetResponseSchedulesItem,
 ) as any as S.Schema<ListResultItemSchedulesList>;
 
 export interface ListResultItem {
   id: string;
   className: string;
   createdOn: string;
-  instances: ListResultItemInstances;
+  instances: GetResponseInstances;
   modifiedOn: string;
   name: string;
   scriptName: string;
@@ -2287,7 +2206,7 @@ export const ListResultItem = /*@__PURE__*/ S.suspend(() =>
     id: S.String,
     className: S.String.pipe(T.Body("class_name")),
     createdOn: S.String.pipe(T.Body("created_on")),
-    instances: ListResultItemInstances,
+    instances: GetResponseInstances,
     modifiedOn: S.String.pipe(T.Body("modified_on")),
     name: S.String,
     scriptName: S.String.pipe(T.Body("script_name")),
@@ -2525,18 +2444,8 @@ export const StepInstanceRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "StepInstanceRequest",
 }) as any as S.Schema<StepInstanceRequest>;
 
-export interface InstancesStepResponseError {
-  message: string;
-  name: string;
-}
-export const InstancesStepResponseError = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.String,
-    name: S.String,
-  }),
-).annotate({
-  identifier: "InstancesStepResponseError",
-}) as any as S.Schema<InstancesStepResponseError>;
+export type InstancesStepResponseError = InstancesGetResponseError;
+export const InstancesStepResponseError = InstancesGetResponseError;
 
 export type InstancesStepResponseStatus =
   | "queued"
@@ -2553,14 +2462,14 @@ export const InstancesStepResponseStatus = /*@__PURE__*/ S.String;
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface StepInstanceResponse {
   /** Error details when status='errored'; null otherwise. */
-  error: InstancesStepResponseError;
+  error: InstancesGetResponseError;
   status: InstancesStepResponseStatus;
   /** Full step output or waitForEvent payload without truncation. Sensitive outputs are returned as '[REDACTED]'. Populated when status='complete'. May be a ReadableStream when the step returned one from step.do; stream outputs are served as application/octet-stream rather than JSON. */
   output?: unknown | null;
 }
 export const StepInstanceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    error: InstancesStepResponseError,
+    error: InstancesGetResponseError,
     status: InstancesStepResponseStatus,
     output: S.optional(S.NullOr(S.Unknown)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),

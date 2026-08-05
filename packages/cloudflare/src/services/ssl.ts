@@ -926,24 +926,16 @@ export const CertificatePacksGetResponseDcvDelegationRecordsList =
     CertificatePacksGetResponseDcvDelegationRecordsItem,
   ) as any as S.Schema<CertificatePacksGetResponseDcvDelegationRecordsList>;
 
-export interface CertificatePacksGetResponseValidationErrorsItem {
-  /** A domain validation error. */
-  message?: string | null;
-}
+export type CertificatePacksGetResponseValidationErrorsItem =
+  CertificatePacksCreateResponseValidationErrorsItem;
 export const CertificatePacksGetResponseValidationErrorsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      message: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier: "CertificatePacksGetResponseValidationErrorsItem",
-  }) as any as S.Schema<CertificatePacksGetResponseValidationErrorsItem>;
+  CertificatePacksCreateResponseValidationErrorsItem;
 
 export type CertificatePacksGetResponseValidationErrorsList =
-  Array<CertificatePacksGetResponseValidationErrorsItem>;
+  Array<CertificatePacksCreateResponseValidationErrorsItem>;
 export const CertificatePacksGetResponseValidationErrorsList =
   /*@__PURE__*/ S.Array(
-    CertificatePacksGetResponseValidationErrorsItem,
+    CertificatePacksCreateResponseValidationErrorsItem,
   ) as any as S.Schema<CertificatePacksGetResponseValidationErrorsList>;
 
 export type CertificatePacksGetResponseValidationMethod =
@@ -1542,24 +1534,16 @@ export const CertificatePacksListResultItemDcvDelegationRecordsList =
     CertificatePacksListResultItemDcvDelegationRecordsItem,
   ) as any as S.Schema<CertificatePacksListResultItemDcvDelegationRecordsList>;
 
-export interface CertificatePacksListResultItemValidationErrorsItem {
-  /** A domain validation error. */
-  message?: string | null;
-}
+export type CertificatePacksListResultItemValidationErrorsItem =
+  CertificatePacksCreateResponseValidationErrorsItem;
 export const CertificatePacksListResultItemValidationErrorsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      message: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier: "CertificatePacksListResultItemValidationErrorsItem",
-  }) as any as S.Schema<CertificatePacksListResultItemValidationErrorsItem>;
+  CertificatePacksCreateResponseValidationErrorsItem;
 
 export type CertificatePacksListResultItemValidationErrorsList =
-  Array<CertificatePacksListResultItemValidationErrorsItem>;
+  Array<CertificatePacksCreateResponseValidationErrorsItem>;
 export const CertificatePacksListResultItemValidationErrorsList =
   /*@__PURE__*/ S.Array(
-    CertificatePacksListResultItemValidationErrorsItem,
+    CertificatePacksCreateResponseValidationErrorsItem,
   ) as any as S.Schema<CertificatePacksListResultItemValidationErrorsList>;
 
 export type CertificatePacksListResultItemValidationMethod =
@@ -1976,24 +1960,16 @@ export const CertificatePacksEditResponseDcvDelegationRecordsList =
     CertificatePacksEditResponseDcvDelegationRecordsItem,
   ) as any as S.Schema<CertificatePacksEditResponseDcvDelegationRecordsList>;
 
-export interface CertificatePacksEditResponseValidationErrorsItem {
-  /** A domain validation error. */
-  message?: string | null;
-}
+export type CertificatePacksEditResponseValidationErrorsItem =
+  CertificatePacksCreateResponseValidationErrorsItem;
 export const CertificatePacksEditResponseValidationErrorsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      message: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier: "CertificatePacksEditResponseValidationErrorsItem",
-  }) as any as S.Schema<CertificatePacksEditResponseValidationErrorsItem>;
+  CertificatePacksCreateResponseValidationErrorsItem;
 
 export type CertificatePacksEditResponseValidationErrorsList =
-  Array<CertificatePacksEditResponseValidationErrorsItem>;
+  Array<CertificatePacksCreateResponseValidationErrorsItem>;
 export const CertificatePacksEditResponseValidationErrorsList =
   /*@__PURE__*/ S.Array(
-    CertificatePacksEditResponseValidationErrorsItem,
+    CertificatePacksCreateResponseValidationErrorsItem,
   ) as any as S.Schema<CertificatePacksEditResponseValidationErrorsList>;
 
 export type CertificatePacksEditResponseValidationMethod =

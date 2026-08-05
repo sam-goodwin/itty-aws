@@ -851,50 +851,20 @@ export const DeleteEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteEnvironmentRequest",
 }) as any as S.Schema<DeleteEnvironmentRequest>;
 
-export interface EnvironmentsDeleteResponseEnvironmentsItemPosition {
-  after?: string | null;
-  before?: string | null;
-}
+export type EnvironmentsDeleteResponseEnvironmentsItemPosition =
+  EnvironmentsCreateResponseEnvironmentsItemPosition;
 export const EnvironmentsDeleteResponseEnvironmentsItemPosition =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      after: S.optional(S.NullOr(S.String)),
-      before: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier: "EnvironmentsDeleteResponseEnvironmentsItemPosition",
-  }) as any as S.Schema<EnvironmentsDeleteResponseEnvironmentsItemPosition>;
+  EnvironmentsCreateResponseEnvironmentsItemPosition;
 
-export interface EnvironmentsDeleteResponseEnvironmentsItem {
-  expression: string;
-  lockedOnDeployment: boolean;
-  name: string;
-  position: EnvironmentsDeleteResponseEnvironmentsItemPosition;
-  ref: string;
-  version: number;
-  httpApplicationId?: string | null;
-}
+export type EnvironmentsDeleteResponseEnvironmentsItem =
+  EnvironmentsCreateResponseEnvironmentsItem;
 export const EnvironmentsDeleteResponseEnvironmentsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      expression: S.String,
-      lockedOnDeployment: S.Boolean.pipe(T.Body("locked_on_deployment")),
-      name: S.String,
-      position: EnvironmentsDeleteResponseEnvironmentsItemPosition,
-      ref: S.String,
-      version: S.Number,
-      httpApplicationId: S.optional(
-        S.NullOr(S.String).pipe(T.Body("http_application_id")),
-      ),
-    }),
-  ).annotate({
-    identifier: "EnvironmentsDeleteResponseEnvironmentsItem",
-  }) as any as S.Schema<EnvironmentsDeleteResponseEnvironmentsItem>;
+  EnvironmentsCreateResponseEnvironmentsItem;
 
 export type EnvironmentsDeleteResponseEnvironmentsList =
-  Array<EnvironmentsDeleteResponseEnvironmentsItem>;
+  Array<EnvironmentsCreateResponseEnvironmentsItem>;
 export const EnvironmentsDeleteResponseEnvironmentsList = /*@__PURE__*/ S.Array(
-  EnvironmentsDeleteResponseEnvironmentsItem,
+  EnvironmentsCreateResponseEnvironmentsItem,
 ) as any as S.Schema<EnvironmentsDeleteResponseEnvironmentsList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -3496,57 +3466,11 @@ export const GetZoneRequest = /*@__PURE__*/ S.suspend(() =>
     .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "GetZoneRequest" }) as any as S.Schema<GetZoneRequest>;
 
-export interface GetResponseAccount {
-  /** Identifier */
-  id?: string | null;
-  /** The name of the account. */
-  name?: string | null;
-}
-export const GetResponseAccount = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-    name: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "GetResponseAccount",
-}) as any as S.Schema<GetResponseAccount>;
+export type GetResponseAccount = CreateResponseAccount;
+export const GetResponseAccount = CreateResponseAccount;
 
-export interface GetResponseMeta {
-  /** The zone is only configured for CDN. */
-  cdnOnly?: boolean | null;
-  /** Number of Custom Certificates the zone can have. */
-  customCertificateQuota?: number | null;
-  /** The zone is only configured for DNS. */
-  dnsOnly?: boolean | null;
-  /** The zone is setup with Foundation DNS. */
-  foundationDns?: boolean | null;
-  /** Number of Page Rules a zone can have. */
-  pageRuleQuota?: number | null;
-  /** The zone has been flagged for phishing. */
-  phishingDetected?: boolean | null;
-  step?: number | null;
-}
-export const GetResponseMeta = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cdnOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cdn_only"))),
-    customCertificateQuota: S.optional(
-      S.NullOr(S.Number).pipe(T.Body("custom_certificate_quota")),
-    ),
-    dnsOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("dns_only"))),
-    foundationDns: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("foundation_dns")),
-    ),
-    pageRuleQuota: S.optional(
-      S.NullOr(S.Number).pipe(T.Body("page_rule_quota")),
-    ),
-    phishingDetected: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("phishing_detected")),
-    ),
-    step: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({
-  identifier: "GetResponseMeta",
-}) as any as S.Schema<GetResponseMeta>;
+export type GetResponseMeta = CreateResponseMeta;
+export const GetResponseMeta = CreateResponseMeta;
 
 export type GetResponseNameServersList = Array<string>;
 export const GetResponseNameServersList = /*@__PURE__*/ S.Array(
@@ -3558,66 +3482,11 @@ export const GetResponseOriginalNameServersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetResponseOriginalNameServersList>;
 
-export interface GetResponseOwner {
-  /** Identifier */
-  id?: string | null;
-  /** Name of the owner. */
-  name?: string | null;
-  /** The type of owner. */
-  type?: string | null;
-}
-export const GetResponseOwner = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-    name: S.optional(S.NullOr(S.String)),
-    type: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "GetResponseOwner",
-}) as any as S.Schema<GetResponseOwner>;
+export type GetResponseOwner = CreateResponseOwner;
+export const GetResponseOwner = CreateResponseOwner;
 
-export interface GetResponsePlan {
-  /** Identifier */
-  id?: string | null;
-  /** States if the subscription can be activated. */
-  canSubscribe?: boolean | null;
-  /** The denomination of the customer. */
-  currency?: string | null;
-  /** If this Zone is managed by another company. */
-  externallyManaged?: boolean | null;
-  /** How often the customer is billed. */
-  frequency?: string | null;
-  /** States if the subscription active. */
-  isSubscribed?: boolean | null;
-  /** If the legacy discount applies to this Zone. */
-  legacyDiscount?: boolean | null;
-  /** The legacy name of the plan. */
-  legacyId?: string | null;
-  /** Name of the owner. */
-  name?: string | null;
-  /** How much the customer is paying. */
-  price?: number | null;
-}
-export const GetResponsePlan = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-    canSubscribe: S.optional(S.NullOr(S.Boolean).pipe(T.Body("can_subscribe"))),
-    currency: S.optional(S.NullOr(S.String)),
-    externallyManaged: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("externally_managed")),
-    ),
-    frequency: S.optional(S.NullOr(S.String)),
-    isSubscribed: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_subscribed"))),
-    legacyDiscount: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("legacy_discount")),
-    ),
-    legacyId: S.optional(S.NullOr(S.String).pipe(T.Body("legacy_id"))),
-    name: S.optional(S.NullOr(S.String)),
-    price: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({
-  identifier: "GetResponsePlan",
-}) as any as S.Schema<GetResponsePlan>;
+export type GetResponsePlan = CreateResponsePlan;
+export const GetResponsePlan = CreateResponsePlan;
 
 export type GetResponsePermissionsList = Array<string>;
 export const GetResponsePermissionsList = /*@__PURE__*/ S.Array(
@@ -3627,32 +3496,11 @@ export const GetResponsePermissionsList = /*@__PURE__*/ S.Array(
 export type GetResponseStatus = "initializing" | "pending" | "active" | "moved";
 export const GetResponseStatus = /*@__PURE__*/ S.String;
 
-export interface GetResponseTenant {
-  /** Identifier */
-  id?: string | null;
-  /** The name of the Tenant account. */
-  name?: string | null;
-}
-export const GetResponseTenant = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-    name: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "GetResponseTenant",
-}) as any as S.Schema<GetResponseTenant>;
+export type GetResponseTenant = CreateResponseTenant;
+export const GetResponseTenant = CreateResponseTenant;
 
-export interface GetResponseTenantUnit {
-  /** Identifier */
-  id?: string | null;
-}
-export const GetResponseTenantUnit = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "GetResponseTenantUnit",
-}) as any as S.Schema<GetResponseTenantUnit>;
+export type GetResponseTenantUnit = CreateResponseTenantUnit;
+export const GetResponseTenantUnit = CreateResponseTenantUnit;
 
 export type GetResponseType = "full" | "partial" | "secondary" | "internal";
 export const GetResponseType = /*@__PURE__*/ S.String;
@@ -3667,7 +3515,7 @@ export interface GetZoneResponse {
   /** Identifier */
   id: string;
   /** The account the zone belongs to. */
-  account: GetResponseAccount;
+  account: CreateResponseAccount;
   /** The last time proof of ownership was detected and the zone was made */
   activatedOn: string;
   /** When the zone was created. */
@@ -3675,7 +3523,7 @@ export interface GetZoneResponse {
   /** The interval (in seconds) from when development mode expires */
   developmentMode: number;
   /** Metadata about the zone. */
-  meta: GetResponseMeta;
+  meta: CreateResponseMeta;
   /** When the zone was last modified. */
   modifiedOn: string;
   /** The domain name. Per [RFC 1035](https://datatracker.ietf.org/doc/html/rfc1035#section-2.3.4) the overall zone name can be up to 253 characters, with each segment ("label") not exceeding 63 characters. */
@@ -3689,9 +3537,9 @@ export interface GetZoneResponse {
   /** Registrar for the domain at the time of switching to Cloudflare. */
   originalRegistrar: string;
   /** The owner of the zone. */
-  owner: GetResponseOwner;
+  owner: CreateResponseOwner;
   /** A Zones subscription information. */
-  plan: GetResponsePlan;
+  plan: CreateResponsePlan;
   /** Allows the customer to use a custom apex. */
   cnameSuffix?: string | null;
   /** Indicates whether the zone is only using Cloudflare DNS services. A */
@@ -3701,9 +3549,9 @@ export interface GetZoneResponse {
   /** The zone status on Cloudflare. */
   status?: GetResponseStatus | null;
   /** The root organizational unit that this zone belongs to (such as a tenant or organization). */
-  tenant?: GetResponseTenant | null;
+  tenant?: CreateResponseTenant | null;
   /** The immediate parent organizational unit that this zone belongs to (such as under a tenant or sub-organization). */
-  tenantUnit?: GetResponseTenantUnit | null;
+  tenantUnit?: CreateResponseTenantUnit | null;
   /** A full zone implies that DNS is hosted with Cloudflare. A partial zone is */
   type?: GetResponseType | null;
   /** An array of domains used for custom name servers. This is only available for Business and Enterprise plans. */
@@ -3714,11 +3562,11 @@ export interface GetZoneResponse {
 export const GetZoneResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
-    account: GetResponseAccount,
+    account: CreateResponseAccount,
     activatedOn: S.String.pipe(T.Body("activated_on")),
     createdOn: S.String.pipe(T.Body("created_on")),
     developmentMode: S.Number.pipe(T.Body("development_mode")),
-    meta: GetResponseMeta,
+    meta: CreateResponseMeta,
     modifiedOn: S.String.pipe(T.Body("modified_on")),
     name: S.String,
     nameServers: GetResponseNameServersList.pipe(T.Body("name_servers")),
@@ -3727,15 +3575,15 @@ export const GetZoneResponse = /*@__PURE__*/ S.suspend(() =>
       T.Body("original_name_servers"),
     ),
     originalRegistrar: S.String.pipe(T.Body("original_registrar")),
-    owner: GetResponseOwner,
-    plan: GetResponsePlan,
+    owner: CreateResponseOwner,
+    plan: CreateResponsePlan,
     cnameSuffix: S.optional(S.NullOr(S.String).pipe(T.Body("cname_suffix"))),
     paused: S.optional(S.NullOr(S.Boolean)),
     permissions: S.optional(S.NullOr(GetResponsePermissionsList)),
     status: S.optional(S.NullOr(GetResponseStatus)),
-    tenant: S.optional(S.NullOr(GetResponseTenant)),
+    tenant: S.optional(S.NullOr(CreateResponseTenant)),
     tenantUnit: S.optional(
-      S.NullOr(GetResponseTenantUnit).pipe(T.Body("tenant_unit")),
+      S.NullOr(CreateResponseTenantUnit).pipe(T.Body("tenant_unit")),
     ),
     type: S.optional(S.NullOr(GetResponseType)),
     vanityNameServers: S.optional(
@@ -3770,50 +3618,20 @@ export const ListEnvironmentsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListEnvironmentsRequest",
 }) as any as S.Schema<ListEnvironmentsRequest>;
 
-export interface EnvironmentsListResponseEnvironmentsItemPosition {
-  after?: string | null;
-  before?: string | null;
-}
+export type EnvironmentsListResponseEnvironmentsItemPosition =
+  EnvironmentsCreateResponseEnvironmentsItemPosition;
 export const EnvironmentsListResponseEnvironmentsItemPosition =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      after: S.optional(S.NullOr(S.String)),
-      before: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier: "EnvironmentsListResponseEnvironmentsItemPosition",
-  }) as any as S.Schema<EnvironmentsListResponseEnvironmentsItemPosition>;
+  EnvironmentsCreateResponseEnvironmentsItemPosition;
 
-export interface EnvironmentsListResponseEnvironmentsItem {
-  expression: string;
-  lockedOnDeployment: boolean;
-  name: string;
-  position: EnvironmentsListResponseEnvironmentsItemPosition;
-  ref: string;
-  version: number;
-  httpApplicationId?: string | null;
-}
-export const EnvironmentsListResponseEnvironmentsItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      expression: S.String,
-      lockedOnDeployment: S.Boolean.pipe(T.Body("locked_on_deployment")),
-      name: S.String,
-      position: EnvironmentsListResponseEnvironmentsItemPosition,
-      ref: S.String,
-      version: S.Number,
-      httpApplicationId: S.optional(
-        S.NullOr(S.String).pipe(T.Body("http_application_id")),
-      ),
-    }),
-).annotate({
-  identifier: "EnvironmentsListResponseEnvironmentsItem",
-}) as any as S.Schema<EnvironmentsListResponseEnvironmentsItem>;
+export type EnvironmentsListResponseEnvironmentsItem =
+  EnvironmentsCreateResponseEnvironmentsItem;
+export const EnvironmentsListResponseEnvironmentsItem =
+  EnvironmentsCreateResponseEnvironmentsItem;
 
 export type EnvironmentsListResponseEnvironmentsList =
-  Array<EnvironmentsListResponseEnvironmentsItem>;
+  Array<EnvironmentsCreateResponseEnvironmentsItem>;
 export const EnvironmentsListResponseEnvironmentsList = /*@__PURE__*/ S.Array(
-  EnvironmentsListResponseEnvironmentsItem,
+  EnvironmentsCreateResponseEnvironmentsItem,
 ) as any as S.Schema<EnvironmentsListResponseEnvironmentsList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -3995,57 +3813,11 @@ export const ListZonesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListZonesRequest",
 }) as any as S.Schema<ListZonesRequest>;
 
-export interface ListResultItemAccount {
-  /** Identifier */
-  id?: string | null;
-  /** The name of the account. */
-  name?: string | null;
-}
-export const ListResultItemAccount = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-    name: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "ListResultItemAccount",
-}) as any as S.Schema<ListResultItemAccount>;
+export type ListResultItemAccount = CreateResponseAccount;
+export const ListResultItemAccount = CreateResponseAccount;
 
-export interface ListResultItemMeta {
-  /** The zone is only configured for CDN. */
-  cdnOnly?: boolean | null;
-  /** Number of Custom Certificates the zone can have. */
-  customCertificateQuota?: number | null;
-  /** The zone is only configured for DNS. */
-  dnsOnly?: boolean | null;
-  /** The zone is setup with Foundation DNS. */
-  foundationDns?: boolean | null;
-  /** Number of Page Rules a zone can have. */
-  pageRuleQuota?: number | null;
-  /** The zone has been flagged for phishing. */
-  phishingDetected?: boolean | null;
-  step?: number | null;
-}
-export const ListResultItemMeta = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cdnOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cdn_only"))),
-    customCertificateQuota: S.optional(
-      S.NullOr(S.Number).pipe(T.Body("custom_certificate_quota")),
-    ),
-    dnsOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("dns_only"))),
-    foundationDns: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("foundation_dns")),
-    ),
-    pageRuleQuota: S.optional(
-      S.NullOr(S.Number).pipe(T.Body("page_rule_quota")),
-    ),
-    phishingDetected: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("phishing_detected")),
-    ),
-    step: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({
-  identifier: "ListResultItemMeta",
-}) as any as S.Schema<ListResultItemMeta>;
+export type ListResultItemMeta = CreateResponseMeta;
+export const ListResultItemMeta = CreateResponseMeta;
 
 export type ListResultItemNameServersList = Array<string>;
 export const ListResultItemNameServersList = /*@__PURE__*/ S.Array(
@@ -4057,66 +3829,11 @@ export const ListResultItemOriginalNameServersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ListResultItemOriginalNameServersList>;
 
-export interface ListResultItemOwner {
-  /** Identifier */
-  id?: string | null;
-  /** Name of the owner. */
-  name?: string | null;
-  /** The type of owner. */
-  type?: string | null;
-}
-export const ListResultItemOwner = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-    name: S.optional(S.NullOr(S.String)),
-    type: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "ListResultItemOwner",
-}) as any as S.Schema<ListResultItemOwner>;
+export type ListResultItemOwner = CreateResponseOwner;
+export const ListResultItemOwner = CreateResponseOwner;
 
-export interface ListResultItemPlan {
-  /** Identifier */
-  id?: string | null;
-  /** States if the subscription can be activated. */
-  canSubscribe?: boolean | null;
-  /** The denomination of the customer. */
-  currency?: string | null;
-  /** If this Zone is managed by another company. */
-  externallyManaged?: boolean | null;
-  /** How often the customer is billed. */
-  frequency?: string | null;
-  /** States if the subscription active. */
-  isSubscribed?: boolean | null;
-  /** If the legacy discount applies to this Zone. */
-  legacyDiscount?: boolean | null;
-  /** The legacy name of the plan. */
-  legacyId?: string | null;
-  /** Name of the owner. */
-  name?: string | null;
-  /** How much the customer is paying. */
-  price?: number | null;
-}
-export const ListResultItemPlan = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-    canSubscribe: S.optional(S.NullOr(S.Boolean).pipe(T.Body("can_subscribe"))),
-    currency: S.optional(S.NullOr(S.String)),
-    externallyManaged: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("externally_managed")),
-    ),
-    frequency: S.optional(S.NullOr(S.String)),
-    isSubscribed: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_subscribed"))),
-    legacyDiscount: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("legacy_discount")),
-    ),
-    legacyId: S.optional(S.NullOr(S.String).pipe(T.Body("legacy_id"))),
-    name: S.optional(S.NullOr(S.String)),
-    price: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({
-  identifier: "ListResultItemPlan",
-}) as any as S.Schema<ListResultItemPlan>;
+export type ListResultItemPlan = CreateResponsePlan;
+export const ListResultItemPlan = CreateResponsePlan;
 
 export type ListResultItemPermissionsList = Array<string>;
 export const ListResultItemPermissionsList = /*@__PURE__*/ S.Array(
@@ -4130,32 +3847,11 @@ export type ListResultItemStatus =
   | "moved";
 export const ListResultItemStatus = /*@__PURE__*/ S.String;
 
-export interface ListResultItemTenant {
-  /** Identifier */
-  id?: string | null;
-  /** The name of the Tenant account. */
-  name?: string | null;
-}
-export const ListResultItemTenant = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-    name: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "ListResultItemTenant",
-}) as any as S.Schema<ListResultItemTenant>;
+export type ListResultItemTenant = CreateResponseTenant;
+export const ListResultItemTenant = CreateResponseTenant;
 
-export interface ListResultItemTenantUnit {
-  /** Identifier */
-  id?: string | null;
-}
-export const ListResultItemTenantUnit = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "ListResultItemTenantUnit",
-}) as any as S.Schema<ListResultItemTenantUnit>;
+export type ListResultItemTenantUnit = CreateResponseTenantUnit;
+export const ListResultItemTenantUnit = CreateResponseTenantUnit;
 
 export type ListResultItemType = "full" | "partial" | "secondary" | "internal";
 export const ListResultItemType = /*@__PURE__*/ S.String;
@@ -4169,7 +3865,7 @@ export interface ListResultItem {
   /** Identifier */
   id: string;
   /** The account the zone belongs to. */
-  account: ListResultItemAccount;
+  account: CreateResponseAccount;
   /** The last time proof of ownership was detected and the zone was made */
   activatedOn: string;
   /** When the zone was created. */
@@ -4177,7 +3873,7 @@ export interface ListResultItem {
   /** The interval (in seconds) from when development mode expires */
   developmentMode: number;
   /** Metadata about the zone. */
-  meta: ListResultItemMeta;
+  meta: CreateResponseMeta;
   /** When the zone was last modified. */
   modifiedOn: string;
   /** The domain name. Per [RFC 1035](https://datatracker.ietf.org/doc/html/rfc1035#section-2.3.4) the overall zone name can be up to 253 characters, with each segment ("label") not exceeding 63 characters. */
@@ -4191,9 +3887,9 @@ export interface ListResultItem {
   /** Registrar for the domain at the time of switching to Cloudflare. */
   originalRegistrar: string;
   /** The owner of the zone. */
-  owner: ListResultItemOwner;
+  owner: CreateResponseOwner;
   /** A Zones subscription information. */
-  plan: ListResultItemPlan;
+  plan: CreateResponsePlan;
   /** Allows the customer to use a custom apex. */
   cnameSuffix?: string | null;
   /** Indicates whether the zone is only using Cloudflare DNS services. A */
@@ -4203,9 +3899,9 @@ export interface ListResultItem {
   /** The zone status on Cloudflare. */
   status?: ListResultItemStatus | null;
   /** The root organizational unit that this zone belongs to (such as a tenant or organization). */
-  tenant?: ListResultItemTenant | null;
+  tenant?: CreateResponseTenant | null;
   /** The immediate parent organizational unit that this zone belongs to (such as under a tenant or sub-organization). */
-  tenantUnit?: ListResultItemTenantUnit | null;
+  tenantUnit?: CreateResponseTenantUnit | null;
   /** A full zone implies that DNS is hosted with Cloudflare. A partial zone is */
   type?: ListResultItemType | null;
   /** An array of domains used for custom name servers. This is only available for Business and Enterprise plans. */
@@ -4216,11 +3912,11 @@ export interface ListResultItem {
 export const ListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
-    account: ListResultItemAccount,
+    account: CreateResponseAccount,
     activatedOn: S.String.pipe(T.Body("activated_on")),
     createdOn: S.String.pipe(T.Body("created_on")),
     developmentMode: S.Number.pipe(T.Body("development_mode")),
-    meta: ListResultItemMeta,
+    meta: CreateResponseMeta,
     modifiedOn: S.String.pipe(T.Body("modified_on")),
     name: S.String,
     nameServers: ListResultItemNameServersList.pipe(T.Body("name_servers")),
@@ -4229,15 +3925,15 @@ export const ListResultItem = /*@__PURE__*/ S.suspend(() =>
       T.Body("original_name_servers"),
     ),
     originalRegistrar: S.String.pipe(T.Body("original_registrar")),
-    owner: ListResultItemOwner,
-    plan: ListResultItemPlan,
+    owner: CreateResponseOwner,
+    plan: CreateResponsePlan,
     cnameSuffix: S.optional(S.NullOr(S.String).pipe(T.Body("cname_suffix"))),
     paused: S.optional(S.NullOr(S.Boolean)),
     permissions: S.optional(S.NullOr(ListResultItemPermissionsList)),
     status: S.optional(S.NullOr(ListResultItemStatus)),
-    tenant: S.optional(S.NullOr(ListResultItemTenant)),
+    tenant: S.optional(S.NullOr(CreateResponseTenant)),
     tenantUnit: S.optional(
-      S.NullOr(ListResultItemTenantUnit).pipe(T.Body("tenant_unit")),
+      S.NullOr(CreateResponseTenantUnit).pipe(T.Body("tenant_unit")),
     ),
     type: S.optional(S.NullOr(ListResultItemType)),
     vanityNameServers: S.optional(
@@ -4323,50 +4019,20 @@ export const PatchCtAlertingResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchCtAlertingResponse",
 }) as any as S.Schema<PatchCtAlertingResponse>;
 
-export interface EnvironmentsEditRequestEnvironmentsItemPosition {
-  after?: string;
-  before?: string;
-}
+export type EnvironmentsEditRequestEnvironmentsItemPosition =
+  EnvironmentsCreateRequestEnvironmentsItemPosition;
 export const EnvironmentsEditRequestEnvironmentsItemPosition =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      after: S.optional(S.String),
-      before: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "EnvironmentsEditRequestEnvironmentsItemPosition",
-  }) as any as S.Schema<EnvironmentsEditRequestEnvironmentsItemPosition>;
+  EnvironmentsCreateRequestEnvironmentsItemPosition;
 
-export interface EnvironmentsEditRequestEnvironmentsItem {
-  expression: string;
-  lockedOnDeployment: boolean;
-  name: string;
-  position: EnvironmentsEditRequestEnvironmentsItemPosition;
-  ref: string;
-  version: number;
-  httpApplicationId?: string;
-}
-export const EnvironmentsEditRequestEnvironmentsItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      expression: S.String,
-      lockedOnDeployment: S.Boolean.pipe(T.Body("locked_on_deployment")),
-      name: S.String,
-      position: EnvironmentsEditRequestEnvironmentsItemPosition,
-      ref: S.String,
-      version: S.Number,
-      httpApplicationId: S.optional(
-        S.String.pipe(T.Body("http_application_id")),
-      ),
-    }),
-).annotate({
-  identifier: "EnvironmentsEditRequestEnvironmentsItem",
-}) as any as S.Schema<EnvironmentsEditRequestEnvironmentsItem>;
+export type EnvironmentsEditRequestEnvironmentsItem =
+  EnvironmentsCreateRequestEnvironmentsItem;
+export const EnvironmentsEditRequestEnvironmentsItem =
+  EnvironmentsCreateRequestEnvironmentsItem;
 
 export type EnvironmentsEditRequestEnvironmentsList =
-  Array<EnvironmentsEditRequestEnvironmentsItem>;
+  Array<EnvironmentsCreateRequestEnvironmentsItem>;
 export const EnvironmentsEditRequestEnvironmentsList = /*@__PURE__*/ S.Array(
-  EnvironmentsEditRequestEnvironmentsItem,
+  EnvironmentsCreateRequestEnvironmentsItem,
 ) as any as S.Schema<EnvironmentsEditRequestEnvironmentsList>;
 
 export interface PatchEnvironmentRequest {
@@ -4390,50 +4056,20 @@ export const PatchEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchEnvironmentRequest",
 }) as any as S.Schema<PatchEnvironmentRequest>;
 
-export interface EnvironmentsEditResponseEnvironmentsItemPosition {
-  after?: string | null;
-  before?: string | null;
-}
+export type EnvironmentsEditResponseEnvironmentsItemPosition =
+  EnvironmentsCreateResponseEnvironmentsItemPosition;
 export const EnvironmentsEditResponseEnvironmentsItemPosition =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      after: S.optional(S.NullOr(S.String)),
-      before: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier: "EnvironmentsEditResponseEnvironmentsItemPosition",
-  }) as any as S.Schema<EnvironmentsEditResponseEnvironmentsItemPosition>;
+  EnvironmentsCreateResponseEnvironmentsItemPosition;
 
-export interface EnvironmentsEditResponseEnvironmentsItem {
-  expression: string;
-  lockedOnDeployment: boolean;
-  name: string;
-  position: EnvironmentsEditResponseEnvironmentsItemPosition;
-  ref: string;
-  version: number;
-  httpApplicationId?: string | null;
-}
-export const EnvironmentsEditResponseEnvironmentsItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      expression: S.String,
-      lockedOnDeployment: S.Boolean.pipe(T.Body("locked_on_deployment")),
-      name: S.String,
-      position: EnvironmentsEditResponseEnvironmentsItemPosition,
-      ref: S.String,
-      version: S.Number,
-      httpApplicationId: S.optional(
-        S.NullOr(S.String).pipe(T.Body("http_application_id")),
-      ),
-    }),
-).annotate({
-  identifier: "EnvironmentsEditResponseEnvironmentsItem",
-}) as any as S.Schema<EnvironmentsEditResponseEnvironmentsItem>;
+export type EnvironmentsEditResponseEnvironmentsItem =
+  EnvironmentsCreateResponseEnvironmentsItem;
+export const EnvironmentsEditResponseEnvironmentsItem =
+  EnvironmentsCreateResponseEnvironmentsItem;
 
 export type EnvironmentsEditResponseEnvironmentsList =
-  Array<EnvironmentsEditResponseEnvironmentsItem>;
+  Array<EnvironmentsCreateResponseEnvironmentsItem>;
 export const EnvironmentsEditResponseEnvironmentsList = /*@__PURE__*/ S.Array(
-  EnvironmentsEditResponseEnvironmentsItem,
+  EnvironmentsCreateResponseEnvironmentsItem,
 ) as any as S.Schema<EnvironmentsEditResponseEnvironmentsList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -4572,21 +4208,10 @@ export const SettingsEditResultAdvancedDDoS = /*@__PURE__*/ S.suspend(() =>
 export type SettingsEditResultZonesCacheRulesAegisId = "aegis";
 export const SettingsEditResultZonesCacheRulesAegisId = /*@__PURE__*/ S.String;
 
-export interface SettingsEditResultZonesCacheRulesAegisValue {
-  /** Whether the feature is enabled or not. */
-  enabled?: boolean | null;
-  /** Egress pool id which refers to a grouping of dedicated egress IPs through which Cloudflare will connect to origin. */
-  poolId?: string | null;
-}
+export type SettingsEditResultZonesCacheRulesAegisValue =
+  SettingsGetResultZonesCacheRulesAegisValue;
 export const SettingsEditResultZonesCacheRulesAegisValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      enabled: S.optional(S.NullOr(S.Boolean)),
-      poolId: S.optional(S.NullOr(S.String).pipe(T.Body("pool_id"))),
-    }),
-  ).annotate({
-    identifier: "SettingsEditResultZonesCacheRulesAegisValue",
-  }) as any as S.Schema<SettingsEditResultZonesCacheRulesAegisValue>;
+  SettingsGetResultZonesCacheRulesAegisValue;
 
 export interface SettingsEditResultZonesCacheRulesAegis {
   /** ID of the zone setting. */
@@ -4594,14 +4219,14 @@ export interface SettingsEditResultZonesCacheRulesAegis {
   /** Last time this setting was modified. */
   modifiedOn?: string | null;
   /** Value of the zone setting. */
-  value?: SettingsEditResultZonesCacheRulesAegisValue | null;
+  value?: SettingsGetResultZonesCacheRulesAegisValue | null;
 }
 export const SettingsEditResultZonesCacheRulesAegis = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       id: SettingsEditResultZonesCacheRulesAegisId,
       modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-      value: S.optional(S.NullOr(SettingsEditResultZonesCacheRulesAegisValue)),
+      value: S.optional(S.NullOr(SettingsGetResultZonesCacheRulesAegisValue)),
     }),
 ).annotate({
   identifier: "SettingsEditResultZonesCacheRulesAegis",
@@ -5415,22 +5040,14 @@ export const SettingsEditResultZonesSchemasMirage = /*@__PURE__*/ S.suspend(
 export type SettingsEditResultNELId = "nel";
 export const SettingsEditResultNELId = /*@__PURE__*/ S.String;
 
-export interface SettingsEditResultNELValue {
-  enabled?: boolean | null;
-}
-export const SettingsEditResultNELValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.NullOr(S.Boolean)),
-  }),
-).annotate({
-  identifier: "SettingsEditResultNELValue",
-}) as any as S.Schema<SettingsEditResultNELValue>;
+export type SettingsEditResultNELValue = SettingsGetResultNELValue;
+export const SettingsEditResultNELValue = SettingsGetResultNELValue;
 
 export interface SettingsEditResultNEL {
   /** Zone setting identifier. */
   id: SettingsEditResultNELId;
   /** Current value of the zone setting. */
-  value: SettingsEditResultNELValue;
+  value: SettingsGetResultNELValue;
   /** Whether or not this setting can be modified for this zone (based on your Cloudflare plan level). */
   editable?: boolean | null;
   /** last time this setting was modified. */
@@ -5439,7 +5056,7 @@ export interface SettingsEditResultNEL {
 export const SettingsEditResultNEL = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: SettingsEditResultNELId,
-    value: SettingsEditResultNELValue,
+    value: SettingsGetResultNELValue,
     editable: S.optional(S.NullOr(S.Boolean)),
     modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
   }),
@@ -5981,55 +5598,21 @@ export const SettingsEditResultZonesSearchForAgents = /*@__PURE__*/ S.suspend(
 export type SettingsEditResultSecurityHeadersId = "security_header";
 export const SettingsEditResultSecurityHeadersId = /*@__PURE__*/ S.String;
 
-export interface SettingsEditResultSecurityHeadersValueStrictTransportSecurity {
-  /** Whether or not strict transport security is enabled. */
-  enabled?: boolean | null;
-  /** Include all subdomains for strict transport security. */
-  includeSubdomains?: boolean | null;
-  /** Max age in seconds of the strict transport security. */
-  maxAge?: number | null;
-  /** Whether or not to include 'X-Content-Type-Options: nosniff' header. */
-  nosniff?: boolean | null;
-  /** Enable automatic preload of the HSTS configuration. */
-  preload?: boolean | null;
-}
+export type SettingsEditResultSecurityHeadersValueStrictTransportSecurity =
+  SettingsGetResultSecurityHeadersValueStrictTransportSecurity;
 export const SettingsEditResultSecurityHeadersValueStrictTransportSecurity =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      enabled: S.optional(S.NullOr(S.Boolean)),
-      includeSubdomains: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("include_subdomains")),
-      ),
-      maxAge: S.optional(S.NullOr(S.Number).pipe(T.Body("max_age"))),
-      nosniff: S.optional(S.NullOr(S.Boolean)),
-      preload: S.optional(S.NullOr(S.Boolean)),
-    }),
-  ).annotate({
-    identifier: "SettingsEditResultSecurityHeadersValueStrictTransportSecurity",
-  }) as any as S.Schema<SettingsEditResultSecurityHeadersValueStrictTransportSecurity>;
+  SettingsGetResultSecurityHeadersValueStrictTransportSecurity;
 
-export interface SettingsEditResultSecurityHeadersValue {
-  /** Strict Transport Security. */
-  strictTransportSecurity?: SettingsEditResultSecurityHeadersValueStrictTransportSecurity | null;
-}
-export const SettingsEditResultSecurityHeadersValue = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      strictTransportSecurity: S.optional(
-        S.NullOr(
-          SettingsEditResultSecurityHeadersValueStrictTransportSecurity,
-        ).pipe(T.Body("strict_transport_security")),
-      ),
-    }),
-).annotate({
-  identifier: "SettingsEditResultSecurityHeadersValue",
-}) as any as S.Schema<SettingsEditResultSecurityHeadersValue>;
+export type SettingsEditResultSecurityHeadersValue =
+  SettingsGetResultSecurityHeadersValue;
+export const SettingsEditResultSecurityHeadersValue =
+  SettingsGetResultSecurityHeadersValue;
 
 export interface SettingsEditResultSecurityHeaders {
   /** ID of the zone's security header. */
   id: SettingsEditResultSecurityHeadersId;
   /** Current value of the zone setting. */
-  value: SettingsEditResultSecurityHeadersValue;
+  value: SettingsGetResultSecurityHeadersValue;
   /** Whether or not this setting can be modified for this zone (based on your Cloudflare plan level). */
   editable?: boolean | null;
   /** last time this setting was modified. */
@@ -6038,7 +5621,7 @@ export interface SettingsEditResultSecurityHeaders {
 export const SettingsEditResultSecurityHeaders = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: SettingsEditResultSecurityHeadersId,
-    value: SettingsEditResultSecurityHeadersValue,
+    value: SettingsGetResultSecurityHeadersValue,
     editable: S.optional(S.NullOr(S.Boolean)),
     modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
   }),
@@ -6645,57 +6228,11 @@ export const PatchZoneRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchZoneRequest",
 }) as any as S.Schema<PatchZoneRequest>;
 
-export interface EditResponseAccount {
-  /** Identifier */
-  id?: string | null;
-  /** The name of the account. */
-  name?: string | null;
-}
-export const EditResponseAccount = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-    name: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "EditResponseAccount",
-}) as any as S.Schema<EditResponseAccount>;
+export type EditResponseAccount = CreateResponseAccount;
+export const EditResponseAccount = CreateResponseAccount;
 
-export interface EditResponseMeta {
-  /** The zone is only configured for CDN. */
-  cdnOnly?: boolean | null;
-  /** Number of Custom Certificates the zone can have. */
-  customCertificateQuota?: number | null;
-  /** The zone is only configured for DNS. */
-  dnsOnly?: boolean | null;
-  /** The zone is setup with Foundation DNS. */
-  foundationDns?: boolean | null;
-  /** Number of Page Rules a zone can have. */
-  pageRuleQuota?: number | null;
-  /** The zone has been flagged for phishing. */
-  phishingDetected?: boolean | null;
-  step?: number | null;
-}
-export const EditResponseMeta = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cdnOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cdn_only"))),
-    customCertificateQuota: S.optional(
-      S.NullOr(S.Number).pipe(T.Body("custom_certificate_quota")),
-    ),
-    dnsOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("dns_only"))),
-    foundationDns: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("foundation_dns")),
-    ),
-    pageRuleQuota: S.optional(
-      S.NullOr(S.Number).pipe(T.Body("page_rule_quota")),
-    ),
-    phishingDetected: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("phishing_detected")),
-    ),
-    step: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({
-  identifier: "EditResponseMeta",
-}) as any as S.Schema<EditResponseMeta>;
+export type EditResponseMeta = CreateResponseMeta;
+export const EditResponseMeta = CreateResponseMeta;
 
 export type EditResponseNameServersList = Array<string>;
 export const EditResponseNameServersList = /*@__PURE__*/ S.Array(
@@ -6707,66 +6244,11 @@ export const EditResponseOriginalNameServersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<EditResponseOriginalNameServersList>;
 
-export interface EditResponseOwner {
-  /** Identifier */
-  id?: string | null;
-  /** Name of the owner. */
-  name?: string | null;
-  /** The type of owner. */
-  type?: string | null;
-}
-export const EditResponseOwner = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-    name: S.optional(S.NullOr(S.String)),
-    type: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "EditResponseOwner",
-}) as any as S.Schema<EditResponseOwner>;
+export type EditResponseOwner = CreateResponseOwner;
+export const EditResponseOwner = CreateResponseOwner;
 
-export interface EditResponsePlan {
-  /** Identifier */
-  id?: string | null;
-  /** States if the subscription can be activated. */
-  canSubscribe?: boolean | null;
-  /** The denomination of the customer. */
-  currency?: string | null;
-  /** If this Zone is managed by another company. */
-  externallyManaged?: boolean | null;
-  /** How often the customer is billed. */
-  frequency?: string | null;
-  /** States if the subscription active. */
-  isSubscribed?: boolean | null;
-  /** If the legacy discount applies to this Zone. */
-  legacyDiscount?: boolean | null;
-  /** The legacy name of the plan. */
-  legacyId?: string | null;
-  /** Name of the owner. */
-  name?: string | null;
-  /** How much the customer is paying. */
-  price?: number | null;
-}
-export const EditResponsePlan = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-    canSubscribe: S.optional(S.NullOr(S.Boolean).pipe(T.Body("can_subscribe"))),
-    currency: S.optional(S.NullOr(S.String)),
-    externallyManaged: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("externally_managed")),
-    ),
-    frequency: S.optional(S.NullOr(S.String)),
-    isSubscribed: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_subscribed"))),
-    legacyDiscount: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("legacy_discount")),
-    ),
-    legacyId: S.optional(S.NullOr(S.String).pipe(T.Body("legacy_id"))),
-    name: S.optional(S.NullOr(S.String)),
-    price: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({
-  identifier: "EditResponsePlan",
-}) as any as S.Schema<EditResponsePlan>;
+export type EditResponsePlan = CreateResponsePlan;
+export const EditResponsePlan = CreateResponsePlan;
 
 export type EditResponsePermissionsList = Array<string>;
 export const EditResponsePermissionsList = /*@__PURE__*/ S.Array(
@@ -6780,32 +6262,11 @@ export type EditResponseStatus =
   | "moved";
 export const EditResponseStatus = /*@__PURE__*/ S.String;
 
-export interface EditResponseTenant {
-  /** Identifier */
-  id?: string | null;
-  /** The name of the Tenant account. */
-  name?: string | null;
-}
-export const EditResponseTenant = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-    name: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "EditResponseTenant",
-}) as any as S.Schema<EditResponseTenant>;
+export type EditResponseTenant = CreateResponseTenant;
+export const EditResponseTenant = CreateResponseTenant;
 
-export interface EditResponseTenantUnit {
-  /** Identifier */
-  id?: string | null;
-}
-export const EditResponseTenantUnit = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "EditResponseTenantUnit",
-}) as any as S.Schema<EditResponseTenantUnit>;
+export type EditResponseTenantUnit = CreateResponseTenantUnit;
+export const EditResponseTenantUnit = CreateResponseTenantUnit;
 
 export type EditResponseType = "full" | "partial" | "secondary" | "internal";
 export const EditResponseType = /*@__PURE__*/ S.String;
@@ -6820,7 +6281,7 @@ export interface PatchZoneResponse {
   /** Identifier */
   id: string;
   /** The account the zone belongs to. */
-  account: EditResponseAccount;
+  account: CreateResponseAccount;
   /** The last time proof of ownership was detected and the zone was made */
   activatedOn: string;
   /** When the zone was created. */
@@ -6828,7 +6289,7 @@ export interface PatchZoneResponse {
   /** The interval (in seconds) from when development mode expires */
   developmentMode: number;
   /** Metadata about the zone. */
-  meta: EditResponseMeta;
+  meta: CreateResponseMeta;
   /** When the zone was last modified. */
   modifiedOn: string;
   /** The domain name. Per [RFC 1035](https://datatracker.ietf.org/doc/html/rfc1035#section-2.3.4) the overall zone name can be up to 253 characters, with each segment ("label") not exceeding 63 characters. */
@@ -6842,9 +6303,9 @@ export interface PatchZoneResponse {
   /** Registrar for the domain at the time of switching to Cloudflare. */
   originalRegistrar: string;
   /** The owner of the zone. */
-  owner: EditResponseOwner;
+  owner: CreateResponseOwner;
   /** A Zones subscription information. */
-  plan: EditResponsePlan;
+  plan: CreateResponsePlan;
   /** Allows the customer to use a custom apex. */
   cnameSuffix?: string | null;
   /** Indicates whether the zone is only using Cloudflare DNS services. A */
@@ -6854,9 +6315,9 @@ export interface PatchZoneResponse {
   /** The zone status on Cloudflare. */
   status?: EditResponseStatus | null;
   /** The root organizational unit that this zone belongs to (such as a tenant or organization). */
-  tenant?: EditResponseTenant | null;
+  tenant?: CreateResponseTenant | null;
   /** The immediate parent organizational unit that this zone belongs to (such as under a tenant or sub-organization). */
-  tenantUnit?: EditResponseTenantUnit | null;
+  tenantUnit?: CreateResponseTenantUnit | null;
   /** A full zone implies that DNS is hosted with Cloudflare. A partial zone is */
   type?: EditResponseType | null;
   /** An array of domains used for custom name servers. This is only available for Business and Enterprise plans. */
@@ -6867,11 +6328,11 @@ export interface PatchZoneResponse {
 export const PatchZoneResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
-    account: EditResponseAccount,
+    account: CreateResponseAccount,
     activatedOn: S.String.pipe(T.Body("activated_on")),
     createdOn: S.String.pipe(T.Body("created_on")),
     developmentMode: S.Number.pipe(T.Body("development_mode")),
-    meta: EditResponseMeta,
+    meta: CreateResponseMeta,
     modifiedOn: S.String.pipe(T.Body("modified_on")),
     name: S.String,
     nameServers: EditResponseNameServersList.pipe(T.Body("name_servers")),
@@ -6880,15 +6341,15 @@ export const PatchZoneResponse = /*@__PURE__*/ S.suspend(() =>
       T.Body("original_name_servers"),
     ),
     originalRegistrar: S.String.pipe(T.Body("original_registrar")),
-    owner: EditResponseOwner,
-    plan: EditResponsePlan,
+    owner: CreateResponseOwner,
+    plan: CreateResponsePlan,
     cnameSuffix: S.optional(S.NullOr(S.String).pipe(T.Body("cname_suffix"))),
     paused: S.optional(S.NullOr(S.Boolean)),
     permissions: S.optional(S.NullOr(EditResponsePermissionsList)),
     status: S.optional(S.NullOr(EditResponseStatus)),
-    tenant: S.optional(S.NullOr(EditResponseTenant)),
+    tenant: S.optional(S.NullOr(CreateResponseTenant)),
     tenantUnit: S.optional(
-      S.NullOr(EditResponseTenantUnit).pipe(T.Body("tenant_unit")),
+      S.NullOr(CreateResponseTenantUnit).pipe(T.Body("tenant_unit")),
     ),
     type: S.optional(S.NullOr(EditResponseType)),
     vanityNameServers: S.optional(
@@ -6967,51 +6428,21 @@ export const RollbackEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "RollbackEnvironmentRequest",
 }) as any as S.Schema<RollbackEnvironmentRequest>;
 
-export interface EnvironmentsRollbackResponseEnvironmentsItemPosition {
-  after?: string | null;
-  before?: string | null;
-}
+export type EnvironmentsRollbackResponseEnvironmentsItemPosition =
+  EnvironmentsCreateResponseEnvironmentsItemPosition;
 export const EnvironmentsRollbackResponseEnvironmentsItemPosition =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      after: S.optional(S.NullOr(S.String)),
-      before: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier: "EnvironmentsRollbackResponseEnvironmentsItemPosition",
-  }) as any as S.Schema<EnvironmentsRollbackResponseEnvironmentsItemPosition>;
+  EnvironmentsCreateResponseEnvironmentsItemPosition;
 
-export interface EnvironmentsRollbackResponseEnvironmentsItem {
-  expression: string;
-  lockedOnDeployment: boolean;
-  name: string;
-  position: EnvironmentsRollbackResponseEnvironmentsItemPosition;
-  ref: string;
-  version: number;
-  httpApplicationId?: string | null;
-}
+export type EnvironmentsRollbackResponseEnvironmentsItem =
+  EnvironmentsCreateResponseEnvironmentsItem;
 export const EnvironmentsRollbackResponseEnvironmentsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      expression: S.String,
-      lockedOnDeployment: S.Boolean.pipe(T.Body("locked_on_deployment")),
-      name: S.String,
-      position: EnvironmentsRollbackResponseEnvironmentsItemPosition,
-      ref: S.String,
-      version: S.Number,
-      httpApplicationId: S.optional(
-        S.NullOr(S.String).pipe(T.Body("http_application_id")),
-      ),
-    }),
-  ).annotate({
-    identifier: "EnvironmentsRollbackResponseEnvironmentsItem",
-  }) as any as S.Schema<EnvironmentsRollbackResponseEnvironmentsItem>;
+  EnvironmentsCreateResponseEnvironmentsItem;
 
 export type EnvironmentsRollbackResponseEnvironmentsList =
-  Array<EnvironmentsRollbackResponseEnvironmentsItem>;
+  Array<EnvironmentsCreateResponseEnvironmentsItem>;
 export const EnvironmentsRollbackResponseEnvironmentsList =
   /*@__PURE__*/ S.Array(
-    EnvironmentsRollbackResponseEnvironmentsItem,
+    EnvironmentsCreateResponseEnvironmentsItem,
   ) as any as S.Schema<EnvironmentsRollbackResponseEnvironmentsList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -9295,21 +8726,10 @@ export type SettingsBulkEditResultItemZonesCacheRulesAegisId = "aegis";
 export const SettingsBulkEditResultItemZonesCacheRulesAegisId =
   /*@__PURE__*/ S.String;
 
-export interface SettingsBulkEditResultItemZonesCacheRulesAegisValue {
-  /** Whether the feature is enabled or not. */
-  enabled?: boolean | null;
-  /** Egress pool id which refers to a grouping of dedicated egress IPs through which Cloudflare will connect to origin. */
-  poolId?: string | null;
-}
+export type SettingsBulkEditResultItemZonesCacheRulesAegisValue =
+  SettingsGetResultZonesCacheRulesAegisValue;
 export const SettingsBulkEditResultItemZonesCacheRulesAegisValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      enabled: S.optional(S.NullOr(S.Boolean)),
-      poolId: S.optional(S.NullOr(S.String).pipe(T.Body("pool_id"))),
-    }),
-  ).annotate({
-    identifier: "SettingsBulkEditResultItemZonesCacheRulesAegisValue",
-  }) as any as S.Schema<SettingsBulkEditResultItemZonesCacheRulesAegisValue>;
+  SettingsGetResultZonesCacheRulesAegisValue;
 
 export interface SettingsBulkEditResultItemZonesCacheRulesAegis {
   /** ID of the zone setting. */
@@ -9317,16 +8737,14 @@ export interface SettingsBulkEditResultItemZonesCacheRulesAegis {
   /** Last time this setting was modified. */
   modifiedOn?: string | null;
   /** Value of the zone setting. */
-  value?: SettingsBulkEditResultItemZonesCacheRulesAegisValue | null;
+  value?: SettingsGetResultZonesCacheRulesAegisValue | null;
 }
 export const SettingsBulkEditResultItemZonesCacheRulesAegis =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       id: SettingsBulkEditResultItemZonesCacheRulesAegisId,
       modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-      value: S.optional(
-        S.NullOr(SettingsBulkEditResultItemZonesCacheRulesAegisValue),
-      ),
+      value: S.optional(S.NullOr(SettingsGetResultZonesCacheRulesAegisValue)),
     }),
   ).annotate({
     identifier: "SettingsBulkEditResultItemZonesCacheRulesAegis",
@@ -10155,22 +9573,14 @@ export const SettingsBulkEditResultItemZonesSchemasMirage =
 export type SettingsBulkEditResultItemNELId = "nel";
 export const SettingsBulkEditResultItemNELId = /*@__PURE__*/ S.String;
 
-export interface SettingsBulkEditResultItemNELValue {
-  enabled?: boolean | null;
-}
-export const SettingsBulkEditResultItemNELValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.NullOr(S.Boolean)),
-  }),
-).annotate({
-  identifier: "SettingsBulkEditResultItemNELValue",
-}) as any as S.Schema<SettingsBulkEditResultItemNELValue>;
+export type SettingsBulkEditResultItemNELValue = SettingsGetResultNELValue;
+export const SettingsBulkEditResultItemNELValue = SettingsGetResultNELValue;
 
 export interface SettingsBulkEditResultItemNEL {
   /** Zone setting identifier. */
   id: SettingsBulkEditResultItemNELId;
   /** Current value of the zone setting. */
-  value: SettingsBulkEditResultItemNELValue;
+  value: SettingsGetResultNELValue;
   /** Whether or not this setting can be modified for this zone (based on your Cloudflare plan level). */
   editable?: boolean | null;
   /** last time this setting was modified. */
@@ -10179,7 +9589,7 @@ export interface SettingsBulkEditResultItemNEL {
 export const SettingsBulkEditResultItemNEL = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: SettingsBulkEditResultItemNELId,
-    value: SettingsBulkEditResultItemNELValue,
+    value: SettingsGetResultNELValue,
     editable: S.optional(S.NullOr(S.Boolean)),
     modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
   }),
@@ -10752,56 +10162,21 @@ export type SettingsBulkEditResultItemSecurityHeadersId = "security_header";
 export const SettingsBulkEditResultItemSecurityHeadersId =
   /*@__PURE__*/ S.String;
 
-export interface SettingsBulkEditResultItemSecurityHeadersValueStrictTransportSecurity {
-  /** Whether or not strict transport security is enabled. */
-  enabled?: boolean | null;
-  /** Include all subdomains for strict transport security. */
-  includeSubdomains?: boolean | null;
-  /** Max age in seconds of the strict transport security. */
-  maxAge?: number | null;
-  /** Whether or not to include 'X-Content-Type-Options: nosniff' header. */
-  nosniff?: boolean | null;
-  /** Enable automatic preload of the HSTS configuration. */
-  preload?: boolean | null;
-}
+export type SettingsBulkEditResultItemSecurityHeadersValueStrictTransportSecurity =
+  SettingsGetResultSecurityHeadersValueStrictTransportSecurity;
 export const SettingsBulkEditResultItemSecurityHeadersValueStrictTransportSecurity =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      enabled: S.optional(S.NullOr(S.Boolean)),
-      includeSubdomains: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("include_subdomains")),
-      ),
-      maxAge: S.optional(S.NullOr(S.Number).pipe(T.Body("max_age"))),
-      nosniff: S.optional(S.NullOr(S.Boolean)),
-      preload: S.optional(S.NullOr(S.Boolean)),
-    }),
-  ).annotate({
-    identifier:
-      "SettingsBulkEditResultItemSecurityHeadersValueStrictTransportSecurity",
-  }) as any as S.Schema<SettingsBulkEditResultItemSecurityHeadersValueStrictTransportSecurity>;
+  SettingsGetResultSecurityHeadersValueStrictTransportSecurity;
 
-export interface SettingsBulkEditResultItemSecurityHeadersValue {
-  /** Strict Transport Security. */
-  strictTransportSecurity?: SettingsBulkEditResultItemSecurityHeadersValueStrictTransportSecurity | null;
-}
+export type SettingsBulkEditResultItemSecurityHeadersValue =
+  SettingsGetResultSecurityHeadersValue;
 export const SettingsBulkEditResultItemSecurityHeadersValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      strictTransportSecurity: S.optional(
-        S.NullOr(
-          SettingsBulkEditResultItemSecurityHeadersValueStrictTransportSecurity,
-        ).pipe(T.Body("strict_transport_security")),
-      ),
-    }),
-  ).annotate({
-    identifier: "SettingsBulkEditResultItemSecurityHeadersValue",
-  }) as any as S.Schema<SettingsBulkEditResultItemSecurityHeadersValue>;
+  SettingsGetResultSecurityHeadersValue;
 
 export interface SettingsBulkEditResultItemSecurityHeaders {
   /** ID of the zone's security header. */
   id: SettingsBulkEditResultItemSecurityHeadersId;
   /** Current value of the zone setting. */
-  value: SettingsBulkEditResultItemSecurityHeadersValue;
+  value: SettingsGetResultSecurityHeadersValue;
   /** Whether or not this setting can be modified for this zone (based on your Cloudflare plan level). */
   editable?: boolean | null;
   /** last time this setting was modified. */
@@ -10811,7 +10186,7 @@ export const SettingsBulkEditResultItemSecurityHeaders =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       id: SettingsBulkEditResultItemSecurityHeadersId,
-      value: SettingsBulkEditResultItemSecurityHeadersValue,
+      value: SettingsGetResultSecurityHeadersValue,
       editable: S.optional(S.NullOr(S.Boolean)),
       modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
     }),
@@ -11486,21 +10861,10 @@ export type SettingsListResultItemZonesCacheRulesAegisId = "aegis";
 export const SettingsListResultItemZonesCacheRulesAegisId =
   /*@__PURE__*/ S.String;
 
-export interface SettingsListResultItemZonesCacheRulesAegisValue {
-  /** Whether the feature is enabled or not. */
-  enabled?: boolean | null;
-  /** Egress pool id which refers to a grouping of dedicated egress IPs through which Cloudflare will connect to origin. */
-  poolId?: string | null;
-}
+export type SettingsListResultItemZonesCacheRulesAegisValue =
+  SettingsGetResultZonesCacheRulesAegisValue;
 export const SettingsListResultItemZonesCacheRulesAegisValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      enabled: S.optional(S.NullOr(S.Boolean)),
-      poolId: S.optional(S.NullOr(S.String).pipe(T.Body("pool_id"))),
-    }),
-  ).annotate({
-    identifier: "SettingsListResultItemZonesCacheRulesAegisValue",
-  }) as any as S.Schema<SettingsListResultItemZonesCacheRulesAegisValue>;
+  SettingsGetResultZonesCacheRulesAegisValue;
 
 export interface SettingsListResultItemZonesCacheRulesAegis {
   /** ID of the zone setting. */
@@ -11508,16 +10872,14 @@ export interface SettingsListResultItemZonesCacheRulesAegis {
   /** Last time this setting was modified. */
   modifiedOn?: string | null;
   /** Value of the zone setting. */
-  value?: SettingsListResultItemZonesCacheRulesAegisValue | null;
+  value?: SettingsGetResultZonesCacheRulesAegisValue | null;
 }
 export const SettingsListResultItemZonesCacheRulesAegis =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       id: SettingsListResultItemZonesCacheRulesAegisId,
       modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-      value: S.optional(
-        S.NullOr(SettingsListResultItemZonesCacheRulesAegisValue),
-      ),
+      value: S.optional(S.NullOr(SettingsGetResultZonesCacheRulesAegisValue)),
     }),
   ).annotate({
     identifier: "SettingsListResultItemZonesCacheRulesAegis",
@@ -12320,22 +11682,14 @@ export const SettingsListResultItemZonesSchemasMirage = /*@__PURE__*/ S.suspend(
 export type SettingsListResultItemNELId = "nel";
 export const SettingsListResultItemNELId = /*@__PURE__*/ S.String;
 
-export interface SettingsListResultItemNELValue {
-  enabled?: boolean | null;
-}
-export const SettingsListResultItemNELValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.NullOr(S.Boolean)),
-  }),
-).annotate({
-  identifier: "SettingsListResultItemNELValue",
-}) as any as S.Schema<SettingsListResultItemNELValue>;
+export type SettingsListResultItemNELValue = SettingsGetResultNELValue;
+export const SettingsListResultItemNELValue = SettingsGetResultNELValue;
 
 export interface SettingsListResultItemNEL {
   /** Zone setting identifier. */
   id: SettingsListResultItemNELId;
   /** Current value of the zone setting. */
-  value: SettingsListResultItemNELValue;
+  value: SettingsGetResultNELValue;
   /** Whether or not this setting can be modified for this zone (based on your Cloudflare plan level). */
   editable?: boolean | null;
   /** last time this setting was modified. */
@@ -12344,7 +11698,7 @@ export interface SettingsListResultItemNEL {
 export const SettingsListResultItemNEL = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: SettingsListResultItemNELId,
-    value: SettingsListResultItemNELValue,
+    value: SettingsGetResultNELValue,
     editable: S.optional(S.NullOr(S.Boolean)),
     modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
   }),
@@ -12906,56 +12260,21 @@ export const SettingsListResultItemZonesSearchForAgents =
 export type SettingsListResultItemSecurityHeadersId = "security_header";
 export const SettingsListResultItemSecurityHeadersId = /*@__PURE__*/ S.String;
 
-export interface SettingsListResultItemSecurityHeadersValueStrictTransportSecurity {
-  /** Whether or not strict transport security is enabled. */
-  enabled?: boolean | null;
-  /** Include all subdomains for strict transport security. */
-  includeSubdomains?: boolean | null;
-  /** Max age in seconds of the strict transport security. */
-  maxAge?: number | null;
-  /** Whether or not to include 'X-Content-Type-Options: nosniff' header. */
-  nosniff?: boolean | null;
-  /** Enable automatic preload of the HSTS configuration. */
-  preload?: boolean | null;
-}
+export type SettingsListResultItemSecurityHeadersValueStrictTransportSecurity =
+  SettingsGetResultSecurityHeadersValueStrictTransportSecurity;
 export const SettingsListResultItemSecurityHeadersValueStrictTransportSecurity =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      enabled: S.optional(S.NullOr(S.Boolean)),
-      includeSubdomains: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("include_subdomains")),
-      ),
-      maxAge: S.optional(S.NullOr(S.Number).pipe(T.Body("max_age"))),
-      nosniff: S.optional(S.NullOr(S.Boolean)),
-      preload: S.optional(S.NullOr(S.Boolean)),
-    }),
-  ).annotate({
-    identifier:
-      "SettingsListResultItemSecurityHeadersValueStrictTransportSecurity",
-  }) as any as S.Schema<SettingsListResultItemSecurityHeadersValueStrictTransportSecurity>;
+  SettingsGetResultSecurityHeadersValueStrictTransportSecurity;
 
-export interface SettingsListResultItemSecurityHeadersValue {
-  /** Strict Transport Security. */
-  strictTransportSecurity?: SettingsListResultItemSecurityHeadersValueStrictTransportSecurity | null;
-}
+export type SettingsListResultItemSecurityHeadersValue =
+  SettingsGetResultSecurityHeadersValue;
 export const SettingsListResultItemSecurityHeadersValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      strictTransportSecurity: S.optional(
-        S.NullOr(
-          SettingsListResultItemSecurityHeadersValueStrictTransportSecurity,
-        ).pipe(T.Body("strict_transport_security")),
-      ),
-    }),
-  ).annotate({
-    identifier: "SettingsListResultItemSecurityHeadersValue",
-  }) as any as S.Schema<SettingsListResultItemSecurityHeadersValue>;
+  SettingsGetResultSecurityHeadersValue;
 
 export interface SettingsListResultItemSecurityHeaders {
   /** ID of the zone's security header. */
   id: SettingsListResultItemSecurityHeadersId;
   /** Current value of the zone setting. */
-  value: SettingsListResultItemSecurityHeadersValue;
+  value: SettingsGetResultSecurityHeadersValue;
   /** Whether or not this setting can be modified for this zone (based on your Cloudflare plan level). */
   editable?: boolean | null;
   /** last time this setting was modified. */
@@ -12965,7 +12284,7 @@ export const SettingsListResultItemSecurityHeaders = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       id: SettingsListResultItemSecurityHeadersId,
-      value: SettingsListResultItemSecurityHeadersValue,
+      value: SettingsGetResultSecurityHeadersValue,
       editable: S.optional(S.NullOr(S.Boolean)),
       modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
     }),
@@ -13590,50 +12909,20 @@ export const TriggerActivationCheckResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "TriggerActivationCheckResponse",
 }) as any as S.Schema<TriggerActivationCheckResponse>;
 
-export interface EnvironmentsUpdateRequestEnvironmentsItemPosition {
-  after?: string;
-  before?: string;
-}
+export type EnvironmentsUpdateRequestEnvironmentsItemPosition =
+  EnvironmentsCreateRequestEnvironmentsItemPosition;
 export const EnvironmentsUpdateRequestEnvironmentsItemPosition =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      after: S.optional(S.String),
-      before: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "EnvironmentsUpdateRequestEnvironmentsItemPosition",
-  }) as any as S.Schema<EnvironmentsUpdateRequestEnvironmentsItemPosition>;
+  EnvironmentsCreateRequestEnvironmentsItemPosition;
 
-export interface EnvironmentsUpdateRequestEnvironmentsItem {
-  expression: string;
-  lockedOnDeployment: boolean;
-  name: string;
-  position: EnvironmentsUpdateRequestEnvironmentsItemPosition;
-  ref: string;
-  version: number;
-  httpApplicationId?: string;
-}
+export type EnvironmentsUpdateRequestEnvironmentsItem =
+  EnvironmentsCreateRequestEnvironmentsItem;
 export const EnvironmentsUpdateRequestEnvironmentsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      expression: S.String,
-      lockedOnDeployment: S.Boolean.pipe(T.Body("locked_on_deployment")),
-      name: S.String,
-      position: EnvironmentsUpdateRequestEnvironmentsItemPosition,
-      ref: S.String,
-      version: S.Number,
-      httpApplicationId: S.optional(
-        S.String.pipe(T.Body("http_application_id")),
-      ),
-    }),
-  ).annotate({
-    identifier: "EnvironmentsUpdateRequestEnvironmentsItem",
-  }) as any as S.Schema<EnvironmentsUpdateRequestEnvironmentsItem>;
+  EnvironmentsCreateRequestEnvironmentsItem;
 
 export type EnvironmentsUpdateRequestEnvironmentsList =
-  Array<EnvironmentsUpdateRequestEnvironmentsItem>;
+  Array<EnvironmentsCreateRequestEnvironmentsItem>;
 export const EnvironmentsUpdateRequestEnvironmentsList = /*@__PURE__*/ S.Array(
-  EnvironmentsUpdateRequestEnvironmentsItem,
+  EnvironmentsCreateRequestEnvironmentsItem,
 ) as any as S.Schema<EnvironmentsUpdateRequestEnvironmentsList>;
 
 export interface UpdateEnvironmentRequest {
@@ -13657,50 +12946,20 @@ export const UpdateEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateEnvironmentRequest",
 }) as any as S.Schema<UpdateEnvironmentRequest>;
 
-export interface EnvironmentsUpdateResponseEnvironmentsItemPosition {
-  after?: string | null;
-  before?: string | null;
-}
+export type EnvironmentsUpdateResponseEnvironmentsItemPosition =
+  EnvironmentsCreateResponseEnvironmentsItemPosition;
 export const EnvironmentsUpdateResponseEnvironmentsItemPosition =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      after: S.optional(S.NullOr(S.String)),
-      before: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier: "EnvironmentsUpdateResponseEnvironmentsItemPosition",
-  }) as any as S.Schema<EnvironmentsUpdateResponseEnvironmentsItemPosition>;
+  EnvironmentsCreateResponseEnvironmentsItemPosition;
 
-export interface EnvironmentsUpdateResponseEnvironmentsItem {
-  expression: string;
-  lockedOnDeployment: boolean;
-  name: string;
-  position: EnvironmentsUpdateResponseEnvironmentsItemPosition;
-  ref: string;
-  version: number;
-  httpApplicationId?: string | null;
-}
+export type EnvironmentsUpdateResponseEnvironmentsItem =
+  EnvironmentsCreateResponseEnvironmentsItem;
 export const EnvironmentsUpdateResponseEnvironmentsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      expression: S.String,
-      lockedOnDeployment: S.Boolean.pipe(T.Body("locked_on_deployment")),
-      name: S.String,
-      position: EnvironmentsUpdateResponseEnvironmentsItemPosition,
-      ref: S.String,
-      version: S.Number,
-      httpApplicationId: S.optional(
-        S.NullOr(S.String).pipe(T.Body("http_application_id")),
-      ),
-    }),
-  ).annotate({
-    identifier: "EnvironmentsUpdateResponseEnvironmentsItem",
-  }) as any as S.Schema<EnvironmentsUpdateResponseEnvironmentsItem>;
+  EnvironmentsCreateResponseEnvironmentsItem;
 
 export type EnvironmentsUpdateResponseEnvironmentsList =
-  Array<EnvironmentsUpdateResponseEnvironmentsItem>;
+  Array<EnvironmentsCreateResponseEnvironmentsItem>;
 export const EnvironmentsUpdateResponseEnvironmentsList = /*@__PURE__*/ S.Array(
-  EnvironmentsUpdateResponseEnvironmentsItem,
+  EnvironmentsCreateResponseEnvironmentsItem,
 ) as any as S.Schema<EnvironmentsUpdateResponseEnvironmentsList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */

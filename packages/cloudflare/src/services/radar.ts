@@ -956,27 +956,16 @@ export const AiTimeseriesGroupsTimeseriesResponseMetaConfidenceInfo =
     identifier: "AiTimeseriesGroupsTimeseriesResponseMetaConfidenceInfo",
   }) as any as S.Schema<AiTimeseriesGroupsTimeseriesResponseMetaConfidenceInfo>;
 
-export interface AiTimeseriesGroupsTimeseriesResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type AiTimeseriesGroupsTimeseriesResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const AiTimeseriesGroupsTimeseriesResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "AiTimeseriesGroupsTimeseriesResponseMetaDateRangeItem",
-  }) as any as S.Schema<AiTimeseriesGroupsTimeseriesResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type AiTimeseriesGroupsTimeseriesResponseMetaDateRangeList =
-  Array<AiTimeseriesGroupsTimeseriesResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const AiTimeseriesGroupsTimeseriesResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    AiTimeseriesGroupsTimeseriesResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<AiTimeseriesGroupsTimeseriesResponseMetaDateRangeList>;
 
 export type AiTimeseriesGroupsTimeseriesResponseMetaNormalization =
@@ -991,25 +980,16 @@ export type AiTimeseriesGroupsTimeseriesResponseMetaNormalization =
 export const AiTimeseriesGroupsTimeseriesResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface AiTimeseriesGroupsTimeseriesResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type AiTimeseriesGroupsTimeseriesResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const AiTimeseriesGroupsTimeseriesResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "AiTimeseriesGroupsTimeseriesResponseMetaUnitsItem",
-  }) as any as S.Schema<AiTimeseriesGroupsTimeseriesResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type AiTimeseriesGroupsTimeseriesResponseMetaUnitsList =
-  Array<AiTimeseriesGroupsTimeseriesResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const AiTimeseriesGroupsTimeseriesResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    AiTimeseriesGroupsTimeseriesResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<AiTimeseriesGroupsTimeseriesResponseMetaUnitsList>;
 
 export interface AiTimeseriesGroupsTimeseriesResponseMeta {
@@ -1448,27 +1428,16 @@ export const AiTimeseriesGroupsTimeseriesGroupsResponseMetaConfidenceInfo =
     identifier: "AiTimeseriesGroupsTimeseriesGroupsResponseMetaConfidenceInfo",
   }) as any as S.Schema<AiTimeseriesGroupsTimeseriesGroupsResponseMetaConfidenceInfo>;
 
-export interface AiTimeseriesGroupsTimeseriesGroupsResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type AiTimeseriesGroupsTimeseriesGroupsResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const AiTimeseriesGroupsTimeseriesGroupsResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "AiTimeseriesGroupsTimeseriesGroupsResponseMetaDateRangeItem",
-  }) as any as S.Schema<AiTimeseriesGroupsTimeseriesGroupsResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type AiTimeseriesGroupsTimeseriesGroupsResponseMetaDateRangeList =
-  Array<AiTimeseriesGroupsTimeseriesGroupsResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const AiTimeseriesGroupsTimeseriesGroupsResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    AiTimeseriesGroupsTimeseriesGroupsResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<AiTimeseriesGroupsTimeseriesGroupsResponseMetaDateRangeList>;
 
 export type AiTimeseriesGroupsTimeseriesGroupsResponseMetaNormalization =
@@ -1483,25 +1452,16 @@ export type AiTimeseriesGroupsTimeseriesGroupsResponseMetaNormalization =
 export const AiTimeseriesGroupsTimeseriesGroupsResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface AiTimeseriesGroupsTimeseriesGroupsResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type AiTimeseriesGroupsTimeseriesGroupsResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const AiTimeseriesGroupsTimeseriesGroupsResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "AiTimeseriesGroupsTimeseriesGroupsResponseMetaUnitsItem",
-  }) as any as S.Schema<AiTimeseriesGroupsTimeseriesGroupsResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type AiTimeseriesGroupsTimeseriesGroupsResponseMetaUnitsList =
-  Array<AiTimeseriesGroupsTimeseriesGroupsResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const AiTimeseriesGroupsTimeseriesGroupsResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    AiTimeseriesGroupsTimeseriesGroupsResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<AiTimeseriesGroupsTimeseriesGroupsResponseMetaUnitsList>;
 
 export interface AiTimeseriesGroupsTimeseriesGroupsResponseMeta {
@@ -1805,27 +1765,16 @@ export const EmailRoutingSummaryArcResponseMetaConfidenceInfo =
     identifier: "EmailRoutingSummaryArcResponseMetaConfidenceInfo",
   }) as any as S.Schema<EmailRoutingSummaryArcResponseMetaConfidenceInfo>;
 
-export interface EmailRoutingSummaryArcResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type EmailRoutingSummaryArcResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const EmailRoutingSummaryArcResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "EmailRoutingSummaryArcResponseMetaDateRangeItem",
-  }) as any as S.Schema<EmailRoutingSummaryArcResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type EmailRoutingSummaryArcResponseMetaDateRangeList =
-  Array<EmailRoutingSummaryArcResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const EmailRoutingSummaryArcResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    EmailRoutingSummaryArcResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<EmailRoutingSummaryArcResponseMetaDateRangeList>;
 
 export type EmailRoutingSummaryArcResponseMetaNormalization =
@@ -1840,25 +1789,16 @@ export type EmailRoutingSummaryArcResponseMetaNormalization =
 export const EmailRoutingSummaryArcResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface EmailRoutingSummaryArcResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type EmailRoutingSummaryArcResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const EmailRoutingSummaryArcResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "EmailRoutingSummaryArcResponseMetaUnitsItem",
-  }) as any as S.Schema<EmailRoutingSummaryArcResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type EmailRoutingSummaryArcResponseMetaUnitsList =
-  Array<EmailRoutingSummaryArcResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const EmailRoutingSummaryArcResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    EmailRoutingSummaryArcResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<EmailRoutingSummaryArcResponseMetaUnitsList>;
 
 export interface EmailRoutingSummaryArcResponseMeta {
@@ -2212,27 +2152,16 @@ export const EmailRoutingTimeseriesGroupsArcResponseMetaConfidenceInfo =
     identifier: "EmailRoutingTimeseriesGroupsArcResponseMetaConfidenceInfo",
   }) as any as S.Schema<EmailRoutingTimeseriesGroupsArcResponseMetaConfidenceInfo>;
 
-export interface EmailRoutingTimeseriesGroupsArcResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type EmailRoutingTimeseriesGroupsArcResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const EmailRoutingTimeseriesGroupsArcResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "EmailRoutingTimeseriesGroupsArcResponseMetaDateRangeItem",
-  }) as any as S.Schema<EmailRoutingTimeseriesGroupsArcResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type EmailRoutingTimeseriesGroupsArcResponseMetaDateRangeList =
-  Array<EmailRoutingTimeseriesGroupsArcResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const EmailRoutingTimeseriesGroupsArcResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    EmailRoutingTimeseriesGroupsArcResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<EmailRoutingTimeseriesGroupsArcResponseMetaDateRangeList>;
 
 export type EmailRoutingTimeseriesGroupsArcResponseMetaNormalization =
@@ -2247,25 +2176,16 @@ export type EmailRoutingTimeseriesGroupsArcResponseMetaNormalization =
 export const EmailRoutingTimeseriesGroupsArcResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface EmailRoutingTimeseriesGroupsArcResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type EmailRoutingTimeseriesGroupsArcResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const EmailRoutingTimeseriesGroupsArcResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "EmailRoutingTimeseriesGroupsArcResponseMetaUnitsItem",
-  }) as any as S.Schema<EmailRoutingTimeseriesGroupsArcResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type EmailRoutingTimeseriesGroupsArcResponseMetaUnitsList =
-  Array<EmailRoutingTimeseriesGroupsArcResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const EmailRoutingTimeseriesGroupsArcResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    EmailRoutingTimeseriesGroupsArcResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<EmailRoutingTimeseriesGroupsArcResponseMetaUnitsList>;
 
 export interface EmailRoutingTimeseriesGroupsArcResponseMeta {
@@ -2580,27 +2500,16 @@ export const EmailSecuritySummaryArcResponseMetaConfidenceInfo =
     identifier: "EmailSecuritySummaryArcResponseMetaConfidenceInfo",
   }) as any as S.Schema<EmailSecuritySummaryArcResponseMetaConfidenceInfo>;
 
-export interface EmailSecuritySummaryArcResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type EmailSecuritySummaryArcResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const EmailSecuritySummaryArcResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "EmailSecuritySummaryArcResponseMetaDateRangeItem",
-  }) as any as S.Schema<EmailSecuritySummaryArcResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type EmailSecuritySummaryArcResponseMetaDateRangeList =
-  Array<EmailSecuritySummaryArcResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const EmailSecuritySummaryArcResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    EmailSecuritySummaryArcResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<EmailSecuritySummaryArcResponseMetaDateRangeList>;
 
 export type EmailSecuritySummaryArcResponseMetaNormalization =
@@ -2615,25 +2524,16 @@ export type EmailSecuritySummaryArcResponseMetaNormalization =
 export const EmailSecuritySummaryArcResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface EmailSecuritySummaryArcResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type EmailSecuritySummaryArcResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const EmailSecuritySummaryArcResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "EmailSecuritySummaryArcResponseMetaUnitsItem",
-  }) as any as S.Schema<EmailSecuritySummaryArcResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type EmailSecuritySummaryArcResponseMetaUnitsList =
-  Array<EmailSecuritySummaryArcResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const EmailSecuritySummaryArcResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    EmailSecuritySummaryArcResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<EmailSecuritySummaryArcResponseMetaUnitsList>;
 
 export interface EmailSecuritySummaryArcResponseMeta {
@@ -2658,35 +2558,21 @@ export const EmailSecuritySummaryArcResponseMeta = /*@__PURE__*/ S.suspend(() =>
   identifier: "EmailSecuritySummaryArcResponseMeta",
 }) as any as S.Schema<EmailSecuritySummaryArcResponseMeta>;
 
-export interface EmailSecuritySummaryArcResponseSummary0 {
-  /** A numeric string. */
-  fAIL: string;
-  /** A numeric string. */
-  nONE: string;
-  /** A numeric string. */
-  pASS: string;
-}
-export const EmailSecuritySummaryArcResponseSummary0 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      fAIL: S.String.pipe(T.Body("FAIL")),
-      nONE: S.String.pipe(T.Body("NONE")),
-      pASS: S.String.pipe(T.Body("PASS")),
-    }),
-).annotate({
-  identifier: "EmailSecuritySummaryArcResponseSummary0",
-}) as any as S.Schema<EmailSecuritySummaryArcResponseSummary0>;
+export type EmailSecuritySummaryArcResponseSummary0 =
+  EmailRoutingSummaryArcResponseSummary0;
+export const EmailSecuritySummaryArcResponseSummary0 =
+  EmailRoutingSummaryArcResponseSummary0;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ArcEmailSecuritySummaryResponse {
   /** Metadata for the results. */
   meta: EmailSecuritySummaryArcResponseMeta;
-  summary_0: EmailSecuritySummaryArcResponseSummary0;
+  summary_0: EmailRoutingSummaryArcResponseSummary0;
 }
 export const ArcEmailSecuritySummaryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: EmailSecuritySummaryArcResponseMeta,
-    summary_0: EmailSecuritySummaryArcResponseSummary0,
+    summary_0: EmailRoutingSummaryArcResponseSummary0,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ArcEmailSecuritySummaryResponse",
@@ -2975,27 +2861,16 @@ export const EmailSecurityTimeseriesGroupsArcResponseMetaConfidenceInfo =
     identifier: "EmailSecurityTimeseriesGroupsArcResponseMetaConfidenceInfo",
   }) as any as S.Schema<EmailSecurityTimeseriesGroupsArcResponseMetaConfidenceInfo>;
 
-export interface EmailSecurityTimeseriesGroupsArcResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type EmailSecurityTimeseriesGroupsArcResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const EmailSecurityTimeseriesGroupsArcResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "EmailSecurityTimeseriesGroupsArcResponseMetaDateRangeItem",
-  }) as any as S.Schema<EmailSecurityTimeseriesGroupsArcResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type EmailSecurityTimeseriesGroupsArcResponseMetaDateRangeList =
-  Array<EmailSecurityTimeseriesGroupsArcResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const EmailSecurityTimeseriesGroupsArcResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    EmailSecurityTimeseriesGroupsArcResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<EmailSecurityTimeseriesGroupsArcResponseMetaDateRangeList>;
 
 export type EmailSecurityTimeseriesGroupsArcResponseMetaNormalization =
@@ -3010,25 +2885,16 @@ export type EmailSecurityTimeseriesGroupsArcResponseMetaNormalization =
 export const EmailSecurityTimeseriesGroupsArcResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface EmailSecurityTimeseriesGroupsArcResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type EmailSecurityTimeseriesGroupsArcResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const EmailSecurityTimeseriesGroupsArcResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "EmailSecurityTimeseriesGroupsArcResponseMetaUnitsItem",
-  }) as any as S.Schema<EmailSecurityTimeseriesGroupsArcResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type EmailSecurityTimeseriesGroupsArcResponseMetaUnitsList =
-  Array<EmailSecurityTimeseriesGroupsArcResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const EmailSecurityTimeseriesGroupsArcResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    EmailSecurityTimeseriesGroupsArcResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<EmailSecurityTimeseriesGroupsArcResponseMetaUnitsList>;
 
 export interface EmailSecurityTimeseriesGroupsArcResponseMeta {
@@ -3732,25 +3598,15 @@ export const DnsTopAsesResponseMetaConfidenceInfo = /*@__PURE__*/ S.suspend(
   identifier: "DnsTopAsesResponseMetaConfidenceInfo",
 }) as any as S.Schema<DnsTopAsesResponseMetaConfidenceInfo>;
 
-export interface DnsTopAsesResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
-export const DnsTopAsesResponseMetaDateRangeItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    endTime: S.String,
-    startTime: S.String,
-  }),
-).annotate({
-  identifier: "DnsTopAsesResponseMetaDateRangeItem",
-}) as any as S.Schema<DnsTopAsesResponseMetaDateRangeItem>;
+export type DnsTopAsesResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
+export const DnsTopAsesResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type DnsTopAsesResponseMetaDateRangeList =
-  Array<DnsTopAsesResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const DnsTopAsesResponseMetaDateRangeList = /*@__PURE__*/ S.Array(
-  DnsTopAsesResponseMetaDateRangeItem,
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
 ) as any as S.Schema<DnsTopAsesResponseMetaDateRangeList>;
 
 export type DnsTopAsesResponseMetaNormalization =
@@ -3764,23 +3620,15 @@ export type DnsTopAsesResponseMetaNormalization =
   | "RATIO";
 export const DnsTopAsesResponseMetaNormalization = /*@__PURE__*/ S.String;
 
-export interface DnsTopAsesResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
-export const DnsTopAsesResponseMetaUnitsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    value: S.String,
-  }),
-).annotate({
-  identifier: "DnsTopAsesResponseMetaUnitsItem",
-}) as any as S.Schema<DnsTopAsesResponseMetaUnitsItem>;
+export type DnsTopAsesResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
+export const DnsTopAsesResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type DnsTopAsesResponseMetaUnitsList =
-  Array<DnsTopAsesResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const DnsTopAsesResponseMetaUnitsList = /*@__PURE__*/ S.Array(
-  DnsTopAsesResponseMetaUnitsItem,
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
 ) as any as S.Schema<DnsTopAsesResponseMetaUnitsList>;
 
 export interface DnsTopAsesResponseMeta {
@@ -4028,26 +3876,15 @@ export const NetflowsTopAsesResponseMetaConfidenceInfo =
     identifier: "NetflowsTopAsesResponseMetaConfidenceInfo",
   }) as any as S.Schema<NetflowsTopAsesResponseMetaConfidenceInfo>;
 
-export interface NetflowsTopAsesResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
-export const NetflowsTopAsesResponseMetaDateRangeItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-).annotate({
-  identifier: "NetflowsTopAsesResponseMetaDateRangeItem",
-}) as any as S.Schema<NetflowsTopAsesResponseMetaDateRangeItem>;
+export type NetflowsTopAsesResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
+export const NetflowsTopAsesResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type NetflowsTopAsesResponseMetaDateRangeList =
-  Array<NetflowsTopAsesResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const NetflowsTopAsesResponseMetaDateRangeList = /*@__PURE__*/ S.Array(
-  NetflowsTopAsesResponseMetaDateRangeItem,
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
 ) as any as S.Schema<NetflowsTopAsesResponseMetaDateRangeList>;
 
 export type NetflowsTopAsesResponseMetaNormalization =
@@ -4061,24 +3898,15 @@ export type NetflowsTopAsesResponseMetaNormalization =
   | "RATIO";
 export const NetflowsTopAsesResponseMetaNormalization = /*@__PURE__*/ S.String;
 
-export interface NetflowsTopAsesResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
-export const NetflowsTopAsesResponseMetaUnitsItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-).annotate({
-  identifier: "NetflowsTopAsesResponseMetaUnitsItem",
-}) as any as S.Schema<NetflowsTopAsesResponseMetaUnitsItem>;
+export type NetflowsTopAsesResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
+export const NetflowsTopAsesResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type NetflowsTopAsesResponseMetaUnitsList =
-  Array<NetflowsTopAsesResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const NetflowsTopAsesResponseMetaUnitsList = /*@__PURE__*/ S.Array(
-  NetflowsTopAsesResponseMetaUnitsItem,
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
 ) as any as S.Schema<NetflowsTopAsesResponseMetaUnitsList>;
 
 export interface NetflowsTopAsesResponseMeta {
@@ -4103,26 +3931,12 @@ export const NetflowsTopAsesResponseMeta = /*@__PURE__*/ S.suspend(() =>
   identifier: "NetflowsTopAsesResponseMeta",
 }) as any as S.Schema<NetflowsTopAsesResponseMeta>;
 
-export interface NetflowsTopAsesResponseTop0Item {
-  clientASN: number;
-  clientASName: string;
-  /** A numeric string. */
-  value: string;
-}
-export const NetflowsTopAsesResponseTop0Item = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clientASN: S.Number,
-    clientASName: S.String,
-    value: S.String,
-  }),
-).annotate({
-  identifier: "NetflowsTopAsesResponseTop0Item",
-}) as any as S.Schema<NetflowsTopAsesResponseTop0Item>;
+export type NetflowsTopAsesResponseTop0Item = DnsTopAsesResponseTop0Item;
+export const NetflowsTopAsesResponseTop0Item = DnsTopAsesResponseTop0Item;
 
-export type NetflowsTopAsesResponseTop0List =
-  Array<NetflowsTopAsesResponseTop0Item>;
+export type NetflowsTopAsesResponseTop0List = Array<DnsTopAsesResponseTop0Item>;
 export const NetflowsTopAsesResponseTop0List = /*@__PURE__*/ S.Array(
-  NetflowsTopAsesResponseTop0Item,
+  DnsTopAsesResponseTop0Item,
 ) as any as S.Schema<NetflowsTopAsesResponseTop0List>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -4328,27 +4142,16 @@ export const QualitySpeedTopAsesResponseMetaConfidenceInfo =
     identifier: "QualitySpeedTopAsesResponseMetaConfidenceInfo",
   }) as any as S.Schema<QualitySpeedTopAsesResponseMetaConfidenceInfo>;
 
-export interface QualitySpeedTopAsesResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type QualitySpeedTopAsesResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const QualitySpeedTopAsesResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "QualitySpeedTopAsesResponseMetaDateRangeItem",
-  }) as any as S.Schema<QualitySpeedTopAsesResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type QualitySpeedTopAsesResponseMetaDateRangeList =
-  Array<QualitySpeedTopAsesResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const QualitySpeedTopAsesResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    QualitySpeedTopAsesResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<QualitySpeedTopAsesResponseMetaDateRangeList>;
 
 export type QualitySpeedTopAsesResponseMetaNormalization =
@@ -4363,24 +4166,15 @@ export type QualitySpeedTopAsesResponseMetaNormalization =
 export const QualitySpeedTopAsesResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface QualitySpeedTopAsesResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
-export const QualitySpeedTopAsesResponseMetaUnitsItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-).annotate({
-  identifier: "QualitySpeedTopAsesResponseMetaUnitsItem",
-}) as any as S.Schema<QualitySpeedTopAsesResponseMetaUnitsItem>;
+export type QualitySpeedTopAsesResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
+export const QualitySpeedTopAsesResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type QualitySpeedTopAsesResponseMetaUnitsList =
-  Array<QualitySpeedTopAsesResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const QualitySpeedTopAsesResponseMetaUnitsList = /*@__PURE__*/ S.Array(
-  QualitySpeedTopAsesResponseMetaUnitsItem,
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
 ) as any as S.Schema<QualitySpeedTopAsesResponseMetaUnitsList>;
 
 export interface QualitySpeedTopAsesResponseMeta {
@@ -4819,27 +4613,16 @@ export const AttacksLayer3TopAttacksResponseMetaConfidenceInfo =
     identifier: "AttacksLayer3TopAttacksResponseMetaConfidenceInfo",
   }) as any as S.Schema<AttacksLayer3TopAttacksResponseMetaConfidenceInfo>;
 
-export interface AttacksLayer3TopAttacksResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type AttacksLayer3TopAttacksResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const AttacksLayer3TopAttacksResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "AttacksLayer3TopAttacksResponseMetaDateRangeItem",
-  }) as any as S.Schema<AttacksLayer3TopAttacksResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type AttacksLayer3TopAttacksResponseMetaDateRangeList =
-  Array<AttacksLayer3TopAttacksResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const AttacksLayer3TopAttacksResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    AttacksLayer3TopAttacksResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<AttacksLayer3TopAttacksResponseMetaDateRangeList>;
 
 export type AttacksLayer3TopAttacksResponseMetaNormalization =
@@ -4854,25 +4637,16 @@ export type AttacksLayer3TopAttacksResponseMetaNormalization =
 export const AttacksLayer3TopAttacksResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface AttacksLayer3TopAttacksResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type AttacksLayer3TopAttacksResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const AttacksLayer3TopAttacksResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "AttacksLayer3TopAttacksResponseMetaUnitsItem",
-  }) as any as S.Schema<AttacksLayer3TopAttacksResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type AttacksLayer3TopAttacksResponseMetaUnitsList =
-  Array<AttacksLayer3TopAttacksResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const AttacksLayer3TopAttacksResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    AttacksLayer3TopAttacksResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<AttacksLayer3TopAttacksResponseMetaUnitsList>;
 
 export interface AttacksLayer3TopAttacksResponseMeta {
@@ -5181,27 +4955,16 @@ export const AttacksLayer7TopAttacksResponseMetaConfidenceInfo =
     identifier: "AttacksLayer7TopAttacksResponseMetaConfidenceInfo",
   }) as any as S.Schema<AttacksLayer7TopAttacksResponseMetaConfidenceInfo>;
 
-export interface AttacksLayer7TopAttacksResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type AttacksLayer7TopAttacksResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const AttacksLayer7TopAttacksResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "AttacksLayer7TopAttacksResponseMetaDateRangeItem",
-  }) as any as S.Schema<AttacksLayer7TopAttacksResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type AttacksLayer7TopAttacksResponseMetaDateRangeList =
-  Array<AttacksLayer7TopAttacksResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const AttacksLayer7TopAttacksResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    AttacksLayer7TopAttacksResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<AttacksLayer7TopAttacksResponseMetaDateRangeList>;
 
 export type AttacksLayer7TopAttacksResponseMetaNormalization =
@@ -5216,25 +4979,16 @@ export type AttacksLayer7TopAttacksResponseMetaNormalization =
 export const AttacksLayer7TopAttacksResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface AttacksLayer7TopAttacksResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type AttacksLayer7TopAttacksResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const AttacksLayer7TopAttacksResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "AttacksLayer7TopAttacksResponseMetaUnitsItem",
-  }) as any as S.Schema<AttacksLayer7TopAttacksResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type AttacksLayer7TopAttacksResponseMetaUnitsList =
-  Array<AttacksLayer7TopAttacksResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const AttacksLayer7TopAttacksResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    AttacksLayer7TopAttacksResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<AttacksLayer7TopAttacksResponseMetaUnitsList>;
 
 export interface AttacksLayer7TopAttacksResponseMeta {
@@ -5542,27 +5296,16 @@ export const AttacksLayer3SummaryBitrateResponseMetaConfidenceInfo =
     identifier: "AttacksLayer3SummaryBitrateResponseMetaConfidenceInfo",
   }) as any as S.Schema<AttacksLayer3SummaryBitrateResponseMetaConfidenceInfo>;
 
-export interface AttacksLayer3SummaryBitrateResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type AttacksLayer3SummaryBitrateResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const AttacksLayer3SummaryBitrateResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "AttacksLayer3SummaryBitrateResponseMetaDateRangeItem",
-  }) as any as S.Schema<AttacksLayer3SummaryBitrateResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type AttacksLayer3SummaryBitrateResponseMetaDateRangeList =
-  Array<AttacksLayer3SummaryBitrateResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const AttacksLayer3SummaryBitrateResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    AttacksLayer3SummaryBitrateResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<AttacksLayer3SummaryBitrateResponseMetaDateRangeList>;
 
 export type AttacksLayer3SummaryBitrateResponseMetaNormalization =
@@ -5577,25 +5320,16 @@ export type AttacksLayer3SummaryBitrateResponseMetaNormalization =
 export const AttacksLayer3SummaryBitrateResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface AttacksLayer3SummaryBitrateResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type AttacksLayer3SummaryBitrateResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const AttacksLayer3SummaryBitrateResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "AttacksLayer3SummaryBitrateResponseMetaUnitsItem",
-  }) as any as S.Schema<AttacksLayer3SummaryBitrateResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type AttacksLayer3SummaryBitrateResponseMetaUnitsList =
-  Array<AttacksLayer3SummaryBitrateResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const AttacksLayer3SummaryBitrateResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    AttacksLayer3SummaryBitrateResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<AttacksLayer3SummaryBitrateResponseMetaUnitsList>;
 
 export interface AttacksLayer3SummaryBitrateResponseMeta {
@@ -5965,27 +5699,16 @@ export const AttacksLayer3TimeseriesGroupsBitrateResponseMetaConfidenceInfo =
       "AttacksLayer3TimeseriesGroupsBitrateResponseMetaConfidenceInfo",
   }) as any as S.Schema<AttacksLayer3TimeseriesGroupsBitrateResponseMetaConfidenceInfo>;
 
-export interface AttacksLayer3TimeseriesGroupsBitrateResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type AttacksLayer3TimeseriesGroupsBitrateResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const AttacksLayer3TimeseriesGroupsBitrateResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "AttacksLayer3TimeseriesGroupsBitrateResponseMetaDateRangeItem",
-  }) as any as S.Schema<AttacksLayer3TimeseriesGroupsBitrateResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type AttacksLayer3TimeseriesGroupsBitrateResponseMetaDateRangeList =
-  Array<AttacksLayer3TimeseriesGroupsBitrateResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const AttacksLayer3TimeseriesGroupsBitrateResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    AttacksLayer3TimeseriesGroupsBitrateResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<AttacksLayer3TimeseriesGroupsBitrateResponseMetaDateRangeList>;
 
 export type AttacksLayer3TimeseriesGroupsBitrateResponseMetaNormalization =
@@ -6000,25 +5723,16 @@ export type AttacksLayer3TimeseriesGroupsBitrateResponseMetaNormalization =
 export const AttacksLayer3TimeseriesGroupsBitrateResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface AttacksLayer3TimeseriesGroupsBitrateResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type AttacksLayer3TimeseriesGroupsBitrateResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const AttacksLayer3TimeseriesGroupsBitrateResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "AttacksLayer3TimeseriesGroupsBitrateResponseMetaUnitsItem",
-  }) as any as S.Schema<AttacksLayer3TimeseriesGroupsBitrateResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type AttacksLayer3TimeseriesGroupsBitrateResponseMetaUnitsList =
-  Array<AttacksLayer3TimeseriesGroupsBitrateResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const AttacksLayer3TimeseriesGroupsBitrateResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    AttacksLayer3TimeseriesGroupsBitrateResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<AttacksLayer3TimeseriesGroupsBitrateResponseMetaUnitsList>;
 
 export interface AttacksLayer3TimeseriesGroupsBitrateResponseMeta {
@@ -6465,27 +6179,16 @@ export const HttpSummaryBotClassResponseMetaConfidenceInfo =
     identifier: "HttpSummaryBotClassResponseMetaConfidenceInfo",
   }) as any as S.Schema<HttpSummaryBotClassResponseMetaConfidenceInfo>;
 
-export interface HttpSummaryBotClassResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type HttpSummaryBotClassResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const HttpSummaryBotClassResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "HttpSummaryBotClassResponseMetaDateRangeItem",
-  }) as any as S.Schema<HttpSummaryBotClassResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type HttpSummaryBotClassResponseMetaDateRangeList =
-  Array<HttpSummaryBotClassResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const HttpSummaryBotClassResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    HttpSummaryBotClassResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<HttpSummaryBotClassResponseMetaDateRangeList>;
 
 export type HttpSummaryBotClassResponseMetaNormalization =
@@ -6500,24 +6203,15 @@ export type HttpSummaryBotClassResponseMetaNormalization =
 export const HttpSummaryBotClassResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface HttpSummaryBotClassResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
-export const HttpSummaryBotClassResponseMetaUnitsItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-).annotate({
-  identifier: "HttpSummaryBotClassResponseMetaUnitsItem",
-}) as any as S.Schema<HttpSummaryBotClassResponseMetaUnitsItem>;
+export type HttpSummaryBotClassResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
+export const HttpSummaryBotClassResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type HttpSummaryBotClassResponseMetaUnitsList =
-  Array<HttpSummaryBotClassResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const HttpSummaryBotClassResponseMetaUnitsList = /*@__PURE__*/ S.Array(
-  HttpSummaryBotClassResponseMetaUnitsItem,
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
 ) as any as S.Schema<HttpSummaryBotClassResponseMetaUnitsList>;
 
 export interface HttpSummaryBotClassResponseMeta {
@@ -6946,27 +6640,16 @@ export const HttpTimeseriesGroupsBotClassResponseMetaConfidenceInfo =
     identifier: "HttpTimeseriesGroupsBotClassResponseMetaConfidenceInfo",
   }) as any as S.Schema<HttpTimeseriesGroupsBotClassResponseMetaConfidenceInfo>;
 
-export interface HttpTimeseriesGroupsBotClassResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type HttpTimeseriesGroupsBotClassResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const HttpTimeseriesGroupsBotClassResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "HttpTimeseriesGroupsBotClassResponseMetaDateRangeItem",
-  }) as any as S.Schema<HttpTimeseriesGroupsBotClassResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type HttpTimeseriesGroupsBotClassResponseMetaDateRangeList =
-  Array<HttpTimeseriesGroupsBotClassResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const HttpTimeseriesGroupsBotClassResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    HttpTimeseriesGroupsBotClassResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<HttpTimeseriesGroupsBotClassResponseMetaDateRangeList>;
 
 export type HttpTimeseriesGroupsBotClassResponseMetaNormalization =
@@ -6981,25 +6664,16 @@ export type HttpTimeseriesGroupsBotClassResponseMetaNormalization =
 export const HttpTimeseriesGroupsBotClassResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface HttpTimeseriesGroupsBotClassResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type HttpTimeseriesGroupsBotClassResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const HttpTimeseriesGroupsBotClassResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "HttpTimeseriesGroupsBotClassResponseMetaUnitsItem",
-  }) as any as S.Schema<HttpTimeseriesGroupsBotClassResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type HttpTimeseriesGroupsBotClassResponseMetaUnitsList =
-  Array<HttpTimeseriesGroupsBotClassResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const HttpTimeseriesGroupsBotClassResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    HttpTimeseriesGroupsBotClassResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<HttpTimeseriesGroupsBotClassResponseMetaUnitsList>;
 
 export interface HttpTimeseriesGroupsBotClassResponseMeta {
@@ -7275,27 +6949,16 @@ export const LeakedCredentialsSummaryBotClassResponseMetaConfidenceInfo =
     identifier: "LeakedCredentialsSummaryBotClassResponseMetaConfidenceInfo",
   }) as any as S.Schema<LeakedCredentialsSummaryBotClassResponseMetaConfidenceInfo>;
 
-export interface LeakedCredentialsSummaryBotClassResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type LeakedCredentialsSummaryBotClassResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const LeakedCredentialsSummaryBotClassResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "LeakedCredentialsSummaryBotClassResponseMetaDateRangeItem",
-  }) as any as S.Schema<LeakedCredentialsSummaryBotClassResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type LeakedCredentialsSummaryBotClassResponseMetaDateRangeList =
-  Array<LeakedCredentialsSummaryBotClassResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const LeakedCredentialsSummaryBotClassResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    LeakedCredentialsSummaryBotClassResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<LeakedCredentialsSummaryBotClassResponseMetaDateRangeList>;
 
 export type LeakedCredentialsSummaryBotClassResponseMetaNormalization =
@@ -7310,25 +6973,16 @@ export type LeakedCredentialsSummaryBotClassResponseMetaNormalization =
 export const LeakedCredentialsSummaryBotClassResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface LeakedCredentialsSummaryBotClassResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type LeakedCredentialsSummaryBotClassResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const LeakedCredentialsSummaryBotClassResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "LeakedCredentialsSummaryBotClassResponseMetaUnitsItem",
-  }) as any as S.Schema<LeakedCredentialsSummaryBotClassResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type LeakedCredentialsSummaryBotClassResponseMetaUnitsList =
-  Array<LeakedCredentialsSummaryBotClassResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const LeakedCredentialsSummaryBotClassResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    LeakedCredentialsSummaryBotClassResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<LeakedCredentialsSummaryBotClassResponseMetaUnitsList>;
 
 export interface LeakedCredentialsSummaryBotClassResponseMeta {
@@ -7355,33 +7009,22 @@ export const LeakedCredentialsSummaryBotClassResponseMeta =
     identifier: "LeakedCredentialsSummaryBotClassResponseMeta",
   }) as any as S.Schema<LeakedCredentialsSummaryBotClassResponseMeta>;
 
-export interface LeakedCredentialsSummaryBotClassResponseSummary0 {
-  /** A numeric string. */
-  bot: string;
-  /** A numeric string. */
-  human: string;
-}
+export type LeakedCredentialsSummaryBotClassResponseSummary0 =
+  HttpSummaryBotClassResponseSummary0;
 export const LeakedCredentialsSummaryBotClassResponseSummary0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      bot: S.String,
-      human: S.String,
-    }),
-  ).annotate({
-    identifier: "LeakedCredentialsSummaryBotClassResponseSummary0",
-  }) as any as S.Schema<LeakedCredentialsSummaryBotClassResponseSummary0>;
+  HttpSummaryBotClassResponseSummary0;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface BotClassLeakedCredentialSummaryResponse {
   /** Metadata for the results. */
   meta: LeakedCredentialsSummaryBotClassResponseMeta;
-  summary_0: LeakedCredentialsSummaryBotClassResponseSummary0;
+  summary_0: HttpSummaryBotClassResponseSummary0;
 }
 export const BotClassLeakedCredentialSummaryResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       meta: LeakedCredentialsSummaryBotClassResponseMeta,
-      summary_0: LeakedCredentialsSummaryBotClassResponseSummary0,
+      summary_0: HttpSummaryBotClassResponseSummary0,
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "BotClassLeakedCredentialSummaryResponse",
@@ -7628,28 +7271,16 @@ export const LeakedCredentialsTimeseriesGroupsBotClassResponseMetaConfidenceInfo
       "LeakedCredentialsTimeseriesGroupsBotClassResponseMetaConfidenceInfo",
   }) as any as S.Schema<LeakedCredentialsTimeseriesGroupsBotClassResponseMetaConfidenceInfo>;
 
-export interface LeakedCredentialsTimeseriesGroupsBotClassResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type LeakedCredentialsTimeseriesGroupsBotClassResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const LeakedCredentialsTimeseriesGroupsBotClassResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "LeakedCredentialsTimeseriesGroupsBotClassResponseMetaDateRangeItem",
-  }) as any as S.Schema<LeakedCredentialsTimeseriesGroupsBotClassResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type LeakedCredentialsTimeseriesGroupsBotClassResponseMetaDateRangeList =
-  Array<LeakedCredentialsTimeseriesGroupsBotClassResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const LeakedCredentialsTimeseriesGroupsBotClassResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    LeakedCredentialsTimeseriesGroupsBotClassResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<LeakedCredentialsTimeseriesGroupsBotClassResponseMetaDateRangeList>;
 
 export type LeakedCredentialsTimeseriesGroupsBotClassResponseMetaNormalization =
@@ -7664,26 +7295,16 @@ export type LeakedCredentialsTimeseriesGroupsBotClassResponseMetaNormalization =
 export const LeakedCredentialsTimeseriesGroupsBotClassResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface LeakedCredentialsTimeseriesGroupsBotClassResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type LeakedCredentialsTimeseriesGroupsBotClassResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const LeakedCredentialsTimeseriesGroupsBotClassResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "LeakedCredentialsTimeseriesGroupsBotClassResponseMetaUnitsItem",
-  }) as any as S.Schema<LeakedCredentialsTimeseriesGroupsBotClassResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type LeakedCredentialsTimeseriesGroupsBotClassResponseMetaUnitsList =
-  Array<LeakedCredentialsTimeseriesGroupsBotClassResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const LeakedCredentialsTimeseriesGroupsBotClassResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    LeakedCredentialsTimeseriesGroupsBotClassResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<LeakedCredentialsTimeseriesGroupsBotClassResponseMetaUnitsList>;
 
 export interface LeakedCredentialsTimeseriesGroupsBotClassResponseMeta {
@@ -8087,27 +7708,16 @@ export const VerifiedBotsTopBotsResponseMetaConfidenceInfo =
     identifier: "VerifiedBotsTopBotsResponseMetaConfidenceInfo",
   }) as any as S.Schema<VerifiedBotsTopBotsResponseMetaConfidenceInfo>;
 
-export interface VerifiedBotsTopBotsResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type VerifiedBotsTopBotsResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const VerifiedBotsTopBotsResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "VerifiedBotsTopBotsResponseMetaDateRangeItem",
-  }) as any as S.Schema<VerifiedBotsTopBotsResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type VerifiedBotsTopBotsResponseMetaDateRangeList =
-  Array<VerifiedBotsTopBotsResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const VerifiedBotsTopBotsResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    VerifiedBotsTopBotsResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<VerifiedBotsTopBotsResponseMetaDateRangeList>;
 
 export type VerifiedBotsTopBotsResponseMetaNormalization =
@@ -8122,24 +7732,15 @@ export type VerifiedBotsTopBotsResponseMetaNormalization =
 export const VerifiedBotsTopBotsResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface VerifiedBotsTopBotsResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
-export const VerifiedBotsTopBotsResponseMetaUnitsItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-).annotate({
-  identifier: "VerifiedBotsTopBotsResponseMetaUnitsItem",
-}) as any as S.Schema<VerifiedBotsTopBotsResponseMetaUnitsItem>;
+export type VerifiedBotsTopBotsResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
+export const VerifiedBotsTopBotsResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type VerifiedBotsTopBotsResponseMetaUnitsList =
-  Array<VerifiedBotsTopBotsResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const VerifiedBotsTopBotsResponseMetaUnitsList = /*@__PURE__*/ S.Array(
-  VerifiedBotsTopBotsResponseMetaUnitsItem,
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
 ) as any as S.Schema<VerifiedBotsTopBotsResponseMetaUnitsList>;
 
 export interface VerifiedBotsTopBotsResponseMeta {
@@ -8597,27 +8198,16 @@ export const HttpTimeseriesGroupsBrowserFamilyResponseMetaConfidenceInfo =
     identifier: "HttpTimeseriesGroupsBrowserFamilyResponseMetaConfidenceInfo",
   }) as any as S.Schema<HttpTimeseriesGroupsBrowserFamilyResponseMetaConfidenceInfo>;
 
-export interface HttpTimeseriesGroupsBrowserFamilyResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type HttpTimeseriesGroupsBrowserFamilyResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const HttpTimeseriesGroupsBrowserFamilyResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "HttpTimeseriesGroupsBrowserFamilyResponseMetaDateRangeItem",
-  }) as any as S.Schema<HttpTimeseriesGroupsBrowserFamilyResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type HttpTimeseriesGroupsBrowserFamilyResponseMetaDateRangeList =
-  Array<HttpTimeseriesGroupsBrowserFamilyResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const HttpTimeseriesGroupsBrowserFamilyResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    HttpTimeseriesGroupsBrowserFamilyResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<HttpTimeseriesGroupsBrowserFamilyResponseMetaDateRangeList>;
 
 export type HttpTimeseriesGroupsBrowserFamilyResponseMetaNormalization =
@@ -8632,25 +8222,16 @@ export type HttpTimeseriesGroupsBrowserFamilyResponseMetaNormalization =
 export const HttpTimeseriesGroupsBrowserFamilyResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface HttpTimeseriesGroupsBrowserFamilyResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type HttpTimeseriesGroupsBrowserFamilyResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const HttpTimeseriesGroupsBrowserFamilyResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "HttpTimeseriesGroupsBrowserFamilyResponseMetaUnitsItem",
-  }) as any as S.Schema<HttpTimeseriesGroupsBrowserFamilyResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type HttpTimeseriesGroupsBrowserFamilyResponseMetaUnitsList =
-  Array<HttpTimeseriesGroupsBrowserFamilyResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const HttpTimeseriesGroupsBrowserFamilyResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    HttpTimeseriesGroupsBrowserFamilyResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<HttpTimeseriesGroupsBrowserFamilyResponseMetaUnitsList>;
 
 export interface HttpTimeseriesGroupsBrowserFamilyResponseMeta {
@@ -9041,27 +8622,16 @@ export const HttpTopBrowserFamilyResponseMetaConfidenceInfo =
     identifier: "HttpTopBrowserFamilyResponseMetaConfidenceInfo",
   }) as any as S.Schema<HttpTopBrowserFamilyResponseMetaConfidenceInfo>;
 
-export interface HttpTopBrowserFamilyResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type HttpTopBrowserFamilyResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const HttpTopBrowserFamilyResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "HttpTopBrowserFamilyResponseMetaDateRangeItem",
-  }) as any as S.Schema<HttpTopBrowserFamilyResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type HttpTopBrowserFamilyResponseMetaDateRangeList =
-  Array<HttpTopBrowserFamilyResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const HttpTopBrowserFamilyResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    HttpTopBrowserFamilyResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<HttpTopBrowserFamilyResponseMetaDateRangeList>;
 
 export type HttpTopBrowserFamilyResponseMetaNormalization =
@@ -9076,24 +8646,15 @@ export type HttpTopBrowserFamilyResponseMetaNormalization =
 export const HttpTopBrowserFamilyResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface HttpTopBrowserFamilyResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type HttpTopBrowserFamilyResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const HttpTopBrowserFamilyResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "HttpTopBrowserFamilyResponseMetaUnitsItem",
-  }) as any as S.Schema<HttpTopBrowserFamilyResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type HttpTopBrowserFamilyResponseMetaUnitsList =
-  Array<HttpTopBrowserFamilyResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const HttpTopBrowserFamilyResponseMetaUnitsList = /*@__PURE__*/ S.Array(
-  HttpTopBrowserFamilyResponseMetaUnitsItem,
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
 ) as any as S.Schema<HttpTopBrowserFamilyResponseMetaUnitsList>;
 
 export interface HttpTopBrowserFamilyResponseMeta {
@@ -9118,24 +8679,15 @@ export const HttpTopBrowserFamilyResponseMeta = /*@__PURE__*/ S.suspend(() =>
   identifier: "HttpTopBrowserFamilyResponseMeta",
 }) as any as S.Schema<HttpTopBrowserFamilyResponseMeta>;
 
-export interface HttpTopBrowserFamilyResponseTop0Item {
-  name: string;
-  value: string;
-}
-export const HttpTopBrowserFamilyResponseTop0Item = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-).annotate({
-  identifier: "HttpTopBrowserFamilyResponseTop0Item",
-}) as any as S.Schema<HttpTopBrowserFamilyResponseTop0Item>;
+export type HttpTopBrowserFamilyResponseTop0Item =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
+export const HttpTopBrowserFamilyResponseTop0Item =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type HttpTopBrowserFamilyResponseTop0List =
-  Array<HttpTopBrowserFamilyResponseTop0Item>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const HttpTopBrowserFamilyResponseTop0List = /*@__PURE__*/ S.Array(
-  HttpTopBrowserFamilyResponseTop0Item,
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
 ) as any as S.Schema<HttpTopBrowserFamilyResponseTop0List>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -9548,27 +9100,16 @@ export const HttpTimeseriesGroupsBrowserResponseMetaConfidenceInfo =
     identifier: "HttpTimeseriesGroupsBrowserResponseMetaConfidenceInfo",
   }) as any as S.Schema<HttpTimeseriesGroupsBrowserResponseMetaConfidenceInfo>;
 
-export interface HttpTimeseriesGroupsBrowserResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type HttpTimeseriesGroupsBrowserResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const HttpTimeseriesGroupsBrowserResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "HttpTimeseriesGroupsBrowserResponseMetaDateRangeItem",
-  }) as any as S.Schema<HttpTimeseriesGroupsBrowserResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type HttpTimeseriesGroupsBrowserResponseMetaDateRangeList =
-  Array<HttpTimeseriesGroupsBrowserResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const HttpTimeseriesGroupsBrowserResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    HttpTimeseriesGroupsBrowserResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<HttpTimeseriesGroupsBrowserResponseMetaDateRangeList>;
 
 export type HttpTimeseriesGroupsBrowserResponseMetaNormalization =
@@ -9583,25 +9124,16 @@ export type HttpTimeseriesGroupsBrowserResponseMetaNormalization =
 export const HttpTimeseriesGroupsBrowserResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface HttpTimeseriesGroupsBrowserResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type HttpTimeseriesGroupsBrowserResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const HttpTimeseriesGroupsBrowserResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "HttpTimeseriesGroupsBrowserResponseMetaUnitsItem",
-  }) as any as S.Schema<HttpTimeseriesGroupsBrowserResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type HttpTimeseriesGroupsBrowserResponseMetaUnitsList =
-  Array<HttpTimeseriesGroupsBrowserResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const HttpTimeseriesGroupsBrowserResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    HttpTimeseriesGroupsBrowserResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<HttpTimeseriesGroupsBrowserResponseMetaUnitsList>;
 
 export interface HttpTimeseriesGroupsBrowserResponseMeta {
@@ -9977,26 +9509,15 @@ export const HttpTopBrowserResponseMetaConfidenceInfo = /*@__PURE__*/ S.suspend(
   identifier: "HttpTopBrowserResponseMetaConfidenceInfo",
 }) as any as S.Schema<HttpTopBrowserResponseMetaConfidenceInfo>;
 
-export interface HttpTopBrowserResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
-export const HttpTopBrowserResponseMetaDateRangeItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-).annotate({
-  identifier: "HttpTopBrowserResponseMetaDateRangeItem",
-}) as any as S.Schema<HttpTopBrowserResponseMetaDateRangeItem>;
+export type HttpTopBrowserResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
+export const HttpTopBrowserResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type HttpTopBrowserResponseMetaDateRangeList =
-  Array<HttpTopBrowserResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const HttpTopBrowserResponseMetaDateRangeList = /*@__PURE__*/ S.Array(
-  HttpTopBrowserResponseMetaDateRangeItem,
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
 ) as any as S.Schema<HttpTopBrowserResponseMetaDateRangeList>;
 
 export type HttpTopBrowserResponseMetaNormalization =
@@ -10010,23 +9531,15 @@ export type HttpTopBrowserResponseMetaNormalization =
   | "RATIO";
 export const HttpTopBrowserResponseMetaNormalization = /*@__PURE__*/ S.String;
 
-export interface HttpTopBrowserResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
-export const HttpTopBrowserResponseMetaUnitsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    value: S.String,
-  }),
-).annotate({
-  identifier: "HttpTopBrowserResponseMetaUnitsItem",
-}) as any as S.Schema<HttpTopBrowserResponseMetaUnitsItem>;
+export type HttpTopBrowserResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
+export const HttpTopBrowserResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type HttpTopBrowserResponseMetaUnitsList =
-  Array<HttpTopBrowserResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const HttpTopBrowserResponseMetaUnitsList = /*@__PURE__*/ S.Array(
-  HttpTopBrowserResponseMetaUnitsItem,
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
 ) as any as S.Schema<HttpTopBrowserResponseMetaUnitsList>;
 
 export interface HttpTopBrowserResponseMeta {
@@ -10051,23 +9564,15 @@ export const HttpTopBrowserResponseMeta = /*@__PURE__*/ S.suspend(() =>
   identifier: "HttpTopBrowserResponseMeta",
 }) as any as S.Schema<HttpTopBrowserResponseMeta>;
 
-export interface HttpTopBrowserResponseTop0Item {
-  name: string;
-  value: string;
-}
-export const HttpTopBrowserResponseTop0Item = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    value: S.String,
-  }),
-).annotate({
-  identifier: "HttpTopBrowserResponseTop0Item",
-}) as any as S.Schema<HttpTopBrowserResponseTop0Item>;
+export type HttpTopBrowserResponseTop0Item =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
+export const HttpTopBrowserResponseTop0Item =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type HttpTopBrowserResponseTop0List =
-  Array<HttpTopBrowserResponseTop0Item>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const HttpTopBrowserResponseTop0List = /*@__PURE__*/ S.Array(
-  HttpTopBrowserResponseTop0Item,
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
 ) as any as S.Schema<HttpTopBrowserResponseTop0List>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -10435,27 +9940,16 @@ export const DnsSummaryCacheHitResponseMetaConfidenceInfo =
     identifier: "DnsSummaryCacheHitResponseMetaConfidenceInfo",
   }) as any as S.Schema<DnsSummaryCacheHitResponseMetaConfidenceInfo>;
 
-export interface DnsSummaryCacheHitResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type DnsSummaryCacheHitResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const DnsSummaryCacheHitResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "DnsSummaryCacheHitResponseMetaDateRangeItem",
-  }) as any as S.Schema<DnsSummaryCacheHitResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type DnsSummaryCacheHitResponseMetaDateRangeList =
-  Array<DnsSummaryCacheHitResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const DnsSummaryCacheHitResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    DnsSummaryCacheHitResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<DnsSummaryCacheHitResponseMetaDateRangeList>;
 
 export type DnsSummaryCacheHitResponseMetaNormalization =
@@ -10470,24 +9964,15 @@ export type DnsSummaryCacheHitResponseMetaNormalization =
 export const DnsSummaryCacheHitResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface DnsSummaryCacheHitResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
-export const DnsSummaryCacheHitResponseMetaUnitsItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-).annotate({
-  identifier: "DnsSummaryCacheHitResponseMetaUnitsItem",
-}) as any as S.Schema<DnsSummaryCacheHitResponseMetaUnitsItem>;
+export type DnsSummaryCacheHitResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
+export const DnsSummaryCacheHitResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type DnsSummaryCacheHitResponseMetaUnitsList =
-  Array<DnsSummaryCacheHitResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const DnsSummaryCacheHitResponseMetaUnitsList = /*@__PURE__*/ S.Array(
-  DnsSummaryCacheHitResponseMetaUnitsItem,
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
 ) as any as S.Schema<DnsSummaryCacheHitResponseMetaUnitsList>;
 
 export interface DnsSummaryCacheHitResponseMeta {
@@ -10948,27 +10433,16 @@ export const DnsTimeseriesGroupsCacheHitResponseMetaConfidenceInfo =
     identifier: "DnsTimeseriesGroupsCacheHitResponseMetaConfidenceInfo",
   }) as any as S.Schema<DnsTimeseriesGroupsCacheHitResponseMetaConfidenceInfo>;
 
-export interface DnsTimeseriesGroupsCacheHitResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type DnsTimeseriesGroupsCacheHitResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const DnsTimeseriesGroupsCacheHitResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "DnsTimeseriesGroupsCacheHitResponseMetaDateRangeItem",
-  }) as any as S.Schema<DnsTimeseriesGroupsCacheHitResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type DnsTimeseriesGroupsCacheHitResponseMetaDateRangeList =
-  Array<DnsTimeseriesGroupsCacheHitResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const DnsTimeseriesGroupsCacheHitResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    DnsTimeseriesGroupsCacheHitResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<DnsTimeseriesGroupsCacheHitResponseMetaDateRangeList>;
 
 export type DnsTimeseriesGroupsCacheHitResponseMetaNormalization =
@@ -10983,25 +10457,16 @@ export type DnsTimeseriesGroupsCacheHitResponseMetaNormalization =
 export const DnsTimeseriesGroupsCacheHitResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface DnsTimeseriesGroupsCacheHitResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type DnsTimeseriesGroupsCacheHitResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const DnsTimeseriesGroupsCacheHitResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "DnsTimeseriesGroupsCacheHitResponseMetaUnitsItem",
-  }) as any as S.Schema<DnsTimeseriesGroupsCacheHitResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type DnsTimeseriesGroupsCacheHitResponseMetaUnitsList =
-  Array<DnsTimeseriesGroupsCacheHitResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const DnsTimeseriesGroupsCacheHitResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    DnsTimeseriesGroupsCacheHitResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<DnsTimeseriesGroupsCacheHitResponseMetaUnitsList>;
 
 export interface DnsTimeseriesGroupsCacheHitResponseMeta {
@@ -11363,27 +10828,16 @@ export const VerifiedBotsTopCategoriesResponseMetaConfidenceInfo =
     identifier: "VerifiedBotsTopCategoriesResponseMetaConfidenceInfo",
   }) as any as S.Schema<VerifiedBotsTopCategoriesResponseMetaConfidenceInfo>;
 
-export interface VerifiedBotsTopCategoriesResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type VerifiedBotsTopCategoriesResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const VerifiedBotsTopCategoriesResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "VerifiedBotsTopCategoriesResponseMetaDateRangeItem",
-  }) as any as S.Schema<VerifiedBotsTopCategoriesResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type VerifiedBotsTopCategoriesResponseMetaDateRangeList =
-  Array<VerifiedBotsTopCategoriesResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const VerifiedBotsTopCategoriesResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    VerifiedBotsTopCategoriesResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<VerifiedBotsTopCategoriesResponseMetaDateRangeList>;
 
 export type VerifiedBotsTopCategoriesResponseMetaNormalization =
@@ -11398,25 +10852,16 @@ export type VerifiedBotsTopCategoriesResponseMetaNormalization =
 export const VerifiedBotsTopCategoriesResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface VerifiedBotsTopCategoriesResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type VerifiedBotsTopCategoriesResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const VerifiedBotsTopCategoriesResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "VerifiedBotsTopCategoriesResponseMetaUnitsItem",
-  }) as any as S.Schema<VerifiedBotsTopCategoriesResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type VerifiedBotsTopCategoriesResponseMetaUnitsList =
-  Array<VerifiedBotsTopCategoriesResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const VerifiedBotsTopCategoriesResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    VerifiedBotsTopCategoriesResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<VerifiedBotsTopCategoriesResponseMetaUnitsList>;
 
 export interface VerifiedBotsTopCategoriesResponseMeta {
@@ -11843,27 +11288,16 @@ export const LeakedCredentialsSummaryCompromisedResponseMetaConfidenceInfo =
     identifier: "LeakedCredentialsSummaryCompromisedResponseMetaConfidenceInfo",
   }) as any as S.Schema<LeakedCredentialsSummaryCompromisedResponseMetaConfidenceInfo>;
 
-export interface LeakedCredentialsSummaryCompromisedResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type LeakedCredentialsSummaryCompromisedResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const LeakedCredentialsSummaryCompromisedResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "LeakedCredentialsSummaryCompromisedResponseMetaDateRangeItem",
-  }) as any as S.Schema<LeakedCredentialsSummaryCompromisedResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type LeakedCredentialsSummaryCompromisedResponseMetaDateRangeList =
-  Array<LeakedCredentialsSummaryCompromisedResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const LeakedCredentialsSummaryCompromisedResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    LeakedCredentialsSummaryCompromisedResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<LeakedCredentialsSummaryCompromisedResponseMetaDateRangeList>;
 
 export type LeakedCredentialsSummaryCompromisedResponseMetaNormalization =
@@ -11878,25 +11312,16 @@ export type LeakedCredentialsSummaryCompromisedResponseMetaNormalization =
 export const LeakedCredentialsSummaryCompromisedResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface LeakedCredentialsSummaryCompromisedResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type LeakedCredentialsSummaryCompromisedResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const LeakedCredentialsSummaryCompromisedResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "LeakedCredentialsSummaryCompromisedResponseMetaUnitsItem",
-  }) as any as S.Schema<LeakedCredentialsSummaryCompromisedResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type LeakedCredentialsSummaryCompromisedResponseMetaUnitsList =
-  Array<LeakedCredentialsSummaryCompromisedResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const LeakedCredentialsSummaryCompromisedResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    LeakedCredentialsSummaryCompromisedResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<LeakedCredentialsSummaryCompromisedResponseMetaUnitsList>;
 
 export interface LeakedCredentialsSummaryCompromisedResponseMeta {
@@ -12195,28 +11620,16 @@ export const LeakedCredentialsTimeseriesGroupsCompromisedResponseMetaConfidenceI
       "LeakedCredentialsTimeseriesGroupsCompromisedResponseMetaConfidenceInfo",
   }) as any as S.Schema<LeakedCredentialsTimeseriesGroupsCompromisedResponseMetaConfidenceInfo>;
 
-export interface LeakedCredentialsTimeseriesGroupsCompromisedResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type LeakedCredentialsTimeseriesGroupsCompromisedResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const LeakedCredentialsTimeseriesGroupsCompromisedResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "LeakedCredentialsTimeseriesGroupsCompromisedResponseMetaDateRangeItem",
-  }) as any as S.Schema<LeakedCredentialsTimeseriesGroupsCompromisedResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type LeakedCredentialsTimeseriesGroupsCompromisedResponseMetaDateRangeList =
-  Array<LeakedCredentialsTimeseriesGroupsCompromisedResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const LeakedCredentialsTimeseriesGroupsCompromisedResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    LeakedCredentialsTimeseriesGroupsCompromisedResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<LeakedCredentialsTimeseriesGroupsCompromisedResponseMetaDateRangeList>;
 
 export type LeakedCredentialsTimeseriesGroupsCompromisedResponseMetaNormalization =
@@ -12231,26 +11644,16 @@ export type LeakedCredentialsTimeseriesGroupsCompromisedResponseMetaNormalizatio
 export const LeakedCredentialsTimeseriesGroupsCompromisedResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface LeakedCredentialsTimeseriesGroupsCompromisedResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type LeakedCredentialsTimeseriesGroupsCompromisedResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const LeakedCredentialsTimeseriesGroupsCompromisedResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "LeakedCredentialsTimeseriesGroupsCompromisedResponseMetaUnitsItem",
-  }) as any as S.Schema<LeakedCredentialsTimeseriesGroupsCompromisedResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type LeakedCredentialsTimeseriesGroupsCompromisedResponseMetaUnitsList =
-  Array<LeakedCredentialsTimeseriesGroupsCompromisedResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const LeakedCredentialsTimeseriesGroupsCompromisedResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    LeakedCredentialsTimeseriesGroupsCompromisedResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<LeakedCredentialsTimeseriesGroupsCompromisedResponseMetaUnitsList>;
 
 export interface LeakedCredentialsTimeseriesGroupsCompromisedResponseMeta {
@@ -12672,27 +12075,16 @@ export const HttpSummaryDeviceTypeResponseMetaConfidenceInfo =
     identifier: "HttpSummaryDeviceTypeResponseMetaConfidenceInfo",
   }) as any as S.Schema<HttpSummaryDeviceTypeResponseMetaConfidenceInfo>;
 
-export interface HttpSummaryDeviceTypeResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type HttpSummaryDeviceTypeResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const HttpSummaryDeviceTypeResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "HttpSummaryDeviceTypeResponseMetaDateRangeItem",
-  }) as any as S.Schema<HttpSummaryDeviceTypeResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type HttpSummaryDeviceTypeResponseMetaDateRangeList =
-  Array<HttpSummaryDeviceTypeResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const HttpSummaryDeviceTypeResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    HttpSummaryDeviceTypeResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<HttpSummaryDeviceTypeResponseMetaDateRangeList>;
 
 export type HttpSummaryDeviceTypeResponseMetaNormalization =
@@ -12707,24 +12099,15 @@ export type HttpSummaryDeviceTypeResponseMetaNormalization =
 export const HttpSummaryDeviceTypeResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface HttpSummaryDeviceTypeResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type HttpSummaryDeviceTypeResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const HttpSummaryDeviceTypeResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "HttpSummaryDeviceTypeResponseMetaUnitsItem",
-  }) as any as S.Schema<HttpSummaryDeviceTypeResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type HttpSummaryDeviceTypeResponseMetaUnitsList =
-  Array<HttpSummaryDeviceTypeResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const HttpSummaryDeviceTypeResponseMetaUnitsList = /*@__PURE__*/ S.Array(
-  HttpSummaryDeviceTypeResponseMetaUnitsItem,
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
 ) as any as S.Schema<HttpSummaryDeviceTypeResponseMetaUnitsList>;
 
 export interface HttpSummaryDeviceTypeResponseMeta {
@@ -13168,27 +12551,16 @@ export const HttpTimeseriesGroupsDeviceTypeResponseMetaConfidenceInfo =
     identifier: "HttpTimeseriesGroupsDeviceTypeResponseMetaConfidenceInfo",
   }) as any as S.Schema<HttpTimeseriesGroupsDeviceTypeResponseMetaConfidenceInfo>;
 
-export interface HttpTimeseriesGroupsDeviceTypeResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type HttpTimeseriesGroupsDeviceTypeResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const HttpTimeseriesGroupsDeviceTypeResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "HttpTimeseriesGroupsDeviceTypeResponseMetaDateRangeItem",
-  }) as any as S.Schema<HttpTimeseriesGroupsDeviceTypeResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type HttpTimeseriesGroupsDeviceTypeResponseMetaDateRangeList =
-  Array<HttpTimeseriesGroupsDeviceTypeResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const HttpTimeseriesGroupsDeviceTypeResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    HttpTimeseriesGroupsDeviceTypeResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<HttpTimeseriesGroupsDeviceTypeResponseMetaDateRangeList>;
 
 export type HttpTimeseriesGroupsDeviceTypeResponseMetaNormalization =
@@ -13203,25 +12575,16 @@ export type HttpTimeseriesGroupsDeviceTypeResponseMetaNormalization =
 export const HttpTimeseriesGroupsDeviceTypeResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface HttpTimeseriesGroupsDeviceTypeResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type HttpTimeseriesGroupsDeviceTypeResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const HttpTimeseriesGroupsDeviceTypeResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "HttpTimeseriesGroupsDeviceTypeResponseMetaUnitsItem",
-  }) as any as S.Schema<HttpTimeseriesGroupsDeviceTypeResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type HttpTimeseriesGroupsDeviceTypeResponseMetaUnitsList =
-  Array<HttpTimeseriesGroupsDeviceTypeResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const HttpTimeseriesGroupsDeviceTypeResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    HttpTimeseriesGroupsDeviceTypeResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<HttpTimeseriesGroupsDeviceTypeResponseMetaUnitsList>;
 
 export interface HttpTimeseriesGroupsDeviceTypeResponseMeta {
@@ -13505,27 +12868,16 @@ export const RobotsTxtTopUserAgentsDirectiveResponseMetaConfidenceInfo =
     identifier: "RobotsTxtTopUserAgentsDirectiveResponseMetaConfidenceInfo",
   }) as any as S.Schema<RobotsTxtTopUserAgentsDirectiveResponseMetaConfidenceInfo>;
 
-export interface RobotsTxtTopUserAgentsDirectiveResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type RobotsTxtTopUserAgentsDirectiveResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const RobotsTxtTopUserAgentsDirectiveResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "RobotsTxtTopUserAgentsDirectiveResponseMetaDateRangeItem",
-  }) as any as S.Schema<RobotsTxtTopUserAgentsDirectiveResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type RobotsTxtTopUserAgentsDirectiveResponseMetaDateRangeList =
-  Array<RobotsTxtTopUserAgentsDirectiveResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const RobotsTxtTopUserAgentsDirectiveResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    RobotsTxtTopUserAgentsDirectiveResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<RobotsTxtTopUserAgentsDirectiveResponseMetaDateRangeList>;
 
 export type RobotsTxtTopUserAgentsDirectiveResponseMetaNormalization =
@@ -13540,25 +12892,16 @@ export type RobotsTxtTopUserAgentsDirectiveResponseMetaNormalization =
 export const RobotsTxtTopUserAgentsDirectiveResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface RobotsTxtTopUserAgentsDirectiveResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type RobotsTxtTopUserAgentsDirectiveResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const RobotsTxtTopUserAgentsDirectiveResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "RobotsTxtTopUserAgentsDirectiveResponseMetaUnitsItem",
-  }) as any as S.Schema<RobotsTxtTopUserAgentsDirectiveResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type RobotsTxtTopUserAgentsDirectiveResponseMetaUnitsList =
-  Array<RobotsTxtTopUserAgentsDirectiveResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const RobotsTxtTopUserAgentsDirectiveResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    RobotsTxtTopUserAgentsDirectiveResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<RobotsTxtTopUserAgentsDirectiveResponseMetaUnitsList>;
 
 export interface RobotsTxtTopUserAgentsDirectiveResponseMeta {
@@ -13866,27 +13209,16 @@ export const EmailRoutingSummaryDkimResponseMetaConfidenceInfo =
     identifier: "EmailRoutingSummaryDkimResponseMetaConfidenceInfo",
   }) as any as S.Schema<EmailRoutingSummaryDkimResponseMetaConfidenceInfo>;
 
-export interface EmailRoutingSummaryDkimResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type EmailRoutingSummaryDkimResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const EmailRoutingSummaryDkimResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "EmailRoutingSummaryDkimResponseMetaDateRangeItem",
-  }) as any as S.Schema<EmailRoutingSummaryDkimResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type EmailRoutingSummaryDkimResponseMetaDateRangeList =
-  Array<EmailRoutingSummaryDkimResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const EmailRoutingSummaryDkimResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    EmailRoutingSummaryDkimResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<EmailRoutingSummaryDkimResponseMetaDateRangeList>;
 
 export type EmailRoutingSummaryDkimResponseMetaNormalization =
@@ -13901,25 +13233,16 @@ export type EmailRoutingSummaryDkimResponseMetaNormalization =
 export const EmailRoutingSummaryDkimResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface EmailRoutingSummaryDkimResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type EmailRoutingSummaryDkimResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const EmailRoutingSummaryDkimResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "EmailRoutingSummaryDkimResponseMetaUnitsItem",
-  }) as any as S.Schema<EmailRoutingSummaryDkimResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type EmailRoutingSummaryDkimResponseMetaUnitsList =
-  Array<EmailRoutingSummaryDkimResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const EmailRoutingSummaryDkimResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    EmailRoutingSummaryDkimResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<EmailRoutingSummaryDkimResponseMetaUnitsList>;
 
 export interface EmailRoutingSummaryDkimResponseMeta {
@@ -13944,35 +13267,21 @@ export const EmailRoutingSummaryDkimResponseMeta = /*@__PURE__*/ S.suspend(() =>
   identifier: "EmailRoutingSummaryDkimResponseMeta",
 }) as any as S.Schema<EmailRoutingSummaryDkimResponseMeta>;
 
-export interface EmailRoutingSummaryDkimResponseSummary0 {
-  /** A numeric string. */
-  fAIL: string;
-  /** A numeric string. */
-  nONE: string;
-  /** A numeric string. */
-  pASS: string;
-}
-export const EmailRoutingSummaryDkimResponseSummary0 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      fAIL: S.String.pipe(T.Body("FAIL")),
-      nONE: S.String.pipe(T.Body("NONE")),
-      pASS: S.String.pipe(T.Body("PASS")),
-    }),
-).annotate({
-  identifier: "EmailRoutingSummaryDkimResponseSummary0",
-}) as any as S.Schema<EmailRoutingSummaryDkimResponseSummary0>;
+export type EmailRoutingSummaryDkimResponseSummary0 =
+  EmailRoutingSummaryArcResponseSummary0;
+export const EmailRoutingSummaryDkimResponseSummary0 =
+  EmailRoutingSummaryArcResponseSummary0;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DkimEmailRoutingSummaryResponse {
   /** Metadata for the results. */
   meta: EmailRoutingSummaryDkimResponseMeta;
-  summary_0: EmailRoutingSummaryDkimResponseSummary0;
+  summary_0: EmailRoutingSummaryArcResponseSummary0;
 }
 export const DkimEmailRoutingSummaryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: EmailRoutingSummaryDkimResponseMeta,
-    summary_0: EmailRoutingSummaryDkimResponseSummary0,
+    summary_0: EmailRoutingSummaryArcResponseSummary0,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DkimEmailRoutingSummaryResponse",
@@ -14276,27 +13585,16 @@ export const EmailRoutingTimeseriesGroupsDkimResponseMetaConfidenceInfo =
     identifier: "EmailRoutingTimeseriesGroupsDkimResponseMetaConfidenceInfo",
   }) as any as S.Schema<EmailRoutingTimeseriesGroupsDkimResponseMetaConfidenceInfo>;
 
-export interface EmailRoutingTimeseriesGroupsDkimResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type EmailRoutingTimeseriesGroupsDkimResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const EmailRoutingTimeseriesGroupsDkimResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "EmailRoutingTimeseriesGroupsDkimResponseMetaDateRangeItem",
-  }) as any as S.Schema<EmailRoutingTimeseriesGroupsDkimResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type EmailRoutingTimeseriesGroupsDkimResponseMetaDateRangeList =
-  Array<EmailRoutingTimeseriesGroupsDkimResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const EmailRoutingTimeseriesGroupsDkimResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    EmailRoutingTimeseriesGroupsDkimResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<EmailRoutingTimeseriesGroupsDkimResponseMetaDateRangeList>;
 
 export type EmailRoutingTimeseriesGroupsDkimResponseMetaNormalization =
@@ -14311,25 +13609,16 @@ export type EmailRoutingTimeseriesGroupsDkimResponseMetaNormalization =
 export const EmailRoutingTimeseriesGroupsDkimResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface EmailRoutingTimeseriesGroupsDkimResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type EmailRoutingTimeseriesGroupsDkimResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const EmailRoutingTimeseriesGroupsDkimResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "EmailRoutingTimeseriesGroupsDkimResponseMetaUnitsItem",
-  }) as any as S.Schema<EmailRoutingTimeseriesGroupsDkimResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type EmailRoutingTimeseriesGroupsDkimResponseMetaUnitsList =
-  Array<EmailRoutingTimeseriesGroupsDkimResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const EmailRoutingTimeseriesGroupsDkimResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    EmailRoutingTimeseriesGroupsDkimResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<EmailRoutingTimeseriesGroupsDkimResponseMetaUnitsList>;
 
 export interface EmailRoutingTimeseriesGroupsDkimResponseMeta {
@@ -14645,27 +13934,16 @@ export const EmailSecuritySummaryDkimResponseMetaConfidenceInfo =
     identifier: "EmailSecuritySummaryDkimResponseMetaConfidenceInfo",
   }) as any as S.Schema<EmailSecuritySummaryDkimResponseMetaConfidenceInfo>;
 
-export interface EmailSecuritySummaryDkimResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type EmailSecuritySummaryDkimResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const EmailSecuritySummaryDkimResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "EmailSecuritySummaryDkimResponseMetaDateRangeItem",
-  }) as any as S.Schema<EmailSecuritySummaryDkimResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type EmailSecuritySummaryDkimResponseMetaDateRangeList =
-  Array<EmailSecuritySummaryDkimResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const EmailSecuritySummaryDkimResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    EmailSecuritySummaryDkimResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<EmailSecuritySummaryDkimResponseMetaDateRangeList>;
 
 export type EmailSecuritySummaryDkimResponseMetaNormalization =
@@ -14680,25 +13958,16 @@ export type EmailSecuritySummaryDkimResponseMetaNormalization =
 export const EmailSecuritySummaryDkimResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface EmailSecuritySummaryDkimResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type EmailSecuritySummaryDkimResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const EmailSecuritySummaryDkimResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "EmailSecuritySummaryDkimResponseMetaUnitsItem",
-  }) as any as S.Schema<EmailSecuritySummaryDkimResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type EmailSecuritySummaryDkimResponseMetaUnitsList =
-  Array<EmailSecuritySummaryDkimResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const EmailSecuritySummaryDkimResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    EmailSecuritySummaryDkimResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<EmailSecuritySummaryDkimResponseMetaUnitsList>;
 
 export interface EmailSecuritySummaryDkimResponseMeta {
@@ -14724,35 +13993,21 @@ export const EmailSecuritySummaryDkimResponseMeta = /*@__PURE__*/ S.suspend(
   identifier: "EmailSecuritySummaryDkimResponseMeta",
 }) as any as S.Schema<EmailSecuritySummaryDkimResponseMeta>;
 
-export interface EmailSecuritySummaryDkimResponseSummary0 {
-  /** A numeric string. */
-  fAIL: string;
-  /** A numeric string. */
-  nONE: string;
-  /** A numeric string. */
-  pASS: string;
-}
-export const EmailSecuritySummaryDkimResponseSummary0 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      fAIL: S.String.pipe(T.Body("FAIL")),
-      nONE: S.String.pipe(T.Body("NONE")),
-      pASS: S.String.pipe(T.Body("PASS")),
-    }),
-).annotate({
-  identifier: "EmailSecuritySummaryDkimResponseSummary0",
-}) as any as S.Schema<EmailSecuritySummaryDkimResponseSummary0>;
+export type EmailSecuritySummaryDkimResponseSummary0 =
+  EmailRoutingSummaryArcResponseSummary0;
+export const EmailSecuritySummaryDkimResponseSummary0 =
+  EmailRoutingSummaryArcResponseSummary0;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DkimEmailSecuritySummaryResponse {
   /** Metadata for the results. */
   meta: EmailSecuritySummaryDkimResponseMeta;
-  summary_0: EmailSecuritySummaryDkimResponseSummary0;
+  summary_0: EmailRoutingSummaryArcResponseSummary0;
 }
 export const DkimEmailSecuritySummaryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: EmailSecuritySummaryDkimResponseMeta,
-    summary_0: EmailSecuritySummaryDkimResponseSummary0,
+    summary_0: EmailRoutingSummaryArcResponseSummary0,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DkimEmailSecuritySummaryResponse",
@@ -15041,27 +14296,16 @@ export const EmailSecurityTimeseriesGroupsDkimResponseMetaConfidenceInfo =
     identifier: "EmailSecurityTimeseriesGroupsDkimResponseMetaConfidenceInfo",
   }) as any as S.Schema<EmailSecurityTimeseriesGroupsDkimResponseMetaConfidenceInfo>;
 
-export interface EmailSecurityTimeseriesGroupsDkimResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type EmailSecurityTimeseriesGroupsDkimResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const EmailSecurityTimeseriesGroupsDkimResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "EmailSecurityTimeseriesGroupsDkimResponseMetaDateRangeItem",
-  }) as any as S.Schema<EmailSecurityTimeseriesGroupsDkimResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type EmailSecurityTimeseriesGroupsDkimResponseMetaDateRangeList =
-  Array<EmailSecurityTimeseriesGroupsDkimResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const EmailSecurityTimeseriesGroupsDkimResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    EmailSecurityTimeseriesGroupsDkimResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<EmailSecurityTimeseriesGroupsDkimResponseMetaDateRangeList>;
 
 export type EmailSecurityTimeseriesGroupsDkimResponseMetaNormalization =
@@ -15076,25 +14320,16 @@ export type EmailSecurityTimeseriesGroupsDkimResponseMetaNormalization =
 export const EmailSecurityTimeseriesGroupsDkimResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface EmailSecurityTimeseriesGroupsDkimResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type EmailSecurityTimeseriesGroupsDkimResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const EmailSecurityTimeseriesGroupsDkimResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "EmailSecurityTimeseriesGroupsDkimResponseMetaUnitsItem",
-  }) as any as S.Schema<EmailSecurityTimeseriesGroupsDkimResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type EmailSecurityTimeseriesGroupsDkimResponseMetaUnitsList =
-  Array<EmailSecurityTimeseriesGroupsDkimResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const EmailSecurityTimeseriesGroupsDkimResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    EmailSecurityTimeseriesGroupsDkimResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<EmailSecurityTimeseriesGroupsDkimResponseMetaUnitsList>;
 
 export interface EmailSecurityTimeseriesGroupsDkimResponseMeta {
@@ -15424,27 +14659,16 @@ export const EmailRoutingSummaryDmarcResponseMetaConfidenceInfo =
     identifier: "EmailRoutingSummaryDmarcResponseMetaConfidenceInfo",
   }) as any as S.Schema<EmailRoutingSummaryDmarcResponseMetaConfidenceInfo>;
 
-export interface EmailRoutingSummaryDmarcResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type EmailRoutingSummaryDmarcResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const EmailRoutingSummaryDmarcResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "EmailRoutingSummaryDmarcResponseMetaDateRangeItem",
-  }) as any as S.Schema<EmailRoutingSummaryDmarcResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type EmailRoutingSummaryDmarcResponseMetaDateRangeList =
-  Array<EmailRoutingSummaryDmarcResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const EmailRoutingSummaryDmarcResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    EmailRoutingSummaryDmarcResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<EmailRoutingSummaryDmarcResponseMetaDateRangeList>;
 
 export type EmailRoutingSummaryDmarcResponseMetaNormalization =
@@ -15459,25 +14683,16 @@ export type EmailRoutingSummaryDmarcResponseMetaNormalization =
 export const EmailRoutingSummaryDmarcResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface EmailRoutingSummaryDmarcResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type EmailRoutingSummaryDmarcResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const EmailRoutingSummaryDmarcResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "EmailRoutingSummaryDmarcResponseMetaUnitsItem",
-  }) as any as S.Schema<EmailRoutingSummaryDmarcResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type EmailRoutingSummaryDmarcResponseMetaUnitsList =
-  Array<EmailRoutingSummaryDmarcResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const EmailRoutingSummaryDmarcResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    EmailRoutingSummaryDmarcResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<EmailRoutingSummaryDmarcResponseMetaUnitsList>;
 
 export interface EmailRoutingSummaryDmarcResponseMeta {
@@ -15503,35 +14718,21 @@ export const EmailRoutingSummaryDmarcResponseMeta = /*@__PURE__*/ S.suspend(
   identifier: "EmailRoutingSummaryDmarcResponseMeta",
 }) as any as S.Schema<EmailRoutingSummaryDmarcResponseMeta>;
 
-export interface EmailRoutingSummaryDmarcResponseSummary0 {
-  /** A numeric string. */
-  fAIL: string;
-  /** A numeric string. */
-  nONE: string;
-  /** A numeric string. */
-  pASS: string;
-}
-export const EmailRoutingSummaryDmarcResponseSummary0 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      fAIL: S.String.pipe(T.Body("FAIL")),
-      nONE: S.String.pipe(T.Body("NONE")),
-      pASS: S.String.pipe(T.Body("PASS")),
-    }),
-).annotate({
-  identifier: "EmailRoutingSummaryDmarcResponseSummary0",
-}) as any as S.Schema<EmailRoutingSummaryDmarcResponseSummary0>;
+export type EmailRoutingSummaryDmarcResponseSummary0 =
+  EmailRoutingSummaryArcResponseSummary0;
+export const EmailRoutingSummaryDmarcResponseSummary0 =
+  EmailRoutingSummaryArcResponseSummary0;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DmarcEmailRoutingSummaryResponse {
   /** Metadata for the results. */
   meta: EmailRoutingSummaryDmarcResponseMeta;
-  summary_0: EmailRoutingSummaryDmarcResponseSummary0;
+  summary_0: EmailRoutingSummaryArcResponseSummary0;
 }
 export const DmarcEmailRoutingSummaryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: EmailRoutingSummaryDmarcResponseMeta,
-    summary_0: EmailRoutingSummaryDmarcResponseSummary0,
+    summary_0: EmailRoutingSummaryArcResponseSummary0,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DmarcEmailRoutingSummaryResponse",
@@ -15835,27 +15036,16 @@ export const EmailRoutingTimeseriesGroupsDmarcResponseMetaConfidenceInfo =
     identifier: "EmailRoutingTimeseriesGroupsDmarcResponseMetaConfidenceInfo",
   }) as any as S.Schema<EmailRoutingTimeseriesGroupsDmarcResponseMetaConfidenceInfo>;
 
-export interface EmailRoutingTimeseriesGroupsDmarcResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type EmailRoutingTimeseriesGroupsDmarcResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const EmailRoutingTimeseriesGroupsDmarcResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "EmailRoutingTimeseriesGroupsDmarcResponseMetaDateRangeItem",
-  }) as any as S.Schema<EmailRoutingTimeseriesGroupsDmarcResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type EmailRoutingTimeseriesGroupsDmarcResponseMetaDateRangeList =
-  Array<EmailRoutingTimeseriesGroupsDmarcResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const EmailRoutingTimeseriesGroupsDmarcResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    EmailRoutingTimeseriesGroupsDmarcResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<EmailRoutingTimeseriesGroupsDmarcResponseMetaDateRangeList>;
 
 export type EmailRoutingTimeseriesGroupsDmarcResponseMetaNormalization =
@@ -15870,25 +15060,16 @@ export type EmailRoutingTimeseriesGroupsDmarcResponseMetaNormalization =
 export const EmailRoutingTimeseriesGroupsDmarcResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface EmailRoutingTimeseriesGroupsDmarcResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type EmailRoutingTimeseriesGroupsDmarcResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const EmailRoutingTimeseriesGroupsDmarcResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "EmailRoutingTimeseriesGroupsDmarcResponseMetaUnitsItem",
-  }) as any as S.Schema<EmailRoutingTimeseriesGroupsDmarcResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type EmailRoutingTimeseriesGroupsDmarcResponseMetaUnitsList =
-  Array<EmailRoutingTimeseriesGroupsDmarcResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const EmailRoutingTimeseriesGroupsDmarcResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    EmailRoutingTimeseriesGroupsDmarcResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<EmailRoutingTimeseriesGroupsDmarcResponseMetaUnitsList>;
 
 export interface EmailRoutingTimeseriesGroupsDmarcResponseMeta {
@@ -16206,27 +15387,16 @@ export const EmailSecuritySummaryDmarcResponseMetaConfidenceInfo =
     identifier: "EmailSecuritySummaryDmarcResponseMetaConfidenceInfo",
   }) as any as S.Schema<EmailSecuritySummaryDmarcResponseMetaConfidenceInfo>;
 
-export interface EmailSecuritySummaryDmarcResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type EmailSecuritySummaryDmarcResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const EmailSecuritySummaryDmarcResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "EmailSecuritySummaryDmarcResponseMetaDateRangeItem",
-  }) as any as S.Schema<EmailSecuritySummaryDmarcResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type EmailSecuritySummaryDmarcResponseMetaDateRangeList =
-  Array<EmailSecuritySummaryDmarcResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const EmailSecuritySummaryDmarcResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    EmailSecuritySummaryDmarcResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<EmailSecuritySummaryDmarcResponseMetaDateRangeList>;
 
 export type EmailSecuritySummaryDmarcResponseMetaNormalization =
@@ -16241,25 +15411,16 @@ export type EmailSecuritySummaryDmarcResponseMetaNormalization =
 export const EmailSecuritySummaryDmarcResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface EmailSecuritySummaryDmarcResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type EmailSecuritySummaryDmarcResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const EmailSecuritySummaryDmarcResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "EmailSecuritySummaryDmarcResponseMetaUnitsItem",
-  }) as any as S.Schema<EmailSecuritySummaryDmarcResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type EmailSecuritySummaryDmarcResponseMetaUnitsList =
-  Array<EmailSecuritySummaryDmarcResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const EmailSecuritySummaryDmarcResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    EmailSecuritySummaryDmarcResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<EmailSecuritySummaryDmarcResponseMetaUnitsList>;
 
 export interface EmailSecuritySummaryDmarcResponseMeta {
@@ -16285,35 +15446,21 @@ export const EmailSecuritySummaryDmarcResponseMeta = /*@__PURE__*/ S.suspend(
   identifier: "EmailSecuritySummaryDmarcResponseMeta",
 }) as any as S.Schema<EmailSecuritySummaryDmarcResponseMeta>;
 
-export interface EmailSecuritySummaryDmarcResponseSummary0 {
-  /** A numeric string. */
-  fAIL: string;
-  /** A numeric string. */
-  nONE: string;
-  /** A numeric string. */
-  pASS: string;
-}
+export type EmailSecuritySummaryDmarcResponseSummary0 =
+  EmailRoutingSummaryArcResponseSummary0;
 export const EmailSecuritySummaryDmarcResponseSummary0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      fAIL: S.String.pipe(T.Body("FAIL")),
-      nONE: S.String.pipe(T.Body("NONE")),
-      pASS: S.String.pipe(T.Body("PASS")),
-    }),
-  ).annotate({
-    identifier: "EmailSecuritySummaryDmarcResponseSummary0",
-  }) as any as S.Schema<EmailSecuritySummaryDmarcResponseSummary0>;
+  EmailRoutingSummaryArcResponseSummary0;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DmarcEmailSecuritySummaryResponse {
   /** Metadata for the results. */
   meta: EmailSecuritySummaryDmarcResponseMeta;
-  summary_0: EmailSecuritySummaryDmarcResponseSummary0;
+  summary_0: EmailRoutingSummaryArcResponseSummary0;
 }
 export const DmarcEmailSecuritySummaryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: EmailSecuritySummaryDmarcResponseMeta,
-    summary_0: EmailSecuritySummaryDmarcResponseSummary0,
+    summary_0: EmailRoutingSummaryArcResponseSummary0,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DmarcEmailSecuritySummaryResponse",
@@ -16603,27 +15750,16 @@ export const EmailSecurityTimeseriesGroupsDmarcResponseMetaConfidenceInfo =
     identifier: "EmailSecurityTimeseriesGroupsDmarcResponseMetaConfidenceInfo",
   }) as any as S.Schema<EmailSecurityTimeseriesGroupsDmarcResponseMetaConfidenceInfo>;
 
-export interface EmailSecurityTimeseriesGroupsDmarcResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type EmailSecurityTimeseriesGroupsDmarcResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const EmailSecurityTimeseriesGroupsDmarcResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "EmailSecurityTimeseriesGroupsDmarcResponseMetaDateRangeItem",
-  }) as any as S.Schema<EmailSecurityTimeseriesGroupsDmarcResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type EmailSecurityTimeseriesGroupsDmarcResponseMetaDateRangeList =
-  Array<EmailSecurityTimeseriesGroupsDmarcResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const EmailSecurityTimeseriesGroupsDmarcResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    EmailSecurityTimeseriesGroupsDmarcResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<EmailSecurityTimeseriesGroupsDmarcResponseMetaDateRangeList>;
 
 export type EmailSecurityTimeseriesGroupsDmarcResponseMetaNormalization =
@@ -16638,25 +15774,16 @@ export type EmailSecurityTimeseriesGroupsDmarcResponseMetaNormalization =
 export const EmailSecurityTimeseriesGroupsDmarcResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface EmailSecurityTimeseriesGroupsDmarcResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type EmailSecurityTimeseriesGroupsDmarcResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const EmailSecurityTimeseriesGroupsDmarcResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "EmailSecurityTimeseriesGroupsDmarcResponseMetaUnitsItem",
-  }) as any as S.Schema<EmailSecurityTimeseriesGroupsDmarcResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type EmailSecurityTimeseriesGroupsDmarcResponseMetaUnitsList =
-  Array<EmailSecurityTimeseriesGroupsDmarcResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const EmailSecurityTimeseriesGroupsDmarcResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    EmailSecurityTimeseriesGroupsDmarcResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<EmailSecurityTimeseriesGroupsDmarcResponseMetaUnitsList>;
 
 export interface EmailSecurityTimeseriesGroupsDmarcResponseMeta {
@@ -17072,27 +16199,16 @@ export const As112SummaryDnssecResponseMetaConfidenceInfo =
     identifier: "As112SummaryDnssecResponseMetaConfidenceInfo",
   }) as any as S.Schema<As112SummaryDnssecResponseMetaConfidenceInfo>;
 
-export interface As112SummaryDnssecResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type As112SummaryDnssecResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const As112SummaryDnssecResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "As112SummaryDnssecResponseMetaDateRangeItem",
-  }) as any as S.Schema<As112SummaryDnssecResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type As112SummaryDnssecResponseMetaDateRangeList =
-  Array<As112SummaryDnssecResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const As112SummaryDnssecResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    As112SummaryDnssecResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<As112SummaryDnssecResponseMetaDateRangeList>;
 
 export type As112SummaryDnssecResponseMetaNormalization =
@@ -17107,24 +16223,15 @@ export type As112SummaryDnssecResponseMetaNormalization =
 export const As112SummaryDnssecResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface As112SummaryDnssecResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
-export const As112SummaryDnssecResponseMetaUnitsItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-).annotate({
-  identifier: "As112SummaryDnssecResponseMetaUnitsItem",
-}) as any as S.Schema<As112SummaryDnssecResponseMetaUnitsItem>;
+export type As112SummaryDnssecResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
+export const As112SummaryDnssecResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type As112SummaryDnssecResponseMetaUnitsList =
-  Array<As112SummaryDnssecResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const As112SummaryDnssecResponseMetaUnitsList = /*@__PURE__*/ S.Array(
-  As112SummaryDnssecResponseMetaUnitsItem,
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
 ) as any as S.Schema<As112SummaryDnssecResponseMetaUnitsList>;
 
 export interface As112SummaryDnssecResponseMeta {
@@ -17558,27 +16665,16 @@ export const As112TimeseriesGroupsDnssecResponseMetaConfidenceInfo =
     identifier: "As112TimeseriesGroupsDnssecResponseMetaConfidenceInfo",
   }) as any as S.Schema<As112TimeseriesGroupsDnssecResponseMetaConfidenceInfo>;
 
-export interface As112TimeseriesGroupsDnssecResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type As112TimeseriesGroupsDnssecResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const As112TimeseriesGroupsDnssecResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "As112TimeseriesGroupsDnssecResponseMetaDateRangeItem",
-  }) as any as S.Schema<As112TimeseriesGroupsDnssecResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type As112TimeseriesGroupsDnssecResponseMetaDateRangeList =
-  Array<As112TimeseriesGroupsDnssecResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const As112TimeseriesGroupsDnssecResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    As112TimeseriesGroupsDnssecResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<As112TimeseriesGroupsDnssecResponseMetaDateRangeList>;
 
 export type As112TimeseriesGroupsDnssecResponseMetaNormalization =
@@ -17593,25 +16689,16 @@ export type As112TimeseriesGroupsDnssecResponseMetaNormalization =
 export const As112TimeseriesGroupsDnssecResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface As112TimeseriesGroupsDnssecResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type As112TimeseriesGroupsDnssecResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const As112TimeseriesGroupsDnssecResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "As112TimeseriesGroupsDnssecResponseMetaUnitsItem",
-  }) as any as S.Schema<As112TimeseriesGroupsDnssecResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type As112TimeseriesGroupsDnssecResponseMetaUnitsList =
-  Array<As112TimeseriesGroupsDnssecResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const As112TimeseriesGroupsDnssecResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    As112TimeseriesGroupsDnssecResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<As112TimeseriesGroupsDnssecResponseMetaUnitsList>;
 
 export interface As112TimeseriesGroupsDnssecResponseMeta {
@@ -17871,26 +16958,15 @@ export const As112TopDnssecResponseMetaConfidenceInfo = /*@__PURE__*/ S.suspend(
   identifier: "As112TopDnssecResponseMetaConfidenceInfo",
 }) as any as S.Schema<As112TopDnssecResponseMetaConfidenceInfo>;
 
-export interface As112TopDnssecResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
-export const As112TopDnssecResponseMetaDateRangeItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-).annotate({
-  identifier: "As112TopDnssecResponseMetaDateRangeItem",
-}) as any as S.Schema<As112TopDnssecResponseMetaDateRangeItem>;
+export type As112TopDnssecResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
+export const As112TopDnssecResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type As112TopDnssecResponseMetaDateRangeList =
-  Array<As112TopDnssecResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const As112TopDnssecResponseMetaDateRangeList = /*@__PURE__*/ S.Array(
-  As112TopDnssecResponseMetaDateRangeItem,
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
 ) as any as S.Schema<As112TopDnssecResponseMetaDateRangeList>;
 
 export type As112TopDnssecResponseMetaNormalization =
@@ -17904,23 +16980,15 @@ export type As112TopDnssecResponseMetaNormalization =
   | "RATIO";
 export const As112TopDnssecResponseMetaNormalization = /*@__PURE__*/ S.String;
 
-export interface As112TopDnssecResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
-export const As112TopDnssecResponseMetaUnitsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    value: S.String,
-  }),
-).annotate({
-  identifier: "As112TopDnssecResponseMetaUnitsItem",
-}) as any as S.Schema<As112TopDnssecResponseMetaUnitsItem>;
+export type As112TopDnssecResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
+export const As112TopDnssecResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type As112TopDnssecResponseMetaUnitsList =
-  Array<As112TopDnssecResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const As112TopDnssecResponseMetaUnitsList = /*@__PURE__*/ S.Array(
-  As112TopDnssecResponseMetaUnitsItem,
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
 ) as any as S.Schema<As112TopDnssecResponseMetaUnitsList>;
 
 export interface As112TopDnssecResponseMeta {
@@ -18349,27 +17417,16 @@ export const DnsSummaryDnssecAwareResponseMetaConfidenceInfo =
     identifier: "DnsSummaryDnssecAwareResponseMetaConfidenceInfo",
   }) as any as S.Schema<DnsSummaryDnssecAwareResponseMetaConfidenceInfo>;
 
-export interface DnsSummaryDnssecAwareResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type DnsSummaryDnssecAwareResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const DnsSummaryDnssecAwareResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "DnsSummaryDnssecAwareResponseMetaDateRangeItem",
-  }) as any as S.Schema<DnsSummaryDnssecAwareResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type DnsSummaryDnssecAwareResponseMetaDateRangeList =
-  Array<DnsSummaryDnssecAwareResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const DnsSummaryDnssecAwareResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    DnsSummaryDnssecAwareResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<DnsSummaryDnssecAwareResponseMetaDateRangeList>;
 
 export type DnsSummaryDnssecAwareResponseMetaNormalization =
@@ -18384,24 +17441,15 @@ export type DnsSummaryDnssecAwareResponseMetaNormalization =
 export const DnsSummaryDnssecAwareResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface DnsSummaryDnssecAwareResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type DnsSummaryDnssecAwareResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const DnsSummaryDnssecAwareResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "DnsSummaryDnssecAwareResponseMetaUnitsItem",
-  }) as any as S.Schema<DnsSummaryDnssecAwareResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type DnsSummaryDnssecAwareResponseMetaUnitsList =
-  Array<DnsSummaryDnssecAwareResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const DnsSummaryDnssecAwareResponseMetaUnitsList = /*@__PURE__*/ S.Array(
-  DnsSummaryDnssecAwareResponseMetaUnitsItem,
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
 ) as any as S.Schema<DnsSummaryDnssecAwareResponseMetaUnitsList>;
 
 export interface DnsSummaryDnssecAwareResponseMeta {
@@ -18426,32 +17474,21 @@ export const DnsSummaryDnssecAwareResponseMeta = /*@__PURE__*/ S.suspend(() =>
   identifier: "DnsSummaryDnssecAwareResponseMeta",
 }) as any as S.Schema<DnsSummaryDnssecAwareResponseMeta>;
 
-export interface DnsSummaryDnssecAwareResponseSummary0 {
-  /** A numeric string. */
-  nOTSUPPORTED: string;
-  /** A numeric string. */
-  sUPPORTED: string;
-}
-export const DnsSummaryDnssecAwareResponseSummary0 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      nOTSUPPORTED: S.String.pipe(T.Body("NOT_SUPPORTED")),
-      sUPPORTED: S.String.pipe(T.Body("SUPPORTED")),
-    }),
-).annotate({
-  identifier: "DnsSummaryDnssecAwareResponseSummary0",
-}) as any as S.Schema<DnsSummaryDnssecAwareResponseSummary0>;
+export type DnsSummaryDnssecAwareResponseSummary0 =
+  As112SummaryDnssecResponseSummary0;
+export const DnsSummaryDnssecAwareResponseSummary0 =
+  As112SummaryDnssecResponseSummary0;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DnssecAwareDnsSummaryResponse {
   /** Metadata for the results. */
   meta: DnsSummaryDnssecAwareResponseMeta;
-  summary_0: DnsSummaryDnssecAwareResponseSummary0;
+  summary_0: As112SummaryDnssecResponseSummary0;
 }
 export const DnssecAwareDnsSummaryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: DnsSummaryDnssecAwareResponseMeta,
-    summary_0: DnsSummaryDnssecAwareResponseSummary0,
+    summary_0: As112SummaryDnssecResponseSummary0,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DnssecAwareDnsSummaryResponse",
@@ -18874,27 +17911,16 @@ export const DnsTimeseriesGroupsDnssecAwareResponseMetaConfidenceInfo =
     identifier: "DnsTimeseriesGroupsDnssecAwareResponseMetaConfidenceInfo",
   }) as any as S.Schema<DnsTimeseriesGroupsDnssecAwareResponseMetaConfidenceInfo>;
 
-export interface DnsTimeseriesGroupsDnssecAwareResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type DnsTimeseriesGroupsDnssecAwareResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const DnsTimeseriesGroupsDnssecAwareResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "DnsTimeseriesGroupsDnssecAwareResponseMetaDateRangeItem",
-  }) as any as S.Schema<DnsTimeseriesGroupsDnssecAwareResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type DnsTimeseriesGroupsDnssecAwareResponseMetaDateRangeList =
-  Array<DnsTimeseriesGroupsDnssecAwareResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const DnsTimeseriesGroupsDnssecAwareResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    DnsTimeseriesGroupsDnssecAwareResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<DnsTimeseriesGroupsDnssecAwareResponseMetaDateRangeList>;
 
 export type DnsTimeseriesGroupsDnssecAwareResponseMetaNormalization =
@@ -18909,25 +17935,16 @@ export type DnsTimeseriesGroupsDnssecAwareResponseMetaNormalization =
 export const DnsTimeseriesGroupsDnssecAwareResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface DnsTimeseriesGroupsDnssecAwareResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type DnsTimeseriesGroupsDnssecAwareResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const DnsTimeseriesGroupsDnssecAwareResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "DnsTimeseriesGroupsDnssecAwareResponseMetaUnitsItem",
-  }) as any as S.Schema<DnsTimeseriesGroupsDnssecAwareResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type DnsTimeseriesGroupsDnssecAwareResponseMetaUnitsList =
-  Array<DnsTimeseriesGroupsDnssecAwareResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const DnsTimeseriesGroupsDnssecAwareResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    DnsTimeseriesGroupsDnssecAwareResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<DnsTimeseriesGroupsDnssecAwareResponseMetaUnitsList>;
 
 export interface DnsTimeseriesGroupsDnssecAwareResponseMeta {
@@ -19347,26 +18364,15 @@ export const DnsSummaryDnssecResponseMetaConfidenceInfo =
     identifier: "DnsSummaryDnssecResponseMetaConfidenceInfo",
   }) as any as S.Schema<DnsSummaryDnssecResponseMetaConfidenceInfo>;
 
-export interface DnsSummaryDnssecResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type DnsSummaryDnssecResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const DnsSummaryDnssecResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "DnsSummaryDnssecResponseMetaDateRangeItem",
-  }) as any as S.Schema<DnsSummaryDnssecResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type DnsSummaryDnssecResponseMetaDateRangeList =
-  Array<DnsSummaryDnssecResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const DnsSummaryDnssecResponseMetaDateRangeList = /*@__PURE__*/ S.Array(
-  DnsSummaryDnssecResponseMetaDateRangeItem,
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
 ) as any as S.Schema<DnsSummaryDnssecResponseMetaDateRangeList>;
 
 export type DnsSummaryDnssecResponseMetaNormalization =
@@ -19380,24 +18386,15 @@ export type DnsSummaryDnssecResponseMetaNormalization =
   | "RATIO";
 export const DnsSummaryDnssecResponseMetaNormalization = /*@__PURE__*/ S.String;
 
-export interface DnsSummaryDnssecResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
-export const DnsSummaryDnssecResponseMetaUnitsItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-).annotate({
-  identifier: "DnsSummaryDnssecResponseMetaUnitsItem",
-}) as any as S.Schema<DnsSummaryDnssecResponseMetaUnitsItem>;
+export type DnsSummaryDnssecResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
+export const DnsSummaryDnssecResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type DnsSummaryDnssecResponseMetaUnitsList =
-  Array<DnsSummaryDnssecResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const DnsSummaryDnssecResponseMetaUnitsList = /*@__PURE__*/ S.Array(
-  DnsSummaryDnssecResponseMetaUnitsItem,
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
 ) as any as S.Schema<DnsSummaryDnssecResponseMetaUnitsList>;
 
 export interface DnsSummaryDnssecResponseMeta {
@@ -19857,27 +18854,16 @@ export const DnsTimeseriesGroupsDnssecResponseMetaConfidenceInfo =
     identifier: "DnsTimeseriesGroupsDnssecResponseMetaConfidenceInfo",
   }) as any as S.Schema<DnsTimeseriesGroupsDnssecResponseMetaConfidenceInfo>;
 
-export interface DnsTimeseriesGroupsDnssecResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type DnsTimeseriesGroupsDnssecResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const DnsTimeseriesGroupsDnssecResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "DnsTimeseriesGroupsDnssecResponseMetaDateRangeItem",
-  }) as any as S.Schema<DnsTimeseriesGroupsDnssecResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type DnsTimeseriesGroupsDnssecResponseMetaDateRangeList =
-  Array<DnsTimeseriesGroupsDnssecResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const DnsTimeseriesGroupsDnssecResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    DnsTimeseriesGroupsDnssecResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<DnsTimeseriesGroupsDnssecResponseMetaDateRangeList>;
 
 export type DnsTimeseriesGroupsDnssecResponseMetaNormalization =
@@ -19892,25 +18878,16 @@ export type DnsTimeseriesGroupsDnssecResponseMetaNormalization =
 export const DnsTimeseriesGroupsDnssecResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface DnsTimeseriesGroupsDnssecResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type DnsTimeseriesGroupsDnssecResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const DnsTimeseriesGroupsDnssecResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "DnsTimeseriesGroupsDnssecResponseMetaUnitsItem",
-  }) as any as S.Schema<DnsTimeseriesGroupsDnssecResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type DnsTimeseriesGroupsDnssecResponseMetaUnitsList =
-  Array<DnsTimeseriesGroupsDnssecResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const DnsTimeseriesGroupsDnssecResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    DnsTimeseriesGroupsDnssecResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<DnsTimeseriesGroupsDnssecResponseMetaUnitsList>;
 
 export interface DnsTimeseriesGroupsDnssecResponseMeta {
@@ -20366,27 +19343,16 @@ export const DnsSummaryDnssecE2eResponseMetaConfidenceInfo =
     identifier: "DnsSummaryDnssecE2eResponseMetaConfidenceInfo",
   }) as any as S.Schema<DnsSummaryDnssecE2eResponseMetaConfidenceInfo>;
 
-export interface DnsSummaryDnssecE2eResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type DnsSummaryDnssecE2eResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const DnsSummaryDnssecE2eResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "DnsSummaryDnssecE2eResponseMetaDateRangeItem",
-  }) as any as S.Schema<DnsSummaryDnssecE2eResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type DnsSummaryDnssecE2eResponseMetaDateRangeList =
-  Array<DnsSummaryDnssecE2eResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const DnsSummaryDnssecE2eResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    DnsSummaryDnssecE2eResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<DnsSummaryDnssecE2eResponseMetaDateRangeList>;
 
 export type DnsSummaryDnssecE2eResponseMetaNormalization =
@@ -20401,24 +19367,15 @@ export type DnsSummaryDnssecE2eResponseMetaNormalization =
 export const DnsSummaryDnssecE2eResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface DnsSummaryDnssecE2eResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
-export const DnsSummaryDnssecE2eResponseMetaUnitsItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-).annotate({
-  identifier: "DnsSummaryDnssecE2eResponseMetaUnitsItem",
-}) as any as S.Schema<DnsSummaryDnssecE2eResponseMetaUnitsItem>;
+export type DnsSummaryDnssecE2eResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
+export const DnsSummaryDnssecE2eResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type DnsSummaryDnssecE2eResponseMetaUnitsList =
-  Array<DnsSummaryDnssecE2eResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const DnsSummaryDnssecE2eResponseMetaUnitsList = /*@__PURE__*/ S.Array(
-  DnsSummaryDnssecE2eResponseMetaUnitsItem,
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
 ) as any as S.Schema<DnsSummaryDnssecE2eResponseMetaUnitsList>;
 
 export interface DnsSummaryDnssecE2eResponseMeta {
@@ -20443,31 +19400,21 @@ export const DnsSummaryDnssecE2eResponseMeta = /*@__PURE__*/ S.suspend(() =>
   identifier: "DnsSummaryDnssecE2eResponseMeta",
 }) as any as S.Schema<DnsSummaryDnssecE2eResponseMeta>;
 
-export interface DnsSummaryDnssecE2eResponseSummary0 {
-  /** A numeric string. */
-  nEGATIVE: string;
-  /** A numeric string. */
-  pOSITIVE: string;
-}
-export const DnsSummaryDnssecE2eResponseSummary0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nEGATIVE: S.String.pipe(T.Body("NEGATIVE")),
-    pOSITIVE: S.String.pipe(T.Body("POSITIVE")),
-  }),
-).annotate({
-  identifier: "DnsSummaryDnssecE2eResponseSummary0",
-}) as any as S.Schema<DnsSummaryDnssecE2eResponseSummary0>;
+export type DnsSummaryDnssecE2eResponseSummary0 =
+  DnsSummaryCacheHitResponseSummary0;
+export const DnsSummaryDnssecE2eResponseSummary0 =
+  DnsSummaryCacheHitResponseSummary0;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DnssecE2EDnsSummaryResponse {
   /** Metadata for the results. */
   meta: DnsSummaryDnssecE2eResponseMeta;
-  summary_0: DnsSummaryDnssecE2eResponseSummary0;
+  summary_0: DnsSummaryCacheHitResponseSummary0;
 }
 export const DnssecE2EDnsSummaryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: DnsSummaryDnssecE2eResponseMeta,
-    summary_0: DnsSummaryDnssecE2eResponseSummary0,
+    summary_0: DnsSummaryCacheHitResponseSummary0,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DnssecE2EDnsSummaryResponse",
@@ -20880,27 +19827,16 @@ export const DnsTimeseriesGroupsDnssecE2eResponseMetaConfidenceInfo =
     identifier: "DnsTimeseriesGroupsDnssecE2eResponseMetaConfidenceInfo",
   }) as any as S.Schema<DnsTimeseriesGroupsDnssecE2eResponseMetaConfidenceInfo>;
 
-export interface DnsTimeseriesGroupsDnssecE2eResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type DnsTimeseriesGroupsDnssecE2eResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const DnsTimeseriesGroupsDnssecE2eResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "DnsTimeseriesGroupsDnssecE2eResponseMetaDateRangeItem",
-  }) as any as S.Schema<DnsTimeseriesGroupsDnssecE2eResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type DnsTimeseriesGroupsDnssecE2eResponseMetaDateRangeList =
-  Array<DnsTimeseriesGroupsDnssecE2eResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const DnsTimeseriesGroupsDnssecE2eResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    DnsTimeseriesGroupsDnssecE2eResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<DnsTimeseriesGroupsDnssecE2eResponseMetaDateRangeList>;
 
 export type DnsTimeseriesGroupsDnssecE2eResponseMetaNormalization =
@@ -20915,25 +19851,16 @@ export type DnsTimeseriesGroupsDnssecE2eResponseMetaNormalization =
 export const DnsTimeseriesGroupsDnssecE2eResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface DnsTimeseriesGroupsDnssecE2eResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type DnsTimeseriesGroupsDnssecE2eResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const DnsTimeseriesGroupsDnssecE2eResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "DnsTimeseriesGroupsDnssecE2eResponseMetaUnitsItem",
-  }) as any as S.Schema<DnsTimeseriesGroupsDnssecE2eResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type DnsTimeseriesGroupsDnssecE2eResponseMetaUnitsList =
-  Array<DnsTimeseriesGroupsDnssecE2eResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const DnsTimeseriesGroupsDnssecE2eResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    DnsTimeseriesGroupsDnssecE2eResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<DnsTimeseriesGroupsDnssecE2eResponseMetaUnitsList>;
 
 export interface DnsTimeseriesGroupsDnssecE2eResponseMeta {
@@ -21175,27 +20102,16 @@ export const RobotsTxtTopDomainCategoriesResponseMetaConfidenceInfo =
     identifier: "RobotsTxtTopDomainCategoriesResponseMetaConfidenceInfo",
   }) as any as S.Schema<RobotsTxtTopDomainCategoriesResponseMetaConfidenceInfo>;
 
-export interface RobotsTxtTopDomainCategoriesResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type RobotsTxtTopDomainCategoriesResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const RobotsTxtTopDomainCategoriesResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "RobotsTxtTopDomainCategoriesResponseMetaDateRangeItem",
-  }) as any as S.Schema<RobotsTxtTopDomainCategoriesResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type RobotsTxtTopDomainCategoriesResponseMetaDateRangeList =
-  Array<RobotsTxtTopDomainCategoriesResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const RobotsTxtTopDomainCategoriesResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    RobotsTxtTopDomainCategoriesResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<RobotsTxtTopDomainCategoriesResponseMetaDateRangeList>;
 
 export type RobotsTxtTopDomainCategoriesResponseMetaNormalization =
@@ -21210,25 +20126,16 @@ export type RobotsTxtTopDomainCategoriesResponseMetaNormalization =
 export const RobotsTxtTopDomainCategoriesResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface RobotsTxtTopDomainCategoriesResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type RobotsTxtTopDomainCategoriesResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const RobotsTxtTopDomainCategoriesResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "RobotsTxtTopDomainCategoriesResponseMetaUnitsItem",
-  }) as any as S.Schema<RobotsTxtTopDomainCategoriesResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type RobotsTxtTopDomainCategoriesResponseMetaUnitsList =
-  Array<RobotsTxtTopDomainCategoriesResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const RobotsTxtTopDomainCategoriesResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    RobotsTxtTopDomainCategoriesResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<RobotsTxtTopDomainCategoriesResponseMetaUnitsList>;
 
 export interface RobotsTxtTopDomainCategoriesResponseMeta {
@@ -21578,27 +20485,16 @@ export const AttacksLayer3SummaryDurationResponseMetaConfidenceInfo =
     identifier: "AttacksLayer3SummaryDurationResponseMetaConfidenceInfo",
   }) as any as S.Schema<AttacksLayer3SummaryDurationResponseMetaConfidenceInfo>;
 
-export interface AttacksLayer3SummaryDurationResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type AttacksLayer3SummaryDurationResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const AttacksLayer3SummaryDurationResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "AttacksLayer3SummaryDurationResponseMetaDateRangeItem",
-  }) as any as S.Schema<AttacksLayer3SummaryDurationResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type AttacksLayer3SummaryDurationResponseMetaDateRangeList =
-  Array<AttacksLayer3SummaryDurationResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const AttacksLayer3SummaryDurationResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    AttacksLayer3SummaryDurationResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<AttacksLayer3SummaryDurationResponseMetaDateRangeList>;
 
 export type AttacksLayer3SummaryDurationResponseMetaNormalization =
@@ -21613,25 +20509,16 @@ export type AttacksLayer3SummaryDurationResponseMetaNormalization =
 export const AttacksLayer3SummaryDurationResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface AttacksLayer3SummaryDurationResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type AttacksLayer3SummaryDurationResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const AttacksLayer3SummaryDurationResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "AttacksLayer3SummaryDurationResponseMetaUnitsItem",
-  }) as any as S.Schema<AttacksLayer3SummaryDurationResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type AttacksLayer3SummaryDurationResponseMetaUnitsList =
-  Array<AttacksLayer3SummaryDurationResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const AttacksLayer3SummaryDurationResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    AttacksLayer3SummaryDurationResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<AttacksLayer3SummaryDurationResponseMetaUnitsList>;
 
 export interface AttacksLayer3SummaryDurationResponseMeta {
@@ -22009,28 +20896,16 @@ export const AttacksLayer3TimeseriesGroupsDurationResponseMetaConfidenceInfo =
       "AttacksLayer3TimeseriesGroupsDurationResponseMetaConfidenceInfo",
   }) as any as S.Schema<AttacksLayer3TimeseriesGroupsDurationResponseMetaConfidenceInfo>;
 
-export interface AttacksLayer3TimeseriesGroupsDurationResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type AttacksLayer3TimeseriesGroupsDurationResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const AttacksLayer3TimeseriesGroupsDurationResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "AttacksLayer3TimeseriesGroupsDurationResponseMetaDateRangeItem",
-  }) as any as S.Schema<AttacksLayer3TimeseriesGroupsDurationResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type AttacksLayer3TimeseriesGroupsDurationResponseMetaDateRangeList =
-  Array<AttacksLayer3TimeseriesGroupsDurationResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const AttacksLayer3TimeseriesGroupsDurationResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    AttacksLayer3TimeseriesGroupsDurationResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<AttacksLayer3TimeseriesGroupsDurationResponseMetaDateRangeList>;
 
 export type AttacksLayer3TimeseriesGroupsDurationResponseMetaNormalization =
@@ -22045,25 +20920,16 @@ export type AttacksLayer3TimeseriesGroupsDurationResponseMetaNormalization =
 export const AttacksLayer3TimeseriesGroupsDurationResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface AttacksLayer3TimeseriesGroupsDurationResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type AttacksLayer3TimeseriesGroupsDurationResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const AttacksLayer3TimeseriesGroupsDurationResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "AttacksLayer3TimeseriesGroupsDurationResponseMetaUnitsItem",
-  }) as any as S.Schema<AttacksLayer3TimeseriesGroupsDurationResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type AttacksLayer3TimeseriesGroupsDurationResponseMetaUnitsList =
-  Array<AttacksLayer3TimeseriesGroupsDurationResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const AttacksLayer3TimeseriesGroupsDurationResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    AttacksLayer3TimeseriesGroupsDurationResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<AttacksLayer3TimeseriesGroupsDurationResponseMetaUnitsList>;
 
 export interface AttacksLayer3TimeseriesGroupsDurationResponseMeta {
@@ -22516,26 +21382,15 @@ export const As112SummaryEdnsResponseMetaConfidenceInfo =
     identifier: "As112SummaryEdnsResponseMetaConfidenceInfo",
   }) as any as S.Schema<As112SummaryEdnsResponseMetaConfidenceInfo>;
 
-export interface As112SummaryEdnsResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type As112SummaryEdnsResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const As112SummaryEdnsResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "As112SummaryEdnsResponseMetaDateRangeItem",
-  }) as any as S.Schema<As112SummaryEdnsResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type As112SummaryEdnsResponseMetaDateRangeList =
-  Array<As112SummaryEdnsResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const As112SummaryEdnsResponseMetaDateRangeList = /*@__PURE__*/ S.Array(
-  As112SummaryEdnsResponseMetaDateRangeItem,
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
 ) as any as S.Schema<As112SummaryEdnsResponseMetaDateRangeList>;
 
 export type As112SummaryEdnsResponseMetaNormalization =
@@ -22549,24 +21404,15 @@ export type As112SummaryEdnsResponseMetaNormalization =
   | "RATIO";
 export const As112SummaryEdnsResponseMetaNormalization = /*@__PURE__*/ S.String;
 
-export interface As112SummaryEdnsResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
-export const As112SummaryEdnsResponseMetaUnitsItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-).annotate({
-  identifier: "As112SummaryEdnsResponseMetaUnitsItem",
-}) as any as S.Schema<As112SummaryEdnsResponseMetaUnitsItem>;
+export type As112SummaryEdnsResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
+export const As112SummaryEdnsResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type As112SummaryEdnsResponseMetaUnitsList =
-  Array<As112SummaryEdnsResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const As112SummaryEdnsResponseMetaUnitsList = /*@__PURE__*/ S.Array(
-  As112SummaryEdnsResponseMetaUnitsItem,
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
 ) as any as S.Schema<As112SummaryEdnsResponseMetaUnitsList>;
 
 export interface As112SummaryEdnsResponseMeta {
@@ -22591,31 +21437,21 @@ export const As112SummaryEdnsResponseMeta = /*@__PURE__*/ S.suspend(() =>
   identifier: "As112SummaryEdnsResponseMeta",
 }) as any as S.Schema<As112SummaryEdnsResponseMeta>;
 
-export interface As112SummaryEdnsResponseSummary0 {
-  /** A numeric string. */
-  nOTSUPPORTED: string;
-  /** A numeric string. */
-  sUPPORTED: string;
-}
-export const As112SummaryEdnsResponseSummary0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nOTSUPPORTED: S.String.pipe(T.Body("NOT_SUPPORTED")),
-    sUPPORTED: S.String.pipe(T.Body("SUPPORTED")),
-  }),
-).annotate({
-  identifier: "As112SummaryEdnsResponseSummary0",
-}) as any as S.Schema<As112SummaryEdnsResponseSummary0>;
+export type As112SummaryEdnsResponseSummary0 =
+  As112SummaryDnssecResponseSummary0;
+export const As112SummaryEdnsResponseSummary0 =
+  As112SummaryDnssecResponseSummary0;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface EdnsAs112SummaryResponse {
   /** Metadata for the results. */
   meta: As112SummaryEdnsResponseMeta;
-  summary_0: As112SummaryEdnsResponseSummary0;
+  summary_0: As112SummaryDnssecResponseSummary0;
 }
 export const EdnsAs112SummaryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: As112SummaryEdnsResponseMeta,
-    summary_0: As112SummaryEdnsResponseSummary0,
+    summary_0: As112SummaryDnssecResponseSummary0,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "EdnsAs112SummaryResponse",
@@ -22994,27 +21830,16 @@ export const As112TimeseriesGroupsEdnsResponseMetaConfidenceInfo =
     identifier: "As112TimeseriesGroupsEdnsResponseMetaConfidenceInfo",
   }) as any as S.Schema<As112TimeseriesGroupsEdnsResponseMetaConfidenceInfo>;
 
-export interface As112TimeseriesGroupsEdnsResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type As112TimeseriesGroupsEdnsResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const As112TimeseriesGroupsEdnsResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "As112TimeseriesGroupsEdnsResponseMetaDateRangeItem",
-  }) as any as S.Schema<As112TimeseriesGroupsEdnsResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type As112TimeseriesGroupsEdnsResponseMetaDateRangeList =
-  Array<As112TimeseriesGroupsEdnsResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const As112TimeseriesGroupsEdnsResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    As112TimeseriesGroupsEdnsResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<As112TimeseriesGroupsEdnsResponseMetaDateRangeList>;
 
 export type As112TimeseriesGroupsEdnsResponseMetaNormalization =
@@ -23029,25 +21854,16 @@ export type As112TimeseriesGroupsEdnsResponseMetaNormalization =
 export const As112TimeseriesGroupsEdnsResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface As112TimeseriesGroupsEdnsResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type As112TimeseriesGroupsEdnsResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const As112TimeseriesGroupsEdnsResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "As112TimeseriesGroupsEdnsResponseMetaUnitsItem",
-  }) as any as S.Schema<As112TimeseriesGroupsEdnsResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type As112TimeseriesGroupsEdnsResponseMetaUnitsList =
-  Array<As112TimeseriesGroupsEdnsResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const As112TimeseriesGroupsEdnsResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    As112TimeseriesGroupsEdnsResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<As112TimeseriesGroupsEdnsResponseMetaUnitsList>;
 
 export interface As112TimeseriesGroupsEdnsResponseMeta {
@@ -23304,26 +22120,15 @@ export const As112TopEdnsResponseMetaConfidenceInfo = /*@__PURE__*/ S.suspend(
   identifier: "As112TopEdnsResponseMetaConfidenceInfo",
 }) as any as S.Schema<As112TopEdnsResponseMetaConfidenceInfo>;
 
-export interface As112TopEdnsResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
-export const As112TopEdnsResponseMetaDateRangeItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-).annotate({
-  identifier: "As112TopEdnsResponseMetaDateRangeItem",
-}) as any as S.Schema<As112TopEdnsResponseMetaDateRangeItem>;
+export type As112TopEdnsResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
+export const As112TopEdnsResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type As112TopEdnsResponseMetaDateRangeList =
-  Array<As112TopEdnsResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const As112TopEdnsResponseMetaDateRangeList = /*@__PURE__*/ S.Array(
-  As112TopEdnsResponseMetaDateRangeItem,
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
 ) as any as S.Schema<As112TopEdnsResponseMetaDateRangeList>;
 
 export type As112TopEdnsResponseMetaNormalization =
@@ -23337,23 +22142,15 @@ export type As112TopEdnsResponseMetaNormalization =
   | "RATIO";
 export const As112TopEdnsResponseMetaNormalization = /*@__PURE__*/ S.String;
 
-export interface As112TopEdnsResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
-export const As112TopEdnsResponseMetaUnitsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    value: S.String,
-  }),
-).annotate({
-  identifier: "As112TopEdnsResponseMetaUnitsItem",
-}) as any as S.Schema<As112TopEdnsResponseMetaUnitsItem>;
+export type As112TopEdnsResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
+export const As112TopEdnsResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type As112TopEdnsResponseMetaUnitsList =
-  Array<As112TopEdnsResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const As112TopEdnsResponseMetaUnitsList = /*@__PURE__*/ S.Array(
-  As112TopEdnsResponseMetaUnitsItem,
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
 ) as any as S.Schema<As112TopEdnsResponseMetaUnitsList>;
 
 export interface As112TopEdnsResponseMeta {
@@ -23378,25 +22175,13 @@ export const As112TopEdnsResponseMeta = /*@__PURE__*/ S.suspend(() =>
   identifier: "As112TopEdnsResponseMeta",
 }) as any as S.Schema<As112TopEdnsResponseMeta>;
 
-export interface As112TopEdnsResponseTop0Item {
-  clientCountryAlpha2: string;
-  clientCountryName: string;
-  /** A numeric string. */
-  value: string;
-}
-export const As112TopEdnsResponseTop0Item = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clientCountryAlpha2: S.String,
-    clientCountryName: S.String,
-    value: S.String,
-  }),
-).annotate({
-  identifier: "As112TopEdnsResponseTop0Item",
-}) as any as S.Schema<As112TopEdnsResponseTop0Item>;
+export type As112TopEdnsResponseTop0Item = As112TopDnssecResponseTop0Item;
+export const As112TopEdnsResponseTop0Item = As112TopDnssecResponseTop0Item;
 
-export type As112TopEdnsResponseTop0List = Array<As112TopEdnsResponseTop0Item>;
+export type As112TopEdnsResponseTop0List =
+  Array<As112TopDnssecResponseTop0Item>;
 export const As112TopEdnsResponseTop0List = /*@__PURE__*/ S.Array(
-  As112TopEdnsResponseTop0Item,
+  As112TopDnssecResponseTop0Item,
 ) as any as S.Schema<As112TopEdnsResponseTop0List>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -23663,27 +22448,16 @@ export const EmailRoutingSummaryEncryptedResponseMetaConfidenceInfo =
     identifier: "EmailRoutingSummaryEncryptedResponseMetaConfidenceInfo",
   }) as any as S.Schema<EmailRoutingSummaryEncryptedResponseMetaConfidenceInfo>;
 
-export interface EmailRoutingSummaryEncryptedResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type EmailRoutingSummaryEncryptedResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const EmailRoutingSummaryEncryptedResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "EmailRoutingSummaryEncryptedResponseMetaDateRangeItem",
-  }) as any as S.Schema<EmailRoutingSummaryEncryptedResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type EmailRoutingSummaryEncryptedResponseMetaDateRangeList =
-  Array<EmailRoutingSummaryEncryptedResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const EmailRoutingSummaryEncryptedResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    EmailRoutingSummaryEncryptedResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<EmailRoutingSummaryEncryptedResponseMetaDateRangeList>;
 
 export type EmailRoutingSummaryEncryptedResponseMetaNormalization =
@@ -23698,25 +22472,16 @@ export type EmailRoutingSummaryEncryptedResponseMetaNormalization =
 export const EmailRoutingSummaryEncryptedResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface EmailRoutingSummaryEncryptedResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type EmailRoutingSummaryEncryptedResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const EmailRoutingSummaryEncryptedResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "EmailRoutingSummaryEncryptedResponseMetaUnitsItem",
-  }) as any as S.Schema<EmailRoutingSummaryEncryptedResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type EmailRoutingSummaryEncryptedResponseMetaUnitsList =
-  Array<EmailRoutingSummaryEncryptedResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const EmailRoutingSummaryEncryptedResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    EmailRoutingSummaryEncryptedResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<EmailRoutingSummaryEncryptedResponseMetaUnitsList>;
 
 export interface EmailRoutingSummaryEncryptedResponseMeta {
@@ -24084,28 +22849,16 @@ export const EmailRoutingTimeseriesGroupsEncryptedResponseMetaConfidenceInfo =
       "EmailRoutingTimeseriesGroupsEncryptedResponseMetaConfidenceInfo",
   }) as any as S.Schema<EmailRoutingTimeseriesGroupsEncryptedResponseMetaConfidenceInfo>;
 
-export interface EmailRoutingTimeseriesGroupsEncryptedResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type EmailRoutingTimeseriesGroupsEncryptedResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const EmailRoutingTimeseriesGroupsEncryptedResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "EmailRoutingTimeseriesGroupsEncryptedResponseMetaDateRangeItem",
-  }) as any as S.Schema<EmailRoutingTimeseriesGroupsEncryptedResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type EmailRoutingTimeseriesGroupsEncryptedResponseMetaDateRangeList =
-  Array<EmailRoutingTimeseriesGroupsEncryptedResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const EmailRoutingTimeseriesGroupsEncryptedResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    EmailRoutingTimeseriesGroupsEncryptedResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<EmailRoutingTimeseriesGroupsEncryptedResponseMetaDateRangeList>;
 
 export type EmailRoutingTimeseriesGroupsEncryptedResponseMetaNormalization =
@@ -24120,25 +22873,16 @@ export type EmailRoutingTimeseriesGroupsEncryptedResponseMetaNormalization =
 export const EmailRoutingTimeseriesGroupsEncryptedResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface EmailRoutingTimeseriesGroupsEncryptedResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type EmailRoutingTimeseriesGroupsEncryptedResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const EmailRoutingTimeseriesGroupsEncryptedResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "EmailRoutingTimeseriesGroupsEncryptedResponseMetaUnitsItem",
-  }) as any as S.Schema<EmailRoutingTimeseriesGroupsEncryptedResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type EmailRoutingTimeseriesGroupsEncryptedResponseMetaUnitsList =
-  Array<EmailRoutingTimeseriesGroupsEncryptedResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const EmailRoutingTimeseriesGroupsEncryptedResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    EmailRoutingTimeseriesGroupsEncryptedResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<EmailRoutingTimeseriesGroupsEncryptedResponseMetaUnitsList>;
 
 export interface EmailRoutingTimeseriesGroupsEncryptedResponseMeta {
@@ -24318,26 +23062,16 @@ export const AnnotationsOutagesGetResponseAnnotationsItemLocationsList =
     S.String,
   ) as any as S.Schema<AnnotationsOutagesGetResponseAnnotationsItemLocationsList>;
 
-export interface AnnotationsOutagesGetResponseAnnotationsItemLocationsDetailsItem {
-  code: string;
-  name: string;
-}
+export type AnnotationsOutagesGetResponseAnnotationsItemLocationsDetailsItem =
+  AnnotationsOutagesGetResponseAnnotationsItemAsnsDetailsItemLocations;
 export const AnnotationsOutagesGetResponseAnnotationsItemLocationsDetailsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      code: S.String,
-      name: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "AnnotationsOutagesGetResponseAnnotationsItemLocationsDetailsItem",
-  }) as any as S.Schema<AnnotationsOutagesGetResponseAnnotationsItemLocationsDetailsItem>;
+  AnnotationsOutagesGetResponseAnnotationsItemAsnsDetailsItemLocations;
 
 export type AnnotationsOutagesGetResponseAnnotationsItemLocationsDetailsList =
-  Array<AnnotationsOutagesGetResponseAnnotationsItemLocationsDetailsItem>;
+  Array<AnnotationsOutagesGetResponseAnnotationsItemAsnsDetailsItemLocations>;
 export const AnnotationsOutagesGetResponseAnnotationsItemLocationsDetailsList =
   /*@__PURE__*/ S.Array(
-    AnnotationsOutagesGetResponseAnnotationsItemLocationsDetailsItem,
+    AnnotationsOutagesGetResponseAnnotationsItemAsnsDetailsItemLocations,
   ) as any as S.Schema<AnnotationsOutagesGetResponseAnnotationsItemLocationsDetailsList>;
 
 export type AnnotationsOutagesGetResponseAnnotationsItemOriginsList =
@@ -24525,26 +23259,15 @@ export const GetBgpTopAsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetBgpTopAsRequest",
 }) as any as S.Schema<GetBgpTopAsRequest>;
 
-export interface BgpTopAsesGetResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
-export const BgpTopAsesGetResponseMetaDateRangeItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-).annotate({
-  identifier: "BgpTopAsesGetResponseMetaDateRangeItem",
-}) as any as S.Schema<BgpTopAsesGetResponseMetaDateRangeItem>;
+export type BgpTopAsesGetResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
+export const BgpTopAsesGetResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type BgpTopAsesGetResponseMetaDateRangeList =
-  Array<BgpTopAsesGetResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const BgpTopAsesGetResponseMetaDateRangeList = /*@__PURE__*/ S.Array(
-  BgpTopAsesGetResponseMetaDateRangeItem,
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
 ) as any as S.Schema<BgpTopAsesGetResponseMetaDateRangeList>;
 
 export interface BgpTopAsesGetResponseMeta {
@@ -25336,27 +24059,16 @@ export const EmailSecurityTopTldsGetResponseMetaConfidenceInfo =
     identifier: "EmailSecurityTopTldsGetResponseMetaConfidenceInfo",
   }) as any as S.Schema<EmailSecurityTopTldsGetResponseMetaConfidenceInfo>;
 
-export interface EmailSecurityTopTldsGetResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type EmailSecurityTopTldsGetResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const EmailSecurityTopTldsGetResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "EmailSecurityTopTldsGetResponseMetaDateRangeItem",
-  }) as any as S.Schema<EmailSecurityTopTldsGetResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type EmailSecurityTopTldsGetResponseMetaDateRangeList =
-  Array<EmailSecurityTopTldsGetResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const EmailSecurityTopTldsGetResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    EmailSecurityTopTldsGetResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<EmailSecurityTopTldsGetResponseMetaDateRangeList>;
 
 export type EmailSecurityTopTldsGetResponseMetaNormalization =
@@ -25371,25 +24083,16 @@ export type EmailSecurityTopTldsGetResponseMetaNormalization =
 export const EmailSecurityTopTldsGetResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface EmailSecurityTopTldsGetResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type EmailSecurityTopTldsGetResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const EmailSecurityTopTldsGetResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "EmailSecurityTopTldsGetResponseMetaUnitsItem",
-  }) as any as S.Schema<EmailSecurityTopTldsGetResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type EmailSecurityTopTldsGetResponseMetaUnitsList =
-  Array<EmailSecurityTopTldsGetResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const EmailSecurityTopTldsGetResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    EmailSecurityTopTldsGetResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<EmailSecurityTopTldsGetResponseMetaUnitsList>;
 
 export interface EmailSecurityTopTldsGetResponseMeta {
@@ -25756,27 +24459,16 @@ export const EmailSecurityTopTldsMaliciousGetResponseMetaConfidenceInfo =
     identifier: "EmailSecurityTopTldsMaliciousGetResponseMetaConfidenceInfo",
   }) as any as S.Schema<EmailSecurityTopTldsMaliciousGetResponseMetaConfidenceInfo>;
 
-export interface EmailSecurityTopTldsMaliciousGetResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type EmailSecurityTopTldsMaliciousGetResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const EmailSecurityTopTldsMaliciousGetResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "EmailSecurityTopTldsMaliciousGetResponseMetaDateRangeItem",
-  }) as any as S.Schema<EmailSecurityTopTldsMaliciousGetResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type EmailSecurityTopTldsMaliciousGetResponseMetaDateRangeList =
-  Array<EmailSecurityTopTldsMaliciousGetResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const EmailSecurityTopTldsMaliciousGetResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    EmailSecurityTopTldsMaliciousGetResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<EmailSecurityTopTldsMaliciousGetResponseMetaDateRangeList>;
 
 export type EmailSecurityTopTldsMaliciousGetResponseMetaNormalization =
@@ -25791,25 +24483,16 @@ export type EmailSecurityTopTldsMaliciousGetResponseMetaNormalization =
 export const EmailSecurityTopTldsMaliciousGetResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface EmailSecurityTopTldsMaliciousGetResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type EmailSecurityTopTldsMaliciousGetResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const EmailSecurityTopTldsMaliciousGetResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "EmailSecurityTopTldsMaliciousGetResponseMetaUnitsItem",
-  }) as any as S.Schema<EmailSecurityTopTldsMaliciousGetResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type EmailSecurityTopTldsMaliciousGetResponseMetaUnitsList =
-  Array<EmailSecurityTopTldsMaliciousGetResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const EmailSecurityTopTldsMaliciousGetResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    EmailSecurityTopTldsMaliciousGetResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<EmailSecurityTopTldsMaliciousGetResponseMetaUnitsList>;
 
 export interface EmailSecurityTopTldsMaliciousGetResponseMeta {
@@ -25836,26 +24519,16 @@ export const EmailSecurityTopTldsMaliciousGetResponseMeta =
     identifier: "EmailSecurityTopTldsMaliciousGetResponseMeta",
   }) as any as S.Schema<EmailSecurityTopTldsMaliciousGetResponseMeta>;
 
-export interface EmailSecurityTopTldsMaliciousGetResponseTop0Item {
-  name: string;
-  /** A numeric string. */
-  value: string;
-}
+export type EmailSecurityTopTldsMaliciousGetResponseTop0Item =
+  EmailSecurityTopTldsGetResponseTop0Item;
 export const EmailSecurityTopTldsMaliciousGetResponseTop0Item =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "EmailSecurityTopTldsMaliciousGetResponseTop0Item",
-  }) as any as S.Schema<EmailSecurityTopTldsMaliciousGetResponseTop0Item>;
+  EmailSecurityTopTldsGetResponseTop0Item;
 
 export type EmailSecurityTopTldsMaliciousGetResponseTop0List =
-  Array<EmailSecurityTopTldsMaliciousGetResponseTop0Item>;
+  Array<EmailSecurityTopTldsGetResponseTop0Item>;
 export const EmailSecurityTopTldsMaliciousGetResponseTop0List =
   /*@__PURE__*/ S.Array(
-    EmailSecurityTopTldsMaliciousGetResponseTop0Item,
+    EmailSecurityTopTldsGetResponseTop0Item,
   ) as any as S.Schema<EmailSecurityTopTldsMaliciousGetResponseTop0List>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -26145,27 +24818,16 @@ export const EmailSecurityTopTldsSpamGetResponseMetaConfidenceInfo =
     identifier: "EmailSecurityTopTldsSpamGetResponseMetaConfidenceInfo",
   }) as any as S.Schema<EmailSecurityTopTldsSpamGetResponseMetaConfidenceInfo>;
 
-export interface EmailSecurityTopTldsSpamGetResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type EmailSecurityTopTldsSpamGetResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const EmailSecurityTopTldsSpamGetResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "EmailSecurityTopTldsSpamGetResponseMetaDateRangeItem",
-  }) as any as S.Schema<EmailSecurityTopTldsSpamGetResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type EmailSecurityTopTldsSpamGetResponseMetaDateRangeList =
-  Array<EmailSecurityTopTldsSpamGetResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const EmailSecurityTopTldsSpamGetResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    EmailSecurityTopTldsSpamGetResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<EmailSecurityTopTldsSpamGetResponseMetaDateRangeList>;
 
 export type EmailSecurityTopTldsSpamGetResponseMetaNormalization =
@@ -26180,25 +24842,16 @@ export type EmailSecurityTopTldsSpamGetResponseMetaNormalization =
 export const EmailSecurityTopTldsSpamGetResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface EmailSecurityTopTldsSpamGetResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type EmailSecurityTopTldsSpamGetResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const EmailSecurityTopTldsSpamGetResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "EmailSecurityTopTldsSpamGetResponseMetaUnitsItem",
-  }) as any as S.Schema<EmailSecurityTopTldsSpamGetResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type EmailSecurityTopTldsSpamGetResponseMetaUnitsList =
-  Array<EmailSecurityTopTldsSpamGetResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const EmailSecurityTopTldsSpamGetResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    EmailSecurityTopTldsSpamGetResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<EmailSecurityTopTldsSpamGetResponseMetaUnitsList>;
 
 export interface EmailSecurityTopTldsSpamGetResponseMeta {
@@ -26224,26 +24877,16 @@ export const EmailSecurityTopTldsSpamGetResponseMeta = /*@__PURE__*/ S.suspend(
   identifier: "EmailSecurityTopTldsSpamGetResponseMeta",
 }) as any as S.Schema<EmailSecurityTopTldsSpamGetResponseMeta>;
 
-export interface EmailSecurityTopTldsSpamGetResponseTop0Item {
-  name: string;
-  /** A numeric string. */
-  value: string;
-}
+export type EmailSecurityTopTldsSpamGetResponseTop0Item =
+  EmailSecurityTopTldsGetResponseTop0Item;
 export const EmailSecurityTopTldsSpamGetResponseTop0Item =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "EmailSecurityTopTldsSpamGetResponseTop0Item",
-  }) as any as S.Schema<EmailSecurityTopTldsSpamGetResponseTop0Item>;
+  EmailSecurityTopTldsGetResponseTop0Item;
 
 export type EmailSecurityTopTldsSpamGetResponseTop0List =
-  Array<EmailSecurityTopTldsSpamGetResponseTop0Item>;
+  Array<EmailSecurityTopTldsGetResponseTop0Item>;
 export const EmailSecurityTopTldsSpamGetResponseTop0List =
   /*@__PURE__*/ S.Array(
-    EmailSecurityTopTldsSpamGetResponseTop0Item,
+    EmailSecurityTopTldsGetResponseTop0Item,
   ) as any as S.Schema<EmailSecurityTopTldsSpamGetResponseTop0List>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -26534,27 +25177,16 @@ export const EmailSecurityTopTldsSpoofGetResponseMetaConfidenceInfo =
     identifier: "EmailSecurityTopTldsSpoofGetResponseMetaConfidenceInfo",
   }) as any as S.Schema<EmailSecurityTopTldsSpoofGetResponseMetaConfidenceInfo>;
 
-export interface EmailSecurityTopTldsSpoofGetResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type EmailSecurityTopTldsSpoofGetResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const EmailSecurityTopTldsSpoofGetResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "EmailSecurityTopTldsSpoofGetResponseMetaDateRangeItem",
-  }) as any as S.Schema<EmailSecurityTopTldsSpoofGetResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type EmailSecurityTopTldsSpoofGetResponseMetaDateRangeList =
-  Array<EmailSecurityTopTldsSpoofGetResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const EmailSecurityTopTldsSpoofGetResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    EmailSecurityTopTldsSpoofGetResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<EmailSecurityTopTldsSpoofGetResponseMetaDateRangeList>;
 
 export type EmailSecurityTopTldsSpoofGetResponseMetaNormalization =
@@ -26569,25 +25201,16 @@ export type EmailSecurityTopTldsSpoofGetResponseMetaNormalization =
 export const EmailSecurityTopTldsSpoofGetResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface EmailSecurityTopTldsSpoofGetResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type EmailSecurityTopTldsSpoofGetResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const EmailSecurityTopTldsSpoofGetResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "EmailSecurityTopTldsSpoofGetResponseMetaUnitsItem",
-  }) as any as S.Schema<EmailSecurityTopTldsSpoofGetResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type EmailSecurityTopTldsSpoofGetResponseMetaUnitsList =
-  Array<EmailSecurityTopTldsSpoofGetResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const EmailSecurityTopTldsSpoofGetResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    EmailSecurityTopTldsSpoofGetResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<EmailSecurityTopTldsSpoofGetResponseMetaUnitsList>;
 
 export interface EmailSecurityTopTldsSpoofGetResponseMeta {
@@ -26613,26 +25236,16 @@ export const EmailSecurityTopTldsSpoofGetResponseMeta = /*@__PURE__*/ S.suspend(
   identifier: "EmailSecurityTopTldsSpoofGetResponseMeta",
 }) as any as S.Schema<EmailSecurityTopTldsSpoofGetResponseMeta>;
 
-export interface EmailSecurityTopTldsSpoofGetResponseTop0Item {
-  name: string;
-  /** A numeric string. */
-  value: string;
-}
+export type EmailSecurityTopTldsSpoofGetResponseTop0Item =
+  EmailSecurityTopTldsGetResponseTop0Item;
 export const EmailSecurityTopTldsSpoofGetResponseTop0Item =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "EmailSecurityTopTldsSpoofGetResponseTop0Item",
-  }) as any as S.Schema<EmailSecurityTopTldsSpoofGetResponseTop0Item>;
+  EmailSecurityTopTldsGetResponseTop0Item;
 
 export type EmailSecurityTopTldsSpoofGetResponseTop0List =
-  Array<EmailSecurityTopTldsSpoofGetResponseTop0Item>;
+  Array<EmailSecurityTopTldsGetResponseTop0Item>;
 export const EmailSecurityTopTldsSpoofGetResponseTop0List =
   /*@__PURE__*/ S.Array(
-    EmailSecurityTopTldsSpoofGetResponseTop0Item,
+    EmailSecurityTopTldsGetResponseTop0Item,
   ) as any as S.Schema<EmailSecurityTopTldsSpoofGetResponseTop0List>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -27352,26 +25965,15 @@ export const HttpAsesGetResponseMetaConfidenceInfo = /*@__PURE__*/ S.suspend(
   identifier: "HttpAsesGetResponseMetaConfidenceInfo",
 }) as any as S.Schema<HttpAsesGetResponseMetaConfidenceInfo>;
 
-export interface HttpAsesGetResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
-export const HttpAsesGetResponseMetaDateRangeItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-).annotate({
-  identifier: "HttpAsesGetResponseMetaDateRangeItem",
-}) as any as S.Schema<HttpAsesGetResponseMetaDateRangeItem>;
+export type HttpAsesGetResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
+export const HttpAsesGetResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type HttpAsesGetResponseMetaDateRangeList =
-  Array<HttpAsesGetResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const HttpAsesGetResponseMetaDateRangeList = /*@__PURE__*/ S.Array(
-  HttpAsesGetResponseMetaDateRangeItem,
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
 ) as any as S.Schema<HttpAsesGetResponseMetaDateRangeList>;
 
 export type HttpAsesGetResponseMetaNormalization =
@@ -27385,23 +25987,15 @@ export type HttpAsesGetResponseMetaNormalization =
   | "RATIO";
 export const HttpAsesGetResponseMetaNormalization = /*@__PURE__*/ S.String;
 
-export interface HttpAsesGetResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
-export const HttpAsesGetResponseMetaUnitsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    value: S.String,
-  }),
-).annotate({
-  identifier: "HttpAsesGetResponseMetaUnitsItem",
-}) as any as S.Schema<HttpAsesGetResponseMetaUnitsItem>;
+export type HttpAsesGetResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
+export const HttpAsesGetResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type HttpAsesGetResponseMetaUnitsList =
-  Array<HttpAsesGetResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const HttpAsesGetResponseMetaUnitsList = /*@__PURE__*/ S.Array(
-  HttpAsesGetResponseMetaUnitsItem,
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
 ) as any as S.Schema<HttpAsesGetResponseMetaUnitsList>;
 
 export interface HttpAsesGetResponseMeta {
@@ -27426,25 +26020,12 @@ export const HttpAsesGetResponseMeta = /*@__PURE__*/ S.suspend(() =>
   identifier: "HttpAsesGetResponseMeta",
 }) as any as S.Schema<HttpAsesGetResponseMeta>;
 
-export interface HttpAsesGetResponseTop0Item {
-  clientASN: number;
-  clientASName: string;
-  /** A numeric string. */
-  value: string;
-}
-export const HttpAsesGetResponseTop0Item = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clientASN: S.Number,
-    clientASName: S.String,
-    value: S.String,
-  }),
-).annotate({
-  identifier: "HttpAsesGetResponseTop0Item",
-}) as any as S.Schema<HttpAsesGetResponseTop0Item>;
+export type HttpAsesGetResponseTop0Item = DnsTopAsesResponseTop0Item;
+export const HttpAsesGetResponseTop0Item = DnsTopAsesResponseTop0Item;
 
-export type HttpAsesGetResponseTop0List = Array<HttpAsesGetResponseTop0Item>;
+export type HttpAsesGetResponseTop0List = Array<DnsTopAsesResponseTop0Item>;
 export const HttpAsesGetResponseTop0List = /*@__PURE__*/ S.Array(
-  HttpAsesGetResponseTop0Item,
+  DnsTopAsesResponseTop0Item,
 ) as any as S.Schema<HttpAsesGetResponseTop0List>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -27797,27 +26378,16 @@ export const HttpAsesBotClassGetResponseMetaConfidenceInfo =
     identifier: "HttpAsesBotClassGetResponseMetaConfidenceInfo",
   }) as any as S.Schema<HttpAsesBotClassGetResponseMetaConfidenceInfo>;
 
-export interface HttpAsesBotClassGetResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type HttpAsesBotClassGetResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const HttpAsesBotClassGetResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "HttpAsesBotClassGetResponseMetaDateRangeItem",
-  }) as any as S.Schema<HttpAsesBotClassGetResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type HttpAsesBotClassGetResponseMetaDateRangeList =
-  Array<HttpAsesBotClassGetResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const HttpAsesBotClassGetResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    HttpAsesBotClassGetResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<HttpAsesBotClassGetResponseMetaDateRangeList>;
 
 export type HttpAsesBotClassGetResponseMetaNormalization =
@@ -27832,24 +26402,15 @@ export type HttpAsesBotClassGetResponseMetaNormalization =
 export const HttpAsesBotClassGetResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface HttpAsesBotClassGetResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
-export const HttpAsesBotClassGetResponseMetaUnitsItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-).annotate({
-  identifier: "HttpAsesBotClassGetResponseMetaUnitsItem",
-}) as any as S.Schema<HttpAsesBotClassGetResponseMetaUnitsItem>;
+export type HttpAsesBotClassGetResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
+export const HttpAsesBotClassGetResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type HttpAsesBotClassGetResponseMetaUnitsList =
-  Array<HttpAsesBotClassGetResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const HttpAsesBotClassGetResponseMetaUnitsList = /*@__PURE__*/ S.Array(
-  HttpAsesBotClassGetResponseMetaUnitsItem,
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
 ) as any as S.Schema<HttpAsesBotClassGetResponseMetaUnitsList>;
 
 export interface HttpAsesBotClassGetResponseMeta {
@@ -27874,26 +26435,13 @@ export const HttpAsesBotClassGetResponseMeta = /*@__PURE__*/ S.suspend(() =>
   identifier: "HttpAsesBotClassGetResponseMeta",
 }) as any as S.Schema<HttpAsesBotClassGetResponseMeta>;
 
-export interface HttpAsesBotClassGetResponseTop0Item {
-  clientASN: number;
-  clientASName: string;
-  /** A numeric string. */
-  value: string;
-}
-export const HttpAsesBotClassGetResponseTop0Item = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clientASN: S.Number,
-    clientASName: S.String,
-    value: S.String,
-  }),
-).annotate({
-  identifier: "HttpAsesBotClassGetResponseTop0Item",
-}) as any as S.Schema<HttpAsesBotClassGetResponseTop0Item>;
+export type HttpAsesBotClassGetResponseTop0Item = DnsTopAsesResponseTop0Item;
+export const HttpAsesBotClassGetResponseTop0Item = DnsTopAsesResponseTop0Item;
 
 export type HttpAsesBotClassGetResponseTop0List =
-  Array<HttpAsesBotClassGetResponseTop0Item>;
+  Array<DnsTopAsesResponseTop0Item>;
 export const HttpAsesBotClassGetResponseTop0List = /*@__PURE__*/ S.Array(
-  HttpAsesBotClassGetResponseTop0Item,
+  DnsTopAsesResponseTop0Item,
 ) as any as S.Schema<HttpAsesBotClassGetResponseTop0List>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -28264,27 +26812,16 @@ export const HttpAsesBrowserFamilyGetResponseMetaConfidenceInfo =
     identifier: "HttpAsesBrowserFamilyGetResponseMetaConfidenceInfo",
   }) as any as S.Schema<HttpAsesBrowserFamilyGetResponseMetaConfidenceInfo>;
 
-export interface HttpAsesBrowserFamilyGetResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type HttpAsesBrowserFamilyGetResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const HttpAsesBrowserFamilyGetResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "HttpAsesBrowserFamilyGetResponseMetaDateRangeItem",
-  }) as any as S.Schema<HttpAsesBrowserFamilyGetResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type HttpAsesBrowserFamilyGetResponseMetaDateRangeList =
-  Array<HttpAsesBrowserFamilyGetResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const HttpAsesBrowserFamilyGetResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    HttpAsesBrowserFamilyGetResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<HttpAsesBrowserFamilyGetResponseMetaDateRangeList>;
 
 export type HttpAsesBrowserFamilyGetResponseMetaNormalization =
@@ -28299,25 +26836,16 @@ export type HttpAsesBrowserFamilyGetResponseMetaNormalization =
 export const HttpAsesBrowserFamilyGetResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface HttpAsesBrowserFamilyGetResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type HttpAsesBrowserFamilyGetResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const HttpAsesBrowserFamilyGetResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "HttpAsesBrowserFamilyGetResponseMetaUnitsItem",
-  }) as any as S.Schema<HttpAsesBrowserFamilyGetResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type HttpAsesBrowserFamilyGetResponseMetaUnitsList =
-  Array<HttpAsesBrowserFamilyGetResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const HttpAsesBrowserFamilyGetResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    HttpAsesBrowserFamilyGetResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<HttpAsesBrowserFamilyGetResponseMetaUnitsList>;
 
 export interface HttpAsesBrowserFamilyGetResponseMeta {
@@ -28343,27 +26871,15 @@ export const HttpAsesBrowserFamilyGetResponseMeta = /*@__PURE__*/ S.suspend(
   identifier: "HttpAsesBrowserFamilyGetResponseMeta",
 }) as any as S.Schema<HttpAsesBrowserFamilyGetResponseMeta>;
 
-export interface HttpAsesBrowserFamilyGetResponseTop0Item {
-  clientASN: number;
-  clientASName: string;
-  /** A numeric string. */
-  value: string;
-}
-export const HttpAsesBrowserFamilyGetResponseTop0Item = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      clientASN: S.Number,
-      clientASName: S.String,
-      value: S.String,
-    }),
-).annotate({
-  identifier: "HttpAsesBrowserFamilyGetResponseTop0Item",
-}) as any as S.Schema<HttpAsesBrowserFamilyGetResponseTop0Item>;
+export type HttpAsesBrowserFamilyGetResponseTop0Item =
+  DnsTopAsesResponseTop0Item;
+export const HttpAsesBrowserFamilyGetResponseTop0Item =
+  DnsTopAsesResponseTop0Item;
 
 export type HttpAsesBrowserFamilyGetResponseTop0List =
-  Array<HttpAsesBrowserFamilyGetResponseTop0Item>;
+  Array<DnsTopAsesResponseTop0Item>;
 export const HttpAsesBrowserFamilyGetResponseTop0List = /*@__PURE__*/ S.Array(
-  HttpAsesBrowserFamilyGetResponseTop0Item,
+  DnsTopAsesResponseTop0Item,
 ) as any as S.Schema<HttpAsesBrowserFamilyGetResponseTop0List>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -28724,27 +27240,16 @@ export const HttpAsesDeviceTypeGetResponseMetaConfidenceInfo =
     identifier: "HttpAsesDeviceTypeGetResponseMetaConfidenceInfo",
   }) as any as S.Schema<HttpAsesDeviceTypeGetResponseMetaConfidenceInfo>;
 
-export interface HttpAsesDeviceTypeGetResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type HttpAsesDeviceTypeGetResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const HttpAsesDeviceTypeGetResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "HttpAsesDeviceTypeGetResponseMetaDateRangeItem",
-  }) as any as S.Schema<HttpAsesDeviceTypeGetResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type HttpAsesDeviceTypeGetResponseMetaDateRangeList =
-  Array<HttpAsesDeviceTypeGetResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const HttpAsesDeviceTypeGetResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    HttpAsesDeviceTypeGetResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<HttpAsesDeviceTypeGetResponseMetaDateRangeList>;
 
 export type HttpAsesDeviceTypeGetResponseMetaNormalization =
@@ -28759,24 +27264,15 @@ export type HttpAsesDeviceTypeGetResponseMetaNormalization =
 export const HttpAsesDeviceTypeGetResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface HttpAsesDeviceTypeGetResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type HttpAsesDeviceTypeGetResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const HttpAsesDeviceTypeGetResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "HttpAsesDeviceTypeGetResponseMetaUnitsItem",
-  }) as any as S.Schema<HttpAsesDeviceTypeGetResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type HttpAsesDeviceTypeGetResponseMetaUnitsList =
-  Array<HttpAsesDeviceTypeGetResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const HttpAsesDeviceTypeGetResponseMetaUnitsList = /*@__PURE__*/ S.Array(
-  HttpAsesDeviceTypeGetResponseMetaUnitsItem,
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
 ) as any as S.Schema<HttpAsesDeviceTypeGetResponseMetaUnitsList>;
 
 export interface HttpAsesDeviceTypeGetResponseMeta {
@@ -28801,27 +27297,13 @@ export const HttpAsesDeviceTypeGetResponseMeta = /*@__PURE__*/ S.suspend(() =>
   identifier: "HttpAsesDeviceTypeGetResponseMeta",
 }) as any as S.Schema<HttpAsesDeviceTypeGetResponseMeta>;
 
-export interface HttpAsesDeviceTypeGetResponseTop0Item {
-  clientASN: number;
-  clientASName: string;
-  /** A numeric string. */
-  value: string;
-}
-export const HttpAsesDeviceTypeGetResponseTop0Item = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      clientASN: S.Number,
-      clientASName: S.String,
-      value: S.String,
-    }),
-).annotate({
-  identifier: "HttpAsesDeviceTypeGetResponseTop0Item",
-}) as any as S.Schema<HttpAsesDeviceTypeGetResponseTop0Item>;
+export type HttpAsesDeviceTypeGetResponseTop0Item = DnsTopAsesResponseTop0Item;
+export const HttpAsesDeviceTypeGetResponseTop0Item = DnsTopAsesResponseTop0Item;
 
 export type HttpAsesDeviceTypeGetResponseTop0List =
-  Array<HttpAsesDeviceTypeGetResponseTop0Item>;
+  Array<DnsTopAsesResponseTop0Item>;
 export const HttpAsesDeviceTypeGetResponseTop0List = /*@__PURE__*/ S.Array(
-  HttpAsesDeviceTypeGetResponseTop0Item,
+  DnsTopAsesResponseTop0Item,
 ) as any as S.Schema<HttpAsesDeviceTypeGetResponseTop0List>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -29181,27 +27663,16 @@ export const HttpAsesHttpMethodGetResponseMetaConfidenceInfo =
     identifier: "HttpAsesHttpMethodGetResponseMetaConfidenceInfo",
   }) as any as S.Schema<HttpAsesHttpMethodGetResponseMetaConfidenceInfo>;
 
-export interface HttpAsesHttpMethodGetResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type HttpAsesHttpMethodGetResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const HttpAsesHttpMethodGetResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "HttpAsesHttpMethodGetResponseMetaDateRangeItem",
-  }) as any as S.Schema<HttpAsesHttpMethodGetResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type HttpAsesHttpMethodGetResponseMetaDateRangeList =
-  Array<HttpAsesHttpMethodGetResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const HttpAsesHttpMethodGetResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    HttpAsesHttpMethodGetResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<HttpAsesHttpMethodGetResponseMetaDateRangeList>;
 
 export type HttpAsesHttpMethodGetResponseMetaNormalization =
@@ -29216,24 +27687,15 @@ export type HttpAsesHttpMethodGetResponseMetaNormalization =
 export const HttpAsesHttpMethodGetResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface HttpAsesHttpMethodGetResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type HttpAsesHttpMethodGetResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const HttpAsesHttpMethodGetResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "HttpAsesHttpMethodGetResponseMetaUnitsItem",
-  }) as any as S.Schema<HttpAsesHttpMethodGetResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type HttpAsesHttpMethodGetResponseMetaUnitsList =
-  Array<HttpAsesHttpMethodGetResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const HttpAsesHttpMethodGetResponseMetaUnitsList = /*@__PURE__*/ S.Array(
-  HttpAsesHttpMethodGetResponseMetaUnitsItem,
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
 ) as any as S.Schema<HttpAsesHttpMethodGetResponseMetaUnitsList>;
 
 export interface HttpAsesHttpMethodGetResponseMeta {
@@ -29258,27 +27720,13 @@ export const HttpAsesHttpMethodGetResponseMeta = /*@__PURE__*/ S.suspend(() =>
   identifier: "HttpAsesHttpMethodGetResponseMeta",
 }) as any as S.Schema<HttpAsesHttpMethodGetResponseMeta>;
 
-export interface HttpAsesHttpMethodGetResponseTop0Item {
-  clientASN: number;
-  clientASName: string;
-  /** A numeric string. */
-  value: string;
-}
-export const HttpAsesHttpMethodGetResponseTop0Item = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      clientASN: S.Number,
-      clientASName: S.String,
-      value: S.String,
-    }),
-).annotate({
-  identifier: "HttpAsesHttpMethodGetResponseTop0Item",
-}) as any as S.Schema<HttpAsesHttpMethodGetResponseTop0Item>;
+export type HttpAsesHttpMethodGetResponseTop0Item = DnsTopAsesResponseTop0Item;
+export const HttpAsesHttpMethodGetResponseTop0Item = DnsTopAsesResponseTop0Item;
 
 export type HttpAsesHttpMethodGetResponseTop0List =
-  Array<HttpAsesHttpMethodGetResponseTop0Item>;
+  Array<DnsTopAsesResponseTop0Item>;
 export const HttpAsesHttpMethodGetResponseTop0List = /*@__PURE__*/ S.Array(
-  HttpAsesHttpMethodGetResponseTop0Item,
+  DnsTopAsesResponseTop0Item,
 ) as any as S.Schema<HttpAsesHttpMethodGetResponseTop0List>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -29646,27 +28094,16 @@ export const HttpAsesHttpProtocolGetResponseMetaConfidenceInfo =
     identifier: "HttpAsesHttpProtocolGetResponseMetaConfidenceInfo",
   }) as any as S.Schema<HttpAsesHttpProtocolGetResponseMetaConfidenceInfo>;
 
-export interface HttpAsesHttpProtocolGetResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type HttpAsesHttpProtocolGetResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const HttpAsesHttpProtocolGetResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "HttpAsesHttpProtocolGetResponseMetaDateRangeItem",
-  }) as any as S.Schema<HttpAsesHttpProtocolGetResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type HttpAsesHttpProtocolGetResponseMetaDateRangeList =
-  Array<HttpAsesHttpProtocolGetResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const HttpAsesHttpProtocolGetResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    HttpAsesHttpProtocolGetResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<HttpAsesHttpProtocolGetResponseMetaDateRangeList>;
 
 export type HttpAsesHttpProtocolGetResponseMetaNormalization =
@@ -29681,25 +28118,16 @@ export type HttpAsesHttpProtocolGetResponseMetaNormalization =
 export const HttpAsesHttpProtocolGetResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface HttpAsesHttpProtocolGetResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type HttpAsesHttpProtocolGetResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const HttpAsesHttpProtocolGetResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "HttpAsesHttpProtocolGetResponseMetaUnitsItem",
-  }) as any as S.Schema<HttpAsesHttpProtocolGetResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type HttpAsesHttpProtocolGetResponseMetaUnitsList =
-  Array<HttpAsesHttpProtocolGetResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const HttpAsesHttpProtocolGetResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    HttpAsesHttpProtocolGetResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<HttpAsesHttpProtocolGetResponseMetaUnitsList>;
 
 export interface HttpAsesHttpProtocolGetResponseMeta {
@@ -29724,27 +28152,15 @@ export const HttpAsesHttpProtocolGetResponseMeta = /*@__PURE__*/ S.suspend(() =>
   identifier: "HttpAsesHttpProtocolGetResponseMeta",
 }) as any as S.Schema<HttpAsesHttpProtocolGetResponseMeta>;
 
-export interface HttpAsesHttpProtocolGetResponseTop0Item {
-  clientASN: number;
-  clientASName: string;
-  /** A numeric string. */
-  value: string;
-}
-export const HttpAsesHttpProtocolGetResponseTop0Item = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      clientASN: S.Number,
-      clientASName: S.String,
-      value: S.String,
-    }),
-).annotate({
-  identifier: "HttpAsesHttpProtocolGetResponseTop0Item",
-}) as any as S.Schema<HttpAsesHttpProtocolGetResponseTop0Item>;
+export type HttpAsesHttpProtocolGetResponseTop0Item =
+  DnsTopAsesResponseTop0Item;
+export const HttpAsesHttpProtocolGetResponseTop0Item =
+  DnsTopAsesResponseTop0Item;
 
 export type HttpAsesHttpProtocolGetResponseTop0List =
-  Array<HttpAsesHttpProtocolGetResponseTop0Item>;
+  Array<DnsTopAsesResponseTop0Item>;
 export const HttpAsesHttpProtocolGetResponseTop0List = /*@__PURE__*/ S.Array(
-  HttpAsesHttpProtocolGetResponseTop0Item,
+  DnsTopAsesResponseTop0Item,
 ) as any as S.Schema<HttpAsesHttpProtocolGetResponseTop0List>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -30099,27 +28515,16 @@ export const HttpAsesIpVersionGetResponseMetaConfidenceInfo =
     identifier: "HttpAsesIpVersionGetResponseMetaConfidenceInfo",
   }) as any as S.Schema<HttpAsesIpVersionGetResponseMetaConfidenceInfo>;
 
-export interface HttpAsesIpVersionGetResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type HttpAsesIpVersionGetResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const HttpAsesIpVersionGetResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "HttpAsesIpVersionGetResponseMetaDateRangeItem",
-  }) as any as S.Schema<HttpAsesIpVersionGetResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type HttpAsesIpVersionGetResponseMetaDateRangeList =
-  Array<HttpAsesIpVersionGetResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const HttpAsesIpVersionGetResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    HttpAsesIpVersionGetResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<HttpAsesIpVersionGetResponseMetaDateRangeList>;
 
 export type HttpAsesIpVersionGetResponseMetaNormalization =
@@ -30134,24 +28539,15 @@ export type HttpAsesIpVersionGetResponseMetaNormalization =
 export const HttpAsesIpVersionGetResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface HttpAsesIpVersionGetResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type HttpAsesIpVersionGetResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const HttpAsesIpVersionGetResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "HttpAsesIpVersionGetResponseMetaUnitsItem",
-  }) as any as S.Schema<HttpAsesIpVersionGetResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type HttpAsesIpVersionGetResponseMetaUnitsList =
-  Array<HttpAsesIpVersionGetResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const HttpAsesIpVersionGetResponseMetaUnitsList = /*@__PURE__*/ S.Array(
-  HttpAsesIpVersionGetResponseMetaUnitsItem,
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
 ) as any as S.Schema<HttpAsesIpVersionGetResponseMetaUnitsList>;
 
 export interface HttpAsesIpVersionGetResponseMeta {
@@ -30176,27 +28572,13 @@ export const HttpAsesIpVersionGetResponseMeta = /*@__PURE__*/ S.suspend(() =>
   identifier: "HttpAsesIpVersionGetResponseMeta",
 }) as any as S.Schema<HttpAsesIpVersionGetResponseMeta>;
 
-export interface HttpAsesIpVersionGetResponseTop0Item {
-  clientASN: number;
-  clientASName: string;
-  /** A numeric string. */
-  value: string;
-}
-export const HttpAsesIpVersionGetResponseTop0Item = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      clientASN: S.Number,
-      clientASName: S.String,
-      value: S.String,
-    }),
-).annotate({
-  identifier: "HttpAsesIpVersionGetResponseTop0Item",
-}) as any as S.Schema<HttpAsesIpVersionGetResponseTop0Item>;
+export type HttpAsesIpVersionGetResponseTop0Item = DnsTopAsesResponseTop0Item;
+export const HttpAsesIpVersionGetResponseTop0Item = DnsTopAsesResponseTop0Item;
 
 export type HttpAsesIpVersionGetResponseTop0List =
-  Array<HttpAsesIpVersionGetResponseTop0Item>;
+  Array<DnsTopAsesResponseTop0Item>;
 export const HttpAsesIpVersionGetResponseTop0List = /*@__PURE__*/ S.Array(
-  HttpAsesIpVersionGetResponseTop0Item,
+  DnsTopAsesResponseTop0Item,
 ) as any as S.Schema<HttpAsesIpVersionGetResponseTop0List>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -30522,26 +28904,15 @@ export const HttpAsesOsGetResponseMetaConfidenceInfo = /*@__PURE__*/ S.suspend(
   identifier: "HttpAsesOsGetResponseMetaConfidenceInfo",
 }) as any as S.Schema<HttpAsesOsGetResponseMetaConfidenceInfo>;
 
-export interface HttpAsesOsGetResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
-export const HttpAsesOsGetResponseMetaDateRangeItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-).annotate({
-  identifier: "HttpAsesOsGetResponseMetaDateRangeItem",
-}) as any as S.Schema<HttpAsesOsGetResponseMetaDateRangeItem>;
+export type HttpAsesOsGetResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
+export const HttpAsesOsGetResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type HttpAsesOsGetResponseMetaDateRangeList =
-  Array<HttpAsesOsGetResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const HttpAsesOsGetResponseMetaDateRangeList = /*@__PURE__*/ S.Array(
-  HttpAsesOsGetResponseMetaDateRangeItem,
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
 ) as any as S.Schema<HttpAsesOsGetResponseMetaDateRangeList>;
 
 export type HttpAsesOsGetResponseMetaNormalization =
@@ -30555,23 +28926,15 @@ export type HttpAsesOsGetResponseMetaNormalization =
   | "RATIO";
 export const HttpAsesOsGetResponseMetaNormalization = /*@__PURE__*/ S.String;
 
-export interface HttpAsesOsGetResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
-export const HttpAsesOsGetResponseMetaUnitsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    value: S.String,
-  }),
-).annotate({
-  identifier: "HttpAsesOsGetResponseMetaUnitsItem",
-}) as any as S.Schema<HttpAsesOsGetResponseMetaUnitsItem>;
+export type HttpAsesOsGetResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
+export const HttpAsesOsGetResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type HttpAsesOsGetResponseMetaUnitsList =
-  Array<HttpAsesOsGetResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const HttpAsesOsGetResponseMetaUnitsList = /*@__PURE__*/ S.Array(
-  HttpAsesOsGetResponseMetaUnitsItem,
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
 ) as any as S.Schema<HttpAsesOsGetResponseMetaUnitsList>;
 
 export interface HttpAsesOsGetResponseMeta {
@@ -30596,26 +28959,12 @@ export const HttpAsesOsGetResponseMeta = /*@__PURE__*/ S.suspend(() =>
   identifier: "HttpAsesOsGetResponseMeta",
 }) as any as S.Schema<HttpAsesOsGetResponseMeta>;
 
-export interface HttpAsesOsGetResponseTop0Item {
-  clientASN: number;
-  clientASName: string;
-  /** A numeric string. */
-  value: string;
-}
-export const HttpAsesOsGetResponseTop0Item = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clientASN: S.Number,
-    clientASName: S.String,
-    value: S.String,
-  }),
-).annotate({
-  identifier: "HttpAsesOsGetResponseTop0Item",
-}) as any as S.Schema<HttpAsesOsGetResponseTop0Item>;
+export type HttpAsesOsGetResponseTop0Item = DnsTopAsesResponseTop0Item;
+export const HttpAsesOsGetResponseTop0Item = DnsTopAsesResponseTop0Item;
 
-export type HttpAsesOsGetResponseTop0List =
-  Array<HttpAsesOsGetResponseTop0Item>;
+export type HttpAsesOsGetResponseTop0List = Array<DnsTopAsesResponseTop0Item>;
 export const HttpAsesOsGetResponseTop0List = /*@__PURE__*/ S.Array(
-  HttpAsesOsGetResponseTop0Item,
+  DnsTopAsesResponseTop0Item,
 ) as any as S.Schema<HttpAsesOsGetResponseTop0List>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -30976,27 +29325,16 @@ export const HttpAsesTlsVersionGetResponseMetaConfidenceInfo =
     identifier: "HttpAsesTlsVersionGetResponseMetaConfidenceInfo",
   }) as any as S.Schema<HttpAsesTlsVersionGetResponseMetaConfidenceInfo>;
 
-export interface HttpAsesTlsVersionGetResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type HttpAsesTlsVersionGetResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const HttpAsesTlsVersionGetResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "HttpAsesTlsVersionGetResponseMetaDateRangeItem",
-  }) as any as S.Schema<HttpAsesTlsVersionGetResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type HttpAsesTlsVersionGetResponseMetaDateRangeList =
-  Array<HttpAsesTlsVersionGetResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const HttpAsesTlsVersionGetResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    HttpAsesTlsVersionGetResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<HttpAsesTlsVersionGetResponseMetaDateRangeList>;
 
 export type HttpAsesTlsVersionGetResponseMetaNormalization =
@@ -31011,24 +29349,15 @@ export type HttpAsesTlsVersionGetResponseMetaNormalization =
 export const HttpAsesTlsVersionGetResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface HttpAsesTlsVersionGetResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type HttpAsesTlsVersionGetResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const HttpAsesTlsVersionGetResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "HttpAsesTlsVersionGetResponseMetaUnitsItem",
-  }) as any as S.Schema<HttpAsesTlsVersionGetResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type HttpAsesTlsVersionGetResponseMetaUnitsList =
-  Array<HttpAsesTlsVersionGetResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const HttpAsesTlsVersionGetResponseMetaUnitsList = /*@__PURE__*/ S.Array(
-  HttpAsesTlsVersionGetResponseMetaUnitsItem,
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
 ) as any as S.Schema<HttpAsesTlsVersionGetResponseMetaUnitsList>;
 
 export interface HttpAsesTlsVersionGetResponseMeta {
@@ -31053,27 +29382,13 @@ export const HttpAsesTlsVersionGetResponseMeta = /*@__PURE__*/ S.suspend(() =>
   identifier: "HttpAsesTlsVersionGetResponseMeta",
 }) as any as S.Schema<HttpAsesTlsVersionGetResponseMeta>;
 
-export interface HttpAsesTlsVersionGetResponseTop0Item {
-  clientASN: number;
-  clientASName: string;
-  /** A numeric string. */
-  value: string;
-}
-export const HttpAsesTlsVersionGetResponseTop0Item = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      clientASN: S.Number,
-      clientASName: S.String,
-      value: S.String,
-    }),
-).annotate({
-  identifier: "HttpAsesTlsVersionGetResponseTop0Item",
-}) as any as S.Schema<HttpAsesTlsVersionGetResponseTop0Item>;
+export type HttpAsesTlsVersionGetResponseTop0Item = DnsTopAsesResponseTop0Item;
+export const HttpAsesTlsVersionGetResponseTop0Item = DnsTopAsesResponseTop0Item;
 
 export type HttpAsesTlsVersionGetResponseTop0List =
-  Array<HttpAsesTlsVersionGetResponseTop0Item>;
+  Array<DnsTopAsesResponseTop0Item>;
 export const HttpAsesTlsVersionGetResponseTop0List = /*@__PURE__*/ S.Array(
-  HttpAsesTlsVersionGetResponseTop0Item,
+  DnsTopAsesResponseTop0Item,
 ) as any as S.Schema<HttpAsesTlsVersionGetResponseTop0List>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -31412,26 +29727,15 @@ export const HttpLocationsGetResponseMetaConfidenceInfo =
     identifier: "HttpLocationsGetResponseMetaConfidenceInfo",
   }) as any as S.Schema<HttpLocationsGetResponseMetaConfidenceInfo>;
 
-export interface HttpLocationsGetResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type HttpLocationsGetResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const HttpLocationsGetResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "HttpLocationsGetResponseMetaDateRangeItem",
-  }) as any as S.Schema<HttpLocationsGetResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type HttpLocationsGetResponseMetaDateRangeList =
-  Array<HttpLocationsGetResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const HttpLocationsGetResponseMetaDateRangeList = /*@__PURE__*/ S.Array(
-  HttpLocationsGetResponseMetaDateRangeItem,
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
 ) as any as S.Schema<HttpLocationsGetResponseMetaDateRangeList>;
 
 export type HttpLocationsGetResponseMetaNormalization =
@@ -31445,24 +29749,15 @@ export type HttpLocationsGetResponseMetaNormalization =
   | "RATIO";
 export const HttpLocationsGetResponseMetaNormalization = /*@__PURE__*/ S.String;
 
-export interface HttpLocationsGetResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
-export const HttpLocationsGetResponseMetaUnitsItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-).annotate({
-  identifier: "HttpLocationsGetResponseMetaUnitsItem",
-}) as any as S.Schema<HttpLocationsGetResponseMetaUnitsItem>;
+export type HttpLocationsGetResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
+export const HttpLocationsGetResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type HttpLocationsGetResponseMetaUnitsList =
-  Array<HttpLocationsGetResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const HttpLocationsGetResponseMetaUnitsList = /*@__PURE__*/ S.Array(
-  HttpLocationsGetResponseMetaUnitsItem,
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
 ) as any as S.Schema<HttpLocationsGetResponseMetaUnitsList>;
 
 export interface HttpLocationsGetResponseMeta {
@@ -31487,26 +29782,13 @@ export const HttpLocationsGetResponseMeta = /*@__PURE__*/ S.suspend(() =>
   identifier: "HttpLocationsGetResponseMeta",
 }) as any as S.Schema<HttpLocationsGetResponseMeta>;
 
-export interface HttpLocationsGetResponseTop0Item {
-  clientCountryAlpha2: string;
-  clientCountryName: string;
-  /** A numeric string. */
-  value: string;
-}
-export const HttpLocationsGetResponseTop0Item = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clientCountryAlpha2: S.String,
-    clientCountryName: S.String,
-    value: S.String,
-  }),
-).annotate({
-  identifier: "HttpLocationsGetResponseTop0Item",
-}) as any as S.Schema<HttpLocationsGetResponseTop0Item>;
+export type HttpLocationsGetResponseTop0Item = As112TopDnssecResponseTop0Item;
+export const HttpLocationsGetResponseTop0Item = As112TopDnssecResponseTop0Item;
 
 export type HttpLocationsGetResponseTop0List =
-  Array<HttpLocationsGetResponseTop0Item>;
+  Array<As112TopDnssecResponseTop0Item>;
 export const HttpLocationsGetResponseTop0List = /*@__PURE__*/ S.Array(
-  HttpLocationsGetResponseTop0Item,
+  As112TopDnssecResponseTop0Item,
 ) as any as S.Schema<HttpLocationsGetResponseTop0List>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -31877,27 +30159,16 @@ export const HttpLocationsBotClassGetResponseMetaConfidenceInfo =
     identifier: "HttpLocationsBotClassGetResponseMetaConfidenceInfo",
   }) as any as S.Schema<HttpLocationsBotClassGetResponseMetaConfidenceInfo>;
 
-export interface HttpLocationsBotClassGetResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type HttpLocationsBotClassGetResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const HttpLocationsBotClassGetResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "HttpLocationsBotClassGetResponseMetaDateRangeItem",
-  }) as any as S.Schema<HttpLocationsBotClassGetResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type HttpLocationsBotClassGetResponseMetaDateRangeList =
-  Array<HttpLocationsBotClassGetResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const HttpLocationsBotClassGetResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    HttpLocationsBotClassGetResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<HttpLocationsBotClassGetResponseMetaDateRangeList>;
 
 export type HttpLocationsBotClassGetResponseMetaNormalization =
@@ -31912,25 +30183,16 @@ export type HttpLocationsBotClassGetResponseMetaNormalization =
 export const HttpLocationsBotClassGetResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface HttpLocationsBotClassGetResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type HttpLocationsBotClassGetResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const HttpLocationsBotClassGetResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "HttpLocationsBotClassGetResponseMetaUnitsItem",
-  }) as any as S.Schema<HttpLocationsBotClassGetResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type HttpLocationsBotClassGetResponseMetaUnitsList =
-  Array<HttpLocationsBotClassGetResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const HttpLocationsBotClassGetResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    HttpLocationsBotClassGetResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<HttpLocationsBotClassGetResponseMetaUnitsList>;
 
 export interface HttpLocationsBotClassGetResponseMeta {
@@ -31956,27 +30218,15 @@ export const HttpLocationsBotClassGetResponseMeta = /*@__PURE__*/ S.suspend(
   identifier: "HttpLocationsBotClassGetResponseMeta",
 }) as any as S.Schema<HttpLocationsBotClassGetResponseMeta>;
 
-export interface HttpLocationsBotClassGetResponseTop0Item {
-  clientCountryAlpha2: string;
-  clientCountryName: string;
-  /** A numeric string. */
-  value: string;
-}
-export const HttpLocationsBotClassGetResponseTop0Item = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      clientCountryAlpha2: S.String,
-      clientCountryName: S.String,
-      value: S.String,
-    }),
-).annotate({
-  identifier: "HttpLocationsBotClassGetResponseTop0Item",
-}) as any as S.Schema<HttpLocationsBotClassGetResponseTop0Item>;
+export type HttpLocationsBotClassGetResponseTop0Item =
+  As112TopDnssecResponseTop0Item;
+export const HttpLocationsBotClassGetResponseTop0Item =
+  As112TopDnssecResponseTop0Item;
 
 export type HttpLocationsBotClassGetResponseTop0List =
-  Array<HttpLocationsBotClassGetResponseTop0Item>;
+  Array<As112TopDnssecResponseTop0Item>;
 export const HttpLocationsBotClassGetResponseTop0List = /*@__PURE__*/ S.Array(
-  HttpLocationsBotClassGetResponseTop0Item,
+  As112TopDnssecResponseTop0Item,
 ) as any as S.Schema<HttpLocationsBotClassGetResponseTop0List>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -32366,27 +30616,16 @@ export const HttpLocationsBrowserFamilyGetResponseMetaConfidenceInfo =
     identifier: "HttpLocationsBrowserFamilyGetResponseMetaConfidenceInfo",
   }) as any as S.Schema<HttpLocationsBrowserFamilyGetResponseMetaConfidenceInfo>;
 
-export interface HttpLocationsBrowserFamilyGetResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type HttpLocationsBrowserFamilyGetResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const HttpLocationsBrowserFamilyGetResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "HttpLocationsBrowserFamilyGetResponseMetaDateRangeItem",
-  }) as any as S.Schema<HttpLocationsBrowserFamilyGetResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type HttpLocationsBrowserFamilyGetResponseMetaDateRangeList =
-  Array<HttpLocationsBrowserFamilyGetResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const HttpLocationsBrowserFamilyGetResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    HttpLocationsBrowserFamilyGetResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<HttpLocationsBrowserFamilyGetResponseMetaDateRangeList>;
 
 export type HttpLocationsBrowserFamilyGetResponseMetaNormalization =
@@ -32401,25 +30640,16 @@ export type HttpLocationsBrowserFamilyGetResponseMetaNormalization =
 export const HttpLocationsBrowserFamilyGetResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface HttpLocationsBrowserFamilyGetResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type HttpLocationsBrowserFamilyGetResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const HttpLocationsBrowserFamilyGetResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "HttpLocationsBrowserFamilyGetResponseMetaUnitsItem",
-  }) as any as S.Schema<HttpLocationsBrowserFamilyGetResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type HttpLocationsBrowserFamilyGetResponseMetaUnitsList =
-  Array<HttpLocationsBrowserFamilyGetResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const HttpLocationsBrowserFamilyGetResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    HttpLocationsBrowserFamilyGetResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<HttpLocationsBrowserFamilyGetResponseMetaUnitsList>;
 
 export interface HttpLocationsBrowserFamilyGetResponseMeta {
@@ -32445,28 +30675,16 @@ export const HttpLocationsBrowserFamilyGetResponseMeta =
     identifier: "HttpLocationsBrowserFamilyGetResponseMeta",
   }) as any as S.Schema<HttpLocationsBrowserFamilyGetResponseMeta>;
 
-export interface HttpLocationsBrowserFamilyGetResponseTop0Item {
-  clientCountryAlpha2: string;
-  clientCountryName: string;
-  /** A numeric string. */
-  value: string;
-}
+export type HttpLocationsBrowserFamilyGetResponseTop0Item =
+  As112TopDnssecResponseTop0Item;
 export const HttpLocationsBrowserFamilyGetResponseTop0Item =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      clientCountryAlpha2: S.String,
-      clientCountryName: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "HttpLocationsBrowserFamilyGetResponseTop0Item",
-  }) as any as S.Schema<HttpLocationsBrowserFamilyGetResponseTop0Item>;
+  As112TopDnssecResponseTop0Item;
 
 export type HttpLocationsBrowserFamilyGetResponseTop0List =
-  Array<HttpLocationsBrowserFamilyGetResponseTop0Item>;
+  Array<As112TopDnssecResponseTop0Item>;
 export const HttpLocationsBrowserFamilyGetResponseTop0List =
   /*@__PURE__*/ S.Array(
-    HttpLocationsBrowserFamilyGetResponseTop0Item,
+    As112TopDnssecResponseTop0Item,
   ) as any as S.Schema<HttpLocationsBrowserFamilyGetResponseTop0List>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -32844,27 +31062,16 @@ export const HttpLocationsDeviceTypeGetResponseMetaConfidenceInfo =
     identifier: "HttpLocationsDeviceTypeGetResponseMetaConfidenceInfo",
   }) as any as S.Schema<HttpLocationsDeviceTypeGetResponseMetaConfidenceInfo>;
 
-export interface HttpLocationsDeviceTypeGetResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type HttpLocationsDeviceTypeGetResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const HttpLocationsDeviceTypeGetResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "HttpLocationsDeviceTypeGetResponseMetaDateRangeItem",
-  }) as any as S.Schema<HttpLocationsDeviceTypeGetResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type HttpLocationsDeviceTypeGetResponseMetaDateRangeList =
-  Array<HttpLocationsDeviceTypeGetResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const HttpLocationsDeviceTypeGetResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    HttpLocationsDeviceTypeGetResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<HttpLocationsDeviceTypeGetResponseMetaDateRangeList>;
 
 export type HttpLocationsDeviceTypeGetResponseMetaNormalization =
@@ -32879,25 +31086,16 @@ export type HttpLocationsDeviceTypeGetResponseMetaNormalization =
 export const HttpLocationsDeviceTypeGetResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface HttpLocationsDeviceTypeGetResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type HttpLocationsDeviceTypeGetResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const HttpLocationsDeviceTypeGetResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "HttpLocationsDeviceTypeGetResponseMetaUnitsItem",
-  }) as any as S.Schema<HttpLocationsDeviceTypeGetResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type HttpLocationsDeviceTypeGetResponseMetaUnitsList =
-  Array<HttpLocationsDeviceTypeGetResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const HttpLocationsDeviceTypeGetResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    HttpLocationsDeviceTypeGetResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<HttpLocationsDeviceTypeGetResponseMetaUnitsList>;
 
 export interface HttpLocationsDeviceTypeGetResponseMeta {
@@ -32923,27 +31121,15 @@ export const HttpLocationsDeviceTypeGetResponseMeta = /*@__PURE__*/ S.suspend(
   identifier: "HttpLocationsDeviceTypeGetResponseMeta",
 }) as any as S.Schema<HttpLocationsDeviceTypeGetResponseMeta>;
 
-export interface HttpLocationsDeviceTypeGetResponseTop0Item {
-  clientCountryAlpha2: string;
-  clientCountryName: string;
-  /** A numeric string. */
-  value: string;
-}
+export type HttpLocationsDeviceTypeGetResponseTop0Item =
+  As112TopDnssecResponseTop0Item;
 export const HttpLocationsDeviceTypeGetResponseTop0Item =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      clientCountryAlpha2: S.String,
-      clientCountryName: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "HttpLocationsDeviceTypeGetResponseTop0Item",
-  }) as any as S.Schema<HttpLocationsDeviceTypeGetResponseTop0Item>;
+  As112TopDnssecResponseTop0Item;
 
 export type HttpLocationsDeviceTypeGetResponseTop0List =
-  Array<HttpLocationsDeviceTypeGetResponseTop0Item>;
+  Array<As112TopDnssecResponseTop0Item>;
 export const HttpLocationsDeviceTypeGetResponseTop0List = /*@__PURE__*/ S.Array(
-  HttpLocationsDeviceTypeGetResponseTop0Item,
+  As112TopDnssecResponseTop0Item,
 ) as any as S.Schema<HttpLocationsDeviceTypeGetResponseTop0List>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -33320,27 +31506,16 @@ export const HttpLocationsHttpMethodGetResponseMetaConfidenceInfo =
     identifier: "HttpLocationsHttpMethodGetResponseMetaConfidenceInfo",
   }) as any as S.Schema<HttpLocationsHttpMethodGetResponseMetaConfidenceInfo>;
 
-export interface HttpLocationsHttpMethodGetResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type HttpLocationsHttpMethodGetResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const HttpLocationsHttpMethodGetResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "HttpLocationsHttpMethodGetResponseMetaDateRangeItem",
-  }) as any as S.Schema<HttpLocationsHttpMethodGetResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type HttpLocationsHttpMethodGetResponseMetaDateRangeList =
-  Array<HttpLocationsHttpMethodGetResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const HttpLocationsHttpMethodGetResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    HttpLocationsHttpMethodGetResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<HttpLocationsHttpMethodGetResponseMetaDateRangeList>;
 
 export type HttpLocationsHttpMethodGetResponseMetaNormalization =
@@ -33355,25 +31530,16 @@ export type HttpLocationsHttpMethodGetResponseMetaNormalization =
 export const HttpLocationsHttpMethodGetResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface HttpLocationsHttpMethodGetResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type HttpLocationsHttpMethodGetResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const HttpLocationsHttpMethodGetResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "HttpLocationsHttpMethodGetResponseMetaUnitsItem",
-  }) as any as S.Schema<HttpLocationsHttpMethodGetResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type HttpLocationsHttpMethodGetResponseMetaUnitsList =
-  Array<HttpLocationsHttpMethodGetResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const HttpLocationsHttpMethodGetResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    HttpLocationsHttpMethodGetResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<HttpLocationsHttpMethodGetResponseMetaUnitsList>;
 
 export interface HttpLocationsHttpMethodGetResponseMeta {
@@ -33399,27 +31565,15 @@ export const HttpLocationsHttpMethodGetResponseMeta = /*@__PURE__*/ S.suspend(
   identifier: "HttpLocationsHttpMethodGetResponseMeta",
 }) as any as S.Schema<HttpLocationsHttpMethodGetResponseMeta>;
 
-export interface HttpLocationsHttpMethodGetResponseTop0Item {
-  clientCountryAlpha2: string;
-  clientCountryName: string;
-  /** A numeric string. */
-  value: string;
-}
+export type HttpLocationsHttpMethodGetResponseTop0Item =
+  As112TopDnssecResponseTop0Item;
 export const HttpLocationsHttpMethodGetResponseTop0Item =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      clientCountryAlpha2: S.String,
-      clientCountryName: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "HttpLocationsHttpMethodGetResponseTop0Item",
-  }) as any as S.Schema<HttpLocationsHttpMethodGetResponseTop0Item>;
+  As112TopDnssecResponseTop0Item;
 
 export type HttpLocationsHttpMethodGetResponseTop0List =
-  Array<HttpLocationsHttpMethodGetResponseTop0Item>;
+  Array<As112TopDnssecResponseTop0Item>;
 export const HttpLocationsHttpMethodGetResponseTop0List = /*@__PURE__*/ S.Array(
-  HttpLocationsHttpMethodGetResponseTop0Item,
+  As112TopDnssecResponseTop0Item,
 ) as any as S.Schema<HttpLocationsHttpMethodGetResponseTop0List>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -33803,27 +31957,16 @@ export const HttpLocationsHttpProtocolGetResponseMetaConfidenceInfo =
     identifier: "HttpLocationsHttpProtocolGetResponseMetaConfidenceInfo",
   }) as any as S.Schema<HttpLocationsHttpProtocolGetResponseMetaConfidenceInfo>;
 
-export interface HttpLocationsHttpProtocolGetResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type HttpLocationsHttpProtocolGetResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const HttpLocationsHttpProtocolGetResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "HttpLocationsHttpProtocolGetResponseMetaDateRangeItem",
-  }) as any as S.Schema<HttpLocationsHttpProtocolGetResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type HttpLocationsHttpProtocolGetResponseMetaDateRangeList =
-  Array<HttpLocationsHttpProtocolGetResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const HttpLocationsHttpProtocolGetResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    HttpLocationsHttpProtocolGetResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<HttpLocationsHttpProtocolGetResponseMetaDateRangeList>;
 
 export type HttpLocationsHttpProtocolGetResponseMetaNormalization =
@@ -33838,25 +31981,16 @@ export type HttpLocationsHttpProtocolGetResponseMetaNormalization =
 export const HttpLocationsHttpProtocolGetResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface HttpLocationsHttpProtocolGetResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type HttpLocationsHttpProtocolGetResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const HttpLocationsHttpProtocolGetResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "HttpLocationsHttpProtocolGetResponseMetaUnitsItem",
-  }) as any as S.Schema<HttpLocationsHttpProtocolGetResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type HttpLocationsHttpProtocolGetResponseMetaUnitsList =
-  Array<HttpLocationsHttpProtocolGetResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const HttpLocationsHttpProtocolGetResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    HttpLocationsHttpProtocolGetResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<HttpLocationsHttpProtocolGetResponseMetaUnitsList>;
 
 export interface HttpLocationsHttpProtocolGetResponseMeta {
@@ -33882,28 +32016,16 @@ export const HttpLocationsHttpProtocolGetResponseMeta = /*@__PURE__*/ S.suspend(
   identifier: "HttpLocationsHttpProtocolGetResponseMeta",
 }) as any as S.Schema<HttpLocationsHttpProtocolGetResponseMeta>;
 
-export interface HttpLocationsHttpProtocolGetResponseTop0Item {
-  clientCountryAlpha2: string;
-  clientCountryName: string;
-  /** A numeric string. */
-  value: string;
-}
+export type HttpLocationsHttpProtocolGetResponseTop0Item =
+  As112TopDnssecResponseTop0Item;
 export const HttpLocationsHttpProtocolGetResponseTop0Item =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      clientCountryAlpha2: S.String,
-      clientCountryName: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "HttpLocationsHttpProtocolGetResponseTop0Item",
-  }) as any as S.Schema<HttpLocationsHttpProtocolGetResponseTop0Item>;
+  As112TopDnssecResponseTop0Item;
 
 export type HttpLocationsHttpProtocolGetResponseTop0List =
-  Array<HttpLocationsHttpProtocolGetResponseTop0Item>;
+  Array<As112TopDnssecResponseTop0Item>;
 export const HttpLocationsHttpProtocolGetResponseTop0List =
   /*@__PURE__*/ S.Array(
-    HttpLocationsHttpProtocolGetResponseTop0Item,
+    As112TopDnssecResponseTop0Item,
   ) as any as S.Schema<HttpLocationsHttpProtocolGetResponseTop0List>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -34279,27 +32401,16 @@ export const HttpLocationsIpVersionGetResponseMetaConfidenceInfo =
     identifier: "HttpLocationsIpVersionGetResponseMetaConfidenceInfo",
   }) as any as S.Schema<HttpLocationsIpVersionGetResponseMetaConfidenceInfo>;
 
-export interface HttpLocationsIpVersionGetResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type HttpLocationsIpVersionGetResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const HttpLocationsIpVersionGetResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "HttpLocationsIpVersionGetResponseMetaDateRangeItem",
-  }) as any as S.Schema<HttpLocationsIpVersionGetResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type HttpLocationsIpVersionGetResponseMetaDateRangeList =
-  Array<HttpLocationsIpVersionGetResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const HttpLocationsIpVersionGetResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    HttpLocationsIpVersionGetResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<HttpLocationsIpVersionGetResponseMetaDateRangeList>;
 
 export type HttpLocationsIpVersionGetResponseMetaNormalization =
@@ -34314,25 +32425,16 @@ export type HttpLocationsIpVersionGetResponseMetaNormalization =
 export const HttpLocationsIpVersionGetResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface HttpLocationsIpVersionGetResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type HttpLocationsIpVersionGetResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const HttpLocationsIpVersionGetResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "HttpLocationsIpVersionGetResponseMetaUnitsItem",
-  }) as any as S.Schema<HttpLocationsIpVersionGetResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type HttpLocationsIpVersionGetResponseMetaUnitsList =
-  Array<HttpLocationsIpVersionGetResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const HttpLocationsIpVersionGetResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    HttpLocationsIpVersionGetResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<HttpLocationsIpVersionGetResponseMetaUnitsList>;
 
 export interface HttpLocationsIpVersionGetResponseMeta {
@@ -34358,27 +32460,15 @@ export const HttpLocationsIpVersionGetResponseMeta = /*@__PURE__*/ S.suspend(
   identifier: "HttpLocationsIpVersionGetResponseMeta",
 }) as any as S.Schema<HttpLocationsIpVersionGetResponseMeta>;
 
-export interface HttpLocationsIpVersionGetResponseTop0Item {
-  clientCountryAlpha2: string;
-  clientCountryName: string;
-  /** A numeric string. */
-  value: string;
-}
+export type HttpLocationsIpVersionGetResponseTop0Item =
+  As112TopDnssecResponseTop0Item;
 export const HttpLocationsIpVersionGetResponseTop0Item =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      clientCountryAlpha2: S.String,
-      clientCountryName: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "HttpLocationsIpVersionGetResponseTop0Item",
-  }) as any as S.Schema<HttpLocationsIpVersionGetResponseTop0Item>;
+  As112TopDnssecResponseTop0Item;
 
 export type HttpLocationsIpVersionGetResponseTop0List =
-  Array<HttpLocationsIpVersionGetResponseTop0Item>;
+  Array<As112TopDnssecResponseTop0Item>;
 export const HttpLocationsIpVersionGetResponseTop0List = /*@__PURE__*/ S.Array(
-  HttpLocationsIpVersionGetResponseTop0Item,
+  As112TopDnssecResponseTop0Item,
 ) as any as S.Schema<HttpLocationsIpVersionGetResponseTop0List>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -34728,27 +32818,16 @@ export const HttpLocationsOsGetResponseMetaConfidenceInfo =
     identifier: "HttpLocationsOsGetResponseMetaConfidenceInfo",
   }) as any as S.Schema<HttpLocationsOsGetResponseMetaConfidenceInfo>;
 
-export interface HttpLocationsOsGetResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type HttpLocationsOsGetResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const HttpLocationsOsGetResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "HttpLocationsOsGetResponseMetaDateRangeItem",
-  }) as any as S.Schema<HttpLocationsOsGetResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type HttpLocationsOsGetResponseMetaDateRangeList =
-  Array<HttpLocationsOsGetResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const HttpLocationsOsGetResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    HttpLocationsOsGetResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<HttpLocationsOsGetResponseMetaDateRangeList>;
 
 export type HttpLocationsOsGetResponseMetaNormalization =
@@ -34763,24 +32842,15 @@ export type HttpLocationsOsGetResponseMetaNormalization =
 export const HttpLocationsOsGetResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface HttpLocationsOsGetResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
-export const HttpLocationsOsGetResponseMetaUnitsItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-).annotate({
-  identifier: "HttpLocationsOsGetResponseMetaUnitsItem",
-}) as any as S.Schema<HttpLocationsOsGetResponseMetaUnitsItem>;
+export type HttpLocationsOsGetResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
+export const HttpLocationsOsGetResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type HttpLocationsOsGetResponseMetaUnitsList =
-  Array<HttpLocationsOsGetResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const HttpLocationsOsGetResponseMetaUnitsList = /*@__PURE__*/ S.Array(
-  HttpLocationsOsGetResponseMetaUnitsItem,
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
 ) as any as S.Schema<HttpLocationsOsGetResponseMetaUnitsList>;
 
 export interface HttpLocationsOsGetResponseMeta {
@@ -34805,26 +32875,14 @@ export const HttpLocationsOsGetResponseMeta = /*@__PURE__*/ S.suspend(() =>
   identifier: "HttpLocationsOsGetResponseMeta",
 }) as any as S.Schema<HttpLocationsOsGetResponseMeta>;
 
-export interface HttpLocationsOsGetResponseTop0Item {
-  clientCountryAlpha2: string;
-  clientCountryName: string;
-  /** A numeric string. */
-  value: string;
-}
-export const HttpLocationsOsGetResponseTop0Item = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clientCountryAlpha2: S.String,
-    clientCountryName: S.String,
-    value: S.String,
-  }),
-).annotate({
-  identifier: "HttpLocationsOsGetResponseTop0Item",
-}) as any as S.Schema<HttpLocationsOsGetResponseTop0Item>;
+export type HttpLocationsOsGetResponseTop0Item = As112TopDnssecResponseTop0Item;
+export const HttpLocationsOsGetResponseTop0Item =
+  As112TopDnssecResponseTop0Item;
 
 export type HttpLocationsOsGetResponseTop0List =
-  Array<HttpLocationsOsGetResponseTop0Item>;
+  Array<As112TopDnssecResponseTop0Item>;
 export const HttpLocationsOsGetResponseTop0List = /*@__PURE__*/ S.Array(
-  HttpLocationsOsGetResponseTop0Item,
+  As112TopDnssecResponseTop0Item,
 ) as any as S.Schema<HttpLocationsOsGetResponseTop0List>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -35201,27 +33259,16 @@ export const HttpLocationsTlsVersionGetResponseMetaConfidenceInfo =
     identifier: "HttpLocationsTlsVersionGetResponseMetaConfidenceInfo",
   }) as any as S.Schema<HttpLocationsTlsVersionGetResponseMetaConfidenceInfo>;
 
-export interface HttpLocationsTlsVersionGetResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type HttpLocationsTlsVersionGetResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const HttpLocationsTlsVersionGetResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "HttpLocationsTlsVersionGetResponseMetaDateRangeItem",
-  }) as any as S.Schema<HttpLocationsTlsVersionGetResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type HttpLocationsTlsVersionGetResponseMetaDateRangeList =
-  Array<HttpLocationsTlsVersionGetResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const HttpLocationsTlsVersionGetResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    HttpLocationsTlsVersionGetResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<HttpLocationsTlsVersionGetResponseMetaDateRangeList>;
 
 export type HttpLocationsTlsVersionGetResponseMetaNormalization =
@@ -35236,25 +33283,16 @@ export type HttpLocationsTlsVersionGetResponseMetaNormalization =
 export const HttpLocationsTlsVersionGetResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface HttpLocationsTlsVersionGetResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type HttpLocationsTlsVersionGetResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const HttpLocationsTlsVersionGetResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "HttpLocationsTlsVersionGetResponseMetaUnitsItem",
-  }) as any as S.Schema<HttpLocationsTlsVersionGetResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type HttpLocationsTlsVersionGetResponseMetaUnitsList =
-  Array<HttpLocationsTlsVersionGetResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const HttpLocationsTlsVersionGetResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    HttpLocationsTlsVersionGetResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<HttpLocationsTlsVersionGetResponseMetaUnitsList>;
 
 export interface HttpLocationsTlsVersionGetResponseMeta {
@@ -35280,27 +33318,15 @@ export const HttpLocationsTlsVersionGetResponseMeta = /*@__PURE__*/ S.suspend(
   identifier: "HttpLocationsTlsVersionGetResponseMeta",
 }) as any as S.Schema<HttpLocationsTlsVersionGetResponseMeta>;
 
-export interface HttpLocationsTlsVersionGetResponseTop0Item {
-  clientCountryAlpha2: string;
-  clientCountryName: string;
-  /** A numeric string. */
-  value: string;
-}
+export type HttpLocationsTlsVersionGetResponseTop0Item =
+  As112TopDnssecResponseTop0Item;
 export const HttpLocationsTlsVersionGetResponseTop0Item =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      clientCountryAlpha2: S.String,
-      clientCountryName: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "HttpLocationsTlsVersionGetResponseTop0Item",
-  }) as any as S.Schema<HttpLocationsTlsVersionGetResponseTop0Item>;
+  As112TopDnssecResponseTop0Item;
 
 export type HttpLocationsTlsVersionGetResponseTop0List =
-  Array<HttpLocationsTlsVersionGetResponseTop0Item>;
+  Array<As112TopDnssecResponseTop0Item>;
 export const HttpLocationsTlsVersionGetResponseTop0List = /*@__PURE__*/ S.Array(
-  HttpLocationsTlsVersionGetResponseTop0Item,
+  As112TopDnssecResponseTop0Item,
 ) as any as S.Schema<HttpLocationsTlsVersionGetResponseTop0List>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -35443,26 +33469,15 @@ export const RankingDomainGetResponseDetails0 = /*@__PURE__*/ S.suspend(() =>
   identifier: "RankingDomainGetResponseDetails0",
 }) as any as S.Schema<RankingDomainGetResponseDetails0>;
 
-export interface RankingDomainGetResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type RankingDomainGetResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const RankingDomainGetResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "RankingDomainGetResponseMetaDateRangeItem",
-  }) as any as S.Schema<RankingDomainGetResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type RankingDomainGetResponseMetaDateRangeList =
-  Array<RankingDomainGetResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const RankingDomainGetResponseMetaDateRangeList = /*@__PURE__*/ S.Array(
-  RankingDomainGetResponseMetaDateRangeItem,
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
 ) as any as S.Schema<RankingDomainGetResponseMetaDateRangeList>;
 
 export interface RankingDomainGetResponseMeta {
@@ -35549,69 +33564,25 @@ export const GetTrafficAnomalyRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetTrafficAnomalyRequest",
 }) as any as S.Schema<GetTrafficAnomalyRequest>;
 
-export interface TrafficAnomaliesGetResponseTrafficAnomaliesItemAsnDetailsLocations {
-  code: string;
-  name: string;
-}
+export type TrafficAnomaliesGetResponseTrafficAnomaliesItemAsnDetailsLocations =
+  AnnotationsOutagesGetResponseAnnotationsItemAsnsDetailsItemLocations;
 export const TrafficAnomaliesGetResponseTrafficAnomaliesItemAsnDetailsLocations =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      code: S.String,
-      name: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "TrafficAnomaliesGetResponseTrafficAnomaliesItemAsnDetailsLocations",
-  }) as any as S.Schema<TrafficAnomaliesGetResponseTrafficAnomaliesItemAsnDetailsLocations>;
+  AnnotationsOutagesGetResponseAnnotationsItemAsnsDetailsItemLocations;
 
-export interface TrafficAnomaliesGetResponseTrafficAnomaliesItemAsnDetails {
-  asn: string;
-  name: string;
-  locations?: TrafficAnomaliesGetResponseTrafficAnomaliesItemAsnDetailsLocations | null;
-}
+export type TrafficAnomaliesGetResponseTrafficAnomaliesItemAsnDetails =
+  AnnotationsOutagesGetResponseAnnotationsItemAsnsDetailsItem;
 export const TrafficAnomaliesGetResponseTrafficAnomaliesItemAsnDetails =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      asn: S.String,
-      name: S.String,
-      locations: S.optional(
-        S.NullOr(
-          TrafficAnomaliesGetResponseTrafficAnomaliesItemAsnDetailsLocations,
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier: "TrafficAnomaliesGetResponseTrafficAnomaliesItemAsnDetails",
-  }) as any as S.Schema<TrafficAnomaliesGetResponseTrafficAnomaliesItemAsnDetails>;
+  AnnotationsOutagesGetResponseAnnotationsItemAsnsDetailsItem;
 
-export interface TrafficAnomaliesGetResponseTrafficAnomaliesItemLocationDetails {
-  code: string;
-  name: string;
-}
+export type TrafficAnomaliesGetResponseTrafficAnomaliesItemLocationDetails =
+  AnnotationsOutagesGetResponseAnnotationsItemAsnsDetailsItemLocations;
 export const TrafficAnomaliesGetResponseTrafficAnomaliesItemLocationDetails =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      code: S.String,
-      name: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "TrafficAnomaliesGetResponseTrafficAnomaliesItemLocationDetails",
-  }) as any as S.Schema<TrafficAnomaliesGetResponseTrafficAnomaliesItemLocationDetails>;
+  AnnotationsOutagesGetResponseAnnotationsItemAsnsDetailsItemLocations;
 
-export interface TrafficAnomaliesGetResponseTrafficAnomaliesItemOriginDetails {
-  name: string;
-  origin: string;
-}
+export type TrafficAnomaliesGetResponseTrafficAnomaliesItemOriginDetails =
+  AnnotationsOutagesGetResponseAnnotationsItemOriginsDetailsItem;
 export const TrafficAnomaliesGetResponseTrafficAnomaliesItemOriginDetails =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      origin: S.String,
-    }),
-  ).annotate({
-    identifier: "TrafficAnomaliesGetResponseTrafficAnomaliesItemOriginDetails",
-  }) as any as S.Schema<TrafficAnomaliesGetResponseTrafficAnomaliesItemOriginDetails>;
+  AnnotationsOutagesGetResponseAnnotationsItemOriginsDetailsItem;
 
 export type TrafficAnomaliesGetResponseTrafficAnomaliesItemVisibleInDataSourcesList =
   Array<string>;
@@ -35625,10 +33596,10 @@ export interface TrafficAnomaliesGetResponseTrafficAnomaliesItem {
   status: string;
   type: string;
   uuid: string;
-  asnDetails?: TrafficAnomaliesGetResponseTrafficAnomaliesItemAsnDetails | null;
+  asnDetails?: AnnotationsOutagesGetResponseAnnotationsItemAsnsDetailsItem | null;
   endDate?: string | null;
-  locationDetails?: TrafficAnomaliesGetResponseTrafficAnomaliesItemLocationDetails | null;
-  originDetails?: TrafficAnomaliesGetResponseTrafficAnomaliesItemOriginDetails | null;
+  locationDetails?: AnnotationsOutagesGetResponseAnnotationsItemAsnsDetailsItemLocations | null;
+  originDetails?: AnnotationsOutagesGetResponseAnnotationsItemOriginsDetailsItem | null;
   visibleInDataSources?: TrafficAnomaliesGetResponseTrafficAnomaliesItemVisibleInDataSourcesList | null;
 }
 export const TrafficAnomaliesGetResponseTrafficAnomaliesItem =
@@ -35639,16 +33610,18 @@ export const TrafficAnomaliesGetResponseTrafficAnomaliesItem =
       type: S.String,
       uuid: S.String,
       asnDetails: S.optional(
-        S.NullOr(TrafficAnomaliesGetResponseTrafficAnomaliesItemAsnDetails),
+        S.NullOr(AnnotationsOutagesGetResponseAnnotationsItemAsnsDetailsItem),
       ),
       endDate: S.optional(S.NullOr(S.String)),
       locationDetails: S.optional(
         S.NullOr(
-          TrafficAnomaliesGetResponseTrafficAnomaliesItemLocationDetails,
+          AnnotationsOutagesGetResponseAnnotationsItemAsnsDetailsItemLocations,
         ),
       ),
       originDetails: S.optional(
-        S.NullOr(TrafficAnomaliesGetResponseTrafficAnomaliesItemOriginDetails),
+        S.NullOr(
+          AnnotationsOutagesGetResponseAnnotationsItemOriginsDetailsItem,
+        ),
       ),
       visibleInDataSources: S.optional(
         S.NullOr(
@@ -35725,28 +33698,16 @@ export const GetTrafficAnomalyLocationRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetTrafficAnomalyLocationRequest",
 }) as any as S.Schema<GetTrafficAnomalyLocationRequest>;
 
-export interface TrafficAnomaliesLocationsGetResponseTrafficAnomaliesItem {
-  clientCountryAlpha2: string;
-  clientCountryName: string;
-  /** A numeric string. */
-  value: string;
-}
+export type TrafficAnomaliesLocationsGetResponseTrafficAnomaliesItem =
+  As112TopDnssecResponseTop0Item;
 export const TrafficAnomaliesLocationsGetResponseTrafficAnomaliesItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      clientCountryAlpha2: S.String,
-      clientCountryName: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "TrafficAnomaliesLocationsGetResponseTrafficAnomaliesItem",
-  }) as any as S.Schema<TrafficAnomaliesLocationsGetResponseTrafficAnomaliesItem>;
+  As112TopDnssecResponseTop0Item;
 
 export type TrafficAnomaliesLocationsGetResponseTrafficAnomaliesList =
-  Array<TrafficAnomaliesLocationsGetResponseTrafficAnomaliesItem>;
+  Array<As112TopDnssecResponseTop0Item>;
 export const TrafficAnomaliesLocationsGetResponseTrafficAnomaliesList =
   /*@__PURE__*/ S.Array(
-    TrafficAnomaliesLocationsGetResponseTrafficAnomaliesItem,
+    As112TopDnssecResponseTop0Item,
   ) as any as S.Schema<TrafficAnomaliesLocationsGetResponseTrafficAnomaliesList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -36097,27 +34058,16 @@ export const QualitySpeedHistogramResponseMetaConfidenceInfo =
     identifier: "QualitySpeedHistogramResponseMetaConfidenceInfo",
   }) as any as S.Schema<QualitySpeedHistogramResponseMetaConfidenceInfo>;
 
-export interface QualitySpeedHistogramResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type QualitySpeedHistogramResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const QualitySpeedHistogramResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "QualitySpeedHistogramResponseMetaDateRangeItem",
-  }) as any as S.Schema<QualitySpeedHistogramResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type QualitySpeedHistogramResponseMetaDateRangeList =
-  Array<QualitySpeedHistogramResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const QualitySpeedHistogramResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    QualitySpeedHistogramResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<QualitySpeedHistogramResponseMetaDateRangeList>;
 
 export type QualitySpeedHistogramResponseMetaNormalization =
@@ -36138,24 +34088,15 @@ export const QualitySpeedHistogramResponseMetaTotalTestsList =
     S.Number,
   ) as any as S.Schema<QualitySpeedHistogramResponseMetaTotalTestsList>;
 
-export interface QualitySpeedHistogramResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type QualitySpeedHistogramResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const QualitySpeedHistogramResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "QualitySpeedHistogramResponseMetaUnitsItem",
-  }) as any as S.Schema<QualitySpeedHistogramResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type QualitySpeedHistogramResponseMetaUnitsList =
-  Array<QualitySpeedHistogramResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const QualitySpeedHistogramResponseMetaUnitsList = /*@__PURE__*/ S.Array(
-  QualitySpeedHistogramResponseMetaUnitsItem,
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
 ) as any as S.Schema<QualitySpeedHistogramResponseMetaUnitsList>;
 
 export interface QualitySpeedHistogramResponseMeta {
@@ -36475,27 +34416,16 @@ export const AttacksLayer7SummaryHttpMethodResponseMetaConfidenceInfo =
     identifier: "AttacksLayer7SummaryHttpMethodResponseMetaConfidenceInfo",
   }) as any as S.Schema<AttacksLayer7SummaryHttpMethodResponseMetaConfidenceInfo>;
 
-export interface AttacksLayer7SummaryHttpMethodResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type AttacksLayer7SummaryHttpMethodResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const AttacksLayer7SummaryHttpMethodResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "AttacksLayer7SummaryHttpMethodResponseMetaDateRangeItem",
-  }) as any as S.Schema<AttacksLayer7SummaryHttpMethodResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type AttacksLayer7SummaryHttpMethodResponseMetaDateRangeList =
-  Array<AttacksLayer7SummaryHttpMethodResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const AttacksLayer7SummaryHttpMethodResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    AttacksLayer7SummaryHttpMethodResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<AttacksLayer7SummaryHttpMethodResponseMetaDateRangeList>;
 
 export type AttacksLayer7SummaryHttpMethodResponseMetaNormalization =
@@ -36510,25 +34440,16 @@ export type AttacksLayer7SummaryHttpMethodResponseMetaNormalization =
 export const AttacksLayer7SummaryHttpMethodResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface AttacksLayer7SummaryHttpMethodResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type AttacksLayer7SummaryHttpMethodResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const AttacksLayer7SummaryHttpMethodResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "AttacksLayer7SummaryHttpMethodResponseMetaUnitsItem",
-  }) as any as S.Schema<AttacksLayer7SummaryHttpMethodResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type AttacksLayer7SummaryHttpMethodResponseMetaUnitsList =
-  Array<AttacksLayer7SummaryHttpMethodResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const AttacksLayer7SummaryHttpMethodResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    AttacksLayer7SummaryHttpMethodResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<AttacksLayer7SummaryHttpMethodResponseMetaUnitsList>;
 
 export interface AttacksLayer7SummaryHttpMethodResponseMeta {
@@ -36924,28 +34845,16 @@ export const AttacksLayer7TimeseriesGroupsHttpMethodResponseMetaConfidenceInfo =
       "AttacksLayer7TimeseriesGroupsHttpMethodResponseMetaConfidenceInfo",
   }) as any as S.Schema<AttacksLayer7TimeseriesGroupsHttpMethodResponseMetaConfidenceInfo>;
 
-export interface AttacksLayer7TimeseriesGroupsHttpMethodResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type AttacksLayer7TimeseriesGroupsHttpMethodResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const AttacksLayer7TimeseriesGroupsHttpMethodResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "AttacksLayer7TimeseriesGroupsHttpMethodResponseMetaDateRangeItem",
-  }) as any as S.Schema<AttacksLayer7TimeseriesGroupsHttpMethodResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type AttacksLayer7TimeseriesGroupsHttpMethodResponseMetaDateRangeList =
-  Array<AttacksLayer7TimeseriesGroupsHttpMethodResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const AttacksLayer7TimeseriesGroupsHttpMethodResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    AttacksLayer7TimeseriesGroupsHttpMethodResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<AttacksLayer7TimeseriesGroupsHttpMethodResponseMetaDateRangeList>;
 
 export type AttacksLayer7TimeseriesGroupsHttpMethodResponseMetaNormalization =
@@ -36960,25 +34869,16 @@ export type AttacksLayer7TimeseriesGroupsHttpMethodResponseMetaNormalization =
 export const AttacksLayer7TimeseriesGroupsHttpMethodResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface AttacksLayer7TimeseriesGroupsHttpMethodResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type AttacksLayer7TimeseriesGroupsHttpMethodResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const AttacksLayer7TimeseriesGroupsHttpMethodResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "AttacksLayer7TimeseriesGroupsHttpMethodResponseMetaUnitsItem",
-  }) as any as S.Schema<AttacksLayer7TimeseriesGroupsHttpMethodResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type AttacksLayer7TimeseriesGroupsHttpMethodResponseMetaUnitsList =
-  Array<AttacksLayer7TimeseriesGroupsHttpMethodResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const AttacksLayer7TimeseriesGroupsHttpMethodResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    AttacksLayer7TimeseriesGroupsHttpMethodResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<AttacksLayer7TimeseriesGroupsHttpMethodResponseMetaUnitsList>;
 
 export interface AttacksLayer7TimeseriesGroupsHttpMethodResponseMeta {
@@ -37385,27 +35285,16 @@ export const HttpSummaryHttpProtocolResponseMetaConfidenceInfo =
     identifier: "HttpSummaryHttpProtocolResponseMetaConfidenceInfo",
   }) as any as S.Schema<HttpSummaryHttpProtocolResponseMetaConfidenceInfo>;
 
-export interface HttpSummaryHttpProtocolResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type HttpSummaryHttpProtocolResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const HttpSummaryHttpProtocolResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "HttpSummaryHttpProtocolResponseMetaDateRangeItem",
-  }) as any as S.Schema<HttpSummaryHttpProtocolResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type HttpSummaryHttpProtocolResponseMetaDateRangeList =
-  Array<HttpSummaryHttpProtocolResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const HttpSummaryHttpProtocolResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    HttpSummaryHttpProtocolResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<HttpSummaryHttpProtocolResponseMetaDateRangeList>;
 
 export type HttpSummaryHttpProtocolResponseMetaNormalization =
@@ -37420,25 +35309,16 @@ export type HttpSummaryHttpProtocolResponseMetaNormalization =
 export const HttpSummaryHttpProtocolResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface HttpSummaryHttpProtocolResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type HttpSummaryHttpProtocolResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const HttpSummaryHttpProtocolResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "HttpSummaryHttpProtocolResponseMetaUnitsItem",
-  }) as any as S.Schema<HttpSummaryHttpProtocolResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type HttpSummaryHttpProtocolResponseMetaUnitsList =
-  Array<HttpSummaryHttpProtocolResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const HttpSummaryHttpProtocolResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    HttpSummaryHttpProtocolResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<HttpSummaryHttpProtocolResponseMetaUnitsList>;
 
 export interface HttpSummaryHttpProtocolResponseMeta {
@@ -37885,27 +35765,16 @@ export const HttpTimeseriesGroupsHttpProtocolResponseMetaConfidenceInfo =
     identifier: "HttpTimeseriesGroupsHttpProtocolResponseMetaConfidenceInfo",
   }) as any as S.Schema<HttpTimeseriesGroupsHttpProtocolResponseMetaConfidenceInfo>;
 
-export interface HttpTimeseriesGroupsHttpProtocolResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type HttpTimeseriesGroupsHttpProtocolResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const HttpTimeseriesGroupsHttpProtocolResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "HttpTimeseriesGroupsHttpProtocolResponseMetaDateRangeItem",
-  }) as any as S.Schema<HttpTimeseriesGroupsHttpProtocolResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type HttpTimeseriesGroupsHttpProtocolResponseMetaDateRangeList =
-  Array<HttpTimeseriesGroupsHttpProtocolResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const HttpTimeseriesGroupsHttpProtocolResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    HttpTimeseriesGroupsHttpProtocolResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<HttpTimeseriesGroupsHttpProtocolResponseMetaDateRangeList>;
 
 export type HttpTimeseriesGroupsHttpProtocolResponseMetaNormalization =
@@ -37920,25 +35789,16 @@ export type HttpTimeseriesGroupsHttpProtocolResponseMetaNormalization =
 export const HttpTimeseriesGroupsHttpProtocolResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface HttpTimeseriesGroupsHttpProtocolResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type HttpTimeseriesGroupsHttpProtocolResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const HttpTimeseriesGroupsHttpProtocolResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "HttpTimeseriesGroupsHttpProtocolResponseMetaUnitsItem",
-  }) as any as S.Schema<HttpTimeseriesGroupsHttpProtocolResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type HttpTimeseriesGroupsHttpProtocolResponseMetaUnitsList =
-  Array<HttpTimeseriesGroupsHttpProtocolResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const HttpTimeseriesGroupsHttpProtocolResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    HttpTimeseriesGroupsHttpProtocolResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<HttpTimeseriesGroupsHttpProtocolResponseMetaUnitsList>;
 
 export interface HttpTimeseriesGroupsHttpProtocolResponseMeta {
@@ -38336,27 +36196,16 @@ export const AttacksLayer7SummaryHttpVersionResponseMetaConfidenceInfo =
     identifier: "AttacksLayer7SummaryHttpVersionResponseMetaConfidenceInfo",
   }) as any as S.Schema<AttacksLayer7SummaryHttpVersionResponseMetaConfidenceInfo>;
 
-export interface AttacksLayer7SummaryHttpVersionResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type AttacksLayer7SummaryHttpVersionResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const AttacksLayer7SummaryHttpVersionResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "AttacksLayer7SummaryHttpVersionResponseMetaDateRangeItem",
-  }) as any as S.Schema<AttacksLayer7SummaryHttpVersionResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type AttacksLayer7SummaryHttpVersionResponseMetaDateRangeList =
-  Array<AttacksLayer7SummaryHttpVersionResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const AttacksLayer7SummaryHttpVersionResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    AttacksLayer7SummaryHttpVersionResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<AttacksLayer7SummaryHttpVersionResponseMetaDateRangeList>;
 
 export type AttacksLayer7SummaryHttpVersionResponseMetaNormalization =
@@ -38371,25 +36220,16 @@ export type AttacksLayer7SummaryHttpVersionResponseMetaNormalization =
 export const AttacksLayer7SummaryHttpVersionResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface AttacksLayer7SummaryHttpVersionResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type AttacksLayer7SummaryHttpVersionResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const AttacksLayer7SummaryHttpVersionResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "AttacksLayer7SummaryHttpVersionResponseMetaUnitsItem",
-  }) as any as S.Schema<AttacksLayer7SummaryHttpVersionResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type AttacksLayer7SummaryHttpVersionResponseMetaUnitsList =
-  Array<AttacksLayer7SummaryHttpVersionResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const AttacksLayer7SummaryHttpVersionResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    AttacksLayer7SummaryHttpVersionResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<AttacksLayer7SummaryHttpVersionResponseMetaUnitsList>;
 
 export interface AttacksLayer7SummaryHttpVersionResponseMeta {
@@ -38835,28 +36675,16 @@ export const AttacksLayer7TimeseriesGroupsHttpVersionResponseMetaConfidenceInfo 
       "AttacksLayer7TimeseriesGroupsHttpVersionResponseMetaConfidenceInfo",
   }) as any as S.Schema<AttacksLayer7TimeseriesGroupsHttpVersionResponseMetaConfidenceInfo>;
 
-export interface AttacksLayer7TimeseriesGroupsHttpVersionResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type AttacksLayer7TimeseriesGroupsHttpVersionResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const AttacksLayer7TimeseriesGroupsHttpVersionResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "AttacksLayer7TimeseriesGroupsHttpVersionResponseMetaDateRangeItem",
-  }) as any as S.Schema<AttacksLayer7TimeseriesGroupsHttpVersionResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type AttacksLayer7TimeseriesGroupsHttpVersionResponseMetaDateRangeList =
-  Array<AttacksLayer7TimeseriesGroupsHttpVersionResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const AttacksLayer7TimeseriesGroupsHttpVersionResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    AttacksLayer7TimeseriesGroupsHttpVersionResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<AttacksLayer7TimeseriesGroupsHttpVersionResponseMetaDateRangeList>;
 
 export type AttacksLayer7TimeseriesGroupsHttpVersionResponseMetaNormalization =
@@ -38871,25 +36699,16 @@ export type AttacksLayer7TimeseriesGroupsHttpVersionResponseMetaNormalization =
 export const AttacksLayer7TimeseriesGroupsHttpVersionResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface AttacksLayer7TimeseriesGroupsHttpVersionResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type AttacksLayer7TimeseriesGroupsHttpVersionResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const AttacksLayer7TimeseriesGroupsHttpVersionResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "AttacksLayer7TimeseriesGroupsHttpVersionResponseMetaUnitsItem",
-  }) as any as S.Schema<AttacksLayer7TimeseriesGroupsHttpVersionResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type AttacksLayer7TimeseriesGroupsHttpVersionResponseMetaUnitsList =
-  Array<AttacksLayer7TimeseriesGroupsHttpVersionResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const AttacksLayer7TimeseriesGroupsHttpVersionResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    AttacksLayer7TimeseriesGroupsHttpVersionResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<AttacksLayer7TimeseriesGroupsHttpVersionResponseMetaUnitsList>;
 
 export interface AttacksLayer7TimeseriesGroupsHttpVersionResponseMeta {
@@ -39325,27 +37144,16 @@ export const HttpSummaryHttpVersionResponseMetaConfidenceInfo =
     identifier: "HttpSummaryHttpVersionResponseMetaConfidenceInfo",
   }) as any as S.Schema<HttpSummaryHttpVersionResponseMetaConfidenceInfo>;
 
-export interface HttpSummaryHttpVersionResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type HttpSummaryHttpVersionResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const HttpSummaryHttpVersionResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "HttpSummaryHttpVersionResponseMetaDateRangeItem",
-  }) as any as S.Schema<HttpSummaryHttpVersionResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type HttpSummaryHttpVersionResponseMetaDateRangeList =
-  Array<HttpSummaryHttpVersionResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const HttpSummaryHttpVersionResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    HttpSummaryHttpVersionResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<HttpSummaryHttpVersionResponseMetaDateRangeList>;
 
 export type HttpSummaryHttpVersionResponseMetaNormalization =
@@ -39360,25 +37168,16 @@ export type HttpSummaryHttpVersionResponseMetaNormalization =
 export const HttpSummaryHttpVersionResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface HttpSummaryHttpVersionResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type HttpSummaryHttpVersionResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const HttpSummaryHttpVersionResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "HttpSummaryHttpVersionResponseMetaUnitsItem",
-  }) as any as S.Schema<HttpSummaryHttpVersionResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type HttpSummaryHttpVersionResponseMetaUnitsList =
-  Array<HttpSummaryHttpVersionResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const HttpSummaryHttpVersionResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    HttpSummaryHttpVersionResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<HttpSummaryHttpVersionResponseMetaUnitsList>;
 
 export interface HttpSummaryHttpVersionResponseMeta {
@@ -39822,27 +37621,16 @@ export const HttpTimeseriesGroupsHttpVersionResponseMetaConfidenceInfo =
     identifier: "HttpTimeseriesGroupsHttpVersionResponseMetaConfidenceInfo",
   }) as any as S.Schema<HttpTimeseriesGroupsHttpVersionResponseMetaConfidenceInfo>;
 
-export interface HttpTimeseriesGroupsHttpVersionResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type HttpTimeseriesGroupsHttpVersionResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const HttpTimeseriesGroupsHttpVersionResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "HttpTimeseriesGroupsHttpVersionResponseMetaDateRangeItem",
-  }) as any as S.Schema<HttpTimeseriesGroupsHttpVersionResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type HttpTimeseriesGroupsHttpVersionResponseMetaDateRangeList =
-  Array<HttpTimeseriesGroupsHttpVersionResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const HttpTimeseriesGroupsHttpVersionResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    HttpTimeseriesGroupsHttpVersionResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<HttpTimeseriesGroupsHttpVersionResponseMetaDateRangeList>;
 
 export type HttpTimeseriesGroupsHttpVersionResponseMetaNormalization =
@@ -39857,25 +37645,16 @@ export type HttpTimeseriesGroupsHttpVersionResponseMetaNormalization =
 export const HttpTimeseriesGroupsHttpVersionResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface HttpTimeseriesGroupsHttpVersionResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type HttpTimeseriesGroupsHttpVersionResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const HttpTimeseriesGroupsHttpVersionResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "HttpTimeseriesGroupsHttpVersionResponseMetaUnitsItem",
-  }) as any as S.Schema<HttpTimeseriesGroupsHttpVersionResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type HttpTimeseriesGroupsHttpVersionResponseMetaUnitsList =
-  Array<HttpTimeseriesGroupsHttpVersionResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const HttpTimeseriesGroupsHttpVersionResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    HttpTimeseriesGroupsHttpVersionResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<HttpTimeseriesGroupsHttpVersionResponseMetaUnitsList>;
 
 export interface HttpTimeseriesGroupsHttpVersionResponseMeta {
@@ -40218,27 +37997,16 @@ export const AttacksLayer3SummaryIndustryResponseMetaConfidenceInfo =
     identifier: "AttacksLayer3SummaryIndustryResponseMetaConfidenceInfo",
   }) as any as S.Schema<AttacksLayer3SummaryIndustryResponseMetaConfidenceInfo>;
 
-export interface AttacksLayer3SummaryIndustryResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type AttacksLayer3SummaryIndustryResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const AttacksLayer3SummaryIndustryResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "AttacksLayer3SummaryIndustryResponseMetaDateRangeItem",
-  }) as any as S.Schema<AttacksLayer3SummaryIndustryResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type AttacksLayer3SummaryIndustryResponseMetaDateRangeList =
-  Array<AttacksLayer3SummaryIndustryResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const AttacksLayer3SummaryIndustryResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    AttacksLayer3SummaryIndustryResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<AttacksLayer3SummaryIndustryResponseMetaDateRangeList>;
 
 export type AttacksLayer3SummaryIndustryResponseMetaNormalization =
@@ -40253,25 +38021,16 @@ export type AttacksLayer3SummaryIndustryResponseMetaNormalization =
 export const AttacksLayer3SummaryIndustryResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface AttacksLayer3SummaryIndustryResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type AttacksLayer3SummaryIndustryResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const AttacksLayer3SummaryIndustryResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "AttacksLayer3SummaryIndustryResponseMetaUnitsItem",
-  }) as any as S.Schema<AttacksLayer3SummaryIndustryResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type AttacksLayer3SummaryIndustryResponseMetaUnitsList =
-  Array<AttacksLayer3SummaryIndustryResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const AttacksLayer3SummaryIndustryResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    AttacksLayer3SummaryIndustryResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<AttacksLayer3SummaryIndustryResponseMetaUnitsList>;
 
 export interface AttacksLayer3SummaryIndustryResponseMeta {
@@ -40633,28 +38392,16 @@ export const AttacksLayer3TimeseriesGroupsIndustryResponseMetaConfidenceInfo =
       "AttacksLayer3TimeseriesGroupsIndustryResponseMetaConfidenceInfo",
   }) as any as S.Schema<AttacksLayer3TimeseriesGroupsIndustryResponseMetaConfidenceInfo>;
 
-export interface AttacksLayer3TimeseriesGroupsIndustryResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type AttacksLayer3TimeseriesGroupsIndustryResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const AttacksLayer3TimeseriesGroupsIndustryResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "AttacksLayer3TimeseriesGroupsIndustryResponseMetaDateRangeItem",
-  }) as any as S.Schema<AttacksLayer3TimeseriesGroupsIndustryResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type AttacksLayer3TimeseriesGroupsIndustryResponseMetaDateRangeList =
-  Array<AttacksLayer3TimeseriesGroupsIndustryResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const AttacksLayer3TimeseriesGroupsIndustryResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    AttacksLayer3TimeseriesGroupsIndustryResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<AttacksLayer3TimeseriesGroupsIndustryResponseMetaDateRangeList>;
 
 export type AttacksLayer3TimeseriesGroupsIndustryResponseMetaNormalization =
@@ -40669,25 +38416,16 @@ export type AttacksLayer3TimeseriesGroupsIndustryResponseMetaNormalization =
 export const AttacksLayer3TimeseriesGroupsIndustryResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface AttacksLayer3TimeseriesGroupsIndustryResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type AttacksLayer3TimeseriesGroupsIndustryResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const AttacksLayer3TimeseriesGroupsIndustryResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "AttacksLayer3TimeseriesGroupsIndustryResponseMetaUnitsItem",
-  }) as any as S.Schema<AttacksLayer3TimeseriesGroupsIndustryResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type AttacksLayer3TimeseriesGroupsIndustryResponseMetaUnitsList =
-  Array<AttacksLayer3TimeseriesGroupsIndustryResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const AttacksLayer3TimeseriesGroupsIndustryResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    AttacksLayer3TimeseriesGroupsIndustryResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<AttacksLayer3TimeseriesGroupsIndustryResponseMetaUnitsList>;
 
 export interface AttacksLayer3TimeseriesGroupsIndustryResponseMeta {
@@ -40983,27 +38721,16 @@ export const AttacksLayer3TopIndustryResponseMetaConfidenceInfo =
     identifier: "AttacksLayer3TopIndustryResponseMetaConfidenceInfo",
   }) as any as S.Schema<AttacksLayer3TopIndustryResponseMetaConfidenceInfo>;
 
-export interface AttacksLayer3TopIndustryResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type AttacksLayer3TopIndustryResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const AttacksLayer3TopIndustryResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "AttacksLayer3TopIndustryResponseMetaDateRangeItem",
-  }) as any as S.Schema<AttacksLayer3TopIndustryResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type AttacksLayer3TopIndustryResponseMetaDateRangeList =
-  Array<AttacksLayer3TopIndustryResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const AttacksLayer3TopIndustryResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    AttacksLayer3TopIndustryResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<AttacksLayer3TopIndustryResponseMetaDateRangeList>;
 
 export type AttacksLayer3TopIndustryResponseMetaNormalization =
@@ -41018,25 +38745,16 @@ export type AttacksLayer3TopIndustryResponseMetaNormalization =
 export const AttacksLayer3TopIndustryResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface AttacksLayer3TopIndustryResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type AttacksLayer3TopIndustryResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const AttacksLayer3TopIndustryResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "AttacksLayer3TopIndustryResponseMetaUnitsItem",
-  }) as any as S.Schema<AttacksLayer3TopIndustryResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type AttacksLayer3TopIndustryResponseMetaUnitsList =
-  Array<AttacksLayer3TopIndustryResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const AttacksLayer3TopIndustryResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    AttacksLayer3TopIndustryResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<AttacksLayer3TopIndustryResponseMetaUnitsList>;
 
 export interface AttacksLayer3TopIndustryResponseMeta {
@@ -41062,24 +38780,15 @@ export const AttacksLayer3TopIndustryResponseMeta = /*@__PURE__*/ S.suspend(
   identifier: "AttacksLayer3TopIndustryResponseMeta",
 }) as any as S.Schema<AttacksLayer3TopIndustryResponseMeta>;
 
-export interface AttacksLayer3TopIndustryResponseTop0Item {
-  name: string;
-  value: string;
-}
-export const AttacksLayer3TopIndustryResponseTop0Item = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-).annotate({
-  identifier: "AttacksLayer3TopIndustryResponseTop0Item",
-}) as any as S.Schema<AttacksLayer3TopIndustryResponseTop0Item>;
+export type AttacksLayer3TopIndustryResponseTop0Item =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
+export const AttacksLayer3TopIndustryResponseTop0Item =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type AttacksLayer3TopIndustryResponseTop0List =
-  Array<AttacksLayer3TopIndustryResponseTop0Item>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const AttacksLayer3TopIndustryResponseTop0List = /*@__PURE__*/ S.Array(
-  AttacksLayer3TopIndustryResponseTop0Item,
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
 ) as any as S.Schema<AttacksLayer3TopIndustryResponseTop0List>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -41428,27 +39137,16 @@ export const AttacksLayer7SummaryIndustryResponseMetaConfidenceInfo =
     identifier: "AttacksLayer7SummaryIndustryResponseMetaConfidenceInfo",
   }) as any as S.Schema<AttacksLayer7SummaryIndustryResponseMetaConfidenceInfo>;
 
-export interface AttacksLayer7SummaryIndustryResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type AttacksLayer7SummaryIndustryResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const AttacksLayer7SummaryIndustryResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "AttacksLayer7SummaryIndustryResponseMetaDateRangeItem",
-  }) as any as S.Schema<AttacksLayer7SummaryIndustryResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type AttacksLayer7SummaryIndustryResponseMetaDateRangeList =
-  Array<AttacksLayer7SummaryIndustryResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const AttacksLayer7SummaryIndustryResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    AttacksLayer7SummaryIndustryResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<AttacksLayer7SummaryIndustryResponseMetaDateRangeList>;
 
 export type AttacksLayer7SummaryIndustryResponseMetaNormalization =
@@ -41463,25 +39161,16 @@ export type AttacksLayer7SummaryIndustryResponseMetaNormalization =
 export const AttacksLayer7SummaryIndustryResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface AttacksLayer7SummaryIndustryResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type AttacksLayer7SummaryIndustryResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const AttacksLayer7SummaryIndustryResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "AttacksLayer7SummaryIndustryResponseMetaUnitsItem",
-  }) as any as S.Schema<AttacksLayer7SummaryIndustryResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type AttacksLayer7SummaryIndustryResponseMetaUnitsList =
-  Array<AttacksLayer7SummaryIndustryResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const AttacksLayer7SummaryIndustryResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    AttacksLayer7SummaryIndustryResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<AttacksLayer7SummaryIndustryResponseMetaUnitsList>;
 
 export interface AttacksLayer7SummaryIndustryResponseMeta {
@@ -41933,28 +39622,16 @@ export const AttacksLayer7TimeseriesGroupsIndustryResponseMetaConfidenceInfo =
       "AttacksLayer7TimeseriesGroupsIndustryResponseMetaConfidenceInfo",
   }) as any as S.Schema<AttacksLayer7TimeseriesGroupsIndustryResponseMetaConfidenceInfo>;
 
-export interface AttacksLayer7TimeseriesGroupsIndustryResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type AttacksLayer7TimeseriesGroupsIndustryResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const AttacksLayer7TimeseriesGroupsIndustryResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "AttacksLayer7TimeseriesGroupsIndustryResponseMetaDateRangeItem",
-  }) as any as S.Schema<AttacksLayer7TimeseriesGroupsIndustryResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type AttacksLayer7TimeseriesGroupsIndustryResponseMetaDateRangeList =
-  Array<AttacksLayer7TimeseriesGroupsIndustryResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const AttacksLayer7TimeseriesGroupsIndustryResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    AttacksLayer7TimeseriesGroupsIndustryResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<AttacksLayer7TimeseriesGroupsIndustryResponseMetaDateRangeList>;
 
 export type AttacksLayer7TimeseriesGroupsIndustryResponseMetaNormalization =
@@ -41969,25 +39646,16 @@ export type AttacksLayer7TimeseriesGroupsIndustryResponseMetaNormalization =
 export const AttacksLayer7TimeseriesGroupsIndustryResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface AttacksLayer7TimeseriesGroupsIndustryResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type AttacksLayer7TimeseriesGroupsIndustryResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const AttacksLayer7TimeseriesGroupsIndustryResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "AttacksLayer7TimeseriesGroupsIndustryResponseMetaUnitsItem",
-  }) as any as S.Schema<AttacksLayer7TimeseriesGroupsIndustryResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type AttacksLayer7TimeseriesGroupsIndustryResponseMetaUnitsList =
-  Array<AttacksLayer7TimeseriesGroupsIndustryResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const AttacksLayer7TimeseriesGroupsIndustryResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    AttacksLayer7TimeseriesGroupsIndustryResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<AttacksLayer7TimeseriesGroupsIndustryResponseMetaUnitsList>;
 
 export interface AttacksLayer7TimeseriesGroupsIndustryResponseMeta {
@@ -42377,27 +40045,16 @@ export const AttacksLayer7TopIndustryResponseMetaConfidenceInfo =
     identifier: "AttacksLayer7TopIndustryResponseMetaConfidenceInfo",
   }) as any as S.Schema<AttacksLayer7TopIndustryResponseMetaConfidenceInfo>;
 
-export interface AttacksLayer7TopIndustryResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type AttacksLayer7TopIndustryResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const AttacksLayer7TopIndustryResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "AttacksLayer7TopIndustryResponseMetaDateRangeItem",
-  }) as any as S.Schema<AttacksLayer7TopIndustryResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type AttacksLayer7TopIndustryResponseMetaDateRangeList =
-  Array<AttacksLayer7TopIndustryResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const AttacksLayer7TopIndustryResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    AttacksLayer7TopIndustryResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<AttacksLayer7TopIndustryResponseMetaDateRangeList>;
 
 export type AttacksLayer7TopIndustryResponseMetaNormalization =
@@ -42412,25 +40069,16 @@ export type AttacksLayer7TopIndustryResponseMetaNormalization =
 export const AttacksLayer7TopIndustryResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface AttacksLayer7TopIndustryResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type AttacksLayer7TopIndustryResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const AttacksLayer7TopIndustryResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "AttacksLayer7TopIndustryResponseMetaUnitsItem",
-  }) as any as S.Schema<AttacksLayer7TopIndustryResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type AttacksLayer7TopIndustryResponseMetaUnitsList =
-  Array<AttacksLayer7TopIndustryResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const AttacksLayer7TopIndustryResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    AttacksLayer7TopIndustryResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<AttacksLayer7TopIndustryResponseMetaUnitsList>;
 
 export interface AttacksLayer7TopIndustryResponseMeta {
@@ -42456,24 +40104,15 @@ export const AttacksLayer7TopIndustryResponseMeta = /*@__PURE__*/ S.suspend(
   identifier: "AttacksLayer7TopIndustryResponseMeta",
 }) as any as S.Schema<AttacksLayer7TopIndustryResponseMeta>;
 
-export interface AttacksLayer7TopIndustryResponseTop0Item {
-  name: string;
-  value: string;
-}
-export const AttacksLayer7TopIndustryResponseTop0Item = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-).annotate({
-  identifier: "AttacksLayer7TopIndustryResponseTop0Item",
-}) as any as S.Schema<AttacksLayer7TopIndustryResponseTop0Item>;
+export type AttacksLayer7TopIndustryResponseTop0Item =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
+export const AttacksLayer7TopIndustryResponseTop0Item =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type AttacksLayer7TopIndustryResponseTop0List =
-  Array<AttacksLayer7TopIndustryResponseTop0Item>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const AttacksLayer7TopIndustryResponseTop0List = /*@__PURE__*/ S.Array(
-  AttacksLayer7TopIndustryResponseTop0Item,
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
 ) as any as S.Schema<AttacksLayer7TopIndustryResponseTop0List>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -42511,28 +40150,16 @@ export const IpEntityAsnRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "IpEntityAsnRequest",
 }) as any as S.Schema<IpEntityAsnRequest>;
 
-export interface EntitiesAsnsIpResponseAsnEstimatedUsersLocationsItem {
-  locationAlpha2: string;
-  locationName: string;
-  /** Estimated users per location. */
-  estimatedUsers?: number | null;
-}
+export type EntitiesAsnsIpResponseAsnEstimatedUsersLocationsItem =
+  EntitiesAsnsGetResponseAsnEstimatedUsersLocationsItem;
 export const EntitiesAsnsIpResponseAsnEstimatedUsersLocationsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      locationAlpha2: S.String,
-      locationName: S.String,
-      estimatedUsers: S.optional(S.NullOr(S.Number)),
-    }),
-  ).annotate({
-    identifier: "EntitiesAsnsIpResponseAsnEstimatedUsersLocationsItem",
-  }) as any as S.Schema<EntitiesAsnsIpResponseAsnEstimatedUsersLocationsItem>;
+  EntitiesAsnsGetResponseAsnEstimatedUsersLocationsItem;
 
 export type EntitiesAsnsIpResponseAsnEstimatedUsersLocationsList =
-  Array<EntitiesAsnsIpResponseAsnEstimatedUsersLocationsItem>;
+  Array<EntitiesAsnsGetResponseAsnEstimatedUsersLocationsItem>;
 export const EntitiesAsnsIpResponseAsnEstimatedUsersLocationsList =
   /*@__PURE__*/ S.Array(
-    EntitiesAsnsIpResponseAsnEstimatedUsersLocationsItem,
+    EntitiesAsnsGetResponseAsnEstimatedUsersLocationsItem,
   ) as any as S.Schema<EntitiesAsnsIpResponseAsnEstimatedUsersLocationsList>;
 
 export interface EntitiesAsnsIpResponseAsnEstimatedUsers {
@@ -42550,29 +40177,15 @@ export const EntitiesAsnsIpResponseAsnEstimatedUsers = /*@__PURE__*/ S.suspend(
   identifier: "EntitiesAsnsIpResponseAsnEstimatedUsers",
 }) as any as S.Schema<EntitiesAsnsIpResponseAsnEstimatedUsers>;
 
-export interface EntitiesAsnsIpResponseAsnRelatedItem {
-  asn: number;
-  name: string;
-  aka?: string | null;
-  /** Total estimated users. */
-  estimatedUsers?: number | null;
-}
-export const EntitiesAsnsIpResponseAsnRelatedItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      asn: S.Number,
-      name: S.String,
-      aka: S.optional(S.NullOr(S.String)),
-      estimatedUsers: S.optional(S.NullOr(S.Number)),
-    }),
-).annotate({
-  identifier: "EntitiesAsnsIpResponseAsnRelatedItem",
-}) as any as S.Schema<EntitiesAsnsIpResponseAsnRelatedItem>;
+export type EntitiesAsnsIpResponseAsnRelatedItem =
+  EntitiesAsnsGetResponseAsnRelatedItem;
+export const EntitiesAsnsIpResponseAsnRelatedItem =
+  EntitiesAsnsGetResponseAsnRelatedItem;
 
 export type EntitiesAsnsIpResponseAsnRelatedList =
-  Array<EntitiesAsnsIpResponseAsnRelatedItem>;
+  Array<EntitiesAsnsGetResponseAsnRelatedItem>;
 export const EntitiesAsnsIpResponseAsnRelatedList = /*@__PURE__*/ S.Array(
-  EntitiesAsnsIpResponseAsnRelatedItem,
+  EntitiesAsnsGetResponseAsnRelatedItem,
 ) as any as S.Schema<EntitiesAsnsIpResponseAsnRelatedList>;
 
 export interface EntitiesAsnsIpResponseAsn {
@@ -42960,27 +40573,16 @@ export const As112SummaryIpVersionResponseMetaConfidenceInfo =
     identifier: "As112SummaryIpVersionResponseMetaConfidenceInfo",
   }) as any as S.Schema<As112SummaryIpVersionResponseMetaConfidenceInfo>;
 
-export interface As112SummaryIpVersionResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type As112SummaryIpVersionResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const As112SummaryIpVersionResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "As112SummaryIpVersionResponseMetaDateRangeItem",
-  }) as any as S.Schema<As112SummaryIpVersionResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type As112SummaryIpVersionResponseMetaDateRangeList =
-  Array<As112SummaryIpVersionResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const As112SummaryIpVersionResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    As112SummaryIpVersionResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<As112SummaryIpVersionResponseMetaDateRangeList>;
 
 export type As112SummaryIpVersionResponseMetaNormalization =
@@ -42995,24 +40597,15 @@ export type As112SummaryIpVersionResponseMetaNormalization =
 export const As112SummaryIpVersionResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface As112SummaryIpVersionResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type As112SummaryIpVersionResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const As112SummaryIpVersionResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "As112SummaryIpVersionResponseMetaUnitsItem",
-  }) as any as S.Schema<As112SummaryIpVersionResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type As112SummaryIpVersionResponseMetaUnitsList =
-  Array<As112SummaryIpVersionResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const As112SummaryIpVersionResponseMetaUnitsList = /*@__PURE__*/ S.Array(
-  As112SummaryIpVersionResponseMetaUnitsItem,
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
 ) as any as S.Schema<As112SummaryIpVersionResponseMetaUnitsList>;
 
 export interface As112SummaryIpVersionResponseMeta {
@@ -43452,27 +41045,16 @@ export const As112TimeseriesGroupsIpVersionResponseMetaConfidenceInfo =
     identifier: "As112TimeseriesGroupsIpVersionResponseMetaConfidenceInfo",
   }) as any as S.Schema<As112TimeseriesGroupsIpVersionResponseMetaConfidenceInfo>;
 
-export interface As112TimeseriesGroupsIpVersionResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type As112TimeseriesGroupsIpVersionResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const As112TimeseriesGroupsIpVersionResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "As112TimeseriesGroupsIpVersionResponseMetaDateRangeItem",
-  }) as any as S.Schema<As112TimeseriesGroupsIpVersionResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type As112TimeseriesGroupsIpVersionResponseMetaDateRangeList =
-  Array<As112TimeseriesGroupsIpVersionResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const As112TimeseriesGroupsIpVersionResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    As112TimeseriesGroupsIpVersionResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<As112TimeseriesGroupsIpVersionResponseMetaDateRangeList>;
 
 export type As112TimeseriesGroupsIpVersionResponseMetaNormalization =
@@ -43487,25 +41069,16 @@ export type As112TimeseriesGroupsIpVersionResponseMetaNormalization =
 export const As112TimeseriesGroupsIpVersionResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface As112TimeseriesGroupsIpVersionResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type As112TimeseriesGroupsIpVersionResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const As112TimeseriesGroupsIpVersionResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "As112TimeseriesGroupsIpVersionResponseMetaUnitsItem",
-  }) as any as S.Schema<As112TimeseriesGroupsIpVersionResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type As112TimeseriesGroupsIpVersionResponseMetaUnitsList =
-  Array<As112TimeseriesGroupsIpVersionResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const As112TimeseriesGroupsIpVersionResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    As112TimeseriesGroupsIpVersionResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<As112TimeseriesGroupsIpVersionResponseMetaUnitsList>;
 
 export interface As112TimeseriesGroupsIpVersionResponseMeta {
@@ -43771,26 +41344,15 @@ export const As112TopIpVersionResponseMetaConfidenceInfo =
     identifier: "As112TopIpVersionResponseMetaConfidenceInfo",
   }) as any as S.Schema<As112TopIpVersionResponseMetaConfidenceInfo>;
 
-export interface As112TopIpVersionResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type As112TopIpVersionResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const As112TopIpVersionResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "As112TopIpVersionResponseMetaDateRangeItem",
-  }) as any as S.Schema<As112TopIpVersionResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type As112TopIpVersionResponseMetaDateRangeList =
-  Array<As112TopIpVersionResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const As112TopIpVersionResponseMetaDateRangeList = /*@__PURE__*/ S.Array(
-  As112TopIpVersionResponseMetaDateRangeItem,
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
 ) as any as S.Schema<As112TopIpVersionResponseMetaDateRangeList>;
 
 export type As112TopIpVersionResponseMetaNormalization =
@@ -43805,24 +41367,15 @@ export type As112TopIpVersionResponseMetaNormalization =
 export const As112TopIpVersionResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface As112TopIpVersionResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
-export const As112TopIpVersionResponseMetaUnitsItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-).annotate({
-  identifier: "As112TopIpVersionResponseMetaUnitsItem",
-}) as any as S.Schema<As112TopIpVersionResponseMetaUnitsItem>;
+export type As112TopIpVersionResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
+export const As112TopIpVersionResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type As112TopIpVersionResponseMetaUnitsList =
-  Array<As112TopIpVersionResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const As112TopIpVersionResponseMetaUnitsList = /*@__PURE__*/ S.Array(
-  As112TopIpVersionResponseMetaUnitsItem,
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
 ) as any as S.Schema<As112TopIpVersionResponseMetaUnitsList>;
 
 export interface As112TopIpVersionResponseMeta {
@@ -43847,26 +41400,13 @@ export const As112TopIpVersionResponseMeta = /*@__PURE__*/ S.suspend(() =>
   identifier: "As112TopIpVersionResponseMeta",
 }) as any as S.Schema<As112TopIpVersionResponseMeta>;
 
-export interface As112TopIpVersionResponseTop0Item {
-  clientCountryAlpha2: string;
-  clientCountryName: string;
-  /** A numeric string. */
-  value: string;
-}
-export const As112TopIpVersionResponseTop0Item = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clientCountryAlpha2: S.String,
-    clientCountryName: S.String,
-    value: S.String,
-  }),
-).annotate({
-  identifier: "As112TopIpVersionResponseTop0Item",
-}) as any as S.Schema<As112TopIpVersionResponseTop0Item>;
+export type As112TopIpVersionResponseTop0Item = As112TopDnssecResponseTop0Item;
+export const As112TopIpVersionResponseTop0Item = As112TopDnssecResponseTop0Item;
 
 export type As112TopIpVersionResponseTop0List =
-  Array<As112TopIpVersionResponseTop0Item>;
+  Array<As112TopDnssecResponseTop0Item>;
 export const As112TopIpVersionResponseTop0List = /*@__PURE__*/ S.Array(
-  As112TopIpVersionResponseTop0Item,
+  As112TopDnssecResponseTop0Item,
 ) as any as S.Schema<As112TopIpVersionResponseTop0List>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -44111,27 +41651,16 @@ export const AttacksLayer3SummaryIpVersionResponseMetaConfidenceInfo =
     identifier: "AttacksLayer3SummaryIpVersionResponseMetaConfidenceInfo",
   }) as any as S.Schema<AttacksLayer3SummaryIpVersionResponseMetaConfidenceInfo>;
 
-export interface AttacksLayer3SummaryIpVersionResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type AttacksLayer3SummaryIpVersionResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const AttacksLayer3SummaryIpVersionResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "AttacksLayer3SummaryIpVersionResponseMetaDateRangeItem",
-  }) as any as S.Schema<AttacksLayer3SummaryIpVersionResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type AttacksLayer3SummaryIpVersionResponseMetaDateRangeList =
-  Array<AttacksLayer3SummaryIpVersionResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const AttacksLayer3SummaryIpVersionResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    AttacksLayer3SummaryIpVersionResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<AttacksLayer3SummaryIpVersionResponseMetaDateRangeList>;
 
 export type AttacksLayer3SummaryIpVersionResponseMetaNormalization =
@@ -44146,25 +41675,16 @@ export type AttacksLayer3SummaryIpVersionResponseMetaNormalization =
 export const AttacksLayer3SummaryIpVersionResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface AttacksLayer3SummaryIpVersionResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type AttacksLayer3SummaryIpVersionResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const AttacksLayer3SummaryIpVersionResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "AttacksLayer3SummaryIpVersionResponseMetaUnitsItem",
-  }) as any as S.Schema<AttacksLayer3SummaryIpVersionResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type AttacksLayer3SummaryIpVersionResponseMetaUnitsList =
-  Array<AttacksLayer3SummaryIpVersionResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const AttacksLayer3SummaryIpVersionResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    AttacksLayer3SummaryIpVersionResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<AttacksLayer3SummaryIpVersionResponseMetaUnitsList>;
 
 export interface AttacksLayer3SummaryIpVersionResponseMeta {
@@ -44190,33 +41710,22 @@ export const AttacksLayer3SummaryIpVersionResponseMeta =
     identifier: "AttacksLayer3SummaryIpVersionResponseMeta",
   }) as any as S.Schema<AttacksLayer3SummaryIpVersionResponseMeta>;
 
-export interface AttacksLayer3SummaryIpVersionResponseSummary0 {
-  /** A numeric string. */
-  iPv4: string;
-  /** A numeric string. */
-  iPv6: string;
-}
+export type AttacksLayer3SummaryIpVersionResponseSummary0 =
+  As112SummaryIpVersionResponseSummary0;
 export const AttacksLayer3SummaryIpVersionResponseSummary0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      iPv4: S.String.pipe(T.Body("IPv4")),
-      iPv6: S.String.pipe(T.Body("IPv6")),
-    }),
-  ).annotate({
-    identifier: "AttacksLayer3SummaryIpVersionResponseSummary0",
-  }) as any as S.Schema<AttacksLayer3SummaryIpVersionResponseSummary0>;
+  As112SummaryIpVersionResponseSummary0;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface IpVersionAttackLayer3SummaryResponse {
   /** Metadata for the results. */
   meta: AttacksLayer3SummaryIpVersionResponseMeta;
-  summary_0: AttacksLayer3SummaryIpVersionResponseSummary0;
+  summary_0: As112SummaryIpVersionResponseSummary0;
 }
 export const IpVersionAttackLayer3SummaryResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       meta: AttacksLayer3SummaryIpVersionResponseMeta,
-      summary_0: AttacksLayer3SummaryIpVersionResponseSummary0,
+      summary_0: As112SummaryIpVersionResponseSummary0,
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "IpVersionAttackLayer3SummaryResponse",
@@ -44516,28 +42025,16 @@ export const AttacksLayer3TimeseriesGroupsIpVersionResponseMetaConfidenceInfo =
       "AttacksLayer3TimeseriesGroupsIpVersionResponseMetaConfidenceInfo",
   }) as any as S.Schema<AttacksLayer3TimeseriesGroupsIpVersionResponseMetaConfidenceInfo>;
 
-export interface AttacksLayer3TimeseriesGroupsIpVersionResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type AttacksLayer3TimeseriesGroupsIpVersionResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const AttacksLayer3TimeseriesGroupsIpVersionResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "AttacksLayer3TimeseriesGroupsIpVersionResponseMetaDateRangeItem",
-  }) as any as S.Schema<AttacksLayer3TimeseriesGroupsIpVersionResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type AttacksLayer3TimeseriesGroupsIpVersionResponseMetaDateRangeList =
-  Array<AttacksLayer3TimeseriesGroupsIpVersionResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const AttacksLayer3TimeseriesGroupsIpVersionResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    AttacksLayer3TimeseriesGroupsIpVersionResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<AttacksLayer3TimeseriesGroupsIpVersionResponseMetaDateRangeList>;
 
 export type AttacksLayer3TimeseriesGroupsIpVersionResponseMetaNormalization =
@@ -44552,25 +42049,16 @@ export type AttacksLayer3TimeseriesGroupsIpVersionResponseMetaNormalization =
 export const AttacksLayer3TimeseriesGroupsIpVersionResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface AttacksLayer3TimeseriesGroupsIpVersionResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type AttacksLayer3TimeseriesGroupsIpVersionResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const AttacksLayer3TimeseriesGroupsIpVersionResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "AttacksLayer3TimeseriesGroupsIpVersionResponseMetaUnitsItem",
-  }) as any as S.Schema<AttacksLayer3TimeseriesGroupsIpVersionResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type AttacksLayer3TimeseriesGroupsIpVersionResponseMetaUnitsList =
-  Array<AttacksLayer3TimeseriesGroupsIpVersionResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const AttacksLayer3TimeseriesGroupsIpVersionResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    AttacksLayer3TimeseriesGroupsIpVersionResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<AttacksLayer3TimeseriesGroupsIpVersionResponseMetaUnitsList>;
 
 export interface AttacksLayer3TimeseriesGroupsIpVersionResponseMeta {
@@ -44976,27 +42464,16 @@ export const AttacksLayer7SummaryIpVersionResponseMetaConfidenceInfo =
     identifier: "AttacksLayer7SummaryIpVersionResponseMetaConfidenceInfo",
   }) as any as S.Schema<AttacksLayer7SummaryIpVersionResponseMetaConfidenceInfo>;
 
-export interface AttacksLayer7SummaryIpVersionResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type AttacksLayer7SummaryIpVersionResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const AttacksLayer7SummaryIpVersionResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "AttacksLayer7SummaryIpVersionResponseMetaDateRangeItem",
-  }) as any as S.Schema<AttacksLayer7SummaryIpVersionResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type AttacksLayer7SummaryIpVersionResponseMetaDateRangeList =
-  Array<AttacksLayer7SummaryIpVersionResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const AttacksLayer7SummaryIpVersionResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    AttacksLayer7SummaryIpVersionResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<AttacksLayer7SummaryIpVersionResponseMetaDateRangeList>;
 
 export type AttacksLayer7SummaryIpVersionResponseMetaNormalization =
@@ -45011,25 +42488,16 @@ export type AttacksLayer7SummaryIpVersionResponseMetaNormalization =
 export const AttacksLayer7SummaryIpVersionResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface AttacksLayer7SummaryIpVersionResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type AttacksLayer7SummaryIpVersionResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const AttacksLayer7SummaryIpVersionResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "AttacksLayer7SummaryIpVersionResponseMetaUnitsItem",
-  }) as any as S.Schema<AttacksLayer7SummaryIpVersionResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type AttacksLayer7SummaryIpVersionResponseMetaUnitsList =
-  Array<AttacksLayer7SummaryIpVersionResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const AttacksLayer7SummaryIpVersionResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    AttacksLayer7SummaryIpVersionResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<AttacksLayer7SummaryIpVersionResponseMetaUnitsList>;
 
 export interface AttacksLayer7SummaryIpVersionResponseMeta {
@@ -45471,28 +42939,16 @@ export const AttacksLayer7TimeseriesGroupsIpVersionResponseMetaConfidenceInfo =
       "AttacksLayer7TimeseriesGroupsIpVersionResponseMetaConfidenceInfo",
   }) as any as S.Schema<AttacksLayer7TimeseriesGroupsIpVersionResponseMetaConfidenceInfo>;
 
-export interface AttacksLayer7TimeseriesGroupsIpVersionResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type AttacksLayer7TimeseriesGroupsIpVersionResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const AttacksLayer7TimeseriesGroupsIpVersionResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "AttacksLayer7TimeseriesGroupsIpVersionResponseMetaDateRangeItem",
-  }) as any as S.Schema<AttacksLayer7TimeseriesGroupsIpVersionResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type AttacksLayer7TimeseriesGroupsIpVersionResponseMetaDateRangeList =
-  Array<AttacksLayer7TimeseriesGroupsIpVersionResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const AttacksLayer7TimeseriesGroupsIpVersionResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    AttacksLayer7TimeseriesGroupsIpVersionResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<AttacksLayer7TimeseriesGroupsIpVersionResponseMetaDateRangeList>;
 
 export type AttacksLayer7TimeseriesGroupsIpVersionResponseMetaNormalization =
@@ -45507,25 +42963,16 @@ export type AttacksLayer7TimeseriesGroupsIpVersionResponseMetaNormalization =
 export const AttacksLayer7TimeseriesGroupsIpVersionResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface AttacksLayer7TimeseriesGroupsIpVersionResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type AttacksLayer7TimeseriesGroupsIpVersionResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const AttacksLayer7TimeseriesGroupsIpVersionResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "AttacksLayer7TimeseriesGroupsIpVersionResponseMetaUnitsItem",
-  }) as any as S.Schema<AttacksLayer7TimeseriesGroupsIpVersionResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type AttacksLayer7TimeseriesGroupsIpVersionResponseMetaUnitsList =
-  Array<AttacksLayer7TimeseriesGroupsIpVersionResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const AttacksLayer7TimeseriesGroupsIpVersionResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    AttacksLayer7TimeseriesGroupsIpVersionResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<AttacksLayer7TimeseriesGroupsIpVersionResponseMetaUnitsList>;
 
 export interface AttacksLayer7TimeseriesGroupsIpVersionResponseMeta {
@@ -45978,27 +43425,16 @@ export const DnsSummaryIpVersionResponseMetaConfidenceInfo =
     identifier: "DnsSummaryIpVersionResponseMetaConfidenceInfo",
   }) as any as S.Schema<DnsSummaryIpVersionResponseMetaConfidenceInfo>;
 
-export interface DnsSummaryIpVersionResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type DnsSummaryIpVersionResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const DnsSummaryIpVersionResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "DnsSummaryIpVersionResponseMetaDateRangeItem",
-  }) as any as S.Schema<DnsSummaryIpVersionResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type DnsSummaryIpVersionResponseMetaDateRangeList =
-  Array<DnsSummaryIpVersionResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const DnsSummaryIpVersionResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    DnsSummaryIpVersionResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<DnsSummaryIpVersionResponseMetaDateRangeList>;
 
 export type DnsSummaryIpVersionResponseMetaNormalization =
@@ -46013,24 +43449,15 @@ export type DnsSummaryIpVersionResponseMetaNormalization =
 export const DnsSummaryIpVersionResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface DnsSummaryIpVersionResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
-export const DnsSummaryIpVersionResponseMetaUnitsItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-).annotate({
-  identifier: "DnsSummaryIpVersionResponseMetaUnitsItem",
-}) as any as S.Schema<DnsSummaryIpVersionResponseMetaUnitsItem>;
+export type DnsSummaryIpVersionResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
+export const DnsSummaryIpVersionResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type DnsSummaryIpVersionResponseMetaUnitsList =
-  Array<DnsSummaryIpVersionResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const DnsSummaryIpVersionResponseMetaUnitsList = /*@__PURE__*/ S.Array(
-  DnsSummaryIpVersionResponseMetaUnitsItem,
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
 ) as any as S.Schema<DnsSummaryIpVersionResponseMetaUnitsList>;
 
 export interface DnsSummaryIpVersionResponseMeta {
@@ -46055,31 +43482,21 @@ export const DnsSummaryIpVersionResponseMeta = /*@__PURE__*/ S.suspend(() =>
   identifier: "DnsSummaryIpVersionResponseMeta",
 }) as any as S.Schema<DnsSummaryIpVersionResponseMeta>;
 
-export interface DnsSummaryIpVersionResponseSummary0 {
-  /** A numeric string. */
-  iPv4: string;
-  /** A numeric string. */
-  iPv6: string;
-}
-export const DnsSummaryIpVersionResponseSummary0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    iPv4: S.String.pipe(T.Body("IPv4")),
-    iPv6: S.String.pipe(T.Body("IPv6")),
-  }),
-).annotate({
-  identifier: "DnsSummaryIpVersionResponseSummary0",
-}) as any as S.Schema<DnsSummaryIpVersionResponseSummary0>;
+export type DnsSummaryIpVersionResponseSummary0 =
+  As112SummaryIpVersionResponseSummary0;
+export const DnsSummaryIpVersionResponseSummary0 =
+  As112SummaryIpVersionResponseSummary0;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface IpVersionDnsSummaryResponse {
   /** Metadata for the results. */
   meta: DnsSummaryIpVersionResponseMeta;
-  summary_0: DnsSummaryIpVersionResponseSummary0;
+  summary_0: As112SummaryIpVersionResponseSummary0;
 }
 export const IpVersionDnsSummaryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: DnsSummaryIpVersionResponseMeta,
-    summary_0: DnsSummaryIpVersionResponseSummary0,
+    summary_0: As112SummaryIpVersionResponseSummary0,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "IpVersionDnsSummaryResponse",
@@ -46492,27 +43909,16 @@ export const DnsTimeseriesGroupsIpVersionResponseMetaConfidenceInfo =
     identifier: "DnsTimeseriesGroupsIpVersionResponseMetaConfidenceInfo",
   }) as any as S.Schema<DnsTimeseriesGroupsIpVersionResponseMetaConfidenceInfo>;
 
-export interface DnsTimeseriesGroupsIpVersionResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type DnsTimeseriesGroupsIpVersionResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const DnsTimeseriesGroupsIpVersionResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "DnsTimeseriesGroupsIpVersionResponseMetaDateRangeItem",
-  }) as any as S.Schema<DnsTimeseriesGroupsIpVersionResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type DnsTimeseriesGroupsIpVersionResponseMetaDateRangeList =
-  Array<DnsTimeseriesGroupsIpVersionResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const DnsTimeseriesGroupsIpVersionResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    DnsTimeseriesGroupsIpVersionResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<DnsTimeseriesGroupsIpVersionResponseMetaDateRangeList>;
 
 export type DnsTimeseriesGroupsIpVersionResponseMetaNormalization =
@@ -46527,25 +43933,16 @@ export type DnsTimeseriesGroupsIpVersionResponseMetaNormalization =
 export const DnsTimeseriesGroupsIpVersionResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface DnsTimeseriesGroupsIpVersionResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type DnsTimeseriesGroupsIpVersionResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const DnsTimeseriesGroupsIpVersionResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "DnsTimeseriesGroupsIpVersionResponseMetaUnitsItem",
-  }) as any as S.Schema<DnsTimeseriesGroupsIpVersionResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type DnsTimeseriesGroupsIpVersionResponseMetaUnitsList =
-  Array<DnsTimeseriesGroupsIpVersionResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const DnsTimeseriesGroupsIpVersionResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    DnsTimeseriesGroupsIpVersionResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<DnsTimeseriesGroupsIpVersionResponseMetaUnitsList>;
 
 export interface DnsTimeseriesGroupsIpVersionResponseMeta {
@@ -46870,27 +44267,16 @@ export const EmailRoutingSummaryIpVersionResponseMetaConfidenceInfo =
     identifier: "EmailRoutingSummaryIpVersionResponseMetaConfidenceInfo",
   }) as any as S.Schema<EmailRoutingSummaryIpVersionResponseMetaConfidenceInfo>;
 
-export interface EmailRoutingSummaryIpVersionResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type EmailRoutingSummaryIpVersionResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const EmailRoutingSummaryIpVersionResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "EmailRoutingSummaryIpVersionResponseMetaDateRangeItem",
-  }) as any as S.Schema<EmailRoutingSummaryIpVersionResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type EmailRoutingSummaryIpVersionResponseMetaDateRangeList =
-  Array<EmailRoutingSummaryIpVersionResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const EmailRoutingSummaryIpVersionResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    EmailRoutingSummaryIpVersionResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<EmailRoutingSummaryIpVersionResponseMetaDateRangeList>;
 
 export type EmailRoutingSummaryIpVersionResponseMetaNormalization =
@@ -46905,25 +44291,16 @@ export type EmailRoutingSummaryIpVersionResponseMetaNormalization =
 export const EmailRoutingSummaryIpVersionResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface EmailRoutingSummaryIpVersionResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type EmailRoutingSummaryIpVersionResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const EmailRoutingSummaryIpVersionResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "EmailRoutingSummaryIpVersionResponseMetaUnitsItem",
-  }) as any as S.Schema<EmailRoutingSummaryIpVersionResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type EmailRoutingSummaryIpVersionResponseMetaUnitsList =
-  Array<EmailRoutingSummaryIpVersionResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const EmailRoutingSummaryIpVersionResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    EmailRoutingSummaryIpVersionResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<EmailRoutingSummaryIpVersionResponseMetaUnitsList>;
 
 export interface EmailRoutingSummaryIpVersionResponseMeta {
@@ -46949,33 +44326,22 @@ export const EmailRoutingSummaryIpVersionResponseMeta = /*@__PURE__*/ S.suspend(
   identifier: "EmailRoutingSummaryIpVersionResponseMeta",
 }) as any as S.Schema<EmailRoutingSummaryIpVersionResponseMeta>;
 
-export interface EmailRoutingSummaryIpVersionResponseSummary0 {
-  /** A numeric string. */
-  iPv4: string;
-  /** A numeric string. */
-  iPv6: string;
-}
+export type EmailRoutingSummaryIpVersionResponseSummary0 =
+  As112SummaryIpVersionResponseSummary0;
 export const EmailRoutingSummaryIpVersionResponseSummary0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      iPv4: S.String.pipe(T.Body("IPv4")),
-      iPv6: S.String.pipe(T.Body("IPv6")),
-    }),
-  ).annotate({
-    identifier: "EmailRoutingSummaryIpVersionResponseSummary0",
-  }) as any as S.Schema<EmailRoutingSummaryIpVersionResponseSummary0>;
+  As112SummaryIpVersionResponseSummary0;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface IpVersionEmailRoutingSummaryResponse {
   /** Metadata for the results. */
   meta: EmailRoutingSummaryIpVersionResponseMeta;
-  summary_0: EmailRoutingSummaryIpVersionResponseSummary0;
+  summary_0: As112SummaryIpVersionResponseSummary0;
 }
 export const IpVersionEmailRoutingSummaryResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       meta: EmailRoutingSummaryIpVersionResponseMeta,
-      summary_0: EmailRoutingSummaryIpVersionResponseSummary0,
+      summary_0: As112SummaryIpVersionResponseSummary0,
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "IpVersionEmailRoutingSummaryResponse",
@@ -47291,28 +44657,16 @@ export const EmailRoutingTimeseriesGroupsIpVersionResponseMetaConfidenceInfo =
       "EmailRoutingTimeseriesGroupsIpVersionResponseMetaConfidenceInfo",
   }) as any as S.Schema<EmailRoutingTimeseriesGroupsIpVersionResponseMetaConfidenceInfo>;
 
-export interface EmailRoutingTimeseriesGroupsIpVersionResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type EmailRoutingTimeseriesGroupsIpVersionResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const EmailRoutingTimeseriesGroupsIpVersionResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "EmailRoutingTimeseriesGroupsIpVersionResponseMetaDateRangeItem",
-  }) as any as S.Schema<EmailRoutingTimeseriesGroupsIpVersionResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type EmailRoutingTimeseriesGroupsIpVersionResponseMetaDateRangeList =
-  Array<EmailRoutingTimeseriesGroupsIpVersionResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const EmailRoutingTimeseriesGroupsIpVersionResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    EmailRoutingTimeseriesGroupsIpVersionResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<EmailRoutingTimeseriesGroupsIpVersionResponseMetaDateRangeList>;
 
 export type EmailRoutingTimeseriesGroupsIpVersionResponseMetaNormalization =
@@ -47327,25 +44681,16 @@ export type EmailRoutingTimeseriesGroupsIpVersionResponseMetaNormalization =
 export const EmailRoutingTimeseriesGroupsIpVersionResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface EmailRoutingTimeseriesGroupsIpVersionResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type EmailRoutingTimeseriesGroupsIpVersionResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const EmailRoutingTimeseriesGroupsIpVersionResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "EmailRoutingTimeseriesGroupsIpVersionResponseMetaUnitsItem",
-  }) as any as S.Schema<EmailRoutingTimeseriesGroupsIpVersionResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type EmailRoutingTimeseriesGroupsIpVersionResponseMetaUnitsList =
-  Array<EmailRoutingTimeseriesGroupsIpVersionResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const EmailRoutingTimeseriesGroupsIpVersionResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    EmailRoutingTimeseriesGroupsIpVersionResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<EmailRoutingTimeseriesGroupsIpVersionResponseMetaUnitsList>;
 
 export interface EmailRoutingTimeseriesGroupsIpVersionResponseMeta {
@@ -47752,27 +45097,16 @@ export const HttpSummaryIpVersionResponseMetaConfidenceInfo =
     identifier: "HttpSummaryIpVersionResponseMetaConfidenceInfo",
   }) as any as S.Schema<HttpSummaryIpVersionResponseMetaConfidenceInfo>;
 
-export interface HttpSummaryIpVersionResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type HttpSummaryIpVersionResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const HttpSummaryIpVersionResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "HttpSummaryIpVersionResponseMetaDateRangeItem",
-  }) as any as S.Schema<HttpSummaryIpVersionResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type HttpSummaryIpVersionResponseMetaDateRangeList =
-  Array<HttpSummaryIpVersionResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const HttpSummaryIpVersionResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    HttpSummaryIpVersionResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<HttpSummaryIpVersionResponseMetaDateRangeList>;
 
 export type HttpSummaryIpVersionResponseMetaNormalization =
@@ -47787,24 +45121,15 @@ export type HttpSummaryIpVersionResponseMetaNormalization =
 export const HttpSummaryIpVersionResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface HttpSummaryIpVersionResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type HttpSummaryIpVersionResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const HttpSummaryIpVersionResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "HttpSummaryIpVersionResponseMetaUnitsItem",
-  }) as any as S.Schema<HttpSummaryIpVersionResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type HttpSummaryIpVersionResponseMetaUnitsList =
-  Array<HttpSummaryIpVersionResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const HttpSummaryIpVersionResponseMetaUnitsList = /*@__PURE__*/ S.Array(
-  HttpSummaryIpVersionResponseMetaUnitsItem,
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
 ) as any as S.Schema<HttpSummaryIpVersionResponseMetaUnitsList>;
 
 export interface HttpSummaryIpVersionResponseMeta {
@@ -47829,32 +45154,21 @@ export const HttpSummaryIpVersionResponseMeta = /*@__PURE__*/ S.suspend(() =>
   identifier: "HttpSummaryIpVersionResponseMeta",
 }) as any as S.Schema<HttpSummaryIpVersionResponseMeta>;
 
-export interface HttpSummaryIpVersionResponseSummary0 {
-  /** A numeric string. */
-  iPv4: string;
-  /** A numeric string. */
-  iPv6: string;
-}
-export const HttpSummaryIpVersionResponseSummary0 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      iPv4: S.String.pipe(T.Body("IPv4")),
-      iPv6: S.String.pipe(T.Body("IPv6")),
-    }),
-).annotate({
-  identifier: "HttpSummaryIpVersionResponseSummary0",
-}) as any as S.Schema<HttpSummaryIpVersionResponseSummary0>;
+export type HttpSummaryIpVersionResponseSummary0 =
+  As112SummaryIpVersionResponseSummary0;
+export const HttpSummaryIpVersionResponseSummary0 =
+  As112SummaryIpVersionResponseSummary0;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface IpVersionHttpSummaryResponse {
   /** Metadata for the results. */
   meta: HttpSummaryIpVersionResponseMeta;
-  summary_0: HttpSummaryIpVersionResponseSummary0;
+  summary_0: As112SummaryIpVersionResponseSummary0;
 }
 export const IpVersionHttpSummaryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: HttpSummaryIpVersionResponseMeta,
-    summary_0: HttpSummaryIpVersionResponseSummary0,
+    summary_0: As112SummaryIpVersionResponseSummary0,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "IpVersionHttpSummaryResponse",
@@ -48240,27 +45554,16 @@ export const HttpTimeseriesGroupsIpVersionResponseMetaConfidenceInfo =
     identifier: "HttpTimeseriesGroupsIpVersionResponseMetaConfidenceInfo",
   }) as any as S.Schema<HttpTimeseriesGroupsIpVersionResponseMetaConfidenceInfo>;
 
-export interface HttpTimeseriesGroupsIpVersionResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type HttpTimeseriesGroupsIpVersionResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const HttpTimeseriesGroupsIpVersionResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "HttpTimeseriesGroupsIpVersionResponseMetaDateRangeItem",
-  }) as any as S.Schema<HttpTimeseriesGroupsIpVersionResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type HttpTimeseriesGroupsIpVersionResponseMetaDateRangeList =
-  Array<HttpTimeseriesGroupsIpVersionResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const HttpTimeseriesGroupsIpVersionResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    HttpTimeseriesGroupsIpVersionResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<HttpTimeseriesGroupsIpVersionResponseMetaDateRangeList>;
 
 export type HttpTimeseriesGroupsIpVersionResponseMetaNormalization =
@@ -48275,25 +45578,16 @@ export type HttpTimeseriesGroupsIpVersionResponseMetaNormalization =
 export const HttpTimeseriesGroupsIpVersionResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface HttpTimeseriesGroupsIpVersionResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type HttpTimeseriesGroupsIpVersionResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const HttpTimeseriesGroupsIpVersionResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "HttpTimeseriesGroupsIpVersionResponseMetaUnitsItem",
-  }) as any as S.Schema<HttpTimeseriesGroupsIpVersionResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type HttpTimeseriesGroupsIpVersionResponseMetaUnitsList =
-  Array<HttpTimeseriesGroupsIpVersionResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const HttpTimeseriesGroupsIpVersionResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    HttpTimeseriesGroupsIpVersionResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<HttpTimeseriesGroupsIpVersionResponseMetaUnitsList>;
 
 export interface HttpTimeseriesGroupsIpVersionResponseMeta {
@@ -48467,46 +45761,21 @@ export const AnnotationsListResponseAnnotationsItemAsnsList =
     S.Number,
   ) as any as S.Schema<AnnotationsListResponseAnnotationsItemAsnsList>;
 
-export interface AnnotationsListResponseAnnotationsItemAsnsDetailsItemLocations {
-  code: string;
-  name: string;
-}
+export type AnnotationsListResponseAnnotationsItemAsnsDetailsItemLocations =
+  AnnotationsOutagesGetResponseAnnotationsItemAsnsDetailsItemLocations;
 export const AnnotationsListResponseAnnotationsItemAsnsDetailsItemLocations =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      code: S.String,
-      name: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "AnnotationsListResponseAnnotationsItemAsnsDetailsItemLocations",
-  }) as any as S.Schema<AnnotationsListResponseAnnotationsItemAsnsDetailsItemLocations>;
+  AnnotationsOutagesGetResponseAnnotationsItemAsnsDetailsItemLocations;
 
-export interface AnnotationsListResponseAnnotationsItemAsnsDetailsItem {
-  asn: string;
-  name: string;
-  locations?: AnnotationsListResponseAnnotationsItemAsnsDetailsItemLocations | null;
-}
+export type AnnotationsListResponseAnnotationsItemAsnsDetailsItem =
+  AnnotationsOutagesGetResponseAnnotationsItemAsnsDetailsItem;
 export const AnnotationsListResponseAnnotationsItemAsnsDetailsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      asn: S.String,
-      name: S.String,
-      locations: S.optional(
-        S.NullOr(
-          AnnotationsListResponseAnnotationsItemAsnsDetailsItemLocations,
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier: "AnnotationsListResponseAnnotationsItemAsnsDetailsItem",
-  }) as any as S.Schema<AnnotationsListResponseAnnotationsItemAsnsDetailsItem>;
+  AnnotationsOutagesGetResponseAnnotationsItemAsnsDetailsItem;
 
 export type AnnotationsListResponseAnnotationsItemAsnsDetailsList =
-  Array<AnnotationsListResponseAnnotationsItemAsnsDetailsItem>;
+  Array<AnnotationsOutagesGetResponseAnnotationsItemAsnsDetailsItem>;
 export const AnnotationsListResponseAnnotationsItemAsnsDetailsList =
   /*@__PURE__*/ S.Array(
-    AnnotationsListResponseAnnotationsItemAsnsDetailsItem,
+    AnnotationsOutagesGetResponseAnnotationsItemAsnsDetailsItem,
   ) as any as S.Schema<AnnotationsListResponseAnnotationsItemAsnsDetailsList>;
 
 export type AnnotationsListResponseAnnotationsItemLocationsList = Array<string>;
@@ -48515,25 +45784,16 @@ export const AnnotationsListResponseAnnotationsItemLocationsList =
     S.String,
   ) as any as S.Schema<AnnotationsListResponseAnnotationsItemLocationsList>;
 
-export interface AnnotationsListResponseAnnotationsItemLocationsDetailsItem {
-  code: string;
-  name: string;
-}
+export type AnnotationsListResponseAnnotationsItemLocationsDetailsItem =
+  AnnotationsOutagesGetResponseAnnotationsItemAsnsDetailsItemLocations;
 export const AnnotationsListResponseAnnotationsItemLocationsDetailsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      code: S.String,
-      name: S.String,
-    }),
-  ).annotate({
-    identifier: "AnnotationsListResponseAnnotationsItemLocationsDetailsItem",
-  }) as any as S.Schema<AnnotationsListResponseAnnotationsItemLocationsDetailsItem>;
+  AnnotationsOutagesGetResponseAnnotationsItemAsnsDetailsItemLocations;
 
 export type AnnotationsListResponseAnnotationsItemLocationsDetailsList =
-  Array<AnnotationsListResponseAnnotationsItemLocationsDetailsItem>;
+  Array<AnnotationsOutagesGetResponseAnnotationsItemAsnsDetailsItemLocations>;
 export const AnnotationsListResponseAnnotationsItemLocationsDetailsList =
   /*@__PURE__*/ S.Array(
-    AnnotationsListResponseAnnotationsItemLocationsDetailsItem,
+    AnnotationsOutagesGetResponseAnnotationsItemAsnsDetailsItemLocations,
   ) as any as S.Schema<AnnotationsListResponseAnnotationsItemLocationsDetailsList>;
 
 export type AnnotationsListResponseAnnotationsItemOriginsList = Array<string>;
@@ -48542,40 +45802,22 @@ export const AnnotationsListResponseAnnotationsItemOriginsList =
     S.String,
   ) as any as S.Schema<AnnotationsListResponseAnnotationsItemOriginsList>;
 
-export interface AnnotationsListResponseAnnotationsItemOriginsDetailsItem {
-  name: string;
-  origin: string;
-}
+export type AnnotationsListResponseAnnotationsItemOriginsDetailsItem =
+  AnnotationsOutagesGetResponseAnnotationsItemOriginsDetailsItem;
 export const AnnotationsListResponseAnnotationsItemOriginsDetailsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      origin: S.String,
-    }),
-  ).annotate({
-    identifier: "AnnotationsListResponseAnnotationsItemOriginsDetailsItem",
-  }) as any as S.Schema<AnnotationsListResponseAnnotationsItemOriginsDetailsItem>;
+  AnnotationsOutagesGetResponseAnnotationsItemOriginsDetailsItem;
 
 export type AnnotationsListResponseAnnotationsItemOriginsDetailsList =
-  Array<AnnotationsListResponseAnnotationsItemOriginsDetailsItem>;
+  Array<AnnotationsOutagesGetResponseAnnotationsItemOriginsDetailsItem>;
 export const AnnotationsListResponseAnnotationsItemOriginsDetailsList =
   /*@__PURE__*/ S.Array(
-    AnnotationsListResponseAnnotationsItemOriginsDetailsItem,
+    AnnotationsOutagesGetResponseAnnotationsItemOriginsDetailsItem,
   ) as any as S.Schema<AnnotationsListResponseAnnotationsItemOriginsDetailsList>;
 
-export interface AnnotationsListResponseAnnotationsItemOutage {
-  outageCause: string;
-  outageType: string;
-}
+export type AnnotationsListResponseAnnotationsItemOutage =
+  AnnotationsOutagesGetResponseAnnotationsItemOutage;
 export const AnnotationsListResponseAnnotationsItemOutage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      outageCause: S.String,
-      outageType: S.String,
-    }),
-  ).annotate({
-    identifier: "AnnotationsListResponseAnnotationsItemOutage",
-  }) as any as S.Schema<AnnotationsListResponseAnnotationsItemOutage>;
+  AnnotationsOutagesGetResponseAnnotationsItemOutage;
 
 export interface AnnotationsListResponseAnnotationsItem {
   id: string;
@@ -48587,7 +45829,7 @@ export interface AnnotationsListResponseAnnotationsItem {
   locationsDetails: AnnotationsListResponseAnnotationsItemLocationsDetailsList;
   origins: AnnotationsListResponseAnnotationsItemOriginsList;
   originsDetails: AnnotationsListResponseAnnotationsItemOriginsDetailsList;
-  outage: AnnotationsListResponseAnnotationsItemOutage;
+  outage: AnnotationsOutagesGetResponseAnnotationsItemOutage;
   startDate: string;
   description?: string | null;
   endDate?: string | null;
@@ -48607,7 +45849,7 @@ export const AnnotationsListResponseAnnotationsItem = /*@__PURE__*/ S.suspend(
         AnnotationsListResponseAnnotationsItemLocationsDetailsList,
       origins: AnnotationsListResponseAnnotationsItemOriginsList,
       originsDetails: AnnotationsListResponseAnnotationsItemOriginsDetailsList,
-      outage: AnnotationsListResponseAnnotationsItemOutage,
+      outage: AnnotationsOutagesGetResponseAnnotationsItemOutage,
       startDate: S.String,
       description: S.optional(S.NullOr(S.String)),
       endDate: S.optional(S.NullOr(S.String)),
@@ -48911,26 +46153,15 @@ export const ListBgpLeakEventsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListBgpLeakEventsRequest",
 }) as any as S.Schema<ListBgpLeakEventsRequest>;
 
-export interface BgpLeaksEventsListResponseAsnInfoItem {
-  asn: number;
-  countryCode: string;
-  orgName: string;
-}
-export const BgpLeaksEventsListResponseAsnInfoItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      asn: S.Number,
-      countryCode: S.String.pipe(T.Body("country_code")),
-      orgName: S.String.pipe(T.Body("org_name")),
-    }),
-).annotate({
-  identifier: "BgpLeaksEventsListResponseAsnInfoItem",
-}) as any as S.Schema<BgpLeaksEventsListResponseAsnInfoItem>;
+export type BgpLeaksEventsListResponseAsnInfoItem =
+  BgpHijacksEventsListResponseAsnInfoItem;
+export const BgpLeaksEventsListResponseAsnInfoItem =
+  BgpHijacksEventsListResponseAsnInfoItem;
 
 export type BgpLeaksEventsListResponseAsnInfoList =
-  Array<BgpLeaksEventsListResponseAsnInfoItem>;
+  Array<BgpHijacksEventsListResponseAsnInfoItem>;
 export const BgpLeaksEventsListResponseAsnInfoList = /*@__PURE__*/ S.Array(
-  BgpLeaksEventsListResponseAsnInfoItem,
+  BgpHijacksEventsListResponseAsnInfoItem,
 ) as any as S.Schema<BgpLeaksEventsListResponseAsnInfoList>;
 
 export type BgpLeaksEventsListResponseEventsItemCountriesList = Array<string>;
@@ -49751,28 +46982,16 @@ export const LocationsAnnotationOutageRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "LocationsAnnotationOutageRequest",
 }) as any as S.Schema<LocationsAnnotationOutageRequest>;
 
-export interface AnnotationsOutagesLocationsResponseAnnotationsItem {
-  clientCountryAlpha2: string;
-  clientCountryName: string;
-  /** A numeric string. */
-  value: string;
-}
+export type AnnotationsOutagesLocationsResponseAnnotationsItem =
+  As112TopDnssecResponseTop0Item;
 export const AnnotationsOutagesLocationsResponseAnnotationsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      clientCountryAlpha2: S.String,
-      clientCountryName: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "AnnotationsOutagesLocationsResponseAnnotationsItem",
-  }) as any as S.Schema<AnnotationsOutagesLocationsResponseAnnotationsItem>;
+  As112TopDnssecResponseTop0Item;
 
 export type AnnotationsOutagesLocationsResponseAnnotationsList =
-  Array<AnnotationsOutagesLocationsResponseAnnotationsItem>;
+  Array<As112TopDnssecResponseTop0Item>;
 export const AnnotationsOutagesLocationsResponseAnnotationsList =
   /*@__PURE__*/ S.Array(
-    AnnotationsOutagesLocationsResponseAnnotationsItem,
+    As112TopDnssecResponseTop0Item,
   ) as any as S.Schema<AnnotationsOutagesLocationsResponseAnnotationsList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -49966,26 +47185,15 @@ export const As112TopLocationsResponseMetaConfidenceInfo =
     identifier: "As112TopLocationsResponseMetaConfidenceInfo",
   }) as any as S.Schema<As112TopLocationsResponseMetaConfidenceInfo>;
 
-export interface As112TopLocationsResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type As112TopLocationsResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const As112TopLocationsResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "As112TopLocationsResponseMetaDateRangeItem",
-  }) as any as S.Schema<As112TopLocationsResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type As112TopLocationsResponseMetaDateRangeList =
-  Array<As112TopLocationsResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const As112TopLocationsResponseMetaDateRangeList = /*@__PURE__*/ S.Array(
-  As112TopLocationsResponseMetaDateRangeItem,
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
 ) as any as S.Schema<As112TopLocationsResponseMetaDateRangeList>;
 
 export type As112TopLocationsResponseMetaNormalization =
@@ -50000,24 +47208,15 @@ export type As112TopLocationsResponseMetaNormalization =
 export const As112TopLocationsResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface As112TopLocationsResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
-export const As112TopLocationsResponseMetaUnitsItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-).annotate({
-  identifier: "As112TopLocationsResponseMetaUnitsItem",
-}) as any as S.Schema<As112TopLocationsResponseMetaUnitsItem>;
+export type As112TopLocationsResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
+export const As112TopLocationsResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type As112TopLocationsResponseMetaUnitsList =
-  Array<As112TopLocationsResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const As112TopLocationsResponseMetaUnitsList = /*@__PURE__*/ S.Array(
-  As112TopLocationsResponseMetaUnitsItem,
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
 ) as any as S.Schema<As112TopLocationsResponseMetaUnitsList>;
 
 export interface As112TopLocationsResponseMeta {
@@ -50042,26 +47241,13 @@ export const As112TopLocationsResponseMeta = /*@__PURE__*/ S.suspend(() =>
   identifier: "As112TopLocationsResponseMeta",
 }) as any as S.Schema<As112TopLocationsResponseMeta>;
 
-export interface As112TopLocationsResponseTop0Item {
-  clientCountryAlpha2: string;
-  clientCountryName: string;
-  /** A numeric string. */
-  value: string;
-}
-export const As112TopLocationsResponseTop0Item = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clientCountryAlpha2: S.String,
-    clientCountryName: S.String,
-    value: S.String,
-  }),
-).annotate({
-  identifier: "As112TopLocationsResponseTop0Item",
-}) as any as S.Schema<As112TopLocationsResponseTop0Item>;
+export type As112TopLocationsResponseTop0Item = As112TopDnssecResponseTop0Item;
+export const As112TopLocationsResponseTop0Item = As112TopDnssecResponseTop0Item;
 
 export type As112TopLocationsResponseTop0List =
-  Array<As112TopLocationsResponseTop0Item>;
+  Array<As112TopDnssecResponseTop0Item>;
 export const As112TopLocationsResponseTop0List = /*@__PURE__*/ S.Array(
-  As112TopLocationsResponseTop0Item,
+  As112TopDnssecResponseTop0Item,
 ) as any as S.Schema<As112TopLocationsResponseTop0List>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -50523,26 +47709,15 @@ export const DnsTopLocationsResponseMetaConfidenceInfo =
     identifier: "DnsTopLocationsResponseMetaConfidenceInfo",
   }) as any as S.Schema<DnsTopLocationsResponseMetaConfidenceInfo>;
 
-export interface DnsTopLocationsResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
-export const DnsTopLocationsResponseMetaDateRangeItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-).annotate({
-  identifier: "DnsTopLocationsResponseMetaDateRangeItem",
-}) as any as S.Schema<DnsTopLocationsResponseMetaDateRangeItem>;
+export type DnsTopLocationsResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
+export const DnsTopLocationsResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type DnsTopLocationsResponseMetaDateRangeList =
-  Array<DnsTopLocationsResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const DnsTopLocationsResponseMetaDateRangeList = /*@__PURE__*/ S.Array(
-  DnsTopLocationsResponseMetaDateRangeItem,
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
 ) as any as S.Schema<DnsTopLocationsResponseMetaDateRangeList>;
 
 export type DnsTopLocationsResponseMetaNormalization =
@@ -50556,24 +47731,15 @@ export type DnsTopLocationsResponseMetaNormalization =
   | "RATIO";
 export const DnsTopLocationsResponseMetaNormalization = /*@__PURE__*/ S.String;
 
-export interface DnsTopLocationsResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
-export const DnsTopLocationsResponseMetaUnitsItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-).annotate({
-  identifier: "DnsTopLocationsResponseMetaUnitsItem",
-}) as any as S.Schema<DnsTopLocationsResponseMetaUnitsItem>;
+export type DnsTopLocationsResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
+export const DnsTopLocationsResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type DnsTopLocationsResponseMetaUnitsList =
-  Array<DnsTopLocationsResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const DnsTopLocationsResponseMetaUnitsList = /*@__PURE__*/ S.Array(
-  DnsTopLocationsResponseMetaUnitsItem,
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
 ) as any as S.Schema<DnsTopLocationsResponseMetaUnitsList>;
 
 export interface DnsTopLocationsResponseMeta {
@@ -50598,26 +47764,13 @@ export const DnsTopLocationsResponseMeta = /*@__PURE__*/ S.suspend(() =>
   identifier: "DnsTopLocationsResponseMeta",
 }) as any as S.Schema<DnsTopLocationsResponseMeta>;
 
-export interface DnsTopLocationsResponseTop0Item {
-  clientCountryAlpha2: string;
-  clientCountryName: string;
-  /** A numeric string. */
-  value: string;
-}
-export const DnsTopLocationsResponseTop0Item = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clientCountryAlpha2: S.String,
-    clientCountryName: S.String,
-    value: S.String,
-  }),
-).annotate({
-  identifier: "DnsTopLocationsResponseTop0Item",
-}) as any as S.Schema<DnsTopLocationsResponseTop0Item>;
+export type DnsTopLocationsResponseTop0Item = As112TopDnssecResponseTop0Item;
+export const DnsTopLocationsResponseTop0Item = As112TopDnssecResponseTop0Item;
 
 export type DnsTopLocationsResponseTop0List =
-  Array<DnsTopLocationsResponseTop0Item>;
+  Array<As112TopDnssecResponseTop0Item>;
 export const DnsTopLocationsResponseTop0List = /*@__PURE__*/ S.Array(
-  DnsTopLocationsResponseTop0Item,
+  As112TopDnssecResponseTop0Item,
 ) as any as S.Schema<DnsTopLocationsResponseTop0List>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -50837,27 +47990,16 @@ export const NetflowsTopLocationsResponseMetaConfidenceInfo =
     identifier: "NetflowsTopLocationsResponseMetaConfidenceInfo",
   }) as any as S.Schema<NetflowsTopLocationsResponseMetaConfidenceInfo>;
 
-export interface NetflowsTopLocationsResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type NetflowsTopLocationsResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const NetflowsTopLocationsResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "NetflowsTopLocationsResponseMetaDateRangeItem",
-  }) as any as S.Schema<NetflowsTopLocationsResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type NetflowsTopLocationsResponseMetaDateRangeList =
-  Array<NetflowsTopLocationsResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const NetflowsTopLocationsResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    NetflowsTopLocationsResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<NetflowsTopLocationsResponseMetaDateRangeList>;
 
 export type NetflowsTopLocationsResponseMetaNormalization =
@@ -50872,24 +48014,15 @@ export type NetflowsTopLocationsResponseMetaNormalization =
 export const NetflowsTopLocationsResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface NetflowsTopLocationsResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type NetflowsTopLocationsResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const NetflowsTopLocationsResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "NetflowsTopLocationsResponseMetaUnitsItem",
-  }) as any as S.Schema<NetflowsTopLocationsResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type NetflowsTopLocationsResponseMetaUnitsList =
-  Array<NetflowsTopLocationsResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const NetflowsTopLocationsResponseMetaUnitsList = /*@__PURE__*/ S.Array(
-  NetflowsTopLocationsResponseMetaUnitsItem,
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
 ) as any as S.Schema<NetflowsTopLocationsResponseMetaUnitsList>;
 
 export interface NetflowsTopLocationsResponseMeta {
@@ -50914,27 +48047,15 @@ export const NetflowsTopLocationsResponseMeta = /*@__PURE__*/ S.suspend(() =>
   identifier: "NetflowsTopLocationsResponseMeta",
 }) as any as S.Schema<NetflowsTopLocationsResponseMeta>;
 
-export interface NetflowsTopLocationsResponseTop0Item {
-  clientCountryAlpha2: string;
-  clientCountryName: string;
-  /** A numeric string. */
-  value: string;
-}
-export const NetflowsTopLocationsResponseTop0Item = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      clientCountryAlpha2: S.String,
-      clientCountryName: S.String,
-      value: S.String,
-    }),
-).annotate({
-  identifier: "NetflowsTopLocationsResponseTop0Item",
-}) as any as S.Schema<NetflowsTopLocationsResponseTop0Item>;
+export type NetflowsTopLocationsResponseTop0Item =
+  As112TopDnssecResponseTop0Item;
+export const NetflowsTopLocationsResponseTop0Item =
+  As112TopDnssecResponseTop0Item;
 
 export type NetflowsTopLocationsResponseTop0List =
-  Array<NetflowsTopLocationsResponseTop0Item>;
+  Array<As112TopDnssecResponseTop0Item>;
 export const NetflowsTopLocationsResponseTop0List = /*@__PURE__*/ S.Array(
-  NetflowsTopLocationsResponseTop0Item,
+  As112TopDnssecResponseTop0Item,
 ) as any as S.Schema<NetflowsTopLocationsResponseTop0List>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -51146,27 +48267,16 @@ export const QualitySpeedTopLocationsResponseMetaConfidenceInfo =
     identifier: "QualitySpeedTopLocationsResponseMetaConfidenceInfo",
   }) as any as S.Schema<QualitySpeedTopLocationsResponseMetaConfidenceInfo>;
 
-export interface QualitySpeedTopLocationsResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type QualitySpeedTopLocationsResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const QualitySpeedTopLocationsResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "QualitySpeedTopLocationsResponseMetaDateRangeItem",
-  }) as any as S.Schema<QualitySpeedTopLocationsResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type QualitySpeedTopLocationsResponseMetaDateRangeList =
-  Array<QualitySpeedTopLocationsResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const QualitySpeedTopLocationsResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    QualitySpeedTopLocationsResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<QualitySpeedTopLocationsResponseMetaDateRangeList>;
 
 export type QualitySpeedTopLocationsResponseMetaNormalization =
@@ -51181,25 +48291,16 @@ export type QualitySpeedTopLocationsResponseMetaNormalization =
 export const QualitySpeedTopLocationsResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface QualitySpeedTopLocationsResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type QualitySpeedTopLocationsResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const QualitySpeedTopLocationsResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "QualitySpeedTopLocationsResponseMetaUnitsItem",
-  }) as any as S.Schema<QualitySpeedTopLocationsResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type QualitySpeedTopLocationsResponseMetaUnitsList =
-  Array<QualitySpeedTopLocationsResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const QualitySpeedTopLocationsResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    QualitySpeedTopLocationsResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<QualitySpeedTopLocationsResponseMetaUnitsList>;
 
 export interface QualitySpeedTopLocationsResponseMeta {
@@ -51540,27 +48641,16 @@ export const EmailSecuritySummaryMaliciousResponseMetaConfidenceInfo =
     identifier: "EmailSecuritySummaryMaliciousResponseMetaConfidenceInfo",
   }) as any as S.Schema<EmailSecuritySummaryMaliciousResponseMetaConfidenceInfo>;
 
-export interface EmailSecuritySummaryMaliciousResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type EmailSecuritySummaryMaliciousResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const EmailSecuritySummaryMaliciousResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "EmailSecuritySummaryMaliciousResponseMetaDateRangeItem",
-  }) as any as S.Schema<EmailSecuritySummaryMaliciousResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type EmailSecuritySummaryMaliciousResponseMetaDateRangeList =
-  Array<EmailSecuritySummaryMaliciousResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const EmailSecuritySummaryMaliciousResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    EmailSecuritySummaryMaliciousResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<EmailSecuritySummaryMaliciousResponseMetaDateRangeList>;
 
 export type EmailSecuritySummaryMaliciousResponseMetaNormalization =
@@ -51575,25 +48665,16 @@ export type EmailSecuritySummaryMaliciousResponseMetaNormalization =
 export const EmailSecuritySummaryMaliciousResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface EmailSecuritySummaryMaliciousResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type EmailSecuritySummaryMaliciousResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const EmailSecuritySummaryMaliciousResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "EmailSecuritySummaryMaliciousResponseMetaUnitsItem",
-  }) as any as S.Schema<EmailSecuritySummaryMaliciousResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type EmailSecuritySummaryMaliciousResponseMetaUnitsList =
-  Array<EmailSecuritySummaryMaliciousResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const EmailSecuritySummaryMaliciousResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    EmailSecuritySummaryMaliciousResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<EmailSecuritySummaryMaliciousResponseMetaUnitsList>;
 
 export interface EmailSecuritySummaryMaliciousResponseMeta {
@@ -51969,28 +49050,16 @@ export const EmailSecurityTimeseriesGroupsMaliciousResponseMetaConfidenceInfo =
       "EmailSecurityTimeseriesGroupsMaliciousResponseMetaConfidenceInfo",
   }) as any as S.Schema<EmailSecurityTimeseriesGroupsMaliciousResponseMetaConfidenceInfo>;
 
-export interface EmailSecurityTimeseriesGroupsMaliciousResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type EmailSecurityTimeseriesGroupsMaliciousResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const EmailSecurityTimeseriesGroupsMaliciousResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "EmailSecurityTimeseriesGroupsMaliciousResponseMetaDateRangeItem",
-  }) as any as S.Schema<EmailSecurityTimeseriesGroupsMaliciousResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type EmailSecurityTimeseriesGroupsMaliciousResponseMetaDateRangeList =
-  Array<EmailSecurityTimeseriesGroupsMaliciousResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const EmailSecurityTimeseriesGroupsMaliciousResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    EmailSecurityTimeseriesGroupsMaliciousResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<EmailSecurityTimeseriesGroupsMaliciousResponseMetaDateRangeList>;
 
 export type EmailSecurityTimeseriesGroupsMaliciousResponseMetaNormalization =
@@ -52005,25 +49074,16 @@ export type EmailSecurityTimeseriesGroupsMaliciousResponseMetaNormalization =
 export const EmailSecurityTimeseriesGroupsMaliciousResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface EmailSecurityTimeseriesGroupsMaliciousResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type EmailSecurityTimeseriesGroupsMaliciousResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const EmailSecurityTimeseriesGroupsMaliciousResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "EmailSecurityTimeseriesGroupsMaliciousResponseMetaUnitsItem",
-  }) as any as S.Schema<EmailSecurityTimeseriesGroupsMaliciousResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type EmailSecurityTimeseriesGroupsMaliciousResponseMetaUnitsList =
-  Array<EmailSecurityTimeseriesGroupsMaliciousResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const EmailSecurityTimeseriesGroupsMaliciousResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    EmailSecurityTimeseriesGroupsMaliciousResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<EmailSecurityTimeseriesGroupsMaliciousResponseMetaUnitsList>;
 
 export interface EmailSecurityTimeseriesGroupsMaliciousResponseMeta {
@@ -52448,27 +49508,16 @@ export const AttacksLayer7SummaryManagedRulesResponseMetaConfidenceInfo =
     identifier: "AttacksLayer7SummaryManagedRulesResponseMetaConfidenceInfo",
   }) as any as S.Schema<AttacksLayer7SummaryManagedRulesResponseMetaConfidenceInfo>;
 
-export interface AttacksLayer7SummaryManagedRulesResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type AttacksLayer7SummaryManagedRulesResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const AttacksLayer7SummaryManagedRulesResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "AttacksLayer7SummaryManagedRulesResponseMetaDateRangeItem",
-  }) as any as S.Schema<AttacksLayer7SummaryManagedRulesResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type AttacksLayer7SummaryManagedRulesResponseMetaDateRangeList =
-  Array<AttacksLayer7SummaryManagedRulesResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const AttacksLayer7SummaryManagedRulesResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    AttacksLayer7SummaryManagedRulesResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<AttacksLayer7SummaryManagedRulesResponseMetaDateRangeList>;
 
 export type AttacksLayer7SummaryManagedRulesResponseMetaNormalization =
@@ -52483,25 +49532,16 @@ export type AttacksLayer7SummaryManagedRulesResponseMetaNormalization =
 export const AttacksLayer7SummaryManagedRulesResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface AttacksLayer7SummaryManagedRulesResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type AttacksLayer7SummaryManagedRulesResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const AttacksLayer7SummaryManagedRulesResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "AttacksLayer7SummaryManagedRulesResponseMetaUnitsItem",
-  }) as any as S.Schema<AttacksLayer7SummaryManagedRulesResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type AttacksLayer7SummaryManagedRulesResponseMetaUnitsList =
-  Array<AttacksLayer7SummaryManagedRulesResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const AttacksLayer7SummaryManagedRulesResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    AttacksLayer7SummaryManagedRulesResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<AttacksLayer7SummaryManagedRulesResponseMetaUnitsList>;
 
 export interface AttacksLayer7SummaryManagedRulesResponseMeta {
@@ -52969,28 +50009,16 @@ export const AttacksLayer7TimeseriesGroupsManagedRulesResponseMetaConfidenceInfo
       "AttacksLayer7TimeseriesGroupsManagedRulesResponseMetaConfidenceInfo",
   }) as any as S.Schema<AttacksLayer7TimeseriesGroupsManagedRulesResponseMetaConfidenceInfo>;
 
-export interface AttacksLayer7TimeseriesGroupsManagedRulesResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type AttacksLayer7TimeseriesGroupsManagedRulesResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const AttacksLayer7TimeseriesGroupsManagedRulesResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "AttacksLayer7TimeseriesGroupsManagedRulesResponseMetaDateRangeItem",
-  }) as any as S.Schema<AttacksLayer7TimeseriesGroupsManagedRulesResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type AttacksLayer7TimeseriesGroupsManagedRulesResponseMetaDateRangeList =
-  Array<AttacksLayer7TimeseriesGroupsManagedRulesResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const AttacksLayer7TimeseriesGroupsManagedRulesResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    AttacksLayer7TimeseriesGroupsManagedRulesResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<AttacksLayer7TimeseriesGroupsManagedRulesResponseMetaDateRangeList>;
 
 export type AttacksLayer7TimeseriesGroupsManagedRulesResponseMetaNormalization =
@@ -53005,26 +50033,16 @@ export type AttacksLayer7TimeseriesGroupsManagedRulesResponseMetaNormalization =
 export const AttacksLayer7TimeseriesGroupsManagedRulesResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface AttacksLayer7TimeseriesGroupsManagedRulesResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type AttacksLayer7TimeseriesGroupsManagedRulesResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const AttacksLayer7TimeseriesGroupsManagedRulesResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "AttacksLayer7TimeseriesGroupsManagedRulesResponseMetaUnitsItem",
-  }) as any as S.Schema<AttacksLayer7TimeseriesGroupsManagedRulesResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type AttacksLayer7TimeseriesGroupsManagedRulesResponseMetaUnitsList =
-  Array<AttacksLayer7TimeseriesGroupsManagedRulesResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const AttacksLayer7TimeseriesGroupsManagedRulesResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    AttacksLayer7TimeseriesGroupsManagedRulesResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<AttacksLayer7TimeseriesGroupsManagedRulesResponseMetaUnitsList>;
 
 export interface AttacksLayer7TimeseriesGroupsManagedRulesResponseMeta {
@@ -53469,27 +50487,16 @@ export const DnsSummaryMatchingAnswerResponseMetaConfidenceInfo =
     identifier: "DnsSummaryMatchingAnswerResponseMetaConfidenceInfo",
   }) as any as S.Schema<DnsSummaryMatchingAnswerResponseMetaConfidenceInfo>;
 
-export interface DnsSummaryMatchingAnswerResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type DnsSummaryMatchingAnswerResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const DnsSummaryMatchingAnswerResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "DnsSummaryMatchingAnswerResponseMetaDateRangeItem",
-  }) as any as S.Schema<DnsSummaryMatchingAnswerResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type DnsSummaryMatchingAnswerResponseMetaDateRangeList =
-  Array<DnsSummaryMatchingAnswerResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const DnsSummaryMatchingAnswerResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    DnsSummaryMatchingAnswerResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<DnsSummaryMatchingAnswerResponseMetaDateRangeList>;
 
 export type DnsSummaryMatchingAnswerResponseMetaNormalization =
@@ -53504,25 +50511,16 @@ export type DnsSummaryMatchingAnswerResponseMetaNormalization =
 export const DnsSummaryMatchingAnswerResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface DnsSummaryMatchingAnswerResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type DnsSummaryMatchingAnswerResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const DnsSummaryMatchingAnswerResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "DnsSummaryMatchingAnswerResponseMetaUnitsItem",
-  }) as any as S.Schema<DnsSummaryMatchingAnswerResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type DnsSummaryMatchingAnswerResponseMetaUnitsList =
-  Array<DnsSummaryMatchingAnswerResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const DnsSummaryMatchingAnswerResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    DnsSummaryMatchingAnswerResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<DnsSummaryMatchingAnswerResponseMetaUnitsList>;
 
 export interface DnsSummaryMatchingAnswerResponseMeta {
@@ -53548,32 +50546,21 @@ export const DnsSummaryMatchingAnswerResponseMeta = /*@__PURE__*/ S.suspend(
   identifier: "DnsSummaryMatchingAnswerResponseMeta",
 }) as any as S.Schema<DnsSummaryMatchingAnswerResponseMeta>;
 
-export interface DnsSummaryMatchingAnswerResponseSummary0 {
-  /** A numeric string. */
-  nEGATIVE: string;
-  /** A numeric string. */
-  pOSITIVE: string;
-}
-export const DnsSummaryMatchingAnswerResponseSummary0 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      nEGATIVE: S.String.pipe(T.Body("NEGATIVE")),
-      pOSITIVE: S.String.pipe(T.Body("POSITIVE")),
-    }),
-).annotate({
-  identifier: "DnsSummaryMatchingAnswerResponseSummary0",
-}) as any as S.Schema<DnsSummaryMatchingAnswerResponseSummary0>;
+export type DnsSummaryMatchingAnswerResponseSummary0 =
+  DnsSummaryCacheHitResponseSummary0;
+export const DnsSummaryMatchingAnswerResponseSummary0 =
+  DnsSummaryCacheHitResponseSummary0;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface MatchingAnswerDnsSummaryResponse {
   /** Metadata for the results. */
   meta: DnsSummaryMatchingAnswerResponseMeta;
-  summary_0: DnsSummaryMatchingAnswerResponseSummary0;
+  summary_0: DnsSummaryCacheHitResponseSummary0;
 }
 export const MatchingAnswerDnsSummaryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: DnsSummaryMatchingAnswerResponseMeta,
-    summary_0: DnsSummaryMatchingAnswerResponseSummary0,
+    summary_0: DnsSummaryCacheHitResponseSummary0,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "MatchingAnswerDnsSummaryResponse",
@@ -54002,27 +50989,16 @@ export const DnsTimeseriesGroupsMatchingAnswerResponseMetaConfidenceInfo =
     identifier: "DnsTimeseriesGroupsMatchingAnswerResponseMetaConfidenceInfo",
   }) as any as S.Schema<DnsTimeseriesGroupsMatchingAnswerResponseMetaConfidenceInfo>;
 
-export interface DnsTimeseriesGroupsMatchingAnswerResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type DnsTimeseriesGroupsMatchingAnswerResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const DnsTimeseriesGroupsMatchingAnswerResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "DnsTimeseriesGroupsMatchingAnswerResponseMetaDateRangeItem",
-  }) as any as S.Schema<DnsTimeseriesGroupsMatchingAnswerResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type DnsTimeseriesGroupsMatchingAnswerResponseMetaDateRangeList =
-  Array<DnsTimeseriesGroupsMatchingAnswerResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const DnsTimeseriesGroupsMatchingAnswerResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    DnsTimeseriesGroupsMatchingAnswerResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<DnsTimeseriesGroupsMatchingAnswerResponseMetaDateRangeList>;
 
 export type DnsTimeseriesGroupsMatchingAnswerResponseMetaNormalization =
@@ -54037,25 +51013,16 @@ export type DnsTimeseriesGroupsMatchingAnswerResponseMetaNormalization =
 export const DnsTimeseriesGroupsMatchingAnswerResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface DnsTimeseriesGroupsMatchingAnswerResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type DnsTimeseriesGroupsMatchingAnswerResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const DnsTimeseriesGroupsMatchingAnswerResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "DnsTimeseriesGroupsMatchingAnswerResponseMetaUnitsItem",
-  }) as any as S.Schema<DnsTimeseriesGroupsMatchingAnswerResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type DnsTimeseriesGroupsMatchingAnswerResponseMetaUnitsList =
-  Array<DnsTimeseriesGroupsMatchingAnswerResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const DnsTimeseriesGroupsMatchingAnswerResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    DnsTimeseriesGroupsMatchingAnswerResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<DnsTimeseriesGroupsMatchingAnswerResponseMetaUnitsList>;
 
 export interface DnsTimeseriesGroupsMatchingAnswerResponseMeta {
@@ -54470,28 +51437,16 @@ export const AttacksLayer7SummaryMitigationProductResponseMetaConfidenceInfo =
       "AttacksLayer7SummaryMitigationProductResponseMetaConfidenceInfo",
   }) as any as S.Schema<AttacksLayer7SummaryMitigationProductResponseMetaConfidenceInfo>;
 
-export interface AttacksLayer7SummaryMitigationProductResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type AttacksLayer7SummaryMitigationProductResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const AttacksLayer7SummaryMitigationProductResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "AttacksLayer7SummaryMitigationProductResponseMetaDateRangeItem",
-  }) as any as S.Schema<AttacksLayer7SummaryMitigationProductResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type AttacksLayer7SummaryMitigationProductResponseMetaDateRangeList =
-  Array<AttacksLayer7SummaryMitigationProductResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const AttacksLayer7SummaryMitigationProductResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    AttacksLayer7SummaryMitigationProductResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<AttacksLayer7SummaryMitigationProductResponseMetaDateRangeList>;
 
 export type AttacksLayer7SummaryMitigationProductResponseMetaNormalization =
@@ -54506,25 +51461,16 @@ export type AttacksLayer7SummaryMitigationProductResponseMetaNormalization =
 export const AttacksLayer7SummaryMitigationProductResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface AttacksLayer7SummaryMitigationProductResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type AttacksLayer7SummaryMitigationProductResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const AttacksLayer7SummaryMitigationProductResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "AttacksLayer7SummaryMitigationProductResponseMetaUnitsItem",
-  }) as any as S.Schema<AttacksLayer7SummaryMitigationProductResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type AttacksLayer7SummaryMitigationProductResponseMetaUnitsList =
-  Array<AttacksLayer7SummaryMitigationProductResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const AttacksLayer7SummaryMitigationProductResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    AttacksLayer7SummaryMitigationProductResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<AttacksLayer7SummaryMitigationProductResponseMetaUnitsList>;
 
 export interface AttacksLayer7SummaryMitigationProductResponseMeta {
@@ -54967,28 +51913,16 @@ export const AttacksLayer7TimeseriesGroupsMitigationProductResponseMetaConfidenc
       "AttacksLayer7TimeseriesGroupsMitigationProductResponseMetaConfidenceInfo",
   }) as any as S.Schema<AttacksLayer7TimeseriesGroupsMitigationProductResponseMetaConfidenceInfo>;
 
-export interface AttacksLayer7TimeseriesGroupsMitigationProductResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type AttacksLayer7TimeseriesGroupsMitigationProductResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const AttacksLayer7TimeseriesGroupsMitigationProductResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "AttacksLayer7TimeseriesGroupsMitigationProductResponseMetaDateRangeItem",
-  }) as any as S.Schema<AttacksLayer7TimeseriesGroupsMitigationProductResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type AttacksLayer7TimeseriesGroupsMitigationProductResponseMetaDateRangeList =
-  Array<AttacksLayer7TimeseriesGroupsMitigationProductResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const AttacksLayer7TimeseriesGroupsMitigationProductResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    AttacksLayer7TimeseriesGroupsMitigationProductResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<AttacksLayer7TimeseriesGroupsMitigationProductResponseMetaDateRangeList>;
 
 export type AttacksLayer7TimeseriesGroupsMitigationProductResponseMetaNormalization =
@@ -55003,26 +51937,16 @@ export type AttacksLayer7TimeseriesGroupsMitigationProductResponseMetaNormalizat
 export const AttacksLayer7TimeseriesGroupsMitigationProductResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface AttacksLayer7TimeseriesGroupsMitigationProductResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type AttacksLayer7TimeseriesGroupsMitigationProductResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const AttacksLayer7TimeseriesGroupsMitigationProductResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "AttacksLayer7TimeseriesGroupsMitigationProductResponseMetaUnitsItem",
-  }) as any as S.Schema<AttacksLayer7TimeseriesGroupsMitigationProductResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type AttacksLayer7TimeseriesGroupsMitigationProductResponseMetaUnitsList =
-  Array<AttacksLayer7TimeseriesGroupsMitigationProductResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const AttacksLayer7TimeseriesGroupsMitigationProductResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    AttacksLayer7TimeseriesGroupsMitigationProductResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<AttacksLayer7TimeseriesGroupsMitigationProductResponseMetaUnitsList>;
 
 export interface AttacksLayer7TimeseriesGroupsMitigationProductResponseMeta {
@@ -55358,27 +52282,16 @@ export const AiInferenceSummaryModelResponseMetaConfidenceInfo =
     identifier: "AiInferenceSummaryModelResponseMetaConfidenceInfo",
   }) as any as S.Schema<AiInferenceSummaryModelResponseMetaConfidenceInfo>;
 
-export interface AiInferenceSummaryModelResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type AiInferenceSummaryModelResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const AiInferenceSummaryModelResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "AiInferenceSummaryModelResponseMetaDateRangeItem",
-  }) as any as S.Schema<AiInferenceSummaryModelResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type AiInferenceSummaryModelResponseMetaDateRangeList =
-  Array<AiInferenceSummaryModelResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const AiInferenceSummaryModelResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    AiInferenceSummaryModelResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<AiInferenceSummaryModelResponseMetaDateRangeList>;
 
 export type AiInferenceSummaryModelResponseMetaNormalization =
@@ -55393,25 +52306,16 @@ export type AiInferenceSummaryModelResponseMetaNormalization =
 export const AiInferenceSummaryModelResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface AiInferenceSummaryModelResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type AiInferenceSummaryModelResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const AiInferenceSummaryModelResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "AiInferenceSummaryModelResponseMetaUnitsItem",
-  }) as any as S.Schema<AiInferenceSummaryModelResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type AiInferenceSummaryModelResponseMetaUnitsList =
-  Array<AiInferenceSummaryModelResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const AiInferenceSummaryModelResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    AiInferenceSummaryModelResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<AiInferenceSummaryModelResponseMetaUnitsList>;
 
 export interface AiInferenceSummaryModelResponseMeta {
@@ -55678,28 +52582,16 @@ export const AiInferenceTimeseriesGroupsSummaryModelResponseMetaConfidenceInfo =
       "AiInferenceTimeseriesGroupsSummaryModelResponseMetaConfidenceInfo",
   }) as any as S.Schema<AiInferenceTimeseriesGroupsSummaryModelResponseMetaConfidenceInfo>;
 
-export interface AiInferenceTimeseriesGroupsSummaryModelResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type AiInferenceTimeseriesGroupsSummaryModelResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const AiInferenceTimeseriesGroupsSummaryModelResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "AiInferenceTimeseriesGroupsSummaryModelResponseMetaDateRangeItem",
-  }) as any as S.Schema<AiInferenceTimeseriesGroupsSummaryModelResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type AiInferenceTimeseriesGroupsSummaryModelResponseMetaDateRangeList =
-  Array<AiInferenceTimeseriesGroupsSummaryModelResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const AiInferenceTimeseriesGroupsSummaryModelResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    AiInferenceTimeseriesGroupsSummaryModelResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<AiInferenceTimeseriesGroupsSummaryModelResponseMetaDateRangeList>;
 
 export type AiInferenceTimeseriesGroupsSummaryModelResponseMetaNormalization =
@@ -55714,25 +52606,16 @@ export type AiInferenceTimeseriesGroupsSummaryModelResponseMetaNormalization =
 export const AiInferenceTimeseriesGroupsSummaryModelResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface AiInferenceTimeseriesGroupsSummaryModelResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type AiInferenceTimeseriesGroupsSummaryModelResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const AiInferenceTimeseriesGroupsSummaryModelResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "AiInferenceTimeseriesGroupsSummaryModelResponseMetaUnitsItem",
-  }) as any as S.Schema<AiInferenceTimeseriesGroupsSummaryModelResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type AiInferenceTimeseriesGroupsSummaryModelResponseMetaUnitsList =
-  Array<AiInferenceTimeseriesGroupsSummaryModelResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const AiInferenceTimeseriesGroupsSummaryModelResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    AiInferenceTimeseriesGroupsSummaryModelResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<AiInferenceTimeseriesGroupsSummaryModelResponseMetaUnitsList>;
 
 export interface AiInferenceTimeseriesGroupsSummaryModelResponseMeta {
@@ -56040,27 +52923,16 @@ export const AttacksLayer3TopLocationsOriginResponseMetaConfidenceInfo =
     identifier: "AttacksLayer3TopLocationsOriginResponseMetaConfidenceInfo",
   }) as any as S.Schema<AttacksLayer3TopLocationsOriginResponseMetaConfidenceInfo>;
 
-export interface AttacksLayer3TopLocationsOriginResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type AttacksLayer3TopLocationsOriginResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const AttacksLayer3TopLocationsOriginResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "AttacksLayer3TopLocationsOriginResponseMetaDateRangeItem",
-  }) as any as S.Schema<AttacksLayer3TopLocationsOriginResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type AttacksLayer3TopLocationsOriginResponseMetaDateRangeList =
-  Array<AttacksLayer3TopLocationsOriginResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const AttacksLayer3TopLocationsOriginResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    AttacksLayer3TopLocationsOriginResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<AttacksLayer3TopLocationsOriginResponseMetaDateRangeList>;
 
 export type AttacksLayer3TopLocationsOriginResponseMetaNormalization =
@@ -56075,25 +52947,16 @@ export type AttacksLayer3TopLocationsOriginResponseMetaNormalization =
 export const AttacksLayer3TopLocationsOriginResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface AttacksLayer3TopLocationsOriginResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type AttacksLayer3TopLocationsOriginResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const AttacksLayer3TopLocationsOriginResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "AttacksLayer3TopLocationsOriginResponseMetaUnitsItem",
-  }) as any as S.Schema<AttacksLayer3TopLocationsOriginResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type AttacksLayer3TopLocationsOriginResponseMetaUnitsList =
-  Array<AttacksLayer3TopLocationsOriginResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const AttacksLayer3TopLocationsOriginResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    AttacksLayer3TopLocationsOriginResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<AttacksLayer3TopLocationsOriginResponseMetaUnitsList>;
 
 export interface AttacksLayer3TopLocationsOriginResponseMeta {
@@ -56478,27 +53341,16 @@ export const AttacksLayer7TopAsesOriginResponseMetaConfidenceInfo =
     identifier: "AttacksLayer7TopAsesOriginResponseMetaConfidenceInfo",
   }) as any as S.Schema<AttacksLayer7TopAsesOriginResponseMetaConfidenceInfo>;
 
-export interface AttacksLayer7TopAsesOriginResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type AttacksLayer7TopAsesOriginResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const AttacksLayer7TopAsesOriginResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "AttacksLayer7TopAsesOriginResponseMetaDateRangeItem",
-  }) as any as S.Schema<AttacksLayer7TopAsesOriginResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type AttacksLayer7TopAsesOriginResponseMetaDateRangeList =
-  Array<AttacksLayer7TopAsesOriginResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const AttacksLayer7TopAsesOriginResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    AttacksLayer7TopAsesOriginResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<AttacksLayer7TopAsesOriginResponseMetaDateRangeList>;
 
 export type AttacksLayer7TopAsesOriginResponseMetaNormalization =
@@ -56513,25 +53365,16 @@ export type AttacksLayer7TopAsesOriginResponseMetaNormalization =
 export const AttacksLayer7TopAsesOriginResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface AttacksLayer7TopAsesOriginResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type AttacksLayer7TopAsesOriginResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const AttacksLayer7TopAsesOriginResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "AttacksLayer7TopAsesOriginResponseMetaUnitsItem",
-  }) as any as S.Schema<AttacksLayer7TopAsesOriginResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type AttacksLayer7TopAsesOriginResponseMetaUnitsList =
-  Array<AttacksLayer7TopAsesOriginResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const AttacksLayer7TopAsesOriginResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    AttacksLayer7TopAsesOriginResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<AttacksLayer7TopAsesOriginResponseMetaUnitsList>;
 
 export interface AttacksLayer7TopAsesOriginResponseMeta {
@@ -56923,27 +53766,16 @@ export const AttacksLayer7TopLocationsOriginResponseMetaConfidenceInfo =
     identifier: "AttacksLayer7TopLocationsOriginResponseMetaConfidenceInfo",
   }) as any as S.Schema<AttacksLayer7TopLocationsOriginResponseMetaConfidenceInfo>;
 
-export interface AttacksLayer7TopLocationsOriginResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type AttacksLayer7TopLocationsOriginResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const AttacksLayer7TopLocationsOriginResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "AttacksLayer7TopLocationsOriginResponseMetaDateRangeItem",
-  }) as any as S.Schema<AttacksLayer7TopLocationsOriginResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type AttacksLayer7TopLocationsOriginResponseMetaDateRangeList =
-  Array<AttacksLayer7TopLocationsOriginResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const AttacksLayer7TopLocationsOriginResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    AttacksLayer7TopLocationsOriginResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<AttacksLayer7TopLocationsOriginResponseMetaDateRangeList>;
 
 export type AttacksLayer7TopLocationsOriginResponseMetaNormalization =
@@ -56958,25 +53790,16 @@ export type AttacksLayer7TopLocationsOriginResponseMetaNormalization =
 export const AttacksLayer7TopLocationsOriginResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface AttacksLayer7TopLocationsOriginResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type AttacksLayer7TopLocationsOriginResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const AttacksLayer7TopLocationsOriginResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "AttacksLayer7TopLocationsOriginResponseMetaUnitsItem",
-  }) as any as S.Schema<AttacksLayer7TopLocationsOriginResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type AttacksLayer7TopLocationsOriginResponseMetaUnitsList =
-  Array<AttacksLayer7TopLocationsOriginResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const AttacksLayer7TopLocationsOriginResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    AttacksLayer7TopLocationsOriginResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<AttacksLayer7TopLocationsOriginResponseMetaUnitsList>;
 
 export interface AttacksLayer7TopLocationsOriginResponseMeta {
@@ -57002,29 +53825,16 @@ export const AttacksLayer7TopLocationsOriginResponseMeta =
     identifier: "AttacksLayer7TopLocationsOriginResponseMeta",
   }) as any as S.Schema<AttacksLayer7TopLocationsOriginResponseMeta>;
 
-export interface AttacksLayer7TopLocationsOriginResponseTop0Item {
-  originCountryAlpha2: string;
-  originCountryName: string;
-  rank: number;
-  value: string;
-}
+export type AttacksLayer7TopLocationsOriginResponseTop0Item =
+  AttacksLayer3TopLocationsOriginResponseTop0Item;
 export const AttacksLayer7TopLocationsOriginResponseTop0Item =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      originCountryAlpha2: S.String,
-      originCountryName: S.String,
-      rank: S.Number,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "AttacksLayer7TopLocationsOriginResponseTop0Item",
-  }) as any as S.Schema<AttacksLayer7TopLocationsOriginResponseTop0Item>;
+  AttacksLayer3TopLocationsOriginResponseTop0Item;
 
 export type AttacksLayer7TopLocationsOriginResponseTop0List =
-  Array<AttacksLayer7TopLocationsOriginResponseTop0Item>;
+  Array<AttacksLayer3TopLocationsOriginResponseTop0Item>;
 export const AttacksLayer7TopLocationsOriginResponseTop0List =
   /*@__PURE__*/ S.Array(
-    AttacksLayer7TopLocationsOriginResponseTop0Item,
+    AttacksLayer3TopLocationsOriginResponseTop0Item,
   ) as any as S.Schema<AttacksLayer7TopLocationsOriginResponseTop0List>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -57137,23 +53947,15 @@ export const OriginsListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "OriginsListRequest",
 }) as any as S.Schema<OriginsListRequest>;
 
-export interface OriginsListResponseOriginsItemRegionsItem {
-  /** The region code. */
-  region: string;
-}
+export type OriginsListResponseOriginsItemRegionsItem =
+  OriginsGetResponseOriginRegionsItem;
 export const OriginsListResponseOriginsItemRegionsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      region: S.String,
-    }),
-  ).annotate({
-    identifier: "OriginsListResponseOriginsItemRegionsItem",
-  }) as any as S.Schema<OriginsListResponseOriginsItemRegionsItem>;
+  OriginsGetResponseOriginRegionsItem;
 
 export type OriginsListResponseOriginsItemRegionsList =
-  Array<OriginsListResponseOriginsItemRegionsItem>;
+  Array<OriginsGetResponseOriginRegionsItem>;
 export const OriginsListResponseOriginsItemRegionsList = /*@__PURE__*/ S.Array(
-  OriginsListResponseOriginsItemRegionsItem,
+  OriginsGetResponseOriginRegionsItem,
 ) as any as S.Schema<OriginsListResponseOriginsItemRegionsList>;
 
 export interface OriginsListResponseOriginsItem {
@@ -57396,26 +54198,15 @@ export const OriginsSummaryResponseMetaConfidenceInfo = /*@__PURE__*/ S.suspend(
   identifier: "OriginsSummaryResponseMetaConfidenceInfo",
 }) as any as S.Schema<OriginsSummaryResponseMetaConfidenceInfo>;
 
-export interface OriginsSummaryResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
-export const OriginsSummaryResponseMetaDateRangeItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-).annotate({
-  identifier: "OriginsSummaryResponseMetaDateRangeItem",
-}) as any as S.Schema<OriginsSummaryResponseMetaDateRangeItem>;
+export type OriginsSummaryResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
+export const OriginsSummaryResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type OriginsSummaryResponseMetaDateRangeList =
-  Array<OriginsSummaryResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const OriginsSummaryResponseMetaDateRangeList = /*@__PURE__*/ S.Array(
-  OriginsSummaryResponseMetaDateRangeItem,
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
 ) as any as S.Schema<OriginsSummaryResponseMetaDateRangeList>;
 
 export type OriginsSummaryResponseMetaNormalization =
@@ -57429,23 +54220,15 @@ export type OriginsSummaryResponseMetaNormalization =
   | "RATIO";
 export const OriginsSummaryResponseMetaNormalization = /*@__PURE__*/ S.String;
 
-export interface OriginsSummaryResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
-export const OriginsSummaryResponseMetaUnitsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    value: S.String,
-  }),
-).annotate({
-  identifier: "OriginsSummaryResponseMetaUnitsItem",
-}) as any as S.Schema<OriginsSummaryResponseMetaUnitsItem>;
+export type OriginsSummaryResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
+export const OriginsSummaryResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type OriginsSummaryResponseMetaUnitsList =
-  Array<OriginsSummaryResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const OriginsSummaryResponseMetaUnitsList = /*@__PURE__*/ S.Array(
-  OriginsSummaryResponseMetaUnitsItem,
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
 ) as any as S.Schema<OriginsSummaryResponseMetaUnitsList>;
 
 export interface OriginsSummaryResponseMeta {
@@ -57704,26 +54487,15 @@ export const OriginsTimeseriesResponseMetaConfidenceInfo =
     identifier: "OriginsTimeseriesResponseMetaConfidenceInfo",
   }) as any as S.Schema<OriginsTimeseriesResponseMetaConfidenceInfo>;
 
-export interface OriginsTimeseriesResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type OriginsTimeseriesResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const OriginsTimeseriesResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "OriginsTimeseriesResponseMetaDateRangeItem",
-  }) as any as S.Schema<OriginsTimeseriesResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type OriginsTimeseriesResponseMetaDateRangeList =
-  Array<OriginsTimeseriesResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const OriginsTimeseriesResponseMetaDateRangeList = /*@__PURE__*/ S.Array(
-  OriginsTimeseriesResponseMetaDateRangeItem,
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
 ) as any as S.Schema<OriginsTimeseriesResponseMetaDateRangeList>;
 
 export type OriginsTimeseriesResponseMetaNormalization =
@@ -57738,24 +54510,15 @@ export type OriginsTimeseriesResponseMetaNormalization =
 export const OriginsTimeseriesResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface OriginsTimeseriesResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
-export const OriginsTimeseriesResponseMetaUnitsItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-).annotate({
-  identifier: "OriginsTimeseriesResponseMetaUnitsItem",
-}) as any as S.Schema<OriginsTimeseriesResponseMetaUnitsItem>;
+export type OriginsTimeseriesResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
+export const OriginsTimeseriesResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type OriginsTimeseriesResponseMetaUnitsList =
-  Array<OriginsTimeseriesResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const OriginsTimeseriesResponseMetaUnitsList = /*@__PURE__*/ S.Array(
-  OriginsTimeseriesResponseMetaUnitsItem,
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
 ) as any as S.Schema<OriginsTimeseriesResponseMetaUnitsList>;
 
 export interface OriginsTimeseriesResponseMeta {
@@ -58050,27 +54813,16 @@ export const OriginsTimeseriesGroupsResponseMetaConfidenceInfo =
     identifier: "OriginsTimeseriesGroupsResponseMetaConfidenceInfo",
   }) as any as S.Schema<OriginsTimeseriesGroupsResponseMetaConfidenceInfo>;
 
-export interface OriginsTimeseriesGroupsResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type OriginsTimeseriesGroupsResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const OriginsTimeseriesGroupsResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "OriginsTimeseriesGroupsResponseMetaDateRangeItem",
-  }) as any as S.Schema<OriginsTimeseriesGroupsResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type OriginsTimeseriesGroupsResponseMetaDateRangeList =
-  Array<OriginsTimeseriesGroupsResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const OriginsTimeseriesGroupsResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    OriginsTimeseriesGroupsResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<OriginsTimeseriesGroupsResponseMetaDateRangeList>;
 
 export type OriginsTimeseriesGroupsResponseMetaNormalization =
@@ -58085,25 +54837,16 @@ export type OriginsTimeseriesGroupsResponseMetaNormalization =
 export const OriginsTimeseriesGroupsResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface OriginsTimeseriesGroupsResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type OriginsTimeseriesGroupsResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const OriginsTimeseriesGroupsResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "OriginsTimeseriesGroupsResponseMetaUnitsItem",
-  }) as any as S.Schema<OriginsTimeseriesGroupsResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type OriginsTimeseriesGroupsResponseMetaUnitsList =
-  Array<OriginsTimeseriesGroupsResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const OriginsTimeseriesGroupsResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    OriginsTimeseriesGroupsResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<OriginsTimeseriesGroupsResponseMetaUnitsList>;
 
 export interface OriginsTimeseriesGroupsResponseMeta {
@@ -58454,26 +55197,15 @@ export const HttpSummaryOsResponseMetaConfidenceInfo = /*@__PURE__*/ S.suspend(
   identifier: "HttpSummaryOsResponseMetaConfidenceInfo",
 }) as any as S.Schema<HttpSummaryOsResponseMetaConfidenceInfo>;
 
-export interface HttpSummaryOsResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
-export const HttpSummaryOsResponseMetaDateRangeItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-).annotate({
-  identifier: "HttpSummaryOsResponseMetaDateRangeItem",
-}) as any as S.Schema<HttpSummaryOsResponseMetaDateRangeItem>;
+export type HttpSummaryOsResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
+export const HttpSummaryOsResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type HttpSummaryOsResponseMetaDateRangeList =
-  Array<HttpSummaryOsResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const HttpSummaryOsResponseMetaDateRangeList = /*@__PURE__*/ S.Array(
-  HttpSummaryOsResponseMetaDateRangeItem,
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
 ) as any as S.Schema<HttpSummaryOsResponseMetaDateRangeList>;
 
 export type HttpSummaryOsResponseMetaNormalization =
@@ -58487,23 +55219,15 @@ export type HttpSummaryOsResponseMetaNormalization =
   | "RATIO";
 export const HttpSummaryOsResponseMetaNormalization = /*@__PURE__*/ S.String;
 
-export interface HttpSummaryOsResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
-export const HttpSummaryOsResponseMetaUnitsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    value: S.String,
-  }),
-).annotate({
-  identifier: "HttpSummaryOsResponseMetaUnitsItem",
-}) as any as S.Schema<HttpSummaryOsResponseMetaUnitsItem>;
+export type HttpSummaryOsResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
+export const HttpSummaryOsResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type HttpSummaryOsResponseMetaUnitsList =
-  Array<HttpSummaryOsResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const HttpSummaryOsResponseMetaUnitsList = /*@__PURE__*/ S.Array(
-  HttpSummaryOsResponseMetaUnitsItem,
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
 ) as any as S.Schema<HttpSummaryOsResponseMetaUnitsList>;
 
 export interface HttpSummaryOsResponseMeta {
@@ -58909,27 +55633,16 @@ export const HttpTimeseriesGroupsOsResponseMetaConfidenceInfo =
     identifier: "HttpTimeseriesGroupsOsResponseMetaConfidenceInfo",
   }) as any as S.Schema<HttpTimeseriesGroupsOsResponseMetaConfidenceInfo>;
 
-export interface HttpTimeseriesGroupsOsResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type HttpTimeseriesGroupsOsResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const HttpTimeseriesGroupsOsResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "HttpTimeseriesGroupsOsResponseMetaDateRangeItem",
-  }) as any as S.Schema<HttpTimeseriesGroupsOsResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type HttpTimeseriesGroupsOsResponseMetaDateRangeList =
-  Array<HttpTimeseriesGroupsOsResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const HttpTimeseriesGroupsOsResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    HttpTimeseriesGroupsOsResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<HttpTimeseriesGroupsOsResponseMetaDateRangeList>;
 
 export type HttpTimeseriesGroupsOsResponseMetaNormalization =
@@ -58944,25 +55657,16 @@ export type HttpTimeseriesGroupsOsResponseMetaNormalization =
 export const HttpTimeseriesGroupsOsResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface HttpTimeseriesGroupsOsResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type HttpTimeseriesGroupsOsResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const HttpTimeseriesGroupsOsResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "HttpTimeseriesGroupsOsResponseMetaUnitsItem",
-  }) as any as S.Schema<HttpTimeseriesGroupsOsResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type HttpTimeseriesGroupsOsResponseMetaUnitsList =
-  Array<HttpTimeseriesGroupsOsResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const HttpTimeseriesGroupsOsResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    HttpTimeseriesGroupsOsResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<HttpTimeseriesGroupsOsResponseMetaUnitsList>;
 
 export interface HttpTimeseriesGroupsOsResponseMeta {
@@ -59054,20 +55758,8 @@ export const Pfx2asBgpRouteRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "Pfx2asBgpRouteRequest",
 }) as any as S.Schema<Pfx2asBgpRouteRequest>;
 
-export interface BgpRoutesPfx2asResponseMeta {
-  dataTime: string;
-  queryTime: string;
-  totalPeers: number;
-}
-export const BgpRoutesPfx2asResponseMeta = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dataTime: S.String.pipe(T.Body("data_time")),
-    queryTime: S.String.pipe(T.Body("query_time")),
-    totalPeers: S.Number.pipe(T.Body("total_peers")),
-  }),
-).annotate({
-  identifier: "BgpRoutesPfx2asResponseMeta",
-}) as any as S.Schema<BgpRoutesPfx2asResponseMeta>;
+export type BgpRoutesPfx2asResponseMeta = BgpRoutesMoasResponseMeta;
+export const BgpRoutesPfx2asResponseMeta = BgpRoutesMoasResponseMeta;
 
 export interface BgpRoutesPfx2asResponsePrefixOriginsItem {
   origin: number;
@@ -59095,12 +55787,12 @@ export const BgpRoutesPfx2asResponsePrefixOriginsList = /*@__PURE__*/ S.Array(
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface Pfx2asBgpRouteResponse {
-  meta: BgpRoutesPfx2asResponseMeta;
+  meta: BgpRoutesMoasResponseMeta;
   prefixOrigins: BgpRoutesPfx2asResponsePrefixOriginsList;
 }
 export const Pfx2asBgpRouteResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    meta: BgpRoutesPfx2asResponseMeta,
+    meta: BgpRoutesMoasResponseMeta,
     prefixOrigins: BgpRoutesPfx2asResponsePrefixOriginsList.pipe(
       T.Body("prefix_origins"),
     ),
@@ -59459,27 +56151,16 @@ export const HttpSummaryPostQuantumResponseMetaConfidenceInfo =
     identifier: "HttpSummaryPostQuantumResponseMetaConfidenceInfo",
   }) as any as S.Schema<HttpSummaryPostQuantumResponseMetaConfidenceInfo>;
 
-export interface HttpSummaryPostQuantumResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type HttpSummaryPostQuantumResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const HttpSummaryPostQuantumResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "HttpSummaryPostQuantumResponseMetaDateRangeItem",
-  }) as any as S.Schema<HttpSummaryPostQuantumResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type HttpSummaryPostQuantumResponseMetaDateRangeList =
-  Array<HttpSummaryPostQuantumResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const HttpSummaryPostQuantumResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    HttpSummaryPostQuantumResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<HttpSummaryPostQuantumResponseMetaDateRangeList>;
 
 export type HttpSummaryPostQuantumResponseMetaNormalization =
@@ -59494,25 +56175,16 @@ export type HttpSummaryPostQuantumResponseMetaNormalization =
 export const HttpSummaryPostQuantumResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface HttpSummaryPostQuantumResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type HttpSummaryPostQuantumResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const HttpSummaryPostQuantumResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "HttpSummaryPostQuantumResponseMetaUnitsItem",
-  }) as any as S.Schema<HttpSummaryPostQuantumResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type HttpSummaryPostQuantumResponseMetaUnitsList =
-  Array<HttpSummaryPostQuantumResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const HttpSummaryPostQuantumResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    HttpSummaryPostQuantumResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<HttpSummaryPostQuantumResponseMetaUnitsList>;
 
 export interface HttpSummaryPostQuantumResponseMeta {
@@ -59537,32 +56209,21 @@ export const HttpSummaryPostQuantumResponseMeta = /*@__PURE__*/ S.suspend(() =>
   identifier: "HttpSummaryPostQuantumResponseMeta",
 }) as any as S.Schema<HttpSummaryPostQuantumResponseMeta>;
 
-export interface HttpSummaryPostQuantumResponseSummary0 {
-  /** A numeric string. */
-  nOTSUPPORTED: string;
-  /** A numeric string. */
-  sUPPORTED: string;
-}
-export const HttpSummaryPostQuantumResponseSummary0 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      nOTSUPPORTED: S.String.pipe(T.Body("NOT_SUPPORTED")),
-      sUPPORTED: S.String.pipe(T.Body("SUPPORTED")),
-    }),
-).annotate({
-  identifier: "HttpSummaryPostQuantumResponseSummary0",
-}) as any as S.Schema<HttpSummaryPostQuantumResponseSummary0>;
+export type HttpSummaryPostQuantumResponseSummary0 =
+  As112SummaryDnssecResponseSummary0;
+export const HttpSummaryPostQuantumResponseSummary0 =
+  As112SummaryDnssecResponseSummary0;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PostQuantumHttpSummaryResponse {
   /** Metadata for the results. */
   meta: HttpSummaryPostQuantumResponseMeta;
-  summary_0: HttpSummaryPostQuantumResponseSummary0;
+  summary_0: As112SummaryDnssecResponseSummary0;
 }
 export const PostQuantumHttpSummaryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: HttpSummaryPostQuantumResponseMeta,
-    summary_0: HttpSummaryPostQuantumResponseSummary0,
+    summary_0: As112SummaryDnssecResponseSummary0,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PostQuantumHttpSummaryResponse",
@@ -59973,27 +56634,16 @@ export const HttpTimeseriesGroupsPostQuantumResponseMetaConfidenceInfo =
     identifier: "HttpTimeseriesGroupsPostQuantumResponseMetaConfidenceInfo",
   }) as any as S.Schema<HttpTimeseriesGroupsPostQuantumResponseMetaConfidenceInfo>;
 
-export interface HttpTimeseriesGroupsPostQuantumResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type HttpTimeseriesGroupsPostQuantumResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const HttpTimeseriesGroupsPostQuantumResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "HttpTimeseriesGroupsPostQuantumResponseMetaDateRangeItem",
-  }) as any as S.Schema<HttpTimeseriesGroupsPostQuantumResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type HttpTimeseriesGroupsPostQuantumResponseMetaDateRangeList =
-  Array<HttpTimeseriesGroupsPostQuantumResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const HttpTimeseriesGroupsPostQuantumResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    HttpTimeseriesGroupsPostQuantumResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<HttpTimeseriesGroupsPostQuantumResponseMetaDateRangeList>;
 
 export type HttpTimeseriesGroupsPostQuantumResponseMetaNormalization =
@@ -60008,25 +56658,16 @@ export type HttpTimeseriesGroupsPostQuantumResponseMetaNormalization =
 export const HttpTimeseriesGroupsPostQuantumResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface HttpTimeseriesGroupsPostQuantumResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type HttpTimeseriesGroupsPostQuantumResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const HttpTimeseriesGroupsPostQuantumResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "HttpTimeseriesGroupsPostQuantumResponseMetaUnitsItem",
-  }) as any as S.Schema<HttpTimeseriesGroupsPostQuantumResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type HttpTimeseriesGroupsPostQuantumResponseMetaUnitsList =
-  Array<HttpTimeseriesGroupsPostQuantumResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const HttpTimeseriesGroupsPostQuantumResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    HttpTimeseriesGroupsPostQuantumResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<HttpTimeseriesGroupsPostQuantumResponseMetaUnitsList>;
 
 export interface HttpTimeseriesGroupsPostQuantumResponseMeta {
@@ -60187,26 +56828,15 @@ export const PrefixesBgpTopRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PrefixesBgpTopRequest",
 }) as any as S.Schema<PrefixesBgpTopRequest>;
 
-export interface BgpTopPrefixesResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
-export const BgpTopPrefixesResponseMetaDateRangeItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-).annotate({
-  identifier: "BgpTopPrefixesResponseMetaDateRangeItem",
-}) as any as S.Schema<BgpTopPrefixesResponseMetaDateRangeItem>;
+export type BgpTopPrefixesResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
+export const BgpTopPrefixesResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type BgpTopPrefixesResponseMetaDateRangeList =
-  Array<BgpTopPrefixesResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const BgpTopPrefixesResponseMetaDateRangeList = /*@__PURE__*/ S.Array(
-  BgpTopPrefixesResponseMetaDateRangeItem,
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
 ) as any as S.Schema<BgpTopPrefixesResponseMetaDateRangeList>;
 
 export interface BgpTopPrefixesResponseMeta {
@@ -60302,30 +56932,18 @@ export const BgpTopAsesPrefixesResponseAsnsList = /*@__PURE__*/ S.Array(
   BgpTopAsesPrefixesResponseAsnsItem,
 ) as any as S.Schema<BgpTopAsesPrefixesResponseAsnsList>;
 
-export interface BgpTopAsesPrefixesResponseMeta {
-  dataTime: string;
-  queryTime: string;
-  totalPeers: number;
-}
-export const BgpTopAsesPrefixesResponseMeta = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dataTime: S.String.pipe(T.Body("data_time")),
-    queryTime: S.String.pipe(T.Body("query_time")),
-    totalPeers: S.Number.pipe(T.Body("total_peers")),
-  }),
-).annotate({
-  identifier: "BgpTopAsesPrefixesResponseMeta",
-}) as any as S.Schema<BgpTopAsesPrefixesResponseMeta>;
+export type BgpTopAsesPrefixesResponseMeta = BgpRoutesMoasResponseMeta;
+export const BgpTopAsesPrefixesResponseMeta = BgpRoutesMoasResponseMeta;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PrefixesBgpTopAsResponse {
   asns: BgpTopAsesPrefixesResponseAsnsList;
-  meta: BgpTopAsesPrefixesResponseMeta;
+  meta: BgpRoutesMoasResponseMeta;
 }
 export const PrefixesBgpTopAsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     asns: BgpTopAsesPrefixesResponseAsnsList,
-    meta: BgpTopAsesPrefixesResponseMeta,
+    meta: BgpRoutesMoasResponseMeta,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PrefixesBgpTopAsResponse",
@@ -60652,27 +57270,16 @@ export const As112SummaryProtocolResponseMetaConfidenceInfo =
     identifier: "As112SummaryProtocolResponseMetaConfidenceInfo",
   }) as any as S.Schema<As112SummaryProtocolResponseMetaConfidenceInfo>;
 
-export interface As112SummaryProtocolResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type As112SummaryProtocolResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const As112SummaryProtocolResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "As112SummaryProtocolResponseMetaDateRangeItem",
-  }) as any as S.Schema<As112SummaryProtocolResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type As112SummaryProtocolResponseMetaDateRangeList =
-  Array<As112SummaryProtocolResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const As112SummaryProtocolResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    As112SummaryProtocolResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<As112SummaryProtocolResponseMetaDateRangeList>;
 
 export type As112SummaryProtocolResponseMetaNormalization =
@@ -60687,24 +57294,15 @@ export type As112SummaryProtocolResponseMetaNormalization =
 export const As112SummaryProtocolResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface As112SummaryProtocolResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type As112SummaryProtocolResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const As112SummaryProtocolResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "As112SummaryProtocolResponseMetaUnitsItem",
-  }) as any as S.Schema<As112SummaryProtocolResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type As112SummaryProtocolResponseMetaUnitsList =
-  Array<As112SummaryProtocolResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const As112SummaryProtocolResponseMetaUnitsList = /*@__PURE__*/ S.Array(
-  As112SummaryProtocolResponseMetaUnitsItem,
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
 ) as any as S.Schema<As112SummaryProtocolResponseMetaUnitsList>;
 
 export interface As112SummaryProtocolResponseMeta {
@@ -61126,27 +57724,16 @@ export const As112TimeseriesGroupsProtocolResponseMetaConfidenceInfo =
     identifier: "As112TimeseriesGroupsProtocolResponseMetaConfidenceInfo",
   }) as any as S.Schema<As112TimeseriesGroupsProtocolResponseMetaConfidenceInfo>;
 
-export interface As112TimeseriesGroupsProtocolResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type As112TimeseriesGroupsProtocolResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const As112TimeseriesGroupsProtocolResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "As112TimeseriesGroupsProtocolResponseMetaDateRangeItem",
-  }) as any as S.Schema<As112TimeseriesGroupsProtocolResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type As112TimeseriesGroupsProtocolResponseMetaDateRangeList =
-  Array<As112TimeseriesGroupsProtocolResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const As112TimeseriesGroupsProtocolResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    As112TimeseriesGroupsProtocolResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<As112TimeseriesGroupsProtocolResponseMetaDateRangeList>;
 
 export type As112TimeseriesGroupsProtocolResponseMetaNormalization =
@@ -61161,25 +57748,16 @@ export type As112TimeseriesGroupsProtocolResponseMetaNormalization =
 export const As112TimeseriesGroupsProtocolResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface As112TimeseriesGroupsProtocolResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type As112TimeseriesGroupsProtocolResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const As112TimeseriesGroupsProtocolResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "As112TimeseriesGroupsProtocolResponseMetaUnitsItem",
-  }) as any as S.Schema<As112TimeseriesGroupsProtocolResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type As112TimeseriesGroupsProtocolResponseMetaUnitsList =
-  Array<As112TimeseriesGroupsProtocolResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const As112TimeseriesGroupsProtocolResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    As112TimeseriesGroupsProtocolResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<As112TimeseriesGroupsProtocolResponseMetaUnitsList>;
 
 export interface As112TimeseriesGroupsProtocolResponseMeta {
@@ -61497,27 +58075,16 @@ export const AttacksLayer3SummaryProtocolResponseMetaConfidenceInfo =
     identifier: "AttacksLayer3SummaryProtocolResponseMetaConfidenceInfo",
   }) as any as S.Schema<AttacksLayer3SummaryProtocolResponseMetaConfidenceInfo>;
 
-export interface AttacksLayer3SummaryProtocolResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type AttacksLayer3SummaryProtocolResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const AttacksLayer3SummaryProtocolResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "AttacksLayer3SummaryProtocolResponseMetaDateRangeItem",
-  }) as any as S.Schema<AttacksLayer3SummaryProtocolResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type AttacksLayer3SummaryProtocolResponseMetaDateRangeList =
-  Array<AttacksLayer3SummaryProtocolResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const AttacksLayer3SummaryProtocolResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    AttacksLayer3SummaryProtocolResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<AttacksLayer3SummaryProtocolResponseMetaDateRangeList>;
 
 export type AttacksLayer3SummaryProtocolResponseMetaNormalization =
@@ -61532,25 +58099,16 @@ export type AttacksLayer3SummaryProtocolResponseMetaNormalization =
 export const AttacksLayer3SummaryProtocolResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface AttacksLayer3SummaryProtocolResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type AttacksLayer3SummaryProtocolResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const AttacksLayer3SummaryProtocolResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "AttacksLayer3SummaryProtocolResponseMetaUnitsItem",
-  }) as any as S.Schema<AttacksLayer3SummaryProtocolResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type AttacksLayer3SummaryProtocolResponseMetaUnitsList =
-  Array<AttacksLayer3SummaryProtocolResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const AttacksLayer3SummaryProtocolResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    AttacksLayer3SummaryProtocolResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<AttacksLayer3SummaryProtocolResponseMetaUnitsList>;
 
 export interface AttacksLayer3SummaryProtocolResponseMeta {
@@ -61899,28 +58457,16 @@ export const AttacksLayer3TimeseriesGroupsProtocolResponseMetaConfidenceInfo =
       "AttacksLayer3TimeseriesGroupsProtocolResponseMetaConfidenceInfo",
   }) as any as S.Schema<AttacksLayer3TimeseriesGroupsProtocolResponseMetaConfidenceInfo>;
 
-export interface AttacksLayer3TimeseriesGroupsProtocolResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type AttacksLayer3TimeseriesGroupsProtocolResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const AttacksLayer3TimeseriesGroupsProtocolResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "AttacksLayer3TimeseriesGroupsProtocolResponseMetaDateRangeItem",
-  }) as any as S.Schema<AttacksLayer3TimeseriesGroupsProtocolResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type AttacksLayer3TimeseriesGroupsProtocolResponseMetaDateRangeList =
-  Array<AttacksLayer3TimeseriesGroupsProtocolResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const AttacksLayer3TimeseriesGroupsProtocolResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    AttacksLayer3TimeseriesGroupsProtocolResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<AttacksLayer3TimeseriesGroupsProtocolResponseMetaDateRangeList>;
 
 export type AttacksLayer3TimeseriesGroupsProtocolResponseMetaNormalization =
@@ -61935,25 +58481,16 @@ export type AttacksLayer3TimeseriesGroupsProtocolResponseMetaNormalization =
 export const AttacksLayer3TimeseriesGroupsProtocolResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface AttacksLayer3TimeseriesGroupsProtocolResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type AttacksLayer3TimeseriesGroupsProtocolResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const AttacksLayer3TimeseriesGroupsProtocolResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "AttacksLayer3TimeseriesGroupsProtocolResponseMetaUnitsItem",
-  }) as any as S.Schema<AttacksLayer3TimeseriesGroupsProtocolResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type AttacksLayer3TimeseriesGroupsProtocolResponseMetaUnitsList =
-  Array<AttacksLayer3TimeseriesGroupsProtocolResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const AttacksLayer3TimeseriesGroupsProtocolResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    AttacksLayer3TimeseriesGroupsProtocolResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<AttacksLayer3TimeseriesGroupsProtocolResponseMetaUnitsList>;
 
 export interface AttacksLayer3TimeseriesGroupsProtocolResponseMeta {
@@ -62401,27 +58938,16 @@ export const DnsSummaryProtocolResponseMetaConfidenceInfo =
     identifier: "DnsSummaryProtocolResponseMetaConfidenceInfo",
   }) as any as S.Schema<DnsSummaryProtocolResponseMetaConfidenceInfo>;
 
-export interface DnsSummaryProtocolResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type DnsSummaryProtocolResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const DnsSummaryProtocolResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "DnsSummaryProtocolResponseMetaDateRangeItem",
-  }) as any as S.Schema<DnsSummaryProtocolResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type DnsSummaryProtocolResponseMetaDateRangeList =
-  Array<DnsSummaryProtocolResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const DnsSummaryProtocolResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    DnsSummaryProtocolResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<DnsSummaryProtocolResponseMetaDateRangeList>;
 
 export type DnsSummaryProtocolResponseMetaNormalization =
@@ -62436,24 +58962,15 @@ export type DnsSummaryProtocolResponseMetaNormalization =
 export const DnsSummaryProtocolResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface DnsSummaryProtocolResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
-export const DnsSummaryProtocolResponseMetaUnitsItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-).annotate({
-  identifier: "DnsSummaryProtocolResponseMetaUnitsItem",
-}) as any as S.Schema<DnsSummaryProtocolResponseMetaUnitsItem>;
+export type DnsSummaryProtocolResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
+export const DnsSummaryProtocolResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type DnsSummaryProtocolResponseMetaUnitsList =
-  Array<DnsSummaryProtocolResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const DnsSummaryProtocolResponseMetaUnitsList = /*@__PURE__*/ S.Array(
-  DnsSummaryProtocolResponseMetaUnitsItem,
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
 ) as any as S.Schema<DnsSummaryProtocolResponseMetaUnitsList>;
 
 export interface DnsSummaryProtocolResponseMeta {
@@ -62478,37 +58995,21 @@ export const DnsSummaryProtocolResponseMeta = /*@__PURE__*/ S.suspend(() =>
   identifier: "DnsSummaryProtocolResponseMeta",
 }) as any as S.Schema<DnsSummaryProtocolResponseMeta>;
 
-export interface DnsSummaryProtocolResponseSummary0 {
-  /** A numeric string. */
-  hTTPS: string;
-  /** A numeric string. */
-  tCP: string;
-  /** A numeric string. */
-  tLS: string;
-  /** A numeric string. */
-  uDP: string;
-}
-export const DnsSummaryProtocolResponseSummary0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    hTTPS: S.String.pipe(T.Body("HTTPS")),
-    tCP: S.String.pipe(T.Body("TCP")),
-    tLS: S.String.pipe(T.Body("TLS")),
-    uDP: S.String.pipe(T.Body("UDP")),
-  }),
-).annotate({
-  identifier: "DnsSummaryProtocolResponseSummary0",
-}) as any as S.Schema<DnsSummaryProtocolResponseSummary0>;
+export type DnsSummaryProtocolResponseSummary0 =
+  As112SummaryProtocolResponseSummary0;
+export const DnsSummaryProtocolResponseSummary0 =
+  As112SummaryProtocolResponseSummary0;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ProtocolDnsSummaryResponse {
   /** Metadata for the results. */
   meta: DnsSummaryProtocolResponseMeta;
-  summary_0: DnsSummaryProtocolResponseSummary0;
+  summary_0: As112SummaryProtocolResponseSummary0;
 }
 export const ProtocolDnsSummaryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: DnsSummaryProtocolResponseMeta,
-    summary_0: DnsSummaryProtocolResponseSummary0,
+    summary_0: As112SummaryProtocolResponseSummary0,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ProtocolDnsSummaryResponse",
@@ -62899,27 +59400,16 @@ export const DnsTimeseriesGroupsProtocolResponseMetaConfidenceInfo =
     identifier: "DnsTimeseriesGroupsProtocolResponseMetaConfidenceInfo",
   }) as any as S.Schema<DnsTimeseriesGroupsProtocolResponseMetaConfidenceInfo>;
 
-export interface DnsTimeseriesGroupsProtocolResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type DnsTimeseriesGroupsProtocolResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const DnsTimeseriesGroupsProtocolResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "DnsTimeseriesGroupsProtocolResponseMetaDateRangeItem",
-  }) as any as S.Schema<DnsTimeseriesGroupsProtocolResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type DnsTimeseriesGroupsProtocolResponseMetaDateRangeList =
-  Array<DnsTimeseriesGroupsProtocolResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const DnsTimeseriesGroupsProtocolResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    DnsTimeseriesGroupsProtocolResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<DnsTimeseriesGroupsProtocolResponseMetaDateRangeList>;
 
 export type DnsTimeseriesGroupsProtocolResponseMetaNormalization =
@@ -62934,25 +59424,16 @@ export type DnsTimeseriesGroupsProtocolResponseMetaNormalization =
 export const DnsTimeseriesGroupsProtocolResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface DnsTimeseriesGroupsProtocolResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type DnsTimeseriesGroupsProtocolResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const DnsTimeseriesGroupsProtocolResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "DnsTimeseriesGroupsProtocolResponseMetaUnitsItem",
-  }) as any as S.Schema<DnsTimeseriesGroupsProtocolResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type DnsTimeseriesGroupsProtocolResponseMetaUnitsList =
-  Array<DnsTimeseriesGroupsProtocolResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const DnsTimeseriesGroupsProtocolResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    DnsTimeseriesGroupsProtocolResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<DnsTimeseriesGroupsProtocolResponseMetaUnitsList>;
 
 export interface DnsTimeseriesGroupsProtocolResponseMeta {
@@ -63283,27 +59764,16 @@ export const As112SummaryQueryTypeResponseMetaConfidenceInfo =
     identifier: "As112SummaryQueryTypeResponseMetaConfidenceInfo",
   }) as any as S.Schema<As112SummaryQueryTypeResponseMetaConfidenceInfo>;
 
-export interface As112SummaryQueryTypeResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type As112SummaryQueryTypeResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const As112SummaryQueryTypeResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "As112SummaryQueryTypeResponseMetaDateRangeItem",
-  }) as any as S.Schema<As112SummaryQueryTypeResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type As112SummaryQueryTypeResponseMetaDateRangeList =
-  Array<As112SummaryQueryTypeResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const As112SummaryQueryTypeResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    As112SummaryQueryTypeResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<As112SummaryQueryTypeResponseMetaDateRangeList>;
 
 export type As112SummaryQueryTypeResponseMetaNormalization =
@@ -63318,24 +59788,15 @@ export type As112SummaryQueryTypeResponseMetaNormalization =
 export const As112SummaryQueryTypeResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface As112SummaryQueryTypeResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type As112SummaryQueryTypeResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const As112SummaryQueryTypeResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "As112SummaryQueryTypeResponseMetaUnitsItem",
-  }) as any as S.Schema<As112SummaryQueryTypeResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type As112SummaryQueryTypeResponseMetaUnitsList =
-  Array<As112SummaryQueryTypeResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const As112SummaryQueryTypeResponseMetaUnitsList = /*@__PURE__*/ S.Array(
-  As112SummaryQueryTypeResponseMetaUnitsItem,
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
 ) as any as S.Schema<As112SummaryQueryTypeResponseMetaUnitsList>;
 
 export interface As112SummaryQueryTypeResponseMeta {
@@ -63665,27 +60126,16 @@ export const As112TimeseriesGroupsQueryTypeResponseMetaConfidenceInfo =
     identifier: "As112TimeseriesGroupsQueryTypeResponseMetaConfidenceInfo",
   }) as any as S.Schema<As112TimeseriesGroupsQueryTypeResponseMetaConfidenceInfo>;
 
-export interface As112TimeseriesGroupsQueryTypeResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type As112TimeseriesGroupsQueryTypeResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const As112TimeseriesGroupsQueryTypeResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "As112TimeseriesGroupsQueryTypeResponseMetaDateRangeItem",
-  }) as any as S.Schema<As112TimeseriesGroupsQueryTypeResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type As112TimeseriesGroupsQueryTypeResponseMetaDateRangeList =
-  Array<As112TimeseriesGroupsQueryTypeResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const As112TimeseriesGroupsQueryTypeResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    As112TimeseriesGroupsQueryTypeResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<As112TimeseriesGroupsQueryTypeResponseMetaDateRangeList>;
 
 export type As112TimeseriesGroupsQueryTypeResponseMetaNormalization =
@@ -63700,25 +60150,16 @@ export type As112TimeseriesGroupsQueryTypeResponseMetaNormalization =
 export const As112TimeseriesGroupsQueryTypeResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface As112TimeseriesGroupsQueryTypeResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type As112TimeseriesGroupsQueryTypeResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const As112TimeseriesGroupsQueryTypeResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "As112TimeseriesGroupsQueryTypeResponseMetaUnitsItem",
-  }) as any as S.Schema<As112TimeseriesGroupsQueryTypeResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type As112TimeseriesGroupsQueryTypeResponseMetaUnitsList =
-  Array<As112TimeseriesGroupsQueryTypeResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const As112TimeseriesGroupsQueryTypeResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    As112TimeseriesGroupsQueryTypeResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<As112TimeseriesGroupsQueryTypeResponseMetaUnitsList>;
 
 export interface As112TimeseriesGroupsQueryTypeResponseMeta {
@@ -64044,27 +60485,16 @@ export const DnsSummaryQueryTypeResponseMetaConfidenceInfo =
     identifier: "DnsSummaryQueryTypeResponseMetaConfidenceInfo",
   }) as any as S.Schema<DnsSummaryQueryTypeResponseMetaConfidenceInfo>;
 
-export interface DnsSummaryQueryTypeResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type DnsSummaryQueryTypeResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const DnsSummaryQueryTypeResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "DnsSummaryQueryTypeResponseMetaDateRangeItem",
-  }) as any as S.Schema<DnsSummaryQueryTypeResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type DnsSummaryQueryTypeResponseMetaDateRangeList =
-  Array<DnsSummaryQueryTypeResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const DnsSummaryQueryTypeResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    DnsSummaryQueryTypeResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<DnsSummaryQueryTypeResponseMetaDateRangeList>;
 
 export type DnsSummaryQueryTypeResponseMetaNormalization =
@@ -64079,24 +60509,15 @@ export type DnsSummaryQueryTypeResponseMetaNormalization =
 export const DnsSummaryQueryTypeResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface DnsSummaryQueryTypeResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
-export const DnsSummaryQueryTypeResponseMetaUnitsItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-).annotate({
-  identifier: "DnsSummaryQueryTypeResponseMetaUnitsItem",
-}) as any as S.Schema<DnsSummaryQueryTypeResponseMetaUnitsItem>;
+export type DnsSummaryQueryTypeResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
+export const DnsSummaryQueryTypeResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type DnsSummaryQueryTypeResponseMetaUnitsList =
-  Array<DnsSummaryQueryTypeResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const DnsSummaryQueryTypeResponseMetaUnitsList = /*@__PURE__*/ S.Array(
-  DnsSummaryQueryTypeResponseMetaUnitsItem,
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
 ) as any as S.Schema<DnsSummaryQueryTypeResponseMetaUnitsList>;
 
 export interface DnsSummaryQueryTypeResponseMeta {
@@ -64449,27 +60870,16 @@ export const DnsTimeseriesGroupsQueryTypeResponseMetaConfidenceInfo =
     identifier: "DnsTimeseriesGroupsQueryTypeResponseMetaConfidenceInfo",
   }) as any as S.Schema<DnsTimeseriesGroupsQueryTypeResponseMetaConfidenceInfo>;
 
-export interface DnsTimeseriesGroupsQueryTypeResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type DnsTimeseriesGroupsQueryTypeResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const DnsTimeseriesGroupsQueryTypeResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "DnsTimeseriesGroupsQueryTypeResponseMetaDateRangeItem",
-  }) as any as S.Schema<DnsTimeseriesGroupsQueryTypeResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type DnsTimeseriesGroupsQueryTypeResponseMetaDateRangeList =
-  Array<DnsTimeseriesGroupsQueryTypeResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const DnsTimeseriesGroupsQueryTypeResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    DnsTimeseriesGroupsQueryTypeResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<DnsTimeseriesGroupsQueryTypeResponseMetaDateRangeList>;
 
 export type DnsTimeseriesGroupsQueryTypeResponseMetaNormalization =
@@ -64484,25 +60894,16 @@ export type DnsTimeseriesGroupsQueryTypeResponseMetaNormalization =
 export const DnsTimeseriesGroupsQueryTypeResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface DnsTimeseriesGroupsQueryTypeResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type DnsTimeseriesGroupsQueryTypeResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const DnsTimeseriesGroupsQueryTypeResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "DnsTimeseriesGroupsQueryTypeResponseMetaUnitsItem",
-  }) as any as S.Schema<DnsTimeseriesGroupsQueryTypeResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type DnsTimeseriesGroupsQueryTypeResponseMetaUnitsList =
-  Array<DnsTimeseriesGroupsQueryTypeResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const DnsTimeseriesGroupsQueryTypeResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    DnsTimeseriesGroupsQueryTypeResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<DnsTimeseriesGroupsQueryTypeResponseMetaUnitsList>;
 
 export interface DnsTimeseriesGroupsQueryTypeResponseMeta {
@@ -64800,20 +61201,8 @@ export const RelEntityAsnRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "RelEntityAsnRequest",
 }) as any as S.Schema<RelEntityAsnRequest>;
 
-export interface EntitiesAsnsRelResponseMeta {
-  dataTime: string;
-  queryTime: string;
-  totalPeers: number;
-}
-export const EntitiesAsnsRelResponseMeta = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dataTime: S.String.pipe(T.Body("data_time")),
-    queryTime: S.String.pipe(T.Body("query_time")),
-    totalPeers: S.Number.pipe(T.Body("total_peers")),
-  }),
-).annotate({
-  identifier: "EntitiesAsnsRelResponseMeta",
-}) as any as S.Schema<EntitiesAsnsRelResponseMeta>;
+export type EntitiesAsnsRelResponseMeta = BgpRoutesMoasResponseMeta;
+export const EntitiesAsnsRelResponseMeta = BgpRoutesMoasResponseMeta;
 
 export interface EntitiesAsnsRelResponseRelsItem {
   asn1: number;
@@ -64846,12 +61235,12 @@ export const EntitiesAsnsRelResponseRelsList = /*@__PURE__*/ S.Array(
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface RelEntityAsnResponse {
-  meta: EntitiesAsnsRelResponseMeta;
+  meta: BgpRoutesMoasResponseMeta;
   rels: EntitiesAsnsRelResponseRelsList;
 }
 export const RelEntityAsnResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    meta: EntitiesAsnsRelResponseMeta,
+    meta: BgpRoutesMoasResponseMeta,
     rels: EntitiesAsnsRelResponseRelsList,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
@@ -65193,27 +61582,16 @@ export const DnsSummaryResponseCodeResponseMetaConfidenceInfo =
     identifier: "DnsSummaryResponseCodeResponseMetaConfidenceInfo",
   }) as any as S.Schema<DnsSummaryResponseCodeResponseMetaConfidenceInfo>;
 
-export interface DnsSummaryResponseCodeResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type DnsSummaryResponseCodeResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const DnsSummaryResponseCodeResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "DnsSummaryResponseCodeResponseMetaDateRangeItem",
-  }) as any as S.Schema<DnsSummaryResponseCodeResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type DnsSummaryResponseCodeResponseMetaDateRangeList =
-  Array<DnsSummaryResponseCodeResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const DnsSummaryResponseCodeResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    DnsSummaryResponseCodeResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<DnsSummaryResponseCodeResponseMetaDateRangeList>;
 
 export type DnsSummaryResponseCodeResponseMetaNormalization =
@@ -65228,25 +61606,16 @@ export type DnsSummaryResponseCodeResponseMetaNormalization =
 export const DnsSummaryResponseCodeResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface DnsSummaryResponseCodeResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type DnsSummaryResponseCodeResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const DnsSummaryResponseCodeResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "DnsSummaryResponseCodeResponseMetaUnitsItem",
-  }) as any as S.Schema<DnsSummaryResponseCodeResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type DnsSummaryResponseCodeResponseMetaUnitsList =
-  Array<DnsSummaryResponseCodeResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const DnsSummaryResponseCodeResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    DnsSummaryResponseCodeResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<DnsSummaryResponseCodeResponseMetaUnitsList>;
 
 export interface DnsSummaryResponseCodeResponseMeta {
@@ -65678,27 +62047,16 @@ export const DnsTimeseriesGroupsResponseCodeResponseMetaConfidenceInfo =
     identifier: "DnsTimeseriesGroupsResponseCodeResponseMetaConfidenceInfo",
   }) as any as S.Schema<DnsTimeseriesGroupsResponseCodeResponseMetaConfidenceInfo>;
 
-export interface DnsTimeseriesGroupsResponseCodeResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type DnsTimeseriesGroupsResponseCodeResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const DnsTimeseriesGroupsResponseCodeResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "DnsTimeseriesGroupsResponseCodeResponseMetaDateRangeItem",
-  }) as any as S.Schema<DnsTimeseriesGroupsResponseCodeResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type DnsTimeseriesGroupsResponseCodeResponseMetaDateRangeList =
-  Array<DnsTimeseriesGroupsResponseCodeResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const DnsTimeseriesGroupsResponseCodeResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    DnsTimeseriesGroupsResponseCodeResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<DnsTimeseriesGroupsResponseCodeResponseMetaDateRangeList>;
 
 export type DnsTimeseriesGroupsResponseCodeResponseMetaNormalization =
@@ -65713,25 +62071,16 @@ export type DnsTimeseriesGroupsResponseCodeResponseMetaNormalization =
 export const DnsTimeseriesGroupsResponseCodeResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface DnsTimeseriesGroupsResponseCodeResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type DnsTimeseriesGroupsResponseCodeResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const DnsTimeseriesGroupsResponseCodeResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "DnsTimeseriesGroupsResponseCodeResponseMetaUnitsItem",
-  }) as any as S.Schema<DnsTimeseriesGroupsResponseCodeResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type DnsTimeseriesGroupsResponseCodeResponseMetaUnitsList =
-  Array<DnsTimeseriesGroupsResponseCodeResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const DnsTimeseriesGroupsResponseCodeResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    DnsTimeseriesGroupsResponseCodeResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<DnsTimeseriesGroupsResponseCodeResponseMetaUnitsList>;
 
 export interface DnsTimeseriesGroupsResponseCodeResponseMeta {
@@ -66113,27 +62462,16 @@ export const As112SummaryResponseCodesResponseMetaConfidenceInfo =
     identifier: "As112SummaryResponseCodesResponseMetaConfidenceInfo",
   }) as any as S.Schema<As112SummaryResponseCodesResponseMetaConfidenceInfo>;
 
-export interface As112SummaryResponseCodesResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type As112SummaryResponseCodesResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const As112SummaryResponseCodesResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "As112SummaryResponseCodesResponseMetaDateRangeItem",
-  }) as any as S.Schema<As112SummaryResponseCodesResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type As112SummaryResponseCodesResponseMetaDateRangeList =
-  Array<As112SummaryResponseCodesResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const As112SummaryResponseCodesResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    As112SummaryResponseCodesResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<As112SummaryResponseCodesResponseMetaDateRangeList>;
 
 export type As112SummaryResponseCodesResponseMetaNormalization =
@@ -66148,25 +62486,16 @@ export type As112SummaryResponseCodesResponseMetaNormalization =
 export const As112SummaryResponseCodesResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface As112SummaryResponseCodesResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type As112SummaryResponseCodesResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const As112SummaryResponseCodesResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "As112SummaryResponseCodesResponseMetaUnitsItem",
-  }) as any as S.Schema<As112SummaryResponseCodesResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type As112SummaryResponseCodesResponseMetaUnitsList =
-  Array<As112SummaryResponseCodesResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const As112SummaryResponseCodesResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    As112SummaryResponseCodesResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<As112SummaryResponseCodesResponseMetaUnitsList>;
 
 export interface As112SummaryResponseCodesResponseMeta {
@@ -66572,27 +62901,16 @@ export const As112TimeseriesGroupsResponseCodesResponseMetaConfidenceInfo =
     identifier: "As112TimeseriesGroupsResponseCodesResponseMetaConfidenceInfo",
   }) as any as S.Schema<As112TimeseriesGroupsResponseCodesResponseMetaConfidenceInfo>;
 
-export interface As112TimeseriesGroupsResponseCodesResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type As112TimeseriesGroupsResponseCodesResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const As112TimeseriesGroupsResponseCodesResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "As112TimeseriesGroupsResponseCodesResponseMetaDateRangeItem",
-  }) as any as S.Schema<As112TimeseriesGroupsResponseCodesResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type As112TimeseriesGroupsResponseCodesResponseMetaDateRangeList =
-  Array<As112TimeseriesGroupsResponseCodesResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const As112TimeseriesGroupsResponseCodesResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    As112TimeseriesGroupsResponseCodesResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<As112TimeseriesGroupsResponseCodesResponseMetaDateRangeList>;
 
 export type As112TimeseriesGroupsResponseCodesResponseMetaNormalization =
@@ -66607,25 +62925,16 @@ export type As112TimeseriesGroupsResponseCodesResponseMetaNormalization =
 export const As112TimeseriesGroupsResponseCodesResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface As112TimeseriesGroupsResponseCodesResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type As112TimeseriesGroupsResponseCodesResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const As112TimeseriesGroupsResponseCodesResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "As112TimeseriesGroupsResponseCodesResponseMetaUnitsItem",
-  }) as any as S.Schema<As112TimeseriesGroupsResponseCodesResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type As112TimeseriesGroupsResponseCodesResponseMetaUnitsList =
-  Array<As112TimeseriesGroupsResponseCodesResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const As112TimeseriesGroupsResponseCodesResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    As112TimeseriesGroupsResponseCodesResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<As112TimeseriesGroupsResponseCodesResponseMetaUnitsList>;
 
 export interface As112TimeseriesGroupsResponseCodesResponseMeta {
@@ -67059,27 +63368,16 @@ export const DnsSummaryResponseTtlResponseMetaConfidenceInfo =
     identifier: "DnsSummaryResponseTtlResponseMetaConfidenceInfo",
   }) as any as S.Schema<DnsSummaryResponseTtlResponseMetaConfidenceInfo>;
 
-export interface DnsSummaryResponseTtlResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type DnsSummaryResponseTtlResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const DnsSummaryResponseTtlResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "DnsSummaryResponseTtlResponseMetaDateRangeItem",
-  }) as any as S.Schema<DnsSummaryResponseTtlResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type DnsSummaryResponseTtlResponseMetaDateRangeList =
-  Array<DnsSummaryResponseTtlResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const DnsSummaryResponseTtlResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    DnsSummaryResponseTtlResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<DnsSummaryResponseTtlResponseMetaDateRangeList>;
 
 export type DnsSummaryResponseTtlResponseMetaNormalization =
@@ -67094,24 +63392,15 @@ export type DnsSummaryResponseTtlResponseMetaNormalization =
 export const DnsSummaryResponseTtlResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface DnsSummaryResponseTtlResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type DnsSummaryResponseTtlResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const DnsSummaryResponseTtlResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "DnsSummaryResponseTtlResponseMetaUnitsItem",
-  }) as any as S.Schema<DnsSummaryResponseTtlResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type DnsSummaryResponseTtlResponseMetaUnitsList =
-  Array<DnsSummaryResponseTtlResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const DnsSummaryResponseTtlResponseMetaUnitsList = /*@__PURE__*/ S.Array(
-  DnsSummaryResponseTtlResponseMetaUnitsItem,
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
 ) as any as S.Schema<DnsSummaryResponseTtlResponseMetaUnitsList>;
 
 export interface DnsSummaryResponseTtlResponseMeta {
@@ -67599,27 +63888,16 @@ export const DnsTimeseriesGroupsResponseTtlResponseMetaConfidenceInfo =
     identifier: "DnsTimeseriesGroupsResponseTtlResponseMetaConfidenceInfo",
   }) as any as S.Schema<DnsTimeseriesGroupsResponseTtlResponseMetaConfidenceInfo>;
 
-export interface DnsTimeseriesGroupsResponseTtlResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type DnsTimeseriesGroupsResponseTtlResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const DnsTimeseriesGroupsResponseTtlResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "DnsTimeseriesGroupsResponseTtlResponseMetaDateRangeItem",
-  }) as any as S.Schema<DnsTimeseriesGroupsResponseTtlResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type DnsTimeseriesGroupsResponseTtlResponseMetaDateRangeList =
-  Array<DnsTimeseriesGroupsResponseTtlResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const DnsTimeseriesGroupsResponseTtlResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    DnsTimeseriesGroupsResponseTtlResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<DnsTimeseriesGroupsResponseTtlResponseMetaDateRangeList>;
 
 export type DnsTimeseriesGroupsResponseTtlResponseMetaNormalization =
@@ -67634,25 +63912,16 @@ export type DnsTimeseriesGroupsResponseTtlResponseMetaNormalization =
 export const DnsTimeseriesGroupsResponseTtlResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface DnsTimeseriesGroupsResponseTtlResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type DnsTimeseriesGroupsResponseTtlResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const DnsTimeseriesGroupsResponseTtlResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "DnsTimeseriesGroupsResponseTtlResponseMetaUnitsItem",
-  }) as any as S.Schema<DnsTimeseriesGroupsResponseTtlResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type DnsTimeseriesGroupsResponseTtlResponseMetaUnitsList =
-  Array<DnsTimeseriesGroupsResponseTtlResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const DnsTimeseriesGroupsResponseTtlResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    DnsTimeseriesGroupsResponseTtlResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<DnsTimeseriesGroupsResponseTtlResponseMetaUnitsList>;
 
 export interface DnsTimeseriesGroupsResponseTtlResponseMeta {
@@ -67805,35 +64074,15 @@ export const SnapshotBgpRpkiAspaRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "SnapshotBgpRpkiAspaRequest",
 }) as any as S.Schema<SnapshotBgpRpkiAspaRequest>;
 
-export interface BgpRpkiAspaSnapshotResponseAsnInfo13335 {
-  /** ASN number. */
-  asn: number;
-  /** Alpha-2 country code. */
-  country: string;
-  /** AS name. */
-  name: string;
-}
-export const BgpRpkiAspaSnapshotResponseAsnInfo13335 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      asn: S.Number,
-      country: S.String,
-      name: S.String,
-    }),
-).annotate({
-  identifier: "BgpRpkiAspaSnapshotResponseAsnInfo13335",
-}) as any as S.Schema<BgpRpkiAspaSnapshotResponseAsnInfo13335>;
+export type BgpRpkiAspaSnapshotResponseAsnInfo13335 =
+  BgpRpkiAspaChangesResponseAsnInfo13335;
+export const BgpRpkiAspaSnapshotResponseAsnInfo13335 =
+  BgpRpkiAspaChangesResponseAsnInfo13335;
 
-export interface BgpRpkiAspaSnapshotResponseAsnInfo {
-  "13335": BgpRpkiAspaSnapshotResponseAsnInfo13335;
-}
-export const BgpRpkiAspaSnapshotResponseAsnInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    "13335": BgpRpkiAspaSnapshotResponseAsnInfo13335,
-  }),
-).annotate({
-  identifier: "BgpRpkiAspaSnapshotResponseAsnInfo",
-}) as any as S.Schema<BgpRpkiAspaSnapshotResponseAsnInfo>;
+export type BgpRpkiAspaSnapshotResponseAsnInfo =
+  BgpRpkiAspaChangesResponseAsnInfo;
+export const BgpRpkiAspaSnapshotResponseAsnInfo =
+  BgpRpkiAspaChangesResponseAsnInfo;
 
 export type BgpRpkiAspaSnapshotResponseAspaObjectsItemProvidersList =
   Array<number>;
@@ -67883,13 +64132,13 @@ export const BgpRpkiAspaSnapshotResponseMeta = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface SnapshotBgpRpkiAspaResponse {
-  asnInfo: BgpRpkiAspaSnapshotResponseAsnInfo;
+  asnInfo: BgpRpkiAspaChangesResponseAsnInfo;
   aspaObjects: BgpRpkiAspaSnapshotResponseAspaObjectsList;
   meta: BgpRpkiAspaSnapshotResponseMeta;
 }
 export const SnapshotBgpRpkiAspaResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    asnInfo: BgpRpkiAspaSnapshotResponseAsnInfo,
+    asnInfo: BgpRpkiAspaChangesResponseAsnInfo,
     aspaObjects: BgpRpkiAspaSnapshotResponseAspaObjectsList,
     meta: BgpRpkiAspaSnapshotResponseMeta,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -68137,27 +64386,16 @@ export const EmailSecuritySummarySpamResponseMetaConfidenceInfo =
     identifier: "EmailSecuritySummarySpamResponseMetaConfidenceInfo",
   }) as any as S.Schema<EmailSecuritySummarySpamResponseMetaConfidenceInfo>;
 
-export interface EmailSecuritySummarySpamResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type EmailSecuritySummarySpamResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const EmailSecuritySummarySpamResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "EmailSecuritySummarySpamResponseMetaDateRangeItem",
-  }) as any as S.Schema<EmailSecuritySummarySpamResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type EmailSecuritySummarySpamResponseMetaDateRangeList =
-  Array<EmailSecuritySummarySpamResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const EmailSecuritySummarySpamResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    EmailSecuritySummarySpamResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<EmailSecuritySummarySpamResponseMetaDateRangeList>;
 
 export type EmailSecuritySummarySpamResponseMetaNormalization =
@@ -68172,25 +64410,16 @@ export type EmailSecuritySummarySpamResponseMetaNormalization =
 export const EmailSecuritySummarySpamResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface EmailSecuritySummarySpamResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type EmailSecuritySummarySpamResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const EmailSecuritySummarySpamResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "EmailSecuritySummarySpamResponseMetaUnitsItem",
-  }) as any as S.Schema<EmailSecuritySummarySpamResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type EmailSecuritySummarySpamResponseMetaUnitsList =
-  Array<EmailSecuritySummarySpamResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const EmailSecuritySummarySpamResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    EmailSecuritySummarySpamResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<EmailSecuritySummarySpamResponseMetaUnitsList>;
 
 export interface EmailSecuritySummarySpamResponseMeta {
@@ -68550,27 +64779,16 @@ export const EmailSecurityTimeseriesGroupsSpamResponseMetaConfidenceInfo =
     identifier: "EmailSecurityTimeseriesGroupsSpamResponseMetaConfidenceInfo",
   }) as any as S.Schema<EmailSecurityTimeseriesGroupsSpamResponseMetaConfidenceInfo>;
 
-export interface EmailSecurityTimeseriesGroupsSpamResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type EmailSecurityTimeseriesGroupsSpamResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const EmailSecurityTimeseriesGroupsSpamResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "EmailSecurityTimeseriesGroupsSpamResponseMetaDateRangeItem",
-  }) as any as S.Schema<EmailSecurityTimeseriesGroupsSpamResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type EmailSecurityTimeseriesGroupsSpamResponseMetaDateRangeList =
-  Array<EmailSecurityTimeseriesGroupsSpamResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const EmailSecurityTimeseriesGroupsSpamResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    EmailSecurityTimeseriesGroupsSpamResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<EmailSecurityTimeseriesGroupsSpamResponseMetaDateRangeList>;
 
 export type EmailSecurityTimeseriesGroupsSpamResponseMetaNormalization =
@@ -68585,25 +64803,16 @@ export type EmailSecurityTimeseriesGroupsSpamResponseMetaNormalization =
 export const EmailSecurityTimeseriesGroupsSpamResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface EmailSecurityTimeseriesGroupsSpamResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type EmailSecurityTimeseriesGroupsSpamResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const EmailSecurityTimeseriesGroupsSpamResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "EmailSecurityTimeseriesGroupsSpamResponseMetaUnitsItem",
-  }) as any as S.Schema<EmailSecurityTimeseriesGroupsSpamResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type EmailSecurityTimeseriesGroupsSpamResponseMetaUnitsList =
-  Array<EmailSecurityTimeseriesGroupsSpamResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const EmailSecurityTimeseriesGroupsSpamResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    EmailSecurityTimeseriesGroupsSpamResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<EmailSecurityTimeseriesGroupsSpamResponseMetaUnitsList>;
 
 export interface EmailSecurityTimeseriesGroupsSpamResponseMeta {
@@ -68918,27 +65127,16 @@ export const EmailRoutingSummarySpfResponseMetaConfidenceInfo =
     identifier: "EmailRoutingSummarySpfResponseMetaConfidenceInfo",
   }) as any as S.Schema<EmailRoutingSummarySpfResponseMetaConfidenceInfo>;
 
-export interface EmailRoutingSummarySpfResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type EmailRoutingSummarySpfResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const EmailRoutingSummarySpfResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "EmailRoutingSummarySpfResponseMetaDateRangeItem",
-  }) as any as S.Schema<EmailRoutingSummarySpfResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type EmailRoutingSummarySpfResponseMetaDateRangeList =
-  Array<EmailRoutingSummarySpfResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const EmailRoutingSummarySpfResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    EmailRoutingSummarySpfResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<EmailRoutingSummarySpfResponseMetaDateRangeList>;
 
 export type EmailRoutingSummarySpfResponseMetaNormalization =
@@ -68953,25 +65151,16 @@ export type EmailRoutingSummarySpfResponseMetaNormalization =
 export const EmailRoutingSummarySpfResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface EmailRoutingSummarySpfResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type EmailRoutingSummarySpfResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const EmailRoutingSummarySpfResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "EmailRoutingSummarySpfResponseMetaUnitsItem",
-  }) as any as S.Schema<EmailRoutingSummarySpfResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type EmailRoutingSummarySpfResponseMetaUnitsList =
-  Array<EmailRoutingSummarySpfResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const EmailRoutingSummarySpfResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    EmailRoutingSummarySpfResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<EmailRoutingSummarySpfResponseMetaUnitsList>;
 
 export interface EmailRoutingSummarySpfResponseMeta {
@@ -68996,35 +65185,21 @@ export const EmailRoutingSummarySpfResponseMeta = /*@__PURE__*/ S.suspend(() =>
   identifier: "EmailRoutingSummarySpfResponseMeta",
 }) as any as S.Schema<EmailRoutingSummarySpfResponseMeta>;
 
-export interface EmailRoutingSummarySpfResponseSummary0 {
-  /** A numeric string. */
-  fAIL: string;
-  /** A numeric string. */
-  nONE: string;
-  /** A numeric string. */
-  pASS: string;
-}
-export const EmailRoutingSummarySpfResponseSummary0 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      fAIL: S.String.pipe(T.Body("FAIL")),
-      nONE: S.String.pipe(T.Body("NONE")),
-      pASS: S.String.pipe(T.Body("PASS")),
-    }),
-).annotate({
-  identifier: "EmailRoutingSummarySpfResponseSummary0",
-}) as any as S.Schema<EmailRoutingSummarySpfResponseSummary0>;
+export type EmailRoutingSummarySpfResponseSummary0 =
+  EmailRoutingSummaryArcResponseSummary0;
+export const EmailRoutingSummarySpfResponseSummary0 =
+  EmailRoutingSummaryArcResponseSummary0;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface SpfEmailRoutingSummaryResponse {
   /** Metadata for the results. */
   meta: EmailRoutingSummarySpfResponseMeta;
-  summary_0: EmailRoutingSummarySpfResponseSummary0;
+  summary_0: EmailRoutingSummaryArcResponseSummary0;
 }
 export const SpfEmailRoutingSummaryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: EmailRoutingSummarySpfResponseMeta,
-    summary_0: EmailRoutingSummarySpfResponseSummary0,
+    summary_0: EmailRoutingSummaryArcResponseSummary0,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "SpfEmailRoutingSummaryResponse",
@@ -69325,27 +65500,16 @@ export const EmailRoutingTimeseriesGroupsSpfResponseMetaConfidenceInfo =
     identifier: "EmailRoutingTimeseriesGroupsSpfResponseMetaConfidenceInfo",
   }) as any as S.Schema<EmailRoutingTimeseriesGroupsSpfResponseMetaConfidenceInfo>;
 
-export interface EmailRoutingTimeseriesGroupsSpfResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type EmailRoutingTimeseriesGroupsSpfResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const EmailRoutingTimeseriesGroupsSpfResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "EmailRoutingTimeseriesGroupsSpfResponseMetaDateRangeItem",
-  }) as any as S.Schema<EmailRoutingTimeseriesGroupsSpfResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type EmailRoutingTimeseriesGroupsSpfResponseMetaDateRangeList =
-  Array<EmailRoutingTimeseriesGroupsSpfResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const EmailRoutingTimeseriesGroupsSpfResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    EmailRoutingTimeseriesGroupsSpfResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<EmailRoutingTimeseriesGroupsSpfResponseMetaDateRangeList>;
 
 export type EmailRoutingTimeseriesGroupsSpfResponseMetaNormalization =
@@ -69360,25 +65524,16 @@ export type EmailRoutingTimeseriesGroupsSpfResponseMetaNormalization =
 export const EmailRoutingTimeseriesGroupsSpfResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface EmailRoutingTimeseriesGroupsSpfResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type EmailRoutingTimeseriesGroupsSpfResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const EmailRoutingTimeseriesGroupsSpfResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "EmailRoutingTimeseriesGroupsSpfResponseMetaUnitsItem",
-  }) as any as S.Schema<EmailRoutingTimeseriesGroupsSpfResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type EmailRoutingTimeseriesGroupsSpfResponseMetaUnitsList =
-  Array<EmailRoutingTimeseriesGroupsSpfResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const EmailRoutingTimeseriesGroupsSpfResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    EmailRoutingTimeseriesGroupsSpfResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<EmailRoutingTimeseriesGroupsSpfResponseMetaUnitsList>;
 
 export interface EmailRoutingTimeseriesGroupsSpfResponseMeta {
@@ -69693,27 +65848,16 @@ export const EmailSecuritySummarySpfResponseMetaConfidenceInfo =
     identifier: "EmailSecuritySummarySpfResponseMetaConfidenceInfo",
   }) as any as S.Schema<EmailSecuritySummarySpfResponseMetaConfidenceInfo>;
 
-export interface EmailSecuritySummarySpfResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type EmailSecuritySummarySpfResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const EmailSecuritySummarySpfResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "EmailSecuritySummarySpfResponseMetaDateRangeItem",
-  }) as any as S.Schema<EmailSecuritySummarySpfResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type EmailSecuritySummarySpfResponseMetaDateRangeList =
-  Array<EmailSecuritySummarySpfResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const EmailSecuritySummarySpfResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    EmailSecuritySummarySpfResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<EmailSecuritySummarySpfResponseMetaDateRangeList>;
 
 export type EmailSecuritySummarySpfResponseMetaNormalization =
@@ -69728,25 +65872,16 @@ export type EmailSecuritySummarySpfResponseMetaNormalization =
 export const EmailSecuritySummarySpfResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface EmailSecuritySummarySpfResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type EmailSecuritySummarySpfResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const EmailSecuritySummarySpfResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "EmailSecuritySummarySpfResponseMetaUnitsItem",
-  }) as any as S.Schema<EmailSecuritySummarySpfResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type EmailSecuritySummarySpfResponseMetaUnitsList =
-  Array<EmailSecuritySummarySpfResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const EmailSecuritySummarySpfResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    EmailSecuritySummarySpfResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<EmailSecuritySummarySpfResponseMetaUnitsList>;
 
 export interface EmailSecuritySummarySpfResponseMeta {
@@ -69771,35 +65906,21 @@ export const EmailSecuritySummarySpfResponseMeta = /*@__PURE__*/ S.suspend(() =>
   identifier: "EmailSecuritySummarySpfResponseMeta",
 }) as any as S.Schema<EmailSecuritySummarySpfResponseMeta>;
 
-export interface EmailSecuritySummarySpfResponseSummary0 {
-  /** A numeric string. */
-  fAIL: string;
-  /** A numeric string. */
-  nONE: string;
-  /** A numeric string. */
-  pASS: string;
-}
-export const EmailSecuritySummarySpfResponseSummary0 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      fAIL: S.String.pipe(T.Body("FAIL")),
-      nONE: S.String.pipe(T.Body("NONE")),
-      pASS: S.String.pipe(T.Body("PASS")),
-    }),
-).annotate({
-  identifier: "EmailSecuritySummarySpfResponseSummary0",
-}) as any as S.Schema<EmailSecuritySummarySpfResponseSummary0>;
+export type EmailSecuritySummarySpfResponseSummary0 =
+  EmailRoutingSummaryArcResponseSummary0;
+export const EmailSecuritySummarySpfResponseSummary0 =
+  EmailRoutingSummaryArcResponseSummary0;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface SpfEmailSecuritySummaryResponse {
   /** Metadata for the results. */
   meta: EmailSecuritySummarySpfResponseMeta;
-  summary_0: EmailSecuritySummarySpfResponseSummary0;
+  summary_0: EmailRoutingSummaryArcResponseSummary0;
 }
 export const SpfEmailSecuritySummaryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: EmailSecuritySummarySpfResponseMeta,
-    summary_0: EmailSecuritySummarySpfResponseSummary0,
+    summary_0: EmailRoutingSummaryArcResponseSummary0,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "SpfEmailSecuritySummaryResponse",
@@ -70088,27 +66209,16 @@ export const EmailSecurityTimeseriesGroupsSpfResponseMetaConfidenceInfo =
     identifier: "EmailSecurityTimeseriesGroupsSpfResponseMetaConfidenceInfo",
   }) as any as S.Schema<EmailSecurityTimeseriesGroupsSpfResponseMetaConfidenceInfo>;
 
-export interface EmailSecurityTimeseriesGroupsSpfResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type EmailSecurityTimeseriesGroupsSpfResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const EmailSecurityTimeseriesGroupsSpfResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "EmailSecurityTimeseriesGroupsSpfResponseMetaDateRangeItem",
-  }) as any as S.Schema<EmailSecurityTimeseriesGroupsSpfResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type EmailSecurityTimeseriesGroupsSpfResponseMetaDateRangeList =
-  Array<EmailSecurityTimeseriesGroupsSpfResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const EmailSecurityTimeseriesGroupsSpfResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    EmailSecurityTimeseriesGroupsSpfResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<EmailSecurityTimeseriesGroupsSpfResponseMetaDateRangeList>;
 
 export type EmailSecurityTimeseriesGroupsSpfResponseMetaNormalization =
@@ -70123,25 +66233,16 @@ export type EmailSecurityTimeseriesGroupsSpfResponseMetaNormalization =
 export const EmailSecurityTimeseriesGroupsSpfResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface EmailSecurityTimeseriesGroupsSpfResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type EmailSecurityTimeseriesGroupsSpfResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const EmailSecurityTimeseriesGroupsSpfResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "EmailSecurityTimeseriesGroupsSpfResponseMetaUnitsItem",
-  }) as any as S.Schema<EmailSecurityTimeseriesGroupsSpfResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type EmailSecurityTimeseriesGroupsSpfResponseMetaUnitsList =
-  Array<EmailSecurityTimeseriesGroupsSpfResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const EmailSecurityTimeseriesGroupsSpfResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    EmailSecurityTimeseriesGroupsSpfResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<EmailSecurityTimeseriesGroupsSpfResponseMetaUnitsList>;
 
 export interface EmailSecurityTimeseriesGroupsSpfResponseMeta {
@@ -70474,27 +66575,16 @@ export const EmailSecuritySummarySpoofResponseMetaConfidenceInfo =
     identifier: "EmailSecuritySummarySpoofResponseMetaConfidenceInfo",
   }) as any as S.Schema<EmailSecuritySummarySpoofResponseMetaConfidenceInfo>;
 
-export interface EmailSecuritySummarySpoofResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type EmailSecuritySummarySpoofResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const EmailSecuritySummarySpoofResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "EmailSecuritySummarySpoofResponseMetaDateRangeItem",
-  }) as any as S.Schema<EmailSecuritySummarySpoofResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type EmailSecuritySummarySpoofResponseMetaDateRangeList =
-  Array<EmailSecuritySummarySpoofResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const EmailSecuritySummarySpoofResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    EmailSecuritySummarySpoofResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<EmailSecuritySummarySpoofResponseMetaDateRangeList>;
 
 export type EmailSecuritySummarySpoofResponseMetaNormalization =
@@ -70509,25 +66599,16 @@ export type EmailSecuritySummarySpoofResponseMetaNormalization =
 export const EmailSecuritySummarySpoofResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface EmailSecuritySummarySpoofResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type EmailSecuritySummarySpoofResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const EmailSecuritySummarySpoofResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "EmailSecuritySummarySpoofResponseMetaUnitsItem",
-  }) as any as S.Schema<EmailSecuritySummarySpoofResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type EmailSecuritySummarySpoofResponseMetaUnitsList =
-  Array<EmailSecuritySummarySpoofResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const EmailSecuritySummarySpoofResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    EmailSecuritySummarySpoofResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<EmailSecuritySummarySpoofResponseMetaUnitsList>;
 
 export interface EmailSecuritySummarySpoofResponseMeta {
@@ -70888,27 +66969,16 @@ export const EmailSecurityTimeseriesGroupsSpoofResponseMetaConfidenceInfo =
     identifier: "EmailSecurityTimeseriesGroupsSpoofResponseMetaConfidenceInfo",
   }) as any as S.Schema<EmailSecurityTimeseriesGroupsSpoofResponseMetaConfidenceInfo>;
 
-export interface EmailSecurityTimeseriesGroupsSpoofResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type EmailSecurityTimeseriesGroupsSpoofResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const EmailSecurityTimeseriesGroupsSpoofResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "EmailSecurityTimeseriesGroupsSpoofResponseMetaDateRangeItem",
-  }) as any as S.Schema<EmailSecurityTimeseriesGroupsSpoofResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type EmailSecurityTimeseriesGroupsSpoofResponseMetaDateRangeList =
-  Array<EmailSecurityTimeseriesGroupsSpoofResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const EmailSecurityTimeseriesGroupsSpoofResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    EmailSecurityTimeseriesGroupsSpoofResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<EmailSecurityTimeseriesGroupsSpoofResponseMetaDateRangeList>;
 
 export type EmailSecurityTimeseriesGroupsSpoofResponseMetaNormalization =
@@ -70923,25 +66993,16 @@ export type EmailSecurityTimeseriesGroupsSpoofResponseMetaNormalization =
 export const EmailSecurityTimeseriesGroupsSpoofResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface EmailSecurityTimeseriesGroupsSpoofResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type EmailSecurityTimeseriesGroupsSpoofResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const EmailSecurityTimeseriesGroupsSpoofResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "EmailSecurityTimeseriesGroupsSpoofResponseMetaUnitsItem",
-  }) as any as S.Schema<EmailSecurityTimeseriesGroupsSpoofResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type EmailSecurityTimeseriesGroupsSpoofResponseMetaUnitsList =
-  Array<EmailSecurityTimeseriesGroupsSpoofResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const EmailSecurityTimeseriesGroupsSpoofResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    EmailSecurityTimeseriesGroupsSpoofResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<EmailSecurityTimeseriesGroupsSpoofResponseMetaUnitsList>;
 
 export interface EmailSecurityTimeseriesGroupsSpoofResponseMeta {
@@ -71044,20 +67105,8 @@ export const StatsBgpRouteRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "StatsBgpRouteRequest",
 }) as any as S.Schema<StatsBgpRouteRequest>;
 
-export interface BgpRoutesStatsResponseMeta {
-  dataTime: string;
-  queryTime: string;
-  totalPeers: number;
-}
-export const BgpRoutesStatsResponseMeta = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dataTime: S.String.pipe(T.Body("data_time")),
-    queryTime: S.String.pipe(T.Body("query_time")),
-    totalPeers: S.Number.pipe(T.Body("total_peers")),
-  }),
-).annotate({
-  identifier: "BgpRoutesStatsResponseMeta",
-}) as any as S.Schema<BgpRoutesStatsResponseMeta>;
+export type BgpRoutesStatsResponseMeta = BgpRoutesMoasResponseMeta;
+export const BgpRoutesStatsResponseMeta = BgpRoutesMoasResponseMeta;
 
 export interface BgpRoutesStatsResponseStats {
   distinctOrigins: number;
@@ -71106,12 +67155,12 @@ export const BgpRoutesStatsResponseStats = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface StatsBgpRouteResponse {
-  meta: BgpRoutesStatsResponseMeta;
+  meta: BgpRoutesMoasResponseMeta;
   stats: BgpRoutesStatsResponseStats;
 }
 export const StatsBgpRouteResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    meta: BgpRoutesStatsResponseMeta,
+    meta: BgpRoutesMoasResponseMeta,
     stats: BgpRoutesStatsResponseStats,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
@@ -71204,24 +67253,15 @@ export type AgentReadinessSummaryResponseMetaNormalization =
 export const AgentReadinessSummaryResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface AgentReadinessSummaryResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type AgentReadinessSummaryResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const AgentReadinessSummaryResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "AgentReadinessSummaryResponseMetaUnitsItem",
-  }) as any as S.Schema<AgentReadinessSummaryResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type AgentReadinessSummaryResponseMetaUnitsList =
-  Array<AgentReadinessSummaryResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const AgentReadinessSummaryResponseMetaUnitsList = /*@__PURE__*/ S.Array(
-  AgentReadinessSummaryResponseMetaUnitsItem,
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
 ) as any as S.Schema<AgentReadinessSummaryResponseMetaUnitsList>;
 
 export interface AgentReadinessSummaryResponseMeta {
@@ -71445,27 +67485,16 @@ export const AiMarkdownForAgentsSummaryResponseMetaConfidenceInfo =
     identifier: "AiMarkdownForAgentsSummaryResponseMetaConfidenceInfo",
   }) as any as S.Schema<AiMarkdownForAgentsSummaryResponseMetaConfidenceInfo>;
 
-export interface AiMarkdownForAgentsSummaryResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type AiMarkdownForAgentsSummaryResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const AiMarkdownForAgentsSummaryResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "AiMarkdownForAgentsSummaryResponseMetaDateRangeItem",
-  }) as any as S.Schema<AiMarkdownForAgentsSummaryResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type AiMarkdownForAgentsSummaryResponseMetaDateRangeList =
-  Array<AiMarkdownForAgentsSummaryResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const AiMarkdownForAgentsSummaryResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    AiMarkdownForAgentsSummaryResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<AiMarkdownForAgentsSummaryResponseMetaDateRangeList>;
 
 export type AiMarkdownForAgentsSummaryResponseMetaNormalization =
@@ -71480,25 +67509,16 @@ export type AiMarkdownForAgentsSummaryResponseMetaNormalization =
 export const AiMarkdownForAgentsSummaryResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface AiMarkdownForAgentsSummaryResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type AiMarkdownForAgentsSummaryResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const AiMarkdownForAgentsSummaryResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "AiMarkdownForAgentsSummaryResponseMetaUnitsItem",
-  }) as any as S.Schema<AiMarkdownForAgentsSummaryResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type AiMarkdownForAgentsSummaryResponseMetaUnitsList =
-  Array<AiMarkdownForAgentsSummaryResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const AiMarkdownForAgentsSummaryResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    AiMarkdownForAgentsSummaryResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<AiMarkdownForAgentsSummaryResponseMetaUnitsList>;
 
 export interface AiMarkdownForAgentsSummaryResponseMeta {
@@ -71847,26 +67867,15 @@ export const AiBotsSummaryV2ResponseMetaConfidenceInfo =
     identifier: "AiBotsSummaryV2ResponseMetaConfidenceInfo",
   }) as any as S.Schema<AiBotsSummaryV2ResponseMetaConfidenceInfo>;
 
-export interface AiBotsSummaryV2ResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
-export const AiBotsSummaryV2ResponseMetaDateRangeItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-).annotate({
-  identifier: "AiBotsSummaryV2ResponseMetaDateRangeItem",
-}) as any as S.Schema<AiBotsSummaryV2ResponseMetaDateRangeItem>;
+export type AiBotsSummaryV2ResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
+export const AiBotsSummaryV2ResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type AiBotsSummaryV2ResponseMetaDateRangeList =
-  Array<AiBotsSummaryV2ResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const AiBotsSummaryV2ResponseMetaDateRangeList = /*@__PURE__*/ S.Array(
-  AiBotsSummaryV2ResponseMetaDateRangeItem,
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
 ) as any as S.Schema<AiBotsSummaryV2ResponseMetaDateRangeList>;
 
 export type AiBotsSummaryV2ResponseMetaNormalization =
@@ -71880,24 +67889,15 @@ export type AiBotsSummaryV2ResponseMetaNormalization =
   | "RATIO";
 export const AiBotsSummaryV2ResponseMetaNormalization = /*@__PURE__*/ S.String;
 
-export interface AiBotsSummaryV2ResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
-export const AiBotsSummaryV2ResponseMetaUnitsItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-).annotate({
-  identifier: "AiBotsSummaryV2ResponseMetaUnitsItem",
-}) as any as S.Schema<AiBotsSummaryV2ResponseMetaUnitsItem>;
+export type AiBotsSummaryV2ResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
+export const AiBotsSummaryV2ResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type AiBotsSummaryV2ResponseMetaUnitsList =
-  Array<AiBotsSummaryV2ResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const AiBotsSummaryV2ResponseMetaUnitsList = /*@__PURE__*/ S.Array(
-  AiBotsSummaryV2ResponseMetaUnitsItem,
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
 ) as any as S.Schema<AiBotsSummaryV2ResponseMetaUnitsList>;
 
 export interface AiBotsSummaryV2ResponseMeta {
@@ -72211,26 +68211,15 @@ export const BotsSummaryResponseMetaConfidenceInfo = /*@__PURE__*/ S.suspend(
   identifier: "BotsSummaryResponseMetaConfidenceInfo",
 }) as any as S.Schema<BotsSummaryResponseMetaConfidenceInfo>;
 
-export interface BotsSummaryResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
-export const BotsSummaryResponseMetaDateRangeItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-).annotate({
-  identifier: "BotsSummaryResponseMetaDateRangeItem",
-}) as any as S.Schema<BotsSummaryResponseMetaDateRangeItem>;
+export type BotsSummaryResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
+export const BotsSummaryResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type BotsSummaryResponseMetaDateRangeList =
-  Array<BotsSummaryResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const BotsSummaryResponseMetaDateRangeList = /*@__PURE__*/ S.Array(
-  BotsSummaryResponseMetaDateRangeItem,
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
 ) as any as S.Schema<BotsSummaryResponseMetaDateRangeList>;
 
 export type BotsSummaryResponseMetaNormalization =
@@ -72244,23 +68233,15 @@ export type BotsSummaryResponseMetaNormalization =
   | "RATIO";
 export const BotsSummaryResponseMetaNormalization = /*@__PURE__*/ S.String;
 
-export interface BotsSummaryResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
-export const BotsSummaryResponseMetaUnitsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    value: S.String,
-  }),
-).annotate({
-  identifier: "BotsSummaryResponseMetaUnitsItem",
-}) as any as S.Schema<BotsSummaryResponseMetaUnitsItem>;
+export type BotsSummaryResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
+export const BotsSummaryResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type BotsSummaryResponseMetaUnitsList =
-  Array<BotsSummaryResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const BotsSummaryResponseMetaUnitsList = /*@__PURE__*/ S.Array(
-  BotsSummaryResponseMetaUnitsItem,
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
 ) as any as S.Schema<BotsSummaryResponseMetaUnitsList>;
 
 export interface BotsSummaryResponseMeta {
@@ -72575,27 +68556,16 @@ export const BotsWebCrawlersSummaryResponseMetaConfidenceInfo =
     identifier: "BotsWebCrawlersSummaryResponseMetaConfidenceInfo",
   }) as any as S.Schema<BotsWebCrawlersSummaryResponseMetaConfidenceInfo>;
 
-export interface BotsWebCrawlersSummaryResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type BotsWebCrawlersSummaryResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const BotsWebCrawlersSummaryResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "BotsWebCrawlersSummaryResponseMetaDateRangeItem",
-  }) as any as S.Schema<BotsWebCrawlersSummaryResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type BotsWebCrawlersSummaryResponseMetaDateRangeList =
-  Array<BotsWebCrawlersSummaryResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const BotsWebCrawlersSummaryResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    BotsWebCrawlersSummaryResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<BotsWebCrawlersSummaryResponseMetaDateRangeList>;
 
 export type BotsWebCrawlersSummaryResponseMetaNormalization =
@@ -72610,25 +68580,16 @@ export type BotsWebCrawlersSummaryResponseMetaNormalization =
 export const BotsWebCrawlersSummaryResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface BotsWebCrawlersSummaryResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type BotsWebCrawlersSummaryResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const BotsWebCrawlersSummaryResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "BotsWebCrawlersSummaryResponseMetaUnitsItem",
-  }) as any as S.Schema<BotsWebCrawlersSummaryResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type BotsWebCrawlersSummaryResponseMetaUnitsList =
-  Array<BotsWebCrawlersSummaryResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const BotsWebCrawlersSummaryResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    BotsWebCrawlersSummaryResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<BotsWebCrawlersSummaryResponseMetaUnitsList>;
 
 export interface BotsWebCrawlersSummaryResponseMeta {
@@ -73053,25 +69014,15 @@ export const CtSummaryResponseMetaConfidenceInfo = /*@__PURE__*/ S.suspend(() =>
   identifier: "CtSummaryResponseMetaConfidenceInfo",
 }) as any as S.Schema<CtSummaryResponseMetaConfidenceInfo>;
 
-export interface CtSummaryResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
-export const CtSummaryResponseMetaDateRangeItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    endTime: S.String,
-    startTime: S.String,
-  }),
-).annotate({
-  identifier: "CtSummaryResponseMetaDateRangeItem",
-}) as any as S.Schema<CtSummaryResponseMetaDateRangeItem>;
+export type CtSummaryResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
+export const CtSummaryResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type CtSummaryResponseMetaDateRangeList =
-  Array<CtSummaryResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const CtSummaryResponseMetaDateRangeList = /*@__PURE__*/ S.Array(
-  CtSummaryResponseMetaDateRangeItem,
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
 ) as any as S.Schema<CtSummaryResponseMetaDateRangeList>;
 
 export type CtSummaryResponseMetaNormalization =
@@ -73085,23 +69036,15 @@ export type CtSummaryResponseMetaNormalization =
   | "RATIO";
 export const CtSummaryResponseMetaNormalization = /*@__PURE__*/ S.String;
 
-export interface CtSummaryResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
-export const CtSummaryResponseMetaUnitsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    value: S.String,
-  }),
-).annotate({
-  identifier: "CtSummaryResponseMetaUnitsItem",
-}) as any as S.Schema<CtSummaryResponseMetaUnitsItem>;
+export type CtSummaryResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
+export const CtSummaryResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type CtSummaryResponseMetaUnitsList =
-  Array<CtSummaryResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const CtSummaryResponseMetaUnitsList = /*@__PURE__*/ S.Array(
-  CtSummaryResponseMetaUnitsItem,
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
 ) as any as S.Schema<CtSummaryResponseMetaUnitsList>;
 
 export interface CtSummaryResponseMeta {
@@ -73467,26 +69410,15 @@ export const NetflowsSummaryResponseMetaConfidenceInfo =
     identifier: "NetflowsSummaryResponseMetaConfidenceInfo",
   }) as any as S.Schema<NetflowsSummaryResponseMetaConfidenceInfo>;
 
-export interface NetflowsSummaryResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
-export const NetflowsSummaryResponseMetaDateRangeItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-).annotate({
-  identifier: "NetflowsSummaryResponseMetaDateRangeItem",
-}) as any as S.Schema<NetflowsSummaryResponseMetaDateRangeItem>;
+export type NetflowsSummaryResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
+export const NetflowsSummaryResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type NetflowsSummaryResponseMetaDateRangeList =
-  Array<NetflowsSummaryResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const NetflowsSummaryResponseMetaDateRangeList = /*@__PURE__*/ S.Array(
-  NetflowsSummaryResponseMetaDateRangeItem,
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
 ) as any as S.Schema<NetflowsSummaryResponseMetaDateRangeList>;
 
 export type NetflowsSummaryResponseMetaNormalization =
@@ -73500,24 +69432,15 @@ export type NetflowsSummaryResponseMetaNormalization =
   | "RATIO";
 export const NetflowsSummaryResponseMetaNormalization = /*@__PURE__*/ S.String;
 
-export interface NetflowsSummaryResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
-export const NetflowsSummaryResponseMetaUnitsItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-).annotate({
-  identifier: "NetflowsSummaryResponseMetaUnitsItem",
-}) as any as S.Schema<NetflowsSummaryResponseMetaUnitsItem>;
+export type NetflowsSummaryResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
+export const NetflowsSummaryResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type NetflowsSummaryResponseMetaUnitsList =
-  Array<NetflowsSummaryResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const NetflowsSummaryResponseMetaUnitsList = /*@__PURE__*/ S.Array(
-  NetflowsSummaryResponseMetaUnitsItem,
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
 ) as any as S.Schema<NetflowsSummaryResponseMetaUnitsList>;
 
 export interface NetflowsSummaryResponseMeta {
@@ -73746,27 +69669,16 @@ export const PostQuantumOriginSummaryResponseMetaConfidenceInfo =
     identifier: "PostQuantumOriginSummaryResponseMetaConfidenceInfo",
   }) as any as S.Schema<PostQuantumOriginSummaryResponseMetaConfidenceInfo>;
 
-export interface PostQuantumOriginSummaryResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type PostQuantumOriginSummaryResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const PostQuantumOriginSummaryResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "PostQuantumOriginSummaryResponseMetaDateRangeItem",
-  }) as any as S.Schema<PostQuantumOriginSummaryResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type PostQuantumOriginSummaryResponseMetaDateRangeList =
-  Array<PostQuantumOriginSummaryResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const PostQuantumOriginSummaryResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    PostQuantumOriginSummaryResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<PostQuantumOriginSummaryResponseMetaDateRangeList>;
 
 export type PostQuantumOriginSummaryResponseMetaNormalization =
@@ -73781,25 +69693,16 @@ export type PostQuantumOriginSummaryResponseMetaNormalization =
 export const PostQuantumOriginSummaryResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface PostQuantumOriginSummaryResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type PostQuantumOriginSummaryResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const PostQuantumOriginSummaryResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "PostQuantumOriginSummaryResponseMetaUnitsItem",
-  }) as any as S.Schema<PostQuantumOriginSummaryResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type PostQuantumOriginSummaryResponseMetaUnitsList =
-  Array<PostQuantumOriginSummaryResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const PostQuantumOriginSummaryResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    PostQuantumOriginSummaryResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<PostQuantumOriginSummaryResponseMetaUnitsList>;
 
 export interface PostQuantumOriginSummaryResponseMeta {
@@ -74039,26 +69942,15 @@ export const QualityIqiSummaryResponseMetaConfidenceInfo =
     identifier: "QualityIqiSummaryResponseMetaConfidenceInfo",
   }) as any as S.Schema<QualityIqiSummaryResponseMetaConfidenceInfo>;
 
-export interface QualityIqiSummaryResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type QualityIqiSummaryResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const QualityIqiSummaryResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "QualityIqiSummaryResponseMetaDateRangeItem",
-  }) as any as S.Schema<QualityIqiSummaryResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type QualityIqiSummaryResponseMetaDateRangeList =
-  Array<QualityIqiSummaryResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const QualityIqiSummaryResponseMetaDateRangeList = /*@__PURE__*/ S.Array(
-  QualityIqiSummaryResponseMetaDateRangeItem,
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
 ) as any as S.Schema<QualityIqiSummaryResponseMetaDateRangeList>;
 
 export type QualityIqiSummaryResponseMetaNormalization =
@@ -74073,24 +69965,15 @@ export type QualityIqiSummaryResponseMetaNormalization =
 export const QualityIqiSummaryResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface QualityIqiSummaryResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
-export const QualityIqiSummaryResponseMetaUnitsItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-).annotate({
-  identifier: "QualityIqiSummaryResponseMetaUnitsItem",
-}) as any as S.Schema<QualityIqiSummaryResponseMetaUnitsItem>;
+export type QualityIqiSummaryResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
+export const QualityIqiSummaryResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type QualityIqiSummaryResponseMetaUnitsList =
-  Array<QualityIqiSummaryResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const QualityIqiSummaryResponseMetaUnitsList = /*@__PURE__*/ S.Array(
-  QualityIqiSummaryResponseMetaUnitsItem,
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
 ) as any as S.Schema<QualityIqiSummaryResponseMetaUnitsList>;
 
 export interface QualityIqiSummaryResponseMeta {
@@ -74311,27 +70194,16 @@ export const QualitySpeedSummaryResponseMetaConfidenceInfo =
     identifier: "QualitySpeedSummaryResponseMetaConfidenceInfo",
   }) as any as S.Schema<QualitySpeedSummaryResponseMetaConfidenceInfo>;
 
-export interface QualitySpeedSummaryResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type QualitySpeedSummaryResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const QualitySpeedSummaryResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "QualitySpeedSummaryResponseMetaDateRangeItem",
-  }) as any as S.Schema<QualitySpeedSummaryResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type QualitySpeedSummaryResponseMetaDateRangeList =
-  Array<QualitySpeedSummaryResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const QualitySpeedSummaryResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    QualitySpeedSummaryResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<QualitySpeedSummaryResponseMetaDateRangeList>;
 
 export type QualitySpeedSummaryResponseMetaNormalization =
@@ -74346,24 +70218,15 @@ export type QualitySpeedSummaryResponseMetaNormalization =
 export const QualitySpeedSummaryResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface QualitySpeedSummaryResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
-export const QualitySpeedSummaryResponseMetaUnitsItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-).annotate({
-  identifier: "QualitySpeedSummaryResponseMetaUnitsItem",
-}) as any as S.Schema<QualitySpeedSummaryResponseMetaUnitsItem>;
+export type QualitySpeedSummaryResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
+export const QualitySpeedSummaryResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type QualitySpeedSummaryResponseMetaUnitsList =
-  Array<QualitySpeedSummaryResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const QualitySpeedSummaryResponseMetaUnitsList = /*@__PURE__*/ S.Array(
-  QualitySpeedSummaryResponseMetaUnitsItem,
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
 ) as any as S.Schema<QualitySpeedSummaryResponseMetaUnitsList>;
 
 export interface QualitySpeedSummaryResponseMeta {
@@ -74624,27 +70487,16 @@ export const TcpResetsTimeoutsSummaryResponseMetaConfidenceInfo =
     identifier: "TcpResetsTimeoutsSummaryResponseMetaConfidenceInfo",
   }) as any as S.Schema<TcpResetsTimeoutsSummaryResponseMetaConfidenceInfo>;
 
-export interface TcpResetsTimeoutsSummaryResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type TcpResetsTimeoutsSummaryResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const TcpResetsTimeoutsSummaryResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "TcpResetsTimeoutsSummaryResponseMetaDateRangeItem",
-  }) as any as S.Schema<TcpResetsTimeoutsSummaryResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type TcpResetsTimeoutsSummaryResponseMetaDateRangeList =
-  Array<TcpResetsTimeoutsSummaryResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const TcpResetsTimeoutsSummaryResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    TcpResetsTimeoutsSummaryResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<TcpResetsTimeoutsSummaryResponseMetaDateRangeList>;
 
 export type TcpResetsTimeoutsSummaryResponseMetaNormalization =
@@ -74659,25 +70511,16 @@ export type TcpResetsTimeoutsSummaryResponseMetaNormalization =
 export const TcpResetsTimeoutsSummaryResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface TcpResetsTimeoutsSummaryResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type TcpResetsTimeoutsSummaryResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const TcpResetsTimeoutsSummaryResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "TcpResetsTimeoutsSummaryResponseMetaUnitsItem",
-  }) as any as S.Schema<TcpResetsTimeoutsSummaryResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type TcpResetsTimeoutsSummaryResponseMetaUnitsList =
-  Array<TcpResetsTimeoutsSummaryResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const TcpResetsTimeoutsSummaryResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    TcpResetsTimeoutsSummaryResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<TcpResetsTimeoutsSummaryResponseMetaUnitsList>;
 
 export interface TcpResetsTimeoutsSummaryResponseMeta {
@@ -74943,27 +70786,16 @@ export const AiInferenceSummaryV2ResponseMetaConfidenceInfo =
     identifier: "AiInferenceSummaryV2ResponseMetaConfidenceInfo",
   }) as any as S.Schema<AiInferenceSummaryV2ResponseMetaConfidenceInfo>;
 
-export interface AiInferenceSummaryV2ResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type AiInferenceSummaryV2ResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const AiInferenceSummaryV2ResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "AiInferenceSummaryV2ResponseMetaDateRangeItem",
-  }) as any as S.Schema<AiInferenceSummaryV2ResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type AiInferenceSummaryV2ResponseMetaDateRangeList =
-  Array<AiInferenceSummaryV2ResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const AiInferenceSummaryV2ResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    AiInferenceSummaryV2ResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<AiInferenceSummaryV2ResponseMetaDateRangeList>;
 
 export type AiInferenceSummaryV2ResponseMetaNormalization =
@@ -74978,24 +70810,15 @@ export type AiInferenceSummaryV2ResponseMetaNormalization =
 export const AiInferenceSummaryV2ResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface AiInferenceSummaryV2ResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type AiInferenceSummaryV2ResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const AiInferenceSummaryV2ResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "AiInferenceSummaryV2ResponseMetaUnitsItem",
-  }) as any as S.Schema<AiInferenceSummaryV2ResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type AiInferenceSummaryV2ResponseMetaUnitsList =
-  Array<AiInferenceSummaryV2ResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const AiInferenceSummaryV2ResponseMetaUnitsList = /*@__PURE__*/ S.Array(
-  AiInferenceSummaryV2ResponseMetaUnitsItem,
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
 ) as any as S.Schema<AiInferenceSummaryV2ResponseMetaUnitsList>;
 
 export interface AiInferenceSummaryV2ResponseMeta {
@@ -75380,26 +71203,15 @@ export const As112SummaryV2ResponseMetaConfidenceInfo = /*@__PURE__*/ S.suspend(
   identifier: "As112SummaryV2ResponseMetaConfidenceInfo",
 }) as any as S.Schema<As112SummaryV2ResponseMetaConfidenceInfo>;
 
-export interface As112SummaryV2ResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
-export const As112SummaryV2ResponseMetaDateRangeItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-).annotate({
-  identifier: "As112SummaryV2ResponseMetaDateRangeItem",
-}) as any as S.Schema<As112SummaryV2ResponseMetaDateRangeItem>;
+export type As112SummaryV2ResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
+export const As112SummaryV2ResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type As112SummaryV2ResponseMetaDateRangeList =
-  Array<As112SummaryV2ResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const As112SummaryV2ResponseMetaDateRangeList = /*@__PURE__*/ S.Array(
-  As112SummaryV2ResponseMetaDateRangeItem,
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
 ) as any as S.Schema<As112SummaryV2ResponseMetaDateRangeList>;
 
 export type As112SummaryV2ResponseMetaNormalization =
@@ -75413,23 +71225,15 @@ export type As112SummaryV2ResponseMetaNormalization =
   | "RATIO";
 export const As112SummaryV2ResponseMetaNormalization = /*@__PURE__*/ S.String;
 
-export interface As112SummaryV2ResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
-export const As112SummaryV2ResponseMetaUnitsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    value: S.String,
-  }),
-).annotate({
-  identifier: "As112SummaryV2ResponseMetaUnitsItem",
-}) as any as S.Schema<As112SummaryV2ResponseMetaUnitsItem>;
+export type As112SummaryV2ResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
+export const As112SummaryV2ResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type As112SummaryV2ResponseMetaUnitsList =
-  Array<As112SummaryV2ResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const As112SummaryV2ResponseMetaUnitsList = /*@__PURE__*/ S.Array(
-  As112SummaryV2ResponseMetaUnitsItem,
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
 ) as any as S.Schema<As112SummaryV2ResponseMetaUnitsList>;
 
 export interface As112SummaryV2ResponseMeta {
@@ -75721,27 +71525,16 @@ export const AttacksLayer3SummaryV2ResponseMetaConfidenceInfo =
     identifier: "AttacksLayer3SummaryV2ResponseMetaConfidenceInfo",
   }) as any as S.Schema<AttacksLayer3SummaryV2ResponseMetaConfidenceInfo>;
 
-export interface AttacksLayer3SummaryV2ResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type AttacksLayer3SummaryV2ResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const AttacksLayer3SummaryV2ResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "AttacksLayer3SummaryV2ResponseMetaDateRangeItem",
-  }) as any as S.Schema<AttacksLayer3SummaryV2ResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type AttacksLayer3SummaryV2ResponseMetaDateRangeList =
-  Array<AttacksLayer3SummaryV2ResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const AttacksLayer3SummaryV2ResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    AttacksLayer3SummaryV2ResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<AttacksLayer3SummaryV2ResponseMetaDateRangeList>;
 
 export type AttacksLayer3SummaryV2ResponseMetaNormalization =
@@ -75756,25 +71549,16 @@ export type AttacksLayer3SummaryV2ResponseMetaNormalization =
 export const AttacksLayer3SummaryV2ResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface AttacksLayer3SummaryV2ResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type AttacksLayer3SummaryV2ResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const AttacksLayer3SummaryV2ResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "AttacksLayer3SummaryV2ResponseMetaUnitsItem",
-  }) as any as S.Schema<AttacksLayer3SummaryV2ResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type AttacksLayer3SummaryV2ResponseMetaUnitsList =
-  Array<AttacksLayer3SummaryV2ResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const AttacksLayer3SummaryV2ResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    AttacksLayer3SummaryV2ResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<AttacksLayer3SummaryV2ResponseMetaUnitsList>;
 
 export interface AttacksLayer3SummaryV2ResponseMeta {
@@ -76152,27 +71936,16 @@ export const AttacksLayer7SummaryV2ResponseMetaConfidenceInfo =
     identifier: "AttacksLayer7SummaryV2ResponseMetaConfidenceInfo",
   }) as any as S.Schema<AttacksLayer7SummaryV2ResponseMetaConfidenceInfo>;
 
-export interface AttacksLayer7SummaryV2ResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type AttacksLayer7SummaryV2ResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const AttacksLayer7SummaryV2ResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "AttacksLayer7SummaryV2ResponseMetaDateRangeItem",
-  }) as any as S.Schema<AttacksLayer7SummaryV2ResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type AttacksLayer7SummaryV2ResponseMetaDateRangeList =
-  Array<AttacksLayer7SummaryV2ResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const AttacksLayer7SummaryV2ResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    AttacksLayer7SummaryV2ResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<AttacksLayer7SummaryV2ResponseMetaDateRangeList>;
 
 export type AttacksLayer7SummaryV2ResponseMetaNormalization =
@@ -76187,25 +71960,16 @@ export type AttacksLayer7SummaryV2ResponseMetaNormalization =
 export const AttacksLayer7SummaryV2ResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface AttacksLayer7SummaryV2ResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type AttacksLayer7SummaryV2ResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const AttacksLayer7SummaryV2ResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "AttacksLayer7SummaryV2ResponseMetaUnitsItem",
-  }) as any as S.Schema<AttacksLayer7SummaryV2ResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type AttacksLayer7SummaryV2ResponseMetaUnitsList =
-  Array<AttacksLayer7SummaryV2ResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const AttacksLayer7SummaryV2ResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    AttacksLayer7SummaryV2ResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<AttacksLayer7SummaryV2ResponseMetaUnitsList>;
 
 export interface AttacksLayer7SummaryV2ResponseMeta {
@@ -76708,26 +72472,15 @@ export const DnsSummaryV2ResponseMetaConfidenceInfo = /*@__PURE__*/ S.suspend(
   identifier: "DnsSummaryV2ResponseMetaConfidenceInfo",
 }) as any as S.Schema<DnsSummaryV2ResponseMetaConfidenceInfo>;
 
-export interface DnsSummaryV2ResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
-export const DnsSummaryV2ResponseMetaDateRangeItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-).annotate({
-  identifier: "DnsSummaryV2ResponseMetaDateRangeItem",
-}) as any as S.Schema<DnsSummaryV2ResponseMetaDateRangeItem>;
+export type DnsSummaryV2ResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
+export const DnsSummaryV2ResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type DnsSummaryV2ResponseMetaDateRangeList =
-  Array<DnsSummaryV2ResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const DnsSummaryV2ResponseMetaDateRangeList = /*@__PURE__*/ S.Array(
-  DnsSummaryV2ResponseMetaDateRangeItem,
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
 ) as any as S.Schema<DnsSummaryV2ResponseMetaDateRangeList>;
 
 export type DnsSummaryV2ResponseMetaNormalization =
@@ -76741,23 +72494,15 @@ export type DnsSummaryV2ResponseMetaNormalization =
   | "RATIO";
 export const DnsSummaryV2ResponseMetaNormalization = /*@__PURE__*/ S.String;
 
-export interface DnsSummaryV2ResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
-export const DnsSummaryV2ResponseMetaUnitsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    value: S.String,
-  }),
-).annotate({
-  identifier: "DnsSummaryV2ResponseMetaUnitsItem",
-}) as any as S.Schema<DnsSummaryV2ResponseMetaUnitsItem>;
+export type DnsSummaryV2ResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
+export const DnsSummaryV2ResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type DnsSummaryV2ResponseMetaUnitsList =
-  Array<DnsSummaryV2ResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const DnsSummaryV2ResponseMetaUnitsList = /*@__PURE__*/ S.Array(
-  DnsSummaryV2ResponseMetaUnitsItem,
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
 ) as any as S.Schema<DnsSummaryV2ResponseMetaUnitsList>;
 
 export interface DnsSummaryV2ResponseMeta {
@@ -77070,27 +72815,16 @@ export const EmailRoutingSummaryV2ResponseMetaConfidenceInfo =
     identifier: "EmailRoutingSummaryV2ResponseMetaConfidenceInfo",
   }) as any as S.Schema<EmailRoutingSummaryV2ResponseMetaConfidenceInfo>;
 
-export interface EmailRoutingSummaryV2ResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type EmailRoutingSummaryV2ResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const EmailRoutingSummaryV2ResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "EmailRoutingSummaryV2ResponseMetaDateRangeItem",
-  }) as any as S.Schema<EmailRoutingSummaryV2ResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type EmailRoutingSummaryV2ResponseMetaDateRangeList =
-  Array<EmailRoutingSummaryV2ResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const EmailRoutingSummaryV2ResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    EmailRoutingSummaryV2ResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<EmailRoutingSummaryV2ResponseMetaDateRangeList>;
 
 export type EmailRoutingSummaryV2ResponseMetaNormalization =
@@ -77105,24 +72839,15 @@ export type EmailRoutingSummaryV2ResponseMetaNormalization =
 export const EmailRoutingSummaryV2ResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface EmailRoutingSummaryV2ResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type EmailRoutingSummaryV2ResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const EmailRoutingSummaryV2ResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "EmailRoutingSummaryV2ResponseMetaUnitsItem",
-  }) as any as S.Schema<EmailRoutingSummaryV2ResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type EmailRoutingSummaryV2ResponseMetaUnitsList =
-  Array<EmailRoutingSummaryV2ResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const EmailRoutingSummaryV2ResponseMetaUnitsList = /*@__PURE__*/ S.Array(
-  EmailRoutingSummaryV2ResponseMetaUnitsItem,
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
 ) as any as S.Schema<EmailRoutingSummaryV2ResponseMetaUnitsList>;
 
 export interface EmailRoutingSummaryV2ResponseMeta {
@@ -77426,27 +73151,16 @@ export const EmailSecuritySummaryV2ResponseMetaConfidenceInfo =
     identifier: "EmailSecuritySummaryV2ResponseMetaConfidenceInfo",
   }) as any as S.Schema<EmailSecuritySummaryV2ResponseMetaConfidenceInfo>;
 
-export interface EmailSecuritySummaryV2ResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type EmailSecuritySummaryV2ResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const EmailSecuritySummaryV2ResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "EmailSecuritySummaryV2ResponseMetaDateRangeItem",
-  }) as any as S.Schema<EmailSecuritySummaryV2ResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type EmailSecuritySummaryV2ResponseMetaDateRangeList =
-  Array<EmailSecuritySummaryV2ResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const EmailSecuritySummaryV2ResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    EmailSecuritySummaryV2ResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<EmailSecuritySummaryV2ResponseMetaDateRangeList>;
 
 export type EmailSecuritySummaryV2ResponseMetaNormalization =
@@ -77461,25 +73175,16 @@ export type EmailSecuritySummaryV2ResponseMetaNormalization =
 export const EmailSecuritySummaryV2ResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface EmailSecuritySummaryV2ResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type EmailSecuritySummaryV2ResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const EmailSecuritySummaryV2ResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "EmailSecuritySummaryV2ResponseMetaUnitsItem",
-  }) as any as S.Schema<EmailSecuritySummaryV2ResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type EmailSecuritySummaryV2ResponseMetaUnitsList =
-  Array<EmailSecuritySummaryV2ResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const EmailSecuritySummaryV2ResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    EmailSecuritySummaryV2ResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<EmailSecuritySummaryV2ResponseMetaUnitsList>;
 
 export interface EmailSecuritySummaryV2ResponseMeta {
@@ -77892,26 +73597,15 @@ export const HttpSummaryV2ResponseMetaConfidenceInfo = /*@__PURE__*/ S.suspend(
   identifier: "HttpSummaryV2ResponseMetaConfidenceInfo",
 }) as any as S.Schema<HttpSummaryV2ResponseMetaConfidenceInfo>;
 
-export interface HttpSummaryV2ResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
-export const HttpSummaryV2ResponseMetaDateRangeItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-).annotate({
-  identifier: "HttpSummaryV2ResponseMetaDateRangeItem",
-}) as any as S.Schema<HttpSummaryV2ResponseMetaDateRangeItem>;
+export type HttpSummaryV2ResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
+export const HttpSummaryV2ResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type HttpSummaryV2ResponseMetaDateRangeList =
-  Array<HttpSummaryV2ResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const HttpSummaryV2ResponseMetaDateRangeList = /*@__PURE__*/ S.Array(
-  HttpSummaryV2ResponseMetaDateRangeItem,
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
 ) as any as S.Schema<HttpSummaryV2ResponseMetaDateRangeList>;
 
 export type HttpSummaryV2ResponseMetaNormalization =
@@ -77925,23 +73619,15 @@ export type HttpSummaryV2ResponseMetaNormalization =
   | "RATIO";
 export const HttpSummaryV2ResponseMetaNormalization = /*@__PURE__*/ S.String;
 
-export interface HttpSummaryV2ResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
-export const HttpSummaryV2ResponseMetaUnitsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    value: S.String,
-  }),
-).annotate({
-  identifier: "HttpSummaryV2ResponseMetaUnitsItem",
-}) as any as S.Schema<HttpSummaryV2ResponseMetaUnitsItem>;
+export type HttpSummaryV2ResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
+export const HttpSummaryV2ResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type HttpSummaryV2ResponseMetaUnitsList =
-  Array<HttpSummaryV2ResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const HttpSummaryV2ResponseMetaUnitsList = /*@__PURE__*/ S.Array(
-  HttpSummaryV2ResponseMetaUnitsItem,
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
 ) as any as S.Schema<HttpSummaryV2ResponseMetaUnitsList>;
 
 export interface HttpSummaryV2ResponseMeta {
@@ -78237,27 +73923,16 @@ export const LeakedCredentialsSummaryV2ResponseMetaConfidenceInfo =
     identifier: "LeakedCredentialsSummaryV2ResponseMetaConfidenceInfo",
   }) as any as S.Schema<LeakedCredentialsSummaryV2ResponseMetaConfidenceInfo>;
 
-export interface LeakedCredentialsSummaryV2ResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type LeakedCredentialsSummaryV2ResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const LeakedCredentialsSummaryV2ResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "LeakedCredentialsSummaryV2ResponseMetaDateRangeItem",
-  }) as any as S.Schema<LeakedCredentialsSummaryV2ResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type LeakedCredentialsSummaryV2ResponseMetaDateRangeList =
-  Array<LeakedCredentialsSummaryV2ResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const LeakedCredentialsSummaryV2ResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    LeakedCredentialsSummaryV2ResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<LeakedCredentialsSummaryV2ResponseMetaDateRangeList>;
 
 export type LeakedCredentialsSummaryV2ResponseMetaNormalization =
@@ -78272,25 +73947,16 @@ export type LeakedCredentialsSummaryV2ResponseMetaNormalization =
 export const LeakedCredentialsSummaryV2ResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface LeakedCredentialsSummaryV2ResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type LeakedCredentialsSummaryV2ResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const LeakedCredentialsSummaryV2ResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "LeakedCredentialsSummaryV2ResponseMetaUnitsItem",
-  }) as any as S.Schema<LeakedCredentialsSummaryV2ResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type LeakedCredentialsSummaryV2ResponseMetaUnitsList =
-  Array<LeakedCredentialsSummaryV2ResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const LeakedCredentialsSummaryV2ResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    LeakedCredentialsSummaryV2ResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<LeakedCredentialsSummaryV2ResponseMetaUnitsList>;
 
 export interface LeakedCredentialsSummaryV2ResponseMeta {
@@ -78562,26 +74228,15 @@ export const NetflowsSummaryV2ResponseMetaConfidenceInfo =
     identifier: "NetflowsSummaryV2ResponseMetaConfidenceInfo",
   }) as any as S.Schema<NetflowsSummaryV2ResponseMetaConfidenceInfo>;
 
-export interface NetflowsSummaryV2ResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type NetflowsSummaryV2ResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const NetflowsSummaryV2ResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "NetflowsSummaryV2ResponseMetaDateRangeItem",
-  }) as any as S.Schema<NetflowsSummaryV2ResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type NetflowsSummaryV2ResponseMetaDateRangeList =
-  Array<NetflowsSummaryV2ResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const NetflowsSummaryV2ResponseMetaDateRangeList = /*@__PURE__*/ S.Array(
-  NetflowsSummaryV2ResponseMetaDateRangeItem,
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
 ) as any as S.Schema<NetflowsSummaryV2ResponseMetaDateRangeList>;
 
 export type NetflowsSummaryV2ResponseMetaNormalization =
@@ -78596,24 +74251,15 @@ export type NetflowsSummaryV2ResponseMetaNormalization =
 export const NetflowsSummaryV2ResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface NetflowsSummaryV2ResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
-export const NetflowsSummaryV2ResponseMetaUnitsItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-).annotate({
-  identifier: "NetflowsSummaryV2ResponseMetaUnitsItem",
-}) as any as S.Schema<NetflowsSummaryV2ResponseMetaUnitsItem>;
+export type NetflowsSummaryV2ResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
+export const NetflowsSummaryV2ResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type NetflowsSummaryV2ResponseMetaUnitsList =
-  Array<NetflowsSummaryV2ResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const NetflowsSummaryV2ResponseMetaUnitsList = /*@__PURE__*/ S.Array(
-  NetflowsSummaryV2ResponseMetaUnitsItem,
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
 ) as any as S.Schema<NetflowsSummaryV2ResponseMetaUnitsList>;
 
 export interface NetflowsSummaryV2ResponseMeta {
@@ -78962,27 +74608,16 @@ export const AttacksLayer3TopLocationsTargetResponseMetaConfidenceInfo =
     identifier: "AttacksLayer3TopLocationsTargetResponseMetaConfidenceInfo",
   }) as any as S.Schema<AttacksLayer3TopLocationsTargetResponseMetaConfidenceInfo>;
 
-export interface AttacksLayer3TopLocationsTargetResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type AttacksLayer3TopLocationsTargetResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const AttacksLayer3TopLocationsTargetResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "AttacksLayer3TopLocationsTargetResponseMetaDateRangeItem",
-  }) as any as S.Schema<AttacksLayer3TopLocationsTargetResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type AttacksLayer3TopLocationsTargetResponseMetaDateRangeList =
-  Array<AttacksLayer3TopLocationsTargetResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const AttacksLayer3TopLocationsTargetResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    AttacksLayer3TopLocationsTargetResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<AttacksLayer3TopLocationsTargetResponseMetaDateRangeList>;
 
 export type AttacksLayer3TopLocationsTargetResponseMetaNormalization =
@@ -78997,25 +74632,16 @@ export type AttacksLayer3TopLocationsTargetResponseMetaNormalization =
 export const AttacksLayer3TopLocationsTargetResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface AttacksLayer3TopLocationsTargetResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type AttacksLayer3TopLocationsTargetResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const AttacksLayer3TopLocationsTargetResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "AttacksLayer3TopLocationsTargetResponseMetaUnitsItem",
-  }) as any as S.Schema<AttacksLayer3TopLocationsTargetResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type AttacksLayer3TopLocationsTargetResponseMetaUnitsList =
-  Array<AttacksLayer3TopLocationsTargetResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const AttacksLayer3TopLocationsTargetResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    AttacksLayer3TopLocationsTargetResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<AttacksLayer3TopLocationsTargetResponseMetaUnitsList>;
 
 export interface AttacksLayer3TopLocationsTargetResponseMeta {
@@ -79298,27 +74924,16 @@ export const AttacksLayer7TopLocationsTargetResponseMetaConfidenceInfo =
     identifier: "AttacksLayer7TopLocationsTargetResponseMetaConfidenceInfo",
   }) as any as S.Schema<AttacksLayer7TopLocationsTargetResponseMetaConfidenceInfo>;
 
-export interface AttacksLayer7TopLocationsTargetResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type AttacksLayer7TopLocationsTargetResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const AttacksLayer7TopLocationsTargetResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "AttacksLayer7TopLocationsTargetResponseMetaDateRangeItem",
-  }) as any as S.Schema<AttacksLayer7TopLocationsTargetResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type AttacksLayer7TopLocationsTargetResponseMetaDateRangeList =
-  Array<AttacksLayer7TopLocationsTargetResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const AttacksLayer7TopLocationsTargetResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    AttacksLayer7TopLocationsTargetResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<AttacksLayer7TopLocationsTargetResponseMetaDateRangeList>;
 
 export type AttacksLayer7TopLocationsTargetResponseMetaNormalization =
@@ -79333,25 +74948,16 @@ export type AttacksLayer7TopLocationsTargetResponseMetaNormalization =
 export const AttacksLayer7TopLocationsTargetResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface AttacksLayer7TopLocationsTargetResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type AttacksLayer7TopLocationsTargetResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const AttacksLayer7TopLocationsTargetResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "AttacksLayer7TopLocationsTargetResponseMetaUnitsItem",
-  }) as any as S.Schema<AttacksLayer7TopLocationsTargetResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type AttacksLayer7TopLocationsTargetResponseMetaUnitsList =
-  Array<AttacksLayer7TopLocationsTargetResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const AttacksLayer7TopLocationsTargetResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    AttacksLayer7TopLocationsTargetResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<AttacksLayer7TopLocationsTargetResponseMetaUnitsList>;
 
 export interface AttacksLayer7TopLocationsTargetResponseMeta {
@@ -79377,29 +74983,16 @@ export const AttacksLayer7TopLocationsTargetResponseMeta =
     identifier: "AttacksLayer7TopLocationsTargetResponseMeta",
   }) as any as S.Schema<AttacksLayer7TopLocationsTargetResponseMeta>;
 
-export interface AttacksLayer7TopLocationsTargetResponseTop0Item {
-  rank: number;
-  targetCountryAlpha2: string;
-  targetCountryName: string;
-  value: string;
-}
+export type AttacksLayer7TopLocationsTargetResponseTop0Item =
+  AttacksLayer3TopLocationsTargetResponseTop0Item;
 export const AttacksLayer7TopLocationsTargetResponseTop0Item =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      rank: S.Number,
-      targetCountryAlpha2: S.String,
-      targetCountryName: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "AttacksLayer7TopLocationsTargetResponseTop0Item",
-  }) as any as S.Schema<AttacksLayer7TopLocationsTargetResponseTop0Item>;
+  AttacksLayer3TopLocationsTargetResponseTop0Item;
 
 export type AttacksLayer7TopLocationsTargetResponseTop0List =
-  Array<AttacksLayer7TopLocationsTargetResponseTop0Item>;
+  Array<AttacksLayer3TopLocationsTargetResponseTop0Item>;
 export const AttacksLayer7TopLocationsTargetResponseTop0List =
   /*@__PURE__*/ S.Array(
-    AttacksLayer7TopLocationsTargetResponseTop0Item,
+    AttacksLayer3TopLocationsTargetResponseTop0Item,
   ) as any as S.Schema<AttacksLayer7TopLocationsTargetResponseTop0List>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -79587,27 +75180,16 @@ export const AiInferenceSummaryTaskResponseMetaConfidenceInfo =
     identifier: "AiInferenceSummaryTaskResponseMetaConfidenceInfo",
   }) as any as S.Schema<AiInferenceSummaryTaskResponseMetaConfidenceInfo>;
 
-export interface AiInferenceSummaryTaskResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type AiInferenceSummaryTaskResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const AiInferenceSummaryTaskResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "AiInferenceSummaryTaskResponseMetaDateRangeItem",
-  }) as any as S.Schema<AiInferenceSummaryTaskResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type AiInferenceSummaryTaskResponseMetaDateRangeList =
-  Array<AiInferenceSummaryTaskResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const AiInferenceSummaryTaskResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    AiInferenceSummaryTaskResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<AiInferenceSummaryTaskResponseMetaDateRangeList>;
 
 export type AiInferenceSummaryTaskResponseMetaNormalization =
@@ -79622,25 +75204,16 @@ export type AiInferenceSummaryTaskResponseMetaNormalization =
 export const AiInferenceSummaryTaskResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface AiInferenceSummaryTaskResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type AiInferenceSummaryTaskResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const AiInferenceSummaryTaskResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "AiInferenceSummaryTaskResponseMetaUnitsItem",
-  }) as any as S.Schema<AiInferenceSummaryTaskResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type AiInferenceSummaryTaskResponseMetaUnitsList =
-  Array<AiInferenceSummaryTaskResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const AiInferenceSummaryTaskResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    AiInferenceSummaryTaskResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<AiInferenceSummaryTaskResponseMetaUnitsList>;
 
 export interface AiInferenceSummaryTaskResponseMeta {
@@ -79906,28 +75479,16 @@ export const AiInferenceTimeseriesGroupsSummaryTaskResponseMetaConfidenceInfo =
       "AiInferenceTimeseriesGroupsSummaryTaskResponseMetaConfidenceInfo",
   }) as any as S.Schema<AiInferenceTimeseriesGroupsSummaryTaskResponseMetaConfidenceInfo>;
 
-export interface AiInferenceTimeseriesGroupsSummaryTaskResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type AiInferenceTimeseriesGroupsSummaryTaskResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const AiInferenceTimeseriesGroupsSummaryTaskResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "AiInferenceTimeseriesGroupsSummaryTaskResponseMetaDateRangeItem",
-  }) as any as S.Schema<AiInferenceTimeseriesGroupsSummaryTaskResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type AiInferenceTimeseriesGroupsSummaryTaskResponseMetaDateRangeList =
-  Array<AiInferenceTimeseriesGroupsSummaryTaskResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const AiInferenceTimeseriesGroupsSummaryTaskResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    AiInferenceTimeseriesGroupsSummaryTaskResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<AiInferenceTimeseriesGroupsSummaryTaskResponseMetaDateRangeList>;
 
 export type AiInferenceTimeseriesGroupsSummaryTaskResponseMetaNormalization =
@@ -79942,25 +75503,16 @@ export type AiInferenceTimeseriesGroupsSummaryTaskResponseMetaNormalization =
 export const AiInferenceTimeseriesGroupsSummaryTaskResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface AiInferenceTimeseriesGroupsSummaryTaskResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type AiInferenceTimeseriesGroupsSummaryTaskResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const AiInferenceTimeseriesGroupsSummaryTaskResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "AiInferenceTimeseriesGroupsSummaryTaskResponseMetaUnitsItem",
-  }) as any as S.Schema<AiInferenceTimeseriesGroupsSummaryTaskResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type AiInferenceTimeseriesGroupsSummaryTaskResponseMetaUnitsList =
-  Array<AiInferenceTimeseriesGroupsSummaryTaskResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const AiInferenceTimeseriesGroupsSummaryTaskResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    AiInferenceTimeseriesGroupsSummaryTaskResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<AiInferenceTimeseriesGroupsSummaryTaskResponseMetaUnitsList>;
 
 export interface AiInferenceTimeseriesGroupsSummaryTaskResponseMeta {
@@ -80309,27 +75861,16 @@ export const EmailSecuritySummaryThreatCategoryResponseMetaConfidenceInfo =
     identifier: "EmailSecuritySummaryThreatCategoryResponseMetaConfidenceInfo",
   }) as any as S.Schema<EmailSecuritySummaryThreatCategoryResponseMetaConfidenceInfo>;
 
-export interface EmailSecuritySummaryThreatCategoryResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type EmailSecuritySummaryThreatCategoryResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const EmailSecuritySummaryThreatCategoryResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "EmailSecuritySummaryThreatCategoryResponseMetaDateRangeItem",
-  }) as any as S.Schema<EmailSecuritySummaryThreatCategoryResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type EmailSecuritySummaryThreatCategoryResponseMetaDateRangeList =
-  Array<EmailSecuritySummaryThreatCategoryResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const EmailSecuritySummaryThreatCategoryResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    EmailSecuritySummaryThreatCategoryResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<EmailSecuritySummaryThreatCategoryResponseMetaDateRangeList>;
 
 export type EmailSecuritySummaryThreatCategoryResponseMetaNormalization =
@@ -80344,25 +75885,16 @@ export type EmailSecuritySummaryThreatCategoryResponseMetaNormalization =
 export const EmailSecuritySummaryThreatCategoryResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface EmailSecuritySummaryThreatCategoryResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type EmailSecuritySummaryThreatCategoryResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const EmailSecuritySummaryThreatCategoryResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "EmailSecuritySummaryThreatCategoryResponseMetaUnitsItem",
-  }) as any as S.Schema<EmailSecuritySummaryThreatCategoryResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type EmailSecuritySummaryThreatCategoryResponseMetaUnitsList =
-  Array<EmailSecuritySummaryThreatCategoryResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const EmailSecuritySummaryThreatCategoryResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    EmailSecuritySummaryThreatCategoryResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<EmailSecuritySummaryThreatCategoryResponseMetaUnitsList>;
 
 export interface EmailSecuritySummaryThreatCategoryResponseMeta {
@@ -80757,28 +76289,16 @@ export const EmailSecurityTimeseriesGroupsThreatCategoryResponseMetaConfidenceIn
       "EmailSecurityTimeseriesGroupsThreatCategoryResponseMetaConfidenceInfo",
   }) as any as S.Schema<EmailSecurityTimeseriesGroupsThreatCategoryResponseMetaConfidenceInfo>;
 
-export interface EmailSecurityTimeseriesGroupsThreatCategoryResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type EmailSecurityTimeseriesGroupsThreatCategoryResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const EmailSecurityTimeseriesGroupsThreatCategoryResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "EmailSecurityTimeseriesGroupsThreatCategoryResponseMetaDateRangeItem",
-  }) as any as S.Schema<EmailSecurityTimeseriesGroupsThreatCategoryResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type EmailSecurityTimeseriesGroupsThreatCategoryResponseMetaDateRangeList =
-  Array<EmailSecurityTimeseriesGroupsThreatCategoryResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const EmailSecurityTimeseriesGroupsThreatCategoryResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    EmailSecurityTimeseriesGroupsThreatCategoryResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<EmailSecurityTimeseriesGroupsThreatCategoryResponseMetaDateRangeList>;
 
 export type EmailSecurityTimeseriesGroupsThreatCategoryResponseMetaNormalization =
@@ -80793,26 +76313,16 @@ export type EmailSecurityTimeseriesGroupsThreatCategoryResponseMetaNormalization
 export const EmailSecurityTimeseriesGroupsThreatCategoryResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface EmailSecurityTimeseriesGroupsThreatCategoryResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type EmailSecurityTimeseriesGroupsThreatCategoryResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const EmailSecurityTimeseriesGroupsThreatCategoryResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "EmailSecurityTimeseriesGroupsThreatCategoryResponseMetaUnitsItem",
-  }) as any as S.Schema<EmailSecurityTimeseriesGroupsThreatCategoryResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type EmailSecurityTimeseriesGroupsThreatCategoryResponseMetaUnitsList =
-  Array<EmailSecurityTimeseriesGroupsThreatCategoryResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const EmailSecurityTimeseriesGroupsThreatCategoryResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    EmailSecurityTimeseriesGroupsThreatCategoryResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<EmailSecurityTimeseriesGroupsThreatCategoryResponseMetaUnitsList>;
 
 export interface EmailSecurityTimeseriesGroupsThreatCategoryResponseMeta {
@@ -81210,26 +76720,15 @@ export const AiBotsTimeseriesResponseMetaConfidenceInfo =
     identifier: "AiBotsTimeseriesResponseMetaConfidenceInfo",
   }) as any as S.Schema<AiBotsTimeseriesResponseMetaConfidenceInfo>;
 
-export interface AiBotsTimeseriesResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type AiBotsTimeseriesResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const AiBotsTimeseriesResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "AiBotsTimeseriesResponseMetaDateRangeItem",
-  }) as any as S.Schema<AiBotsTimeseriesResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type AiBotsTimeseriesResponseMetaDateRangeList =
-  Array<AiBotsTimeseriesResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const AiBotsTimeseriesResponseMetaDateRangeList = /*@__PURE__*/ S.Array(
-  AiBotsTimeseriesResponseMetaDateRangeItem,
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
 ) as any as S.Schema<AiBotsTimeseriesResponseMetaDateRangeList>;
 
 export type AiBotsTimeseriesResponseMetaNormalization =
@@ -81243,24 +76742,15 @@ export type AiBotsTimeseriesResponseMetaNormalization =
   | "RATIO";
 export const AiBotsTimeseriesResponseMetaNormalization = /*@__PURE__*/ S.String;
 
-export interface AiBotsTimeseriesResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
-export const AiBotsTimeseriesResponseMetaUnitsItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-).annotate({
-  identifier: "AiBotsTimeseriesResponseMetaUnitsItem",
-}) as any as S.Schema<AiBotsTimeseriesResponseMetaUnitsItem>;
+export type AiBotsTimeseriesResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
+export const AiBotsTimeseriesResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type AiBotsTimeseriesResponseMetaUnitsList =
-  Array<AiBotsTimeseriesResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const AiBotsTimeseriesResponseMetaUnitsList = /*@__PURE__*/ S.Array(
-  AiBotsTimeseriesResponseMetaUnitsItem,
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
 ) as any as S.Schema<AiBotsTimeseriesResponseMetaUnitsList>;
 
 export interface AiBotsTimeseriesResponseMeta {
@@ -81498,27 +76988,16 @@ export const AiMarkdownForAgentsTimeseriesResponseMetaConfidenceInfo =
     identifier: "AiMarkdownForAgentsTimeseriesResponseMetaConfidenceInfo",
   }) as any as S.Schema<AiMarkdownForAgentsTimeseriesResponseMetaConfidenceInfo>;
 
-export interface AiMarkdownForAgentsTimeseriesResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type AiMarkdownForAgentsTimeseriesResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const AiMarkdownForAgentsTimeseriesResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "AiMarkdownForAgentsTimeseriesResponseMetaDateRangeItem",
-  }) as any as S.Schema<AiMarkdownForAgentsTimeseriesResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type AiMarkdownForAgentsTimeseriesResponseMetaDateRangeList =
-  Array<AiMarkdownForAgentsTimeseriesResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const AiMarkdownForAgentsTimeseriesResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    AiMarkdownForAgentsTimeseriesResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<AiMarkdownForAgentsTimeseriesResponseMetaDateRangeList>;
 
 export type AiMarkdownForAgentsTimeseriesResponseMetaNormalization =
@@ -81533,25 +77012,16 @@ export type AiMarkdownForAgentsTimeseriesResponseMetaNormalization =
 export const AiMarkdownForAgentsTimeseriesResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface AiMarkdownForAgentsTimeseriesResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type AiMarkdownForAgentsTimeseriesResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const AiMarkdownForAgentsTimeseriesResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "AiMarkdownForAgentsTimeseriesResponseMetaUnitsItem",
-  }) as any as S.Schema<AiMarkdownForAgentsTimeseriesResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type AiMarkdownForAgentsTimeseriesResponseMetaUnitsList =
-  Array<AiMarkdownForAgentsTimeseriesResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const AiMarkdownForAgentsTimeseriesResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    AiMarkdownForAgentsTimeseriesResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<AiMarkdownForAgentsTimeseriesResponseMetaUnitsList>;
 
 export interface AiMarkdownForAgentsTimeseriesResponseMeta {
@@ -81924,26 +77394,15 @@ export const As112TimeseriesResponseMetaConfidenceInfo =
     identifier: "As112TimeseriesResponseMetaConfidenceInfo",
   }) as any as S.Schema<As112TimeseriesResponseMetaConfidenceInfo>;
 
-export interface As112TimeseriesResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
-export const As112TimeseriesResponseMetaDateRangeItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-).annotate({
-  identifier: "As112TimeseriesResponseMetaDateRangeItem",
-}) as any as S.Schema<As112TimeseriesResponseMetaDateRangeItem>;
+export type As112TimeseriesResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
+export const As112TimeseriesResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type As112TimeseriesResponseMetaDateRangeList =
-  Array<As112TimeseriesResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const As112TimeseriesResponseMetaDateRangeList = /*@__PURE__*/ S.Array(
-  As112TimeseriesResponseMetaDateRangeItem,
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
 ) as any as S.Schema<As112TimeseriesResponseMetaDateRangeList>;
 
 export type As112TimeseriesResponseMetaNormalization =
@@ -81957,24 +77416,15 @@ export type As112TimeseriesResponseMetaNormalization =
   | "RATIO";
 export const As112TimeseriesResponseMetaNormalization = /*@__PURE__*/ S.String;
 
-export interface As112TimeseriesResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
-export const As112TimeseriesResponseMetaUnitsItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-).annotate({
-  identifier: "As112TimeseriesResponseMetaUnitsItem",
-}) as any as S.Schema<As112TimeseriesResponseMetaUnitsItem>;
+export type As112TimeseriesResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
+export const As112TimeseriesResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type As112TimeseriesResponseMetaUnitsList =
-  Array<As112TimeseriesResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const As112TimeseriesResponseMetaUnitsList = /*@__PURE__*/ S.Array(
-  As112TimeseriesResponseMetaUnitsItem,
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
 ) as any as S.Schema<As112TimeseriesResponseMetaUnitsList>;
 
 export interface As112TimeseriesResponseMeta {
@@ -82293,27 +77743,16 @@ export const AttacksLayer3TimeseriesResponseMetaConfidenceInfo =
     identifier: "AttacksLayer3TimeseriesResponseMetaConfidenceInfo",
   }) as any as S.Schema<AttacksLayer3TimeseriesResponseMetaConfidenceInfo>;
 
-export interface AttacksLayer3TimeseriesResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type AttacksLayer3TimeseriesResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const AttacksLayer3TimeseriesResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "AttacksLayer3TimeseriesResponseMetaDateRangeItem",
-  }) as any as S.Schema<AttacksLayer3TimeseriesResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type AttacksLayer3TimeseriesResponseMetaDateRangeList =
-  Array<AttacksLayer3TimeseriesResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const AttacksLayer3TimeseriesResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    AttacksLayer3TimeseriesResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<AttacksLayer3TimeseriesResponseMetaDateRangeList>;
 
 export type AttacksLayer3TimeseriesResponseMetaNormalization =
@@ -82328,25 +77767,16 @@ export type AttacksLayer3TimeseriesResponseMetaNormalization =
 export const AttacksLayer3TimeseriesResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface AttacksLayer3TimeseriesResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type AttacksLayer3TimeseriesResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const AttacksLayer3TimeseriesResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "AttacksLayer3TimeseriesResponseMetaUnitsItem",
-  }) as any as S.Schema<AttacksLayer3TimeseriesResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type AttacksLayer3TimeseriesResponseMetaUnitsList =
-  Array<AttacksLayer3TimeseriesResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const AttacksLayer3TimeseriesResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    AttacksLayer3TimeseriesResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<AttacksLayer3TimeseriesResponseMetaUnitsList>;
 
 export interface AttacksLayer3TimeseriesResponseMeta {
@@ -82737,27 +78167,16 @@ export const AttacksLayer7TimeseriesResponseMetaConfidenceInfo =
     identifier: "AttacksLayer7TimeseriesResponseMetaConfidenceInfo",
   }) as any as S.Schema<AttacksLayer7TimeseriesResponseMetaConfidenceInfo>;
 
-export interface AttacksLayer7TimeseriesResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type AttacksLayer7TimeseriesResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const AttacksLayer7TimeseriesResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "AttacksLayer7TimeseriesResponseMetaDateRangeItem",
-  }) as any as S.Schema<AttacksLayer7TimeseriesResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type AttacksLayer7TimeseriesResponseMetaDateRangeList =
-  Array<AttacksLayer7TimeseriesResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const AttacksLayer7TimeseriesResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    AttacksLayer7TimeseriesResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<AttacksLayer7TimeseriesResponseMetaDateRangeList>;
 
 export type AttacksLayer7TimeseriesResponseMetaNormalization =
@@ -82772,25 +78191,16 @@ export type AttacksLayer7TimeseriesResponseMetaNormalization =
 export const AttacksLayer7TimeseriesResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface AttacksLayer7TimeseriesResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type AttacksLayer7TimeseriesResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const AttacksLayer7TimeseriesResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "AttacksLayer7TimeseriesResponseMetaUnitsItem",
-  }) as any as S.Schema<AttacksLayer7TimeseriesResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type AttacksLayer7TimeseriesResponseMetaUnitsList =
-  Array<AttacksLayer7TimeseriesResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const AttacksLayer7TimeseriesResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    AttacksLayer7TimeseriesResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<AttacksLayer7TimeseriesResponseMetaUnitsList>;
 
 export interface AttacksLayer7TimeseriesResponseMeta {
@@ -83049,26 +78459,15 @@ export const BgpTimeseriesResponseMetaConfidenceInfo = /*@__PURE__*/ S.suspend(
   identifier: "BgpTimeseriesResponseMetaConfidenceInfo",
 }) as any as S.Schema<BgpTimeseriesResponseMetaConfidenceInfo>;
 
-export interface BgpTimeseriesResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
-export const BgpTimeseriesResponseMetaDateRangeItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-).annotate({
-  identifier: "BgpTimeseriesResponseMetaDateRangeItem",
-}) as any as S.Schema<BgpTimeseriesResponseMetaDateRangeItem>;
+export type BgpTimeseriesResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
+export const BgpTimeseriesResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type BgpTimeseriesResponseMetaDateRangeList =
-  Array<BgpTimeseriesResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const BgpTimeseriesResponseMetaDateRangeList = /*@__PURE__*/ S.Array(
-  BgpTimeseriesResponseMetaDateRangeItem,
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
 ) as any as S.Schema<BgpTimeseriesResponseMetaDateRangeList>;
 
 export interface BgpTimeseriesResponseMeta {
@@ -83319,26 +78718,15 @@ export const BgpIpsTimeseriesResponseMetaConfidenceInfo =
     identifier: "BgpIpsTimeseriesResponseMetaConfidenceInfo",
   }) as any as S.Schema<BgpIpsTimeseriesResponseMetaConfidenceInfo>;
 
-export interface BgpIpsTimeseriesResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type BgpIpsTimeseriesResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const BgpIpsTimeseriesResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "BgpIpsTimeseriesResponseMetaDateRangeItem",
-  }) as any as S.Schema<BgpIpsTimeseriesResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type BgpIpsTimeseriesResponseMetaDateRangeList =
-  Array<BgpIpsTimeseriesResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const BgpIpsTimeseriesResponseMetaDateRangeList = /*@__PURE__*/ S.Array(
-  BgpIpsTimeseriesResponseMetaDateRangeItem,
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
 ) as any as S.Schema<BgpIpsTimeseriesResponseMetaDateRangeList>;
 
 export type BgpIpsTimeseriesResponseMetaNormalization =
@@ -83352,24 +78740,15 @@ export type BgpIpsTimeseriesResponseMetaNormalization =
   | "RATIO";
 export const BgpIpsTimeseriesResponseMetaNormalization = /*@__PURE__*/ S.String;
 
-export interface BgpIpsTimeseriesResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
-export const BgpIpsTimeseriesResponseMetaUnitsItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-).annotate({
-  identifier: "BgpIpsTimeseriesResponseMetaUnitsItem",
-}) as any as S.Schema<BgpIpsTimeseriesResponseMetaUnitsItem>;
+export type BgpIpsTimeseriesResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
+export const BgpIpsTimeseriesResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type BgpIpsTimeseriesResponseMetaUnitsList =
-  Array<BgpIpsTimeseriesResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const BgpIpsTimeseriesResponseMetaUnitsList = /*@__PURE__*/ S.Array(
-  BgpIpsTimeseriesResponseMetaUnitsItem,
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
 ) as any as S.Schema<BgpIpsTimeseriesResponseMetaUnitsList>;
 
 export interface BgpIpsTimeseriesResponseMetaDelayAsnDataLatest {
@@ -83595,20 +78974,8 @@ export const TimeseriesBgpRpkiAspaRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "TimeseriesBgpRpkiAspaRequest",
 }) as any as S.Schema<TimeseriesBgpRpkiAspaRequest>;
 
-export interface BgpRpkiAspaTimeseriesResponseMeta {
-  /** Timestamp of the underlying data. */
-  dataTime: string;
-  /** Timestamp when the query was executed. */
-  queryTime: string;
-}
-export const BgpRpkiAspaTimeseriesResponseMeta = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dataTime: S.String,
-    queryTime: S.String,
-  }),
-).annotate({
-  identifier: "BgpRpkiAspaTimeseriesResponseMeta",
-}) as any as S.Schema<BgpRpkiAspaTimeseriesResponseMeta>;
+export type BgpRpkiAspaTimeseriesResponseMeta = BgpRpkiAspaChangesResponseMeta;
+export const BgpRpkiAspaTimeseriesResponseMeta = BgpRpkiAspaChangesResponseMeta;
 
 export type BgpRpkiAspaTimeseriesResponseSerie0TimestampsList = Array<string>;
 export const BgpRpkiAspaTimeseriesResponseSerie0TimestampsList =
@@ -83637,12 +79004,12 @@ export const BgpRpkiAspaTimeseriesResponseSerie0 = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface TimeseriesBgpRpkiAspaResponse {
-  meta: BgpRpkiAspaTimeseriesResponseMeta;
+  meta: BgpRpkiAspaChangesResponseMeta;
   serie_0: BgpRpkiAspaTimeseriesResponseSerie0;
 }
 export const TimeseriesBgpRpkiAspaResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    meta: BgpRpkiAspaTimeseriesResponseMeta,
+    meta: BgpRpkiAspaChangesResponseMeta,
     serie_0: BgpRpkiAspaTimeseriesResponseSerie0,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
@@ -83716,20 +79083,8 @@ export const TimeseriesBgpRpkiRoaRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "TimeseriesBgpRpkiRoaRequest",
 }) as any as S.Schema<TimeseriesBgpRpkiRoaRequest>;
 
-export interface BgpRpkiRoasTimeseriesResponseMeta {
-  /** Timestamp of the underlying data. */
-  dataTime: string;
-  /** Timestamp when the query was executed. */
-  queryTime: string;
-}
-export const BgpRpkiRoasTimeseriesResponseMeta = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dataTime: S.String,
-    queryTime: S.String,
-  }),
-).annotate({
-  identifier: "BgpRpkiRoasTimeseriesResponseMeta",
-}) as any as S.Schema<BgpRpkiRoasTimeseriesResponseMeta>;
+export type BgpRpkiRoasTimeseriesResponseMeta = BgpRpkiAspaChangesResponseMeta;
+export const BgpRpkiRoasTimeseriesResponseMeta = BgpRpkiAspaChangesResponseMeta;
 
 export type BgpRpkiRoasTimeseriesResponseSerie0TimestampsList = Array<string>;
 export const BgpRpkiRoasTimeseriesResponseSerie0TimestampsList =
@@ -83758,12 +79113,12 @@ export const BgpRpkiRoasTimeseriesResponseSerie0 = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface TimeseriesBgpRpkiRoaResponse {
-  meta: BgpRpkiRoasTimeseriesResponseMeta;
+  meta: BgpRpkiAspaChangesResponseMeta;
   serie_0: BgpRpkiRoasTimeseriesResponseSerie0;
 }
 export const TimeseriesBgpRpkiRoaResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    meta: BgpRpkiRoasTimeseriesResponseMeta,
+    meta: BgpRpkiAspaChangesResponseMeta,
     serie_0: BgpRpkiRoasTimeseriesResponseSerie0,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
@@ -84039,26 +79394,15 @@ export const BotsTimeseriesResponseMetaConfidenceInfo = /*@__PURE__*/ S.suspend(
   identifier: "BotsTimeseriesResponseMetaConfidenceInfo",
 }) as any as S.Schema<BotsTimeseriesResponseMetaConfidenceInfo>;
 
-export interface BotsTimeseriesResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
-export const BotsTimeseriesResponseMetaDateRangeItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-).annotate({
-  identifier: "BotsTimeseriesResponseMetaDateRangeItem",
-}) as any as S.Schema<BotsTimeseriesResponseMetaDateRangeItem>;
+export type BotsTimeseriesResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
+export const BotsTimeseriesResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type BotsTimeseriesResponseMetaDateRangeList =
-  Array<BotsTimeseriesResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const BotsTimeseriesResponseMetaDateRangeList = /*@__PURE__*/ S.Array(
-  BotsTimeseriesResponseMetaDateRangeItem,
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
 ) as any as S.Schema<BotsTimeseriesResponseMetaDateRangeList>;
 
 export type BotsTimeseriesResponseMetaNormalization =
@@ -84072,23 +79416,15 @@ export type BotsTimeseriesResponseMetaNormalization =
   | "RATIO";
 export const BotsTimeseriesResponseMetaNormalization = /*@__PURE__*/ S.String;
 
-export interface BotsTimeseriesResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
-export const BotsTimeseriesResponseMetaUnitsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    value: S.String,
-  }),
-).annotate({
-  identifier: "BotsTimeseriesResponseMetaUnitsItem",
-}) as any as S.Schema<BotsTimeseriesResponseMetaUnitsItem>;
+export type BotsTimeseriesResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
+export const BotsTimeseriesResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type BotsTimeseriesResponseMetaUnitsList =
-  Array<BotsTimeseriesResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const BotsTimeseriesResponseMetaUnitsList = /*@__PURE__*/ S.Array(
-  BotsTimeseriesResponseMetaUnitsItem,
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
 ) as any as S.Schema<BotsTimeseriesResponseMetaUnitsList>;
 
 export interface BotsTimeseriesResponseMeta {
@@ -84489,26 +79825,15 @@ export const CtTimeseriesResponseMetaConfidenceInfo = /*@__PURE__*/ S.suspend(
   identifier: "CtTimeseriesResponseMetaConfidenceInfo",
 }) as any as S.Schema<CtTimeseriesResponseMetaConfidenceInfo>;
 
-export interface CtTimeseriesResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
-export const CtTimeseriesResponseMetaDateRangeItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-).annotate({
-  identifier: "CtTimeseriesResponseMetaDateRangeItem",
-}) as any as S.Schema<CtTimeseriesResponseMetaDateRangeItem>;
+export type CtTimeseriesResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
+export const CtTimeseriesResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type CtTimeseriesResponseMetaDateRangeList =
-  Array<CtTimeseriesResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const CtTimeseriesResponseMetaDateRangeList = /*@__PURE__*/ S.Array(
-  CtTimeseriesResponseMetaDateRangeItem,
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
 ) as any as S.Schema<CtTimeseriesResponseMetaDateRangeList>;
 
 export type CtTimeseriesResponseMetaNormalization =
@@ -84522,23 +79847,15 @@ export type CtTimeseriesResponseMetaNormalization =
   | "RATIO";
 export const CtTimeseriesResponseMetaNormalization = /*@__PURE__*/ S.String;
 
-export interface CtTimeseriesResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
-export const CtTimeseriesResponseMetaUnitsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    value: S.String,
-  }),
-).annotate({
-  identifier: "CtTimeseriesResponseMetaUnitsItem",
-}) as any as S.Schema<CtTimeseriesResponseMetaUnitsItem>;
+export type CtTimeseriesResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
+export const CtTimeseriesResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type CtTimeseriesResponseMetaUnitsList =
-  Array<CtTimeseriesResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const CtTimeseriesResponseMetaUnitsList = /*@__PURE__*/ S.Array(
-  CtTimeseriesResponseMetaUnitsItem,
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
 ) as any as S.Schema<CtTimeseriesResponseMetaUnitsList>;
 
 export interface CtTimeseriesResponseMeta {
@@ -85026,26 +80343,15 @@ export const DnsTimeseriesResponseMetaConfidenceInfo = /*@__PURE__*/ S.suspend(
   identifier: "DnsTimeseriesResponseMetaConfidenceInfo",
 }) as any as S.Schema<DnsTimeseriesResponseMetaConfidenceInfo>;
 
-export interface DnsTimeseriesResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
-export const DnsTimeseriesResponseMetaDateRangeItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-).annotate({
-  identifier: "DnsTimeseriesResponseMetaDateRangeItem",
-}) as any as S.Schema<DnsTimeseriesResponseMetaDateRangeItem>;
+export type DnsTimeseriesResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
+export const DnsTimeseriesResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type DnsTimeseriesResponseMetaDateRangeList =
-  Array<DnsTimeseriesResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const DnsTimeseriesResponseMetaDateRangeList = /*@__PURE__*/ S.Array(
-  DnsTimeseriesResponseMetaDateRangeItem,
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
 ) as any as S.Schema<DnsTimeseriesResponseMetaDateRangeList>;
 
 export type DnsTimeseriesResponseMetaNormalization =
@@ -85059,23 +80365,15 @@ export type DnsTimeseriesResponseMetaNormalization =
   | "RATIO";
 export const DnsTimeseriesResponseMetaNormalization = /*@__PURE__*/ S.String;
 
-export interface DnsTimeseriesResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
-export const DnsTimeseriesResponseMetaUnitsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    value: S.String,
-  }),
-).annotate({
-  identifier: "DnsTimeseriesResponseMetaUnitsItem",
-}) as any as S.Schema<DnsTimeseriesResponseMetaUnitsItem>;
+export type DnsTimeseriesResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
+export const DnsTimeseriesResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type DnsTimeseriesResponseMetaUnitsList =
-  Array<DnsTimeseriesResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const DnsTimeseriesResponseMetaUnitsList = /*@__PURE__*/ S.Array(
-  DnsTimeseriesResponseMetaUnitsItem,
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
 ) as any as S.Schema<DnsTimeseriesResponseMetaUnitsList>;
 
 export interface DnsTimeseriesResponseMeta {
@@ -85465,27 +80763,16 @@ export const AiBotsTimeseriesGroupsResponseMetaConfidenceInfo =
     identifier: "AiBotsTimeseriesGroupsResponseMetaConfidenceInfo",
   }) as any as S.Schema<AiBotsTimeseriesGroupsResponseMetaConfidenceInfo>;
 
-export interface AiBotsTimeseriesGroupsResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type AiBotsTimeseriesGroupsResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const AiBotsTimeseriesGroupsResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "AiBotsTimeseriesGroupsResponseMetaDateRangeItem",
-  }) as any as S.Schema<AiBotsTimeseriesGroupsResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type AiBotsTimeseriesGroupsResponseMetaDateRangeList =
-  Array<AiBotsTimeseriesGroupsResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const AiBotsTimeseriesGroupsResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    AiBotsTimeseriesGroupsResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<AiBotsTimeseriesGroupsResponseMetaDateRangeList>;
 
 export type AiBotsTimeseriesGroupsResponseMetaNormalization =
@@ -85500,25 +80787,16 @@ export type AiBotsTimeseriesGroupsResponseMetaNormalization =
 export const AiBotsTimeseriesGroupsResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface AiBotsTimeseriesGroupsResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type AiBotsTimeseriesGroupsResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const AiBotsTimeseriesGroupsResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "AiBotsTimeseriesGroupsResponseMetaUnitsItem",
-  }) as any as S.Schema<AiBotsTimeseriesGroupsResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type AiBotsTimeseriesGroupsResponseMetaUnitsList =
-  Array<AiBotsTimeseriesGroupsResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const AiBotsTimeseriesGroupsResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    AiBotsTimeseriesGroupsResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<AiBotsTimeseriesGroupsResponseMetaUnitsList>;
 
 export interface AiBotsTimeseriesGroupsResponseMeta {
@@ -85879,27 +81157,16 @@ export const BotsTimeseriesGroupsResponseMetaConfidenceInfo =
     identifier: "BotsTimeseriesGroupsResponseMetaConfidenceInfo",
   }) as any as S.Schema<BotsTimeseriesGroupsResponseMetaConfidenceInfo>;
 
-export interface BotsTimeseriesGroupsResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type BotsTimeseriesGroupsResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const BotsTimeseriesGroupsResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "BotsTimeseriesGroupsResponseMetaDateRangeItem",
-  }) as any as S.Schema<BotsTimeseriesGroupsResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type BotsTimeseriesGroupsResponseMetaDateRangeList =
-  Array<BotsTimeseriesGroupsResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const BotsTimeseriesGroupsResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    BotsTimeseriesGroupsResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<BotsTimeseriesGroupsResponseMetaDateRangeList>;
 
 export type BotsTimeseriesGroupsResponseMetaNormalization =
@@ -85914,24 +81181,15 @@ export type BotsTimeseriesGroupsResponseMetaNormalization =
 export const BotsTimeseriesGroupsResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface BotsTimeseriesGroupsResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type BotsTimeseriesGroupsResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const BotsTimeseriesGroupsResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "BotsTimeseriesGroupsResponseMetaUnitsItem",
-  }) as any as S.Schema<BotsTimeseriesGroupsResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type BotsTimeseriesGroupsResponseMetaUnitsList =
-  Array<BotsTimeseriesGroupsResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const BotsTimeseriesGroupsResponseMetaUnitsList = /*@__PURE__*/ S.Array(
-  BotsTimeseriesGroupsResponseMetaUnitsItem,
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
 ) as any as S.Schema<BotsTimeseriesGroupsResponseMetaUnitsList>;
 
 export interface BotsTimeseriesGroupsResponseMeta {
@@ -86319,27 +81577,16 @@ export const BotsWebCrawlersTimeseriesGroupsResponseMetaConfidenceInfo =
     identifier: "BotsWebCrawlersTimeseriesGroupsResponseMetaConfidenceInfo",
   }) as any as S.Schema<BotsWebCrawlersTimeseriesGroupsResponseMetaConfidenceInfo>;
 
-export interface BotsWebCrawlersTimeseriesGroupsResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type BotsWebCrawlersTimeseriesGroupsResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const BotsWebCrawlersTimeseriesGroupsResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "BotsWebCrawlersTimeseriesGroupsResponseMetaDateRangeItem",
-  }) as any as S.Schema<BotsWebCrawlersTimeseriesGroupsResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type BotsWebCrawlersTimeseriesGroupsResponseMetaDateRangeList =
-  Array<BotsWebCrawlersTimeseriesGroupsResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const BotsWebCrawlersTimeseriesGroupsResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    BotsWebCrawlersTimeseriesGroupsResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<BotsWebCrawlersTimeseriesGroupsResponseMetaDateRangeList>;
 
 export type BotsWebCrawlersTimeseriesGroupsResponseMetaNormalization =
@@ -86354,25 +81601,16 @@ export type BotsWebCrawlersTimeseriesGroupsResponseMetaNormalization =
 export const BotsWebCrawlersTimeseriesGroupsResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface BotsWebCrawlersTimeseriesGroupsResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type BotsWebCrawlersTimeseriesGroupsResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const BotsWebCrawlersTimeseriesGroupsResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "BotsWebCrawlersTimeseriesGroupsResponseMetaUnitsItem",
-  }) as any as S.Schema<BotsWebCrawlersTimeseriesGroupsResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type BotsWebCrawlersTimeseriesGroupsResponseMetaUnitsList =
-  Array<BotsWebCrawlersTimeseriesGroupsResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const BotsWebCrawlersTimeseriesGroupsResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    BotsWebCrawlersTimeseriesGroupsResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<BotsWebCrawlersTimeseriesGroupsResponseMetaUnitsList>;
 
 export interface BotsWebCrawlersTimeseriesGroupsResponseMeta {
@@ -86859,27 +82097,16 @@ export const CtTimeseriesGroupsResponseMetaConfidenceInfo =
     identifier: "CtTimeseriesGroupsResponseMetaConfidenceInfo",
   }) as any as S.Schema<CtTimeseriesGroupsResponseMetaConfidenceInfo>;
 
-export interface CtTimeseriesGroupsResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type CtTimeseriesGroupsResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const CtTimeseriesGroupsResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "CtTimeseriesGroupsResponseMetaDateRangeItem",
-  }) as any as S.Schema<CtTimeseriesGroupsResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type CtTimeseriesGroupsResponseMetaDateRangeList =
-  Array<CtTimeseriesGroupsResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const CtTimeseriesGroupsResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    CtTimeseriesGroupsResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<CtTimeseriesGroupsResponseMetaDateRangeList>;
 
 export type CtTimeseriesGroupsResponseMetaNormalization =
@@ -86894,24 +82121,15 @@ export type CtTimeseriesGroupsResponseMetaNormalization =
 export const CtTimeseriesGroupsResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface CtTimeseriesGroupsResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
-export const CtTimeseriesGroupsResponseMetaUnitsItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-).annotate({
-  identifier: "CtTimeseriesGroupsResponseMetaUnitsItem",
-}) as any as S.Schema<CtTimeseriesGroupsResponseMetaUnitsItem>;
+export type CtTimeseriesGroupsResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
+export const CtTimeseriesGroupsResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type CtTimeseriesGroupsResponseMetaUnitsList =
-  Array<CtTimeseriesGroupsResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const CtTimeseriesGroupsResponseMetaUnitsList = /*@__PURE__*/ S.Array(
-  CtTimeseriesGroupsResponseMetaUnitsItem,
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
 ) as any as S.Schema<CtTimeseriesGroupsResponseMetaUnitsList>;
 
 export interface CtTimeseriesGroupsResponseMeta {
@@ -87531,27 +82749,16 @@ export const NetflowsTimeseriesGroupsResponseMetaConfidenceInfo =
     identifier: "NetflowsTimeseriesGroupsResponseMetaConfidenceInfo",
   }) as any as S.Schema<NetflowsTimeseriesGroupsResponseMetaConfidenceInfo>;
 
-export interface NetflowsTimeseriesGroupsResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type NetflowsTimeseriesGroupsResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const NetflowsTimeseriesGroupsResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "NetflowsTimeseriesGroupsResponseMetaDateRangeItem",
-  }) as any as S.Schema<NetflowsTimeseriesGroupsResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type NetflowsTimeseriesGroupsResponseMetaDateRangeList =
-  Array<NetflowsTimeseriesGroupsResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const NetflowsTimeseriesGroupsResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    NetflowsTimeseriesGroupsResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<NetflowsTimeseriesGroupsResponseMetaDateRangeList>;
 
 export type NetflowsTimeseriesGroupsResponseMetaNormalization =
@@ -87566,25 +82773,16 @@ export type NetflowsTimeseriesGroupsResponseMetaNormalization =
 export const NetflowsTimeseriesGroupsResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface NetflowsTimeseriesGroupsResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type NetflowsTimeseriesGroupsResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const NetflowsTimeseriesGroupsResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "NetflowsTimeseriesGroupsResponseMetaUnitsItem",
-  }) as any as S.Schema<NetflowsTimeseriesGroupsResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type NetflowsTimeseriesGroupsResponseMetaUnitsList =
-  Array<NetflowsTimeseriesGroupsResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const NetflowsTimeseriesGroupsResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    NetflowsTimeseriesGroupsResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<NetflowsTimeseriesGroupsResponseMetaUnitsList>;
 
 export interface NetflowsTimeseriesGroupsResponseMeta {
@@ -87843,27 +83041,16 @@ export const PostQuantumOriginTimeseriesGroupsResponseMetaConfidenceInfo =
     identifier: "PostQuantumOriginTimeseriesGroupsResponseMetaConfidenceInfo",
   }) as any as S.Schema<PostQuantumOriginTimeseriesGroupsResponseMetaConfidenceInfo>;
 
-export interface PostQuantumOriginTimeseriesGroupsResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type PostQuantumOriginTimeseriesGroupsResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const PostQuantumOriginTimeseriesGroupsResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "PostQuantumOriginTimeseriesGroupsResponseMetaDateRangeItem",
-  }) as any as S.Schema<PostQuantumOriginTimeseriesGroupsResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type PostQuantumOriginTimeseriesGroupsResponseMetaDateRangeList =
-  Array<PostQuantumOriginTimeseriesGroupsResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const PostQuantumOriginTimeseriesGroupsResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    PostQuantumOriginTimeseriesGroupsResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<PostQuantumOriginTimeseriesGroupsResponseMetaDateRangeList>;
 
 export type PostQuantumOriginTimeseriesGroupsResponseMetaNormalization =
@@ -87878,25 +83065,16 @@ export type PostQuantumOriginTimeseriesGroupsResponseMetaNormalization =
 export const PostQuantumOriginTimeseriesGroupsResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface PostQuantumOriginTimeseriesGroupsResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type PostQuantumOriginTimeseriesGroupsResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const PostQuantumOriginTimeseriesGroupsResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "PostQuantumOriginTimeseriesGroupsResponseMetaUnitsItem",
-  }) as any as S.Schema<PostQuantumOriginTimeseriesGroupsResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type PostQuantumOriginTimeseriesGroupsResponseMetaUnitsList =
-  Array<PostQuantumOriginTimeseriesGroupsResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const PostQuantumOriginTimeseriesGroupsResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    PostQuantumOriginTimeseriesGroupsResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<PostQuantumOriginTimeseriesGroupsResponseMetaUnitsList>;
 
 export interface PostQuantumOriginTimeseriesGroupsResponseMeta {
@@ -88194,27 +83372,16 @@ export const QualityIqiTimeseriesGroupsResponseMetaConfidenceInfo =
     identifier: "QualityIqiTimeseriesGroupsResponseMetaConfidenceInfo",
   }) as any as S.Schema<QualityIqiTimeseriesGroupsResponseMetaConfidenceInfo>;
 
-export interface QualityIqiTimeseriesGroupsResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type QualityIqiTimeseriesGroupsResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const QualityIqiTimeseriesGroupsResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "QualityIqiTimeseriesGroupsResponseMetaDateRangeItem",
-  }) as any as S.Schema<QualityIqiTimeseriesGroupsResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type QualityIqiTimeseriesGroupsResponseMetaDateRangeList =
-  Array<QualityIqiTimeseriesGroupsResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const QualityIqiTimeseriesGroupsResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    QualityIqiTimeseriesGroupsResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<QualityIqiTimeseriesGroupsResponseMetaDateRangeList>;
 
 export type QualityIqiTimeseriesGroupsResponseMetaNormalization =
@@ -88229,25 +83396,16 @@ export type QualityIqiTimeseriesGroupsResponseMetaNormalization =
 export const QualityIqiTimeseriesGroupsResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface QualityIqiTimeseriesGroupsResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type QualityIqiTimeseriesGroupsResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const QualityIqiTimeseriesGroupsResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "QualityIqiTimeseriesGroupsResponseMetaUnitsItem",
-  }) as any as S.Schema<QualityIqiTimeseriesGroupsResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type QualityIqiTimeseriesGroupsResponseMetaUnitsList =
-  Array<QualityIqiTimeseriesGroupsResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const QualityIqiTimeseriesGroupsResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    QualityIqiTimeseriesGroupsResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<QualityIqiTimeseriesGroupsResponseMetaUnitsList>;
 
 export interface QualityIqiTimeseriesGroupsResponseMeta {
@@ -88532,27 +83690,16 @@ export const RankingTimeseriesGroupsResponseMetaConfidenceInfo =
     identifier: "RankingTimeseriesGroupsResponseMetaConfidenceInfo",
   }) as any as S.Schema<RankingTimeseriesGroupsResponseMetaConfidenceInfo>;
 
-export interface RankingTimeseriesGroupsResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type RankingTimeseriesGroupsResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const RankingTimeseriesGroupsResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "RankingTimeseriesGroupsResponseMetaDateRangeItem",
-  }) as any as S.Schema<RankingTimeseriesGroupsResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type RankingTimeseriesGroupsResponseMetaDateRangeList =
-  Array<RankingTimeseriesGroupsResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const RankingTimeseriesGroupsResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    RankingTimeseriesGroupsResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<RankingTimeseriesGroupsResponseMetaDateRangeList>;
 
 export type RankingTimeseriesGroupsResponseMetaNormalization =
@@ -88567,25 +83714,16 @@ export type RankingTimeseriesGroupsResponseMetaNormalization =
 export const RankingTimeseriesGroupsResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface RankingTimeseriesGroupsResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type RankingTimeseriesGroupsResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const RankingTimeseriesGroupsResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "RankingTimeseriesGroupsResponseMetaUnitsItem",
-  }) as any as S.Schema<RankingTimeseriesGroupsResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type RankingTimeseriesGroupsResponseMetaUnitsList =
-  Array<RankingTimeseriesGroupsResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const RankingTimeseriesGroupsResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    RankingTimeseriesGroupsResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<RankingTimeseriesGroupsResponseMetaUnitsList>;
 
 export interface RankingTimeseriesGroupsResponseMeta {
@@ -88861,28 +83999,16 @@ export const RankingInternetServicesTimeseriesGroupsResponseMetaConfidenceInfo =
       "RankingInternetServicesTimeseriesGroupsResponseMetaConfidenceInfo",
   }) as any as S.Schema<RankingInternetServicesTimeseriesGroupsResponseMetaConfidenceInfo>;
 
-export interface RankingInternetServicesTimeseriesGroupsResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type RankingInternetServicesTimeseriesGroupsResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const RankingInternetServicesTimeseriesGroupsResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "RankingInternetServicesTimeseriesGroupsResponseMetaDateRangeItem",
-  }) as any as S.Schema<RankingInternetServicesTimeseriesGroupsResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type RankingInternetServicesTimeseriesGroupsResponseMetaDateRangeList =
-  Array<RankingInternetServicesTimeseriesGroupsResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const RankingInternetServicesTimeseriesGroupsResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    RankingInternetServicesTimeseriesGroupsResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<RankingInternetServicesTimeseriesGroupsResponseMetaDateRangeList>;
 
 export type RankingInternetServicesTimeseriesGroupsResponseMetaNormalization =
@@ -88897,25 +84023,16 @@ export type RankingInternetServicesTimeseriesGroupsResponseMetaNormalization =
 export const RankingInternetServicesTimeseriesGroupsResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface RankingInternetServicesTimeseriesGroupsResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type RankingInternetServicesTimeseriesGroupsResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const RankingInternetServicesTimeseriesGroupsResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "RankingInternetServicesTimeseriesGroupsResponseMetaUnitsItem",
-  }) as any as S.Schema<RankingInternetServicesTimeseriesGroupsResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type RankingInternetServicesTimeseriesGroupsResponseMetaUnitsList =
-  Array<RankingInternetServicesTimeseriesGroupsResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const RankingInternetServicesTimeseriesGroupsResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    RankingInternetServicesTimeseriesGroupsResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<RankingInternetServicesTimeseriesGroupsResponseMetaUnitsList>;
 
 export interface RankingInternetServicesTimeseriesGroupsResponseMeta {
@@ -89221,27 +84338,16 @@ export const TcpResetsTimeoutsTimeseriesGroupsResponseMetaConfidenceInfo =
     identifier: "TcpResetsTimeoutsTimeseriesGroupsResponseMetaConfidenceInfo",
   }) as any as S.Schema<TcpResetsTimeoutsTimeseriesGroupsResponseMetaConfidenceInfo>;
 
-export interface TcpResetsTimeoutsTimeseriesGroupsResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type TcpResetsTimeoutsTimeseriesGroupsResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const TcpResetsTimeoutsTimeseriesGroupsResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "TcpResetsTimeoutsTimeseriesGroupsResponseMetaDateRangeItem",
-  }) as any as S.Schema<TcpResetsTimeoutsTimeseriesGroupsResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type TcpResetsTimeoutsTimeseriesGroupsResponseMetaDateRangeList =
-  Array<TcpResetsTimeoutsTimeseriesGroupsResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const TcpResetsTimeoutsTimeseriesGroupsResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    TcpResetsTimeoutsTimeseriesGroupsResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<TcpResetsTimeoutsTimeseriesGroupsResponseMetaDateRangeList>;
 
 export type TcpResetsTimeoutsTimeseriesGroupsResponseMetaNormalization =
@@ -89256,25 +84362,16 @@ export type TcpResetsTimeoutsTimeseriesGroupsResponseMetaNormalization =
 export const TcpResetsTimeoutsTimeseriesGroupsResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface TcpResetsTimeoutsTimeseriesGroupsResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type TcpResetsTimeoutsTimeseriesGroupsResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const TcpResetsTimeoutsTimeseriesGroupsResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "TcpResetsTimeoutsTimeseriesGroupsResponseMetaUnitsItem",
-  }) as any as S.Schema<TcpResetsTimeoutsTimeseriesGroupsResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type TcpResetsTimeoutsTimeseriesGroupsResponseMetaUnitsList =
-  Array<TcpResetsTimeoutsTimeseriesGroupsResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const TcpResetsTimeoutsTimeseriesGroupsResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    TcpResetsTimeoutsTimeseriesGroupsResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<TcpResetsTimeoutsTimeseriesGroupsResponseMetaUnitsList>;
 
 export interface TcpResetsTimeoutsTimeseriesGroupsResponseMeta {
@@ -89649,27 +84746,16 @@ export const AiInferenceTimeseriesGroupsV2ResponseMetaConfidenceInfo =
     identifier: "AiInferenceTimeseriesGroupsV2ResponseMetaConfidenceInfo",
   }) as any as S.Schema<AiInferenceTimeseriesGroupsV2ResponseMetaConfidenceInfo>;
 
-export interface AiInferenceTimeseriesGroupsV2ResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type AiInferenceTimeseriesGroupsV2ResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const AiInferenceTimeseriesGroupsV2ResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "AiInferenceTimeseriesGroupsV2ResponseMetaDateRangeItem",
-  }) as any as S.Schema<AiInferenceTimeseriesGroupsV2ResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type AiInferenceTimeseriesGroupsV2ResponseMetaDateRangeList =
-  Array<AiInferenceTimeseriesGroupsV2ResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const AiInferenceTimeseriesGroupsV2ResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    AiInferenceTimeseriesGroupsV2ResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<AiInferenceTimeseriesGroupsV2ResponseMetaDateRangeList>;
 
 export type AiInferenceTimeseriesGroupsV2ResponseMetaNormalization =
@@ -89684,25 +84770,16 @@ export type AiInferenceTimeseriesGroupsV2ResponseMetaNormalization =
 export const AiInferenceTimeseriesGroupsV2ResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface AiInferenceTimeseriesGroupsV2ResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type AiInferenceTimeseriesGroupsV2ResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const AiInferenceTimeseriesGroupsV2ResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "AiInferenceTimeseriesGroupsV2ResponseMetaUnitsItem",
-  }) as any as S.Schema<AiInferenceTimeseriesGroupsV2ResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type AiInferenceTimeseriesGroupsV2ResponseMetaUnitsList =
-  Array<AiInferenceTimeseriesGroupsV2ResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const AiInferenceTimeseriesGroupsV2ResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    AiInferenceTimeseriesGroupsV2ResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<AiInferenceTimeseriesGroupsV2ResponseMetaUnitsList>;
 
 export interface AiInferenceTimeseriesGroupsV2ResponseMeta {
@@ -90150,27 +85227,16 @@ export const As112TimeseriesGroupsV2ResponseMetaConfidenceInfo =
     identifier: "As112TimeseriesGroupsV2ResponseMetaConfidenceInfo",
   }) as any as S.Schema<As112TimeseriesGroupsV2ResponseMetaConfidenceInfo>;
 
-export interface As112TimeseriesGroupsV2ResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type As112TimeseriesGroupsV2ResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const As112TimeseriesGroupsV2ResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "As112TimeseriesGroupsV2ResponseMetaDateRangeItem",
-  }) as any as S.Schema<As112TimeseriesGroupsV2ResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type As112TimeseriesGroupsV2ResponseMetaDateRangeList =
-  Array<As112TimeseriesGroupsV2ResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const As112TimeseriesGroupsV2ResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    As112TimeseriesGroupsV2ResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<As112TimeseriesGroupsV2ResponseMetaDateRangeList>;
 
 export type As112TimeseriesGroupsV2ResponseMetaNormalization =
@@ -90185,25 +85251,16 @@ export type As112TimeseriesGroupsV2ResponseMetaNormalization =
 export const As112TimeseriesGroupsV2ResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface As112TimeseriesGroupsV2ResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type As112TimeseriesGroupsV2ResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const As112TimeseriesGroupsV2ResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "As112TimeseriesGroupsV2ResponseMetaUnitsItem",
-  }) as any as S.Schema<As112TimeseriesGroupsV2ResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type As112TimeseriesGroupsV2ResponseMetaUnitsList =
-  Array<As112TimeseriesGroupsV2ResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const As112TimeseriesGroupsV2ResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    As112TimeseriesGroupsV2ResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<As112TimeseriesGroupsV2ResponseMetaUnitsList>;
 
 export interface As112TimeseriesGroupsV2ResponseMeta {
@@ -90567,27 +85624,16 @@ export const AttacksLayer3TimeseriesGroupsV2ResponseMetaConfidenceInfo =
     identifier: "AttacksLayer3TimeseriesGroupsV2ResponseMetaConfidenceInfo",
   }) as any as S.Schema<AttacksLayer3TimeseriesGroupsV2ResponseMetaConfidenceInfo>;
 
-export interface AttacksLayer3TimeseriesGroupsV2ResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type AttacksLayer3TimeseriesGroupsV2ResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const AttacksLayer3TimeseriesGroupsV2ResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "AttacksLayer3TimeseriesGroupsV2ResponseMetaDateRangeItem",
-  }) as any as S.Schema<AttacksLayer3TimeseriesGroupsV2ResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type AttacksLayer3TimeseriesGroupsV2ResponseMetaDateRangeList =
-  Array<AttacksLayer3TimeseriesGroupsV2ResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const AttacksLayer3TimeseriesGroupsV2ResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    AttacksLayer3TimeseriesGroupsV2ResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<AttacksLayer3TimeseriesGroupsV2ResponseMetaDateRangeList>;
 
 export type AttacksLayer3TimeseriesGroupsV2ResponseMetaNormalization =
@@ -90602,25 +85648,16 @@ export type AttacksLayer3TimeseriesGroupsV2ResponseMetaNormalization =
 export const AttacksLayer3TimeseriesGroupsV2ResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface AttacksLayer3TimeseriesGroupsV2ResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type AttacksLayer3TimeseriesGroupsV2ResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const AttacksLayer3TimeseriesGroupsV2ResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "AttacksLayer3TimeseriesGroupsV2ResponseMetaUnitsItem",
-  }) as any as S.Schema<AttacksLayer3TimeseriesGroupsV2ResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type AttacksLayer3TimeseriesGroupsV2ResponseMetaUnitsList =
-  Array<AttacksLayer3TimeseriesGroupsV2ResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const AttacksLayer3TimeseriesGroupsV2ResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    AttacksLayer3TimeseriesGroupsV2ResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<AttacksLayer3TimeseriesGroupsV2ResponseMetaUnitsList>;
 
 export interface AttacksLayer3TimeseriesGroupsV2ResponseMeta {
@@ -91075,27 +86112,16 @@ export const AttacksLayer7TimeseriesGroupsV2ResponseMetaConfidenceInfo =
     identifier: "AttacksLayer7TimeseriesGroupsV2ResponseMetaConfidenceInfo",
   }) as any as S.Schema<AttacksLayer7TimeseriesGroupsV2ResponseMetaConfidenceInfo>;
 
-export interface AttacksLayer7TimeseriesGroupsV2ResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type AttacksLayer7TimeseriesGroupsV2ResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const AttacksLayer7TimeseriesGroupsV2ResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "AttacksLayer7TimeseriesGroupsV2ResponseMetaDateRangeItem",
-  }) as any as S.Schema<AttacksLayer7TimeseriesGroupsV2ResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type AttacksLayer7TimeseriesGroupsV2ResponseMetaDateRangeList =
-  Array<AttacksLayer7TimeseriesGroupsV2ResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const AttacksLayer7TimeseriesGroupsV2ResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    AttacksLayer7TimeseriesGroupsV2ResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<AttacksLayer7TimeseriesGroupsV2ResponseMetaDateRangeList>;
 
 export type AttacksLayer7TimeseriesGroupsV2ResponseMetaNormalization =
@@ -91110,25 +86136,16 @@ export type AttacksLayer7TimeseriesGroupsV2ResponseMetaNormalization =
 export const AttacksLayer7TimeseriesGroupsV2ResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface AttacksLayer7TimeseriesGroupsV2ResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type AttacksLayer7TimeseriesGroupsV2ResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const AttacksLayer7TimeseriesGroupsV2ResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "AttacksLayer7TimeseriesGroupsV2ResponseMetaUnitsItem",
-  }) as any as S.Schema<AttacksLayer7TimeseriesGroupsV2ResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type AttacksLayer7TimeseriesGroupsV2ResponseMetaUnitsList =
-  Array<AttacksLayer7TimeseriesGroupsV2ResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const AttacksLayer7TimeseriesGroupsV2ResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    AttacksLayer7TimeseriesGroupsV2ResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<AttacksLayer7TimeseriesGroupsV2ResponseMetaUnitsList>;
 
 export interface AttacksLayer7TimeseriesGroupsV2ResponseMeta {
@@ -91718,27 +86735,16 @@ export const DnsTimeseriesGroupsV2ResponseMetaConfidenceInfo =
     identifier: "DnsTimeseriesGroupsV2ResponseMetaConfidenceInfo",
   }) as any as S.Schema<DnsTimeseriesGroupsV2ResponseMetaConfidenceInfo>;
 
-export interface DnsTimeseriesGroupsV2ResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type DnsTimeseriesGroupsV2ResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const DnsTimeseriesGroupsV2ResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "DnsTimeseriesGroupsV2ResponseMetaDateRangeItem",
-  }) as any as S.Schema<DnsTimeseriesGroupsV2ResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type DnsTimeseriesGroupsV2ResponseMetaDateRangeList =
-  Array<DnsTimeseriesGroupsV2ResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const DnsTimeseriesGroupsV2ResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    DnsTimeseriesGroupsV2ResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<DnsTimeseriesGroupsV2ResponseMetaDateRangeList>;
 
 export type DnsTimeseriesGroupsV2ResponseMetaNormalization =
@@ -91753,24 +86759,15 @@ export type DnsTimeseriesGroupsV2ResponseMetaNormalization =
 export const DnsTimeseriesGroupsV2ResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface DnsTimeseriesGroupsV2ResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type DnsTimeseriesGroupsV2ResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const DnsTimeseriesGroupsV2ResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "DnsTimeseriesGroupsV2ResponseMetaUnitsItem",
-  }) as any as S.Schema<DnsTimeseriesGroupsV2ResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type DnsTimeseriesGroupsV2ResponseMetaUnitsList =
-  Array<DnsTimeseriesGroupsV2ResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const DnsTimeseriesGroupsV2ResponseMetaUnitsList = /*@__PURE__*/ S.Array(
-  DnsTimeseriesGroupsV2ResponseMetaUnitsItem,
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
 ) as any as S.Schema<DnsTimeseriesGroupsV2ResponseMetaUnitsList>;
 
 export interface DnsTimeseriesGroupsV2ResponseMeta {
@@ -92153,27 +87150,16 @@ export const EmailRoutingTimeseriesGroupsV2ResponseMetaConfidenceInfo =
     identifier: "EmailRoutingTimeseriesGroupsV2ResponseMetaConfidenceInfo",
   }) as any as S.Schema<EmailRoutingTimeseriesGroupsV2ResponseMetaConfidenceInfo>;
 
-export interface EmailRoutingTimeseriesGroupsV2ResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type EmailRoutingTimeseriesGroupsV2ResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const EmailRoutingTimeseriesGroupsV2ResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "EmailRoutingTimeseriesGroupsV2ResponseMetaDateRangeItem",
-  }) as any as S.Schema<EmailRoutingTimeseriesGroupsV2ResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type EmailRoutingTimeseriesGroupsV2ResponseMetaDateRangeList =
-  Array<EmailRoutingTimeseriesGroupsV2ResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const EmailRoutingTimeseriesGroupsV2ResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    EmailRoutingTimeseriesGroupsV2ResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<EmailRoutingTimeseriesGroupsV2ResponseMetaDateRangeList>;
 
 export type EmailRoutingTimeseriesGroupsV2ResponseMetaNormalization =
@@ -92188,25 +87174,16 @@ export type EmailRoutingTimeseriesGroupsV2ResponseMetaNormalization =
 export const EmailRoutingTimeseriesGroupsV2ResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface EmailRoutingTimeseriesGroupsV2ResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type EmailRoutingTimeseriesGroupsV2ResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const EmailRoutingTimeseriesGroupsV2ResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "EmailRoutingTimeseriesGroupsV2ResponseMetaUnitsItem",
-  }) as any as S.Schema<EmailRoutingTimeseriesGroupsV2ResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type EmailRoutingTimeseriesGroupsV2ResponseMetaUnitsList =
-  Array<EmailRoutingTimeseriesGroupsV2ResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const EmailRoutingTimeseriesGroupsV2ResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    EmailRoutingTimeseriesGroupsV2ResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<EmailRoutingTimeseriesGroupsV2ResponseMetaUnitsList>;
 
 export interface EmailRoutingTimeseriesGroupsV2ResponseMeta {
@@ -92590,27 +87567,16 @@ export const EmailSecurityTimeseriesGroupsV2ResponseMetaConfidenceInfo =
     identifier: "EmailSecurityTimeseriesGroupsV2ResponseMetaConfidenceInfo",
   }) as any as S.Schema<EmailSecurityTimeseriesGroupsV2ResponseMetaConfidenceInfo>;
 
-export interface EmailSecurityTimeseriesGroupsV2ResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type EmailSecurityTimeseriesGroupsV2ResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const EmailSecurityTimeseriesGroupsV2ResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "EmailSecurityTimeseriesGroupsV2ResponseMetaDateRangeItem",
-  }) as any as S.Schema<EmailSecurityTimeseriesGroupsV2ResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type EmailSecurityTimeseriesGroupsV2ResponseMetaDateRangeList =
-  Array<EmailSecurityTimeseriesGroupsV2ResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const EmailSecurityTimeseriesGroupsV2ResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    EmailSecurityTimeseriesGroupsV2ResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<EmailSecurityTimeseriesGroupsV2ResponseMetaDateRangeList>;
 
 export type EmailSecurityTimeseriesGroupsV2ResponseMetaNormalization =
@@ -92625,25 +87591,16 @@ export type EmailSecurityTimeseriesGroupsV2ResponseMetaNormalization =
 export const EmailSecurityTimeseriesGroupsV2ResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface EmailSecurityTimeseriesGroupsV2ResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type EmailSecurityTimeseriesGroupsV2ResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const EmailSecurityTimeseriesGroupsV2ResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "EmailSecurityTimeseriesGroupsV2ResponseMetaUnitsItem",
-  }) as any as S.Schema<EmailSecurityTimeseriesGroupsV2ResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type EmailSecurityTimeseriesGroupsV2ResponseMetaUnitsList =
-  Array<EmailSecurityTimeseriesGroupsV2ResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const EmailSecurityTimeseriesGroupsV2ResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    EmailSecurityTimeseriesGroupsV2ResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<EmailSecurityTimeseriesGroupsV2ResponseMetaUnitsList>;
 
 export interface EmailSecurityTimeseriesGroupsV2ResponseMeta {
@@ -93140,27 +88097,16 @@ export const HttpTimeseriesGroupsV2ResponseMetaConfidenceInfo =
     identifier: "HttpTimeseriesGroupsV2ResponseMetaConfidenceInfo",
   }) as any as S.Schema<HttpTimeseriesGroupsV2ResponseMetaConfidenceInfo>;
 
-export interface HttpTimeseriesGroupsV2ResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type HttpTimeseriesGroupsV2ResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const HttpTimeseriesGroupsV2ResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "HttpTimeseriesGroupsV2ResponseMetaDateRangeItem",
-  }) as any as S.Schema<HttpTimeseriesGroupsV2ResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type HttpTimeseriesGroupsV2ResponseMetaDateRangeList =
-  Array<HttpTimeseriesGroupsV2ResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const HttpTimeseriesGroupsV2ResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    HttpTimeseriesGroupsV2ResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<HttpTimeseriesGroupsV2ResponseMetaDateRangeList>;
 
 export type HttpTimeseriesGroupsV2ResponseMetaNormalization =
@@ -93175,25 +88121,16 @@ export type HttpTimeseriesGroupsV2ResponseMetaNormalization =
 export const HttpTimeseriesGroupsV2ResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface HttpTimeseriesGroupsV2ResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type HttpTimeseriesGroupsV2ResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const HttpTimeseriesGroupsV2ResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "HttpTimeseriesGroupsV2ResponseMetaUnitsItem",
-  }) as any as S.Schema<HttpTimeseriesGroupsV2ResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type HttpTimeseriesGroupsV2ResponseMetaUnitsList =
-  Array<HttpTimeseriesGroupsV2ResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const HttpTimeseriesGroupsV2ResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    HttpTimeseriesGroupsV2ResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<HttpTimeseriesGroupsV2ResponseMetaUnitsList>;
 
 export interface HttpTimeseriesGroupsV2ResponseMeta {
@@ -93585,27 +88522,16 @@ export const LeakedCredentialsTimeseriesGroupsV2ResponseMetaConfidenceInfo =
     identifier: "LeakedCredentialsTimeseriesGroupsV2ResponseMetaConfidenceInfo",
   }) as any as S.Schema<LeakedCredentialsTimeseriesGroupsV2ResponseMetaConfidenceInfo>;
 
-export interface LeakedCredentialsTimeseriesGroupsV2ResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type LeakedCredentialsTimeseriesGroupsV2ResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const LeakedCredentialsTimeseriesGroupsV2ResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "LeakedCredentialsTimeseriesGroupsV2ResponseMetaDateRangeItem",
-  }) as any as S.Schema<LeakedCredentialsTimeseriesGroupsV2ResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type LeakedCredentialsTimeseriesGroupsV2ResponseMetaDateRangeList =
-  Array<LeakedCredentialsTimeseriesGroupsV2ResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const LeakedCredentialsTimeseriesGroupsV2ResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    LeakedCredentialsTimeseriesGroupsV2ResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<LeakedCredentialsTimeseriesGroupsV2ResponseMetaDateRangeList>;
 
 export type LeakedCredentialsTimeseriesGroupsV2ResponseMetaNormalization =
@@ -93620,25 +88546,16 @@ export type LeakedCredentialsTimeseriesGroupsV2ResponseMetaNormalization =
 export const LeakedCredentialsTimeseriesGroupsV2ResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface LeakedCredentialsTimeseriesGroupsV2ResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type LeakedCredentialsTimeseriesGroupsV2ResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const LeakedCredentialsTimeseriesGroupsV2ResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "LeakedCredentialsTimeseriesGroupsV2ResponseMetaUnitsItem",
-  }) as any as S.Schema<LeakedCredentialsTimeseriesGroupsV2ResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type LeakedCredentialsTimeseriesGroupsV2ResponseMetaUnitsList =
-  Array<LeakedCredentialsTimeseriesGroupsV2ResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const LeakedCredentialsTimeseriesGroupsV2ResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    LeakedCredentialsTimeseriesGroupsV2ResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<LeakedCredentialsTimeseriesGroupsV2ResponseMetaUnitsList>;
 
 export interface LeakedCredentialsTimeseriesGroupsV2ResponseMeta {
@@ -94083,26 +89000,15 @@ export const HttpTimeseriesResponseMetaConfidenceInfo = /*@__PURE__*/ S.suspend(
   identifier: "HttpTimeseriesResponseMetaConfidenceInfo",
 }) as any as S.Schema<HttpTimeseriesResponseMetaConfidenceInfo>;
 
-export interface HttpTimeseriesResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
-export const HttpTimeseriesResponseMetaDateRangeItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-).annotate({
-  identifier: "HttpTimeseriesResponseMetaDateRangeItem",
-}) as any as S.Schema<HttpTimeseriesResponseMetaDateRangeItem>;
+export type HttpTimeseriesResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
+export const HttpTimeseriesResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type HttpTimeseriesResponseMetaDateRangeList =
-  Array<HttpTimeseriesResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const HttpTimeseriesResponseMetaDateRangeList = /*@__PURE__*/ S.Array(
-  HttpTimeseriesResponseMetaDateRangeItem,
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
 ) as any as S.Schema<HttpTimeseriesResponseMetaDateRangeList>;
 
 export type HttpTimeseriesResponseMetaNormalization =
@@ -94116,23 +89022,15 @@ export type HttpTimeseriesResponseMetaNormalization =
   | "RATIO";
 export const HttpTimeseriesResponseMetaNormalization = /*@__PURE__*/ S.String;
 
-export interface HttpTimeseriesResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
-export const HttpTimeseriesResponseMetaUnitsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    value: S.String,
-  }),
-).annotate({
-  identifier: "HttpTimeseriesResponseMetaUnitsItem",
-}) as any as S.Schema<HttpTimeseriesResponseMetaUnitsItem>;
+export type HttpTimeseriesResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
+export const HttpTimeseriesResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type HttpTimeseriesResponseMetaUnitsList =
-  Array<HttpTimeseriesResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const HttpTimeseriesResponseMetaUnitsList = /*@__PURE__*/ S.Array(
-  HttpTimeseriesResponseMetaUnitsItem,
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
 ) as any as S.Schema<HttpTimeseriesResponseMetaUnitsList>;
 
 export interface HttpTimeseriesResponseMeta {
@@ -94404,27 +89302,16 @@ export const NetflowsTimeseriesResponseMetaConfidenceInfo =
     identifier: "NetflowsTimeseriesResponseMetaConfidenceInfo",
   }) as any as S.Schema<NetflowsTimeseriesResponseMetaConfidenceInfo>;
 
-export interface NetflowsTimeseriesResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type NetflowsTimeseriesResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const NetflowsTimeseriesResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "NetflowsTimeseriesResponseMetaDateRangeItem",
-  }) as any as S.Schema<NetflowsTimeseriesResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type NetflowsTimeseriesResponseMetaDateRangeList =
-  Array<NetflowsTimeseriesResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const NetflowsTimeseriesResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    NetflowsTimeseriesResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<NetflowsTimeseriesResponseMetaDateRangeList>;
 
 export type NetflowsTimeseriesResponseMetaNormalization =
@@ -94439,24 +89326,15 @@ export type NetflowsTimeseriesResponseMetaNormalization =
 export const NetflowsTimeseriesResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface NetflowsTimeseriesResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
-export const NetflowsTimeseriesResponseMetaUnitsItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-).annotate({
-  identifier: "NetflowsTimeseriesResponseMetaUnitsItem",
-}) as any as S.Schema<NetflowsTimeseriesResponseMetaUnitsItem>;
+export type NetflowsTimeseriesResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
+export const NetflowsTimeseriesResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type NetflowsTimeseriesResponseMetaUnitsList =
-  Array<NetflowsTimeseriesResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const NetflowsTimeseriesResponseMetaUnitsList = /*@__PURE__*/ S.Array(
-  NetflowsTimeseriesResponseMetaUnitsItem,
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
 ) as any as S.Schema<NetflowsTimeseriesResponseMetaUnitsList>;
 
 export interface NetflowsTimeseriesResponseMeta {
@@ -94611,27 +89489,12 @@ export const TldsListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "TldsListRequest",
 }) as any as S.Schema<TldsListRequest>;
 
-export interface TldsListResponseTldsItem {
-  /** The organization that manages the TLD. */
-  manager: string;
-  /** The actual TLD. */
-  tld: string;
-  /** The type of TLD. */
-  type: string;
-}
-export const TldsListResponseTldsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    manager: S.String,
-    tld: S.String,
-    type: S.String,
-  }),
-).annotate({
-  identifier: "TldsListResponseTldsItem",
-}) as any as S.Schema<TldsListResponseTldsItem>;
+export type TldsListResponseTldsItem = TldsGetResponseTld;
+export const TldsListResponseTldsItem = TldsGetResponseTld;
 
-export type TldsListResponseTldsList = Array<TldsListResponseTldsItem>;
+export type TldsListResponseTldsList = Array<TldsGetResponseTld>;
 export const TldsListResponseTldsList = /*@__PURE__*/ S.Array(
-  TldsListResponseTldsItem,
+  TldsGetResponseTld,
 ) as any as S.Schema<TldsListResponseTldsList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -94855,27 +89718,16 @@ export const TldsPerformanceSummaryResponseMetaConfidenceInfo =
     identifier: "TldsPerformanceSummaryResponseMetaConfidenceInfo",
   }) as any as S.Schema<TldsPerformanceSummaryResponseMetaConfidenceInfo>;
 
-export interface TldsPerformanceSummaryResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type TldsPerformanceSummaryResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const TldsPerformanceSummaryResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "TldsPerformanceSummaryResponseMetaDateRangeItem",
-  }) as any as S.Schema<TldsPerformanceSummaryResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type TldsPerformanceSummaryResponseMetaDateRangeList =
-  Array<TldsPerformanceSummaryResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const TldsPerformanceSummaryResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    TldsPerformanceSummaryResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<TldsPerformanceSummaryResponseMetaDateRangeList>;
 
 export type TldsPerformanceSummaryResponseMetaNormalization =
@@ -94890,25 +89742,16 @@ export type TldsPerformanceSummaryResponseMetaNormalization =
 export const TldsPerformanceSummaryResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface TldsPerformanceSummaryResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type TldsPerformanceSummaryResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const TldsPerformanceSummaryResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "TldsPerformanceSummaryResponseMetaUnitsItem",
-  }) as any as S.Schema<TldsPerformanceSummaryResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type TldsPerformanceSummaryResponseMetaUnitsList =
-  Array<TldsPerformanceSummaryResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const TldsPerformanceSummaryResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    TldsPerformanceSummaryResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<TldsPerformanceSummaryResponseMetaUnitsList>;
 
 export interface TldsPerformanceSummaryResponseMeta {
@@ -95207,27 +90050,16 @@ export const TldsPerformanceTimeseriesGroupsResponseMetaConfidenceInfo =
     identifier: "TldsPerformanceTimeseriesGroupsResponseMetaConfidenceInfo",
   }) as any as S.Schema<TldsPerformanceTimeseriesGroupsResponseMetaConfidenceInfo>;
 
-export interface TldsPerformanceTimeseriesGroupsResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type TldsPerformanceTimeseriesGroupsResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const TldsPerformanceTimeseriesGroupsResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "TldsPerformanceTimeseriesGroupsResponseMetaDateRangeItem",
-  }) as any as S.Schema<TldsPerformanceTimeseriesGroupsResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type TldsPerformanceTimeseriesGroupsResponseMetaDateRangeList =
-  Array<TldsPerformanceTimeseriesGroupsResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const TldsPerformanceTimeseriesGroupsResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    TldsPerformanceTimeseriesGroupsResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<TldsPerformanceTimeseriesGroupsResponseMetaDateRangeList>;
 
 export type TldsPerformanceTimeseriesGroupsResponseMetaNormalization =
@@ -95242,25 +90074,16 @@ export type TldsPerformanceTimeseriesGroupsResponseMetaNormalization =
 export const TldsPerformanceTimeseriesGroupsResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface TldsPerformanceTimeseriesGroupsResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type TldsPerformanceTimeseriesGroupsResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const TldsPerformanceTimeseriesGroupsResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "TldsPerformanceTimeseriesGroupsResponseMetaUnitsItem",
-  }) as any as S.Schema<TldsPerformanceTimeseriesGroupsResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type TldsPerformanceTimeseriesGroupsResponseMetaUnitsList =
-  Array<TldsPerformanceTimeseriesGroupsResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const TldsPerformanceTimeseriesGroupsResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    TldsPerformanceTimeseriesGroupsResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<TldsPerformanceTimeseriesGroupsResponseMetaUnitsList>;
 
 export interface TldsPerformanceTimeseriesGroupsResponseMeta {
@@ -95571,27 +90394,16 @@ export const EmailSecuritySummaryTlsVersionResponseMetaConfidenceInfo =
     identifier: "EmailSecuritySummaryTlsVersionResponseMetaConfidenceInfo",
   }) as any as S.Schema<EmailSecuritySummaryTlsVersionResponseMetaConfidenceInfo>;
 
-export interface EmailSecuritySummaryTlsVersionResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type EmailSecuritySummaryTlsVersionResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const EmailSecuritySummaryTlsVersionResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "EmailSecuritySummaryTlsVersionResponseMetaDateRangeItem",
-  }) as any as S.Schema<EmailSecuritySummaryTlsVersionResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type EmailSecuritySummaryTlsVersionResponseMetaDateRangeList =
-  Array<EmailSecuritySummaryTlsVersionResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const EmailSecuritySummaryTlsVersionResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    EmailSecuritySummaryTlsVersionResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<EmailSecuritySummaryTlsVersionResponseMetaDateRangeList>;
 
 export type EmailSecuritySummaryTlsVersionResponseMetaNormalization =
@@ -95606,25 +90418,16 @@ export type EmailSecuritySummaryTlsVersionResponseMetaNormalization =
 export const EmailSecuritySummaryTlsVersionResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface EmailSecuritySummaryTlsVersionResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type EmailSecuritySummaryTlsVersionResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const EmailSecuritySummaryTlsVersionResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "EmailSecuritySummaryTlsVersionResponseMetaUnitsItem",
-  }) as any as S.Schema<EmailSecuritySummaryTlsVersionResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type EmailSecuritySummaryTlsVersionResponseMetaUnitsList =
-  Array<EmailSecuritySummaryTlsVersionResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const EmailSecuritySummaryTlsVersionResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    EmailSecuritySummaryTlsVersionResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<EmailSecuritySummaryTlsVersionResponseMetaUnitsList>;
 
 export interface EmailSecuritySummaryTlsVersionResponseMeta {
@@ -95983,28 +90786,16 @@ export const EmailSecurityTimeseriesGroupsTlsVersionResponseMetaConfidenceInfo =
       "EmailSecurityTimeseriesGroupsTlsVersionResponseMetaConfidenceInfo",
   }) as any as S.Schema<EmailSecurityTimeseriesGroupsTlsVersionResponseMetaConfidenceInfo>;
 
-export interface EmailSecurityTimeseriesGroupsTlsVersionResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type EmailSecurityTimeseriesGroupsTlsVersionResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const EmailSecurityTimeseriesGroupsTlsVersionResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "EmailSecurityTimeseriesGroupsTlsVersionResponseMetaDateRangeItem",
-  }) as any as S.Schema<EmailSecurityTimeseriesGroupsTlsVersionResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type EmailSecurityTimeseriesGroupsTlsVersionResponseMetaDateRangeList =
-  Array<EmailSecurityTimeseriesGroupsTlsVersionResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const EmailSecurityTimeseriesGroupsTlsVersionResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    EmailSecurityTimeseriesGroupsTlsVersionResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<EmailSecurityTimeseriesGroupsTlsVersionResponseMetaDateRangeList>;
 
 export type EmailSecurityTimeseriesGroupsTlsVersionResponseMetaNormalization =
@@ -96019,25 +90810,16 @@ export type EmailSecurityTimeseriesGroupsTlsVersionResponseMetaNormalization =
 export const EmailSecurityTimeseriesGroupsTlsVersionResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface EmailSecurityTimeseriesGroupsTlsVersionResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type EmailSecurityTimeseriesGroupsTlsVersionResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const EmailSecurityTimeseriesGroupsTlsVersionResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "EmailSecurityTimeseriesGroupsTlsVersionResponseMetaUnitsItem",
-  }) as any as S.Schema<EmailSecurityTimeseriesGroupsTlsVersionResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type EmailSecurityTimeseriesGroupsTlsVersionResponseMetaUnitsList =
-  Array<EmailSecurityTimeseriesGroupsTlsVersionResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const EmailSecurityTimeseriesGroupsTlsVersionResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    EmailSecurityTimeseriesGroupsTlsVersionResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<EmailSecurityTimeseriesGroupsTlsVersionResponseMetaUnitsList>;
 
 export interface EmailSecurityTimeseriesGroupsTlsVersionResponseMeta {
@@ -96471,27 +91253,16 @@ export const HttpSummaryTlsVersionResponseMetaConfidenceInfo =
     identifier: "HttpSummaryTlsVersionResponseMetaConfidenceInfo",
   }) as any as S.Schema<HttpSummaryTlsVersionResponseMetaConfidenceInfo>;
 
-export interface HttpSummaryTlsVersionResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type HttpSummaryTlsVersionResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const HttpSummaryTlsVersionResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "HttpSummaryTlsVersionResponseMetaDateRangeItem",
-  }) as any as S.Schema<HttpSummaryTlsVersionResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type HttpSummaryTlsVersionResponseMetaDateRangeList =
-  Array<HttpSummaryTlsVersionResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const HttpSummaryTlsVersionResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    HttpSummaryTlsVersionResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<HttpSummaryTlsVersionResponseMetaDateRangeList>;
 
 export type HttpSummaryTlsVersionResponseMetaNormalization =
@@ -96506,24 +91277,15 @@ export type HttpSummaryTlsVersionResponseMetaNormalization =
 export const HttpSummaryTlsVersionResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface HttpSummaryTlsVersionResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type HttpSummaryTlsVersionResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const HttpSummaryTlsVersionResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "HttpSummaryTlsVersionResponseMetaUnitsItem",
-  }) as any as S.Schema<HttpSummaryTlsVersionResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type HttpSummaryTlsVersionResponseMetaUnitsList =
-  Array<HttpSummaryTlsVersionResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const HttpSummaryTlsVersionResponseMetaUnitsList = /*@__PURE__*/ S.Array(
-  HttpSummaryTlsVersionResponseMetaUnitsItem,
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
 ) as any as S.Schema<HttpSummaryTlsVersionResponseMetaUnitsList>;
 
 export interface HttpSummaryTlsVersionResponseMeta {
@@ -96971,27 +91733,16 @@ export const HttpTimeseriesGroupsTlsVersionResponseMetaConfidenceInfo =
     identifier: "HttpTimeseriesGroupsTlsVersionResponseMetaConfidenceInfo",
   }) as any as S.Schema<HttpTimeseriesGroupsTlsVersionResponseMetaConfidenceInfo>;
 
-export interface HttpTimeseriesGroupsTlsVersionResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type HttpTimeseriesGroupsTlsVersionResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const HttpTimeseriesGroupsTlsVersionResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "HttpTimeseriesGroupsTlsVersionResponseMetaDateRangeItem",
-  }) as any as S.Schema<HttpTimeseriesGroupsTlsVersionResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type HttpTimeseriesGroupsTlsVersionResponseMetaDateRangeList =
-  Array<HttpTimeseriesGroupsTlsVersionResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const HttpTimeseriesGroupsTlsVersionResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    HttpTimeseriesGroupsTlsVersionResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<HttpTimeseriesGroupsTlsVersionResponseMetaDateRangeList>;
 
 export type HttpTimeseriesGroupsTlsVersionResponseMetaNormalization =
@@ -97006,25 +91757,16 @@ export type HttpTimeseriesGroupsTlsVersionResponseMetaNormalization =
 export const HttpTimeseriesGroupsTlsVersionResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface HttpTimeseriesGroupsTlsVersionResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type HttpTimeseriesGroupsTlsVersionResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const HttpTimeseriesGroupsTlsVersionResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "HttpTimeseriesGroupsTlsVersionResponseMetaUnitsItem",
-  }) as any as S.Schema<HttpTimeseriesGroupsTlsVersionResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type HttpTimeseriesGroupsTlsVersionResponseMetaUnitsList =
-  Array<HttpTimeseriesGroupsTlsVersionResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const HttpTimeseriesGroupsTlsVersionResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    HttpTimeseriesGroupsTlsVersionResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<HttpTimeseriesGroupsTlsVersionResponseMetaUnitsList>;
 
 export interface HttpTimeseriesGroupsTlsVersionResponseMeta {
@@ -97305,25 +92047,15 @@ export const RankingTopResponseMetaConfidenceInfo = /*@__PURE__*/ S.suspend(
   identifier: "RankingTopResponseMetaConfidenceInfo",
 }) as any as S.Schema<RankingTopResponseMetaConfidenceInfo>;
 
-export interface RankingTopResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
-export const RankingTopResponseMetaDateRangeItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    endTime: S.String,
-    startTime: S.String,
-  }),
-).annotate({
-  identifier: "RankingTopResponseMetaDateRangeItem",
-}) as any as S.Schema<RankingTopResponseMetaDateRangeItem>;
+export type RankingTopResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
+export const RankingTopResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type RankingTopResponseMetaDateRangeList =
-  Array<RankingTopResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const RankingTopResponseMetaDateRangeList = /*@__PURE__*/ S.Array(
-  RankingTopResponseMetaDateRangeItem,
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
 ) as any as S.Schema<RankingTopResponseMetaDateRangeList>;
 
 export type RankingTopResponseMetaNormalization =
@@ -97337,23 +92069,15 @@ export type RankingTopResponseMetaNormalization =
   | "RATIO";
 export const RankingTopResponseMetaNormalization = /*@__PURE__*/ S.String;
 
-export interface RankingTopResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
-export const RankingTopResponseMetaUnitsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    value: S.String,
-  }),
-).annotate({
-  identifier: "RankingTopResponseMetaUnitsItem",
-}) as any as S.Schema<RankingTopResponseMetaUnitsItem>;
+export type RankingTopResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
+export const RankingTopResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type RankingTopResponseMetaUnitsList =
-  Array<RankingTopResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const RankingTopResponseMetaUnitsList = /*@__PURE__*/ S.Array(
-  RankingTopResponseMetaUnitsItem,
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
 ) as any as S.Schema<RankingTopResponseMetaUnitsList>;
 
 export interface RankingTopResponseMeta {
@@ -97378,26 +92102,15 @@ export const RankingTopResponseMeta = /*@__PURE__*/ S.suspend(() =>
   identifier: "RankingTopResponseMeta",
 }) as any as S.Schema<RankingTopResponseMeta>;
 
-export interface RankingTopResponseTop0ItemCategoriesItem {
-  id: number;
-  name: string;
-  superCategoryId: number;
-}
-export const RankingTopResponseTop0ItemCategoriesItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.Number,
-      name: S.String,
-      superCategoryId: S.Number,
-    }),
-).annotate({
-  identifier: "RankingTopResponseTop0ItemCategoriesItem",
-}) as any as S.Schema<RankingTopResponseTop0ItemCategoriesItem>;
+export type RankingTopResponseTop0ItemCategoriesItem =
+  RankingDomainGetResponseDetails0CategoriesItem;
+export const RankingTopResponseTop0ItemCategoriesItem =
+  RankingDomainGetResponseDetails0CategoriesItem;
 
 export type RankingTopResponseTop0ItemCategoriesList =
-  Array<RankingTopResponseTop0ItemCategoriesItem>;
+  Array<RankingDomainGetResponseDetails0CategoriesItem>;
 export const RankingTopResponseTop0ItemCategoriesList = /*@__PURE__*/ S.Array(
-  RankingTopResponseTop0ItemCategoriesItem,
+  RankingDomainGetResponseDetails0CategoriesItem,
 ) as any as S.Schema<RankingTopResponseTop0ItemCategoriesList>;
 
 export interface RankingTopResponseTop0Item {
@@ -97596,27 +92309,16 @@ export const RankingInternetServicesTopResponseMetaConfidenceInfo =
     identifier: "RankingInternetServicesTopResponseMetaConfidenceInfo",
   }) as any as S.Schema<RankingInternetServicesTopResponseMetaConfidenceInfo>;
 
-export interface RankingInternetServicesTopResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type RankingInternetServicesTopResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const RankingInternetServicesTopResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "RankingInternetServicesTopResponseMetaDateRangeItem",
-  }) as any as S.Schema<RankingInternetServicesTopResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type RankingInternetServicesTopResponseMetaDateRangeList =
-  Array<RankingInternetServicesTopResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const RankingInternetServicesTopResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    RankingInternetServicesTopResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<RankingInternetServicesTopResponseMetaDateRangeList>;
 
 export type RankingInternetServicesTopResponseMetaNormalization =
@@ -97631,25 +92333,16 @@ export type RankingInternetServicesTopResponseMetaNormalization =
 export const RankingInternetServicesTopResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface RankingInternetServicesTopResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type RankingInternetServicesTopResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const RankingInternetServicesTopResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "RankingInternetServicesTopResponseMetaUnitsItem",
-  }) as any as S.Schema<RankingInternetServicesTopResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type RankingInternetServicesTopResponseMetaUnitsList =
-  Array<RankingInternetServicesTopResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const RankingInternetServicesTopResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    RankingInternetServicesTopResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<RankingInternetServicesTopResponseMetaUnitsList>;
 
 export interface RankingInternetServicesTopResponseMeta {
@@ -97959,27 +92652,16 @@ export const AiBotsSummaryUserAgentResponseMetaConfidenceInfo =
     identifier: "AiBotsSummaryUserAgentResponseMetaConfidenceInfo",
   }) as any as S.Schema<AiBotsSummaryUserAgentResponseMetaConfidenceInfo>;
 
-export interface AiBotsSummaryUserAgentResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type AiBotsSummaryUserAgentResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const AiBotsSummaryUserAgentResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "AiBotsSummaryUserAgentResponseMetaDateRangeItem",
-  }) as any as S.Schema<AiBotsSummaryUserAgentResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type AiBotsSummaryUserAgentResponseMetaDateRangeList =
-  Array<AiBotsSummaryUserAgentResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const AiBotsSummaryUserAgentResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    AiBotsSummaryUserAgentResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<AiBotsSummaryUserAgentResponseMetaDateRangeList>;
 
 export type AiBotsSummaryUserAgentResponseMetaNormalization =
@@ -97994,25 +92676,16 @@ export type AiBotsSummaryUserAgentResponseMetaNormalization =
 export const AiBotsSummaryUserAgentResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface AiBotsSummaryUserAgentResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type AiBotsSummaryUserAgentResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const AiBotsSummaryUserAgentResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "AiBotsSummaryUserAgentResponseMetaUnitsItem",
-  }) as any as S.Schema<AiBotsSummaryUserAgentResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type AiBotsSummaryUserAgentResponseMetaUnitsList =
-  Array<AiBotsSummaryUserAgentResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const AiBotsSummaryUserAgentResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    AiBotsSummaryUserAgentResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<AiBotsSummaryUserAgentResponseMetaUnitsList>;
 
 export interface AiBotsSummaryUserAgentResponseMeta {
@@ -98288,27 +92961,16 @@ export const AiTimeseriesGroupsUserAgentResponseMetaConfidenceInfo =
     identifier: "AiTimeseriesGroupsUserAgentResponseMetaConfidenceInfo",
   }) as any as S.Schema<AiTimeseriesGroupsUserAgentResponseMetaConfidenceInfo>;
 
-export interface AiTimeseriesGroupsUserAgentResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type AiTimeseriesGroupsUserAgentResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const AiTimeseriesGroupsUserAgentResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "AiTimeseriesGroupsUserAgentResponseMetaDateRangeItem",
-  }) as any as S.Schema<AiTimeseriesGroupsUserAgentResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type AiTimeseriesGroupsUserAgentResponseMetaDateRangeList =
-  Array<AiTimeseriesGroupsUserAgentResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const AiTimeseriesGroupsUserAgentResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    AiTimeseriesGroupsUserAgentResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<AiTimeseriesGroupsUserAgentResponseMetaDateRangeList>;
 
 export type AiTimeseriesGroupsUserAgentResponseMetaNormalization =
@@ -98323,25 +92985,16 @@ export type AiTimeseriesGroupsUserAgentResponseMetaNormalization =
 export const AiTimeseriesGroupsUserAgentResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface AiTimeseriesGroupsUserAgentResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type AiTimeseriesGroupsUserAgentResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const AiTimeseriesGroupsUserAgentResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "AiTimeseriesGroupsUserAgentResponseMetaUnitsItem",
-  }) as any as S.Schema<AiTimeseriesGroupsUserAgentResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type AiTimeseriesGroupsUserAgentResponseMetaUnitsList =
-  Array<AiTimeseriesGroupsUserAgentResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const AiTimeseriesGroupsUserAgentResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    AiTimeseriesGroupsUserAgentResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<AiTimeseriesGroupsUserAgentResponseMetaUnitsList>;
 
 export interface AiTimeseriesGroupsUserAgentResponseMeta {
@@ -98644,27 +93297,16 @@ export const AttacksLayer3SummaryVectorResponseMetaConfidenceInfo =
     identifier: "AttacksLayer3SummaryVectorResponseMetaConfidenceInfo",
   }) as any as S.Schema<AttacksLayer3SummaryVectorResponseMetaConfidenceInfo>;
 
-export interface AttacksLayer3SummaryVectorResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type AttacksLayer3SummaryVectorResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const AttacksLayer3SummaryVectorResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "AttacksLayer3SummaryVectorResponseMetaDateRangeItem",
-  }) as any as S.Schema<AttacksLayer3SummaryVectorResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type AttacksLayer3SummaryVectorResponseMetaDateRangeList =
-  Array<AttacksLayer3SummaryVectorResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const AttacksLayer3SummaryVectorResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    AttacksLayer3SummaryVectorResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<AttacksLayer3SummaryVectorResponseMetaDateRangeList>;
 
 export type AttacksLayer3SummaryVectorResponseMetaNormalization =
@@ -98679,25 +93321,16 @@ export type AttacksLayer3SummaryVectorResponseMetaNormalization =
 export const AttacksLayer3SummaryVectorResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface AttacksLayer3SummaryVectorResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type AttacksLayer3SummaryVectorResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const AttacksLayer3SummaryVectorResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "AttacksLayer3SummaryVectorResponseMetaUnitsItem",
-  }) as any as S.Schema<AttacksLayer3SummaryVectorResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type AttacksLayer3SummaryVectorResponseMetaUnitsList =
-  Array<AttacksLayer3SummaryVectorResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const AttacksLayer3SummaryVectorResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    AttacksLayer3SummaryVectorResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<AttacksLayer3SummaryVectorResponseMetaUnitsList>;
 
 export interface AttacksLayer3SummaryVectorResponseMeta {
@@ -99043,27 +93676,16 @@ export const AttacksLayer3TimeseriesGroupsVectorResponseMetaConfidenceInfo =
     identifier: "AttacksLayer3TimeseriesGroupsVectorResponseMetaConfidenceInfo",
   }) as any as S.Schema<AttacksLayer3TimeseriesGroupsVectorResponseMetaConfidenceInfo>;
 
-export interface AttacksLayer3TimeseriesGroupsVectorResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type AttacksLayer3TimeseriesGroupsVectorResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const AttacksLayer3TimeseriesGroupsVectorResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "AttacksLayer3TimeseriesGroupsVectorResponseMetaDateRangeItem",
-  }) as any as S.Schema<AttacksLayer3TimeseriesGroupsVectorResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type AttacksLayer3TimeseriesGroupsVectorResponseMetaDateRangeList =
-  Array<AttacksLayer3TimeseriesGroupsVectorResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const AttacksLayer3TimeseriesGroupsVectorResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    AttacksLayer3TimeseriesGroupsVectorResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<AttacksLayer3TimeseriesGroupsVectorResponseMetaDateRangeList>;
 
 export type AttacksLayer3TimeseriesGroupsVectorResponseMetaNormalization =
@@ -99078,25 +93700,16 @@ export type AttacksLayer3TimeseriesGroupsVectorResponseMetaNormalization =
 export const AttacksLayer3TimeseriesGroupsVectorResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface AttacksLayer3TimeseriesGroupsVectorResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type AttacksLayer3TimeseriesGroupsVectorResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const AttacksLayer3TimeseriesGroupsVectorResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "AttacksLayer3TimeseriesGroupsVectorResponseMetaUnitsItem",
-  }) as any as S.Schema<AttacksLayer3TimeseriesGroupsVectorResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type AttacksLayer3TimeseriesGroupsVectorResponseMetaUnitsList =
-  Array<AttacksLayer3TimeseriesGroupsVectorResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const AttacksLayer3TimeseriesGroupsVectorResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    AttacksLayer3TimeseriesGroupsVectorResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<AttacksLayer3TimeseriesGroupsVectorResponseMetaUnitsList>;
 
 export interface AttacksLayer3TimeseriesGroupsVectorResponseMeta {
@@ -99409,27 +94022,16 @@ export const AttacksLayer3SummaryVerticalResponseMetaConfidenceInfo =
     identifier: "AttacksLayer3SummaryVerticalResponseMetaConfidenceInfo",
   }) as any as S.Schema<AttacksLayer3SummaryVerticalResponseMetaConfidenceInfo>;
 
-export interface AttacksLayer3SummaryVerticalResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type AttacksLayer3SummaryVerticalResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const AttacksLayer3SummaryVerticalResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "AttacksLayer3SummaryVerticalResponseMetaDateRangeItem",
-  }) as any as S.Schema<AttacksLayer3SummaryVerticalResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type AttacksLayer3SummaryVerticalResponseMetaDateRangeList =
-  Array<AttacksLayer3SummaryVerticalResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const AttacksLayer3SummaryVerticalResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    AttacksLayer3SummaryVerticalResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<AttacksLayer3SummaryVerticalResponseMetaDateRangeList>;
 
 export type AttacksLayer3SummaryVerticalResponseMetaNormalization =
@@ -99444,25 +94046,16 @@ export type AttacksLayer3SummaryVerticalResponseMetaNormalization =
 export const AttacksLayer3SummaryVerticalResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface AttacksLayer3SummaryVerticalResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type AttacksLayer3SummaryVerticalResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const AttacksLayer3SummaryVerticalResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "AttacksLayer3SummaryVerticalResponseMetaUnitsItem",
-  }) as any as S.Schema<AttacksLayer3SummaryVerticalResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type AttacksLayer3SummaryVerticalResponseMetaUnitsList =
-  Array<AttacksLayer3SummaryVerticalResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const AttacksLayer3SummaryVerticalResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    AttacksLayer3SummaryVerticalResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<AttacksLayer3SummaryVerticalResponseMetaUnitsList>;
 
 export interface AttacksLayer3SummaryVerticalResponseMeta {
@@ -99824,28 +94417,16 @@ export const AttacksLayer3TimeseriesGroupsVerticalResponseMetaConfidenceInfo =
       "AttacksLayer3TimeseriesGroupsVerticalResponseMetaConfidenceInfo",
   }) as any as S.Schema<AttacksLayer3TimeseriesGroupsVerticalResponseMetaConfidenceInfo>;
 
-export interface AttacksLayer3TimeseriesGroupsVerticalResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type AttacksLayer3TimeseriesGroupsVerticalResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const AttacksLayer3TimeseriesGroupsVerticalResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "AttacksLayer3TimeseriesGroupsVerticalResponseMetaDateRangeItem",
-  }) as any as S.Schema<AttacksLayer3TimeseriesGroupsVerticalResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type AttacksLayer3TimeseriesGroupsVerticalResponseMetaDateRangeList =
-  Array<AttacksLayer3TimeseriesGroupsVerticalResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const AttacksLayer3TimeseriesGroupsVerticalResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    AttacksLayer3TimeseriesGroupsVerticalResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<AttacksLayer3TimeseriesGroupsVerticalResponseMetaDateRangeList>;
 
 export type AttacksLayer3TimeseriesGroupsVerticalResponseMetaNormalization =
@@ -99860,25 +94441,16 @@ export type AttacksLayer3TimeseriesGroupsVerticalResponseMetaNormalization =
 export const AttacksLayer3TimeseriesGroupsVerticalResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface AttacksLayer3TimeseriesGroupsVerticalResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type AttacksLayer3TimeseriesGroupsVerticalResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const AttacksLayer3TimeseriesGroupsVerticalResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "AttacksLayer3TimeseriesGroupsVerticalResponseMetaUnitsItem",
-  }) as any as S.Schema<AttacksLayer3TimeseriesGroupsVerticalResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type AttacksLayer3TimeseriesGroupsVerticalResponseMetaUnitsList =
-  Array<AttacksLayer3TimeseriesGroupsVerticalResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const AttacksLayer3TimeseriesGroupsVerticalResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    AttacksLayer3TimeseriesGroupsVerticalResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<AttacksLayer3TimeseriesGroupsVerticalResponseMetaUnitsList>;
 
 export interface AttacksLayer3TimeseriesGroupsVerticalResponseMeta {
@@ -100174,27 +94746,16 @@ export const AttacksLayer3TopVerticalResponseMetaConfidenceInfo =
     identifier: "AttacksLayer3TopVerticalResponseMetaConfidenceInfo",
   }) as any as S.Schema<AttacksLayer3TopVerticalResponseMetaConfidenceInfo>;
 
-export interface AttacksLayer3TopVerticalResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type AttacksLayer3TopVerticalResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const AttacksLayer3TopVerticalResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "AttacksLayer3TopVerticalResponseMetaDateRangeItem",
-  }) as any as S.Schema<AttacksLayer3TopVerticalResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type AttacksLayer3TopVerticalResponseMetaDateRangeList =
-  Array<AttacksLayer3TopVerticalResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const AttacksLayer3TopVerticalResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    AttacksLayer3TopVerticalResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<AttacksLayer3TopVerticalResponseMetaDateRangeList>;
 
 export type AttacksLayer3TopVerticalResponseMetaNormalization =
@@ -100209,25 +94770,16 @@ export type AttacksLayer3TopVerticalResponseMetaNormalization =
 export const AttacksLayer3TopVerticalResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface AttacksLayer3TopVerticalResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type AttacksLayer3TopVerticalResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const AttacksLayer3TopVerticalResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "AttacksLayer3TopVerticalResponseMetaUnitsItem",
-  }) as any as S.Schema<AttacksLayer3TopVerticalResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type AttacksLayer3TopVerticalResponseMetaUnitsList =
-  Array<AttacksLayer3TopVerticalResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const AttacksLayer3TopVerticalResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    AttacksLayer3TopVerticalResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<AttacksLayer3TopVerticalResponseMetaUnitsList>;
 
 export interface AttacksLayer3TopVerticalResponseMeta {
@@ -100253,24 +94805,15 @@ export const AttacksLayer3TopVerticalResponseMeta = /*@__PURE__*/ S.suspend(
   identifier: "AttacksLayer3TopVerticalResponseMeta",
 }) as any as S.Schema<AttacksLayer3TopVerticalResponseMeta>;
 
-export interface AttacksLayer3TopVerticalResponseTop0Item {
-  name: string;
-  value: string;
-}
-export const AttacksLayer3TopVerticalResponseTop0Item = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-).annotate({
-  identifier: "AttacksLayer3TopVerticalResponseTop0Item",
-}) as any as S.Schema<AttacksLayer3TopVerticalResponseTop0Item>;
+export type AttacksLayer3TopVerticalResponseTop0Item =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
+export const AttacksLayer3TopVerticalResponseTop0Item =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type AttacksLayer3TopVerticalResponseTop0List =
-  Array<AttacksLayer3TopVerticalResponseTop0Item>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const AttacksLayer3TopVerticalResponseTop0List = /*@__PURE__*/ S.Array(
-  AttacksLayer3TopVerticalResponseTop0Item,
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
 ) as any as S.Schema<AttacksLayer3TopVerticalResponseTop0List>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -100619,27 +95162,16 @@ export const AttacksLayer7SummaryVerticalResponseMetaConfidenceInfo =
     identifier: "AttacksLayer7SummaryVerticalResponseMetaConfidenceInfo",
   }) as any as S.Schema<AttacksLayer7SummaryVerticalResponseMetaConfidenceInfo>;
 
-export interface AttacksLayer7SummaryVerticalResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type AttacksLayer7SummaryVerticalResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const AttacksLayer7SummaryVerticalResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "AttacksLayer7SummaryVerticalResponseMetaDateRangeItem",
-  }) as any as S.Schema<AttacksLayer7SummaryVerticalResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type AttacksLayer7SummaryVerticalResponseMetaDateRangeList =
-  Array<AttacksLayer7SummaryVerticalResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const AttacksLayer7SummaryVerticalResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    AttacksLayer7SummaryVerticalResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<AttacksLayer7SummaryVerticalResponseMetaDateRangeList>;
 
 export type AttacksLayer7SummaryVerticalResponseMetaNormalization =
@@ -100654,25 +95186,16 @@ export type AttacksLayer7SummaryVerticalResponseMetaNormalization =
 export const AttacksLayer7SummaryVerticalResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface AttacksLayer7SummaryVerticalResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type AttacksLayer7SummaryVerticalResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const AttacksLayer7SummaryVerticalResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "AttacksLayer7SummaryVerticalResponseMetaUnitsItem",
-  }) as any as S.Schema<AttacksLayer7SummaryVerticalResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type AttacksLayer7SummaryVerticalResponseMetaUnitsList =
-  Array<AttacksLayer7SummaryVerticalResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const AttacksLayer7SummaryVerticalResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    AttacksLayer7SummaryVerticalResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<AttacksLayer7SummaryVerticalResponseMetaUnitsList>;
 
 export interface AttacksLayer7SummaryVerticalResponseMeta {
@@ -101124,28 +95647,16 @@ export const AttacksLayer7TimeseriesGroupsVerticalResponseMetaConfidenceInfo =
       "AttacksLayer7TimeseriesGroupsVerticalResponseMetaConfidenceInfo",
   }) as any as S.Schema<AttacksLayer7TimeseriesGroupsVerticalResponseMetaConfidenceInfo>;
 
-export interface AttacksLayer7TimeseriesGroupsVerticalResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type AttacksLayer7TimeseriesGroupsVerticalResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const AttacksLayer7TimeseriesGroupsVerticalResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "AttacksLayer7TimeseriesGroupsVerticalResponseMetaDateRangeItem",
-  }) as any as S.Schema<AttacksLayer7TimeseriesGroupsVerticalResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type AttacksLayer7TimeseriesGroupsVerticalResponseMetaDateRangeList =
-  Array<AttacksLayer7TimeseriesGroupsVerticalResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const AttacksLayer7TimeseriesGroupsVerticalResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    AttacksLayer7TimeseriesGroupsVerticalResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<AttacksLayer7TimeseriesGroupsVerticalResponseMetaDateRangeList>;
 
 export type AttacksLayer7TimeseriesGroupsVerticalResponseMetaNormalization =
@@ -101160,25 +95671,16 @@ export type AttacksLayer7TimeseriesGroupsVerticalResponseMetaNormalization =
 export const AttacksLayer7TimeseriesGroupsVerticalResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface AttacksLayer7TimeseriesGroupsVerticalResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type AttacksLayer7TimeseriesGroupsVerticalResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const AttacksLayer7TimeseriesGroupsVerticalResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "AttacksLayer7TimeseriesGroupsVerticalResponseMetaUnitsItem",
-  }) as any as S.Schema<AttacksLayer7TimeseriesGroupsVerticalResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type AttacksLayer7TimeseriesGroupsVerticalResponseMetaUnitsList =
-  Array<AttacksLayer7TimeseriesGroupsVerticalResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const AttacksLayer7TimeseriesGroupsVerticalResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    AttacksLayer7TimeseriesGroupsVerticalResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<AttacksLayer7TimeseriesGroupsVerticalResponseMetaUnitsList>;
 
 export interface AttacksLayer7TimeseriesGroupsVerticalResponseMeta {
@@ -101568,27 +96070,16 @@ export const AttacksLayer7TopVerticalResponseMetaConfidenceInfo =
     identifier: "AttacksLayer7TopVerticalResponseMetaConfidenceInfo",
   }) as any as S.Schema<AttacksLayer7TopVerticalResponseMetaConfidenceInfo>;
 
-export interface AttacksLayer7TopVerticalResponseMetaDateRangeItem {
-  /** Adjusted end of date range. */
-  endTime: string;
-  /** Adjusted start of date range. */
-  startTime: string;
-}
+export type AttacksLayer7TopVerticalResponseMetaDateRangeItem =
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 export const AttacksLayer7TopVerticalResponseMetaDateRangeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endTime: S.String,
-      startTime: S.String,
-    }),
-  ).annotate({
-    identifier: "AttacksLayer7TopVerticalResponseMetaDateRangeItem",
-  }) as any as S.Schema<AttacksLayer7TopVerticalResponseMetaDateRangeItem>;
+  AiTimeseriesGroupsSummaryResponseMetaDateRangeItem;
 
 export type AttacksLayer7TopVerticalResponseMetaDateRangeList =
-  Array<AttacksLayer7TopVerticalResponseMetaDateRangeItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaDateRangeItem>;
 export const AttacksLayer7TopVerticalResponseMetaDateRangeList =
   /*@__PURE__*/ S.Array(
-    AttacksLayer7TopVerticalResponseMetaDateRangeItem,
+    AiTimeseriesGroupsSummaryResponseMetaDateRangeItem,
   ) as any as S.Schema<AttacksLayer7TopVerticalResponseMetaDateRangeList>;
 
 export type AttacksLayer7TopVerticalResponseMetaNormalization =
@@ -101603,25 +96094,16 @@ export type AttacksLayer7TopVerticalResponseMetaNormalization =
 export const AttacksLayer7TopVerticalResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
-export interface AttacksLayer7TopVerticalResponseMetaUnitsItem {
-  name: string;
-  value: string;
-}
+export type AttacksLayer7TopVerticalResponseMetaUnitsItem =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 export const AttacksLayer7TopVerticalResponseMetaUnitsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "AttacksLayer7TopVerticalResponseMetaUnitsItem",
-  }) as any as S.Schema<AttacksLayer7TopVerticalResponseMetaUnitsItem>;
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type AttacksLayer7TopVerticalResponseMetaUnitsList =
-  Array<AttacksLayer7TopVerticalResponseMetaUnitsItem>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const AttacksLayer7TopVerticalResponseMetaUnitsList =
   /*@__PURE__*/ S.Array(
-    AttacksLayer7TopVerticalResponseMetaUnitsItem,
+    AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
   ) as any as S.Schema<AttacksLayer7TopVerticalResponseMetaUnitsList>;
 
 export interface AttacksLayer7TopVerticalResponseMeta {
@@ -101647,24 +96129,15 @@ export const AttacksLayer7TopVerticalResponseMeta = /*@__PURE__*/ S.suspend(
   identifier: "AttacksLayer7TopVerticalResponseMeta",
 }) as any as S.Schema<AttacksLayer7TopVerticalResponseMeta>;
 
-export interface AttacksLayer7TopVerticalResponseTop0Item {
-  name: string;
-  value: string;
-}
-export const AttacksLayer7TopVerticalResponseTop0Item = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-).annotate({
-  identifier: "AttacksLayer7TopVerticalResponseTop0Item",
-}) as any as S.Schema<AttacksLayer7TopVerticalResponseTop0Item>;
+export type AttacksLayer7TopVerticalResponseTop0Item =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
+export const AttacksLayer7TopVerticalResponseTop0Item =
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem;
 
 export type AttacksLayer7TopVerticalResponseTop0List =
-  Array<AttacksLayer7TopVerticalResponseTop0Item>;
+  Array<AiTimeseriesGroupsSummaryResponseMetaUnitsItem>;
 export const AttacksLayer7TopVerticalResponseTop0List = /*@__PURE__*/ S.Array(
-  AttacksLayer7TopVerticalResponseTop0Item,
+  AiTimeseriesGroupsSummaryResponseMetaUnitsItem,
 ) as any as S.Schema<AttacksLayer7TopVerticalResponseTop0List>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */

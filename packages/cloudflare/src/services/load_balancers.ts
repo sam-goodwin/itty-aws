@@ -2175,37 +2175,15 @@ export const PoolsCreateResponseNetworksList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoolsCreateResponseNetworksList>;
 
-export interface PoolsCreateResponseNotificationFilterOrigin {
-  /** If set true, disable notifications for this type of resource (pool or origin). */
-  disable?: boolean | null;
-  /** If present, send notifications only for this health status (e.g. false for only DOWN events). Use null to reset (all events). */
-  healthy?: boolean | null;
-}
+export type PoolsCreateResponseNotificationFilterOrigin =
+  PoolsBulkEditResultItemNotificationFilterOrigin;
 export const PoolsCreateResponseNotificationFilterOrigin =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      disable: S.optional(S.NullOr(S.Boolean)),
-      healthy: S.optional(S.NullOr(S.Boolean)),
-    }),
-  ).annotate({
-    identifier: "PoolsCreateResponseNotificationFilterOrigin",
-  }) as any as S.Schema<PoolsCreateResponseNotificationFilterOrigin>;
+  PoolsBulkEditResultItemNotificationFilterOrigin;
 
-export interface PoolsCreateResponseNotificationFilter {
-  /** Filter options for a particular resource type (pool or origin). Use null to reset. */
-  origin?: PoolsCreateResponseNotificationFilterOrigin | null;
-  /** Filter options for a particular resource type (pool or origin). Use null to reset. */
-  pool?: PoolsCreateResponseNotificationFilterOrigin | null;
-}
-export const PoolsCreateResponseNotificationFilter = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      origin: S.optional(S.NullOr(PoolsCreateResponseNotificationFilterOrigin)),
-      pool: S.optional(S.NullOr(PoolsCreateResponseNotificationFilterOrigin)),
-    }),
-).annotate({
-  identifier: "PoolsCreateResponseNotificationFilter",
-}) as any as S.Schema<PoolsCreateResponseNotificationFilter>;
+export type PoolsCreateResponseNotificationFilter =
+  PoolsBulkEditResultItemNotificationFilter;
+export const PoolsCreateResponseNotificationFilter =
+  PoolsBulkEditResultItemNotificationFilter;
 
 export type PoolsCreateResponseOriginSteeringPolicy =
   | "random"
@@ -2325,7 +2303,7 @@ export interface CreatePoolResponse {
   /** This field is now deprecated. It has been moved to Cloudflare's Centralized Notification service https://developers.cloudflare.com/fundamentals/notifications/. The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list. */
   notificationEmail?: string | null;
   /** Filter pool and origin health notifications by resource type or health status. Use null to reset. */
-  notificationFilter?: PoolsCreateResponseNotificationFilter | null;
+  notificationFilter?: PoolsBulkEditResultItemNotificationFilter | null;
   /** Configures origin steering for the pool. Controls how origins are selected for new sessions and traffic without session affinity. */
   originSteering?: PoolsCreateResponseOriginSteering | null;
   /** The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy. */
@@ -2360,7 +2338,7 @@ export const CreatePoolResponse = /*@__PURE__*/ S.suspend(() =>
       S.NullOr(S.String).pipe(T.Body("notification_email")),
     ),
     notificationFilter: S.optional(
-      S.NullOr(PoolsCreateResponseNotificationFilter).pipe(
+      S.NullOr(PoolsBulkEditResultItemNotificationFilter).pipe(
         T.Body("notification_filter"),
       ),
     ),
@@ -2574,38 +2552,15 @@ export const DeleteMonitorGroupRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteMonitorGroupRequest",
 }) as any as S.Schema<DeleteMonitorGroupRequest>;
 
-export interface MonitorGroupsDeleteResponseMembersItem {
-  /** Whether this monitor is enabled in the group */
-  enabled: boolean;
-  /** The ID of the Monitor to use for checking the health of origins within this pool. */
-  monitorId: string;
-  /** Whether this monitor is used for monitoring only (does not affect pool health) */
-  monitoringOnly: boolean;
-  /** Whether this monitor must be healthy for the pool to be considered healthy */
-  mustBeHealthy: boolean;
-  /** The timestamp of when the monitor was added to the group */
-  createdAt?: string | null;
-  /** The timestamp of when the monitor group member was last updated */
-  updatedAt?: string | null;
-}
-export const MonitorGroupsDeleteResponseMembersItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      enabled: S.Boolean,
-      monitorId: S.String.pipe(T.Body("monitor_id")),
-      monitoringOnly: S.Boolean.pipe(T.Body("monitoring_only")),
-      mustBeHealthy: S.Boolean.pipe(T.Body("must_be_healthy")),
-      createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
-      updatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("updated_at"))),
-    }),
-).annotate({
-  identifier: "MonitorGroupsDeleteResponseMembersItem",
-}) as any as S.Schema<MonitorGroupsDeleteResponseMembersItem>;
+export type MonitorGroupsDeleteResponseMembersItem =
+  MonitorGroupsCreateResponseMembersItem;
+export const MonitorGroupsDeleteResponseMembersItem =
+  MonitorGroupsCreateResponseMembersItem;
 
 export type MonitorGroupsDeleteResponseMembersList =
-  Array<MonitorGroupsDeleteResponseMembersItem>;
+  Array<MonitorGroupsCreateResponseMembersItem>;
 export const MonitorGroupsDeleteResponseMembersList = /*@__PURE__*/ S.Array(
-  MonitorGroupsDeleteResponseMembersItem,
+  MonitorGroupsCreateResponseMembersItem,
 ) as any as S.Schema<MonitorGroupsDeleteResponseMembersList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -2688,19 +2643,8 @@ export const GetLoadBalancerRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetLoadBalancerRequest",
 }) as any as S.Schema<GetLoadBalancerRequest>;
 
-export interface GetResponseAdaptiveRouting {
-  /** Extends zero-downtime failover of requests to healthy origins from alternate pools, when no healthy alternate exists in the same pool, according to the failover order defined by traffic and origin steering. When set false (the default) zero-downtime failover will only occur between origins within the same pool. See `session_affinity_attributes` for control over when sessions are broken or reassigned. */
-  failoverAcrossPools?: boolean | null;
-}
-export const GetResponseAdaptiveRouting = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    failoverAcrossPools: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("failover_across_pools")),
-    ),
-  }),
-).annotate({
-  identifier: "GetResponseAdaptiveRouting",
-}) as any as S.Schema<GetResponseAdaptiveRouting>;
+export type GetResponseAdaptiveRouting = CreateResponseAdaptiveRouting;
+export const GetResponseAdaptiveRouting = CreateResponseAdaptiveRouting;
 
 export type GetResponseCountryPoolsMap = { [key: string]: unknown | undefined };
 export const GetResponseCountryPoolsMap = /*@__PURE__*/ S.Record(
@@ -2786,26 +2730,10 @@ export const GetResponseRegionPoolsMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<GetResponseRegionPoolsMap>;
 
-export interface GetResponseRulesItemFixedResponse {
-  /** The http 'Content-Type' header to include in the response. */
-  contentType?: string | null;
-  /** The http 'Location' header to include in the response. */
-  location?: string | null;
-  /** Text to include as the http body. */
-  messageBody?: string | null;
-  /** The http status code to respond with. */
-  statusCode?: number | null;
-}
-export const GetResponseRulesItemFixedResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    contentType: S.optional(S.NullOr(S.String).pipe(T.Body("content_type"))),
-    location: S.optional(S.NullOr(S.String)),
-    messageBody: S.optional(S.NullOr(S.String).pipe(T.Body("message_body"))),
-    statusCode: S.optional(S.NullOr(S.Number).pipe(T.Body("status_code"))),
-  }),
-).annotate({
-  identifier: "GetResponseRulesItemFixedResponse",
-}) as any as S.Schema<GetResponseRulesItemFixedResponse>;
+export type GetResponseRulesItemFixedResponse =
+  CreateResponseRulesItemFixedResponse;
+export const GetResponseRulesItemFixedResponse =
+  CreateResponseRulesItemFixedResponse;
 
 export type GetResponseRulesItemOverridesCountryPoolsMap = {
   [key: string]: unknown | undefined;
@@ -2934,7 +2862,7 @@ export const GetResponseRulesItemOverridesSteeringPolicy =
 
 export interface GetResponseRulesItemOverrides {
   /** Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as during the interval between active health monitoring requests. For example, zero-downtime failover occurs immediately when an origin becomes unavailable due to HTTP 521, 522, or 523 response codes. If there is another healthy origin in the same pool, the request is retried once against this alternate origin. */
-  adaptiveRouting?: GetResponseAdaptiveRouting | null;
+  adaptiveRouting?: CreateResponseAdaptiveRouting | null;
   /** A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region_pool mapping if it exists else to default_pools. */
   countryPools?: GetResponseRulesItemOverridesCountryPoolsMap | null;
   /** A list of pool IDs ordered by their failover priority. Pools defined here are used by default, or when region_pools are not configured for a given region. */
@@ -2963,7 +2891,7 @@ export interface GetResponseRulesItemOverrides {
 export const GetResponseRulesItemOverrides = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     adaptiveRouting: S.optional(
-      S.NullOr(GetResponseAdaptiveRouting).pipe(T.Body("adaptive_routing")),
+      S.NullOr(CreateResponseAdaptiveRouting).pipe(T.Body("adaptive_routing")),
     ),
     countryPools: S.optional(
       S.NullOr(GetResponseRulesItemOverridesCountryPoolsMap).pipe(
@@ -3022,7 +2950,7 @@ export interface GetResponseRulesItem {
   /** Disable this specific rule. It will no longer be evaluated by this load balancer. */
   disabled?: boolean | null;
   /** A collection of fields used to directly respond to the eyeball instead of routing to a pool. If a fixed_response is supplied the rule will be marked as terminates. */
-  fixedResponse?: GetResponseRulesItemFixedResponse | null;
+  fixedResponse?: CreateResponseRulesItemFixedResponse | null;
   /** Name of this rule. Only used for human readability. */
   name?: string | null;
   /** A collection of overrides to apply to the load balancer when this rule's condition is true. All fields are optional. */
@@ -3037,7 +2965,7 @@ export const GetResponseRulesItem = /*@__PURE__*/ S.suspend(() =>
     condition: S.optional(S.NullOr(S.String)),
     disabled: S.optional(S.NullOr(S.Boolean)),
     fixedResponse: S.optional(
-      S.NullOr(GetResponseRulesItemFixedResponse).pipe(
+      S.NullOr(CreateResponseRulesItemFixedResponse).pipe(
         T.Body("fixed_response"),
       ),
     ),
@@ -3059,7 +2987,7 @@ export const GetResponseRulesList = /*@__PURE__*/ S.Array(
 export interface GetLoadBalancerResponse {
   id?: string | null;
   /** Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as during the interval between active health monitoring requests. For example, zero-downtime failover occurs immediately when an origin becomes unavailable due to HTTP 521, 522, or 523 response codes. If there is another healthy origin in the same pool, the request is retried once against this alternate origin. */
-  adaptiveRouting?: GetResponseAdaptiveRouting | null;
+  adaptiveRouting?: CreateResponseAdaptiveRouting | null;
   /** A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region_pool mapping if it exists else to default_pools. */
   countryPools?: GetResponseCountryPoolsMap | null;
   createdOn?: string | null;
@@ -3104,7 +3032,7 @@ export const GetLoadBalancerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.String)),
     adaptiveRouting: S.optional(
-      S.NullOr(GetResponseAdaptiveRouting).pipe(T.Body("adaptive_routing")),
+      S.NullOr(CreateResponseAdaptiveRouting).pipe(T.Body("adaptive_routing")),
     ),
     countryPools: S.optional(
       S.NullOr(GetResponseCountryPoolsMap).pipe(T.Body("country_pools")),
@@ -3293,37 +3221,15 @@ export const GetMonitorGroupRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetMonitorGroupRequest",
 }) as any as S.Schema<GetMonitorGroupRequest>;
 
-export interface MonitorGroupsGetResponseMembersItem {
-  /** Whether this monitor is enabled in the group */
-  enabled: boolean;
-  /** The ID of the Monitor to use for checking the health of origins within this pool. */
-  monitorId: string;
-  /** Whether this monitor is used for monitoring only (does not affect pool health) */
-  monitoringOnly: boolean;
-  /** Whether this monitor must be healthy for the pool to be considered healthy */
-  mustBeHealthy: boolean;
-  /** The timestamp of when the monitor was added to the group */
-  createdAt?: string | null;
-  /** The timestamp of when the monitor group member was last updated */
-  updatedAt?: string | null;
-}
-export const MonitorGroupsGetResponseMembersItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.Boolean,
-    monitorId: S.String.pipe(T.Body("monitor_id")),
-    monitoringOnly: S.Boolean.pipe(T.Body("monitoring_only")),
-    mustBeHealthy: S.Boolean.pipe(T.Body("must_be_healthy")),
-    createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
-    updatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("updated_at"))),
-  }),
-).annotate({
-  identifier: "MonitorGroupsGetResponseMembersItem",
-}) as any as S.Schema<MonitorGroupsGetResponseMembersItem>;
+export type MonitorGroupsGetResponseMembersItem =
+  MonitorGroupsCreateResponseMembersItem;
+export const MonitorGroupsGetResponseMembersItem =
+  MonitorGroupsCreateResponseMembersItem;
 
 export type MonitorGroupsGetResponseMembersList =
-  Array<MonitorGroupsGetResponseMembersItem>;
+  Array<MonitorGroupsCreateResponseMembersItem>;
 export const MonitorGroupsGetResponseMembersList = /*@__PURE__*/ S.Array(
-  MonitorGroupsGetResponseMembersItem,
+  MonitorGroupsCreateResponseMembersItem,
 ) as any as S.Schema<MonitorGroupsGetResponseMembersList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -3585,36 +3491,15 @@ export const PoolsGetResponseNetworksList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoolsGetResponseNetworksList>;
 
-export interface PoolsGetResponseNotificationFilterOrigin {
-  /** If set true, disable notifications for this type of resource (pool or origin). */
-  disable?: boolean | null;
-  /** If present, send notifications only for this health status (e.g. false for only DOWN events). Use null to reset (all events). */
-  healthy?: boolean | null;
-}
-export const PoolsGetResponseNotificationFilterOrigin = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      disable: S.optional(S.NullOr(S.Boolean)),
-      healthy: S.optional(S.NullOr(S.Boolean)),
-    }),
-).annotate({
-  identifier: "PoolsGetResponseNotificationFilterOrigin",
-}) as any as S.Schema<PoolsGetResponseNotificationFilterOrigin>;
+export type PoolsGetResponseNotificationFilterOrigin =
+  PoolsBulkEditResultItemNotificationFilterOrigin;
+export const PoolsGetResponseNotificationFilterOrigin =
+  PoolsBulkEditResultItemNotificationFilterOrigin;
 
-export interface PoolsGetResponseNotificationFilter {
-  /** Filter options for a particular resource type (pool or origin). Use null to reset. */
-  origin?: PoolsGetResponseNotificationFilterOrigin | null;
-  /** Filter options for a particular resource type (pool or origin). Use null to reset. */
-  pool?: PoolsGetResponseNotificationFilterOrigin | null;
-}
-export const PoolsGetResponseNotificationFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    origin: S.optional(S.NullOr(PoolsGetResponseNotificationFilterOrigin)),
-    pool: S.optional(S.NullOr(PoolsGetResponseNotificationFilterOrigin)),
-  }),
-).annotate({
-  identifier: "PoolsGetResponseNotificationFilter",
-}) as any as S.Schema<PoolsGetResponseNotificationFilter>;
+export type PoolsGetResponseNotificationFilter =
+  PoolsBulkEditResultItemNotificationFilter;
+export const PoolsGetResponseNotificationFilter =
+  PoolsBulkEditResultItemNotificationFilter;
 
 export type PoolsGetResponseOriginSteeringPolicy =
   | "random"
@@ -3729,7 +3614,7 @@ export interface GetPoolResponse {
   /** This field is now deprecated. It has been moved to Cloudflare's Centralized Notification service https://developers.cloudflare.com/fundamentals/notifications/. The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list. */
   notificationEmail?: string | null;
   /** Filter pool and origin health notifications by resource type or health status. Use null to reset. */
-  notificationFilter?: PoolsGetResponseNotificationFilter | null;
+  notificationFilter?: PoolsBulkEditResultItemNotificationFilter | null;
   /** Configures origin steering for the pool. Controls how origins are selected for new sessions and traffic without session affinity. */
   originSteering?: PoolsGetResponseOriginSteering | null;
   /** The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy. */
@@ -3762,7 +3647,7 @@ export const GetPoolResponse = /*@__PURE__*/ S.suspend(() =>
       S.NullOr(S.String).pipe(T.Body("notification_email")),
     ),
     notificationFilter: S.optional(
-      S.NullOr(PoolsGetResponseNotificationFilter).pipe(
+      S.NullOr(PoolsBulkEditResultItemNotificationFilter).pipe(
         T.Body("notification_filter"),
       ),
     ),
@@ -4096,19 +3981,8 @@ export const ListLoadBalancersRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListLoadBalancersRequest",
 }) as any as S.Schema<ListLoadBalancersRequest>;
 
-export interface ListResultItemAdaptiveRouting {
-  /** Extends zero-downtime failover of requests to healthy origins from alternate pools, when no healthy alternate exists in the same pool, according to the failover order defined by traffic and origin steering. When set false (the default) zero-downtime failover will only occur between origins within the same pool. See `session_affinity_attributes` for control over when sessions are broken or reassigned. */
-  failoverAcrossPools?: boolean | null;
-}
-export const ListResultItemAdaptiveRouting = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    failoverAcrossPools: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("failover_across_pools")),
-    ),
-  }),
-).annotate({
-  identifier: "ListResultItemAdaptiveRouting",
-}) as any as S.Schema<ListResultItemAdaptiveRouting>;
+export type ListResultItemAdaptiveRouting = CreateResponseAdaptiveRouting;
+export const ListResultItemAdaptiveRouting = CreateResponseAdaptiveRouting;
 
 export type ListResultItemCountryPoolsMap = {
   [key: string]: unknown | undefined;
@@ -4201,27 +4075,10 @@ export const ListResultItemRegionPoolsMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<ListResultItemRegionPoolsMap>;
 
-export interface ListResultItemRulesItemFixedResponse {
-  /** The http 'Content-Type' header to include in the response. */
-  contentType?: string | null;
-  /** The http 'Location' header to include in the response. */
-  location?: string | null;
-  /** Text to include as the http body. */
-  messageBody?: string | null;
-  /** The http status code to respond with. */
-  statusCode?: number | null;
-}
-export const ListResultItemRulesItemFixedResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      contentType: S.optional(S.NullOr(S.String).pipe(T.Body("content_type"))),
-      location: S.optional(S.NullOr(S.String)),
-      messageBody: S.optional(S.NullOr(S.String).pipe(T.Body("message_body"))),
-      statusCode: S.optional(S.NullOr(S.Number).pipe(T.Body("status_code"))),
-    }),
-).annotate({
-  identifier: "ListResultItemRulesItemFixedResponse",
-}) as any as S.Schema<ListResultItemRulesItemFixedResponse>;
+export type ListResultItemRulesItemFixedResponse =
+  CreateResponseRulesItemFixedResponse;
+export const ListResultItemRulesItemFixedResponse =
+  CreateResponseRulesItemFixedResponse;
 
 export type ListResultItemRulesItemOverridesCountryPoolsMap = {
   [key: string]: unknown | undefined;
@@ -4353,7 +4210,7 @@ export const ListResultItemRulesItemOverridesSteeringPolicy =
 
 export interface ListResultItemRulesItemOverrides {
   /** Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as during the interval between active health monitoring requests. For example, zero-downtime failover occurs immediately when an origin becomes unavailable due to HTTP 521, 522, or 523 response codes. If there is another healthy origin in the same pool, the request is retried once against this alternate origin. */
-  adaptiveRouting?: ListResultItemAdaptiveRouting | null;
+  adaptiveRouting?: CreateResponseAdaptiveRouting | null;
   /** A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region_pool mapping if it exists else to default_pools. */
   countryPools?: ListResultItemRulesItemOverridesCountryPoolsMap | null;
   /** A list of pool IDs ordered by their failover priority. Pools defined here are used by default, or when region_pools are not configured for a given region. */
@@ -4382,7 +4239,7 @@ export interface ListResultItemRulesItemOverrides {
 export const ListResultItemRulesItemOverrides = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     adaptiveRouting: S.optional(
-      S.NullOr(ListResultItemAdaptiveRouting).pipe(T.Body("adaptive_routing")),
+      S.NullOr(CreateResponseAdaptiveRouting).pipe(T.Body("adaptive_routing")),
     ),
     countryPools: S.optional(
       S.NullOr(ListResultItemRulesItemOverridesCountryPoolsMap).pipe(
@@ -4443,7 +4300,7 @@ export interface ListResultItemRulesItem {
   /** Disable this specific rule. It will no longer be evaluated by this load balancer. */
   disabled?: boolean | null;
   /** A collection of fields used to directly respond to the eyeball instead of routing to a pool. If a fixed_response is supplied the rule will be marked as terminates. */
-  fixedResponse?: ListResultItemRulesItemFixedResponse | null;
+  fixedResponse?: CreateResponseRulesItemFixedResponse | null;
   /** Name of this rule. Only used for human readability. */
   name?: string | null;
   /** A collection of overrides to apply to the load balancer when this rule's condition is true. All fields are optional. */
@@ -4458,7 +4315,7 @@ export const ListResultItemRulesItem = /*@__PURE__*/ S.suspend(() =>
     condition: S.optional(S.NullOr(S.String)),
     disabled: S.optional(S.NullOr(S.Boolean)),
     fixedResponse: S.optional(
-      S.NullOr(ListResultItemRulesItemFixedResponse).pipe(
+      S.NullOr(CreateResponseRulesItemFixedResponse).pipe(
         T.Body("fixed_response"),
       ),
     ),
@@ -4479,7 +4336,7 @@ export const ListResultItemRulesList = /*@__PURE__*/ S.Array(
 export interface ListResultItem {
   id?: string | null;
   /** Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as during the interval between active health monitoring requests. For example, zero-downtime failover occurs immediately when an origin becomes unavailable due to HTTP 521, 522, or 523 response codes. If there is another healthy origin in the same pool, the request is retried once against this alternate origin. */
-  adaptiveRouting?: ListResultItemAdaptiveRouting | null;
+  adaptiveRouting?: CreateResponseAdaptiveRouting | null;
   /** A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region_pool mapping if it exists else to default_pools. */
   countryPools?: ListResultItemCountryPoolsMap | null;
   createdOn?: string | null;
@@ -4524,7 +4381,7 @@ export const ListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.String)),
     adaptiveRouting: S.optional(
-      S.NullOr(ListResultItemAdaptiveRouting).pipe(T.Body("adaptive_routing")),
+      S.NullOr(CreateResponseAdaptiveRouting).pipe(T.Body("adaptive_routing")),
     ),
     countryPools: S.optional(
       S.NullOr(ListResultItemCountryPoolsMap).pipe(T.Body("country_pools")),
@@ -4618,38 +4475,15 @@ export const ListMonitorGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListMonitorGroupsRequest",
 }) as any as S.Schema<ListMonitorGroupsRequest>;
 
-export interface MonitorGroupsListResultItemMembersItem {
-  /** Whether this monitor is enabled in the group */
-  enabled: boolean;
-  /** The ID of the Monitor to use for checking the health of origins within this pool. */
-  monitorId: string;
-  /** Whether this monitor is used for monitoring only (does not affect pool health) */
-  monitoringOnly: boolean;
-  /** Whether this monitor must be healthy for the pool to be considered healthy */
-  mustBeHealthy: boolean;
-  /** The timestamp of when the monitor was added to the group */
-  createdAt?: string | null;
-  /** The timestamp of when the monitor group member was last updated */
-  updatedAt?: string | null;
-}
-export const MonitorGroupsListResultItemMembersItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      enabled: S.Boolean,
-      monitorId: S.String.pipe(T.Body("monitor_id")),
-      monitoringOnly: S.Boolean.pipe(T.Body("monitoring_only")),
-      mustBeHealthy: S.Boolean.pipe(T.Body("must_be_healthy")),
-      createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
-      updatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("updated_at"))),
-    }),
-).annotate({
-  identifier: "MonitorGroupsListResultItemMembersItem",
-}) as any as S.Schema<MonitorGroupsListResultItemMembersItem>;
+export type MonitorGroupsListResultItemMembersItem =
+  MonitorGroupsCreateResponseMembersItem;
+export const MonitorGroupsListResultItemMembersItem =
+  MonitorGroupsCreateResponseMembersItem;
 
 export type MonitorGroupsListResultItemMembersList =
-  Array<MonitorGroupsListResultItemMembersItem>;
+  Array<MonitorGroupsCreateResponseMembersItem>;
 export const MonitorGroupsListResultItemMembersList = /*@__PURE__*/ S.Array(
-  MonitorGroupsListResultItemMembersItem,
+  MonitorGroupsCreateResponseMembersItem,
 ) as any as S.Schema<MonitorGroupsListResultItemMembersList>;
 
 export interface MonitorGroupsListResultItem {
@@ -4918,37 +4752,15 @@ export const PoolsListResultItemNetworksList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoolsListResultItemNetworksList>;
 
-export interface PoolsListResultItemNotificationFilterOrigin {
-  /** If set true, disable notifications for this type of resource (pool or origin). */
-  disable?: boolean | null;
-  /** If present, send notifications only for this health status (e.g. false for only DOWN events). Use null to reset (all events). */
-  healthy?: boolean | null;
-}
+export type PoolsListResultItemNotificationFilterOrigin =
+  PoolsBulkEditResultItemNotificationFilterOrigin;
 export const PoolsListResultItemNotificationFilterOrigin =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      disable: S.optional(S.NullOr(S.Boolean)),
-      healthy: S.optional(S.NullOr(S.Boolean)),
-    }),
-  ).annotate({
-    identifier: "PoolsListResultItemNotificationFilterOrigin",
-  }) as any as S.Schema<PoolsListResultItemNotificationFilterOrigin>;
+  PoolsBulkEditResultItemNotificationFilterOrigin;
 
-export interface PoolsListResultItemNotificationFilter {
-  /** Filter options for a particular resource type (pool or origin). Use null to reset. */
-  origin?: PoolsListResultItemNotificationFilterOrigin | null;
-  /** Filter options for a particular resource type (pool or origin). Use null to reset. */
-  pool?: PoolsListResultItemNotificationFilterOrigin | null;
-}
-export const PoolsListResultItemNotificationFilter = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      origin: S.optional(S.NullOr(PoolsListResultItemNotificationFilterOrigin)),
-      pool: S.optional(S.NullOr(PoolsListResultItemNotificationFilterOrigin)),
-    }),
-).annotate({
-  identifier: "PoolsListResultItemNotificationFilter",
-}) as any as S.Schema<PoolsListResultItemNotificationFilter>;
+export type PoolsListResultItemNotificationFilter =
+  PoolsBulkEditResultItemNotificationFilter;
+export const PoolsListResultItemNotificationFilter =
+  PoolsBulkEditResultItemNotificationFilter;
 
 export type PoolsListResultItemOriginSteeringPolicy =
   | "random"
@@ -5067,7 +4879,7 @@ export interface PoolsListResultItem {
   /** This field is now deprecated. It has been moved to Cloudflare's Centralized Notification service https://developers.cloudflare.com/fundamentals/notifications/. The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list. */
   notificationEmail?: string | null;
   /** Filter pool and origin health notifications by resource type or health status. Use null to reset. */
-  notificationFilter?: PoolsListResultItemNotificationFilter | null;
+  notificationFilter?: PoolsBulkEditResultItemNotificationFilter | null;
   /** Configures origin steering for the pool. Controls how origins are selected for new sessions and traffic without session affinity. */
   originSteering?: PoolsListResultItemOriginSteering | null;
   /** The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy. */
@@ -5102,7 +4914,7 @@ export const PoolsListResultItem = /*@__PURE__*/ S.suspend(() =>
       S.NullOr(S.String).pipe(T.Body("notification_email")),
     ),
     notificationFilter: S.optional(
-      S.NullOr(PoolsListResultItemNotificationFilter).pipe(
+      S.NullOr(PoolsBulkEditResultItemNotificationFilter).pipe(
         T.Body("notification_filter"),
       ),
     ),
@@ -5279,19 +5091,8 @@ export const ListSearchesResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListSearchesResponse",
 }) as any as S.Schema<ListSearchesResponse>;
 
-export interface EditRequestAdaptiveRouting {
-  /** Extends zero-downtime failover of requests to healthy origins from alternate pools, when no healthy alternate exists in the same pool, according to the failover order defined by traffic and origin steering. When set false (the default) zero-downtime failover will only occur between origins within the same pool. See `session_affinity_attributes` for control over when sessions are broken or reassigned. */
-  failoverAcrossPools?: boolean;
-}
-export const EditRequestAdaptiveRouting = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    failoverAcrossPools: S.optional(
-      S.Boolean.pipe(T.Body("failover_across_pools")),
-    ),
-  }),
-).annotate({
-  identifier: "EditRequestAdaptiveRouting",
-}) as any as S.Schema<EditRequestAdaptiveRouting>;
+export type EditRequestAdaptiveRouting = CreateRequestAdaptiveRouting;
+export const EditRequestAdaptiveRouting = CreateRequestAdaptiveRouting;
 
 export type EditRequestCountryPoolsMap = { [key: string]: unknown | undefined };
 export const EditRequestCountryPoolsMap = /*@__PURE__*/ S.Record(
@@ -5368,26 +5169,10 @@ export const EditRequestRegionPoolsMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<EditRequestRegionPoolsMap>;
 
-export interface EditRequestRulesItemFixedResponse {
-  /** The http 'Content-Type' header to include in the response. */
-  contentType?: string;
-  /** The http 'Location' header to include in the response. */
-  location?: string;
-  /** Text to include as the http body. */
-  messageBody?: string;
-  /** The http status code to respond with. */
-  statusCode?: number;
-}
-export const EditRequestRulesItemFixedResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    contentType: S.optional(S.String.pipe(T.Body("content_type"))),
-    location: S.optional(S.String),
-    messageBody: S.optional(S.String.pipe(T.Body("message_body"))),
-    statusCode: S.optional(S.Number.pipe(T.Body("status_code"))),
-  }),
-).annotate({
-  identifier: "EditRequestRulesItemFixedResponse",
-}) as any as S.Schema<EditRequestRulesItemFixedResponse>;
+export type EditRequestRulesItemFixedResponse =
+  CreateRequestRulesItemFixedResponse;
+export const EditRequestRulesItemFixedResponse =
+  CreateRequestRulesItemFixedResponse;
 
 export type EditRequestRulesItemOverridesCountryPoolsMap = {
   [key: string]: unknown | undefined;
@@ -5516,7 +5301,7 @@ export const EditRequestRulesItemOverridesSteeringPolicy =
 
 export interface EditRequestRulesItemOverrides {
   /** Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as during the interval between active health monitoring requests. For example, zero-downtime failover occurs immediately when an origin becomes unavailable due to HTTP 521, 522, or 523 response codes. If there is another healthy origin in the same pool, the request is retried once against this alternate origin. */
-  adaptiveRouting?: EditRequestAdaptiveRouting;
+  adaptiveRouting?: CreateRequestAdaptiveRouting;
   /** A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region_pool mapping if it exists else to default_pools. */
   countryPools?: EditRequestRulesItemOverridesCountryPoolsMap;
   /** A list of pool IDs ordered by their failover priority. Pools defined here are used by default, or when region_pools are not configured for a given region. */
@@ -5547,7 +5332,7 @@ export interface EditRequestRulesItemOverrides {
 export const EditRequestRulesItemOverrides = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     adaptiveRouting: S.optional(
-      EditRequestAdaptiveRouting.pipe(T.Body("adaptive_routing")),
+      CreateRequestAdaptiveRouting.pipe(T.Body("adaptive_routing")),
     ),
     countryPools: S.optional(
       EditRequestRulesItemOverridesCountryPoolsMap.pipe(
@@ -5602,7 +5387,7 @@ export interface EditRequestRulesItem {
   /** Disable this specific rule. It will no longer be evaluated by this load balancer. */
   disabled?: boolean;
   /** A collection of fields used to directly respond to the eyeball instead of routing to a pool. If a fixed_response is supplied the rule will be marked as terminates. */
-  fixedResponse?: EditRequestRulesItemFixedResponse;
+  fixedResponse?: CreateRequestRulesItemFixedResponse;
   /** Name of this rule. Only used for human readability. */
   name?: string;
   /** A collection of overrides to apply to the load balancer when this rule's condition is true. All fields are optional. */
@@ -5617,7 +5402,7 @@ export const EditRequestRulesItem = /*@__PURE__*/ S.suspend(() =>
     condition: S.optional(S.String),
     disabled: S.optional(S.Boolean),
     fixedResponse: S.optional(
-      EditRequestRulesItemFixedResponse.pipe(T.Body("fixed_response")),
+      CreateRequestRulesItemFixedResponse.pipe(T.Body("fixed_response")),
     ),
     name: S.optional(S.String),
     overrides: S.optional(EditRequestRulesItemOverrides),
@@ -5637,7 +5422,7 @@ export interface PatchLoadBalancerRequest {
   zoneId: string;
   loadBalancerId: string;
   /** Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as during the interval between active health monitoring requests. For example, zero-downtime failover occurs immediately when an origin becomes unavailable due to HTTP 521, 522, or 523 response codes. If there is another healthy origin in the same pool, the request is retried once against this alternate origin. */
-  adaptiveRouting?: EditRequestAdaptiveRouting;
+  adaptiveRouting?: CreateRequestAdaptiveRouting;
   /** A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region_pool mapping if it exists else to default_pools. */
   countryPools?: EditRequestCountryPoolsMap;
   /** A list of pool IDs ordered by their failover priority. Pools defined here are used by default, or when region_pools are not configured for a given region. */
@@ -5680,7 +5465,7 @@ export const PatchLoadBalancerRequest = /*@__PURE__*/ S.suspend(() =>
     zoneId: S.String.pipe(T.Label("zone_id")),
     loadBalancerId: S.String.pipe(T.Label("load_balancer_id")),
     adaptiveRouting: S.optional(
-      EditRequestAdaptiveRouting.pipe(T.Body("adaptive_routing")),
+      CreateRequestAdaptiveRouting.pipe(T.Body("adaptive_routing")),
     ),
     countryPools: S.optional(
       EditRequestCountryPoolsMap.pipe(T.Body("country_pools")),
@@ -5736,19 +5521,8 @@ export const PatchLoadBalancerRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchLoadBalancerRequest",
 }) as any as S.Schema<PatchLoadBalancerRequest>;
 
-export interface EditResponseAdaptiveRouting {
-  /** Extends zero-downtime failover of requests to healthy origins from alternate pools, when no healthy alternate exists in the same pool, according to the failover order defined by traffic and origin steering. When set false (the default) zero-downtime failover will only occur between origins within the same pool. See `session_affinity_attributes` for control over when sessions are broken or reassigned. */
-  failoverAcrossPools?: boolean | null;
-}
-export const EditResponseAdaptiveRouting = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    failoverAcrossPools: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("failover_across_pools")),
-    ),
-  }),
-).annotate({
-  identifier: "EditResponseAdaptiveRouting",
-}) as any as S.Schema<EditResponseAdaptiveRouting>;
+export type EditResponseAdaptiveRouting = CreateResponseAdaptiveRouting;
+export const EditResponseAdaptiveRouting = CreateResponseAdaptiveRouting;
 
 export type EditResponseCountryPoolsMap = {
   [key: string]: unknown | undefined;
@@ -5838,26 +5612,10 @@ export const EditResponseRegionPoolsMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<EditResponseRegionPoolsMap>;
 
-export interface EditResponseRulesItemFixedResponse {
-  /** The http 'Content-Type' header to include in the response. */
-  contentType?: string | null;
-  /** The http 'Location' header to include in the response. */
-  location?: string | null;
-  /** Text to include as the http body. */
-  messageBody?: string | null;
-  /** The http status code to respond with. */
-  statusCode?: number | null;
-}
-export const EditResponseRulesItemFixedResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    contentType: S.optional(S.NullOr(S.String).pipe(T.Body("content_type"))),
-    location: S.optional(S.NullOr(S.String)),
-    messageBody: S.optional(S.NullOr(S.String).pipe(T.Body("message_body"))),
-    statusCode: S.optional(S.NullOr(S.Number).pipe(T.Body("status_code"))),
-  }),
-).annotate({
-  identifier: "EditResponseRulesItemFixedResponse",
-}) as any as S.Schema<EditResponseRulesItemFixedResponse>;
+export type EditResponseRulesItemFixedResponse =
+  CreateResponseRulesItemFixedResponse;
+export const EditResponseRulesItemFixedResponse =
+  CreateResponseRulesItemFixedResponse;
 
 export type EditResponseRulesItemOverridesCountryPoolsMap = {
   [key: string]: unknown | undefined;
@@ -5986,7 +5744,7 @@ export const EditResponseRulesItemOverridesSteeringPolicy =
 
 export interface EditResponseRulesItemOverrides {
   /** Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as during the interval between active health monitoring requests. For example, zero-downtime failover occurs immediately when an origin becomes unavailable due to HTTP 521, 522, or 523 response codes. If there is another healthy origin in the same pool, the request is retried once against this alternate origin. */
-  adaptiveRouting?: EditResponseAdaptiveRouting | null;
+  adaptiveRouting?: CreateResponseAdaptiveRouting | null;
   /** A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region_pool mapping if it exists else to default_pools. */
   countryPools?: EditResponseRulesItemOverridesCountryPoolsMap | null;
   /** A list of pool IDs ordered by their failover priority. Pools defined here are used by default, or when region_pools are not configured for a given region. */
@@ -6015,7 +5773,7 @@ export interface EditResponseRulesItemOverrides {
 export const EditResponseRulesItemOverrides = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     adaptiveRouting: S.optional(
-      S.NullOr(EditResponseAdaptiveRouting).pipe(T.Body("adaptive_routing")),
+      S.NullOr(CreateResponseAdaptiveRouting).pipe(T.Body("adaptive_routing")),
     ),
     countryPools: S.optional(
       S.NullOr(EditResponseRulesItemOverridesCountryPoolsMap).pipe(
@@ -6074,7 +5832,7 @@ export interface EditResponseRulesItem {
   /** Disable this specific rule. It will no longer be evaluated by this load balancer. */
   disabled?: boolean | null;
   /** A collection of fields used to directly respond to the eyeball instead of routing to a pool. If a fixed_response is supplied the rule will be marked as terminates. */
-  fixedResponse?: EditResponseRulesItemFixedResponse | null;
+  fixedResponse?: CreateResponseRulesItemFixedResponse | null;
   /** Name of this rule. Only used for human readability. */
   name?: string | null;
   /** A collection of overrides to apply to the load balancer when this rule's condition is true. All fields are optional. */
@@ -6089,7 +5847,7 @@ export const EditResponseRulesItem = /*@__PURE__*/ S.suspend(() =>
     condition: S.optional(S.NullOr(S.String)),
     disabled: S.optional(S.NullOr(S.Boolean)),
     fixedResponse: S.optional(
-      S.NullOr(EditResponseRulesItemFixedResponse).pipe(
+      S.NullOr(CreateResponseRulesItemFixedResponse).pipe(
         T.Body("fixed_response"),
       ),
     ),
@@ -6111,7 +5869,7 @@ export const EditResponseRulesList = /*@__PURE__*/ S.Array(
 export interface PatchLoadBalancerResponse {
   id?: string | null;
   /** Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as during the interval between active health monitoring requests. For example, zero-downtime failover occurs immediately when an origin becomes unavailable due to HTTP 521, 522, or 523 response codes. If there is another healthy origin in the same pool, the request is retried once against this alternate origin. */
-  adaptiveRouting?: EditResponseAdaptiveRouting | null;
+  adaptiveRouting?: CreateResponseAdaptiveRouting | null;
   /** A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region_pool mapping if it exists else to default_pools. */
   countryPools?: EditResponseCountryPoolsMap | null;
   createdOn?: string | null;
@@ -6156,7 +5914,7 @@ export const PatchLoadBalancerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.String)),
     adaptiveRouting: S.optional(
-      S.NullOr(EditResponseAdaptiveRouting).pipe(T.Body("adaptive_routing")),
+      S.NullOr(CreateResponseAdaptiveRouting).pipe(T.Body("adaptive_routing")),
     ),
     countryPools: S.optional(
       S.NullOr(EditResponseCountryPoolsMap).pipe(T.Body("country_pools")),
@@ -6388,37 +6146,15 @@ export const PatchMonitorResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchMonitorResponse",
 }) as any as S.Schema<PatchMonitorResponse>;
 
-export interface MonitorGroupsEditRequestMembersItem {
-  /** Whether this monitor is enabled in the group */
-  enabled: boolean;
-  /** The ID of the Monitor to use for checking the health of origins within this pool. */
-  monitorId: string;
-  /** Whether this monitor is used for monitoring only (does not affect pool health) */
-  monitoringOnly: boolean;
-  /** Whether this monitor must be healthy for the pool to be considered healthy */
-  mustBeHealthy: boolean;
-  /** The timestamp of when the monitor was added to the group */
-  createdAt?: string;
-  /** The timestamp of when the monitor group member was last updated */
-  updatedAt?: string;
-}
-export const MonitorGroupsEditRequestMembersItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.Boolean,
-    monitorId: S.String.pipe(T.Body("monitor_id")),
-    monitoringOnly: S.Boolean.pipe(T.Body("monitoring_only")),
-    mustBeHealthy: S.Boolean.pipe(T.Body("must_be_healthy")),
-    createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
-    updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
-  }),
-).annotate({
-  identifier: "MonitorGroupsEditRequestMembersItem",
-}) as any as S.Schema<MonitorGroupsEditRequestMembersItem>;
+export type MonitorGroupsEditRequestMembersItem =
+  MonitorGroupsCreateRequestMembersItem;
+export const MonitorGroupsEditRequestMembersItem =
+  MonitorGroupsCreateRequestMembersItem;
 
 export type MonitorGroupsEditRequestMembersList =
-  Array<MonitorGroupsEditRequestMembersItem>;
+  Array<MonitorGroupsCreateRequestMembersItem>;
 export const MonitorGroupsEditRequestMembersList = /*@__PURE__*/ S.Array(
-  MonitorGroupsEditRequestMembersItem,
+  MonitorGroupsCreateRequestMembersItem,
 ) as any as S.Schema<MonitorGroupsEditRequestMembersList>;
 
 export interface PatchMonitorGroupRequest {
@@ -6449,38 +6185,15 @@ export const PatchMonitorGroupRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchMonitorGroupRequest",
 }) as any as S.Schema<PatchMonitorGroupRequest>;
 
-export interface MonitorGroupsEditResponseMembersItem {
-  /** Whether this monitor is enabled in the group */
-  enabled: boolean;
-  /** The ID of the Monitor to use for checking the health of origins within this pool. */
-  monitorId: string;
-  /** Whether this monitor is used for monitoring only (does not affect pool health) */
-  monitoringOnly: boolean;
-  /** Whether this monitor must be healthy for the pool to be considered healthy */
-  mustBeHealthy: boolean;
-  /** The timestamp of when the monitor was added to the group */
-  createdAt?: string | null;
-  /** The timestamp of when the monitor group member was last updated */
-  updatedAt?: string | null;
-}
-export const MonitorGroupsEditResponseMembersItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      enabled: S.Boolean,
-      monitorId: S.String.pipe(T.Body("monitor_id")),
-      monitoringOnly: S.Boolean.pipe(T.Body("monitoring_only")),
-      mustBeHealthy: S.Boolean.pipe(T.Body("must_be_healthy")),
-      createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
-      updatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("updated_at"))),
-    }),
-).annotate({
-  identifier: "MonitorGroupsEditResponseMembersItem",
-}) as any as S.Schema<MonitorGroupsEditResponseMembersItem>;
+export type MonitorGroupsEditResponseMembersItem =
+  MonitorGroupsCreateResponseMembersItem;
+export const MonitorGroupsEditResponseMembersItem =
+  MonitorGroupsCreateResponseMembersItem;
 
 export type MonitorGroupsEditResponseMembersList =
-  Array<MonitorGroupsEditResponseMembersItem>;
+  Array<MonitorGroupsCreateResponseMembersItem>;
 export const MonitorGroupsEditResponseMembersList = /*@__PURE__*/ S.Array(
-  MonitorGroupsEditResponseMembersItem,
+  MonitorGroupsCreateResponseMembersItem,
 ) as any as S.Schema<MonitorGroupsEditResponseMembersList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -6563,36 +6276,15 @@ export const PoolsEditRequestLoadShedding = /*@__PURE__*/ S.suspend(() =>
   identifier: "PoolsEditRequestLoadShedding",
 }) as any as S.Schema<PoolsEditRequestLoadShedding>;
 
-export interface PoolsEditRequestNotificationFilterOrigin {
-  /** If set true, disable notifications for this type of resource (pool or origin). */
-  disable?: boolean;
-  /** If present, send notifications only for this health status (e.g. false for only DOWN events). Use null to reset (all events). */
-  healthy?: boolean;
-}
-export const PoolsEditRequestNotificationFilterOrigin = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      disable: S.optional(S.Boolean),
-      healthy: S.optional(S.Boolean),
-    }),
-).annotate({
-  identifier: "PoolsEditRequestNotificationFilterOrigin",
-}) as any as S.Schema<PoolsEditRequestNotificationFilterOrigin>;
+export type PoolsEditRequestNotificationFilterOrigin =
+  PoolsCreateRequestNotificationFilterOrigin;
+export const PoolsEditRequestNotificationFilterOrigin =
+  PoolsCreateRequestNotificationFilterOrigin;
 
-export interface PoolsEditRequestNotificationFilter {
-  /** Filter options for a particular resource type (pool or origin). Use null to reset. */
-  origin?: PoolsEditRequestNotificationFilterOrigin;
-  /** Filter options for a particular resource type (pool or origin). Use null to reset. */
-  pool?: PoolsEditRequestNotificationFilterOrigin;
-}
-export const PoolsEditRequestNotificationFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    origin: S.optional(PoolsEditRequestNotificationFilterOrigin),
-    pool: S.optional(PoolsEditRequestNotificationFilterOrigin),
-  }),
-).annotate({
-  identifier: "PoolsEditRequestNotificationFilter",
-}) as any as S.Schema<PoolsEditRequestNotificationFilter>;
+export type PoolsEditRequestNotificationFilter =
+  PoolsCreateRequestNotificationFilter;
+export const PoolsEditRequestNotificationFilter =
+  PoolsCreateRequestNotificationFilter;
 
 export type PoolsEditRequestOriginSteeringPolicy =
   | "random"
@@ -6700,7 +6392,7 @@ export interface PatchPoolRequest {
   /** This field is now deprecated. It has been moved to Cloudflare's Centralized Notification service https://developers.cloudflare.com/fundamentals/notifications/. The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list. */
   notificationEmail?: string;
   /** Filter pool and origin health notifications by resource type or health status. Use null to reset. */
-  notificationFilter?: PoolsEditRequestNotificationFilter;
+  notificationFilter?: PoolsCreateRequestNotificationFilter;
   /** Configures origin steering for the pool. Controls how origins are selected for new sessions and traffic without session affinity. */
   originSteering?: PoolsEditRequestOriginSteering;
   /** The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy. */
@@ -6726,7 +6418,7 @@ export const PatchPoolRequest = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
     notificationEmail: S.optional(S.String.pipe(T.Body("notification_email"))),
     notificationFilter: S.optional(
-      PoolsEditRequestNotificationFilter.pipe(T.Body("notification_filter")),
+      PoolsCreateRequestNotificationFilter.pipe(T.Body("notification_filter")),
     ),
     originSteering: S.optional(
       PoolsEditRequestOriginSteering.pipe(T.Body("origin_steering")),
@@ -6814,36 +6506,15 @@ export const PoolsEditResponseNetworksList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoolsEditResponseNetworksList>;
 
-export interface PoolsEditResponseNotificationFilterOrigin {
-  /** If set true, disable notifications for this type of resource (pool or origin). */
-  disable?: boolean | null;
-  /** If present, send notifications only for this health status (e.g. false for only DOWN events). Use null to reset (all events). */
-  healthy?: boolean | null;
-}
+export type PoolsEditResponseNotificationFilterOrigin =
+  PoolsBulkEditResultItemNotificationFilterOrigin;
 export const PoolsEditResponseNotificationFilterOrigin =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      disable: S.optional(S.NullOr(S.Boolean)),
-      healthy: S.optional(S.NullOr(S.Boolean)),
-    }),
-  ).annotate({
-    identifier: "PoolsEditResponseNotificationFilterOrigin",
-  }) as any as S.Schema<PoolsEditResponseNotificationFilterOrigin>;
+  PoolsBulkEditResultItemNotificationFilterOrigin;
 
-export interface PoolsEditResponseNotificationFilter {
-  /** Filter options for a particular resource type (pool or origin). Use null to reset. */
-  origin?: PoolsEditResponseNotificationFilterOrigin | null;
-  /** Filter options for a particular resource type (pool or origin). Use null to reset. */
-  pool?: PoolsEditResponseNotificationFilterOrigin | null;
-}
-export const PoolsEditResponseNotificationFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    origin: S.optional(S.NullOr(PoolsEditResponseNotificationFilterOrigin)),
-    pool: S.optional(S.NullOr(PoolsEditResponseNotificationFilterOrigin)),
-  }),
-).annotate({
-  identifier: "PoolsEditResponseNotificationFilter",
-}) as any as S.Schema<PoolsEditResponseNotificationFilter>;
+export type PoolsEditResponseNotificationFilter =
+  PoolsBulkEditResultItemNotificationFilter;
+export const PoolsEditResponseNotificationFilter =
+  PoolsBulkEditResultItemNotificationFilter;
 
 export type PoolsEditResponseOriginSteeringPolicy =
   | "random"
@@ -6958,7 +6629,7 @@ export interface PatchPoolResponse {
   /** This field is now deprecated. It has been moved to Cloudflare's Centralized Notification service https://developers.cloudflare.com/fundamentals/notifications/. The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list. */
   notificationEmail?: string | null;
   /** Filter pool and origin health notifications by resource type or health status. Use null to reset. */
-  notificationFilter?: PoolsEditResponseNotificationFilter | null;
+  notificationFilter?: PoolsBulkEditResultItemNotificationFilter | null;
   /** Configures origin steering for the pool. Controls how origins are selected for new sessions and traffic without session affinity. */
   originSteering?: PoolsEditResponseOriginSteering | null;
   /** The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy. */
@@ -6991,7 +6662,7 @@ export const PatchPoolResponse = /*@__PURE__*/ S.suspend(() =>
       S.NullOr(S.String).pipe(T.Body("notification_email")),
     ),
     notificationFilter: S.optional(
-      S.NullOr(PoolsEditResponseNotificationFilter).pipe(
+      S.NullOr(PoolsBulkEditResultItemNotificationFilter).pipe(
         T.Body("notification_filter"),
       ),
     ),
@@ -7009,19 +6680,8 @@ export const UpdateRequestDefaultPoolsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<UpdateRequestDefaultPoolsList>;
 
-export interface UpdateRequestAdaptiveRouting {
-  /** Extends zero-downtime failover of requests to healthy origins from alternate pools, when no healthy alternate exists in the same pool, according to the failover order defined by traffic and origin steering. When set false (the default) zero-downtime failover will only occur between origins within the same pool. See `session_affinity_attributes` for control over when sessions are broken or reassigned. */
-  failoverAcrossPools?: boolean;
-}
-export const UpdateRequestAdaptiveRouting = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    failoverAcrossPools: S.optional(
-      S.Boolean.pipe(T.Body("failover_across_pools")),
-    ),
-  }),
-).annotate({
-  identifier: "UpdateRequestAdaptiveRouting",
-}) as any as S.Schema<UpdateRequestAdaptiveRouting>;
+export type UpdateRequestAdaptiveRouting = CreateRequestAdaptiveRouting;
+export const UpdateRequestAdaptiveRouting = CreateRequestAdaptiveRouting;
 
 export type UpdateRequestCountryPoolsMap = {
   [key: string]: unknown | undefined;
@@ -7102,26 +6762,10 @@ export const UpdateRequestRegionPoolsMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<UpdateRequestRegionPoolsMap>;
 
-export interface UpdateRequestRulesItemFixedResponse {
-  /** The http 'Content-Type' header to include in the response. */
-  contentType?: string;
-  /** The http 'Location' header to include in the response. */
-  location?: string;
-  /** Text to include as the http body. */
-  messageBody?: string;
-  /** The http status code to respond with. */
-  statusCode?: number;
-}
-export const UpdateRequestRulesItemFixedResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    contentType: S.optional(S.String.pipe(T.Body("content_type"))),
-    location: S.optional(S.String),
-    messageBody: S.optional(S.String.pipe(T.Body("message_body"))),
-    statusCode: S.optional(S.Number.pipe(T.Body("status_code"))),
-  }),
-).annotate({
-  identifier: "UpdateRequestRulesItemFixedResponse",
-}) as any as S.Schema<UpdateRequestRulesItemFixedResponse>;
+export type UpdateRequestRulesItemFixedResponse =
+  CreateRequestRulesItemFixedResponse;
+export const UpdateRequestRulesItemFixedResponse =
+  CreateRequestRulesItemFixedResponse;
 
 export type UpdateRequestRulesItemOverridesCountryPoolsMap = {
   [key: string]: unknown | undefined;
@@ -7251,7 +6895,7 @@ export const UpdateRequestRulesItemOverridesSteeringPolicy =
 
 export interface UpdateRequestRulesItemOverrides {
   /** Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as during the interval between active health monitoring requests. For example, zero-downtime failover occurs immediately when an origin becomes unavailable due to HTTP 521, 522, or 523 response codes. If there is another healthy origin in the same pool, the request is retried once against this alternate origin. */
-  adaptiveRouting?: UpdateRequestAdaptiveRouting;
+  adaptiveRouting?: CreateRequestAdaptiveRouting;
   /** A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region_pool mapping if it exists else to default_pools. */
   countryPools?: UpdateRequestRulesItemOverridesCountryPoolsMap;
   /** A list of pool IDs ordered by their failover priority. Pools defined here are used by default, or when region_pools are not configured for a given region. */
@@ -7284,7 +6928,7 @@ export interface UpdateRequestRulesItemOverrides {
 export const UpdateRequestRulesItemOverrides = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     adaptiveRouting: S.optional(
-      UpdateRequestAdaptiveRouting.pipe(T.Body("adaptive_routing")),
+      CreateRequestAdaptiveRouting.pipe(T.Body("adaptive_routing")),
     ),
     countryPools: S.optional(
       UpdateRequestRulesItemOverridesCountryPoolsMap.pipe(
@@ -7341,7 +6985,7 @@ export interface UpdateRequestRulesItem {
   /** Disable this specific rule. It will no longer be evaluated by this load balancer. */
   disabled?: boolean;
   /** A collection of fields used to directly respond to the eyeball instead of routing to a pool. If a fixed_response is supplied the rule will be marked as terminates. */
-  fixedResponse?: UpdateRequestRulesItemFixedResponse;
+  fixedResponse?: CreateRequestRulesItemFixedResponse;
   /** Name of this rule. Only used for human readability. */
   name?: string;
   /** A collection of overrides to apply to the load balancer when this rule's condition is true. All fields are optional. */
@@ -7356,7 +7000,7 @@ export const UpdateRequestRulesItem = /*@__PURE__*/ S.suspend(() =>
     condition: S.optional(S.String),
     disabled: S.optional(S.Boolean),
     fixedResponse: S.optional(
-      UpdateRequestRulesItemFixedResponse.pipe(T.Body("fixed_response")),
+      CreateRequestRulesItemFixedResponse.pipe(T.Body("fixed_response")),
     ),
     name: S.optional(S.String),
     overrides: S.optional(UpdateRequestRulesItemOverrides),
@@ -7382,7 +7026,7 @@ export interface UpdateLoadBalancerRequest {
   /** The DNS hostname to associate with your Load Balancer. If this hostname already exists as a DNS record in Cloudflare's DNS, the Load Balancer will take precedence and the DNS record will not be used. */
   name: string;
   /** Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as during the interval between active health monitoring requests. For example, zero-downtime failover occurs immediately when an origin becomes unavailable due to HTTP 521, 522, or 523 response codes. If there is another healthy origin in the same pool, the request is retried once against this alternate origin. */
-  adaptiveRouting?: UpdateRequestAdaptiveRouting;
+  adaptiveRouting?: CreateRequestAdaptiveRouting;
   /** A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region_pool mapping if it exists else to default_pools. */
   countryPools?: UpdateRequestCountryPoolsMap;
   /** Object description. */
@@ -7426,7 +7070,7 @@ export const UpdateLoadBalancerRequest = /*@__PURE__*/ S.suspend(() =>
     fallbackPool: S.String.pipe(T.Body("fallback_pool")),
     name: S.String,
     adaptiveRouting: S.optional(
-      UpdateRequestAdaptiveRouting.pipe(T.Body("adaptive_routing")),
+      CreateRequestAdaptiveRouting.pipe(T.Body("adaptive_routing")),
     ),
     countryPools: S.optional(
       UpdateRequestCountryPoolsMap.pipe(T.Body("country_pools")),
@@ -7478,19 +7122,8 @@ export const UpdateLoadBalancerRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateLoadBalancerRequest",
 }) as any as S.Schema<UpdateLoadBalancerRequest>;
 
-export interface UpdateResponseAdaptiveRouting {
-  /** Extends zero-downtime failover of requests to healthy origins from alternate pools, when no healthy alternate exists in the same pool, according to the failover order defined by traffic and origin steering. When set false (the default) zero-downtime failover will only occur between origins within the same pool. See `session_affinity_attributes` for control over when sessions are broken or reassigned. */
-  failoverAcrossPools?: boolean | null;
-}
-export const UpdateResponseAdaptiveRouting = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    failoverAcrossPools: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("failover_across_pools")),
-    ),
-  }),
-).annotate({
-  identifier: "UpdateResponseAdaptiveRouting",
-}) as any as S.Schema<UpdateResponseAdaptiveRouting>;
+export type UpdateResponseAdaptiveRouting = CreateResponseAdaptiveRouting;
+export const UpdateResponseAdaptiveRouting = CreateResponseAdaptiveRouting;
 
 export type UpdateResponseCountryPoolsMap = {
   [key: string]: unknown | undefined;
@@ -7583,27 +7216,10 @@ export const UpdateResponseRegionPoolsMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<UpdateResponseRegionPoolsMap>;
 
-export interface UpdateResponseRulesItemFixedResponse {
-  /** The http 'Content-Type' header to include in the response. */
-  contentType?: string | null;
-  /** The http 'Location' header to include in the response. */
-  location?: string | null;
-  /** Text to include as the http body. */
-  messageBody?: string | null;
-  /** The http status code to respond with. */
-  statusCode?: number | null;
-}
-export const UpdateResponseRulesItemFixedResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      contentType: S.optional(S.NullOr(S.String).pipe(T.Body("content_type"))),
-      location: S.optional(S.NullOr(S.String)),
-      messageBody: S.optional(S.NullOr(S.String).pipe(T.Body("message_body"))),
-      statusCode: S.optional(S.NullOr(S.Number).pipe(T.Body("status_code"))),
-    }),
-).annotate({
-  identifier: "UpdateResponseRulesItemFixedResponse",
-}) as any as S.Schema<UpdateResponseRulesItemFixedResponse>;
+export type UpdateResponseRulesItemFixedResponse =
+  CreateResponseRulesItemFixedResponse;
+export const UpdateResponseRulesItemFixedResponse =
+  CreateResponseRulesItemFixedResponse;
 
 export type UpdateResponseRulesItemOverridesCountryPoolsMap = {
   [key: string]: unknown | undefined;
@@ -7735,7 +7351,7 @@ export const UpdateResponseRulesItemOverridesSteeringPolicy =
 
 export interface UpdateResponseRulesItemOverrides {
   /** Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as during the interval between active health monitoring requests. For example, zero-downtime failover occurs immediately when an origin becomes unavailable due to HTTP 521, 522, or 523 response codes. If there is another healthy origin in the same pool, the request is retried once against this alternate origin. */
-  adaptiveRouting?: UpdateResponseAdaptiveRouting | null;
+  adaptiveRouting?: CreateResponseAdaptiveRouting | null;
   /** A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region_pool mapping if it exists else to default_pools. */
   countryPools?: UpdateResponseRulesItemOverridesCountryPoolsMap | null;
   /** A list of pool IDs ordered by their failover priority. Pools defined here are used by default, or when region_pools are not configured for a given region. */
@@ -7764,7 +7380,7 @@ export interface UpdateResponseRulesItemOverrides {
 export const UpdateResponseRulesItemOverrides = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     adaptiveRouting: S.optional(
-      S.NullOr(UpdateResponseAdaptiveRouting).pipe(T.Body("adaptive_routing")),
+      S.NullOr(CreateResponseAdaptiveRouting).pipe(T.Body("adaptive_routing")),
     ),
     countryPools: S.optional(
       S.NullOr(UpdateResponseRulesItemOverridesCountryPoolsMap).pipe(
@@ -7825,7 +7441,7 @@ export interface UpdateResponseRulesItem {
   /** Disable this specific rule. It will no longer be evaluated by this load balancer. */
   disabled?: boolean | null;
   /** A collection of fields used to directly respond to the eyeball instead of routing to a pool. If a fixed_response is supplied the rule will be marked as terminates. */
-  fixedResponse?: UpdateResponseRulesItemFixedResponse | null;
+  fixedResponse?: CreateResponseRulesItemFixedResponse | null;
   /** Name of this rule. Only used for human readability. */
   name?: string | null;
   /** A collection of overrides to apply to the load balancer when this rule's condition is true. All fields are optional. */
@@ -7840,7 +7456,7 @@ export const UpdateResponseRulesItem = /*@__PURE__*/ S.suspend(() =>
     condition: S.optional(S.NullOr(S.String)),
     disabled: S.optional(S.NullOr(S.Boolean)),
     fixedResponse: S.optional(
-      S.NullOr(UpdateResponseRulesItemFixedResponse).pipe(
+      S.NullOr(CreateResponseRulesItemFixedResponse).pipe(
         T.Body("fixed_response"),
       ),
     ),
@@ -7862,7 +7478,7 @@ export const UpdateResponseRulesList = /*@__PURE__*/ S.Array(
 export interface UpdateLoadBalancerResponse {
   id?: string | null;
   /** Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as during the interval between active health monitoring requests. For example, zero-downtime failover occurs immediately when an origin becomes unavailable due to HTTP 521, 522, or 523 response codes. If there is another healthy origin in the same pool, the request is retried once against this alternate origin. */
-  adaptiveRouting?: UpdateResponseAdaptiveRouting | null;
+  adaptiveRouting?: CreateResponseAdaptiveRouting | null;
   /** A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region_pool mapping if it exists else to default_pools. */
   countryPools?: UpdateResponseCountryPoolsMap | null;
   createdOn?: string | null;
@@ -7907,7 +7523,7 @@ export const UpdateLoadBalancerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.String)),
     adaptiveRouting: S.optional(
-      S.NullOr(UpdateResponseAdaptiveRouting).pipe(T.Body("adaptive_routing")),
+      S.NullOr(CreateResponseAdaptiveRouting).pipe(T.Body("adaptive_routing")),
     ),
     countryPools: S.optional(
       S.NullOr(UpdateResponseCountryPoolsMap).pipe(T.Body("country_pools")),
@@ -8141,38 +7757,15 @@ export const UpdateMonitorResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateMonitorResponse",
 }) as any as S.Schema<UpdateMonitorResponse>;
 
-export interface MonitorGroupsUpdateRequestMembersItem {
-  /** Whether this monitor is enabled in the group */
-  enabled: boolean;
-  /** The ID of the Monitor to use for checking the health of origins within this pool. */
-  monitorId: string;
-  /** Whether this monitor is used for monitoring only (does not affect pool health) */
-  monitoringOnly: boolean;
-  /** Whether this monitor must be healthy for the pool to be considered healthy */
-  mustBeHealthy: boolean;
-  /** The timestamp of when the monitor was added to the group */
-  createdAt?: string;
-  /** The timestamp of when the monitor group member was last updated */
-  updatedAt?: string;
-}
-export const MonitorGroupsUpdateRequestMembersItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      enabled: S.Boolean,
-      monitorId: S.String.pipe(T.Body("monitor_id")),
-      monitoringOnly: S.Boolean.pipe(T.Body("monitoring_only")),
-      mustBeHealthy: S.Boolean.pipe(T.Body("must_be_healthy")),
-      createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
-      updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
-    }),
-).annotate({
-  identifier: "MonitorGroupsUpdateRequestMembersItem",
-}) as any as S.Schema<MonitorGroupsUpdateRequestMembersItem>;
+export type MonitorGroupsUpdateRequestMembersItem =
+  MonitorGroupsCreateRequestMembersItem;
+export const MonitorGroupsUpdateRequestMembersItem =
+  MonitorGroupsCreateRequestMembersItem;
 
 export type MonitorGroupsUpdateRequestMembersList =
-  Array<MonitorGroupsUpdateRequestMembersItem>;
+  Array<MonitorGroupsCreateRequestMembersItem>;
 export const MonitorGroupsUpdateRequestMembersList = /*@__PURE__*/ S.Array(
-  MonitorGroupsUpdateRequestMembersItem,
+  MonitorGroupsCreateRequestMembersItem,
 ) as any as S.Schema<MonitorGroupsUpdateRequestMembersList>;
 
 export interface UpdateMonitorGroupRequest {
@@ -8203,38 +7796,15 @@ export const UpdateMonitorGroupRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateMonitorGroupRequest",
 }) as any as S.Schema<UpdateMonitorGroupRequest>;
 
-export interface MonitorGroupsUpdateResponseMembersItem {
-  /** Whether this monitor is enabled in the group */
-  enabled: boolean;
-  /** The ID of the Monitor to use for checking the health of origins within this pool. */
-  monitorId: string;
-  /** Whether this monitor is used for monitoring only (does not affect pool health) */
-  monitoringOnly: boolean;
-  /** Whether this monitor must be healthy for the pool to be considered healthy */
-  mustBeHealthy: boolean;
-  /** The timestamp of when the monitor was added to the group */
-  createdAt?: string | null;
-  /** The timestamp of when the monitor group member was last updated */
-  updatedAt?: string | null;
-}
-export const MonitorGroupsUpdateResponseMembersItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      enabled: S.Boolean,
-      monitorId: S.String.pipe(T.Body("monitor_id")),
-      monitoringOnly: S.Boolean.pipe(T.Body("monitoring_only")),
-      mustBeHealthy: S.Boolean.pipe(T.Body("must_be_healthy")),
-      createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
-      updatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("updated_at"))),
-    }),
-).annotate({
-  identifier: "MonitorGroupsUpdateResponseMembersItem",
-}) as any as S.Schema<MonitorGroupsUpdateResponseMembersItem>;
+export type MonitorGroupsUpdateResponseMembersItem =
+  MonitorGroupsCreateResponseMembersItem;
+export const MonitorGroupsUpdateResponseMembersItem =
+  MonitorGroupsCreateResponseMembersItem;
 
 export type MonitorGroupsUpdateResponseMembersList =
-  Array<MonitorGroupsUpdateResponseMembersItem>;
+  Array<MonitorGroupsCreateResponseMembersItem>;
 export const MonitorGroupsUpdateResponseMembersList = /*@__PURE__*/ S.Array(
-  MonitorGroupsUpdateResponseMembersItem,
+  MonitorGroupsCreateResponseMembersItem,
 ) as any as S.Schema<MonitorGroupsUpdateResponseMembersList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -8385,37 +7955,15 @@ export const PoolsUpdateRequestLoadShedding = /*@__PURE__*/ S.suspend(() =>
   identifier: "PoolsUpdateRequestLoadShedding",
 }) as any as S.Schema<PoolsUpdateRequestLoadShedding>;
 
-export interface PoolsUpdateRequestNotificationFilterOrigin {
-  /** If set true, disable notifications for this type of resource (pool or origin). */
-  disable?: boolean;
-  /** If present, send notifications only for this health status (e.g. false for only DOWN events). Use null to reset (all events). */
-  healthy?: boolean;
-}
+export type PoolsUpdateRequestNotificationFilterOrigin =
+  PoolsCreateRequestNotificationFilterOrigin;
 export const PoolsUpdateRequestNotificationFilterOrigin =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      disable: S.optional(S.Boolean),
-      healthy: S.optional(S.Boolean),
-    }),
-  ).annotate({
-    identifier: "PoolsUpdateRequestNotificationFilterOrigin",
-  }) as any as S.Schema<PoolsUpdateRequestNotificationFilterOrigin>;
+  PoolsCreateRequestNotificationFilterOrigin;
 
-export interface PoolsUpdateRequestNotificationFilter {
-  /** Filter options for a particular resource type (pool or origin). Use null to reset. */
-  origin?: PoolsUpdateRequestNotificationFilterOrigin;
-  /** Filter options for a particular resource type (pool or origin). Use null to reset. */
-  pool?: PoolsUpdateRequestNotificationFilterOrigin;
-}
-export const PoolsUpdateRequestNotificationFilter = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      origin: S.optional(PoolsUpdateRequestNotificationFilterOrigin),
-      pool: S.optional(PoolsUpdateRequestNotificationFilterOrigin),
-    }),
-).annotate({
-  identifier: "PoolsUpdateRequestNotificationFilter",
-}) as any as S.Schema<PoolsUpdateRequestNotificationFilter>;
+export type PoolsUpdateRequestNotificationFilter =
+  PoolsCreateRequestNotificationFilter;
+export const PoolsUpdateRequestNotificationFilter =
+  PoolsCreateRequestNotificationFilter;
 
 export type PoolsUpdateRequestOriginSteeringPolicy =
   | "random"
@@ -8465,7 +8013,7 @@ export interface UpdatePoolRequest {
   /** This field is now deprecated. It has been moved to Cloudflare's Centralized Notification service https://developers.cloudflare.com/fundamentals/notifications/. The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list. */
   notificationEmail?: string;
   /** Filter pool and origin health notifications by resource type or health status. Use null to reset. */
-  notificationFilter?: PoolsUpdateRequestNotificationFilter;
+  notificationFilter?: PoolsCreateRequestNotificationFilter;
   /** Configures origin steering for the pool. Controls how origins are selected for new sessions and traffic without session affinity. */
   originSteering?: PoolsUpdateRequestOriginSteering;
 }
@@ -8490,7 +8038,7 @@ export const UpdatePoolRequest = /*@__PURE__*/ S.suspend(() =>
     monitorGroup: S.optional(S.String.pipe(T.Body("monitor_group"))),
     notificationEmail: S.optional(S.String.pipe(T.Body("notification_email"))),
     notificationFilter: S.optional(
-      PoolsUpdateRequestNotificationFilter.pipe(T.Body("notification_filter")),
+      PoolsCreateRequestNotificationFilter.pipe(T.Body("notification_filter")),
     ),
     originSteering: S.optional(
       PoolsUpdateRequestOriginSteering.pipe(T.Body("origin_steering")),
@@ -8577,37 +8125,15 @@ export const PoolsUpdateResponseNetworksList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoolsUpdateResponseNetworksList>;
 
-export interface PoolsUpdateResponseNotificationFilterOrigin {
-  /** If set true, disable notifications for this type of resource (pool or origin). */
-  disable?: boolean | null;
-  /** If present, send notifications only for this health status (e.g. false for only DOWN events). Use null to reset (all events). */
-  healthy?: boolean | null;
-}
+export type PoolsUpdateResponseNotificationFilterOrigin =
+  PoolsBulkEditResultItemNotificationFilterOrigin;
 export const PoolsUpdateResponseNotificationFilterOrigin =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      disable: S.optional(S.NullOr(S.Boolean)),
-      healthy: S.optional(S.NullOr(S.Boolean)),
-    }),
-  ).annotate({
-    identifier: "PoolsUpdateResponseNotificationFilterOrigin",
-  }) as any as S.Schema<PoolsUpdateResponseNotificationFilterOrigin>;
+  PoolsBulkEditResultItemNotificationFilterOrigin;
 
-export interface PoolsUpdateResponseNotificationFilter {
-  /** Filter options for a particular resource type (pool or origin). Use null to reset. */
-  origin?: PoolsUpdateResponseNotificationFilterOrigin | null;
-  /** Filter options for a particular resource type (pool or origin). Use null to reset. */
-  pool?: PoolsUpdateResponseNotificationFilterOrigin | null;
-}
-export const PoolsUpdateResponseNotificationFilter = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      origin: S.optional(S.NullOr(PoolsUpdateResponseNotificationFilterOrigin)),
-      pool: S.optional(S.NullOr(PoolsUpdateResponseNotificationFilterOrigin)),
-    }),
-).annotate({
-  identifier: "PoolsUpdateResponseNotificationFilter",
-}) as any as S.Schema<PoolsUpdateResponseNotificationFilter>;
+export type PoolsUpdateResponseNotificationFilter =
+  PoolsBulkEditResultItemNotificationFilter;
+export const PoolsUpdateResponseNotificationFilter =
+  PoolsBulkEditResultItemNotificationFilter;
 
 export type PoolsUpdateResponseOriginSteeringPolicy =
   | "random"
@@ -8727,7 +8253,7 @@ export interface UpdatePoolResponse {
   /** This field is now deprecated. It has been moved to Cloudflare's Centralized Notification service https://developers.cloudflare.com/fundamentals/notifications/. The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list. */
   notificationEmail?: string | null;
   /** Filter pool and origin health notifications by resource type or health status. Use null to reset. */
-  notificationFilter?: PoolsUpdateResponseNotificationFilter | null;
+  notificationFilter?: PoolsBulkEditResultItemNotificationFilter | null;
   /** Configures origin steering for the pool. Controls how origins are selected for new sessions and traffic without session affinity. */
   originSteering?: PoolsUpdateResponseOriginSteering | null;
   /** The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy. */
@@ -8762,7 +8288,7 @@ export const UpdatePoolResponse = /*@__PURE__*/ S.suspend(() =>
       S.NullOr(S.String).pipe(T.Body("notification_email")),
     ),
     notificationFilter: S.optional(
-      S.NullOr(PoolsUpdateResponseNotificationFilter).pipe(
+      S.NullOr(PoolsBulkEditResultItemNotificationFilter).pipe(
         T.Body("notification_filter"),
       ),
     ),

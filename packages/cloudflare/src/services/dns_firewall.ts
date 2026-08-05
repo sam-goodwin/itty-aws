@@ -679,22 +679,8 @@ export const GetResponseUpstreamIpsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetResponseUpstreamIpsList>;
 
-export interface GetResponseAttackMitigation {
-  /** When enabled, automatically mitigate random-prefix attacks to protect upstream DNS servers */
-  enabled?: boolean | null;
-  /** Only mitigate attacks when upstream servers seem unhealthy */
-  onlyWhenUpstreamUnhealthy?: boolean | null;
-}
-export const GetResponseAttackMitigation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.NullOr(S.Boolean)),
-    onlyWhenUpstreamUnhealthy: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("only_when_upstream_unhealthy")),
-    ),
-  }),
-).annotate({
-  identifier: "GetResponseAttackMitigation",
-}) as any as S.Schema<GetResponseAttackMitigation>;
+export type GetResponseAttackMitigation = CreateResponseAttackMitigation;
+export const GetResponseAttackMitigation = CreateResponseAttackMitigation;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetDnsFirewallResponse {
@@ -721,7 +707,7 @@ export interface GetDnsFirewallResponse {
   retries: number;
   upstreamIps: GetResponseUpstreamIpsList;
   /** Attack mitigation settings */
-  attackMitigation?: GetResponseAttackMitigation | null;
+  attackMitigation?: CreateResponseAttackMitigation | null;
 }
 export const GetDnsFirewallResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -740,7 +726,9 @@ export const GetDnsFirewallResponse = /*@__PURE__*/ S.suspend(() =>
     retries: S.Number,
     upstreamIps: GetResponseUpstreamIpsList.pipe(T.Body("upstream_ips")),
     attackMitigation: S.optional(
-      S.NullOr(GetResponseAttackMitigation).pipe(T.Body("attack_mitigation")),
+      S.NullOr(CreateResponseAttackMitigation).pipe(
+        T.Body("attack_mitigation"),
+      ),
     ),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
@@ -825,22 +813,8 @@ export const ListResultItemUpstreamIpsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ListResultItemUpstreamIpsList>;
 
-export interface ListResultItemAttackMitigation {
-  /** When enabled, automatically mitigate random-prefix attacks to protect upstream DNS servers */
-  enabled?: boolean | null;
-  /** Only mitigate attacks when upstream servers seem unhealthy */
-  onlyWhenUpstreamUnhealthy?: boolean | null;
-}
-export const ListResultItemAttackMitigation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.NullOr(S.Boolean)),
-    onlyWhenUpstreamUnhealthy: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("only_when_upstream_unhealthy")),
-    ),
-  }),
-).annotate({
-  identifier: "ListResultItemAttackMitigation",
-}) as any as S.Schema<ListResultItemAttackMitigation>;
+export type ListResultItemAttackMitigation = CreateResponseAttackMitigation;
+export const ListResultItemAttackMitigation = CreateResponseAttackMitigation;
 
 export interface ListResultItem {
   /** Identifier. */
@@ -866,7 +840,7 @@ export interface ListResultItem {
   retries: number;
   upstreamIps: ListResultItemUpstreamIpsList;
   /** Attack mitigation settings */
-  attackMitigation?: ListResultItemAttackMitigation | null;
+  attackMitigation?: CreateResponseAttackMitigation | null;
 }
 export const ListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -885,7 +859,7 @@ export const ListResultItem = /*@__PURE__*/ S.suspend(() =>
     retries: S.Number,
     upstreamIps: ListResultItemUpstreamIpsList.pipe(T.Body("upstream_ips")),
     attackMitigation: S.optional(
-      S.NullOr(ListResultItemAttackMitigation).pipe(
+      S.NullOr(CreateResponseAttackMitigation).pipe(
         T.Body("attack_mitigation"),
       ),
     ),
@@ -912,22 +886,8 @@ export const ListDnsFirewallsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListDnsFirewallsResponse",
 }) as any as S.Schema<ListDnsFirewallsResponse>;
 
-export interface EditRequestAttackMitigation {
-  /** When enabled, automatically mitigate random-prefix attacks to protect upstream DNS servers */
-  enabled?: boolean;
-  /** Only mitigate attacks when upstream servers seem unhealthy */
-  onlyWhenUpstreamUnhealthy?: boolean;
-}
-export const EditRequestAttackMitigation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-    onlyWhenUpstreamUnhealthy: S.optional(
-      S.Boolean.pipe(T.Body("only_when_upstream_unhealthy")),
-    ),
-  }),
-).annotate({
-  identifier: "EditRequestAttackMitigation",
-}) as any as S.Schema<EditRequestAttackMitigation>;
+export type EditRequestAttackMitigation = CreateRequestAttackMitigation;
+export const EditRequestAttackMitigation = CreateRequestAttackMitigation;
 
 export type EditRequestUpstreamIpsList = Array<string>;
 export const EditRequestUpstreamIpsList = /*@__PURE__*/ S.Array(
@@ -940,7 +900,7 @@ export interface PatchDnsFirewallRequest {
   /** Identifier. */
   dnsFirewallId: string;
   /** Attack mitigation settings */
-  attackMitigation?: EditRequestAttackMitigation;
+  attackMitigation?: CreateRequestAttackMitigation;
   /** Whether to refuse to answer queries for the ANY type */
   deprecateAnyRequests?: boolean;
   /** Whether to forward client IP (resolver) subnet if no EDNS Client Subnet is sent */
@@ -964,7 +924,7 @@ export const PatchDnsFirewallRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     dnsFirewallId: S.String.pipe(T.Label("dns_firewall_id")),
     attackMitigation: S.optional(
-      EditRequestAttackMitigation.pipe(T.Body("attack_mitigation")),
+      CreateRequestAttackMitigation.pipe(T.Body("attack_mitigation")),
     ),
     deprecateAnyRequests: S.optional(
       S.Boolean.pipe(T.Body("deprecate_any_requests")),
@@ -1004,22 +964,8 @@ export const EditResponseUpstreamIpsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<EditResponseUpstreamIpsList>;
 
-export interface EditResponseAttackMitigation {
-  /** When enabled, automatically mitigate random-prefix attacks to protect upstream DNS servers */
-  enabled?: boolean | null;
-  /** Only mitigate attacks when upstream servers seem unhealthy */
-  onlyWhenUpstreamUnhealthy?: boolean | null;
-}
-export const EditResponseAttackMitigation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.NullOr(S.Boolean)),
-    onlyWhenUpstreamUnhealthy: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("only_when_upstream_unhealthy")),
-    ),
-  }),
-).annotate({
-  identifier: "EditResponseAttackMitigation",
-}) as any as S.Schema<EditResponseAttackMitigation>;
+export type EditResponseAttackMitigation = CreateResponseAttackMitigation;
+export const EditResponseAttackMitigation = CreateResponseAttackMitigation;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PatchDnsFirewallResponse {
@@ -1046,7 +992,7 @@ export interface PatchDnsFirewallResponse {
   retries: number;
   upstreamIps: EditResponseUpstreamIpsList;
   /** Attack mitigation settings */
-  attackMitigation?: EditResponseAttackMitigation | null;
+  attackMitigation?: CreateResponseAttackMitigation | null;
 }
 export const PatchDnsFirewallResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1065,7 +1011,9 @@ export const PatchDnsFirewallResponse = /*@__PURE__*/ S.suspend(() =>
     retries: S.Number,
     upstreamIps: EditResponseUpstreamIpsList.pipe(T.Body("upstream_ips")),
     attackMitigation: S.optional(
-      S.NullOr(EditResponseAttackMitigation).pipe(T.Body("attack_mitigation")),
+      S.NullOr(CreateResponseAttackMitigation).pipe(
+        T.Body("attack_mitigation"),
+      ),
     ),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({

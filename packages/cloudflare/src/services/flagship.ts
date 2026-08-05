@@ -1956,21 +1956,10 @@ export const AppsFlagsGetResponseRulesItemConditionsList =
     AppsFlagsGetResponseRulesItemConditionsItem,
   ) as any as S.Schema<AppsFlagsGetResponseRulesItemConditionsList>;
 
-export interface AppsFlagsGetResponseRulesItemRollout {
-  /** Percentage of matching traffic (0–100) served this variation. For multi-way splits, use cumulative upper bounds across rules (e.g. 30, 70, 100). */
-  percentage: number;
-  /** Context attribute used for sticky bucketing. Defaults to `targetingKey`. If absent at evaluation time, bucketing is random per request. */
-  attribute?: string | null;
-}
-export const AppsFlagsGetResponseRulesItemRollout = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      percentage: S.Number,
-      attribute: S.optional(S.NullOr(S.String)),
-    }),
-).annotate({
-  identifier: "AppsFlagsGetResponseRulesItemRollout",
-}) as any as S.Schema<AppsFlagsGetResponseRulesItemRollout>;
+export type AppsFlagsGetResponseRulesItemRollout =
+  AppsFlagsCreateResponseRulesItemRollout;
+export const AppsFlagsGetResponseRulesItemRollout =
+  AppsFlagsCreateResponseRulesItemRollout;
 
 export interface AppsFlagsGetResponseRulesItem {
   /** Conditions the context must satisfy for this rule to match. An empty array matches all contexts. */
@@ -1979,14 +1968,14 @@ export interface AppsFlagsGetResponseRulesItem {
   priority: number;
   /** Variation served when this rule matches. Must be a key in `variations`. */
   serveVariation: string;
-  rollout?: AppsFlagsGetResponseRulesItemRollout | null;
+  rollout?: AppsFlagsCreateResponseRulesItemRollout | null;
 }
 export const AppsFlagsGetResponseRulesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     conditions: AppsFlagsGetResponseRulesItemConditionsList,
     priority: S.Number,
     serveVariation: S.String.pipe(T.Body("serve_variation")),
-    rollout: S.optional(S.NullOr(AppsFlagsGetResponseRulesItemRollout)),
+    rollout: S.optional(S.NullOr(AppsFlagsCreateResponseRulesItemRollout)),
   }),
 ).annotate({
   identifier: "AppsFlagsGetResponseRulesItem",
@@ -2547,21 +2536,10 @@ export const AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsList =
     AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItem,
   ) as any as S.Schema<AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsList>;
 
-export interface AppsFlagsChangelogListResultItemCase0AfterRulesItemRollout {
-  /** Percentage of matching traffic (0–100) served this variation. For multi-way splits, use cumulative upper bounds across rules (e.g. 30, 70, 100). */
-  percentage: number;
-  /** Context attribute used for sticky bucketing. Defaults to `targetingKey`. If absent at evaluation time, bucketing is random per request. */
-  attribute?: string | null;
-}
+export type AppsFlagsChangelogListResultItemCase0AfterRulesItemRollout =
+  AppsFlagsCreateResponseRulesItemRollout;
 export const AppsFlagsChangelogListResultItemCase0AfterRulesItemRollout =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      percentage: S.Number,
-      attribute: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier: "AppsFlagsChangelogListResultItemCase0AfterRulesItemRollout",
-  }) as any as S.Schema<AppsFlagsChangelogListResultItemCase0AfterRulesItemRollout>;
+  AppsFlagsCreateResponseRulesItemRollout;
 
 export interface AppsFlagsChangelogListResultItemCase0AfterRulesItem {
   /** Conditions the context must satisfy for this rule to match. An empty array matches all contexts. */
@@ -2570,7 +2548,7 @@ export interface AppsFlagsChangelogListResultItemCase0AfterRulesItem {
   priority: number;
   /** Variation served when this rule matches. Must be a key in `variations`. */
   serveVariation: string;
-  rollout?: AppsFlagsChangelogListResultItemCase0AfterRulesItemRollout | null;
+  rollout?: AppsFlagsCreateResponseRulesItemRollout | null;
 }
 export const AppsFlagsChangelogListResultItemCase0AfterRulesItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -2579,9 +2557,7 @@ export const AppsFlagsChangelogListResultItemCase0AfterRulesItem =
         AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsList,
       priority: S.Number,
       serveVariation: S.String.pipe(T.Body("serve_variation")),
-      rollout: S.optional(
-        S.NullOr(AppsFlagsChangelogListResultItemCase0AfterRulesItemRollout),
-      ),
+      rollout: S.optional(S.NullOr(AppsFlagsCreateResponseRulesItemRollout)),
     }),
   ).annotate({
     identifier: "AppsFlagsChangelogListResultItemCase0AfterRulesItem",
@@ -3138,21 +3114,10 @@ export const AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsList =
     AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItem,
   ) as any as S.Schema<AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsList>;
 
-export interface AppsFlagsChangelogListResultItemCase1AfterRulesItemRollout {
-  /** Percentage of matching traffic (0–100) served this variation. For multi-way splits, use cumulative upper bounds across rules (e.g. 30, 70, 100). */
-  percentage: number;
-  /** Context attribute used for sticky bucketing. Defaults to `targetingKey`. If absent at evaluation time, bucketing is random per request. */
-  attribute?: string | null;
-}
+export type AppsFlagsChangelogListResultItemCase1AfterRulesItemRollout =
+  AppsFlagsCreateResponseRulesItemRollout;
 export const AppsFlagsChangelogListResultItemCase1AfterRulesItemRollout =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      percentage: S.Number,
-      attribute: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier: "AppsFlagsChangelogListResultItemCase1AfterRulesItemRollout",
-  }) as any as S.Schema<AppsFlagsChangelogListResultItemCase1AfterRulesItemRollout>;
+  AppsFlagsCreateResponseRulesItemRollout;
 
 export interface AppsFlagsChangelogListResultItemCase1AfterRulesItem {
   /** Conditions the context must satisfy for this rule to match. An empty array matches all contexts. */
@@ -3161,7 +3126,7 @@ export interface AppsFlagsChangelogListResultItemCase1AfterRulesItem {
   priority: number;
   /** Variation served when this rule matches. Must be a key in `variations`. */
   serveVariation: string;
-  rollout?: AppsFlagsChangelogListResultItemCase1AfterRulesItemRollout | null;
+  rollout?: AppsFlagsCreateResponseRulesItemRollout | null;
 }
 export const AppsFlagsChangelogListResultItemCase1AfterRulesItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -3170,9 +3135,7 @@ export const AppsFlagsChangelogListResultItemCase1AfterRulesItem =
         AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsList,
       priority: S.Number,
       serveVariation: S.String.pipe(T.Body("serve_variation")),
-      rollout: S.optional(
-        S.NullOr(AppsFlagsChangelogListResultItemCase1AfterRulesItemRollout),
-      ),
+      rollout: S.optional(S.NullOr(AppsFlagsCreateResponseRulesItemRollout)),
     }),
   ).annotate({
     identifier: "AppsFlagsChangelogListResultItemCase1AfterRulesItem",
@@ -3729,21 +3692,10 @@ export const AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsList =
     AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItem,
   ) as any as S.Schema<AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsList>;
 
-export interface AppsFlagsChangelogListResultItemCase2AfterRulesItemRollout {
-  /** Percentage of matching traffic (0–100) served this variation. For multi-way splits, use cumulative upper bounds across rules (e.g. 30, 70, 100). */
-  percentage: number;
-  /** Context attribute used for sticky bucketing. Defaults to `targetingKey`. If absent at evaluation time, bucketing is random per request. */
-  attribute?: string | null;
-}
+export type AppsFlagsChangelogListResultItemCase2AfterRulesItemRollout =
+  AppsFlagsCreateResponseRulesItemRollout;
 export const AppsFlagsChangelogListResultItemCase2AfterRulesItemRollout =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      percentage: S.Number,
-      attribute: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier: "AppsFlagsChangelogListResultItemCase2AfterRulesItemRollout",
-  }) as any as S.Schema<AppsFlagsChangelogListResultItemCase2AfterRulesItemRollout>;
+  AppsFlagsCreateResponseRulesItemRollout;
 
 export interface AppsFlagsChangelogListResultItemCase2AfterRulesItem {
   /** Conditions the context must satisfy for this rule to match. An empty array matches all contexts. */
@@ -3752,7 +3704,7 @@ export interface AppsFlagsChangelogListResultItemCase2AfterRulesItem {
   priority: number;
   /** Variation served when this rule matches. Must be a key in `variations`. */
   serveVariation: string;
-  rollout?: AppsFlagsChangelogListResultItemCase2AfterRulesItemRollout | null;
+  rollout?: AppsFlagsCreateResponseRulesItemRollout | null;
 }
 export const AppsFlagsChangelogListResultItemCase2AfterRulesItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -3761,9 +3713,7 @@ export const AppsFlagsChangelogListResultItemCase2AfterRulesItem =
         AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsList,
       priority: S.Number,
       serveVariation: S.String.pipe(T.Body("serve_variation")),
-      rollout: S.optional(
-        S.NullOr(AppsFlagsChangelogListResultItemCase2AfterRulesItemRollout),
-      ),
+      rollout: S.optional(S.NullOr(AppsFlagsCreateResponseRulesItemRollout)),
     }),
   ).annotate({
     identifier: "AppsFlagsChangelogListResultItemCase2AfterRulesItem",
@@ -4457,21 +4407,10 @@ export const AppsFlagsListResultItemRulesItemConditionsList =
     AppsFlagsListResultItemRulesItemConditionsItem,
   ) as any as S.Schema<AppsFlagsListResultItemRulesItemConditionsList>;
 
-export interface AppsFlagsListResultItemRulesItemRollout {
-  /** Percentage of matching traffic (0–100) served this variation. For multi-way splits, use cumulative upper bounds across rules (e.g. 30, 70, 100). */
-  percentage: number;
-  /** Context attribute used for sticky bucketing. Defaults to `targetingKey`. If absent at evaluation time, bucketing is random per request. */
-  attribute?: string | null;
-}
-export const AppsFlagsListResultItemRulesItemRollout = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      percentage: S.Number,
-      attribute: S.optional(S.NullOr(S.String)),
-    }),
-).annotate({
-  identifier: "AppsFlagsListResultItemRulesItemRollout",
-}) as any as S.Schema<AppsFlagsListResultItemRulesItemRollout>;
+export type AppsFlagsListResultItemRulesItemRollout =
+  AppsFlagsCreateResponseRulesItemRollout;
+export const AppsFlagsListResultItemRulesItemRollout =
+  AppsFlagsCreateResponseRulesItemRollout;
 
 export interface AppsFlagsListResultItemRulesItem {
   /** Conditions the context must satisfy for this rule to match. An empty array matches all contexts. */
@@ -4480,14 +4419,14 @@ export interface AppsFlagsListResultItemRulesItem {
   priority: number;
   /** Variation served when this rule matches. Must be a key in `variations`. */
   serveVariation: string;
-  rollout?: AppsFlagsListResultItemRulesItemRollout | null;
+  rollout?: AppsFlagsCreateResponseRulesItemRollout | null;
 }
 export const AppsFlagsListResultItemRulesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     conditions: AppsFlagsListResultItemRulesItemConditionsList,
     priority: S.Number,
     serveVariation: S.String.pipe(T.Body("serve_variation")),
-    rollout: S.optional(S.NullOr(AppsFlagsListResultItemRulesItemRollout)),
+    rollout: S.optional(S.NullOr(AppsFlagsCreateResponseRulesItemRollout)),
   }),
 ).annotate({
   identifier: "AppsFlagsListResultItemRulesItem",
@@ -5166,21 +5105,10 @@ export const AppsFlagsUpdateRequestRulesItemConditionsList =
     AppsFlagsUpdateRequestRulesItemConditionsItem,
   ) as any as S.Schema<AppsFlagsUpdateRequestRulesItemConditionsList>;
 
-export interface AppsFlagsUpdateRequestRulesItemRollout {
-  /** Percentage of matching traffic (0–100) served this variation. For multi-way splits, use cumulative upper bounds across rules (e.g. 30, 70, 100). */
-  percentage: number;
-  /** Context attribute used for sticky bucketing. Defaults to `targetingKey`. If absent at evaluation time, bucketing is random per request. */
-  attribute?: string;
-}
-export const AppsFlagsUpdateRequestRulesItemRollout = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      percentage: S.Number,
-      attribute: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "AppsFlagsUpdateRequestRulesItemRollout",
-}) as any as S.Schema<AppsFlagsUpdateRequestRulesItemRollout>;
+export type AppsFlagsUpdateRequestRulesItemRollout =
+  AppsFlagsCreateRequestRulesItemRollout;
+export const AppsFlagsUpdateRequestRulesItemRollout =
+  AppsFlagsCreateRequestRulesItemRollout;
 
 export interface AppsFlagsUpdateRequestRulesItem {
   /** Conditions the context must satisfy for this rule to match. An empty array matches all contexts. */
@@ -5189,14 +5117,14 @@ export interface AppsFlagsUpdateRequestRulesItem {
   priority: number;
   /** Variation served when this rule matches. Must be a key in `variations`. */
   serveVariation: string;
-  rollout?: AppsFlagsUpdateRequestRulesItemRollout;
+  rollout?: AppsFlagsCreateRequestRulesItemRollout;
 }
 export const AppsFlagsUpdateRequestRulesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     conditions: AppsFlagsUpdateRequestRulesItemConditionsList,
     priority: S.Number,
     serveVariation: S.String.pipe(T.Body("serve_variation")),
-    rollout: S.optional(AppsFlagsUpdateRequestRulesItemRollout),
+    rollout: S.optional(AppsFlagsCreateRequestRulesItemRollout),
   }),
 ).annotate({
   identifier: "AppsFlagsUpdateRequestRulesItem",
@@ -5737,21 +5665,10 @@ export const AppsFlagsUpdateResponseRulesItemConditionsList =
     AppsFlagsUpdateResponseRulesItemConditionsItem,
   ) as any as S.Schema<AppsFlagsUpdateResponseRulesItemConditionsList>;
 
-export interface AppsFlagsUpdateResponseRulesItemRollout {
-  /** Percentage of matching traffic (0–100) served this variation. For multi-way splits, use cumulative upper bounds across rules (e.g. 30, 70, 100). */
-  percentage: number;
-  /** Context attribute used for sticky bucketing. Defaults to `targetingKey`. If absent at evaluation time, bucketing is random per request. */
-  attribute?: string | null;
-}
-export const AppsFlagsUpdateResponseRulesItemRollout = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      percentage: S.Number,
-      attribute: S.optional(S.NullOr(S.String)),
-    }),
-).annotate({
-  identifier: "AppsFlagsUpdateResponseRulesItemRollout",
-}) as any as S.Schema<AppsFlagsUpdateResponseRulesItemRollout>;
+export type AppsFlagsUpdateResponseRulesItemRollout =
+  AppsFlagsCreateResponseRulesItemRollout;
+export const AppsFlagsUpdateResponseRulesItemRollout =
+  AppsFlagsCreateResponseRulesItemRollout;
 
 export interface AppsFlagsUpdateResponseRulesItem {
   /** Conditions the context must satisfy for this rule to match. An empty array matches all contexts. */
@@ -5760,14 +5677,14 @@ export interface AppsFlagsUpdateResponseRulesItem {
   priority: number;
   /** Variation served when this rule matches. Must be a key in `variations`. */
   serveVariation: string;
-  rollout?: AppsFlagsUpdateResponseRulesItemRollout | null;
+  rollout?: AppsFlagsCreateResponseRulesItemRollout | null;
 }
 export const AppsFlagsUpdateResponseRulesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     conditions: AppsFlagsUpdateResponseRulesItemConditionsList,
     priority: S.Number,
     serveVariation: S.String.pipe(T.Body("serve_variation")),
-    rollout: S.optional(S.NullOr(AppsFlagsUpdateResponseRulesItemRollout)),
+    rollout: S.optional(S.NullOr(AppsFlagsCreateResponseRulesItemRollout)),
   }),
 ).annotate({
   identifier: "AppsFlagsUpdateResponseRulesItem",

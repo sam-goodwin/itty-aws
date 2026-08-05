@@ -720,18 +720,10 @@ export const InstancesChatCompletionsResponseChoicesItemMessageContentCase1ItemC
       "InstancesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase0",
   }) as any as S.Schema<InstancesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase0>;
 
-export interface InstancesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase1ImageUrl {
-  url: string;
-}
+export type InstancesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase1ImageUrl =
+  InstancesChatCompletionsRequestMessagesItemContentCase1ItemCase1ImageUrl;
 export const InstancesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase1ImageUrl =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      url: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "InstancesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase1ImageUrl",
-  }) as any as S.Schema<InstancesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase1ImageUrl>;
+  InstancesChatCompletionsRequestMessagesItemContentCase1ItemCase1ImageUrl;
 
 export type InstancesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase1Type =
   "image_url";
@@ -739,14 +731,14 @@ export const InstancesChatCompletionsResponseChoicesItemMessageContentCase1ItemC
   /*@__PURE__*/ S.String;
 
 export interface InstancesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase1 {
-  imageUrl: InstancesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase1ImageUrl;
+  imageUrl: InstancesChatCompletionsRequestMessagesItemContentCase1ItemCase1ImageUrl;
   type: InstancesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase1Type;
 }
 export const InstancesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase1 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       imageUrl:
-        InstancesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase1ImageUrl.pipe(
+        InstancesChatCompletionsRequestMessagesItemContentCase1ItemCase1ImageUrl.pipe(
           T.Body("image_url"),
         ),
       type: InstancesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase1Type,
@@ -1213,18 +1205,10 @@ export const NamespacesChatCompletionsRequestMessagesItemContentCase1ItemCase0 =
       "NamespacesChatCompletionsRequestMessagesItemContentCase1ItemCase0",
   }) as any as S.Schema<NamespacesChatCompletionsRequestMessagesItemContentCase1ItemCase0>;
 
-export interface NamespacesChatCompletionsRequestMessagesItemContentCase1ItemCase1ImageUrl {
-  url: string;
-}
+export type NamespacesChatCompletionsRequestMessagesItemContentCase1ItemCase1ImageUrl =
+  InstancesChatCompletionsRequestMessagesItemContentCase1ItemCase1ImageUrl;
 export const NamespacesChatCompletionsRequestMessagesItemContentCase1ItemCase1ImageUrl =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      url: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "NamespacesChatCompletionsRequestMessagesItemContentCase1ItemCase1ImageUrl",
-  }) as any as S.Schema<NamespacesChatCompletionsRequestMessagesItemContentCase1ItemCase1ImageUrl>;
+  InstancesChatCompletionsRequestMessagesItemContentCase1ItemCase1ImageUrl;
 
 export type NamespacesChatCompletionsRequestMessagesItemContentCase1ItemCase1Type =
   "image_url";
@@ -1232,14 +1216,14 @@ export const NamespacesChatCompletionsRequestMessagesItemContentCase1ItemCase1Ty
   /*@__PURE__*/ S.String;
 
 export interface NamespacesChatCompletionsRequestMessagesItemContentCase1ItemCase1 {
-  imageUrl: NamespacesChatCompletionsRequestMessagesItemContentCase1ItemCase1ImageUrl;
+  imageUrl: InstancesChatCompletionsRequestMessagesItemContentCase1ItemCase1ImageUrl;
   type: NamespacesChatCompletionsRequestMessagesItemContentCase1ItemCase1Type;
 }
 export const NamespacesChatCompletionsRequestMessagesItemContentCase1ItemCase1 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       imageUrl:
-        NamespacesChatCompletionsRequestMessagesItemContentCase1ItemCase1ImageUrl.pipe(
+        InstancesChatCompletionsRequestMessagesItemContentCase1ItemCase1ImageUrl.pipe(
           T.Body("image_url"),
         ),
       type: NamespacesChatCompletionsRequestMessagesItemContentCase1ItemCase1Type,
@@ -1389,18 +1373,10 @@ export const NamespacesChatCompletionsResponseChoicesItemMessageContentCase1Item
       "NamespacesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase0",
   }) as any as S.Schema<NamespacesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase0>;
 
-export interface NamespacesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase1ImageUrl {
-  url: string;
-}
+export type NamespacesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase1ImageUrl =
+  InstancesChatCompletionsRequestMessagesItemContentCase1ItemCase1ImageUrl;
 export const NamespacesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase1ImageUrl =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      url: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "NamespacesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase1ImageUrl",
-  }) as any as S.Schema<NamespacesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase1ImageUrl>;
+  InstancesChatCompletionsRequestMessagesItemContentCase1ItemCase1ImageUrl;
 
 export type NamespacesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase1Type =
   "image_url";
@@ -1408,14 +1384,14 @@ export const NamespacesChatCompletionsResponseChoicesItemMessageContentCase1Item
   /*@__PURE__*/ S.String;
 
 export interface NamespacesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase1 {
-  imageUrl: NamespacesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase1ImageUrl;
+  imageUrl: InstancesChatCompletionsRequestMessagesItemContentCase1ItemCase1ImageUrl;
   type: NamespacesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase1Type;
 }
 export const NamespacesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase1 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       imageUrl:
-        NamespacesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase1ImageUrl.pipe(
+        InstancesChatCompletionsRequestMessagesItemContentCase1ItemCase1ImageUrl.pipe(
           T.Body("image_url"),
         ),
       type: NamespacesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase1Type,
@@ -1632,18 +1608,10 @@ export const NamespacesInstancesChatCompletionsRequestMessagesItemContentCase1It
       "NamespacesInstancesChatCompletionsRequestMessagesItemContentCase1ItemCase0",
   }) as any as S.Schema<NamespacesInstancesChatCompletionsRequestMessagesItemContentCase1ItemCase0>;
 
-export interface NamespacesInstancesChatCompletionsRequestMessagesItemContentCase1ItemCase1ImageUrl {
-  url: string;
-}
+export type NamespacesInstancesChatCompletionsRequestMessagesItemContentCase1ItemCase1ImageUrl =
+  InstancesChatCompletionsRequestMessagesItemContentCase1ItemCase1ImageUrl;
 export const NamespacesInstancesChatCompletionsRequestMessagesItemContentCase1ItemCase1ImageUrl =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      url: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "NamespacesInstancesChatCompletionsRequestMessagesItemContentCase1ItemCase1ImageUrl",
-  }) as any as S.Schema<NamespacesInstancesChatCompletionsRequestMessagesItemContentCase1ItemCase1ImageUrl>;
+  InstancesChatCompletionsRequestMessagesItemContentCase1ItemCase1ImageUrl;
 
 export type NamespacesInstancesChatCompletionsRequestMessagesItemContentCase1ItemCase1Type =
   "image_url";
@@ -1651,14 +1619,14 @@ export const NamespacesInstancesChatCompletionsRequestMessagesItemContentCase1It
   /*@__PURE__*/ S.String;
 
 export interface NamespacesInstancesChatCompletionsRequestMessagesItemContentCase1ItemCase1 {
-  imageUrl: NamespacesInstancesChatCompletionsRequestMessagesItemContentCase1ItemCase1ImageUrl;
+  imageUrl: InstancesChatCompletionsRequestMessagesItemContentCase1ItemCase1ImageUrl;
   type: NamespacesInstancesChatCompletionsRequestMessagesItemContentCase1ItemCase1Type;
 }
 export const NamespacesInstancesChatCompletionsRequestMessagesItemContentCase1ItemCase1 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       imageUrl:
-        NamespacesInstancesChatCompletionsRequestMessagesItemContentCase1ItemCase1ImageUrl.pipe(
+        InstancesChatCompletionsRequestMessagesItemContentCase1ItemCase1ImageUrl.pipe(
           T.Body("image_url"),
         ),
       type: NamespacesInstancesChatCompletionsRequestMessagesItemContentCase1ItemCase1Type,
@@ -2062,18 +2030,10 @@ export const NamespacesInstancesChatCompletionsResponseChoicesItemMessageContent
       "NamespacesInstancesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase0",
   }) as any as S.Schema<NamespacesInstancesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase0>;
 
-export interface NamespacesInstancesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase1ImageUrl {
-  url: string;
-}
+export type NamespacesInstancesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase1ImageUrl =
+  InstancesChatCompletionsRequestMessagesItemContentCase1ItemCase1ImageUrl;
 export const NamespacesInstancesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase1ImageUrl =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      url: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "NamespacesInstancesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase1ImageUrl",
-  }) as any as S.Schema<NamespacesInstancesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase1ImageUrl>;
+  InstancesChatCompletionsRequestMessagesItemContentCase1ItemCase1ImageUrl;
 
 export type NamespacesInstancesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase1Type =
   "image_url";
@@ -2081,14 +2041,14 @@ export const NamespacesInstancesChatCompletionsResponseChoicesItemMessageContent
   /*@__PURE__*/ S.String;
 
 export interface NamespacesInstancesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase1 {
-  imageUrl: NamespacesInstancesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase1ImageUrl;
+  imageUrl: InstancesChatCompletionsRequestMessagesItemContentCase1ItemCase1ImageUrl;
   type: NamespacesInstancesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase1Type;
 }
 export const NamespacesInstancesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase1 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       imageUrl:
-        NamespacesInstancesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase1ImageUrl.pipe(
+        InstancesChatCompletionsRequestMessagesItemContentCase1ItemCase1ImageUrl.pipe(
           T.Body("image_url"),
         ),
       type: NamespacesInstancesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase1Type,
@@ -3178,20 +3138,10 @@ export const InstancesCreateResponseEmbeddingModel = /*@__PURE__*/ S.String;
 export type InstancesCreateResponseFusionMethod = "max" | "rrf";
 export const InstancesCreateResponseFusionMethod = /*@__PURE__*/ S.String;
 
-export interface InstancesCreateResponseIndexMethod {
-  /** Enable keyword (BM25) storage backend. */
-  keyword: boolean;
-  /** Enable vector (embedding) storage backend. */
-  vector: boolean;
-}
-export const InstancesCreateResponseIndexMethod = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    keyword: S.Boolean,
-    vector: S.Boolean,
-  }),
-).annotate({
-  identifier: "InstancesCreateResponseIndexMethod",
-}) as any as S.Schema<InstancesCreateResponseIndexMethod>;
+export type InstancesCreateResponseIndexMethod =
+  InstancesCreateRequestIndexMethod;
+export const InstancesCreateResponseIndexMethod =
+  InstancesCreateRequestIndexMethod;
 
 export type InstancesCreateResponseIndexingOptionsKeywordTokenizer =
   | "porter"
@@ -3469,28 +3419,16 @@ export const InstancesCreateResponseSourceParamsIncludeItemsList =
     S.String,
   ) as any as S.Schema<InstancesCreateResponseSourceParamsIncludeItemsList>;
 
-export interface InstancesCreateResponseSourceParamsWebCrawlerParseOptionsContentSelectorItem {
-  /** Glob pattern to match against the page URL path. Uses standard glob syntax: * matches within a segment, ** crosses directories. */
-  path: string;
-  /** CSS selector to extract content from pages matching the path pattern. Must not contain disallowed characters (;, `, $, {, }, ). Must target a single element; if multiple elements match, the selector is ignored and the full page is used. */
-  selector: string;
-}
+export type InstancesCreateResponseSourceParamsWebCrawlerParseOptionsContentSelectorItem =
+  InstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorItem;
 export const InstancesCreateResponseSourceParamsWebCrawlerParseOptionsContentSelectorItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      path: S.String,
-      selector: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "InstancesCreateResponseSourceParamsWebCrawlerParseOptionsContentSelectorItem",
-  }) as any as S.Schema<InstancesCreateResponseSourceParamsWebCrawlerParseOptionsContentSelectorItem>;
+  InstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorItem;
 
 export type InstancesCreateResponseSourceParamsWebCrawlerParseOptionsContentSelectorList =
-  Array<InstancesCreateResponseSourceParamsWebCrawlerParseOptionsContentSelectorItem>;
+  Array<InstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorItem>;
 export const InstancesCreateResponseSourceParamsWebCrawlerParseOptionsContentSelectorList =
   /*@__PURE__*/ S.Array(
-    InstancesCreateResponseSourceParamsWebCrawlerParseOptionsContentSelectorItem,
+    InstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorItem,
   ) as any as S.Schema<InstancesCreateResponseSourceParamsWebCrawlerParseOptionsContentSelectorList>;
 
 export type InstancesCreateResponseSourceParamsWebCrawlerParseOptionsIncludeHeadersMap =
@@ -3652,7 +3590,7 @@ export interface CreateInstanceResponse {
   /** Deprecated — use index_method instead. */
   hybridSearchEnabled?: boolean | null;
   /** Controls which storage backends are used during indexing. Defaults to vector-only. */
-  indexMethod?: InstancesCreateResponseIndexMethod | null;
+  indexMethod?: InstancesCreateRequestIndexMethod | null;
   indexingOptions?: InstancesCreateResponseIndexingOptions | null;
   lastActivity?: string | null;
   maxNumResults?: number | null;
@@ -3722,7 +3660,7 @@ export const CreateInstanceResponse = /*@__PURE__*/ S.suspend(() =>
       S.NullOr(S.Boolean).pipe(T.Body("hybrid_search_enabled")),
     ),
     indexMethod: S.optional(
-      S.NullOr(InstancesCreateResponseIndexMethod).pipe(T.Body("index_method")),
+      S.NullOr(InstancesCreateRequestIndexMethod).pipe(T.Body("index_method")),
     ),
     indexingOptions: S.optional(
       S.NullOr(InstancesCreateResponseIndexingOptions).pipe(
@@ -3983,21 +3921,10 @@ export type NamespacesInstancesCreateRequestFusionMethod = "max" | "rrf";
 export const NamespacesInstancesCreateRequestFusionMethod =
   /*@__PURE__*/ S.String;
 
-export interface NamespacesInstancesCreateRequestIndexMethod {
-  /** Enable keyword (BM25) storage backend. */
-  keyword: boolean;
-  /** Enable vector (embedding) storage backend. */
-  vector: boolean;
-}
+export type NamespacesInstancesCreateRequestIndexMethod =
+  InstancesCreateRequestIndexMethod;
 export const NamespacesInstancesCreateRequestIndexMethod =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      keyword: S.Boolean,
-      vector: S.Boolean,
-    }),
-  ).annotate({
-    identifier: "NamespacesInstancesCreateRequestIndexMethod",
-  }) as any as S.Schema<NamespacesInstancesCreateRequestIndexMethod>;
+  InstancesCreateRequestIndexMethod;
 
 export type NamespacesInstancesCreateRequestIndexingOptionsKeywordTokenizer =
   | "porter"
@@ -4024,21 +3951,10 @@ export const NamespacesInstancesCreateRequestIndexingOptions =
     identifier: "NamespacesInstancesCreateRequestIndexingOptions",
   }) as any as S.Schema<NamespacesInstancesCreateRequestIndexingOptions>;
 
-export interface NamespacesInstancesCreateRequestMetadata {
-  createdFromAisearchWizard?: boolean;
-  workerDomain?: string;
-}
-export const NamespacesInstancesCreateRequestMetadata = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      createdFromAisearchWizard: S.optional(
-        S.Boolean.pipe(T.Body("created_from_aisearch_wizard")),
-      ),
-      workerDomain: S.optional(S.String.pipe(T.Body("worker_domain"))),
-    }),
-).annotate({
-  identifier: "NamespacesInstancesCreateRequestMetadata",
-}) as any as S.Schema<NamespacesInstancesCreateRequestMetadata>;
+export type NamespacesInstancesCreateRequestMetadata =
+  InstancesCreateRequestMetadata;
+export const NamespacesInstancesCreateRequestMetadata =
+  InstancesCreateRequestMetadata;
 
 export type NamespacesInstancesCreateRequestPublicEndpointParamsAuthorizedHostsList =
   Array<string>;
@@ -4047,19 +3963,10 @@ export const NamespacesInstancesCreateRequestPublicEndpointParamsAuthorizedHosts
     S.String,
   ) as any as S.Schema<NamespacesInstancesCreateRequestPublicEndpointParamsAuthorizedHostsList>;
 
-export interface NamespacesInstancesCreateRequestPublicEndpointParamsChatCompletionsEndpoint {
-  /** Disable chat completions endpoint for this public endpoint */
-  disabled?: boolean;
-}
+export type NamespacesInstancesCreateRequestPublicEndpointParamsChatCompletionsEndpoint =
+  InstancesCreateRequestPublicEndpointParamsChatCompletionsEndpoint;
 export const NamespacesInstancesCreateRequestPublicEndpointParamsChatCompletionsEndpoint =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      disabled: S.optional(S.Boolean),
-    }),
-  ).annotate({
-    identifier:
-      "NamespacesInstancesCreateRequestPublicEndpointParamsChatCompletionsEndpoint",
-  }) as any as S.Schema<NamespacesInstancesCreateRequestPublicEndpointParamsChatCompletionsEndpoint>;
+  InstancesCreateRequestPublicEndpointParamsChatCompletionsEndpoint;
 
 export type NamespacesInstancesCreateRequestPublicEndpointParamsCustomDomainsList =
   Array<string>;
@@ -4068,20 +3975,10 @@ export const NamespacesInstancesCreateRequestPublicEndpointParamsCustomDomainsLi
     S.String,
   ) as any as S.Schema<NamespacesInstancesCreateRequestPublicEndpointParamsCustomDomainsList>;
 
-export interface NamespacesInstancesCreateRequestPublicEndpointParamsMcp {
-  description?: string;
-  /** Disable MCP endpoint for this public endpoint */
-  disabled?: boolean;
-}
+export type NamespacesInstancesCreateRequestPublicEndpointParamsMcp =
+  InstancesCreateRequestPublicEndpointParamsMcp;
 export const NamespacesInstancesCreateRequestPublicEndpointParamsMcp =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      description: S.optional(S.String),
-      disabled: S.optional(S.Boolean),
-    }),
-  ).annotate({
-    identifier: "NamespacesInstancesCreateRequestPublicEndpointParamsMcp",
-  }) as any as S.Schema<NamespacesInstancesCreateRequestPublicEndpointParamsMcp>;
+  InstancesCreateRequestPublicEndpointParamsMcp;
 
 export type NamespacesInstancesCreateRequestPublicEndpointParamsRateLimitTechnique =
   "fixed" | "sliding";
@@ -4108,29 +4005,20 @@ export const NamespacesInstancesCreateRequestPublicEndpointParamsRateLimit =
     identifier: "NamespacesInstancesCreateRequestPublicEndpointParamsRateLimit",
   }) as any as S.Schema<NamespacesInstancesCreateRequestPublicEndpointParamsRateLimit>;
 
-export interface NamespacesInstancesCreateRequestPublicEndpointParamsSearchEndpoint {
-  /** Disable search endpoint for this public endpoint */
-  disabled?: boolean;
-}
+export type NamespacesInstancesCreateRequestPublicEndpointParamsSearchEndpoint =
+  InstancesCreateRequestPublicEndpointParamsSearchEndpoint;
 export const NamespacesInstancesCreateRequestPublicEndpointParamsSearchEndpoint =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      disabled: S.optional(S.Boolean),
-    }),
-  ).annotate({
-    identifier:
-      "NamespacesInstancesCreateRequestPublicEndpointParamsSearchEndpoint",
-  }) as any as S.Schema<NamespacesInstancesCreateRequestPublicEndpointParamsSearchEndpoint>;
+  InstancesCreateRequestPublicEndpointParamsSearchEndpoint;
 
 export interface NamespacesInstancesCreateRequestPublicEndpointParams {
   authorizedHosts?: NamespacesInstancesCreateRequestPublicEndpointParamsAuthorizedHostsList;
-  chatCompletionsEndpoint?: NamespacesInstancesCreateRequestPublicEndpointParamsChatCompletionsEndpoint;
+  chatCompletionsEndpoint?: InstancesCreateRequestPublicEndpointParamsChatCompletionsEndpoint;
   /** Custom domain hostnames that alias this public endpoint. GET and create responses return the current set; on update (PUT) this field is only echoed back when supplied in the request body, otherwise it is null (omit it to leave domains unchanged). */
   customDomains?: NamespacesInstancesCreateRequestPublicEndpointParamsCustomDomainsList;
   enabled?: boolean;
-  mcp?: NamespacesInstancesCreateRequestPublicEndpointParamsMcp;
+  mcp?: InstancesCreateRequestPublicEndpointParamsMcp;
   rateLimit?: NamespacesInstancesCreateRequestPublicEndpointParamsRateLimit;
-  searchEndpoint?: NamespacesInstancesCreateRequestPublicEndpointParamsSearchEndpoint;
+  searchEndpoint?: InstancesCreateRequestPublicEndpointParamsSearchEndpoint;
 }
 export const NamespacesInstancesCreateRequestPublicEndpointParams =
   /*@__PURE__*/ S.suspend(() =>
@@ -4141,7 +4029,7 @@ export const NamespacesInstancesCreateRequestPublicEndpointParams =
         ),
       ),
       chatCompletionsEndpoint: S.optional(
-        NamespacesInstancesCreateRequestPublicEndpointParamsChatCompletionsEndpoint.pipe(
+        InstancesCreateRequestPublicEndpointParamsChatCompletionsEndpoint.pipe(
           T.Body("chat_completions_endpoint"),
         ),
       ),
@@ -4151,14 +4039,14 @@ export const NamespacesInstancesCreateRequestPublicEndpointParams =
         ),
       ),
       enabled: S.optional(S.Boolean),
-      mcp: S.optional(NamespacesInstancesCreateRequestPublicEndpointParamsMcp),
+      mcp: S.optional(InstancesCreateRequestPublicEndpointParamsMcp),
       rateLimit: S.optional(
         NamespacesInstancesCreateRequestPublicEndpointParamsRateLimit.pipe(
           T.Body("rate_limit"),
         ),
       ),
       searchEndpoint: S.optional(
-        NamespacesInstancesCreateRequestPublicEndpointParamsSearchEndpoint.pipe(
+        InstancesCreateRequestPublicEndpointParamsSearchEndpoint.pipe(
           T.Body("search_endpoint"),
         ),
       ),
@@ -4285,28 +4173,16 @@ export const NamespacesInstancesCreateRequestSourceParamsIncludeItemsList =
     S.String,
   ) as any as S.Schema<NamespacesInstancesCreateRequestSourceParamsIncludeItemsList>;
 
-export interface NamespacesInstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorItem {
-  /** Glob pattern to match against the page URL path. Uses standard glob syntax: * matches within a segment, ** crosses directories. */
-  path: string;
-  /** CSS selector to extract content from pages matching the path pattern. Must not contain disallowed characters (;, `, $, {, }, ). Must target a single element; if multiple elements match, the selector is ignored and the full page is used. */
-  selector: string;
-}
+export type NamespacesInstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorItem =
+  InstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorItem;
 export const NamespacesInstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      path: S.String,
-      selector: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "NamespacesInstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorItem",
-  }) as any as S.Schema<NamespacesInstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorItem>;
+  InstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorItem;
 
 export type NamespacesInstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorList =
-  Array<NamespacesInstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorItem>;
+  Array<InstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorItem>;
 export const NamespacesInstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorList =
   /*@__PURE__*/ S.Array(
-    NamespacesInstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorItem,
+    InstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorItem,
   ) as any as S.Schema<NamespacesInstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorList>;
 
 export type NamespacesInstancesCreateRequestSourceParamsWebCrawlerParseOptionsIncludeHeadersMap =
@@ -4470,10 +4346,10 @@ export interface CreateNamespaceInstanceRequest {
   /** Deprecated — use index_method instead. */
   hybridSearchEnabled?: boolean;
   /** Controls which storage backends are used during indexing. Defaults to vector-only. */
-  indexMethod?: NamespacesInstancesCreateRequestIndexMethod;
+  indexMethod?: InstancesCreateRequestIndexMethod;
   indexingOptions?: NamespacesInstancesCreateRequestIndexingOptions;
   maxNumResults?: number;
-  metadata?: NamespacesInstancesCreateRequestMetadata;
+  metadata?: InstancesCreateRequestMetadata;
   publicEndpointParams?: NamespacesInstancesCreateRequestPublicEndpointParams;
   reranking?: boolean;
   rerankingModel?:
@@ -4532,7 +4408,7 @@ export const CreateNamespaceInstanceRequest = /*@__PURE__*/ S.suspend(() =>
       S.Boolean.pipe(T.Body("hybrid_search_enabled")),
     ),
     indexMethod: S.optional(
-      NamespacesInstancesCreateRequestIndexMethod.pipe(T.Body("index_method")),
+      InstancesCreateRequestIndexMethod.pipe(T.Body("index_method")),
     ),
     indexingOptions: S.optional(
       NamespacesInstancesCreateRequestIndexingOptions.pipe(
@@ -4540,7 +4416,7 @@ export const CreateNamespaceInstanceRequest = /*@__PURE__*/ S.suspend(() =>
       ),
     ),
     maxNumResults: S.optional(S.Number.pipe(T.Body("max_num_results"))),
-    metadata: S.optional(NamespacesInstancesCreateRequestMetadata),
+    metadata: S.optional(InstancesCreateRequestMetadata),
     publicEndpointParams: S.optional(
       NamespacesInstancesCreateRequestPublicEndpointParams.pipe(
         T.Body("public_endpoint_params"),
@@ -4696,21 +4572,10 @@ export type NamespacesInstancesCreateResponseFusionMethod = "max" | "rrf";
 export const NamespacesInstancesCreateResponseFusionMethod =
   /*@__PURE__*/ S.String;
 
-export interface NamespacesInstancesCreateResponseIndexMethod {
-  /** Enable keyword (BM25) storage backend. */
-  keyword: boolean;
-  /** Enable vector (embedding) storage backend. */
-  vector: boolean;
-}
+export type NamespacesInstancesCreateResponseIndexMethod =
+  InstancesCreateRequestIndexMethod;
 export const NamespacesInstancesCreateResponseIndexMethod =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      keyword: S.Boolean,
-      vector: S.Boolean,
-    }),
-  ).annotate({
-    identifier: "NamespacesInstancesCreateResponseIndexMethod",
-  }) as any as S.Schema<NamespacesInstancesCreateResponseIndexMethod>;
+  InstancesCreateRequestIndexMethod;
 
 export type NamespacesInstancesCreateResponseIndexingOptionsKeywordTokenizer =
   | "porter"
@@ -4735,23 +4600,10 @@ export const NamespacesInstancesCreateResponseIndexingOptions =
     identifier: "NamespacesInstancesCreateResponseIndexingOptions",
   }) as any as S.Schema<NamespacesInstancesCreateResponseIndexingOptions>;
 
-export interface NamespacesInstancesCreateResponseMetadata {
-  createdFromAisearchWizard?: boolean | null;
-  workerDomain?: string | null;
-}
+export type NamespacesInstancesCreateResponseMetadata =
+  InstancesCreateResponseMetadata;
 export const NamespacesInstancesCreateResponseMetadata =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      createdFromAisearchWizard: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("created_from_aisearch_wizard")),
-      ),
-      workerDomain: S.optional(
-        S.NullOr(S.String).pipe(T.Body("worker_domain")),
-      ),
-    }),
-  ).annotate({
-    identifier: "NamespacesInstancesCreateResponseMetadata",
-  }) as any as S.Schema<NamespacesInstancesCreateResponseMetadata>;
+  InstancesCreateResponseMetadata;
 
 export type NamespacesInstancesCreateResponsePublicEndpointParamsAuthorizedHostsList =
   Array<string>;
@@ -4760,19 +4612,10 @@ export const NamespacesInstancesCreateResponsePublicEndpointParamsAuthorizedHost
     S.String,
   ) as any as S.Schema<NamespacesInstancesCreateResponsePublicEndpointParamsAuthorizedHostsList>;
 
-export interface NamespacesInstancesCreateResponsePublicEndpointParamsChatCompletionsEndpoint {
-  /** Disable chat completions endpoint for this public endpoint */
-  disabled?: boolean | null;
-}
+export type NamespacesInstancesCreateResponsePublicEndpointParamsChatCompletionsEndpoint =
+  InstancesCreateResponsePublicEndpointParamsChatCompletionsEndpoint;
 export const NamespacesInstancesCreateResponsePublicEndpointParamsChatCompletionsEndpoint =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      disabled: S.optional(S.NullOr(S.Boolean)),
-    }),
-  ).annotate({
-    identifier:
-      "NamespacesInstancesCreateResponsePublicEndpointParamsChatCompletionsEndpoint",
-  }) as any as S.Schema<NamespacesInstancesCreateResponsePublicEndpointParamsChatCompletionsEndpoint>;
+  InstancesCreateResponsePublicEndpointParamsChatCompletionsEndpoint;
 
 export type NamespacesInstancesCreateResponsePublicEndpointParamsCustomDomainsList =
   Array<string>;
@@ -4781,20 +4624,10 @@ export const NamespacesInstancesCreateResponsePublicEndpointParamsCustomDomainsL
     S.String,
   ) as any as S.Schema<NamespacesInstancesCreateResponsePublicEndpointParamsCustomDomainsList>;
 
-export interface NamespacesInstancesCreateResponsePublicEndpointParamsMcp {
-  description?: string | null;
-  /** Disable MCP endpoint for this public endpoint */
-  disabled?: boolean | null;
-}
+export type NamespacesInstancesCreateResponsePublicEndpointParamsMcp =
+  InstancesCreateResponsePublicEndpointParamsMcp;
 export const NamespacesInstancesCreateResponsePublicEndpointParamsMcp =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      description: S.optional(S.NullOr(S.String)),
-      disabled: S.optional(S.NullOr(S.Boolean)),
-    }),
-  ).annotate({
-    identifier: "NamespacesInstancesCreateResponsePublicEndpointParamsMcp",
-  }) as any as S.Schema<NamespacesInstancesCreateResponsePublicEndpointParamsMcp>;
+  InstancesCreateResponsePublicEndpointParamsMcp;
 
 export type NamespacesInstancesCreateResponsePublicEndpointParamsRateLimitTechnique =
   "fixed" | "sliding";
@@ -4822,29 +4655,20 @@ export const NamespacesInstancesCreateResponsePublicEndpointParamsRateLimit =
       "NamespacesInstancesCreateResponsePublicEndpointParamsRateLimit",
   }) as any as S.Schema<NamespacesInstancesCreateResponsePublicEndpointParamsRateLimit>;
 
-export interface NamespacesInstancesCreateResponsePublicEndpointParamsSearchEndpoint {
-  /** Disable search endpoint for this public endpoint */
-  disabled?: boolean | null;
-}
+export type NamespacesInstancesCreateResponsePublicEndpointParamsSearchEndpoint =
+  InstancesCreateResponsePublicEndpointParamsSearchEndpoint;
 export const NamespacesInstancesCreateResponsePublicEndpointParamsSearchEndpoint =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      disabled: S.optional(S.NullOr(S.Boolean)),
-    }),
-  ).annotate({
-    identifier:
-      "NamespacesInstancesCreateResponsePublicEndpointParamsSearchEndpoint",
-  }) as any as S.Schema<NamespacesInstancesCreateResponsePublicEndpointParamsSearchEndpoint>;
+  InstancesCreateResponsePublicEndpointParamsSearchEndpoint;
 
 export interface NamespacesInstancesCreateResponsePublicEndpointParams {
   authorizedHosts?: NamespacesInstancesCreateResponsePublicEndpointParamsAuthorizedHostsList | null;
-  chatCompletionsEndpoint?: NamespacesInstancesCreateResponsePublicEndpointParamsChatCompletionsEndpoint | null;
+  chatCompletionsEndpoint?: InstancesCreateResponsePublicEndpointParamsChatCompletionsEndpoint | null;
   /** Custom domain hostnames that alias this public endpoint. GET and create responses return the current set; on update (PUT) this field is only echoed back when supplied in the request body, otherwise it is null (omit it to leave domains unchanged). */
   customDomains?: NamespacesInstancesCreateResponsePublicEndpointParamsCustomDomainsList | null;
   enabled?: boolean | null;
-  mcp?: NamespacesInstancesCreateResponsePublicEndpointParamsMcp | null;
+  mcp?: InstancesCreateResponsePublicEndpointParamsMcp | null;
   rateLimit?: NamespacesInstancesCreateResponsePublicEndpointParamsRateLimit | null;
-  searchEndpoint?: NamespacesInstancesCreateResponsePublicEndpointParamsSearchEndpoint | null;
+  searchEndpoint?: InstancesCreateResponsePublicEndpointParamsSearchEndpoint | null;
 }
 export const NamespacesInstancesCreateResponsePublicEndpointParams =
   /*@__PURE__*/ S.suspend(() =>
@@ -4856,7 +4680,7 @@ export const NamespacesInstancesCreateResponsePublicEndpointParams =
       ),
       chatCompletionsEndpoint: S.optional(
         S.NullOr(
-          NamespacesInstancesCreateResponsePublicEndpointParamsChatCompletionsEndpoint,
+          InstancesCreateResponsePublicEndpointParamsChatCompletionsEndpoint,
         ).pipe(T.Body("chat_completions_endpoint")),
       ),
       customDomains: S.optional(
@@ -4865,9 +4689,7 @@ export const NamespacesInstancesCreateResponsePublicEndpointParams =
         ).pipe(T.Body("custom_domains")),
       ),
       enabled: S.optional(S.NullOr(S.Boolean)),
-      mcp: S.optional(
-        S.NullOr(NamespacesInstancesCreateResponsePublicEndpointParamsMcp),
-      ),
+      mcp: S.optional(S.NullOr(InstancesCreateResponsePublicEndpointParamsMcp)),
       rateLimit: S.optional(
         S.NullOr(
           NamespacesInstancesCreateResponsePublicEndpointParamsRateLimit,
@@ -4875,7 +4697,7 @@ export const NamespacesInstancesCreateResponsePublicEndpointParams =
       ),
       searchEndpoint: S.optional(
         S.NullOr(
-          NamespacesInstancesCreateResponsePublicEndpointParamsSearchEndpoint,
+          InstancesCreateResponsePublicEndpointParamsSearchEndpoint,
         ).pipe(T.Body("search_endpoint")),
       ),
     }),
@@ -4999,28 +4821,16 @@ export const NamespacesInstancesCreateResponseSourceParamsIncludeItemsList =
     S.String,
   ) as any as S.Schema<NamespacesInstancesCreateResponseSourceParamsIncludeItemsList>;
 
-export interface NamespacesInstancesCreateResponseSourceParamsWebCrawlerParseOptionsContentSelectorItem {
-  /** Glob pattern to match against the page URL path. Uses standard glob syntax: * matches within a segment, ** crosses directories. */
-  path: string;
-  /** CSS selector to extract content from pages matching the path pattern. Must not contain disallowed characters (;, `, $, {, }, ). Must target a single element; if multiple elements match, the selector is ignored and the full page is used. */
-  selector: string;
-}
+export type NamespacesInstancesCreateResponseSourceParamsWebCrawlerParseOptionsContentSelectorItem =
+  InstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorItem;
 export const NamespacesInstancesCreateResponseSourceParamsWebCrawlerParseOptionsContentSelectorItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      path: S.String,
-      selector: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "NamespacesInstancesCreateResponseSourceParamsWebCrawlerParseOptionsContentSelectorItem",
-  }) as any as S.Schema<NamespacesInstancesCreateResponseSourceParamsWebCrawlerParseOptionsContentSelectorItem>;
+  InstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorItem;
 
 export type NamespacesInstancesCreateResponseSourceParamsWebCrawlerParseOptionsContentSelectorList =
-  Array<NamespacesInstancesCreateResponseSourceParamsWebCrawlerParseOptionsContentSelectorItem>;
+  Array<InstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorItem>;
 export const NamespacesInstancesCreateResponseSourceParamsWebCrawlerParseOptionsContentSelectorList =
   /*@__PURE__*/ S.Array(
-    NamespacesInstancesCreateResponseSourceParamsWebCrawlerParseOptionsContentSelectorItem,
+    InstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorItem,
   ) as any as S.Schema<NamespacesInstancesCreateResponseSourceParamsWebCrawlerParseOptionsContentSelectorList>;
 
 export type NamespacesInstancesCreateResponseSourceParamsWebCrawlerParseOptionsIncludeHeadersMap =
@@ -5185,11 +4995,11 @@ export interface CreateNamespaceInstanceResponse {
   /** Deprecated — use index_method instead. */
   hybridSearchEnabled?: boolean | null;
   /** Controls which storage backends are used during indexing. Defaults to vector-only. */
-  indexMethod?: NamespacesInstancesCreateResponseIndexMethod | null;
+  indexMethod?: InstancesCreateRequestIndexMethod | null;
   indexingOptions?: NamespacesInstancesCreateResponseIndexingOptions | null;
   lastActivity?: string | null;
   maxNumResults?: number | null;
-  metadata?: NamespacesInstancesCreateResponseMetadata | null;
+  metadata?: InstancesCreateResponseMetadata | null;
   modifiedBy?: string | null;
   namespace?: string | null;
   paused?: boolean | null;
@@ -5257,9 +5067,7 @@ export const CreateNamespaceInstanceResponse = /*@__PURE__*/ S.suspend(() =>
       S.NullOr(S.Boolean).pipe(T.Body("hybrid_search_enabled")),
     ),
     indexMethod: S.optional(
-      S.NullOr(NamespacesInstancesCreateResponseIndexMethod).pipe(
-        T.Body("index_method"),
-      ),
+      S.NullOr(InstancesCreateRequestIndexMethod).pipe(T.Body("index_method")),
     ),
     indexingOptions: S.optional(
       S.NullOr(NamespacesInstancesCreateResponseIndexingOptions).pipe(
@@ -5270,7 +5078,7 @@ export const CreateNamespaceInstanceResponse = /*@__PURE__*/ S.suspend(() =>
     maxNumResults: S.optional(
       S.NullOr(S.Number).pipe(T.Body("max_num_results")),
     ),
-    metadata: S.optional(S.NullOr(NamespacesInstancesCreateResponseMetadata)),
+    metadata: S.optional(S.NullOr(InstancesCreateResponseMetadata)),
     modifiedBy: S.optional(S.NullOr(S.String).pipe(T.Body("modified_by"))),
     namespace: S.optional(S.NullOr(S.String)),
     paused: S.optional(S.NullOr(S.Boolean)),
@@ -5648,20 +5456,10 @@ export const InstancesDeleteResponseEmbeddingModel = /*@__PURE__*/ S.String;
 export type InstancesDeleteResponseFusionMethod = "max" | "rrf";
 export const InstancesDeleteResponseFusionMethod = /*@__PURE__*/ S.String;
 
-export interface InstancesDeleteResponseIndexMethod {
-  /** Enable keyword (BM25) storage backend. */
-  keyword: boolean;
-  /** Enable vector (embedding) storage backend. */
-  vector: boolean;
-}
-export const InstancesDeleteResponseIndexMethod = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    keyword: S.Boolean,
-    vector: S.Boolean,
-  }),
-).annotate({
-  identifier: "InstancesDeleteResponseIndexMethod",
-}) as any as S.Schema<InstancesDeleteResponseIndexMethod>;
+export type InstancesDeleteResponseIndexMethod =
+  InstancesCreateRequestIndexMethod;
+export const InstancesDeleteResponseIndexMethod =
+  InstancesCreateRequestIndexMethod;
 
 export type InstancesDeleteResponseIndexingOptionsKeywordTokenizer =
   | "porter"
@@ -5686,20 +5484,8 @@ export const InstancesDeleteResponseIndexingOptions = /*@__PURE__*/ S.suspend(
   identifier: "InstancesDeleteResponseIndexingOptions",
 }) as any as S.Schema<InstancesDeleteResponseIndexingOptions>;
 
-export interface InstancesDeleteResponseMetadata {
-  createdFromAisearchWizard?: boolean | null;
-  workerDomain?: string | null;
-}
-export const InstancesDeleteResponseMetadata = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdFromAisearchWizard: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("created_from_aisearch_wizard")),
-    ),
-    workerDomain: S.optional(S.NullOr(S.String).pipe(T.Body("worker_domain"))),
-  }),
-).annotate({
-  identifier: "InstancesDeleteResponseMetadata",
-}) as any as S.Schema<InstancesDeleteResponseMetadata>;
+export type InstancesDeleteResponseMetadata = InstancesCreateResponseMetadata;
+export const InstancesDeleteResponseMetadata = InstancesCreateResponseMetadata;
 
 export type InstancesDeleteResponsePublicEndpointParamsAuthorizedHostsList =
   Array<string>;
@@ -5708,19 +5494,10 @@ export const InstancesDeleteResponsePublicEndpointParamsAuthorizedHostsList =
     S.String,
   ) as any as S.Schema<InstancesDeleteResponsePublicEndpointParamsAuthorizedHostsList>;
 
-export interface InstancesDeleteResponsePublicEndpointParamsChatCompletionsEndpoint {
-  /** Disable chat completions endpoint for this public endpoint */
-  disabled?: boolean | null;
-}
+export type InstancesDeleteResponsePublicEndpointParamsChatCompletionsEndpoint =
+  InstancesCreateResponsePublicEndpointParamsChatCompletionsEndpoint;
 export const InstancesDeleteResponsePublicEndpointParamsChatCompletionsEndpoint =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      disabled: S.optional(S.NullOr(S.Boolean)),
-    }),
-  ).annotate({
-    identifier:
-      "InstancesDeleteResponsePublicEndpointParamsChatCompletionsEndpoint",
-  }) as any as S.Schema<InstancesDeleteResponsePublicEndpointParamsChatCompletionsEndpoint>;
+  InstancesCreateResponsePublicEndpointParamsChatCompletionsEndpoint;
 
 export type InstancesDeleteResponsePublicEndpointParamsCustomDomainsList =
   Array<string>;
@@ -5729,20 +5506,10 @@ export const InstancesDeleteResponsePublicEndpointParamsCustomDomainsList =
     S.String,
   ) as any as S.Schema<InstancesDeleteResponsePublicEndpointParamsCustomDomainsList>;
 
-export interface InstancesDeleteResponsePublicEndpointParamsMcp {
-  description?: string | null;
-  /** Disable MCP endpoint for this public endpoint */
-  disabled?: boolean | null;
-}
+export type InstancesDeleteResponsePublicEndpointParamsMcp =
+  InstancesCreateResponsePublicEndpointParamsMcp;
 export const InstancesDeleteResponsePublicEndpointParamsMcp =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      description: S.optional(S.NullOr(S.String)),
-      disabled: S.optional(S.NullOr(S.Boolean)),
-    }),
-  ).annotate({
-    identifier: "InstancesDeleteResponsePublicEndpointParamsMcp",
-  }) as any as S.Schema<InstancesDeleteResponsePublicEndpointParamsMcp>;
+  InstancesCreateResponsePublicEndpointParamsMcp;
 
 export type InstancesDeleteResponsePublicEndpointParamsRateLimitTechnique =
   | "fixed"
@@ -5768,28 +5535,20 @@ export const InstancesDeleteResponsePublicEndpointParamsRateLimit =
     identifier: "InstancesDeleteResponsePublicEndpointParamsRateLimit",
   }) as any as S.Schema<InstancesDeleteResponsePublicEndpointParamsRateLimit>;
 
-export interface InstancesDeleteResponsePublicEndpointParamsSearchEndpoint {
-  /** Disable search endpoint for this public endpoint */
-  disabled?: boolean | null;
-}
+export type InstancesDeleteResponsePublicEndpointParamsSearchEndpoint =
+  InstancesCreateResponsePublicEndpointParamsSearchEndpoint;
 export const InstancesDeleteResponsePublicEndpointParamsSearchEndpoint =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      disabled: S.optional(S.NullOr(S.Boolean)),
-    }),
-  ).annotate({
-    identifier: "InstancesDeleteResponsePublicEndpointParamsSearchEndpoint",
-  }) as any as S.Schema<InstancesDeleteResponsePublicEndpointParamsSearchEndpoint>;
+  InstancesCreateResponsePublicEndpointParamsSearchEndpoint;
 
 export interface InstancesDeleteResponsePublicEndpointParams {
   authorizedHosts?: InstancesDeleteResponsePublicEndpointParamsAuthorizedHostsList | null;
-  chatCompletionsEndpoint?: InstancesDeleteResponsePublicEndpointParamsChatCompletionsEndpoint | null;
+  chatCompletionsEndpoint?: InstancesCreateResponsePublicEndpointParamsChatCompletionsEndpoint | null;
   /** Custom domain hostnames that alias this public endpoint. GET and create responses return the current set; on update (PUT) this field is only echoed back when supplied in the request body, otherwise it is null (omit it to leave domains unchanged). */
   customDomains?: InstancesDeleteResponsePublicEndpointParamsCustomDomainsList | null;
   enabled?: boolean | null;
-  mcp?: InstancesDeleteResponsePublicEndpointParamsMcp | null;
+  mcp?: InstancesCreateResponsePublicEndpointParamsMcp | null;
   rateLimit?: InstancesDeleteResponsePublicEndpointParamsRateLimit | null;
-  searchEndpoint?: InstancesDeleteResponsePublicEndpointParamsSearchEndpoint | null;
+  searchEndpoint?: InstancesCreateResponsePublicEndpointParamsSearchEndpoint | null;
 }
 export const InstancesDeleteResponsePublicEndpointParams =
   /*@__PURE__*/ S.suspend(() =>
@@ -5801,7 +5560,7 @@ export const InstancesDeleteResponsePublicEndpointParams =
       ),
       chatCompletionsEndpoint: S.optional(
         S.NullOr(
-          InstancesDeleteResponsePublicEndpointParamsChatCompletionsEndpoint,
+          InstancesCreateResponsePublicEndpointParamsChatCompletionsEndpoint,
         ).pipe(T.Body("chat_completions_endpoint")),
       ),
       customDomains: S.optional(
@@ -5810,7 +5569,7 @@ export const InstancesDeleteResponsePublicEndpointParams =
         ).pipe(T.Body("custom_domains")),
       ),
       enabled: S.optional(S.NullOr(S.Boolean)),
-      mcp: S.optional(S.NullOr(InstancesDeleteResponsePublicEndpointParamsMcp)),
+      mcp: S.optional(S.NullOr(InstancesCreateResponsePublicEndpointParamsMcp)),
       rateLimit: S.optional(
         S.NullOr(InstancesDeleteResponsePublicEndpointParamsRateLimit).pipe(
           T.Body("rate_limit"),
@@ -5818,7 +5577,7 @@ export const InstancesDeleteResponsePublicEndpointParams =
       ),
       searchEndpoint: S.optional(
         S.NullOr(
-          InstancesDeleteResponsePublicEndpointParamsSearchEndpoint,
+          InstancesCreateResponsePublicEndpointParamsSearchEndpoint,
         ).pipe(T.Body("search_endpoint")),
       ),
     }),
@@ -5939,28 +5698,16 @@ export const InstancesDeleteResponseSourceParamsIncludeItemsList =
     S.String,
   ) as any as S.Schema<InstancesDeleteResponseSourceParamsIncludeItemsList>;
 
-export interface InstancesDeleteResponseSourceParamsWebCrawlerParseOptionsContentSelectorItem {
-  /** Glob pattern to match against the page URL path. Uses standard glob syntax: * matches within a segment, ** crosses directories. */
-  path: string;
-  /** CSS selector to extract content from pages matching the path pattern. Must not contain disallowed characters (;, `, $, {, }, ). Must target a single element; if multiple elements match, the selector is ignored and the full page is used. */
-  selector: string;
-}
+export type InstancesDeleteResponseSourceParamsWebCrawlerParseOptionsContentSelectorItem =
+  InstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorItem;
 export const InstancesDeleteResponseSourceParamsWebCrawlerParseOptionsContentSelectorItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      path: S.String,
-      selector: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "InstancesDeleteResponseSourceParamsWebCrawlerParseOptionsContentSelectorItem",
-  }) as any as S.Schema<InstancesDeleteResponseSourceParamsWebCrawlerParseOptionsContentSelectorItem>;
+  InstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorItem;
 
 export type InstancesDeleteResponseSourceParamsWebCrawlerParseOptionsContentSelectorList =
-  Array<InstancesDeleteResponseSourceParamsWebCrawlerParseOptionsContentSelectorItem>;
+  Array<InstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorItem>;
 export const InstancesDeleteResponseSourceParamsWebCrawlerParseOptionsContentSelectorList =
   /*@__PURE__*/ S.Array(
-    InstancesDeleteResponseSourceParamsWebCrawlerParseOptionsContentSelectorItem,
+    InstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorItem,
   ) as any as S.Schema<InstancesDeleteResponseSourceParamsWebCrawlerParseOptionsContentSelectorList>;
 
 export type InstancesDeleteResponseSourceParamsWebCrawlerParseOptionsIncludeHeadersMap =
@@ -6122,11 +5869,11 @@ export interface DeleteInstanceResponse {
   /** Deprecated — use index_method instead. */
   hybridSearchEnabled?: boolean | null;
   /** Controls which storage backends are used during indexing. Defaults to vector-only. */
-  indexMethod?: InstancesDeleteResponseIndexMethod | null;
+  indexMethod?: InstancesCreateRequestIndexMethod | null;
   indexingOptions?: InstancesDeleteResponseIndexingOptions | null;
   lastActivity?: string | null;
   maxNumResults?: number | null;
-  metadata?: InstancesDeleteResponseMetadata | null;
+  metadata?: InstancesCreateResponseMetadata | null;
   modifiedBy?: string | null;
   namespace?: string | null;
   paused?: boolean | null;
@@ -6192,7 +5939,7 @@ export const DeleteInstanceResponse = /*@__PURE__*/ S.suspend(() =>
       S.NullOr(S.Boolean).pipe(T.Body("hybrid_search_enabled")),
     ),
     indexMethod: S.optional(
-      S.NullOr(InstancesDeleteResponseIndexMethod).pipe(T.Body("index_method")),
+      S.NullOr(InstancesCreateRequestIndexMethod).pipe(T.Body("index_method")),
     ),
     indexingOptions: S.optional(
       S.NullOr(InstancesDeleteResponseIndexingOptions).pipe(
@@ -6203,7 +5950,7 @@ export const DeleteInstanceResponse = /*@__PURE__*/ S.suspend(() =>
     maxNumResults: S.optional(
       S.NullOr(S.Number).pipe(T.Body("max_num_results")),
     ),
-    metadata: S.optional(S.NullOr(InstancesDeleteResponseMetadata)),
+    metadata: S.optional(S.NullOr(InstancesCreateResponseMetadata)),
     modifiedBy: S.optional(S.NullOr(S.String).pipe(T.Body("modified_by"))),
     namespace: S.optional(S.NullOr(S.String)),
     paused: S.optional(S.NullOr(S.Boolean)),
@@ -6411,21 +6158,10 @@ export type NamespacesInstancesDeleteResponseFusionMethod = "max" | "rrf";
 export const NamespacesInstancesDeleteResponseFusionMethod =
   /*@__PURE__*/ S.String;
 
-export interface NamespacesInstancesDeleteResponseIndexMethod {
-  /** Enable keyword (BM25) storage backend. */
-  keyword: boolean;
-  /** Enable vector (embedding) storage backend. */
-  vector: boolean;
-}
+export type NamespacesInstancesDeleteResponseIndexMethod =
+  InstancesCreateRequestIndexMethod;
 export const NamespacesInstancesDeleteResponseIndexMethod =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      keyword: S.Boolean,
-      vector: S.Boolean,
-    }),
-  ).annotate({
-    identifier: "NamespacesInstancesDeleteResponseIndexMethod",
-  }) as any as S.Schema<NamespacesInstancesDeleteResponseIndexMethod>;
+  InstancesCreateRequestIndexMethod;
 
 export type NamespacesInstancesDeleteResponseIndexingOptionsKeywordTokenizer =
   | "porter"
@@ -6450,23 +6186,10 @@ export const NamespacesInstancesDeleteResponseIndexingOptions =
     identifier: "NamespacesInstancesDeleteResponseIndexingOptions",
   }) as any as S.Schema<NamespacesInstancesDeleteResponseIndexingOptions>;
 
-export interface NamespacesInstancesDeleteResponseMetadata {
-  createdFromAisearchWizard?: boolean | null;
-  workerDomain?: string | null;
-}
+export type NamespacesInstancesDeleteResponseMetadata =
+  InstancesCreateResponseMetadata;
 export const NamespacesInstancesDeleteResponseMetadata =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      createdFromAisearchWizard: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("created_from_aisearch_wizard")),
-      ),
-      workerDomain: S.optional(
-        S.NullOr(S.String).pipe(T.Body("worker_domain")),
-      ),
-    }),
-  ).annotate({
-    identifier: "NamespacesInstancesDeleteResponseMetadata",
-  }) as any as S.Schema<NamespacesInstancesDeleteResponseMetadata>;
+  InstancesCreateResponseMetadata;
 
 export type NamespacesInstancesDeleteResponsePublicEndpointParamsAuthorizedHostsList =
   Array<string>;
@@ -6475,19 +6198,10 @@ export const NamespacesInstancesDeleteResponsePublicEndpointParamsAuthorizedHost
     S.String,
   ) as any as S.Schema<NamespacesInstancesDeleteResponsePublicEndpointParamsAuthorizedHostsList>;
 
-export interface NamespacesInstancesDeleteResponsePublicEndpointParamsChatCompletionsEndpoint {
-  /** Disable chat completions endpoint for this public endpoint */
-  disabled?: boolean | null;
-}
+export type NamespacesInstancesDeleteResponsePublicEndpointParamsChatCompletionsEndpoint =
+  InstancesCreateResponsePublicEndpointParamsChatCompletionsEndpoint;
 export const NamespacesInstancesDeleteResponsePublicEndpointParamsChatCompletionsEndpoint =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      disabled: S.optional(S.NullOr(S.Boolean)),
-    }),
-  ).annotate({
-    identifier:
-      "NamespacesInstancesDeleteResponsePublicEndpointParamsChatCompletionsEndpoint",
-  }) as any as S.Schema<NamespacesInstancesDeleteResponsePublicEndpointParamsChatCompletionsEndpoint>;
+  InstancesCreateResponsePublicEndpointParamsChatCompletionsEndpoint;
 
 export type NamespacesInstancesDeleteResponsePublicEndpointParamsCustomDomainsList =
   Array<string>;
@@ -6496,20 +6210,10 @@ export const NamespacesInstancesDeleteResponsePublicEndpointParamsCustomDomainsL
     S.String,
   ) as any as S.Schema<NamespacesInstancesDeleteResponsePublicEndpointParamsCustomDomainsList>;
 
-export interface NamespacesInstancesDeleteResponsePublicEndpointParamsMcp {
-  description?: string | null;
-  /** Disable MCP endpoint for this public endpoint */
-  disabled?: boolean | null;
-}
+export type NamespacesInstancesDeleteResponsePublicEndpointParamsMcp =
+  InstancesCreateResponsePublicEndpointParamsMcp;
 export const NamespacesInstancesDeleteResponsePublicEndpointParamsMcp =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      description: S.optional(S.NullOr(S.String)),
-      disabled: S.optional(S.NullOr(S.Boolean)),
-    }),
-  ).annotate({
-    identifier: "NamespacesInstancesDeleteResponsePublicEndpointParamsMcp",
-  }) as any as S.Schema<NamespacesInstancesDeleteResponsePublicEndpointParamsMcp>;
+  InstancesCreateResponsePublicEndpointParamsMcp;
 
 export type NamespacesInstancesDeleteResponsePublicEndpointParamsRateLimitTechnique =
   "fixed" | "sliding";
@@ -6537,29 +6241,20 @@ export const NamespacesInstancesDeleteResponsePublicEndpointParamsRateLimit =
       "NamespacesInstancesDeleteResponsePublicEndpointParamsRateLimit",
   }) as any as S.Schema<NamespacesInstancesDeleteResponsePublicEndpointParamsRateLimit>;
 
-export interface NamespacesInstancesDeleteResponsePublicEndpointParamsSearchEndpoint {
-  /** Disable search endpoint for this public endpoint */
-  disabled?: boolean | null;
-}
+export type NamespacesInstancesDeleteResponsePublicEndpointParamsSearchEndpoint =
+  InstancesCreateResponsePublicEndpointParamsSearchEndpoint;
 export const NamespacesInstancesDeleteResponsePublicEndpointParamsSearchEndpoint =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      disabled: S.optional(S.NullOr(S.Boolean)),
-    }),
-  ).annotate({
-    identifier:
-      "NamespacesInstancesDeleteResponsePublicEndpointParamsSearchEndpoint",
-  }) as any as S.Schema<NamespacesInstancesDeleteResponsePublicEndpointParamsSearchEndpoint>;
+  InstancesCreateResponsePublicEndpointParamsSearchEndpoint;
 
 export interface NamespacesInstancesDeleteResponsePublicEndpointParams {
   authorizedHosts?: NamespacesInstancesDeleteResponsePublicEndpointParamsAuthorizedHostsList | null;
-  chatCompletionsEndpoint?: NamespacesInstancesDeleteResponsePublicEndpointParamsChatCompletionsEndpoint | null;
+  chatCompletionsEndpoint?: InstancesCreateResponsePublicEndpointParamsChatCompletionsEndpoint | null;
   /** Custom domain hostnames that alias this public endpoint. GET and create responses return the current set; on update (PUT) this field is only echoed back when supplied in the request body, otherwise it is null (omit it to leave domains unchanged). */
   customDomains?: NamespacesInstancesDeleteResponsePublicEndpointParamsCustomDomainsList | null;
   enabled?: boolean | null;
-  mcp?: NamespacesInstancesDeleteResponsePublicEndpointParamsMcp | null;
+  mcp?: InstancesCreateResponsePublicEndpointParamsMcp | null;
   rateLimit?: NamespacesInstancesDeleteResponsePublicEndpointParamsRateLimit | null;
-  searchEndpoint?: NamespacesInstancesDeleteResponsePublicEndpointParamsSearchEndpoint | null;
+  searchEndpoint?: InstancesCreateResponsePublicEndpointParamsSearchEndpoint | null;
 }
 export const NamespacesInstancesDeleteResponsePublicEndpointParams =
   /*@__PURE__*/ S.suspend(() =>
@@ -6571,7 +6266,7 @@ export const NamespacesInstancesDeleteResponsePublicEndpointParams =
       ),
       chatCompletionsEndpoint: S.optional(
         S.NullOr(
-          NamespacesInstancesDeleteResponsePublicEndpointParamsChatCompletionsEndpoint,
+          InstancesCreateResponsePublicEndpointParamsChatCompletionsEndpoint,
         ).pipe(T.Body("chat_completions_endpoint")),
       ),
       customDomains: S.optional(
@@ -6580,9 +6275,7 @@ export const NamespacesInstancesDeleteResponsePublicEndpointParams =
         ).pipe(T.Body("custom_domains")),
       ),
       enabled: S.optional(S.NullOr(S.Boolean)),
-      mcp: S.optional(
-        S.NullOr(NamespacesInstancesDeleteResponsePublicEndpointParamsMcp),
-      ),
+      mcp: S.optional(S.NullOr(InstancesCreateResponsePublicEndpointParamsMcp)),
       rateLimit: S.optional(
         S.NullOr(
           NamespacesInstancesDeleteResponsePublicEndpointParamsRateLimit,
@@ -6590,7 +6283,7 @@ export const NamespacesInstancesDeleteResponsePublicEndpointParams =
       ),
       searchEndpoint: S.optional(
         S.NullOr(
-          NamespacesInstancesDeleteResponsePublicEndpointParamsSearchEndpoint,
+          InstancesCreateResponsePublicEndpointParamsSearchEndpoint,
         ).pipe(T.Body("search_endpoint")),
       ),
     }),
@@ -6714,28 +6407,16 @@ export const NamespacesInstancesDeleteResponseSourceParamsIncludeItemsList =
     S.String,
   ) as any as S.Schema<NamespacesInstancesDeleteResponseSourceParamsIncludeItemsList>;
 
-export interface NamespacesInstancesDeleteResponseSourceParamsWebCrawlerParseOptionsContentSelectorItem {
-  /** Glob pattern to match against the page URL path. Uses standard glob syntax: * matches within a segment, ** crosses directories. */
-  path: string;
-  /** CSS selector to extract content from pages matching the path pattern. Must not contain disallowed characters (;, `, $, {, }, ). Must target a single element; if multiple elements match, the selector is ignored and the full page is used. */
-  selector: string;
-}
+export type NamespacesInstancesDeleteResponseSourceParamsWebCrawlerParseOptionsContentSelectorItem =
+  InstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorItem;
 export const NamespacesInstancesDeleteResponseSourceParamsWebCrawlerParseOptionsContentSelectorItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      path: S.String,
-      selector: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "NamespacesInstancesDeleteResponseSourceParamsWebCrawlerParseOptionsContentSelectorItem",
-  }) as any as S.Schema<NamespacesInstancesDeleteResponseSourceParamsWebCrawlerParseOptionsContentSelectorItem>;
+  InstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorItem;
 
 export type NamespacesInstancesDeleteResponseSourceParamsWebCrawlerParseOptionsContentSelectorList =
-  Array<NamespacesInstancesDeleteResponseSourceParamsWebCrawlerParseOptionsContentSelectorItem>;
+  Array<InstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorItem>;
 export const NamespacesInstancesDeleteResponseSourceParamsWebCrawlerParseOptionsContentSelectorList =
   /*@__PURE__*/ S.Array(
-    NamespacesInstancesDeleteResponseSourceParamsWebCrawlerParseOptionsContentSelectorItem,
+    InstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorItem,
   ) as any as S.Schema<NamespacesInstancesDeleteResponseSourceParamsWebCrawlerParseOptionsContentSelectorList>;
 
 export type NamespacesInstancesDeleteResponseSourceParamsWebCrawlerParseOptionsIncludeHeadersMap =
@@ -6900,11 +6581,11 @@ export interface DeleteNamespaceInstanceResponse {
   /** Deprecated — use index_method instead. */
   hybridSearchEnabled?: boolean | null;
   /** Controls which storage backends are used during indexing. Defaults to vector-only. */
-  indexMethod?: NamespacesInstancesDeleteResponseIndexMethod | null;
+  indexMethod?: InstancesCreateRequestIndexMethod | null;
   indexingOptions?: NamespacesInstancesDeleteResponseIndexingOptions | null;
   lastActivity?: string | null;
   maxNumResults?: number | null;
-  metadata?: NamespacesInstancesDeleteResponseMetadata | null;
+  metadata?: InstancesCreateResponseMetadata | null;
   modifiedBy?: string | null;
   namespace?: string | null;
   paused?: boolean | null;
@@ -6972,9 +6653,7 @@ export const DeleteNamespaceInstanceResponse = /*@__PURE__*/ S.suspend(() =>
       S.NullOr(S.Boolean).pipe(T.Body("hybrid_search_enabled")),
     ),
     indexMethod: S.optional(
-      S.NullOr(NamespacesInstancesDeleteResponseIndexMethod).pipe(
-        T.Body("index_method"),
-      ),
+      S.NullOr(InstancesCreateRequestIndexMethod).pipe(T.Body("index_method")),
     ),
     indexingOptions: S.optional(
       S.NullOr(NamespacesInstancesDeleteResponseIndexingOptions).pipe(
@@ -6985,7 +6664,7 @@ export const DeleteNamespaceInstanceResponse = /*@__PURE__*/ S.suspend(() =>
     maxNumResults: S.optional(
       S.NullOr(S.Number).pipe(T.Body("max_num_results")),
     ),
-    metadata: S.optional(S.NullOr(NamespacesInstancesDeleteResponseMetadata)),
+    metadata: S.optional(S.NullOr(InstancesCreateResponseMetadata)),
     modifiedBy: S.optional(S.NullOr(S.String).pipe(T.Body("modified_by"))),
     namespace: S.optional(S.NullOr(S.String)),
     paused: S.optional(S.NullOr(S.Boolean)),
@@ -7533,20 +7212,10 @@ export const InstancesListResultItemEmbeddingModel = /*@__PURE__*/ S.String;
 export type InstancesListResultItemFusionMethod = "max" | "rrf";
 export const InstancesListResultItemFusionMethod = /*@__PURE__*/ S.String;
 
-export interface InstancesListResultItemIndexMethod {
-  /** Enable keyword (BM25) storage backend. */
-  keyword: boolean;
-  /** Enable vector (embedding) storage backend. */
-  vector: boolean;
-}
-export const InstancesListResultItemIndexMethod = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    keyword: S.Boolean,
-    vector: S.Boolean,
-  }),
-).annotate({
-  identifier: "InstancesListResultItemIndexMethod",
-}) as any as S.Schema<InstancesListResultItemIndexMethod>;
+export type InstancesListResultItemIndexMethod =
+  InstancesCreateRequestIndexMethod;
+export const InstancesListResultItemIndexMethod =
+  InstancesCreateRequestIndexMethod;
 
 export type InstancesListResultItemIndexingOptionsKeywordTokenizer =
   | "porter"
@@ -7571,20 +7240,8 @@ export const InstancesListResultItemIndexingOptions = /*@__PURE__*/ S.suspend(
   identifier: "InstancesListResultItemIndexingOptions",
 }) as any as S.Schema<InstancesListResultItemIndexingOptions>;
 
-export interface InstancesListResultItemMetadata {
-  createdFromAisearchWizard?: boolean | null;
-  workerDomain?: string | null;
-}
-export const InstancesListResultItemMetadata = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdFromAisearchWizard: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("created_from_aisearch_wizard")),
-    ),
-    workerDomain: S.optional(S.NullOr(S.String).pipe(T.Body("worker_domain"))),
-  }),
-).annotate({
-  identifier: "InstancesListResultItemMetadata",
-}) as any as S.Schema<InstancesListResultItemMetadata>;
+export type InstancesListResultItemMetadata = InstancesCreateResponseMetadata;
+export const InstancesListResultItemMetadata = InstancesCreateResponseMetadata;
 
 export type InstancesListResultItemPublicEndpointParamsAuthorizedHostsList =
   Array<string>;
@@ -7593,19 +7250,10 @@ export const InstancesListResultItemPublicEndpointParamsAuthorizedHostsList =
     S.String,
   ) as any as S.Schema<InstancesListResultItemPublicEndpointParamsAuthorizedHostsList>;
 
-export interface InstancesListResultItemPublicEndpointParamsChatCompletionsEndpoint {
-  /** Disable chat completions endpoint for this public endpoint */
-  disabled?: boolean | null;
-}
+export type InstancesListResultItemPublicEndpointParamsChatCompletionsEndpoint =
+  InstancesCreateResponsePublicEndpointParamsChatCompletionsEndpoint;
 export const InstancesListResultItemPublicEndpointParamsChatCompletionsEndpoint =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      disabled: S.optional(S.NullOr(S.Boolean)),
-    }),
-  ).annotate({
-    identifier:
-      "InstancesListResultItemPublicEndpointParamsChatCompletionsEndpoint",
-  }) as any as S.Schema<InstancesListResultItemPublicEndpointParamsChatCompletionsEndpoint>;
+  InstancesCreateResponsePublicEndpointParamsChatCompletionsEndpoint;
 
 export type InstancesListResultItemPublicEndpointParamsCustomDomainsList =
   Array<string>;
@@ -7614,20 +7262,10 @@ export const InstancesListResultItemPublicEndpointParamsCustomDomainsList =
     S.String,
   ) as any as S.Schema<InstancesListResultItemPublicEndpointParamsCustomDomainsList>;
 
-export interface InstancesListResultItemPublicEndpointParamsMcp {
-  description?: string | null;
-  /** Disable MCP endpoint for this public endpoint */
-  disabled?: boolean | null;
-}
+export type InstancesListResultItemPublicEndpointParamsMcp =
+  InstancesCreateResponsePublicEndpointParamsMcp;
 export const InstancesListResultItemPublicEndpointParamsMcp =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      description: S.optional(S.NullOr(S.String)),
-      disabled: S.optional(S.NullOr(S.Boolean)),
-    }),
-  ).annotate({
-    identifier: "InstancesListResultItemPublicEndpointParamsMcp",
-  }) as any as S.Schema<InstancesListResultItemPublicEndpointParamsMcp>;
+  InstancesCreateResponsePublicEndpointParamsMcp;
 
 export type InstancesListResultItemPublicEndpointParamsRateLimitTechnique =
   | "fixed"
@@ -7653,28 +7291,20 @@ export const InstancesListResultItemPublicEndpointParamsRateLimit =
     identifier: "InstancesListResultItemPublicEndpointParamsRateLimit",
   }) as any as S.Schema<InstancesListResultItemPublicEndpointParamsRateLimit>;
 
-export interface InstancesListResultItemPublicEndpointParamsSearchEndpoint {
-  /** Disable search endpoint for this public endpoint */
-  disabled?: boolean | null;
-}
+export type InstancesListResultItemPublicEndpointParamsSearchEndpoint =
+  InstancesCreateResponsePublicEndpointParamsSearchEndpoint;
 export const InstancesListResultItemPublicEndpointParamsSearchEndpoint =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      disabled: S.optional(S.NullOr(S.Boolean)),
-    }),
-  ).annotate({
-    identifier: "InstancesListResultItemPublicEndpointParamsSearchEndpoint",
-  }) as any as S.Schema<InstancesListResultItemPublicEndpointParamsSearchEndpoint>;
+  InstancesCreateResponsePublicEndpointParamsSearchEndpoint;
 
 export interface InstancesListResultItemPublicEndpointParams {
   authorizedHosts?: InstancesListResultItemPublicEndpointParamsAuthorizedHostsList | null;
-  chatCompletionsEndpoint?: InstancesListResultItemPublicEndpointParamsChatCompletionsEndpoint | null;
+  chatCompletionsEndpoint?: InstancesCreateResponsePublicEndpointParamsChatCompletionsEndpoint | null;
   /** Custom domain hostnames that alias this public endpoint. GET and create responses return the current set; on update (PUT) this field is only echoed back when supplied in the request body, otherwise it is null (omit it to leave domains unchanged). */
   customDomains?: InstancesListResultItemPublicEndpointParamsCustomDomainsList | null;
   enabled?: boolean | null;
-  mcp?: InstancesListResultItemPublicEndpointParamsMcp | null;
+  mcp?: InstancesCreateResponsePublicEndpointParamsMcp | null;
   rateLimit?: InstancesListResultItemPublicEndpointParamsRateLimit | null;
-  searchEndpoint?: InstancesListResultItemPublicEndpointParamsSearchEndpoint | null;
+  searchEndpoint?: InstancesCreateResponsePublicEndpointParamsSearchEndpoint | null;
 }
 export const InstancesListResultItemPublicEndpointParams =
   /*@__PURE__*/ S.suspend(() =>
@@ -7686,7 +7316,7 @@ export const InstancesListResultItemPublicEndpointParams =
       ),
       chatCompletionsEndpoint: S.optional(
         S.NullOr(
-          InstancesListResultItemPublicEndpointParamsChatCompletionsEndpoint,
+          InstancesCreateResponsePublicEndpointParamsChatCompletionsEndpoint,
         ).pipe(T.Body("chat_completions_endpoint")),
       ),
       customDomains: S.optional(
@@ -7695,7 +7325,7 @@ export const InstancesListResultItemPublicEndpointParams =
         ).pipe(T.Body("custom_domains")),
       ),
       enabled: S.optional(S.NullOr(S.Boolean)),
-      mcp: S.optional(S.NullOr(InstancesListResultItemPublicEndpointParamsMcp)),
+      mcp: S.optional(S.NullOr(InstancesCreateResponsePublicEndpointParamsMcp)),
       rateLimit: S.optional(
         S.NullOr(InstancesListResultItemPublicEndpointParamsRateLimit).pipe(
           T.Body("rate_limit"),
@@ -7703,7 +7333,7 @@ export const InstancesListResultItemPublicEndpointParams =
       ),
       searchEndpoint: S.optional(
         S.NullOr(
-          InstancesListResultItemPublicEndpointParamsSearchEndpoint,
+          InstancesCreateResponsePublicEndpointParamsSearchEndpoint,
         ).pipe(T.Body("search_endpoint")),
       ),
     }),
@@ -7824,28 +7454,16 @@ export const InstancesListResultItemSourceParamsIncludeItemsList =
     S.String,
   ) as any as S.Schema<InstancesListResultItemSourceParamsIncludeItemsList>;
 
-export interface InstancesListResultItemSourceParamsWebCrawlerParseOptionsContentSelectorItem {
-  /** Glob pattern to match against the page URL path. Uses standard glob syntax: * matches within a segment, ** crosses directories. */
-  path: string;
-  /** CSS selector to extract content from pages matching the path pattern. Must not contain disallowed characters (;, `, $, {, }, ). Must target a single element; if multiple elements match, the selector is ignored and the full page is used. */
-  selector: string;
-}
+export type InstancesListResultItemSourceParamsWebCrawlerParseOptionsContentSelectorItem =
+  InstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorItem;
 export const InstancesListResultItemSourceParamsWebCrawlerParseOptionsContentSelectorItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      path: S.String,
-      selector: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "InstancesListResultItemSourceParamsWebCrawlerParseOptionsContentSelectorItem",
-  }) as any as S.Schema<InstancesListResultItemSourceParamsWebCrawlerParseOptionsContentSelectorItem>;
+  InstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorItem;
 
 export type InstancesListResultItemSourceParamsWebCrawlerParseOptionsContentSelectorList =
-  Array<InstancesListResultItemSourceParamsWebCrawlerParseOptionsContentSelectorItem>;
+  Array<InstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorItem>;
 export const InstancesListResultItemSourceParamsWebCrawlerParseOptionsContentSelectorList =
   /*@__PURE__*/ S.Array(
-    InstancesListResultItemSourceParamsWebCrawlerParseOptionsContentSelectorItem,
+    InstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorItem,
   ) as any as S.Schema<InstancesListResultItemSourceParamsWebCrawlerParseOptionsContentSelectorList>;
 
 export type InstancesListResultItemSourceParamsWebCrawlerParseOptionsIncludeHeadersMap =
@@ -8006,11 +7624,11 @@ export interface InstancesListResultItem {
   /** Deprecated — use index_method instead. */
   hybridSearchEnabled?: boolean | null;
   /** Controls which storage backends are used during indexing. Defaults to vector-only. */
-  indexMethod?: InstancesListResultItemIndexMethod | null;
+  indexMethod?: InstancesCreateRequestIndexMethod | null;
   indexingOptions?: InstancesListResultItemIndexingOptions | null;
   lastActivity?: string | null;
   maxNumResults?: number | null;
-  metadata?: InstancesListResultItemMetadata | null;
+  metadata?: InstancesCreateResponseMetadata | null;
   modifiedBy?: string | null;
   namespace?: string | null;
   paused?: boolean | null;
@@ -8076,7 +7694,7 @@ export const InstancesListResultItem = /*@__PURE__*/ S.suspend(() =>
       S.NullOr(S.Boolean).pipe(T.Body("hybrid_search_enabled")),
     ),
     indexMethod: S.optional(
-      S.NullOr(InstancesListResultItemIndexMethod).pipe(T.Body("index_method")),
+      S.NullOr(InstancesCreateRequestIndexMethod).pipe(T.Body("index_method")),
     ),
     indexingOptions: S.optional(
       S.NullOr(InstancesListResultItemIndexingOptions).pipe(
@@ -8087,7 +7705,7 @@ export const InstancesListResultItem = /*@__PURE__*/ S.suspend(() =>
     maxNumResults: S.optional(
       S.NullOr(S.Number).pipe(T.Body("max_num_results")),
     ),
-    metadata: S.optional(S.NullOr(InstancesListResultItemMetadata)),
+    metadata: S.optional(S.NullOr(InstancesCreateResponseMetadata)),
     modifiedBy: S.optional(S.NullOr(S.String).pipe(T.Body("modified_by"))),
     namespace: S.optional(S.NullOr(S.String)),
     paused: S.optional(S.NullOr(S.Boolean)),
@@ -8531,21 +8149,10 @@ export type NamespacesInstancesListResultItemFusionMethod = "max" | "rrf";
 export const NamespacesInstancesListResultItemFusionMethod =
   /*@__PURE__*/ S.String;
 
-export interface NamespacesInstancesListResultItemIndexMethod {
-  /** Enable keyword (BM25) storage backend. */
-  keyword: boolean;
-  /** Enable vector (embedding) storage backend. */
-  vector: boolean;
-}
+export type NamespacesInstancesListResultItemIndexMethod =
+  InstancesCreateRequestIndexMethod;
 export const NamespacesInstancesListResultItemIndexMethod =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      keyword: S.Boolean,
-      vector: S.Boolean,
-    }),
-  ).annotate({
-    identifier: "NamespacesInstancesListResultItemIndexMethod",
-  }) as any as S.Schema<NamespacesInstancesListResultItemIndexMethod>;
+  InstancesCreateRequestIndexMethod;
 
 export type NamespacesInstancesListResultItemIndexingOptionsKeywordTokenizer =
   | "porter"
@@ -8570,23 +8177,10 @@ export const NamespacesInstancesListResultItemIndexingOptions =
     identifier: "NamespacesInstancesListResultItemIndexingOptions",
   }) as any as S.Schema<NamespacesInstancesListResultItemIndexingOptions>;
 
-export interface NamespacesInstancesListResultItemMetadata {
-  createdFromAisearchWizard?: boolean | null;
-  workerDomain?: string | null;
-}
+export type NamespacesInstancesListResultItemMetadata =
+  InstancesCreateResponseMetadata;
 export const NamespacesInstancesListResultItemMetadata =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      createdFromAisearchWizard: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("created_from_aisearch_wizard")),
-      ),
-      workerDomain: S.optional(
-        S.NullOr(S.String).pipe(T.Body("worker_domain")),
-      ),
-    }),
-  ).annotate({
-    identifier: "NamespacesInstancesListResultItemMetadata",
-  }) as any as S.Schema<NamespacesInstancesListResultItemMetadata>;
+  InstancesCreateResponseMetadata;
 
 export type NamespacesInstancesListResultItemPublicEndpointParamsAuthorizedHostsList =
   Array<string>;
@@ -8595,19 +8189,10 @@ export const NamespacesInstancesListResultItemPublicEndpointParamsAuthorizedHost
     S.String,
   ) as any as S.Schema<NamespacesInstancesListResultItemPublicEndpointParamsAuthorizedHostsList>;
 
-export interface NamespacesInstancesListResultItemPublicEndpointParamsChatCompletionsEndpoint {
-  /** Disable chat completions endpoint for this public endpoint */
-  disabled?: boolean | null;
-}
+export type NamespacesInstancesListResultItemPublicEndpointParamsChatCompletionsEndpoint =
+  InstancesCreateResponsePublicEndpointParamsChatCompletionsEndpoint;
 export const NamespacesInstancesListResultItemPublicEndpointParamsChatCompletionsEndpoint =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      disabled: S.optional(S.NullOr(S.Boolean)),
-    }),
-  ).annotate({
-    identifier:
-      "NamespacesInstancesListResultItemPublicEndpointParamsChatCompletionsEndpoint",
-  }) as any as S.Schema<NamespacesInstancesListResultItemPublicEndpointParamsChatCompletionsEndpoint>;
+  InstancesCreateResponsePublicEndpointParamsChatCompletionsEndpoint;
 
 export type NamespacesInstancesListResultItemPublicEndpointParamsCustomDomainsList =
   Array<string>;
@@ -8616,20 +8201,10 @@ export const NamespacesInstancesListResultItemPublicEndpointParamsCustomDomainsL
     S.String,
   ) as any as S.Schema<NamespacesInstancesListResultItemPublicEndpointParamsCustomDomainsList>;
 
-export interface NamespacesInstancesListResultItemPublicEndpointParamsMcp {
-  description?: string | null;
-  /** Disable MCP endpoint for this public endpoint */
-  disabled?: boolean | null;
-}
+export type NamespacesInstancesListResultItemPublicEndpointParamsMcp =
+  InstancesCreateResponsePublicEndpointParamsMcp;
 export const NamespacesInstancesListResultItemPublicEndpointParamsMcp =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      description: S.optional(S.NullOr(S.String)),
-      disabled: S.optional(S.NullOr(S.Boolean)),
-    }),
-  ).annotate({
-    identifier: "NamespacesInstancesListResultItemPublicEndpointParamsMcp",
-  }) as any as S.Schema<NamespacesInstancesListResultItemPublicEndpointParamsMcp>;
+  InstancesCreateResponsePublicEndpointParamsMcp;
 
 export type NamespacesInstancesListResultItemPublicEndpointParamsRateLimitTechnique =
   "fixed" | "sliding";
@@ -8657,29 +8232,20 @@ export const NamespacesInstancesListResultItemPublicEndpointParamsRateLimit =
       "NamespacesInstancesListResultItemPublicEndpointParamsRateLimit",
   }) as any as S.Schema<NamespacesInstancesListResultItemPublicEndpointParamsRateLimit>;
 
-export interface NamespacesInstancesListResultItemPublicEndpointParamsSearchEndpoint {
-  /** Disable search endpoint for this public endpoint */
-  disabled?: boolean | null;
-}
+export type NamespacesInstancesListResultItemPublicEndpointParamsSearchEndpoint =
+  InstancesCreateResponsePublicEndpointParamsSearchEndpoint;
 export const NamespacesInstancesListResultItemPublicEndpointParamsSearchEndpoint =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      disabled: S.optional(S.NullOr(S.Boolean)),
-    }),
-  ).annotate({
-    identifier:
-      "NamespacesInstancesListResultItemPublicEndpointParamsSearchEndpoint",
-  }) as any as S.Schema<NamespacesInstancesListResultItemPublicEndpointParamsSearchEndpoint>;
+  InstancesCreateResponsePublicEndpointParamsSearchEndpoint;
 
 export interface NamespacesInstancesListResultItemPublicEndpointParams {
   authorizedHosts?: NamespacesInstancesListResultItemPublicEndpointParamsAuthorizedHostsList | null;
-  chatCompletionsEndpoint?: NamespacesInstancesListResultItemPublicEndpointParamsChatCompletionsEndpoint | null;
+  chatCompletionsEndpoint?: InstancesCreateResponsePublicEndpointParamsChatCompletionsEndpoint | null;
   /** Custom domain hostnames that alias this public endpoint. GET and create responses return the current set; on update (PUT) this field is only echoed back when supplied in the request body, otherwise it is null (omit it to leave domains unchanged). */
   customDomains?: NamespacesInstancesListResultItemPublicEndpointParamsCustomDomainsList | null;
   enabled?: boolean | null;
-  mcp?: NamespacesInstancesListResultItemPublicEndpointParamsMcp | null;
+  mcp?: InstancesCreateResponsePublicEndpointParamsMcp | null;
   rateLimit?: NamespacesInstancesListResultItemPublicEndpointParamsRateLimit | null;
-  searchEndpoint?: NamespacesInstancesListResultItemPublicEndpointParamsSearchEndpoint | null;
+  searchEndpoint?: InstancesCreateResponsePublicEndpointParamsSearchEndpoint | null;
 }
 export const NamespacesInstancesListResultItemPublicEndpointParams =
   /*@__PURE__*/ S.suspend(() =>
@@ -8691,7 +8257,7 @@ export const NamespacesInstancesListResultItemPublicEndpointParams =
       ),
       chatCompletionsEndpoint: S.optional(
         S.NullOr(
-          NamespacesInstancesListResultItemPublicEndpointParamsChatCompletionsEndpoint,
+          InstancesCreateResponsePublicEndpointParamsChatCompletionsEndpoint,
         ).pipe(T.Body("chat_completions_endpoint")),
       ),
       customDomains: S.optional(
@@ -8700,9 +8266,7 @@ export const NamespacesInstancesListResultItemPublicEndpointParams =
         ).pipe(T.Body("custom_domains")),
       ),
       enabled: S.optional(S.NullOr(S.Boolean)),
-      mcp: S.optional(
-        S.NullOr(NamespacesInstancesListResultItemPublicEndpointParamsMcp),
-      ),
+      mcp: S.optional(S.NullOr(InstancesCreateResponsePublicEndpointParamsMcp)),
       rateLimit: S.optional(
         S.NullOr(
           NamespacesInstancesListResultItemPublicEndpointParamsRateLimit,
@@ -8710,7 +8274,7 @@ export const NamespacesInstancesListResultItemPublicEndpointParams =
       ),
       searchEndpoint: S.optional(
         S.NullOr(
-          NamespacesInstancesListResultItemPublicEndpointParamsSearchEndpoint,
+          InstancesCreateResponsePublicEndpointParamsSearchEndpoint,
         ).pipe(T.Body("search_endpoint")),
       ),
     }),
@@ -8834,28 +8398,16 @@ export const NamespacesInstancesListResultItemSourceParamsIncludeItemsList =
     S.String,
   ) as any as S.Schema<NamespacesInstancesListResultItemSourceParamsIncludeItemsList>;
 
-export interface NamespacesInstancesListResultItemSourceParamsWebCrawlerParseOptionsContentSelectorItem {
-  /** Glob pattern to match against the page URL path. Uses standard glob syntax: * matches within a segment, ** crosses directories. */
-  path: string;
-  /** CSS selector to extract content from pages matching the path pattern. Must not contain disallowed characters (;, `, $, {, }, ). Must target a single element; if multiple elements match, the selector is ignored and the full page is used. */
-  selector: string;
-}
+export type NamespacesInstancesListResultItemSourceParamsWebCrawlerParseOptionsContentSelectorItem =
+  InstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorItem;
 export const NamespacesInstancesListResultItemSourceParamsWebCrawlerParseOptionsContentSelectorItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      path: S.String,
-      selector: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "NamespacesInstancesListResultItemSourceParamsWebCrawlerParseOptionsContentSelectorItem",
-  }) as any as S.Schema<NamespacesInstancesListResultItemSourceParamsWebCrawlerParseOptionsContentSelectorItem>;
+  InstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorItem;
 
 export type NamespacesInstancesListResultItemSourceParamsWebCrawlerParseOptionsContentSelectorList =
-  Array<NamespacesInstancesListResultItemSourceParamsWebCrawlerParseOptionsContentSelectorItem>;
+  Array<InstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorItem>;
 export const NamespacesInstancesListResultItemSourceParamsWebCrawlerParseOptionsContentSelectorList =
   /*@__PURE__*/ S.Array(
-    NamespacesInstancesListResultItemSourceParamsWebCrawlerParseOptionsContentSelectorItem,
+    InstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorItem,
   ) as any as S.Schema<NamespacesInstancesListResultItemSourceParamsWebCrawlerParseOptionsContentSelectorList>;
 
 export type NamespacesInstancesListResultItemSourceParamsWebCrawlerParseOptionsIncludeHeadersMap =
@@ -9019,11 +8571,11 @@ export interface NamespacesInstancesListResultItem {
   /** Deprecated — use index_method instead. */
   hybridSearchEnabled?: boolean | null;
   /** Controls which storage backends are used during indexing. Defaults to vector-only. */
-  indexMethod?: NamespacesInstancesListResultItemIndexMethod | null;
+  indexMethod?: InstancesCreateRequestIndexMethod | null;
   indexingOptions?: NamespacesInstancesListResultItemIndexingOptions | null;
   lastActivity?: string | null;
   maxNumResults?: number | null;
-  metadata?: NamespacesInstancesListResultItemMetadata | null;
+  metadata?: InstancesCreateResponseMetadata | null;
   modifiedBy?: string | null;
   namespace?: string | null;
   paused?: boolean | null;
@@ -9091,9 +8643,7 @@ export const NamespacesInstancesListResultItem = /*@__PURE__*/ S.suspend(() =>
       S.NullOr(S.Boolean).pipe(T.Body("hybrid_search_enabled")),
     ),
     indexMethod: S.optional(
-      S.NullOr(NamespacesInstancesListResultItemIndexMethod).pipe(
-        T.Body("index_method"),
-      ),
+      S.NullOr(InstancesCreateRequestIndexMethod).pipe(T.Body("index_method")),
     ),
     indexingOptions: S.optional(
       S.NullOr(NamespacesInstancesListResultItemIndexingOptions).pipe(
@@ -9104,7 +8654,7 @@ export const NamespacesInstancesListResultItem = /*@__PURE__*/ S.suspend(() =>
     maxNumResults: S.optional(
       S.NullOr(S.Number).pipe(T.Body("max_num_results")),
     ),
-    metadata: S.optional(S.NullOr(NamespacesInstancesListResultItemMetadata)),
+    metadata: S.optional(S.NullOr(InstancesCreateResponseMetadata)),
     modifiedBy: S.optional(S.NullOr(S.String).pipe(T.Body("modified_by"))),
     namespace: S.optional(S.NullOr(S.String)),
     paused: S.optional(S.NullOr(S.Boolean)),
@@ -9476,28 +9026,14 @@ export const LogsNamespaceInstanceJobRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "LogsNamespaceInstanceJobRequest",
 }) as any as S.Schema<LogsNamespaceInstanceJobRequest>;
 
-export interface NamespacesInstancesJobsLogsResultItem {
-  id: number;
-  createdAt: number;
-  message: string;
-  messageType: number;
-}
-export const NamespacesInstancesJobsLogsResultItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.Number,
-      createdAt: S.Number.pipe(T.Body("created_at")),
-      message: S.String,
-      messageType: S.Number.pipe(T.Body("message_type")),
-    }),
-).annotate({
-  identifier: "NamespacesInstancesJobsLogsResultItem",
-}) as any as S.Schema<NamespacesInstancesJobsLogsResultItem>;
+export type NamespacesInstancesJobsLogsResultItem = InstancesJobsLogsResultItem;
+export const NamespacesInstancesJobsLogsResultItem =
+  InstancesJobsLogsResultItem;
 
 export type NamespacesInstancesJobsLogsResultList =
-  Array<NamespacesInstancesJobsLogsResultItem>;
+  Array<InstancesJobsLogsResultItem>;
 export const NamespacesInstancesJobsLogsResultList = /*@__PURE__*/ S.Array(
-  NamespacesInstancesJobsLogsResultItem,
+  InstancesJobsLogsResultItem,
 ) as any as S.Schema<NamespacesInstancesJobsLogsResultList>;
 
 export type LogsNamespaceInstanceJobResponse =
@@ -9692,20 +9228,10 @@ export const InstancesReadResponseEmbeddingModel = /*@__PURE__*/ S.String;
 export type InstancesReadResponseFusionMethod = "max" | "rrf";
 export const InstancesReadResponseFusionMethod = /*@__PURE__*/ S.String;
 
-export interface InstancesReadResponseIndexMethod {
-  /** Enable keyword (BM25) storage backend. */
-  keyword: boolean;
-  /** Enable vector (embedding) storage backend. */
-  vector: boolean;
-}
-export const InstancesReadResponseIndexMethod = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    keyword: S.Boolean,
-    vector: S.Boolean,
-  }),
-).annotate({
-  identifier: "InstancesReadResponseIndexMethod",
-}) as any as S.Schema<InstancesReadResponseIndexMethod>;
+export type InstancesReadResponseIndexMethod =
+  InstancesCreateRequestIndexMethod;
+export const InstancesReadResponseIndexMethod =
+  InstancesCreateRequestIndexMethod;
 
 export type InstancesReadResponseIndexingOptionsKeywordTokenizer =
   | "porter"
@@ -9730,20 +9256,8 @@ export const InstancesReadResponseIndexingOptions = /*@__PURE__*/ S.suspend(
   identifier: "InstancesReadResponseIndexingOptions",
 }) as any as S.Schema<InstancesReadResponseIndexingOptions>;
 
-export interface InstancesReadResponseMetadata {
-  createdFromAisearchWizard?: boolean | null;
-  workerDomain?: string | null;
-}
-export const InstancesReadResponseMetadata = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdFromAisearchWizard: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("created_from_aisearch_wizard")),
-    ),
-    workerDomain: S.optional(S.NullOr(S.String).pipe(T.Body("worker_domain"))),
-  }),
-).annotate({
-  identifier: "InstancesReadResponseMetadata",
-}) as any as S.Schema<InstancesReadResponseMetadata>;
+export type InstancesReadResponseMetadata = InstancesCreateResponseMetadata;
+export const InstancesReadResponseMetadata = InstancesCreateResponseMetadata;
 
 export type InstancesReadResponsePublicEndpointParamsAuthorizedHostsList =
   Array<string>;
@@ -9752,19 +9266,10 @@ export const InstancesReadResponsePublicEndpointParamsAuthorizedHostsList =
     S.String,
   ) as any as S.Schema<InstancesReadResponsePublicEndpointParamsAuthorizedHostsList>;
 
-export interface InstancesReadResponsePublicEndpointParamsChatCompletionsEndpoint {
-  /** Disable chat completions endpoint for this public endpoint */
-  disabled?: boolean | null;
-}
+export type InstancesReadResponsePublicEndpointParamsChatCompletionsEndpoint =
+  InstancesCreateResponsePublicEndpointParamsChatCompletionsEndpoint;
 export const InstancesReadResponsePublicEndpointParamsChatCompletionsEndpoint =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      disabled: S.optional(S.NullOr(S.Boolean)),
-    }),
-  ).annotate({
-    identifier:
-      "InstancesReadResponsePublicEndpointParamsChatCompletionsEndpoint",
-  }) as any as S.Schema<InstancesReadResponsePublicEndpointParamsChatCompletionsEndpoint>;
+  InstancesCreateResponsePublicEndpointParamsChatCompletionsEndpoint;
 
 export type InstancesReadResponsePublicEndpointParamsCustomDomainsList =
   Array<string>;
@@ -9773,20 +9278,10 @@ export const InstancesReadResponsePublicEndpointParamsCustomDomainsList =
     S.String,
   ) as any as S.Schema<InstancesReadResponsePublicEndpointParamsCustomDomainsList>;
 
-export interface InstancesReadResponsePublicEndpointParamsMcp {
-  description?: string | null;
-  /** Disable MCP endpoint for this public endpoint */
-  disabled?: boolean | null;
-}
+export type InstancesReadResponsePublicEndpointParamsMcp =
+  InstancesCreateResponsePublicEndpointParamsMcp;
 export const InstancesReadResponsePublicEndpointParamsMcp =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      description: S.optional(S.NullOr(S.String)),
-      disabled: S.optional(S.NullOr(S.Boolean)),
-    }),
-  ).annotate({
-    identifier: "InstancesReadResponsePublicEndpointParamsMcp",
-  }) as any as S.Schema<InstancesReadResponsePublicEndpointParamsMcp>;
+  InstancesCreateResponsePublicEndpointParamsMcp;
 
 export type InstancesReadResponsePublicEndpointParamsRateLimitTechnique =
   | "fixed"
@@ -9812,28 +9307,20 @@ export const InstancesReadResponsePublicEndpointParamsRateLimit =
     identifier: "InstancesReadResponsePublicEndpointParamsRateLimit",
   }) as any as S.Schema<InstancesReadResponsePublicEndpointParamsRateLimit>;
 
-export interface InstancesReadResponsePublicEndpointParamsSearchEndpoint {
-  /** Disable search endpoint for this public endpoint */
-  disabled?: boolean | null;
-}
+export type InstancesReadResponsePublicEndpointParamsSearchEndpoint =
+  InstancesCreateResponsePublicEndpointParamsSearchEndpoint;
 export const InstancesReadResponsePublicEndpointParamsSearchEndpoint =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      disabled: S.optional(S.NullOr(S.Boolean)),
-    }),
-  ).annotate({
-    identifier: "InstancesReadResponsePublicEndpointParamsSearchEndpoint",
-  }) as any as S.Schema<InstancesReadResponsePublicEndpointParamsSearchEndpoint>;
+  InstancesCreateResponsePublicEndpointParamsSearchEndpoint;
 
 export interface InstancesReadResponsePublicEndpointParams {
   authorizedHosts?: InstancesReadResponsePublicEndpointParamsAuthorizedHostsList | null;
-  chatCompletionsEndpoint?: InstancesReadResponsePublicEndpointParamsChatCompletionsEndpoint | null;
+  chatCompletionsEndpoint?: InstancesCreateResponsePublicEndpointParamsChatCompletionsEndpoint | null;
   /** Custom domain hostnames that alias this public endpoint. GET and create responses return the current set; on update (PUT) this field is only echoed back when supplied in the request body, otherwise it is null (omit it to leave domains unchanged). */
   customDomains?: InstancesReadResponsePublicEndpointParamsCustomDomainsList | null;
   enabled?: boolean | null;
-  mcp?: InstancesReadResponsePublicEndpointParamsMcp | null;
+  mcp?: InstancesCreateResponsePublicEndpointParamsMcp | null;
   rateLimit?: InstancesReadResponsePublicEndpointParamsRateLimit | null;
-  searchEndpoint?: InstancesReadResponsePublicEndpointParamsSearchEndpoint | null;
+  searchEndpoint?: InstancesCreateResponsePublicEndpointParamsSearchEndpoint | null;
 }
 export const InstancesReadResponsePublicEndpointParams =
   /*@__PURE__*/ S.suspend(() =>
@@ -9845,7 +9332,7 @@ export const InstancesReadResponsePublicEndpointParams =
       ),
       chatCompletionsEndpoint: S.optional(
         S.NullOr(
-          InstancesReadResponsePublicEndpointParamsChatCompletionsEndpoint,
+          InstancesCreateResponsePublicEndpointParamsChatCompletionsEndpoint,
         ).pipe(T.Body("chat_completions_endpoint")),
       ),
       customDomains: S.optional(
@@ -9854,16 +9341,16 @@ export const InstancesReadResponsePublicEndpointParams =
         ).pipe(T.Body("custom_domains")),
       ),
       enabled: S.optional(S.NullOr(S.Boolean)),
-      mcp: S.optional(S.NullOr(InstancesReadResponsePublicEndpointParamsMcp)),
+      mcp: S.optional(S.NullOr(InstancesCreateResponsePublicEndpointParamsMcp)),
       rateLimit: S.optional(
         S.NullOr(InstancesReadResponsePublicEndpointParamsRateLimit).pipe(
           T.Body("rate_limit"),
         ),
       ),
       searchEndpoint: S.optional(
-        S.NullOr(InstancesReadResponsePublicEndpointParamsSearchEndpoint).pipe(
-          T.Body("search_endpoint"),
-        ),
+        S.NullOr(
+          InstancesCreateResponsePublicEndpointParamsSearchEndpoint,
+        ).pipe(T.Body("search_endpoint")),
       ),
     }),
   ).annotate({
@@ -9983,28 +9470,16 @@ export const InstancesReadResponseSourceParamsIncludeItemsList =
     S.String,
   ) as any as S.Schema<InstancesReadResponseSourceParamsIncludeItemsList>;
 
-export interface InstancesReadResponseSourceParamsWebCrawlerParseOptionsContentSelectorItem {
-  /** Glob pattern to match against the page URL path. Uses standard glob syntax: * matches within a segment, ** crosses directories. */
-  path: string;
-  /** CSS selector to extract content from pages matching the path pattern. Must not contain disallowed characters (;, `, $, {, }, ). Must target a single element; if multiple elements match, the selector is ignored and the full page is used. */
-  selector: string;
-}
+export type InstancesReadResponseSourceParamsWebCrawlerParseOptionsContentSelectorItem =
+  InstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorItem;
 export const InstancesReadResponseSourceParamsWebCrawlerParseOptionsContentSelectorItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      path: S.String,
-      selector: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "InstancesReadResponseSourceParamsWebCrawlerParseOptionsContentSelectorItem",
-  }) as any as S.Schema<InstancesReadResponseSourceParamsWebCrawlerParseOptionsContentSelectorItem>;
+  InstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorItem;
 
 export type InstancesReadResponseSourceParamsWebCrawlerParseOptionsContentSelectorList =
-  Array<InstancesReadResponseSourceParamsWebCrawlerParseOptionsContentSelectorItem>;
+  Array<InstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorItem>;
 export const InstancesReadResponseSourceParamsWebCrawlerParseOptionsContentSelectorList =
   /*@__PURE__*/ S.Array(
-    InstancesReadResponseSourceParamsWebCrawlerParseOptionsContentSelectorItem,
+    InstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorItem,
   ) as any as S.Schema<InstancesReadResponseSourceParamsWebCrawlerParseOptionsContentSelectorList>;
 
 export type InstancesReadResponseSourceParamsWebCrawlerParseOptionsIncludeHeadersMap =
@@ -10166,11 +9641,11 @@ export interface ReadInstanceResponse {
   /** Deprecated — use index_method instead. */
   hybridSearchEnabled?: boolean | null;
   /** Controls which storage backends are used during indexing. Defaults to vector-only. */
-  indexMethod?: InstancesReadResponseIndexMethod | null;
+  indexMethod?: InstancesCreateRequestIndexMethod | null;
   indexingOptions?: InstancesReadResponseIndexingOptions | null;
   lastActivity?: string | null;
   maxNumResults?: number | null;
-  metadata?: InstancesReadResponseMetadata | null;
+  metadata?: InstancesCreateResponseMetadata | null;
   modifiedBy?: string | null;
   namespace?: string | null;
   paused?: boolean | null;
@@ -10234,7 +9709,7 @@ export const ReadInstanceResponse = /*@__PURE__*/ S.suspend(() =>
       S.NullOr(S.Boolean).pipe(T.Body("hybrid_search_enabled")),
     ),
     indexMethod: S.optional(
-      S.NullOr(InstancesReadResponseIndexMethod).pipe(T.Body("index_method")),
+      S.NullOr(InstancesCreateRequestIndexMethod).pipe(T.Body("index_method")),
     ),
     indexingOptions: S.optional(
       S.NullOr(InstancesReadResponseIndexingOptions).pipe(
@@ -10245,7 +9720,7 @@ export const ReadInstanceResponse = /*@__PURE__*/ S.suspend(() =>
     maxNumResults: S.optional(
       S.NullOr(S.Number).pipe(T.Body("max_num_results")),
     ),
-    metadata: S.optional(S.NullOr(InstancesReadResponseMetadata)),
+    metadata: S.optional(S.NullOr(InstancesCreateResponseMetadata)),
     modifiedBy: S.optional(S.NullOr(S.String).pipe(T.Body("modified_by"))),
     namespace: S.optional(S.NullOr(S.String)),
     paused: S.optional(S.NullOr(S.Boolean)),
@@ -10456,21 +9931,10 @@ export type NamespacesInstancesReadResponseFusionMethod = "max" | "rrf";
 export const NamespacesInstancesReadResponseFusionMethod =
   /*@__PURE__*/ S.String;
 
-export interface NamespacesInstancesReadResponseIndexMethod {
-  /** Enable keyword (BM25) storage backend. */
-  keyword: boolean;
-  /** Enable vector (embedding) storage backend. */
-  vector: boolean;
-}
+export type NamespacesInstancesReadResponseIndexMethod =
+  InstancesCreateRequestIndexMethod;
 export const NamespacesInstancesReadResponseIndexMethod =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      keyword: S.Boolean,
-      vector: S.Boolean,
-    }),
-  ).annotate({
-    identifier: "NamespacesInstancesReadResponseIndexMethod",
-  }) as any as S.Schema<NamespacesInstancesReadResponseIndexMethod>;
+  InstancesCreateRequestIndexMethod;
 
 export type NamespacesInstancesReadResponseIndexingOptionsKeywordTokenizer =
   | "porter"
@@ -10495,23 +9959,10 @@ export const NamespacesInstancesReadResponseIndexingOptions =
     identifier: "NamespacesInstancesReadResponseIndexingOptions",
   }) as any as S.Schema<NamespacesInstancesReadResponseIndexingOptions>;
 
-export interface NamespacesInstancesReadResponseMetadata {
-  createdFromAisearchWizard?: boolean | null;
-  workerDomain?: string | null;
-}
-export const NamespacesInstancesReadResponseMetadata = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      createdFromAisearchWizard: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("created_from_aisearch_wizard")),
-      ),
-      workerDomain: S.optional(
-        S.NullOr(S.String).pipe(T.Body("worker_domain")),
-      ),
-    }),
-).annotate({
-  identifier: "NamespacesInstancesReadResponseMetadata",
-}) as any as S.Schema<NamespacesInstancesReadResponseMetadata>;
+export type NamespacesInstancesReadResponseMetadata =
+  InstancesCreateResponseMetadata;
+export const NamespacesInstancesReadResponseMetadata =
+  InstancesCreateResponseMetadata;
 
 export type NamespacesInstancesReadResponsePublicEndpointParamsAuthorizedHostsList =
   Array<string>;
@@ -10520,19 +9971,10 @@ export const NamespacesInstancesReadResponsePublicEndpointParamsAuthorizedHostsL
     S.String,
   ) as any as S.Schema<NamespacesInstancesReadResponsePublicEndpointParamsAuthorizedHostsList>;
 
-export interface NamespacesInstancesReadResponsePublicEndpointParamsChatCompletionsEndpoint {
-  /** Disable chat completions endpoint for this public endpoint */
-  disabled?: boolean | null;
-}
+export type NamespacesInstancesReadResponsePublicEndpointParamsChatCompletionsEndpoint =
+  InstancesCreateResponsePublicEndpointParamsChatCompletionsEndpoint;
 export const NamespacesInstancesReadResponsePublicEndpointParamsChatCompletionsEndpoint =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      disabled: S.optional(S.NullOr(S.Boolean)),
-    }),
-  ).annotate({
-    identifier:
-      "NamespacesInstancesReadResponsePublicEndpointParamsChatCompletionsEndpoint",
-  }) as any as S.Schema<NamespacesInstancesReadResponsePublicEndpointParamsChatCompletionsEndpoint>;
+  InstancesCreateResponsePublicEndpointParamsChatCompletionsEndpoint;
 
 export type NamespacesInstancesReadResponsePublicEndpointParamsCustomDomainsList =
   Array<string>;
@@ -10541,20 +9983,10 @@ export const NamespacesInstancesReadResponsePublicEndpointParamsCustomDomainsLis
     S.String,
   ) as any as S.Schema<NamespacesInstancesReadResponsePublicEndpointParamsCustomDomainsList>;
 
-export interface NamespacesInstancesReadResponsePublicEndpointParamsMcp {
-  description?: string | null;
-  /** Disable MCP endpoint for this public endpoint */
-  disabled?: boolean | null;
-}
+export type NamespacesInstancesReadResponsePublicEndpointParamsMcp =
+  InstancesCreateResponsePublicEndpointParamsMcp;
 export const NamespacesInstancesReadResponsePublicEndpointParamsMcp =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      description: S.optional(S.NullOr(S.String)),
-      disabled: S.optional(S.NullOr(S.Boolean)),
-    }),
-  ).annotate({
-    identifier: "NamespacesInstancesReadResponsePublicEndpointParamsMcp",
-  }) as any as S.Schema<NamespacesInstancesReadResponsePublicEndpointParamsMcp>;
+  InstancesCreateResponsePublicEndpointParamsMcp;
 
 export type NamespacesInstancesReadResponsePublicEndpointParamsRateLimitTechnique =
   "fixed" | "sliding";
@@ -10581,29 +10013,20 @@ export const NamespacesInstancesReadResponsePublicEndpointParamsRateLimit =
     identifier: "NamespacesInstancesReadResponsePublicEndpointParamsRateLimit",
   }) as any as S.Schema<NamespacesInstancesReadResponsePublicEndpointParamsRateLimit>;
 
-export interface NamespacesInstancesReadResponsePublicEndpointParamsSearchEndpoint {
-  /** Disable search endpoint for this public endpoint */
-  disabled?: boolean | null;
-}
+export type NamespacesInstancesReadResponsePublicEndpointParamsSearchEndpoint =
+  InstancesCreateResponsePublicEndpointParamsSearchEndpoint;
 export const NamespacesInstancesReadResponsePublicEndpointParamsSearchEndpoint =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      disabled: S.optional(S.NullOr(S.Boolean)),
-    }),
-  ).annotate({
-    identifier:
-      "NamespacesInstancesReadResponsePublicEndpointParamsSearchEndpoint",
-  }) as any as S.Schema<NamespacesInstancesReadResponsePublicEndpointParamsSearchEndpoint>;
+  InstancesCreateResponsePublicEndpointParamsSearchEndpoint;
 
 export interface NamespacesInstancesReadResponsePublicEndpointParams {
   authorizedHosts?: NamespacesInstancesReadResponsePublicEndpointParamsAuthorizedHostsList | null;
-  chatCompletionsEndpoint?: NamespacesInstancesReadResponsePublicEndpointParamsChatCompletionsEndpoint | null;
+  chatCompletionsEndpoint?: InstancesCreateResponsePublicEndpointParamsChatCompletionsEndpoint | null;
   /** Custom domain hostnames that alias this public endpoint. GET and create responses return the current set; on update (PUT) this field is only echoed back when supplied in the request body, otherwise it is null (omit it to leave domains unchanged). */
   customDomains?: NamespacesInstancesReadResponsePublicEndpointParamsCustomDomainsList | null;
   enabled?: boolean | null;
-  mcp?: NamespacesInstancesReadResponsePublicEndpointParamsMcp | null;
+  mcp?: InstancesCreateResponsePublicEndpointParamsMcp | null;
   rateLimit?: NamespacesInstancesReadResponsePublicEndpointParamsRateLimit | null;
-  searchEndpoint?: NamespacesInstancesReadResponsePublicEndpointParamsSearchEndpoint | null;
+  searchEndpoint?: InstancesCreateResponsePublicEndpointParamsSearchEndpoint | null;
 }
 export const NamespacesInstancesReadResponsePublicEndpointParams =
   /*@__PURE__*/ S.suspend(() =>
@@ -10615,7 +10038,7 @@ export const NamespacesInstancesReadResponsePublicEndpointParams =
       ),
       chatCompletionsEndpoint: S.optional(
         S.NullOr(
-          NamespacesInstancesReadResponsePublicEndpointParamsChatCompletionsEndpoint,
+          InstancesCreateResponsePublicEndpointParamsChatCompletionsEndpoint,
         ).pipe(T.Body("chat_completions_endpoint")),
       ),
       customDomains: S.optional(
@@ -10624,9 +10047,7 @@ export const NamespacesInstancesReadResponsePublicEndpointParams =
         ).pipe(T.Body("custom_domains")),
       ),
       enabled: S.optional(S.NullOr(S.Boolean)),
-      mcp: S.optional(
-        S.NullOr(NamespacesInstancesReadResponsePublicEndpointParamsMcp),
-      ),
+      mcp: S.optional(S.NullOr(InstancesCreateResponsePublicEndpointParamsMcp)),
       rateLimit: S.optional(
         S.NullOr(
           NamespacesInstancesReadResponsePublicEndpointParamsRateLimit,
@@ -10634,7 +10055,7 @@ export const NamespacesInstancesReadResponsePublicEndpointParams =
       ),
       searchEndpoint: S.optional(
         S.NullOr(
-          NamespacesInstancesReadResponsePublicEndpointParamsSearchEndpoint,
+          InstancesCreateResponsePublicEndpointParamsSearchEndpoint,
         ).pipe(T.Body("search_endpoint")),
       ),
     }),
@@ -10758,28 +10179,16 @@ export const NamespacesInstancesReadResponseSourceParamsIncludeItemsList =
     S.String,
   ) as any as S.Schema<NamespacesInstancesReadResponseSourceParamsIncludeItemsList>;
 
-export interface NamespacesInstancesReadResponseSourceParamsWebCrawlerParseOptionsContentSelectorItem {
-  /** Glob pattern to match against the page URL path. Uses standard glob syntax: * matches within a segment, ** crosses directories. */
-  path: string;
-  /** CSS selector to extract content from pages matching the path pattern. Must not contain disallowed characters (;, `, $, {, }, ). Must target a single element; if multiple elements match, the selector is ignored and the full page is used. */
-  selector: string;
-}
+export type NamespacesInstancesReadResponseSourceParamsWebCrawlerParseOptionsContentSelectorItem =
+  InstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorItem;
 export const NamespacesInstancesReadResponseSourceParamsWebCrawlerParseOptionsContentSelectorItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      path: S.String,
-      selector: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "NamespacesInstancesReadResponseSourceParamsWebCrawlerParseOptionsContentSelectorItem",
-  }) as any as S.Schema<NamespacesInstancesReadResponseSourceParamsWebCrawlerParseOptionsContentSelectorItem>;
+  InstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorItem;
 
 export type NamespacesInstancesReadResponseSourceParamsWebCrawlerParseOptionsContentSelectorList =
-  Array<NamespacesInstancesReadResponseSourceParamsWebCrawlerParseOptionsContentSelectorItem>;
+  Array<InstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorItem>;
 export const NamespacesInstancesReadResponseSourceParamsWebCrawlerParseOptionsContentSelectorList =
   /*@__PURE__*/ S.Array(
-    NamespacesInstancesReadResponseSourceParamsWebCrawlerParseOptionsContentSelectorItem,
+    InstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorItem,
   ) as any as S.Schema<NamespacesInstancesReadResponseSourceParamsWebCrawlerParseOptionsContentSelectorList>;
 
 export type NamespacesInstancesReadResponseSourceParamsWebCrawlerParseOptionsIncludeHeadersMap =
@@ -10944,11 +10353,11 @@ export interface ReadNamespaceInstanceResponse {
   /** Deprecated — use index_method instead. */
   hybridSearchEnabled?: boolean | null;
   /** Controls which storage backends are used during indexing. Defaults to vector-only. */
-  indexMethod?: NamespacesInstancesReadResponseIndexMethod | null;
+  indexMethod?: InstancesCreateRequestIndexMethod | null;
   indexingOptions?: NamespacesInstancesReadResponseIndexingOptions | null;
   lastActivity?: string | null;
   maxNumResults?: number | null;
-  metadata?: NamespacesInstancesReadResponseMetadata | null;
+  metadata?: InstancesCreateResponseMetadata | null;
   modifiedBy?: string | null;
   namespace?: string | null;
   paused?: boolean | null;
@@ -11016,9 +10425,7 @@ export const ReadNamespaceInstanceResponse = /*@__PURE__*/ S.suspend(() =>
       S.NullOr(S.Boolean).pipe(T.Body("hybrid_search_enabled")),
     ),
     indexMethod: S.optional(
-      S.NullOr(NamespacesInstancesReadResponseIndexMethod).pipe(
-        T.Body("index_method"),
-      ),
+      S.NullOr(InstancesCreateRequestIndexMethod).pipe(T.Body("index_method")),
     ),
     indexingOptions: S.optional(
       S.NullOr(NamespacesInstancesReadResponseIndexingOptions).pipe(
@@ -11029,7 +10436,7 @@ export const ReadNamespaceInstanceResponse = /*@__PURE__*/ S.suspend(() =>
     maxNumResults: S.optional(
       S.NullOr(S.Number).pipe(T.Body("max_num_results")),
     ),
-    metadata: S.optional(S.NullOr(NamespacesInstancesReadResponseMetadata)),
+    metadata: S.optional(S.NullOr(InstancesCreateResponseMetadata)),
     modifiedBy: S.optional(S.NullOr(S.String).pipe(T.Body("modified_by"))),
     namespace: S.optional(S.NullOr(S.String)),
     paused: S.optional(S.NullOr(S.Boolean)),
@@ -11386,18 +10793,10 @@ export const InstancesSearchRequestMessagesItemContentCase1ItemCase0 =
     identifier: "InstancesSearchRequestMessagesItemContentCase1ItemCase0",
   }) as any as S.Schema<InstancesSearchRequestMessagesItemContentCase1ItemCase0>;
 
-export interface InstancesSearchRequestMessagesItemContentCase1ItemCase1ImageUrl {
-  url: string;
-}
+export type InstancesSearchRequestMessagesItemContentCase1ItemCase1ImageUrl =
+  InstancesChatCompletionsRequestMessagesItemContentCase1ItemCase1ImageUrl;
 export const InstancesSearchRequestMessagesItemContentCase1ItemCase1ImageUrl =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      url: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "InstancesSearchRequestMessagesItemContentCase1ItemCase1ImageUrl",
-  }) as any as S.Schema<InstancesSearchRequestMessagesItemContentCase1ItemCase1ImageUrl>;
+  InstancesChatCompletionsRequestMessagesItemContentCase1ItemCase1ImageUrl;
 
 export type InstancesSearchRequestMessagesItemContentCase1ItemCase1Type =
   "image_url";
@@ -11405,14 +10804,14 @@ export const InstancesSearchRequestMessagesItemContentCase1ItemCase1Type =
   /*@__PURE__*/ S.String;
 
 export interface InstancesSearchRequestMessagesItemContentCase1ItemCase1 {
-  imageUrl: InstancesSearchRequestMessagesItemContentCase1ItemCase1ImageUrl;
+  imageUrl: InstancesChatCompletionsRequestMessagesItemContentCase1ItemCase1ImageUrl;
   type: InstancesSearchRequestMessagesItemContentCase1ItemCase1Type;
 }
 export const InstancesSearchRequestMessagesItemContentCase1ItemCase1 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       imageUrl:
-        InstancesSearchRequestMessagesItemContentCase1ItemCase1ImageUrl.pipe(
+        InstancesChatCompletionsRequestMessagesItemContentCase1ItemCase1ImageUrl.pipe(
           T.Body("image_url"),
         ),
       type: InstancesSearchRequestMessagesItemContentCase1ItemCase1Type,
@@ -11887,18 +11286,10 @@ export const NamespacesSearchRequestMessagesItemContentCase1ItemCase0 =
     identifier: "NamespacesSearchRequestMessagesItemContentCase1ItemCase0",
   }) as any as S.Schema<NamespacesSearchRequestMessagesItemContentCase1ItemCase0>;
 
-export interface NamespacesSearchRequestMessagesItemContentCase1ItemCase1ImageUrl {
-  url: string;
-}
+export type NamespacesSearchRequestMessagesItemContentCase1ItemCase1ImageUrl =
+  InstancesChatCompletionsRequestMessagesItemContentCase1ItemCase1ImageUrl;
 export const NamespacesSearchRequestMessagesItemContentCase1ItemCase1ImageUrl =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      url: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "NamespacesSearchRequestMessagesItemContentCase1ItemCase1ImageUrl",
-  }) as any as S.Schema<NamespacesSearchRequestMessagesItemContentCase1ItemCase1ImageUrl>;
+  InstancesChatCompletionsRequestMessagesItemContentCase1ItemCase1ImageUrl;
 
 export type NamespacesSearchRequestMessagesItemContentCase1ItemCase1Type =
   "image_url";
@@ -11906,14 +11297,14 @@ export const NamespacesSearchRequestMessagesItemContentCase1ItemCase1Type =
   /*@__PURE__*/ S.String;
 
 export interface NamespacesSearchRequestMessagesItemContentCase1ItemCase1 {
-  imageUrl: NamespacesSearchRequestMessagesItemContentCase1ItemCase1ImageUrl;
+  imageUrl: InstancesChatCompletionsRequestMessagesItemContentCase1ItemCase1ImageUrl;
   type: NamespacesSearchRequestMessagesItemContentCase1ItemCase1Type;
 }
 export const NamespacesSearchRequestMessagesItemContentCase1ItemCase1 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       imageUrl:
-        NamespacesSearchRequestMessagesItemContentCase1ItemCase1ImageUrl.pipe(
+        InstancesChatCompletionsRequestMessagesItemContentCase1ItemCase1ImageUrl.pipe(
           T.Body("image_url"),
         ),
       type: NamespacesSearchRequestMessagesItemContentCase1ItemCase1Type,
@@ -12401,18 +11792,10 @@ export const NamespacesInstancesSearchRequestMessagesItemContentCase1ItemCase0 =
       "NamespacesInstancesSearchRequestMessagesItemContentCase1ItemCase0",
   }) as any as S.Schema<NamespacesInstancesSearchRequestMessagesItemContentCase1ItemCase0>;
 
-export interface NamespacesInstancesSearchRequestMessagesItemContentCase1ItemCase1ImageUrl {
-  url: string;
-}
+export type NamespacesInstancesSearchRequestMessagesItemContentCase1ItemCase1ImageUrl =
+  InstancesChatCompletionsRequestMessagesItemContentCase1ItemCase1ImageUrl;
 export const NamespacesInstancesSearchRequestMessagesItemContentCase1ItemCase1ImageUrl =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      url: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "NamespacesInstancesSearchRequestMessagesItemContentCase1ItemCase1ImageUrl",
-  }) as any as S.Schema<NamespacesInstancesSearchRequestMessagesItemContentCase1ItemCase1ImageUrl>;
+  InstancesChatCompletionsRequestMessagesItemContentCase1ItemCase1ImageUrl;
 
 export type NamespacesInstancesSearchRequestMessagesItemContentCase1ItemCase1Type =
   "image_url";
@@ -12420,14 +11803,14 @@ export const NamespacesInstancesSearchRequestMessagesItemContentCase1ItemCase1Ty
   /*@__PURE__*/ S.String;
 
 export interface NamespacesInstancesSearchRequestMessagesItemContentCase1ItemCase1 {
-  imageUrl: NamespacesInstancesSearchRequestMessagesItemContentCase1ItemCase1ImageUrl;
+  imageUrl: InstancesChatCompletionsRequestMessagesItemContentCase1ItemCase1ImageUrl;
   type: NamespacesInstancesSearchRequestMessagesItemContentCase1ItemCase1Type;
 }
 export const NamespacesInstancesSearchRequestMessagesItemContentCase1ItemCase1 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       imageUrl:
-        NamespacesInstancesSearchRequestMessagesItemContentCase1ItemCase1ImageUrl.pipe(
+        InstancesChatCompletionsRequestMessagesItemContentCase1ItemCase1ImageUrl.pipe(
           T.Body("image_url"),
         ),
       type: NamespacesInstancesSearchRequestMessagesItemContentCase1ItemCase1Type,
@@ -12798,53 +12181,20 @@ export const StatsNamespaceInstanceRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "StatsNamespaceInstanceRequest",
 }) as any as S.Schema<StatsNamespaceInstanceRequest>;
 
-export interface NamespacesInstancesStatsResponseEngineR2 {
-  metadataSizeBytes: number;
-  objectCount: number;
-  payloadSizeBytes: number;
-}
-export const NamespacesInstancesStatsResponseEngineR2 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      metadataSizeBytes: S.Number,
-      objectCount: S.Number,
-      payloadSizeBytes: S.Number,
-    }),
-).annotate({
-  identifier: "NamespacesInstancesStatsResponseEngineR2",
-}) as any as S.Schema<NamespacesInstancesStatsResponseEngineR2>;
+export type NamespacesInstancesStatsResponseEngineR2 =
+  InstancesStatsResponseEngineR2;
+export const NamespacesInstancesStatsResponseEngineR2 =
+  InstancesStatsResponseEngineR2;
 
-export interface NamespacesInstancesStatsResponseEngineVectorize {
-  dimensions: number;
-  vectorsCount: number;
-}
+export type NamespacesInstancesStatsResponseEngineVectorize =
+  InstancesStatsResponseEngineVectorize;
 export const NamespacesInstancesStatsResponseEngineVectorize =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      dimensions: S.Number,
-      vectorsCount: S.Number,
-    }),
-  ).annotate({
-    identifier: "NamespacesInstancesStatsResponseEngineVectorize",
-  }) as any as S.Schema<NamespacesInstancesStatsResponseEngineVectorize>;
+  InstancesStatsResponseEngineVectorize;
 
-export interface NamespacesInstancesStatsResponseEngine {
-  /** R2 bucket storage usage in bytes. */
-  r2?: NamespacesInstancesStatsResponseEngineR2 | null;
-  /** Vectorize index metadata (dimensions, vector count). */
-  vectorize?: NamespacesInstancesStatsResponseEngineVectorize | null;
-}
-export const NamespacesInstancesStatsResponseEngine = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      r2: S.optional(S.NullOr(NamespacesInstancesStatsResponseEngineR2)),
-      vectorize: S.optional(
-        S.NullOr(NamespacesInstancesStatsResponseEngineVectorize),
-      ),
-    }),
-).annotate({
-  identifier: "NamespacesInstancesStatsResponseEngine",
-}) as any as S.Schema<NamespacesInstancesStatsResponseEngine>;
+export type NamespacesInstancesStatsResponseEngine =
+  InstancesStatsResponseEngine;
+export const NamespacesInstancesStatsResponseEngine =
+  InstancesStatsResponseEngine;
 
 export type NamespacesInstancesStatsResponseFileEmbedErrorsMap = {
   [key: string]: unknown | undefined;
@@ -12870,7 +12220,7 @@ export interface StatsNamespaceInstanceResponse {
   /** True when status counts are unavailable (e.g. legacy stats query exceeded D1 statement-size limit). Counts are omitted in this case. */
   degraded?: boolean | null;
   /** Engine-specific metadata. Present only for managed (v3) instances. */
-  engine?: NamespacesInstancesStatsResponseEngine | null;
+  engine?: InstancesStatsResponseEngine | null;
   error?: number | null;
   fileEmbedErrors?: NamespacesInstancesStatsResponseFileEmbedErrorsMap | null;
   indexSourceErrors?: NamespacesInstancesStatsResponseIndexSourceErrorsMap | null;
@@ -12884,7 +12234,7 @@ export const StatsNamespaceInstanceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     completed: S.optional(S.NullOr(S.Number)),
     degraded: S.optional(S.NullOr(S.Boolean)),
-    engine: S.optional(S.NullOr(NamespacesInstancesStatsResponseEngine)),
+    engine: S.optional(S.NullOr(InstancesStatsResponseEngine)),
     error: S.optional(S.NullOr(S.Number)),
     fileEmbedErrors: S.optional(
       S.NullOr(NamespacesInstancesStatsResponseFileEmbedErrorsMap).pipe(
@@ -13096,20 +12446,10 @@ export const InstancesUpdateRequestEmbeddingModel = /*@__PURE__*/ S.String;
 export type InstancesUpdateRequestFusionMethod = "max" | "rrf";
 export const InstancesUpdateRequestFusionMethod = /*@__PURE__*/ S.String;
 
-export interface InstancesUpdateRequestIndexMethod {
-  /** Enable keyword (BM25) storage backend. */
-  keyword: boolean;
-  /** Enable vector (embedding) storage backend. */
-  vector: boolean;
-}
-export const InstancesUpdateRequestIndexMethod = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    keyword: S.Boolean,
-    vector: S.Boolean,
-  }),
-).annotate({
-  identifier: "InstancesUpdateRequestIndexMethod",
-}) as any as S.Schema<InstancesUpdateRequestIndexMethod>;
+export type InstancesUpdateRequestIndexMethod =
+  InstancesCreateRequestIndexMethod;
+export const InstancesUpdateRequestIndexMethod =
+  InstancesCreateRequestIndexMethod;
 
 export type InstancesUpdateRequestIndexingOptionsKeywordTokenizer =
   | "porter"
@@ -13136,20 +12476,8 @@ export const InstancesUpdateRequestIndexingOptions = /*@__PURE__*/ S.suspend(
   identifier: "InstancesUpdateRequestIndexingOptions",
 }) as any as S.Schema<InstancesUpdateRequestIndexingOptions>;
 
-export interface InstancesUpdateRequestMetadata {
-  createdFromAisearchWizard?: boolean;
-  workerDomain?: string;
-}
-export const InstancesUpdateRequestMetadata = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdFromAisearchWizard: S.optional(
-      S.Boolean.pipe(T.Body("created_from_aisearch_wizard")),
-    ),
-    workerDomain: S.optional(S.String.pipe(T.Body("worker_domain"))),
-  }),
-).annotate({
-  identifier: "InstancesUpdateRequestMetadata",
-}) as any as S.Schema<InstancesUpdateRequestMetadata>;
+export type InstancesUpdateRequestMetadata = InstancesCreateRequestMetadata;
+export const InstancesUpdateRequestMetadata = InstancesCreateRequestMetadata;
 
 export type InstancesUpdateRequestPublicEndpointParamsAuthorizedHostsList =
   Array<string>;
@@ -13158,19 +12486,10 @@ export const InstancesUpdateRequestPublicEndpointParamsAuthorizedHostsList =
     S.String,
   ) as any as S.Schema<InstancesUpdateRequestPublicEndpointParamsAuthorizedHostsList>;
 
-export interface InstancesUpdateRequestPublicEndpointParamsChatCompletionsEndpoint {
-  /** Disable chat completions endpoint for this public endpoint */
-  disabled?: boolean;
-}
+export type InstancesUpdateRequestPublicEndpointParamsChatCompletionsEndpoint =
+  InstancesCreateRequestPublicEndpointParamsChatCompletionsEndpoint;
 export const InstancesUpdateRequestPublicEndpointParamsChatCompletionsEndpoint =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      disabled: S.optional(S.Boolean),
-    }),
-  ).annotate({
-    identifier:
-      "InstancesUpdateRequestPublicEndpointParamsChatCompletionsEndpoint",
-  }) as any as S.Schema<InstancesUpdateRequestPublicEndpointParamsChatCompletionsEndpoint>;
+  InstancesCreateRequestPublicEndpointParamsChatCompletionsEndpoint;
 
 export type InstancesUpdateRequestPublicEndpointParamsCustomDomainsList =
   Array<string>;
@@ -13179,20 +12498,10 @@ export const InstancesUpdateRequestPublicEndpointParamsCustomDomainsList =
     S.String,
   ) as any as S.Schema<InstancesUpdateRequestPublicEndpointParamsCustomDomainsList>;
 
-export interface InstancesUpdateRequestPublicEndpointParamsMcp {
-  description?: string;
-  /** Disable MCP endpoint for this public endpoint */
-  disabled?: boolean;
-}
+export type InstancesUpdateRequestPublicEndpointParamsMcp =
+  InstancesCreateRequestPublicEndpointParamsMcp;
 export const InstancesUpdateRequestPublicEndpointParamsMcp =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      description: S.optional(S.String),
-      disabled: S.optional(S.Boolean),
-    }),
-  ).annotate({
-    identifier: "InstancesUpdateRequestPublicEndpointParamsMcp",
-  }) as any as S.Schema<InstancesUpdateRequestPublicEndpointParamsMcp>;
+  InstancesCreateRequestPublicEndpointParamsMcp;
 
 export type InstancesUpdateRequestPublicEndpointParamsRateLimitTechnique =
   | "fixed"
@@ -13220,28 +12529,20 @@ export const InstancesUpdateRequestPublicEndpointParamsRateLimit =
     identifier: "InstancesUpdateRequestPublicEndpointParamsRateLimit",
   }) as any as S.Schema<InstancesUpdateRequestPublicEndpointParamsRateLimit>;
 
-export interface InstancesUpdateRequestPublicEndpointParamsSearchEndpoint {
-  /** Disable search endpoint for this public endpoint */
-  disabled?: boolean;
-}
+export type InstancesUpdateRequestPublicEndpointParamsSearchEndpoint =
+  InstancesCreateRequestPublicEndpointParamsSearchEndpoint;
 export const InstancesUpdateRequestPublicEndpointParamsSearchEndpoint =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      disabled: S.optional(S.Boolean),
-    }),
-  ).annotate({
-    identifier: "InstancesUpdateRequestPublicEndpointParamsSearchEndpoint",
-  }) as any as S.Schema<InstancesUpdateRequestPublicEndpointParamsSearchEndpoint>;
+  InstancesCreateRequestPublicEndpointParamsSearchEndpoint;
 
 export interface InstancesUpdateRequestPublicEndpointParams {
   authorizedHosts?: InstancesUpdateRequestPublicEndpointParamsAuthorizedHostsList;
-  chatCompletionsEndpoint?: InstancesUpdateRequestPublicEndpointParamsChatCompletionsEndpoint;
+  chatCompletionsEndpoint?: InstancesCreateRequestPublicEndpointParamsChatCompletionsEndpoint;
   /** Custom domain hostnames that alias this public endpoint. GET and create responses return the current set; on update (PUT) this field is only echoed back when supplied in the request body, otherwise it is null (omit it to leave domains unchanged). */
   customDomains?: InstancesUpdateRequestPublicEndpointParamsCustomDomainsList;
   enabled?: boolean;
-  mcp?: InstancesUpdateRequestPublicEndpointParamsMcp;
+  mcp?: InstancesCreateRequestPublicEndpointParamsMcp;
   rateLimit?: InstancesUpdateRequestPublicEndpointParamsRateLimit;
-  searchEndpoint?: InstancesUpdateRequestPublicEndpointParamsSearchEndpoint;
+  searchEndpoint?: InstancesCreateRequestPublicEndpointParamsSearchEndpoint;
 }
 export const InstancesUpdateRequestPublicEndpointParams =
   /*@__PURE__*/ S.suspend(() =>
@@ -13252,7 +12553,7 @@ export const InstancesUpdateRequestPublicEndpointParams =
         ),
       ),
       chatCompletionsEndpoint: S.optional(
-        InstancesUpdateRequestPublicEndpointParamsChatCompletionsEndpoint.pipe(
+        InstancesCreateRequestPublicEndpointParamsChatCompletionsEndpoint.pipe(
           T.Body("chat_completions_endpoint"),
         ),
       ),
@@ -13262,14 +12563,14 @@ export const InstancesUpdateRequestPublicEndpointParams =
         ),
       ),
       enabled: S.optional(S.Boolean),
-      mcp: S.optional(InstancesUpdateRequestPublicEndpointParamsMcp),
+      mcp: S.optional(InstancesCreateRequestPublicEndpointParamsMcp),
       rateLimit: S.optional(
         InstancesUpdateRequestPublicEndpointParamsRateLimit.pipe(
           T.Body("rate_limit"),
         ),
       ),
       searchEndpoint: S.optional(
-        InstancesUpdateRequestPublicEndpointParamsSearchEndpoint.pipe(
+        InstancesCreateRequestPublicEndpointParamsSearchEndpoint.pipe(
           T.Body("search_endpoint"),
         ),
       ),
@@ -13395,28 +12696,16 @@ export const InstancesUpdateRequestSourceParamsIncludeItemsList =
     S.String,
   ) as any as S.Schema<InstancesUpdateRequestSourceParamsIncludeItemsList>;
 
-export interface InstancesUpdateRequestSourceParamsWebCrawlerParseOptionsContentSelectorItem {
-  /** Glob pattern to match against the page URL path. Uses standard glob syntax: * matches within a segment, ** crosses directories. */
-  path: string;
-  /** CSS selector to extract content from pages matching the path pattern. Must not contain disallowed characters (;, `, $, {, }, ). Must target a single element; if multiple elements match, the selector is ignored and the full page is used. */
-  selector: string;
-}
+export type InstancesUpdateRequestSourceParamsWebCrawlerParseOptionsContentSelectorItem =
+  InstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorItem;
 export const InstancesUpdateRequestSourceParamsWebCrawlerParseOptionsContentSelectorItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      path: S.String,
-      selector: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "InstancesUpdateRequestSourceParamsWebCrawlerParseOptionsContentSelectorItem",
-  }) as any as S.Schema<InstancesUpdateRequestSourceParamsWebCrawlerParseOptionsContentSelectorItem>;
+  InstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorItem;
 
 export type InstancesUpdateRequestSourceParamsWebCrawlerParseOptionsContentSelectorList =
-  Array<InstancesUpdateRequestSourceParamsWebCrawlerParseOptionsContentSelectorItem>;
+  Array<InstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorItem>;
 export const InstancesUpdateRequestSourceParamsWebCrawlerParseOptionsContentSelectorList =
   /*@__PURE__*/ S.Array(
-    InstancesUpdateRequestSourceParamsWebCrawlerParseOptionsContentSelectorItem,
+    InstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorItem,
   ) as any as S.Schema<InstancesUpdateRequestSourceParamsWebCrawlerParseOptionsContentSelectorList>;
 
 export type InstancesUpdateRequestSourceParamsWebCrawlerParseOptionsIncludeHeadersMap =
@@ -13597,10 +12886,10 @@ export interface UpdateInstanceRequest {
   embeddingModel?: InstancesUpdateRequestEmbeddingModel | (string & {});
   fusionMethod?: InstancesUpdateRequestFusionMethod | (string & {});
   /** Controls which storage backends are used during indexing. Defaults to vector-only. */
-  indexMethod?: InstancesUpdateRequestIndexMethod;
+  indexMethod?: InstancesCreateRequestIndexMethod;
   indexingOptions?: InstancesUpdateRequestIndexingOptions;
   maxNumResults?: number;
-  metadata?: InstancesUpdateRequestMetadata;
+  metadata?: InstancesCreateRequestMetadata;
   paused?: boolean;
   publicEndpointParams?: InstancesUpdateRequestPublicEndpointParams;
   reranking?: boolean;
@@ -13648,13 +12937,13 @@ export const UpdateInstanceRequest = /*@__PURE__*/ S.suspend(() =>
       InstancesUpdateRequestFusionMethod.pipe(T.Body("fusion_method")),
     ),
     indexMethod: S.optional(
-      InstancesUpdateRequestIndexMethod.pipe(T.Body("index_method")),
+      InstancesCreateRequestIndexMethod.pipe(T.Body("index_method")),
     ),
     indexingOptions: S.optional(
       InstancesUpdateRequestIndexingOptions.pipe(T.Body("indexing_options")),
     ),
     maxNumResults: S.optional(S.Number.pipe(T.Body("max_num_results"))),
-    metadata: S.optional(InstancesUpdateRequestMetadata),
+    metadata: S.optional(InstancesCreateRequestMetadata),
     paused: S.optional(S.Boolean),
     publicEndpointParams: S.optional(
       InstancesUpdateRequestPublicEndpointParams.pipe(
@@ -13809,20 +13098,10 @@ export const InstancesUpdateResponseEmbeddingModel = /*@__PURE__*/ S.String;
 export type InstancesUpdateResponseFusionMethod = "max" | "rrf";
 export const InstancesUpdateResponseFusionMethod = /*@__PURE__*/ S.String;
 
-export interface InstancesUpdateResponseIndexMethod {
-  /** Enable keyword (BM25) storage backend. */
-  keyword: boolean;
-  /** Enable vector (embedding) storage backend. */
-  vector: boolean;
-}
-export const InstancesUpdateResponseIndexMethod = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    keyword: S.Boolean,
-    vector: S.Boolean,
-  }),
-).annotate({
-  identifier: "InstancesUpdateResponseIndexMethod",
-}) as any as S.Schema<InstancesUpdateResponseIndexMethod>;
+export type InstancesUpdateResponseIndexMethod =
+  InstancesCreateRequestIndexMethod;
+export const InstancesUpdateResponseIndexMethod =
+  InstancesCreateRequestIndexMethod;
 
 export type InstancesUpdateResponseIndexingOptionsKeywordTokenizer =
   | "porter"
@@ -13847,20 +13126,8 @@ export const InstancesUpdateResponseIndexingOptions = /*@__PURE__*/ S.suspend(
   identifier: "InstancesUpdateResponseIndexingOptions",
 }) as any as S.Schema<InstancesUpdateResponseIndexingOptions>;
 
-export interface InstancesUpdateResponseMetadata {
-  createdFromAisearchWizard?: boolean | null;
-  workerDomain?: string | null;
-}
-export const InstancesUpdateResponseMetadata = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdFromAisearchWizard: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("created_from_aisearch_wizard")),
-    ),
-    workerDomain: S.optional(S.NullOr(S.String).pipe(T.Body("worker_domain"))),
-  }),
-).annotate({
-  identifier: "InstancesUpdateResponseMetadata",
-}) as any as S.Schema<InstancesUpdateResponseMetadata>;
+export type InstancesUpdateResponseMetadata = InstancesCreateResponseMetadata;
+export const InstancesUpdateResponseMetadata = InstancesCreateResponseMetadata;
 
 export type InstancesUpdateResponsePublicEndpointParamsAuthorizedHostsList =
   Array<string>;
@@ -13869,19 +13136,10 @@ export const InstancesUpdateResponsePublicEndpointParamsAuthorizedHostsList =
     S.String,
   ) as any as S.Schema<InstancesUpdateResponsePublicEndpointParamsAuthorizedHostsList>;
 
-export interface InstancesUpdateResponsePublicEndpointParamsChatCompletionsEndpoint {
-  /** Disable chat completions endpoint for this public endpoint */
-  disabled?: boolean | null;
-}
+export type InstancesUpdateResponsePublicEndpointParamsChatCompletionsEndpoint =
+  InstancesCreateResponsePublicEndpointParamsChatCompletionsEndpoint;
 export const InstancesUpdateResponsePublicEndpointParamsChatCompletionsEndpoint =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      disabled: S.optional(S.NullOr(S.Boolean)),
-    }),
-  ).annotate({
-    identifier:
-      "InstancesUpdateResponsePublicEndpointParamsChatCompletionsEndpoint",
-  }) as any as S.Schema<InstancesUpdateResponsePublicEndpointParamsChatCompletionsEndpoint>;
+  InstancesCreateResponsePublicEndpointParamsChatCompletionsEndpoint;
 
 export type InstancesUpdateResponsePublicEndpointParamsCustomDomainsList =
   Array<string>;
@@ -13890,20 +13148,10 @@ export const InstancesUpdateResponsePublicEndpointParamsCustomDomainsList =
     S.String,
   ) as any as S.Schema<InstancesUpdateResponsePublicEndpointParamsCustomDomainsList>;
 
-export interface InstancesUpdateResponsePublicEndpointParamsMcp {
-  description?: string | null;
-  /** Disable MCP endpoint for this public endpoint */
-  disabled?: boolean | null;
-}
+export type InstancesUpdateResponsePublicEndpointParamsMcp =
+  InstancesCreateResponsePublicEndpointParamsMcp;
 export const InstancesUpdateResponsePublicEndpointParamsMcp =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      description: S.optional(S.NullOr(S.String)),
-      disabled: S.optional(S.NullOr(S.Boolean)),
-    }),
-  ).annotate({
-    identifier: "InstancesUpdateResponsePublicEndpointParamsMcp",
-  }) as any as S.Schema<InstancesUpdateResponsePublicEndpointParamsMcp>;
+  InstancesCreateResponsePublicEndpointParamsMcp;
 
 export type InstancesUpdateResponsePublicEndpointParamsRateLimitTechnique =
   | "fixed"
@@ -13929,28 +13177,20 @@ export const InstancesUpdateResponsePublicEndpointParamsRateLimit =
     identifier: "InstancesUpdateResponsePublicEndpointParamsRateLimit",
   }) as any as S.Schema<InstancesUpdateResponsePublicEndpointParamsRateLimit>;
 
-export interface InstancesUpdateResponsePublicEndpointParamsSearchEndpoint {
-  /** Disable search endpoint for this public endpoint */
-  disabled?: boolean | null;
-}
+export type InstancesUpdateResponsePublicEndpointParamsSearchEndpoint =
+  InstancesCreateResponsePublicEndpointParamsSearchEndpoint;
 export const InstancesUpdateResponsePublicEndpointParamsSearchEndpoint =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      disabled: S.optional(S.NullOr(S.Boolean)),
-    }),
-  ).annotate({
-    identifier: "InstancesUpdateResponsePublicEndpointParamsSearchEndpoint",
-  }) as any as S.Schema<InstancesUpdateResponsePublicEndpointParamsSearchEndpoint>;
+  InstancesCreateResponsePublicEndpointParamsSearchEndpoint;
 
 export interface InstancesUpdateResponsePublicEndpointParams {
   authorizedHosts?: InstancesUpdateResponsePublicEndpointParamsAuthorizedHostsList | null;
-  chatCompletionsEndpoint?: InstancesUpdateResponsePublicEndpointParamsChatCompletionsEndpoint | null;
+  chatCompletionsEndpoint?: InstancesCreateResponsePublicEndpointParamsChatCompletionsEndpoint | null;
   /** Custom domain hostnames that alias this public endpoint. GET and create responses return the current set; on update (PUT) this field is only echoed back when supplied in the request body, otherwise it is null (omit it to leave domains unchanged). */
   customDomains?: InstancesUpdateResponsePublicEndpointParamsCustomDomainsList | null;
   enabled?: boolean | null;
-  mcp?: InstancesUpdateResponsePublicEndpointParamsMcp | null;
+  mcp?: InstancesCreateResponsePublicEndpointParamsMcp | null;
   rateLimit?: InstancesUpdateResponsePublicEndpointParamsRateLimit | null;
-  searchEndpoint?: InstancesUpdateResponsePublicEndpointParamsSearchEndpoint | null;
+  searchEndpoint?: InstancesCreateResponsePublicEndpointParamsSearchEndpoint | null;
 }
 export const InstancesUpdateResponsePublicEndpointParams =
   /*@__PURE__*/ S.suspend(() =>
@@ -13962,7 +13202,7 @@ export const InstancesUpdateResponsePublicEndpointParams =
       ),
       chatCompletionsEndpoint: S.optional(
         S.NullOr(
-          InstancesUpdateResponsePublicEndpointParamsChatCompletionsEndpoint,
+          InstancesCreateResponsePublicEndpointParamsChatCompletionsEndpoint,
         ).pipe(T.Body("chat_completions_endpoint")),
       ),
       customDomains: S.optional(
@@ -13971,7 +13211,7 @@ export const InstancesUpdateResponsePublicEndpointParams =
         ).pipe(T.Body("custom_domains")),
       ),
       enabled: S.optional(S.NullOr(S.Boolean)),
-      mcp: S.optional(S.NullOr(InstancesUpdateResponsePublicEndpointParamsMcp)),
+      mcp: S.optional(S.NullOr(InstancesCreateResponsePublicEndpointParamsMcp)),
       rateLimit: S.optional(
         S.NullOr(InstancesUpdateResponsePublicEndpointParamsRateLimit).pipe(
           T.Body("rate_limit"),
@@ -13979,7 +13219,7 @@ export const InstancesUpdateResponsePublicEndpointParams =
       ),
       searchEndpoint: S.optional(
         S.NullOr(
-          InstancesUpdateResponsePublicEndpointParamsSearchEndpoint,
+          InstancesCreateResponsePublicEndpointParamsSearchEndpoint,
         ).pipe(T.Body("search_endpoint")),
       ),
     }),
@@ -14100,28 +13340,16 @@ export const InstancesUpdateResponseSourceParamsIncludeItemsList =
     S.String,
   ) as any as S.Schema<InstancesUpdateResponseSourceParamsIncludeItemsList>;
 
-export interface InstancesUpdateResponseSourceParamsWebCrawlerParseOptionsContentSelectorItem {
-  /** Glob pattern to match against the page URL path. Uses standard glob syntax: * matches within a segment, ** crosses directories. */
-  path: string;
-  /** CSS selector to extract content from pages matching the path pattern. Must not contain disallowed characters (;, `, $, {, }, ). Must target a single element; if multiple elements match, the selector is ignored and the full page is used. */
-  selector: string;
-}
+export type InstancesUpdateResponseSourceParamsWebCrawlerParseOptionsContentSelectorItem =
+  InstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorItem;
 export const InstancesUpdateResponseSourceParamsWebCrawlerParseOptionsContentSelectorItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      path: S.String,
-      selector: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "InstancesUpdateResponseSourceParamsWebCrawlerParseOptionsContentSelectorItem",
-  }) as any as S.Schema<InstancesUpdateResponseSourceParamsWebCrawlerParseOptionsContentSelectorItem>;
+  InstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorItem;
 
 export type InstancesUpdateResponseSourceParamsWebCrawlerParseOptionsContentSelectorList =
-  Array<InstancesUpdateResponseSourceParamsWebCrawlerParseOptionsContentSelectorItem>;
+  Array<InstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorItem>;
 export const InstancesUpdateResponseSourceParamsWebCrawlerParseOptionsContentSelectorList =
   /*@__PURE__*/ S.Array(
-    InstancesUpdateResponseSourceParamsWebCrawlerParseOptionsContentSelectorItem,
+    InstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorItem,
   ) as any as S.Schema<InstancesUpdateResponseSourceParamsWebCrawlerParseOptionsContentSelectorList>;
 
 export type InstancesUpdateResponseSourceParamsWebCrawlerParseOptionsIncludeHeadersMap =
@@ -14283,11 +13511,11 @@ export interface UpdateInstanceResponse {
   /** Deprecated — use index_method instead. */
   hybridSearchEnabled?: boolean | null;
   /** Controls which storage backends are used during indexing. Defaults to vector-only. */
-  indexMethod?: InstancesUpdateResponseIndexMethod | null;
+  indexMethod?: InstancesCreateRequestIndexMethod | null;
   indexingOptions?: InstancesUpdateResponseIndexingOptions | null;
   lastActivity?: string | null;
   maxNumResults?: number | null;
-  metadata?: InstancesUpdateResponseMetadata | null;
+  metadata?: InstancesCreateResponseMetadata | null;
   modifiedBy?: string | null;
   namespace?: string | null;
   paused?: boolean | null;
@@ -14353,7 +13581,7 @@ export const UpdateInstanceResponse = /*@__PURE__*/ S.suspend(() =>
       S.NullOr(S.Boolean).pipe(T.Body("hybrid_search_enabled")),
     ),
     indexMethod: S.optional(
-      S.NullOr(InstancesUpdateResponseIndexMethod).pipe(T.Body("index_method")),
+      S.NullOr(InstancesCreateRequestIndexMethod).pipe(T.Body("index_method")),
     ),
     indexingOptions: S.optional(
       S.NullOr(InstancesUpdateResponseIndexingOptions).pipe(
@@ -14364,7 +13592,7 @@ export const UpdateInstanceResponse = /*@__PURE__*/ S.suspend(() =>
     maxNumResults: S.optional(
       S.NullOr(S.Number).pipe(T.Body("max_num_results")),
     ),
-    metadata: S.optional(S.NullOr(InstancesUpdateResponseMetadata)),
+    metadata: S.optional(S.NullOr(InstancesCreateResponseMetadata)),
     modifiedBy: S.optional(S.NullOr(S.String).pipe(T.Body("modified_by"))),
     namespace: S.optional(S.NullOr(S.String)),
     paused: S.optional(S.NullOr(S.Boolean)),
@@ -14563,21 +13791,10 @@ export type NamespacesInstancesUpdateRequestFusionMethod = "max" | "rrf";
 export const NamespacesInstancesUpdateRequestFusionMethod =
   /*@__PURE__*/ S.String;
 
-export interface NamespacesInstancesUpdateRequestIndexMethod {
-  /** Enable keyword (BM25) storage backend. */
-  keyword: boolean;
-  /** Enable vector (embedding) storage backend. */
-  vector: boolean;
-}
+export type NamespacesInstancesUpdateRequestIndexMethod =
+  InstancesCreateRequestIndexMethod;
 export const NamespacesInstancesUpdateRequestIndexMethod =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      keyword: S.Boolean,
-      vector: S.Boolean,
-    }),
-  ).annotate({
-    identifier: "NamespacesInstancesUpdateRequestIndexMethod",
-  }) as any as S.Schema<NamespacesInstancesUpdateRequestIndexMethod>;
+  InstancesCreateRequestIndexMethod;
 
 export type NamespacesInstancesUpdateRequestIndexingOptionsKeywordTokenizer =
   | "porter"
@@ -14604,21 +13821,10 @@ export const NamespacesInstancesUpdateRequestIndexingOptions =
     identifier: "NamespacesInstancesUpdateRequestIndexingOptions",
   }) as any as S.Schema<NamespacesInstancesUpdateRequestIndexingOptions>;
 
-export interface NamespacesInstancesUpdateRequestMetadata {
-  createdFromAisearchWizard?: boolean;
-  workerDomain?: string;
-}
-export const NamespacesInstancesUpdateRequestMetadata = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      createdFromAisearchWizard: S.optional(
-        S.Boolean.pipe(T.Body("created_from_aisearch_wizard")),
-      ),
-      workerDomain: S.optional(S.String.pipe(T.Body("worker_domain"))),
-    }),
-).annotate({
-  identifier: "NamespacesInstancesUpdateRequestMetadata",
-}) as any as S.Schema<NamespacesInstancesUpdateRequestMetadata>;
+export type NamespacesInstancesUpdateRequestMetadata =
+  InstancesCreateRequestMetadata;
+export const NamespacesInstancesUpdateRequestMetadata =
+  InstancesCreateRequestMetadata;
 
 export type NamespacesInstancesUpdateRequestPublicEndpointParamsAuthorizedHostsList =
   Array<string>;
@@ -14627,19 +13833,10 @@ export const NamespacesInstancesUpdateRequestPublicEndpointParamsAuthorizedHosts
     S.String,
   ) as any as S.Schema<NamespacesInstancesUpdateRequestPublicEndpointParamsAuthorizedHostsList>;
 
-export interface NamespacesInstancesUpdateRequestPublicEndpointParamsChatCompletionsEndpoint {
-  /** Disable chat completions endpoint for this public endpoint */
-  disabled?: boolean;
-}
+export type NamespacesInstancesUpdateRequestPublicEndpointParamsChatCompletionsEndpoint =
+  InstancesCreateRequestPublicEndpointParamsChatCompletionsEndpoint;
 export const NamespacesInstancesUpdateRequestPublicEndpointParamsChatCompletionsEndpoint =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      disabled: S.optional(S.Boolean),
-    }),
-  ).annotate({
-    identifier:
-      "NamespacesInstancesUpdateRequestPublicEndpointParamsChatCompletionsEndpoint",
-  }) as any as S.Schema<NamespacesInstancesUpdateRequestPublicEndpointParamsChatCompletionsEndpoint>;
+  InstancesCreateRequestPublicEndpointParamsChatCompletionsEndpoint;
 
 export type NamespacesInstancesUpdateRequestPublicEndpointParamsCustomDomainsList =
   Array<string>;
@@ -14648,20 +13845,10 @@ export const NamespacesInstancesUpdateRequestPublicEndpointParamsCustomDomainsLi
     S.String,
   ) as any as S.Schema<NamespacesInstancesUpdateRequestPublicEndpointParamsCustomDomainsList>;
 
-export interface NamespacesInstancesUpdateRequestPublicEndpointParamsMcp {
-  description?: string;
-  /** Disable MCP endpoint for this public endpoint */
-  disabled?: boolean;
-}
+export type NamespacesInstancesUpdateRequestPublicEndpointParamsMcp =
+  InstancesCreateRequestPublicEndpointParamsMcp;
 export const NamespacesInstancesUpdateRequestPublicEndpointParamsMcp =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      description: S.optional(S.String),
-      disabled: S.optional(S.Boolean),
-    }),
-  ).annotate({
-    identifier: "NamespacesInstancesUpdateRequestPublicEndpointParamsMcp",
-  }) as any as S.Schema<NamespacesInstancesUpdateRequestPublicEndpointParamsMcp>;
+  InstancesCreateRequestPublicEndpointParamsMcp;
 
 export type NamespacesInstancesUpdateRequestPublicEndpointParamsRateLimitTechnique =
   "fixed" | "sliding";
@@ -14688,29 +13875,20 @@ export const NamespacesInstancesUpdateRequestPublicEndpointParamsRateLimit =
     identifier: "NamespacesInstancesUpdateRequestPublicEndpointParamsRateLimit",
   }) as any as S.Schema<NamespacesInstancesUpdateRequestPublicEndpointParamsRateLimit>;
 
-export interface NamespacesInstancesUpdateRequestPublicEndpointParamsSearchEndpoint {
-  /** Disable search endpoint for this public endpoint */
-  disabled?: boolean;
-}
+export type NamespacesInstancesUpdateRequestPublicEndpointParamsSearchEndpoint =
+  InstancesCreateRequestPublicEndpointParamsSearchEndpoint;
 export const NamespacesInstancesUpdateRequestPublicEndpointParamsSearchEndpoint =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      disabled: S.optional(S.Boolean),
-    }),
-  ).annotate({
-    identifier:
-      "NamespacesInstancesUpdateRequestPublicEndpointParamsSearchEndpoint",
-  }) as any as S.Schema<NamespacesInstancesUpdateRequestPublicEndpointParamsSearchEndpoint>;
+  InstancesCreateRequestPublicEndpointParamsSearchEndpoint;
 
 export interface NamespacesInstancesUpdateRequestPublicEndpointParams {
   authorizedHosts?: NamespacesInstancesUpdateRequestPublicEndpointParamsAuthorizedHostsList;
-  chatCompletionsEndpoint?: NamespacesInstancesUpdateRequestPublicEndpointParamsChatCompletionsEndpoint;
+  chatCompletionsEndpoint?: InstancesCreateRequestPublicEndpointParamsChatCompletionsEndpoint;
   /** Custom domain hostnames that alias this public endpoint. GET and create responses return the current set; on update (PUT) this field is only echoed back when supplied in the request body, otherwise it is null (omit it to leave domains unchanged). */
   customDomains?: NamespacesInstancesUpdateRequestPublicEndpointParamsCustomDomainsList;
   enabled?: boolean;
-  mcp?: NamespacesInstancesUpdateRequestPublicEndpointParamsMcp;
+  mcp?: InstancesCreateRequestPublicEndpointParamsMcp;
   rateLimit?: NamespacesInstancesUpdateRequestPublicEndpointParamsRateLimit;
-  searchEndpoint?: NamespacesInstancesUpdateRequestPublicEndpointParamsSearchEndpoint;
+  searchEndpoint?: InstancesCreateRequestPublicEndpointParamsSearchEndpoint;
 }
 export const NamespacesInstancesUpdateRequestPublicEndpointParams =
   /*@__PURE__*/ S.suspend(() =>
@@ -14721,7 +13899,7 @@ export const NamespacesInstancesUpdateRequestPublicEndpointParams =
         ),
       ),
       chatCompletionsEndpoint: S.optional(
-        NamespacesInstancesUpdateRequestPublicEndpointParamsChatCompletionsEndpoint.pipe(
+        InstancesCreateRequestPublicEndpointParamsChatCompletionsEndpoint.pipe(
           T.Body("chat_completions_endpoint"),
         ),
       ),
@@ -14731,14 +13909,14 @@ export const NamespacesInstancesUpdateRequestPublicEndpointParams =
         ),
       ),
       enabled: S.optional(S.Boolean),
-      mcp: S.optional(NamespacesInstancesUpdateRequestPublicEndpointParamsMcp),
+      mcp: S.optional(InstancesCreateRequestPublicEndpointParamsMcp),
       rateLimit: S.optional(
         NamespacesInstancesUpdateRequestPublicEndpointParamsRateLimit.pipe(
           T.Body("rate_limit"),
         ),
       ),
       searchEndpoint: S.optional(
-        NamespacesInstancesUpdateRequestPublicEndpointParamsSearchEndpoint.pipe(
+        InstancesCreateRequestPublicEndpointParamsSearchEndpoint.pipe(
           T.Body("search_endpoint"),
         ),
       ),
@@ -14865,28 +14043,16 @@ export const NamespacesInstancesUpdateRequestSourceParamsIncludeItemsList =
     S.String,
   ) as any as S.Schema<NamespacesInstancesUpdateRequestSourceParamsIncludeItemsList>;
 
-export interface NamespacesInstancesUpdateRequestSourceParamsWebCrawlerParseOptionsContentSelectorItem {
-  /** Glob pattern to match against the page URL path. Uses standard glob syntax: * matches within a segment, ** crosses directories. */
-  path: string;
-  /** CSS selector to extract content from pages matching the path pattern. Must not contain disallowed characters (;, `, $, {, }, ). Must target a single element; if multiple elements match, the selector is ignored and the full page is used. */
-  selector: string;
-}
+export type NamespacesInstancesUpdateRequestSourceParamsWebCrawlerParseOptionsContentSelectorItem =
+  InstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorItem;
 export const NamespacesInstancesUpdateRequestSourceParamsWebCrawlerParseOptionsContentSelectorItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      path: S.String,
-      selector: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "NamespacesInstancesUpdateRequestSourceParamsWebCrawlerParseOptionsContentSelectorItem",
-  }) as any as S.Schema<NamespacesInstancesUpdateRequestSourceParamsWebCrawlerParseOptionsContentSelectorItem>;
+  InstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorItem;
 
 export type NamespacesInstancesUpdateRequestSourceParamsWebCrawlerParseOptionsContentSelectorList =
-  Array<NamespacesInstancesUpdateRequestSourceParamsWebCrawlerParseOptionsContentSelectorItem>;
+  Array<InstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorItem>;
 export const NamespacesInstancesUpdateRequestSourceParamsWebCrawlerParseOptionsContentSelectorList =
   /*@__PURE__*/ S.Array(
-    NamespacesInstancesUpdateRequestSourceParamsWebCrawlerParseOptionsContentSelectorItem,
+    InstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorItem,
   ) as any as S.Schema<NamespacesInstancesUpdateRequestSourceParamsWebCrawlerParseOptionsContentSelectorList>;
 
 export type NamespacesInstancesUpdateRequestSourceParamsWebCrawlerParseOptionsIncludeHeadersMap =
@@ -15078,10 +14244,10 @@ export interface UpdateNamespaceInstanceRequest {
     | (string & {});
   fusionMethod?: NamespacesInstancesUpdateRequestFusionMethod | (string & {});
   /** Controls which storage backends are used during indexing. Defaults to vector-only. */
-  indexMethod?: NamespacesInstancesUpdateRequestIndexMethod;
+  indexMethod?: InstancesCreateRequestIndexMethod;
   indexingOptions?: NamespacesInstancesUpdateRequestIndexingOptions;
   maxNumResults?: number;
-  metadata?: NamespacesInstancesUpdateRequestMetadata;
+  metadata?: InstancesCreateRequestMetadata;
   paused?: boolean;
   publicEndpointParams?: NamespacesInstancesUpdateRequestPublicEndpointParams;
   reranking?: boolean;
@@ -15144,7 +14310,7 @@ export const UpdateNamespaceInstanceRequest = /*@__PURE__*/ S.suspend(() =>
       ),
     ),
     indexMethod: S.optional(
-      NamespacesInstancesUpdateRequestIndexMethod.pipe(T.Body("index_method")),
+      InstancesCreateRequestIndexMethod.pipe(T.Body("index_method")),
     ),
     indexingOptions: S.optional(
       NamespacesInstancesUpdateRequestIndexingOptions.pipe(
@@ -15152,7 +14318,7 @@ export const UpdateNamespaceInstanceRequest = /*@__PURE__*/ S.suspend(() =>
       ),
     ),
     maxNumResults: S.optional(S.Number.pipe(T.Body("max_num_results"))),
-    metadata: S.optional(NamespacesInstancesUpdateRequestMetadata),
+    metadata: S.optional(InstancesCreateRequestMetadata),
     paused: S.optional(S.Boolean),
     publicEndpointParams: S.optional(
       NamespacesInstancesUpdateRequestPublicEndpointParams.pipe(
@@ -15323,21 +14489,10 @@ export type NamespacesInstancesUpdateResponseFusionMethod = "max" | "rrf";
 export const NamespacesInstancesUpdateResponseFusionMethod =
   /*@__PURE__*/ S.String;
 
-export interface NamespacesInstancesUpdateResponseIndexMethod {
-  /** Enable keyword (BM25) storage backend. */
-  keyword: boolean;
-  /** Enable vector (embedding) storage backend. */
-  vector: boolean;
-}
+export type NamespacesInstancesUpdateResponseIndexMethod =
+  InstancesCreateRequestIndexMethod;
 export const NamespacesInstancesUpdateResponseIndexMethod =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      keyword: S.Boolean,
-      vector: S.Boolean,
-    }),
-  ).annotate({
-    identifier: "NamespacesInstancesUpdateResponseIndexMethod",
-  }) as any as S.Schema<NamespacesInstancesUpdateResponseIndexMethod>;
+  InstancesCreateRequestIndexMethod;
 
 export type NamespacesInstancesUpdateResponseIndexingOptionsKeywordTokenizer =
   | "porter"
@@ -15362,23 +14517,10 @@ export const NamespacesInstancesUpdateResponseIndexingOptions =
     identifier: "NamespacesInstancesUpdateResponseIndexingOptions",
   }) as any as S.Schema<NamespacesInstancesUpdateResponseIndexingOptions>;
 
-export interface NamespacesInstancesUpdateResponseMetadata {
-  createdFromAisearchWizard?: boolean | null;
-  workerDomain?: string | null;
-}
+export type NamespacesInstancesUpdateResponseMetadata =
+  InstancesCreateResponseMetadata;
 export const NamespacesInstancesUpdateResponseMetadata =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      createdFromAisearchWizard: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("created_from_aisearch_wizard")),
-      ),
-      workerDomain: S.optional(
-        S.NullOr(S.String).pipe(T.Body("worker_domain")),
-      ),
-    }),
-  ).annotate({
-    identifier: "NamespacesInstancesUpdateResponseMetadata",
-  }) as any as S.Schema<NamespacesInstancesUpdateResponseMetadata>;
+  InstancesCreateResponseMetadata;
 
 export type NamespacesInstancesUpdateResponsePublicEndpointParamsAuthorizedHostsList =
   Array<string>;
@@ -15387,19 +14529,10 @@ export const NamespacesInstancesUpdateResponsePublicEndpointParamsAuthorizedHost
     S.String,
   ) as any as S.Schema<NamespacesInstancesUpdateResponsePublicEndpointParamsAuthorizedHostsList>;
 
-export interface NamespacesInstancesUpdateResponsePublicEndpointParamsChatCompletionsEndpoint {
-  /** Disable chat completions endpoint for this public endpoint */
-  disabled?: boolean | null;
-}
+export type NamespacesInstancesUpdateResponsePublicEndpointParamsChatCompletionsEndpoint =
+  InstancesCreateResponsePublicEndpointParamsChatCompletionsEndpoint;
 export const NamespacesInstancesUpdateResponsePublicEndpointParamsChatCompletionsEndpoint =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      disabled: S.optional(S.NullOr(S.Boolean)),
-    }),
-  ).annotate({
-    identifier:
-      "NamespacesInstancesUpdateResponsePublicEndpointParamsChatCompletionsEndpoint",
-  }) as any as S.Schema<NamespacesInstancesUpdateResponsePublicEndpointParamsChatCompletionsEndpoint>;
+  InstancesCreateResponsePublicEndpointParamsChatCompletionsEndpoint;
 
 export type NamespacesInstancesUpdateResponsePublicEndpointParamsCustomDomainsList =
   Array<string>;
@@ -15408,20 +14541,10 @@ export const NamespacesInstancesUpdateResponsePublicEndpointParamsCustomDomainsL
     S.String,
   ) as any as S.Schema<NamespacesInstancesUpdateResponsePublicEndpointParamsCustomDomainsList>;
 
-export interface NamespacesInstancesUpdateResponsePublicEndpointParamsMcp {
-  description?: string | null;
-  /** Disable MCP endpoint for this public endpoint */
-  disabled?: boolean | null;
-}
+export type NamespacesInstancesUpdateResponsePublicEndpointParamsMcp =
+  InstancesCreateResponsePublicEndpointParamsMcp;
 export const NamespacesInstancesUpdateResponsePublicEndpointParamsMcp =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      description: S.optional(S.NullOr(S.String)),
-      disabled: S.optional(S.NullOr(S.Boolean)),
-    }),
-  ).annotate({
-    identifier: "NamespacesInstancesUpdateResponsePublicEndpointParamsMcp",
-  }) as any as S.Schema<NamespacesInstancesUpdateResponsePublicEndpointParamsMcp>;
+  InstancesCreateResponsePublicEndpointParamsMcp;
 
 export type NamespacesInstancesUpdateResponsePublicEndpointParamsRateLimitTechnique =
   "fixed" | "sliding";
@@ -15449,29 +14572,20 @@ export const NamespacesInstancesUpdateResponsePublicEndpointParamsRateLimit =
       "NamespacesInstancesUpdateResponsePublicEndpointParamsRateLimit",
   }) as any as S.Schema<NamespacesInstancesUpdateResponsePublicEndpointParamsRateLimit>;
 
-export interface NamespacesInstancesUpdateResponsePublicEndpointParamsSearchEndpoint {
-  /** Disable search endpoint for this public endpoint */
-  disabled?: boolean | null;
-}
+export type NamespacesInstancesUpdateResponsePublicEndpointParamsSearchEndpoint =
+  InstancesCreateResponsePublicEndpointParamsSearchEndpoint;
 export const NamespacesInstancesUpdateResponsePublicEndpointParamsSearchEndpoint =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      disabled: S.optional(S.NullOr(S.Boolean)),
-    }),
-  ).annotate({
-    identifier:
-      "NamespacesInstancesUpdateResponsePublicEndpointParamsSearchEndpoint",
-  }) as any as S.Schema<NamespacesInstancesUpdateResponsePublicEndpointParamsSearchEndpoint>;
+  InstancesCreateResponsePublicEndpointParamsSearchEndpoint;
 
 export interface NamespacesInstancesUpdateResponsePublicEndpointParams {
   authorizedHosts?: NamespacesInstancesUpdateResponsePublicEndpointParamsAuthorizedHostsList | null;
-  chatCompletionsEndpoint?: NamespacesInstancesUpdateResponsePublicEndpointParamsChatCompletionsEndpoint | null;
+  chatCompletionsEndpoint?: InstancesCreateResponsePublicEndpointParamsChatCompletionsEndpoint | null;
   /** Custom domain hostnames that alias this public endpoint. GET and create responses return the current set; on update (PUT) this field is only echoed back when supplied in the request body, otherwise it is null (omit it to leave domains unchanged). */
   customDomains?: NamespacesInstancesUpdateResponsePublicEndpointParamsCustomDomainsList | null;
   enabled?: boolean | null;
-  mcp?: NamespacesInstancesUpdateResponsePublicEndpointParamsMcp | null;
+  mcp?: InstancesCreateResponsePublicEndpointParamsMcp | null;
   rateLimit?: NamespacesInstancesUpdateResponsePublicEndpointParamsRateLimit | null;
-  searchEndpoint?: NamespacesInstancesUpdateResponsePublicEndpointParamsSearchEndpoint | null;
+  searchEndpoint?: InstancesCreateResponsePublicEndpointParamsSearchEndpoint | null;
 }
 export const NamespacesInstancesUpdateResponsePublicEndpointParams =
   /*@__PURE__*/ S.suspend(() =>
@@ -15483,7 +14597,7 @@ export const NamespacesInstancesUpdateResponsePublicEndpointParams =
       ),
       chatCompletionsEndpoint: S.optional(
         S.NullOr(
-          NamespacesInstancesUpdateResponsePublicEndpointParamsChatCompletionsEndpoint,
+          InstancesCreateResponsePublicEndpointParamsChatCompletionsEndpoint,
         ).pipe(T.Body("chat_completions_endpoint")),
       ),
       customDomains: S.optional(
@@ -15492,9 +14606,7 @@ export const NamespacesInstancesUpdateResponsePublicEndpointParams =
         ).pipe(T.Body("custom_domains")),
       ),
       enabled: S.optional(S.NullOr(S.Boolean)),
-      mcp: S.optional(
-        S.NullOr(NamespacesInstancesUpdateResponsePublicEndpointParamsMcp),
-      ),
+      mcp: S.optional(S.NullOr(InstancesCreateResponsePublicEndpointParamsMcp)),
       rateLimit: S.optional(
         S.NullOr(
           NamespacesInstancesUpdateResponsePublicEndpointParamsRateLimit,
@@ -15502,7 +14614,7 @@ export const NamespacesInstancesUpdateResponsePublicEndpointParams =
       ),
       searchEndpoint: S.optional(
         S.NullOr(
-          NamespacesInstancesUpdateResponsePublicEndpointParamsSearchEndpoint,
+          InstancesCreateResponsePublicEndpointParamsSearchEndpoint,
         ).pipe(T.Body("search_endpoint")),
       ),
     }),
@@ -15626,28 +14738,16 @@ export const NamespacesInstancesUpdateResponseSourceParamsIncludeItemsList =
     S.String,
   ) as any as S.Schema<NamespacesInstancesUpdateResponseSourceParamsIncludeItemsList>;
 
-export interface NamespacesInstancesUpdateResponseSourceParamsWebCrawlerParseOptionsContentSelectorItem {
-  /** Glob pattern to match against the page URL path. Uses standard glob syntax: * matches within a segment, ** crosses directories. */
-  path: string;
-  /** CSS selector to extract content from pages matching the path pattern. Must not contain disallowed characters (;, `, $, {, }, ). Must target a single element; if multiple elements match, the selector is ignored and the full page is used. */
-  selector: string;
-}
+export type NamespacesInstancesUpdateResponseSourceParamsWebCrawlerParseOptionsContentSelectorItem =
+  InstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorItem;
 export const NamespacesInstancesUpdateResponseSourceParamsWebCrawlerParseOptionsContentSelectorItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      path: S.String,
-      selector: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "NamespacesInstancesUpdateResponseSourceParamsWebCrawlerParseOptionsContentSelectorItem",
-  }) as any as S.Schema<NamespacesInstancesUpdateResponseSourceParamsWebCrawlerParseOptionsContentSelectorItem>;
+  InstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorItem;
 
 export type NamespacesInstancesUpdateResponseSourceParamsWebCrawlerParseOptionsContentSelectorList =
-  Array<NamespacesInstancesUpdateResponseSourceParamsWebCrawlerParseOptionsContentSelectorItem>;
+  Array<InstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorItem>;
 export const NamespacesInstancesUpdateResponseSourceParamsWebCrawlerParseOptionsContentSelectorList =
   /*@__PURE__*/ S.Array(
-    NamespacesInstancesUpdateResponseSourceParamsWebCrawlerParseOptionsContentSelectorItem,
+    InstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorItem,
   ) as any as S.Schema<NamespacesInstancesUpdateResponseSourceParamsWebCrawlerParseOptionsContentSelectorList>;
 
 export type NamespacesInstancesUpdateResponseSourceParamsWebCrawlerParseOptionsIncludeHeadersMap =
@@ -15812,11 +14912,11 @@ export interface UpdateNamespaceInstanceResponse {
   /** Deprecated — use index_method instead. */
   hybridSearchEnabled?: boolean | null;
   /** Controls which storage backends are used during indexing. Defaults to vector-only. */
-  indexMethod?: NamespacesInstancesUpdateResponseIndexMethod | null;
+  indexMethod?: InstancesCreateRequestIndexMethod | null;
   indexingOptions?: NamespacesInstancesUpdateResponseIndexingOptions | null;
   lastActivity?: string | null;
   maxNumResults?: number | null;
-  metadata?: NamespacesInstancesUpdateResponseMetadata | null;
+  metadata?: InstancesCreateResponseMetadata | null;
   modifiedBy?: string | null;
   namespace?: string | null;
   paused?: boolean | null;
@@ -15884,9 +14984,7 @@ export const UpdateNamespaceInstanceResponse = /*@__PURE__*/ S.suspend(() =>
       S.NullOr(S.Boolean).pipe(T.Body("hybrid_search_enabled")),
     ),
     indexMethod: S.optional(
-      S.NullOr(NamespacesInstancesUpdateResponseIndexMethod).pipe(
-        T.Body("index_method"),
-      ),
+      S.NullOr(InstancesCreateRequestIndexMethod).pipe(T.Body("index_method")),
     ),
     indexingOptions: S.optional(
       S.NullOr(NamespacesInstancesUpdateResponseIndexingOptions).pipe(
@@ -15897,7 +14995,7 @@ export const UpdateNamespaceInstanceResponse = /*@__PURE__*/ S.suspend(() =>
     maxNumResults: S.optional(
       S.NullOr(S.Number).pipe(T.Body("max_num_results")),
     ),
-    metadata: S.optional(S.NullOr(NamespacesInstancesUpdateResponseMetadata)),
+    metadata: S.optional(S.NullOr(InstancesCreateResponseMetadata)),
     modifiedBy: S.optional(S.NullOr(S.String).pipe(T.Body("modified_by"))),
     namespace: S.optional(S.NullOr(S.String)),
     paused: S.optional(S.NullOr(S.Boolean)),

@@ -555,20 +555,10 @@ export const SuperSlurperJobsCreateRequestSourceR2SlurperGcsSourceSchema =
     identifier: "SuperSlurperJobsCreateRequestSourceR2SlurperGcsSourceSchema",
   }) as any as S.Schema<SuperSlurperJobsCreateRequestSourceR2SlurperGcsSourceSchema>;
 
-export interface SuperSlurperJobsCreateRequestSourceR2SlurperR2SourceSchemaSecret {
-  accessKeyId: string;
-  secretAccessKey: string;
-}
+export type SuperSlurperJobsCreateRequestSourceR2SlurperR2SourceSchemaSecret =
+  SuperSlurperJobsCreateRequestSourceR2SlurperS3SourceSchemaSecret;
 export const SuperSlurperJobsCreateRequestSourceR2SlurperR2SourceSchemaSecret =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      accessKeyId: S.String,
-      secretAccessKey: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "SuperSlurperJobsCreateRequestSourceR2SlurperR2SourceSchemaSecret",
-  }) as any as S.Schema<SuperSlurperJobsCreateRequestSourceR2SlurperR2SourceSchemaSecret>;
+  SuperSlurperJobsCreateRequestSourceR2SlurperS3SourceSchemaSecret;
 
 export type SuperSlurperJobsCreateRequestSourceR2SlurperR2SourceSchemaVendor =
   "r2";
@@ -589,7 +579,7 @@ export const SuperSlurperJobsCreateRequestSourceR2SlurperR2SourceSchemaKeysList 
 
 export interface SuperSlurperJobsCreateRequestSourceR2SlurperR2SourceSchema {
   bucket: string;
-  secret: SuperSlurperJobsCreateRequestSourceR2SlurperR2SourceSchemaSecret;
+  secret: SuperSlurperJobsCreateRequestSourceR2SlurperS3SourceSchemaSecret;
   vendor: SuperSlurperJobsCreateRequestSourceR2SlurperR2SourceSchemaVendor;
   jurisdiction?:
     | SuperSlurperJobsCreateRequestSourceR2SlurperR2SourceSchemaJurisdiction
@@ -601,7 +591,7 @@ export const SuperSlurperJobsCreateRequestSourceR2SlurperR2SourceSchema =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       bucket: S.String,
-      secret: SuperSlurperJobsCreateRequestSourceR2SlurperR2SourceSchemaSecret,
+      secret: SuperSlurperJobsCreateRequestSourceR2SlurperS3SourceSchemaSecret,
       vendor: SuperSlurperJobsCreateRequestSourceR2SlurperR2SourceSchemaVendor,
       jurisdiction: S.optional(
         SuperSlurperJobsCreateRequestSourceR2SlurperR2SourceSchemaJurisdiction,
@@ -627,19 +617,10 @@ export const SuperSlurperJobsCreateRequestSource = /*@__PURE__*/ S.Unknown.pipe(
   ]),
 );
 
-export interface SuperSlurperJobsCreateRequestTargetSecret {
-  accessKeyId: string;
-  secretAccessKey: string;
-}
+export type SuperSlurperJobsCreateRequestTargetSecret =
+  SuperSlurperJobsCreateRequestSourceR2SlurperS3SourceSchemaSecret;
 export const SuperSlurperJobsCreateRequestTargetSecret =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      accessKeyId: S.String,
-      secretAccessKey: S.String,
-    }),
-  ).annotate({
-    identifier: "SuperSlurperJobsCreateRequestTargetSecret",
-  }) as any as S.Schema<SuperSlurperJobsCreateRequestTargetSecret>;
+  SuperSlurperJobsCreateRequestSourceR2SlurperS3SourceSchemaSecret;
 
 export type SuperSlurperJobsCreateRequestTargetJurisdiction =
   | "default"
@@ -650,7 +631,7 @@ export const SuperSlurperJobsCreateRequestTargetJurisdiction =
 
 export interface SuperSlurperJobsCreateRequestTarget {
   bucket: string;
-  secret: SuperSlurperJobsCreateRequestTargetSecret;
+  secret: SuperSlurperJobsCreateRequestSourceR2SlurperS3SourceSchemaSecret;
   vendor: SuperSlurperJobsCreateRequestSourceR2SlurperR2SourceSchemaVendor;
   jurisdiction?:
     | SuperSlurperJobsCreateRequestTargetJurisdiction
@@ -659,7 +640,7 @@ export interface SuperSlurperJobsCreateRequestTarget {
 export const SuperSlurperJobsCreateRequestTarget = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucket: S.String,
-    secret: SuperSlurperJobsCreateRequestTargetSecret,
+    secret: SuperSlurperJobsCreateRequestSourceR2SlurperS3SourceSchemaSecret,
     vendor: SuperSlurperJobsCreateRequestSourceR2SlurperR2SourceSchemaVendor,
     jurisdiction: S.optional(SuperSlurperJobsCreateRequestTargetJurisdiction),
   }),
@@ -2772,30 +2753,16 @@ export const BucketsMetricsListResponseInfrequentAccessPublished =
     identifier: "BucketsMetricsListResponseInfrequentAccessPublished",
   }) as any as S.Schema<BucketsMetricsListResponseInfrequentAccessPublished>;
 
-export interface BucketsMetricsListResponseInfrequentAccessUploaded {
-  /** Amount of. */
-  metadataSize?: number | null;
-  /** Number of objects stored. */
-  objects?: number | null;
-  /** Amount of storage used by object data. */
-  payloadSize?: number | null;
-}
+export type BucketsMetricsListResponseInfrequentAccessUploaded =
+  BucketsMetricsListResponseInfrequentAccessPublished;
 export const BucketsMetricsListResponseInfrequentAccessUploaded =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      metadataSize: S.optional(S.NullOr(S.Number)),
-      objects: S.optional(S.NullOr(S.Number)),
-      payloadSize: S.optional(S.NullOr(S.Number)),
-    }),
-  ).annotate({
-    identifier: "BucketsMetricsListResponseInfrequentAccessUploaded",
-  }) as any as S.Schema<BucketsMetricsListResponseInfrequentAccessUploaded>;
+  BucketsMetricsListResponseInfrequentAccessPublished;
 
 export interface BucketsMetricsListResponseInfrequentAccess {
   /** Metrics on number of objects/amount of storage used. */
   published?: BucketsMetricsListResponseInfrequentAccessPublished | null;
   /** Metrics on number of objects/amount of storage used. */
-  uploaded?: BucketsMetricsListResponseInfrequentAccessUploaded | null;
+  uploaded?: BucketsMetricsListResponseInfrequentAccessPublished | null;
 }
 export const BucketsMetricsListResponseInfrequentAccess =
   /*@__PURE__*/ S.suspend(() =>
@@ -2804,81 +2771,41 @@ export const BucketsMetricsListResponseInfrequentAccess =
         S.NullOr(BucketsMetricsListResponseInfrequentAccessPublished),
       ),
       uploaded: S.optional(
-        S.NullOr(BucketsMetricsListResponseInfrequentAccessUploaded),
+        S.NullOr(BucketsMetricsListResponseInfrequentAccessPublished),
       ),
     }),
   ).annotate({
     identifier: "BucketsMetricsListResponseInfrequentAccess",
   }) as any as S.Schema<BucketsMetricsListResponseInfrequentAccess>;
 
-export interface BucketsMetricsListResponseStandardPublished {
-  /** Amount of. */
-  metadataSize?: number | null;
-  /** Number of objects stored. */
-  objects?: number | null;
-  /** Amount of storage used by object data. */
-  payloadSize?: number | null;
-}
+export type BucketsMetricsListResponseStandardPublished =
+  BucketsMetricsListResponseInfrequentAccessPublished;
 export const BucketsMetricsListResponseStandardPublished =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      metadataSize: S.optional(S.NullOr(S.Number)),
-      objects: S.optional(S.NullOr(S.Number)),
-      payloadSize: S.optional(S.NullOr(S.Number)),
-    }),
-  ).annotate({
-    identifier: "BucketsMetricsListResponseStandardPublished",
-  }) as any as S.Schema<BucketsMetricsListResponseStandardPublished>;
+  BucketsMetricsListResponseInfrequentAccessPublished;
 
-export interface BucketsMetricsListResponseStandardUploaded {
-  /** Amount of. */
-  metadataSize?: number | null;
-  /** Number of objects stored. */
-  objects?: number | null;
-  /** Amount of storage used by object data. */
-  payloadSize?: number | null;
-}
+export type BucketsMetricsListResponseStandardUploaded =
+  BucketsMetricsListResponseInfrequentAccessPublished;
 export const BucketsMetricsListResponseStandardUploaded =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      metadataSize: S.optional(S.NullOr(S.Number)),
-      objects: S.optional(S.NullOr(S.Number)),
-      payloadSize: S.optional(S.NullOr(S.Number)),
-    }),
-  ).annotate({
-    identifier: "BucketsMetricsListResponseStandardUploaded",
-  }) as any as S.Schema<BucketsMetricsListResponseStandardUploaded>;
+  BucketsMetricsListResponseInfrequentAccessPublished;
 
-export interface BucketsMetricsListResponseStandard {
-  /** Metrics on number of objects/amount of storage used. */
-  published?: BucketsMetricsListResponseStandardPublished | null;
-  /** Metrics on number of objects/amount of storage used. */
-  uploaded?: BucketsMetricsListResponseStandardUploaded | null;
-}
-export const BucketsMetricsListResponseStandard = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    published: S.optional(
-      S.NullOr(BucketsMetricsListResponseStandardPublished),
-    ),
-    uploaded: S.optional(S.NullOr(BucketsMetricsListResponseStandardUploaded)),
-  }),
-).annotate({
-  identifier: "BucketsMetricsListResponseStandard",
-}) as any as S.Schema<BucketsMetricsListResponseStandard>;
+export type BucketsMetricsListResponseStandard =
+  BucketsMetricsListResponseInfrequentAccess;
+export const BucketsMetricsListResponseStandard =
+  BucketsMetricsListResponseInfrequentAccess;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ListBucketMetricsResponse {
   /** Metrics based on what state they are in(uploaded or published). */
   infrequentAccess?: BucketsMetricsListResponseInfrequentAccess | null;
   /** Metrics based on what state they are in(uploaded or published). */
-  standard?: BucketsMetricsListResponseStandard | null;
+  standard?: BucketsMetricsListResponseInfrequentAccess | null;
 }
 export const ListBucketMetricsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     infrequentAccess: S.optional(
       S.NullOr(BucketsMetricsListResponseInfrequentAccess),
     ),
-    standard: S.optional(S.NullOr(BucketsMetricsListResponseStandard)),
+    standard: S.optional(S.NullOr(BucketsMetricsListResponseInfrequentAccess)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListBucketMetricsResponse",
@@ -3940,18 +3867,10 @@ export const PutBucketEventNotificationResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PutBucketEventNotificationResponse",
 }) as any as S.Schema<PutBucketEventNotificationResponse>;
 
-export interface BucketsLifecycleUpdateRequestRulesItemConditions {
-  /** Transitions will only apply to objects/uploads in the bucket that start with the given prefix, an empty prefix can be provided to scope rule to all objects/uploads. */
-  prefix: string;
-}
+export type BucketsLifecycleUpdateRequestRulesItemConditions =
+  BucketsLifecycleGetResponseRulesItemConditions;
 export const BucketsLifecycleUpdateRequestRulesItemConditions =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      prefix: S.String,
-    }),
-  ).annotate({
-    identifier: "BucketsLifecycleUpdateRequestRulesItemConditions",
-  }) as any as S.Schema<BucketsLifecycleUpdateRequestRulesItemConditions>;
+  BucketsLifecycleGetResponseRulesItemConditions;
 
 export type BucketsLifecycleUpdateRequestRulesItemAbortMultipartUploadsTransitionConditionType =
   "Age";
@@ -4144,7 +4063,7 @@ export interface BucketsLifecycleUpdateRequestRulesItem {
   /** Unique identifier for this rule. */
   id: string;
   /** Conditions that apply to all transitions of this rule. */
-  conditions: BucketsLifecycleUpdateRequestRulesItemConditions;
+  conditions: BucketsLifecycleGetResponseRulesItemConditions;
   /** Whether or not this rule is in effect. */
   enabled: boolean;
   /** Transition to abort ongoing multipart uploads. */
@@ -4158,7 +4077,7 @@ export const BucketsLifecycleUpdateRequestRulesItem = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       id: S.String,
-      conditions: BucketsLifecycleUpdateRequestRulesItemConditions,
+      conditions: BucketsLifecycleGetResponseRulesItemConditions,
       enabled: S.Boolean,
       abortMultipartUploadsTransition: S.optional(
         BucketsLifecycleUpdateRequestRulesItemAbortMultipartUploadsTransition,
@@ -4391,31 +4310,14 @@ export const BucketsSippyUpdateRequestDestinationR2EnableSippyAws =
     identifier: "BucketsSippyUpdateRequestDestinationR2EnableSippyAws",
   }) as any as S.Schema<BucketsSippyUpdateRequestDestinationR2EnableSippyAws>;
 
-export interface BucketsSippyUpdateRequestDestinationR2EnableSippyGcs {
-  /** ID of a Cloudflare API token. */
-  accessKeyId?: string;
-  provider?:
-    | BucketsSippyUpdateRequestDestinationR2EnableSippyAwsProvider
-    | (string & {});
-  /** Value of a Cloudflare API token. */
-  secretAccessKey?: string;
-}
+export type BucketsSippyUpdateRequestDestinationR2EnableSippyGcs =
+  BucketsSippyUpdateRequestDestinationR2EnableSippyAws;
 export const BucketsSippyUpdateRequestDestinationR2EnableSippyGcs =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      accessKeyId: S.optional(S.String),
-      provider: S.optional(
-        BucketsSippyUpdateRequestDestinationR2EnableSippyAwsProvider,
-      ),
-      secretAccessKey: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "BucketsSippyUpdateRequestDestinationR2EnableSippyGcs",
-  }) as any as S.Schema<BucketsSippyUpdateRequestDestinationR2EnableSippyGcs>;
+  BucketsSippyUpdateRequestDestinationR2EnableSippyAws;
 
 export type BucketsSippyUpdateRequestDestination =
   | BucketsSippyUpdateRequestDestinationR2EnableSippyAws
-  | BucketsSippyUpdateRequestDestinationR2EnableSippyGcs;
+  | BucketsSippyUpdateRequestDestinationR2EnableSippyAws;
 export const BucketsSippyUpdateRequestDestination =
   /*@__PURE__*/ S.Unknown.pipe(
     T.UnionCases([
@@ -4664,39 +4566,19 @@ export const ResumeSuperSlurperJobResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ResumeSuperSlurperJobResponse",
 }) as any as S.Schema<ResumeSuperSlurperJobResponse>;
 
-export interface SuperSlurperConnectivityPrecheckSourceRequestSecretR2SlurperS3SourceSchema {
-  accessKeyId: string;
-  secretAccessKey: string;
-}
+export type SuperSlurperConnectivityPrecheckSourceRequestSecretR2SlurperS3SourceSchema =
+  SuperSlurperJobsCreateRequestSourceR2SlurperS3SourceSchemaSecret;
 export const SuperSlurperConnectivityPrecheckSourceRequestSecretR2SlurperS3SourceSchema =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      accessKeyId: S.String,
-      secretAccessKey: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "SuperSlurperConnectivityPrecheckSourceRequestSecretR2SlurperS3SourceSchema",
-  }) as any as S.Schema<SuperSlurperConnectivityPrecheckSourceRequestSecretR2SlurperS3SourceSchema>;
+  SuperSlurperJobsCreateRequestSourceR2SlurperS3SourceSchemaSecret;
 
-export interface SuperSlurperConnectivityPrecheckSourceRequestSecretR2SlurperGcsSourceSchema {
-  clientEmail: string;
-  privateKey: string;
-}
+export type SuperSlurperConnectivityPrecheckSourceRequestSecretR2SlurperGcsSourceSchema =
+  SuperSlurperJobsCreateRequestSourceR2SlurperGcsSourceSchemaSecret;
 export const SuperSlurperConnectivityPrecheckSourceRequestSecretR2SlurperGcsSourceSchema =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      clientEmail: S.String,
-      privateKey: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "SuperSlurperConnectivityPrecheckSourceRequestSecretR2SlurperGcsSourceSchema",
-  }) as any as S.Schema<SuperSlurperConnectivityPrecheckSourceRequestSecretR2SlurperGcsSourceSchema>;
+  SuperSlurperJobsCreateRequestSourceR2SlurperGcsSourceSchemaSecret;
 
 export type SuperSlurperConnectivityPrecheckSourceRequestSecret =
-  | SuperSlurperConnectivityPrecheckSourceRequestSecretR2SlurperS3SourceSchema
-  | SuperSlurperConnectivityPrecheckSourceRequestSecretR2SlurperGcsSourceSchema;
+  | SuperSlurperJobsCreateRequestSourceR2SlurperS3SourceSchemaSecret
+  | SuperSlurperJobsCreateRequestSourceR2SlurperGcsSourceSchemaSecret;
 export const SuperSlurperConnectivityPrecheckSourceRequestSecret =
   /*@__PURE__*/ S.Unknown.pipe(
     T.UnionCases([
@@ -4802,19 +4684,10 @@ export const SourceSuperSlurperConnectivityPrecheckResponse =
     identifier: "SourceSuperSlurperConnectivityPrecheckResponse",
   }) as any as S.Schema<SourceSuperSlurperConnectivityPrecheckResponse>;
 
-export interface SuperSlurperConnectivityPrecheckTargetRequestSecret {
-  accessKeyId: string;
-  secretAccessKey: string;
-}
+export type SuperSlurperConnectivityPrecheckTargetRequestSecret =
+  SuperSlurperJobsCreateRequestSourceR2SlurperS3SourceSchemaSecret;
 export const SuperSlurperConnectivityPrecheckTargetRequestSecret =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      accessKeyId: S.String,
-      secretAccessKey: S.String,
-    }),
-  ).annotate({
-    identifier: "SuperSlurperConnectivityPrecheckTargetRequestSecret",
-  }) as any as S.Schema<SuperSlurperConnectivityPrecheckTargetRequestSecret>;
+  SuperSlurperJobsCreateRequestSourceR2SlurperS3SourceSchemaSecret;
 
 export type SuperSlurperConnectivityPrecheckTargetRequestVendor = "r2";
 export const SuperSlurperConnectivityPrecheckTargetRequestVendor =
@@ -4830,7 +4703,7 @@ export const SuperSlurperConnectivityPrecheckTargetRequestJurisdiction =
 export interface TargetSuperSlurperConnectivityPrecheckRequest {
   accountId: string;
   bucket: string;
-  secret: SuperSlurperConnectivityPrecheckTargetRequestSecret;
+  secret: SuperSlurperJobsCreateRequestSourceR2SlurperS3SourceSchemaSecret;
   vendor: SuperSlurperConnectivityPrecheckTargetRequestVendor | (string & {});
   jurisdiction?:
     | SuperSlurperConnectivityPrecheckTargetRequestJurisdiction
@@ -4841,7 +4714,7 @@ export const TargetSuperSlurperConnectivityPrecheckRequest =
     S.Struct({
       accountId: S.String.pipe(T.Label("account_id")),
       bucket: S.String,
-      secret: SuperSlurperConnectivityPrecheckTargetRequestSecret,
+      secret: SuperSlurperJobsCreateRequestSourceR2SlurperS3SourceSchemaSecret,
       vendor: SuperSlurperConnectivityPrecheckTargetRequestVendor,
       jurisdiction: S.optional(
         SuperSlurperConnectivityPrecheckTargetRequestJurisdiction,

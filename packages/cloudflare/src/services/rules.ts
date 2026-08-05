@@ -825,72 +825,20 @@ export const ListListItemsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListListItemsRequest",
 }) as any as S.Schema<ListListItemsRequest>;
 
-export interface ListsItemsListResultItemListsListItemIPFull {
-  /** Defines the unique ID of the item in the List. */
-  id: string;
-  /** The RFC 3339 timestamp of when the list was created. */
-  createdOn: string;
-  /** An IPv4 address, an IPv4 CIDR, an IPv6 address, or an IPv6 CIDR. */
-  ip: string;
-  /** The RFC 3339 timestamp of when the list was last modified. */
-  modifiedOn: string;
-  /** Defines an informative summary of the list item. */
-  comment?: string | null;
-}
+export type ListsItemsListResultItemListsListItemIPFull =
+  ListsItemsGetResultListsListItemIPFull;
 export const ListsItemsListResultItemListsListItemIPFull =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      createdOn: S.String.pipe(T.Body("created_on")),
-      ip: S.String,
-      modifiedOn: S.String.pipe(T.Body("modified_on")),
-      comment: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier: "ListsItemsListResultItemListsListItemIPFull",
-  }) as any as S.Schema<ListsItemsListResultItemListsListItemIPFull>;
+  ListsItemsGetResultListsListItemIPFull;
 
-export interface ListsItemsListResultItemListsListItemHostnameFullHostname {
-  urlHostname: string;
-  /** Only applies to wildcard hostnames (e.g., *.example.com). When true (default), only subdomains are blocked. When false, both the root domain and subdomains are blocked. */
-  excludeExactHostname?: boolean | null;
-}
+export type ListsItemsListResultItemListsListItemHostnameFullHostname =
+  ListsItemsGetResultListsListItemHostnameFullHostname;
 export const ListsItemsListResultItemListsListItemHostnameFullHostname =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      urlHostname: S.String.pipe(T.Body("url_hostname")),
-      excludeExactHostname: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("exclude_exact_hostname")),
-      ),
-    }),
-  ).annotate({
-    identifier: "ListsItemsListResultItemListsListItemHostnameFullHostname",
-  }) as any as S.Schema<ListsItemsListResultItemListsListItemHostnameFullHostname>;
+  ListsItemsGetResultListsListItemHostnameFullHostname;
 
-export interface ListsItemsListResultItemListsListItemHostnameFull {
-  /** Defines the unique ID of the item in the List. */
-  id: string;
-  /** The RFC 3339 timestamp of when the list was created. */
-  createdOn: string;
-  /** Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-). */
-  hostname: ListsItemsListResultItemListsListItemHostnameFullHostname;
-  /** The RFC 3339 timestamp of when the list was last modified. */
-  modifiedOn: string;
-  /** Defines an informative summary of the list item. */
-  comment?: string | null;
-}
+export type ListsItemsListResultItemListsListItemHostnameFull =
+  ListsItemsGetResultListsListItemHostnameFull;
 export const ListsItemsListResultItemListsListItemHostnameFull =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      createdOn: S.String.pipe(T.Body("created_on")),
-      hostname: ListsItemsListResultItemListsListItemHostnameFullHostname,
-      modifiedOn: S.String.pipe(T.Body("modified_on")),
-      comment: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier: "ListsItemsListResultItemListsListItemHostnameFull",
-  }) as any as S.Schema<ListsItemsListResultItemListsListItemHostnameFull>;
+  ListsItemsGetResultListsListItemHostnameFull;
 
 export type ListsItemsListResultItemListsListItemRedirectFullRedirectStatusCode =
   301 | 302 | 307 | 308;
@@ -958,36 +906,16 @@ export const ListsItemsListResultItemListsListItemRedirectFull =
     identifier: "ListsItemsListResultItemListsListItemRedirectFull",
   }) as any as S.Schema<ListsItemsListResultItemListsListItemRedirectFull>;
 
-export interface ListsItemsListResultItemListsListItemASNFull {
-  /** Defines the unique ID of the item in the List. */
-  id: string;
-  /** Defines a non-negative 32 bit integer. */
-  asn: number;
-  /** The RFC 3339 timestamp of when the list was created. */
-  createdOn: string;
-  /** The RFC 3339 timestamp of when the list was last modified. */
-  modifiedOn: string;
-  /** Defines an informative summary of the list item. */
-  comment?: string | null;
-}
+export type ListsItemsListResultItemListsListItemASNFull =
+  ListsItemsGetResultListsListItemASNFull;
 export const ListsItemsListResultItemListsListItemASNFull =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      asn: S.Number,
-      createdOn: S.String.pipe(T.Body("created_on")),
-      modifiedOn: S.String.pipe(T.Body("modified_on")),
-      comment: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier: "ListsItemsListResultItemListsListItemASNFull",
-  }) as any as S.Schema<ListsItemsListResultItemListsListItemASNFull>;
+  ListsItemsGetResultListsListItemASNFull;
 
 export type ListsItemsListResultItem =
-  | ListsItemsListResultItemListsListItemIPFull
-  | ListsItemsListResultItemListsListItemHostnameFull
+  | ListsItemsGetResultListsListItemIPFull
+  | ListsItemsGetResultListsListItemHostnameFull
   | ListsItemsListResultItemListsListItemRedirectFull
-  | ListsItemsListResultItemListsListItemASNFull;
+  | ListsItemsGetResultListsListItemASNFull;
 export const ListsItemsListResultItem = /*@__PURE__*/ S.Unknown.pipe(
   T.UnionCases([
     ["id", "createdOn", "ip", "modifiedOn", "comment"],
@@ -1156,21 +1084,10 @@ export const UpdateListResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateListResponse",
 }) as any as S.Schema<UpdateListResponse>;
 
-export interface ListsItemsUpdateRequestBodyItemListsListItemIPComment {
-  /** An IPv4 address, an IPv4 CIDR, an IPv6 address, or an IPv6 CIDR. */
-  ip: string;
-  /** Defines an informative summary of the list item. */
-  comment?: string;
-}
+export type ListsItemsUpdateRequestBodyItemListsListItemIPComment =
+  ListsItemsCreateRequestBodyItemListsListItemIPComment;
 export const ListsItemsUpdateRequestBodyItemListsListItemIPComment =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ip: S.String,
-      comment: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ListsItemsUpdateRequestBodyItemListsListItemIPComment",
-  }) as any as S.Schema<ListsItemsUpdateRequestBodyItemListsListItemIPComment>;
+  ListsItemsCreateRequestBodyItemListsListItemIPComment;
 
 export type ListsItemsUpdateRequestBodyItemListsListItemRedirectCommentRedirectStatusCode =
   301 | 302 | 307 | 308;
@@ -1231,62 +1148,26 @@ export const ListsItemsUpdateRequestBodyItemListsListItemRedirectComment =
     identifier: "ListsItemsUpdateRequestBodyItemListsListItemRedirectComment",
   }) as any as S.Schema<ListsItemsUpdateRequestBodyItemListsListItemRedirectComment>;
 
-export interface ListsItemsUpdateRequestBodyItemListsListItemHostnameCommentHostname {
-  urlHostname: string;
-  /** Only applies to wildcard hostnames (e.g., *.example.com). When true (default), only subdomains are blocked. When false, both the root domain and subdomains are blocked. */
-  excludeExactHostname?: boolean;
-}
+export type ListsItemsUpdateRequestBodyItemListsListItemHostnameCommentHostname =
+  ListsItemsCreateRequestBodyItemListsListItemHostnameCommentHostname;
 export const ListsItemsUpdateRequestBodyItemListsListItemHostnameCommentHostname =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      urlHostname: S.String.pipe(T.Body("url_hostname")),
-      excludeExactHostname: S.optional(
-        S.Boolean.pipe(T.Body("exclude_exact_hostname")),
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "ListsItemsUpdateRequestBodyItemListsListItemHostnameCommentHostname",
-  }) as any as S.Schema<ListsItemsUpdateRequestBodyItemListsListItemHostnameCommentHostname>;
+  ListsItemsCreateRequestBodyItemListsListItemHostnameCommentHostname;
 
-export interface ListsItemsUpdateRequestBodyItemListsListItemHostnameComment {
-  /** Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-). */
-  hostname: ListsItemsUpdateRequestBodyItemListsListItemHostnameCommentHostname;
-  /** Defines an informative summary of the list item. */
-  comment?: string;
-}
+export type ListsItemsUpdateRequestBodyItemListsListItemHostnameComment =
+  ListsItemsCreateRequestBodyItemListsListItemHostnameComment;
 export const ListsItemsUpdateRequestBodyItemListsListItemHostnameComment =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      hostname:
-        ListsItemsUpdateRequestBodyItemListsListItemHostnameCommentHostname,
-      comment: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ListsItemsUpdateRequestBodyItemListsListItemHostnameComment",
-  }) as any as S.Schema<ListsItemsUpdateRequestBodyItemListsListItemHostnameComment>;
+  ListsItemsCreateRequestBodyItemListsListItemHostnameComment;
 
-export interface ListsItemsUpdateRequestBodyItemListsListItemASNComment {
-  /** Defines a non-negative 32 bit integer. */
-  asn: number;
-  /** Defines an informative summary of the list item. */
-  comment?: string;
-}
+export type ListsItemsUpdateRequestBodyItemListsListItemASNComment =
+  ListsItemsCreateRequestBodyItemListsListItemASNComment;
 export const ListsItemsUpdateRequestBodyItemListsListItemASNComment =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      asn: S.Number,
-      comment: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ListsItemsUpdateRequestBodyItemListsListItemASNComment",
-  }) as any as S.Schema<ListsItemsUpdateRequestBodyItemListsListItemASNComment>;
+  ListsItemsCreateRequestBodyItemListsListItemASNComment;
 
 export type ListsItemsUpdateRequestBodyItem =
-  | ListsItemsUpdateRequestBodyItemListsListItemIPComment
+  | ListsItemsCreateRequestBodyItemListsListItemIPComment
   | ListsItemsUpdateRequestBodyItemListsListItemRedirectComment
-  | ListsItemsUpdateRequestBodyItemListsListItemHostnameComment
-  | ListsItemsUpdateRequestBodyItemListsListItemASNComment;
+  | ListsItemsCreateRequestBodyItemListsListItemHostnameComment
+  | ListsItemsCreateRequestBodyItemListsListItemASNComment;
 export const ListsItemsUpdateRequestBodyItem = /*@__PURE__*/ S.Unknown.pipe(
   T.UnionCases([
     ["ip", "comment"],

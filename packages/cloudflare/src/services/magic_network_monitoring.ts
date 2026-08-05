@@ -169,29 +169,15 @@ export const ConfigsCreateResponseRouterIpsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ConfigsCreateResponseRouterIpsList>;
 
-export interface ConfigsCreateResponseWarpDevicesItem {
-  /** Unique identifier for the warp device. */
-  id: string;
-  /** Name of the warp device. */
-  name: string;
-  /** IPv4 CIDR of the router sourcing flow data associated with this warp device. Only /32 addresses are currently supported. */
-  routerIp: string;
-}
-export const ConfigsCreateResponseWarpDevicesItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.String,
-      name: S.String,
-      routerIp: S.String.pipe(T.Body("router_ip")),
-    }),
-).annotate({
-  identifier: "ConfigsCreateResponseWarpDevicesItem",
-}) as any as S.Schema<ConfigsCreateResponseWarpDevicesItem>;
+export type ConfigsCreateResponseWarpDevicesItem =
+  ConfigsCreateRequestWarpDevicesItem;
+export const ConfigsCreateResponseWarpDevicesItem =
+  ConfigsCreateRequestWarpDevicesItem;
 
 export type ConfigsCreateResponseWarpDevicesList =
-  Array<ConfigsCreateResponseWarpDevicesItem>;
+  Array<ConfigsCreateRequestWarpDevicesItem>;
 export const ConfigsCreateResponseWarpDevicesList = /*@__PURE__*/ S.Array(
-  ConfigsCreateResponseWarpDevicesItem,
+  ConfigsCreateRequestWarpDevicesItem,
 ) as any as S.Schema<ConfigsCreateResponseWarpDevicesList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -432,29 +418,15 @@ export const ConfigsDeleteResponseRouterIpsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ConfigsDeleteResponseRouterIpsList>;
 
-export interface ConfigsDeleteResponseWarpDevicesItem {
-  /** Unique identifier for the warp device. */
-  id: string;
-  /** Name of the warp device. */
-  name: string;
-  /** IPv4 CIDR of the router sourcing flow data associated with this warp device. Only /32 addresses are currently supported. */
-  routerIp: string;
-}
-export const ConfigsDeleteResponseWarpDevicesItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.String,
-      name: S.String,
-      routerIp: S.String.pipe(T.Body("router_ip")),
-    }),
-).annotate({
-  identifier: "ConfigsDeleteResponseWarpDevicesItem",
-}) as any as S.Schema<ConfigsDeleteResponseWarpDevicesItem>;
+export type ConfigsDeleteResponseWarpDevicesItem =
+  ConfigsCreateRequestWarpDevicesItem;
+export const ConfigsDeleteResponseWarpDevicesItem =
+  ConfigsCreateRequestWarpDevicesItem;
 
 export type ConfigsDeleteResponseWarpDevicesList =
-  Array<ConfigsDeleteResponseWarpDevicesItem>;
+  Array<ConfigsCreateRequestWarpDevicesItem>;
 export const ConfigsDeleteResponseWarpDevicesList = /*@__PURE__*/ S.Array(
-  ConfigsDeleteResponseWarpDevicesItem,
+  ConfigsCreateRequestWarpDevicesItem,
 ) as any as S.Schema<ConfigsDeleteResponseWarpDevicesList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -607,28 +579,15 @@ export const ConfigsGetResponseRouterIpsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ConfigsGetResponseRouterIpsList>;
 
-export interface ConfigsGetResponseWarpDevicesItem {
-  /** Unique identifier for the warp device. */
-  id: string;
-  /** Name of the warp device. */
-  name: string;
-  /** IPv4 CIDR of the router sourcing flow data associated with this warp device. Only /32 addresses are currently supported. */
-  routerIp: string;
-}
-export const ConfigsGetResponseWarpDevicesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-    routerIp: S.String.pipe(T.Body("router_ip")),
-  }),
-).annotate({
-  identifier: "ConfigsGetResponseWarpDevicesItem",
-}) as any as S.Schema<ConfigsGetResponseWarpDevicesItem>;
+export type ConfigsGetResponseWarpDevicesItem =
+  ConfigsCreateRequestWarpDevicesItem;
+export const ConfigsGetResponseWarpDevicesItem =
+  ConfigsCreateRequestWarpDevicesItem;
 
 export type ConfigsGetResponseWarpDevicesList =
-  Array<ConfigsGetResponseWarpDevicesItem>;
+  Array<ConfigsCreateRequestWarpDevicesItem>;
 export const ConfigsGetResponseWarpDevicesList = /*@__PURE__*/ S.Array(
-  ConfigsGetResponseWarpDevicesItem,
+  ConfigsCreateRequestWarpDevicesItem,
 ) as any as S.Schema<ConfigsGetResponseWarpDevicesList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -675,29 +634,15 @@ export const ConfigsFullGetResponseRouterIpsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ConfigsFullGetResponseRouterIpsList>;
 
-export interface ConfigsFullGetResponseWarpDevicesItem {
-  /** Unique identifier for the warp device. */
-  id: string;
-  /** Name of the warp device. */
-  name: string;
-  /** IPv4 CIDR of the router sourcing flow data associated with this warp device. Only /32 addresses are currently supported. */
-  routerIp: string;
-}
-export const ConfigsFullGetResponseWarpDevicesItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.String,
-      name: S.String,
-      routerIp: S.String.pipe(T.Body("router_ip")),
-    }),
-).annotate({
-  identifier: "ConfigsFullGetResponseWarpDevicesItem",
-}) as any as S.Schema<ConfigsFullGetResponseWarpDevicesItem>;
+export type ConfigsFullGetResponseWarpDevicesItem =
+  ConfigsCreateRequestWarpDevicesItem;
+export const ConfigsFullGetResponseWarpDevicesItem =
+  ConfigsCreateRequestWarpDevicesItem;
 
 export type ConfigsFullGetResponseWarpDevicesList =
-  Array<ConfigsFullGetResponseWarpDevicesItem>;
+  Array<ConfigsCreateRequestWarpDevicesItem>;
 export const ConfigsFullGetResponseWarpDevicesList = /*@__PURE__*/ S.Array(
-  ConfigsFullGetResponseWarpDevicesItem,
+  ConfigsCreateRequestWarpDevicesItem,
 ) as any as S.Schema<ConfigsFullGetResponseWarpDevicesList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -949,28 +894,15 @@ export const ConfigsEditRequestRouterIpsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ConfigsEditRequestRouterIpsList>;
 
-export interface ConfigsEditRequestWarpDevicesItem {
-  /** Unique identifier for the warp device. */
-  id: string;
-  /** Name of the warp device. */
-  name: string;
-  /** IPv4 CIDR of the router sourcing flow data associated with this warp device. Only /32 addresses are currently supported. */
-  routerIp: string;
-}
-export const ConfigsEditRequestWarpDevicesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-    routerIp: S.String.pipe(T.Body("router_ip")),
-  }),
-).annotate({
-  identifier: "ConfigsEditRequestWarpDevicesItem",
-}) as any as S.Schema<ConfigsEditRequestWarpDevicesItem>;
+export type ConfigsEditRequestWarpDevicesItem =
+  ConfigsCreateRequestWarpDevicesItem;
+export const ConfigsEditRequestWarpDevicesItem =
+  ConfigsCreateRequestWarpDevicesItem;
 
 export type ConfigsEditRequestWarpDevicesList =
-  Array<ConfigsEditRequestWarpDevicesItem>;
+  Array<ConfigsCreateRequestWarpDevicesItem>;
 export const ConfigsEditRequestWarpDevicesList = /*@__PURE__*/ S.Array(
-  ConfigsEditRequestWarpDevicesItem,
+  ConfigsCreateRequestWarpDevicesItem,
 ) as any as S.Schema<ConfigsEditRequestWarpDevicesList>;
 
 export interface PatchConfigRequest {
@@ -1011,28 +943,15 @@ export const ConfigsEditResponseRouterIpsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ConfigsEditResponseRouterIpsList>;
 
-export interface ConfigsEditResponseWarpDevicesItem {
-  /** Unique identifier for the warp device. */
-  id: string;
-  /** Name of the warp device. */
-  name: string;
-  /** IPv4 CIDR of the router sourcing flow data associated with this warp device. Only /32 addresses are currently supported. */
-  routerIp: string;
-}
-export const ConfigsEditResponseWarpDevicesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-    routerIp: S.String.pipe(T.Body("router_ip")),
-  }),
-).annotate({
-  identifier: "ConfigsEditResponseWarpDevicesItem",
-}) as any as S.Schema<ConfigsEditResponseWarpDevicesItem>;
+export type ConfigsEditResponseWarpDevicesItem =
+  ConfigsCreateRequestWarpDevicesItem;
+export const ConfigsEditResponseWarpDevicesItem =
+  ConfigsCreateRequestWarpDevicesItem;
 
 export type ConfigsEditResponseWarpDevicesList =
-  Array<ConfigsEditResponseWarpDevicesItem>;
+  Array<ConfigsCreateRequestWarpDevicesItem>;
 export const ConfigsEditResponseWarpDevicesList = /*@__PURE__*/ S.Array(
-  ConfigsEditResponseWarpDevicesItem,
+  ConfigsCreateRequestWarpDevicesItem,
 ) as any as S.Schema<ConfigsEditResponseWarpDevicesList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -1266,28 +1185,15 @@ export const ConfigsUpdateRequestRouterIpsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ConfigsUpdateRequestRouterIpsList>;
 
-export interface ConfigsUpdateRequestWarpDevicesItem {
-  /** Unique identifier for the warp device. */
-  id: string;
-  /** Name of the warp device. */
-  name: string;
-  /** IPv4 CIDR of the router sourcing flow data associated with this warp device. Only /32 addresses are currently supported. */
-  routerIp: string;
-}
-export const ConfigsUpdateRequestWarpDevicesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-    routerIp: S.String.pipe(T.Body("router_ip")),
-  }),
-).annotate({
-  identifier: "ConfigsUpdateRequestWarpDevicesItem",
-}) as any as S.Schema<ConfigsUpdateRequestWarpDevicesItem>;
+export type ConfigsUpdateRequestWarpDevicesItem =
+  ConfigsCreateRequestWarpDevicesItem;
+export const ConfigsUpdateRequestWarpDevicesItem =
+  ConfigsCreateRequestWarpDevicesItem;
 
 export type ConfigsUpdateRequestWarpDevicesList =
-  Array<ConfigsUpdateRequestWarpDevicesItem>;
+  Array<ConfigsCreateRequestWarpDevicesItem>;
 export const ConfigsUpdateRequestWarpDevicesList = /*@__PURE__*/ S.Array(
-  ConfigsUpdateRequestWarpDevicesItem,
+  ConfigsCreateRequestWarpDevicesItem,
 ) as any as S.Schema<ConfigsUpdateRequestWarpDevicesList>;
 
 export interface UpdateConfigRequest {
@@ -1328,29 +1234,15 @@ export const ConfigsUpdateResponseRouterIpsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ConfigsUpdateResponseRouterIpsList>;
 
-export interface ConfigsUpdateResponseWarpDevicesItem {
-  /** Unique identifier for the warp device. */
-  id: string;
-  /** Name of the warp device. */
-  name: string;
-  /** IPv4 CIDR of the router sourcing flow data associated with this warp device. Only /32 addresses are currently supported. */
-  routerIp: string;
-}
-export const ConfigsUpdateResponseWarpDevicesItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.String,
-      name: S.String,
-      routerIp: S.String.pipe(T.Body("router_ip")),
-    }),
-).annotate({
-  identifier: "ConfigsUpdateResponseWarpDevicesItem",
-}) as any as S.Schema<ConfigsUpdateResponseWarpDevicesItem>;
+export type ConfigsUpdateResponseWarpDevicesItem =
+  ConfigsCreateRequestWarpDevicesItem;
+export const ConfigsUpdateResponseWarpDevicesItem =
+  ConfigsCreateRequestWarpDevicesItem;
 
 export type ConfigsUpdateResponseWarpDevicesList =
-  Array<ConfigsUpdateResponseWarpDevicesItem>;
+  Array<ConfigsCreateRequestWarpDevicesItem>;
 export const ConfigsUpdateResponseWarpDevicesList = /*@__PURE__*/ S.Array(
-  ConfigsUpdateResponseWarpDevicesItem,
+  ConfigsCreateRequestWarpDevicesItem,
 ) as any as S.Schema<ConfigsUpdateResponseWarpDevicesList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */

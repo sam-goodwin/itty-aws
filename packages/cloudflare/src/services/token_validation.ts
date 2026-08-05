@@ -2166,49 +2166,25 @@ export const PatchConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
 export type RulesEditRequestAction = "log" | "block";
 export const RulesEditRequestAction = /*@__PURE__*/ S.String;
 
-export interface RulesEditRequestPositionAPIShieldIndex {
-  /** Move rule to this position */
-  index: number;
-}
-export const RulesEditRequestPositionAPIShieldIndex = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      index: S.Number,
-    }),
-).annotate({
-  identifier: "RulesEditRequestPositionAPIShieldIndex",
-}) as any as S.Schema<RulesEditRequestPositionAPIShieldIndex>;
+export type RulesEditRequestPositionAPIShieldIndex =
+  RulesBulkEditRequestBodyItemPositionAPIShieldIndex;
+export const RulesEditRequestPositionAPIShieldIndex =
+  RulesBulkEditRequestBodyItemPositionAPIShieldIndex;
 
-export interface RulesEditRequestPositionAPIShieldBefore {
-  /** Move rule to before rule with this ID. */
-  before?: string;
-}
-export const RulesEditRequestPositionAPIShieldBefore = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      before: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "RulesEditRequestPositionAPIShieldBefore",
-}) as any as S.Schema<RulesEditRequestPositionAPIShieldBefore>;
+export type RulesEditRequestPositionAPIShieldBefore =
+  RulesBulkEditRequestBodyItemPositionAPIShieldBefore;
+export const RulesEditRequestPositionAPIShieldBefore =
+  RulesBulkEditRequestBodyItemPositionAPIShieldBefore;
 
-export interface RulesEditRequestPositionAPIShieldAfter {
-  /** Move rule to after rule with this ID. */
-  after?: string;
-}
-export const RulesEditRequestPositionAPIShieldAfter = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      after: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "RulesEditRequestPositionAPIShieldAfter",
-}) as any as S.Schema<RulesEditRequestPositionAPIShieldAfter>;
+export type RulesEditRequestPositionAPIShieldAfter =
+  RulesBulkEditRequestBodyItemPositionAPIShieldAfter;
+export const RulesEditRequestPositionAPIShieldAfter =
+  RulesBulkEditRequestBodyItemPositionAPIShieldAfter;
 
 export type RulesEditRequestPosition =
-  | RulesEditRequestPositionAPIShieldIndex
-  | RulesEditRequestPositionAPIShieldBefore
-  | RulesEditRequestPositionAPIShieldAfter;
+  | RulesBulkEditRequestBodyItemPositionAPIShieldIndex
+  | RulesBulkEditRequestBodyItemPositionAPIShieldBefore
+  | RulesBulkEditRequestBodyItemPositionAPIShieldAfter;
 export const RulesEditRequestPosition = /*@__PURE__*/ S.Unknown.pipe(
   T.UnionCases([["index"], ["before"], ["after"]]),
 );

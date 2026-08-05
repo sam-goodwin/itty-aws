@@ -1126,48 +1126,13 @@ export const CreateInvestigateMoveRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateInvestigateMoveRequest",
 }) as any as S.Schema<CreateInvestigateMoveRequest>;
 
-export interface InvestigateMoveCreateResultItem {
-  /** Whether the operation succeeded */
-  success: boolean;
-  /** When the move operation completed (UTC) */
-  completedAt?: string | null;
-  /** Deprecated, use `completed_at` instead. End of life: November 1, 2026. */
-  completedTimestamp?: string | null;
-  /** Destination folder for the message */
-  destination?: string | null;
-  /** Number of items moved. End of life: November 1, 2026. */
-  itemCount?: number | null;
-  /** Message identifier */
-  messageId?: string | null;
-  /** Type of operation performed */
-  operation?: string | null;
-  /** Recipient email address */
-  recipient?: string | null;
-  /** Operation status */
-  status?: string | null;
-}
-export const InvestigateMoveCreateResultItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    success: S.Boolean,
-    completedAt: S.optional(S.NullOr(S.String).pipe(T.Body("completed_at"))),
-    completedTimestamp: S.optional(
-      S.NullOr(S.String).pipe(T.Body("completed_timestamp")),
-    ),
-    destination: S.optional(S.NullOr(S.String)),
-    itemCount: S.optional(S.NullOr(S.Number).pipe(T.Body("item_count"))),
-    messageId: S.optional(S.NullOr(S.String).pipe(T.Body("message_id"))),
-    operation: S.optional(S.NullOr(S.String)),
-    recipient: S.optional(S.NullOr(S.String)),
-    status: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "InvestigateMoveCreateResultItem",
-}) as any as S.Schema<InvestigateMoveCreateResultItem>;
+export type InvestigateMoveCreateResultItem = InvestigateMoveBulkResultItem;
+export const InvestigateMoveCreateResultItem = InvestigateMoveBulkResultItem;
 
 export type InvestigateMoveCreateResultList =
-  Array<InvestigateMoveCreateResultItem>;
+  Array<InvestigateMoveBulkResultItem>;
 export const InvestigateMoveCreateResultList = /*@__PURE__*/ S.Array(
-  InvestigateMoveCreateResultItem,
+  InvestigateMoveBulkResultItem,
 ) as any as S.Schema<InvestigateMoveCreateResultList>;
 
 export interface CreateInvestigateMoveResponse {
@@ -3238,31 +3203,16 @@ export const InvestigateTraceGetResponseInbound = /*@__PURE__*/ S.suspend(() =>
   identifier: "InvestigateTraceGetResponseInbound",
 }) as any as S.Schema<InvestigateTraceGetResponseInbound>;
 
-export interface InvestigateTraceGetResponseOutboundLinesItem {
-  /** Line number in the trace log */
-  lineno?: number | null;
-  loggedAt?: string | null;
-  message?: string | null;
-  /** Deprecated, use `logged_at` instead. End of life: November 1, 2026. */
-  ts?: string | null;
-}
+export type InvestigateTraceGetResponseOutboundLinesItem =
+  InvestigateTraceGetResponseInboundLinesItem;
 export const InvestigateTraceGetResponseOutboundLinesItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      lineno: S.optional(S.NullOr(S.Number)),
-      loggedAt: S.optional(S.NullOr(S.String).pipe(T.Body("logged_at"))),
-      message: S.optional(S.NullOr(S.String)),
-      ts: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier: "InvestigateTraceGetResponseOutboundLinesItem",
-  }) as any as S.Schema<InvestigateTraceGetResponseOutboundLinesItem>;
+  InvestigateTraceGetResponseInboundLinesItem;
 
 export type InvestigateTraceGetResponseOutboundLinesList =
-  Array<InvestigateTraceGetResponseOutboundLinesItem>;
+  Array<InvestigateTraceGetResponseInboundLinesItem>;
 export const InvestigateTraceGetResponseOutboundLinesList =
   /*@__PURE__*/ S.Array(
-    InvestigateTraceGetResponseOutboundLinesItem,
+    InvestigateTraceGetResponseInboundLinesItem,
   ) as any as S.Schema<InvestigateTraceGetResponseOutboundLinesList>;
 
 export interface InvestigateTraceGetResponseOutbound {
@@ -4527,21 +4477,10 @@ export type InvestigateListResultItemActionLogItemOperation =
 export const InvestigateListResultItemActionLogItemOperation =
   /*@__PURE__*/ S.String;
 
-export interface InvestigateListResultItemActionLogItemProperties {
-  /** Target folder for move operations */
-  folder?: string | null;
-  /** User who requested the action */
-  requestedBy?: string | null;
-}
+export type InvestigateListResultItemActionLogItemProperties =
+  InvestigateGetResponseActionLogItemProperties;
 export const InvestigateListResultItemActionLogItemProperties =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      folder: S.optional(S.NullOr(S.String)),
-      requestedBy: S.optional(S.NullOr(S.String).pipe(T.Body("requested_by"))),
-    }),
-  ).annotate({
-    identifier: "InvestigateListResultItemActionLogItemProperties",
-  }) as any as S.Schema<InvestigateListResultItemActionLogItemProperties>;
+  InvestigateGetResponseActionLogItemProperties;
 
 export interface InvestigateListResultItemActionLogItem {
   /** Timestamp when action completed */
@@ -4551,7 +4490,7 @@ export interface InvestigateListResultItemActionLogItem {
   /** Deprecated, use `completed_at` instead. End of life: November 1, 2026. */
   completedTimestamp?: string | null;
   /** Additional properties for the action */
-  properties?: InvestigateListResultItemActionLogItemProperties | null;
+  properties?: InvestigateGetResponseActionLogItemProperties | null;
   /** Status of the action */
   status?: string | null;
 }
@@ -4564,7 +4503,7 @@ export const InvestigateListResultItemActionLogItem = /*@__PURE__*/ S.suspend(
         S.NullOr(S.String).pipe(T.Body("completed_timestamp")),
       ),
       properties: S.optional(
-        S.NullOr(InvestigateListResultItemActionLogItemProperties),
+        S.NullOr(InvestigateGetResponseActionLogItemProperties),
       ),
       status: S.optional(S.NullOr(S.String)),
     }),
@@ -5514,23 +5453,10 @@ export const SettingsDomainsListResultItemAllowedDeliveryModesList =
     SettingsDomainsListResultItemAllowedDeliveryModesItem,
   ) as any as S.Schema<SettingsDomainsListResultItemAllowedDeliveryModesList>;
 
-export interface SettingsDomainsListResultItemAuthorization {
-  authorized: boolean;
-  timestamp: string;
-  statusMessage?: string | null;
-}
+export type SettingsDomainsListResultItemAuthorization =
+  SettingsDomainsGetResponseAuthorization;
 export const SettingsDomainsListResultItemAuthorization =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      authorized: S.Boolean,
-      timestamp: S.String,
-      statusMessage: S.optional(
-        S.NullOr(S.String).pipe(T.Body("status_message")),
-      ),
-    }),
-  ).annotate({
-    identifier: "SettingsDomainsListResultItemAuthorization",
-  }) as any as S.Schema<SettingsDomainsListResultItemAuthorization>;
+  SettingsDomainsGetResponseAuthorization;
 
 export type SettingsDomainsListResultItemDmarcStatus =
   | "none"
@@ -5559,23 +5485,10 @@ export const SettingsDomainsListResultItemDropDispositionsList =
     SettingsDomainsListResultItemDropDispositionsItem,
   ) as any as S.Schema<SettingsDomainsListResultItemDropDispositionsList>;
 
-export interface SettingsDomainsListResultItemEmailsProcessed {
-  timestamp: string;
-  totalEmailsProcessed: number;
-  totalEmailsProcessedPrevious: number;
-}
+export type SettingsDomainsListResultItemEmailsProcessed =
+  SettingsDomainsGetResponseEmailsProcessed;
 export const SettingsDomainsListResultItemEmailsProcessed =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      timestamp: S.String,
-      totalEmailsProcessed: S.Number.pipe(T.Body("total_emails_processed")),
-      totalEmailsProcessedPrevious: S.Number.pipe(
-        T.Body("total_emails_processed_previous"),
-      ),
-    }),
-  ).annotate({
-    identifier: "SettingsDomainsListResultItemEmailsProcessed",
-  }) as any as S.Schema<SettingsDomainsListResultItemEmailsProcessed>;
+  SettingsDomainsGetResponseEmailsProcessed;
 
 export type SettingsDomainsListResultItemFolder = "AllItems" | "Inbox";
 export const SettingsDomainsListResultItemFolder = /*@__PURE__*/ S.String;
@@ -5623,12 +5536,12 @@ export interface SettingsDomainsListResultItem {
   /** Domain identifier */
   id?: string | null;
   allowedDeliveryModes?: SettingsDomainsListResultItemAllowedDeliveryModesList | null;
-  authorization?: SettingsDomainsListResultItemAuthorization | null;
+  authorization?: SettingsDomainsGetResponseAuthorization | null;
   createdAt?: string | null;
   dmarcStatus?: SettingsDomainsListResultItemDmarcStatus | null;
   domain?: string | null;
   dropDispositions?: SettingsDomainsListResultItemDropDispositionsList | null;
-  emailsProcessed?: SettingsDomainsListResultItemEmailsProcessed | null;
+  emailsProcessed?: SettingsDomainsGetResponseEmailsProcessed | null;
   folder?: SettingsDomainsListResultItemFolder | null;
   inboxProvider?: SettingsDomainsListResultItemInboxProvider | null;
   integrationId?: string | null;
@@ -5654,7 +5567,7 @@ export const SettingsDomainsListResultItem = /*@__PURE__*/ S.suspend(() =>
       ),
     ),
     authorization: S.optional(
-      S.NullOr(SettingsDomainsListResultItemAuthorization),
+      S.NullOr(SettingsDomainsGetResponseAuthorization),
     ),
     createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
     dmarcStatus: S.optional(
@@ -5669,7 +5582,7 @@ export const SettingsDomainsListResultItem = /*@__PURE__*/ S.suspend(() =>
       ),
     ),
     emailsProcessed: S.optional(
-      S.NullOr(SettingsDomainsListResultItemEmailsProcessed).pipe(
+      S.NullOr(SettingsDomainsGetResponseEmailsProcessed).pipe(
         T.Body("emails_processed"),
       ),
     ),
@@ -6777,23 +6690,10 @@ export const SettingsDomainsEditResponseAllowedDeliveryModesList =
     SettingsDomainsEditResponseAllowedDeliveryModesItem,
   ) as any as S.Schema<SettingsDomainsEditResponseAllowedDeliveryModesList>;
 
-export interface SettingsDomainsEditResponseAuthorization {
-  authorized: boolean;
-  timestamp: string;
-  statusMessage?: string | null;
-}
-export const SettingsDomainsEditResponseAuthorization = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      authorized: S.Boolean,
-      timestamp: S.String,
-      statusMessage: S.optional(
-        S.NullOr(S.String).pipe(T.Body("status_message")),
-      ),
-    }),
-).annotate({
-  identifier: "SettingsDomainsEditResponseAuthorization",
-}) as any as S.Schema<SettingsDomainsEditResponseAuthorization>;
+export type SettingsDomainsEditResponseAuthorization =
+  SettingsDomainsGetResponseAuthorization;
+export const SettingsDomainsEditResponseAuthorization =
+  SettingsDomainsGetResponseAuthorization;
 
 export type SettingsDomainsEditResponseDmarcStatus =
   | "none"
@@ -6822,23 +6722,10 @@ export const SettingsDomainsEditResponseDropDispositionsList =
     SettingsDomainsEditResponseDropDispositionsItem,
   ) as any as S.Schema<SettingsDomainsEditResponseDropDispositionsList>;
 
-export interface SettingsDomainsEditResponseEmailsProcessed {
-  timestamp: string;
-  totalEmailsProcessed: number;
-  totalEmailsProcessedPrevious: number;
-}
+export type SettingsDomainsEditResponseEmailsProcessed =
+  SettingsDomainsGetResponseEmailsProcessed;
 export const SettingsDomainsEditResponseEmailsProcessed =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      timestamp: S.String,
-      totalEmailsProcessed: S.Number.pipe(T.Body("total_emails_processed")),
-      totalEmailsProcessedPrevious: S.Number.pipe(
-        T.Body("total_emails_processed_previous"),
-      ),
-    }),
-  ).annotate({
-    identifier: "SettingsDomainsEditResponseEmailsProcessed",
-  }) as any as S.Schema<SettingsDomainsEditResponseEmailsProcessed>;
+  SettingsDomainsGetResponseEmailsProcessed;
 
 export type SettingsDomainsEditResponseFolder = "AllItems" | "Inbox";
 export const SettingsDomainsEditResponseFolder = /*@__PURE__*/ S.String;
@@ -6886,12 +6773,12 @@ export interface PatchSettingDomainResponse {
   /** Domain identifier */
   id?: string | null;
   allowedDeliveryModes?: SettingsDomainsEditResponseAllowedDeliveryModesList | null;
-  authorization?: SettingsDomainsEditResponseAuthorization | null;
+  authorization?: SettingsDomainsGetResponseAuthorization | null;
   createdAt?: string | null;
   dmarcStatus?: SettingsDomainsEditResponseDmarcStatus | null;
   domain?: string | null;
   dropDispositions?: SettingsDomainsEditResponseDropDispositionsList | null;
-  emailsProcessed?: SettingsDomainsEditResponseEmailsProcessed | null;
+  emailsProcessed?: SettingsDomainsGetResponseEmailsProcessed | null;
   folder?: SettingsDomainsEditResponseFolder | null;
   inboxProvider?: SettingsDomainsEditResponseInboxProvider | null;
   integrationId?: string | null;
@@ -6917,7 +6804,7 @@ export const PatchSettingDomainResponse = /*@__PURE__*/ S.suspend(() =>
       ),
     ),
     authorization: S.optional(
-      S.NullOr(SettingsDomainsEditResponseAuthorization),
+      S.NullOr(SettingsDomainsGetResponseAuthorization),
     ),
     createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
     dmarcStatus: S.optional(
@@ -6932,7 +6819,7 @@ export const PatchSettingDomainResponse = /*@__PURE__*/ S.suspend(() =>
       ),
     ),
     emailsProcessed: S.optional(
-      S.NullOr(SettingsDomainsEditResponseEmailsProcessed).pipe(
+      S.NullOr(SettingsDomainsGetResponseEmailsProcessed).pipe(
         T.Body("emails_processed"),
       ),
     ),
@@ -7367,7 +7254,7 @@ export const createInvestigateMove: API.PaginatedOperationMethod<
   CreateInvestigateMoveResponse,
   CreateInvestigateMoveError,
   CloudflareOpContext,
-  InvestigateMoveCreateResultItem
+  InvestigateMoveBulkResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: CreateInvestigateMoveRequest,

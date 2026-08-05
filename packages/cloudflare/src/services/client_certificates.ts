@@ -206,18 +206,10 @@ export const DeleteClientCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteClientCertificateRequest",
 }) as any as S.Schema<DeleteClientCertificateRequest>;
 
-export interface DeleteResponseCertificateAuthority {
-  id?: string | null;
-  name?: string | null;
-}
-export const DeleteResponseCertificateAuthority = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-    name: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "DeleteResponseCertificateAuthority",
-}) as any as S.Schema<DeleteResponseCertificateAuthority>;
+export type DeleteResponseCertificateAuthority =
+  CreateResponseCertificateAuthority;
+export const DeleteResponseCertificateAuthority =
+  CreateResponseCertificateAuthority;
 
 export type DeleteResponseStatus =
   | "active"
@@ -233,7 +225,7 @@ export interface DeleteClientCertificateResponse {
   /** The Client Certificate PEM. */
   certificate?: string | null;
   /** Certificate Authority used to issue the Client Certificate. */
-  certificateAuthority?: DeleteResponseCertificateAuthority | null;
+  certificateAuthority?: CreateResponseCertificateAuthority | null;
   /** Common Name of the Client Certificate. */
   commonName?: string | null;
   /** Country, provided by the CSR. */
@@ -270,7 +262,7 @@ export const DeleteClientCertificateResponse = /*@__PURE__*/ S.suspend(() =>
     id: S.optional(S.NullOr(S.String)),
     certificate: S.optional(S.NullOr(S.String)),
     certificateAuthority: S.optional(
-      S.NullOr(DeleteResponseCertificateAuthority).pipe(
+      S.NullOr(CreateResponseCertificateAuthority).pipe(
         T.Body("certificate_authority"),
       ),
     ),
@@ -321,18 +313,10 @@ export const GetClientCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetClientCertificateRequest",
 }) as any as S.Schema<GetClientCertificateRequest>;
 
-export interface GetResponseCertificateAuthority {
-  id?: string | null;
-  name?: string | null;
-}
-export const GetResponseCertificateAuthority = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-    name: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "GetResponseCertificateAuthority",
-}) as any as S.Schema<GetResponseCertificateAuthority>;
+export type GetResponseCertificateAuthority =
+  CreateResponseCertificateAuthority;
+export const GetResponseCertificateAuthority =
+  CreateResponseCertificateAuthority;
 
 export type GetResponseStatus =
   | "active"
@@ -348,7 +332,7 @@ export interface GetClientCertificateResponse {
   /** The Client Certificate PEM. */
   certificate?: string | null;
   /** Certificate Authority used to issue the Client Certificate. */
-  certificateAuthority?: GetResponseCertificateAuthority | null;
+  certificateAuthority?: CreateResponseCertificateAuthority | null;
   /** Common Name of the Client Certificate. */
   commonName?: string | null;
   /** Country, provided by the CSR. */
@@ -385,7 +369,7 @@ export const GetClientCertificateResponse = /*@__PURE__*/ S.suspend(() =>
     id: S.optional(S.NullOr(S.String)),
     certificate: S.optional(S.NullOr(S.String)),
     certificateAuthority: S.optional(
-      S.NullOr(GetResponseCertificateAuthority).pipe(
+      S.NullOr(CreateResponseCertificateAuthority).pipe(
         T.Body("certificate_authority"),
       ),
     ),
@@ -456,18 +440,10 @@ export const ListClientCertificatesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListClientCertificatesRequest",
 }) as any as S.Schema<ListClientCertificatesRequest>;
 
-export interface ListResultItemCertificateAuthority {
-  id?: string | null;
-  name?: string | null;
-}
-export const ListResultItemCertificateAuthority = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-    name: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "ListResultItemCertificateAuthority",
-}) as any as S.Schema<ListResultItemCertificateAuthority>;
+export type ListResultItemCertificateAuthority =
+  CreateResponseCertificateAuthority;
+export const ListResultItemCertificateAuthority =
+  CreateResponseCertificateAuthority;
 
 export type ListResultItemStatus =
   | "active"
@@ -482,7 +458,7 @@ export interface ListResultItem {
   /** The Client Certificate PEM. */
   certificate?: string | null;
   /** Certificate Authority used to issue the Client Certificate. */
-  certificateAuthority?: ListResultItemCertificateAuthority | null;
+  certificateAuthority?: CreateResponseCertificateAuthority | null;
   /** Common Name of the Client Certificate. */
   commonName?: string | null;
   /** Country, provided by the CSR. */
@@ -519,7 +495,7 @@ export const ListResultItem = /*@__PURE__*/ S.suspend(() =>
     id: S.optional(S.NullOr(S.String)),
     certificate: S.optional(S.NullOr(S.String)),
     certificateAuthority: S.optional(
-      S.NullOr(ListResultItemCertificateAuthority).pipe(
+      S.NullOr(CreateResponseCertificateAuthority).pipe(
         T.Body("certificate_authority"),
       ),
     ),
@@ -590,18 +566,10 @@ export const PatchClientCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchClientCertificateRequest",
 }) as any as S.Schema<PatchClientCertificateRequest>;
 
-export interface EditResponseCertificateAuthority {
-  id?: string | null;
-  name?: string | null;
-}
-export const EditResponseCertificateAuthority = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-    name: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "EditResponseCertificateAuthority",
-}) as any as S.Schema<EditResponseCertificateAuthority>;
+export type EditResponseCertificateAuthority =
+  CreateResponseCertificateAuthority;
+export const EditResponseCertificateAuthority =
+  CreateResponseCertificateAuthority;
 
 export type EditResponseStatus =
   | "active"
@@ -617,7 +585,7 @@ export interface PatchClientCertificateResponse {
   /** The Client Certificate PEM. */
   certificate?: string | null;
   /** Certificate Authority used to issue the Client Certificate. */
-  certificateAuthority?: EditResponseCertificateAuthority | null;
+  certificateAuthority?: CreateResponseCertificateAuthority | null;
   /** Common Name of the Client Certificate. */
   commonName?: string | null;
   /** Country, provided by the CSR. */
@@ -654,7 +622,7 @@ export const PatchClientCertificateResponse = /*@__PURE__*/ S.suspend(() =>
     id: S.optional(S.NullOr(S.String)),
     certificate: S.optional(S.NullOr(S.String)),
     certificateAuthority: S.optional(
-      S.NullOr(EditResponseCertificateAuthority).pipe(
+      S.NullOr(CreateResponseCertificateAuthority).pipe(
         T.Body("certificate_authority"),
       ),
     ),

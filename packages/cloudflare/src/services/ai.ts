@@ -202,30 +202,18 @@ export const ModelsSchemaGetResponseInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "ModelsSchemaGetResponseInput",
 }) as any as S.Schema<ModelsSchemaGetResponseInput>;
 
-export interface ModelsSchemaGetResponseOutput {
-  additionalProperties: boolean;
-  description: string;
-  type: string;
-}
-export const ModelsSchemaGetResponseOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    additionalProperties: S.Boolean,
-    description: S.String,
-    type: S.String,
-  }),
-).annotate({
-  identifier: "ModelsSchemaGetResponseOutput",
-}) as any as S.Schema<ModelsSchemaGetResponseOutput>;
+export type ModelsSchemaGetResponseOutput = ModelsSchemaGetResponseInput;
+export const ModelsSchemaGetResponseOutput = ModelsSchemaGetResponseInput;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetModelSchemaResponse {
   input: ModelsSchemaGetResponseInput;
-  output: ModelsSchemaGetResponseOutput;
+  output: ModelsSchemaGetResponseInput;
 }
 export const GetModelSchemaResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     input: ModelsSchemaGetResponseInput,
-    output: ModelsSchemaGetResponseOutput,
+    output: ModelsSchemaGetResponseInput,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetModelSchemaResponse",
@@ -754,31 +742,18 @@ export const RunRequestToolsItemCase0 = /*@__PURE__*/ S.suspend(() =>
   identifier: "RunRequestToolsItemCase0",
 }) as any as S.Schema<RunRequestToolsItemCase0>;
 
-export interface RunRequestToolsItemFunctionFunctionParametersPropertiesValue {
-  /** A description of the expected parameter. */
-  description: string;
-  /** The data type of the parameter. */
-  type: string;
-}
+export type RunRequestToolsItemFunctionFunctionParametersPropertiesValue =
+  RunRequestToolsItemCase0ParametersPropertiesValue;
 export const RunRequestToolsItemFunctionFunctionParametersPropertiesValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      description: S.String,
-      type: S.String,
-    }),
-  ).annotate({
-    identifier: "RunRequestToolsItemFunctionFunctionParametersPropertiesValue",
-  }) as any as S.Schema<RunRequestToolsItemFunctionFunctionParametersPropertiesValue>;
+  RunRequestToolsItemCase0ParametersPropertiesValue;
 
 export type RunRequestToolsItemFunctionFunctionParametersPropertiesMap = {
-  [key: string]:
-    | RunRequestToolsItemFunctionFunctionParametersPropertiesValue
-    | undefined;
+  [key: string]: RunRequestToolsItemCase0ParametersPropertiesValue | undefined;
 };
 export const RunRequestToolsItemFunctionFunctionParametersPropertiesMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    RunRequestToolsItemFunctionFunctionParametersPropertiesValue,
+    RunRequestToolsItemCase0ParametersPropertiesValue,
   ) as any as S.Schema<RunRequestToolsItemFunctionFunctionParametersPropertiesMap>;
 
 export type RunRequestToolsItemFunctionFunctionParametersRequiredList =
@@ -1239,16 +1214,8 @@ export const RunResultImageToText = /*@__PURE__*/ S.suspend(() =>
   identifier: "RunResultImageToText",
 }) as any as S.Schema<RunResultImageToText>;
 
-export interface RunResultImageTextToText {
-  description?: string | null;
-}
-export const RunResultImageTextToText = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    description: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "RunResultImageTextToText",
-}) as any as S.Schema<RunResultImageTextToText>;
+export type RunResultImageTextToText = RunResultImageToText;
+export const RunResultImageTextToText = RunResultImageToText;
 
 export type RunResultMultimodalEmbeddingsDataItemList = Array<number>;
 export const RunResultMultimodalEmbeddingsDataItemList = /*@__PURE__*/ S.Array(
@@ -1291,7 +1258,7 @@ export type RunResult =
   | RunResultTranslation
   | RunResultSummarization
   | RunResultImageToText
-  | RunResultImageTextToText
+  | RunResultImageToText
   | RunResultMultimodalEmbeddings;
 export const RunResult = /*@__PURE__*/ S.Unknown.pipe(
   T.UnionCases([

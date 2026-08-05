@@ -530,24 +530,16 @@ export const CreateResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateResourceGroupRequest",
 }) as any as S.Schema<CreateResourceGroupRequest>;
 
-export interface ResourceGroupsCreateResponseScopeItemObjectsItem {
-  /** This is a combination of pre-defined resource name and identifier (like Zone ID etc.) */
-  key: string;
-}
+export type ResourceGroupsCreateResponseScopeItemObjectsItem =
+  ResourceGroupsCreateRequestScopeObjectsItem;
 export const ResourceGroupsCreateResponseScopeItemObjectsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      key: S.String,
-    }),
-  ).annotate({
-    identifier: "ResourceGroupsCreateResponseScopeItemObjectsItem",
-  }) as any as S.Schema<ResourceGroupsCreateResponseScopeItemObjectsItem>;
+  ResourceGroupsCreateRequestScopeObjectsItem;
 
 export type ResourceGroupsCreateResponseScopeItemObjectsList =
-  Array<ResourceGroupsCreateResponseScopeItemObjectsItem>;
+  Array<ResourceGroupsCreateRequestScopeObjectsItem>;
 export const ResourceGroupsCreateResponseScopeItemObjectsList =
   /*@__PURE__*/ S.Array(
-    ResourceGroupsCreateResponseScopeItemObjectsItem,
+    ResourceGroupsCreateRequestScopeObjectsItem,
   ) as any as S.Schema<ResourceGroupsCreateResponseScopeItemObjectsList>;
 
 export interface ResourceGroupsCreateResponseScopeItem {
@@ -792,25 +784,16 @@ export type UserGroupsCreateResponsePoliciesItemAccess = "allow" | "deny";
 export const UserGroupsCreateResponsePoliciesItemAccess =
   /*@__PURE__*/ S.String;
 
-export interface UserGroupsCreateResponsePoliciesItemPermissionGroupsItemMeta {
-  key?: string | null;
-  value?: string | null;
-}
+export type UserGroupsCreateResponsePoliciesItemPermissionGroupsItemMeta =
+  ResourceGroupsCreateResponseMeta;
 export const UserGroupsCreateResponsePoliciesItemPermissionGroupsItemMeta =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      key: S.optional(S.NullOr(S.String)),
-      value: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier: "UserGroupsCreateResponsePoliciesItemPermissionGroupsItemMeta",
-  }) as any as S.Schema<UserGroupsCreateResponsePoliciesItemPermissionGroupsItemMeta>;
+  ResourceGroupsCreateResponseMeta;
 
 export interface UserGroupsCreateResponsePoliciesItemPermissionGroupsItem {
   /** Identifier of the permission group. */
   id: string;
   /** Attributes associated to the permission group. */
-  meta?: UserGroupsCreateResponsePoliciesItemPermissionGroupsItemMeta | null;
+  meta?: ResourceGroupsCreateResponseMeta | null;
   /** Name of the permission group. */
   name?: string | null;
 }
@@ -818,9 +801,7 @@ export const UserGroupsCreateResponsePoliciesItemPermissionGroupsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       id: S.String,
-      meta: S.optional(
-        S.NullOr(UserGroupsCreateResponsePoliciesItemPermissionGroupsItemMeta),
-      ),
+      meta: S.optional(S.NullOr(ResourceGroupsCreateResponseMeta)),
       name: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
@@ -834,25 +815,16 @@ export const UserGroupsCreateResponsePoliciesItemPermissionGroupsList =
     UserGroupsCreateResponsePoliciesItemPermissionGroupsItem,
   ) as any as S.Schema<UserGroupsCreateResponsePoliciesItemPermissionGroupsList>;
 
-export interface UserGroupsCreateResponsePoliciesItemResourceGroupsItemScopeItemObjectsItem {
-  /** This is a combination of pre-defined resource name and identifier (like Zone ID etc.) */
-  key: string;
-}
+export type UserGroupsCreateResponsePoliciesItemResourceGroupsItemScopeItemObjectsItem =
+  ResourceGroupsCreateRequestScopeObjectsItem;
 export const UserGroupsCreateResponsePoliciesItemResourceGroupsItemScopeItemObjectsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      key: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "UserGroupsCreateResponsePoliciesItemResourceGroupsItemScopeItemObjectsItem",
-  }) as any as S.Schema<UserGroupsCreateResponsePoliciesItemResourceGroupsItemScopeItemObjectsItem>;
+  ResourceGroupsCreateRequestScopeObjectsItem;
 
 export type UserGroupsCreateResponsePoliciesItemResourceGroupsItemScopeItemObjectsList =
-  Array<UserGroupsCreateResponsePoliciesItemResourceGroupsItemScopeItemObjectsItem>;
+  Array<ResourceGroupsCreateRequestScopeObjectsItem>;
 export const UserGroupsCreateResponsePoliciesItemResourceGroupsItemScopeItemObjectsList =
   /*@__PURE__*/ S.Array(
-    UserGroupsCreateResponsePoliciesItemResourceGroupsItemScopeItemObjectsItem,
+    ResourceGroupsCreateRequestScopeObjectsItem,
   ) as any as S.Schema<UserGroupsCreateResponsePoliciesItemResourceGroupsItemScopeItemObjectsList>;
 
 export interface UserGroupsCreateResponsePoliciesItemResourceGroupsItemScopeItem {
@@ -880,19 +852,10 @@ export const UserGroupsCreateResponsePoliciesItemResourceGroupsItemScopeList =
     UserGroupsCreateResponsePoliciesItemResourceGroupsItemScopeItem,
   ) as any as S.Schema<UserGroupsCreateResponsePoliciesItemResourceGroupsItemScopeList>;
 
-export interface UserGroupsCreateResponsePoliciesItemResourceGroupsItemMeta {
-  key?: string | null;
-  value?: string | null;
-}
+export type UserGroupsCreateResponsePoliciesItemResourceGroupsItemMeta =
+  ResourceGroupsCreateResponseMeta;
 export const UserGroupsCreateResponsePoliciesItemResourceGroupsItemMeta =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      key: S.optional(S.NullOr(S.String)),
-      value: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier: "UserGroupsCreateResponsePoliciesItemResourceGroupsItemMeta",
-  }) as any as S.Schema<UserGroupsCreateResponsePoliciesItemResourceGroupsItemMeta>;
+  ResourceGroupsCreateResponseMeta;
 
 export interface UserGroupsCreateResponsePoliciesItemResourceGroupsItem {
   /** Identifier of the resource group. */
@@ -900,7 +863,7 @@ export interface UserGroupsCreateResponsePoliciesItemResourceGroupsItem {
   /** The scope associated to the resource group */
   scope: UserGroupsCreateResponsePoliciesItemResourceGroupsItemScopeList;
   /** Attributes associated to the resource group. */
-  meta?: UserGroupsCreateResponsePoliciesItemResourceGroupsItemMeta | null;
+  meta?: ResourceGroupsCreateResponseMeta | null;
   /** Name of the resource group. */
   name?: string | null;
 }
@@ -909,9 +872,7 @@ export const UserGroupsCreateResponsePoliciesItemResourceGroupsItem =
     S.Struct({
       id: S.String,
       scope: UserGroupsCreateResponsePoliciesItemResourceGroupsItemScopeList,
-      meta: S.optional(
-        S.NullOr(UserGroupsCreateResponsePoliciesItemResourceGroupsItemMeta),
-      ),
+      meta: S.optional(S.NullOr(ResourceGroupsCreateResponseMeta)),
       name: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
@@ -1526,32 +1487,22 @@ export const GetPermissionGroupRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetPermissionGroupRequest",
 }) as any as S.Schema<GetPermissionGroupRequest>;
 
-export interface PermissionGroupsGetResponseMeta {
-  key?: string | null;
-  value?: string | null;
-}
-export const PermissionGroupsGetResponseMeta = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.NullOr(S.String)),
-    value: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "PermissionGroupsGetResponseMeta",
-}) as any as S.Schema<PermissionGroupsGetResponseMeta>;
+export type PermissionGroupsGetResponseMeta = ResourceGroupsCreateResponseMeta;
+export const PermissionGroupsGetResponseMeta = ResourceGroupsCreateResponseMeta;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetPermissionGroupResponse {
   /** Identifier of the permission group. */
   id: string;
   /** Attributes associated to the permission group. */
-  meta?: PermissionGroupsGetResponseMeta | null;
+  meta?: ResourceGroupsCreateResponseMeta | null;
   /** Name of the permission group. */
   name?: string | null;
 }
 export const GetPermissionGroupResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
-    meta: S.optional(S.NullOr(PermissionGroupsGetResponseMeta)),
+    meta: S.optional(S.NullOr(ResourceGroupsCreateResponseMeta)),
     name: S.optional(S.NullOr(S.String)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
@@ -1581,24 +1532,16 @@ export const GetResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetResourceGroupRequest",
 }) as any as S.Schema<GetResourceGroupRequest>;
 
-export interface ResourceGroupsGetResponseScopeItemObjectsItem {
-  /** This is a combination of pre-defined resource name and identifier (like Zone ID etc.) */
-  key: string;
-}
+export type ResourceGroupsGetResponseScopeItemObjectsItem =
+  ResourceGroupsCreateRequestScopeObjectsItem;
 export const ResourceGroupsGetResponseScopeItemObjectsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      key: S.String,
-    }),
-  ).annotate({
-    identifier: "ResourceGroupsGetResponseScopeItemObjectsItem",
-  }) as any as S.Schema<ResourceGroupsGetResponseScopeItemObjectsItem>;
+  ResourceGroupsCreateRequestScopeObjectsItem;
 
 export type ResourceGroupsGetResponseScopeItemObjectsList =
-  Array<ResourceGroupsGetResponseScopeItemObjectsItem>;
+  Array<ResourceGroupsCreateRequestScopeObjectsItem>;
 export const ResourceGroupsGetResponseScopeItemObjectsList =
   /*@__PURE__*/ S.Array(
-    ResourceGroupsGetResponseScopeItemObjectsItem,
+    ResourceGroupsCreateRequestScopeObjectsItem,
   ) as any as S.Schema<ResourceGroupsGetResponseScopeItemObjectsList>;
 
 export interface ResourceGroupsGetResponseScopeItem {
@@ -1622,18 +1565,8 @@ export const ResourceGroupsGetResponseScopeList = /*@__PURE__*/ S.Array(
   ResourceGroupsGetResponseScopeItem,
 ) as any as S.Schema<ResourceGroupsGetResponseScopeList>;
 
-export interface ResourceGroupsGetResponseMeta {
-  key?: string | null;
-  value?: string | null;
-}
-export const ResourceGroupsGetResponseMeta = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.NullOr(S.String)),
-    value: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "ResourceGroupsGetResponseMeta",
-}) as any as S.Schema<ResourceGroupsGetResponseMeta>;
+export type ResourceGroupsGetResponseMeta = ResourceGroupsCreateResponseMeta;
+export const ResourceGroupsGetResponseMeta = ResourceGroupsCreateResponseMeta;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetResourceGroupResponse {
@@ -1642,7 +1575,7 @@ export interface GetResourceGroupResponse {
   /** The scope associated to the resource group */
   scope: ResourceGroupsGetResponseScopeList;
   /** Attributes associated to the resource group. */
-  meta?: ResourceGroupsGetResponseMeta | null;
+  meta?: ResourceGroupsCreateResponseMeta | null;
   /** Name of the resource group. */
   name?: string | null;
 }
@@ -1650,7 +1583,7 @@ export const GetResourceGroupResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     scope: ResourceGroupsGetResponseScopeList,
-    meta: S.optional(S.NullOr(ResourceGroupsGetResponseMeta)),
+    meta: S.optional(S.NullOr(ResourceGroupsCreateResponseMeta)),
     name: S.optional(S.NullOr(S.String)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
@@ -1754,67 +1687,33 @@ export const GetUserGroupRequest = /*@__PURE__*/ S.suspend(() =>
 export type UserGroupsGetResponsePoliciesItemAccess = "allow" | "deny";
 export const UserGroupsGetResponsePoliciesItemAccess = /*@__PURE__*/ S.String;
 
-export interface UserGroupsGetResponsePoliciesItemPermissionGroupsItemMeta {
-  key?: string | null;
-  value?: string | null;
-}
+export type UserGroupsGetResponsePoliciesItemPermissionGroupsItemMeta =
+  ResourceGroupsCreateResponseMeta;
 export const UserGroupsGetResponsePoliciesItemPermissionGroupsItemMeta =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      key: S.optional(S.NullOr(S.String)),
-      value: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier: "UserGroupsGetResponsePoliciesItemPermissionGroupsItemMeta",
-  }) as any as S.Schema<UserGroupsGetResponsePoliciesItemPermissionGroupsItemMeta>;
+  ResourceGroupsCreateResponseMeta;
 
-export interface UserGroupsGetResponsePoliciesItemPermissionGroupsItem {
-  /** Identifier of the permission group. */
-  id: string;
-  /** Attributes associated to the permission group. */
-  meta?: UserGroupsGetResponsePoliciesItemPermissionGroupsItemMeta | null;
-  /** Name of the permission group. */
-  name?: string | null;
-}
+export type UserGroupsGetResponsePoliciesItemPermissionGroupsItem =
+  UserGroupsCreateResponsePoliciesItemPermissionGroupsItem;
 export const UserGroupsGetResponsePoliciesItemPermissionGroupsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      meta: S.optional(
-        S.NullOr(UserGroupsGetResponsePoliciesItemPermissionGroupsItemMeta),
-      ),
-      name: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier: "UserGroupsGetResponsePoliciesItemPermissionGroupsItem",
-  }) as any as S.Schema<UserGroupsGetResponsePoliciesItemPermissionGroupsItem>;
+  UserGroupsCreateResponsePoliciesItemPermissionGroupsItem;
 
 export type UserGroupsGetResponsePoliciesItemPermissionGroupsList =
-  Array<UserGroupsGetResponsePoliciesItemPermissionGroupsItem>;
+  Array<UserGroupsCreateResponsePoliciesItemPermissionGroupsItem>;
 export const UserGroupsGetResponsePoliciesItemPermissionGroupsList =
   /*@__PURE__*/ S.Array(
-    UserGroupsGetResponsePoliciesItemPermissionGroupsItem,
+    UserGroupsCreateResponsePoliciesItemPermissionGroupsItem,
   ) as any as S.Schema<UserGroupsGetResponsePoliciesItemPermissionGroupsList>;
 
-export interface UserGroupsGetResponsePoliciesItemResourceGroupsItemScopeItemObjectsItem {
-  /** This is a combination of pre-defined resource name and identifier (like Zone ID etc.) */
-  key: string;
-}
+export type UserGroupsGetResponsePoliciesItemResourceGroupsItemScopeItemObjectsItem =
+  ResourceGroupsCreateRequestScopeObjectsItem;
 export const UserGroupsGetResponsePoliciesItemResourceGroupsItemScopeItemObjectsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      key: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "UserGroupsGetResponsePoliciesItemResourceGroupsItemScopeItemObjectsItem",
-  }) as any as S.Schema<UserGroupsGetResponsePoliciesItemResourceGroupsItemScopeItemObjectsItem>;
+  ResourceGroupsCreateRequestScopeObjectsItem;
 
 export type UserGroupsGetResponsePoliciesItemResourceGroupsItemScopeItemObjectsList =
-  Array<UserGroupsGetResponsePoliciesItemResourceGroupsItemScopeItemObjectsItem>;
+  Array<ResourceGroupsCreateRequestScopeObjectsItem>;
 export const UserGroupsGetResponsePoliciesItemResourceGroupsItemScopeItemObjectsList =
   /*@__PURE__*/ S.Array(
-    UserGroupsGetResponsePoliciesItemResourceGroupsItemScopeItemObjectsItem,
+    ResourceGroupsCreateRequestScopeObjectsItem,
   ) as any as S.Schema<UserGroupsGetResponsePoliciesItemResourceGroupsItemScopeItemObjectsList>;
 
 export interface UserGroupsGetResponsePoliciesItemResourceGroupsItemScopeItem {
@@ -1841,19 +1740,10 @@ export const UserGroupsGetResponsePoliciesItemResourceGroupsItemScopeList =
     UserGroupsGetResponsePoliciesItemResourceGroupsItemScopeItem,
   ) as any as S.Schema<UserGroupsGetResponsePoliciesItemResourceGroupsItemScopeList>;
 
-export interface UserGroupsGetResponsePoliciesItemResourceGroupsItemMeta {
-  key?: string | null;
-  value?: string | null;
-}
+export type UserGroupsGetResponsePoliciesItemResourceGroupsItemMeta =
+  ResourceGroupsCreateResponseMeta;
 export const UserGroupsGetResponsePoliciesItemResourceGroupsItemMeta =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      key: S.optional(S.NullOr(S.String)),
-      value: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier: "UserGroupsGetResponsePoliciesItemResourceGroupsItemMeta",
-  }) as any as S.Schema<UserGroupsGetResponsePoliciesItemResourceGroupsItemMeta>;
+  ResourceGroupsCreateResponseMeta;
 
 export interface UserGroupsGetResponsePoliciesItemResourceGroupsItem {
   /** Identifier of the resource group. */
@@ -1861,7 +1751,7 @@ export interface UserGroupsGetResponsePoliciesItemResourceGroupsItem {
   /** The scope associated to the resource group */
   scope: UserGroupsGetResponsePoliciesItemResourceGroupsItemScopeList;
   /** Attributes associated to the resource group. */
-  meta?: UserGroupsGetResponsePoliciesItemResourceGroupsItemMeta | null;
+  meta?: ResourceGroupsCreateResponseMeta | null;
   /** Name of the resource group. */
   name?: string | null;
 }
@@ -1870,9 +1760,7 @@ export const UserGroupsGetResponsePoliciesItemResourceGroupsItem =
     S.Struct({
       id: S.String,
       scope: UserGroupsGetResponsePoliciesItemResourceGroupsItemScopeList,
-      meta: S.optional(
-        S.NullOr(UserGroupsGetResponsePoliciesItemResourceGroupsItemMeta),
-      ),
+      meta: S.optional(S.NullOr(ResourceGroupsCreateResponseMeta)),
       name: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
@@ -2331,41 +2219,20 @@ export const ListPermissionGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListPermissionGroupsRequest",
 }) as any as S.Schema<ListPermissionGroupsRequest>;
 
-export interface PermissionGroupsListResultItemMeta {
-  key?: string | null;
-  value?: string | null;
-}
-export const PermissionGroupsListResultItemMeta = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.NullOr(S.String)),
-    value: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "PermissionGroupsListResultItemMeta",
-}) as any as S.Schema<PermissionGroupsListResultItemMeta>;
+export type PermissionGroupsListResultItemMeta =
+  ResourceGroupsCreateResponseMeta;
+export const PermissionGroupsListResultItemMeta =
+  ResourceGroupsCreateResponseMeta;
 
-export interface PermissionGroupsListResultItem {
-  /** Identifier of the permission group. */
-  id: string;
-  /** Attributes associated to the permission group. */
-  meta?: PermissionGroupsListResultItemMeta | null;
-  /** Name of the permission group. */
-  name?: string | null;
-}
-export const PermissionGroupsListResultItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    meta: S.optional(S.NullOr(PermissionGroupsListResultItemMeta)),
-    name: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "PermissionGroupsListResultItem",
-}) as any as S.Schema<PermissionGroupsListResultItem>;
+export type PermissionGroupsListResultItem =
+  UserGroupsCreateResponsePoliciesItemPermissionGroupsItem;
+export const PermissionGroupsListResultItem =
+  UserGroupsCreateResponsePoliciesItemPermissionGroupsItem;
 
 export type PermissionGroupsListResultList =
-  Array<PermissionGroupsListResultItem>;
+  Array<UserGroupsCreateResponsePoliciesItemPermissionGroupsItem>;
 export const PermissionGroupsListResultList = /*@__PURE__*/ S.Array(
-  PermissionGroupsListResultItem,
+  UserGroupsCreateResponsePoliciesItemPermissionGroupsItem,
 ) as any as S.Schema<PermissionGroupsListResultList>;
 
 export interface ListPermissionGroupsResponse {
@@ -2409,24 +2276,16 @@ export const ListResourceGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListResourceGroupsRequest",
 }) as any as S.Schema<ListResourceGroupsRequest>;
 
-export interface ResourceGroupsListResultItemScopeItemObjectsItem {
-  /** This is a combination of pre-defined resource name and identifier (like Zone ID etc.) */
-  key: string;
-}
+export type ResourceGroupsListResultItemScopeItemObjectsItem =
+  ResourceGroupsCreateRequestScopeObjectsItem;
 export const ResourceGroupsListResultItemScopeItemObjectsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      key: S.String,
-    }),
-  ).annotate({
-    identifier: "ResourceGroupsListResultItemScopeItemObjectsItem",
-  }) as any as S.Schema<ResourceGroupsListResultItemScopeItemObjectsItem>;
+  ResourceGroupsCreateRequestScopeObjectsItem;
 
 export type ResourceGroupsListResultItemScopeItemObjectsList =
-  Array<ResourceGroupsListResultItemScopeItemObjectsItem>;
+  Array<ResourceGroupsCreateRequestScopeObjectsItem>;
 export const ResourceGroupsListResultItemScopeItemObjectsList =
   /*@__PURE__*/ S.Array(
-    ResourceGroupsListResultItemScopeItemObjectsItem,
+    ResourceGroupsCreateRequestScopeObjectsItem,
   ) as any as S.Schema<ResourceGroupsListResultItemScopeItemObjectsList>;
 
 export interface ResourceGroupsListResultItemScopeItem {
@@ -2451,18 +2310,9 @@ export const ResourceGroupsListResultItemScopeList = /*@__PURE__*/ S.Array(
   ResourceGroupsListResultItemScopeItem,
 ) as any as S.Schema<ResourceGroupsListResultItemScopeList>;
 
-export interface ResourceGroupsListResultItemMeta {
-  key?: string | null;
-  value?: string | null;
-}
-export const ResourceGroupsListResultItemMeta = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.NullOr(S.String)),
-    value: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "ResourceGroupsListResultItemMeta",
-}) as any as S.Schema<ResourceGroupsListResultItemMeta>;
+export type ResourceGroupsListResultItemMeta = ResourceGroupsCreateResponseMeta;
+export const ResourceGroupsListResultItemMeta =
+  ResourceGroupsCreateResponseMeta;
 
 export interface ResourceGroupsListResultItem {
   /** Identifier of the resource group. */
@@ -2470,7 +2320,7 @@ export interface ResourceGroupsListResultItem {
   /** The scope associated to the resource group */
   scope: ResourceGroupsListResultItemScopeList;
   /** Attributes associated to the resource group. */
-  meta?: ResourceGroupsListResultItemMeta | null;
+  meta?: ResourceGroupsCreateResponseMeta | null;
   /** Name of the resource group. */
   name?: string | null;
 }
@@ -2478,7 +2328,7 @@ export const ResourceGroupsListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     scope: ResourceGroupsListResultItemScopeList,
-    meta: S.optional(S.NullOr(ResourceGroupsListResultItemMeta)),
+    meta: S.optional(S.NullOr(ResourceGroupsCreateResponseMeta)),
     name: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
@@ -2723,67 +2573,33 @@ export type UserGroupsListResultItemPoliciesItemAccess = "allow" | "deny";
 export const UserGroupsListResultItemPoliciesItemAccess =
   /*@__PURE__*/ S.String;
 
-export interface UserGroupsListResultItemPoliciesItemPermissionGroupsItemMeta {
-  key?: string | null;
-  value?: string | null;
-}
+export type UserGroupsListResultItemPoliciesItemPermissionGroupsItemMeta =
+  ResourceGroupsCreateResponseMeta;
 export const UserGroupsListResultItemPoliciesItemPermissionGroupsItemMeta =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      key: S.optional(S.NullOr(S.String)),
-      value: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier: "UserGroupsListResultItemPoliciesItemPermissionGroupsItemMeta",
-  }) as any as S.Schema<UserGroupsListResultItemPoliciesItemPermissionGroupsItemMeta>;
+  ResourceGroupsCreateResponseMeta;
 
-export interface UserGroupsListResultItemPoliciesItemPermissionGroupsItem {
-  /** Identifier of the permission group. */
-  id: string;
-  /** Attributes associated to the permission group. */
-  meta?: UserGroupsListResultItemPoliciesItemPermissionGroupsItemMeta | null;
-  /** Name of the permission group. */
-  name?: string | null;
-}
+export type UserGroupsListResultItemPoliciesItemPermissionGroupsItem =
+  UserGroupsCreateResponsePoliciesItemPermissionGroupsItem;
 export const UserGroupsListResultItemPoliciesItemPermissionGroupsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      meta: S.optional(
-        S.NullOr(UserGroupsListResultItemPoliciesItemPermissionGroupsItemMeta),
-      ),
-      name: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier: "UserGroupsListResultItemPoliciesItemPermissionGroupsItem",
-  }) as any as S.Schema<UserGroupsListResultItemPoliciesItemPermissionGroupsItem>;
+  UserGroupsCreateResponsePoliciesItemPermissionGroupsItem;
 
 export type UserGroupsListResultItemPoliciesItemPermissionGroupsList =
-  Array<UserGroupsListResultItemPoliciesItemPermissionGroupsItem>;
+  Array<UserGroupsCreateResponsePoliciesItemPermissionGroupsItem>;
 export const UserGroupsListResultItemPoliciesItemPermissionGroupsList =
   /*@__PURE__*/ S.Array(
-    UserGroupsListResultItemPoliciesItemPermissionGroupsItem,
+    UserGroupsCreateResponsePoliciesItemPermissionGroupsItem,
   ) as any as S.Schema<UserGroupsListResultItemPoliciesItemPermissionGroupsList>;
 
-export interface UserGroupsListResultItemPoliciesItemResourceGroupsItemScopeItemObjectsItem {
-  /** This is a combination of pre-defined resource name and identifier (like Zone ID etc.) */
-  key: string;
-}
+export type UserGroupsListResultItemPoliciesItemResourceGroupsItemScopeItemObjectsItem =
+  ResourceGroupsCreateRequestScopeObjectsItem;
 export const UserGroupsListResultItemPoliciesItemResourceGroupsItemScopeItemObjectsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      key: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "UserGroupsListResultItemPoliciesItemResourceGroupsItemScopeItemObjectsItem",
-  }) as any as S.Schema<UserGroupsListResultItemPoliciesItemResourceGroupsItemScopeItemObjectsItem>;
+  ResourceGroupsCreateRequestScopeObjectsItem;
 
 export type UserGroupsListResultItemPoliciesItemResourceGroupsItemScopeItemObjectsList =
-  Array<UserGroupsListResultItemPoliciesItemResourceGroupsItemScopeItemObjectsItem>;
+  Array<ResourceGroupsCreateRequestScopeObjectsItem>;
 export const UserGroupsListResultItemPoliciesItemResourceGroupsItemScopeItemObjectsList =
   /*@__PURE__*/ S.Array(
-    UserGroupsListResultItemPoliciesItemResourceGroupsItemScopeItemObjectsItem,
+    ResourceGroupsCreateRequestScopeObjectsItem,
   ) as any as S.Schema<UserGroupsListResultItemPoliciesItemResourceGroupsItemScopeItemObjectsList>;
 
 export interface UserGroupsListResultItemPoliciesItemResourceGroupsItemScopeItem {
@@ -2811,19 +2627,10 @@ export const UserGroupsListResultItemPoliciesItemResourceGroupsItemScopeList =
     UserGroupsListResultItemPoliciesItemResourceGroupsItemScopeItem,
   ) as any as S.Schema<UserGroupsListResultItemPoliciesItemResourceGroupsItemScopeList>;
 
-export interface UserGroupsListResultItemPoliciesItemResourceGroupsItemMeta {
-  key?: string | null;
-  value?: string | null;
-}
+export type UserGroupsListResultItemPoliciesItemResourceGroupsItemMeta =
+  ResourceGroupsCreateResponseMeta;
 export const UserGroupsListResultItemPoliciesItemResourceGroupsItemMeta =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      key: S.optional(S.NullOr(S.String)),
-      value: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier: "UserGroupsListResultItemPoliciesItemResourceGroupsItemMeta",
-  }) as any as S.Schema<UserGroupsListResultItemPoliciesItemResourceGroupsItemMeta>;
+  ResourceGroupsCreateResponseMeta;
 
 export interface UserGroupsListResultItemPoliciesItemResourceGroupsItem {
   /** Identifier of the resource group. */
@@ -2831,7 +2638,7 @@ export interface UserGroupsListResultItemPoliciesItemResourceGroupsItem {
   /** The scope associated to the resource group */
   scope: UserGroupsListResultItemPoliciesItemResourceGroupsItemScopeList;
   /** Attributes associated to the resource group. */
-  meta?: UserGroupsListResultItemPoliciesItemResourceGroupsItemMeta | null;
+  meta?: ResourceGroupsCreateResponseMeta | null;
   /** Name of the resource group. */
   name?: string | null;
 }
@@ -2840,9 +2647,7 @@ export const UserGroupsListResultItemPoliciesItemResourceGroupsItem =
     S.Struct({
       id: S.String,
       scope: UserGroupsListResultItemPoliciesItemResourceGroupsItemScopeList,
-      meta: S.optional(
-        S.NullOr(UserGroupsListResultItemPoliciesItemResourceGroupsItemMeta),
-      ),
+      meta: S.optional(S.NullOr(ResourceGroupsCreateResponseMeta)),
       name: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
@@ -3376,24 +3181,16 @@ export const RotateSecretOauthClientResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "RotateSecretOauthClientResponse",
 }) as any as S.Schema<RotateSecretOauthClientResponse>;
 
-export interface ResourceGroupsUpdateRequestScopeObjectsItem {
-  /** This is a combination of pre-defined resource name and identifier (like Zone ID etc.) */
-  key: string;
-}
+export type ResourceGroupsUpdateRequestScopeObjectsItem =
+  ResourceGroupsCreateRequestScopeObjectsItem;
 export const ResourceGroupsUpdateRequestScopeObjectsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      key: S.String,
-    }),
-  ).annotate({
-    identifier: "ResourceGroupsUpdateRequestScopeObjectsItem",
-  }) as any as S.Schema<ResourceGroupsUpdateRequestScopeObjectsItem>;
+  ResourceGroupsCreateRequestScopeObjectsItem;
 
 export type ResourceGroupsUpdateRequestScopeObjectsList =
-  Array<ResourceGroupsUpdateRequestScopeObjectsItem>;
+  Array<ResourceGroupsCreateRequestScopeObjectsItem>;
 export const ResourceGroupsUpdateRequestScopeObjectsList =
   /*@__PURE__*/ S.Array(
-    ResourceGroupsUpdateRequestScopeObjectsItem,
+    ResourceGroupsCreateRequestScopeObjectsItem,
   ) as any as S.Schema<ResourceGroupsUpdateRequestScopeObjectsList>;
 
 export interface ResourceGroupsUpdateRequestScope {
@@ -3440,24 +3237,16 @@ export const UpdateResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateResourceGroupRequest",
 }) as any as S.Schema<UpdateResourceGroupRequest>;
 
-export interface ResourceGroupsUpdateResponseScopeItemObjectsItem {
-  /** This is a combination of pre-defined resource name and identifier (like Zone ID etc.) */
-  key: string;
-}
+export type ResourceGroupsUpdateResponseScopeItemObjectsItem =
+  ResourceGroupsCreateRequestScopeObjectsItem;
 export const ResourceGroupsUpdateResponseScopeItemObjectsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      key: S.String,
-    }),
-  ).annotate({
-    identifier: "ResourceGroupsUpdateResponseScopeItemObjectsItem",
-  }) as any as S.Schema<ResourceGroupsUpdateResponseScopeItemObjectsItem>;
+  ResourceGroupsCreateRequestScopeObjectsItem;
 
 export type ResourceGroupsUpdateResponseScopeItemObjectsList =
-  Array<ResourceGroupsUpdateResponseScopeItemObjectsItem>;
+  Array<ResourceGroupsCreateRequestScopeObjectsItem>;
 export const ResourceGroupsUpdateResponseScopeItemObjectsList =
   /*@__PURE__*/ S.Array(
-    ResourceGroupsUpdateResponseScopeItemObjectsItem,
+    ResourceGroupsCreateRequestScopeObjectsItem,
   ) as any as S.Schema<ResourceGroupsUpdateResponseScopeItemObjectsList>;
 
 export interface ResourceGroupsUpdateResponseScopeItem {
@@ -3482,18 +3271,9 @@ export const ResourceGroupsUpdateResponseScopeList = /*@__PURE__*/ S.Array(
   ResourceGroupsUpdateResponseScopeItem,
 ) as any as S.Schema<ResourceGroupsUpdateResponseScopeList>;
 
-export interface ResourceGroupsUpdateResponseMeta {
-  key?: string | null;
-  value?: string | null;
-}
-export const ResourceGroupsUpdateResponseMeta = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.NullOr(S.String)),
-    value: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "ResourceGroupsUpdateResponseMeta",
-}) as any as S.Schema<ResourceGroupsUpdateResponseMeta>;
+export type ResourceGroupsUpdateResponseMeta = ResourceGroupsCreateResponseMeta;
+export const ResourceGroupsUpdateResponseMeta =
+  ResourceGroupsCreateResponseMeta;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateResourceGroupResponse {
@@ -3502,7 +3282,7 @@ export interface UpdateResourceGroupResponse {
   /** The scope associated to the resource group */
   scope: ResourceGroupsUpdateResponseScopeList;
   /** Attributes associated to the resource group. */
-  meta?: ResourceGroupsUpdateResponseMeta | null;
+  meta?: ResourceGroupsCreateResponseMeta | null;
   /** Name of the resource group. */
   name?: string | null;
 }
@@ -3510,7 +3290,7 @@ export const UpdateResourceGroupResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     scope: ResourceGroupsUpdateResponseScopeList,
-    meta: S.optional(S.NullOr(ResourceGroupsUpdateResponseMeta)),
+    meta: S.optional(S.NullOr(ResourceGroupsCreateResponseMeta)),
     name: S.optional(S.NullOr(S.String)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
@@ -3520,44 +3300,28 @@ export const UpdateResourceGroupResponse = /*@__PURE__*/ S.suspend(() =>
 export type UserGroupsUpdateRequestPoliciesItemAccess = "allow" | "deny";
 export const UserGroupsUpdateRequestPoliciesItemAccess = /*@__PURE__*/ S.String;
 
-export interface UserGroupsUpdateRequestPoliciesItemPermissionGroupsItem {
-  /** Permission Group identifier tag. */
-  id: string;
-}
+export type UserGroupsUpdateRequestPoliciesItemPermissionGroupsItem =
+  UserGroupsCreateRequestPoliciesItemPermissionGroupsItem;
 export const UserGroupsUpdateRequestPoliciesItemPermissionGroupsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-    }),
-  ).annotate({
-    identifier: "UserGroupsUpdateRequestPoliciesItemPermissionGroupsItem",
-  }) as any as S.Schema<UserGroupsUpdateRequestPoliciesItemPermissionGroupsItem>;
+  UserGroupsCreateRequestPoliciesItemPermissionGroupsItem;
 
 export type UserGroupsUpdateRequestPoliciesItemPermissionGroupsList =
-  Array<UserGroupsUpdateRequestPoliciesItemPermissionGroupsItem>;
+  Array<UserGroupsCreateRequestPoliciesItemPermissionGroupsItem>;
 export const UserGroupsUpdateRequestPoliciesItemPermissionGroupsList =
   /*@__PURE__*/ S.Array(
-    UserGroupsUpdateRequestPoliciesItemPermissionGroupsItem,
+    UserGroupsCreateRequestPoliciesItemPermissionGroupsItem,
   ) as any as S.Schema<UserGroupsUpdateRequestPoliciesItemPermissionGroupsList>;
 
-export interface UserGroupsUpdateRequestPoliciesItemResourceGroupsItem {
-  /** Resource Group identifier tag. */
-  id: string;
-}
+export type UserGroupsUpdateRequestPoliciesItemResourceGroupsItem =
+  UserGroupsCreateRequestPoliciesItemResourceGroupsItem;
 export const UserGroupsUpdateRequestPoliciesItemResourceGroupsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-    }),
-  ).annotate({
-    identifier: "UserGroupsUpdateRequestPoliciesItemResourceGroupsItem",
-  }) as any as S.Schema<UserGroupsUpdateRequestPoliciesItemResourceGroupsItem>;
+  UserGroupsCreateRequestPoliciesItemResourceGroupsItem;
 
 export type UserGroupsUpdateRequestPoliciesItemResourceGroupsList =
-  Array<UserGroupsUpdateRequestPoliciesItemResourceGroupsItem>;
+  Array<UserGroupsCreateRequestPoliciesItemResourceGroupsItem>;
 export const UserGroupsUpdateRequestPoliciesItemResourceGroupsList =
   /*@__PURE__*/ S.Array(
-    UserGroupsUpdateRequestPoliciesItemResourceGroupsItem,
+    UserGroupsCreateRequestPoliciesItemResourceGroupsItem,
   ) as any as S.Schema<UserGroupsUpdateRequestPoliciesItemResourceGroupsList>;
 
 export interface UserGroupsUpdateRequestPoliciesItem {
@@ -3625,67 +3389,33 @@ export type UserGroupsUpdateResponsePoliciesItemAccess = "allow" | "deny";
 export const UserGroupsUpdateResponsePoliciesItemAccess =
   /*@__PURE__*/ S.String;
 
-export interface UserGroupsUpdateResponsePoliciesItemPermissionGroupsItemMeta {
-  key?: string | null;
-  value?: string | null;
-}
+export type UserGroupsUpdateResponsePoliciesItemPermissionGroupsItemMeta =
+  ResourceGroupsCreateResponseMeta;
 export const UserGroupsUpdateResponsePoliciesItemPermissionGroupsItemMeta =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      key: S.optional(S.NullOr(S.String)),
-      value: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier: "UserGroupsUpdateResponsePoliciesItemPermissionGroupsItemMeta",
-  }) as any as S.Schema<UserGroupsUpdateResponsePoliciesItemPermissionGroupsItemMeta>;
+  ResourceGroupsCreateResponseMeta;
 
-export interface UserGroupsUpdateResponsePoliciesItemPermissionGroupsItem {
-  /** Identifier of the permission group. */
-  id: string;
-  /** Attributes associated to the permission group. */
-  meta?: UserGroupsUpdateResponsePoliciesItemPermissionGroupsItemMeta | null;
-  /** Name of the permission group. */
-  name?: string | null;
-}
+export type UserGroupsUpdateResponsePoliciesItemPermissionGroupsItem =
+  UserGroupsCreateResponsePoliciesItemPermissionGroupsItem;
 export const UserGroupsUpdateResponsePoliciesItemPermissionGroupsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      meta: S.optional(
-        S.NullOr(UserGroupsUpdateResponsePoliciesItemPermissionGroupsItemMeta),
-      ),
-      name: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier: "UserGroupsUpdateResponsePoliciesItemPermissionGroupsItem",
-  }) as any as S.Schema<UserGroupsUpdateResponsePoliciesItemPermissionGroupsItem>;
+  UserGroupsCreateResponsePoliciesItemPermissionGroupsItem;
 
 export type UserGroupsUpdateResponsePoliciesItemPermissionGroupsList =
-  Array<UserGroupsUpdateResponsePoliciesItemPermissionGroupsItem>;
+  Array<UserGroupsCreateResponsePoliciesItemPermissionGroupsItem>;
 export const UserGroupsUpdateResponsePoliciesItemPermissionGroupsList =
   /*@__PURE__*/ S.Array(
-    UserGroupsUpdateResponsePoliciesItemPermissionGroupsItem,
+    UserGroupsCreateResponsePoliciesItemPermissionGroupsItem,
   ) as any as S.Schema<UserGroupsUpdateResponsePoliciesItemPermissionGroupsList>;
 
-export interface UserGroupsUpdateResponsePoliciesItemResourceGroupsItemScopeItemObjectsItem {
-  /** This is a combination of pre-defined resource name and identifier (like Zone ID etc.) */
-  key: string;
-}
+export type UserGroupsUpdateResponsePoliciesItemResourceGroupsItemScopeItemObjectsItem =
+  ResourceGroupsCreateRequestScopeObjectsItem;
 export const UserGroupsUpdateResponsePoliciesItemResourceGroupsItemScopeItemObjectsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      key: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "UserGroupsUpdateResponsePoliciesItemResourceGroupsItemScopeItemObjectsItem",
-  }) as any as S.Schema<UserGroupsUpdateResponsePoliciesItemResourceGroupsItemScopeItemObjectsItem>;
+  ResourceGroupsCreateRequestScopeObjectsItem;
 
 export type UserGroupsUpdateResponsePoliciesItemResourceGroupsItemScopeItemObjectsList =
-  Array<UserGroupsUpdateResponsePoliciesItemResourceGroupsItemScopeItemObjectsItem>;
+  Array<ResourceGroupsCreateRequestScopeObjectsItem>;
 export const UserGroupsUpdateResponsePoliciesItemResourceGroupsItemScopeItemObjectsList =
   /*@__PURE__*/ S.Array(
-    UserGroupsUpdateResponsePoliciesItemResourceGroupsItemScopeItemObjectsItem,
+    ResourceGroupsCreateRequestScopeObjectsItem,
   ) as any as S.Schema<UserGroupsUpdateResponsePoliciesItemResourceGroupsItemScopeItemObjectsList>;
 
 export interface UserGroupsUpdateResponsePoliciesItemResourceGroupsItemScopeItem {
@@ -3713,19 +3443,10 @@ export const UserGroupsUpdateResponsePoliciesItemResourceGroupsItemScopeList =
     UserGroupsUpdateResponsePoliciesItemResourceGroupsItemScopeItem,
   ) as any as S.Schema<UserGroupsUpdateResponsePoliciesItemResourceGroupsItemScopeList>;
 
-export interface UserGroupsUpdateResponsePoliciesItemResourceGroupsItemMeta {
-  key?: string | null;
-  value?: string | null;
-}
+export type UserGroupsUpdateResponsePoliciesItemResourceGroupsItemMeta =
+  ResourceGroupsCreateResponseMeta;
 export const UserGroupsUpdateResponsePoliciesItemResourceGroupsItemMeta =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      key: S.optional(S.NullOr(S.String)),
-      value: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier: "UserGroupsUpdateResponsePoliciesItemResourceGroupsItemMeta",
-  }) as any as S.Schema<UserGroupsUpdateResponsePoliciesItemResourceGroupsItemMeta>;
+  ResourceGroupsCreateResponseMeta;
 
 export interface UserGroupsUpdateResponsePoliciesItemResourceGroupsItem {
   /** Identifier of the resource group. */
@@ -3733,7 +3454,7 @@ export interface UserGroupsUpdateResponsePoliciesItemResourceGroupsItem {
   /** The scope associated to the resource group */
   scope: UserGroupsUpdateResponsePoliciesItemResourceGroupsItemScopeList;
   /** Attributes associated to the resource group. */
-  meta?: UserGroupsUpdateResponsePoliciesItemResourceGroupsItemMeta | null;
+  meta?: ResourceGroupsCreateResponseMeta | null;
   /** Name of the resource group. */
   name?: string | null;
 }
@@ -3742,9 +3463,7 @@ export const UserGroupsUpdateResponsePoliciesItemResourceGroupsItem =
     S.Struct({
       id: S.String,
       scope: UserGroupsUpdateResponsePoliciesItemResourceGroupsItemScopeList,
-      meta: S.optional(
-        S.NullOr(UserGroupsUpdateResponsePoliciesItemResourceGroupsItemMeta),
-      ),
+      meta: S.optional(S.NullOr(ResourceGroupsCreateResponseMeta)),
       name: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
@@ -3819,23 +3538,15 @@ export const UpdateUserGroupResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateUserGroupResponse",
 }) as any as S.Schema<UpdateUserGroupResponse>;
 
-export interface UserGroupsMembersUpdateRequestMembersItem {
-  /** The identifier of an existing account Member. */
-  id: string;
-}
+export type UserGroupsMembersUpdateRequestMembersItem =
+  UserGroupsMembersCreateRequestMembersItem;
 export const UserGroupsMembersUpdateRequestMembersItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-    }),
-  ).annotate({
-    identifier: "UserGroupsMembersUpdateRequestMembersItem",
-  }) as any as S.Schema<UserGroupsMembersUpdateRequestMembersItem>;
+  UserGroupsMembersCreateRequestMembersItem;
 
 export type UserGroupsMembersUpdateRequestMembersList =
-  Array<UserGroupsMembersUpdateRequestMembersItem>;
+  Array<UserGroupsMembersCreateRequestMembersItem>;
 export const UserGroupsMembersUpdateRequestMembersList = /*@__PURE__*/ S.Array(
-  UserGroupsMembersUpdateRequestMembersItem,
+  UserGroupsMembersCreateRequestMembersItem,
 ) as any as S.Schema<UserGroupsMembersUpdateRequestMembersList>;
 
 export interface UpdateUserGroupMemberRequest {
@@ -4274,7 +3985,7 @@ export const listPermissionGroups: API.PaginatedOperationMethod<
   ListPermissionGroupsResponse,
   ListPermissionGroupsError,
   CloudflareOpContext,
-  PermissionGroupsListResultItem
+  UserGroupsCreateResponsePoliciesItemPermissionGroupsItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListPermissionGroupsRequest,

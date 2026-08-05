@@ -397,30 +397,12 @@ export const ListTurnsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListTurnsRequest",
 }) as any as S.Schema<ListTurnsRequest>;
 
-export interface TurnListResultItem {
-  /** The date and time the item was created. */
-  created?: string | null;
-  /** The date and time the item was last modified. */
-  modified?: string | null;
-  /** A short description of Calls app, not shown to end users. */
-  name?: string | null;
-  /** A Cloudflare-generated unique identifier for a item. */
-  uid?: string | null;
-}
-export const TurnListResultItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    created: S.optional(S.NullOr(S.String)),
-    modified: S.optional(S.NullOr(S.String)),
-    name: S.optional(S.NullOr(S.String)),
-    uid: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "TurnListResultItem",
-}) as any as S.Schema<TurnListResultItem>;
+export type TurnListResultItem = SfuListResultItem;
+export const TurnListResultItem = SfuListResultItem;
 
-export type TurnListResultList = Array<TurnListResultItem>;
+export type TurnListResultList = Array<SfuListResultItem>;
 export const TurnListResultList = /*@__PURE__*/ S.Array(
-  TurnListResultItem,
+  SfuListResultItem,
 ) as any as S.Schema<TurnListResultList>;
 
 export interface ListTurnsResponse {
@@ -651,7 +633,7 @@ export const listTurns: API.PaginatedOperationMethod<
   ListTurnsResponse,
   ListTurnsError,
   CloudflareOpContext,
-  TurnListResultItem
+  SfuListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListTurnsRequest,

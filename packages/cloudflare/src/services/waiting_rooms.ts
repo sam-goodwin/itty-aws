@@ -1377,25 +1377,15 @@ export const GetWaitingRoomRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetWaitingRoomRequest",
 }) as any as S.Schema<GetWaitingRoomRequest>;
 
-export interface GetResponseAdditionalRoutesItem {
-  /** The hostname to which this waiting room will be applied (no wildcards). The hostname must be the primary domain, subdomain, or custom hostname (if using SSL for SaaS) of this zone. Please do not include the scheme (http:// or https://). */
-  host?: string | null;
-  /** Sets the path within the host to enable the waiting room on. The waiting room will be enabled for all subpaths as well. If there are two waiting rooms on the same subpath, the waiting room for the most specific path will be chosen. Wildcards and query parameters are not supported. */
-  path?: string | null;
-}
-export const GetResponseAdditionalRoutesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    host: S.optional(S.NullOr(S.String)),
-    path: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "GetResponseAdditionalRoutesItem",
-}) as any as S.Schema<GetResponseAdditionalRoutesItem>;
+export type GetResponseAdditionalRoutesItem =
+  CreateResponseAdditionalRoutesItem;
+export const GetResponseAdditionalRoutesItem =
+  CreateResponseAdditionalRoutesItem;
 
 export type GetResponseAdditionalRoutesList =
-  Array<GetResponseAdditionalRoutesItem>;
+  Array<CreateResponseAdditionalRoutesItem>;
 export const GetResponseAdditionalRoutesList = /*@__PURE__*/ S.Array(
-  GetResponseAdditionalRoutesItem,
+  CreateResponseAdditionalRoutesItem,
 ) as any as S.Schema<GetResponseAdditionalRoutesList>;
 
 export type GetResponseCookieAttributesSamesite =
@@ -1788,25 +1778,15 @@ export const ListWaitingRoomsForAccountRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListWaitingRoomsForAccountRequest",
 }) as any as S.Schema<ListWaitingRoomsForAccountRequest>;
 
-export interface ListResultItemAdditionalRoutesItem {
-  /** The hostname to which this waiting room will be applied (no wildcards). The hostname must be the primary domain, subdomain, or custom hostname (if using SSL for SaaS) of this zone. Please do not include the scheme (http:// or https://). */
-  host?: string | null;
-  /** Sets the path within the host to enable the waiting room on. The waiting room will be enabled for all subpaths as well. If there are two waiting rooms on the same subpath, the waiting room for the most specific path will be chosen. Wildcards and query parameters are not supported. */
-  path?: string | null;
-}
-export const ListResultItemAdditionalRoutesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    host: S.optional(S.NullOr(S.String)),
-    path: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "ListResultItemAdditionalRoutesItem",
-}) as any as S.Schema<ListResultItemAdditionalRoutesItem>;
+export type ListResultItemAdditionalRoutesItem =
+  CreateResponseAdditionalRoutesItem;
+export const ListResultItemAdditionalRoutesItem =
+  CreateResponseAdditionalRoutesItem;
 
 export type ListResultItemAdditionalRoutesList =
-  Array<ListResultItemAdditionalRoutesItem>;
+  Array<CreateResponseAdditionalRoutesItem>;
 export const ListResultItemAdditionalRoutesList = /*@__PURE__*/ S.Array(
-  ListResultItemAdditionalRoutesItem,
+  CreateResponseAdditionalRoutesItem,
 ) as any as S.Schema<ListResultItemAdditionalRoutesList>;
 
 export type ListResultItemCookieAttributesSamesite =
@@ -2437,25 +2417,14 @@ export const PatchSettingResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchSettingResponse",
 }) as any as S.Schema<PatchSettingResponse>;
 
-export interface EditRequestAdditionalRoutesItem {
-  /** The hostname to which this waiting room will be applied (no wildcards). The hostname must be the primary domain, subdomain, or custom hostname (if using SSL for SaaS) of this zone. Please do not include the scheme (http:// or https://). */
-  host?: string;
-  /** Sets the path within the host to enable the waiting room on. The waiting room will be enabled for all subpaths as well. If there are two waiting rooms on the same subpath, the waiting room for the most specific path will be chosen. Wildcards and query parameters are not supported. */
-  path?: string;
-}
-export const EditRequestAdditionalRoutesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    host: S.optional(S.String),
-    path: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "EditRequestAdditionalRoutesItem",
-}) as any as S.Schema<EditRequestAdditionalRoutesItem>;
+export type EditRequestAdditionalRoutesItem = CreateRequestAdditionalRoutesItem;
+export const EditRequestAdditionalRoutesItem =
+  CreateRequestAdditionalRoutesItem;
 
 export type EditRequestAdditionalRoutesList =
-  Array<EditRequestAdditionalRoutesItem>;
+  Array<CreateRequestAdditionalRoutesItem>;
 export const EditRequestAdditionalRoutesList = /*@__PURE__*/ S.Array(
-  EditRequestAdditionalRoutesItem,
+  CreateRequestAdditionalRoutesItem,
 ) as any as S.Schema<EditRequestAdditionalRoutesList>;
 
 export type EditRequestCookieAttributesSamesite =
@@ -2663,25 +2632,15 @@ export const PatchWaitingRoomRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchWaitingRoomRequest",
 }) as any as S.Schema<PatchWaitingRoomRequest>;
 
-export interface EditResponseAdditionalRoutesItem {
-  /** The hostname to which this waiting room will be applied (no wildcards). The hostname must be the primary domain, subdomain, or custom hostname (if using SSL for SaaS) of this zone. Please do not include the scheme (http:// or https://). */
-  host?: string | null;
-  /** Sets the path within the host to enable the waiting room on. The waiting room will be enabled for all subpaths as well. If there are two waiting rooms on the same subpath, the waiting room for the most specific path will be chosen. Wildcards and query parameters are not supported. */
-  path?: string | null;
-}
-export const EditResponseAdditionalRoutesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    host: S.optional(S.NullOr(S.String)),
-    path: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "EditResponseAdditionalRoutesItem",
-}) as any as S.Schema<EditResponseAdditionalRoutesItem>;
+export type EditResponseAdditionalRoutesItem =
+  CreateResponseAdditionalRoutesItem;
+export const EditResponseAdditionalRoutesItem =
+  CreateResponseAdditionalRoutesItem;
 
 export type EditResponseAdditionalRoutesList =
-  Array<EditResponseAdditionalRoutesItem>;
+  Array<CreateResponseAdditionalRoutesItem>;
 export const EditResponseAdditionalRoutesList = /*@__PURE__*/ S.Array(
-  EditResponseAdditionalRoutesItem,
+  CreateResponseAdditionalRoutesItem,
 ) as any as S.Schema<EditResponseAdditionalRoutesList>;
 
 export type EditResponseCookieAttributesSamesite =
@@ -3271,25 +3230,15 @@ export const UpdateRuleResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateRuleResponse",
 }) as any as S.Schema<UpdateRuleResponse>;
 
-export interface UpdateRequestAdditionalRoutesItem {
-  /** The hostname to which this waiting room will be applied (no wildcards). The hostname must be the primary domain, subdomain, or custom hostname (if using SSL for SaaS) of this zone. Please do not include the scheme (http:// or https://). */
-  host?: string;
-  /** Sets the path within the host to enable the waiting room on. The waiting room will be enabled for all subpaths as well. If there are two waiting rooms on the same subpath, the waiting room for the most specific path will be chosen. Wildcards and query parameters are not supported. */
-  path?: string;
-}
-export const UpdateRequestAdditionalRoutesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    host: S.optional(S.String),
-    path: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateRequestAdditionalRoutesItem",
-}) as any as S.Schema<UpdateRequestAdditionalRoutesItem>;
+export type UpdateRequestAdditionalRoutesItem =
+  CreateRequestAdditionalRoutesItem;
+export const UpdateRequestAdditionalRoutesItem =
+  CreateRequestAdditionalRoutesItem;
 
 export type UpdateRequestAdditionalRoutesList =
-  Array<UpdateRequestAdditionalRoutesItem>;
+  Array<CreateRequestAdditionalRoutesItem>;
 export const UpdateRequestAdditionalRoutesList = /*@__PURE__*/ S.Array(
-  UpdateRequestAdditionalRoutesItem,
+  CreateRequestAdditionalRoutesItem,
 ) as any as S.Schema<UpdateRequestAdditionalRoutesList>;
 
 export type UpdateRequestCookieAttributesSamesite =
@@ -3499,25 +3448,15 @@ export const UpdateWaitingRoomRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateWaitingRoomRequest",
 }) as any as S.Schema<UpdateWaitingRoomRequest>;
 
-export interface UpdateResponseAdditionalRoutesItem {
-  /** The hostname to which this waiting room will be applied (no wildcards). The hostname must be the primary domain, subdomain, or custom hostname (if using SSL for SaaS) of this zone. Please do not include the scheme (http:// or https://). */
-  host?: string | null;
-  /** Sets the path within the host to enable the waiting room on. The waiting room will be enabled for all subpaths as well. If there are two waiting rooms on the same subpath, the waiting room for the most specific path will be chosen. Wildcards and query parameters are not supported. */
-  path?: string | null;
-}
-export const UpdateResponseAdditionalRoutesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    host: S.optional(S.NullOr(S.String)),
-    path: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "UpdateResponseAdditionalRoutesItem",
-}) as any as S.Schema<UpdateResponseAdditionalRoutesItem>;
+export type UpdateResponseAdditionalRoutesItem =
+  CreateResponseAdditionalRoutesItem;
+export const UpdateResponseAdditionalRoutesItem =
+  CreateResponseAdditionalRoutesItem;
 
 export type UpdateResponseAdditionalRoutesList =
-  Array<UpdateResponseAdditionalRoutesItem>;
+  Array<CreateResponseAdditionalRoutesItem>;
 export const UpdateResponseAdditionalRoutesList = /*@__PURE__*/ S.Array(
-  UpdateResponseAdditionalRoutesItem,
+  CreateResponseAdditionalRoutesItem,
 ) as any as S.Schema<UpdateResponseAdditionalRoutesList>;
 
 export type UpdateResponseCookieAttributesSamesite =

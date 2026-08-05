@@ -902,21 +902,10 @@ export const GetResponseOwnershipVerification = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetResponseOwnershipVerification",
 }) as any as S.Schema<GetResponseOwnershipVerification>;
 
-export interface GetResponseOwnershipVerificationHttp {
-  /** Token to be served. */
-  httpBody?: string | null;
-  /** The HTTP URL that will be checked during custom hostname verification and where the customer should host the token. */
-  httpUrl?: string | null;
-}
-export const GetResponseOwnershipVerificationHttp = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      httpBody: S.optional(S.NullOr(S.String).pipe(T.Body("http_body"))),
-      httpUrl: S.optional(S.NullOr(S.String).pipe(T.Body("http_url"))),
-    }),
-).annotate({
-  identifier: "GetResponseOwnershipVerificationHttp",
-}) as any as S.Schema<GetResponseOwnershipVerificationHttp>;
+export type GetResponseOwnershipVerificationHttp =
+  CreateResponseOwnershipVerificationHttp;
+export const GetResponseOwnershipVerificationHttp =
+  CreateResponseOwnershipVerificationHttp;
 
 export type GetResponseSslBundleMethod = "ubiquitous" | "optimal" | "force";
 export const GetResponseSslBundleMethod = /*@__PURE__*/ S.String;
@@ -1058,22 +1047,15 @@ export const GetResponseSslStatus = /*@__PURE__*/ S.String;
 export type GetResponseSslType = "dv";
 export const GetResponseSslType = /*@__PURE__*/ S.String;
 
-export interface GetResponseSslValidationErrorsItem {
-  /** A domain validation error. */
-  message?: string | null;
-}
-export const GetResponseSslValidationErrorsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "GetResponseSslValidationErrorsItem",
-}) as any as S.Schema<GetResponseSslValidationErrorsItem>;
+export type GetResponseSslValidationErrorsItem =
+  CreateResponseSslValidationErrorsItem;
+export const GetResponseSslValidationErrorsItem =
+  CreateResponseSslValidationErrorsItem;
 
 export type GetResponseSslValidationErrorsList =
-  Array<GetResponseSslValidationErrorsItem>;
+  Array<CreateResponseSslValidationErrorsItem>;
 export const GetResponseSslValidationErrorsList = /*@__PURE__*/ S.Array(
-  GetResponseSslValidationErrorsItem,
+  CreateResponseSslValidationErrorsItem,
 ) as any as S.Schema<GetResponseSslValidationErrorsList>;
 
 export type GetResponseSslValidationRecordsItemEmailsList = Array<string>;
@@ -1247,7 +1229,7 @@ export interface GetCustomHostnameResponse {
   /** This is a record which can be placed to activate a hostname. */
   ownershipVerification?: GetResponseOwnershipVerification | null;
   /** This presents the token to be served by the given http url to activate a hostname. */
-  ownershipVerificationHttp?: GetResponseOwnershipVerificationHttp | null;
+  ownershipVerificationHttp?: CreateResponseOwnershipVerificationHttp | null;
   ssl?: GetResponseSsl | null;
   /** Status of the hostname's activation. */
   status?: GetResponseStatus | null;
@@ -1274,7 +1256,7 @@ export const GetCustomHostnameResponse = /*@__PURE__*/ S.suspend(() =>
       ),
     ),
     ownershipVerificationHttp: S.optional(
-      S.NullOr(GetResponseOwnershipVerificationHttp).pipe(
+      S.NullOr(CreateResponseOwnershipVerificationHttp).pipe(
         T.Body("ownership_verification_http"),
       ),
     ),
@@ -1512,21 +1494,10 @@ export const ListResultItemOwnershipVerification = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListResultItemOwnershipVerification",
 }) as any as S.Schema<ListResultItemOwnershipVerification>;
 
-export interface ListResultItemOwnershipVerificationHttp {
-  /** Token to be served. */
-  httpBody?: string | null;
-  /** The HTTP URL that will be checked during custom hostname verification and where the customer should host the token. */
-  httpUrl?: string | null;
-}
-export const ListResultItemOwnershipVerificationHttp = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      httpBody: S.optional(S.NullOr(S.String).pipe(T.Body("http_body"))),
-      httpUrl: S.optional(S.NullOr(S.String).pipe(T.Body("http_url"))),
-    }),
-).annotate({
-  identifier: "ListResultItemOwnershipVerificationHttp",
-}) as any as S.Schema<ListResultItemOwnershipVerificationHttp>;
+export type ListResultItemOwnershipVerificationHttp =
+  CreateResponseOwnershipVerificationHttp;
+export const ListResultItemOwnershipVerificationHttp =
+  CreateResponseOwnershipVerificationHttp;
 
 export type ListResultItemSslBundleMethod = "ubiquitous" | "optimal" | "force";
 export const ListResultItemSslBundleMethod = /*@__PURE__*/ S.String;
@@ -1672,23 +1643,15 @@ export const ListResultItemSslStatus = /*@__PURE__*/ S.String;
 export type ListResultItemSslType = "dv";
 export const ListResultItemSslType = /*@__PURE__*/ S.String;
 
-export interface ListResultItemSslValidationErrorsItem {
-  /** A domain validation error. */
-  message?: string | null;
-}
-export const ListResultItemSslValidationErrorsItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      message: S.optional(S.NullOr(S.String)),
-    }),
-).annotate({
-  identifier: "ListResultItemSslValidationErrorsItem",
-}) as any as S.Schema<ListResultItemSslValidationErrorsItem>;
+export type ListResultItemSslValidationErrorsItem =
+  CreateResponseSslValidationErrorsItem;
+export const ListResultItemSslValidationErrorsItem =
+  CreateResponseSslValidationErrorsItem;
 
 export type ListResultItemSslValidationErrorsList =
-  Array<ListResultItemSslValidationErrorsItem>;
+  Array<CreateResponseSslValidationErrorsItem>;
 export const ListResultItemSslValidationErrorsList = /*@__PURE__*/ S.Array(
-  ListResultItemSslValidationErrorsItem,
+  CreateResponseSslValidationErrorsItem,
 ) as any as S.Schema<ListResultItemSslValidationErrorsList>;
 
 export type ListResultItemSslValidationRecordsItemEmailsList = Array<string>;
@@ -1866,7 +1829,7 @@ export interface ListResultItem {
   /** This is a record which can be placed to activate a hostname. */
   ownershipVerification?: ListResultItemOwnershipVerification | null;
   /** This presents the token to be served by the given http url to activate a hostname. */
-  ownershipVerificationHttp?: ListResultItemOwnershipVerificationHttp | null;
+  ownershipVerificationHttp?: CreateResponseOwnershipVerificationHttp | null;
   ssl?: ListResultItemSsl | null;
   /** Status of the hostname's activation. */
   status?: ListResultItemStatus | null;
@@ -1893,7 +1856,7 @@ export const ListResultItem = /*@__PURE__*/ S.suspend(() =>
       ),
     ),
     ownershipVerificationHttp: S.optional(
-      S.NullOr(ListResultItemOwnershipVerificationHttp).pipe(
+      S.NullOr(CreateResponseOwnershipVerificationHttp).pipe(
         T.Body("ownership_verification_http"),
       ),
     ),
@@ -1945,25 +1908,15 @@ export type EditRequestSslCertificateAuthority =
   | "ssl_com";
 export const EditRequestSslCertificateAuthority = /*@__PURE__*/ S.String;
 
-export interface EditRequestSslCustomCertBundleItem {
-  /** If a custom uploaded certificate is used. */
-  customCertificate: string;
-  /** The key for a custom uploaded certificate. */
-  customKey: string;
-}
-export const EditRequestSslCustomCertBundleItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    customCertificate: S.String.pipe(T.Body("custom_certificate")),
-    customKey: S.String.pipe(T.Body("custom_key")),
-  }),
-).annotate({
-  identifier: "EditRequestSslCustomCertBundleItem",
-}) as any as S.Schema<EditRequestSslCustomCertBundleItem>;
+export type EditRequestSslCustomCertBundleItem =
+  CreateRequestSslCustomCertBundleItem;
+export const EditRequestSslCustomCertBundleItem =
+  CreateRequestSslCustomCertBundleItem;
 
 export type EditRequestSslCustomCertBundleList =
-  Array<EditRequestSslCustomCertBundleItem>;
+  Array<CreateRequestSslCustomCertBundleItem>;
 export const EditRequestSslCustomCertBundleList = /*@__PURE__*/ S.Array(
-  EditRequestSslCustomCertBundleItem,
+  CreateRequestSslCustomCertBundleItem,
 ) as any as S.Schema<EditRequestSslCustomCertBundleList>;
 
 export type EditRequestSslMethod = "http" | "txt" | "email";
@@ -2133,21 +2086,10 @@ export const EditResponseOwnershipVerification = /*@__PURE__*/ S.suspend(() =>
   identifier: "EditResponseOwnershipVerification",
 }) as any as S.Schema<EditResponseOwnershipVerification>;
 
-export interface EditResponseOwnershipVerificationHttp {
-  /** Token to be served. */
-  httpBody?: string | null;
-  /** The HTTP URL that will be checked during custom hostname verification and where the customer should host the token. */
-  httpUrl?: string | null;
-}
-export const EditResponseOwnershipVerificationHttp = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      httpBody: S.optional(S.NullOr(S.String).pipe(T.Body("http_body"))),
-      httpUrl: S.optional(S.NullOr(S.String).pipe(T.Body("http_url"))),
-    }),
-).annotate({
-  identifier: "EditResponseOwnershipVerificationHttp",
-}) as any as S.Schema<EditResponseOwnershipVerificationHttp>;
+export type EditResponseOwnershipVerificationHttp =
+  CreateResponseOwnershipVerificationHttp;
+export const EditResponseOwnershipVerificationHttp =
+  CreateResponseOwnershipVerificationHttp;
 
 export type EditResponseSslBundleMethod = "ubiquitous" | "optimal" | "force";
 export const EditResponseSslBundleMethod = /*@__PURE__*/ S.String;
@@ -2293,22 +2235,15 @@ export const EditResponseSslStatus = /*@__PURE__*/ S.String;
 export type EditResponseSslType = "dv";
 export const EditResponseSslType = /*@__PURE__*/ S.String;
 
-export interface EditResponseSslValidationErrorsItem {
-  /** A domain validation error. */
-  message?: string | null;
-}
-export const EditResponseSslValidationErrorsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "EditResponseSslValidationErrorsItem",
-}) as any as S.Schema<EditResponseSslValidationErrorsItem>;
+export type EditResponseSslValidationErrorsItem =
+  CreateResponseSslValidationErrorsItem;
+export const EditResponseSslValidationErrorsItem =
+  CreateResponseSslValidationErrorsItem;
 
 export type EditResponseSslValidationErrorsList =
-  Array<EditResponseSslValidationErrorsItem>;
+  Array<CreateResponseSslValidationErrorsItem>;
 export const EditResponseSslValidationErrorsList = /*@__PURE__*/ S.Array(
-  EditResponseSslValidationErrorsItem,
+  CreateResponseSslValidationErrorsItem,
 ) as any as S.Schema<EditResponseSslValidationErrorsList>;
 
 export type EditResponseSslValidationRecordsItemEmailsList = Array<string>;
@@ -2487,7 +2422,7 @@ export interface PatchCustomHostnameResponse {
   /** This is a record which can be placed to activate a hostname. */
   ownershipVerification?: EditResponseOwnershipVerification | null;
   /** This presents the token to be served by the given http url to activate a hostname. */
-  ownershipVerificationHttp?: EditResponseOwnershipVerificationHttp | null;
+  ownershipVerificationHttp?: CreateResponseOwnershipVerificationHttp | null;
   ssl?: EditResponseSsl | null;
   /** Status of the hostname's activation. */
   status?: EditResponseStatus | null;
@@ -2514,7 +2449,7 @@ export const PatchCustomHostnameResponse = /*@__PURE__*/ S.suspend(() =>
       ),
     ),
     ownershipVerificationHttp: S.optional(
-      S.NullOr(EditResponseOwnershipVerificationHttp).pipe(
+      S.NullOr(CreateResponseOwnershipVerificationHttp).pipe(
         T.Body("ownership_verification_http"),
       ),
     ),
@@ -2604,22 +2539,10 @@ export const CertificatePackCertificatesUpdateResponseOwnershipVerification =
       "CertificatePackCertificatesUpdateResponseOwnershipVerification",
   }) as any as S.Schema<CertificatePackCertificatesUpdateResponseOwnershipVerification>;
 
-export interface CertificatePackCertificatesUpdateResponseOwnershipVerificationHttp {
-  /** Token to be served. */
-  httpBody?: string | null;
-  /** The HTTP URL that will be checked during custom hostname verification and where the customer should host the token. */
-  httpUrl?: string | null;
-}
+export type CertificatePackCertificatesUpdateResponseOwnershipVerificationHttp =
+  CreateResponseOwnershipVerificationHttp;
 export const CertificatePackCertificatesUpdateResponseOwnershipVerificationHttp =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      httpBody: S.optional(S.NullOr(S.String).pipe(T.Body("http_body"))),
-      httpUrl: S.optional(S.NullOr(S.String).pipe(T.Body("http_url"))),
-    }),
-  ).annotate({
-    identifier:
-      "CertificatePackCertificatesUpdateResponseOwnershipVerificationHttp",
-  }) as any as S.Schema<CertificatePackCertificatesUpdateResponseOwnershipVerificationHttp>;
+  CreateResponseOwnershipVerificationHttp;
 
 export type CertificatePackCertificatesUpdateResponseSslBundleMethod =
   | "ubiquitous"
@@ -2806,25 +2729,16 @@ export type CertificatePackCertificatesUpdateResponseSslType = "dv";
 export const CertificatePackCertificatesUpdateResponseSslType =
   /*@__PURE__*/ S.String;
 
-export interface CertificatePackCertificatesUpdateResponseSslValidationErrorsItem {
-  /** A domain validation error. */
-  message?: string | null;
-}
+export type CertificatePackCertificatesUpdateResponseSslValidationErrorsItem =
+  CreateResponseSslValidationErrorsItem;
 export const CertificatePackCertificatesUpdateResponseSslValidationErrorsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      message: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier:
-      "CertificatePackCertificatesUpdateResponseSslValidationErrorsItem",
-  }) as any as S.Schema<CertificatePackCertificatesUpdateResponseSslValidationErrorsItem>;
+  CreateResponseSslValidationErrorsItem;
 
 export type CertificatePackCertificatesUpdateResponseSslValidationErrorsList =
-  Array<CertificatePackCertificatesUpdateResponseSslValidationErrorsItem>;
+  Array<CreateResponseSslValidationErrorsItem>;
 export const CertificatePackCertificatesUpdateResponseSslValidationErrorsList =
   /*@__PURE__*/ S.Array(
-    CertificatePackCertificatesUpdateResponseSslValidationErrorsItem,
+    CreateResponseSslValidationErrorsItem,
   ) as any as S.Schema<CertificatePackCertificatesUpdateResponseSslValidationErrorsList>;
 
 export type CertificatePackCertificatesUpdateResponseSslValidationRecordsItemEmailsList =
@@ -3026,7 +2940,7 @@ export interface PutCertificatePackCertificateResponse {
   /** This is a record which can be placed to activate a hostname. */
   ownershipVerification?: CertificatePackCertificatesUpdateResponseOwnershipVerification | null;
   /** This presents the token to be served by the given http url to activate a hostname. */
-  ownershipVerificationHttp?: CertificatePackCertificatesUpdateResponseOwnershipVerificationHttp | null;
+  ownershipVerificationHttp?: CreateResponseOwnershipVerificationHttp | null;
   ssl?: CertificatePackCertificatesUpdateResponseSsl | null;
   /** Status of the hostname's activation. */
   status?: CertificatePackCertificatesUpdateResponseStatus | null;
@@ -3056,9 +2970,9 @@ export const PutCertificatePackCertificateResponse = /*@__PURE__*/ S.suspend(
         ).pipe(T.Body("ownership_verification")),
       ),
       ownershipVerificationHttp: S.optional(
-        S.NullOr(
-          CertificatePackCertificatesUpdateResponseOwnershipVerificationHttp,
-        ).pipe(T.Body("ownership_verification_http")),
+        S.NullOr(CreateResponseOwnershipVerificationHttp).pipe(
+          T.Body("ownership_verification_http"),
+        ),
       ),
       ssl: S.optional(S.NullOr(CertificatePackCertificatesUpdateResponseSsl)),
       status: S.optional(

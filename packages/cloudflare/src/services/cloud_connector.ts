@@ -186,17 +186,8 @@ export const PutRuleRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "PutRuleRequest" }) as any as S.Schema<PutRuleRequest>;
 
-export interface RulesUpdateResultItemParameters {
-  /** Host to perform Cloud Connection to */
-  host?: string | null;
-}
-export const RulesUpdateResultItemParameters = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    host: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "RulesUpdateResultItemParameters",
-}) as any as S.Schema<RulesUpdateResultItemParameters>;
+export type RulesUpdateResultItemParameters = RulesListResultItemParameters;
+export const RulesUpdateResultItemParameters = RulesListResultItemParameters;
 
 export type RulesUpdateResultItemProvider =
   | "aws_s3"
@@ -211,7 +202,7 @@ export interface RulesUpdateResultItem {
   enabled?: boolean | null;
   expression?: string | null;
   /** Parameters of Cloud Connector Rule */
-  parameters?: RulesUpdateResultItemParameters | null;
+  parameters?: RulesListResultItemParameters | null;
   /** Cloud Provider type */
   provider?: RulesUpdateResultItemProvider | null;
 }
@@ -221,7 +212,7 @@ export const RulesUpdateResultItem = /*@__PURE__*/ S.suspend(() =>
     description: S.optional(S.NullOr(S.String)),
     enabled: S.optional(S.NullOr(S.Boolean)),
     expression: S.optional(S.NullOr(S.String)),
-    parameters: S.optional(S.NullOr(RulesUpdateResultItemParameters)),
+    parameters: S.optional(S.NullOr(RulesListResultItemParameters)),
     provider: S.optional(S.NullOr(RulesUpdateResultItemProvider)),
   }),
 ).annotate({

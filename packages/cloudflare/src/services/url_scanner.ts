@@ -831,26 +831,16 @@ export const ScansGetResponseDataRequestsItemResponseResponseSecurityDetails =
       "ScansGetResponseDataRequestsItemResponseResponseSecurityDetails",
   }) as any as S.Schema<ScansGetResponseDataRequestsItemResponseResponseSecurityDetails>;
 
-export interface ScansGetResponseDataRequestsItemResponseResponseSecurityHeadersItem {
-  name: string;
-  value: string;
-}
+export type ScansGetResponseDataRequestsItemResponseResponseSecurityHeadersItem =
+  ScansGetResponseDataRequestsItemRequestRedirectResponseSecurityHeadersItem;
 export const ScansGetResponseDataRequestsItemResponseResponseSecurityHeadersItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "ScansGetResponseDataRequestsItemResponseResponseSecurityHeadersItem",
-  }) as any as S.Schema<ScansGetResponseDataRequestsItemResponseResponseSecurityHeadersItem>;
+  ScansGetResponseDataRequestsItemRequestRedirectResponseSecurityHeadersItem;
 
 export type ScansGetResponseDataRequestsItemResponseResponseSecurityHeadersList =
-  Array<ScansGetResponseDataRequestsItemResponseResponseSecurityHeadersItem>;
+  Array<ScansGetResponseDataRequestsItemRequestRedirectResponseSecurityHeadersItem>;
 export const ScansGetResponseDataRequestsItemResponseResponseSecurityHeadersList =
   /*@__PURE__*/ S.Array(
-    ScansGetResponseDataRequestsItemResponseResponseSecurityHeadersItem,
+    ScansGetResponseDataRequestsItemRequestRedirectResponseSecurityHeadersItem,
   ) as any as S.Schema<ScansGetResponseDataRequestsItemResponseResponseSecurityHeadersList>;
 
 export interface ScansGetResponseDataRequestsItemResponseResponse {
@@ -1573,99 +1563,31 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlC
       "ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignals",
   }) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignals>;
 
-export interface ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlRobotsTxtAiRulesEvidenceItemFinding {
-  outcome: string;
-  summary: string;
-}
+export type ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlRobotsTxtAiRulesEvidenceItemFinding =
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemFinding;
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlRobotsTxtAiRulesEvidenceItemFinding =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      outcome: S.String,
-      summary: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlRobotsTxtAiRulesEvidenceItemFinding",
-  }) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlRobotsTxtAiRulesEvidenceItemFinding>;
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemFinding;
 
-export interface ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlRobotsTxtAiRulesEvidenceItemRequest {
-  method: string;
-  url: string;
-  headers?: unknown | null;
-}
+export type ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlRobotsTxtAiRulesEvidenceItemRequest =
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemRequest;
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlRobotsTxtAiRulesEvidenceItemRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      method: S.String,
-      url: S.String,
-      headers: S.optional(S.NullOr(S.Unknown)),
-    }),
-  ).annotate({
-    identifier:
-      "ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlRobotsTxtAiRulesEvidenceItemRequest",
-  }) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlRobotsTxtAiRulesEvidenceItemRequest>;
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemRequest;
 
-export interface ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlRobotsTxtAiRulesEvidenceItemResponse {
-  status: number;
-  statusText: string;
-  bodyPreview?: string | null;
-  bodySize?: number | null;
-  headers?: unknown | null;
-  redirectedTo?: string | null;
-}
+export type ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlRobotsTxtAiRulesEvidenceItemResponse =
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemResponse;
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlRobotsTxtAiRulesEvidenceItemResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      status: S.Number,
-      statusText: S.String,
-      bodyPreview: S.optional(S.NullOr(S.String)),
-      bodySize: S.optional(S.NullOr(S.Number)),
-      headers: S.optional(S.NullOr(S.Unknown)),
-      redirectedTo: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier:
-      "ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlRobotsTxtAiRulesEvidenceItemResponse",
-  }) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlRobotsTxtAiRulesEvidenceItemResponse>;
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemResponse;
 
-export interface ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlRobotsTxtAiRulesEvidenceItem {
-  action: string;
-  label: string;
-  finding?: ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlRobotsTxtAiRulesEvidenceItemFinding | null;
-  request?: ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlRobotsTxtAiRulesEvidenceItemRequest | null;
-  response?: ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlRobotsTxtAiRulesEvidenceItemResponse | null;
-}
+export type ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlRobotsTxtAiRulesEvidenceItem =
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem;
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlRobotsTxtAiRulesEvidenceItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      action: S.String,
-      label: S.String,
-      finding: S.optional(
-        S.NullOr(
-          ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlRobotsTxtAiRulesEvidenceItemFinding,
-        ),
-      ),
-      request: S.optional(
-        S.NullOr(
-          ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlRobotsTxtAiRulesEvidenceItemRequest,
-        ),
-      ),
-      response: S.optional(
-        S.NullOr(
-          ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlRobotsTxtAiRulesEvidenceItemResponse,
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlRobotsTxtAiRulesEvidenceItem",
-  }) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlRobotsTxtAiRulesEvidenceItem>;
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem;
 
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlRobotsTxtAiRulesEvidenceList =
-  Array<ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlRobotsTxtAiRulesEvidenceItem>;
+  Array<ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem>;
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlRobotsTxtAiRulesEvidenceList =
   /*@__PURE__*/ S.Array(
-    ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlRobotsTxtAiRulesEvidenceItem,
+    ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem,
   ) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlRobotsTxtAiRulesEvidenceList>;
 
 export interface ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlRobotsTxtAiRules {
@@ -1693,99 +1615,31 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlR
       "ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlRobotsTxtAiRules",
   }) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlRobotsTxtAiRules>;
 
-export interface ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlWebBotAuthEvidenceItemFinding {
-  outcome: string;
-  summary: string;
-}
+export type ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlWebBotAuthEvidenceItemFinding =
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemFinding;
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlWebBotAuthEvidenceItemFinding =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      outcome: S.String,
-      summary: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlWebBotAuthEvidenceItemFinding",
-  }) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlWebBotAuthEvidenceItemFinding>;
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemFinding;
 
-export interface ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlWebBotAuthEvidenceItemRequest {
-  method: string;
-  url: string;
-  headers?: unknown | null;
-}
+export type ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlWebBotAuthEvidenceItemRequest =
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemRequest;
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlWebBotAuthEvidenceItemRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      method: S.String,
-      url: S.String,
-      headers: S.optional(S.NullOr(S.Unknown)),
-    }),
-  ).annotate({
-    identifier:
-      "ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlWebBotAuthEvidenceItemRequest",
-  }) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlWebBotAuthEvidenceItemRequest>;
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemRequest;
 
-export interface ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlWebBotAuthEvidenceItemResponse {
-  status: number;
-  statusText: string;
-  bodyPreview?: string | null;
-  bodySize?: number | null;
-  headers?: unknown | null;
-  redirectedTo?: string | null;
-}
+export type ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlWebBotAuthEvidenceItemResponse =
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemResponse;
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlWebBotAuthEvidenceItemResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      status: S.Number,
-      statusText: S.String,
-      bodyPreview: S.optional(S.NullOr(S.String)),
-      bodySize: S.optional(S.NullOr(S.Number)),
-      headers: S.optional(S.NullOr(S.Unknown)),
-      redirectedTo: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier:
-      "ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlWebBotAuthEvidenceItemResponse",
-  }) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlWebBotAuthEvidenceItemResponse>;
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemResponse;
 
-export interface ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlWebBotAuthEvidenceItem {
-  action: string;
-  label: string;
-  finding?: ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlWebBotAuthEvidenceItemFinding | null;
-  request?: ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlWebBotAuthEvidenceItemRequest | null;
-  response?: ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlWebBotAuthEvidenceItemResponse | null;
-}
+export type ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlWebBotAuthEvidenceItem =
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem;
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlWebBotAuthEvidenceItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      action: S.String,
-      label: S.String,
-      finding: S.optional(
-        S.NullOr(
-          ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlWebBotAuthEvidenceItemFinding,
-        ),
-      ),
-      request: S.optional(
-        S.NullOr(
-          ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlWebBotAuthEvidenceItemRequest,
-        ),
-      ),
-      response: S.optional(
-        S.NullOr(
-          ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlWebBotAuthEvidenceItemResponse,
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlWebBotAuthEvidenceItem",
-  }) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlWebBotAuthEvidenceItem>;
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem;
 
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlWebBotAuthEvidenceList =
-  Array<ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlWebBotAuthEvidenceItem>;
+  Array<ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem>;
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlWebBotAuthEvidenceList =
   /*@__PURE__*/ S.Array(
-    ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlWebBotAuthEvidenceItem,
+    ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem,
   ) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlWebBotAuthEvidenceList>;
 
 export interface ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlWebBotAuth {
@@ -1833,99 +1687,31 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControl 
       "ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControl",
   }) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControl>;
 
-export interface ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAcpEvidenceItemFinding {
-  outcome: string;
-  summary: string;
-}
+export type ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAcpEvidenceItemFinding =
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemFinding;
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAcpEvidenceItemFinding =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      outcome: S.String,
-      summary: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAcpEvidenceItemFinding",
-  }) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAcpEvidenceItemFinding>;
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemFinding;
 
-export interface ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAcpEvidenceItemRequest {
-  method: string;
-  url: string;
-  headers?: unknown | null;
-}
+export type ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAcpEvidenceItemRequest =
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemRequest;
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAcpEvidenceItemRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      method: S.String,
-      url: S.String,
-      headers: S.optional(S.NullOr(S.Unknown)),
-    }),
-  ).annotate({
-    identifier:
-      "ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAcpEvidenceItemRequest",
-  }) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAcpEvidenceItemRequest>;
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemRequest;
 
-export interface ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAcpEvidenceItemResponse {
-  status: number;
-  statusText: string;
-  bodyPreview?: string | null;
-  bodySize?: number | null;
-  headers?: unknown | null;
-  redirectedTo?: string | null;
-}
+export type ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAcpEvidenceItemResponse =
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemResponse;
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAcpEvidenceItemResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      status: S.Number,
-      statusText: S.String,
-      bodyPreview: S.optional(S.NullOr(S.String)),
-      bodySize: S.optional(S.NullOr(S.Number)),
-      headers: S.optional(S.NullOr(S.Unknown)),
-      redirectedTo: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier:
-      "ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAcpEvidenceItemResponse",
-  }) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAcpEvidenceItemResponse>;
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemResponse;
 
-export interface ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAcpEvidenceItem {
-  action: string;
-  label: string;
-  finding?: ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAcpEvidenceItemFinding | null;
-  request?: ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAcpEvidenceItemRequest | null;
-  response?: ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAcpEvidenceItemResponse | null;
-}
+export type ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAcpEvidenceItem =
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem;
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAcpEvidenceItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      action: S.String,
-      label: S.String,
-      finding: S.optional(
-        S.NullOr(
-          ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAcpEvidenceItemFinding,
-        ),
-      ),
-      request: S.optional(
-        S.NullOr(
-          ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAcpEvidenceItemRequest,
-        ),
-      ),
-      response: S.optional(
-        S.NullOr(
-          ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAcpEvidenceItemResponse,
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAcpEvidenceItem",
-  }) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAcpEvidenceItem>;
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem;
 
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAcpEvidenceList =
-  Array<ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAcpEvidenceItem>;
+  Array<ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem>;
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAcpEvidenceList =
   /*@__PURE__*/ S.Array(
-    ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAcpEvidenceItem,
+    ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem,
   ) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAcpEvidenceList>;
 
 export interface ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAcp {
@@ -1952,99 +1738,31 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAcp =
     identifier: "ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAcp",
   }) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAcp>;
 
-export interface ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAp2EvidenceItemFinding {
-  outcome: string;
-  summary: string;
-}
+export type ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAp2EvidenceItemFinding =
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemFinding;
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAp2EvidenceItemFinding =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      outcome: S.String,
-      summary: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAp2EvidenceItemFinding",
-  }) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAp2EvidenceItemFinding>;
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemFinding;
 
-export interface ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAp2EvidenceItemRequest {
-  method: string;
-  url: string;
-  headers?: unknown | null;
-}
+export type ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAp2EvidenceItemRequest =
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemRequest;
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAp2EvidenceItemRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      method: S.String,
-      url: S.String,
-      headers: S.optional(S.NullOr(S.Unknown)),
-    }),
-  ).annotate({
-    identifier:
-      "ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAp2EvidenceItemRequest",
-  }) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAp2EvidenceItemRequest>;
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemRequest;
 
-export interface ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAp2EvidenceItemResponse {
-  status: number;
-  statusText: string;
-  bodyPreview?: string | null;
-  bodySize?: number | null;
-  headers?: unknown | null;
-  redirectedTo?: string | null;
-}
+export type ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAp2EvidenceItemResponse =
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemResponse;
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAp2EvidenceItemResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      status: S.Number,
-      statusText: S.String,
-      bodyPreview: S.optional(S.NullOr(S.String)),
-      bodySize: S.optional(S.NullOr(S.Number)),
-      headers: S.optional(S.NullOr(S.Unknown)),
-      redirectedTo: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier:
-      "ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAp2EvidenceItemResponse",
-  }) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAp2EvidenceItemResponse>;
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemResponse;
 
-export interface ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAp2EvidenceItem {
-  action: string;
-  label: string;
-  finding?: ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAp2EvidenceItemFinding | null;
-  request?: ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAp2EvidenceItemRequest | null;
-  response?: ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAp2EvidenceItemResponse | null;
-}
+export type ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAp2EvidenceItem =
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem;
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAp2EvidenceItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      action: S.String,
-      label: S.String,
-      finding: S.optional(
-        S.NullOr(
-          ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAp2EvidenceItemFinding,
-        ),
-      ),
-      request: S.optional(
-        S.NullOr(
-          ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAp2EvidenceItemRequest,
-        ),
-      ),
-      response: S.optional(
-        S.NullOr(
-          ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAp2EvidenceItemResponse,
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAp2EvidenceItem",
-  }) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAp2EvidenceItem>;
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem;
 
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAp2EvidenceList =
-  Array<ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAp2EvidenceItem>;
+  Array<ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem>;
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAp2EvidenceList =
   /*@__PURE__*/ S.Array(
-    ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAp2EvidenceItem,
+    ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem,
   ) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAp2EvidenceList>;
 
 export interface ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAp2 {
@@ -2071,99 +1789,31 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAp2 =
     identifier: "ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAp2",
   }) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAp2>;
 
-export interface ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceMppEvidenceItemFinding {
-  outcome: string;
-  summary: string;
-}
+export type ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceMppEvidenceItemFinding =
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemFinding;
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceMppEvidenceItemFinding =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      outcome: S.String,
-      summary: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceMppEvidenceItemFinding",
-  }) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceMppEvidenceItemFinding>;
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemFinding;
 
-export interface ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceMppEvidenceItemRequest {
-  method: string;
-  url: string;
-  headers?: unknown | null;
-}
+export type ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceMppEvidenceItemRequest =
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemRequest;
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceMppEvidenceItemRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      method: S.String,
-      url: S.String,
-      headers: S.optional(S.NullOr(S.Unknown)),
-    }),
-  ).annotate({
-    identifier:
-      "ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceMppEvidenceItemRequest",
-  }) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceMppEvidenceItemRequest>;
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemRequest;
 
-export interface ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceMppEvidenceItemResponse {
-  status: number;
-  statusText: string;
-  bodyPreview?: string | null;
-  bodySize?: number | null;
-  headers?: unknown | null;
-  redirectedTo?: string | null;
-}
+export type ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceMppEvidenceItemResponse =
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemResponse;
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceMppEvidenceItemResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      status: S.Number,
-      statusText: S.String,
-      bodyPreview: S.optional(S.NullOr(S.String)),
-      bodySize: S.optional(S.NullOr(S.Number)),
-      headers: S.optional(S.NullOr(S.Unknown)),
-      redirectedTo: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier:
-      "ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceMppEvidenceItemResponse",
-  }) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceMppEvidenceItemResponse>;
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemResponse;
 
-export interface ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceMppEvidenceItem {
-  action: string;
-  label: string;
-  finding?: ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceMppEvidenceItemFinding | null;
-  request?: ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceMppEvidenceItemRequest | null;
-  response?: ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceMppEvidenceItemResponse | null;
-}
+export type ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceMppEvidenceItem =
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem;
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceMppEvidenceItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      action: S.String,
-      label: S.String,
-      finding: S.optional(
-        S.NullOr(
-          ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceMppEvidenceItemFinding,
-        ),
-      ),
-      request: S.optional(
-        S.NullOr(
-          ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceMppEvidenceItemRequest,
-        ),
-      ),
-      response: S.optional(
-        S.NullOr(
-          ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceMppEvidenceItemResponse,
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceMppEvidenceItem",
-  }) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceMppEvidenceItem>;
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem;
 
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceMppEvidenceList =
-  Array<ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceMppEvidenceItem>;
+  Array<ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem>;
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceMppEvidenceList =
   /*@__PURE__*/ S.Array(
-    ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceMppEvidenceItem,
+    ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem,
   ) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceMppEvidenceList>;
 
 export interface ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceMpp {
@@ -2190,99 +1840,31 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceMpp =
     identifier: "ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceMpp",
   }) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceMpp>;
 
-export interface ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceUcpEvidenceItemFinding {
-  outcome: string;
-  summary: string;
-}
+export type ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceUcpEvidenceItemFinding =
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemFinding;
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceUcpEvidenceItemFinding =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      outcome: S.String,
-      summary: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceUcpEvidenceItemFinding",
-  }) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceUcpEvidenceItemFinding>;
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemFinding;
 
-export interface ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceUcpEvidenceItemRequest {
-  method: string;
-  url: string;
-  headers?: unknown | null;
-}
+export type ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceUcpEvidenceItemRequest =
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemRequest;
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceUcpEvidenceItemRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      method: S.String,
-      url: S.String,
-      headers: S.optional(S.NullOr(S.Unknown)),
-    }),
-  ).annotate({
-    identifier:
-      "ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceUcpEvidenceItemRequest",
-  }) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceUcpEvidenceItemRequest>;
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemRequest;
 
-export interface ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceUcpEvidenceItemResponse {
-  status: number;
-  statusText: string;
-  bodyPreview?: string | null;
-  bodySize?: number | null;
-  headers?: unknown | null;
-  redirectedTo?: string | null;
-}
+export type ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceUcpEvidenceItemResponse =
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemResponse;
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceUcpEvidenceItemResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      status: S.Number,
-      statusText: S.String,
-      bodyPreview: S.optional(S.NullOr(S.String)),
-      bodySize: S.optional(S.NullOr(S.Number)),
-      headers: S.optional(S.NullOr(S.Unknown)),
-      redirectedTo: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier:
-      "ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceUcpEvidenceItemResponse",
-  }) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceUcpEvidenceItemResponse>;
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemResponse;
 
-export interface ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceUcpEvidenceItem {
-  action: string;
-  label: string;
-  finding?: ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceUcpEvidenceItemFinding | null;
-  request?: ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceUcpEvidenceItemRequest | null;
-  response?: ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceUcpEvidenceItemResponse | null;
-}
+export type ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceUcpEvidenceItem =
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem;
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceUcpEvidenceItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      action: S.String,
-      label: S.String,
-      finding: S.optional(
-        S.NullOr(
-          ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceUcpEvidenceItemFinding,
-        ),
-      ),
-      request: S.optional(
-        S.NullOr(
-          ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceUcpEvidenceItemRequest,
-        ),
-      ),
-      response: S.optional(
-        S.NullOr(
-          ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceUcpEvidenceItemResponse,
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceUcpEvidenceItem",
-  }) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceUcpEvidenceItem>;
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem;
 
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceUcpEvidenceList =
-  Array<ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceUcpEvidenceItem>;
+  Array<ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem>;
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceUcpEvidenceList =
   /*@__PURE__*/ S.Array(
-    ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceUcpEvidenceItem,
+    ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem,
   ) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceUcpEvidenceList>;
 
 export interface ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceUcp {
@@ -2309,99 +1891,31 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceUcp =
     identifier: "ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceUcp",
   }) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceUcp>;
 
-export interface ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceX402EvidenceItemFinding {
-  outcome: string;
-  summary: string;
-}
+export type ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceX402EvidenceItemFinding =
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemFinding;
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceX402EvidenceItemFinding =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      outcome: S.String,
-      summary: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceX402EvidenceItemFinding",
-  }) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceX402EvidenceItemFinding>;
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemFinding;
 
-export interface ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceX402EvidenceItemRequest {
-  method: string;
-  url: string;
-  headers?: unknown | null;
-}
+export type ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceX402EvidenceItemRequest =
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemRequest;
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceX402EvidenceItemRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      method: S.String,
-      url: S.String,
-      headers: S.optional(S.NullOr(S.Unknown)),
-    }),
-  ).annotate({
-    identifier:
-      "ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceX402EvidenceItemRequest",
-  }) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceX402EvidenceItemRequest>;
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemRequest;
 
-export interface ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceX402EvidenceItemResponse {
-  status: number;
-  statusText: string;
-  bodyPreview?: string | null;
-  bodySize?: number | null;
-  headers?: unknown | null;
-  redirectedTo?: string | null;
-}
+export type ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceX402EvidenceItemResponse =
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemResponse;
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceX402EvidenceItemResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      status: S.Number,
-      statusText: S.String,
-      bodyPreview: S.optional(S.NullOr(S.String)),
-      bodySize: S.optional(S.NullOr(S.Number)),
-      headers: S.optional(S.NullOr(S.Unknown)),
-      redirectedTo: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier:
-      "ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceX402EvidenceItemResponse",
-  }) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceX402EvidenceItemResponse>;
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemResponse;
 
-export interface ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceX402EvidenceItem {
-  action: string;
-  label: string;
-  finding?: ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceX402EvidenceItemFinding | null;
-  request?: ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceX402EvidenceItemRequest | null;
-  response?: ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceX402EvidenceItemResponse | null;
-}
+export type ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceX402EvidenceItem =
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem;
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceX402EvidenceItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      action: S.String,
-      label: S.String,
-      finding: S.optional(
-        S.NullOr(
-          ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceX402EvidenceItemFinding,
-        ),
-      ),
-      request: S.optional(
-        S.NullOr(
-          ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceX402EvidenceItemRequest,
-        ),
-      ),
-      response: S.optional(
-        S.NullOr(
-          ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceX402EvidenceItemResponse,
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceX402EvidenceItem",
-  }) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceX402EvidenceItem>;
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem;
 
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceX402EvidenceList =
-  Array<ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceX402EvidenceItem>;
+  Array<ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem>;
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceX402EvidenceList =
   /*@__PURE__*/ S.Array(
-    ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceX402EvidenceItem,
+    ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem,
   ) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceX402EvidenceList>;
 
 export interface ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceX402 {
@@ -2449,99 +1963,31 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksCommerce =
     identifier: "ScansGetResponseMetaProcessorsAgentReadinessChecksCommerce",
   }) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksCommerce>;
 
-export interface ScansGetResponseMetaProcessorsAgentReadinessChecksContentAccessibilityMarkdownNegotiationEvidenceItemFinding {
-  outcome: string;
-  summary: string;
-}
+export type ScansGetResponseMetaProcessorsAgentReadinessChecksContentAccessibilityMarkdownNegotiationEvidenceItemFinding =
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemFinding;
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksContentAccessibilityMarkdownNegotiationEvidenceItemFinding =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      outcome: S.String,
-      summary: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "ScansGetResponseMetaProcessorsAgentReadinessChecksContentAccessibilityMarkdownNegotiationEvidenceItemFinding",
-  }) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksContentAccessibilityMarkdownNegotiationEvidenceItemFinding>;
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemFinding;
 
-export interface ScansGetResponseMetaProcessorsAgentReadinessChecksContentAccessibilityMarkdownNegotiationEvidenceItemRequest {
-  method: string;
-  url: string;
-  headers?: unknown | null;
-}
+export type ScansGetResponseMetaProcessorsAgentReadinessChecksContentAccessibilityMarkdownNegotiationEvidenceItemRequest =
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemRequest;
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksContentAccessibilityMarkdownNegotiationEvidenceItemRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      method: S.String,
-      url: S.String,
-      headers: S.optional(S.NullOr(S.Unknown)),
-    }),
-  ).annotate({
-    identifier:
-      "ScansGetResponseMetaProcessorsAgentReadinessChecksContentAccessibilityMarkdownNegotiationEvidenceItemRequest",
-  }) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksContentAccessibilityMarkdownNegotiationEvidenceItemRequest>;
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemRequest;
 
-export interface ScansGetResponseMetaProcessorsAgentReadinessChecksContentAccessibilityMarkdownNegotiationEvidenceItemResponse {
-  status: number;
-  statusText: string;
-  bodyPreview?: string | null;
-  bodySize?: number | null;
-  headers?: unknown | null;
-  redirectedTo?: string | null;
-}
+export type ScansGetResponseMetaProcessorsAgentReadinessChecksContentAccessibilityMarkdownNegotiationEvidenceItemResponse =
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemResponse;
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksContentAccessibilityMarkdownNegotiationEvidenceItemResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      status: S.Number,
-      statusText: S.String,
-      bodyPreview: S.optional(S.NullOr(S.String)),
-      bodySize: S.optional(S.NullOr(S.Number)),
-      headers: S.optional(S.NullOr(S.Unknown)),
-      redirectedTo: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier:
-      "ScansGetResponseMetaProcessorsAgentReadinessChecksContentAccessibilityMarkdownNegotiationEvidenceItemResponse",
-  }) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksContentAccessibilityMarkdownNegotiationEvidenceItemResponse>;
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemResponse;
 
-export interface ScansGetResponseMetaProcessorsAgentReadinessChecksContentAccessibilityMarkdownNegotiationEvidenceItem {
-  action: string;
-  label: string;
-  finding?: ScansGetResponseMetaProcessorsAgentReadinessChecksContentAccessibilityMarkdownNegotiationEvidenceItemFinding | null;
-  request?: ScansGetResponseMetaProcessorsAgentReadinessChecksContentAccessibilityMarkdownNegotiationEvidenceItemRequest | null;
-  response?: ScansGetResponseMetaProcessorsAgentReadinessChecksContentAccessibilityMarkdownNegotiationEvidenceItemResponse | null;
-}
+export type ScansGetResponseMetaProcessorsAgentReadinessChecksContentAccessibilityMarkdownNegotiationEvidenceItem =
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem;
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksContentAccessibilityMarkdownNegotiationEvidenceItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      action: S.String,
-      label: S.String,
-      finding: S.optional(
-        S.NullOr(
-          ScansGetResponseMetaProcessorsAgentReadinessChecksContentAccessibilityMarkdownNegotiationEvidenceItemFinding,
-        ),
-      ),
-      request: S.optional(
-        S.NullOr(
-          ScansGetResponseMetaProcessorsAgentReadinessChecksContentAccessibilityMarkdownNegotiationEvidenceItemRequest,
-        ),
-      ),
-      response: S.optional(
-        S.NullOr(
-          ScansGetResponseMetaProcessorsAgentReadinessChecksContentAccessibilityMarkdownNegotiationEvidenceItemResponse,
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "ScansGetResponseMetaProcessorsAgentReadinessChecksContentAccessibilityMarkdownNegotiationEvidenceItem",
-  }) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksContentAccessibilityMarkdownNegotiationEvidenceItem>;
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem;
 
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksContentAccessibilityMarkdownNegotiationEvidenceList =
-  Array<ScansGetResponseMetaProcessorsAgentReadinessChecksContentAccessibilityMarkdownNegotiationEvidenceItem>;
+  Array<ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem>;
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksContentAccessibilityMarkdownNegotiationEvidenceList =
   /*@__PURE__*/ S.Array(
-    ScansGetResponseMetaProcessorsAgentReadinessChecksContentAccessibilityMarkdownNegotiationEvidenceItem,
+    ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem,
   ) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksContentAccessibilityMarkdownNegotiationEvidenceList>;
 
 export interface ScansGetResponseMetaProcessorsAgentReadinessChecksContentAccessibilityMarkdownNegotiation {
@@ -2583,99 +2029,31 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksContentAccessibil
       "ScansGetResponseMetaProcessorsAgentReadinessChecksContentAccessibility",
   }) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksContentAccessibility>;
 
-export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityLinkHeadersEvidenceItemFinding {
-  outcome: string;
-  summary: string;
-}
+export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityLinkHeadersEvidenceItemFinding =
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemFinding;
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityLinkHeadersEvidenceItemFinding =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      outcome: S.String,
-      summary: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityLinkHeadersEvidenceItemFinding",
-  }) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityLinkHeadersEvidenceItemFinding>;
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemFinding;
 
-export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityLinkHeadersEvidenceItemRequest {
-  method: string;
-  url: string;
-  headers?: unknown | null;
-}
+export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityLinkHeadersEvidenceItemRequest =
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemRequest;
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityLinkHeadersEvidenceItemRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      method: S.String,
-      url: S.String,
-      headers: S.optional(S.NullOr(S.Unknown)),
-    }),
-  ).annotate({
-    identifier:
-      "ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityLinkHeadersEvidenceItemRequest",
-  }) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityLinkHeadersEvidenceItemRequest>;
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemRequest;
 
-export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityLinkHeadersEvidenceItemResponse {
-  status: number;
-  statusText: string;
-  bodyPreview?: string | null;
-  bodySize?: number | null;
-  headers?: unknown | null;
-  redirectedTo?: string | null;
-}
+export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityLinkHeadersEvidenceItemResponse =
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemResponse;
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityLinkHeadersEvidenceItemResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      status: S.Number,
-      statusText: S.String,
-      bodyPreview: S.optional(S.NullOr(S.String)),
-      bodySize: S.optional(S.NullOr(S.Number)),
-      headers: S.optional(S.NullOr(S.Unknown)),
-      redirectedTo: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier:
-      "ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityLinkHeadersEvidenceItemResponse",
-  }) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityLinkHeadersEvidenceItemResponse>;
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemResponse;
 
-export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityLinkHeadersEvidenceItem {
-  action: string;
-  label: string;
-  finding?: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityLinkHeadersEvidenceItemFinding | null;
-  request?: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityLinkHeadersEvidenceItemRequest | null;
-  response?: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityLinkHeadersEvidenceItemResponse | null;
-}
+export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityLinkHeadersEvidenceItem =
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem;
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityLinkHeadersEvidenceItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      action: S.String,
-      label: S.String,
-      finding: S.optional(
-        S.NullOr(
-          ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityLinkHeadersEvidenceItemFinding,
-        ),
-      ),
-      request: S.optional(
-        S.NullOr(
-          ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityLinkHeadersEvidenceItemRequest,
-        ),
-      ),
-      response: S.optional(
-        S.NullOr(
-          ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityLinkHeadersEvidenceItemResponse,
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityLinkHeadersEvidenceItem",
-  }) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityLinkHeadersEvidenceItem>;
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem;
 
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityLinkHeadersEvidenceList =
-  Array<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityLinkHeadersEvidenceItem>;
+  Array<ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem>;
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityLinkHeadersEvidenceList =
   /*@__PURE__*/ S.Array(
-    ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityLinkHeadersEvidenceItem,
+    ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem,
   ) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityLinkHeadersEvidenceList>;
 
 export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityLinkHeaders {
@@ -2703,99 +2081,31 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityLi
       "ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityLinkHeaders",
   }) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityLinkHeaders>;
 
-export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityRobotsTxtEvidenceItemFinding {
-  outcome: string;
-  summary: string;
-}
+export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityRobotsTxtEvidenceItemFinding =
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemFinding;
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityRobotsTxtEvidenceItemFinding =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      outcome: S.String,
-      summary: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityRobotsTxtEvidenceItemFinding",
-  }) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityRobotsTxtEvidenceItemFinding>;
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemFinding;
 
-export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityRobotsTxtEvidenceItemRequest {
-  method: string;
-  url: string;
-  headers?: unknown | null;
-}
+export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityRobotsTxtEvidenceItemRequest =
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemRequest;
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityRobotsTxtEvidenceItemRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      method: S.String,
-      url: S.String,
-      headers: S.optional(S.NullOr(S.Unknown)),
-    }),
-  ).annotate({
-    identifier:
-      "ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityRobotsTxtEvidenceItemRequest",
-  }) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityRobotsTxtEvidenceItemRequest>;
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemRequest;
 
-export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityRobotsTxtEvidenceItemResponse {
-  status: number;
-  statusText: string;
-  bodyPreview?: string | null;
-  bodySize?: number | null;
-  headers?: unknown | null;
-  redirectedTo?: string | null;
-}
+export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityRobotsTxtEvidenceItemResponse =
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemResponse;
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityRobotsTxtEvidenceItemResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      status: S.Number,
-      statusText: S.String,
-      bodyPreview: S.optional(S.NullOr(S.String)),
-      bodySize: S.optional(S.NullOr(S.Number)),
-      headers: S.optional(S.NullOr(S.Unknown)),
-      redirectedTo: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier:
-      "ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityRobotsTxtEvidenceItemResponse",
-  }) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityRobotsTxtEvidenceItemResponse>;
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemResponse;
 
-export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityRobotsTxtEvidenceItem {
-  action: string;
-  label: string;
-  finding?: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityRobotsTxtEvidenceItemFinding | null;
-  request?: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityRobotsTxtEvidenceItemRequest | null;
-  response?: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityRobotsTxtEvidenceItemResponse | null;
-}
+export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityRobotsTxtEvidenceItem =
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem;
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityRobotsTxtEvidenceItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      action: S.String,
-      label: S.String,
-      finding: S.optional(
-        S.NullOr(
-          ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityRobotsTxtEvidenceItemFinding,
-        ),
-      ),
-      request: S.optional(
-        S.NullOr(
-          ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityRobotsTxtEvidenceItemRequest,
-        ),
-      ),
-      response: S.optional(
-        S.NullOr(
-          ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityRobotsTxtEvidenceItemResponse,
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityRobotsTxtEvidenceItem",
-  }) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityRobotsTxtEvidenceItem>;
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem;
 
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityRobotsTxtEvidenceList =
-  Array<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityRobotsTxtEvidenceItem>;
+  Array<ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem>;
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityRobotsTxtEvidenceList =
   /*@__PURE__*/ S.Array(
-    ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityRobotsTxtEvidenceItem,
+    ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem,
   ) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityRobotsTxtEvidenceList>;
 
 export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityRobotsTxt {
@@ -2823,99 +2133,31 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityRo
       "ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityRobotsTxt",
   }) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityRobotsTxt>;
 
-export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilitySitemapEvidenceItemFinding {
-  outcome: string;
-  summary: string;
-}
+export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilitySitemapEvidenceItemFinding =
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemFinding;
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilitySitemapEvidenceItemFinding =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      outcome: S.String,
-      summary: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilitySitemapEvidenceItemFinding",
-  }) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilitySitemapEvidenceItemFinding>;
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemFinding;
 
-export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilitySitemapEvidenceItemRequest {
-  method: string;
-  url: string;
-  headers?: unknown | null;
-}
+export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilitySitemapEvidenceItemRequest =
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemRequest;
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilitySitemapEvidenceItemRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      method: S.String,
-      url: S.String,
-      headers: S.optional(S.NullOr(S.Unknown)),
-    }),
-  ).annotate({
-    identifier:
-      "ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilitySitemapEvidenceItemRequest",
-  }) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilitySitemapEvidenceItemRequest>;
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemRequest;
 
-export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilitySitemapEvidenceItemResponse {
-  status: number;
-  statusText: string;
-  bodyPreview?: string | null;
-  bodySize?: number | null;
-  headers?: unknown | null;
-  redirectedTo?: string | null;
-}
+export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilitySitemapEvidenceItemResponse =
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemResponse;
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilitySitemapEvidenceItemResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      status: S.Number,
-      statusText: S.String,
-      bodyPreview: S.optional(S.NullOr(S.String)),
-      bodySize: S.optional(S.NullOr(S.Number)),
-      headers: S.optional(S.NullOr(S.Unknown)),
-      redirectedTo: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier:
-      "ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilitySitemapEvidenceItemResponse",
-  }) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilitySitemapEvidenceItemResponse>;
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemResponse;
 
-export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilitySitemapEvidenceItem {
-  action: string;
-  label: string;
-  finding?: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilitySitemapEvidenceItemFinding | null;
-  request?: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilitySitemapEvidenceItemRequest | null;
-  response?: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilitySitemapEvidenceItemResponse | null;
-}
+export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilitySitemapEvidenceItem =
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem;
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilitySitemapEvidenceItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      action: S.String,
-      label: S.String,
-      finding: S.optional(
-        S.NullOr(
-          ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilitySitemapEvidenceItemFinding,
-        ),
-      ),
-      request: S.optional(
-        S.NullOr(
-          ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilitySitemapEvidenceItemRequest,
-        ),
-      ),
-      response: S.optional(
-        S.NullOr(
-          ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilitySitemapEvidenceItemResponse,
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilitySitemapEvidenceItem",
-  }) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilitySitemapEvidenceItem>;
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem;
 
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilitySitemapEvidenceList =
-  Array<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilitySitemapEvidenceItem>;
+  Array<ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem>;
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilitySitemapEvidenceList =
   /*@__PURE__*/ S.Array(
-    ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilitySitemapEvidenceItem,
+    ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem,
   ) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilitySitemapEvidenceList>;
 
 export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilitySitemap {
@@ -2963,99 +2205,31 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverability =
       "ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverability",
   }) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverability>;
 
-export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryA2aAgentCardEvidenceItemFinding {
-  outcome: string;
-  summary: string;
-}
+export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryA2aAgentCardEvidenceItemFinding =
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemFinding;
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryA2aAgentCardEvidenceItemFinding =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      outcome: S.String,
-      summary: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryA2aAgentCardEvidenceItemFinding",
-  }) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryA2aAgentCardEvidenceItemFinding>;
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemFinding;
 
-export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryA2aAgentCardEvidenceItemRequest {
-  method: string;
-  url: string;
-  headers?: unknown | null;
-}
+export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryA2aAgentCardEvidenceItemRequest =
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemRequest;
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryA2aAgentCardEvidenceItemRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      method: S.String,
-      url: S.String,
-      headers: S.optional(S.NullOr(S.Unknown)),
-    }),
-  ).annotate({
-    identifier:
-      "ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryA2aAgentCardEvidenceItemRequest",
-  }) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryA2aAgentCardEvidenceItemRequest>;
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemRequest;
 
-export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryA2aAgentCardEvidenceItemResponse {
-  status: number;
-  statusText: string;
-  bodyPreview?: string | null;
-  bodySize?: number | null;
-  headers?: unknown | null;
-  redirectedTo?: string | null;
-}
+export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryA2aAgentCardEvidenceItemResponse =
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemResponse;
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryA2aAgentCardEvidenceItemResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      status: S.Number,
-      statusText: S.String,
-      bodyPreview: S.optional(S.NullOr(S.String)),
-      bodySize: S.optional(S.NullOr(S.Number)),
-      headers: S.optional(S.NullOr(S.Unknown)),
-      redirectedTo: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier:
-      "ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryA2aAgentCardEvidenceItemResponse",
-  }) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryA2aAgentCardEvidenceItemResponse>;
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemResponse;
 
-export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryA2aAgentCardEvidenceItem {
-  action: string;
-  label: string;
-  finding?: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryA2aAgentCardEvidenceItemFinding | null;
-  request?: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryA2aAgentCardEvidenceItemRequest | null;
-  response?: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryA2aAgentCardEvidenceItemResponse | null;
-}
+export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryA2aAgentCardEvidenceItem =
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem;
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryA2aAgentCardEvidenceItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      action: S.String,
-      label: S.String,
-      finding: S.optional(
-        S.NullOr(
-          ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryA2aAgentCardEvidenceItemFinding,
-        ),
-      ),
-      request: S.optional(
-        S.NullOr(
-          ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryA2aAgentCardEvidenceItemRequest,
-        ),
-      ),
-      response: S.optional(
-        S.NullOr(
-          ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryA2aAgentCardEvidenceItemResponse,
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryA2aAgentCardEvidenceItem",
-  }) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryA2aAgentCardEvidenceItem>;
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem;
 
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryA2aAgentCardEvidenceList =
-  Array<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryA2aAgentCardEvidenceItem>;
+  Array<ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem>;
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryA2aAgentCardEvidenceList =
   /*@__PURE__*/ S.Array(
-    ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryA2aAgentCardEvidenceItem,
+    ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem,
   ) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryA2aAgentCardEvidenceList>;
 
 export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryA2aAgentCard {
@@ -3083,99 +2257,31 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryA2aAgent
       "ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryA2aAgentCard",
   }) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryA2aAgentCard>;
 
-export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAgentSkillsEvidenceItemFinding {
-  outcome: string;
-  summary: string;
-}
+export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAgentSkillsEvidenceItemFinding =
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemFinding;
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAgentSkillsEvidenceItemFinding =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      outcome: S.String,
-      summary: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAgentSkillsEvidenceItemFinding",
-  }) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAgentSkillsEvidenceItemFinding>;
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemFinding;
 
-export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAgentSkillsEvidenceItemRequest {
-  method: string;
-  url: string;
-  headers?: unknown | null;
-}
+export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAgentSkillsEvidenceItemRequest =
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemRequest;
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAgentSkillsEvidenceItemRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      method: S.String,
-      url: S.String,
-      headers: S.optional(S.NullOr(S.Unknown)),
-    }),
-  ).annotate({
-    identifier:
-      "ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAgentSkillsEvidenceItemRequest",
-  }) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAgentSkillsEvidenceItemRequest>;
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemRequest;
 
-export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAgentSkillsEvidenceItemResponse {
-  status: number;
-  statusText: string;
-  bodyPreview?: string | null;
-  bodySize?: number | null;
-  headers?: unknown | null;
-  redirectedTo?: string | null;
-}
+export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAgentSkillsEvidenceItemResponse =
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemResponse;
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAgentSkillsEvidenceItemResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      status: S.Number,
-      statusText: S.String,
-      bodyPreview: S.optional(S.NullOr(S.String)),
-      bodySize: S.optional(S.NullOr(S.Number)),
-      headers: S.optional(S.NullOr(S.Unknown)),
-      redirectedTo: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier:
-      "ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAgentSkillsEvidenceItemResponse",
-  }) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAgentSkillsEvidenceItemResponse>;
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemResponse;
 
-export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAgentSkillsEvidenceItem {
-  action: string;
-  label: string;
-  finding?: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAgentSkillsEvidenceItemFinding | null;
-  request?: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAgentSkillsEvidenceItemRequest | null;
-  response?: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAgentSkillsEvidenceItemResponse | null;
-}
+export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAgentSkillsEvidenceItem =
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem;
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAgentSkillsEvidenceItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      action: S.String,
-      label: S.String,
-      finding: S.optional(
-        S.NullOr(
-          ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAgentSkillsEvidenceItemFinding,
-        ),
-      ),
-      request: S.optional(
-        S.NullOr(
-          ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAgentSkillsEvidenceItemRequest,
-        ),
-      ),
-      response: S.optional(
-        S.NullOr(
-          ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAgentSkillsEvidenceItemResponse,
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAgentSkillsEvidenceItem",
-  }) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAgentSkillsEvidenceItem>;
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem;
 
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAgentSkillsEvidenceList =
-  Array<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAgentSkillsEvidenceItem>;
+  Array<ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem>;
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAgentSkillsEvidenceList =
   /*@__PURE__*/ S.Array(
-    ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAgentSkillsEvidenceItem,
+    ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem,
   ) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAgentSkillsEvidenceList>;
 
 export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAgentSkills {
@@ -3203,99 +2309,31 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAgentSki
       "ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAgentSkills",
   }) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAgentSkills>;
 
-export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryApiCatalogEvidenceItemFinding {
-  outcome: string;
-  summary: string;
-}
+export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryApiCatalogEvidenceItemFinding =
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemFinding;
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryApiCatalogEvidenceItemFinding =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      outcome: S.String,
-      summary: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryApiCatalogEvidenceItemFinding",
-  }) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryApiCatalogEvidenceItemFinding>;
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemFinding;
 
-export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryApiCatalogEvidenceItemRequest {
-  method: string;
-  url: string;
-  headers?: unknown | null;
-}
+export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryApiCatalogEvidenceItemRequest =
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemRequest;
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryApiCatalogEvidenceItemRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      method: S.String,
-      url: S.String,
-      headers: S.optional(S.NullOr(S.Unknown)),
-    }),
-  ).annotate({
-    identifier:
-      "ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryApiCatalogEvidenceItemRequest",
-  }) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryApiCatalogEvidenceItemRequest>;
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemRequest;
 
-export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryApiCatalogEvidenceItemResponse {
-  status: number;
-  statusText: string;
-  bodyPreview?: string | null;
-  bodySize?: number | null;
-  headers?: unknown | null;
-  redirectedTo?: string | null;
-}
+export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryApiCatalogEvidenceItemResponse =
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemResponse;
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryApiCatalogEvidenceItemResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      status: S.Number,
-      statusText: S.String,
-      bodyPreview: S.optional(S.NullOr(S.String)),
-      bodySize: S.optional(S.NullOr(S.Number)),
-      headers: S.optional(S.NullOr(S.Unknown)),
-      redirectedTo: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier:
-      "ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryApiCatalogEvidenceItemResponse",
-  }) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryApiCatalogEvidenceItemResponse>;
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemResponse;
 
-export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryApiCatalogEvidenceItem {
-  action: string;
-  label: string;
-  finding?: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryApiCatalogEvidenceItemFinding | null;
-  request?: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryApiCatalogEvidenceItemRequest | null;
-  response?: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryApiCatalogEvidenceItemResponse | null;
-}
+export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryApiCatalogEvidenceItem =
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem;
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryApiCatalogEvidenceItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      action: S.String,
-      label: S.String,
-      finding: S.optional(
-        S.NullOr(
-          ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryApiCatalogEvidenceItemFinding,
-        ),
-      ),
-      request: S.optional(
-        S.NullOr(
-          ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryApiCatalogEvidenceItemRequest,
-        ),
-      ),
-      response: S.optional(
-        S.NullOr(
-          ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryApiCatalogEvidenceItemResponse,
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryApiCatalogEvidenceItem",
-  }) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryApiCatalogEvidenceItem>;
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem;
 
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryApiCatalogEvidenceList =
-  Array<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryApiCatalogEvidenceItem>;
+  Array<ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem>;
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryApiCatalogEvidenceList =
   /*@__PURE__*/ S.Array(
-    ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryApiCatalogEvidenceItem,
+    ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem,
   ) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryApiCatalogEvidenceList>;
 
 export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryApiCatalog {
@@ -3323,99 +2361,31 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryApiCatal
       "ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryApiCatalog",
   }) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryApiCatalog>;
 
-export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryMcpServerCardEvidenceItemFinding {
-  outcome: string;
-  summary: string;
-}
+export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryMcpServerCardEvidenceItemFinding =
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemFinding;
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryMcpServerCardEvidenceItemFinding =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      outcome: S.String,
-      summary: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryMcpServerCardEvidenceItemFinding",
-  }) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryMcpServerCardEvidenceItemFinding>;
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemFinding;
 
-export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryMcpServerCardEvidenceItemRequest {
-  method: string;
-  url: string;
-  headers?: unknown | null;
-}
+export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryMcpServerCardEvidenceItemRequest =
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemRequest;
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryMcpServerCardEvidenceItemRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      method: S.String,
-      url: S.String,
-      headers: S.optional(S.NullOr(S.Unknown)),
-    }),
-  ).annotate({
-    identifier:
-      "ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryMcpServerCardEvidenceItemRequest",
-  }) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryMcpServerCardEvidenceItemRequest>;
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemRequest;
 
-export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryMcpServerCardEvidenceItemResponse {
-  status: number;
-  statusText: string;
-  bodyPreview?: string | null;
-  bodySize?: number | null;
-  headers?: unknown | null;
-  redirectedTo?: string | null;
-}
+export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryMcpServerCardEvidenceItemResponse =
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemResponse;
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryMcpServerCardEvidenceItemResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      status: S.Number,
-      statusText: S.String,
-      bodyPreview: S.optional(S.NullOr(S.String)),
-      bodySize: S.optional(S.NullOr(S.Number)),
-      headers: S.optional(S.NullOr(S.Unknown)),
-      redirectedTo: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier:
-      "ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryMcpServerCardEvidenceItemResponse",
-  }) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryMcpServerCardEvidenceItemResponse>;
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemResponse;
 
-export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryMcpServerCardEvidenceItem {
-  action: string;
-  label: string;
-  finding?: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryMcpServerCardEvidenceItemFinding | null;
-  request?: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryMcpServerCardEvidenceItemRequest | null;
-  response?: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryMcpServerCardEvidenceItemResponse | null;
-}
+export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryMcpServerCardEvidenceItem =
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem;
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryMcpServerCardEvidenceItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      action: S.String,
-      label: S.String,
-      finding: S.optional(
-        S.NullOr(
-          ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryMcpServerCardEvidenceItemFinding,
-        ),
-      ),
-      request: S.optional(
-        S.NullOr(
-          ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryMcpServerCardEvidenceItemRequest,
-        ),
-      ),
-      response: S.optional(
-        S.NullOr(
-          ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryMcpServerCardEvidenceItemResponse,
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryMcpServerCardEvidenceItem",
-  }) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryMcpServerCardEvidenceItem>;
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem;
 
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryMcpServerCardEvidenceList =
-  Array<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryMcpServerCardEvidenceItem>;
+  Array<ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem>;
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryMcpServerCardEvidenceList =
   /*@__PURE__*/ S.Array(
-    ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryMcpServerCardEvidenceItem,
+    ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem,
   ) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryMcpServerCardEvidenceList>;
 
 export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryMcpServerCard {
@@ -3443,99 +2413,31 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryMcpServe
       "ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryMcpServerCard",
   }) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryMcpServerCard>;
 
-export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthDiscoveryEvidenceItemFinding {
-  outcome: string;
-  summary: string;
-}
+export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthDiscoveryEvidenceItemFinding =
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemFinding;
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthDiscoveryEvidenceItemFinding =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      outcome: S.String,
-      summary: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthDiscoveryEvidenceItemFinding",
-  }) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthDiscoveryEvidenceItemFinding>;
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemFinding;
 
-export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthDiscoveryEvidenceItemRequest {
-  method: string;
-  url: string;
-  headers?: unknown | null;
-}
+export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthDiscoveryEvidenceItemRequest =
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemRequest;
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthDiscoveryEvidenceItemRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      method: S.String,
-      url: S.String,
-      headers: S.optional(S.NullOr(S.Unknown)),
-    }),
-  ).annotate({
-    identifier:
-      "ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthDiscoveryEvidenceItemRequest",
-  }) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthDiscoveryEvidenceItemRequest>;
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemRequest;
 
-export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthDiscoveryEvidenceItemResponse {
-  status: number;
-  statusText: string;
-  bodyPreview?: string | null;
-  bodySize?: number | null;
-  headers?: unknown | null;
-  redirectedTo?: string | null;
-}
+export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthDiscoveryEvidenceItemResponse =
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemResponse;
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthDiscoveryEvidenceItemResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      status: S.Number,
-      statusText: S.String,
-      bodyPreview: S.optional(S.NullOr(S.String)),
-      bodySize: S.optional(S.NullOr(S.Number)),
-      headers: S.optional(S.NullOr(S.Unknown)),
-      redirectedTo: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier:
-      "ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthDiscoveryEvidenceItemResponse",
-  }) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthDiscoveryEvidenceItemResponse>;
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemResponse;
 
-export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthDiscoveryEvidenceItem {
-  action: string;
-  label: string;
-  finding?: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthDiscoveryEvidenceItemFinding | null;
-  request?: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthDiscoveryEvidenceItemRequest | null;
-  response?: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthDiscoveryEvidenceItemResponse | null;
-}
+export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthDiscoveryEvidenceItem =
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem;
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthDiscoveryEvidenceItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      action: S.String,
-      label: S.String,
-      finding: S.optional(
-        S.NullOr(
-          ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthDiscoveryEvidenceItemFinding,
-        ),
-      ),
-      request: S.optional(
-        S.NullOr(
-          ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthDiscoveryEvidenceItemRequest,
-        ),
-      ),
-      response: S.optional(
-        S.NullOr(
-          ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthDiscoveryEvidenceItemResponse,
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthDiscoveryEvidenceItem",
-  }) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthDiscoveryEvidenceItem>;
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem;
 
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthDiscoveryEvidenceList =
-  Array<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthDiscoveryEvidenceItem>;
+  Array<ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem>;
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthDiscoveryEvidenceList =
   /*@__PURE__*/ S.Array(
-    ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthDiscoveryEvidenceItem,
+    ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem,
   ) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthDiscoveryEvidenceList>;
 
 export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthDiscovery {
@@ -3563,99 +2465,31 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthDis
       "ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthDiscovery",
   }) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthDiscovery>;
 
-export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthProtectedResourceEvidenceItemFinding {
-  outcome: string;
-  summary: string;
-}
+export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthProtectedResourceEvidenceItemFinding =
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemFinding;
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthProtectedResourceEvidenceItemFinding =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      outcome: S.String,
-      summary: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthProtectedResourceEvidenceItemFinding",
-  }) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthProtectedResourceEvidenceItemFinding>;
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemFinding;
 
-export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthProtectedResourceEvidenceItemRequest {
-  method: string;
-  url: string;
-  headers?: unknown | null;
-}
+export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthProtectedResourceEvidenceItemRequest =
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemRequest;
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthProtectedResourceEvidenceItemRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      method: S.String,
-      url: S.String,
-      headers: S.optional(S.NullOr(S.Unknown)),
-    }),
-  ).annotate({
-    identifier:
-      "ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthProtectedResourceEvidenceItemRequest",
-  }) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthProtectedResourceEvidenceItemRequest>;
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemRequest;
 
-export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthProtectedResourceEvidenceItemResponse {
-  status: number;
-  statusText: string;
-  bodyPreview?: string | null;
-  bodySize?: number | null;
-  headers?: unknown | null;
-  redirectedTo?: string | null;
-}
+export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthProtectedResourceEvidenceItemResponse =
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemResponse;
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthProtectedResourceEvidenceItemResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      status: S.Number,
-      statusText: S.String,
-      bodyPreview: S.optional(S.NullOr(S.String)),
-      bodySize: S.optional(S.NullOr(S.Number)),
-      headers: S.optional(S.NullOr(S.Unknown)),
-      redirectedTo: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier:
-      "ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthProtectedResourceEvidenceItemResponse",
-  }) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthProtectedResourceEvidenceItemResponse>;
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemResponse;
 
-export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthProtectedResourceEvidenceItem {
-  action: string;
-  label: string;
-  finding?: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthProtectedResourceEvidenceItemFinding | null;
-  request?: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthProtectedResourceEvidenceItemRequest | null;
-  response?: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthProtectedResourceEvidenceItemResponse | null;
-}
+export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthProtectedResourceEvidenceItem =
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem;
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthProtectedResourceEvidenceItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      action: S.String,
-      label: S.String,
-      finding: S.optional(
-        S.NullOr(
-          ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthProtectedResourceEvidenceItemFinding,
-        ),
-      ),
-      request: S.optional(
-        S.NullOr(
-          ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthProtectedResourceEvidenceItemRequest,
-        ),
-      ),
-      response: S.optional(
-        S.NullOr(
-          ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthProtectedResourceEvidenceItemResponse,
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthProtectedResourceEvidenceItem",
-  }) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthProtectedResourceEvidenceItem>;
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem;
 
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthProtectedResourceEvidenceList =
-  Array<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthProtectedResourceEvidenceItem>;
+  Array<ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem>;
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthProtectedResourceEvidenceList =
   /*@__PURE__*/ S.Array(
-    ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthProtectedResourceEvidenceItem,
+    ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem,
   ) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthProtectedResourceEvidenceList>;
 
 export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthProtectedResource {
@@ -3683,99 +2517,31 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthPro
       "ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthProtectedResource",
   }) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthProtectedResource>;
 
-export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryWebMcpEvidenceItemFinding {
-  outcome: string;
-  summary: string;
-}
+export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryWebMcpEvidenceItemFinding =
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemFinding;
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryWebMcpEvidenceItemFinding =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      outcome: S.String,
-      summary: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryWebMcpEvidenceItemFinding",
-  }) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryWebMcpEvidenceItemFinding>;
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemFinding;
 
-export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryWebMcpEvidenceItemRequest {
-  method: string;
-  url: string;
-  headers?: unknown | null;
-}
+export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryWebMcpEvidenceItemRequest =
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemRequest;
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryWebMcpEvidenceItemRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      method: S.String,
-      url: S.String,
-      headers: S.optional(S.NullOr(S.Unknown)),
-    }),
-  ).annotate({
-    identifier:
-      "ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryWebMcpEvidenceItemRequest",
-  }) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryWebMcpEvidenceItemRequest>;
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemRequest;
 
-export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryWebMcpEvidenceItemResponse {
-  status: number;
-  statusText: string;
-  bodyPreview?: string | null;
-  bodySize?: number | null;
-  headers?: unknown | null;
-  redirectedTo?: string | null;
-}
+export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryWebMcpEvidenceItemResponse =
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemResponse;
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryWebMcpEvidenceItemResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      status: S.Number,
-      statusText: S.String,
-      bodyPreview: S.optional(S.NullOr(S.String)),
-      bodySize: S.optional(S.NullOr(S.Number)),
-      headers: S.optional(S.NullOr(S.Unknown)),
-      redirectedTo: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier:
-      "ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryWebMcpEvidenceItemResponse",
-  }) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryWebMcpEvidenceItemResponse>;
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemResponse;
 
-export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryWebMcpEvidenceItem {
-  action: string;
-  label: string;
-  finding?: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryWebMcpEvidenceItemFinding | null;
-  request?: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryWebMcpEvidenceItemRequest | null;
-  response?: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryWebMcpEvidenceItemResponse | null;
-}
+export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryWebMcpEvidenceItem =
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem;
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryWebMcpEvidenceItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      action: S.String,
-      label: S.String,
-      finding: S.optional(
-        S.NullOr(
-          ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryWebMcpEvidenceItemFinding,
-        ),
-      ),
-      request: S.optional(
-        S.NullOr(
-          ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryWebMcpEvidenceItemRequest,
-        ),
-      ),
-      response: S.optional(
-        S.NullOr(
-          ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryWebMcpEvidenceItemResponse,
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryWebMcpEvidenceItem",
-  }) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryWebMcpEvidenceItem>;
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem;
 
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryWebMcpEvidenceList =
-  Array<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryWebMcpEvidenceItem>;
+  Array<ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem>;
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryWebMcpEvidenceList =
   /*@__PURE__*/ S.Array(
-    ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryWebMcpEvidenceItem,
+    ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem,
   ) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryWebMcpEvidenceList>;
 
 export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryWebMcp {
@@ -4096,52 +2862,28 @@ export const ScansGetResponseMetaProcessorsUrlCategoriesDataItemContentList =
     ScansGetResponseMetaProcessorsUrlCategoriesDataItemContentItem,
   ) as any as S.Schema<ScansGetResponseMetaProcessorsUrlCategoriesDataItemContentList>;
 
-export interface ScansGetResponseMetaProcessorsUrlCategoriesDataItemInheritedContentItem {
-  id: number;
-  name: string;
-  superCategoryId: number;
-}
+export type ScansGetResponseMetaProcessorsUrlCategoriesDataItemInheritedContentItem =
+  ScansGetResponseMetaProcessorsUrlCategoriesDataItemContentItem;
 export const ScansGetResponseMetaProcessorsUrlCategoriesDataItemInheritedContentItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.Number,
-      name: S.String,
-      superCategoryId: S.Number.pipe(T.Body("super_category_id")),
-    }),
-  ).annotate({
-    identifier:
-      "ScansGetResponseMetaProcessorsUrlCategoriesDataItemInheritedContentItem",
-  }) as any as S.Schema<ScansGetResponseMetaProcessorsUrlCategoriesDataItemInheritedContentItem>;
+  ScansGetResponseMetaProcessorsUrlCategoriesDataItemContentItem;
 
 export type ScansGetResponseMetaProcessorsUrlCategoriesDataItemInheritedContentList =
-  Array<ScansGetResponseMetaProcessorsUrlCategoriesDataItemInheritedContentItem>;
+  Array<ScansGetResponseMetaProcessorsUrlCategoriesDataItemContentItem>;
 export const ScansGetResponseMetaProcessorsUrlCategoriesDataItemInheritedContentList =
   /*@__PURE__*/ S.Array(
-    ScansGetResponseMetaProcessorsUrlCategoriesDataItemInheritedContentItem,
+    ScansGetResponseMetaProcessorsUrlCategoriesDataItemContentItem,
   ) as any as S.Schema<ScansGetResponseMetaProcessorsUrlCategoriesDataItemInheritedContentList>;
 
-export interface ScansGetResponseMetaProcessorsUrlCategoriesDataItemInheritedRisksItem {
-  id: number;
-  name: string;
-  superCategoryId: number;
-}
+export type ScansGetResponseMetaProcessorsUrlCategoriesDataItemInheritedRisksItem =
+  ScansGetResponseMetaProcessorsUrlCategoriesDataItemContentItem;
 export const ScansGetResponseMetaProcessorsUrlCategoriesDataItemInheritedRisksItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.Number,
-      name: S.String,
-      superCategoryId: S.Number.pipe(T.Body("super_category_id")),
-    }),
-  ).annotate({
-    identifier:
-      "ScansGetResponseMetaProcessorsUrlCategoriesDataItemInheritedRisksItem",
-  }) as any as S.Schema<ScansGetResponseMetaProcessorsUrlCategoriesDataItemInheritedRisksItem>;
+  ScansGetResponseMetaProcessorsUrlCategoriesDataItemContentItem;
 
 export type ScansGetResponseMetaProcessorsUrlCategoriesDataItemInheritedRisksList =
-  Array<ScansGetResponseMetaProcessorsUrlCategoriesDataItemInheritedRisksItem>;
+  Array<ScansGetResponseMetaProcessorsUrlCategoriesDataItemContentItem>;
 export const ScansGetResponseMetaProcessorsUrlCategoriesDataItemInheritedRisksList =
   /*@__PURE__*/ S.Array(
-    ScansGetResponseMetaProcessorsUrlCategoriesDataItemInheritedRisksItem,
+    ScansGetResponseMetaProcessorsUrlCategoriesDataItemContentItem,
   ) as any as S.Schema<ScansGetResponseMetaProcessorsUrlCategoriesDataItemInheritedRisksList>;
 
 export interface ScansGetResponseMetaProcessorsUrlCategoriesDataItemInherited {
@@ -4162,27 +2904,16 @@ export const ScansGetResponseMetaProcessorsUrlCategoriesDataItemInherited =
     identifier: "ScansGetResponseMetaProcessorsUrlCategoriesDataItemInherited",
   }) as any as S.Schema<ScansGetResponseMetaProcessorsUrlCategoriesDataItemInherited>;
 
-export interface ScansGetResponseMetaProcessorsUrlCategoriesDataItemRisksItem {
-  id: number;
-  name: string;
-  superCategoryId: number;
-}
+export type ScansGetResponseMetaProcessorsUrlCategoriesDataItemRisksItem =
+  ScansGetResponseMetaProcessorsUrlCategoriesDataItemContentItem;
 export const ScansGetResponseMetaProcessorsUrlCategoriesDataItemRisksItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.Number,
-      name: S.String,
-      superCategoryId: S.Number.pipe(T.Body("super_category_id")),
-    }),
-  ).annotate({
-    identifier: "ScansGetResponseMetaProcessorsUrlCategoriesDataItemRisksItem",
-  }) as any as S.Schema<ScansGetResponseMetaProcessorsUrlCategoriesDataItemRisksItem>;
+  ScansGetResponseMetaProcessorsUrlCategoriesDataItemContentItem;
 
 export type ScansGetResponseMetaProcessorsUrlCategoriesDataItemRisksList =
-  Array<ScansGetResponseMetaProcessorsUrlCategoriesDataItemRisksItem>;
+  Array<ScansGetResponseMetaProcessorsUrlCategoriesDataItemContentItem>;
 export const ScansGetResponseMetaProcessorsUrlCategoriesDataItemRisksList =
   /*@__PURE__*/ S.Array(
-    ScansGetResponseMetaProcessorsUrlCategoriesDataItemRisksItem,
+    ScansGetResponseMetaProcessorsUrlCategoriesDataItemContentItem,
   ) as any as S.Schema<ScansGetResponseMetaProcessorsUrlCategoriesDataItemRisksList>;
 
 export interface ScansGetResponseMetaProcessorsUrlCategoriesDataItem {
@@ -4397,26 +3128,10 @@ export const ScansGetResponseStatsDomainStatsList = /*@__PURE__*/ S.Array(
   ScansGetResponseStatsDomainStatsItem,
 ) as any as S.Schema<ScansGetResponseStatsDomainStatsList>;
 
-export interface ScansGetResponseStatsIpStatsItemAsn {
-  asn: string;
-  country: string;
-  description: string;
-  ip: string;
-  name: string;
-  org: string;
-}
-export const ScansGetResponseStatsIpStatsItemAsn = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    asn: S.String,
-    country: S.String,
-    description: S.String,
-    ip: S.String,
-    name: S.String,
-    org: S.String,
-  }),
-).annotate({
-  identifier: "ScansGetResponseStatsIpStatsItemAsn",
-}) as any as S.Schema<ScansGetResponseStatsIpStatsItemAsn>;
+export type ScansGetResponseStatsIpStatsItemAsn =
+  ScansGetResponseDataRequestsItemResponseAsn;
+export const ScansGetResponseStatsIpStatsItemAsn =
+  ScansGetResponseDataRequestsItemResponseAsn;
 
 export type ScansGetResponseStatsIpStatsItemCountriesList = Array<string>;
 export const ScansGetResponseStatsIpStatsItemCountriesList =
@@ -4457,7 +3172,7 @@ export const ScansGetResponseStatsIpStatsItemGeoip = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ScansGetResponseStatsIpStatsItemGeoip>;
 
 export interface ScansGetResponseStatsIpStatsItem {
-  asn: ScansGetResponseStatsIpStatsItemAsn;
+  asn: ScansGetResponseDataRequestsItemResponseAsn;
   countries: ScansGetResponseStatsIpStatsItemCountriesList;
   domains: ScansGetResponseStatsIpStatsItemDomainsList;
   encodedSize: number;
@@ -4472,7 +3187,7 @@ export interface ScansGetResponseStatsIpStatsItem {
 }
 export const ScansGetResponseStatsIpStatsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    asn: ScansGetResponseStatsIpStatsItemAsn,
+    asn: ScansGetResponseDataRequestsItemResponseAsn,
     countries: ScansGetResponseStatsIpStatsItemCountriesList,
     domains: ScansGetResponseStatsIpStatsItemDomainsList,
     encodedSize: S.Number,
@@ -4865,25 +3580,16 @@ export const ScansHarResponseLogCreator = /*@__PURE__*/ S.suspend(() =>
   identifier: "ScansHarResponseLogCreator",
 }) as any as S.Schema<ScansHarResponseLogCreator>;
 
-export interface ScansHarResponseLogEntriesItemRequestHeadersItem {
-  name: string;
-  value: string;
-}
+export type ScansHarResponseLogEntriesItemRequestHeadersItem =
+  ScansGetResponseDataRequestsItemRequestRedirectResponseSecurityHeadersItem;
 export const ScansHarResponseLogEntriesItemRequestHeadersItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "ScansHarResponseLogEntriesItemRequestHeadersItem",
-  }) as any as S.Schema<ScansHarResponseLogEntriesItemRequestHeadersItem>;
+  ScansGetResponseDataRequestsItemRequestRedirectResponseSecurityHeadersItem;
 
 export type ScansHarResponseLogEntriesItemRequestHeadersList =
-  Array<ScansHarResponseLogEntriesItemRequestHeadersItem>;
+  Array<ScansGetResponseDataRequestsItemRequestRedirectResponseSecurityHeadersItem>;
 export const ScansHarResponseLogEntriesItemRequestHeadersList =
   /*@__PURE__*/ S.Array(
-    ScansHarResponseLogEntriesItemRequestHeadersItem,
+    ScansGetResponseDataRequestsItemRequestRedirectResponseSecurityHeadersItem,
   ) as any as S.Schema<ScansHarResponseLogEntriesItemRequestHeadersList>;
 
 export interface ScansHarResponseLogEntriesItemRequest {
@@ -4924,25 +3630,16 @@ export const ScansHarResponseLogEntriesItemResponseContent =
     identifier: "ScansHarResponseLogEntriesItemResponseContent",
   }) as any as S.Schema<ScansHarResponseLogEntriesItemResponseContent>;
 
-export interface ScansHarResponseLogEntriesItemResponseHeadersItem {
-  name: string;
-  value: string;
-}
+export type ScansHarResponseLogEntriesItemResponseHeadersItem =
+  ScansGetResponseDataRequestsItemRequestRedirectResponseSecurityHeadersItem;
 export const ScansHarResponseLogEntriesItemResponseHeadersItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "ScansHarResponseLogEntriesItemResponseHeadersItem",
-  }) as any as S.Schema<ScansHarResponseLogEntriesItemResponseHeadersItem>;
+  ScansGetResponseDataRequestsItemRequestRedirectResponseSecurityHeadersItem;
 
 export type ScansHarResponseLogEntriesItemResponseHeadersList =
-  Array<ScansHarResponseLogEntriesItemResponseHeadersItem>;
+  Array<ScansGetResponseDataRequestsItemRequestRedirectResponseSecurityHeadersItem>;
 export const ScansHarResponseLogEntriesItemResponseHeadersList =
   /*@__PURE__*/ S.Array(
-    ScansHarResponseLogEntriesItemResponseHeadersItem,
+    ScansGetResponseDataRequestsItemRequestRedirectResponseSecurityHeadersItem,
   ) as any as S.Schema<ScansHarResponseLogEntriesItemResponseHeadersList>;
 
 export interface ScansHarResponseLogEntriesItemResponse {

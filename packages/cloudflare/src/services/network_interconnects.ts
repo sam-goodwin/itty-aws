@@ -103,20 +103,8 @@ export const CreateCniRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateCniRequest",
 }) as any as S.Schema<CreateCniRequest>;
 
-export interface CnisCreateResponseMagic {
-  conduitName: string;
-  description: string;
-  mtu: number;
-}
-export const CnisCreateResponseMagic = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    conduitName: S.String.pipe(T.Body("conduit_name")),
-    description: S.String,
-    mtu: S.Number,
-  }),
-).annotate({
-  identifier: "CnisCreateResponseMagic",
-}) as any as S.Schema<CnisCreateResponseMagic>;
+export type CnisCreateResponseMagic = CnisCreateRequestMagic;
+export const CnisCreateResponseMagic = CnisCreateRequestMagic;
 
 export type CnisCreateResponseBgpExtraPrefixesList = Array<string>;
 export const CnisCreateResponseBgpExtraPrefixesList = /*@__PURE__*/ S.Array(
@@ -152,7 +140,7 @@ export interface CreateCniResponse {
   custIp: string;
   /** Interconnect identifier hosting this CNI */
   interconnect: string;
-  magic: CnisCreateResponseMagic;
+  magic: CnisCreateRequestMagic;
   /** Cloudflare end of the point-to-point link */
   p2pIp: string;
   bgp?: CnisCreateResponseBgp | null;
@@ -163,7 +151,7 @@ export const CreateCniResponse = /*@__PURE__*/ S.suspend(() =>
     account: S.String,
     custIp: S.String.pipe(T.Body("cust_ip")),
     interconnect: S.String,
-    magic: CnisCreateResponseMagic,
+    magic: CnisCreateRequestMagic,
     p2pIp: S.String.pipe(T.Body("p2p_ip")),
     bgp: S.optional(S.NullOr(CnisCreateResponseBgp)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -306,20 +294,8 @@ export const GetCniRequest = /*@__PURE__*/ S.suspend(() =>
     .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "GetCniRequest" }) as any as S.Schema<GetCniRequest>;
 
-export interface CnisGetResponseMagic {
-  conduitName: string;
-  description: string;
-  mtu: number;
-}
-export const CnisGetResponseMagic = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    conduitName: S.String.pipe(T.Body("conduit_name")),
-    description: S.String,
-    mtu: S.Number,
-  }),
-).annotate({
-  identifier: "CnisGetResponseMagic",
-}) as any as S.Schema<CnisGetResponseMagic>;
+export type CnisGetResponseMagic = CnisCreateRequestMagic;
+export const CnisGetResponseMagic = CnisCreateRequestMagic;
 
 export type CnisGetResponseBgpExtraPrefixesList = Array<string>;
 export const CnisGetResponseBgpExtraPrefixesList = /*@__PURE__*/ S.Array(
@@ -355,7 +331,7 @@ export interface GetCniResponse {
   custIp: string;
   /** Interconnect identifier hosting this CNI */
   interconnect: string;
-  magic: CnisGetResponseMagic;
+  magic: CnisCreateRequestMagic;
   /** Cloudflare end of the point-to-point link */
   p2pIp: string;
   bgp?: CnisGetResponseBgp | null;
@@ -366,7 +342,7 @@ export const GetCniResponse = /*@__PURE__*/ S.suspend(() =>
     account: S.String,
     custIp: S.String.pipe(T.Body("cust_ip")),
     interconnect: S.String,
-    magic: CnisGetResponseMagic,
+    magic: CnisCreateRequestMagic,
     p2pIp: S.String.pipe(T.Body("p2p_ip")),
     bgp: S.optional(S.NullOr(CnisGetResponseBgp)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -526,20 +502,8 @@ export const ListCnisRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListCnisRequest",
 }) as any as S.Schema<ListCnisRequest>;
 
-export interface CnisListResponseItemsItemMagic {
-  conduitName: string;
-  description: string;
-  mtu: number;
-}
-export const CnisListResponseItemsItemMagic = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    conduitName: S.String.pipe(T.Body("conduit_name")),
-    description: S.String,
-    mtu: S.Number,
-  }),
-).annotate({
-  identifier: "CnisListResponseItemsItemMagic",
-}) as any as S.Schema<CnisListResponseItemsItemMagic>;
+export type CnisListResponseItemsItemMagic = CnisCreateRequestMagic;
+export const CnisListResponseItemsItemMagic = CnisCreateRequestMagic;
 
 export type CnisListResponseItemsItemBgpExtraPrefixesList = Array<string>;
 export const CnisListResponseItemsItemBgpExtraPrefixesList =
@@ -575,7 +539,7 @@ export interface CnisListResponseItemsItem {
   custIp: string;
   /** Interconnect identifier hosting this CNI */
   interconnect: string;
-  magic: CnisListResponseItemsItemMagic;
+  magic: CnisCreateRequestMagic;
   /** Cloudflare end of the point-to-point link */
   p2pIp: string;
   bgp?: CnisListResponseItemsItemBgp | null;
@@ -586,7 +550,7 @@ export const CnisListResponseItemsItem = /*@__PURE__*/ S.suspend(() =>
     account: S.String,
     custIp: S.String.pipe(T.Body("cust_ip")),
     interconnect: S.String,
-    magic: CnisListResponseItemsItemMagic,
+    magic: CnisCreateRequestMagic,
     p2pIp: S.String.pipe(T.Body("p2p_ip")),
     bgp: S.optional(S.NullOr(CnisListResponseItemsItemBgp)),
   }),
@@ -958,20 +922,8 @@ export const StatusInterconnectResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "StatusInterconnectResponse",
 }) as any as S.Schema<StatusInterconnectResponse>;
 
-export interface CnisUpdateRequestMagic {
-  conduitName: string;
-  description: string;
-  mtu: number;
-}
-export const CnisUpdateRequestMagic = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    conduitName: S.String.pipe(T.Body("conduit_name")),
-    description: S.String,
-    mtu: S.Number,
-  }),
-).annotate({
-  identifier: "CnisUpdateRequestMagic",
-}) as any as S.Schema<CnisUpdateRequestMagic>;
+export type CnisUpdateRequestMagic = CnisCreateRequestMagic;
+export const CnisUpdateRequestMagic = CnisCreateRequestMagic;
 
 export type CnisUpdateRequestBgpExtraPrefixesList = Array<string>;
 export const CnisUpdateRequestBgpExtraPrefixesList = /*@__PURE__*/ S.Array(
@@ -1009,7 +961,7 @@ export interface UpdateCniRequest {
   custIp: string;
   /** Interconnect identifier hosting this CNI */
   interconnect: string;
-  magic: CnisUpdateRequestMagic;
+  magic: CnisCreateRequestMagic;
   /** Cloudflare end of the point-to-point link */
   p2pIp: string;
   bgp?: CnisUpdateRequestBgp;
@@ -1022,7 +974,7 @@ export const UpdateCniRequest = /*@__PURE__*/ S.suspend(() =>
     account: S.String,
     custIp: S.String.pipe(T.Body("cust_ip")),
     interconnect: S.String,
-    magic: CnisUpdateRequestMagic,
+    magic: CnisCreateRequestMagic,
     p2pIp: S.String.pipe(T.Body("p2p_ip")),
     bgp: S.optional(CnisUpdateRequestBgp),
   })
@@ -1038,20 +990,8 @@ export const UpdateCniRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateCniRequest",
 }) as any as S.Schema<UpdateCniRequest>;
 
-export interface CnisUpdateResponseMagic {
-  conduitName: string;
-  description: string;
-  mtu: number;
-}
-export const CnisUpdateResponseMagic = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    conduitName: S.String.pipe(T.Body("conduit_name")),
-    description: S.String,
-    mtu: S.Number,
-  }),
-).annotate({
-  identifier: "CnisUpdateResponseMagic",
-}) as any as S.Schema<CnisUpdateResponseMagic>;
+export type CnisUpdateResponseMagic = CnisCreateRequestMagic;
+export const CnisUpdateResponseMagic = CnisCreateRequestMagic;
 
 export type CnisUpdateResponseBgpExtraPrefixesList = Array<string>;
 export const CnisUpdateResponseBgpExtraPrefixesList = /*@__PURE__*/ S.Array(
@@ -1087,7 +1027,7 @@ export interface UpdateCniResponse {
   custIp: string;
   /** Interconnect identifier hosting this CNI */
   interconnect: string;
-  magic: CnisUpdateResponseMagic;
+  magic: CnisCreateRequestMagic;
   /** Cloudflare end of the point-to-point link */
   p2pIp: string;
   bgp?: CnisUpdateResponseBgp | null;
@@ -1098,7 +1038,7 @@ export const UpdateCniResponse = /*@__PURE__*/ S.suspend(() =>
     account: S.String,
     custIp: S.String.pipe(T.Body("cust_ip")),
     interconnect: S.String,
-    magic: CnisUpdateResponseMagic,
+    magic: CnisCreateRequestMagic,
     p2pIp: S.String.pipe(T.Body("p2p_ip")),
     bgp: S.optional(S.NullOr(CnisUpdateResponseBgp)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),

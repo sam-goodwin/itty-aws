@@ -1174,23 +1174,12 @@ export const GetAddressMapRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetAddressMapRequest",
 }) as any as S.Schema<GetAddressMapRequest>;
 
-export interface AddressMapsGetResponseIps {
-  createdAt?: string | null;
-  /** An IPv4 or IPv6 address. */
-  ip?: string | null;
-}
-export const AddressMapsGetResponseIps = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
-    ip: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "AddressMapsGetResponseIps",
-}) as any as S.Schema<AddressMapsGetResponseIps>;
+export type AddressMapsGetResponseIps = AddressMapsCreateResponseIps;
+export const AddressMapsGetResponseIps = AddressMapsCreateResponseIps;
 
-export type AddressMapsGetResponseIpsList = Array<AddressMapsGetResponseIps>;
+export type AddressMapsGetResponseIpsList = Array<AddressMapsCreateResponseIps>;
 export const AddressMapsGetResponseIpsList = /*@__PURE__*/ S.Array(
-  AddressMapsGetResponseIps,
+  AddressMapsCreateResponseIps,
 ) as any as S.Schema<AddressMapsGetResponseIpsList>;
 
 export type AddressMapsGetResponseMembershipsItemKind = "zone" | "account";
@@ -1464,49 +1453,15 @@ export const GetPrefixBgpPrefixRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetPrefixBgpPrefixRequest",
 }) as any as S.Schema<GetPrefixBgpPrefixRequest>;
 
-export interface PrefixesBgpPrefixesGetResponseBgpSignalOpts {
-  /** Whether control of advertisement of the prefix to the Internet is enabled to be performed via BGP signal */
-  enabled?: boolean | null;
-  /** Last time BGP signaling control was toggled. This field is null if BGP signaling has never been enabled. */
-  modifiedAt?: string | null;
-}
+export type PrefixesBgpPrefixesGetResponseBgpSignalOpts =
+  PrefixesBgpPrefixesCreateResponseBgpSignalOpts;
 export const PrefixesBgpPrefixesGetResponseBgpSignalOpts =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      enabled: S.optional(S.NullOr(S.Boolean)),
-      modifiedAt: S.optional(S.NullOr(S.String).pipe(T.Body("modified_at"))),
-    }),
-  ).annotate({
-    identifier: "PrefixesBgpPrefixesGetResponseBgpSignalOpts",
-  }) as any as S.Schema<PrefixesBgpPrefixesGetResponseBgpSignalOpts>;
+  PrefixesBgpPrefixesCreateResponseBgpSignalOpts;
 
-export interface PrefixesBgpPrefixesGetResponseOnDemand {
-  /** Prefix advertisement status to the Internet. This field is only not 'null' if on demand is enabled. */
-  advertised?: boolean | null;
-  /** Last time the advertisement status was changed. This field is only not 'null' if on demand is enabled. */
-  advertisedModifiedAt?: string | null;
-  /** Whether advertisement of the prefix to the Internet may be dynamically enabled or disabled. */
-  onDemandEnabled?: boolean | null;
-  /** Whether the advertisement status of the prefix is locked, meaning it cannot be changed. */
-  onDemandLocked?: boolean | null;
-}
-export const PrefixesBgpPrefixesGetResponseOnDemand = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      advertised: S.optional(S.NullOr(S.Boolean)),
-      advertisedModifiedAt: S.optional(
-        S.NullOr(S.String).pipe(T.Body("advertised_modified_at")),
-      ),
-      onDemandEnabled: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("on_demand_enabled")),
-      ),
-      onDemandLocked: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("on_demand_locked")),
-      ),
-    }),
-).annotate({
-  identifier: "PrefixesBgpPrefixesGetResponseOnDemand",
-}) as any as S.Schema<PrefixesBgpPrefixesGetResponseOnDemand>;
+export type PrefixesBgpPrefixesGetResponseOnDemand =
+  PrefixesBgpPrefixesCreateResponseOnDemand;
+export const PrefixesBgpPrefixesGetResponseOnDemand =
+  PrefixesBgpPrefixesCreateResponseOnDemand;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetPrefixBgpPrefixResponse {
@@ -1518,12 +1473,12 @@ export interface GetPrefixBgpPrefixResponse {
   asnPrependCount?: number | null;
   /** Determines if Cloudflare advertises a BYOIP BGP prefix even when there is no matching BGP prefix in the Magic routing table. When true, Cloudflare will automatically withdraw the BGP prefix when there are no matching BGP routes, and will resume advertising when there is at least one matching BGP route. */
   autoAdvertiseWithdraw?: boolean | null;
-  bgpSignalOpts?: PrefixesBgpPrefixesGetResponseBgpSignalOpts | null;
+  bgpSignalOpts?: PrefixesBgpPrefixesCreateResponseBgpSignalOpts | null;
   /** IP Prefix in Classless Inter-Domain Routing format. */
   cidr?: string | null;
   createdAt?: string | null;
   modifiedAt?: string | null;
-  onDemand?: PrefixesBgpPrefixesGetResponseOnDemand | null;
+  onDemand?: PrefixesBgpPrefixesCreateResponseOnDemand | null;
 }
 export const GetPrefixBgpPrefixResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1536,7 +1491,7 @@ export const GetPrefixBgpPrefixResponse = /*@__PURE__*/ S.suspend(() =>
       S.NullOr(S.Boolean).pipe(T.Body("auto_advertise_withdraw")),
     ),
     bgpSignalOpts: S.optional(
-      S.NullOr(PrefixesBgpPrefixesGetResponseBgpSignalOpts).pipe(
+      S.NullOr(PrefixesBgpPrefixesCreateResponseBgpSignalOpts).pipe(
         T.Body("bgp_signal_opts"),
       ),
     ),
@@ -1544,7 +1499,7 @@ export const GetPrefixBgpPrefixResponse = /*@__PURE__*/ S.suspend(() =>
     createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
     modifiedAt: S.optional(S.NullOr(S.String).pipe(T.Body("modified_at"))),
     onDemand: S.optional(
-      S.NullOr(PrefixesBgpPrefixesGetResponseOnDemand).pipe(
+      S.NullOr(PrefixesBgpPrefixesCreateResponseOnDemand).pipe(
         T.Body("on_demand"),
       ),
     ),
@@ -1768,49 +1723,15 @@ export const ListPrefixBgpPrefixesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListPrefixBgpPrefixesRequest",
 }) as any as S.Schema<ListPrefixBgpPrefixesRequest>;
 
-export interface PrefixesBgpPrefixesListResultItemBgpSignalOpts {
-  /** Whether control of advertisement of the prefix to the Internet is enabled to be performed via BGP signal */
-  enabled?: boolean | null;
-  /** Last time BGP signaling control was toggled. This field is null if BGP signaling has never been enabled. */
-  modifiedAt?: string | null;
-}
+export type PrefixesBgpPrefixesListResultItemBgpSignalOpts =
+  PrefixesBgpPrefixesCreateResponseBgpSignalOpts;
 export const PrefixesBgpPrefixesListResultItemBgpSignalOpts =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      enabled: S.optional(S.NullOr(S.Boolean)),
-      modifiedAt: S.optional(S.NullOr(S.String).pipe(T.Body("modified_at"))),
-    }),
-  ).annotate({
-    identifier: "PrefixesBgpPrefixesListResultItemBgpSignalOpts",
-  }) as any as S.Schema<PrefixesBgpPrefixesListResultItemBgpSignalOpts>;
+  PrefixesBgpPrefixesCreateResponseBgpSignalOpts;
 
-export interface PrefixesBgpPrefixesListResultItemOnDemand {
-  /** Prefix advertisement status to the Internet. This field is only not 'null' if on demand is enabled. */
-  advertised?: boolean | null;
-  /** Last time the advertisement status was changed. This field is only not 'null' if on demand is enabled. */
-  advertisedModifiedAt?: string | null;
-  /** Whether advertisement of the prefix to the Internet may be dynamically enabled or disabled. */
-  onDemandEnabled?: boolean | null;
-  /** Whether the advertisement status of the prefix is locked, meaning it cannot be changed. */
-  onDemandLocked?: boolean | null;
-}
+export type PrefixesBgpPrefixesListResultItemOnDemand =
+  PrefixesBgpPrefixesCreateResponseOnDemand;
 export const PrefixesBgpPrefixesListResultItemOnDemand =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      advertised: S.optional(S.NullOr(S.Boolean)),
-      advertisedModifiedAt: S.optional(
-        S.NullOr(S.String).pipe(T.Body("advertised_modified_at")),
-      ),
-      onDemandEnabled: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("on_demand_enabled")),
-      ),
-      onDemandLocked: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("on_demand_locked")),
-      ),
-    }),
-  ).annotate({
-    identifier: "PrefixesBgpPrefixesListResultItemOnDemand",
-  }) as any as S.Schema<PrefixesBgpPrefixesListResultItemOnDemand>;
+  PrefixesBgpPrefixesCreateResponseOnDemand;
 
 export interface PrefixesBgpPrefixesListResultItem {
   /** Identifier of BGP Prefix. */
@@ -1821,12 +1742,12 @@ export interface PrefixesBgpPrefixesListResultItem {
   asnPrependCount?: number | null;
   /** Determines if Cloudflare advertises a BYOIP BGP prefix even when there is no matching BGP prefix in the Magic routing table. When true, Cloudflare will automatically withdraw the BGP prefix when there are no matching BGP routes, and will resume advertising when there is at least one matching BGP route. */
   autoAdvertiseWithdraw?: boolean | null;
-  bgpSignalOpts?: PrefixesBgpPrefixesListResultItemBgpSignalOpts | null;
+  bgpSignalOpts?: PrefixesBgpPrefixesCreateResponseBgpSignalOpts | null;
   /** IP Prefix in Classless Inter-Domain Routing format. */
   cidr?: string | null;
   createdAt?: string | null;
   modifiedAt?: string | null;
-  onDemand?: PrefixesBgpPrefixesListResultItemOnDemand | null;
+  onDemand?: PrefixesBgpPrefixesCreateResponseOnDemand | null;
 }
 export const PrefixesBgpPrefixesListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1839,7 +1760,7 @@ export const PrefixesBgpPrefixesListResultItem = /*@__PURE__*/ S.suspend(() =>
       S.NullOr(S.Boolean).pipe(T.Body("auto_advertise_withdraw")),
     ),
     bgpSignalOpts: S.optional(
-      S.NullOr(PrefixesBgpPrefixesListResultItemBgpSignalOpts).pipe(
+      S.NullOr(PrefixesBgpPrefixesCreateResponseBgpSignalOpts).pipe(
         T.Body("bgp_signal_opts"),
       ),
     ),
@@ -1847,7 +1768,7 @@ export const PrefixesBgpPrefixesListResultItem = /*@__PURE__*/ S.suspend(() =>
     createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
     modifiedAt: S.optional(S.NullOr(S.String).pipe(T.Body("modified_at"))),
     onDemand: S.optional(
-      S.NullOr(PrefixesBgpPrefixesListResultItemOnDemand).pipe(
+      S.NullOr(PrefixesBgpPrefixesCreateResponseOnDemand).pipe(
         T.Body("on_demand"),
       ),
     ),
@@ -2603,49 +2524,15 @@ export const PatchPrefixBgpPrefixRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchPrefixBgpPrefixRequest",
 }) as any as S.Schema<PatchPrefixBgpPrefixRequest>;
 
-export interface PrefixesBgpPrefixesEditResponseBgpSignalOpts {
-  /** Whether control of advertisement of the prefix to the Internet is enabled to be performed via BGP signal */
-  enabled?: boolean | null;
-  /** Last time BGP signaling control was toggled. This field is null if BGP signaling has never been enabled. */
-  modifiedAt?: string | null;
-}
+export type PrefixesBgpPrefixesEditResponseBgpSignalOpts =
+  PrefixesBgpPrefixesCreateResponseBgpSignalOpts;
 export const PrefixesBgpPrefixesEditResponseBgpSignalOpts =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      enabled: S.optional(S.NullOr(S.Boolean)),
-      modifiedAt: S.optional(S.NullOr(S.String).pipe(T.Body("modified_at"))),
-    }),
-  ).annotate({
-    identifier: "PrefixesBgpPrefixesEditResponseBgpSignalOpts",
-  }) as any as S.Schema<PrefixesBgpPrefixesEditResponseBgpSignalOpts>;
+  PrefixesBgpPrefixesCreateResponseBgpSignalOpts;
 
-export interface PrefixesBgpPrefixesEditResponseOnDemand {
-  /** Prefix advertisement status to the Internet. This field is only not 'null' if on demand is enabled. */
-  advertised?: boolean | null;
-  /** Last time the advertisement status was changed. This field is only not 'null' if on demand is enabled. */
-  advertisedModifiedAt?: string | null;
-  /** Whether advertisement of the prefix to the Internet may be dynamically enabled or disabled. */
-  onDemandEnabled?: boolean | null;
-  /** Whether the advertisement status of the prefix is locked, meaning it cannot be changed. */
-  onDemandLocked?: boolean | null;
-}
-export const PrefixesBgpPrefixesEditResponseOnDemand = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      advertised: S.optional(S.NullOr(S.Boolean)),
-      advertisedModifiedAt: S.optional(
-        S.NullOr(S.String).pipe(T.Body("advertised_modified_at")),
-      ),
-      onDemandEnabled: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("on_demand_enabled")),
-      ),
-      onDemandLocked: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("on_demand_locked")),
-      ),
-    }),
-).annotate({
-  identifier: "PrefixesBgpPrefixesEditResponseOnDemand",
-}) as any as S.Schema<PrefixesBgpPrefixesEditResponseOnDemand>;
+export type PrefixesBgpPrefixesEditResponseOnDemand =
+  PrefixesBgpPrefixesCreateResponseOnDemand;
+export const PrefixesBgpPrefixesEditResponseOnDemand =
+  PrefixesBgpPrefixesCreateResponseOnDemand;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PatchPrefixBgpPrefixResponse {
@@ -2657,12 +2544,12 @@ export interface PatchPrefixBgpPrefixResponse {
   asnPrependCount?: number | null;
   /** Determines if Cloudflare advertises a BYOIP BGP prefix even when there is no matching BGP prefix in the Magic routing table. When true, Cloudflare will automatically withdraw the BGP prefix when there are no matching BGP routes, and will resume advertising when there is at least one matching BGP route. */
   autoAdvertiseWithdraw?: boolean | null;
-  bgpSignalOpts?: PrefixesBgpPrefixesEditResponseBgpSignalOpts | null;
+  bgpSignalOpts?: PrefixesBgpPrefixesCreateResponseBgpSignalOpts | null;
   /** IP Prefix in Classless Inter-Domain Routing format. */
   cidr?: string | null;
   createdAt?: string | null;
   modifiedAt?: string | null;
-  onDemand?: PrefixesBgpPrefixesEditResponseOnDemand | null;
+  onDemand?: PrefixesBgpPrefixesCreateResponseOnDemand | null;
 }
 export const PatchPrefixBgpPrefixResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2675,7 +2562,7 @@ export const PatchPrefixBgpPrefixResponse = /*@__PURE__*/ S.suspend(() =>
       S.NullOr(S.Boolean).pipe(T.Body("auto_advertise_withdraw")),
     ),
     bgpSignalOpts: S.optional(
-      S.NullOr(PrefixesBgpPrefixesEditResponseBgpSignalOpts).pipe(
+      S.NullOr(PrefixesBgpPrefixesCreateResponseBgpSignalOpts).pipe(
         T.Body("bgp_signal_opts"),
       ),
     ),
@@ -2683,7 +2570,7 @@ export const PatchPrefixBgpPrefixResponse = /*@__PURE__*/ S.suspend(() =>
     createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
     modifiedAt: S.optional(S.NullOr(S.String).pipe(T.Body("modified_at"))),
     onDemand: S.optional(
-      S.NullOr(PrefixesBgpPrefixesEditResponseOnDemand).pipe(
+      S.NullOr(PrefixesBgpPrefixesCreateResponseOnDemand).pipe(
         T.Body("on_demand"),
       ),
     ),

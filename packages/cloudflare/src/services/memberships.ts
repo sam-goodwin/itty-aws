@@ -287,19 +287,10 @@ export const GetResponsePoliciesItemResourceGroupsItemScopeList =
     GetResponsePoliciesItemResourceGroupsItemScopeItem,
   ) as any as S.Schema<GetResponsePoliciesItemResourceGroupsItemScopeList>;
 
-export interface GetResponsePoliciesItemResourceGroupsItemMeta {
-  key?: string | null;
-  value?: string | null;
-}
+export type GetResponsePoliciesItemResourceGroupsItemMeta =
+  GetResponsePoliciesItemPermissionGroupsItemMeta;
 export const GetResponsePoliciesItemResourceGroupsItemMeta =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      key: S.optional(S.NullOr(S.String)),
-      value: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier: "GetResponsePoliciesItemResourceGroupsItemMeta",
-  }) as any as S.Schema<GetResponsePoliciesItemResourceGroupsItemMeta>;
+  GetResponsePoliciesItemPermissionGroupsItemMeta;
 
 export interface GetResponsePoliciesItemResourceGroupsItem {
   /** Identifier of the resource group. */
@@ -307,7 +298,7 @@ export interface GetResponsePoliciesItemResourceGroupsItem {
   /** The scope associated to the resource group */
   scope: GetResponsePoliciesItemResourceGroupsItemScopeList;
   /** Attributes associated to the resource group. */
-  meta?: GetResponsePoliciesItemResourceGroupsItemMeta | null;
+  meta?: GetResponsePoliciesItemPermissionGroupsItemMeta | null;
   /** Name of the resource group. */
   name?: string | null;
 }
@@ -316,7 +307,9 @@ export const GetResponsePoliciesItemResourceGroupsItem =
     S.Struct({
       id: S.String,
       scope: GetResponsePoliciesItemResourceGroupsItemScopeList,
-      meta: S.optional(S.NullOr(GetResponsePoliciesItemResourceGroupsItemMeta)),
+      meta: S.optional(
+        S.NullOr(GetResponsePoliciesItemPermissionGroupsItemMeta),
+      ),
       name: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
@@ -488,41 +481,11 @@ export const PutMembershipRequest = /*@__PURE__*/ S.suspend(() =>
 export type UpdateResponseAccountType = "standard" | "enterprise";
 export const UpdateResponseAccountType = /*@__PURE__*/ S.String;
 
-export interface UpdateResponseAccountManagedBy {
-  /** ID of the parent Organization, if one exists */
-  parentOrgId?: string | null;
-  /** Name of the parent Organization, if one exists */
-  parentOrgName?: string | null;
-}
-export const UpdateResponseAccountManagedBy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parentOrgId: S.optional(S.NullOr(S.String).pipe(T.Body("parent_org_id"))),
-    parentOrgName: S.optional(
-      S.NullOr(S.String).pipe(T.Body("parent_org_name")),
-    ),
-  }),
-).annotate({
-  identifier: "UpdateResponseAccountManagedBy",
-}) as any as S.Schema<UpdateResponseAccountManagedBy>;
+export type UpdateResponseAccountManagedBy = GetResponseAccountManagedBy;
+export const UpdateResponseAccountManagedBy = GetResponseAccountManagedBy;
 
-export interface UpdateResponseAccountSettings {
-  /** Sets an abuse contact email to notify for abuse reports. */
-  abuseContactEmail?: string | null;
-  /** Indicates whether membership in this account requires that */
-  enforceTwofactor?: boolean | null;
-}
-export const UpdateResponseAccountSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    abuseContactEmail: S.optional(
-      S.NullOr(S.String).pipe(T.Body("abuse_contact_email")),
-    ),
-    enforceTwofactor: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("enforce_twofactor")),
-    ),
-  }),
-).annotate({
-  identifier: "UpdateResponseAccountSettings",
-}) as any as S.Schema<UpdateResponseAccountSettings>;
+export type UpdateResponseAccountSettings = GetResponseAccountSettings;
+export const UpdateResponseAccountSettings = GetResponseAccountSettings;
 
 export interface UpdateResponseAccount {
   /** Identifier */
@@ -533,9 +496,9 @@ export interface UpdateResponseAccount {
   /** Timestamp for the creation of the account */
   createdOn?: string | null;
   /** Parent container details */
-  managedBy?: UpdateResponseAccountManagedBy | null;
+  managedBy?: GetResponseAccountManagedBy | null;
   /** Account settings */
-  settings?: UpdateResponseAccountSettings | null;
+  settings?: GetResponseAccountSettings | null;
 }
 export const UpdateResponseAccount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -544,132 +507,52 @@ export const UpdateResponseAccount = /*@__PURE__*/ S.suspend(() =>
     type: UpdateResponseAccountType,
     createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
     managedBy: S.optional(
-      S.NullOr(UpdateResponseAccountManagedBy).pipe(T.Body("managed_by")),
+      S.NullOr(GetResponseAccountManagedBy).pipe(T.Body("managed_by")),
     ),
-    settings: S.optional(S.NullOr(UpdateResponseAccountSettings)),
+    settings: S.optional(S.NullOr(GetResponseAccountSettings)),
   }),
 ).annotate({
   identifier: "UpdateResponseAccount",
 }) as any as S.Schema<UpdateResponseAccount>;
 
-export interface UpdateResponsePermissionsAnalytics {
-  read?: boolean | null;
-  write?: boolean | null;
-}
-export const UpdateResponsePermissionsAnalytics = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    read: S.optional(S.NullOr(S.Boolean)),
-    write: S.optional(S.NullOr(S.Boolean)),
-  }),
-).annotate({
-  identifier: "UpdateResponsePermissionsAnalytics",
-}) as any as S.Schema<UpdateResponsePermissionsAnalytics>;
+export type UpdateResponsePermissionsAnalytics =
+  GetResponsePermissionsAnalytics;
+export const UpdateResponsePermissionsAnalytics =
+  GetResponsePermissionsAnalytics;
 
-export interface UpdateResponsePermissions {
-  analytics?: UpdateResponsePermissionsAnalytics | null;
-  billing?: UpdateResponsePermissionsAnalytics | null;
-  cachePurge?: UpdateResponsePermissionsAnalytics | null;
-  dns?: UpdateResponsePermissionsAnalytics | null;
-  dnsRecords?: UpdateResponsePermissionsAnalytics | null;
-  lb?: UpdateResponsePermissionsAnalytics | null;
-  logs?: UpdateResponsePermissionsAnalytics | null;
-  organization?: UpdateResponsePermissionsAnalytics | null;
-  ssl?: UpdateResponsePermissionsAnalytics | null;
-  waf?: UpdateResponsePermissionsAnalytics | null;
-  zoneSettings?: UpdateResponsePermissionsAnalytics | null;
-  zones?: UpdateResponsePermissionsAnalytics | null;
-}
-export const UpdateResponsePermissions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    analytics: S.optional(S.NullOr(UpdateResponsePermissionsAnalytics)),
-    billing: S.optional(S.NullOr(UpdateResponsePermissionsAnalytics)),
-    cachePurge: S.optional(
-      S.NullOr(UpdateResponsePermissionsAnalytics).pipe(T.Body("cache_purge")),
-    ),
-    dns: S.optional(S.NullOr(UpdateResponsePermissionsAnalytics)),
-    dnsRecords: S.optional(
-      S.NullOr(UpdateResponsePermissionsAnalytics).pipe(T.Body("dns_records")),
-    ),
-    lb: S.optional(S.NullOr(UpdateResponsePermissionsAnalytics)),
-    logs: S.optional(S.NullOr(UpdateResponsePermissionsAnalytics)),
-    organization: S.optional(S.NullOr(UpdateResponsePermissionsAnalytics)),
-    ssl: S.optional(S.NullOr(UpdateResponsePermissionsAnalytics)),
-    waf: S.optional(S.NullOr(UpdateResponsePermissionsAnalytics)),
-    zoneSettings: S.optional(
-      S.NullOr(UpdateResponsePermissionsAnalytics).pipe(
-        T.Body("zone_settings"),
-      ),
-    ),
-    zones: S.optional(S.NullOr(UpdateResponsePermissionsAnalytics)),
-  }),
-).annotate({
-  identifier: "UpdateResponsePermissions",
-}) as any as S.Schema<UpdateResponsePermissions>;
+export type UpdateResponsePermissions = GetResponsePermissions;
+export const UpdateResponsePermissions = GetResponsePermissions;
 
 export type UpdateResponsePoliciesItemAccess = "allow" | "deny";
 export const UpdateResponsePoliciesItemAccess = /*@__PURE__*/ S.String;
 
-export interface UpdateResponsePoliciesItemPermissionGroupsItemMeta {
-  key?: string | null;
-  value?: string | null;
-}
+export type UpdateResponsePoliciesItemPermissionGroupsItemMeta =
+  GetResponsePoliciesItemPermissionGroupsItemMeta;
 export const UpdateResponsePoliciesItemPermissionGroupsItemMeta =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      key: S.optional(S.NullOr(S.String)),
-      value: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier: "UpdateResponsePoliciesItemPermissionGroupsItemMeta",
-  }) as any as S.Schema<UpdateResponsePoliciesItemPermissionGroupsItemMeta>;
+  GetResponsePoliciesItemPermissionGroupsItemMeta;
 
-export interface UpdateResponsePoliciesItemPermissionGroupsItem {
-  /** Identifier of the permission group. */
-  id: string;
-  /** Attributes associated to the permission group. */
-  meta?: UpdateResponsePoliciesItemPermissionGroupsItemMeta | null;
-  /** Name of the permission group. */
-  name?: string | null;
-}
+export type UpdateResponsePoliciesItemPermissionGroupsItem =
+  GetResponsePoliciesItemPermissionGroupsItem;
 export const UpdateResponsePoliciesItemPermissionGroupsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      meta: S.optional(
-        S.NullOr(UpdateResponsePoliciesItemPermissionGroupsItemMeta),
-      ),
-      name: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier: "UpdateResponsePoliciesItemPermissionGroupsItem",
-  }) as any as S.Schema<UpdateResponsePoliciesItemPermissionGroupsItem>;
+  GetResponsePoliciesItemPermissionGroupsItem;
 
 export type UpdateResponsePoliciesItemPermissionGroupsList =
-  Array<UpdateResponsePoliciesItemPermissionGroupsItem>;
+  Array<GetResponsePoliciesItemPermissionGroupsItem>;
 export const UpdateResponsePoliciesItemPermissionGroupsList =
   /*@__PURE__*/ S.Array(
-    UpdateResponsePoliciesItemPermissionGroupsItem,
+    GetResponsePoliciesItemPermissionGroupsItem,
   ) as any as S.Schema<UpdateResponsePoliciesItemPermissionGroupsList>;
 
-export interface UpdateResponsePoliciesItemResourceGroupsItemScopeItemObjectsItem {
-  /** This is a combination of pre-defined resource name and identifier (like Zone ID etc.) */
-  key: string;
-}
+export type UpdateResponsePoliciesItemResourceGroupsItemScopeItemObjectsItem =
+  GetResponsePoliciesItemResourceGroupsItemScopeItemObjectsItem;
 export const UpdateResponsePoliciesItemResourceGroupsItemScopeItemObjectsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      key: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "UpdateResponsePoliciesItemResourceGroupsItemScopeItemObjectsItem",
-  }) as any as S.Schema<UpdateResponsePoliciesItemResourceGroupsItemScopeItemObjectsItem>;
+  GetResponsePoliciesItemResourceGroupsItemScopeItemObjectsItem;
 
 export type UpdateResponsePoliciesItemResourceGroupsItemScopeItemObjectsList =
-  Array<UpdateResponsePoliciesItemResourceGroupsItemScopeItemObjectsItem>;
+  Array<GetResponsePoliciesItemResourceGroupsItemScopeItemObjectsItem>;
 export const UpdateResponsePoliciesItemResourceGroupsItemScopeItemObjectsList =
   /*@__PURE__*/ S.Array(
-    UpdateResponsePoliciesItemResourceGroupsItemScopeItemObjectsItem,
+    GetResponsePoliciesItemResourceGroupsItemScopeItemObjectsItem,
   ) as any as S.Schema<UpdateResponsePoliciesItemResourceGroupsItemScopeItemObjectsList>;
 
 export interface UpdateResponsePoliciesItemResourceGroupsItemScopeItem {
@@ -695,19 +578,10 @@ export const UpdateResponsePoliciesItemResourceGroupsItemScopeList =
     UpdateResponsePoliciesItemResourceGroupsItemScopeItem,
   ) as any as S.Schema<UpdateResponsePoliciesItemResourceGroupsItemScopeList>;
 
-export interface UpdateResponsePoliciesItemResourceGroupsItemMeta {
-  key?: string | null;
-  value?: string | null;
-}
+export type UpdateResponsePoliciesItemResourceGroupsItemMeta =
+  GetResponsePoliciesItemPermissionGroupsItemMeta;
 export const UpdateResponsePoliciesItemResourceGroupsItemMeta =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      key: S.optional(S.NullOr(S.String)),
-      value: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier: "UpdateResponsePoliciesItemResourceGroupsItemMeta",
-  }) as any as S.Schema<UpdateResponsePoliciesItemResourceGroupsItemMeta>;
+  GetResponsePoliciesItemPermissionGroupsItemMeta;
 
 export interface UpdateResponsePoliciesItemResourceGroupsItem {
   /** Identifier of the resource group. */
@@ -715,7 +589,7 @@ export interface UpdateResponsePoliciesItemResourceGroupsItem {
   /** The scope associated to the resource group */
   scope: UpdateResponsePoliciesItemResourceGroupsItemScopeList;
   /** Attributes associated to the resource group. */
-  meta?: UpdateResponsePoliciesItemResourceGroupsItemMeta | null;
+  meta?: GetResponsePoliciesItemPermissionGroupsItemMeta | null;
   /** Name of the resource group. */
   name?: string | null;
 }
@@ -725,7 +599,7 @@ export const UpdateResponsePoliciesItemResourceGroupsItem =
       id: S.String,
       scope: UpdateResponsePoliciesItemResourceGroupsItemScopeList,
       meta: S.optional(
-        S.NullOr(UpdateResponsePoliciesItemResourceGroupsItemMeta),
+        S.NullOr(GetResponsePoliciesItemPermissionGroupsItemMeta),
       ),
       name: S.optional(S.NullOr(S.String)),
     }),
@@ -790,7 +664,7 @@ export interface PutMembershipResponse {
   /** Enterprise only. Indicates whether or not API access is enabled specifically for this user on a given account. */
   apiAccessEnabled?: boolean | null;
   /** All access permissions for the user at the account. */
-  permissions?: UpdateResponsePermissions | null;
+  permissions?: GetResponsePermissions | null;
   /** Access policy for the membership */
   policies?: UpdateResponsePoliciesList | null;
   /** List of role names the membership has for this account. */
@@ -805,7 +679,7 @@ export const PutMembershipResponse = /*@__PURE__*/ S.suspend(() =>
     apiAccessEnabled: S.optional(
       S.NullOr(S.Boolean).pipe(T.Body("api_access_enabled")),
     ),
-    permissions: S.optional(S.NullOr(UpdateResponsePermissions)),
+    permissions: S.optional(S.NullOr(GetResponsePermissions)),
     policies: S.optional(S.NullOr(UpdateResponsePoliciesList)),
     roles: S.optional(S.NullOr(UpdateResponseRolesList)),
     status: S.optional(S.NullOr(UpdateResponseStatus)),
