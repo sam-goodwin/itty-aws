@@ -1,0 +1,167 @@
+{
+  "$comment": "HAND-AUTHORED. The `service` block is not a component, so no factory exists for the reflector to walk and there is no vendored schema for it. Transcribed field by field from the Go source vendored into this build: go.opentelemetry.io/collector/service/config.go, service/pipelines/config.go, and service/telemetry/otelconftelemetry (config.go + internal/migration/v0.3.0.go). Only fields verified there are modelled; the two declarative-config subtrees the telemetry config squashes in (config.MeterProvider.readers/views, config.TracerProvider.processors, LogsConfig.processors) are deliberately OMITTED rather than guessed — they are otelconf v0.3.0 documents, not collector config, and nothing in this package can validate them. Their defaults (a Prometheus pull reader on :8888) apply unchanged, and `metrics.level: none` turns them off.",
+  "type": "object",
+  "description": "The collector's `service` block: which extensions to start, which pipelines to run, and how the collector reports on itself.",
+  "required": ["pipelines"],
+  "properties": {
+    "extensions": {
+      "description": "The ordered list of extension component ids to start. Referencing an extension that is not declared in the top-level `extensions:` section fails config validation.",
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "pipelines": {
+      "description": "The data pipelines to run, keyed by pipeline id. A pipeline id is a signal, optionally followed by `/` and an instance name.",
+      "type": "object",
+      "propertyNames": {
+        "title": "ServicePipelineId",
+        "named": true,
+        "enum": ["traces", "metrics", "logs"],
+        "$comment": "BUILD POLICY — `profiles` is omitted. service/pipelines/config.go rejects a profiles pipeline unless the alpha `service.profilesSupport` feature gate is enabled, and the Lambda extension does not enable it."
+      },
+      "additionalProperties": {
+        "title": "ServicePipeline",
+        "type": "object",
+        "description": "One pipeline: the components data flows through, in order.",
+        "required": ["receivers", "exporters"],
+        "properties": {
+          "receivers": {
+            "description": "Component ids of the receivers feeding this pipeline. At least one is required.",
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "processors": {
+            "description": "Component ids of the processors, applied in the order given. A processor may not appear twice in one pipeline.",
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "exporters": {
+            "description": "Component ids of the exporters this pipeline fans out to. At least one is required.",
+            "type": "array",
+            "items": { "type": "string" }
+          }
+        }
+      }
+    },
+    "telemetry": {
+      "title": "ServiceTelemetry",
+      "description": "The collector's own logs, metrics and traces.",
+      "type": "object",
+      "properties": {
+        "logs": {
+          "type": "object",
+          "description": "The collector's own logging. Must stay compatible with zap.Config.",
+          "properties": {
+            "level": {
+              "description": "The minimum enabled logging level.",
+              "type": "string",
+              "enum": [
+                "debug",
+                "info",
+                "warn",
+                "error",
+                "dpanic",
+                "panic",
+                "fatal"
+              ]
+            },
+            "development": {
+              "description": "Puts the logger in development mode, which changes the behavior of DPanicLevel and takes stacktraces more liberally.",
+              "type": "boolean"
+            },
+            "encoding": {
+              "description": "The logger's encoding.",
+              "type": "string",
+              "enum": ["console", "json"]
+            },
+            "disable_caller": {
+              "description": "Stops annotating logs with the calling function's file name and line number. By default, all logs are annotated.",
+              "type": "boolean"
+            },
+            "disable_stacktrace": {
+              "description": "Completely disables automatic stacktrace capturing. By default, stacktraces are captured for WarnLevel and above logs in development and ErrorLevel and above in production.",
+              "type": "boolean"
+            },
+            "disable_zap_resource": {
+              "description": "Disables adding resource attributes to logs exported through Zap. This does not affect logs exported through OTLP.",
+              "type": "boolean"
+            },
+            "sampling": {
+              "type": "object",
+              "description": "Sampling caps the global CPU and I/O load that logging puts on the process while attempting to preserve a representative subset of the logs.",
+              "properties": {
+                "enabled": {
+                  "description": "Enable sampling logging.",
+                  "type": "boolean"
+                },
+                "tick": {
+                  "description": "The interval over which each sampling decision applies.",
+                  "type": "string",
+                  "pattern": "^[0-9]+(ns|us|µs|ms|s|m|h)$"
+                },
+                "initial": {
+                  "description": "The first M messages logged each tick.",
+                  "type": "integer"
+                },
+                "thereafter": {
+                  "description": "The sampling rate: every Nth message is sampled after the initial ones each tick. Zero drops every message after the initial ones.",
+                  "type": "integer"
+                }
+              }
+            },
+            "output_paths": {
+              "description": "URLs or file paths to write logging output to. `stdout` and `stderr` are interpreted as os.Stdout and os.Stderr.",
+              "type": "array",
+              "items": { "type": "string" }
+            },
+            "error_output_paths": {
+              "description": "URLs or file paths to write zap's own internal logger errors to.",
+              "type": "array",
+              "items": { "type": "string" }
+            },
+            "initial_fields": {
+              "description": "Fields added to the root logger.",
+              "type": "object",
+              "additionalProperties": {
+                "$comment": "`{ type: object, additionalProperties: true }` is the reflector's — and therefore this compiler's — spelling of Go's `any`. Nesting it under an outer map is how `map[string]any` is written.",
+                "type": "object",
+                "additionalProperties": true
+              }
+            }
+          }
+        },
+        "metrics": {
+          "type": "object",
+          "description": "The collector's own metrics.",
+          "properties": {
+            "level": {
+              "description": "The level of telemetry metrics: `none` collects nothing, `basic` is recommended, `normal` adds indicators on top of basic, `detailed` adds dimensions and views.",
+              "type": "string",
+              "enum": ["none", "basic", "normal", "detailed"]
+            }
+          }
+        },
+        "traces": {
+          "type": "object",
+          "description": "The collector's own internal spans.",
+          "properties": {
+            "level": {
+              "description": "Whether spans are emitted: `none` collects nothing, `basic` covers the basics of the service telemetry.",
+              "type": "string",
+              "enum": ["none", "basic", "normal", "detailed"]
+            },
+            "propagators": {
+              "description": "TextMapPropagators from the supported propagators list. `tracecontext` and `b3` are supported. Empty by default, which disables context propagation.",
+              "type": "array",
+              "items": { "type": "string" }
+            }
+          }
+        },
+        "resource": {
+          "description": "User-defined attributes included with all emitted telemetry, in the legacy inline map form. Cannot be combined with the declarative `resource::attributes` list.",
+          "type": "object",
+          "additionalProperties": { "type": "string" }
+        }
+      }
+    }
+  }
+}

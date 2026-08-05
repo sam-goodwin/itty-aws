@@ -5,5 +5,5 @@ export * as Exporters from "./exporters/index.ts";
 export * as Extensions from "./extensions/index.ts";
 export * as Processors from "./processors/index.ts";
 export * as Receivers from "./receivers/index.ts";
-
+export * from "./service.ts";
 export * from "./manifest.ts";
