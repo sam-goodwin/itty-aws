@@ -1,3 +1,13 @@
+## v1.0.0-rc.2
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **release**: Ship lib from the packages that never published &nbsp;-&nbsp; by **Michael K** in https://github.com/alchemy-run/distilled/issues/423 [<samp>(87ea4)</samp>](https://github.com/alchemy-run/distilled/commit/87ea4dda0)
+
+##### &nbsp;&nbsp;&nbsp;&nbsp;[View changes on GitHub](https://github.com/alchemy-run/distilled/compare/v1.0.0-rc.1...HEAD)
+
+---
+
 ## v1.0.0-rc.1
 
 ### &nbsp;&nbsp;&nbsp;🚀 Features
