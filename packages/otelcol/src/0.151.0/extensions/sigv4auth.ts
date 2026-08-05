@@ -3,12 +3,12 @@
 
 import * as Schema from "@distilled.cloud/core/schema";
 
-export interface Sigv4AuthExtensionAssumeRole {
-  readonly arn?: string;
-  readonly externalId?: string;
-  readonly sessionName?: string;
-  readonly stsRegion?: string;
-  readonly webIdentityTokenFile?: string;
+export interface Sigv4AuthExtensionAssumeRole<Str = string> {
+  readonly arn?: Str;
+  readonly externalId?: Str;
+  readonly sessionName?: Str;
+  readonly stsRegion?: Str;
+  readonly webIdentityTokenFile?: Str;
 }
 export const Sigv4AuthExtensionAssumeRole = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
@@ -28,10 +28,10 @@ export const Sigv4AuthExtensionAssumeRole = /*@__PURE__*/ Schema.suspend(() =>
   ),
 ) as unknown as Schema.Codec<Sigv4AuthExtensionAssumeRole>;
 
-export interface Sigv4AuthExtension {
-  readonly assumeRole?: Sigv4AuthExtensionAssumeRole;
-  readonly region?: string;
-  readonly service?: string;
+export interface Sigv4AuthExtension<Str = string> {
+  readonly assumeRole?: Sigv4AuthExtensionAssumeRole<Str>;
+  readonly region?: Str;
+  readonly service?: Str;
 }
 export const Sigv4AuthExtension = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({

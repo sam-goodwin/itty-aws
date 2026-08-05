@@ -3,19 +3,19 @@
 
 import * as Schema from "@distilled.cloud/core/schema";
 
-export interface BasicAuthExtensionClientAuth {
+export interface BasicAuthExtensionClientAuth<Str = string> {
   /** Password holds the password to use for client authentication. */
-  readonly password?: string;
+  readonly password?: Str;
   /**
    * PasswordFile points to a file that contains the password. If set, takes precedence over Password. The file is watched for changes.
    */
-  readonly passwordFile?: string;
+  readonly passwordFile?: Str;
   /** Username holds the username to use for client authentication. */
-  readonly username?: string;
+  readonly username?: Str;
   /**
    * UsernameFile points to a file that contains the username. If set, takes precedence over Username. The file is watched for changes.
    */
-  readonly usernameFile?: string;
+  readonly usernameFile?: Str;
 }
 export const BasicAuthExtensionClientAuth = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
@@ -33,11 +33,11 @@ export const BasicAuthExtensionClientAuth = /*@__PURE__*/ Schema.suspend(() =>
   ),
 ) as unknown as Schema.Codec<BasicAuthExtensionClientAuth>;
 
-export interface BasicAuthExtensionHtpasswd {
+export interface BasicAuthExtensionHtpasswd<Str = string> {
   /** Path to the htpasswd file. */
-  readonly file?: string;
+  readonly file?: Str;
   /** Inline contents of the htpasswd file. */
-  readonly inline?: string;
+  readonly inline?: Str;
 }
 export const BasicAuthExtensionHtpasswd = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
@@ -46,11 +46,11 @@ export const BasicAuthExtensionHtpasswd = /*@__PURE__*/ Schema.suspend(() =>
   }),
 ) as unknown as Schema.Codec<BasicAuthExtensionHtpasswd>;
 
-export interface BasicAuthExtension {
+export interface BasicAuthExtension<Str = string> {
   /** ClientAuth settings */
-  readonly clientAuth?: BasicAuthExtensionClientAuth;
+  readonly clientAuth?: BasicAuthExtensionClientAuth<Str>;
   /** Htpasswd settings. */
-  readonly htpasswd?: BasicAuthExtensionHtpasswd;
+  readonly htpasswd?: BasicAuthExtensionHtpasswd<Str>;
 }
 export const BasicAuthExtension = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({

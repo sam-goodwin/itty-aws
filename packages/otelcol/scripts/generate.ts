@@ -262,6 +262,23 @@ interface Compiled {
   readonly type: string;
   /** The `effect/Schema` expression for this node. */
   readonly schema: string;
+  /**
+   * Whether this node contains a plain-string leaf, and therefore threads the
+   * `Str` type parameter.
+   *
+   * Every generated struct that holds one is declared `<Str = string>` and
+   * spells its string leaves `Str`. A consumer that needs to accept deferred
+   * or secret values at those leaves — an alchemy `Output`, a `Redacted` —
+   * instantiates the interface (`OtlpHttpExporter<CollectorInput>`) instead of
+   * mapping over it. The distinction is not cosmetic: a mapped type erases
+   * every nested interface name, so the hover for a mapped component config is
+   * a single 200-line structural blob, while an instantiated one still reads
+   * `OtlpHttpExporterTls<CollectorInput>`.
+   *
+   * Enum leaves are `Str`-free by construction: an unresolved value is not a
+   * spelling of `basic | normal | detailed`.
+   */
+  readonly usesStr: boolean;
 }
 
 class ModuleCompiler {
@@ -312,6 +329,7 @@ class ModuleCompiler {
     const typeLines: string[] = [];
     const schemaLines: string[] = [];
     const keyMap: [camel: string, wire: string][] = [];
+    let usesStr = false;
 
     for (const wire of wireKeys) {
       const field = properties[wire]!;
@@ -322,6 +340,7 @@ class ModuleCompiler {
         `${preferred}${pascal(wire)}`,
         `${where}.${wire}`,
       );
+      usesStr ||= compiled.usesStr;
       const optional = !required.has(wire);
       typeLines.push(
         `${this.jsdoc(field, "  ")}  readonly ${name}${optional ? "?" : ""}: ${compiled.type};`,
@@ -346,19 +365,25 @@ class ModuleCompiler {
     // Go type — TLS, retry, queue — across many components and many paths).
     const fingerprint = `${bodyType} ${bodySchema}`;
     const existing = this.byBody.get(fingerprint);
-    if (existing !== undefined) return { type: existing, schema: existing };
+    if (existing !== undefined) {
+      return {
+        type: usesStr ? `${existing}<Str>` : existing,
+        schema: existing,
+        usesStr,
+      };
+    }
 
     const name = this.claim(preferred);
     this.byBody.set(fingerprint, name);
     this.declarations.push({
       name,
       body:
-        `export interface ${name} ${bodyType}\n` +
+        `export interface ${name}${usesStr ? "<Str = string>" : ""} ${bodyType}\n` +
         `export const ${name} = /*@__PURE__*/ Schema.suspend(() =>\n` +
         `  ${bodySchema},\n` +
         `) as unknown as Schema.Codec<${name}>;\n`,
     });
-    return { type: name, schema: name };
+    return { type: usesStr ? `${name}<Str>` : name, schema: name, usesStr };
   }
 
   compile(node: Node, preferred: string, where: string): Compiled {
@@ -370,26 +395,31 @@ class ModuleCompiler {
       return {
         type: literals.map((literal) => JSON.stringify(literal)).join(" | "),
         schema: `Schema.Literals([${literals.map((literal) => JSON.stringify(literal)).join(", ")}])`,
+        usesStr: false,
       };
     }
     switch (node.type) {
       case "string":
         if (node.pattern === GO_DURATION_PATTERN) {
           this.usesDuration = true;
-          return { type: "Duration.Duration", schema: "DurationFromGoString" };
+          return {
+            type: "Duration.Duration",
+            schema: "DurationFromGoString",
+            usesStr: false,
+          };
         }
         if (node.pattern !== undefined) {
           throw new Error(
             `${where}: unsupported string pattern ${node.pattern}`,
           );
         }
-        return { type: "string", schema: "Schema.String" };
+        return { type: "Str", schema: "Schema.String", usesStr: true };
       case "boolean":
-        return { type: "boolean", schema: "Schema.Boolean" };
+        return { type: "boolean", schema: "Schema.Boolean", usesStr: false };
       case "integer":
-        return { type: "number", schema: "Schema.Int" };
+        return { type: "number", schema: "Schema.Int", usesStr: false };
       case "number":
-        return { type: "number", schema: "Schema.Number" };
+        return { type: "number", schema: "Schema.Number", usesStr: false };
       case "array": {
         if (node.items === undefined) {
           throw new Error(`${where}: array without \`items\``);
@@ -398,6 +428,7 @@ class ModuleCompiler {
         return {
           type: `ReadonlyArray<${item.type}>`,
           schema: `Schema.Array(${item.schema})`,
+          usesStr: item.usesStr,
         };
       }
       case "object": {
@@ -411,7 +442,7 @@ class ModuleCompiler {
         }
         if (node.additionalProperties === true) {
           // The reflector's spelling of Go's `any` — an attribute value.
-          return { type: "unknown", schema: "Schema.Unknown" };
+          return { type: "unknown", schema: "Schema.Unknown", usesStr: false };
         }
         if (typeof node.additionalProperties === "object") {
           const value = this.compile(
@@ -422,6 +453,7 @@ class ModuleCompiler {
           return {
             type: `{ readonly [key: string]: ${value.type} }`,
             schema: `Schema.Record(Schema.String, ${value.schema})`,
+            usesStr: value.usesStr,
           };
         }
         // An object with neither is the reflector rendering an opaque Go type
@@ -482,10 +514,25 @@ const emitComponent = (
 ): { text: string; declarations: number } => {
   const compiler = new ModuleCompiler(spec.typeName);
   const root = compiler.compile(schema, spec.typeName, spec.wire);
-  if (root.type !== spec.typeName) {
+  if (root.type.replace(/<Str>$/, "") !== spec.typeName) {
     // The root collapsed onto an earlier structurally-identical declaration,
     // or is not a struct at all. Neither can happen for a component root.
     throw new Error(`${spec.file}: component root did not compile to a struct`);
+  }
+
+  // Every component ROOT is declared `<Str = string>`, even the four whose
+  // config has no string field at all (`coldstart`, `decouple`,
+  // `memory_limiter`, `telemetryapi`). A consumer that instantiates the whole
+  // closed set at one string type should not have to know which members
+  // happen to contain a string this release; that is exactly the kind of
+  // detail that turns into a breaking change when a field is added upstream.
+  if (!root.usesStr) {
+    const declaration =
+      compiler.declarations[compiler.declarations.length - 1]!;
+    (declaration as { body: string }).body = declaration.body.replace(
+      `export interface ${spec.typeName} `,
+      `export interface ${spec.typeName}<Str = string> `,
+    );
   }
 
   const imports = [`import * as Schema from "@distilled.cloud/core/schema";`];

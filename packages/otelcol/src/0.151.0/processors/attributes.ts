@@ -3,15 +3,15 @@
 
 import * as Schema from "@distilled.cloud/core/schema";
 
-export interface AttributesProcessorActionsItem {
+export interface AttributesProcessorActionsItem<Str = string> {
   /**
    * Action specifies the type of action to perform. The set of values are {INSERT, UPDATE, UPSERT, DELETE, HASH}. Both lower case and upper case are supported. INSERT -  Inserts the key/value to attributes when the key does not exist. No action is applied to attributes where the key already exists. Either Value, FromAttribute or FromContext must be set. UPDATE -  Updates an existing key with a value. No action is applied to attributes where the key does not exist. Either Value, FromAttribute or FromContext must be set. UPSERT -  Performs insert or update action depending on the attributes containing the key. The key/value is inserted to attributes that did not originally have the key. The key/value is updated for attributes where the key already existed. Either Value, FromAttribute or FromContext must be set. DELETE  - Deletes the attribute. If the key doesn't exist, no action is performed. HASH    - Calculates the SHA-1 hash of an existing value and overwrites the value with its SHA-1 hash result. If the feature gate `coreinternal.attraction.hash.sha256` is enabled, it uses SHA2-256 instead. EXTRACT - Extracts values using a regular expression rule from the input 'key' to target keys specified in the 'rule'. If a target key already exists, it will be overridden. CONVERT  - converts the type of an existing attribute, if convertable This is a required field.
    */
-  readonly action?: string;
+  readonly action?: Str;
   /**
    * ConvertedType specifies the target type of an attribute to be converted If the key doesn't exist, no action is performed. If the value cannot be converted, the original value will be left as-is
    */
-  readonly convertedType?: string;
+  readonly convertedType?: Str;
   /**
    * DefaultValue specifies the value to use if Value/FromAttribute/FromContext doesn't provide a value (e.g., environment variable not set, attribute doesn't exist). Only used with INSERT, UPDATE, and UPSERT actions.
    */
@@ -19,17 +19,17 @@ export interface AttributesProcessorActionsItem {
   /**
    * FromAttribute specifies the attribute to use to populate the value. If the attribute doesn't exist, no action is performed.
    */
-  readonly fromAttribute?: string;
+  readonly fromAttribute?: Str;
   /**
    * FromContext specifies the context value to use to populate the value. The values would be searched in client.Info.Metadata. If the key doesn't exist, no action is performed. If the key has multiple values the values will be joined with `;` separator.
    */
-  readonly fromContext?: string;
+  readonly fromContext?: Str;
   /** Key specifies the attribute to act upon. This is a required field. */
-  readonly key?: string;
+  readonly key?: Str;
   /**
    * A regex pattern must be specified for the action EXTRACT. It uses the attribute specified by `key' to extract values from The target keys are inferred based on the names of the matcher groups provided and the names will be inferred based on the values of the matcher group. Note: All subexpressions must have a name. Note: The value type of the source key must be a string. If it isn't, no extraction will occur.
    */
-  readonly pattern?: string;
+  readonly pattern?: Str;
   /**
    * Value specifies the value to populate for the key. The type of the value is inferred from the configuration.
    */
@@ -59,9 +59,9 @@ export const AttributesProcessorActionsItem = /*@__PURE__*/ Schema.suspend(() =>
   ),
 ) as unknown as Schema.Codec<AttributesProcessorActionsItem>;
 
-export interface AttributesProcessorExcludeAttributesItem {
+export interface AttributesProcessorExcludeAttributesItem<Str = string> {
   /** Key specifies the attribute key. */
-  readonly key?: string;
+  readonly key?: Str;
   /**
    * Values specifies the value to match against. If it is not set, any value will match.
    */
@@ -75,12 +75,12 @@ export const AttributesProcessorExcludeAttributesItem =
     }),
   ) as unknown as Schema.Codec<AttributesProcessorExcludeAttributesItem>;
 
-export interface AttributesProcessorExcludeLibrariesItem {
-  readonly name?: string;
+export interface AttributesProcessorExcludeLibrariesItem<Str = string> {
+  readonly name?: Str;
   /**
    * version match expected actual  match nil      <blank> yes nil      1       yes <blank>  <blank> yes <blank>  1       no 1        <blank> no 1        1       yes
    */
-  readonly version?: string;
+  readonly version?: Str;
 }
 export const AttributesProcessorExcludeLibrariesItem =
   /*@__PURE__*/ Schema.suspend(() =>
@@ -131,19 +131,23 @@ export const AttributesProcessorExcludeRegexp = /*@__PURE__*/ Schema.suspend(
     }),
 ) as unknown as Schema.Codec<AttributesProcessorExcludeRegexp>;
 
-export interface AttributesProcessorExclude {
+export interface AttributesProcessorExclude<Str = string> {
   /**
    * Attributes specifies the list of attributes to match against. All of these attributes must match for a match to occur. This is an optional field.
    */
-  readonly attributes?: ReadonlyArray<AttributesProcessorExcludeAttributesItem>;
+  readonly attributes?: ReadonlyArray<
+    AttributesProcessorExcludeAttributesItem<Str>
+  >;
   /**
    * Libraries specify the list of items to match the implementation library against. A match occurs if the span's implementation library matches at least one item in this list. This is an optional field.
    */
-  readonly libraries?: ReadonlyArray<AttributesProcessorExcludeLibrariesItem>;
+  readonly libraries?: ReadonlyArray<
+    AttributesProcessorExcludeLibrariesItem<Str>
+  >;
   /**
    * LogBodies is a list of strings that the LogRecord's body field must match against.
    */
-  readonly logBodies?: ReadonlyArray<string>;
+  readonly logBodies?: ReadonlyArray<Str>;
   /**
    * LogSeverityNumber defines how to match against a log record's SeverityNumber, if defined.
    */
@@ -151,29 +155,31 @@ export interface AttributesProcessorExclude {
   /**
    * LogSeverityTexts is a list of strings that the LogRecord's severity text field must match against.
    */
-  readonly logSeverityTexts?: ReadonlyArray<string>;
-  readonly matchType?: string;
+  readonly logSeverityTexts?: ReadonlyArray<Str>;
+  readonly matchType?: Str;
   /**
    * MetricNames is a list of strings to match metric name against. A match occurs if metric name matches at least one item in the list. This field is optional.
    */
-  readonly metricNames?: ReadonlyArray<string>;
+  readonly metricNames?: ReadonlyArray<Str>;
   readonly regexp?: AttributesProcessorExcludeRegexp;
   /**
    * Resources specify the list of items to match the resources against. A match occurs if the data's resources match at least one item in this list. This is an optional field.
    */
-  readonly resources?: ReadonlyArray<AttributesProcessorExcludeAttributesItem>;
+  readonly resources?: ReadonlyArray<
+    AttributesProcessorExcludeAttributesItem<Str>
+  >;
   /**
    * Services specify the list of items to match service name against. A match occurs if the span's service name matches at least one item in this list. This is an optional field.
    */
-  readonly services?: ReadonlyArray<string>;
+  readonly services?: ReadonlyArray<Str>;
   /**
    * SpanKinds specify the list of items to match the span kind against. A match occurs if the span's span kind matches at least one item in this list. This is an optional field
    */
-  readonly spanKinds?: ReadonlyArray<string>;
+  readonly spanKinds?: ReadonlyArray<Str>;
   /**
    * SpanNames specify the list of items to match span name against. A match occurs if the span name matches at least one item in this list. This is an optional field.
    */
-  readonly spanNames?: ReadonlyArray<string>;
+  readonly spanNames?: ReadonlyArray<Str>;
 }
 export const AttributesProcessorExclude = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
@@ -215,19 +221,19 @@ export const AttributesProcessorExclude = /*@__PURE__*/ Schema.suspend(() =>
   ),
 ) as unknown as Schema.Codec<AttributesProcessorExclude>;
 
-export interface AttributesProcessor {
+export interface AttributesProcessor<Str = string> {
   /**
    * Actions specifies the list of attributes to act on. The set of actions are {INSERT, UPDATE, UPSERT, DELETE, HASH, EXTRACT, CONVERT}. This is a required field.
    */
-  readonly actions: ReadonlyArray<AttributesProcessorActionsItem>;
+  readonly actions: ReadonlyArray<AttributesProcessorActionsItem<Str>>;
   /**
    * Exclude specifies when this processor will not be applied to the input data which match the specified properties. Note: The `exclude` properties are checked after the `include` properties, if they exist, are checked. If `include` isn't specified, the `exclude` properties are checked against all input data. This is an optional field. If neither `include` and `exclude` are set, all input data is processed. If `exclude` is set and `include` isn't set, then all the input data that does not match the properties in this structure are processed.
    */
-  readonly exclude?: AttributesProcessorExclude;
+  readonly exclude?: AttributesProcessorExclude<Str>;
   /**
    * Include specifies the set of input data properties that must be present in order for this processor to apply to it. Note: If `exclude` is specified, the input data is compared against those properties after the `include` properties. This is an optional field. If neither `include` and `exclude` are set, all input data are processed. If `include` is set and `exclude` isn't set, then all input data matching the properties in this structure are processed.
    */
-  readonly include?: AttributesProcessorExclude;
+  readonly include?: AttributesProcessorExclude<Str>;
 }
 export const AttributesProcessor = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({

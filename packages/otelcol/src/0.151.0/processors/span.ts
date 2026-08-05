@@ -3,9 +3,9 @@
 
 import * as Schema from "@distilled.cloud/core/schema";
 
-export interface SpanProcessorExcludeAttributesItem {
+export interface SpanProcessorExcludeAttributesItem<Str = string> {
   /** Key specifies the attribute key. */
-  readonly key?: string;
+  readonly key?: Str;
   /**
    * Values specifies the value to match against. If it is not set, any value will match.
    */
@@ -19,12 +19,12 @@ export const SpanProcessorExcludeAttributesItem = /*@__PURE__*/ Schema.suspend(
     }),
 ) as unknown as Schema.Codec<SpanProcessorExcludeAttributesItem>;
 
-export interface SpanProcessorExcludeLibrariesItem {
-  readonly name?: string;
+export interface SpanProcessorExcludeLibrariesItem<Str = string> {
+  readonly name?: Str;
   /**
    * version match expected actual  match nil      <blank> yes nil      1       yes <blank>  <blank> yes <blank>  1       no 1        <blank> no 1        1       yes
    */
-  readonly version?: string;
+  readonly version?: Str;
 }
 export const SpanProcessorExcludeLibrariesItem = /*@__PURE__*/ Schema.suspend(
   () =>
@@ -74,19 +74,19 @@ export const SpanProcessorExcludeRegexp = /*@__PURE__*/ Schema.suspend(() =>
   }),
 ) as unknown as Schema.Codec<SpanProcessorExcludeRegexp>;
 
-export interface SpanProcessorExclude {
+export interface SpanProcessorExclude<Str = string> {
   /**
    * Attributes specifies the list of attributes to match against. All of these attributes must match for a match to occur. This is an optional field.
    */
-  readonly attributes?: ReadonlyArray<SpanProcessorExcludeAttributesItem>;
+  readonly attributes?: ReadonlyArray<SpanProcessorExcludeAttributesItem<Str>>;
   /**
    * Libraries specify the list of items to match the implementation library against. A match occurs if the span's implementation library matches at least one item in this list. This is an optional field.
    */
-  readonly libraries?: ReadonlyArray<SpanProcessorExcludeLibrariesItem>;
+  readonly libraries?: ReadonlyArray<SpanProcessorExcludeLibrariesItem<Str>>;
   /**
    * LogBodies is a list of strings that the LogRecord's body field must match against.
    */
-  readonly logBodies?: ReadonlyArray<string>;
+  readonly logBodies?: ReadonlyArray<Str>;
   /**
    * LogSeverityNumber defines how to match against a log record's SeverityNumber, if defined.
    */
@@ -94,29 +94,29 @@ export interface SpanProcessorExclude {
   /**
    * LogSeverityTexts is a list of strings that the LogRecord's severity text field must match against.
    */
-  readonly logSeverityTexts?: ReadonlyArray<string>;
-  readonly matchType?: string;
+  readonly logSeverityTexts?: ReadonlyArray<Str>;
+  readonly matchType?: Str;
   /**
    * MetricNames is a list of strings to match metric name against. A match occurs if metric name matches at least one item in the list. This field is optional.
    */
-  readonly metricNames?: ReadonlyArray<string>;
+  readonly metricNames?: ReadonlyArray<Str>;
   readonly regexp?: SpanProcessorExcludeRegexp;
   /**
    * Resources specify the list of items to match the resources against. A match occurs if the data's resources match at least one item in this list. This is an optional field.
    */
-  readonly resources?: ReadonlyArray<SpanProcessorExcludeAttributesItem>;
+  readonly resources?: ReadonlyArray<SpanProcessorExcludeAttributesItem<Str>>;
   /**
    * Services specify the list of items to match service name against. A match occurs if the span's service name matches at least one item in this list. This is an optional field.
    */
-  readonly services?: ReadonlyArray<string>;
+  readonly services?: ReadonlyArray<Str>;
   /**
    * SpanKinds specify the list of items to match the span kind against. A match occurs if the span's span kind matches at least one item in this list. This is an optional field
    */
-  readonly spanKinds?: ReadonlyArray<string>;
+  readonly spanKinds?: ReadonlyArray<Str>;
   /**
    * SpanNames specify the list of items to match span name against. A match occurs if the span name matches at least one item in this list. This is an optional field.
    */
-  readonly spanNames?: ReadonlyArray<string>;
+  readonly spanNames?: ReadonlyArray<Str>;
 }
 export const SpanProcessorExclude = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
@@ -154,7 +154,7 @@ export const SpanProcessorExclude = /*@__PURE__*/ Schema.suspend(() =>
   ),
 ) as unknown as Schema.Codec<SpanProcessorExclude>;
 
-export interface SpanProcessorNameToAttributes {
+export interface SpanProcessorNameToAttributes<Str = string> {
   /**
    * BreakAfterMatch specifies if processing of rules should stop after the first match. If it is false rule processing will continue to be performed over the modified span name.
    */
@@ -167,7 +167,7 @@ export interface SpanProcessorNameToAttributes {
    * Rules is a list of rules to extract attribute values from span name. The values in the span name are replaced by extracted attribute names. Each rule in the list is a regex pattern string. Span name is checked against the regex. If it matches then all named subexpressions of the regex are extracted as attributes and are added to the span. Each subexpression name becomes an attribute name and subexpression matched portion becomes the attribute value. The matched portion in the span name is replaced by extracted attribute name. If the attributes already exist in the span then they will be overwritten. The process is repeated for all rules in the order they are specified. Each subsequent rule works on the span name that is the output after processing the previous rule.
    * @deprecated
    */
-  readonly rules?: ReadonlyArray<string>;
+  readonly rules?: ReadonlyArray<Str>;
 }
 export const SpanProcessorNameToAttributes = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
@@ -183,19 +183,19 @@ export const SpanProcessorNameToAttributes = /*@__PURE__*/ Schema.suspend(() =>
   ),
 ) as unknown as Schema.Codec<SpanProcessorNameToAttributes>;
 
-export interface SpanProcessorName {
+export interface SpanProcessorName<Str = string> {
   /**
    * FromAttributes represents the attribute keys to pull the values from to generate the new span name. All attribute keys are required in the span to re-name a span. If any attribute is missing from the span, no re-name will occur. Note: The new span name is constructed in order of the `from_attributes` specified in the configuration. This field is required and cannot be empty.
    */
-  readonly fromAttributes?: ReadonlyArray<string>;
+  readonly fromAttributes?: ReadonlyArray<Str>;
   /**
    * Separator is the string used to separate attributes values in the new span name. If no value is set, no separator is used between attribute values. Used with FromAttributes only.
    */
-  readonly separator?: string;
+  readonly separator?: Str;
   /**
    * ToAttributes specifies a configuration to extract attributes from span name.
    */
-  readonly toAttributes?: SpanProcessorNameToAttributes;
+  readonly toAttributes?: SpanProcessorNameToAttributes<Str>;
 }
 export const SpanProcessorName = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
@@ -211,13 +211,13 @@ export const SpanProcessorName = /*@__PURE__*/ Schema.suspend(() =>
   ),
 ) as unknown as Schema.Codec<SpanProcessorName>;
 
-export interface SpanProcessorStatus {
+export interface SpanProcessorStatus<Str = string> {
   /**
    * Code is one of three values "Ok" or "Error" or "Unset". Please check: https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/trace/api.md#set-status
    */
-  readonly code?: string;
+  readonly code?: Str;
   /** Description is an optional field documenting Error statuses. */
-  readonly description?: string;
+  readonly description?: Str;
 }
 export const SpanProcessorStatus = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
@@ -226,21 +226,21 @@ export const SpanProcessorStatus = /*@__PURE__*/ Schema.suspend(() =>
   }),
 ) as unknown as Schema.Codec<SpanProcessorStatus>;
 
-export interface SpanProcessor {
+export interface SpanProcessor<Str = string> {
   /**
    * Exclude specifies when this processor will not be applied to the input data which match the specified properties. Note: The `exclude` properties are checked after the `include` properties, if they exist, are checked. If `include` isn't specified, the `exclude` properties are checked against all input data. This is an optional field. If neither `include` and `exclude` are set, all input data is processed. If `exclude` is set and `include` isn't set, then all the input data that does not match the properties in this structure are processed.
    */
-  readonly exclude?: SpanProcessorExclude;
+  readonly exclude?: SpanProcessorExclude<Str>;
   /**
    * Include specifies the set of input data properties that must be present in order for this processor to apply to it. Note: If `exclude` is specified, the input data is compared against those properties after the `include` properties. This is an optional field. If neither `include` and `exclude` are set, all input data are processed. If `include` is set and `exclude` isn't set, then all input data matching the properties in this structure are processed.
    */
-  readonly include?: SpanProcessorExclude;
+  readonly include?: SpanProcessorExclude<Str>;
   /**
    * Rename specifies the components required to re-name a span. The `from_attributes` field needs to be set for this processor to be properly configured. Note: The field name is `Rename` to avoid collision with the Name() method from config.NamedEntity
    */
-  readonly name?: SpanProcessorName;
+  readonly name?: SpanProcessorName<Str>;
   /** SetStatus specifies status which should be set for this span. */
-  readonly status?: SpanProcessorStatus;
+  readonly status?: SpanProcessorStatus<Str>;
 }
 export const SpanProcessor = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({

@@ -3,7 +3,7 @@
 
 import * as Schema from "@distilled.cloud/core/schema";
 
-export interface ProbabilisticSamplerProcessor {
+export interface ProbabilisticSamplerProcessor<Str = string> {
   /**
    * FailClosed indicates to not sample data (the processor will fail "closed") in case of error, such as failure to parse the tracestate field or missing the randomness attribute. By default, failure cases are sampled (the processor is fails "open").  Sampling priority-based decisions are made after FailClosed is processed, making it possible to sample despite errors using priority.
    */
@@ -11,7 +11,7 @@ export interface ProbabilisticSamplerProcessor {
   /**
    * FromAttribute (logs only) The optional name of a log record attribute used for sampling purposes, such as a unique log record ID. The value of the attribute is only used if the trace ID is absent or if `attribute_source` is set to `record`.
    */
-  readonly fromAttribute?: string;
+  readonly fromAttribute?: Str;
   /**
    * HashSeed allows one to configure the hashing seed. This is important in scenarios where multiple layers of collectors have different sampling rates: if they use the same seed all passing one layer may pass the other even if they have different sampling rates, configuring different seeds avoids that.
    */
@@ -29,7 +29,7 @@ export interface ProbabilisticSamplerProcessor {
   /**
    * SamplingPriority (logs only) enables using a log record attribute as the sampling priority of the log record.
    */
-  readonly samplingPriority?: string;
+  readonly samplingPriority?: Str;
 }
 export const ProbabilisticSamplerProcessor = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({

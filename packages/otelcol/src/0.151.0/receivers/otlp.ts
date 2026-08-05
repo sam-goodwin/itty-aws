@@ -5,9 +5,9 @@ import type * as Duration from "effect/Duration";
 import * as Schema from "@distilled.cloud/core/schema";
 import { DurationFromGoString } from "../../duration.ts";
 
-export interface OtlpReceiverProtocolsGrpcAuth {
+export interface OtlpReceiverProtocolsGrpcAuth<Str = string> {
   /** Id of the `extensions` entry that authenticates incoming requests. */
-  readonly authenticator?: string;
+  readonly authenticator?: Str;
 }
 export const OtlpReceiverProtocolsGrpcAuth = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
@@ -96,14 +96,14 @@ export const OtlpReceiverProtocolsGrpcKeepalive = /*@__PURE__*/ Schema.suspend(
     ),
 ) as unknown as Schema.Codec<OtlpReceiverProtocolsGrpcKeepalive>;
 
-export interface OtlpReceiverProtocolsGrpcTlsTpm {
-  readonly auth?: string;
+export interface OtlpReceiverProtocolsGrpcTlsTpm<Str = string> {
+  readonly auth?: Str;
   readonly enabled?: boolean;
-  readonly ownerAuth?: string;
+  readonly ownerAuth?: Str;
   /**
    * The path to the TPM device or Unix domain socket. For instance /dev/tpm0 or /dev/tpmrm0.
    */
-  readonly path?: string;
+  readonly path?: Str;
 }
 export const OtlpReceiverProtocolsGrpcTlsTpm = /*@__PURE__*/ Schema.suspend(
   () =>
@@ -122,55 +122,55 @@ export const OtlpReceiverProtocolsGrpcTlsTpm = /*@__PURE__*/ Schema.suspend(
     ),
 ) as unknown as Schema.Codec<OtlpReceiverProtocolsGrpcTlsTpm>;
 
-export interface OtlpReceiverProtocolsGrpcTls {
+export interface OtlpReceiverProtocolsGrpcTls<Str = string> {
   /**
    * Path to the CA cert. For a client this verifies the server certificate. For a server this verifies client certificates. If empty uses system root CA. (optional)
    */
-  readonly caFile?: string;
+  readonly caFile?: Str;
   /** In memory PEM encoded cert. (optional) */
-  readonly caPem?: string;
+  readonly caPem?: Str;
   /** Path to the TLS cert to use for TLS required connections. (optional) */
-  readonly certFile?: string;
+  readonly certFile?: Str;
   /**
    * In memory PEM encoded TLS cert to use for TLS required connections. (optional)
    */
-  readonly certPem?: string;
+  readonly certPem?: Str;
   /**
    * CipherSuites is a list of TLS cipher suites that the TLS transport can use. If left blank, a safe default list is used. See https://go.dev/src/crypto/tls/cipher_suites.go for a list of supported cipher suites.
    */
-  readonly cipherSuites?: ReadonlyArray<string>;
+  readonly cipherSuites?: ReadonlyArray<Str>;
   /**
    * Path to the TLS cert to use by the server to verify a client certificate. (optional) This sets the ClientCAs and ClientAuth to RequireAndVerifyClientCert in the TLSConfig. Please refer to https://godoc.org/crypto/tls#Config for more information. (optional)
    */
-  readonly clientCaFile?: string;
+  readonly clientCaFile?: Str;
   /** Reload the ClientCAs file when it is modified (optional, default false) */
   readonly clientCaFileReload?: boolean;
   /**
    * contains the elliptic curves that will be used in an ECDHE handshake, in preference order Defaults to empty list and "crypto/tls" defaults are used, internally.
    */
-  readonly curvePreferences?: ReadonlyArray<string>;
+  readonly curvePreferences?: ReadonlyArray<Str>;
   /**
    * If true, load system CA certificates pool in addition to the certificates configured in this struct.
    */
   readonly includeSystemCaCertsPool?: boolean;
   /** Path to the TLS key to use for TLS required connections. (optional) */
-  readonly keyFile?: string;
+  readonly keyFile?: Str;
   /**
    * In memory PEM encoded TLS key to use for TLS required connections. (optional)
    */
-  readonly keyPem?: string;
+  readonly keyPem?: Str;
   /**
    * MaxVersion sets the maximum TLS version that is acceptable. If not set, refer to crypto/tls for defaults. (optional)
    */
-  readonly maxVersion?: string;
+  readonly maxVersion?: Str;
   /**
    * MinVersion sets the minimum TLS version that is acceptable. If not set, TLS 1.2 will be used. (optional)
    */
-  readonly minVersion?: string;
+  readonly minVersion?: Str;
   /** Duration string (e.g., '1s', '5m', '1h') */
   readonly reloadInterval?: Duration.Duration;
   /** Trusted platform module configuration */
-  readonly tpm?: OtlpReceiverProtocolsGrpcTlsTpm;
+  readonly tpm?: OtlpReceiverProtocolsGrpcTlsTpm<Str>;
 }
 export const OtlpReceiverProtocolsGrpcTls = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
@@ -210,14 +210,14 @@ export const OtlpReceiverProtocolsGrpcTls = /*@__PURE__*/ Schema.suspend(() =>
   ),
 ) as unknown as Schema.Codec<OtlpReceiverProtocolsGrpcTls>;
 
-export interface OtlpReceiverProtocolsGrpc {
-  readonly auth?: OtlpReceiverProtocolsGrpcAuth;
+export interface OtlpReceiverProtocolsGrpc<Str = string> {
+  readonly auth?: OtlpReceiverProtocolsGrpcAuth<Str>;
   /** DialerConfig contains options for connecting to an address. */
   readonly dialer?: OtlpReceiverProtocolsGrpcDialer;
   /**
    * Endpoint configures the address for this network connection. For TCP and UDP networks, the address has the form "host:port". The host must be a literal IP address, or a host name that can be resolved to IP addresses. The port must be a literal port number or a service name. If the host is a literal IPv6 address it must be enclosed in square brackets, as in "[2001:db8::1]:80" or "[fe80::1%zone]:80". The zone specifies the scope of the literal IPv6 address as defined in RFC 4007.
    */
-  readonly endpoint?: string;
+  readonly endpoint?: Str;
   /**
    * Include propagates the incoming connection's metadata to downstream consumers.
    */
@@ -235,11 +235,11 @@ export interface OtlpReceiverProtocolsGrpc {
    * ReadBufferSize for gRPC server. See grpc.ReadBufferSize. (https://godoc.org/google.golang.org/grpc#ReadBufferSize).
    */
   readonly readBufferSize?: number;
-  readonly tls?: OtlpReceiverProtocolsGrpcTls;
+  readonly tls?: OtlpReceiverProtocolsGrpcTls<Str>;
   /**
    * Transport to use. Allowed protocols are "tcp", "tcp4" (IPv4-only), "tcp6" (IPv6-only), "udp", "udp4" (IPv4-only), "udp6" (IPv6-only), "ip", "ip4" (IPv4-only), "ip6" (IPv6-only), "unix", "unixgram", "unixpacket" and "npipe" (Windows named pipes, Windows-only).
    */
-  readonly transport?: string;
+  readonly transport?: Str;
   /**
    * WriteBufferSize for gRPC server. See grpc.WriteBufferSize. (https://godoc.org/google.golang.org/grpc#WriteBufferSize).
    */
@@ -275,13 +275,13 @@ export const OtlpReceiverProtocolsGrpc = /*@__PURE__*/ Schema.suspend(() =>
   ),
 ) as unknown as Schema.Codec<OtlpReceiverProtocolsGrpc>;
 
-export interface OtlpReceiverProtocolsHttpAuth {
+export interface OtlpReceiverProtocolsHttpAuth<Str = string> {
   /** Id of the `extensions` entry that authenticates incoming requests. */
-  readonly authenticator?: string;
+  readonly authenticator?: Str;
   /**
    * RequestParameters is a list of parameters that should be extracted from the request and added to the context. When a parameter is found in both the query string and the header, the value from the query string will be used.
    */
-  readonly requestParams?: ReadonlyArray<string>;
+  readonly requestParams?: ReadonlyArray<Str>;
 }
 export const OtlpReceiverProtocolsHttpAuth = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
@@ -295,15 +295,15 @@ export const OtlpReceiverProtocolsHttpAuth = /*@__PURE__*/ Schema.suspend(() =>
   ),
 ) as unknown as Schema.Codec<OtlpReceiverProtocolsHttpAuth>;
 
-export interface OtlpReceiverProtocolsHttpCors {
+export interface OtlpReceiverProtocolsHttpCors<Str = string> {
   /**
    * AllowedHeaders sets what headers will be allowed in CORS requests. The Accept, Accept-Language, Content-Type, and Content-Language headers are implicitly allowed. If no headers are listed, X-Requested-With will also be accepted by default. Include "*" to allow any request header.
    */
-  readonly allowedHeaders?: ReadonlyArray<string>;
+  readonly allowedHeaders?: ReadonlyArray<Str>;
   /**
    * AllowedOrigins sets the allowed values of the Origin header for HTTP/JSON requests to an OTLP receiver. An origin may contain a wildcard (*) to replace 0 or more characters (e.g., "http://*.domain.com", or "*" to allow any origin).
    */
-  readonly allowedOrigins?: ReadonlyArray<string>;
+  readonly allowedOrigins?: ReadonlyArray<Str>;
   /**
    * MaxAge sets the value of the Access-Control-Max-Age response header. Set it to the number of seconds that browsers should cache a CORS preflight response for.
    */
@@ -323,19 +323,19 @@ export const OtlpReceiverProtocolsHttpCors = /*@__PURE__*/ Schema.suspend(() =>
   ),
 ) as unknown as Schema.Codec<OtlpReceiverProtocolsHttpCors>;
 
-export interface OtlpReceiverProtocolsHttp {
-  readonly auth?: OtlpReceiverProtocolsHttpAuth;
+export interface OtlpReceiverProtocolsHttp<Str = string> {
+  readonly auth?: OtlpReceiverProtocolsHttpAuth<Str>;
   /**
    * CompressionAlgorithms configures the list of compression algorithms the server can accept. Default: ["", "gzip", "zstd", "zlib", "snappy", "deflate"]
    */
-  readonly compressionAlgorithms?: ReadonlyArray<string>;
-  readonly cors?: OtlpReceiverProtocolsHttpCors;
+  readonly compressionAlgorithms?: ReadonlyArray<Str>;
+  readonly cors?: OtlpReceiverProtocolsHttpCors<Str>;
   /** DialerConfig contains options for connecting to an address. */
   readonly dialer?: OtlpReceiverProtocolsGrpcDialer;
   /**
    * Endpoint configures the address for this network connection. For TCP and UDP networks, the address has the form "host:port". The host must be a literal IP address, or a host name that can be resolved to IP addresses. The port must be a literal port number or a service name. If the host is a literal IPv6 address it must be enclosed in square brackets, as in "[2001:db8::1]:80" or "[fe80::1%zone]:80". The zone specifies the scope of the literal IPv6 address as defined in RFC 4007.
    */
-  readonly endpoint?: string;
+  readonly endpoint?: Str;
   /** Duration string (e.g., '1s', '5m', '1h') */
   readonly idleTimeout?: Duration.Duration;
   /**
@@ -347,26 +347,26 @@ export interface OtlpReceiverProtocolsHttp {
    */
   readonly keepAlivesEnabled?: boolean;
   /** The URL path to receive logs on. If omitted "/v1/logs" will be used. */
-  readonly logsUrlPath?: string;
+  readonly logsUrlPath?: Str;
   /**
    * MaxRequestBodySize sets the maximum request body size in bytes. Default: 20MiB.
    */
   readonly maxRequestBodySize?: number;
   /** The URL path to receive metrics on. If omitted "/v1/metrics" will be used. */
-  readonly metricsUrlPath?: string;
+  readonly metricsUrlPath?: Str;
   /** Duration string (e.g., '1s', '5m', '1h') */
   readonly readHeaderTimeout?: Duration.Duration;
   /** Duration string (e.g., '1s', '5m', '1h') */
   readonly readTimeout?: Duration.Duration;
   /** Headers added to every response. */
-  readonly responseHeaders?: { readonly [key: string]: string };
-  readonly tls?: OtlpReceiverProtocolsGrpcTls;
+  readonly responseHeaders?: { readonly [key: string]: Str };
+  readonly tls?: OtlpReceiverProtocolsGrpcTls<Str>;
   /** The URL path to receive traces on. If omitted "/v1/traces" will be used. */
-  readonly tracesUrlPath?: string;
+  readonly tracesUrlPath?: Str;
   /**
    * Transport to use. Allowed protocols are "tcp", "tcp4" (IPv4-only), "tcp6" (IPv6-only), "udp", "udp4" (IPv4-only), "udp6" (IPv6-only), "ip", "ip4" (IPv4-only), "ip6" (IPv6-only), "unix", "unixgram", "unixpacket" and "npipe" (Windows named pipes, Windows-only).
    */
-  readonly transport?: string;
+  readonly transport?: Str;
   /** Duration string (e.g., '1s', '5m', '1h') */
   readonly writeTimeout?: Duration.Duration;
 }
@@ -416,9 +416,9 @@ export const OtlpReceiverProtocolsHttp = /*@__PURE__*/ Schema.suspend(() =>
   ),
 ) as unknown as Schema.Codec<OtlpReceiverProtocolsHttp>;
 
-export interface OtlpReceiverProtocols {
-  readonly grpc?: OtlpReceiverProtocolsGrpc;
-  readonly http?: OtlpReceiverProtocolsHttp;
+export interface OtlpReceiverProtocols<Str = string> {
+  readonly grpc?: OtlpReceiverProtocolsGrpc<Str>;
+  readonly http?: OtlpReceiverProtocolsHttp<Str>;
 }
 export const OtlpReceiverProtocols = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
@@ -427,11 +427,11 @@ export const OtlpReceiverProtocols = /*@__PURE__*/ Schema.suspend(() =>
   }),
 ) as unknown as Schema.Codec<OtlpReceiverProtocols>;
 
-export interface OtlpReceiver {
+export interface OtlpReceiver<Str = string> {
   /**
    * Protocols is the configuration for the supported protocols, currently gRPC and HTTP (Proto and JSON).
    */
-  readonly protocols: OtlpReceiverProtocols;
+  readonly protocols: OtlpReceiverProtocols<Str>;
 }
 export const OtlpReceiver = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({

@@ -5,7 +5,7 @@ import type * as Duration from "effect/Duration";
 import * as Schema from "@distilled.cloud/core/schema";
 import { DurationFromGoString } from "../../duration.ts";
 
-export interface MemoryLimiterProcessor {
+export interface MemoryLimiterProcessor<Str = string> {
   /** Duration string (e.g., '1s', '5m', '1h') */
   readonly checkInterval?: Duration.Duration;
   /**
