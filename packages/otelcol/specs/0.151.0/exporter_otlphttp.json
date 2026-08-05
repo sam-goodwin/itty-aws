@@ -1,0 +1,329 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "properties": {
+    "clientconfig": {
+      "description": "squash ensures fields are correctly decoded in embedded struct.",
+      "properties": {
+        "auth": {
+          "properties": {
+            "authenticator": {
+              "description": "AuthenticatorID specifies the name of the extension to use in order to authenticate the incoming data point.",
+              "type": "object"
+            }
+          },
+          "type": "object"
+        },
+        "compression": {
+          "description": "The compression key for supported compression types within collector.",
+          "type": "string"
+        },
+        "compression_params": {
+          "description": "Advanced configuration options for the Compression",
+          "properties": {
+            "level": {
+              "type": "integer"
+            }
+          },
+          "type": "object"
+        },
+        "cookies": {
+          "type": "object"
+        },
+        "disable_keep_alives": {
+          "description": "DisableKeepAlives, if true, disables HTTP keep-alives and will only use the connection to the server for a single HTTP request. WARNING: enabling this option can result in significant overhead establishing a new HTTP(S) connection for every request. Before enabling this option please consider whether changes to idle connection settings can achieve your goal.",
+          "type": "boolean"
+        },
+        "endpoint": {
+          "description": "The target URL to send data to (e.g.: http://some.url:9411/v1/traces).",
+          "type": "string"
+        },
+        "force_attempt_http2": {
+          "description": "Enabling ForceAttemptHTTP2 forces the HTTP transport to use the HTTP/2 protocol. By default, this is set to true. NOTE: HTTP/2 does not support settings such as MaxConnsPerHost, MaxIdleConnsPerHost and MaxIdleConns.",
+          "type": "boolean"
+        },
+        "headers": {
+          "description": "Additional headers attached to each HTTP request sent by the client. Existing header values are overwritten if collision happens. Header values are opaque since they may be sensitive.",
+          "items": {
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "value": {
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          "type": "array"
+        },
+        "http2_ping_timeout": {
+          "description": "Duration string (e.g., '1s', '5m', '1h')",
+          "pattern": "^[0-9]+(ns|us|µs|ms|s|m|h)$",
+          "type": "string"
+        },
+        "http2_read_idle_timeout": {
+          "description": "Duration string (e.g., '1s', '5m', '1h')",
+          "pattern": "^[0-9]+(ns|us|µs|ms|s|m|h)$",
+          "type": "string"
+        },
+        "idle_conn_timeout": {
+          "description": "Duration string (e.g., '1s', '5m', '1h')",
+          "pattern": "^[0-9]+(ns|us|µs|ms|s|m|h)$",
+          "type": "string"
+        },
+        "max_conns_per_host": {
+          "description": "MaxConnsPerHost limits the total number of connections per host, including connections in the dialing, active, and idle states. Default is 0 (unlimited).",
+          "type": "integer"
+        },
+        "max_idle_conns": {
+          "description": "MaxIdleConns is used to set a limit to the maximum idle HTTP connections the client can keep open. By default, it is set to 100. Zero means no limit.",
+          "type": "integer"
+        },
+        "max_idle_conns_per_host": {
+          "description": "MaxIdleConnsPerHost is used to set a limit to the maximum idle HTTP connections the host can keep open. If zero, [net/http.DefaultMaxIdleConnsPerHost] is used.",
+          "type": "integer"
+        },
+        "middlewares": {
+          "description": "Middlewares are used to add custom functionality to the HTTP client. Middleware handlers are called in the order they appear in this list, with the first middleware becoming the outermost handler.",
+          "items": {
+            "properties": {
+              "id": {
+                "description": "ID specifies the name of the extension to use.",
+                "type": "object"
+              }
+            },
+            "type": "object"
+          },
+          "type": "array"
+        },
+        "proxy_url": {
+          "description": "ProxyURL setting for the collector",
+          "type": "string"
+        },
+        "read_buffer_size": {
+          "description": "ReadBufferSize for HTTP client. See http.Transport.ReadBufferSize. Default is 0.",
+          "type": "integer"
+        },
+        "timeout": {
+          "description": "Duration string (e.g., '1s', '5m', '1h')",
+          "pattern": "^[0-9]+(ns|us|µs|ms|s|m|h)$",
+          "type": "string"
+        },
+        "tls": {
+          "description": "TLS struct exposes TLS client configuration.",
+          "properties": {
+            "ca_file": {
+              "description": "Path to the CA cert. For a client this verifies the server certificate. For a server this verifies client certificates. If empty uses system root CA. (optional)",
+              "type": "string"
+            },
+            "ca_pem": {
+              "description": "In memory PEM encoded cert. (optional)",
+              "type": "string"
+            },
+            "cert_file": {
+              "description": "Path to the TLS cert to use for TLS required connections. (optional)",
+              "type": "string"
+            },
+            "cert_pem": {
+              "description": "In memory PEM encoded TLS cert to use for TLS required connections. (optional)",
+              "type": "string"
+            },
+            "cipher_suites": {
+              "description": "CipherSuites is a list of TLS cipher suites that the TLS transport can use. If left blank, a safe default list is used. See https://go.dev/src/crypto/tls/cipher_suites.go for a list of supported cipher suites.",
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "curve_preferences": {
+              "description": "contains the elliptic curves that will be used in an ECDHE handshake, in preference order Defaults to empty list and \"crypto/tls\" defaults are used, internally.",
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "include_system_ca_certs_pool": {
+              "description": "If true, load system CA certificates pool in addition to the certificates configured in this struct.",
+              "type": "boolean"
+            },
+            "insecure": {
+              "description": "In gRPC and HTTP when set to true, this is used to disable the client transport security. See https://godoc.org/google.golang.org/grpc#WithInsecure for gRPC. Please refer to https://godoc.org/crypto/tls#Config for more information. (optional, default false)",
+              "type": "boolean"
+            },
+            "insecure_skip_verify": {
+              "description": "InsecureSkipVerify will enable TLS but not verify the certificate.",
+              "type": "boolean"
+            },
+            "key_file": {
+              "description": "Path to the TLS key to use for TLS required connections. (optional)",
+              "type": "string"
+            },
+            "key_pem": {
+              "description": "In memory PEM encoded TLS key to use for TLS required connections. (optional)",
+              "type": "string"
+            },
+            "max_version": {
+              "description": "MaxVersion sets the maximum TLS version that is acceptable. If not set, refer to crypto/tls for defaults. (optional)",
+              "type": "string"
+            },
+            "min_version": {
+              "description": "MinVersion sets the minimum TLS version that is acceptable. If not set, TLS 1.2 will be used. (optional)",
+              "type": "string"
+            },
+            "reload_interval": {
+              "description": "Duration string (e.g., '1s', '5m', '1h')",
+              "pattern": "^[0-9]+(ns|us|µs|ms|s|m|h)$",
+              "type": "string"
+            },
+            "server_name_override": {
+              "description": "ServerName requested by client for virtual hosting. This sets the ServerName in the TLSConfig. Please refer to https://godoc.org/crypto/tls#Config for more information. (optional)",
+              "type": "string"
+            },
+            "tpm": {
+              "description": "Trusted platform module configuration",
+              "properties": {
+                "auth": {
+                  "type": "string"
+                },
+                "enabled": {
+                  "type": "boolean"
+                },
+                "owner_auth": {
+                  "type": "string"
+                },
+                "path": {
+                  "description": "The path to the TPM device or Unix domain socket. For instance /dev/tpm0 or /dev/tpmrm0.",
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "type": "object"
+        },
+        "write_buffer_size": {
+          "description": "WriteBufferSize for HTTP client. See http.Transport.WriteBufferSize. Default is 0.",
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "encoding": {
+      "description": "The encoding to export telemetry (default: \"proto\")",
+      "type": "string"
+    },
+    "logs_endpoint": {
+      "description": "The URL to send logs to. If omitted the Endpoint + \"/v1/logs\" will be used.",
+      "type": "string"
+    },
+    "metrics_endpoint": {
+      "description": "The URL to send metrics to. If omitted the Endpoint + \"/v1/metrics\" will be used.",
+      "type": "string"
+    },
+    "profiles_endpoint": {
+      "description": "The URL to send profiles to. If omitted the Endpoint + \"/v1development/profiles\" will be used.",
+      "type": "string"
+    },
+    "retry_on_failure": {
+      "properties": {
+        "enabled": {
+          "description": "Enabled indicates whether to not retry sending batches in case of export failure.",
+          "type": "boolean"
+        },
+        "initial_interval": {
+          "description": "Duration string (e.g., '1s', '5m', '1h')",
+          "pattern": "^[0-9]+(ns|us|µs|ms|s|m|h)$",
+          "type": "string"
+        },
+        "max_elapsed_time": {
+          "description": "Duration string (e.g., '1s', '5m', '1h')",
+          "pattern": "^[0-9]+(ns|us|µs|ms|s|m|h)$",
+          "type": "string"
+        },
+        "max_interval": {
+          "description": "Duration string (e.g., '1s', '5m', '1h')",
+          "pattern": "^[0-9]+(ns|us|µs|ms|s|m|h)$",
+          "type": "string"
+        },
+        "multiplier": {
+          "description": "Multiplier is the value multiplied by the backoff interval bounds",
+          "type": "number"
+        },
+        "randomization_factor": {
+          "description": "RandomizationFactor is a random factor used to calculate next backoffs Randomized interval = RetryInterval * (1 ± RandomizationFactor)",
+          "type": "number"
+        }
+      },
+      "type": "object"
+    },
+    "sending_queue": {
+      "properties": {
+        "batch": {
+          "properties": {
+            "flush_timeout": {
+              "description": "Duration string (e.g., '1s', '5m', '1h')",
+              "pattern": "^[0-9]+(ns|us|µs|ms|s|m|h)$",
+              "type": "string"
+            },
+            "max_size": {
+              "description": "MaxSize defines the configuration for the maximum size of a batch.",
+              "type": "integer"
+            },
+            "min_size": {
+              "description": "MinSize defines the configuration for the minimum size of a batch.",
+              "type": "integer"
+            },
+            "partition": {
+              "description": "Partition defines the partitioning of the batches configuration.",
+              "properties": {
+                "metadata_keys": {
+                  "description": "MetadataKeys is a list of client.Metadata keys that will be used to partition the data into batches. If this setting is empty, a single batcher instance will be used. When this setting is not empty, one batcher will be used per distinct combination of values for the listed metadata keys. Empty value and unset metadata are treated as distinct cases. Entries are case-insensitive. Duplicated entries will trigger a validation error.",
+                  "items": {
+                    "type": "string"
+                  },
+                  "type": "array"
+                }
+              },
+              "type": "object"
+            },
+            "sizer": {
+              "description": "Sizer determines the type of size measurement used by the batch. If not configured, use the same configuration as the queue. It accepts \"requests\", \"items\", or \"bytes\".",
+              "type": "object"
+            }
+          },
+          "type": "object"
+        },
+        "block_on_overflow": {
+          "description": "BlockOnOverflow determines the behavior when the component's TotalSize limit is reached. If true, the component will wait for space; otherwise, operations will immediately return a retryable error.",
+          "type": "boolean"
+        },
+        "num_consumers": {
+          "description": "NumConsumers is the maximum number of concurrent consumers from the queue. This applies across all different optional configurations from above (e.g. wait_for_result, block_on_overflow, storage, etc.).",
+          "type": "integer"
+        },
+        "queue_size": {
+          "description": "QueueSize represents the maximum data size allowed for concurrent storage and processing.",
+          "type": "integer"
+        },
+        "sizer": {
+          "description": "Sizer determines the type of size measurement used by this component. It accepts \"requests\", \"items\", or \"bytes\".",
+          "type": "object"
+        },
+        "storage": {
+          "description": "StorageID if not empty, enables the persistent storage and uses the component specified as a storage extension for the persistent queue. TODO: This will be changed to Optional when available. See https://github.com/open-telemetry/opentelemetry-collector/issues/13822",
+          "type": "object"
+        },
+        "wait_for_result": {
+          "description": "WaitForResult determines if incoming requests are blocked until the request is processed or not. Currently, this option is not available when persistent queue is configured using the storage configuration.",
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "traces_endpoint": {
+      "description": "The URL to send traces to. If omitted the Endpoint + \"/v1/traces\" will be used.",
+      "type": "string"
+    }
+  },
+  "type": "object"
+}

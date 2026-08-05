@@ -1,0 +1,354 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "properties": {
+    "add_metric_suffixes": {
+      "deprecated": true,
+      "description": "AddMetricSuffixes controls whether unit and type suffixes are added to metrics on export Deprecated: Use TranslationStrategy instead. It will be removed in v0.153.0.",
+      "type": "boolean"
+    },
+    "clientconfig": {
+      "description": "squash ensures fields are correctly decoded in embedded struct.",
+      "properties": {
+        "auth": {
+          "properties": {
+            "authenticator": {
+              "description": "AuthenticatorID specifies the name of the extension to use in order to authenticate the incoming data point.",
+              "type": "object"
+            }
+          },
+          "type": "object"
+        },
+        "compression": {
+          "description": "The compression key for supported compression types within collector.",
+          "type": "string"
+        },
+        "compression_params": {
+          "description": "Advanced configuration options for the Compression",
+          "properties": {
+            "level": {
+              "type": "integer"
+            }
+          },
+          "type": "object"
+        },
+        "cookies": {
+          "type": "object"
+        },
+        "disable_keep_alives": {
+          "description": "DisableKeepAlives, if true, disables HTTP keep-alives and will only use the connection to the server for a single HTTP request. WARNING: enabling this option can result in significant overhead establishing a new HTTP(S) connection for every request. Before enabling this option please consider whether changes to idle connection settings can achieve your goal.",
+          "type": "boolean"
+        },
+        "endpoint": {
+          "description": "The target URL to send data to (e.g.: http://some.url:9411/v1/traces).",
+          "type": "string"
+        },
+        "force_attempt_http2": {
+          "description": "Enabling ForceAttemptHTTP2 forces the HTTP transport to use the HTTP/2 protocol. By default, this is set to true. NOTE: HTTP/2 does not support settings such as MaxConnsPerHost, MaxIdleConnsPerHost and MaxIdleConns.",
+          "type": "boolean"
+        },
+        "headers": {
+          "description": "Additional headers attached to each HTTP request sent by the client. Existing header values are overwritten if collision happens. Header values are opaque since they may be sensitive.",
+          "items": {
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "value": {
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          "type": "array"
+        },
+        "http2_ping_timeout": {
+          "description": "Duration string (e.g., '1s', '5m', '1h')",
+          "pattern": "^[0-9]+(ns|us|µs|ms|s|m|h)$",
+          "type": "string"
+        },
+        "http2_read_idle_timeout": {
+          "description": "Duration string (e.g., '1s', '5m', '1h')",
+          "pattern": "^[0-9]+(ns|us|µs|ms|s|m|h)$",
+          "type": "string"
+        },
+        "idle_conn_timeout": {
+          "description": "Duration string (e.g., '1s', '5m', '1h')",
+          "pattern": "^[0-9]+(ns|us|µs|ms|s|m|h)$",
+          "type": "string"
+        },
+        "max_conns_per_host": {
+          "description": "MaxConnsPerHost limits the total number of connections per host, including connections in the dialing, active, and idle states. Default is 0 (unlimited).",
+          "type": "integer"
+        },
+        "max_idle_conns": {
+          "description": "MaxIdleConns is used to set a limit to the maximum idle HTTP connections the client can keep open. By default, it is set to 100. Zero means no limit.",
+          "type": "integer"
+        },
+        "max_idle_conns_per_host": {
+          "description": "MaxIdleConnsPerHost is used to set a limit to the maximum idle HTTP connections the host can keep open. If zero, [net/http.DefaultMaxIdleConnsPerHost] is used.",
+          "type": "integer"
+        },
+        "middlewares": {
+          "description": "Middlewares are used to add custom functionality to the HTTP client. Middleware handlers are called in the order they appear in this list, with the first middleware becoming the outermost handler.",
+          "items": {
+            "properties": {
+              "id": {
+                "description": "ID specifies the name of the extension to use.",
+                "type": "object"
+              }
+            },
+            "type": "object"
+          },
+          "type": "array"
+        },
+        "proxy_url": {
+          "description": "ProxyURL setting for the collector",
+          "type": "string"
+        },
+        "read_buffer_size": {
+          "description": "ReadBufferSize for HTTP client. See http.Transport.ReadBufferSize. Default is 0.",
+          "type": "integer"
+        },
+        "timeout": {
+          "description": "Duration string (e.g., '1s', '5m', '1h')",
+          "pattern": "^[0-9]+(ns|us|µs|ms|s|m|h)$",
+          "type": "string"
+        },
+        "tls": {
+          "description": "TLS struct exposes TLS client configuration.",
+          "properties": {
+            "ca_file": {
+              "description": "Path to the CA cert. For a client this verifies the server certificate. For a server this verifies client certificates. If empty uses system root CA. (optional)",
+              "type": "string"
+            },
+            "ca_pem": {
+              "description": "In memory PEM encoded cert. (optional)",
+              "type": "string"
+            },
+            "cert_file": {
+              "description": "Path to the TLS cert to use for TLS required connections. (optional)",
+              "type": "string"
+            },
+            "cert_pem": {
+              "description": "In memory PEM encoded TLS cert to use for TLS required connections. (optional)",
+              "type": "string"
+            },
+            "cipher_suites": {
+              "description": "CipherSuites is a list of TLS cipher suites that the TLS transport can use. If left blank, a safe default list is used. See https://go.dev/src/crypto/tls/cipher_suites.go for a list of supported cipher suites.",
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "curve_preferences": {
+              "description": "contains the elliptic curves that will be used in an ECDHE handshake, in preference order Defaults to empty list and \"crypto/tls\" defaults are used, internally.",
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "include_system_ca_certs_pool": {
+              "description": "If true, load system CA certificates pool in addition to the certificates configured in this struct.",
+              "type": "boolean"
+            },
+            "insecure": {
+              "description": "In gRPC and HTTP when set to true, this is used to disable the client transport security. See https://godoc.org/google.golang.org/grpc#WithInsecure for gRPC. Please refer to https://godoc.org/crypto/tls#Config for more information. (optional, default false)",
+              "type": "boolean"
+            },
+            "insecure_skip_verify": {
+              "description": "InsecureSkipVerify will enable TLS but not verify the certificate.",
+              "type": "boolean"
+            },
+            "key_file": {
+              "description": "Path to the TLS key to use for TLS required connections. (optional)",
+              "type": "string"
+            },
+            "key_pem": {
+              "description": "In memory PEM encoded TLS key to use for TLS required connections. (optional)",
+              "type": "string"
+            },
+            "max_version": {
+              "description": "MaxVersion sets the maximum TLS version that is acceptable. If not set, refer to crypto/tls for defaults. (optional)",
+              "type": "string"
+            },
+            "min_version": {
+              "description": "MinVersion sets the minimum TLS version that is acceptable. If not set, TLS 1.2 will be used. (optional)",
+              "type": "string"
+            },
+            "reload_interval": {
+              "description": "Duration string (e.g., '1s', '5m', '1h')",
+              "pattern": "^[0-9]+(ns|us|µs|ms|s|m|h)$",
+              "type": "string"
+            },
+            "server_name_override": {
+              "description": "ServerName requested by client for virtual hosting. This sets the ServerName in the TLSConfig. Please refer to https://godoc.org/crypto/tls#Config for more information. (optional)",
+              "type": "string"
+            },
+            "tpm": {
+              "description": "Trusted platform module configuration",
+              "properties": {
+                "auth": {
+                  "type": "string"
+                },
+                "enabled": {
+                  "type": "boolean"
+                },
+                "owner_auth": {
+                  "type": "string"
+                },
+                "path": {
+                  "description": "The path to the TPM device or Unix domain socket. For instance /dev/tpm0 or /dev/tpmrm0.",
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "type": "object"
+        },
+        "write_buffer_size": {
+          "description": "WriteBufferSize for HTTP client. See http.Transport.WriteBufferSize. Default is 0.",
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "disable_scope_info": {
+      "description": "DisableScopeInfo allows disabling the export of the scope info labels",
+      "type": "boolean"
+    },
+    "enabled": {
+      "description": "Enabled indicates whether to not retry sending batches in case of export failure.",
+      "type": "boolean"
+    },
+    "external_labels": {
+      "additionalProperties": {
+        "type": "string"
+      },
+      "description": "ExternalLabels defines a map of label keys and values that are allowed to start with reserved prefix \"__\"",
+      "type": "object"
+    },
+    "initial_interval": {
+      "description": "Duration string (e.g., '1s', '5m', '1h')",
+      "pattern": "^[0-9]+(ns|us|µs|ms|s|m|h)$",
+      "type": "string"
+    },
+    "max_batch_request_parallelism": {
+      "description": "maximum amount of parallel requests to do when handling large batch request",
+      "type": "integer"
+    },
+    "max_batch_size_bytes": {
+      "description": "maximum size in bytes of time series batch sent to remote storage",
+      "type": "integer"
+    },
+    "max_elapsed_time": {
+      "description": "Duration string (e.g., '1s', '5m', '1h')",
+      "pattern": "^[0-9]+(ns|us|µs|ms|s|m|h)$",
+      "type": "string"
+    },
+    "max_interval": {
+      "description": "Duration string (e.g., '1s', '5m', '1h')",
+      "pattern": "^[0-9]+(ns|us|µs|ms|s|m|h)$",
+      "type": "string"
+    },
+    "multiplier": {
+      "description": "Multiplier is the value multiplied by the backoff interval bounds",
+      "type": "number"
+    },
+    "namespace": {
+      "description": "prefix attached to each exported metric name See: https://prometheus.io/docs/practices/naming/#metric-names",
+      "type": "string"
+    },
+    "protobuf_message": {
+      "description": "RemoteWriteProtoMsg controls whether prometheus remote write v1 or v2 is sent.",
+      "type": "string"
+    },
+    "randomization_factor": {
+      "description": "RandomizationFactor is a random factor used to calculate next backoffs Randomized interval = RetryInterval * (1 ± RandomizationFactor)",
+      "type": "number"
+    },
+    "remote_write_queue": {
+      "description": "QueueConfig allows users to fine tune the queues that handle outgoing requests.",
+      "properties": {
+        "enabled": {
+          "description": "Enabled if false the queue is not enabled, the export requests are executed synchronously.",
+          "type": "boolean"
+        },
+        "num_consumers": {
+          "description": "NumWorkers configures the number of workers used by the collector to fan out remote write requests.",
+          "type": "integer"
+        },
+        "queue_size": {
+          "description": "QueueSize is the maximum number of OTLP metric batches allowed in the queue at a given time. Ignored if Enabled is false.",
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "resource_to_telemetry_conversion": {
+      "description": "ResourceToTelemetrySettings is the option for converting resource attributes to telemetry attributes. \"Enabled\" - A boolean field to enable/disable this option. Default is `false`. If enabled, all the resource attributes will be converted to metric labels by default. \"ExcludeServiceAttributes\" - If set to `true`, the `service.name`, `service.instance.id` and `service.namespace` resource attributes, which are already converted to `job` and `instance` labels respectively, will be excluded from the final metrics.",
+      "properties": {
+        "enabled": {
+          "description": "Enabled indicates whether to convert resource attributes to telemetry attributes. Default is `false`.",
+          "type": "boolean"
+        },
+        "exclude_service_attributes": {
+          "description": "ExcludeServiceAttributes indicates whether to exclude `service.name`, `service.instance.id` and `service.namespace` resource attributes from being converted to metric attributes. Default is `false`. When set to `true`, these attributes will not be added to metric labels since they are already mapped to Prometheus `job` and `instance` labels respectively.",
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "send_metadata": {
+      "description": "SendMetadata controls whether prometheus metadata will be generated and sent, this option is ignored when using PRW 2.0, which always includes metadata.",
+      "type": "boolean"
+    },
+    "target_info": {
+      "description": "TargetInfo allows customizing the target_info metric",
+      "properties": {
+        "enabled": {
+          "description": "Enabled if false the target_info metric is not generated by the exporter",
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "timeoutsettings": {
+      "description": "squash ensures fields are correctly decoded in embedded struct.",
+      "properties": {
+        "timeout": {
+          "description": "Duration string (e.g., '1s', '5m', '1h')",
+          "pattern": "^[0-9]+(ns|us|µs|ms|s|m|h)$",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "translation_strategy": {
+      "description": "TranslationStrategy controls how OTLP metric and attribute names are translated into Prometheus metric and label names. When set, this takes precedence over AddMetricSuffixes.",
+      "type": "string"
+    },
+    "wal": {
+      "properties": {
+        "buffer_size": {
+          "type": "integer"
+        },
+        "directory": {
+          "type": "string"
+        },
+        "lag_record_frequency": {
+          "description": "Duration string (e.g., '1s', '5m', '1h')",
+          "pattern": "^[0-9]+(ns|us|µs|ms|s|m|h)$",
+          "type": "string"
+        },
+        "truncate_frequency": {
+          "description": "Duration string (e.g., '1s', '5m', '1h')",
+          "pattern": "^[0-9]+(ns|us|µs|ms|s|m|h)$",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    }
+  },
+  "type": "object"
+}

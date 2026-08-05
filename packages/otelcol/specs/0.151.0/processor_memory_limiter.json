@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "properties": {
+    "check_interval": {
+      "description": "Duration string (e.g., '1s', '5m', '1h')",
+      "pattern": "^[0-9]+(ns|us|µs|ms|s|m|h)$",
+      "type": "string"
+    },
+    "limit_mib": {
+      "description": "MemoryLimitMiB is the maximum amount of memory, in MiB, targeted to be allocated by the process.",
+      "type": "integer"
+    },
+    "limit_percentage": {
+      "description": "MemoryLimitPercentage is the maximum amount of memory, in %, targeted to be allocated by the process. The fixed memory settings MemoryLimitMiB has a higher precedence.",
+      "type": "integer"
+    },
+    "min_gc_interval_when_hard_limited": {
+      "description": "Duration string (e.g., '1s', '5m', '1h')",
+      "pattern": "^[0-9]+(ns|us|µs|ms|s|m|h)$",
+      "type": "string"
+    },
+    "min_gc_interval_when_soft_limited": {
+      "description": "Duration string (e.g., '1s', '5m', '1h')",
+      "pattern": "^[0-9]+(ns|us|µs|ms|s|m|h)$",
+      "type": "string"
+    },
+    "spike_limit_mib": {
+      "description": "MemorySpikeLimitMiB is the maximum, in MiB, spike expected between the measurements of memory usage.",
+      "type": "integer"
+    },
+    "spike_limit_percentage": {
+      "description": "MemorySpikePercentage is the maximum, in percents against the total memory, spike expected between the measurements of memory usage.",
+      "type": "integer"
+    }
+  },
+  "type": "object"
+}

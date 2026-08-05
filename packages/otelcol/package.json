@@ -1,0 +1,55 @@
+{
+  "name": "@distilled.cloud/otelcol",
+  "version": "0.30.2",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/alchemy-run/distilled",
+    "directory": "packages/otelcol"
+  },
+  "license": "Apache-2.0",
+  "type": "module",
+  "sideEffects": false,
+  "module": "src/index.ts",
+  "files": [
+    "lib",
+    "src"
+  ],
+  "exports": {
+    ".": {
+      "types": "./lib/index.d.ts",
+      "bun": "./src/index.ts",
+      "default": "./lib/index.js"
+    },
+    "./0.151.0": {
+      "types": "./lib/0.151.0/index.d.ts",
+      "bun": "./src/0.151.0/index.ts",
+      "default": "./lib/0.151.0/index.js"
+    },
+    "./Duration": {
+      "types": "./lib/duration.d.ts",
+      "bun": "./src/duration.ts",
+      "default": "./lib/duration.js"
+    }
+  },
+  "scripts": {
+    "typecheck": "tsc",
+    "build": "tsc -b",
+    "fmt": "oxfmt --write src",
+    "lint": "oxlint --fix src",
+    "check": "tsc && oxlint src && oxfmt --check src",
+    "test": "bunx vitest run test --passWithNoTests",
+    "publish:npm": "bun run build && bun publish --access public",
+    "generate": "bun run scripts/generate.ts && oxlint --fix src && oxfmt --write src && oxfmt --write src"
+  },
+  "dependencies": {
+    "@distilled.cloud/core": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/bun": "catalog:",
+    "@types/node": "catalog:",
+    "vitest": "catalog:"
+  },
+  "peerDependencies": {
+    "effect": "catalog:"
+  }
+}
