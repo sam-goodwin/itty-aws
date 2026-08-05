@@ -39,52 +39,6 @@
     },
     {
       "op": "add",
-      "path": "/shapes/com.cloudflare.acm#AdvancedCertificateManagerRequired",
-      "value": {
-        "type": "structure",
-        "members": {
-          "code": {
-            "target": "smithy.api#Integer"
-          },
-          "message": {
-            "target": "smithy.api#String"
-          }
-        },
-        "traits": {
-          "smithy.api#error": "client",
-          "com.cloudflare.protocols#errorMatchers": [
-            {
-              "code": 1450
-            }
-          ]
-        }
-      }
-    },
-    {
-      "op": "add",
-      "path": "/shapes/com.cloudflare.acm#Forbidden",
-      "value": {
-        "type": "structure",
-        "members": {
-          "code": {
-            "target": "smithy.api#Integer"
-          },
-          "message": {
-            "target": "smithy.api#String"
-          }
-        },
-        "traits": {
-          "smithy.api#error": "client",
-          "com.cloudflare.protocols#errorMatchers": [
-            {
-              "status": 403
-            }
-          ]
-        }
-      }
-    },
-    {
-      "op": "add",
       "path": "/shapes/com.cloudflare.acm#ListCustomTrustStores/errors",
       "value": [
         {

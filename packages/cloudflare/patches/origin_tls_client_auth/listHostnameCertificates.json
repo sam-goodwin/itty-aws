@@ -36,29 +36,6 @@
     },
     {
       "op": "add",
-      "path": "/shapes/com.cloudflare.origin_tls_client_auth#Forbidden",
-      "value": {
-        "type": "structure",
-        "members": {
-          "code": {
-            "target": "smithy.api#Integer"
-          },
-          "message": {
-            "target": "smithy.api#String"
-          }
-        },
-        "traits": {
-          "smithy.api#error": "client",
-          "com.cloudflare.protocols#errorMatchers": [
-            {
-              "status": 403
-            }
-          ]
-        }
-      }
-    },
-    {
-      "op": "add",
       "path": "/shapes/com.cloudflare.origin_tls_client_auth#ListHostnameCertificates/errors",
       "value": [
         {

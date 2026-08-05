@@ -28,55 +28,6 @@
     },
     {
       "op": "add",
-      "path": "/shapes/com.cloudflare.page_shield#PolicyQuotaExceeded",
-      "value": {
-        "type": "structure",
-        "members": {
-          "code": {
-            "target": "smithy.api#Integer"
-          },
-          "message": {
-            "target": "smithy.api#String"
-          }
-        },
-        "traits": {
-          "smithy.api#error": "client",
-          "com.cloudflare.protocols#errorMatchers": [
-            {
-              "status": 400,
-              "message": {
-                "includes": "exceeded the maximum number of rules in the phase http_response_page_shield"
-              }
-            }
-          ]
-        }
-      }
-    },
-    {
-      "op": "add",
-      "path": "/shapes/com.cloudflare.page_shield#Forbidden",
-      "value": {
-        "type": "structure",
-        "members": {
-          "code": {
-            "target": "smithy.api#Integer"
-          },
-          "message": {
-            "target": "smithy.api#String"
-          }
-        },
-        "traits": {
-          "smithy.api#error": "client",
-          "com.cloudflare.protocols#errorMatchers": [
-            {
-              "status": 403
-            }
-          ]
-        }
-      }
-    },
-    {
-      "op": "add",
       "path": "/shapes/com.cloudflare.page_shield#CreatePolicy/errors",
       "value": [
         {

@@ -28,32 +28,6 @@
     },
     {
       "op": "add",
-      "path": "/shapes/com.cloudflare.zero_trust#GatewayCertificateQuotaReached",
-      "value": {
-        "type": "structure",
-        "members": {
-          "code": {
-            "target": "smithy.api#Integer"
-          },
-          "message": {
-            "target": "smithy.api#String"
-          }
-        },
-        "traits": {
-          "smithy.api#error": "client",
-          "com.cloudflare.protocols#errorMatchers": [
-            {
-              "status": 400,
-              "message": {
-                "includes": "Up to 3 certificates may be created in a 24 hour period"
-              }
-            }
-          ]
-        }
-      }
-    },
-    {
-      "op": "add",
       "path": "/shapes/com.cloudflare.zero_trust#CreateGatewayCertificate/errors",
       "value": [
         {

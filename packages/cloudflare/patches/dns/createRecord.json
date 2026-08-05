@@ -28,61 +28,6 @@
     },
     {
       "op": "add",
-      "path": "/shapes/com.cloudflare.dns#DnsRecordAlreadyExists",
-      "value": {
-        "type": "structure",
-        "members": {
-          "code": {
-            "target": "smithy.api#Integer"
-          },
-          "message": {
-            "target": "smithy.api#String"
-          }
-        },
-        "traits": {
-          "smithy.api#error": "client",
-          "com.cloudflare.protocols#errorMatchers": [
-            {
-              "code": 81057
-            },
-            {
-              "code": 81058
-            },
-            {
-              "status": 400,
-              "message": {
-                "includes": "identical record already exists"
-              }
-            }
-          ]
-        }
-      }
-    },
-    {
-      "op": "add",
-      "path": "/shapes/com.cloudflare.dns#Forbidden",
-      "value": {
-        "type": "structure",
-        "members": {
-          "code": {
-            "target": "smithy.api#Integer"
-          },
-          "message": {
-            "target": "smithy.api#String"
-          }
-        },
-        "traits": {
-          "smithy.api#error": "client",
-          "com.cloudflare.protocols#errorMatchers": [
-            {
-              "status": 403
-            }
-          ]
-        }
-      }
-    },
-    {
-      "op": "add",
       "path": "/shapes/com.cloudflare.dns#CreateRecord/errors",
       "value": [
         {

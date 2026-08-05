@@ -3,23 +3,10 @@
   "patches": [
     {
       "op": "add",
-      "path": "/shapes/com.cloudflare.workers#RouteScriptNotFound",
-      "value": {
-        "type": "structure",
-        "members": {
-          "code": { "target": "smithy.api#Integer" },
-          "message": { "target": "smithy.api#String" }
-        },
-        "traits": {
-          "smithy.api#error": "client",
-          "com.cloudflare.protocols#errorMatchers": [{ "code": 10019 }]
-        }
-      }
-    },
-    {
-      "op": "add",
       "path": "/shapes/com.cloudflare.workers#CreateRoute/errors/-",
-      "value": { "target": "com.cloudflare.workers#RouteScriptNotFound" }
+      "value": {
+        "target": "com.cloudflare.workers#RouteScriptNotFound"
+      }
     }
   ]
 }

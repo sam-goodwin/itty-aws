@@ -28,64 +28,6 @@
     },
     {
       "op": "add",
-      "path": "/shapes/com.cloudflare.queues#QueueNotFound",
-      "value": {
-        "type": "structure",
-        "members": {
-          "code": {
-            "target": "smithy.api#Integer"
-          },
-          "message": {
-            "target": "smithy.api#String"
-          }
-        },
-        "traits": {
-          "smithy.api#error": "client",
-          "com.cloudflare.protocols#errorMatchers": [
-            {
-              "code": 11000
-            },
-            {
-              "code": 0,
-              "message": {
-                "includes": "Queue does not exist"
-              }
-            },
-            {
-              "status": 404,
-              "message": {
-                "includes": "Queue does not exist"
-              }
-            }
-          ]
-        }
-      }
-    },
-    {
-      "op": "add",
-      "path": "/shapes/com.cloudflare.queues#InvalidRoute",
-      "value": {
-        "type": "structure",
-        "members": {
-          "code": {
-            "target": "smithy.api#Integer"
-          },
-          "message": {
-            "target": "smithy.api#String"
-          }
-        },
-        "traits": {
-          "smithy.api#error": "client",
-          "com.cloudflare.protocols#errorMatchers": [
-            {
-              "code": 7003
-            }
-          ]
-        }
-      }
-    },
-    {
-      "op": "add",
       "path": "/shapes/com.cloudflare.queues#PatchQueue/errors",
       "value": [
         {

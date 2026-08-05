@@ -28,57 +28,6 @@
     },
     {
       "op": "add",
-      "path": "/shapes/com.cloudflare.ai_gateway#NoManualTopup",
-      "value": {
-        "type": "structure",
-        "members": {
-          "code": {
-            "target": "smithy.api#Integer"
-          },
-          "message": {
-            "target": "smithy.api#String"
-          }
-        },
-        "traits": {
-          "smithy.api#error": "client",
-          "com.cloudflare.protocols#errorMatchers": [
-            {
-              "code": 1000,
-              "message": {
-                "includes": "NO_MANUAL_TOPUP"
-              }
-            }
-          ]
-        }
-      }
-    },
-    {
-      "op": "add",
-      "path": "/shapes/com.cloudflare.ai_gateway#AiGatewaySpendingLimitDeprecated",
-      "value": {
-        "type": "structure",
-        "members": {
-          "code": {
-            "target": "smithy.api#Integer"
-          },
-          "message": {
-            "target": "smithy.api#String"
-          }
-        },
-        "traits": {
-          "smithy.api#error": "client",
-          "com.cloudflare.protocols#errorMatchers": [
-            {
-              "message": {
-                "includes": "spending limits are deprecated"
-              }
-            }
-          ]
-        }
-      }
-    },
-    {
-      "op": "add",
       "path": "/shapes/com.cloudflare.ai_gateway#CreateBillingSpendingLimit/errors",
       "value": [
         {

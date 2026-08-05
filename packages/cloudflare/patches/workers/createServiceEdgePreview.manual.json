@@ -92,28 +92,6 @@
     },
     {
       "op": "add",
-      "path": "/shapes/com.cloudflare.workers#InvalidRoute",
-      "value": {
-        "type": "structure",
-        "members": {
-          "code": {
-            "target": "smithy.api#Integer"
-          },
-          "message": {
-            "target": "smithy.api#String"
-          }
-        },
-        "traits": {
-          "smithy.api#error": "client",
-          "com.cloudflare.protocols#errorMatchers": [
-            { "code": 7003 },
-            { "code": 7003, "message": { "includes": "Could not route" } }
-          ]
-        }
-      }
-    },
-    {
-      "op": "add",
       "path": "/shapes/com.cloudflare.workers#CreateServiceEdgePreview",
       "value": {
         "type": "operation",
@@ -123,7 +101,11 @@
         "output": {
           "target": "com.cloudflare.workers#CreateServiceEdgePreviewResponse"
         },
-        "errors": [{ "target": "com.cloudflare.workers#InvalidRoute" }],
+        "errors": [
+          {
+            "target": "com.cloudflare.workers#InvalidRoute"
+          }
+        ],
         "traits": {
           "smithy.api#http": {
             "method": "POST",

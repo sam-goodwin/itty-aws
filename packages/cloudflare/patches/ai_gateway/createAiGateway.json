@@ -28,32 +28,6 @@
     },
     {
       "op": "add",
-      "path": "/shapes/com.cloudflare.ai_gateway#GatewayAlreadyExists",
-      "value": {
-        "type": "structure",
-        "members": {
-          "code": {
-            "target": "smithy.api#Integer"
-          },
-          "message": {
-            "target": "smithy.api#String"
-          }
-        },
-        "traits": {
-          "smithy.api#error": "client",
-          "com.cloudflare.protocols#errorMatchers": [
-            {
-              "code": 7001
-            },
-            {
-              "status": 504
-            }
-          ]
-        }
-      }
-    },
-    {
-      "op": "add",
       "path": "/shapes/com.cloudflare.ai_gateway#CreateAiGateway/errors",
       "value": [
         {

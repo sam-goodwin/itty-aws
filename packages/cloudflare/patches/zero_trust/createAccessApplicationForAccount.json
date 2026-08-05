@@ -28,32 +28,6 @@
     },
     {
       "op": "add",
-      "path": "/shapes/com.cloudflare.zero_trust#AccessReferenceNotFound",
-      "value": {
-        "type": "structure",
-        "members": {
-          "code": {
-            "target": "smithy.api#Integer"
-          },
-          "message": {
-            "target": "smithy.api#String"
-          }
-        },
-        "traits": {
-          "smithy.api#error": "client",
-          "com.cloudflare.protocols#errorMatchers": [
-            {
-              "status": 400,
-              "message": {
-                "includes": "not found"
-              }
-            }
-          ]
-        }
-      }
-    },
-    {
-      "op": "add",
       "path": "/shapes/com.cloudflare.zero_trust#CreateAccessApplicationForAccount/errors",
       "value": [
         {

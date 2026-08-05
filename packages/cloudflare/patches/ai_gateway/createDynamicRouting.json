@@ -28,61 +28,6 @@
     },
     {
       "op": "add",
-      "path": "/shapes/com.cloudflare.ai_gateway#RouteAlreadyExists",
-      "value": {
-        "type": "structure",
-        "members": {
-          "code": {
-            "target": "smithy.api#Integer"
-          },
-          "message": {
-            "target": "smithy.api#String"
-          }
-        },
-        "traits": {
-          "smithy.api#error": "client",
-          "com.cloudflare.protocols#errorMatchers": [
-            {
-              "code": 7005,
-              "message": {
-                "includes": "already exists"
-              }
-            },
-            {
-              "status": 500,
-              "message": {
-                "includes": "UNIQUE constraint failed: routes.name"
-              }
-            }
-          ]
-        }
-      }
-    },
-    {
-      "op": "add",
-      "path": "/shapes/com.cloudflare.ai_gateway#GatewayNotFound",
-      "value": {
-        "type": "structure",
-        "members": {
-          "code": {
-            "target": "smithy.api#Integer"
-          },
-          "message": {
-            "target": "smithy.api#String"
-          }
-        },
-        "traits": {
-          "smithy.api#error": "client",
-          "com.cloudflare.protocols#errorMatchers": [
-            {
-              "code": 7002
-            }
-          ]
-        }
-      }
-    },
-    {
-      "op": "add",
       "path": "/shapes/com.cloudflare.ai_gateway#CreateDynamicRouting/errors",
       "value": [
         {

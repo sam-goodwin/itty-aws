@@ -28,61 +28,6 @@
     },
     {
       "op": "add",
-      "path": "/shapes/com.cloudflare.mtls_certificates#CertificateNotFound",
-      "value": {
-        "type": "structure",
-        "members": {
-          "code": {
-            "target": "smithy.api#Integer"
-          },
-          "message": {
-            "target": "smithy.api#String"
-          }
-        },
-        "traits": {
-          "smithy.api#error": "client",
-          "com.cloudflare.protocols#errorMatchers": [
-            {
-              "code": 1472,
-              "message": {
-                "includes": "Certificate not found"
-              }
-            },
-            {
-              "status": 404
-            }
-          ]
-        }
-      }
-    },
-    {
-      "op": "add",
-      "path": "/shapes/com.cloudflare.mtls_certificates#CertificateAlreadyDeleted",
-      "value": {
-        "type": "structure",
-        "members": {
-          "code": {
-            "target": "smithy.api#Integer"
-          },
-          "message": {
-            "target": "smithy.api#String"
-          }
-        },
-        "traits": {
-          "smithy.api#error": "client",
-          "com.cloudflare.protocols#errorMatchers": [
-            {
-              "status": 400,
-              "message": {
-                "includes": "already deleted"
-              }
-            }
-          ]
-        }
-      }
-    },
-    {
-      "op": "add",
       "path": "/shapes/com.cloudflare.mtls_certificates#DeleteMtlsCertificate/errors",
       "value": [
         {

@@ -28,32 +28,6 @@
     },
     {
       "op": "add",
-      "path": "/shapes/com.cloudflare.iam#UserGroupNameInUse",
-      "value": {
-        "type": "structure",
-        "members": {
-          "code": {
-            "target": "smithy.api#Integer"
-          },
-          "message": {
-            "target": "smithy.api#String"
-          }
-        },
-        "traits": {
-          "smithy.api#error": "client",
-          "com.cloudflare.protocols#errorMatchers": [
-            {
-              "code": 400,
-              "message": {
-                "includes": "already in use"
-              }
-            }
-          ]
-        }
-      }
-    },
-    {
-      "op": "add",
       "path": "/shapes/com.cloudflare.iam#CreateUserGroup/errors",
       "value": [
         {

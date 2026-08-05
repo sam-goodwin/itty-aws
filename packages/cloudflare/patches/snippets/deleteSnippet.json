@@ -28,67 +28,6 @@
     },
     {
       "op": "add",
-      "path": "/shapes/com.cloudflare.snippets#SnippetNotFound",
-      "value": {
-        "type": "structure",
-        "members": {
-          "code": {
-            "target": "smithy.api#Integer"
-          },
-          "message": {
-            "target": "smithy.api#String"
-          }
-        },
-        "traits": {
-          "smithy.api#error": "client",
-          "com.cloudflare.protocols#errorMatchers": [
-            {
-              "status": 400,
-              "message": {
-                "includes": "snippet not found"
-              }
-            },
-            {
-              "status": 404
-            }
-          ]
-        }
-      }
-    },
-    {
-      "op": "add",
-      "path": "/shapes/com.cloudflare.snippets#SnippetInUse",
-      "value": {
-        "type": "structure",
-        "members": {
-          "code": {
-            "target": "smithy.api#Integer"
-          },
-          "message": {
-            "target": "smithy.api#String"
-          }
-        },
-        "traits": {
-          "smithy.api#error": "client",
-          "com.cloudflare.protocols#errorMatchers": [
-            {
-              "status": 400,
-              "message": {
-                "includes": "still used"
-              }
-            },
-            {
-              "status": 409,
-              "message": {
-                "includes": "still used"
-              }
-            }
-          ]
-        }
-      }
-    },
-    {
-      "op": "add",
       "path": "/shapes/com.cloudflare.snippets#DeleteSnippet/errors",
       "value": [
         {

@@ -269,6 +269,14 @@ for (const file of fs.readdirSync(SMITHY_DIR)) {
   const shapes: Record<string, any> = model.shapes;
   const shapeNames = new Set(Object.keys(shapes).map((id) => id.split("#")[1]));
 
+  // Error shapes are declared ONCE per resource, in `_errors.json`, not
+  // repeated in every operation's patch file (#421). `Forbidden` alone was
+  // re-declared 668 times across zero_trust's operations — identical bodies,
+  // so 2,364 of the declarations were pure duplication, and changing one
+  // error meant editing every file that happened to mention it. Operations
+  // still list the errors they return in their own `errors` array.
+  const resourceErrors = new Map<string, unknown>();
+
   for (const [opId, def] of Object.entries<any>(shapes)) {
     if (def.type !== "operation") continue;
     const http = def.traits?.["smithy.api#http"];
@@ -387,19 +395,15 @@ for (const file of fs.readdirSync(SMITHY_DIR)) {
           collisions++;
           continue;
         }
-        patches.push({
-          op: "add",
-          path: `/shapes/${ns}#${safeName}`,
-          value: {
-            type: "structure",
-            members: {
-              code: { target: "smithy.api#Integer" },
-              message: { target: "smithy.api#String" },
-            },
-            traits: {
-              "smithy.api#error": "client",
-              "com.cloudflare.protocols#errorMatchers": dist.errors[errName],
-            },
+        resourceErrors.set(`/shapes/${ns}#${safeName}`, {
+          type: "structure",
+          members: {
+            code: { target: "smithy.api#Integer" },
+            message: { target: "smithy.api#String" },
+          },
+          traits: {
+            "smithy.api#error": "client",
+            "com.cloudflare.protocols#errorMatchers": dist.errors[errName],
           },
         });
       }
@@ -463,6 +467,30 @@ for (const file of fs.readdirSync(SMITHY_DIR)) {
         {
           description: `Align ${resource}#${ourOpName} with distilled cloudflare/${dist.service} ${dist.exportName}${isDuplicate ? " (duplicate export name — errors/pagination only, no rename)" : ""}`,
           patches,
+        },
+        null,
+        2,
+      ) + "\n",
+    );
+    filesWritten++;
+  }
+
+  // One error catalogue per resource, written after its operations.
+  if (resourceErrors.size > 0) {
+    const dir = path.join(PATCH_DIR, resource);
+    fs.mkdirSync(dir, { recursive: true });
+    fs.writeFileSync(
+      path.join(dir, "_errors.json"),
+      JSON.stringify(
+        {
+          description:
+            `Errors shared by the ${resource} operations. Declared once here ` +
+            `rather than repeated in every operation's patch file (#421); ` +
+            `each operation still lists the ones it returns in its own ` +
+            "`errors` array.",
+          patches: [...resourceErrors.keys()]
+            .sort()
+            .map((p) => ({ op: "add", path: p, value: resourceErrors.get(p) })),
         },
         null,
         2,

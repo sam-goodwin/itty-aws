@@ -28,32 +28,6 @@
     },
     {
       "op": "add",
-      "path": "/shapes/com.cloudflare.zones#InvalidZoneIdentifier",
-      "value": {
-        "type": "structure",
-        "members": {
-          "code": {
-            "target": "smithy.api#Integer"
-          },
-          "message": {
-            "target": "smithy.api#String"
-          }
-        },
-        "traits": {
-          "smithy.api#error": "client",
-          "com.cloudflare.protocols#errorMatchers": [
-            {
-              "code": 9109,
-              "message": {
-                "includes": "Invalid zone identifier"
-              }
-            }
-          ]
-        }
-      }
-    },
-    {
-      "op": "add",
       "path": "/shapes/com.cloudflare.zones#PatchZone/errors",
       "value": [
         {

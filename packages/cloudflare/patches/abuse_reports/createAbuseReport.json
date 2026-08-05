@@ -28,29 +28,6 @@
     },
     {
       "op": "add",
-      "path": "/shapes/com.cloudflare.abuse_reports#InvalidRequest",
-      "value": {
-        "type": "structure",
-        "members": {
-          "code": {
-            "target": "smithy.api#Integer"
-          },
-          "message": {
-            "target": "smithy.api#String"
-          }
-        },
-        "traits": {
-          "smithy.api#error": "client",
-          "com.cloudflare.protocols#errorMatchers": [
-            {
-              "code": 7003
-            }
-          ]
-        }
-      }
-    },
-    {
-      "op": "add",
       "path": "/shapes/com.cloudflare.abuse_reports#CreateAbuseReport/errors",
       "value": [
         {

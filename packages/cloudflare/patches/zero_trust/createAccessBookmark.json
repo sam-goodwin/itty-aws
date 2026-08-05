@@ -28,35 +28,6 @@
     },
     {
       "op": "add",
-      "path": "/shapes/com.cloudflare.zero_trust#AccessBookmarkNotFound",
-      "value": {
-        "type": "structure",
-        "members": {
-          "code": {
-            "target": "smithy.api#Integer"
-          },
-          "message": {
-            "target": "smithy.api#String"
-          }
-        },
-        "traits": {
-          "smithy.api#error": "client",
-          "com.cloudflare.protocols#errorMatchers": [
-            {
-              "code": 12045
-            },
-            {
-              "code": 12135
-            },
-            {
-              "code": 11021
-            }
-          ]
-        }
-      }
-    },
-    {
-      "op": "add",
       "path": "/shapes/com.cloudflare.zero_trust#CreateAccessBookmark/errors",
       "value": [
         {
