@@ -619,6 +619,47 @@ const caseMemberName = (
 /** Named object case arm: `Name object { … }` (fields are the children). */
 const NAMED_OBJECT_ARM = /^([A-Za-z_][A-Za-z0-9_]*)\s+object\b/;
 
+/** The `{ a, b, "c-d" }` key list of an inline object type, if present. */
+const INLINE_KEYS = /\{\s*([^{}]*?)\s*\}/;
+
+/**
+ * Keys an arm names inline but doesn't expand as child bullets.
+ *
+ * Most object arms in the docs are written with their fields as children:
+ *
+ *     - `Name object { a, b }`
+ *       - `a: optional string`
+ *       - `b: optional number`
+ *
+ * The Access policy rules aren't. Each is a one-key wrapper documented as a
+ * bullet with a prose description and NO children:
+ *
+ *     - `GroupRule object { group }`
+ *
+ *       Matches an Access group.
+ *
+ * Reading only the children yields an EMPTY structure — which is what
+ * produced 10,073 empty shapes in zero_trust, every rule kind of every
+ * policy of every application type. The key is right there in the type
+ * string, so fall back to it.
+ *
+ * The value type isn't documented at this point, so members land as
+ * `Document`. That's honest: the docs say the key exists and nothing more.
+ * `… 7 more` is the docs' truncation marker for wide objects and is skipped
+ * — those arms carry children, so they never reach this path.
+ */
+const inlineArmMembers = (typeStr: string): Record<string, any> | undefined => {
+  const inner = typeStr.match(INLINE_KEYS)?.[1];
+  if (!inner) return undefined;
+  const members: Record<string, any> = {};
+  for (const raw of inner.split(",")) {
+    const key = raw.trim().replace(/^"(.*)"$/, "$1");
+    if (!key || /^\d+ more$/.test(key)) continue;
+    members[key] = { target: PRELUDE.Document };
+  }
+  return Object.keys(members).length ? members : undefined;
+};
+
 /** Parse one arm rendered as its own docs bullet (children in tow). */
 const parseArmNode = (
   bag: Bag,
@@ -642,14 +683,18 @@ const parseArmNode = (
   const named = t.match(NAMED_OBJECT_ARM);
   if (named) {
     const cname = caseName ?? named[1];
+    const fields = node.children.filter((c) => !isArmChild(c));
+    // No children: the arm's keys are only stated inline in the type.
+    const inline = fields.length ? undefined : inlineArmMembers(t);
     return {
       k: "target",
       caseName: cname,
-      target: structFrom(
-        bag,
-        node.children.filter((c) => !isArmChild(c)),
-        `${hint}${pascal(cname)}`,
-      ),
+      target: inline
+        ? addShape(bag, `${hint}${pascal(cname)}`, {
+            type: "structure",
+            members: inline,
+          })
+        : structFrom(bag, fields, `${hint}${pascal(cname)}`),
     };
   }
 
