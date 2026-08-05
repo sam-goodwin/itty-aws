@@ -4662,9 +4662,19 @@ export const RecordsBatchResponseDeletesList = /*@__PURE__*/ S.Array(
   RecordsBatchResponseDeletesItem,
 ) as any as S.Schema<RecordsBatchResponseDeletesList>;
 
-export interface RecordsBatchResponsePatchesItemOpenpgpkeyRecord {}
+export interface RecordsBatchResponsePatchesItemOpenpgpkeyRecord {
+  id?: unknown | null;
+  comment?: unknown | null;
+  content?: unknown | null;
+}
 export const RecordsBatchResponsePatchesItemOpenpgpkeyRecord =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.optional(S.NullOr(S.Unknown)),
+      comment: S.optional(S.NullOr(S.Unknown)),
+      content: S.optional(S.NullOr(S.Unknown)),
+    }),
+  ).annotate({
     identifier: "RecordsBatchResponsePatchesItemOpenpgpkeyRecord",
   }) as any as S.Schema<RecordsBatchResponsePatchesItemOpenpgpkeyRecord>;
 
@@ -4737,7 +4747,7 @@ export const RecordsBatchResponsePatchesItem = /*@__PURE__*/ S.Unknown.pipe(
       "commentModifiedOn",
       "tagsModifiedOn",
     ],
-    [],
+    ["id", "comment", "content"],
     [
       "id",
       "createdOn",
@@ -4882,9 +4892,19 @@ export const RecordsBatchResponsePatchesList = /*@__PURE__*/ S.Array(
   RecordsBatchResponsePatchesItem,
 ) as any as S.Schema<RecordsBatchResponsePatchesList>;
 
-export interface RecordsBatchResponsePostsItemOpenpgpkeyRecord {}
+export interface RecordsBatchResponsePostsItemOpenpgpkeyRecord {
+  id?: unknown | null;
+  comment?: unknown | null;
+  content?: unknown | null;
+}
 export const RecordsBatchResponsePostsItemOpenpgpkeyRecord =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.optional(S.NullOr(S.Unknown)),
+      comment: S.optional(S.NullOr(S.Unknown)),
+      content: S.optional(S.NullOr(S.Unknown)),
+    }),
+  ).annotate({
     identifier: "RecordsBatchResponsePostsItemOpenpgpkeyRecord",
   }) as any as S.Schema<RecordsBatchResponsePostsItemOpenpgpkeyRecord>;
 
@@ -4957,7 +4977,7 @@ export const RecordsBatchResponsePostsItem = /*@__PURE__*/ S.Unknown.pipe(
       "commentModifiedOn",
       "tagsModifiedOn",
     ],
-    [],
+    ["id", "comment", "content"],
     [
       "id",
       "createdOn",
@@ -5102,9 +5122,19 @@ export const RecordsBatchResponsePostsList = /*@__PURE__*/ S.Array(
   RecordsBatchResponsePostsItem,
 ) as any as S.Schema<RecordsBatchResponsePostsList>;
 
-export interface RecordsBatchResponsePutsItemOpenpgpkeyRecord {}
+export interface RecordsBatchResponsePutsItemOpenpgpkeyRecord {
+  id?: unknown | null;
+  comment?: unknown | null;
+  content?: unknown | null;
+}
 export const RecordsBatchResponsePutsItemOpenpgpkeyRecord =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.optional(S.NullOr(S.Unknown)),
+      comment: S.optional(S.NullOr(S.Unknown)),
+      content: S.optional(S.NullOr(S.Unknown)),
+    }),
+  ).annotate({
     identifier: "RecordsBatchResponsePutsItemOpenpgpkeyRecord",
   }) as any as S.Schema<RecordsBatchResponsePutsItemOpenpgpkeyRecord>;
 
@@ -5177,7 +5207,7 @@ export const RecordsBatchResponsePutsItem = /*@__PURE__*/ S.Unknown.pipe(
       "commentModifiedOn",
       "tagsModifiedOn",
     ],
-    [],
+    ["id", "comment", "content"],
     [
       "id",
       "createdOn",

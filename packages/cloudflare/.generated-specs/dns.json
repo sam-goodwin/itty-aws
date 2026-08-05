@@ -6468,7 +6468,17 @@
     },
     "com.cloudflare.dns#RecordsBatchResponsePatchesItemOpenpgpkeyRecord": {
       "type": "structure",
-      "members": {}
+      "members": {
+        "id": {
+          "target": "smithy.api#Document"
+        },
+        "comment": {
+          "target": "smithy.api#Document"
+        },
+        "content": {
+          "target": "smithy.api#Document"
+        }
+      }
     },
     "com.cloudflare.dns#RecordsBatchResponsePatchesItem": {
       "type": "union",
@@ -6546,7 +6556,17 @@
     },
     "com.cloudflare.dns#RecordsBatchResponsePostsItemOpenpgpkeyRecord": {
       "type": "structure",
-      "members": {}
+      "members": {
+        "id": {
+          "target": "smithy.api#Document"
+        },
+        "comment": {
+          "target": "smithy.api#Document"
+        },
+        "content": {
+          "target": "smithy.api#Document"
+        }
+      }
     },
     "com.cloudflare.dns#RecordsBatchResponsePostsItem": {
       "type": "union",
@@ -6624,7 +6644,17 @@
     },
     "com.cloudflare.dns#RecordsBatchResponsePutsItemOpenpgpkeyRecord": {
       "type": "structure",
-      "members": {}
+      "members": {
+        "id": {
+          "target": "smithy.api#Document"
+        },
+        "comment": {
+          "target": "smithy.api#Document"
+        },
+        "content": {
+          "target": "smithy.api#Document"
+        }
+      }
     },
     "com.cloudflare.dns#RecordsBatchResponsePutsItem": {
       "type": "union",
