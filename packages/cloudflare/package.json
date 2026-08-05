@@ -508,12 +508,14 @@
     "typecheck:strict": "tsc -p tsconfig.strict.json"
   },
   "dependencies": {
-    "@distilled.cloud/core": "workspace:*",
-    "@effect/platform-bun": "catalog:",
-    "effect": "catalog:"
+    "@distilled.cloud/core": "workspace:*"
   },
   "devDependencies": {
     "@types/bun": "catalog:",
-    "@types/node": "catalog:"
+    "@types/node": "catalog:",
+    "@effect/platform-bun": "catalog:"
+  },
+  "peerDependencies": {
+    "effect": "catalog:"
   }
 }
