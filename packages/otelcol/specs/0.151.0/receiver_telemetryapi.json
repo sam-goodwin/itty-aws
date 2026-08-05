@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "properties": {
+    "export_interval_ms": {
+      "type": "integer"
+    },
+    "log_report": {
+      "type": "boolean"
+    },
+    "metrics_temporality": {
+      "type": "string"
+    },
+    "port": {
+      "type": "integer"
+    },
+    "types": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    }
+  },
+  "type": "object"
+}

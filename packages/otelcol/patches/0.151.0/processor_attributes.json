@@ -1,0 +1,10 @@
+{
+  "description": "attributes processor: `actions` is required.",
+  "patches": [
+    {
+      "op": "add",
+      "path": "/required",
+      "value": ["actions"]
+    }
+  ]
+}

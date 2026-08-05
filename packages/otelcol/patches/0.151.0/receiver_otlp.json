@@ -1,0 +1,157 @@
+{
+  "description": "otlp receiver: un-squash `http.serverconfig` and both listeners' `netaddr`, and restore the config-file shape of `response_headers` and `auth.authenticator`.",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/properties/protocols/properties/http/properties/serverconfig/properties/auth",
+      "path": "/properties/protocols/properties/http/properties/auth"
+    },
+    {
+      "op": "move",
+      "from": "/properties/protocols/properties/http/properties/serverconfig/properties/compression_algorithms",
+      "path": "/properties/protocols/properties/http/properties/compression_algorithms"
+    },
+    {
+      "op": "move",
+      "from": "/properties/protocols/properties/http/properties/serverconfig/properties/cors",
+      "path": "/properties/protocols/properties/http/properties/cors"
+    },
+    {
+      "op": "move",
+      "from": "/properties/protocols/properties/http/properties/serverconfig/properties/idle_timeout",
+      "path": "/properties/protocols/properties/http/properties/idle_timeout"
+    },
+    {
+      "op": "move",
+      "from": "/properties/protocols/properties/http/properties/serverconfig/properties/include_metadata",
+      "path": "/properties/protocols/properties/http/properties/include_metadata"
+    },
+    {
+      "op": "move",
+      "from": "/properties/protocols/properties/http/properties/serverconfig/properties/keep_alives_enabled",
+      "path": "/properties/protocols/properties/http/properties/keep_alives_enabled"
+    },
+    {
+      "op": "move",
+      "from": "/properties/protocols/properties/http/properties/serverconfig/properties/max_request_body_size",
+      "path": "/properties/protocols/properties/http/properties/max_request_body_size"
+    },
+    {
+      "op": "move",
+      "from": "/properties/protocols/properties/http/properties/serverconfig/properties/middlewares",
+      "path": "/properties/protocols/properties/http/properties/middlewares"
+    },
+    {
+      "op": "move",
+      "from": "/properties/protocols/properties/http/properties/serverconfig/properties/netaddr",
+      "path": "/properties/protocols/properties/http/properties/netaddr"
+    },
+    {
+      "op": "move",
+      "from": "/properties/protocols/properties/http/properties/serverconfig/properties/read_header_timeout",
+      "path": "/properties/protocols/properties/http/properties/read_header_timeout"
+    },
+    {
+      "op": "move",
+      "from": "/properties/protocols/properties/http/properties/serverconfig/properties/read_timeout",
+      "path": "/properties/protocols/properties/http/properties/read_timeout"
+    },
+    {
+      "op": "move",
+      "from": "/properties/protocols/properties/http/properties/serverconfig/properties/response_headers",
+      "path": "/properties/protocols/properties/http/properties/response_headers"
+    },
+    {
+      "op": "move",
+      "from": "/properties/protocols/properties/http/properties/serverconfig/properties/tls",
+      "path": "/properties/protocols/properties/http/properties/tls"
+    },
+    {
+      "op": "move",
+      "from": "/properties/protocols/properties/http/properties/serverconfig/properties/write_timeout",
+      "path": "/properties/protocols/properties/http/properties/write_timeout"
+    },
+    {
+      "op": "remove",
+      "path": "/properties/protocols/properties/http/properties/serverconfig"
+    },
+    {
+      "op": "move",
+      "from": "/properties/protocols/properties/grpc/properties/netaddr/properties/dialer",
+      "path": "/properties/protocols/properties/grpc/properties/dialer"
+    },
+    {
+      "op": "move",
+      "from": "/properties/protocols/properties/grpc/properties/netaddr/properties/endpoint",
+      "path": "/properties/protocols/properties/grpc/properties/endpoint"
+    },
+    {
+      "op": "move",
+      "from": "/properties/protocols/properties/grpc/properties/netaddr/properties/transport",
+      "path": "/properties/protocols/properties/grpc/properties/transport"
+    },
+    {
+      "op": "remove",
+      "path": "/properties/protocols/properties/grpc/properties/netaddr"
+    },
+    {
+      "op": "move",
+      "from": "/properties/protocols/properties/http/properties/netaddr/properties/dialer",
+      "path": "/properties/protocols/properties/http/properties/dialer"
+    },
+    {
+      "op": "move",
+      "from": "/properties/protocols/properties/http/properties/netaddr/properties/endpoint",
+      "path": "/properties/protocols/properties/http/properties/endpoint"
+    },
+    {
+      "op": "move",
+      "from": "/properties/protocols/properties/http/properties/netaddr/properties/transport",
+      "path": "/properties/protocols/properties/http/properties/transport"
+    },
+    {
+      "op": "remove",
+      "path": "/properties/protocols/properties/http/properties/netaddr"
+    },
+    {
+      "op": "replace",
+      "path": "/properties/protocols/properties/http/properties/response_headers",
+      "value": {
+        "description": "Headers added to every response.",
+        "type": "object",
+        "additionalProperties": {
+          "type": "string"
+        }
+      }
+    },
+    {
+      "op": "replace",
+      "path": "/properties/protocols/properties/http/properties/auth/properties/authenticator",
+      "value": {
+        "description": "Id of the `extensions` entry that authenticates incoming requests.",
+        "type": "string"
+      }
+    },
+    {
+      "op": "replace",
+      "path": "/properties/protocols/properties/grpc/properties/auth/properties/authenticator",
+      "value": {
+        "description": "Id of the `extensions` entry that authenticates incoming requests.",
+        "type": "string"
+      }
+    },
+    {
+      "op": "remove",
+      "path": "/properties/protocols/properties/http/properties/middlewares"
+    },
+    {
+      "op": "remove",
+      "path": "/properties/protocols/properties/grpc/properties/middlewares"
+    },
+    {
+      "op": "add",
+      "path": "/required",
+      "value": ["protocols"]
+    }
+  ]
+}
