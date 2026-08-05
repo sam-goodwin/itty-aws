@@ -6,6 +6,7 @@ import { OtlpHttpExporter } from "../src/layer-collector-0.22.0/exporters/otlpht
 import { DebugExporter } from "../src/layer-collector-0.22.0/exporters/debug.ts";
 import { OtlpReceiver } from "../src/layer-collector-0.22.0/receivers/otlp.ts";
 import { build, components } from "../src/layer-collector-0.22.0/manifest.ts";
+import { Service } from "../src/layer-collector-0.22.0/service.ts";
 
 /**
  * Every field is optional unless a patch marks it required, so excess-property
@@ -185,5 +186,100 @@ describe("patched reflector artifacts", () => {
         grpc: { endpoint: "127.0.0.1:4317", transport: "tcp" },
       },
     });
+  });
+});
+
+describe("the service block", () => {
+  it("encodes pipelines, the extensions list and telemetry", () => {
+    expect(
+      encode(Service)({
+        extensions: ["sigv4auth"],
+        pipelines: {
+          traces: {
+            receivers: ["otlp", "telemetryapi"],
+            processors: ["batch"],
+            exporters: ["otlphttp/backend"],
+          },
+          "logs/audit": {
+            receivers: ["otlp"],
+            exporters: ["debug"],
+          },
+        },
+        telemetry: {
+          logs: {
+            level: "warn",
+            outputPaths: ["stdout"],
+            sampling: { enabled: true, tick: Duration.seconds(10) },
+          },
+          metrics: { level: "none" },
+        },
+      }),
+    ).toEqual({
+      extensions: ["sigv4auth"],
+      pipelines: {
+        traces: {
+          receivers: ["otlp", "telemetryapi"],
+          processors: ["batch"],
+          exporters: ["otlphttp/backend"],
+        },
+        "logs/audit": { receivers: ["otlp"], exporters: ["debug"] },
+      },
+      telemetry: {
+        logs: {
+          level: "warn",
+          output_paths: ["stdout"],
+          sampling: { enabled: true, tick: "10s" },
+        },
+        metrics: { level: "none" },
+      },
+    });
+  });
+
+  it("types pipeline ids as a signal, optionally `/name`-suffixed", () => {
+    const ok: Service["pipelines"] = {
+      traces: { receivers: ["otlp"], exporters: ["debug"] },
+      "logs/audit": { receivers: ["otlp"], exporters: ["debug"] },
+    };
+    expect(Object.keys(ok)).toHaveLength(2);
+
+    const gated: Service["pipelines"] = {
+      // @ts-expect-error `profiles` needs the alpha feature gate this build does not enable
+      profiles: { receivers: ["otlp"], exporters: ["debug"] },
+    };
+    expect(gated).toBeDefined();
+
+    const misspelt: Service["pipelines"] = {
+      // @ts-expect-error a pipeline id is a signal, not an arbitrary string
+      tracez: { receivers: ["otlp"], exporters: ["debug"] },
+    };
+    expect(misspelt).toBeDefined();
+  });
+
+  it("rejects a misspelt telemetry field where it was written", () => {
+    const config: Service = {
+      pipelines: { traces: { receivers: ["otlp"], exporters: ["debug"] } },
+      // @ts-expect-error `output_paths` is spelt `outputPaths` on the type side
+      telemetry: { logs: { output_paths: ["stdout"] } },
+    };
+    expect(() => encode(Service)(config)).toThrowError(
+      /at \["telemetry"\]\["logs"\]\["output_paths"\]/,
+    );
+  });
+
+  it("rejects a level outside zap's set", () => {
+    const config: Service = {
+      pipelines: { traces: { receivers: ["otlp"], exporters: ["debug"] } },
+      // @ts-expect-error `verbose` is not a zapcore level
+      telemetry: { logs: { level: "verbose" } },
+    };
+    expect(() => encode(Service)(config)).toThrowError(
+      /at \["telemetry"\]\["logs"\]\["level"\]/,
+    );
+  });
+
+  it("requires a pipeline to name its receivers and exporters", () => {
+    // @ts-expect-error `exporters` is required
+    const config: Service = { pipelines: { traces: { receivers: ["otlp"] } } };
+    expect(() => encode(Service)(config)).toThrowError(/Missing key/);
   });
 });
