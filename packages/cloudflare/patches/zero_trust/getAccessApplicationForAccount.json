@@ -1,5 +1,5 @@
 {
-  "description": "Align zero_trust#AccessApplicationsGetForAccount with distilled cloudflare/zero-trust getAccessApplicationForAccount",
+  "description": "Align getAccessApplicationForAccount rename and type Forbidden (403) — Cloudflare returns 403 as transient token back-pressure",
   "patches": [
     {
       "op": "move",
@@ -25,6 +25,15 @@
       "op": "replace",
       "path": "/shapes/com.cloudflare.zero_trust#GetAccessApplicationForAccount/output/target",
       "value": "com.cloudflare.zero_trust#GetAccessApplicationForAccountResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.zero_trust#GetAccessApplicationForAccount/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.zero_trust#Forbidden"
+        }
+      ]
     }
   ]
 }

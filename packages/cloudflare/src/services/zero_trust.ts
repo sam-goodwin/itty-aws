@@ -202324,7 +202324,7 @@ export const getAccessApplicationCaForZone: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetAccessApplicationForAccountError = CloudflareOpError;
+export type GetAccessApplicationForAccountError = Forbidden | CloudflareOpError;
 /** Fetches information about an Access application. */
 export const getAccessApplicationForAccount: API.OperationMethod<
   GetAccessApplicationForAccountRequest,
@@ -202334,7 +202334,7 @@ export const getAccessApplicationForAccount: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: GetAccessApplicationForAccountRequest,
   output: GetAccessApplicationResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
 }));
