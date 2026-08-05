@@ -11,3 +11,19 @@
 - agents.md
 - license.md
 - extract cf docs mirror into its own submodule
+- requested sdks (name — source of the request)
+  - xata — distilled#354
+  - sentry — alchemy#1003 (review comment r3709110628)
+  - spacetimedb — alchemy#1044 (review comment r3710539021)
+  - docker — distilled#170
+  - meilisearch — distilled#377
+  - polar — distilled#373, distilled#236
+  - railway — distilled#340, distilled#226
+  - clerk — distilled#317
+  - resend — distilled#346
+  - turbopuffer — distilled#357
+  - better-auth — distilled#372
+  - unkey — distilled#323
+  - hostinger — distilled#338
+  - discord — distilled#276
+  - modrinth — distilled#287
