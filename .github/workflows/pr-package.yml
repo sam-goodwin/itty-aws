@@ -26,7 +26,7 @@ permissions:
 
 jobs:
   pr-package:
-    uses: alchemy-run/actions/.github/workflows/pr-package.yml@1d7f45962cfe2bbc365ffbf32f3cb27c64ca423c # main
+    uses: alchemy-run/actions/.github/workflows/pr-package.yml@45c20065c654cb378d02a707427405a1ad9ac3f3 # main
     with:
       install-host: pkg.distilled.cloud
       # Every package's build pulls in the core project reference; the
