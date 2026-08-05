@@ -37,6 +37,52 @@ export interface GeneratorCliOptions {
   readonly outDir?: string;
   /** Model files to skip (e.g. a shared protocols model). */
   readonly excludeModel?: (file: string) => boolean;
+  /**
+   * Where the models are, when they aren't a flat directory of `<resource>.json`.
+   * AWS vendors Amazon's own repo, whose models sit at
+   * `models/<service>/service/<version>/<service>-<version>.json`.
+   *
+   * Returns the model files to compile; manual specs are merged in after,
+   * as usual.
+   */
+  readonly discoverModels?: (ctx: {
+    readonly smithyDir: string;
+  }) => Effect.Effect<
+    ReadonlyArray<{ readonly file: string; readonly dir: string }>,
+    never,
+    FileSystem.FileSystem | Path.Path
+  >;
+  /**
+   * Side effects to run before generating — e.g. AWS copies `partitions.json`
+   * out of the smithy submodule, runtime data its endpoint resolver reads.
+   */
+  readonly prepare?: (ctx: {
+    readonly root: string;
+    readonly outDir: string;
+  }) => Effect.Effect<void, never, FileSystem.FileSystem | Path.Path>;
+  /**
+   * The output module's name, when it isn't the model's filename. AWS names
+   * modules after the service's `aws.api#service` sdkId (`amazon-s3.json` →
+   * `s3.ts`), so the public surface reads `AWS.S3.getObject`.
+   */
+  readonly resourceName?: (ctx: {
+    readonly model: any;
+    readonly file: string;
+  }) => string;
+  /** Barrel export name for a resource. Default: the resource name itself. */
+  readonly barrelExportName?: (resource: string) => string;
+  /**
+   * The closing pass over the output directory. Defaults to formatting;
+   * AWS lint-fixes first (see `codegen/format.ts`).
+   */
+  readonly finalize?: (dir: string) => Effect.Effect<void>;
+  /**
+   * Keep generating after a model fails, instead of stopping at the first.
+   * AWS compiles 430 services in one run, and one broken model shouldn't
+   * hide the state of the other 429. The run still FAILS at the end — the
+   * failures are reported together rather than swallowed.
+   */
+  readonly continueOnModelError?: boolean;
   /** Directory of hand-authored models merged after the generated ones. */
   readonly manualSpecsDir?: string;
   /** RFC-6902 patch chain root. Default `patches`; `false` disables. */
@@ -82,14 +128,19 @@ export const runGeneratorCli = (options: GeneratorCliOptions): void => {
         yield* Console.log(`   Smithy: ${smithyDir}`);
         yield* Console.log(`   Output: ${outDir}`);
 
+        yield* options.prepare?.({ root, outDir }) ?? Effect.void;
+
         // Generated models plus optional manual-specs (hand-authored models
         // for APIs the provider's spec source doesn't cover). A manual model
         // must not shadow a generated one.
-        const generated = (yield* fs.readDirectory(smithyDir))
-          .filter(
-            (f) => f.endsWith(".json") && !(options.excludeModel?.(f) ?? false),
-          )
-          .map((f) => ({ file: f, dir: smithyDir }));
+        const generated = options.discoverModels
+          ? yield* options.discoverModels({ smithyDir })
+          : (yield* fs.readDirectory(smithyDir))
+              .filter(
+                (f) =>
+                  f.endsWith(".json") && !(options.excludeModel?.(f) ?? false),
+              )
+              .map((f) => ({ file: f, dir: smithyDir }));
         const manualDir = options.manualSpecsDir
           ? path.resolve(root, options.manualSpecsDir)
           : undefined;
@@ -115,6 +166,7 @@ export const runGeneratorCli = (options: GeneratorCliOptions): void => {
         yield* fs.makeDirectory(outDir, { recursive: true });
 
         const written: string[] = [];
+        const failedModels: string[] = [];
         let totalOps = 0;
         let totalPatches = 0;
         let staleOps = 0;
@@ -140,12 +192,15 @@ export const runGeneratorCli = (options: GeneratorCliOptions): void => {
         }
 
         for (const { file, dir } of entries) {
-          const resource = file.replace(/\.json$/, "");
-          if (config.resource && resource !== config.resource) continue;
-
           const model = JSON.parse(
             yield* fs.readFileString(path.join(dir, file)),
           );
+          // The module's name — the model's filename unless the provider
+          // derives it from the model itself (AWS: the service's sdkId).
+          const resource =
+            options.resourceName?.({ model, file }) ??
+            file.replace(/\.json$/, "");
+          if (config.resource && resource !== config.resource) continue;
 
           // Apply the RFC-6902 patch chain before generating. Hand-written
           // *.manual.json patches apply after the generated ones — they
@@ -189,10 +244,22 @@ export const runGeneratorCli = (options: GeneratorCliOptions): void => {
             if (note) yield* Console.log(`   ${note}`);
           }
 
-          const { code, operations } = generateService(
-            model,
-            options.spec(model),
-          );
+          // `generateService` and the provider spec are synchronous and
+          // throw; with continueOnModelError the throw is recorded and the
+          // run moves on, so one broken model doesn't hide the state of
+          // every model after it. The run still fails at the end.
+          let generated;
+          try {
+            generated = generateService(model, options.spec(model));
+          } catch (e) {
+            if (!options.continueOnModelError) throw e;
+            failedModels.push(
+              `${resource}: ${e instanceof Error ? e.message : String(e)}`,
+            );
+            yield* Console.error(`❌ ${resource}`);
+            continue;
+          }
+          const { code, operations } = generated;
           if (operations === 0) continue;
 
           yield* fs.writeFileString(path.join(outDir, `${resource}.ts`), code);
@@ -224,11 +291,22 @@ export const runGeneratorCli = (options: GeneratorCliOptions): void => {
         // resource without removing anything.
         const barrelPath = path.join(outDir, "index.ts");
         const filtered = config.resource !== "";
-        let resources = written;
+        // Sorted, not in generation order: a provider that discovers models
+        // in some other order (AWS walks Amazon's directory tree) would
+        // otherwise reshuffle the barrel on every run.
+        let resources = [...written].sort((a, b) =>
+          `${a}.json`.localeCompare(`${b}.json`),
+        );
         if (filtered && (yield* fs.exists(barrelPath))) {
+          // Recover the RESOURCE from each export line's path, not its name:
+          // the two differ when barrelExportName renames (AWS exports
+          // `S3` from `./s3.ts`).
           const existing = (yield* fs.readFileString(barrelPath))
             .split("\n")
-            .map((line) => /^export \* as (\S+) from/.exec(line)?.[1])
+            .map(
+              (line) =>
+                /^export \* as \S+ from "\.\/(.+)\.ts";/.exec(line)?.[1],
+            )
             .filter((name): name is string => name !== undefined);
           // Ordered exactly as a full run orders it: by MODEL FILENAME, so
           // the `.json` takes part in the collation (`ai_gateway.json` sorts
@@ -243,11 +321,14 @@ export const runGeneratorCli = (options: GeneratorCliOptions): void => {
           barrelPath,
           barrel(
             `// AUTO-GENERATED by scripts/generate.ts. Do not edit.\n`,
-            resources.map((r) => ({ name: r, path: `./${r}.ts` })),
+            resources.map((r) => ({
+              name: options.barrelExportName?.(r) ?? r,
+              path: `./${r}.ts`,
+            })),
           ),
         );
 
-        yield* formatGenerated(outDir);
+        yield* (options.finalize ?? formatGenerated)(outDir);
 
         yield* Console.log(
           `\n✅ Generated ${totalOps} operations across ${written.length} resource modules` +
@@ -256,6 +337,19 @@ export const runGeneratorCli = (options: GeneratorCliOptions): void => {
               : "."),
         );
         yield* Console.log(`   ${path.join(outDir, "index.ts")}`);
+
+        // Models that failed under continueOnModelError. Reported together,
+        // at the end, and the run FAILS — a generate that couldn't produce
+        // a module must not exit 0 with the failure buried in the log.
+        if (failedModels.length) {
+          yield* Console.error(
+            `\n❌ ${failedModels.length} model(s) failed to generate:`,
+          );
+          for (const f of failedModels) yield* Console.error(`   ${f}`);
+          return yield* Effect.die(
+            new Error(`${failedModels.length} model(s) failed to generate`),
+          );
+        }
       }),
   ).pipe(Command.withDescription(options.description));
 
