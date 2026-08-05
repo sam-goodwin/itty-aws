@@ -3,12 +3,12 @@
 
 import * as Schema from "@distilled.cloud/core/schema";
 
-export interface TransformProcessorLogStatementsItem {
-  readonly conditions?: ReadonlyArray<string>;
-  readonly context?: string;
+export interface TransformProcessorLogStatementsItem<Str = string> {
+  readonly conditions?: ReadonlyArray<Str>;
+  readonly context?: Str;
   /** How the component reacts to an error while running an OTTL statement. */
   readonly errorMode?: "ignore" | "silent" | "propagate";
-  readonly statements?: ReadonlyArray<string>;
+  readonly statements?: ReadonlyArray<Str>;
 }
 export const TransformProcessorLogStatementsItem = /*@__PURE__*/ Schema.suspend(
   () =>
@@ -29,14 +29,14 @@ export const TransformProcessorLogStatementsItem = /*@__PURE__*/ Schema.suspend(
     ),
 ) as unknown as Schema.Codec<TransformProcessorLogStatementsItem>;
 
-export interface TransformProcessorProfileStatementsItem {
-  readonly conditions?: ReadonlyArray<string>;
-  readonly context?: string;
+export interface TransformProcessorProfileStatementsItem<Str = string> {
+  readonly conditions?: ReadonlyArray<Str>;
+  readonly context?: Str;
   /**
    * ErrorMode determines how the processor reacts to errors that occur while processing this group of statements. When provided, it overrides the default Config ErrorMode.
    */
-  readonly errorMode?: string;
-  readonly statements?: ReadonlyArray<string>;
+  readonly errorMode?: Str;
+  readonly statements?: ReadonlyArray<Str>;
 }
 export const TransformProcessorProfileStatementsItem =
   /*@__PURE__*/ Schema.suspend(() =>
@@ -55,14 +55,22 @@ export const TransformProcessorProfileStatementsItem =
     ),
   ) as unknown as Schema.Codec<TransformProcessorProfileStatementsItem>;
 
-export interface TransformProcessor {
+export interface TransformProcessor<Str = string> {
   /** How the component reacts to an error while running an OTTL statement. */
   readonly errorMode?: "ignore" | "silent" | "propagate";
   readonly flattenData?: boolean;
-  readonly logStatements?: ReadonlyArray<TransformProcessorLogStatementsItem>;
-  readonly metricStatements?: ReadonlyArray<TransformProcessorLogStatementsItem>;
-  readonly profileStatements?: ReadonlyArray<TransformProcessorProfileStatementsItem>;
-  readonly traceStatements?: ReadonlyArray<TransformProcessorLogStatementsItem>;
+  readonly logStatements?: ReadonlyArray<
+    TransformProcessorLogStatementsItem<Str>
+  >;
+  readonly metricStatements?: ReadonlyArray<
+    TransformProcessorLogStatementsItem<Str>
+  >;
+  readonly profileStatements?: ReadonlyArray<
+    TransformProcessorProfileStatementsItem<Str>
+  >;
+  readonly traceStatements?: ReadonlyArray<
+    TransformProcessorLogStatementsItem<Str>
+  >;
 }
 export const TransformProcessor = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({

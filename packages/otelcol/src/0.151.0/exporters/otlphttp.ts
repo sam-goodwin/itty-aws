@@ -5,11 +5,11 @@ import type * as Duration from "effect/Duration";
 import * as Schema from "@distilled.cloud/core/schema";
 import { DurationFromGoString } from "../../duration.ts";
 
-export interface OtlpHttpExporterAuth {
+export interface OtlpHttpExporterAuth<Str = string> {
   /**
    * Id of the `extensions` entry that authenticates this client, e.g. `sigv4auth` or `basicauth/backend`.
    */
-  readonly authenticator?: string;
+  readonly authenticator?: Str;
 }
 export const OtlpHttpExporterAuth = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
@@ -74,11 +74,11 @@ export const OtlpHttpExporterRetryOnFailure = /*@__PURE__*/ Schema.suspend(() =>
   ),
 ) as unknown as Schema.Codec<OtlpHttpExporterRetryOnFailure>;
 
-export interface OtlpHttpExporterSendingQueueBatchPartition {
+export interface OtlpHttpExporterSendingQueueBatchPartition<Str = string> {
   /**
    * MetadataKeys is a list of client.Metadata keys that will be used to partition the data into batches. If this setting is empty, a single batcher instance will be used. When this setting is not empty, one batcher will be used per distinct combination of values for the listed metadata keys. Empty value and unset metadata are treated as distinct cases. Entries are case-insensitive. Duplicated entries will trigger a validation error.
    */
-  readonly metadataKeys?: ReadonlyArray<string>;
+  readonly metadataKeys?: ReadonlyArray<Str>;
 }
 export const OtlpHttpExporterSendingQueueBatchPartition =
   /*@__PURE__*/ Schema.suspend(() =>
@@ -91,7 +91,7 @@ export const OtlpHttpExporterSendingQueueBatchPartition =
     ),
   ) as unknown as Schema.Codec<OtlpHttpExporterSendingQueueBatchPartition>;
 
-export interface OtlpHttpExporterSendingQueueBatch {
+export interface OtlpHttpExporterSendingQueueBatch<Str = string> {
   /** Duration string (e.g., '1s', '5m', '1h') */
   readonly flushTimeout?: Duration.Duration;
   /** MaxSize defines the configuration for the maximum size of a batch. */
@@ -99,7 +99,7 @@ export interface OtlpHttpExporterSendingQueueBatch {
   /** MinSize defines the configuration for the minimum size of a batch. */
   readonly minSize?: number;
   /** Partition defines the partitioning of the batches configuration. */
-  readonly partition?: OtlpHttpExporterSendingQueueBatchPartition;
+  readonly partition?: OtlpHttpExporterSendingQueueBatchPartition<Str>;
   /**
    * Unit the batch size limits are counted in. If unset, the queue's sizer is used.
    */
@@ -124,8 +124,8 @@ export const OtlpHttpExporterSendingQueueBatch = /*@__PURE__*/ Schema.suspend(
     ),
 ) as unknown as Schema.Codec<OtlpHttpExporterSendingQueueBatch>;
 
-export interface OtlpHttpExporterSendingQueue {
-  readonly batch?: OtlpHttpExporterSendingQueueBatch;
+export interface OtlpHttpExporterSendingQueue<Str = string> {
+  readonly batch?: OtlpHttpExporterSendingQueueBatch<Str>;
   /**
    * BlockOnOverflow determines the behavior when the component's TotalSize limit is reached. If true, the component will wait for space; otherwise, operations will immediately return a retryable error.
    */
@@ -165,14 +165,14 @@ export const OtlpHttpExporterSendingQueue = /*@__PURE__*/ Schema.suspend(() =>
   ),
 ) as unknown as Schema.Codec<OtlpHttpExporterSendingQueue>;
 
-export interface OtlpHttpExporterTlsTpm {
-  readonly auth?: string;
+export interface OtlpHttpExporterTlsTpm<Str = string> {
+  readonly auth?: Str;
   readonly enabled?: boolean;
-  readonly ownerAuth?: string;
+  readonly ownerAuth?: Str;
   /**
    * The path to the TPM device or Unix domain socket. For instance /dev/tpm0 or /dev/tpmrm0.
    */
-  readonly path?: string;
+  readonly path?: Str;
 }
 export const OtlpHttpExporterTlsTpm = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
@@ -190,27 +190,27 @@ export const OtlpHttpExporterTlsTpm = /*@__PURE__*/ Schema.suspend(() =>
   ),
 ) as unknown as Schema.Codec<OtlpHttpExporterTlsTpm>;
 
-export interface OtlpHttpExporterTls {
+export interface OtlpHttpExporterTls<Str = string> {
   /**
    * Path to the CA cert. For a client this verifies the server certificate. For a server this verifies client certificates. If empty uses system root CA. (optional)
    */
-  readonly caFile?: string;
+  readonly caFile?: Str;
   /** In memory PEM encoded cert. (optional) */
-  readonly caPem?: string;
+  readonly caPem?: Str;
   /** Path to the TLS cert to use for TLS required connections. (optional) */
-  readonly certFile?: string;
+  readonly certFile?: Str;
   /**
    * In memory PEM encoded TLS cert to use for TLS required connections. (optional)
    */
-  readonly certPem?: string;
+  readonly certPem?: Str;
   /**
    * CipherSuites is a list of TLS cipher suites that the TLS transport can use. If left blank, a safe default list is used. See https://go.dev/src/crypto/tls/cipher_suites.go for a list of supported cipher suites.
    */
-  readonly cipherSuites?: ReadonlyArray<string>;
+  readonly cipherSuites?: ReadonlyArray<Str>;
   /**
    * contains the elliptic curves that will be used in an ECDHE handshake, in preference order Defaults to empty list and "crypto/tls" defaults are used, internally.
    */
-  readonly curvePreferences?: ReadonlyArray<string>;
+  readonly curvePreferences?: ReadonlyArray<Str>;
   /**
    * If true, load system CA certificates pool in addition to the certificates configured in this struct.
    */
@@ -222,27 +222,27 @@ export interface OtlpHttpExporterTls {
   /** InsecureSkipVerify will enable TLS but not verify the certificate. */
   readonly insecureSkipVerify?: boolean;
   /** Path to the TLS key to use for TLS required connections. (optional) */
-  readonly keyFile?: string;
+  readonly keyFile?: Str;
   /**
    * In memory PEM encoded TLS key to use for TLS required connections. (optional)
    */
-  readonly keyPem?: string;
+  readonly keyPem?: Str;
   /**
    * MaxVersion sets the maximum TLS version that is acceptable. If not set, refer to crypto/tls for defaults. (optional)
    */
-  readonly maxVersion?: string;
+  readonly maxVersion?: Str;
   /**
    * MinVersion sets the minimum TLS version that is acceptable. If not set, TLS 1.2 will be used. (optional)
    */
-  readonly minVersion?: string;
+  readonly minVersion?: Str;
   /** Duration string (e.g., '1s', '5m', '1h') */
   readonly reloadInterval?: Duration.Duration;
   /**
    * ServerName requested by client for virtual hosting. This sets the ServerName in the TLSConfig. Please refer to https://godoc.org/crypto/tls#Config for more information. (optional)
    */
-  readonly serverNameOverride?: string;
+  readonly serverNameOverride?: Str;
   /** Trusted platform module configuration */
-  readonly tpm?: OtlpHttpExporterTlsTpm;
+  readonly tpm?: OtlpHttpExporterTlsTpm<Str>;
 }
 export const OtlpHttpExporterTls = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
@@ -284,8 +284,8 @@ export const OtlpHttpExporterTls = /*@__PURE__*/ Schema.suspend(() =>
   ),
 ) as unknown as Schema.Codec<OtlpHttpExporterTls>;
 
-export interface OtlpHttpExporter {
-  readonly auth?: OtlpHttpExporterAuth;
+export interface OtlpHttpExporter<Str = string> {
+  readonly auth?: OtlpHttpExporterAuth<Str>;
   /** The compression key for supported compression types within collector. */
   readonly compression?:
     | "none"
@@ -306,7 +306,7 @@ export interface OtlpHttpExporter {
   /** Payload encoding. */
   readonly encoding?: "proto" | "json";
   /** The target URL to send data to (e.g.: http://some.url:9411/v1/traces). */
-  readonly endpoint: string;
+  readonly endpoint: Str;
   /**
    * Enabling ForceAttemptHTTP2 forces the HTTP transport to use the HTTP/2 protocol. By default, this is set to true. NOTE: HTTP/2 does not support settings such as MaxConnsPerHost, MaxIdleConnsPerHost and MaxIdleConns.
    */
@@ -314,7 +314,7 @@ export interface OtlpHttpExporter {
   /**
    * Additional headers attached to each request sent by the client. Header values are opaque since they may be sensitive.
    */
-  readonly headers?: { readonly [key: string]: string };
+  readonly headers?: { readonly [key: string]: Str };
   /** Duration string (e.g., '1s', '5m', '1h') */
   readonly http2PingTimeout?: Duration.Duration;
   /** Duration string (e.g., '1s', '5m', '1h') */
@@ -322,7 +322,7 @@ export interface OtlpHttpExporter {
   /** Duration string (e.g., '1s', '5m', '1h') */
   readonly idleConnTimeout?: Duration.Duration;
   /** The URL to send logs to. If omitted the Endpoint + "/v1/logs" will be used. */
-  readonly logsEndpoint?: string;
+  readonly logsEndpoint?: Str;
   /**
    * MaxConnsPerHost limits the total number of connections per host, including connections in the dialing, active, and idle states. Default is 0 (unlimited).
    */
@@ -338,27 +338,27 @@ export interface OtlpHttpExporter {
   /**
    * The URL to send metrics to. If omitted the Endpoint + "/v1/metrics" will be used.
    */
-  readonly metricsEndpoint?: string;
+  readonly metricsEndpoint?: Str;
   /**
    * The URL to send profiles to. If omitted the Endpoint + "/v1development/profiles" will be used.
    */
-  readonly profilesEndpoint?: string;
+  readonly profilesEndpoint?: Str;
   /** ProxyURL setting for the collector */
-  readonly proxyUrl?: string;
+  readonly proxyUrl?: Str;
   /**
    * ReadBufferSize for HTTP client. See http.Transport.ReadBufferSize. Default is 0.
    */
   readonly readBufferSize?: number;
   readonly retryOnFailure?: OtlpHttpExporterRetryOnFailure;
-  readonly sendingQueue?: OtlpHttpExporterSendingQueue;
+  readonly sendingQueue?: OtlpHttpExporterSendingQueue<Str>;
   /** Duration string (e.g., '1s', '5m', '1h') */
   readonly timeout?: Duration.Duration;
   /** TLS struct exposes TLS client configuration. */
-  readonly tls?: OtlpHttpExporterTls;
+  readonly tls?: OtlpHttpExporterTls<Str>;
   /**
    * The URL to send traces to. If omitted the Endpoint + "/v1/traces" will be used.
    */
-  readonly tracesEndpoint?: string;
+  readonly tracesEndpoint?: Str;
   /**
    * WriteBufferSize for HTTP client. See http.Transport.WriteBufferSize. Default is 0.
    */

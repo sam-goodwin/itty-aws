@@ -5,11 +5,11 @@ import type * as Duration from "effect/Duration";
 import * as Schema from "@distilled.cloud/core/schema";
 import { DurationFromGoString } from "../../duration.ts";
 
-export interface DebugExporterSendingQueueBatchPartition {
+export interface DebugExporterSendingQueueBatchPartition<Str = string> {
   /**
    * MetadataKeys is a list of client.Metadata keys that will be used to partition the data into batches. If this setting is empty, a single batcher instance will be used. When this setting is not empty, one batcher will be used per distinct combination of values for the listed metadata keys. Empty value and unset metadata are treated as distinct cases. Entries are case-insensitive. Duplicated entries will trigger a validation error.
    */
-  readonly metadataKeys?: ReadonlyArray<string>;
+  readonly metadataKeys?: ReadonlyArray<Str>;
 }
 export const DebugExporterSendingQueueBatchPartition =
   /*@__PURE__*/ Schema.suspend(() =>
@@ -22,7 +22,7 @@ export const DebugExporterSendingQueueBatchPartition =
     ),
   ) as unknown as Schema.Codec<DebugExporterSendingQueueBatchPartition>;
 
-export interface DebugExporterSendingQueueBatch {
+export interface DebugExporterSendingQueueBatch<Str = string> {
   /** Duration string (e.g., '1s', '5m', '1h') */
   readonly flushTimeout?: Duration.Duration;
   /** MaxSize defines the configuration for the maximum size of a batch. */
@@ -30,7 +30,7 @@ export interface DebugExporterSendingQueueBatch {
   /** MinSize defines the configuration for the minimum size of a batch. */
   readonly minSize?: number;
   /** Partition defines the partitioning of the batches configuration. */
-  readonly partition?: DebugExporterSendingQueueBatchPartition;
+  readonly partition?: DebugExporterSendingQueueBatchPartition<Str>;
   /**
    * Unit the batch size limits are counted in. If unset, the queue's sizer is used.
    */
@@ -54,8 +54,8 @@ export const DebugExporterSendingQueueBatch = /*@__PURE__*/ Schema.suspend(() =>
   ),
 ) as unknown as Schema.Codec<DebugExporterSendingQueueBatch>;
 
-export interface DebugExporterSendingQueue {
-  readonly batch?: DebugExporterSendingQueueBatch;
+export interface DebugExporterSendingQueue<Str = string> {
+  readonly batch?: DebugExporterSendingQueueBatch<Str>;
   /**
    * BlockOnOverflow determines the behavior when the component's TotalSize limit is reached. If true, the component will wait for space; otherwise, operations will immediately return a retryable error.
    */
@@ -95,11 +95,11 @@ export const DebugExporterSendingQueue = /*@__PURE__*/ Schema.suspend(() =>
   ),
 ) as unknown as Schema.Codec<DebugExporterSendingQueue>;
 
-export interface DebugExporter {
+export interface DebugExporter<Str = string> {
   /**
    * OutputPaths is a list of file paths to write logging output to. This option can only be used when use_internal_logger is false. Special strings "stdout" and "stderr" are interpreted as os.Stdout and os.Stderr respectively. All other values are treated as file paths. If not set, defaults to ["stdout"].
    */
-  readonly outputPaths?: ReadonlyArray<string>;
+  readonly outputPaths?: ReadonlyArray<Str>;
   /**
    * SamplingInitial defines how many samples are initially logged during each second.
    */
@@ -108,7 +108,7 @@ export interface DebugExporter {
    * SamplingThereafter defines the sampling rate after the initial samples are logged.
    */
   readonly samplingThereafter?: number;
-  readonly sendingQueue?: DebugExporterSendingQueue;
+  readonly sendingQueue?: DebugExporterSendingQueue<Str>;
   /**
    * UseInternalLogger defines whether the exporter sends the output to the collector's internal logger.
    */

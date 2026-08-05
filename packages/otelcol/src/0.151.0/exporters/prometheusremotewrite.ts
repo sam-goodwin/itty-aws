@@ -5,11 +5,11 @@ import type * as Duration from "effect/Duration";
 import * as Schema from "@distilled.cloud/core/schema";
 import { DurationFromGoString } from "../../duration.ts";
 
-export interface PrometheusRemoteWriteExporterAuth {
+export interface PrometheusRemoteWriteExporterAuth<Str = string> {
   /**
    * Id of the `extensions` entry that authenticates this client, e.g. `sigv4auth` or `basicauth/backend`.
    */
-  readonly authenticator?: string;
+  readonly authenticator?: Str;
 }
 export const PrometheusRemoteWriteExporterAuth = /*@__PURE__*/ Schema.suspend(
   () =>
@@ -101,14 +101,14 @@ export const PrometheusRemoteWriteExporterTargetInfo =
     }),
   ) as unknown as Schema.Codec<PrometheusRemoteWriteExporterTargetInfo>;
 
-export interface PrometheusRemoteWriteExporterTlsTpm {
-  readonly auth?: string;
+export interface PrometheusRemoteWriteExporterTlsTpm<Str = string> {
+  readonly auth?: Str;
   readonly enabled?: boolean;
-  readonly ownerAuth?: string;
+  readonly ownerAuth?: Str;
   /**
    * The path to the TPM device or Unix domain socket. For instance /dev/tpm0 or /dev/tpmrm0.
    */
-  readonly path?: string;
+  readonly path?: Str;
 }
 export const PrometheusRemoteWriteExporterTlsTpm = /*@__PURE__*/ Schema.suspend(
   () =>
@@ -127,27 +127,27 @@ export const PrometheusRemoteWriteExporterTlsTpm = /*@__PURE__*/ Schema.suspend(
     ),
 ) as unknown as Schema.Codec<PrometheusRemoteWriteExporterTlsTpm>;
 
-export interface PrometheusRemoteWriteExporterTls {
+export interface PrometheusRemoteWriteExporterTls<Str = string> {
   /**
    * Path to the CA cert. For a client this verifies the server certificate. For a server this verifies client certificates. If empty uses system root CA. (optional)
    */
-  readonly caFile?: string;
+  readonly caFile?: Str;
   /** In memory PEM encoded cert. (optional) */
-  readonly caPem?: string;
+  readonly caPem?: Str;
   /** Path to the TLS cert to use for TLS required connections. (optional) */
-  readonly certFile?: string;
+  readonly certFile?: Str;
   /**
    * In memory PEM encoded TLS cert to use for TLS required connections. (optional)
    */
-  readonly certPem?: string;
+  readonly certPem?: Str;
   /**
    * CipherSuites is a list of TLS cipher suites that the TLS transport can use. If left blank, a safe default list is used. See https://go.dev/src/crypto/tls/cipher_suites.go for a list of supported cipher suites.
    */
-  readonly cipherSuites?: ReadonlyArray<string>;
+  readonly cipherSuites?: ReadonlyArray<Str>;
   /**
    * contains the elliptic curves that will be used in an ECDHE handshake, in preference order Defaults to empty list and "crypto/tls" defaults are used, internally.
    */
-  readonly curvePreferences?: ReadonlyArray<string>;
+  readonly curvePreferences?: ReadonlyArray<Str>;
   /**
    * If true, load system CA certificates pool in addition to the certificates configured in this struct.
    */
@@ -159,27 +159,27 @@ export interface PrometheusRemoteWriteExporterTls {
   /** InsecureSkipVerify will enable TLS but not verify the certificate. */
   readonly insecureSkipVerify?: boolean;
   /** Path to the TLS key to use for TLS required connections. (optional) */
-  readonly keyFile?: string;
+  readonly keyFile?: Str;
   /**
    * In memory PEM encoded TLS key to use for TLS required connections. (optional)
    */
-  readonly keyPem?: string;
+  readonly keyPem?: Str;
   /**
    * MaxVersion sets the maximum TLS version that is acceptable. If not set, refer to crypto/tls for defaults. (optional)
    */
-  readonly maxVersion?: string;
+  readonly maxVersion?: Str;
   /**
    * MinVersion sets the minimum TLS version that is acceptable. If not set, TLS 1.2 will be used. (optional)
    */
-  readonly minVersion?: string;
+  readonly minVersion?: Str;
   /** Duration string (e.g., '1s', '5m', '1h') */
   readonly reloadInterval?: Duration.Duration;
   /**
    * ServerName requested by client for virtual hosting. This sets the ServerName in the TLSConfig. Please refer to https://godoc.org/crypto/tls#Config for more information. (optional)
    */
-  readonly serverNameOverride?: string;
+  readonly serverNameOverride?: Str;
   /** Trusted platform module configuration */
-  readonly tpm?: PrometheusRemoteWriteExporterTlsTpm;
+  readonly tpm?: PrometheusRemoteWriteExporterTlsTpm<Str>;
 }
 export const PrometheusRemoteWriteExporterTls = /*@__PURE__*/ Schema.suspend(
   () =>
@@ -222,9 +222,9 @@ export const PrometheusRemoteWriteExporterTls = /*@__PURE__*/ Schema.suspend(
     ),
 ) as unknown as Schema.Codec<PrometheusRemoteWriteExporterTls>;
 
-export interface PrometheusRemoteWriteExporterWal {
+export interface PrometheusRemoteWriteExporterWal<Str = string> {
   readonly bufferSize?: number;
-  readonly directory?: string;
+  readonly directory?: Str;
   /** Duration string (e.g., '1s', '5m', '1h') */
   readonly lagRecordFrequency?: Duration.Duration;
   /** Duration string (e.g., '1s', '5m', '1h') */
@@ -247,13 +247,13 @@ export const PrometheusRemoteWriteExporterWal = /*@__PURE__*/ Schema.suspend(
     ),
 ) as unknown as Schema.Codec<PrometheusRemoteWriteExporterWal>;
 
-export interface PrometheusRemoteWriteExporter {
+export interface PrometheusRemoteWriteExporter<Str = string> {
   /**
    * AddMetricSuffixes controls whether unit and type suffixes are added to metrics on export Deprecated: Use TranslationStrategy instead. It will be removed in v0.153.0.
    * @deprecated
    */
   readonly addMetricSuffixes?: boolean;
-  readonly auth?: PrometheusRemoteWriteExporterAuth;
+  readonly auth?: PrometheusRemoteWriteExporterAuth<Str>;
   /** The compression key for supported compression types within collector. */
   readonly compression?:
     | "none"
@@ -278,11 +278,11 @@ export interface PrometheusRemoteWriteExporter {
    */
   readonly enabled?: boolean;
   /** The target URL to send data to (e.g.: http://some.url:9411/v1/traces). */
-  readonly endpoint: string;
+  readonly endpoint: Str;
   /**
    * ExternalLabels defines a map of label keys and values that are allowed to start with reserved prefix "__"
    */
-  readonly externalLabels?: { readonly [key: string]: string };
+  readonly externalLabels?: { readonly [key: string]: Str };
   /**
    * Enabling ForceAttemptHTTP2 forces the HTTP transport to use the HTTP/2 protocol. By default, this is set to true. NOTE: HTTP/2 does not support settings such as MaxConnsPerHost, MaxIdleConnsPerHost and MaxIdleConns.
    */
@@ -290,7 +290,7 @@ export interface PrometheusRemoteWriteExporter {
   /**
    * Additional headers attached to each request sent by the client. Header values are opaque since they may be sensitive.
    */
-  readonly headers?: { readonly [key: string]: string };
+  readonly headers?: { readonly [key: string]: Str };
   /** Duration string (e.g., '1s', '5m', '1h') */
   readonly http2PingTimeout?: Duration.Duration;
   /** Duration string (e.g., '1s', '5m', '1h') */
@@ -324,13 +324,13 @@ export interface PrometheusRemoteWriteExporter {
   /**
    * prefix attached to each exported metric name See: https://prometheus.io/docs/practices/naming/#metric-names
    */
-  readonly namespace?: string;
+  readonly namespace?: Str;
   /**
    * RemoteWriteProtoMsg controls whether prometheus remote write v1 or v2 is sent.
    */
-  readonly protobufMessage?: string;
+  readonly protobufMessage?: Str;
   /** ProxyURL setting for the collector */
-  readonly proxyUrl?: string;
+  readonly proxyUrl?: Str;
   /**
    * RandomizationFactor is a random factor used to calculate next backoffs Randomized interval = RetryInterval * (1 ± RandomizationFactor)
    */
@@ -356,7 +356,7 @@ export interface PrometheusRemoteWriteExporter {
   /** Duration string (e.g., '1s', '5m', '1h') */
   readonly timeout?: Duration.Duration;
   /** TLS struct exposes TLS client configuration. */
-  readonly tls?: PrometheusRemoteWriteExporterTls;
+  readonly tls?: PrometheusRemoteWriteExporterTls<Str>;
   /**
    * How OTLP metric and attribute names become Prometheus metric and label names.
    */
@@ -365,7 +365,7 @@ export interface PrometheusRemoteWriteExporter {
     | "UnderscoreEscapingWithoutSuffixes"
     | "NoUTF8EscapingWithSuffixes"
     | "NoTranslation";
-  readonly wal?: PrometheusRemoteWriteExporterWal;
+  readonly wal?: PrometheusRemoteWriteExporterWal<Str>;
   /**
    * WriteBufferSize for HTTP client. See http.Transport.WriteBufferSize. Default is 0.
    */

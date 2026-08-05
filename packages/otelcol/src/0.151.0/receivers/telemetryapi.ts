@@ -3,7 +3,7 @@
 
 import * as Schema from "@distilled.cloud/core/schema";
 
-export interface TelemetryApiReceiver {
+export interface TelemetryApiReceiver<Str = string> {
   readonly exportIntervalMs?: number;
   readonly logReport?: boolean;
   /** Aggregation temporality for the metrics derived from platform events. */

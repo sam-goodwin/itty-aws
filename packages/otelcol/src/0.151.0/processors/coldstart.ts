@@ -3,7 +3,7 @@
 
 import * as Schema from "@distilled.cloud/core/schema";
 
-export interface ColdStartProcessor {}
+export interface ColdStartProcessor<Str = string> {}
 export const ColdStartProcessor = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({}),
 ) as unknown as Schema.Codec<ColdStartProcessor>;

@@ -5,7 +5,7 @@ import type * as Duration from "effect/Duration";
 import * as Schema from "@distilled.cloud/core/schema";
 import { DurationFromGoString } from "../../duration.ts";
 
-export interface BatchProcessor {
+export interface BatchProcessor<Str = string> {
   /**
    * MetadataCardinalityLimit indicates the maximum number of batcher instances that will be created through a distinct combination of MetadataKeys.
    */
@@ -13,7 +13,7 @@ export interface BatchProcessor {
   /**
    * MetadataKeys is a list of client.Metadata keys that will be used to form distinct batchers.  If this setting is empty, a single batcher instance will be used.  When this setting is not empty, one batcher will be used per distinct combination of values for the listed metadata keys. Empty value and unset metadata are treated as distinct cases. Entries are case-insensitive.  Duplicated entries will trigger a validation error.
    */
-  readonly metadataKeys?: ReadonlyArray<string>;
+  readonly metadataKeys?: ReadonlyArray<Str>;
   /**
    * SendBatchMaxSize is the maximum size of a batch. It must be larger than SendBatchSize. Larger batches are split into smaller units. Default value is 0, that means no maximum size.
    */

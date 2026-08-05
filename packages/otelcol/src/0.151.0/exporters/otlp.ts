@@ -5,11 +5,11 @@ import type * as Duration from "effect/Duration";
 import * as Schema from "@distilled.cloud/core/schema";
 import { DurationFromGoString } from "../../duration.ts";
 
-export interface OtlpExporterAuth {
+export interface OtlpExporterAuth<Str = string> {
   /**
    * Id of the `extensions` entry that authenticates this client, e.g. `sigv4auth` or `basicauth/backend`.
    */
-  readonly authenticator?: string;
+  readonly authenticator?: Str;
 }
 export const OtlpExporterAuth = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
@@ -76,11 +76,11 @@ export const OtlpExporterRetryOnFailure = /*@__PURE__*/ Schema.suspend(() =>
   ),
 ) as unknown as Schema.Codec<OtlpExporterRetryOnFailure>;
 
-export interface OtlpExporterSendingQueueBatchPartition {
+export interface OtlpExporterSendingQueueBatchPartition<Str = string> {
   /**
    * MetadataKeys is a list of client.Metadata keys that will be used to partition the data into batches. If this setting is empty, a single batcher instance will be used. When this setting is not empty, one batcher will be used per distinct combination of values for the listed metadata keys. Empty value and unset metadata are treated as distinct cases. Entries are case-insensitive. Duplicated entries will trigger a validation error.
    */
-  readonly metadataKeys?: ReadonlyArray<string>;
+  readonly metadataKeys?: ReadonlyArray<Str>;
 }
 export const OtlpExporterSendingQueueBatchPartition =
   /*@__PURE__*/ Schema.suspend(() =>
@@ -93,7 +93,7 @@ export const OtlpExporterSendingQueueBatchPartition =
     ),
   ) as unknown as Schema.Codec<OtlpExporterSendingQueueBatchPartition>;
 
-export interface OtlpExporterSendingQueueBatch {
+export interface OtlpExporterSendingQueueBatch<Str = string> {
   /** Duration string (e.g., '1s', '5m', '1h') */
   readonly flushTimeout?: Duration.Duration;
   /** MaxSize defines the configuration for the maximum size of a batch. */
@@ -101,7 +101,7 @@ export interface OtlpExporterSendingQueueBatch {
   /** MinSize defines the configuration for the minimum size of a batch. */
   readonly minSize?: number;
   /** Partition defines the partitioning of the batches configuration. */
-  readonly partition?: OtlpExporterSendingQueueBatchPartition;
+  readonly partition?: OtlpExporterSendingQueueBatchPartition<Str>;
   /**
    * Unit the batch size limits are counted in. If unset, the queue's sizer is used.
    */
@@ -125,8 +125,8 @@ export const OtlpExporterSendingQueueBatch = /*@__PURE__*/ Schema.suspend(() =>
   ),
 ) as unknown as Schema.Codec<OtlpExporterSendingQueueBatch>;
 
-export interface OtlpExporterSendingQueue {
-  readonly batch?: OtlpExporterSendingQueueBatch;
+export interface OtlpExporterSendingQueue<Str = string> {
+  readonly batch?: OtlpExporterSendingQueueBatch<Str>;
   /**
    * BlockOnOverflow determines the behavior when the component's TotalSize limit is reached. If true, the component will wait for space; otherwise, operations will immediately return a retryable error.
    */
@@ -166,14 +166,14 @@ export const OtlpExporterSendingQueue = /*@__PURE__*/ Schema.suspend(() =>
   ),
 ) as unknown as Schema.Codec<OtlpExporterSendingQueue>;
 
-export interface OtlpExporterTlsTpm {
-  readonly auth?: string;
+export interface OtlpExporterTlsTpm<Str = string> {
+  readonly auth?: Str;
   readonly enabled?: boolean;
-  readonly ownerAuth?: string;
+  readonly ownerAuth?: Str;
   /**
    * The path to the TPM device or Unix domain socket. For instance /dev/tpm0 or /dev/tpmrm0.
    */
-  readonly path?: string;
+  readonly path?: Str;
 }
 export const OtlpExporterTlsTpm = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
@@ -191,27 +191,27 @@ export const OtlpExporterTlsTpm = /*@__PURE__*/ Schema.suspend(() =>
   ),
 ) as unknown as Schema.Codec<OtlpExporterTlsTpm>;
 
-export interface OtlpExporterTls {
+export interface OtlpExporterTls<Str = string> {
   /**
    * Path to the CA cert. For a client this verifies the server certificate. For a server this verifies client certificates. If empty uses system root CA. (optional)
    */
-  readonly caFile?: string;
+  readonly caFile?: Str;
   /** In memory PEM encoded cert. (optional) */
-  readonly caPem?: string;
+  readonly caPem?: Str;
   /** Path to the TLS cert to use for TLS required connections. (optional) */
-  readonly certFile?: string;
+  readonly certFile?: Str;
   /**
    * In memory PEM encoded TLS cert to use for TLS required connections. (optional)
    */
-  readonly certPem?: string;
+  readonly certPem?: Str;
   /**
    * CipherSuites is a list of TLS cipher suites that the TLS transport can use. If left blank, a safe default list is used. See https://go.dev/src/crypto/tls/cipher_suites.go for a list of supported cipher suites.
    */
-  readonly cipherSuites?: ReadonlyArray<string>;
+  readonly cipherSuites?: ReadonlyArray<Str>;
   /**
    * contains the elliptic curves that will be used in an ECDHE handshake, in preference order Defaults to empty list and "crypto/tls" defaults are used, internally.
    */
-  readonly curvePreferences?: ReadonlyArray<string>;
+  readonly curvePreferences?: ReadonlyArray<Str>;
   /**
    * If true, load system CA certificates pool in addition to the certificates configured in this struct.
    */
@@ -223,27 +223,27 @@ export interface OtlpExporterTls {
   /** InsecureSkipVerify will enable TLS but not verify the certificate. */
   readonly insecureSkipVerify?: boolean;
   /** Path to the TLS key to use for TLS required connections. (optional) */
-  readonly keyFile?: string;
+  readonly keyFile?: Str;
   /**
    * In memory PEM encoded TLS key to use for TLS required connections. (optional)
    */
-  readonly keyPem?: string;
+  readonly keyPem?: Str;
   /**
    * MaxVersion sets the maximum TLS version that is acceptable. If not set, refer to crypto/tls for defaults. (optional)
    */
-  readonly maxVersion?: string;
+  readonly maxVersion?: Str;
   /**
    * MinVersion sets the minimum TLS version that is acceptable. If not set, TLS 1.2 will be used. (optional)
    */
-  readonly minVersion?: string;
+  readonly minVersion?: Str;
   /** Duration string (e.g., '1s', '5m', '1h') */
   readonly reloadInterval?: Duration.Duration;
   /**
    * ServerName requested by client for virtual hosting. This sets the ServerName in the TLSConfig. Please refer to https://godoc.org/crypto/tls#Config for more information. (optional)
    */
-  readonly serverNameOverride?: string;
+  readonly serverNameOverride?: Str;
   /** Trusted platform module configuration */
-  readonly tpm?: OtlpExporterTlsTpm;
+  readonly tpm?: OtlpExporterTlsTpm<Str>;
 }
 export const OtlpExporterTls = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
@@ -285,16 +285,16 @@ export const OtlpExporterTls = /*@__PURE__*/ Schema.suspend(() =>
   ),
 ) as unknown as Schema.Codec<OtlpExporterTls>;
 
-export interface OtlpExporter {
-  readonly auth?: OtlpExporterAuth;
+export interface OtlpExporter<Str = string> {
+  readonly auth?: OtlpExporterAuth<Str>;
   /**
    * WithAuthority parameter configures client to rewrite ":authority" header (godoc.org/google.golang.org/grpc#WithAuthority)
    */
-  readonly authority?: string;
+  readonly authority?: Str;
   /**
    * Sets the balancer in grpclb_policy to discover the servers. Default is pick_first. https://github.com/grpc/grpc-go/blob/master/examples/features/load_balancing/README.md
    */
-  readonly balancerName?: string;
+  readonly balancerName?: Str;
   /** The compression key for supported compression types within collector. */
   readonly compression?:
     | "none"
@@ -307,26 +307,26 @@ export interface OtlpExporter {
   /**
    * The target to which the exporter is going to send traces or metrics, using the gRPC protocol. The valid syntax is described at https://github.com/grpc/grpc/blob/master/doc/naming.md.
    */
-  readonly endpoint: string;
+  readonly endpoint: Str;
   /**
    * Additional headers attached to each request sent by the client. Header values are opaque since they may be sensitive.
    */
-  readonly headers?: { readonly [key: string]: string };
+  readonly headers?: { readonly [key: string]: Str };
   readonly keepalive?: OtlpExporterKeepalive;
   /**
    * ReadBufferSize for gRPC client. See grpc.WithReadBufferSize. (https://godoc.org/google.golang.org/grpc#WithReadBufferSize).
    */
   readonly readBufferSize?: number;
   readonly retryOnFailure?: OtlpExporterRetryOnFailure;
-  readonly sendingQueue?: OtlpExporterSendingQueue;
+  readonly sendingQueue?: OtlpExporterSendingQueue<Str>;
   /** Duration string (e.g., '1s', '5m', '1h') */
   readonly timeout?: Duration.Duration;
   /** TLS struct exposes TLS client configuration. */
-  readonly tls?: OtlpExporterTls;
+  readonly tls?: OtlpExporterTls<Str>;
   /**
    * UserAgent overrides the default user-agent header sent on gRPC requests. The default is derived from the build info. When empty, the caller controls the user-agent via grpc.WithUserAgent or similar options.
    */
-  readonly userAgent?: string;
+  readonly userAgent?: Str;
   /**
    * WaitForReady parameter configures client to wait for ready state before sending data. (https://github.com/grpc/grpc/blob/master/doc/wait-for-ready.md)
    */

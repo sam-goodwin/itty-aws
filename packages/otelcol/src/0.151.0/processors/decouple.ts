@@ -3,7 +3,7 @@
 
 import * as Schema from "@distilled.cloud/core/schema";
 
-export interface DecoupleProcessor {
+export interface DecoupleProcessor<Str = string> {
   readonly maxQueueSize?: number;
 }
 export const DecoupleProcessor = /*@__PURE__*/ Schema.suspend(() =>

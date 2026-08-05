@@ -3,13 +3,13 @@
 
 import * as Schema from "@distilled.cloud/core/schema";
 
-export interface FilterProcessorLogConditionsItem {
-  readonly conditions?: ReadonlyArray<string>;
-  readonly context?: string;
+export interface FilterProcessorLogConditionsItem<Str = string> {
+  readonly conditions?: ReadonlyArray<Str>;
+  readonly context?: Str;
   /**
    * ErrorMode determines how the processor reacts to errors that occur while processing this group of conditions. When provided, it overrides the default Config ErrorMode.
    */
-  readonly errorMode?: string;
+  readonly errorMode?: Str;
 }
 export const FilterProcessorLogConditionsItem = /*@__PURE__*/ Schema.suspend(
   () =>
@@ -26,9 +26,9 @@ export const FilterProcessorLogConditionsItem = /*@__PURE__*/ Schema.suspend(
     ),
 ) as unknown as Schema.Codec<FilterProcessorLogConditionsItem>;
 
-export interface FilterProcessorLogsExcludeRecordAttributesItem {
+export interface FilterProcessorLogsExcludeRecordAttributesItem<Str = string> {
   /** Key specifies the attribute key. */
-  readonly key?: string;
+  readonly key?: Str;
   /**
    * Values specifies the value to match against. If it is not set, any value will match.
    */
@@ -42,7 +42,7 @@ export const FilterProcessorLogsExcludeRecordAttributesItem =
     }),
   ) as unknown as Schema.Codec<FilterProcessorLogsExcludeRecordAttributesItem>;
 
-export interface FilterProcessorLogsExcludeSeverityNumber {
+export interface FilterProcessorLogsExcludeSeverityNumber<Str = string> {
   /**
    * MatchUndefined lets logs records with "unknown" severity match. If MinSeverity is not set, this field is ignored, as fields are not matched based on severity.
    */
@@ -50,7 +50,7 @@ export interface FilterProcessorLogsExcludeSeverityNumber {
   /**
    * Min is the minimum severity needed for the log record to match. This corresponds to the short names specified here: https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/logs/data-model.md#displaying-severity this field is case-insensitive ("INFO" == "info")
    */
-  readonly min?: string;
+  readonly min?: Str;
 }
 export const FilterProcessorLogsExcludeSeverityNumber =
   /*@__PURE__*/ Schema.suspend(() =>
@@ -65,29 +65,33 @@ export const FilterProcessorLogsExcludeSeverityNumber =
     ),
   ) as unknown as Schema.Codec<FilterProcessorLogsExcludeSeverityNumber>;
 
-export interface FilterProcessorLogsExclude {
+export interface FilterProcessorLogsExclude<Str = string> {
   /**
    * LogBodies is a list of strings that the LogRecord's body field must match against.
    */
-  readonly bodies?: ReadonlyArray<string>;
+  readonly bodies?: ReadonlyArray<Str>;
   /** LogMatchType specifies the type of matching desired */
-  readonly matchType?: string;
+  readonly matchType?: Str;
   /**
    * RecordAttributes defines a list of possible record attributes to match logs against. A match occurs if any record attribute matches at least one expression in this given list.
    */
-  readonly recordAttributes?: ReadonlyArray<FilterProcessorLogsExcludeRecordAttributesItem>;
+  readonly recordAttributes?: ReadonlyArray<
+    FilterProcessorLogsExcludeRecordAttributesItem<Str>
+  >;
   /**
    * ResourceAttributes defines a list of possible resource attributes to match logs against. A match occurs if any resource attribute matches all expressions in this given list.
    */
-  readonly resourceAttributes?: ReadonlyArray<FilterProcessorLogsExcludeRecordAttributesItem>;
+  readonly resourceAttributes?: ReadonlyArray<
+    FilterProcessorLogsExcludeRecordAttributesItem<Str>
+  >;
   /**
    * SeverityNumberProperties defines how to match against a log record's SeverityNumber, if defined.
    */
-  readonly severityNumber?: FilterProcessorLogsExcludeSeverityNumber;
+  readonly severityNumber?: FilterProcessorLogsExcludeSeverityNumber<Str>;
   /**
    * SeverityTexts is a list of strings that the LogRecord's severity text field must match against.
    */
-  readonly severityTexts?: ReadonlyArray<string>;
+  readonly severityTexts?: ReadonlyArray<Str>;
 }
 export const FilterProcessorLogsExclude = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
@@ -113,23 +117,23 @@ export const FilterProcessorLogsExclude = /*@__PURE__*/ Schema.suspend(() =>
   ),
 ) as unknown as Schema.Codec<FilterProcessorLogsExclude>;
 
-export interface FilterProcessorLogs {
+export interface FilterProcessorLogs<Str = string> {
   /**
    * Exclude match properties describe logs that should be excluded from the Collector Service pipeline, all other logs should be included. If both Include and Exclude are specified, Include filtering occurs first.
    */
-  readonly exclude?: FilterProcessorLogsExclude;
+  readonly exclude?: FilterProcessorLogsExclude<Str>;
   /**
    * Include match properties describe logs that should be included in the Collector Service pipeline, all other logs should be dropped from further processing. If both Include and Exclude are specified, Include filtering occurs first.
    */
-  readonly include?: FilterProcessorLogsExclude;
+  readonly include?: FilterProcessorLogsExclude<Str>;
   /**
    * LogConditions is a list of OTTL conditions for an ottllog context. If any condition resolves to true, the log event will be dropped. Supports `and`, `or`, and `()`
    */
-  readonly logRecord?: ReadonlyArray<string>;
+  readonly logRecord?: ReadonlyArray<Str>;
   /**
    * ResourceConditions is a list of OTTL conditions for an ottlresource context. If any condition resolves to true, the whole resource will be dropped. Supports `and`, `or`, and `()`
    */
-  readonly resource?: ReadonlyArray<string>;
+  readonly resource?: ReadonlyArray<Str>;
 }
 export const FilterProcessorLogs = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
@@ -165,23 +169,25 @@ export const FilterProcessorMetricsExcludeRegexp = /*@__PURE__*/ Schema.suspend(
     }),
 ) as unknown as Schema.Codec<FilterProcessorMetricsExcludeRegexp>;
 
-export interface FilterProcessorMetricsExclude {
+export interface FilterProcessorMetricsExclude<Str = string> {
   /**
    * Expressions specifies the list of expr expressions to match metrics against. A match occurs if any datapoint in a metric matches at least one expression in this list.
    */
-  readonly expressions?: ReadonlyArray<string>;
+  readonly expressions?: ReadonlyArray<Str>;
   /** MatchType specifies the type of matching desired */
-  readonly matchType?: string;
+  readonly matchType?: Str;
   /**
    * MetricNames specifies the list of string patterns to match metric names against. A match occurs if the metric name matches at least one string pattern in this list.
    */
-  readonly metricNames?: ReadonlyArray<string>;
+  readonly metricNames?: ReadonlyArray<Str>;
   /** RegexpConfig specifies options for the MetricRegexp match type */
   readonly regexp?: FilterProcessorMetricsExcludeRegexp;
   /**
    * ResourceAttributes defines a list of possible resource attributes to match metrics against. A match occurs if any resource attribute matches all expressions in this given list.
    */
-  readonly resourceAttributes?: ReadonlyArray<FilterProcessorLogsExcludeRecordAttributesItem>;
+  readonly resourceAttributes?: ReadonlyArray<
+    FilterProcessorLogsExcludeRecordAttributesItem<Str>
+  >;
 }
 export const FilterProcessorMetricsExclude = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
@@ -203,29 +209,29 @@ export const FilterProcessorMetricsExclude = /*@__PURE__*/ Schema.suspend(() =>
   ),
 ) as unknown as Schema.Codec<FilterProcessorMetricsExclude>;
 
-export interface FilterProcessorMetrics {
+export interface FilterProcessorMetrics<Str = string> {
   /**
    * DataPointConditions is a list of OTTL conditions for an ottldatapoint context. If any condition resolves to true, the datapoint will be dropped. Supports `and`, `or`, and `()`
    */
-  readonly datapoint?: ReadonlyArray<string>;
+  readonly datapoint?: ReadonlyArray<Str>;
   /**
    * Exclude match properties describe metrics that should be excluded from the Collector Service pipeline, all other metrics should be included. If both Include and Exclude are specified, Include filtering occurs first.
    */
-  readonly exclude?: FilterProcessorMetricsExclude;
+  readonly exclude?: FilterProcessorMetricsExclude<Str>;
   /**
    * Include match properties describe metrics that should be included in the Collector Service pipeline, all other metrics should be dropped from further processing. If both Include and Exclude are specified, Include filtering occurs first.
    */
-  readonly include?: FilterProcessorMetricsExclude;
+  readonly include?: FilterProcessorMetricsExclude<Str>;
   /**
    * MetricConditions is a list of OTTL conditions for an ottlmetric context. If any condition resolves to true, the metric will be dropped. Supports `and`, `or`, and `()`
    */
-  readonly metric?: ReadonlyArray<string>;
+  readonly metric?: ReadonlyArray<Str>;
   /** RegexpConfig specifies options for the regexp match type */
   readonly regexp?: FilterProcessorMetricsExcludeRegexp;
   /**
    * ResourceConditions is a list of OTTL conditions for an ottlresource context. If any condition resolves to true, the whole resource will be dropped. Supports `and`, `or`, and `()`
    */
-  readonly resource?: ReadonlyArray<string>;
+  readonly resource?: ReadonlyArray<Str>;
 }
 export const FilterProcessorMetrics = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
@@ -238,15 +244,15 @@ export const FilterProcessorMetrics = /*@__PURE__*/ Schema.suspend(() =>
   }),
 ) as unknown as Schema.Codec<FilterProcessorMetrics>;
 
-export interface FilterProcessorProfiles {
+export interface FilterProcessorProfiles<Str = string> {
   /**
    * ProfileConditions is a list of OTTL conditions for an ottlprofile context. If any condition resolves to true, the profile will be dropped. Supports `and`, `or`, and `()`
    */
-  readonly profile?: ReadonlyArray<string>;
+  readonly profile?: ReadonlyArray<Str>;
   /**
    * ResourceConditions is a list of OTTL conditions for an ottlresource context. If any condition resolves to true, the whole resource will be dropped. Supports `and`, `or`, and `()`
    */
-  readonly resource?: ReadonlyArray<string>;
+  readonly resource?: ReadonlyArray<Str>;
 }
 export const FilterProcessorProfiles = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
@@ -255,12 +261,12 @@ export const FilterProcessorProfiles = /*@__PURE__*/ Schema.suspend(() =>
   }),
 ) as unknown as Schema.Codec<FilterProcessorProfiles>;
 
-export interface FilterProcessorSpansExcludeLibrariesItem {
-  readonly name?: string;
+export interface FilterProcessorSpansExcludeLibrariesItem<Str = string> {
+  readonly name?: Str;
   /**
    * version match expected actual  match nil      <blank> yes nil      1       yes <blank>  <blank> yes <blank>  1       no 1        <blank> no 1        1       yes
    */
-  readonly version?: string;
+  readonly version?: Str;
 }
 export const FilterProcessorSpansExcludeLibrariesItem =
   /*@__PURE__*/ Schema.suspend(() =>
@@ -293,19 +299,23 @@ export const FilterProcessorSpansExcludeLogSeverityNumber =
     ),
   ) as unknown as Schema.Codec<FilterProcessorSpansExcludeLogSeverityNumber>;
 
-export interface FilterProcessorSpansExclude {
+export interface FilterProcessorSpansExclude<Str = string> {
   /**
    * Attributes specifies the list of attributes to match against. All of these attributes must match for a match to occur. This is an optional field.
    */
-  readonly attributes?: ReadonlyArray<FilterProcessorLogsExcludeRecordAttributesItem>;
+  readonly attributes?: ReadonlyArray<
+    FilterProcessorLogsExcludeRecordAttributesItem<Str>
+  >;
   /**
    * Libraries specify the list of items to match the implementation library against. A match occurs if the span's implementation library matches at least one item in this list. This is an optional field.
    */
-  readonly libraries?: ReadonlyArray<FilterProcessorSpansExcludeLibrariesItem>;
+  readonly libraries?: ReadonlyArray<
+    FilterProcessorSpansExcludeLibrariesItem<Str>
+  >;
   /**
    * LogBodies is a list of strings that the LogRecord's body field must match against.
    */
-  readonly logBodies?: ReadonlyArray<string>;
+  readonly logBodies?: ReadonlyArray<Str>;
   /**
    * LogSeverityNumber defines how to match against a log record's SeverityNumber, if defined.
    */
@@ -313,29 +323,31 @@ export interface FilterProcessorSpansExclude {
   /**
    * LogSeverityTexts is a list of strings that the LogRecord's severity text field must match against.
    */
-  readonly logSeverityTexts?: ReadonlyArray<string>;
-  readonly matchType?: string;
+  readonly logSeverityTexts?: ReadonlyArray<Str>;
+  readonly matchType?: Str;
   /**
    * MetricNames is a list of strings to match metric name against. A match occurs if metric name matches at least one item in the list. This field is optional.
    */
-  readonly metricNames?: ReadonlyArray<string>;
+  readonly metricNames?: ReadonlyArray<Str>;
   readonly regexp?: FilterProcessorMetricsExcludeRegexp;
   /**
    * Resources specify the list of items to match the resources against. A match occurs if the data's resources match at least one item in this list. This is an optional field.
    */
-  readonly resources?: ReadonlyArray<FilterProcessorLogsExcludeRecordAttributesItem>;
+  readonly resources?: ReadonlyArray<
+    FilterProcessorLogsExcludeRecordAttributesItem<Str>
+  >;
   /**
    * Services specify the list of items to match service name against. A match occurs if the span's service name matches at least one item in this list. This is an optional field.
    */
-  readonly services?: ReadonlyArray<string>;
+  readonly services?: ReadonlyArray<Str>;
   /**
    * SpanKinds specify the list of items to match the span kind against. A match occurs if the span's span kind matches at least one item in this list. This is an optional field
    */
-  readonly spanKinds?: ReadonlyArray<string>;
+  readonly spanKinds?: ReadonlyArray<Str>;
   /**
    * SpanNames specify the list of items to match span name against. A match occurs if the span name matches at least one item in this list. This is an optional field.
    */
-  readonly spanNames?: ReadonlyArray<string>;
+  readonly spanNames?: ReadonlyArray<Str>;
 }
 export const FilterProcessorSpansExclude = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
@@ -377,15 +389,15 @@ export const FilterProcessorSpansExclude = /*@__PURE__*/ Schema.suspend(() =>
   ),
 ) as unknown as Schema.Codec<FilterProcessorSpansExclude>;
 
-export interface FilterProcessorSpans {
+export interface FilterProcessorSpans<Str = string> {
   /**
    * Exclude specifies when this processor will not be applied to the input data which match the specified properties. Note: The `exclude` properties are checked after the `include` properties, if they exist, are checked. If `include` isn't specified, the `exclude` properties are checked against all input data. This is an optional field. If neither `include` and `exclude` are set, all input data is processed. If `exclude` is set and `include` isn't set, then all the input data that does not match the properties in this structure are processed.
    */
-  readonly exclude?: FilterProcessorSpansExclude;
+  readonly exclude?: FilterProcessorSpansExclude<Str>;
   /**
    * Include specifies the set of input data properties that must be present in order for this processor to apply to it. Note: If `exclude` is specified, the input data is compared against those properties after the `include` properties. This is an optional field. If neither `include` and `exclude` are set, all input data are processed. If `include` is set and `exclude` isn't set, then all input data matching the properties in this structure are processed.
    */
-  readonly include?: FilterProcessorSpansExclude;
+  readonly include?: FilterProcessorSpansExclude<Str>;
 }
 export const FilterProcessorSpans = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
@@ -394,19 +406,19 @@ export const FilterProcessorSpans = /*@__PURE__*/ Schema.suspend(() =>
   }),
 ) as unknown as Schema.Codec<FilterProcessorSpans>;
 
-export interface FilterProcessorTraces {
+export interface FilterProcessorTraces<Str = string> {
   /**
    * ResourceConditions is a list of OTTL conditions for an ottlresource context. If any condition resolves to true, the whole resource will be dropped. Supports `and`, `or`, and `()`
    */
-  readonly resource?: ReadonlyArray<string>;
+  readonly resource?: ReadonlyArray<Str>;
   /**
    * SpanConditions is a list of OTTL conditions for an ottlspan context. If any condition resolves to true, the span will be dropped. Supports `and`, `or`, and `()`
    */
-  readonly span?: ReadonlyArray<string>;
+  readonly span?: ReadonlyArray<Str>;
   /**
    * SpanEventConditions is a list of OTTL conditions for an ottlspanevent context. If any condition resolves to true, the span event will be dropped. Supports `and`, `or`, and `()`
    */
-  readonly spanevent?: ReadonlyArray<string>;
+  readonly spanevent?: ReadonlyArray<Str>;
 }
 export const FilterProcessorTraces = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
@@ -416,40 +428,46 @@ export const FilterProcessorTraces = /*@__PURE__*/ Schema.suspend(() =>
   }),
 ) as unknown as Schema.Codec<FilterProcessorTraces>;
 
-export interface FilterProcessor {
+export interface FilterProcessor<Str = string> {
   /**
    * ErrorMode determines how the processor reacts to errors that occur while processing an OTTL condition. Valid values are `ignore` and `propagate`. `ignore` means the processor ignores errors returned by conditions and continues on to the next condition. This is the recommended mode. `propagate` means the processor returns the error up the pipeline.  This will result in the payload being dropped from the collector. The default value is `propagate`. It will change to `ignore` when the `processor.filter.defaultErrorModeIgnore` feature gate is stable.
    */
-  readonly errorMode?: string;
-  readonly logConditions?: ReadonlyArray<FilterProcessorLogConditionsItem>;
+  readonly errorMode?: Str;
+  readonly logConditions?: ReadonlyArray<FilterProcessorLogConditionsItem<Str>>;
   /**
    * Deprecated: use LogConditions instead.
    * @deprecated
    */
-  readonly logs?: FilterProcessorLogs;
-  readonly metricConditions?: ReadonlyArray<FilterProcessorLogConditionsItem>;
+  readonly logs?: FilterProcessorLogs<Str>;
+  readonly metricConditions?: ReadonlyArray<
+    FilterProcessorLogConditionsItem<Str>
+  >;
   /**
    * Deprecated: use MetricConditions instead.
    * @deprecated
    */
-  readonly metrics?: FilterProcessorMetrics;
-  readonly profileConditions?: ReadonlyArray<FilterProcessorLogConditionsItem>;
+  readonly metrics?: FilterProcessorMetrics<Str>;
+  readonly profileConditions?: ReadonlyArray<
+    FilterProcessorLogConditionsItem<Str>
+  >;
   /**
    * Deprecated: use ProfileConditions instead.
    * @deprecated
    */
-  readonly profiles?: FilterProcessorProfiles;
+  readonly profiles?: FilterProcessorProfiles<Str>;
   /**
    * Deprecated: use TraceConditions instead.
    * @deprecated
    */
-  readonly spans?: FilterProcessorSpans;
-  readonly traceConditions?: ReadonlyArray<FilterProcessorLogConditionsItem>;
+  readonly spans?: FilterProcessorSpans<Str>;
+  readonly traceConditions?: ReadonlyArray<
+    FilterProcessorLogConditionsItem<Str>
+  >;
   /**
    * Deprecated: use TraceConditions instead.
    * @deprecated
    */
-  readonly traces?: FilterProcessorTraces;
+  readonly traces?: FilterProcessorTraces<Str>;
 }
 export const FilterProcessor = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
