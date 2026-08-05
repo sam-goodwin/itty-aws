@@ -487,8 +487,27 @@ export const generateService = (
   const order = topoOrder(shapes, reachable, shapeDeps);
   const indexOf = orderIndex(order);
 
-  const ref = makeSchemaRef(prelude, indexOf);
-  const tsRef = makeTsRef(tsPrelude);
+  /**
+   * Shape id → the id whose emitted body it shares.
+   *
+   * Structural aliasing (see the struct emission below) has to cascade: a
+   * parent only matches another parent if their MEMBERS render identically,
+   * and a member renders as its target's name. So every reference resolves
+   * through this map first — once `…ItemGroupRuleGroup` is aliased onto a
+   * canonical shape, the parents referencing it start rendering the same
+   * text and collapse in turn.
+   *
+   * Filled in topological order, so a canonical target is always a shape
+   * that was already emitted — a back-reference, never a forward one.
+   */
+  const canonicalId = new Map<string, string>();
+  const canon = (target: string): string => canonicalId.get(target) ?? target;
+
+  const rawRef = makeSchemaRef(prelude, indexOf);
+  const rawTsRef = makeTsRef(tsPrelude);
+  const ref = (target: string, selfIdx: number) =>
+    rawRef(canon(target), selfIdx);
+  const tsRef = (target: string) => rawTsRef(canon(target));
 
   // Direction classification for enum openness. Enum ALIASES are emitted
   // CLOSED (exhaustively matchable on reads); request-reachable shapes
@@ -529,7 +548,8 @@ export const generateService = (
    * pure response/error shapes stay the plain closed alias, and so do
    * union-arm discriminant literals.
    */
-  const tsRefAt = (target: string, ownerId: string): string => {
+  const tsRefAt = (rawTarget: string, ownerId: string): string => {
+    const target = canon(rawTarget);
     const base = tsRef(target);
     if (!requestReachable.has(ownerId)) return base;
     if (discriminantEnums.has(target)) return base;
@@ -731,6 +751,13 @@ export const generateService = (
 
   // 4. Error classes from the operations' errors lists.
   const out: string[] = [];
+  // Emitted struct body → the name that owns it, for structural aliasing.
+  // Keyed on the emitted TEXT, so two shapes collapse only when what they
+  // would emit is byte-identical — including member names, targets, docs and
+  // pipes. References are already resolved to names at this point, so a
+  // difference anywhere in the tree shows up as different text.
+  const structBodies = new Map<string, { id: string; name: string }>();
+  let aliased = 0;
   // Set when any error carries CATEGORY_TRAIT, so the header only imports
   // the category module when something actually uses it.
   let usesCategories = false;
@@ -866,7 +893,6 @@ export const generateService = (
         fields.push(...inject.interfaceLines);
         members.push(inject.structLine);
       }
-      out.push(interfaceDecl(name, fields));
       const struct = members.length
         ? `S.Struct({\n${members.join("\n")}\n})`
         : `S.Struct({})`;
@@ -884,15 +910,44 @@ export const generateService = (
           : []),
       ];
       const tail = pipes.map((p) => `.pipe(${p})`).join("");
-      out.push(
-        suspendConst({
-          name,
-          pure,
-          multiline: true,
-          annotateIdentifier: true,
-          expr: `${struct}${tail}`,
-        }),
-      );
+
+      // Shapes whose emitted body is byte-identical are one shape wearing
+      // many names. The docs pipelines generate a fresh copy of every nested
+      // shape per operation, so cloudflare's zero_trust carries 374 copies of
+      // `{ group?: unknown }` — one per operation x application type x
+      // include/exclude/require — and 72% of its 16,800 structures are
+      // redundant that way.
+      //
+      // Emit the body once and alias the rest to it. The public name is kept,
+      // so nothing about the surface changes; only the duplicate bodies go.
+      // Operation I/O is excluded: those carry the operation's Http trait and
+      // must never be merged onto one another.
+      const bodyKey = `${JSON.stringify(fields)}|${struct}${tail}`;
+      const canonical = structCtx.isOpIo
+        ? undefined
+        : structBodies.get(bodyKey);
+      if (canonical !== undefined) {
+        out.push(`export type ${name} = ${canonical.name};`);
+        out.push(`export const ${name} = ${canonical.name};\n`);
+        // Later shapes referencing this one now render the canonical name,
+        // which is what lets their bodies collapse too.
+        canonicalId.set(id, canonical.id);
+        aliased++;
+      } else {
+        if (!structCtx.isOpIo) {
+          structBodies.set(bodyKey, { id, name });
+        }
+        out.push(interfaceDecl(name, fields));
+        out.push(
+          suspendConst({
+            name,
+            pure,
+            multiline: true,
+            annotateIdentifier: true,
+            expr: `${struct}${tail}`,
+          }),
+        );
+      }
     } else if (d.type === "list") {
       out.push(`export type ${name} = Array<${tsRefAt(d.member.target, id)}>;`);
       out.push(

@@ -190,27 +190,16 @@ export type LogExplorerDatasetsCreateResponseObjectType = "account" | "zone";
 export const LogExplorerDatasetsCreateResponseObjectType =
   /*@__PURE__*/ S.String;
 
-export interface LogExplorerDatasetsCreateResponseFieldsItem {
-  /** Whether the API includes this field in log ingest. */
-  enabled: boolean;
-  /** Field name in lowercase. */
-  name: string;
-}
+export type LogExplorerDatasetsCreateResponseFieldsItem =
+  LogExplorerDatasetsCreateRequestFieldsItem;
 export const LogExplorerDatasetsCreateResponseFieldsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      enabled: S.Boolean,
-      name: S.String,
-    }),
-  ).annotate({
-    identifier: "LogExplorerDatasetsCreateResponseFieldsItem",
-  }) as any as S.Schema<LogExplorerDatasetsCreateResponseFieldsItem>;
+  LogExplorerDatasetsCreateRequestFieldsItem;
 
 export type LogExplorerDatasetsCreateResponseFieldsList =
-  Array<LogExplorerDatasetsCreateResponseFieldsItem>;
+  Array<LogExplorerDatasetsCreateRequestFieldsItem>;
 export const LogExplorerDatasetsCreateResponseFieldsList =
   /*@__PURE__*/ S.Array(
-    LogExplorerDatasetsCreateResponseFieldsItem,
+    LogExplorerDatasetsCreateRequestFieldsItem,
   ) as any as S.Schema<LogExplorerDatasetsCreateResponseFieldsList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -400,26 +389,15 @@ export const GetLogExplorerDatasetForAccountRequest = /*@__PURE__*/ S.suspend(
 export type LogExplorerDatasetsGetResponseObjectType = "account" | "zone";
 export const LogExplorerDatasetsGetResponseObjectType = /*@__PURE__*/ S.String;
 
-export interface LogExplorerDatasetsGetResponseFieldsItem {
-  /** Whether the API includes this field in log ingest. */
-  enabled: boolean;
-  /** Field name in lowercase. */
-  name: string;
-}
-export const LogExplorerDatasetsGetResponseFieldsItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      enabled: S.Boolean,
-      name: S.String,
-    }),
-).annotate({
-  identifier: "LogExplorerDatasetsGetResponseFieldsItem",
-}) as any as S.Schema<LogExplorerDatasetsGetResponseFieldsItem>;
+export type LogExplorerDatasetsGetResponseFieldsItem =
+  LogExplorerDatasetsCreateRequestFieldsItem;
+export const LogExplorerDatasetsGetResponseFieldsItem =
+  LogExplorerDatasetsCreateRequestFieldsItem;
 
 export type LogExplorerDatasetsGetResponseFieldsList =
-  Array<LogExplorerDatasetsGetResponseFieldsItem>;
+  Array<LogExplorerDatasetsCreateRequestFieldsItem>;
 export const LogExplorerDatasetsGetResponseFieldsList = /*@__PURE__*/ S.Array(
-  LogExplorerDatasetsGetResponseFieldsItem,
+  LogExplorerDatasetsCreateRequestFieldsItem,
 ) as any as S.Schema<LogExplorerDatasetsGetResponseFieldsList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -826,26 +804,15 @@ export const SqlLogExplorerQueryForZoneRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "SqlLogExplorerQueryForZoneRequest",
 }) as any as S.Schema<SqlLogExplorerQueryForZoneRequest>;
 
-export interface LogExplorerDatasetsUpdateRequestFieldsItem {
-  /** Whether the API includes this field in log ingest. */
-  enabled: boolean;
-  /** Field name in lowercase. */
-  name: string;
-}
+export type LogExplorerDatasetsUpdateRequestFieldsItem =
+  LogExplorerDatasetsCreateRequestFieldsItem;
 export const LogExplorerDatasetsUpdateRequestFieldsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      enabled: S.Boolean,
-      name: S.String,
-    }),
-  ).annotate({
-    identifier: "LogExplorerDatasetsUpdateRequestFieldsItem",
-  }) as any as S.Schema<LogExplorerDatasetsUpdateRequestFieldsItem>;
+  LogExplorerDatasetsCreateRequestFieldsItem;
 
 export type LogExplorerDatasetsUpdateRequestFieldsList =
-  Array<LogExplorerDatasetsUpdateRequestFieldsItem>;
+  Array<LogExplorerDatasetsCreateRequestFieldsItem>;
 export const LogExplorerDatasetsUpdateRequestFieldsList = /*@__PURE__*/ S.Array(
-  LogExplorerDatasetsUpdateRequestFieldsItem,
+  LogExplorerDatasetsCreateRequestFieldsItem,
 ) as any as S.Schema<LogExplorerDatasetsUpdateRequestFieldsList>;
 
 export interface UpdateLogExplorerDatasetForAccountRequest {
@@ -881,27 +848,16 @@ export type LogExplorerDatasetsUpdateResponseObjectType = "account" | "zone";
 export const LogExplorerDatasetsUpdateResponseObjectType =
   /*@__PURE__*/ S.String;
 
-export interface LogExplorerDatasetsUpdateResponseFieldsItem {
-  /** Whether the API includes this field in log ingest. */
-  enabled: boolean;
-  /** Field name in lowercase. */
-  name: string;
-}
+export type LogExplorerDatasetsUpdateResponseFieldsItem =
+  LogExplorerDatasetsCreateRequestFieldsItem;
 export const LogExplorerDatasetsUpdateResponseFieldsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      enabled: S.Boolean,
-      name: S.String,
-    }),
-  ).annotate({
-    identifier: "LogExplorerDatasetsUpdateResponseFieldsItem",
-  }) as any as S.Schema<LogExplorerDatasetsUpdateResponseFieldsItem>;
+  LogExplorerDatasetsCreateRequestFieldsItem;
 
 export type LogExplorerDatasetsUpdateResponseFieldsList =
-  Array<LogExplorerDatasetsUpdateResponseFieldsItem>;
+  Array<LogExplorerDatasetsCreateRequestFieldsItem>;
 export const LogExplorerDatasetsUpdateResponseFieldsList =
   /*@__PURE__*/ S.Array(
-    LogExplorerDatasetsUpdateResponseFieldsItem,
+    LogExplorerDatasetsCreateRequestFieldsItem,
   ) as any as S.Schema<LogExplorerDatasetsUpdateResponseFieldsList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */

@@ -327,20 +327,8 @@ export const GetUpdateStatusRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetUpdateStatusRequest",
 }) as any as S.Schema<GetUpdateStatusRequest>;
 
-export interface UpdateStatusGetResponseLinks {
-  /** URL to this status resource. */
-  self: string;
-  /** URL to the domain resource. */
-  resource?: string | null;
-}
-export const UpdateStatusGetResponseLinks = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    self: S.String,
-    resource: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "UpdateStatusGetResponseLinks",
-}) as any as S.Schema<UpdateStatusGetResponseLinks>;
+export type UpdateStatusGetResponseLinks = RegistrationStatusGetResponseLinks;
+export const UpdateStatusGetResponseLinks = RegistrationStatusGetResponseLinks;
 
 export type UpdateStatusGetResponseState =
   | "pending"
@@ -359,44 +347,32 @@ export const UpdateStatusGetResponseContextMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<UpdateStatusGetResponseContextMap>;
 
-export interface UpdateStatusGetResponseError {
-  /** Machine-readable error code identifying the failure reason. */
-  code: string;
-  /** Human-readable explanation of the failure. May include registry-specific details. */
-  message: string;
-}
-export const UpdateStatusGetResponseError = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: S.String,
-    message: S.String,
-  }),
-).annotate({
-  identifier: "UpdateStatusGetResponseError",
-}) as any as S.Schema<UpdateStatusGetResponseError>;
+export type UpdateStatusGetResponseError = RegistrationStatusGetResponseError;
+export const UpdateStatusGetResponseError = RegistrationStatusGetResponseError;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetUpdateStatusResponse {
   /** Whether the workflow has reached a terminal state. `true` when */
   completed: boolean;
   createdAt: string;
-  links: UpdateStatusGetResponseLinks;
+  links: RegistrationStatusGetResponseLinks;
   /** Workflow lifecycle state. */
   state: UpdateStatusGetResponseState;
   updatedAt: string;
   /** Workflow-specific data for this workflow. */
   context?: UpdateStatusGetResponseContextMap | null;
   /** Error details when a workflow reaches the `failed` state. The specific */
-  error?: UpdateStatusGetResponseError | null;
+  error?: RegistrationStatusGetResponseError | null;
 }
 export const GetUpdateStatusResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     completed: S.Boolean,
     createdAt: S.String.pipe(T.Body("created_at")),
-    links: UpdateStatusGetResponseLinks,
+    links: RegistrationStatusGetResponseLinks,
     state: UpdateStatusGetResponseState,
     updatedAt: S.String.pipe(T.Body("updated_at")),
     context: S.optional(S.NullOr(UpdateStatusGetResponseContextMap)),
-    error: S.optional(S.NullOr(UpdateStatusGetResponseError)),
+    error: S.optional(S.NullOr(RegistrationStatusGetResponseError)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetUpdateStatusResponse",
@@ -803,20 +779,10 @@ export const RegistrationsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "RegistrationsCreateRequest",
 }) as any as S.Schema<RegistrationsCreateRequest>;
 
-export interface RegistrationsCreateResponseLinks {
-  /** URL to this status resource. */
-  self: string;
-  /** URL to the domain resource. */
-  resource?: string | null;
-}
-export const RegistrationsCreateResponseLinks = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    self: S.String,
-    resource: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "RegistrationsCreateResponseLinks",
-}) as any as S.Schema<RegistrationsCreateResponseLinks>;
+export type RegistrationsCreateResponseLinks =
+  RegistrationStatusGetResponseLinks;
+export const RegistrationsCreateResponseLinks =
+  RegistrationStatusGetResponseLinks;
 
 export type RegistrationsCreateResponseState =
   | "pending"
@@ -835,44 +801,34 @@ export const RegistrationsCreateResponseContextMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<RegistrationsCreateResponseContextMap>;
 
-export interface RegistrationsCreateResponseError {
-  /** Machine-readable error code identifying the failure reason. */
-  code: string;
-  /** Human-readable explanation of the failure. May include registry-specific details. */
-  message: string;
-}
-export const RegistrationsCreateResponseError = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: S.String,
-    message: S.String,
-  }),
-).annotate({
-  identifier: "RegistrationsCreateResponseError",
-}) as any as S.Schema<RegistrationsCreateResponseError>;
+export type RegistrationsCreateResponseError =
+  RegistrationStatusGetResponseError;
+export const RegistrationsCreateResponseError =
+  RegistrationStatusGetResponseError;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface RegistrationsCreateResponse {
   /** Whether the workflow has reached a terminal state. `true` when */
   completed: boolean;
   createdAt: string;
-  links: RegistrationsCreateResponseLinks;
+  links: RegistrationStatusGetResponseLinks;
   /** Workflow lifecycle state. */
   state: RegistrationsCreateResponseState;
   updatedAt: string;
   /** Workflow-specific data for this workflow. */
   context?: RegistrationsCreateResponseContextMap | null;
   /** Error details when a workflow reaches the `failed` state. The specific */
-  error?: RegistrationsCreateResponseError | null;
+  error?: RegistrationStatusGetResponseError | null;
 }
 export const RegistrationsCreateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     completed: S.Boolean,
     createdAt: S.String.pipe(T.Body("created_at")),
-    links: RegistrationsCreateResponseLinks,
+    links: RegistrationStatusGetResponseLinks,
     state: RegistrationsCreateResponseState,
     updatedAt: S.String.pipe(T.Body("updated_at")),
     context: S.optional(S.NullOr(RegistrationsCreateResponseContextMap)),
-    error: S.optional(S.NullOr(RegistrationsCreateResponseError)),
+    error: S.optional(S.NullOr(RegistrationStatusGetResponseError)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "RegistrationsCreateResponse",
@@ -909,20 +865,9 @@ export const RegistrationsEditRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "RegistrationsEditRequest",
 }) as any as S.Schema<RegistrationsEditRequest>;
 
-export interface RegistrationsEditResponseLinks {
-  /** URL to this status resource. */
-  self: string;
-  /** URL to the domain resource. */
-  resource?: string | null;
-}
-export const RegistrationsEditResponseLinks = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    self: S.String,
-    resource: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "RegistrationsEditResponseLinks",
-}) as any as S.Schema<RegistrationsEditResponseLinks>;
+export type RegistrationsEditResponseLinks = RegistrationStatusGetResponseLinks;
+export const RegistrationsEditResponseLinks =
+  RegistrationStatusGetResponseLinks;
 
 export type RegistrationsEditResponseState =
   | "pending"
@@ -941,44 +886,33 @@ export const RegistrationsEditResponseContextMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<RegistrationsEditResponseContextMap>;
 
-export interface RegistrationsEditResponseError {
-  /** Machine-readable error code identifying the failure reason. */
-  code: string;
-  /** Human-readable explanation of the failure. May include registry-specific details. */
-  message: string;
-}
-export const RegistrationsEditResponseError = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: S.String,
-    message: S.String,
-  }),
-).annotate({
-  identifier: "RegistrationsEditResponseError",
-}) as any as S.Schema<RegistrationsEditResponseError>;
+export type RegistrationsEditResponseError = RegistrationStatusGetResponseError;
+export const RegistrationsEditResponseError =
+  RegistrationStatusGetResponseError;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface RegistrationsEditResponse {
   /** Whether the workflow has reached a terminal state. `true` when */
   completed: boolean;
   createdAt: string;
-  links: RegistrationsEditResponseLinks;
+  links: RegistrationStatusGetResponseLinks;
   /** Workflow lifecycle state. */
   state: RegistrationsEditResponseState;
   updatedAt: string;
   /** Workflow-specific data for this workflow. */
   context?: RegistrationsEditResponseContextMap | null;
   /** Error details when a workflow reaches the `failed` state. The specific */
-  error?: RegistrationsEditResponseError | null;
+  error?: RegistrationStatusGetResponseError | null;
 }
 export const RegistrationsEditResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     completed: S.Boolean,
     createdAt: S.String.pipe(T.Body("created_at")),
-    links: RegistrationsEditResponseLinks,
+    links: RegistrationStatusGetResponseLinks,
     state: RegistrationsEditResponseState,
     updatedAt: S.String.pipe(T.Body("updated_at")),
     context: S.optional(S.NullOr(RegistrationsEditResponseContextMap)),
-    error: S.optional(S.NullOr(RegistrationsEditResponseError)),
+    error: S.optional(S.NullOr(RegistrationStatusGetResponseError)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "RegistrationsEditResponse",
@@ -1186,23 +1120,8 @@ export const SearchRegistrarRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "SearchRegistrarRequest",
 }) as any as S.Schema<SearchRegistrarRequest>;
 
-export interface SearchResponseDomainsItemPricing {
-  /** ISO-4217 currency code for the prices (e.g., "USD", "EUR", "GBP"). */
-  currency: string;
-  /** The first-year cost to register this domain. For premium domains */
-  registrationCost: string;
-  /** Per-year renewal cost for this domain. Applied to each year beyond */
-  renewalCost: string;
-}
-export const SearchResponseDomainsItemPricing = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    currency: S.String,
-    registrationCost: S.String.pipe(T.Body("registration_cost")),
-    renewalCost: S.String.pipe(T.Body("renewal_cost")),
-  }),
-).annotate({
-  identifier: "SearchResponseDomainsItemPricing",
-}) as any as S.Schema<SearchResponseDomainsItemPricing>;
+export type SearchResponseDomainsItemPricing = CheckResponseDomainsItemPricing;
+export const SearchResponseDomainsItemPricing = CheckResponseDomainsItemPricing;
 
 export type SearchResponseDomainsItemReason =
   | "extension_not_supported_via_api"
@@ -1221,7 +1140,7 @@ export interface SearchResponseDomainsItem {
   /** Indicates whether this domain appears available based on search data. Search results are non-authoritative and may be stale. - `true`: The domain appears available. Use POST /domain-check to confirm before registration. */
   registrable: boolean;
   /** Annual pricing information for a registrable domain. This object is only */
-  pricing?: SearchResponseDomainsItemPricing | null;
+  pricing?: CheckResponseDomainsItemPricing | null;
   /** Present only when `registrable` is `false` on search results. Explains why the domain does not appear registrable through this API. These values are advisory; use POST /domain-check for authoritative status. */
   reason?: SearchResponseDomainsItemReason | null;
   /** The pricing tier for this domain. Always present when `registrable` is `true`; */
@@ -1231,7 +1150,7 @@ export const SearchResponseDomainsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     registrable: S.Boolean,
-    pricing: S.optional(S.NullOr(SearchResponseDomainsItemPricing)),
+    pricing: S.optional(S.NullOr(CheckResponseDomainsItemPricing)),
     reason: S.optional(S.NullOr(SearchResponseDomainsItemReason)),
     tier: S.optional(S.NullOr(SearchResponseDomainsItemTier)),
   }),

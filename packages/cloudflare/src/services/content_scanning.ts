@@ -181,24 +181,12 @@ export const DeletePayloadRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeletePayloadRequest",
 }) as any as S.Schema<DeletePayloadRequest>;
 
-export interface PayloadsDeleteResultItem {
-  /** defines the unique ID for this custom scan expression. */
-  id?: string | null;
-  /** Defines the ruleset expression to use in matching content objects. */
-  payload?: string | null;
-}
-export const PayloadsDeleteResultItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-    payload: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "PayloadsDeleteResultItem",
-}) as any as S.Schema<PayloadsDeleteResultItem>;
+export type PayloadsDeleteResultItem = PayloadsCreateResultItem;
+export const PayloadsDeleteResultItem = PayloadsCreateResultItem;
 
-export type PayloadsDeleteResultList = Array<PayloadsDeleteResultItem>;
+export type PayloadsDeleteResultList = Array<PayloadsCreateResultItem>;
 export const PayloadsDeleteResultList = /*@__PURE__*/ S.Array(
-  PayloadsDeleteResultItem,
+  PayloadsCreateResultItem,
 ) as any as S.Schema<PayloadsDeleteResultList>;
 
 export interface DeletePayloadResponse {
@@ -318,24 +306,12 @@ export const ListPayloadsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListPayloadsRequest",
 }) as any as S.Schema<ListPayloadsRequest>;
 
-export interface PayloadsListResultItem {
-  /** defines the unique ID for this custom scan expression. */
-  id?: string | null;
-  /** Defines the ruleset expression to use in matching content objects. */
-  payload?: string | null;
-}
-export const PayloadsListResultItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-    payload: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "PayloadsListResultItem",
-}) as any as S.Schema<PayloadsListResultItem>;
+export type PayloadsListResultItem = PayloadsCreateResultItem;
+export const PayloadsListResultItem = PayloadsCreateResultItem;
 
-export type PayloadsListResultList = Array<PayloadsListResultItem>;
+export type PayloadsListResultList = Array<PayloadsCreateResultItem>;
 export const PayloadsListResultList = /*@__PURE__*/ S.Array(
-  PayloadsListResultItem,
+  PayloadsCreateResultItem,
 ) as any as S.Schema<PayloadsListResultList>;
 
 export interface ListPayloadsResponse {
@@ -486,7 +462,7 @@ export const deletePayload: API.PaginatedOperationMethod<
   DeletePayloadResponse,
   DeletePayloadError,
   CloudflareOpContext,
-  PayloadsDeleteResultItem
+  PayloadsCreateResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: DeletePayloadRequest,
@@ -559,7 +535,7 @@ export const listPayloads: API.PaginatedOperationMethod<
   ListPayloadsResponse,
   ListPayloadsError,
   CloudflareOpContext,
-  PayloadsListResultItem
+  PayloadsCreateResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListPayloadsRequest,

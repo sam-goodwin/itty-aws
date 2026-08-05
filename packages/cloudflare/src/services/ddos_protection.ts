@@ -1433,39 +1433,16 @@ export const ListAdvancedTcpProtectionPrefixesRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListAdvancedTcpProtectionPrefixesRequest",
 }) as any as S.Schema<ListAdvancedTcpProtectionPrefixesRequest>;
 
-export interface AdvancedTcpProtectionPrefixesListResultItem {
-  /** The unique ID of the prefix. */
-  id: string;
-  /** A comment describing the prefix. */
-  comment: string;
-  /** The creation timestamp of the prefix. */
-  createdOn: string;
-  /** Whether to exclude the prefix from protection. */
-  excluded: boolean;
-  /** The last modification timestamp of the prefix. */
-  modifiedOn: string;
-  /** The prefix in CIDR format. */
-  prefix: string;
-}
+export type AdvancedTcpProtectionPrefixesListResultItem =
+  AdvancedTcpProtectionPrefixesBulkCreateResultItem;
 export const AdvancedTcpProtectionPrefixesListResultItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      comment: S.String,
-      createdOn: S.String.pipe(T.Body("created_on")),
-      excluded: S.Boolean,
-      modifiedOn: S.String.pipe(T.Body("modified_on")),
-      prefix: S.String,
-    }),
-  ).annotate({
-    identifier: "AdvancedTcpProtectionPrefixesListResultItem",
-  }) as any as S.Schema<AdvancedTcpProtectionPrefixesListResultItem>;
+  AdvancedTcpProtectionPrefixesBulkCreateResultItem;
 
 export type AdvancedTcpProtectionPrefixesListResultList =
-  Array<AdvancedTcpProtectionPrefixesListResultItem>;
+  Array<AdvancedTcpProtectionPrefixesBulkCreateResultItem>;
 export const AdvancedTcpProtectionPrefixesListResultList =
   /*@__PURE__*/ S.Array(
-    AdvancedTcpProtectionPrefixesListResultItem,
+    AdvancedTcpProtectionPrefixesBulkCreateResultItem,
   ) as any as S.Schema<AdvancedTcpProtectionPrefixesListResultList>;
 
 export interface ListAdvancedTcpProtectionPrefixesResponse {
@@ -1703,36 +1680,16 @@ export const ListAdvancedTcpProtectionTcpFlowProtectionFiltersRequest =
     identifier: "ListAdvancedTcpProtectionTcpFlowProtectionFiltersRequest",
   }) as any as S.Schema<ListAdvancedTcpProtectionTcpFlowProtectionFiltersRequest>;
 
-export interface AdvancedTcpProtectionTcpFlowProtectionFiltersListResultItem {
-  /** The unique ID of the expression filter. */
-  id: string;
-  /** The creation timestamp of the expression filter. */
-  createdOn: string;
-  /** The filter expression. */
-  expression: string;
-  /** The filter's mode. Must be one of 'enabled', 'disabled', 'monitoring'. */
-  mode: string;
-  /** The last modification timestamp of the expression filter. */
-  modifiedOn: string;
-}
+export type AdvancedTcpProtectionTcpFlowProtectionFiltersListResultItem =
+  AdvancedTcpProtectionSynProtectionFiltersListResultItem;
 export const AdvancedTcpProtectionTcpFlowProtectionFiltersListResultItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      createdOn: S.String.pipe(T.Body("created_on")),
-      expression: S.String,
-      mode: S.String,
-      modifiedOn: S.String.pipe(T.Body("modified_on")),
-    }),
-  ).annotate({
-    identifier: "AdvancedTcpProtectionTcpFlowProtectionFiltersListResultItem",
-  }) as any as S.Schema<AdvancedTcpProtectionTcpFlowProtectionFiltersListResultItem>;
+  AdvancedTcpProtectionSynProtectionFiltersListResultItem;
 
 export type AdvancedTcpProtectionTcpFlowProtectionFiltersListResultList =
-  Array<AdvancedTcpProtectionTcpFlowProtectionFiltersListResultItem>;
+  Array<AdvancedTcpProtectionSynProtectionFiltersListResultItem>;
 export const AdvancedTcpProtectionTcpFlowProtectionFiltersListResultList =
   /*@__PURE__*/ S.Array(
-    AdvancedTcpProtectionTcpFlowProtectionFiltersListResultItem,
+    AdvancedTcpProtectionSynProtectionFiltersListResultItem,
   ) as any as S.Schema<AdvancedTcpProtectionTcpFlowProtectionFiltersListResultList>;
 
 export interface ListAdvancedTcpProtectionTcpFlowProtectionFiltersResponse {
@@ -2834,7 +2791,7 @@ export const listAdvancedTcpProtectionPrefixes: API.PaginatedOperationMethod<
   ListAdvancedTcpProtectionPrefixesResponse,
   ListAdvancedTcpProtectionPrefixesError,
   CloudflareOpContext,
-  AdvancedTcpProtectionPrefixesListResultItem
+  AdvancedTcpProtectionPrefixesBulkCreateResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListAdvancedTcpProtectionPrefixesRequest,
@@ -2931,7 +2888,7 @@ export const listAdvancedTcpProtectionTcpFlowProtectionFilters: API.PaginatedOpe
   ListAdvancedTcpProtectionTcpFlowProtectionFiltersResponse,
   ListAdvancedTcpProtectionTcpFlowProtectionFiltersError,
   CloudflareOpContext,
-  AdvancedTcpProtectionTcpFlowProtectionFiltersListResultItem
+  AdvancedTcpProtectionSynProtectionFiltersListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListAdvancedTcpProtectionTcpFlowProtectionFiltersRequest,

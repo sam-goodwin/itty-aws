@@ -160,33 +160,12 @@ export const BulkPutFiltersResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "BulkPutFiltersResponse",
 }) as any as S.Schema<BulkPutFiltersResponse>;
 
-export interface CreateRequestBodyItem {
-  /** The unique identifier of the filter. */
-  id?: string;
-  /** An informative summary of the filter. */
-  description?: string;
-  /** The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/). */
-  expression?: string;
-  /** When true, indicates that the filter is currently paused. */
-  paused?: boolean;
-  /** A short reference tag. Allows you to select related filters. */
-  ref?: string;
-}
-export const CreateRequestBodyItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    description: S.optional(S.String),
-    expression: S.optional(S.String),
-    paused: S.optional(S.Boolean),
-    ref: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreateRequestBodyItem",
-}) as any as S.Schema<CreateRequestBodyItem>;
+export type CreateRequestBodyItem = BulkUpdateRequestBodyItem;
+export const CreateRequestBodyItem = BulkUpdateRequestBodyItem;
 
-export type CreateRequestBodyList = Array<CreateRequestBodyItem>;
+export type CreateRequestBodyList = Array<BulkUpdateRequestBodyItem>;
 export const CreateRequestBodyList = /*@__PURE__*/ S.Array(
-  CreateRequestBodyItem,
+  BulkUpdateRequestBodyItem,
 ) as any as S.Schema<CreateRequestBodyList>;
 
 export interface CreateFilterRequest {
@@ -207,33 +186,12 @@ export const CreateFilterRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateFilterRequest",
 }) as any as S.Schema<CreateFilterRequest>;
 
-export interface CreateResultItem {
-  /** The unique identifier of the filter. */
-  id?: string | null;
-  /** An informative summary of the filter. */
-  description?: string | null;
-  /** The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/). */
-  expression?: string | null;
-  /** When true, indicates that the filter is currently paused. */
-  paused?: boolean | null;
-  /** A short reference tag. Allows you to select related filters. */
-  ref?: string | null;
-}
-export const CreateResultItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-    description: S.optional(S.NullOr(S.String)),
-    expression: S.optional(S.NullOr(S.String)),
-    paused: S.optional(S.NullOr(S.Boolean)),
-    ref: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "CreateResultItem",
-}) as any as S.Schema<CreateResultItem>;
+export type CreateResultItem = BulkUpdateResultItem;
+export const CreateResultItem = BulkUpdateResultItem;
 
-export type CreateResultList = Array<CreateResultItem>;
+export type CreateResultList = Array<BulkUpdateResultItem>;
 export const CreateResultList = /*@__PURE__*/ S.Array(
-  CreateResultItem,
+  BulkUpdateResultItem,
 ) as any as S.Schema<CreateResultList>;
 
 export interface CreateFilterResponse {
@@ -370,31 +328,12 @@ export const ListFiltersRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListFiltersRequest",
 }) as any as S.Schema<ListFiltersRequest>;
 
-export interface ListResultItem {
-  /** The unique identifier of the filter. */
-  id?: string | null;
-  /** An informative summary of the filter. */
-  description?: string | null;
-  /** The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/). */
-  expression?: string | null;
-  /** When true, indicates that the filter is currently paused. */
-  paused?: boolean | null;
-  /** A short reference tag. Allows you to select related filters. */
-  ref?: string | null;
-}
-export const ListResultItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-    description: S.optional(S.NullOr(S.String)),
-    expression: S.optional(S.NullOr(S.String)),
-    paused: S.optional(S.NullOr(S.Boolean)),
-    ref: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({ identifier: "ListResultItem" }) as any as S.Schema<ListResultItem>;
+export type ListResultItem = BulkUpdateResultItem;
+export const ListResultItem = BulkUpdateResultItem;
 
-export type ListResultList = Array<ListResultItem>;
+export type ListResultList = Array<BulkUpdateResultItem>;
 export const ListResultList = /*@__PURE__*/ S.Array(
-  ListResultItem,
+  BulkUpdateResultItem,
 ) as any as S.Schema<ListResultList>;
 
 export interface ListFiltersResponse {
@@ -514,7 +453,7 @@ export const createFilter: API.PaginatedOperationMethod<
   CreateFilterResponse,
   CreateFilterError,
   CloudflareOpContext,
-  CreateResultItem
+  BulkUpdateResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: CreateFilterRequest,
@@ -564,7 +503,7 @@ export const listFilters: API.PaginatedOperationMethod<
   ListFiltersResponse,
   ListFiltersError,
   CloudflareOpContext,
-  ListResultItem
+  BulkUpdateResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListFiltersRequest,

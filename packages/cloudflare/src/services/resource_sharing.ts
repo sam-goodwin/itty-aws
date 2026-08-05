@@ -519,32 +519,15 @@ export type RecipientsDeleteResponseAssociationStatus =
   | "disassociated";
 export const RecipientsDeleteResponseAssociationStatus = /*@__PURE__*/ S.String;
 
-export interface RecipientsDeleteResponseResourcesItem {
-  /** Share Recipient error message. */
-  error: string;
-  /** Share Resource identifier. */
-  resourceId: string;
-  /** Resource Version. */
-  resourceVersion: number;
-  /** Whether the error is terminal or will be continually retried. */
-  terminal: boolean;
-}
-export const RecipientsDeleteResponseResourcesItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      error: S.String,
-      resourceId: S.String.pipe(T.Body("resource_id")),
-      resourceVersion: S.Number.pipe(T.Body("resource_version")),
-      terminal: S.Boolean,
-    }),
-).annotate({
-  identifier: "RecipientsDeleteResponseResourcesItem",
-}) as any as S.Schema<RecipientsDeleteResponseResourcesItem>;
+export type RecipientsDeleteResponseResourcesItem =
+  RecipientsCreateResponseResourcesItem;
+export const RecipientsDeleteResponseResourcesItem =
+  RecipientsCreateResponseResourcesItem;
 
 export type RecipientsDeleteResponseResourcesList =
-  Array<RecipientsDeleteResponseResourcesItem>;
+  Array<RecipientsCreateResponseResourcesItem>;
 export const RecipientsDeleteResponseResourcesList = /*@__PURE__*/ S.Array(
-  RecipientsDeleteResponseResourcesItem,
+  RecipientsCreateResponseResourcesItem,
 ) as any as S.Schema<RecipientsDeleteResponseResourcesList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -839,31 +822,15 @@ export type RecipientsGetResponseAssociationStatus =
   | "disassociated";
 export const RecipientsGetResponseAssociationStatus = /*@__PURE__*/ S.String;
 
-export interface RecipientsGetResponseResourcesItem {
-  /** Share Recipient error message. */
-  error: string;
-  /** Share Resource identifier. */
-  resourceId: string;
-  /** Resource Version. */
-  resourceVersion: number;
-  /** Whether the error is terminal or will be continually retried. */
-  terminal: boolean;
-}
-export const RecipientsGetResponseResourcesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    error: S.String,
-    resourceId: S.String.pipe(T.Body("resource_id")),
-    resourceVersion: S.Number.pipe(T.Body("resource_version")),
-    terminal: S.Boolean,
-  }),
-).annotate({
-  identifier: "RecipientsGetResponseResourcesItem",
-}) as any as S.Schema<RecipientsGetResponseResourcesItem>;
+export type RecipientsGetResponseResourcesItem =
+  RecipientsCreateResponseResourcesItem;
+export const RecipientsGetResponseResourcesItem =
+  RecipientsCreateResponseResourcesItem;
 
 export type RecipientsGetResponseResourcesList =
-  Array<RecipientsGetResponseResourcesItem>;
+  Array<RecipientsCreateResponseResourcesItem>;
 export const RecipientsGetResponseResourcesList = /*@__PURE__*/ S.Array(
-  RecipientsGetResponseResourcesItem,
+  RecipientsCreateResponseResourcesItem,
 ) as any as S.Schema<RecipientsGetResponseResourcesList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -1166,32 +1133,15 @@ export type RecipientsListResultItemAssociationStatus =
   | "disassociated";
 export const RecipientsListResultItemAssociationStatus = /*@__PURE__*/ S.String;
 
-export interface RecipientsListResultItemResourcesItem {
-  /** Share Recipient error message. */
-  error: string;
-  /** Share Resource identifier. */
-  resourceId: string;
-  /** Resource Version. */
-  resourceVersion: number;
-  /** Whether the error is terminal or will be continually retried. */
-  terminal: boolean;
-}
-export const RecipientsListResultItemResourcesItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      error: S.String,
-      resourceId: S.String.pipe(T.Body("resource_id")),
-      resourceVersion: S.Number.pipe(T.Body("resource_version")),
-      terminal: S.Boolean,
-    }),
-).annotate({
-  identifier: "RecipientsListResultItemResourcesItem",
-}) as any as S.Schema<RecipientsListResultItemResourcesItem>;
+export type RecipientsListResultItemResourcesItem =
+  RecipientsCreateResponseResourcesItem;
+export const RecipientsListResultItemResourcesItem =
+  RecipientsCreateResponseResourcesItem;
 
 export type RecipientsListResultItemResourcesList =
-  Array<RecipientsListResultItemResourcesItem>;
+  Array<RecipientsCreateResponseResourcesItem>;
 export const RecipientsListResultItemResourcesList = /*@__PURE__*/ S.Array(
-  RecipientsListResultItemResourcesItem,
+  RecipientsCreateResponseResourcesItem,
 ) as any as S.Schema<RecipientsListResultItemResourcesList>;
 
 export interface RecipientsListResultItem {

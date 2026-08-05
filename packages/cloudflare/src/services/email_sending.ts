@@ -468,41 +468,19 @@ export const SendRequestAttachmentsList = /*@__PURE__*/ S.Array(
   SendRequestAttachmentsItem,
 ) as any as S.Schema<SendRequestAttachmentsList>;
 
-export interface SendRequestBccEmailSendingEmailAddressObject {
-  /** Email address (e.g., 'user@example.com'). */
-  address: string;
-  /** Display name for the email address (e.g., 'John Doe'). Optional — omit or set to null for no display name. */
-  name?: string;
-}
+export type SendRequestBccEmailSendingEmailAddressObject =
+  SendRequestFromEmailSendingEmailAddressObject;
 export const SendRequestBccEmailSendingEmailAddressObject =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      address: S.String,
-      name: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "SendRequestBccEmailSendingEmailAddressObject",
-  }) as any as S.Schema<SendRequestBccEmailSendingEmailAddressObject>;
+  SendRequestFromEmailSendingEmailAddressObject;
 
-export interface SendRequestBccCase2ItemEmailSendingEmailAddressObject {
-  /** Email address (e.g., 'user@example.com'). */
-  address: string;
-  /** Display name for the email address (e.g., 'John Doe'). Optional — omit or set to null for no display name. */
-  name?: string;
-}
+export type SendRequestBccCase2ItemEmailSendingEmailAddressObject =
+  SendRequestFromEmailSendingEmailAddressObject;
 export const SendRequestBccCase2ItemEmailSendingEmailAddressObject =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      address: S.String,
-      name: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "SendRequestBccCase2ItemEmailSendingEmailAddressObject",
-  }) as any as S.Schema<SendRequestBccCase2ItemEmailSendingEmailAddressObject>;
+  SendRequestFromEmailSendingEmailAddressObject;
 
 export type SendRequestBccCase2Item =
   | string
-  | SendRequestBccCase2ItemEmailSendingEmailAddressObject;
+  | SendRequestFromEmailSendingEmailAddressObject;
 export const SendRequestBccCase2Item = /*@__PURE__*/ S.Unknown.pipe(
   T.UnionCases([[], ["address", "name"]]),
 );
@@ -514,47 +492,25 @@ export const SendRequestBccCase2List = /*@__PURE__*/ S.Array(
 
 export type SendRequestBcc =
   | string
-  | SendRequestBccEmailSendingEmailAddressObject
+  | SendRequestFromEmailSendingEmailAddressObject
   | SendRequestBccCase2List;
 export const SendRequestBcc = /*@__PURE__*/ S.Unknown.pipe(
   T.UnionCases([[], ["address", "name"], []]),
 );
 
-export interface SendRequestCcEmailSendingEmailAddressObject {
-  /** Email address (e.g., 'user@example.com'). */
-  address: string;
-  /** Display name for the email address (e.g., 'John Doe'). Optional — omit or set to null for no display name. */
-  name?: string;
-}
+export type SendRequestCcEmailSendingEmailAddressObject =
+  SendRequestFromEmailSendingEmailAddressObject;
 export const SendRequestCcEmailSendingEmailAddressObject =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      address: S.String,
-      name: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "SendRequestCcEmailSendingEmailAddressObject",
-  }) as any as S.Schema<SendRequestCcEmailSendingEmailAddressObject>;
+  SendRequestFromEmailSendingEmailAddressObject;
 
-export interface SendRequestCcCase2ItemEmailSendingEmailAddressObject {
-  /** Email address (e.g., 'user@example.com'). */
-  address: string;
-  /** Display name for the email address (e.g., 'John Doe'). Optional — omit or set to null for no display name. */
-  name?: string;
-}
+export type SendRequestCcCase2ItemEmailSendingEmailAddressObject =
+  SendRequestFromEmailSendingEmailAddressObject;
 export const SendRequestCcCase2ItemEmailSendingEmailAddressObject =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      address: S.String,
-      name: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "SendRequestCcCase2ItemEmailSendingEmailAddressObject",
-  }) as any as S.Schema<SendRequestCcCase2ItemEmailSendingEmailAddressObject>;
+  SendRequestFromEmailSendingEmailAddressObject;
 
 export type SendRequestCcCase2Item =
   | string
-  | SendRequestCcCase2ItemEmailSendingEmailAddressObject;
+  | SendRequestFromEmailSendingEmailAddressObject;
 export const SendRequestCcCase2Item = /*@__PURE__*/ S.Unknown.pipe(
   T.UnionCases([[], ["address", "name"]]),
 );
@@ -566,7 +522,7 @@ export const SendRequestCcCase2List = /*@__PURE__*/ S.Array(
 
 export type SendRequestCc =
   | string
-  | SendRequestCcEmailSendingEmailAddressObject
+  | SendRequestFromEmailSendingEmailAddressObject
   | SendRequestCcCase2List;
 export const SendRequestCc = /*@__PURE__*/ S.Unknown.pipe(
   T.UnionCases([[], ["address", "name"], []]),
@@ -578,64 +534,31 @@ export const SendRequestHeadersMap = /*@__PURE__*/ S.Record(
   S.String,
 ) as any as S.Schema<SendRequestHeadersMap>;
 
-export interface SendRequestReplyToEmailSendingEmailAddressObject {
-  /** Email address (e.g., 'user@example.com'). */
-  address: string;
-  /** Display name for the email address (e.g., 'John Doe'). Optional — omit or set to null for no display name. */
-  name?: string;
-}
+export type SendRequestReplyToEmailSendingEmailAddressObject =
+  SendRequestFromEmailSendingEmailAddressObject;
 export const SendRequestReplyToEmailSendingEmailAddressObject =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      address: S.String,
-      name: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "SendRequestReplyToEmailSendingEmailAddressObject",
-  }) as any as S.Schema<SendRequestReplyToEmailSendingEmailAddressObject>;
+  SendRequestFromEmailSendingEmailAddressObject;
 
 export type SendRequestReplyTo =
   | string
-  | SendRequestReplyToEmailSendingEmailAddressObject;
+  | SendRequestFromEmailSendingEmailAddressObject;
 export const SendRequestReplyTo = /*@__PURE__*/ S.Unknown.pipe(
   T.UnionCases([[], ["address", "name"]]),
 );
 
-export interface SendRequestToEmailSendingEmailAddressObject {
-  /** Email address (e.g., 'user@example.com'). */
-  address: string;
-  /** Display name for the email address (e.g., 'John Doe'). Optional — omit or set to null for no display name. */
-  name?: string;
-}
+export type SendRequestToEmailSendingEmailAddressObject =
+  SendRequestFromEmailSendingEmailAddressObject;
 export const SendRequestToEmailSendingEmailAddressObject =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      address: S.String,
-      name: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "SendRequestToEmailSendingEmailAddressObject",
-  }) as any as S.Schema<SendRequestToEmailSendingEmailAddressObject>;
+  SendRequestFromEmailSendingEmailAddressObject;
 
-export interface SendRequestToCase2ItemEmailSendingEmailAddressObject {
-  /** Email address (e.g., 'user@example.com'). */
-  address: string;
-  /** Display name for the email address (e.g., 'John Doe'). Optional — omit or set to null for no display name. */
-  name?: string;
-}
+export type SendRequestToCase2ItemEmailSendingEmailAddressObject =
+  SendRequestFromEmailSendingEmailAddressObject;
 export const SendRequestToCase2ItemEmailSendingEmailAddressObject =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      address: S.String,
-      name: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "SendRequestToCase2ItemEmailSendingEmailAddressObject",
-  }) as any as S.Schema<SendRequestToCase2ItemEmailSendingEmailAddressObject>;
+  SendRequestFromEmailSendingEmailAddressObject;
 
 export type SendRequestToCase2Item =
   | string
-  | SendRequestToCase2ItemEmailSendingEmailAddressObject;
+  | SendRequestFromEmailSendingEmailAddressObject;
 export const SendRequestToCase2Item = /*@__PURE__*/ S.Unknown.pipe(
   T.UnionCases([[], ["address", "name"]]),
 );
@@ -647,7 +570,7 @@ export const SendRequestToCase2List = /*@__PURE__*/ S.Array(
 
 export type SendRequestTo =
   | string
-  | SendRequestToEmailSendingEmailAddressObject
+  | SendRequestFromEmailSendingEmailAddressObject
   | SendRequestToCase2List;
 export const SendRequestTo = /*@__PURE__*/ S.Unknown.pipe(
   T.UnionCases([[], ["address", "name"], []]),

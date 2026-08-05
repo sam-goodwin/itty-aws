@@ -913,36 +913,21 @@ export const NamespacesKeysBulkGetResultWorkersKVBulkGetResult =
     identifier: "NamespacesKeysBulkGetResultWorkersKVBulkGetResult",
   }) as any as S.Schema<NamespacesKeysBulkGetResultWorkersKVBulkGetResult>;
 
-export interface NamespacesKeysBulkGetResultWorkersKVBulkGetResultWithMetadataValuesValue {
-  /** The metadata associated with the key. */
-  metadata: unknown;
-  /** The value associated with the key. */
-  value: unknown;
-  /** Expires the key at a certain time, measured in number of seconds since the UNIX epoch. */
-  expiration?: number | null;
-}
+export type NamespacesKeysBulkGetResultWorkersKVBulkGetResultWithMetadataValuesValue =
+  NamespacesBulkGetResultWorkersKVBulkGetResultWithMetadataValuesValue;
 export const NamespacesKeysBulkGetResultWorkersKVBulkGetResultWithMetadataValuesValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      metadata: S.Unknown,
-      value: S.Unknown,
-      expiration: S.optional(S.NullOr(S.Number)),
-    }),
-  ).annotate({
-    identifier:
-      "NamespacesKeysBulkGetResultWorkersKVBulkGetResultWithMetadataValuesValue",
-  }) as any as S.Schema<NamespacesKeysBulkGetResultWorkersKVBulkGetResultWithMetadataValuesValue>;
+  NamespacesBulkGetResultWorkersKVBulkGetResultWithMetadataValuesValue;
 
 export type NamespacesKeysBulkGetResultWorkersKVBulkGetResultWithMetadataValuesMap =
   {
     [key: string]:
-      | NamespacesKeysBulkGetResultWorkersKVBulkGetResultWithMetadataValuesValue
+      | NamespacesBulkGetResultWorkersKVBulkGetResultWithMetadataValuesValue
       | undefined;
   };
 export const NamespacesKeysBulkGetResultWorkersKVBulkGetResultWithMetadataValuesMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    NamespacesKeysBulkGetResultWorkersKVBulkGetResultWithMetadataValuesValue,
+    NamespacesBulkGetResultWorkersKVBulkGetResultWithMetadataValuesValue,
   ) as any as S.Schema<NamespacesKeysBulkGetResultWorkersKVBulkGetResultWithMetadataValuesMap>;
 
 export interface NamespacesKeysBulkGetResultWorkersKVBulkGetResultWithMetadata {
@@ -979,38 +964,15 @@ export const NamespacesKeysBulkGetResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "NamespacesKeysBulkGetResponse",
 }) as any as S.Schema<NamespacesKeysBulkGetResponse>;
 
-export interface NamespacesKeysBulkUpdateRequestBodyItem {
-  /** A key's name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid. */
-  key: string;
-  /** A UTF-8 encoded string to be stored, up to 25 MiB in length. */
-  value: string;
-  /** Indicates whether or not the server should base64 decode the value before storing it. Useful for writing values that wouldn't otherwise be valid JSON strings, such as images. */
-  base64?: boolean;
-  /** Expires the key at a certain time, measured in number of seconds since the UNIX epoch. */
-  expiration?: number;
-  /** Expires the key after a number of seconds. Must be at least 60. */
-  expirationTtl?: number;
-  /** Arbitrary JSON that is associated with a key. */
-  metadata?: unknown;
-}
-export const NamespacesKeysBulkUpdateRequestBodyItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      key: S.String,
-      value: S.String,
-      base64: S.optional(S.Boolean),
-      expiration: S.optional(S.Number),
-      expirationTtl: S.optional(S.Number.pipe(T.Body("expiration_ttl"))),
-      metadata: S.optional(S.Unknown),
-    }),
-).annotate({
-  identifier: "NamespacesKeysBulkUpdateRequestBodyItem",
-}) as any as S.Schema<NamespacesKeysBulkUpdateRequestBodyItem>;
+export type NamespacesKeysBulkUpdateRequestBodyItem =
+  NamespacesBulkUpdateRequestBodyItem;
+export const NamespacesKeysBulkUpdateRequestBodyItem =
+  NamespacesBulkUpdateRequestBodyItem;
 
 export type NamespacesKeysBulkUpdateRequestBodyList =
-  Array<NamespacesKeysBulkUpdateRequestBodyItem>;
+  Array<NamespacesBulkUpdateRequestBodyItem>;
 export const NamespacesKeysBulkUpdateRequestBodyList = /*@__PURE__*/ S.Array(
-  NamespacesKeysBulkUpdateRequestBodyItem,
+  NamespacesBulkUpdateRequestBodyItem,
 ) as any as S.Schema<NamespacesKeysBulkUpdateRequestBodyList>;
 
 export interface NamespacesKeysBulkUpdateRequest {

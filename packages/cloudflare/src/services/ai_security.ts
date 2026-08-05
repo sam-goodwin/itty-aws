@@ -159,25 +159,15 @@ export const PutAiSecurityResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PutAiSecurityResponse",
 }) as any as S.Schema<PutAiSecurityResponse>;
 
-export interface CustomTopicsUpdateRequestTopicsItem {
-  /** Unique label identifier. Must contain only lowercase letters (a–z), digits (0–9), and hyphens. */
-  label: string;
-  /** Description of the topic category. Must contain only printable ASCII characters. */
-  topic: string;
-}
-export const CustomTopicsUpdateRequestTopicsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    label: S.String,
-    topic: S.String,
-  }),
-).annotate({
-  identifier: "CustomTopicsUpdateRequestTopicsItem",
-}) as any as S.Schema<CustomTopicsUpdateRequestTopicsItem>;
+export type CustomTopicsUpdateRequestTopicsItem =
+  CustomTopicsGetResponseTopicsItem;
+export const CustomTopicsUpdateRequestTopicsItem =
+  CustomTopicsGetResponseTopicsItem;
 
 export type CustomTopicsUpdateRequestTopicsList =
-  Array<CustomTopicsUpdateRequestTopicsItem>;
+  Array<CustomTopicsGetResponseTopicsItem>;
 export const CustomTopicsUpdateRequestTopicsList = /*@__PURE__*/ S.Array(
-  CustomTopicsUpdateRequestTopicsItem,
+  CustomTopicsGetResponseTopicsItem,
 ) as any as S.Schema<CustomTopicsUpdateRequestTopicsList>;
 
 export interface PutCustomTopicRequest {
@@ -201,26 +191,15 @@ export const PutCustomTopicRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PutCustomTopicRequest",
 }) as any as S.Schema<PutCustomTopicRequest>;
 
-export interface CustomTopicsUpdateResponseTopicsItem {
-  /** Unique label identifier. Must contain only lowercase letters (a–z), digits (0–9), and hyphens. */
-  label: string;
-  /** Description of the topic category. Must contain only printable ASCII characters. */
-  topic: string;
-}
-export const CustomTopicsUpdateResponseTopicsItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      label: S.String,
-      topic: S.String,
-    }),
-).annotate({
-  identifier: "CustomTopicsUpdateResponseTopicsItem",
-}) as any as S.Schema<CustomTopicsUpdateResponseTopicsItem>;
+export type CustomTopicsUpdateResponseTopicsItem =
+  CustomTopicsGetResponseTopicsItem;
+export const CustomTopicsUpdateResponseTopicsItem =
+  CustomTopicsGetResponseTopicsItem;
 
 export type CustomTopicsUpdateResponseTopicsList =
-  Array<CustomTopicsUpdateResponseTopicsItem>;
+  Array<CustomTopicsGetResponseTopicsItem>;
 export const CustomTopicsUpdateResponseTopicsList = /*@__PURE__*/ S.Array(
-  CustomTopicsUpdateResponseTopicsItem,
+  CustomTopicsGetResponseTopicsItem,
 ) as any as S.Schema<CustomTopicsUpdateResponseTopicsList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */

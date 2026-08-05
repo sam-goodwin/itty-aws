@@ -512,20 +512,8 @@ export const BuildsListResultItemBuildTriggerMetadata = /*@__PURE__*/ S.suspend(
   identifier: "BuildsListResultItemBuildTriggerMetadata",
 }) as any as S.Schema<BuildsListResultItemBuildTriggerMetadata>;
 
-export interface BuildsListResultItemPullRequest {
-  createdOn?: string | null;
-  pullRequestUrl?: string | null;
-}
-export const BuildsListResultItemPullRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
-    pullRequestUrl: S.optional(
-      S.NullOr(S.String).pipe(T.Body("pull_request_url")),
-    ),
-  }),
-).annotate({
-  identifier: "BuildsListResultItemPullRequest",
-}) as any as S.Schema<BuildsListResultItemPullRequest>;
+export type BuildsListResultItemPullRequest = BuildsGetResponsePullRequest;
+export const BuildsListResultItemPullRequest = BuildsGetResponsePullRequest;
 
 export type BuildsListResultItemStatus =
   | "queued"
@@ -684,7 +672,7 @@ export interface BuildsListResultItem {
   createdOn?: string | null;
   initializingOn?: string | null;
   modifiedOn?: string | null;
-  pullRequest?: BuildsListResultItemPullRequest | null;
+  pullRequest?: BuildsGetResponsePullRequest | null;
   runningOn?: string | null;
   status?: BuildsListResultItemStatus | null;
   stoppedOn?: string | null;
@@ -708,7 +696,7 @@ export const BuildsListResultItem = /*@__PURE__*/ S.suspend(() =>
     ),
     modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
     pullRequest: S.optional(
-      S.NullOr(BuildsListResultItemPullRequest).pipe(T.Body("pull_request")),
+      S.NullOr(BuildsGetResponsePullRequest).pipe(T.Body("pull_request")),
     ),
     runningOn: S.optional(S.NullOr(S.String).pipe(T.Body("running_on"))),
     status: S.optional(S.NullOr(BuildsListResultItemStatus)),
@@ -1299,21 +1287,10 @@ export const GetBuildsByVersionResponseBuildsValueBuildTriggerMetadata =
     identifier: "GetBuildsByVersionResponseBuildsValueBuildTriggerMetadata",
   }) as any as S.Schema<GetBuildsByVersionResponseBuildsValueBuildTriggerMetadata>;
 
-export interface GetBuildsByVersionResponseBuildsValuePullRequest {
-  createdOn?: string | null;
-  pullRequestUrl?: string | null;
-}
+export type GetBuildsByVersionResponseBuildsValuePullRequest =
+  BuildsGetResponsePullRequest;
 export const GetBuildsByVersionResponseBuildsValuePullRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
-      pullRequestUrl: S.optional(
-        S.NullOr(S.String).pipe(T.Body("pull_request_url")),
-      ),
-    }),
-  ).annotate({
-    identifier: "GetBuildsByVersionResponseBuildsValuePullRequest",
-  }) as any as S.Schema<GetBuildsByVersionResponseBuildsValuePullRequest>;
+  BuildsGetResponsePullRequest;
 
 export type GetBuildsByVersionResponseBuildsValueStatus =
   | "queued"
@@ -1478,7 +1455,7 @@ export interface GetBuildsByVersionResponseBuildsValue {
   createdOn?: string | null;
   initializingOn?: string | null;
   modifiedOn?: string | null;
-  pullRequest?: GetBuildsByVersionResponseBuildsValuePullRequest | null;
+  pullRequest?: BuildsGetResponsePullRequest | null;
   runningOn?: string | null;
   status?: GetBuildsByVersionResponseBuildsValueStatus | null;
   stoppedOn?: string | null;
@@ -1505,9 +1482,7 @@ export const GetBuildsByVersionResponseBuildsValue = /*@__PURE__*/ S.suspend(
       ),
       modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
       pullRequest: S.optional(
-        S.NullOr(GetBuildsByVersionResponseBuildsValuePullRequest).pipe(
-          T.Body("pull_request"),
-        ),
+        S.NullOr(BuildsGetResponsePullRequest).pipe(T.Body("pull_request")),
       ),
       runningOn: S.optional(S.NullOr(S.String).pipe(T.Body("running_on"))),
       status: S.optional(S.NullOr(GetBuildsByVersionResponseBuildsValueStatus)),
@@ -1656,21 +1631,10 @@ export const GetLatestBuildsResponseBuildsValueBuildTriggerMetadata =
     identifier: "GetLatestBuildsResponseBuildsValueBuildTriggerMetadata",
   }) as any as S.Schema<GetLatestBuildsResponseBuildsValueBuildTriggerMetadata>;
 
-export interface GetLatestBuildsResponseBuildsValuePullRequest {
-  createdOn?: string | null;
-  pullRequestUrl?: string | null;
-}
+export type GetLatestBuildsResponseBuildsValuePullRequest =
+  BuildsGetResponsePullRequest;
 export const GetLatestBuildsResponseBuildsValuePullRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
-      pullRequestUrl: S.optional(
-        S.NullOr(S.String).pipe(T.Body("pull_request_url")),
-      ),
-    }),
-  ).annotate({
-    identifier: "GetLatestBuildsResponseBuildsValuePullRequest",
-  }) as any as S.Schema<GetLatestBuildsResponseBuildsValuePullRequest>;
+  BuildsGetResponsePullRequest;
 
 export type GetLatestBuildsResponseBuildsValueStatus =
   | "queued"
@@ -1834,7 +1798,7 @@ export interface GetLatestBuildsResponseBuildsValue {
   createdOn?: string | null;
   initializingOn?: string | null;
   modifiedOn?: string | null;
-  pullRequest?: GetLatestBuildsResponseBuildsValuePullRequest | null;
+  pullRequest?: BuildsGetResponsePullRequest | null;
   runningOn?: string | null;
   status?: GetLatestBuildsResponseBuildsValueStatus | null;
   stoppedOn?: string | null;
@@ -1860,9 +1824,7 @@ export const GetLatestBuildsResponseBuildsValue = /*@__PURE__*/ S.suspend(() =>
     ),
     modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
     pullRequest: S.optional(
-      S.NullOr(GetLatestBuildsResponseBuildsValuePullRequest).pipe(
-        T.Body("pull_request"),
-      ),
+      S.NullOr(BuildsGetResponsePullRequest).pipe(T.Body("pull_request")),
     ),
     runningOn: S.optional(S.NullOr(S.String).pipe(T.Body("running_on"))),
     status: S.optional(S.NullOr(GetLatestBuildsResponseBuildsValueStatus)),
@@ -2730,30 +2692,18 @@ export const TriggersEnvironmentVariablesUpsertRequest =
     identifier: "TriggersEnvironmentVariablesUpsertRequest",
   }) as any as S.Schema<TriggersEnvironmentVariablesUpsertRequest>;
 
-export interface TriggersEnvironmentVariablesUpsertResultValue {
-  createdOn: string;
-  isSecret: boolean;
-  /** Value is null for secret environment variables */
-  value?: string | null;
-}
+export type TriggersEnvironmentVariablesUpsertResultValue =
+  TriggersEnvironmentVariablesListResultValue;
 export const TriggersEnvironmentVariablesUpsertResultValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      createdOn: S.String.pipe(T.Body("created_on")),
-      isSecret: S.Boolean.pipe(T.Body("is_secret")),
-      value: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier: "TriggersEnvironmentVariablesUpsertResultValue",
-  }) as any as S.Schema<TriggersEnvironmentVariablesUpsertResultValue>;
+  TriggersEnvironmentVariablesListResultValue;
 
 export type TriggersEnvironmentVariablesUpsertResultMap = {
-  [key: string]: TriggersEnvironmentVariablesUpsertResultValue | undefined;
+  [key: string]: TriggersEnvironmentVariablesListResultValue | undefined;
 };
 export const TriggersEnvironmentVariablesUpsertResultMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    TriggersEnvironmentVariablesUpsertResultValue,
+    TriggersEnvironmentVariablesListResultValue,
   ) as any as S.Schema<TriggersEnvironmentVariablesUpsertResultMap>;
 
 export type TriggersEnvironmentVariablesUpsertResponse =

@@ -133,196 +133,76 @@ export const DmarcReportsGetResponseRecordsBimiRecordsList =
     DmarcReportsGetResponseRecordsBimiRecordsItem,
   ) as any as S.Schema<DmarcReportsGetResponseRecordsBimiRecordsList>;
 
-export interface DmarcReportsGetResponseRecordsCnameDkimRecordsItem {
-  /** DNS record ID */
-  id?: string | null;
-  /** Record content */
-  content?: string | null;
-  /** DNS record name */
-  name?: string | null;
-  /** Time to live in seconds */
-  ttl?: number | null;
-  /** Record type */
-  type?: string | null;
-}
+export type DmarcReportsGetResponseRecordsCnameDkimRecordsItem =
+  DmarcReportsGetResponseRecordsBimiRecordsItem;
 export const DmarcReportsGetResponseRecordsCnameDkimRecordsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.NullOr(S.String)),
-      content: S.optional(S.NullOr(S.String)),
-      name: S.optional(S.NullOr(S.String)),
-      ttl: S.optional(S.NullOr(S.Number)),
-      type: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier: "DmarcReportsGetResponseRecordsCnameDkimRecordsItem",
-  }) as any as S.Schema<DmarcReportsGetResponseRecordsCnameDkimRecordsItem>;
+  DmarcReportsGetResponseRecordsBimiRecordsItem;
 
 export type DmarcReportsGetResponseRecordsCnameDkimRecordsList =
-  Array<DmarcReportsGetResponseRecordsCnameDkimRecordsItem>;
+  Array<DmarcReportsGetResponseRecordsBimiRecordsItem>;
 export const DmarcReportsGetResponseRecordsCnameDkimRecordsList =
   /*@__PURE__*/ S.Array(
-    DmarcReportsGetResponseRecordsCnameDkimRecordsItem,
+    DmarcReportsGetResponseRecordsBimiRecordsItem,
   ) as any as S.Schema<DmarcReportsGetResponseRecordsCnameDkimRecordsList>;
 
-export interface DmarcReportsGetResponseRecordsCnameDmarcRecordsItem {
-  /** DNS record ID */
-  id?: string | null;
-  /** Record content */
-  content?: string | null;
-  /** DNS record name */
-  name?: string | null;
-  /** Time to live in seconds */
-  ttl?: number | null;
-  /** Record type */
-  type?: string | null;
-}
+export type DmarcReportsGetResponseRecordsCnameDmarcRecordsItem =
+  DmarcReportsGetResponseRecordsBimiRecordsItem;
 export const DmarcReportsGetResponseRecordsCnameDmarcRecordsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.NullOr(S.String)),
-      content: S.optional(S.NullOr(S.String)),
-      name: S.optional(S.NullOr(S.String)),
-      ttl: S.optional(S.NullOr(S.Number)),
-      type: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier: "DmarcReportsGetResponseRecordsCnameDmarcRecordsItem",
-  }) as any as S.Schema<DmarcReportsGetResponseRecordsCnameDmarcRecordsItem>;
+  DmarcReportsGetResponseRecordsBimiRecordsItem;
 
 export type DmarcReportsGetResponseRecordsCnameDmarcRecordsList =
-  Array<DmarcReportsGetResponseRecordsCnameDmarcRecordsItem>;
+  Array<DmarcReportsGetResponseRecordsBimiRecordsItem>;
 export const DmarcReportsGetResponseRecordsCnameDmarcRecordsList =
   /*@__PURE__*/ S.Array(
-    DmarcReportsGetResponseRecordsCnameDmarcRecordsItem,
+    DmarcReportsGetResponseRecordsBimiRecordsItem,
   ) as any as S.Schema<DmarcReportsGetResponseRecordsCnameDmarcRecordsList>;
 
-export interface DmarcReportsGetResponseRecordsCnameSpfRecordsItem {
-  /** DNS record ID */
-  id?: string | null;
-  /** Record content */
-  content?: string | null;
-  /** DNS record name */
-  name?: string | null;
-  /** Time to live in seconds */
-  ttl?: number | null;
-  /** Record type */
-  type?: string | null;
-}
+export type DmarcReportsGetResponseRecordsCnameSpfRecordsItem =
+  DmarcReportsGetResponseRecordsBimiRecordsItem;
 export const DmarcReportsGetResponseRecordsCnameSpfRecordsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.NullOr(S.String)),
-      content: S.optional(S.NullOr(S.String)),
-      name: S.optional(S.NullOr(S.String)),
-      ttl: S.optional(S.NullOr(S.Number)),
-      type: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier: "DmarcReportsGetResponseRecordsCnameSpfRecordsItem",
-  }) as any as S.Schema<DmarcReportsGetResponseRecordsCnameSpfRecordsItem>;
+  DmarcReportsGetResponseRecordsBimiRecordsItem;
 
 export type DmarcReportsGetResponseRecordsCnameSpfRecordsList =
-  Array<DmarcReportsGetResponseRecordsCnameSpfRecordsItem>;
+  Array<DmarcReportsGetResponseRecordsBimiRecordsItem>;
 export const DmarcReportsGetResponseRecordsCnameSpfRecordsList =
   /*@__PURE__*/ S.Array(
-    DmarcReportsGetResponseRecordsCnameSpfRecordsItem,
+    DmarcReportsGetResponseRecordsBimiRecordsItem,
   ) as any as S.Schema<DmarcReportsGetResponseRecordsCnameSpfRecordsList>;
 
-export interface DmarcReportsGetResponseRecordsDkimRecordsItem {
-  /** DNS record ID */
-  id?: string | null;
-  /** Record content */
-  content?: string | null;
-  /** DNS record name */
-  name?: string | null;
-  /** Time to live in seconds */
-  ttl?: number | null;
-  /** Record type */
-  type?: string | null;
-}
+export type DmarcReportsGetResponseRecordsDkimRecordsItem =
+  DmarcReportsGetResponseRecordsBimiRecordsItem;
 export const DmarcReportsGetResponseRecordsDkimRecordsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.NullOr(S.String)),
-      content: S.optional(S.NullOr(S.String)),
-      name: S.optional(S.NullOr(S.String)),
-      ttl: S.optional(S.NullOr(S.Number)),
-      type: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier: "DmarcReportsGetResponseRecordsDkimRecordsItem",
-  }) as any as S.Schema<DmarcReportsGetResponseRecordsDkimRecordsItem>;
+  DmarcReportsGetResponseRecordsBimiRecordsItem;
 
 export type DmarcReportsGetResponseRecordsDkimRecordsList =
-  Array<DmarcReportsGetResponseRecordsDkimRecordsItem>;
+  Array<DmarcReportsGetResponseRecordsBimiRecordsItem>;
 export const DmarcReportsGetResponseRecordsDkimRecordsList =
   /*@__PURE__*/ S.Array(
-    DmarcReportsGetResponseRecordsDkimRecordsItem,
+    DmarcReportsGetResponseRecordsBimiRecordsItem,
   ) as any as S.Schema<DmarcReportsGetResponseRecordsDkimRecordsList>;
 
-export interface DmarcReportsGetResponseRecordsDmarcRecordsItem {
-  /** DNS record ID */
-  id?: string | null;
-  /** Record content */
-  content?: string | null;
-  /** DNS record name */
-  name?: string | null;
-  /** Time to live in seconds */
-  ttl?: number | null;
-  /** Record type */
-  type?: string | null;
-}
+export type DmarcReportsGetResponseRecordsDmarcRecordsItem =
+  DmarcReportsGetResponseRecordsBimiRecordsItem;
 export const DmarcReportsGetResponseRecordsDmarcRecordsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.NullOr(S.String)),
-      content: S.optional(S.NullOr(S.String)),
-      name: S.optional(S.NullOr(S.String)),
-      ttl: S.optional(S.NullOr(S.Number)),
-      type: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier: "DmarcReportsGetResponseRecordsDmarcRecordsItem",
-  }) as any as S.Schema<DmarcReportsGetResponseRecordsDmarcRecordsItem>;
+  DmarcReportsGetResponseRecordsBimiRecordsItem;
 
 export type DmarcReportsGetResponseRecordsDmarcRecordsList =
-  Array<DmarcReportsGetResponseRecordsDmarcRecordsItem>;
+  Array<DmarcReportsGetResponseRecordsBimiRecordsItem>;
 export const DmarcReportsGetResponseRecordsDmarcRecordsList =
   /*@__PURE__*/ S.Array(
-    DmarcReportsGetResponseRecordsDmarcRecordsItem,
+    DmarcReportsGetResponseRecordsBimiRecordsItem,
   ) as any as S.Schema<DmarcReportsGetResponseRecordsDmarcRecordsList>;
 
-export interface DmarcReportsGetResponseRecordsSpfRecordsItem {
-  /** DNS record ID */
-  id?: string | null;
-  /** Record content */
-  content?: string | null;
-  /** DNS record name */
-  name?: string | null;
-  /** Time to live in seconds */
-  ttl?: number | null;
-  /** Record type */
-  type?: string | null;
-}
+export type DmarcReportsGetResponseRecordsSpfRecordsItem =
+  DmarcReportsGetResponseRecordsBimiRecordsItem;
 export const DmarcReportsGetResponseRecordsSpfRecordsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.NullOr(S.String)),
-      content: S.optional(S.NullOr(S.String)),
-      name: S.optional(S.NullOr(S.String)),
-      ttl: S.optional(S.NullOr(S.Number)),
-      type: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier: "DmarcReportsGetResponseRecordsSpfRecordsItem",
-  }) as any as S.Schema<DmarcReportsGetResponseRecordsSpfRecordsItem>;
+  DmarcReportsGetResponseRecordsBimiRecordsItem;
 
 export type DmarcReportsGetResponseRecordsSpfRecordsList =
-  Array<DmarcReportsGetResponseRecordsSpfRecordsItem>;
+  Array<DmarcReportsGetResponseRecordsBimiRecordsItem>;
 export const DmarcReportsGetResponseRecordsSpfRecordsList =
   /*@__PURE__*/ S.Array(
-    DmarcReportsGetResponseRecordsSpfRecordsItem,
+    DmarcReportsGetResponseRecordsBimiRecordsItem,
   ) as any as S.Schema<DmarcReportsGetResponseRecordsSpfRecordsList>;
 
 export interface DmarcReportsGetResponseRecords {
@@ -598,228 +478,88 @@ export const DmarcReportsEditResponseApprovedSourcesList =
     DmarcReportsEditResponseApprovedSourcesItem,
   ) as any as S.Schema<DmarcReportsEditResponseApprovedSourcesList>;
 
-export interface DmarcReportsEditResponseRecordsBimiRecordsItem {
-  /** DNS record ID */
-  id?: string | null;
-  /** Record content */
-  content?: string | null;
-  /** DNS record name */
-  name?: string | null;
-  /** Time to live in seconds */
-  ttl?: number | null;
-  /** Record type */
-  type?: string | null;
-}
+export type DmarcReportsEditResponseRecordsBimiRecordsItem =
+  DmarcReportsGetResponseRecordsBimiRecordsItem;
 export const DmarcReportsEditResponseRecordsBimiRecordsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.NullOr(S.String)),
-      content: S.optional(S.NullOr(S.String)),
-      name: S.optional(S.NullOr(S.String)),
-      ttl: S.optional(S.NullOr(S.Number)),
-      type: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier: "DmarcReportsEditResponseRecordsBimiRecordsItem",
-  }) as any as S.Schema<DmarcReportsEditResponseRecordsBimiRecordsItem>;
+  DmarcReportsGetResponseRecordsBimiRecordsItem;
 
 export type DmarcReportsEditResponseRecordsBimiRecordsList =
-  Array<DmarcReportsEditResponseRecordsBimiRecordsItem>;
+  Array<DmarcReportsGetResponseRecordsBimiRecordsItem>;
 export const DmarcReportsEditResponseRecordsBimiRecordsList =
   /*@__PURE__*/ S.Array(
-    DmarcReportsEditResponseRecordsBimiRecordsItem,
+    DmarcReportsGetResponseRecordsBimiRecordsItem,
   ) as any as S.Schema<DmarcReportsEditResponseRecordsBimiRecordsList>;
 
-export interface DmarcReportsEditResponseRecordsCnameDkimRecordsItem {
-  /** DNS record ID */
-  id?: string | null;
-  /** Record content */
-  content?: string | null;
-  /** DNS record name */
-  name?: string | null;
-  /** Time to live in seconds */
-  ttl?: number | null;
-  /** Record type */
-  type?: string | null;
-}
+export type DmarcReportsEditResponseRecordsCnameDkimRecordsItem =
+  DmarcReportsGetResponseRecordsBimiRecordsItem;
 export const DmarcReportsEditResponseRecordsCnameDkimRecordsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.NullOr(S.String)),
-      content: S.optional(S.NullOr(S.String)),
-      name: S.optional(S.NullOr(S.String)),
-      ttl: S.optional(S.NullOr(S.Number)),
-      type: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier: "DmarcReportsEditResponseRecordsCnameDkimRecordsItem",
-  }) as any as S.Schema<DmarcReportsEditResponseRecordsCnameDkimRecordsItem>;
+  DmarcReportsGetResponseRecordsBimiRecordsItem;
 
 export type DmarcReportsEditResponseRecordsCnameDkimRecordsList =
-  Array<DmarcReportsEditResponseRecordsCnameDkimRecordsItem>;
+  Array<DmarcReportsGetResponseRecordsBimiRecordsItem>;
 export const DmarcReportsEditResponseRecordsCnameDkimRecordsList =
   /*@__PURE__*/ S.Array(
-    DmarcReportsEditResponseRecordsCnameDkimRecordsItem,
+    DmarcReportsGetResponseRecordsBimiRecordsItem,
   ) as any as S.Schema<DmarcReportsEditResponseRecordsCnameDkimRecordsList>;
 
-export interface DmarcReportsEditResponseRecordsCnameDmarcRecordsItem {
-  /** DNS record ID */
-  id?: string | null;
-  /** Record content */
-  content?: string | null;
-  /** DNS record name */
-  name?: string | null;
-  /** Time to live in seconds */
-  ttl?: number | null;
-  /** Record type */
-  type?: string | null;
-}
+export type DmarcReportsEditResponseRecordsCnameDmarcRecordsItem =
+  DmarcReportsGetResponseRecordsBimiRecordsItem;
 export const DmarcReportsEditResponseRecordsCnameDmarcRecordsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.NullOr(S.String)),
-      content: S.optional(S.NullOr(S.String)),
-      name: S.optional(S.NullOr(S.String)),
-      ttl: S.optional(S.NullOr(S.Number)),
-      type: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier: "DmarcReportsEditResponseRecordsCnameDmarcRecordsItem",
-  }) as any as S.Schema<DmarcReportsEditResponseRecordsCnameDmarcRecordsItem>;
+  DmarcReportsGetResponseRecordsBimiRecordsItem;
 
 export type DmarcReportsEditResponseRecordsCnameDmarcRecordsList =
-  Array<DmarcReportsEditResponseRecordsCnameDmarcRecordsItem>;
+  Array<DmarcReportsGetResponseRecordsBimiRecordsItem>;
 export const DmarcReportsEditResponseRecordsCnameDmarcRecordsList =
   /*@__PURE__*/ S.Array(
-    DmarcReportsEditResponseRecordsCnameDmarcRecordsItem,
+    DmarcReportsGetResponseRecordsBimiRecordsItem,
   ) as any as S.Schema<DmarcReportsEditResponseRecordsCnameDmarcRecordsList>;
 
-export interface DmarcReportsEditResponseRecordsCnameSpfRecordsItem {
-  /** DNS record ID */
-  id?: string | null;
-  /** Record content */
-  content?: string | null;
-  /** DNS record name */
-  name?: string | null;
-  /** Time to live in seconds */
-  ttl?: number | null;
-  /** Record type */
-  type?: string | null;
-}
+export type DmarcReportsEditResponseRecordsCnameSpfRecordsItem =
+  DmarcReportsGetResponseRecordsBimiRecordsItem;
 export const DmarcReportsEditResponseRecordsCnameSpfRecordsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.NullOr(S.String)),
-      content: S.optional(S.NullOr(S.String)),
-      name: S.optional(S.NullOr(S.String)),
-      ttl: S.optional(S.NullOr(S.Number)),
-      type: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier: "DmarcReportsEditResponseRecordsCnameSpfRecordsItem",
-  }) as any as S.Schema<DmarcReportsEditResponseRecordsCnameSpfRecordsItem>;
+  DmarcReportsGetResponseRecordsBimiRecordsItem;
 
 export type DmarcReportsEditResponseRecordsCnameSpfRecordsList =
-  Array<DmarcReportsEditResponseRecordsCnameSpfRecordsItem>;
+  Array<DmarcReportsGetResponseRecordsBimiRecordsItem>;
 export const DmarcReportsEditResponseRecordsCnameSpfRecordsList =
   /*@__PURE__*/ S.Array(
-    DmarcReportsEditResponseRecordsCnameSpfRecordsItem,
+    DmarcReportsGetResponseRecordsBimiRecordsItem,
   ) as any as S.Schema<DmarcReportsEditResponseRecordsCnameSpfRecordsList>;
 
-export interface DmarcReportsEditResponseRecordsDkimRecordsItem {
-  /** DNS record ID */
-  id?: string | null;
-  /** Record content */
-  content?: string | null;
-  /** DNS record name */
-  name?: string | null;
-  /** Time to live in seconds */
-  ttl?: number | null;
-  /** Record type */
-  type?: string | null;
-}
+export type DmarcReportsEditResponseRecordsDkimRecordsItem =
+  DmarcReportsGetResponseRecordsBimiRecordsItem;
 export const DmarcReportsEditResponseRecordsDkimRecordsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.NullOr(S.String)),
-      content: S.optional(S.NullOr(S.String)),
-      name: S.optional(S.NullOr(S.String)),
-      ttl: S.optional(S.NullOr(S.Number)),
-      type: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier: "DmarcReportsEditResponseRecordsDkimRecordsItem",
-  }) as any as S.Schema<DmarcReportsEditResponseRecordsDkimRecordsItem>;
+  DmarcReportsGetResponseRecordsBimiRecordsItem;
 
 export type DmarcReportsEditResponseRecordsDkimRecordsList =
-  Array<DmarcReportsEditResponseRecordsDkimRecordsItem>;
+  Array<DmarcReportsGetResponseRecordsBimiRecordsItem>;
 export const DmarcReportsEditResponseRecordsDkimRecordsList =
   /*@__PURE__*/ S.Array(
-    DmarcReportsEditResponseRecordsDkimRecordsItem,
+    DmarcReportsGetResponseRecordsBimiRecordsItem,
   ) as any as S.Schema<DmarcReportsEditResponseRecordsDkimRecordsList>;
 
-export interface DmarcReportsEditResponseRecordsDmarcRecordsItem {
-  /** DNS record ID */
-  id?: string | null;
-  /** Record content */
-  content?: string | null;
-  /** DNS record name */
-  name?: string | null;
-  /** Time to live in seconds */
-  ttl?: number | null;
-  /** Record type */
-  type?: string | null;
-}
+export type DmarcReportsEditResponseRecordsDmarcRecordsItem =
+  DmarcReportsGetResponseRecordsBimiRecordsItem;
 export const DmarcReportsEditResponseRecordsDmarcRecordsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.NullOr(S.String)),
-      content: S.optional(S.NullOr(S.String)),
-      name: S.optional(S.NullOr(S.String)),
-      ttl: S.optional(S.NullOr(S.Number)),
-      type: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier: "DmarcReportsEditResponseRecordsDmarcRecordsItem",
-  }) as any as S.Schema<DmarcReportsEditResponseRecordsDmarcRecordsItem>;
+  DmarcReportsGetResponseRecordsBimiRecordsItem;
 
 export type DmarcReportsEditResponseRecordsDmarcRecordsList =
-  Array<DmarcReportsEditResponseRecordsDmarcRecordsItem>;
+  Array<DmarcReportsGetResponseRecordsBimiRecordsItem>;
 export const DmarcReportsEditResponseRecordsDmarcRecordsList =
   /*@__PURE__*/ S.Array(
-    DmarcReportsEditResponseRecordsDmarcRecordsItem,
+    DmarcReportsGetResponseRecordsBimiRecordsItem,
   ) as any as S.Schema<DmarcReportsEditResponseRecordsDmarcRecordsList>;
 
-export interface DmarcReportsEditResponseRecordsSpfRecordsItem {
-  /** DNS record ID */
-  id?: string | null;
-  /** Record content */
-  content?: string | null;
-  /** DNS record name */
-  name?: string | null;
-  /** Time to live in seconds */
-  ttl?: number | null;
-  /** Record type */
-  type?: string | null;
-}
+export type DmarcReportsEditResponseRecordsSpfRecordsItem =
+  DmarcReportsGetResponseRecordsBimiRecordsItem;
 export const DmarcReportsEditResponseRecordsSpfRecordsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.NullOr(S.String)),
-      content: S.optional(S.NullOr(S.String)),
-      name: S.optional(S.NullOr(S.String)),
-      ttl: S.optional(S.NullOr(S.Number)),
-      type: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier: "DmarcReportsEditResponseRecordsSpfRecordsItem",
-  }) as any as S.Schema<DmarcReportsEditResponseRecordsSpfRecordsItem>;
+  DmarcReportsGetResponseRecordsBimiRecordsItem;
 
 export type DmarcReportsEditResponseRecordsSpfRecordsList =
-  Array<DmarcReportsEditResponseRecordsSpfRecordsItem>;
+  Array<DmarcReportsGetResponseRecordsBimiRecordsItem>;
 export const DmarcReportsEditResponseRecordsSpfRecordsList =
   /*@__PURE__*/ S.Array(
-    DmarcReportsEditResponseRecordsSpfRecordsItem,
+    DmarcReportsGetResponseRecordsBimiRecordsItem,
   ) as any as S.Schema<DmarcReportsEditResponseRecordsSpfRecordsList>;
 
 export interface DmarcReportsEditResponseRecords {

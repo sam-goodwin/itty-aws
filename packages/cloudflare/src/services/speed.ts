@@ -1020,38 +1020,15 @@ export const AvailabilitiesListResponseQuotaQuotasPerPlan =
     identifier: "AvailabilitiesListResponseQuotaQuotasPerPlan",
   }) as any as S.Schema<AvailabilitiesListResponseQuotaQuotasPerPlan>;
 
-export interface AvailabilitiesListResponseQuotaScheduleQuotasPerPlanValue {
-  business?: number | null;
-  enterprise?: number | null;
-  free?: number | null;
-  pro?: number | null;
-}
+export type AvailabilitiesListResponseQuotaScheduleQuotasPerPlanValue =
+  AvailabilitiesListResponseQuotaQuotasPerPlanValue;
 export const AvailabilitiesListResponseQuotaScheduleQuotasPerPlanValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      business: S.optional(S.NullOr(S.Number)),
-      enterprise: S.optional(S.NullOr(S.Number)),
-      free: S.optional(S.NullOr(S.Number)),
-      pro: S.optional(S.NullOr(S.Number)),
-    }),
-  ).annotate({
-    identifier: "AvailabilitiesListResponseQuotaScheduleQuotasPerPlanValue",
-  }) as any as S.Schema<AvailabilitiesListResponseQuotaScheduleQuotasPerPlanValue>;
+  AvailabilitiesListResponseQuotaQuotasPerPlanValue;
 
-export interface AvailabilitiesListResponseQuotaScheduleQuotasPerPlan {
-  /** Counts per account plan. */
-  value?: AvailabilitiesListResponseQuotaScheduleQuotasPerPlanValue | null;
-}
+export type AvailabilitiesListResponseQuotaScheduleQuotasPerPlan =
+  AvailabilitiesListResponseQuotaQuotasPerPlan;
 export const AvailabilitiesListResponseQuotaScheduleQuotasPerPlan =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      value: S.optional(
-        S.NullOr(AvailabilitiesListResponseQuotaScheduleQuotasPerPlanValue),
-      ),
-    }),
-  ).annotate({
-    identifier: "AvailabilitiesListResponseQuotaScheduleQuotasPerPlan",
-  }) as any as S.Schema<AvailabilitiesListResponseQuotaScheduleQuotasPerPlan>;
+  AvailabilitiesListResponseQuotaQuotasPerPlan;
 
 export interface AvailabilitiesListResponseQuota {
   /** Cloudflare plan. */
@@ -1063,7 +1040,7 @@ export interface AvailabilitiesListResponseQuota {
   /** The number of remaining tests available. */
   remainingTests?: number | null;
   /** The number of schedules available per plan. */
-  scheduleQuotasPerPlan?: AvailabilitiesListResponseQuotaScheduleQuotasPerPlan | null;
+  scheduleQuotasPerPlan?: AvailabilitiesListResponseQuotaQuotasPerPlan | null;
 }
 export const AvailabilitiesListResponseQuota = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1074,7 +1051,7 @@ export const AvailabilitiesListResponseQuota = /*@__PURE__*/ S.suspend(() =>
     remainingSchedules: S.optional(S.NullOr(S.Number)),
     remainingTests: S.optional(S.NullOr(S.Number)),
     scheduleQuotasPerPlan: S.optional(
-      S.NullOr(AvailabilitiesListResponseQuotaScheduleQuotasPerPlan),
+      S.NullOr(AvailabilitiesListResponseQuotaQuotasPerPlan),
     ),
   }),
 ).annotate({
@@ -1149,70 +1126,40 @@ export const AvailabilitiesListResponseRegionsPerPlanBusinessList =
     AvailabilitiesListResponseRegionsPerPlanBusinessItem,
   ) as any as S.Schema<AvailabilitiesListResponseRegionsPerPlanBusinessList>;
 
-export interface AvailabilitiesListResponseRegionsPerPlanEnterpriseItem {
-  label?: string | null;
-  /** A test region. */
-  value?: string | null;
-}
+export type AvailabilitiesListResponseRegionsPerPlanEnterpriseItem =
+  AvailabilitiesListResponseRegionsPerPlanBusinessItem;
 export const AvailabilitiesListResponseRegionsPerPlanEnterpriseItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      label: S.optional(S.NullOr(S.String)),
-      value: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier: "AvailabilitiesListResponseRegionsPerPlanEnterpriseItem",
-  }) as any as S.Schema<AvailabilitiesListResponseRegionsPerPlanEnterpriseItem>;
+  AvailabilitiesListResponseRegionsPerPlanBusinessItem;
 
 export type AvailabilitiesListResponseRegionsPerPlanEnterpriseList =
-  Array<AvailabilitiesListResponseRegionsPerPlanEnterpriseItem>;
+  Array<AvailabilitiesListResponseRegionsPerPlanBusinessItem>;
 export const AvailabilitiesListResponseRegionsPerPlanEnterpriseList =
   /*@__PURE__*/ S.Array(
-    AvailabilitiesListResponseRegionsPerPlanEnterpriseItem,
+    AvailabilitiesListResponseRegionsPerPlanBusinessItem,
   ) as any as S.Schema<AvailabilitiesListResponseRegionsPerPlanEnterpriseList>;
 
-export interface AvailabilitiesListResponseRegionsPerPlanFreeItem {
-  label?: string | null;
-  /** A test region. */
-  value?: string | null;
-}
+export type AvailabilitiesListResponseRegionsPerPlanFreeItem =
+  AvailabilitiesListResponseRegionsPerPlanBusinessItem;
 export const AvailabilitiesListResponseRegionsPerPlanFreeItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      label: S.optional(S.NullOr(S.String)),
-      value: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier: "AvailabilitiesListResponseRegionsPerPlanFreeItem",
-  }) as any as S.Schema<AvailabilitiesListResponseRegionsPerPlanFreeItem>;
+  AvailabilitiesListResponseRegionsPerPlanBusinessItem;
 
 export type AvailabilitiesListResponseRegionsPerPlanFreeList =
-  Array<AvailabilitiesListResponseRegionsPerPlanFreeItem>;
+  Array<AvailabilitiesListResponseRegionsPerPlanBusinessItem>;
 export const AvailabilitiesListResponseRegionsPerPlanFreeList =
   /*@__PURE__*/ S.Array(
-    AvailabilitiesListResponseRegionsPerPlanFreeItem,
+    AvailabilitiesListResponseRegionsPerPlanBusinessItem,
   ) as any as S.Schema<AvailabilitiesListResponseRegionsPerPlanFreeList>;
 
-export interface AvailabilitiesListResponseRegionsPerPlanProItem {
-  label?: string | null;
-  /** A test region. */
-  value?: string | null;
-}
+export type AvailabilitiesListResponseRegionsPerPlanProItem =
+  AvailabilitiesListResponseRegionsPerPlanBusinessItem;
 export const AvailabilitiesListResponseRegionsPerPlanProItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      label: S.optional(S.NullOr(S.String)),
-      value: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier: "AvailabilitiesListResponseRegionsPerPlanProItem",
-  }) as any as S.Schema<AvailabilitiesListResponseRegionsPerPlanProItem>;
+  AvailabilitiesListResponseRegionsPerPlanBusinessItem;
 
 export type AvailabilitiesListResponseRegionsPerPlanProList =
-  Array<AvailabilitiesListResponseRegionsPerPlanProItem>;
+  Array<AvailabilitiesListResponseRegionsPerPlanBusinessItem>;
 export const AvailabilitiesListResponseRegionsPerPlanProList =
   /*@__PURE__*/ S.Array(
-    AvailabilitiesListResponseRegionsPerPlanProItem,
+    AvailabilitiesListResponseRegionsPerPlanBusinessItem,
   ) as any as S.Schema<AvailabilitiesListResponseRegionsPerPlanProList>;
 
 export interface AvailabilitiesListResponseRegionsPerPlan {

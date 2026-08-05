@@ -2677,18 +2677,10 @@ export const GetResponseActionsItemCacheKeyFieldsValueHeader =
     identifier: "GetResponseActionsItemCacheKeyFieldsValueHeader",
   }) as any as S.Schema<GetResponseActionsItemCacheKeyFieldsValueHeader>;
 
-export interface GetResponseActionsItemCacheKeyFieldsValueHost {
-  /** Whether to include the Host header in the HTTP request sent */
-  resolved?: boolean | null;
-}
+export type GetResponseActionsItemCacheKeyFieldsValueHost =
+  CreateResponseActionsItemCacheKeyFieldsValueHost;
 export const GetResponseActionsItemCacheKeyFieldsValueHost =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resolved: S.optional(S.NullOr(S.Boolean)),
-    }),
-  ).annotate({
-    identifier: "GetResponseActionsItemCacheKeyFieldsValueHost",
-  }) as any as S.Schema<GetResponseActionsItemCacheKeyFieldsValueHost>;
+  CreateResponseActionsItemCacheKeyFieldsValueHost;
 
 export type GetResponseActionsItemCacheKeyFieldsValueQueryStringExcludeEnum =
   "*";
@@ -2746,24 +2738,10 @@ export const GetResponseActionsItemCacheKeyFieldsValueQueryString =
     identifier: "GetResponseActionsItemCacheKeyFieldsValueQueryString",
   }) as any as S.Schema<GetResponseActionsItemCacheKeyFieldsValueQueryString>;
 
-export interface GetResponseActionsItemCacheKeyFieldsValueUser {
-  /** Classifies a request as `mobile`, `desktop`, or `tablet` */
-  deviceType?: boolean | null;
-  /** Includes the client's country, derived from the IP address. */
-  geo?: boolean | null;
-  /** Includes the first language code contained in the */
-  lang?: boolean | null;
-}
+export type GetResponseActionsItemCacheKeyFieldsValueUser =
+  CreateResponseActionsItemCacheKeyFieldsValueUser;
 export const GetResponseActionsItemCacheKeyFieldsValueUser =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      deviceType: S.optional(S.NullOr(S.Boolean).pipe(T.Body("device_type"))),
-      geo: S.optional(S.NullOr(S.Boolean)),
-      lang: S.optional(S.NullOr(S.Boolean)),
-    }),
-  ).annotate({
-    identifier: "GetResponseActionsItemCacheKeyFieldsValueUser",
-  }) as any as S.Schema<GetResponseActionsItemCacheKeyFieldsValueUser>;
+  CreateResponseActionsItemCacheKeyFieldsValueUser;
 
 export interface GetResponseActionsItemCacheKeyFieldsValue {
   /** Controls which cookies appear in the Cache Key. */
@@ -2771,11 +2749,11 @@ export interface GetResponseActionsItemCacheKeyFieldsValue {
   /** Controls which headers go into the Cache Key. Exactly one of */
   header?: GetResponseActionsItemCacheKeyFieldsValueHeader | null;
   /** Determines which host header to include in the Cache Key. */
-  host?: GetResponseActionsItemCacheKeyFieldsValueHost | null;
+  host?: CreateResponseActionsItemCacheKeyFieldsValueHost | null;
   /** Controls which URL query string parameters go into the Cache */
   queryString?: GetResponseActionsItemCacheKeyFieldsValueQueryString | null;
   /** Feature fields to add features about the end-user (client) into */
-  user?: GetResponseActionsItemCacheKeyFieldsValueUser | null;
+  user?: CreateResponseActionsItemCacheKeyFieldsValueUser | null;
 }
 export const GetResponseActionsItemCacheKeyFieldsValue =
   /*@__PURE__*/ S.suspend(() =>
@@ -2786,13 +2764,17 @@ export const GetResponseActionsItemCacheKeyFieldsValue =
       header: S.optional(
         S.NullOr(GetResponseActionsItemCacheKeyFieldsValueHeader),
       ),
-      host: S.optional(S.NullOr(GetResponseActionsItemCacheKeyFieldsValueHost)),
+      host: S.optional(
+        S.NullOr(CreateResponseActionsItemCacheKeyFieldsValueHost),
+      ),
       queryString: S.optional(
         S.NullOr(GetResponseActionsItemCacheKeyFieldsValueQueryString).pipe(
           T.Body("query_string"),
         ),
       ),
-      user: S.optional(S.NullOr(GetResponseActionsItemCacheKeyFieldsValueUser)),
+      user: S.optional(
+        S.NullOr(CreateResponseActionsItemCacheKeyFieldsValueUser),
+      ),
     }),
   ).annotate({
     identifier: "GetResponseActionsItemCacheKeyFieldsValue",
@@ -3858,18 +3840,10 @@ export const ListResultItemActionsItemCacheKeyFieldsValueHeader =
     identifier: "ListResultItemActionsItemCacheKeyFieldsValueHeader",
   }) as any as S.Schema<ListResultItemActionsItemCacheKeyFieldsValueHeader>;
 
-export interface ListResultItemActionsItemCacheKeyFieldsValueHost {
-  /** Whether to include the Host header in the HTTP request sent */
-  resolved?: boolean | null;
-}
+export type ListResultItemActionsItemCacheKeyFieldsValueHost =
+  CreateResponseActionsItemCacheKeyFieldsValueHost;
 export const ListResultItemActionsItemCacheKeyFieldsValueHost =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resolved: S.optional(S.NullOr(S.Boolean)),
-    }),
-  ).annotate({
-    identifier: "ListResultItemActionsItemCacheKeyFieldsValueHost",
-  }) as any as S.Schema<ListResultItemActionsItemCacheKeyFieldsValueHost>;
+  CreateResponseActionsItemCacheKeyFieldsValueHost;
 
 export type ListResultItemActionsItemCacheKeyFieldsValueQueryStringExcludeEnum =
   "*";
@@ -3931,24 +3905,10 @@ export const ListResultItemActionsItemCacheKeyFieldsValueQueryString =
     identifier: "ListResultItemActionsItemCacheKeyFieldsValueQueryString",
   }) as any as S.Schema<ListResultItemActionsItemCacheKeyFieldsValueQueryString>;
 
-export interface ListResultItemActionsItemCacheKeyFieldsValueUser {
-  /** Classifies a request as `mobile`, `desktop`, or `tablet` */
-  deviceType?: boolean | null;
-  /** Includes the client's country, derived from the IP address. */
-  geo?: boolean | null;
-  /** Includes the first language code contained in the */
-  lang?: boolean | null;
-}
+export type ListResultItemActionsItemCacheKeyFieldsValueUser =
+  CreateResponseActionsItemCacheKeyFieldsValueUser;
 export const ListResultItemActionsItemCacheKeyFieldsValueUser =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      deviceType: S.optional(S.NullOr(S.Boolean).pipe(T.Body("device_type"))),
-      geo: S.optional(S.NullOr(S.Boolean)),
-      lang: S.optional(S.NullOr(S.Boolean)),
-    }),
-  ).annotate({
-    identifier: "ListResultItemActionsItemCacheKeyFieldsValueUser",
-  }) as any as S.Schema<ListResultItemActionsItemCacheKeyFieldsValueUser>;
+  CreateResponseActionsItemCacheKeyFieldsValueUser;
 
 export interface ListResultItemActionsItemCacheKeyFieldsValue {
   /** Controls which cookies appear in the Cache Key. */
@@ -3956,11 +3916,11 @@ export interface ListResultItemActionsItemCacheKeyFieldsValue {
   /** Controls which headers go into the Cache Key. Exactly one of */
   header?: ListResultItemActionsItemCacheKeyFieldsValueHeader | null;
   /** Determines which host header to include in the Cache Key. */
-  host?: ListResultItemActionsItemCacheKeyFieldsValueHost | null;
+  host?: CreateResponseActionsItemCacheKeyFieldsValueHost | null;
   /** Controls which URL query string parameters go into the Cache */
   queryString?: ListResultItemActionsItemCacheKeyFieldsValueQueryString | null;
   /** Feature fields to add features about the end-user (client) into */
-  user?: ListResultItemActionsItemCacheKeyFieldsValueUser | null;
+  user?: CreateResponseActionsItemCacheKeyFieldsValueUser | null;
 }
 export const ListResultItemActionsItemCacheKeyFieldsValue =
   /*@__PURE__*/ S.suspend(() =>
@@ -3972,7 +3932,7 @@ export const ListResultItemActionsItemCacheKeyFieldsValue =
         S.NullOr(ListResultItemActionsItemCacheKeyFieldsValueHeader),
       ),
       host: S.optional(
-        S.NullOr(ListResultItemActionsItemCacheKeyFieldsValueHost),
+        S.NullOr(CreateResponseActionsItemCacheKeyFieldsValueHost),
       ),
       queryString: S.optional(
         S.NullOr(ListResultItemActionsItemCacheKeyFieldsValueQueryString).pipe(
@@ -3980,7 +3940,7 @@ export const ListResultItemActionsItemCacheKeyFieldsValue =
         ),
       ),
       user: S.optional(
-        S.NullOr(ListResultItemActionsItemCacheKeyFieldsValueUser),
+        S.NullOr(CreateResponseActionsItemCacheKeyFieldsValueUser),
       ),
     }),
   ).annotate({
@@ -5044,18 +5004,10 @@ export const EditRequestActionsItemCacheKeyFieldsValueHeader =
     identifier: "EditRequestActionsItemCacheKeyFieldsValueHeader",
   }) as any as S.Schema<EditRequestActionsItemCacheKeyFieldsValueHeader>;
 
-export interface EditRequestActionsItemCacheKeyFieldsValueHost {
-  /** Whether to include the Host header in the HTTP request sent */
-  resolved?: boolean;
-}
+export type EditRequestActionsItemCacheKeyFieldsValueHost =
+  CreateRequestActionsItemCacheKeyFieldsValueHost;
 export const EditRequestActionsItemCacheKeyFieldsValueHost =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resolved: S.optional(S.Boolean),
-    }),
-  ).annotate({
-    identifier: "EditRequestActionsItemCacheKeyFieldsValueHost",
-  }) as any as S.Schema<EditRequestActionsItemCacheKeyFieldsValueHost>;
+  CreateRequestActionsItemCacheKeyFieldsValueHost;
 
 export type EditRequestActionsItemCacheKeyFieldsValueQueryStringExcludeEnum =
   "*";
@@ -5115,24 +5067,10 @@ export const EditRequestActionsItemCacheKeyFieldsValueQueryString =
     identifier: "EditRequestActionsItemCacheKeyFieldsValueQueryString",
   }) as any as S.Schema<EditRequestActionsItemCacheKeyFieldsValueQueryString>;
 
-export interface EditRequestActionsItemCacheKeyFieldsValueUser {
-  /** Classifies a request as `mobile`, `desktop`, or `tablet` */
-  deviceType?: boolean;
-  /** Includes the client's country, derived from the IP address. */
-  geo?: boolean;
-  /** Includes the first language code contained in the */
-  lang?: boolean;
-}
+export type EditRequestActionsItemCacheKeyFieldsValueUser =
+  CreateRequestActionsItemCacheKeyFieldsValueUser;
 export const EditRequestActionsItemCacheKeyFieldsValueUser =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      deviceType: S.optional(S.Boolean.pipe(T.Body("device_type"))),
-      geo: S.optional(S.Boolean),
-      lang: S.optional(S.Boolean),
-    }),
-  ).annotate({
-    identifier: "EditRequestActionsItemCacheKeyFieldsValueUser",
-  }) as any as S.Schema<EditRequestActionsItemCacheKeyFieldsValueUser>;
+  CreateRequestActionsItemCacheKeyFieldsValueUser;
 
 export interface EditRequestActionsItemCacheKeyFieldsValue {
   /** Controls which cookies appear in the Cache Key. */
@@ -5140,24 +5078,24 @@ export interface EditRequestActionsItemCacheKeyFieldsValue {
   /** Controls which headers go into the Cache Key. Exactly one of */
   header?: EditRequestActionsItemCacheKeyFieldsValueHeader;
   /** Determines which host header to include in the Cache Key. */
-  host?: EditRequestActionsItemCacheKeyFieldsValueHost;
+  host?: CreateRequestActionsItemCacheKeyFieldsValueHost;
   /** Controls which URL query string parameters go into the Cache */
   queryString?: EditRequestActionsItemCacheKeyFieldsValueQueryString;
   /** Feature fields to add features about the end-user (client) into */
-  user?: EditRequestActionsItemCacheKeyFieldsValueUser;
+  user?: CreateRequestActionsItemCacheKeyFieldsValueUser;
 }
 export const EditRequestActionsItemCacheKeyFieldsValue =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       cookie: S.optional(EditRequestActionsItemCacheKeyFieldsValueCookie),
       header: S.optional(EditRequestActionsItemCacheKeyFieldsValueHeader),
-      host: S.optional(EditRequestActionsItemCacheKeyFieldsValueHost),
+      host: S.optional(CreateRequestActionsItemCacheKeyFieldsValueHost),
       queryString: S.optional(
         EditRequestActionsItemCacheKeyFieldsValueQueryString.pipe(
           T.Body("query_string"),
         ),
       ),
-      user: S.optional(EditRequestActionsItemCacheKeyFieldsValueUser),
+      user: S.optional(CreateRequestActionsItemCacheKeyFieldsValueUser),
     }),
   ).annotate({
     identifier: "EditRequestActionsItemCacheKeyFieldsValue",
@@ -6174,18 +6112,10 @@ export const EditResponseActionsItemCacheKeyFieldsValueHeader =
     identifier: "EditResponseActionsItemCacheKeyFieldsValueHeader",
   }) as any as S.Schema<EditResponseActionsItemCacheKeyFieldsValueHeader>;
 
-export interface EditResponseActionsItemCacheKeyFieldsValueHost {
-  /** Whether to include the Host header in the HTTP request sent */
-  resolved?: boolean | null;
-}
+export type EditResponseActionsItemCacheKeyFieldsValueHost =
+  CreateResponseActionsItemCacheKeyFieldsValueHost;
 export const EditResponseActionsItemCacheKeyFieldsValueHost =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resolved: S.optional(S.NullOr(S.Boolean)),
-    }),
-  ).annotate({
-    identifier: "EditResponseActionsItemCacheKeyFieldsValueHost",
-  }) as any as S.Schema<EditResponseActionsItemCacheKeyFieldsValueHost>;
+  CreateResponseActionsItemCacheKeyFieldsValueHost;
 
 export type EditResponseActionsItemCacheKeyFieldsValueQueryStringExcludeEnum =
   "*";
@@ -6243,24 +6173,10 @@ export const EditResponseActionsItemCacheKeyFieldsValueQueryString =
     identifier: "EditResponseActionsItemCacheKeyFieldsValueQueryString",
   }) as any as S.Schema<EditResponseActionsItemCacheKeyFieldsValueQueryString>;
 
-export interface EditResponseActionsItemCacheKeyFieldsValueUser {
-  /** Classifies a request as `mobile`, `desktop`, or `tablet` */
-  deviceType?: boolean | null;
-  /** Includes the client's country, derived from the IP address. */
-  geo?: boolean | null;
-  /** Includes the first language code contained in the */
-  lang?: boolean | null;
-}
+export type EditResponseActionsItemCacheKeyFieldsValueUser =
+  CreateResponseActionsItemCacheKeyFieldsValueUser;
 export const EditResponseActionsItemCacheKeyFieldsValueUser =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      deviceType: S.optional(S.NullOr(S.Boolean).pipe(T.Body("device_type"))),
-      geo: S.optional(S.NullOr(S.Boolean)),
-      lang: S.optional(S.NullOr(S.Boolean)),
-    }),
-  ).annotate({
-    identifier: "EditResponseActionsItemCacheKeyFieldsValueUser",
-  }) as any as S.Schema<EditResponseActionsItemCacheKeyFieldsValueUser>;
+  CreateResponseActionsItemCacheKeyFieldsValueUser;
 
 export interface EditResponseActionsItemCacheKeyFieldsValue {
   /** Controls which cookies appear in the Cache Key. */
@@ -6268,11 +6184,11 @@ export interface EditResponseActionsItemCacheKeyFieldsValue {
   /** Controls which headers go into the Cache Key. Exactly one of */
   header?: EditResponseActionsItemCacheKeyFieldsValueHeader | null;
   /** Determines which host header to include in the Cache Key. */
-  host?: EditResponseActionsItemCacheKeyFieldsValueHost | null;
+  host?: CreateResponseActionsItemCacheKeyFieldsValueHost | null;
   /** Controls which URL query string parameters go into the Cache */
   queryString?: EditResponseActionsItemCacheKeyFieldsValueQueryString | null;
   /** Feature fields to add features about the end-user (client) into */
-  user?: EditResponseActionsItemCacheKeyFieldsValueUser | null;
+  user?: CreateResponseActionsItemCacheKeyFieldsValueUser | null;
 }
 export const EditResponseActionsItemCacheKeyFieldsValue =
   /*@__PURE__*/ S.suspend(() =>
@@ -6284,7 +6200,7 @@ export const EditResponseActionsItemCacheKeyFieldsValue =
         S.NullOr(EditResponseActionsItemCacheKeyFieldsValueHeader),
       ),
       host: S.optional(
-        S.NullOr(EditResponseActionsItemCacheKeyFieldsValueHost),
+        S.NullOr(CreateResponseActionsItemCacheKeyFieldsValueHost),
       ),
       queryString: S.optional(
         S.NullOr(EditResponseActionsItemCacheKeyFieldsValueQueryString).pipe(
@@ -6292,7 +6208,7 @@ export const EditResponseActionsItemCacheKeyFieldsValue =
         ),
       ),
       user: S.optional(
-        S.NullOr(EditResponseActionsItemCacheKeyFieldsValueUser),
+        S.NullOr(CreateResponseActionsItemCacheKeyFieldsValueUser),
       ),
     }),
   ).annotate({
@@ -7326,18 +7242,10 @@ export const UpdateRequestActionsItemCacheKeyFieldsValueHeader =
     identifier: "UpdateRequestActionsItemCacheKeyFieldsValueHeader",
   }) as any as S.Schema<UpdateRequestActionsItemCacheKeyFieldsValueHeader>;
 
-export interface UpdateRequestActionsItemCacheKeyFieldsValueHost {
-  /** Whether to include the Host header in the HTTP request sent */
-  resolved?: boolean;
-}
+export type UpdateRequestActionsItemCacheKeyFieldsValueHost =
+  CreateRequestActionsItemCacheKeyFieldsValueHost;
 export const UpdateRequestActionsItemCacheKeyFieldsValueHost =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resolved: S.optional(S.Boolean),
-    }),
-  ).annotate({
-    identifier: "UpdateRequestActionsItemCacheKeyFieldsValueHost",
-  }) as any as S.Schema<UpdateRequestActionsItemCacheKeyFieldsValueHost>;
+  CreateRequestActionsItemCacheKeyFieldsValueHost;
 
 export type UpdateRequestActionsItemCacheKeyFieldsValueQueryStringExcludeEnum =
   "*";
@@ -7397,24 +7305,10 @@ export const UpdateRequestActionsItemCacheKeyFieldsValueQueryString =
     identifier: "UpdateRequestActionsItemCacheKeyFieldsValueQueryString",
   }) as any as S.Schema<UpdateRequestActionsItemCacheKeyFieldsValueQueryString>;
 
-export interface UpdateRequestActionsItemCacheKeyFieldsValueUser {
-  /** Classifies a request as `mobile`, `desktop`, or `tablet` */
-  deviceType?: boolean;
-  /** Includes the client's country, derived from the IP address. */
-  geo?: boolean;
-  /** Includes the first language code contained in the */
-  lang?: boolean;
-}
+export type UpdateRequestActionsItemCacheKeyFieldsValueUser =
+  CreateRequestActionsItemCacheKeyFieldsValueUser;
 export const UpdateRequestActionsItemCacheKeyFieldsValueUser =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      deviceType: S.optional(S.Boolean.pipe(T.Body("device_type"))),
-      geo: S.optional(S.Boolean),
-      lang: S.optional(S.Boolean),
-    }),
-  ).annotate({
-    identifier: "UpdateRequestActionsItemCacheKeyFieldsValueUser",
-  }) as any as S.Schema<UpdateRequestActionsItemCacheKeyFieldsValueUser>;
+  CreateRequestActionsItemCacheKeyFieldsValueUser;
 
 export interface UpdateRequestActionsItemCacheKeyFieldsValue {
   /** Controls which cookies appear in the Cache Key. */
@@ -7422,24 +7316,24 @@ export interface UpdateRequestActionsItemCacheKeyFieldsValue {
   /** Controls which headers go into the Cache Key. Exactly one of */
   header?: UpdateRequestActionsItemCacheKeyFieldsValueHeader;
   /** Determines which host header to include in the Cache Key. */
-  host?: UpdateRequestActionsItemCacheKeyFieldsValueHost;
+  host?: CreateRequestActionsItemCacheKeyFieldsValueHost;
   /** Controls which URL query string parameters go into the Cache */
   queryString?: UpdateRequestActionsItemCacheKeyFieldsValueQueryString;
   /** Feature fields to add features about the end-user (client) into */
-  user?: UpdateRequestActionsItemCacheKeyFieldsValueUser;
+  user?: CreateRequestActionsItemCacheKeyFieldsValueUser;
 }
 export const UpdateRequestActionsItemCacheKeyFieldsValue =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       cookie: S.optional(UpdateRequestActionsItemCacheKeyFieldsValueCookie),
       header: S.optional(UpdateRequestActionsItemCacheKeyFieldsValueHeader),
-      host: S.optional(UpdateRequestActionsItemCacheKeyFieldsValueHost),
+      host: S.optional(CreateRequestActionsItemCacheKeyFieldsValueHost),
       queryString: S.optional(
         UpdateRequestActionsItemCacheKeyFieldsValueQueryString.pipe(
           T.Body("query_string"),
         ),
       ),
-      user: S.optional(UpdateRequestActionsItemCacheKeyFieldsValueUser),
+      user: S.optional(CreateRequestActionsItemCacheKeyFieldsValueUser),
     }),
   ).annotate({
     identifier: "UpdateRequestActionsItemCacheKeyFieldsValue",
@@ -8478,18 +8372,10 @@ export const UpdateResponseActionsItemCacheKeyFieldsValueHeader =
     identifier: "UpdateResponseActionsItemCacheKeyFieldsValueHeader",
   }) as any as S.Schema<UpdateResponseActionsItemCacheKeyFieldsValueHeader>;
 
-export interface UpdateResponseActionsItemCacheKeyFieldsValueHost {
-  /** Whether to include the Host header in the HTTP request sent */
-  resolved?: boolean | null;
-}
+export type UpdateResponseActionsItemCacheKeyFieldsValueHost =
+  CreateResponseActionsItemCacheKeyFieldsValueHost;
 export const UpdateResponseActionsItemCacheKeyFieldsValueHost =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resolved: S.optional(S.NullOr(S.Boolean)),
-    }),
-  ).annotate({
-    identifier: "UpdateResponseActionsItemCacheKeyFieldsValueHost",
-  }) as any as S.Schema<UpdateResponseActionsItemCacheKeyFieldsValueHost>;
+  CreateResponseActionsItemCacheKeyFieldsValueHost;
 
 export type UpdateResponseActionsItemCacheKeyFieldsValueQueryStringExcludeEnum =
   "*";
@@ -8551,24 +8437,10 @@ export const UpdateResponseActionsItemCacheKeyFieldsValueQueryString =
     identifier: "UpdateResponseActionsItemCacheKeyFieldsValueQueryString",
   }) as any as S.Schema<UpdateResponseActionsItemCacheKeyFieldsValueQueryString>;
 
-export interface UpdateResponseActionsItemCacheKeyFieldsValueUser {
-  /** Classifies a request as `mobile`, `desktop`, or `tablet` */
-  deviceType?: boolean | null;
-  /** Includes the client's country, derived from the IP address. */
-  geo?: boolean | null;
-  /** Includes the first language code contained in the */
-  lang?: boolean | null;
-}
+export type UpdateResponseActionsItemCacheKeyFieldsValueUser =
+  CreateResponseActionsItemCacheKeyFieldsValueUser;
 export const UpdateResponseActionsItemCacheKeyFieldsValueUser =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      deviceType: S.optional(S.NullOr(S.Boolean).pipe(T.Body("device_type"))),
-      geo: S.optional(S.NullOr(S.Boolean)),
-      lang: S.optional(S.NullOr(S.Boolean)),
-    }),
-  ).annotate({
-    identifier: "UpdateResponseActionsItemCacheKeyFieldsValueUser",
-  }) as any as S.Schema<UpdateResponseActionsItemCacheKeyFieldsValueUser>;
+  CreateResponseActionsItemCacheKeyFieldsValueUser;
 
 export interface UpdateResponseActionsItemCacheKeyFieldsValue {
   /** Controls which cookies appear in the Cache Key. */
@@ -8576,11 +8448,11 @@ export interface UpdateResponseActionsItemCacheKeyFieldsValue {
   /** Controls which headers go into the Cache Key. Exactly one of */
   header?: UpdateResponseActionsItemCacheKeyFieldsValueHeader | null;
   /** Determines which host header to include in the Cache Key. */
-  host?: UpdateResponseActionsItemCacheKeyFieldsValueHost | null;
+  host?: CreateResponseActionsItemCacheKeyFieldsValueHost | null;
   /** Controls which URL query string parameters go into the Cache */
   queryString?: UpdateResponseActionsItemCacheKeyFieldsValueQueryString | null;
   /** Feature fields to add features about the end-user (client) into */
-  user?: UpdateResponseActionsItemCacheKeyFieldsValueUser | null;
+  user?: CreateResponseActionsItemCacheKeyFieldsValueUser | null;
 }
 export const UpdateResponseActionsItemCacheKeyFieldsValue =
   /*@__PURE__*/ S.suspend(() =>
@@ -8592,7 +8464,7 @@ export const UpdateResponseActionsItemCacheKeyFieldsValue =
         S.NullOr(UpdateResponseActionsItemCacheKeyFieldsValueHeader),
       ),
       host: S.optional(
-        S.NullOr(UpdateResponseActionsItemCacheKeyFieldsValueHost),
+        S.NullOr(CreateResponseActionsItemCacheKeyFieldsValueHost),
       ),
       queryString: S.optional(
         S.NullOr(UpdateResponseActionsItemCacheKeyFieldsValueQueryString).pipe(
@@ -8600,7 +8472,7 @@ export const UpdateResponseActionsItemCacheKeyFieldsValue =
         ),
       ),
       user: S.optional(
-        S.NullOr(UpdateResponseActionsItemCacheKeyFieldsValueUser),
+        S.NullOr(CreateResponseActionsItemCacheKeyFieldsValueUser),
       ),
     }),
   ).annotate({

@@ -680,24 +680,12 @@ export const ListV1KeysRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListV1KeysRequest",
 }) as any as S.Schema<ListV1KeysRequest>;
 
-export interface V1KeysListResponseKeysItem {
-  /** Key name. */
-  name?: string | null;
-  /** Key value. */
-  value?: string | null;
-}
-export const V1KeysListResponseKeysItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.NullOr(S.String)),
-    value: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "V1KeysListResponseKeysItem",
-}) as any as S.Schema<V1KeysListResponseKeysItem>;
+export type V1KeysListResponseKeysItem = V1KeysDeleteResponseKeysItem;
+export const V1KeysListResponseKeysItem = V1KeysDeleteResponseKeysItem;
 
-export type V1KeysListResponseKeysList = Array<V1KeysListResponseKeysItem>;
+export type V1KeysListResponseKeysList = Array<V1KeysDeleteResponseKeysItem>;
 export const V1KeysListResponseKeysList = /*@__PURE__*/ S.Array(
-  V1KeysListResponseKeysItem,
+  V1KeysDeleteResponseKeysItem,
 ) as any as S.Schema<V1KeysListResponseKeysList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -1210,24 +1198,12 @@ export const PutV1KeyRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PutV1KeyRequest",
 }) as any as S.Schema<PutV1KeyRequest>;
 
-export interface V1KeysUpdateResponseKeysItem {
-  /** Key name. */
-  name?: string | null;
-  /** Key value. */
-  value?: string | null;
-}
-export const V1KeysUpdateResponseKeysItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.NullOr(S.String)),
-    value: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "V1KeysUpdateResponseKeysItem",
-}) as any as S.Schema<V1KeysUpdateResponseKeysItem>;
+export type V1KeysUpdateResponseKeysItem = V1KeysDeleteResponseKeysItem;
+export const V1KeysUpdateResponseKeysItem = V1KeysDeleteResponseKeysItem;
 
-export type V1KeysUpdateResponseKeysList = Array<V1KeysUpdateResponseKeysItem>;
+export type V1KeysUpdateResponseKeysList = Array<V1KeysDeleteResponseKeysItem>;
 export const V1KeysUpdateResponseKeysList = /*@__PURE__*/ S.Array(
-  V1KeysUpdateResponseKeysItem,
+  V1KeysDeleteResponseKeysItem,
 ) as any as S.Schema<V1KeysUpdateResponseKeysList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */

@@ -199,24 +199,8 @@ export const CreateResponseParent = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateResponseParent",
 }) as any as S.Schema<CreateResponseParent>;
 
-export interface CreateResponseProfile {
-  businessAddress: string;
-  businessEmail: string;
-  businessName: string;
-  businessPhone: string;
-  externalMetadata: string;
-}
-export const CreateResponseProfile = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    businessAddress: S.String.pipe(T.Body("business_address")),
-    businessEmail: S.String.pipe(T.Body("business_email")),
-    businessName: S.String.pipe(T.Body("business_name")),
-    businessPhone: S.String.pipe(T.Body("business_phone")),
-    externalMetadata: S.String.pipe(T.Body("external_metadata")),
-  }),
-).annotate({
-  identifier: "CreateResponseProfile",
-}) as any as S.Schema<CreateResponseProfile>;
+export type CreateResponseProfile = CreateRequestProfile;
+export const CreateResponseProfile = CreateRequestProfile;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateOrganizationResponse {
@@ -225,7 +209,7 @@ export interface CreateOrganizationResponse {
   meta: CreateResponseMeta;
   name: string;
   parent?: CreateResponseParent | null;
-  profile?: CreateResponseProfile | null;
+  profile?: CreateRequestProfile | null;
 }
 export const CreateOrganizationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -234,7 +218,7 @@ export const CreateOrganizationResponse = /*@__PURE__*/ S.suspend(() =>
     meta: CreateResponseMeta,
     name: S.String,
     parent: S.optional(S.NullOr(CreateResponseParent)),
-    profile: S.optional(S.NullOr(CreateResponseProfile)),
+    profile: S.optional(S.NullOr(CreateRequestProfile)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateOrganizationResponse",
@@ -477,24 +461,8 @@ export const GetOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetOrganizationRequest",
 }) as any as S.Schema<GetOrganizationRequest>;
 
-export interface GetResponseMetaFlags {
-  accountCreation: string;
-  accountDeletion: string;
-  accountMigration: string;
-  accountMobility: string;
-  subOrgCreation: string;
-}
-export const GetResponseMetaFlags = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountCreation: S.String.pipe(T.Body("account_creation")),
-    accountDeletion: S.String.pipe(T.Body("account_deletion")),
-    accountMigration: S.String.pipe(T.Body("account_migration")),
-    accountMobility: S.String.pipe(T.Body("account_mobility")),
-    subOrgCreation: S.String.pipe(T.Body("sub_org_creation")),
-  }),
-).annotate({
-  identifier: "GetResponseMetaFlags",
-}) as any as S.Schema<GetResponseMetaFlags>;
+export type GetResponseMetaFlags = CreateResponseMetaFlags;
+export const GetResponseMetaFlags = CreateResponseMetaFlags;
 
 export type GetResponseMetaHierarchyTagsList = Array<string>;
 export const GetResponseMetaHierarchyTagsList = /*@__PURE__*/ S.Array(
@@ -503,14 +471,14 @@ export const GetResponseMetaHierarchyTagsList = /*@__PURE__*/ S.Array(
 
 export interface GetResponseMeta {
   /** Enable features for Organizations. */
-  flags?: GetResponseMetaFlags | null;
+  flags?: CreateResponseMetaFlags | null;
   /** Ordered chain of organization tags from the root organization down to */
   hierarchyTags?: GetResponseMetaHierarchyTagsList | null;
   managedBy?: string | null;
 }
 export const GetResponseMeta = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    flags: S.optional(S.NullOr(GetResponseMetaFlags)),
+    flags: S.optional(S.NullOr(CreateResponseMetaFlags)),
     hierarchyTags: S.optional(
       S.NullOr(GetResponseMetaHierarchyTagsList).pipe(T.Body("hierarchy_tags")),
     ),
@@ -520,37 +488,11 @@ export const GetResponseMeta = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetResponseMeta",
 }) as any as S.Schema<GetResponseMeta>;
 
-export interface GetResponseParent {
-  id: string;
-  name: string;
-}
-export const GetResponseParent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-  }),
-).annotate({
-  identifier: "GetResponseParent",
-}) as any as S.Schema<GetResponseParent>;
+export type GetResponseParent = CreateResponseParent;
+export const GetResponseParent = CreateResponseParent;
 
-export interface GetResponseProfile {
-  businessAddress: string;
-  businessEmail: string;
-  businessName: string;
-  businessPhone: string;
-  externalMetadata: string;
-}
-export const GetResponseProfile = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    businessAddress: S.String.pipe(T.Body("business_address")),
-    businessEmail: S.String.pipe(T.Body("business_email")),
-    businessName: S.String.pipe(T.Body("business_name")),
-    businessPhone: S.String.pipe(T.Body("business_phone")),
-    externalMetadata: S.String.pipe(T.Body("external_metadata")),
-  }),
-).annotate({
-  identifier: "GetResponseProfile",
-}) as any as S.Schema<GetResponseProfile>;
+export type GetResponseProfile = CreateRequestProfile;
+export const GetResponseProfile = CreateRequestProfile;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetOrganizationResponse {
@@ -558,8 +500,8 @@ export interface GetOrganizationResponse {
   createTime: string;
   meta: GetResponseMeta;
   name: string;
-  parent?: GetResponseParent | null;
-  profile?: GetResponseProfile | null;
+  parent?: CreateResponseParent | null;
+  profile?: CreateRequestProfile | null;
 }
 export const GetOrganizationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -567,8 +509,8 @@ export const GetOrganizationResponse = /*@__PURE__*/ S.suspend(() =>
     createTime: S.String.pipe(T.Body("create_time")),
     meta: GetResponseMeta,
     name: S.String,
-    parent: S.optional(S.NullOr(GetResponseParent)),
-    profile: S.optional(S.NullOr(GetResponseProfile)),
+    parent: S.optional(S.NullOr(CreateResponseParent)),
+    profile: S.optional(S.NullOr(CreateRequestProfile)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetOrganizationResponse",
@@ -1368,24 +1310,8 @@ export const ListOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListOrganizationsRequest",
 }) as any as S.Schema<ListOrganizationsRequest>;
 
-export interface ListResultItemMetaFlags {
-  accountCreation: string;
-  accountDeletion: string;
-  accountMigration: string;
-  accountMobility: string;
-  subOrgCreation: string;
-}
-export const ListResultItemMetaFlags = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountCreation: S.String.pipe(T.Body("account_creation")),
-    accountDeletion: S.String.pipe(T.Body("account_deletion")),
-    accountMigration: S.String.pipe(T.Body("account_migration")),
-    accountMobility: S.String.pipe(T.Body("account_mobility")),
-    subOrgCreation: S.String.pipe(T.Body("sub_org_creation")),
-  }),
-).annotate({
-  identifier: "ListResultItemMetaFlags",
-}) as any as S.Schema<ListResultItemMetaFlags>;
+export type ListResultItemMetaFlags = CreateResponseMetaFlags;
+export const ListResultItemMetaFlags = CreateResponseMetaFlags;
 
 export type ListResultItemMetaHierarchyTagsList = Array<string>;
 export const ListResultItemMetaHierarchyTagsList = /*@__PURE__*/ S.Array(
@@ -1394,14 +1320,14 @@ export const ListResultItemMetaHierarchyTagsList = /*@__PURE__*/ S.Array(
 
 export interface ListResultItemMeta {
   /** Enable features for Organizations. */
-  flags?: ListResultItemMetaFlags | null;
+  flags?: CreateResponseMetaFlags | null;
   /** Ordered chain of organization tags from the root organization down to */
   hierarchyTags?: ListResultItemMetaHierarchyTagsList | null;
   managedBy?: string | null;
 }
 export const ListResultItemMeta = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    flags: S.optional(S.NullOr(ListResultItemMetaFlags)),
+    flags: S.optional(S.NullOr(CreateResponseMetaFlags)),
     hierarchyTags: S.optional(
       S.NullOr(ListResultItemMetaHierarchyTagsList).pipe(
         T.Body("hierarchy_tags"),
@@ -1413,45 +1339,19 @@ export const ListResultItemMeta = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListResultItemMeta",
 }) as any as S.Schema<ListResultItemMeta>;
 
-export interface ListResultItemParent {
-  id: string;
-  name: string;
-}
-export const ListResultItemParent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-  }),
-).annotate({
-  identifier: "ListResultItemParent",
-}) as any as S.Schema<ListResultItemParent>;
+export type ListResultItemParent = CreateResponseParent;
+export const ListResultItemParent = CreateResponseParent;
 
-export interface ListResultItemProfile {
-  businessAddress: string;
-  businessEmail: string;
-  businessName: string;
-  businessPhone: string;
-  externalMetadata: string;
-}
-export const ListResultItemProfile = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    businessAddress: S.String.pipe(T.Body("business_address")),
-    businessEmail: S.String.pipe(T.Body("business_email")),
-    businessName: S.String.pipe(T.Body("business_name")),
-    businessPhone: S.String.pipe(T.Body("business_phone")),
-    externalMetadata: S.String.pipe(T.Body("external_metadata")),
-  }),
-).annotate({
-  identifier: "ListResultItemProfile",
-}) as any as S.Schema<ListResultItemProfile>;
+export type ListResultItemProfile = CreateRequestProfile;
+export const ListResultItemProfile = CreateRequestProfile;
 
 export interface ListResultItem {
   id: string;
   createTime: string;
   meta: ListResultItemMeta;
   name: string;
-  parent?: ListResultItemParent | null;
-  profile?: ListResultItemProfile | null;
+  parent?: CreateResponseParent | null;
+  profile?: CreateRequestProfile | null;
 }
 export const ListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1459,8 +1359,8 @@ export const ListResultItem = /*@__PURE__*/ S.suspend(() =>
     createTime: S.String.pipe(T.Body("create_time")),
     meta: ListResultItemMeta,
     name: S.String,
-    parent: S.optional(S.NullOr(ListResultItemParent)),
-    profile: S.optional(S.NullOr(ListResultItemProfile)),
+    parent: S.optional(S.NullOr(CreateResponseParent)),
+    profile: S.optional(S.NullOr(CreateRequestProfile)),
   }),
 ).annotate({ identifier: "ListResultItem" }) as any as S.Schema<ListResultItem>;
 
@@ -1645,24 +1545,8 @@ export const MembersGetResponseMetaMap = /*@__PURE__*/ S.Record(
 export type MembersGetResponseStatus = "active" | "canceled";
 export const MembersGetResponseStatus = /*@__PURE__*/ S.String;
 
-export interface MembersGetResponseUser {
-  id: string;
-  email: string;
-  name: string;
-  twoFactorAuthenticationEnabled: boolean;
-}
-export const MembersGetResponseUser = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    email: S.String,
-    name: S.String,
-    twoFactorAuthenticationEnabled: S.Boolean.pipe(
-      T.Body("two_factor_authentication_enabled"),
-    ),
-  }),
-).annotate({
-  identifier: "MembersGetResponseUser",
-}) as any as S.Schema<MembersGetResponseUser>;
+export type MembersGetResponseUser = MembersCreateResponseUser;
+export const MembersGetResponseUser = MembersCreateResponseUser;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface MembersGetResponse {
@@ -1672,7 +1556,7 @@ export interface MembersGetResponse {
   meta: MembersGetResponseMetaMap;
   status: MembersGetResponseStatus;
   updateTime: string;
-  user: MembersGetResponseUser;
+  user: MembersCreateResponseUser;
 }
 export const MembersGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1681,7 +1565,7 @@ export const MembersGetResponse = /*@__PURE__*/ S.suspend(() =>
     meta: MembersGetResponseMetaMap,
     status: MembersGetResponseStatus,
     updateTime: S.String.pipe(T.Body("update_time")),
-    user: MembersGetResponseUser,
+    user: MembersCreateResponseUser,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "MembersGetResponse",
@@ -1750,24 +1634,8 @@ export const MembersListResultItemMetaMap = /*@__PURE__*/ S.Record(
 export type MembersListResultItemStatus = "active" | "canceled";
 export const MembersListResultItemStatus = /*@__PURE__*/ S.String;
 
-export interface MembersListResultItemUser {
-  id: string;
-  email: string;
-  name: string;
-  twoFactorAuthenticationEnabled: boolean;
-}
-export const MembersListResultItemUser = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    email: S.String,
-    name: S.String,
-    twoFactorAuthenticationEnabled: S.Boolean.pipe(
-      T.Body("two_factor_authentication_enabled"),
-    ),
-  }),
-).annotate({
-  identifier: "MembersListResultItemUser",
-}) as any as S.Schema<MembersListResultItemUser>;
+export type MembersListResultItemUser = MembersCreateResponseUser;
+export const MembersListResultItemUser = MembersCreateResponseUser;
 
 export interface MembersListResultItem {
   /** Organization Member ID */
@@ -1776,7 +1644,7 @@ export interface MembersListResultItem {
   meta: MembersListResultItemMetaMap;
   status: MembersListResultItemStatus;
   updateTime: string;
-  user: MembersListResultItemUser;
+  user: MembersCreateResponseUser;
 }
 export const MembersListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1785,7 +1653,7 @@ export const MembersListResultItem = /*@__PURE__*/ S.suspend(() =>
     meta: MembersListResultItemMetaMap,
     status: MembersListResultItemStatus,
     updateTime: S.String.pipe(T.Body("update_time")),
-    user: MembersListResultItemUser,
+    user: MembersCreateResponseUser,
   }),
 ).annotate({
   identifier: "MembersListResultItem",
@@ -1995,50 +1863,24 @@ export const PutOrganizationProfileResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PutOrganizationProfileResponse",
 }) as any as S.Schema<PutOrganizationProfileResponse>;
 
-export interface UpdateRequestParent {
-  id: string;
-  name?: string;
-}
-export const UpdateRequestParent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateRequestParent",
-}) as any as S.Schema<UpdateRequestParent>;
+export type UpdateRequestParent = CreateRequestParent;
+export const UpdateRequestParent = CreateRequestParent;
 
-export interface UpdateRequestProfile {
-  businessAddress: string;
-  businessEmail: string;
-  businessName: string;
-  businessPhone: string;
-  externalMetadata: string;
-}
-export const UpdateRequestProfile = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    businessAddress: S.String.pipe(T.Body("business_address")),
-    businessEmail: S.String.pipe(T.Body("business_email")),
-    businessName: S.String.pipe(T.Body("business_name")),
-    businessPhone: S.String.pipe(T.Body("business_phone")),
-    externalMetadata: S.String.pipe(T.Body("external_metadata")),
-  }),
-).annotate({
-  identifier: "UpdateRequestProfile",
-}) as any as S.Schema<UpdateRequestProfile>;
+export type UpdateRequestProfile = CreateRequestProfile;
+export const UpdateRequestProfile = CreateRequestProfile;
 
 export interface UpdateOrganizationRequest {
   organizationId: string;
   name: string;
-  parent?: UpdateRequestParent;
-  profile?: UpdateRequestProfile;
+  parent?: CreateRequestParent;
+  profile?: CreateRequestProfile;
 }
 export const UpdateOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organizationId: S.String.pipe(T.Label("organization_id")),
     name: S.String,
-    parent: S.optional(UpdateRequestParent),
-    profile: S.optional(UpdateRequestProfile),
+    parent: S.optional(CreateRequestParent),
+    profile: S.optional(CreateRequestProfile),
   })
     .pipe(
       T.Http({
@@ -2052,24 +1894,8 @@ export const UpdateOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateOrganizationRequest",
 }) as any as S.Schema<UpdateOrganizationRequest>;
 
-export interface UpdateResponseMetaFlags {
-  accountCreation: string;
-  accountDeletion: string;
-  accountMigration: string;
-  accountMobility: string;
-  subOrgCreation: string;
-}
-export const UpdateResponseMetaFlags = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountCreation: S.String.pipe(T.Body("account_creation")),
-    accountDeletion: S.String.pipe(T.Body("account_deletion")),
-    accountMigration: S.String.pipe(T.Body("account_migration")),
-    accountMobility: S.String.pipe(T.Body("account_mobility")),
-    subOrgCreation: S.String.pipe(T.Body("sub_org_creation")),
-  }),
-).annotate({
-  identifier: "UpdateResponseMetaFlags",
-}) as any as S.Schema<UpdateResponseMetaFlags>;
+export type UpdateResponseMetaFlags = CreateResponseMetaFlags;
+export const UpdateResponseMetaFlags = CreateResponseMetaFlags;
 
 export type UpdateResponseMetaHierarchyTagsList = Array<string>;
 export const UpdateResponseMetaHierarchyTagsList = /*@__PURE__*/ S.Array(
@@ -2078,14 +1904,14 @@ export const UpdateResponseMetaHierarchyTagsList = /*@__PURE__*/ S.Array(
 
 export interface UpdateResponseMeta {
   /** Enable features for Organizations. */
-  flags?: UpdateResponseMetaFlags | null;
+  flags?: CreateResponseMetaFlags | null;
   /** Ordered chain of organization tags from the root organization down to */
   hierarchyTags?: UpdateResponseMetaHierarchyTagsList | null;
   managedBy?: string | null;
 }
 export const UpdateResponseMeta = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    flags: S.optional(S.NullOr(UpdateResponseMetaFlags)),
+    flags: S.optional(S.NullOr(CreateResponseMetaFlags)),
     hierarchyTags: S.optional(
       S.NullOr(UpdateResponseMetaHierarchyTagsList).pipe(
         T.Body("hierarchy_tags"),
@@ -2097,37 +1923,11 @@ export const UpdateResponseMeta = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateResponseMeta",
 }) as any as S.Schema<UpdateResponseMeta>;
 
-export interface UpdateResponseParent {
-  id: string;
-  name: string;
-}
-export const UpdateResponseParent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-  }),
-).annotate({
-  identifier: "UpdateResponseParent",
-}) as any as S.Schema<UpdateResponseParent>;
+export type UpdateResponseParent = CreateResponseParent;
+export const UpdateResponseParent = CreateResponseParent;
 
-export interface UpdateResponseProfile {
-  businessAddress: string;
-  businessEmail: string;
-  businessName: string;
-  businessPhone: string;
-  externalMetadata: string;
-}
-export const UpdateResponseProfile = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    businessAddress: S.String.pipe(T.Body("business_address")),
-    businessEmail: S.String.pipe(T.Body("business_email")),
-    businessName: S.String.pipe(T.Body("business_name")),
-    businessPhone: S.String.pipe(T.Body("business_phone")),
-    externalMetadata: S.String.pipe(T.Body("external_metadata")),
-  }),
-).annotate({
-  identifier: "UpdateResponseProfile",
-}) as any as S.Schema<UpdateResponseProfile>;
+export type UpdateResponseProfile = CreateRequestProfile;
+export const UpdateResponseProfile = CreateRequestProfile;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateOrganizationResponse {
@@ -2135,8 +1935,8 @@ export interface UpdateOrganizationResponse {
   createTime: string;
   meta: UpdateResponseMeta;
   name: string;
-  parent?: UpdateResponseParent | null;
-  profile?: UpdateResponseProfile | null;
+  parent?: CreateResponseParent | null;
+  profile?: CreateRequestProfile | null;
 }
 export const UpdateOrganizationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2144,8 +1944,8 @@ export const UpdateOrganizationResponse = /*@__PURE__*/ S.suspend(() =>
     createTime: S.String.pipe(T.Body("create_time")),
     meta: UpdateResponseMeta,
     name: S.String,
-    parent: S.optional(S.NullOr(UpdateResponseParent)),
-    profile: S.optional(S.NullOr(UpdateResponseProfile)),
+    parent: S.optional(S.NullOr(CreateResponseParent)),
+    profile: S.optional(S.NullOr(CreateRequestProfile)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateOrganizationResponse",

@@ -960,19 +960,10 @@ export type DatabaseQueryResultItemMetaServedByRegion =
   | "OC";
 export const DatabaseQueryResultItemMetaServedByRegion = /*@__PURE__*/ S.String;
 
-export interface DatabaseQueryResultItemMetaTimings {
-  /** The duration of the SQL query execution inside the database. Does not include any network communication. */
-  sqlDurationMs?: number | null;
-}
-export const DatabaseQueryResultItemMetaTimings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sqlDurationMs: S.optional(
-      S.NullOr(S.Number).pipe(T.Body("sql_duration_ms")),
-    ),
-  }),
-).annotate({
-  identifier: "DatabaseQueryResultItemMetaTimings",
-}) as any as S.Schema<DatabaseQueryResultItemMetaTimings>;
+export type DatabaseQueryResultItemMetaTimings =
+  DatabaseImportResponseResultMetaTimings;
+export const DatabaseQueryResultItemMetaTimings =
+  DatabaseImportResponseResultMetaTimings;
 
 export interface DatabaseQueryResultItemMeta {
   /** Denotes if the database has been altered in some way, like deleting rows. */
@@ -996,7 +987,7 @@ export interface DatabaseQueryResultItemMeta {
   /** Size of the database after the query committed, in bytes. */
   sizeAfter?: number | null;
   /** Various durations for the query. */
-  timings?: DatabaseQueryResultItemMetaTimings | null;
+  timings?: DatabaseImportResponseResultMetaTimings | null;
 }
 export const DatabaseQueryResultItemMeta = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1016,7 +1007,7 @@ export const DatabaseQueryResultItemMeta = /*@__PURE__*/ S.suspend(() =>
       ),
     ),
     sizeAfter: S.optional(S.NullOr(S.Number).pipe(T.Body("size_after"))),
-    timings: S.optional(S.NullOr(DatabaseQueryResultItemMetaTimings)),
+    timings: S.optional(S.NullOr(DatabaseImportResponseResultMetaTimings)),
   }),
 ).annotate({
   identifier: "DatabaseQueryResultItemMeta",
@@ -1130,19 +1121,10 @@ export type DatabaseRawResultItemMetaServedByRegion =
   | "OC";
 export const DatabaseRawResultItemMetaServedByRegion = /*@__PURE__*/ S.String;
 
-export interface DatabaseRawResultItemMetaTimings {
-  /** The duration of the SQL query execution inside the database. Does not include any network communication. */
-  sqlDurationMs?: number | null;
-}
-export const DatabaseRawResultItemMetaTimings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sqlDurationMs: S.optional(
-      S.NullOr(S.Number).pipe(T.Body("sql_duration_ms")),
-    ),
-  }),
-).annotate({
-  identifier: "DatabaseRawResultItemMetaTimings",
-}) as any as S.Schema<DatabaseRawResultItemMetaTimings>;
+export type DatabaseRawResultItemMetaTimings =
+  DatabaseImportResponseResultMetaTimings;
+export const DatabaseRawResultItemMetaTimings =
+  DatabaseImportResponseResultMetaTimings;
 
 export interface DatabaseRawResultItemMeta {
   /** Denotes if the database has been altered in some way, like deleting rows. */
@@ -1166,7 +1148,7 @@ export interface DatabaseRawResultItemMeta {
   /** Size of the database after the query committed, in bytes. */
   sizeAfter?: number | null;
   /** Various durations for the query. */
-  timings?: DatabaseRawResultItemMetaTimings | null;
+  timings?: DatabaseImportResponseResultMetaTimings | null;
 }
 export const DatabaseRawResultItemMeta = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1186,7 +1168,7 @@ export const DatabaseRawResultItemMeta = /*@__PURE__*/ S.suspend(() =>
       ),
     ),
     sizeAfter: S.optional(S.NullOr(S.Number).pipe(T.Body("size_after"))),
-    timings: S.optional(S.NullOr(DatabaseRawResultItemMetaTimings)),
+    timings: S.optional(S.NullOr(DatabaseImportResponseResultMetaTimings)),
   }),
 ).annotate({
   identifier: "DatabaseRawResultItemMeta",

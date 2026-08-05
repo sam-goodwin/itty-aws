@@ -294,50 +294,19 @@ export type RulesBulkEditResultItemAction =
   | "bypass";
 export const RulesBulkEditResultItemAction = /*@__PURE__*/ S.String;
 
-export interface RulesBulkEditResultItemFilterFirewallFilter {
-  /** The unique identifier of the filter. */
-  id?: string | null;
-  /** An informative summary of the filter. */
-  description?: string | null;
-  /** The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/). */
-  expression?: string | null;
-  /** When true, indicates that the filter is currently paused. */
-  paused?: boolean | null;
-  /** A short reference tag. Allows you to select related filters. */
-  ref?: string | null;
-}
+export type RulesBulkEditResultItemFilterFirewallFilter =
+  RulesBulkDeleteResultItemFilterFirewallFilter;
 export const RulesBulkEditResultItemFilterFirewallFilter =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.NullOr(S.String)),
-      description: S.optional(S.NullOr(S.String)),
-      expression: S.optional(S.NullOr(S.String)),
-      paused: S.optional(S.NullOr(S.Boolean)),
-      ref: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier: "RulesBulkEditResultItemFilterFirewallFilter",
-  }) as any as S.Schema<RulesBulkEditResultItemFilterFirewallFilter>;
+  RulesBulkDeleteResultItemFilterFirewallFilter;
 
-export interface RulesBulkEditResultItemFilterDeletedFilter {
-  /** The unique identifier of the filter. */
-  id: string;
-  /** When true, indicates that the firewall rule was deleted. */
-  deleted: boolean;
-}
+export type RulesBulkEditResultItemFilterDeletedFilter =
+  RulesBulkDeleteResultItemFilterDeletedFilter;
 export const RulesBulkEditResultItemFilterDeletedFilter =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      deleted: S.Boolean,
-    }),
-  ).annotate({
-    identifier: "RulesBulkEditResultItemFilterDeletedFilter",
-  }) as any as S.Schema<RulesBulkEditResultItemFilterDeletedFilter>;
+  RulesBulkDeleteResultItemFilterDeletedFilter;
 
 export type RulesBulkEditResultItemFilter =
-  | RulesBulkEditResultItemFilterFirewallFilter
-  | RulesBulkEditResultItemFilterDeletedFilter;
+  | RulesBulkDeleteResultItemFilterFirewallFilter
+  | RulesBulkDeleteResultItemFilterDeletedFilter;
 export const RulesBulkEditResultItemFilter = /*@__PURE__*/ S.Unknown.pipe(
   T.UnionCases([
     ["id", "description", "expression", "paused", "ref"],
@@ -442,50 +411,19 @@ export type RulesBulkUpdateResultItemAction =
   | "bypass";
 export const RulesBulkUpdateResultItemAction = /*@__PURE__*/ S.String;
 
-export interface RulesBulkUpdateResultItemFilterFirewallFilter {
-  /** The unique identifier of the filter. */
-  id?: string | null;
-  /** An informative summary of the filter. */
-  description?: string | null;
-  /** The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/). */
-  expression?: string | null;
-  /** When true, indicates that the filter is currently paused. */
-  paused?: boolean | null;
-  /** A short reference tag. Allows you to select related filters. */
-  ref?: string | null;
-}
+export type RulesBulkUpdateResultItemFilterFirewallFilter =
+  RulesBulkDeleteResultItemFilterFirewallFilter;
 export const RulesBulkUpdateResultItemFilterFirewallFilter =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.NullOr(S.String)),
-      description: S.optional(S.NullOr(S.String)),
-      expression: S.optional(S.NullOr(S.String)),
-      paused: S.optional(S.NullOr(S.Boolean)),
-      ref: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier: "RulesBulkUpdateResultItemFilterFirewallFilter",
-  }) as any as S.Schema<RulesBulkUpdateResultItemFilterFirewallFilter>;
+  RulesBulkDeleteResultItemFilterFirewallFilter;
 
-export interface RulesBulkUpdateResultItemFilterDeletedFilter {
-  /** The unique identifier of the filter. */
-  id: string;
-  /** When true, indicates that the firewall rule was deleted. */
-  deleted: boolean;
-}
+export type RulesBulkUpdateResultItemFilterDeletedFilter =
+  RulesBulkDeleteResultItemFilterDeletedFilter;
 export const RulesBulkUpdateResultItemFilterDeletedFilter =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      deleted: S.Boolean,
-    }),
-  ).annotate({
-    identifier: "RulesBulkUpdateResultItemFilterDeletedFilter",
-  }) as any as S.Schema<RulesBulkUpdateResultItemFilterDeletedFilter>;
+  RulesBulkDeleteResultItemFilterDeletedFilter;
 
 export type RulesBulkUpdateResultItemFilter =
-  | RulesBulkUpdateResultItemFilterFirewallFilter
-  | RulesBulkUpdateResultItemFilterDeletedFilter;
+  | RulesBulkDeleteResultItemFilterFirewallFilter
+  | RulesBulkDeleteResultItemFilterDeletedFilter;
 export const RulesBulkUpdateResultItemFilter = /*@__PURE__*/ S.Unknown.pipe(
   T.UnionCases([
     ["id", "description", "expression", "paused", "ref"],
@@ -1240,50 +1178,19 @@ export type RulesCreateResultItemAction =
   | "bypass";
 export const RulesCreateResultItemAction = /*@__PURE__*/ S.String;
 
-export interface RulesCreateResultItemFilterFirewallFilter {
-  /** The unique identifier of the filter. */
-  id?: string | null;
-  /** An informative summary of the filter. */
-  description?: string | null;
-  /** The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/). */
-  expression?: string | null;
-  /** When true, indicates that the filter is currently paused. */
-  paused?: boolean | null;
-  /** A short reference tag. Allows you to select related filters. */
-  ref?: string | null;
-}
+export type RulesCreateResultItemFilterFirewallFilter =
+  RulesBulkDeleteResultItemFilterFirewallFilter;
 export const RulesCreateResultItemFilterFirewallFilter =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.NullOr(S.String)),
-      description: S.optional(S.NullOr(S.String)),
-      expression: S.optional(S.NullOr(S.String)),
-      paused: S.optional(S.NullOr(S.Boolean)),
-      ref: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier: "RulesCreateResultItemFilterFirewallFilter",
-  }) as any as S.Schema<RulesCreateResultItemFilterFirewallFilter>;
+  RulesBulkDeleteResultItemFilterFirewallFilter;
 
-export interface RulesCreateResultItemFilterDeletedFilter {
-  /** The unique identifier of the filter. */
-  id: string;
-  /** When true, indicates that the firewall rule was deleted. */
-  deleted: boolean;
-}
-export const RulesCreateResultItemFilterDeletedFilter = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.String,
-      deleted: S.Boolean,
-    }),
-).annotate({
-  identifier: "RulesCreateResultItemFilterDeletedFilter",
-}) as any as S.Schema<RulesCreateResultItemFilterDeletedFilter>;
+export type RulesCreateResultItemFilterDeletedFilter =
+  RulesBulkDeleteResultItemFilterDeletedFilter;
+export const RulesCreateResultItemFilterDeletedFilter =
+  RulesBulkDeleteResultItemFilterDeletedFilter;
 
 export type RulesCreateResultItemFilter =
-  | RulesCreateResultItemFilterFirewallFilter
-  | RulesCreateResultItemFilterDeletedFilter;
+  | RulesBulkDeleteResultItemFilterFirewallFilter
+  | RulesBulkDeleteResultItemFilterDeletedFilter;
 export const RulesCreateResultItemFilter = /*@__PURE__*/ S.Unknown.pipe(
   T.UnionCases([
     ["id", "description", "expression", "paused", "ref"],
@@ -1755,50 +1662,19 @@ export type RulesDeleteResponseAction =
   | "bypass";
 export const RulesDeleteResponseAction = /*@__PURE__*/ S.String;
 
-export interface RulesDeleteResponseFilterFirewallFilter {
-  /** The unique identifier of the filter. */
-  id?: string | null;
-  /** An informative summary of the filter. */
-  description?: string | null;
-  /** The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/). */
-  expression?: string | null;
-  /** When true, indicates that the filter is currently paused. */
-  paused?: boolean | null;
-  /** A short reference tag. Allows you to select related filters. */
-  ref?: string | null;
-}
-export const RulesDeleteResponseFilterFirewallFilter = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.optional(S.NullOr(S.String)),
-      description: S.optional(S.NullOr(S.String)),
-      expression: S.optional(S.NullOr(S.String)),
-      paused: S.optional(S.NullOr(S.Boolean)),
-      ref: S.optional(S.NullOr(S.String)),
-    }),
-).annotate({
-  identifier: "RulesDeleteResponseFilterFirewallFilter",
-}) as any as S.Schema<RulesDeleteResponseFilterFirewallFilter>;
+export type RulesDeleteResponseFilterFirewallFilter =
+  RulesBulkDeleteResultItemFilterFirewallFilter;
+export const RulesDeleteResponseFilterFirewallFilter =
+  RulesBulkDeleteResultItemFilterFirewallFilter;
 
-export interface RulesDeleteResponseFilterDeletedFilter {
-  /** The unique identifier of the filter. */
-  id: string;
-  /** When true, indicates that the firewall rule was deleted. */
-  deleted: boolean;
-}
-export const RulesDeleteResponseFilterDeletedFilter = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.String,
-      deleted: S.Boolean,
-    }),
-).annotate({
-  identifier: "RulesDeleteResponseFilterDeletedFilter",
-}) as any as S.Schema<RulesDeleteResponseFilterDeletedFilter>;
+export type RulesDeleteResponseFilterDeletedFilter =
+  RulesBulkDeleteResultItemFilterDeletedFilter;
+export const RulesDeleteResponseFilterDeletedFilter =
+  RulesBulkDeleteResultItemFilterDeletedFilter;
 
 export type RulesDeleteResponseFilter =
-  | RulesDeleteResponseFilterFirewallFilter
-  | RulesDeleteResponseFilterDeletedFilter;
+  | RulesBulkDeleteResultItemFilterFirewallFilter
+  | RulesBulkDeleteResultItemFilterDeletedFilter;
 export const RulesDeleteResponseFilter = /*@__PURE__*/ S.Unknown.pipe(
   T.UnionCases([
     ["id", "description", "expression", "paused", "ref"],
@@ -1877,20 +1753,10 @@ export const DeleteUaRuleRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteUaRuleRequest",
 }) as any as S.Schema<DeleteUaRuleRequest>;
 
-export interface UaRulesDeleteResponseConfiguration {
-  /** The configuration target for this rule. You must set the target to `ua` for User Agent Blocking rules. */
-  target?: string | null;
-  /** The exact user agent string to match. This value will be compared to the received `User-Agent` HTTP header value. */
-  value?: string | null;
-}
-export const UaRulesDeleteResponseConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    target: S.optional(S.NullOr(S.String)),
-    value: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "UaRulesDeleteResponseConfiguration",
-}) as any as S.Schema<UaRulesDeleteResponseConfiguration>;
+export type UaRulesDeleteResponseConfiguration =
+  UaRulesCreateResponseConfiguration;
+export const UaRulesDeleteResponseConfiguration =
+  UaRulesCreateResponseConfiguration;
 
 export type UaRulesDeleteResponseMode =
   | "block"
@@ -1904,7 +1770,7 @@ export interface DeleteUaRuleResponse {
   /** The unique identifier of the User Agent Blocking rule. */
   id?: string | null;
   /** The configuration object for the current rule. */
-  configuration?: UaRulesDeleteResponseConfiguration | null;
+  configuration?: UaRulesCreateResponseConfiguration | null;
   /** An informative summary of the rule. */
   description?: string | null;
   /** The action to apply to a matched request. */
@@ -1915,7 +1781,7 @@ export interface DeleteUaRuleResponse {
 export const DeleteUaRuleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.String)),
-    configuration: S.optional(S.NullOr(UaRulesDeleteResponseConfiguration)),
+    configuration: S.optional(S.NullOr(UaRulesCreateResponseConfiguration)),
     description: S.optional(S.NullOr(S.String)),
     mode: S.optional(S.NullOr(UaRulesDeleteResponseMode)),
     paused: S.optional(S.NullOr(S.Boolean)),
@@ -2312,49 +2178,19 @@ export type RulesGetResponseAction =
   | "bypass";
 export const RulesGetResponseAction = /*@__PURE__*/ S.String;
 
-export interface RulesGetResponseFilterFirewallFilter {
-  /** The unique identifier of the filter. */
-  id?: string | null;
-  /** An informative summary of the filter. */
-  description?: string | null;
-  /** The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/). */
-  expression?: string | null;
-  /** When true, indicates that the filter is currently paused. */
-  paused?: boolean | null;
-  /** A short reference tag. Allows you to select related filters. */
-  ref?: string | null;
-}
-export const RulesGetResponseFilterFirewallFilter = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.optional(S.NullOr(S.String)),
-      description: S.optional(S.NullOr(S.String)),
-      expression: S.optional(S.NullOr(S.String)),
-      paused: S.optional(S.NullOr(S.Boolean)),
-      ref: S.optional(S.NullOr(S.String)),
-    }),
-).annotate({
-  identifier: "RulesGetResponseFilterFirewallFilter",
-}) as any as S.Schema<RulesGetResponseFilterFirewallFilter>;
+export type RulesGetResponseFilterFirewallFilter =
+  RulesBulkDeleteResultItemFilterFirewallFilter;
+export const RulesGetResponseFilterFirewallFilter =
+  RulesBulkDeleteResultItemFilterFirewallFilter;
 
-export interface RulesGetResponseFilterDeletedFilter {
-  /** The unique identifier of the filter. */
-  id: string;
-  /** When true, indicates that the firewall rule was deleted. */
-  deleted: boolean;
-}
-export const RulesGetResponseFilterDeletedFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    deleted: S.Boolean,
-  }),
-).annotate({
-  identifier: "RulesGetResponseFilterDeletedFilter",
-}) as any as S.Schema<RulesGetResponseFilterDeletedFilter>;
+export type RulesGetResponseFilterDeletedFilter =
+  RulesBulkDeleteResultItemFilterDeletedFilter;
+export const RulesGetResponseFilterDeletedFilter =
+  RulesBulkDeleteResultItemFilterDeletedFilter;
 
 export type RulesGetResponseFilter =
-  | RulesGetResponseFilterFirewallFilter
-  | RulesGetResponseFilterDeletedFilter;
+  | RulesBulkDeleteResultItemFilterFirewallFilter
+  | RulesBulkDeleteResultItemFilterDeletedFilter;
 export const RulesGetResponseFilter = /*@__PURE__*/ S.Unknown.pipe(
   T.UnionCases([
     ["id", "description", "expression", "paused", "ref"],
@@ -2432,20 +2268,10 @@ export const GetUaRuleRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetUaRuleRequest",
 }) as any as S.Schema<GetUaRuleRequest>;
 
-export interface UaRulesGetResponseConfiguration {
-  /** The configuration target for this rule. You must set the target to `ua` for User Agent Blocking rules. */
-  target?: string | null;
-  /** The exact user agent string to match. This value will be compared to the received `User-Agent` HTTP header value. */
-  value?: string | null;
-}
-export const UaRulesGetResponseConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    target: S.optional(S.NullOr(S.String)),
-    value: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "UaRulesGetResponseConfiguration",
-}) as any as S.Schema<UaRulesGetResponseConfiguration>;
+export type UaRulesGetResponseConfiguration =
+  UaRulesCreateResponseConfiguration;
+export const UaRulesGetResponseConfiguration =
+  UaRulesCreateResponseConfiguration;
 
 export type UaRulesGetResponseMode =
   | "block"
@@ -2459,7 +2285,7 @@ export interface GetUaRuleResponse {
   /** The unique identifier of the User Agent Blocking rule. */
   id?: string | null;
   /** The configuration object for the current rule. */
-  configuration?: UaRulesGetResponseConfiguration | null;
+  configuration?: UaRulesCreateResponseConfiguration | null;
   /** An informative summary of the rule. */
   description?: string | null;
   /** The action to apply to a matched request. */
@@ -2470,7 +2296,7 @@ export interface GetUaRuleResponse {
 export const GetUaRuleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.String)),
-    configuration: S.optional(S.NullOr(UaRulesGetResponseConfiguration)),
+    configuration: S.optional(S.NullOr(UaRulesCreateResponseConfiguration)),
     description: S.optional(S.NullOr(S.String)),
     mode: S.optional(S.NullOr(UaRulesGetResponseMode)),
     paused: S.optional(S.NullOr(S.Boolean)),
@@ -3264,50 +3090,19 @@ export type RulesListResultItemAction =
   | "bypass";
 export const RulesListResultItemAction = /*@__PURE__*/ S.String;
 
-export interface RulesListResultItemFilterFirewallFilter {
-  /** The unique identifier of the filter. */
-  id?: string | null;
-  /** An informative summary of the filter. */
-  description?: string | null;
-  /** The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/). */
-  expression?: string | null;
-  /** When true, indicates that the filter is currently paused. */
-  paused?: boolean | null;
-  /** A short reference tag. Allows you to select related filters. */
-  ref?: string | null;
-}
-export const RulesListResultItemFilterFirewallFilter = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.optional(S.NullOr(S.String)),
-      description: S.optional(S.NullOr(S.String)),
-      expression: S.optional(S.NullOr(S.String)),
-      paused: S.optional(S.NullOr(S.Boolean)),
-      ref: S.optional(S.NullOr(S.String)),
-    }),
-).annotate({
-  identifier: "RulesListResultItemFilterFirewallFilter",
-}) as any as S.Schema<RulesListResultItemFilterFirewallFilter>;
+export type RulesListResultItemFilterFirewallFilter =
+  RulesBulkDeleteResultItemFilterFirewallFilter;
+export const RulesListResultItemFilterFirewallFilter =
+  RulesBulkDeleteResultItemFilterFirewallFilter;
 
-export interface RulesListResultItemFilterDeletedFilter {
-  /** The unique identifier of the filter. */
-  id: string;
-  /** When true, indicates that the firewall rule was deleted. */
-  deleted: boolean;
-}
-export const RulesListResultItemFilterDeletedFilter = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.String,
-      deleted: S.Boolean,
-    }),
-).annotate({
-  identifier: "RulesListResultItemFilterDeletedFilter",
-}) as any as S.Schema<RulesListResultItemFilterDeletedFilter>;
+export type RulesListResultItemFilterDeletedFilter =
+  RulesBulkDeleteResultItemFilterDeletedFilter;
+export const RulesListResultItemFilterDeletedFilter =
+  RulesBulkDeleteResultItemFilterDeletedFilter;
 
 export type RulesListResultItemFilter =
-  | RulesListResultItemFilterFirewallFilter
-  | RulesListResultItemFilterDeletedFilter;
+  | RulesBulkDeleteResultItemFilterFirewallFilter
+  | RulesBulkDeleteResultItemFilterDeletedFilter;
 export const RulesListResultItemFilter = /*@__PURE__*/ S.Unknown.pipe(
   T.UnionCases([
     ["id", "description", "expression", "paused", "ref"],
@@ -3417,20 +3212,10 @@ export const ListUaRulesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListUaRulesRequest",
 }) as any as S.Schema<ListUaRulesRequest>;
 
-export interface UaRulesListResultItemConfiguration {
-  /** The configuration target for this rule. You must set the target to `ua` for User Agent Blocking rules. */
-  target?: string | null;
-  /** The exact user agent string to match. This value will be compared to the received `User-Agent` HTTP header value. */
-  value?: string | null;
-}
-export const UaRulesListResultItemConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    target: S.optional(S.NullOr(S.String)),
-    value: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "UaRulesListResultItemConfiguration",
-}) as any as S.Schema<UaRulesListResultItemConfiguration>;
+export type UaRulesListResultItemConfiguration =
+  UaRulesCreateResponseConfiguration;
+export const UaRulesListResultItemConfiguration =
+  UaRulesCreateResponseConfiguration;
 
 export type UaRulesListResultItemMode =
   | "block"
@@ -3443,7 +3228,7 @@ export interface UaRulesListResultItem {
   /** The unique identifier of the User Agent Blocking rule. */
   id?: string | null;
   /** The configuration object for the current rule. */
-  configuration?: UaRulesListResultItemConfiguration | null;
+  configuration?: UaRulesCreateResponseConfiguration | null;
   /** An informative summary of the rule. */
   description?: string | null;
   /** The action to apply to a matched request. */
@@ -3454,7 +3239,7 @@ export interface UaRulesListResultItem {
 export const UaRulesListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.String)),
-    configuration: S.optional(S.NullOr(UaRulesListResultItemConfiguration)),
+    configuration: S.optional(S.NullOr(UaRulesCreateResponseConfiguration)),
     description: S.optional(S.NullOr(S.String)),
     mode: S.optional(S.NullOr(UaRulesListResultItemMode)),
     paused: S.optional(S.NullOr(S.Boolean)),
@@ -4622,50 +4407,19 @@ export type RulesEditResultItemAction =
   | "bypass";
 export const RulesEditResultItemAction = /*@__PURE__*/ S.String;
 
-export interface RulesEditResultItemFilterFirewallFilter {
-  /** The unique identifier of the filter. */
-  id?: string | null;
-  /** An informative summary of the filter. */
-  description?: string | null;
-  /** The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/). */
-  expression?: string | null;
-  /** When true, indicates that the filter is currently paused. */
-  paused?: boolean | null;
-  /** A short reference tag. Allows you to select related filters. */
-  ref?: string | null;
-}
-export const RulesEditResultItemFilterFirewallFilter = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.optional(S.NullOr(S.String)),
-      description: S.optional(S.NullOr(S.String)),
-      expression: S.optional(S.NullOr(S.String)),
-      paused: S.optional(S.NullOr(S.Boolean)),
-      ref: S.optional(S.NullOr(S.String)),
-    }),
-).annotate({
-  identifier: "RulesEditResultItemFilterFirewallFilter",
-}) as any as S.Schema<RulesEditResultItemFilterFirewallFilter>;
+export type RulesEditResultItemFilterFirewallFilter =
+  RulesBulkDeleteResultItemFilterFirewallFilter;
+export const RulesEditResultItemFilterFirewallFilter =
+  RulesBulkDeleteResultItemFilterFirewallFilter;
 
-export interface RulesEditResultItemFilterDeletedFilter {
-  /** The unique identifier of the filter. */
-  id: string;
-  /** When true, indicates that the firewall rule was deleted. */
-  deleted: boolean;
-}
-export const RulesEditResultItemFilterDeletedFilter = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.String,
-      deleted: S.Boolean,
-    }),
-).annotate({
-  identifier: "RulesEditResultItemFilterDeletedFilter",
-}) as any as S.Schema<RulesEditResultItemFilterDeletedFilter>;
+export type RulesEditResultItemFilterDeletedFilter =
+  RulesBulkDeleteResultItemFilterDeletedFilter;
+export const RulesEditResultItemFilterDeletedFilter =
+  RulesBulkDeleteResultItemFilterDeletedFilter;
 
 export type RulesEditResultItemFilter =
-  | RulesEditResultItemFilterFirewallFilter
-  | RulesEditResultItemFilterDeletedFilter;
+  | RulesBulkDeleteResultItemFilterFirewallFilter
+  | RulesBulkDeleteResultItemFilterDeletedFilter;
 export const RulesEditResultItemFilter = /*@__PURE__*/ S.Unknown.pipe(
   T.UnionCases([
     ["id", "description", "expression", "paused", "ref"],
@@ -4830,21 +4584,10 @@ export const WafPackagesRulesEditResultWAFManagedRulesAnomalyRuleAllowedModesLis
     WafPackagesRulesEditResultWAFManagedRulesAnomalyRuleAllowedModesItem,
   ) as any as S.Schema<WafPackagesRulesEditResultWAFManagedRulesAnomalyRuleAllowedModesList>;
 
-export interface WafPackagesRulesEditResultWAFManagedRulesAnomalyRuleGroup {
-  /** Defines the unique identifier of the rule group. */
-  id?: string | null;
-  /** Defines the name of the rule group. */
-  name?: string | null;
-}
+export type WafPackagesRulesEditResultWAFManagedRulesAnomalyRuleGroup =
+  WafPackagesRulesListResultItemWAFManagedRulesAnomalyRuleGroup;
 export const WafPackagesRulesEditResultWAFManagedRulesAnomalyRuleGroup =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.NullOr(S.String)),
-      name: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier: "WafPackagesRulesEditResultWAFManagedRulesAnomalyRuleGroup",
-  }) as any as S.Schema<WafPackagesRulesEditResultWAFManagedRulesAnomalyRuleGroup>;
+  WafPackagesRulesListResultItemWAFManagedRulesAnomalyRuleGroup;
 
 export type WafPackagesRulesEditResultWAFManagedRulesAnomalyRuleMode =
   | "on"
@@ -4860,7 +4603,7 @@ export interface WafPackagesRulesEditResultWAFManagedRulesAnomalyRule {
   /** Defines the public description of the WAF rule. */
   description: string;
   /** Defines the rule group to which the current WAF rule belongs. */
-  group: WafPackagesRulesEditResultWAFManagedRulesAnomalyRuleGroup;
+  group: WafPackagesRulesListResultItemWAFManagedRulesAnomalyRuleGroup;
   /** Defines the mode anomaly. When set to `on`, the current WAF rule will be used when evaluating the request. Applies to anomaly detection WAF rules. */
   mode: WafPackagesRulesEditResultWAFManagedRulesAnomalyRuleMode;
   /** Defines the unique identifier of a WAF package. */
@@ -4877,7 +4620,7 @@ export const WafPackagesRulesEditResultWAFManagedRulesAnomalyRule =
           T.Body("allowed_modes"),
         ),
       description: S.String,
-      group: WafPackagesRulesEditResultWAFManagedRulesAnomalyRuleGroup,
+      group: WafPackagesRulesListResultItemWAFManagedRulesAnomalyRuleGroup,
       mode: WafPackagesRulesEditResultWAFManagedRulesAnomalyRuleMode,
       packageId: S.String.pipe(T.Body("package_id")),
       priority: S.String,
@@ -4922,7 +4665,7 @@ export interface WafPackagesRulesEditResultWAFManagedRulesTraditionalDenyRule {
   /** Defines the public description of the WAF rule. */
   description: string;
   /** Defines the rule group to which the current WAF rule belongs. */
-  group: WafPackagesRulesEditResultWAFManagedRulesAnomalyRuleGroup;
+  group: WafPackagesRulesListResultItemWAFManagedRulesAnomalyRuleGroup;
   /** Defines the action that the current WAF rule will perform when triggered. Applies to traditional (deny) WAF rules. */
   mode: WafPackagesRulesEditResultWAFManagedRulesTraditionalDenyRuleMode;
   /** Defines the unique identifier of a WAF package. */
@@ -4943,7 +4686,7 @@ export const WafPackagesRulesEditResultWAFManagedRulesTraditionalDenyRule =
           T.Body("default_mode"),
         ),
       description: S.String,
-      group: WafPackagesRulesEditResultWAFManagedRulesAnomalyRuleGroup,
+      group: WafPackagesRulesListResultItemWAFManagedRulesAnomalyRuleGroup,
       mode: WafPackagesRulesEditResultWAFManagedRulesTraditionalDenyRuleMode,
       packageId: S.String.pipe(T.Body("package_id")),
       priority: S.String,
@@ -4978,7 +4721,7 @@ export interface WafPackagesRulesEditResultWAFManagedRulesTraditionalAllowRule {
   /** Defines the public description of the WAF rule. */
   description: string;
   /** Defines the rule group to which the current WAF rule belongs. */
-  group: WafPackagesRulesEditResultWAFManagedRulesAnomalyRuleGroup;
+  group: WafPackagesRulesListResultItemWAFManagedRulesAnomalyRuleGroup;
   /** When set to `on`, the current rule will be used when evaluating the request. Applies to traditional (allow) WAF rules. */
   mode: WafPackagesRulesEditResultWAFManagedRulesTraditionalAllowRuleMode;
   /** Defines the unique identifier of a WAF package. */
@@ -4995,7 +4738,7 @@ export const WafPackagesRulesEditResultWAFManagedRulesTraditionalAllowRule =
           T.Body("allowed_modes"),
         ),
       description: S.String,
-      group: WafPackagesRulesEditResultWAFManagedRulesAnomalyRuleGroup,
+      group: WafPackagesRulesListResultItemWAFManagedRulesAnomalyRuleGroup,
       mode: WafPackagesRulesEditResultWAFManagedRulesTraditionalAllowRuleMode,
       packageId: S.String.pipe(T.Body("package_id")),
       priority: S.String,
@@ -5141,62 +4884,30 @@ export type RulesUpdateRequestActionMode =
   | "managed_challenge";
 export const RulesUpdateRequestActionMode = /*@__PURE__*/ S.String;
 
-export interface RulesUpdateRequestActionResponse {
-  /** The response body to return. The value must conform to the configured content type. */
-  body?: string;
-  /** The content type of the body. Must be one of the following: `text/plain`, `text/xml`, or `application/json`. */
-  contentType?: string;
-}
-export const RulesUpdateRequestActionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    body: S.optional(S.String),
-    contentType: S.optional(S.String.pipe(T.Body("content_type"))),
-  }),
-).annotate({
-  identifier: "RulesUpdateRequestActionResponse",
-}) as any as S.Schema<RulesUpdateRequestActionResponse>;
+export type RulesUpdateRequestActionResponse = RulesCreateRequestActionResponse;
+export const RulesUpdateRequestActionResponse =
+  RulesCreateRequestActionResponse;
 
 export interface RulesUpdateRequestAction {
   /** The action to perform. */
   mode?: RulesUpdateRequestActionMode | (string & {});
   /** A custom content type and reponse to return when the threshold is exceeded. The custom response configured in this object will override the custom error for the zone. This object is optional. */
-  response?: RulesUpdateRequestActionResponse;
+  response?: RulesCreateRequestActionResponse;
   /** The time in seconds during which Cloudflare will perform the mitigation action. Must be an integer value greater than or equal to the period. */
   timeout?: number;
 }
 export const RulesUpdateRequestAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mode: S.optional(RulesUpdateRequestActionMode),
-    response: S.optional(RulesUpdateRequestActionResponse),
+    response: S.optional(RulesCreateRequestActionResponse),
     timeout: S.optional(S.Number),
   }),
 ).annotate({
   identifier: "RulesUpdateRequestAction",
 }) as any as S.Schema<RulesUpdateRequestAction>;
 
-export interface RulesUpdateRequestFilter {
-  /** The unique identifier of the filter. */
-  id?: string;
-  /** An informative summary of the filter. */
-  description?: string;
-  /** The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/). */
-  expression?: string;
-  /** When true, indicates that the filter is currently paused. */
-  paused?: boolean;
-  /** A short reference tag. Allows you to select related filters. */
-  ref?: string;
-}
-export const RulesUpdateRequestFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    description: S.optional(S.String),
-    expression: S.optional(S.String),
-    paused: S.optional(S.Boolean),
-    ref: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RulesUpdateRequestFilter",
-}) as any as S.Schema<RulesUpdateRequestFilter>;
+export type RulesUpdateRequestFilter = RulesCreateRequestFilter;
+export const RulesUpdateRequestFilter = RulesCreateRequestFilter;
 
 export interface UpdateRuleRequest {
   /** Defines an identifier. */
@@ -5205,14 +4916,14 @@ export interface UpdateRuleRequest {
   ruleId: string;
   /** The action to perform when the threshold of matched traffic within the configured period is exceeded. */
   action: RulesUpdateRequestAction;
-  filter: RulesUpdateRequestFilter;
+  filter: RulesCreateRequestFilter;
 }
 export const UpdateRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     ruleId: S.String.pipe(T.Label("rule_id")),
     action: RulesUpdateRequestAction,
-    filter: RulesUpdateRequestFilter,
+    filter: RulesCreateRequestFilter,
   })
     .pipe(
       T.Http({
@@ -5236,50 +4947,19 @@ export type RulesUpdateResponseAction =
   | "bypass";
 export const RulesUpdateResponseAction = /*@__PURE__*/ S.String;
 
-export interface RulesUpdateResponseFilterFirewallFilter {
-  /** The unique identifier of the filter. */
-  id?: string | null;
-  /** An informative summary of the filter. */
-  description?: string | null;
-  /** The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/). */
-  expression?: string | null;
-  /** When true, indicates that the filter is currently paused. */
-  paused?: boolean | null;
-  /** A short reference tag. Allows you to select related filters. */
-  ref?: string | null;
-}
-export const RulesUpdateResponseFilterFirewallFilter = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.optional(S.NullOr(S.String)),
-      description: S.optional(S.NullOr(S.String)),
-      expression: S.optional(S.NullOr(S.String)),
-      paused: S.optional(S.NullOr(S.Boolean)),
-      ref: S.optional(S.NullOr(S.String)),
-    }),
-).annotate({
-  identifier: "RulesUpdateResponseFilterFirewallFilter",
-}) as any as S.Schema<RulesUpdateResponseFilterFirewallFilter>;
+export type RulesUpdateResponseFilterFirewallFilter =
+  RulesBulkDeleteResultItemFilterFirewallFilter;
+export const RulesUpdateResponseFilterFirewallFilter =
+  RulesBulkDeleteResultItemFilterFirewallFilter;
 
-export interface RulesUpdateResponseFilterDeletedFilter {
-  /** The unique identifier of the filter. */
-  id: string;
-  /** When true, indicates that the firewall rule was deleted. */
-  deleted: boolean;
-}
-export const RulesUpdateResponseFilterDeletedFilter = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.String,
-      deleted: S.Boolean,
-    }),
-).annotate({
-  identifier: "RulesUpdateResponseFilterDeletedFilter",
-}) as any as S.Schema<RulesUpdateResponseFilterDeletedFilter>;
+export type RulesUpdateResponseFilterDeletedFilter =
+  RulesBulkDeleteResultItemFilterDeletedFilter;
+export const RulesUpdateResponseFilterDeletedFilter =
+  RulesBulkDeleteResultItemFilterDeletedFilter;
 
 export type RulesUpdateResponseFilter =
-  | RulesUpdateResponseFilterFirewallFilter
-  | RulesUpdateResponseFilterDeletedFilter;
+  | RulesBulkDeleteResultItemFilterFirewallFilter
+  | RulesBulkDeleteResultItemFilterDeletedFilter;
 export const RulesUpdateResponseFilter = /*@__PURE__*/ S.Unknown.pipe(
   T.UnionCases([
     ["id", "description", "expression", "paused", "ref"],
@@ -5517,20 +5197,10 @@ export const UpdateUaRuleRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateUaRuleRequest",
 }) as any as S.Schema<UpdateUaRuleRequest>;
 
-export interface UaRulesUpdateResponseConfiguration {
-  /** The configuration target for this rule. You must set the target to `ua` for User Agent Blocking rules. */
-  target?: string | null;
-  /** The exact user agent string to match. This value will be compared to the received `User-Agent` HTTP header value. */
-  value?: string | null;
-}
-export const UaRulesUpdateResponseConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    target: S.optional(S.NullOr(S.String)),
-    value: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "UaRulesUpdateResponseConfiguration",
-}) as any as S.Schema<UaRulesUpdateResponseConfiguration>;
+export type UaRulesUpdateResponseConfiguration =
+  UaRulesCreateResponseConfiguration;
+export const UaRulesUpdateResponseConfiguration =
+  UaRulesCreateResponseConfiguration;
 
 export type UaRulesUpdateResponseMode =
   | "block"
@@ -5544,7 +5214,7 @@ export interface UpdateUaRuleResponse {
   /** The unique identifier of the User Agent Blocking rule. */
   id?: string | null;
   /** The configuration object for the current rule. */
-  configuration?: UaRulesUpdateResponseConfiguration | null;
+  configuration?: UaRulesCreateResponseConfiguration | null;
   /** An informative summary of the rule. */
   description?: string | null;
   /** The action to apply to a matched request. */
@@ -5555,7 +5225,7 @@ export interface UpdateUaRuleResponse {
 export const UpdateUaRuleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.String)),
-    configuration: S.optional(S.NullOr(UaRulesUpdateResponseConfiguration)),
+    configuration: S.optional(S.NullOr(UaRulesCreateResponseConfiguration)),
     description: S.optional(S.NullOr(S.String)),
     mode: S.optional(S.NullOr(UaRulesUpdateResponseMode)),
     paused: S.optional(S.NullOr(S.Boolean)),

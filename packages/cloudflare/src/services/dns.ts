@@ -218,70 +218,30 @@ export const RecordsBatchRequestDeletesList = /*@__PURE__*/ S.Array(
   RecordsBatchRequestDeletesItem,
 ) as any as S.Schema<RecordsBatchRequestDeletesList>;
 
-export interface RecordsBatchRequestPatchesItemARecord {
-  /** Identifier. */
-  id: string;
-}
-export const RecordsBatchRequestPatchesItemARecord = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.String,
-    }),
-).annotate({
-  identifier: "RecordsBatchRequestPatchesItemARecord",
-}) as any as S.Schema<RecordsBatchRequestPatchesItemARecord>;
+export type RecordsBatchRequestPatchesItemARecord =
+  RecordsBatchRequestDeletesItem;
+export const RecordsBatchRequestPatchesItemARecord =
+  RecordsBatchRequestDeletesItem;
 
-export interface RecordsBatchRequestPatchesItemAAAARecord {
-  /** Identifier. */
-  id: string;
-}
-export const RecordsBatchRequestPatchesItemAAAARecord = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.String,
-    }),
-).annotate({
-  identifier: "RecordsBatchRequestPatchesItemAAAARecord",
-}) as any as S.Schema<RecordsBatchRequestPatchesItemAAAARecord>;
+export type RecordsBatchRequestPatchesItemAAAARecord =
+  RecordsBatchRequestDeletesItem;
+export const RecordsBatchRequestPatchesItemAAAARecord =
+  RecordsBatchRequestDeletesItem;
 
-export interface RecordsBatchRequestPatchesItemCNAMERecord {
-  /** Identifier. */
-  id: string;
-}
+export type RecordsBatchRequestPatchesItemCNAMERecord =
+  RecordsBatchRequestDeletesItem;
 export const RecordsBatchRequestPatchesItemCNAMERecord =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-    }),
-  ).annotate({
-    identifier: "RecordsBatchRequestPatchesItemCNAMERecord",
-  }) as any as S.Schema<RecordsBatchRequestPatchesItemCNAMERecord>;
+  RecordsBatchRequestDeletesItem;
 
-export interface RecordsBatchRequestPatchesItemMXRecord {
-  /** Identifier. */
-  id: string;
-}
-export const RecordsBatchRequestPatchesItemMXRecord = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.String,
-    }),
-).annotate({
-  identifier: "RecordsBatchRequestPatchesItemMXRecord",
-}) as any as S.Schema<RecordsBatchRequestPatchesItemMXRecord>;
+export type RecordsBatchRequestPatchesItemMXRecord =
+  RecordsBatchRequestDeletesItem;
+export const RecordsBatchRequestPatchesItemMXRecord =
+  RecordsBatchRequestDeletesItem;
 
-export interface RecordsBatchRequestPatchesItemNSRecord {
-  /** Identifier. */
-  id: string;
-}
-export const RecordsBatchRequestPatchesItemNSRecord = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.String,
-    }),
-).annotate({
-  identifier: "RecordsBatchRequestPatchesItemNSRecord",
-}) as any as S.Schema<RecordsBatchRequestPatchesItemNSRecord>;
+export type RecordsBatchRequestPatchesItemNSRecord =
+  RecordsBatchRequestDeletesItem;
+export const RecordsBatchRequestPatchesItemNSRecord =
+  RecordsBatchRequestDeletesItem;
 
 export type RecordsBatchRequestPatchesItemOpenpgpkeyRecordType = "OPENPGPKEY";
 export const RecordsBatchRequestPatchesItemOpenpgpkeyRecordType =
@@ -349,223 +309,103 @@ export const RecordsBatchRequestPatchesItemOpenpgpkeyRecord =
     identifier: "RecordsBatchRequestPatchesItemOpenpgpkeyRecord",
   }) as any as S.Schema<RecordsBatchRequestPatchesItemOpenpgpkeyRecord>;
 
-export interface RecordsBatchRequestPatchesItemPTRRecord {
-  /** Identifier. */
-  id: string;
-}
-export const RecordsBatchRequestPatchesItemPTRRecord = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.String,
-    }),
-).annotate({
-  identifier: "RecordsBatchRequestPatchesItemPTRRecord",
-}) as any as S.Schema<RecordsBatchRequestPatchesItemPTRRecord>;
+export type RecordsBatchRequestPatchesItemPTRRecord =
+  RecordsBatchRequestDeletesItem;
+export const RecordsBatchRequestPatchesItemPTRRecord =
+  RecordsBatchRequestDeletesItem;
 
-export interface RecordsBatchRequestPatchesItemTXTRecord {
-  /** Identifier. */
-  id: string;
-}
-export const RecordsBatchRequestPatchesItemTXTRecord = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.String,
-    }),
-).annotate({
-  identifier: "RecordsBatchRequestPatchesItemTXTRecord",
-}) as any as S.Schema<RecordsBatchRequestPatchesItemTXTRecord>;
+export type RecordsBatchRequestPatchesItemTXTRecord =
+  RecordsBatchRequestDeletesItem;
+export const RecordsBatchRequestPatchesItemTXTRecord =
+  RecordsBatchRequestDeletesItem;
 
-export interface RecordsBatchRequestPatchesItemCAARecord {
-  /** Identifier. */
-  id: string;
-}
-export const RecordsBatchRequestPatchesItemCAARecord = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.String,
-    }),
-).annotate({
-  identifier: "RecordsBatchRequestPatchesItemCAARecord",
-}) as any as S.Schema<RecordsBatchRequestPatchesItemCAARecord>;
+export type RecordsBatchRequestPatchesItemCAARecord =
+  RecordsBatchRequestDeletesItem;
+export const RecordsBatchRequestPatchesItemCAARecord =
+  RecordsBatchRequestDeletesItem;
 
-export interface RecordsBatchRequestPatchesItemCERTRecord {
-  /** Identifier. */
-  id: string;
-}
-export const RecordsBatchRequestPatchesItemCERTRecord = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.String,
-    }),
-).annotate({
-  identifier: "RecordsBatchRequestPatchesItemCERTRecord",
-}) as any as S.Schema<RecordsBatchRequestPatchesItemCERTRecord>;
+export type RecordsBatchRequestPatchesItemCERTRecord =
+  RecordsBatchRequestDeletesItem;
+export const RecordsBatchRequestPatchesItemCERTRecord =
+  RecordsBatchRequestDeletesItem;
 
-export interface RecordsBatchRequestPatchesItemDNSKEYRecord {
-  /** Identifier. */
-  id: string;
-}
+export type RecordsBatchRequestPatchesItemDNSKEYRecord =
+  RecordsBatchRequestDeletesItem;
 export const RecordsBatchRequestPatchesItemDNSKEYRecord =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-    }),
-  ).annotate({
-    identifier: "RecordsBatchRequestPatchesItemDNSKEYRecord",
-  }) as any as S.Schema<RecordsBatchRequestPatchesItemDNSKEYRecord>;
+  RecordsBatchRequestDeletesItem;
 
-export interface RecordsBatchRequestPatchesItemDSRecord {
-  /** Identifier. */
-  id: string;
-}
-export const RecordsBatchRequestPatchesItemDSRecord = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.String,
-    }),
-).annotate({
-  identifier: "RecordsBatchRequestPatchesItemDSRecord",
-}) as any as S.Schema<RecordsBatchRequestPatchesItemDSRecord>;
+export type RecordsBatchRequestPatchesItemDSRecord =
+  RecordsBatchRequestDeletesItem;
+export const RecordsBatchRequestPatchesItemDSRecord =
+  RecordsBatchRequestDeletesItem;
 
-export interface RecordsBatchRequestPatchesItemHTTPSRecord {
-  /** Identifier. */
-  id: string;
-}
+export type RecordsBatchRequestPatchesItemHTTPSRecord =
+  RecordsBatchRequestDeletesItem;
 export const RecordsBatchRequestPatchesItemHTTPSRecord =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-    }),
-  ).annotate({
-    identifier: "RecordsBatchRequestPatchesItemHTTPSRecord",
-  }) as any as S.Schema<RecordsBatchRequestPatchesItemHTTPSRecord>;
+  RecordsBatchRequestDeletesItem;
 
-export interface RecordsBatchRequestPatchesItemLOCRecord {
-  /** Identifier. */
-  id: string;
-}
-export const RecordsBatchRequestPatchesItemLOCRecord = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.String,
-    }),
-).annotate({
-  identifier: "RecordsBatchRequestPatchesItemLOCRecord",
-}) as any as S.Schema<RecordsBatchRequestPatchesItemLOCRecord>;
+export type RecordsBatchRequestPatchesItemLOCRecord =
+  RecordsBatchRequestDeletesItem;
+export const RecordsBatchRequestPatchesItemLOCRecord =
+  RecordsBatchRequestDeletesItem;
 
-export interface RecordsBatchRequestPatchesItemNAPTRRecord {
-  /** Identifier. */
-  id: string;
-}
+export type RecordsBatchRequestPatchesItemNAPTRRecord =
+  RecordsBatchRequestDeletesItem;
 export const RecordsBatchRequestPatchesItemNAPTRRecord =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-    }),
-  ).annotate({
-    identifier: "RecordsBatchRequestPatchesItemNAPTRRecord",
-  }) as any as S.Schema<RecordsBatchRequestPatchesItemNAPTRRecord>;
+  RecordsBatchRequestDeletesItem;
 
-export interface RecordsBatchRequestPatchesItemSMIMEARecord {
-  /** Identifier. */
-  id: string;
-}
+export type RecordsBatchRequestPatchesItemSMIMEARecord =
+  RecordsBatchRequestDeletesItem;
 export const RecordsBatchRequestPatchesItemSMIMEARecord =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-    }),
-  ).annotate({
-    identifier: "RecordsBatchRequestPatchesItemSMIMEARecord",
-  }) as any as S.Schema<RecordsBatchRequestPatchesItemSMIMEARecord>;
+  RecordsBatchRequestDeletesItem;
 
-export interface RecordsBatchRequestPatchesItemSRVRecord {
-  /** Identifier. */
-  id: string;
-}
-export const RecordsBatchRequestPatchesItemSRVRecord = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.String,
-    }),
-).annotate({
-  identifier: "RecordsBatchRequestPatchesItemSRVRecord",
-}) as any as S.Schema<RecordsBatchRequestPatchesItemSRVRecord>;
+export type RecordsBatchRequestPatchesItemSRVRecord =
+  RecordsBatchRequestDeletesItem;
+export const RecordsBatchRequestPatchesItemSRVRecord =
+  RecordsBatchRequestDeletesItem;
 
-export interface RecordsBatchRequestPatchesItemSSHFPRecord {
-  /** Identifier. */
-  id: string;
-}
+export type RecordsBatchRequestPatchesItemSSHFPRecord =
+  RecordsBatchRequestDeletesItem;
 export const RecordsBatchRequestPatchesItemSSHFPRecord =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-    }),
-  ).annotate({
-    identifier: "RecordsBatchRequestPatchesItemSSHFPRecord",
-  }) as any as S.Schema<RecordsBatchRequestPatchesItemSSHFPRecord>;
+  RecordsBatchRequestDeletesItem;
 
-export interface RecordsBatchRequestPatchesItemSVCBRecord {
-  /** Identifier. */
-  id: string;
-}
-export const RecordsBatchRequestPatchesItemSVCBRecord = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.String,
-    }),
-).annotate({
-  identifier: "RecordsBatchRequestPatchesItemSVCBRecord",
-}) as any as S.Schema<RecordsBatchRequestPatchesItemSVCBRecord>;
+export type RecordsBatchRequestPatchesItemSVCBRecord =
+  RecordsBatchRequestDeletesItem;
+export const RecordsBatchRequestPatchesItemSVCBRecord =
+  RecordsBatchRequestDeletesItem;
 
-export interface RecordsBatchRequestPatchesItemTLSARecord {
-  /** Identifier. */
-  id: string;
-}
-export const RecordsBatchRequestPatchesItemTLSARecord = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.String,
-    }),
-).annotate({
-  identifier: "RecordsBatchRequestPatchesItemTLSARecord",
-}) as any as S.Schema<RecordsBatchRequestPatchesItemTLSARecord>;
+export type RecordsBatchRequestPatchesItemTLSARecord =
+  RecordsBatchRequestDeletesItem;
+export const RecordsBatchRequestPatchesItemTLSARecord =
+  RecordsBatchRequestDeletesItem;
 
-export interface RecordsBatchRequestPatchesItemURIRecord {
-  /** Identifier. */
-  id: string;
-}
-export const RecordsBatchRequestPatchesItemURIRecord = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.String,
-    }),
-).annotate({
-  identifier: "RecordsBatchRequestPatchesItemURIRecord",
-}) as any as S.Schema<RecordsBatchRequestPatchesItemURIRecord>;
+export type RecordsBatchRequestPatchesItemURIRecord =
+  RecordsBatchRequestDeletesItem;
+export const RecordsBatchRequestPatchesItemURIRecord =
+  RecordsBatchRequestDeletesItem;
 
 export type RecordsBatchRequestPatchesItem =
-  | RecordsBatchRequestPatchesItemARecord
-  | RecordsBatchRequestPatchesItemAAAARecord
-  | RecordsBatchRequestPatchesItemCNAMERecord
-  | RecordsBatchRequestPatchesItemMXRecord
-  | RecordsBatchRequestPatchesItemNSRecord
+  | RecordsBatchRequestDeletesItem
+  | RecordsBatchRequestDeletesItem
+  | RecordsBatchRequestDeletesItem
+  | RecordsBatchRequestDeletesItem
+  | RecordsBatchRequestDeletesItem
   | RecordsBatchRequestPatchesItemOpenpgpkeyRecord
-  | RecordsBatchRequestPatchesItemPTRRecord
-  | RecordsBatchRequestPatchesItemTXTRecord
-  | RecordsBatchRequestPatchesItemCAARecord
-  | RecordsBatchRequestPatchesItemCERTRecord
-  | RecordsBatchRequestPatchesItemDNSKEYRecord
-  | RecordsBatchRequestPatchesItemDSRecord
-  | RecordsBatchRequestPatchesItemHTTPSRecord
-  | RecordsBatchRequestPatchesItemLOCRecord
-  | RecordsBatchRequestPatchesItemNAPTRRecord
-  | RecordsBatchRequestPatchesItemSMIMEARecord
-  | RecordsBatchRequestPatchesItemSRVRecord
-  | RecordsBatchRequestPatchesItemSSHFPRecord
-  | RecordsBatchRequestPatchesItemSVCBRecord
-  | RecordsBatchRequestPatchesItemTLSARecord
-  | RecordsBatchRequestPatchesItemURIRecord;
+  | RecordsBatchRequestDeletesItem
+  | RecordsBatchRequestDeletesItem
+  | RecordsBatchRequestDeletesItem
+  | RecordsBatchRequestDeletesItem
+  | RecordsBatchRequestDeletesItem
+  | RecordsBatchRequestDeletesItem
+  | RecordsBatchRequestDeletesItem
+  | RecordsBatchRequestDeletesItem
+  | RecordsBatchRequestDeletesItem
+  | RecordsBatchRequestDeletesItem
+  | RecordsBatchRequestDeletesItem
+  | RecordsBatchRequestDeletesItem
+  | RecordsBatchRequestDeletesItem
+  | RecordsBatchRequestDeletesItem
+  | RecordsBatchRequestDeletesItem;
 export const RecordsBatchRequestPatchesItem = /*@__PURE__*/ S.Unknown.pipe(
   T.UnionCases([
     ["id"],
@@ -611,21 +451,10 @@ export const RecordsBatchRequestPatchesList = /*@__PURE__*/ S.Array(
 export type RecordsBatchRequestPostsItemARecordType = "A";
 export const RecordsBatchRequestPostsItemARecordType = /*@__PURE__*/ S.String;
 
-export interface RecordsBatchRequestPostsItemARecordSettings {
-  /** When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv4Only?: boolean;
-  /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv6Only?: boolean;
-}
+export type RecordsBatchRequestPostsItemARecordSettings =
+  RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings;
 export const RecordsBatchRequestPostsItemARecordSettings =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ipv4Only: S.optional(S.Boolean.pipe(T.Body("ipv4_only"))),
-      ipv6Only: S.optional(S.Boolean.pipe(T.Body("ipv6_only"))),
-    }),
-  ).annotate({
-    identifier: "RecordsBatchRequestPostsItemARecordSettings",
-  }) as any as S.Schema<RecordsBatchRequestPostsItemARecordSettings>;
+  RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings;
 
 export type RecordsBatchRequestPostsItemARecordTagsList = Array<unknown>;
 export const RecordsBatchRequestPostsItemARecordTagsList =
@@ -649,7 +478,7 @@ export interface RecordsBatchRequestPostsItemARecord {
   /** Whether the record is receiving the performance and security benefits of Cloudflare. */
   proxied?: boolean;
   /** Settings for the DNS record. */
-  settings?: RecordsBatchRequestPostsItemARecordSettings;
+  settings?: RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings;
   /** Custom tags for the DNS record. This field has no effect on DNS responses. */
   tags?: RecordsBatchRequestPostsItemARecordTagsList;
 }
@@ -662,7 +491,9 @@ export const RecordsBatchRequestPostsItemARecord = /*@__PURE__*/ S.suspend(() =>
     content: S.optional(S.String),
     privateRouting: S.optional(S.Boolean.pipe(T.Body("private_routing"))),
     proxied: S.optional(S.Boolean),
-    settings: S.optional(RecordsBatchRequestPostsItemARecordSettings),
+    settings: S.optional(
+      RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings,
+    ),
     tags: S.optional(RecordsBatchRequestPostsItemARecordTagsList),
   }),
 ).annotate({
@@ -673,21 +504,10 @@ export type RecordsBatchRequestPostsItemAAAARecordType = "AAAA";
 export const RecordsBatchRequestPostsItemAAAARecordType =
   /*@__PURE__*/ S.String;
 
-export interface RecordsBatchRequestPostsItemAAAARecordSettings {
-  /** When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv4Only?: boolean;
-  /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv6Only?: boolean;
-}
+export type RecordsBatchRequestPostsItemAAAARecordSettings =
+  RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings;
 export const RecordsBatchRequestPostsItemAAAARecordSettings =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ipv4Only: S.optional(S.Boolean.pipe(T.Body("ipv4_only"))),
-      ipv6Only: S.optional(S.Boolean.pipe(T.Body("ipv6_only"))),
-    }),
-  ).annotate({
-    identifier: "RecordsBatchRequestPostsItemAAAARecordSettings",
-  }) as any as S.Schema<RecordsBatchRequestPostsItemAAAARecordSettings>;
+  RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings;
 
 export type RecordsBatchRequestPostsItemAAAARecordTagsList = Array<unknown>;
 export const RecordsBatchRequestPostsItemAAAARecordTagsList =
@@ -711,7 +531,7 @@ export interface RecordsBatchRequestPostsItemAAAARecord {
   /** Whether the record is receiving the performance and security benefits of Cloudflare. */
   proxied?: boolean;
   /** Settings for the DNS record. */
-  settings?: RecordsBatchRequestPostsItemAAAARecordSettings;
+  settings?: RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings;
   /** Custom tags for the DNS record. This field has no effect on DNS responses. */
   tags?: RecordsBatchRequestPostsItemAAAARecordTagsList;
 }
@@ -725,7 +545,9 @@ export const RecordsBatchRequestPostsItemAAAARecord = /*@__PURE__*/ S.suspend(
       content: S.optional(S.String),
       privateRouting: S.optional(S.Boolean.pipe(T.Body("private_routing"))),
       proxied: S.optional(S.Boolean),
-      settings: S.optional(RecordsBatchRequestPostsItemAAAARecordSettings),
+      settings: S.optional(
+        RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings,
+      ),
       tags: S.optional(RecordsBatchRequestPostsItemAAAARecordTagsList),
     }),
 ).annotate({
@@ -798,21 +620,10 @@ export const RecordsBatchRequestPostsItemCNAMERecord = /*@__PURE__*/ S.suspend(
 export type RecordsBatchRequestPostsItemMXRecordType = "MX";
 export const RecordsBatchRequestPostsItemMXRecordType = /*@__PURE__*/ S.String;
 
-export interface RecordsBatchRequestPostsItemMXRecordSettings {
-  /** When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv4Only?: boolean;
-  /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv6Only?: boolean;
-}
+export type RecordsBatchRequestPostsItemMXRecordSettings =
+  RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings;
 export const RecordsBatchRequestPostsItemMXRecordSettings =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ipv4Only: S.optional(S.Boolean.pipe(T.Body("ipv4_only"))),
-      ipv6Only: S.optional(S.Boolean.pipe(T.Body("ipv6_only"))),
-    }),
-  ).annotate({
-    identifier: "RecordsBatchRequestPostsItemMXRecordSettings",
-  }) as any as S.Schema<RecordsBatchRequestPostsItemMXRecordSettings>;
+  RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings;
 
 export type RecordsBatchRequestPostsItemMXRecordTagsList = Array<unknown>;
 export const RecordsBatchRequestPostsItemMXRecordTagsList =
@@ -836,7 +647,7 @@ export interface RecordsBatchRequestPostsItemMXRecord {
   /** Whether the record is receiving the performance and security benefits of Cloudflare. */
   proxied?: boolean;
   /** Settings for the DNS record. */
-  settings?: RecordsBatchRequestPostsItemMXRecordSettings;
+  settings?: RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings;
   /** Custom tags for the DNS record. This field has no effect on DNS responses. */
   tags?: RecordsBatchRequestPostsItemMXRecordTagsList;
 }
@@ -850,7 +661,9 @@ export const RecordsBatchRequestPostsItemMXRecord = /*@__PURE__*/ S.suspend(
       content: S.optional(S.String),
       priority: S.optional(S.Number),
       proxied: S.optional(S.Boolean),
-      settings: S.optional(RecordsBatchRequestPostsItemMXRecordSettings),
+      settings: S.optional(
+        RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings,
+      ),
       tags: S.optional(RecordsBatchRequestPostsItemMXRecordTagsList),
     }),
 ).annotate({
@@ -860,21 +673,10 @@ export const RecordsBatchRequestPostsItemMXRecord = /*@__PURE__*/ S.suspend(
 export type RecordsBatchRequestPostsItemNSRecordType = "NS";
 export const RecordsBatchRequestPostsItemNSRecordType = /*@__PURE__*/ S.String;
 
-export interface RecordsBatchRequestPostsItemNSRecordSettings {
-  /** When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv4Only?: boolean;
-  /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv6Only?: boolean;
-}
+export type RecordsBatchRequestPostsItemNSRecordSettings =
+  RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings;
 export const RecordsBatchRequestPostsItemNSRecordSettings =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ipv4Only: S.optional(S.Boolean.pipe(T.Body("ipv4_only"))),
-      ipv6Only: S.optional(S.Boolean.pipe(T.Body("ipv6_only"))),
-    }),
-  ).annotate({
-    identifier: "RecordsBatchRequestPostsItemNSRecordSettings",
-  }) as any as S.Schema<RecordsBatchRequestPostsItemNSRecordSettings>;
+  RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings;
 
 export type RecordsBatchRequestPostsItemNSRecordTagsList = Array<unknown>;
 export const RecordsBatchRequestPostsItemNSRecordTagsList =
@@ -896,7 +698,7 @@ export interface RecordsBatchRequestPostsItemNSRecord {
   /** Whether the record is receiving the performance and security benefits of Cloudflare. */
   proxied?: boolean;
   /** Settings for the DNS record. */
-  settings?: RecordsBatchRequestPostsItemNSRecordSettings;
+  settings?: RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings;
   /** Custom tags for the DNS record. This field has no effect on DNS responses. */
   tags?: RecordsBatchRequestPostsItemNSRecordTagsList;
 }
@@ -909,7 +711,9 @@ export const RecordsBatchRequestPostsItemNSRecord = /*@__PURE__*/ S.suspend(
       comment: S.optional(S.String),
       content: S.optional(S.String),
       proxied: S.optional(S.Boolean),
-      settings: S.optional(RecordsBatchRequestPostsItemNSRecordSettings),
+      settings: S.optional(
+        RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings,
+      ),
       tags: S.optional(RecordsBatchRequestPostsItemNSRecordTagsList),
     }),
 ).annotate({
@@ -921,22 +725,10 @@ export type RecordsBatchRequestPostsItemDNSRecordsOpenpgpkeyRecordType =
 export const RecordsBatchRequestPostsItemDNSRecordsOpenpgpkeyRecordType =
   /*@__PURE__*/ S.String;
 
-export interface RecordsBatchRequestPostsItemDNSRecordsOpenpgpkeyRecordSettings {
-  /** When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv4Only?: boolean;
-  /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv6Only?: boolean;
-}
+export type RecordsBatchRequestPostsItemDNSRecordsOpenpgpkeyRecordSettings =
+  RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings;
 export const RecordsBatchRequestPostsItemDNSRecordsOpenpgpkeyRecordSettings =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ipv4Only: S.optional(S.Boolean.pipe(T.Body("ipv4_only"))),
-      ipv6Only: S.optional(S.Boolean.pipe(T.Body("ipv6_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "RecordsBatchRequestPostsItemDNSRecordsOpenpgpkeyRecordSettings",
-  }) as any as S.Schema<RecordsBatchRequestPostsItemDNSRecordsOpenpgpkeyRecordSettings>;
+  RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings;
 
 export type RecordsBatchRequestPostsItemDNSRecordsOpenpgpkeyRecordTagsList =
   Array<unknown>;
@@ -959,7 +751,7 @@ export interface RecordsBatchRequestPostsItemDNSRecordsOpenpgpkeyRecord {
   /** Whether the record is receiving the performance and security benefits of Cloudflare. */
   proxied?: boolean;
   /** Settings for the DNS record. */
-  settings?: RecordsBatchRequestPostsItemDNSRecordsOpenpgpkeyRecordSettings;
+  settings?: RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings;
   /** Custom tags for the DNS record. This field has no effect on DNS responses. */
   tags?: RecordsBatchRequestPostsItemDNSRecordsOpenpgpkeyRecordTagsList;
 }
@@ -973,7 +765,7 @@ export const RecordsBatchRequestPostsItemDNSRecordsOpenpgpkeyRecord =
       content: S.optional(S.String),
       proxied: S.optional(S.Boolean),
       settings: S.optional(
-        RecordsBatchRequestPostsItemDNSRecordsOpenpgpkeyRecordSettings,
+        RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings,
       ),
       tags: S.optional(
         RecordsBatchRequestPostsItemDNSRecordsOpenpgpkeyRecordTagsList,
@@ -986,21 +778,10 @@ export const RecordsBatchRequestPostsItemDNSRecordsOpenpgpkeyRecord =
 export type RecordsBatchRequestPostsItemPTRRecordType = "PTR";
 export const RecordsBatchRequestPostsItemPTRRecordType = /*@__PURE__*/ S.String;
 
-export interface RecordsBatchRequestPostsItemPTRRecordSettings {
-  /** When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv4Only?: boolean;
-  /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv6Only?: boolean;
-}
+export type RecordsBatchRequestPostsItemPTRRecordSettings =
+  RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings;
 export const RecordsBatchRequestPostsItemPTRRecordSettings =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ipv4Only: S.optional(S.Boolean.pipe(T.Body("ipv4_only"))),
-      ipv6Only: S.optional(S.Boolean.pipe(T.Body("ipv6_only"))),
-    }),
-  ).annotate({
-    identifier: "RecordsBatchRequestPostsItemPTRRecordSettings",
-  }) as any as S.Schema<RecordsBatchRequestPostsItemPTRRecordSettings>;
+  RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings;
 
 export type RecordsBatchRequestPostsItemPTRRecordTagsList = Array<unknown>;
 export const RecordsBatchRequestPostsItemPTRRecordTagsList =
@@ -1022,7 +803,7 @@ export interface RecordsBatchRequestPostsItemPTRRecord {
   /** Whether the record is receiving the performance and security benefits of Cloudflare. */
   proxied?: boolean;
   /** Settings for the DNS record. */
-  settings?: RecordsBatchRequestPostsItemPTRRecordSettings;
+  settings?: RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings;
   /** Custom tags for the DNS record. This field has no effect on DNS responses. */
   tags?: RecordsBatchRequestPostsItemPTRRecordTagsList;
 }
@@ -1035,7 +816,9 @@ export const RecordsBatchRequestPostsItemPTRRecord = /*@__PURE__*/ S.suspend(
       comment: S.optional(S.String),
       content: S.optional(S.String),
       proxied: S.optional(S.Boolean),
-      settings: S.optional(RecordsBatchRequestPostsItemPTRRecordSettings),
+      settings: S.optional(
+        RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings,
+      ),
       tags: S.optional(RecordsBatchRequestPostsItemPTRRecordTagsList),
     }),
 ).annotate({
@@ -1045,21 +828,10 @@ export const RecordsBatchRequestPostsItemPTRRecord = /*@__PURE__*/ S.suspend(
 export type RecordsBatchRequestPostsItemTXTRecordType = "TXT";
 export const RecordsBatchRequestPostsItemTXTRecordType = /*@__PURE__*/ S.String;
 
-export interface RecordsBatchRequestPostsItemTXTRecordSettings {
-  /** When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv4Only?: boolean;
-  /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv6Only?: boolean;
-}
+export type RecordsBatchRequestPostsItemTXTRecordSettings =
+  RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings;
 export const RecordsBatchRequestPostsItemTXTRecordSettings =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ipv4Only: S.optional(S.Boolean.pipe(T.Body("ipv4_only"))),
-      ipv6Only: S.optional(S.Boolean.pipe(T.Body("ipv6_only"))),
-    }),
-  ).annotate({
-    identifier: "RecordsBatchRequestPostsItemTXTRecordSettings",
-  }) as any as S.Schema<RecordsBatchRequestPostsItemTXTRecordSettings>;
+  RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings;
 
 export type RecordsBatchRequestPostsItemTXTRecordTagsList = Array<unknown>;
 export const RecordsBatchRequestPostsItemTXTRecordTagsList =
@@ -1081,7 +853,7 @@ export interface RecordsBatchRequestPostsItemTXTRecord {
   /** Whether the record is receiving the performance and security benefits of Cloudflare. */
   proxied?: boolean;
   /** Settings for the DNS record. */
-  settings?: RecordsBatchRequestPostsItemTXTRecordSettings;
+  settings?: RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings;
   /** Custom tags for the DNS record. This field has no effect on DNS responses. */
   tags?: RecordsBatchRequestPostsItemTXTRecordTagsList;
 }
@@ -1094,7 +866,9 @@ export const RecordsBatchRequestPostsItemTXTRecord = /*@__PURE__*/ S.suspend(
       comment: S.optional(S.String),
       content: S.optional(S.String),
       proxied: S.optional(S.Boolean),
-      settings: S.optional(RecordsBatchRequestPostsItemTXTRecordSettings),
+      settings: S.optional(
+        RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings,
+      ),
       tags: S.optional(RecordsBatchRequestPostsItemTXTRecordTagsList),
     }),
 ).annotate({
@@ -1123,21 +897,10 @@ export const RecordsBatchRequestPostsItemCAARecordData =
     identifier: "RecordsBatchRequestPostsItemCAARecordData",
   }) as any as S.Schema<RecordsBatchRequestPostsItemCAARecordData>;
 
-export interface RecordsBatchRequestPostsItemCAARecordSettings {
-  /** When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv4Only?: boolean;
-  /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv6Only?: boolean;
-}
+export type RecordsBatchRequestPostsItemCAARecordSettings =
+  RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings;
 export const RecordsBatchRequestPostsItemCAARecordSettings =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ipv4Only: S.optional(S.Boolean.pipe(T.Body("ipv4_only"))),
-      ipv6Only: S.optional(S.Boolean.pipe(T.Body("ipv6_only"))),
-    }),
-  ).annotate({
-    identifier: "RecordsBatchRequestPostsItemCAARecordSettings",
-  }) as any as S.Schema<RecordsBatchRequestPostsItemCAARecordSettings>;
+  RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings;
 
 export type RecordsBatchRequestPostsItemCAARecordTagsList = Array<unknown>;
 export const RecordsBatchRequestPostsItemCAARecordTagsList =
@@ -1161,7 +924,7 @@ export interface RecordsBatchRequestPostsItemCAARecord {
   /** Whether the record is receiving the performance and security benefits of Cloudflare. */
   proxied?: boolean;
   /** Settings for the DNS record. */
-  settings?: RecordsBatchRequestPostsItemCAARecordSettings;
+  settings?: RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings;
   /** Custom tags for the DNS record. This field has no effect on DNS responses. */
   tags?: RecordsBatchRequestPostsItemCAARecordTagsList;
 }
@@ -1175,7 +938,9 @@ export const RecordsBatchRequestPostsItemCAARecord = /*@__PURE__*/ S.suspend(
       content: S.optional(S.String),
       data: S.optional(RecordsBatchRequestPostsItemCAARecordData),
       proxied: S.optional(S.Boolean),
-      settings: S.optional(RecordsBatchRequestPostsItemCAARecordSettings),
+      settings: S.optional(
+        RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings,
+      ),
       tags: S.optional(RecordsBatchRequestPostsItemCAARecordTagsList),
     }),
 ).annotate({
@@ -1208,21 +973,10 @@ export const RecordsBatchRequestPostsItemCERTRecordData =
     identifier: "RecordsBatchRequestPostsItemCERTRecordData",
   }) as any as S.Schema<RecordsBatchRequestPostsItemCERTRecordData>;
 
-export interface RecordsBatchRequestPostsItemCERTRecordSettings {
-  /** When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv4Only?: boolean;
-  /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv6Only?: boolean;
-}
+export type RecordsBatchRequestPostsItemCERTRecordSettings =
+  RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings;
 export const RecordsBatchRequestPostsItemCERTRecordSettings =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ipv4Only: S.optional(S.Boolean.pipe(T.Body("ipv4_only"))),
-      ipv6Only: S.optional(S.Boolean.pipe(T.Body("ipv6_only"))),
-    }),
-  ).annotate({
-    identifier: "RecordsBatchRequestPostsItemCERTRecordSettings",
-  }) as any as S.Schema<RecordsBatchRequestPostsItemCERTRecordSettings>;
+  RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings;
 
 export type RecordsBatchRequestPostsItemCERTRecordTagsList = Array<unknown>;
 export const RecordsBatchRequestPostsItemCERTRecordTagsList =
@@ -1246,7 +1000,7 @@ export interface RecordsBatchRequestPostsItemCERTRecord {
   /** Whether the record is receiving the performance and security benefits of Cloudflare. */
   proxied?: boolean;
   /** Settings for the DNS record. */
-  settings?: RecordsBatchRequestPostsItemCERTRecordSettings;
+  settings?: RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings;
   /** Custom tags for the DNS record. This field has no effect on DNS responses. */
   tags?: RecordsBatchRequestPostsItemCERTRecordTagsList;
 }
@@ -1260,7 +1014,9 @@ export const RecordsBatchRequestPostsItemCERTRecord = /*@__PURE__*/ S.suspend(
       content: S.optional(S.String),
       data: S.optional(RecordsBatchRequestPostsItemCERTRecordData),
       proxied: S.optional(S.Boolean),
-      settings: S.optional(RecordsBatchRequestPostsItemCERTRecordSettings),
+      settings: S.optional(
+        RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings,
+      ),
       tags: S.optional(RecordsBatchRequestPostsItemCERTRecordTagsList),
     }),
 ).annotate({
@@ -1293,21 +1049,10 @@ export const RecordsBatchRequestPostsItemDNSKEYRecordData =
     identifier: "RecordsBatchRequestPostsItemDNSKEYRecordData",
   }) as any as S.Schema<RecordsBatchRequestPostsItemDNSKEYRecordData>;
 
-export interface RecordsBatchRequestPostsItemDNSKEYRecordSettings {
-  /** When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv4Only?: boolean;
-  /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv6Only?: boolean;
-}
+export type RecordsBatchRequestPostsItemDNSKEYRecordSettings =
+  RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings;
 export const RecordsBatchRequestPostsItemDNSKEYRecordSettings =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ipv4Only: S.optional(S.Boolean.pipe(T.Body("ipv4_only"))),
-      ipv6Only: S.optional(S.Boolean.pipe(T.Body("ipv6_only"))),
-    }),
-  ).annotate({
-    identifier: "RecordsBatchRequestPostsItemDNSKEYRecordSettings",
-  }) as any as S.Schema<RecordsBatchRequestPostsItemDNSKEYRecordSettings>;
+  RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings;
 
 export type RecordsBatchRequestPostsItemDNSKEYRecordTagsList = Array<unknown>;
 export const RecordsBatchRequestPostsItemDNSKEYRecordTagsList =
@@ -1331,7 +1076,7 @@ export interface RecordsBatchRequestPostsItemDNSKEYRecord {
   /** Whether the record is receiving the performance and security benefits of Cloudflare. */
   proxied?: boolean;
   /** Settings for the DNS record. */
-  settings?: RecordsBatchRequestPostsItemDNSKEYRecordSettings;
+  settings?: RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings;
   /** Custom tags for the DNS record. This field has no effect on DNS responses. */
   tags?: RecordsBatchRequestPostsItemDNSKEYRecordTagsList;
 }
@@ -1345,7 +1090,9 @@ export const RecordsBatchRequestPostsItemDNSKEYRecord = /*@__PURE__*/ S.suspend(
       content: S.optional(S.String),
       data: S.optional(RecordsBatchRequestPostsItemDNSKEYRecordData),
       proxied: S.optional(S.Boolean),
-      settings: S.optional(RecordsBatchRequestPostsItemDNSKEYRecordSettings),
+      settings: S.optional(
+        RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings,
+      ),
       tags: S.optional(RecordsBatchRequestPostsItemDNSKEYRecordTagsList),
     }),
 ).annotate({
@@ -1377,21 +1124,10 @@ export const RecordsBatchRequestPostsItemDSRecordData = /*@__PURE__*/ S.suspend(
   identifier: "RecordsBatchRequestPostsItemDSRecordData",
 }) as any as S.Schema<RecordsBatchRequestPostsItemDSRecordData>;
 
-export interface RecordsBatchRequestPostsItemDSRecordSettings {
-  /** When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv4Only?: boolean;
-  /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv6Only?: boolean;
-}
+export type RecordsBatchRequestPostsItemDSRecordSettings =
+  RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings;
 export const RecordsBatchRequestPostsItemDSRecordSettings =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ipv4Only: S.optional(S.Boolean.pipe(T.Body("ipv4_only"))),
-      ipv6Only: S.optional(S.Boolean.pipe(T.Body("ipv6_only"))),
-    }),
-  ).annotate({
-    identifier: "RecordsBatchRequestPostsItemDSRecordSettings",
-  }) as any as S.Schema<RecordsBatchRequestPostsItemDSRecordSettings>;
+  RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings;
 
 export type RecordsBatchRequestPostsItemDSRecordTagsList = Array<unknown>;
 export const RecordsBatchRequestPostsItemDSRecordTagsList =
@@ -1415,7 +1151,7 @@ export interface RecordsBatchRequestPostsItemDSRecord {
   /** Whether the record is receiving the performance and security benefits of Cloudflare. */
   proxied?: boolean;
   /** Settings for the DNS record. */
-  settings?: RecordsBatchRequestPostsItemDSRecordSettings;
+  settings?: RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings;
   /** Custom tags for the DNS record. This field has no effect on DNS responses. */
   tags?: RecordsBatchRequestPostsItemDSRecordTagsList;
 }
@@ -1429,7 +1165,9 @@ export const RecordsBatchRequestPostsItemDSRecord = /*@__PURE__*/ S.suspend(
       content: S.optional(S.String),
       data: S.optional(RecordsBatchRequestPostsItemDSRecordData),
       proxied: S.optional(S.Boolean),
-      settings: S.optional(RecordsBatchRequestPostsItemDSRecordSettings),
+      settings: S.optional(
+        RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings,
+      ),
       tags: S.optional(RecordsBatchRequestPostsItemDSRecordTagsList),
     }),
 ).annotate({
@@ -1459,21 +1197,10 @@ export const RecordsBatchRequestPostsItemHTTPSRecordData =
     identifier: "RecordsBatchRequestPostsItemHTTPSRecordData",
   }) as any as S.Schema<RecordsBatchRequestPostsItemHTTPSRecordData>;
 
-export interface RecordsBatchRequestPostsItemHTTPSRecordSettings {
-  /** When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv4Only?: boolean;
-  /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv6Only?: boolean;
-}
+export type RecordsBatchRequestPostsItemHTTPSRecordSettings =
+  RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings;
 export const RecordsBatchRequestPostsItemHTTPSRecordSettings =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ipv4Only: S.optional(S.Boolean.pipe(T.Body("ipv4_only"))),
-      ipv6Only: S.optional(S.Boolean.pipe(T.Body("ipv6_only"))),
-    }),
-  ).annotate({
-    identifier: "RecordsBatchRequestPostsItemHTTPSRecordSettings",
-  }) as any as S.Schema<RecordsBatchRequestPostsItemHTTPSRecordSettings>;
+  RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings;
 
 export type RecordsBatchRequestPostsItemHTTPSRecordTagsList = Array<unknown>;
 export const RecordsBatchRequestPostsItemHTTPSRecordTagsList =
@@ -1497,7 +1224,7 @@ export interface RecordsBatchRequestPostsItemHTTPSRecord {
   /** Whether the record is receiving the performance and security benefits of Cloudflare. */
   proxied?: boolean;
   /** Settings for the DNS record. */
-  settings?: RecordsBatchRequestPostsItemHTTPSRecordSettings;
+  settings?: RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings;
   /** Custom tags for the DNS record. This field has no effect on DNS responses. */
   tags?: RecordsBatchRequestPostsItemHTTPSRecordTagsList;
 }
@@ -1511,7 +1238,9 @@ export const RecordsBatchRequestPostsItemHTTPSRecord = /*@__PURE__*/ S.suspend(
       content: S.optional(S.String),
       data: S.optional(RecordsBatchRequestPostsItemHTTPSRecordData),
       proxied: S.optional(S.Boolean),
-      settings: S.optional(RecordsBatchRequestPostsItemHTTPSRecordSettings),
+      settings: S.optional(
+        RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings,
+      ),
       tags: S.optional(RecordsBatchRequestPostsItemHTTPSRecordTagsList),
     }),
 ).annotate({
@@ -1587,21 +1316,10 @@ export const RecordsBatchRequestPostsItemLOCRecordData =
     identifier: "RecordsBatchRequestPostsItemLOCRecordData",
   }) as any as S.Schema<RecordsBatchRequestPostsItemLOCRecordData>;
 
-export interface RecordsBatchRequestPostsItemLOCRecordSettings {
-  /** When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv4Only?: boolean;
-  /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv6Only?: boolean;
-}
+export type RecordsBatchRequestPostsItemLOCRecordSettings =
+  RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings;
 export const RecordsBatchRequestPostsItemLOCRecordSettings =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ipv4Only: S.optional(S.Boolean.pipe(T.Body("ipv4_only"))),
-      ipv6Only: S.optional(S.Boolean.pipe(T.Body("ipv6_only"))),
-    }),
-  ).annotate({
-    identifier: "RecordsBatchRequestPostsItemLOCRecordSettings",
-  }) as any as S.Schema<RecordsBatchRequestPostsItemLOCRecordSettings>;
+  RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings;
 
 export type RecordsBatchRequestPostsItemLOCRecordTagsList = Array<unknown>;
 export const RecordsBatchRequestPostsItemLOCRecordTagsList =
@@ -1625,7 +1343,7 @@ export interface RecordsBatchRequestPostsItemLOCRecord {
   /** Whether the record is receiving the performance and security benefits of Cloudflare. */
   proxied?: boolean;
   /** Settings for the DNS record. */
-  settings?: RecordsBatchRequestPostsItemLOCRecordSettings;
+  settings?: RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings;
   /** Custom tags for the DNS record. This field has no effect on DNS responses. */
   tags?: RecordsBatchRequestPostsItemLOCRecordTagsList;
 }
@@ -1639,7 +1357,9 @@ export const RecordsBatchRequestPostsItemLOCRecord = /*@__PURE__*/ S.suspend(
       content: S.optional(S.String),
       data: S.optional(RecordsBatchRequestPostsItemLOCRecordData),
       proxied: S.optional(S.Boolean),
-      settings: S.optional(RecordsBatchRequestPostsItemLOCRecordSettings),
+      settings: S.optional(
+        RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings,
+      ),
       tags: S.optional(RecordsBatchRequestPostsItemLOCRecordTagsList),
     }),
 ).annotate({
@@ -1678,21 +1398,10 @@ export const RecordsBatchRequestPostsItemNAPTRRecordData =
     identifier: "RecordsBatchRequestPostsItemNAPTRRecordData",
   }) as any as S.Schema<RecordsBatchRequestPostsItemNAPTRRecordData>;
 
-export interface RecordsBatchRequestPostsItemNAPTRRecordSettings {
-  /** When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv4Only?: boolean;
-  /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv6Only?: boolean;
-}
+export type RecordsBatchRequestPostsItemNAPTRRecordSettings =
+  RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings;
 export const RecordsBatchRequestPostsItemNAPTRRecordSettings =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ipv4Only: S.optional(S.Boolean.pipe(T.Body("ipv4_only"))),
-      ipv6Only: S.optional(S.Boolean.pipe(T.Body("ipv6_only"))),
-    }),
-  ).annotate({
-    identifier: "RecordsBatchRequestPostsItemNAPTRRecordSettings",
-  }) as any as S.Schema<RecordsBatchRequestPostsItemNAPTRRecordSettings>;
+  RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings;
 
 export type RecordsBatchRequestPostsItemNAPTRRecordTagsList = Array<unknown>;
 export const RecordsBatchRequestPostsItemNAPTRRecordTagsList =
@@ -1716,7 +1425,7 @@ export interface RecordsBatchRequestPostsItemNAPTRRecord {
   /** Whether the record is receiving the performance and security benefits of Cloudflare. */
   proxied?: boolean;
   /** Settings for the DNS record. */
-  settings?: RecordsBatchRequestPostsItemNAPTRRecordSettings;
+  settings?: RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings;
   /** Custom tags for the DNS record. This field has no effect on DNS responses. */
   tags?: RecordsBatchRequestPostsItemNAPTRRecordTagsList;
 }
@@ -1730,7 +1439,9 @@ export const RecordsBatchRequestPostsItemNAPTRRecord = /*@__PURE__*/ S.suspend(
       content: S.optional(S.String),
       data: S.optional(RecordsBatchRequestPostsItemNAPTRRecordData),
       proxied: S.optional(S.Boolean),
-      settings: S.optional(RecordsBatchRequestPostsItemNAPTRRecordSettings),
+      settings: S.optional(
+        RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings,
+      ),
       tags: S.optional(RecordsBatchRequestPostsItemNAPTRRecordTagsList),
     }),
 ).annotate({
@@ -1763,21 +1474,10 @@ export const RecordsBatchRequestPostsItemSMIMEARecordData =
     identifier: "RecordsBatchRequestPostsItemSMIMEARecordData",
   }) as any as S.Schema<RecordsBatchRequestPostsItemSMIMEARecordData>;
 
-export interface RecordsBatchRequestPostsItemSMIMEARecordSettings {
-  /** When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv4Only?: boolean;
-  /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv6Only?: boolean;
-}
+export type RecordsBatchRequestPostsItemSMIMEARecordSettings =
+  RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings;
 export const RecordsBatchRequestPostsItemSMIMEARecordSettings =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ipv4Only: S.optional(S.Boolean.pipe(T.Body("ipv4_only"))),
-      ipv6Only: S.optional(S.Boolean.pipe(T.Body("ipv6_only"))),
-    }),
-  ).annotate({
-    identifier: "RecordsBatchRequestPostsItemSMIMEARecordSettings",
-  }) as any as S.Schema<RecordsBatchRequestPostsItemSMIMEARecordSettings>;
+  RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings;
 
 export type RecordsBatchRequestPostsItemSMIMEARecordTagsList = Array<unknown>;
 export const RecordsBatchRequestPostsItemSMIMEARecordTagsList =
@@ -1801,7 +1501,7 @@ export interface RecordsBatchRequestPostsItemSMIMEARecord {
   /** Whether the record is receiving the performance and security benefits of Cloudflare. */
   proxied?: boolean;
   /** Settings for the DNS record. */
-  settings?: RecordsBatchRequestPostsItemSMIMEARecordSettings;
+  settings?: RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings;
   /** Custom tags for the DNS record. This field has no effect on DNS responses. */
   tags?: RecordsBatchRequestPostsItemSMIMEARecordTagsList;
 }
@@ -1815,7 +1515,9 @@ export const RecordsBatchRequestPostsItemSMIMEARecord = /*@__PURE__*/ S.suspend(
       content: S.optional(S.String),
       data: S.optional(RecordsBatchRequestPostsItemSMIMEARecordData),
       proxied: S.optional(S.Boolean),
-      settings: S.optional(RecordsBatchRequestPostsItemSMIMEARecordSettings),
+      settings: S.optional(
+        RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings,
+      ),
       tags: S.optional(RecordsBatchRequestPostsItemSMIMEARecordTagsList),
     }),
 ).annotate({
@@ -1847,21 +1549,10 @@ export const RecordsBatchRequestPostsItemSRVRecordData =
     identifier: "RecordsBatchRequestPostsItemSRVRecordData",
   }) as any as S.Schema<RecordsBatchRequestPostsItemSRVRecordData>;
 
-export interface RecordsBatchRequestPostsItemSRVRecordSettings {
-  /** When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv4Only?: boolean;
-  /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv6Only?: boolean;
-}
+export type RecordsBatchRequestPostsItemSRVRecordSettings =
+  RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings;
 export const RecordsBatchRequestPostsItemSRVRecordSettings =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ipv4Only: S.optional(S.Boolean.pipe(T.Body("ipv4_only"))),
-      ipv6Only: S.optional(S.Boolean.pipe(T.Body("ipv6_only"))),
-    }),
-  ).annotate({
-    identifier: "RecordsBatchRequestPostsItemSRVRecordSettings",
-  }) as any as S.Schema<RecordsBatchRequestPostsItemSRVRecordSettings>;
+  RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings;
 
 export type RecordsBatchRequestPostsItemSRVRecordTagsList = Array<unknown>;
 export const RecordsBatchRequestPostsItemSRVRecordTagsList =
@@ -1885,7 +1576,7 @@ export interface RecordsBatchRequestPostsItemSRVRecord {
   /** Whether the record is receiving the performance and security benefits of Cloudflare. */
   proxied?: boolean;
   /** Settings for the DNS record. */
-  settings?: RecordsBatchRequestPostsItemSRVRecordSettings;
+  settings?: RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings;
   /** Custom tags for the DNS record. This field has no effect on DNS responses. */
   tags?: RecordsBatchRequestPostsItemSRVRecordTagsList;
 }
@@ -1899,7 +1590,9 @@ export const RecordsBatchRequestPostsItemSRVRecord = /*@__PURE__*/ S.suspend(
       content: S.optional(S.String),
       data: S.optional(RecordsBatchRequestPostsItemSRVRecordData),
       proxied: S.optional(S.Boolean),
-      settings: S.optional(RecordsBatchRequestPostsItemSRVRecordSettings),
+      settings: S.optional(
+        RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings,
+      ),
       tags: S.optional(RecordsBatchRequestPostsItemSRVRecordTagsList),
     }),
 ).annotate({
@@ -1929,21 +1622,10 @@ export const RecordsBatchRequestPostsItemSSHFPRecordData =
     identifier: "RecordsBatchRequestPostsItemSSHFPRecordData",
   }) as any as S.Schema<RecordsBatchRequestPostsItemSSHFPRecordData>;
 
-export interface RecordsBatchRequestPostsItemSSHFPRecordSettings {
-  /** When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv4Only?: boolean;
-  /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv6Only?: boolean;
-}
+export type RecordsBatchRequestPostsItemSSHFPRecordSettings =
+  RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings;
 export const RecordsBatchRequestPostsItemSSHFPRecordSettings =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ipv4Only: S.optional(S.Boolean.pipe(T.Body("ipv4_only"))),
-      ipv6Only: S.optional(S.Boolean.pipe(T.Body("ipv6_only"))),
-    }),
-  ).annotate({
-    identifier: "RecordsBatchRequestPostsItemSSHFPRecordSettings",
-  }) as any as S.Schema<RecordsBatchRequestPostsItemSSHFPRecordSettings>;
+  RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings;
 
 export type RecordsBatchRequestPostsItemSSHFPRecordTagsList = Array<unknown>;
 export const RecordsBatchRequestPostsItemSSHFPRecordTagsList =
@@ -1967,7 +1649,7 @@ export interface RecordsBatchRequestPostsItemSSHFPRecord {
   /** Whether the record is receiving the performance and security benefits of Cloudflare. */
   proxied?: boolean;
   /** Settings for the DNS record. */
-  settings?: RecordsBatchRequestPostsItemSSHFPRecordSettings;
+  settings?: RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings;
   /** Custom tags for the DNS record. This field has no effect on DNS responses. */
   tags?: RecordsBatchRequestPostsItemSSHFPRecordTagsList;
 }
@@ -1981,7 +1663,9 @@ export const RecordsBatchRequestPostsItemSSHFPRecord = /*@__PURE__*/ S.suspend(
       content: S.optional(S.String),
       data: S.optional(RecordsBatchRequestPostsItemSSHFPRecordData),
       proxied: S.optional(S.Boolean),
-      settings: S.optional(RecordsBatchRequestPostsItemSSHFPRecordSettings),
+      settings: S.optional(
+        RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings,
+      ),
       tags: S.optional(RecordsBatchRequestPostsItemSSHFPRecordTagsList),
     }),
 ).annotate({
@@ -1992,40 +1676,15 @@ export type RecordsBatchRequestPostsItemSVCBRecordType = "SVCB";
 export const RecordsBatchRequestPostsItemSVCBRecordType =
   /*@__PURE__*/ S.String;
 
-export interface RecordsBatchRequestPostsItemSVCBRecordData {
-  /** Priority. */
-  priority?: number;
-  /** Target. */
-  target?: string;
-  /** Value. */
-  value?: string;
-}
+export type RecordsBatchRequestPostsItemSVCBRecordData =
+  RecordsBatchRequestPostsItemHTTPSRecordData;
 export const RecordsBatchRequestPostsItemSVCBRecordData =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      priority: S.optional(S.Number),
-      target: S.optional(S.String),
-      value: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "RecordsBatchRequestPostsItemSVCBRecordData",
-  }) as any as S.Schema<RecordsBatchRequestPostsItemSVCBRecordData>;
+  RecordsBatchRequestPostsItemHTTPSRecordData;
 
-export interface RecordsBatchRequestPostsItemSVCBRecordSettings {
-  /** When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv4Only?: boolean;
-  /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv6Only?: boolean;
-}
+export type RecordsBatchRequestPostsItemSVCBRecordSettings =
+  RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings;
 export const RecordsBatchRequestPostsItemSVCBRecordSettings =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ipv4Only: S.optional(S.Boolean.pipe(T.Body("ipv4_only"))),
-      ipv6Only: S.optional(S.Boolean.pipe(T.Body("ipv6_only"))),
-    }),
-  ).annotate({
-    identifier: "RecordsBatchRequestPostsItemSVCBRecordSettings",
-  }) as any as S.Schema<RecordsBatchRequestPostsItemSVCBRecordSettings>;
+  RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings;
 
 export type RecordsBatchRequestPostsItemSVCBRecordTagsList = Array<unknown>;
 export const RecordsBatchRequestPostsItemSVCBRecordTagsList =
@@ -2045,11 +1704,11 @@ export interface RecordsBatchRequestPostsItemSVCBRecord {
   /** Formatted SVCB content. See 'data' to set SVCB properties. */
   content?: string;
   /** Components of a SVCB record. */
-  data?: RecordsBatchRequestPostsItemSVCBRecordData;
+  data?: RecordsBatchRequestPostsItemHTTPSRecordData;
   /** Whether the record is receiving the performance and security benefits of Cloudflare. */
   proxied?: boolean;
   /** Settings for the DNS record. */
-  settings?: RecordsBatchRequestPostsItemSVCBRecordSettings;
+  settings?: RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings;
   /** Custom tags for the DNS record. This field has no effect on DNS responses. */
   tags?: RecordsBatchRequestPostsItemSVCBRecordTagsList;
 }
@@ -2061,9 +1720,11 @@ export const RecordsBatchRequestPostsItemSVCBRecord = /*@__PURE__*/ S.suspend(
       type: RecordsBatchRequestPostsItemSVCBRecordType,
       comment: S.optional(S.String),
       content: S.optional(S.String),
-      data: S.optional(RecordsBatchRequestPostsItemSVCBRecordData),
+      data: S.optional(RecordsBatchRequestPostsItemHTTPSRecordData),
       proxied: S.optional(S.Boolean),
-      settings: S.optional(RecordsBatchRequestPostsItemSVCBRecordSettings),
+      settings: S.optional(
+        RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings,
+      ),
       tags: S.optional(RecordsBatchRequestPostsItemSVCBRecordTagsList),
     }),
 ).annotate({
@@ -2074,43 +1735,15 @@ export type RecordsBatchRequestPostsItemTLSARecordType = "TLSA";
 export const RecordsBatchRequestPostsItemTLSARecordType =
   /*@__PURE__*/ S.String;
 
-export interface RecordsBatchRequestPostsItemTLSARecordData {
-  /** Certificate. */
-  certificate?: string;
-  /** Matching Type. */
-  matchingType?: number;
-  /** Selector. */
-  selector?: number;
-  /** Usage. */
-  usage?: number;
-}
+export type RecordsBatchRequestPostsItemTLSARecordData =
+  RecordsBatchRequestPostsItemSMIMEARecordData;
 export const RecordsBatchRequestPostsItemTLSARecordData =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      certificate: S.optional(S.String),
-      matchingType: S.optional(S.Number.pipe(T.Body("matching_type"))),
-      selector: S.optional(S.Number),
-      usage: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier: "RecordsBatchRequestPostsItemTLSARecordData",
-  }) as any as S.Schema<RecordsBatchRequestPostsItemTLSARecordData>;
+  RecordsBatchRequestPostsItemSMIMEARecordData;
 
-export interface RecordsBatchRequestPostsItemTLSARecordSettings {
-  /** When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv4Only?: boolean;
-  /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv6Only?: boolean;
-}
+export type RecordsBatchRequestPostsItemTLSARecordSettings =
+  RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings;
 export const RecordsBatchRequestPostsItemTLSARecordSettings =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ipv4Only: S.optional(S.Boolean.pipe(T.Body("ipv4_only"))),
-      ipv6Only: S.optional(S.Boolean.pipe(T.Body("ipv6_only"))),
-    }),
-  ).annotate({
-    identifier: "RecordsBatchRequestPostsItemTLSARecordSettings",
-  }) as any as S.Schema<RecordsBatchRequestPostsItemTLSARecordSettings>;
+  RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings;
 
 export type RecordsBatchRequestPostsItemTLSARecordTagsList = Array<unknown>;
 export const RecordsBatchRequestPostsItemTLSARecordTagsList =
@@ -2130,11 +1763,11 @@ export interface RecordsBatchRequestPostsItemTLSARecord {
   /** Formatted TLSA content. See 'data' to set TLSA properties. */
   content?: string;
   /** Components of a TLSA record. */
-  data?: RecordsBatchRequestPostsItemTLSARecordData;
+  data?: RecordsBatchRequestPostsItemSMIMEARecordData;
   /** Whether the record is receiving the performance and security benefits of Cloudflare. */
   proxied?: boolean;
   /** Settings for the DNS record. */
-  settings?: RecordsBatchRequestPostsItemTLSARecordSettings;
+  settings?: RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings;
   /** Custom tags for the DNS record. This field has no effect on DNS responses. */
   tags?: RecordsBatchRequestPostsItemTLSARecordTagsList;
 }
@@ -2146,9 +1779,11 @@ export const RecordsBatchRequestPostsItemTLSARecord = /*@__PURE__*/ S.suspend(
       type: RecordsBatchRequestPostsItemTLSARecordType,
       comment: S.optional(S.String),
       content: S.optional(S.String),
-      data: S.optional(RecordsBatchRequestPostsItemTLSARecordData),
+      data: S.optional(RecordsBatchRequestPostsItemSMIMEARecordData),
       proxied: S.optional(S.Boolean),
-      settings: S.optional(RecordsBatchRequestPostsItemTLSARecordSettings),
+      settings: S.optional(
+        RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings,
+      ),
       tags: S.optional(RecordsBatchRequestPostsItemTLSARecordTagsList),
     }),
 ).annotate({
@@ -2174,21 +1809,10 @@ export const RecordsBatchRequestPostsItemURIRecordData =
     identifier: "RecordsBatchRequestPostsItemURIRecordData",
   }) as any as S.Schema<RecordsBatchRequestPostsItemURIRecordData>;
 
-export interface RecordsBatchRequestPostsItemURIRecordSettings {
-  /** When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv4Only?: boolean;
-  /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv6Only?: boolean;
-}
+export type RecordsBatchRequestPostsItemURIRecordSettings =
+  RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings;
 export const RecordsBatchRequestPostsItemURIRecordSettings =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ipv4Only: S.optional(S.Boolean.pipe(T.Body("ipv4_only"))),
-      ipv6Only: S.optional(S.Boolean.pipe(T.Body("ipv6_only"))),
-    }),
-  ).annotate({
-    identifier: "RecordsBatchRequestPostsItemURIRecordSettings",
-  }) as any as S.Schema<RecordsBatchRequestPostsItemURIRecordSettings>;
+  RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings;
 
 export type RecordsBatchRequestPostsItemURIRecordTagsList = Array<unknown>;
 export const RecordsBatchRequestPostsItemURIRecordTagsList =
@@ -2214,7 +1838,7 @@ export interface RecordsBatchRequestPostsItemURIRecord {
   /** Whether the record is receiving the performance and security benefits of Cloudflare. */
   proxied?: boolean;
   /** Settings for the DNS record. */
-  settings?: RecordsBatchRequestPostsItemURIRecordSettings;
+  settings?: RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings;
   /** Custom tags for the DNS record. This field has no effect on DNS responses. */
   tags?: RecordsBatchRequestPostsItemURIRecordTagsList;
 }
@@ -2229,7 +1853,9 @@ export const RecordsBatchRequestPostsItemURIRecord = /*@__PURE__*/ S.suspend(
       data: S.optional(RecordsBatchRequestPostsItemURIRecordData),
       priority: S.optional(S.Number),
       proxied: S.optional(S.Boolean),
-      settings: S.optional(RecordsBatchRequestPostsItemURIRecordSettings),
+      settings: S.optional(
+        RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings,
+      ),
       tags: S.optional(RecordsBatchRequestPostsItemURIRecordTagsList),
     }),
 ).annotate({
@@ -2495,87 +2121,38 @@ export const RecordsBatchRequestPostsList = /*@__PURE__*/ S.Array(
   RecordsBatchRequestPostsItem,
 ) as any as S.Schema<RecordsBatchRequestPostsList>;
 
-export interface RecordsBatchRequestPutsItemARecord {
-  /** Identifier. */
-  id: string;
-}
-export const RecordsBatchRequestPutsItemARecord = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-  }),
-).annotate({
-  identifier: "RecordsBatchRequestPutsItemARecord",
-}) as any as S.Schema<RecordsBatchRequestPutsItemARecord>;
+export type RecordsBatchRequestPutsItemARecord = RecordsBatchRequestDeletesItem;
+export const RecordsBatchRequestPutsItemARecord =
+  RecordsBatchRequestDeletesItem;
 
-export interface RecordsBatchRequestPutsItemAAAARecord {
-  /** Identifier. */
-  id: string;
-}
-export const RecordsBatchRequestPutsItemAAAARecord = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.String,
-    }),
-).annotate({
-  identifier: "RecordsBatchRequestPutsItemAAAARecord",
-}) as any as S.Schema<RecordsBatchRequestPutsItemAAAARecord>;
+export type RecordsBatchRequestPutsItemAAAARecord =
+  RecordsBatchRequestDeletesItem;
+export const RecordsBatchRequestPutsItemAAAARecord =
+  RecordsBatchRequestDeletesItem;
 
-export interface RecordsBatchRequestPutsItemCNAMERecord {
-  /** Identifier. */
-  id: string;
-}
-export const RecordsBatchRequestPutsItemCNAMERecord = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.String,
-    }),
-).annotate({
-  identifier: "RecordsBatchRequestPutsItemCNAMERecord",
-}) as any as S.Schema<RecordsBatchRequestPutsItemCNAMERecord>;
+export type RecordsBatchRequestPutsItemCNAMERecord =
+  RecordsBatchRequestDeletesItem;
+export const RecordsBatchRequestPutsItemCNAMERecord =
+  RecordsBatchRequestDeletesItem;
 
-export interface RecordsBatchRequestPutsItemMXRecord {
-  /** Identifier. */
-  id: string;
-}
-export const RecordsBatchRequestPutsItemMXRecord = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-  }),
-).annotate({
-  identifier: "RecordsBatchRequestPutsItemMXRecord",
-}) as any as S.Schema<RecordsBatchRequestPutsItemMXRecord>;
+export type RecordsBatchRequestPutsItemMXRecord =
+  RecordsBatchRequestDeletesItem;
+export const RecordsBatchRequestPutsItemMXRecord =
+  RecordsBatchRequestDeletesItem;
 
-export interface RecordsBatchRequestPutsItemNSRecord {
-  /** Identifier. */
-  id: string;
-}
-export const RecordsBatchRequestPutsItemNSRecord = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-  }),
-).annotate({
-  identifier: "RecordsBatchRequestPutsItemNSRecord",
-}) as any as S.Schema<RecordsBatchRequestPutsItemNSRecord>;
+export type RecordsBatchRequestPutsItemNSRecord =
+  RecordsBatchRequestDeletesItem;
+export const RecordsBatchRequestPutsItemNSRecord =
+  RecordsBatchRequestDeletesItem;
 
 export type RecordsBatchRequestPutsItemOpenpgpkeyRecordType = "OPENPGPKEY";
 export const RecordsBatchRequestPutsItemOpenpgpkeyRecordType =
   /*@__PURE__*/ S.String;
 
-export interface RecordsBatchRequestPutsItemOpenpgpkeyRecordSettings {
-  /** When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv4Only?: boolean;
-  /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv6Only?: boolean;
-}
+export type RecordsBatchRequestPutsItemOpenpgpkeyRecordSettings =
+  RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings;
 export const RecordsBatchRequestPutsItemOpenpgpkeyRecordSettings =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ipv4Only: S.optional(S.Boolean.pipe(T.Body("ipv4_only"))),
-      ipv6Only: S.optional(S.Boolean.pipe(T.Body("ipv6_only"))),
-    }),
-  ).annotate({
-    identifier: "RecordsBatchRequestPutsItemOpenpgpkeyRecordSettings",
-  }) as any as S.Schema<RecordsBatchRequestPutsItemOpenpgpkeyRecordSettings>;
+  RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings;
 
 export type RecordsBatchRequestPutsItemOpenpgpkeyRecordTagsList =
   Array<unknown>;
@@ -2600,7 +2177,7 @@ export interface RecordsBatchRequestPutsItemOpenpgpkeyRecord {
   /** Whether the record is receiving the performance and security benefits of Cloudflare. */
   proxied?: boolean;
   /** Settings for the DNS record. */
-  settings?: RecordsBatchRequestPutsItemOpenpgpkeyRecordSettings;
+  settings?: RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings;
   /** Custom tags for the DNS record. This field has no effect on DNS responses. */
   tags?: RecordsBatchRequestPutsItemOpenpgpkeyRecordTagsList;
 }
@@ -2614,229 +2191,112 @@ export const RecordsBatchRequestPutsItemOpenpgpkeyRecord =
       comment: S.optional(S.String),
       content: S.optional(S.String),
       proxied: S.optional(S.Boolean),
-      settings: S.optional(RecordsBatchRequestPutsItemOpenpgpkeyRecordSettings),
+      settings: S.optional(
+        RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings,
+      ),
       tags: S.optional(RecordsBatchRequestPutsItemOpenpgpkeyRecordTagsList),
     }),
   ).annotate({
     identifier: "RecordsBatchRequestPutsItemOpenpgpkeyRecord",
   }) as any as S.Schema<RecordsBatchRequestPutsItemOpenpgpkeyRecord>;
 
-export interface RecordsBatchRequestPutsItemPTRRecord {
-  /** Identifier. */
-  id: string;
-}
-export const RecordsBatchRequestPutsItemPTRRecord = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.String,
-    }),
-).annotate({
-  identifier: "RecordsBatchRequestPutsItemPTRRecord",
-}) as any as S.Schema<RecordsBatchRequestPutsItemPTRRecord>;
+export type RecordsBatchRequestPutsItemPTRRecord =
+  RecordsBatchRequestDeletesItem;
+export const RecordsBatchRequestPutsItemPTRRecord =
+  RecordsBatchRequestDeletesItem;
 
-export interface RecordsBatchRequestPutsItemTXTRecord {
-  /** Identifier. */
-  id: string;
-}
-export const RecordsBatchRequestPutsItemTXTRecord = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.String,
-    }),
-).annotate({
-  identifier: "RecordsBatchRequestPutsItemTXTRecord",
-}) as any as S.Schema<RecordsBatchRequestPutsItemTXTRecord>;
+export type RecordsBatchRequestPutsItemTXTRecord =
+  RecordsBatchRequestDeletesItem;
+export const RecordsBatchRequestPutsItemTXTRecord =
+  RecordsBatchRequestDeletesItem;
 
-export interface RecordsBatchRequestPutsItemCAARecord {
-  /** Identifier. */
-  id: string;
-}
-export const RecordsBatchRequestPutsItemCAARecord = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.String,
-    }),
-).annotate({
-  identifier: "RecordsBatchRequestPutsItemCAARecord",
-}) as any as S.Schema<RecordsBatchRequestPutsItemCAARecord>;
+export type RecordsBatchRequestPutsItemCAARecord =
+  RecordsBatchRequestDeletesItem;
+export const RecordsBatchRequestPutsItemCAARecord =
+  RecordsBatchRequestDeletesItem;
 
-export interface RecordsBatchRequestPutsItemCERTRecord {
-  /** Identifier. */
-  id: string;
-}
-export const RecordsBatchRequestPutsItemCERTRecord = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.String,
-    }),
-).annotate({
-  identifier: "RecordsBatchRequestPutsItemCERTRecord",
-}) as any as S.Schema<RecordsBatchRequestPutsItemCERTRecord>;
+export type RecordsBatchRequestPutsItemCERTRecord =
+  RecordsBatchRequestDeletesItem;
+export const RecordsBatchRequestPutsItemCERTRecord =
+  RecordsBatchRequestDeletesItem;
 
-export interface RecordsBatchRequestPutsItemDNSKEYRecord {
-  /** Identifier. */
-  id: string;
-}
-export const RecordsBatchRequestPutsItemDNSKEYRecord = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.String,
-    }),
-).annotate({
-  identifier: "RecordsBatchRequestPutsItemDNSKEYRecord",
-}) as any as S.Schema<RecordsBatchRequestPutsItemDNSKEYRecord>;
+export type RecordsBatchRequestPutsItemDNSKEYRecord =
+  RecordsBatchRequestDeletesItem;
+export const RecordsBatchRequestPutsItemDNSKEYRecord =
+  RecordsBatchRequestDeletesItem;
 
-export interface RecordsBatchRequestPutsItemDSRecord {
-  /** Identifier. */
-  id: string;
-}
-export const RecordsBatchRequestPutsItemDSRecord = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-  }),
-).annotate({
-  identifier: "RecordsBatchRequestPutsItemDSRecord",
-}) as any as S.Schema<RecordsBatchRequestPutsItemDSRecord>;
+export type RecordsBatchRequestPutsItemDSRecord =
+  RecordsBatchRequestDeletesItem;
+export const RecordsBatchRequestPutsItemDSRecord =
+  RecordsBatchRequestDeletesItem;
 
-export interface RecordsBatchRequestPutsItemHTTPSRecord {
-  /** Identifier. */
-  id: string;
-}
-export const RecordsBatchRequestPutsItemHTTPSRecord = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.String,
-    }),
-).annotate({
-  identifier: "RecordsBatchRequestPutsItemHTTPSRecord",
-}) as any as S.Schema<RecordsBatchRequestPutsItemHTTPSRecord>;
+export type RecordsBatchRequestPutsItemHTTPSRecord =
+  RecordsBatchRequestDeletesItem;
+export const RecordsBatchRequestPutsItemHTTPSRecord =
+  RecordsBatchRequestDeletesItem;
 
-export interface RecordsBatchRequestPutsItemLOCRecord {
-  /** Identifier. */
-  id: string;
-}
-export const RecordsBatchRequestPutsItemLOCRecord = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.String,
-    }),
-).annotate({
-  identifier: "RecordsBatchRequestPutsItemLOCRecord",
-}) as any as S.Schema<RecordsBatchRequestPutsItemLOCRecord>;
+export type RecordsBatchRequestPutsItemLOCRecord =
+  RecordsBatchRequestDeletesItem;
+export const RecordsBatchRequestPutsItemLOCRecord =
+  RecordsBatchRequestDeletesItem;
 
-export interface RecordsBatchRequestPutsItemNAPTRRecord {
-  /** Identifier. */
-  id: string;
-}
-export const RecordsBatchRequestPutsItemNAPTRRecord = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.String,
-    }),
-).annotate({
-  identifier: "RecordsBatchRequestPutsItemNAPTRRecord",
-}) as any as S.Schema<RecordsBatchRequestPutsItemNAPTRRecord>;
+export type RecordsBatchRequestPutsItemNAPTRRecord =
+  RecordsBatchRequestDeletesItem;
+export const RecordsBatchRequestPutsItemNAPTRRecord =
+  RecordsBatchRequestDeletesItem;
 
-export interface RecordsBatchRequestPutsItemSMIMEARecord {
-  /** Identifier. */
-  id: string;
-}
-export const RecordsBatchRequestPutsItemSMIMEARecord = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.String,
-    }),
-).annotate({
-  identifier: "RecordsBatchRequestPutsItemSMIMEARecord",
-}) as any as S.Schema<RecordsBatchRequestPutsItemSMIMEARecord>;
+export type RecordsBatchRequestPutsItemSMIMEARecord =
+  RecordsBatchRequestDeletesItem;
+export const RecordsBatchRequestPutsItemSMIMEARecord =
+  RecordsBatchRequestDeletesItem;
 
-export interface RecordsBatchRequestPutsItemSRVRecord {
-  /** Identifier. */
-  id: string;
-}
-export const RecordsBatchRequestPutsItemSRVRecord = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.String,
-    }),
-).annotate({
-  identifier: "RecordsBatchRequestPutsItemSRVRecord",
-}) as any as S.Schema<RecordsBatchRequestPutsItemSRVRecord>;
+export type RecordsBatchRequestPutsItemSRVRecord =
+  RecordsBatchRequestDeletesItem;
+export const RecordsBatchRequestPutsItemSRVRecord =
+  RecordsBatchRequestDeletesItem;
 
-export interface RecordsBatchRequestPutsItemSSHFPRecord {
-  /** Identifier. */
-  id: string;
-}
-export const RecordsBatchRequestPutsItemSSHFPRecord = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.String,
-    }),
-).annotate({
-  identifier: "RecordsBatchRequestPutsItemSSHFPRecord",
-}) as any as S.Schema<RecordsBatchRequestPutsItemSSHFPRecord>;
+export type RecordsBatchRequestPutsItemSSHFPRecord =
+  RecordsBatchRequestDeletesItem;
+export const RecordsBatchRequestPutsItemSSHFPRecord =
+  RecordsBatchRequestDeletesItem;
 
-export interface RecordsBatchRequestPutsItemSVCBRecord {
-  /** Identifier. */
-  id: string;
-}
-export const RecordsBatchRequestPutsItemSVCBRecord = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.String,
-    }),
-).annotate({
-  identifier: "RecordsBatchRequestPutsItemSVCBRecord",
-}) as any as S.Schema<RecordsBatchRequestPutsItemSVCBRecord>;
+export type RecordsBatchRequestPutsItemSVCBRecord =
+  RecordsBatchRequestDeletesItem;
+export const RecordsBatchRequestPutsItemSVCBRecord =
+  RecordsBatchRequestDeletesItem;
 
-export interface RecordsBatchRequestPutsItemTLSARecord {
-  /** Identifier. */
-  id: string;
-}
-export const RecordsBatchRequestPutsItemTLSARecord = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.String,
-    }),
-).annotate({
-  identifier: "RecordsBatchRequestPutsItemTLSARecord",
-}) as any as S.Schema<RecordsBatchRequestPutsItemTLSARecord>;
+export type RecordsBatchRequestPutsItemTLSARecord =
+  RecordsBatchRequestDeletesItem;
+export const RecordsBatchRequestPutsItemTLSARecord =
+  RecordsBatchRequestDeletesItem;
 
-export interface RecordsBatchRequestPutsItemURIRecord {
-  /** Identifier. */
-  id: string;
-}
-export const RecordsBatchRequestPutsItemURIRecord = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.String,
-    }),
-).annotate({
-  identifier: "RecordsBatchRequestPutsItemURIRecord",
-}) as any as S.Schema<RecordsBatchRequestPutsItemURIRecord>;
+export type RecordsBatchRequestPutsItemURIRecord =
+  RecordsBatchRequestDeletesItem;
+export const RecordsBatchRequestPutsItemURIRecord =
+  RecordsBatchRequestDeletesItem;
 
 export type RecordsBatchRequestPutsItem =
-  | RecordsBatchRequestPutsItemARecord
-  | RecordsBatchRequestPutsItemAAAARecord
-  | RecordsBatchRequestPutsItemCNAMERecord
-  | RecordsBatchRequestPutsItemMXRecord
-  | RecordsBatchRequestPutsItemNSRecord
+  | RecordsBatchRequestDeletesItem
+  | RecordsBatchRequestDeletesItem
+  | RecordsBatchRequestDeletesItem
+  | RecordsBatchRequestDeletesItem
+  | RecordsBatchRequestDeletesItem
   | RecordsBatchRequestPutsItemOpenpgpkeyRecord
-  | RecordsBatchRequestPutsItemPTRRecord
-  | RecordsBatchRequestPutsItemTXTRecord
-  | RecordsBatchRequestPutsItemCAARecord
-  | RecordsBatchRequestPutsItemCERTRecord
-  | RecordsBatchRequestPutsItemDNSKEYRecord
-  | RecordsBatchRequestPutsItemDSRecord
-  | RecordsBatchRequestPutsItemHTTPSRecord
-  | RecordsBatchRequestPutsItemLOCRecord
-  | RecordsBatchRequestPutsItemNAPTRRecord
-  | RecordsBatchRequestPutsItemSMIMEARecord
-  | RecordsBatchRequestPutsItemSRVRecord
-  | RecordsBatchRequestPutsItemSSHFPRecord
-  | RecordsBatchRequestPutsItemSVCBRecord
-  | RecordsBatchRequestPutsItemTLSARecord
-  | RecordsBatchRequestPutsItemURIRecord;
+  | RecordsBatchRequestDeletesItem
+  | RecordsBatchRequestDeletesItem
+  | RecordsBatchRequestDeletesItem
+  | RecordsBatchRequestDeletesItem
+  | RecordsBatchRequestDeletesItem
+  | RecordsBatchRequestDeletesItem
+  | RecordsBatchRequestDeletesItem
+  | RecordsBatchRequestDeletesItem
+  | RecordsBatchRequestDeletesItem
+  | RecordsBatchRequestDeletesItem
+  | RecordsBatchRequestDeletesItem
+  | RecordsBatchRequestDeletesItem
+  | RecordsBatchRequestDeletesItem
+  | RecordsBatchRequestDeletesItem
+  | RecordsBatchRequestDeletesItem;
 export const RecordsBatchRequestPutsItem = /*@__PURE__*/ S.Unknown.pipe(
   T.UnionCases([
     ["id"],
@@ -4892,21 +4352,10 @@ export const RecordsBatchResponsePatchesList = /*@__PURE__*/ S.Array(
   RecordsBatchResponsePatchesItem,
 ) as any as S.Schema<RecordsBatchResponsePatchesList>;
 
-export interface RecordsBatchResponsePostsItemOpenpgpkeyRecord {
-  id?: unknown | null;
-  comment?: unknown | null;
-  content?: unknown | null;
-}
+export type RecordsBatchResponsePostsItemOpenpgpkeyRecord =
+  RecordsBatchResponsePatchesItemOpenpgpkeyRecord;
 export const RecordsBatchResponsePostsItemOpenpgpkeyRecord =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.NullOr(S.Unknown)),
-      comment: S.optional(S.NullOr(S.Unknown)),
-      content: S.optional(S.NullOr(S.Unknown)),
-    }),
-  ).annotate({
-    identifier: "RecordsBatchResponsePostsItemOpenpgpkeyRecord",
-  }) as any as S.Schema<RecordsBatchResponsePostsItemOpenpgpkeyRecord>;
+  RecordsBatchResponsePatchesItemOpenpgpkeyRecord;
 
 export type RecordsBatchResponsePostsItem =
   | RecordsBatchResponseDeletesItemARecord
@@ -4914,7 +4363,7 @@ export type RecordsBatchResponsePostsItem =
   | RecordsBatchResponseDeletesItemCNAMERecord
   | RecordsBatchResponseDeletesItemMXRecord
   | RecordsBatchResponseDeletesItemNSRecord
-  | RecordsBatchResponsePostsItemOpenpgpkeyRecord
+  | RecordsBatchResponsePatchesItemOpenpgpkeyRecord
   | RecordsBatchResponseDeletesItemPTRRecord
   | RecordsBatchResponseDeletesItemTXTRecord
   | RecordsBatchResponseDeletesItemCAARecord
@@ -5122,21 +4571,10 @@ export const RecordsBatchResponsePostsList = /*@__PURE__*/ S.Array(
   RecordsBatchResponsePostsItem,
 ) as any as S.Schema<RecordsBatchResponsePostsList>;
 
-export interface RecordsBatchResponsePutsItemOpenpgpkeyRecord {
-  id?: unknown | null;
-  comment?: unknown | null;
-  content?: unknown | null;
-}
+export type RecordsBatchResponsePutsItemOpenpgpkeyRecord =
+  RecordsBatchResponsePatchesItemOpenpgpkeyRecord;
 export const RecordsBatchResponsePutsItemOpenpgpkeyRecord =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.NullOr(S.Unknown)),
-      comment: S.optional(S.NullOr(S.Unknown)),
-      content: S.optional(S.NullOr(S.Unknown)),
-    }),
-  ).annotate({
-    identifier: "RecordsBatchResponsePutsItemOpenpgpkeyRecord",
-  }) as any as S.Schema<RecordsBatchResponsePutsItemOpenpgpkeyRecord>;
+  RecordsBatchResponsePatchesItemOpenpgpkeyRecord;
 
 export type RecordsBatchResponsePutsItem =
   | RecordsBatchResponseDeletesItemARecord
@@ -5144,7 +4582,7 @@ export type RecordsBatchResponsePutsItem =
   | RecordsBatchResponseDeletesItemCNAMERecord
   | RecordsBatchResponseDeletesItemMXRecord
   | RecordsBatchResponseDeletesItemNSRecord
-  | RecordsBatchResponsePutsItemOpenpgpkeyRecord
+  | RecordsBatchResponsePatchesItemOpenpgpkeyRecord
   | RecordsBatchResponseDeletesItemPTRRecord
   | RecordsBatchResponseDeletesItemTXTRecord
   | RecordsBatchResponseDeletesItemCAARecord
@@ -5393,43 +4831,19 @@ export type RecordsCreateRequestType =
   | "URI";
 export const RecordsCreateRequestType = /*@__PURE__*/ S.String;
 
-export interface RecordsCreateRequestSettingsARecord {
-  /** When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv4Only?: boolean;
-  /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv6Only?: boolean;
-}
-export const RecordsCreateRequestSettingsARecord = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ipv4Only: S.optional(S.Boolean.pipe(T.Body("ipv4_only"))),
-    ipv6Only: S.optional(S.Boolean.pipe(T.Body("ipv6_only"))),
-  }),
-).annotate({
-  identifier: "RecordsCreateRequestSettingsARecord",
-}) as any as S.Schema<RecordsCreateRequestSettingsARecord>;
+export type RecordsCreateRequestSettingsARecord =
+  RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings;
+export const RecordsCreateRequestSettingsARecord =
+  RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings;
 
-export interface RecordsCreateRequestSettingsCNAMERecord {
-  /** If enabled, causes the CNAME record to be resolved externally and the resulting address records (e.g., A and AAAA) to be returned instead of the CNAME record itself. This setting is unavailable for proxied records, since they are always flattened. */
-  flattenCname?: boolean;
-  /** When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv4Only?: boolean;
-  /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv6Only?: boolean;
-}
-export const RecordsCreateRequestSettingsCNAMERecord = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      flattenCname: S.optional(S.Boolean.pipe(T.Body("flatten_cname"))),
-      ipv4Only: S.optional(S.Boolean.pipe(T.Body("ipv4_only"))),
-      ipv6Only: S.optional(S.Boolean.pipe(T.Body("ipv6_only"))),
-    }),
-).annotate({
-  identifier: "RecordsCreateRequestSettingsCNAMERecord",
-}) as any as S.Schema<RecordsCreateRequestSettingsCNAMERecord>;
+export type RecordsCreateRequestSettingsCNAMERecord =
+  RecordsBatchRequestPostsItemCNAMERecordSettings;
+export const RecordsCreateRequestSettingsCNAMERecord =
+  RecordsBatchRequestPostsItemCNAMERecordSettings;
 
 export type RecordsCreateRequestSettings =
-  | RecordsCreateRequestSettingsARecord
-  | RecordsCreateRequestSettingsCNAMERecord;
+  | RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings
+  | RecordsBatchRequestPostsItemCNAMERecordSettings;
 export const RecordsCreateRequestSettings = /*@__PURE__*/ S.Unknown.pipe(
   T.UnionCases([
     ["ipv4Only", "ipv6Only"],
@@ -5442,105 +4856,30 @@ export const RecordsCreateRequestTagsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<RecordsCreateRequestTagsList>;
 
-export interface RecordsCreateRequestDataCAARecord {
-  /** Flags for the CAA record. */
-  flags?: number;
-  /** Name of the property controlled by this record (e.g.: issue, issuewild, iodef). */
-  tag?: string;
-  /** Value of the record. This field's semantics depend on the chosen tag. */
-  value?: string;
-}
-export const RecordsCreateRequestDataCAARecord = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    flags: S.optional(S.Number),
-    tag: S.optional(S.String),
-    value: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RecordsCreateRequestDataCAARecord",
-}) as any as S.Schema<RecordsCreateRequestDataCAARecord>;
+export type RecordsCreateRequestDataCAARecord =
+  RecordsBatchRequestPostsItemCAARecordData;
+export const RecordsCreateRequestDataCAARecord =
+  RecordsBatchRequestPostsItemCAARecordData;
 
-export interface RecordsCreateRequestDataCERTRecord {
-  /** Algorithm. */
-  algorithm?: number;
-  /** Certificate. */
-  certificate?: string;
-  /** Key Tag. */
-  keyTag?: number;
-  /** Type. */
-  type?: number;
-}
-export const RecordsCreateRequestDataCERTRecord = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    algorithm: S.optional(S.Number),
-    certificate: S.optional(S.String),
-    keyTag: S.optional(S.Number.pipe(T.Body("key_tag"))),
-    type: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "RecordsCreateRequestDataCERTRecord",
-}) as any as S.Schema<RecordsCreateRequestDataCERTRecord>;
+export type RecordsCreateRequestDataCERTRecord =
+  RecordsBatchRequestPostsItemCERTRecordData;
+export const RecordsCreateRequestDataCERTRecord =
+  RecordsBatchRequestPostsItemCERTRecordData;
 
-export interface RecordsCreateRequestDataDNSKEYRecord {
-  /** Algorithm. */
-  algorithm?: number;
-  /** Flags. */
-  flags?: number;
-  /** Protocol. */
-  protocol?: number;
-  /** Public Key. */
-  publicKey?: string;
-}
-export const RecordsCreateRequestDataDNSKEYRecord = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      algorithm: S.optional(S.Number),
-      flags: S.optional(S.Number),
-      protocol: S.optional(S.Number),
-      publicKey: S.optional(S.String.pipe(T.Body("public_key"))),
-    }),
-).annotate({
-  identifier: "RecordsCreateRequestDataDNSKEYRecord",
-}) as any as S.Schema<RecordsCreateRequestDataDNSKEYRecord>;
+export type RecordsCreateRequestDataDNSKEYRecord =
+  RecordsBatchRequestPostsItemDNSKEYRecordData;
+export const RecordsCreateRequestDataDNSKEYRecord =
+  RecordsBatchRequestPostsItemDNSKEYRecordData;
 
-export interface RecordsCreateRequestDataDSRecord {
-  /** Algorithm. */
-  algorithm?: number;
-  /** Digest. */
-  digest?: string;
-  /** Digest Type. */
-  digestType?: number;
-  /** Key Tag. */
-  keyTag?: number;
-}
-export const RecordsCreateRequestDataDSRecord = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    algorithm: S.optional(S.Number),
-    digest: S.optional(S.String),
-    digestType: S.optional(S.Number.pipe(T.Body("digest_type"))),
-    keyTag: S.optional(S.Number.pipe(T.Body("key_tag"))),
-  }),
-).annotate({
-  identifier: "RecordsCreateRequestDataDSRecord",
-}) as any as S.Schema<RecordsCreateRequestDataDSRecord>;
+export type RecordsCreateRequestDataDSRecord =
+  RecordsBatchRequestPostsItemDSRecordData;
+export const RecordsCreateRequestDataDSRecord =
+  RecordsBatchRequestPostsItemDSRecordData;
 
-export interface RecordsCreateRequestDataHTTPSRecord {
-  /** Priority. */
-  priority?: number;
-  /** Target. */
-  target?: string;
-  /** Value. */
-  value?: string;
-}
-export const RecordsCreateRequestDataHTTPSRecord = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    priority: S.optional(S.Number),
-    target: S.optional(S.String),
-    value: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RecordsCreateRequestDataHTTPSRecord",
-}) as any as S.Schema<RecordsCreateRequestDataHTTPSRecord>;
+export type RecordsCreateRequestDataHTTPSRecord =
+  RecordsBatchRequestPostsItemHTTPSRecordData;
+export const RecordsCreateRequestDataHTTPSRecord =
+  RecordsBatchRequestPostsItemHTTPSRecordData;
 
 export type RecordsCreateRequestDataLOCRecordLatDirection = "N" | "S";
 export const RecordsCreateRequestDataLOCRecordLatDirection =
@@ -5605,121 +4944,43 @@ export const RecordsCreateRequestDataLOCRecord = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsCreateRequestDataLOCRecord",
 }) as any as S.Schema<RecordsCreateRequestDataLOCRecord>;
 
-export interface RecordsCreateRequestDataNAPTRRecord {
-  /** Flags. */
-  flags?: string;
-  /** Order. */
-  order?: number;
-  /** Preference. */
-  preference?: number;
-  /** Regex. */
-  regex?: string;
-  /** Replacement. */
-  replacement?: string;
-  /** Service. */
-  service?: string;
-}
-export const RecordsCreateRequestDataNAPTRRecord = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    flags: S.optional(S.String),
-    order: S.optional(S.Number),
-    preference: S.optional(S.Number),
-    regex: S.optional(S.String),
-    replacement: S.optional(S.String),
-    service: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RecordsCreateRequestDataNAPTRRecord",
-}) as any as S.Schema<RecordsCreateRequestDataNAPTRRecord>;
+export type RecordsCreateRequestDataNAPTRRecord =
+  RecordsBatchRequestPostsItemNAPTRRecordData;
+export const RecordsCreateRequestDataNAPTRRecord =
+  RecordsBatchRequestPostsItemNAPTRRecordData;
 
-export interface RecordsCreateRequestDataSMIMEARecord {
-  /** Certificate. */
-  certificate?: string;
-  /** Matching Type. */
-  matchingType?: number;
-  /** Selector. */
-  selector?: number;
-  /** Usage. */
-  usage?: number;
-}
-export const RecordsCreateRequestDataSMIMEARecord = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      certificate: S.optional(S.String),
-      matchingType: S.optional(S.Number.pipe(T.Body("matching_type"))),
-      selector: S.optional(S.Number),
-      usage: S.optional(S.Number),
-    }),
-).annotate({
-  identifier: "RecordsCreateRequestDataSMIMEARecord",
-}) as any as S.Schema<RecordsCreateRequestDataSMIMEARecord>;
+export type RecordsCreateRequestDataSMIMEARecord =
+  RecordsBatchRequestPostsItemSMIMEARecordData;
+export const RecordsCreateRequestDataSMIMEARecord =
+  RecordsBatchRequestPostsItemSMIMEARecordData;
 
-export interface RecordsCreateRequestDataSRVRecord {
-  /** The port of the service. */
-  port?: number;
-  /** Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map. */
-  priority?: number;
-  /** A valid hostname. */
-  target?: string;
-  /** The record weight. */
-  weight?: number;
-}
-export const RecordsCreateRequestDataSRVRecord = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    port: S.optional(S.Number),
-    priority: S.optional(S.Number),
-    target: S.optional(S.String),
-    weight: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "RecordsCreateRequestDataSRVRecord",
-}) as any as S.Schema<RecordsCreateRequestDataSRVRecord>;
+export type RecordsCreateRequestDataSRVRecord =
+  RecordsBatchRequestPostsItemSRVRecordData;
+export const RecordsCreateRequestDataSRVRecord =
+  RecordsBatchRequestPostsItemSRVRecordData;
 
-export interface RecordsCreateRequestDataSSHFPRecord {
-  /** Algorithm. */
-  algorithm?: number;
-  /** Fingerprint. */
-  fingerprint?: string;
-  /** Type. */
-  type?: number;
-}
-export const RecordsCreateRequestDataSSHFPRecord = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    algorithm: S.optional(S.Number),
-    fingerprint: S.optional(S.String),
-    type: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "RecordsCreateRequestDataSSHFPRecord",
-}) as any as S.Schema<RecordsCreateRequestDataSSHFPRecord>;
+export type RecordsCreateRequestDataSSHFPRecord =
+  RecordsBatchRequestPostsItemSSHFPRecordData;
+export const RecordsCreateRequestDataSSHFPRecord =
+  RecordsBatchRequestPostsItemSSHFPRecordData;
 
-export interface RecordsCreateRequestDataURIRecord {
-  /** The record content. */
-  target?: string;
-  /** The record weight. */
-  weight?: number;
-}
-export const RecordsCreateRequestDataURIRecord = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    target: S.optional(S.String),
-    weight: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "RecordsCreateRequestDataURIRecord",
-}) as any as S.Schema<RecordsCreateRequestDataURIRecord>;
+export type RecordsCreateRequestDataURIRecord =
+  RecordsBatchRequestPostsItemURIRecordData;
+export const RecordsCreateRequestDataURIRecord =
+  RecordsBatchRequestPostsItemURIRecordData;
 
 export type RecordsCreateRequestData =
-  | RecordsCreateRequestDataCAARecord
-  | RecordsCreateRequestDataCERTRecord
-  | RecordsCreateRequestDataDNSKEYRecord
-  | RecordsCreateRequestDataDSRecord
-  | RecordsCreateRequestDataHTTPSRecord
+  | RecordsBatchRequestPostsItemCAARecordData
+  | RecordsBatchRequestPostsItemCERTRecordData
+  | RecordsBatchRequestPostsItemDNSKEYRecordData
+  | RecordsBatchRequestPostsItemDSRecordData
+  | RecordsBatchRequestPostsItemHTTPSRecordData
   | RecordsCreateRequestDataLOCRecord
-  | RecordsCreateRequestDataNAPTRRecord
-  | RecordsCreateRequestDataSMIMEARecord
-  | RecordsCreateRequestDataSRVRecord
-  | RecordsCreateRequestDataSSHFPRecord
-  | RecordsCreateRequestDataURIRecord;
+  | RecordsBatchRequestPostsItemNAPTRRecordData
+  | RecordsBatchRequestPostsItemSMIMEARecordData
+  | RecordsBatchRequestPostsItemSRVRecordData
+  | RecordsBatchRequestPostsItemSSHFPRecordData
+  | RecordsBatchRequestPostsItemURIRecordData;
 export const RecordsCreateRequestData = /*@__PURE__*/ S.Unknown.pipe(
   T.UnionCases([
     ["flags", "tag", "value"],
@@ -6297,21 +5558,10 @@ export const RecordsCreateResultOpenpgpkeyRecordMeta = /*@__PURE__*/ S.suspend(
   identifier: "RecordsCreateResultOpenpgpkeyRecordMeta",
 }) as any as S.Schema<RecordsCreateResultOpenpgpkeyRecordMeta>;
 
-export interface RecordsCreateResultOpenpgpkeyRecordSettings {
-  /** When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv4Only?: boolean | null;
-  /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv6Only?: boolean | null;
-}
+export type RecordsCreateResultOpenpgpkeyRecordSettings =
+  RecordsBatchResponseDeletesItemOpenpgpkeyRecordSettings;
 export const RecordsCreateResultOpenpgpkeyRecordSettings =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ipv4Only: S.optional(S.NullOr(S.Boolean).pipe(T.Body("ipv4_only"))),
-      ipv6Only: S.optional(S.NullOr(S.Boolean).pipe(T.Body("ipv6_only"))),
-    }),
-  ).annotate({
-    identifier: "RecordsCreateResultOpenpgpkeyRecordSettings",
-  }) as any as S.Schema<RecordsCreateResultOpenpgpkeyRecordSettings>;
+  RecordsBatchResponseDeletesItemOpenpgpkeyRecordSettings;
 
 export type RecordsCreateResultOpenpgpkeyRecordTagsList = Array<unknown>;
 export const RecordsCreateResultOpenpgpkeyRecordTagsList =
@@ -6342,7 +5592,7 @@ export interface RecordsCreateResultOpenpgpkeyRecord {
   /** Whether the record is receiving the performance and security benefits of Cloudflare. */
   proxied: boolean;
   /** Settings for the DNS record. */
-  settings: RecordsCreateResultOpenpgpkeyRecordSettings;
+  settings: RecordsBatchResponseDeletesItemOpenpgpkeyRecordSettings;
   /** Custom tags for the DNS record. This field has no effect on DNS responses. */
   tags: RecordsCreateResultOpenpgpkeyRecordTagsList;
   /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
@@ -6365,7 +5615,7 @@ export const RecordsCreateResultOpenpgpkeyRecord = /*@__PURE__*/ S.suspend(() =>
     name: S.String,
     proxiable: S.Boolean,
     proxied: S.Boolean,
-    settings: RecordsCreateResultOpenpgpkeyRecordSettings,
+    settings: RecordsBatchResponseDeletesItemOpenpgpkeyRecordSettings,
     tags: RecordsCreateResultOpenpgpkeyRecordTagsList,
     ttl: S.Number,
     type: RecordsCreateResultOpenpgpkeyRecordType,
@@ -9849,21 +9099,10 @@ export const RecordsGetResultOpenpgpkeyRecordMeta = /*@__PURE__*/ S.suspend(
   identifier: "RecordsGetResultOpenpgpkeyRecordMeta",
 }) as any as S.Schema<RecordsGetResultOpenpgpkeyRecordMeta>;
 
-export interface RecordsGetResultOpenpgpkeyRecordSettings {
-  /** When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv4Only?: boolean | null;
-  /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv6Only?: boolean | null;
-}
-export const RecordsGetResultOpenpgpkeyRecordSettings = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      ipv4Only: S.optional(S.NullOr(S.Boolean).pipe(T.Body("ipv4_only"))),
-      ipv6Only: S.optional(S.NullOr(S.Boolean).pipe(T.Body("ipv6_only"))),
-    }),
-).annotate({
-  identifier: "RecordsGetResultOpenpgpkeyRecordSettings",
-}) as any as S.Schema<RecordsGetResultOpenpgpkeyRecordSettings>;
+export type RecordsGetResultOpenpgpkeyRecordSettings =
+  RecordsBatchResponseDeletesItemOpenpgpkeyRecordSettings;
+export const RecordsGetResultOpenpgpkeyRecordSettings =
+  RecordsBatchResponseDeletesItemOpenpgpkeyRecordSettings;
 
 export type RecordsGetResultOpenpgpkeyRecordTagsList = Array<unknown>;
 export const RecordsGetResultOpenpgpkeyRecordTagsList = /*@__PURE__*/ S.Array(
@@ -9893,7 +9132,7 @@ export interface RecordsGetResultOpenpgpkeyRecord {
   /** Whether the record is receiving the performance and security benefits of Cloudflare. */
   proxied: boolean;
   /** Settings for the DNS record. */
-  settings: RecordsGetResultOpenpgpkeyRecordSettings;
+  settings: RecordsBatchResponseDeletesItemOpenpgpkeyRecordSettings;
   /** Custom tags for the DNS record. This field has no effect on DNS responses. */
   tags: RecordsGetResultOpenpgpkeyRecordTagsList;
   /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
@@ -9916,7 +9155,7 @@ export const RecordsGetResultOpenpgpkeyRecord = /*@__PURE__*/ S.suspend(() =>
     name: S.String,
     proxiable: S.Boolean,
     proxied: S.Boolean,
-    settings: RecordsGetResultOpenpgpkeyRecordSettings,
+    settings: RecordsBatchResponseDeletesItemOpenpgpkeyRecordSettings,
     tags: RecordsGetResultOpenpgpkeyRecordTagsList,
     ttl: S.Number,
     type: RecordsGetResultOpenpgpkeyRecordType,
@@ -11896,19 +11135,10 @@ export const GetSettingZoneRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetSettingZoneRequest",
 }) as any as S.Schema<GetSettingZoneRequest>;
 
-export interface SettingsZoneGetResponseInternalDns {
-  /** The ID of the zone to fallback to. */
-  referenceZoneId?: string | null;
-}
-export const SettingsZoneGetResponseInternalDns = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    referenceZoneId: S.optional(
-      S.NullOr(S.String).pipe(T.Body("reference_zone_id")),
-    ),
-  }),
-).annotate({
-  identifier: "SettingsZoneGetResponseInternalDns",
-}) as any as S.Schema<SettingsZoneGetResponseInternalDns>;
+export type SettingsZoneGetResponseInternalDns =
+  SettingsAccountGetResponseZoneDefaultsInternalDns;
+export const SettingsZoneGetResponseInternalDns =
+  SettingsAccountGetResponseZoneDefaultsInternalDns;
 
 export type SettingsZoneGetResponseNameserversType =
   | "cloudflare.standard"
@@ -11932,35 +11162,10 @@ export const SettingsZoneGetResponseNameservers = /*@__PURE__*/ S.suspend(() =>
   identifier: "SettingsZoneGetResponseNameservers",
 }) as any as S.Schema<SettingsZoneGetResponseNameservers>;
 
-export interface SettingsZoneGetResponseSoa {
-  /** Time in seconds of being unable to query the primary server after which secondary servers should stop serving the zone. */
-  expire?: number | null;
-  /** The time to live (TTL) for negative caching of records within the zone. */
-  minTtl?: number | null;
-  /** The primary nameserver, which may be used for outbound zone transfers. If null, a Cloudflare-assigned value will be used. */
-  mname?: string | null;
-  /** Time in seconds after which secondary servers should re-check the SOA record to see if the zone has been updated. */
-  refresh?: number | null;
-  /** Time in seconds after which secondary servers should retry queries after the primary server was unresponsive. */
-  retry?: number | null;
-  /** The email address of the zone administrator, with the first label representing the local part of the email address. */
-  rname?: string | null;
-  /** The time to live (TTL) of the SOA record itself. */
-  ttl?: number | null;
-}
-export const SettingsZoneGetResponseSoa = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    expire: S.optional(S.NullOr(S.Number)),
-    minTtl: S.optional(S.NullOr(S.Number).pipe(T.Body("min_ttl"))),
-    mname: S.optional(S.NullOr(S.String)),
-    refresh: S.optional(S.NullOr(S.Number)),
-    retry: S.optional(S.NullOr(S.Number)),
-    rname: S.optional(S.NullOr(S.String)),
-    ttl: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({
-  identifier: "SettingsZoneGetResponseSoa",
-}) as any as S.Schema<SettingsZoneGetResponseSoa>;
+export type SettingsZoneGetResponseSoa =
+  SettingsAccountGetResponseZoneDefaultsSoa;
+export const SettingsZoneGetResponseSoa =
+  SettingsAccountGetResponseZoneDefaultsSoa;
 
 export type SettingsZoneGetResponseZoneMode =
   | "standard"
@@ -11975,7 +11180,7 @@ export interface GetSettingZoneResponse {
   /** Whether to enable Foundation DNS Advanced Nameservers on the zone. */
   foundationDns: boolean;
   /** Settings for this internal zone. */
-  internalDns: SettingsZoneGetResponseInternalDns;
+  internalDns: SettingsAccountGetResponseZoneDefaultsInternalDns;
   /** Whether to enable multi-provider DNS, which causes Cloudflare to activate the zone even when non-Cloudflare NS records exist, and to respect NS records at the zone apex during outbound zone transfers. */
   multiProvider: boolean;
   /** Settings determining the nameservers through which the zone should be available. */
@@ -11985,7 +11190,7 @@ export interface GetSettingZoneResponse {
   /** Allows a Secondary DNS zone to use (proxied) override records and CNAME flattening at the zone apex. */
   secondaryOverrides: boolean;
   /** Components of the zone's SOA record. */
-  soa: SettingsZoneGetResponseSoa;
+  soa: SettingsAccountGetResponseZoneDefaultsSoa;
   /** Whether the zone mode is a regular or CDN/DNS only zone. */
   zoneMode: SettingsZoneGetResponseZoneMode;
 }
@@ -11993,14 +11198,14 @@ export const GetSettingZoneResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     flattenAllCnames: S.Boolean.pipe(T.Body("flatten_all_cnames")),
     foundationDns: S.Boolean.pipe(T.Body("foundation_dns")),
-    internalDns: SettingsZoneGetResponseInternalDns.pipe(
+    internalDns: SettingsAccountGetResponseZoneDefaultsInternalDns.pipe(
       T.Body("internal_dns"),
     ),
     multiProvider: S.Boolean.pipe(T.Body("multi_provider")),
     nameservers: SettingsZoneGetResponseNameservers,
     nsTtl: S.Number.pipe(T.Body("ns_ttl")),
     secondaryOverrides: S.Boolean.pipe(T.Body("secondary_overrides")),
-    soa: SettingsZoneGetResponseSoa,
+    soa: SettingsAccountGetResponseZoneDefaultsSoa,
     zoneMode: SettingsZoneGetResponseZoneMode.pipe(T.Body("zone_mode")),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
@@ -13090,21 +12295,10 @@ export const RecordsListResultItemOpenpgpkeyRecordMeta =
     identifier: "RecordsListResultItemOpenpgpkeyRecordMeta",
   }) as any as S.Schema<RecordsListResultItemOpenpgpkeyRecordMeta>;
 
-export interface RecordsListResultItemOpenpgpkeyRecordSettings {
-  /** When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv4Only?: boolean | null;
-  /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv6Only?: boolean | null;
-}
+export type RecordsListResultItemOpenpgpkeyRecordSettings =
+  RecordsBatchResponseDeletesItemOpenpgpkeyRecordSettings;
 export const RecordsListResultItemOpenpgpkeyRecordSettings =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ipv4Only: S.optional(S.NullOr(S.Boolean).pipe(T.Body("ipv4_only"))),
-      ipv6Only: S.optional(S.NullOr(S.Boolean).pipe(T.Body("ipv6_only"))),
-    }),
-  ).annotate({
-    identifier: "RecordsListResultItemOpenpgpkeyRecordSettings",
-  }) as any as S.Schema<RecordsListResultItemOpenpgpkeyRecordSettings>;
+  RecordsBatchResponseDeletesItemOpenpgpkeyRecordSettings;
 
 export type RecordsListResultItemOpenpgpkeyRecordTagsList = Array<unknown>;
 export const RecordsListResultItemOpenpgpkeyRecordTagsList =
@@ -13135,7 +12329,7 @@ export interface RecordsListResultItemOpenpgpkeyRecord {
   /** Whether the record is receiving the performance and security benefits of Cloudflare. */
   proxied: boolean;
   /** Settings for the DNS record. */
-  settings: RecordsListResultItemOpenpgpkeyRecordSettings;
+  settings: RecordsBatchResponseDeletesItemOpenpgpkeyRecordSettings;
   /** Custom tags for the DNS record. This field has no effect on DNS responses. */
   tags: RecordsListResultItemOpenpgpkeyRecordTagsList;
   /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
@@ -13159,7 +12353,7 @@ export const RecordsListResultItemOpenpgpkeyRecord = /*@__PURE__*/ S.suspend(
       name: S.String,
       proxiable: S.Boolean,
       proxied: S.Boolean,
-      settings: RecordsListResultItemOpenpgpkeyRecordSettings,
+      settings: RecordsBatchResponseDeletesItemOpenpgpkeyRecordSettings,
       tags: RecordsListResultItemOpenpgpkeyRecordTagsList,
       ttl: S.Number,
       type: RecordsListResultItemOpenpgpkeyRecordType,
@@ -15442,43 +14636,19 @@ export type RecordsEditRequestType =
   | "URI";
 export const RecordsEditRequestType = /*@__PURE__*/ S.String;
 
-export interface RecordsEditRequestSettingsARecord {
-  /** When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv4Only?: boolean;
-  /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv6Only?: boolean;
-}
-export const RecordsEditRequestSettingsARecord = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ipv4Only: S.optional(S.Boolean.pipe(T.Body("ipv4_only"))),
-    ipv6Only: S.optional(S.Boolean.pipe(T.Body("ipv6_only"))),
-  }),
-).annotate({
-  identifier: "RecordsEditRequestSettingsARecord",
-}) as any as S.Schema<RecordsEditRequestSettingsARecord>;
+export type RecordsEditRequestSettingsARecord =
+  RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings;
+export const RecordsEditRequestSettingsARecord =
+  RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings;
 
-export interface RecordsEditRequestSettingsCNAMERecord {
-  /** If enabled, causes the CNAME record to be resolved externally and the resulting address records (e.g., A and AAAA) to be returned instead of the CNAME record itself. This setting is unavailable for proxied records, since they are always flattened. */
-  flattenCname?: boolean;
-  /** When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv4Only?: boolean;
-  /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv6Only?: boolean;
-}
-export const RecordsEditRequestSettingsCNAMERecord = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      flattenCname: S.optional(S.Boolean.pipe(T.Body("flatten_cname"))),
-      ipv4Only: S.optional(S.Boolean.pipe(T.Body("ipv4_only"))),
-      ipv6Only: S.optional(S.Boolean.pipe(T.Body("ipv6_only"))),
-    }),
-).annotate({
-  identifier: "RecordsEditRequestSettingsCNAMERecord",
-}) as any as S.Schema<RecordsEditRequestSettingsCNAMERecord>;
+export type RecordsEditRequestSettingsCNAMERecord =
+  RecordsBatchRequestPostsItemCNAMERecordSettings;
+export const RecordsEditRequestSettingsCNAMERecord =
+  RecordsBatchRequestPostsItemCNAMERecordSettings;
 
 export type RecordsEditRequestSettings =
-  | RecordsEditRequestSettingsARecord
-  | RecordsEditRequestSettingsCNAMERecord;
+  | RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings
+  | RecordsBatchRequestPostsItemCNAMERecordSettings;
 export const RecordsEditRequestSettings = /*@__PURE__*/ S.Unknown.pipe(
   T.UnionCases([
     ["ipv4Only", "ipv6Only"],
@@ -15491,104 +14661,30 @@ export const RecordsEditRequestTagsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<RecordsEditRequestTagsList>;
 
-export interface RecordsEditRequestDataCAARecord {
-  /** Flags for the CAA record. */
-  flags?: number;
-  /** Name of the property controlled by this record (e.g.: issue, issuewild, iodef). */
-  tag?: string;
-  /** Value of the record. This field's semantics depend on the chosen tag. */
-  value?: string;
-}
-export const RecordsEditRequestDataCAARecord = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    flags: S.optional(S.Number),
-    tag: S.optional(S.String),
-    value: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RecordsEditRequestDataCAARecord",
-}) as any as S.Schema<RecordsEditRequestDataCAARecord>;
+export type RecordsEditRequestDataCAARecord =
+  RecordsBatchRequestPostsItemCAARecordData;
+export const RecordsEditRequestDataCAARecord =
+  RecordsBatchRequestPostsItemCAARecordData;
 
-export interface RecordsEditRequestDataCERTRecord {
-  /** Algorithm. */
-  algorithm?: number;
-  /** Certificate. */
-  certificate?: string;
-  /** Key Tag. */
-  keyTag?: number;
-  /** Type. */
-  type?: number;
-}
-export const RecordsEditRequestDataCERTRecord = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    algorithm: S.optional(S.Number),
-    certificate: S.optional(S.String),
-    keyTag: S.optional(S.Number.pipe(T.Body("key_tag"))),
-    type: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "RecordsEditRequestDataCERTRecord",
-}) as any as S.Schema<RecordsEditRequestDataCERTRecord>;
+export type RecordsEditRequestDataCERTRecord =
+  RecordsBatchRequestPostsItemCERTRecordData;
+export const RecordsEditRequestDataCERTRecord =
+  RecordsBatchRequestPostsItemCERTRecordData;
 
-export interface RecordsEditRequestDataDNSKEYRecord {
-  /** Algorithm. */
-  algorithm?: number;
-  /** Flags. */
-  flags?: number;
-  /** Protocol. */
-  protocol?: number;
-  /** Public Key. */
-  publicKey?: string;
-}
-export const RecordsEditRequestDataDNSKEYRecord = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    algorithm: S.optional(S.Number),
-    flags: S.optional(S.Number),
-    protocol: S.optional(S.Number),
-    publicKey: S.optional(S.String.pipe(T.Body("public_key"))),
-  }),
-).annotate({
-  identifier: "RecordsEditRequestDataDNSKEYRecord",
-}) as any as S.Schema<RecordsEditRequestDataDNSKEYRecord>;
+export type RecordsEditRequestDataDNSKEYRecord =
+  RecordsBatchRequestPostsItemDNSKEYRecordData;
+export const RecordsEditRequestDataDNSKEYRecord =
+  RecordsBatchRequestPostsItemDNSKEYRecordData;
 
-export interface RecordsEditRequestDataDSRecord {
-  /** Algorithm. */
-  algorithm?: number;
-  /** Digest. */
-  digest?: string;
-  /** Digest Type. */
-  digestType?: number;
-  /** Key Tag. */
-  keyTag?: number;
-}
-export const RecordsEditRequestDataDSRecord = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    algorithm: S.optional(S.Number),
-    digest: S.optional(S.String),
-    digestType: S.optional(S.Number.pipe(T.Body("digest_type"))),
-    keyTag: S.optional(S.Number.pipe(T.Body("key_tag"))),
-  }),
-).annotate({
-  identifier: "RecordsEditRequestDataDSRecord",
-}) as any as S.Schema<RecordsEditRequestDataDSRecord>;
+export type RecordsEditRequestDataDSRecord =
+  RecordsBatchRequestPostsItemDSRecordData;
+export const RecordsEditRequestDataDSRecord =
+  RecordsBatchRequestPostsItemDSRecordData;
 
-export interface RecordsEditRequestDataHTTPSRecord {
-  /** Priority. */
-  priority?: number;
-  /** Target. */
-  target?: string;
-  /** Value. */
-  value?: string;
-}
-export const RecordsEditRequestDataHTTPSRecord = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    priority: S.optional(S.Number),
-    target: S.optional(S.String),
-    value: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RecordsEditRequestDataHTTPSRecord",
-}) as any as S.Schema<RecordsEditRequestDataHTTPSRecord>;
+export type RecordsEditRequestDataHTTPSRecord =
+  RecordsBatchRequestPostsItemHTTPSRecordData;
+export const RecordsEditRequestDataHTTPSRecord =
+  RecordsBatchRequestPostsItemHTTPSRecordData;
 
 export type RecordsEditRequestDataLOCRecordLatDirection = "N" | "S";
 export const RecordsEditRequestDataLOCRecordLatDirection =
@@ -15649,120 +14745,43 @@ export const RecordsEditRequestDataLOCRecord = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsEditRequestDataLOCRecord",
 }) as any as S.Schema<RecordsEditRequestDataLOCRecord>;
 
-export interface RecordsEditRequestDataNAPTRRecord {
-  /** Flags. */
-  flags?: string;
-  /** Order. */
-  order?: number;
-  /** Preference. */
-  preference?: number;
-  /** Regex. */
-  regex?: string;
-  /** Replacement. */
-  replacement?: string;
-  /** Service. */
-  service?: string;
-}
-export const RecordsEditRequestDataNAPTRRecord = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    flags: S.optional(S.String),
-    order: S.optional(S.Number),
-    preference: S.optional(S.Number),
-    regex: S.optional(S.String),
-    replacement: S.optional(S.String),
-    service: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RecordsEditRequestDataNAPTRRecord",
-}) as any as S.Schema<RecordsEditRequestDataNAPTRRecord>;
+export type RecordsEditRequestDataNAPTRRecord =
+  RecordsBatchRequestPostsItemNAPTRRecordData;
+export const RecordsEditRequestDataNAPTRRecord =
+  RecordsBatchRequestPostsItemNAPTRRecordData;
 
-export interface RecordsEditRequestDataSMIMEARecord {
-  /** Certificate. */
-  certificate?: string;
-  /** Matching Type. */
-  matchingType?: number;
-  /** Selector. */
-  selector?: number;
-  /** Usage. */
-  usage?: number;
-}
-export const RecordsEditRequestDataSMIMEARecord = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    certificate: S.optional(S.String),
-    matchingType: S.optional(S.Number.pipe(T.Body("matching_type"))),
-    selector: S.optional(S.Number),
-    usage: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "RecordsEditRequestDataSMIMEARecord",
-}) as any as S.Schema<RecordsEditRequestDataSMIMEARecord>;
+export type RecordsEditRequestDataSMIMEARecord =
+  RecordsBatchRequestPostsItemSMIMEARecordData;
+export const RecordsEditRequestDataSMIMEARecord =
+  RecordsBatchRequestPostsItemSMIMEARecordData;
 
-export interface RecordsEditRequestDataSRVRecord {
-  /** The port of the service. */
-  port?: number;
-  /** Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map. */
-  priority?: number;
-  /** A valid hostname. */
-  target?: string;
-  /** The record weight. */
-  weight?: number;
-}
-export const RecordsEditRequestDataSRVRecord = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    port: S.optional(S.Number),
-    priority: S.optional(S.Number),
-    target: S.optional(S.String),
-    weight: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "RecordsEditRequestDataSRVRecord",
-}) as any as S.Schema<RecordsEditRequestDataSRVRecord>;
+export type RecordsEditRequestDataSRVRecord =
+  RecordsBatchRequestPostsItemSRVRecordData;
+export const RecordsEditRequestDataSRVRecord =
+  RecordsBatchRequestPostsItemSRVRecordData;
 
-export interface RecordsEditRequestDataSSHFPRecord {
-  /** Algorithm. */
-  algorithm?: number;
-  /** Fingerprint. */
-  fingerprint?: string;
-  /** Type. */
-  type?: number;
-}
-export const RecordsEditRequestDataSSHFPRecord = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    algorithm: S.optional(S.Number),
-    fingerprint: S.optional(S.String),
-    type: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "RecordsEditRequestDataSSHFPRecord",
-}) as any as S.Schema<RecordsEditRequestDataSSHFPRecord>;
+export type RecordsEditRequestDataSSHFPRecord =
+  RecordsBatchRequestPostsItemSSHFPRecordData;
+export const RecordsEditRequestDataSSHFPRecord =
+  RecordsBatchRequestPostsItemSSHFPRecordData;
 
-export interface RecordsEditRequestDataURIRecord {
-  /** The record content. */
-  target?: string;
-  /** The record weight. */
-  weight?: number;
-}
-export const RecordsEditRequestDataURIRecord = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    target: S.optional(S.String),
-    weight: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "RecordsEditRequestDataURIRecord",
-}) as any as S.Schema<RecordsEditRequestDataURIRecord>;
+export type RecordsEditRequestDataURIRecord =
+  RecordsBatchRequestPostsItemURIRecordData;
+export const RecordsEditRequestDataURIRecord =
+  RecordsBatchRequestPostsItemURIRecordData;
 
 export type RecordsEditRequestData =
-  | RecordsEditRequestDataCAARecord
-  | RecordsEditRequestDataCERTRecord
-  | RecordsEditRequestDataDNSKEYRecord
-  | RecordsEditRequestDataDSRecord
-  | RecordsEditRequestDataHTTPSRecord
+  | RecordsBatchRequestPostsItemCAARecordData
+  | RecordsBatchRequestPostsItemCERTRecordData
+  | RecordsBatchRequestPostsItemDNSKEYRecordData
+  | RecordsBatchRequestPostsItemDSRecordData
+  | RecordsBatchRequestPostsItemHTTPSRecordData
   | RecordsEditRequestDataLOCRecord
-  | RecordsEditRequestDataNAPTRRecord
-  | RecordsEditRequestDataSMIMEARecord
-  | RecordsEditRequestDataSRVRecord
-  | RecordsEditRequestDataSSHFPRecord
-  | RecordsEditRequestDataURIRecord;
+  | RecordsBatchRequestPostsItemNAPTRRecordData
+  | RecordsBatchRequestPostsItemSMIMEARecordData
+  | RecordsBatchRequestPostsItemSRVRecordData
+  | RecordsBatchRequestPostsItemSSHFPRecordData
+  | RecordsBatchRequestPostsItemURIRecordData;
 export const RecordsEditRequestData = /*@__PURE__*/ S.Unknown.pipe(
   T.UnionCases([
     ["flags", "tag", "value"],
@@ -16321,21 +15340,10 @@ export const RecordsEditResultOpenpgpkeyRecordMeta = /*@__PURE__*/ S.suspend(
   identifier: "RecordsEditResultOpenpgpkeyRecordMeta",
 }) as any as S.Schema<RecordsEditResultOpenpgpkeyRecordMeta>;
 
-export interface RecordsEditResultOpenpgpkeyRecordSettings {
-  /** When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv4Only?: boolean | null;
-  /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv6Only?: boolean | null;
-}
+export type RecordsEditResultOpenpgpkeyRecordSettings =
+  RecordsBatchResponseDeletesItemOpenpgpkeyRecordSettings;
 export const RecordsEditResultOpenpgpkeyRecordSettings =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ipv4Only: S.optional(S.NullOr(S.Boolean).pipe(T.Body("ipv4_only"))),
-      ipv6Only: S.optional(S.NullOr(S.Boolean).pipe(T.Body("ipv6_only"))),
-    }),
-  ).annotate({
-    identifier: "RecordsEditResultOpenpgpkeyRecordSettings",
-  }) as any as S.Schema<RecordsEditResultOpenpgpkeyRecordSettings>;
+  RecordsBatchResponseDeletesItemOpenpgpkeyRecordSettings;
 
 export type RecordsEditResultOpenpgpkeyRecordTagsList = Array<unknown>;
 export const RecordsEditResultOpenpgpkeyRecordTagsList = /*@__PURE__*/ S.Array(
@@ -16365,7 +15373,7 @@ export interface RecordsEditResultOpenpgpkeyRecord {
   /** Whether the record is receiving the performance and security benefits of Cloudflare. */
   proxied: boolean;
   /** Settings for the DNS record. */
-  settings: RecordsEditResultOpenpgpkeyRecordSettings;
+  settings: RecordsBatchResponseDeletesItemOpenpgpkeyRecordSettings;
   /** Custom tags for the DNS record. This field has no effect on DNS responses. */
   tags: RecordsEditResultOpenpgpkeyRecordTagsList;
   /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
@@ -16388,7 +15396,7 @@ export const RecordsEditResultOpenpgpkeyRecord = /*@__PURE__*/ S.suspend(() =>
     name: S.String,
     proxiable: S.Boolean,
     proxied: S.Boolean,
-    settings: RecordsEditResultOpenpgpkeyRecordSettings,
+    settings: RecordsBatchResponseDeletesItemOpenpgpkeyRecordSettings,
     tags: RecordsEditResultOpenpgpkeyRecordTagsList,
     ttl: S.Number,
     type: RecordsEditResultOpenpgpkeyRecordType,
@@ -18292,20 +17300,10 @@ export const PatchSettingAccountRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchSettingAccountRequest",
 }) as any as S.Schema<PatchSettingAccountRequest>;
 
-export interface SettingsAccountEditResponseZoneDefaultsInternalDns {
-  /** The ID of the zone to fallback to. */
-  referenceZoneId?: string | null;
-}
+export type SettingsAccountEditResponseZoneDefaultsInternalDns =
+  SettingsAccountGetResponseZoneDefaultsInternalDns;
 export const SettingsAccountEditResponseZoneDefaultsInternalDns =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      referenceZoneId: S.optional(
-        S.NullOr(S.String).pipe(T.Body("reference_zone_id")),
-      ),
-    }),
-  ).annotate({
-    identifier: "SettingsAccountEditResponseZoneDefaultsInternalDns",
-  }) as any as S.Schema<SettingsAccountEditResponseZoneDefaultsInternalDns>;
+  SettingsAccountGetResponseZoneDefaultsInternalDns;
 
 export type SettingsAccountEditResponseZoneDefaultsNameserversType =
   | "cloudflare.standard"
@@ -18328,36 +17326,10 @@ export const SettingsAccountEditResponseZoneDefaultsNameservers =
     identifier: "SettingsAccountEditResponseZoneDefaultsNameservers",
   }) as any as S.Schema<SettingsAccountEditResponseZoneDefaultsNameservers>;
 
-export interface SettingsAccountEditResponseZoneDefaultsSoa {
-  /** Time in seconds of being unable to query the primary server after which secondary servers should stop serving the zone. */
-  expire?: number | null;
-  /** The time to live (TTL) for negative caching of records within the zone. */
-  minTtl?: number | null;
-  /** The primary nameserver, which may be used for outbound zone transfers. If null, a Cloudflare-assigned value will be used. */
-  mname?: string | null;
-  /** Time in seconds after which secondary servers should re-check the SOA record to see if the zone has been updated. */
-  refresh?: number | null;
-  /** Time in seconds after which secondary servers should retry queries after the primary server was unresponsive. */
-  retry?: number | null;
-  /** The email address of the zone administrator, with the first label representing the local part of the email address. */
-  rname?: string | null;
-  /** The time to live (TTL) of the SOA record itself. */
-  ttl?: number | null;
-}
+export type SettingsAccountEditResponseZoneDefaultsSoa =
+  SettingsAccountGetResponseZoneDefaultsSoa;
 export const SettingsAccountEditResponseZoneDefaultsSoa =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      expire: S.optional(S.NullOr(S.Number)),
-      minTtl: S.optional(S.NullOr(S.Number).pipe(T.Body("min_ttl"))),
-      mname: S.optional(S.NullOr(S.String)),
-      refresh: S.optional(S.NullOr(S.Number)),
-      retry: S.optional(S.NullOr(S.Number)),
-      rname: S.optional(S.NullOr(S.String)),
-      ttl: S.optional(S.NullOr(S.Number)),
-    }),
-  ).annotate({
-    identifier: "SettingsAccountEditResponseZoneDefaultsSoa",
-  }) as any as S.Schema<SettingsAccountEditResponseZoneDefaultsSoa>;
+  SettingsAccountGetResponseZoneDefaultsSoa;
 
 export type SettingsAccountEditResponseZoneDefaultsZoneMode =
   | "standard"
@@ -18372,7 +17344,7 @@ export interface SettingsAccountEditResponseZoneDefaults {
   /** Whether to enable Foundation DNS Advanced Nameservers on the zone. */
   foundationDns: boolean;
   /** Settings for this internal zone. */
-  internalDns: SettingsAccountEditResponseZoneDefaultsInternalDns;
+  internalDns: SettingsAccountGetResponseZoneDefaultsInternalDns;
   /** Whether to enable multi-provider DNS, which causes Cloudflare to activate the zone even when non-Cloudflare NS records exist, and to respect NS records at the zone apex during outbound zone transfers. */
   multiProvider: boolean;
   /** Settings determining the nameservers through which the zone should be available. */
@@ -18382,7 +17354,7 @@ export interface SettingsAccountEditResponseZoneDefaults {
   /** Allows a Secondary DNS zone to use (proxied) override records and CNAME flattening at the zone apex. */
   secondaryOverrides: boolean;
   /** Components of the zone's SOA record. */
-  soa: SettingsAccountEditResponseZoneDefaultsSoa;
+  soa: SettingsAccountGetResponseZoneDefaultsSoa;
   /** Whether the zone mode is a regular or CDN/DNS only zone. */
   zoneMode: SettingsAccountEditResponseZoneDefaultsZoneMode;
 }
@@ -18391,14 +17363,14 @@ export const SettingsAccountEditResponseZoneDefaults = /*@__PURE__*/ S.suspend(
     S.Struct({
       flattenAllCnames: S.Boolean.pipe(T.Body("flatten_all_cnames")),
       foundationDns: S.Boolean.pipe(T.Body("foundation_dns")),
-      internalDns: SettingsAccountEditResponseZoneDefaultsInternalDns.pipe(
+      internalDns: SettingsAccountGetResponseZoneDefaultsInternalDns.pipe(
         T.Body("internal_dns"),
       ),
       multiProvider: S.Boolean.pipe(T.Body("multi_provider")),
       nameservers: SettingsAccountEditResponseZoneDefaultsNameservers,
       nsTtl: S.Number.pipe(T.Body("ns_ttl")),
       secondaryOverrides: S.Boolean.pipe(T.Body("secondary_overrides")),
-      soa: SettingsAccountEditResponseZoneDefaultsSoa,
+      soa: SettingsAccountGetResponseZoneDefaultsSoa,
       zoneMode: SettingsAccountEditResponseZoneDefaultsZoneMode.pipe(
         T.Body("zone_mode"),
       ),
@@ -18490,17 +17462,10 @@ export const PatchSettingAccountViewResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchSettingAccountViewResponse",
 }) as any as S.Schema<PatchSettingAccountViewResponse>;
 
-export interface SettingsZoneEditRequestInternalDns {
-  /** The ID of the zone to fallback to. */
-  referenceZoneId?: string;
-}
-export const SettingsZoneEditRequestInternalDns = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    referenceZoneId: S.optional(S.String.pipe(T.Body("reference_zone_id"))),
-  }),
-).annotate({
-  identifier: "SettingsZoneEditRequestInternalDns",
-}) as any as S.Schema<SettingsZoneEditRequestInternalDns>;
+export type SettingsZoneEditRequestInternalDns =
+  SettingsAccountEditRequestZoneDefaultsInternalDns;
+export const SettingsZoneEditRequestInternalDns =
+  SettingsAccountEditRequestZoneDefaultsInternalDns;
 
 export type SettingsZoneEditRequestNameserversType =
   | "cloudflare.standard"
@@ -18524,35 +17489,10 @@ export const SettingsZoneEditRequestNameservers = /*@__PURE__*/ S.suspend(() =>
   identifier: "SettingsZoneEditRequestNameservers",
 }) as any as S.Schema<SettingsZoneEditRequestNameservers>;
 
-export interface SettingsZoneEditRequestSoa {
-  /** Time in seconds of being unable to query the primary server after which secondary servers should stop serving the zone. */
-  expire?: number;
-  /** The time to live (TTL) for negative caching of records within the zone. */
-  minTtl?: number;
-  /** The primary nameserver, which may be used for outbound zone transfers. If null, a Cloudflare-assigned value will be used. */
-  mname?: string;
-  /** Time in seconds after which secondary servers should re-check the SOA record to see if the zone has been updated. */
-  refresh?: number;
-  /** Time in seconds after which secondary servers should retry queries after the primary server was unresponsive. */
-  retry?: number;
-  /** The email address of the zone administrator, with the first label representing the local part of the email address. */
-  rname?: string;
-  /** The time to live (TTL) of the SOA record itself. */
-  ttl?: number;
-}
-export const SettingsZoneEditRequestSoa = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    expire: S.optional(S.Number),
-    minTtl: S.optional(S.Number.pipe(T.Body("min_ttl"))),
-    mname: S.optional(S.String),
-    refresh: S.optional(S.Number),
-    retry: S.optional(S.Number),
-    rname: S.optional(S.String),
-    ttl: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "SettingsZoneEditRequestSoa",
-}) as any as S.Schema<SettingsZoneEditRequestSoa>;
+export type SettingsZoneEditRequestSoa =
+  SettingsAccountEditRequestZoneDefaultsSoa;
+export const SettingsZoneEditRequestSoa =
+  SettingsAccountEditRequestZoneDefaultsSoa;
 
 export type SettingsZoneEditRequestZoneMode =
   | "standard"
@@ -18568,7 +17508,7 @@ export interface PatchSettingZoneRequest {
   /** Whether to enable Foundation DNS Advanced Nameservers on the zone. */
   foundationDns?: boolean;
   /** Settings for this internal zone. */
-  internalDns?: SettingsZoneEditRequestInternalDns;
+  internalDns?: SettingsAccountEditRequestZoneDefaultsInternalDns;
   /** Whether to enable multi-provider DNS, which causes Cloudflare to activate the zone even when non-Cloudflare NS records exist, and to respect NS records at the zone apex during outbound zone transfers. */
   multiProvider?: boolean;
   /** Settings determining the nameservers through which the zone should be available. */
@@ -18578,7 +17518,7 @@ export interface PatchSettingZoneRequest {
   /** Allows a Secondary DNS zone to use (proxied) override records and CNAME flattening at the zone apex. */
   secondaryOverrides?: boolean;
   /** Components of the zone's SOA record. */
-  soa?: SettingsZoneEditRequestSoa;
+  soa?: SettingsAccountEditRequestZoneDefaultsSoa;
   /** Whether the zone mode is a regular or CDN/DNS only zone. */
   zoneMode?: SettingsZoneEditRequestZoneMode | (string & {});
 }
@@ -18588,7 +17528,9 @@ export const PatchSettingZoneRequest = /*@__PURE__*/ S.suspend(() =>
     flattenAllCnames: S.optional(S.Boolean.pipe(T.Body("flatten_all_cnames"))),
     foundationDns: S.optional(S.Boolean.pipe(T.Body("foundation_dns"))),
     internalDns: S.optional(
-      SettingsZoneEditRequestInternalDns.pipe(T.Body("internal_dns")),
+      SettingsAccountEditRequestZoneDefaultsInternalDns.pipe(
+        T.Body("internal_dns"),
+      ),
     ),
     multiProvider: S.optional(S.Boolean.pipe(T.Body("multi_provider"))),
     nameservers: S.optional(SettingsZoneEditRequestNameservers),
@@ -18596,7 +17538,7 @@ export const PatchSettingZoneRequest = /*@__PURE__*/ S.suspend(() =>
     secondaryOverrides: S.optional(
       S.Boolean.pipe(T.Body("secondary_overrides")),
     ),
-    soa: S.optional(SettingsZoneEditRequestSoa),
+    soa: S.optional(SettingsAccountEditRequestZoneDefaultsSoa),
     zoneMode: S.optional(
       SettingsZoneEditRequestZoneMode.pipe(T.Body("zone_mode")),
     ),
@@ -18613,19 +17555,10 @@ export const PatchSettingZoneRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchSettingZoneRequest",
 }) as any as S.Schema<PatchSettingZoneRequest>;
 
-export interface SettingsZoneEditResponseInternalDns {
-  /** The ID of the zone to fallback to. */
-  referenceZoneId?: string | null;
-}
-export const SettingsZoneEditResponseInternalDns = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    referenceZoneId: S.optional(
-      S.NullOr(S.String).pipe(T.Body("reference_zone_id")),
-    ),
-  }),
-).annotate({
-  identifier: "SettingsZoneEditResponseInternalDns",
-}) as any as S.Schema<SettingsZoneEditResponseInternalDns>;
+export type SettingsZoneEditResponseInternalDns =
+  SettingsAccountGetResponseZoneDefaultsInternalDns;
+export const SettingsZoneEditResponseInternalDns =
+  SettingsAccountGetResponseZoneDefaultsInternalDns;
 
 export type SettingsZoneEditResponseNameserversType =
   | "cloudflare.standard"
@@ -18649,35 +17582,10 @@ export const SettingsZoneEditResponseNameservers = /*@__PURE__*/ S.suspend(() =>
   identifier: "SettingsZoneEditResponseNameservers",
 }) as any as S.Schema<SettingsZoneEditResponseNameservers>;
 
-export interface SettingsZoneEditResponseSoa {
-  /** Time in seconds of being unable to query the primary server after which secondary servers should stop serving the zone. */
-  expire?: number | null;
-  /** The time to live (TTL) for negative caching of records within the zone. */
-  minTtl?: number | null;
-  /** The primary nameserver, which may be used for outbound zone transfers. If null, a Cloudflare-assigned value will be used. */
-  mname?: string | null;
-  /** Time in seconds after which secondary servers should re-check the SOA record to see if the zone has been updated. */
-  refresh?: number | null;
-  /** Time in seconds after which secondary servers should retry queries after the primary server was unresponsive. */
-  retry?: number | null;
-  /** The email address of the zone administrator, with the first label representing the local part of the email address. */
-  rname?: string | null;
-  /** The time to live (TTL) of the SOA record itself. */
-  ttl?: number | null;
-}
-export const SettingsZoneEditResponseSoa = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    expire: S.optional(S.NullOr(S.Number)),
-    minTtl: S.optional(S.NullOr(S.Number).pipe(T.Body("min_ttl"))),
-    mname: S.optional(S.NullOr(S.String)),
-    refresh: S.optional(S.NullOr(S.Number)),
-    retry: S.optional(S.NullOr(S.Number)),
-    rname: S.optional(S.NullOr(S.String)),
-    ttl: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({
-  identifier: "SettingsZoneEditResponseSoa",
-}) as any as S.Schema<SettingsZoneEditResponseSoa>;
+export type SettingsZoneEditResponseSoa =
+  SettingsAccountGetResponseZoneDefaultsSoa;
+export const SettingsZoneEditResponseSoa =
+  SettingsAccountGetResponseZoneDefaultsSoa;
 
 export type SettingsZoneEditResponseZoneMode =
   | "standard"
@@ -18692,7 +17600,7 @@ export interface PatchSettingZoneResponse {
   /** Whether to enable Foundation DNS Advanced Nameservers on the zone. */
   foundationDns: boolean;
   /** Settings for this internal zone. */
-  internalDns: SettingsZoneEditResponseInternalDns;
+  internalDns: SettingsAccountGetResponseZoneDefaultsInternalDns;
   /** Whether to enable multi-provider DNS, which causes Cloudflare to activate the zone even when non-Cloudflare NS records exist, and to respect NS records at the zone apex during outbound zone transfers. */
   multiProvider: boolean;
   /** Settings determining the nameservers through which the zone should be available. */
@@ -18702,7 +17610,7 @@ export interface PatchSettingZoneResponse {
   /** Allows a Secondary DNS zone to use (proxied) override records and CNAME flattening at the zone apex. */
   secondaryOverrides: boolean;
   /** Components of the zone's SOA record. */
-  soa: SettingsZoneEditResponseSoa;
+  soa: SettingsAccountGetResponseZoneDefaultsSoa;
   /** Whether the zone mode is a regular or CDN/DNS only zone. */
   zoneMode: SettingsZoneEditResponseZoneMode;
 }
@@ -18710,14 +17618,14 @@ export const PatchSettingZoneResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     flattenAllCnames: S.Boolean.pipe(T.Body("flatten_all_cnames")),
     foundationDns: S.Boolean.pipe(T.Body("foundation_dns")),
-    internalDns: SettingsZoneEditResponseInternalDns.pipe(
+    internalDns: SettingsAccountGetResponseZoneDefaultsInternalDns.pipe(
       T.Body("internal_dns"),
     ),
     multiProvider: S.Boolean.pipe(T.Body("multi_provider")),
     nameservers: SettingsZoneEditResponseNameservers,
     nsTtl: S.Number.pipe(T.Body("ns_ttl")),
     secondaryOverrides: S.Boolean.pipe(T.Body("secondary_overrides")),
-    soa: SettingsZoneEditResponseSoa,
+    soa: SettingsAccountGetResponseZoneDefaultsSoa,
     zoneMode: SettingsZoneEditResponseZoneMode.pipe(T.Body("zone_mode")),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
@@ -19222,21 +18130,10 @@ export const RecordsScanListResultItemOpenpgpkeyRecordMeta =
     identifier: "RecordsScanListResultItemOpenpgpkeyRecordMeta",
   }) as any as S.Schema<RecordsScanListResultItemOpenpgpkeyRecordMeta>;
 
-export interface RecordsScanListResultItemOpenpgpkeyRecordSettings {
-  /** When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv4Only?: boolean | null;
-  /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv6Only?: boolean | null;
-}
+export type RecordsScanListResultItemOpenpgpkeyRecordSettings =
+  RecordsBatchResponseDeletesItemOpenpgpkeyRecordSettings;
 export const RecordsScanListResultItemOpenpgpkeyRecordSettings =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ipv4Only: S.optional(S.NullOr(S.Boolean).pipe(T.Body("ipv4_only"))),
-      ipv6Only: S.optional(S.NullOr(S.Boolean).pipe(T.Body("ipv6_only"))),
-    }),
-  ).annotate({
-    identifier: "RecordsScanListResultItemOpenpgpkeyRecordSettings",
-  }) as any as S.Schema<RecordsScanListResultItemOpenpgpkeyRecordSettings>;
+  RecordsBatchResponseDeletesItemOpenpgpkeyRecordSettings;
 
 export type RecordsScanListResultItemOpenpgpkeyRecordTagsList = Array<unknown>;
 export const RecordsScanListResultItemOpenpgpkeyRecordTagsList =
@@ -19268,7 +18165,7 @@ export interface RecordsScanListResultItemOpenpgpkeyRecord {
   /** Whether the record is receiving the performance and security benefits of Cloudflare. */
   proxied: boolean;
   /** Settings for the DNS record. */
-  settings: RecordsScanListResultItemOpenpgpkeyRecordSettings;
+  settings: RecordsBatchResponseDeletesItemOpenpgpkeyRecordSettings;
   /** Custom tags for the DNS record. This field has no effect on DNS responses. */
   tags: RecordsScanListResultItemOpenpgpkeyRecordTagsList;
   /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
@@ -19292,7 +18189,7 @@ export const RecordsScanListResultItemOpenpgpkeyRecord =
       name: S.String,
       proxiable: S.Boolean,
       proxied: S.Boolean,
-      settings: RecordsScanListResultItemOpenpgpkeyRecordSettings,
+      settings: RecordsBatchResponseDeletesItemOpenpgpkeyRecordSettings,
       tags: RecordsScanListResultItemOpenpgpkeyRecordTagsList,
       ttl: S.Number,
       type: RecordsScanListResultItemOpenpgpkeyRecordType,
@@ -21132,21 +20029,10 @@ export type RecordsScanReviewRequestAcceptsItemARecordType = "A";
 export const RecordsScanReviewRequestAcceptsItemARecordType =
   /*@__PURE__*/ S.String;
 
-export interface RecordsScanReviewRequestAcceptsItemARecordSettings {
-  /** When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv4Only?: boolean;
-  /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv6Only?: boolean;
-}
+export type RecordsScanReviewRequestAcceptsItemARecordSettings =
+  RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings;
 export const RecordsScanReviewRequestAcceptsItemARecordSettings =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ipv4Only: S.optional(S.Boolean.pipe(T.Body("ipv4_only"))),
-      ipv6Only: S.optional(S.Boolean.pipe(T.Body("ipv6_only"))),
-    }),
-  ).annotate({
-    identifier: "RecordsScanReviewRequestAcceptsItemARecordSettings",
-  }) as any as S.Schema<RecordsScanReviewRequestAcceptsItemARecordSettings>;
+  RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings;
 
 export type RecordsScanReviewRequestAcceptsItemARecordTagsList = Array<unknown>;
 export const RecordsScanReviewRequestAcceptsItemARecordTagsList =
@@ -21170,7 +20056,7 @@ export interface RecordsScanReviewRequestAcceptsItemARecord {
   /** Whether the record is receiving the performance and security benefits of Cloudflare. */
   proxied?: boolean;
   /** Settings for the DNS record. */
-  settings?: RecordsScanReviewRequestAcceptsItemARecordSettings;
+  settings?: RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings;
   /** Custom tags for the DNS record. This field has no effect on DNS responses. */
   tags?: RecordsScanReviewRequestAcceptsItemARecordTagsList;
 }
@@ -21184,7 +20070,9 @@ export const RecordsScanReviewRequestAcceptsItemARecord =
       content: S.optional(S.String),
       privateRouting: S.optional(S.Boolean.pipe(T.Body("private_routing"))),
       proxied: S.optional(S.Boolean),
-      settings: S.optional(RecordsScanReviewRequestAcceptsItemARecordSettings),
+      settings: S.optional(
+        RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings,
+      ),
       tags: S.optional(RecordsScanReviewRequestAcceptsItemARecordTagsList),
     }),
   ).annotate({
@@ -21195,21 +20083,10 @@ export type RecordsScanReviewRequestAcceptsItemAAAARecordType = "AAAA";
 export const RecordsScanReviewRequestAcceptsItemAAAARecordType =
   /*@__PURE__*/ S.String;
 
-export interface RecordsScanReviewRequestAcceptsItemAAAARecordSettings {
-  /** When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv4Only?: boolean;
-  /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv6Only?: boolean;
-}
+export type RecordsScanReviewRequestAcceptsItemAAAARecordSettings =
+  RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings;
 export const RecordsScanReviewRequestAcceptsItemAAAARecordSettings =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ipv4Only: S.optional(S.Boolean.pipe(T.Body("ipv4_only"))),
-      ipv6Only: S.optional(S.Boolean.pipe(T.Body("ipv6_only"))),
-    }),
-  ).annotate({
-    identifier: "RecordsScanReviewRequestAcceptsItemAAAARecordSettings",
-  }) as any as S.Schema<RecordsScanReviewRequestAcceptsItemAAAARecordSettings>;
+  RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings;
 
 export type RecordsScanReviewRequestAcceptsItemAAAARecordTagsList =
   Array<unknown>;
@@ -21234,7 +20111,7 @@ export interface RecordsScanReviewRequestAcceptsItemAAAARecord {
   /** Whether the record is receiving the performance and security benefits of Cloudflare. */
   proxied?: boolean;
   /** Settings for the DNS record. */
-  settings?: RecordsScanReviewRequestAcceptsItemAAAARecordSettings;
+  settings?: RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings;
   /** Custom tags for the DNS record. This field has no effect on DNS responses. */
   tags?: RecordsScanReviewRequestAcceptsItemAAAARecordTagsList;
 }
@@ -21249,7 +20126,7 @@ export const RecordsScanReviewRequestAcceptsItemAAAARecord =
       privateRouting: S.optional(S.Boolean.pipe(T.Body("private_routing"))),
       proxied: S.optional(S.Boolean),
       settings: S.optional(
-        RecordsScanReviewRequestAcceptsItemAAAARecordSettings,
+        RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings,
       ),
       tags: S.optional(RecordsScanReviewRequestAcceptsItemAAAARecordTagsList),
     }),
@@ -21261,24 +20138,10 @@ export type RecordsScanReviewRequestAcceptsItemCNAMERecordType = "CNAME";
 export const RecordsScanReviewRequestAcceptsItemCNAMERecordType =
   /*@__PURE__*/ S.String;
 
-export interface RecordsScanReviewRequestAcceptsItemCNAMERecordSettings {
-  /** If enabled, causes the CNAME record to be resolved externally and the resulting address records (e.g., A and AAAA) to be returned instead of the CNAME record itself. This setting is unavailable for proxied records, since they are always flattened. */
-  flattenCname?: boolean;
-  /** When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv4Only?: boolean;
-  /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv6Only?: boolean;
-}
+export type RecordsScanReviewRequestAcceptsItemCNAMERecordSettings =
+  RecordsBatchRequestPostsItemCNAMERecordSettings;
 export const RecordsScanReviewRequestAcceptsItemCNAMERecordSettings =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      flattenCname: S.optional(S.Boolean.pipe(T.Body("flatten_cname"))),
-      ipv4Only: S.optional(S.Boolean.pipe(T.Body("ipv4_only"))),
-      ipv6Only: S.optional(S.Boolean.pipe(T.Body("ipv6_only"))),
-    }),
-  ).annotate({
-    identifier: "RecordsScanReviewRequestAcceptsItemCNAMERecordSettings",
-  }) as any as S.Schema<RecordsScanReviewRequestAcceptsItemCNAMERecordSettings>;
+  RecordsBatchRequestPostsItemCNAMERecordSettings;
 
 export type RecordsScanReviewRequestAcceptsItemCNAMERecordTagsList =
   Array<unknown>;
@@ -21301,7 +20164,7 @@ export interface RecordsScanReviewRequestAcceptsItemCNAMERecord {
   /** Whether the record is receiving the performance and security benefits of Cloudflare. */
   proxied?: boolean;
   /** Settings for the DNS record. */
-  settings?: RecordsScanReviewRequestAcceptsItemCNAMERecordSettings;
+  settings?: RecordsBatchRequestPostsItemCNAMERecordSettings;
   /** Custom tags for the DNS record. This field has no effect on DNS responses. */
   tags?: RecordsScanReviewRequestAcceptsItemCNAMERecordTagsList;
 }
@@ -21314,9 +20177,7 @@ export const RecordsScanReviewRequestAcceptsItemCNAMERecord =
       comment: S.optional(S.String),
       content: S.optional(S.String),
       proxied: S.optional(S.Boolean),
-      settings: S.optional(
-        RecordsScanReviewRequestAcceptsItemCNAMERecordSettings,
-      ),
+      settings: S.optional(RecordsBatchRequestPostsItemCNAMERecordSettings),
       tags: S.optional(RecordsScanReviewRequestAcceptsItemCNAMERecordTagsList),
     }),
   ).annotate({
@@ -21327,21 +20188,10 @@ export type RecordsScanReviewRequestAcceptsItemMXRecordType = "MX";
 export const RecordsScanReviewRequestAcceptsItemMXRecordType =
   /*@__PURE__*/ S.String;
 
-export interface RecordsScanReviewRequestAcceptsItemMXRecordSettings {
-  /** When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv4Only?: boolean;
-  /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv6Only?: boolean;
-}
+export type RecordsScanReviewRequestAcceptsItemMXRecordSettings =
+  RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings;
 export const RecordsScanReviewRequestAcceptsItemMXRecordSettings =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ipv4Only: S.optional(S.Boolean.pipe(T.Body("ipv4_only"))),
-      ipv6Only: S.optional(S.Boolean.pipe(T.Body("ipv6_only"))),
-    }),
-  ).annotate({
-    identifier: "RecordsScanReviewRequestAcceptsItemMXRecordSettings",
-  }) as any as S.Schema<RecordsScanReviewRequestAcceptsItemMXRecordSettings>;
+  RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings;
 
 export type RecordsScanReviewRequestAcceptsItemMXRecordTagsList =
   Array<unknown>;
@@ -21366,7 +20216,7 @@ export interface RecordsScanReviewRequestAcceptsItemMXRecord {
   /** Whether the record is receiving the performance and security benefits of Cloudflare. */
   proxied?: boolean;
   /** Settings for the DNS record. */
-  settings?: RecordsScanReviewRequestAcceptsItemMXRecordSettings;
+  settings?: RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings;
   /** Custom tags for the DNS record. This field has no effect on DNS responses. */
   tags?: RecordsScanReviewRequestAcceptsItemMXRecordTagsList;
 }
@@ -21380,7 +20230,9 @@ export const RecordsScanReviewRequestAcceptsItemMXRecord =
       content: S.optional(S.String),
       priority: S.optional(S.Number),
       proxied: S.optional(S.Boolean),
-      settings: S.optional(RecordsScanReviewRequestAcceptsItemMXRecordSettings),
+      settings: S.optional(
+        RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings,
+      ),
       tags: S.optional(RecordsScanReviewRequestAcceptsItemMXRecordTagsList),
     }),
   ).annotate({
@@ -21391,21 +20243,10 @@ export type RecordsScanReviewRequestAcceptsItemNSRecordType = "NS";
 export const RecordsScanReviewRequestAcceptsItemNSRecordType =
   /*@__PURE__*/ S.String;
 
-export interface RecordsScanReviewRequestAcceptsItemNSRecordSettings {
-  /** When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv4Only?: boolean;
-  /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv6Only?: boolean;
-}
+export type RecordsScanReviewRequestAcceptsItemNSRecordSettings =
+  RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings;
 export const RecordsScanReviewRequestAcceptsItemNSRecordSettings =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ipv4Only: S.optional(S.Boolean.pipe(T.Body("ipv4_only"))),
-      ipv6Only: S.optional(S.Boolean.pipe(T.Body("ipv6_only"))),
-    }),
-  ).annotate({
-    identifier: "RecordsScanReviewRequestAcceptsItemNSRecordSettings",
-  }) as any as S.Schema<RecordsScanReviewRequestAcceptsItemNSRecordSettings>;
+  RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings;
 
 export type RecordsScanReviewRequestAcceptsItemNSRecordTagsList =
   Array<unknown>;
@@ -21428,7 +20269,7 @@ export interface RecordsScanReviewRequestAcceptsItemNSRecord {
   /** Whether the record is receiving the performance and security benefits of Cloudflare. */
   proxied?: boolean;
   /** Settings for the DNS record. */
-  settings?: RecordsScanReviewRequestAcceptsItemNSRecordSettings;
+  settings?: RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings;
   /** Custom tags for the DNS record. This field has no effect on DNS responses. */
   tags?: RecordsScanReviewRequestAcceptsItemNSRecordTagsList;
 }
@@ -21441,7 +20282,9 @@ export const RecordsScanReviewRequestAcceptsItemNSRecord =
       comment: S.optional(S.String),
       content: S.optional(S.String),
       proxied: S.optional(S.Boolean),
-      settings: S.optional(RecordsScanReviewRequestAcceptsItemNSRecordSettings),
+      settings: S.optional(
+        RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings,
+      ),
       tags: S.optional(RecordsScanReviewRequestAcceptsItemNSRecordTagsList),
     }),
   ).annotate({
@@ -21453,22 +20296,10 @@ export type RecordsScanReviewRequestAcceptsItemDNSRecordsOpenpgpkeyRecordType =
 export const RecordsScanReviewRequestAcceptsItemDNSRecordsOpenpgpkeyRecordType =
   /*@__PURE__*/ S.String;
 
-export interface RecordsScanReviewRequestAcceptsItemDNSRecordsOpenpgpkeyRecordSettings {
-  /** When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv4Only?: boolean;
-  /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv6Only?: boolean;
-}
+export type RecordsScanReviewRequestAcceptsItemDNSRecordsOpenpgpkeyRecordSettings =
+  RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings;
 export const RecordsScanReviewRequestAcceptsItemDNSRecordsOpenpgpkeyRecordSettings =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ipv4Only: S.optional(S.Boolean.pipe(T.Body("ipv4_only"))),
-      ipv6Only: S.optional(S.Boolean.pipe(T.Body("ipv6_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "RecordsScanReviewRequestAcceptsItemDNSRecordsOpenpgpkeyRecordSettings",
-  }) as any as S.Schema<RecordsScanReviewRequestAcceptsItemDNSRecordsOpenpgpkeyRecordSettings>;
+  RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings;
 
 export type RecordsScanReviewRequestAcceptsItemDNSRecordsOpenpgpkeyRecordTagsList =
   Array<unknown>;
@@ -21491,7 +20322,7 @@ export interface RecordsScanReviewRequestAcceptsItemDNSRecordsOpenpgpkeyRecord {
   /** Whether the record is receiving the performance and security benefits of Cloudflare. */
   proxied?: boolean;
   /** Settings for the DNS record. */
-  settings?: RecordsScanReviewRequestAcceptsItemDNSRecordsOpenpgpkeyRecordSettings;
+  settings?: RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings;
   /** Custom tags for the DNS record. This field has no effect on DNS responses. */
   tags?: RecordsScanReviewRequestAcceptsItemDNSRecordsOpenpgpkeyRecordTagsList;
 }
@@ -21505,7 +20336,7 @@ export const RecordsScanReviewRequestAcceptsItemDNSRecordsOpenpgpkeyRecord =
       content: S.optional(S.String),
       proxied: S.optional(S.Boolean),
       settings: S.optional(
-        RecordsScanReviewRequestAcceptsItemDNSRecordsOpenpgpkeyRecordSettings,
+        RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings,
       ),
       tags: S.optional(
         RecordsScanReviewRequestAcceptsItemDNSRecordsOpenpgpkeyRecordTagsList,
@@ -21519,21 +20350,10 @@ export type RecordsScanReviewRequestAcceptsItemPTRRecordType = "PTR";
 export const RecordsScanReviewRequestAcceptsItemPTRRecordType =
   /*@__PURE__*/ S.String;
 
-export interface RecordsScanReviewRequestAcceptsItemPTRRecordSettings {
-  /** When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv4Only?: boolean;
-  /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv6Only?: boolean;
-}
+export type RecordsScanReviewRequestAcceptsItemPTRRecordSettings =
+  RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings;
 export const RecordsScanReviewRequestAcceptsItemPTRRecordSettings =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ipv4Only: S.optional(S.Boolean.pipe(T.Body("ipv4_only"))),
-      ipv6Only: S.optional(S.Boolean.pipe(T.Body("ipv6_only"))),
-    }),
-  ).annotate({
-    identifier: "RecordsScanReviewRequestAcceptsItemPTRRecordSettings",
-  }) as any as S.Schema<RecordsScanReviewRequestAcceptsItemPTRRecordSettings>;
+  RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings;
 
 export type RecordsScanReviewRequestAcceptsItemPTRRecordTagsList =
   Array<unknown>;
@@ -21556,7 +20376,7 @@ export interface RecordsScanReviewRequestAcceptsItemPTRRecord {
   /** Whether the record is receiving the performance and security benefits of Cloudflare. */
   proxied?: boolean;
   /** Settings for the DNS record. */
-  settings?: RecordsScanReviewRequestAcceptsItemPTRRecordSettings;
+  settings?: RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings;
   /** Custom tags for the DNS record. This field has no effect on DNS responses. */
   tags?: RecordsScanReviewRequestAcceptsItemPTRRecordTagsList;
 }
@@ -21570,7 +20390,7 @@ export const RecordsScanReviewRequestAcceptsItemPTRRecord =
       content: S.optional(S.String),
       proxied: S.optional(S.Boolean),
       settings: S.optional(
-        RecordsScanReviewRequestAcceptsItemPTRRecordSettings,
+        RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings,
       ),
       tags: S.optional(RecordsScanReviewRequestAcceptsItemPTRRecordTagsList),
     }),
@@ -21582,21 +20402,10 @@ export type RecordsScanReviewRequestAcceptsItemTXTRecordType = "TXT";
 export const RecordsScanReviewRequestAcceptsItemTXTRecordType =
   /*@__PURE__*/ S.String;
 
-export interface RecordsScanReviewRequestAcceptsItemTXTRecordSettings {
-  /** When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv4Only?: boolean;
-  /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv6Only?: boolean;
-}
+export type RecordsScanReviewRequestAcceptsItemTXTRecordSettings =
+  RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings;
 export const RecordsScanReviewRequestAcceptsItemTXTRecordSettings =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ipv4Only: S.optional(S.Boolean.pipe(T.Body("ipv4_only"))),
-      ipv6Only: S.optional(S.Boolean.pipe(T.Body("ipv6_only"))),
-    }),
-  ).annotate({
-    identifier: "RecordsScanReviewRequestAcceptsItemTXTRecordSettings",
-  }) as any as S.Schema<RecordsScanReviewRequestAcceptsItemTXTRecordSettings>;
+  RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings;
 
 export type RecordsScanReviewRequestAcceptsItemTXTRecordTagsList =
   Array<unknown>;
@@ -21619,7 +20428,7 @@ export interface RecordsScanReviewRequestAcceptsItemTXTRecord {
   /** Whether the record is receiving the performance and security benefits of Cloudflare. */
   proxied?: boolean;
   /** Settings for the DNS record. */
-  settings?: RecordsScanReviewRequestAcceptsItemTXTRecordSettings;
+  settings?: RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings;
   /** Custom tags for the DNS record. This field has no effect on DNS responses. */
   tags?: RecordsScanReviewRequestAcceptsItemTXTRecordTagsList;
 }
@@ -21633,7 +20442,7 @@ export const RecordsScanReviewRequestAcceptsItemTXTRecord =
       content: S.optional(S.String),
       proxied: S.optional(S.Boolean),
       settings: S.optional(
-        RecordsScanReviewRequestAcceptsItemTXTRecordSettings,
+        RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings,
       ),
       tags: S.optional(RecordsScanReviewRequestAcceptsItemTXTRecordTagsList),
     }),
@@ -21645,40 +20454,15 @@ export type RecordsScanReviewRequestAcceptsItemCAARecordType = "CAA";
 export const RecordsScanReviewRequestAcceptsItemCAARecordType =
   /*@__PURE__*/ S.String;
 
-export interface RecordsScanReviewRequestAcceptsItemCAARecordData {
-  /** Flags for the CAA record. */
-  flags?: number;
-  /** Name of the property controlled by this record (e.g.: issue, issuewild, iodef). */
-  tag?: string;
-  /** Value of the record. This field's semantics depend on the chosen tag. */
-  value?: string;
-}
+export type RecordsScanReviewRequestAcceptsItemCAARecordData =
+  RecordsBatchRequestPostsItemCAARecordData;
 export const RecordsScanReviewRequestAcceptsItemCAARecordData =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      flags: S.optional(S.Number),
-      tag: S.optional(S.String),
-      value: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "RecordsScanReviewRequestAcceptsItemCAARecordData",
-  }) as any as S.Schema<RecordsScanReviewRequestAcceptsItemCAARecordData>;
+  RecordsBatchRequestPostsItemCAARecordData;
 
-export interface RecordsScanReviewRequestAcceptsItemCAARecordSettings {
-  /** When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv4Only?: boolean;
-  /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv6Only?: boolean;
-}
+export type RecordsScanReviewRequestAcceptsItemCAARecordSettings =
+  RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings;
 export const RecordsScanReviewRequestAcceptsItemCAARecordSettings =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ipv4Only: S.optional(S.Boolean.pipe(T.Body("ipv4_only"))),
-      ipv6Only: S.optional(S.Boolean.pipe(T.Body("ipv6_only"))),
-    }),
-  ).annotate({
-    identifier: "RecordsScanReviewRequestAcceptsItemCAARecordSettings",
-  }) as any as S.Schema<RecordsScanReviewRequestAcceptsItemCAARecordSettings>;
+  RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings;
 
 export type RecordsScanReviewRequestAcceptsItemCAARecordTagsList =
   Array<unknown>;
@@ -21699,11 +20483,11 @@ export interface RecordsScanReviewRequestAcceptsItemCAARecord {
   /** Formatted CAA content. See 'data' to set CAA properties. */
   content?: string;
   /** Components of a CAA record. */
-  data?: RecordsScanReviewRequestAcceptsItemCAARecordData;
+  data?: RecordsBatchRequestPostsItemCAARecordData;
   /** Whether the record is receiving the performance and security benefits of Cloudflare. */
   proxied?: boolean;
   /** Settings for the DNS record. */
-  settings?: RecordsScanReviewRequestAcceptsItemCAARecordSettings;
+  settings?: RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings;
   /** Custom tags for the DNS record. This field has no effect on DNS responses. */
   tags?: RecordsScanReviewRequestAcceptsItemCAARecordTagsList;
 }
@@ -21715,10 +20499,10 @@ export const RecordsScanReviewRequestAcceptsItemCAARecord =
       type: RecordsScanReviewRequestAcceptsItemCAARecordType,
       comment: S.optional(S.String),
       content: S.optional(S.String),
-      data: S.optional(RecordsScanReviewRequestAcceptsItemCAARecordData),
+      data: S.optional(RecordsBatchRequestPostsItemCAARecordData),
       proxied: S.optional(S.Boolean),
       settings: S.optional(
-        RecordsScanReviewRequestAcceptsItemCAARecordSettings,
+        RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings,
       ),
       tags: S.optional(RecordsScanReviewRequestAcceptsItemCAARecordTagsList),
     }),
@@ -21730,43 +20514,15 @@ export type RecordsScanReviewRequestAcceptsItemCERTRecordType = "CERT";
 export const RecordsScanReviewRequestAcceptsItemCERTRecordType =
   /*@__PURE__*/ S.String;
 
-export interface RecordsScanReviewRequestAcceptsItemCERTRecordData {
-  /** Algorithm. */
-  algorithm?: number;
-  /** Certificate. */
-  certificate?: string;
-  /** Key Tag. */
-  keyTag?: number;
-  /** Type. */
-  type?: number;
-}
+export type RecordsScanReviewRequestAcceptsItemCERTRecordData =
+  RecordsBatchRequestPostsItemCERTRecordData;
 export const RecordsScanReviewRequestAcceptsItemCERTRecordData =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      algorithm: S.optional(S.Number),
-      certificate: S.optional(S.String),
-      keyTag: S.optional(S.Number.pipe(T.Body("key_tag"))),
-      type: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier: "RecordsScanReviewRequestAcceptsItemCERTRecordData",
-  }) as any as S.Schema<RecordsScanReviewRequestAcceptsItemCERTRecordData>;
+  RecordsBatchRequestPostsItemCERTRecordData;
 
-export interface RecordsScanReviewRequestAcceptsItemCERTRecordSettings {
-  /** When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv4Only?: boolean;
-  /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv6Only?: boolean;
-}
+export type RecordsScanReviewRequestAcceptsItemCERTRecordSettings =
+  RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings;
 export const RecordsScanReviewRequestAcceptsItemCERTRecordSettings =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ipv4Only: S.optional(S.Boolean.pipe(T.Body("ipv4_only"))),
-      ipv6Only: S.optional(S.Boolean.pipe(T.Body("ipv6_only"))),
-    }),
-  ).annotate({
-    identifier: "RecordsScanReviewRequestAcceptsItemCERTRecordSettings",
-  }) as any as S.Schema<RecordsScanReviewRequestAcceptsItemCERTRecordSettings>;
+  RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings;
 
 export type RecordsScanReviewRequestAcceptsItemCERTRecordTagsList =
   Array<unknown>;
@@ -21787,11 +20543,11 @@ export interface RecordsScanReviewRequestAcceptsItemCERTRecord {
   /** Formatted CERT content. See 'data' to set CERT properties. */
   content?: string;
   /** Components of a CERT record. */
-  data?: RecordsScanReviewRequestAcceptsItemCERTRecordData;
+  data?: RecordsBatchRequestPostsItemCERTRecordData;
   /** Whether the record is receiving the performance and security benefits of Cloudflare. */
   proxied?: boolean;
   /** Settings for the DNS record. */
-  settings?: RecordsScanReviewRequestAcceptsItemCERTRecordSettings;
+  settings?: RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings;
   /** Custom tags for the DNS record. This field has no effect on DNS responses. */
   tags?: RecordsScanReviewRequestAcceptsItemCERTRecordTagsList;
 }
@@ -21803,10 +20559,10 @@ export const RecordsScanReviewRequestAcceptsItemCERTRecord =
       type: RecordsScanReviewRequestAcceptsItemCERTRecordType,
       comment: S.optional(S.String),
       content: S.optional(S.String),
-      data: S.optional(RecordsScanReviewRequestAcceptsItemCERTRecordData),
+      data: S.optional(RecordsBatchRequestPostsItemCERTRecordData),
       proxied: S.optional(S.Boolean),
       settings: S.optional(
-        RecordsScanReviewRequestAcceptsItemCERTRecordSettings,
+        RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings,
       ),
       tags: S.optional(RecordsScanReviewRequestAcceptsItemCERTRecordTagsList),
     }),
@@ -21818,43 +20574,15 @@ export type RecordsScanReviewRequestAcceptsItemDNSKEYRecordType = "DNSKEY";
 export const RecordsScanReviewRequestAcceptsItemDNSKEYRecordType =
   /*@__PURE__*/ S.String;
 
-export interface RecordsScanReviewRequestAcceptsItemDNSKEYRecordData {
-  /** Algorithm. */
-  algorithm?: number;
-  /** Flags. */
-  flags?: number;
-  /** Protocol. */
-  protocol?: number;
-  /** Public Key. */
-  publicKey?: string;
-}
+export type RecordsScanReviewRequestAcceptsItemDNSKEYRecordData =
+  RecordsBatchRequestPostsItemDNSKEYRecordData;
 export const RecordsScanReviewRequestAcceptsItemDNSKEYRecordData =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      algorithm: S.optional(S.Number),
-      flags: S.optional(S.Number),
-      protocol: S.optional(S.Number),
-      publicKey: S.optional(S.String.pipe(T.Body("public_key"))),
-    }),
-  ).annotate({
-    identifier: "RecordsScanReviewRequestAcceptsItemDNSKEYRecordData",
-  }) as any as S.Schema<RecordsScanReviewRequestAcceptsItemDNSKEYRecordData>;
+  RecordsBatchRequestPostsItemDNSKEYRecordData;
 
-export interface RecordsScanReviewRequestAcceptsItemDNSKEYRecordSettings {
-  /** When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv4Only?: boolean;
-  /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv6Only?: boolean;
-}
+export type RecordsScanReviewRequestAcceptsItemDNSKEYRecordSettings =
+  RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings;
 export const RecordsScanReviewRequestAcceptsItemDNSKEYRecordSettings =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ipv4Only: S.optional(S.Boolean.pipe(T.Body("ipv4_only"))),
-      ipv6Only: S.optional(S.Boolean.pipe(T.Body("ipv6_only"))),
-    }),
-  ).annotate({
-    identifier: "RecordsScanReviewRequestAcceptsItemDNSKEYRecordSettings",
-  }) as any as S.Schema<RecordsScanReviewRequestAcceptsItemDNSKEYRecordSettings>;
+  RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings;
 
 export type RecordsScanReviewRequestAcceptsItemDNSKEYRecordTagsList =
   Array<unknown>;
@@ -21875,11 +20603,11 @@ export interface RecordsScanReviewRequestAcceptsItemDNSKEYRecord {
   /** Formatted DNSKEY content. See 'data' to set DNSKEY properties. */
   content?: string;
   /** Components of a DNSKEY record. */
-  data?: RecordsScanReviewRequestAcceptsItemDNSKEYRecordData;
+  data?: RecordsBatchRequestPostsItemDNSKEYRecordData;
   /** Whether the record is receiving the performance and security benefits of Cloudflare. */
   proxied?: boolean;
   /** Settings for the DNS record. */
-  settings?: RecordsScanReviewRequestAcceptsItemDNSKEYRecordSettings;
+  settings?: RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings;
   /** Custom tags for the DNS record. This field has no effect on DNS responses. */
   tags?: RecordsScanReviewRequestAcceptsItemDNSKEYRecordTagsList;
 }
@@ -21891,10 +20619,10 @@ export const RecordsScanReviewRequestAcceptsItemDNSKEYRecord =
       type: RecordsScanReviewRequestAcceptsItemDNSKEYRecordType,
       comment: S.optional(S.String),
       content: S.optional(S.String),
-      data: S.optional(RecordsScanReviewRequestAcceptsItemDNSKEYRecordData),
+      data: S.optional(RecordsBatchRequestPostsItemDNSKEYRecordData),
       proxied: S.optional(S.Boolean),
       settings: S.optional(
-        RecordsScanReviewRequestAcceptsItemDNSKEYRecordSettings,
+        RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings,
       ),
       tags: S.optional(RecordsScanReviewRequestAcceptsItemDNSKEYRecordTagsList),
     }),
@@ -21906,43 +20634,15 @@ export type RecordsScanReviewRequestAcceptsItemDSRecordType = "DS";
 export const RecordsScanReviewRequestAcceptsItemDSRecordType =
   /*@__PURE__*/ S.String;
 
-export interface RecordsScanReviewRequestAcceptsItemDSRecordData {
-  /** Algorithm. */
-  algorithm?: number;
-  /** Digest. */
-  digest?: string;
-  /** Digest Type. */
-  digestType?: number;
-  /** Key Tag. */
-  keyTag?: number;
-}
+export type RecordsScanReviewRequestAcceptsItemDSRecordData =
+  RecordsBatchRequestPostsItemDSRecordData;
 export const RecordsScanReviewRequestAcceptsItemDSRecordData =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      algorithm: S.optional(S.Number),
-      digest: S.optional(S.String),
-      digestType: S.optional(S.Number.pipe(T.Body("digest_type"))),
-      keyTag: S.optional(S.Number.pipe(T.Body("key_tag"))),
-    }),
-  ).annotate({
-    identifier: "RecordsScanReviewRequestAcceptsItemDSRecordData",
-  }) as any as S.Schema<RecordsScanReviewRequestAcceptsItemDSRecordData>;
+  RecordsBatchRequestPostsItemDSRecordData;
 
-export interface RecordsScanReviewRequestAcceptsItemDSRecordSettings {
-  /** When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv4Only?: boolean;
-  /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv6Only?: boolean;
-}
+export type RecordsScanReviewRequestAcceptsItemDSRecordSettings =
+  RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings;
 export const RecordsScanReviewRequestAcceptsItemDSRecordSettings =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ipv4Only: S.optional(S.Boolean.pipe(T.Body("ipv4_only"))),
-      ipv6Only: S.optional(S.Boolean.pipe(T.Body("ipv6_only"))),
-    }),
-  ).annotate({
-    identifier: "RecordsScanReviewRequestAcceptsItemDSRecordSettings",
-  }) as any as S.Schema<RecordsScanReviewRequestAcceptsItemDSRecordSettings>;
+  RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings;
 
 export type RecordsScanReviewRequestAcceptsItemDSRecordTagsList =
   Array<unknown>;
@@ -21963,11 +20663,11 @@ export interface RecordsScanReviewRequestAcceptsItemDSRecord {
   /** Formatted DS content. See 'data' to set DS properties. */
   content?: string;
   /** Components of a DS record. */
-  data?: RecordsScanReviewRequestAcceptsItemDSRecordData;
+  data?: RecordsBatchRequestPostsItemDSRecordData;
   /** Whether the record is receiving the performance and security benefits of Cloudflare. */
   proxied?: boolean;
   /** Settings for the DNS record. */
-  settings?: RecordsScanReviewRequestAcceptsItemDSRecordSettings;
+  settings?: RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings;
   /** Custom tags for the DNS record. This field has no effect on DNS responses. */
   tags?: RecordsScanReviewRequestAcceptsItemDSRecordTagsList;
 }
@@ -21979,9 +20679,11 @@ export const RecordsScanReviewRequestAcceptsItemDSRecord =
       type: RecordsScanReviewRequestAcceptsItemDSRecordType,
       comment: S.optional(S.String),
       content: S.optional(S.String),
-      data: S.optional(RecordsScanReviewRequestAcceptsItemDSRecordData),
+      data: S.optional(RecordsBatchRequestPostsItemDSRecordData),
       proxied: S.optional(S.Boolean),
-      settings: S.optional(RecordsScanReviewRequestAcceptsItemDSRecordSettings),
+      settings: S.optional(
+        RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings,
+      ),
       tags: S.optional(RecordsScanReviewRequestAcceptsItemDSRecordTagsList),
     }),
   ).annotate({
@@ -21992,40 +20694,15 @@ export type RecordsScanReviewRequestAcceptsItemHTTPSRecordType = "HTTPS";
 export const RecordsScanReviewRequestAcceptsItemHTTPSRecordType =
   /*@__PURE__*/ S.String;
 
-export interface RecordsScanReviewRequestAcceptsItemHTTPSRecordData {
-  /** Priority. */
-  priority?: number;
-  /** Target. */
-  target?: string;
-  /** Value. */
-  value?: string;
-}
+export type RecordsScanReviewRequestAcceptsItemHTTPSRecordData =
+  RecordsBatchRequestPostsItemHTTPSRecordData;
 export const RecordsScanReviewRequestAcceptsItemHTTPSRecordData =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      priority: S.optional(S.Number),
-      target: S.optional(S.String),
-      value: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "RecordsScanReviewRequestAcceptsItemHTTPSRecordData",
-  }) as any as S.Schema<RecordsScanReviewRequestAcceptsItemHTTPSRecordData>;
+  RecordsBatchRequestPostsItemHTTPSRecordData;
 
-export interface RecordsScanReviewRequestAcceptsItemHTTPSRecordSettings {
-  /** When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv4Only?: boolean;
-  /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv6Only?: boolean;
-}
+export type RecordsScanReviewRequestAcceptsItemHTTPSRecordSettings =
+  RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings;
 export const RecordsScanReviewRequestAcceptsItemHTTPSRecordSettings =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ipv4Only: S.optional(S.Boolean.pipe(T.Body("ipv4_only"))),
-      ipv6Only: S.optional(S.Boolean.pipe(T.Body("ipv6_only"))),
-    }),
-  ).annotate({
-    identifier: "RecordsScanReviewRequestAcceptsItemHTTPSRecordSettings",
-  }) as any as S.Schema<RecordsScanReviewRequestAcceptsItemHTTPSRecordSettings>;
+  RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings;
 
 export type RecordsScanReviewRequestAcceptsItemHTTPSRecordTagsList =
   Array<unknown>;
@@ -22046,11 +20723,11 @@ export interface RecordsScanReviewRequestAcceptsItemHTTPSRecord {
   /** Formatted HTTPS content. See 'data' to set HTTPS properties. */
   content?: string;
   /** Components of a HTTPS record. */
-  data?: RecordsScanReviewRequestAcceptsItemHTTPSRecordData;
+  data?: RecordsBatchRequestPostsItemHTTPSRecordData;
   /** Whether the record is receiving the performance and security benefits of Cloudflare. */
   proxied?: boolean;
   /** Settings for the DNS record. */
-  settings?: RecordsScanReviewRequestAcceptsItemHTTPSRecordSettings;
+  settings?: RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings;
   /** Custom tags for the DNS record. This field has no effect on DNS responses. */
   tags?: RecordsScanReviewRequestAcceptsItemHTTPSRecordTagsList;
 }
@@ -22062,10 +20739,10 @@ export const RecordsScanReviewRequestAcceptsItemHTTPSRecord =
       type: RecordsScanReviewRequestAcceptsItemHTTPSRecordType,
       comment: S.optional(S.String),
       content: S.optional(S.String),
-      data: S.optional(RecordsScanReviewRequestAcceptsItemHTTPSRecordData),
+      data: S.optional(RecordsBatchRequestPostsItemHTTPSRecordData),
       proxied: S.optional(S.Boolean),
       settings: S.optional(
-        RecordsScanReviewRequestAcceptsItemHTTPSRecordSettings,
+        RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings,
       ),
       tags: S.optional(RecordsScanReviewRequestAcceptsItemHTTPSRecordTagsList),
     }),
@@ -22147,21 +20824,10 @@ export const RecordsScanReviewRequestAcceptsItemLOCRecordData =
     identifier: "RecordsScanReviewRequestAcceptsItemLOCRecordData",
   }) as any as S.Schema<RecordsScanReviewRequestAcceptsItemLOCRecordData>;
 
-export interface RecordsScanReviewRequestAcceptsItemLOCRecordSettings {
-  /** When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv4Only?: boolean;
-  /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv6Only?: boolean;
-}
+export type RecordsScanReviewRequestAcceptsItemLOCRecordSettings =
+  RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings;
 export const RecordsScanReviewRequestAcceptsItemLOCRecordSettings =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ipv4Only: S.optional(S.Boolean.pipe(T.Body("ipv4_only"))),
-      ipv6Only: S.optional(S.Boolean.pipe(T.Body("ipv6_only"))),
-    }),
-  ).annotate({
-    identifier: "RecordsScanReviewRequestAcceptsItemLOCRecordSettings",
-  }) as any as S.Schema<RecordsScanReviewRequestAcceptsItemLOCRecordSettings>;
+  RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings;
 
 export type RecordsScanReviewRequestAcceptsItemLOCRecordTagsList =
   Array<unknown>;
@@ -22186,7 +20852,7 @@ export interface RecordsScanReviewRequestAcceptsItemLOCRecord {
   /** Whether the record is receiving the performance and security benefits of Cloudflare. */
   proxied?: boolean;
   /** Settings for the DNS record. */
-  settings?: RecordsScanReviewRequestAcceptsItemLOCRecordSettings;
+  settings?: RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings;
   /** Custom tags for the DNS record. This field has no effect on DNS responses. */
   tags?: RecordsScanReviewRequestAcceptsItemLOCRecordTagsList;
 }
@@ -22201,7 +20867,7 @@ export const RecordsScanReviewRequestAcceptsItemLOCRecord =
       data: S.optional(RecordsScanReviewRequestAcceptsItemLOCRecordData),
       proxied: S.optional(S.Boolean),
       settings: S.optional(
-        RecordsScanReviewRequestAcceptsItemLOCRecordSettings,
+        RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings,
       ),
       tags: S.optional(RecordsScanReviewRequestAcceptsItemLOCRecordTagsList),
     }),
@@ -22213,49 +20879,15 @@ export type RecordsScanReviewRequestAcceptsItemNAPTRRecordType = "NAPTR";
 export const RecordsScanReviewRequestAcceptsItemNAPTRRecordType =
   /*@__PURE__*/ S.String;
 
-export interface RecordsScanReviewRequestAcceptsItemNAPTRRecordData {
-  /** Flags. */
-  flags?: string;
-  /** Order. */
-  order?: number;
-  /** Preference. */
-  preference?: number;
-  /** Regex. */
-  regex?: string;
-  /** Replacement. */
-  replacement?: string;
-  /** Service. */
-  service?: string;
-}
+export type RecordsScanReviewRequestAcceptsItemNAPTRRecordData =
+  RecordsBatchRequestPostsItemNAPTRRecordData;
 export const RecordsScanReviewRequestAcceptsItemNAPTRRecordData =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      flags: S.optional(S.String),
-      order: S.optional(S.Number),
-      preference: S.optional(S.Number),
-      regex: S.optional(S.String),
-      replacement: S.optional(S.String),
-      service: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "RecordsScanReviewRequestAcceptsItemNAPTRRecordData",
-  }) as any as S.Schema<RecordsScanReviewRequestAcceptsItemNAPTRRecordData>;
+  RecordsBatchRequestPostsItemNAPTRRecordData;
 
-export interface RecordsScanReviewRequestAcceptsItemNAPTRRecordSettings {
-  /** When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv4Only?: boolean;
-  /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv6Only?: boolean;
-}
+export type RecordsScanReviewRequestAcceptsItemNAPTRRecordSettings =
+  RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings;
 export const RecordsScanReviewRequestAcceptsItemNAPTRRecordSettings =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ipv4Only: S.optional(S.Boolean.pipe(T.Body("ipv4_only"))),
-      ipv6Only: S.optional(S.Boolean.pipe(T.Body("ipv6_only"))),
-    }),
-  ).annotate({
-    identifier: "RecordsScanReviewRequestAcceptsItemNAPTRRecordSettings",
-  }) as any as S.Schema<RecordsScanReviewRequestAcceptsItemNAPTRRecordSettings>;
+  RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings;
 
 export type RecordsScanReviewRequestAcceptsItemNAPTRRecordTagsList =
   Array<unknown>;
@@ -22276,11 +20908,11 @@ export interface RecordsScanReviewRequestAcceptsItemNAPTRRecord {
   /** Formatted NAPTR content. See 'data' to set NAPTR properties. */
   content?: string;
   /** Components of a NAPTR record. */
-  data?: RecordsScanReviewRequestAcceptsItemNAPTRRecordData;
+  data?: RecordsBatchRequestPostsItemNAPTRRecordData;
   /** Whether the record is receiving the performance and security benefits of Cloudflare. */
   proxied?: boolean;
   /** Settings for the DNS record. */
-  settings?: RecordsScanReviewRequestAcceptsItemNAPTRRecordSettings;
+  settings?: RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings;
   /** Custom tags for the DNS record. This field has no effect on DNS responses. */
   tags?: RecordsScanReviewRequestAcceptsItemNAPTRRecordTagsList;
 }
@@ -22292,10 +20924,10 @@ export const RecordsScanReviewRequestAcceptsItemNAPTRRecord =
       type: RecordsScanReviewRequestAcceptsItemNAPTRRecordType,
       comment: S.optional(S.String),
       content: S.optional(S.String),
-      data: S.optional(RecordsScanReviewRequestAcceptsItemNAPTRRecordData),
+      data: S.optional(RecordsBatchRequestPostsItemNAPTRRecordData),
       proxied: S.optional(S.Boolean),
       settings: S.optional(
-        RecordsScanReviewRequestAcceptsItemNAPTRRecordSettings,
+        RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings,
       ),
       tags: S.optional(RecordsScanReviewRequestAcceptsItemNAPTRRecordTagsList),
     }),
@@ -22307,43 +20939,15 @@ export type RecordsScanReviewRequestAcceptsItemSMIMEARecordType = "SMIMEA";
 export const RecordsScanReviewRequestAcceptsItemSMIMEARecordType =
   /*@__PURE__*/ S.String;
 
-export interface RecordsScanReviewRequestAcceptsItemSMIMEARecordData {
-  /** Certificate. */
-  certificate?: string;
-  /** Matching Type. */
-  matchingType?: number;
-  /** Selector. */
-  selector?: number;
-  /** Usage. */
-  usage?: number;
-}
+export type RecordsScanReviewRequestAcceptsItemSMIMEARecordData =
+  RecordsBatchRequestPostsItemSMIMEARecordData;
 export const RecordsScanReviewRequestAcceptsItemSMIMEARecordData =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      certificate: S.optional(S.String),
-      matchingType: S.optional(S.Number.pipe(T.Body("matching_type"))),
-      selector: S.optional(S.Number),
-      usage: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier: "RecordsScanReviewRequestAcceptsItemSMIMEARecordData",
-  }) as any as S.Schema<RecordsScanReviewRequestAcceptsItemSMIMEARecordData>;
+  RecordsBatchRequestPostsItemSMIMEARecordData;
 
-export interface RecordsScanReviewRequestAcceptsItemSMIMEARecordSettings {
-  /** When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv4Only?: boolean;
-  /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv6Only?: boolean;
-}
+export type RecordsScanReviewRequestAcceptsItemSMIMEARecordSettings =
+  RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings;
 export const RecordsScanReviewRequestAcceptsItemSMIMEARecordSettings =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ipv4Only: S.optional(S.Boolean.pipe(T.Body("ipv4_only"))),
-      ipv6Only: S.optional(S.Boolean.pipe(T.Body("ipv6_only"))),
-    }),
-  ).annotate({
-    identifier: "RecordsScanReviewRequestAcceptsItemSMIMEARecordSettings",
-  }) as any as S.Schema<RecordsScanReviewRequestAcceptsItemSMIMEARecordSettings>;
+  RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings;
 
 export type RecordsScanReviewRequestAcceptsItemSMIMEARecordTagsList =
   Array<unknown>;
@@ -22364,11 +20968,11 @@ export interface RecordsScanReviewRequestAcceptsItemSMIMEARecord {
   /** Formatted SMIMEA content. See 'data' to set SMIMEA properties. */
   content?: string;
   /** Components of a SMIMEA record. */
-  data?: RecordsScanReviewRequestAcceptsItemSMIMEARecordData;
+  data?: RecordsBatchRequestPostsItemSMIMEARecordData;
   /** Whether the record is receiving the performance and security benefits of Cloudflare. */
   proxied?: boolean;
   /** Settings for the DNS record. */
-  settings?: RecordsScanReviewRequestAcceptsItemSMIMEARecordSettings;
+  settings?: RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings;
   /** Custom tags for the DNS record. This field has no effect on DNS responses. */
   tags?: RecordsScanReviewRequestAcceptsItemSMIMEARecordTagsList;
 }
@@ -22380,10 +20984,10 @@ export const RecordsScanReviewRequestAcceptsItemSMIMEARecord =
       type: RecordsScanReviewRequestAcceptsItemSMIMEARecordType,
       comment: S.optional(S.String),
       content: S.optional(S.String),
-      data: S.optional(RecordsScanReviewRequestAcceptsItemSMIMEARecordData),
+      data: S.optional(RecordsBatchRequestPostsItemSMIMEARecordData),
       proxied: S.optional(S.Boolean),
       settings: S.optional(
-        RecordsScanReviewRequestAcceptsItemSMIMEARecordSettings,
+        RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings,
       ),
       tags: S.optional(RecordsScanReviewRequestAcceptsItemSMIMEARecordTagsList),
     }),
@@ -22395,43 +20999,15 @@ export type RecordsScanReviewRequestAcceptsItemSRVRecordType = "SRV";
 export const RecordsScanReviewRequestAcceptsItemSRVRecordType =
   /*@__PURE__*/ S.String;
 
-export interface RecordsScanReviewRequestAcceptsItemSRVRecordData {
-  /** The port of the service. */
-  port?: number;
-  /** Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map. */
-  priority?: number;
-  /** A valid hostname. */
-  target?: string;
-  /** The record weight. */
-  weight?: number;
-}
+export type RecordsScanReviewRequestAcceptsItemSRVRecordData =
+  RecordsBatchRequestPostsItemSRVRecordData;
 export const RecordsScanReviewRequestAcceptsItemSRVRecordData =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      port: S.optional(S.Number),
-      priority: S.optional(S.Number),
-      target: S.optional(S.String),
-      weight: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier: "RecordsScanReviewRequestAcceptsItemSRVRecordData",
-  }) as any as S.Schema<RecordsScanReviewRequestAcceptsItemSRVRecordData>;
+  RecordsBatchRequestPostsItemSRVRecordData;
 
-export interface RecordsScanReviewRequestAcceptsItemSRVRecordSettings {
-  /** When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv4Only?: boolean;
-  /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv6Only?: boolean;
-}
+export type RecordsScanReviewRequestAcceptsItemSRVRecordSettings =
+  RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings;
 export const RecordsScanReviewRequestAcceptsItemSRVRecordSettings =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ipv4Only: S.optional(S.Boolean.pipe(T.Body("ipv4_only"))),
-      ipv6Only: S.optional(S.Boolean.pipe(T.Body("ipv6_only"))),
-    }),
-  ).annotate({
-    identifier: "RecordsScanReviewRequestAcceptsItemSRVRecordSettings",
-  }) as any as S.Schema<RecordsScanReviewRequestAcceptsItemSRVRecordSettings>;
+  RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings;
 
 export type RecordsScanReviewRequestAcceptsItemSRVRecordTagsList =
   Array<unknown>;
@@ -22452,11 +21028,11 @@ export interface RecordsScanReviewRequestAcceptsItemSRVRecord {
   /** Priority, weight, port, and SRV target. See 'data' for setting the individual component values. */
   content?: string;
   /** Components of a SRV record. */
-  data?: RecordsScanReviewRequestAcceptsItemSRVRecordData;
+  data?: RecordsBatchRequestPostsItemSRVRecordData;
   /** Whether the record is receiving the performance and security benefits of Cloudflare. */
   proxied?: boolean;
   /** Settings for the DNS record. */
-  settings?: RecordsScanReviewRequestAcceptsItemSRVRecordSettings;
+  settings?: RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings;
   /** Custom tags for the DNS record. This field has no effect on DNS responses. */
   tags?: RecordsScanReviewRequestAcceptsItemSRVRecordTagsList;
 }
@@ -22468,10 +21044,10 @@ export const RecordsScanReviewRequestAcceptsItemSRVRecord =
       type: RecordsScanReviewRequestAcceptsItemSRVRecordType,
       comment: S.optional(S.String),
       content: S.optional(S.String),
-      data: S.optional(RecordsScanReviewRequestAcceptsItemSRVRecordData),
+      data: S.optional(RecordsBatchRequestPostsItemSRVRecordData),
       proxied: S.optional(S.Boolean),
       settings: S.optional(
-        RecordsScanReviewRequestAcceptsItemSRVRecordSettings,
+        RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings,
       ),
       tags: S.optional(RecordsScanReviewRequestAcceptsItemSRVRecordTagsList),
     }),
@@ -22483,40 +21059,15 @@ export type RecordsScanReviewRequestAcceptsItemSSHFPRecordType = "SSHFP";
 export const RecordsScanReviewRequestAcceptsItemSSHFPRecordType =
   /*@__PURE__*/ S.String;
 
-export interface RecordsScanReviewRequestAcceptsItemSSHFPRecordData {
-  /** Algorithm. */
-  algorithm?: number;
-  /** Fingerprint. */
-  fingerprint?: string;
-  /** Type. */
-  type?: number;
-}
+export type RecordsScanReviewRequestAcceptsItemSSHFPRecordData =
+  RecordsBatchRequestPostsItemSSHFPRecordData;
 export const RecordsScanReviewRequestAcceptsItemSSHFPRecordData =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      algorithm: S.optional(S.Number),
-      fingerprint: S.optional(S.String),
-      type: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier: "RecordsScanReviewRequestAcceptsItemSSHFPRecordData",
-  }) as any as S.Schema<RecordsScanReviewRequestAcceptsItemSSHFPRecordData>;
+  RecordsBatchRequestPostsItemSSHFPRecordData;
 
-export interface RecordsScanReviewRequestAcceptsItemSSHFPRecordSettings {
-  /** When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv4Only?: boolean;
-  /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv6Only?: boolean;
-}
+export type RecordsScanReviewRequestAcceptsItemSSHFPRecordSettings =
+  RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings;
 export const RecordsScanReviewRequestAcceptsItemSSHFPRecordSettings =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ipv4Only: S.optional(S.Boolean.pipe(T.Body("ipv4_only"))),
-      ipv6Only: S.optional(S.Boolean.pipe(T.Body("ipv6_only"))),
-    }),
-  ).annotate({
-    identifier: "RecordsScanReviewRequestAcceptsItemSSHFPRecordSettings",
-  }) as any as S.Schema<RecordsScanReviewRequestAcceptsItemSSHFPRecordSettings>;
+  RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings;
 
 export type RecordsScanReviewRequestAcceptsItemSSHFPRecordTagsList =
   Array<unknown>;
@@ -22537,11 +21088,11 @@ export interface RecordsScanReviewRequestAcceptsItemSSHFPRecord {
   /** Formatted SSHFP content. See 'data' to set SSHFP properties. */
   content?: string;
   /** Components of a SSHFP record. */
-  data?: RecordsScanReviewRequestAcceptsItemSSHFPRecordData;
+  data?: RecordsBatchRequestPostsItemSSHFPRecordData;
   /** Whether the record is receiving the performance and security benefits of Cloudflare. */
   proxied?: boolean;
   /** Settings for the DNS record. */
-  settings?: RecordsScanReviewRequestAcceptsItemSSHFPRecordSettings;
+  settings?: RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings;
   /** Custom tags for the DNS record. This field has no effect on DNS responses. */
   tags?: RecordsScanReviewRequestAcceptsItemSSHFPRecordTagsList;
 }
@@ -22553,10 +21104,10 @@ export const RecordsScanReviewRequestAcceptsItemSSHFPRecord =
       type: RecordsScanReviewRequestAcceptsItemSSHFPRecordType,
       comment: S.optional(S.String),
       content: S.optional(S.String),
-      data: S.optional(RecordsScanReviewRequestAcceptsItemSSHFPRecordData),
+      data: S.optional(RecordsBatchRequestPostsItemSSHFPRecordData),
       proxied: S.optional(S.Boolean),
       settings: S.optional(
-        RecordsScanReviewRequestAcceptsItemSSHFPRecordSettings,
+        RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings,
       ),
       tags: S.optional(RecordsScanReviewRequestAcceptsItemSSHFPRecordTagsList),
     }),
@@ -22568,40 +21119,15 @@ export type RecordsScanReviewRequestAcceptsItemSVCBRecordType = "SVCB";
 export const RecordsScanReviewRequestAcceptsItemSVCBRecordType =
   /*@__PURE__*/ S.String;
 
-export interface RecordsScanReviewRequestAcceptsItemSVCBRecordData {
-  /** Priority. */
-  priority?: number;
-  /** Target. */
-  target?: string;
-  /** Value. */
-  value?: string;
-}
+export type RecordsScanReviewRequestAcceptsItemSVCBRecordData =
+  RecordsBatchRequestPostsItemHTTPSRecordData;
 export const RecordsScanReviewRequestAcceptsItemSVCBRecordData =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      priority: S.optional(S.Number),
-      target: S.optional(S.String),
-      value: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "RecordsScanReviewRequestAcceptsItemSVCBRecordData",
-  }) as any as S.Schema<RecordsScanReviewRequestAcceptsItemSVCBRecordData>;
+  RecordsBatchRequestPostsItemHTTPSRecordData;
 
-export interface RecordsScanReviewRequestAcceptsItemSVCBRecordSettings {
-  /** When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv4Only?: boolean;
-  /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv6Only?: boolean;
-}
+export type RecordsScanReviewRequestAcceptsItemSVCBRecordSettings =
+  RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings;
 export const RecordsScanReviewRequestAcceptsItemSVCBRecordSettings =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ipv4Only: S.optional(S.Boolean.pipe(T.Body("ipv4_only"))),
-      ipv6Only: S.optional(S.Boolean.pipe(T.Body("ipv6_only"))),
-    }),
-  ).annotate({
-    identifier: "RecordsScanReviewRequestAcceptsItemSVCBRecordSettings",
-  }) as any as S.Schema<RecordsScanReviewRequestAcceptsItemSVCBRecordSettings>;
+  RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings;
 
 export type RecordsScanReviewRequestAcceptsItemSVCBRecordTagsList =
   Array<unknown>;
@@ -22622,11 +21148,11 @@ export interface RecordsScanReviewRequestAcceptsItemSVCBRecord {
   /** Formatted SVCB content. See 'data' to set SVCB properties. */
   content?: string;
   /** Components of a SVCB record. */
-  data?: RecordsScanReviewRequestAcceptsItemSVCBRecordData;
+  data?: RecordsBatchRequestPostsItemHTTPSRecordData;
   /** Whether the record is receiving the performance and security benefits of Cloudflare. */
   proxied?: boolean;
   /** Settings for the DNS record. */
-  settings?: RecordsScanReviewRequestAcceptsItemSVCBRecordSettings;
+  settings?: RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings;
   /** Custom tags for the DNS record. This field has no effect on DNS responses. */
   tags?: RecordsScanReviewRequestAcceptsItemSVCBRecordTagsList;
 }
@@ -22638,10 +21164,10 @@ export const RecordsScanReviewRequestAcceptsItemSVCBRecord =
       type: RecordsScanReviewRequestAcceptsItemSVCBRecordType,
       comment: S.optional(S.String),
       content: S.optional(S.String),
-      data: S.optional(RecordsScanReviewRequestAcceptsItemSVCBRecordData),
+      data: S.optional(RecordsBatchRequestPostsItemHTTPSRecordData),
       proxied: S.optional(S.Boolean),
       settings: S.optional(
-        RecordsScanReviewRequestAcceptsItemSVCBRecordSettings,
+        RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings,
       ),
       tags: S.optional(RecordsScanReviewRequestAcceptsItemSVCBRecordTagsList),
     }),
@@ -22653,43 +21179,15 @@ export type RecordsScanReviewRequestAcceptsItemTLSARecordType = "TLSA";
 export const RecordsScanReviewRequestAcceptsItemTLSARecordType =
   /*@__PURE__*/ S.String;
 
-export interface RecordsScanReviewRequestAcceptsItemTLSARecordData {
-  /** Certificate. */
-  certificate?: string;
-  /** Matching Type. */
-  matchingType?: number;
-  /** Selector. */
-  selector?: number;
-  /** Usage. */
-  usage?: number;
-}
+export type RecordsScanReviewRequestAcceptsItemTLSARecordData =
+  RecordsBatchRequestPostsItemSMIMEARecordData;
 export const RecordsScanReviewRequestAcceptsItemTLSARecordData =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      certificate: S.optional(S.String),
-      matchingType: S.optional(S.Number.pipe(T.Body("matching_type"))),
-      selector: S.optional(S.Number),
-      usage: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier: "RecordsScanReviewRequestAcceptsItemTLSARecordData",
-  }) as any as S.Schema<RecordsScanReviewRequestAcceptsItemTLSARecordData>;
+  RecordsBatchRequestPostsItemSMIMEARecordData;
 
-export interface RecordsScanReviewRequestAcceptsItemTLSARecordSettings {
-  /** When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv4Only?: boolean;
-  /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv6Only?: boolean;
-}
+export type RecordsScanReviewRequestAcceptsItemTLSARecordSettings =
+  RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings;
 export const RecordsScanReviewRequestAcceptsItemTLSARecordSettings =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ipv4Only: S.optional(S.Boolean.pipe(T.Body("ipv4_only"))),
-      ipv6Only: S.optional(S.Boolean.pipe(T.Body("ipv6_only"))),
-    }),
-  ).annotate({
-    identifier: "RecordsScanReviewRequestAcceptsItemTLSARecordSettings",
-  }) as any as S.Schema<RecordsScanReviewRequestAcceptsItemTLSARecordSettings>;
+  RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings;
 
 export type RecordsScanReviewRequestAcceptsItemTLSARecordTagsList =
   Array<unknown>;
@@ -22710,11 +21208,11 @@ export interface RecordsScanReviewRequestAcceptsItemTLSARecord {
   /** Formatted TLSA content. See 'data' to set TLSA properties. */
   content?: string;
   /** Components of a TLSA record. */
-  data?: RecordsScanReviewRequestAcceptsItemTLSARecordData;
+  data?: RecordsBatchRequestPostsItemSMIMEARecordData;
   /** Whether the record is receiving the performance and security benefits of Cloudflare. */
   proxied?: boolean;
   /** Settings for the DNS record. */
-  settings?: RecordsScanReviewRequestAcceptsItemTLSARecordSettings;
+  settings?: RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings;
   /** Custom tags for the DNS record. This field has no effect on DNS responses. */
   tags?: RecordsScanReviewRequestAcceptsItemTLSARecordTagsList;
 }
@@ -22726,10 +21224,10 @@ export const RecordsScanReviewRequestAcceptsItemTLSARecord =
       type: RecordsScanReviewRequestAcceptsItemTLSARecordType,
       comment: S.optional(S.String),
       content: S.optional(S.String),
-      data: S.optional(RecordsScanReviewRequestAcceptsItemTLSARecordData),
+      data: S.optional(RecordsBatchRequestPostsItemSMIMEARecordData),
       proxied: S.optional(S.Boolean),
       settings: S.optional(
-        RecordsScanReviewRequestAcceptsItemTLSARecordSettings,
+        RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings,
       ),
       tags: S.optional(RecordsScanReviewRequestAcceptsItemTLSARecordTagsList),
     }),
@@ -22741,37 +21239,15 @@ export type RecordsScanReviewRequestAcceptsItemURIRecordType = "URI";
 export const RecordsScanReviewRequestAcceptsItemURIRecordType =
   /*@__PURE__*/ S.String;
 
-export interface RecordsScanReviewRequestAcceptsItemURIRecordData {
-  /** The record content. */
-  target?: string;
-  /** The record weight. */
-  weight?: number;
-}
+export type RecordsScanReviewRequestAcceptsItemURIRecordData =
+  RecordsBatchRequestPostsItemURIRecordData;
 export const RecordsScanReviewRequestAcceptsItemURIRecordData =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      target: S.optional(S.String),
-      weight: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier: "RecordsScanReviewRequestAcceptsItemURIRecordData",
-  }) as any as S.Schema<RecordsScanReviewRequestAcceptsItemURIRecordData>;
+  RecordsBatchRequestPostsItemURIRecordData;
 
-export interface RecordsScanReviewRequestAcceptsItemURIRecordSettings {
-  /** When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv4Only?: boolean;
-  /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv6Only?: boolean;
-}
+export type RecordsScanReviewRequestAcceptsItemURIRecordSettings =
+  RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings;
 export const RecordsScanReviewRequestAcceptsItemURIRecordSettings =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ipv4Only: S.optional(S.Boolean.pipe(T.Body("ipv4_only"))),
-      ipv6Only: S.optional(S.Boolean.pipe(T.Body("ipv6_only"))),
-    }),
-  ).annotate({
-    identifier: "RecordsScanReviewRequestAcceptsItemURIRecordSettings",
-  }) as any as S.Schema<RecordsScanReviewRequestAcceptsItemURIRecordSettings>;
+  RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings;
 
 export type RecordsScanReviewRequestAcceptsItemURIRecordTagsList =
   Array<unknown>;
@@ -22792,13 +21268,13 @@ export interface RecordsScanReviewRequestAcceptsItemURIRecord {
   /** Formatted URI content. See 'data' to set URI properties. */
   content?: string;
   /** Components of a URI record. */
-  data?: RecordsScanReviewRequestAcceptsItemURIRecordData;
+  data?: RecordsBatchRequestPostsItemURIRecordData;
   /** Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map. */
   priority?: number;
   /** Whether the record is receiving the performance and security benefits of Cloudflare. */
   proxied?: boolean;
   /** Settings for the DNS record. */
-  settings?: RecordsScanReviewRequestAcceptsItemURIRecordSettings;
+  settings?: RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings;
   /** Custom tags for the DNS record. This field has no effect on DNS responses. */
   tags?: RecordsScanReviewRequestAcceptsItemURIRecordTagsList;
 }
@@ -22810,11 +21286,11 @@ export const RecordsScanReviewRequestAcceptsItemURIRecord =
       type: RecordsScanReviewRequestAcceptsItemURIRecordType,
       comment: S.optional(S.String),
       content: S.optional(S.String),
-      data: S.optional(RecordsScanReviewRequestAcceptsItemURIRecordData),
+      data: S.optional(RecordsBatchRequestPostsItemURIRecordData),
       priority: S.optional(S.Number),
       proxied: S.optional(S.Boolean),
       settings: S.optional(
-        RecordsScanReviewRequestAcceptsItemURIRecordSettings,
+        RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings,
       ),
       tags: S.optional(RecordsScanReviewRequestAcceptsItemURIRecordTagsList),
     }),
@@ -23082,22 +21558,15 @@ export const RecordsScanReviewRequestAcceptsList = /*@__PURE__*/ S.Array(
   RecordsScanReviewRequestAcceptsItem,
 ) as any as S.Schema<RecordsScanReviewRequestAcceptsList>;
 
-export interface RecordsScanReviewRequestRejectsItem {
-  /** Identifier. */
-  id: string;
-}
-export const RecordsScanReviewRequestRejectsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-  }),
-).annotate({
-  identifier: "RecordsScanReviewRequestRejectsItem",
-}) as any as S.Schema<RecordsScanReviewRequestRejectsItem>;
+export type RecordsScanReviewRequestRejectsItem =
+  RecordsBatchRequestDeletesItem;
+export const RecordsScanReviewRequestRejectsItem =
+  RecordsBatchRequestDeletesItem;
 
 export type RecordsScanReviewRequestRejectsList =
-  Array<RecordsScanReviewRequestRejectsItem>;
+  Array<RecordsBatchRequestDeletesItem>;
 export const RecordsScanReviewRequestRejectsList = /*@__PURE__*/ S.Array(
-  RecordsScanReviewRequestRejectsItem,
+  RecordsBatchRequestDeletesItem,
 ) as any as S.Schema<RecordsScanReviewRequestRejectsList>;
 
 export interface ScanReviewRecordRequest {
@@ -23509,21 +21978,10 @@ export const RecordsScanReviewResponseAcceptsItemOpenpgpkeyRecordMeta =
     identifier: "RecordsScanReviewResponseAcceptsItemOpenpgpkeyRecordMeta",
   }) as any as S.Schema<RecordsScanReviewResponseAcceptsItemOpenpgpkeyRecordMeta>;
 
-export interface RecordsScanReviewResponseAcceptsItemOpenpgpkeyRecordSettings {
-  /** When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv4Only?: boolean | null;
-  /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv6Only?: boolean | null;
-}
+export type RecordsScanReviewResponseAcceptsItemOpenpgpkeyRecordSettings =
+  RecordsBatchResponseDeletesItemOpenpgpkeyRecordSettings;
 export const RecordsScanReviewResponseAcceptsItemOpenpgpkeyRecordSettings =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ipv4Only: S.optional(S.NullOr(S.Boolean).pipe(T.Body("ipv4_only"))),
-      ipv6Only: S.optional(S.NullOr(S.Boolean).pipe(T.Body("ipv6_only"))),
-    }),
-  ).annotate({
-    identifier: "RecordsScanReviewResponseAcceptsItemOpenpgpkeyRecordSettings",
-  }) as any as S.Schema<RecordsScanReviewResponseAcceptsItemOpenpgpkeyRecordSettings>;
+  RecordsBatchResponseDeletesItemOpenpgpkeyRecordSettings;
 
 export type RecordsScanReviewResponseAcceptsItemOpenpgpkeyRecordTagsList =
   Array<unknown>;
@@ -23557,7 +22015,7 @@ export interface RecordsScanReviewResponseAcceptsItemOpenpgpkeyRecord {
   /** Whether the record is receiving the performance and security benefits of Cloudflare. */
   proxied: boolean;
   /** Settings for the DNS record. */
-  settings: RecordsScanReviewResponseAcceptsItemOpenpgpkeyRecordSettings;
+  settings: RecordsBatchResponseDeletesItemOpenpgpkeyRecordSettings;
   /** Custom tags for the DNS record. This field has no effect on DNS responses. */
   tags: RecordsScanReviewResponseAcceptsItemOpenpgpkeyRecordTagsList;
   /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
@@ -23581,7 +22039,7 @@ export const RecordsScanReviewResponseAcceptsItemOpenpgpkeyRecord =
       name: S.String,
       proxiable: S.Boolean,
       proxied: S.Boolean,
-      settings: RecordsScanReviewResponseAcceptsItemOpenpgpkeyRecordSettings,
+      settings: RecordsBatchResponseDeletesItemOpenpgpkeyRecordSettings,
       tags: RecordsScanReviewResponseAcceptsItemOpenpgpkeyRecordTagsList,
       ttl: S.Number,
       type: RecordsScanReviewResponseAcceptsItemOpenpgpkeyRecordType,
@@ -24947,43 +23405,19 @@ export type RecordsUpdateRequestType =
   | "URI";
 export const RecordsUpdateRequestType = /*@__PURE__*/ S.String;
 
-export interface RecordsUpdateRequestSettingsARecord {
-  /** When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv4Only?: boolean;
-  /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv6Only?: boolean;
-}
-export const RecordsUpdateRequestSettingsARecord = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ipv4Only: S.optional(S.Boolean.pipe(T.Body("ipv4_only"))),
-    ipv6Only: S.optional(S.Boolean.pipe(T.Body("ipv6_only"))),
-  }),
-).annotate({
-  identifier: "RecordsUpdateRequestSettingsARecord",
-}) as any as S.Schema<RecordsUpdateRequestSettingsARecord>;
+export type RecordsUpdateRequestSettingsARecord =
+  RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings;
+export const RecordsUpdateRequestSettingsARecord =
+  RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings;
 
-export interface RecordsUpdateRequestSettingsCNAMERecord {
-  /** If enabled, causes the CNAME record to be resolved externally and the resulting address records (e.g., A and AAAA) to be returned instead of the CNAME record itself. This setting is unavailable for proxied records, since they are always flattened. */
-  flattenCname?: boolean;
-  /** When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv4Only?: boolean;
-  /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv6Only?: boolean;
-}
-export const RecordsUpdateRequestSettingsCNAMERecord = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      flattenCname: S.optional(S.Boolean.pipe(T.Body("flatten_cname"))),
-      ipv4Only: S.optional(S.Boolean.pipe(T.Body("ipv4_only"))),
-      ipv6Only: S.optional(S.Boolean.pipe(T.Body("ipv6_only"))),
-    }),
-).annotate({
-  identifier: "RecordsUpdateRequestSettingsCNAMERecord",
-}) as any as S.Schema<RecordsUpdateRequestSettingsCNAMERecord>;
+export type RecordsUpdateRequestSettingsCNAMERecord =
+  RecordsBatchRequestPostsItemCNAMERecordSettings;
+export const RecordsUpdateRequestSettingsCNAMERecord =
+  RecordsBatchRequestPostsItemCNAMERecordSettings;
 
 export type RecordsUpdateRequestSettings =
-  | RecordsUpdateRequestSettingsARecord
-  | RecordsUpdateRequestSettingsCNAMERecord;
+  | RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings
+  | RecordsBatchRequestPostsItemCNAMERecordSettings;
 export const RecordsUpdateRequestSettings = /*@__PURE__*/ S.Unknown.pipe(
   T.UnionCases([
     ["ipv4Only", "ipv6Only"],
@@ -24996,105 +23430,30 @@ export const RecordsUpdateRequestTagsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<RecordsUpdateRequestTagsList>;
 
-export interface RecordsUpdateRequestDataCAARecord {
-  /** Flags for the CAA record. */
-  flags?: number;
-  /** Name of the property controlled by this record (e.g.: issue, issuewild, iodef). */
-  tag?: string;
-  /** Value of the record. This field's semantics depend on the chosen tag. */
-  value?: string;
-}
-export const RecordsUpdateRequestDataCAARecord = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    flags: S.optional(S.Number),
-    tag: S.optional(S.String),
-    value: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RecordsUpdateRequestDataCAARecord",
-}) as any as S.Schema<RecordsUpdateRequestDataCAARecord>;
+export type RecordsUpdateRequestDataCAARecord =
+  RecordsBatchRequestPostsItemCAARecordData;
+export const RecordsUpdateRequestDataCAARecord =
+  RecordsBatchRequestPostsItemCAARecordData;
 
-export interface RecordsUpdateRequestDataCERTRecord {
-  /** Algorithm. */
-  algorithm?: number;
-  /** Certificate. */
-  certificate?: string;
-  /** Key Tag. */
-  keyTag?: number;
-  /** Type. */
-  type?: number;
-}
-export const RecordsUpdateRequestDataCERTRecord = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    algorithm: S.optional(S.Number),
-    certificate: S.optional(S.String),
-    keyTag: S.optional(S.Number.pipe(T.Body("key_tag"))),
-    type: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "RecordsUpdateRequestDataCERTRecord",
-}) as any as S.Schema<RecordsUpdateRequestDataCERTRecord>;
+export type RecordsUpdateRequestDataCERTRecord =
+  RecordsBatchRequestPostsItemCERTRecordData;
+export const RecordsUpdateRequestDataCERTRecord =
+  RecordsBatchRequestPostsItemCERTRecordData;
 
-export interface RecordsUpdateRequestDataDNSKEYRecord {
-  /** Algorithm. */
-  algorithm?: number;
-  /** Flags. */
-  flags?: number;
-  /** Protocol. */
-  protocol?: number;
-  /** Public Key. */
-  publicKey?: string;
-}
-export const RecordsUpdateRequestDataDNSKEYRecord = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      algorithm: S.optional(S.Number),
-      flags: S.optional(S.Number),
-      protocol: S.optional(S.Number),
-      publicKey: S.optional(S.String.pipe(T.Body("public_key"))),
-    }),
-).annotate({
-  identifier: "RecordsUpdateRequestDataDNSKEYRecord",
-}) as any as S.Schema<RecordsUpdateRequestDataDNSKEYRecord>;
+export type RecordsUpdateRequestDataDNSKEYRecord =
+  RecordsBatchRequestPostsItemDNSKEYRecordData;
+export const RecordsUpdateRequestDataDNSKEYRecord =
+  RecordsBatchRequestPostsItemDNSKEYRecordData;
 
-export interface RecordsUpdateRequestDataDSRecord {
-  /** Algorithm. */
-  algorithm?: number;
-  /** Digest. */
-  digest?: string;
-  /** Digest Type. */
-  digestType?: number;
-  /** Key Tag. */
-  keyTag?: number;
-}
-export const RecordsUpdateRequestDataDSRecord = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    algorithm: S.optional(S.Number),
-    digest: S.optional(S.String),
-    digestType: S.optional(S.Number.pipe(T.Body("digest_type"))),
-    keyTag: S.optional(S.Number.pipe(T.Body("key_tag"))),
-  }),
-).annotate({
-  identifier: "RecordsUpdateRequestDataDSRecord",
-}) as any as S.Schema<RecordsUpdateRequestDataDSRecord>;
+export type RecordsUpdateRequestDataDSRecord =
+  RecordsBatchRequestPostsItemDSRecordData;
+export const RecordsUpdateRequestDataDSRecord =
+  RecordsBatchRequestPostsItemDSRecordData;
 
-export interface RecordsUpdateRequestDataHTTPSRecord {
-  /** Priority. */
-  priority?: number;
-  /** Target. */
-  target?: string;
-  /** Value. */
-  value?: string;
-}
-export const RecordsUpdateRequestDataHTTPSRecord = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    priority: S.optional(S.Number),
-    target: S.optional(S.String),
-    value: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RecordsUpdateRequestDataHTTPSRecord",
-}) as any as S.Schema<RecordsUpdateRequestDataHTTPSRecord>;
+export type RecordsUpdateRequestDataHTTPSRecord =
+  RecordsBatchRequestPostsItemHTTPSRecordData;
+export const RecordsUpdateRequestDataHTTPSRecord =
+  RecordsBatchRequestPostsItemHTTPSRecordData;
 
 export type RecordsUpdateRequestDataLOCRecordLatDirection = "N" | "S";
 export const RecordsUpdateRequestDataLOCRecordLatDirection =
@@ -25159,121 +23518,43 @@ export const RecordsUpdateRequestDataLOCRecord = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsUpdateRequestDataLOCRecord",
 }) as any as S.Schema<RecordsUpdateRequestDataLOCRecord>;
 
-export interface RecordsUpdateRequestDataNAPTRRecord {
-  /** Flags. */
-  flags?: string;
-  /** Order. */
-  order?: number;
-  /** Preference. */
-  preference?: number;
-  /** Regex. */
-  regex?: string;
-  /** Replacement. */
-  replacement?: string;
-  /** Service. */
-  service?: string;
-}
-export const RecordsUpdateRequestDataNAPTRRecord = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    flags: S.optional(S.String),
-    order: S.optional(S.Number),
-    preference: S.optional(S.Number),
-    regex: S.optional(S.String),
-    replacement: S.optional(S.String),
-    service: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RecordsUpdateRequestDataNAPTRRecord",
-}) as any as S.Schema<RecordsUpdateRequestDataNAPTRRecord>;
+export type RecordsUpdateRequestDataNAPTRRecord =
+  RecordsBatchRequestPostsItemNAPTRRecordData;
+export const RecordsUpdateRequestDataNAPTRRecord =
+  RecordsBatchRequestPostsItemNAPTRRecordData;
 
-export interface RecordsUpdateRequestDataSMIMEARecord {
-  /** Certificate. */
-  certificate?: string;
-  /** Matching Type. */
-  matchingType?: number;
-  /** Selector. */
-  selector?: number;
-  /** Usage. */
-  usage?: number;
-}
-export const RecordsUpdateRequestDataSMIMEARecord = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      certificate: S.optional(S.String),
-      matchingType: S.optional(S.Number.pipe(T.Body("matching_type"))),
-      selector: S.optional(S.Number),
-      usage: S.optional(S.Number),
-    }),
-).annotate({
-  identifier: "RecordsUpdateRequestDataSMIMEARecord",
-}) as any as S.Schema<RecordsUpdateRequestDataSMIMEARecord>;
+export type RecordsUpdateRequestDataSMIMEARecord =
+  RecordsBatchRequestPostsItemSMIMEARecordData;
+export const RecordsUpdateRequestDataSMIMEARecord =
+  RecordsBatchRequestPostsItemSMIMEARecordData;
 
-export interface RecordsUpdateRequestDataSRVRecord {
-  /** The port of the service. */
-  port?: number;
-  /** Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map. */
-  priority?: number;
-  /** A valid hostname. */
-  target?: string;
-  /** The record weight. */
-  weight?: number;
-}
-export const RecordsUpdateRequestDataSRVRecord = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    port: S.optional(S.Number),
-    priority: S.optional(S.Number),
-    target: S.optional(S.String),
-    weight: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "RecordsUpdateRequestDataSRVRecord",
-}) as any as S.Schema<RecordsUpdateRequestDataSRVRecord>;
+export type RecordsUpdateRequestDataSRVRecord =
+  RecordsBatchRequestPostsItemSRVRecordData;
+export const RecordsUpdateRequestDataSRVRecord =
+  RecordsBatchRequestPostsItemSRVRecordData;
 
-export interface RecordsUpdateRequestDataSSHFPRecord {
-  /** Algorithm. */
-  algorithm?: number;
-  /** Fingerprint. */
-  fingerprint?: string;
-  /** Type. */
-  type?: number;
-}
-export const RecordsUpdateRequestDataSSHFPRecord = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    algorithm: S.optional(S.Number),
-    fingerprint: S.optional(S.String),
-    type: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "RecordsUpdateRequestDataSSHFPRecord",
-}) as any as S.Schema<RecordsUpdateRequestDataSSHFPRecord>;
+export type RecordsUpdateRequestDataSSHFPRecord =
+  RecordsBatchRequestPostsItemSSHFPRecordData;
+export const RecordsUpdateRequestDataSSHFPRecord =
+  RecordsBatchRequestPostsItemSSHFPRecordData;
 
-export interface RecordsUpdateRequestDataURIRecord {
-  /** The record content. */
-  target?: string;
-  /** The record weight. */
-  weight?: number;
-}
-export const RecordsUpdateRequestDataURIRecord = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    target: S.optional(S.String),
-    weight: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "RecordsUpdateRequestDataURIRecord",
-}) as any as S.Schema<RecordsUpdateRequestDataURIRecord>;
+export type RecordsUpdateRequestDataURIRecord =
+  RecordsBatchRequestPostsItemURIRecordData;
+export const RecordsUpdateRequestDataURIRecord =
+  RecordsBatchRequestPostsItemURIRecordData;
 
 export type RecordsUpdateRequestData =
-  | RecordsUpdateRequestDataCAARecord
-  | RecordsUpdateRequestDataCERTRecord
-  | RecordsUpdateRequestDataDNSKEYRecord
-  | RecordsUpdateRequestDataDSRecord
-  | RecordsUpdateRequestDataHTTPSRecord
+  | RecordsBatchRequestPostsItemCAARecordData
+  | RecordsBatchRequestPostsItemCERTRecordData
+  | RecordsBatchRequestPostsItemDNSKEYRecordData
+  | RecordsBatchRequestPostsItemDSRecordData
+  | RecordsBatchRequestPostsItemHTTPSRecordData
   | RecordsUpdateRequestDataLOCRecord
-  | RecordsUpdateRequestDataNAPTRRecord
-  | RecordsUpdateRequestDataSMIMEARecord
-  | RecordsUpdateRequestDataSRVRecord
-  | RecordsUpdateRequestDataSSHFPRecord
-  | RecordsUpdateRequestDataURIRecord;
+  | RecordsBatchRequestPostsItemNAPTRRecordData
+  | RecordsBatchRequestPostsItemSMIMEARecordData
+  | RecordsBatchRequestPostsItemSRVRecordData
+  | RecordsBatchRequestPostsItemSSHFPRecordData
+  | RecordsBatchRequestPostsItemURIRecordData;
 export const RecordsUpdateRequestData = /*@__PURE__*/ S.Unknown.pipe(
   T.UnionCases([
     ["flags", "tag", "value"],
@@ -25834,21 +24115,10 @@ export const RecordsUpdateResultOpenpgpkeyRecordMeta = /*@__PURE__*/ S.suspend(
   identifier: "RecordsUpdateResultOpenpgpkeyRecordMeta",
 }) as any as S.Schema<RecordsUpdateResultOpenpgpkeyRecordMeta>;
 
-export interface RecordsUpdateResultOpenpgpkeyRecordSettings {
-  /** When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv4Only?: boolean | null;
-  /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv6Only?: boolean | null;
-}
+export type RecordsUpdateResultOpenpgpkeyRecordSettings =
+  RecordsBatchResponseDeletesItemOpenpgpkeyRecordSettings;
 export const RecordsUpdateResultOpenpgpkeyRecordSettings =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ipv4Only: S.optional(S.NullOr(S.Boolean).pipe(T.Body("ipv4_only"))),
-      ipv6Only: S.optional(S.NullOr(S.Boolean).pipe(T.Body("ipv6_only"))),
-    }),
-  ).annotate({
-    identifier: "RecordsUpdateResultOpenpgpkeyRecordSettings",
-  }) as any as S.Schema<RecordsUpdateResultOpenpgpkeyRecordSettings>;
+  RecordsBatchResponseDeletesItemOpenpgpkeyRecordSettings;
 
 export type RecordsUpdateResultOpenpgpkeyRecordTagsList = Array<unknown>;
 export const RecordsUpdateResultOpenpgpkeyRecordTagsList =
@@ -25879,7 +24149,7 @@ export interface RecordsUpdateResultOpenpgpkeyRecord {
   /** Whether the record is receiving the performance and security benefits of Cloudflare. */
   proxied: boolean;
   /** Settings for the DNS record. */
-  settings: RecordsUpdateResultOpenpgpkeyRecordSettings;
+  settings: RecordsBatchResponseDeletesItemOpenpgpkeyRecordSettings;
   /** Custom tags for the DNS record. This field has no effect on DNS responses. */
   tags: RecordsUpdateResultOpenpgpkeyRecordTagsList;
   /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
@@ -25902,7 +24172,7 @@ export const RecordsUpdateResultOpenpgpkeyRecord = /*@__PURE__*/ S.suspend(() =>
     name: S.String,
     proxiable: S.Boolean,
     proxied: S.Boolean,
-    settings: RecordsUpdateResultOpenpgpkeyRecordSettings,
+    settings: RecordsBatchResponseDeletesItemOpenpgpkeyRecordSettings,
     tags: RecordsUpdateResultOpenpgpkeyRecordTagsList,
     ttl: S.Number,
     type: RecordsUpdateResultOpenpgpkeyRecordType,

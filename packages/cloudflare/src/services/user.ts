@@ -1016,46 +1016,21 @@ export const TokensGetResponseCondition = /*@__PURE__*/ S.suspend(() =>
 export type TokensGetResponsePoliciesItemEffect = "allow" | "deny";
 export const TokensGetResponsePoliciesItemEffect = /*@__PURE__*/ S.String;
 
-export interface TokensGetResponsePoliciesItemPermissionGroupsItemMeta {
-  key?: string | null;
-  value?: string | null;
-}
+export type TokensGetResponsePoliciesItemPermissionGroupsItemMeta =
+  TokensCreateResponsePoliciesItemPermissionGroupsItemMeta;
 export const TokensGetResponsePoliciesItemPermissionGroupsItemMeta =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      key: S.optional(S.NullOr(S.String)),
-      value: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier: "TokensGetResponsePoliciesItemPermissionGroupsItemMeta",
-  }) as any as S.Schema<TokensGetResponsePoliciesItemPermissionGroupsItemMeta>;
+  TokensCreateResponsePoliciesItemPermissionGroupsItemMeta;
 
-export interface TokensGetResponsePoliciesItemPermissionGroupsItem {
-  /** Identifier of the permission group. */
-  id: string;
-  /** Attributes associated to the permission group. */
-  meta?: TokensGetResponsePoliciesItemPermissionGroupsItemMeta | null;
-  /** Name of the permission group. */
-  name?: string | null;
-}
+export type TokensGetResponsePoliciesItemPermissionGroupsItem =
+  TokensCreateResponsePoliciesItemPermissionGroupsItem;
 export const TokensGetResponsePoliciesItemPermissionGroupsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      meta: S.optional(
-        S.NullOr(TokensGetResponsePoliciesItemPermissionGroupsItemMeta),
-      ),
-      name: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier: "TokensGetResponsePoliciesItemPermissionGroupsItem",
-  }) as any as S.Schema<TokensGetResponsePoliciesItemPermissionGroupsItem>;
+  TokensCreateResponsePoliciesItemPermissionGroupsItem;
 
 export type TokensGetResponsePoliciesItemPermissionGroupsList =
-  Array<TokensGetResponsePoliciesItemPermissionGroupsItem>;
+  Array<TokensCreateResponsePoliciesItemPermissionGroupsItem>;
 export const TokensGetResponsePoliciesItemPermissionGroupsList =
   /*@__PURE__*/ S.Array(
-    TokensGetResponsePoliciesItemPermissionGroupsItem,
+    TokensCreateResponsePoliciesItemPermissionGroupsItem,
   ) as any as S.Schema<TokensGetResponsePoliciesItemPermissionGroupsList>;
 
 export type TokensGetResponsePoliciesItemResourcesIAMResourcesTypeObjectNestedValueMap =
@@ -1950,46 +1925,21 @@ export const TokensListResultItemCondition = /*@__PURE__*/ S.suspend(() =>
 export type TokensListResultItemPoliciesItemEffect = "allow" | "deny";
 export const TokensListResultItemPoliciesItemEffect = /*@__PURE__*/ S.String;
 
-export interface TokensListResultItemPoliciesItemPermissionGroupsItemMeta {
-  key?: string | null;
-  value?: string | null;
-}
+export type TokensListResultItemPoliciesItemPermissionGroupsItemMeta =
+  TokensCreateResponsePoliciesItemPermissionGroupsItemMeta;
 export const TokensListResultItemPoliciesItemPermissionGroupsItemMeta =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      key: S.optional(S.NullOr(S.String)),
-      value: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier: "TokensListResultItemPoliciesItemPermissionGroupsItemMeta",
-  }) as any as S.Schema<TokensListResultItemPoliciesItemPermissionGroupsItemMeta>;
+  TokensCreateResponsePoliciesItemPermissionGroupsItemMeta;
 
-export interface TokensListResultItemPoliciesItemPermissionGroupsItem {
-  /** Identifier of the permission group. */
-  id: string;
-  /** Attributes associated to the permission group. */
-  meta?: TokensListResultItemPoliciesItemPermissionGroupsItemMeta | null;
-  /** Name of the permission group. */
-  name?: string | null;
-}
+export type TokensListResultItemPoliciesItemPermissionGroupsItem =
+  TokensCreateResponsePoliciesItemPermissionGroupsItem;
 export const TokensListResultItemPoliciesItemPermissionGroupsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      meta: S.optional(
-        S.NullOr(TokensListResultItemPoliciesItemPermissionGroupsItemMeta),
-      ),
-      name: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier: "TokensListResultItemPoliciesItemPermissionGroupsItem",
-  }) as any as S.Schema<TokensListResultItemPoliciesItemPermissionGroupsItem>;
+  TokensCreateResponsePoliciesItemPermissionGroupsItem;
 
 export type TokensListResultItemPoliciesItemPermissionGroupsList =
-  Array<TokensListResultItemPoliciesItemPermissionGroupsItem>;
+  Array<TokensCreateResponsePoliciesItemPermissionGroupsItem>;
 export const TokensListResultItemPoliciesItemPermissionGroupsList =
   /*@__PURE__*/ S.Array(
-    TokensListResultItemPoliciesItemPermissionGroupsItem,
+    TokensCreateResponsePoliciesItemPermissionGroupsItem,
   ) as any as S.Schema<TokensListResultItemPoliciesItemPermissionGroupsList>;
 
 export type TokensListResultItemPoliciesItemResourcesIAMResourcesTypeObjectNestedValueMap =
@@ -2446,44 +2396,21 @@ export const PutTokenValueResponse = /*@__PURE__*/ S.suspend(() =>
 export type TokensUpdateRequestPoliciesItemEffect = "allow" | "deny";
 export const TokensUpdateRequestPoliciesItemEffect = /*@__PURE__*/ S.String;
 
-export interface TokensUpdateRequestPoliciesItemPermissionGroupsItemMeta {
-  key?: string;
-  value?: string;
-}
+export type TokensUpdateRequestPoliciesItemPermissionGroupsItemMeta =
+  TokensCreateRequestPoliciesItemPermissionGroupsItemMeta;
 export const TokensUpdateRequestPoliciesItemPermissionGroupsItemMeta =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      key: S.optional(S.String),
-      value: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "TokensUpdateRequestPoliciesItemPermissionGroupsItemMeta",
-  }) as any as S.Schema<TokensUpdateRequestPoliciesItemPermissionGroupsItemMeta>;
+  TokensCreateRequestPoliciesItemPermissionGroupsItemMeta;
 
-export interface TokensUpdateRequestPoliciesItemPermissionGroupsItem {
-  /** Identifier of the permission group. */
-  id: string;
-  /** Attributes associated to the permission group. */
-  meta?: TokensUpdateRequestPoliciesItemPermissionGroupsItemMeta;
-  /** Name of the permission group. */
-  name?: string;
-}
+export type TokensUpdateRequestPoliciesItemPermissionGroupsItem =
+  TokensCreateRequestPoliciesItemPermissionGroupsItem;
 export const TokensUpdateRequestPoliciesItemPermissionGroupsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      meta: S.optional(TokensUpdateRequestPoliciesItemPermissionGroupsItemMeta),
-      name: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "TokensUpdateRequestPoliciesItemPermissionGroupsItem",
-  }) as any as S.Schema<TokensUpdateRequestPoliciesItemPermissionGroupsItem>;
+  TokensCreateRequestPoliciesItemPermissionGroupsItem;
 
 export type TokensUpdateRequestPoliciesItemPermissionGroupsList =
-  Array<TokensUpdateRequestPoliciesItemPermissionGroupsItem>;
+  Array<TokensCreateRequestPoliciesItemPermissionGroupsItem>;
 export const TokensUpdateRequestPoliciesItemPermissionGroupsList =
   /*@__PURE__*/ S.Array(
-    TokensUpdateRequestPoliciesItemPermissionGroupsItem,
+    TokensCreateRequestPoliciesItemPermissionGroupsItem,
   ) as any as S.Schema<TokensUpdateRequestPoliciesItemPermissionGroupsList>;
 
 export type TokensUpdateRequestPoliciesItemResourcesIAMResourcesTypeObjectNestedValueMap =
@@ -2664,46 +2591,21 @@ export const TokensUpdateResponseCondition = /*@__PURE__*/ S.suspend(() =>
 export type TokensUpdateResponsePoliciesItemEffect = "allow" | "deny";
 export const TokensUpdateResponsePoliciesItemEffect = /*@__PURE__*/ S.String;
 
-export interface TokensUpdateResponsePoliciesItemPermissionGroupsItemMeta {
-  key?: string | null;
-  value?: string | null;
-}
+export type TokensUpdateResponsePoliciesItemPermissionGroupsItemMeta =
+  TokensCreateResponsePoliciesItemPermissionGroupsItemMeta;
 export const TokensUpdateResponsePoliciesItemPermissionGroupsItemMeta =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      key: S.optional(S.NullOr(S.String)),
-      value: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier: "TokensUpdateResponsePoliciesItemPermissionGroupsItemMeta",
-  }) as any as S.Schema<TokensUpdateResponsePoliciesItemPermissionGroupsItemMeta>;
+  TokensCreateResponsePoliciesItemPermissionGroupsItemMeta;
 
-export interface TokensUpdateResponsePoliciesItemPermissionGroupsItem {
-  /** Identifier of the permission group. */
-  id: string;
-  /** Attributes associated to the permission group. */
-  meta?: TokensUpdateResponsePoliciesItemPermissionGroupsItemMeta | null;
-  /** Name of the permission group. */
-  name?: string | null;
-}
+export type TokensUpdateResponsePoliciesItemPermissionGroupsItem =
+  TokensCreateResponsePoliciesItemPermissionGroupsItem;
 export const TokensUpdateResponsePoliciesItemPermissionGroupsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      meta: S.optional(
-        S.NullOr(TokensUpdateResponsePoliciesItemPermissionGroupsItemMeta),
-      ),
-      name: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier: "TokensUpdateResponsePoliciesItemPermissionGroupsItem",
-  }) as any as S.Schema<TokensUpdateResponsePoliciesItemPermissionGroupsItem>;
+  TokensCreateResponsePoliciesItemPermissionGroupsItem;
 
 export type TokensUpdateResponsePoliciesItemPermissionGroupsList =
-  Array<TokensUpdateResponsePoliciesItemPermissionGroupsItem>;
+  Array<TokensCreateResponsePoliciesItemPermissionGroupsItem>;
 export const TokensUpdateResponsePoliciesItemPermissionGroupsList =
   /*@__PURE__*/ S.Array(
-    TokensUpdateResponsePoliciesItemPermissionGroupsItem,
+    TokensCreateResponsePoliciesItemPermissionGroupsItem,
   ) as any as S.Schema<TokensUpdateResponsePoliciesItemPermissionGroupsList>;
 
 export type TokensUpdateResponsePoliciesItemResourcesIAMResourcesTypeObjectNestedValueMap =

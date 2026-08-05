@@ -442,23 +442,12 @@ export const GetInsightSeverityForAccountRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetInsightSeverityForAccountRequest",
 }) as any as S.Schema<GetInsightSeverityForAccountRequest>;
 
-export interface InsightsSeverityGetResultItem {
-  count?: number | null;
-  value?: string | null;
-}
-export const InsightsSeverityGetResultItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    count: S.optional(S.NullOr(S.Number)),
-    value: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "InsightsSeverityGetResultItem",
-}) as any as S.Schema<InsightsSeverityGetResultItem>;
+export type InsightsSeverityGetResultItem = InsightsClassGetResultItem;
+export const InsightsSeverityGetResultItem = InsightsClassGetResultItem;
 
-export type InsightsSeverityGetResultList =
-  Array<InsightsSeverityGetResultItem>;
+export type InsightsSeverityGetResultList = Array<InsightsClassGetResultItem>;
 export const InsightsSeverityGetResultList = /*@__PURE__*/ S.Array(
-  InsightsSeverityGetResultItem,
+  InsightsClassGetResultItem,
 ) as any as S.Schema<InsightsSeverityGetResultList>;
 
 export type GetInsightSeverityResponse = InsightsSeverityGetResultList;
@@ -639,22 +628,12 @@ export const GetInsightTypeForAccountRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetInsightTypeForAccountRequest",
 }) as any as S.Schema<GetInsightTypeForAccountRequest>;
 
-export interface InsightsTypeGetResultItem {
-  count?: number | null;
-  value?: string | null;
-}
-export const InsightsTypeGetResultItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    count: S.optional(S.NullOr(S.Number)),
-    value: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "InsightsTypeGetResultItem",
-}) as any as S.Schema<InsightsTypeGetResultItem>;
+export type InsightsTypeGetResultItem = InsightsClassGetResultItem;
+export const InsightsTypeGetResultItem = InsightsClassGetResultItem;
 
-export type InsightsTypeGetResultList = Array<InsightsTypeGetResultItem>;
+export type InsightsTypeGetResultList = Array<InsightsClassGetResultItem>;
 export const InsightsTypeGetResultList = /*@__PURE__*/ S.Array(
-  InsightsTypeGetResultItem,
+  InsightsClassGetResultItem,
 ) as any as S.Schema<InsightsTypeGetResultList>;
 
 export type GetInsightTypeResponse = InsightsTypeGetResultList;

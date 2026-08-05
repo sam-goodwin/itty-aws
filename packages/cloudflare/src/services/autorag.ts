@@ -574,18 +574,8 @@ export const SearchRequestFilters = /*@__PURE__*/ S.Unknown.pipe(
   ]),
 );
 
-export interface SearchRequestRankingOptions {
-  ranker?: string;
-  scoreThreshold?: number;
-}
-export const SearchRequestRankingOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ranker: S.optional(S.String),
-    scoreThreshold: S.optional(S.Number.pipe(T.Body("score_threshold"))),
-  }),
-).annotate({
-  identifier: "SearchRequestRankingOptions",
-}) as any as S.Schema<SearchRequestRankingOptions>;
+export type SearchRequestRankingOptions = AiSearchRequestRankingOptions;
+export const SearchRequestRankingOptions = AiSearchRequestRankingOptions;
 
 export type SearchRequestRerankingModel = "@cf/baai/bge-reranker-base" | "";
 export const SearchRequestRerankingModel = /*@__PURE__*/ S.String;
@@ -610,7 +600,7 @@ export interface SearchRequest {
   query: string;
   filters?: SearchRequestFilters;
   maxNumResults?: number;
-  rankingOptions?: SearchRequestRankingOptions;
+  rankingOptions?: AiSearchRequestRankingOptions;
   reranking?: SearchRequestReranking;
   rewriteQuery?: boolean;
 }
@@ -622,7 +612,7 @@ export const SearchRequest = /*@__PURE__*/ S.suspend(() =>
     filters: S.optional(SearchRequestFilters),
     maxNumResults: S.optional(S.Number.pipe(T.Body("max_num_results"))),
     rankingOptions: S.optional(
-      SearchRequestRankingOptions.pipe(T.Body("ranking_options")),
+      AiSearchRequestRankingOptions.pipe(T.Body("ranking_options")),
     ),
     reranking: S.optional(SearchRequestReranking),
     rewriteQuery: S.optional(S.Boolean.pipe(T.Body("rewrite_query"))),
@@ -635,23 +625,15 @@ export const SearchRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "SearchRequest" }) as any as S.Schema<SearchRequest>;
 
-export interface SearchResponseDataItemContentItem {
-  text?: string | null;
-  type?: string | null;
-}
-export const SearchResponseDataItemContentItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    text: S.optional(S.NullOr(S.String)),
-    type: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "SearchResponseDataItemContentItem",
-}) as any as S.Schema<SearchResponseDataItemContentItem>;
+export type SearchResponseDataItemContentItem =
+  AiSearchResponseDataItemContentItem;
+export const SearchResponseDataItemContentItem =
+  AiSearchResponseDataItemContentItem;
 
 export type SearchResponseDataItemContentList =
-  Array<SearchResponseDataItemContentItem>;
+  Array<AiSearchResponseDataItemContentItem>;
 export const SearchResponseDataItemContentList = /*@__PURE__*/ S.Array(
-  SearchResponseDataItemContentItem,
+  AiSearchResponseDataItemContentItem,
 ) as any as S.Schema<SearchResponseDataItemContentList>;
 
 export interface SearchResponseDataItem {

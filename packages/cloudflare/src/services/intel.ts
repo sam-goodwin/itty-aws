@@ -870,53 +870,27 @@ export const DomainsGetResponseContentCategoriesList = /*@__PURE__*/ S.Array(
   DomainsGetResponseContentCategoriesItem,
 ) as any as S.Schema<DomainsGetResponseContentCategoriesList>;
 
-export interface DomainsGetResponseInheritedContentCategoriesItem {
-  id?: number | null;
-  name?: string | null;
-  superCategoryId?: number | null;
-}
+export type DomainsGetResponseInheritedContentCategoriesItem =
+  DomainsGetResponseContentCategoriesItem;
 export const DomainsGetResponseInheritedContentCategoriesItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.NullOr(S.Number)),
-      name: S.optional(S.NullOr(S.String)),
-      superCategoryId: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("super_category_id")),
-      ),
-    }),
-  ).annotate({
-    identifier: "DomainsGetResponseInheritedContentCategoriesItem",
-  }) as any as S.Schema<DomainsGetResponseInheritedContentCategoriesItem>;
+  DomainsGetResponseContentCategoriesItem;
 
 export type DomainsGetResponseInheritedContentCategoriesList =
-  Array<DomainsGetResponseInheritedContentCategoriesItem>;
+  Array<DomainsGetResponseContentCategoriesItem>;
 export const DomainsGetResponseInheritedContentCategoriesList =
   /*@__PURE__*/ S.Array(
-    DomainsGetResponseInheritedContentCategoriesItem,
+    DomainsGetResponseContentCategoriesItem,
   ) as any as S.Schema<DomainsGetResponseInheritedContentCategoriesList>;
 
-export interface DomainsGetResponseInheritedRiskTypesItem {
-  id?: number | null;
-  name?: string | null;
-  superCategoryId?: number | null;
-}
-export const DomainsGetResponseInheritedRiskTypesItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.optional(S.NullOr(S.Number)),
-      name: S.optional(S.NullOr(S.String)),
-      superCategoryId: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("super_category_id")),
-      ),
-    }),
-).annotate({
-  identifier: "DomainsGetResponseInheritedRiskTypesItem",
-}) as any as S.Schema<DomainsGetResponseInheritedRiskTypesItem>;
+export type DomainsGetResponseInheritedRiskTypesItem =
+  DomainsGetResponseContentCategoriesItem;
+export const DomainsGetResponseInheritedRiskTypesItem =
+  DomainsGetResponseContentCategoriesItem;
 
 export type DomainsGetResponseInheritedRiskTypesList =
-  Array<DomainsGetResponseInheritedRiskTypesItem>;
+  Array<DomainsGetResponseContentCategoriesItem>;
 export const DomainsGetResponseInheritedRiskTypesList = /*@__PURE__*/ S.Array(
-  DomainsGetResponseInheritedRiskTypesItem,
+  DomainsGetResponseContentCategoriesItem,
 ) as any as S.Schema<DomainsGetResponseInheritedRiskTypesList>;
 
 export interface DomainsGetResponseResolvesToRefsItem {
@@ -941,27 +915,15 @@ export const DomainsGetResponseResolvesToRefsList = /*@__PURE__*/ S.Array(
   DomainsGetResponseResolvesToRefsItem,
 ) as any as S.Schema<DomainsGetResponseResolvesToRefsList>;
 
-export interface DomainsGetResponseRiskTypesItem {
-  id?: number | null;
-  name?: string | null;
-  superCategoryId?: number | null;
-}
-export const DomainsGetResponseRiskTypesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.Number)),
-    name: S.optional(S.NullOr(S.String)),
-    superCategoryId: S.optional(
-      S.NullOr(S.Number).pipe(T.Body("super_category_id")),
-    ),
-  }),
-).annotate({
-  identifier: "DomainsGetResponseRiskTypesItem",
-}) as any as S.Schema<DomainsGetResponseRiskTypesItem>;
+export type DomainsGetResponseRiskTypesItem =
+  DomainsGetResponseContentCategoriesItem;
+export const DomainsGetResponseRiskTypesItem =
+  DomainsGetResponseContentCategoriesItem;
 
 export type DomainsGetResponseRiskTypesList =
-  Array<DomainsGetResponseRiskTypesItem>;
+  Array<DomainsGetResponseContentCategoriesItem>;
 export const DomainsGetResponseRiskTypesList = /*@__PURE__*/ S.Array(
-  DomainsGetResponseRiskTypesItem,
+  DomainsGetResponseContentCategoriesItem,
 ) as any as S.Schema<DomainsGetResponseRiskTypesList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -1062,139 +1024,68 @@ export const GetDomainBulkRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetDomainBulkRequest",
 }) as any as S.Schema<GetDomainBulkRequest>;
 
-export interface DomainsBulksGetResultItemAdditionalInformation {
-  /** Suspected DGA malware family. */
-  suspectedMalwareFamily?: string | null;
-}
+export type DomainsBulksGetResultItemAdditionalInformation =
+  DomainsGetResponseAdditionalInformation;
 export const DomainsBulksGetResultItemAdditionalInformation =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      suspectedMalwareFamily: S.optional(
-        S.NullOr(S.String).pipe(T.Body("suspected_malware_family")),
-      ),
-    }),
-  ).annotate({
-    identifier: "DomainsBulksGetResultItemAdditionalInformation",
-  }) as any as S.Schema<DomainsBulksGetResultItemAdditionalInformation>;
+  DomainsGetResponseAdditionalInformation;
 
-export interface DomainsBulksGetResultItemApplication {
-  id?: number | null;
-  name?: string | null;
-}
-export const DomainsBulksGetResultItemApplication = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.optional(S.NullOr(S.Number)),
-      name: S.optional(S.NullOr(S.String)),
-    }),
-).annotate({
-  identifier: "DomainsBulksGetResultItemApplication",
-}) as any as S.Schema<DomainsBulksGetResultItemApplication>;
+export type DomainsBulksGetResultItemApplication =
+  DomainsGetResponseApplication;
+export const DomainsBulksGetResultItemApplication =
+  DomainsGetResponseApplication;
 
-export interface DomainsBulksGetResultItemContentCategoriesItem {
-  id?: number | null;
-  name?: string | null;
-  superCategoryId?: number | null;
-}
+export type DomainsBulksGetResultItemContentCategoriesItem =
+  DomainsGetResponseContentCategoriesItem;
 export const DomainsBulksGetResultItemContentCategoriesItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.NullOr(S.Number)),
-      name: S.optional(S.NullOr(S.String)),
-      superCategoryId: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("super_category_id")),
-      ),
-    }),
-  ).annotate({
-    identifier: "DomainsBulksGetResultItemContentCategoriesItem",
-  }) as any as S.Schema<DomainsBulksGetResultItemContentCategoriesItem>;
+  DomainsGetResponseContentCategoriesItem;
 
 export type DomainsBulksGetResultItemContentCategoriesList =
-  Array<DomainsBulksGetResultItemContentCategoriesItem>;
+  Array<DomainsGetResponseContentCategoriesItem>;
 export const DomainsBulksGetResultItemContentCategoriesList =
   /*@__PURE__*/ S.Array(
-    DomainsBulksGetResultItemContentCategoriesItem,
+    DomainsGetResponseContentCategoriesItem,
   ) as any as S.Schema<DomainsBulksGetResultItemContentCategoriesList>;
 
-export interface DomainsBulksGetResultItemInheritedContentCategoriesItem {
-  id?: number | null;
-  name?: string | null;
-  superCategoryId?: number | null;
-}
+export type DomainsBulksGetResultItemInheritedContentCategoriesItem =
+  DomainsGetResponseContentCategoriesItem;
 export const DomainsBulksGetResultItemInheritedContentCategoriesItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.NullOr(S.Number)),
-      name: S.optional(S.NullOr(S.String)),
-      superCategoryId: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("super_category_id")),
-      ),
-    }),
-  ).annotate({
-    identifier: "DomainsBulksGetResultItemInheritedContentCategoriesItem",
-  }) as any as S.Schema<DomainsBulksGetResultItemInheritedContentCategoriesItem>;
+  DomainsGetResponseContentCategoriesItem;
 
 export type DomainsBulksGetResultItemInheritedContentCategoriesList =
-  Array<DomainsBulksGetResultItemInheritedContentCategoriesItem>;
+  Array<DomainsGetResponseContentCategoriesItem>;
 export const DomainsBulksGetResultItemInheritedContentCategoriesList =
   /*@__PURE__*/ S.Array(
-    DomainsBulksGetResultItemInheritedContentCategoriesItem,
+    DomainsGetResponseContentCategoriesItem,
   ) as any as S.Schema<DomainsBulksGetResultItemInheritedContentCategoriesList>;
 
-export interface DomainsBulksGetResultItemInheritedRiskTypesItem {
-  id?: number | null;
-  name?: string | null;
-  superCategoryId?: number | null;
-}
+export type DomainsBulksGetResultItemInheritedRiskTypesItem =
+  DomainsGetResponseContentCategoriesItem;
 export const DomainsBulksGetResultItemInheritedRiskTypesItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.NullOr(S.Number)),
-      name: S.optional(S.NullOr(S.String)),
-      superCategoryId: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("super_category_id")),
-      ),
-    }),
-  ).annotate({
-    identifier: "DomainsBulksGetResultItemInheritedRiskTypesItem",
-  }) as any as S.Schema<DomainsBulksGetResultItemInheritedRiskTypesItem>;
+  DomainsGetResponseContentCategoriesItem;
 
 export type DomainsBulksGetResultItemInheritedRiskTypesList =
-  Array<DomainsBulksGetResultItemInheritedRiskTypesItem>;
+  Array<DomainsGetResponseContentCategoriesItem>;
 export const DomainsBulksGetResultItemInheritedRiskTypesList =
   /*@__PURE__*/ S.Array(
-    DomainsBulksGetResultItemInheritedRiskTypesItem,
+    DomainsGetResponseContentCategoriesItem,
   ) as any as S.Schema<DomainsBulksGetResultItemInheritedRiskTypesList>;
 
-export interface DomainsBulksGetResultItemRiskTypesItem {
-  id?: number | null;
-  name?: string | null;
-  superCategoryId?: number | null;
-}
-export const DomainsBulksGetResultItemRiskTypesItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.optional(S.NullOr(S.Number)),
-      name: S.optional(S.NullOr(S.String)),
-      superCategoryId: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("super_category_id")),
-      ),
-    }),
-).annotate({
-  identifier: "DomainsBulksGetResultItemRiskTypesItem",
-}) as any as S.Schema<DomainsBulksGetResultItemRiskTypesItem>;
+export type DomainsBulksGetResultItemRiskTypesItem =
+  DomainsGetResponseContentCategoriesItem;
+export const DomainsBulksGetResultItemRiskTypesItem =
+  DomainsGetResponseContentCategoriesItem;
 
 export type DomainsBulksGetResultItemRiskTypesList =
-  Array<DomainsBulksGetResultItemRiskTypesItem>;
+  Array<DomainsGetResponseContentCategoriesItem>;
 export const DomainsBulksGetResultItemRiskTypesList = /*@__PURE__*/ S.Array(
-  DomainsBulksGetResultItemRiskTypesItem,
+  DomainsGetResponseContentCategoriesItem,
 ) as any as S.Schema<DomainsBulksGetResultItemRiskTypesList>;
 
 export interface DomainsBulksGetResultItem {
   /** Additional information related to the host name. */
-  additionalInformation?: DomainsBulksGetResultItemAdditionalInformation | null;
+  additionalInformation?: DomainsGetResponseAdditionalInformation | null;
   /** Application that the hostname belongs to. */
-  application?: DomainsBulksGetResultItemApplication | null;
+  application?: DomainsGetResponseApplication | null;
   contentCategories?: DomainsBulksGetResultItemContentCategoriesList | null;
   domain?: string | null;
   inheritedContentCategories?: DomainsBulksGetResultItemInheritedContentCategoriesList | null;
@@ -1210,11 +1101,11 @@ export interface DomainsBulksGetResultItem {
 export const DomainsBulksGetResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     additionalInformation: S.optional(
-      S.NullOr(DomainsBulksGetResultItemAdditionalInformation).pipe(
+      S.NullOr(DomainsGetResponseAdditionalInformation).pipe(
         T.Body("additional_information"),
       ),
     ),
-    application: S.optional(S.NullOr(DomainsBulksGetResultItemApplication)),
+    application: S.optional(S.NullOr(DomainsGetResponseApplication)),
     contentCategories: S.optional(
       S.NullOr(DomainsBulksGetResultItemContentCategoriesList).pipe(
         T.Body("content_categories"),
@@ -1285,25 +1176,16 @@ export const GetDomainHistoryRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetDomainHistoryRequest",
 }) as any as S.Schema<GetDomainHistoryRequest>;
 
-export interface DomainHistoryGetResultItemCategorizationsItemCategoriesItem {
-  id?: number | null;
-  name?: string | null;
-}
+export type DomainHistoryGetResultItemCategorizationsItemCategoriesItem =
+  DomainsGetResponseApplication;
 export const DomainHistoryGetResultItemCategorizationsItemCategoriesItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.NullOr(S.Number)),
-      name: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier: "DomainHistoryGetResultItemCategorizationsItemCategoriesItem",
-  }) as any as S.Schema<DomainHistoryGetResultItemCategorizationsItemCategoriesItem>;
+  DomainsGetResponseApplication;
 
 export type DomainHistoryGetResultItemCategorizationsItemCategoriesList =
-  Array<DomainHistoryGetResultItemCategorizationsItemCategoriesItem>;
+  Array<DomainsGetResponseApplication>;
 export const DomainHistoryGetResultItemCategorizationsItemCategoriesList =
   /*@__PURE__*/ S.Array(
-    DomainHistoryGetResultItemCategorizationsItemCategoriesItem,
+    DomainsGetResponseApplication,
   ) as any as S.Schema<DomainHistoryGetResultItemCategorizationsItemCategoriesList>;
 
 export interface DomainHistoryGetResultItemCategorizationsItem {
@@ -1600,27 +1482,15 @@ export const IpsGetResultItemBelongsToRef = /*@__PURE__*/ S.suspend(() =>
   identifier: "IpsGetResultItemBelongsToRef",
 }) as any as S.Schema<IpsGetResultItemBelongsToRef>;
 
-export interface IpsGetResultItemRiskTypesItem {
-  id?: number | null;
-  name?: string | null;
-  superCategoryId?: number | null;
-}
-export const IpsGetResultItemRiskTypesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.Number)),
-    name: S.optional(S.NullOr(S.String)),
-    superCategoryId: S.optional(
-      S.NullOr(S.Number).pipe(T.Body("super_category_id")),
-    ),
-  }),
-).annotate({
-  identifier: "IpsGetResultItemRiskTypesItem",
-}) as any as S.Schema<IpsGetResultItemRiskTypesItem>;
+export type IpsGetResultItemRiskTypesItem =
+  DomainsGetResponseContentCategoriesItem;
+export const IpsGetResultItemRiskTypesItem =
+  DomainsGetResponseContentCategoriesItem;
 
 export type IpsGetResultItemRiskTypesList =
-  Array<IpsGetResultItemRiskTypesItem>;
+  Array<DomainsGetResponseContentCategoriesItem>;
 export const IpsGetResultItemRiskTypesList = /*@__PURE__*/ S.Array(
-  IpsGetResultItemRiskTypesItem,
+  DomainsGetResponseContentCategoriesItem,
 ) as any as S.Schema<IpsGetResultItemRiskTypesList>;
 
 export interface IpsGetResultItem {
@@ -2776,25 +2646,16 @@ export const SeverityAttackSurfaceReportIssueRequest = /*@__PURE__*/ S.suspend(
   identifier: "SeverityAttackSurfaceReportIssueRequest",
 }) as any as S.Schema<SeverityAttackSurfaceReportIssueRequest>;
 
-export interface AttackSurfaceReportIssuesSeverityResultItem {
-  count?: number | null;
-  value?: string | null;
-}
+export type AttackSurfaceReportIssuesSeverityResultItem =
+  AttackSurfaceReportIssuesClassResultItem;
 export const AttackSurfaceReportIssuesSeverityResultItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      count: S.optional(S.NullOr(S.Number)),
-      value: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier: "AttackSurfaceReportIssuesSeverityResultItem",
-  }) as any as S.Schema<AttackSurfaceReportIssuesSeverityResultItem>;
+  AttackSurfaceReportIssuesClassResultItem;
 
 export type AttackSurfaceReportIssuesSeverityResultList =
-  Array<AttackSurfaceReportIssuesSeverityResultItem>;
+  Array<AttackSurfaceReportIssuesClassResultItem>;
 export const AttackSurfaceReportIssuesSeverityResultList =
   /*@__PURE__*/ S.Array(
-    AttackSurfaceReportIssuesSeverityResultItem,
+    AttackSurfaceReportIssuesClassResultItem,
   ) as any as S.Schema<AttackSurfaceReportIssuesSeverityResultList>;
 
 export type SeverityAttackSurfaceReportIssueResponse =
@@ -2947,24 +2808,15 @@ export const TypeAttackSurfaceReportIssueRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "TypeAttackSurfaceReportIssueRequest",
 }) as any as S.Schema<TypeAttackSurfaceReportIssueRequest>;
 
-export interface AttackSurfaceReportIssuesTypeResultItem {
-  count?: number | null;
-  value?: string | null;
-}
-export const AttackSurfaceReportIssuesTypeResultItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      count: S.optional(S.NullOr(S.Number)),
-      value: S.optional(S.NullOr(S.String)),
-    }),
-).annotate({
-  identifier: "AttackSurfaceReportIssuesTypeResultItem",
-}) as any as S.Schema<AttackSurfaceReportIssuesTypeResultItem>;
+export type AttackSurfaceReportIssuesTypeResultItem =
+  AttackSurfaceReportIssuesClassResultItem;
+export const AttackSurfaceReportIssuesTypeResultItem =
+  AttackSurfaceReportIssuesClassResultItem;
 
 export type AttackSurfaceReportIssuesTypeResultList =
-  Array<AttackSurfaceReportIssuesTypeResultItem>;
+  Array<AttackSurfaceReportIssuesClassResultItem>;
 export const AttackSurfaceReportIssuesTypeResultList = /*@__PURE__*/ S.Array(
-  AttackSurfaceReportIssuesTypeResultItem,
+  AttackSurfaceReportIssuesClassResultItem,
 ) as any as S.Schema<AttackSurfaceReportIssuesTypeResultList>;
 
 export type TypeAttackSurfaceReportIssueResponse =

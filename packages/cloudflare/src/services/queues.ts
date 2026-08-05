@@ -744,34 +744,10 @@ export const CreateQueueRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateQueueRequest",
 }) as any as S.Schema<CreateQueueRequest>;
 
-export interface CreateResponseConsumersItemWorkerSettings {
-  /** The maximum number of messages to include in a batch. */
-  batchSize?: number | null;
-  /** Maximum number of concurrent consumers that may consume from this Queue. Set to `null` to automatically opt in to the platform's maximum (recommended). */
-  maxConcurrency?: number | null;
-  /** The maximum number of retries */
-  maxRetries?: number | null;
-  /** The number of milliseconds to wait for a batch to fill up before attempting to deliver it */
-  maxWaitTimeMs?: number | null;
-  /** The number of seconds to delay before making the message available for another attempt. */
-  retryDelay?: number | null;
-}
+export type CreateResponseConsumersItemWorkerSettings =
+  ConsumersCreateResultWorkerSettings;
 export const CreateResponseConsumersItemWorkerSettings =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      batchSize: S.optional(S.NullOr(S.Number).pipe(T.Body("batch_size"))),
-      maxConcurrency: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("max_concurrency")),
-      ),
-      maxRetries: S.optional(S.NullOr(S.Number).pipe(T.Body("max_retries"))),
-      maxWaitTimeMs: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("max_wait_time_ms")),
-      ),
-      retryDelay: S.optional(S.NullOr(S.Number).pipe(T.Body("retry_delay"))),
-    }),
-  ).annotate({
-    identifier: "CreateResponseConsumersItemWorkerSettings",
-  }) as any as S.Schema<CreateResponseConsumersItemWorkerSettings>;
+  ConsumersCreateResultWorkerSettings;
 
 export type CreateResponseConsumersItemWorkerType = "worker";
 export const CreateResponseConsumersItemWorkerType = /*@__PURE__*/ S.String;
@@ -785,7 +761,7 @@ export interface CreateResponseConsumersItemWorker {
   queueName?: string | null;
   /** Name of a Worker */
   scriptName?: string | null;
-  settings?: CreateResponseConsumersItemWorkerSettings | null;
+  settings?: ConsumersCreateResultWorkerSettings | null;
   type?: CreateResponseConsumersItemWorkerType | null;
 }
 export const CreateResponseConsumersItemWorker = /*@__PURE__*/ S.suspend(() =>
@@ -797,36 +773,17 @@ export const CreateResponseConsumersItemWorker = /*@__PURE__*/ S.suspend(() =>
     ),
     queueName: S.optional(S.NullOr(S.String).pipe(T.Body("queue_name"))),
     scriptName: S.optional(S.NullOr(S.String).pipe(T.Body("script_name"))),
-    settings: S.optional(S.NullOr(CreateResponseConsumersItemWorkerSettings)),
+    settings: S.optional(S.NullOr(ConsumersCreateResultWorkerSettings)),
     type: S.optional(S.NullOr(CreateResponseConsumersItemWorkerType)),
   }),
 ).annotate({
   identifier: "CreateResponseConsumersItemWorker",
 }) as any as S.Schema<CreateResponseConsumersItemWorker>;
 
-export interface CreateResponseConsumersItemHTTPPullSettings {
-  /** The maximum number of messages to include in a batch. */
-  batchSize?: number | null;
-  /** The maximum number of retries */
-  maxRetries?: number | null;
-  /** The number of seconds to delay before making the message available for another attempt. */
-  retryDelay?: number | null;
-  /** The number of milliseconds that a message is exclusively leased. After the timeout, the message becomes available for another attempt. */
-  visibilityTimeoutMs?: number | null;
-}
+export type CreateResponseConsumersItemHTTPPullSettings =
+  ConsumersCreateResultHTTPPullSettings;
 export const CreateResponseConsumersItemHTTPPullSettings =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      batchSize: S.optional(S.NullOr(S.Number).pipe(T.Body("batch_size"))),
-      maxRetries: S.optional(S.NullOr(S.Number).pipe(T.Body("max_retries"))),
-      retryDelay: S.optional(S.NullOr(S.Number).pipe(T.Body("retry_delay"))),
-      visibilityTimeoutMs: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("visibility_timeout_ms")),
-      ),
-    }),
-  ).annotate({
-    identifier: "CreateResponseConsumersItemHTTPPullSettings",
-  }) as any as S.Schema<CreateResponseConsumersItemHTTPPullSettings>;
+  ConsumersCreateResultHTTPPullSettings;
 
 export type CreateResponseConsumersItemHTTPPullType = "http_pull";
 export const CreateResponseConsumersItemHTTPPullType = /*@__PURE__*/ S.String;
@@ -838,7 +795,7 @@ export interface CreateResponseConsumersItemHTTPPull {
   /** Name of the dead letter queue, or empty string if not configured */
   deadLetterQueue?: string | null;
   queueName?: string | null;
-  settings?: CreateResponseConsumersItemHTTPPullSettings | null;
+  settings?: ConsumersCreateResultHTTPPullSettings | null;
   type?: CreateResponseConsumersItemHTTPPullType | null;
 }
 export const CreateResponseConsumersItemHTTPPull = /*@__PURE__*/ S.suspend(() =>
@@ -849,7 +806,7 @@ export const CreateResponseConsumersItemHTTPPull = /*@__PURE__*/ S.suspend(() =>
       S.NullOr(S.String).pipe(T.Body("dead_letter_queue")),
     ),
     queueName: S.optional(S.NullOr(S.String).pipe(T.Body("queue_name"))),
-    settings: S.optional(S.NullOr(CreateResponseConsumersItemHTTPPullSettings)),
+    settings: S.optional(S.NullOr(ConsumersCreateResultHTTPPullSettings)),
     type: S.optional(S.NullOr(CreateResponseConsumersItemHTTPPullType)),
   }),
 ).annotate({
@@ -1880,33 +1837,10 @@ export const GetConsumerRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetConsumerRequest",
 }) as any as S.Schema<GetConsumerRequest>;
 
-export interface ConsumersGetResultWorkerSettings {
-  /** The maximum number of messages to include in a batch. */
-  batchSize?: number | null;
-  /** Maximum number of concurrent consumers that may consume from this Queue. Set to `null` to automatically opt in to the platform's maximum (recommended). */
-  maxConcurrency?: number | null;
-  /** The maximum number of retries */
-  maxRetries?: number | null;
-  /** The number of milliseconds to wait for a batch to fill up before attempting to deliver it */
-  maxWaitTimeMs?: number | null;
-  /** The number of seconds to delay before making the message available for another attempt. */
-  retryDelay?: number | null;
-}
-export const ConsumersGetResultWorkerSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    batchSize: S.optional(S.NullOr(S.Number).pipe(T.Body("batch_size"))),
-    maxConcurrency: S.optional(
-      S.NullOr(S.Number).pipe(T.Body("max_concurrency")),
-    ),
-    maxRetries: S.optional(S.NullOr(S.Number).pipe(T.Body("max_retries"))),
-    maxWaitTimeMs: S.optional(
-      S.NullOr(S.Number).pipe(T.Body("max_wait_time_ms")),
-    ),
-    retryDelay: S.optional(S.NullOr(S.Number).pipe(T.Body("retry_delay"))),
-  }),
-).annotate({
-  identifier: "ConsumersGetResultWorkerSettings",
-}) as any as S.Schema<ConsumersGetResultWorkerSettings>;
+export type ConsumersGetResultWorkerSettings =
+  ConsumersCreateResultWorkerSettings;
+export const ConsumersGetResultWorkerSettings =
+  ConsumersCreateResultWorkerSettings;
 
 export type ConsumersGetResultWorkerType = "worker";
 export const ConsumersGetResultWorkerType = /*@__PURE__*/ S.String;
@@ -1920,7 +1854,7 @@ export interface ConsumersGetResultWorker {
   queueName?: string | null;
   /** Name of a Worker */
   scriptName?: string | null;
-  settings?: ConsumersGetResultWorkerSettings | null;
+  settings?: ConsumersCreateResultWorkerSettings | null;
   type?: ConsumersGetResultWorkerType | null;
 }
 export const ConsumersGetResultWorker = /*@__PURE__*/ S.suspend(() =>
@@ -1932,35 +1866,17 @@ export const ConsumersGetResultWorker = /*@__PURE__*/ S.suspend(() =>
     ),
     queueName: S.optional(S.NullOr(S.String).pipe(T.Body("queue_name"))),
     scriptName: S.optional(S.NullOr(S.String).pipe(T.Body("script"))),
-    settings: S.optional(S.NullOr(ConsumersGetResultWorkerSettings)),
+    settings: S.optional(S.NullOr(ConsumersCreateResultWorkerSettings)),
     type: S.optional(S.NullOr(ConsumersGetResultWorkerType)),
   }),
 ).annotate({
   identifier: "ConsumersGetResultWorker",
 }) as any as S.Schema<ConsumersGetResultWorker>;
 
-export interface ConsumersGetResultHTTPPullSettings {
-  /** The maximum number of messages to include in a batch. */
-  batchSize?: number | null;
-  /** The maximum number of retries */
-  maxRetries?: number | null;
-  /** The number of seconds to delay before making the message available for another attempt. */
-  retryDelay?: number | null;
-  /** The number of milliseconds that a message is exclusively leased. After the timeout, the message becomes available for another attempt. */
-  visibilityTimeoutMs?: number | null;
-}
-export const ConsumersGetResultHTTPPullSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    batchSize: S.optional(S.NullOr(S.Number).pipe(T.Body("batch_size"))),
-    maxRetries: S.optional(S.NullOr(S.Number).pipe(T.Body("max_retries"))),
-    retryDelay: S.optional(S.NullOr(S.Number).pipe(T.Body("retry_delay"))),
-    visibilityTimeoutMs: S.optional(
-      S.NullOr(S.Number).pipe(T.Body("visibility_timeout_ms")),
-    ),
-  }),
-).annotate({
-  identifier: "ConsumersGetResultHTTPPullSettings",
-}) as any as S.Schema<ConsumersGetResultHTTPPullSettings>;
+export type ConsumersGetResultHTTPPullSettings =
+  ConsumersCreateResultHTTPPullSettings;
+export const ConsumersGetResultHTTPPullSettings =
+  ConsumersCreateResultHTTPPullSettings;
 
 export type ConsumersGetResultHTTPPullType = "http_pull";
 export const ConsumersGetResultHTTPPullType = /*@__PURE__*/ S.String;
@@ -1972,7 +1888,7 @@ export interface ConsumersGetResultHTTPPull {
   /** Name of the dead letter queue, or empty string if not configured */
   deadLetterQueue?: string | null;
   queueName?: string | null;
-  settings?: ConsumersGetResultHTTPPullSettings | null;
+  settings?: ConsumersCreateResultHTTPPullSettings | null;
   type?: ConsumersGetResultHTTPPullType | null;
 }
 export const ConsumersGetResultHTTPPull = /*@__PURE__*/ S.suspend(() =>
@@ -1983,7 +1899,7 @@ export const ConsumersGetResultHTTPPull = /*@__PURE__*/ S.suspend(() =>
       S.NullOr(S.String).pipe(T.Body("dead_letter_queue")),
     ),
     queueName: S.optional(S.NullOr(S.String).pipe(T.Body("queue_name"))),
-    settings: S.optional(S.NullOr(ConsumersGetResultHTTPPullSettings)),
+    settings: S.optional(S.NullOr(ConsumersCreateResultHTTPPullSettings)),
     type: S.optional(S.NullOr(ConsumersGetResultHTTPPullType)),
   }),
 ).annotate({
@@ -2092,34 +2008,10 @@ export const GetQueueRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetQueueRequest",
 }) as any as S.Schema<GetQueueRequest>;
 
-export interface GetResponseConsumersItemWorkerSettings {
-  /** The maximum number of messages to include in a batch. */
-  batchSize?: number | null;
-  /** Maximum number of concurrent consumers that may consume from this Queue. Set to `null` to automatically opt in to the platform's maximum (recommended). */
-  maxConcurrency?: number | null;
-  /** The maximum number of retries */
-  maxRetries?: number | null;
-  /** The number of milliseconds to wait for a batch to fill up before attempting to deliver it */
-  maxWaitTimeMs?: number | null;
-  /** The number of seconds to delay before making the message available for another attempt. */
-  retryDelay?: number | null;
-}
-export const GetResponseConsumersItemWorkerSettings = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      batchSize: S.optional(S.NullOr(S.Number).pipe(T.Body("batch_size"))),
-      maxConcurrency: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("max_concurrency")),
-      ),
-      maxRetries: S.optional(S.NullOr(S.Number).pipe(T.Body("max_retries"))),
-      maxWaitTimeMs: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("max_wait_time_ms")),
-      ),
-      retryDelay: S.optional(S.NullOr(S.Number).pipe(T.Body("retry_delay"))),
-    }),
-).annotate({
-  identifier: "GetResponseConsumersItemWorkerSettings",
-}) as any as S.Schema<GetResponseConsumersItemWorkerSettings>;
+export type GetResponseConsumersItemWorkerSettings =
+  ConsumersCreateResultWorkerSettings;
+export const GetResponseConsumersItemWorkerSettings =
+  ConsumersCreateResultWorkerSettings;
 
 export type GetResponseConsumersItemWorkerType = "worker";
 export const GetResponseConsumersItemWorkerType = /*@__PURE__*/ S.String;
@@ -2133,7 +2025,7 @@ export interface GetResponseConsumersItemWorker {
   queueName?: string | null;
   /** Name of a Worker */
   scriptName?: string | null;
-  settings?: GetResponseConsumersItemWorkerSettings | null;
+  settings?: ConsumersCreateResultWorkerSettings | null;
   type?: GetResponseConsumersItemWorkerType | null;
 }
 export const GetResponseConsumersItemWorker = /*@__PURE__*/ S.suspend(() =>
@@ -2145,36 +2037,17 @@ export const GetResponseConsumersItemWorker = /*@__PURE__*/ S.suspend(() =>
     ),
     queueName: S.optional(S.NullOr(S.String).pipe(T.Body("queue_name"))),
     scriptName: S.optional(S.NullOr(S.String).pipe(T.Body("script_name"))),
-    settings: S.optional(S.NullOr(GetResponseConsumersItemWorkerSettings)),
+    settings: S.optional(S.NullOr(ConsumersCreateResultWorkerSettings)),
     type: S.optional(S.NullOr(GetResponseConsumersItemWorkerType)),
   }),
 ).annotate({
   identifier: "GetResponseConsumersItemWorker",
 }) as any as S.Schema<GetResponseConsumersItemWorker>;
 
-export interface GetResponseConsumersItemHTTPPullSettings {
-  /** The maximum number of messages to include in a batch. */
-  batchSize?: number | null;
-  /** The maximum number of retries */
-  maxRetries?: number | null;
-  /** The number of seconds to delay before making the message available for another attempt. */
-  retryDelay?: number | null;
-  /** The number of milliseconds that a message is exclusively leased. After the timeout, the message becomes available for another attempt. */
-  visibilityTimeoutMs?: number | null;
-}
-export const GetResponseConsumersItemHTTPPullSettings = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      batchSize: S.optional(S.NullOr(S.Number).pipe(T.Body("batch_size"))),
-      maxRetries: S.optional(S.NullOr(S.Number).pipe(T.Body("max_retries"))),
-      retryDelay: S.optional(S.NullOr(S.Number).pipe(T.Body("retry_delay"))),
-      visibilityTimeoutMs: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("visibility_timeout_ms")),
-      ),
-    }),
-).annotate({
-  identifier: "GetResponseConsumersItemHTTPPullSettings",
-}) as any as S.Schema<GetResponseConsumersItemHTTPPullSettings>;
+export type GetResponseConsumersItemHTTPPullSettings =
+  ConsumersCreateResultHTTPPullSettings;
+export const GetResponseConsumersItemHTTPPullSettings =
+  ConsumersCreateResultHTTPPullSettings;
 
 export type GetResponseConsumersItemHTTPPullType = "http_pull";
 export const GetResponseConsumersItemHTTPPullType = /*@__PURE__*/ S.String;
@@ -2186,7 +2059,7 @@ export interface GetResponseConsumersItemHTTPPull {
   /** Name of the dead letter queue, or empty string if not configured */
   deadLetterQueue?: string | null;
   queueName?: string | null;
-  settings?: GetResponseConsumersItemHTTPPullSettings | null;
+  settings?: ConsumersCreateResultHTTPPullSettings | null;
   type?: GetResponseConsumersItemHTTPPullType | null;
 }
 export const GetResponseConsumersItemHTTPPull = /*@__PURE__*/ S.suspend(() =>
@@ -2197,7 +2070,7 @@ export const GetResponseConsumersItemHTTPPull = /*@__PURE__*/ S.suspend(() =>
       S.NullOr(S.String).pipe(T.Body("dead_letter_queue")),
     ),
     queueName: S.optional(S.NullOr(S.String).pipe(T.Body("queue_name"))),
-    settings: S.optional(S.NullOr(GetResponseConsumersItemHTTPPullSettings)),
+    settings: S.optional(S.NullOr(ConsumersCreateResultHTTPPullSettings)),
     type: S.optional(S.NullOr(GetResponseConsumersItemHTTPPullType)),
   }),
 ).annotate({
@@ -2284,29 +2157,8 @@ export const GetResponseProducersList = /*@__PURE__*/ S.Array(
   GetResponseProducersItem,
 ) as any as S.Schema<GetResponseProducersList>;
 
-export interface GetResponseSettings {
-  /** Number of seconds to delay delivery of all messages to consumers. */
-  deliveryDelay?: number | null;
-  /** Indicates if message delivery to consumers is currently paused. */
-  deliveryPaused?: boolean | null;
-  /** Number of seconds after which an unconsumed message will be delayed. */
-  messageRetentionPeriod?: number | null;
-}
-export const GetResponseSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deliveryDelay: S.optional(
-      S.NullOr(S.Number).pipe(T.Body("delivery_delay")),
-    ),
-    deliveryPaused: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("delivery_paused")),
-    ),
-    messageRetentionPeriod: S.optional(
-      S.NullOr(S.Number).pipe(T.Body("message_retention_period")),
-    ),
-  }),
-).annotate({
-  identifier: "GetResponseSettings",
-}) as any as S.Schema<GetResponseSettings>;
+export type GetResponseSettings = CreateResponseSettings;
+export const GetResponseSettings = CreateResponseSettings;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetQueueResponse {
@@ -2318,7 +2170,7 @@ export interface GetQueueResponse {
   producersTotalCount?: number | null;
   queueId?: string | null;
   queueName?: string | null;
-  settings?: GetResponseSettings | null;
+  settings?: CreateResponseSettings | null;
 }
 export const GetQueueResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2334,7 +2186,7 @@ export const GetQueueResponse = /*@__PURE__*/ S.suspend(() =>
     ),
     queueId: S.optional(S.NullOr(S.String).pipe(T.Body("queue_id"))),
     queueName: S.optional(S.NullOr(S.String).pipe(T.Body("queue_name"))),
-    settings: S.optional(S.NullOr(GetResponseSettings)),
+    settings: S.optional(S.NullOr(CreateResponseSettings)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetQueueResponse",
@@ -2638,34 +2490,10 @@ export const ListConsumersRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListConsumersRequest",
 }) as any as S.Schema<ListConsumersRequest>;
 
-export interface ConsumersListResultItemWorkerSettings {
-  /** The maximum number of messages to include in a batch. */
-  batchSize?: number | null;
-  /** Maximum number of concurrent consumers that may consume from this Queue. Set to `null` to automatically opt in to the platform's maximum (recommended). */
-  maxConcurrency?: number | null;
-  /** The maximum number of retries */
-  maxRetries?: number | null;
-  /** The number of milliseconds to wait for a batch to fill up before attempting to deliver it */
-  maxWaitTimeMs?: number | null;
-  /** The number of seconds to delay before making the message available for another attempt. */
-  retryDelay?: number | null;
-}
-export const ConsumersListResultItemWorkerSettings = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      batchSize: S.optional(S.NullOr(S.Number).pipe(T.Body("batch_size"))),
-      maxConcurrency: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("max_concurrency")),
-      ),
-      maxRetries: S.optional(S.NullOr(S.Number).pipe(T.Body("max_retries"))),
-      maxWaitTimeMs: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("max_wait_time_ms")),
-      ),
-      retryDelay: S.optional(S.NullOr(S.Number).pipe(T.Body("retry_delay"))),
-    }),
-).annotate({
-  identifier: "ConsumersListResultItemWorkerSettings",
-}) as any as S.Schema<ConsumersListResultItemWorkerSettings>;
+export type ConsumersListResultItemWorkerSettings =
+  ConsumersCreateResultWorkerSettings;
+export const ConsumersListResultItemWorkerSettings =
+  ConsumersCreateResultWorkerSettings;
 
 export type ConsumersListResultItemWorkerType = "worker";
 export const ConsumersListResultItemWorkerType = /*@__PURE__*/ S.String;
@@ -2679,7 +2507,7 @@ export interface ConsumersListResultItemWorker {
   queueName?: string | null;
   /** Name of a Worker */
   scriptName?: string | null;
-  settings?: ConsumersListResultItemWorkerSettings | null;
+  settings?: ConsumersCreateResultWorkerSettings | null;
   type?: ConsumersListResultItemWorkerType | null;
 }
 export const ConsumersListResultItemWorker = /*@__PURE__*/ S.suspend(() =>
@@ -2691,36 +2519,17 @@ export const ConsumersListResultItemWorker = /*@__PURE__*/ S.suspend(() =>
     ),
     queueName: S.optional(S.NullOr(S.String).pipe(T.Body("queue_name"))),
     scriptName: S.optional(S.NullOr(S.String).pipe(T.Body("script"))),
-    settings: S.optional(S.NullOr(ConsumersListResultItemWorkerSettings)),
+    settings: S.optional(S.NullOr(ConsumersCreateResultWorkerSettings)),
     type: S.optional(S.NullOr(ConsumersListResultItemWorkerType)),
   }),
 ).annotate({
   identifier: "ConsumersListResultItemWorker",
 }) as any as S.Schema<ConsumersListResultItemWorker>;
 
-export interface ConsumersListResultItemHTTPPullSettings {
-  /** The maximum number of messages to include in a batch. */
-  batchSize?: number | null;
-  /** The maximum number of retries */
-  maxRetries?: number | null;
-  /** The number of seconds to delay before making the message available for another attempt. */
-  retryDelay?: number | null;
-  /** The number of milliseconds that a message is exclusively leased. After the timeout, the message becomes available for another attempt. */
-  visibilityTimeoutMs?: number | null;
-}
-export const ConsumersListResultItemHTTPPullSettings = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      batchSize: S.optional(S.NullOr(S.Number).pipe(T.Body("batch_size"))),
-      maxRetries: S.optional(S.NullOr(S.Number).pipe(T.Body("max_retries"))),
-      retryDelay: S.optional(S.NullOr(S.Number).pipe(T.Body("retry_delay"))),
-      visibilityTimeoutMs: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("visibility_timeout_ms")),
-      ),
-    }),
-).annotate({
-  identifier: "ConsumersListResultItemHTTPPullSettings",
-}) as any as S.Schema<ConsumersListResultItemHTTPPullSettings>;
+export type ConsumersListResultItemHTTPPullSettings =
+  ConsumersCreateResultHTTPPullSettings;
+export const ConsumersListResultItemHTTPPullSettings =
+  ConsumersCreateResultHTTPPullSettings;
 
 export type ConsumersListResultItemHTTPPullType = "http_pull";
 export const ConsumersListResultItemHTTPPullType = /*@__PURE__*/ S.String;
@@ -2732,7 +2541,7 @@ export interface ConsumersListResultItemHTTPPull {
   /** Name of the dead letter queue, or empty string if not configured */
   deadLetterQueue?: string | null;
   queueName?: string | null;
-  settings?: ConsumersListResultItemHTTPPullSettings | null;
+  settings?: ConsumersCreateResultHTTPPullSettings | null;
   type?: ConsumersListResultItemHTTPPullType | null;
 }
 export const ConsumersListResultItemHTTPPull = /*@__PURE__*/ S.suspend(() =>
@@ -2743,7 +2552,7 @@ export const ConsumersListResultItemHTTPPull = /*@__PURE__*/ S.suspend(() =>
       S.NullOr(S.String).pipe(T.Body("dead_letter_queue")),
     ),
     queueName: S.optional(S.NullOr(S.String).pipe(T.Body("queue_name"))),
-    settings: S.optional(S.NullOr(ConsumersListResultItemHTTPPullSettings)),
+    settings: S.optional(S.NullOr(ConsumersCreateResultHTTPPullSettings)),
     type: S.optional(S.NullOr(ConsumersListResultItemHTTPPullType)),
   }),
 ).annotate({
@@ -2815,34 +2624,10 @@ export const ListQueuesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListQueuesRequest",
 }) as any as S.Schema<ListQueuesRequest>;
 
-export interface ListResultItemConsumersItemWorkerSettings {
-  /** The maximum number of messages to include in a batch. */
-  batchSize?: number | null;
-  /** Maximum number of concurrent consumers that may consume from this Queue. Set to `null` to automatically opt in to the platform's maximum (recommended). */
-  maxConcurrency?: number | null;
-  /** The maximum number of retries */
-  maxRetries?: number | null;
-  /** The number of milliseconds to wait for a batch to fill up before attempting to deliver it */
-  maxWaitTimeMs?: number | null;
-  /** The number of seconds to delay before making the message available for another attempt. */
-  retryDelay?: number | null;
-}
+export type ListResultItemConsumersItemWorkerSettings =
+  ConsumersCreateResultWorkerSettings;
 export const ListResultItemConsumersItemWorkerSettings =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      batchSize: S.optional(S.NullOr(S.Number).pipe(T.Body("batch_size"))),
-      maxConcurrency: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("max_concurrency")),
-      ),
-      maxRetries: S.optional(S.NullOr(S.Number).pipe(T.Body("max_retries"))),
-      maxWaitTimeMs: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("max_wait_time_ms")),
-      ),
-      retryDelay: S.optional(S.NullOr(S.Number).pipe(T.Body("retry_delay"))),
-    }),
-  ).annotate({
-    identifier: "ListResultItemConsumersItemWorkerSettings",
-  }) as any as S.Schema<ListResultItemConsumersItemWorkerSettings>;
+  ConsumersCreateResultWorkerSettings;
 
 export type ListResultItemConsumersItemWorkerType = "worker";
 export const ListResultItemConsumersItemWorkerType = /*@__PURE__*/ S.String;
@@ -2856,7 +2641,7 @@ export interface ListResultItemConsumersItemWorker {
   queueName?: string | null;
   /** Name of a Worker */
   scriptName?: string | null;
-  settings?: ListResultItemConsumersItemWorkerSettings | null;
+  settings?: ConsumersCreateResultWorkerSettings | null;
   type?: ListResultItemConsumersItemWorkerType | null;
 }
 export const ListResultItemConsumersItemWorker = /*@__PURE__*/ S.suspend(() =>
@@ -2868,36 +2653,17 @@ export const ListResultItemConsumersItemWorker = /*@__PURE__*/ S.suspend(() =>
     ),
     queueName: S.optional(S.NullOr(S.String).pipe(T.Body("queue_name"))),
     scriptName: S.optional(S.NullOr(S.String).pipe(T.Body("script_name"))),
-    settings: S.optional(S.NullOr(ListResultItemConsumersItemWorkerSettings)),
+    settings: S.optional(S.NullOr(ConsumersCreateResultWorkerSettings)),
     type: S.optional(S.NullOr(ListResultItemConsumersItemWorkerType)),
   }),
 ).annotate({
   identifier: "ListResultItemConsumersItemWorker",
 }) as any as S.Schema<ListResultItemConsumersItemWorker>;
 
-export interface ListResultItemConsumersItemHTTPPullSettings {
-  /** The maximum number of messages to include in a batch. */
-  batchSize?: number | null;
-  /** The maximum number of retries */
-  maxRetries?: number | null;
-  /** The number of seconds to delay before making the message available for another attempt. */
-  retryDelay?: number | null;
-  /** The number of milliseconds that a message is exclusively leased. After the timeout, the message becomes available for another attempt. */
-  visibilityTimeoutMs?: number | null;
-}
+export type ListResultItemConsumersItemHTTPPullSettings =
+  ConsumersCreateResultHTTPPullSettings;
 export const ListResultItemConsumersItemHTTPPullSettings =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      batchSize: S.optional(S.NullOr(S.Number).pipe(T.Body("batch_size"))),
-      maxRetries: S.optional(S.NullOr(S.Number).pipe(T.Body("max_retries"))),
-      retryDelay: S.optional(S.NullOr(S.Number).pipe(T.Body("retry_delay"))),
-      visibilityTimeoutMs: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("visibility_timeout_ms")),
-      ),
-    }),
-  ).annotate({
-    identifier: "ListResultItemConsumersItemHTTPPullSettings",
-  }) as any as S.Schema<ListResultItemConsumersItemHTTPPullSettings>;
+  ConsumersCreateResultHTTPPullSettings;
 
 export type ListResultItemConsumersItemHTTPPullType = "http_pull";
 export const ListResultItemConsumersItemHTTPPullType = /*@__PURE__*/ S.String;
@@ -2909,7 +2675,7 @@ export interface ListResultItemConsumersItemHTTPPull {
   /** Name of the dead letter queue, or empty string if not configured */
   deadLetterQueue?: string | null;
   queueName?: string | null;
-  settings?: ListResultItemConsumersItemHTTPPullSettings | null;
+  settings?: ConsumersCreateResultHTTPPullSettings | null;
   type?: ListResultItemConsumersItemHTTPPullType | null;
 }
 export const ListResultItemConsumersItemHTTPPull = /*@__PURE__*/ S.suspend(() =>
@@ -2920,7 +2686,7 @@ export const ListResultItemConsumersItemHTTPPull = /*@__PURE__*/ S.suspend(() =>
       S.NullOr(S.String).pipe(T.Body("dead_letter_queue")),
     ),
     queueName: S.optional(S.NullOr(S.String).pipe(T.Body("queue_name"))),
-    settings: S.optional(S.NullOr(ListResultItemConsumersItemHTTPPullSettings)),
+    settings: S.optional(S.NullOr(ConsumersCreateResultHTTPPullSettings)),
     type: S.optional(S.NullOr(ListResultItemConsumersItemHTTPPullType)),
   }),
 ).annotate({
@@ -3010,29 +2776,8 @@ export const ListResultItemProducersList = /*@__PURE__*/ S.Array(
   ListResultItemProducersItem,
 ) as any as S.Schema<ListResultItemProducersList>;
 
-export interface ListResultItemSettings {
-  /** Number of seconds to delay delivery of all messages to consumers. */
-  deliveryDelay?: number | null;
-  /** Indicates if message delivery to consumers is currently paused. */
-  deliveryPaused?: boolean | null;
-  /** Number of seconds after which an unconsumed message will be delayed. */
-  messageRetentionPeriod?: number | null;
-}
-export const ListResultItemSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deliveryDelay: S.optional(
-      S.NullOr(S.Number).pipe(T.Body("delivery_delay")),
-    ),
-    deliveryPaused: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("delivery_paused")),
-    ),
-    messageRetentionPeriod: S.optional(
-      S.NullOr(S.Number).pipe(T.Body("message_retention_period")),
-    ),
-  }),
-).annotate({
-  identifier: "ListResultItemSettings",
-}) as any as S.Schema<ListResultItemSettings>;
+export type ListResultItemSettings = CreateResponseSettings;
+export const ListResultItemSettings = CreateResponseSettings;
 
 export interface ListResultItem {
   consumers?: ListResultItemConsumersList | null;
@@ -3043,7 +2788,7 @@ export interface ListResultItem {
   producersTotalCount?: number | null;
   queueId?: string | null;
   queueName?: string | null;
-  settings?: ListResultItemSettings | null;
+  settings?: CreateResponseSettings | null;
 }
 export const ListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3059,7 +2804,7 @@ export const ListResultItem = /*@__PURE__*/ S.suspend(() =>
     ),
     queueId: S.optional(S.NullOr(S.String).pipe(T.Body("queue_id"))),
     queueName: S.optional(S.NullOr(S.String).pipe(T.Body("queue_name"))),
-    settings: S.optional(S.NullOr(ListResultItemSettings)),
+    settings: S.optional(S.NullOr(CreateResponseSettings)),
   }),
 ).annotate({ identifier: "ListResultItem" }) as any as S.Schema<ListResultItem>;
 
@@ -3450,34 +3195,10 @@ export const PatchQueueRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchQueueRequest",
 }) as any as S.Schema<PatchQueueRequest>;
 
-export interface EditResponseConsumersItemWorkerSettings {
-  /** The maximum number of messages to include in a batch. */
-  batchSize?: number | null;
-  /** Maximum number of concurrent consumers that may consume from this Queue. Set to `null` to automatically opt in to the platform's maximum (recommended). */
-  maxConcurrency?: number | null;
-  /** The maximum number of retries */
-  maxRetries?: number | null;
-  /** The number of milliseconds to wait for a batch to fill up before attempting to deliver it */
-  maxWaitTimeMs?: number | null;
-  /** The number of seconds to delay before making the message available for another attempt. */
-  retryDelay?: number | null;
-}
-export const EditResponseConsumersItemWorkerSettings = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      batchSize: S.optional(S.NullOr(S.Number).pipe(T.Body("batch_size"))),
-      maxConcurrency: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("max_concurrency")),
-      ),
-      maxRetries: S.optional(S.NullOr(S.Number).pipe(T.Body("max_retries"))),
-      maxWaitTimeMs: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("max_wait_time_ms")),
-      ),
-      retryDelay: S.optional(S.NullOr(S.Number).pipe(T.Body("retry_delay"))),
-    }),
-).annotate({
-  identifier: "EditResponseConsumersItemWorkerSettings",
-}) as any as S.Schema<EditResponseConsumersItemWorkerSettings>;
+export type EditResponseConsumersItemWorkerSettings =
+  ConsumersCreateResultWorkerSettings;
+export const EditResponseConsumersItemWorkerSettings =
+  ConsumersCreateResultWorkerSettings;
 
 export type EditResponseConsumersItemWorkerType = "worker";
 export const EditResponseConsumersItemWorkerType = /*@__PURE__*/ S.String;
@@ -3491,7 +3212,7 @@ export interface EditResponseConsumersItemWorker {
   queueName?: string | null;
   /** Name of a Worker */
   scriptName?: string | null;
-  settings?: EditResponseConsumersItemWorkerSettings | null;
+  settings?: ConsumersCreateResultWorkerSettings | null;
   type?: EditResponseConsumersItemWorkerType | null;
 }
 export const EditResponseConsumersItemWorker = /*@__PURE__*/ S.suspend(() =>
@@ -3503,36 +3224,17 @@ export const EditResponseConsumersItemWorker = /*@__PURE__*/ S.suspend(() =>
     ),
     queueName: S.optional(S.NullOr(S.String).pipe(T.Body("queue_name"))),
     scriptName: S.optional(S.NullOr(S.String).pipe(T.Body("script_name"))),
-    settings: S.optional(S.NullOr(EditResponseConsumersItemWorkerSettings)),
+    settings: S.optional(S.NullOr(ConsumersCreateResultWorkerSettings)),
     type: S.optional(S.NullOr(EditResponseConsumersItemWorkerType)),
   }),
 ).annotate({
   identifier: "EditResponseConsumersItemWorker",
 }) as any as S.Schema<EditResponseConsumersItemWorker>;
 
-export interface EditResponseConsumersItemHTTPPullSettings {
-  /** The maximum number of messages to include in a batch. */
-  batchSize?: number | null;
-  /** The maximum number of retries */
-  maxRetries?: number | null;
-  /** The number of seconds to delay before making the message available for another attempt. */
-  retryDelay?: number | null;
-  /** The number of milliseconds that a message is exclusively leased. After the timeout, the message becomes available for another attempt. */
-  visibilityTimeoutMs?: number | null;
-}
+export type EditResponseConsumersItemHTTPPullSettings =
+  ConsumersCreateResultHTTPPullSettings;
 export const EditResponseConsumersItemHTTPPullSettings =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      batchSize: S.optional(S.NullOr(S.Number).pipe(T.Body("batch_size"))),
-      maxRetries: S.optional(S.NullOr(S.Number).pipe(T.Body("max_retries"))),
-      retryDelay: S.optional(S.NullOr(S.Number).pipe(T.Body("retry_delay"))),
-      visibilityTimeoutMs: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("visibility_timeout_ms")),
-      ),
-    }),
-  ).annotate({
-    identifier: "EditResponseConsumersItemHTTPPullSettings",
-  }) as any as S.Schema<EditResponseConsumersItemHTTPPullSettings>;
+  ConsumersCreateResultHTTPPullSettings;
 
 export type EditResponseConsumersItemHTTPPullType = "http_pull";
 export const EditResponseConsumersItemHTTPPullType = /*@__PURE__*/ S.String;
@@ -3544,7 +3246,7 @@ export interface EditResponseConsumersItemHTTPPull {
   /** Name of the dead letter queue, or empty string if not configured */
   deadLetterQueue?: string | null;
   queueName?: string | null;
-  settings?: EditResponseConsumersItemHTTPPullSettings | null;
+  settings?: ConsumersCreateResultHTTPPullSettings | null;
   type?: EditResponseConsumersItemHTTPPullType | null;
 }
 export const EditResponseConsumersItemHTTPPull = /*@__PURE__*/ S.suspend(() =>
@@ -3555,7 +3257,7 @@ export const EditResponseConsumersItemHTTPPull = /*@__PURE__*/ S.suspend(() =>
       S.NullOr(S.String).pipe(T.Body("dead_letter_queue")),
     ),
     queueName: S.optional(S.NullOr(S.String).pipe(T.Body("queue_name"))),
-    settings: S.optional(S.NullOr(EditResponseConsumersItemHTTPPullSettings)),
+    settings: S.optional(S.NullOr(ConsumersCreateResultHTTPPullSettings)),
     type: S.optional(S.NullOr(EditResponseConsumersItemHTTPPullType)),
   }),
 ).annotate({
@@ -3642,29 +3344,8 @@ export const EditResponseProducersList = /*@__PURE__*/ S.Array(
   EditResponseProducersItem,
 ) as any as S.Schema<EditResponseProducersList>;
 
-export interface EditResponseSettings {
-  /** Number of seconds to delay delivery of all messages to consumers. */
-  deliveryDelay?: number | null;
-  /** Indicates if message delivery to consumers is currently paused. */
-  deliveryPaused?: boolean | null;
-  /** Number of seconds after which an unconsumed message will be delayed. */
-  messageRetentionPeriod?: number | null;
-}
-export const EditResponseSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deliveryDelay: S.optional(
-      S.NullOr(S.Number).pipe(T.Body("delivery_delay")),
-    ),
-    deliveryPaused: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("delivery_paused")),
-    ),
-    messageRetentionPeriod: S.optional(
-      S.NullOr(S.Number).pipe(T.Body("message_retention_period")),
-    ),
-  }),
-).annotate({
-  identifier: "EditResponseSettings",
-}) as any as S.Schema<EditResponseSettings>;
+export type EditResponseSettings = CreateResponseSettings;
+export const EditResponseSettings = CreateResponseSettings;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PatchQueueResponse {
@@ -3676,7 +3357,7 @@ export interface PatchQueueResponse {
   producersTotalCount?: number | null;
   queueId?: string | null;
   queueName?: string | null;
-  settings?: EditResponseSettings | null;
+  settings?: CreateResponseSettings | null;
 }
 export const PatchQueueResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3692,7 +3373,7 @@ export const PatchQueueResponse = /*@__PURE__*/ S.suspend(() =>
     ),
     queueId: S.optional(S.NullOr(S.String).pipe(T.Body("queue_id"))),
     queueName: S.optional(S.NullOr(S.String).pipe(T.Body("queue_name"))),
-    settings: S.optional(S.NullOr(EditResponseSettings)),
+    settings: S.optional(S.NullOr(CreateResponseSettings)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchQueueResponse",
@@ -4075,44 +3756,20 @@ export const MessagesPullResponseMessagesList = /*@__PURE__*/ S.Array(
   MessagesPullResponseMessagesItem,
 ) as any as S.Schema<MessagesPullResponseMessagesList>;
 
-export interface MessagesPullResponseMetadataMetrics {
-  /** The size in bytes of unacknowledged messages in the queue. */
-  backlogBytes: number;
-  /** The number of unacknowledged messages in the queue. */
-  backlogCount: number;
-  /** Unix timestamp in milliseconds of the oldest unacknowledged message in the queue. Returns 0 if unknown. */
-  oldestMessageTimestampMs: number;
-}
-export const MessagesPullResponseMetadataMetrics = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    backlogBytes: S.Number.pipe(T.Body("backlog_bytes")),
-    backlogCount: S.Number.pipe(T.Body("backlog_count")),
-    oldestMessageTimestampMs: S.Number.pipe(
-      T.Body("oldest_message_timestamp_ms"),
-    ),
-  }),
-).annotate({
-  identifier: "MessagesPullResponseMetadataMetrics",
-}) as any as S.Schema<MessagesPullResponseMetadataMetrics>;
+export type MessagesPullResponseMetadataMetrics =
+  MessagesBulkPushResponseMetadataMetrics;
+export const MessagesPullResponseMetadataMetrics =
+  MessagesBulkPushResponseMetadataMetrics;
 
-export interface MessagesPullResponseMetadata {
-  /** Best-effort metrics for the queue. Values may be approximate due to the distributed nature of queues. */
-  metrics?: MessagesPullResponseMetadataMetrics | null;
-}
-export const MessagesPullResponseMetadata = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metrics: S.optional(S.NullOr(MessagesPullResponseMetadataMetrics)),
-  }),
-).annotate({
-  identifier: "MessagesPullResponseMetadata",
-}) as any as S.Schema<MessagesPullResponseMetadata>;
+export type MessagesPullResponseMetadata = MessagesBulkPushResponseMetadata;
+export const MessagesPullResponseMetadata = MessagesBulkPushResponseMetadata;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PullMessageResponse {
   /** The number of unacknowledged messages in the queue. */
   messageBacklogCount?: number | null;
   messages?: MessagesPullResponseMessagesList | null;
-  metadata?: MessagesPullResponseMetadata | null;
+  metadata?: MessagesBulkPushResponseMetadata | null;
 }
 export const PullMessageResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4120,7 +3777,7 @@ export const PullMessageResponse = /*@__PURE__*/ S.suspend(() =>
       S.NullOr(S.Number).pipe(T.Body("message_backlog_count")),
     ),
     messages: S.optional(S.NullOr(MessagesPullResponseMessagesList)),
-    metadata: S.optional(S.NullOr(MessagesPullResponseMetadata)),
+    metadata: S.optional(S.NullOr(MessagesBulkPushResponseMetadata)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PullMessageResponse",
@@ -4161,45 +3818,21 @@ export const PushMessageRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PushMessageRequest",
 }) as any as S.Schema<PushMessageRequest>;
 
-export interface MessagesPushResponseMetadataMetrics {
-  /** The size in bytes of unacknowledged messages in the queue. */
-  backlogBytes: number;
-  /** The number of unacknowledged messages in the queue. */
-  backlogCount: number;
-  /** Unix timestamp in milliseconds of the oldest unacknowledged message in the queue. Returns 0 if unknown. */
-  oldestMessageTimestampMs: number;
-}
-export const MessagesPushResponseMetadataMetrics = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    backlogBytes: S.Number.pipe(T.Body("backlog_bytes")),
-    backlogCount: S.Number.pipe(T.Body("backlog_count")),
-    oldestMessageTimestampMs: S.Number.pipe(
-      T.Body("oldest_message_timestamp_ms"),
-    ),
-  }),
-).annotate({
-  identifier: "MessagesPushResponseMetadataMetrics",
-}) as any as S.Schema<MessagesPushResponseMetadataMetrics>;
+export type MessagesPushResponseMetadataMetrics =
+  MessagesBulkPushResponseMetadataMetrics;
+export const MessagesPushResponseMetadataMetrics =
+  MessagesBulkPushResponseMetadataMetrics;
 
-export interface MessagesPushResponseMetadata {
-  /** Best-effort metrics for the queue. Values may be approximate due to the distributed nature of queues. */
-  metrics?: MessagesPushResponseMetadataMetrics | null;
-}
-export const MessagesPushResponseMetadata = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metrics: S.optional(S.NullOr(MessagesPushResponseMetadataMetrics)),
-  }),
-).annotate({
-  identifier: "MessagesPushResponseMetadata",
-}) as any as S.Schema<MessagesPushResponseMetadata>;
+export type MessagesPushResponseMetadata = MessagesBulkPushResponseMetadata;
+export const MessagesPushResponseMetadata = MessagesBulkPushResponseMetadata;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PushMessageResponse {
-  metadata?: MessagesPushResponseMetadata | null;
+  metadata?: MessagesBulkPushResponseMetadata | null;
 }
 export const PushMessageResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    metadata: S.optional(S.NullOr(MessagesPushResponseMetadata)),
+    metadata: S.optional(S.NullOr(MessagesBulkPushResponseMetadata)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PushMessageResponse",
@@ -4233,34 +3866,10 @@ export const StartPurgeRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "StartPurgeRequest",
 }) as any as S.Schema<StartPurgeRequest>;
 
-export interface PurgeStartResponseConsumersItemWorkerSettings {
-  /** The maximum number of messages to include in a batch. */
-  batchSize?: number | null;
-  /** Maximum number of concurrent consumers that may consume from this Queue. Set to `null` to automatically opt in to the platform's maximum (recommended). */
-  maxConcurrency?: number | null;
-  /** The maximum number of retries */
-  maxRetries?: number | null;
-  /** The number of milliseconds to wait for a batch to fill up before attempting to deliver it */
-  maxWaitTimeMs?: number | null;
-  /** The number of seconds to delay before making the message available for another attempt. */
-  retryDelay?: number | null;
-}
+export type PurgeStartResponseConsumersItemWorkerSettings =
+  ConsumersCreateResultWorkerSettings;
 export const PurgeStartResponseConsumersItemWorkerSettings =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      batchSize: S.optional(S.NullOr(S.Number).pipe(T.Body("batch_size"))),
-      maxConcurrency: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("max_concurrency")),
-      ),
-      maxRetries: S.optional(S.NullOr(S.Number).pipe(T.Body("max_retries"))),
-      maxWaitTimeMs: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("max_wait_time_ms")),
-      ),
-      retryDelay: S.optional(S.NullOr(S.Number).pipe(T.Body("retry_delay"))),
-    }),
-  ).annotate({
-    identifier: "PurgeStartResponseConsumersItemWorkerSettings",
-  }) as any as S.Schema<PurgeStartResponseConsumersItemWorkerSettings>;
+  ConsumersCreateResultWorkerSettings;
 
 export type PurgeStartResponseConsumersItemWorkerType = "worker";
 export const PurgeStartResponseConsumersItemWorkerType = /*@__PURE__*/ S.String;
@@ -4274,7 +3883,7 @@ export interface PurgeStartResponseConsumersItemWorker {
   queueName?: string | null;
   /** Name of a Worker */
   scriptName?: string | null;
-  settings?: PurgeStartResponseConsumersItemWorkerSettings | null;
+  settings?: ConsumersCreateResultWorkerSettings | null;
   type?: PurgeStartResponseConsumersItemWorkerType | null;
 }
 export const PurgeStartResponseConsumersItemWorker = /*@__PURE__*/ S.suspend(
@@ -4287,38 +3896,17 @@ export const PurgeStartResponseConsumersItemWorker = /*@__PURE__*/ S.suspend(
       ),
       queueName: S.optional(S.NullOr(S.String).pipe(T.Body("queue_name"))),
       scriptName: S.optional(S.NullOr(S.String).pipe(T.Body("script_name"))),
-      settings: S.optional(
-        S.NullOr(PurgeStartResponseConsumersItemWorkerSettings),
-      ),
+      settings: S.optional(S.NullOr(ConsumersCreateResultWorkerSettings)),
       type: S.optional(S.NullOr(PurgeStartResponseConsumersItemWorkerType)),
     }),
 ).annotate({
   identifier: "PurgeStartResponseConsumersItemWorker",
 }) as any as S.Schema<PurgeStartResponseConsumersItemWorker>;
 
-export interface PurgeStartResponseConsumersItemHTTPPullSettings {
-  /** The maximum number of messages to include in a batch. */
-  batchSize?: number | null;
-  /** The maximum number of retries */
-  maxRetries?: number | null;
-  /** The number of seconds to delay before making the message available for another attempt. */
-  retryDelay?: number | null;
-  /** The number of milliseconds that a message is exclusively leased. After the timeout, the message becomes available for another attempt. */
-  visibilityTimeoutMs?: number | null;
-}
+export type PurgeStartResponseConsumersItemHTTPPullSettings =
+  ConsumersCreateResultHTTPPullSettings;
 export const PurgeStartResponseConsumersItemHTTPPullSettings =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      batchSize: S.optional(S.NullOr(S.Number).pipe(T.Body("batch_size"))),
-      maxRetries: S.optional(S.NullOr(S.Number).pipe(T.Body("max_retries"))),
-      retryDelay: S.optional(S.NullOr(S.Number).pipe(T.Body("retry_delay"))),
-      visibilityTimeoutMs: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("visibility_timeout_ms")),
-      ),
-    }),
-  ).annotate({
-    identifier: "PurgeStartResponseConsumersItemHTTPPullSettings",
-  }) as any as S.Schema<PurgeStartResponseConsumersItemHTTPPullSettings>;
+  ConsumersCreateResultHTTPPullSettings;
 
 export type PurgeStartResponseConsumersItemHTTPPullType = "http_pull";
 export const PurgeStartResponseConsumersItemHTTPPullType =
@@ -4331,7 +3919,7 @@ export interface PurgeStartResponseConsumersItemHTTPPull {
   /** Name of the dead letter queue, or empty string if not configured */
   deadLetterQueue?: string | null;
   queueName?: string | null;
-  settings?: PurgeStartResponseConsumersItemHTTPPullSettings | null;
+  settings?: ConsumersCreateResultHTTPPullSettings | null;
   type?: PurgeStartResponseConsumersItemHTTPPullType | null;
 }
 export const PurgeStartResponseConsumersItemHTTPPull = /*@__PURE__*/ S.suspend(
@@ -4343,9 +3931,7 @@ export const PurgeStartResponseConsumersItemHTTPPull = /*@__PURE__*/ S.suspend(
         S.NullOr(S.String).pipe(T.Body("dead_letter_queue")),
       ),
       queueName: S.optional(S.NullOr(S.String).pipe(T.Body("queue_name"))),
-      settings: S.optional(
-        S.NullOr(PurgeStartResponseConsumersItemHTTPPullSettings),
-      ),
+      settings: S.optional(S.NullOr(ConsumersCreateResultHTTPPullSettings)),
       type: S.optional(S.NullOr(PurgeStartResponseConsumersItemHTTPPullType)),
     }),
 ).annotate({
@@ -4439,29 +4025,8 @@ export const PurgeStartResponseProducersList = /*@__PURE__*/ S.Array(
   PurgeStartResponseProducersItem,
 ) as any as S.Schema<PurgeStartResponseProducersList>;
 
-export interface PurgeStartResponseSettings {
-  /** Number of seconds to delay delivery of all messages to consumers. */
-  deliveryDelay?: number | null;
-  /** Indicates if message delivery to consumers is currently paused. */
-  deliveryPaused?: boolean | null;
-  /** Number of seconds after which an unconsumed message will be delayed. */
-  messageRetentionPeriod?: number | null;
-}
-export const PurgeStartResponseSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deliveryDelay: S.optional(
-      S.NullOr(S.Number).pipe(T.Body("delivery_delay")),
-    ),
-    deliveryPaused: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("delivery_paused")),
-    ),
-    messageRetentionPeriod: S.optional(
-      S.NullOr(S.Number).pipe(T.Body("message_retention_period")),
-    ),
-  }),
-).annotate({
-  identifier: "PurgeStartResponseSettings",
-}) as any as S.Schema<PurgeStartResponseSettings>;
+export type PurgeStartResponseSettings = CreateResponseSettings;
+export const PurgeStartResponseSettings = CreateResponseSettings;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface StartPurgeResponse {
@@ -4473,7 +4038,7 @@ export interface StartPurgeResponse {
   producersTotalCount?: number | null;
   queueId?: string | null;
   queueName?: string | null;
-  settings?: PurgeStartResponseSettings | null;
+  settings?: CreateResponseSettings | null;
 }
 export const StartPurgeResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4489,7 +4054,7 @@ export const StartPurgeResponse = /*@__PURE__*/ S.suspend(() =>
     ),
     queueId: S.optional(S.NullOr(S.String).pipe(T.Body("queue_id"))),
     queueName: S.optional(S.NullOr(S.String).pipe(T.Body("queue_name"))),
-    settings: S.optional(S.NullOr(PurgeStartResponseSettings)),
+    settings: S.optional(S.NullOr(CreateResponseSettings)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "StartPurgeResponse",
@@ -4537,58 +4102,19 @@ export const StatusPurgeResponse = /*@__PURE__*/ S.suspend(() =>
 export type ConsumersUpdateRequestType = "worker" | "http_pull";
 export const ConsumersUpdateRequestType = /*@__PURE__*/ S.String;
 
-export interface ConsumersUpdateRequestSettingsWorker {
-  /** The maximum number of messages to include in a batch. */
-  batchSize?: number;
-  /** Maximum number of concurrent consumers that may consume from this Queue. Set to `null` to automatically opt in to the platform's maximum (recommended). */
-  maxConcurrency?: number;
-  /** The maximum number of retries */
-  maxRetries?: number;
-  /** The number of milliseconds to wait for a batch to fill up before attempting to deliver it */
-  maxWaitTimeMs?: number;
-  /** The number of seconds to delay before making the message available for another attempt. */
-  retryDelay?: number;
-}
-export const ConsumersUpdateRequestSettingsWorker = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      batchSize: S.optional(S.Number.pipe(T.Body("batch_size"))),
-      maxConcurrency: S.optional(S.Number.pipe(T.Body("max_concurrency"))),
-      maxRetries: S.optional(S.Number.pipe(T.Body("max_retries"))),
-      maxWaitTimeMs: S.optional(S.Number.pipe(T.Body("max_wait_time_ms"))),
-      retryDelay: S.optional(S.Number.pipe(T.Body("retry_delay"))),
-    }),
-).annotate({
-  identifier: "ConsumersUpdateRequestSettingsWorker",
-}) as any as S.Schema<ConsumersUpdateRequestSettingsWorker>;
+export type ConsumersUpdateRequestSettingsWorker =
+  ConsumersCreateRequestSettingsWorker;
+export const ConsumersUpdateRequestSettingsWorker =
+  ConsumersCreateRequestSettingsWorker;
 
-export interface ConsumersUpdateRequestSettingsHTTPPull {
-  /** The maximum number of messages to include in a batch. */
-  batchSize?: number;
-  /** The maximum number of retries */
-  maxRetries?: number;
-  /** The number of seconds to delay before making the message available for another attempt. */
-  retryDelay?: number;
-  /** The number of milliseconds that a message is exclusively leased. After the timeout, the message becomes available for another attempt. */
-  visibilityTimeoutMs?: number;
-}
-export const ConsumersUpdateRequestSettingsHTTPPull = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      batchSize: S.optional(S.Number.pipe(T.Body("batch_size"))),
-      maxRetries: S.optional(S.Number.pipe(T.Body("max_retries"))),
-      retryDelay: S.optional(S.Number.pipe(T.Body("retry_delay"))),
-      visibilityTimeoutMs: S.optional(
-        S.Number.pipe(T.Body("visibility_timeout_ms")),
-      ),
-    }),
-).annotate({
-  identifier: "ConsumersUpdateRequestSettingsHTTPPull",
-}) as any as S.Schema<ConsumersUpdateRequestSettingsHTTPPull>;
+export type ConsumersUpdateRequestSettingsHTTPPull =
+  ConsumersCreateRequestSettingsHTTPPull;
+export const ConsumersUpdateRequestSettingsHTTPPull =
+  ConsumersCreateRequestSettingsHTTPPull;
 
 export type ConsumersUpdateRequestSettings =
-  | ConsumersUpdateRequestSettingsWorker
-  | ConsumersUpdateRequestSettingsHTTPPull;
+  | ConsumersCreateRequestSettingsWorker
+  | ConsumersCreateRequestSettingsHTTPPull;
 export const ConsumersUpdateRequestSettings = /*@__PURE__*/ S.Unknown.pipe(
   T.UnionCases([
     [
@@ -4637,33 +4163,10 @@ export const UpdateConsumerRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateConsumerRequest",
 }) as any as S.Schema<UpdateConsumerRequest>;
 
-export interface ConsumersUpdateResultWorkerSettings {
-  /** The maximum number of messages to include in a batch. */
-  batchSize?: number | null;
-  /** Maximum number of concurrent consumers that may consume from this Queue. Set to `null` to automatically opt in to the platform's maximum (recommended). */
-  maxConcurrency?: number | null;
-  /** The maximum number of retries */
-  maxRetries?: number | null;
-  /** The number of milliseconds to wait for a batch to fill up before attempting to deliver it */
-  maxWaitTimeMs?: number | null;
-  /** The number of seconds to delay before making the message available for another attempt. */
-  retryDelay?: number | null;
-}
-export const ConsumersUpdateResultWorkerSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    batchSize: S.optional(S.NullOr(S.Number).pipe(T.Body("batch_size"))),
-    maxConcurrency: S.optional(
-      S.NullOr(S.Number).pipe(T.Body("max_concurrency")),
-    ),
-    maxRetries: S.optional(S.NullOr(S.Number).pipe(T.Body("max_retries"))),
-    maxWaitTimeMs: S.optional(
-      S.NullOr(S.Number).pipe(T.Body("max_wait_time_ms")),
-    ),
-    retryDelay: S.optional(S.NullOr(S.Number).pipe(T.Body("retry_delay"))),
-  }),
-).annotate({
-  identifier: "ConsumersUpdateResultWorkerSettings",
-}) as any as S.Schema<ConsumersUpdateResultWorkerSettings>;
+export type ConsumersUpdateResultWorkerSettings =
+  ConsumersCreateResultWorkerSettings;
+export const ConsumersUpdateResultWorkerSettings =
+  ConsumersCreateResultWorkerSettings;
 
 export type ConsumersUpdateResultWorkerType = "worker";
 export const ConsumersUpdateResultWorkerType = /*@__PURE__*/ S.String;
@@ -4677,7 +4180,7 @@ export interface ConsumersUpdateResultWorker {
   queueName?: string | null;
   /** Name of a Worker */
   scriptName?: string | null;
-  settings?: ConsumersUpdateResultWorkerSettings | null;
+  settings?: ConsumersCreateResultWorkerSettings | null;
   type?: ConsumersUpdateResultWorkerType | null;
 }
 export const ConsumersUpdateResultWorker = /*@__PURE__*/ S.suspend(() =>
@@ -4689,36 +4192,17 @@ export const ConsumersUpdateResultWorker = /*@__PURE__*/ S.suspend(() =>
     ),
     queueName: S.optional(S.NullOr(S.String).pipe(T.Body("queue_name"))),
     scriptName: S.optional(S.NullOr(S.String).pipe(T.Body("script_name"))),
-    settings: S.optional(S.NullOr(ConsumersUpdateResultWorkerSettings)),
+    settings: S.optional(S.NullOr(ConsumersCreateResultWorkerSettings)),
     type: S.optional(S.NullOr(ConsumersUpdateResultWorkerType)),
   }),
 ).annotate({
   identifier: "ConsumersUpdateResultWorker",
 }) as any as S.Schema<ConsumersUpdateResultWorker>;
 
-export interface ConsumersUpdateResultHTTPPullSettings {
-  /** The maximum number of messages to include in a batch. */
-  batchSize?: number | null;
-  /** The maximum number of retries */
-  maxRetries?: number | null;
-  /** The number of seconds to delay before making the message available for another attempt. */
-  retryDelay?: number | null;
-  /** The number of milliseconds that a message is exclusively leased. After the timeout, the message becomes available for another attempt. */
-  visibilityTimeoutMs?: number | null;
-}
-export const ConsumersUpdateResultHTTPPullSettings = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      batchSize: S.optional(S.NullOr(S.Number).pipe(T.Body("batch_size"))),
-      maxRetries: S.optional(S.NullOr(S.Number).pipe(T.Body("max_retries"))),
-      retryDelay: S.optional(S.NullOr(S.Number).pipe(T.Body("retry_delay"))),
-      visibilityTimeoutMs: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("visibility_timeout_ms")),
-      ),
-    }),
-).annotate({
-  identifier: "ConsumersUpdateResultHTTPPullSettings",
-}) as any as S.Schema<ConsumersUpdateResultHTTPPullSettings>;
+export type ConsumersUpdateResultHTTPPullSettings =
+  ConsumersCreateResultHTTPPullSettings;
+export const ConsumersUpdateResultHTTPPullSettings =
+  ConsumersCreateResultHTTPPullSettings;
 
 export type ConsumersUpdateResultHTTPPullType = "http_pull";
 export const ConsumersUpdateResultHTTPPullType = /*@__PURE__*/ S.String;
@@ -4730,7 +4214,7 @@ export interface ConsumersUpdateResultHTTPPull {
   /** Name of the dead letter queue, or empty string if not configured */
   deadLetterQueue?: string | null;
   queueName?: string | null;
-  settings?: ConsumersUpdateResultHTTPPullSettings | null;
+  settings?: ConsumersCreateResultHTTPPullSettings | null;
   type?: ConsumersUpdateResultHTTPPullType | null;
 }
 export const ConsumersUpdateResultHTTPPull = /*@__PURE__*/ S.suspend(() =>
@@ -4741,7 +4225,7 @@ export const ConsumersUpdateResultHTTPPull = /*@__PURE__*/ S.suspend(() =>
       S.NullOr(S.String).pipe(T.Body("dead_letter_queue")),
     ),
     queueName: S.optional(S.NullOr(S.String).pipe(T.Body("queue_name"))),
-    settings: S.optional(S.NullOr(ConsumersUpdateResultHTTPPullSettings)),
+    settings: S.optional(S.NullOr(ConsumersCreateResultHTTPPullSettings)),
     type: S.optional(S.NullOr(ConsumersUpdateResultHTTPPullType)),
   }),
 ).annotate({
@@ -4783,25 +4267,8 @@ export const UpdateConsumerResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateConsumerResponse",
 }) as any as S.Schema<UpdateConsumerResponse>;
 
-export interface UpdateRequestSettings {
-  /** Number of seconds to delay delivery of all messages to consumers. */
-  deliveryDelay?: number;
-  /** Indicates if message delivery to consumers is currently paused. */
-  deliveryPaused?: boolean;
-  /** Number of seconds after which an unconsumed message will be delayed. */
-  messageRetentionPeriod?: number;
-}
-export const UpdateRequestSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deliveryDelay: S.optional(S.Number.pipe(T.Body("delivery_delay"))),
-    deliveryPaused: S.optional(S.Boolean.pipe(T.Body("delivery_paused"))),
-    messageRetentionPeriod: S.optional(
-      S.Number.pipe(T.Body("message_retention_period")),
-    ),
-  }),
-).annotate({
-  identifier: "UpdateRequestSettings",
-}) as any as S.Schema<UpdateRequestSettings>;
+export type UpdateRequestSettings = EditRequestSettings;
+export const UpdateRequestSettings = EditRequestSettings;
 
 export interface UpdateQueueRequest {
   /** A Resource identifier. */
@@ -4809,14 +4276,14 @@ export interface UpdateQueueRequest {
   /** A Resource identifier. */
   queueId: string;
   queueName?: string;
-  settings?: UpdateRequestSettings;
+  settings?: EditRequestSettings;
 }
 export const UpdateQueueRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     queueId: S.String.pipe(T.Label("queue_id")),
     queueName: S.optional(S.String.pipe(T.Body("queue_name"))),
-    settings: S.optional(UpdateRequestSettings),
+    settings: S.optional(EditRequestSettings),
   })
     .pipe(
       T.Http({
@@ -4830,34 +4297,10 @@ export const UpdateQueueRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateQueueRequest",
 }) as any as S.Schema<UpdateQueueRequest>;
 
-export interface UpdateResponseConsumersItemWorkerSettings {
-  /** The maximum number of messages to include in a batch. */
-  batchSize?: number | null;
-  /** Maximum number of concurrent consumers that may consume from this Queue. Set to `null` to automatically opt in to the platform's maximum (recommended). */
-  maxConcurrency?: number | null;
-  /** The maximum number of retries */
-  maxRetries?: number | null;
-  /** The number of milliseconds to wait for a batch to fill up before attempting to deliver it */
-  maxWaitTimeMs?: number | null;
-  /** The number of seconds to delay before making the message available for another attempt. */
-  retryDelay?: number | null;
-}
+export type UpdateResponseConsumersItemWorkerSettings =
+  ConsumersCreateResultWorkerSettings;
 export const UpdateResponseConsumersItemWorkerSettings =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      batchSize: S.optional(S.NullOr(S.Number).pipe(T.Body("batch_size"))),
-      maxConcurrency: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("max_concurrency")),
-      ),
-      maxRetries: S.optional(S.NullOr(S.Number).pipe(T.Body("max_retries"))),
-      maxWaitTimeMs: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("max_wait_time_ms")),
-      ),
-      retryDelay: S.optional(S.NullOr(S.Number).pipe(T.Body("retry_delay"))),
-    }),
-  ).annotate({
-    identifier: "UpdateResponseConsumersItemWorkerSettings",
-  }) as any as S.Schema<UpdateResponseConsumersItemWorkerSettings>;
+  ConsumersCreateResultWorkerSettings;
 
 export type UpdateResponseConsumersItemWorkerType = "worker";
 export const UpdateResponseConsumersItemWorkerType = /*@__PURE__*/ S.String;
@@ -4871,7 +4314,7 @@ export interface UpdateResponseConsumersItemWorker {
   queueName?: string | null;
   /** Name of a Worker */
   scriptName?: string | null;
-  settings?: UpdateResponseConsumersItemWorkerSettings | null;
+  settings?: ConsumersCreateResultWorkerSettings | null;
   type?: UpdateResponseConsumersItemWorkerType | null;
 }
 export const UpdateResponseConsumersItemWorker = /*@__PURE__*/ S.suspend(() =>
@@ -4883,36 +4326,17 @@ export const UpdateResponseConsumersItemWorker = /*@__PURE__*/ S.suspend(() =>
     ),
     queueName: S.optional(S.NullOr(S.String).pipe(T.Body("queue_name"))),
     scriptName: S.optional(S.NullOr(S.String).pipe(T.Body("script_name"))),
-    settings: S.optional(S.NullOr(UpdateResponseConsumersItemWorkerSettings)),
+    settings: S.optional(S.NullOr(ConsumersCreateResultWorkerSettings)),
     type: S.optional(S.NullOr(UpdateResponseConsumersItemWorkerType)),
   }),
 ).annotate({
   identifier: "UpdateResponseConsumersItemWorker",
 }) as any as S.Schema<UpdateResponseConsumersItemWorker>;
 
-export interface UpdateResponseConsumersItemHTTPPullSettings {
-  /** The maximum number of messages to include in a batch. */
-  batchSize?: number | null;
-  /** The maximum number of retries */
-  maxRetries?: number | null;
-  /** The number of seconds to delay before making the message available for another attempt. */
-  retryDelay?: number | null;
-  /** The number of milliseconds that a message is exclusively leased. After the timeout, the message becomes available for another attempt. */
-  visibilityTimeoutMs?: number | null;
-}
+export type UpdateResponseConsumersItemHTTPPullSettings =
+  ConsumersCreateResultHTTPPullSettings;
 export const UpdateResponseConsumersItemHTTPPullSettings =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      batchSize: S.optional(S.NullOr(S.Number).pipe(T.Body("batch_size"))),
-      maxRetries: S.optional(S.NullOr(S.Number).pipe(T.Body("max_retries"))),
-      retryDelay: S.optional(S.NullOr(S.Number).pipe(T.Body("retry_delay"))),
-      visibilityTimeoutMs: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("visibility_timeout_ms")),
-      ),
-    }),
-  ).annotate({
-    identifier: "UpdateResponseConsumersItemHTTPPullSettings",
-  }) as any as S.Schema<UpdateResponseConsumersItemHTTPPullSettings>;
+  ConsumersCreateResultHTTPPullSettings;
 
 export type UpdateResponseConsumersItemHTTPPullType = "http_pull";
 export const UpdateResponseConsumersItemHTTPPullType = /*@__PURE__*/ S.String;
@@ -4924,7 +4348,7 @@ export interface UpdateResponseConsumersItemHTTPPull {
   /** Name of the dead letter queue, or empty string if not configured */
   deadLetterQueue?: string | null;
   queueName?: string | null;
-  settings?: UpdateResponseConsumersItemHTTPPullSettings | null;
+  settings?: ConsumersCreateResultHTTPPullSettings | null;
   type?: UpdateResponseConsumersItemHTTPPullType | null;
 }
 export const UpdateResponseConsumersItemHTTPPull = /*@__PURE__*/ S.suspend(() =>
@@ -4935,7 +4359,7 @@ export const UpdateResponseConsumersItemHTTPPull = /*@__PURE__*/ S.suspend(() =>
       S.NullOr(S.String).pipe(T.Body("dead_letter_queue")),
     ),
     queueName: S.optional(S.NullOr(S.String).pipe(T.Body("queue_name"))),
-    settings: S.optional(S.NullOr(UpdateResponseConsumersItemHTTPPullSettings)),
+    settings: S.optional(S.NullOr(ConsumersCreateResultHTTPPullSettings)),
     type: S.optional(S.NullOr(UpdateResponseConsumersItemHTTPPullType)),
   }),
 ).annotate({
@@ -5025,29 +4449,8 @@ export const UpdateResponseProducersList = /*@__PURE__*/ S.Array(
   UpdateResponseProducersItem,
 ) as any as S.Schema<UpdateResponseProducersList>;
 
-export interface UpdateResponseSettings {
-  /** Number of seconds to delay delivery of all messages to consumers. */
-  deliveryDelay?: number | null;
-  /** Indicates if message delivery to consumers is currently paused. */
-  deliveryPaused?: boolean | null;
-  /** Number of seconds after which an unconsumed message will be delayed. */
-  messageRetentionPeriod?: number | null;
-}
-export const UpdateResponseSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deliveryDelay: S.optional(
-      S.NullOr(S.Number).pipe(T.Body("delivery_delay")),
-    ),
-    deliveryPaused: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("delivery_paused")),
-    ),
-    messageRetentionPeriod: S.optional(
-      S.NullOr(S.Number).pipe(T.Body("message_retention_period")),
-    ),
-  }),
-).annotate({
-  identifier: "UpdateResponseSettings",
-}) as any as S.Schema<UpdateResponseSettings>;
+export type UpdateResponseSettings = CreateResponseSettings;
+export const UpdateResponseSettings = CreateResponseSettings;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateQueueResponse {
@@ -5059,7 +4462,7 @@ export interface UpdateQueueResponse {
   producersTotalCount?: number | null;
   queueId?: string | null;
   queueName?: string | null;
-  settings?: UpdateResponseSettings | null;
+  settings?: CreateResponseSettings | null;
 }
 export const UpdateQueueResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5075,7 +4478,7 @@ export const UpdateQueueResponse = /*@__PURE__*/ S.suspend(() =>
     ),
     queueId: S.optional(S.NullOr(S.String).pipe(T.Body("queue_id"))),
     queueName: S.optional(S.NullOr(S.String).pipe(T.Body("queue_name"))),
-    settings: S.optional(S.NullOr(UpdateResponseSettings)),
+    settings: S.optional(S.NullOr(CreateResponseSettings)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateQueueResponse",

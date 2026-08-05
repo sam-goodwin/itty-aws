@@ -366,25 +366,8 @@ export const SiteInfoCreateResponseRulesList = /*@__PURE__*/ S.Array(
   SiteInfoCreateResponseRulesItem,
 ) as any as S.Schema<SiteInfoCreateResponseRulesList>;
 
-export interface SiteInfoCreateResponseRuleset {
-  /** The Web Analytics ruleset identifier. */
-  id?: string | null;
-  /** Whether the ruleset is enabled. */
-  enabled?: boolean | null;
-  zoneName?: string | null;
-  /** The zone identifier. */
-  zoneTag?: string | null;
-}
-export const SiteInfoCreateResponseRuleset = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-    enabled: S.optional(S.NullOr(S.Boolean)),
-    zoneName: S.optional(S.NullOr(S.String).pipe(T.Body("zone_name"))),
-    zoneTag: S.optional(S.NullOr(S.String).pipe(T.Body("zone_tag"))),
-  }),
-).annotate({
-  identifier: "SiteInfoCreateResponseRuleset",
-}) as any as S.Schema<SiteInfoCreateResponseRuleset>;
+export type SiteInfoCreateResponseRuleset = RulesBulkCreateResponseRuleset;
+export const SiteInfoCreateResponseRuleset = RulesBulkCreateResponseRuleset;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateSiteInfoResponse {
@@ -393,7 +376,7 @@ export interface CreateSiteInfoResponse {
   created?: string | null;
   /** A list of rules. */
   rules?: SiteInfoCreateResponseRulesList | null;
-  ruleset?: SiteInfoCreateResponseRuleset | null;
+  ruleset?: RulesBulkCreateResponseRuleset | null;
   /** The Web Analytics site identifier. */
   siteTag?: string | null;
   /** The Web Analytics site token. */
@@ -408,7 +391,7 @@ export const CreateSiteInfoResponse = /*@__PURE__*/ S.suspend(() =>
     autoInstall: S.optional(S.NullOr(S.Boolean).pipe(T.Body("auto_install"))),
     created: S.optional(S.NullOr(S.String)),
     rules: S.optional(S.NullOr(SiteInfoCreateResponseRulesList)),
-    ruleset: S.optional(S.NullOr(SiteInfoCreateResponseRuleset)),
+    ruleset: S.optional(S.NullOr(RulesBulkCreateResponseRuleset)),
     siteTag: S.optional(S.NullOr(S.String).pipe(T.Body("site_tag"))),
     siteToken: S.optional(S.NullOr(S.String).pipe(T.Body("site_token"))),
     snippet: S.optional(S.NullOr(S.String)),
@@ -554,25 +537,8 @@ export const SiteInfoGetResponseRulesList = /*@__PURE__*/ S.Array(
   SiteInfoGetResponseRulesItem,
 ) as any as S.Schema<SiteInfoGetResponseRulesList>;
 
-export interface SiteInfoGetResponseRuleset {
-  /** The Web Analytics ruleset identifier. */
-  id?: string | null;
-  /** Whether the ruleset is enabled. */
-  enabled?: boolean | null;
-  zoneName?: string | null;
-  /** The zone identifier. */
-  zoneTag?: string | null;
-}
-export const SiteInfoGetResponseRuleset = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-    enabled: S.optional(S.NullOr(S.Boolean)),
-    zoneName: S.optional(S.NullOr(S.String).pipe(T.Body("zone_name"))),
-    zoneTag: S.optional(S.NullOr(S.String).pipe(T.Body("zone_tag"))),
-  }),
-).annotate({
-  identifier: "SiteInfoGetResponseRuleset",
-}) as any as S.Schema<SiteInfoGetResponseRuleset>;
+export type SiteInfoGetResponseRuleset = RulesBulkCreateResponseRuleset;
+export const SiteInfoGetResponseRuleset = RulesBulkCreateResponseRuleset;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetSiteInfoResponse {
@@ -581,7 +547,7 @@ export interface GetSiteInfoResponse {
   created?: string | null;
   /** A list of rules. */
   rules?: SiteInfoGetResponseRulesList | null;
-  ruleset?: SiteInfoGetResponseRuleset | null;
+  ruleset?: RulesBulkCreateResponseRuleset | null;
   /** The Web Analytics site identifier. */
   siteTag?: string | null;
   /** The Web Analytics site token. */
@@ -596,7 +562,7 @@ export const GetSiteInfoResponse = /*@__PURE__*/ S.suspend(() =>
     autoInstall: S.optional(S.NullOr(S.Boolean).pipe(T.Body("auto_install"))),
     created: S.optional(S.NullOr(S.String)),
     rules: S.optional(S.NullOr(SiteInfoGetResponseRulesList)),
-    ruleset: S.optional(S.NullOr(SiteInfoGetResponseRuleset)),
+    ruleset: S.optional(S.NullOr(RulesBulkCreateResponseRuleset)),
     siteTag: S.optional(S.NullOr(S.String).pipe(T.Body("site_tag"))),
     siteToken: S.optional(S.NullOr(S.String).pipe(T.Body("site_token"))),
     snippet: S.optional(S.NullOr(S.String)),
@@ -667,36 +633,19 @@ export const RulesListResponseRulesList = /*@__PURE__*/ S.Array(
   RulesListResponseRulesItem,
 ) as any as S.Schema<RulesListResponseRulesList>;
 
-export interface RulesListResponseRuleset {
-  /** The Web Analytics ruleset identifier. */
-  id?: string | null;
-  /** Whether the ruleset is enabled. */
-  enabled?: boolean | null;
-  zoneName?: string | null;
-  /** The zone identifier. */
-  zoneTag?: string | null;
-}
-export const RulesListResponseRuleset = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-    enabled: S.optional(S.NullOr(S.Boolean)),
-    zoneName: S.optional(S.NullOr(S.String).pipe(T.Body("zone_name"))),
-    zoneTag: S.optional(S.NullOr(S.String).pipe(T.Body("zone_tag"))),
-  }),
-).annotate({
-  identifier: "RulesListResponseRuleset",
-}) as any as S.Schema<RulesListResponseRuleset>;
+export type RulesListResponseRuleset = RulesBulkCreateResponseRuleset;
+export const RulesListResponseRuleset = RulesBulkCreateResponseRuleset;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ListRulesResponse {
   /** A list of rules. */
   rules?: RulesListResponseRulesList | null;
-  ruleset?: RulesListResponseRuleset | null;
+  ruleset?: RulesBulkCreateResponseRuleset | null;
 }
 export const ListRulesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rules: S.optional(S.NullOr(RulesListResponseRulesList)),
-    ruleset: S.optional(S.NullOr(RulesListResponseRuleset)),
+    ruleset: S.optional(S.NullOr(RulesBulkCreateResponseRuleset)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListRulesResponse",
@@ -773,25 +722,8 @@ export const SiteInfoListResultItemRulesList = /*@__PURE__*/ S.Array(
   SiteInfoListResultItemRulesItem,
 ) as any as S.Schema<SiteInfoListResultItemRulesList>;
 
-export interface SiteInfoListResultItemRuleset {
-  /** The Web Analytics ruleset identifier. */
-  id?: string | null;
-  /** Whether the ruleset is enabled. */
-  enabled?: boolean | null;
-  zoneName?: string | null;
-  /** The zone identifier. */
-  zoneTag?: string | null;
-}
-export const SiteInfoListResultItemRuleset = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-    enabled: S.optional(S.NullOr(S.Boolean)),
-    zoneName: S.optional(S.NullOr(S.String).pipe(T.Body("zone_name"))),
-    zoneTag: S.optional(S.NullOr(S.String).pipe(T.Body("zone_tag"))),
-  }),
-).annotate({
-  identifier: "SiteInfoListResultItemRuleset",
-}) as any as S.Schema<SiteInfoListResultItemRuleset>;
+export type SiteInfoListResultItemRuleset = RulesBulkCreateResponseRuleset;
+export const SiteInfoListResultItemRuleset = RulesBulkCreateResponseRuleset;
 
 export interface SiteInfoListResultItem {
   /** If enabled, the JavaScript snippet is automatically injected for orange-clouded sites. */
@@ -799,7 +731,7 @@ export interface SiteInfoListResultItem {
   created?: string | null;
   /** A list of rules. */
   rules?: SiteInfoListResultItemRulesList | null;
-  ruleset?: SiteInfoListResultItemRuleset | null;
+  ruleset?: RulesBulkCreateResponseRuleset | null;
   /** The Web Analytics site identifier. */
   siteTag?: string | null;
   /** The Web Analytics site token. */
@@ -814,7 +746,7 @@ export const SiteInfoListResultItem = /*@__PURE__*/ S.suspend(() =>
     autoInstall: S.optional(S.NullOr(S.Boolean).pipe(T.Body("auto_install"))),
     created: S.optional(S.NullOr(S.String)),
     rules: S.optional(S.NullOr(SiteInfoListResultItemRulesList)),
-    ruleset: S.optional(S.NullOr(SiteInfoListResultItemRuleset)),
+    ruleset: S.optional(S.NullOr(RulesBulkCreateResponseRuleset)),
     siteTag: S.optional(S.NullOr(S.String).pipe(T.Body("site_tag"))),
     siteToken: S.optional(S.NullOr(S.String).pipe(T.Body("site_token"))),
     snippet: S.optional(S.NullOr(S.String)),
@@ -996,25 +928,8 @@ export const SiteInfoUpdateResponseRulesList = /*@__PURE__*/ S.Array(
   SiteInfoUpdateResponseRulesItem,
 ) as any as S.Schema<SiteInfoUpdateResponseRulesList>;
 
-export interface SiteInfoUpdateResponseRuleset {
-  /** The Web Analytics ruleset identifier. */
-  id?: string | null;
-  /** Whether the ruleset is enabled. */
-  enabled?: boolean | null;
-  zoneName?: string | null;
-  /** The zone identifier. */
-  zoneTag?: string | null;
-}
-export const SiteInfoUpdateResponseRuleset = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-    enabled: S.optional(S.NullOr(S.Boolean)),
-    zoneName: S.optional(S.NullOr(S.String).pipe(T.Body("zone_name"))),
-    zoneTag: S.optional(S.NullOr(S.String).pipe(T.Body("zone_tag"))),
-  }),
-).annotate({
-  identifier: "SiteInfoUpdateResponseRuleset",
-}) as any as S.Schema<SiteInfoUpdateResponseRuleset>;
+export type SiteInfoUpdateResponseRuleset = RulesBulkCreateResponseRuleset;
+export const SiteInfoUpdateResponseRuleset = RulesBulkCreateResponseRuleset;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateSiteInfoResponse {
@@ -1023,7 +938,7 @@ export interface UpdateSiteInfoResponse {
   created?: string | null;
   /** A list of rules. */
   rules?: SiteInfoUpdateResponseRulesList | null;
-  ruleset?: SiteInfoUpdateResponseRuleset | null;
+  ruleset?: RulesBulkCreateResponseRuleset | null;
   /** The Web Analytics site identifier. */
   siteTag?: string | null;
   /** The Web Analytics site token. */
@@ -1038,7 +953,7 @@ export const UpdateSiteInfoResponse = /*@__PURE__*/ S.suspend(() =>
     autoInstall: S.optional(S.NullOr(S.Boolean).pipe(T.Body("auto_install"))),
     created: S.optional(S.NullOr(S.String)),
     rules: S.optional(S.NullOr(SiteInfoUpdateResponseRulesList)),
-    ruleset: S.optional(S.NullOr(SiteInfoUpdateResponseRuleset)),
+    ruleset: S.optional(S.NullOr(RulesBulkCreateResponseRuleset)),
     siteTag: S.optional(S.NullOr(S.String).pipe(T.Body("site_tag"))),
     siteToken: S.optional(S.NullOr(S.String).pipe(T.Body("site_token"))),
     snippet: S.optional(S.NullOr(S.String)),

@@ -541,30 +541,10 @@ export const ListAbuseReportsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAbuseReportsRequest",
 }) as any as S.Schema<ListAbuseReportsRequest>;
 
-export interface ListResponseReportsItemMitigationSummary {
-  /** How many of the reported URLs were confirmed as abusive. */
-  acceptedUrlCount: number;
-  /** How many mitigations are active. */
-  activeCount: number;
-  /** Whether the report has been forwarded to an external hosting provider. */
-  externalHostNotified: boolean;
-  /** How many mitigations are under review. */
-  inReviewCount: number;
-  /** How many mitigations are pending their effective date. */
-  pendingCount: number;
-}
-export const ListResponseReportsItemMitigationSummary = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      acceptedUrlCount: S.Number.pipe(T.Body("accepted_url_count")),
-      activeCount: S.Number.pipe(T.Body("active_count")),
-      externalHostNotified: S.Boolean.pipe(T.Body("external_host_notified")),
-      inReviewCount: S.Number.pipe(T.Body("in_review_count")),
-      pendingCount: S.Number.pipe(T.Body("pending_count")),
-    }),
-).annotate({
-  identifier: "ListResponseReportsItemMitigationSummary",
-}) as any as S.Schema<ListResponseReportsItemMitigationSummary>;
+export type ListResponseReportsItemMitigationSummary =
+  GetResponseMitigationSummary;
+export const ListResponseReportsItemMitigationSummary =
+  GetResponseMitigationSummary;
 
 export type ListResponseReportsItemStatus = "accepted" | "in_review";
 export const ListResponseReportsItemStatus = /*@__PURE__*/ S.String;
@@ -581,22 +561,8 @@ export type ListResponseReportsItemType =
   | "NETWORK";
 export const ListResponseReportsItemType = /*@__PURE__*/ S.String;
 
-export interface ListResponseReportsItemSubmitter {
-  company?: string | null;
-  email?: string | null;
-  name?: string | null;
-  telephone?: string | null;
-}
-export const ListResponseReportsItemSubmitter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    company: S.optional(S.NullOr(S.String)),
-    email: S.optional(S.NullOr(S.String)),
-    name: S.optional(S.NullOr(S.String)),
-    telephone: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "ListResponseReportsItemSubmitter",
-}) as any as S.Schema<ListResponseReportsItemSubmitter>;
+export type ListResponseReportsItemSubmitter = GetResponseSubmitter;
+export const ListResponseReportsItemSubmitter = GetResponseSubmitter;
 
 export type ListResponseReportsItemUrlsList = Array<string>;
 export const ListResponseReportsItemUrlsList = /*@__PURE__*/ S.Array(
@@ -611,7 +577,7 @@ export interface ListResponseReportsItem {
   /** Domain that relates to the report. */
   domain: string;
   /** A summary of the mitigations related to this report. */
-  mitigationSummary: ListResponseReportsItemMitigationSummary;
+  mitigationSummary: GetResponseMitigationSummary;
   /** An enum value that represents the status of an abuse record */
   status: ListResponseReportsItemStatus;
   /** The abuse report type */
@@ -621,7 +587,7 @@ export interface ListResponseReportsItem {
   /** Original work / Targeted brand in the alleged abuse. */
   originalWork?: string | null;
   /** Information about the submitter of the report. */
-  submitter?: ListResponseReportsItemSubmitter | null;
+  submitter?: GetResponseSubmitter | null;
   urls?: ListResponseReportsItemUrlsList | null;
 }
 export const ListResponseReportsItem = /*@__PURE__*/ S.suspend(() =>
@@ -629,14 +595,14 @@ export const ListResponseReportsItem = /*@__PURE__*/ S.suspend(() =>
     id: S.String,
     cdate: S.String,
     domain: S.String,
-    mitigationSummary: ListResponseReportsItemMitigationSummary.pipe(
+    mitigationSummary: GetResponseMitigationSummary.pipe(
       T.Body("mitigation_summary"),
     ),
     status: ListResponseReportsItemStatus,
     type: ListResponseReportsItemType,
     justification: S.optional(S.NullOr(S.String)),
     originalWork: S.optional(S.NullOr(S.String).pipe(T.Body("original_work"))),
-    submitter: S.optional(S.NullOr(ListResponseReportsItemSubmitter)),
+    submitter: S.optional(S.NullOr(GetResponseSubmitter)),
     urls: S.optional(S.NullOr(ListResponseReportsItemUrlsList)),
   }),
 ).annotate({

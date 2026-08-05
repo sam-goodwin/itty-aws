@@ -742,27 +742,10 @@ export const SinksCreateRequestConfigCloudflarePipelinesR2Table =
     identifier: "SinksCreateRequestConfigCloudflarePipelinesR2Table",
   }) as any as S.Schema<SinksCreateRequestConfigCloudflarePipelinesR2Table>;
 
-export interface SinksCreateRequestConfigCloudflarePipelinesR2DataCatalogTableRollingPolicy {
-  /** Files will be rolled after reaching this number of bytes */
-  fileSizeBytes?: number;
-  /** Number of seconds of inactivity to wait before rolling over to a new file */
-  inactivitySeconds?: number;
-  /** Number of seconds to wait before rolling over to a new file */
-  intervalSeconds?: number;
-}
+export type SinksCreateRequestConfigCloudflarePipelinesR2DataCatalogTableRollingPolicy =
+  SinksCreateRequestConfigCloudflarePipelinesR2TableRollingPolicy;
 export const SinksCreateRequestConfigCloudflarePipelinesR2DataCatalogTableRollingPolicy =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      fileSizeBytes: S.optional(S.Number.pipe(T.Body("file_size_bytes"))),
-      inactivitySeconds: S.optional(
-        S.Number.pipe(T.Body("inactivity_seconds")),
-      ),
-      intervalSeconds: S.optional(S.Number.pipe(T.Body("interval_seconds"))),
-    }),
-  ).annotate({
-    identifier:
-      "SinksCreateRequestConfigCloudflarePipelinesR2DataCatalogTableRollingPolicy",
-  }) as any as S.Schema<SinksCreateRequestConfigCloudflarePipelinesR2DataCatalogTableRollingPolicy>;
+  SinksCreateRequestConfigCloudflarePipelinesR2TableRollingPolicy;
 
 export interface SinksCreateRequestConfigCloudflarePipelinesR2DataCatalogTable {
   /** Authentication token */
@@ -776,7 +759,7 @@ export interface SinksCreateRequestConfigCloudflarePipelinesR2DataCatalogTable {
   /** Table namespace */
   namespace?: string;
   /** Rolling policy for file sinks (when & why to close a file and open a new one). */
-  rollingPolicy?: SinksCreateRequestConfigCloudflarePipelinesR2DataCatalogTableRollingPolicy;
+  rollingPolicy?: SinksCreateRequestConfigCloudflarePipelinesR2TableRollingPolicy;
 }
 export const SinksCreateRequestConfigCloudflarePipelinesR2DataCatalogTable =
   /*@__PURE__*/ S.suspend(() =>
@@ -787,7 +770,7 @@ export const SinksCreateRequestConfigCloudflarePipelinesR2DataCatalogTable =
       tableName: S.String.pipe(T.Body("table_name")),
       namespace: S.optional(S.String),
       rollingPolicy: S.optional(
-        SinksCreateRequestConfigCloudflarePipelinesR2DataCatalogTableRollingPolicy.pipe(
+        SinksCreateRequestConfigCloudflarePipelinesR2TableRollingPolicy.pipe(
           T.Body("rolling_policy"),
         ),
       ),
@@ -1034,22 +1017,10 @@ export const CreateSinkRequest = /*@__PURE__*/ S.suspend(() =>
 export type SinksCreateResponseType = "r2" | "r2_data_catalog";
 export const SinksCreateResponseType = /*@__PURE__*/ S.String;
 
-export interface SinksCreateResponseConfigCloudflarePipelinesR2TableCredentials {
-  /** Cloudflare Account ID for the bucket */
-  accessKeyId: string;
-  /** Cloudflare Account ID for the bucket */
-  secretAccessKey: string;
-}
+export type SinksCreateResponseConfigCloudflarePipelinesR2TableCredentials =
+  SinksCreateRequestConfigCloudflarePipelinesR2TableCredentials;
 export const SinksCreateResponseConfigCloudflarePipelinesR2TableCredentials =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      accessKeyId: S.String.pipe(T.Body("access_key_id")),
-      secretAccessKey: S.String.pipe(T.Body("secret_access_key")),
-    }),
-  ).annotate({
-    identifier:
-      "SinksCreateResponseConfigCloudflarePipelinesR2TableCredentials",
-  }) as any as S.Schema<SinksCreateResponseConfigCloudflarePipelinesR2TableCredentials>;
+  SinksCreateRequestConfigCloudflarePipelinesR2TableCredentials;
 
 export type SinksCreateResponseConfigCloudflarePipelinesR2TableFileNamingStrategy =
   "serial" | "uuid" | "uuid_v7" | "ulid";
@@ -1124,7 +1095,7 @@ export interface SinksCreateResponseConfigCloudflarePipelinesR2Table {
   accountId: string;
   /** R2 Bucket to write to */
   bucket: string;
-  credentials: SinksCreateResponseConfigCloudflarePipelinesR2TableCredentials;
+  credentials: SinksCreateRequestConfigCloudflarePipelinesR2TableCredentials;
   /** Controls filename prefix/suffix and strategy. */
   fileNaming?: SinksCreateResponseConfigCloudflarePipelinesR2TableFileNaming | null;
   /** Jurisdiction this bucket is hosted in */
@@ -1142,7 +1113,7 @@ export const SinksCreateResponseConfigCloudflarePipelinesR2Table =
       accountId: S.String.pipe(T.Body("account_id")),
       bucket: S.String,
       credentials:
-        SinksCreateResponseConfigCloudflarePipelinesR2TableCredentials,
+        SinksCreateRequestConfigCloudflarePipelinesR2TableCredentials,
       fileNaming: S.optional(
         S.NullOr(
           SinksCreateResponseConfigCloudflarePipelinesR2TableFileNaming,
@@ -1165,31 +1136,10 @@ export const SinksCreateResponseConfigCloudflarePipelinesR2Table =
     identifier: "SinksCreateResponseConfigCloudflarePipelinesR2Table",
   }) as any as S.Schema<SinksCreateResponseConfigCloudflarePipelinesR2Table>;
 
-export interface SinksCreateResponseConfigCloudflarePipelinesR2DataCatalogTableRollingPolicy {
-  /** Files will be rolled after reaching this number of bytes */
-  fileSizeBytes?: number | null;
-  /** Number of seconds of inactivity to wait before rolling over to a new file */
-  inactivitySeconds?: number | null;
-  /** Number of seconds to wait before rolling over to a new file */
-  intervalSeconds?: number | null;
-}
+export type SinksCreateResponseConfigCloudflarePipelinesR2DataCatalogTableRollingPolicy =
+  SinksCreateResponseConfigCloudflarePipelinesR2TableRollingPolicy;
 export const SinksCreateResponseConfigCloudflarePipelinesR2DataCatalogTableRollingPolicy =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      fileSizeBytes: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("file_size_bytes")),
-      ),
-      inactivitySeconds: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("inactivity_seconds")),
-      ),
-      intervalSeconds: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("interval_seconds")),
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "SinksCreateResponseConfigCloudflarePipelinesR2DataCatalogTableRollingPolicy",
-  }) as any as S.Schema<SinksCreateResponseConfigCloudflarePipelinesR2DataCatalogTableRollingPolicy>;
+  SinksCreateResponseConfigCloudflarePipelinesR2TableRollingPolicy;
 
 export interface SinksCreateResponseConfigCloudflarePipelinesR2DataCatalogTable {
   /** Authentication token */
@@ -1203,7 +1153,7 @@ export interface SinksCreateResponseConfigCloudflarePipelinesR2DataCatalogTable 
   /** Table namespace */
   namespace?: string | null;
   /** Rolling policy for file sinks (when & why to close a file and open a new one). */
-  rollingPolicy?: SinksCreateResponseConfigCloudflarePipelinesR2DataCatalogTableRollingPolicy | null;
+  rollingPolicy?: SinksCreateResponseConfigCloudflarePipelinesR2TableRollingPolicy | null;
 }
 export const SinksCreateResponseConfigCloudflarePipelinesR2DataCatalogTable =
   /*@__PURE__*/ S.suspend(() =>
@@ -1215,7 +1165,7 @@ export const SinksCreateResponseConfigCloudflarePipelinesR2DataCatalogTable =
       namespace: S.optional(S.NullOr(S.String)),
       rollingPolicy: S.optional(
         S.NullOr(
-          SinksCreateResponseConfigCloudflarePipelinesR2DataCatalogTableRollingPolicy,
+          SinksCreateResponseConfigCloudflarePipelinesR2TableRollingPolicy,
         ).pipe(T.Body("rolling_policy")),
       ),
     }),
@@ -1763,17 +1713,10 @@ export const StreamsCreateResponseHttp = /*@__PURE__*/ S.suspend(() =>
   identifier: "StreamsCreateResponseHttp",
 }) as any as S.Schema<StreamsCreateResponseHttp>;
 
-export interface StreamsCreateResponseWorkerBinding {
-  /** Indicates that the worker binding is enabled. */
-  enabled: boolean;
-}
-export const StreamsCreateResponseWorkerBinding = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.Boolean,
-  }),
-).annotate({
-  identifier: "StreamsCreateResponseWorkerBinding",
-}) as any as S.Schema<StreamsCreateResponseWorkerBinding>;
+export type StreamsCreateResponseWorkerBinding =
+  StreamsCreateRequestWorkerBinding;
+export const StreamsCreateResponseWorkerBinding =
+  StreamsCreateRequestWorkerBinding;
 
 export type StreamsCreateResponseFormatJsonType = "json";
 export const StreamsCreateResponseFormatJsonType = /*@__PURE__*/ S.String;
@@ -1973,7 +1916,7 @@ export interface CreateStreamResponse {
   name: string;
   /** Indicates the current version of this stream. */
   version: number;
-  workerBinding: StreamsCreateResponseWorkerBinding;
+  workerBinding: StreamsCreateRequestWorkerBinding;
   /** Indicates the endpoint URL of this stream. */
   endpoint?: string | null;
   format?: StreamsCreateResponseFormat | null;
@@ -1987,7 +1930,7 @@ export const CreateStreamResponse = /*@__PURE__*/ S.suspend(() =>
     modifiedAt: S.String.pipe(T.Body("modified_at")),
     name: S.String,
     version: S.Number,
-    workerBinding: StreamsCreateResponseWorkerBinding.pipe(
+    workerBinding: StreamsCreateRequestWorkerBinding.pipe(
       T.Body("worker_binding"),
     ),
     endpoint: S.optional(S.NullOr(S.String)),
@@ -2199,23 +2142,8 @@ export const GetPipelineRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetPipelineRequest",
 }) as any as S.Schema<GetPipelineRequest>;
 
-export interface GetResponseDestinationBatch {
-  /** Specifies rough maximum size of files. */
-  maxBytes: number;
-  /** Specifies duration to wait to aggregate batches files. */
-  maxDurationS: number;
-  /** Specifies rough maximum number of rows per file. */
-  maxRows: number;
-}
-export const GetResponseDestinationBatch = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    maxBytes: S.Number.pipe(T.Body("max_bytes")),
-    maxDurationS: S.Number.pipe(T.Body("max_duration_s")),
-    maxRows: S.Number.pipe(T.Body("max_rows")),
-  }),
-).annotate({
-  identifier: "GetResponseDestinationBatch",
-}) as any as S.Schema<GetResponseDestinationBatch>;
+export type GetResponseDestinationBatch = CreateResponseDestinationBatch;
+export const GetResponseDestinationBatch = CreateResponseDestinationBatch;
 
 export type GetResponseDestinationCompressionType = "none" | "gzip" | "deflate";
 export const GetResponseDestinationCompressionType = /*@__PURE__*/ S.String;
@@ -2235,45 +2163,27 @@ export const GetResponseDestinationCompression = /*@__PURE__*/ S.suspend(() =>
 export type GetResponseDestinationFormat = "json";
 export const GetResponseDestinationFormat = /*@__PURE__*/ S.String;
 
-export interface GetResponseDestinationPath {
-  /** Specifies the R2 Bucket to store files. */
-  bucket: string;
-  /** Specifies the name pattern to for individual data files. */
-  filename?: string | null;
-  /** Specifies the name pattern for directory. */
-  filepath?: string | null;
-  /** Specifies the base directory within the bucket. */
-  prefix?: string | null;
-}
-export const GetResponseDestinationPath = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    bucket: S.String,
-    filename: S.optional(S.NullOr(S.String)),
-    filepath: S.optional(S.NullOr(S.String)),
-    prefix: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "GetResponseDestinationPath",
-}) as any as S.Schema<GetResponseDestinationPath>;
+export type GetResponseDestinationPath = CreateResponseDestinationPath;
+export const GetResponseDestinationPath = CreateResponseDestinationPath;
 
 export type GetResponseDestinationType = "r2";
 export const GetResponseDestinationType = /*@__PURE__*/ S.String;
 
 export interface GetResponseDestination {
-  batch: GetResponseDestinationBatch;
+  batch: CreateResponseDestinationBatch;
   compression: GetResponseDestinationCompression;
   /** Specifies the format of data to deliver. */
   format: GetResponseDestinationFormat;
-  path: GetResponseDestinationPath;
+  path: CreateResponseDestinationPath;
   /** Specifies the type of destination. */
   type: GetResponseDestinationType;
 }
 export const GetResponseDestination = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    batch: GetResponseDestinationBatch,
+    batch: CreateResponseDestinationBatch,
     compression: GetResponseDestinationCompression,
     format: GetResponseDestinationFormat,
-    path: GetResponseDestinationPath,
+    path: CreateResponseDestinationPath,
     type: GetResponseDestinationType,
   }),
 ).annotate({
@@ -2452,45 +2362,15 @@ export const SinksGetResponseConfigCloudflarePipelinesR2TablePublicFileNaming =
       "SinksGetResponseConfigCloudflarePipelinesR2TablePublicFileNaming",
   }) as any as S.Schema<SinksGetResponseConfigCloudflarePipelinesR2TablePublicFileNaming>;
 
-export interface SinksGetResponseConfigCloudflarePipelinesR2TablePublicPartitioning {
-  /** The pattern of the date string */
-  timePattern?: string | null;
-}
+export type SinksGetResponseConfigCloudflarePipelinesR2TablePublicPartitioning =
+  SinksCreateResponseConfigCloudflarePipelinesR2TablePartitioning;
 export const SinksGetResponseConfigCloudflarePipelinesR2TablePublicPartitioning =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      timePattern: S.optional(S.NullOr(S.String).pipe(T.Body("time_pattern"))),
-    }),
-  ).annotate({
-    identifier:
-      "SinksGetResponseConfigCloudflarePipelinesR2TablePublicPartitioning",
-  }) as any as S.Schema<SinksGetResponseConfigCloudflarePipelinesR2TablePublicPartitioning>;
+  SinksCreateResponseConfigCloudflarePipelinesR2TablePartitioning;
 
-export interface SinksGetResponseConfigCloudflarePipelinesR2TablePublicRollingPolicy {
-  /** Files will be rolled after reaching this number of bytes */
-  fileSizeBytes?: number | null;
-  /** Number of seconds of inactivity to wait before rolling over to a new file */
-  inactivitySeconds?: number | null;
-  /** Number of seconds to wait before rolling over to a new file */
-  intervalSeconds?: number | null;
-}
+export type SinksGetResponseConfigCloudflarePipelinesR2TablePublicRollingPolicy =
+  SinksCreateResponseConfigCloudflarePipelinesR2TableRollingPolicy;
 export const SinksGetResponseConfigCloudflarePipelinesR2TablePublicRollingPolicy =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      fileSizeBytes: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("file_size_bytes")),
-      ),
-      inactivitySeconds: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("inactivity_seconds")),
-      ),
-      intervalSeconds: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("interval_seconds")),
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "SinksGetResponseConfigCloudflarePipelinesR2TablePublicRollingPolicy",
-  }) as any as S.Schema<SinksGetResponseConfigCloudflarePipelinesR2TablePublicRollingPolicy>;
+  SinksCreateResponseConfigCloudflarePipelinesR2TableRollingPolicy;
 
 export interface SinksGetResponseConfigCloudflarePipelinesR2TablePublic {
   /** Cloudflare Account ID for the bucket */
@@ -2502,11 +2382,11 @@ export interface SinksGetResponseConfigCloudflarePipelinesR2TablePublic {
   /** Jurisdiction this bucket is hosted in */
   jurisdiction?: string | null;
   /** Data-layout partitioning for sinks. */
-  partitioning?: SinksGetResponseConfigCloudflarePipelinesR2TablePublicPartitioning | null;
+  partitioning?: SinksCreateResponseConfigCloudflarePipelinesR2TablePartitioning | null;
   /** Subpath within the bucket to write to */
   path?: string | null;
   /** Rolling policy for file sinks (when & why to close a file and open a new one). */
-  rollingPolicy?: SinksGetResponseConfigCloudflarePipelinesR2TablePublicRollingPolicy | null;
+  rollingPolicy?: SinksCreateResponseConfigCloudflarePipelinesR2TableRollingPolicy | null;
 }
 export const SinksGetResponseConfigCloudflarePipelinesR2TablePublic =
   /*@__PURE__*/ S.suspend(() =>
@@ -2521,13 +2401,13 @@ export const SinksGetResponseConfigCloudflarePipelinesR2TablePublic =
       jurisdiction: S.optional(S.NullOr(S.String)),
       partitioning: S.optional(
         S.NullOr(
-          SinksGetResponseConfigCloudflarePipelinesR2TablePublicPartitioning,
+          SinksCreateResponseConfigCloudflarePipelinesR2TablePartitioning,
         ),
       ),
       path: S.optional(S.NullOr(S.String)),
       rollingPolicy: S.optional(
         S.NullOr(
-          SinksGetResponseConfigCloudflarePipelinesR2TablePublicRollingPolicy,
+          SinksCreateResponseConfigCloudflarePipelinesR2TableRollingPolicy,
         ).pipe(T.Body("rolling_policy")),
       ),
     }),
@@ -2535,31 +2415,10 @@ export const SinksGetResponseConfigCloudflarePipelinesR2TablePublic =
     identifier: "SinksGetResponseConfigCloudflarePipelinesR2TablePublic",
   }) as any as S.Schema<SinksGetResponseConfigCloudflarePipelinesR2TablePublic>;
 
-export interface SinksGetResponseConfigCloudflarePipelinesR2DataCatalogTablePublicRollingPolicy {
-  /** Files will be rolled after reaching this number of bytes */
-  fileSizeBytes?: number | null;
-  /** Number of seconds of inactivity to wait before rolling over to a new file */
-  inactivitySeconds?: number | null;
-  /** Number of seconds to wait before rolling over to a new file */
-  intervalSeconds?: number | null;
-}
+export type SinksGetResponseConfigCloudflarePipelinesR2DataCatalogTablePublicRollingPolicy =
+  SinksCreateResponseConfigCloudflarePipelinesR2TableRollingPolicy;
 export const SinksGetResponseConfigCloudflarePipelinesR2DataCatalogTablePublicRollingPolicy =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      fileSizeBytes: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("file_size_bytes")),
-      ),
-      inactivitySeconds: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("inactivity_seconds")),
-      ),
-      intervalSeconds: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("interval_seconds")),
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "SinksGetResponseConfigCloudflarePipelinesR2DataCatalogTablePublicRollingPolicy",
-  }) as any as S.Schema<SinksGetResponseConfigCloudflarePipelinesR2DataCatalogTablePublicRollingPolicy>;
+  SinksCreateResponseConfigCloudflarePipelinesR2TableRollingPolicy;
 
 export interface SinksGetResponseConfigCloudflarePipelinesR2DataCatalogTablePublic {
   /** Cloudflare Account ID */
@@ -2571,7 +2430,7 @@ export interface SinksGetResponseConfigCloudflarePipelinesR2DataCatalogTablePubl
   /** Table namespace */
   namespace?: string | null;
   /** Rolling policy for file sinks (when & why to close a file and open a new one). */
-  rollingPolicy?: SinksGetResponseConfigCloudflarePipelinesR2DataCatalogTablePublicRollingPolicy | null;
+  rollingPolicy?: SinksCreateResponseConfigCloudflarePipelinesR2TableRollingPolicy | null;
 }
 export const SinksGetResponseConfigCloudflarePipelinesR2DataCatalogTablePublic =
   /*@__PURE__*/ S.suspend(() =>
@@ -2582,7 +2441,7 @@ export const SinksGetResponseConfigCloudflarePipelinesR2DataCatalogTablePublic =
       namespace: S.optional(S.NullOr(S.String)),
       rollingPolicy: S.optional(
         S.NullOr(
-          SinksGetResponseConfigCloudflarePipelinesR2DataCatalogTablePublicRollingPolicy,
+          SinksCreateResponseConfigCloudflarePipelinesR2TableRollingPolicy,
         ).pipe(T.Body("rolling_policy")),
       ),
     }),
@@ -2875,17 +2734,9 @@ export const StreamsGetResponseHttp = /*@__PURE__*/ S.suspend(() =>
   identifier: "StreamsGetResponseHttp",
 }) as any as S.Schema<StreamsGetResponseHttp>;
 
-export interface StreamsGetResponseWorkerBinding {
-  /** Indicates that the worker binding is enabled. */
-  enabled: boolean;
-}
-export const StreamsGetResponseWorkerBinding = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.Boolean,
-  }),
-).annotate({
-  identifier: "StreamsGetResponseWorkerBinding",
-}) as any as S.Schema<StreamsGetResponseWorkerBinding>;
+export type StreamsGetResponseWorkerBinding = StreamsCreateRequestWorkerBinding;
+export const StreamsGetResponseWorkerBinding =
+  StreamsCreateRequestWorkerBinding;
 
 export type StreamsGetResponseFormatJsonType = "json";
 export const StreamsGetResponseFormatJsonType = /*@__PURE__*/ S.String;
@@ -3083,7 +2934,7 @@ export interface GetStreamResponse {
   name: string;
   /** Indicates the current version of this stream. */
   version: number;
-  workerBinding: StreamsGetResponseWorkerBinding;
+  workerBinding: StreamsCreateRequestWorkerBinding;
   /** Indicates the endpoint URL of this stream. */
   endpoint?: string | null;
   format?: StreamsGetResponseFormat | null;
@@ -3097,7 +2948,7 @@ export const GetStreamResponse = /*@__PURE__*/ S.suspend(() =>
     modifiedAt: S.String.pipe(T.Body("modified_at")),
     name: S.String,
     version: S.Number,
-    workerBinding: StreamsGetResponseWorkerBinding.pipe(
+    workerBinding: StreamsCreateRequestWorkerBinding.pipe(
       T.Body("worker_binding"),
     ),
     endpoint: S.optional(S.NullOr(S.String)),
@@ -3226,24 +3077,10 @@ export const ListPipelinesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListPipelinesRequest",
 }) as any as S.Schema<ListPipelinesRequest>;
 
-export interface ListResponseResultsItemDestinationBatch {
-  /** Specifies rough maximum size of files. */
-  maxBytes: number;
-  /** Specifies duration to wait to aggregate batches files. */
-  maxDurationS: number;
-  /** Specifies rough maximum number of rows per file. */
-  maxRows: number;
-}
-export const ListResponseResultsItemDestinationBatch = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      maxBytes: S.Number.pipe(T.Body("max_bytes")),
-      maxDurationS: S.Number.pipe(T.Body("max_duration_s")),
-      maxRows: S.Number.pipe(T.Body("max_rows")),
-    }),
-).annotate({
-  identifier: "ListResponseResultsItemDestinationBatch",
-}) as any as S.Schema<ListResponseResultsItemDestinationBatch>;
+export type ListResponseResultsItemDestinationBatch =
+  CreateResponseDestinationBatch;
+export const ListResponseResultsItemDestinationBatch =
+  CreateResponseDestinationBatch;
 
 export type ListResponseResultsItemDestinationCompressionType =
   | "none"
@@ -3268,46 +3105,29 @@ export const ListResponseResultsItemDestinationCompression =
 export type ListResponseResultsItemDestinationFormat = "json";
 export const ListResponseResultsItemDestinationFormat = /*@__PURE__*/ S.String;
 
-export interface ListResponseResultsItemDestinationPath {
-  /** Specifies the R2 Bucket to store files. */
-  bucket: string;
-  /** Specifies the name pattern to for individual data files. */
-  filename?: string | null;
-  /** Specifies the name pattern for directory. */
-  filepath?: string | null;
-  /** Specifies the base directory within the bucket. */
-  prefix?: string | null;
-}
-export const ListResponseResultsItemDestinationPath = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      bucket: S.String,
-      filename: S.optional(S.NullOr(S.String)),
-      filepath: S.optional(S.NullOr(S.String)),
-      prefix: S.optional(S.NullOr(S.String)),
-    }),
-).annotate({
-  identifier: "ListResponseResultsItemDestinationPath",
-}) as any as S.Schema<ListResponseResultsItemDestinationPath>;
+export type ListResponseResultsItemDestinationPath =
+  CreateResponseDestinationPath;
+export const ListResponseResultsItemDestinationPath =
+  CreateResponseDestinationPath;
 
 export type ListResponseResultsItemDestinationType = "r2";
 export const ListResponseResultsItemDestinationType = /*@__PURE__*/ S.String;
 
 export interface ListResponseResultsItemDestination {
-  batch: ListResponseResultsItemDestinationBatch;
+  batch: CreateResponseDestinationBatch;
   compression: ListResponseResultsItemDestinationCompression;
   /** Specifies the format of data to deliver. */
   format: ListResponseResultsItemDestinationFormat;
-  path: ListResponseResultsItemDestinationPath;
+  path: CreateResponseDestinationPath;
   /** Specifies the type of destination. */
   type: ListResponseResultsItemDestinationType;
 }
 export const ListResponseResultsItemDestination = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    batch: ListResponseResultsItemDestinationBatch,
+    batch: CreateResponseDestinationBatch,
     compression: ListResponseResultsItemDestinationCompression,
     format: ListResponseResultsItemDestinationFormat,
-    path: ListResponseResultsItemDestinationPath,
+    path: CreateResponseDestinationPath,
     type: ListResponseResultsItemDestinationType,
   }),
 ).annotate({
@@ -3514,45 +3334,15 @@ export const SinksListResultItemConfigCloudflarePipelinesR2TablePublicFileNaming
       "SinksListResultItemConfigCloudflarePipelinesR2TablePublicFileNaming",
   }) as any as S.Schema<SinksListResultItemConfigCloudflarePipelinesR2TablePublicFileNaming>;
 
-export interface SinksListResultItemConfigCloudflarePipelinesR2TablePublicPartitioning {
-  /** The pattern of the date string */
-  timePattern?: string | null;
-}
+export type SinksListResultItemConfigCloudflarePipelinesR2TablePublicPartitioning =
+  SinksCreateResponseConfigCloudflarePipelinesR2TablePartitioning;
 export const SinksListResultItemConfigCloudflarePipelinesR2TablePublicPartitioning =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      timePattern: S.optional(S.NullOr(S.String).pipe(T.Body("time_pattern"))),
-    }),
-  ).annotate({
-    identifier:
-      "SinksListResultItemConfigCloudflarePipelinesR2TablePublicPartitioning",
-  }) as any as S.Schema<SinksListResultItemConfigCloudflarePipelinesR2TablePublicPartitioning>;
+  SinksCreateResponseConfigCloudflarePipelinesR2TablePartitioning;
 
-export interface SinksListResultItemConfigCloudflarePipelinesR2TablePublicRollingPolicy {
-  /** Files will be rolled after reaching this number of bytes */
-  fileSizeBytes?: number | null;
-  /** Number of seconds of inactivity to wait before rolling over to a new file */
-  inactivitySeconds?: number | null;
-  /** Number of seconds to wait before rolling over to a new file */
-  intervalSeconds?: number | null;
-}
+export type SinksListResultItemConfigCloudflarePipelinesR2TablePublicRollingPolicy =
+  SinksCreateResponseConfigCloudflarePipelinesR2TableRollingPolicy;
 export const SinksListResultItemConfigCloudflarePipelinesR2TablePublicRollingPolicy =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      fileSizeBytes: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("file_size_bytes")),
-      ),
-      inactivitySeconds: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("inactivity_seconds")),
-      ),
-      intervalSeconds: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("interval_seconds")),
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "SinksListResultItemConfigCloudflarePipelinesR2TablePublicRollingPolicy",
-  }) as any as S.Schema<SinksListResultItemConfigCloudflarePipelinesR2TablePublicRollingPolicy>;
+  SinksCreateResponseConfigCloudflarePipelinesR2TableRollingPolicy;
 
 export interface SinksListResultItemConfigCloudflarePipelinesR2TablePublic {
   /** Cloudflare Account ID for the bucket */
@@ -3564,11 +3354,11 @@ export interface SinksListResultItemConfigCloudflarePipelinesR2TablePublic {
   /** Jurisdiction this bucket is hosted in */
   jurisdiction?: string | null;
   /** Data-layout partitioning for sinks. */
-  partitioning?: SinksListResultItemConfigCloudflarePipelinesR2TablePublicPartitioning | null;
+  partitioning?: SinksCreateResponseConfigCloudflarePipelinesR2TablePartitioning | null;
   /** Subpath within the bucket to write to */
   path?: string | null;
   /** Rolling policy for file sinks (when & why to close a file and open a new one). */
-  rollingPolicy?: SinksListResultItemConfigCloudflarePipelinesR2TablePublicRollingPolicy | null;
+  rollingPolicy?: SinksCreateResponseConfigCloudflarePipelinesR2TableRollingPolicy | null;
 }
 export const SinksListResultItemConfigCloudflarePipelinesR2TablePublic =
   /*@__PURE__*/ S.suspend(() =>
@@ -3583,13 +3373,13 @@ export const SinksListResultItemConfigCloudflarePipelinesR2TablePublic =
       jurisdiction: S.optional(S.NullOr(S.String)),
       partitioning: S.optional(
         S.NullOr(
-          SinksListResultItemConfigCloudflarePipelinesR2TablePublicPartitioning,
+          SinksCreateResponseConfigCloudflarePipelinesR2TablePartitioning,
         ),
       ),
       path: S.optional(S.NullOr(S.String)),
       rollingPolicy: S.optional(
         S.NullOr(
-          SinksListResultItemConfigCloudflarePipelinesR2TablePublicRollingPolicy,
+          SinksCreateResponseConfigCloudflarePipelinesR2TableRollingPolicy,
         ).pipe(T.Body("rolling_policy")),
       ),
     }),
@@ -3597,65 +3387,19 @@ export const SinksListResultItemConfigCloudflarePipelinesR2TablePublic =
     identifier: "SinksListResultItemConfigCloudflarePipelinesR2TablePublic",
   }) as any as S.Schema<SinksListResultItemConfigCloudflarePipelinesR2TablePublic>;
 
-export interface SinksListResultItemConfigCloudflarePipelinesR2DataCatalogTablePublicRollingPolicy {
-  /** Files will be rolled after reaching this number of bytes */
-  fileSizeBytes?: number | null;
-  /** Number of seconds of inactivity to wait before rolling over to a new file */
-  inactivitySeconds?: number | null;
-  /** Number of seconds to wait before rolling over to a new file */
-  intervalSeconds?: number | null;
-}
+export type SinksListResultItemConfigCloudflarePipelinesR2DataCatalogTablePublicRollingPolicy =
+  SinksCreateResponseConfigCloudflarePipelinesR2TableRollingPolicy;
 export const SinksListResultItemConfigCloudflarePipelinesR2DataCatalogTablePublicRollingPolicy =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      fileSizeBytes: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("file_size_bytes")),
-      ),
-      inactivitySeconds: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("inactivity_seconds")),
-      ),
-      intervalSeconds: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("interval_seconds")),
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "SinksListResultItemConfigCloudflarePipelinesR2DataCatalogTablePublicRollingPolicy",
-  }) as any as S.Schema<SinksListResultItemConfigCloudflarePipelinesR2DataCatalogTablePublicRollingPolicy>;
+  SinksCreateResponseConfigCloudflarePipelinesR2TableRollingPolicy;
 
-export interface SinksListResultItemConfigCloudflarePipelinesR2DataCatalogTablePublic {
-  /** Cloudflare Account ID */
-  accountId: string;
-  /** The R2 Bucket that hosts this catalog */
-  bucket: string;
-  /** Table name */
-  tableName: string;
-  /** Table namespace */
-  namespace?: string | null;
-  /** Rolling policy for file sinks (when & why to close a file and open a new one). */
-  rollingPolicy?: SinksListResultItemConfigCloudflarePipelinesR2DataCatalogTablePublicRollingPolicy | null;
-}
+export type SinksListResultItemConfigCloudflarePipelinesR2DataCatalogTablePublic =
+  SinksGetResponseConfigCloudflarePipelinesR2DataCatalogTablePublic;
 export const SinksListResultItemConfigCloudflarePipelinesR2DataCatalogTablePublic =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      accountId: S.String.pipe(T.Body("account_id")),
-      bucket: S.String,
-      tableName: S.String.pipe(T.Body("table_name")),
-      namespace: S.optional(S.NullOr(S.String)),
-      rollingPolicy: S.optional(
-        S.NullOr(
-          SinksListResultItemConfigCloudflarePipelinesR2DataCatalogTablePublicRollingPolicy,
-        ).pipe(T.Body("rolling_policy")),
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "SinksListResultItemConfigCloudflarePipelinesR2DataCatalogTablePublic",
-  }) as any as S.Schema<SinksListResultItemConfigCloudflarePipelinesR2DataCatalogTablePublic>;
+  SinksGetResponseConfigCloudflarePipelinesR2DataCatalogTablePublic;
 
 export type SinksListResultItemConfig =
   | SinksListResultItemConfigCloudflarePipelinesR2TablePublic
-  | SinksListResultItemConfigCloudflarePipelinesR2DataCatalogTablePublic;
+  | SinksGetResponseConfigCloudflarePipelinesR2DataCatalogTablePublic;
 export const SinksListResultItemConfig = /*@__PURE__*/ S.Unknown.pipe(
   T.UnionCases([
     [
@@ -3970,17 +3714,10 @@ export const StreamsListResultItemHttp = /*@__PURE__*/ S.suspend(() =>
   identifier: "StreamsListResultItemHttp",
 }) as any as S.Schema<StreamsListResultItemHttp>;
 
-export interface StreamsListResultItemWorkerBinding {
-  /** Indicates that the worker binding is enabled. */
-  enabled: boolean;
-}
-export const StreamsListResultItemWorkerBinding = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.Boolean,
-  }),
-).annotate({
-  identifier: "StreamsListResultItemWorkerBinding",
-}) as any as S.Schema<StreamsListResultItemWorkerBinding>;
+export type StreamsListResultItemWorkerBinding =
+  StreamsCreateRequestWorkerBinding;
+export const StreamsListResultItemWorkerBinding =
+  StreamsCreateRequestWorkerBinding;
 
 export type StreamsListResultItemFormatJsonType = "json";
 export const StreamsListResultItemFormatJsonType = /*@__PURE__*/ S.String;
@@ -4179,7 +3916,7 @@ export interface StreamsListResultItem {
   name: string;
   /** Indicates the current version of this stream. */
   version: number;
-  workerBinding: StreamsListResultItemWorkerBinding;
+  workerBinding: StreamsCreateRequestWorkerBinding;
   /** Indicates the endpoint URL of this stream. */
   endpoint?: string | null;
   format?: StreamsListResultItemFormat | null;
@@ -4193,7 +3930,7 @@ export const StreamsListResultItem = /*@__PURE__*/ S.suspend(() =>
     modifiedAt: S.String.pipe(T.Body("modified_at")),
     name: S.String,
     version: S.Number,
-    workerBinding: StreamsListResultItemWorkerBinding.pipe(
+    workerBinding: StreamsCreateRequestWorkerBinding.pipe(
       T.Body("worker_binding"),
     ),
     endpoint: S.optional(S.NullOr(S.String)),
@@ -4330,17 +4067,10 @@ export const StreamsUpdateRequestHttp = /*@__PURE__*/ S.suspend(() =>
   identifier: "StreamsUpdateRequestHttp",
 }) as any as S.Schema<StreamsUpdateRequestHttp>;
 
-export interface StreamsUpdateRequestWorkerBinding {
-  /** Indicates that the worker binding is enabled. */
-  enabled: boolean;
-}
-export const StreamsUpdateRequestWorkerBinding = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.Boolean,
-  }),
-).annotate({
-  identifier: "StreamsUpdateRequestWorkerBinding",
-}) as any as S.Schema<StreamsUpdateRequestWorkerBinding>;
+export type StreamsUpdateRequestWorkerBinding =
+  StreamsCreateRequestWorkerBinding;
+export const StreamsUpdateRequestWorkerBinding =
+  StreamsCreateRequestWorkerBinding;
 
 export interface PatchStreamRequest {
   /** Specifies the public ID of the account. */
@@ -4348,7 +4078,7 @@ export interface PatchStreamRequest {
   /** Specifies the public ID of the stream. */
   streamId: string;
   http?: StreamsUpdateRequestHttp;
-  workerBinding?: StreamsUpdateRequestWorkerBinding;
+  workerBinding?: StreamsCreateRequestWorkerBinding;
 }
 export const PatchStreamRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4356,7 +4086,7 @@ export const PatchStreamRequest = /*@__PURE__*/ S.suspend(() =>
     streamId: S.String.pipe(T.Label("stream_id")),
     http: S.optional(StreamsUpdateRequestHttp),
     workerBinding: S.optional(
-      StreamsUpdateRequestWorkerBinding.pipe(T.Body("worker_binding")),
+      StreamsCreateRequestWorkerBinding.pipe(T.Body("worker_binding")),
     ),
   })
     .pipe(
@@ -4405,17 +4135,10 @@ export const StreamsUpdateResponseHttp = /*@__PURE__*/ S.suspend(() =>
   identifier: "StreamsUpdateResponseHttp",
 }) as any as S.Schema<StreamsUpdateResponseHttp>;
 
-export interface StreamsUpdateResponseWorkerBinding {
-  /** Indicates that the worker binding is enabled. */
-  enabled: boolean;
-}
-export const StreamsUpdateResponseWorkerBinding = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.Boolean,
-  }),
-).annotate({
-  identifier: "StreamsUpdateResponseWorkerBinding",
-}) as any as S.Schema<StreamsUpdateResponseWorkerBinding>;
+export type StreamsUpdateResponseWorkerBinding =
+  StreamsCreateRequestWorkerBinding;
+export const StreamsUpdateResponseWorkerBinding =
+  StreamsCreateRequestWorkerBinding;
 
 export type StreamsUpdateResponseFormatJsonType = "json";
 export const StreamsUpdateResponseFormatJsonType = /*@__PURE__*/ S.String;
@@ -4510,7 +4233,7 @@ export interface PatchStreamResponse {
   name: string;
   /** Indicates the current version of this stream. */
   version: number;
-  workerBinding: StreamsUpdateResponseWorkerBinding;
+  workerBinding: StreamsCreateRequestWorkerBinding;
   /** Indicates the endpoint URL of this stream. */
   endpoint?: string | null;
   format?: StreamsUpdateResponseFormat | null;
@@ -4523,7 +4246,7 @@ export const PatchStreamResponse = /*@__PURE__*/ S.suspend(() =>
     modifiedAt: S.String.pipe(T.Body("modified_at")),
     name: S.String,
     version: S.Number,
-    workerBinding: StreamsUpdateResponseWorkerBinding.pipe(
+    workerBinding: StreamsCreateRequestWorkerBinding.pipe(
       T.Body("worker_binding"),
     ),
     endpoint: S.optional(S.NullOr(S.String)),
@@ -4533,23 +4256,8 @@ export const PatchStreamResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchStreamResponse",
 }) as any as S.Schema<PatchStreamResponse>;
 
-export interface UpdateRequestDestinationBatch {
-  /** Specifies rough maximum size of files. */
-  maxBytes?: number;
-  /** Specifies duration to wait to aggregate batches files. */
-  maxDurationS?: number;
-  /** Specifies rough maximum number of rows per file. */
-  maxRows?: number;
-}
-export const UpdateRequestDestinationBatch = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    maxBytes: S.optional(S.Number.pipe(T.Body("max_bytes"))),
-    maxDurationS: S.optional(S.Number.pipe(T.Body("max_duration_s"))),
-    maxRows: S.optional(S.Number.pipe(T.Body("max_rows"))),
-  }),
-).annotate({
-  identifier: "UpdateRequestDestinationBatch",
-}) as any as S.Schema<UpdateRequestDestinationBatch>;
+export type UpdateRequestDestinationBatch = CreateRequestDestinationBatch;
+export const UpdateRequestDestinationBatch = CreateRequestDestinationBatch;
 
 export type UpdateRequestDestinationCompressionType =
   | "none"
@@ -4572,66 +4280,35 @@ export const UpdateRequestDestinationCompression = /*@__PURE__*/ S.suspend(() =>
 export type UpdateRequestDestinationFormat = "json";
 export const UpdateRequestDestinationFormat = /*@__PURE__*/ S.String;
 
-export interface UpdateRequestDestinationPath {
-  /** Specifies the R2 Bucket to store files. */
-  bucket: string;
-  /** Specifies the name pattern to for individual data files. */
-  filename?: string;
-  /** Specifies the name pattern for directory. */
-  filepath?: string;
-  /** Specifies the base directory within the bucket. */
-  prefix?: string;
-}
-export const UpdateRequestDestinationPath = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    bucket: S.String,
-    filename: S.optional(S.String),
-    filepath: S.optional(S.String),
-    prefix: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateRequestDestinationPath",
-}) as any as S.Schema<UpdateRequestDestinationPath>;
+export type UpdateRequestDestinationPath = CreateRequestDestinationPath;
+export const UpdateRequestDestinationPath = CreateRequestDestinationPath;
 
 export type UpdateRequestDestinationType = "r2";
 export const UpdateRequestDestinationType = /*@__PURE__*/ S.String;
 
-export interface UpdateRequestDestinationCredentials {
-  /** Specifies the R2 Bucket Access Key Id. */
-  accessKeyId: string;
-  /** Specifies the R2 Endpoint. */
-  endpoint: string;
-  /** Specifies the R2 Bucket Secret Access Key. */
-  secretAccessKey: string;
-}
-export const UpdateRequestDestinationCredentials = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accessKeyId: S.String.pipe(T.Body("access_key_id")),
-    endpoint: S.String,
-    secretAccessKey: S.String.pipe(T.Body("secret_access_key")),
-  }),
-).annotate({
-  identifier: "UpdateRequestDestinationCredentials",
-}) as any as S.Schema<UpdateRequestDestinationCredentials>;
+export type UpdateRequestDestinationCredentials =
+  CreateRequestDestinationCredentials;
+export const UpdateRequestDestinationCredentials =
+  CreateRequestDestinationCredentials;
 
 export interface UpdateRequestDestination {
-  batch: UpdateRequestDestinationBatch;
+  batch: CreateRequestDestinationBatch;
   compression: UpdateRequestDestinationCompression;
   /** Specifies the format of data to deliver. */
   format: UpdateRequestDestinationFormat | (string & {});
-  path: UpdateRequestDestinationPath;
+  path: CreateRequestDestinationPath;
   /** Specifies the type of destination. */
   type: UpdateRequestDestinationType | (string & {});
-  credentials?: UpdateRequestDestinationCredentials;
+  credentials?: CreateRequestDestinationCredentials;
 }
 export const UpdateRequestDestination = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    batch: UpdateRequestDestinationBatch,
+    batch: CreateRequestDestinationBatch,
     compression: UpdateRequestDestinationCompression,
     format: UpdateRequestDestinationFormat,
-    path: UpdateRequestDestinationPath,
+    path: CreateRequestDestinationPath,
     type: UpdateRequestDestinationType,
-    credentials: S.optional(UpdateRequestDestinationCredentials),
+    credentials: S.optional(CreateRequestDestinationCredentials),
   }),
 ).annotate({
   identifier: "UpdateRequestDestination",
@@ -4756,23 +4433,8 @@ export const UpdatePipelineRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdatePipelineRequest",
 }) as any as S.Schema<UpdatePipelineRequest>;
 
-export interface UpdateResponseDestinationBatch {
-  /** Specifies rough maximum size of files. */
-  maxBytes: number;
-  /** Specifies duration to wait to aggregate batches files. */
-  maxDurationS: number;
-  /** Specifies rough maximum number of rows per file. */
-  maxRows: number;
-}
-export const UpdateResponseDestinationBatch = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    maxBytes: S.Number.pipe(T.Body("max_bytes")),
-    maxDurationS: S.Number.pipe(T.Body("max_duration_s")),
-    maxRows: S.Number.pipe(T.Body("max_rows")),
-  }),
-).annotate({
-  identifier: "UpdateResponseDestinationBatch",
-}) as any as S.Schema<UpdateResponseDestinationBatch>;
+export type UpdateResponseDestinationBatch = CreateResponseDestinationBatch;
+export const UpdateResponseDestinationBatch = CreateResponseDestinationBatch;
 
 export type UpdateResponseDestinationCompressionType =
   | "none"
@@ -4796,45 +4458,27 @@ export const UpdateResponseDestinationCompression = /*@__PURE__*/ S.suspend(
 export type UpdateResponseDestinationFormat = "json";
 export const UpdateResponseDestinationFormat = /*@__PURE__*/ S.String;
 
-export interface UpdateResponseDestinationPath {
-  /** Specifies the R2 Bucket to store files. */
-  bucket: string;
-  /** Specifies the name pattern to for individual data files. */
-  filename?: string | null;
-  /** Specifies the name pattern for directory. */
-  filepath?: string | null;
-  /** Specifies the base directory within the bucket. */
-  prefix?: string | null;
-}
-export const UpdateResponseDestinationPath = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    bucket: S.String,
-    filename: S.optional(S.NullOr(S.String)),
-    filepath: S.optional(S.NullOr(S.String)),
-    prefix: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "UpdateResponseDestinationPath",
-}) as any as S.Schema<UpdateResponseDestinationPath>;
+export type UpdateResponseDestinationPath = CreateResponseDestinationPath;
+export const UpdateResponseDestinationPath = CreateResponseDestinationPath;
 
 export type UpdateResponseDestinationType = "r2";
 export const UpdateResponseDestinationType = /*@__PURE__*/ S.String;
 
 export interface UpdateResponseDestination {
-  batch: UpdateResponseDestinationBatch;
+  batch: CreateResponseDestinationBatch;
   compression: UpdateResponseDestinationCompression;
   /** Specifies the format of data to deliver. */
   format: UpdateResponseDestinationFormat;
-  path: UpdateResponseDestinationPath;
+  path: CreateResponseDestinationPath;
   /** Specifies the type of destination. */
   type: UpdateResponseDestinationType;
 }
 export const UpdateResponseDestination = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    batch: UpdateResponseDestinationBatch,
+    batch: CreateResponseDestinationBatch,
     compression: UpdateResponseDestinationCompression,
     format: UpdateResponseDestinationFormat,
-    path: UpdateResponseDestinationPath,
+    path: CreateResponseDestinationPath,
     type: UpdateResponseDestinationType,
   }),
 ).annotate({

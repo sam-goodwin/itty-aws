@@ -133,19 +133,10 @@ export const FeedbackListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "FeedbackListRequest",
 }) as any as S.Schema<FeedbackListRequest>;
 
-export interface FeedbackListResponseRequestsByAttribute {
-  metric: string;
-  requests: number;
-}
-export const FeedbackListResponseRequestsByAttribute = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      metric: S.String,
-      requests: S.Number,
-    }),
-).annotate({
-  identifier: "FeedbackListResponseRequestsByAttribute",
-}) as any as S.Schema<FeedbackListResponseRequestsByAttribute>;
+export type FeedbackListResponseRequestsByAttribute =
+  FeedbackCreateRequestRequestsByAttribute;
+export const FeedbackListResponseRequestsByAttribute =
+  FeedbackCreateRequestRequestsByAttribute;
 
 export type FeedbackListResponseType = "false_positive" | "false_negative";
 export const FeedbackListResponseType = /*@__PURE__*/ S.String;
@@ -159,7 +150,7 @@ export interface FeedbackListResponse {
   lastRequestSeenAt: string;
   requests: number;
   /** Top attributes contributing to the feedback sample. Keys include topASNs, topCountries, topHosts, topIPs, topJA3Hashes, topJA4s, topPaths, topUserAgents. */
-  requestsByAttribute: FeedbackListResponseRequestsByAttribute;
+  requestsByAttribute: FeedbackCreateRequestRequestsByAttribute;
   /** Map of bot scores (1-99) to request counts. Sum must equal `requests`. */
   requestsByScore: unknown;
   /** Map of score source to request counts. Sum must equal `requests`. */
@@ -176,7 +167,7 @@ export const FeedbackListResponse = /*@__PURE__*/ S.suspend(() =>
     firstRequestSeenAt: S.String.pipe(T.Body("first_request_seen_at")),
     lastRequestSeenAt: S.String.pipe(T.Body("last_request_seen_at")),
     requests: S.Number,
-    requestsByAttribute: FeedbackListResponseRequestsByAttribute.pipe(
+    requestsByAttribute: FeedbackCreateRequestRequestsByAttribute.pipe(
       T.Body("requests_by_attribute"),
     ),
     requestsByScore: S.Unknown.pipe(T.Body("requests_by_score")),
@@ -1110,45 +1101,10 @@ export type UpdateResultBotFightModeConfigurationCrawlerProtection =
 export const UpdateResultBotFightModeConfigurationCrawlerProtection =
   /*@__PURE__*/ S.String;
 
-export interface UpdateResultBotFightModeConfigurationStaleZoneConfiguration {
-  /** Indicates that the zone's wordpress optimization for SBFM is turned on. */
-  optimizeWordpress?: boolean | null;
-  /** Indicates that the zone's definitely automated requests are being blocked or challenged. */
-  sbfmDefinitelyAutomated?: string | null;
-  /** Indicates that the zone's likely automated requests are being blocked or challenged. */
-  sbfmLikelyAutomated?: string | null;
-  /** Indicates that the zone's static resource protection is turned on. */
-  sbfmStaticResourceProtection?: string | null;
-  /** Indicates that the zone's verified bot requests are being blocked. */
-  sbfmVerifiedBots?: string | null;
-  /** Indicates that the zone's session score tracking is disabled. */
-  suppressSessionScore?: boolean | null;
-}
+export type UpdateResultBotFightModeConfigurationStaleZoneConfiguration =
+  GetResultBotFightModeConfigurationStaleZoneConfiguration;
 export const UpdateResultBotFightModeConfigurationStaleZoneConfiguration =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      optimizeWordpress: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("optimize_wordpress")),
-      ),
-      sbfmDefinitelyAutomated: S.optional(
-        S.NullOr(S.String).pipe(T.Body("sbfm_definitely_automated")),
-      ),
-      sbfmLikelyAutomated: S.optional(
-        S.NullOr(S.String).pipe(T.Body("sbfm_likely_automated")),
-      ),
-      sbfmStaticResourceProtection: S.optional(
-        S.NullOr(S.String).pipe(T.Body("sbfm_static_resource_protection")),
-      ),
-      sbfmVerifiedBots: S.optional(
-        S.NullOr(S.String).pipe(T.Body("sbfm_verified_bots")),
-      ),
-      suppressSessionScore: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("suppress_session_score")),
-      ),
-    }),
-  ).annotate({
-    identifier: "UpdateResultBotFightModeConfigurationStaleZoneConfiguration",
-  }) as any as S.Schema<UpdateResultBotFightModeConfigurationStaleZoneConfiguration>;
+  GetResultBotFightModeConfigurationStaleZoneConfiguration;
 
 export interface UpdateResultBotFightModeConfiguration {
   /** Enable rule to block AI Scrapers and Crawlers. */
@@ -1166,7 +1122,7 @@ export interface UpdateResultBotFightModeConfiguration {
   /** Enable cloudflare managed robots.txt. If an existing robots.txt is detected, then managed robots.txt will be prepended to the existing robots.txt. */
   isRobotsTxtManaged?: boolean | null;
   /** A read-only field that shows which unauthorized settings are currently active on the zone. These settings typically result from upgrades or downgrades. */
-  staleZoneConfiguration?: UpdateResultBotFightModeConfigurationStaleZoneConfiguration | null;
+  staleZoneConfiguration?: GetResultBotFightModeConfigurationStaleZoneConfiguration | null;
   /** A read-only field that indicates whether the zone currently is running the latest ML model. */
   usingLatestModel?: boolean | null;
 }
@@ -1199,9 +1155,9 @@ export const UpdateResultBotFightModeConfiguration = /*@__PURE__*/ S.suspend(
         S.NullOr(S.Boolean).pipe(T.Body("is_robots_txt_managed")),
       ),
       staleZoneConfiguration: S.optional(
-        S.NullOr(
-          UpdateResultBotFightModeConfigurationStaleZoneConfiguration,
-        ).pipe(T.Body("stale_zone_configuration")),
+        S.NullOr(GetResultBotFightModeConfigurationStaleZoneConfiguration).pipe(
+          T.Body("stale_zone_configuration"),
+        ),
       ),
       usingLatestModel: S.optional(
         S.NullOr(S.Boolean).pipe(T.Body("using_latest_model")),
@@ -1241,24 +1197,10 @@ export type UpdateResultSuperBotFightModeDefinitelyConfigurationSbfmVerifiedBots
 export const UpdateResultSuperBotFightModeDefinitelyConfigurationSbfmVerifiedBots =
   /*@__PURE__*/ S.String;
 
-export interface UpdateResultSuperBotFightModeDefinitelyConfigurationStaleZoneConfiguration {
-  /** Indicates that the zone's Bot Fight Mode is turned on. */
-  fightMode?: boolean | null;
-  /** Indicates that the zone's likely automated requests are being blocked or challenged. */
-  sbfmLikelyAutomated?: string | null;
-}
+export type UpdateResultSuperBotFightModeDefinitelyConfigurationStaleZoneConfiguration =
+  GetResultSuperBotFightModeDefinitelyConfigurationStaleZoneConfiguration;
 export const UpdateResultSuperBotFightModeDefinitelyConfigurationStaleZoneConfiguration =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      fightMode: S.optional(S.NullOr(S.Boolean).pipe(T.Body("fight_mode"))),
-      sbfmLikelyAutomated: S.optional(
-        S.NullOr(S.String).pipe(T.Body("sbfm_likely_automated")),
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "UpdateResultSuperBotFightModeDefinitelyConfigurationStaleZoneConfiguration",
-  }) as any as S.Schema<UpdateResultSuperBotFightModeDefinitelyConfigurationStaleZoneConfiguration>;
+  GetResultSuperBotFightModeDefinitelyConfigurationStaleZoneConfiguration;
 
 export interface UpdateResultSuperBotFightModeDefinitelyConfiguration {
   /** Enable rule to block AI Scrapers and Crawlers. */
@@ -1282,7 +1224,7 @@ export interface UpdateResultSuperBotFightModeDefinitelyConfiguration {
   /** Super Bot Fight Mode (SBFM) action to take on verified bots requests. */
   sbfmVerifiedBots?: UpdateResultSuperBotFightModeDefinitelyConfigurationSbfmVerifiedBots | null;
   /** A read-only field that shows which unauthorized settings are currently active on the zone. These settings typically result from upgrades or downgrades. */
-  staleZoneConfiguration?: UpdateResultSuperBotFightModeDefinitelyConfigurationStaleZoneConfiguration | null;
+  staleZoneConfiguration?: GetResultSuperBotFightModeDefinitelyConfigurationStaleZoneConfiguration | null;
   /** A read-only field that indicates whether the zone currently is running the latest ML model. */
   usingLatestModel?: boolean | null;
 }
@@ -1331,7 +1273,7 @@ export const UpdateResultSuperBotFightModeDefinitelyConfiguration =
       ),
       staleZoneConfiguration: S.optional(
         S.NullOr(
-          UpdateResultSuperBotFightModeDefinitelyConfigurationStaleZoneConfiguration,
+          GetResultSuperBotFightModeDefinitelyConfigurationStaleZoneConfiguration,
         ).pipe(T.Body("stale_zone_configuration")),
       ),
       usingLatestModel: S.optional(
@@ -1382,19 +1324,10 @@ export type UpdateResultSuperBotFightModeLikelyConfigurationSbfmVerifiedBots =
 export const UpdateResultSuperBotFightModeLikelyConfigurationSbfmVerifiedBots =
   /*@__PURE__*/ S.String;
 
-export interface UpdateResultSuperBotFightModeLikelyConfigurationStaleZoneConfiguration {
-  /** Indicates that the zone's Bot Fight Mode is turned on. */
-  fightMode?: boolean | null;
-}
+export type UpdateResultSuperBotFightModeLikelyConfigurationStaleZoneConfiguration =
+  GetResultSuperBotFightModeLikelyConfigurationStaleZoneConfiguration;
 export const UpdateResultSuperBotFightModeLikelyConfigurationStaleZoneConfiguration =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      fightMode: S.optional(S.NullOr(S.Boolean).pipe(T.Body("fight_mode"))),
-    }),
-  ).annotate({
-    identifier:
-      "UpdateResultSuperBotFightModeLikelyConfigurationStaleZoneConfiguration",
-  }) as any as S.Schema<UpdateResultSuperBotFightModeLikelyConfigurationStaleZoneConfiguration>;
+  GetResultSuperBotFightModeLikelyConfigurationStaleZoneConfiguration;
 
 export interface UpdateResultSuperBotFightModeLikelyConfiguration {
   /** Enable rule to block AI Scrapers and Crawlers. */
@@ -1420,7 +1353,7 @@ export interface UpdateResultSuperBotFightModeLikelyConfiguration {
   /** Super Bot Fight Mode (SBFM) action to take on verified bots requests. */
   sbfmVerifiedBots?: UpdateResultSuperBotFightModeLikelyConfigurationSbfmVerifiedBots | null;
   /** A read-only field that shows which unauthorized settings are currently active on the zone. These settings typically result from upgrades or downgrades. */
-  staleZoneConfiguration?: UpdateResultSuperBotFightModeLikelyConfigurationStaleZoneConfiguration | null;
+  staleZoneConfiguration?: GetResultSuperBotFightModeLikelyConfigurationStaleZoneConfiguration | null;
   /** A read-only field that indicates whether the zone currently is running the latest ML model. */
   usingLatestModel?: boolean | null;
 }
@@ -1474,7 +1407,7 @@ export const UpdateResultSuperBotFightModeLikelyConfiguration =
       ),
       staleZoneConfiguration: S.optional(
         S.NullOr(
-          UpdateResultSuperBotFightModeLikelyConfigurationStaleZoneConfiguration,
+          GetResultSuperBotFightModeLikelyConfigurationStaleZoneConfiguration,
         ).pipe(T.Body("stale_zone_configuration")),
       ),
       usingLatestModel: S.optional(
@@ -1510,43 +1443,10 @@ export type UpdateResultSubscriptionConfigurationCrawlerProtection =
 export const UpdateResultSubscriptionConfigurationCrawlerProtection =
   /*@__PURE__*/ S.String;
 
-export interface UpdateResultSubscriptionConfigurationStaleZoneConfiguration {
-  /** Indicates that the zone's Bot Fight Mode is turned on. */
-  fightMode?: boolean | null;
-  /** Indicates that the zone's wordpress optimization for SBFM is turned on. */
-  optimizeWordpress?: boolean | null;
-  /** Indicates that the zone's definitely automated requests are being blocked or challenged. */
-  sbfmDefinitelyAutomated?: string | null;
-  /** Indicates that the zone's likely automated requests are being blocked or challenged. */
-  sbfmLikelyAutomated?: string | null;
-  /** Indicates that the zone's static resource protection is turned on. */
-  sbfmStaticResourceProtection?: string | null;
-  /** Indicates that the zone's verified bot requests are being blocked. */
-  sbfmVerifiedBots?: string | null;
-}
+export type UpdateResultSubscriptionConfigurationStaleZoneConfiguration =
+  GetResultSubscriptionConfigurationStaleZoneConfiguration;
 export const UpdateResultSubscriptionConfigurationStaleZoneConfiguration =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      fightMode: S.optional(S.NullOr(S.Boolean).pipe(T.Body("fight_mode"))),
-      optimizeWordpress: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("optimize_wordpress")),
-      ),
-      sbfmDefinitelyAutomated: S.optional(
-        S.NullOr(S.String).pipe(T.Body("sbfm_definitely_automated")),
-      ),
-      sbfmLikelyAutomated: S.optional(
-        S.NullOr(S.String).pipe(T.Body("sbfm_likely_automated")),
-      ),
-      sbfmStaticResourceProtection: S.optional(
-        S.NullOr(S.String).pipe(T.Body("sbfm_static_resource_protection")),
-      ),
-      sbfmVerifiedBots: S.optional(
-        S.NullOr(S.String).pipe(T.Body("sbfm_verified_bots")),
-      ),
-    }),
-  ).annotate({
-    identifier: "UpdateResultSubscriptionConfigurationStaleZoneConfiguration",
-  }) as any as S.Schema<UpdateResultSubscriptionConfigurationStaleZoneConfiguration>;
+  GetResultSubscriptionConfigurationStaleZoneConfiguration;
 
 export interface UpdateResultSubscriptionConfiguration {
   /** Enable rule to block AI Scrapers and Crawlers. */
@@ -1566,7 +1466,7 @@ export interface UpdateResultSubscriptionConfiguration {
   /** Enable cloudflare managed robots.txt. If an existing robots.txt is detected, then managed robots.txt will be prepended to the existing robots.txt. */
   isRobotsTxtManaged?: boolean | null;
   /** A read-only field that shows which unauthorized settings are currently active on the zone. These settings typically result from upgrades or downgrades. */
-  staleZoneConfiguration?: UpdateResultSubscriptionConfigurationStaleZoneConfiguration | null;
+  staleZoneConfiguration?: GetResultSubscriptionConfigurationStaleZoneConfiguration | null;
   /** Whether to disable tracking the highest bot score for a session in the Bot Management cookie. */
   suppressSessionScore?: boolean | null;
   /** A read-only field that indicates whether the zone currently is running the latest ML model. */
@@ -1606,9 +1506,9 @@ export const UpdateResultSubscriptionConfiguration = /*@__PURE__*/ S.suspend(
         S.NullOr(S.Boolean).pipe(T.Body("is_robots_txt_managed")),
       ),
       staleZoneConfiguration: S.optional(
-        S.NullOr(
-          UpdateResultSubscriptionConfigurationStaleZoneConfiguration,
-        ).pipe(T.Body("stale_zone_configuration")),
+        S.NullOr(GetResultSubscriptionConfigurationStaleZoneConfiguration).pipe(
+          T.Body("stale_zone_configuration"),
+        ),
       ),
       suppressSessionScore: S.optional(
         S.NullOr(S.Boolean).pipe(T.Body("suppress_session_score")),
