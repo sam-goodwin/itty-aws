@@ -28,29 +28,6 @@
     },
     {
       "op": "add",
-      "path": "/shapes/com.cloudflare.secrets_store#InvalidAccountId",
-      "value": {
-        "type": "structure",
-        "members": {
-          "code": {
-            "target": "smithy.api#Integer"
-          },
-          "message": {
-            "target": "smithy.api#String"
-          }
-        },
-        "traits": {
-          "smithy.api#error": "client",
-          "com.cloudflare.protocols#errorMatchers": [
-            {
-              "code": 7003
-            }
-          ]
-        }
-      }
-    },
-    {
-      "op": "add",
       "path": "/shapes/com.cloudflare.secrets_store#GetQuota/errors",
       "value": [
         {

@@ -9,11 +9,15 @@
         "members": {
           "STANDARD": {
             "target": "smithy.api#Unit",
-            "traits": { "smithy.api#enumValue": "Standard" }
+            "traits": {
+              "smithy.api#enumValue": "Standard"
+            }
           },
           "INFREQUENT_ACCESS": {
             "target": "smithy.api#Unit",
-            "traits": { "smithy.api#enumValue": "InfrequentAccess" }
+            "traits": {
+              "smithy.api#enumValue": "InfrequentAccess"
+            }
           }
         }
       }
@@ -119,31 +123,17 @@
     },
     {
       "op": "add",
-      "path": "/shapes/com.cloudflare.r2#NoSuchKey",
-      "value": {
-        "type": "structure",
-        "members": {
-          "code": { "target": "smithy.api#Integer" },
-          "message": { "target": "smithy.api#String" }
-        },
-        "traits": {
-          "smithy.api#error": "client",
-          "com.cloudflare.protocols#errorMatchers": [
-            {
-              "status": 404,
-              "message": { "includes": "specified key does not exist" }
-            }
-          ]
-        }
-      }
-    },
-    {
-      "op": "add",
       "path": "/shapes/com.cloudflare.r2#GetBucketObject/errors",
       "value": [
-        { "target": "com.cloudflare.r2#NoSuchBucket" },
-        { "target": "com.cloudflare.r2#InvalidRoute" },
-        { "target": "com.cloudflare.r2#NoSuchKey" }
+        {
+          "target": "com.cloudflare.r2#NoSuchBucket"
+        },
+        {
+          "target": "com.cloudflare.r2#InvalidRoute"
+        },
+        {
+          "target": "com.cloudflare.r2#NoSuchKey"
+        }
       ]
     }
   ]

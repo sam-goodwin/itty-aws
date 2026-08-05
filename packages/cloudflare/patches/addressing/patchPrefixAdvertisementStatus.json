@@ -28,67 +28,6 @@
     },
     {
       "op": "add",
-      "path": "/shapes/com.cloudflare.addressing#PrefixNotFound",
-      "value": {
-        "type": "structure",
-        "members": {
-          "code": {
-            "target": "smithy.api#Integer"
-          },
-          "message": {
-            "target": "smithy.api#String"
-          }
-        },
-        "traits": {
-          "smithy.api#error": "client",
-          "com.cloudflare.protocols#errorMatchers": [
-            {
-              "code": 1000
-            },
-            {
-              "code": 1000,
-              "message": {
-                "includes": "not_found"
-              }
-            },
-            {
-              "code": 1002,
-              "message": {
-                "includes": "forbidden"
-              }
-            }
-          ]
-        }
-      }
-    },
-    {
-      "op": "add",
-      "path": "/shapes/com.cloudflare.addressing#InvalidAccountId",
-      "value": {
-        "type": "structure",
-        "members": {
-          "code": {
-            "target": "smithy.api#Integer"
-          },
-          "message": {
-            "target": "smithy.api#String"
-          }
-        },
-        "traits": {
-          "smithy.api#error": "client",
-          "com.cloudflare.protocols#errorMatchers": [
-            {
-              "code": 7003,
-              "message": {
-                "includes": "Could not route"
-              }
-            }
-          ]
-        }
-      }
-    },
-    {
-      "op": "add",
       "path": "/shapes/com.cloudflare.addressing#PatchPrefixAdvertisementStatus/errors",
       "value": [
         {

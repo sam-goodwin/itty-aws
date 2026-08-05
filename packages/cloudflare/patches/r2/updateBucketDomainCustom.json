@@ -28,29 +28,6 @@
     },
     {
       "op": "add",
-      "path": "/shapes/com.cloudflare.r2#NoSuchBucket",
-      "value": {
-        "type": "structure",
-        "members": {
-          "code": {
-            "target": "smithy.api#Integer"
-          },
-          "message": {
-            "target": "smithy.api#String"
-          }
-        },
-        "traits": {
-          "smithy.api#error": "client",
-          "com.cloudflare.protocols#errorMatchers": [
-            {
-              "code": 10006
-            }
-          ]
-        }
-      }
-    },
-    {
-      "op": "add",
       "path": "/shapes/com.cloudflare.r2#UpdateBucketDomainCustom/errors",
       "value": [
         {
