@@ -87,53 +87,51 @@ const rules = T.EndpointResolver((p, _) => {
 });
 
 export class AccessDeniedException
-  extends /*@__PURE__*/ S.TaggedErrorClass<AccessDeniedException>()(
+  extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()(
     "AccessDeniedException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class AttributeLimitExceededException
-  extends /*@__PURE__*/ S.TaggedErrorClass<AttributeLimitExceededException>()(
+  extends /*@__PURE__*/ S.TaggedError<AttributeLimitExceededException>()(
     "AttributeLimitExceededException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withQuotaError) {}
 export class BlockedException
-  extends /*@__PURE__*/ S.TaggedErrorClass<BlockedException>()(
-    "BlockedException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-  ).pipe(C.withBadRequestError) {}
+  extends /*@__PURE__*/ S.TaggedError<BlockedException>()("BlockedException", {
+    message: S.optional(S.String).pipe(T.ErrorMessage()),
+  }).pipe(C.withBadRequestError) {}
 export class ClientException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ClientException>()(
-    "ClientException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-  ).pipe(C.withBadRequestError) {}
+  extends /*@__PURE__*/ S.TaggedError<ClientException>()("ClientException", {
+    message: S.optional(S.String).pipe(T.ErrorMessage()),
+  }).pipe(C.withBadRequestError) {}
 export class ClusterContainsCapacityProviderException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ClusterContainsCapacityProviderException>()(
+  extends /*@__PURE__*/ S.TaggedError<ClusterContainsCapacityProviderException>()(
     "ClusterContainsCapacityProviderException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withDependencyViolationError) {}
 export class ClusterContainsContainerInstancesException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ClusterContainsContainerInstancesException>()(
+  extends /*@__PURE__*/ S.TaggedError<ClusterContainsContainerInstancesException>()(
     "ClusterContainsContainerInstancesException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withDependencyViolationError) {}
 export class ClusterContainsServicesException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ClusterContainsServicesException>()(
+  extends /*@__PURE__*/ S.TaggedError<ClusterContainsServicesException>()(
     "ClusterContainsServicesException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withDependencyViolationError) {}
 export class ClusterContainsTasksException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ClusterContainsTasksException>()(
+  extends /*@__PURE__*/ S.TaggedError<ClusterContainsTasksException>()(
     "ClusterContainsTasksException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withDependencyViolationError) {}
 export class ClusterNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ClusterNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<ClusterNotFoundException>()(
     "ClusterNotFoundException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withNotFoundError) {}
 export class ConflictException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ConflictException>()(
+  extends /*@__PURE__*/ S.TaggedError<ConflictException>()(
     "ConflictException",
     {
       resourceIds: S.optional(
@@ -143,102 +141,101 @@ export class ConflictException
     },
   ).pipe(C.withConflictError) {}
 export class DaemonNotActiveException
-  extends /*@__PURE__*/ S.TaggedErrorClass<DaemonNotActiveException>()(
+  extends /*@__PURE__*/ S.TaggedError<DaemonNotActiveException>()(
     "DaemonNotActiveException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withConflictError) {}
 export class DaemonNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<DaemonNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<DaemonNotFoundException>()(
     "DaemonNotFoundException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withNotFoundError) {}
 export class InvalidParameterException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidParameterException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidParameterException>()(
     "InvalidParameterException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withBadRequestError) {}
 export class LimitExceededException
-  extends /*@__PURE__*/ S.TaggedErrorClass<LimitExceededException>()(
+  extends /*@__PURE__*/ S.TaggedError<LimitExceededException>()(
     "LimitExceededException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withQuotaError) {}
 export class MissingVersionException
-  extends /*@__PURE__*/ S.TaggedErrorClass<MissingVersionException>()(
+  extends /*@__PURE__*/ S.TaggedError<MissingVersionException>()(
     "MissingVersionException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withBadRequestError) {}
 export class NamespaceNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<NamespaceNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<NamespaceNotFoundException>()(
     "NamespaceNotFoundException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withNotFoundError) {}
 export class NoUpdateAvailableException
-  extends /*@__PURE__*/ S.TaggedErrorClass<NoUpdateAvailableException>()(
+  extends /*@__PURE__*/ S.TaggedError<NoUpdateAvailableException>()(
     "NoUpdateAvailableException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class PlatformTaskDefinitionIncompatibilityException
-  extends /*@__PURE__*/ S.TaggedErrorClass<PlatformTaskDefinitionIncompatibilityException>()(
+  extends /*@__PURE__*/ S.TaggedError<PlatformTaskDefinitionIncompatibilityException>()(
     "PlatformTaskDefinitionIncompatibilityException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withBadRequestError) {}
 export class PlatformUnknownException
-  extends /*@__PURE__*/ S.TaggedErrorClass<PlatformUnknownException>()(
+  extends /*@__PURE__*/ S.TaggedError<PlatformUnknownException>()(
     "PlatformUnknownException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withBadRequestError) {}
 export class ResourceInUseException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceInUseException>()(
+  extends /*@__PURE__*/ S.TaggedError<ResourceInUseException>()(
     "ResourceInUseException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withConflictError, C.withRetryableError) {}
 export class ResourceNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withNotFoundError) {}
 export class ServerException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ServerException>()(
-    "ServerException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-  ).pipe(C.withServerError, C.withRetryableError) {}
+  extends /*@__PURE__*/ S.TaggedError<ServerException>()("ServerException", {
+    message: S.optional(S.String).pipe(T.ErrorMessage()),
+  }).pipe(C.withServerError, C.withRetryableError) {}
 export class ServiceDeploymentNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ServiceDeploymentNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<ServiceDeploymentNotFoundException>()(
     "ServiceDeploymentNotFoundException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withNotFoundError) {}
 export class ServiceNotActiveException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ServiceNotActiveException>()(
+  extends /*@__PURE__*/ S.TaggedError<ServiceNotActiveException>()(
     "ServiceNotActiveException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withConflictError) {}
 export class ServiceNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ServiceNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<ServiceNotFoundException>()(
     "ServiceNotFoundException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withNotFoundError) {}
 export class TargetNotConnectedException
-  extends /*@__PURE__*/ S.TaggedErrorClass<TargetNotConnectedException>()(
+  extends /*@__PURE__*/ S.TaggedError<TargetNotConnectedException>()(
     "TargetNotConnectedException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withConflictError) {}
 export class TargetNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<TargetNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<TargetNotFoundException>()(
     "TargetNotFoundException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withNotFoundError) {}
 export class TaskSetNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<TaskSetNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<TaskSetNotFoundException>()(
     "TaskSetNotFoundException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withNotFoundError) {}
 export class UnsupportedFeatureException
-  extends /*@__PURE__*/ S.TaggedErrorClass<UnsupportedFeatureException>()(
+  extends /*@__PURE__*/ S.TaggedError<UnsupportedFeatureException>()(
     "UnsupportedFeatureException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withBadRequestError) {}
 export class UpdateInProgressException
-  extends /*@__PURE__*/ S.TaggedErrorClass<UpdateInProgressException>()(
+  extends /*@__PURE__*/ S.TaggedError<UpdateInProgressException>()(
     "UpdateInProgressException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withConflictError, C.withRetryableError) {}

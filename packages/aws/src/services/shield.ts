@@ -104,32 +104,32 @@ const rules = T.EndpointResolver((p, _) => {
 });
 
 export class AccessDeniedException
-  extends /*@__PURE__*/ S.TaggedErrorClass<AccessDeniedException>()(
+  extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()(
     "AccessDeniedException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withAuthError) {}
 export class AccessDeniedForDependencyException
-  extends /*@__PURE__*/ S.TaggedErrorClass<AccessDeniedForDependencyException>()(
+  extends /*@__PURE__*/ S.TaggedError<AccessDeniedForDependencyException>()(
     "AccessDeniedForDependencyException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withAuthError) {}
 export class InternalErrorException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InternalErrorException>()(
+  extends /*@__PURE__*/ S.TaggedError<InternalErrorException>()(
     "InternalErrorException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withServerError) {}
 export class InvalidOperationException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidOperationException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidOperationException>()(
     "InvalidOperationException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidPaginationTokenException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidPaginationTokenException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidPaginationTokenException>()(
     "InvalidPaginationTokenException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidParameterException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidParameterException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidParameterException>()(
     "InvalidParameterException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -146,12 +146,12 @@ export class InvalidParameterException
     },
   ) {}
 export class InvalidResourceException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidResourceException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidResourceException>()(
     "InvalidResourceException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class LimitsExceededException
-  extends /*@__PURE__*/ S.TaggedErrorClass<LimitsExceededException>()(
+  extends /*@__PURE__*/ S.TaggedError<LimitsExceededException>()(
     "LimitsExceededException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -160,22 +160,22 @@ export class LimitsExceededException
     },
   ) {}
 export class LockedSubscriptionException
-  extends /*@__PURE__*/ S.TaggedErrorClass<LockedSubscriptionException>()(
+  extends /*@__PURE__*/ S.TaggedError<LockedSubscriptionException>()(
     "LockedSubscriptionException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class NoAssociatedRoleException
-  extends /*@__PURE__*/ S.TaggedErrorClass<NoAssociatedRoleException>()(
+  extends /*@__PURE__*/ S.TaggedError<NoAssociatedRoleException>()(
     "NoAssociatedRoleException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class OptimisticLockException
-  extends /*@__PURE__*/ S.TaggedErrorClass<OptimisticLockException>()(
+  extends /*@__PURE__*/ S.TaggedError<OptimisticLockException>()(
     "OptimisticLockException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class ResourceAlreadyExistsException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceAlreadyExistsException>()(
+  extends /*@__PURE__*/ S.TaggedError<ResourceAlreadyExistsException>()(
     "ResourceAlreadyExistsException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -183,7 +183,7 @@ export class ResourceAlreadyExistsException
     },
   ).pipe(C.withAlreadyExistsError) {}
 export class ResourceNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -191,7 +191,7 @@ export class ResourceNotFoundException
     },
   ) {}
 export class SubscriptionNotFound
-  extends /*@__PURE__*/ S.TaggedErrorClass<SubscriptionNotFound>()(
+  extends /*@__PURE__*/ S.TaggedError<SubscriptionNotFound>()(
     "SubscriptionNotFound",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),

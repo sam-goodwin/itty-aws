@@ -16,7 +16,7 @@ export type { CloudflareOpError, CloudflareOpContext };
 
 export class CloudConnectorRulesNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<CloudConnectorRulesNotFound>()(
+    /*@__PURE__*/ S.TaggedError<CloudConnectorRulesNotFound>()(
       "CloudConnectorRulesNotFound",
       {
         code: S.Number,
@@ -33,7 +33,7 @@ export class CloudConnectorRulesNotFound
 
 export class Forbidden
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    /*@__PURE__*/ S.TaggedError<Forbidden>()("Forbidden", {
       code: S.Number,
       message: S.String,
     }),

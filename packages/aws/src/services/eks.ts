@@ -90,19 +90,19 @@ const rules = T.EndpointResolver((p, _) => {
 });
 
 export class AccessDeniedException
-  extends /*@__PURE__*/ S.TaggedErrorClass<AccessDeniedException>()(
+  extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()(
     "AccessDeniedException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class BadRequestException
-  extends /*@__PURE__*/ S.TaggedErrorClass<BadRequestException>()(
+  extends /*@__PURE__*/ S.TaggedError<BadRequestException>()(
     "BadRequestException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ClientException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ClientException>()(
+  extends /*@__PURE__*/ S.TaggedError<ClientException>()(
     "ClientException",
     {
       clusterName: S.optional(S.String),
@@ -114,7 +114,7 @@ export class ClientException
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidParameterException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidParameterException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidParameterException>()(
     "InvalidParameterException",
     {
       clusterName: S.optional(S.String),
@@ -127,7 +127,7 @@ export class InvalidParameterException
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidRequestException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidRequestException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidRequestException>()(
     "InvalidRequestException",
     {
       clusterName: S.optional(S.String),
@@ -139,7 +139,7 @@ export class InvalidRequestException
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidStateException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidStateException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidStateException>()(
     "InvalidStateException",
     {
       clusterName: S.optional(S.String),
@@ -148,13 +148,13 @@ export class InvalidStateException
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class NotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<NotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<NotFoundException>()(
     "NotFoundException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ResourceInUseException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceInUseException>()(
+  extends /*@__PURE__*/ S.TaggedError<ResourceInUseException>()(
     "ResourceInUseException",
     {
       clusterName: S.optional(S.String),
@@ -165,7 +165,7 @@ export class ResourceInUseException
     T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class ResourceLimitExceededException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceLimitExceededException>()(
+  extends /*@__PURE__*/ S.TaggedError<ResourceLimitExceededException>()(
     "ResourceLimitExceededException",
     {
       clusterName: S.optional(S.String),
@@ -176,7 +176,7 @@ export class ResourceLimitExceededException
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ResourceNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
     {
       clusterName: S.optional(S.String),
@@ -189,13 +189,13 @@ export class ResourceNotFoundException
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ResourcePropagationDelayException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ResourcePropagationDelayException>()(
+  extends /*@__PURE__*/ S.TaggedError<ResourcePropagationDelayException>()(
     "ResourcePropagationDelayException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(428),
   ) {}
 export class ServerException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ServerException>()(
+  extends /*@__PURE__*/ S.TaggedError<ServerException>()(
     "ServerException",
     {
       clusterName: S.optional(S.String),
@@ -207,13 +207,13 @@ export class ServerException
     T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class ServiceUnavailableException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ServiceUnavailableException>()(
+  extends /*@__PURE__*/ S.TaggedError<ServiceUnavailableException>()(
     "ServiceUnavailableException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(503),
   ).pipe(C.withServerError) {}
 export class ThrottlingException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ThrottlingException>()(
+  extends /*@__PURE__*/ S.TaggedError<ThrottlingException>()(
     "ThrottlingException",
     {
       clusterName: S.optional(S.String),
@@ -222,7 +222,7 @@ export class ThrottlingException
     T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export class UnsupportedAvailabilityZoneException
-  extends /*@__PURE__*/ S.TaggedErrorClass<UnsupportedAvailabilityZoneException>()(
+  extends /*@__PURE__*/ S.TaggedError<UnsupportedAvailabilityZoneException>()(
     "UnsupportedAvailabilityZoneException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),

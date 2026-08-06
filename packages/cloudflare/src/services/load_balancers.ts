@@ -85,7 +85,7 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
 
 export class Forbidden
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    /*@__PURE__*/ S.TaggedError<Forbidden>()("Forbidden", {
       code: S.Number,
       message: S.String,
     }),
@@ -94,7 +94,7 @@ export class Forbidden
 
 export class LoadBalancerNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<LoadBalancerNotFound>()(
+    /*@__PURE__*/ S.TaggedError<LoadBalancerNotFound>()(
       "LoadBalancerNotFound",
       {
         code: S.Number,
@@ -106,7 +106,7 @@ export class LoadBalancerNotFound
 
 export class LoadBalancingNotEnabledForZone
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<LoadBalancingNotEnabledForZone>()(
+    /*@__PURE__*/ S.TaggedError<LoadBalancingNotEnabledForZone>()(
       "LoadBalancingNotEnabledForZone",
       {
         code: S.Number,
@@ -118,7 +118,7 @@ export class LoadBalancingNotEnabledForZone
 
 export class MonitorGroupInUse
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<MonitorGroupInUse>()("MonitorGroupInUse", {
+    /*@__PURE__*/ S.TaggedError<MonitorGroupInUse>()("MonitorGroupInUse", {
       code: S.Number,
       message: S.String,
     }),
@@ -127,7 +127,7 @@ export class MonitorGroupInUse
 
 export class MonitorGroupNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<MonitorGroupNotFound>()(
+    /*@__PURE__*/ S.TaggedError<MonitorGroupNotFound>()(
       "MonitorGroupNotFound",
       {
         code: S.Number,
@@ -139,7 +139,7 @@ export class MonitorGroupNotFound
 
 export class MonitorGroupsNotEnabled
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<MonitorGroupsNotEnabled>()(
+    /*@__PURE__*/ S.TaggedError<MonitorGroupsNotEnabled>()(
       "MonitorGroupsNotEnabled",
       {
         code: S.Number,
@@ -151,7 +151,7 @@ export class MonitorGroupsNotEnabled
 
 export class MonitorIntervalOutOfRange
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<MonitorIntervalOutOfRange>()(
+    /*@__PURE__*/ S.TaggedError<MonitorIntervalOutOfRange>()(
       "MonitorIntervalOutOfRange",
       {
         code: S.Number,
@@ -163,7 +163,7 @@ export class MonitorIntervalOutOfRange
 
 export class MonitorInUse
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<MonitorInUse>()("MonitorInUse", {
+    /*@__PURE__*/ S.TaggedError<MonitorInUse>()("MonitorInUse", {
       code: S.Number,
       message: S.String,
     }),
@@ -172,7 +172,7 @@ export class MonitorInUse
 
 export class MonitorNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<MonitorNotFound>()("MonitorNotFound", {
+    /*@__PURE__*/ S.TaggedError<MonitorNotFound>()("MonitorNotFound", {
       code: S.Number,
       message: S.String,
     }),
@@ -181,7 +181,7 @@ export class MonitorNotFound
 
 export class PoolAccessFailed
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<PoolAccessFailed>()("PoolAccessFailed", {
+    /*@__PURE__*/ S.TaggedError<PoolAccessFailed>()("PoolAccessFailed", {
       code: S.Number,
       message: S.String,
     }),
@@ -190,7 +190,7 @@ export class PoolAccessFailed
 
 export class PoolInUse
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<PoolInUse>()("PoolInUse", {
+    /*@__PURE__*/ S.TaggedError<PoolInUse>()("PoolInUse", {
       code: S.Number,
       message: S.String,
     }),
@@ -199,7 +199,7 @@ export class PoolInUse
 
 export class PoolNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<PoolNotFound>()("PoolNotFound", {
+    /*@__PURE__*/ S.TaggedError<PoolNotFound>()("PoolNotFound", {
       code: S.Number,
       message: S.String,
     }),

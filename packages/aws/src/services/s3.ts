@@ -3019,98 +3019,97 @@ const rules = T.EndpointResolver((p, _) => {
 });
 
 export class AccessDenied
-  extends /*@__PURE__*/ S.TaggedErrorClass<AccessDenied>()(
+  extends /*@__PURE__*/ S.TaggedError<AccessDenied>()(
     "AccessDenied",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class AnnotationLimitExceeded
-  extends /*@__PURE__*/ S.TaggedErrorClass<AnnotationLimitExceeded>()(
+  extends /*@__PURE__*/ S.TaggedError<AnnotationLimitExceeded>()(
     "AnnotationLimitExceeded",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError, C.withThrottlingError) {}
 export class AnnotationNameTooLong
-  extends /*@__PURE__*/ S.TaggedErrorClass<AnnotationNameTooLong>()(
+  extends /*@__PURE__*/ S.TaggedError<AnnotationNameTooLong>()(
     "AnnotationNameTooLong",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class BucketAlreadyExists
-  extends /*@__PURE__*/ S.TaggedErrorClass<BucketAlreadyExists>()(
+  extends /*@__PURE__*/ S.TaggedError<BucketAlreadyExists>()(
     "BucketAlreadyExists",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(409),
   ).pipe(C.withConflictError, C.withAlreadyExistsError) {}
 export class BucketAlreadyOwnedByYou
-  extends /*@__PURE__*/ S.TaggedErrorClass<BucketAlreadyOwnedByYou>()(
+  extends /*@__PURE__*/ S.TaggedError<BucketAlreadyOwnedByYou>()(
     "BucketAlreadyOwnedByYou",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(409),
   ).pipe(C.withConflictError, C.withAlreadyExistsError) {}
 export class BucketHasAccessPointsAttached
-  extends /*@__PURE__*/ S.TaggedErrorClass<BucketHasAccessPointsAttached>()(
+  extends /*@__PURE__*/ S.TaggedError<BucketHasAccessPointsAttached>()(
     "BucketHasAccessPointsAttached",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withConflictError) {}
 export class BucketNotEmpty
-  extends /*@__PURE__*/ S.TaggedErrorClass<BucketNotEmpty>()("BucketNotEmpty", {
+  extends /*@__PURE__*/ S.TaggedError<BucketNotEmpty>()("BucketNotEmpty", {
     message: S.optional(S.String).pipe(T.ErrorMessage()),
   }).pipe(C.withConflictError) {}
 export class ConditionalRequestConflict
-  extends /*@__PURE__*/ S.TaggedErrorClass<ConditionalRequestConflict>()(
+  extends /*@__PURE__*/ S.TaggedError<ConditionalRequestConflict>()(
     "ConditionalRequestConflict",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withConflictError, C.withRetryableError) {}
 export class EncryptionTypeMismatch
-  extends /*@__PURE__*/ S.TaggedErrorClass<EncryptionTypeMismatch>()(
+  extends /*@__PURE__*/ S.TaggedError<EncryptionTypeMismatch>()(
     "EncryptionTypeMismatch",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class IdempotencyParameterMismatch
-  extends /*@__PURE__*/ S.TaggedErrorClass<IdempotencyParameterMismatch>()(
+  extends /*@__PURE__*/ S.TaggedError<IdempotencyParameterMismatch>()(
     "IdempotencyParameterMismatch",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class IllegalLocationConstraintException
-  extends /*@__PURE__*/ S.TaggedErrorClass<IllegalLocationConstraintException>()(
+  extends /*@__PURE__*/ S.TaggedError<IllegalLocationConstraintException>()(
     "IllegalLocationConstraintException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withBadRequestError) {}
 export class InvalidAnnotationName
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidAnnotationName>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidAnnotationName>()(
     "InvalidAnnotationName",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidArgument
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidArgument>()(
-    "InvalidArgument",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-  ).pipe(C.withBadRequestError) {}
+  extends /*@__PURE__*/ S.TaggedError<InvalidArgument>()("InvalidArgument", {
+    message: S.optional(S.String).pipe(T.ErrorMessage()),
+  }).pipe(C.withBadRequestError) {}
 export class InvalidBucketName
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidBucketName>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidBucketName>()(
     "InvalidBucketName",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withBadRequestError) {}
 export class InvalidBucketState
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidBucketState>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidBucketState>()(
     "InvalidBucketState",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withConflictError) {}
 export class InvalidDigest
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidDigest>()("InvalidDigest", {
+  extends /*@__PURE__*/ S.TaggedError<InvalidDigest>()("InvalidDigest", {
     message: S.optional(S.String).pipe(T.ErrorMessage()),
   }).pipe(C.withBadRequestError) {}
 export class InvalidLocationConstraint
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidLocationConstraint>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidLocationConstraint>()(
     "InvalidLocationConstraint",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withBadRequestError) {}
 export class InvalidObjectState
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidObjectState>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidObjectState>()(
     "InvalidObjectState",
     {
       StorageClass: S.optional(
@@ -3126,40 +3125,39 @@ export class InvalidObjectState
     T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class InvalidPrefix
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidPrefix>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidPrefix>()(
     "InvalidPrefix",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidRequest
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidRequest>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidRequest>()(
     "InvalidRequest",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidWriteOffset
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidWriteOffset>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidWriteOffset>()(
     "InvalidWriteOffset",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class MalformedPolicy
-  extends /*@__PURE__*/ S.TaggedErrorClass<MalformedPolicy>()(
-    "MalformedPolicy",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-  ).pipe(C.withBadRequestError) {}
+  extends /*@__PURE__*/ S.TaggedError<MalformedPolicy>()("MalformedPolicy", {
+    message: S.optional(S.String).pipe(T.ErrorMessage()),
+  }).pipe(C.withBadRequestError) {}
 export class MalformedXML
-  extends /*@__PURE__*/ S.TaggedErrorClass<MalformedXML>()("MalformedXML", {
+  extends /*@__PURE__*/ S.TaggedError<MalformedXML>()("MalformedXML", {
     message: S.optional(S.String).pipe(T.ErrorMessage()),
   }).pipe(C.withBadRequestError) {}
 export class NoSuchAnnotation
-  extends /*@__PURE__*/ S.TaggedErrorClass<NoSuchAnnotation>()(
+  extends /*@__PURE__*/ S.TaggedError<NoSuchAnnotation>()(
     "NoSuchAnnotation",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class NoSuchBucket
-  extends /*@__PURE__*/ S.TaggedErrorClass<NoSuchBucket>()(
+  extends /*@__PURE__*/ S.TaggedError<NoSuchBucket>()(
     "NoSuchBucket",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -3168,83 +3166,83 @@ export class NoSuchBucket
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class NoSuchBucketPolicy
-  extends /*@__PURE__*/ S.TaggedErrorClass<NoSuchBucketPolicy>()(
+  extends /*@__PURE__*/ S.TaggedError<NoSuchBucketPolicy>()(
     "NoSuchBucketPolicy",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class NoSuchConfiguration
-  extends /*@__PURE__*/ S.TaggedErrorClass<NoSuchConfiguration>()(
+  extends /*@__PURE__*/ S.TaggedError<NoSuchConfiguration>()(
     "NoSuchConfiguration",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class NoSuchCORSConfiguration
-  extends /*@__PURE__*/ S.TaggedErrorClass<NoSuchCORSConfiguration>()(
+  extends /*@__PURE__*/ S.TaggedError<NoSuchCORSConfiguration>()(
     "NoSuchCORSConfiguration",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class NoSuchKey
-  extends /*@__PURE__*/ S.TaggedErrorClass<NoSuchKey>()(
+  extends /*@__PURE__*/ S.TaggedError<NoSuchKey>()(
     "NoSuchKey",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class NoSuchLifecycleConfiguration
-  extends /*@__PURE__*/ S.TaggedErrorClass<NoSuchLifecycleConfiguration>()(
+  extends /*@__PURE__*/ S.TaggedError<NoSuchLifecycleConfiguration>()(
     "NoSuchLifecycleConfiguration",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class NoSuchPublicAccessBlockConfiguration
-  extends /*@__PURE__*/ S.TaggedErrorClass<NoSuchPublicAccessBlockConfiguration>()(
+  extends /*@__PURE__*/ S.TaggedError<NoSuchPublicAccessBlockConfiguration>()(
     "NoSuchPublicAccessBlockConfiguration",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class NoSuchTagSet
-  extends /*@__PURE__*/ S.TaggedErrorClass<NoSuchTagSet>()("NoSuchTagSet", {
+  extends /*@__PURE__*/ S.TaggedError<NoSuchTagSet>()("NoSuchTagSet", {
     message: S.optional(S.String).pipe(T.ErrorMessage()),
   }) {}
 export class NoSuchUpload
-  extends /*@__PURE__*/ S.TaggedErrorClass<NoSuchUpload>()(
+  extends /*@__PURE__*/ S.TaggedError<NoSuchUpload>()(
     "NoSuchUpload",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class NoSuchWebsiteConfiguration
-  extends /*@__PURE__*/ S.TaggedErrorClass<NoSuchWebsiteConfiguration>()(
+  extends /*@__PURE__*/ S.TaggedError<NoSuchWebsiteConfiguration>()(
     "NoSuchWebsiteConfiguration",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class NotFound
-  extends /*@__PURE__*/ S.TaggedErrorClass<NotFound>()("NotFound", {
+  extends /*@__PURE__*/ S.TaggedError<NotFound>()("NotFound", {
     message: S.optional(S.String).pipe(T.ErrorMessage()),
   }) {}
 export class ObjectAlreadyInActiveTierError
-  extends /*@__PURE__*/ S.TaggedErrorClass<ObjectAlreadyInActiveTierError>()(
+  extends /*@__PURE__*/ S.TaggedError<ObjectAlreadyInActiveTierError>()(
     "ObjectAlreadyInActiveTierError",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class ObjectLockConfigurationNotFoundError
-  extends /*@__PURE__*/ S.TaggedErrorClass<ObjectLockConfigurationNotFoundError>()(
+  extends /*@__PURE__*/ S.TaggedError<ObjectLockConfigurationNotFoundError>()(
     "ObjectLockConfigurationNotFoundError",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class ObjectNotInActiveTierError
-  extends /*@__PURE__*/ S.TaggedErrorClass<ObjectNotInActiveTierError>()(
+  extends /*@__PURE__*/ S.TaggedError<ObjectNotInActiveTierError>()(
     "ObjectNotInActiveTierError",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class OwnershipControlsNotFoundError
-  extends /*@__PURE__*/ S.TaggedErrorClass<OwnershipControlsNotFoundError>()(
+  extends /*@__PURE__*/ S.TaggedError<OwnershipControlsNotFoundError>()(
     "OwnershipControlsNotFoundError",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class ParseError
-  extends /*@__PURE__*/ S.TaggedErrorClass<ParseError>()("ParseError", {
+  extends /*@__PURE__*/ S.TaggedError<ParseError>()("ParseError", {
     message: S.optional(S.String).pipe(T.ErrorMessage()),
   }) {}
 export class PermanentRedirect
-  extends /*@__PURE__*/ S.TaggedErrorClass<PermanentRedirect>()(
+  extends /*@__PURE__*/ S.TaggedError<PermanentRedirect>()(
     "PermanentRedirect",
     {
       BucketRegion: S.optional(S.String).pipe(
@@ -3256,41 +3254,41 @@ export class PermanentRedirect
     },
   ) {}
 export class PreconditionFailed
-  extends /*@__PURE__*/ S.TaggedErrorClass<PreconditionFailed>()(
+  extends /*@__PURE__*/ S.TaggedError<PreconditionFailed>()(
     "PreconditionFailed",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withConflictError) {}
 export class ReplicationConfigurationNotFoundError
-  extends /*@__PURE__*/ S.TaggedErrorClass<ReplicationConfigurationNotFoundError>()(
+  extends /*@__PURE__*/ S.TaggedError<ReplicationConfigurationNotFoundError>()(
     "ReplicationConfigurationNotFoundError",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class RequestError
-  extends /*@__PURE__*/ S.TaggedErrorClass<RequestError>()("RequestError", {
+  extends /*@__PURE__*/ S.TaggedError<RequestError>()("RequestError", {
     message: S.optional(S.String).pipe(T.ErrorMessage()),
   }) {}
 export class RequestLimitExceeded
-  extends /*@__PURE__*/ S.TaggedErrorClass<RequestLimitExceeded>()(
+  extends /*@__PURE__*/ S.TaggedError<RequestLimitExceeded>()(
     "RequestLimitExceeded",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withThrottlingError) {}
 export class SignatureDoesNotMatch
-  extends /*@__PURE__*/ S.TaggedErrorClass<SignatureDoesNotMatch>()(
+  extends /*@__PURE__*/ S.TaggedError<SignatureDoesNotMatch>()(
     "SignatureDoesNotMatch",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withAuthError) {}
 export class SlowDown
-  extends /*@__PURE__*/ S.TaggedErrorClass<SlowDown>()("SlowDown", {
+  extends /*@__PURE__*/ S.TaggedError<SlowDown>()("SlowDown", {
     message: S.optional(S.String).pipe(T.ErrorMessage()),
   }).pipe(C.withThrottlingError, C.withRetryableError) {}
 export class TooManyParts
-  extends /*@__PURE__*/ S.TaggedErrorClass<TooManyParts>()(
+  extends /*@__PURE__*/ S.TaggedError<TooManyParts>()(
     "TooManyParts",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class UnsupportedMediaType
-  extends /*@__PURE__*/ S.TaggedErrorClass<UnsupportedMediaType>()(
+  extends /*@__PURE__*/ S.TaggedError<UnsupportedMediaType>()(
     "UnsupportedMediaType",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(415),

@@ -86,19 +86,19 @@ const rules = T.EndpointResolver((p, _) => {
 });
 
 export class ConcurrentModificationException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ConcurrentModificationException>()(
+  extends /*@__PURE__*/ S.TaggedError<ConcurrentModificationException>()(
     "ConcurrentModificationException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class ConflictException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ConflictException>()(
+  extends /*@__PURE__*/ S.TaggedError<ConflictException>()(
     "ConflictException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class DetectedLanguageLowConfidenceException
-  extends /*@__PURE__*/ S.TaggedErrorClass<DetectedLanguageLowConfidenceException>()(
+  extends /*@__PURE__*/ S.TaggedError<DetectedLanguageLowConfidenceException>()(
     "DetectedLanguageLowConfidenceException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -107,61 +107,61 @@ export class DetectedLanguageLowConfidenceException
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InternalServerException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InternalServerException>()(
+  extends /*@__PURE__*/ S.TaggedError<InternalServerException>()(
     "InternalServerException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class InvalidFilterException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidFilterException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidFilterException>()(
     "InvalidFilterException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidParameterValueException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidParameterValueException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidParameterValueException>()(
     "InvalidParameterValueException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidRequestException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidRequestException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidRequestException>()(
     "InvalidRequestException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class LimitExceededException
-  extends /*@__PURE__*/ S.TaggedErrorClass<LimitExceededException>()(
+  extends /*@__PURE__*/ S.TaggedError<LimitExceededException>()(
     "LimitExceededException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ResourceNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ServiceUnavailableException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ServiceUnavailableException>()(
+  extends /*@__PURE__*/ S.TaggedError<ServiceUnavailableException>()(
     "ServiceUnavailableException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(503),
   ).pipe(C.withServerError) {}
 export class TextSizeLimitExceededException
-  extends /*@__PURE__*/ S.TaggedErrorClass<TextSizeLimitExceededException>()(
+  extends /*@__PURE__*/ S.TaggedError<TextSizeLimitExceededException>()(
     "TextSizeLimitExceededException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TooManyRequestsException
-  extends /*@__PURE__*/ S.TaggedErrorClass<TooManyRequestsException>()(
+  extends /*@__PURE__*/ S.TaggedError<TooManyRequestsException>()(
     "TooManyRequestsException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export class TooManyTagsException
-  extends /*@__PURE__*/ S.TaggedErrorClass<TooManyTagsException>()(
+  extends /*@__PURE__*/ S.TaggedError<TooManyTagsException>()(
     "TooManyTagsException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -170,7 +170,7 @@ export class TooManyTagsException
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class UnsupportedDisplayLanguageCodeException
-  extends /*@__PURE__*/ S.TaggedErrorClass<UnsupportedDisplayLanguageCodeException>()(
+  extends /*@__PURE__*/ S.TaggedError<UnsupportedDisplayLanguageCodeException>()(
     "UnsupportedDisplayLanguageCodeException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -179,7 +179,7 @@ export class UnsupportedDisplayLanguageCodeException
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class UnsupportedLanguagePairException
-  extends /*@__PURE__*/ S.TaggedErrorClass<UnsupportedLanguagePairException>()(
+  extends /*@__PURE__*/ S.TaggedError<UnsupportedLanguagePairException>()(
     "UnsupportedLanguagePairException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),

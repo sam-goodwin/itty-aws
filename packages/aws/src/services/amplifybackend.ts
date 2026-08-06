@@ -84,19 +84,19 @@ const rules = T.EndpointResolver((p, _) => {
 });
 
 export class BadRequestException
-  extends /*@__PURE__*/ S.TaggedErrorClass<BadRequestException>()(
+  extends /*@__PURE__*/ S.TaggedError<BadRequestException>()(
     "BadRequestException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class GatewayTimeoutException
-  extends /*@__PURE__*/ S.TaggedErrorClass<GatewayTimeoutException>()(
+  extends /*@__PURE__*/ S.TaggedError<GatewayTimeoutException>()(
     "GatewayTimeoutException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(504),
   ).pipe(C.withTimeoutError) {}
 export class NotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<NotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<NotFoundException>()(
     "NotFoundException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -105,7 +105,7 @@ export class NotFoundException
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class TooManyRequestsException
-  extends /*@__PURE__*/ S.TaggedErrorClass<TooManyRequestsException>()(
+  extends /*@__PURE__*/ S.TaggedError<TooManyRequestsException>()(
     "TooManyRequestsException",
     {
       LimitType: S.optional(S.String),

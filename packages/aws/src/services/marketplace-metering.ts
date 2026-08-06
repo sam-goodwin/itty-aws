@@ -118,98 +118,98 @@ const rules = T.EndpointResolver((p, _) => {
 });
 
 export class CustomerNotEntitledException
-  extends /*@__PURE__*/ S.TaggedErrorClass<CustomerNotEntitledException>()(
+  extends /*@__PURE__*/ S.TaggedError<CustomerNotEntitledException>()(
     "CustomerNotEntitledException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class DisabledApiException
-  extends /*@__PURE__*/ S.TaggedErrorClass<DisabledApiException>()(
+  extends /*@__PURE__*/ S.TaggedError<DisabledApiException>()(
     "DisabledApiException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class DuplicateRequestException
-  extends /*@__PURE__*/ S.TaggedErrorClass<DuplicateRequestException>()(
+  extends /*@__PURE__*/ S.TaggedError<DuplicateRequestException>()(
     "DuplicateRequestException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class ExpiredTokenException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ExpiredTokenException>()(
+  extends /*@__PURE__*/ S.TaggedError<ExpiredTokenException>()(
     "ExpiredTokenException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class IdempotencyConflictException
-  extends /*@__PURE__*/ S.TaggedErrorClass<IdempotencyConflictException>()(
+  extends /*@__PURE__*/ S.TaggedError<IdempotencyConflictException>()(
     "IdempotencyConflictException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class InternalServiceErrorException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InternalServiceErrorException>()(
+  extends /*@__PURE__*/ S.TaggedError<InternalServiceErrorException>()(
     "InternalServiceErrorException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidCustomerIdentifierException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidCustomerIdentifierException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidCustomerIdentifierException>()(
     "InvalidCustomerIdentifierException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidEndpointRegionException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidEndpointRegionException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidEndpointRegionException>()(
     "InvalidEndpointRegionException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidLicenseException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidLicenseException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidLicenseException>()(
     "InvalidLicenseException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidProductCodeException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidProductCodeException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidProductCodeException>()(
     "InvalidProductCodeException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidPublicKeyVersionException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidPublicKeyVersionException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidPublicKeyVersionException>()(
     "InvalidPublicKeyVersionException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidRegionException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidRegionException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidRegionException>()(
     "InvalidRegionException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidTagException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidTagException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidTagException>()(
     "InvalidTagException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidTokenException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidTokenException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidTokenException>()(
     "InvalidTokenException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidUsageAllocationsException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidUsageAllocationsException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidUsageAllocationsException>()(
     "InvalidUsageAllocationsException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidUsageDimensionException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidUsageDimensionException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidUsageDimensionException>()(
     "InvalidUsageDimensionException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class PlatformNotSupportedException
-  extends /*@__PURE__*/ S.TaggedErrorClass<PlatformNotSupportedException>()(
+  extends /*@__PURE__*/ S.TaggedError<PlatformNotSupportedException>()(
     "PlatformNotSupportedException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class ThrottlingException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ThrottlingException>()(
+  extends /*@__PURE__*/ S.TaggedError<ThrottlingException>()(
     "ThrottlingException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class TimestampOutOfBoundsException
-  extends /*@__PURE__*/ S.TaggedErrorClass<TimestampOutOfBoundsException>()(
+  extends /*@__PURE__*/ S.TaggedError<TimestampOutOfBoundsException>()(
     "TimestampOutOfBoundsException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}

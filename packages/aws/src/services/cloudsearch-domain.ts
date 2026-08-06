@@ -84,7 +84,7 @@ const rules = T.EndpointResolver((p, _) => {
 });
 
 export class DocumentServiceException
-  extends /*@__PURE__*/ S.TaggedErrorClass<DocumentServiceException>()(
+  extends /*@__PURE__*/ S.TaggedError<DocumentServiceException>()(
     "DocumentServiceException",
     {
       status: S.optional(S.String),
@@ -92,10 +92,9 @@ export class DocumentServiceException
     },
   ) {}
 export class SearchException
-  extends /*@__PURE__*/ S.TaggedErrorClass<SearchException>()(
-    "SearchException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-  ) {}
+  extends /*@__PURE__*/ S.TaggedError<SearchException>()("SearchException", {
+    message: S.optional(S.String).pipe(T.ErrorMessage()),
+  }) {}
 export type Cursor = string;
 export type Expr = string;
 export type Facet = string;

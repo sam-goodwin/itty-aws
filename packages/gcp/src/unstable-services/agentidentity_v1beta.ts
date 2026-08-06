@@ -13,7 +13,7 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-  S.TaggedErrorClass<BadRequest>()("BadRequest", {
+  S.TaggedError<BadRequest>()("BadRequest", {
     code: S.optional(S.Number),
     message: S.String,
     status: S.optional(S.String),
@@ -25,7 +25,7 @@ export class BadRequest extends T.applyErrorMatchers(
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Conflict>()("Conflict", {
+  S.TaggedError<Conflict>()("Conflict", {
     code: S.optional(S.Number),
     message: S.String,
     status: S.optional(S.String),
@@ -37,7 +37,7 @@ export class Conflict extends T.applyErrorMatchers(
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+  S.TaggedError<Forbidden>()("Forbidden", {
     code: S.optional(S.Number),
     message: S.String,
     status: S.optional(S.String),
@@ -49,7 +49,7 @@ export class Forbidden extends T.applyErrorMatchers(
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<NotFound>()("NotFound", {
+  S.TaggedError<NotFound>()("NotFound", {
     code: S.optional(S.Number),
     message: S.String,
     status: S.optional(S.String),

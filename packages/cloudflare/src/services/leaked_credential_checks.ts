@@ -16,7 +16,7 @@ export type { CloudflareOpError, CloudflareOpContext };
 
 export class DetectionNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<DetectionNotFound>()("DetectionNotFound", {
+    /*@__PURE__*/ S.TaggedError<DetectionNotFound>()("DetectionNotFound", {
       code: S.Number,
       message: S.String,
     }),
@@ -25,7 +25,7 @@ export class DetectionNotFound
 
 export class DetectionQuotaExceeded
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<DetectionQuotaExceeded>()(
+    /*@__PURE__*/ S.TaggedError<DetectionQuotaExceeded>()(
       "DetectionQuotaExceeded",
       {
         code: S.Number,
@@ -37,7 +37,7 @@ export class DetectionQuotaExceeded
 
 export class Forbidden
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    /*@__PURE__*/ S.TaggedError<Forbidden>()("Forbidden", {
       code: S.Number,
       message: S.String,
     }),
@@ -46,7 +46,7 @@ export class Forbidden
 
 export class LeakedCredentialChecksDisabled
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<LeakedCredentialChecksDisabled>()(
+    /*@__PURE__*/ S.TaggedError<LeakedCredentialChecksDisabled>()(
       "LeakedCredentialChecksDisabled",
       {
         code: S.Number,

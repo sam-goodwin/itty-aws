@@ -24,7 +24,7 @@ import * as Schema from "effect/Schema";
 import * as Category from "@distilled.cloud/core/category";
 
 // Schema parse error wrapper
-export class CloudflareParseError extends Schema.TaggedErrorClass<CloudflareParseError>()(
+export class CloudflareParseError extends Schema.TaggedError<CloudflareParseError>()(
   "CloudflareParseError",
   {
     body: Schema.Unknown,
@@ -36,7 +36,7 @@ export class CloudflareParseError extends Schema.TaggedErrorClass<CloudflarePars
  * Unknown Cloudflare error - returned when an error code is not recognized.
  * Contains the raw error code for later cataloging.
  */
-export class UnknownCloudflareError extends Schema.TaggedErrorClass<UnknownCloudflareError>()(
+export class UnknownCloudflareError extends Schema.TaggedError<UnknownCloudflareError>()(
   "UnknownCloudflareError",
   {
     code: Schema.optional(Schema.Number),
@@ -54,7 +54,7 @@ export class UnknownCloudflareError extends Schema.TaggedErrorClass<UnknownCloud
  * service-local InvalidRoute class with the same `_tag`, so test assertions
  * on `e._tag === "InvalidRoute"` work for both global and per-op variants.
  */
-export class InvalidRoute extends Schema.TaggedErrorClass<InvalidRoute>()(
+export class InvalidRoute extends Schema.TaggedError<InvalidRoute>()(
   "InvalidRoute",
   {
     code: Schema.optional(Schema.Number),
@@ -65,7 +65,7 @@ export class InvalidRoute extends Schema.TaggedErrorClass<InvalidRoute>()(
 /**
  * HTTP error - non-2xx response without a parseable Cloudflare error body.
  */
-export class CloudflareHttpError extends Schema.TaggedErrorClass<CloudflareHttpError>()(
+export class CloudflareHttpError extends Schema.TaggedError<CloudflareHttpError>()(
   "CloudflareHttpError",
   {
     status: Schema.Number,
@@ -113,7 +113,7 @@ export interface CloudflareApiError {
  * above); it remains exported because generated operations reference it in
  * their `errors` lists.
  */
-export class CloudflareError extends S.TaggedErrorClass<CloudflareError>()(
+export class CloudflareError extends S.TaggedError<CloudflareError>()(
   "CloudflareError",
   {
     status: S.Number,
@@ -127,7 +127,7 @@ export class CloudflareError extends S.TaggedErrorClass<CloudflareError>()(
 ) {}
 
 /** Legacy rate-limit error — see {@link CloudflareError}'s note. */
-export class CloudflareRateLimited extends S.TaggedErrorClass<CloudflareRateLimited>()(
+export class CloudflareRateLimited extends S.TaggedError<CloudflareRateLimited>()(
   "CloudflareRateLimited",
   {
     status: S.Number,

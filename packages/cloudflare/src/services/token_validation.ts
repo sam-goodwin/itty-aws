@@ -29,7 +29,7 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
 
 export class Forbidden
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    /*@__PURE__*/ S.TaggedError<Forbidden>()("Forbidden", {
       code: S.Number,
       message: S.String,
     }),
@@ -38,7 +38,7 @@ export class Forbidden
 
 export class TokenConfigurationNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<TokenConfigurationNotFound>()(
+    /*@__PURE__*/ S.TaggedError<TokenConfigurationNotFound>()(
       "TokenConfigurationNotFound",
       {
         code: S.Number,
@@ -50,7 +50,7 @@ export class TokenConfigurationNotFound
 
 export class TokenValidationNotEntitled
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<TokenValidationNotEntitled>()(
+    /*@__PURE__*/ S.TaggedError<TokenValidationNotEntitled>()(
       "TokenValidationNotEntitled",
       {
         code: S.Number,
@@ -62,7 +62,7 @@ export class TokenValidationNotEntitled
 
 export class TokenValidationRuleNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<TokenValidationRuleNotFound>()(
+    /*@__PURE__*/ S.TaggedError<TokenValidationRuleNotFound>()(
       "TokenValidationRuleNotFound",
       {
         code: S.Number,

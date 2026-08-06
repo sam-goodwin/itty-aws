@@ -90,7 +90,7 @@ const rules = T.EndpointResolver((p, _) => {
 });
 
 export class ConcurrentUpdateException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ConcurrentUpdateException>()(
+  extends /*@__PURE__*/ S.TaggedError<ConcurrentUpdateException>()(
     "ConcurrentUpdateException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -102,7 +102,7 @@ export class ConcurrentUpdateException
     ),
   ).pipe(C.withServerError) {}
 export class InternalServiceException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InternalServiceException>()(
+  extends /*@__PURE__*/ S.TaggedError<InternalServiceException>()(
     "InternalServiceException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -114,7 +114,7 @@ export class InternalServiceException
     ),
   ).pipe(C.withServerError) {}
 export class InvalidNextTokenException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidNextTokenException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidNextTokenException>()(
     "InvalidNextTokenException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -126,7 +126,7 @@ export class InvalidNextTokenException
     ),
   ).pipe(C.withBadRequestError) {}
 export class LimitExceededException
-  extends /*@__PURE__*/ S.TaggedErrorClass<LimitExceededException>()(
+  extends /*@__PURE__*/ S.TaggedError<LimitExceededException>()(
     "LimitExceededException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -138,7 +138,7 @@ export class LimitExceededException
     ),
   ).pipe(C.withBadRequestError) {}
 export class ObjectNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ObjectNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<ObjectNotFoundException>()(
     "ObjectNotFoundException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -150,7 +150,7 @@ export class ObjectNotFoundException
     ),
   ).pipe(C.withBadRequestError) {}
 export class ValidationException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ValidationException>()(
+  extends /*@__PURE__*/ S.TaggedError<ValidationException>()(
     "ValidationException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(

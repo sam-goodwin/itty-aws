@@ -35,7 +35,7 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
 
 export class Forbidden
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    /*@__PURE__*/ S.TaggedError<Forbidden>()("Forbidden", {
       code: S.Number,
       message: S.String,
     }),
@@ -44,7 +44,7 @@ export class Forbidden
 
 export class ListAlreadyExists
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<ListAlreadyExists>()("ListAlreadyExists", {
+    /*@__PURE__*/ S.TaggedError<ListAlreadyExists>()("ListAlreadyExists", {
       code: S.Number,
       message: S.String,
     }),
@@ -53,7 +53,7 @@ export class ListAlreadyExists
 
 export class ListNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<ListNotFound>()("ListNotFound", {
+    /*@__PURE__*/ S.TaggedError<ListNotFound>()("ListNotFound", {
       code: S.Number,
       message: S.String,
     }),

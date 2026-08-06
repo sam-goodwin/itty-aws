@@ -84,7 +84,7 @@ const rules = T.EndpointResolver((p, _) => {
 });
 
 export class AccessDeniedException
-  extends /*@__PURE__*/ S.TaggedErrorClass<AccessDeniedException>()(
+  extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()(
     "AccessDeniedException",
     {
       detailedMessage: S.String,
@@ -95,7 +95,7 @@ export class AccessDeniedException
     T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class BadRequestException
-  extends /*@__PURE__*/ S.TaggedErrorClass<BadRequestException>()(
+  extends /*@__PURE__*/ S.TaggedError<BadRequestException>()(
     "BadRequestException",
     {
       detailedMessage: S.String,
@@ -106,7 +106,7 @@ export class BadRequestException
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class BulkLoadIdNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<BulkLoadIdNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<BulkLoadIdNotFoundException>()(
     "BulkLoadIdNotFoundException",
     {
       detailedMessage: S.String,
@@ -117,7 +117,7 @@ export class BulkLoadIdNotFoundException
     T.all(T.HttpError(404), T.Retryable()),
   ).pipe(C.withBadRequestError, C.withRetryableError) {}
 export class CancelledByUserException
-  extends /*@__PURE__*/ S.TaggedErrorClass<CancelledByUserException>()(
+  extends /*@__PURE__*/ S.TaggedError<CancelledByUserException>()(
     "CancelledByUserException",
     {
       detailedMessage: S.String,
@@ -128,7 +128,7 @@ export class CancelledByUserException
     T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class ClientTimeoutException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ClientTimeoutException>()(
+  extends /*@__PURE__*/ S.TaggedError<ClientTimeoutException>()(
     "ClientTimeoutException",
     {
       detailedMessage: S.String,
@@ -139,7 +139,7 @@ export class ClientTimeoutException
     T.all(T.HttpError(408), T.Retryable()),
   ).pipe(C.withTimeoutError, C.withRetryableError) {}
 export class ConcurrentModificationException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ConcurrentModificationException>()(
+  extends /*@__PURE__*/ S.TaggedError<ConcurrentModificationException>()(
     "ConcurrentModificationException",
     {
       detailedMessage: S.String,
@@ -150,7 +150,7 @@ export class ConcurrentModificationException
     T.all(T.HttpError(500), T.Retryable()),
   ).pipe(C.withServerError, C.withRetryableError) {}
 export class ConstraintViolationException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ConstraintViolationException>()(
+  extends /*@__PURE__*/ S.TaggedError<ConstraintViolationException>()(
     "ConstraintViolationException",
     {
       detailedMessage: S.String,
@@ -161,7 +161,7 @@ export class ConstraintViolationException
     T.all(T.HttpError(400), T.Retryable()),
   ).pipe(C.withBadRequestError, C.withRetryableError) {}
 export class ExpiredStreamException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ExpiredStreamException>()(
+  extends /*@__PURE__*/ S.TaggedError<ExpiredStreamException>()(
     "ExpiredStreamException",
     {
       detailedMessage: S.String,
@@ -172,7 +172,7 @@ export class ExpiredStreamException
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class FailureByQueryException
-  extends /*@__PURE__*/ S.TaggedErrorClass<FailureByQueryException>()(
+  extends /*@__PURE__*/ S.TaggedError<FailureByQueryException>()(
     "FailureByQueryException",
     {
       detailedMessage: S.String,
@@ -183,7 +183,7 @@ export class FailureByQueryException
     T.all(T.HttpError(500), T.Retryable()),
   ).pipe(C.withServerError, C.withRetryableError) {}
 export class IllegalArgumentException
-  extends /*@__PURE__*/ S.TaggedErrorClass<IllegalArgumentException>()(
+  extends /*@__PURE__*/ S.TaggedError<IllegalArgumentException>()(
     "IllegalArgumentException",
     {
       detailedMessage: S.String,
@@ -194,7 +194,7 @@ export class IllegalArgumentException
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InternalFailureException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InternalFailureException>()(
+  extends /*@__PURE__*/ S.TaggedError<InternalFailureException>()(
     "InternalFailureException",
     {
       detailedMessage: S.String,
@@ -205,7 +205,7 @@ export class InternalFailureException
     T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class InvalidArgumentException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidArgumentException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidArgumentException>()(
     "InvalidArgumentException",
     {
       detailedMessage: S.String,
@@ -216,7 +216,7 @@ export class InvalidArgumentException
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidNumericDataException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidNumericDataException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidNumericDataException>()(
     "InvalidNumericDataException",
     {
       detailedMessage: S.String,
@@ -227,7 +227,7 @@ export class InvalidNumericDataException
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidParameterException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidParameterException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidParameterException>()(
     "InvalidParameterException",
     {
       detailedMessage: S.String,
@@ -238,7 +238,7 @@ export class InvalidParameterException
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class LoadUrlAccessDeniedException
-  extends /*@__PURE__*/ S.TaggedErrorClass<LoadUrlAccessDeniedException>()(
+  extends /*@__PURE__*/ S.TaggedError<LoadUrlAccessDeniedException>()(
     "LoadUrlAccessDeniedException",
     {
       detailedMessage: S.String,
@@ -249,7 +249,7 @@ export class LoadUrlAccessDeniedException
     T.HttpError(400),
   ).pipe(C.withBadRequestError, C.withAuthError) {}
 export class MalformedQueryException
-  extends /*@__PURE__*/ S.TaggedErrorClass<MalformedQueryException>()(
+  extends /*@__PURE__*/ S.TaggedError<MalformedQueryException>()(
     "MalformedQueryException",
     {
       detailedMessage: S.String,
@@ -260,7 +260,7 @@ export class MalformedQueryException
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class MemoryLimitExceededException
-  extends /*@__PURE__*/ S.TaggedErrorClass<MemoryLimitExceededException>()(
+  extends /*@__PURE__*/ S.TaggedError<MemoryLimitExceededException>()(
     "MemoryLimitExceededException",
     {
       detailedMessage: S.String,
@@ -271,7 +271,7 @@ export class MemoryLimitExceededException
     T.all(T.HttpError(500), T.Retryable()),
   ).pipe(C.withServerError, C.withRetryableError) {}
 export class MethodNotAllowedException
-  extends /*@__PURE__*/ S.TaggedErrorClass<MethodNotAllowedException>()(
+  extends /*@__PURE__*/ S.TaggedError<MethodNotAllowedException>()(
     "MethodNotAllowedException",
     {
       detailedMessage: S.String,
@@ -282,7 +282,7 @@ export class MethodNotAllowedException
     T.HttpError(405),
   ).pipe(C.withBadRequestError) {}
 export class MissingParameterException
-  extends /*@__PURE__*/ S.TaggedErrorClass<MissingParameterException>()(
+  extends /*@__PURE__*/ S.TaggedError<MissingParameterException>()(
     "MissingParameterException",
     {
       detailedMessage: S.String,
@@ -293,7 +293,7 @@ export class MissingParameterException
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class MLResourceNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<MLResourceNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<MLResourceNotFoundException>()(
     "MLResourceNotFoundException",
     {
       detailedMessage: S.String,
@@ -304,7 +304,7 @@ export class MLResourceNotFoundException
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ParsingException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ParsingException>()(
+  extends /*@__PURE__*/ S.TaggedError<ParsingException>()(
     "ParsingException",
     {
       detailedMessage: S.String,
@@ -315,7 +315,7 @@ export class ParsingException
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class PreconditionsFailedException
-  extends /*@__PURE__*/ S.TaggedErrorClass<PreconditionsFailedException>()(
+  extends /*@__PURE__*/ S.TaggedError<PreconditionsFailedException>()(
     "PreconditionsFailedException",
     {
       detailedMessage: S.String,
@@ -326,7 +326,7 @@ export class PreconditionsFailedException
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class QueryLimitExceededException
-  extends /*@__PURE__*/ S.TaggedErrorClass<QueryLimitExceededException>()(
+  extends /*@__PURE__*/ S.TaggedError<QueryLimitExceededException>()(
     "QueryLimitExceededException",
     {
       detailedMessage: S.String,
@@ -337,7 +337,7 @@ export class QueryLimitExceededException
     T.all(T.HttpError(500), T.Retryable()),
   ).pipe(C.withServerError, C.withRetryableError) {}
 export class QueryLimitException
-  extends /*@__PURE__*/ S.TaggedErrorClass<QueryLimitException>()(
+  extends /*@__PURE__*/ S.TaggedError<QueryLimitException>()(
     "QueryLimitException",
     {
       detailedMessage: S.String,
@@ -348,7 +348,7 @@ export class QueryLimitException
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class QueryTooLargeException
-  extends /*@__PURE__*/ S.TaggedErrorClass<QueryTooLargeException>()(
+  extends /*@__PURE__*/ S.TaggedError<QueryTooLargeException>()(
     "QueryTooLargeException",
     {
       detailedMessage: S.String,
@@ -359,7 +359,7 @@ export class QueryTooLargeException
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ReadOnlyViolationException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ReadOnlyViolationException>()(
+  extends /*@__PURE__*/ S.TaggedError<ReadOnlyViolationException>()(
     "ReadOnlyViolationException",
     {
       detailedMessage: S.String,
@@ -370,7 +370,7 @@ export class ReadOnlyViolationException
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class S3Exception
-  extends /*@__PURE__*/ S.TaggedErrorClass<S3Exception>()(
+  extends /*@__PURE__*/ S.TaggedError<S3Exception>()(
     "S3Exception",
     {
       detailedMessage: S.String,
@@ -381,7 +381,7 @@ export class S3Exception
     T.all(T.HttpError(400), T.Retryable()),
   ).pipe(C.withBadRequestError, C.withRetryableError) {}
 export class ServerShutdownException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ServerShutdownException>()(
+  extends /*@__PURE__*/ S.TaggedError<ServerShutdownException>()(
     "ServerShutdownException",
     {
       detailedMessage: S.String,
@@ -392,7 +392,7 @@ export class ServerShutdownException
     T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class StatisticsNotAvailableException
-  extends /*@__PURE__*/ S.TaggedErrorClass<StatisticsNotAvailableException>()(
+  extends /*@__PURE__*/ S.TaggedError<StatisticsNotAvailableException>()(
     "StatisticsNotAvailableException",
     {
       detailedMessage: S.String,
@@ -403,7 +403,7 @@ export class StatisticsNotAvailableException
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class StreamRecordsNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<StreamRecordsNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<StreamRecordsNotFoundException>()(
     "StreamRecordsNotFoundException",
     {
       detailedMessage: S.String,
@@ -414,7 +414,7 @@ export class StreamRecordsNotFoundException
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ThrottlingException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ThrottlingException>()(
+  extends /*@__PURE__*/ S.TaggedError<ThrottlingException>()(
     "ThrottlingException",
     {
       detailedMessage: S.String,
@@ -425,7 +425,7 @@ export class ThrottlingException
     T.all(T.HttpError(500), T.Retryable()),
   ).pipe(C.withServerError, C.withRetryableError) {}
 export class TimeLimitExceededException
-  extends /*@__PURE__*/ S.TaggedErrorClass<TimeLimitExceededException>()(
+  extends /*@__PURE__*/ S.TaggedError<TimeLimitExceededException>()(
     "TimeLimitExceededException",
     {
       detailedMessage: S.String,
@@ -436,7 +436,7 @@ export class TimeLimitExceededException
     T.all(T.HttpError(500), T.Retryable()),
   ).pipe(C.withServerError, C.withRetryableError) {}
 export class TooManyRequestsException
-  extends /*@__PURE__*/ S.TaggedErrorClass<TooManyRequestsException>()(
+  extends /*@__PURE__*/ S.TaggedError<TooManyRequestsException>()(
     "TooManyRequestsException",
     {
       detailedMessage: S.String,
@@ -447,7 +447,7 @@ export class TooManyRequestsException
     T.all(T.HttpError(429), T.Retryable()),
   ).pipe(C.withThrottlingError, C.withRetryableError) {}
 export class UnsupportedOperationException
-  extends /*@__PURE__*/ S.TaggedErrorClass<UnsupportedOperationException>()(
+  extends /*@__PURE__*/ S.TaggedError<UnsupportedOperationException>()(
     "UnsupportedOperationException",
     {
       detailedMessage: S.String,

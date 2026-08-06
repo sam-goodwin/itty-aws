@@ -84,7 +84,7 @@ const rules = T.EndpointResolver((p, _) => {
 });
 
 export class DataCatalogNotFound
-  extends /*@__PURE__*/ S.TaggedErrorClass<DataCatalogNotFound>()(
+  extends /*@__PURE__*/ S.TaggedError<DataCatalogNotFound>()(
     "DataCatalogNotFound",
     {
       AthenaErrorCode: S.optional(S.String),
@@ -96,12 +96,12 @@ export class DataCatalogNotFound
     }),
   ).pipe(C.withNotFoundError) {}
 export class InternalServerException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InternalServerException>()(
+  extends /*@__PURE__*/ S.TaggedError<InternalServerException>()(
     "InternalServerException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidRequestException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidRequestException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidRequestException>()(
     "InvalidRequestException",
     {
       AthenaErrorCode: S.optional(S.String),
@@ -109,12 +109,12 @@ export class InvalidRequestException
     },
   ) {}
 export class MetadataException
-  extends /*@__PURE__*/ S.TaggedErrorClass<MetadataException>()(
+  extends /*@__PURE__*/ S.TaggedError<MetadataException>()(
     "MetadataException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class NamedQueryNotFound
-  extends /*@__PURE__*/ S.TaggedErrorClass<NamedQueryNotFound>()(
+  extends /*@__PURE__*/ S.TaggedError<NamedQueryNotFound>()(
     "NamedQueryNotFound",
     {
       AthenaErrorCode: S.optional(S.String),
@@ -126,7 +126,7 @@ export class NamedQueryNotFound
     }),
   ).pipe(C.withNotFoundError) {}
 export class ResourceNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -134,12 +134,12 @@ export class ResourceNotFoundException
     },
   ) {}
 export class SessionAlreadyExistsException
-  extends /*@__PURE__*/ S.TaggedErrorClass<SessionAlreadyExistsException>()(
+  extends /*@__PURE__*/ S.TaggedError<SessionAlreadyExistsException>()(
     "SessionAlreadyExistsException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withAlreadyExistsError) {}
 export class TooManyRequestsException
-  extends /*@__PURE__*/ S.TaggedErrorClass<TooManyRequestsException>()(
+  extends /*@__PURE__*/ S.TaggedError<TooManyRequestsException>()(
     "TooManyRequestsException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -151,7 +151,7 @@ export class TooManyRequestsException
     },
   ) {}
 export class WorkGroupNotFound
-  extends /*@__PURE__*/ S.TaggedErrorClass<WorkGroupNotFound>()(
+  extends /*@__PURE__*/ S.TaggedError<WorkGroupNotFound>()(
     "WorkGroupNotFound",
     {
       AthenaErrorCode: S.optional(S.String),

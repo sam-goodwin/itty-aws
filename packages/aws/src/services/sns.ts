@@ -93,7 +93,7 @@ const rules = T.EndpointResolver((p, _) => {
 });
 
 export class AuthorizationErrorException
-  extends /*@__PURE__*/ S.TaggedErrorClass<AuthorizationErrorException>()(
+  extends /*@__PURE__*/ S.TaggedError<AuthorizationErrorException>()(
     "AuthorizationErrorException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -102,7 +102,7 @@ export class AuthorizationErrorException
     ),
   ).pipe(C.withAuthError) {}
 export class BatchEntryIdsNotDistinctException
-  extends /*@__PURE__*/ S.TaggedErrorClass<BatchEntryIdsNotDistinctException>()(
+  extends /*@__PURE__*/ S.TaggedError<BatchEntryIdsNotDistinctException>()(
     "BatchEntryIdsNotDistinctException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -114,7 +114,7 @@ export class BatchEntryIdsNotDistinctException
     ),
   ).pipe(C.withBadRequestError) {}
 export class BatchRequestTooLongException
-  extends /*@__PURE__*/ S.TaggedErrorClass<BatchRequestTooLongException>()(
+  extends /*@__PURE__*/ S.TaggedError<BatchRequestTooLongException>()(
     "BatchRequestTooLongException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -123,7 +123,7 @@ export class BatchRequestTooLongException
     ),
   ).pipe(C.withBadRequestError) {}
 export class ConcurrentAccessException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ConcurrentAccessException>()(
+  extends /*@__PURE__*/ S.TaggedError<ConcurrentAccessException>()(
     "ConcurrentAccessException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -132,7 +132,7 @@ export class ConcurrentAccessException
     ),
   ).pipe(C.withBadRequestError) {}
 export class EmptyBatchRequestException
-  extends /*@__PURE__*/ S.TaggedErrorClass<EmptyBatchRequestException>()(
+  extends /*@__PURE__*/ S.TaggedError<EmptyBatchRequestException>()(
     "EmptyBatchRequestException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -141,7 +141,7 @@ export class EmptyBatchRequestException
     ),
   ).pipe(C.withBadRequestError) {}
 export class EndpointDisabledException
-  extends /*@__PURE__*/ S.TaggedErrorClass<EndpointDisabledException>()(
+  extends /*@__PURE__*/ S.TaggedError<EndpointDisabledException>()(
     "EndpointDisabledException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -150,7 +150,7 @@ export class EndpointDisabledException
     ),
   ).pipe(C.withBadRequestError) {}
 export class FilterPolicyLimitExceededException
-  extends /*@__PURE__*/ S.TaggedErrorClass<FilterPolicyLimitExceededException>()(
+  extends /*@__PURE__*/ S.TaggedError<FilterPolicyLimitExceededException>()(
     "FilterPolicyLimitExceededException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -162,7 +162,7 @@ export class FilterPolicyLimitExceededException
     ),
   ).pipe(C.withAuthError) {}
 export class InternalErrorException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InternalErrorException>()(
+  extends /*@__PURE__*/ S.TaggedError<InternalErrorException>()(
     "InternalErrorException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -171,7 +171,7 @@ export class InternalErrorException
     ),
   ).pipe(C.withServerError) {}
 export class InvalidBatchEntryIdException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidBatchEntryIdException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidBatchEntryIdException>()(
     "InvalidBatchEntryIdException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -180,12 +180,12 @@ export class InvalidBatchEntryIdException
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidClientTokenId
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidClientTokenId>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidClientTokenId>()(
     "InvalidClientTokenId",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withAuthError) {}
 export class InvalidParameterException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidParameterException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidParameterException>()(
     "InvalidParameterException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -194,7 +194,7 @@ export class InvalidParameterException
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidParameterValueException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidParameterValueException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidParameterValueException>()(
     "InvalidParameterValueException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -203,7 +203,7 @@ export class InvalidParameterValueException
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidSecurityException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidSecurityException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidSecurityException>()(
     "InvalidSecurityException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -212,7 +212,7 @@ export class InvalidSecurityException
     ),
   ).pipe(C.withAuthError) {}
 export class InvalidStateException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidStateException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidStateException>()(
     "InvalidStateException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -221,7 +221,7 @@ export class InvalidStateException
     ),
   ).pipe(C.withBadRequestError) {}
 export class KMSAccessDeniedException
-  extends /*@__PURE__*/ S.TaggedErrorClass<KMSAccessDeniedException>()(
+  extends /*@__PURE__*/ S.TaggedError<KMSAccessDeniedException>()(
     "KMSAccessDeniedException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -230,7 +230,7 @@ export class KMSAccessDeniedException
     ),
   ).pipe(C.withBadRequestError, C.withAuthError) {}
 export class KMSDisabledException
-  extends /*@__PURE__*/ S.TaggedErrorClass<KMSDisabledException>()(
+  extends /*@__PURE__*/ S.TaggedError<KMSDisabledException>()(
     "KMSDisabledException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -239,7 +239,7 @@ export class KMSDisabledException
     ),
   ).pipe(C.withBadRequestError) {}
 export class KMSInvalidStateException
-  extends /*@__PURE__*/ S.TaggedErrorClass<KMSInvalidStateException>()(
+  extends /*@__PURE__*/ S.TaggedError<KMSInvalidStateException>()(
     "KMSInvalidStateException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -248,7 +248,7 @@ export class KMSInvalidStateException
     ),
   ).pipe(C.withBadRequestError) {}
 export class KMSNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<KMSNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<KMSNotFoundException>()(
     "KMSNotFoundException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -257,7 +257,7 @@ export class KMSNotFoundException
     ),
   ).pipe(C.withBadRequestError) {}
 export class KMSOptInRequired
-  extends /*@__PURE__*/ S.TaggedErrorClass<KMSOptInRequired>()(
+  extends /*@__PURE__*/ S.TaggedError<KMSOptInRequired>()(
     "KMSOptInRequired",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -266,7 +266,7 @@ export class KMSOptInRequired
     ),
   ).pipe(C.withAuthError) {}
 export class KMSThrottlingException
-  extends /*@__PURE__*/ S.TaggedErrorClass<KMSThrottlingException>()(
+  extends /*@__PURE__*/ S.TaggedError<KMSThrottlingException>()(
     "KMSThrottlingException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -275,7 +275,7 @@ export class KMSThrottlingException
     ),
   ).pipe(C.withBadRequestError) {}
 export class NotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<NotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<NotFoundException>()(
     "NotFoundException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -284,7 +284,7 @@ export class NotFoundException
     ),
   ).pipe(C.withBadRequestError) {}
 export class OptedOutException
-  extends /*@__PURE__*/ S.TaggedErrorClass<OptedOutException>()(
+  extends /*@__PURE__*/ S.TaggedError<OptedOutException>()(
     "OptedOutException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -293,7 +293,7 @@ export class OptedOutException
     ),
   ).pipe(C.withBadRequestError) {}
 export class PlatformApplicationDisabledException
-  extends /*@__PURE__*/ S.TaggedErrorClass<PlatformApplicationDisabledException>()(
+  extends /*@__PURE__*/ S.TaggedError<PlatformApplicationDisabledException>()(
     "PlatformApplicationDisabledException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -305,7 +305,7 @@ export class PlatformApplicationDisabledException
     ),
   ).pipe(C.withBadRequestError) {}
 export class ReplayLimitExceededException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ReplayLimitExceededException>()(
+  extends /*@__PURE__*/ S.TaggedError<ReplayLimitExceededException>()(
     "ReplayLimitExceededException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -314,12 +314,12 @@ export class ReplayLimitExceededException
     ),
   ).pipe(C.withAuthError) {}
 export class RequestLimitExceeded
-  extends /*@__PURE__*/ S.TaggedErrorClass<RequestLimitExceeded>()(
+  extends /*@__PURE__*/ S.TaggedError<RequestLimitExceeded>()(
     "RequestLimitExceeded",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withThrottlingError) {}
 export class ResourceNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -328,7 +328,7 @@ export class ResourceNotFoundException
     ),
   ).pipe(C.withBadRequestError) {}
 export class StaleTagException
-  extends /*@__PURE__*/ S.TaggedErrorClass<StaleTagException>()(
+  extends /*@__PURE__*/ S.TaggedError<StaleTagException>()(
     "StaleTagException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -337,7 +337,7 @@ export class StaleTagException
     ),
   ).pipe(C.withBadRequestError) {}
 export class SubscriptionLimitExceededException
-  extends /*@__PURE__*/ S.TaggedErrorClass<SubscriptionLimitExceededException>()(
+  extends /*@__PURE__*/ S.TaggedError<SubscriptionLimitExceededException>()(
     "SubscriptionLimitExceededException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -349,7 +349,7 @@ export class SubscriptionLimitExceededException
     ),
   ).pipe(C.withAuthError) {}
 export class TagLimitExceededException
-  extends /*@__PURE__*/ S.TaggedErrorClass<TagLimitExceededException>()(
+  extends /*@__PURE__*/ S.TaggedError<TagLimitExceededException>()(
     "TagLimitExceededException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -358,7 +358,7 @@ export class TagLimitExceededException
     ),
   ).pipe(C.withBadRequestError) {}
 export class TagPolicyException
-  extends /*@__PURE__*/ S.TaggedErrorClass<TagPolicyException>()(
+  extends /*@__PURE__*/ S.TaggedError<TagPolicyException>()(
     "TagPolicyException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -367,7 +367,7 @@ export class TagPolicyException
     ),
   ).pipe(C.withBadRequestError) {}
 export class ThrottledException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ThrottledException>()(
+  extends /*@__PURE__*/ S.TaggedError<ThrottledException>()(
     "ThrottledException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -376,7 +376,7 @@ export class ThrottledException
     ),
   ).pipe(C.withThrottlingError) {}
 export class TooManyEntriesInBatchRequestException
-  extends /*@__PURE__*/ S.TaggedErrorClass<TooManyEntriesInBatchRequestException>()(
+  extends /*@__PURE__*/ S.TaggedError<TooManyEntriesInBatchRequestException>()(
     "TooManyEntriesInBatchRequestException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -388,7 +388,7 @@ export class TooManyEntriesInBatchRequestException
     ),
   ).pipe(C.withBadRequestError) {}
 export class TopicLimitExceededException
-  extends /*@__PURE__*/ S.TaggedErrorClass<TopicLimitExceededException>()(
+  extends /*@__PURE__*/ S.TaggedError<TopicLimitExceededException>()(
     "TopicLimitExceededException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -397,7 +397,7 @@ export class TopicLimitExceededException
     ),
   ).pipe(C.withAuthError) {}
 export class UserErrorException
-  extends /*@__PURE__*/ S.TaggedErrorClass<UserErrorException>()(
+  extends /*@__PURE__*/ S.TaggedError<UserErrorException>()(
     "UserErrorException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -406,7 +406,7 @@ export class UserErrorException
     ),
   ).pipe(C.withBadRequestError) {}
 export class ValidationException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ValidationException>()(
+  extends /*@__PURE__*/ S.TaggedError<ValidationException>()(
     "ValidationException",
     { message: S.String.pipe(T.ErrorMessage()) },
     T.all(
@@ -415,7 +415,7 @@ export class ValidationException
     ),
   ).pipe(C.withBadRequestError) {}
 export class VerificationException
-  extends /*@__PURE__*/ S.TaggedErrorClass<VerificationException>()(
+  extends /*@__PURE__*/ S.TaggedError<VerificationException>()(
     "VerificationException",
     { message: S.String.pipe(T.ErrorMessage()), Status: S.String },
   ) {}

@@ -19,7 +19,7 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
 
 export class Forbidden
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    /*@__PURE__*/ S.TaggedError<Forbidden>()("Forbidden", {
       code: S.Number,
       message: S.String,
     }),
@@ -28,19 +28,16 @@ export class Forbidden
 
 export class InvalidSettingValue
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<InvalidSettingValue>()(
-      "InvalidSettingValue",
-      {
-        code: S.Number,
-        message: S.String,
-      },
-    ),
+    /*@__PURE__*/ S.TaggedError<InvalidSettingValue>()("InvalidSettingValue", {
+      code: S.Number,
+      message: S.String,
+    }),
     [{ code: 1146, message: { includes: "origin_post_quantum_encryption" } }],
   ) {}
 
 export class InvalidZoneIdentifier
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<InvalidZoneIdentifier>()(
+    /*@__PURE__*/ S.TaggedError<InvalidZoneIdentifier>()(
       "InvalidZoneIdentifier",
       {
         code: S.Number,

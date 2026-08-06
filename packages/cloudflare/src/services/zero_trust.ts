@@ -578,7 +578,7 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
 
 export class AccessBookmarkNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<AccessBookmarkNotFound>()(
+    /*@__PURE__*/ S.TaggedError<AccessBookmarkNotFound>()(
       "AccessBookmarkNotFound",
       {
         code: S.Number,
@@ -590,7 +590,7 @@ export class AccessBookmarkNotFound
 
 export class AccessCertificateNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<AccessCertificateNotFound>()(
+    /*@__PURE__*/ S.TaggedError<AccessCertificateNotFound>()(
       "AccessCertificateNotFound",
       {
         code: S.Number,
@@ -602,7 +602,7 @@ export class AccessCertificateNotFound
 
 export class AccessCertificateQuotaExceeded
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<AccessCertificateQuotaExceeded>()(
+    /*@__PURE__*/ S.TaggedError<AccessCertificateQuotaExceeded>()(
       "AccessCertificateQuotaExceeded",
       {
         code: S.Number,
@@ -614,7 +614,7 @@ export class AccessCertificateQuotaExceeded
 
 export class AccessCustomPageNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<AccessCustomPageNotFound>()(
+    /*@__PURE__*/ S.TaggedError<AccessCustomPageNotFound>()(
       "AccessCustomPageNotFound",
       {
         code: S.Number,
@@ -626,7 +626,7 @@ export class AccessCustomPageNotFound
 
 export class AccessCustomPagesNotEntitled
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<AccessCustomPagesNotEntitled>()(
+    /*@__PURE__*/ S.TaggedError<AccessCustomPagesNotEntitled>()(
       "AccessCustomPagesNotEntitled",
       {
         code: S.Number,
@@ -643,19 +643,16 @@ export class AccessCustomPagesNotEntitled
 
 export class AccessGroupNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<AccessGroupNotFound>()(
-      "AccessGroupNotFound",
-      {
-        code: S.Number,
-        message: S.String,
-      },
-    ),
+    /*@__PURE__*/ S.TaggedError<AccessGroupNotFound>()("AccessGroupNotFound", {
+      code: S.Number,
+      message: S.String,
+    }),
     [{ code: 12152 }],
   ) {}
 
 export class AccessIdentityProviderNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<AccessIdentityProviderNotFound>()(
+    /*@__PURE__*/ S.TaggedError<AccessIdentityProviderNotFound>()(
       "AccessIdentityProviderNotFound",
       {
         code: S.Number,
@@ -667,7 +664,7 @@ export class AccessIdentityProviderNotFound
 
 export class AccessReferenceNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<AccessReferenceNotFound>()(
+    /*@__PURE__*/ S.TaggedError<AccessReferenceNotFound>()(
       "AccessReferenceNotFound",
       {
         code: S.Number,
@@ -679,7 +676,7 @@ export class AccessReferenceNotFound
 
 export class AccessServiceTokenNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<AccessServiceTokenNotFound>()(
+    /*@__PURE__*/ S.TaggedError<AccessServiceTokenNotFound>()(
       "AccessServiceTokenNotFound",
       {
         code: S.Number,
@@ -691,7 +688,7 @@ export class AccessServiceTokenNotFound
 
 export class AccessTagNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<AccessTagNotFound>()("AccessTagNotFound", {
+    /*@__PURE__*/ S.TaggedError<AccessTagNotFound>()("AccessTagNotFound", {
       code: S.Number,
       message: S.String,
     }),
@@ -700,7 +697,7 @@ export class AccessTagNotFound
 
 export class CannotDeleteDefaultGatewayLocation
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<CannotDeleteDefaultGatewayLocation>()(
+    /*@__PURE__*/ S.TaggedError<CannotDeleteDefaultGatewayLocation>()(
       "CannotDeleteDefaultGatewayLocation",
       {
         code: S.Number,
@@ -712,7 +709,7 @@ export class CannotDeleteDefaultGatewayLocation
 
 export class CannotDemoteDefaultGatewayLocation
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<CannotDemoteDefaultGatewayLocation>()(
+    /*@__PURE__*/ S.TaggedError<CannotDemoteDefaultGatewayLocation>()(
       "CannotDemoteDefaultGatewayLocation",
       {
         code: S.Number,
@@ -724,7 +721,7 @@ export class CannotDemoteDefaultGatewayLocation
 
 export class DeviceNetworkNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<DeviceNetworkNotFound>()(
+    /*@__PURE__*/ S.TaggedError<DeviceNetworkNotFound>()(
       "DeviceNetworkNotFound",
       {
         code: S.Number,
@@ -736,7 +733,7 @@ export class DeviceNetworkNotFound
 
 export class DevicePolicyNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<DevicePolicyNotFound>()(
+    /*@__PURE__*/ S.TaggedError<DevicePolicyNotFound>()(
       "DevicePolicyNotFound",
       {
         code: S.Number,
@@ -748,7 +745,7 @@ export class DevicePolicyNotFound
 
 export class DevicePostureIntegrationNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<DevicePostureIntegrationNotFound>()(
+    /*@__PURE__*/ S.TaggedError<DevicePostureIntegrationNotFound>()(
       "DevicePostureIntegrationNotFound",
       {
         code: S.Number,
@@ -760,7 +757,7 @@ export class DevicePostureIntegrationNotFound
 
 export class DexTestNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<DexTestNotFound>()("DexTestNotFound", {
+    /*@__PURE__*/ S.TaggedError<DexTestNotFound>()("DexTestNotFound", {
       code: S.Number,
       message: S.String,
     }),
@@ -769,7 +766,7 @@ export class DexTestNotFound
 
 export class DlpEntryNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<DlpEntryNotFound>()("DlpEntryNotFound", {
+    /*@__PURE__*/ S.TaggedError<DlpEntryNotFound>()("DlpEntryNotFound", {
       code: S.Number,
       message: S.String,
     }),
@@ -778,31 +775,25 @@ export class DlpEntryNotFound
 
 export class DlpProfileNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<DlpProfileNotFound>()(
-      "DlpProfileNotFound",
-      {
-        code: S.Number,
-        message: S.String,
-      },
-    ),
+    /*@__PURE__*/ S.TaggedError<DlpProfileNotFound>()("DlpProfileNotFound", {
+      code: S.Number,
+      message: S.String,
+    }),
     [{ status: 404 }],
   ) {}
 
 export class DuplicateTunnelName
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<DuplicateTunnelName>()(
-      "DuplicateTunnelName",
-      {
-        code: S.Number,
-        message: S.String,
-      },
-    ),
+    /*@__PURE__*/ S.TaggedError<DuplicateTunnelName>()("DuplicateTunnelName", {
+      code: S.Number,
+      message: S.String,
+    }),
     [{ code: 1013 }],
   ) {}
 
 export class Forbidden
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    /*@__PURE__*/ S.TaggedError<Forbidden>()("Forbidden", {
       code: S.Number,
       message: S.String,
     }),
@@ -811,7 +802,7 @@ export class Forbidden
 
 export class GatewayCertificateInUse
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<GatewayCertificateInUse>()(
+    /*@__PURE__*/ S.TaggedError<GatewayCertificateInUse>()(
       "GatewayCertificateInUse",
       {
         code: S.Number,
@@ -823,7 +814,7 @@ export class GatewayCertificateInUse
 
 export class GatewayCertificateNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<GatewayCertificateNotFound>()(
+    /*@__PURE__*/ S.TaggedError<GatewayCertificateNotFound>()(
       "GatewayCertificateNotFound",
       {
         code: S.Number,
@@ -835,7 +826,7 @@ export class GatewayCertificateNotFound
 
 export class GatewayCertificateQuotaReached
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<GatewayCertificateQuotaReached>()(
+    /*@__PURE__*/ S.TaggedError<GatewayCertificateQuotaReached>()(
       "GatewayCertificateQuotaReached",
       {
         code: S.Number,
@@ -854,19 +845,16 @@ export class GatewayCertificateQuotaReached
 
 export class GatewayListNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<GatewayListNotFound>()(
-      "GatewayListNotFound",
-      {
-        code: S.Number,
-        message: S.String,
-      },
-    ),
+    /*@__PURE__*/ S.TaggedError<GatewayListNotFound>()("GatewayListNotFound", {
+      code: S.Number,
+      message: S.String,
+    }),
     [{ code: 2218 }],
   ) {}
 
 export class GatewayLocationNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<GatewayLocationNotFound>()(
+    /*@__PURE__*/ S.TaggedError<GatewayLocationNotFound>()(
       "GatewayLocationNotFound",
       {
         code: S.Number,
@@ -878,7 +866,7 @@ export class GatewayLocationNotFound
 
 export class HostnameRouteAlreadyRouted
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<HostnameRouteAlreadyRouted>()(
+    /*@__PURE__*/ S.TaggedError<HostnameRouteAlreadyRouted>()(
       "HostnameRouteAlreadyRouted",
       {
         code: S.Number,
@@ -895,7 +883,7 @@ export class HostnameRouteAlreadyRouted
 
 export class HostnameRouteNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<HostnameRouteNotFound>()(
+    /*@__PURE__*/ S.TaggedError<HostnameRouteNotFound>()(
       "HostnameRouteNotFound",
       {
         code: S.Number,
@@ -907,7 +895,7 @@ export class HostnameRouteNotFound
 
 export class InvalidPostureIntegrationConfig
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<InvalidPostureIntegrationConfig>()(
+    /*@__PURE__*/ S.TaggedError<InvalidPostureIntegrationConfig>()(
       "InvalidPostureIntegrationConfig",
       {
         code: S.Number,
@@ -924,7 +912,7 @@ export class InvalidPostureIntegrationConfig
 
 export class IpProxyEndpointsRequireEnterprise
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<IpProxyEndpointsRequireEnterprise>()(
+    /*@__PURE__*/ S.TaggedError<IpProxyEndpointsRequireEnterprise>()(
       "IpProxyEndpointsRequireEnterprise",
       {
         code: S.Number,
@@ -936,7 +924,7 @@ export class IpProxyEndpointsRequireEnterprise
 
 export class McpPortalHostnameInUse
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<McpPortalHostnameInUse>()(
+    /*@__PURE__*/ S.TaggedError<McpPortalHostnameInUse>()(
       "McpPortalHostnameInUse",
       {
         code: S.Number,
@@ -953,7 +941,7 @@ export class McpPortalHostnameInUse
 
 export class McpPortalNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<McpPortalNotFound>()("McpPortalNotFound", {
+    /*@__PURE__*/ S.TaggedError<McpPortalNotFound>()("McpPortalNotFound", {
       code: S.Number,
       message: S.String,
     }),
@@ -962,7 +950,7 @@ export class McpPortalNotFound
 
 export class OrganizationAlreadyExists
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<OrganizationAlreadyExists>()(
+    /*@__PURE__*/ S.TaggedError<OrganizationAlreadyExists>()(
       "OrganizationAlreadyExists",
       {
         code: S.Number,
@@ -974,7 +962,7 @@ export class OrganizationAlreadyExists
 
 export class OrganizationNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<OrganizationNotFound>()(
+    /*@__PURE__*/ S.TaggedError<OrganizationNotFound>()(
       "OrganizationNotFound",
       {
         code: S.Number,
@@ -986,19 +974,16 @@ export class OrganizationNotFound
 
 export class PostureRuleNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<PostureRuleNotFound>()(
-      "PostureRuleNotFound",
-      {
-        code: S.Number,
-        message: S.String,
-      },
-    ),
+    /*@__PURE__*/ S.TaggedError<PostureRuleNotFound>()("PostureRuleNotFound", {
+      code: S.Number,
+      message: S.String,
+    }),
     [{ code: 6024 }],
   ) {}
 
 export class ProxyEndpointNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<ProxyEndpointNotFound>()(
+    /*@__PURE__*/ S.TaggedError<ProxyEndpointNotFound>()(
       "ProxyEndpointNotFound",
       {
         code: S.Number,
@@ -1010,7 +995,7 @@ export class ProxyEndpointNotFound
 
 export class RiskScoringIntegrationNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<RiskScoringIntegrationNotFound>()(
+    /*@__PURE__*/ S.TaggedError<RiskScoringIntegrationNotFound>()(
       "RiskScoringIntegrationNotFound",
       {
         code: S.Number,
@@ -1022,7 +1007,7 @@ export class RiskScoringIntegrationNotFound
 
 export class TargetNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<TargetNotFound>()("TargetNotFound", {
+    /*@__PURE__*/ S.TaggedError<TargetNotFound>()("TargetNotFound", {
       code: S.Number,
       message: S.String,
     }),
@@ -1031,7 +1016,7 @@ export class TargetNotFound
 
 export class TunnelConfigurationNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<TunnelConfigurationNotFound>()(
+    /*@__PURE__*/ S.TaggedError<TunnelConfigurationNotFound>()(
       "TunnelConfigurationNotFound",
       {
         code: S.Number,
@@ -1043,7 +1028,7 @@ export class TunnelConfigurationNotFound
 
 export class TunnelNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<TunnelNotFound>()("TunnelNotFound", {
+    /*@__PURE__*/ S.TaggedError<TunnelNotFound>()("TunnelNotFound", {
       code: S.Number,
       message: S.String,
     }),
@@ -1052,19 +1037,16 @@ export class TunnelNotFound
 
 export class TunnelTokenNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<TunnelTokenNotFound>()(
-      "TunnelTokenNotFound",
-      {
-        code: S.Number,
-        message: S.String,
-      },
-    ),
+    /*@__PURE__*/ S.TaggedError<TunnelTokenNotFound>()("TunnelTokenNotFound", {
+      code: S.Number,
+      message: S.String,
+    }),
     [{ code: 1054 }],
   ) {}
 
 export class VirtualNetworkConflict
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<VirtualNetworkConflict>()(
+    /*@__PURE__*/ S.TaggedError<VirtualNetworkConflict>()(
       "VirtualNetworkConflict",
       {
         code: S.Number,
@@ -1076,7 +1058,7 @@ export class VirtualNetworkConflict
 
 export class VirtualNetworkNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<VirtualNetworkNotFound>()(
+    /*@__PURE__*/ S.TaggedError<VirtualNetworkNotFound>()(
       "VirtualNetworkNotFound",
       {
         code: S.Number,

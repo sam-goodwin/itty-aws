@@ -31,7 +31,7 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
 
 export class ClientCertificateAlreadyRevoked
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<ClientCertificateAlreadyRevoked>()(
+    /*@__PURE__*/ S.TaggedError<ClientCertificateAlreadyRevoked>()(
       "ClientCertificateAlreadyRevoked",
       {
         code: S.Number,
@@ -43,7 +43,7 @@ export class ClientCertificateAlreadyRevoked
 
 export class ClientCertificateNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<ClientCertificateNotFound>()(
+    /*@__PURE__*/ S.TaggedError<ClientCertificateNotFound>()(
       "ClientCertificateNotFound",
       {
         code: S.Number,
@@ -58,7 +58,7 @@ export class ClientCertificateNotFound
 
 export class Forbidden
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    /*@__PURE__*/ S.TaggedError<Forbidden>()("Forbidden", {
       code: S.Number,
       message: S.String,
     }),

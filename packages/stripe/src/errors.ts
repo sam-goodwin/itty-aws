@@ -32,7 +32,7 @@ import * as Category from "@distilled.cloud/core/category";
  * Payment error — returned when a payment request fails (HTTP 402).
  * The parameters were valid but the request failed (e.g., card declined).
  */
-export class PaymentError extends Schema.TaggedErrorClass<PaymentError>()(
+export class PaymentError extends Schema.TaggedError<PaymentError>()(
   "PaymentError",
   {
     message: Schema.optional(Schema.String),
@@ -49,29 +49,26 @@ export class PaymentError extends Schema.TaggedErrorClass<PaymentError>()(
  * Card error — returned when a card cannot be charged.
  * Stripe error type: "card_error"
  */
-export class CardError extends Schema.TaggedErrorClass<CardError>()(
-  "CardError",
-  {
-    message: Schema.optional(Schema.String),
-    code: Schema.optional(Schema.String),
-    decline_code: Schema.optional(Schema.String),
-    charge: Schema.optional(Schema.String),
-    param: Schema.optional(Schema.String),
-    doc_url: Schema.optional(Schema.String),
-    advice_code: Schema.optional(Schema.String),
-    network_advice_code: Schema.optional(Schema.String),
-    network_decline_code: Schema.optional(Schema.String),
-    payment_method_type: Schema.optional(Schema.String),
-    request_log_url: Schema.optional(Schema.String),
-  },
-).pipe(Category.withBadRequestError) {}
+export class CardError extends Schema.TaggedError<CardError>()("CardError", {
+  message: Schema.optional(Schema.String),
+  code: Schema.optional(Schema.String),
+  decline_code: Schema.optional(Schema.String),
+  charge: Schema.optional(Schema.String),
+  param: Schema.optional(Schema.String),
+  doc_url: Schema.optional(Schema.String),
+  advice_code: Schema.optional(Schema.String),
+  network_advice_code: Schema.optional(Schema.String),
+  network_decline_code: Schema.optional(Schema.String),
+  payment_method_type: Schema.optional(Schema.String),
+  request_log_url: Schema.optional(Schema.String),
+}).pipe(Category.withBadRequestError) {}
 
 /**
  * Idempotency error — returned when an Idempotency-Key is re-used
  * on a request that does not match the first request's API endpoint and parameters.
  * Stripe error type: "idempotency_error"
  */
-export class IdempotencyError extends Schema.TaggedErrorClass<IdempotencyError>()(
+export class IdempotencyError extends Schema.TaggedError<IdempotencyError>()(
   "IdempotencyError",
   {
     message: Schema.optional(Schema.String),
@@ -85,7 +82,7 @@ export class IdempotencyError extends Schema.TaggedErrorClass<IdempotencyError>(
  * Invalid request error — returned when the request has invalid parameters.
  * Stripe error type: "invalid_request_error"
  */
-export class InvalidRequestError extends Schema.TaggedErrorClass<InvalidRequestError>()(
+export class InvalidRequestError extends Schema.TaggedError<InvalidRequestError>()(
   "InvalidRequestError",
   {
     message: Schema.optional(Schema.String),
@@ -100,7 +97,7 @@ export class InvalidRequestError extends Schema.TaggedErrorClass<InvalidRequestE
  * API error — returned when something goes wrong on Stripe's end (HTTP 500+).
  * Stripe error type: "api_error"
  */
-export class ApiError extends Schema.TaggedErrorClass<ApiError>()("ApiError", {
+export class ApiError extends Schema.TaggedError<ApiError>()("ApiError", {
   message: Schema.optional(Schema.String),
   code: Schema.optional(Schema.String),
   param: Schema.optional(Schema.String),
@@ -111,7 +108,7 @@ export class ApiError extends Schema.TaggedErrorClass<ApiError>()("ApiError", {
 /**
  * External dependency failed — returned when an external dependency fails (HTTP 424).
  */
-export class ExternalDependencyFailed extends Schema.TaggedErrorClass<ExternalDependencyFailed>()(
+export class ExternalDependencyFailed extends Schema.TaggedError<ExternalDependencyFailed>()(
   "ExternalDependencyFailed",
   {
     message: Schema.optional(Schema.String),
@@ -130,7 +127,7 @@ export const STRIPE_HTTP_STATUS_MAP = {
 } as const;
 
 // Unknown Stripe error — returned when an error type is not recognized
-export class UnknownStripeError extends Schema.TaggedErrorClass<UnknownStripeError>()(
+export class UnknownStripeError extends Schema.TaggedError<UnknownStripeError>()(
   "UnknownStripeError",
   {
     type: Schema.optional(Schema.String),
@@ -142,7 +139,7 @@ export class UnknownStripeError extends Schema.TaggedErrorClass<UnknownStripeErr
 ).pipe(Category.withServerError) {}
 
 // Schema parse error wrapper
-export class StripeParseError extends Schema.TaggedErrorClass<StripeParseError>()(
+export class StripeParseError extends Schema.TaggedError<StripeParseError>()(
   "StripeParseError",
   {
     body: Schema.Unknown,
@@ -156,7 +153,7 @@ export class StripeParseError extends Schema.TaggedErrorClass<StripeParseError>(
  * This is raised by the local webhook helpers when the Stripe-Signature header
  * is missing, malformed, expired, or does not match the raw request payload.
  */
-export class StripeWebhookSignatureError extends Schema.TaggedErrorClass<StripeWebhookSignatureError>()(
+export class StripeWebhookSignatureError extends Schema.TaggedError<StripeWebhookSignatureError>()(
   "StripeWebhookSignatureError",
   {
     message: Schema.String,
@@ -167,7 +164,7 @@ export class StripeWebhookSignatureError extends Schema.TaggedErrorClass<StripeW
 /**
  * Stripe webhook payload JSON parsing failed after signature verification.
  */
-export class StripeWebhookPayloadParseError extends Schema.TaggedErrorClass<StripeWebhookPayloadParseError>()(
+export class StripeWebhookPayloadParseError extends Schema.TaggedError<StripeWebhookPayloadParseError>()(
   "StripeWebhookPayloadParseError",
   {
     message: Schema.String,

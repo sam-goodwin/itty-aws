@@ -29,7 +29,7 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
 
 export class Forbidden
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    /*@__PURE__*/ S.TaggedError<Forbidden>()("Forbidden", {
       code: S.Number,
       message: S.String,
     }),
@@ -38,7 +38,7 @@ export class Forbidden
 
 export class OriginCloudRegionNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<OriginCloudRegionNotFound>()(
+    /*@__PURE__*/ S.TaggedError<OriginCloudRegionNotFound>()(
       "OriginCloudRegionNotFound",
       {
         code: S.Number,
@@ -50,7 +50,7 @@ export class OriginCloudRegionNotFound
 
 export class SettingUnavailableForPlan
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<SettingUnavailableForPlan>()(
+    /*@__PURE__*/ S.TaggedError<SettingUnavailableForPlan>()(
       "SettingUnavailableForPlan",
       {
         code: S.Number,
@@ -65,7 +65,7 @@ export class SettingUnavailableForPlan
 
 export class Unauthorized
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<Unauthorized>()("Unauthorized", {
+    /*@__PURE__*/ S.TaggedError<Unauthorized>()("Unauthorized", {
       code: S.Number,
       message: S.String,
     }),
@@ -74,7 +74,7 @@ export class Unauthorized
 
 export class VariantsNotConfigured
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<VariantsNotConfigured>()(
+    /*@__PURE__*/ S.TaggedError<VariantsNotConfigured>()(
       "VariantsNotConfigured",
       {
         code: S.Number,

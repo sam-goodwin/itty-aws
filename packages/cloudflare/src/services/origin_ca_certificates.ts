@@ -27,7 +27,7 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
 
 export class CertificateAlreadyRevoked
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<CertificateAlreadyRevoked>()(
+    /*@__PURE__*/ S.TaggedError<CertificateAlreadyRevoked>()(
       "CertificateAlreadyRevoked",
       {
         code: S.Number,
@@ -39,19 +39,16 @@ export class CertificateAlreadyRevoked
 
 export class CertificateNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<CertificateNotFound>()(
-      "CertificateNotFound",
-      {
-        code: S.Number,
-        message: S.String,
-      },
-    ),
+    /*@__PURE__*/ S.TaggedError<CertificateNotFound>()("CertificateNotFound", {
+      code: S.Number,
+      message: S.String,
+    }),
     [{ code: 1101 }],
   ) {}
 
 export class CertificateRevocationFailed
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<CertificateRevocationFailed>()(
+    /*@__PURE__*/ S.TaggedError<CertificateRevocationFailed>()(
       "CertificateRevocationFailed",
       {
         code: S.Number,
@@ -63,7 +60,7 @@ export class CertificateRevocationFailed
 
 export class Forbidden
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    /*@__PURE__*/ S.TaggedError<Forbidden>()("Forbidden", {
       code: S.Number,
       message: S.String,
     }),
@@ -72,7 +69,7 @@ export class Forbidden
 
 export class HostnameNotAuthorized
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<HostnameNotAuthorized>()(
+    /*@__PURE__*/ S.TaggedError<HostnameNotAuthorized>()(
       "HostnameNotAuthorized",
       {
         code: S.Number,

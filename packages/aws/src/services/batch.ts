@@ -91,13 +91,13 @@ const rules = T.EndpointResolver((p, _) => {
 });
 
 export class ClientException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ClientException>()(
+  extends /*@__PURE__*/ S.TaggedError<ClientException>()(
     "ClientException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ComputeEnvironmentBeingModified
-  extends /*@__PURE__*/ S.TaggedErrorClass<ComputeEnvironmentBeingModified>()(
+  extends /*@__PURE__*/ S.TaggedError<ComputeEnvironmentBeingModified>()(
     "ComputeEnvironmentBeingModified",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.SyntheticError({
@@ -106,7 +106,7 @@ export class ComputeEnvironmentBeingModified
     }),
   ).pipe(C.withConflictError, C.withRetryableError) {}
 export class ComputeEnvironmentInUse
-  extends /*@__PURE__*/ S.TaggedErrorClass<ComputeEnvironmentInUse>()(
+  extends /*@__PURE__*/ S.TaggedError<ComputeEnvironmentInUse>()(
     "ComputeEnvironmentInUse",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.SyntheticError({
@@ -115,7 +115,7 @@ export class ComputeEnvironmentInUse
     }),
   ).pipe(C.withDependencyViolationError, C.withRetryableError) {}
 export class ComputeEnvironmentNotFound
-  extends /*@__PURE__*/ S.TaggedErrorClass<ComputeEnvironmentNotFound>()(
+  extends /*@__PURE__*/ S.TaggedError<ComputeEnvironmentNotFound>()(
     "ComputeEnvironmentNotFound",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.SyntheticError({
@@ -124,7 +124,7 @@ export class ComputeEnvironmentNotFound
     }),
   ).pipe(C.withNotFoundError) {}
 export class ComputeEnvironmentNotValid
-  extends /*@__PURE__*/ S.TaggedErrorClass<ComputeEnvironmentNotValid>()(
+  extends /*@__PURE__*/ S.TaggedError<ComputeEnvironmentNotValid>()(
     "ComputeEnvironmentNotValid",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.SyntheticError({
@@ -133,7 +133,7 @@ export class ComputeEnvironmentNotValid
     }),
   ).pipe(C.withDependencyViolationError, C.withRetryableError) {}
 export class JobQueueAlreadyExists
-  extends /*@__PURE__*/ S.TaggedErrorClass<JobQueueAlreadyExists>()(
+  extends /*@__PURE__*/ S.TaggedError<JobQueueAlreadyExists>()(
     "JobQueueAlreadyExists",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.SyntheticError({
@@ -142,7 +142,7 @@ export class JobQueueAlreadyExists
     }),
   ).pipe(C.withAlreadyExistsError, C.withConflictError) {}
 export class JobQueueBeingModified
-  extends /*@__PURE__*/ S.TaggedErrorClass<JobQueueBeingModified>()(
+  extends /*@__PURE__*/ S.TaggedError<JobQueueBeingModified>()(
     "JobQueueBeingModified",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.SyntheticError({
@@ -151,7 +151,7 @@ export class JobQueueBeingModified
     }),
   ).pipe(C.withConflictError, C.withRetryableError) {}
 export class JobQueueNotFound
-  extends /*@__PURE__*/ S.TaggedErrorClass<JobQueueNotFound>()(
+  extends /*@__PURE__*/ S.TaggedError<JobQueueNotFound>()(
     "JobQueueNotFound",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.SyntheticError({
@@ -160,7 +160,7 @@ export class JobQueueNotFound
     }),
   ).pipe(C.withNotFoundError) {}
 export class ServerException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ServerException>()(
+  extends /*@__PURE__*/ S.TaggedError<ServerException>()(
     "ServerException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(500),

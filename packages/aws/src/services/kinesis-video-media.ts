@@ -84,37 +84,37 @@ const rules = T.EndpointResolver((p, _) => {
 });
 
 export class ClientLimitExceededException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ClientLimitExceededException>()(
+  extends /*@__PURE__*/ S.TaggedError<ClientLimitExceededException>()(
     "ClientLimitExceededException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ConnectionLimitExceededException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ConnectionLimitExceededException>()(
+  extends /*@__PURE__*/ S.TaggedError<ConnectionLimitExceededException>()(
     "ConnectionLimitExceededException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidArgumentException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidArgumentException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidArgumentException>()(
     "InvalidArgumentException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidEndpointException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidEndpointException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidEndpointException>()(
     "InvalidEndpointException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class NotAuthorizedException
-  extends /*@__PURE__*/ S.TaggedErrorClass<NotAuthorizedException>()(
+  extends /*@__PURE__*/ S.TaggedError<NotAuthorizedException>()(
     "NotAuthorizedException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(401),
   ).pipe(C.withAuthError) {}
 export class ResourceNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(404),

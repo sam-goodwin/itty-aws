@@ -92,7 +92,7 @@ const rules = T.EndpointResolver((p, _) => {
 });
 
 export class AllocationIdNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<AllocationIdNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<AllocationIdNotFoundException>()(
     "AllocationIdNotFoundException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -101,7 +101,7 @@ export class AllocationIdNotFoundException
     ),
   ).pipe(C.withBadRequestError) {}
 export class ALPNPolicyNotSupportedException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ALPNPolicyNotSupportedException>()(
+  extends /*@__PURE__*/ S.TaggedError<ALPNPolicyNotSupportedException>()(
     "ALPNPolicyNotSupportedException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -110,7 +110,7 @@ export class ALPNPolicyNotSupportedException
     ),
   ).pipe(C.withBadRequestError) {}
 export class AvailabilityZoneNotSupportedException
-  extends /*@__PURE__*/ S.TaggedErrorClass<AvailabilityZoneNotSupportedException>()(
+  extends /*@__PURE__*/ S.TaggedError<AvailabilityZoneNotSupportedException>()(
     "AvailabilityZoneNotSupportedException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -122,7 +122,7 @@ export class AvailabilityZoneNotSupportedException
     ),
   ).pipe(C.withBadRequestError) {}
 export class CaCertificatesBundleNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<CaCertificatesBundleNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<CaCertificatesBundleNotFoundException>()(
     "CaCertificatesBundleNotFoundException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -134,7 +134,7 @@ export class CaCertificatesBundleNotFoundException
     ),
   ).pipe(C.withBadRequestError) {}
 export class CapacityDecreaseRequestsLimitExceededException
-  extends /*@__PURE__*/ S.TaggedErrorClass<CapacityDecreaseRequestsLimitExceededException>()(
+  extends /*@__PURE__*/ S.TaggedError<CapacityDecreaseRequestsLimitExceededException>()(
     "CapacityDecreaseRequestsLimitExceededException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -146,7 +146,7 @@ export class CapacityDecreaseRequestsLimitExceededException
     ),
   ).pipe(C.withBadRequestError) {}
 export class CapacityReservationPendingException
-  extends /*@__PURE__*/ S.TaggedErrorClass<CapacityReservationPendingException>()(
+  extends /*@__PURE__*/ S.TaggedError<CapacityReservationPendingException>()(
     "CapacityReservationPendingException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -158,7 +158,7 @@ export class CapacityReservationPendingException
     ),
   ).pipe(C.withBadRequestError) {}
 export class CapacityUnitsLimitExceededException
-  extends /*@__PURE__*/ S.TaggedErrorClass<CapacityUnitsLimitExceededException>()(
+  extends /*@__PURE__*/ S.TaggedError<CapacityUnitsLimitExceededException>()(
     "CapacityUnitsLimitExceededException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -170,7 +170,7 @@ export class CapacityUnitsLimitExceededException
     ),
   ).pipe(C.withBadRequestError) {}
 export class CertificateNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<CertificateNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<CertificateNotFoundException>()(
     "CertificateNotFoundException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -179,7 +179,7 @@ export class CertificateNotFoundException
     ),
   ).pipe(C.withBadRequestError) {}
 export class DeleteAssociationSameAccountException
-  extends /*@__PURE__*/ S.TaggedErrorClass<DeleteAssociationSameAccountException>()(
+  extends /*@__PURE__*/ S.TaggedError<DeleteAssociationSameAccountException>()(
     "DeleteAssociationSameAccountException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -191,7 +191,7 @@ export class DeleteAssociationSameAccountException
     ),
   ).pipe(C.withBadRequestError) {}
 export class DuplicateListenerException
-  extends /*@__PURE__*/ S.TaggedErrorClass<DuplicateListenerException>()(
+  extends /*@__PURE__*/ S.TaggedError<DuplicateListenerException>()(
     "DuplicateListenerException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -200,7 +200,7 @@ export class DuplicateListenerException
     ),
   ).pipe(C.withBadRequestError) {}
 export class DuplicateLoadBalancerNameException
-  extends /*@__PURE__*/ S.TaggedErrorClass<DuplicateLoadBalancerNameException>()(
+  extends /*@__PURE__*/ S.TaggedError<DuplicateLoadBalancerNameException>()(
     "DuplicateLoadBalancerNameException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -212,7 +212,7 @@ export class DuplicateLoadBalancerNameException
     ),
   ).pipe(C.withBadRequestError) {}
 export class DuplicateTagKeysException
-  extends /*@__PURE__*/ S.TaggedErrorClass<DuplicateTagKeysException>()(
+  extends /*@__PURE__*/ S.TaggedError<DuplicateTagKeysException>()(
     "DuplicateTagKeysException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -221,7 +221,7 @@ export class DuplicateTagKeysException
     ),
   ).pipe(C.withBadRequestError) {}
 export class DuplicateTargetGroupNameException
-  extends /*@__PURE__*/ S.TaggedErrorClass<DuplicateTargetGroupNameException>()(
+  extends /*@__PURE__*/ S.TaggedError<DuplicateTargetGroupNameException>()(
     "DuplicateTargetGroupNameException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -233,7 +233,7 @@ export class DuplicateTargetGroupNameException
     ),
   ).pipe(C.withBadRequestError) {}
 export class DuplicateTrustStoreNameException
-  extends /*@__PURE__*/ S.TaggedErrorClass<DuplicateTrustStoreNameException>()(
+  extends /*@__PURE__*/ S.TaggedError<DuplicateTrustStoreNameException>()(
     "DuplicateTrustStoreNameException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -245,7 +245,7 @@ export class DuplicateTrustStoreNameException
     ),
   ).pipe(C.withBadRequestError) {}
 export class HealthUnavailableException
-  extends /*@__PURE__*/ S.TaggedErrorClass<HealthUnavailableException>()(
+  extends /*@__PURE__*/ S.TaggedError<HealthUnavailableException>()(
     "HealthUnavailableException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -254,7 +254,7 @@ export class HealthUnavailableException
     ),
   ).pipe(C.withServerError) {}
 export class IncompatibleProtocolsException
-  extends /*@__PURE__*/ S.TaggedErrorClass<IncompatibleProtocolsException>()(
+  extends /*@__PURE__*/ S.TaggedError<IncompatibleProtocolsException>()(
     "IncompatibleProtocolsException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -263,7 +263,7 @@ export class IncompatibleProtocolsException
     ),
   ).pipe(C.withBadRequestError) {}
 export class InsufficientCapacityException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InsufficientCapacityException>()(
+  extends /*@__PURE__*/ S.TaggedError<InsufficientCapacityException>()(
     "InsufficientCapacityException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -272,7 +272,7 @@ export class InsufficientCapacityException
     ),
   ).pipe(C.withServerError) {}
 export class InvalidCaCertificatesBundleException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidCaCertificatesBundleException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidCaCertificatesBundleException>()(
     "InvalidCaCertificatesBundleException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -284,7 +284,7 @@ export class InvalidCaCertificatesBundleException
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidConfigurationRequestException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidConfigurationRequestException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidConfigurationRequestException>()(
     "InvalidConfigurationRequestException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -296,7 +296,7 @@ export class InvalidConfigurationRequestException
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidLoadBalancerActionException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidLoadBalancerActionException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidLoadBalancerActionException>()(
     "InvalidLoadBalancerActionException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -308,7 +308,7 @@ export class InvalidLoadBalancerActionException
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidRevocationContentException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidRevocationContentException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidRevocationContentException>()(
     "InvalidRevocationContentException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -320,7 +320,7 @@ export class InvalidRevocationContentException
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidSchemeException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidSchemeException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidSchemeException>()(
     "InvalidSchemeException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -329,7 +329,7 @@ export class InvalidSchemeException
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidSecurityGroupException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidSecurityGroupException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidSecurityGroupException>()(
     "InvalidSecurityGroupException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -338,7 +338,7 @@ export class InvalidSecurityGroupException
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidSubnetException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidSubnetException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidSubnetException>()(
     "InvalidSubnetException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -347,7 +347,7 @@ export class InvalidSubnetException
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidTargetException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidTargetException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidTargetException>()(
     "InvalidTargetException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -356,7 +356,7 @@ export class InvalidTargetException
     ),
   ).pipe(C.withBadRequestError) {}
 export class ListenerNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ListenerNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<ListenerNotFoundException>()(
     "ListenerNotFoundException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -365,7 +365,7 @@ export class ListenerNotFoundException
     ),
   ).pipe(C.withBadRequestError) {}
 export class LoadBalancerNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<LoadBalancerNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<LoadBalancerNotFoundException>()(
     "LoadBalancerNotFoundException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -374,7 +374,7 @@ export class LoadBalancerNotFoundException
     ),
   ).pipe(C.withBadRequestError) {}
 export class OperationNotPermittedException
-  extends /*@__PURE__*/ S.TaggedErrorClass<OperationNotPermittedException>()(
+  extends /*@__PURE__*/ S.TaggedError<OperationNotPermittedException>()(
     "OperationNotPermittedException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -383,7 +383,7 @@ export class OperationNotPermittedException
     ),
   ).pipe(C.withBadRequestError) {}
 export class PriorityInUseException
-  extends /*@__PURE__*/ S.TaggedErrorClass<PriorityInUseException>()(
+  extends /*@__PURE__*/ S.TaggedError<PriorityInUseException>()(
     "PriorityInUseException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -392,7 +392,7 @@ export class PriorityInUseException
     ),
   ).pipe(C.withBadRequestError) {}
 export class PriorRequestNotCompleteException
-  extends /*@__PURE__*/ S.TaggedErrorClass<PriorRequestNotCompleteException>()(
+  extends /*@__PURE__*/ S.TaggedError<PriorRequestNotCompleteException>()(
     "PriorRequestNotCompleteException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -404,7 +404,7 @@ export class PriorRequestNotCompleteException
     ),
   ).pipe(C.withThrottlingError) {}
 export class ResourceInUseException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceInUseException>()(
+  extends /*@__PURE__*/ S.TaggedError<ResourceInUseException>()(
     "ResourceInUseException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -413,7 +413,7 @@ export class ResourceInUseException
     ),
   ).pipe(C.withBadRequestError) {}
 export class ResourceNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -422,7 +422,7 @@ export class ResourceNotFoundException
     ),
   ).pipe(C.withBadRequestError) {}
 export class RevocationContentNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<RevocationContentNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<RevocationContentNotFoundException>()(
     "RevocationContentNotFoundException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -434,7 +434,7 @@ export class RevocationContentNotFoundException
     ),
   ).pipe(C.withBadRequestError) {}
 export class RevocationIdNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<RevocationIdNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<RevocationIdNotFoundException>()(
     "RevocationIdNotFoundException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -443,7 +443,7 @@ export class RevocationIdNotFoundException
     ),
   ).pipe(C.withBadRequestError) {}
 export class RuleNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<RuleNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<RuleNotFoundException>()(
     "RuleNotFoundException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -452,7 +452,7 @@ export class RuleNotFoundException
     ),
   ).pipe(C.withBadRequestError) {}
 export class SSLPolicyNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<SSLPolicyNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<SSLPolicyNotFoundException>()(
     "SSLPolicyNotFoundException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -461,7 +461,7 @@ export class SSLPolicyNotFoundException
     ),
   ).pipe(C.withBadRequestError) {}
 export class SubnetNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<SubnetNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<SubnetNotFoundException>()(
     "SubnetNotFoundException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -470,7 +470,7 @@ export class SubnetNotFoundException
     ),
   ).pipe(C.withBadRequestError) {}
 export class TargetGroupAssociationLimitException
-  extends /*@__PURE__*/ S.TaggedErrorClass<TargetGroupAssociationLimitException>()(
+  extends /*@__PURE__*/ S.TaggedError<TargetGroupAssociationLimitException>()(
     "TargetGroupAssociationLimitException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -482,7 +482,7 @@ export class TargetGroupAssociationLimitException
     ),
   ).pipe(C.withBadRequestError) {}
 export class TargetGroupNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<TargetGroupNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<TargetGroupNotFoundException>()(
     "TargetGroupNotFoundException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -491,7 +491,7 @@ export class TargetGroupNotFoundException
     ),
   ).pipe(C.withBadRequestError) {}
 export class TooManyActionsException
-  extends /*@__PURE__*/ S.TaggedErrorClass<TooManyActionsException>()(
+  extends /*@__PURE__*/ S.TaggedError<TooManyActionsException>()(
     "TooManyActionsException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -500,7 +500,7 @@ export class TooManyActionsException
     ),
   ).pipe(C.withBadRequestError) {}
 export class TooManyCertificatesException
-  extends /*@__PURE__*/ S.TaggedErrorClass<TooManyCertificatesException>()(
+  extends /*@__PURE__*/ S.TaggedError<TooManyCertificatesException>()(
     "TooManyCertificatesException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -509,7 +509,7 @@ export class TooManyCertificatesException
     ),
   ).pipe(C.withBadRequestError) {}
 export class TooManyListenersException
-  extends /*@__PURE__*/ S.TaggedErrorClass<TooManyListenersException>()(
+  extends /*@__PURE__*/ S.TaggedError<TooManyListenersException>()(
     "TooManyListenersException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -518,7 +518,7 @@ export class TooManyListenersException
     ),
   ).pipe(C.withBadRequestError) {}
 export class TooManyLoadBalancersException
-  extends /*@__PURE__*/ S.TaggedErrorClass<TooManyLoadBalancersException>()(
+  extends /*@__PURE__*/ S.TaggedError<TooManyLoadBalancersException>()(
     "TooManyLoadBalancersException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -527,7 +527,7 @@ export class TooManyLoadBalancersException
     ),
   ).pipe(C.withBadRequestError) {}
 export class TooManyRegistrationsForTargetIdException
-  extends /*@__PURE__*/ S.TaggedErrorClass<TooManyRegistrationsForTargetIdException>()(
+  extends /*@__PURE__*/ S.TaggedError<TooManyRegistrationsForTargetIdException>()(
     "TooManyRegistrationsForTargetIdException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -539,7 +539,7 @@ export class TooManyRegistrationsForTargetIdException
     ),
   ).pipe(C.withBadRequestError) {}
 export class TooManyRulesException
-  extends /*@__PURE__*/ S.TaggedErrorClass<TooManyRulesException>()(
+  extends /*@__PURE__*/ S.TaggedError<TooManyRulesException>()(
     "TooManyRulesException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -548,7 +548,7 @@ export class TooManyRulesException
     ),
   ).pipe(C.withBadRequestError) {}
 export class TooManyTagsException
-  extends /*@__PURE__*/ S.TaggedErrorClass<TooManyTagsException>()(
+  extends /*@__PURE__*/ S.TaggedError<TooManyTagsException>()(
     "TooManyTagsException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -557,7 +557,7 @@ export class TooManyTagsException
     ),
   ).pipe(C.withBadRequestError) {}
 export class TooManyTargetGroupsException
-  extends /*@__PURE__*/ S.TaggedErrorClass<TooManyTargetGroupsException>()(
+  extends /*@__PURE__*/ S.TaggedError<TooManyTargetGroupsException>()(
     "TooManyTargetGroupsException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -566,7 +566,7 @@ export class TooManyTargetGroupsException
     ),
   ).pipe(C.withBadRequestError) {}
 export class TooManyTargetsException
-  extends /*@__PURE__*/ S.TaggedErrorClass<TooManyTargetsException>()(
+  extends /*@__PURE__*/ S.TaggedError<TooManyTargetsException>()(
     "TooManyTargetsException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -575,7 +575,7 @@ export class TooManyTargetsException
     ),
   ).pipe(C.withBadRequestError) {}
 export class TooManyTrustStoreRevocationEntriesException
-  extends /*@__PURE__*/ S.TaggedErrorClass<TooManyTrustStoreRevocationEntriesException>()(
+  extends /*@__PURE__*/ S.TaggedError<TooManyTrustStoreRevocationEntriesException>()(
     "TooManyTrustStoreRevocationEntriesException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -587,7 +587,7 @@ export class TooManyTrustStoreRevocationEntriesException
     ),
   ).pipe(C.withBadRequestError) {}
 export class TooManyTrustStoresException
-  extends /*@__PURE__*/ S.TaggedErrorClass<TooManyTrustStoresException>()(
+  extends /*@__PURE__*/ S.TaggedError<TooManyTrustStoresException>()(
     "TooManyTrustStoresException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -596,7 +596,7 @@ export class TooManyTrustStoresException
     ),
   ).pipe(C.withBadRequestError) {}
 export class TooManyUniqueTargetGroupsPerLoadBalancerException
-  extends /*@__PURE__*/ S.TaggedErrorClass<TooManyUniqueTargetGroupsPerLoadBalancerException>()(
+  extends /*@__PURE__*/ S.TaggedError<TooManyUniqueTargetGroupsPerLoadBalancerException>()(
     "TooManyUniqueTargetGroupsPerLoadBalancerException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -608,7 +608,7 @@ export class TooManyUniqueTargetGroupsPerLoadBalancerException
     ),
   ).pipe(C.withBadRequestError) {}
 export class TrustStoreAssociationNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<TrustStoreAssociationNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<TrustStoreAssociationNotFoundException>()(
     "TrustStoreAssociationNotFoundException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -617,7 +617,7 @@ export class TrustStoreAssociationNotFoundException
     ),
   ).pipe(C.withBadRequestError) {}
 export class TrustStoreInUseException
-  extends /*@__PURE__*/ S.TaggedErrorClass<TrustStoreInUseException>()(
+  extends /*@__PURE__*/ S.TaggedError<TrustStoreInUseException>()(
     "TrustStoreInUseException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -626,7 +626,7 @@ export class TrustStoreInUseException
     ),
   ).pipe(C.withBadRequestError) {}
 export class TrustStoreNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<TrustStoreNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<TrustStoreNotFoundException>()(
     "TrustStoreNotFoundException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -635,7 +635,7 @@ export class TrustStoreNotFoundException
     ),
   ).pipe(C.withBadRequestError) {}
 export class TrustStoreNotReadyException
-  extends /*@__PURE__*/ S.TaggedErrorClass<TrustStoreNotReadyException>()(
+  extends /*@__PURE__*/ S.TaggedError<TrustStoreNotReadyException>()(
     "TrustStoreNotReadyException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -644,7 +644,7 @@ export class TrustStoreNotReadyException
     ),
   ).pipe(C.withBadRequestError) {}
 export class UnsupportedProtocolException
-  extends /*@__PURE__*/ S.TaggedErrorClass<UnsupportedProtocolException>()(
+  extends /*@__PURE__*/ S.TaggedError<UnsupportedProtocolException>()(
     "UnsupportedProtocolException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(

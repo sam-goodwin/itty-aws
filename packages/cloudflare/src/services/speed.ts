@@ -23,7 +23,7 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
 
 export class Forbidden
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    /*@__PURE__*/ S.TaggedError<Forbidden>()("Forbidden", {
       code: S.Number,
       message: S.String,
     }),
@@ -32,7 +32,7 @@ export class Forbidden
 
 export class TestScheduleAlreadyExists
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<TestScheduleAlreadyExists>()(
+    /*@__PURE__*/ S.TaggedError<TestScheduleAlreadyExists>()(
       "TestScheduleAlreadyExists",
       {
         code: S.Number,
@@ -44,7 +44,7 @@ export class TestScheduleAlreadyExists
 
 export class TestScheduleNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<TestScheduleNotFound>()(
+    /*@__PURE__*/ S.TaggedError<TestScheduleNotFound>()(
       "TestScheduleNotFound",
       {
         code: S.Number,
@@ -59,7 +59,7 @@ export class TestScheduleNotFound
 
 export class TestScheduleQuotaReached
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<TestScheduleQuotaReached>()(
+    /*@__PURE__*/ S.TaggedError<TestScheduleQuotaReached>()(
       "TestScheduleQuotaReached",
       {
         code: S.Number,

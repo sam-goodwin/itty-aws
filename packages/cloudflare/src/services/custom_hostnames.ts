@@ -51,7 +51,7 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
 
 export class CustomHostnameNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<CustomHostnameNotFound>()(
+    /*@__PURE__*/ S.TaggedError<CustomHostnameNotFound>()(
       "CustomHostnameNotFound",
       {
         code: S.Number,
@@ -63,7 +63,7 @@ export class CustomHostnameNotFound
 
 export class FallbackOriginNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<FallbackOriginNotFound>()(
+    /*@__PURE__*/ S.TaggedError<FallbackOriginNotFound>()(
       "FallbackOriginNotFound",
       {
         code: S.Number,
@@ -75,7 +75,7 @@ export class FallbackOriginNotFound
 
 export class Forbidden
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    /*@__PURE__*/ S.TaggedError<Forbidden>()("Forbidden", {
       code: S.Number,
       message: S.String,
     }),
@@ -84,7 +84,7 @@ export class Forbidden
 
 export class SaasAccessNotGranted
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<SaasAccessNotGranted>()(
+    /*@__PURE__*/ S.TaggedError<SaasAccessNotGranted>()(
       "SaasAccessNotGranted",
       {
         code: S.Number,
@@ -96,7 +96,7 @@ export class SaasAccessNotGranted
 
 export class SaasQuotaNotAllocated
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<SaasQuotaNotAllocated>()(
+    /*@__PURE__*/ S.TaggedError<SaasQuotaNotAllocated>()(
       "SaasQuotaNotAllocated",
       {
         code: S.Number,

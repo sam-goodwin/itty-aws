@@ -52,7 +52,7 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
 
 export class InvalidSinkConfig
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<InvalidSinkConfig>()("InvalidSinkConfig", {
+    /*@__PURE__*/ S.TaggedError<InvalidSinkConfig>()("InvalidSinkConfig", {
       code: S.Number,
       message: S.String,
     }),
@@ -61,7 +61,7 @@ export class InvalidSinkConfig
 
 export class InvalidSinkId
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<InvalidSinkId>()("InvalidSinkId", {
+    /*@__PURE__*/ S.TaggedError<InvalidSinkId>()("InvalidSinkId", {
       code: S.Number,
       message: S.String,
     }),
@@ -70,7 +70,7 @@ export class InvalidSinkId
 
 export class InvalidSql
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<InvalidSql>()("InvalidSql", {
+    /*@__PURE__*/ S.TaggedError<InvalidSql>()("InvalidSql", {
       code: S.Number,
       message: S.String,
     }),
@@ -79,7 +79,7 @@ export class InvalidSql
 
 export class InvalidStreamId
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<InvalidStreamId>()("InvalidStreamId", {
+    /*@__PURE__*/ S.TaggedError<InvalidStreamId>()("InvalidStreamId", {
       code: S.Number,
       message: S.String,
     }),
@@ -88,7 +88,7 @@ export class InvalidStreamId
 
 export class InvalidStreamName
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<InvalidStreamName>()("InvalidStreamName", {
+    /*@__PURE__*/ S.TaggedError<InvalidStreamName>()("InvalidStreamName", {
       code: S.Number,
       message: S.String,
     }),
@@ -97,7 +97,7 @@ export class InvalidStreamName
 
 export class PipelineAlreadyExists
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<PipelineAlreadyExists>()(
+    /*@__PURE__*/ S.TaggedError<PipelineAlreadyExists>()(
       "PipelineAlreadyExists",
       {
         code: S.Number,
@@ -109,7 +109,7 @@ export class PipelineAlreadyExists
 
 export class PipelineNotExists
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<PipelineNotExists>()("PipelineNotExists", {
+    /*@__PURE__*/ S.TaggedError<PipelineNotExists>()("PipelineNotExists", {
       code: S.Number,
       message: S.String,
     }),
@@ -118,7 +118,7 @@ export class PipelineNotExists
 
 export class SinkAlreadyExists
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<SinkAlreadyExists>()("SinkAlreadyExists", {
+    /*@__PURE__*/ S.TaggedError<SinkAlreadyExists>()("SinkAlreadyExists", {
       code: S.Number,
       message: S.String,
     }),
@@ -127,7 +127,7 @@ export class SinkAlreadyExists
 
 export class SinkAuthFailed
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<SinkAuthFailed>()("SinkAuthFailed", {
+    /*@__PURE__*/ S.TaggedError<SinkAuthFailed>()("SinkAuthFailed", {
       code: S.Number,
       message: S.String,
     }),
@@ -136,7 +136,7 @@ export class SinkAuthFailed
 
 export class SinkInUse
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<SinkInUse>()("SinkInUse", {
+    /*@__PURE__*/ S.TaggedError<SinkInUse>()("SinkInUse", {
       code: S.Number,
       message: S.String,
     }),
@@ -145,7 +145,7 @@ export class SinkInUse
 
 export class SinkNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<SinkNotFound>()("SinkNotFound", {
+    /*@__PURE__*/ S.TaggedError<SinkNotFound>()("SinkNotFound", {
       code: S.Number,
       message: S.String,
     }),
@@ -154,19 +154,16 @@ export class SinkNotFound
 
 export class StreamAlreadyExists
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<StreamAlreadyExists>()(
-      "StreamAlreadyExists",
-      {
-        code: S.Number,
-        message: S.String,
-      },
-    ),
+    /*@__PURE__*/ S.TaggedError<StreamAlreadyExists>()("StreamAlreadyExists", {
+      code: S.Number,
+      message: S.String,
+    }),
     [{ code: 1003 }],
   ) {}
 
 export class StreamInUse
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<StreamInUse>()("StreamInUse", {
+    /*@__PURE__*/ S.TaggedError<StreamInUse>()("StreamInUse", {
       code: S.Number,
       message: S.String,
     }),
@@ -175,7 +172,7 @@ export class StreamInUse
 
 export class StreamNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<StreamNotFound>()("StreamNotFound", {
+    /*@__PURE__*/ S.TaggedError<StreamNotFound>()("StreamNotFound", {
       code: S.Number,
       message: S.String,
     }),
@@ -184,7 +181,7 @@ export class StreamNotFound
 
 export class TableNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<TableNotFound>()("TableNotFound", {
+    /*@__PURE__*/ S.TaggedError<TableNotFound>()("TableNotFound", {
       code: S.Number,
       message: S.String,
     }),

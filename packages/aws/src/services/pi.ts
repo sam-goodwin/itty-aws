@@ -86,17 +86,17 @@ const rules = T.EndpointResolver((p, _) => {
 });
 
 export class InternalServiceError
-  extends /*@__PURE__*/ S.TaggedErrorClass<InternalServiceError>()(
+  extends /*@__PURE__*/ S.TaggedError<InternalServiceError>()(
     "InternalServiceError",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidArgumentException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidArgumentException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidArgumentException>()(
     "InvalidArgumentException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class NotAuthorizedException
-  extends /*@__PURE__*/ S.TaggedErrorClass<NotAuthorizedException>()(
+  extends /*@__PURE__*/ S.TaggedError<NotAuthorizedException>()(
     "NotAuthorizedException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}

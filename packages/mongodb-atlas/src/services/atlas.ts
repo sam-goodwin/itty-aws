@@ -15,7 +15,7 @@ export type { MongodbAtlasOpError, MongodbAtlasOpContext };
 
 export class BadRequest
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<BadRequest>()("BadRequest", {
+    /*@__PURE__*/ S.TaggedError<BadRequest>()("BadRequest", {
       code: S.Number,
       message: S.String,
     }),
@@ -24,7 +24,7 @@ export class BadRequest
 
 export class Conflict
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<Conflict>()("Conflict", {
+    /*@__PURE__*/ S.TaggedError<Conflict>()("Conflict", {
       code: S.Number,
       message: S.String,
     }),
@@ -33,7 +33,7 @@ export class Conflict
 
 export class Forbidden
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    /*@__PURE__*/ S.TaggedError<Forbidden>()("Forbidden", {
       code: S.Number,
       message: S.String,
     }),
@@ -42,7 +42,7 @@ export class Forbidden
 
 export class NotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<NotFound>()("NotFound", {
+    /*@__PURE__*/ S.TaggedError<NotFound>()("NotFound", {
       code: S.Number,
       message: S.String,
     }),
@@ -51,7 +51,7 @@ export class NotFound
 
 export class PaymentRequired
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<PaymentRequired>()("PaymentRequired", {
+    /*@__PURE__*/ S.TaggedError<PaymentRequired>()("PaymentRequired", {
       code: S.Number,
       message: S.String,
     }),

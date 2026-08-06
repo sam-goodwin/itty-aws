@@ -84,7 +84,7 @@ const rules = T.EndpointResolver((p, _) => {
 });
 
 export class AccessDeniedException
-  extends /*@__PURE__*/ S.TaggedErrorClass<AccessDeniedException>()(
+  extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()(
     "AccessDeniedException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -92,7 +92,7 @@ export class AccessDeniedException
     },
   ).pipe(C.withAuthError) {}
 export class BadDocumentException
-  extends /*@__PURE__*/ S.TaggedErrorClass<BadDocumentException>()(
+  extends /*@__PURE__*/ S.TaggedError<BadDocumentException>()(
     "BadDocumentException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -100,7 +100,7 @@ export class BadDocumentException
     },
   ) {}
 export class ConflictException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ConflictException>()(
+  extends /*@__PURE__*/ S.TaggedError<ConflictException>()(
     "ConflictException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -108,7 +108,7 @@ export class ConflictException
     },
   ) {}
 export class DocumentTooLargeException
-  extends /*@__PURE__*/ S.TaggedErrorClass<DocumentTooLargeException>()(
+  extends /*@__PURE__*/ S.TaggedError<DocumentTooLargeException>()(
     "DocumentTooLargeException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -116,7 +116,7 @@ export class DocumentTooLargeException
     },
   ) {}
 export class HumanLoopQuotaExceededException
-  extends /*@__PURE__*/ S.TaggedErrorClass<HumanLoopQuotaExceededException>()(
+  extends /*@__PURE__*/ S.TaggedError<HumanLoopQuotaExceededException>()(
     "HumanLoopQuotaExceededException",
     {
       ResourceType: S.optional(S.String),
@@ -128,7 +128,7 @@ export class HumanLoopQuotaExceededException
     T.HttpError(402),
   ).pipe(C.withQuotaError) {}
 export class IdempotentParameterMismatchException
-  extends /*@__PURE__*/ S.TaggedErrorClass<IdempotentParameterMismatchException>()(
+  extends /*@__PURE__*/ S.TaggedError<IdempotentParameterMismatchException>()(
     "IdempotentParameterMismatchException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -136,7 +136,7 @@ export class IdempotentParameterMismatchException
     },
   ) {}
 export class InternalServerError
-  extends /*@__PURE__*/ S.TaggedErrorClass<InternalServerError>()(
+  extends /*@__PURE__*/ S.TaggedError<InternalServerError>()(
     "InternalServerError",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -144,7 +144,7 @@ export class InternalServerError
     },
   ) {}
 export class InvalidJobIdException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidJobIdException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidJobIdException>()(
     "InvalidJobIdException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -152,7 +152,7 @@ export class InvalidJobIdException
     },
   ) {}
 export class InvalidKMSKeyException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidKMSKeyException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidKMSKeyException>()(
     "InvalidKMSKeyException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -160,7 +160,7 @@ export class InvalidKMSKeyException
     },
   ) {}
 export class InvalidParameterException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidParameterException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidParameterException>()(
     "InvalidParameterException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -168,7 +168,7 @@ export class InvalidParameterException
     },
   ) {}
 export class InvalidS3ObjectException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidS3ObjectException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidS3ObjectException>()(
     "InvalidS3ObjectException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -176,7 +176,7 @@ export class InvalidS3ObjectException
     },
   ) {}
 export class LimitExceededException
-  extends /*@__PURE__*/ S.TaggedErrorClass<LimitExceededException>()(
+  extends /*@__PURE__*/ S.TaggedError<LimitExceededException>()(
     "LimitExceededException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -184,7 +184,7 @@ export class LimitExceededException
     },
   ) {}
 export class ProvisionedThroughputExceededException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ProvisionedThroughputExceededException>()(
+  extends /*@__PURE__*/ S.TaggedError<ProvisionedThroughputExceededException>()(
     "ProvisionedThroughputExceededException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -192,7 +192,7 @@ export class ProvisionedThroughputExceededException
     },
   ) {}
 export class ResourceNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -200,7 +200,7 @@ export class ResourceNotFoundException
     },
   ) {}
 export class ServiceQuotaExceededException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ServiceQuotaExceededException>()(
+  extends /*@__PURE__*/ S.TaggedError<ServiceQuotaExceededException>()(
     "ServiceQuotaExceededException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -208,7 +208,7 @@ export class ServiceQuotaExceededException
     },
   ) {}
 export class ThrottlingException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ThrottlingException>()(
+  extends /*@__PURE__*/ S.TaggedError<ThrottlingException>()(
     "ThrottlingException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -216,7 +216,7 @@ export class ThrottlingException
     },
   ) {}
 export class UnsupportedDocumentException
-  extends /*@__PURE__*/ S.TaggedErrorClass<UnsupportedDocumentException>()(
+  extends /*@__PURE__*/ S.TaggedError<UnsupportedDocumentException>()(
     "UnsupportedDocumentException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -224,7 +224,7 @@ export class UnsupportedDocumentException
     },
   ) {}
 export class ValidationException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ValidationException>()(
+  extends /*@__PURE__*/ S.TaggedError<ValidationException>()(
     "ValidationException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),

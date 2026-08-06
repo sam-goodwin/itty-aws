@@ -52,7 +52,7 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
 
 export class Forbidden
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    /*@__PURE__*/ S.TaggedError<Forbidden>()("Forbidden", {
       code: S.Number,
       message: S.String,
     }),
@@ -61,7 +61,7 @@ export class Forbidden
 
 export class InvalidMember
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<InvalidMember>()("InvalidMember", {
+    /*@__PURE__*/ S.TaggedError<InvalidMember>()("InvalidMember", {
       code: S.Number,
       message: S.String,
     }),
@@ -70,7 +70,7 @@ export class InvalidMember
 
 export class PolicyValidationFailed
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<PolicyValidationFailed>()(
+    /*@__PURE__*/ S.TaggedError<PolicyValidationFailed>()(
       "PolicyValidationFailed",
       {
         code: S.Number,
@@ -82,7 +82,7 @@ export class PolicyValidationFailed
 
 export class ResourceGroupNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<ResourceGroupNotFound>()(
+    /*@__PURE__*/ S.TaggedError<ResourceGroupNotFound>()(
       "ResourceGroupNotFound",
       {
         code: S.Number,
@@ -94,7 +94,7 @@ export class ResourceGroupNotFound
 
 export class UserGroupMemberNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<UserGroupMemberNotFound>()(
+    /*@__PURE__*/ S.TaggedError<UserGroupMemberNotFound>()(
       "UserGroupMemberNotFound",
       {
         code: S.Number,
@@ -106,19 +106,16 @@ export class UserGroupMemberNotFound
 
 export class UserGroupNameInUse
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<UserGroupNameInUse>()(
-      "UserGroupNameInUse",
-      {
-        code: S.Number,
-        message: S.String,
-      },
-    ),
+    /*@__PURE__*/ S.TaggedError<UserGroupNameInUse>()("UserGroupNameInUse", {
+      code: S.Number,
+      message: S.String,
+    }),
     [{ code: 400, message: { includes: "already in use" } }],
   ) {}
 
 export class UserGroupNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<UserGroupNotFound>()("UserGroupNotFound", {
+    /*@__PURE__*/ S.TaggedError<UserGroupNotFound>()("UserGroupNotFound", {
       code: S.Number,
       message: S.String,
     }),

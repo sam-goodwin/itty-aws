@@ -92,7 +92,7 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
 
 export class ActiveProductionDeployment
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<ActiveProductionDeployment>()(
+    /*@__PURE__*/ S.TaggedError<ActiveProductionDeployment>()(
       "ActiveProductionDeployment",
       {
         code: S.Number,
@@ -104,19 +104,16 @@ export class ActiveProductionDeployment
 
 export class DeploymentNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<DeploymentNotFound>()(
-      "DeploymentNotFound",
-      {
-        code: S.Number,
-        message: S.String,
-      },
-    ),
+    /*@__PURE__*/ S.TaggedError<DeploymentNotFound>()("DeploymentNotFound", {
+      code: S.Number,
+      message: S.String,
+    }),
     [{ code: 8000009 }],
   ) {}
 
 export class Forbidden
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    /*@__PURE__*/ S.TaggedError<Forbidden>()("Forbidden", {
       code: S.Number,
       message: S.String,
     }),
@@ -125,7 +122,7 @@ export class Forbidden
 
 export class PagesDomainAlreadyExists
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<PagesDomainAlreadyExists>()(
+    /*@__PURE__*/ S.TaggedError<PagesDomainAlreadyExists>()(
       "PagesDomainAlreadyExists",
       {
         code: S.Number,
@@ -137,19 +134,16 @@ export class PagesDomainAlreadyExists
 
 export class PagesDomainNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<PagesDomainNotFound>()(
-      "PagesDomainNotFound",
-      {
-        code: S.Number,
-        message: S.String,
-      },
-    ),
+    /*@__PURE__*/ S.TaggedError<PagesDomainNotFound>()("PagesDomainNotFound", {
+      code: S.Number,
+      message: S.String,
+    }),
     [{ code: 8000021 }],
   ) {}
 
 export class ProjectAlreadyExists
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<ProjectAlreadyExists>()(
+    /*@__PURE__*/ S.TaggedError<ProjectAlreadyExists>()(
       "ProjectAlreadyExists",
       {
         code: S.Number,
@@ -161,7 +155,7 @@ export class ProjectAlreadyExists
 
 export class ProjectNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<ProjectNotFound>()("ProjectNotFound", {
+    /*@__PURE__*/ S.TaggedError<ProjectNotFound>()("ProjectNotFound", {
       code: S.Number,
       message: S.String,
     }),

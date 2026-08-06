@@ -130,31 +130,25 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
 
 export class AllowPolicyNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<AllowPolicyNotFound>()(
-      "AllowPolicyNotFound",
-      {
-        code: S.Number,
-        message: S.String,
-      },
-    ),
+    /*@__PURE__*/ S.TaggedError<AllowPolicyNotFound>()("AllowPolicyNotFound", {
+      code: S.Number,
+      message: S.String,
+    }),
     [{ status: 404 }],
   ) {}
 
 export class BlockSenderNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<BlockSenderNotFound>()(
-      "BlockSenderNotFound",
-      {
-        code: S.Number,
-        message: S.String,
-      },
-    ),
+    /*@__PURE__*/ S.TaggedError<BlockSenderNotFound>()("BlockSenderNotFound", {
+      code: S.Number,
+      message: S.String,
+    }),
     [{ status: 404 }],
   ) {}
 
 export class EmailSecurityDomainNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<EmailSecurityDomainNotFound>()(
+    /*@__PURE__*/ S.TaggedError<EmailSecurityDomainNotFound>()(
       "EmailSecurityDomainNotFound",
       {
         code: S.Number,
@@ -166,7 +160,7 @@ export class EmailSecurityDomainNotFound
 
 export class EmailSecurityNotEntitled
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<EmailSecurityNotEntitled>()(
+    /*@__PURE__*/ S.TaggedError<EmailSecurityNotEntitled>()(
       "EmailSecurityNotEntitled",
       {
         code: S.Number,
@@ -183,7 +177,7 @@ export class EmailSecurityNotEntitled
 
 export class Forbidden
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    /*@__PURE__*/ S.TaggedError<Forbidden>()("Forbidden", {
       code: S.Number,
       message: S.String,
     }),
@@ -192,7 +186,7 @@ export class Forbidden
 
 export class ImpersonationRegistryEntryNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<ImpersonationRegistryEntryNotFound>()(
+    /*@__PURE__*/ S.TaggedError<ImpersonationRegistryEntryNotFound>()(
       "ImpersonationRegistryEntryNotFound",
       {
         code: S.Number,
@@ -204,7 +198,7 @@ export class ImpersonationRegistryEntryNotFound
 
 export class TrustedDomainNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<TrustedDomainNotFound>()(
+    /*@__PURE__*/ S.TaggedError<TrustedDomainNotFound>()(
       "TrustedDomainNotFound",
       {
         code: S.Number,

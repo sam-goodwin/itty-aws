@@ -84,7 +84,7 @@ const rules = T.EndpointResolver((p, _) => {
 });
 
 export class AlreadyExistsException
-  extends /*@__PURE__*/ S.TaggedErrorClass<AlreadyExistsException>()(
+  extends /*@__PURE__*/ S.TaggedError<AlreadyExistsException>()(
     "AlreadyExistsException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -93,7 +93,7 @@ export class AlreadyExistsException
     ),
   ).pipe(C.withConflictError, C.withAlreadyExistsError) {}
 export class CloudHsmClusterInUseException
-  extends /*@__PURE__*/ S.TaggedErrorClass<CloudHsmClusterInUseException>()(
+  extends /*@__PURE__*/ S.TaggedError<CloudHsmClusterInUseException>()(
     "CloudHsmClusterInUseException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -105,7 +105,7 @@ export class CloudHsmClusterInUseException
     ),
   ).pipe(C.withBadRequestError) {}
 export class CloudHsmClusterInvalidConfigurationException
-  extends /*@__PURE__*/ S.TaggedErrorClass<CloudHsmClusterInvalidConfigurationException>()(
+  extends /*@__PURE__*/ S.TaggedError<CloudHsmClusterInvalidConfigurationException>()(
     "CloudHsmClusterInvalidConfigurationException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -117,7 +117,7 @@ export class CloudHsmClusterInvalidConfigurationException
     ),
   ).pipe(C.withBadRequestError) {}
 export class CloudHsmClusterNotActiveException
-  extends /*@__PURE__*/ S.TaggedErrorClass<CloudHsmClusterNotActiveException>()(
+  extends /*@__PURE__*/ S.TaggedError<CloudHsmClusterNotActiveException>()(
     "CloudHsmClusterNotActiveException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -129,7 +129,7 @@ export class CloudHsmClusterNotActiveException
     ),
   ).pipe(C.withBadRequestError) {}
 export class CloudHsmClusterNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<CloudHsmClusterNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<CloudHsmClusterNotFoundException>()(
     "CloudHsmClusterNotFoundException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -141,7 +141,7 @@ export class CloudHsmClusterNotFoundException
     ),
   ).pipe(C.withBadRequestError) {}
 export class CloudHsmClusterNotRelatedException
-  extends /*@__PURE__*/ S.TaggedErrorClass<CloudHsmClusterNotRelatedException>()(
+  extends /*@__PURE__*/ S.TaggedError<CloudHsmClusterNotRelatedException>()(
     "CloudHsmClusterNotRelatedException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -153,7 +153,7 @@ export class CloudHsmClusterNotRelatedException
     ),
   ).pipe(C.withBadRequestError) {}
 export class ConflictException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ConflictException>()(
+  extends /*@__PURE__*/ S.TaggedError<ConflictException>()(
     "ConflictException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -162,7 +162,7 @@ export class ConflictException
     ),
   ).pipe(C.withConflictError) {}
 export class CustomKeyStoreHasCMKsException
-  extends /*@__PURE__*/ S.TaggedErrorClass<CustomKeyStoreHasCMKsException>()(
+  extends /*@__PURE__*/ S.TaggedError<CustomKeyStoreHasCMKsException>()(
     "CustomKeyStoreHasCMKsException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -174,7 +174,7 @@ export class CustomKeyStoreHasCMKsException
     ),
   ).pipe(C.withBadRequestError) {}
 export class CustomKeyStoreInvalidStateException
-  extends /*@__PURE__*/ S.TaggedErrorClass<CustomKeyStoreInvalidStateException>()(
+  extends /*@__PURE__*/ S.TaggedError<CustomKeyStoreInvalidStateException>()(
     "CustomKeyStoreInvalidStateException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -186,7 +186,7 @@ export class CustomKeyStoreInvalidStateException
     ),
   ).pipe(C.withBadRequestError) {}
 export class CustomKeyStoreNameInUseException
-  extends /*@__PURE__*/ S.TaggedErrorClass<CustomKeyStoreNameInUseException>()(
+  extends /*@__PURE__*/ S.TaggedError<CustomKeyStoreNameInUseException>()(
     "CustomKeyStoreNameInUseException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -198,7 +198,7 @@ export class CustomKeyStoreNameInUseException
     ),
   ).pipe(C.withBadRequestError) {}
 export class CustomKeyStoreNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<CustomKeyStoreNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<CustomKeyStoreNotFoundException>()(
     "CustomKeyStoreNotFoundException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -210,7 +210,7 @@ export class CustomKeyStoreNotFoundException
     ),
   ).pipe(C.withBadRequestError) {}
 export class DependencyTimeoutException
-  extends /*@__PURE__*/ S.TaggedErrorClass<DependencyTimeoutException>()(
+  extends /*@__PURE__*/ S.TaggedError<DependencyTimeoutException>()(
     "DependencyTimeoutException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -219,7 +219,7 @@ export class DependencyTimeoutException
     ),
   ).pipe(C.withServerError) {}
 export class DisabledException
-  extends /*@__PURE__*/ S.TaggedErrorClass<DisabledException>()(
+  extends /*@__PURE__*/ S.TaggedError<DisabledException>()(
     "DisabledException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -228,7 +228,7 @@ export class DisabledException
     ),
   ).pipe(C.withConflictError) {}
 export class DryRunOperationException
-  extends /*@__PURE__*/ S.TaggedErrorClass<DryRunOperationException>()(
+  extends /*@__PURE__*/ S.TaggedError<DryRunOperationException>()(
     "DryRunOperationException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -237,7 +237,7 @@ export class DryRunOperationException
     ),
   ) {}
 export class ExpiredImportTokenException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ExpiredImportTokenException>()(
+  extends /*@__PURE__*/ S.TaggedError<ExpiredImportTokenException>()(
     "ExpiredImportTokenException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -249,7 +249,7 @@ export class ExpiredImportTokenException
     ),
   ).pipe(C.withBadRequestError) {}
 export class IncorrectKeyException
-  extends /*@__PURE__*/ S.TaggedErrorClass<IncorrectKeyException>()(
+  extends /*@__PURE__*/ S.TaggedError<IncorrectKeyException>()(
     "IncorrectKeyException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -258,7 +258,7 @@ export class IncorrectKeyException
     ),
   ).pipe(C.withBadRequestError) {}
 export class IncorrectKeyMaterialException
-  extends /*@__PURE__*/ S.TaggedErrorClass<IncorrectKeyMaterialException>()(
+  extends /*@__PURE__*/ S.TaggedError<IncorrectKeyMaterialException>()(
     "IncorrectKeyMaterialException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -270,7 +270,7 @@ export class IncorrectKeyMaterialException
     ),
   ).pipe(C.withBadRequestError) {}
 export class IncorrectTrustAnchorException
-  extends /*@__PURE__*/ S.TaggedErrorClass<IncorrectTrustAnchorException>()(
+  extends /*@__PURE__*/ S.TaggedError<IncorrectTrustAnchorException>()(
     "IncorrectTrustAnchorException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -282,7 +282,7 @@ export class IncorrectTrustAnchorException
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidAliasNameException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidAliasNameException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidAliasNameException>()(
     "InvalidAliasNameException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -291,7 +291,7 @@ export class InvalidAliasNameException
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidArnException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidArnException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidArnException>()(
     "InvalidArnException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -300,7 +300,7 @@ export class InvalidArnException
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidCiphertextException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidCiphertextException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidCiphertextException>()(
     "InvalidCiphertextException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -309,7 +309,7 @@ export class InvalidCiphertextException
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidGrantIdException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidGrantIdException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidGrantIdException>()(
     "InvalidGrantIdException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -318,7 +318,7 @@ export class InvalidGrantIdException
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidGrantTokenException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidGrantTokenException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidGrantTokenException>()(
     "InvalidGrantTokenException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -327,7 +327,7 @@ export class InvalidGrantTokenException
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidImportTokenException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidImportTokenException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidImportTokenException>()(
     "InvalidImportTokenException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -339,7 +339,7 @@ export class InvalidImportTokenException
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidKeyUsageException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidKeyUsageException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidKeyUsageException>()(
     "InvalidKeyUsageException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -348,7 +348,7 @@ export class InvalidKeyUsageException
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidMarkerException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidMarkerException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidMarkerException>()(
     "InvalidMarkerException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -357,7 +357,7 @@ export class InvalidMarkerException
     ),
   ).pipe(C.withBadRequestError) {}
 export class KeyUnavailableException
-  extends /*@__PURE__*/ S.TaggedErrorClass<KeyUnavailableException>()(
+  extends /*@__PURE__*/ S.TaggedError<KeyUnavailableException>()(
     "KeyUnavailableException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -366,7 +366,7 @@ export class KeyUnavailableException
     ),
   ).pipe(C.withServerError) {}
 export class KMSInternalException
-  extends /*@__PURE__*/ S.TaggedErrorClass<KMSInternalException>()(
+  extends /*@__PURE__*/ S.TaggedError<KMSInternalException>()(
     "KMSInternalException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -375,7 +375,7 @@ export class KMSInternalException
     ),
   ).pipe(C.withServerError) {}
 export class KMSInvalidMacException
-  extends /*@__PURE__*/ S.TaggedErrorClass<KMSInvalidMacException>()(
+  extends /*@__PURE__*/ S.TaggedError<KMSInvalidMacException>()(
     "KMSInvalidMacException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -384,7 +384,7 @@ export class KMSInvalidMacException
     ),
   ).pipe(C.withBadRequestError) {}
 export class KMSInvalidSignatureException
-  extends /*@__PURE__*/ S.TaggedErrorClass<KMSInvalidSignatureException>()(
+  extends /*@__PURE__*/ S.TaggedError<KMSInvalidSignatureException>()(
     "KMSInvalidSignatureException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -393,7 +393,7 @@ export class KMSInvalidSignatureException
     ),
   ).pipe(C.withBadRequestError) {}
 export class KMSInvalidStateException
-  extends /*@__PURE__*/ S.TaggedErrorClass<KMSInvalidStateException>()(
+  extends /*@__PURE__*/ S.TaggedError<KMSInvalidStateException>()(
     "KMSInvalidStateException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -405,7 +405,7 @@ export class KMSInvalidStateException
     ),
   ).pipe(C.withConflictError) {}
 export class LimitExceededException
-  extends /*@__PURE__*/ S.TaggedErrorClass<LimitExceededException>()(
+  extends /*@__PURE__*/ S.TaggedError<LimitExceededException>()(
     "LimitExceededException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -414,7 +414,7 @@ export class LimitExceededException
     ),
   ).pipe(C.withBadRequestError) {}
 export class MalformedPolicyDocumentException
-  extends /*@__PURE__*/ S.TaggedErrorClass<MalformedPolicyDocumentException>()(
+  extends /*@__PURE__*/ S.TaggedError<MalformedPolicyDocumentException>()(
     "MalformedPolicyDocumentException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -426,7 +426,7 @@ export class MalformedPolicyDocumentException
     ),
   ).pipe(C.withBadRequestError) {}
 export class NotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<NotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<NotFoundException>()(
     "NotFoundException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -435,7 +435,7 @@ export class NotFoundException
     ),
   ).pipe(C.withBadRequestError) {}
 export class TagException
-  extends /*@__PURE__*/ S.TaggedErrorClass<TagException>()(
+  extends /*@__PURE__*/ S.TaggedError<TagException>()(
     "TagException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -444,7 +444,7 @@ export class TagException
     ),
   ).pipe(C.withBadRequestError) {}
 export class UnsupportedOperationException
-  extends /*@__PURE__*/ S.TaggedErrorClass<UnsupportedOperationException>()(
+  extends /*@__PURE__*/ S.TaggedError<UnsupportedOperationException>()(
     "UnsupportedOperationException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -453,7 +453,7 @@ export class UnsupportedOperationException
     ),
   ).pipe(C.withBadRequestError) {}
 export class XksKeyAlreadyInUseException
-  extends /*@__PURE__*/ S.TaggedErrorClass<XksKeyAlreadyInUseException>()(
+  extends /*@__PURE__*/ S.TaggedError<XksKeyAlreadyInUseException>()(
     "XksKeyAlreadyInUseException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -462,7 +462,7 @@ export class XksKeyAlreadyInUseException
     ),
   ).pipe(C.withBadRequestError) {}
 export class XksKeyInvalidConfigurationException
-  extends /*@__PURE__*/ S.TaggedErrorClass<XksKeyInvalidConfigurationException>()(
+  extends /*@__PURE__*/ S.TaggedError<XksKeyInvalidConfigurationException>()(
     "XksKeyInvalidConfigurationException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -474,7 +474,7 @@ export class XksKeyInvalidConfigurationException
     ),
   ).pipe(C.withBadRequestError) {}
 export class XksKeyNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<XksKeyNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<XksKeyNotFoundException>()(
     "XksKeyNotFoundException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -486,7 +486,7 @@ export class XksKeyNotFoundException
     ),
   ).pipe(C.withBadRequestError) {}
 export class XksProxyIncorrectAuthenticationCredentialException
-  extends /*@__PURE__*/ S.TaggedErrorClass<XksProxyIncorrectAuthenticationCredentialException>()(
+  extends /*@__PURE__*/ S.TaggedError<XksProxyIncorrectAuthenticationCredentialException>()(
     "XksProxyIncorrectAuthenticationCredentialException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -498,7 +498,7 @@ export class XksProxyIncorrectAuthenticationCredentialException
     ),
   ).pipe(C.withBadRequestError) {}
 export class XksProxyInvalidConfigurationException
-  extends /*@__PURE__*/ S.TaggedErrorClass<XksProxyInvalidConfigurationException>()(
+  extends /*@__PURE__*/ S.TaggedError<XksProxyInvalidConfigurationException>()(
     "XksProxyInvalidConfigurationException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -510,7 +510,7 @@ export class XksProxyInvalidConfigurationException
     ),
   ).pipe(C.withBadRequestError) {}
 export class XksProxyInvalidResponseException
-  extends /*@__PURE__*/ S.TaggedErrorClass<XksProxyInvalidResponseException>()(
+  extends /*@__PURE__*/ S.TaggedError<XksProxyInvalidResponseException>()(
     "XksProxyInvalidResponseException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -522,7 +522,7 @@ export class XksProxyInvalidResponseException
     ),
   ).pipe(C.withBadRequestError) {}
 export class XksProxyUriEndpointInUseException
-  extends /*@__PURE__*/ S.TaggedErrorClass<XksProxyUriEndpointInUseException>()(
+  extends /*@__PURE__*/ S.TaggedError<XksProxyUriEndpointInUseException>()(
     "XksProxyUriEndpointInUseException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -534,7 +534,7 @@ export class XksProxyUriEndpointInUseException
     ),
   ).pipe(C.withBadRequestError) {}
 export class XksProxyUriInUseException
-  extends /*@__PURE__*/ S.TaggedErrorClass<XksProxyUriInUseException>()(
+  extends /*@__PURE__*/ S.TaggedError<XksProxyUriInUseException>()(
     "XksProxyUriInUseException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -546,7 +546,7 @@ export class XksProxyUriInUseException
     ),
   ).pipe(C.withBadRequestError) {}
 export class XksProxyUriUnreachableException
-  extends /*@__PURE__*/ S.TaggedErrorClass<XksProxyUriUnreachableException>()(
+  extends /*@__PURE__*/ S.TaggedError<XksProxyUriUnreachableException>()(
     "XksProxyUriUnreachableException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -558,7 +558,7 @@ export class XksProxyUriUnreachableException
     ),
   ).pipe(C.withBadRequestError) {}
 export class XksProxyVpcEndpointServiceInUseException
-  extends /*@__PURE__*/ S.TaggedErrorClass<XksProxyVpcEndpointServiceInUseException>()(
+  extends /*@__PURE__*/ S.TaggedError<XksProxyVpcEndpointServiceInUseException>()(
     "XksProxyVpcEndpointServiceInUseException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -570,7 +570,7 @@ export class XksProxyVpcEndpointServiceInUseException
     ),
   ).pipe(C.withBadRequestError) {}
 export class XksProxyVpcEndpointServiceInvalidConfigurationException
-  extends /*@__PURE__*/ S.TaggedErrorClass<XksProxyVpcEndpointServiceInvalidConfigurationException>()(
+  extends /*@__PURE__*/ S.TaggedError<XksProxyVpcEndpointServiceInvalidConfigurationException>()(
     "XksProxyVpcEndpointServiceInvalidConfigurationException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -582,7 +582,7 @@ export class XksProxyVpcEndpointServiceInvalidConfigurationException
     ),
   ).pipe(C.withBadRequestError) {}
 export class XksProxyVpcEndpointServiceNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<XksProxyVpcEndpointServiceNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<XksProxyVpcEndpointServiceNotFoundException>()(
     "XksProxyVpcEndpointServiceNotFoundException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(

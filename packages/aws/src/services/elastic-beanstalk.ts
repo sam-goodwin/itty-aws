@@ -90,7 +90,7 @@ const rules = T.EndpointResolver((p, _) => {
 });
 
 export class CodeBuildNotInServiceRegionException
-  extends /*@__PURE__*/ S.TaggedErrorClass<CodeBuildNotInServiceRegionException>()(
+  extends /*@__PURE__*/ S.TaggedError<CodeBuildNotInServiceRegionException>()(
     "CodeBuildNotInServiceRegionException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -102,12 +102,12 @@ export class CodeBuildNotInServiceRegionException
     ),
   ).pipe(C.withBadRequestError) {}
 export class ElasticBeanstalkServiceException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ElasticBeanstalkServiceException>()(
+  extends /*@__PURE__*/ S.TaggedError<ElasticBeanstalkServiceException>()(
     "ElasticBeanstalkServiceException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InsufficientPrivilegesException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InsufficientPrivilegesException>()(
+  extends /*@__PURE__*/ S.TaggedError<InsufficientPrivilegesException>()(
     "InsufficientPrivilegesException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -119,7 +119,7 @@ export class InsufficientPrivilegesException
     ),
   ).pipe(C.withAuthError) {}
 export class InvalidRequestException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidRequestException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidRequestException>()(
     "InvalidRequestException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -131,7 +131,7 @@ export class InvalidRequestException
     ),
   ).pipe(C.withBadRequestError) {}
 export class ManagedActionInvalidStateException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ManagedActionInvalidStateException>()(
+  extends /*@__PURE__*/ S.TaggedError<ManagedActionInvalidStateException>()(
     "ManagedActionInvalidStateException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -143,7 +143,7 @@ export class ManagedActionInvalidStateException
     ),
   ).pipe(C.withBadRequestError) {}
 export class OperationInProgressException
-  extends /*@__PURE__*/ S.TaggedErrorClass<OperationInProgressException>()(
+  extends /*@__PURE__*/ S.TaggedError<OperationInProgressException>()(
     "OperationInProgressException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -155,7 +155,7 @@ export class OperationInProgressException
     ),
   ).pipe(C.withBadRequestError) {}
 export class PlatformVersionStillReferencedException
-  extends /*@__PURE__*/ S.TaggedErrorClass<PlatformVersionStillReferencedException>()(
+  extends /*@__PURE__*/ S.TaggedError<PlatformVersionStillReferencedException>()(
     "PlatformVersionStillReferencedException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -167,7 +167,7 @@ export class PlatformVersionStillReferencedException
     ),
   ).pipe(C.withBadRequestError) {}
 export class ResourceNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -179,7 +179,7 @@ export class ResourceNotFoundException
     ),
   ).pipe(C.withBadRequestError) {}
 export class ResourceTypeNotSupportedException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceTypeNotSupportedException>()(
+  extends /*@__PURE__*/ S.TaggedError<ResourceTypeNotSupportedException>()(
     "ResourceTypeNotSupportedException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -191,7 +191,7 @@ export class ResourceTypeNotSupportedException
     ),
   ).pipe(C.withBadRequestError) {}
 export class S3LocationNotInServiceRegionException
-  extends /*@__PURE__*/ S.TaggedErrorClass<S3LocationNotInServiceRegionException>()(
+  extends /*@__PURE__*/ S.TaggedError<S3LocationNotInServiceRegionException>()(
     "S3LocationNotInServiceRegionException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -203,7 +203,7 @@ export class S3LocationNotInServiceRegionException
     ),
   ).pipe(C.withBadRequestError) {}
 export class S3SubscriptionRequiredException
-  extends /*@__PURE__*/ S.TaggedErrorClass<S3SubscriptionRequiredException>()(
+  extends /*@__PURE__*/ S.TaggedError<S3SubscriptionRequiredException>()(
     "S3SubscriptionRequiredException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -215,7 +215,7 @@ export class S3SubscriptionRequiredException
     ),
   ).pipe(C.withBadRequestError) {}
 export class SourceBundleDeletionException
-  extends /*@__PURE__*/ S.TaggedErrorClass<SourceBundleDeletionException>()(
+  extends /*@__PURE__*/ S.TaggedError<SourceBundleDeletionException>()(
     "SourceBundleDeletionException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -227,7 +227,7 @@ export class SourceBundleDeletionException
     ),
   ).pipe(C.withBadRequestError) {}
 export class TooManyApplicationsException
-  extends /*@__PURE__*/ S.TaggedErrorClass<TooManyApplicationsException>()(
+  extends /*@__PURE__*/ S.TaggedError<TooManyApplicationsException>()(
     "TooManyApplicationsException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -239,12 +239,12 @@ export class TooManyApplicationsException
     ),
   ).pipe(C.withBadRequestError) {}
 export class TooManyApplicationVersionsException
-  extends /*@__PURE__*/ S.TaggedErrorClass<TooManyApplicationVersionsException>()(
+  extends /*@__PURE__*/ S.TaggedError<TooManyApplicationVersionsException>()(
     "TooManyApplicationVersionsException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class TooManyBucketsException
-  extends /*@__PURE__*/ S.TaggedErrorClass<TooManyBucketsException>()(
+  extends /*@__PURE__*/ S.TaggedError<TooManyBucketsException>()(
     "TooManyBucketsException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -256,7 +256,7 @@ export class TooManyBucketsException
     ),
   ).pipe(C.withBadRequestError) {}
 export class TooManyConfigurationTemplatesException
-  extends /*@__PURE__*/ S.TaggedErrorClass<TooManyConfigurationTemplatesException>()(
+  extends /*@__PURE__*/ S.TaggedError<TooManyConfigurationTemplatesException>()(
     "TooManyConfigurationTemplatesException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -268,7 +268,7 @@ export class TooManyConfigurationTemplatesException
     ),
   ).pipe(C.withBadRequestError) {}
 export class TooManyEnvironmentsException
-  extends /*@__PURE__*/ S.TaggedErrorClass<TooManyEnvironmentsException>()(
+  extends /*@__PURE__*/ S.TaggedError<TooManyEnvironmentsException>()(
     "TooManyEnvironmentsException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -280,7 +280,7 @@ export class TooManyEnvironmentsException
     ),
   ).pipe(C.withBadRequestError) {}
 export class TooManyPlatformsException
-  extends /*@__PURE__*/ S.TaggedErrorClass<TooManyPlatformsException>()(
+  extends /*@__PURE__*/ S.TaggedError<TooManyPlatformsException>()(
     "TooManyPlatformsException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -292,7 +292,7 @@ export class TooManyPlatformsException
     ),
   ).pipe(C.withBadRequestError) {}
 export class TooManyTagsException
-  extends /*@__PURE__*/ S.TaggedErrorClass<TooManyTagsException>()(
+  extends /*@__PURE__*/ S.TaggedError<TooManyTagsException>()(
     "TooManyTagsException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(

@@ -4,52 +4,52 @@ import * as S from "effect/Schema";
 import * as Category from "../src/category.ts";
 
 // Test error classes with different categories
-class TestBadRequestError extends S.TaggedErrorClass<TestBadRequestError>()(
+class TestBadRequestError extends S.TaggedError<TestBadRequestError>()(
   "TestBadRequestError",
   { message: S.String },
 ).pipe(Category.withBadRequestError) {}
 
-class TestAuthError extends S.TaggedErrorClass<TestAuthError>()(
+class TestAuthError extends S.TaggedError<TestAuthError>()(
   "TestAuthError",
   {},
 ).pipe(Category.withAuthError) {}
 
-class TestServerError extends S.TaggedErrorClass<TestServerError>()(
+class TestServerError extends S.TaggedError<TestServerError>()(
   "TestServerError",
   {},
 ).pipe(Category.withServerError, Category.withRetryableError) {}
 
-class TestThrottlingError extends S.TaggedErrorClass<TestThrottlingError>()(
+class TestThrottlingError extends S.TaggedError<TestThrottlingError>()(
   "TestThrottlingError",
   { retryAfterSeconds: S.optional(S.Number) },
 ).pipe(Category.withThrottlingError) {}
 
-class TestConflictError extends S.TaggedErrorClass<TestConflictError>()(
+class TestConflictError extends S.TaggedError<TestConflictError>()(
   "TestConflictError",
   {},
 ).pipe(Category.withConflictError) {}
 
-class TestQuotaError extends S.TaggedErrorClass<TestQuotaError>()(
+class TestQuotaError extends S.TaggedError<TestQuotaError>()(
   "TestQuotaError",
   {},
 ).pipe(Category.withQuotaError) {}
 
-class TestTimeoutError extends S.TaggedErrorClass<TestTimeoutError>()(
+class TestTimeoutError extends S.TaggedError<TestTimeoutError>()(
   "TestTimeoutError",
   {},
 ).pipe(Category.withTimeoutError) {}
 
-class TestNetworkError extends S.TaggedErrorClass<TestNetworkError>()(
+class TestNetworkError extends S.TaggedError<TestNetworkError>()(
   "TestNetworkError",
   {},
 ).pipe(Category.withNetworkError) {}
 
-class TestAbortedError extends S.TaggedErrorClass<TestAbortedError>()(
+class TestAbortedError extends S.TaggedError<TestAbortedError>()(
   "TestAbortedError",
   {},
 ).pipe(Category.withAbortedError) {}
 
-class UncategorizedError extends S.TaggedErrorClass<UncategorizedError>()(
+class UncategorizedError extends S.TaggedError<UncategorizedError>()(
   "UncategorizedError",
   {},
 ) {}

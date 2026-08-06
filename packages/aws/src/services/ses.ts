@@ -85,7 +85,7 @@ const rules = T.EndpointResolver((p, _) => {
 });
 
 export class AccountSendingPausedException
-  extends /*@__PURE__*/ S.TaggedErrorClass<AccountSendingPausedException>()(
+  extends /*@__PURE__*/ S.TaggedError<AccountSendingPausedException>()(
     "AccountSendingPausedException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -97,7 +97,7 @@ export class AccountSendingPausedException
     ),
   ).pipe(C.withBadRequestError) {}
 export class AlreadyExistsException
-  extends /*@__PURE__*/ S.TaggedErrorClass<AlreadyExistsException>()(
+  extends /*@__PURE__*/ S.TaggedError<AlreadyExistsException>()(
     "AlreadyExistsException",
     {
       Name: S.optional(S.String),
@@ -109,7 +109,7 @@ export class AlreadyExistsException
     ),
   ).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
 export class CannotDeleteException
-  extends /*@__PURE__*/ S.TaggedErrorClass<CannotDeleteException>()(
+  extends /*@__PURE__*/ S.TaggedError<CannotDeleteException>()(
     "CannotDeleteException",
     {
       Name: S.optional(S.String),
@@ -121,7 +121,7 @@ export class CannotDeleteException
     ),
   ).pipe(C.withBadRequestError) {}
 export class ConfigurationSetAlreadyExistsException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ConfigurationSetAlreadyExistsException>()(
+  extends /*@__PURE__*/ S.TaggedError<ConfigurationSetAlreadyExistsException>()(
     "ConfigurationSetAlreadyExistsException",
     {
       ConfigurationSetName: S.optional(S.String),
@@ -136,7 +136,7 @@ export class ConfigurationSetAlreadyExistsException
     ),
   ).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
 export class ConfigurationSetDoesNotExistException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ConfigurationSetDoesNotExistException>()(
+  extends /*@__PURE__*/ S.TaggedError<ConfigurationSetDoesNotExistException>()(
     "ConfigurationSetDoesNotExistException",
     {
       ConfigurationSetName: S.optional(S.String),
@@ -151,7 +151,7 @@ export class ConfigurationSetDoesNotExistException
     ),
   ).pipe(C.withBadRequestError) {}
 export class ConfigurationSetSendingPausedException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ConfigurationSetSendingPausedException>()(
+  extends /*@__PURE__*/ S.TaggedError<ConfigurationSetSendingPausedException>()(
     "ConfigurationSetSendingPausedException",
     {
       ConfigurationSetName: S.optional(S.String),
@@ -166,7 +166,7 @@ export class ConfigurationSetSendingPausedException
     ),
   ).pipe(C.withBadRequestError) {}
 export class CustomVerificationEmailInvalidContentException
-  extends /*@__PURE__*/ S.TaggedErrorClass<CustomVerificationEmailInvalidContentException>()(
+  extends /*@__PURE__*/ S.TaggedError<CustomVerificationEmailInvalidContentException>()(
     "CustomVerificationEmailInvalidContentException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -178,7 +178,7 @@ export class CustomVerificationEmailInvalidContentException
     ),
   ).pipe(C.withBadRequestError) {}
 export class CustomVerificationEmailTemplateAlreadyExistsException
-  extends /*@__PURE__*/ S.TaggedErrorClass<CustomVerificationEmailTemplateAlreadyExistsException>()(
+  extends /*@__PURE__*/ S.TaggedError<CustomVerificationEmailTemplateAlreadyExistsException>()(
     "CustomVerificationEmailTemplateAlreadyExistsException",
     {
       CustomVerificationEmailTemplateName: S.optional(S.String),
@@ -193,7 +193,7 @@ export class CustomVerificationEmailTemplateAlreadyExistsException
     ),
   ).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
 export class CustomVerificationEmailTemplateDoesNotExistException
-  extends /*@__PURE__*/ S.TaggedErrorClass<CustomVerificationEmailTemplateDoesNotExistException>()(
+  extends /*@__PURE__*/ S.TaggedError<CustomVerificationEmailTemplateDoesNotExistException>()(
     "CustomVerificationEmailTemplateDoesNotExistException",
     {
       CustomVerificationEmailTemplateName: S.optional(S.String),
@@ -208,7 +208,7 @@ export class CustomVerificationEmailTemplateDoesNotExistException
     ),
   ).pipe(C.withBadRequestError) {}
 export class EventDestinationAlreadyExistsException
-  extends /*@__PURE__*/ S.TaggedErrorClass<EventDestinationAlreadyExistsException>()(
+  extends /*@__PURE__*/ S.TaggedError<EventDestinationAlreadyExistsException>()(
     "EventDestinationAlreadyExistsException",
     {
       ConfigurationSetName: S.optional(S.String),
@@ -224,7 +224,7 @@ export class EventDestinationAlreadyExistsException
     ),
   ).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
 export class EventDestinationDoesNotExistException
-  extends /*@__PURE__*/ S.TaggedErrorClass<EventDestinationDoesNotExistException>()(
+  extends /*@__PURE__*/ S.TaggedError<EventDestinationDoesNotExistException>()(
     "EventDestinationDoesNotExistException",
     {
       ConfigurationSetName: S.optional(S.String),
@@ -240,7 +240,7 @@ export class EventDestinationDoesNotExistException
     ),
   ).pipe(C.withBadRequestError) {}
 export class FromEmailAddressNotVerifiedException
-  extends /*@__PURE__*/ S.TaggedErrorClass<FromEmailAddressNotVerifiedException>()(
+  extends /*@__PURE__*/ S.TaggedError<FromEmailAddressNotVerifiedException>()(
     "FromEmailAddressNotVerifiedException",
     {
       FromEmailAddress: S.optional(S.String),
@@ -255,7 +255,7 @@ export class FromEmailAddressNotVerifiedException
     ),
   ).pipe(C.withBadRequestError) {}
 export class IdentityNotVerified
-  extends /*@__PURE__*/ S.TaggedErrorClass<IdentityNotVerified>()(
+  extends /*@__PURE__*/ S.TaggedError<IdentityNotVerified>()(
     "IdentityNotVerified",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.SyntheticError({
@@ -264,7 +264,7 @@ export class IdentityNotVerified
     }),
   ) {}
 export class InvalidCloudWatchDestinationException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidCloudWatchDestinationException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidCloudWatchDestinationException>()(
     "InvalidCloudWatchDestinationException",
     {
       ConfigurationSetName: S.optional(S.String),
@@ -280,7 +280,7 @@ export class InvalidCloudWatchDestinationException
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidConfigurationSetException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidConfigurationSetException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidConfigurationSetException>()(
     "InvalidConfigurationSetException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -292,7 +292,7 @@ export class InvalidConfigurationSetException
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidDeliveryOptionsException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidDeliveryOptionsException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidDeliveryOptionsException>()(
     "InvalidDeliveryOptionsException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -304,7 +304,7 @@ export class InvalidDeliveryOptionsException
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidFirehoseDestinationException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidFirehoseDestinationException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidFirehoseDestinationException>()(
     "InvalidFirehoseDestinationException",
     {
       ConfigurationSetName: S.optional(S.String),
@@ -320,7 +320,7 @@ export class InvalidFirehoseDestinationException
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidLambdaFunctionException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidLambdaFunctionException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidLambdaFunctionException>()(
     "InvalidLambdaFunctionException",
     {
       FunctionArn: S.optional(S.String),
@@ -332,12 +332,12 @@ export class InvalidLambdaFunctionException
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidParameterValue
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidParameterValue>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidParameterValue>()(
     "InvalidParameterValue",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidPolicyException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidPolicyException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidPolicyException>()(
     "InvalidPolicyException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -346,7 +346,7 @@ export class InvalidPolicyException
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidRenderingParameterException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidRenderingParameterException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidRenderingParameterException>()(
     "InvalidRenderingParameterException",
     {
       TemplateName: S.optional(S.String),
@@ -361,7 +361,7 @@ export class InvalidRenderingParameterException
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidS3ConfigurationException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidS3ConfigurationException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidS3ConfigurationException>()(
     "InvalidS3ConfigurationException",
     {
       Bucket: S.optional(S.String),
@@ -376,7 +376,7 @@ export class InvalidS3ConfigurationException
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidSNSDestinationException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidSNSDestinationException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidSNSDestinationException>()(
     "InvalidSNSDestinationException",
     {
       ConfigurationSetName: S.optional(S.String),
@@ -389,7 +389,7 @@ export class InvalidSNSDestinationException
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidSnsTopicException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidSnsTopicException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidSnsTopicException>()(
     "InvalidSnsTopicException",
     {
       Topic: S.optional(S.String),
@@ -401,7 +401,7 @@ export class InvalidSnsTopicException
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidTemplateException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidTemplateException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidTemplateException>()(
     "InvalidTemplateException",
     {
       TemplateName: S.optional(S.String),
@@ -413,7 +413,7 @@ export class InvalidTemplateException
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidTrackingOptionsException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidTrackingOptionsException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidTrackingOptionsException>()(
     "InvalidTrackingOptionsException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -425,7 +425,7 @@ export class InvalidTrackingOptionsException
     ),
   ).pipe(C.withBadRequestError) {}
 export class LimitExceededException
-  extends /*@__PURE__*/ S.TaggedErrorClass<LimitExceededException>()(
+  extends /*@__PURE__*/ S.TaggedError<LimitExceededException>()(
     "LimitExceededException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -434,7 +434,7 @@ export class LimitExceededException
     ),
   ).pipe(C.withBadRequestError) {}
 export class MailFromDomainNotVerifiedException
-  extends /*@__PURE__*/ S.TaggedErrorClass<MailFromDomainNotVerifiedException>()(
+  extends /*@__PURE__*/ S.TaggedError<MailFromDomainNotVerifiedException>()(
     "MailFromDomainNotVerifiedException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -446,7 +446,7 @@ export class MailFromDomainNotVerifiedException
     ),
   ).pipe(C.withBadRequestError) {}
 export class MessageRejected
-  extends /*@__PURE__*/ S.TaggedErrorClass<MessageRejected>()(
+  extends /*@__PURE__*/ S.TaggedError<MessageRejected>()(
     "MessageRejected",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -455,7 +455,7 @@ export class MessageRejected
     ),
   ).pipe(C.withBadRequestError) {}
 export class MissingRenderingAttributeException
-  extends /*@__PURE__*/ S.TaggedErrorClass<MissingRenderingAttributeException>()(
+  extends /*@__PURE__*/ S.TaggedError<MissingRenderingAttributeException>()(
     "MissingRenderingAttributeException",
     {
       TemplateName: S.optional(S.String),
@@ -470,7 +470,7 @@ export class MissingRenderingAttributeException
     ),
   ).pipe(C.withBadRequestError) {}
 export class ProductionAccessNotGrantedException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ProductionAccessNotGrantedException>()(
+  extends /*@__PURE__*/ S.TaggedError<ProductionAccessNotGrantedException>()(
     "ProductionAccessNotGrantedException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -482,7 +482,7 @@ export class ProductionAccessNotGrantedException
     ),
   ).pipe(C.withBadRequestError) {}
 export class RuleDoesNotExistException
-  extends /*@__PURE__*/ S.TaggedErrorClass<RuleDoesNotExistException>()(
+  extends /*@__PURE__*/ S.TaggedError<RuleDoesNotExistException>()(
     "RuleDoesNotExistException",
     {
       Name: S.optional(S.String),
@@ -494,7 +494,7 @@ export class RuleDoesNotExistException
     ),
   ).pipe(C.withBadRequestError) {}
 export class RuleSetDoesNotExistException
-  extends /*@__PURE__*/ S.TaggedErrorClass<RuleSetDoesNotExistException>()(
+  extends /*@__PURE__*/ S.TaggedError<RuleSetDoesNotExistException>()(
     "RuleSetDoesNotExistException",
     {
       Name: S.optional(S.String),
@@ -506,7 +506,7 @@ export class RuleSetDoesNotExistException
     ),
   ).pipe(C.withBadRequestError) {}
 export class TemplateDoesNotExistException
-  extends /*@__PURE__*/ S.TaggedErrorClass<TemplateDoesNotExistException>()(
+  extends /*@__PURE__*/ S.TaggedError<TemplateDoesNotExistException>()(
     "TemplateDoesNotExistException",
     {
       TemplateName: S.optional(S.String),
@@ -518,7 +518,7 @@ export class TemplateDoesNotExistException
     ),
   ).pipe(C.withBadRequestError) {}
 export class TrackingOptionsAlreadyExistsException
-  extends /*@__PURE__*/ S.TaggedErrorClass<TrackingOptionsAlreadyExistsException>()(
+  extends /*@__PURE__*/ S.TaggedError<TrackingOptionsAlreadyExistsException>()(
     "TrackingOptionsAlreadyExistsException",
     {
       ConfigurationSetName: S.optional(S.String),
@@ -533,7 +533,7 @@ export class TrackingOptionsAlreadyExistsException
     ),
   ).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
 export class TrackingOptionsDoesNotExistException
-  extends /*@__PURE__*/ S.TaggedErrorClass<TrackingOptionsDoesNotExistException>()(
+  extends /*@__PURE__*/ S.TaggedError<TrackingOptionsDoesNotExistException>()(
     "TrackingOptionsDoesNotExistException",
     {
       ConfigurationSetName: S.optional(S.String),

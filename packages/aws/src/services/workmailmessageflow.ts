@@ -84,21 +84,20 @@ const rules = T.EndpointResolver((p, _) => {
 });
 
 export class InvalidContentLocation
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidContentLocation>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidContentLocation>()(
     "InvalidContentLocation",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class MessageFrozen
-  extends /*@__PURE__*/ S.TaggedErrorClass<MessageFrozen>()("MessageFrozen", {
+  extends /*@__PURE__*/ S.TaggedError<MessageFrozen>()("MessageFrozen", {
     message: S.optional(S.String).pipe(T.ErrorMessage()),
   }) {}
 export class MessageRejected
-  extends /*@__PURE__*/ S.TaggedErrorClass<MessageRejected>()(
-    "MessageRejected",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-  ) {}
+  extends /*@__PURE__*/ S.TaggedError<MessageRejected>()("MessageRejected", {
+    message: S.optional(S.String).pipe(T.ErrorMessage()),
+  }) {}
 export class ResourceNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(404),

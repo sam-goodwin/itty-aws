@@ -34,7 +34,7 @@ import * as Category from "@distilled.cloud/core/category";
  * Unknown Fly.io error — returned when a failure matches no status-mapped
  * error class. Carries the raw body for later cataloging.
  */
-export class UnknownFlyIoError extends Schema.TaggedErrorClass<UnknownFlyIoError>()(
+export class UnknownFlyIoError extends Schema.TaggedError<UnknownFlyIoError>()(
   "UnknownFlyIoError",
   {
     code: Schema.optional(Schema.String),
@@ -44,7 +44,7 @@ export class UnknownFlyIoError extends Schema.TaggedErrorClass<UnknownFlyIoError
 ).pipe(Category.withServerError) {}
 
 /** Schema parse error wrapper. */
-export class FlyIoParseError extends Schema.TaggedErrorClass<FlyIoParseError>()(
+export class FlyIoParseError extends Schema.TaggedError<FlyIoParseError>()(
   "FlyIoParseError",
   {
     body: Schema.Unknown,

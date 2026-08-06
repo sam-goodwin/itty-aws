@@ -90,7 +90,7 @@ const rules = T.EndpointResolver((p, _) => {
 });
 
 export class AccessPointNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<AccessPointNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<AccessPointNotFoundException>()(
     "AccessPointNotFoundException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -99,7 +99,7 @@ export class AccessPointNotFoundException
     ),
   ).pipe(C.withBadRequestError) {}
 export class CertificateNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<CertificateNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<CertificateNotFoundException>()(
     "CertificateNotFoundException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -108,7 +108,7 @@ export class CertificateNotFoundException
     ),
   ).pipe(C.withBadRequestError) {}
 export class DependencyThrottleException
-  extends /*@__PURE__*/ S.TaggedErrorClass<DependencyThrottleException>()(
+  extends /*@__PURE__*/ S.TaggedError<DependencyThrottleException>()(
     "DependencyThrottleException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -117,7 +117,7 @@ export class DependencyThrottleException
     ),
   ).pipe(C.withBadRequestError) {}
 export class DuplicateAccessPointNameException
-  extends /*@__PURE__*/ S.TaggedErrorClass<DuplicateAccessPointNameException>()(
+  extends /*@__PURE__*/ S.TaggedError<DuplicateAccessPointNameException>()(
     "DuplicateAccessPointNameException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -129,7 +129,7 @@ export class DuplicateAccessPointNameException
     ),
   ).pipe(C.withBadRequestError) {}
 export class DuplicateListenerException
-  extends /*@__PURE__*/ S.TaggedErrorClass<DuplicateListenerException>()(
+  extends /*@__PURE__*/ S.TaggedError<DuplicateListenerException>()(
     "DuplicateListenerException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -138,7 +138,7 @@ export class DuplicateListenerException
     ),
   ).pipe(C.withBadRequestError) {}
 export class DuplicatePolicyNameException
-  extends /*@__PURE__*/ S.TaggedErrorClass<DuplicatePolicyNameException>()(
+  extends /*@__PURE__*/ S.TaggedError<DuplicatePolicyNameException>()(
     "DuplicatePolicyNameException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -147,7 +147,7 @@ export class DuplicatePolicyNameException
     ),
   ).pipe(C.withBadRequestError) {}
 export class DuplicateTagKeysException
-  extends /*@__PURE__*/ S.TaggedErrorClass<DuplicateTagKeysException>()(
+  extends /*@__PURE__*/ S.TaggedError<DuplicateTagKeysException>()(
     "DuplicateTagKeysException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -156,7 +156,7 @@ export class DuplicateTagKeysException
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidConfigurationRequestException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidConfigurationRequestException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidConfigurationRequestException>()(
     "InvalidConfigurationRequestException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -168,7 +168,7 @@ export class InvalidConfigurationRequestException
     ),
   ).pipe(C.withConflictError) {}
 export class InvalidEndPointException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidEndPointException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidEndPointException>()(
     "InvalidEndPointException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -177,7 +177,7 @@ export class InvalidEndPointException
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidSchemeException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidSchemeException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidSchemeException>()(
     "InvalidSchemeException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -186,7 +186,7 @@ export class InvalidSchemeException
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidSecurityGroupException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidSecurityGroupException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidSecurityGroupException>()(
     "InvalidSecurityGroupException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -195,7 +195,7 @@ export class InvalidSecurityGroupException
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidSubnetException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidSubnetException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidSubnetException>()(
     "InvalidSubnetException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -204,7 +204,7 @@ export class InvalidSubnetException
     ),
   ).pipe(C.withBadRequestError) {}
 export class ListenerNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ListenerNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<ListenerNotFoundException>()(
     "ListenerNotFoundException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -213,7 +213,7 @@ export class ListenerNotFoundException
     ),
   ).pipe(C.withBadRequestError) {}
 export class LoadBalancerAttributeNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<LoadBalancerAttributeNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<LoadBalancerAttributeNotFoundException>()(
     "LoadBalancerAttributeNotFoundException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -225,7 +225,7 @@ export class LoadBalancerAttributeNotFoundException
     ),
   ).pipe(C.withBadRequestError) {}
 export class OperationNotPermittedException
-  extends /*@__PURE__*/ S.TaggedErrorClass<OperationNotPermittedException>()(
+  extends /*@__PURE__*/ S.TaggedError<OperationNotPermittedException>()(
     "OperationNotPermittedException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -234,7 +234,7 @@ export class OperationNotPermittedException
     ),
   ).pipe(C.withBadRequestError) {}
 export class PolicyNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<PolicyNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<PolicyNotFoundException>()(
     "PolicyNotFoundException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -243,7 +243,7 @@ export class PolicyNotFoundException
     ),
   ).pipe(C.withBadRequestError) {}
 export class PolicyTypeNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<PolicyTypeNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<PolicyTypeNotFoundException>()(
     "PolicyTypeNotFoundException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -252,7 +252,7 @@ export class PolicyTypeNotFoundException
     ),
   ).pipe(C.withBadRequestError) {}
 export class SubnetNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<SubnetNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<SubnetNotFoundException>()(
     "SubnetNotFoundException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -261,7 +261,7 @@ export class SubnetNotFoundException
     ),
   ).pipe(C.withBadRequestError) {}
 export class TooManyAccessPointsException
-  extends /*@__PURE__*/ S.TaggedErrorClass<TooManyAccessPointsException>()(
+  extends /*@__PURE__*/ S.TaggedError<TooManyAccessPointsException>()(
     "TooManyAccessPointsException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -270,7 +270,7 @@ export class TooManyAccessPointsException
     ),
   ).pipe(C.withBadRequestError) {}
 export class TooManyPoliciesException
-  extends /*@__PURE__*/ S.TaggedErrorClass<TooManyPoliciesException>()(
+  extends /*@__PURE__*/ S.TaggedError<TooManyPoliciesException>()(
     "TooManyPoliciesException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -279,7 +279,7 @@ export class TooManyPoliciesException
     ),
   ).pipe(C.withBadRequestError) {}
 export class TooManyTagsException
-  extends /*@__PURE__*/ S.TaggedErrorClass<TooManyTagsException>()(
+  extends /*@__PURE__*/ S.TaggedError<TooManyTagsException>()(
     "TooManyTagsException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -288,7 +288,7 @@ export class TooManyTagsException
     ),
   ).pipe(C.withBadRequestError) {}
 export class UnsupportedProtocolException
-  extends /*@__PURE__*/ S.TaggedErrorClass<UnsupportedProtocolException>()(
+  extends /*@__PURE__*/ S.TaggedError<UnsupportedProtocolException>()(
     "UnsupportedProtocolException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(

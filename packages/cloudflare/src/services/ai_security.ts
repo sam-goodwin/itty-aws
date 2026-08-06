@@ -14,7 +14,7 @@ export type { CloudflareOpError, CloudflareOpContext };
 
 export class AiSecurityNotEntitled
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<AiSecurityNotEntitled>()(
+    /*@__PURE__*/ S.TaggedError<AiSecurityNotEntitled>()(
       "AiSecurityNotEntitled",
       {
         code: S.Number,
@@ -26,7 +26,7 @@ export class AiSecurityNotEntitled
 
 export class Forbidden
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    /*@__PURE__*/ S.TaggedError<Forbidden>()("Forbidden", {
       code: S.Number,
       message: S.String,
     }),
@@ -35,7 +35,7 @@ export class Forbidden
 
 export class ZoneNotAuthorized
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<ZoneNotAuthorized>()("ZoneNotAuthorized", {
+    /*@__PURE__*/ S.TaggedError<ZoneNotAuthorized>()("ZoneNotAuthorized", {
       code: S.Number,
       message: S.String,
     }),

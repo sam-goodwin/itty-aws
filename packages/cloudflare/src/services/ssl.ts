@@ -50,7 +50,7 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
 
 export class AdvancedCertificateManagerRequired
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<AdvancedCertificateManagerRequired>()(
+    /*@__PURE__*/ S.TaggedError<AdvancedCertificateManagerRequired>()(
       "AdvancedCertificateManagerRequired",
       {
         code: S.Number,
@@ -62,7 +62,7 @@ export class AdvancedCertificateManagerRequired
 
 export class CertificatePackNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<CertificatePackNotFound>()(
+    /*@__PURE__*/ S.TaggedError<CertificatePackNotFound>()(
       "CertificatePackNotFound",
       {
         code: S.Number,
@@ -74,7 +74,7 @@ export class CertificatePackNotFound
 
 export class Forbidden
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    /*@__PURE__*/ S.TaggedError<Forbidden>()("Forbidden", {
       code: S.Number,
       message: S.String,
     }),

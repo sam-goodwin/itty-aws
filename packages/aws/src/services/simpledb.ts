@@ -48,7 +48,7 @@ const rules = T.EndpointResolver((p, _) => {
 });
 
 export class AttributeDoesNotExist
-  extends /*@__PURE__*/ S.TaggedErrorClass<AttributeDoesNotExist>()(
+  extends /*@__PURE__*/ S.TaggedError<AttributeDoesNotExist>()(
     "AttributeDoesNotExist",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -56,7 +56,7 @@ export class AttributeDoesNotExist
     },
   ).pipe(C.withNotFoundError) {}
 export class DuplicateItemName
-  extends /*@__PURE__*/ S.TaggedErrorClass<DuplicateItemName>()(
+  extends /*@__PURE__*/ S.TaggedError<DuplicateItemName>()(
     "DuplicateItemName",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -65,7 +65,7 @@ export class DuplicateItemName
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidNextToken
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidNextToken>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidNextToken>()(
     "InvalidNextToken",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -74,7 +74,7 @@ export class InvalidNextToken
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidNumberPredicates
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidNumberPredicates>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidNumberPredicates>()(
     "InvalidNumberPredicates",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -83,7 +83,7 @@ export class InvalidNumberPredicates
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidNumberValueTests
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidNumberValueTests>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidNumberValueTests>()(
     "InvalidNumberValueTests",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -92,7 +92,7 @@ export class InvalidNumberValueTests
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidParameterValue
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidParameterValue>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidParameterValue>()(
     "InvalidParameterValue",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -101,7 +101,7 @@ export class InvalidParameterValue
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidQueryExpression
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidQueryExpression>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidQueryExpression>()(
     "InvalidQueryExpression",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -110,7 +110,7 @@ export class InvalidQueryExpression
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class MissingParameter
-  extends /*@__PURE__*/ S.TaggedErrorClass<MissingParameter>()(
+  extends /*@__PURE__*/ S.TaggedError<MissingParameter>()(
     "MissingParameter",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -119,7 +119,7 @@ export class MissingParameter
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class NoSuchDomain
-  extends /*@__PURE__*/ S.TaggedErrorClass<NoSuchDomain>()(
+  extends /*@__PURE__*/ S.TaggedError<NoSuchDomain>()(
     "NoSuchDomain",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -128,7 +128,7 @@ export class NoSuchDomain
     T.HttpError(400),
   ).pipe(C.withBadRequestError, C.withNotFoundError) {}
 export class NumberDomainAttributesExceeded
-  extends /*@__PURE__*/ S.TaggedErrorClass<NumberDomainAttributesExceeded>()(
+  extends /*@__PURE__*/ S.TaggedError<NumberDomainAttributesExceeded>()(
     "NumberDomainAttributesExceeded",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -136,7 +136,7 @@ export class NumberDomainAttributesExceeded
     },
   ).pipe(C.withQuotaError) {}
 export class NumberDomainBytesExceeded
-  extends /*@__PURE__*/ S.TaggedErrorClass<NumberDomainBytesExceeded>()(
+  extends /*@__PURE__*/ S.TaggedError<NumberDomainBytesExceeded>()(
     "NumberDomainBytesExceeded",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -144,7 +144,7 @@ export class NumberDomainBytesExceeded
     },
   ).pipe(C.withQuotaError) {}
 export class NumberDomainsExceeded
-  extends /*@__PURE__*/ S.TaggedErrorClass<NumberDomainsExceeded>()(
+  extends /*@__PURE__*/ S.TaggedError<NumberDomainsExceeded>()(
     "NumberDomainsExceeded",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -152,7 +152,7 @@ export class NumberDomainsExceeded
     },
   ).pipe(C.withQuotaError) {}
 export class NumberItemAttributesExceeded
-  extends /*@__PURE__*/ S.TaggedErrorClass<NumberItemAttributesExceeded>()(
+  extends /*@__PURE__*/ S.TaggedError<NumberItemAttributesExceeded>()(
     "NumberItemAttributesExceeded",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -160,7 +160,7 @@ export class NumberItemAttributesExceeded
     },
   ).pipe(C.withQuotaError) {}
 export class NumberSubmittedAttributesExceeded
-  extends /*@__PURE__*/ S.TaggedErrorClass<NumberSubmittedAttributesExceeded>()(
+  extends /*@__PURE__*/ S.TaggedError<NumberSubmittedAttributesExceeded>()(
     "NumberSubmittedAttributesExceeded",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -168,7 +168,7 @@ export class NumberSubmittedAttributesExceeded
     },
   ).pipe(C.withQuotaError) {}
 export class NumberSubmittedItemsExceeded
-  extends /*@__PURE__*/ S.TaggedErrorClass<NumberSubmittedItemsExceeded>()(
+  extends /*@__PURE__*/ S.TaggedError<NumberSubmittedItemsExceeded>()(
     "NumberSubmittedItemsExceeded",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -176,7 +176,7 @@ export class NumberSubmittedItemsExceeded
     },
   ).pipe(C.withQuotaError) {}
 export class RequestTimeout
-  extends /*@__PURE__*/ S.TaggedErrorClass<RequestTimeout>()(
+  extends /*@__PURE__*/ S.TaggedError<RequestTimeout>()(
     "RequestTimeout",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -185,7 +185,7 @@ export class RequestTimeout
     T.HttpError(408),
   ).pipe(C.withTimeoutError) {}
 export class TooManyRequestedAttributes
-  extends /*@__PURE__*/ S.TaggedErrorClass<TooManyRequestedAttributes>()(
+  extends /*@__PURE__*/ S.TaggedError<TooManyRequestedAttributes>()(
     "TooManyRequestedAttributes",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),

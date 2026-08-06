@@ -21,7 +21,7 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
 
 export class CallsAppNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<CallsAppNotFound>()("CallsAppNotFound", {
+    /*@__PURE__*/ S.TaggedError<CallsAppNotFound>()("CallsAppNotFound", {
       code: S.Number,
       message: S.String,
     }),
@@ -30,7 +30,7 @@ export class CallsAppNotFound
 
 export class Forbidden
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    /*@__PURE__*/ S.TaggedError<Forbidden>()("Forbidden", {
       code: S.Number,
       message: S.String,
     }),
@@ -39,7 +39,7 @@ export class Forbidden
 
 export class TurnKeyNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<TurnKeyNotFound>()("TurnKeyNotFound", {
+    /*@__PURE__*/ S.TaggedError<TurnKeyNotFound>()("TurnKeyNotFound", {
       code: S.Number,
       message: S.String,
     }),

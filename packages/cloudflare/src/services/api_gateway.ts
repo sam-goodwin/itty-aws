@@ -49,7 +49,7 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
 
 export class Forbidden
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    /*@__PURE__*/ S.TaggedError<Forbidden>()("Forbidden", {
       code: S.Number,
       message: S.String,
     }),
@@ -58,7 +58,7 @@ export class Forbidden
 
 export class InvalidObjectIdentifier
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<InvalidObjectIdentifier>()(
+    /*@__PURE__*/ S.TaggedError<InvalidObjectIdentifier>()(
       "InvalidObjectIdentifier",
       {
         code: S.Number,
@@ -70,19 +70,16 @@ export class InvalidObjectIdentifier
 
 export class LabelAlreadyExists
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<LabelAlreadyExists>()(
-      "LabelAlreadyExists",
-      {
-        code: S.Number,
-        message: S.String,
-      },
-    ),
+    /*@__PURE__*/ S.TaggedError<LabelAlreadyExists>()("LabelAlreadyExists", {
+      code: S.Number,
+      message: S.String,
+    }),
     [{ code: 70009 }],
   ) {}
 
 export class LabelNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<LabelNotFound>()("LabelNotFound", {
+    /*@__PURE__*/ S.TaggedError<LabelNotFound>()("LabelNotFound", {
       code: S.Number,
       message: S.String,
     }),
@@ -91,7 +88,7 @@ export class LabelNotFound
 
 export class NotEntitled
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<NotEntitled>()("NotEntitled", {
+    /*@__PURE__*/ S.TaggedError<NotEntitled>()("NotEntitled", {
       code: S.Number,
       message: S.String,
     }),
@@ -100,7 +97,7 @@ export class NotEntitled
 
 export class NotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<NotFound>()("NotFound", {
+    /*@__PURE__*/ S.TaggedError<NotFound>()("NotFound", {
       code: S.Number,
       message: S.String,
     }),
@@ -109,7 +106,7 @@ export class NotFound
 
 export class OperationNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<OperationNotFound>()("OperationNotFound", {
+    /*@__PURE__*/ S.TaggedError<OperationNotFound>()("OperationNotFound", {
       code: S.Number,
       message: S.String,
     }),
@@ -118,7 +115,7 @@ export class OperationNotFound
 
 export class SchemaNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<SchemaNotFound>()("SchemaNotFound", {
+    /*@__PURE__*/ S.TaggedError<SchemaNotFound>()("SchemaNotFound", {
       code: S.Number,
       message: S.String,
     }),
@@ -127,7 +124,7 @@ export class SchemaNotFound
 
 export class ZonePurged
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<ZonePurged>()("ZonePurged", {
+    /*@__PURE__*/ S.TaggedError<ZonePurged>()("ZonePurged", {
       code: S.Number,
       message: S.String,
     }),

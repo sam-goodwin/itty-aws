@@ -339,7 +339,7 @@ const rules = T.EndpointResolver((p, _) => {
 });
 
 export class InputValidationError
-  extends /*@__PURE__*/ S.TaggedErrorClass<InputValidationError>()(
+  extends /*@__PURE__*/ S.TaggedError<InputValidationError>()(
     "InputValidationError",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -348,7 +348,7 @@ export class InputValidationError
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InternalServerError
-  extends /*@__PURE__*/ S.TaggedErrorClass<InternalServerError>()(
+  extends /*@__PURE__*/ S.TaggedError<InternalServerError>()(
     "InternalServerError",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -357,12 +357,12 @@ export class InternalServerError
     T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class InternalStreamFailure
-  extends /*@__PURE__*/ S.TaggedErrorClass<InternalStreamFailure>()(
+  extends /*@__PURE__*/ S.TaggedError<InternalStreamFailure>()(
     "InternalStreamFailure",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class ModelError
-  extends /*@__PURE__*/ S.TaggedErrorClass<ModelError>()(
+  extends /*@__PURE__*/ S.TaggedError<ModelError>()(
     "ModelError",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -374,15 +374,12 @@ export class ModelError
     T.HttpError(424),
   ) {}
 export class ModelStreamError
-  extends /*@__PURE__*/ S.TaggedErrorClass<ModelStreamError>()(
-    "ModelStreamError",
-    {
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
-      ErrorCode: S.optional(S.String),
-    },
-  ) {}
+  extends /*@__PURE__*/ S.TaggedError<ModelStreamError>()("ModelStreamError", {
+    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    ErrorCode: S.optional(S.String),
+  }) {}
 export class ServiceUnavailableError
-  extends /*@__PURE__*/ S.TaggedErrorClass<ServiceUnavailableError>()(
+  extends /*@__PURE__*/ S.TaggedError<ServiceUnavailableError>()(
     "ServiceUnavailableError",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),

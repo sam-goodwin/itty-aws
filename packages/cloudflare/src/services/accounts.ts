@@ -57,7 +57,7 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
 
 export class AccountCreationForbidden
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<AccountCreationForbidden>()(
+    /*@__PURE__*/ S.TaggedError<AccountCreationForbidden>()(
       "AccountCreationForbidden",
       {
         code: S.Number,
@@ -69,7 +69,7 @@ export class AccountCreationForbidden
 
 export class AccountMemberAlreadyExists
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<AccountMemberAlreadyExists>()(
+    /*@__PURE__*/ S.TaggedError<AccountMemberAlreadyExists>()(
       "AccountMemberAlreadyExists",
       {
         code: S.Number,
@@ -81,19 +81,16 @@ export class AccountMemberAlreadyExists
 
 export class AccountNameTooLong
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<AccountNameTooLong>()(
-      "AccountNameTooLong",
-      {
-        code: S.Number,
-        message: S.String,
-      },
-    ),
+    /*@__PURE__*/ S.TaggedError<AccountNameTooLong>()("AccountNameTooLong", {
+      code: S.Number,
+      message: S.String,
+    }),
     [{ code: 1001, message: { includes: "too long" } }],
   ) {}
 
 export class BadRequest
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<BadRequest>()("BadRequest", {
+    /*@__PURE__*/ S.TaggedError<BadRequest>()("BadRequest", {
       code: S.Number,
       message: S.String,
     }),
@@ -102,7 +99,7 @@ export class BadRequest
 
 export class EndpointNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<EndpointNotFound>()("EndpointNotFound", {
+    /*@__PURE__*/ S.TaggedError<EndpointNotFound>()("EndpointNotFound", {
       code: S.Number,
       message: S.String,
     }),
@@ -111,19 +108,16 @@ export class EndpointNotFound
 
 export class InvalidAccountName
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<InvalidAccountName>()(
-      "InvalidAccountName",
-      {
-        code: S.Number,
-        message: S.String,
-      },
-    ),
+    /*@__PURE__*/ S.TaggedError<InvalidAccountName>()("InvalidAccountName", {
+      code: S.Number,
+      message: S.String,
+    }),
     [{ code: 1001, message: { includes: "invalid character" } }],
   ) {}
 
 export class InvalidRoute
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<InvalidRoute>()("InvalidRoute", {
+    /*@__PURE__*/ S.TaggedError<InvalidRoute>()("InvalidRoute", {
       code: S.Number,
       message: S.String,
     }),
@@ -132,7 +126,7 @@ export class InvalidRoute
 
 export class InvalidTokenName
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<InvalidTokenName>()("InvalidTokenName", {
+    /*@__PURE__*/ S.TaggedError<InvalidTokenName>()("InvalidTokenName", {
       code: S.Number,
       message: S.String,
     }),
@@ -141,7 +135,7 @@ export class InvalidTokenName
 
 export class JsonDecodeFailure
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<JsonDecodeFailure>()("JsonDecodeFailure", {
+    /*@__PURE__*/ S.TaggedError<JsonDecodeFailure>()("JsonDecodeFailure", {
       code: S.Number,
       message: S.String,
     }),
@@ -150,7 +144,7 @@ export class JsonDecodeFailure
 
 export class MemberNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<MemberNotFound>()("MemberNotFound", {
+    /*@__PURE__*/ S.TaggedError<MemberNotFound>()("MemberNotFound", {
       code: S.Number,
       message: S.String,
     }),
@@ -159,7 +153,7 @@ export class MemberNotFound
 
 export class MethodNotAllowed
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<MethodNotAllowed>()("MethodNotAllowed", {
+    /*@__PURE__*/ S.TaggedError<MethodNotAllowed>()("MethodNotAllowed", {
       code: S.Number,
       message: S.String,
     }),
@@ -168,7 +162,7 @@ export class MethodNotAllowed
 
 export class MissingAuthenticationToken
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<MissingAuthenticationToken>()(
+    /*@__PURE__*/ S.TaggedError<MissingAuthenticationToken>()(
       "MissingAuthenticationToken",
       {
         code: S.Number,
@@ -180,7 +174,7 @@ export class MissingAuthenticationToken
 
 export class MissingName
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<MissingName>()("MissingName", {
+    /*@__PURE__*/ S.TaggedError<MissingName>()("MissingName", {
       code: S.Number,
       message: S.String,
     }),
@@ -189,7 +183,7 @@ export class MissingName
 
 export class PermissionGroupNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<PermissionGroupNotFound>()(
+    /*@__PURE__*/ S.TaggedError<PermissionGroupNotFound>()(
       "PermissionGroupNotFound",
       {
         code: S.Number,
@@ -201,7 +195,7 @@ export class PermissionGroupNotFound
 
 export class TokenManagedByCloudflare
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<TokenManagedByCloudflare>()(
+    /*@__PURE__*/ S.TaggedError<TokenManagedByCloudflare>()(
       "TokenManagedByCloudflare",
       {
         code: S.Number,
@@ -213,7 +207,7 @@ export class TokenManagedByCloudflare
 
 export class TokenNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<TokenNotFound>()("TokenNotFound", {
+    /*@__PURE__*/ S.TaggedError<TokenNotFound>()("TokenNotFound", {
       code: S.Number,
       message: S.String,
     }),
@@ -222,7 +216,7 @@ export class TokenNotFound
 
 export class UpdateAccountTypeNotSupported
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<UpdateAccountTypeNotSupported>()(
+    /*@__PURE__*/ S.TaggedError<UpdateAccountTypeNotSupported>()(
       "UpdateAccountTypeNotSupported",
       {
         code: S.Number,
@@ -234,7 +228,7 @@ export class UpdateAccountTypeNotSupported
 
 export class ValidationError
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<ValidationError>()("ValidationError", {
+    /*@__PURE__*/ S.TaggedError<ValidationError>()("ValidationError", {
       code: S.Number,
       message: S.String,
     }),

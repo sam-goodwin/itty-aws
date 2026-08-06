@@ -83,32 +83,32 @@ const rules = T.EndpointResolver((p, _) => {
 });
 
 export class DuplicateResourceException
-  extends /*@__PURE__*/ S.TaggedErrorClass<DuplicateResourceException>()(
+  extends /*@__PURE__*/ S.TaggedError<DuplicateResourceException>()(
     "DuplicateResourceException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidParametersException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidParametersException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidParametersException>()(
     "InvalidParametersException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidStateException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidStateException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidStateException>()(
     "InvalidStateException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class LimitExceededException
-  extends /*@__PURE__*/ S.TaggedErrorClass<LimitExceededException>()(
+  extends /*@__PURE__*/ S.TaggedError<LimitExceededException>()(
     "LimitExceededException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class OperationNotSupportedException
-  extends /*@__PURE__*/ S.TaggedErrorClass<OperationNotSupportedException>()(
+  extends /*@__PURE__*/ S.TaggedError<OperationNotSupportedException>()(
     "OperationNotSupportedException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class ProvisionedProductNotFound
-  extends /*@__PURE__*/ S.TaggedErrorClass<ProvisionedProductNotFound>()(
+  extends /*@__PURE__*/ S.TaggedError<ProvisionedProductNotFound>()(
     "ProvisionedProductNotFound",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.SyntheticError({
@@ -117,17 +117,17 @@ export class ProvisionedProductNotFound
     }),
   ) {}
 export class ResourceInUseException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceInUseException>()(
+  extends /*@__PURE__*/ S.TaggedError<ResourceInUseException>()(
     "ResourceInUseException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class ResourceNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class TagOptionNotMigratedException
-  extends /*@__PURE__*/ S.TaggedErrorClass<TagOptionNotMigratedException>()(
+  extends /*@__PURE__*/ S.TaggedError<TagOptionNotMigratedException>()(
     "TagOptionNotMigratedException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}

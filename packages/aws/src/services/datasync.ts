@@ -86,7 +86,7 @@ const rules = T.EndpointResolver((p, _) => {
 });
 
 export class InternalException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InternalException>()(
+  extends /*@__PURE__*/ S.TaggedError<InternalException>()(
     "InternalException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -94,7 +94,7 @@ export class InternalException
     },
   ) {}
 export class InvalidRequestException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidRequestException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidRequestException>()(
     "InvalidRequestException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -103,7 +103,7 @@ export class InvalidRequestException
     },
   ) {}
 export class LocationAccessTestFailed
-  extends /*@__PURE__*/ S.TaggedErrorClass<LocationAccessTestFailed>()(
+  extends /*@__PURE__*/ S.TaggedError<LocationAccessTestFailed>()(
     "LocationAccessTestFailed",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -116,7 +116,7 @@ export class LocationAccessTestFailed
     }),
   ).pipe(C.withRetryableError) {}
 export class LocationNotFound
-  extends /*@__PURE__*/ S.TaggedErrorClass<LocationNotFound>()(
+  extends /*@__PURE__*/ S.TaggedError<LocationNotFound>()(
     "LocationNotFound",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -129,7 +129,7 @@ export class LocationNotFound
     }),
   ).pipe(C.withNotFoundError) {}
 export class LocationRoleNotAssumable
-  extends /*@__PURE__*/ S.TaggedErrorClass<LocationRoleNotAssumable>()(
+  extends /*@__PURE__*/ S.TaggedError<LocationRoleNotAssumable>()(
     "LocationRoleNotAssumable",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -142,7 +142,7 @@ export class LocationRoleNotAssumable
     }),
   ).pipe(C.withRetryableError) {}
 export class TaskNotFound
-  extends /*@__PURE__*/ S.TaggedErrorClass<TaskNotFound>()(
+  extends /*@__PURE__*/ S.TaggedError<TaskNotFound>()(
     "TaskNotFound",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),

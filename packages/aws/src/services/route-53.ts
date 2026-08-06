@@ -259,140 +259,139 @@ const rules = T.EndpointResolver((p, _) => {
 });
 
 export class CidrBlockInUseException
-  extends /*@__PURE__*/ S.TaggedErrorClass<CidrBlockInUseException>()(
+  extends /*@__PURE__*/ S.TaggedError<CidrBlockInUseException>()(
     "CidrBlockInUseException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class CidrCollectionAlreadyExistsException
-  extends /*@__PURE__*/ S.TaggedErrorClass<CidrCollectionAlreadyExistsException>()(
+  extends /*@__PURE__*/ S.TaggedError<CidrCollectionAlreadyExistsException>()(
     "CidrCollectionAlreadyExistsException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withAlreadyExistsError) {}
 export class CidrCollectionInUseException
-  extends /*@__PURE__*/ S.TaggedErrorClass<CidrCollectionInUseException>()(
+  extends /*@__PURE__*/ S.TaggedError<CidrCollectionInUseException>()(
     "CidrCollectionInUseException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class CidrCollectionVersionMismatchException
-  extends /*@__PURE__*/ S.TaggedErrorClass<CidrCollectionVersionMismatchException>()(
+  extends /*@__PURE__*/ S.TaggedError<CidrCollectionVersionMismatchException>()(
     "CidrCollectionVersionMismatchException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class ConcurrentModification
-  extends /*@__PURE__*/ S.TaggedErrorClass<ConcurrentModification>()(
+  extends /*@__PURE__*/ S.TaggedError<ConcurrentModification>()(
     "ConcurrentModification",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ConflictingDomainExists
-  extends /*@__PURE__*/ S.TaggedErrorClass<ConflictingDomainExists>()(
+  extends /*@__PURE__*/ S.TaggedError<ConflictingDomainExists>()(
     "ConflictingDomainExists",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class ConflictingTypes
-  extends /*@__PURE__*/ S.TaggedErrorClass<ConflictingTypes>()(
+  extends /*@__PURE__*/ S.TaggedError<ConflictingTypes>()(
     "ConflictingTypes",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class DelegationSetAlreadyCreated
-  extends /*@__PURE__*/ S.TaggedErrorClass<DelegationSetAlreadyCreated>()(
+  extends /*@__PURE__*/ S.TaggedError<DelegationSetAlreadyCreated>()(
     "DelegationSetAlreadyCreated",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class DelegationSetAlreadyReusable
-  extends /*@__PURE__*/ S.TaggedErrorClass<DelegationSetAlreadyReusable>()(
+  extends /*@__PURE__*/ S.TaggedError<DelegationSetAlreadyReusable>()(
     "DelegationSetAlreadyReusable",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class DelegationSetInUse
-  extends /*@__PURE__*/ S.TaggedErrorClass<DelegationSetInUse>()(
+  extends /*@__PURE__*/ S.TaggedError<DelegationSetInUse>()(
     "DelegationSetInUse",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withDependencyViolationError) {}
 export class DelegationSetNotAvailable
-  extends /*@__PURE__*/ S.TaggedErrorClass<DelegationSetNotAvailable>()(
+  extends /*@__PURE__*/ S.TaggedError<DelegationSetNotAvailable>()(
     "DelegationSetNotAvailable",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class DelegationSetNotReusable
-  extends /*@__PURE__*/ S.TaggedErrorClass<DelegationSetNotReusable>()(
+  extends /*@__PURE__*/ S.TaggedError<DelegationSetNotReusable>()(
     "DelegationSetNotReusable",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class DNSSECNotFound
-  extends /*@__PURE__*/ S.TaggedErrorClass<DNSSECNotFound>()(
+  extends /*@__PURE__*/ S.TaggedError<DNSSECNotFound>()(
     "DNSSECNotFound",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class HealthCheckAlreadyExists
-  extends /*@__PURE__*/ S.TaggedErrorClass<HealthCheckAlreadyExists>()(
+  extends /*@__PURE__*/ S.TaggedError<HealthCheckAlreadyExists>()(
     "HealthCheckAlreadyExists",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(409),
   ).pipe(C.withConflictError, C.withAlreadyExistsError) {}
 export class HealthCheckInUse
-  extends /*@__PURE__*/ S.TaggedErrorClass<HealthCheckInUse>()(
+  extends /*@__PURE__*/ S.TaggedError<HealthCheckInUse>()(
     "HealthCheckInUse",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError, C.withDependencyViolationError) {}
 export class HealthCheckVersionMismatch
-  extends /*@__PURE__*/ S.TaggedErrorClass<HealthCheckVersionMismatch>()(
+  extends /*@__PURE__*/ S.TaggedError<HealthCheckVersionMismatch>()(
     "HealthCheckVersionMismatch",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class HostedZoneAlreadyExists
-  extends /*@__PURE__*/ S.TaggedErrorClass<HostedZoneAlreadyExists>()(
+  extends /*@__PURE__*/ S.TaggedError<HostedZoneAlreadyExists>()(
     "HostedZoneAlreadyExists",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(409),
   ).pipe(C.withConflictError, C.withAlreadyExistsError) {}
 export class HostedZoneNotEmpty
-  extends /*@__PURE__*/ S.TaggedErrorClass<HostedZoneNotEmpty>()(
+  extends /*@__PURE__*/ S.TaggedError<HostedZoneNotEmpty>()(
     "HostedZoneNotEmpty",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class HostedZoneNotFound
-  extends /*@__PURE__*/ S.TaggedErrorClass<HostedZoneNotFound>()(
+  extends /*@__PURE__*/ S.TaggedError<HostedZoneNotFound>()(
     "HostedZoneNotFound",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class HostedZoneNotPrivate
-  extends /*@__PURE__*/ S.TaggedErrorClass<HostedZoneNotPrivate>()(
+  extends /*@__PURE__*/ S.TaggedError<HostedZoneNotPrivate>()(
     "HostedZoneNotPrivate",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class HostedZonePartiallyDelegated
-  extends /*@__PURE__*/ S.TaggedErrorClass<HostedZonePartiallyDelegated>()(
+  extends /*@__PURE__*/ S.TaggedError<HostedZonePartiallyDelegated>()(
     "HostedZonePartiallyDelegated",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class IncompatibleVersion
-  extends /*@__PURE__*/ S.TaggedErrorClass<IncompatibleVersion>()(
+  extends /*@__PURE__*/ S.TaggedError<IncompatibleVersion>()(
     "IncompatibleVersion",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InsufficientCloudWatchLogsResourcePolicy
-  extends /*@__PURE__*/ S.TaggedErrorClass<InsufficientCloudWatchLogsResourcePolicy>()(
+  extends /*@__PURE__*/ S.TaggedError<InsufficientCloudWatchLogsResourcePolicy>()(
     "InsufficientCloudWatchLogsResourcePolicy",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidArgument
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidArgument>()(
-    "InvalidArgument",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-  ) {}
+  extends /*@__PURE__*/ S.TaggedError<InvalidArgument>()("InvalidArgument", {
+    message: S.optional(S.String).pipe(T.ErrorMessage()),
+  }) {}
 export class InvalidChangeBatch
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidChangeBatch>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidChangeBatch>()(
     "InvalidChangeBatch",
     {
       messages: S.optional(
@@ -404,255 +403,255 @@ export class InvalidChangeBatch
     },
   ) {}
 export class InvalidDomainName
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidDomainName>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidDomainName>()(
     "InvalidDomainName",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidInput
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidInput>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidInput>()(
     "InvalidInput",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidKeySigningKeyName
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidKeySigningKeyName>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidKeySigningKeyName>()(
     "InvalidKeySigningKeyName",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidKeySigningKeyStatus
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidKeySigningKeyStatus>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidKeySigningKeyStatus>()(
     "InvalidKeySigningKeyStatus",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidKMSArn
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidKMSArn>()("InvalidKMSArn", {
+  extends /*@__PURE__*/ S.TaggedError<InvalidKMSArn>()("InvalidKMSArn", {
     message: S.optional(S.String).pipe(T.ErrorMessage()),
   }) {}
 export class InvalidPaginationToken
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidPaginationToken>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidPaginationToken>()(
     "InvalidPaginationToken",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidSigningStatus
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidSigningStatus>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidSigningStatus>()(
     "InvalidSigningStatus",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidTrafficPolicyDocument
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidTrafficPolicyDocument>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidTrafficPolicyDocument>()(
     "InvalidTrafficPolicyDocument",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidVPCId
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidVPCId>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidVPCId>()(
     "InvalidVPCId",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class KeySigningKeyAlreadyExists
-  extends /*@__PURE__*/ S.TaggedErrorClass<KeySigningKeyAlreadyExists>()(
+  extends /*@__PURE__*/ S.TaggedError<KeySigningKeyAlreadyExists>()(
     "KeySigningKeyAlreadyExists",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(409),
   ).pipe(C.withConflictError, C.withAlreadyExistsError) {}
 export class KeySigningKeyInParentDSRecord
-  extends /*@__PURE__*/ S.TaggedErrorClass<KeySigningKeyInParentDSRecord>()(
+  extends /*@__PURE__*/ S.TaggedError<KeySigningKeyInParentDSRecord>()(
     "KeySigningKeyInParentDSRecord",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class KeySigningKeyInUse
-  extends /*@__PURE__*/ S.TaggedErrorClass<KeySigningKeyInUse>()(
+  extends /*@__PURE__*/ S.TaggedError<KeySigningKeyInUse>()(
     "KeySigningKeyInUse",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withDependencyViolationError) {}
 export class KeySigningKeyWithActiveStatusNotFound
-  extends /*@__PURE__*/ S.TaggedErrorClass<KeySigningKeyWithActiveStatusNotFound>()(
+  extends /*@__PURE__*/ S.TaggedError<KeySigningKeyWithActiveStatusNotFound>()(
     "KeySigningKeyWithActiveStatusNotFound",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class LastVPCAssociation
-  extends /*@__PURE__*/ S.TaggedErrorClass<LastVPCAssociation>()(
+  extends /*@__PURE__*/ S.TaggedError<LastVPCAssociation>()(
     "LastVPCAssociation",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class LimitsExceeded
-  extends /*@__PURE__*/ S.TaggedErrorClass<LimitsExceeded>()("LimitsExceeded", {
+  extends /*@__PURE__*/ S.TaggedError<LimitsExceeded>()("LimitsExceeded", {
     message: S.optional(S.String).pipe(T.ErrorMessage()),
   }) {}
 export class NoSuchChange
-  extends /*@__PURE__*/ S.TaggedErrorClass<NoSuchChange>()(
+  extends /*@__PURE__*/ S.TaggedError<NoSuchChange>()(
     "NoSuchChange",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class NoSuchCidrCollectionException
-  extends /*@__PURE__*/ S.TaggedErrorClass<NoSuchCidrCollectionException>()(
+  extends /*@__PURE__*/ S.TaggedError<NoSuchCidrCollectionException>()(
     "NoSuchCidrCollectionException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class NoSuchCidrLocationException
-  extends /*@__PURE__*/ S.TaggedErrorClass<NoSuchCidrLocationException>()(
+  extends /*@__PURE__*/ S.TaggedError<NoSuchCidrLocationException>()(
     "NoSuchCidrLocationException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class NoSuchCloudWatchLogsLogGroup
-  extends /*@__PURE__*/ S.TaggedErrorClass<NoSuchCloudWatchLogsLogGroup>()(
+  extends /*@__PURE__*/ S.TaggedError<NoSuchCloudWatchLogsLogGroup>()(
     "NoSuchCloudWatchLogsLogGroup",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class NoSuchDelegationSet
-  extends /*@__PURE__*/ S.TaggedErrorClass<NoSuchDelegationSet>()(
+  extends /*@__PURE__*/ S.TaggedError<NoSuchDelegationSet>()(
     "NoSuchDelegationSet",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class NoSuchGeoLocation
-  extends /*@__PURE__*/ S.TaggedErrorClass<NoSuchGeoLocation>()(
+  extends /*@__PURE__*/ S.TaggedError<NoSuchGeoLocation>()(
     "NoSuchGeoLocation",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class NoSuchHealthCheck
-  extends /*@__PURE__*/ S.TaggedErrorClass<NoSuchHealthCheck>()(
+  extends /*@__PURE__*/ S.TaggedError<NoSuchHealthCheck>()(
     "NoSuchHealthCheck",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class NoSuchHostedZone
-  extends /*@__PURE__*/ S.TaggedErrorClass<NoSuchHostedZone>()(
+  extends /*@__PURE__*/ S.TaggedError<NoSuchHostedZone>()(
     "NoSuchHostedZone",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class NoSuchKeySigningKey
-  extends /*@__PURE__*/ S.TaggedErrorClass<NoSuchKeySigningKey>()(
+  extends /*@__PURE__*/ S.TaggedError<NoSuchKeySigningKey>()(
     "NoSuchKeySigningKey",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class NoSuchQueryLoggingConfig
-  extends /*@__PURE__*/ S.TaggedErrorClass<NoSuchQueryLoggingConfig>()(
+  extends /*@__PURE__*/ S.TaggedError<NoSuchQueryLoggingConfig>()(
     "NoSuchQueryLoggingConfig",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class NoSuchTrafficPolicy
-  extends /*@__PURE__*/ S.TaggedErrorClass<NoSuchTrafficPolicy>()(
+  extends /*@__PURE__*/ S.TaggedError<NoSuchTrafficPolicy>()(
     "NoSuchTrafficPolicy",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class NoSuchTrafficPolicyInstance
-  extends /*@__PURE__*/ S.TaggedErrorClass<NoSuchTrafficPolicyInstance>()(
+  extends /*@__PURE__*/ S.TaggedError<NoSuchTrafficPolicyInstance>()(
     "NoSuchTrafficPolicyInstance",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class NotAuthorizedException
-  extends /*@__PURE__*/ S.TaggedErrorClass<NotAuthorizedException>()(
+  extends /*@__PURE__*/ S.TaggedError<NotAuthorizedException>()(
     "NotAuthorizedException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(401),
   ).pipe(C.withAuthError) {}
 export class PriorRequestNotComplete
-  extends /*@__PURE__*/ S.TaggedErrorClass<PriorRequestNotComplete>()(
+  extends /*@__PURE__*/ S.TaggedError<PriorRequestNotComplete>()(
     "PriorRequestNotComplete",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError, C.withConflictError, C.withRetryableError) {}
 export class PublicZoneVPCAssociation
-  extends /*@__PURE__*/ S.TaggedErrorClass<PublicZoneVPCAssociation>()(
+  extends /*@__PURE__*/ S.TaggedError<PublicZoneVPCAssociation>()(
     "PublicZoneVPCAssociation",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class QueryLoggingConfigAlreadyExists
-  extends /*@__PURE__*/ S.TaggedErrorClass<QueryLoggingConfigAlreadyExists>()(
+  extends /*@__PURE__*/ S.TaggedError<QueryLoggingConfigAlreadyExists>()(
     "QueryLoggingConfigAlreadyExists",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(409),
   ).pipe(C.withConflictError, C.withAlreadyExistsError) {}
 export class ThrottlingException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ThrottlingException>()(
+  extends /*@__PURE__*/ S.TaggedError<ThrottlingException>()(
     "ThrottlingException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError, C.withThrottlingError, C.withRetryableError) {}
 export class TooManyHealthChecks
-  extends /*@__PURE__*/ S.TaggedErrorClass<TooManyHealthChecks>()(
+  extends /*@__PURE__*/ S.TaggedError<TooManyHealthChecks>()(
     "TooManyHealthChecks",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class TooManyHostedZones
-  extends /*@__PURE__*/ S.TaggedErrorClass<TooManyHostedZones>()(
+  extends /*@__PURE__*/ S.TaggedError<TooManyHostedZones>()(
     "TooManyHostedZones",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TooManyKeySigningKeys
-  extends /*@__PURE__*/ S.TaggedErrorClass<TooManyKeySigningKeys>()(
+  extends /*@__PURE__*/ S.TaggedError<TooManyKeySigningKeys>()(
     "TooManyKeySigningKeys",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class TooManyTrafficPolicies
-  extends /*@__PURE__*/ S.TaggedErrorClass<TooManyTrafficPolicies>()(
+  extends /*@__PURE__*/ S.TaggedError<TooManyTrafficPolicies>()(
     "TooManyTrafficPolicies",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TooManyTrafficPolicyInstances
-  extends /*@__PURE__*/ S.TaggedErrorClass<TooManyTrafficPolicyInstances>()(
+  extends /*@__PURE__*/ S.TaggedError<TooManyTrafficPolicyInstances>()(
     "TooManyTrafficPolicyInstances",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TooManyTrafficPolicyVersionsForCurrentPolicy
-  extends /*@__PURE__*/ S.TaggedErrorClass<TooManyTrafficPolicyVersionsForCurrentPolicy>()(
+  extends /*@__PURE__*/ S.TaggedError<TooManyTrafficPolicyVersionsForCurrentPolicy>()(
     "TooManyTrafficPolicyVersionsForCurrentPolicy",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TooManyVPCAssociationAuthorizations
-  extends /*@__PURE__*/ S.TaggedErrorClass<TooManyVPCAssociationAuthorizations>()(
+  extends /*@__PURE__*/ S.TaggedError<TooManyVPCAssociationAuthorizations>()(
     "TooManyVPCAssociationAuthorizations",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TrafficPolicyAlreadyExists
-  extends /*@__PURE__*/ S.TaggedErrorClass<TrafficPolicyAlreadyExists>()(
+  extends /*@__PURE__*/ S.TaggedError<TrafficPolicyAlreadyExists>()(
     "TrafficPolicyAlreadyExists",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(409),
   ).pipe(C.withConflictError, C.withAlreadyExistsError) {}
 export class TrafficPolicyInstanceAlreadyExists
-  extends /*@__PURE__*/ S.TaggedErrorClass<TrafficPolicyInstanceAlreadyExists>()(
+  extends /*@__PURE__*/ S.TaggedError<TrafficPolicyInstanceAlreadyExists>()(
     "TrafficPolicyInstanceAlreadyExists",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(409),
   ).pipe(C.withConflictError, C.withAlreadyExistsError) {}
 export class TrafficPolicyInUse
-  extends /*@__PURE__*/ S.TaggedErrorClass<TrafficPolicyInUse>()(
+  extends /*@__PURE__*/ S.TaggedError<TrafficPolicyInUse>()(
     "TrafficPolicyInUse",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError, C.withDependencyViolationError) {}
 export class VPCAssociationAuthorizationNotFound
-  extends /*@__PURE__*/ S.TaggedErrorClass<VPCAssociationAuthorizationNotFound>()(
+  extends /*@__PURE__*/ S.TaggedError<VPCAssociationAuthorizationNotFound>()(
     "VPCAssociationAuthorizationNotFound",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class VPCAssociationNotFound
-  extends /*@__PURE__*/ S.TaggedErrorClass<VPCAssociationNotFound>()(
+  extends /*@__PURE__*/ S.TaggedError<VPCAssociationNotFound>()(
     "VPCAssociationNotFound",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(404),

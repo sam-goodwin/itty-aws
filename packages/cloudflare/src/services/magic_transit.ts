@@ -345,7 +345,7 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
 
 export class AppNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<AppNotFound>()("AppNotFound", {
+    /*@__PURE__*/ S.TaggedError<AppNotFound>()("AppNotFound", {
       code: S.Number,
       message: S.String,
     }),
@@ -354,7 +354,7 @@ export class AppNotFound
 
 export class Forbidden
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    /*@__PURE__*/ S.TaggedError<Forbidden>()("Forbidden", {
       code: S.Number,
       message: S.String,
     }),
@@ -363,7 +363,7 @@ export class Forbidden
 
 export class GreTunnelNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<GreTunnelNotFound>()("GreTunnelNotFound", {
+    /*@__PURE__*/ S.TaggedError<GreTunnelNotFound>()("GreTunnelNotFound", {
       code: S.Number,
       message: S.String,
     }),
@@ -372,19 +372,16 @@ export class GreTunnelNotFound
 
 export class IpsecTunnelNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<IpsecTunnelNotFound>()(
-      "IpsecTunnelNotFound",
-      {
-        code: S.Number,
-        message: S.String,
-      },
-    ),
+    /*@__PURE__*/ S.TaggedError<IpsecTunnelNotFound>()("IpsecTunnelNotFound", {
+      code: S.Number,
+      message: S.String,
+    }),
     [{ code: 1032 }],
   ) {}
 
 export class MagicTransitNotOnboarded
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<MagicTransitNotOnboarded>()(
+    /*@__PURE__*/ S.TaggedError<MagicTransitNotOnboarded>()(
       "MagicTransitNotOnboarded",
       {
         code: S.Number,
@@ -396,7 +393,7 @@ export class MagicTransitNotOnboarded
 
 export class MagicWanUnauthorized
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<MagicWanUnauthorized>()(
+    /*@__PURE__*/ S.TaggedError<MagicWanUnauthorized>()(
       "MagicWanUnauthorized",
       {
         code: S.Number,
@@ -408,7 +405,7 @@ export class MagicWanUnauthorized
 
 export class RouteNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<RouteNotFound>()("RouteNotFound", {
+    /*@__PURE__*/ S.TaggedError<RouteNotFound>()("RouteNotFound", {
       code: S.Number,
       message: S.String,
     }),
@@ -417,7 +414,7 @@ export class RouteNotFound
 
 export class SiteAclNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<SiteAclNotFound>()("SiteAclNotFound", {
+    /*@__PURE__*/ S.TaggedError<SiteAclNotFound>()("SiteAclNotFound", {
       code: S.Number,
       message: S.String,
     }),
@@ -426,7 +423,7 @@ export class SiteAclNotFound
 
 export class SiteLanNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<SiteLanNotFound>()("SiteLanNotFound", {
+    /*@__PURE__*/ S.TaggedError<SiteLanNotFound>()("SiteLanNotFound", {
       code: S.Number,
       message: S.String,
     }),
@@ -435,7 +432,7 @@ export class SiteLanNotFound
 
 export class SiteNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<SiteNotFound>()("SiteNotFound", {
+    /*@__PURE__*/ S.TaggedError<SiteNotFound>()("SiteNotFound", {
       code: S.Number,
       message: S.String,
     }),
@@ -444,7 +441,7 @@ export class SiteNotFound
 
 export class SiteWanNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<SiteWanNotFound>()("SiteWanNotFound", {
+    /*@__PURE__*/ S.TaggedError<SiteWanNotFound>()("SiteWanNotFound", {
       code: S.Number,
       message: S.String,
     }),

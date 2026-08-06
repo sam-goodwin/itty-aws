@@ -84,17 +84,17 @@ const rules = T.EndpointResolver((p, _) => {
 });
 
 export class DuplicateReportNameException
-  extends /*@__PURE__*/ S.TaggedErrorClass<DuplicateReportNameException>()(
+  extends /*@__PURE__*/ S.TaggedError<DuplicateReportNameException>()(
     "DuplicateReportNameException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InternalErrorException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InternalErrorException>()(
+  extends /*@__PURE__*/ S.TaggedError<InternalErrorException>()(
     "InternalErrorException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withServerError) {}
 export class ReportBucketNotVerified
-  extends /*@__PURE__*/ S.TaggedErrorClass<ReportBucketNotVerified>()(
+  extends /*@__PURE__*/ S.TaggedError<ReportBucketNotVerified>()(
     "ReportBucketNotVerified",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.SyntheticError({
@@ -103,17 +103,17 @@ export class ReportBucketNotVerified
     }),
   ).pipe(C.withRetryableError) {}
 export class ReportLimitReachedException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ReportLimitReachedException>()(
+  extends /*@__PURE__*/ S.TaggedError<ReportLimitReachedException>()(
     "ReportLimitReachedException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class ResourceNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class ValidationException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ValidationException>()(
+  extends /*@__PURE__*/ S.TaggedError<ValidationException>()(
     "ValidationException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}

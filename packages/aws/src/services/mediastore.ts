@@ -84,32 +84,32 @@ const rules = T.EndpointResolver((p, _) => {
 });
 
 export class ContainerInUseException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ContainerInUseException>()(
+  extends /*@__PURE__*/ S.TaggedError<ContainerInUseException>()(
     "ContainerInUseException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class ContainerNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ContainerNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<ContainerNotFoundException>()(
     "ContainerNotFoundException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class CorsPolicyNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<CorsPolicyNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<CorsPolicyNotFoundException>()(
     "CorsPolicyNotFoundException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InternalServerError
-  extends /*@__PURE__*/ S.TaggedErrorClass<InternalServerError>()(
+  extends /*@__PURE__*/ S.TaggedError<InternalServerError>()(
     "InternalServerError",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class LimitExceededException
-  extends /*@__PURE__*/ S.TaggedErrorClass<LimitExceededException>()(
+  extends /*@__PURE__*/ S.TaggedError<LimitExceededException>()(
     "LimitExceededException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class PolicyNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<PolicyNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<PolicyNotFoundException>()(
     "PolicyNotFoundException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}

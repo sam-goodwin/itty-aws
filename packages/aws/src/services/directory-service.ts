@@ -89,7 +89,7 @@ const rules = T.EndpointResolver((p, _) => {
 });
 
 export class AccessDeniedException
-  extends /*@__PURE__*/ S.TaggedErrorClass<AccessDeniedException>()(
+  extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()(
     "AccessDeniedException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -97,7 +97,7 @@ export class AccessDeniedException
     },
   ).pipe(C.withAuthError) {}
 export class ADAssessmentLimitExceededException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ADAssessmentLimitExceededException>()(
+  extends /*@__PURE__*/ S.TaggedError<ADAssessmentLimitExceededException>()(
     "ADAssessmentLimitExceededException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -105,7 +105,7 @@ export class ADAssessmentLimitExceededException
     },
   ) {}
 export class AuthenticationFailedException
-  extends /*@__PURE__*/ S.TaggedErrorClass<AuthenticationFailedException>()(
+  extends /*@__PURE__*/ S.TaggedError<AuthenticationFailedException>()(
     "AuthenticationFailedException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -113,7 +113,7 @@ export class AuthenticationFailedException
     },
   ) {}
 export class CertificateAlreadyExistsException
-  extends /*@__PURE__*/ S.TaggedErrorClass<CertificateAlreadyExistsException>()(
+  extends /*@__PURE__*/ S.TaggedError<CertificateAlreadyExistsException>()(
     "CertificateAlreadyExistsException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -121,7 +121,7 @@ export class CertificateAlreadyExistsException
     },
   ).pipe(C.withAlreadyExistsError) {}
 export class CertificateDoesNotExistException
-  extends /*@__PURE__*/ S.TaggedErrorClass<CertificateDoesNotExistException>()(
+  extends /*@__PURE__*/ S.TaggedError<CertificateDoesNotExistException>()(
     "CertificateDoesNotExistException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -129,7 +129,7 @@ export class CertificateDoesNotExistException
     },
   ) {}
 export class CertificateInUseException
-  extends /*@__PURE__*/ S.TaggedErrorClass<CertificateInUseException>()(
+  extends /*@__PURE__*/ S.TaggedError<CertificateInUseException>()(
     "CertificateInUseException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -137,7 +137,7 @@ export class CertificateInUseException
     },
   ) {}
 export class CertificateLimitExceededException
-  extends /*@__PURE__*/ S.TaggedErrorClass<CertificateLimitExceededException>()(
+  extends /*@__PURE__*/ S.TaggedError<CertificateLimitExceededException>()(
     "CertificateLimitExceededException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -145,15 +145,12 @@ export class CertificateLimitExceededException
     },
   ) {}
 export class ClientException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ClientException>()(
-    "ClientException",
-    {
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
-      RequestId: S.optional(S.String),
-    },
-  ) {}
+  extends /*@__PURE__*/ S.TaggedError<ClientException>()("ClientException", {
+    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    RequestId: S.optional(S.String),
+  }) {}
 export class DirectoryAlreadyInRegionException
-  extends /*@__PURE__*/ S.TaggedErrorClass<DirectoryAlreadyInRegionException>()(
+  extends /*@__PURE__*/ S.TaggedError<DirectoryAlreadyInRegionException>()(
     "DirectoryAlreadyInRegionException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -161,7 +158,7 @@ export class DirectoryAlreadyInRegionException
     },
   ) {}
 export class DirectoryAlreadySharedException
-  extends /*@__PURE__*/ S.TaggedErrorClass<DirectoryAlreadySharedException>()(
+  extends /*@__PURE__*/ S.TaggedError<DirectoryAlreadySharedException>()(
     "DirectoryAlreadySharedException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -169,7 +166,7 @@ export class DirectoryAlreadySharedException
     },
   ) {}
 export class DirectoryDoesNotExistException
-  extends /*@__PURE__*/ S.TaggedErrorClass<DirectoryDoesNotExistException>()(
+  extends /*@__PURE__*/ S.TaggedError<DirectoryDoesNotExistException>()(
     "DirectoryDoesNotExistException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -177,7 +174,7 @@ export class DirectoryDoesNotExistException
     },
   ) {}
 export class DirectoryInDesiredStateException
-  extends /*@__PURE__*/ S.TaggedErrorClass<DirectoryInDesiredStateException>()(
+  extends /*@__PURE__*/ S.TaggedError<DirectoryInDesiredStateException>()(
     "DirectoryInDesiredStateException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -185,7 +182,7 @@ export class DirectoryInDesiredStateException
     },
   ) {}
 export class DirectoryLimitExceededException
-  extends /*@__PURE__*/ S.TaggedErrorClass<DirectoryLimitExceededException>()(
+  extends /*@__PURE__*/ S.TaggedError<DirectoryLimitExceededException>()(
     "DirectoryLimitExceededException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -193,7 +190,7 @@ export class DirectoryLimitExceededException
     },
   ) {}
 export class DirectoryNotSharedException
-  extends /*@__PURE__*/ S.TaggedErrorClass<DirectoryNotSharedException>()(
+  extends /*@__PURE__*/ S.TaggedError<DirectoryNotSharedException>()(
     "DirectoryNotSharedException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -201,7 +198,7 @@ export class DirectoryNotSharedException
     },
   ) {}
 export class DirectoryUnavailableException
-  extends /*@__PURE__*/ S.TaggedErrorClass<DirectoryUnavailableException>()(
+  extends /*@__PURE__*/ S.TaggedError<DirectoryUnavailableException>()(
     "DirectoryUnavailableException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -209,7 +206,7 @@ export class DirectoryUnavailableException
     },
   ) {}
 export class DisableAlreadyInProgressException
-  extends /*@__PURE__*/ S.TaggedErrorClass<DisableAlreadyInProgressException>()(
+  extends /*@__PURE__*/ S.TaggedError<DisableAlreadyInProgressException>()(
     "DisableAlreadyInProgressException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -217,7 +214,7 @@ export class DisableAlreadyInProgressException
     },
   ) {}
 export class DomainControllerLimitExceededException
-  extends /*@__PURE__*/ S.TaggedErrorClass<DomainControllerLimitExceededException>()(
+  extends /*@__PURE__*/ S.TaggedError<DomainControllerLimitExceededException>()(
     "DomainControllerLimitExceededException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -225,7 +222,7 @@ export class DomainControllerLimitExceededException
     },
   ) {}
 export class EnableAlreadyInProgressException
-  extends /*@__PURE__*/ S.TaggedErrorClass<EnableAlreadyInProgressException>()(
+  extends /*@__PURE__*/ S.TaggedError<EnableAlreadyInProgressException>()(
     "EnableAlreadyInProgressException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -233,7 +230,7 @@ export class EnableAlreadyInProgressException
     },
   ) {}
 export class EntityAlreadyExistsException
-  extends /*@__PURE__*/ S.TaggedErrorClass<EntityAlreadyExistsException>()(
+  extends /*@__PURE__*/ S.TaggedError<EntityAlreadyExistsException>()(
     "EntityAlreadyExistsException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -241,7 +238,7 @@ export class EntityAlreadyExistsException
     },
   ).pipe(C.withAlreadyExistsError) {}
 export class EntityDoesNotExistException
-  extends /*@__PURE__*/ S.TaggedErrorClass<EntityDoesNotExistException>()(
+  extends /*@__PURE__*/ S.TaggedError<EntityDoesNotExistException>()(
     "EntityDoesNotExistException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -249,7 +246,7 @@ export class EntityDoesNotExistException
     },
   ) {}
 export class IncompatibleSettingsException
-  extends /*@__PURE__*/ S.TaggedErrorClass<IncompatibleSettingsException>()(
+  extends /*@__PURE__*/ S.TaggedError<IncompatibleSettingsException>()(
     "IncompatibleSettingsException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -257,7 +254,7 @@ export class IncompatibleSettingsException
     },
   ) {}
 export class InsufficientPermissionsException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InsufficientPermissionsException>()(
+  extends /*@__PURE__*/ S.TaggedError<InsufficientPermissionsException>()(
     "InsufficientPermissionsException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -265,7 +262,7 @@ export class InsufficientPermissionsException
     },
   ) {}
 export class InvalidCertificateException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidCertificateException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidCertificateException>()(
     "InvalidCertificateException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -273,7 +270,7 @@ export class InvalidCertificateException
     },
   ) {}
 export class InvalidClientAuthStatusException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidClientAuthStatusException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidClientAuthStatusException>()(
     "InvalidClientAuthStatusException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -281,7 +278,7 @@ export class InvalidClientAuthStatusException
     },
   ) {}
 export class InvalidLDAPSStatusException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidLDAPSStatusException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidLDAPSStatusException>()(
     "InvalidLDAPSStatusException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -289,7 +286,7 @@ export class InvalidLDAPSStatusException
     },
   ) {}
 export class InvalidNextTokenException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidNextTokenException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidNextTokenException>()(
     "InvalidNextTokenException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -297,7 +294,7 @@ export class InvalidNextTokenException
     },
   ) {}
 export class InvalidParameterException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidParameterException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidParameterException>()(
     "InvalidParameterException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -305,7 +302,7 @@ export class InvalidParameterException
     },
   ) {}
 export class InvalidPasswordException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidPasswordException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidPasswordException>()(
     "InvalidPasswordException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -313,7 +310,7 @@ export class InvalidPasswordException
     },
   ) {}
 export class InvalidTargetException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidTargetException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidTargetException>()(
     "InvalidTargetException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -321,7 +318,7 @@ export class InvalidTargetException
     },
   ) {}
 export class IpRouteLimitExceededException
-  extends /*@__PURE__*/ S.TaggedErrorClass<IpRouteLimitExceededException>()(
+  extends /*@__PURE__*/ S.TaggedError<IpRouteLimitExceededException>()(
     "IpRouteLimitExceededException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -329,7 +326,7 @@ export class IpRouteLimitExceededException
     },
   ) {}
 export class NoAvailableCertificateException
-  extends /*@__PURE__*/ S.TaggedErrorClass<NoAvailableCertificateException>()(
+  extends /*@__PURE__*/ S.TaggedError<NoAvailableCertificateException>()(
     "NoAvailableCertificateException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -337,7 +334,7 @@ export class NoAvailableCertificateException
     },
   ) {}
 export class OrganizationsException
-  extends /*@__PURE__*/ S.TaggedErrorClass<OrganizationsException>()(
+  extends /*@__PURE__*/ S.TaggedError<OrganizationsException>()(
     "OrganizationsException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -345,7 +342,7 @@ export class OrganizationsException
     },
   ) {}
 export class RegionLimitExceededException
-  extends /*@__PURE__*/ S.TaggedErrorClass<RegionLimitExceededException>()(
+  extends /*@__PURE__*/ S.TaggedError<RegionLimitExceededException>()(
     "RegionLimitExceededException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -353,15 +350,12 @@ export class RegionLimitExceededException
     },
   ) {}
 export class ServiceException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ServiceException>()(
-    "ServiceException",
-    {
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
-      RequestId: S.optional(S.String),
-    },
-  ) {}
+  extends /*@__PURE__*/ S.TaggedError<ServiceException>()("ServiceException", {
+    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    RequestId: S.optional(S.String),
+  }) {}
 export class ShareLimitExceededException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ShareLimitExceededException>()(
+  extends /*@__PURE__*/ S.TaggedError<ShareLimitExceededException>()(
     "ShareLimitExceededException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -369,7 +363,7 @@ export class ShareLimitExceededException
     },
   ) {}
 export class SnapshotLimitExceededException
-  extends /*@__PURE__*/ S.TaggedErrorClass<SnapshotLimitExceededException>()(
+  extends /*@__PURE__*/ S.TaggedError<SnapshotLimitExceededException>()(
     "SnapshotLimitExceededException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -377,7 +371,7 @@ export class SnapshotLimitExceededException
     },
   ) {}
 export class TagLimitExceededException
-  extends /*@__PURE__*/ S.TaggedErrorClass<TagLimitExceededException>()(
+  extends /*@__PURE__*/ S.TaggedError<TagLimitExceededException>()(
     "TagLimitExceededException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -385,7 +379,7 @@ export class TagLimitExceededException
     },
   ) {}
 export class UnsupportedOperationException
-  extends /*@__PURE__*/ S.TaggedErrorClass<UnsupportedOperationException>()(
+  extends /*@__PURE__*/ S.TaggedError<UnsupportedOperationException>()(
     "UnsupportedOperationException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -393,7 +387,7 @@ export class UnsupportedOperationException
     },
   ) {}
 export class UnsupportedSettingsException
-  extends /*@__PURE__*/ S.TaggedErrorClass<UnsupportedSettingsException>()(
+  extends /*@__PURE__*/ S.TaggedError<UnsupportedSettingsException>()(
     "UnsupportedSettingsException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -401,7 +395,7 @@ export class UnsupportedSettingsException
     },
   ) {}
 export class UserDoesNotExistException
-  extends /*@__PURE__*/ S.TaggedErrorClass<UserDoesNotExistException>()(
+  extends /*@__PURE__*/ S.TaggedError<UserDoesNotExistException>()(
     "UserDoesNotExistException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),

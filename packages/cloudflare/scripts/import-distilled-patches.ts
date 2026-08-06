@@ -164,12 +164,12 @@ for (const file of fs.readdirSync(DIST_SERVICES)) {
 
   // Error classes defined in the generated service source:
   //   export class <Name> extends T.applyErrorMatchers(
-  //     Schema.TaggedErrorClass<Name>()("Name", {...}), [<matchers>]) {}
+  //     Schema.TaggedError<Name>()("Name", {...}), [<matchers>]) {}
   // This is the source of truth (patch files were an older mechanism and
   // may be absent), so mine matchers straight from the service.
   const errorMatchers = new Map<string, unknown[]>();
   const errRe =
-    /export class (\w+) extends T\.applyErrorMatchers\(\s*Schema\.TaggedErrorClass<\w+>\(\)\([^)]*\),\s*(\[[\s\S]*?\]),\s*\)\s*\{\}/g;
+    /export class (\w+) extends T\.applyErrorMatchers\(\s*Schema\.TaggedError<\w+>\(\)\([^)]*\),\s*(\[[\s\S]*?\]),\s*\)\s*\{\}/g;
   for (const m of src.matchAll(errRe)) {
     try {
       errorMatchers.set(m[1], new Function(`return (${m[2]})`)() as unknown[]);

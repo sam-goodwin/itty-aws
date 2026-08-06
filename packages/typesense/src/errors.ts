@@ -29,7 +29,7 @@ import * as Schema from "effect/Schema";
 import * as Category from "@distilled.cloud/core/category";
 
 // Unknown Typesense error - returned when an error code is not recognized
-export class UnknownTypesenseError extends Schema.TaggedErrorClass<UnknownTypesenseError>()(
+export class UnknownTypesenseError extends Schema.TaggedError<UnknownTypesenseError>()(
   "UnknownTypesenseError",
   {
     code: Schema.optional(Schema.String),
@@ -39,7 +39,7 @@ export class UnknownTypesenseError extends Schema.TaggedErrorClass<UnknownTypese
 ).pipe(Category.withServerError) {}
 
 // Schema parse error wrapper
-export class TypesenseParseError extends Schema.TaggedErrorClass<TypesenseParseError>()(
+export class TypesenseParseError extends Schema.TaggedError<TypesenseParseError>()(
   "TypesenseParseError",
   {
     body: Schema.Unknown,

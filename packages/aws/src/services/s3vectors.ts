@@ -51,55 +51,55 @@ const rules = T.EndpointResolver((p, _) => {
 });
 
 export class AccessDeniedException
-  extends /*@__PURE__*/ S.TaggedErrorClass<AccessDeniedException>()(
+  extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()(
     "AccessDeniedException",
     { message: S.String.pipe(T.ErrorMessage()) },
     T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class ConflictException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ConflictException>()(
+  extends /*@__PURE__*/ S.TaggedError<ConflictException>()(
     "ConflictException",
     { message: S.String.pipe(T.ErrorMessage()) },
     T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class KmsDisabledException
-  extends /*@__PURE__*/ S.TaggedErrorClass<KmsDisabledException>()(
+  extends /*@__PURE__*/ S.TaggedError<KmsDisabledException>()(
     "KmsDisabledException",
     { message: S.String.pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class KmsInvalidKeyUsageException
-  extends /*@__PURE__*/ S.TaggedErrorClass<KmsInvalidKeyUsageException>()(
+  extends /*@__PURE__*/ S.TaggedError<KmsInvalidKeyUsageException>()(
     "KmsInvalidKeyUsageException",
     { message: S.String.pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class KmsInvalidStateException
-  extends /*@__PURE__*/ S.TaggedErrorClass<KmsInvalidStateException>()(
+  extends /*@__PURE__*/ S.TaggedError<KmsInvalidStateException>()(
     "KmsInvalidStateException",
     { message: S.String.pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class KmsNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<KmsNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<KmsNotFoundException>()(
     "KmsNotFoundException",
     { message: S.String.pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class NotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<NotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<NotFoundException>()(
     "NotFoundException",
     { message: S.String.pipe(T.ErrorMessage()) },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ServiceQuotaExceededException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ServiceQuotaExceededException>()(
+  extends /*@__PURE__*/ S.TaggedError<ServiceQuotaExceededException>()(
     "ServiceQuotaExceededException",
     { message: S.String.pipe(T.ErrorMessage()) },
     T.HttpError(402),
   ).pipe(C.withQuotaError) {}
 export class ServiceUnavailableException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ServiceUnavailableException>()(
+  extends /*@__PURE__*/ S.TaggedError<ServiceUnavailableException>()(
     "ServiceUnavailableException",
     { message: S.String.pipe(T.ErrorMessage()) },
     T.all(T.HttpError(503), T.Retryable()),

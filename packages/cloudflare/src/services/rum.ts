@@ -30,7 +30,7 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
 
 export class Forbidden
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    /*@__PURE__*/ S.TaggedError<Forbidden>()("Forbidden", {
       code: S.Number,
       message: S.String,
     }),
@@ -39,7 +39,7 @@ export class Forbidden
 
 export class MaxRulesExceeded
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<MaxRulesExceeded>()("MaxRulesExceeded", {
+    /*@__PURE__*/ S.TaggedError<MaxRulesExceeded>()("MaxRulesExceeded", {
       code: S.Number,
       message: S.String,
     }),
@@ -48,7 +48,7 @@ export class MaxRulesExceeded
 
 export class RuleNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<RuleNotFound>()("RuleNotFound", {
+    /*@__PURE__*/ S.TaggedError<RuleNotFound>()("RuleNotFound", {
       code: S.Number,
       message: S.String,
     }),
@@ -57,7 +57,7 @@ export class RuleNotFound
 
 export class RulesetNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<RulesetNotFound>()("RulesetNotFound", {
+    /*@__PURE__*/ S.TaggedError<RulesetNotFound>()("RulesetNotFound", {
       code: S.Number,
       message: S.String,
     }),
@@ -66,7 +66,7 @@ export class RulesetNotFound
 
 export class RumSiteQuotaExceeded
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<RumSiteQuotaExceeded>()(
+    /*@__PURE__*/ S.TaggedError<RumSiteQuotaExceeded>()(
       "RumSiteQuotaExceeded",
       {
         code: S.Number,
@@ -78,7 +78,7 @@ export class RumSiteQuotaExceeded
 
 export class SiteNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<SiteNotFound>()("SiteNotFound", {
+    /*@__PURE__*/ S.TaggedError<SiteNotFound>()("SiteNotFound", {
       code: S.Number,
       message: S.String,
     }),

@@ -12,7 +12,7 @@ import * as Retry from "../retry.ts";
 export type { PosthogOpError, PosthogOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-  S.TaggedErrorClass<BadRequest>()("BadRequest", {
+  S.TaggedError<BadRequest>()("BadRequest", {
     code: S.Number,
     message: S.String,
   }),
@@ -20,7 +20,7 @@ export class BadRequest extends T.applyErrorMatchers(
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<NotFound>()("NotFound", {
+  S.TaggedError<NotFound>()("NotFound", {
     code: S.Number,
     message: S.String,
   }),

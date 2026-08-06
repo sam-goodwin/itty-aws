@@ -88,7 +88,7 @@ const rules = T.EndpointResolver((p, _) => {
 });
 
 export class RequestError
-  extends /*@__PURE__*/ S.TaggedErrorClass<RequestError>()(
+  extends /*@__PURE__*/ S.TaggedError<RequestError>()(
     "RequestError",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -100,7 +100,7 @@ export class RequestError
     ),
   ).pipe(C.withBadRequestError) {}
 export class ServiceFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<ServiceFault>()(
+  extends /*@__PURE__*/ S.TaggedError<ServiceFault>()(
     "ServiceFault",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),

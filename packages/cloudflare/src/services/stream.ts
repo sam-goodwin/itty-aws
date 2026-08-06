@@ -24,7 +24,7 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
 
 export class Forbidden
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    /*@__PURE__*/ S.TaggedError<Forbidden>()("Forbidden", {
       code: S.Number,
       message: S.String,
     }),
@@ -33,7 +33,7 @@ export class Forbidden
 
 export class LiveInputNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<LiveInputNotFound>()("LiveInputNotFound", {
+    /*@__PURE__*/ S.TaggedError<LiveInputNotFound>()("LiveInputNotFound", {
       code: S.Number,
       message: S.String,
     }),
@@ -42,7 +42,7 @@ export class LiveInputNotFound
 
 export class OutputNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<OutputNotFound>()("OutputNotFound", {
+    /*@__PURE__*/ S.TaggedError<OutputNotFound>()("OutputNotFound", {
       code: S.Number,
       message: S.String,
     }),
@@ -51,19 +51,16 @@ export class OutputNotFound
 
 export class SigningKeyNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<SigningKeyNotFound>()(
-      "SigningKeyNotFound",
-      {
-        code: S.Number,
-        message: S.String,
-      },
-    ),
+    /*@__PURE__*/ S.TaggedError<SigningKeyNotFound>()("SigningKeyNotFound", {
+      code: S.Number,
+      message: S.String,
+    }),
     [{ code: 10003 }],
   ) {}
 
 export class WatermarkImageInvalid
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<WatermarkImageInvalid>()(
+    /*@__PURE__*/ S.TaggedError<WatermarkImageInvalid>()(
       "WatermarkImageInvalid",
       {
         code: S.Number,
@@ -75,7 +72,7 @@ export class WatermarkImageInvalid
 
 export class WatermarkNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<WatermarkNotFound>()("WatermarkNotFound", {
+    /*@__PURE__*/ S.TaggedError<WatermarkNotFound>()("WatermarkNotFound", {
       code: S.Number,
       message: S.String,
     }),
@@ -84,7 +81,7 @@ export class WatermarkNotFound
 
 export class WebhookNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<WebhookNotFound>()("WebhookNotFound", {
+    /*@__PURE__*/ S.TaggedError<WebhookNotFound>()("WebhookNotFound", {
       code: S.Number,
       message: S.String,
     }),

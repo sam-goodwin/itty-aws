@@ -87,82 +87,82 @@ const rules = T.EndpointResolver((p, _) => {
 });
 
 export class ConflictException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ConflictException>()(
+  extends /*@__PURE__*/ S.TaggedError<ConflictException>()(
     "ConflictException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class FleetCapacityExceededException
-  extends /*@__PURE__*/ S.TaggedErrorClass<FleetCapacityExceededException>()(
+  extends /*@__PURE__*/ S.TaggedError<FleetCapacityExceededException>()(
     "FleetCapacityExceededException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class GameSessionFullException
-  extends /*@__PURE__*/ S.TaggedErrorClass<GameSessionFullException>()(
+  extends /*@__PURE__*/ S.TaggedError<GameSessionFullException>()(
     "GameSessionFullException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class IdempotentParameterMismatchException
-  extends /*@__PURE__*/ S.TaggedErrorClass<IdempotentParameterMismatchException>()(
+  extends /*@__PURE__*/ S.TaggedError<IdempotentParameterMismatchException>()(
     "IdempotentParameterMismatchException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InternalServiceException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InternalServiceException>()(
+  extends /*@__PURE__*/ S.TaggedError<InternalServiceException>()(
     "InternalServiceException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidFleetStatusException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidFleetStatusException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidFleetStatusException>()(
     "InvalidFleetStatusException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidGameSessionStatusException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidGameSessionStatusException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidGameSessionStatusException>()(
     "InvalidGameSessionStatusException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidRequestException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidRequestException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidRequestException>()(
     "InvalidRequestException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class LimitExceededException
-  extends /*@__PURE__*/ S.TaggedErrorClass<LimitExceededException>()(
+  extends /*@__PURE__*/ S.TaggedError<LimitExceededException>()(
     "LimitExceededException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class NotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<NotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<NotFoundException>()(
     "NotFoundException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class NotReadyException
-  extends /*@__PURE__*/ S.TaggedErrorClass<NotReadyException>()(
+  extends /*@__PURE__*/ S.TaggedError<NotReadyException>()(
     "NotReadyException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class OutOfCapacityException
-  extends /*@__PURE__*/ S.TaggedErrorClass<OutOfCapacityException>()(
+  extends /*@__PURE__*/ S.TaggedError<OutOfCapacityException>()(
     "OutOfCapacityException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class TaggingFailedException
-  extends /*@__PURE__*/ S.TaggedErrorClass<TaggingFailedException>()(
+  extends /*@__PURE__*/ S.TaggedError<TaggingFailedException>()(
     "TaggingFailedException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class TerminalRoutingStrategyException
-  extends /*@__PURE__*/ S.TaggedErrorClass<TerminalRoutingStrategyException>()(
+  extends /*@__PURE__*/ S.TaggedError<TerminalRoutingStrategyException>()(
     "TerminalRoutingStrategyException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class UnauthorizedException
-  extends /*@__PURE__*/ S.TaggedErrorClass<UnauthorizedException>()(
+  extends /*@__PURE__*/ S.TaggedError<UnauthorizedException>()(
     "UnauthorizedException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withAuthError) {}
 export class UnsupportedRegionException
-  extends /*@__PURE__*/ S.TaggedErrorClass<UnsupportedRegionException>()(
+  extends /*@__PURE__*/ S.TaggedError<UnsupportedRegionException>()(
     "UnsupportedRegionException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}

@@ -86,7 +86,7 @@ const rules = T.EndpointResolver((p, _) => {
 });
 
 export class AlreadyExistsException
-  extends /*@__PURE__*/ S.TaggedErrorClass<AlreadyExistsException>()(
+  extends /*@__PURE__*/ S.TaggedError<AlreadyExistsException>()(
     "AlreadyExistsException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -98,7 +98,7 @@ export class AlreadyExistsException
     ),
   ).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
 export class ClientTokenConflictException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ClientTokenConflictException>()(
+  extends /*@__PURE__*/ S.TaggedError<ClientTokenConflictException>()(
     "ClientTokenConflictException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -110,7 +110,7 @@ export class ClientTokenConflictException
     ),
   ).pipe(C.withConflictError) {}
 export class ConcurrentModificationException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ConcurrentModificationException>()(
+  extends /*@__PURE__*/ S.TaggedError<ConcurrentModificationException>()(
     "ConcurrentModificationException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -122,7 +122,7 @@ export class ConcurrentModificationException
     ),
   ).pipe(C.withServerError) {}
 export class ConcurrentOperationException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ConcurrentOperationException>()(
+  extends /*@__PURE__*/ S.TaggedError<ConcurrentOperationException>()(
     "ConcurrentOperationException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -134,7 +134,7 @@ export class ConcurrentOperationException
     ),
   ).pipe(C.withConflictError) {}
 export class GeneralServiceException
-  extends /*@__PURE__*/ S.TaggedErrorClass<GeneralServiceException>()(
+  extends /*@__PURE__*/ S.TaggedError<GeneralServiceException>()(
     "GeneralServiceException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -146,7 +146,7 @@ export class GeneralServiceException
     ),
   ).pipe(C.withBadRequestError) {}
 export class HandlerFailureException
-  extends /*@__PURE__*/ S.TaggedErrorClass<HandlerFailureException>()(
+  extends /*@__PURE__*/ S.TaggedError<HandlerFailureException>()(
     "HandlerFailureException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -158,7 +158,7 @@ export class HandlerFailureException
     ),
   ).pipe(C.withServerError) {}
 export class HandlerInternalFailureException
-  extends /*@__PURE__*/ S.TaggedErrorClass<HandlerInternalFailureException>()(
+  extends /*@__PURE__*/ S.TaggedError<HandlerInternalFailureException>()(
     "HandlerInternalFailureException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -170,7 +170,7 @@ export class HandlerInternalFailureException
     ),
   ).pipe(C.withServerError) {}
 export class InvalidCredentialsException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidCredentialsException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidCredentialsException>()(
     "InvalidCredentialsException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -182,7 +182,7 @@ export class InvalidCredentialsException
     ),
   ).pipe(C.withAuthError) {}
 export class InvalidRequestException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidRequestException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidRequestException>()(
     "InvalidRequestException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -194,7 +194,7 @@ export class InvalidRequestException
     ),
   ).pipe(C.withBadRequestError) {}
 export class NetworkFailureException
-  extends /*@__PURE__*/ S.TaggedErrorClass<NetworkFailureException>()(
+  extends /*@__PURE__*/ S.TaggedError<NetworkFailureException>()(
     "NetworkFailureException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -206,7 +206,7 @@ export class NetworkFailureException
     ),
   ).pipe(C.withServerError) {}
 export class NotStabilizedException
-  extends /*@__PURE__*/ S.TaggedErrorClass<NotStabilizedException>()(
+  extends /*@__PURE__*/ S.TaggedError<NotStabilizedException>()(
     "NotStabilizedException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -218,7 +218,7 @@ export class NotStabilizedException
     ),
   ).pipe(C.withBadRequestError) {}
 export class NotUpdatableException
-  extends /*@__PURE__*/ S.TaggedErrorClass<NotUpdatableException>()(
+  extends /*@__PURE__*/ S.TaggedError<NotUpdatableException>()(
     "NotUpdatableException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -227,7 +227,7 @@ export class NotUpdatableException
     ),
   ).pipe(C.withBadRequestError) {}
 export class PrivateTypeException
-  extends /*@__PURE__*/ S.TaggedErrorClass<PrivateTypeException>()(
+  extends /*@__PURE__*/ S.TaggedError<PrivateTypeException>()(
     "PrivateTypeException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -236,7 +236,7 @@ export class PrivateTypeException
     ),
   ).pipe(C.withBadRequestError) {}
 export class RequestTokenNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<RequestTokenNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<RequestTokenNotFoundException>()(
     "RequestTokenNotFoundException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -248,7 +248,7 @@ export class RequestTokenNotFoundException
     ),
   ).pipe(C.withBadRequestError) {}
 export class ResourceConflictException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceConflictException>()(
+  extends /*@__PURE__*/ S.TaggedError<ResourceConflictException>()(
     "ResourceConflictException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -260,7 +260,7 @@ export class ResourceConflictException
     ),
   ).pipe(C.withConflictError) {}
 export class ResourceNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -272,7 +272,7 @@ export class ResourceNotFoundException
     ),
   ).pipe(C.withBadRequestError) {}
 export class ServiceInternalErrorException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ServiceInternalErrorException>()(
+  extends /*@__PURE__*/ S.TaggedError<ServiceInternalErrorException>()(
     "ServiceInternalErrorException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -284,7 +284,7 @@ export class ServiceInternalErrorException
     ),
   ).pipe(C.withServerError) {}
 export class ServiceLimitExceededException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ServiceLimitExceededException>()(
+  extends /*@__PURE__*/ S.TaggedError<ServiceLimitExceededException>()(
     "ServiceLimitExceededException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -296,7 +296,7 @@ export class ServiceLimitExceededException
     ),
   ).pipe(C.withBadRequestError) {}
 export class ThrottlingException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ThrottlingException>()(
+  extends /*@__PURE__*/ S.TaggedError<ThrottlingException>()(
     "ThrottlingException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -305,7 +305,7 @@ export class ThrottlingException
     ),
   ).pipe(C.withThrottlingError) {}
 export class TypeNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<TypeNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<TypeNotFoundException>()(
     "TypeNotFoundException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -314,7 +314,7 @@ export class TypeNotFoundException
     ),
   ).pipe(C.withBadRequestError) {}
 export class UnsupportedActionException
-  extends /*@__PURE__*/ S.TaggedErrorClass<UnsupportedActionException>()(
+  extends /*@__PURE__*/ S.TaggedError<UnsupportedActionException>()(
     "UnsupportedActionException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(

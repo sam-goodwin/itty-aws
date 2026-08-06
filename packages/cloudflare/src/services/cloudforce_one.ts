@@ -36,13 +36,10 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
 
 export class ScanConfigNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<ScanConfigNotFound>()(
-      "ScanConfigNotFound",
-      {
-        code: S.Number,
-        message: S.String,
-      },
-    ),
+    /*@__PURE__*/ S.TaggedError<ScanConfigNotFound>()("ScanConfigNotFound", {
+      code: S.Number,
+      message: S.String,
+    }),
     [{ status: 404 }],
   ) {}
 

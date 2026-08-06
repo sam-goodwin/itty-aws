@@ -83,7 +83,7 @@ const rules = T.EndpointResolver((p, _) => {
 });
 
 export class CloudHsmInternalException
-  extends /*@__PURE__*/ S.TaggedErrorClass<CloudHsmInternalException>()(
+  extends /*@__PURE__*/ S.TaggedError<CloudHsmInternalException>()(
     "CloudHsmInternalException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -91,7 +91,7 @@ export class CloudHsmInternalException
     },
   ) {}
 export class CloudHsmServiceException
-  extends /*@__PURE__*/ S.TaggedErrorClass<CloudHsmServiceException>()(
+  extends /*@__PURE__*/ S.TaggedError<CloudHsmServiceException>()(
     "CloudHsmServiceException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -99,7 +99,7 @@ export class CloudHsmServiceException
     },
   ) {}
 export class InvalidRequestException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidRequestException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidRequestException>()(
     "InvalidRequestException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),

@@ -36,7 +36,7 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
 
 export class CustomCertificateNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<CustomCertificateNotFound>()(
+    /*@__PURE__*/ S.TaggedError<CustomCertificateNotFound>()(
       "CustomCertificateNotFound",
       {
         code: S.Number,
@@ -51,7 +51,7 @@ export class CustomCertificateNotFound
 
 export class Forbidden
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    /*@__PURE__*/ S.TaggedError<Forbidden>()("Forbidden", {
       code: S.Number,
       message: S.String,
     }),
@@ -60,19 +60,16 @@ export class Forbidden
 
 export class PlanLevelNotAllowed
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<PlanLevelNotAllowed>()(
-      "PlanLevelNotAllowed",
-      {
-        code: S.Number,
-        message: S.String,
-      },
-    ),
+    /*@__PURE__*/ S.TaggedError<PlanLevelNotAllowed>()("PlanLevelNotAllowed", {
+      code: S.Number,
+      message: S.String,
+    }),
     [{ code: 1011 }],
   ) {}
 
 export class ZoneNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<ZoneNotFound>()("ZoneNotFound", {
+    /*@__PURE__*/ S.TaggedError<ZoneNotFound>()("ZoneNotFound", {
       code: S.Number,
       message: S.String,
     }),

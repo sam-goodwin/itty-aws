@@ -84,13 +84,13 @@ const rules = T.EndpointResolver((p, _) => {
 });
 
 export class AccessForbidden
-  extends /*@__PURE__*/ S.TaggedErrorClass<AccessForbidden>()(
+  extends /*@__PURE__*/ S.TaggedError<AccessForbidden>()(
     "AccessForbidden",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class FeatureGroupNotFound
-  extends /*@__PURE__*/ S.TaggedErrorClass<FeatureGroupNotFound>()(
+  extends /*@__PURE__*/ S.TaggedError<FeatureGroupNotFound>()(
     "FeatureGroupNotFound",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.SyntheticError({
@@ -99,25 +99,25 @@ export class FeatureGroupNotFound
     }),
   ).pipe(C.withNotFoundError) {}
 export class InternalFailure
-  extends /*@__PURE__*/ S.TaggedErrorClass<InternalFailure>()(
+  extends /*@__PURE__*/ S.TaggedError<InternalFailure>()(
     "InternalFailure",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class ResourceNotFound
-  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFound>()(
+  extends /*@__PURE__*/ S.TaggedError<ResourceNotFound>()(
     "ResourceNotFound",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ServiceUnavailable
-  extends /*@__PURE__*/ S.TaggedErrorClass<ServiceUnavailable>()(
+  extends /*@__PURE__*/ S.TaggedError<ServiceUnavailable>()(
     "ServiceUnavailable",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(503),
   ).pipe(C.withServerError) {}
 export class ValidationError
-  extends /*@__PURE__*/ S.TaggedErrorClass<ValidationError>()(
+  extends /*@__PURE__*/ S.TaggedError<ValidationError>()(
     "ValidationError",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),

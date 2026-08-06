@@ -27,7 +27,7 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
 
 export class InvalidExpirationTtl
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<InvalidExpirationTtl>()(
+    /*@__PURE__*/ S.TaggedError<InvalidExpirationTtl>()(
       "InvalidExpirationTtl",
       {
         code: S.Number,
@@ -39,7 +39,7 @@ export class InvalidExpirationTtl
 
 export class InvalidObjectIdentifier
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<InvalidObjectIdentifier>()(
+    /*@__PURE__*/ S.TaggedError<InvalidObjectIdentifier>()(
       "InvalidObjectIdentifier",
       {
         code: S.Number,
@@ -51,19 +51,16 @@ export class InvalidObjectIdentifier
 
 export class InvalidRequestBody
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<InvalidRequestBody>()(
-      "InvalidRequestBody",
-      {
-        code: S.Number,
-        message: S.String,
-      },
-    ),
+    /*@__PURE__*/ S.TaggedError<InvalidRequestBody>()("InvalidRequestBody", {
+      code: S.Number,
+      message: S.String,
+    }),
     [{ code: 10012 }],
   ) {}
 
 export class KeyNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<KeyNotFound>()("KeyNotFound", {
+    /*@__PURE__*/ S.TaggedError<KeyNotFound>()("KeyNotFound", {
       code: S.Number,
       message: S.String,
     }),
@@ -72,7 +69,7 @@ export class KeyNotFound
 
 export class MethodNotAllowed
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<MethodNotAllowed>()("MethodNotAllowed", {
+    /*@__PURE__*/ S.TaggedError<MethodNotAllowed>()("MethodNotAllowed", {
       code: S.Number,
       message: S.String,
     }),
@@ -84,19 +81,16 @@ export class MethodNotAllowed
 
 export class MinimumKeysRequired
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<MinimumKeysRequired>()(
-      "MinimumKeysRequired",
-      {
-        code: S.Number,
-        message: S.String,
-      },
-    ),
+    /*@__PURE__*/ S.TaggedError<MinimumKeysRequired>()("MinimumKeysRequired", {
+      code: S.Number,
+      message: S.String,
+    }),
     [{ code: 10029 }],
   ) {}
 
 export class NamespaceNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<NamespaceNotFound>()("NamespaceNotFound", {
+    /*@__PURE__*/ S.TaggedError<NamespaceNotFound>()("NamespaceNotFound", {
       code: S.Number,
       message: S.String,
     }),
@@ -105,7 +99,7 @@ export class NamespaceNotFound
 
 export class NamespaceTitleAlreadyExists
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<NamespaceTitleAlreadyExists>()(
+    /*@__PURE__*/ S.TaggedError<NamespaceTitleAlreadyExists>()(
       "NamespaceTitleAlreadyExists",
       {
         code: S.Number,
@@ -117,7 +111,7 @@ export class NamespaceTitleAlreadyExists
 
 export class TitleRequired
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<TitleRequired>()("TitleRequired", {
+    /*@__PURE__*/ S.TaggedError<TitleRequired>()("TitleRequired", {
       code: S.Number,
       message: S.String,
     }),

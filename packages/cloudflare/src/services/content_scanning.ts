@@ -16,7 +16,7 @@ export type { CloudflareOpError, CloudflareOpContext };
 
 export class ContentScanningNotEnabled
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<ContentScanningNotEnabled>()(
+    /*@__PURE__*/ S.TaggedError<ContentScanningNotEnabled>()(
       "ContentScanningNotEnabled",
       {
         code: S.Number,
@@ -28,7 +28,7 @@ export class ContentScanningNotEnabled
 
 export class ContentScanningNotEntitled
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<ContentScanningNotEntitled>()(
+    /*@__PURE__*/ S.TaggedError<ContentScanningNotEntitled>()(
       "ContentScanningNotEntitled",
       {
         code: S.Number,
@@ -40,7 +40,7 @@ export class ContentScanningNotEntitled
 
 export class Forbidden
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    /*@__PURE__*/ S.TaggedError<Forbidden>()("Forbidden", {
       code: S.Number,
       message: S.String,
     }),

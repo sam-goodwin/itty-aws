@@ -14,7 +14,7 @@ export type { KubernetesOpError, KubernetesOpContext };
 
 export class Conflict
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<Conflict>()("Conflict", {
+    /*@__PURE__*/ S.TaggedError<Conflict>()("Conflict", {
       code: S.Number,
       message: S.String,
     }),
@@ -23,7 +23,7 @@ export class Conflict
 
 export class NotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<NotFound>()("NotFound", {
+    /*@__PURE__*/ S.TaggedError<NotFound>()("NotFound", {
       code: S.Number,
       message: S.String,
     }),
@@ -32,13 +32,10 @@ export class NotFound
 
 export class UnprocessableEntity
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<UnprocessableEntity>()(
-      "UnprocessableEntity",
-      {
-        code: S.Number,
-        message: S.String,
-      },
-    ),
+    /*@__PURE__*/ S.TaggedError<UnprocessableEntity>()("UnprocessableEntity", {
+      code: S.Number,
+      message: S.String,
+    }),
     [{ status: 422 }],
   ) {}
 

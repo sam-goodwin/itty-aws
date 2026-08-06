@@ -14,7 +14,7 @@ export type { GcpOpError, GcpOpContext };
 
 export class Forbidden
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    /*@__PURE__*/ S.TaggedError<Forbidden>()("Forbidden", {
       code: S.optional(S.Number),
       message: S.String,
       status: S.optional(S.String),
@@ -27,7 +27,7 @@ export class Forbidden
 
 export class NotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<NotFound>()("NotFound", {
+    /*@__PURE__*/ S.TaggedError<NotFound>()("NotFound", {
       code: S.optional(S.Number),
       message: S.String,
       status: S.optional(S.String),

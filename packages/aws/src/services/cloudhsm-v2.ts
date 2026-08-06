@@ -90,37 +90,37 @@ const rules = T.EndpointResolver((p, _) => {
 });
 
 export class CloudHsmAccessDeniedException
-  extends /*@__PURE__*/ S.TaggedErrorClass<CloudHsmAccessDeniedException>()(
+  extends /*@__PURE__*/ S.TaggedError<CloudHsmAccessDeniedException>()(
     "CloudHsmAccessDeniedException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withAuthError) {}
 export class CloudHsmInternalFailureException
-  extends /*@__PURE__*/ S.TaggedErrorClass<CloudHsmInternalFailureException>()(
+  extends /*@__PURE__*/ S.TaggedError<CloudHsmInternalFailureException>()(
     "CloudHsmInternalFailureException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class CloudHsmInvalidRequestException
-  extends /*@__PURE__*/ S.TaggedErrorClass<CloudHsmInvalidRequestException>()(
+  extends /*@__PURE__*/ S.TaggedError<CloudHsmInvalidRequestException>()(
     "CloudHsmInvalidRequestException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class CloudHsmResourceLimitExceededException
-  extends /*@__PURE__*/ S.TaggedErrorClass<CloudHsmResourceLimitExceededException>()(
+  extends /*@__PURE__*/ S.TaggedError<CloudHsmResourceLimitExceededException>()(
     "CloudHsmResourceLimitExceededException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class CloudHsmResourceNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<CloudHsmResourceNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<CloudHsmResourceNotFoundException>()(
     "CloudHsmResourceNotFoundException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class CloudHsmServiceException
-  extends /*@__PURE__*/ S.TaggedErrorClass<CloudHsmServiceException>()(
+  extends /*@__PURE__*/ S.TaggedError<CloudHsmServiceException>()(
     "CloudHsmServiceException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class CloudHsmTagException
-  extends /*@__PURE__*/ S.TaggedErrorClass<CloudHsmTagException>()(
+  extends /*@__PURE__*/ S.TaggedError<CloudHsmTagException>()(
     "CloudHsmTagException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}

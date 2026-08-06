@@ -85,7 +85,7 @@ const rules = T.EndpointResolver((p, _) => {
 });
 
 export class AlreadyStreamedException
-  extends /*@__PURE__*/ S.TaggedErrorClass<AlreadyStreamedException>()(
+  extends /*@__PURE__*/ S.TaggedError<AlreadyStreamedException>()(
     "AlreadyStreamedException",
     { message: S.String.pipe(T.ErrorMessage()) },
     T.all(
@@ -94,7 +94,7 @@ export class AlreadyStreamedException
     ),
   ).pipe(C.withBadRequestError) {}
 export class ConcurrentModificationException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ConcurrentModificationException>()(
+  extends /*@__PURE__*/ S.TaggedError<ConcurrentModificationException>()(
     "ConcurrentModificationException",
     { message: S.String.pipe(T.ErrorMessage()) },
     T.all(
@@ -106,7 +106,7 @@ export class ConcurrentModificationException
     ),
   ).pipe(C.withBadRequestError) {}
 export class DuplicateRequestException
-  extends /*@__PURE__*/ S.TaggedErrorClass<DuplicateRequestException>()(
+  extends /*@__PURE__*/ S.TaggedError<DuplicateRequestException>()(
     "DuplicateRequestException",
     { message: S.String.pipe(T.ErrorMessage()) },
     T.all(
@@ -115,7 +115,7 @@ export class DuplicateRequestException
     ),
   ).pipe(C.withBadRequestError) {}
 export class InternalErrorException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InternalErrorException>()(
+  extends /*@__PURE__*/ S.TaggedError<InternalErrorException>()(
     "InternalErrorException",
     { message: S.String.pipe(T.ErrorMessage()) },
     T.all(
@@ -124,7 +124,7 @@ export class InternalErrorException
     ),
   ).pipe(C.withServerError) {}
 export class InvalidConfigurationException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidConfigurationException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidConfigurationException>()(
     "InvalidConfigurationException",
     { message: S.String.pipe(T.ErrorMessage()) },
     T.all(
@@ -133,7 +133,7 @@ export class InvalidConfigurationException
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidLambdaFunctionOutputException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidLambdaFunctionOutputException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidLambdaFunctionOutputException>()(
     "InvalidLambdaFunctionOutputException",
     { message: S.String.pipe(T.ErrorMessage()) },
     T.all(
@@ -145,7 +145,7 @@ export class InvalidLambdaFunctionOutputException
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidParameterException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidParameterException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidParameterException>()(
     "InvalidParameterException",
     { message: S.String.pipe(T.ErrorMessage()) },
     T.all(
@@ -154,7 +154,7 @@ export class InvalidParameterException
     ),
   ).pipe(C.withBadRequestError) {}
 export class LambdaThrottledException
-  extends /*@__PURE__*/ S.TaggedErrorClass<LambdaThrottledException>()(
+  extends /*@__PURE__*/ S.TaggedError<LambdaThrottledException>()(
     "LambdaThrottledException",
     { message: S.String.pipe(T.ErrorMessage()) },
     T.all(
@@ -163,7 +163,7 @@ export class LambdaThrottledException
     ),
   ).pipe(C.withThrottlingError) {}
 export class LimitExceededException
-  extends /*@__PURE__*/ S.TaggedErrorClass<LimitExceededException>()(
+  extends /*@__PURE__*/ S.TaggedError<LimitExceededException>()(
     "LimitExceededException",
     { message: S.String.pipe(T.ErrorMessage()) },
     T.all(
@@ -172,7 +172,7 @@ export class LimitExceededException
     ),
   ).pipe(C.withBadRequestError) {}
 export class NotAuthorizedException
-  extends /*@__PURE__*/ S.TaggedErrorClass<NotAuthorizedException>()(
+  extends /*@__PURE__*/ S.TaggedError<NotAuthorizedException>()(
     "NotAuthorizedException",
     { message: S.String.pipe(T.ErrorMessage()) },
     T.all(
@@ -181,7 +181,7 @@ export class NotAuthorizedException
     ),
   ).pipe(C.withAuthError) {}
 export class ResourceConflictException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceConflictException>()(
+  extends /*@__PURE__*/ S.TaggedError<ResourceConflictException>()(
     "ResourceConflictException",
     { message: S.String.pipe(T.ErrorMessage()) },
     T.all(
@@ -190,7 +190,7 @@ export class ResourceConflictException
     ),
   ).pipe(C.withConflictError) {}
 export class ResourceNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
     { message: S.String.pipe(T.ErrorMessage()) },
     T.all(
@@ -199,7 +199,7 @@ export class ResourceNotFoundException
     ),
   ).pipe(C.withBadRequestError) {}
 export class TooManyRequestsException
-  extends /*@__PURE__*/ S.TaggedErrorClass<TooManyRequestsException>()(
+  extends /*@__PURE__*/ S.TaggedError<TooManyRequestsException>()(
     "TooManyRequestsException",
     { message: S.String.pipe(T.ErrorMessage()) },
     T.all(

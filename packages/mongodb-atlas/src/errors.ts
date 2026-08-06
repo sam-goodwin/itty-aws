@@ -32,7 +32,7 @@ import * as Schema from "effect/Schema";
 import * as Category from "@distilled.cloud/core/category";
 
 /** Payment Required — billing/quota limit (402). */
-export class PaymentRequired extends Schema.TaggedErrorClass<PaymentRequired>()(
+export class PaymentRequired extends Schema.TaggedError<PaymentRequired>()(
   "PaymentRequired",
   { message: Schema.String },
 ).pipe(Category.withBadRequestError) {}
@@ -42,7 +42,7 @@ export class PaymentRequired extends Schema.TaggedErrorClass<PaymentRequired>()(
  * failure. Carries the Atlas error envelope fields
  * (`{ error, errorCode, reason?, detail? }`) for later cataloging.
  */
-export class UnknownMongodbAtlasError extends Schema.TaggedErrorClass<UnknownMongodbAtlasError>()(
+export class UnknownMongodbAtlasError extends Schema.TaggedError<UnknownMongodbAtlasError>()(
   "UnknownMongodbAtlasError",
   {
     errorCode: Schema.optional(Schema.String),
@@ -53,7 +53,7 @@ export class UnknownMongodbAtlasError extends Schema.TaggedErrorClass<UnknownMon
 ).pipe(Category.withServerError) {}
 
 /** Schema parse error wrapper (kept for v0 surface parity). */
-export class MongodbAtlasParseError extends Schema.TaggedErrorClass<MongodbAtlasParseError>()(
+export class MongodbAtlasParseError extends Schema.TaggedError<MongodbAtlasParseError>()(
   "MongodbAtlasParseError",
   {
     body: Schema.Unknown,

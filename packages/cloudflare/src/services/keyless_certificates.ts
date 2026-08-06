@@ -25,7 +25,7 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
 
 export class Forbidden
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    /*@__PURE__*/ S.TaggedError<Forbidden>()("Forbidden", {
       code: S.Number,
       message: S.String,
     }),
@@ -34,7 +34,7 @@ export class Forbidden
 
 export class KeylessCertificateNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<KeylessCertificateNotFound>()(
+    /*@__PURE__*/ S.TaggedError<KeylessCertificateNotFound>()(
       "KeylessCertificateNotFound",
       {
         code: S.Number,
@@ -46,7 +46,7 @@ export class KeylessCertificateNotFound
 
 export class KeylessSslNotAvailable
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<KeylessSslNotAvailable>()(
+    /*@__PURE__*/ S.TaggedError<KeylessSslNotAvailable>()(
       "KeylessSslNotAvailable",
       {
         code: S.Number,

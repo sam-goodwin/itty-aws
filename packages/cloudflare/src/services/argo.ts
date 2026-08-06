@@ -19,7 +19,7 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
 
 export class Forbidden
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    /*@__PURE__*/ S.TaggedError<Forbidden>()("Forbidden", {
       code: S.Number,
       message: S.String,
     }),
@@ -28,7 +28,7 @@ export class Forbidden
 
 export class InvalidObjectIdentifier
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<InvalidObjectIdentifier>()(
+    /*@__PURE__*/ S.TaggedError<InvalidObjectIdentifier>()(
       "InvalidObjectIdentifier",
       {
         code: S.Number,
@@ -40,7 +40,7 @@ export class InvalidObjectIdentifier
 
 export class NotAuthorized
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<NotAuthorized>()("NotAuthorized", {
+    /*@__PURE__*/ S.TaggedError<NotAuthorized>()("NotAuthorized", {
       code: S.Number,
       message: S.String,
     }),
@@ -49,7 +49,7 @@ export class NotAuthorized
 
 export class ZoneNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<ZoneNotFound>()("ZoneNotFound", {
+    /*@__PURE__*/ S.TaggedError<ZoneNotFound>()("ZoneNotFound", {
       code: S.Number,
       message: S.String,
     }),

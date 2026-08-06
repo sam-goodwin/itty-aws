@@ -87,7 +87,7 @@ const rules = T.EndpointResolver((p, _) => {
 });
 
 export class AuthorizationAlreadyExistsFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<AuthorizationAlreadyExistsFault>()(
+  extends /*@__PURE__*/ S.TaggedError<AuthorizationAlreadyExistsFault>()(
     "AuthorizationAlreadyExistsFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -99,7 +99,7 @@ export class AuthorizationAlreadyExistsFault
     ),
   ).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
 export class AuthorizationNotFoundFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<AuthorizationNotFoundFault>()(
+  extends /*@__PURE__*/ S.TaggedError<AuthorizationNotFoundFault>()(
     "AuthorizationNotFoundFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -108,7 +108,7 @@ export class AuthorizationNotFoundFault
     ),
   ).pipe(C.withBadRequestError) {}
 export class AuthorizationQuotaExceededFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<AuthorizationQuotaExceededFault>()(
+  extends /*@__PURE__*/ S.TaggedError<AuthorizationQuotaExceededFault>()(
     "AuthorizationQuotaExceededFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -120,7 +120,7 @@ export class AuthorizationQuotaExceededFault
     ),
   ).pipe(C.withBadRequestError) {}
 export class BackupPolicyNotFoundFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<BackupPolicyNotFoundFault>()(
+  extends /*@__PURE__*/ S.TaggedError<BackupPolicyNotFoundFault>()(
     "BackupPolicyNotFoundFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -132,7 +132,7 @@ export class BackupPolicyNotFoundFault
     ),
   ).pipe(C.withBadRequestError) {}
 export class BlueGreenDeploymentAlreadyExistsFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<BlueGreenDeploymentAlreadyExistsFault>()(
+  extends /*@__PURE__*/ S.TaggedError<BlueGreenDeploymentAlreadyExistsFault>()(
     "BlueGreenDeploymentAlreadyExistsFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -144,7 +144,7 @@ export class BlueGreenDeploymentAlreadyExistsFault
     ),
   ).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
 export class BlueGreenDeploymentNotFoundFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<BlueGreenDeploymentNotFoundFault>()(
+  extends /*@__PURE__*/ S.TaggedError<BlueGreenDeploymentNotFoundFault>()(
     "BlueGreenDeploymentNotFoundFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -156,7 +156,7 @@ export class BlueGreenDeploymentNotFoundFault
     ),
   ).pipe(C.withBadRequestError) {}
 export class CertificateNotFoundFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<CertificateNotFoundFault>()(
+  extends /*@__PURE__*/ S.TaggedError<CertificateNotFoundFault>()(
     "CertificateNotFoundFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -165,7 +165,7 @@ export class CertificateNotFoundFault
     ),
   ).pipe(C.withBadRequestError) {}
 export class CreateCustomDBEngineVersionFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<CreateCustomDBEngineVersionFault>()(
+  extends /*@__PURE__*/ S.TaggedError<CreateCustomDBEngineVersionFault>()(
     "CreateCustomDBEngineVersionFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -177,7 +177,7 @@ export class CreateCustomDBEngineVersionFault
     ),
   ).pipe(C.withBadRequestError) {}
 export class CustomAvailabilityZoneNotFoundFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<CustomAvailabilityZoneNotFoundFault>()(
+  extends /*@__PURE__*/ S.TaggedError<CustomAvailabilityZoneNotFoundFault>()(
     "CustomAvailabilityZoneNotFoundFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -189,7 +189,7 @@ export class CustomAvailabilityZoneNotFoundFault
     ),
   ).pipe(C.withBadRequestError) {}
 export class CustomDBEngineVersionAlreadyExistsFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<CustomDBEngineVersionAlreadyExistsFault>()(
+  extends /*@__PURE__*/ S.TaggedError<CustomDBEngineVersionAlreadyExistsFault>()(
     "CustomDBEngineVersionAlreadyExistsFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -201,7 +201,7 @@ export class CustomDBEngineVersionAlreadyExistsFault
     ),
   ).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
 export class CustomDBEngineVersionNotFoundFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<CustomDBEngineVersionNotFoundFault>()(
+  extends /*@__PURE__*/ S.TaggedError<CustomDBEngineVersionNotFoundFault>()(
     "CustomDBEngineVersionNotFoundFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -213,7 +213,7 @@ export class CustomDBEngineVersionNotFoundFault
     ),
   ).pipe(C.withBadRequestError) {}
 export class CustomDBEngineVersionQuotaExceededFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<CustomDBEngineVersionQuotaExceededFault>()(
+  extends /*@__PURE__*/ S.TaggedError<CustomDBEngineVersionQuotaExceededFault>()(
     "CustomDBEngineVersionQuotaExceededFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -225,7 +225,7 @@ export class CustomDBEngineVersionQuotaExceededFault
     ),
   ).pipe(C.withBadRequestError) {}
 export class DBClusterAlreadyExistsFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<DBClusterAlreadyExistsFault>()(
+  extends /*@__PURE__*/ S.TaggedError<DBClusterAlreadyExistsFault>()(
     "DBClusterAlreadyExistsFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -241,7 +241,7 @@ export class DBClusterAlreadyExistsFault
     C.withAlreadyExistsError,
   ) {}
 export class DBClusterAutomatedBackupNotFoundFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<DBClusterAutomatedBackupNotFoundFault>()(
+  extends /*@__PURE__*/ S.TaggedError<DBClusterAutomatedBackupNotFoundFault>()(
     "DBClusterAutomatedBackupNotFoundFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -253,7 +253,7 @@ export class DBClusterAutomatedBackupNotFoundFault
     ),
   ).pipe(C.withBadRequestError) {}
 export class DBClusterAutomatedBackupQuotaExceededFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<DBClusterAutomatedBackupQuotaExceededFault>()(
+  extends /*@__PURE__*/ S.TaggedError<DBClusterAutomatedBackupQuotaExceededFault>()(
     "DBClusterAutomatedBackupQuotaExceededFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -265,7 +265,7 @@ export class DBClusterAutomatedBackupQuotaExceededFault
     ),
   ).pipe(C.withBadRequestError) {}
 export class DBClusterBacktrackNotFoundFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<DBClusterBacktrackNotFoundFault>()(
+  extends /*@__PURE__*/ S.TaggedError<DBClusterBacktrackNotFoundFault>()(
     "DBClusterBacktrackNotFoundFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -277,7 +277,7 @@ export class DBClusterBacktrackNotFoundFault
     ),
   ).pipe(C.withBadRequestError) {}
 export class DBClusterEndpointAlreadyExistsFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<DBClusterEndpointAlreadyExistsFault>()(
+  extends /*@__PURE__*/ S.TaggedError<DBClusterEndpointAlreadyExistsFault>()(
     "DBClusterEndpointAlreadyExistsFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -289,7 +289,7 @@ export class DBClusterEndpointAlreadyExistsFault
     ),
   ).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
 export class DBClusterEndpointNotFoundFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<DBClusterEndpointNotFoundFault>()(
+  extends /*@__PURE__*/ S.TaggedError<DBClusterEndpointNotFoundFault>()(
     "DBClusterEndpointNotFoundFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -301,7 +301,7 @@ export class DBClusterEndpointNotFoundFault
     ),
   ).pipe(C.withBadRequestError) {}
 export class DBClusterEndpointQuotaExceededFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<DBClusterEndpointQuotaExceededFault>()(
+  extends /*@__PURE__*/ S.TaggedError<DBClusterEndpointQuotaExceededFault>()(
     "DBClusterEndpointQuotaExceededFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -313,7 +313,7 @@ export class DBClusterEndpointQuotaExceededFault
     ),
   ).pipe(C.withAuthError) {}
 export class DBClusterNotFoundFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<DBClusterNotFoundFault>()(
+  extends /*@__PURE__*/ S.TaggedError<DBClusterNotFoundFault>()(
     "DBClusterNotFoundFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -325,7 +325,7 @@ export class DBClusterNotFoundFault
     ),
   ).pipe(C.withBadRequestError, C.withNotFoundError) {}
 export class DBClusterParameterGroupNotFoundFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<DBClusterParameterGroupNotFoundFault>()(
+  extends /*@__PURE__*/ S.TaggedError<DBClusterParameterGroupNotFoundFault>()(
     "DBClusterParameterGroupNotFoundFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -337,7 +337,7 @@ export class DBClusterParameterGroupNotFoundFault
     ),
   ).pipe(C.withBadRequestError) {}
 export class DBClusterQuotaExceededFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<DBClusterQuotaExceededFault>()(
+  extends /*@__PURE__*/ S.TaggedError<DBClusterQuotaExceededFault>()(
     "DBClusterQuotaExceededFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -349,7 +349,7 @@ export class DBClusterQuotaExceededFault
     ),
   ).pipe(C.withAuthError, C.withQuotaError) {}
 export class DBClusterRoleAlreadyExistsFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<DBClusterRoleAlreadyExistsFault>()(
+  extends /*@__PURE__*/ S.TaggedError<DBClusterRoleAlreadyExistsFault>()(
     "DBClusterRoleAlreadyExistsFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -361,7 +361,7 @@ export class DBClusterRoleAlreadyExistsFault
     ),
   ).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
 export class DBClusterRoleNotFoundFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<DBClusterRoleNotFoundFault>()(
+  extends /*@__PURE__*/ S.TaggedError<DBClusterRoleNotFoundFault>()(
     "DBClusterRoleNotFoundFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -370,7 +370,7 @@ export class DBClusterRoleNotFoundFault
     ),
   ).pipe(C.withBadRequestError) {}
 export class DBClusterRoleQuotaExceededFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<DBClusterRoleQuotaExceededFault>()(
+  extends /*@__PURE__*/ S.TaggedError<DBClusterRoleQuotaExceededFault>()(
     "DBClusterRoleQuotaExceededFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -382,7 +382,7 @@ export class DBClusterRoleQuotaExceededFault
     ),
   ).pipe(C.withBadRequestError) {}
 export class DBClusterSnapshotAlreadyExistsFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<DBClusterSnapshotAlreadyExistsFault>()(
+  extends /*@__PURE__*/ S.TaggedError<DBClusterSnapshotAlreadyExistsFault>()(
     "DBClusterSnapshotAlreadyExistsFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -394,7 +394,7 @@ export class DBClusterSnapshotAlreadyExistsFault
     ),
   ).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
 export class DBClusterSnapshotNotFoundFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<DBClusterSnapshotNotFoundFault>()(
+  extends /*@__PURE__*/ S.TaggedError<DBClusterSnapshotNotFoundFault>()(
     "DBClusterSnapshotNotFoundFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -406,7 +406,7 @@ export class DBClusterSnapshotNotFoundFault
     ),
   ).pipe(C.withBadRequestError) {}
 export class DBInstanceAlreadyExistsFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<DBInstanceAlreadyExistsFault>()(
+  extends /*@__PURE__*/ S.TaggedError<DBInstanceAlreadyExistsFault>()(
     "DBInstanceAlreadyExistsFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -418,7 +418,7 @@ export class DBInstanceAlreadyExistsFault
     ),
   ).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
 export class DBInstanceAutomatedBackupNotFoundFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<DBInstanceAutomatedBackupNotFoundFault>()(
+  extends /*@__PURE__*/ S.TaggedError<DBInstanceAutomatedBackupNotFoundFault>()(
     "DBInstanceAutomatedBackupNotFoundFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -430,7 +430,7 @@ export class DBInstanceAutomatedBackupNotFoundFault
     ),
   ).pipe(C.withBadRequestError) {}
 export class DBInstanceAutomatedBackupQuotaExceededFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<DBInstanceAutomatedBackupQuotaExceededFault>()(
+  extends /*@__PURE__*/ S.TaggedError<DBInstanceAutomatedBackupQuotaExceededFault>()(
     "DBInstanceAutomatedBackupQuotaExceededFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -442,7 +442,7 @@ export class DBInstanceAutomatedBackupQuotaExceededFault
     ),
   ).pipe(C.withBadRequestError) {}
 export class DBInstanceNotFoundFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<DBInstanceNotFoundFault>()(
+  extends /*@__PURE__*/ S.TaggedError<DBInstanceNotFoundFault>()(
     "DBInstanceNotFoundFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -451,7 +451,7 @@ export class DBInstanceNotFoundFault
     ),
   ).pipe(C.withBadRequestError) {}
 export class DBInstanceNotReadyFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<DBInstanceNotReadyFault>()(
+  extends /*@__PURE__*/ S.TaggedError<DBInstanceNotReadyFault>()(
     "DBInstanceNotReadyFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -460,7 +460,7 @@ export class DBInstanceNotReadyFault
     ),
   ).pipe(C.withBadRequestError) {}
 export class DBInstanceRoleAlreadyExistsFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<DBInstanceRoleAlreadyExistsFault>()(
+  extends /*@__PURE__*/ S.TaggedError<DBInstanceRoleAlreadyExistsFault>()(
     "DBInstanceRoleAlreadyExistsFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -472,7 +472,7 @@ export class DBInstanceRoleAlreadyExistsFault
     ),
   ).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
 export class DBInstanceRoleNotFoundFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<DBInstanceRoleNotFoundFault>()(
+  extends /*@__PURE__*/ S.TaggedError<DBInstanceRoleNotFoundFault>()(
     "DBInstanceRoleNotFoundFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -484,7 +484,7 @@ export class DBInstanceRoleNotFoundFault
     ),
   ).pipe(C.withBadRequestError) {}
 export class DBInstanceRoleQuotaExceededFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<DBInstanceRoleQuotaExceededFault>()(
+  extends /*@__PURE__*/ S.TaggedError<DBInstanceRoleQuotaExceededFault>()(
     "DBInstanceRoleQuotaExceededFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -496,7 +496,7 @@ export class DBInstanceRoleQuotaExceededFault
     ),
   ).pipe(C.withBadRequestError) {}
 export class DBLogFileNotFoundFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<DBLogFileNotFoundFault>()(
+  extends /*@__PURE__*/ S.TaggedError<DBLogFileNotFoundFault>()(
     "DBLogFileNotFoundFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -508,7 +508,7 @@ export class DBLogFileNotFoundFault
     ),
   ).pipe(C.withBadRequestError) {}
 export class DBParameterGroupAlreadyExistsFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<DBParameterGroupAlreadyExistsFault>()(
+  extends /*@__PURE__*/ S.TaggedError<DBParameterGroupAlreadyExistsFault>()(
     "DBParameterGroupAlreadyExistsFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -520,7 +520,7 @@ export class DBParameterGroupAlreadyExistsFault
     ),
   ).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
 export class DBParameterGroupNotFoundFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<DBParameterGroupNotFoundFault>()(
+  extends /*@__PURE__*/ S.TaggedError<DBParameterGroupNotFoundFault>()(
     "DBParameterGroupNotFoundFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -532,7 +532,7 @@ export class DBParameterGroupNotFoundFault
     ),
   ).pipe(C.withBadRequestError, C.withNotFoundError) {}
 export class DBParameterGroupQuotaExceededFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<DBParameterGroupQuotaExceededFault>()(
+  extends /*@__PURE__*/ S.TaggedError<DBParameterGroupQuotaExceededFault>()(
     "DBParameterGroupQuotaExceededFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -544,7 +544,7 @@ export class DBParameterGroupQuotaExceededFault
     ),
   ).pipe(C.withBadRequestError) {}
 export class DBProxyAlreadyExistsFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<DBProxyAlreadyExistsFault>()(
+  extends /*@__PURE__*/ S.TaggedError<DBProxyAlreadyExistsFault>()(
     "DBProxyAlreadyExistsFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -556,7 +556,7 @@ export class DBProxyAlreadyExistsFault
     ),
   ).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
 export class DBProxyEndpointAlreadyExistsFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<DBProxyEndpointAlreadyExistsFault>()(
+  extends /*@__PURE__*/ S.TaggedError<DBProxyEndpointAlreadyExistsFault>()(
     "DBProxyEndpointAlreadyExistsFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -568,7 +568,7 @@ export class DBProxyEndpointAlreadyExistsFault
     ),
   ).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
 export class DBProxyEndpointNotFoundFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<DBProxyEndpointNotFoundFault>()(
+  extends /*@__PURE__*/ S.TaggedError<DBProxyEndpointNotFoundFault>()(
     "DBProxyEndpointNotFoundFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -580,7 +580,7 @@ export class DBProxyEndpointNotFoundFault
     ),
   ).pipe(C.withBadRequestError) {}
 export class DBProxyEndpointQuotaExceededFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<DBProxyEndpointQuotaExceededFault>()(
+  extends /*@__PURE__*/ S.TaggedError<DBProxyEndpointQuotaExceededFault>()(
     "DBProxyEndpointQuotaExceededFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -592,7 +592,7 @@ export class DBProxyEndpointQuotaExceededFault
     ),
   ).pipe(C.withBadRequestError) {}
 export class DBProxyNotFoundFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<DBProxyNotFoundFault>()(
+  extends /*@__PURE__*/ S.TaggedError<DBProxyNotFoundFault>()(
     "DBProxyNotFoundFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -601,7 +601,7 @@ export class DBProxyNotFoundFault
     ),
   ).pipe(C.withBadRequestError) {}
 export class DBProxyQuotaExceededFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<DBProxyQuotaExceededFault>()(
+  extends /*@__PURE__*/ S.TaggedError<DBProxyQuotaExceededFault>()(
     "DBProxyQuotaExceededFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -613,7 +613,7 @@ export class DBProxyQuotaExceededFault
     ),
   ).pipe(C.withBadRequestError) {}
 export class DBProxyTargetAlreadyRegisteredFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<DBProxyTargetAlreadyRegisteredFault>()(
+  extends /*@__PURE__*/ S.TaggedError<DBProxyTargetAlreadyRegisteredFault>()(
     "DBProxyTargetAlreadyRegisteredFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -625,7 +625,7 @@ export class DBProxyTargetAlreadyRegisteredFault
     ),
   ).pipe(C.withBadRequestError) {}
 export class DBProxyTargetGroupNotFoundFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<DBProxyTargetGroupNotFoundFault>()(
+  extends /*@__PURE__*/ S.TaggedError<DBProxyTargetGroupNotFoundFault>()(
     "DBProxyTargetGroupNotFoundFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -637,7 +637,7 @@ export class DBProxyTargetGroupNotFoundFault
     ),
   ).pipe(C.withBadRequestError) {}
 export class DBProxyTargetNotFoundFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<DBProxyTargetNotFoundFault>()(
+  extends /*@__PURE__*/ S.TaggedError<DBProxyTargetNotFoundFault>()(
     "DBProxyTargetNotFoundFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -649,7 +649,7 @@ export class DBProxyTargetNotFoundFault
     ),
   ).pipe(C.withBadRequestError) {}
 export class DBSecurityGroupAlreadyExistsFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<DBSecurityGroupAlreadyExistsFault>()(
+  extends /*@__PURE__*/ S.TaggedError<DBSecurityGroupAlreadyExistsFault>()(
     "DBSecurityGroupAlreadyExistsFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -661,7 +661,7 @@ export class DBSecurityGroupAlreadyExistsFault
     ),
   ).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
 export class DBSecurityGroupNotFoundFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<DBSecurityGroupNotFoundFault>()(
+  extends /*@__PURE__*/ S.TaggedError<DBSecurityGroupNotFoundFault>()(
     "DBSecurityGroupNotFoundFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -673,7 +673,7 @@ export class DBSecurityGroupNotFoundFault
     ),
   ).pipe(C.withBadRequestError, C.withNotFoundError) {}
 export class DBSecurityGroupNotSupportedFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<DBSecurityGroupNotSupportedFault>()(
+  extends /*@__PURE__*/ S.TaggedError<DBSecurityGroupNotSupportedFault>()(
     "DBSecurityGroupNotSupportedFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -685,7 +685,7 @@ export class DBSecurityGroupNotSupportedFault
     ),
   ).pipe(C.withBadRequestError) {}
 export class DBSecurityGroupQuotaExceededFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<DBSecurityGroupQuotaExceededFault>()(
+  extends /*@__PURE__*/ S.TaggedError<DBSecurityGroupQuotaExceededFault>()(
     "DBSecurityGroupQuotaExceededFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -697,7 +697,7 @@ export class DBSecurityGroupQuotaExceededFault
     ),
   ).pipe(C.withBadRequestError) {}
 export class DBShardGroupAlreadyExistsFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<DBShardGroupAlreadyExistsFault>()(
+  extends /*@__PURE__*/ S.TaggedError<DBShardGroupAlreadyExistsFault>()(
     "DBShardGroupAlreadyExistsFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -709,7 +709,7 @@ export class DBShardGroupAlreadyExistsFault
     ),
   ).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
 export class DBShardGroupNotFoundFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<DBShardGroupNotFoundFault>()(
+  extends /*@__PURE__*/ S.TaggedError<DBShardGroupNotFoundFault>()(
     "DBShardGroupNotFoundFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -718,7 +718,7 @@ export class DBShardGroupNotFoundFault
     ),
   ).pipe(C.withBadRequestError) {}
 export class DBSnapshotAlreadyExistsFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<DBSnapshotAlreadyExistsFault>()(
+  extends /*@__PURE__*/ S.TaggedError<DBSnapshotAlreadyExistsFault>()(
     "DBSnapshotAlreadyExistsFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -730,7 +730,7 @@ export class DBSnapshotAlreadyExistsFault
     ),
   ).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
 export class DBSnapshotNotFoundFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<DBSnapshotNotFoundFault>()(
+  extends /*@__PURE__*/ S.TaggedError<DBSnapshotNotFoundFault>()(
     "DBSnapshotNotFoundFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -739,7 +739,7 @@ export class DBSnapshotNotFoundFault
     ),
   ).pipe(C.withBadRequestError) {}
 export class DBSnapshotTenantDatabaseNotFoundFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<DBSnapshotTenantDatabaseNotFoundFault>()(
+  extends /*@__PURE__*/ S.TaggedError<DBSnapshotTenantDatabaseNotFoundFault>()(
     "DBSnapshotTenantDatabaseNotFoundFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -751,7 +751,7 @@ export class DBSnapshotTenantDatabaseNotFoundFault
     ),
   ).pipe(C.withBadRequestError) {}
 export class DBSubnetGroupAlreadyExistsFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<DBSubnetGroupAlreadyExistsFault>()(
+  extends /*@__PURE__*/ S.TaggedError<DBSubnetGroupAlreadyExistsFault>()(
     "DBSubnetGroupAlreadyExistsFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -763,7 +763,7 @@ export class DBSubnetGroupAlreadyExistsFault
     ),
   ).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
 export class DBSubnetGroupDoesNotCoverEnoughAZs
-  extends /*@__PURE__*/ S.TaggedErrorClass<DBSubnetGroupDoesNotCoverEnoughAZs>()(
+  extends /*@__PURE__*/ S.TaggedError<DBSubnetGroupDoesNotCoverEnoughAZs>()(
     "DBSubnetGroupDoesNotCoverEnoughAZs",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -775,7 +775,7 @@ export class DBSubnetGroupDoesNotCoverEnoughAZs
     ),
   ).pipe(C.withBadRequestError) {}
 export class DBSubnetGroupNotAllowedFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<DBSubnetGroupNotAllowedFault>()(
+  extends /*@__PURE__*/ S.TaggedError<DBSubnetGroupNotAllowedFault>()(
     "DBSubnetGroupNotAllowedFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -787,7 +787,7 @@ export class DBSubnetGroupNotAllowedFault
     ),
   ).pipe(C.withBadRequestError) {}
 export class DBSubnetGroupNotFoundFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<DBSubnetGroupNotFoundFault>()(
+  extends /*@__PURE__*/ S.TaggedError<DBSubnetGroupNotFoundFault>()(
     "DBSubnetGroupNotFoundFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -799,7 +799,7 @@ export class DBSubnetGroupNotFoundFault
     ),
   ).pipe(C.withBadRequestError, C.withNotFoundError) {}
 export class DBSubnetGroupQuotaExceededFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<DBSubnetGroupQuotaExceededFault>()(
+  extends /*@__PURE__*/ S.TaggedError<DBSubnetGroupQuotaExceededFault>()(
     "DBSubnetGroupQuotaExceededFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -811,7 +811,7 @@ export class DBSubnetGroupQuotaExceededFault
     ),
   ).pipe(C.withBadRequestError, C.withQuotaError) {}
 export class DBSubnetQuotaExceededFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<DBSubnetQuotaExceededFault>()(
+  extends /*@__PURE__*/ S.TaggedError<DBSubnetQuotaExceededFault>()(
     "DBSubnetQuotaExceededFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -823,7 +823,7 @@ export class DBSubnetQuotaExceededFault
     ),
   ).pipe(C.withBadRequestError) {}
 export class DBUpgradeDependencyFailureFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<DBUpgradeDependencyFailureFault>()(
+  extends /*@__PURE__*/ S.TaggedError<DBUpgradeDependencyFailureFault>()(
     "DBUpgradeDependencyFailureFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -835,7 +835,7 @@ export class DBUpgradeDependencyFailureFault
     ),
   ).pipe(C.withBadRequestError) {}
 export class DomainNotFoundFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<DomainNotFoundFault>()(
+  extends /*@__PURE__*/ S.TaggedError<DomainNotFoundFault>()(
     "DomainNotFoundFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -844,7 +844,7 @@ export class DomainNotFoundFault
     ),
   ).pipe(C.withBadRequestError) {}
 export class Ec2ImagePropertiesNotSupportedFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<Ec2ImagePropertiesNotSupportedFault>()(
+  extends /*@__PURE__*/ S.TaggedError<Ec2ImagePropertiesNotSupportedFault>()(
     "Ec2ImagePropertiesNotSupportedFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -856,7 +856,7 @@ export class Ec2ImagePropertiesNotSupportedFault
     ),
   ).pipe(C.withBadRequestError) {}
 export class EventSubscriptionQuotaExceededFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<EventSubscriptionQuotaExceededFault>()(
+  extends /*@__PURE__*/ S.TaggedError<EventSubscriptionQuotaExceededFault>()(
     "EventSubscriptionQuotaExceededFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -868,7 +868,7 @@ export class EventSubscriptionQuotaExceededFault
     ),
   ).pipe(C.withBadRequestError) {}
 export class ExportTaskAlreadyExistsFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<ExportTaskAlreadyExistsFault>()(
+  extends /*@__PURE__*/ S.TaggedError<ExportTaskAlreadyExistsFault>()(
     "ExportTaskAlreadyExistsFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -880,7 +880,7 @@ export class ExportTaskAlreadyExistsFault
     ),
   ).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
 export class ExportTaskNotFoundFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<ExportTaskNotFoundFault>()(
+  extends /*@__PURE__*/ S.TaggedError<ExportTaskNotFoundFault>()(
     "ExportTaskNotFoundFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -889,7 +889,7 @@ export class ExportTaskNotFoundFault
     ),
   ).pipe(C.withBadRequestError) {}
 export class GlobalClusterAlreadyExistsFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<GlobalClusterAlreadyExistsFault>()(
+  extends /*@__PURE__*/ S.TaggedError<GlobalClusterAlreadyExistsFault>()(
     "GlobalClusterAlreadyExistsFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -901,7 +901,7 @@ export class GlobalClusterAlreadyExistsFault
     ),
   ).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
 export class GlobalClusterNotFoundFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<GlobalClusterNotFoundFault>()(
+  extends /*@__PURE__*/ S.TaggedError<GlobalClusterNotFoundFault>()(
     "GlobalClusterNotFoundFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -913,7 +913,7 @@ export class GlobalClusterNotFoundFault
     ),
   ).pipe(C.withBadRequestError) {}
 export class GlobalClusterQuotaExceededFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<GlobalClusterQuotaExceededFault>()(
+  extends /*@__PURE__*/ S.TaggedError<GlobalClusterQuotaExceededFault>()(
     "GlobalClusterQuotaExceededFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -925,7 +925,7 @@ export class GlobalClusterQuotaExceededFault
     ),
   ).pipe(C.withBadRequestError) {}
 export class IamRoleMissingPermissionsFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<IamRoleMissingPermissionsFault>()(
+  extends /*@__PURE__*/ S.TaggedError<IamRoleMissingPermissionsFault>()(
     "IamRoleMissingPermissionsFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -937,7 +937,7 @@ export class IamRoleMissingPermissionsFault
     ),
   ).pipe(C.withBadRequestError) {}
 export class IamRoleNotFoundFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<IamRoleNotFoundFault>()(
+  extends /*@__PURE__*/ S.TaggedError<IamRoleNotFoundFault>()(
     "IamRoleNotFoundFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -946,7 +946,7 @@ export class IamRoleNotFoundFault
     ),
   ).pipe(C.withBadRequestError) {}
 export class InstanceQuotaExceededFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<InstanceQuotaExceededFault>()(
+  extends /*@__PURE__*/ S.TaggedError<InstanceQuotaExceededFault>()(
     "InstanceQuotaExceededFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -955,7 +955,7 @@ export class InstanceQuotaExceededFault
     ),
   ).pipe(C.withBadRequestError) {}
 export class InsufficientAvailableIPsInSubnetFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<InsufficientAvailableIPsInSubnetFault>()(
+  extends /*@__PURE__*/ S.TaggedError<InsufficientAvailableIPsInSubnetFault>()(
     "InsufficientAvailableIPsInSubnetFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -967,7 +967,7 @@ export class InsufficientAvailableIPsInSubnetFault
     ),
   ).pipe(C.withBadRequestError) {}
 export class InsufficientDBClusterCapacityFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<InsufficientDBClusterCapacityFault>()(
+  extends /*@__PURE__*/ S.TaggedError<InsufficientDBClusterCapacityFault>()(
     "InsufficientDBClusterCapacityFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -979,7 +979,7 @@ export class InsufficientDBClusterCapacityFault
     ),
   ).pipe(C.withAuthError, C.withQuotaError) {}
 export class InsufficientDBInstanceCapacityFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<InsufficientDBInstanceCapacityFault>()(
+  extends /*@__PURE__*/ S.TaggedError<InsufficientDBInstanceCapacityFault>()(
     "InsufficientDBInstanceCapacityFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -991,7 +991,7 @@ export class InsufficientDBInstanceCapacityFault
     ),
   ).pipe(C.withBadRequestError) {}
 export class InsufficientStorageClusterCapacityFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<InsufficientStorageClusterCapacityFault>()(
+  extends /*@__PURE__*/ S.TaggedError<InsufficientStorageClusterCapacityFault>()(
     "InsufficientStorageClusterCapacityFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -1003,7 +1003,7 @@ export class InsufficientStorageClusterCapacityFault
     ),
   ).pipe(C.withBadRequestError) {}
 export class IntegrationAlreadyExistsFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<IntegrationAlreadyExistsFault>()(
+  extends /*@__PURE__*/ S.TaggedError<IntegrationAlreadyExistsFault>()(
     "IntegrationAlreadyExistsFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -1015,7 +1015,7 @@ export class IntegrationAlreadyExistsFault
     ),
   ).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
 export class IntegrationConflictOperationFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<IntegrationConflictOperationFault>()(
+  extends /*@__PURE__*/ S.TaggedError<IntegrationConflictOperationFault>()(
     "IntegrationConflictOperationFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -1027,7 +1027,7 @@ export class IntegrationConflictOperationFault
     ),
   ).pipe(C.withBadRequestError) {}
 export class IntegrationNotFoundFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<IntegrationNotFoundFault>()(
+  extends /*@__PURE__*/ S.TaggedError<IntegrationNotFoundFault>()(
     "IntegrationNotFoundFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -1039,7 +1039,7 @@ export class IntegrationNotFoundFault
     ),
   ).pipe(C.withBadRequestError) {}
 export class IntegrationQuotaExceededFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<IntegrationQuotaExceededFault>()(
+  extends /*@__PURE__*/ S.TaggedError<IntegrationQuotaExceededFault>()(
     "IntegrationQuotaExceededFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -1051,7 +1051,7 @@ export class IntegrationQuotaExceededFault
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidBlueGreenDeploymentStateFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidBlueGreenDeploymentStateFault>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidBlueGreenDeploymentStateFault>()(
     "InvalidBlueGreenDeploymentStateFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -1063,7 +1063,7 @@ export class InvalidBlueGreenDeploymentStateFault
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidCustomDBEngineVersionStateFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidCustomDBEngineVersionStateFault>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidCustomDBEngineVersionStateFault>()(
     "InvalidCustomDBEngineVersionStateFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -1075,7 +1075,7 @@ export class InvalidCustomDBEngineVersionStateFault
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidDBClusterAutomatedBackupStateFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidDBClusterAutomatedBackupStateFault>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidDBClusterAutomatedBackupStateFault>()(
     "InvalidDBClusterAutomatedBackupStateFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -1087,7 +1087,7 @@ export class InvalidDBClusterAutomatedBackupStateFault
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidDBClusterCapacityFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidDBClusterCapacityFault>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidDBClusterCapacityFault>()(
     "InvalidDBClusterCapacityFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -1099,7 +1099,7 @@ export class InvalidDBClusterCapacityFault
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidDBClusterEndpointStateFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidDBClusterEndpointStateFault>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidDBClusterEndpointStateFault>()(
     "InvalidDBClusterEndpointStateFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -1111,7 +1111,7 @@ export class InvalidDBClusterEndpointStateFault
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidDBClusterSnapshotStateFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidDBClusterSnapshotStateFault>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidDBClusterSnapshotStateFault>()(
     "InvalidDBClusterSnapshotStateFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -1123,7 +1123,7 @@ export class InvalidDBClusterSnapshotStateFault
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidDBClusterStateFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidDBClusterStateFault>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidDBClusterStateFault>()(
     "InvalidDBClusterStateFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -1135,7 +1135,7 @@ export class InvalidDBClusterStateFault
     ),
   ).pipe(C.withBadRequestError, C.withConflictError, C.withRetryableError) {}
 export class InvalidDBInstanceAutomatedBackupStateFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidDBInstanceAutomatedBackupStateFault>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidDBInstanceAutomatedBackupStateFault>()(
     "InvalidDBInstanceAutomatedBackupStateFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -1147,7 +1147,7 @@ export class InvalidDBInstanceAutomatedBackupStateFault
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidDBInstanceStateFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidDBInstanceStateFault>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidDBInstanceStateFault>()(
     "InvalidDBInstanceStateFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -1159,7 +1159,7 @@ export class InvalidDBInstanceStateFault
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidDBParameterGroupStateFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidDBParameterGroupStateFault>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidDBParameterGroupStateFault>()(
     "InvalidDBParameterGroupStateFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -1171,7 +1171,7 @@ export class InvalidDBParameterGroupStateFault
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidDBProxyEndpointStateFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidDBProxyEndpointStateFault>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidDBProxyEndpointStateFault>()(
     "InvalidDBProxyEndpointStateFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -1183,7 +1183,7 @@ export class InvalidDBProxyEndpointStateFault
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidDBProxyStateFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidDBProxyStateFault>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidDBProxyStateFault>()(
     "InvalidDBProxyStateFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -1195,7 +1195,7 @@ export class InvalidDBProxyStateFault
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidDBSecurityGroupStateFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidDBSecurityGroupStateFault>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidDBSecurityGroupStateFault>()(
     "InvalidDBSecurityGroupStateFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -1207,7 +1207,7 @@ export class InvalidDBSecurityGroupStateFault
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidDBShardGroupStateFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidDBShardGroupStateFault>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidDBShardGroupStateFault>()(
     "InvalidDBShardGroupStateFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -1219,7 +1219,7 @@ export class InvalidDBShardGroupStateFault
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidDBSnapshotStateFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidDBSnapshotStateFault>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidDBSnapshotStateFault>()(
     "InvalidDBSnapshotStateFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -1231,7 +1231,7 @@ export class InvalidDBSnapshotStateFault
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidDBSubnetGroupFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidDBSubnetGroupFault>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidDBSubnetGroupFault>()(
     "InvalidDBSubnetGroupFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -1243,7 +1243,7 @@ export class InvalidDBSubnetGroupFault
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidDBSubnetGroupStateFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidDBSubnetGroupStateFault>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidDBSubnetGroupStateFault>()(
     "InvalidDBSubnetGroupStateFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -1255,7 +1255,7 @@ export class InvalidDBSubnetGroupStateFault
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidDBSubnetStateFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidDBSubnetStateFault>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidDBSubnetStateFault>()(
     "InvalidDBSubnetStateFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -1267,7 +1267,7 @@ export class InvalidDBSubnetStateFault
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidEventSubscriptionStateFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidEventSubscriptionStateFault>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidEventSubscriptionStateFault>()(
     "InvalidEventSubscriptionStateFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -1279,7 +1279,7 @@ export class InvalidEventSubscriptionStateFault
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidExportOnlyFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidExportOnlyFault>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidExportOnlyFault>()(
     "InvalidExportOnlyFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -1288,7 +1288,7 @@ export class InvalidExportOnlyFault
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidExportSourceStateFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidExportSourceStateFault>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidExportSourceStateFault>()(
     "InvalidExportSourceStateFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -1300,7 +1300,7 @@ export class InvalidExportSourceStateFault
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidExportTaskStateFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidExportTaskStateFault>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidExportTaskStateFault>()(
     "InvalidExportTaskStateFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -1312,7 +1312,7 @@ export class InvalidExportTaskStateFault
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidGlobalClusterStateFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidGlobalClusterStateFault>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidGlobalClusterStateFault>()(
     "InvalidGlobalClusterStateFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -1324,7 +1324,7 @@ export class InvalidGlobalClusterStateFault
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidIntegrationStateFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidIntegrationStateFault>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidIntegrationStateFault>()(
     "InvalidIntegrationStateFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -1336,7 +1336,7 @@ export class InvalidIntegrationStateFault
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidOptionGroupStateFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidOptionGroupStateFault>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidOptionGroupStateFault>()(
     "InvalidOptionGroupStateFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -1348,17 +1348,17 @@ export class InvalidOptionGroupStateFault
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidParameterCombination
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidParameterCombination>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidParameterCombination>()(
     "InvalidParameterCombination",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withBadRequestError) {}
 export class InvalidParameterValue
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidParameterValue>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidParameterValue>()(
     "InvalidParameterValue",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withBadRequestError) {}
 export class InvalidResourceStateFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidResourceStateFault>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidResourceStateFault>()(
     "InvalidResourceStateFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -1370,7 +1370,7 @@ export class InvalidResourceStateFault
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidRestoreFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidRestoreFault>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidRestoreFault>()(
     "InvalidRestoreFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -1379,7 +1379,7 @@ export class InvalidRestoreFault
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidS3BucketFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidS3BucketFault>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidS3BucketFault>()(
     "InvalidS3BucketFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -1388,7 +1388,7 @@ export class InvalidS3BucketFault
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidSubnet
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidSubnet>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidSubnet>()(
     "InvalidSubnet",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -1397,7 +1397,7 @@ export class InvalidSubnet
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidVPCNetworkStateFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidVPCNetworkStateFault>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidVPCNetworkStateFault>()(
     "InvalidVPCNetworkStateFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -1409,7 +1409,7 @@ export class InvalidVPCNetworkStateFault
     ),
   ).pipe(C.withBadRequestError) {}
 export class KMSKeyNotAccessibleFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<KMSKeyNotAccessibleFault>()(
+  extends /*@__PURE__*/ S.TaggedError<KMSKeyNotAccessibleFault>()(
     "KMSKeyNotAccessibleFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -1421,7 +1421,7 @@ export class KMSKeyNotAccessibleFault
     ),
   ).pipe(C.withBadRequestError) {}
 export class MaxDBShardGroupLimitReached
-  extends /*@__PURE__*/ S.TaggedErrorClass<MaxDBShardGroupLimitReached>()(
+  extends /*@__PURE__*/ S.TaggedError<MaxDBShardGroupLimitReached>()(
     "MaxDBShardGroupLimitReached",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -1433,7 +1433,7 @@ export class MaxDBShardGroupLimitReached
     ),
   ).pipe(C.withBadRequestError) {}
 export class NetworkTypeNotSupported
-  extends /*@__PURE__*/ S.TaggedErrorClass<NetworkTypeNotSupported>()(
+  extends /*@__PURE__*/ S.TaggedError<NetworkTypeNotSupported>()(
     "NetworkTypeNotSupported",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -1445,7 +1445,7 @@ export class NetworkTypeNotSupported
     ),
   ).pipe(C.withBadRequestError) {}
 export class OptionGroupAlreadyExistsFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<OptionGroupAlreadyExistsFault>()(
+  extends /*@__PURE__*/ S.TaggedError<OptionGroupAlreadyExistsFault>()(
     "OptionGroupAlreadyExistsFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -1457,7 +1457,7 @@ export class OptionGroupAlreadyExistsFault
     ),
   ).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
 export class OptionGroupNotFoundFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<OptionGroupNotFoundFault>()(
+  extends /*@__PURE__*/ S.TaggedError<OptionGroupNotFoundFault>()(
     "OptionGroupNotFoundFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -1469,7 +1469,7 @@ export class OptionGroupNotFoundFault
     ),
   ).pipe(C.withBadRequestError) {}
 export class OptionGroupQuotaExceededFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<OptionGroupQuotaExceededFault>()(
+  extends /*@__PURE__*/ S.TaggedError<OptionGroupQuotaExceededFault>()(
     "OptionGroupQuotaExceededFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -1481,7 +1481,7 @@ export class OptionGroupQuotaExceededFault
     ),
   ).pipe(C.withBadRequestError) {}
 export class PointInTimeRestoreNotEnabledFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<PointInTimeRestoreNotEnabledFault>()(
+  extends /*@__PURE__*/ S.TaggedError<PointInTimeRestoreNotEnabledFault>()(
     "PointInTimeRestoreNotEnabledFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -1493,7 +1493,7 @@ export class PointInTimeRestoreNotEnabledFault
     ),
   ).pipe(C.withBadRequestError) {}
 export class ProvisionedIopsNotAvailableInAZFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<ProvisionedIopsNotAvailableInAZFault>()(
+  extends /*@__PURE__*/ S.TaggedError<ProvisionedIopsNotAvailableInAZFault>()(
     "ProvisionedIopsNotAvailableInAZFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -1505,7 +1505,7 @@ export class ProvisionedIopsNotAvailableInAZFault
     ),
   ).pipe(C.withBadRequestError, C.withQuotaError) {}
 export class ReservedDBInstanceAlreadyExistsFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<ReservedDBInstanceAlreadyExistsFault>()(
+  extends /*@__PURE__*/ S.TaggedError<ReservedDBInstanceAlreadyExistsFault>()(
     "ReservedDBInstanceAlreadyExistsFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -1517,7 +1517,7 @@ export class ReservedDBInstanceAlreadyExistsFault
     ),
   ).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
 export class ReservedDBInstanceNotFoundFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<ReservedDBInstanceNotFoundFault>()(
+  extends /*@__PURE__*/ S.TaggedError<ReservedDBInstanceNotFoundFault>()(
     "ReservedDBInstanceNotFoundFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -1529,7 +1529,7 @@ export class ReservedDBInstanceNotFoundFault
     ),
   ).pipe(C.withBadRequestError) {}
 export class ReservedDBInstanceQuotaExceededFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<ReservedDBInstanceQuotaExceededFault>()(
+  extends /*@__PURE__*/ S.TaggedError<ReservedDBInstanceQuotaExceededFault>()(
     "ReservedDBInstanceQuotaExceededFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -1541,7 +1541,7 @@ export class ReservedDBInstanceQuotaExceededFault
     ),
   ).pipe(C.withBadRequestError) {}
 export class ReservedDBInstancesOfferingNotFoundFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<ReservedDBInstancesOfferingNotFoundFault>()(
+  extends /*@__PURE__*/ S.TaggedError<ReservedDBInstancesOfferingNotFoundFault>()(
     "ReservedDBInstancesOfferingNotFoundFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -1553,7 +1553,7 @@ export class ReservedDBInstancesOfferingNotFoundFault
     ),
   ).pipe(C.withBadRequestError) {}
 export class ResourceNotFoundFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundFault>()(
+  extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundFault>()(
     "ResourceNotFoundFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -1562,7 +1562,7 @@ export class ResourceNotFoundFault
     ),
   ).pipe(C.withBadRequestError) {}
 export class SharedSnapshotQuotaExceededFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<SharedSnapshotQuotaExceededFault>()(
+  extends /*@__PURE__*/ S.TaggedError<SharedSnapshotQuotaExceededFault>()(
     "SharedSnapshotQuotaExceededFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -1574,7 +1574,7 @@ export class SharedSnapshotQuotaExceededFault
     ),
   ).pipe(C.withBadRequestError) {}
 export class SnapshotQuotaExceededFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<SnapshotQuotaExceededFault>()(
+  extends /*@__PURE__*/ S.TaggedError<SnapshotQuotaExceededFault>()(
     "SnapshotQuotaExceededFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -1583,7 +1583,7 @@ export class SnapshotQuotaExceededFault
     ),
   ).pipe(C.withBadRequestError) {}
 export class SNSInvalidTopicFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<SNSInvalidTopicFault>()(
+  extends /*@__PURE__*/ S.TaggedError<SNSInvalidTopicFault>()(
     "SNSInvalidTopicFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -1592,7 +1592,7 @@ export class SNSInvalidTopicFault
     ),
   ).pipe(C.withBadRequestError) {}
 export class SNSNoAuthorizationFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<SNSNoAuthorizationFault>()(
+  extends /*@__PURE__*/ S.TaggedError<SNSNoAuthorizationFault>()(
     "SNSNoAuthorizationFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -1601,7 +1601,7 @@ export class SNSNoAuthorizationFault
     ),
   ).pipe(C.withBadRequestError) {}
 export class SNSTopicArnNotFoundFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<SNSTopicArnNotFoundFault>()(
+  extends /*@__PURE__*/ S.TaggedError<SNSTopicArnNotFoundFault>()(
     "SNSTopicArnNotFoundFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -1610,7 +1610,7 @@ export class SNSTopicArnNotFoundFault
     ),
   ).pipe(C.withBadRequestError) {}
 export class SourceClusterNotSupportedFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<SourceClusterNotSupportedFault>()(
+  extends /*@__PURE__*/ S.TaggedError<SourceClusterNotSupportedFault>()(
     "SourceClusterNotSupportedFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -1622,7 +1622,7 @@ export class SourceClusterNotSupportedFault
     ),
   ).pipe(C.withBadRequestError) {}
 export class SourceDatabaseNotSupportedFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<SourceDatabaseNotSupportedFault>()(
+  extends /*@__PURE__*/ S.TaggedError<SourceDatabaseNotSupportedFault>()(
     "SourceDatabaseNotSupportedFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -1634,7 +1634,7 @@ export class SourceDatabaseNotSupportedFault
     ),
   ).pipe(C.withBadRequestError) {}
 export class SourceNotFoundFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<SourceNotFoundFault>()(
+  extends /*@__PURE__*/ S.TaggedError<SourceNotFoundFault>()(
     "SourceNotFoundFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -1643,7 +1643,7 @@ export class SourceNotFoundFault
     ),
   ).pipe(C.withBadRequestError) {}
 export class StorageQuotaExceededFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<StorageQuotaExceededFault>()(
+  extends /*@__PURE__*/ S.TaggedError<StorageQuotaExceededFault>()(
     "StorageQuotaExceededFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -1652,7 +1652,7 @@ export class StorageQuotaExceededFault
     ),
   ).pipe(C.withBadRequestError) {}
 export class StorageTypeNotAvailableFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<StorageTypeNotAvailableFault>()(
+  extends /*@__PURE__*/ S.TaggedError<StorageTypeNotAvailableFault>()(
     "StorageTypeNotAvailableFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -1664,7 +1664,7 @@ export class StorageTypeNotAvailableFault
     ),
   ).pipe(C.withBadRequestError) {}
 export class StorageTypeNotSupportedFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<StorageTypeNotSupportedFault>()(
+  extends /*@__PURE__*/ S.TaggedError<StorageTypeNotSupportedFault>()(
     "StorageTypeNotSupportedFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -1676,7 +1676,7 @@ export class StorageTypeNotSupportedFault
     ),
   ).pipe(C.withBadRequestError) {}
 export class SubnetAlreadyInUse
-  extends /*@__PURE__*/ S.TaggedErrorClass<SubnetAlreadyInUse>()(
+  extends /*@__PURE__*/ S.TaggedError<SubnetAlreadyInUse>()(
     "SubnetAlreadyInUse",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -1685,7 +1685,7 @@ export class SubnetAlreadyInUse
     ),
   ).pipe(C.withBadRequestError, C.withDependencyViolationError) {}
 export class SubscriptionAlreadyExistFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<SubscriptionAlreadyExistFault>()(
+  extends /*@__PURE__*/ S.TaggedError<SubscriptionAlreadyExistFault>()(
     "SubscriptionAlreadyExistFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -1697,7 +1697,7 @@ export class SubscriptionAlreadyExistFault
     ),
   ).pipe(C.withBadRequestError) {}
 export class SubscriptionCategoryNotFoundFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<SubscriptionCategoryNotFoundFault>()(
+  extends /*@__PURE__*/ S.TaggedError<SubscriptionCategoryNotFoundFault>()(
     "SubscriptionCategoryNotFoundFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -1709,7 +1709,7 @@ export class SubscriptionCategoryNotFoundFault
     ),
   ).pipe(C.withBadRequestError) {}
 export class SubscriptionNotFoundFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<SubscriptionNotFoundFault>()(
+  extends /*@__PURE__*/ S.TaggedError<SubscriptionNotFoundFault>()(
     "SubscriptionNotFoundFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -1718,7 +1718,7 @@ export class SubscriptionNotFoundFault
     ),
   ).pipe(C.withBadRequestError) {}
 export class TenantDatabaseAlreadyExistsFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<TenantDatabaseAlreadyExistsFault>()(
+  extends /*@__PURE__*/ S.TaggedError<TenantDatabaseAlreadyExistsFault>()(
     "TenantDatabaseAlreadyExistsFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -1730,7 +1730,7 @@ export class TenantDatabaseAlreadyExistsFault
     ),
   ).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
 export class TenantDatabaseNotFoundFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<TenantDatabaseNotFoundFault>()(
+  extends /*@__PURE__*/ S.TaggedError<TenantDatabaseNotFoundFault>()(
     "TenantDatabaseNotFoundFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -1742,7 +1742,7 @@ export class TenantDatabaseNotFoundFault
     ),
   ).pipe(C.withBadRequestError) {}
 export class TenantDatabaseQuotaExceededFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<TenantDatabaseQuotaExceededFault>()(
+  extends /*@__PURE__*/ S.TaggedError<TenantDatabaseQuotaExceededFault>()(
     "TenantDatabaseQuotaExceededFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -1754,7 +1754,7 @@ export class TenantDatabaseQuotaExceededFault
     ),
   ).pipe(C.withBadRequestError) {}
 export class UnsupportedDBEngineVersionFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<UnsupportedDBEngineVersionFault>()(
+  extends /*@__PURE__*/ S.TaggedError<UnsupportedDBEngineVersionFault>()(
     "UnsupportedDBEngineVersionFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -1766,7 +1766,7 @@ export class UnsupportedDBEngineVersionFault
     ),
   ).pipe(C.withBadRequestError) {}
 export class VpcEncryptionControlViolationException
-  extends /*@__PURE__*/ S.TaggedErrorClass<VpcEncryptionControlViolationException>()(
+  extends /*@__PURE__*/ S.TaggedError<VpcEncryptionControlViolationException>()(
     "VpcEncryptionControlViolationException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(

@@ -86,7 +86,7 @@ const rules = T.EndpointResolver((p, _) => {
 });
 
 export class AccessDeniedException
-  extends /*@__PURE__*/ S.TaggedErrorClass<AccessDeniedException>()(
+  extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()(
     "AccessDeniedException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -95,7 +95,7 @@ export class AccessDeniedException
     T.HttpError(401),
   ).pipe(C.withAuthError) {}
 export class ConcurrentUpdatingException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ConcurrentUpdatingException>()(
+  extends /*@__PURE__*/ S.TaggedError<ConcurrentUpdatingException>()(
     "ConcurrentUpdatingException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -104,7 +104,7 @@ export class ConcurrentUpdatingException
     T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class ConflictException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ConflictException>()(
+  extends /*@__PURE__*/ S.TaggedError<ConflictException>()(
     "ConflictException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -113,7 +113,7 @@ export class ConflictException
     T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class CustomerManagedKeyUnavailableException
-  extends /*@__PURE__*/ S.TaggedErrorClass<CustomerManagedKeyUnavailableException>()(
+  extends /*@__PURE__*/ S.TaggedError<CustomerManagedKeyUnavailableException>()(
     "CustomerManagedKeyUnavailableException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -122,7 +122,7 @@ export class CustomerManagedKeyUnavailableException
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class DomainNotWhitelistedException
-  extends /*@__PURE__*/ S.TaggedErrorClass<DomainNotWhitelistedException>()(
+  extends /*@__PURE__*/ S.TaggedError<DomainNotWhitelistedException>()(
     "DomainNotWhitelistedException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -131,7 +131,7 @@ export class DomainNotWhitelistedException
     T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class IdentityTypeNotSupportedException
-  extends /*@__PURE__*/ S.TaggedErrorClass<IdentityTypeNotSupportedException>()(
+  extends /*@__PURE__*/ S.TaggedError<IdentityTypeNotSupportedException>()(
     "IdentityTypeNotSupportedException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -140,7 +140,7 @@ export class IdentityTypeNotSupportedException
     T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class InternalFailureException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InternalFailureException>()(
+  extends /*@__PURE__*/ S.TaggedError<InternalFailureException>()(
     "InternalFailureException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -149,13 +149,13 @@ export class InternalFailureException
     T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class InternalServerException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InternalServerException>()(
+  extends /*@__PURE__*/ S.TaggedError<InternalServerException>()(
     "InternalServerException",
     { message: S.String.pipe(T.ErrorMessage()) },
     T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class InvalidDataSetParameterValueException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidDataSetParameterValueException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidDataSetParameterValueException>()(
     "InvalidDataSetParameterValueException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -164,7 +164,7 @@ export class InvalidDataSetParameterValueException
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidNextTokenException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidNextTokenException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidNextTokenException>()(
     "InvalidNextTokenException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -173,7 +173,7 @@ export class InvalidNextTokenException
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidParameterException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidParameterException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidParameterException>()(
     "InvalidParameterException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -182,7 +182,7 @@ export class InvalidParameterException
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidParameterValueException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidParameterValueException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidParameterValueException>()(
     "InvalidParameterValueException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -191,7 +191,7 @@ export class InvalidParameterValueException
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidRequestException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidRequestException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidRequestException>()(
     "InvalidRequestException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -200,7 +200,7 @@ export class InvalidRequestException
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class LimitExceededException
-  extends /*@__PURE__*/ S.TaggedErrorClass<LimitExceededException>()(
+  extends /*@__PURE__*/ S.TaggedError<LimitExceededException>()(
     "LimitExceededException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -214,7 +214,7 @@ export class LimitExceededException
     T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class PreconditionNotMetException
-  extends /*@__PURE__*/ S.TaggedErrorClass<PreconditionNotMetException>()(
+  extends /*@__PURE__*/ S.TaggedError<PreconditionNotMetException>()(
     "PreconditionNotMetException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -223,7 +223,7 @@ export class PreconditionNotMetException
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class QuickSightSubscriptionRequired
-  extends /*@__PURE__*/ S.TaggedErrorClass<QuickSightSubscriptionRequired>()(
+  extends /*@__PURE__*/ S.TaggedError<QuickSightSubscriptionRequired>()(
     "QuickSightSubscriptionRequired",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -240,7 +240,7 @@ export class QuickSightSubscriptionRequired
     }),
   ).pipe(C.withNotFoundError) {}
 export class QuickSightUserNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<QuickSightUserNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<QuickSightUserNotFoundException>()(
     "QuickSightUserNotFoundException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -249,7 +249,7 @@ export class QuickSightUserNotFoundException
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ResourceExistsException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceExistsException>()(
+  extends /*@__PURE__*/ S.TaggedError<ResourceExistsException>()(
     "ResourceExistsException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -263,7 +263,7 @@ export class ResourceExistsException
     T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class ResourceNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -277,7 +277,7 @@ export class ResourceNotFoundException
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ResourceUnavailableException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceUnavailableException>()(
+  extends /*@__PURE__*/ S.TaggedError<ResourceUnavailableException>()(
     "ResourceUnavailableException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -291,7 +291,7 @@ export class ResourceUnavailableException
     T.HttpError(503),
   ).pipe(C.withServerError) {}
 export class SessionLifetimeInMinutesInvalidException
-  extends /*@__PURE__*/ S.TaggedErrorClass<SessionLifetimeInMinutesInvalidException>()(
+  extends /*@__PURE__*/ S.TaggedError<SessionLifetimeInMinutesInvalidException>()(
     "SessionLifetimeInMinutesInvalidException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -300,7 +300,7 @@ export class SessionLifetimeInMinutesInvalidException
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ThrottlingException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ThrottlingException>()(
+  extends /*@__PURE__*/ S.TaggedError<ThrottlingException>()(
     "ThrottlingException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -309,7 +309,7 @@ export class ThrottlingException
     T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export class UnsupportedPricingPlanException
-  extends /*@__PURE__*/ S.TaggedErrorClass<UnsupportedPricingPlanException>()(
+  extends /*@__PURE__*/ S.TaggedError<UnsupportedPricingPlanException>()(
     "UnsupportedPricingPlanException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -318,7 +318,7 @@ export class UnsupportedPricingPlanException
     T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class UnsupportedUserEditionException
-  extends /*@__PURE__*/ S.TaggedErrorClass<UnsupportedUserEditionException>()(
+  extends /*@__PURE__*/ S.TaggedError<UnsupportedUserEditionException>()(
     "UnsupportedUserEditionException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),

@@ -84,7 +84,7 @@ const rules = T.EndpointResolver((p, _) => {
 });
 
 export class AuthException
-  extends /*@__PURE__*/ S.TaggedErrorClass<AuthException>()(
+  extends /*@__PURE__*/ S.TaggedError<AuthException>()(
     "AuthException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -93,7 +93,7 @@ export class AuthException
     ),
   ).pipe(C.withAuthError) {}
 export class EC2InstanceNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<EC2InstanceNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<EC2InstanceNotFoundException>()(
     "EC2InstanceNotFoundException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -102,7 +102,7 @@ export class EC2InstanceNotFoundException
     ),
   ).pipe(C.withBadRequestError) {}
 export class EC2InstanceStateInvalidException
-  extends /*@__PURE__*/ S.TaggedErrorClass<EC2InstanceStateInvalidException>()(
+  extends /*@__PURE__*/ S.TaggedError<EC2InstanceStateInvalidException>()(
     "EC2InstanceStateInvalidException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -114,7 +114,7 @@ export class EC2InstanceStateInvalidException
     ),
   ).pipe(C.withBadRequestError) {}
 export class EC2InstanceTypeInvalidException
-  extends /*@__PURE__*/ S.TaggedErrorClass<EC2InstanceTypeInvalidException>()(
+  extends /*@__PURE__*/ S.TaggedError<EC2InstanceTypeInvalidException>()(
     "EC2InstanceTypeInvalidException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -126,7 +126,7 @@ export class EC2InstanceTypeInvalidException
     ),
   ).pipe(C.withBadRequestError) {}
 export class EC2InstanceUnavailableException
-  extends /*@__PURE__*/ S.TaggedErrorClass<EC2InstanceUnavailableException>()(
+  extends /*@__PURE__*/ S.TaggedError<EC2InstanceUnavailableException>()(
     "EC2InstanceUnavailableException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -138,7 +138,7 @@ export class EC2InstanceUnavailableException
     ),
   ).pipe(C.withServerError) {}
 export class InvalidArgsException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidArgsException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidArgsException>()(
     "InvalidArgsException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -147,7 +147,7 @@ export class InvalidArgsException
     ),
   ).pipe(C.withBadRequestError) {}
 export class SerialConsoleAccessDisabledException
-  extends /*@__PURE__*/ S.TaggedErrorClass<SerialConsoleAccessDisabledException>()(
+  extends /*@__PURE__*/ S.TaggedError<SerialConsoleAccessDisabledException>()(
     "SerialConsoleAccessDisabledException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -159,7 +159,7 @@ export class SerialConsoleAccessDisabledException
     ),
   ).pipe(C.withAuthError) {}
 export class SerialConsoleSessionLimitExceededException
-  extends /*@__PURE__*/ S.TaggedErrorClass<SerialConsoleSessionLimitExceededException>()(
+  extends /*@__PURE__*/ S.TaggedError<SerialConsoleSessionLimitExceededException>()(
     "SerialConsoleSessionLimitExceededException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -171,7 +171,7 @@ export class SerialConsoleSessionLimitExceededException
     ),
   ).pipe(C.withBadRequestError) {}
 export class SerialConsoleSessionUnavailableException
-  extends /*@__PURE__*/ S.TaggedErrorClass<SerialConsoleSessionUnavailableException>()(
+  extends /*@__PURE__*/ S.TaggedError<SerialConsoleSessionUnavailableException>()(
     "SerialConsoleSessionUnavailableException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -183,7 +183,7 @@ export class SerialConsoleSessionUnavailableException
     ),
   ).pipe(C.withServerError) {}
 export class SerialConsoleSessionUnsupportedException
-  extends /*@__PURE__*/ S.TaggedErrorClass<SerialConsoleSessionUnsupportedException>()(
+  extends /*@__PURE__*/ S.TaggedError<SerialConsoleSessionUnsupportedException>()(
     "SerialConsoleSessionUnsupportedException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -195,7 +195,7 @@ export class SerialConsoleSessionUnsupportedException
     ),
   ).pipe(C.withBadRequestError) {}
 export class ServiceException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ServiceException>()(
+  extends /*@__PURE__*/ S.TaggedError<ServiceException>()(
     "ServiceException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -204,7 +204,7 @@ export class ServiceException
     ),
   ).pipe(C.withServerError) {}
 export class ThrottlingException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ThrottlingException>()(
+  extends /*@__PURE__*/ S.TaggedError<ThrottlingException>()(
     "ThrottlingException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(

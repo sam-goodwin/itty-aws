@@ -154,7 +154,7 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
 
 export class Forbidden
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    /*@__PURE__*/ S.TaggedError<Forbidden>()("Forbidden", {
       code: S.Number,
       message: S.String,
     }),
@@ -163,7 +163,7 @@ export class Forbidden
 
 export class IndicatorFeedNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<IndicatorFeedNotFound>()(
+    /*@__PURE__*/ S.TaggedError<IndicatorFeedNotFound>()(
       "IndicatorFeedNotFound",
       {
         code: S.Number,
@@ -175,7 +175,7 @@ export class IndicatorFeedNotFound
 
 export class IndicatorFeedsNotEntitled
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<IndicatorFeedsNotEntitled>()(
+    /*@__PURE__*/ S.TaggedError<IndicatorFeedsNotEntitled>()(
       "IndicatorFeedsNotEntitled",
       {
         code: S.Number,

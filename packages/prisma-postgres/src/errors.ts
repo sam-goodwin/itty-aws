@@ -35,7 +35,7 @@ import * as Category from "@distilled.cloud/core/category";
  * per-operation error class and no HTTP status class. Carries the envelope's
  * `code`/`message`/`hint` and the raw body for later cataloging.
  */
-export class UnknownPrismaPostgresError extends Schema.TaggedErrorClass<UnknownPrismaPostgresError>()(
+export class UnknownPrismaPostgresError extends Schema.TaggedError<UnknownPrismaPostgresError>()(
   "UnknownPrismaPostgresError",
   {
     code: Schema.optional(Schema.String),
@@ -46,7 +46,7 @@ export class UnknownPrismaPostgresError extends Schema.TaggedErrorClass<UnknownP
 ).pipe(Category.withServerError) {}
 
 /** Schema parse error wrapper (kept for v0 API compatibility). */
-export class PrismaPostgresParseError extends Schema.TaggedErrorClass<PrismaPostgresParseError>()(
+export class PrismaPostgresParseError extends Schema.TaggedError<PrismaPostgresParseError>()(
   "PrismaPostgresParseError",
   {
     body: Schema.Unknown,

@@ -25,7 +25,7 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
 
 export class InvalidAccountId
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<InvalidAccountId>()("InvalidAccountId", {
+    /*@__PURE__*/ S.TaggedError<InvalidAccountId>()("InvalidAccountId", {
       code: S.Number,
       message: S.String,
     }),
@@ -34,7 +34,7 @@ export class InvalidAccountId
 
 export class InvalidJsonBody
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<InvalidJsonBody>()("InvalidJsonBody", {
+    /*@__PURE__*/ S.TaggedError<InvalidJsonBody>()("InvalidJsonBody", {
       code: S.Number,
       message: S.String,
     }),
@@ -43,7 +43,7 @@ export class InvalidJsonBody
 
 export class MaximumStoresExceeded
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<MaximumStoresExceeded>()(
+    /*@__PURE__*/ S.TaggedError<MaximumStoresExceeded>()(
       "MaximumStoresExceeded",
       {
         code: S.Number,
@@ -55,7 +55,7 @@ export class MaximumStoresExceeded
 
 export class NotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<NotFound>()("NotFound", {
+    /*@__PURE__*/ S.TaggedError<NotFound>()("NotFound", {
       code: S.Number,
       message: S.String,
     }),
@@ -64,7 +64,7 @@ export class NotFound
 
 export class SecretNameAlreadyExists
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<SecretNameAlreadyExists>()(
+    /*@__PURE__*/ S.TaggedError<SecretNameAlreadyExists>()(
       "SecretNameAlreadyExists",
       {
         code: S.Number,
@@ -76,7 +76,7 @@ export class SecretNameAlreadyExists
 
 export class SecretNameEmpty
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<SecretNameEmpty>()("SecretNameEmpty", {
+    /*@__PURE__*/ S.TaggedError<SecretNameEmpty>()("SecretNameEmpty", {
       code: S.Number,
       message: S.String,
     }),
@@ -85,7 +85,7 @@ export class SecretNameEmpty
 
 export class SecretNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<SecretNotFound>()("SecretNotFound", {
+    /*@__PURE__*/ S.TaggedError<SecretNotFound>()("SecretNotFound", {
       code: S.Number,
       message: S.String,
     }),
@@ -94,19 +94,16 @@ export class SecretNotFound
 
 export class SecretScopeInvalid
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<SecretScopeInvalid>()(
-      "SecretScopeInvalid",
-      {
-        code: S.Number,
-        message: S.String,
-      },
-    ),
+    /*@__PURE__*/ S.TaggedError<SecretScopeInvalid>()("SecretScopeInvalid", {
+      code: S.Number,
+      message: S.String,
+    }),
     [{ code: 1001, message: { includes: "secret_scope_invalid" } }],
   ) {}
 
 export class SecretScopesEmpty
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<SecretScopesEmpty>()("SecretScopesEmpty", {
+    /*@__PURE__*/ S.TaggedError<SecretScopesEmpty>()("SecretScopesEmpty", {
       code: S.Number,
       message: S.String,
     }),
@@ -115,7 +112,7 @@ export class SecretScopesEmpty
 
 export class StoreNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<StoreNotFound>()("StoreNotFound", {
+    /*@__PURE__*/ S.TaggedError<StoreNotFound>()("StoreNotFound", {
       code: S.Number,
       message: S.String,
     }),

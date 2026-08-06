@@ -83,62 +83,62 @@ const rules = T.EndpointResolver((p, _) => {
 });
 
 export class InsufficientCapacityException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InsufficientCapacityException>()(
+  extends /*@__PURE__*/ S.TaggedError<InsufficientCapacityException>()(
     "InsufficientCapacityException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InternalServerError
-  extends /*@__PURE__*/ S.TaggedErrorClass<InternalServerError>()(
+  extends /*@__PURE__*/ S.TaggedError<InternalServerError>()(
     "InternalServerError",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidOperationException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidOperationException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidOperationException>()(
     "InvalidOperationException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidRequestException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidRequestException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidRequestException>()(
     "InvalidRequestException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidResourcePolicyException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidResourcePolicyException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidResourcePolicyException>()(
     "InvalidResourcePolicyException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidTokenException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidTokenException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidTokenException>()(
     "InvalidTokenException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class LimitExceededException
-  extends /*@__PURE__*/ S.TaggedErrorClass<LimitExceededException>()(
+  extends /*@__PURE__*/ S.TaggedError<LimitExceededException>()(
     "LimitExceededException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class LogDestinationPermissionException
-  extends /*@__PURE__*/ S.TaggedErrorClass<LogDestinationPermissionException>()(
+  extends /*@__PURE__*/ S.TaggedError<LogDestinationPermissionException>()(
     "LogDestinationPermissionException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class ResourceNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class ResourceOwnerCheckException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceOwnerCheckException>()(
+  extends /*@__PURE__*/ S.TaggedError<ResourceOwnerCheckException>()(
     "ResourceOwnerCheckException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class ThrottlingException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ThrottlingException>()(
+  extends /*@__PURE__*/ S.TaggedError<ThrottlingException>()(
     "ThrottlingException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class UnsupportedOperationException
-  extends /*@__PURE__*/ S.TaggedErrorClass<UnsupportedOperationException>()(
+  extends /*@__PURE__*/ S.TaggedError<UnsupportedOperationException>()(
     "UnsupportedOperationException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}

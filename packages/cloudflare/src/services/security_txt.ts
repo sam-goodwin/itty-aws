@@ -20,7 +20,7 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
 
 export class Forbidden
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    /*@__PURE__*/ S.TaggedError<Forbidden>()("Forbidden", {
       code: S.Number,
       message: S.String,
     }),
@@ -29,13 +29,10 @@ export class Forbidden
 
 export class SecurityTxtInvalid
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<SecurityTxtInvalid>()(
-      "SecurityTxtInvalid",
-      {
-        code: S.Number,
-        message: S.String,
-      },
-    ),
+    /*@__PURE__*/ S.TaggedError<SecurityTxtInvalid>()("SecurityTxtInvalid", {
+      code: S.Number,
+      message: S.String,
+    }),
     [{ code: 10400, message: { includes: "invalid or missing values" } }],
   ) {}
 

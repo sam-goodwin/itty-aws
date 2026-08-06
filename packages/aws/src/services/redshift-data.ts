@@ -84,55 +84,55 @@ const rules = T.EndpointResolver((p, _) => {
 });
 
 export class ActiveSessionsExceededException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ActiveSessionsExceededException>()(
+  extends /*@__PURE__*/ S.TaggedError<ActiveSessionsExceededException>()(
     "ActiveSessionsExceededException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ActiveStatementsExceededException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ActiveStatementsExceededException>()(
+  extends /*@__PURE__*/ S.TaggedError<ActiveStatementsExceededException>()(
     "ActiveStatementsExceededException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class BatchExecuteStatementException
-  extends /*@__PURE__*/ S.TaggedErrorClass<BatchExecuteStatementException>()(
+  extends /*@__PURE__*/ S.TaggedError<BatchExecuteStatementException>()(
     "BatchExecuteStatementException",
     { message: S.String.pipe(T.ErrorMessage()), StatementId: S.String },
     T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class DatabaseConnectionException
-  extends /*@__PURE__*/ S.TaggedErrorClass<DatabaseConnectionException>()(
+  extends /*@__PURE__*/ S.TaggedError<DatabaseConnectionException>()(
     "DatabaseConnectionException",
     { message: S.String.pipe(T.ErrorMessage()) },
     T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class ExecuteStatementException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ExecuteStatementException>()(
+  extends /*@__PURE__*/ S.TaggedError<ExecuteStatementException>()(
     "ExecuteStatementException",
     { message: S.String.pipe(T.ErrorMessage()), StatementId: S.String },
     T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class InternalServerException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InternalServerException>()(
+  extends /*@__PURE__*/ S.TaggedError<InternalServerException>()(
     "InternalServerException",
     { message: S.String.pipe(T.ErrorMessage()) },
     T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class QueryTimeoutException
-  extends /*@__PURE__*/ S.TaggedErrorClass<QueryTimeoutException>()(
+  extends /*@__PURE__*/ S.TaggedError<QueryTimeoutException>()(
     "QueryTimeoutException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ResourceNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
     { message: S.String.pipe(T.ErrorMessage()), ResourceId: S.String },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ValidationException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ValidationException>()(
+  extends /*@__PURE__*/ S.TaggedError<ValidationException>()(
     "ValidationException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),

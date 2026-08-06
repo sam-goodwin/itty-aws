@@ -37,7 +37,7 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
 
 export class DnsFirewallNotEntitled
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<DnsFirewallNotEntitled>()(
+    /*@__PURE__*/ S.TaggedError<DnsFirewallNotEntitled>()(
       "DnsFirewallNotEntitled",
       {
         code: S.Number,
@@ -49,19 +49,16 @@ export class DnsFirewallNotEntitled
 
 export class DnsFirewallNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<DnsFirewallNotFound>()(
-      "DnsFirewallNotFound",
-      {
-        code: S.Number,
-        message: S.String,
-      },
-    ),
+    /*@__PURE__*/ S.TaggedError<DnsFirewallNotFound>()("DnsFirewallNotFound", {
+      code: S.Number,
+      message: S.String,
+    }),
     [{ code: 11001 }],
   ) {}
 
 export class Forbidden
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    /*@__PURE__*/ S.TaggedError<Forbidden>()("Forbidden", {
       code: S.Number,
       message: S.String,
     }),

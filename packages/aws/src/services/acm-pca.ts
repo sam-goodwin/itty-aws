@@ -87,97 +87,97 @@ const rules = T.EndpointResolver((p, _) => {
 });
 
 export class CertificateMismatchException
-  extends /*@__PURE__*/ S.TaggedErrorClass<CertificateMismatchException>()(
+  extends /*@__PURE__*/ S.TaggedError<CertificateMismatchException>()(
     "CertificateMismatchException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class ConcurrentModificationException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ConcurrentModificationException>()(
+  extends /*@__PURE__*/ S.TaggedError<ConcurrentModificationException>()(
     "ConcurrentModificationException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidArgsException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidArgsException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidArgsException>()(
     "InvalidArgsException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidArnException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidArnException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidArnException>()(
     "InvalidArnException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidNextTokenException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidNextTokenException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidNextTokenException>()(
     "InvalidNextTokenException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidPolicyException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidPolicyException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidPolicyException>()(
     "InvalidPolicyException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidRequestException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidRequestException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidRequestException>()(
     "InvalidRequestException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidStateException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidStateException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidStateException>()(
     "InvalidStateException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidTagException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidTagException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidTagException>()(
     "InvalidTagException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class LimitExceededException
-  extends /*@__PURE__*/ S.TaggedErrorClass<LimitExceededException>()(
+  extends /*@__PURE__*/ S.TaggedError<LimitExceededException>()(
     "LimitExceededException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class LockoutPreventedException
-  extends /*@__PURE__*/ S.TaggedErrorClass<LockoutPreventedException>()(
+  extends /*@__PURE__*/ S.TaggedError<LockoutPreventedException>()(
     "LockoutPreventedException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class MalformedCertificateException
-  extends /*@__PURE__*/ S.TaggedErrorClass<MalformedCertificateException>()(
+  extends /*@__PURE__*/ S.TaggedError<MalformedCertificateException>()(
     "MalformedCertificateException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class MalformedCSRException
-  extends /*@__PURE__*/ S.TaggedErrorClass<MalformedCSRException>()(
+  extends /*@__PURE__*/ S.TaggedError<MalformedCSRException>()(
     "MalformedCSRException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class PermissionAlreadyExistsException
-  extends /*@__PURE__*/ S.TaggedErrorClass<PermissionAlreadyExistsException>()(
+  extends /*@__PURE__*/ S.TaggedError<PermissionAlreadyExistsException>()(
     "PermissionAlreadyExistsException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withAlreadyExistsError) {}
 export class RequestAlreadyProcessedException
-  extends /*@__PURE__*/ S.TaggedErrorClass<RequestAlreadyProcessedException>()(
+  extends /*@__PURE__*/ S.TaggedError<RequestAlreadyProcessedException>()(
     "RequestAlreadyProcessedException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class RequestFailedException
-  extends /*@__PURE__*/ S.TaggedErrorClass<RequestFailedException>()(
+  extends /*@__PURE__*/ S.TaggedError<RequestFailedException>()(
     "RequestFailedException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class RequestInProgressException
-  extends /*@__PURE__*/ S.TaggedErrorClass<RequestInProgressException>()(
+  extends /*@__PURE__*/ S.TaggedError<RequestInProgressException>()(
     "RequestInProgressException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class ResourceNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class TooManyTagsException
-  extends /*@__PURE__*/ S.TaggedErrorClass<TooManyTagsException>()(
+  extends /*@__PURE__*/ S.TaggedError<TooManyTagsException>()(
     "TooManyTagsException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}

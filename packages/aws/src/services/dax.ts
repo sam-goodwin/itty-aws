@@ -82,7 +82,7 @@ const rules = T.EndpointResolver((p, _) => {
 });
 
 export class ClusterAlreadyExistsFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<ClusterAlreadyExistsFault>()(
+  extends /*@__PURE__*/ S.TaggedError<ClusterAlreadyExistsFault>()(
     "ClusterAlreadyExistsFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -91,7 +91,7 @@ export class ClusterAlreadyExistsFault
     ),
   ).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
 export class ClusterNotFoundFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<ClusterNotFoundFault>()(
+  extends /*@__PURE__*/ S.TaggedError<ClusterNotFoundFault>()(
     "ClusterNotFoundFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -100,7 +100,7 @@ export class ClusterNotFoundFault
     ),
   ).pipe(C.withBadRequestError) {}
 export class ClusterQuotaForCustomerExceededFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<ClusterQuotaForCustomerExceededFault>()(
+  extends /*@__PURE__*/ S.TaggedError<ClusterQuotaForCustomerExceededFault>()(
     "ClusterQuotaForCustomerExceededFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -112,7 +112,7 @@ export class ClusterQuotaForCustomerExceededFault
     ),
   ).pipe(C.withBadRequestError) {}
 export class InsufficientClusterCapacityFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<InsufficientClusterCapacityFault>()(
+  extends /*@__PURE__*/ S.TaggedError<InsufficientClusterCapacityFault>()(
     "InsufficientClusterCapacityFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -124,7 +124,7 @@ export class InsufficientClusterCapacityFault
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidARNFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidARNFault>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidARNFault>()(
     "InvalidARNFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -133,7 +133,7 @@ export class InvalidARNFault
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidClusterStateFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidClusterStateFault>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidClusterStateFault>()(
     "InvalidClusterStateFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -142,7 +142,7 @@ export class InvalidClusterStateFault
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidParameterCombinationException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidParameterCombinationException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidParameterCombinationException>()(
     "InvalidParameterCombinationException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -154,7 +154,7 @@ export class InvalidParameterCombinationException
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidParameterGroupStateFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidParameterGroupStateFault>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidParameterGroupStateFault>()(
     "InvalidParameterGroupStateFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -166,7 +166,7 @@ export class InvalidParameterGroupStateFault
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidParameterValueException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidParameterValueException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidParameterValueException>()(
     "InvalidParameterValueException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -175,7 +175,7 @@ export class InvalidParameterValueException
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidSubnet
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidSubnet>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidSubnet>()(
     "InvalidSubnet",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -184,7 +184,7 @@ export class InvalidSubnet
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidVPCNetworkStateFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidVPCNetworkStateFault>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidVPCNetworkStateFault>()(
     "InvalidVPCNetworkStateFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -196,7 +196,7 @@ export class InvalidVPCNetworkStateFault
     ),
   ).pipe(C.withBadRequestError) {}
 export class NodeNotFoundFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<NodeNotFoundFault>()(
+  extends /*@__PURE__*/ S.TaggedError<NodeNotFoundFault>()(
     "NodeNotFoundFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -205,7 +205,7 @@ export class NodeNotFoundFault
     ),
   ).pipe(C.withBadRequestError) {}
 export class NodeQuotaForClusterExceededFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<NodeQuotaForClusterExceededFault>()(
+  extends /*@__PURE__*/ S.TaggedError<NodeQuotaForClusterExceededFault>()(
     "NodeQuotaForClusterExceededFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -217,7 +217,7 @@ export class NodeQuotaForClusterExceededFault
     ),
   ).pipe(C.withBadRequestError) {}
 export class NodeQuotaForCustomerExceededFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<NodeQuotaForCustomerExceededFault>()(
+  extends /*@__PURE__*/ S.TaggedError<NodeQuotaForCustomerExceededFault>()(
     "NodeQuotaForCustomerExceededFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -229,7 +229,7 @@ export class NodeQuotaForCustomerExceededFault
     ),
   ).pipe(C.withBadRequestError) {}
 export class ParameterGroupAlreadyExistsFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<ParameterGroupAlreadyExistsFault>()(
+  extends /*@__PURE__*/ S.TaggedError<ParameterGroupAlreadyExistsFault>()(
     "ParameterGroupAlreadyExistsFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -241,7 +241,7 @@ export class ParameterGroupAlreadyExistsFault
     ),
   ).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
 export class ParameterGroupNotFoundFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<ParameterGroupNotFoundFault>()(
+  extends /*@__PURE__*/ S.TaggedError<ParameterGroupNotFoundFault>()(
     "ParameterGroupNotFoundFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -253,7 +253,7 @@ export class ParameterGroupNotFoundFault
     ),
   ).pipe(C.withBadRequestError) {}
 export class ParameterGroupQuotaExceededFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<ParameterGroupQuotaExceededFault>()(
+  extends /*@__PURE__*/ S.TaggedError<ParameterGroupQuotaExceededFault>()(
     "ParameterGroupQuotaExceededFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -265,7 +265,7 @@ export class ParameterGroupQuotaExceededFault
     ),
   ).pipe(C.withBadRequestError) {}
 export class ServiceLinkedRoleNotFoundFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<ServiceLinkedRoleNotFoundFault>()(
+  extends /*@__PURE__*/ S.TaggedError<ServiceLinkedRoleNotFoundFault>()(
     "ServiceLinkedRoleNotFoundFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -277,7 +277,7 @@ export class ServiceLinkedRoleNotFoundFault
     ),
   ).pipe(C.withBadRequestError) {}
 export class ServiceQuotaExceededException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ServiceQuotaExceededException>()(
+  extends /*@__PURE__*/ S.TaggedError<ServiceQuotaExceededException>()(
     "ServiceQuotaExceededException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -286,7 +286,7 @@ export class ServiceQuotaExceededException
     ),
   ).pipe(C.withQuotaError) {}
 export class SubnetGroupAlreadyExistsFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<SubnetGroupAlreadyExistsFault>()(
+  extends /*@__PURE__*/ S.TaggedError<SubnetGroupAlreadyExistsFault>()(
     "SubnetGroupAlreadyExistsFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -298,7 +298,7 @@ export class SubnetGroupAlreadyExistsFault
     ),
   ).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
 export class SubnetGroupInUseFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<SubnetGroupInUseFault>()(
+  extends /*@__PURE__*/ S.TaggedError<SubnetGroupInUseFault>()(
     "SubnetGroupInUseFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -307,7 +307,7 @@ export class SubnetGroupInUseFault
     ),
   ).pipe(C.withBadRequestError) {}
 export class SubnetGroupNotFoundFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<SubnetGroupNotFoundFault>()(
+  extends /*@__PURE__*/ S.TaggedError<SubnetGroupNotFoundFault>()(
     "SubnetGroupNotFoundFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -319,7 +319,7 @@ export class SubnetGroupNotFoundFault
     ),
   ).pipe(C.withBadRequestError) {}
 export class SubnetGroupQuotaExceededFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<SubnetGroupQuotaExceededFault>()(
+  extends /*@__PURE__*/ S.TaggedError<SubnetGroupQuotaExceededFault>()(
     "SubnetGroupQuotaExceededFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -331,7 +331,7 @@ export class SubnetGroupQuotaExceededFault
     ),
   ).pipe(C.withBadRequestError) {}
 export class SubnetInUse
-  extends /*@__PURE__*/ S.TaggedErrorClass<SubnetInUse>()(
+  extends /*@__PURE__*/ S.TaggedError<SubnetInUse>()(
     "SubnetInUse",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -340,7 +340,7 @@ export class SubnetInUse
     ),
   ).pipe(C.withBadRequestError, C.withDependencyViolationError) {}
 export class SubnetNotAllowedFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<SubnetNotAllowedFault>()(
+  extends /*@__PURE__*/ S.TaggedError<SubnetNotAllowedFault>()(
     "SubnetNotAllowedFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -349,7 +349,7 @@ export class SubnetNotAllowedFault
     ),
   ).pipe(C.withBadRequestError) {}
 export class SubnetQuotaExceededFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<SubnetQuotaExceededFault>()(
+  extends /*@__PURE__*/ S.TaggedError<SubnetQuotaExceededFault>()(
     "SubnetQuotaExceededFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -361,7 +361,7 @@ export class SubnetQuotaExceededFault
     ),
   ).pipe(C.withBadRequestError) {}
 export class TagNotFoundFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<TagNotFoundFault>()(
+  extends /*@__PURE__*/ S.TaggedError<TagNotFoundFault>()(
     "TagNotFoundFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -370,7 +370,7 @@ export class TagNotFoundFault
     ),
   ).pipe(C.withBadRequestError) {}
 export class TagQuotaPerResourceExceeded
-  extends /*@__PURE__*/ S.TaggedErrorClass<TagQuotaPerResourceExceeded>()(
+  extends /*@__PURE__*/ S.TaggedError<TagQuotaPerResourceExceeded>()(
     "TagQuotaPerResourceExceeded",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(

@@ -48,7 +48,7 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
 
 export class DatabaseAlreadyExists
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<DatabaseAlreadyExists>()(
+    /*@__PURE__*/ S.TaggedError<DatabaseAlreadyExists>()(
       "DatabaseAlreadyExists",
       {
         code: S.Number,
@@ -60,7 +60,7 @@ export class DatabaseAlreadyExists
 
 export class DatabaseNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<DatabaseNotFound>()("DatabaseNotFound", {
+    /*@__PURE__*/ S.TaggedError<DatabaseNotFound>()("DatabaseNotFound", {
       code: S.Number,
       message: S.String,
     }),
@@ -69,7 +69,7 @@ export class DatabaseNotFound
 
 export class InternalError
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<InternalError>()("InternalError", {
+    /*@__PURE__*/ S.TaggedError<InternalError>()("InternalError", {
       code: S.Number,
       message: S.String,
     }),
@@ -78,7 +78,7 @@ export class InternalError
 
 export class InvalidObjectIdentifier
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<InvalidObjectIdentifier>()(
+    /*@__PURE__*/ S.TaggedError<InvalidObjectIdentifier>()(
       "InvalidObjectIdentifier",
       {
         code: S.Number,
@@ -90,7 +90,7 @@ export class InvalidObjectIdentifier
 
 export class InvalidProperty
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<InvalidProperty>()("InvalidProperty", {
+    /*@__PURE__*/ S.TaggedError<InvalidProperty>()("InvalidProperty", {
       code: S.Number,
       message: S.String,
     }),
@@ -99,7 +99,7 @@ export class InvalidProperty
 
 export class InvalidRequest
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<InvalidRequest>()("InvalidRequest", {
+    /*@__PURE__*/ S.TaggedError<InvalidRequest>()("InvalidRequest", {
       code: S.Number,
       message: S.String,
     }),
@@ -108,19 +108,16 @@ export class InvalidRequest
 
 export class NoHistoryAvailable
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<NoHistoryAvailable>()(
-      "NoHistoryAvailable",
-      {
-        code: S.Number,
-        message: S.String,
-      },
-    ),
+    /*@__PURE__*/ S.TaggedError<NoHistoryAvailable>()("NoHistoryAvailable", {
+      code: S.Number,
+      message: S.String,
+    }),
     [{ code: 7500 }],
   ) {}
 
 export class TimestampTooOld
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<TimestampTooOld>()("TimestampTooOld", {
+    /*@__PURE__*/ S.TaggedError<TimestampTooOld>()("TimestampTooOld", {
       code: S.Number,
       message: S.String,
     }),
@@ -129,7 +126,7 @@ export class TimestampTooOld
 
 export class UnknownError
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<UnknownError>()("UnknownError", {
+    /*@__PURE__*/ S.TaggedError<UnknownError>()("UnknownError", {
       code: S.Number,
       message: S.String,
     }),

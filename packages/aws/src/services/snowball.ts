@@ -86,12 +86,12 @@ const rules = T.EndpointResolver((p, _) => {
 });
 
 export class ClusterLimitExceededException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ClusterLimitExceededException>()(
+  extends /*@__PURE__*/ S.TaggedError<ClusterLimitExceededException>()(
     "ClusterLimitExceededException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class ConflictException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ConflictException>()(
+  extends /*@__PURE__*/ S.TaggedError<ConflictException>()(
     "ConflictException",
     {
       ConflictResource: S.optional(S.String),
@@ -99,32 +99,32 @@ export class ConflictException
     },
   ) {}
 export class Ec2RequestFailedException
-  extends /*@__PURE__*/ S.TaggedErrorClass<Ec2RequestFailedException>()(
+  extends /*@__PURE__*/ S.TaggedError<Ec2RequestFailedException>()(
     "Ec2RequestFailedException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidAddressException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidAddressException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidAddressException>()(
     "InvalidAddressException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidInputCombinationException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidInputCombinationException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidInputCombinationException>()(
     "InvalidInputCombinationException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidJobStateException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidJobStateException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidJobStateException>()(
     "InvalidJobStateException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidNextTokenException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidNextTokenException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidNextTokenException>()(
     "InvalidNextTokenException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidResourceException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidResourceException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidResourceException>()(
     "InvalidResourceException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -132,17 +132,17 @@ export class InvalidResourceException
     },
   ) {}
 export class KMSRequestFailedException
-  extends /*@__PURE__*/ S.TaggedErrorClass<KMSRequestFailedException>()(
+  extends /*@__PURE__*/ S.TaggedError<KMSRequestFailedException>()(
     "KMSRequestFailedException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class ReturnShippingLabelAlreadyExistsException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ReturnShippingLabelAlreadyExistsException>()(
+  extends /*@__PURE__*/ S.TaggedError<ReturnShippingLabelAlreadyExistsException>()(
     "ReturnShippingLabelAlreadyExistsException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withAlreadyExistsError) {}
 export class UnsupportedAddressException
-  extends /*@__PURE__*/ S.TaggedErrorClass<UnsupportedAddressException>()(
+  extends /*@__PURE__*/ S.TaggedError<UnsupportedAddressException>()(
     "UnsupportedAddressException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}

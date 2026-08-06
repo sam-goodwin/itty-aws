@@ -89,19 +89,19 @@ const rules = T.EndpointResolver((p, _) => {
 });
 
 export class DnssecLimitExceeded
-  extends /*@__PURE__*/ S.TaggedErrorClass<DnssecLimitExceeded>()(
+  extends /*@__PURE__*/ S.TaggedError<DnssecLimitExceeded>()(
     "DnssecLimitExceeded",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError, C.withThrottlingError) {}
 export class DomainLimitExceeded
-  extends /*@__PURE__*/ S.TaggedErrorClass<DomainLimitExceeded>()(
+  extends /*@__PURE__*/ S.TaggedError<DomainLimitExceeded>()(
     "DomainLimitExceeded",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError, C.withThrottlingError) {}
 export class DomainNotFound
-  extends /*@__PURE__*/ S.TaggedErrorClass<DomainNotFound>()(
+  extends /*@__PURE__*/ S.TaggedError<DomainNotFound>()(
     "DomainNotFound",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.SyntheticError({
@@ -110,7 +110,7 @@ export class DomainNotFound
     }),
   ).pipe(C.withNotFoundError) {}
 export class DuplicateRequest
-  extends /*@__PURE__*/ S.TaggedErrorClass<DuplicateRequest>()(
+  extends /*@__PURE__*/ S.TaggedError<DuplicateRequest>()(
     "DuplicateRequest",
     {
       requestId: S.optional(S.String),
@@ -119,19 +119,19 @@ export class DuplicateRequest
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidInput
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidInput>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidInput>()(
     "InvalidInput",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class OperationLimitExceeded
-  extends /*@__PURE__*/ S.TaggedErrorClass<OperationLimitExceeded>()(
+  extends /*@__PURE__*/ S.TaggedError<OperationLimitExceeded>()(
     "OperationLimitExceeded",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError, C.withThrottlingError) {}
 export class TLDInMaintenance
-  extends /*@__PURE__*/ S.TaggedErrorClass<TLDInMaintenance>()(
+  extends /*@__PURE__*/ S.TaggedError<TLDInMaintenance>()(
     "TLDInMaintenance",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -140,13 +140,13 @@ export class TLDInMaintenance
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TLDRulesViolation
-  extends /*@__PURE__*/ S.TaggedErrorClass<TLDRulesViolation>()(
+  extends /*@__PURE__*/ S.TaggedError<TLDRulesViolation>()(
     "TLDRulesViolation",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class UnsupportedTLD
-  extends /*@__PURE__*/ S.TaggedErrorClass<UnsupportedTLD>()(
+  extends /*@__PURE__*/ S.TaggedError<UnsupportedTLD>()(
     "UnsupportedTLD",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),

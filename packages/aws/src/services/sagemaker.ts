@@ -93,12 +93,12 @@ const rules = T.EndpointResolver((p, _) => {
 });
 
 export class ConflictException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ConflictException>()(
+  extends /*@__PURE__*/ S.TaggedError<ConflictException>()(
     "ConflictException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class EndpointAlreadyExists
-  extends /*@__PURE__*/ S.TaggedErrorClass<EndpointAlreadyExists>()(
+  extends /*@__PURE__*/ S.TaggedError<EndpointAlreadyExists>()(
     "EndpointAlreadyExists",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.SyntheticError({
@@ -107,7 +107,7 @@ export class EndpointAlreadyExists
     }),
   ).pipe(C.withAlreadyExistsError, C.withConflictError) {}
 export class EndpointConfigAlreadyExists
-  extends /*@__PURE__*/ S.TaggedErrorClass<EndpointConfigAlreadyExists>()(
+  extends /*@__PURE__*/ S.TaggedError<EndpointConfigAlreadyExists>()(
     "EndpointConfigAlreadyExists",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.SyntheticError({
@@ -118,7 +118,7 @@ export class EndpointConfigAlreadyExists
     }),
   ).pipe(C.withAlreadyExistsError, C.withConflictError) {}
 export class EndpointConfigNotFound
-  extends /*@__PURE__*/ S.TaggedErrorClass<EndpointConfigNotFound>()(
+  extends /*@__PURE__*/ S.TaggedError<EndpointConfigNotFound>()(
     "EndpointConfigNotFound",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.SyntheticError({
@@ -127,7 +127,7 @@ export class EndpointConfigNotFound
     }),
   ).pipe(C.withNotFoundError) {}
 export class EndpointNotFound
-  extends /*@__PURE__*/ S.TaggedErrorClass<EndpointNotFound>()(
+  extends /*@__PURE__*/ S.TaggedError<EndpointNotFound>()(
     "EndpointNotFound",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.SyntheticError({
@@ -136,7 +136,7 @@ export class EndpointNotFound
     }),
   ).pipe(C.withNotFoundError) {}
 export class ModelAlreadyExists
-  extends /*@__PURE__*/ S.TaggedErrorClass<ModelAlreadyExists>()(
+  extends /*@__PURE__*/ S.TaggedError<ModelAlreadyExists>()(
     "ModelAlreadyExists",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.SyntheticError({
@@ -145,7 +145,7 @@ export class ModelAlreadyExists
     }),
   ).pipe(C.withAlreadyExistsError, C.withConflictError) {}
 export class ModelNotFound
-  extends /*@__PURE__*/ S.TaggedErrorClass<ModelNotFound>()(
+  extends /*@__PURE__*/ S.TaggedError<ModelNotFound>()(
     "ModelNotFound",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.SyntheticError({
@@ -154,19 +154,18 @@ export class ModelNotFound
     }),
   ).pipe(C.withNotFoundError) {}
 export class ResourceInUse
-  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceInUse>()("ResourceInUse", {
+  extends /*@__PURE__*/ S.TaggedError<ResourceInUse>()("ResourceInUse", {
     message: S.optional(S.String).pipe(T.ErrorMessage()),
   }).pipe(C.withDependencyViolationError) {}
 export class ResourceLimitExceeded
-  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceLimitExceeded>()(
+  extends /*@__PURE__*/ S.TaggedError<ResourceLimitExceeded>()(
     "ResourceLimitExceeded",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withThrottlingError) {}
 export class ResourceNotFound
-  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFound>()(
-    "ResourceNotFound",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-  ) {}
+  extends /*@__PURE__*/ S.TaggedError<ResourceNotFound>()("ResourceNotFound", {
+    message: S.optional(S.String).pipe(T.ErrorMessage()),
+  }) {}
 export type AssociationEntityArn = string;
 export type AssociationEdgeType =
   | "ContributedTo"

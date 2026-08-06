@@ -9,7 +9,7 @@
  * ```ts
  * import * as Category from "@distilled.cloud/core/category";
  *
- * export class Unauthorized extends Schema.TaggedErrorClass<Unauthorized>()(
+ * export class Unauthorized extends Schema.TaggedError<Unauthorized>()(
  *   "Unauthorized",
  *   { message: Schema.String },
  * ).pipe(Category.withAuthError) {}
@@ -92,7 +92,7 @@ export interface RetryableInfo {
  *
  * @example
  * ```ts
- * export class MyError extends Schema.TaggedErrorClass<MyError>()(
+ * export class MyError extends Schema.TaggedError<MyError>()(
  *   "MyError",
  *   { message: Schema.String },
  * ).pipe(Category.withCategory(Category.AuthError)) {}
@@ -123,13 +123,13 @@ export const withCategory =
  * @example
  * ```ts
  * // Standard retryable error
- * export class TransientError extends Schema.TaggedErrorClass<TransientError>()(
+ * export class TransientError extends Schema.TaggedError<TransientError>()(
  *   "TransientError",
  *   { message: Schema.String },
  * ).pipe(Category.withRetryable()) {}
  *
  * // Throttling error (uses longer backoff)
- * export class RateLimitError extends Schema.TaggedErrorClass<RateLimitError>()(
+ * export class RateLimitError extends Schema.TaggedError<RateLimitError>()(
  *   "RateLimitError",
  *   { message: Schema.String },
  * ).pipe(Category.withRetryable({ throttling: true })) {}

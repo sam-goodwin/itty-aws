@@ -83,32 +83,32 @@ const rules = T.EndpointResolver((p, _) => {
 });
 
 export class ConcurrentModificationException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ConcurrentModificationException>()(
+  extends /*@__PURE__*/ S.TaggedError<ConcurrentModificationException>()(
     "ConcurrentModificationException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class ConstraintViolationException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ConstraintViolationException>()(
+  extends /*@__PURE__*/ S.TaggedError<ConstraintViolationException>()(
     "ConstraintViolationException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InternalServiceException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InternalServiceException>()(
+  extends /*@__PURE__*/ S.TaggedError<InternalServiceException>()(
     "InternalServiceException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidParameterException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidParameterException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidParameterException>()(
     "InvalidParameterException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class PaginationTokenExpiredException
-  extends /*@__PURE__*/ S.TaggedErrorClass<PaginationTokenExpiredException>()(
+  extends /*@__PURE__*/ S.TaggedError<PaginationTokenExpiredException>()(
     "PaginationTokenExpiredException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class ThrottledException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ThrottledException>()(
+  extends /*@__PURE__*/ S.TaggedError<ThrottledException>()(
     "ThrottledException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}

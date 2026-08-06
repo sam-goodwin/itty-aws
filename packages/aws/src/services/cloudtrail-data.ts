@@ -83,32 +83,31 @@ const rules = T.EndpointResolver((p, _) => {
 });
 
 export class ChannelInsufficientPermission
-  extends /*@__PURE__*/ S.TaggedErrorClass<ChannelInsufficientPermission>()(
+  extends /*@__PURE__*/ S.TaggedError<ChannelInsufficientPermission>()(
     "ChannelInsufficientPermission",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class ChannelNotFound
-  extends /*@__PURE__*/ S.TaggedErrorClass<ChannelNotFound>()(
-    "ChannelNotFound",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-  ) {}
+  extends /*@__PURE__*/ S.TaggedError<ChannelNotFound>()("ChannelNotFound", {
+    message: S.optional(S.String).pipe(T.ErrorMessage()),
+  }) {}
 export class ChannelUnsupportedSchema
-  extends /*@__PURE__*/ S.TaggedErrorClass<ChannelUnsupportedSchema>()(
+  extends /*@__PURE__*/ S.TaggedError<ChannelUnsupportedSchema>()(
     "ChannelUnsupportedSchema",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class DuplicatedAuditEventId
-  extends /*@__PURE__*/ S.TaggedErrorClass<DuplicatedAuditEventId>()(
+  extends /*@__PURE__*/ S.TaggedError<DuplicatedAuditEventId>()(
     "DuplicatedAuditEventId",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidChannelARN
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidChannelARN>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidChannelARN>()(
     "InvalidChannelARN",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class UnsupportedOperationException
-  extends /*@__PURE__*/ S.TaggedErrorClass<UnsupportedOperationException>()(
+  extends /*@__PURE__*/ S.TaggedError<UnsupportedOperationException>()(
     "UnsupportedOperationException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}

@@ -38,7 +38,7 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
 
 export class Forbidden
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    /*@__PURE__*/ S.TaggedError<Forbidden>()("Forbidden", {
       code: S.Number,
       message: S.String,
     }),
@@ -47,7 +47,7 @@ export class Forbidden
 
 export class ShareNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<ShareNotFound>()("ShareNotFound", {
+    /*@__PURE__*/ S.TaggedError<ShareNotFound>()("ShareNotFound", {
       code: S.Number,
       message: S.String,
     }),
@@ -56,7 +56,7 @@ export class ShareNotFound
 
 export class ShareRecipientNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<ShareRecipientNotFound>()(
+    /*@__PURE__*/ S.TaggedError<ShareRecipientNotFound>()(
       "ShareRecipientNotFound",
       {
         code: S.Number,
@@ -68,7 +68,7 @@ export class ShareRecipientNotFound
 
 export class ShareResourceNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<ShareResourceNotFound>()(
+    /*@__PURE__*/ S.TaggedError<ShareResourceNotFound>()(
       "ShareResourceNotFound",
       {
         code: S.Number,

@@ -84,7 +84,7 @@ const rules = T.EndpointResolver((p, _) => {
 });
 
 export class InvalidParameterValueException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidParameterValueException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidParameterValueException>()(
     "InvalidParameterValueException",
     {
       Type: S.optional(S.String),
@@ -93,7 +93,7 @@ export class InvalidParameterValueException
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class NetworkConnectorLimitExceededException
-  extends /*@__PURE__*/ S.TaggedErrorClass<NetworkConnectorLimitExceededException>()(
+  extends /*@__PURE__*/ S.TaggedError<NetworkConnectorLimitExceededException>()(
     "NetworkConnectorLimitExceededException",
     {
       Type: S.optional(S.String),
@@ -102,7 +102,7 @@ export class NetworkConnectorLimitExceededException
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ResourceConflictException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceConflictException>()(
+  extends /*@__PURE__*/ S.TaggedError<ResourceConflictException>()(
     "ResourceConflictException",
     {
       Type: S.optional(S.String),
@@ -111,7 +111,7 @@ export class ResourceConflictException
     T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class ResourceNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
     {
       Type: S.optional(S.String),
@@ -120,7 +120,7 @@ export class ResourceNotFoundException
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ServiceException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ServiceException>()(
+  extends /*@__PURE__*/ S.TaggedError<ServiceException>()(
     "ServiceException",
     {
       Type: S.optional(S.String),
@@ -129,7 +129,7 @@ export class ServiceException
     T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class TooManyRequestsException
-  extends /*@__PURE__*/ S.TaggedErrorClass<TooManyRequestsException>()(
+  extends /*@__PURE__*/ S.TaggedError<TooManyRequestsException>()(
     "TooManyRequestsException",
     {
       retryAfterSeconds: S.optional(S.String).pipe(T.HttpHeader("Retry-After")),
