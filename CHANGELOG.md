@@ -1,3 +1,21 @@
+## v1.0.0-rc.3
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **cloudflare**:
+  - Read union arm keys the docs state inline &nbsp;-&nbsp; by **Michael K** in https://github.com/alchemy-run/distilled/issues/424 [<samp>(26cfb)</samp>](https://github.com/alchemy-run/distilled/commit/26cfb3e6b)
+  - Declare each error once per resource, not per operation &nbsp;-&nbsp; by **Michael K** in https://github.com/alchemy-run/distilled/issues/428 [<samp>(9cc96)</samp>](https://github.com/alchemy-run/distilled/commit/9cc967140)
+- **packages**:
+  - Effect is a peer, platform-bun is dev-only &nbsp;-&nbsp; by **Michael K** in https://github.com/alchemy-run/distilled/issues/425 [<samp>(0f46a)</samp>](https://github.com/alchemy-run/distilled/commit/0f46afa17)
+
+### &nbsp;&nbsp;&nbsp;🏎 Performance
+
+- Cut the cloudflare package from 94 MB to 75 MB &nbsp;-&nbsp; by **Michael K** in https://github.com/alchemy-run/distilled/issues/427 [<samp>(f7153)</samp>](https://github.com/alchemy-run/distilled/commit/f71532e05)
+
+##### &nbsp;&nbsp;&nbsp;&nbsp;[View changes on GitHub](https://github.com/alchemy-run/distilled/compare/v1.0.0-rc.2...HEAD)
+
+---
+
 ## v1.0.0-rc.2
 
 ### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
