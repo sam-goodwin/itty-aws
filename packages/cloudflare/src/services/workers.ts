@@ -125,43 +125,34 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
 
 export class ContentTypeRequired
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<ContentTypeRequired>()(
-      "ContentTypeRequired",
-      {
-        code: S.Number,
-        message: S.String,
-      },
-    ),
+    /*@__PURE__*/ S.TaggedError<ContentTypeRequired>()("ContentTypeRequired", {
+      code: S.Number,
+      message: S.String,
+    }),
     [{ code: 10001 }],
   ) {}
 
 export class D1DatabaseNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<D1DatabaseNotFound>()(
-      "D1DatabaseNotFound",
-      {
-        code: S.Number,
-        message: S.String,
-      },
-    ),
+    /*@__PURE__*/ S.TaggedError<D1DatabaseNotFound>()("D1DatabaseNotFound", {
+      code: S.Number,
+      message: S.String,
+    }),
     [{ code: 10181 }],
   ) {}
 
 export class DeploymentNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<DeploymentNotFound>()(
-      "DeploymentNotFound",
-      {
-        code: S.Number,
-        message: S.String,
-      },
-    ),
+    /*@__PURE__*/ S.TaggedError<DeploymentNotFound>()("DeploymentNotFound", {
+      code: S.Number,
+      message: S.String,
+    }),
     [{ code: 10336 }],
   ) {}
 
 export class DispatchNamespaceNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<DispatchNamespaceNotFound>()(
+    /*@__PURE__*/ S.TaggedError<DispatchNamespaceNotFound>()(
       "DispatchNamespaceNotFound",
       {
         code: S.Number,
@@ -173,7 +164,7 @@ export class DispatchNamespaceNotFound
 
 export class DomainNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<DomainNotFound>()("DomainNotFound", {
+    /*@__PURE__*/ S.TaggedError<DomainNotFound>()("DomainNotFound", {
       code: S.Number,
       message: S.String,
     }),
@@ -182,7 +173,7 @@ export class DomainNotFound
 
 export class DuplicateMigrationTarget
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<DuplicateMigrationTarget>()(
+    /*@__PURE__*/ S.TaggedError<DuplicateMigrationTarget>()(
       "DuplicateMigrationTarget",
       {
         code: S.Number,
@@ -201,7 +192,7 @@ export class DuplicateMigrationTarget
 
 export class DurableObjectClassNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<DurableObjectClassNotFound>()(
+    /*@__PURE__*/ S.TaggedError<DurableObjectClassNotFound>()(
       "DurableObjectClassNotFound",
       {
         code: S.Number,
@@ -213,7 +204,7 @@ export class DurableObjectClassNotFound
 
 export class DurableObjectMustBeSqlite
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<DurableObjectMustBeSqlite>()(
+    /*@__PURE__*/ S.TaggedError<DurableObjectMustBeSqlite>()(
       "DurableObjectMustBeSqlite",
       {
         code: S.Number,
@@ -225,7 +216,7 @@ export class DurableObjectMustBeSqlite
 
 export class Forbidden
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    /*@__PURE__*/ S.TaggedError<Forbidden>()("Forbidden", {
       code: S.Number,
       message: S.String,
     }),
@@ -234,7 +225,7 @@ export class Forbidden
 
 export class HostnameAlreadyInUse
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<HostnameAlreadyInUse>()(
+    /*@__PURE__*/ S.TaggedError<HostnameAlreadyInUse>()(
       "HostnameAlreadyInUse",
       {
         code: S.Number,
@@ -246,7 +237,7 @@ export class HostnameAlreadyInUse
 
 export class HyperdriveConfigNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<HyperdriveConfigNotFound>()(
+    /*@__PURE__*/ S.TaggedError<HyperdriveConfigNotFound>()(
       "HyperdriveConfigNotFound",
       {
         code: S.Number,
@@ -258,7 +249,7 @@ export class HyperdriveConfigNotFound
 
 export class InvalidRoute
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<InvalidRoute>()("InvalidRoute", {
+    /*@__PURE__*/ S.TaggedError<InvalidRoute>()("InvalidRoute", {
       code: S.Number,
       message: S.String,
     }),
@@ -267,43 +258,34 @@ export class InvalidRoute
 
 export class InvalidRoutePattern
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<InvalidRoutePattern>()(
-      "InvalidRoutePattern",
-      {
-        code: S.Number,
-        message: S.String,
-      },
-    ),
+    /*@__PURE__*/ S.TaggedError<InvalidRoutePattern>()("InvalidRoutePattern", {
+      code: S.Number,
+      message: S.String,
+    }),
     [{ code: 10022 }],
   ) {}
 
 export class InvalidWorkerScript
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<InvalidWorkerScript>()(
-      "InvalidWorkerScript",
-      {
-        code: S.Number,
-        message: S.String,
-      },
-    ),
+    /*@__PURE__*/ S.TaggedError<InvalidWorkerScript>()("InvalidWorkerScript", {
+      code: S.Number,
+      message: S.String,
+    }),
     [{ code: 10068 }],
   ) {}
 
 export class KVNamespaceNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<KVNamespaceNotFound>()(
-      "KVNamespaceNotFound",
-      {
-        code: S.Number,
-        message: S.String,
-      },
-    ),
+    /*@__PURE__*/ S.TaggedError<KVNamespaceNotFound>()("KVNamespaceNotFound", {
+      code: S.Number,
+      message: S.String,
+    }),
     [{ code: 10041 }],
   ) {}
 
 export class MtlsCertificateNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<MtlsCertificateNotFound>()(
+    /*@__PURE__*/ S.TaggedError<MtlsCertificateNotFound>()(
       "MtlsCertificateNotFound",
       {
         code: S.Number,
@@ -315,7 +297,7 @@ export class MtlsCertificateNotFound
 
 export class ObservabilityDestinationCreateFailed
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<ObservabilityDestinationCreateFailed>()(
+    /*@__PURE__*/ S.TaggedError<ObservabilityDestinationCreateFailed>()(
       "ObservabilityDestinationCreateFailed",
       {
         code: S.Number,
@@ -327,7 +309,7 @@ export class ObservabilityDestinationCreateFailed
 
 export class ObservabilityDestinationNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<ObservabilityDestinationNotFound>()(
+    /*@__PURE__*/ S.TaggedError<ObservabilityDestinationNotFound>()(
       "ObservabilityDestinationNotFound",
       {
         code: S.Number,
@@ -339,7 +321,7 @@ export class ObservabilityDestinationNotFound
 
 export class ObservabilityDestinationPreflightFailed
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<ObservabilityDestinationPreflightFailed>()(
+    /*@__PURE__*/ S.TaggedError<ObservabilityDestinationPreflightFailed>()(
       "ObservabilityDestinationPreflightFailed",
       {
         code: S.Number,
@@ -351,7 +333,7 @@ export class ObservabilityDestinationPreflightFailed
 
 export class QueueConsumerConflict
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<QueueConsumerConflict>()(
+    /*@__PURE__*/ S.TaggedError<QueueConsumerConflict>()(
       "QueueConsumerConflict",
       {
         code: S.Number,
@@ -363,7 +345,7 @@ export class QueueConsumerConflict
 
 export class QueueNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<QueueNotFound>()("QueueNotFound", {
+    /*@__PURE__*/ S.TaggedError<QueueNotFound>()("QueueNotFound", {
       code: S.Number,
       message: S.String,
     }),
@@ -372,7 +354,7 @@ export class QueueNotFound
 
 export class R2BucketNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<R2BucketNotFound>()("R2BucketNotFound", {
+    /*@__PURE__*/ S.TaggedError<R2BucketNotFound>()("R2BucketNotFound", {
       code: S.Number,
       message: S.String,
     }),
@@ -381,7 +363,7 @@ export class R2BucketNotFound
 
 export class RouteNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<RouteNotFound>()("RouteNotFound", {
+    /*@__PURE__*/ S.TaggedError<RouteNotFound>()("RouteNotFound", {
       code: S.Number,
       message: S.String,
     }),
@@ -390,19 +372,16 @@ export class RouteNotFound
 
 export class RouteScriptNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<RouteScriptNotFound>()(
-      "RouteScriptNotFound",
-      {
-        code: S.Number,
-        message: S.String,
-      },
-    ),
+    /*@__PURE__*/ S.TaggedError<RouteScriptNotFound>()("RouteScriptNotFound", {
+      code: S.Number,
+      message: S.String,
+    }),
     [{ code: 10019 }],
   ) {}
 
 export class ScriptModuleNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<ScriptModuleNotFound>()(
+    /*@__PURE__*/ S.TaggedError<ScriptModuleNotFound>()(
       "ScriptModuleNotFound",
       {
         code: S.Number,
@@ -414,19 +393,16 @@ export class ScriptModuleNotFound
 
 export class ScriptStartupError
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<ScriptStartupError>()(
-      "ScriptStartupError",
-      {
-        code: S.Number,
-        message: S.String,
-      },
-    ),
+    /*@__PURE__*/ S.TaggedError<ScriptStartupError>()("ScriptStartupError", {
+      code: S.Number,
+      message: S.String,
+    }),
     [{ code: 10021 }],
   ) {}
 
 export class SecretNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<SecretNotFound>()("SecretNotFound", {
+    /*@__PURE__*/ S.TaggedError<SecretNotFound>()("SecretNotFound", {
       code: S.Number,
       message: S.String,
     }),
@@ -435,7 +411,7 @@ export class SecretNotFound
 
 export class SecretsStoreBindingNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<SecretsStoreBindingNotFound>()(
+    /*@__PURE__*/ S.TaggedError<SecretsStoreBindingNotFound>()(
       "SecretsStoreBindingNotFound",
       {
         code: S.Number,
@@ -447,7 +423,7 @@ export class SecretsStoreBindingNotFound
 
 export class ServiceBindingConflict
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<ServiceBindingConflict>()(
+    /*@__PURE__*/ S.TaggedError<ServiceBindingConflict>()(
       "ServiceBindingConflict",
       {
         code: S.Number,
@@ -459,7 +435,7 @@ export class ServiceBindingConflict
 
 export class ServiceBindingNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<ServiceBindingNotFound>()(
+    /*@__PURE__*/ S.TaggedError<ServiceBindingNotFound>()(
       "ServiceBindingNotFound",
       {
         code: S.Number,
@@ -471,7 +447,7 @@ export class ServiceBindingNotFound
 
 export class SubdomainAlreadyExists
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<SubdomainAlreadyExists>()(
+    /*@__PURE__*/ S.TaggedError<SubdomainAlreadyExists>()(
       "SubdomainAlreadyExists",
       {
         code: S.Number,
@@ -483,7 +459,7 @@ export class SubdomainAlreadyExists
 
 export class SubdomainNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<SubdomainNotFound>()("SubdomainNotFound", {
+    /*@__PURE__*/ S.TaggedError<SubdomainNotFound>()("SubdomainNotFound", {
       code: S.Number,
       message: S.String,
     }),
@@ -492,7 +468,7 @@ export class SubdomainNotFound
 
 export class VectorizeIndexNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<VectorizeIndexNotFound>()(
+    /*@__PURE__*/ S.TaggedError<VectorizeIndexNotFound>()(
       "VectorizeIndexNotFound",
       {
         code: S.Number,
@@ -504,7 +480,7 @@ export class VectorizeIndexNotFound
 
 export class VersionNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<VersionNotFound>()("VersionNotFound", {
+    /*@__PURE__*/ S.TaggedError<VersionNotFound>()("VersionNotFound", {
       code: S.Number,
       message: S.String,
     }),
@@ -513,19 +489,16 @@ export class VersionNotFound
 
 export class WorkerHasNoVersions
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<WorkerHasNoVersions>()(
-      "WorkerHasNoVersions",
-      {
-        code: S.Number,
-        message: S.String,
-      },
-    ),
+    /*@__PURE__*/ S.TaggedError<WorkerHasNoVersions>()("WorkerHasNoVersions", {
+      code: S.Number,
+      message: S.String,
+    }),
     [{ status: 404, message: { includes: "has no versions" } }],
   ) {}
 
 export class WorkerNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<WorkerNotFound>()("WorkerNotFound", {
+    /*@__PURE__*/ S.TaggedError<WorkerNotFound>()("WorkerNotFound", {
       code: S.Number,
       message: S.String,
     }),
@@ -534,7 +507,7 @@ export class WorkerNotFound
 
 export class WorkerVersionNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<WorkerVersionNotFound>()(
+    /*@__PURE__*/ S.TaggedError<WorkerVersionNotFound>()(
       "WorkerVersionNotFound",
       {
         code: S.Number,

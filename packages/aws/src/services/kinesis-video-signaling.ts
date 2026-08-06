@@ -86,37 +86,37 @@ const rules = T.EndpointResolver((p, _) => {
 });
 
 export class ClientLimitExceededException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ClientLimitExceededException>()(
+  extends /*@__PURE__*/ S.TaggedError<ClientLimitExceededException>()(
     "ClientLimitExceededException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidArgumentException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidArgumentException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidArgumentException>()(
     "InvalidArgumentException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidClientException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidClientException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidClientException>()(
     "InvalidClientException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class NotAuthorizedException
-  extends /*@__PURE__*/ S.TaggedErrorClass<NotAuthorizedException>()(
+  extends /*@__PURE__*/ S.TaggedError<NotAuthorizedException>()(
     "NotAuthorizedException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(401),
   ).pipe(C.withAuthError) {}
 export class ResourceNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class SessionExpiredException
-  extends /*@__PURE__*/ S.TaggedErrorClass<SessionExpiredException>()(
+  extends /*@__PURE__*/ S.TaggedError<SessionExpiredException>()(
     "SessionExpiredException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),

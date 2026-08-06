@@ -120,7 +120,7 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
 
 export class AiSearchInstanceNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<AiSearchInstanceNotFound>()(
+    /*@__PURE__*/ S.TaggedError<AiSearchInstanceNotFound>()(
       "AiSearchInstanceNotFound",
       {
         code: S.Number,
@@ -135,7 +135,7 @@ export class AiSearchInstanceNotFound
 
 export class Forbidden
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    /*@__PURE__*/ S.TaggedError<Forbidden>()("Forbidden", {
       code: S.Number,
       message: S.String,
     }),
@@ -144,7 +144,7 @@ export class Forbidden
 
 export class InstanceAlreadyExists
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<InstanceAlreadyExists>()(
+    /*@__PURE__*/ S.TaggedError<InstanceAlreadyExists>()(
       "InstanceAlreadyExists",
       {
         code: S.Number,
@@ -156,7 +156,7 @@ export class InstanceAlreadyExists
 
 export class InvalidRoute
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<InvalidRoute>()("InvalidRoute", {
+    /*@__PURE__*/ S.TaggedError<InvalidRoute>()("InvalidRoute", {
       code: S.Number,
       message: S.String,
     }),
@@ -165,7 +165,7 @@ export class InvalidRoute
 
 export class InvalidTokenCredentials
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<InvalidTokenCredentials>()(
+    /*@__PURE__*/ S.TaggedError<InvalidTokenCredentials>()(
       "InvalidTokenCredentials",
       {
         code: S.Number,
@@ -177,7 +177,7 @@ export class InvalidTokenCredentials
 
 export class MissingSitemap
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<MissingSitemap>()("MissingSitemap", {
+    /*@__PURE__*/ S.TaggedError<MissingSitemap>()("MissingSitemap", {
       code: S.Number,
       message: S.String,
     }),
@@ -186,7 +186,7 @@ export class MissingSitemap
 
 export class NamespaceAlreadyExists
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<NamespaceAlreadyExists>()(
+    /*@__PURE__*/ S.TaggedError<NamespaceAlreadyExists>()(
       "NamespaceAlreadyExists",
       {
         code: S.Number,
@@ -198,7 +198,7 @@ export class NamespaceAlreadyExists
 
 export class NamespaceNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<NamespaceNotFound>()("NamespaceNotFound", {
+    /*@__PURE__*/ S.TaggedError<NamespaceNotFound>()("NamespaceNotFound", {
       code: S.Number,
       message: S.String,
     }),
@@ -210,7 +210,7 @@ export class NamespaceNotFound
 
 export class NotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<NotFound>()("NotFound", {
+    /*@__PURE__*/ S.TaggedError<NotFound>()("NotFound", {
       code: S.Number,
       message: S.String,
     }),
@@ -219,7 +219,7 @@ export class NotFound
 
 export class SyncInCooldown
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<SyncInCooldown>()("SyncInCooldown", {
+    /*@__PURE__*/ S.TaggedError<SyncInCooldown>()("SyncInCooldown", {
       code: S.Number,
       message: S.String,
     }),
@@ -228,7 +228,7 @@ export class SyncInCooldown
 
 export class TokenInUseByInstances
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<TokenInUseByInstances>()(
+    /*@__PURE__*/ S.TaggedError<TokenInUseByInstances>()(
       "TokenInUseByInstances",
       {
         code: S.Number,
@@ -240,7 +240,7 @@ export class TokenInUseByInstances
 
 export class TokenNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<TokenNotFound>()("TokenNotFound", {
+    /*@__PURE__*/ S.TaggedError<TokenNotFound>()("TokenNotFound", {
       code: S.Number,
       message: S.String,
     }),
@@ -249,7 +249,7 @@ export class TokenNotFound
 
 export class UnableToConnect
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<UnableToConnect>()("UnableToConnect", {
+    /*@__PURE__*/ S.TaggedError<UnableToConnect>()("UnableToConnect", {
       code: S.Number,
       message: S.String,
     }),
@@ -258,7 +258,7 @@ export class UnableToConnect
 
 export class ValidationError
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<ValidationError>()("ValidationError", {
+    /*@__PURE__*/ S.TaggedError<ValidationError>()("ValidationError", {
       code: S.Number,
       message: S.String,
     }),
@@ -267,7 +267,7 @@ export class ValidationError
 
 export class WebCrawlerDomainNotOwned
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<WebCrawlerDomainNotOwned>()(
+    /*@__PURE__*/ S.TaggedError<WebCrawlerDomainNotOwned>()(
       "WebCrawlerDomainNotOwned",
       {
         code: S.Number,

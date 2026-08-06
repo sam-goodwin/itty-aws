@@ -86,13 +86,13 @@ const rules = T.EndpointResolver((p, _) => {
 });
 
 export class AccessDeniedException
-  extends /*@__PURE__*/ S.TaggedErrorClass<AccessDeniedException>()(
+  extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()(
     "AccessDeniedException",
     { message: S.String.pipe(T.ErrorMessage()) },
     T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class ConflictException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ConflictException>()(
+  extends /*@__PURE__*/ S.TaggedError<ConflictException>()(
     "ConflictException",
     {
       message: S.String.pipe(T.ErrorMessage()),
@@ -102,7 +102,7 @@ export class ConflictException
     T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class DecoderManifestValidationException
-  extends /*@__PURE__*/ S.TaggedErrorClass<DecoderManifestValidationException>()(
+  extends /*@__PURE__*/ S.TaggedError<DecoderManifestValidationException>()(
     "DecoderManifestValidationException",
     {
       invalidSignals: S.optional(
@@ -120,7 +120,7 @@ export class DecoderManifestValidationException
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InternalServerException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InternalServerException>()(
+  extends /*@__PURE__*/ S.TaggedError<InternalServerException>()(
     "InternalServerException",
     {
       message: S.String.pipe(T.ErrorMessage()),
@@ -129,7 +129,7 @@ export class InternalServerException
     T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class InvalidNodeException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidNodeException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidNodeException>()(
     "InvalidNodeException",
     {
       invalidNodes: S.optional(
@@ -141,7 +141,7 @@ export class InvalidNodeException
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidSignalsException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidSignalsException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidSignalsException>()(
     "InvalidSignalsException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -154,7 +154,7 @@ export class InvalidSignalsException
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class LimitExceededException
-  extends /*@__PURE__*/ S.TaggedErrorClass<LimitExceededException>()(
+  extends /*@__PURE__*/ S.TaggedError<LimitExceededException>()(
     "LimitExceededException",
     {
       message: S.String.pipe(T.ErrorMessage()),
@@ -164,7 +164,7 @@ export class LimitExceededException
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ResourceNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
     {
       message: S.String.pipe(T.ErrorMessage()),
@@ -174,7 +174,7 @@ export class ResourceNotFoundException
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ThrottlingException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ThrottlingException>()(
+  extends /*@__PURE__*/ S.TaggedError<ThrottlingException>()(
     "ThrottlingException",
     {
       message: S.String.pipe(T.ErrorMessage()),
@@ -185,7 +185,7 @@ export class ThrottlingException
     T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export class ValidationException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ValidationException>()(
+  extends /*@__PURE__*/ S.TaggedError<ValidationException>()(
     "ValidationException",
     {
       message: S.String.pipe(T.ErrorMessage()),

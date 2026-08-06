@@ -179,73 +179,73 @@ const rules = T.EndpointResolver((p, _) => {
 });
 
 export class AccessDeniedException
-  extends /*@__PURE__*/ S.TaggedErrorClass<AccessDeniedException>()(
+  extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()(
     "AccessDeniedException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class BillingViewHealthStatusException
-  extends /*@__PURE__*/ S.TaggedErrorClass<BillingViewHealthStatusException>()(
+  extends /*@__PURE__*/ S.TaggedError<BillingViewHealthStatusException>()(
     "BillingViewHealthStatusException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class CreationLimitExceededException
-  extends /*@__PURE__*/ S.TaggedErrorClass<CreationLimitExceededException>()(
+  extends /*@__PURE__*/ S.TaggedError<CreationLimitExceededException>()(
     "CreationLimitExceededException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(405),
   ).pipe(C.withBadRequestError) {}
 export class DuplicateRecordException
-  extends /*@__PURE__*/ S.TaggedErrorClass<DuplicateRecordException>()(
+  extends /*@__PURE__*/ S.TaggedError<DuplicateRecordException>()(
     "DuplicateRecordException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class ExpiredNextTokenException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ExpiredNextTokenException>()(
+  extends /*@__PURE__*/ S.TaggedError<ExpiredNextTokenException>()(
     "ExpiredNextTokenException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InternalErrorException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InternalErrorException>()(
+  extends /*@__PURE__*/ S.TaggedError<InternalErrorException>()(
     "InternalErrorException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class InvalidNextTokenException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidNextTokenException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidNextTokenException>()(
     "InvalidNextTokenException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidParameterException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidParameterException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidParameterException>()(
     "InvalidParameterException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class NotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<NotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<NotFoundException>()(
     "NotFoundException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ResourceLockedException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceLockedException>()(
+  extends /*@__PURE__*/ S.TaggedError<ResourceLockedException>()(
     "ResourceLockedException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(423),
   ) {}
 export class ServiceQuotaExceededException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ServiceQuotaExceededException>()(
+  extends /*@__PURE__*/ S.TaggedError<ServiceQuotaExceededException>()(
     "ServiceQuotaExceededException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(402),
   ).pipe(C.withQuotaError) {}
 export class ThrottlingException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ThrottlingException>()(
+  extends /*@__PURE__*/ S.TaggedError<ThrottlingException>()(
     "ThrottlingException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),

@@ -88,7 +88,7 @@ const rules = T.EndpointResolver((p, _) => {
 });
 
 export class ActiveInstanceRefreshNotFoundFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<ActiveInstanceRefreshNotFoundFault>()(
+  extends /*@__PURE__*/ S.TaggedError<ActiveInstanceRefreshNotFoundFault>()(
     "ActiveInstanceRefreshNotFoundFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -100,7 +100,7 @@ export class ActiveInstanceRefreshNotFoundFault
     ),
   ).pipe(C.withBadRequestError) {}
 export class AlreadyExistsFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<AlreadyExistsFault>()(
+  extends /*@__PURE__*/ S.TaggedError<AlreadyExistsFault>()(
     "AlreadyExistsFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -109,7 +109,7 @@ export class AlreadyExistsFault
     ),
   ).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
 export class AutoScalingGroupNotFound
-  extends /*@__PURE__*/ S.TaggedErrorClass<AutoScalingGroupNotFound>()(
+  extends /*@__PURE__*/ S.TaggedError<AutoScalingGroupNotFound>()(
     "AutoScalingGroupNotFound",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.SyntheticError({
@@ -118,7 +118,7 @@ export class AutoScalingGroupNotFound
     }),
   ) {}
 export class IdempotentParameterMismatchError
-  extends /*@__PURE__*/ S.TaggedErrorClass<IdempotentParameterMismatchError>()(
+  extends /*@__PURE__*/ S.TaggedError<IdempotentParameterMismatchError>()(
     "IdempotentParameterMismatchError",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -130,7 +130,7 @@ export class IdempotentParameterMismatchError
     ),
   ).pipe(C.withBadRequestError) {}
 export class InstanceRefreshInProgressFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<InstanceRefreshInProgressFault>()(
+  extends /*@__PURE__*/ S.TaggedError<InstanceRefreshInProgressFault>()(
     "InstanceRefreshInProgressFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -142,7 +142,7 @@ export class InstanceRefreshInProgressFault
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidNextToken
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidNextToken>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidNextToken>()(
     "InvalidNextToken",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -151,7 +151,7 @@ export class InvalidNextToken
     ),
   ).pipe(C.withBadRequestError) {}
 export class IrreversibleInstanceRefreshFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<IrreversibleInstanceRefreshFault>()(
+  extends /*@__PURE__*/ S.TaggedError<IrreversibleInstanceRefreshFault>()(
     "IrreversibleInstanceRefreshFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -163,7 +163,7 @@ export class IrreversibleInstanceRefreshFault
     ),
   ).pipe(C.withBadRequestError) {}
 export class LimitExceededFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<LimitExceededFault>()(
+  extends /*@__PURE__*/ S.TaggedError<LimitExceededFault>()(
     "LimitExceededFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -172,7 +172,7 @@ export class LimitExceededFault
     ),
   ).pipe(C.withBadRequestError) {}
 export class ResourceContentionFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceContentionFault>()(
+  extends /*@__PURE__*/ S.TaggedError<ResourceContentionFault>()(
     "ResourceContentionFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -181,7 +181,7 @@ export class ResourceContentionFault
     ),
   ).pipe(C.withServerError) {}
 export class ResourceInUseFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceInUseFault>()(
+  extends /*@__PURE__*/ S.TaggedError<ResourceInUseFault>()(
     "ResourceInUseFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -190,7 +190,7 @@ export class ResourceInUseFault
     ),
   ).pipe(C.withBadRequestError) {}
 export class ScalingActivityInProgressFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<ScalingActivityInProgressFault>()(
+  extends /*@__PURE__*/ S.TaggedError<ScalingActivityInProgressFault>()(
     "ScalingActivityInProgressFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -202,7 +202,7 @@ export class ScalingActivityInProgressFault
     ),
   ).pipe(C.withBadRequestError) {}
 export class ServiceLinkedRoleFailure
-  extends /*@__PURE__*/ S.TaggedErrorClass<ServiceLinkedRoleFailure>()(
+  extends /*@__PURE__*/ S.TaggedError<ServiceLinkedRoleFailure>()(
     "ServiceLinkedRoleFailure",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(

@@ -87,24 +87,24 @@ const rules = T.EndpointResolver((p, _) => {
 });
 
 export class ContainerNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ContainerNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<ContainerNotFoundException>()(
     "ContainerNotFoundException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class InternalServerError
-  extends /*@__PURE__*/ S.TaggedErrorClass<InternalServerError>()(
+  extends /*@__PURE__*/ S.TaggedError<InternalServerError>()(
     "InternalServerError",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class ObjectNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ObjectNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<ObjectNotFoundException>()(
     "ObjectNotFoundException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class RequestedRangeNotSatisfiableException
-  extends /*@__PURE__*/ S.TaggedErrorClass<RequestedRangeNotSatisfiableException>()(
+  extends /*@__PURE__*/ S.TaggedError<RequestedRangeNotSatisfiableException>()(
     "RequestedRangeNotSatisfiableException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(416),

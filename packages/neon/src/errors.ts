@@ -31,7 +31,7 @@ import * as Schema from "effect/Schema";
 import * as Category from "@distilled.cloud/core/category";
 
 /** Unknown Neon error — returned when nothing else matches the failure. */
-export class UnknownNeonError extends Schema.TaggedErrorClass<UnknownNeonError>()(
+export class UnknownNeonError extends Schema.TaggedError<UnknownNeonError>()(
   "UnknownNeonError",
   {
     code: Schema.optional(Schema.String),
@@ -41,7 +41,7 @@ export class UnknownNeonError extends Schema.TaggedErrorClass<UnknownNeonError>(
 ).pipe(Category.withServerError) {}
 
 /** Schema parse error wrapper (kept for v0 surface parity). */
-export class NeonParseError extends Schema.TaggedErrorClass<NeonParseError>()(
+export class NeonParseError extends Schema.TaggedError<NeonParseError>()(
   "NeonParseError",
   {
     body: Schema.Unknown,

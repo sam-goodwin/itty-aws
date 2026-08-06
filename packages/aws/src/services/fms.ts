@@ -84,32 +84,32 @@ const rules = T.EndpointResolver((p, _) => {
 });
 
 export class InternalErrorException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InternalErrorException>()(
+  extends /*@__PURE__*/ S.TaggedError<InternalErrorException>()(
     "InternalErrorException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withServerError) {}
 export class InvalidInputException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidInputException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidInputException>()(
     "InvalidInputException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidOperationException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidOperationException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidOperationException>()(
     "InvalidOperationException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidTypeException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidTypeException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidTypeException>()(
     "InvalidTypeException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class LimitExceededException
-  extends /*@__PURE__*/ S.TaggedErrorClass<LimitExceededException>()(
+  extends /*@__PURE__*/ S.TaggedError<LimitExceededException>()(
     "LimitExceededException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class ResourceNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}

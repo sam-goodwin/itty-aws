@@ -47,7 +47,7 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
 
 export class Forbidden
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    /*@__PURE__*/ S.TaggedError<Forbidden>()("Forbidden", {
       code: S.Number,
       message: S.String,
     }),
@@ -56,7 +56,7 @@ export class Forbidden
 
 export class NotEntitled
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<NotEntitled>()("NotEntitled", {
+    /*@__PURE__*/ S.TaggedError<NotEntitled>()("NotEntitled", {
       code: S.Number,
       message: S.String,
     }),
@@ -65,7 +65,7 @@ export class NotEntitled
 
 export class PolicyNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<PolicyNotFound>()("PolicyNotFound", {
+    /*@__PURE__*/ S.TaggedError<PolicyNotFound>()("PolicyNotFound", {
       code: S.Number,
       message: S.String,
     }),
@@ -74,13 +74,10 @@ export class PolicyNotFound
 
 export class PolicyQuotaExceeded
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<PolicyQuotaExceeded>()(
-      "PolicyQuotaExceeded",
-      {
-        code: S.Number,
-        message: S.String,
-      },
-    ),
+    /*@__PURE__*/ S.TaggedError<PolicyQuotaExceeded>()("PolicyQuotaExceeded", {
+      code: S.Number,
+      message: S.String,
+    }),
     [
       {
         status: 400,

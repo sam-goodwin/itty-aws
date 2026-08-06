@@ -86,7 +86,7 @@ const rules = T.EndpointResolver((p, _) => {
 });
 
 export class AccessDeniedException
-  extends /*@__PURE__*/ S.TaggedErrorClass<AccessDeniedException>()(
+  extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()(
     "AccessDeniedException",
     {
       code: S.optional(S.String),
@@ -97,7 +97,7 @@ export class AccessDeniedException
     T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class AccountSetupInProgressException
-  extends /*@__PURE__*/ S.TaggedErrorClass<AccountSetupInProgressException>()(
+  extends /*@__PURE__*/ S.TaggedError<AccountSetupInProgressException>()(
     "AccountSetupInProgressException",
     {
       code: S.optional(S.String),
@@ -108,7 +108,7 @@ export class AccountSetupInProgressException
     T.HttpError(428),
   ) {}
 export class InvalidInputException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidInputException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidInputException>()(
     "InvalidInputException",
     {
       code: S.optional(S.String),
@@ -119,7 +119,7 @@ export class InvalidInputException
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class NotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<NotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<NotFoundException>()(
     "NotFoundException",
     {
       code: S.optional(S.String),
@@ -130,7 +130,7 @@ export class NotFoundException
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class OperationFailureException
-  extends /*@__PURE__*/ S.TaggedErrorClass<OperationFailureException>()(
+  extends /*@__PURE__*/ S.TaggedError<OperationFailureException>()(
     "OperationFailureException",
     {
       code: S.optional(S.String),
@@ -141,7 +141,7 @@ export class OperationFailureException
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class RegionSetupInProgressException
-  extends /*@__PURE__*/ S.TaggedErrorClass<RegionSetupInProgressException>()(
+  extends /*@__PURE__*/ S.TaggedError<RegionSetupInProgressException>()(
     "RegionSetupInProgressException",
     {
       code: S.optional(S.String),
@@ -152,7 +152,7 @@ export class RegionSetupInProgressException
     T.HttpError(428),
   ) {}
 export class ServiceException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ServiceException>()(
+  extends /*@__PURE__*/ S.TaggedError<ServiceException>()(
     "ServiceException",
     {
       code: S.optional(S.String),
@@ -163,7 +163,7 @@ export class ServiceException
     T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class UnauthenticatedException
-  extends /*@__PURE__*/ S.TaggedErrorClass<UnauthenticatedException>()(
+  extends /*@__PURE__*/ S.TaggedError<UnauthenticatedException>()(
     "UnauthenticatedException",
     {
       code: S.optional(S.String),

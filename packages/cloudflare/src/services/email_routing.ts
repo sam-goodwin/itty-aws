@@ -27,7 +27,7 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
 
 export class DestinationNotVerified
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<DestinationNotVerified>()(
+    /*@__PURE__*/ S.TaggedError<DestinationNotVerified>()(
       "DestinationNotVerified",
       {
         code: S.Number,
@@ -39,7 +39,7 @@ export class DestinationNotVerified
 
 export class EmailAddressCreatedTooRecently
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<EmailAddressCreatedTooRecently>()(
+    /*@__PURE__*/ S.TaggedError<EmailAddressCreatedTooRecently>()(
       "EmailAddressCreatedTooRecently",
       {
         code: S.Number,
@@ -51,7 +51,7 @@ export class EmailAddressCreatedTooRecently
 
 export class EmailAddressNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<EmailAddressNotFound>()(
+    /*@__PURE__*/ S.TaggedError<EmailAddressNotFound>()(
       "EmailAddressNotFound",
       {
         code: S.Number,
@@ -63,7 +63,7 @@ export class EmailAddressNotFound
 
 export class EmailRoutingRuleNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<EmailRoutingRuleNotFound>()(
+    /*@__PURE__*/ S.TaggedError<EmailRoutingRuleNotFound>()(
       "EmailRoutingRuleNotFound",
       {
         code: S.Number,
@@ -75,7 +75,7 @@ export class EmailRoutingRuleNotFound
 
 export class Forbidden
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    /*@__PURE__*/ S.TaggedError<Forbidden>()("Forbidden", {
       code: S.Number,
       message: S.String,
     }),

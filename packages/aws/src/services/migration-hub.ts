@@ -84,47 +84,46 @@ const rules = T.EndpointResolver((p, _) => {
 });
 
 export class AccessDeniedException
-  extends /*@__PURE__*/ S.TaggedErrorClass<AccessDeniedException>()(
+  extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()(
     "AccessDeniedException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withAuthError) {}
 export class DryRunOperation
-  extends /*@__PURE__*/ S.TaggedErrorClass<DryRunOperation>()(
-    "DryRunOperation",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-  ) {}
+  extends /*@__PURE__*/ S.TaggedError<DryRunOperation>()("DryRunOperation", {
+    message: S.optional(S.String).pipe(T.ErrorMessage()),
+  }) {}
 export class HomeRegionNotSetException
-  extends /*@__PURE__*/ S.TaggedErrorClass<HomeRegionNotSetException>()(
+  extends /*@__PURE__*/ S.TaggedError<HomeRegionNotSetException>()(
     "HomeRegionNotSetException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InternalServerError
-  extends /*@__PURE__*/ S.TaggedErrorClass<InternalServerError>()(
+  extends /*@__PURE__*/ S.TaggedError<InternalServerError>()(
     "InternalServerError",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidInputException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidInputException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidInputException>()(
     "InvalidInputException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class PolicyErrorException
-  extends /*@__PURE__*/ S.TaggedErrorClass<PolicyErrorException>()(
+  extends /*@__PURE__*/ S.TaggedError<PolicyErrorException>()(
     "PolicyErrorException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class ResourceNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class ServiceUnavailableException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ServiceUnavailableException>()(
+  extends /*@__PURE__*/ S.TaggedError<ServiceUnavailableException>()(
     "ServiceUnavailableException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withServerError) {}
 export class ThrottlingException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ThrottlingException>()(
+  extends /*@__PURE__*/ S.TaggedError<ThrottlingException>()(
     "ThrottlingException",
     {
       message: S.String.pipe(T.ErrorMessage()),
@@ -133,7 +132,7 @@ export class ThrottlingException
     T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export class UnauthorizedOperation
-  extends /*@__PURE__*/ S.TaggedErrorClass<UnauthorizedOperation>()(
+  extends /*@__PURE__*/ S.TaggedError<UnauthorizedOperation>()(
     "UnauthorizedOperation",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withAuthError) {}

@@ -91,7 +91,7 @@ const rules = T.EndpointResolver((p, _) => {
 });
 
 export class AccessDeniedException
-  extends /*@__PURE__*/ S.TaggedErrorClass<AccessDeniedException>()(
+  extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()(
     "AccessDeniedException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -100,7 +100,7 @@ export class AccessDeniedException
     ),
   ).pipe(C.withAuthError) {}
 export class AccountHasOngoingImportException
-  extends /*@__PURE__*/ S.TaggedErrorClass<AccountHasOngoingImportException>()(
+  extends /*@__PURE__*/ S.TaggedError<AccountHasOngoingImportException>()(
     "AccountHasOngoingImportException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -112,7 +112,7 @@ export class AccountHasOngoingImportException
     ),
   ).pipe(C.withBadRequestError) {}
 export class AccountNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<AccountNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<AccountNotFoundException>()(
     "AccountNotFoundException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -121,7 +121,7 @@ export class AccountNotFoundException
     ),
   ).pipe(C.withBadRequestError) {}
 export class AccountNotRegisteredException
-  extends /*@__PURE__*/ S.TaggedErrorClass<AccountNotRegisteredException>()(
+  extends /*@__PURE__*/ S.TaggedError<AccountNotRegisteredException>()(
     "AccountNotRegisteredException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -130,7 +130,7 @@ export class AccountNotRegisteredException
     ),
   ).pipe(C.withBadRequestError) {}
 export class AccountRegisteredException
-  extends /*@__PURE__*/ S.TaggedErrorClass<AccountRegisteredException>()(
+  extends /*@__PURE__*/ S.TaggedError<AccountRegisteredException>()(
     "AccountRegisteredException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -139,7 +139,7 @@ export class AccountRegisteredException
     ),
   ).pipe(C.withBadRequestError) {}
 export class CannotDelegateManagementAccountException
-  extends /*@__PURE__*/ S.TaggedErrorClass<CannotDelegateManagementAccountException>()(
+  extends /*@__PURE__*/ S.TaggedError<CannotDelegateManagementAccountException>()(
     "CannotDelegateManagementAccountException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -151,7 +151,7 @@ export class CannotDelegateManagementAccountException
     ),
   ).pipe(C.withBadRequestError) {}
 export class ChannelAlreadyExistsException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ChannelAlreadyExistsException>()(
+  extends /*@__PURE__*/ S.TaggedError<ChannelAlreadyExistsException>()(
     "ChannelAlreadyExistsException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -160,7 +160,7 @@ export class ChannelAlreadyExistsException
     ),
   ).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
 export class ChannelARNInvalidException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ChannelARNInvalidException>()(
+  extends /*@__PURE__*/ S.TaggedError<ChannelARNInvalidException>()(
     "ChannelARNInvalidException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -169,7 +169,7 @@ export class ChannelARNInvalidException
     ),
   ).pipe(C.withBadRequestError) {}
 export class ChannelExistsForEDSException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ChannelExistsForEDSException>()(
+  extends /*@__PURE__*/ S.TaggedError<ChannelExistsForEDSException>()(
     "ChannelExistsForEDSException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -178,7 +178,7 @@ export class ChannelExistsForEDSException
     ),
   ).pipe(C.withBadRequestError) {}
 export class ChannelMaxLimitExceededException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ChannelMaxLimitExceededException>()(
+  extends /*@__PURE__*/ S.TaggedError<ChannelMaxLimitExceededException>()(
     "ChannelMaxLimitExceededException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -190,7 +190,7 @@ export class ChannelMaxLimitExceededException
     ),
   ).pipe(C.withBadRequestError) {}
 export class ChannelNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ChannelNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<ChannelNotFoundException>()(
     "ChannelNotFoundException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -199,7 +199,7 @@ export class ChannelNotFoundException
     ),
   ).pipe(C.withBadRequestError) {}
 export class CloudTrailAccessNotEnabledException
-  extends /*@__PURE__*/ S.TaggedErrorClass<CloudTrailAccessNotEnabledException>()(
+  extends /*@__PURE__*/ S.TaggedError<CloudTrailAccessNotEnabledException>()(
     "CloudTrailAccessNotEnabledException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -211,7 +211,7 @@ export class CloudTrailAccessNotEnabledException
     ),
   ).pipe(C.withBadRequestError) {}
 export class CloudTrailARNInvalidException
-  extends /*@__PURE__*/ S.TaggedErrorClass<CloudTrailARNInvalidException>()(
+  extends /*@__PURE__*/ S.TaggedError<CloudTrailARNInvalidException>()(
     "CloudTrailARNInvalidException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -220,7 +220,7 @@ export class CloudTrailARNInvalidException
     ),
   ).pipe(C.withBadRequestError) {}
 export class CloudTrailInvalidClientTokenIdException
-  extends /*@__PURE__*/ S.TaggedErrorClass<CloudTrailInvalidClientTokenIdException>()(
+  extends /*@__PURE__*/ S.TaggedError<CloudTrailInvalidClientTokenIdException>()(
     "CloudTrailInvalidClientTokenIdException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -232,7 +232,7 @@ export class CloudTrailInvalidClientTokenIdException
     ),
   ).pipe(C.withBadRequestError) {}
 export class CloudTrailLakeOnboardingClosed
-  extends /*@__PURE__*/ S.TaggedErrorClass<CloudTrailLakeOnboardingClosed>()(
+  extends /*@__PURE__*/ S.TaggedError<CloudTrailLakeOnboardingClosed>()(
     "CloudTrailLakeOnboardingClosed",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.SyntheticError({
@@ -241,7 +241,7 @@ export class CloudTrailLakeOnboardingClosed
     }),
   ).pipe(C.withBadRequestError) {}
 export class CloudWatchLogsDeliveryUnavailableException
-  extends /*@__PURE__*/ S.TaggedErrorClass<CloudWatchLogsDeliveryUnavailableException>()(
+  extends /*@__PURE__*/ S.TaggedError<CloudWatchLogsDeliveryUnavailableException>()(
     "CloudWatchLogsDeliveryUnavailableException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -253,7 +253,7 @@ export class CloudWatchLogsDeliveryUnavailableException
     ),
   ).pipe(C.withBadRequestError) {}
 export class ConcurrentModificationException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ConcurrentModificationException>()(
+  extends /*@__PURE__*/ S.TaggedError<ConcurrentModificationException>()(
     "ConcurrentModificationException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -265,7 +265,7 @@ export class ConcurrentModificationException
     ),
   ).pipe(C.withBadRequestError) {}
 export class ConflictException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ConflictException>()(
+  extends /*@__PURE__*/ S.TaggedError<ConflictException>()(
     "ConflictException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -274,7 +274,7 @@ export class ConflictException
     ),
   ).pipe(C.withConflictError) {}
 export class DelegatedAdminAccountLimitExceededException
-  extends /*@__PURE__*/ S.TaggedErrorClass<DelegatedAdminAccountLimitExceededException>()(
+  extends /*@__PURE__*/ S.TaggedError<DelegatedAdminAccountLimitExceededException>()(
     "DelegatedAdminAccountLimitExceededException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -286,7 +286,7 @@ export class DelegatedAdminAccountLimitExceededException
     ),
   ).pipe(C.withBadRequestError) {}
 export class EventDataStoreAlreadyExistsException
-  extends /*@__PURE__*/ S.TaggedErrorClass<EventDataStoreAlreadyExistsException>()(
+  extends /*@__PURE__*/ S.TaggedError<EventDataStoreAlreadyExistsException>()(
     "EventDataStoreAlreadyExistsException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -298,7 +298,7 @@ export class EventDataStoreAlreadyExistsException
     ),
   ).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
 export class EventDataStoreARNInvalidException
-  extends /*@__PURE__*/ S.TaggedErrorClass<EventDataStoreARNInvalidException>()(
+  extends /*@__PURE__*/ S.TaggedError<EventDataStoreARNInvalidException>()(
     "EventDataStoreARNInvalidException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -310,7 +310,7 @@ export class EventDataStoreARNInvalidException
     ),
   ).pipe(C.withBadRequestError) {}
 export class EventDataStoreFederationEnabledException
-  extends /*@__PURE__*/ S.TaggedErrorClass<EventDataStoreFederationEnabledException>()(
+  extends /*@__PURE__*/ S.TaggedError<EventDataStoreFederationEnabledException>()(
     "EventDataStoreFederationEnabledException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -322,7 +322,7 @@ export class EventDataStoreFederationEnabledException
     ),
   ).pipe(C.withBadRequestError) {}
 export class EventDataStoreHasOngoingImportException
-  extends /*@__PURE__*/ S.TaggedErrorClass<EventDataStoreHasOngoingImportException>()(
+  extends /*@__PURE__*/ S.TaggedError<EventDataStoreHasOngoingImportException>()(
     "EventDataStoreHasOngoingImportException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -334,7 +334,7 @@ export class EventDataStoreHasOngoingImportException
     ),
   ).pipe(C.withBadRequestError) {}
 export class EventDataStoreMaxLimitExceededException
-  extends /*@__PURE__*/ S.TaggedErrorClass<EventDataStoreMaxLimitExceededException>()(
+  extends /*@__PURE__*/ S.TaggedError<EventDataStoreMaxLimitExceededException>()(
     "EventDataStoreMaxLimitExceededException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -346,7 +346,7 @@ export class EventDataStoreMaxLimitExceededException
     ),
   ).pipe(C.withBadRequestError) {}
 export class EventDataStoreNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<EventDataStoreNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<EventDataStoreNotFoundException>()(
     "EventDataStoreNotFoundException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -358,7 +358,7 @@ export class EventDataStoreNotFoundException
     ),
   ).pipe(C.withBadRequestError) {}
 export class EventDataStoreTerminationProtectedException
-  extends /*@__PURE__*/ S.TaggedErrorClass<EventDataStoreTerminationProtectedException>()(
+  extends /*@__PURE__*/ S.TaggedError<EventDataStoreTerminationProtectedException>()(
     "EventDataStoreTerminationProtectedException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -370,7 +370,7 @@ export class EventDataStoreTerminationProtectedException
     ),
   ).pipe(C.withBadRequestError) {}
 export class GenerateResponseException
-  extends /*@__PURE__*/ S.TaggedErrorClass<GenerateResponseException>()(
+  extends /*@__PURE__*/ S.TaggedError<GenerateResponseException>()(
     "GenerateResponseException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -379,7 +379,7 @@ export class GenerateResponseException
     ),
   ).pipe(C.withBadRequestError) {}
 export class ImportNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ImportNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<ImportNotFoundException>()(
     "ImportNotFoundException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -388,7 +388,7 @@ export class ImportNotFoundException
     ),
   ).pipe(C.withBadRequestError) {}
 export class InactiveEventDataStoreException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InactiveEventDataStoreException>()(
+  extends /*@__PURE__*/ S.TaggedError<InactiveEventDataStoreException>()(
     "InactiveEventDataStoreException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -400,7 +400,7 @@ export class InactiveEventDataStoreException
     ),
   ).pipe(C.withBadRequestError) {}
 export class InactiveQueryException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InactiveQueryException>()(
+  extends /*@__PURE__*/ S.TaggedError<InactiveQueryException>()(
     "InactiveQueryException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -409,7 +409,7 @@ export class InactiveQueryException
     ),
   ).pipe(C.withBadRequestError) {}
 export class InsightNotEnabledException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InsightNotEnabledException>()(
+  extends /*@__PURE__*/ S.TaggedError<InsightNotEnabledException>()(
     "InsightNotEnabledException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -418,7 +418,7 @@ export class InsightNotEnabledException
     ),
   ).pipe(C.withBadRequestError) {}
 export class InsufficientDependencyServiceAccessPermissionException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InsufficientDependencyServiceAccessPermissionException>()(
+  extends /*@__PURE__*/ S.TaggedError<InsufficientDependencyServiceAccessPermissionException>()(
     "InsufficientDependencyServiceAccessPermissionException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -430,7 +430,7 @@ export class InsufficientDependencyServiceAccessPermissionException
     ),
   ).pipe(C.withBadRequestError) {}
 export class InsufficientEncryptionPolicyException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InsufficientEncryptionPolicyException>()(
+  extends /*@__PURE__*/ S.TaggedError<InsufficientEncryptionPolicyException>()(
     "InsufficientEncryptionPolicyException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -442,7 +442,7 @@ export class InsufficientEncryptionPolicyException
     ),
   ).pipe(C.withBadRequestError) {}
 export class InsufficientIAMAccessPermissionException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InsufficientIAMAccessPermissionException>()(
+  extends /*@__PURE__*/ S.TaggedError<InsufficientIAMAccessPermissionException>()(
     "InsufficientIAMAccessPermissionException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -454,7 +454,7 @@ export class InsufficientIAMAccessPermissionException
     ),
   ).pipe(C.withBadRequestError) {}
 export class InsufficientS3BucketPolicyException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InsufficientS3BucketPolicyException>()(
+  extends /*@__PURE__*/ S.TaggedError<InsufficientS3BucketPolicyException>()(
     "InsufficientS3BucketPolicyException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -466,7 +466,7 @@ export class InsufficientS3BucketPolicyException
     ),
   ).pipe(C.withAuthError) {}
 export class InsufficientSnsTopicPolicyException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InsufficientSnsTopicPolicyException>()(
+  extends /*@__PURE__*/ S.TaggedError<InsufficientSnsTopicPolicyException>()(
     "InsufficientSnsTopicPolicyException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -478,7 +478,7 @@ export class InsufficientSnsTopicPolicyException
     ),
   ).pipe(C.withAuthError) {}
 export class InvalidCloudWatchLogsLogGroupArnException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidCloudWatchLogsLogGroupArnException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidCloudWatchLogsLogGroupArnException>()(
     "InvalidCloudWatchLogsLogGroupArnException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -490,7 +490,7 @@ export class InvalidCloudWatchLogsLogGroupArnException
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidCloudWatchLogsRoleArnException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidCloudWatchLogsRoleArnException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidCloudWatchLogsRoleArnException>()(
     "InvalidCloudWatchLogsRoleArnException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -502,7 +502,7 @@ export class InvalidCloudWatchLogsRoleArnException
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidDateRangeException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidDateRangeException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidDateRangeException>()(
     "InvalidDateRangeException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -511,7 +511,7 @@ export class InvalidDateRangeException
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidEventCategoryException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidEventCategoryException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidEventCategoryException>()(
     "InvalidEventCategoryException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -520,7 +520,7 @@ export class InvalidEventCategoryException
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidEventDataStoreCategoryException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidEventDataStoreCategoryException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidEventDataStoreCategoryException>()(
     "InvalidEventDataStoreCategoryException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -532,7 +532,7 @@ export class InvalidEventDataStoreCategoryException
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidEventDataStoreStatusException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidEventDataStoreStatusException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidEventDataStoreStatusException>()(
     "InvalidEventDataStoreStatusException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -544,7 +544,7 @@ export class InvalidEventDataStoreStatusException
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidEventSelectorsException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidEventSelectorsException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidEventSelectorsException>()(
     "InvalidEventSelectorsException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -553,7 +553,7 @@ export class InvalidEventSelectorsException
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidHomeRegionException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidHomeRegionException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidHomeRegionException>()(
     "InvalidHomeRegionException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -562,7 +562,7 @@ export class InvalidHomeRegionException
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidImportSourceException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidImportSourceException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidImportSourceException>()(
     "InvalidImportSourceException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -571,7 +571,7 @@ export class InvalidImportSourceException
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidInsightSelectorsException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidInsightSelectorsException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidInsightSelectorsException>()(
     "InvalidInsightSelectorsException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -583,7 +583,7 @@ export class InvalidInsightSelectorsException
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidKmsKeyIdException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidKmsKeyIdException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidKmsKeyIdException>()(
     "InvalidKmsKeyIdException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -592,7 +592,7 @@ export class InvalidKmsKeyIdException
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidLookupAttributesException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidLookupAttributesException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidLookupAttributesException>()(
     "InvalidLookupAttributesException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -604,7 +604,7 @@ export class InvalidLookupAttributesException
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidMaxResultsException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidMaxResultsException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidMaxResultsException>()(
     "InvalidMaxResultsException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -613,7 +613,7 @@ export class InvalidMaxResultsException
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidNextTokenException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidNextTokenException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidNextTokenException>()(
     "InvalidNextTokenException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -622,7 +622,7 @@ export class InvalidNextTokenException
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidParameterCombinationException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidParameterCombinationException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidParameterCombinationException>()(
     "InvalidParameterCombinationException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -634,7 +634,7 @@ export class InvalidParameterCombinationException
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidParameterException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidParameterException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidParameterException>()(
     "InvalidParameterException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -643,7 +643,7 @@ export class InvalidParameterException
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidQueryStatementException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidQueryStatementException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidQueryStatementException>()(
     "InvalidQueryStatementException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -652,7 +652,7 @@ export class InvalidQueryStatementException
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidQueryStatusException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidQueryStatusException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidQueryStatusException>()(
     "InvalidQueryStatusException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -661,7 +661,7 @@ export class InvalidQueryStatusException
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidS3BucketNameException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidS3BucketNameException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidS3BucketNameException>()(
     "InvalidS3BucketNameException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -670,7 +670,7 @@ export class InvalidS3BucketNameException
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidS3PrefixException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidS3PrefixException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidS3PrefixException>()(
     "InvalidS3PrefixException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -679,7 +679,7 @@ export class InvalidS3PrefixException
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidSnsTopicNameException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidSnsTopicNameException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidSnsTopicNameException>()(
     "InvalidSnsTopicNameException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -688,7 +688,7 @@ export class InvalidSnsTopicNameException
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidSourceException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidSourceException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidSourceException>()(
     "InvalidSourceException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -697,7 +697,7 @@ export class InvalidSourceException
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidTagParameterException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidTagParameterException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidTagParameterException>()(
     "InvalidTagParameterException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -706,7 +706,7 @@ export class InvalidTagParameterException
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidTimeRangeException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidTimeRangeException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidTimeRangeException>()(
     "InvalidTimeRangeException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -715,7 +715,7 @@ export class InvalidTimeRangeException
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidTokenException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidTokenException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidTokenException>()(
     "InvalidTokenException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -724,7 +724,7 @@ export class InvalidTokenException
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidTrailNameException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidTrailNameException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidTrailNameException>()(
     "InvalidTrailNameException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -733,7 +733,7 @@ export class InvalidTrailNameException
     ),
   ).pipe(C.withBadRequestError) {}
 export class KmsException
-  extends /*@__PURE__*/ S.TaggedErrorClass<KmsException>()(
+  extends /*@__PURE__*/ S.TaggedError<KmsException>()(
     "KmsException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -742,7 +742,7 @@ export class KmsException
     ),
   ).pipe(C.withBadRequestError) {}
 export class KmsKeyDisabledException
-  extends /*@__PURE__*/ S.TaggedErrorClass<KmsKeyDisabledException>()(
+  extends /*@__PURE__*/ S.TaggedError<KmsKeyDisabledException>()(
     "KmsKeyDisabledException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -751,7 +751,7 @@ export class KmsKeyDisabledException
     ),
   ).pipe(C.withBadRequestError) {}
 export class KmsKeyNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<KmsKeyNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<KmsKeyNotFoundException>()(
     "KmsKeyNotFoundException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -760,7 +760,7 @@ export class KmsKeyNotFoundException
     ),
   ).pipe(C.withBadRequestError) {}
 export class MaxConcurrentQueriesException
-  extends /*@__PURE__*/ S.TaggedErrorClass<MaxConcurrentQueriesException>()(
+  extends /*@__PURE__*/ S.TaggedError<MaxConcurrentQueriesException>()(
     "MaxConcurrentQueriesException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -769,7 +769,7 @@ export class MaxConcurrentQueriesException
     ),
   ).pipe(C.withThrottlingError) {}
 export class MaximumNumberOfTrailsExceededException
-  extends /*@__PURE__*/ S.TaggedErrorClass<MaximumNumberOfTrailsExceededException>()(
+  extends /*@__PURE__*/ S.TaggedError<MaximumNumberOfTrailsExceededException>()(
     "MaximumNumberOfTrailsExceededException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -781,7 +781,7 @@ export class MaximumNumberOfTrailsExceededException
     ),
   ).pipe(C.withAuthError) {}
 export class NoManagementAccountSLRExistsException
-  extends /*@__PURE__*/ S.TaggedErrorClass<NoManagementAccountSLRExistsException>()(
+  extends /*@__PURE__*/ S.TaggedError<NoManagementAccountSLRExistsException>()(
     "NoManagementAccountSLRExistsException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -793,7 +793,7 @@ export class NoManagementAccountSLRExistsException
     ),
   ).pipe(C.withAuthError) {}
 export class NotOrganizationManagementAccountException
-  extends /*@__PURE__*/ S.TaggedErrorClass<NotOrganizationManagementAccountException>()(
+  extends /*@__PURE__*/ S.TaggedError<NotOrganizationManagementAccountException>()(
     "NotOrganizationManagementAccountException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -805,7 +805,7 @@ export class NotOrganizationManagementAccountException
     ),
   ).pipe(C.withAuthError) {}
 export class NotOrganizationMasterAccountException
-  extends /*@__PURE__*/ S.TaggedErrorClass<NotOrganizationMasterAccountException>()(
+  extends /*@__PURE__*/ S.TaggedError<NotOrganizationMasterAccountException>()(
     "NotOrganizationMasterAccountException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -817,7 +817,7 @@ export class NotOrganizationMasterAccountException
     ),
   ).pipe(C.withBadRequestError) {}
 export class OperationNotPermittedException
-  extends /*@__PURE__*/ S.TaggedErrorClass<OperationNotPermittedException>()(
+  extends /*@__PURE__*/ S.TaggedError<OperationNotPermittedException>()(
     "OperationNotPermittedException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -826,7 +826,7 @@ export class OperationNotPermittedException
     ),
   ).pipe(C.withBadRequestError) {}
 export class OrganizationNotInAllFeaturesModeException
-  extends /*@__PURE__*/ S.TaggedErrorClass<OrganizationNotInAllFeaturesModeException>()(
+  extends /*@__PURE__*/ S.TaggedError<OrganizationNotInAllFeaturesModeException>()(
     "OrganizationNotInAllFeaturesModeException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -838,7 +838,7 @@ export class OrganizationNotInAllFeaturesModeException
     ),
   ).pipe(C.withBadRequestError) {}
 export class OrganizationsNotInUseException
-  extends /*@__PURE__*/ S.TaggedErrorClass<OrganizationsNotInUseException>()(
+  extends /*@__PURE__*/ S.TaggedError<OrganizationsNotInUseException>()(
     "OrganizationsNotInUseException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -847,7 +847,7 @@ export class OrganizationsNotInUseException
     ),
   ).pipe(C.withBadRequestError) {}
 export class QueryIdNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<QueryIdNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<QueryIdNotFoundException>()(
     "QueryIdNotFoundException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -856,7 +856,7 @@ export class QueryIdNotFoundException
     ),
   ).pipe(C.withBadRequestError) {}
 export class ResourceARNNotValidException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceARNNotValidException>()(
+  extends /*@__PURE__*/ S.TaggedError<ResourceARNNotValidException>()(
     "ResourceARNNotValidException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -865,7 +865,7 @@ export class ResourceARNNotValidException
     ),
   ).pipe(C.withBadRequestError) {}
 export class ResourceNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -874,7 +874,7 @@ export class ResourceNotFoundException
     ),
   ).pipe(C.withBadRequestError) {}
 export class ResourcePolicyNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ResourcePolicyNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<ResourcePolicyNotFoundException>()(
     "ResourcePolicyNotFoundException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -886,7 +886,7 @@ export class ResourcePolicyNotFoundException
     ),
   ).pipe(C.withBadRequestError) {}
 export class ResourcePolicyNotValidException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ResourcePolicyNotValidException>()(
+  extends /*@__PURE__*/ S.TaggedError<ResourcePolicyNotValidException>()(
     "ResourcePolicyNotValidException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -898,7 +898,7 @@ export class ResourcePolicyNotValidException
     ),
   ).pipe(C.withBadRequestError) {}
 export class ResourceTypeNotSupportedException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceTypeNotSupportedException>()(
+  extends /*@__PURE__*/ S.TaggedError<ResourceTypeNotSupportedException>()(
     "ResourceTypeNotSupportedException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -910,7 +910,7 @@ export class ResourceTypeNotSupportedException
     ),
   ).pipe(C.withBadRequestError) {}
 export class S3BucketDoesNotExistException
-  extends /*@__PURE__*/ S.TaggedErrorClass<S3BucketDoesNotExistException>()(
+  extends /*@__PURE__*/ S.TaggedError<S3BucketDoesNotExistException>()(
     "S3BucketDoesNotExistException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -919,7 +919,7 @@ export class S3BucketDoesNotExistException
     ),
   ).pipe(C.withBadRequestError) {}
 export class ServiceQuotaExceededException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ServiceQuotaExceededException>()(
+  extends /*@__PURE__*/ S.TaggedError<ServiceQuotaExceededException>()(
     "ServiceQuotaExceededException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -928,7 +928,7 @@ export class ServiceQuotaExceededException
     ),
   ).pipe(C.withBadRequestError) {}
 export class TagsLimitExceededException
-  extends /*@__PURE__*/ S.TaggedErrorClass<TagsLimitExceededException>()(
+  extends /*@__PURE__*/ S.TaggedError<TagsLimitExceededException>()(
     "TagsLimitExceededException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -937,7 +937,7 @@ export class TagsLimitExceededException
     ),
   ).pipe(C.withBadRequestError) {}
 export class ThrottlingException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ThrottlingException>()(
+  extends /*@__PURE__*/ S.TaggedError<ThrottlingException>()(
     "ThrottlingException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -946,7 +946,7 @@ export class ThrottlingException
     ),
   ).pipe(C.withThrottlingError) {}
 export class TrailAlreadyExistsException
-  extends /*@__PURE__*/ S.TaggedErrorClass<TrailAlreadyExistsException>()(
+  extends /*@__PURE__*/ S.TaggedError<TrailAlreadyExistsException>()(
     "TrailAlreadyExistsException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -955,7 +955,7 @@ export class TrailAlreadyExistsException
     ),
   ).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
 export class TrailNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<TrailNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<TrailNotFoundException>()(
     "TrailNotFoundException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -964,7 +964,7 @@ export class TrailNotFoundException
     ),
   ).pipe(C.withBadRequestError) {}
 export class TrailNotProvidedException
-  extends /*@__PURE__*/ S.TaggedErrorClass<TrailNotProvidedException>()(
+  extends /*@__PURE__*/ S.TaggedError<TrailNotProvidedException>()(
     "TrailNotProvidedException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -973,7 +973,7 @@ export class TrailNotProvidedException
     ),
   ).pipe(C.withBadRequestError) {}
 export class UnsupportedOperationException
-  extends /*@__PURE__*/ S.TaggedErrorClass<UnsupportedOperationException>()(
+  extends /*@__PURE__*/ S.TaggedError<UnsupportedOperationException>()(
     "UnsupportedOperationException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(

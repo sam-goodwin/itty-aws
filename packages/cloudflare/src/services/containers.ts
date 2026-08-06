@@ -14,7 +14,7 @@ export type { CloudflareOpError, CloudflareOpContext };
 
 export class ContainerApplicationNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<ContainerApplicationNotFound>()(
+    /*@__PURE__*/ S.TaggedError<ContainerApplicationNotFound>()(
       "ContainerApplicationNotFound",
       {
         code: S.Number,
@@ -29,7 +29,7 @@ export class ContainerApplicationNotFound
 
 export class DurableObjectAlreadyHasApplication
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<DurableObjectAlreadyHasApplication>()(
+    /*@__PURE__*/ S.TaggedError<DurableObjectAlreadyHasApplication>()(
       "DurableObjectAlreadyHasApplication",
       {
         code: S.Number,
@@ -46,7 +46,7 @@ export class DurableObjectAlreadyHasApplication
 
 export class DurableObjectCheckError
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<DurableObjectCheckError>()(
+    /*@__PURE__*/ S.TaggedError<DurableObjectCheckError>()(
       "DurableObjectCheckError",
       {
         code: S.Number,
@@ -63,7 +63,7 @@ export class DurableObjectCheckError
 
 export class DurableObjectNotContainerEnabled
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<DurableObjectNotContainerEnabled>()(
+    /*@__PURE__*/ S.TaggedError<DurableObjectNotContainerEnabled>()(
       "DurableObjectNotContainerEnabled",
       {
         code: S.Number,
@@ -80,7 +80,7 @@ export class DurableObjectNotContainerEnabled
 
 export class InvalidRoute
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<InvalidRoute>()("InvalidRoute", {
+    /*@__PURE__*/ S.TaggedError<InvalidRoute>()("InvalidRoute", {
       code: S.Number,
       message: S.String,
     }),

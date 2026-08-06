@@ -89,7 +89,7 @@ const rules = T.EndpointResolver((p, _) => {
 });
 
 export class IdempotentParameterMismatchException
-  extends /*@__PURE__*/ S.TaggedErrorClass<IdempotentParameterMismatchException>()(
+  extends /*@__PURE__*/ S.TaggedError<IdempotentParameterMismatchException>()(
     "IdempotentParameterMismatchException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -98,7 +98,7 @@ export class IdempotentParameterMismatchException
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InternalServerException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InternalServerException>()(
+  extends /*@__PURE__*/ S.TaggedError<InternalServerException>()(
     "InternalServerException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -107,7 +107,7 @@ export class InternalServerException
     T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class InvalidInputException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidInputException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidInputException>()(
     "InvalidInputException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -116,12 +116,12 @@ export class InvalidInputException
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidTagException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidTagException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidTagException>()(
     "InvalidTagException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class LimitExceededException
-  extends /*@__PURE__*/ S.TaggedErrorClass<LimitExceededException>()(
+  extends /*@__PURE__*/ S.TaggedError<LimitExceededException>()(
     "LimitExceededException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -130,13 +130,13 @@ export class LimitExceededException
     T.HttpError(417),
   ) {}
 export class PredictorNotMountedException
-  extends /*@__PURE__*/ S.TaggedErrorClass<PredictorNotMountedException>()(
+  extends /*@__PURE__*/ S.TaggedError<PredictorNotMountedException>()(
     "PredictorNotMountedException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ResourceNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -145,7 +145,7 @@ export class ResourceNotFoundException
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class TagLimitExceededException
-  extends /*@__PURE__*/ S.TaggedErrorClass<TagLimitExceededException>()(
+  extends /*@__PURE__*/ S.TaggedError<TagLimitExceededException>()(
     "TagLimitExceededException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}

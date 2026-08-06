@@ -33,7 +33,7 @@ export const DurationSchema = Schema.declare<Duration.Duration>(
 /**
  * Unauthorized - Authentication failure (401).
  */
-export class Unauthorized extends Schema.TaggedErrorClass<Unauthorized>()(
+export class Unauthorized extends Schema.TaggedError<Unauthorized>()(
   "Unauthorized",
   { message: Schema.String },
 ).pipe(Category.withAuthError) {}
@@ -41,37 +41,35 @@ export class Unauthorized extends Schema.TaggedErrorClass<Unauthorized>()(
 /**
  * Forbidden - Access denied (403).
  */
-export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
-  "Forbidden",
-  { message: Schema.String },
-).pipe(Category.withAuthError) {}
+export class Forbidden extends Schema.TaggedError<Forbidden>()("Forbidden", {
+  message: Schema.String,
+}).pipe(Category.withAuthError) {}
 
 /**
  * NotFound - Resource not found (404).
  */
-export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+export class NotFound extends Schema.TaggedError<NotFound>()("NotFound", {
   message: Schema.String,
 }).pipe(Category.withNotFoundError) {}
 
 /**
  * BadRequest - Invalid request (400).
  */
-export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
-  "BadRequest",
-  { message: Schema.String },
-).pipe(Category.withBadRequestError) {}
+export class BadRequest extends Schema.TaggedError<BadRequest>()("BadRequest", {
+  message: Schema.String,
+}).pipe(Category.withBadRequestError) {}
 
 /**
  * Conflict - Resource conflict (409).
  */
-export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+export class Conflict extends Schema.TaggedError<Conflict>()("Conflict", {
   message: Schema.String,
 }).pipe(Category.withConflictError) {}
 
 /**
  * UnprocessableEntity - Validation error (422).
  */
-export class UnprocessableEntity extends Schema.TaggedErrorClass<UnprocessableEntity>()(
+export class UnprocessableEntity extends Schema.TaggedError<UnprocessableEntity>()(
   "UnprocessableEntity",
   { message: Schema.String },
 ).pipe(Category.withBadRequestError) {}
@@ -79,7 +77,7 @@ export class UnprocessableEntity extends Schema.TaggedErrorClass<UnprocessableEn
 /**
  * TooManyRequests - Rate limited (429).
  */
-export class TooManyRequests extends Schema.TaggedErrorClass<TooManyRequests>()(
+export class TooManyRequests extends Schema.TaggedError<TooManyRequests>()(
   "TooManyRequests",
   {
     message: Schema.String,
@@ -93,7 +91,7 @@ export class TooManyRequests extends Schema.TaggedErrorClass<TooManyRequests>()(
 /**
  * Locked - Resource locked (423).
  */
-export class Locked extends Schema.TaggedErrorClass<Locked>()("Locked", {
+export class Locked extends Schema.TaggedError<Locked>()("Locked", {
   message: Schema.String,
   retryAfter: Schema.optional(DurationSchema),
 }).pipe(Category.withLockedError, Category.withRetryable()) {}
@@ -106,7 +104,7 @@ export class Locked extends Schema.TaggedErrorClass<Locked>()("Locked", {
  * 200 envelope carrying `{ code: 10002, message: "An unknown error has
  * occurred" }` for transient backend failures on some endpoints).
  */
-export class InternalServerError extends Schema.TaggedErrorClass<InternalServerError>()(
+export class InternalServerError extends Schema.TaggedError<InternalServerError>()(
   "InternalServerError",
   {
     message: Schema.String,
@@ -118,18 +116,15 @@ export class InternalServerError extends Schema.TaggedErrorClass<InternalServerE
 /**
  * BadGateway - Bad gateway (502).
  */
-export class BadGateway extends Schema.TaggedErrorClass<BadGateway>()(
-  "BadGateway",
-  {
-    message: Schema.String,
-    retryAfter: Schema.optional(DurationSchema),
-  },
-).pipe(Category.withServerError, Category.withRetryable()) {}
+export class BadGateway extends Schema.TaggedError<BadGateway>()("BadGateway", {
+  message: Schema.String,
+  retryAfter: Schema.optional(DurationSchema),
+}).pipe(Category.withServerError, Category.withRetryable()) {}
 
 /**
  * ServiceUnavailable - Service unavailable (503).
  */
-export class ServiceUnavailable extends Schema.TaggedErrorClass<ServiceUnavailable>()(
+export class ServiceUnavailable extends Schema.TaggedError<ServiceUnavailable>()(
   "ServiceUnavailable",
   {
     message: Schema.String,
@@ -140,7 +135,7 @@ export class ServiceUnavailable extends Schema.TaggedErrorClass<ServiceUnavailab
 /**
  * GatewayTimeout - Gateway timeout (504).
  */
-export class GatewayTimeout extends Schema.TaggedErrorClass<GatewayTimeout>()(
+export class GatewayTimeout extends Schema.TaggedError<GatewayTimeout>()(
   "GatewayTimeout",
   {
     message: Schema.String,
@@ -151,7 +146,7 @@ export class GatewayTimeout extends Schema.TaggedErrorClass<GatewayTimeout>()(
 /**
  * Configuration error - missing or invalid configuration.
  */
-export class ConfigError extends Schema.TaggedErrorClass<ConfigError>()(
+export class ConfigError extends Schema.TaggedError<ConfigError>()(
   "ConfigError",
   { message: Schema.String },
 ).pipe(Category.withConfigurationError) {}

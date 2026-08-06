@@ -87,54 +87,54 @@ const rules = T.EndpointResolver((p, _) => {
 });
 
 export class ArgumentException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ArgumentException>()(
+  extends /*@__PURE__*/ S.TaggedError<ArgumentException>()(
     "ArgumentException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class CannotDeleteException
-  extends /*@__PURE__*/ S.TaggedErrorClass<CannotDeleteException>()(
+  extends /*@__PURE__*/ S.TaggedError<CannotDeleteException>()(
     "CannotDeleteException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class IdempotencyException
-  extends /*@__PURE__*/ S.TaggedErrorClass<IdempotencyException>()(
+  extends /*@__PURE__*/ S.TaggedError<IdempotencyException>()(
     "IdempotencyException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InternalServiceException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InternalServiceException>()(
+  extends /*@__PURE__*/ S.TaggedError<InternalServiceException>()(
     "InternalServiceException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class InvalidOperationException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidOperationException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidOperationException>()(
     "InvalidOperationException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class LimitExceededException
-  extends /*@__PURE__*/ S.TaggedErrorClass<LimitExceededException>()(
+  extends /*@__PURE__*/ S.TaggedError<LimitExceededException>()(
     "LimitExceededException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class NotEligibleException
-  extends /*@__PURE__*/ S.TaggedErrorClass<NotEligibleException>()(
+  extends /*@__PURE__*/ S.TaggedError<NotEligibleException>()(
     "NotEligibleException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class NotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<NotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<NotFoundException>()(
     "NotFoundException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class ServiceAccountException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ServiceAccountException>()(
+  extends /*@__PURE__*/ S.TaggedError<ServiceAccountException>()(
     "ServiceAccountException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class TagOperationException
-  extends /*@__PURE__*/ S.TaggedErrorClass<TagOperationException>()(
+  extends /*@__PURE__*/ S.TaggedError<TagOperationException>()(
     "TagOperationException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -143,7 +143,7 @@ export class TagOperationException
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TagPolicyException
-  extends /*@__PURE__*/ S.TaggedErrorClass<TagPolicyException>()(
+  extends /*@__PURE__*/ S.TaggedError<TagPolicyException>()(
     "TagPolicyException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -152,7 +152,7 @@ export class TagPolicyException
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TooManyTagsException
-  extends /*@__PURE__*/ S.TaggedErrorClass<TooManyTagsException>()(
+  extends /*@__PURE__*/ S.TaggedError<TooManyTagsException>()(
     "TooManyTagsException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),

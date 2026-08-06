@@ -35,7 +35,7 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
 
 export class Forbidden
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    /*@__PURE__*/ S.TaggedError<Forbidden>()("Forbidden", {
       code: S.Number,
       message: S.String,
     }),
@@ -44,7 +44,7 @@ export class Forbidden
 
 export class VpcServiceNameAlreadyExists
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<VpcServiceNameAlreadyExists>()(
+    /*@__PURE__*/ S.TaggedError<VpcServiceNameAlreadyExists>()(
       "VpcServiceNameAlreadyExists",
       {
         code: S.Number,
@@ -56,19 +56,16 @@ export class VpcServiceNameAlreadyExists
 
 export class VpcServiceNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<VpcServiceNotFound>()(
-      "VpcServiceNotFound",
-      {
-        code: S.Number,
-        message: S.String,
-      },
-    ),
+    /*@__PURE__*/ S.TaggedError<VpcServiceNotFound>()("VpcServiceNotFound", {
+      code: S.Number,
+      message: S.String,
+    }),
     [{ code: 5104 }],
   ) {}
 
 export class VpcTunnelNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<VpcTunnelNotFound>()("VpcTunnelNotFound", {
+    /*@__PURE__*/ S.TaggedError<VpcTunnelNotFound>()("VpcTunnelNotFound", {
       code: S.Number,
       message: S.String,
     }),

@@ -84,55 +84,55 @@ const rules = T.EndpointResolver((p, _) => {
 });
 
 export class ClientLimitExceededException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ClientLimitExceededException>()(
+  extends /*@__PURE__*/ S.TaggedError<ClientLimitExceededException>()(
     "ClientLimitExceededException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidArgumentException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidArgumentException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidArgumentException>()(
     "InvalidArgumentException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidCodecPrivateDataException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidCodecPrivateDataException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidCodecPrivateDataException>()(
     "InvalidCodecPrivateDataException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidMediaFrameException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidMediaFrameException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidMediaFrameException>()(
     "InvalidMediaFrameException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class MissingCodecPrivateDataException
-  extends /*@__PURE__*/ S.TaggedErrorClass<MissingCodecPrivateDataException>()(
+  extends /*@__PURE__*/ S.TaggedError<MissingCodecPrivateDataException>()(
     "MissingCodecPrivateDataException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class NoDataRetentionException
-  extends /*@__PURE__*/ S.TaggedErrorClass<NoDataRetentionException>()(
+  extends /*@__PURE__*/ S.TaggedError<NoDataRetentionException>()(
     "NoDataRetentionException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class NotAuthorizedException
-  extends /*@__PURE__*/ S.TaggedErrorClass<NotAuthorizedException>()(
+  extends /*@__PURE__*/ S.TaggedError<NotAuthorizedException>()(
     "NotAuthorizedException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(401),
   ).pipe(C.withAuthError) {}
 export class ResourceNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class UnsupportedStreamMediaTypeException
-  extends /*@__PURE__*/ S.TaggedErrorClass<UnsupportedStreamMediaTypeException>()(
+  extends /*@__PURE__*/ S.TaggedError<UnsupportedStreamMediaTypeException>()(
     "UnsupportedStreamMediaTypeException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),

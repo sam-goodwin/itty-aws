@@ -24,7 +24,7 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
 
 export class CustomNameserverAlreadyExists
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<CustomNameserverAlreadyExists>()(
+    /*@__PURE__*/ S.TaggedError<CustomNameserverAlreadyExists>()(
       "CustomNameserverAlreadyExists",
       {
         code: S.Number,
@@ -36,7 +36,7 @@ export class CustomNameserverAlreadyExists
 
 export class CustomNameserverNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<CustomNameserverNotFound>()(
+    /*@__PURE__*/ S.TaggedError<CustomNameserverNotFound>()(
       "CustomNameserverNotFound",
       {
         code: S.Number,
@@ -48,7 +48,7 @@ export class CustomNameserverNotFound
 
 export class CustomNameserversNotEnabled
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<CustomNameserversNotEnabled>()(
+    /*@__PURE__*/ S.TaggedError<CustomNameserversNotEnabled>()(
       "CustomNameserversNotEnabled",
       {
         code: S.Number,
@@ -60,7 +60,7 @@ export class CustomNameserversNotEnabled
 
 export class Forbidden
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    /*@__PURE__*/ S.TaggedError<Forbidden>()("Forbidden", {
       code: S.Number,
       message: S.String,
     }),

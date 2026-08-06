@@ -84,25 +84,25 @@ const rules = T.EndpointResolver((p, _) => {
 });
 
 export class AccessDeniedException
-  extends /*@__PURE__*/ S.TaggedErrorClass<AccessDeniedException>()(
+  extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()(
     "AccessDeniedException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class BadRequestException
-  extends /*@__PURE__*/ S.TaggedErrorClass<BadRequestException>()(
+  extends /*@__PURE__*/ S.TaggedError<BadRequestException>()(
     "BadRequestException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ConflictException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ConflictException>()(
+  extends /*@__PURE__*/ S.TaggedError<ConflictException>()(
     "ConflictException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class NotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<NotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<NotFoundException>()(
     "NotFoundException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -111,7 +111,7 @@ export class NotFoundException
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class TooManyRequestsException
-  extends /*@__PURE__*/ S.TaggedErrorClass<TooManyRequestsException>()(
+  extends /*@__PURE__*/ S.TaggedError<TooManyRequestsException>()(
     "TooManyRequestsException",
     {
       LimitType: S.optional(S.String),

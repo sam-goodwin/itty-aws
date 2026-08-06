@@ -32,7 +32,7 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
 
 export class Forbidden
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    /*@__PURE__*/ S.TaggedError<Forbidden>()("Forbidden", {
       code: S.Number,
       message: S.String,
     }),
@@ -41,7 +41,7 @@ export class Forbidden
 
 export class InvalidCredential
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<InvalidCredential>()("InvalidCredential", {
+    /*@__PURE__*/ S.TaggedError<InvalidCredential>()("InvalidCredential", {
       code: S.Number,
       message: S.String,
     }),
@@ -50,7 +50,7 @@ export class InvalidCredential
 
 export class InvalidRoute
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<InvalidRoute>()("InvalidRoute", {
+    /*@__PURE__*/ S.TaggedError<InvalidRoute>()("InvalidRoute", {
       code: S.Number,
       message: S.String,
     }),
@@ -59,7 +59,7 @@ export class InvalidRoute
 
 export class NoSuchBucket
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<NoSuchBucket>()("NoSuchBucket", {
+    /*@__PURE__*/ S.TaggedError<NoSuchBucket>()("NoSuchBucket", {
       code: S.Number,
       message: S.String,
     }),
@@ -68,7 +68,7 @@ export class NoSuchBucket
 
 export class TableNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<TableNotFound>()("TableNotFound", {
+    /*@__PURE__*/ S.TaggedError<TableNotFound>()("TableNotFound", {
       code: S.Number,
       message: S.String,
     }),
@@ -77,7 +77,7 @@ export class TableNotFound
 
 export class WarehouseInactive
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<WarehouseInactive>()("WarehouseInactive", {
+    /*@__PURE__*/ S.TaggedError<WarehouseInactive>()("WarehouseInactive", {
       code: S.Number,
       message: S.String,
     }),
@@ -86,7 +86,7 @@ export class WarehouseInactive
 
 export class WarehouseNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<WarehouseNotFound>()("WarehouseNotFound", {
+    /*@__PURE__*/ S.TaggedError<WarehouseNotFound>()("WarehouseNotFound", {
       code: S.Number,
       message: S.String,
     }),

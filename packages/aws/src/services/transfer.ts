@@ -86,7 +86,7 @@ const rules = T.EndpointResolver((p, _) => {
 });
 
 export class AccessDeniedException
-  extends /*@__PURE__*/ S.TaggedErrorClass<AccessDeniedException>()(
+  extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()(
     "AccessDeniedException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -95,31 +95,31 @@ export class AccessDeniedException
     ),
   ).pipe(C.withAuthError) {}
 export class ConflictException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ConflictException>()(
+  extends /*@__PURE__*/ S.TaggedError<ConflictException>()(
     "ConflictException",
     { message: S.String.pipe(T.ErrorMessage()) },
     T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class InternalServiceError
-  extends /*@__PURE__*/ S.TaggedErrorClass<InternalServiceError>()(
+  extends /*@__PURE__*/ S.TaggedError<InternalServiceError>()(
     "InternalServiceError",
     { message: S.String.pipe(T.ErrorMessage()) },
     T.HttpError(503),
   ).pipe(C.withServerError) {}
 export class InvalidNextTokenException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidNextTokenException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidNextTokenException>()(
     "InvalidNextTokenException",
     { message: S.String.pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidRequestException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidRequestException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidRequestException>()(
     "InvalidRequestException",
     { message: S.String.pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ResourceExistsException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceExistsException>()(
+  extends /*@__PURE__*/ S.TaggedError<ResourceExistsException>()(
     "ResourceExistsException",
     {
       message: S.String.pipe(T.ErrorMessage()),
@@ -129,7 +129,7 @@ export class ResourceExistsException
     T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class ResourceNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
     {
       message: S.String.pipe(T.ErrorMessage()),
@@ -139,7 +139,7 @@ export class ResourceNotFoundException
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ServiceUnavailableException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ServiceUnavailableException>()(
+  extends /*@__PURE__*/ S.TaggedError<ServiceUnavailableException>()(
     "ServiceUnavailableException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -148,7 +148,7 @@ export class ServiceUnavailableException
     ),
   ).pipe(C.withServerError) {}
 export class ThrottlingException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ThrottlingException>()(
+  extends /*@__PURE__*/ S.TaggedError<ThrottlingException>()(
     "ThrottlingException",
     {
       RetryAfterSeconds: S.optional(S.String).pipe(T.HttpHeader("Retry-After")),

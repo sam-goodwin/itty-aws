@@ -30,7 +30,7 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
 
 export class Forbidden
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    /*@__PURE__*/ S.TaggedError<Forbidden>()("Forbidden", {
       code: S.Number,
       message: S.String,
     }),
@@ -39,7 +39,7 @@ export class Forbidden
 
 export class InvalidSchema
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<InvalidSchema>()("InvalidSchema", {
+    /*@__PURE__*/ S.TaggedError<InvalidSchema>()("InvalidSchema", {
       code: S.Number,
       message: S.String,
     }),
@@ -48,7 +48,7 @@ export class InvalidSchema
 
 export class OperationNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<OperationNotFound>()("OperationNotFound", {
+    /*@__PURE__*/ S.TaggedError<OperationNotFound>()("OperationNotFound", {
       code: S.Number,
       message: S.String,
     }),
@@ -57,7 +57,7 @@ export class OperationNotFound
 
 export class SchemaNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<SchemaNotFound>()("SchemaNotFound", {
+    /*@__PURE__*/ S.TaggedError<SchemaNotFound>()("SchemaNotFound", {
       code: S.Number,
       message: S.String,
     }),
@@ -66,7 +66,7 @@ export class SchemaNotFound
 
 export class UnentitledMitigationAction
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<UnentitledMitigationAction>()(
+    /*@__PURE__*/ S.TaggedError<UnentitledMitigationAction>()(
       "UnentitledMitigationAction",
       {
         code: S.Number,
@@ -78,7 +78,7 @@ export class UnentitledMitigationAction
 
 export class ZonePurged
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<ZonePurged>()("ZonePurged", {
+    /*@__PURE__*/ S.TaggedError<ZonePurged>()("ZonePurged", {
       code: S.Number,
       message: S.String,
     }),

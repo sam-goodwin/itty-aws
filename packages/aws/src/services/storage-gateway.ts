@@ -87,7 +87,7 @@ const rules = T.EndpointResolver((p, _) => {
 });
 
 export class InternalServerError
-  extends /*@__PURE__*/ S.TaggedErrorClass<InternalServerError>()(
+  extends /*@__PURE__*/ S.TaggedError<InternalServerError>()(
     "InternalServerError",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -100,7 +100,7 @@ export class InternalServerError
     T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class InvalidGatewayRequestException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidGatewayRequestException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidGatewayRequestException>()(
     "InvalidGatewayRequestException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -113,7 +113,7 @@ export class InvalidGatewayRequestException
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ServiceUnavailableError
-  extends /*@__PURE__*/ S.TaggedErrorClass<ServiceUnavailableError>()(
+  extends /*@__PURE__*/ S.TaggedError<ServiceUnavailableError>()(
     "ServiceUnavailableError",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),

@@ -30,7 +30,7 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
 
 export class DuplicateMnmRuleName
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<DuplicateMnmRuleName>()(
+    /*@__PURE__*/ S.TaggedError<DuplicateMnmRuleName>()(
       "DuplicateMnmRuleName",
       {
         code: S.Number,
@@ -42,7 +42,7 @@ export class DuplicateMnmRuleName
 
 export class Forbidden
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    /*@__PURE__*/ S.TaggedError<Forbidden>()("Forbidden", {
       code: S.Number,
       message: S.String,
     }),
@@ -51,7 +51,7 @@ export class Forbidden
 
 export class InvalidMnmConfig
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<InvalidMnmConfig>()("InvalidMnmConfig", {
+    /*@__PURE__*/ S.TaggedError<InvalidMnmConfig>()("InvalidMnmConfig", {
       code: S.Number,
       message: S.String,
     }),
@@ -60,7 +60,7 @@ export class InvalidMnmConfig
 
 export class MnmConfigAlreadyExists
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<MnmConfigAlreadyExists>()(
+    /*@__PURE__*/ S.TaggedError<MnmConfigAlreadyExists>()(
       "MnmConfigAlreadyExists",
       {
         code: S.Number,
@@ -72,7 +72,7 @@ export class MnmConfigAlreadyExists
 
 export class MnmConfigMissing
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<MnmConfigMissing>()("MnmConfigMissing", {
+    /*@__PURE__*/ S.TaggedError<MnmConfigMissing>()("MnmConfigMissing", {
       code: S.Number,
       message: S.String,
     }),
@@ -86,7 +86,7 @@ export class MnmConfigMissing
 
 export class MnmConfigNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<MnmConfigNotFound>()("MnmConfigNotFound", {
+    /*@__PURE__*/ S.TaggedError<MnmConfigNotFound>()("MnmConfigNotFound", {
       code: S.Number,
       message: S.String,
     }),
@@ -95,7 +95,7 @@ export class MnmConfigNotFound
 
 export class MnmRuleNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<MnmRuleNotFound>()("MnmRuleNotFound", {
+    /*@__PURE__*/ S.TaggedError<MnmRuleNotFound>()("MnmRuleNotFound", {
       code: S.Number,
       message: S.String,
     }),

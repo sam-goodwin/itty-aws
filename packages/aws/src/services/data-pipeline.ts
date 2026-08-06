@@ -84,27 +84,27 @@ const rules = T.EndpointResolver((p, _) => {
 });
 
 export class InternalServiceError
-  extends /*@__PURE__*/ S.TaggedErrorClass<InternalServiceError>()(
+  extends /*@__PURE__*/ S.TaggedError<InternalServiceError>()(
     "InternalServiceError",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidRequestException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidRequestException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidRequestException>()(
     "InvalidRequestException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class PipelineDeletedException
-  extends /*@__PURE__*/ S.TaggedErrorClass<PipelineDeletedException>()(
+  extends /*@__PURE__*/ S.TaggedError<PipelineDeletedException>()(
     "PipelineDeletedException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class PipelineNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<PipelineNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<PipelineNotFoundException>()(
     "PipelineNotFoundException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class TaskNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<TaskNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<TaskNotFoundException>()(
     "TaskNotFoundException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}

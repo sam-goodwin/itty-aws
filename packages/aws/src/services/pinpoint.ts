@@ -99,7 +99,7 @@ const rules = T.EndpointResolver((p, _) => {
 });
 
 export class BadRequestException
-  extends /*@__PURE__*/ S.TaggedErrorClass<BadRequestException>()(
+  extends /*@__PURE__*/ S.TaggedError<BadRequestException>()(
     "BadRequestException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -108,7 +108,7 @@ export class BadRequestException
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ConflictException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ConflictException>()(
+  extends /*@__PURE__*/ S.TaggedError<ConflictException>()(
     "ConflictException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -117,7 +117,7 @@ export class ConflictException
     T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class ForbiddenException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ForbiddenException>()(
+  extends /*@__PURE__*/ S.TaggedError<ForbiddenException>()(
     "ForbiddenException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -126,7 +126,7 @@ export class ForbiddenException
     T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class InternalServerErrorException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InternalServerErrorException>()(
+  extends /*@__PURE__*/ S.TaggedError<InternalServerErrorException>()(
     "InternalServerErrorException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -135,7 +135,7 @@ export class InternalServerErrorException
     T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class MethodNotAllowedException
-  extends /*@__PURE__*/ S.TaggedErrorClass<MethodNotAllowedException>()(
+  extends /*@__PURE__*/ S.TaggedError<MethodNotAllowedException>()(
     "MethodNotAllowedException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -144,7 +144,7 @@ export class MethodNotAllowedException
     T.HttpError(405),
   ).pipe(C.withBadRequestError) {}
 export class NotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<NotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<NotFoundException>()(
     "NotFoundException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -153,7 +153,7 @@ export class NotFoundException
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class PayloadTooLargeException
-  extends /*@__PURE__*/ S.TaggedErrorClass<PayloadTooLargeException>()(
+  extends /*@__PURE__*/ S.TaggedError<PayloadTooLargeException>()(
     "PayloadTooLargeException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -162,7 +162,7 @@ export class PayloadTooLargeException
     T.HttpError(413),
   ).pipe(C.withBadRequestError) {}
 export class TooManyRequestsException
-  extends /*@__PURE__*/ S.TaggedErrorClass<TooManyRequestsException>()(
+  extends /*@__PURE__*/ S.TaggedError<TooManyRequestsException>()(
     "TooManyRequestsException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),

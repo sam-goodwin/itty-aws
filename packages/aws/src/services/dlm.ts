@@ -84,7 +84,7 @@ const rules = T.EndpointResolver((p, _) => {
 });
 
 export class InternalServerException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InternalServerException>()(
+  extends /*@__PURE__*/ S.TaggedError<InternalServerException>()(
     "InternalServerException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -93,7 +93,7 @@ export class InternalServerException
     T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class InvalidRequestException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidRequestException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidRequestException>()(
     "InvalidRequestException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -112,7 +112,7 @@ export class InvalidRequestException
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class LimitExceededException
-  extends /*@__PURE__*/ S.TaggedErrorClass<LimitExceededException>()(
+  extends /*@__PURE__*/ S.TaggedError<LimitExceededException>()(
     "LimitExceededException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -122,7 +122,7 @@ export class LimitExceededException
     T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export class ResourceNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),

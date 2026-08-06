@@ -31,7 +31,7 @@ import * as Schema from "effect/Schema";
 import * as Category from "@distilled.cloud/core/category";
 
 /** Unknown Axiom error — returned when nothing else matches the failure. */
-export class UnknownAxiomError extends Schema.TaggedErrorClass<UnknownAxiomError>()(
+export class UnknownAxiomError extends Schema.TaggedError<UnknownAxiomError>()(
   "UnknownAxiomError",
   {
     code: Schema.optional(Schema.String),
@@ -41,7 +41,7 @@ export class UnknownAxiomError extends Schema.TaggedErrorClass<UnknownAxiomError
 ).pipe(Category.withServerError) {}
 
 /** Schema parse error wrapper (kept for v0 surface parity). */
-export class AxiomParseError extends Schema.TaggedErrorClass<AxiomParseError>()(
+export class AxiomParseError extends Schema.TaggedError<AxiomParseError>()(
   "AxiomParseError",
   {
     body: Schema.Unknown,

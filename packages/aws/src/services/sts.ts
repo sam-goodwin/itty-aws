@@ -174,7 +174,7 @@ const rules = T.EndpointResolver((p, _) => {
 });
 
 export class ExpiredTokenException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ExpiredTokenException>()(
+  extends /*@__PURE__*/ S.TaggedError<ExpiredTokenException>()(
     "ExpiredTokenException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -183,7 +183,7 @@ export class ExpiredTokenException
     ),
   ).pipe(C.withBadRequestError) {}
 export class ExpiredTradeInTokenException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ExpiredTradeInTokenException>()(
+  extends /*@__PURE__*/ S.TaggedError<ExpiredTradeInTokenException>()(
     "ExpiredTradeInTokenException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -195,7 +195,7 @@ export class ExpiredTradeInTokenException
     ),
   ).pipe(C.withBadRequestError) {}
 export class IDPCommunicationErrorException
-  extends /*@__PURE__*/ S.TaggedErrorClass<IDPCommunicationErrorException>()(
+  extends /*@__PURE__*/ S.TaggedError<IDPCommunicationErrorException>()(
     "IDPCommunicationErrorException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -204,7 +204,7 @@ export class IDPCommunicationErrorException
     ),
   ).pipe(C.withBadRequestError) {}
 export class IDPRejectedClaimException
-  extends /*@__PURE__*/ S.TaggedErrorClass<IDPRejectedClaimException>()(
+  extends /*@__PURE__*/ S.TaggedError<IDPRejectedClaimException>()(
     "IDPRejectedClaimException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -213,7 +213,7 @@ export class IDPRejectedClaimException
     ),
   ).pipe(C.withAuthError) {}
 export class InvalidAuthorizationMessageException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidAuthorizationMessageException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidAuthorizationMessageException>()(
     "InvalidAuthorizationMessageException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -225,7 +225,7 @@ export class InvalidAuthorizationMessageException
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidIdentityTokenException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidIdentityTokenException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidIdentityTokenException>()(
     "InvalidIdentityTokenException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -234,7 +234,7 @@ export class InvalidIdentityTokenException
     ),
   ).pipe(C.withBadRequestError) {}
 export class JWTPayloadSizeExceededException
-  extends /*@__PURE__*/ S.TaggedErrorClass<JWTPayloadSizeExceededException>()(
+  extends /*@__PURE__*/ S.TaggedError<JWTPayloadSizeExceededException>()(
     "JWTPayloadSizeExceededException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -246,7 +246,7 @@ export class JWTPayloadSizeExceededException
     ),
   ).pipe(C.withBadRequestError) {}
 export class MalformedPolicyDocumentException
-  extends /*@__PURE__*/ S.TaggedErrorClass<MalformedPolicyDocumentException>()(
+  extends /*@__PURE__*/ S.TaggedError<MalformedPolicyDocumentException>()(
     "MalformedPolicyDocumentException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -258,7 +258,7 @@ export class MalformedPolicyDocumentException
     ),
   ).pipe(C.withBadRequestError) {}
 export class OutboundWebIdentityFederationDisabledException
-  extends /*@__PURE__*/ S.TaggedErrorClass<OutboundWebIdentityFederationDisabledException>()(
+  extends /*@__PURE__*/ S.TaggedError<OutboundWebIdentityFederationDisabledException>()(
     "OutboundWebIdentityFederationDisabledException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -270,7 +270,7 @@ export class OutboundWebIdentityFederationDisabledException
     ),
   ).pipe(C.withAuthError) {}
 export class PackedPolicyTooLargeException
-  extends /*@__PURE__*/ S.TaggedErrorClass<PackedPolicyTooLargeException>()(
+  extends /*@__PURE__*/ S.TaggedError<PackedPolicyTooLargeException>()(
     "PackedPolicyTooLargeException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -279,7 +279,7 @@ export class PackedPolicyTooLargeException
     ),
   ).pipe(C.withBadRequestError) {}
 export class RegionDisabledException
-  extends /*@__PURE__*/ S.TaggedErrorClass<RegionDisabledException>()(
+  extends /*@__PURE__*/ S.TaggedError<RegionDisabledException>()(
     "RegionDisabledException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -291,7 +291,7 @@ export class RegionDisabledException
     ),
   ).pipe(C.withAuthError) {}
 export class SessionDurationEscalationException
-  extends /*@__PURE__*/ S.TaggedErrorClass<SessionDurationEscalationException>()(
+  extends /*@__PURE__*/ S.TaggedError<SessionDurationEscalationException>()(
     "SessionDurationEscalationException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(

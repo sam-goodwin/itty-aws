@@ -31,7 +31,7 @@ import * as Category from "@distilled.cloud/core/category";
  * Unknown WorkOS error — returned when a failed response's HTTP status has no
  * mapped error class. Carries the raw body for later cataloging.
  */
-export class UnknownWorkosError extends Schema.TaggedErrorClass<UnknownWorkosError>()(
+export class UnknownWorkosError extends Schema.TaggedError<UnknownWorkosError>()(
   "UnknownWorkosError",
   {
     code: Schema.optional(Schema.String),
@@ -41,7 +41,7 @@ export class UnknownWorkosError extends Schema.TaggedErrorClass<UnknownWorkosErr
 ).pipe(Category.withServerError) {}
 
 /** Schema parse error wrapper. */
-export class WorkosParseError extends Schema.TaggedErrorClass<WorkosParseError>()(
+export class WorkosParseError extends Schema.TaggedError<WorkosParseError>()(
   "WorkosParseError",
   {
     body: Schema.Unknown,

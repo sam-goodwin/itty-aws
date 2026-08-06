@@ -92,19 +92,19 @@ const rules = T.EndpointResolver((p, _) => {
 });
 
 export class EKSRequestThrottledException
-  extends /*@__PURE__*/ S.TaggedErrorClass<EKSRequestThrottledException>()(
+  extends /*@__PURE__*/ S.TaggedError<EKSRequestThrottledException>()(
     "EKSRequestThrottledException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export class InternalServerException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InternalServerException>()(
+  extends /*@__PURE__*/ S.TaggedError<InternalServerException>()(
     "InternalServerException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class InvalidResourceArn
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidResourceArn>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidResourceArn>()(
     "InvalidResourceArn",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.SyntheticError({
@@ -113,24 +113,24 @@ export class InvalidResourceArn
     }),
   ) {}
 export class RequestThrottledException
-  extends /*@__PURE__*/ S.TaggedErrorClass<RequestThrottledException>()(
+  extends /*@__PURE__*/ S.TaggedError<RequestThrottledException>()(
     "RequestThrottledException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ResourceNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TooManyRequestsException
-  extends /*@__PURE__*/ S.TaggedErrorClass<TooManyRequestsException>()(
+  extends /*@__PURE__*/ S.TaggedError<TooManyRequestsException>()(
     "TooManyRequestsException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withThrottlingError, C.withRetryableError) {}
 export class ValidationException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ValidationException>()(
+  extends /*@__PURE__*/ S.TaggedError<ValidationException>()(
     "ValidationException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),

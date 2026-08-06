@@ -104,66 +104,66 @@ const rules = T.EndpointResolver((p, _) => {
 });
 
 export class ConcurrentModificationException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ConcurrentModificationException>()(
+  extends /*@__PURE__*/ S.TaggedError<ConcurrentModificationException>()(
     "ConcurrentModificationException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class DeveloperUserAlreadyRegisteredException
-  extends /*@__PURE__*/ S.TaggedErrorClass<DeveloperUserAlreadyRegisteredException>()(
+  extends /*@__PURE__*/ S.TaggedError<DeveloperUserAlreadyRegisteredException>()(
     "DeveloperUserAlreadyRegisteredException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ExternalServiceException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ExternalServiceException>()(
+  extends /*@__PURE__*/ S.TaggedError<ExternalServiceException>()(
     "ExternalServiceException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InternalErrorException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InternalErrorException>()(
+  extends /*@__PURE__*/ S.TaggedError<InternalErrorException>()(
     "InternalErrorException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withServerError) {}
 export class InvalidIdentityPoolConfigurationException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidIdentityPoolConfigurationException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidIdentityPoolConfigurationException>()(
     "InvalidIdentityPoolConfigurationException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidParameterException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidParameterException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidParameterException>()(
     "InvalidParameterException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class LimitExceededException
-  extends /*@__PURE__*/ S.TaggedErrorClass<LimitExceededException>()(
+  extends /*@__PURE__*/ S.TaggedError<LimitExceededException>()(
     "LimitExceededException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class NotAuthorizedException
-  extends /*@__PURE__*/ S.TaggedErrorClass<NotAuthorizedException>()(
+  extends /*@__PURE__*/ S.TaggedError<NotAuthorizedException>()(
     "NotAuthorizedException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class ResourceConflictException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceConflictException>()(
+  extends /*@__PURE__*/ S.TaggedError<ResourceConflictException>()(
     "ResourceConflictException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class ResourceNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class TooManyRequestsException
-  extends /*@__PURE__*/ S.TaggedErrorClass<TooManyRequestsException>()(
+  extends /*@__PURE__*/ S.TaggedError<TooManyRequestsException>()(
     "TooManyRequestsException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(429),

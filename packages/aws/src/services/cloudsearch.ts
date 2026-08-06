@@ -85,12 +85,12 @@ const rules = T.EndpointResolver((p, _) => {
 });
 
 export class BaseException
-  extends /*@__PURE__*/ S.TaggedErrorClass<BaseException>()("BaseException", {
+  extends /*@__PURE__*/ S.TaggedError<BaseException>()("BaseException", {
     Code: S.optional(S.String),
     message: S.optional(S.String).pipe(T.ErrorMessage()),
   }) {}
 export class DisabledOperationException
-  extends /*@__PURE__*/ S.TaggedErrorClass<DisabledOperationException>()(
+  extends /*@__PURE__*/ S.TaggedError<DisabledOperationException>()(
     "DisabledOperationException",
     {
       Code: S.optional(S.String),
@@ -102,7 +102,7 @@ export class DisabledOperationException
     ),
   ).pipe(C.withConflictError) {}
 export class InternalException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InternalException>()(
+  extends /*@__PURE__*/ S.TaggedError<InternalException>()(
     "InternalException",
     {
       Code: S.optional(S.String),
@@ -114,7 +114,7 @@ export class InternalException
     ),
   ).pipe(C.withServerError) {}
 export class InvalidTypeException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidTypeException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidTypeException>()(
     "InvalidTypeException",
     {
       Code: S.optional(S.String),
@@ -126,7 +126,7 @@ export class InvalidTypeException
     ),
   ).pipe(C.withConflictError) {}
 export class LimitExceededException
-  extends /*@__PURE__*/ S.TaggedErrorClass<LimitExceededException>()(
+  extends /*@__PURE__*/ S.TaggedError<LimitExceededException>()(
     "LimitExceededException",
     {
       Code: S.optional(S.String),
@@ -138,7 +138,7 @@ export class LimitExceededException
     ),
   ).pipe(C.withConflictError) {}
 export class ResourceAlreadyExistsException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceAlreadyExistsException>()(
+  extends /*@__PURE__*/ S.TaggedError<ResourceAlreadyExistsException>()(
     "ResourceAlreadyExistsException",
     {
       Code: S.optional(S.String),
@@ -150,7 +150,7 @@ export class ResourceAlreadyExistsException
     ),
   ).pipe(C.withConflictError, C.withAlreadyExistsError) {}
 export class ResourceNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
     {
       Code: S.optional(S.String),
@@ -162,7 +162,7 @@ export class ResourceNotFoundException
     ),
   ).pipe(C.withConflictError) {}
 export class ValidationException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ValidationException>()(
+  extends /*@__PURE__*/ S.TaggedError<ValidationException>()(
     "ValidationException",
     {
       Code: S.optional(S.String),

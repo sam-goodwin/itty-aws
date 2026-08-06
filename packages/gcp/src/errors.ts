@@ -24,7 +24,7 @@ import * as Schema from "effect/Schema";
 import * as Category from "@distilled.cloud/core/category";
 
 /** Unknown GCP error - returned when an error status is not recognized. */
-export class UnknownGCPError extends Schema.TaggedErrorClass<UnknownGCPError>()(
+export class UnknownGCPError extends Schema.TaggedError<UnknownGCPError>()(
   "UnknownGCPError",
   {
     code: Schema.optional(Schema.Number),
@@ -35,7 +35,7 @@ export class UnknownGCPError extends Schema.TaggedErrorClass<UnknownGCPError>()(
 ).pipe(Category.withServerError) {}
 
 /** Schema parse error wrapper. */
-export class GCPParseError extends Schema.TaggedErrorClass<GCPParseError>()(
+export class GCPParseError extends Schema.TaggedError<GCPParseError>()(
   "GCPParseError",
   {
     body: Schema.Unknown,

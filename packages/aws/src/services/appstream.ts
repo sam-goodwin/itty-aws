@@ -92,91 +92,91 @@ const rules = T.EndpointResolver((p, _) => {
 });
 
 export class ConcurrentModificationException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ConcurrentModificationException>()(
+  extends /*@__PURE__*/ S.TaggedError<ConcurrentModificationException>()(
     "ConcurrentModificationException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class DryRunOperationException
-  extends /*@__PURE__*/ S.TaggedErrorClass<DryRunOperationException>()(
+  extends /*@__PURE__*/ S.TaggedError<DryRunOperationException>()(
     "DryRunOperationException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(412),
   ) {}
 export class EntitlementAlreadyExistsException
-  extends /*@__PURE__*/ S.TaggedErrorClass<EntitlementAlreadyExistsException>()(
+  extends /*@__PURE__*/ S.TaggedError<EntitlementAlreadyExistsException>()(
     "EntitlementAlreadyExistsException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
 export class EntitlementNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<EntitlementNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<EntitlementNotFoundException>()(
     "EntitlementNotFoundException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class IncompatibleImageException
-  extends /*@__PURE__*/ S.TaggedErrorClass<IncompatibleImageException>()(
+  extends /*@__PURE__*/ S.TaggedError<IncompatibleImageException>()(
     "IncompatibleImageException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidAccountStatusException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidAccountStatusException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidAccountStatusException>()(
     "InvalidAccountStatusException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidParameterCombinationException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidParameterCombinationException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidParameterCombinationException>()(
     "InvalidParameterCombinationException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidRoleException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidRoleException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidRoleException>()(
     "InvalidRoleException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class LimitExceededException
-  extends /*@__PURE__*/ S.TaggedErrorClass<LimitExceededException>()(
+  extends /*@__PURE__*/ S.TaggedError<LimitExceededException>()(
     "LimitExceededException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class OperationNotPermittedException
-  extends /*@__PURE__*/ S.TaggedErrorClass<OperationNotPermittedException>()(
+  extends /*@__PURE__*/ S.TaggedError<OperationNotPermittedException>()(
     "OperationNotPermittedException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class RequestLimitExceededException
-  extends /*@__PURE__*/ S.TaggedErrorClass<RequestLimitExceededException>()(
+  extends /*@__PURE__*/ S.TaggedError<RequestLimitExceededException>()(
     "RequestLimitExceededException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ResourceAlreadyExistsException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceAlreadyExistsException>()(
+  extends /*@__PURE__*/ S.TaggedError<ResourceAlreadyExistsException>()(
     "ResourceAlreadyExistsException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
 export class ResourceInUseException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceInUseException>()(
+  extends /*@__PURE__*/ S.TaggedError<ResourceInUseException>()(
     "ResourceInUseException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ResourceNotAvailableException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotAvailableException>()(
+  extends /*@__PURE__*/ S.TaggedError<ResourceNotAvailableException>()(
     "ResourceNotAvailableException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ResourceNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(404),

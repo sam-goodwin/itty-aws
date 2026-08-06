@@ -36,7 +36,7 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
 
 export class Forbidden
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    /*@__PURE__*/ S.TaggedError<Forbidden>()("Forbidden", {
       code: S.Number,
       message: S.String,
     }),
@@ -45,19 +45,16 @@ export class Forbidden
 
 export class SpectrumAppNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<SpectrumAppNotFound>()(
-      "SpectrumAppNotFound",
-      {
-        code: S.Number,
-        message: S.String,
-      },
-    ),
+    /*@__PURE__*/ S.TaggedError<SpectrumAppNotFound>()("SpectrumAppNotFound", {
+      code: S.Number,
+      message: S.String,
+    }),
     [{ code: 10006 }],
   ) {}
 
 export class SpectrumProtocolNotAvailable
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<SpectrumProtocolNotAvailable>()(
+    /*@__PURE__*/ S.TaggedError<SpectrumProtocolNotAvailable>()(
       "SpectrumProtocolNotAvailable",
       {
         code: S.Number,

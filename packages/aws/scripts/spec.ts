@@ -2255,7 +2255,7 @@ export const awsSpec = (
         // operation retains every error class in the service (distilled
         // #191). Same reason the schema consts carry one.
         return [
-          `export class ${name} extends ${PURE}S.TaggedErrorClass<${name}>()("${tag}", ${fields}${annotationsArg})${categoryPipe} {}`,
+          `export class ${name} extends ${PURE}S.TaggedError<${name}>()("${tag}", ${fields}${annotationsArg})${categoryPipe} {}`,
         ];
       },
     },

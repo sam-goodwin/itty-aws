@@ -54,7 +54,7 @@ const rules = T.EndpointResolver((p, _) => {
 });
 
 export class AccessDeniedException
-  extends /*@__PURE__*/ S.TaggedErrorClass<AccessDeniedException>()(
+  extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()(
     "AccessDeniedException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -63,7 +63,7 @@ export class AccessDeniedException
     T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class InternalServiceErrorException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InternalServiceErrorException>()(
+  extends /*@__PURE__*/ S.TaggedError<InternalServiceErrorException>()(
     "InternalServiceErrorException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -72,7 +72,7 @@ export class InternalServiceErrorException
     T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class TooManyRequestsException
-  extends /*@__PURE__*/ S.TaggedErrorClass<TooManyRequestsException>()(
+  extends /*@__PURE__*/ S.TaggedError<TooManyRequestsException>()(
     "TooManyRequestsException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -81,7 +81,7 @@ export class TooManyRequestsException
     T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export class ValidationException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ValidationException>()(
+  extends /*@__PURE__*/ S.TaggedError<ValidationException>()(
     "ValidationException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),

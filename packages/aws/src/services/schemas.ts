@@ -81,7 +81,7 @@ const rules = T.EndpointResolver((p, _) => {
 });
 
 export class BadRequestException
-  extends /*@__PURE__*/ S.TaggedErrorClass<BadRequestException>()(
+  extends /*@__PURE__*/ S.TaggedError<BadRequestException>()(
     "BadRequestException",
     {
       Code: S.optional(S.String),
@@ -90,7 +90,7 @@ export class BadRequestException
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ConflictException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ConflictException>()(
+  extends /*@__PURE__*/ S.TaggedError<ConflictException>()(
     "ConflictException",
     {
       Code: S.optional(S.String),
@@ -99,7 +99,7 @@ export class ConflictException
     T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class ForbiddenException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ForbiddenException>()(
+  extends /*@__PURE__*/ S.TaggedError<ForbiddenException>()(
     "ForbiddenException",
     {
       Code: S.optional(S.String),
@@ -108,7 +108,7 @@ export class ForbiddenException
     T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class GoneException
-  extends /*@__PURE__*/ S.TaggedErrorClass<GoneException>()(
+  extends /*@__PURE__*/ S.TaggedError<GoneException>()(
     "GoneException",
     {
       Code: S.optional(S.String),
@@ -117,7 +117,7 @@ export class GoneException
     T.HttpError(410),
   ).pipe(C.withBadRequestError) {}
 export class InternalServerErrorException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InternalServerErrorException>()(
+  extends /*@__PURE__*/ S.TaggedError<InternalServerErrorException>()(
     "InternalServerErrorException",
     {
       Code: S.optional(S.String),
@@ -126,7 +126,7 @@ export class InternalServerErrorException
     T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class NotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<NotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<NotFoundException>()(
     "NotFoundException",
     {
       Code: S.optional(S.String),
@@ -135,7 +135,7 @@ export class NotFoundException
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class PreconditionFailedException
-  extends /*@__PURE__*/ S.TaggedErrorClass<PreconditionFailedException>()(
+  extends /*@__PURE__*/ S.TaggedError<PreconditionFailedException>()(
     "PreconditionFailedException",
     {
       Code: S.optional(S.String),
@@ -144,7 +144,7 @@ export class PreconditionFailedException
     T.HttpError(412),
   ) {}
 export class ServiceUnavailableException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ServiceUnavailableException>()(
+  extends /*@__PURE__*/ S.TaggedError<ServiceUnavailableException>()(
     "ServiceUnavailableException",
     {
       Code: S.optional(S.String),
@@ -153,7 +153,7 @@ export class ServiceUnavailableException
     T.HttpError(503),
   ).pipe(C.withServerError) {}
 export class TooManyRequestsException
-  extends /*@__PURE__*/ S.TaggedErrorClass<TooManyRequestsException>()(
+  extends /*@__PURE__*/ S.TaggedError<TooManyRequestsException>()(
     "TooManyRequestsException",
     {
       Code: S.optional(S.String),
@@ -162,7 +162,7 @@ export class TooManyRequestsException
     T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export class UnauthorizedException
-  extends /*@__PURE__*/ S.TaggedErrorClass<UnauthorizedException>()(
+  extends /*@__PURE__*/ S.TaggedError<UnauthorizedException>()(
     "UnauthorizedException",
     {
       Code: S.optional(S.String),

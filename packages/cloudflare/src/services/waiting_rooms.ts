@@ -55,7 +55,7 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
 
 export class Forbidden
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    /*@__PURE__*/ S.TaggedError<Forbidden>()("Forbidden", {
       code: S.Number,
       message: S.String,
     }),
@@ -64,19 +64,16 @@ export class Forbidden
 
 export class WaitingRoomNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<WaitingRoomNotFound>()(
-      "WaitingRoomNotFound",
-      {
-        code: S.Number,
-        message: S.String,
-      },
-    ),
+    /*@__PURE__*/ S.TaggedError<WaitingRoomNotFound>()("WaitingRoomNotFound", {
+      code: S.Number,
+      message: S.String,
+    }),
     [{ code: 1001 }],
   ) {}
 
 export class ZoneNotEntitled
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<ZoneNotEntitled>()("ZoneNotEntitled", {
+    /*@__PURE__*/ S.TaggedError<ZoneNotEntitled>()("ZoneNotEntitled", {
       code: S.Number,
       message: S.String,
     }),

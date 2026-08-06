@@ -63,7 +63,7 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
 
 export class FiltersRequired
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<FiltersRequired>()("FiltersRequired", {
+    /*@__PURE__*/ S.TaggedError<FiltersRequired>()("FiltersRequired", {
       code: S.Number,
       message: S.String,
     }),
@@ -72,7 +72,7 @@ export class FiltersRequired
 
 export class InvalidAlertType
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<InvalidAlertType>()("InvalidAlertType", {
+    /*@__PURE__*/ S.TaggedError<InvalidAlertType>()("InvalidAlertType", {
       code: S.Number,
       message: S.String,
     }),
@@ -81,7 +81,7 @@ export class InvalidAlertType
 
 export class InvalidRoute
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<InvalidRoute>()("InvalidRoute", {
+    /*@__PURE__*/ S.TaggedError<InvalidRoute>()("InvalidRoute", {
       code: S.Number,
       message: S.String,
     }),
@@ -90,7 +90,7 @@ export class InvalidRoute
 
 export class InvalidSilence
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<InvalidSilence>()("InvalidSilence", {
+    /*@__PURE__*/ S.TaggedError<InvalidSilence>()("InvalidSilence", {
       code: S.Number,
       message: S.String,
     }),
@@ -99,7 +99,7 @@ export class InvalidSilence
 
 export class InvalidWebhookId
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<InvalidWebhookId>()("InvalidWebhookId", {
+    /*@__PURE__*/ S.TaggedError<InvalidWebhookId>()("InvalidWebhookId", {
       code: S.Number,
       message: S.String,
     }),
@@ -108,7 +108,7 @@ export class InvalidWebhookId
 
 export class MechanismRequired
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<MechanismRequired>()("MechanismRequired", {
+    /*@__PURE__*/ S.TaggedError<MechanismRequired>()("MechanismRequired", {
       code: S.Number,
       message: S.String,
     }),
@@ -117,7 +117,7 @@ export class MechanismRequired
 
 export class PolicyNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<PolicyNotFound>()("PolicyNotFound", {
+    /*@__PURE__*/ S.TaggedError<PolicyNotFound>()("PolicyNotFound", {
       code: S.Number,
       message: S.String,
     }),
@@ -126,7 +126,7 @@ export class PolicyNotFound
 
 export class SilenceAlreadyExists
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<SilenceAlreadyExists>()(
+    /*@__PURE__*/ S.TaggedError<SilenceAlreadyExists>()(
       "SilenceAlreadyExists",
       {
         code: S.Number,
@@ -138,7 +138,7 @@ export class SilenceAlreadyExists
 
 export class SilenceNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<SilenceNotFound>()("SilenceNotFound", {
+    /*@__PURE__*/ S.TaggedError<SilenceNotFound>()("SilenceNotFound", {
       code: S.Number,
       message: S.String,
     }),
@@ -147,7 +147,7 @@ export class SilenceNotFound
 
 export class WebhookNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<WebhookNotFound>()("WebhookNotFound", {
+    /*@__PURE__*/ S.TaggedError<WebhookNotFound>()("WebhookNotFound", {
       code: S.Number,
       message: S.String,
     }),
@@ -156,7 +156,7 @@ export class WebhookNotFound
 
 export class WebhookTestFailed
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<WebhookTestFailed>()("WebhookTestFailed", {
+    /*@__PURE__*/ S.TaggedError<WebhookTestFailed>()("WebhookTestFailed", {
       code: S.Number,
       message: S.String,
     }),

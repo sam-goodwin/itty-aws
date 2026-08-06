@@ -203,13 +203,13 @@ const rules = T.EndpointResolver((p, _) => {
 });
 
 export class AnalysisNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<AnalysisNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<AnalysisNotFoundException>()(
     "AnalysisNotFoundException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class AnomalyMonitorAlreadyExists
-  extends /*@__PURE__*/ S.TaggedErrorClass<AnomalyMonitorAlreadyExists>()(
+  extends /*@__PURE__*/ S.TaggedError<AnomalyMonitorAlreadyExists>()(
     "AnomalyMonitorAlreadyExists",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.SyntheticError({
@@ -218,7 +218,7 @@ export class AnomalyMonitorAlreadyExists
     }),
   ).pipe(C.withAlreadyExistsError, C.withConflictError) {}
 export class AnomalySubscriptionAlreadyExists
-  extends /*@__PURE__*/ S.TaggedErrorClass<AnomalySubscriptionAlreadyExists>()(
+  extends /*@__PURE__*/ S.TaggedError<AnomalySubscriptionAlreadyExists>()(
     "AnomalySubscriptionAlreadyExists",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.SyntheticError({
@@ -229,49 +229,49 @@ export class AnomalySubscriptionAlreadyExists
     }),
   ).pipe(C.withAlreadyExistsError, C.withConflictError) {}
 export class BackfillLimitExceededException
-  extends /*@__PURE__*/ S.TaggedErrorClass<BackfillLimitExceededException>()(
+  extends /*@__PURE__*/ S.TaggedError<BackfillLimitExceededException>()(
     "BackfillLimitExceededException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class BillExpirationException
-  extends /*@__PURE__*/ S.TaggedErrorClass<BillExpirationException>()(
+  extends /*@__PURE__*/ S.TaggedError<BillExpirationException>()(
     "BillExpirationException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class BillingViewHealthStatusException
-  extends /*@__PURE__*/ S.TaggedErrorClass<BillingViewHealthStatusException>()(
+  extends /*@__PURE__*/ S.TaggedError<BillingViewHealthStatusException>()(
     "BillingViewHealthStatusException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class DataUnavailableException
-  extends /*@__PURE__*/ S.TaggedErrorClass<DataUnavailableException>()(
+  extends /*@__PURE__*/ S.TaggedError<DataUnavailableException>()(
     "DataUnavailableException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class GenerationExistsException
-  extends /*@__PURE__*/ S.TaggedErrorClass<GenerationExistsException>()(
+  extends /*@__PURE__*/ S.TaggedError<GenerationExistsException>()(
     "GenerationExistsException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidNextTokenException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidNextTokenException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidNextTokenException>()(
     "InvalidNextTokenException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class LimitExceededException
-  extends /*@__PURE__*/ S.TaggedErrorClass<LimitExceededException>()(
+  extends /*@__PURE__*/ S.TaggedError<LimitExceededException>()(
     "LimitExceededException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class RequestChangedException
-  extends /*@__PURE__*/ S.TaggedErrorClass<RequestChangedException>()(
+  extends /*@__PURE__*/ S.TaggedError<RequestChangedException>()(
     "RequestChangedException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class ResourceNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -280,7 +280,7 @@ export class ResourceNotFoundException
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class RightsizingRecommendationNotEnabled
-  extends /*@__PURE__*/ S.TaggedErrorClass<RightsizingRecommendationNotEnabled>()(
+  extends /*@__PURE__*/ S.TaggedError<RightsizingRecommendationNotEnabled>()(
     "RightsizingRecommendationNotEnabled",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.SyntheticError({
@@ -289,13 +289,13 @@ export class RightsizingRecommendationNotEnabled
     }),
   ) {}
 export class ServiceQuotaExceededException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ServiceQuotaExceededException>()(
+  extends /*@__PURE__*/ S.TaggedError<ServiceQuotaExceededException>()(
     "ServiceQuotaExceededException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(402),
   ).pipe(C.withQuotaError) {}
 export class TooManyTagsException
-  extends /*@__PURE__*/ S.TaggedErrorClass<TooManyTagsException>()(
+  extends /*@__PURE__*/ S.TaggedError<TooManyTagsException>()(
     "TooManyTagsException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -304,19 +304,19 @@ export class TooManyTagsException
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class UnknownMonitorException
-  extends /*@__PURE__*/ S.TaggedErrorClass<UnknownMonitorException>()(
+  extends /*@__PURE__*/ S.TaggedError<UnknownMonitorException>()(
     "UnknownMonitorException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class UnknownSubscriptionException
-  extends /*@__PURE__*/ S.TaggedErrorClass<UnknownSubscriptionException>()(
+  extends /*@__PURE__*/ S.TaggedError<UnknownSubscriptionException>()(
     "UnknownSubscriptionException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class UnresolvableUsageUnitException
-  extends /*@__PURE__*/ S.TaggedErrorClass<UnresolvableUsageUnitException>()(
+  extends /*@__PURE__*/ S.TaggedError<UnresolvableUsageUnitException>()(
     "UnresolvableUsageUnitException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}

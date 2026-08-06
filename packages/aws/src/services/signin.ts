@@ -291,7 +291,7 @@ const rules = T.EndpointResolver((p, _) => {
 });
 
 export class AccessDeniedException
-  extends /*@__PURE__*/ S.TaggedErrorClass<AccessDeniedException>()(
+  extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()(
     "AccessDeniedException",
     {
       error: S.suspend(() => OAuth2ErrorCode).annotate({
@@ -301,7 +301,7 @@ export class AccessDeniedException
     },
   ).pipe(C.withAuthError) {}
 export class ConflictException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ConflictException>()(
+  extends /*@__PURE__*/ S.TaggedError<ConflictException>()(
     "ConflictException",
     {
       error: S.suspend(() => OAuth2ErrorCode).annotate({
@@ -312,7 +312,7 @@ export class ConflictException
     T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class InternalServerException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InternalServerException>()(
+  extends /*@__PURE__*/ S.TaggedError<InternalServerException>()(
     "InternalServerException",
     {
       error: S.suspend(() => OAuth2ErrorCode).annotate({
@@ -323,7 +323,7 @@ export class InternalServerException
     T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class ResourceNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
     {
       error: S.suspend(() => OAuth2ErrorCode).annotate({
@@ -334,7 +334,7 @@ export class ResourceNotFoundException
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ServiceQuotaExceededException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ServiceQuotaExceededException>()(
+  extends /*@__PURE__*/ S.TaggedError<ServiceQuotaExceededException>()(
     "ServiceQuotaExceededException",
     {
       error: S.suspend(() => OAuth2ErrorCode).annotate({
@@ -345,7 +345,7 @@ export class ServiceQuotaExceededException
     T.HttpError(402),
   ).pipe(C.withQuotaError) {}
 export class TooManyRequestsError
-  extends /*@__PURE__*/ S.TaggedErrorClass<TooManyRequestsError>()(
+  extends /*@__PURE__*/ S.TaggedError<TooManyRequestsError>()(
     "TooManyRequestsError",
     {
       error: S.suspend(() => OAuth2ErrorCode).annotate({
@@ -356,7 +356,7 @@ export class TooManyRequestsError
     T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export class ValidationException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ValidationException>()(
+  extends /*@__PURE__*/ S.TaggedError<ValidationException>()(
     "ValidationException",
     {
       error: S.suspend(() => OAuth2ErrorCode).annotate({

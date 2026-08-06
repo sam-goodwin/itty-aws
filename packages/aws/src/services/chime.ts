@@ -105,7 +105,7 @@ const rules = T.EndpointResolver((p, _) => {
 });
 
 export class AccessDeniedException
-  extends /*@__PURE__*/ S.TaggedErrorClass<AccessDeniedException>()(
+  extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()(
     "AccessDeniedException",
     {
       Code: S.optional(
@@ -116,7 +116,7 @@ export class AccessDeniedException
     T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class BadRequestException
-  extends /*@__PURE__*/ S.TaggedErrorClass<BadRequestException>()(
+  extends /*@__PURE__*/ S.TaggedError<BadRequestException>()(
     "BadRequestException",
     {
       Code: S.optional(
@@ -127,7 +127,7 @@ export class BadRequestException
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ConflictException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ConflictException>()(
+  extends /*@__PURE__*/ S.TaggedError<ConflictException>()(
     "ConflictException",
     {
       Code: S.optional(
@@ -138,7 +138,7 @@ export class ConflictException
     T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class ForbiddenException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ForbiddenException>()(
+  extends /*@__PURE__*/ S.TaggedError<ForbiddenException>()(
     "ForbiddenException",
     {
       Code: S.optional(
@@ -149,7 +149,7 @@ export class ForbiddenException
     T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class NotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<NotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<NotFoundException>()(
     "NotFoundException",
     {
       Code: S.optional(
@@ -160,7 +160,7 @@ export class NotFoundException
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ResourceLimitExceededException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceLimitExceededException>()(
+  extends /*@__PURE__*/ S.TaggedError<ResourceLimitExceededException>()(
     "ResourceLimitExceededException",
     {
       Code: S.optional(
@@ -171,7 +171,7 @@ export class ResourceLimitExceededException
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ServiceFailureException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ServiceFailureException>()(
+  extends /*@__PURE__*/ S.TaggedError<ServiceFailureException>()(
     "ServiceFailureException",
     {
       Code: S.optional(
@@ -182,7 +182,7 @@ export class ServiceFailureException
     T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class ServiceUnavailableException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ServiceUnavailableException>()(
+  extends /*@__PURE__*/ S.TaggedError<ServiceUnavailableException>()(
     "ServiceUnavailableException",
     {
       Code: S.optional(
@@ -193,7 +193,7 @@ export class ServiceUnavailableException
     T.HttpError(503),
   ).pipe(C.withServerError) {}
 export class ThrottledClientException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ThrottledClientException>()(
+  extends /*@__PURE__*/ S.TaggedError<ThrottledClientException>()(
     "ThrottledClientException",
     {
       Code: S.optional(
@@ -204,7 +204,7 @@ export class ThrottledClientException
     T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export class UnauthorizedClientException
-  extends /*@__PURE__*/ S.TaggedErrorClass<UnauthorizedClientException>()(
+  extends /*@__PURE__*/ S.TaggedError<UnauthorizedClientException>()(
     "UnauthorizedClientException",
     {
       Code: S.optional(
@@ -215,7 +215,7 @@ export class UnauthorizedClientException
     T.HttpError(401),
   ).pipe(C.withAuthError) {}
 export class UnprocessableEntityException
-  extends /*@__PURE__*/ S.TaggedErrorClass<UnprocessableEntityException>()(
+  extends /*@__PURE__*/ S.TaggedError<UnprocessableEntityException>()(
     "UnprocessableEntityException",
     {
       Code: S.optional(

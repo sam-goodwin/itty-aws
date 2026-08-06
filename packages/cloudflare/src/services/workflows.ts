@@ -46,7 +46,7 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
 
 export class InstanceAlreadyExists
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<InstanceAlreadyExists>()(
+    /*@__PURE__*/ S.TaggedError<InstanceAlreadyExists>()(
       "InstanceAlreadyExists",
       {
         code: S.Number,
@@ -58,7 +58,7 @@ export class InstanceAlreadyExists
 
 export class InstanceCannotTerminate
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<InstanceCannotTerminate>()(
+    /*@__PURE__*/ S.TaggedError<InstanceCannotTerminate>()(
       "InstanceCannotTerminate",
       {
         code: S.Number,
@@ -70,7 +70,7 @@ export class InstanceCannotTerminate
 
 export class InstanceNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<InstanceNotFound>()("InstanceNotFound", {
+    /*@__PURE__*/ S.TaggedError<InstanceNotFound>()("InstanceNotFound", {
       code: S.Number,
       message: S.String,
     }),
@@ -79,7 +79,7 @@ export class InstanceNotFound
 
 export class InvalidBody
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<InvalidBody>()("InvalidBody", {
+    /*@__PURE__*/ S.TaggedError<InvalidBody>()("InvalidBody", {
       code: S.Number,
       message: S.String,
     }),
@@ -88,7 +88,7 @@ export class InvalidBody
 
 export class InvalidRoute
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<InvalidRoute>()("InvalidRoute", {
+    /*@__PURE__*/ S.TaggedError<InvalidRoute>()("InvalidRoute", {
       code: S.Number,
       message: S.String,
     }),
@@ -97,7 +97,7 @@ export class InvalidRoute
 
 export class VersionNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<VersionNotFound>()("VersionNotFound", {
+    /*@__PURE__*/ S.TaggedError<VersionNotFound>()("VersionNotFound", {
       code: S.Number,
       message: S.String,
     }),
@@ -106,7 +106,7 @@ export class VersionNotFound
 
 export class WorkflowInternalError
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<WorkflowInternalError>()(
+    /*@__PURE__*/ S.TaggedError<WorkflowInternalError>()(
       "WorkflowInternalError",
       {
         code: S.Number,
@@ -118,7 +118,7 @@ export class WorkflowInternalError
 
 export class WorkflowNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<WorkflowNotFound>()("WorkflowNotFound", {
+    /*@__PURE__*/ S.TaggedError<WorkflowNotFound>()("WorkflowNotFound", {
       code: S.Number,
       message: S.String,
     }),

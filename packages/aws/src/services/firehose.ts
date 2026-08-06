@@ -87,17 +87,17 @@ const rules = T.EndpointResolver((p, _) => {
 });
 
 export class ConcurrentModificationException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ConcurrentModificationException>()(
+  extends /*@__PURE__*/ S.TaggedError<ConcurrentModificationException>()(
     "ConcurrentModificationException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidArgumentException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidArgumentException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidArgumentException>()(
     "InvalidArgumentException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidKMSResourceException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidKMSResourceException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidKMSResourceException>()(
     "InvalidKMSResourceException",
     {
       code: S.optional(S.String),
@@ -105,7 +105,7 @@ export class InvalidKMSResourceException
     },
   ) {}
 export class InvalidSourceException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidSourceException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidSourceException>()(
     "InvalidSourceException",
     {
       code: S.optional(S.String),
@@ -113,22 +113,22 @@ export class InvalidSourceException
     },
   ) {}
 export class LimitExceededException
-  extends /*@__PURE__*/ S.TaggedErrorClass<LimitExceededException>()(
+  extends /*@__PURE__*/ S.TaggedError<LimitExceededException>()(
     "LimitExceededException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class ResourceInUseException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceInUseException>()(
+  extends /*@__PURE__*/ S.TaggedError<ResourceInUseException>()(
     "ResourceInUseException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class ResourceNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class ServiceUnavailableException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ServiceUnavailableException>()(
+  extends /*@__PURE__*/ S.TaggedError<ServiceUnavailableException>()(
     "ServiceUnavailableException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(503),

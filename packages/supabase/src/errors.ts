@@ -28,7 +28,7 @@ import * as Schema from "effect/Schema";
 import * as Category from "@distilled.cloud/core/category";
 
 // Unknown Supabase error - returned when an error code is not recognized
-export class UnknownSupabaseError extends Schema.TaggedErrorClass<UnknownSupabaseError>()(
+export class UnknownSupabaseError extends Schema.TaggedError<UnknownSupabaseError>()(
   "UnknownSupabaseError",
   {
     code: Schema.optional(Schema.String),
@@ -45,7 +45,7 @@ export class UnknownSupabaseError extends Schema.TaggedErrorClass<UnknownSupabas
 //    they are an administrator or owner: <email> (<n> project limit)..."
 // We tag it explicitly so tests can detect it, clean up stale projects,
 // and retry — and so callers can distinguish it from a real BadRequest.
-export class FreeProjectLimitReached extends Schema.TaggedErrorClass<FreeProjectLimitReached>()(
+export class FreeProjectLimitReached extends Schema.TaggedError<FreeProjectLimitReached>()(
   "FreeProjectLimitReached",
   {
     message: Schema.String,
@@ -53,7 +53,7 @@ export class FreeProjectLimitReached extends Schema.TaggedErrorClass<FreeProject
 ).pipe(Category.withQuotaError) {}
 
 // Schema parse error wrapper
-export class SupabaseParseError extends Schema.TaggedErrorClass<SupabaseParseError>()(
+export class SupabaseParseError extends Schema.TaggedError<SupabaseParseError>()(
   "SupabaseParseError",
   {
     body: Schema.Unknown,

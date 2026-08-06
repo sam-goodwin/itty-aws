@@ -87,25 +87,25 @@ const rules = T.EndpointResolver((p, _) => {
 });
 
 export class ConcurrentModificationException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ConcurrentModificationException>()(
+  extends /*@__PURE__*/ S.TaggedError<ConcurrentModificationException>()(
     "ConcurrentModificationException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class ConflictingOperationException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ConflictingOperationException>()(
+  extends /*@__PURE__*/ S.TaggedError<ConflictingOperationException>()(
     "ConflictingOperationException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class CustomMetadataLimitExceededException
-  extends /*@__PURE__*/ S.TaggedErrorClass<CustomMetadataLimitExceededException>()(
+  extends /*@__PURE__*/ S.TaggedError<CustomMetadataLimitExceededException>()(
     "CustomMetadataLimitExceededException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export class DeactivatingLastSystemUserException
-  extends /*@__PURE__*/ S.TaggedErrorClass<DeactivatingLastSystemUserException>()(
+  extends /*@__PURE__*/ S.TaggedError<DeactivatingLastSystemUserException>()(
     "DeactivatingLastSystemUserException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -114,25 +114,25 @@ export class DeactivatingLastSystemUserException
     T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class DocumentLockedForCommentsException
-  extends /*@__PURE__*/ S.TaggedErrorClass<DocumentLockedForCommentsException>()(
+  extends /*@__PURE__*/ S.TaggedError<DocumentLockedForCommentsException>()(
     "DocumentLockedForCommentsException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class DraftUploadOutOfSyncException
-  extends /*@__PURE__*/ S.TaggedErrorClass<DraftUploadOutOfSyncException>()(
+  extends /*@__PURE__*/ S.TaggedError<DraftUploadOutOfSyncException>()(
     "DraftUploadOutOfSyncException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class EntityAlreadyExistsException
-  extends /*@__PURE__*/ S.TaggedErrorClass<EntityAlreadyExistsException>()(
+  extends /*@__PURE__*/ S.TaggedError<EntityAlreadyExistsException>()(
     "EntityAlreadyExistsException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(409),
   ).pipe(C.withConflictError, C.withAlreadyExistsError) {}
 export class EntityNotExistsException
-  extends /*@__PURE__*/ S.TaggedErrorClass<EntityNotExistsException>()(
+  extends /*@__PURE__*/ S.TaggedError<EntityNotExistsException>()(
     "EntityNotExistsException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -143,97 +143,97 @@ export class EntityNotExistsException
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class FailedDependencyException
-  extends /*@__PURE__*/ S.TaggedErrorClass<FailedDependencyException>()(
+  extends /*@__PURE__*/ S.TaggedError<FailedDependencyException>()(
     "FailedDependencyException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(424),
   ) {}
 export class IllegalUserStateException
-  extends /*@__PURE__*/ S.TaggedErrorClass<IllegalUserStateException>()(
+  extends /*@__PURE__*/ S.TaggedError<IllegalUserStateException>()(
     "IllegalUserStateException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class InvalidArgumentException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidArgumentException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidArgumentException>()(
     "InvalidArgumentException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidCommentOperationException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidCommentOperationException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidCommentOperationException>()(
     "InvalidCommentOperationException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class InvalidOperationException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidOperationException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidOperationException>()(
     "InvalidOperationException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(405),
   ).pipe(C.withBadRequestError) {}
 export class InvalidPasswordException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidPasswordException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidPasswordException>()(
     "InvalidPasswordException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(401),
   ).pipe(C.withAuthError) {}
 export class LimitExceededException
-  extends /*@__PURE__*/ S.TaggedErrorClass<LimitExceededException>()(
+  extends /*@__PURE__*/ S.TaggedError<LimitExceededException>()(
     "LimitExceededException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class ProhibitedStateException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ProhibitedStateException>()(
+  extends /*@__PURE__*/ S.TaggedError<ProhibitedStateException>()(
     "ProhibitedStateException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class RequestedEntityTooLargeException
-  extends /*@__PURE__*/ S.TaggedErrorClass<RequestedEntityTooLargeException>()(
+  extends /*@__PURE__*/ S.TaggedError<RequestedEntityTooLargeException>()(
     "RequestedEntityTooLargeException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(413),
   ).pipe(C.withBadRequestError) {}
 export class ResourceAlreadyCheckedOutException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceAlreadyCheckedOutException>()(
+  extends /*@__PURE__*/ S.TaggedError<ResourceAlreadyCheckedOutException>()(
     "ResourceAlreadyCheckedOutException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class ServiceUnavailableException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ServiceUnavailableException>()(
+  extends /*@__PURE__*/ S.TaggedError<ServiceUnavailableException>()(
     "ServiceUnavailableException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(503),
   ).pipe(C.withServerError) {}
 export class StorageLimitExceededException
-  extends /*@__PURE__*/ S.TaggedErrorClass<StorageLimitExceededException>()(
+  extends /*@__PURE__*/ S.TaggedError<StorageLimitExceededException>()(
     "StorageLimitExceededException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class StorageLimitWillExceedException
-  extends /*@__PURE__*/ S.TaggedErrorClass<StorageLimitWillExceedException>()(
+  extends /*@__PURE__*/ S.TaggedError<StorageLimitWillExceedException>()(
     "StorageLimitWillExceedException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(413),
   ).pipe(C.withBadRequestError) {}
 export class TooManyLabelsException
-  extends /*@__PURE__*/ S.TaggedErrorClass<TooManyLabelsException>()(
+  extends /*@__PURE__*/ S.TaggedError<TooManyLabelsException>()(
     "TooManyLabelsException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export class TooManySubscriptionsException
-  extends /*@__PURE__*/ S.TaggedErrorClass<TooManySubscriptionsException>()(
+  extends /*@__PURE__*/ S.TaggedError<TooManySubscriptionsException>()(
     "TooManySubscriptionsException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export class UnauthorizedOperationException
-  extends /*@__PURE__*/ S.TaggedErrorClass<UnauthorizedOperationException>()(
+  extends /*@__PURE__*/ S.TaggedError<UnauthorizedOperationException>()(
     "UnauthorizedOperationException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -242,7 +242,7 @@ export class UnauthorizedOperationException
     T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class UnauthorizedResourceAccessException
-  extends /*@__PURE__*/ S.TaggedErrorClass<UnauthorizedResourceAccessException>()(
+  extends /*@__PURE__*/ S.TaggedError<UnauthorizedResourceAccessException>()(
     "UnauthorizedResourceAccessException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(404),

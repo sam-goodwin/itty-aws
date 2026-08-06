@@ -87,7 +87,7 @@ const rules = T.EndpointResolver((p, _) => {
 });
 
 export class IdempotentParameterMismatchException
-  extends /*@__PURE__*/ S.TaggedErrorClass<IdempotentParameterMismatchException>()(
+  extends /*@__PURE__*/ S.TaggedError<IdempotentParameterMismatchException>()(
     "IdempotentParameterMismatchException",
     { message: S.String.pipe(T.ErrorMessage()) },
     T.all(
@@ -99,7 +99,7 @@ export class IdempotentParameterMismatchException
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidClientTokenException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidClientTokenException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidClientTokenException>()(
     "InvalidClientTokenException",
     { message: S.String.pipe(T.ErrorMessage()) },
     T.all(
@@ -108,7 +108,7 @@ export class InvalidClientTokenException
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidMaxResultsException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidMaxResultsException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidMaxResultsException>()(
     "InvalidMaxResultsException",
     { message: S.String.pipe(T.ErrorMessage()) },
     T.all(
@@ -117,7 +117,7 @@ export class InvalidMaxResultsException
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidNextTokenException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidNextTokenException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidNextTokenException>()(
     "InvalidNextTokenException",
     { message: S.String.pipe(T.ErrorMessage()) },
     T.all(
@@ -126,7 +126,7 @@ export class InvalidNextTokenException
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidParameterException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidParameterException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidParameterException>()(
     "InvalidParameterException",
     { message: S.String.pipe(T.ErrorMessage()) },
     T.all(
@@ -135,7 +135,7 @@ export class InvalidParameterException
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidPolicyException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidPolicyException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidPolicyException>()(
     "InvalidPolicyException",
     { message: S.String.pipe(T.ErrorMessage()) },
     T.all(
@@ -144,7 +144,7 @@ export class InvalidPolicyException
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidResourceTypeException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidResourceTypeException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidResourceTypeException>()(
     "InvalidResourceTypeException",
     { message: S.String.pipe(T.ErrorMessage()) },
     T.all(
@@ -156,7 +156,7 @@ export class InvalidResourceTypeException
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidStateTransitionException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidStateTransitionException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidStateTransitionException>()(
     "InvalidStateTransitionException",
     { message: S.String.pipe(T.ErrorMessage()) },
     T.all(
@@ -168,7 +168,7 @@ export class InvalidStateTransitionException
     ),
   ).pipe(C.withBadRequestError) {}
 export class MalformedArnException
-  extends /*@__PURE__*/ S.TaggedErrorClass<MalformedArnException>()(
+  extends /*@__PURE__*/ S.TaggedError<MalformedArnException>()(
     "MalformedArnException",
     { message: S.String.pipe(T.ErrorMessage()) },
     T.all(
@@ -177,7 +177,7 @@ export class MalformedArnException
     ),
   ).pipe(C.withBadRequestError) {}
 export class MalformedPolicyTemplateException
-  extends /*@__PURE__*/ S.TaggedErrorClass<MalformedPolicyTemplateException>()(
+  extends /*@__PURE__*/ S.TaggedError<MalformedPolicyTemplateException>()(
     "MalformedPolicyTemplateException",
     { message: S.String.pipe(T.ErrorMessage()) },
     T.all(
@@ -189,7 +189,7 @@ export class MalformedPolicyTemplateException
     ),
   ).pipe(C.withBadRequestError) {}
 export class MissingRequiredParameterException
-  extends /*@__PURE__*/ S.TaggedErrorClass<MissingRequiredParameterException>()(
+  extends /*@__PURE__*/ S.TaggedError<MissingRequiredParameterException>()(
     "MissingRequiredParameterException",
     { message: S.String.pipe(T.ErrorMessage()) },
     T.all(
@@ -201,7 +201,7 @@ export class MissingRequiredParameterException
     ),
   ).pipe(C.withBadRequestError) {}
 export class OperationNotPermittedException
-  extends /*@__PURE__*/ S.TaggedErrorClass<OperationNotPermittedException>()(
+  extends /*@__PURE__*/ S.TaggedError<OperationNotPermittedException>()(
     "OperationNotPermittedException",
     { message: S.String.pipe(T.ErrorMessage()) },
     T.all(
@@ -210,7 +210,7 @@ export class OperationNotPermittedException
     ),
   ).pipe(C.withBadRequestError) {}
 export class PermissionAlreadyExistsException
-  extends /*@__PURE__*/ S.TaggedErrorClass<PermissionAlreadyExistsException>()(
+  extends /*@__PURE__*/ S.TaggedError<PermissionAlreadyExistsException>()(
     "PermissionAlreadyExistsException",
     { message: S.String.pipe(T.ErrorMessage()) },
     T.all(
@@ -222,7 +222,7 @@ export class PermissionAlreadyExistsException
     ),
   ).pipe(C.withConflictError, C.withAlreadyExistsError) {}
 export class PermissionLimitExceededException
-  extends /*@__PURE__*/ S.TaggedErrorClass<PermissionLimitExceededException>()(
+  extends /*@__PURE__*/ S.TaggedError<PermissionLimitExceededException>()(
     "PermissionLimitExceededException",
     { message: S.String.pipe(T.ErrorMessage()) },
     T.all(
@@ -234,7 +234,7 @@ export class PermissionLimitExceededException
     ),
   ).pipe(C.withBadRequestError) {}
 export class PermissionVersionsLimitExceededException
-  extends /*@__PURE__*/ S.TaggedErrorClass<PermissionVersionsLimitExceededException>()(
+  extends /*@__PURE__*/ S.TaggedError<PermissionVersionsLimitExceededException>()(
     "PermissionVersionsLimitExceededException",
     { message: S.String.pipe(T.ErrorMessage()) },
     T.all(
@@ -246,7 +246,7 @@ export class PermissionVersionsLimitExceededException
     ),
   ).pipe(C.withBadRequestError) {}
 export class ResourceArnNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceArnNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<ResourceArnNotFoundException>()(
     "ResourceArnNotFoundException",
     { message: S.String.pipe(T.ErrorMessage()) },
     T.all(
@@ -258,7 +258,7 @@ export class ResourceArnNotFoundException
     ),
   ).pipe(C.withBadRequestError) {}
 export class ResourceShareInvitationAlreadyAcceptedException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceShareInvitationAlreadyAcceptedException>()(
+  extends /*@__PURE__*/ S.TaggedError<ResourceShareInvitationAlreadyAcceptedException>()(
     "ResourceShareInvitationAlreadyAcceptedException",
     { message: S.String.pipe(T.ErrorMessage()) },
     T.all(
@@ -270,7 +270,7 @@ export class ResourceShareInvitationAlreadyAcceptedException
     ),
   ).pipe(C.withBadRequestError) {}
 export class ResourceShareInvitationAlreadyRejectedException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceShareInvitationAlreadyRejectedException>()(
+  extends /*@__PURE__*/ S.TaggedError<ResourceShareInvitationAlreadyRejectedException>()(
     "ResourceShareInvitationAlreadyRejectedException",
     { message: S.String.pipe(T.ErrorMessage()) },
     T.all(
@@ -282,7 +282,7 @@ export class ResourceShareInvitationAlreadyRejectedException
     ),
   ).pipe(C.withBadRequestError) {}
 export class ResourceShareInvitationArnNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceShareInvitationArnNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<ResourceShareInvitationArnNotFoundException>()(
     "ResourceShareInvitationArnNotFoundException",
     { message: S.String.pipe(T.ErrorMessage()) },
     T.all(
@@ -294,7 +294,7 @@ export class ResourceShareInvitationArnNotFoundException
     ),
   ).pipe(C.withBadRequestError) {}
 export class ResourceShareInvitationExpiredException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceShareInvitationExpiredException>()(
+  extends /*@__PURE__*/ S.TaggedError<ResourceShareInvitationExpiredException>()(
     "ResourceShareInvitationExpiredException",
     { message: S.String.pipe(T.ErrorMessage()) },
     T.all(
@@ -306,7 +306,7 @@ export class ResourceShareInvitationExpiredException
     ),
   ).pipe(C.withBadRequestError) {}
 export class ResourceShareLimitExceededException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceShareLimitExceededException>()(
+  extends /*@__PURE__*/ S.TaggedError<ResourceShareLimitExceededException>()(
     "ResourceShareLimitExceededException",
     { message: S.String.pipe(T.ErrorMessage()) },
     T.all(
@@ -318,7 +318,7 @@ export class ResourceShareLimitExceededException
     ),
   ).pipe(C.withBadRequestError) {}
 export class ServerInternalException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ServerInternalException>()(
+  extends /*@__PURE__*/ S.TaggedError<ServerInternalException>()(
     "ServerInternalException",
     { message: S.String.pipe(T.ErrorMessage()) },
     T.all(
@@ -327,7 +327,7 @@ export class ServerInternalException
     ),
   ).pipe(C.withServerError) {}
 export class ServiceUnavailableException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ServiceUnavailableException>()(
+  extends /*@__PURE__*/ S.TaggedError<ServiceUnavailableException>()(
     "ServiceUnavailableException",
     { message: S.String.pipe(T.ErrorMessage()) },
     T.all(
@@ -336,7 +336,7 @@ export class ServiceUnavailableException
     ),
   ).pipe(C.withServerError) {}
 export class TagLimitExceededException
-  extends /*@__PURE__*/ S.TaggedErrorClass<TagLimitExceededException>()(
+  extends /*@__PURE__*/ S.TaggedError<TagLimitExceededException>()(
     "TagLimitExceededException",
     { message: S.String.pipe(T.ErrorMessage()) },
     T.all(
@@ -345,7 +345,7 @@ export class TagLimitExceededException
     ),
   ).pipe(C.withBadRequestError) {}
 export class TagPolicyViolationException
-  extends /*@__PURE__*/ S.TaggedErrorClass<TagPolicyViolationException>()(
+  extends /*@__PURE__*/ S.TaggedError<TagPolicyViolationException>()(
     "TagPolicyViolationException",
     { message: S.String.pipe(T.ErrorMessage()) },
     T.all(
@@ -354,7 +354,7 @@ export class TagPolicyViolationException
     ),
   ).pipe(C.withBadRequestError) {}
 export class ThrottlingException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ThrottlingException>()(
+  extends /*@__PURE__*/ S.TaggedError<ThrottlingException>()(
     "ThrottlingException",
     { message: S.String.pipe(T.ErrorMessage()) },
     T.all(
@@ -363,7 +363,7 @@ export class ThrottlingException
     ),
   ).pipe(C.withThrottlingError) {}
 export class UnknownResourceException
-  extends /*@__PURE__*/ S.TaggedErrorClass<UnknownResourceException>()(
+  extends /*@__PURE__*/ S.TaggedError<UnknownResourceException>()(
     "UnknownResourceException",
     { message: S.String.pipe(T.ErrorMessage()) },
     T.all(
@@ -375,7 +375,7 @@ export class UnknownResourceException
     ),
   ).pipe(C.withBadRequestError) {}
 export class UnmatchedPolicyPermissionException
-  extends /*@__PURE__*/ S.TaggedErrorClass<UnmatchedPolicyPermissionException>()(
+  extends /*@__PURE__*/ S.TaggedError<UnmatchedPolicyPermissionException>()(
     "UnmatchedPolicyPermissionException",
     { message: S.String.pipe(T.ErrorMessage()) },
     T.all(

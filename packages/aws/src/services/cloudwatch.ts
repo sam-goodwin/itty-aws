@@ -103,7 +103,7 @@ const rules = T.EndpointResolver((p, _) => {
 });
 
 export class ConcurrentModificationException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ConcurrentModificationException>()(
+  extends /*@__PURE__*/ S.TaggedError<ConcurrentModificationException>()(
     "ConcurrentModificationException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -115,13 +115,13 @@ export class ConcurrentModificationException
     ),
   ).pipe(C.withThrottlingError) {}
 export class ConflictException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ConflictException>()(
+  extends /*@__PURE__*/ S.TaggedError<ConflictException>()(
     "ConflictException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class DashboardInvalidInputError
-  extends /*@__PURE__*/ S.TaggedErrorClass<DashboardInvalidInputError>()(
+  extends /*@__PURE__*/ S.TaggedError<DashboardInvalidInputError>()(
     "DashboardInvalidInputError",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -137,7 +137,7 @@ export class DashboardInvalidInputError
     ),
   ).pipe(C.withBadRequestError) {}
 export class DashboardNotFoundError
-  extends /*@__PURE__*/ S.TaggedErrorClass<DashboardNotFoundError>()(
+  extends /*@__PURE__*/ S.TaggedError<DashboardNotFoundError>()(
     "DashboardNotFoundError",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -146,7 +146,7 @@ export class DashboardNotFoundError
     ),
   ).pipe(C.withBadRequestError) {}
 export class InternalServiceFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<InternalServiceFault>()(
+  extends /*@__PURE__*/ S.TaggedError<InternalServiceFault>()(
     "InternalServiceFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -155,7 +155,7 @@ export class InternalServiceFault
     ),
   ).pipe(C.withServerError) {}
 export class InvalidFormatFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidFormatFault>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidFormatFault>()(
     "InvalidFormatFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -164,7 +164,7 @@ export class InvalidFormatFault
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidNextToken
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidNextToken>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidNextToken>()(
     "InvalidNextToken",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -173,7 +173,7 @@ export class InvalidNextToken
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidParameterCombinationException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidParameterCombinationException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidParameterCombinationException>()(
     "InvalidParameterCombinationException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -185,7 +185,7 @@ export class InvalidParameterCombinationException
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidParameterValueException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidParameterValueException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidParameterValueException>()(
     "InvalidParameterValueException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -194,22 +194,22 @@ export class InvalidParameterValueException
     ),
   ).pipe(C.withBadRequestError) {}
 export class KmsAccessDeniedException
-  extends /*@__PURE__*/ S.TaggedErrorClass<KmsAccessDeniedException>()(
+  extends /*@__PURE__*/ S.TaggedError<KmsAccessDeniedException>()(
     "KmsAccessDeniedException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withAuthError) {}
 export class KmsKeyDisabledException
-  extends /*@__PURE__*/ S.TaggedErrorClass<KmsKeyDisabledException>()(
+  extends /*@__PURE__*/ S.TaggedError<KmsKeyDisabledException>()(
     "KmsKeyDisabledException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class KmsKeyNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<KmsKeyNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<KmsKeyNotFoundException>()(
     "KmsKeyNotFoundException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class LimitExceededException
-  extends /*@__PURE__*/ S.TaggedErrorClass<LimitExceededException>()(
+  extends /*@__PURE__*/ S.TaggedError<LimitExceededException>()(
     "LimitExceededException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -221,7 +221,7 @@ export class LimitExceededException
     ),
   ).pipe(C.withBadRequestError) {}
 export class LimitExceededFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<LimitExceededFault>()(
+  extends /*@__PURE__*/ S.TaggedError<LimitExceededFault>()(
     "LimitExceededFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -230,7 +230,7 @@ export class LimitExceededFault
     ),
   ).pipe(C.withBadRequestError) {}
 export class MissingRequiredParameterException
-  extends /*@__PURE__*/ S.TaggedErrorClass<MissingRequiredParameterException>()(
+  extends /*@__PURE__*/ S.TaggedError<MissingRequiredParameterException>()(
     "MissingRequiredParameterException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -239,7 +239,7 @@ export class MissingRequiredParameterException
     ),
   ).pipe(C.withBadRequestError) {}
 export class ResourceConflict
-  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceConflict>()(
+  extends /*@__PURE__*/ S.TaggedError<ResourceConflict>()(
     "ResourceConflict",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -248,7 +248,7 @@ export class ResourceConflict
     ),
   ).pipe(C.withConflictError) {}
 export class ResourceNotFound
-  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFound>()(
+  extends /*@__PURE__*/ S.TaggedError<ResourceNotFound>()(
     "ResourceNotFound",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -257,7 +257,7 @@ export class ResourceNotFound
     ),
   ).pipe(C.withBadRequestError) {}
 export class ResourceNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
     {
       ResourceType: S.optional(S.String),
@@ -273,7 +273,7 @@ export class ResourceNotFoundException
     ),
   ).pipe(C.withBadRequestError) {}
 export class ValidationException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ValidationException>()(
+  extends /*@__PURE__*/ S.TaggedError<ValidationException>()(
     "ValidationException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withBadRequestError) {}

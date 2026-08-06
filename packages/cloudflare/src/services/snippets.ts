@@ -27,7 +27,7 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
 
 export class Forbidden
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    /*@__PURE__*/ S.TaggedError<Forbidden>()("Forbidden", {
       code: S.Number,
       message: S.String,
     }),
@@ -36,7 +36,7 @@ export class Forbidden
 
 export class SnippetInUse
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<SnippetInUse>()("SnippetInUse", {
+    /*@__PURE__*/ S.TaggedError<SnippetInUse>()("SnippetInUse", {
       code: S.Number,
       message: S.String,
     }),
@@ -48,7 +48,7 @@ export class SnippetInUse
 
 export class SnippetNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<SnippetNotFound>()("SnippetNotFound", {
+    /*@__PURE__*/ S.TaggedError<SnippetNotFound>()("SnippetNotFound", {
       code: S.Number,
       message: S.String,
     }),
@@ -60,7 +60,7 @@ export class SnippetNotFound
 
 export class SnippetRulesNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<SnippetRulesNotFound>()(
+    /*@__PURE__*/ S.TaggedError<SnippetRulesNotFound>()(
       "SnippetRulesNotFound",
       {
         code: S.Number,

@@ -92,7 +92,7 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
 
 export class Forbidden
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    /*@__PURE__*/ S.TaggedError<Forbidden>()("Forbidden", {
       code: S.Number,
       message: S.String,
     }),
@@ -101,7 +101,7 @@ export class Forbidden
 
 export class InvalidRoute
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<InvalidRoute>()("InvalidRoute", {
+    /*@__PURE__*/ S.TaggedError<InvalidRoute>()("InvalidRoute", {
       code: S.Number,
       message: S.String,
     }),
@@ -110,7 +110,7 @@ export class InvalidRoute
 
 export class InvalidTokenName
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<InvalidTokenName>()("InvalidTokenName", {
+    /*@__PURE__*/ S.TaggedError<InvalidTokenName>()("InvalidTokenName", {
       code: S.Number,
       message: S.String,
     }),
@@ -119,7 +119,7 @@ export class InvalidTokenName
 
 export class MethodNotAllowed
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<MethodNotAllowed>()("MethodNotAllowed", {
+    /*@__PURE__*/ S.TaggedError<MethodNotAllowed>()("MethodNotAllowed", {
       code: S.Number,
       message: S.String,
     }),
@@ -128,7 +128,7 @@ export class MethodNotAllowed
 
 export class PermissionGroupNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<PermissionGroupNotFound>()(
+    /*@__PURE__*/ S.TaggedError<PermissionGroupNotFound>()(
       "PermissionGroupNotFound",
       {
         code: S.Number,
@@ -140,7 +140,7 @@ export class PermissionGroupNotFound
 
 export class TokenNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<TokenNotFound>()("TokenNotFound", {
+    /*@__PURE__*/ S.TaggedError<TokenNotFound>()("TokenNotFound", {
       code: S.Number,
       message: S.String,
     }),

@@ -40,7 +40,7 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
 
 export class Forbidden
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    /*@__PURE__*/ S.TaggedError<Forbidden>()("Forbidden", {
       code: S.Number,
       message: S.String,
     }),
@@ -49,7 +49,7 @@ export class Forbidden
 
 export class RegistrarDomainNotOwned
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<RegistrarDomainNotOwned>()(
+    /*@__PURE__*/ S.TaggedError<RegistrarDomainNotOwned>()(
       "RegistrarDomainNotOwned",
       {
         code: S.Number,
@@ -67,7 +67,7 @@ export class RegistrarDomainNotOwned
 
 export class RegistrarUpdateNotAllowed
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<RegistrarUpdateNotAllowed>()(
+    /*@__PURE__*/ S.TaggedError<RegistrarUpdateNotAllowed>()(
       "RegistrarUpdateNotAllowed",
       {
         code: S.Number,

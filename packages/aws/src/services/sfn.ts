@@ -105,99 +105,99 @@ const rules = T.EndpointResolver((p, _) => {
 });
 
 export class ActivityAlreadyExists
-  extends /*@__PURE__*/ S.TaggedErrorClass<ActivityAlreadyExists>()(
+  extends /*@__PURE__*/ S.TaggedError<ActivityAlreadyExists>()(
     "ActivityAlreadyExists",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withAlreadyExistsError) {}
 export class ActivityDoesNotExist
-  extends /*@__PURE__*/ S.TaggedErrorClass<ActivityDoesNotExist>()(
+  extends /*@__PURE__*/ S.TaggedError<ActivityDoesNotExist>()(
     "ActivityDoesNotExist",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class ActivityLimitExceeded
-  extends /*@__PURE__*/ S.TaggedErrorClass<ActivityLimitExceeded>()(
+  extends /*@__PURE__*/ S.TaggedError<ActivityLimitExceeded>()(
     "ActivityLimitExceeded",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withThrottlingError) {}
 export class ActivityWorkerLimitExceeded
-  extends /*@__PURE__*/ S.TaggedErrorClass<ActivityWorkerLimitExceeded>()(
+  extends /*@__PURE__*/ S.TaggedError<ActivityWorkerLimitExceeded>()(
     "ActivityWorkerLimitExceeded",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withThrottlingError) {}
 export class ConflictException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ConflictException>()(
+  extends /*@__PURE__*/ S.TaggedError<ConflictException>()(
     "ConflictException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class ExecutionAlreadyExists
-  extends /*@__PURE__*/ S.TaggedErrorClass<ExecutionAlreadyExists>()(
+  extends /*@__PURE__*/ S.TaggedError<ExecutionAlreadyExists>()(
     "ExecutionAlreadyExists",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withAlreadyExistsError) {}
 export class ExecutionDoesNotExist
-  extends /*@__PURE__*/ S.TaggedErrorClass<ExecutionDoesNotExist>()(
+  extends /*@__PURE__*/ S.TaggedError<ExecutionDoesNotExist>()(
     "ExecutionDoesNotExist",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class ExecutionLimitExceeded
-  extends /*@__PURE__*/ S.TaggedErrorClass<ExecutionLimitExceeded>()(
+  extends /*@__PURE__*/ S.TaggedError<ExecutionLimitExceeded>()(
     "ExecutionLimitExceeded",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withThrottlingError) {}
 export class ExecutionNotRedrivable
-  extends /*@__PURE__*/ S.TaggedErrorClass<ExecutionNotRedrivable>()(
+  extends /*@__PURE__*/ S.TaggedError<ExecutionNotRedrivable>()(
     "ExecutionNotRedrivable",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidArn
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidArn>()("InvalidArn", {
+  extends /*@__PURE__*/ S.TaggedError<InvalidArn>()("InvalidArn", {
     message: S.optional(S.String).pipe(T.ErrorMessage()),
   }) {}
 export class InvalidDefinition
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidDefinition>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidDefinition>()(
     "InvalidDefinition",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidEncryptionConfiguration
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidEncryptionConfiguration>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidEncryptionConfiguration>()(
     "InvalidEncryptionConfiguration",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidExecutionInput
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidExecutionInput>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidExecutionInput>()(
     "InvalidExecutionInput",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidLoggingConfiguration
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidLoggingConfiguration>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidLoggingConfiguration>()(
     "InvalidLoggingConfiguration",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidName
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidName>()("InvalidName", {
+  extends /*@__PURE__*/ S.TaggedError<InvalidName>()("InvalidName", {
     message: S.optional(S.String).pipe(T.ErrorMessage()),
   }) {}
 export class InvalidOutput
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidOutput>()("InvalidOutput", {
+  extends /*@__PURE__*/ S.TaggedError<InvalidOutput>()("InvalidOutput", {
     message: S.optional(S.String).pipe(T.ErrorMessage()),
   }) {}
 export class InvalidToken
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidToken>()("InvalidToken", {
+  extends /*@__PURE__*/ S.TaggedError<InvalidToken>()("InvalidToken", {
     message: S.optional(S.String).pipe(T.ErrorMessage()),
   }) {}
 export class InvalidTracingConfiguration
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidTracingConfiguration>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidTracingConfiguration>()(
     "InvalidTracingConfiguration",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class KmsAccessDeniedException
-  extends /*@__PURE__*/ S.TaggedErrorClass<KmsAccessDeniedException>()(
+  extends /*@__PURE__*/ S.TaggedError<KmsAccessDeniedException>()(
     "KmsAccessDeniedException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withAuthError) {}
 export class KmsInvalidStateException
-  extends /*@__PURE__*/ S.TaggedErrorClass<KmsInvalidStateException>()(
+  extends /*@__PURE__*/ S.TaggedError<KmsInvalidStateException>()(
     "KmsInvalidStateException",
     {
       kmsKeyState: S.optional(
@@ -207,17 +207,17 @@ export class KmsInvalidStateException
     },
   ) {}
 export class KmsThrottlingException
-  extends /*@__PURE__*/ S.TaggedErrorClass<KmsThrottlingException>()(
+  extends /*@__PURE__*/ S.TaggedError<KmsThrottlingException>()(
     "KmsThrottlingException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class MissingRequiredParameter
-  extends /*@__PURE__*/ S.TaggedErrorClass<MissingRequiredParameter>()(
+  extends /*@__PURE__*/ S.TaggedError<MissingRequiredParameter>()(
     "MissingRequiredParameter",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class ResourceNotFound
-  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFound>()(
+  extends /*@__PURE__*/ S.TaggedError<ResourceNotFound>()(
     "ResourceNotFound",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -226,47 +226,46 @@ export class ResourceNotFound
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ServiceQuotaExceededException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ServiceQuotaExceededException>()(
+  extends /*@__PURE__*/ S.TaggedError<ServiceQuotaExceededException>()(
     "ServiceQuotaExceededException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(402),
   ).pipe(C.withQuotaError) {}
 export class StateMachineAlreadyExists
-  extends /*@__PURE__*/ S.TaggedErrorClass<StateMachineAlreadyExists>()(
+  extends /*@__PURE__*/ S.TaggedError<StateMachineAlreadyExists>()(
     "StateMachineAlreadyExists",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withAlreadyExistsError) {}
 export class StateMachineDeleting
-  extends /*@__PURE__*/ S.TaggedErrorClass<StateMachineDeleting>()(
+  extends /*@__PURE__*/ S.TaggedError<StateMachineDeleting>()(
     "StateMachineDeleting",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class StateMachineDoesNotExist
-  extends /*@__PURE__*/ S.TaggedErrorClass<StateMachineDoesNotExist>()(
+  extends /*@__PURE__*/ S.TaggedError<StateMachineDoesNotExist>()(
     "StateMachineDoesNotExist",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class StateMachineLimitExceeded
-  extends /*@__PURE__*/ S.TaggedErrorClass<StateMachineLimitExceeded>()(
+  extends /*@__PURE__*/ S.TaggedError<StateMachineLimitExceeded>()(
     "StateMachineLimitExceeded",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withThrottlingError) {}
 export class StateMachineTypeNotSupported
-  extends /*@__PURE__*/ S.TaggedErrorClass<StateMachineTypeNotSupported>()(
+  extends /*@__PURE__*/ S.TaggedError<StateMachineTypeNotSupported>()(
     "StateMachineTypeNotSupported",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class TaskDoesNotExist
-  extends /*@__PURE__*/ S.TaggedErrorClass<TaskDoesNotExist>()(
-    "TaskDoesNotExist",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-  ) {}
+  extends /*@__PURE__*/ S.TaggedError<TaskDoesNotExist>()("TaskDoesNotExist", {
+    message: S.optional(S.String).pipe(T.ErrorMessage()),
+  }) {}
 export class TaskTimedOut
-  extends /*@__PURE__*/ S.TaggedErrorClass<TaskTimedOut>()("TaskTimedOut", {
+  extends /*@__PURE__*/ S.TaggedError<TaskTimedOut>()("TaskTimedOut", {
     message: S.optional(S.String).pipe(T.ErrorMessage()),
   }) {}
 export class TooManyTags
-  extends /*@__PURE__*/ S.TaggedErrorClass<TooManyTags>()(
+  extends /*@__PURE__*/ S.TaggedError<TooManyTags>()(
     "TooManyTags",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -275,7 +274,7 @@ export class TooManyTags
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ValidationException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ValidationException>()(
+  extends /*@__PURE__*/ S.TaggedError<ValidationException>()(
     "ValidationException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),

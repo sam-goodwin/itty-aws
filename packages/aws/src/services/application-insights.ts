@@ -84,7 +84,7 @@ const rules = T.EndpointResolver((p, _) => {
 });
 
 export class AccessDeniedException
-  extends /*@__PURE__*/ S.TaggedErrorClass<AccessDeniedException>()(
+  extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()(
     "AccessDeniedException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -93,7 +93,7 @@ export class AccessDeniedException
     ),
   ).pipe(C.withAuthError) {}
 export class BadRequestException
-  extends /*@__PURE__*/ S.TaggedErrorClass<BadRequestException>()(
+  extends /*@__PURE__*/ S.TaggedError<BadRequestException>()(
     "BadRequestException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -102,7 +102,7 @@ export class BadRequestException
     ),
   ).pipe(C.withBadRequestError) {}
 export class InternalServerException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InternalServerException>()(
+  extends /*@__PURE__*/ S.TaggedError<InternalServerException>()(
     "InternalServerException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -114,7 +114,7 @@ export class InternalServerException
     ),
   ).pipe(C.withServerError) {}
 export class ResourceInUseException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceInUseException>()(
+  extends /*@__PURE__*/ S.TaggedError<ResourceInUseException>()(
     "ResourceInUseException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -126,7 +126,7 @@ export class ResourceInUseException
     ),
   ).pipe(C.withBadRequestError) {}
 export class ResourceNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -138,13 +138,13 @@ export class ResourceNotFoundException
     ),
   ).pipe(C.withBadRequestError) {}
 export class TagsAlreadyExistException
-  extends /*@__PURE__*/ S.TaggedErrorClass<TagsAlreadyExistException>()(
+  extends /*@__PURE__*/ S.TaggedError<TagsAlreadyExistException>()(
     "TagsAlreadyExistException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TooManyTagsException
-  extends /*@__PURE__*/ S.TaggedErrorClass<TooManyTagsException>()(
+  extends /*@__PURE__*/ S.TaggedError<TooManyTagsException>()(
     "TooManyTagsException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -153,7 +153,7 @@ export class TooManyTagsException
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ValidationException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ValidationException>()(
+  extends /*@__PURE__*/ S.TaggedError<ValidationException>()(
     "ValidationException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(

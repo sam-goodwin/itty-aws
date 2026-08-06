@@ -22,7 +22,7 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
 
 export class Forbidden
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    /*@__PURE__*/ S.TaggedError<Forbidden>()("Forbidden", {
       code: S.Number,
       message: S.String,
     }),
@@ -31,7 +31,7 @@ export class Forbidden
 
 export class InvalidWeb3HostnameTarget
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<InvalidWeb3HostnameTarget>()(
+    /*@__PURE__*/ S.TaggedError<InvalidWeb3HostnameTarget>()(
       "InvalidWeb3HostnameTarget",
       {
         code: S.Number,
@@ -43,7 +43,7 @@ export class InvalidWeb3HostnameTarget
 
 export class Web3HostnameNotEntitled
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<Web3HostnameNotEntitled>()(
+    /*@__PURE__*/ S.TaggedError<Web3HostnameNotEntitled>()(
       "Web3HostnameNotEntitled",
       {
         code: S.Number,
@@ -55,7 +55,7 @@ export class Web3HostnameNotEntitled
 
 export class Web3HostnameNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<Web3HostnameNotFound>()(
+    /*@__PURE__*/ S.TaggedError<Web3HostnameNotFound>()(
       "Web3HostnameNotFound",
       {
         code: S.Number,

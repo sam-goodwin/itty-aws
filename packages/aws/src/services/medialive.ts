@@ -86,43 +86,43 @@ const rules = T.EndpointResolver((p, _) => {
 });
 
 export class BadGatewayException
-  extends /*@__PURE__*/ S.TaggedErrorClass<BadGatewayException>()(
+  extends /*@__PURE__*/ S.TaggedError<BadGatewayException>()(
     "BadGatewayException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(502),
   ).pipe(C.withServerError) {}
 export class BadRequestException
-  extends /*@__PURE__*/ S.TaggedErrorClass<BadRequestException>()(
+  extends /*@__PURE__*/ S.TaggedError<BadRequestException>()(
     "BadRequestException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ConflictException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ConflictException>()(
+  extends /*@__PURE__*/ S.TaggedError<ConflictException>()(
     "ConflictException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class ForbiddenException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ForbiddenException>()(
+  extends /*@__PURE__*/ S.TaggedError<ForbiddenException>()(
     "ForbiddenException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class GatewayTimeoutException
-  extends /*@__PURE__*/ S.TaggedErrorClass<GatewayTimeoutException>()(
+  extends /*@__PURE__*/ S.TaggedError<GatewayTimeoutException>()(
     "GatewayTimeoutException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(504),
   ).pipe(C.withTimeoutError) {}
 export class InternalServerErrorException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InternalServerErrorException>()(
+  extends /*@__PURE__*/ S.TaggedError<InternalServerErrorException>()(
     "InternalServerErrorException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class MediaLiveRoleNotYetTrusted
-  extends /*@__PURE__*/ S.TaggedErrorClass<MediaLiveRoleNotYetTrusted>()(
+  extends /*@__PURE__*/ S.TaggedError<MediaLiveRoleNotYetTrusted>()(
     "MediaLiveRoleNotYetTrusted",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -138,19 +138,19 @@ export class MediaLiveRoleNotYetTrusted
     }),
   ).pipe(C.withRetryableError) {}
 export class NotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<NotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<NotFoundException>()(
     "NotFoundException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class TooManyRequestsException
-  extends /*@__PURE__*/ S.TaggedErrorClass<TooManyRequestsException>()(
+  extends /*@__PURE__*/ S.TaggedError<TooManyRequestsException>()(
     "TooManyRequestsException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export class UnprocessableEntityException
-  extends /*@__PURE__*/ S.TaggedErrorClass<UnprocessableEntityException>()(
+  extends /*@__PURE__*/ S.TaggedError<UnprocessableEntityException>()(
     "UnprocessableEntityException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),

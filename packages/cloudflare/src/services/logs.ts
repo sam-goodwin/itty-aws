@@ -27,7 +27,7 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
 
 export class CmbConfigNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<CmbConfigNotFound>()("CmbConfigNotFound", {
+    /*@__PURE__*/ S.TaggedError<CmbConfigNotFound>()("CmbConfigNotFound", {
       code: S.Number,
       message: S.String,
     }),
@@ -36,7 +36,7 @@ export class CmbConfigNotFound
 
 export class Forbidden
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    /*@__PURE__*/ S.TaggedError<Forbidden>()("Forbidden", {
       code: S.Number,
       message: S.String,
     }),
@@ -45,7 +45,7 @@ export class Forbidden
 
 export class LogsControlNotAuthorized
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<LogsControlNotAuthorized>()(
+    /*@__PURE__*/ S.TaggedError<LogsControlNotAuthorized>()(
       "LogsControlNotAuthorized",
       {
         code: S.Number,

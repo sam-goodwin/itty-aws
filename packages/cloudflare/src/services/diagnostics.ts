@@ -36,7 +36,7 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
 
 export class EndpointHealthcheckNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<EndpointHealthcheckNotFound>()(
+    /*@__PURE__*/ S.TaggedError<EndpointHealthcheckNotFound>()(
       "EndpointHealthcheckNotFound",
       {
         code: S.Number,
@@ -48,7 +48,7 @@ export class EndpointHealthcheckNotFound
 
 export class Forbidden
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    /*@__PURE__*/ S.TaggedError<Forbidden>()("Forbidden", {
       code: S.Number,
       message: S.String,
     }),
@@ -57,7 +57,7 @@ export class Forbidden
 
 export class InvalidHealthcheckEndpoint
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<InvalidHealthcheckEndpoint>()(
+    /*@__PURE__*/ S.TaggedError<InvalidHealthcheckEndpoint>()(
       "InvalidHealthcheckEndpoint",
       {
         code: S.Number,

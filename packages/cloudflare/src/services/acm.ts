@@ -28,7 +28,7 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
 
 export class AdvancedCertificateManagerRequired
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<AdvancedCertificateManagerRequired>()(
+    /*@__PURE__*/ S.TaggedError<AdvancedCertificateManagerRequired>()(
       "AdvancedCertificateManagerRequired",
       {
         code: S.Number,
@@ -40,7 +40,7 @@ export class AdvancedCertificateManagerRequired
 
 export class CustomTrustStoreNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<CustomTrustStoreNotFound>()(
+    /*@__PURE__*/ S.TaggedError<CustomTrustStoreNotFound>()(
       "CustomTrustStoreNotFound",
       {
         code: S.Number,
@@ -52,7 +52,7 @@ export class CustomTrustStoreNotFound
 
 export class Forbidden
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    /*@__PURE__*/ S.TaggedError<Forbidden>()("Forbidden", {
       code: S.Number,
       message: S.String,
     }),
@@ -61,7 +61,7 @@ export class Forbidden
 
 export class InvalidObjectIdentifier
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<InvalidObjectIdentifier>()(
+    /*@__PURE__*/ S.TaggedError<InvalidObjectIdentifier>()(
       "InvalidObjectIdentifier",
       {
         code: S.Number,
@@ -73,7 +73,7 @@ export class InvalidObjectIdentifier
 
 export class NoStateChange
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<NoStateChange>()("NoStateChange", {
+    /*@__PURE__*/ S.TaggedError<NoStateChange>()("NoStateChange", {
       code: S.Number,
       message: S.String,
     }),
@@ -82,7 +82,7 @@ export class NoStateChange
 
 export class PreviousJobInProgress
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<PreviousJobInProgress>()(
+    /*@__PURE__*/ S.TaggedError<PreviousJobInProgress>()(
       "PreviousJobInProgress",
       {
         code: S.Number,

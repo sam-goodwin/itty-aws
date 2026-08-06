@@ -54,19 +54,16 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
 
 export class AddressMapNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<AddressMapNotFound>()(
-      "AddressMapNotFound",
-      {
-        code: S.Number,
-        message: S.String,
-      },
-    ),
+    /*@__PURE__*/ S.TaggedError<AddressMapNotFound>()("AddressMapNotFound", {
+      code: S.Number,
+      message: S.String,
+    }),
     [{ code: 1000 }, { code: 1000, message: { includes: "not_found" } }],
   ) {}
 
 export class BgpPrefixNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<BgpPrefixNotFound>()("BgpPrefixNotFound", {
+    /*@__PURE__*/ S.TaggedError<BgpPrefixNotFound>()("BgpPrefixNotFound", {
       code: S.Number,
       message: S.String,
     }),
@@ -75,7 +72,7 @@ export class BgpPrefixNotFound
 
 export class BindingNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<BindingNotFound>()("BindingNotFound", {
+    /*@__PURE__*/ S.TaggedError<BindingNotFound>()("BindingNotFound", {
       code: S.Number,
       message: S.String,
     }),
@@ -84,19 +81,16 @@ export class BindingNotFound
 
 export class DelegationNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<DelegationNotFound>()(
-      "DelegationNotFound",
-      {
-        code: S.Number,
-        message: S.String,
-      },
-    ),
+    /*@__PURE__*/ S.TaggedError<DelegationNotFound>()("DelegationNotFound", {
+      code: S.Number,
+      message: S.String,
+    }),
     [{ code: 1000 }],
   ) {}
 
 export class FeatureNotEnabled
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<FeatureNotEnabled>()("FeatureNotEnabled", {
+    /*@__PURE__*/ S.TaggedError<FeatureNotEnabled>()("FeatureNotEnabled", {
       code: S.Number,
       message: S.String,
     }),
@@ -105,7 +99,7 @@ export class FeatureNotEnabled
 
 export class Forbidden
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    /*@__PURE__*/ S.TaggedError<Forbidden>()("Forbidden", {
       code: S.Number,
       message: S.String,
     }),
@@ -114,7 +108,7 @@ export class Forbidden
 
 export class InvalidAccountId
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<InvalidAccountId>()("InvalidAccountId", {
+    /*@__PURE__*/ S.TaggedError<InvalidAccountId>()("InvalidAccountId", {
       code: S.Number,
       message: S.String,
     }),
@@ -123,7 +117,7 @@ export class InvalidAccountId
 
 export class InvalidHostname
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<InvalidHostname>()("InvalidHostname", {
+    /*@__PURE__*/ S.TaggedError<InvalidHostname>()("InvalidHostname", {
       code: S.Number,
       message: S.String,
     }),
@@ -132,7 +126,7 @@ export class InvalidHostname
 
 export class InvalidLoaForm
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<InvalidLoaForm>()("InvalidLoaForm", {
+    /*@__PURE__*/ S.TaggedError<InvalidLoaForm>()("InvalidLoaForm", {
       code: S.Number,
       message: S.String,
     }),
@@ -141,19 +135,16 @@ export class InvalidLoaForm
 
 export class InvalidNetworkCidr
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<InvalidNetworkCidr>()(
-      "InvalidNetworkCidr",
-      {
-        code: S.Number,
-        message: S.String,
-      },
-    ),
+    /*@__PURE__*/ S.TaggedError<InvalidNetworkCidr>()("InvalidNetworkCidr", {
+      code: S.Number,
+      message: S.String,
+    }),
     [{ code: 1001, message: { includes: "invalid_network_cidr" } }],
   ) {}
 
 export class InvalidZoneId
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<InvalidZoneId>()("InvalidZoneId", {
+    /*@__PURE__*/ S.TaggedError<InvalidZoneId>()("InvalidZoneId", {
       code: S.Number,
       message: S.String,
     }),
@@ -162,7 +153,7 @@ export class InvalidZoneId
 
 export class IrrEntryNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<IrrEntryNotFound>()("IrrEntryNotFound", {
+    /*@__PURE__*/ S.TaggedError<IrrEntryNotFound>()("IrrEntryNotFound", {
       code: S.Number,
       message: S.String,
     }),
@@ -171,19 +162,16 @@ export class IrrEntryNotFound
 
 export class LoaDocumentNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<LoaDocumentNotFound>()(
-      "LoaDocumentNotFound",
-      {
-        code: S.Number,
-        message: S.String,
-      },
-    ),
+    /*@__PURE__*/ S.TaggedError<LoaDocumentNotFound>()("LoaDocumentNotFound", {
+      code: S.Number,
+      message: S.String,
+    }),
     [{ code: 1000 }],
   ) {}
 
 export class MethodNotAllowed
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<MethodNotAllowed>()("MethodNotAllowed", {
+    /*@__PURE__*/ S.TaggedError<MethodNotAllowed>()("MethodNotAllowed", {
       code: S.Number,
       message: S.String,
     }),
@@ -195,7 +183,7 @@ export class MethodNotAllowed
 
 export class MissingAccountId
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<MissingAccountId>()("MissingAccountId", {
+    /*@__PURE__*/ S.TaggedError<MissingAccountId>()("MissingAccountId", {
       code: S.Number,
       message: S.String,
     }),
@@ -204,7 +192,7 @@ export class MissingAccountId
 
 export class NonexistentAccountPrefix
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<NonexistentAccountPrefix>()(
+    /*@__PURE__*/ S.TaggedError<NonexistentAccountPrefix>()(
       "NonexistentAccountPrefix",
       {
         code: S.Number,
@@ -216,7 +204,7 @@ export class NonexistentAccountPrefix
 
 export class PrefixNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<PrefixNotFound>()("PrefixNotFound", {
+    /*@__PURE__*/ S.TaggedError<PrefixNotFound>()("PrefixNotFound", {
       code: S.Number,
       message: S.String,
     }),
@@ -229,7 +217,7 @@ export class PrefixNotFound
 
 export class RegionalHostnameEmpty
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<RegionalHostnameEmpty>()(
+    /*@__PURE__*/ S.TaggedError<RegionalHostnameEmpty>()(
       "RegionalHostnameEmpty",
       {
         code: S.Number,
@@ -241,7 +229,7 @@ export class RegionalHostnameEmpty
 
 export class RegionalHostnameNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<RegionalHostnameNotFound>()(
+    /*@__PURE__*/ S.TaggedError<RegionalHostnameNotFound>()(
       "RegionalHostnameNotFound",
       {
         code: S.Number,
@@ -253,7 +241,7 @@ export class RegionalHostnameNotFound
 
 export class UnsupportedBindingConfiguration
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<UnsupportedBindingConfiguration>()(
+    /*@__PURE__*/ S.TaggedError<UnsupportedBindingConfiguration>()(
       "UnsupportedBindingConfiguration",
       {
         code: S.Number,

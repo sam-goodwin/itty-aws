@@ -90,7 +90,7 @@ const rules = T.EndpointResolver((p, _) => {
 });
 
 export class AlreadyExistsException
-  extends /*@__PURE__*/ S.TaggedErrorClass<AlreadyExistsException>()(
+  extends /*@__PURE__*/ S.TaggedError<AlreadyExistsException>()(
     "AlreadyExistsException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -102,7 +102,7 @@ export class AlreadyExistsException
     ),
   ).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
 export class CFNRegistryException
-  extends /*@__PURE__*/ S.TaggedErrorClass<CFNRegistryException>()(
+  extends /*@__PURE__*/ S.TaggedError<CFNRegistryException>()(
     "CFNRegistryException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -111,7 +111,7 @@ export class CFNRegistryException
     ),
   ).pipe(C.withBadRequestError) {}
 export class ChangeSetNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ChangeSetNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<ChangeSetNotFoundException>()(
     "ChangeSetNotFoundException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -120,7 +120,7 @@ export class ChangeSetNotFoundException
     ),
   ).pipe(C.withBadRequestError) {}
 export class ConcurrentResourcesLimitExceededException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ConcurrentResourcesLimitExceededException>()(
+  extends /*@__PURE__*/ S.TaggedError<ConcurrentResourcesLimitExceededException>()(
     "ConcurrentResourcesLimitExceededException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -132,7 +132,7 @@ export class ConcurrentResourcesLimitExceededException
     ),
   ).pipe(C.withThrottlingError) {}
 export class CreatedButModifiedException
-  extends /*@__PURE__*/ S.TaggedErrorClass<CreatedButModifiedException>()(
+  extends /*@__PURE__*/ S.TaggedError<CreatedButModifiedException>()(
     "CreatedButModifiedException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -144,7 +144,7 @@ export class CreatedButModifiedException
     ),
   ).pipe(C.withConflictError) {}
 export class GeneratedTemplateNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<GeneratedTemplateNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<GeneratedTemplateNotFoundException>()(
     "GeneratedTemplateNotFoundException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -156,7 +156,7 @@ export class GeneratedTemplateNotFoundException
     ),
   ).pipe(C.withBadRequestError) {}
 export class HookResultNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<HookResultNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<HookResultNotFoundException>()(
     "HookResultNotFoundException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -165,7 +165,7 @@ export class HookResultNotFoundException
     ),
   ).pipe(C.withBadRequestError) {}
 export class InsufficientCapabilitiesException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InsufficientCapabilitiesException>()(
+  extends /*@__PURE__*/ S.TaggedError<InsufficientCapabilitiesException>()(
     "InsufficientCapabilitiesException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -177,7 +177,7 @@ export class InsufficientCapabilitiesException
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidChangeSetStatusException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidChangeSetStatusException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidChangeSetStatusException>()(
     "InvalidChangeSetStatusException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -189,7 +189,7 @@ export class InvalidChangeSetStatusException
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidOperationException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidOperationException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidOperationException>()(
     "InvalidOperationException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -201,7 +201,7 @@ export class InvalidOperationException
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidStateTransitionException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidStateTransitionException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidStateTransitionException>()(
     "InvalidStateTransitionException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -213,7 +213,7 @@ export class InvalidStateTransitionException
     ),
   ).pipe(C.withBadRequestError) {}
 export class LimitExceededException
-  extends /*@__PURE__*/ S.TaggedErrorClass<LimitExceededException>()(
+  extends /*@__PURE__*/ S.TaggedError<LimitExceededException>()(
     "LimitExceededException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -225,7 +225,7 @@ export class LimitExceededException
     ),
   ).pipe(C.withBadRequestError) {}
 export class NameAlreadyExistsException
-  extends /*@__PURE__*/ S.TaggedErrorClass<NameAlreadyExistsException>()(
+  extends /*@__PURE__*/ S.TaggedError<NameAlreadyExistsException>()(
     "NameAlreadyExistsException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -237,7 +237,7 @@ export class NameAlreadyExistsException
     ),
   ).pipe(C.withConflictError, C.withAlreadyExistsError) {}
 export class NoUpdateToPerform
-  extends /*@__PURE__*/ S.TaggedErrorClass<NoUpdateToPerform>()(
+  extends /*@__PURE__*/ S.TaggedError<NoUpdateToPerform>()(
     "NoUpdateToPerform",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.SyntheticError({
@@ -246,7 +246,7 @@ export class NoUpdateToPerform
     }),
   ) {}
 export class OperationIdAlreadyExistsException
-  extends /*@__PURE__*/ S.TaggedErrorClass<OperationIdAlreadyExistsException>()(
+  extends /*@__PURE__*/ S.TaggedError<OperationIdAlreadyExistsException>()(
     "OperationIdAlreadyExistsException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -258,7 +258,7 @@ export class OperationIdAlreadyExistsException
     ),
   ).pipe(C.withConflictError, C.withAlreadyExistsError) {}
 export class OperationInProgressException
-  extends /*@__PURE__*/ S.TaggedErrorClass<OperationInProgressException>()(
+  extends /*@__PURE__*/ S.TaggedError<OperationInProgressException>()(
     "OperationInProgressException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -270,7 +270,7 @@ export class OperationInProgressException
     ),
   ).pipe(C.withConflictError) {}
 export class OperationNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<OperationNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<OperationNotFoundException>()(
     "OperationNotFoundException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -282,7 +282,7 @@ export class OperationNotFoundException
     ),
   ).pipe(C.withBadRequestError) {}
 export class OperationStatusCheckFailedException
-  extends /*@__PURE__*/ S.TaggedErrorClass<OperationStatusCheckFailedException>()(
+  extends /*@__PURE__*/ S.TaggedError<OperationStatusCheckFailedException>()(
     "OperationStatusCheckFailedException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -294,7 +294,7 @@ export class OperationStatusCheckFailedException
     ),
   ).pipe(C.withBadRequestError) {}
 export class ResourceScanInProgressException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceScanInProgressException>()(
+  extends /*@__PURE__*/ S.TaggedError<ResourceScanInProgressException>()(
     "ResourceScanInProgressException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -306,7 +306,7 @@ export class ResourceScanInProgressException
     ),
   ).pipe(C.withBadRequestError) {}
 export class ResourceScanLimitExceededException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceScanLimitExceededException>()(
+  extends /*@__PURE__*/ S.TaggedError<ResourceScanLimitExceededException>()(
     "ResourceScanLimitExceededException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -318,7 +318,7 @@ export class ResourceScanLimitExceededException
     ),
   ).pipe(C.withBadRequestError) {}
 export class ResourceScanNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceScanNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<ResourceScanNotFoundException>()(
     "ResourceScanNotFoundException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -327,7 +327,7 @@ export class ResourceScanNotFoundException
     ),
   ).pipe(C.withBadRequestError) {}
 export class StackInstanceNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<StackInstanceNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<StackInstanceNotFoundException>()(
     "StackInstanceNotFoundException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -339,7 +339,7 @@ export class StackInstanceNotFoundException
     ),
   ).pipe(C.withBadRequestError) {}
 export class StackNotFound
-  extends /*@__PURE__*/ S.TaggedErrorClass<StackNotFound>()(
+  extends /*@__PURE__*/ S.TaggedError<StackNotFound>()(
     "StackNotFound",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.SyntheticError({
@@ -348,7 +348,7 @@ export class StackNotFound
     }),
   ).pipe(C.withNotFoundError) {}
 export class StackNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<StackNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<StackNotFoundException>()(
     "StackNotFoundException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -360,7 +360,7 @@ export class StackNotFoundException
     ),
   ).pipe(C.withBadRequestError) {}
 export class StackRefactorNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<StackRefactorNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<StackRefactorNotFoundException>()(
     "StackRefactorNotFoundException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -372,7 +372,7 @@ export class StackRefactorNotFoundException
     ),
   ).pipe(C.withBadRequestError) {}
 export class StackSetNotEmptyException
-  extends /*@__PURE__*/ S.TaggedErrorClass<StackSetNotEmptyException>()(
+  extends /*@__PURE__*/ S.TaggedError<StackSetNotEmptyException>()(
     "StackSetNotEmptyException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -384,7 +384,7 @@ export class StackSetNotEmptyException
     ),
   ).pipe(C.withConflictError) {}
 export class StackSetNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<StackSetNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<StackSetNotFoundException>()(
     "StackSetNotFoundException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -396,7 +396,7 @@ export class StackSetNotFoundException
     ),
   ).pipe(C.withBadRequestError) {}
 export class StaleRequestException
-  extends /*@__PURE__*/ S.TaggedErrorClass<StaleRequestException>()(
+  extends /*@__PURE__*/ S.TaggedError<StaleRequestException>()(
     "StaleRequestException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -405,7 +405,7 @@ export class StaleRequestException
     ),
   ).pipe(C.withConflictError) {}
 export class TokenAlreadyExistsException
-  extends /*@__PURE__*/ S.TaggedErrorClass<TokenAlreadyExistsException>()(
+  extends /*@__PURE__*/ S.TaggedError<TokenAlreadyExistsException>()(
     "TokenAlreadyExistsException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -417,7 +417,7 @@ export class TokenAlreadyExistsException
     ),
   ).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
 export class TypeConfigurationNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<TypeConfigurationNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<TypeConfigurationNotFoundException>()(
     "TypeConfigurationNotFoundException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -429,7 +429,7 @@ export class TypeConfigurationNotFoundException
     ),
   ).pipe(C.withBadRequestError) {}
 export class TypeNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<TypeNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<TypeNotFoundException>()(
     "TypeNotFoundException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(

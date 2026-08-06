@@ -89,7 +89,7 @@ const rules = T.EndpointResolver((p, _) => {
 });
 
 export class AccessDeniedException
-  extends /*@__PURE__*/ S.TaggedErrorClass<AccessDeniedException>()(
+  extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()(
     "AccessDeniedException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -98,25 +98,25 @@ export class AccessDeniedException
     ),
   ).pipe(C.withAuthError) {}
 export class ConditionalOperationFailedException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ConditionalOperationFailedException>()(
+  extends /*@__PURE__*/ S.TaggedError<ConditionalOperationFailedException>()(
     "ConditionalOperationFailedException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class ConflictException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ConflictException>()(
+  extends /*@__PURE__*/ S.TaggedError<ConflictException>()(
     "ConflictException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class ContactFlowNotPublishedException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ContactFlowNotPublishedException>()(
+  extends /*@__PURE__*/ S.TaggedError<ContactFlowNotPublishedException>()(
     "ContactFlowNotPublishedException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ContactNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ContactNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<ContactNotFoundException>()(
     "ContactNotFoundException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -128,7 +128,7 @@ export class ContactNotFoundException
     ),
   ).pipe(C.withBadRequestError) {}
 export class DestinationNotAllowedException
-  extends /*@__PURE__*/ S.TaggedErrorClass<DestinationNotAllowedException>()(
+  extends /*@__PURE__*/ S.TaggedError<DestinationNotAllowedException>()(
     "DestinationNotAllowedException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -140,31 +140,31 @@ export class DestinationNotAllowedException
     ),
   ).pipe(C.withAuthError) {}
 export class DuplicateResourceException
-  extends /*@__PURE__*/ S.TaggedErrorClass<DuplicateResourceException>()(
+  extends /*@__PURE__*/ S.TaggedError<DuplicateResourceException>()(
     "DuplicateResourceException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class IdempotencyException
-  extends /*@__PURE__*/ S.TaggedErrorClass<IdempotencyException>()(
+  extends /*@__PURE__*/ S.TaggedError<IdempotencyException>()(
     "IdempotencyException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class InternalServiceException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InternalServiceException>()(
+  extends /*@__PURE__*/ S.TaggedError<InternalServiceException>()(
     "InternalServiceException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class InvalidActiveRegionException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidActiveRegionException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidActiveRegionException>()(
     "InvalidActiveRegionException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidContactFlowException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidContactFlowException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidContactFlowException>()(
     "InvalidContactFlowException",
     {
       problems: S.optional(
@@ -175,7 +175,7 @@ export class InvalidContactFlowException
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidContactFlowModuleException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidContactFlowModuleException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidContactFlowModuleException>()(
     "InvalidContactFlowModuleException",
     {
       Problems: S.optional(
@@ -186,13 +186,13 @@ export class InvalidContactFlowModuleException
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidParameterException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidParameterException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidParameterException>()(
     "InvalidParameterException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidRequestException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidRequestException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidRequestException>()(
     "InvalidRequestException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -205,7 +205,7 @@ export class InvalidRequestException
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidTestCaseException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidTestCaseException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidTestCaseException>()(
     "InvalidTestCaseException",
     {
       Problems: S.optional(
@@ -216,7 +216,7 @@ export class InvalidTestCaseException
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class LimitExceededException
-  extends /*@__PURE__*/ S.TaggedErrorClass<LimitExceededException>()(
+  extends /*@__PURE__*/ S.TaggedError<LimitExceededException>()(
     "LimitExceededException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -228,13 +228,13 @@ export class LimitExceededException
     ),
   ).pipe(C.withThrottlingError) {}
 export class MaximumResultReturnedException
-  extends /*@__PURE__*/ S.TaggedErrorClass<MaximumResultReturnedException>()(
+  extends /*@__PURE__*/ S.TaggedError<MaximumResultReturnedException>()(
     "MaximumResultReturnedException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class OutboundContactNotPermittedException
-  extends /*@__PURE__*/ S.TaggedErrorClass<OutboundContactNotPermittedException>()(
+  extends /*@__PURE__*/ S.TaggedError<OutboundContactNotPermittedException>()(
     "OutboundContactNotPermittedException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -246,13 +246,13 @@ export class OutboundContactNotPermittedException
     ),
   ).pipe(C.withAuthError) {}
 export class OutputTypeNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<OutputTypeNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<OutputTypeNotFoundException>()(
     "OutputTypeNotFoundException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class PropertyValidationException
-  extends /*@__PURE__*/ S.TaggedErrorClass<PropertyValidationException>()(
+  extends /*@__PURE__*/ S.TaggedError<PropertyValidationException>()(
     "PropertyValidationException",
     {
       message: S.String.pipe(T.ErrorMessage()),
@@ -265,13 +265,13 @@ export class PropertyValidationException
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ResourceConflictException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceConflictException>()(
+  extends /*@__PURE__*/ S.TaggedError<ResourceConflictException>()(
     "ResourceConflictException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class ResourceInUseException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceInUseException>()(
+  extends /*@__PURE__*/ S.TaggedError<ResourceInUseException>()(
     "ResourceInUseException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -283,19 +283,19 @@ export class ResourceInUseException
     T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class ResourceNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ResourceNotReadyException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotReadyException>()(
+  extends /*@__PURE__*/ S.TaggedError<ResourceNotReadyException>()(
     "ResourceNotReadyException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class ServiceQuotaExceededException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ServiceQuotaExceededException>()(
+  extends /*@__PURE__*/ S.TaggedError<ServiceQuotaExceededException>()(
     "ServiceQuotaExceededException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -308,7 +308,7 @@ export class ServiceQuotaExceededException
     T.HttpError(402),
   ).pipe(C.withQuotaError) {}
 export class ThrottlingException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ThrottlingException>()(
+  extends /*@__PURE__*/ S.TaggedError<ThrottlingException>()(
     "ThrottlingException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -317,13 +317,13 @@ export class ThrottlingException
     ),
   ).pipe(C.withThrottlingError) {}
 export class TooManyRequestsException
-  extends /*@__PURE__*/ S.TaggedErrorClass<TooManyRequestsException>()(
+  extends /*@__PURE__*/ S.TaggedError<TooManyRequestsException>()(
     "TooManyRequestsException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export class UserNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<UserNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<UserNotFoundException>()(
     "UserNotFoundException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(404),

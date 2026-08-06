@@ -34,7 +34,7 @@ import * as Category from "@distilled.cloud/core/category";
  * per-operation typed error nor an HTTP-status class. Carries the raw body
  * (PostHog's DRF error envelope) for later cataloging.
  */
-export class UnknownPosthogError extends Schema.TaggedErrorClass<UnknownPosthogError>()(
+export class UnknownPosthogError extends Schema.TaggedError<UnknownPosthogError>()(
   "UnknownPosthogError",
   {
     code: Schema.optional(Schema.String),
@@ -44,7 +44,7 @@ export class UnknownPosthogError extends Schema.TaggedErrorClass<UnknownPosthogE
 ).pipe(Category.withServerError) {}
 
 /** Schema parse error wrapper. */
-export class PosthogParseError extends Schema.TaggedErrorClass<PosthogParseError>()(
+export class PosthogParseError extends Schema.TaggedError<PosthogParseError>()(
   "PosthogParseError",
   {
     body: Schema.Unknown,

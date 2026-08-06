@@ -81,7 +81,7 @@ const rules = T.EndpointResolver((p, _) => {
 });
 
 export class ConflictException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ConflictException>()(
+  extends /*@__PURE__*/ S.TaggedError<ConflictException>()(
     "ConflictException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -92,7 +92,7 @@ export class ConflictException
     T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class InternalServiceFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<InternalServiceFault>()(
+  extends /*@__PURE__*/ S.TaggedError<InternalServiceFault>()(
     "InternalServiceFault",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -103,7 +103,7 @@ export class InternalServiceFault
     T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class InvalidParameterException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidParameterException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidParameterException>()(
     "InvalidParameterException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -114,7 +114,7 @@ export class InvalidParameterException
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class MissingRequiredParameterException
-  extends /*@__PURE__*/ S.TaggedErrorClass<MissingRequiredParameterException>()(
+  extends /*@__PURE__*/ S.TaggedError<MissingRequiredParameterException>()(
     "MissingRequiredParameterException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -125,7 +125,7 @@ export class MissingRequiredParameterException
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ResourceNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -136,7 +136,7 @@ export class ResourceNotFoundException
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ServiceQuotaExceededException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ServiceQuotaExceededException>()(
+  extends /*@__PURE__*/ S.TaggedError<ServiceQuotaExceededException>()(
     "ServiceQuotaExceededException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -147,18 +147,18 @@ export class ServiceQuotaExceededException
     T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export class TooManyRequestsException
-  extends /*@__PURE__*/ S.TaggedErrorClass<TooManyRequestsException>()(
+  extends /*@__PURE__*/ S.TaggedError<TooManyRequestsException>()(
     "TooManyRequestsException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withThrottlingError, C.withRetryableError) {}
 export class TooManyTagsException
-  extends /*@__PURE__*/ S.TaggedErrorClass<TooManyTagsException>()(
+  extends /*@__PURE__*/ S.TaggedError<TooManyTagsException>()(
     "TooManyTagsException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ValidationException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ValidationException>()(
+  extends /*@__PURE__*/ S.TaggedError<ValidationException>()(
     "ValidationException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),

@@ -87,103 +87,103 @@ const rules = T.EndpointResolver((p, _) => {
 });
 
 export class AccessDeniedException
-  extends /*@__PURE__*/ S.TaggedErrorClass<AccessDeniedException>()(
+  extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()(
     "AccessDeniedException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class AWSServiceAccessNotEnabledException
-  extends /*@__PURE__*/ S.TaggedErrorClass<AWSServiceAccessNotEnabledException>()(
+  extends /*@__PURE__*/ S.TaggedError<AWSServiceAccessNotEnabledException>()(
     "AWSServiceAccessNotEnabledException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class DependencyAccessDeniedException
-  extends /*@__PURE__*/ S.TaggedErrorClass<DependencyAccessDeniedException>()(
+  extends /*@__PURE__*/ S.TaggedError<DependencyAccessDeniedException>()(
     "DependencyAccessDeniedException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class IllegalArgumentException
-  extends /*@__PURE__*/ S.TaggedErrorClass<IllegalArgumentException>()(
+  extends /*@__PURE__*/ S.TaggedError<IllegalArgumentException>()(
     "IllegalArgumentException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidPaginationTokenException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidPaginationTokenException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidPaginationTokenException>()(
     "InvalidPaginationTokenException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidResourceStateException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidResourceStateException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidResourceStateException>()(
     "InvalidResourceStateException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(405),
   ).pipe(C.withBadRequestError) {}
 export class NoAvailableOrganizationException
-  extends /*@__PURE__*/ S.TaggedErrorClass<NoAvailableOrganizationException>()(
+  extends /*@__PURE__*/ S.TaggedError<NoAvailableOrganizationException>()(
     "NoAvailableOrganizationException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class NoSuchResourceException
-  extends /*@__PURE__*/ S.TaggedErrorClass<NoSuchResourceException>()(
+  extends /*@__PURE__*/ S.TaggedError<NoSuchResourceException>()(
     "NoSuchResourceException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class OrganizationNotInAllFeaturesModeException
-  extends /*@__PURE__*/ S.TaggedErrorClass<OrganizationNotInAllFeaturesModeException>()(
+  extends /*@__PURE__*/ S.TaggedError<OrganizationNotInAllFeaturesModeException>()(
     "OrganizationNotInAllFeaturesModeException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class QuotaExceededException
-  extends /*@__PURE__*/ S.TaggedErrorClass<QuotaExceededException>()(
+  extends /*@__PURE__*/ S.TaggedError<QuotaExceededException>()(
     "QuotaExceededException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class ResourceAlreadyExistsException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceAlreadyExistsException>()(
+  extends /*@__PURE__*/ S.TaggedError<ResourceAlreadyExistsException>()(
     "ResourceAlreadyExistsException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
 export class ServiceException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ServiceException>()(
+  extends /*@__PURE__*/ S.TaggedError<ServiceException>()(
     "ServiceException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class ServiceQuotaTemplateNotInUseException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ServiceQuotaTemplateNotInUseException>()(
+  extends /*@__PURE__*/ S.TaggedError<ServiceQuotaTemplateNotInUseException>()(
     "ServiceQuotaTemplateNotInUseException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TagPolicyViolationException
-  extends /*@__PURE__*/ S.TaggedErrorClass<TagPolicyViolationException>()(
+  extends /*@__PURE__*/ S.TaggedError<TagPolicyViolationException>()(
     "TagPolicyViolationException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(401),
   ).pipe(C.withAuthError) {}
 export class TemplatesNotAvailableInRegionException
-  extends /*@__PURE__*/ S.TaggedErrorClass<TemplatesNotAvailableInRegionException>()(
+  extends /*@__PURE__*/ S.TaggedError<TemplatesNotAvailableInRegionException>()(
     "TemplatesNotAvailableInRegionException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class TooManyRequestsException
-  extends /*@__PURE__*/ S.TaggedErrorClass<TooManyRequestsException>()(
+  extends /*@__PURE__*/ S.TaggedError<TooManyRequestsException>()(
     "TooManyRequestsException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export class TooManyTagsException
-  extends /*@__PURE__*/ S.TaggedErrorClass<TooManyTagsException>()(
+  extends /*@__PURE__*/ S.TaggedError<TooManyTagsException>()(
     "TooManyTagsException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),

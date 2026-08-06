@@ -81,13 +81,13 @@ const rules = T.EndpointResolver((p, _) => {
 });
 
 export class AccessDeniedException
-  extends /*@__PURE__*/ S.TaggedErrorClass<AccessDeniedException>()(
+  extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()(
     "AccessDeniedException",
     { message: S.String.pipe(T.ErrorMessage()) },
     T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class ConflictException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ConflictException>()(
+  extends /*@__PURE__*/ S.TaggedError<ConflictException>()(
     "ConflictException",
     {
       message: S.String.pipe(T.ErrorMessage()),
@@ -97,7 +97,7 @@ export class ConflictException
     T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class InternalServerException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InternalServerException>()(
+  extends /*@__PURE__*/ S.TaggedError<InternalServerException>()(
     "InternalServerException",
     {
       message: S.String.pipe(T.ErrorMessage()),
@@ -106,31 +106,31 @@ export class InternalServerException
     T.all(T.HttpError(500), T.Retryable()),
   ).pipe(C.withServerError, C.withRetryableError) {}
 export class InvalidPolicyRevisionIdException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidPolicyRevisionIdException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidPolicyRevisionIdException>()(
     "InvalidPolicyRevisionIdException",
     { message: S.String.pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class MalformedPolicyDocumentException
-  extends /*@__PURE__*/ S.TaggedErrorClass<MalformedPolicyDocumentException>()(
+  extends /*@__PURE__*/ S.TaggedError<MalformedPolicyDocumentException>()(
     "MalformedPolicyDocumentException",
     { message: S.String.pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class PolicyNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<PolicyNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<PolicyNotFoundException>()(
     "PolicyNotFoundException",
     { message: S.String.pipe(T.ErrorMessage()) },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class PolicySizeLimitExceededException
-  extends /*@__PURE__*/ S.TaggedErrorClass<PolicySizeLimitExceededException>()(
+  extends /*@__PURE__*/ S.TaggedError<PolicySizeLimitExceededException>()(
     "PolicySizeLimitExceededException",
     { message: S.String.pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ResourceNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
     {
       message: S.String.pipe(T.ErrorMessage()),
@@ -140,13 +140,13 @@ export class ResourceNotFoundException
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ServiceQuotaExceededException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ServiceQuotaExceededException>()(
+  extends /*@__PURE__*/ S.TaggedError<ServiceQuotaExceededException>()(
     "ServiceQuotaExceededException",
     { message: S.String.pipe(T.ErrorMessage()) },
     T.HttpError(402),
   ).pipe(C.withQuotaError) {}
 export class ThrottlingException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ThrottlingException>()(
+  extends /*@__PURE__*/ S.TaggedError<ThrottlingException>()(
     "ThrottlingException",
     {
       message: S.String.pipe(T.ErrorMessage()),
@@ -157,7 +157,7 @@ export class ThrottlingException
     T.all(T.HttpError(429), T.Retryable({ throttling: true })),
   ).pipe(C.withThrottlingError, C.withRetryableError) {}
 export class ValidationException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ValidationException>()(
+  extends /*@__PURE__*/ S.TaggedError<ValidationException>()(
     "ValidationException",
     { message: S.String.pipe(T.ErrorMessage()) },
     T.HttpError(400),

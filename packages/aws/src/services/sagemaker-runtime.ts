@@ -95,24 +95,24 @@ const rules = T.EndpointResolver((p, _) => {
 });
 
 export class InternalDependencyException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InternalDependencyException>()(
+  extends /*@__PURE__*/ S.TaggedError<InternalDependencyException>()(
     "InternalDependencyException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(530),
   ).pipe(C.withServerError) {}
 export class InternalFailure
-  extends /*@__PURE__*/ S.TaggedErrorClass<InternalFailure>()(
+  extends /*@__PURE__*/ S.TaggedError<InternalFailure>()(
     "InternalFailure",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class InternalStreamFailure
-  extends /*@__PURE__*/ S.TaggedErrorClass<InternalStreamFailure>()(
+  extends /*@__PURE__*/ S.TaggedError<InternalStreamFailure>()(
     "InternalStreamFailure",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class ModelError
-  extends /*@__PURE__*/ S.TaggedErrorClass<ModelError>()(
+  extends /*@__PURE__*/ S.TaggedError<ModelError>()(
     "ModelError",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -123,7 +123,7 @@ export class ModelError
     T.HttpError(424),
   ) {}
 export class ModelNotReadyException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ModelNotReadyException>()(
+  extends /*@__PURE__*/ S.TaggedError<ModelNotReadyException>()(
     "ModelNotReadyException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -135,21 +135,18 @@ export class ModelNotReadyException
     ),
   ).pipe(C.withThrottlingError) {}
 export class ModelStreamError
-  extends /*@__PURE__*/ S.TaggedErrorClass<ModelStreamError>()(
-    "ModelStreamError",
-    {
-      message: S.optional(S.String).pipe(T.ErrorMessage()),
-      ErrorCode: S.optional(S.String),
-    },
-  ) {}
+  extends /*@__PURE__*/ S.TaggedError<ModelStreamError>()("ModelStreamError", {
+    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    ErrorCode: S.optional(S.String),
+  }) {}
 export class ServiceUnavailable
-  extends /*@__PURE__*/ S.TaggedErrorClass<ServiceUnavailable>()(
+  extends /*@__PURE__*/ S.TaggedError<ServiceUnavailable>()(
     "ServiceUnavailable",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(503),
   ).pipe(C.withServerError) {}
 export class ValidationError
-  extends /*@__PURE__*/ S.TaggedErrorClass<ValidationError>()(
+  extends /*@__PURE__*/ S.TaggedError<ValidationError>()(
     "ValidationError",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),

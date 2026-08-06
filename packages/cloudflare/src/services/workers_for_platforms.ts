@@ -87,19 +87,16 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
 
 export class D1DatabaseNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<D1DatabaseNotFound>()(
-      "D1DatabaseNotFound",
-      {
-        code: S.Number,
-        message: S.String,
-      },
-    ),
+    /*@__PURE__*/ S.TaggedError<D1DatabaseNotFound>()("D1DatabaseNotFound", {
+      code: S.Number,
+      message: S.String,
+    }),
     [{ code: 10181 }],
   ) {}
 
 export class DispatchNamespaceAlreadyExists
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<DispatchNamespaceAlreadyExists>()(
+    /*@__PURE__*/ S.TaggedError<DispatchNamespaceAlreadyExists>()(
       "DispatchNamespaceAlreadyExists",
       {
         code: S.Number,
@@ -111,7 +108,7 @@ export class DispatchNamespaceAlreadyExists
 
 export class DispatchNamespaceNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<DispatchNamespaceNotFound>()(
+    /*@__PURE__*/ S.TaggedError<DispatchNamespaceNotFound>()(
       "DispatchNamespaceNotFound",
       {
         code: S.Number,
@@ -123,7 +120,7 @@ export class DispatchNamespaceNotFound
 
 export class DispatchNamespaceScriptNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<DispatchNamespaceScriptNotFound>()(
+    /*@__PURE__*/ S.TaggedError<DispatchNamespaceScriptNotFound>()(
       "DispatchNamespaceScriptNotFound",
       {
         code: S.Number,
@@ -135,7 +132,7 @@ export class DispatchNamespaceScriptNotFound
 
 export class DurableObjectClassNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<DurableObjectClassNotFound>()(
+    /*@__PURE__*/ S.TaggedError<DurableObjectClassNotFound>()(
       "DurableObjectClassNotFound",
       {
         code: S.Number,
@@ -147,7 +144,7 @@ export class DurableObjectClassNotFound
 
 export class Forbidden
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    /*@__PURE__*/ S.TaggedError<Forbidden>()("Forbidden", {
       code: S.Number,
       message: S.String,
     }),
@@ -156,7 +153,7 @@ export class Forbidden
 
 export class HyperdriveConfigNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<HyperdriveConfigNotFound>()(
+    /*@__PURE__*/ S.TaggedError<HyperdriveConfigNotFound>()(
       "HyperdriveConfigNotFound",
       {
         code: S.Number,
@@ -168,19 +165,16 @@ export class HyperdriveConfigNotFound
 
 export class KVNamespaceNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<KVNamespaceNotFound>()(
-      "KVNamespaceNotFound",
-      {
-        code: S.Number,
-        message: S.String,
-      },
-    ),
+    /*@__PURE__*/ S.TaggedError<KVNamespaceNotFound>()("KVNamespaceNotFound", {
+      code: S.Number,
+      message: S.String,
+    }),
     [{ code: 10041 }],
   ) {}
 
 export class MtlsCertificateNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<MtlsCertificateNotFound>()(
+    /*@__PURE__*/ S.TaggedError<MtlsCertificateNotFound>()(
       "MtlsCertificateNotFound",
       {
         code: S.Number,
@@ -192,7 +186,7 @@ export class MtlsCertificateNotFound
 
 export class QueueNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<QueueNotFound>()("QueueNotFound", {
+    /*@__PURE__*/ S.TaggedError<QueueNotFound>()("QueueNotFound", {
       code: S.Number,
       message: S.String,
     }),
@@ -201,7 +195,7 @@ export class QueueNotFound
 
 export class R2BucketNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<R2BucketNotFound>()("R2BucketNotFound", {
+    /*@__PURE__*/ S.TaggedError<R2BucketNotFound>()("R2BucketNotFound", {
       code: S.Number,
       message: S.String,
     }),
@@ -210,7 +204,7 @@ export class R2BucketNotFound
 
 export class SecretsStoreBindingNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<SecretsStoreBindingNotFound>()(
+    /*@__PURE__*/ S.TaggedError<SecretsStoreBindingNotFound>()(
       "SecretsStoreBindingNotFound",
       {
         code: S.Number,
@@ -222,7 +216,7 @@ export class SecretsStoreBindingNotFound
 
 export class ServiceBindingNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<ServiceBindingNotFound>()(
+    /*@__PURE__*/ S.TaggedError<ServiceBindingNotFound>()(
       "ServiceBindingNotFound",
       {
         code: S.Number,
@@ -234,7 +228,7 @@ export class ServiceBindingNotFound
 
 export class VectorizeIndexNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<VectorizeIndexNotFound>()(
+    /*@__PURE__*/ S.TaggedError<VectorizeIndexNotFound>()(
       "VectorizeIndexNotFound",
       {
         code: S.Number,

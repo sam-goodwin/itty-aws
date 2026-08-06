@@ -84,121 +84,121 @@ const rules = T.EndpointResolver((p, _) => {
 });
 
 export class AcceleratorNotDisabledException
-  extends /*@__PURE__*/ S.TaggedErrorClass<AcceleratorNotDisabledException>()(
+  extends /*@__PURE__*/ S.TaggedError<AcceleratorNotDisabledException>()(
     "AcceleratorNotDisabledException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class AcceleratorNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<AcceleratorNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<AcceleratorNotFoundException>()(
     "AcceleratorNotFoundException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class AccessDeniedException
-  extends /*@__PURE__*/ S.TaggedErrorClass<AccessDeniedException>()(
+  extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()(
     "AccessDeniedException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class AssociatedEndpointGroupFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<AssociatedEndpointGroupFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<AssociatedEndpointGroupFoundException>()(
     "AssociatedEndpointGroupFoundException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class AssociatedListenerFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<AssociatedListenerFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<AssociatedListenerFoundException>()(
     "AssociatedListenerFoundException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class AttachmentNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<AttachmentNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<AttachmentNotFoundException>()(
     "AttachmentNotFoundException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ByoipCidrNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ByoipCidrNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<ByoipCidrNotFoundException>()(
     "ByoipCidrNotFoundException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ConflictException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ConflictException>()(
+  extends /*@__PURE__*/ S.TaggedError<ConflictException>()(
     "ConflictException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class EndpointAlreadyExistsException
-  extends /*@__PURE__*/ S.TaggedErrorClass<EndpointAlreadyExistsException>()(
+  extends /*@__PURE__*/ S.TaggedError<EndpointAlreadyExistsException>()(
     "EndpointAlreadyExistsException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
 export class EndpointGroupAlreadyExistsException
-  extends /*@__PURE__*/ S.TaggedErrorClass<EndpointGroupAlreadyExistsException>()(
+  extends /*@__PURE__*/ S.TaggedError<EndpointGroupAlreadyExistsException>()(
     "EndpointGroupAlreadyExistsException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
 export class EndpointGroupNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<EndpointGroupNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<EndpointGroupNotFoundException>()(
     "EndpointGroupNotFoundException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class EndpointNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<EndpointNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<EndpointNotFoundException>()(
     "EndpointNotFoundException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class IncorrectCidrStateException
-  extends /*@__PURE__*/ S.TaggedErrorClass<IncorrectCidrStateException>()(
+  extends /*@__PURE__*/ S.TaggedError<IncorrectCidrStateException>()(
     "IncorrectCidrStateException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class InternalServiceErrorException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InternalServiceErrorException>()(
+  extends /*@__PURE__*/ S.TaggedError<InternalServiceErrorException>()(
     "InternalServiceErrorException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class InvalidArgumentException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidArgumentException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidArgumentException>()(
     "InvalidArgumentException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidNextTokenException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidNextTokenException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidNextTokenException>()(
     "InvalidNextTokenException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidPortRangeException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidPortRangeException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidPortRangeException>()(
     "InvalidPortRangeException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class LimitExceededException
-  extends /*@__PURE__*/ S.TaggedErrorClass<LimitExceededException>()(
+  extends /*@__PURE__*/ S.TaggedError<LimitExceededException>()(
     "LimitExceededException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class ListenerNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ListenerNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<ListenerNotFoundException>()(
     "ListenerNotFoundException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class TransactionInProgressException
-  extends /*@__PURE__*/ S.TaggedErrorClass<TransactionInProgressException>()(
+  extends /*@__PURE__*/ S.TaggedError<TransactionInProgressException>()(
     "TransactionInProgressException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(409),

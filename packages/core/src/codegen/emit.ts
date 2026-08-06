@@ -9,7 +9,7 @@
  *     .annotate({ identifier: "X" })
  *     as any as S.Schema<X>;                      // no inference needed
  *
- * plus closed-alias string-union enums, `S.TaggedErrorClass` error classes, and
+ * plus closed-alias string-union enums, `S.TaggedError` error classes, and
  * `API.make(() => ({ … }))` operation consts. The helpers here own those
  * shared skeletons; providers own the content strings (member pipes, trait
  * calls, config fields). Emitted output is normalized by oxfmt afterwards,
@@ -120,7 +120,7 @@ export interface ErrorClassOptions {
 }
 
 /**
- * `export class X extends /*@__PURE__*​/ S.TaggedErrorClass<X>()("X", { … }) {}`
+ * `export class X extends /*@__PURE__*​/ S.TaggedError<X>()("X", { … }) {}`
  *
  * The PURE markers are what make an unused error class droppable. A class
  * whose heritage clause is an unannotated call can never be tree-shaken —
@@ -130,12 +130,12 @@ export interface ErrorClassOptions {
  *
  * `wrap` needs its own marker as well as the inner one: a pure call's
  * ARGUMENTS are still evaluated, so annotating only
- * `T.applyErrorMatchers(S.TaggedErrorClass…(…), […])` leaves the inner call
+ * `T.applyErrorMatchers(S.TaggedError…(…), […])` leaves the inner call
  * holding the class alive. Verified against esbuild in both directions.
  */
 export const errorClass = (o: ErrorClassOptions): string => {
   const annotations = o.annotations ? `,\n${o.annotations}` : "";
-  const cls = `${PURE}S.TaggedErrorClass<${o.name}>()(${q(o.tag ?? o.name)}, {\n${o.fields.join("\n")}\n}${annotations})${o.pipes ?? ""}`;
+  const cls = `${PURE}S.TaggedError<${o.name}>()(${q(o.tag ?? o.name)}, {\n${o.fields.join("\n")}\n}${annotations})${o.pipes ?? ""}`;
   const body = o.wrap ? `${PURE}${o.wrap(cls)}` : cls;
   return `export class ${o.name} extends ${body} {}\n`;
 };

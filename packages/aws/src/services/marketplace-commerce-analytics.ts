@@ -83,7 +83,7 @@ const rules = T.EndpointResolver((p, _) => {
 });
 
 export class MarketplaceCommerceAnalyticsException
-  extends /*@__PURE__*/ S.TaggedErrorClass<MarketplaceCommerceAnalyticsException>()(
+  extends /*@__PURE__*/ S.TaggedError<MarketplaceCommerceAnalyticsException>()(
     "MarketplaceCommerceAnalyticsException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}

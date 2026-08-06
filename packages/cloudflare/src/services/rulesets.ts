@@ -104,7 +104,7 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
 
 export class Forbidden
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    /*@__PURE__*/ S.TaggedError<Forbidden>()("Forbidden", {
       code: S.Number,
       message: S.String,
     }),
@@ -113,7 +113,7 @@ export class Forbidden
 
 export class PhaseNotEntitled
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<PhaseNotEntitled>()("PhaseNotEntitled", {
+    /*@__PURE__*/ S.TaggedError<PhaseNotEntitled>()("PhaseNotEntitled", {
       code: S.Number,
       message: S.String,
     }),
@@ -122,7 +122,7 @@ export class PhaseNotEntitled
 
 export class RulesetNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<RulesetNotFound>()("RulesetNotFound", {
+    /*@__PURE__*/ S.TaggedError<RulesetNotFound>()("RulesetNotFound", {
       code: S.Number,
       message: S.String,
     }),

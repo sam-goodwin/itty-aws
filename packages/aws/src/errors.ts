@@ -15,7 +15,7 @@ import * as T from "./error-message.ts";
 const ErrorMessage = /*@__PURE__*/ S.optional(S.String).pipe(T.ErrorMessage());
 
 //==== Common AWS Errors ====
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+export class AccessDeniedException extends S.TaggedError<AccessDeniedException>()(
   "AccessDeniedException",
   {
     // AWS explains WHICH action/resource was denied in the message — keep it
@@ -24,82 +24,82 @@ export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedExcept
   },
 ).pipe(Category.withAuthError) {}
 
-export class ExpiredTokenException extends S.TaggedErrorClass<ExpiredTokenException>()(
+export class ExpiredTokenException extends S.TaggedError<ExpiredTokenException>()(
   "ExpiredTokenException",
   { message: ErrorMessage },
 ).pipe(Category.withAuthError) {}
 
-export class IncompleteSignature extends S.TaggedErrorClass<IncompleteSignature>()(
+export class IncompleteSignature extends S.TaggedError<IncompleteSignature>()(
   "IncompleteSignature",
   { message: ErrorMessage },
 ).pipe(Category.withAuthError) {}
 
-export class InternalFailure extends S.TaggedErrorClass<InternalFailure>()(
+export class InternalFailure extends S.TaggedError<InternalFailure>()(
   "InternalFailure",
   { message: ErrorMessage },
 ).pipe(Category.withServerError) {}
 
-export class MalformedHttpRequestException extends S.TaggedErrorClass<MalformedHttpRequestException>()(
+export class MalformedHttpRequestException extends S.TaggedError<MalformedHttpRequestException>()(
   "MalformedHttpRequestException",
   { message: ErrorMessage },
 ).pipe(Category.withBadRequestError) {}
 
-export class NotAuthorized extends S.TaggedErrorClass<NotAuthorized>()(
+export class NotAuthorized extends S.TaggedError<NotAuthorized>()(
   "NotAuthorized",
   { message: ErrorMessage },
 ).pipe(Category.withAuthError) {}
 
-export class OptInRequired extends S.TaggedErrorClass<OptInRequired>()(
+export class OptInRequired extends S.TaggedError<OptInRequired>()(
   "OptInRequired",
   { message: ErrorMessage },
 ).pipe(Category.withAuthError) {}
 
-export class RequestAbortedException extends S.TaggedErrorClass<RequestAbortedException>()(
+export class RequestAbortedException extends S.TaggedError<RequestAbortedException>()(
   "RequestAbortedException",
   { message: ErrorMessage },
 ).pipe(Category.withAbortedError) {}
 
-export class RequestEntityTooLargeException extends S.TaggedErrorClass<RequestEntityTooLargeException>()(
+export class RequestEntityTooLargeException extends S.TaggedError<RequestEntityTooLargeException>()(
   "RequestEntityTooLargeException",
   { message: ErrorMessage },
 ).pipe(Category.withBadRequestError) {}
 
-export class RequestExpired extends S.TaggedErrorClass<RequestExpired>()(
+export class RequestExpired extends S.TaggedError<RequestExpired>()(
   "RequestExpired",
   { message: ErrorMessage },
 ).pipe(Category.withBadRequestError, Category.withTimeoutError) {}
 
-export class RequestTimeoutException extends S.TaggedErrorClass<RequestTimeoutException>()(
+export class RequestTimeoutException extends S.TaggedError<RequestTimeoutException>()(
   "RequestTimeoutException",
   { message: ErrorMessage },
 ).pipe(Category.withTimeoutError) {}
 
-export class ServiceUnavailable extends S.TaggedErrorClass<ServiceUnavailable>()(
+export class ServiceUnavailable extends S.TaggedError<ServiceUnavailable>()(
   "ServiceUnavailable",
   { message: ErrorMessage },
 ).pipe(Category.withServerError) {}
 
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+export class ThrottlingException extends S.TaggedError<ThrottlingException>()(
   "ThrottlingException",
   { message: ErrorMessage },
 ).pipe(Category.withThrottlingError) {}
 
-export class UnrecognizedClientException extends S.TaggedErrorClass<UnrecognizedClientException>()(
+export class UnrecognizedClientException extends S.TaggedError<UnrecognizedClientException>()(
   "UnrecognizedClientException",
   { message: ErrorMessage },
 ).pipe(Category.withAuthError) {}
 
-export class UnknownOperationException extends S.TaggedErrorClass<UnknownOperationException>()(
+export class UnknownOperationException extends S.TaggedError<UnknownOperationException>()(
   "UnknownOperationException",
   { message: ErrorMessage },
 ).pipe(Category.withBadRequestError) {}
 
-export class ValidationError extends S.TaggedErrorClass<ValidationError>()(
+export class ValidationError extends S.TaggedError<ValidationError>()(
   "ValidationError",
   { message: ErrorMessage },
 ).pipe(Category.withBadRequestError) {}
 
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+export class ValidationException extends S.TaggedError<ValidationException>()(
   "ValidationException",
   {
     /** The human-readable validation failure reason from the service. */
@@ -111,12 +111,12 @@ export class ValidationException extends S.TaggedErrorClass<ValidationException>
   },
 ).pipe(Category.withBadRequestError) {}
 
-export class OperationAborted extends S.TaggedErrorClass<OperationAborted>()(
+export class OperationAborted extends S.TaggedError<OperationAborted>()(
   "OperationAborted",
   { message: ErrorMessage },
 ).pipe(Category.withAbortedError) {}
 
-export class UnknownAwsError extends S.TaggedErrorClass<UnknownAwsError>()(
+export class UnknownAwsError extends S.TaggedError<UnknownAwsError>()(
   "UnknownAwsError",
   {
     errorTag: S.String,
@@ -157,7 +157,7 @@ export const isTransientNetworkError = (err: unknown): boolean => {
  * Error thrown when a fetch request fails due to a transient network issue.
  * Marked as retryable so the default retry policy will automatically retry these.
  */
-export class TransientFetchError extends S.TaggedErrorClass<TransientFetchError>()(
+export class TransientFetchError extends S.TaggedError<TransientFetchError>()(
   "TransientFetchError",
   {
     message: S.String.pipe(T.ErrorMessage()),
@@ -165,24 +165,24 @@ export class TransientFetchError extends S.TaggedErrorClass<TransientFetchError>
   },
 ).pipe(Category.withNetworkError) {}
 
-export class InternalError extends S.TaggedErrorClass<InternalError>()(
+export class InternalError extends S.TaggedError<InternalError>()(
   "InternalError",
   { message: ErrorMessage },
 ).pipe(Category.withServerError) {}
 
 /** Error when endpoint resolution fails due to a rule error */
-export class EndpointError extends S.TaggedErrorClass<EndpointError>()(
+export class EndpointError extends S.TaggedError<EndpointError>()(
   "EndpointError",
   { message: S.String.pipe(T.ErrorMessage()) },
 ).pipe(Category.withServerError) {}
 
 /** Error when no rule matches in the ruleset */
-export class NoMatchingRuleError extends S.TaggedErrorClass<NoMatchingRuleError>()(
+export class NoMatchingRuleError extends S.TaggedError<NoMatchingRuleError>()(
   "NoMatchingRuleError",
   { message: ErrorMessage },
 ) {}
 
-export class ParseError extends S.TaggedErrorClass<ParseError>()("ParseError", {
+export class ParseError extends S.TaggedError<ParseError>()("ParseError", {
   message: S.String.pipe(T.ErrorMessage()),
 }) {}
 

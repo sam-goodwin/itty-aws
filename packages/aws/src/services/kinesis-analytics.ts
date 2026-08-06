@@ -87,59 +87,59 @@ const rules = T.EndpointResolver((p, _) => {
 });
 
 export class CodeValidationException
-  extends /*@__PURE__*/ S.TaggedErrorClass<CodeValidationException>()(
+  extends /*@__PURE__*/ S.TaggedError<CodeValidationException>()(
     "CodeValidationException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class ConcurrentModificationException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ConcurrentModificationException>()(
+  extends /*@__PURE__*/ S.TaggedError<ConcurrentModificationException>()(
     "ConcurrentModificationException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class InvalidApplicationConfigurationException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidApplicationConfigurationException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidApplicationConfigurationException>()(
     "InvalidApplicationConfigurationException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidArgumentException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidArgumentException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidArgumentException>()(
     "InvalidArgumentException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class LimitExceededException
-  extends /*@__PURE__*/ S.TaggedErrorClass<LimitExceededException>()(
+  extends /*@__PURE__*/ S.TaggedError<LimitExceededException>()(
     "LimitExceededException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class ResourceInUseException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceInUseException>()(
+  extends /*@__PURE__*/ S.TaggedError<ResourceInUseException>()(
     "ResourceInUseException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class ResourceNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class ResourceProvisionedThroughputExceededException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceProvisionedThroughputExceededException>()(
+  extends /*@__PURE__*/ S.TaggedError<ResourceProvisionedThroughputExceededException>()(
     "ResourceProvisionedThroughputExceededException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class ServiceUnavailableException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ServiceUnavailableException>()(
+  extends /*@__PURE__*/ S.TaggedError<ServiceUnavailableException>()(
     "ServiceUnavailableException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(503),
   ).pipe(C.withServerError) {}
 export class TooManyTagsException
-  extends /*@__PURE__*/ S.TaggedErrorClass<TooManyTagsException>()(
+  extends /*@__PURE__*/ S.TaggedError<TooManyTagsException>()(
     "TooManyTagsException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class UnableToDetectSchemaException
-  extends /*@__PURE__*/ S.TaggedErrorClass<UnableToDetectSchemaException>()(
+  extends /*@__PURE__*/ S.TaggedError<UnableToDetectSchemaException>()(
     "UnableToDetectSchemaException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -156,7 +156,7 @@ export class UnableToDetectSchemaException
     },
   ) {}
 export class UnsupportedOperationException
-  extends /*@__PURE__*/ S.TaggedErrorClass<UnsupportedOperationException>()(
+  extends /*@__PURE__*/ S.TaggedError<UnsupportedOperationException>()(
     "UnsupportedOperationException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}

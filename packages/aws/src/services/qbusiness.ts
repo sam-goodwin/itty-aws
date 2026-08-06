@@ -74,13 +74,13 @@ const rules = T.EndpointResolver((p, _) => {
 });
 
 export class AccessDeniedException
-  extends /*@__PURE__*/ S.TaggedErrorClass<AccessDeniedException>()(
+  extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()(
     "AccessDeniedException",
     { message: S.String.pipe(T.ErrorMessage()) },
     T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class ConflictException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ConflictException>()(
+  extends /*@__PURE__*/ S.TaggedError<ConflictException>()(
     "ConflictException",
     {
       message: S.String.pipe(T.ErrorMessage()),
@@ -90,31 +90,31 @@ export class ConflictException
     T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class ExternalResourceException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ExternalResourceException>()(
+  extends /*@__PURE__*/ S.TaggedError<ExternalResourceException>()(
     "ExternalResourceException",
     { message: S.String.pipe(T.ErrorMessage()) },
     T.HttpError(424),
   ) {}
 export class InternalServerException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InternalServerException>()(
+  extends /*@__PURE__*/ S.TaggedError<InternalServerException>()(
     "InternalServerException",
     { message: S.String.pipe(T.ErrorMessage()) },
     T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class LicenseNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<LicenseNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<LicenseNotFoundException>()(
     "LicenseNotFoundException",
     { message: S.String.pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class MediaTooLargeException
-  extends /*@__PURE__*/ S.TaggedErrorClass<MediaTooLargeException>()(
+  extends /*@__PURE__*/ S.TaggedError<MediaTooLargeException>()(
     "MediaTooLargeException",
     { message: S.String.pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ResourceNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
     {
       message: S.String.pipe(T.ErrorMessage()),
@@ -124,7 +124,7 @@ export class ResourceNotFoundException
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ServiceQuotaExceededException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ServiceQuotaExceededException>()(
+  extends /*@__PURE__*/ S.TaggedError<ServiceQuotaExceededException>()(
     "ServiceQuotaExceededException",
     {
       message: S.String.pipe(T.ErrorMessage()),
@@ -134,13 +134,13 @@ export class ServiceQuotaExceededException
     T.HttpError(402),
   ).pipe(C.withQuotaError) {}
 export class ThrottlingException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ThrottlingException>()(
+  extends /*@__PURE__*/ S.TaggedError<ThrottlingException>()(
     "ThrottlingException",
     { message: S.String.pipe(T.ErrorMessage()) },
     T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export class ValidationException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ValidationException>()(
+  extends /*@__PURE__*/ S.TaggedError<ValidationException>()(
     "ValidationException",
     {
       message: S.String.pipe(T.ErrorMessage()),

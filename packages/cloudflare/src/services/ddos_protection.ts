@@ -29,7 +29,7 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
 
 export class AdvancedTcpProtectionNotEntitled
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<AdvancedTcpProtectionNotEntitled>()(
+    /*@__PURE__*/ S.TaggedError<AdvancedTcpProtectionNotEntitled>()(
       "AdvancedTcpProtectionNotEntitled",
       {
         code: S.Number,
@@ -41,7 +41,7 @@ export class AdvancedTcpProtectionNotEntitled
 
 export class AllowlistEntryNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<AllowlistEntryNotFound>()(
+    /*@__PURE__*/ S.TaggedError<AllowlistEntryNotFound>()(
       "AllowlistEntryNotFound",
       {
         code: S.Number,
@@ -53,7 +53,7 @@ export class AllowlistEntryNotFound
 
 export class Forbidden
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    /*@__PURE__*/ S.TaggedError<Forbidden>()("Forbidden", {
       code: S.Number,
       message: S.String,
     }),
@@ -62,7 +62,7 @@ export class Forbidden
 
 export class SynProtectionFilterNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<SynProtectionFilterNotFound>()(
+    /*@__PURE__*/ S.TaggedError<SynProtectionFilterNotFound>()(
       "SynProtectionFilterNotFound",
       {
         code: S.Number,
@@ -74,7 +74,7 @@ export class SynProtectionFilterNotFound
 
 export class SynProtectionRuleNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<SynProtectionRuleNotFound>()(
+    /*@__PURE__*/ S.TaggedError<SynProtectionRuleNotFound>()(
       "SynProtectionRuleNotFound",
       {
         code: S.Number,
@@ -86,7 +86,7 @@ export class SynProtectionRuleNotFound
 
 export class TcpFlowProtectionFilterNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<TcpFlowProtectionFilterNotFound>()(
+    /*@__PURE__*/ S.TaggedError<TcpFlowProtectionFilterNotFound>()(
       "TcpFlowProtectionFilterNotFound",
       {
         code: S.Number,
@@ -98,7 +98,7 @@ export class TcpFlowProtectionFilterNotFound
 
 export class TcpFlowProtectionRuleNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<TcpFlowProtectionRuleNotFound>()(
+    /*@__PURE__*/ S.TaggedError<TcpFlowProtectionRuleNotFound>()(
       "TcpFlowProtectionRuleNotFound",
       {
         code: S.Number,

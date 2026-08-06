@@ -161,7 +161,7 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
 
 export class Forbidden
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    /*@__PURE__*/ S.TaggedError<Forbidden>()("Forbidden", {
       code: S.Number,
       message: S.String,
     }),
@@ -170,7 +170,7 @@ export class Forbidden
 
 export class RealtimeKitPresetExists
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<RealtimeKitPresetExists>()(
+    /*@__PURE__*/ S.TaggedError<RealtimeKitPresetExists>()(
       "RealtimeKitPresetExists",
       {
         code: S.Number,
@@ -182,7 +182,7 @@ export class RealtimeKitPresetExists
 
 export class RealtimeKitPresetNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<RealtimeKitPresetNotFound>()(
+    /*@__PURE__*/ S.TaggedError<RealtimeKitPresetNotFound>()(
       "RealtimeKitPresetNotFound",
       {
         code: S.Number,
@@ -194,7 +194,7 @@ export class RealtimeKitPresetNotFound
 
 export class RealtimeKitWebhookExists
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<RealtimeKitWebhookExists>()(
+    /*@__PURE__*/ S.TaggedError<RealtimeKitWebhookExists>()(
       "RealtimeKitWebhookExists",
       {
         code: S.Number,
@@ -206,7 +206,7 @@ export class RealtimeKitWebhookExists
 
 export class RealtimeKitWebhookNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<RealtimeKitWebhookNotFound>()(
+    /*@__PURE__*/ S.TaggedError<RealtimeKitWebhookNotFound>()(
       "RealtimeKitWebhookNotFound",
       {
         code: S.Number,

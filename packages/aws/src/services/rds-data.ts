@@ -84,91 +84,91 @@ const rules = T.EndpointResolver((p, _) => {
 });
 
 export class AccessDeniedException
-  extends /*@__PURE__*/ S.TaggedErrorClass<AccessDeniedException>()(
+  extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()(
     "AccessDeniedException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class BadRequestException
-  extends /*@__PURE__*/ S.TaggedErrorClass<BadRequestException>()(
+  extends /*@__PURE__*/ S.TaggedError<BadRequestException>()(
     "BadRequestException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class DatabaseErrorException
-  extends /*@__PURE__*/ S.TaggedErrorClass<DatabaseErrorException>()(
+  extends /*@__PURE__*/ S.TaggedError<DatabaseErrorException>()(
     "DatabaseErrorException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class DatabaseNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<DatabaseNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<DatabaseNotFoundException>()(
     "DatabaseNotFoundException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class DatabaseResumingException
-  extends /*@__PURE__*/ S.TaggedErrorClass<DatabaseResumingException>()(
+  extends /*@__PURE__*/ S.TaggedError<DatabaseResumingException>()(
     "DatabaseResumingException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class DatabaseUnavailableException
-  extends /*@__PURE__*/ S.TaggedErrorClass<DatabaseUnavailableException>()(
+  extends /*@__PURE__*/ S.TaggedError<DatabaseUnavailableException>()(
     "DatabaseUnavailableException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(504),
   ).pipe(C.withTimeoutError) {}
 export class ForbiddenException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ForbiddenException>()(
+  extends /*@__PURE__*/ S.TaggedError<ForbiddenException>()(
     "ForbiddenException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class HttpEndpointNotEnabledException
-  extends /*@__PURE__*/ S.TaggedErrorClass<HttpEndpointNotEnabledException>()(
+  extends /*@__PURE__*/ S.TaggedError<HttpEndpointNotEnabledException>()(
     "HttpEndpointNotEnabledException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InternalServerErrorException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InternalServerErrorException>()(
+  extends /*@__PURE__*/ S.TaggedError<InternalServerErrorException>()(
     "InternalServerErrorException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class InvalidResourceStateException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidResourceStateException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidResourceStateException>()(
     "InvalidResourceStateException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidSecretException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidSecretException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidSecretException>()(
     "InvalidSecretException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class NotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<NotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<NotFoundException>()(
     "NotFoundException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class SecretsErrorException
-  extends /*@__PURE__*/ S.TaggedErrorClass<SecretsErrorException>()(
+  extends /*@__PURE__*/ S.TaggedError<SecretsErrorException>()(
     "SecretsErrorException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ServiceUnavailableError
-  extends /*@__PURE__*/ S.TaggedErrorClass<ServiceUnavailableError>()(
+  extends /*@__PURE__*/ S.TaggedError<ServiceUnavailableError>()(
     "ServiceUnavailableError",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(503),
   ).pipe(C.withServerError) {}
 export class StatementTimeoutException
-  extends /*@__PURE__*/ S.TaggedErrorClass<StatementTimeoutException>()(
+  extends /*@__PURE__*/ S.TaggedError<StatementTimeoutException>()(
     "StatementTimeoutException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -177,13 +177,13 @@ export class StatementTimeoutException
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TransactionNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<TransactionNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<TransactionNotFoundException>()(
     "TransactionNotFoundException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class UnsupportedResultException
-  extends /*@__PURE__*/ S.TaggedErrorClass<UnsupportedResultException>()(
+  extends /*@__PURE__*/ S.TaggedError<UnsupportedResultException>()(
     "UnsupportedResultException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),

@@ -247,19 +247,19 @@ const rules = T.EndpointResolver((p, _) => {
 });
 
 export class AccountNotManagementOrDelegatedAdministratorException
-  extends /*@__PURE__*/ S.TaggedErrorClass<AccountNotManagementOrDelegatedAdministratorException>()(
+  extends /*@__PURE__*/ S.TaggedError<AccountNotManagementOrDelegatedAdministratorException>()(
     "AccountNotManagementOrDelegatedAdministratorException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class CallerIsNotManagementAccountException
-  extends /*@__PURE__*/ S.TaggedErrorClass<CallerIsNotManagementAccountException>()(
+  extends /*@__PURE__*/ S.TaggedError<CallerIsNotManagementAccountException>()(
     "CallerIsNotManagementAccountException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ConcurrentModificationException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ConcurrentModificationException>()(
+  extends /*@__PURE__*/ S.TaggedError<ConcurrentModificationException>()(
     "ConcurrentModificationException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -271,7 +271,7 @@ export class ConcurrentModificationException
     ),
   ).pipe(C.withConflictError, C.withRetryableError) {}
 export class CredentialReportExpiredException
-  extends /*@__PURE__*/ S.TaggedErrorClass<CredentialReportExpiredException>()(
+  extends /*@__PURE__*/ S.TaggedError<CredentialReportExpiredException>()(
     "CredentialReportExpiredException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -280,7 +280,7 @@ export class CredentialReportExpiredException
     ),
   ).pipe(C.withBadRequestError) {}
 export class CredentialReportNotPresentException
-  extends /*@__PURE__*/ S.TaggedErrorClass<CredentialReportNotPresentException>()(
+  extends /*@__PURE__*/ S.TaggedError<CredentialReportNotPresentException>()(
     "CredentialReportNotPresentException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -289,7 +289,7 @@ export class CredentialReportNotPresentException
     ),
   ).pipe(C.withBadRequestError) {}
 export class CredentialReportNotReadyException
-  extends /*@__PURE__*/ S.TaggedErrorClass<CredentialReportNotReadyException>()(
+  extends /*@__PURE__*/ S.TaggedError<CredentialReportNotReadyException>()(
     "CredentialReportNotReadyException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -298,7 +298,7 @@ export class CredentialReportNotReadyException
     ),
   ).pipe(C.withBadRequestError) {}
 export class DeleteConflictException
-  extends /*@__PURE__*/ S.TaggedErrorClass<DeleteConflictException>()(
+  extends /*@__PURE__*/ S.TaggedError<DeleteConflictException>()(
     "DeleteConflictException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -307,7 +307,7 @@ export class DeleteConflictException
     ),
   ).pipe(C.withConflictError) {}
 export class DuplicateCertificateException
-  extends /*@__PURE__*/ S.TaggedErrorClass<DuplicateCertificateException>()(
+  extends /*@__PURE__*/ S.TaggedError<DuplicateCertificateException>()(
     "DuplicateCertificateException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -316,7 +316,7 @@ export class DuplicateCertificateException
     ),
   ).pipe(C.withConflictError) {}
 export class DuplicateSSHPublicKeyException
-  extends /*@__PURE__*/ S.TaggedErrorClass<DuplicateSSHPublicKeyException>()(
+  extends /*@__PURE__*/ S.TaggedError<DuplicateSSHPublicKeyException>()(
     "DuplicateSSHPublicKeyException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -325,7 +325,7 @@ export class DuplicateSSHPublicKeyException
     ),
   ).pipe(C.withBadRequestError) {}
 export class EntityAlreadyExistsException
-  extends /*@__PURE__*/ S.TaggedErrorClass<EntityAlreadyExistsException>()(
+  extends /*@__PURE__*/ S.TaggedError<EntityAlreadyExistsException>()(
     "EntityAlreadyExistsException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -334,7 +334,7 @@ export class EntityAlreadyExistsException
     ),
   ).pipe(C.withConflictError, C.withAlreadyExistsError) {}
 export class EntityTemporarilyUnmodifiableException
-  extends /*@__PURE__*/ S.TaggedErrorClass<EntityTemporarilyUnmodifiableException>()(
+  extends /*@__PURE__*/ S.TaggedError<EntityTemporarilyUnmodifiableException>()(
     "EntityTemporarilyUnmodifiableException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -346,7 +346,7 @@ export class EntityTemporarilyUnmodifiableException
     ),
   ).pipe(C.withConflictError, C.withRetryableError) {}
 export class FeatureDisabledException
-  extends /*@__PURE__*/ S.TaggedErrorClass<FeatureDisabledException>()(
+  extends /*@__PURE__*/ S.TaggedError<FeatureDisabledException>()(
     "FeatureDisabledException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -355,7 +355,7 @@ export class FeatureDisabledException
     ),
   ).pipe(C.withBadRequestError) {}
 export class FeatureEnabledException
-  extends /*@__PURE__*/ S.TaggedErrorClass<FeatureEnabledException>()(
+  extends /*@__PURE__*/ S.TaggedError<FeatureEnabledException>()(
     "FeatureEnabledException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -364,7 +364,7 @@ export class FeatureEnabledException
     ),
   ).pipe(C.withConflictError) {}
 export class InvalidAuthenticationCodeException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidAuthenticationCodeException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidAuthenticationCodeException>()(
     "InvalidAuthenticationCodeException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -376,7 +376,7 @@ export class InvalidAuthenticationCodeException
     ),
   ).pipe(C.withAuthError) {}
 export class InvalidCertificateException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidCertificateException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidCertificateException>()(
     "InvalidCertificateException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -385,11 +385,11 @@ export class InvalidCertificateException
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidInput
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidInput>()("InvalidInput", {
+  extends /*@__PURE__*/ S.TaggedError<InvalidInput>()("InvalidInput", {
     message: S.optional(S.String).pipe(T.ErrorMessage()),
   }) {}
 export class InvalidInputException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidInputException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidInputException>()(
     "InvalidInputException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -398,7 +398,7 @@ export class InvalidInputException
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidPublicKeyException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidPublicKeyException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidPublicKeyException>()(
     "InvalidPublicKeyException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -407,7 +407,7 @@ export class InvalidPublicKeyException
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidUserTypeException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidUserTypeException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidUserTypeException>()(
     "InvalidUserTypeException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -416,7 +416,7 @@ export class InvalidUserTypeException
     ),
   ).pipe(C.withBadRequestError) {}
 export class KeyPairMismatchException
-  extends /*@__PURE__*/ S.TaggedErrorClass<KeyPairMismatchException>()(
+  extends /*@__PURE__*/ S.TaggedError<KeyPairMismatchException>()(
     "KeyPairMismatchException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -425,7 +425,7 @@ export class KeyPairMismatchException
     ),
   ).pipe(C.withBadRequestError) {}
 export class LimitExceededException
-  extends /*@__PURE__*/ S.TaggedErrorClass<LimitExceededException>()(
+  extends /*@__PURE__*/ S.TaggedError<LimitExceededException>()(
     "LimitExceededException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -434,7 +434,7 @@ export class LimitExceededException
     ),
   ).pipe(C.withConflictError, C.withQuotaError) {}
 export class MalformedCertificateException
-  extends /*@__PURE__*/ S.TaggedErrorClass<MalformedCertificateException>()(
+  extends /*@__PURE__*/ S.TaggedError<MalformedCertificateException>()(
     "MalformedCertificateException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -443,7 +443,7 @@ export class MalformedCertificateException
     ),
   ).pipe(C.withBadRequestError) {}
 export class MalformedPolicyDocumentException
-  extends /*@__PURE__*/ S.TaggedErrorClass<MalformedPolicyDocumentException>()(
+  extends /*@__PURE__*/ S.TaggedError<MalformedPolicyDocumentException>()(
     "MalformedPolicyDocumentException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -455,7 +455,7 @@ export class MalformedPolicyDocumentException
     ),
   ).pipe(C.withBadRequestError) {}
 export class NoSuchEntityException
-  extends /*@__PURE__*/ S.TaggedErrorClass<NoSuchEntityException>()(
+  extends /*@__PURE__*/ S.TaggedError<NoSuchEntityException>()(
     "NoSuchEntityException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -464,7 +464,7 @@ export class NoSuchEntityException
     ),
   ).pipe(C.withBadRequestError, C.withNotFoundError) {}
 export class OpenIdIdpCommunicationErrorException
-  extends /*@__PURE__*/ S.TaggedErrorClass<OpenIdIdpCommunicationErrorException>()(
+  extends /*@__PURE__*/ S.TaggedError<OpenIdIdpCommunicationErrorException>()(
     "OpenIdIdpCommunicationErrorException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -476,19 +476,19 @@ export class OpenIdIdpCommunicationErrorException
     ),
   ).pipe(C.withBadRequestError) {}
 export class OrganizationNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<OrganizationNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<OrganizationNotFoundException>()(
     "OrganizationNotFoundException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class OrganizationNotInAllFeaturesModeException
-  extends /*@__PURE__*/ S.TaggedErrorClass<OrganizationNotInAllFeaturesModeException>()(
+  extends /*@__PURE__*/ S.TaggedError<OrganizationNotInAllFeaturesModeException>()(
     "OrganizationNotInAllFeaturesModeException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class PasswordPolicyViolationException
-  extends /*@__PURE__*/ S.TaggedErrorClass<PasswordPolicyViolationException>()(
+  extends /*@__PURE__*/ S.TaggedError<PasswordPolicyViolationException>()(
     "PasswordPolicyViolationException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -500,7 +500,7 @@ export class PasswordPolicyViolationException
     ),
   ).pipe(C.withBadRequestError) {}
 export class PolicyEvaluationException
-  extends /*@__PURE__*/ S.TaggedErrorClass<PolicyEvaluationException>()(
+  extends /*@__PURE__*/ S.TaggedError<PolicyEvaluationException>()(
     "PolicyEvaluationException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -509,7 +509,7 @@ export class PolicyEvaluationException
     ),
   ).pipe(C.withServerError) {}
 export class PolicyNotAttachableException
-  extends /*@__PURE__*/ S.TaggedErrorClass<PolicyNotAttachableException>()(
+  extends /*@__PURE__*/ S.TaggedError<PolicyNotAttachableException>()(
     "PolicyNotAttachableException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -518,7 +518,7 @@ export class PolicyNotAttachableException
     ),
   ).pipe(C.withBadRequestError) {}
 export class ReportGenerationLimitExceededException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ReportGenerationLimitExceededException>()(
+  extends /*@__PURE__*/ S.TaggedError<ReportGenerationLimitExceededException>()(
     "ReportGenerationLimitExceededException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -530,18 +530,18 @@ export class ReportGenerationLimitExceededException
     ),
   ).pipe(C.withConflictError) {}
 export class RequestLimitExceeded
-  extends /*@__PURE__*/ S.TaggedErrorClass<RequestLimitExceeded>()(
+  extends /*@__PURE__*/ S.TaggedError<RequestLimitExceeded>()(
     "RequestLimitExceeded",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withThrottlingError, C.withRetryableError) {}
 export class ServiceAccessNotEnabledException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ServiceAccessNotEnabledException>()(
+  extends /*@__PURE__*/ S.TaggedError<ServiceAccessNotEnabledException>()(
     "ServiceAccessNotEnabledException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ServiceFailureException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ServiceFailureException>()(
+  extends /*@__PURE__*/ S.TaggedError<ServiceFailureException>()(
     "ServiceFailureException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -550,7 +550,7 @@ export class ServiceFailureException
     ),
   ).pipe(C.withServerError, C.withRetryableError) {}
 export class ServiceNotSupportedException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ServiceNotSupportedException>()(
+  extends /*@__PURE__*/ S.TaggedError<ServiceNotSupportedException>()(
     "ServiceNotSupportedException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -559,7 +559,7 @@ export class ServiceNotSupportedException
     ),
   ).pipe(C.withBadRequestError) {}
 export class UnmodifiableEntityException
-  extends /*@__PURE__*/ S.TaggedErrorClass<UnmodifiableEntityException>()(
+  extends /*@__PURE__*/ S.TaggedError<UnmodifiableEntityException>()(
     "UnmodifiableEntityException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -568,7 +568,7 @@ export class UnmodifiableEntityException
     ),
   ).pipe(C.withBadRequestError) {}
 export class UnrecognizedPublicKeyEncodingException
-  extends /*@__PURE__*/ S.TaggedErrorClass<UnrecognizedPublicKeyEncodingException>()(
+  extends /*@__PURE__*/ S.TaggedError<UnrecognizedPublicKeyEncodingException>()(
     "UnrecognizedPublicKeyEncodingException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(

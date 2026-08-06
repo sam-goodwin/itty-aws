@@ -13,7 +13,7 @@ export type { PosthogOpError, PosthogOpContext };
 
 export class BadRequest
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<BadRequest>()("BadRequest", {
+    /*@__PURE__*/ S.TaggedError<BadRequest>()("BadRequest", {
       code: S.Number,
       message: S.String,
     }),
@@ -22,7 +22,7 @@ export class BadRequest
 
 export class NotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<NotFound>()("NotFound", {
+    /*@__PURE__*/ S.TaggedError<NotFound>()("NotFound", {
       code: S.Number,
       message: S.String,
     }),

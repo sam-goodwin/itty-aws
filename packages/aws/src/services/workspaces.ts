@@ -85,62 +85,62 @@ const rules = T.EndpointResolver((p, _) => {
 });
 
 export class AccessDeniedException
-  extends /*@__PURE__*/ S.TaggedErrorClass<AccessDeniedException>()(
+  extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()(
     "AccessDeniedException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withAuthError) {}
 export class ApplicationNotSupportedException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ApplicationNotSupportedException>()(
+  extends /*@__PURE__*/ S.TaggedError<ApplicationNotSupportedException>()(
     "ApplicationNotSupportedException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class ComputeNotCompatibleException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ComputeNotCompatibleException>()(
+  extends /*@__PURE__*/ S.TaggedError<ComputeNotCompatibleException>()(
     "ComputeNotCompatibleException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class ConflictException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ConflictException>()(
+  extends /*@__PURE__*/ S.TaggedError<ConflictException>()(
     "ConflictException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class IncompatibleApplicationsException
-  extends /*@__PURE__*/ S.TaggedErrorClass<IncompatibleApplicationsException>()(
+  extends /*@__PURE__*/ S.TaggedError<IncompatibleApplicationsException>()(
     "IncompatibleApplicationsException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InternalServerException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InternalServerException>()(
+  extends /*@__PURE__*/ S.TaggedError<InternalServerException>()(
     "InternalServerException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidParameterCombinationException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidParameterCombinationException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidParameterCombinationException>()(
     "InvalidParameterCombinationException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidParameterValuesException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidParameterValuesException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidParameterValuesException>()(
     "InvalidParameterValuesException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidResourceStateException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidResourceStateException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidResourceStateException>()(
     "InvalidResourceStateException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class OperatingSystemNotCompatibleException
-  extends /*@__PURE__*/ S.TaggedErrorClass<OperatingSystemNotCompatibleException>()(
+  extends /*@__PURE__*/ S.TaggedError<OperatingSystemNotCompatibleException>()(
     "OperatingSystemNotCompatibleException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class OperationInProgressException
-  extends /*@__PURE__*/ S.TaggedErrorClass<OperationInProgressException>()(
+  extends /*@__PURE__*/ S.TaggedError<OperationInProgressException>()(
     "OperationInProgressException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class OperationNotSupportedException
-  extends /*@__PURE__*/ S.TaggedErrorClass<OperationNotSupportedException>()(
+  extends /*@__PURE__*/ S.TaggedError<OperationNotSupportedException>()(
     "OperationNotSupportedException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -148,22 +148,22 @@ export class OperationNotSupportedException
     },
   ) {}
 export class ResourceAlreadyExistsException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceAlreadyExistsException>()(
+  extends /*@__PURE__*/ S.TaggedError<ResourceAlreadyExistsException>()(
     "ResourceAlreadyExistsException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withAlreadyExistsError) {}
 export class ResourceAssociatedException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceAssociatedException>()(
+  extends /*@__PURE__*/ S.TaggedError<ResourceAssociatedException>()(
     "ResourceAssociatedException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class ResourceCreationFailedException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceCreationFailedException>()(
+  extends /*@__PURE__*/ S.TaggedError<ResourceCreationFailedException>()(
     "ResourceCreationFailedException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class ResourceInUseException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceInUseException>()(
+  extends /*@__PURE__*/ S.TaggedError<ResourceInUseException>()(
     "ResourceInUseException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -171,12 +171,12 @@ export class ResourceInUseException
     },
   ) {}
 export class ResourceLimitExceededException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceLimitExceededException>()(
+  extends /*@__PURE__*/ S.TaggedError<ResourceLimitExceededException>()(
     "ResourceLimitExceededException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class ResourceNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -184,7 +184,7 @@ export class ResourceNotFoundException
     },
   ) {}
 export class ResourceUnavailableException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceUnavailableException>()(
+  extends /*@__PURE__*/ S.TaggedError<ResourceUnavailableException>()(
     "ResourceUnavailableException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -192,22 +192,22 @@ export class ResourceUnavailableException
     },
   ) {}
 export class UnsupportedNetworkConfigurationException
-  extends /*@__PURE__*/ S.TaggedErrorClass<UnsupportedNetworkConfigurationException>()(
+  extends /*@__PURE__*/ S.TaggedError<UnsupportedNetworkConfigurationException>()(
     "UnsupportedNetworkConfigurationException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class UnsupportedWorkspaceConfigurationException
-  extends /*@__PURE__*/ S.TaggedErrorClass<UnsupportedWorkspaceConfigurationException>()(
+  extends /*@__PURE__*/ S.TaggedError<UnsupportedWorkspaceConfigurationException>()(
     "UnsupportedWorkspaceConfigurationException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class ValidationException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ValidationException>()(
+  extends /*@__PURE__*/ S.TaggedError<ValidationException>()(
     "ValidationException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class WorkspacesDefaultRoleNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<WorkspacesDefaultRoleNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<WorkspacesDefaultRoleNotFoundException>()(
     "WorkspacesDefaultRoleNotFoundException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}

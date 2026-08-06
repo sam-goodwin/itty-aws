@@ -125,7 +125,7 @@ const rules = T.EndpointResolver((p, _) => {
 });
 
 export class InternalServerException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InternalServerException>()(
+  extends /*@__PURE__*/ S.TaggedError<InternalServerException>()(
     "InternalServerException",
     { message: S.String.pipe(T.ErrorMessage()) },
     T.all(
@@ -137,7 +137,7 @@ export class InternalServerException
     ),
   ).pipe(C.withServerError) {}
 export class ResourceNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
     { message: S.String.pipe(T.ErrorMessage()) },
     T.all(
@@ -149,7 +149,7 @@ export class ResourceNotFoundException
     ),
   ).pipe(C.withBadRequestError) {}
 export class ServiceQuotaExceededException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ServiceQuotaExceededException>()(
+  extends /*@__PURE__*/ S.TaggedError<ServiceQuotaExceededException>()(
     "ServiceQuotaExceededException",
     { message: S.String.pipe(T.ErrorMessage()) },
     T.all(
@@ -161,7 +161,7 @@ export class ServiceQuotaExceededException
     ),
   ).pipe(C.withQuotaError) {}
 export class ValidationException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ValidationException>()(
+  extends /*@__PURE__*/ S.TaggedError<ValidationException>()(
     "ValidationException",
     { message: S.String.pipe(T.ErrorMessage()) },
     T.all(

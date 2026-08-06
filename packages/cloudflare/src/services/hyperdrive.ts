@@ -30,7 +30,7 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
 
 export class HyperdriveConfigNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<HyperdriveConfigNotFound>()(
+    /*@__PURE__*/ S.TaggedError<HyperdriveConfigNotFound>()(
       "HyperdriveConfigNotFound",
       {
         code: S.Number,
@@ -42,7 +42,7 @@ export class HyperdriveConfigNotFound
 
 export class InvalidHyperdriveConfig
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<InvalidHyperdriveConfig>()(
+    /*@__PURE__*/ S.TaggedError<InvalidHyperdriveConfig>()(
       "InvalidHyperdriveConfig",
       {
         code: S.Number,
@@ -54,7 +54,7 @@ export class InvalidHyperdriveConfig
 
 export class InvalidObjectIdentifier
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<InvalidObjectIdentifier>()(
+    /*@__PURE__*/ S.TaggedError<InvalidObjectIdentifier>()(
       "InvalidObjectIdentifier",
       {
         code: S.Number,
@@ -66,7 +66,7 @@ export class InvalidObjectIdentifier
 
 export class MethodNotAllowed
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<MethodNotAllowed>()("MethodNotAllowed", {
+    /*@__PURE__*/ S.TaggedError<MethodNotAllowed>()("MethodNotAllowed", {
       code: S.Number,
       message: S.String,
     }),
@@ -78,7 +78,7 @@ export class MethodNotAllowed
 
 export class PrivateHostNotAllowed
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<PrivateHostNotAllowed>()(
+    /*@__PURE__*/ S.TaggedError<PrivateHostNotAllowed>()(
       "PrivateHostNotAllowed",
       {
         code: S.Number,

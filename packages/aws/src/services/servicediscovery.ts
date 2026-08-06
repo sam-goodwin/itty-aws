@@ -93,13 +93,13 @@ const rules = T.EndpointResolver((p, _) => {
 });
 
 export class CustomHealthNotFound
-  extends /*@__PURE__*/ S.TaggedErrorClass<CustomHealthNotFound>()(
+  extends /*@__PURE__*/ S.TaggedError<CustomHealthNotFound>()(
     "CustomHealthNotFound",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class DuplicateRequest
-  extends /*@__PURE__*/ S.TaggedErrorClass<DuplicateRequest>()(
+  extends /*@__PURE__*/ S.TaggedError<DuplicateRequest>()(
     "DuplicateRequest",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -108,19 +108,19 @@ export class DuplicateRequest
     T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class InstanceNotFound
-  extends /*@__PURE__*/ S.TaggedErrorClass<InstanceNotFound>()(
+  extends /*@__PURE__*/ S.TaggedError<InstanceNotFound>()(
     "InstanceNotFound",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class InvalidInput
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidInput>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidInput>()(
     "InvalidInput",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class NamespaceAlreadyExists
-  extends /*@__PURE__*/ S.TaggedErrorClass<NamespaceAlreadyExists>()(
+  extends /*@__PURE__*/ S.TaggedError<NamespaceAlreadyExists>()(
     "NamespaceAlreadyExists",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -130,43 +130,43 @@ export class NamespaceAlreadyExists
     T.HttpError(400),
   ).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
 export class NamespaceNotFound
-  extends /*@__PURE__*/ S.TaggedErrorClass<NamespaceNotFound>()(
+  extends /*@__PURE__*/ S.TaggedError<NamespaceNotFound>()(
     "NamespaceNotFound",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class OperationNotFound
-  extends /*@__PURE__*/ S.TaggedErrorClass<OperationNotFound>()(
+  extends /*@__PURE__*/ S.TaggedError<OperationNotFound>()(
     "OperationNotFound",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class RequestLimitExceeded
-  extends /*@__PURE__*/ S.TaggedErrorClass<RequestLimitExceeded>()(
+  extends /*@__PURE__*/ S.TaggedError<RequestLimitExceeded>()(
     "RequestLimitExceeded",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export class ResourceInUse
-  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceInUse>()(
+  extends /*@__PURE__*/ S.TaggedError<ResourceInUse>()(
     "ResourceInUse",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(409),
   ).pipe(C.withConflictError, C.withDependencyViolationError) {}
 export class ResourceLimitExceeded
-  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceLimitExceeded>()(
+  extends /*@__PURE__*/ S.TaggedError<ResourceLimitExceeded>()(
     "ResourceLimitExceeded",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError, C.withThrottlingError) {}
 export class ResourceNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ServiceAlreadyExists
-  extends /*@__PURE__*/ S.TaggedErrorClass<ServiceAlreadyExists>()(
+  extends /*@__PURE__*/ S.TaggedError<ServiceAlreadyExists>()(
     "ServiceAlreadyExists",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -177,19 +177,19 @@ export class ServiceAlreadyExists
     T.HttpError(400),
   ).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
 export class ServiceAttributesLimitExceededException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ServiceAttributesLimitExceededException>()(
+  extends /*@__PURE__*/ S.TaggedError<ServiceAttributesLimitExceededException>()(
     "ServiceAttributesLimitExceededException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ServiceNotFound
-  extends /*@__PURE__*/ S.TaggedErrorClass<ServiceNotFound>()(
+  extends /*@__PURE__*/ S.TaggedError<ServiceNotFound>()(
     "ServiceNotFound",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class TooManyTagsException
-  extends /*@__PURE__*/ S.TaggedErrorClass<TooManyTagsException>()(
+  extends /*@__PURE__*/ S.TaggedError<TooManyTagsException>()(
     "TooManyTagsException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),

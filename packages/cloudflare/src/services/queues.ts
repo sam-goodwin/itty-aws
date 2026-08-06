@@ -58,7 +58,7 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
 
 export class ConsumerAlreadyExists
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<ConsumerAlreadyExists>()(
+    /*@__PURE__*/ S.TaggedError<ConsumerAlreadyExists>()(
       "ConsumerAlreadyExists",
       {
         code: S.Number,
@@ -70,7 +70,7 @@ export class ConsumerAlreadyExists
 
 export class ConsumerNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<ConsumerNotFound>()("ConsumerNotFound", {
+    /*@__PURE__*/ S.TaggedError<ConsumerNotFound>()("ConsumerNotFound", {
       code: S.Number,
       message: S.String,
     }),
@@ -79,7 +79,7 @@ export class ConsumerNotFound
 
 export class Forbidden
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    /*@__PURE__*/ S.TaggedError<Forbidden>()("Forbidden", {
       code: S.Number,
       message: S.String,
     }),
@@ -88,19 +88,16 @@ export class Forbidden
 
 export class InvalidMessageBody
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<InvalidMessageBody>()(
-      "InvalidMessageBody",
-      {
-        code: S.Number,
-        message: S.String,
-      },
-    ),
+    /*@__PURE__*/ S.TaggedError<InvalidMessageBody>()("InvalidMessageBody", {
+      code: S.Number,
+      message: S.String,
+    }),
     [{ code: 10207 }, { code: 10013 }],
   ) {}
 
 export class InvalidQueueId
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<InvalidQueueId>()("InvalidQueueId", {
+    /*@__PURE__*/ S.TaggedError<InvalidQueueId>()("InvalidQueueId", {
       code: S.Number,
       message: S.String,
     }),
@@ -109,7 +106,7 @@ export class InvalidQueueId
 
 export class InvalidQueueName
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<InvalidQueueName>()("InvalidQueueName", {
+    /*@__PURE__*/ S.TaggedError<InvalidQueueName>()("InvalidQueueName", {
       code: S.Number,
       message: S.String,
     }),
@@ -118,19 +115,16 @@ export class InvalidQueueName
 
 export class InvalidRequestBody
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<InvalidRequestBody>()(
-      "InvalidRequestBody",
-      {
-        code: S.Number,
-        message: S.String,
-      },
-    ),
+    /*@__PURE__*/ S.TaggedError<InvalidRequestBody>()("InvalidRequestBody", {
+      code: S.Number,
+      message: S.String,
+    }),
     [{ code: 10026 }],
   ) {}
 
 export class InvalidRoute
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<InvalidRoute>()("InvalidRoute", {
+    /*@__PURE__*/ S.TaggedError<InvalidRoute>()("InvalidRoute", {
       code: S.Number,
       message: S.String,
     }),
@@ -139,25 +133,19 @@ export class InvalidRoute
 
 export class QueueAlreadyExists
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<QueueAlreadyExists>()(
-      "QueueAlreadyExists",
-      {
-        code: S.Number,
-        message: S.String,
-      },
-    ),
+    /*@__PURE__*/ S.TaggedError<QueueAlreadyExists>()("QueueAlreadyExists", {
+      code: S.Number,
+      message: S.String,
+    }),
     [{ code: 11009 }],
   ) {}
 
 export class QueueHandlerMissing
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<QueueHandlerMissing>()(
-      "QueueHandlerMissing",
-      {
-        code: S.Number,
-        message: S.String,
-      },
-    ),
+    /*@__PURE__*/ S.TaggedError<QueueHandlerMissing>()("QueueHandlerMissing", {
+      code: S.Number,
+      message: S.String,
+    }),
     [
       { code: 11001 },
       { status: 400, message: { includes: "queue handler is missing" } },
@@ -166,7 +154,7 @@ export class QueueHandlerMissing
 
 export class QueueInUseByEventNotification
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<QueueInUseByEventNotification>()(
+    /*@__PURE__*/ S.TaggedError<QueueInUseByEventNotification>()(
       "QueueInUseByEventNotification",
       {
         code: S.Number,
@@ -178,7 +166,7 @@ export class QueueInUseByEventNotification
 
 export class QueueNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<QueueNotFound>()("QueueNotFound", {
+    /*@__PURE__*/ S.TaggedError<QueueNotFound>()("QueueNotFound", {
       code: S.Number,
       message: S.String,
     }),
@@ -191,7 +179,7 @@ export class QueueNotFound
 
 export class SubscriptionAlreadyExists
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<SubscriptionAlreadyExists>()(
+    /*@__PURE__*/ S.TaggedError<SubscriptionAlreadyExists>()(
       "SubscriptionAlreadyExists",
       {
         code: S.Number,
@@ -208,7 +196,7 @@ export class SubscriptionAlreadyExists
 
 export class SubscriptionNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<SubscriptionNotFound>()(
+    /*@__PURE__*/ S.TaggedError<SubscriptionNotFound>()(
       "SubscriptionNotFound",
       {
         code: S.Number,
@@ -220,7 +208,7 @@ export class SubscriptionNotFound
 
 export class UnrecognizedEventType
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<UnrecognizedEventType>()(
+    /*@__PURE__*/ S.TaggedError<UnrecognizedEventType>()(
       "UnrecognizedEventType",
       {
         code: S.Number,
@@ -232,7 +220,7 @@ export class UnrecognizedEventType
 
 export class WorkerNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<WorkerNotFound>()("WorkerNotFound", {
+    /*@__PURE__*/ S.TaggedError<WorkerNotFound>()("WorkerNotFound", {
       code: S.Number,
       message: S.String,
     }),

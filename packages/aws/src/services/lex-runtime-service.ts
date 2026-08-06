@@ -98,37 +98,37 @@ const rules = T.EndpointResolver((p, _) => {
 });
 
 export class BadGatewayException
-  extends /*@__PURE__*/ S.TaggedErrorClass<BadGatewayException>()(
+  extends /*@__PURE__*/ S.TaggedError<BadGatewayException>()(
     "BadGatewayException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(502),
   ).pipe(C.withServerError) {}
 export class BadRequestException
-  extends /*@__PURE__*/ S.TaggedErrorClass<BadRequestException>()(
+  extends /*@__PURE__*/ S.TaggedError<BadRequestException>()(
     "BadRequestException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ConflictException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ConflictException>()(
+  extends /*@__PURE__*/ S.TaggedError<ConflictException>()(
     "ConflictException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class DependencyFailedException
-  extends /*@__PURE__*/ S.TaggedErrorClass<DependencyFailedException>()(
+  extends /*@__PURE__*/ S.TaggedError<DependencyFailedException>()(
     "DependencyFailedException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(424),
   ) {}
 export class InternalFailureException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InternalFailureException>()(
+  extends /*@__PURE__*/ S.TaggedError<InternalFailureException>()(
     "InternalFailureException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class LimitExceededException
-  extends /*@__PURE__*/ S.TaggedErrorClass<LimitExceededException>()(
+  extends /*@__PURE__*/ S.TaggedError<LimitExceededException>()(
     "LimitExceededException",
     {
       retryAfterSeconds: S.optional(S.String).pipe(T.HttpHeader("Retry-After")),
@@ -137,31 +137,31 @@ export class LimitExceededException
     T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export class LoopDetectedException
-  extends /*@__PURE__*/ S.TaggedErrorClass<LoopDetectedException>()(
+  extends /*@__PURE__*/ S.TaggedError<LoopDetectedException>()(
     "LoopDetectedException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(508),
   ).pipe(C.withServerError) {}
 export class NotAcceptableException
-  extends /*@__PURE__*/ S.TaggedErrorClass<NotAcceptableException>()(
+  extends /*@__PURE__*/ S.TaggedError<NotAcceptableException>()(
     "NotAcceptableException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(406),
   ).pipe(C.withBadRequestError) {}
 export class NotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<NotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<NotFoundException>()(
     "NotFoundException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class RequestTimeoutException
-  extends /*@__PURE__*/ S.TaggedErrorClass<RequestTimeoutException>()(
+  extends /*@__PURE__*/ S.TaggedError<RequestTimeoutException>()(
     "RequestTimeoutException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(408),
   ).pipe(C.withTimeoutError) {}
 export class UnsupportedMediaTypeException
-  extends /*@__PURE__*/ S.TaggedErrorClass<UnsupportedMediaTypeException>()(
+  extends /*@__PURE__*/ S.TaggedError<UnsupportedMediaTypeException>()(
     "UnsupportedMediaTypeException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(415),

@@ -35,7 +35,7 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
 
 export class Forbidden
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    /*@__PURE__*/ S.TaggedError<Forbidden>()("Forbidden", {
       code: S.Number,
       message: S.String,
     }),
@@ -44,7 +44,7 @@ export class Forbidden
 
 export class HealthcheckAlreadyExists
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<HealthcheckAlreadyExists>()(
+    /*@__PURE__*/ S.TaggedError<HealthcheckAlreadyExists>()(
       "HealthcheckAlreadyExists",
       {
         code: S.Number,
@@ -56,13 +56,10 @@ export class HealthcheckAlreadyExists
 
 export class HealthcheckNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<HealthcheckNotFound>()(
-      "HealthcheckNotFound",
-      {
-        code: S.Number,
-        message: S.String,
-      },
-    ),
+    /*@__PURE__*/ S.TaggedError<HealthcheckNotFound>()("HealthcheckNotFound", {
+      code: S.Number,
+      message: S.String,
+    }),
     [{ status: 404 }],
   ) {}
 

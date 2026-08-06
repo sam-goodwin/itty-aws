@@ -24,7 +24,7 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
 
 export class Forbidden
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    /*@__PURE__*/ S.TaggedError<Forbidden>()("Forbidden", {
       code: S.Number,
       message: S.String,
     }),
@@ -33,7 +33,7 @@ export class Forbidden
 
 export class InvalidZoneIdentifier
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<InvalidZoneIdentifier>()(
+    /*@__PURE__*/ S.TaggedError<InvalidZoneIdentifier>()(
       "InvalidZoneIdentifier",
       {
         code: S.Number,
@@ -45,7 +45,7 @@ export class InvalidZoneIdentifier
 
 export class PageRuleNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<PageRuleNotFound>()("PageRuleNotFound", {
+    /*@__PURE__*/ S.TaggedError<PageRuleNotFound>()("PageRuleNotFound", {
       code: S.Number,
       message: S.String,
     }),

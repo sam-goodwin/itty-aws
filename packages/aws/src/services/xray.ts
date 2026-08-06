@@ -81,7 +81,7 @@ const rules = T.EndpointResolver((p, _) => {
 });
 
 export class GroupAlreadyExists
-  extends /*@__PURE__*/ S.TaggedErrorClass<GroupAlreadyExists>()(
+  extends /*@__PURE__*/ S.TaggedError<GroupAlreadyExists>()(
     "GroupAlreadyExists",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.SyntheticError({
@@ -90,7 +90,7 @@ export class GroupAlreadyExists
     }),
   ).pipe(C.withAlreadyExistsError, C.withConflictError) {}
 export class GroupNotFound
-  extends /*@__PURE__*/ S.TaggedErrorClass<GroupNotFound>()(
+  extends /*@__PURE__*/ S.TaggedError<GroupNotFound>()(
     "GroupNotFound",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.SyntheticError({
@@ -99,42 +99,42 @@ export class GroupNotFound
     }),
   ).pipe(C.withNotFoundError) {}
 export class InvalidPolicyRevisionIdException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidPolicyRevisionIdException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidPolicyRevisionIdException>()(
     "InvalidPolicyRevisionIdException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidRequestException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidRequestException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidRequestException>()(
     "InvalidRequestException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class LockoutPreventionException
-  extends /*@__PURE__*/ S.TaggedErrorClass<LockoutPreventionException>()(
+  extends /*@__PURE__*/ S.TaggedError<LockoutPreventionException>()(
     "LockoutPreventionException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class MalformedPolicyDocumentException
-  extends /*@__PURE__*/ S.TaggedErrorClass<MalformedPolicyDocumentException>()(
+  extends /*@__PURE__*/ S.TaggedError<MalformedPolicyDocumentException>()(
     "MalformedPolicyDocumentException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class PolicyCountLimitExceededException
-  extends /*@__PURE__*/ S.TaggedErrorClass<PolicyCountLimitExceededException>()(
+  extends /*@__PURE__*/ S.TaggedError<PolicyCountLimitExceededException>()(
     "PolicyCountLimitExceededException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class PolicySizeLimitExceededException
-  extends /*@__PURE__*/ S.TaggedErrorClass<PolicySizeLimitExceededException>()(
+  extends /*@__PURE__*/ S.TaggedError<PolicySizeLimitExceededException>()(
     "PolicySizeLimitExceededException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ResourceNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -143,12 +143,12 @@ export class ResourceNotFoundException
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class RuleLimitExceededException
-  extends /*@__PURE__*/ S.TaggedErrorClass<RuleLimitExceededException>()(
+  extends /*@__PURE__*/ S.TaggedError<RuleLimitExceededException>()(
     "RuleLimitExceededException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class SamplingRuleAlreadyExists
-  extends /*@__PURE__*/ S.TaggedErrorClass<SamplingRuleAlreadyExists>()(
+  extends /*@__PURE__*/ S.TaggedError<SamplingRuleAlreadyExists>()(
     "SamplingRuleAlreadyExists",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.SyntheticError({
@@ -157,7 +157,7 @@ export class SamplingRuleAlreadyExists
     }),
   ).pipe(C.withAlreadyExistsError, C.withConflictError) {}
 export class SamplingRuleNotFound
-  extends /*@__PURE__*/ S.TaggedErrorClass<SamplingRuleNotFound>()(
+  extends /*@__PURE__*/ S.TaggedError<SamplingRuleNotFound>()(
     "SamplingRuleNotFound",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.SyntheticError({
@@ -166,13 +166,13 @@ export class SamplingRuleNotFound
     }),
   ).pipe(C.withNotFoundError) {}
 export class ThrottledException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ThrottledException>()(
+  extends /*@__PURE__*/ S.TaggedError<ThrottledException>()(
     "ThrottledException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export class TooManyTagsException
-  extends /*@__PURE__*/ S.TaggedErrorClass<TooManyTagsException>()(
+  extends /*@__PURE__*/ S.TaggedError<TooManyTagsException>()(
     "TooManyTagsException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),

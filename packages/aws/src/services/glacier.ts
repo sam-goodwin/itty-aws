@@ -85,7 +85,7 @@ const rules = T.EndpointResolver((p, _) => {
 });
 
 export class InsufficientCapacityException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InsufficientCapacityException>()(
+  extends /*@__PURE__*/ S.TaggedError<InsufficientCapacityException>()(
     "InsufficientCapacityException",
     {
       type: S.optional(S.String),
@@ -95,7 +95,7 @@ export class InsufficientCapacityException
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidParameterValueException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidParameterValueException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidParameterValueException>()(
     "InvalidParameterValueException",
     {
       type: S.optional(S.String),
@@ -105,7 +105,7 @@ export class InvalidParameterValueException
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class LimitExceededException
-  extends /*@__PURE__*/ S.TaggedErrorClass<LimitExceededException>()(
+  extends /*@__PURE__*/ S.TaggedError<LimitExceededException>()(
     "LimitExceededException",
     {
       type: S.optional(S.String),
@@ -115,7 +115,7 @@ export class LimitExceededException
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class MissingParameterValueException
-  extends /*@__PURE__*/ S.TaggedErrorClass<MissingParameterValueException>()(
+  extends /*@__PURE__*/ S.TaggedError<MissingParameterValueException>()(
     "MissingParameterValueException",
     {
       type: S.optional(S.String),
@@ -125,7 +125,7 @@ export class MissingParameterValueException
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class NoLongerSupportedException
-  extends /*@__PURE__*/ S.TaggedErrorClass<NoLongerSupportedException>()(
+  extends /*@__PURE__*/ S.TaggedError<NoLongerSupportedException>()(
     "NoLongerSupportedException",
     {
       type: S.optional(S.String),
@@ -135,7 +135,7 @@ export class NoLongerSupportedException
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class PolicyEnforcedException
-  extends /*@__PURE__*/ S.TaggedErrorClass<PolicyEnforcedException>()(
+  extends /*@__PURE__*/ S.TaggedError<PolicyEnforcedException>()(
     "PolicyEnforcedException",
     {
       type: S.optional(S.String),
@@ -145,7 +145,7 @@ export class PolicyEnforcedException
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class RequestTimeoutException
-  extends /*@__PURE__*/ S.TaggedErrorClass<RequestTimeoutException>()(
+  extends /*@__PURE__*/ S.TaggedError<RequestTimeoutException>()(
     "RequestTimeoutException",
     {
       type: S.optional(S.String),
@@ -155,7 +155,7 @@ export class RequestTimeoutException
     T.HttpError(408),
   ).pipe(C.withTimeoutError) {}
 export class ResourceNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
     {
       type: S.optional(S.String),
@@ -165,7 +165,7 @@ export class ResourceNotFoundException
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ServiceUnavailableException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ServiceUnavailableException>()(
+  extends /*@__PURE__*/ S.TaggedError<ServiceUnavailableException>()(
     "ServiceUnavailableException",
     {
       type: S.optional(S.String),

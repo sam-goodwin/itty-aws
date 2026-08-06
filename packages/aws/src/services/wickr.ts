@@ -86,43 +86,43 @@ const rules = T.EndpointResolver((p, _) => {
 });
 
 export class BadRequestError
-  extends /*@__PURE__*/ S.TaggedErrorClass<BadRequestError>()(
+  extends /*@__PURE__*/ S.TaggedError<BadRequestError>()(
     "BadRequestError",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ForbiddenError
-  extends /*@__PURE__*/ S.TaggedErrorClass<ForbiddenError>()(
+  extends /*@__PURE__*/ S.TaggedError<ForbiddenError>()(
     "ForbiddenError",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class InternalServerError
-  extends /*@__PURE__*/ S.TaggedErrorClass<InternalServerError>()(
+  extends /*@__PURE__*/ S.TaggedError<InternalServerError>()(
     "InternalServerError",
     { message: S.String.pipe(T.ErrorMessage()) },
     T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class RateLimitError
-  extends /*@__PURE__*/ S.TaggedErrorClass<RateLimitError>()(
+  extends /*@__PURE__*/ S.TaggedError<RateLimitError>()(
     "RateLimitError",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export class ResourceNotFoundError
-  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundError>()(
+  extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundError>()(
     "ResourceNotFoundError",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class UnauthorizedError
-  extends /*@__PURE__*/ S.TaggedErrorClass<UnauthorizedError>()(
+  extends /*@__PURE__*/ S.TaggedError<UnauthorizedError>()(
     "UnauthorizedError",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(401),
   ).pipe(C.withAuthError) {}
 export class ValidationError
-  extends /*@__PURE__*/ S.TaggedErrorClass<ValidationError>()(
+  extends /*@__PURE__*/ S.TaggedError<ValidationError>()(
     "ValidationError",
     {
       reasons: S.optional(

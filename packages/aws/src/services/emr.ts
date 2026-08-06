@@ -92,7 +92,7 @@ const rules = T.EndpointResolver((p, _) => {
 });
 
 export class ClusterNotFound
-  extends /*@__PURE__*/ S.TaggedErrorClass<ClusterNotFound>()(
+  extends /*@__PURE__*/ S.TaggedError<ClusterNotFound>()(
     "ClusterNotFound",
     {
       ErrorCode: S.optional(S.String),
@@ -104,7 +104,7 @@ export class ClusterNotFound
     }),
   ).pipe(C.withNotFoundError) {}
 export class InternalServerError
-  extends /*@__PURE__*/ S.TaggedErrorClass<InternalServerError>()(
+  extends /*@__PURE__*/ S.TaggedError<InternalServerError>()(
     "InternalServerError",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -113,12 +113,12 @@ export class InternalServerError
     ),
   ).pipe(C.withServerError) {}
 export class InternalServerException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InternalServerException>()(
+  extends /*@__PURE__*/ S.TaggedError<InternalServerException>()(
     "InternalServerException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidRequestException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidRequestException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidRequestException>()(
     "InvalidRequestException",
     {
       ErrorCode: S.optional(S.String),
@@ -126,7 +126,7 @@ export class InvalidRequestException
     },
   ) {}
 export class JobFlowNotFound
-  extends /*@__PURE__*/ S.TaggedErrorClass<JobFlowNotFound>()(
+  extends /*@__PURE__*/ S.TaggedError<JobFlowNotFound>()(
     "JobFlowNotFound",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.SyntheticError({
@@ -135,7 +135,7 @@ export class JobFlowNotFound
     }),
   ).pipe(C.withNotFoundError) {}
 export class SecurityConfigurationAlreadyExists
-  extends /*@__PURE__*/ S.TaggedErrorClass<SecurityConfigurationAlreadyExists>()(
+  extends /*@__PURE__*/ S.TaggedError<SecurityConfigurationAlreadyExists>()(
     "SecurityConfigurationAlreadyExists",
     {
       ErrorCode: S.optional(S.String),
@@ -149,7 +149,7 @@ export class SecurityConfigurationAlreadyExists
     }),
   ).pipe(C.withAlreadyExistsError, C.withConflictError) {}
 export class SecurityConfigurationNotFound
-  extends /*@__PURE__*/ S.TaggedErrorClass<SecurityConfigurationNotFound>()(
+  extends /*@__PURE__*/ S.TaggedError<SecurityConfigurationNotFound>()(
     "SecurityConfigurationNotFound",
     {
       ErrorCode: S.optional(S.String),
@@ -163,7 +163,7 @@ export class SecurityConfigurationNotFound
     }),
   ).pipe(C.withNotFoundError) {}
 export class StudioNotFound
-  extends /*@__PURE__*/ S.TaggedErrorClass<StudioNotFound>()(
+  extends /*@__PURE__*/ S.TaggedError<StudioNotFound>()(
     "StudioNotFound",
     {
       ErrorCode: S.optional(S.String),
@@ -175,7 +175,7 @@ export class StudioNotFound
     }),
   ).pipe(C.withNotFoundError) {}
 export class StudioServiceRoleMissingS3Access
-  extends /*@__PURE__*/ S.TaggedErrorClass<StudioServiceRoleMissingS3Access>()(
+  extends /*@__PURE__*/ S.TaggedError<StudioServiceRoleMissingS3Access>()(
     "StudioServiceRoleMissingS3Access",
     {
       ErrorCode: S.optional(S.String),
@@ -189,7 +189,7 @@ export class StudioServiceRoleMissingS3Access
     }),
   ).pipe(C.withRetryableError) {}
 export class StudioServiceRoleNotAssumable
-  extends /*@__PURE__*/ S.TaggedErrorClass<StudioServiceRoleNotAssumable>()(
+  extends /*@__PURE__*/ S.TaggedError<StudioServiceRoleNotAssumable>()(
     "StudioServiceRoleNotAssumable",
     {
       ErrorCode: S.optional(S.String),

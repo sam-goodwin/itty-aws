@@ -147,27 +147,27 @@ const rules = T.EndpointResolver((p, _) => {
 });
 
 export class ExpiredIteratorException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ExpiredIteratorException>()(
+  extends /*@__PURE__*/ S.TaggedError<ExpiredIteratorException>()(
     "ExpiredIteratorException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InternalServerError
-  extends /*@__PURE__*/ S.TaggedErrorClass<InternalServerError>()(
+  extends /*@__PURE__*/ S.TaggedError<InternalServerError>()(
     "InternalServerError",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class LimitExceededException
-  extends /*@__PURE__*/ S.TaggedErrorClass<LimitExceededException>()(
+  extends /*@__PURE__*/ S.TaggedError<LimitExceededException>()(
     "LimitExceededException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class ResourceNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class TrimmedDataAccessException
-  extends /*@__PURE__*/ S.TaggedErrorClass<TrimmedDataAccessException>()(
+  extends /*@__PURE__*/ S.TaggedError<TrimmedDataAccessException>()(
     "TrimmedDataAccessException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}

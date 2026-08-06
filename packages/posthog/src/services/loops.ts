@@ -12,7 +12,7 @@ import * as Retry from "../retry.ts";
 export type { PosthogOpError, PosthogOpContext };
 
 export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+  S.TaggedError<Forbidden>()("Forbidden", {
     code: S.Number,
     message: S.String,
   }),
@@ -20,7 +20,7 @@ export class Forbidden extends T.applyErrorMatchers(
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<NotFound>()("NotFound", {
+  S.TaggedError<NotFound>()("NotFound", {
     code: S.Number,
     message: S.String,
   }),

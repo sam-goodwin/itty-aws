@@ -22,7 +22,7 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
 
 export class Gone
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<Gone>()("Gone", {
+    /*@__PURE__*/ S.TaggedError<Gone>()("Gone", {
       code: S.Number,
       message: S.String,
     }),
@@ -31,31 +31,25 @@ export class Gone
 
 export class IndexAlreadyExists
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<IndexAlreadyExists>()(
-      "IndexAlreadyExists",
-      {
-        code: S.Number,
-        message: S.String,
-      },
-    ),
+    /*@__PURE__*/ S.TaggedError<IndexAlreadyExists>()("IndexAlreadyExists", {
+      code: S.Number,
+      message: S.String,
+    }),
     [{ code: 3002 }],
   ) {}
 
 export class IndexInvalidConfig
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<IndexInvalidConfig>()(
-      "IndexInvalidConfig",
-      {
-        code: S.Number,
-        message: S.String,
-      },
-    ),
+    /*@__PURE__*/ S.TaggedError<IndexInvalidConfig>()("IndexInvalidConfig", {
+      code: S.Number,
+      message: S.String,
+    }),
     [{ code: 3003 }],
   ) {}
 
 export class IndexInvalidName
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<IndexInvalidName>()("IndexInvalidName", {
+    /*@__PURE__*/ S.TaggedError<IndexInvalidName>()("IndexInvalidName", {
       code: S.Number,
       message: S.String,
     }),
@@ -64,7 +58,7 @@ export class IndexInvalidName
 
 export class MetadataIndexAlreadyExists
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<MetadataIndexAlreadyExists>()(
+    /*@__PURE__*/ S.TaggedError<MetadataIndexAlreadyExists>()(
       "MetadataIndexAlreadyExists",
       {
         code: S.Number,
@@ -76,7 +70,7 @@ export class MetadataIndexAlreadyExists
 
 export class MetadataIndexInvalidType
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<MetadataIndexInvalidType>()(
+    /*@__PURE__*/ S.TaggedError<MetadataIndexInvalidType>()(
       "MetadataIndexInvalidType",
       {
         code: S.Number,
@@ -88,7 +82,7 @@ export class MetadataIndexInvalidType
 
 export class MetadataIndexNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<MetadataIndexNotFound>()(
+    /*@__PURE__*/ S.TaggedError<MetadataIndexNotFound>()(
       "MetadataIndexNotFound",
       {
         code: S.Number,
@@ -100,7 +94,7 @@ export class MetadataIndexNotFound
 
 export class NotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<NotFound>()("NotFound", {
+    /*@__PURE__*/ S.TaggedError<NotFound>()("NotFound", {
       code: S.Number,
       message: S.String,
     }),

@@ -65,7 +65,7 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
 
 export class CustomNameserverSetNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<CustomNameserverSetNotFound>()(
+    /*@__PURE__*/ S.TaggedError<CustomNameserverSetNotFound>()(
       "CustomNameserverSetNotFound",
       {
         code: S.Number,
@@ -82,19 +82,16 @@ export class CustomNameserverSetNotFound
 
 export class DomainNotRegistered
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<DomainNotRegistered>()(
-      "DomainNotRegistered",
-      {
-        code: S.Number,
-        message: S.String,
-      },
-    ),
+    /*@__PURE__*/ S.TaggedError<DomainNotRegistered>()("DomainNotRegistered", {
+      code: S.Number,
+      message: S.String,
+    }),
     [{ code: 1099 }],
   ) {}
 
 export class Forbidden
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    /*@__PURE__*/ S.TaggedError<Forbidden>()("Forbidden", {
       code: S.Number,
       message: S.String,
     }),
@@ -103,7 +100,7 @@ export class Forbidden
 
 export class InvalidDomain
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<InvalidDomain>()("InvalidDomain", {
+    /*@__PURE__*/ S.TaggedError<InvalidDomain>()("InvalidDomain", {
       code: S.Number,
       message: S.String,
     }),
@@ -112,7 +109,7 @@ export class InvalidDomain
 
 export class InvalidZoneIdentifier
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<InvalidZoneIdentifier>()(
+    /*@__PURE__*/ S.TaggedError<InvalidZoneIdentifier>()(
       "InvalidZoneIdentifier",
       {
         code: S.Number,
@@ -124,19 +121,16 @@ export class InvalidZoneIdentifier
 
 export class SubdomainNotAllowed
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<SubdomainNotAllowed>()(
-      "SubdomainNotAllowed",
-      {
-        code: S.Number,
-        message: S.String,
-      },
-    ),
+    /*@__PURE__*/ S.TaggedError<SubdomainNotAllowed>()("SubdomainNotAllowed", {
+      code: S.Number,
+      message: S.String,
+    }),
     [{ code: 1116 }],
   ) {}
 
 export class ZoneAlreadyExists
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<ZoneAlreadyExists>()("ZoneAlreadyExists", {
+    /*@__PURE__*/ S.TaggedError<ZoneAlreadyExists>()("ZoneAlreadyExists", {
       code: S.Number,
       message: S.String,
     }),
@@ -145,19 +139,16 @@ export class ZoneAlreadyExists
 
 export class ZoneCreationBlocked
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<ZoneCreationBlocked>()(
-      "ZoneCreationBlocked",
-      {
-        code: S.Number,
-        message: S.String,
-      },
-    ),
+    /*@__PURE__*/ S.TaggedError<ZoneCreationBlocked>()("ZoneCreationBlocked", {
+      code: S.Number,
+      message: S.String,
+    }),
     [{ code: 1052 }],
   ) {}
 
 export class ZoneHoldNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<ZoneHoldNotFound>()("ZoneHoldNotFound", {
+    /*@__PURE__*/ S.TaggedError<ZoneHoldNotFound>()("ZoneHoldNotFound", {
       code: S.Number,
       message: S.String,
     }),
@@ -166,7 +157,7 @@ export class ZoneHoldNotFound
 
 export class ZoneHoldsRequireEnterprise
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<ZoneHoldsRequireEnterprise>()(
+    /*@__PURE__*/ S.TaggedError<ZoneHoldsRequireEnterprise>()(
       "ZoneHoldsRequireEnterprise",
       {
         code: S.Number,

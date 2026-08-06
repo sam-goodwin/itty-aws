@@ -84,91 +84,91 @@ const rules = T.EndpointResolver((p, _) => {
 });
 
 export class AddFlowOutputs420Exception
-  extends /*@__PURE__*/ S.TaggedErrorClass<AddFlowOutputs420Exception>()(
+  extends /*@__PURE__*/ S.TaggedError<AddFlowOutputs420Exception>()(
     "AddFlowOutputs420Exception",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(420),
   ) {}
 export class BadRequestException
-  extends /*@__PURE__*/ S.TaggedErrorClass<BadRequestException>()(
+  extends /*@__PURE__*/ S.TaggedError<BadRequestException>()(
     "BadRequestException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ConflictException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ConflictException>()(
+  extends /*@__PURE__*/ S.TaggedError<ConflictException>()(
     "ConflictException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(T.HttpError(409), T.Retryable()),
   ).pipe(C.withConflictError, C.withRetryableError) {}
 export class CreateBridge420Exception
-  extends /*@__PURE__*/ S.TaggedErrorClass<CreateBridge420Exception>()(
+  extends /*@__PURE__*/ S.TaggedError<CreateBridge420Exception>()(
     "CreateBridge420Exception",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(420),
   ) {}
 export class CreateFlow420Exception
-  extends /*@__PURE__*/ S.TaggedErrorClass<CreateFlow420Exception>()(
+  extends /*@__PURE__*/ S.TaggedError<CreateFlow420Exception>()(
     "CreateFlow420Exception",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(420),
   ) {}
 export class CreateGateway420Exception
-  extends /*@__PURE__*/ S.TaggedErrorClass<CreateGateway420Exception>()(
+  extends /*@__PURE__*/ S.TaggedError<CreateGateway420Exception>()(
     "CreateGateway420Exception",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(420),
   ) {}
 export class ForbiddenException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ForbiddenException>()(
+  extends /*@__PURE__*/ S.TaggedError<ForbiddenException>()(
     "ForbiddenException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class GrantFlowEntitlements420Exception
-  extends /*@__PURE__*/ S.TaggedErrorClass<GrantFlowEntitlements420Exception>()(
+  extends /*@__PURE__*/ S.TaggedError<GrantFlowEntitlements420Exception>()(
     "GrantFlowEntitlements420Exception",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(420),
   ) {}
 export class InternalServerErrorException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InternalServerErrorException>()(
+  extends /*@__PURE__*/ S.TaggedError<InternalServerErrorException>()(
     "InternalServerErrorException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(T.HttpError(500), T.Retryable()),
   ).pipe(C.withServerError, C.withRetryableError) {}
 export class NotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<NotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<NotFoundException>()(
     "NotFoundException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class RouterInputServiceQuotaExceededException
-  extends /*@__PURE__*/ S.TaggedErrorClass<RouterInputServiceQuotaExceededException>()(
+  extends /*@__PURE__*/ S.TaggedError<RouterInputServiceQuotaExceededException>()(
     "RouterInputServiceQuotaExceededException",
     { message: S.String.pipe(T.ErrorMessage()) },
     T.HttpError(420),
   ) {}
 export class RouterNetworkInterfaceServiceQuotaExceededException
-  extends /*@__PURE__*/ S.TaggedErrorClass<RouterNetworkInterfaceServiceQuotaExceededException>()(
+  extends /*@__PURE__*/ S.TaggedError<RouterNetworkInterfaceServiceQuotaExceededException>()(
     "RouterNetworkInterfaceServiceQuotaExceededException",
     { message: S.String.pipe(T.ErrorMessage()) },
     T.HttpError(420),
   ) {}
 export class RouterOutputServiceQuotaExceededException
-  extends /*@__PURE__*/ S.TaggedErrorClass<RouterOutputServiceQuotaExceededException>()(
+  extends /*@__PURE__*/ S.TaggedError<RouterOutputServiceQuotaExceededException>()(
     "RouterOutputServiceQuotaExceededException",
     { message: S.String.pipe(T.ErrorMessage()) },
     T.HttpError(420),
   ) {}
 export class ServiceUnavailableException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ServiceUnavailableException>()(
+  extends /*@__PURE__*/ S.TaggedError<ServiceUnavailableException>()(
     "ServiceUnavailableException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(T.HttpError(503), T.Retryable()),
   ).pipe(C.withServerError, C.withRetryableError) {}
 export class TooManyRequestsException
-  extends /*@__PURE__*/ S.TaggedErrorClass<TooManyRequestsException>()(
+  extends /*@__PURE__*/ S.TaggedError<TooManyRequestsException>()(
     "TooManyRequestsException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(T.HttpError(429), T.Retryable()),

@@ -87,7 +87,7 @@ const rules = T.EndpointResolver((p, _) => {
 });
 
 export class InternalServiceErrorException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InternalServiceErrorException>()(
+  extends /*@__PURE__*/ S.TaggedError<InternalServiceErrorException>()(
     "InternalServiceErrorException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -96,7 +96,7 @@ export class InternalServiceErrorException
     ),
   ).pipe(C.withServerError) {}
 export class InvalidRequestException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidRequestException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidRequestException>()(
     "InvalidRequestException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -105,7 +105,7 @@ export class InvalidRequestException
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidStateException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidStateException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidStateException>()(
     "InvalidStateException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -114,7 +114,7 @@ export class InvalidStateException
     ),
   ).pipe(C.withBadRequestError) {}
 export class ResourceNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -123,7 +123,7 @@ export class ResourceNotFoundException
     ),
   ).pipe(C.withBadRequestError) {}
 export class ServiceQuotaExceededException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ServiceQuotaExceededException>()(
+  extends /*@__PURE__*/ S.TaggedError<ServiceQuotaExceededException>()(
     "ServiceQuotaExceededException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(

@@ -96,86 +96,84 @@ const rules = T.EndpointResolver((p, _) => {
 });
 
 export class AccessDeniedFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<AccessDeniedFault>()(
+  extends /*@__PURE__*/ S.TaggedError<AccessDeniedFault>()(
     "AccessDeniedFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withAuthError) {}
 export class CollectorNotFoundFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<CollectorNotFoundFault>()(
+  extends /*@__PURE__*/ S.TaggedError<CollectorNotFoundFault>()(
     "CollectorNotFoundFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class FailedDependencyFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<FailedDependencyFault>()(
+  extends /*@__PURE__*/ S.TaggedError<FailedDependencyFault>()(
     "FailedDependencyFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InsufficientResourceCapacityFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<InsufficientResourceCapacityFault>()(
+  extends /*@__PURE__*/ S.TaggedError<InsufficientResourceCapacityFault>()(
     "InsufficientResourceCapacityFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidCertificateFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidCertificateFault>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidCertificateFault>()(
     "InvalidCertificateFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidOperationFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidOperationFault>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidOperationFault>()(
     "InvalidOperationFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidResourceStateFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidResourceStateFault>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidResourceStateFault>()(
     "InvalidResourceStateFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidSubnet
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidSubnet>()("InvalidSubnet", {
+  extends /*@__PURE__*/ S.TaggedError<InvalidSubnet>()("InvalidSubnet", {
     message: S.optional(S.String).pipe(T.ErrorMessage()),
   }) {}
 export class KMSAccessDeniedFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<KMSAccessDeniedFault>()(
+  extends /*@__PURE__*/ S.TaggedError<KMSAccessDeniedFault>()(
     "KMSAccessDeniedFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withAuthError) {}
 export class KMSDisabledFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<KMSDisabledFault>()(
-    "KMSDisabledFault",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-  ) {}
+  extends /*@__PURE__*/ S.TaggedError<KMSDisabledFault>()("KMSDisabledFault", {
+    message: S.optional(S.String).pipe(T.ErrorMessage()),
+  }) {}
 export class KMSFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<KMSFault>()("KMSFault", {
+  extends /*@__PURE__*/ S.TaggedError<KMSFault>()("KMSFault", {
     message: S.optional(S.String).pipe(T.ErrorMessage()),
   }) {}
 export class KMSInvalidStateFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<KMSInvalidStateFault>()(
+  extends /*@__PURE__*/ S.TaggedError<KMSInvalidStateFault>()(
     "KMSInvalidStateFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class KMSKeyNotAccessibleFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<KMSKeyNotAccessibleFault>()(
+  extends /*@__PURE__*/ S.TaggedError<KMSKeyNotAccessibleFault>()(
     "KMSKeyNotAccessibleFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class KMSNotFoundFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<KMSNotFoundFault>()(
-    "KMSNotFoundFault",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-  ) {}
+  extends /*@__PURE__*/ S.TaggedError<KMSNotFoundFault>()("KMSNotFoundFault", {
+    message: S.optional(S.String).pipe(T.ErrorMessage()),
+  }) {}
 export class KMSThrottlingFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<KMSThrottlingFault>()(
+  extends /*@__PURE__*/ S.TaggedError<KMSThrottlingFault>()(
     "KMSThrottlingFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class ReplicationSubnetGroupDoesNotCoverEnoughAZs
-  extends /*@__PURE__*/ S.TaggedErrorClass<ReplicationSubnetGroupDoesNotCoverEnoughAZs>()(
+  extends /*@__PURE__*/ S.TaggedError<ReplicationSubnetGroupDoesNotCoverEnoughAZs>()(
     "ReplicationSubnetGroupDoesNotCoverEnoughAZs",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class ResourceAlreadyExistsFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceAlreadyExistsFault>()(
+  extends /*@__PURE__*/ S.TaggedError<ResourceAlreadyExistsFault>()(
     "ResourceAlreadyExistsFault",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -183,47 +181,47 @@ export class ResourceAlreadyExistsFault
     },
   ).pipe(C.withAlreadyExistsError) {}
 export class ResourceNotFoundFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundFault>()(
+  extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundFault>()(
     "ResourceNotFoundFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class ResourceQuotaExceededFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceQuotaExceededFault>()(
+  extends /*@__PURE__*/ S.TaggedError<ResourceQuotaExceededFault>()(
     "ResourceQuotaExceededFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class S3AccessDeniedFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<S3AccessDeniedFault>()(
+  extends /*@__PURE__*/ S.TaggedError<S3AccessDeniedFault>()(
     "S3AccessDeniedFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withAuthError) {}
 export class S3ResourceNotFoundFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<S3ResourceNotFoundFault>()(
+  extends /*@__PURE__*/ S.TaggedError<S3ResourceNotFoundFault>()(
     "S3ResourceNotFoundFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class SNSInvalidTopicFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<SNSInvalidTopicFault>()(
+  extends /*@__PURE__*/ S.TaggedError<SNSInvalidTopicFault>()(
     "SNSInvalidTopicFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class SNSNoAuthorizationFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<SNSNoAuthorizationFault>()(
+  extends /*@__PURE__*/ S.TaggedError<SNSNoAuthorizationFault>()(
     "SNSNoAuthorizationFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class StorageQuotaExceededFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<StorageQuotaExceededFault>()(
+  extends /*@__PURE__*/ S.TaggedError<StorageQuotaExceededFault>()(
     "StorageQuotaExceededFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class SubnetAlreadyInUse
-  extends /*@__PURE__*/ S.TaggedErrorClass<SubnetAlreadyInUse>()(
+  extends /*@__PURE__*/ S.TaggedError<SubnetAlreadyInUse>()(
     "SubnetAlreadyInUse",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withDependencyViolationError) {}
 export class UpgradeDependencyFailureFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<UpgradeDependencyFailureFault>()(
+  extends /*@__PURE__*/ S.TaggedError<UpgradeDependencyFailureFault>()(
     "UpgradeDependencyFailureFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}

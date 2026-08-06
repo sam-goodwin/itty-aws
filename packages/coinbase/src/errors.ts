@@ -76,7 +76,7 @@ const CoinbaseErrorFields = {
  * Payment method required — a valid payment method is required (HTTP 402).
  * errorType: "payment_method_required" | "payment_required"
  */
-export class PaymentRequired extends Schema.TaggedErrorClass<PaymentRequired>()(
+export class PaymentRequired extends Schema.TaggedError<PaymentRequired>()(
   "PaymentRequired",
   CoinbaseErrorFields,
 ).pipe(Category.withBadRequestError) {}
@@ -87,7 +87,7 @@ export class PaymentRequired extends Schema.TaggedErrorClass<PaymentRequired>()(
  * Idempotency key conflict — the same key was used with different request params (HTTP 422).
  * errorType: "idempotency_error"
  */
-export class IdempotencyError extends Schema.TaggedErrorClass<IdempotencyError>()(
+export class IdempotencyError extends Schema.TaggedError<IdempotencyError>()(
   "IdempotencyError",
   CoinbaseErrorFields,
 ).pipe(Category.withConflictError) {}
@@ -98,7 +98,7 @@ export class IdempotencyError extends Schema.TaggedErrorClass<IdempotencyError>(
  * Resource already exists — trying to create a duplicate resource (HTTP 409).
  * errorType: "already_exists"
  */
-export class AlreadyExists extends Schema.TaggedErrorClass<AlreadyExists>()(
+export class AlreadyExists extends Schema.TaggedError<AlreadyExists>()(
   "AlreadyExists",
   CoinbaseErrorFields,
 ).pipe(Category.withAlreadyExistsError) {}
@@ -109,7 +109,7 @@ export class AlreadyExists extends Schema.TaggedErrorClass<AlreadyExists>()(
  * Faucet limit exceeded — too many faucet requests.
  * errorType: "faucet_limit_exceeded"
  */
-export class FaucetLimitExceeded extends Schema.TaggedErrorClass<FaucetLimitExceeded>()(
+export class FaucetLimitExceeded extends Schema.TaggedError<FaucetLimitExceeded>()(
   "FaucetLimitExceeded",
   CoinbaseErrorFields,
 ).pipe(Category.withQuotaError) {}
@@ -120,7 +120,7 @@ export class FaucetLimitExceeded extends Schema.TaggedErrorClass<FaucetLimitExce
  * Invalid SQL query — the underlying SQL string is invalid.
  * errorType: "invalid_sql_query"
  */
-export class InvalidSqlQuery extends Schema.TaggedErrorClass<InvalidSqlQuery>()(
+export class InvalidSqlQuery extends Schema.TaggedError<InvalidSqlQuery>()(
   "InvalidSqlQuery",
   CoinbaseErrorFields,
 ).pipe(Category.withBadRequestError) {}
@@ -131,7 +131,7 @@ export class InvalidSqlQuery extends Schema.TaggedErrorClass<InvalidSqlQuery>()(
  * Invalid signature — the transaction or message signature is invalid.
  * errorType: "invalid_signature"
  */
-export class InvalidSignature extends Schema.TaggedErrorClass<InvalidSignature>()(
+export class InvalidSignature extends Schema.TaggedError<InvalidSignature>()(
   "InvalidSignature",
   CoinbaseErrorFields,
 ).pipe(Category.withBadRequestError) {}
@@ -140,7 +140,7 @@ export class InvalidSignature extends Schema.TaggedErrorClass<InvalidSignature>(
  * Malformed transaction — the transaction data is malformed.
  * errorType: "malformed_transaction"
  */
-export class MalformedTransaction extends Schema.TaggedErrorClass<MalformedTransaction>()(
+export class MalformedTransaction extends Schema.TaggedError<MalformedTransaction>()(
   "MalformedTransaction",
   CoinbaseErrorFields,
 ).pipe(Category.withBadRequestError) {}
@@ -149,7 +149,7 @@ export class MalformedTransaction extends Schema.TaggedErrorClass<MalformedTrans
  * Settlement failed — payment settlement could not be completed.
  * errorType: "settlement_failed"
  */
-export class SettlementFailed extends Schema.TaggedErrorClass<SettlementFailed>()(
+export class SettlementFailed extends Schema.TaggedError<SettlementFailed>()(
   "SettlementFailed",
   CoinbaseErrorFields,
 ).pipe(Category.withServerError) {}
@@ -160,7 +160,7 @@ export class SettlementFailed extends Schema.TaggedErrorClass<SettlementFailed>(
  * Request timed out — the server did not respond in time.
  * errorType: "timed_out"
  */
-export class TimedOut extends Schema.TaggedErrorClass<TimedOut>()(
+export class TimedOut extends Schema.TaggedError<TimedOut>()(
   "TimedOut",
   CoinbaseErrorFields,
 ).pipe(Category.withTimeoutError, Category.withRetryable()) {}
@@ -169,7 +169,7 @@ export class TimedOut extends Schema.TaggedErrorClass<TimedOut>()(
  * Client closed request — the client disconnected before the response.
  * errorType: "client_closed_request"
  */
-export class ClientClosedRequest extends Schema.TaggedErrorClass<ClientClosedRequest>()(
+export class ClientClosedRequest extends Schema.TaggedError<ClientClosedRequest>()(
   "ClientClosedRequest",
   CoinbaseErrorFields,
 ).pipe(Category.withAbortedError) {}
@@ -178,7 +178,7 @@ export class ClientClosedRequest extends Schema.TaggedErrorClass<ClientClosedReq
  * Request canceled — the request was canceled.
  * errorType: "request_canceled"
  */
-export class RequestCanceled extends Schema.TaggedErrorClass<RequestCanceled>()(
+export class RequestCanceled extends Schema.TaggedError<RequestCanceled>()(
   "RequestCanceled",
   CoinbaseErrorFields,
 ).pipe(Category.withAbortedError) {}
@@ -189,7 +189,7 @@ export class RequestCanceled extends Schema.TaggedErrorClass<RequestCanceled>()(
  * Policy violation — the request violated an account or project policy.
  * errorType: "policy_violation"
  */
-export class PolicyViolation extends Schema.TaggedErrorClass<PolicyViolation>()(
+export class PolicyViolation extends Schema.TaggedError<PolicyViolation>()(
   "PolicyViolation",
   CoinbaseErrorFields,
 ).pipe(Category.withBadRequestError) {}
@@ -198,7 +198,7 @@ export class PolicyViolation extends Schema.TaggedErrorClass<PolicyViolation>()(
  * Policy in use — the policy cannot be deleted because it's in use.
  * errorType: "policy_in_use"
  */
-export class PolicyInUse extends Schema.TaggedErrorClass<PolicyInUse>()(
+export class PolicyInUse extends Schema.TaggedError<PolicyInUse>()(
   "PolicyInUse",
   CoinbaseErrorFields,
 ).pipe(Category.withConflictError) {}
@@ -209,7 +209,7 @@ export class PolicyInUse extends Schema.TaggedErrorClass<PolicyInUse>()(
  * Account limit exceeded — too many accounts created.
  * errorType: "account_limit_exceeded"
  */
-export class AccountLimitExceeded extends Schema.TaggedErrorClass<AccountLimitExceeded>()(
+export class AccountLimitExceeded extends Schema.TaggedError<AccountLimitExceeded>()(
   "AccountLimitExceeded",
   CoinbaseErrorFields,
 ).pipe(Category.withQuotaError) {}
@@ -218,7 +218,7 @@ export class AccountLimitExceeded extends Schema.TaggedErrorClass<AccountLimitEx
  * Insufficient balance — the account does not have enough funds.
  * errorType: "insufficient_balance"
  */
-export class InsufficientBalance extends Schema.TaggedErrorClass<InsufficientBalance>()(
+export class InsufficientBalance extends Schema.TaggedError<InsufficientBalance>()(
   "InsufficientBalance",
   CoinbaseErrorFields,
 ).pipe(Category.withBadRequestError) {}
@@ -227,7 +227,7 @@ export class InsufficientBalance extends Schema.TaggedErrorClass<InsufficientBal
  * Account not ready — the account is not in a ready state for the operation.
  * errorType: "account_not_ready"
  */
-export class AccountNotReady extends Schema.TaggedErrorClass<AccountNotReady>()(
+export class AccountNotReady extends Schema.TaggedError<AccountNotReady>()(
   "AccountNotReady",
   CoinbaseErrorFields,
 ).pipe(Category.withRetryableError, Category.withRetryable()) {}
@@ -238,7 +238,7 @@ export class AccountNotReady extends Schema.TaggedErrorClass<AccountNotReady>()(
  * MFA required — multi-factor authentication is required.
  * errorType: "mfa_required"
  */
-export class MfaRequired extends Schema.TaggedErrorClass<MfaRequired>()(
+export class MfaRequired extends Schema.TaggedError<MfaRequired>()(
   "MfaRequired",
   CoinbaseErrorFields,
 ).pipe(Category.withAuthError) {}
@@ -247,7 +247,7 @@ export class MfaRequired extends Schema.TaggedErrorClass<MfaRequired>()(
  * MFA already enrolled — the user already has MFA set up.
  * errorType: "mfa_already_enrolled"
  */
-export class MfaAlreadyEnrolled extends Schema.TaggedErrorClass<MfaAlreadyEnrolled>()(
+export class MfaAlreadyEnrolled extends Schema.TaggedError<MfaAlreadyEnrolled>()(
   "MfaAlreadyEnrolled",
   CoinbaseErrorFields,
 ).pipe(Category.withConflictError) {}
@@ -256,7 +256,7 @@ export class MfaAlreadyEnrolled extends Schema.TaggedErrorClass<MfaAlreadyEnroll
  * MFA invalid code — the provided MFA code is incorrect.
  * errorType: "mfa_invalid_code"
  */
-export class MfaInvalidCode extends Schema.TaggedErrorClass<MfaInvalidCode>()(
+export class MfaInvalidCode extends Schema.TaggedError<MfaInvalidCode>()(
   "MfaInvalidCode",
   CoinbaseErrorFields,
 ).pipe(Category.withAuthError) {}
@@ -265,7 +265,7 @@ export class MfaInvalidCode extends Schema.TaggedErrorClass<MfaInvalidCode>()(
  * MFA flow expired — the MFA verification flow has expired.
  * errorType: "mfa_flow_expired"
  */
-export class MfaFlowExpired extends Schema.TaggedErrorClass<MfaFlowExpired>()(
+export class MfaFlowExpired extends Schema.TaggedError<MfaFlowExpired>()(
   "MfaFlowExpired",
   CoinbaseErrorFields,
 ).pipe(Category.withAuthError) {}
@@ -274,7 +274,7 @@ export class MfaFlowExpired extends Schema.TaggedErrorClass<MfaFlowExpired>()(
  * MFA not enrolled — the user has not set up MFA.
  * errorType: "mfa_not_enrolled"
  */
-export class MfaNotEnrolled extends Schema.TaggedErrorClass<MfaNotEnrolled>()(
+export class MfaNotEnrolled extends Schema.TaggedError<MfaNotEnrolled>()(
   "MfaNotEnrolled",
   CoinbaseErrorFields,
 ).pipe(Category.withBadRequestError) {}
@@ -285,7 +285,7 @@ export class MfaNotEnrolled extends Schema.TaggedErrorClass<MfaNotEnrolled>()(
  * Network not tradable — the specified network does not support trading.
  * errorType: "network_not_tradable"
  */
-export class NetworkNotTradable extends Schema.TaggedErrorClass<NetworkNotTradable>()(
+export class NetworkNotTradable extends Schema.TaggedError<NetworkNotTradable>()(
   "NetworkNotTradable",
   CoinbaseErrorFields,
 ).pipe(Category.withBadRequestError) {}
@@ -296,7 +296,7 @@ export class NetworkNotTradable extends Schema.TaggedErrorClass<NetworkNotTradab
  * Guest permission denied — the guest user does not have permission for this action.
  * errorType: "guest_permission_denied"
  */
-export class GuestPermissionDenied extends Schema.TaggedErrorClass<GuestPermissionDenied>()(
+export class GuestPermissionDenied extends Schema.TaggedError<GuestPermissionDenied>()(
   "GuestPermissionDenied",
   CoinbaseErrorFields,
 ).pipe(Category.withAuthError) {}
@@ -305,7 +305,7 @@ export class GuestPermissionDenied extends Schema.TaggedErrorClass<GuestPermissi
  * Guest region forbidden — the guest user's region is not supported.
  * errorType: "guest_region_forbidden"
  */
-export class GuestRegionForbidden extends Schema.TaggedErrorClass<GuestRegionForbidden>()(
+export class GuestRegionForbidden extends Schema.TaggedError<GuestRegionForbidden>()(
   "GuestRegionForbidden",
   CoinbaseErrorFields,
 ).pipe(Category.withAuthError) {}
@@ -314,7 +314,7 @@ export class GuestRegionForbidden extends Schema.TaggedErrorClass<GuestRegionFor
  * Guest transaction limit — the guest user has exceeded their transaction amount limit.
  * errorType: "guest_transaction_limit"
  */
-export class GuestTransactionLimit extends Schema.TaggedErrorClass<GuestTransactionLimit>()(
+export class GuestTransactionLimit extends Schema.TaggedError<GuestTransactionLimit>()(
   "GuestTransactionLimit",
   CoinbaseErrorFields,
 ).pipe(Category.withQuotaError) {}
@@ -323,7 +323,7 @@ export class GuestTransactionLimit extends Schema.TaggedErrorClass<GuestTransact
  * Guest transaction count — the guest user has exceeded their transaction count limit.
  * errorType: "guest_transaction_count"
  */
-export class GuestTransactionCount extends Schema.TaggedErrorClass<GuestTransactionCount>()(
+export class GuestTransactionCount extends Schema.TaggedError<GuestTransactionCount>()(
   "GuestTransactionCount",
   CoinbaseErrorFields,
 ).pipe(Category.withQuotaError) {}
@@ -334,7 +334,7 @@ export class GuestTransactionCount extends Schema.TaggedErrorClass<GuestTransact
  * Phone number verification expired — the phone number verification has expired.
  * errorType: "phone_number_verification_expired"
  */
-export class PhoneNumberVerificationExpired extends Schema.TaggedErrorClass<PhoneNumberVerificationExpired>()(
+export class PhoneNumberVerificationExpired extends Schema.TaggedError<PhoneNumberVerificationExpired>()(
   "PhoneNumberVerificationExpired",
   CoinbaseErrorFields,
 ).pipe(Category.withBadRequestError) {}
@@ -343,7 +343,7 @@ export class PhoneNumberVerificationExpired extends Schema.TaggedErrorClass<Phon
  * Document verification failed — the document verification check failed.
  * errorType: "document_verification_failed"
  */
-export class DocumentVerificationFailed extends Schema.TaggedErrorClass<DocumentVerificationFailed>()(
+export class DocumentVerificationFailed extends Schema.TaggedError<DocumentVerificationFailed>()(
   "DocumentVerificationFailed",
   CoinbaseErrorFields,
 ).pipe(Category.withBadRequestError) {}
@@ -354,7 +354,7 @@ export class DocumentVerificationFailed extends Schema.TaggedErrorClass<Document
  * Recipient allowlist violation — the recipient address is not on the allowlist.
  * errorType: "recipient_allowlist_violation"
  */
-export class RecipientAllowlistViolation extends Schema.TaggedErrorClass<RecipientAllowlistViolation>()(
+export class RecipientAllowlistViolation extends Schema.TaggedError<RecipientAllowlistViolation>()(
   "RecipientAllowlistViolation",
   CoinbaseErrorFields,
 ).pipe(Category.withBadRequestError) {}
@@ -363,7 +363,7 @@ export class RecipientAllowlistViolation extends Schema.TaggedErrorClass<Recipie
  * Recipient allowlist pending — the recipient address is pending allowlist approval.
  * errorType: "recipient_allowlist_pending"
  */
-export class RecipientAllowlistPending extends Schema.TaggedErrorClass<RecipientAllowlistPending>()(
+export class RecipientAllowlistPending extends Schema.TaggedError<RecipientAllowlistPending>()(
   "RecipientAllowlistPending",
   CoinbaseErrorFields,
 ).pipe(Category.withBadRequestError) {}
@@ -374,7 +374,7 @@ export class RecipientAllowlistPending extends Schema.TaggedErrorClass<Recipient
  * Travel rules recipient violation — the recipient violates travel rule requirements.
  * errorType: "travel_rules_recipient_violation"
  */
-export class TravelRulesRecipientViolation extends Schema.TaggedErrorClass<TravelRulesRecipientViolation>()(
+export class TravelRulesRecipientViolation extends Schema.TaggedError<TravelRulesRecipientViolation>()(
   "TravelRulesRecipientViolation",
   CoinbaseErrorFields,
 ).pipe(Category.withBadRequestError) {}
@@ -383,7 +383,7 @@ export class TravelRulesRecipientViolation extends Schema.TaggedErrorClass<Trave
  * Travel rules field missing — a required travel rules field is missing.
  * errorType: "travel_rules_field_missing"
  */
-export class TravelRulesFieldMissing extends Schema.TaggedErrorClass<TravelRulesFieldMissing>()(
+export class TravelRulesFieldMissing extends Schema.TaggedError<TravelRulesFieldMissing>()(
   "TravelRulesFieldMissing",
   CoinbaseErrorFields,
 ).pipe(Category.withBadRequestError) {}
@@ -394,7 +394,7 @@ export class TravelRulesFieldMissing extends Schema.TaggedErrorClass<TravelRules
  * Source account invalid — the source account is not valid for this operation.
  * errorType: "source_account_invalid"
  */
-export class SourceAccountInvalid extends Schema.TaggedErrorClass<SourceAccountInvalid>()(
+export class SourceAccountInvalid extends Schema.TaggedError<SourceAccountInvalid>()(
   "SourceAccountInvalid",
   CoinbaseErrorFields,
 ).pipe(Category.withBadRequestError) {}
@@ -403,7 +403,7 @@ export class SourceAccountInvalid extends Schema.TaggedErrorClass<SourceAccountI
  * Target account invalid — the target account is not valid for this operation.
  * errorType: "target_account_invalid"
  */
-export class TargetAccountInvalid extends Schema.TaggedErrorClass<TargetAccountInvalid>()(
+export class TargetAccountInvalid extends Schema.TaggedError<TargetAccountInvalid>()(
   "TargetAccountInvalid",
   CoinbaseErrorFields,
 ).pipe(Category.withBadRequestError) {}
@@ -412,7 +412,7 @@ export class TargetAccountInvalid extends Schema.TaggedErrorClass<TargetAccountI
  * Source account not found — the source account does not exist.
  * errorType: "source_account_not_found"
  */
-export class SourceAccountNotFound extends Schema.TaggedErrorClass<SourceAccountNotFound>()(
+export class SourceAccountNotFound extends Schema.TaggedError<SourceAccountNotFound>()(
   "SourceAccountNotFound",
   CoinbaseErrorFields,
 ).pipe(Category.withNotFoundError) {}
@@ -421,7 +421,7 @@ export class SourceAccountNotFound extends Schema.TaggedErrorClass<SourceAccount
  * Target account not found — the target account does not exist.
  * errorType: "target_account_not_found"
  */
-export class TargetAccountNotFound extends Schema.TaggedErrorClass<TargetAccountNotFound>()(
+export class TargetAccountNotFound extends Schema.TaggedError<TargetAccountNotFound>()(
   "TargetAccountNotFound",
   CoinbaseErrorFields,
 ).pipe(Category.withNotFoundError) {}
@@ -432,7 +432,7 @@ export class TargetAccountNotFound extends Schema.TaggedErrorClass<TargetAccount
  * Source asset not supported — the source asset is not supported for this operation.
  * errorType: "source_asset_not_supported"
  */
-export class SourceAssetNotSupported extends Schema.TaggedErrorClass<SourceAssetNotSupported>()(
+export class SourceAssetNotSupported extends Schema.TaggedError<SourceAssetNotSupported>()(
   "SourceAssetNotSupported",
   CoinbaseErrorFields,
 ).pipe(Category.withBadRequestError) {}
@@ -441,7 +441,7 @@ export class SourceAssetNotSupported extends Schema.TaggedErrorClass<SourceAsset
  * Target asset not supported — the target asset is not supported for this operation.
  * errorType: "target_asset_not_supported"
  */
-export class TargetAssetNotSupported extends Schema.TaggedErrorClass<TargetAssetNotSupported>()(
+export class TargetAssetNotSupported extends Schema.TaggedError<TargetAssetNotSupported>()(
   "TargetAssetNotSupported",
   CoinbaseErrorFields,
 ).pipe(Category.withBadRequestError) {}
@@ -450,7 +450,7 @@ export class TargetAssetNotSupported extends Schema.TaggedErrorClass<TargetAsset
  * Transfer asset not supported — the asset is not supported for transfers.
  * errorType: "transfer_asset_not_supported"
  */
-export class TransferAssetNotSupported extends Schema.TaggedErrorClass<TransferAssetNotSupported>()(
+export class TransferAssetNotSupported extends Schema.TaggedError<TransferAssetNotSupported>()(
   "TransferAssetNotSupported",
   CoinbaseErrorFields,
 ).pipe(Category.withBadRequestError) {}
@@ -459,7 +459,7 @@ export class TransferAssetNotSupported extends Schema.TaggedErrorClass<TransferA
  * Asset mismatch — the source and target assets do not match as expected.
  * errorType: "asset_mismatch"
  */
-export class AssetMismatch extends Schema.TaggedErrorClass<AssetMismatch>()(
+export class AssetMismatch extends Schema.TaggedError<AssetMismatch>()(
   "AssetMismatch",
   CoinbaseErrorFields,
 ).pipe(Category.withBadRequestError) {}
@@ -470,7 +470,7 @@ export class AssetMismatch extends Schema.TaggedErrorClass<AssetMismatch>()(
  * Target email invalid — the target email address is not valid.
  * errorType: "target_email_invalid"
  */
-export class TargetEmailInvalid extends Schema.TaggedErrorClass<TargetEmailInvalid>()(
+export class TargetEmailInvalid extends Schema.TaggedError<TargetEmailInvalid>()(
   "TargetEmailInvalid",
   CoinbaseErrorFields,
 ).pipe(Category.withBadRequestError) {}
@@ -479,7 +479,7 @@ export class TargetEmailInvalid extends Schema.TaggedErrorClass<TargetEmailInval
  * Target onchain address invalid — the target onchain address is not valid.
  * errorType: "target_onchain_address_invalid"
  */
-export class TargetOnchainAddressInvalid extends Schema.TaggedErrorClass<TargetOnchainAddressInvalid>()(
+export class TargetOnchainAddressInvalid extends Schema.TaggedError<TargetOnchainAddressInvalid>()(
   "TargetOnchainAddressInvalid",
   CoinbaseErrorFields,
 ).pipe(Category.withBadRequestError) {}
@@ -488,7 +488,7 @@ export class TargetOnchainAddressInvalid extends Schema.TaggedErrorClass<TargetO
  * Transfer amount invalid — the transfer amount is not valid.
  * errorType: "transfer_amount_invalid"
  */
-export class TransferAmountInvalid extends Schema.TaggedErrorClass<TransferAmountInvalid>()(
+export class TransferAmountInvalid extends Schema.TaggedError<TransferAmountInvalid>()(
   "TransferAmountInvalid",
   CoinbaseErrorFields,
 ).pipe(Category.withBadRequestError) {}
@@ -499,7 +499,7 @@ export class TransferAmountInvalid extends Schema.TaggedErrorClass<TransferAmoun
  * Metadata too many entries — too many metadata entries were provided.
  * errorType: "metadata_too_many_entries"
  */
-export class MetadataTooManyEntries extends Schema.TaggedErrorClass<MetadataTooManyEntries>()(
+export class MetadataTooManyEntries extends Schema.TaggedError<MetadataTooManyEntries>()(
   "MetadataTooManyEntries",
   CoinbaseErrorFields,
 ).pipe(Category.withBadRequestError) {}
@@ -508,7 +508,7 @@ export class MetadataTooManyEntries extends Schema.TaggedErrorClass<MetadataTooM
  * Metadata key too long — a metadata key exceeds the maximum length.
  * errorType: "metadata_key_too_long"
  */
-export class MetadataKeyTooLong extends Schema.TaggedErrorClass<MetadataKeyTooLong>()(
+export class MetadataKeyTooLong extends Schema.TaggedError<MetadataKeyTooLong>()(
   "MetadataKeyTooLong",
   CoinbaseErrorFields,
 ).pipe(Category.withBadRequestError) {}
@@ -517,7 +517,7 @@ export class MetadataKeyTooLong extends Schema.TaggedErrorClass<MetadataKeyTooLo
  * Metadata value too long — a metadata value exceeds the maximum length.
  * errorType: "metadata_value_too_long"
  */
-export class MetadataValueTooLong extends Schema.TaggedErrorClass<MetadataValueTooLong>()(
+export class MetadataValueTooLong extends Schema.TaggedError<MetadataValueTooLong>()(
   "MetadataValueTooLong",
   CoinbaseErrorFields,
 ).pipe(Category.withBadRequestError) {}
@@ -528,7 +528,7 @@ export class MetadataValueTooLong extends Schema.TaggedErrorClass<MetadataValueT
  * Order quote expired — the order quote has expired and must be refreshed.
  * errorType: "order_quote_expired"
  */
-export class OrderQuoteExpired extends Schema.TaggedErrorClass<OrderQuoteExpired>()(
+export class OrderQuoteExpired extends Schema.TaggedError<OrderQuoteExpired>()(
   "OrderQuoteExpired",
   CoinbaseErrorFields,
 ).pipe(Category.withBadRequestError) {}
@@ -537,7 +537,7 @@ export class OrderQuoteExpired extends Schema.TaggedErrorClass<OrderQuoteExpired
  * Order already filled — the order has already been filled.
  * errorType: "order_already_filled"
  */
-export class OrderAlreadyFilled extends Schema.TaggedErrorClass<OrderAlreadyFilled>()(
+export class OrderAlreadyFilled extends Schema.TaggedError<OrderAlreadyFilled>()(
   "OrderAlreadyFilled",
   CoinbaseErrorFields,
 ).pipe(Category.withConflictError) {}
@@ -546,7 +546,7 @@ export class OrderAlreadyFilled extends Schema.TaggedErrorClass<OrderAlreadyFill
  * Order already canceled — the order has already been canceled.
  * errorType: "order_already_canceled"
  */
-export class OrderAlreadyCanceled extends Schema.TaggedErrorClass<OrderAlreadyCanceled>()(
+export class OrderAlreadyCanceled extends Schema.TaggedError<OrderAlreadyCanceled>()(
   "OrderAlreadyCanceled",
   CoinbaseErrorFields,
 ).pipe(Category.withConflictError) {}
@@ -682,7 +682,7 @@ export const ERROR_TYPE_MAP: Record<string, new (props: any) => unknown> = {
 /**
  * Unknown Coinbase error — returned when an errorType is not recognized.
  */
-export class UnknownCoinbaseError extends Schema.TaggedErrorClass<UnknownCoinbaseError>()(
+export class UnknownCoinbaseError extends Schema.TaggedError<UnknownCoinbaseError>()(
   "UnknownCoinbaseError",
   {
     ...CoinbaseErrorFields,
@@ -693,7 +693,7 @@ export class UnknownCoinbaseError extends Schema.TaggedErrorClass<UnknownCoinbas
 /**
  * Schema parse error wrapper — returned when the response body fails schema decoding.
  */
-export class CoinbaseParseError extends Schema.TaggedErrorClass<CoinbaseParseError>()(
+export class CoinbaseParseError extends Schema.TaggedError<CoinbaseParseError>()(
   "CoinbaseParseError",
   {
     body: Schema.Unknown,

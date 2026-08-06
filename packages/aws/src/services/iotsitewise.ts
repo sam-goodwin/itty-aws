@@ -87,13 +87,13 @@ const rules = T.EndpointResolver((p, _) => {
 });
 
 export class AccessDeniedException
-  extends /*@__PURE__*/ S.TaggedErrorClass<AccessDeniedException>()(
+  extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()(
     "AccessDeniedException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class ConflictingOperationException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ConflictingOperationException>()(
+  extends /*@__PURE__*/ S.TaggedError<ConflictingOperationException>()(
     "ConflictingOperationException",
     {
       message: S.String.pipe(T.ErrorMessage()),
@@ -103,25 +103,25 @@ export class ConflictingOperationException
     T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class InternalFailureException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InternalFailureException>()(
+  extends /*@__PURE__*/ S.TaggedError<InternalFailureException>()(
     "InternalFailureException",
     { message: S.String.pipe(T.ErrorMessage()) },
     T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class InvalidRequestException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidRequestException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidRequestException>()(
     "InvalidRequestException",
     { message: S.String.pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class LimitExceededException
-  extends /*@__PURE__*/ S.TaggedErrorClass<LimitExceededException>()(
+  extends /*@__PURE__*/ S.TaggedError<LimitExceededException>()(
     "LimitExceededException",
     { message: S.String.pipe(T.ErrorMessage()) },
     T.HttpError(410),
   ).pipe(C.withBadRequestError) {}
 export class PreconditionFailedException
-  extends /*@__PURE__*/ S.TaggedErrorClass<PreconditionFailedException>()(
+  extends /*@__PURE__*/ S.TaggedError<PreconditionFailedException>()(
     "PreconditionFailedException",
     {
       message: S.String.pipe(T.ErrorMessage()),
@@ -131,13 +131,13 @@ export class PreconditionFailedException
     T.HttpError(412),
   ) {}
 export class QueryTimeoutException
-  extends /*@__PURE__*/ S.TaggedErrorClass<QueryTimeoutException>()(
+  extends /*@__PURE__*/ S.TaggedError<QueryTimeoutException>()(
     "QueryTimeoutException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ResourceAlreadyExistsException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceAlreadyExistsException>()(
+  extends /*@__PURE__*/ S.TaggedError<ResourceAlreadyExistsException>()(
     "ResourceAlreadyExistsException",
     {
       message: S.String.pipe(T.ErrorMessage()),
@@ -147,25 +147,25 @@ export class ResourceAlreadyExistsException
     T.HttpError(409),
   ).pipe(C.withConflictError, C.withAlreadyExistsError) {}
 export class ResourceNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
     { message: S.String.pipe(T.ErrorMessage()) },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ServiceUnavailableException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ServiceUnavailableException>()(
+  extends /*@__PURE__*/ S.TaggedError<ServiceUnavailableException>()(
     "ServiceUnavailableException",
     { message: S.String.pipe(T.ErrorMessage()) },
     T.HttpError(503),
   ).pipe(C.withServerError) {}
 export class ThrottlingException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ThrottlingException>()(
+  extends /*@__PURE__*/ S.TaggedError<ThrottlingException>()(
     "ThrottlingException",
     { message: S.String.pipe(T.ErrorMessage()) },
     T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export class TooManyTagsException
-  extends /*@__PURE__*/ S.TaggedErrorClass<TooManyTagsException>()(
+  extends /*@__PURE__*/ S.TaggedError<TooManyTagsException>()(
     "TooManyTagsException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -174,13 +174,13 @@ export class TooManyTagsException
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class UnauthorizedException
-  extends /*@__PURE__*/ S.TaggedErrorClass<UnauthorizedException>()(
+  extends /*@__PURE__*/ S.TaggedError<UnauthorizedException>()(
     "UnauthorizedException",
     { message: S.String.pipe(T.ErrorMessage()) },
     T.HttpError(401),
   ).pipe(C.withAuthError) {}
 export class ValidationException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ValidationException>()(
+  extends /*@__PURE__*/ S.TaggedError<ValidationException>()(
     "ValidationException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),

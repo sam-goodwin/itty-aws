@@ -87,13 +87,13 @@ const rules = T.EndpointResolver((p, _) => {
 });
 
 export class AccessDeniedException
-  extends /*@__PURE__*/ S.TaggedErrorClass<AccessDeniedException>()(
+  extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()(
     "AccessDeniedException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class BatchWriteException
-  extends /*@__PURE__*/ S.TaggedErrorClass<BatchWriteException>()(
+  extends /*@__PURE__*/ S.TaggedError<BatchWriteException>()(
     "BatchWriteException",
     {
       Index: S.optional(S.Number),
@@ -106,199 +106,199 @@ export class BatchWriteException
     },
   ) {}
 export class CannotListParentOfRootException
-  extends /*@__PURE__*/ S.TaggedErrorClass<CannotListParentOfRootException>()(
+  extends /*@__PURE__*/ S.TaggedError<CannotListParentOfRootException>()(
     "CannotListParentOfRootException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class DirectoryAlreadyExistsException
-  extends /*@__PURE__*/ S.TaggedErrorClass<DirectoryAlreadyExistsException>()(
+  extends /*@__PURE__*/ S.TaggedError<DirectoryAlreadyExistsException>()(
     "DirectoryAlreadyExistsException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
 export class DirectoryDeletedException
-  extends /*@__PURE__*/ S.TaggedErrorClass<DirectoryDeletedException>()(
+  extends /*@__PURE__*/ S.TaggedError<DirectoryDeletedException>()(
     "DirectoryDeletedException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class DirectoryNotDisabledException
-  extends /*@__PURE__*/ S.TaggedErrorClass<DirectoryNotDisabledException>()(
+  extends /*@__PURE__*/ S.TaggedError<DirectoryNotDisabledException>()(
     "DirectoryNotDisabledException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class DirectoryNotEnabledException
-  extends /*@__PURE__*/ S.TaggedErrorClass<DirectoryNotEnabledException>()(
+  extends /*@__PURE__*/ S.TaggedError<DirectoryNotEnabledException>()(
     "DirectoryNotEnabledException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class FacetAlreadyExistsException
-  extends /*@__PURE__*/ S.TaggedErrorClass<FacetAlreadyExistsException>()(
+  extends /*@__PURE__*/ S.TaggedError<FacetAlreadyExistsException>()(
     "FacetAlreadyExistsException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
 export class FacetInUseException
-  extends /*@__PURE__*/ S.TaggedErrorClass<FacetInUseException>()(
+  extends /*@__PURE__*/ S.TaggedError<FacetInUseException>()(
     "FacetInUseException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class FacetNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<FacetNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<FacetNotFoundException>()(
     "FacetNotFoundException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class FacetValidationException
-  extends /*@__PURE__*/ S.TaggedErrorClass<FacetValidationException>()(
+  extends /*@__PURE__*/ S.TaggedError<FacetValidationException>()(
     "FacetValidationException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class IncompatibleSchemaException
-  extends /*@__PURE__*/ S.TaggedErrorClass<IncompatibleSchemaException>()(
+  extends /*@__PURE__*/ S.TaggedError<IncompatibleSchemaException>()(
     "IncompatibleSchemaException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class IndexedAttributeMissingException
-  extends /*@__PURE__*/ S.TaggedErrorClass<IndexedAttributeMissingException>()(
+  extends /*@__PURE__*/ S.TaggedError<IndexedAttributeMissingException>()(
     "IndexedAttributeMissingException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InternalServiceException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InternalServiceException>()(
+  extends /*@__PURE__*/ S.TaggedError<InternalServiceException>()(
     "InternalServiceException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class InvalidArnException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidArnException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidArnException>()(
     "InvalidArnException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidAttachmentException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidAttachmentException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidAttachmentException>()(
     "InvalidAttachmentException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidFacetUpdateException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidFacetUpdateException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidFacetUpdateException>()(
     "InvalidFacetUpdateException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidNextTokenException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidNextTokenException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidNextTokenException>()(
     "InvalidNextTokenException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidRuleException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidRuleException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidRuleException>()(
     "InvalidRuleException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidSchemaDocException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidSchemaDocException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidSchemaDocException>()(
     "InvalidSchemaDocException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidTaggingRequestException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidTaggingRequestException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidTaggingRequestException>()(
     "InvalidTaggingRequestException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class LimitExceededException
-  extends /*@__PURE__*/ S.TaggedErrorClass<LimitExceededException>()(
+  extends /*@__PURE__*/ S.TaggedError<LimitExceededException>()(
     "LimitExceededException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class LinkNameAlreadyInUseException
-  extends /*@__PURE__*/ S.TaggedErrorClass<LinkNameAlreadyInUseException>()(
+  extends /*@__PURE__*/ S.TaggedError<LinkNameAlreadyInUseException>()(
     "LinkNameAlreadyInUseException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class NotIndexException
-  extends /*@__PURE__*/ S.TaggedErrorClass<NotIndexException>()(
+  extends /*@__PURE__*/ S.TaggedError<NotIndexException>()(
     "NotIndexException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class NotNodeException
-  extends /*@__PURE__*/ S.TaggedErrorClass<NotNodeException>()(
+  extends /*@__PURE__*/ S.TaggedError<NotNodeException>()(
     "NotNodeException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class NotPolicyException
-  extends /*@__PURE__*/ S.TaggedErrorClass<NotPolicyException>()(
+  extends /*@__PURE__*/ S.TaggedError<NotPolicyException>()(
     "NotPolicyException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ObjectAlreadyDetachedException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ObjectAlreadyDetachedException>()(
+  extends /*@__PURE__*/ S.TaggedError<ObjectAlreadyDetachedException>()(
     "ObjectAlreadyDetachedException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ObjectNotDetachedException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ObjectNotDetachedException>()(
+  extends /*@__PURE__*/ S.TaggedError<ObjectNotDetachedException>()(
     "ObjectNotDetachedException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ResourceNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class RetryableConflictException
-  extends /*@__PURE__*/ S.TaggedErrorClass<RetryableConflictException>()(
+  extends /*@__PURE__*/ S.TaggedError<RetryableConflictException>()(
     "RetryableConflictException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class SchemaAlreadyExistsException
-  extends /*@__PURE__*/ S.TaggedErrorClass<SchemaAlreadyExistsException>()(
+  extends /*@__PURE__*/ S.TaggedError<SchemaAlreadyExistsException>()(
     "SchemaAlreadyExistsException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
 export class SchemaAlreadyPublishedException
-  extends /*@__PURE__*/ S.TaggedErrorClass<SchemaAlreadyPublishedException>()(
+  extends /*@__PURE__*/ S.TaggedError<SchemaAlreadyPublishedException>()(
     "SchemaAlreadyPublishedException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class StillContainsLinksException
-  extends /*@__PURE__*/ S.TaggedErrorClass<StillContainsLinksException>()(
+  extends /*@__PURE__*/ S.TaggedError<StillContainsLinksException>()(
     "StillContainsLinksException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class UnsupportedIndexTypeException
-  extends /*@__PURE__*/ S.TaggedErrorClass<UnsupportedIndexTypeException>()(
+  extends /*@__PURE__*/ S.TaggedError<UnsupportedIndexTypeException>()(
     "UnsupportedIndexTypeException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ValidationException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ValidationException>()(
+  extends /*@__PURE__*/ S.TaggedError<ValidationException>()(
     "ValidationException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),

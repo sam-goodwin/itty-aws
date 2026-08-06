@@ -55,7 +55,7 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
 
 export class InvalidAccountId
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<InvalidAccountId>()("InvalidAccountId", {
+    /*@__PURE__*/ S.TaggedError<InvalidAccountId>()("InvalidAccountId", {
       code: S.Number,
       message: S.String,
     }).pipe(C.withBadRequestError),
@@ -64,7 +64,7 @@ export class InvalidAccountId
 
 export class InvalidRequest
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<InvalidRequest>()("InvalidRequest", {
+    /*@__PURE__*/ S.TaggedError<InvalidRequest>()("InvalidRequest", {
       code: S.Number,
       message: S.String,
     }).pipe(C.withBadRequestError),

@@ -12,7 +12,7 @@ import * as Retry from "../retry.ts";
 export type { PosthogOpError, PosthogOpContext };
 
 export class Conflict extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Conflict>()("Conflict", {
+  S.TaggedError<Conflict>()("Conflict", {
     code: S.Number,
     message: S.String,
   }),

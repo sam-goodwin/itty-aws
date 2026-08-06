@@ -86,56 +86,56 @@ const rules = T.EndpointResolver((p, _) => {
 });
 
 export class AccessDeniedException
-  extends /*@__PURE__*/ S.TaggedErrorClass<AccessDeniedException>()(
+  extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()(
     "AccessDeniedException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class AlreadyExistsException
-  extends /*@__PURE__*/ S.TaggedErrorClass<AlreadyExistsException>()(
+  extends /*@__PURE__*/ S.TaggedError<AlreadyExistsException>()(
     "AlreadyExistsException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withAlreadyExistsError) {}
 export class ConcurrentModificationException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ConcurrentModificationException>()(
+  extends /*@__PURE__*/ S.TaggedError<ConcurrentModificationException>()(
     "ConcurrentModificationException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class ConflictException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ConflictException>()(
+  extends /*@__PURE__*/ S.TaggedError<ConflictException>()(
     "ConflictException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class EntityNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<EntityNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<EntityNotFoundException>()(
     "EntityNotFoundException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class ExpiredException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ExpiredException>()(
+  extends /*@__PURE__*/ S.TaggedError<ExpiredException>()(
     "ExpiredException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(410),
   ).pipe(C.withBadRequestError) {}
 export class GlueEncryptionException
-  extends /*@__PURE__*/ S.TaggedErrorClass<GlueEncryptionException>()(
+  extends /*@__PURE__*/ S.TaggedError<GlueEncryptionException>()(
     "GlueEncryptionException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InternalServiceException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InternalServiceException>()(
+  extends /*@__PURE__*/ S.TaggedError<InternalServiceException>()(
     "InternalServiceException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class InvalidInputException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidInputException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidInputException>()(
     "InvalidInputException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidLakeFormationPrincipal
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidLakeFormationPrincipal>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidLakeFormationPrincipal>()(
     "InvalidLakeFormationPrincipal",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.SyntheticError({
@@ -144,7 +144,7 @@ export class InvalidLakeFormationPrincipal
     }),
   ).pipe(C.withBadRequestError, C.withRetryableError) {}
 export class LastServiceLinkedRoleRegistration
-  extends /*@__PURE__*/ S.TaggedErrorClass<LastServiceLinkedRoleRegistration>()(
+  extends /*@__PURE__*/ S.TaggedError<LastServiceLinkedRoleRegistration>()(
     "LastServiceLinkedRoleRegistration",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.SyntheticError({
@@ -153,58 +153,58 @@ export class LastServiceLinkedRoleRegistration
     }),
   ).pipe(C.withConflictError) {}
 export class OperationTimeoutException
-  extends /*@__PURE__*/ S.TaggedErrorClass<OperationTimeoutException>()(
+  extends /*@__PURE__*/ S.TaggedError<OperationTimeoutException>()(
     "OperationTimeoutException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class PermissionTypeMismatchException
-  extends /*@__PURE__*/ S.TaggedErrorClass<PermissionTypeMismatchException>()(
+  extends /*@__PURE__*/ S.TaggedError<PermissionTypeMismatchException>()(
     "PermissionTypeMismatchException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class ResourceNotReadyException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotReadyException>()(
+  extends /*@__PURE__*/ S.TaggedError<ResourceNotReadyException>()(
     "ResourceNotReadyException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ResourceNumberLimitExceededException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNumberLimitExceededException>()(
+  extends /*@__PURE__*/ S.TaggedError<ResourceNumberLimitExceededException>()(
     "ResourceNumberLimitExceededException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class StatisticsNotReadyYetException
-  extends /*@__PURE__*/ S.TaggedErrorClass<StatisticsNotReadyYetException>()(
+  extends /*@__PURE__*/ S.TaggedError<StatisticsNotReadyYetException>()(
     "StatisticsNotReadyYetException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(420),
   ) {}
 export class ThrottledException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ThrottledException>()(
+  extends /*@__PURE__*/ S.TaggedError<ThrottledException>()(
     "ThrottledException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(T.HttpError(429), T.Retryable({ throttling: true })),
   ).pipe(C.withThrottlingError, C.withRetryableError) {}
 export class TransactionCanceledException
-  extends /*@__PURE__*/ S.TaggedErrorClass<TransactionCanceledException>()(
+  extends /*@__PURE__*/ S.TaggedError<TransactionCanceledException>()(
     "TransactionCanceledException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TransactionCommitInProgressException
-  extends /*@__PURE__*/ S.TaggedErrorClass<TransactionCommitInProgressException>()(
+  extends /*@__PURE__*/ S.TaggedError<TransactionCommitInProgressException>()(
     "TransactionCommitInProgressException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class TransactionCommittedException
-  extends /*@__PURE__*/ S.TaggedErrorClass<TransactionCommittedException>()(
+  extends /*@__PURE__*/ S.TaggedError<TransactionCommittedException>()(
     "TransactionCommittedException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class WorkUnitsNotReadyYetException
-  extends /*@__PURE__*/ S.TaggedErrorClass<WorkUnitsNotReadyYetException>()(
+  extends /*@__PURE__*/ S.TaggedError<WorkUnitsNotReadyYetException>()(
     "WorkUnitsNotReadyYetException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(420),

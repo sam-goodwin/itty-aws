@@ -28,7 +28,7 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
 
 export class Forbidden
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    /*@__PURE__*/ S.TaggedError<Forbidden>()("Forbidden", {
       code: S.Number,
       message: S.String,
     }),
@@ -37,7 +37,7 @@ export class Forbidden
 
 export class SendingSubdomainAlreadyExists
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<SendingSubdomainAlreadyExists>()(
+    /*@__PURE__*/ S.TaggedError<SendingSubdomainAlreadyExists>()(
       "SendingSubdomainAlreadyExists",
       {
         code: S.Number,
@@ -49,7 +49,7 @@ export class SendingSubdomainAlreadyExists
 
 export class SendingSubdomainNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<SendingSubdomainNotFound>()(
+    /*@__PURE__*/ S.TaggedError<SendingSubdomainNotFound>()(
       "SendingSubdomainNotFound",
       {
         code: S.Number,

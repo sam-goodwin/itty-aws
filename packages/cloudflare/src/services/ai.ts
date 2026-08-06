@@ -49,7 +49,7 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
 
 export class AccountNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<AccountNotFound>()("AccountNotFound", {
+    /*@__PURE__*/ S.TaggedError<AccountNotFound>()("AccountNotFound", {
       code: S.Number,
       message: S.String,
     }),
@@ -58,7 +58,7 @@ export class AccountNotFound
 
 export class ModelNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<ModelNotFound>()("ModelNotFound", {
+    /*@__PURE__*/ S.TaggedError<ModelNotFound>()("ModelNotFound", {
       code: S.Number,
       message: S.String,
     }),
@@ -67,7 +67,7 @@ export class ModelNotFound
 
 export class ModelNotSupported
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<ModelNotSupported>()("ModelNotSupported", {
+    /*@__PURE__*/ S.TaggedError<ModelNotSupported>()("ModelNotSupported", {
       code: S.Number,
       message: S.String,
     }),
@@ -76,13 +76,10 @@ export class ModelNotSupported
 
 export class ModelSchemaNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<ModelSchemaNotFound>()(
-      "ModelSchemaNotFound",
-      {
-        code: S.Number,
-        message: S.String,
-      },
-    ),
+    /*@__PURE__*/ S.TaggedError<ModelSchemaNotFound>()("ModelSchemaNotFound", {
+      code: S.Number,
+      message: S.String,
+    }),
     [{ code: 6002 }],
   ) {}
 

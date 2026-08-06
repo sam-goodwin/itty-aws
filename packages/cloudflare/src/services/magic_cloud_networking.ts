@@ -119,19 +119,16 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
 
 export class CatalogSyncNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<CatalogSyncNotFound>()(
-      "CatalogSyncNotFound",
-      {
-        code: S.Number,
-        message: S.String,
-      },
-    ),
+    /*@__PURE__*/ S.TaggedError<CatalogSyncNotFound>()("CatalogSyncNotFound", {
+      code: S.Number,
+      message: S.String,
+    }),
     [{ status: 404 }],
   ) {}
 
 export class CloudIntegrationNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<CloudIntegrationNotFound>()(
+    /*@__PURE__*/ S.TaggedError<CloudIntegrationNotFound>()(
       "CloudIntegrationNotFound",
       {
         code: S.Number,
@@ -143,7 +140,7 @@ export class CloudIntegrationNotFound
 
 export class FeatureNotEnabled
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<FeatureNotEnabled>()("FeatureNotEnabled", {
+    /*@__PURE__*/ S.TaggedError<FeatureNotEnabled>()("FeatureNotEnabled", {
       code: S.Number,
       message: S.String,
     }),
@@ -152,7 +149,7 @@ export class FeatureNotEnabled
 
 export class Forbidden
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    /*@__PURE__*/ S.TaggedError<Forbidden>()("Forbidden", {
       code: S.Number,
       message: S.String,
     }),
@@ -161,7 +158,7 @@ export class Forbidden
 
 export class OnRampNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<OnRampNotFound>()("OnRampNotFound", {
+    /*@__PURE__*/ S.TaggedError<OnRampNotFound>()("OnRampNotFound", {
       code: S.Number,
       message: S.String,
     }),

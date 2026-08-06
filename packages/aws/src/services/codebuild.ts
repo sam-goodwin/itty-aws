@@ -86,32 +86,32 @@ const rules = T.EndpointResolver((p, _) => {
 });
 
 export class AccountLimitExceededException
-  extends /*@__PURE__*/ S.TaggedErrorClass<AccountLimitExceededException>()(
+  extends /*@__PURE__*/ S.TaggedError<AccountLimitExceededException>()(
     "AccountLimitExceededException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class AccountSuspendedException
-  extends /*@__PURE__*/ S.TaggedErrorClass<AccountSuspendedException>()(
+  extends /*@__PURE__*/ S.TaggedError<AccountSuspendedException>()(
     "AccountSuspendedException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class InvalidInputException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidInputException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidInputException>()(
     "InvalidInputException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class OAuthProviderException
-  extends /*@__PURE__*/ S.TaggedErrorClass<OAuthProviderException>()(
+  extends /*@__PURE__*/ S.TaggedError<OAuthProviderException>()(
     "OAuthProviderException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class ResourceAlreadyExistsException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceAlreadyExistsException>()(
+  extends /*@__PURE__*/ S.TaggedError<ResourceAlreadyExistsException>()(
     "ResourceAlreadyExistsException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withAlreadyExistsError) {}
 export class ResourceNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}

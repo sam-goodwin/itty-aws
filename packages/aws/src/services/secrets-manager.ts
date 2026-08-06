@@ -101,62 +101,62 @@ const rules = T.EndpointResolver((p, _) => {
 });
 
 export class DecryptionFailure
-  extends /*@__PURE__*/ S.TaggedErrorClass<DecryptionFailure>()(
+  extends /*@__PURE__*/ S.TaggedError<DecryptionFailure>()(
     "DecryptionFailure",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withServerError) {}
 export class EncryptionFailure
-  extends /*@__PURE__*/ S.TaggedErrorClass<EncryptionFailure>()(
+  extends /*@__PURE__*/ S.TaggedError<EncryptionFailure>()(
     "EncryptionFailure",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withServerError) {}
 export class InternalServiceError
-  extends /*@__PURE__*/ S.TaggedErrorClass<InternalServiceError>()(
+  extends /*@__PURE__*/ S.TaggedError<InternalServiceError>()(
     "InternalServiceError",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withServerError, C.withRetryableError) {}
 export class InvalidNextTokenException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidNextTokenException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidNextTokenException>()(
     "InvalidNextTokenException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withBadRequestError) {}
 export class InvalidParameterException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidParameterException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidParameterException>()(
     "InvalidParameterException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withBadRequestError) {}
 export class InvalidRequestException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidRequestException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidRequestException>()(
     "InvalidRequestException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withBadRequestError) {}
 export class LimitExceededException
-  extends /*@__PURE__*/ S.TaggedErrorClass<LimitExceededException>()(
+  extends /*@__PURE__*/ S.TaggedError<LimitExceededException>()(
     "LimitExceededException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withQuotaError) {}
 export class MalformedPolicyDocumentException
-  extends /*@__PURE__*/ S.TaggedErrorClass<MalformedPolicyDocumentException>()(
+  extends /*@__PURE__*/ S.TaggedError<MalformedPolicyDocumentException>()(
     "MalformedPolicyDocumentException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withBadRequestError) {}
 export class PreconditionNotMetException
-  extends /*@__PURE__*/ S.TaggedErrorClass<PreconditionNotMetException>()(
+  extends /*@__PURE__*/ S.TaggedError<PreconditionNotMetException>()(
     "PreconditionNotMetException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withConflictError) {}
 export class PublicPolicyException
-  extends /*@__PURE__*/ S.TaggedErrorClass<PublicPolicyException>()(
+  extends /*@__PURE__*/ S.TaggedError<PublicPolicyException>()(
     "PublicPolicyException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withBadRequestError) {}
 export class ResourceExistsException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceExistsException>()(
+  extends /*@__PURE__*/ S.TaggedError<ResourceExistsException>()(
     "ResourceExistsException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withConflictError, C.withAlreadyExistsError) {}
 export class ResourceNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withNotFoundError) {}

@@ -89,7 +89,7 @@ const rules = T.EndpointResolver((p, _) => {
 });
 
 export class AccessDeniedException
-  extends /*@__PURE__*/ S.TaggedErrorClass<AccessDeniedException>()(
+  extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()(
     "AccessDeniedException",
     {
       error: S.optional(S.String),
@@ -104,7 +104,7 @@ export class AccessDeniedException
     T.HttpError(400),
   ).pipe(C.withBadRequestError, C.withAuthError) {}
 export class AuthorizationPendingException
-  extends /*@__PURE__*/ S.TaggedErrorClass<AuthorizationPendingException>()(
+  extends /*@__PURE__*/ S.TaggedError<AuthorizationPendingException>()(
     "AuthorizationPendingException",
     {
       error: S.optional(S.String),
@@ -114,7 +114,7 @@ export class AuthorizationPendingException
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ExpiredTokenException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ExpiredTokenException>()(
+  extends /*@__PURE__*/ S.TaggedError<ExpiredTokenException>()(
     "ExpiredTokenException",
     {
       error: S.optional(S.String),
@@ -124,7 +124,7 @@ export class ExpiredTokenException
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InternalServerException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InternalServerException>()(
+  extends /*@__PURE__*/ S.TaggedError<InternalServerException>()(
     "InternalServerException",
     {
       error: S.optional(S.String),
@@ -134,7 +134,7 @@ export class InternalServerException
     T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class InvalidClientException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidClientException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidClientException>()(
     "InvalidClientException",
     {
       error: S.optional(S.String),
@@ -144,7 +144,7 @@ export class InvalidClientException
     T.HttpError(401),
   ).pipe(C.withAuthError) {}
 export class InvalidClientMetadataException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidClientMetadataException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidClientMetadataException>()(
     "InvalidClientMetadataException",
     {
       error: S.optional(S.String),
@@ -154,7 +154,7 @@ export class InvalidClientMetadataException
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidGrantException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidGrantException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidGrantException>()(
     "InvalidGrantException",
     {
       error: S.optional(S.String),
@@ -164,7 +164,7 @@ export class InvalidGrantException
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidRedirectUriException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidRedirectUriException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidRedirectUriException>()(
     "InvalidRedirectUriException",
     {
       error: S.optional(S.String),
@@ -174,7 +174,7 @@ export class InvalidRedirectUriException
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidRequestException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidRequestException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidRequestException>()(
     "InvalidRequestException",
     {
       error: S.optional(S.String),
@@ -189,7 +189,7 @@ export class InvalidRequestException
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidRequestRegionException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidRequestRegionException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidRequestRegionException>()(
     "InvalidRequestRegionException",
     {
       error: S.optional(S.String),
@@ -201,7 +201,7 @@ export class InvalidRequestRegionException
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidScopeException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidScopeException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidScopeException>()(
     "InvalidScopeException",
     {
       error: S.optional(S.String),
@@ -211,7 +211,7 @@ export class InvalidScopeException
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class SlowDownException
-  extends /*@__PURE__*/ S.TaggedErrorClass<SlowDownException>()(
+  extends /*@__PURE__*/ S.TaggedError<SlowDownException>()(
     "SlowDownException",
     {
       error: S.optional(S.String),
@@ -221,7 +221,7 @@ export class SlowDownException
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class UnauthorizedClientException
-  extends /*@__PURE__*/ S.TaggedErrorClass<UnauthorizedClientException>()(
+  extends /*@__PURE__*/ S.TaggedError<UnauthorizedClientException>()(
     "UnauthorizedClientException",
     {
       error: S.optional(S.String),
@@ -231,7 +231,7 @@ export class UnauthorizedClientException
     T.HttpError(400),
   ).pipe(C.withBadRequestError, C.withAuthError) {}
 export class UnsupportedGrantTypeException
-  extends /*@__PURE__*/ S.TaggedErrorClass<UnsupportedGrantTypeException>()(
+  extends /*@__PURE__*/ S.TaggedError<UnsupportedGrantTypeException>()(
     "UnsupportedGrantTypeException",
     {
       error: S.optional(S.String),

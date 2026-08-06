@@ -30,7 +30,7 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
 
 export class CertificateAlreadyDeleted
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<CertificateAlreadyDeleted>()(
+    /*@__PURE__*/ S.TaggedError<CertificateAlreadyDeleted>()(
       "CertificateAlreadyDeleted",
       {
         code: S.Number,
@@ -42,7 +42,7 @@ export class CertificateAlreadyDeleted
 
 export class CertificateAlreadyExists
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<CertificateAlreadyExists>()(
+    /*@__PURE__*/ S.TaggedError<CertificateAlreadyExists>()(
       "CertificateAlreadyExists",
       {
         code: S.Number,
@@ -54,13 +54,10 @@ export class CertificateAlreadyExists
 
 export class CertificateNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<CertificateNotFound>()(
-      "CertificateNotFound",
-      {
-        code: S.Number,
-        message: S.String,
-      },
-    ),
+    /*@__PURE__*/ S.TaggedError<CertificateNotFound>()("CertificateNotFound", {
+      code: S.Number,
+      message: S.String,
+    }),
     [
       { code: 1552, message: { includes: "certificate not found" } },
       { status: 404 },
@@ -69,7 +66,7 @@ export class CertificateNotFound
 
 export class CertificatePendingDeletion
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<CertificatePendingDeletion>()(
+    /*@__PURE__*/ S.TaggedError<CertificatePendingDeletion>()(
       "CertificatePendingDeletion",
       {
         code: S.Number,
@@ -81,7 +78,7 @@ export class CertificatePendingDeletion
 
 export class CertificatePendingDeployment
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<CertificatePendingDeployment>()(
+    /*@__PURE__*/ S.TaggedError<CertificatePendingDeployment>()(
       "CertificatePendingDeployment",
       {
         code: S.Number,
@@ -93,7 +90,7 @@ export class CertificatePendingDeployment
 
 export class Forbidden
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    /*@__PURE__*/ S.TaggedError<Forbidden>()("Forbidden", {
       code: S.Number,
       message: S.String,
     }),
@@ -102,7 +99,7 @@ export class Forbidden
 
 export class HostnameAssociationNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<HostnameAssociationNotFound>()(
+    /*@__PURE__*/ S.TaggedError<HostnameAssociationNotFound>()(
       "HostnameAssociationNotFound",
       {
         code: S.Number,
@@ -120,7 +117,7 @@ export class HostnameAssociationNotFound
 
 export class HostnameCertificateIdRequired
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<HostnameCertificateIdRequired>()(
+    /*@__PURE__*/ S.TaggedError<HostnameCertificateIdRequired>()(
       "HostnameCertificateIdRequired",
       {
         code: S.Number,
@@ -132,7 +129,7 @@ export class HostnameCertificateIdRequired
 
 export class HostnameCertificateInUse
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<HostnameCertificateInUse>()(
+    /*@__PURE__*/ S.TaggedError<HostnameCertificateInUse>()(
       "HostnameCertificateInUse",
       {
         code: S.Number,
@@ -144,7 +141,7 @@ export class HostnameCertificateInUse
 
 export class HostnameCertificateNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<HostnameCertificateNotFound>()(
+    /*@__PURE__*/ S.TaggedError<HostnameCertificateNotFound>()(
       "HostnameCertificateNotFound",
       {
         code: S.Number,
@@ -156,19 +153,16 @@ export class HostnameCertificateNotFound
 
 export class InvalidCertificate
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<InvalidCertificate>()(
-      "InvalidCertificate",
-      {
-        code: S.Number,
-        message: S.String,
-      },
-    ),
+    /*@__PURE__*/ S.TaggedError<InvalidCertificate>()("InvalidCertificate", {
+      code: S.Number,
+      message: S.String,
+    }),
     [{ code: 1408, message: { includes: "Unable to parse certificate" } }],
   ) {}
 
 export class InvalidCertificateId
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<InvalidCertificateId>()(
+    /*@__PURE__*/ S.TaggedError<InvalidCertificateId>()(
       "InvalidCertificateId",
       {
         code: S.Number,
@@ -180,7 +174,7 @@ export class InvalidCertificateId
 
 export class InvalidHostnameConfig
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<InvalidHostnameConfig>()(
+    /*@__PURE__*/ S.TaggedError<InvalidHostnameConfig>()(
       "InvalidHostnameConfig",
       {
         code: S.Number,
@@ -192,7 +186,7 @@ export class InvalidHostnameConfig
 
 export class ZoneClientCertConflict
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<ZoneClientCertConflict>()(
+    /*@__PURE__*/ S.TaggedError<ZoneClientCertConflict>()(
       "ZoneClientCertConflict",
       {
         code: S.Number,

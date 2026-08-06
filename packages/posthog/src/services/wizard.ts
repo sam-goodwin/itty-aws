@@ -13,7 +13,7 @@ export type { PosthogOpError, PosthogOpContext };
 
 export class NotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<NotFound>()("NotFound", {
+    /*@__PURE__*/ S.TaggedError<NotFound>()("NotFound", {
       code: S.Number,
       message: S.String,
     }),

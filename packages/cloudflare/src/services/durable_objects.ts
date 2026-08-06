@@ -24,7 +24,7 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
 
 export class InvalidIdentifier
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<InvalidIdentifier>()("InvalidIdentifier", {
+    /*@__PURE__*/ S.TaggedError<InvalidIdentifier>()("InvalidIdentifier", {
       code: S.Number,
       message: S.String,
     }),
@@ -33,19 +33,16 @@ export class InvalidIdentifier
 
 export class MalformedParameter
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<MalformedParameter>()(
-      "MalformedParameter",
-      {
-        code: S.Number,
-        message: S.String,
-      },
-    ),
+    /*@__PURE__*/ S.TaggedError<MalformedParameter>()("MalformedParameter", {
+      code: S.Number,
+      message: S.String,
+    }),
     [{ code: 10077 }],
   ) {}
 
 export class NamespaceNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<NamespaceNotFound>()("NamespaceNotFound", {
+    /*@__PURE__*/ S.TaggedError<NamespaceNotFound>()("NamespaceNotFound", {
       code: S.Number,
       message: S.String,
     }),

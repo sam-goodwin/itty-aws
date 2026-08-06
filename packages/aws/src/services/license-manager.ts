@@ -89,7 +89,7 @@ const rules = T.EndpointResolver((p, _) => {
 });
 
 export class AccessDeniedException
-  extends /*@__PURE__*/ S.TaggedErrorClass<AccessDeniedException>()(
+  extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()(
     "AccessDeniedException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -98,7 +98,7 @@ export class AccessDeniedException
     ),
   ).pipe(C.withAuthError) {}
 export class AuthorizationException
-  extends /*@__PURE__*/ S.TaggedErrorClass<AuthorizationException>()(
+  extends /*@__PURE__*/ S.TaggedError<AuthorizationException>()(
     "AuthorizationException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -107,7 +107,7 @@ export class AuthorizationException
     ),
   ).pipe(C.withAuthError) {}
 export class ConflictException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ConflictException>()(
+  extends /*@__PURE__*/ S.TaggedError<ConflictException>()(
     "ConflictException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -116,13 +116,13 @@ export class ConflictException
     ),
   ).pipe(C.withConflictError) {}
 export class EntitlementNotAllowedException
-  extends /*@__PURE__*/ S.TaggedErrorClass<EntitlementNotAllowedException>()(
+  extends /*@__PURE__*/ S.TaggedError<EntitlementNotAllowedException>()(
     "EntitlementNotAllowedException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class FailedDependencyException
-  extends /*@__PURE__*/ S.TaggedErrorClass<FailedDependencyException>()(
+  extends /*@__PURE__*/ S.TaggedError<FailedDependencyException>()(
     "FailedDependencyException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -134,7 +134,7 @@ export class FailedDependencyException
     ),
   ) {}
 export class FilterLimitExceededException
-  extends /*@__PURE__*/ S.TaggedErrorClass<FilterLimitExceededException>()(
+  extends /*@__PURE__*/ S.TaggedError<FilterLimitExceededException>()(
     "FilterLimitExceededException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -143,7 +143,7 @@ export class FilterLimitExceededException
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidParameterValueException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidParameterValueException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidParameterValueException>()(
     "InvalidParameterValueException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -155,7 +155,7 @@ export class InvalidParameterValueException
     ),
   ).pipe(C.withBadRequestError) {}
 export class InvalidResourceStateException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidResourceStateException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidResourceStateException>()(
     "InvalidResourceStateException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -164,7 +164,7 @@ export class InvalidResourceStateException
     ),
   ).pipe(C.withBadRequestError) {}
 export class LicenseConfigurationNotFound
-  extends /*@__PURE__*/ S.TaggedErrorClass<LicenseConfigurationNotFound>()(
+  extends /*@__PURE__*/ S.TaggedError<LicenseConfigurationNotFound>()(
     "LicenseConfigurationNotFound",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.SyntheticError({
@@ -173,7 +173,7 @@ export class LicenseConfigurationNotFound
     }),
   ).pipe(C.withNotFoundError) {}
 export class LicenseUsageException
-  extends /*@__PURE__*/ S.TaggedErrorClass<LicenseUsageException>()(
+  extends /*@__PURE__*/ S.TaggedError<LicenseUsageException>()(
     "LicenseUsageException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -182,13 +182,13 @@ export class LicenseUsageException
     ),
   ) {}
 export class NoEntitlementsAllowedException
-  extends /*@__PURE__*/ S.TaggedErrorClass<NoEntitlementsAllowedException>()(
+  extends /*@__PURE__*/ S.TaggedError<NoEntitlementsAllowedException>()(
     "NoEntitlementsAllowedException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class RateLimitExceededException
-  extends /*@__PURE__*/ S.TaggedErrorClass<RateLimitExceededException>()(
+  extends /*@__PURE__*/ S.TaggedError<RateLimitExceededException>()(
     "RateLimitExceededException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -197,7 +197,7 @@ export class RateLimitExceededException
     ),
   ).pipe(C.withThrottlingError) {}
 export class RedirectException
-  extends /*@__PURE__*/ S.TaggedErrorClass<RedirectException>()(
+  extends /*@__PURE__*/ S.TaggedError<RedirectException>()(
     "RedirectException",
     {
       Location: S.optional(S.String).pipe(T.HttpHeader("Location")),
@@ -206,7 +206,7 @@ export class RedirectException
     T.HttpError(308),
   ) {}
 export class ResourceLimitExceededException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceLimitExceededException>()(
+  extends /*@__PURE__*/ S.TaggedError<ResourceLimitExceededException>()(
     "ResourceLimitExceededException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -215,7 +215,7 @@ export class ResourceLimitExceededException
     ),
   ).pipe(C.withBadRequestError) {}
 export class ResourceNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -227,7 +227,7 @@ export class ResourceNotFoundException
     ),
   ).pipe(C.withBadRequestError) {}
 export class ServerInternalException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ServerInternalException>()(
+  extends /*@__PURE__*/ S.TaggedError<ServerInternalException>()(
     "ServerInternalException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.all(
@@ -236,13 +236,13 @@ export class ServerInternalException
     ),
   ).pipe(C.withServerError) {}
 export class UnsupportedDigitalSignatureMethodException
-  extends /*@__PURE__*/ S.TaggedErrorClass<UnsupportedDigitalSignatureMethodException>()(
+  extends /*@__PURE__*/ S.TaggedError<UnsupportedDigitalSignatureMethodException>()(
     "UnsupportedDigitalSignatureMethodException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ValidationException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ValidationException>()(
+  extends /*@__PURE__*/ S.TaggedError<ValidationException>()(
     "ValidationException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),

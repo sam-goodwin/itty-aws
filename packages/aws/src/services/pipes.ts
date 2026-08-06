@@ -84,7 +84,7 @@ const rules = T.EndpointResolver((p, _) => {
 });
 
 export class ConflictException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ConflictException>()(
+  extends /*@__PURE__*/ S.TaggedError<ConflictException>()(
     "ConflictException",
     {
       message: S.String.pipe(T.ErrorMessage()),
@@ -94,7 +94,7 @@ export class ConflictException
     T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class InternalException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InternalException>()(
+  extends /*@__PURE__*/ S.TaggedError<InternalException>()(
     "InternalException",
     {
       message: S.String.pipe(T.ErrorMessage()),
@@ -103,13 +103,13 @@ export class InternalException
     T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class NotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<NotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<NotFoundException>()(
     "NotFoundException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ServiceQuotaExceededException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ServiceQuotaExceededException>()(
+  extends /*@__PURE__*/ S.TaggedError<ServiceQuotaExceededException>()(
     "ServiceQuotaExceededException",
     {
       message: S.String.pipe(T.ErrorMessage()),
@@ -121,7 +121,7 @@ export class ServiceQuotaExceededException
     T.HttpError(402),
   ).pipe(C.withQuotaError) {}
 export class ThrottlingException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ThrottlingException>()(
+  extends /*@__PURE__*/ S.TaggedError<ThrottlingException>()(
     "ThrottlingException",
     {
       message: S.String.pipe(T.ErrorMessage()),
@@ -132,7 +132,7 @@ export class ThrottlingException
     T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export class ValidationException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ValidationException>()(
+  extends /*@__PURE__*/ S.TaggedError<ValidationException>()(
     "ValidationException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),

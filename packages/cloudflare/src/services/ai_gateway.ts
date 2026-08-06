@@ -118,7 +118,7 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
 
 export class AiGatewaySpendingLimitDeprecated
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<AiGatewaySpendingLimitDeprecated>()(
+    /*@__PURE__*/ S.TaggedError<AiGatewaySpendingLimitDeprecated>()(
       "AiGatewaySpendingLimitDeprecated",
       {
         code: S.Number,
@@ -130,7 +130,7 @@ export class AiGatewaySpendingLimitDeprecated
 
 export class DatasetNameAlreadyExists
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<DatasetNameAlreadyExists>()(
+    /*@__PURE__*/ S.TaggedError<DatasetNameAlreadyExists>()(
       "DatasetNameAlreadyExists",
       {
         code: S.Number,
@@ -142,7 +142,7 @@ export class DatasetNameAlreadyExists
 
 export class DatasetNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<DatasetNotFound>()("DatasetNotFound", {
+    /*@__PURE__*/ S.TaggedError<DatasetNotFound>()("DatasetNotFound", {
       code: S.Number,
       message: S.String,
     }),
@@ -151,7 +151,7 @@ export class DatasetNotFound
 
 export class EvaluationNameAlreadyExists
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<EvaluationNameAlreadyExists>()(
+    /*@__PURE__*/ S.TaggedError<EvaluationNameAlreadyExists>()(
       "EvaluationNameAlreadyExists",
       {
         code: S.Number,
@@ -163,19 +163,16 @@ export class EvaluationNameAlreadyExists
 
 export class EvaluationNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<EvaluationNotFound>()(
-      "EvaluationNotFound",
-      {
-        code: S.Number,
-        message: S.String,
-      },
-    ),
+    /*@__PURE__*/ S.TaggedError<EvaluationNotFound>()("EvaluationNotFound", {
+      code: S.Number,
+      message: S.String,
+    }),
     [{ code: 7002 }],
   ) {}
 
 export class GatewayAlreadyExists
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<GatewayAlreadyExists>()(
+    /*@__PURE__*/ S.TaggedError<GatewayAlreadyExists>()(
       "GatewayAlreadyExists",
       {
         code: S.Number,
@@ -187,7 +184,7 @@ export class GatewayAlreadyExists
 
 export class GatewayNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<GatewayNotFound>()("GatewayNotFound", {
+    /*@__PURE__*/ S.TaggedError<GatewayNotFound>()("GatewayNotFound", {
       code: S.Number,
       message: S.String,
     }),
@@ -196,7 +193,7 @@ export class GatewayNotFound
 
 export class NoManualTopup
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<NoManualTopup>()("NoManualTopup", {
+    /*@__PURE__*/ S.TaggedError<NoManualTopup>()("NoManualTopup", {
       code: S.Number,
       message: S.String,
     }),
@@ -205,7 +202,7 @@ export class NoManualTopup
 
 export class ProviderConfigAlreadyExists
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<ProviderConfigAlreadyExists>()(
+    /*@__PURE__*/ S.TaggedError<ProviderConfigAlreadyExists>()(
       "ProviderConfigAlreadyExists",
       {
         code: S.Number,
@@ -217,7 +214,7 @@ export class ProviderConfigAlreadyExists
 
 export class ProviderConfigNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<ProviderConfigNotFound>()(
+    /*@__PURE__*/ S.TaggedError<ProviderConfigNotFound>()(
       "ProviderConfigNotFound",
       {
         code: S.Number,
@@ -229,7 +226,7 @@ export class ProviderConfigNotFound
 
 export class ProviderConfigSecretNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<ProviderConfigSecretNotFound>()(
+    /*@__PURE__*/ S.TaggedError<ProviderConfigSecretNotFound>()(
       "ProviderConfigSecretNotFound",
       {
         code: S.Number,
@@ -241,13 +238,10 @@ export class ProviderConfigSecretNotFound
 
 export class RouteAlreadyExists
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<RouteAlreadyExists>()(
-      "RouteAlreadyExists",
-      {
-        code: S.Number,
-        message: S.String,
-      },
-    ),
+    /*@__PURE__*/ S.TaggedError<RouteAlreadyExists>()("RouteAlreadyExists", {
+      code: S.Number,
+      message: S.String,
+    }),
     [
       { code: 7005, message: { includes: "already exists" } },
       {
@@ -259,7 +253,7 @@ export class RouteAlreadyExists
 
 export class RouteNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<RouteNotFound>()("RouteNotFound", {
+    /*@__PURE__*/ S.TaggedError<RouteNotFound>()("RouteNotFound", {
       code: S.Number,
       message: S.String,
     }),

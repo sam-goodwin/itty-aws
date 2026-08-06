@@ -89,151 +89,151 @@ const rules = T.EndpointResolver((p, _) => {
 });
 
 export class ConflictException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ConflictException>()(
+  extends /*@__PURE__*/ S.TaggedError<ConflictException>()(
     "ConflictException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class CreateChimeWebhookConfigurationException
-  extends /*@__PURE__*/ S.TaggedErrorClass<CreateChimeWebhookConfigurationException>()(
+  extends /*@__PURE__*/ S.TaggedError<CreateChimeWebhookConfigurationException>()(
     "CreateChimeWebhookConfigurationException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class CreateSlackChannelConfigurationException
-  extends /*@__PURE__*/ S.TaggedErrorClass<CreateSlackChannelConfigurationException>()(
+  extends /*@__PURE__*/ S.TaggedError<CreateSlackChannelConfigurationException>()(
     "CreateSlackChannelConfigurationException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class CreateTeamsChannelConfigurationException
-  extends /*@__PURE__*/ S.TaggedErrorClass<CreateTeamsChannelConfigurationException>()(
+  extends /*@__PURE__*/ S.TaggedError<CreateTeamsChannelConfigurationException>()(
     "CreateTeamsChannelConfigurationException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class DeleteChimeWebhookConfigurationException
-  extends /*@__PURE__*/ S.TaggedErrorClass<DeleteChimeWebhookConfigurationException>()(
+  extends /*@__PURE__*/ S.TaggedError<DeleteChimeWebhookConfigurationException>()(
     "DeleteChimeWebhookConfigurationException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class DeleteMicrosoftTeamsUserIdentityException
-  extends /*@__PURE__*/ S.TaggedErrorClass<DeleteMicrosoftTeamsUserIdentityException>()(
+  extends /*@__PURE__*/ S.TaggedError<DeleteMicrosoftTeamsUserIdentityException>()(
     "DeleteMicrosoftTeamsUserIdentityException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class DeleteSlackChannelConfigurationException
-  extends /*@__PURE__*/ S.TaggedErrorClass<DeleteSlackChannelConfigurationException>()(
+  extends /*@__PURE__*/ S.TaggedError<DeleteSlackChannelConfigurationException>()(
     "DeleteSlackChannelConfigurationException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class DeleteSlackUserIdentityException
-  extends /*@__PURE__*/ S.TaggedErrorClass<DeleteSlackUserIdentityException>()(
+  extends /*@__PURE__*/ S.TaggedError<DeleteSlackUserIdentityException>()(
     "DeleteSlackUserIdentityException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class DeleteSlackWorkspaceAuthorizationFault
-  extends /*@__PURE__*/ S.TaggedErrorClass<DeleteSlackWorkspaceAuthorizationFault>()(
+  extends /*@__PURE__*/ S.TaggedError<DeleteSlackWorkspaceAuthorizationFault>()(
     "DeleteSlackWorkspaceAuthorizationFault",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class DeleteTeamsChannelConfigurationException
-  extends /*@__PURE__*/ S.TaggedErrorClass<DeleteTeamsChannelConfigurationException>()(
+  extends /*@__PURE__*/ S.TaggedError<DeleteTeamsChannelConfigurationException>()(
     "DeleteTeamsChannelConfigurationException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class DeleteTeamsConfiguredTeamException
-  extends /*@__PURE__*/ S.TaggedErrorClass<DeleteTeamsConfiguredTeamException>()(
+  extends /*@__PURE__*/ S.TaggedError<DeleteTeamsConfiguredTeamException>()(
     "DeleteTeamsConfiguredTeamException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class DescribeChimeWebhookConfigurationsException
-  extends /*@__PURE__*/ S.TaggedErrorClass<DescribeChimeWebhookConfigurationsException>()(
+  extends /*@__PURE__*/ S.TaggedError<DescribeChimeWebhookConfigurationsException>()(
     "DescribeChimeWebhookConfigurationsException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class DescribeSlackChannelConfigurationsException
-  extends /*@__PURE__*/ S.TaggedErrorClass<DescribeSlackChannelConfigurationsException>()(
+  extends /*@__PURE__*/ S.TaggedError<DescribeSlackChannelConfigurationsException>()(
     "DescribeSlackChannelConfigurationsException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class DescribeSlackUserIdentitiesException
-  extends /*@__PURE__*/ S.TaggedErrorClass<DescribeSlackUserIdentitiesException>()(
+  extends /*@__PURE__*/ S.TaggedError<DescribeSlackUserIdentitiesException>()(
     "DescribeSlackUserIdentitiesException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class DescribeSlackWorkspacesException
-  extends /*@__PURE__*/ S.TaggedErrorClass<DescribeSlackWorkspacesException>()(
+  extends /*@__PURE__*/ S.TaggedError<DescribeSlackWorkspacesException>()(
     "DescribeSlackWorkspacesException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class GetAccountPreferencesException
-  extends /*@__PURE__*/ S.TaggedErrorClass<GetAccountPreferencesException>()(
+  extends /*@__PURE__*/ S.TaggedError<GetAccountPreferencesException>()(
     "GetAccountPreferencesException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class GetTeamsChannelConfigurationException
-  extends /*@__PURE__*/ S.TaggedErrorClass<GetTeamsChannelConfigurationException>()(
+  extends /*@__PURE__*/ S.TaggedError<GetTeamsChannelConfigurationException>()(
     "GetTeamsChannelConfigurationException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class InternalServiceError
-  extends /*@__PURE__*/ S.TaggedErrorClass<InternalServiceError>()(
+  extends /*@__PURE__*/ S.TaggedError<InternalServiceError>()(
     "InternalServiceError",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class InvalidParameterException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidParameterException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidParameterException>()(
     "InvalidParameterException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidRequestException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidRequestException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidRequestException>()(
     "InvalidRequestException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class LimitExceededException
-  extends /*@__PURE__*/ S.TaggedErrorClass<LimitExceededException>()(
+  extends /*@__PURE__*/ S.TaggedError<LimitExceededException>()(
     "LimitExceededException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class ListMicrosoftTeamsConfiguredTeamsException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ListMicrosoftTeamsConfiguredTeamsException>()(
+  extends /*@__PURE__*/ S.TaggedError<ListMicrosoftTeamsConfiguredTeamsException>()(
     "ListMicrosoftTeamsConfiguredTeamsException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class ListMicrosoftTeamsUserIdentitiesException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ListMicrosoftTeamsUserIdentitiesException>()(
+  extends /*@__PURE__*/ S.TaggedError<ListMicrosoftTeamsUserIdentitiesException>()(
     "ListMicrosoftTeamsUserIdentitiesException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class ListTeamsChannelConfigurationsException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ListTeamsChannelConfigurationsException>()(
+  extends /*@__PURE__*/ S.TaggedError<ListTeamsChannelConfigurationsException>()(
     "ListTeamsChannelConfigurationsException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class MicrosoftTeamsTeamNotConfigured
-  extends /*@__PURE__*/ S.TaggedErrorClass<MicrosoftTeamsTeamNotConfigured>()(
+  extends /*@__PURE__*/ S.TaggedError<MicrosoftTeamsTeamNotConfigured>()(
     "MicrosoftTeamsTeamNotConfigured",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.SyntheticError({
@@ -242,19 +242,19 @@ export class MicrosoftTeamsTeamNotConfigured
     }),
   ).pipe(C.withBadRequestError) {}
 export class ResourceNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ServiceUnavailableException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ServiceUnavailableException>()(
+  extends /*@__PURE__*/ S.TaggedError<ServiceUnavailableException>()(
     "ServiceUnavailableException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(429),
   ).pipe(C.withThrottlingError, C.withServerError) {}
 export class SlackWorkspaceNotAuthorized
-  extends /*@__PURE__*/ S.TaggedErrorClass<SlackWorkspaceNotAuthorized>()(
+  extends /*@__PURE__*/ S.TaggedError<SlackWorkspaceNotAuthorized>()(
     "SlackWorkspaceNotAuthorized",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.SyntheticError({
@@ -263,37 +263,37 @@ export class SlackWorkspaceNotAuthorized
     }),
   ).pipe(C.withBadRequestError) {}
 export class TooManyTagsException
-  extends /*@__PURE__*/ S.TaggedErrorClass<TooManyTagsException>()(
+  extends /*@__PURE__*/ S.TaggedError<TooManyTagsException>()(
     "TooManyTagsException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class UnauthorizedException
-  extends /*@__PURE__*/ S.TaggedErrorClass<UnauthorizedException>()(
+  extends /*@__PURE__*/ S.TaggedError<UnauthorizedException>()(
     "UnauthorizedException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class UpdateAccountPreferencesException
-  extends /*@__PURE__*/ S.TaggedErrorClass<UpdateAccountPreferencesException>()(
+  extends /*@__PURE__*/ S.TaggedError<UpdateAccountPreferencesException>()(
     "UpdateAccountPreferencesException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class UpdateChimeWebhookConfigurationException
-  extends /*@__PURE__*/ S.TaggedErrorClass<UpdateChimeWebhookConfigurationException>()(
+  extends /*@__PURE__*/ S.TaggedError<UpdateChimeWebhookConfigurationException>()(
     "UpdateChimeWebhookConfigurationException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class UpdateSlackChannelConfigurationException
-  extends /*@__PURE__*/ S.TaggedErrorClass<UpdateSlackChannelConfigurationException>()(
+  extends /*@__PURE__*/ S.TaggedError<UpdateSlackChannelConfigurationException>()(
     "UpdateSlackChannelConfigurationException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(500),
   ).pipe(C.withServerError) {}
 export class UpdateTeamsChannelConfigurationException
-  extends /*@__PURE__*/ S.TaggedErrorClass<UpdateTeamsChannelConfigurationException>()(
+  extends /*@__PURE__*/ S.TaggedError<UpdateTeamsChannelConfigurationException>()(
     "UpdateTeamsChannelConfigurationException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(500),

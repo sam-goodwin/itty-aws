@@ -22,19 +22,16 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
 
 export class ImageAlreadyExists
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<ImageAlreadyExists>()(
-      "ImageAlreadyExists",
-      {
-        code: S.Number,
-        message: S.String,
-      },
-    ),
+    /*@__PURE__*/ S.TaggedError<ImageAlreadyExists>()("ImageAlreadyExists", {
+      code: S.Number,
+      message: S.String,
+    }),
     [{ code: 5409 }],
   ) {}
 
 export class ImageNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<ImageNotFound>()("ImageNotFound", {
+    /*@__PURE__*/ S.TaggedError<ImageNotFound>()("ImageNotFound", {
       code: S.Number,
       message: S.String,
     }),
@@ -43,7 +40,7 @@ export class ImageNotFound
 
 export class ImagesAccessNotEnabled
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<ImagesAccessNotEnabled>()(
+    /*@__PURE__*/ S.TaggedError<ImagesAccessNotEnabled>()(
       "ImagesAccessNotEnabled",
       {
         code: S.Number,
@@ -55,19 +52,16 @@ export class ImagesAccessNotEnabled
 
 export class InvalidUploadFormat
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<InvalidUploadFormat>()(
-      "InvalidUploadFormat",
-      {
-        code: S.Number,
-        message: S.String,
-      },
-    ),
+    /*@__PURE__*/ S.TaggedError<InvalidUploadFormat>()("InvalidUploadFormat", {
+      code: S.Number,
+      message: S.String,
+    }),
     [{ code: 5415 }],
   ) {}
 
 export class KeyNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<KeyNotFound>()("KeyNotFound", {
+    /*@__PURE__*/ S.TaggedError<KeyNotFound>()("KeyNotFound", {
       code: S.Number,
       message: S.String,
     }),
@@ -76,7 +70,7 @@ export class KeyNotFound
 
 export class VariantAlreadyExists
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<VariantAlreadyExists>()(
+    /*@__PURE__*/ S.TaggedError<VariantAlreadyExists>()(
       "VariantAlreadyExists",
       {
         code: S.Number,
@@ -88,7 +82,7 @@ export class VariantAlreadyExists
 
 export class VariantNameNotAllowed
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<VariantNameNotAllowed>()(
+    /*@__PURE__*/ S.TaggedError<VariantNameNotAllowed>()(
       "VariantNameNotAllowed",
       {
         code: S.Number,
@@ -100,7 +94,7 @@ export class VariantNameNotAllowed
 
 export class VariantNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<VariantNotFound>()("VariantNotFound", {
+    /*@__PURE__*/ S.TaggedError<VariantNotFound>()("VariantNotFound", {
       code: S.Number,
       message: S.String,
     }),

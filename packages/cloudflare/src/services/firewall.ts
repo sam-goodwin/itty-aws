@@ -33,31 +33,25 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
 
 export class AccessRuleNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<AccessRuleNotFound>()(
-      "AccessRuleNotFound",
-      {
-        code: S.Number,
-        message: S.String,
-      },
-    ),
+    /*@__PURE__*/ S.TaggedError<AccessRuleNotFound>()("AccessRuleNotFound", {
+      code: S.Number,
+      message: S.String,
+    }),
     [{ code: 10001, message: { includes: "not_found" } }, { status: 404 }],
   ) {}
 
 export class DuplicateAccessRule
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<DuplicateAccessRule>()(
-      "DuplicateAccessRule",
-      {
-        code: S.Number,
-        message: S.String,
-      },
-    ),
+    /*@__PURE__*/ S.TaggedError<DuplicateAccessRule>()("DuplicateAccessRule", {
+      code: S.Number,
+      message: S.String,
+    }),
     [{ code: 10009, message: { includes: "duplicate_of_existing" } }],
   ) {}
 
 export class DuplicateLockdown
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<DuplicateLockdown>()("DuplicateLockdown", {
+    /*@__PURE__*/ S.TaggedError<DuplicateLockdown>()("DuplicateLockdown", {
       code: S.Number,
       message: S.String,
     }),
@@ -71,7 +65,7 @@ export class DuplicateLockdown
 
 export class DuplicateUaRule
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<DuplicateUaRule>()("DuplicateUaRule", {
+    /*@__PURE__*/ S.TaggedError<DuplicateUaRule>()("DuplicateUaRule", {
       code: S.Number,
       message: S.String,
     }),
@@ -85,7 +79,7 @@ export class DuplicateUaRule
 
 export class Forbidden
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    /*@__PURE__*/ S.TaggedError<Forbidden>()("Forbidden", {
       code: S.Number,
       message: S.String,
     }),
@@ -94,7 +88,7 @@ export class Forbidden
 
 export class LockdownNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<LockdownNotFound>()("LockdownNotFound", {
+    /*@__PURE__*/ S.TaggedError<LockdownNotFound>()("LockdownNotFound", {
       code: S.Number,
       message: S.String,
     }),
@@ -106,7 +100,7 @@ export class LockdownNotFound
 
 export class UaRuleNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<UaRuleNotFound>()("UaRuleNotFound", {
+    /*@__PURE__*/ S.TaggedError<UaRuleNotFound>()("UaRuleNotFound", {
       code: S.Number,
       message: S.String,
     }),

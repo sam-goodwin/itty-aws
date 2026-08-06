@@ -42,7 +42,7 @@ import * as Category from "@distilled.cloud/core/category";
  * a shared HTTP status class. Carries the raw `code` string Turso sometimes
  * includes in its error body.
  */
-export class UnknownTursoError extends Schema.TaggedErrorClass<UnknownTursoError>()(
+export class UnknownTursoError extends Schema.TaggedError<UnknownTursoError>()(
   "UnknownTursoError",
   {
     code: Schema.optional(Schema.String),
@@ -55,7 +55,7 @@ export class UnknownTursoError extends Schema.TaggedErrorClass<UnknownTursoError
  * Schema parse error wrapper — kept for parity with the distilled turso SDK's
  * error surface.
  */
-export class TursoParseError extends Schema.TaggedErrorClass<TursoParseError>()(
+export class TursoParseError extends Schema.TaggedError<TursoParseError>()(
   "TursoParseError",
   {
     body: Schema.Unknown,

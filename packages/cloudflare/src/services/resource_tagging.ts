@@ -26,7 +26,7 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
 
 export class Forbidden
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    /*@__PURE__*/ S.TaggedError<Forbidden>()("Forbidden", {
       code: S.Number,
       message: S.String,
     }),
@@ -35,7 +35,7 @@ export class Forbidden
 
 export class TagPreconditionFailed
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<TagPreconditionFailed>()(
+    /*@__PURE__*/ S.TaggedError<TagPreconditionFailed>()(
       "TagPreconditionFailed",
       {
         code: S.Number,
@@ -47,7 +47,7 @@ export class TagPreconditionFailed
 
 export class ZoneTagResourceNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<ZoneTagResourceNotFound>()(
+    /*@__PURE__*/ S.TaggedError<ZoneTagResourceNotFound>()(
       "ZoneTagResourceNotFound",
       {
         code: S.Number,

@@ -86,7 +86,7 @@ const rules = T.EndpointResolver((p, _) => {
 });
 
 export class AlreadyExistsException
-  extends /*@__PURE__*/ S.TaggedErrorClass<AlreadyExistsException>()(
+  extends /*@__PURE__*/ S.TaggedError<AlreadyExistsException>()(
     "AlreadyExistsException",
     {
       Code: S.optional(S.String),
@@ -98,7 +98,7 @@ export class AlreadyExistsException
     },
   ).pipe(C.withAlreadyExistsError) {}
 export class ConflictException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ConflictException>()(
+  extends /*@__PURE__*/ S.TaggedError<ConflictException>()(
     "ConflictException",
     {
       Code: S.optional(S.String),
@@ -112,7 +112,7 @@ export class ConflictException
     ),
   ).pipe(C.withConflictError) {}
 export class DependencyFailureException
-  extends /*@__PURE__*/ S.TaggedErrorClass<DependencyFailureException>()(
+  extends /*@__PURE__*/ S.TaggedError<DependencyFailureException>()(
     "DependencyFailureException",
     {
       Code: S.optional(S.String),
@@ -122,7 +122,7 @@ export class DependencyFailureException
     },
   ) {}
 export class InvalidParameterValueException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidParameterValueException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidParameterValueException>()(
     "InvalidParameterValueException",
     {
       Code: S.optional(S.String),
@@ -132,7 +132,7 @@ export class InvalidParameterValueException
     },
   ) {}
 export class InvalidRequestException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidRequestException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidRequestException>()(
     "InvalidRequestException",
     {
       Code: S.optional(S.String),
@@ -142,7 +142,7 @@ export class InvalidRequestException
     },
   ) {}
 export class InvalidResourceStateException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidResourceStateException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidResourceStateException>()(
     "InvalidResourceStateException",
     {
       Code: S.optional(S.String),
@@ -152,7 +152,7 @@ export class InvalidResourceStateException
     },
   ) {}
 export class LimitExceededException
-  extends /*@__PURE__*/ S.TaggedErrorClass<LimitExceededException>()(
+  extends /*@__PURE__*/ S.TaggedError<LimitExceededException>()(
     "LimitExceededException",
     {
       Code: S.optional(S.String),
@@ -162,7 +162,7 @@ export class LimitExceededException
     },
   ) {}
 export class MissingParameterValueException
-  extends /*@__PURE__*/ S.TaggedErrorClass<MissingParameterValueException>()(
+  extends /*@__PURE__*/ S.TaggedError<MissingParameterValueException>()(
     "MissingParameterValueException",
     {
       Code: S.optional(S.String),
@@ -172,7 +172,7 @@ export class MissingParameterValueException
     },
   ) {}
 export class ResourceNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
     {
       Code: S.optional(S.String),
@@ -182,7 +182,7 @@ export class ResourceNotFoundException
     },
   ) {}
 export class ServiceUnavailableException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ServiceUnavailableException>()(
+  extends /*@__PURE__*/ S.TaggedError<ServiceUnavailableException>()(
     "ServiceUnavailableException",
     {
       Code: S.optional(S.String),

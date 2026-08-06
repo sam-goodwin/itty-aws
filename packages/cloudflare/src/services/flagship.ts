@@ -28,19 +28,16 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
 
 export class FlagshipAppNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<FlagshipAppNotFound>()(
-      "FlagshipAppNotFound",
-      {
-        code: S.Number,
-        message: S.String,
-      },
-    ),
+    /*@__PURE__*/ S.TaggedError<FlagshipAppNotFound>()("FlagshipAppNotFound", {
+      code: S.Number,
+      message: S.String,
+    }),
     [{ status: 404, message: { includes: "App not found" } }],
   ) {}
 
 export class FlagshipFlagAlreadyExists
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<FlagshipFlagAlreadyExists>()(
+    /*@__PURE__*/ S.TaggedError<FlagshipFlagAlreadyExists>()(
       "FlagshipFlagAlreadyExists",
       {
         code: S.Number,
@@ -52,7 +49,7 @@ export class FlagshipFlagAlreadyExists
 
 export class FlagshipFlagNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<FlagshipFlagNotFound>()(
+    /*@__PURE__*/ S.TaggedError<FlagshipFlagNotFound>()(
       "FlagshipFlagNotFound",
       {
         code: S.Number,

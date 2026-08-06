@@ -84,25 +84,25 @@ const rules = T.EndpointResolver((p, _) => {
 });
 
 export class ForbiddenException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ForbiddenException>()(
+  extends /*@__PURE__*/ S.TaggedError<ForbiddenException>()(
     "ForbiddenException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class GoneException
-  extends /*@__PURE__*/ S.TaggedErrorClass<GoneException>()(
+  extends /*@__PURE__*/ S.TaggedError<GoneException>()(
     "GoneException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(410),
   ).pipe(C.withBadRequestError) {}
 export class LimitExceededException
-  extends /*@__PURE__*/ S.TaggedErrorClass<LimitExceededException>()(
+  extends /*@__PURE__*/ S.TaggedError<LimitExceededException>()(
     "LimitExceededException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export class PayloadTooLargeException
-  extends /*@__PURE__*/ S.TaggedErrorClass<PayloadTooLargeException>()(
+  extends /*@__PURE__*/ S.TaggedError<PayloadTooLargeException>()(
     "PayloadTooLargeException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(413),

@@ -40,7 +40,7 @@ import * as Category from "@distilled.cloud/core/category";
  * map to a known HTTP status class. The `reason` field mirrors the
  * `reason` from the Kubernetes `v1.Status` object.
  */
-export class UnknownKubernetesError extends Schema.TaggedErrorClass<UnknownKubernetesError>()(
+export class UnknownKubernetesError extends Schema.TaggedError<UnknownKubernetesError>()(
   "UnknownKubernetesError",
   {
     reason: Schema.optional(Schema.String),
@@ -53,7 +53,7 @@ export class UnknownKubernetesError extends Schema.TaggedErrorClass<UnknownKuber
  * Returned when a Kubernetes API response cannot be decoded
  * against the expected schema (kept for v0 surface parity).
  */
-export class KubernetesParseError extends Schema.TaggedErrorClass<KubernetesParseError>()(
+export class KubernetesParseError extends Schema.TaggedError<KubernetesParseError>()(
   "KubernetesParseError",
   {
     body: Schema.Unknown,

@@ -25,7 +25,7 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
 
 export class CertificateAlreadyDeleted
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<CertificateAlreadyDeleted>()(
+    /*@__PURE__*/ S.TaggedError<CertificateAlreadyDeleted>()(
       "CertificateAlreadyDeleted",
       {
         code: S.Number,
@@ -37,7 +37,7 @@ export class CertificateAlreadyDeleted
 
 export class CertificateAlreadyExists
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<CertificateAlreadyExists>()(
+    /*@__PURE__*/ S.TaggedError<CertificateAlreadyExists>()(
       "CertificateAlreadyExists",
       {
         code: S.Number,
@@ -49,13 +49,10 @@ export class CertificateAlreadyExists
 
 export class CertificateNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<CertificateNotFound>()(
-      "CertificateNotFound",
-      {
-        code: S.Number,
-        message: S.String,
-      },
-    ),
+    /*@__PURE__*/ S.TaggedError<CertificateNotFound>()("CertificateNotFound", {
+      code: S.Number,
+      message: S.String,
+    }),
     [
       { code: 1472, message: { includes: "Certificate not found" } },
       { status: 404 },

@@ -43,7 +43,7 @@ import * as Category from "@distilled.cloud/core/category";
  * Catch-all for EAS GraphQL errors that don't match any other tagged class.
  * Carries the raw `errors[]` envelope and a best-effort `code` / `message`.
  */
-export class UnknownEasError extends Schema.TaggedErrorClass<UnknownEasError>()(
+export class UnknownEasError extends Schema.TaggedError<UnknownEasError>()(
   "UnknownEasError",
   {
     code: Schema.optional(Schema.String),
@@ -53,7 +53,7 @@ export class UnknownEasError extends Schema.TaggedErrorClass<UnknownEasError>()(
 ).pipe(Category.withServerError) {}
 
 /** Schema parse error wrapper (response body did not match the operation schema). */
-export class EasParseError extends Schema.TaggedErrorClass<EasParseError>()(
+export class EasParseError extends Schema.TaggedError<EasParseError>()(
   "EasParseError",
   {
     body: Schema.Unknown,
@@ -65,7 +65,7 @@ export class EasParseError extends Schema.TaggedErrorClass<EasParseError>()(
  * The installed eas-cli / API client is too old. Returned with errorCode
  * `EAS_CLI_UPGRADE_REQUIRED_ERROR` after a backward-incompatible schema change.
  */
-export class EasUpgradeRequired extends Schema.TaggedErrorClass<EasUpgradeRequired>()(
+export class EasUpgradeRequired extends Schema.TaggedError<EasUpgradeRequired>()(
   "EasUpgradeRequired",
   {
     message: Schema.String,
@@ -73,7 +73,7 @@ export class EasUpgradeRequired extends Schema.TaggedErrorClass<EasUpgradeRequir
 ).pipe(Category.withServerError) {}
 
 /** Generic input validation failure (errorCode `VALIDATION_ERROR`). */
-export class EasValidationError extends Schema.TaggedErrorClass<EasValidationError>()(
+export class EasValidationError extends Schema.TaggedError<EasValidationError>()(
   "EasValidationError",
   {
     message: Schema.String,
@@ -84,7 +84,7 @@ export class EasValidationError extends Schema.TaggedErrorClass<EasValidationErr
  * Build was submitted using a deprecated job format
  * (errorCode `TURTLE_DEPRECATED_JOB_FORMAT`).
  */
-export class EasDeprecatedJobFormat extends Schema.TaggedErrorClass<EasDeprecatedJobFormat>()(
+export class EasDeprecatedJobFormat extends Schema.TaggedError<EasDeprecatedJobFormat>()(
   "EasDeprecatedJobFormat",
   {
     message: Schema.String,
@@ -92,7 +92,7 @@ export class EasDeprecatedJobFormat extends Schema.TaggedErrorClass<EasDeprecate
 ).pipe(Category.withServerError) {}
 
 /** EAS Build is temporarily down for maintenance. */
-export class EasBuildDownForMaintenance extends Schema.TaggedErrorClass<EasBuildDownForMaintenance>()(
+export class EasBuildDownForMaintenance extends Schema.TaggedError<EasBuildDownForMaintenance>()(
   "EasBuildDownForMaintenance",
   {
     message: Schema.String,
@@ -100,7 +100,7 @@ export class EasBuildDownForMaintenance extends Schema.TaggedErrorClass<EasBuild
 ).pipe(Category.withServerError) {}
 
 /** Account is on the free tier and EAS Build has been disabled for it. */
-export class EasBuildFreeTierDisabled extends Schema.TaggedErrorClass<EasBuildFreeTierDisabled>()(
+export class EasBuildFreeTierDisabled extends Schema.TaggedError<EasBuildFreeTierDisabled>()(
   "EasBuildFreeTierDisabled",
   {
     message: Schema.String,
@@ -109,7 +109,7 @@ export class EasBuildFreeTierDisabled extends Schema.TaggedErrorClass<EasBuildFr
 ).pipe(Category.withServerError) {}
 
 /** Free-tier monthly build quota has been exhausted. */
-export class EasBuildFreeTierLimitExceeded extends Schema.TaggedErrorClass<EasBuildFreeTierLimitExceeded>()(
+export class EasBuildFreeTierLimitExceeded extends Schema.TaggedError<EasBuildFreeTierLimitExceeded>()(
   "EasBuildFreeTierLimitExceeded",
   {
     message: Schema.String,
@@ -118,7 +118,7 @@ export class EasBuildFreeTierLimitExceeded extends Schema.TaggedErrorClass<EasBu
 ).pipe(Category.withServerError) {}
 
 /** Account already has too many pending builds queued (back-pressure). */
-export class EasBuildTooManyPendingBuilds extends Schema.TaggedErrorClass<EasBuildTooManyPendingBuilds>()(
+export class EasBuildTooManyPendingBuilds extends Schema.TaggedError<EasBuildTooManyPendingBuilds>()(
   "EasBuildTooManyPendingBuilds",
   {
     message: Schema.String,
@@ -130,7 +130,7 @@ export class EasBuildTooManyPendingBuilds extends Schema.TaggedErrorClass<EasBui
  * (errorCode `EAS_BUILD_RESOURCE_CLASS_NOT_AVAILABLE_IN_FREE_TIER`).
  * Upgrade the account or pick a free-tier-eligible resource class.
  */
-export class EasBuildResourceClassNotAvailableInFreeTier extends Schema.TaggedErrorClass<EasBuildResourceClassNotAvailableInFreeTier>()(
+export class EasBuildResourceClassNotAvailableInFreeTier extends Schema.TaggedError<EasBuildResourceClassNotAvailableInFreeTier>()(
   "EasBuildResourceClassNotAvailableInFreeTier",
   {
     message: Schema.String,
@@ -141,7 +141,7 @@ export class EasBuildResourceClassNotAvailableInFreeTier extends Schema.TaggedEr
  * The requested legacy build resource class has been retired
  * (errorCode `EAS_BUILD_LEGACY_RESOURCE_CLASS_NOT_AVAILABLE`).
  */
-export class EasBuildLegacyResourceClassNotAvailable extends Schema.TaggedErrorClass<EasBuildLegacyResourceClassNotAvailable>()(
+export class EasBuildLegacyResourceClassNotAvailable extends Schema.TaggedError<EasBuildLegacyResourceClassNotAvailable>()(
   "EasBuildLegacyResourceClassNotAvailable",
   {
     message: Schema.String,
@@ -152,7 +152,7 @@ export class EasBuildLegacyResourceClassNotAvailable extends Schema.TaggedErrorC
  * Update channel with the same name already exists for the app
  * (errorCode `CHANNEL_ALREADY_EXISTS`).
  */
-export class EasChannelAlreadyExists extends Schema.TaggedErrorClass<EasChannelAlreadyExists>()(
+export class EasChannelAlreadyExists extends Schema.TaggedError<EasChannelAlreadyExists>()(
   "EasChannelAlreadyExists",
   {
     message: Schema.String,
@@ -166,7 +166,7 @@ export class EasChannelAlreadyExists extends Schema.TaggedErrorClass<EasChannelA
  * (errorCode `UNAUTHORIZED_ERROR`). Distinct from a missing/invalid token —
  * the token is valid but lacks the privacy/role grant required for the request.
  */
-export class EasUnauthorizedOperation extends Schema.TaggedErrorClass<EasUnauthorizedOperation>()(
+export class EasUnauthorizedOperation extends Schema.TaggedError<EasUnauthorizedOperation>()(
   "EasUnauthorizedOperation",
   {
     message: Schema.String,
@@ -177,7 +177,7 @@ export class EasUnauthorizedOperation extends Schema.TaggedErrorClass<EasUnautho
  * The Expo experience (project) referenced by slug/account does not exist
  * (errorCode `EXPERIENCE_NOT_FOUND`).
  */
-export class EasExperienceNotFound extends Schema.TaggedErrorClass<EasExperienceNotFound>()(
+export class EasExperienceNotFound extends Schema.TaggedError<EasExperienceNotFound>()(
   "EasExperienceNotFound",
   {
     message: Schema.String,
@@ -189,7 +189,7 @@ export class EasExperienceNotFound extends Schema.TaggedErrorClass<EasExperience
  * (errorCode `APP_NO_DEV_DOMAIN_NAME`). Required before creating
  * a hosting deployment URL — call `assignDevDomainName` first.
  */
-export class EasAppNoDevDomainName extends Schema.TaggedErrorClass<EasAppNoDevDomainName>()(
+export class EasAppNoDevDomainName extends Schema.TaggedError<EasAppNoDevDomainName>()(
   "EasAppNoDevDomainName",
   {
     message: Schema.String,
@@ -200,7 +200,7 @@ export class EasAppNoDevDomainName extends Schema.TaggedErrorClass<EasAppNoDevDo
  * The requested dev domain name is already taken by another app
  * (errorCode `DEV_DOMAIN_NAME_TAKEN`).
  */
-export class EasDevDomainNameTaken extends Schema.TaggedErrorClass<EasDevDomainNameTaken>()(
+export class EasDevDomainNameTaken extends Schema.TaggedError<EasDevDomainNameTaken>()(
   "EasDevDomainNameTaken",
   {
     message: Schema.String,

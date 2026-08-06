@@ -158,17 +158,17 @@ const rules = T.EndpointResolver((p, _) => {
 });
 
 export class AccessDeniedException
-  extends /*@__PURE__*/ S.TaggedErrorClass<AccessDeniedException>()(
+  extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()(
     "AccessDeniedException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withAuthError) {}
 export class ConcurrentModificationException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ConcurrentModificationException>()(
+  extends /*@__PURE__*/ S.TaggedError<ConcurrentModificationException>()(
     "ConcurrentModificationException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withConflictError, C.withRetryableError) {}
 export class EventBusHasRules
-  extends /*@__PURE__*/ S.TaggedErrorClass<EventBusHasRules>()(
+  extends /*@__PURE__*/ S.TaggedError<EventBusHasRules>()(
     "EventBusHasRules",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.SyntheticError({
@@ -177,57 +177,57 @@ export class EventBusHasRules
     }),
   ).pipe(C.withConflictError) {}
 export class IllegalStatusException
-  extends /*@__PURE__*/ S.TaggedErrorClass<IllegalStatusException>()(
+  extends /*@__PURE__*/ S.TaggedError<IllegalStatusException>()(
     "IllegalStatusException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withConflictError) {}
 export class InternalException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InternalException>()(
+  extends /*@__PURE__*/ S.TaggedError<InternalException>()(
     "InternalException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withServerError, C.withRetryableError) {}
 export class InvalidEventPatternException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidEventPatternException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidEventPatternException>()(
     "InvalidEventPatternException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withBadRequestError) {}
 export class InvalidStateException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidStateException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidStateException>()(
     "InvalidStateException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withConflictError) {}
 export class LimitExceededException
-  extends /*@__PURE__*/ S.TaggedErrorClass<LimitExceededException>()(
+  extends /*@__PURE__*/ S.TaggedError<LimitExceededException>()(
     "LimitExceededException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withQuotaError) {}
 export class ManagedRuleException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ManagedRuleException>()(
+  extends /*@__PURE__*/ S.TaggedError<ManagedRuleException>()(
     "ManagedRuleException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withBadRequestError) {}
 export class OperationDisabledException
-  extends /*@__PURE__*/ S.TaggedErrorClass<OperationDisabledException>()(
+  extends /*@__PURE__*/ S.TaggedError<OperationDisabledException>()(
     "OperationDisabledException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withBadRequestError) {}
 export class PolicyLengthExceededException
-  extends /*@__PURE__*/ S.TaggedErrorClass<PolicyLengthExceededException>()(
+  extends /*@__PURE__*/ S.TaggedError<PolicyLengthExceededException>()(
     "PolicyLengthExceededException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withQuotaError) {}
 export class ResourceAlreadyExistsException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceAlreadyExistsException>()(
+  extends /*@__PURE__*/ S.TaggedError<ResourceAlreadyExistsException>()(
     "ResourceAlreadyExistsException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withAlreadyExistsError) {}
 export class ResourceNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export class ThrottlingException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ThrottlingException>()(
+  extends /*@__PURE__*/ S.TaggedError<ThrottlingException>()(
     "ThrottlingException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ).pipe(C.withThrottlingError, C.withRetryableError) {}

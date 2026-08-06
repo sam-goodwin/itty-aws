@@ -84,7 +84,7 @@ const rules = T.EndpointResolver((p, _) => {
 });
 
 export class DependencyException
-  extends /*@__PURE__*/ S.TaggedErrorClass<DependencyException>()(
+  extends /*@__PURE__*/ S.TaggedError<DependencyException>()(
     "DependencyException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -93,7 +93,7 @@ export class DependencyException
     T.HttpError(531),
   ).pipe(C.withServerError) {}
 export class InvalidParameterException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidParameterException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidParameterException>()(
     "InvalidParameterException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -102,13 +102,13 @@ export class InvalidParameterException
     T.HttpError(431),
   ) {}
 export class ResourceInUseException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceInUseException>()(
+  extends /*@__PURE__*/ S.TaggedError<ResourceInUseException>()(
     "ResourceInUseException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class ResourceLimitExceededException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceLimitExceededException>()(
+  extends /*@__PURE__*/ S.TaggedError<ResourceLimitExceededException>()(
     "ResourceLimitExceededException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -117,13 +117,13 @@ export class ResourceLimitExceededException
     T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export class ResourceNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(434),
   ) {}
 export class ServiceQuotaExceededException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ServiceQuotaExceededException>()(
+  extends /*@__PURE__*/ S.TaggedError<ServiceQuotaExceededException>()(
     "ServiceQuotaExceededException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),

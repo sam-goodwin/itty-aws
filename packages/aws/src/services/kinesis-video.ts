@@ -87,85 +87,85 @@ const rules = T.EndpointResolver((p, _) => {
 });
 
 export class AccessDeniedException
-  extends /*@__PURE__*/ S.TaggedErrorClass<AccessDeniedException>()(
+  extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()(
     "AccessDeniedException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(401),
   ).pipe(C.withAuthError) {}
 export class AccountChannelLimitExceededException
-  extends /*@__PURE__*/ S.TaggedErrorClass<AccountChannelLimitExceededException>()(
+  extends /*@__PURE__*/ S.TaggedError<AccountChannelLimitExceededException>()(
     "AccountChannelLimitExceededException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class AccountStreamLimitExceededException
-  extends /*@__PURE__*/ S.TaggedErrorClass<AccountStreamLimitExceededException>()(
+  extends /*@__PURE__*/ S.TaggedError<AccountStreamLimitExceededException>()(
     "AccountStreamLimitExceededException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ClientLimitExceededException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ClientLimitExceededException>()(
+  extends /*@__PURE__*/ S.TaggedError<ClientLimitExceededException>()(
     "ClientLimitExceededException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class DeviceStreamLimitExceededException
-  extends /*@__PURE__*/ S.TaggedErrorClass<DeviceStreamLimitExceededException>()(
+  extends /*@__PURE__*/ S.TaggedError<DeviceStreamLimitExceededException>()(
     "DeviceStreamLimitExceededException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidArgumentException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidArgumentException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidArgumentException>()(
     "InvalidArgumentException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidDeviceException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidDeviceException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidDeviceException>()(
     "InvalidDeviceException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InvalidResourceFormatException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidResourceFormatException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidResourceFormatException>()(
     "InvalidResourceFormatException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class NoDataRetentionException
-  extends /*@__PURE__*/ S.TaggedErrorClass<NoDataRetentionException>()(
+  extends /*@__PURE__*/ S.TaggedError<NoDataRetentionException>()(
     "NoDataRetentionException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class NotAuthorizedException
-  extends /*@__PURE__*/ S.TaggedErrorClass<NotAuthorizedException>()(
+  extends /*@__PURE__*/ S.TaggedError<NotAuthorizedException>()(
     "NotAuthorizedException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(401),
   ).pipe(C.withAuthError) {}
 export class ResourceInUseException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceInUseException>()(
+  extends /*@__PURE__*/ S.TaggedError<ResourceInUseException>()(
     "ResourceInUseException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ResourceNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class StreamEdgeConfigurationNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<StreamEdgeConfigurationNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<StreamEdgeConfigurationNotFoundException>()(
     "StreamEdgeConfigurationNotFoundException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class StreamNotActive
-  extends /*@__PURE__*/ S.TaggedErrorClass<StreamNotActive>()(
+  extends /*@__PURE__*/ S.TaggedError<StreamNotActive>()(
     "StreamNotActive",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.SyntheticError({
@@ -174,13 +174,13 @@ export class StreamNotActive
     }),
   ).pipe(C.withConflictError, C.withRetryableError) {}
 export class TagsPerResourceExceededLimitException
-  extends /*@__PURE__*/ S.TaggedErrorClass<TagsPerResourceExceededLimitException>()(
+  extends /*@__PURE__*/ S.TaggedError<TagsPerResourceExceededLimitException>()(
     "TagsPerResourceExceededLimitException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class VersionMismatchException
-  extends /*@__PURE__*/ S.TaggedErrorClass<VersionMismatchException>()(
+  extends /*@__PURE__*/ S.TaggedError<VersionMismatchException>()(
     "VersionMismatchException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),

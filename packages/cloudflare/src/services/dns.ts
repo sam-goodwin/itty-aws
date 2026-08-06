@@ -81,7 +81,7 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
 
 export class AclNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<AclNotFound>()("AclNotFound", {
+    /*@__PURE__*/ S.TaggedError<AclNotFound>()("AclNotFound", {
       code: S.Number,
       message: S.String,
     }),
@@ -90,7 +90,7 @@ export class AclNotFound
 
 export class DnsRecordAlreadyExists
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<DnsRecordAlreadyExists>()(
+    /*@__PURE__*/ S.TaggedError<DnsRecordAlreadyExists>()(
       "DnsRecordAlreadyExists",
       {
         code: S.Number,
@@ -106,7 +106,7 @@ export class DnsRecordAlreadyExists
 
 export class DnsSettingNotAvailable
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<DnsSettingNotAvailable>()(
+    /*@__PURE__*/ S.TaggedError<DnsSettingNotAvailable>()(
       "DnsSettingNotAvailable",
       {
         code: S.Number,
@@ -118,7 +118,7 @@ export class DnsSettingNotAvailable
 
 export class Forbidden
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    /*@__PURE__*/ S.TaggedError<Forbidden>()("Forbidden", {
       code: S.Number,
       message: S.String,
     }),
@@ -127,7 +127,7 @@ export class Forbidden
 
 export class IncomingZoneTransferNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<IncomingZoneTransferNotFound>()(
+    /*@__PURE__*/ S.TaggedError<IncomingZoneTransferNotFound>()(
       "IncomingZoneTransferNotFound",
       {
         code: S.Number,
@@ -139,7 +139,7 @@ export class IncomingZoneTransferNotFound
 
 export class InternalDnsNotAvailable
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<InternalDnsNotAvailable>()(
+    /*@__PURE__*/ S.TaggedError<InternalDnsNotAvailable>()(
       "InternalDnsNotAvailable",
       {
         code: S.Number,
@@ -151,7 +151,7 @@ export class InternalDnsNotAvailable
 
 export class OutgoingZoneTransferNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<OutgoingZoneTransferNotFound>()(
+    /*@__PURE__*/ S.TaggedError<OutgoingZoneTransferNotFound>()(
       "OutgoingZoneTransferNotFound",
       {
         code: S.Number,
@@ -163,7 +163,7 @@ export class OutgoingZoneTransferNotFound
 
 export class OutgoingZoneTransfersNotAllowed
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<OutgoingZoneTransfersNotAllowed>()(
+    /*@__PURE__*/ S.TaggedError<OutgoingZoneTransfersNotAllowed>()(
       "OutgoingZoneTransfersNotAllowed",
       {
         code: S.Number,
@@ -175,7 +175,7 @@ export class OutgoingZoneTransfersNotAllowed
 
 export class PeerNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<PeerNotFound>()("PeerNotFound", {
+    /*@__PURE__*/ S.TaggedError<PeerNotFound>()("PeerNotFound", {
       code: S.Number,
       message: S.String,
     }),
@@ -184,7 +184,7 @@ export class PeerNotFound
 
 export class TsigNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<TsigNotFound>()("TsigNotFound", {
+    /*@__PURE__*/ S.TaggedError<TsigNotFound>()("TsigNotFound", {
       code: S.Number,
       message: S.String,
     }),
@@ -193,7 +193,7 @@ export class TsigNotFound
 
 export class ViewNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<ViewNotFound>()("ViewNotFound", {
+    /*@__PURE__*/ S.TaggedError<ViewNotFound>()("ViewNotFound", {
       code: S.Number,
       message: S.String,
     }),

@@ -86,7 +86,7 @@ const rules = T.EndpointResolver((p, _) => {
 });
 
 export class AccessDeniedException
-  extends /*@__PURE__*/ S.TaggedErrorClass<AccessDeniedException>()(
+  extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()(
     "AccessDeniedException",
     {
       code: S.optional(S.String),
@@ -95,43 +95,43 @@ export class AccessDeniedException
     T.HttpError(403),
   ).pipe(C.withAuthError) {}
 export class ConflictException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ConflictException>()(
+  extends /*@__PURE__*/ S.TaggedError<ConflictException>()(
     "ConflictException",
     { message: S.String.pipe(T.ErrorMessage()) },
     T.HttpError(409),
   ).pipe(C.withConflictError) {}
 export class DryRunException
-  extends /*@__PURE__*/ S.TaggedErrorClass<DryRunException>()(
+  extends /*@__PURE__*/ S.TaggedError<DryRunException>()(
     "DryRunException",
     { message: S.String.pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class InsufficientCapacityException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InsufficientCapacityException>()(
+  extends /*@__PURE__*/ S.TaggedError<InsufficientCapacityException>()(
     "InsufficientCapacityException",
     { message: S.String.pipe(T.ErrorMessage()) },
     T.all(T.HttpError(400), T.Retryable()),
   ).pipe(C.withBadRequestError, C.withRetryableError) {}
 export class InternalServerException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InternalServerException>()(
+  extends /*@__PURE__*/ S.TaggedError<InternalServerException>()(
     "InternalServerException",
     { message: S.String.pipe(T.ErrorMessage()) },
     T.all(T.HttpError(500), T.Retryable()),
   ).pipe(C.withServerError, C.withRetryableError) {}
 export class InvalidPaginationException
-  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidPaginationException>()(
+  extends /*@__PURE__*/ S.TaggedError<InvalidPaginationException>()(
     "InvalidPaginationException",
     { message: S.String.pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class Ipv6CidrBlockNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<Ipv6CidrBlockNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<Ipv6CidrBlockNotFoundException>()(
     "Ipv6CidrBlockNotFoundException",
     { message: S.String.pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ResourceNotFoundException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
+  extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
     {
       message: S.String.pipe(T.ErrorMessage()),
@@ -140,13 +140,13 @@ export class ResourceNotFoundException
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
 export class ServiceQuotaExceededException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ServiceQuotaExceededException>()(
+  extends /*@__PURE__*/ S.TaggedError<ServiceQuotaExceededException>()(
     "ServiceQuotaExceededException",
     { message: S.String.pipe(T.ErrorMessage()) },
     T.HttpError(402),
   ).pipe(C.withQuotaError) {}
 export class ThrottlingException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ThrottlingException>()(
+  extends /*@__PURE__*/ S.TaggedError<ThrottlingException>()(
     "ThrottlingException",
     {
       code: S.optional(S.String),
@@ -155,7 +155,7 @@ export class ThrottlingException
     T.all(T.HttpError(429), T.Retryable()),
   ).pipe(C.withThrottlingError, C.withRetryableError) {}
 export class TooManyTagsException
-  extends /*@__PURE__*/ S.TaggedErrorClass<TooManyTagsException>()(
+  extends /*@__PURE__*/ S.TaggedError<TooManyTagsException>()(
     "TooManyTagsException",
     {
       message: S.optional(S.String).pipe(T.ErrorMessage()),
@@ -164,7 +164,7 @@ export class TooManyTagsException
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export class ValidationException
-  extends /*@__PURE__*/ S.TaggedErrorClass<ValidationException>()(
+  extends /*@__PURE__*/ S.TaggedError<ValidationException>()(
     "ValidationException",
     { message: S.String.pipe(T.ErrorMessage()) },
     T.HttpError(400),

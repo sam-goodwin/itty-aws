@@ -48,6 +48,6 @@ export const Null: any = S.Null;
 export const Void: any = S.Void;
 export const Any: any = S.Any;
 
-// NOTE: `Schema` / `Codec` (types) and `TaggedErrorClass` are intentionally NOT
+// NOTE: `Schema` / `Codec` (types) and `TaggedError` are intentionally NOT
 // overridden — they flow through `export *` with real types so cast targets and
 // typed error classes stay precise.
