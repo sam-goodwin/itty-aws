@@ -166,7 +166,7 @@ export class QueueInUseByEventNotification
 
 export class QueueInUseByWorkerBinding
   extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedErrorClass<QueueInUseByWorkerBinding>()(
+    /*@__PURE__*/ S.TaggedError<QueueInUseByWorkerBinding>()(
       "QueueInUseByWorkerBinding",
       {
         code: S.Number,
