@@ -28,6 +28,9 @@
         },
         {
           "target": "com.cloudflare.queues#InvalidRoute"
+        },
+        {
+          "target": "com.cloudflare.queues#QueueInUseByWorkerBinding"
         }
       ]
     }

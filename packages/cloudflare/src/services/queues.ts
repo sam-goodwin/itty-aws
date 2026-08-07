@@ -164,6 +164,18 @@ export class QueueInUseByEventNotification
     [{ code: 11017 }],
   ) {}
 
+export class QueueInUseByWorkerBinding
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<QueueInUseByWorkerBinding>()(
+      "QueueInUseByWorkerBinding",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 11005 }],
+  ) {}
+
 export class QueueNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
     /*@__PURE__*/ S.TaggedError<QueueNotFound>()("QueueNotFound", {
@@ -836,16 +848,16 @@ export const CreateResponseProducersItemMqWorkerProducerType =
   /*@__PURE__*/ S.String;
 
 export interface CreateResponseProducersItemMqWorkerProducer {
-  script?: string | null;
   type?: CreateResponseProducersItemMqWorkerProducerType | null;
+  scriptName?: string | null;
 }
 export const CreateResponseProducersItemMqWorkerProducer =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      script: S.optional(S.NullOr(S.String)),
       type: S.optional(
         S.NullOr(CreateResponseProducersItemMqWorkerProducerType),
       ),
+      scriptName: S.optional(S.NullOr(S.String).pipe(T.Body("script_name"))),
     }),
   ).annotate({
     identifier: "CreateResponseProducersItemMqWorkerProducer",
@@ -874,7 +886,7 @@ export type CreateResponseProducersItem =
   | CreateResponseProducersItemMqR2Producer;
 export const CreateResponseProducersItem = /*@__PURE__*/ S.Unknown.pipe(
   T.UnionCases([
-    ["script", "type"],
+    ["type", "scriptName"],
     ["bucketName", "type"],
   ]),
 );
@@ -2100,14 +2112,14 @@ export const GetResponseProducersItemMqWorkerProducerType =
   /*@__PURE__*/ S.String;
 
 export interface GetResponseProducersItemMqWorkerProducer {
-  script?: string | null;
   type?: GetResponseProducersItemMqWorkerProducerType | null;
+  scriptName?: string | null;
 }
 export const GetResponseProducersItemMqWorkerProducer = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      script: S.optional(S.NullOr(S.String)),
       type: S.optional(S.NullOr(GetResponseProducersItemMqWorkerProducerType)),
+      scriptName: S.optional(S.NullOr(S.String).pipe(T.Body("script_name"))),
     }),
 ).annotate({
   identifier: "GetResponseProducersItemMqWorkerProducer",
@@ -2135,7 +2147,7 @@ export type GetResponseProducersItem =
   | GetResponseProducersItemMqR2Producer;
 export const GetResponseProducersItem = /*@__PURE__*/ S.Unknown.pipe(
   T.UnionCases([
-    ["script", "type"],
+    ["type", "scriptName"],
     ["bucketName", "type"],
   ]),
 );
@@ -2716,16 +2728,16 @@ export const ListResultItemProducersItemMqWorkerProducerType =
   /*@__PURE__*/ S.String;
 
 export interface ListResultItemProducersItemMqWorkerProducer {
-  script?: string | null;
   type?: ListResultItemProducersItemMqWorkerProducerType | null;
+  scriptName?: string | null;
 }
 export const ListResultItemProducersItemMqWorkerProducer =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      script: S.optional(S.NullOr(S.String)),
       type: S.optional(
         S.NullOr(ListResultItemProducersItemMqWorkerProducerType),
       ),
+      scriptName: S.optional(S.NullOr(S.String).pipe(T.Body("script_name"))),
     }),
   ).annotate({
     identifier: "ListResultItemProducersItemMqWorkerProducer",
@@ -2754,7 +2766,7 @@ export type ListResultItemProducersItem =
   | ListResultItemProducersItemMqR2Producer;
 export const ListResultItemProducersItem = /*@__PURE__*/ S.Unknown.pipe(
   T.UnionCases([
-    ["script", "type"],
+    ["type", "scriptName"],
     ["bucketName", "type"],
   ]),
 );
@@ -3287,14 +3299,14 @@ export const EditResponseProducersItemMqWorkerProducerType =
   /*@__PURE__*/ S.String;
 
 export interface EditResponseProducersItemMqWorkerProducer {
-  script?: string | null;
   type?: EditResponseProducersItemMqWorkerProducerType | null;
+  scriptName?: string | null;
 }
 export const EditResponseProducersItemMqWorkerProducer =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      script: S.optional(S.NullOr(S.String)),
       type: S.optional(S.NullOr(EditResponseProducersItemMqWorkerProducerType)),
+      scriptName: S.optional(S.NullOr(S.String).pipe(T.Body("script_name"))),
     }),
   ).annotate({
     identifier: "EditResponseProducersItemMqWorkerProducer",
@@ -3322,7 +3334,7 @@ export type EditResponseProducersItem =
   | EditResponseProducersItemMqR2Producer;
 export const EditResponseProducersItem = /*@__PURE__*/ S.Unknown.pipe(
   T.UnionCases([
-    ["script", "type"],
+    ["type", "scriptName"],
     ["bucketName", "type"],
   ]),
 );
@@ -3962,16 +3974,16 @@ export const PurgeStartResponseProducersItemMqWorkerProducerType =
   /*@__PURE__*/ S.String;
 
 export interface PurgeStartResponseProducersItemMqWorkerProducer {
-  script?: string | null;
   type?: PurgeStartResponseProducersItemMqWorkerProducerType | null;
+  scriptName?: string | null;
 }
 export const PurgeStartResponseProducersItemMqWorkerProducer =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      script: S.optional(S.NullOr(S.String)),
       type: S.optional(
         S.NullOr(PurgeStartResponseProducersItemMqWorkerProducerType),
       ),
+      scriptName: S.optional(S.NullOr(S.String).pipe(T.Body("script_name"))),
     }),
   ).annotate({
     identifier: "PurgeStartResponseProducersItemMqWorkerProducer",
@@ -4002,7 +4014,7 @@ export type PurgeStartResponseProducersItem =
   | PurgeStartResponseProducersItemMqR2Producer;
 export const PurgeStartResponseProducersItem = /*@__PURE__*/ S.Unknown.pipe(
   T.UnionCases([
-    ["script", "type"],
+    ["type", "scriptName"],
     ["bucketName", "type"],
   ]),
 );
@@ -4389,16 +4401,16 @@ export const UpdateResponseProducersItemMqWorkerProducerType =
   /*@__PURE__*/ S.String;
 
 export interface UpdateResponseProducersItemMqWorkerProducer {
-  script?: string | null;
   type?: UpdateResponseProducersItemMqWorkerProducerType | null;
+  scriptName?: string | null;
 }
 export const UpdateResponseProducersItemMqWorkerProducer =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      script: S.optional(S.NullOr(S.String)),
       type: S.optional(
         S.NullOr(UpdateResponseProducersItemMqWorkerProducerType),
       ),
+      scriptName: S.optional(S.NullOr(S.String).pipe(T.Body("script_name"))),
     }),
   ).annotate({
     identifier: "UpdateResponseProducersItemMqWorkerProducer",
@@ -4427,7 +4439,7 @@ export type UpdateResponseProducersItem =
   | UpdateResponseProducersItemMqR2Producer;
 export const UpdateResponseProducersItem = /*@__PURE__*/ S.Unknown.pipe(
   T.UnionCases([
-    ["script", "type"],
+    ["type", "scriptName"],
     ["bucketName", "type"],
   ]),
 );
@@ -4636,6 +4648,7 @@ export type DeleteQueueError =
   | QueueNotFound
   | QueueInUseByEventNotification
   | InvalidRoute
+  | QueueInUseByWorkerBinding
   | CloudflareOpError;
 /** Deletes a queue */
 export const deleteQueue: API.OperationMethod<
@@ -4650,6 +4663,7 @@ export const deleteQueue: API.OperationMethod<
     QueueNotFound,
     QueueInUseByEventNotification,
     InvalidRoute,
+    QueueInUseByWorkerBinding,
     CloudflareRateLimited,
     CloudflareError,
   ],
