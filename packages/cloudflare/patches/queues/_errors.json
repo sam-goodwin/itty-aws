@@ -271,6 +271,29 @@
     },
     {
       "op": "add",
+      "path": "/shapes/com.cloudflare.queues#QueueInUseByWorkerBinding",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 11005
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
       "path": "/shapes/com.cloudflare.queues#QueueNotFound",
       "value": {
         "type": "structure",
