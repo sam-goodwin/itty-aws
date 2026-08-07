@@ -71,3 +71,8 @@
 	path = packages/azure/specs/azure-rest-api-specs
 	url = https://github.com/Azure/azure-rest-api-specs
 	ignore = dirty
+[submodule "packages/github/specs/rest-api-description"]
+	path = packages/github/specs/rest-api-description
+	url = https://github.com/github/rest-api-description.git
+	shallow = true
+	ignore = dirty
