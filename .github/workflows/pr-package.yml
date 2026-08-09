@@ -60,7 +60,8 @@ jobs:
               { "dir": "packages/typesense",       "name": "@distilled.cloud/typesense",       "group": "Distilled" },
               { "dir": "packages/workos",          "name": "@distilled.cloud/workos",          "group": "Distilled" }
             ]
-          pr-package-token: ${{ secrets.PR_PACKAGE_TOKEN }}
+          pr-package-host: ${{ vars.STAGING_PR_PACKAGE_HOST }}
+          pr-package-token: ${{ secrets.STAGING_PR_PACKAGE_TOKEN }}
 
       - name: Generate bot token
         if: >-
