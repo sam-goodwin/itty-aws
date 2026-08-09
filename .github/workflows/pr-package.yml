@@ -26,7 +26,7 @@ jobs:
         with:
           fetch-depth: 0
 
-      - uses: alchemy-run/actions/actions/setup@69f4d033a2e4be3b20ae5b30ec7a3c6c308b4bfa # actions#9
+      - uses: alchemy-run/actions/actions/setup@ab9b8d7a9e09390ba578b85373dcac972bf3edc4 # actions#10
         with:
           bun-version: "1.3.13"
 
@@ -35,7 +35,7 @@ jobs:
 
       - name: Publish packages
         id: publish
-        uses: alchemy-run/actions/actions/pr-package@69f4d033a2e4be3b20ae5b30ec7a3c6c308b4bfa # actions#9
+        uses: alchemy-run/actions/actions/pr-package@ab9b8d7a9e09390ba578b85373dcac972bf3edc4 # actions#10
         with:
           packages: |
             [
@@ -76,7 +76,7 @@ jobs:
         if: >-
           github.event_name == 'pull_request' &&
           fromJson(steps.publish.outputs.plan).packages[0] != null
-        uses: alchemy-run/actions/actions/pr-package-comment@69f4d033a2e4be3b20ae5b30ec7a3c6c308b4bfa # actions#9
+        uses: alchemy-run/actions/actions/pr-package-comment@ab9b8d7a9e09390ba578b85373dcac972bf3edc4 # actions#10
         with:
           plan: ${{ steps.publish.outputs.plan }}
           token: ${{ steps.bot-token.outputs.token }}
