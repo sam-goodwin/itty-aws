@@ -18,7 +18,7 @@ export const not = (value: RulesValue): boolean => !value;
 export const booleanEquals = (a: RulesValue, b: RulesValue): boolean => a === b;
 
 /** Alias for booleanEquals - both use strict equality. */
-export const stringEquals = booleanEquals;
+export const stringEquals: typeof booleanEquals = booleanEquals;
 
 /** Gets an attribute from an object using dot/bracket notation (e.g. "foo.bar[0].baz") */
 export function getAttr(value: RulesValue, path: string): RulesValue {
