@@ -1,0 +1,4299 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "UnreferencedShape",
+        "namespace": "*"
+      }
+    ]
+  },
+  "shapes": {
+    "com.digitalocean.droplets#DropletsListRequestType": {
+      "type": "enum",
+      "members": {
+        "DROPLETS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "droplets"
+          }
+        },
+        "GPUS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gpus"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.digitalocean.droplets#DropletsListRequest": {
+      "type": "structure",
+      "members": {
+        "per_page": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "per_page",
+            "smithy.api#documentation": "Number of items returned per page"
+          }
+        },
+        "page": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "page",
+            "smithy.api#documentation": "Which 'page' of paginated results to return."
+          }
+        },
+        "tag_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "tag_name",
+            "smithy.api#documentation": "Used to filter Droplets by a specific tag. Can not be combined with `name` or `type`.<br>Requires `tag:read` scope."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "name",
+            "smithy.api#documentation": "Used to filter list response by Droplet name returning only exact matches. It is case-insensitive and can not be combined with `tag_name`."
+          }
+        },
+        "type": {
+          "target": "com.digitalocean.droplets#DropletsListRequestType",
+          "traits": {
+            "smithy.api#httpQuery": "type",
+            "smithy.api#documentation": "When `type` is set to `gpus`, only GPU Droplets will be returned. By default, only non-GPU Droplets are returned. Can not be combined with `tag_name`."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.digitalocean.droplets#Droplet": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "A unique identifier for each Droplet instance. This is automatically generated upon Droplet creation.",
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The human-readable name set for the Droplet instance.",
+            "smithy.api#required": {}
+          }
+        },
+        "memory": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Memory of the Droplet in megabytes.",
+            "smithy.api#required": {}
+          }
+        },
+        "vcpus": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The number of virtual CPUs.",
+            "smithy.api#required": {}
+          }
+        },
+        "disk": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The size of the Droplet's disk in gigabytes.",
+            "smithy.api#required": {}
+          }
+        },
+        "disk_info": {
+          "target": "com.digitalocean.droplets#DropletDiskInfoList",
+          "traits": {
+            "smithy.api#documentation": "An array of objects containing information about the disks available to the Droplet."
+          }
+        },
+        "locked": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "A boolean value indicating whether the Droplet has been locked, preventing actions by users.",
+            "smithy.api#required": {}
+          }
+        },
+        "status": {
+          "target": "com.digitalocean.droplets#DropletStatus",
+          "traits": {
+            "smithy.api#documentation": "A status string indicating the state of the Droplet instance. This may be \"new\", \"active\", \"off\", or \"archive\".",
+            "smithy.api#required": {}
+          }
+        },
+        "kernel": {
+          "target": "com.digitalocean.droplets#Kernel",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "created_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A time value given in ISO8601 combined date and time format that represents when the Droplet was created.",
+            "smithy.api#required": {}
+          }
+        },
+        "features": {
+          "target": "com.digitalocean.droplets#DropletFeaturesList",
+          "traits": {
+            "smithy.api#documentation": "An array of features enabled on this Droplet.",
+            "smithy.api#required": {}
+          }
+        },
+        "backup_ids": {
+          "target": "com.digitalocean.droplets#DropletBackupIdsList",
+          "traits": {
+            "smithy.api#documentation": "An array of backup IDs of any backups that have been taken of the Droplet instance.  Droplet backups are enabled at the time of the instance creation.<br>Requires `image:read` scope.",
+            "smithy.api#required": {}
+          }
+        },
+        "next_backup_window": {
+          "target": "com.digitalocean.droplets#DropletNextBackupWindow",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "snapshot_ids": {
+          "target": "com.digitalocean.droplets#DropletSnapshotIdsList",
+          "traits": {
+            "smithy.api#documentation": "An array of snapshot IDs of any snapshots created from the Droplet instance.<br>Requires `image:read` scope.",
+            "smithy.api#required": {}
+          }
+        },
+        "image": {
+          "target": "com.digitalocean.droplets#DropletImage",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "volume_ids": {
+          "target": "com.digitalocean.droplets#DropletVolumeIdsList",
+          "traits": {
+            "smithy.api#documentation": "A flat array including the unique identifier for each Block Storage volume attached to the Droplet.<br>Requires `block_storage:read` scope.",
+            "smithy.api#required": {}
+          }
+        },
+        "size": {
+          "target": "com.digitalocean.droplets#Size",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "size_slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique slug identifier for the size of this Droplet.",
+            "smithy.api#required": {}
+          }
+        },
+        "networks": {
+          "target": "com.digitalocean.droplets#DropletNetworks",
+          "traits": {
+            "smithy.api#documentation": "The details of the network that are configured for the Droplet instance.  This is an object that contains keys for IPv4 and IPv6.  The value of each of these is an array that contains objects describing an individual IP resource allocated to the Droplet.  These will define attributes like the IP address, netmask, and gateway of the specific network depending on the type of network it is.",
+            "smithy.api#required": {}
+          }
+        },
+        "region": {
+          "target": "com.digitalocean.droplets#Region",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "tags": {
+          "target": "com.digitalocean.droplets#DropletTagsList",
+          "traits": {
+            "smithy.api#documentation": "An array of Tags the Droplet has been tagged with.<br>Requires `tag:read` scope.",
+            "smithy.api#required": {}
+          }
+        },
+        "vpc_uuid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A string specifying the UUID of the VPC to which the Droplet is assigned.<br>Requires `vpc:read` scope."
+          }
+        },
+        "gpu_info": {
+          "target": "com.digitalocean.droplets#GpuInfo"
+        }
+      },
+      "traits": {}
+    },
+    "com.digitalocean.droplets#DiskInfo": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.digitalocean.droplets#DiskInfoType",
+          "traits": {
+            "smithy.api#documentation": "The type of disk. All Droplets contain a `local` or `boot` disk. Additionally, GPU Droplets can also have a `scratch` disk for non-persistent data."
+          }
+        },
+        "size": {
+          "target": "com.digitalocean.droplets#DiskInfoSize"
+        }
+      },
+      "traits": {}
+    },
+    "com.digitalocean.droplets#DiskInfoType": {
+      "type": "enum",
+      "members": {
+        "LOCAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "local"
+          }
+        },
+        "BOOT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "boot"
+          }
+        },
+        "SCRATCH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "scratch"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The type of disk. All Droplets contain a `local` or `boot` disk. Additionally, GPU Droplets can also have a `scratch` disk for non-persistent data."
+      }
+    },
+    "com.digitalocean.droplets#DiskInfoSize": {
+      "type": "structure",
+      "members": {
+        "amount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The amount of space allocated to the disk."
+          }
+        },
+        "unit": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unit of measure for the disk size."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.digitalocean.droplets#DropletDiskInfoList": {
+      "type": "list",
+      "member": {
+        "target": "com.digitalocean.droplets#DiskInfo"
+      },
+      "traits": {
+        "smithy.api#documentation": "An array of objects containing information about the disks available to the Droplet."
+      }
+    },
+    "com.digitalocean.droplets#DropletStatus": {
+      "type": "enum",
+      "members": {
+        "NEW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "new"
+          }
+        },
+        "ACTIVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "active"
+          }
+        },
+        "OFF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "off"
+          }
+        },
+        "ARCHIVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "archive"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A status string indicating the state of the Droplet instance. This may be \"new\", \"active\", \"off\", or \"archive\"."
+      }
+    },
+    "com.digitalocean.droplets#Kernel": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "A unique number used to identify and reference a specific kernel."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The display name of the kernel. This is shown in the web UI and is generally a descriptive title for the kernel in question."
+          }
+        },
+        "version": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A standard kernel version string representing the version, patch, and release information."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "**Note**: All Droplets created after March 2017 use internal kernels by default.\nThese Droplets will have this attribute set to `null`.\n\nThe current [kernel](https://docs.digitalocean.com/products/droplets/how-to/kernel/)\nfor Droplets with externally managed kernels. This will initially be set to\nthe kernel of the base image when the Droplet is created.\n"
+      }
+    },
+    "com.digitalocean.droplets#DropletFeaturesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "An array of features enabled on this Droplet."
+      }
+    },
+    "com.digitalocean.droplets#DropletBackupIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Integer"
+      },
+      "traits": {
+        "smithy.api#documentation": "An array of backup IDs of any backups that have been taken of the Droplet instance.  Droplet backups are enabled at the time of the instance creation.<br>Requires `image:read` scope."
+      }
+    },
+    "com.digitalocean.droplets#DropletNextBackupWindow": {
+      "type": "structure",
+      "members": {
+        "start": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A time value given in ISO8601 combined date and time format specifying the start of the Droplet's backup window."
+          }
+        },
+        "end": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A time value given in ISO8601 combined date and time format specifying the end of the Droplet's backup window."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.digitalocean.droplets#DropletSnapshotIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Integer"
+      },
+      "traits": {
+        "smithy.api#documentation": "An array of snapshot IDs of any snapshots created from the Droplet instance.<br>Requires `image:read` scope."
+      }
+    },
+    "com.digitalocean.droplets#DropletImageType": {
+      "type": "enum",
+      "members": {
+        "BASE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "base"
+          }
+        },
+        "SNAPSHOT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "snapshot"
+          }
+        },
+        "BACKUP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "backup"
+          }
+        },
+        "CUSTOM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "custom"
+          }
+        },
+        "ADMIN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "admin"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Describes the kind of image. It may be one of `base`, `snapshot`, `backup`, `custom`, or `admin`. Respectively, this specifies whether an image is a DigitalOcean base OS image, user-generated Droplet snapshot, automatically created Droplet backup, user-provided virtual machine image, or an image used for DigitalOcean managed resources (e.g. DOKS worker nodes)."
+      }
+    },
+    "com.digitalocean.droplets#Distribution": {
+      "type": "enum",
+      "members": {
+        "ARCH_LINUX": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Arch Linux"
+          }
+        },
+        "CENTOS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CentOS"
+          }
+        },
+        "COREOS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CoreOS"
+          }
+        },
+        "DEBIAN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Debian"
+          }
+        },
+        "FEDORA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Fedora"
+          }
+        },
+        "FEDORA_ATOMIC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Fedora Atomic"
+          }
+        },
+        "FREEBSD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "FreeBSD"
+          }
+        },
+        "GENTOO": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Gentoo"
+          }
+        },
+        "OPENSUSE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "openSUSE"
+          }
+        },
+        "RANCHEROS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "RancherOS"
+          }
+        },
+        "ROCKY_LINUX": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Rocky Linux"
+          }
+        },
+        "UBUNTU": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Ubuntu"
+          }
+        },
+        "UNKNOWN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Unknown"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The name of a custom image's distribution. Currently, the valid values are  `Arch Linux`, `CentOS`, `CoreOS`, `Debian`, `Fedora`, `Fedora Atomic`,  `FreeBSD`, `Gentoo`, `openSUSE`, `RancherOS`, `Rocky Linux`, `Ubuntu`, and `Unknown`.  Any other value will be accepted but ignored, and `Unknown` will be used in its place."
+      }
+    },
+    "com.digitalocean.droplets#RegionsArray": {
+      "type": "list",
+      "member": {
+        "target": "com.digitalocean.droplets#RegionSlug"
+      },
+      "traits": {
+        "smithy.api#documentation": "This attribute is an array of the regions that the image is available in. The regions are represented by their identifying slug values."
+      }
+    },
+    "com.digitalocean.droplets#RegionSlug": {
+      "type": "enum",
+      "members": {
+        "AMS1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ams1"
+          }
+        },
+        "AMS2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ams2"
+          }
+        },
+        "AMS3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ams3"
+          }
+        },
+        "BLR1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "blr1"
+          }
+        },
+        "FRA1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "fra1"
+          }
+        },
+        "LON1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "lon1"
+          }
+        },
+        "NYC1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "nyc1"
+          }
+        },
+        "NYC2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "nyc2"
+          }
+        },
+        "NYC3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "nyc3"
+          }
+        },
+        "SFO1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "sfo1"
+          }
+        },
+        "SFO2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "sfo2"
+          }
+        },
+        "SFO3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "sfo3"
+          }
+        },
+        "SGP1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "sgp1"
+          }
+        },
+        "TOR1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "tor1"
+          }
+        },
+        "SYD1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "syd1"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The slug identifier for the region where the resource will initially be  available."
+      }
+    },
+    "com.digitalocean.droplets#TagsArray": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "A flat array of tag names as strings to be applied to the resource. Tag names may be for either existing or new tags. <br><br>Requires `tag:create` scope."
+      }
+    },
+    "com.digitalocean.droplets#DropletImageStatus": {
+      "type": "enum",
+      "members": {
+        "NEW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NEW"
+          }
+        },
+        "AVAILABLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "available"
+          }
+        },
+        "PENDING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pending"
+          }
+        },
+        "DELETED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "deleted"
+          }
+        },
+        "RETIRED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "retired"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A status string indicating the state of a custom image. This may be `NEW`,\n `available`, `pending`, `deleted`, or `retired`."
+      }
+    },
+    "com.digitalocean.droplets#DropletImage": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "A unique number that can be used to identify and reference a specific image."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String"
+        },
+        "type": {
+          "target": "com.digitalocean.droplets#DropletImageType",
+          "traits": {
+            "smithy.api#documentation": "Describes the kind of image. It may be one of `base`, `snapshot`, `backup`, `custom`, or `admin`. Respectively, this specifies whether an image is a DigitalOcean base OS image, user-generated Droplet snapshot, automatically created Droplet backup, user-provided virtual machine image, or an image used for DigitalOcean managed resources (e.g. DOKS worker nodes)."
+          }
+        },
+        "distribution": {
+          "target": "com.digitalocean.droplets#Distribution"
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A uniquely identifying string that is associated with each of the DigitalOcean-provided public images. These can be used to reference a public image as an alternative to the numeric id.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "public": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "This is a boolean value that indicates whether the image in question is public or not. An image that is public is available to all accounts. A non-public image is only accessible from your account."
+          }
+        },
+        "regions": {
+          "target": "com.digitalocean.droplets#RegionsArray"
+        },
+        "created_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A time value given in ISO8601 combined date and time format that represents when the image was created."
+          }
+        },
+        "min_disk_size": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The minimum disk size in GB required for a Droplet to use this image.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "size_gigabytes": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The size of the image in gigabytes.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "description": {
+          "target": "smithy.api#String"
+        },
+        "tags": {
+          "target": "com.digitalocean.droplets#TagsArray",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "status": {
+          "target": "com.digitalocean.droplets#DropletImageStatus",
+          "traits": {
+            "smithy.api#documentation": "A status string indicating the state of a custom image. This may be `NEW`,\n `available`, `pending`, `deleted`, or `retired`."
+          }
+        },
+        "error_message": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A string containing information about errors that may occur when importing\n a custom image."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.digitalocean.droplets#DropletVolumeIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "A flat array including the unique identifier for each Block Storage volume attached to the Droplet.<br>Requires `block_storage:read` scope."
+      }
+    },
+    "com.digitalocean.droplets#Size": {
+      "type": "structure",
+      "members": {
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A human-readable string that is used to uniquely identify each size.",
+            "smithy.api#required": {}
+          }
+        },
+        "memory": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The amount of RAM allocated to Droplets created of this size. The value is represented in megabytes.",
+            "smithy.api#required": {}
+          }
+        },
+        "vcpus": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The number of CPUs allocated to Droplets of this size.",
+            "smithy.api#required": {}
+          }
+        },
+        "disk": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The amount of disk space set aside for Droplets of this size. The value is represented in gigabytes.",
+            "smithy.api#required": {}
+          }
+        },
+        "transfer": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The amount of transfer bandwidth that is available for Droplets created in this size. This only counts traffic on the public interface. The value is given in terabytes.",
+            "smithy.api#required": {}
+          }
+        },
+        "price_monthly": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "This attribute describes the monthly cost of this Droplet size if the Droplet is kept for an entire month. The value is measured in US dollars.",
+            "smithy.api#required": {}
+          }
+        },
+        "price_hourly": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "This describes the price of the Droplet size as measured hourly. The value is measured in US dollars.",
+            "smithy.api#required": {}
+          }
+        },
+        "regions": {
+          "target": "com.digitalocean.droplets#SizeRegionsList",
+          "traits": {
+            "smithy.api#documentation": "An array containing the region slugs where this size is available for Droplet creates.",
+            "smithy.api#required": {}
+          }
+        },
+        "available": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "This is a boolean value that represents whether new Droplets can be created with this size.",
+            "smithy.api#required": {}
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A string describing the class of Droplets created from this size. For example: Basic, General Purpose, CPU-Optimized, Memory-Optimized, or Storage-Optimized.",
+            "smithy.api#required": {}
+          }
+        },
+        "disk_info": {
+          "target": "com.digitalocean.droplets#SizeDiskInfoList",
+          "traits": {
+            "smithy.api#documentation": "An array of objects containing information about the disks available to Droplets created with this size."
+          }
+        },
+        "gpu_info": {
+          "target": "com.digitalocean.droplets#GpuInfo"
+        }
+      },
+      "traits": {}
+    },
+    "com.digitalocean.droplets#SizeRegionsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "An array containing the region slugs where this size is available for Droplet creates."
+      }
+    },
+    "com.digitalocean.droplets#SizeDiskInfoList": {
+      "type": "list",
+      "member": {
+        "target": "com.digitalocean.droplets#DiskInfo"
+      },
+      "traits": {
+        "smithy.api#documentation": "An array of objects containing information about the disks available to Droplets created with this size."
+      }
+    },
+    "com.digitalocean.droplets#GpuInfo": {
+      "type": "structure",
+      "members": {
+        "count": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The number of GPUs allocated to the Droplet."
+          }
+        },
+        "model": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The model of the GPU."
+          }
+        },
+        "vram": {
+          "target": "com.digitalocean.droplets#GpuInfoVram"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "An object containing information about the GPU capabilities of Droplets created with this size."
+      }
+    },
+    "com.digitalocean.droplets#GpuInfoVram": {
+      "type": "structure",
+      "members": {
+        "amount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The amount of VRAM allocated to the GPU."
+          }
+        },
+        "unit": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unit of measure for the VRAM."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.digitalocean.droplets#NetworkV4": {
+      "type": "structure",
+      "members": {
+        "ip_address": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The IP address of the IPv4 network interface."
+          }
+        },
+        "netmask": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The netmask of the IPv4 network interface."
+          }
+        },
+        "gateway": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The gateway of the specified IPv4 network interface.\n\nFor private interfaces, a gateway is not provided. This is denoted by\nreturning `nil` as its value.\n"
+          }
+        },
+        "type": {
+          "target": "com.digitalocean.droplets#NetworkV4Type",
+          "traits": {
+            "smithy.api#documentation": "The type of the IPv4 network interface."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.digitalocean.droplets#NetworkV4Type": {
+      "type": "enum",
+      "members": {
+        "PUBLIC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "public"
+          }
+        },
+        "PRIVATE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "private"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The type of the IPv4 network interface."
+      }
+    },
+    "com.digitalocean.droplets#DropletNetworksV4List": {
+      "type": "list",
+      "member": {
+        "target": "com.digitalocean.droplets#NetworkV4"
+      },
+      "traits": {}
+    },
+    "com.digitalocean.droplets#NetworkV6": {
+      "type": "structure",
+      "members": {
+        "ip_address": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The IP address of the IPv6 network interface."
+          }
+        },
+        "netmask": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The netmask of the IPv6 network interface."
+          }
+        },
+        "gateway": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The gateway of the specified IPv6 network interface."
+          }
+        },
+        "type": {
+          "target": "com.digitalocean.droplets#NetworkV6Type",
+          "traits": {
+            "smithy.api#documentation": "The type of the IPv6 network interface.\n\n**Note**: IPv6 private  networking is not currently supported.\n"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.digitalocean.droplets#NetworkV6Type": {
+      "type": "enum",
+      "members": {
+        "PUBLIC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "public"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The type of the IPv6 network interface.\n\n**Note**: IPv6 private  networking is not currently supported.\n"
+      }
+    },
+    "com.digitalocean.droplets#DropletNetworksV6List": {
+      "type": "list",
+      "member": {
+        "target": "com.digitalocean.droplets#NetworkV6"
+      },
+      "traits": {}
+    },
+    "com.digitalocean.droplets#DropletNetworks": {
+      "type": "structure",
+      "members": {
+        "v4": {
+          "target": "com.digitalocean.droplets#DropletNetworksV4List"
+        },
+        "v6": {
+          "target": "com.digitalocean.droplets#DropletNetworksV6List"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The details of the network that are configured for the Droplet instance.  This is an object that contains keys for IPv4 and IPv6.  The value of each of these is an array that contains objects describing an individual IP resource allocated to the Droplet.  These will define attributes like the IP address, netmask, and gateway of the specific network depending on the type of network it is."
+      }
+    },
+    "com.digitalocean.droplets#Region": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The display name of the region.  This will be a full name that is used in the control panel and other interfaces.",
+            "smithy.api#required": {}
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A human-readable string that is used as a unique identifier for each region.",
+            "smithy.api#required": {}
+          }
+        },
+        "features": {
+          "target": "com.digitalocean.droplets#RegionFeaturesList",
+          "traits": {
+            "smithy.api#documentation": "This attribute is set to an array which contains features available in this region",
+            "smithy.api#required": {}
+          }
+        },
+        "available": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "This is a boolean value that represents whether new Droplets can be created in this region.",
+            "smithy.api#required": {}
+          }
+        },
+        "sizes": {
+          "target": "com.digitalocean.droplets#RegionSizesList",
+          "traits": {
+            "smithy.api#documentation": "This attribute is set to an array which contains the identifying slugs for the sizes available in this region. sizes:read is required to view.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.digitalocean.droplets#RegionFeaturesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "This attribute is set to an array which contains features available in this region"
+      }
+    },
+    "com.digitalocean.droplets#RegionSizesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "This attribute is set to an array which contains the identifying slugs for the sizes available in this region. sizes:read is required to view."
+      }
+    },
+    "com.digitalocean.droplets#DropletTagsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "An array of Tags the Droplet has been tagged with.<br>Requires `tag:read` scope."
+      }
+    },
+    "com.digitalocean.droplets#DropletsListResponseDropletsList": {
+      "type": "list",
+      "member": {
+        "target": "com.digitalocean.droplets#Droplet"
+      },
+      "traits": {}
+    },
+    "com.digitalocean.droplets#PageLinks": {
+      "type": "structure",
+      "members": {
+        "pages": {
+          "target": "com.digitalocean.droplets#PageLinksPages"
+        }
+      },
+      "traits": {}
+    },
+    "com.digitalocean.droplets#ForwardLinks": {
+      "type": "structure",
+      "members": {
+        "last": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "URI of the last page of the results."
+          }
+        },
+        "next": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "URI of the next page of the results."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.digitalocean.droplets#BackwardLinks": {
+      "type": "structure",
+      "members": {
+        "first": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "URI of the first page of the results."
+          }
+        },
+        "prev": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "URI of the previous page of the results."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.digitalocean.droplets#PageLinksPages": {
+      "type": "union",
+      "members": {
+        "ForwardLinks": {
+          "target": "com.digitalocean.droplets#ForwardLinks"
+        },
+        "BackwardLinks": {
+          "target": "com.digitalocean.droplets#BackwardLinks"
+        },
+        "Case2": {
+          "target": "smithy.api#Document"
+        }
+      },
+      "traits": {}
+    },
+    "com.digitalocean.droplets#DropletsListResponseMeta": {
+      "type": "structure",
+      "members": {
+        "total": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Number of objects returned by the request.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.digitalocean.droplets#DropletsListResponse": {
+      "type": "structure",
+      "members": {
+        "droplets": {
+          "target": "com.digitalocean.droplets#DropletsListResponseDropletsList"
+        },
+        "links": {
+          "target": "com.digitalocean.droplets#PageLinks"
+        },
+        "meta": {
+          "target": "com.digitalocean.droplets#DropletsListResponseMeta",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.digitalocean.droplets#DropletsList": {
+      "type": "operation",
+      "input": {
+        "target": "com.digitalocean.droplets#DropletsListRequest"
+      },
+      "output": {
+        "target": "com.digitalocean.droplets#DropletsListResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/v2/droplets",
+          "code": 200
+        },
+        "smithy.api#documentation": "List All Droplets\n\nTo list all Droplets in your account, send a GET request to `/v2/droplets`.\n\nThe response body will be a JSON object with a key of `droplets`. This will be\nset to an array containing objects each representing a Droplet. These will\ncontain the standard Droplet attributes.\n\n### Filtering Results by Tag\n\nIt's possible to request filtered results by including certain query parameters.\nTo only list Droplets assigned to a specific tag, include the `tag_name` query\nparameter set to the name of the tag in your GET request. For example,\n`/v2/droplets?tag_name=$TAG_NAME`.\n\n### GPU Droplets\n\nBy default, only non-GPU Droplets are returned. To list only GPU Droplets, set\nthe `type` query parameter to `gpus`. For example, `/v2/droplets?type=gpus`."
+      }
+    },
+    "com.digitalocean.droplets#DropletSingleCreateInput": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The human-readable string you wish to use when displaying the Droplet name. The name, if set to a domain name managed in the DigitalOcean DNS management system, will configure a PTR record for the Droplet. The name set during creation will also determine the hostname for the Droplet in its internal configuration.",
+            "smithy.api#required": {}
+          }
+        },
+        "region": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The slug identifier for the region that you wish to deploy the Droplet in. If the specific datacenter is not not important, a slug prefix (e.g. `nyc`) can be used to deploy the Droplet in any of the that region's locations (`nyc1`, `nyc2`, or `nyc3`). If the region is omitted from the create request completely, the Droplet may deploy in any region."
+          }
+        },
+        "size": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The slug identifier for the size that you wish to select for this Droplet.",
+            "smithy.api#required": {}
+          }
+        },
+        "image": {
+          "target": "com.digitalocean.droplets#DropletSingleCreateInputImage",
+          "traits": {
+            "smithy.api#documentation": "The image ID of a public or private image or the slug identifier for a public image. This image will be the base image for your Droplet.<br>Requires `image:read` scope.",
+            "smithy.api#required": {}
+          }
+        },
+        "ssh_keys": {
+          "target": "com.digitalocean.droplets#DropletSingleCreateInputSshKeysList",
+          "traits": {
+            "smithy.api#documentation": "An array containing the IDs or fingerprints of the SSH keys that you wish to embed in the Droplet's root account upon creation. You must add the keys to your team before they can be embedded on a Droplet.<br>Requires `ssh_key:read` scope."
+          }
+        },
+        "backups": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "A boolean indicating whether automated backups should be enabled for the Droplet."
+          }
+        },
+        "backup_policy": {
+          "target": "com.digitalocean.droplets#DropletSingleCreateInputBackupPolicy"
+        },
+        "ipv6": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "A boolean indicating whether to enable IPv6 on the Droplet."
+          }
+        },
+        "monitoring": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "A boolean indicating whether to install the DigitalOcean agent for monitoring."
+          }
+        },
+        "tags": {
+          "target": "com.digitalocean.droplets#DropletSingleCreateInputTagsList",
+          "traits": {
+            "smithy.api#documentation": "A flat array of tag names as strings to apply to the Droplet after it is created. Tag names can either be existing or new tags.<br>Requires `tag:create` scope.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "user_data": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A string containing 'user data' which may be used to configure the Droplet on first boot, often a 'cloud-config' file or Bash script. It must be plain text and may not exceed 64 KiB in size."
+          }
+        },
+        "private_networking": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "This parameter has been deprecated. Use `vpc_uuid` instead to specify a VPC network for the Droplet. If no `vpc_uuid` is provided, the Droplet will be placed in your account's default VPC for the region."
+          }
+        },
+        "volumes": {
+          "target": "com.digitalocean.droplets#DropletSingleCreateInputVolumesList",
+          "traits": {
+            "smithy.api#documentation": "An array of IDs for block storage volumes that will be attached to the Droplet once created. The volumes must not already be attached to an existing Droplet.<br>Requires `block_storage:read` scpoe."
+          }
+        },
+        "vpc_uuid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A string specifying the UUID of the VPC to which the Droplet will be assigned. If excluded, the Droplet will be assigned to your account's default VPC for the region.<br>Requires `vpc:read` scope."
+          }
+        },
+        "with_droplet_agent": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "A boolean indicating whether to install the DigitalOcean agent used for providing access to the Droplet web console in the control panel. By default, the agent is installed on new Droplets but installation errors (i.e. OS not supported) are ignored. To prevent it from being installed, set to `false`. To make installation errors fatal, explicitly set it to `true`."
+          }
+        },
+        "public_networking": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "An optional boolean indicating whether this Droplet should be created with public networking or not. By default, all Droplets are created with public networking available. If explicitly set to `false`, only private networking will be enabled, and public networking will be disabled; currently this means that it will not have any public static or Reserved IPv4 or IPv6 address, nor can one be assigned later. If explicitly set to `false`, `ipv6` must also be `false`."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.digitalocean.droplets#DropletSingleCreateInputImage": {
+      "type": "union",
+      "members": {
+        "Case0": {
+          "target": "smithy.api#String"
+        },
+        "Case1": {
+          "target": "smithy.api#Integer"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The image ID of a public or private image or the slug identifier for a public image. This image will be the base image for your Droplet.<br>Requires `image:read` scope."
+      }
+    },
+    "com.digitalocean.droplets#DropletSingleCreateInputSshKeysItem": {
+      "type": "union",
+      "members": {
+        "Case0": {
+          "target": "smithy.api#String"
+        },
+        "Case1": {
+          "target": "smithy.api#Integer"
+        }
+      },
+      "traits": {}
+    },
+    "com.digitalocean.droplets#DropletSingleCreateInputSshKeysList": {
+      "type": "list",
+      "member": {
+        "target": "com.digitalocean.droplets#DropletSingleCreateInputSshKeysItem"
+      },
+      "traits": {
+        "smithy.api#documentation": "An array containing the IDs or fingerprints of the SSH keys that you wish to embed in the Droplet's root account upon creation. You must add the keys to your team before they can be embedded on a Droplet.<br>Requires `ssh_key:read` scope."
+      }
+    },
+    "com.digitalocean.droplets#DropletSingleCreateInputBackupPolicyPlan": {
+      "type": "enum",
+      "members": {
+        "DAILY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "daily"
+          }
+        },
+        "WEEKLY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "weekly"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The backup plan used for the Droplet. The plan can be either `daily` or `weekly`."
+      }
+    },
+    "com.digitalocean.droplets#DropletSingleCreateInputBackupPolicyWeekday": {
+      "type": "enum",
+      "members": {
+        "SUN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SUN"
+          }
+        },
+        "MON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "MON"
+          }
+        },
+        "TUE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "TUE"
+          }
+        },
+        "WED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "WED"
+          }
+        },
+        "THU": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "THU"
+          }
+        },
+        "FRI": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "FRI"
+          }
+        },
+        "SAT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SAT"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The day of the week on which the backup will occur."
+      }
+    },
+    "com.digitalocean.droplets#DropletSingleCreateInputBackupPolicyHour": {
+      "type": "intEnum",
+      "members": {
+        "_0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 0
+          }
+        },
+        "_4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 4
+          }
+        },
+        "_8": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 8
+          }
+        },
+        "_12": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 12
+          }
+        },
+        "_16": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 16
+          }
+        },
+        "_20": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 20
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The hour of the day that the backup window will start."
+      }
+    },
+    "com.digitalocean.droplets#DropletSingleCreateInputBackupPolicy": {
+      "type": "structure",
+      "members": {
+        "plan": {
+          "target": "com.digitalocean.droplets#DropletSingleCreateInputBackupPolicyPlan",
+          "traits": {
+            "smithy.api#documentation": "The backup plan used for the Droplet. The plan can be either `daily` or `weekly`."
+          }
+        },
+        "weekday": {
+          "target": "com.digitalocean.droplets#DropletSingleCreateInputBackupPolicyWeekday",
+          "traits": {
+            "smithy.api#documentation": "The day of the week on which the backup will occur."
+          }
+        },
+        "hour": {
+          "target": "com.digitalocean.droplets#DropletSingleCreateInputBackupPolicyHour",
+          "traits": {
+            "smithy.api#documentation": "The hour of the day that the backup window will start."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.digitalocean.droplets#DropletSingleCreateInputTagsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "A flat array of tag names as strings to apply to the Droplet after it is created. Tag names can either be existing or new tags.<br>Requires `tag:create` scope."
+      }
+    },
+    "com.digitalocean.droplets#DropletSingleCreateInputVolumesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "An array of IDs for block storage volumes that will be attached to the Droplet once created. The volumes must not already be attached to an existing Droplet.<br>Requires `block_storage:read` scpoe."
+      }
+    },
+    "com.digitalocean.droplets#DropletMultiCreateInput": {
+      "type": "structure",
+      "members": {
+        "names": {
+          "target": "com.digitalocean.droplets#DropletMultiCreateInputNamesList",
+          "traits": {
+            "smithy.api#documentation": "An array of human human-readable strings you wish to use when displaying the Droplet name. Each name, if set to a domain name managed in the DigitalOcean DNS management system, will configure a PTR record for the Droplet. Each name set during creation will also determine the hostname for the Droplet in its internal configuration.",
+            "smithy.api#required": {}
+          }
+        },
+        "region": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The slug identifier for the region that you wish to deploy the Droplet in. If the specific datacenter is not not important, a slug prefix (e.g. `nyc`) can be used to deploy the Droplet in any of the that region's locations (`nyc1`, `nyc2`, or `nyc3`). If the region is omitted from the create request completely, the Droplet may deploy in any region."
+          }
+        },
+        "size": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The slug identifier for the size that you wish to select for this Droplet.",
+            "smithy.api#required": {}
+          }
+        },
+        "image": {
+          "target": "com.digitalocean.droplets#DropletMultiCreateInputImage",
+          "traits": {
+            "smithy.api#documentation": "The image ID of a public or private image or the slug identifier for a public image. This image will be the base image for your Droplet.<br>Requires `image:read` scope.",
+            "smithy.api#required": {}
+          }
+        },
+        "ssh_keys": {
+          "target": "com.digitalocean.droplets#DropletMultiCreateInputSshKeysList",
+          "traits": {
+            "smithy.api#documentation": "An array containing the IDs or fingerprints of the SSH keys that you wish to embed in the Droplet's root account upon creation. You must add the keys to your team before they can be embedded on a Droplet.<br>Requires `ssh_key:read` scope."
+          }
+        },
+        "backups": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "A boolean indicating whether automated backups should be enabled for the Droplet."
+          }
+        },
+        "backup_policy": {
+          "target": "com.digitalocean.droplets#DropletMultiCreateInputBackupPolicy"
+        },
+        "ipv6": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "A boolean indicating whether to enable IPv6 on the Droplet."
+          }
+        },
+        "monitoring": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "A boolean indicating whether to install the DigitalOcean agent for monitoring."
+          }
+        },
+        "tags": {
+          "target": "com.digitalocean.droplets#DropletMultiCreateInputTagsList",
+          "traits": {
+            "smithy.api#documentation": "A flat array of tag names as strings to apply to the Droplet after it is created. Tag names can either be existing or new tags.<br>Requires `tag:create` scope.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "user_data": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A string containing 'user data' which may be used to configure the Droplet on first boot, often a 'cloud-config' file or Bash script. It must be plain text and may not exceed 64 KiB in size."
+          }
+        },
+        "private_networking": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "This parameter has been deprecated. Use `vpc_uuid` instead to specify a VPC network for the Droplet. If no `vpc_uuid` is provided, the Droplet will be placed in your account's default VPC for the region."
+          }
+        },
+        "volumes": {
+          "target": "com.digitalocean.droplets#DropletMultiCreateInputVolumesList",
+          "traits": {
+            "smithy.api#documentation": "An array of IDs for block storage volumes that will be attached to the Droplet once created. The volumes must not already be attached to an existing Droplet.<br>Requires `block_storage:read` scpoe."
+          }
+        },
+        "vpc_uuid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A string specifying the UUID of the VPC to which the Droplet will be assigned. If excluded, the Droplet will be assigned to your account's default VPC for the region.<br>Requires `vpc:read` scope."
+          }
+        },
+        "with_droplet_agent": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "A boolean indicating whether to install the DigitalOcean agent used for providing access to the Droplet web console in the control panel. By default, the agent is installed on new Droplets but installation errors (i.e. OS not supported) are ignored. To prevent it from being installed, set to `false`. To make installation errors fatal, explicitly set it to `true`."
+          }
+        },
+        "public_networking": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "An optional boolean indicating whether this Droplet should be created with public networking or not. By default, all Droplets are created with public networking available. If explicitly set to `false`, only private networking will be enabled, and public networking will be disabled; currently this means that it will not have any public static or Reserved IPv4 or IPv6 address, nor can one be assigned later. If explicitly set to `false`, `ipv6` must also be `false`."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.digitalocean.droplets#DropletMultiCreateInputNamesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "An array of human human-readable strings you wish to use when displaying the Droplet name. Each name, if set to a domain name managed in the DigitalOcean DNS management system, will configure a PTR record for the Droplet. Each name set during creation will also determine the hostname for the Droplet in its internal configuration."
+      }
+    },
+    "com.digitalocean.droplets#DropletMultiCreateInputImage": {
+      "type": "union",
+      "members": {
+        "Case0": {
+          "target": "smithy.api#String"
+        },
+        "Case1": {
+          "target": "smithy.api#Integer"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The image ID of a public or private image or the slug identifier for a public image. This image will be the base image for your Droplet.<br>Requires `image:read` scope."
+      }
+    },
+    "com.digitalocean.droplets#DropletMultiCreateInputSshKeysItem": {
+      "type": "union",
+      "members": {
+        "Case0": {
+          "target": "smithy.api#String"
+        },
+        "Case1": {
+          "target": "smithy.api#Integer"
+        }
+      },
+      "traits": {}
+    },
+    "com.digitalocean.droplets#DropletMultiCreateInputSshKeysList": {
+      "type": "list",
+      "member": {
+        "target": "com.digitalocean.droplets#DropletMultiCreateInputSshKeysItem"
+      },
+      "traits": {
+        "smithy.api#documentation": "An array containing the IDs or fingerprints of the SSH keys that you wish to embed in the Droplet's root account upon creation. You must add the keys to your team before they can be embedded on a Droplet.<br>Requires `ssh_key:read` scope."
+      }
+    },
+    "com.digitalocean.droplets#DropletMultiCreateInputBackupPolicyPlan": {
+      "type": "enum",
+      "members": {
+        "DAILY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "daily"
+          }
+        },
+        "WEEKLY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "weekly"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The backup plan used for the Droplet. The plan can be either `daily` or `weekly`."
+      }
+    },
+    "com.digitalocean.droplets#DropletMultiCreateInputBackupPolicyWeekday": {
+      "type": "enum",
+      "members": {
+        "SUN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SUN"
+          }
+        },
+        "MON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "MON"
+          }
+        },
+        "TUE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "TUE"
+          }
+        },
+        "WED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "WED"
+          }
+        },
+        "THU": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "THU"
+          }
+        },
+        "FRI": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "FRI"
+          }
+        },
+        "SAT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SAT"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The day of the week on which the backup will occur."
+      }
+    },
+    "com.digitalocean.droplets#DropletMultiCreateInputBackupPolicyHour": {
+      "type": "intEnum",
+      "members": {
+        "_0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 0
+          }
+        },
+        "_4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 4
+          }
+        },
+        "_8": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 8
+          }
+        },
+        "_12": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 12
+          }
+        },
+        "_16": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 16
+          }
+        },
+        "_20": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 20
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The hour of the day that the backup window will start."
+      }
+    },
+    "com.digitalocean.droplets#DropletMultiCreateInputBackupPolicy": {
+      "type": "structure",
+      "members": {
+        "plan": {
+          "target": "com.digitalocean.droplets#DropletMultiCreateInputBackupPolicyPlan",
+          "traits": {
+            "smithy.api#documentation": "The backup plan used for the Droplet. The plan can be either `daily` or `weekly`."
+          }
+        },
+        "weekday": {
+          "target": "com.digitalocean.droplets#DropletMultiCreateInputBackupPolicyWeekday",
+          "traits": {
+            "smithy.api#documentation": "The day of the week on which the backup will occur."
+          }
+        },
+        "hour": {
+          "target": "com.digitalocean.droplets#DropletMultiCreateInputBackupPolicyHour",
+          "traits": {
+            "smithy.api#documentation": "The hour of the day that the backup window will start."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.digitalocean.droplets#DropletMultiCreateInputTagsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "A flat array of tag names as strings to apply to the Droplet after it is created. Tag names can either be existing or new tags.<br>Requires `tag:create` scope."
+      }
+    },
+    "com.digitalocean.droplets#DropletMultiCreateInputVolumesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "An array of IDs for block storage volumes that will be attached to the Droplet once created. The volumes must not already be attached to an existing Droplet.<br>Requires `block_storage:read` scpoe."
+      }
+    },
+    "com.digitalocean.droplets#DropletsCreateRequestBody": {
+      "type": "union",
+      "members": {
+        "DropletSingleCreate": {
+          "target": "com.digitalocean.droplets#DropletSingleCreateInput"
+        },
+        "DropletMultiCreate": {
+          "target": "com.digitalocean.droplets#DropletMultiCreateInput"
+        }
+      },
+      "traits": {}
+    },
+    "com.digitalocean.droplets#DropletsCreateRequest": {
+      "type": "structure",
+      "members": {
+        "body": {
+          "target": "com.digitalocean.droplets#DropletsCreateRequestBody",
+          "traits": {
+            "smithy.api#httpPayload": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.digitalocean.droplets#DropletsCreate": {
+      "type": "operation",
+      "input": {
+        "target": "com.digitalocean.droplets#DropletsCreateRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/v2/droplets",
+          "code": 200
+        },
+        "smithy.api#documentation": "Create a New Droplet\n\nTo create a new Droplet, send a POST request to `/v2/droplets` setting the\nrequired attributes.\n\nA Droplet will be created using the provided information. The response body\nwill contain a JSON object with a key called `droplet`. The value will be an\nobject containing the standard attributes for your new Droplet. The response\ncode, 202 Accepted, does not indicate the success or failure of the operation,\njust that the request has been accepted for processing. The `actions` returned\nas part of the response's `links` object can be used to check the status\nof the Droplet create event.\n\n### Create Multiple Droplets\n\nCreating multiple Droplets is very similar to creating a single Droplet.\nInstead of sending `name` as a string, send `names` as an array of strings. A\nDroplet will be created for each name you send using the associated\ninformation. Up to ten Droplets may be created this way at a time.\n\nRather than returning a single Droplet, the response body will contain a JSON\narray with a key called `droplets`. This will be set to an array of JSON\nobjects, each of which will contain the standard Droplet attributes. The\nresponse code, 202 Accepted, does not indicate the success or failure of any\noperation, just that the request has been accepted for processing. The array\nof `actions` returned as part of the response's `links` object can be used to\ncheck the status of each individual Droplet create event."
+      }
+    },
+    "com.digitalocean.droplets#DropletsDestroyByTagRequest": {
+      "type": "structure",
+      "members": {
+        "tag_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "tag_name",
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Specifies Droplets to be deleted by tag."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.digitalocean.droplets#DropletsDestroyByTag": {
+      "type": "operation",
+      "input": {
+        "target": "com.digitalocean.droplets#DropletsDestroyByTagRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "errors": [
+        {
+          "target": "com.digitalocean.droplets#NotFound"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/v2/droplets",
+          "code": 200
+        },
+        "smithy.api#documentation": "Deleting Droplets by Tag\n\nTo delete **all** Droplets assigned to a specific tag, include the `tag_name`\nquery parameter set to the name of the tag in your DELETE request. For\nexample, `/v2/droplets?tag_name=$TAG_NAME`.\n\nThis endpoint requires `tag:read` scope.\n\nA successful request will receive a 204 status code with no body in response.\nThis indicates that the request was processed successfully."
+      }
+    },
+    "com.digitalocean.droplets#DropletsGetRequest": {
+      "type": "structure",
+      "members": {
+        "droplet_id": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "A unique identifier for a Droplet instance."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.digitalocean.droplets#DropletsGetResponse": {
+      "type": "structure",
+      "members": {
+        "droplet": {
+          "target": "com.digitalocean.droplets#Droplet"
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.digitalocean.droplets#DropletsGet": {
+      "type": "operation",
+      "input": {
+        "target": "com.digitalocean.droplets#DropletsGetRequest"
+      },
+      "output": {
+        "target": "com.digitalocean.droplets#DropletsGetResponse"
+      },
+      "errors": [
+        {
+          "target": "com.digitalocean.droplets#NotFound"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/v2/droplets/{droplet_id}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Retrieve an Existing Droplet\n\nTo show information about an individual Droplet, send a GET request to\n`/v2/droplets/$DROPLET_ID`."
+      }
+    },
+    "com.digitalocean.droplets#DropletsDestroyRequest": {
+      "type": "structure",
+      "members": {
+        "droplet_id": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "A unique identifier for a Droplet instance."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.digitalocean.droplets#DropletsDestroy": {
+      "type": "operation",
+      "input": {
+        "target": "com.digitalocean.droplets#DropletsDestroyRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "errors": [
+        {
+          "target": "com.digitalocean.droplets#NotFound"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/v2/droplets/{droplet_id}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Delete an Existing Droplet\n\nTo delete a Droplet, send a DELETE request to `/v2/droplets/$DROPLET_ID`.\n\nA successful request will receive a 204 status code with no body in response.\nThis indicates that the request was processed successfully."
+      }
+    },
+    "com.digitalocean.droplets#DropletActionsListRequest": {
+      "type": "structure",
+      "members": {
+        "droplet_id": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "A unique identifier for a Droplet instance."
+          }
+        },
+        "per_page": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "per_page",
+            "smithy.api#documentation": "Number of items returned per page"
+          }
+        },
+        "page": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "page",
+            "smithy.api#documentation": "Which 'page' of paginated results to return."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.digitalocean.droplets#Action": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "A unique numeric ID that can be used to identify and reference an action."
+          }
+        },
+        "status": {
+          "target": "com.digitalocean.droplets#ActionStatus",
+          "traits": {
+            "smithy.api#documentation": "The current status of the action. This can be \"in-progress\", \"completed\", or \"errored\"."
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "This is the type of action that the object represents. For example, this could be \"transfer\" to represent the state of an image transfer action."
+          }
+        },
+        "started_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A time value given in ISO8601 combined date and time format that represents when the action was initiated."
+          }
+        },
+        "completed_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A time value given in ISO8601 combined date and time format that represents when the action was completed.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "resource_id": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "A unique identifier for the resource that the action is associated with.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "resource_type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The type of resource that the action is associated with."
+          }
+        },
+        "region": {
+          "target": "com.digitalocean.droplets#Region"
+        },
+        "region_slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A human-readable string that is used as a unique identifier for each region.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.digitalocean.droplets#ActionStatus": {
+      "type": "enum",
+      "members": {
+        "IN_PROGRESS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "in-progress"
+          }
+        },
+        "COMPLETED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "completed"
+          }
+        },
+        "ERRORED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "errored"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The current status of the action. This can be \"in-progress\", \"completed\", or \"errored\"."
+      }
+    },
+    "com.digitalocean.droplets#DropletActionsListResponseActionsList": {
+      "type": "list",
+      "member": {
+        "target": "com.digitalocean.droplets#Action"
+      },
+      "traits": {}
+    },
+    "com.digitalocean.droplets#DropletActionsListResponseMeta": {
+      "type": "structure",
+      "members": {
+        "total": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Number of objects returned by the request.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.digitalocean.droplets#DropletActionsListResponse": {
+      "type": "structure",
+      "members": {
+        "actions": {
+          "target": "com.digitalocean.droplets#DropletActionsListResponseActionsList"
+        },
+        "links": {
+          "target": "com.digitalocean.droplets#PageLinks"
+        },
+        "meta": {
+          "target": "com.digitalocean.droplets#DropletActionsListResponseMeta",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.digitalocean.droplets#DropletActionsList": {
+      "type": "operation",
+      "input": {
+        "target": "com.digitalocean.droplets#DropletActionsListRequest"
+      },
+      "output": {
+        "target": "com.digitalocean.droplets#DropletActionsListResponse"
+      },
+      "errors": [
+        {
+          "target": "com.digitalocean.droplets#NotFound"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/v2/droplets/{droplet_id}/actions",
+          "code": 200
+        },
+        "smithy.api#documentation": "List Actions for a Droplet\n\nTo retrieve a list of all actions that have been executed for a Droplet, send\na GET request to `/v2/droplets/$DROPLET_ID/actions`.\n\nThe results will be returned as a JSON object with an `actions` key. This will\nbe set to an array filled with `action` objects containing the standard\n`action` attributes."
+      }
+    },
+    "com.digitalocean.droplets#DropletAction": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.digitalocean.droplets#DropletActionType",
+          "traits": {
+            "smithy.api#documentation": "The type of action to initiate for the Droplet.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Specifies the action that will be taken on the Droplet."
+      }
+    },
+    "com.digitalocean.droplets#DropletActionType": {
+      "type": "enum",
+      "members": {
+        "ENABLE_BACKUPS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "enable_backups"
+          }
+        },
+        "DISABLE_BACKUPS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "disable_backups"
+          }
+        },
+        "REBOOT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "reboot"
+          }
+        },
+        "POWER_CYCLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "power_cycle"
+          }
+        },
+        "SHUTDOWN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "shutdown"
+          }
+        },
+        "POWER_OFF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "power_off"
+          }
+        },
+        "POWER_ON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "power_on"
+          }
+        },
+        "RESTORE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "restore"
+          }
+        },
+        "PASSWORD_RESET": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "password_reset"
+          }
+        },
+        "RESIZE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "resize"
+          }
+        },
+        "REBUILD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "rebuild"
+          }
+        },
+        "RENAME": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "rename"
+          }
+        },
+        "CHANGE_KERNEL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "change_kernel"
+          }
+        },
+        "ENABLE_IPV6": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "enable_ipv6"
+          }
+        },
+        "SNAPSHOT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "snapshot"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The type of action to initiate for the Droplet."
+      }
+    },
+    "com.digitalocean.droplets#DropletActionEnableBackupsInput": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.digitalocean.droplets#DropletActionEnableBackupsInputType",
+          "traits": {
+            "smithy.api#documentation": "The type of action to initiate for the Droplet.",
+            "smithy.api#required": {}
+          }
+        },
+        "backup_policy": {
+          "target": "com.digitalocean.droplets#DropletActionEnableBackupsInputBackupPolicy"
+        }
+      },
+      "traits": {}
+    },
+    "com.digitalocean.droplets#DropletActionEnableBackupsInputType": {
+      "type": "enum",
+      "members": {
+        "ENABLE_BACKUPS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "enable_backups"
+          }
+        },
+        "DISABLE_BACKUPS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "disable_backups"
+          }
+        },
+        "REBOOT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "reboot"
+          }
+        },
+        "POWER_CYCLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "power_cycle"
+          }
+        },
+        "SHUTDOWN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "shutdown"
+          }
+        },
+        "POWER_OFF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "power_off"
+          }
+        },
+        "POWER_ON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "power_on"
+          }
+        },
+        "RESTORE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "restore"
+          }
+        },
+        "PASSWORD_RESET": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "password_reset"
+          }
+        },
+        "RESIZE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "resize"
+          }
+        },
+        "REBUILD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "rebuild"
+          }
+        },
+        "RENAME": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "rename"
+          }
+        },
+        "CHANGE_KERNEL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "change_kernel"
+          }
+        },
+        "ENABLE_IPV6": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "enable_ipv6"
+          }
+        },
+        "SNAPSHOT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "snapshot"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The type of action to initiate for the Droplet."
+      }
+    },
+    "com.digitalocean.droplets#DropletActionEnableBackupsInputBackupPolicyPlan": {
+      "type": "enum",
+      "members": {
+        "DAILY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "daily"
+          }
+        },
+        "WEEKLY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "weekly"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The backup plan used for the Droplet. The plan can be either `daily` or `weekly`."
+      }
+    },
+    "com.digitalocean.droplets#DropletActionEnableBackupsInputBackupPolicyWeekday": {
+      "type": "enum",
+      "members": {
+        "SUN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SUN"
+          }
+        },
+        "MON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "MON"
+          }
+        },
+        "TUE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "TUE"
+          }
+        },
+        "WED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "WED"
+          }
+        },
+        "THU": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "THU"
+          }
+        },
+        "FRI": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "FRI"
+          }
+        },
+        "SAT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SAT"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The day of the week on which the backup will occur."
+      }
+    },
+    "com.digitalocean.droplets#DropletActionEnableBackupsInputBackupPolicyHour": {
+      "type": "intEnum",
+      "members": {
+        "_0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 0
+          }
+        },
+        "_4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 4
+          }
+        },
+        "_8": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 8
+          }
+        },
+        "_12": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 12
+          }
+        },
+        "_16": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 16
+          }
+        },
+        "_20": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 20
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The hour of the day that the backup window will start."
+      }
+    },
+    "com.digitalocean.droplets#DropletActionEnableBackupsInputBackupPolicy": {
+      "type": "structure",
+      "members": {
+        "plan": {
+          "target": "com.digitalocean.droplets#DropletActionEnableBackupsInputBackupPolicyPlan",
+          "traits": {
+            "smithy.api#documentation": "The backup plan used for the Droplet. The plan can be either `daily` or `weekly`."
+          }
+        },
+        "weekday": {
+          "target": "com.digitalocean.droplets#DropletActionEnableBackupsInputBackupPolicyWeekday",
+          "traits": {
+            "smithy.api#documentation": "The day of the week on which the backup will occur."
+          }
+        },
+        "hour": {
+          "target": "com.digitalocean.droplets#DropletActionEnableBackupsInputBackupPolicyHour",
+          "traits": {
+            "smithy.api#documentation": "The hour of the day that the backup window will start."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.digitalocean.droplets#DropletActionChangeBackupPolicyInput": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.digitalocean.droplets#DropletActionChangeBackupPolicyInputType",
+          "traits": {
+            "smithy.api#documentation": "The type of action to initiate for the Droplet.",
+            "smithy.api#required": {}
+          }
+        },
+        "backup_policy": {
+          "target": "com.digitalocean.droplets#DropletActionChangeBackupPolicyInputBackupPolicy",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.digitalocean.droplets#DropletActionChangeBackupPolicyInputType": {
+      "type": "enum",
+      "members": {
+        "ENABLE_BACKUPS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "enable_backups"
+          }
+        },
+        "DISABLE_BACKUPS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "disable_backups"
+          }
+        },
+        "REBOOT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "reboot"
+          }
+        },
+        "POWER_CYCLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "power_cycle"
+          }
+        },
+        "SHUTDOWN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "shutdown"
+          }
+        },
+        "POWER_OFF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "power_off"
+          }
+        },
+        "POWER_ON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "power_on"
+          }
+        },
+        "RESTORE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "restore"
+          }
+        },
+        "PASSWORD_RESET": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "password_reset"
+          }
+        },
+        "RESIZE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "resize"
+          }
+        },
+        "REBUILD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "rebuild"
+          }
+        },
+        "RENAME": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "rename"
+          }
+        },
+        "CHANGE_KERNEL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "change_kernel"
+          }
+        },
+        "ENABLE_IPV6": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "enable_ipv6"
+          }
+        },
+        "SNAPSHOT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "snapshot"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The type of action to initiate for the Droplet."
+      }
+    },
+    "com.digitalocean.droplets#DropletActionChangeBackupPolicyInputBackupPolicyPlan": {
+      "type": "enum",
+      "members": {
+        "DAILY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "daily"
+          }
+        },
+        "WEEKLY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "weekly"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The backup plan used for the Droplet. The plan can be either `daily` or `weekly`."
+      }
+    },
+    "com.digitalocean.droplets#DropletActionChangeBackupPolicyInputBackupPolicyWeekday": {
+      "type": "enum",
+      "members": {
+        "SUN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SUN"
+          }
+        },
+        "MON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "MON"
+          }
+        },
+        "TUE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "TUE"
+          }
+        },
+        "WED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "WED"
+          }
+        },
+        "THU": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "THU"
+          }
+        },
+        "FRI": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "FRI"
+          }
+        },
+        "SAT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SAT"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The day of the week on which the backup will occur."
+      }
+    },
+    "com.digitalocean.droplets#DropletActionChangeBackupPolicyInputBackupPolicyHour": {
+      "type": "intEnum",
+      "members": {
+        "_0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 0
+          }
+        },
+        "_4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 4
+          }
+        },
+        "_8": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 8
+          }
+        },
+        "_12": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 12
+          }
+        },
+        "_16": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 16
+          }
+        },
+        "_20": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 20
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The hour of the day that the backup window will start."
+      }
+    },
+    "com.digitalocean.droplets#DropletActionChangeBackupPolicyInputBackupPolicy": {
+      "type": "structure",
+      "members": {
+        "plan": {
+          "target": "com.digitalocean.droplets#DropletActionChangeBackupPolicyInputBackupPolicyPlan",
+          "traits": {
+            "smithy.api#documentation": "The backup plan used for the Droplet. The plan can be either `daily` or `weekly`."
+          }
+        },
+        "weekday": {
+          "target": "com.digitalocean.droplets#DropletActionChangeBackupPolicyInputBackupPolicyWeekday",
+          "traits": {
+            "smithy.api#documentation": "The day of the week on which the backup will occur."
+          }
+        },
+        "hour": {
+          "target": "com.digitalocean.droplets#DropletActionChangeBackupPolicyInputBackupPolicyHour",
+          "traits": {
+            "smithy.api#documentation": "The hour of the day that the backup window will start."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.digitalocean.droplets#DropletActionRestore": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.digitalocean.droplets#DropletActionRestoreType",
+          "traits": {
+            "smithy.api#documentation": "The type of action to initiate for the Droplet.",
+            "smithy.api#required": {}
+          }
+        },
+        "image": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The ID of a backup of the current Droplet instance to restore from."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.digitalocean.droplets#DropletActionRestoreType": {
+      "type": "enum",
+      "members": {
+        "ENABLE_BACKUPS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "enable_backups"
+          }
+        },
+        "DISABLE_BACKUPS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "disable_backups"
+          }
+        },
+        "REBOOT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "reboot"
+          }
+        },
+        "POWER_CYCLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "power_cycle"
+          }
+        },
+        "SHUTDOWN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "shutdown"
+          }
+        },
+        "POWER_OFF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "power_off"
+          }
+        },
+        "POWER_ON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "power_on"
+          }
+        },
+        "RESTORE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "restore"
+          }
+        },
+        "PASSWORD_RESET": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "password_reset"
+          }
+        },
+        "RESIZE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "resize"
+          }
+        },
+        "REBUILD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "rebuild"
+          }
+        },
+        "RENAME": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "rename"
+          }
+        },
+        "CHANGE_KERNEL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "change_kernel"
+          }
+        },
+        "ENABLE_IPV6": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "enable_ipv6"
+          }
+        },
+        "SNAPSHOT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "snapshot"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The type of action to initiate for the Droplet."
+      }
+    },
+    "com.digitalocean.droplets#DropletActionResize": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.digitalocean.droplets#DropletActionResizeType",
+          "traits": {
+            "smithy.api#documentation": "The type of action to initiate for the Droplet.",
+            "smithy.api#required": {}
+          }
+        },
+        "disk": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "When `true`, the Droplet's disk will be resized in addition to its RAM and CPU. This is a permanent change and cannot be reversed as a Droplet's disk size cannot be decreased."
+          }
+        },
+        "size": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The slug identifier for the size to which you wish to resize the Droplet."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.digitalocean.droplets#DropletActionResizeType": {
+      "type": "enum",
+      "members": {
+        "ENABLE_BACKUPS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "enable_backups"
+          }
+        },
+        "DISABLE_BACKUPS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "disable_backups"
+          }
+        },
+        "REBOOT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "reboot"
+          }
+        },
+        "POWER_CYCLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "power_cycle"
+          }
+        },
+        "SHUTDOWN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "shutdown"
+          }
+        },
+        "POWER_OFF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "power_off"
+          }
+        },
+        "POWER_ON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "power_on"
+          }
+        },
+        "RESTORE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "restore"
+          }
+        },
+        "PASSWORD_RESET": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "password_reset"
+          }
+        },
+        "RESIZE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "resize"
+          }
+        },
+        "REBUILD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "rebuild"
+          }
+        },
+        "RENAME": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "rename"
+          }
+        },
+        "CHANGE_KERNEL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "change_kernel"
+          }
+        },
+        "ENABLE_IPV6": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "enable_ipv6"
+          }
+        },
+        "SNAPSHOT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "snapshot"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The type of action to initiate for the Droplet."
+      }
+    },
+    "com.digitalocean.droplets#DropletActionRebuild": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.digitalocean.droplets#DropletActionRebuildType",
+          "traits": {
+            "smithy.api#documentation": "The type of action to initiate for the Droplet.",
+            "smithy.api#required": {}
+          }
+        },
+        "image": {
+          "target": "com.digitalocean.droplets#DropletActionRebuildImage",
+          "traits": {
+            "smithy.api#documentation": "The image ID of a public or private image or the slug identifier for a public image. The Droplet will be rebuilt using this image as its base."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.digitalocean.droplets#DropletActionRebuildType": {
+      "type": "enum",
+      "members": {
+        "ENABLE_BACKUPS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "enable_backups"
+          }
+        },
+        "DISABLE_BACKUPS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "disable_backups"
+          }
+        },
+        "REBOOT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "reboot"
+          }
+        },
+        "POWER_CYCLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "power_cycle"
+          }
+        },
+        "SHUTDOWN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "shutdown"
+          }
+        },
+        "POWER_OFF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "power_off"
+          }
+        },
+        "POWER_ON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "power_on"
+          }
+        },
+        "RESTORE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "restore"
+          }
+        },
+        "PASSWORD_RESET": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "password_reset"
+          }
+        },
+        "RESIZE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "resize"
+          }
+        },
+        "REBUILD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "rebuild"
+          }
+        },
+        "RENAME": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "rename"
+          }
+        },
+        "CHANGE_KERNEL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "change_kernel"
+          }
+        },
+        "ENABLE_IPV6": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "enable_ipv6"
+          }
+        },
+        "SNAPSHOT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "snapshot"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The type of action to initiate for the Droplet."
+      }
+    },
+    "com.digitalocean.droplets#DropletActionRebuildImage": {
+      "type": "union",
+      "members": {
+        "Case0": {
+          "target": "smithy.api#String"
+        },
+        "Case1": {
+          "target": "smithy.api#Integer"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The image ID of a public or private image or the slug identifier for a public image. The Droplet will be rebuilt using this image as its base."
+      }
+    },
+    "com.digitalocean.droplets#DropletActionRename": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.digitalocean.droplets#DropletActionRenameType",
+          "traits": {
+            "smithy.api#documentation": "The type of action to initiate for the Droplet.",
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The new name for the Droplet."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.digitalocean.droplets#DropletActionRenameType": {
+      "type": "enum",
+      "members": {
+        "ENABLE_BACKUPS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "enable_backups"
+          }
+        },
+        "DISABLE_BACKUPS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "disable_backups"
+          }
+        },
+        "REBOOT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "reboot"
+          }
+        },
+        "POWER_CYCLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "power_cycle"
+          }
+        },
+        "SHUTDOWN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "shutdown"
+          }
+        },
+        "POWER_OFF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "power_off"
+          }
+        },
+        "POWER_ON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "power_on"
+          }
+        },
+        "RESTORE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "restore"
+          }
+        },
+        "PASSWORD_RESET": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "password_reset"
+          }
+        },
+        "RESIZE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "resize"
+          }
+        },
+        "REBUILD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "rebuild"
+          }
+        },
+        "RENAME": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "rename"
+          }
+        },
+        "CHANGE_KERNEL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "change_kernel"
+          }
+        },
+        "ENABLE_IPV6": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "enable_ipv6"
+          }
+        },
+        "SNAPSHOT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "snapshot"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The type of action to initiate for the Droplet."
+      }
+    },
+    "com.digitalocean.droplets#DropletActionChangeKernel": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.digitalocean.droplets#DropletActionChangeKernelType",
+          "traits": {
+            "smithy.api#documentation": "The type of action to initiate for the Droplet.",
+            "smithy.api#required": {}
+          }
+        },
+        "kernel": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "A unique number used to identify and reference a specific kernel."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.digitalocean.droplets#DropletActionChangeKernelType": {
+      "type": "enum",
+      "members": {
+        "ENABLE_BACKUPS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "enable_backups"
+          }
+        },
+        "DISABLE_BACKUPS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "disable_backups"
+          }
+        },
+        "REBOOT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "reboot"
+          }
+        },
+        "POWER_CYCLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "power_cycle"
+          }
+        },
+        "SHUTDOWN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "shutdown"
+          }
+        },
+        "POWER_OFF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "power_off"
+          }
+        },
+        "POWER_ON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "power_on"
+          }
+        },
+        "RESTORE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "restore"
+          }
+        },
+        "PASSWORD_RESET": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "password_reset"
+          }
+        },
+        "RESIZE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "resize"
+          }
+        },
+        "REBUILD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "rebuild"
+          }
+        },
+        "RENAME": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "rename"
+          }
+        },
+        "CHANGE_KERNEL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "change_kernel"
+          }
+        },
+        "ENABLE_IPV6": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "enable_ipv6"
+          }
+        },
+        "SNAPSHOT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "snapshot"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The type of action to initiate for the Droplet."
+      }
+    },
+    "com.digitalocean.droplets#DropletActionSnapshot": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.digitalocean.droplets#DropletActionSnapshotType",
+          "traits": {
+            "smithy.api#documentation": "The type of action to initiate for the Droplet.",
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name to give the new snapshot of the Droplet."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.digitalocean.droplets#DropletActionSnapshotType": {
+      "type": "enum",
+      "members": {
+        "ENABLE_BACKUPS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "enable_backups"
+          }
+        },
+        "DISABLE_BACKUPS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "disable_backups"
+          }
+        },
+        "REBOOT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "reboot"
+          }
+        },
+        "POWER_CYCLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "power_cycle"
+          }
+        },
+        "SHUTDOWN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "shutdown"
+          }
+        },
+        "POWER_OFF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "power_off"
+          }
+        },
+        "POWER_ON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "power_on"
+          }
+        },
+        "RESTORE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "restore"
+          }
+        },
+        "PASSWORD_RESET": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "password_reset"
+          }
+        },
+        "RESIZE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "resize"
+          }
+        },
+        "REBUILD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "rebuild"
+          }
+        },
+        "RENAME": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "rename"
+          }
+        },
+        "CHANGE_KERNEL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "change_kernel"
+          }
+        },
+        "ENABLE_IPV6": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "enable_ipv6"
+          }
+        },
+        "SNAPSHOT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "snapshot"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The type of action to initiate for the Droplet."
+      }
+    },
+    "com.digitalocean.droplets#DropletActionsPostRequestBody": {
+      "type": "union",
+      "members": {
+        "DropletAction": {
+          "target": "com.digitalocean.droplets#DropletAction"
+        },
+        "DropletActionEnableBackups": {
+          "target": "com.digitalocean.droplets#DropletActionEnableBackupsInput"
+        },
+        "DropletActionChangeBackupPolicy": {
+          "target": "com.digitalocean.droplets#DropletActionChangeBackupPolicyInput"
+        },
+        "DropletActionRestore": {
+          "target": "com.digitalocean.droplets#DropletActionRestore"
+        },
+        "DropletActionResize": {
+          "target": "com.digitalocean.droplets#DropletActionResize"
+        },
+        "DropletActionRebuild": {
+          "target": "com.digitalocean.droplets#DropletActionRebuild"
+        },
+        "DropletActionRename": {
+          "target": "com.digitalocean.droplets#DropletActionRename"
+        },
+        "DropletActionChangeKernel": {
+          "target": "com.digitalocean.droplets#DropletActionChangeKernel"
+        },
+        "DropletActionSnapshot": {
+          "target": "com.digitalocean.droplets#DropletActionSnapshot"
+        }
+      },
+      "traits": {}
+    },
+    "com.digitalocean.droplets#DropletActionsPostRequest": {
+      "type": "structure",
+      "members": {
+        "droplet_id": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "A unique identifier for a Droplet instance."
+          }
+        },
+        "body": {
+          "target": "com.digitalocean.droplets#DropletActionsPostRequestBody",
+          "traits": {
+            "smithy.api#httpPayload": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.digitalocean.droplets#DropletActionsPostResponse": {
+      "type": "structure",
+      "members": {
+        "action": {
+          "target": "com.digitalocean.droplets#Action"
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.digitalocean.droplets#DropletActionsPost": {
+      "type": "operation",
+      "input": {
+        "target": "com.digitalocean.droplets#DropletActionsPostRequest"
+      },
+      "output": {
+        "target": "com.digitalocean.droplets#DropletActionsPostResponse"
+      },
+      "errors": [
+        {
+          "target": "com.digitalocean.droplets#NotFound"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/v2/droplets/{droplet_id}/actions",
+          "code": 200
+        },
+        "smithy.api#documentation": "Initiate a Droplet Action\n\nTo initiate an action on a Droplet send a POST request to\n`/v2/droplets/$DROPLET_ID/actions`. In the JSON body to the request,\nset the `type` attribute to one of the supported action types:"
+      }
+    },
+    "com.digitalocean.droplets#DropletActionsPostByTagRequestBody": {
+      "type": "union",
+      "members": {
+        "DropletAction": {
+          "target": "com.digitalocean.droplets#DropletAction"
+        },
+        "DropletActionSnapshot": {
+          "target": "com.digitalocean.droplets#DropletActionSnapshot"
+        }
+      },
+      "traits": {}
+    },
+    "com.digitalocean.droplets#DropletActionsPostByTagRequest": {
+      "type": "structure",
+      "members": {
+        "tag_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "tag_name",
+            "smithy.api#documentation": "Used to filter Droplets by a specific tag. Can not be combined with `name` or `type`.<br>Requires `tag:read` scope."
+          }
+        },
+        "body": {
+          "target": "com.digitalocean.droplets#DropletActionsPostByTagRequestBody",
+          "traits": {
+            "smithy.api#httpPayload": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.digitalocean.droplets#DropletActionsPostByTagResponseActionsList": {
+      "type": "list",
+      "member": {
+        "target": "com.digitalocean.droplets#Action"
+      },
+      "traits": {}
+    },
+    "com.digitalocean.droplets#DropletActionsPostByTagResponse": {
+      "type": "structure",
+      "members": {
+        "actions": {
+          "target": "com.digitalocean.droplets#DropletActionsPostByTagResponseActionsList"
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.digitalocean.droplets#DropletActionsPostByTag": {
+      "type": "operation",
+      "input": {
+        "target": "com.digitalocean.droplets#DropletActionsPostByTagRequest"
+      },
+      "output": {
+        "target": "com.digitalocean.droplets#DropletActionsPostByTagResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/v2/droplets/actions",
+          "code": 200
+        },
+        "smithy.api#documentation": "Acting on Tagged Droplets\n\nSome actions can be performed in bulk on tagged Droplets. The actions can be\ninitiated by sending a POST to `/v2/droplets/actions?tag_name=$TAG_NAME` with\nthe action arguments.\n\nOnly a sub-set of action types are supported:\n\n- `power_cycle`\n- `power_on`\n- `power_off`\n- `shutdown`\n- `enable_ipv6`\n- `enable_backups`\n- `disable_backups`\n- `snapshot` (also requires `image:create` permission)"
+      }
+    },
+    "com.digitalocean.droplets#DropletActionsGetRequest": {
+      "type": "structure",
+      "members": {
+        "droplet_id": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "A unique identifier for a Droplet instance."
+          }
+        },
+        "action_id": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "A unique numeric ID that can be used to identify and reference an action."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.digitalocean.droplets#DropletActionsGetResponse": {
+      "type": "structure",
+      "members": {
+        "action": {
+          "target": "com.digitalocean.droplets#Action"
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.digitalocean.droplets#DropletActionsGet": {
+      "type": "operation",
+      "input": {
+        "target": "com.digitalocean.droplets#DropletActionsGetRequest"
+      },
+      "output": {
+        "target": "com.digitalocean.droplets#DropletActionsGetResponse"
+      },
+      "errors": [
+        {
+          "target": "com.digitalocean.droplets#NotFound"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/v2/droplets/{droplet_id}/actions/{action_id}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Retrieve a Droplet Action\n\nTo retrieve a Droplet action, send a GET request to\n`/v2/droplets/$DROPLET_ID/actions/$ACTION_ID`.\n\nThe response will be a JSON object with a key called `action`. The value will\nbe a Droplet action object."
+      }
+    },
+    "com.digitalocean.droplets#DropletsListAssociatedResourcesRequest": {
+      "type": "structure",
+      "members": {
+        "droplet_id": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "A unique identifier for a Droplet instance."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.digitalocean.droplets#AssociatedResource": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for the resource associated with the Droplet."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the resource associated with the Droplet."
+          }
+        },
+        "cost": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The cost of the resource in USD per month if the resource is retained after the Droplet is destroyed."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "An objects containing information about a resource associated with a Droplet."
+      }
+    },
+    "com.digitalocean.droplets#DropletsListAssociatedResourcesResponseReservedIpsList": {
+      "type": "list",
+      "member": {
+        "target": "com.digitalocean.droplets#AssociatedResource"
+      },
+      "traits": {
+        "smithy.api#documentation": "Reserved IPs that are associated with this Droplet.<br>Requires `reserved_ip:read` scope."
+      }
+    },
+    "com.digitalocean.droplets#DropletsListAssociatedResourcesResponseFloatingIpsList": {
+      "type": "list",
+      "member": {
+        "target": "com.digitalocean.droplets#AssociatedResource"
+      },
+      "traits": {
+        "smithy.api#documentation": "Floating IPs that are associated with this Droplet.<br>Requires `reserved_ip:read` scope."
+      }
+    },
+    "com.digitalocean.droplets#DropletsListAssociatedResourcesResponseSnapshotsList": {
+      "type": "list",
+      "member": {
+        "target": "com.digitalocean.droplets#AssociatedResource"
+      },
+      "traits": {
+        "smithy.api#documentation": "Snapshots that are associated with this Droplet.<br>Requires `image:read` scope."
+      }
+    },
+    "com.digitalocean.droplets#DropletsListAssociatedResourcesResponseVolumesList": {
+      "type": "list",
+      "member": {
+        "target": "com.digitalocean.droplets#AssociatedResource"
+      },
+      "traits": {
+        "smithy.api#documentation": "Volumes that are associated with this Droplet.<br>Requires `block_storage:read` scope."
+      }
+    },
+    "com.digitalocean.droplets#DropletsListAssociatedResourcesResponseVolumeSnapshotsList": {
+      "type": "list",
+      "member": {
+        "target": "com.digitalocean.droplets#AssociatedResource"
+      },
+      "traits": {
+        "smithy.api#documentation": "Volume Snapshots that are associated with this Droplet.<br>Requires `block_storage_snapshot:read` scope."
+      }
+    },
+    "com.digitalocean.droplets#DropletsListAssociatedResourcesResponse": {
+      "type": "structure",
+      "members": {
+        "reserved_ips": {
+          "target": "com.digitalocean.droplets#DropletsListAssociatedResourcesResponseReservedIpsList",
+          "traits": {
+            "smithy.api#documentation": "Reserved IPs that are associated with this Droplet.<br>Requires `reserved_ip:read` scope."
+          }
+        },
+        "floating_ips": {
+          "target": "com.digitalocean.droplets#DropletsListAssociatedResourcesResponseFloatingIpsList",
+          "traits": {
+            "smithy.api#documentation": "Floating IPs that are associated with this Droplet.<br>Requires `reserved_ip:read` scope."
+          }
+        },
+        "snapshots": {
+          "target": "com.digitalocean.droplets#DropletsListAssociatedResourcesResponseSnapshotsList",
+          "traits": {
+            "smithy.api#documentation": "Snapshots that are associated with this Droplet.<br>Requires `image:read` scope."
+          }
+        },
+        "volumes": {
+          "target": "com.digitalocean.droplets#DropletsListAssociatedResourcesResponseVolumesList",
+          "traits": {
+            "smithy.api#documentation": "Volumes that are associated with this Droplet.<br>Requires `block_storage:read` scope."
+          }
+        },
+        "volume_snapshots": {
+          "target": "com.digitalocean.droplets#DropletsListAssociatedResourcesResponseVolumeSnapshotsList",
+          "traits": {
+            "smithy.api#documentation": "Volume Snapshots that are associated with this Droplet.<br>Requires `block_storage_snapshot:read` scope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.digitalocean.droplets#DropletsListAssociatedResources": {
+      "type": "operation",
+      "input": {
+        "target": "com.digitalocean.droplets#DropletsListAssociatedResourcesRequest"
+      },
+      "output": {
+        "target": "com.digitalocean.droplets#DropletsListAssociatedResourcesResponse"
+      },
+      "errors": [
+        {
+          "target": "com.digitalocean.droplets#NotFound"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/v2/droplets/{droplet_id}/destroy_with_associated_resources",
+          "code": 200
+        },
+        "smithy.api#documentation": "List Associated Resources for a Droplet\n\nTo list the associated billable resources that can be destroyed along with a\nDroplet, send a GET request to the\n`/v2/droplets/$DROPLET_ID/destroy_with_associated_resources` endpoint.\n\nThis endpoint will only return resources that you are authorized to see. For\nexample, to see associated Reserved IPs, include the `reserved_ip:read` scope.\n\nThe response will be a JSON object containing `snapshots`, `volumes`, and\n`volume_snapshots` keys. Each will be set to an array of objects containing\ninformation about the associated resources."
+      }
+    },
+    "com.digitalocean.droplets#DropletsDestroyWithAssociatedResourcesSelectiveRequestFloatingIpsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "An array of unique identifiers for the floating IPs to be scheduled for deletion."
+      }
+    },
+    "com.digitalocean.droplets#DropletsDestroyWithAssociatedResourcesSelectiveRequestReservedIpsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "An array of unique identifiers for the reserved IPs to be scheduled for deletion."
+      }
+    },
+    "com.digitalocean.droplets#DropletsDestroyWithAssociatedResourcesSelectiveRequestSnapshotsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "An array of unique identifiers for the snapshots to be scheduled for deletion."
+      }
+    },
+    "com.digitalocean.droplets#DropletsDestroyWithAssociatedResourcesSelectiveRequestVolumesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "An array of unique identifiers for the volumes to be scheduled for deletion."
+      }
+    },
+    "com.digitalocean.droplets#DropletsDestroyWithAssociatedResourcesSelectiveRequestVolumeSnapshotsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "An array of unique identifiers for the volume snapshots to be scheduled for deletion."
+      }
+    },
+    "com.digitalocean.droplets#DropletsDestroyWithAssociatedResourcesSelectiveRequest": {
+      "type": "structure",
+      "members": {
+        "droplet_id": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "A unique identifier for a Droplet instance."
+          }
+        },
+        "floating_ips": {
+          "target": "com.digitalocean.droplets#DropletsDestroyWithAssociatedResourcesSelectiveRequestFloatingIpsList",
+          "traits": {
+            "smithy.api#documentation": "An array of unique identifiers for the floating IPs to be scheduled for deletion."
+          }
+        },
+        "reserved_ips": {
+          "target": "com.digitalocean.droplets#DropletsDestroyWithAssociatedResourcesSelectiveRequestReservedIpsList",
+          "traits": {
+            "smithy.api#documentation": "An array of unique identifiers for the reserved IPs to be scheduled for deletion."
+          }
+        },
+        "snapshots": {
+          "target": "com.digitalocean.droplets#DropletsDestroyWithAssociatedResourcesSelectiveRequestSnapshotsList",
+          "traits": {
+            "smithy.api#documentation": "An array of unique identifiers for the snapshots to be scheduled for deletion."
+          }
+        },
+        "volumes": {
+          "target": "com.digitalocean.droplets#DropletsDestroyWithAssociatedResourcesSelectiveRequestVolumesList",
+          "traits": {
+            "smithy.api#documentation": "An array of unique identifiers for the volumes to be scheduled for deletion."
+          }
+        },
+        "volume_snapshots": {
+          "target": "com.digitalocean.droplets#DropletsDestroyWithAssociatedResourcesSelectiveRequestVolumeSnapshotsList",
+          "traits": {
+            "smithy.api#documentation": "An array of unique identifiers for the volume snapshots to be scheduled for deletion."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.digitalocean.droplets#DropletsDestroyWithAssociatedResourcesSelective": {
+      "type": "operation",
+      "input": {
+        "target": "com.digitalocean.droplets#DropletsDestroyWithAssociatedResourcesSelectiveRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "errors": [
+        {
+          "target": "com.digitalocean.droplets#NotFound"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/v2/droplets/{droplet_id}/destroy_with_associated_resources/selective",
+          "code": 200
+        },
+        "smithy.api#documentation": "Selectively Destroy a Droplet and its Associated Resources\n\nTo destroy a Droplet along with a sub-set of its associated resources, send a\nDELETE request to the `/v2/droplets/$DROPLET_ID/destroy_with_associated_resources/selective`\nendpoint. The JSON body of the request should include `reserved_ips`, `snapshots`, `volumes`,\nor `volume_snapshots` keys each set to an array of IDs for the associated\nresources to be destroyed. The IDs can be found by querying the Droplet's\nassociated resources. Any associated resource not included in the request\nwill remain and continue to accrue changes on your account.\n\nA successful response will include a 202 response code and no content. Use\nthe status endpoint to check on the success or failure of the destruction of\nthe individual resources."
+      }
+    },
+    "com.digitalocean.droplets#DropletsDestroyWithAssociatedResourcesDangerousRequest": {
+      "type": "structure",
+      "members": {
+        "droplet_id": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "A unique identifier for a Droplet instance."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.digitalocean.droplets#DropletsDestroyWithAssociatedResourcesDangerous": {
+      "type": "operation",
+      "input": {
+        "target": "com.digitalocean.droplets#DropletsDestroyWithAssociatedResourcesDangerousRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "errors": [
+        {
+          "target": "com.digitalocean.droplets#NotFound"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/v2/droplets/{droplet_id}/destroy_with_associated_resources/dangerous",
+          "code": 200
+        },
+        "smithy.api#documentation": "Destroy a Droplet and All of its Associated Resources (Dangerous)\n\nTo destroy a Droplet along with all of its associated resources, send a DELETE\nrequest to the `/v2/droplets/$DROPLET_ID/destroy_with_associated_resources/dangerous`\nendpoint. The headers of this request must include an `X-Dangerous` key set to\n`true`. To preview which resources will be destroyed, first query the\nDroplet's associated resources. This operation _can not_ be reverse and should\nbe used with caution.\n\nA successful response will include a 202 response code and no content. Use the\nstatus endpoint to check on the success or failure of the destruction of the\nindividual resources."
+      }
+    },
+    "com.digitalocean.droplets#DropletsGetDestroyAssociatedResourcesStatusRequest": {
+      "type": "structure",
+      "members": {
+        "droplet_id": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "A unique identifier for a Droplet instance."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.digitalocean.droplets#AssociatedResourceStatus": {
+      "type": "structure",
+      "members": {
+        "droplet": {
+          "target": "com.digitalocean.droplets#DestroyedAssociatedResource"
+        },
+        "resources": {
+          "target": "com.digitalocean.droplets#AssociatedResourceStatusResources",
+          "traits": {
+            "smithy.api#documentation": "An object containing additional information about resource related to a Droplet requested to be destroyed."
+          }
+        },
+        "completed_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A time value given in ISO8601 combined date and time format indicating when the requested action was completed."
+          }
+        },
+        "failures": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "A count of the associated resources that failed to be destroyed, if any."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "An objects containing information about a resources scheduled for deletion."
+      }
+    },
+    "com.digitalocean.droplets#DestroyedAssociatedResource": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for the resource scheduled for deletion."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the resource scheduled for deletion."
+          }
+        },
+        "destroyed_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A time value given in ISO8601 combined date and time format indicating when the resource was destroyed if the request was successful."
+          }
+        },
+        "error_message": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A string indicating that the resource was not successfully destroyed and providing additional information."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "An object containing information about a resource scheduled for deletion."
+      }
+    },
+    "com.digitalocean.droplets#AssociatedResourceStatusResourcesReservedIpsList": {
+      "type": "list",
+      "member": {
+        "target": "com.digitalocean.droplets#DestroyedAssociatedResource"
+      },
+      "traits": {}
+    },
+    "com.digitalocean.droplets#AssociatedResourceStatusResourcesFloatingIpsList": {
+      "type": "list",
+      "member": {
+        "target": "com.digitalocean.droplets#DestroyedAssociatedResource"
+      },
+      "traits": {}
+    },
+    "com.digitalocean.droplets#AssociatedResourceStatusResourcesSnapshotsList": {
+      "type": "list",
+      "member": {
+        "target": "com.digitalocean.droplets#DestroyedAssociatedResource"
+      },
+      "traits": {}
+    },
+    "com.digitalocean.droplets#AssociatedResourceStatusResourcesVolumesList": {
+      "type": "list",
+      "member": {
+        "target": "com.digitalocean.droplets#DestroyedAssociatedResource"
+      },
+      "traits": {}
+    },
+    "com.digitalocean.droplets#AssociatedResourceStatusResourcesVolumeSnapshotsList": {
+      "type": "list",
+      "member": {
+        "target": "com.digitalocean.droplets#DestroyedAssociatedResource"
+      },
+      "traits": {}
+    },
+    "com.digitalocean.droplets#AssociatedResourceStatusResources": {
+      "type": "structure",
+      "members": {
+        "reserved_ips": {
+          "target": "com.digitalocean.droplets#AssociatedResourceStatusResourcesReservedIpsList"
+        },
+        "floating_ips": {
+          "target": "com.digitalocean.droplets#AssociatedResourceStatusResourcesFloatingIpsList"
+        },
+        "snapshots": {
+          "target": "com.digitalocean.droplets#AssociatedResourceStatusResourcesSnapshotsList"
+        },
+        "volumes": {
+          "target": "com.digitalocean.droplets#AssociatedResourceStatusResourcesVolumesList"
+        },
+        "volume_snapshots": {
+          "target": "com.digitalocean.droplets#AssociatedResourceStatusResourcesVolumeSnapshotsList"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "An object containing additional information about resource related to a Droplet requested to be destroyed."
+      }
+    },
+    "com.digitalocean.droplets#DropletsGetDestroyAssociatedResourcesStatus": {
+      "type": "operation",
+      "input": {
+        "target": "com.digitalocean.droplets#DropletsGetDestroyAssociatedResourcesStatusRequest"
+      },
+      "output": {
+        "target": "com.digitalocean.droplets#AssociatedResourceStatus"
+      },
+      "errors": [
+        {
+          "target": "com.digitalocean.droplets#NotFound"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/v2/droplets/{droplet_id}/destroy_with_associated_resources/status",
+          "code": 200
+        },
+        "smithy.api#documentation": "Check Status of a Droplet Destroy with Associated Resources Request\n\nTo check on the status of a request to destroy a Droplet with its associated\nresources, send a GET request to the\n`/v2/droplets/$DROPLET_ID/destroy_with_associated_resources/status` endpoint."
+      }
+    },
+    "com.digitalocean.droplets#DropletsDestroyRetryWithAssociatedResourcesRequest": {
+      "type": "structure",
+      "members": {
+        "droplet_id": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "A unique identifier for a Droplet instance."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.digitalocean.droplets#DropletsDestroyRetryWithAssociatedResources": {
+      "type": "operation",
+      "input": {
+        "target": "com.digitalocean.droplets#DropletsDestroyRetryWithAssociatedResourcesRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "errors": [
+        {
+          "target": "com.digitalocean.droplets#NotFound"
+        },
+        {
+          "target": "com.digitalocean.droplets#Conflict"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/v2/droplets/{droplet_id}/destroy_with_associated_resources/retry",
+          "code": 200
+        },
+        "smithy.api#documentation": "Retry a Droplet Destroy with Associated Resources Request\n\nIf the status of a request to destroy a Droplet with its associated resources\nreported any errors, it can be retried by sending a POST request to the\n`/v2/droplets/$DROPLET_ID/destroy_with_associated_resources/retry` endpoint.\n\nOnly one destroy can be active at a time per Droplet. If a retry is issued\nwhile another destroy is in progress for the Droplet a 409 status code will\nbe returned. A successful response will include a 202 response code and no\ncontent."
+      }
+    },
+    "com.digitalocean.droplets#NotFound": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#error": "client",
+        "smithy.api#httpError": 404,
+        "com.distilled.openapi#errorMatchers": [
+          {
+            "status": 404
+          }
+        ]
+      }
+    },
+    "com.digitalocean.droplets#Conflict": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#error": "client",
+        "smithy.api#httpError": 409,
+        "com.distilled.openapi#errorMatchers": [
+          {
+            "status": 409
+          }
+        ]
+      }
+    },
+    "com.digitalocean.droplets#DigitalOceanDroplets": {
+      "type": "service",
+      "version": "2.0",
+      "operations": [
+        {
+          "target": "com.digitalocean.droplets#DropletsList"
+        },
+        {
+          "target": "com.digitalocean.droplets#DropletsCreate"
+        },
+        {
+          "target": "com.digitalocean.droplets#DropletsDestroyByTag"
+        },
+        {
+          "target": "com.digitalocean.droplets#DropletsGet"
+        },
+        {
+          "target": "com.digitalocean.droplets#DropletsDestroy"
+        },
+        {
+          "target": "com.digitalocean.droplets#DropletActionsList"
+        },
+        {
+          "target": "com.digitalocean.droplets#DropletActionsPost"
+        },
+        {
+          "target": "com.digitalocean.droplets#DropletActionsPostByTag"
+        },
+        {
+          "target": "com.digitalocean.droplets#DropletActionsGet"
+        },
+        {
+          "target": "com.digitalocean.droplets#DropletsListAssociatedResources"
+        },
+        {
+          "target": "com.digitalocean.droplets#DropletsDestroyWithAssociatedResourcesSelective"
+        },
+        {
+          "target": "com.digitalocean.droplets#DropletsDestroyWithAssociatedResourcesDangerous"
+        },
+        {
+          "target": "com.digitalocean.droplets#DropletsGetDestroyAssociatedResourcesStatus"
+        },
+        {
+          "target": "com.digitalocean.droplets#DropletsDestroyRetryWithAssociatedResources"
+        }
+      ],
+      "traits": {
+        "smithy.api#title": "DigitalOcean API"
+      }
+    }
+  }
+}

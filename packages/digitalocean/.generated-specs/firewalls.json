@@ -1,0 +1,2184 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "UnreferencedShape",
+        "namespace": "*"
+      }
+    ]
+  },
+  "shapes": {
+    "com.digitalocean.firewalls#FirewallsListRequest": {
+      "type": "structure",
+      "members": {
+        "per_page": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "per_page",
+            "smithy.api#documentation": "Number of items returned per page"
+          }
+        },
+        "page": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "page",
+            "smithy.api#documentation": "Which 'page' of paginated results to return."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.digitalocean.firewalls#Firewall": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A unique ID that can be used to identify and reference a firewall."
+          }
+        },
+        "status": {
+          "target": "com.digitalocean.firewalls#FirewallStatus",
+          "traits": {
+            "smithy.api#documentation": "A status string indicating the current state of the firewall. This can be \"waiting\", \"succeeded\", or \"failed\"."
+          }
+        },
+        "created_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A time value given in ISO8601 combined date and time format that represents when the firewall was created."
+          }
+        },
+        "pending_changes": {
+          "target": "com.digitalocean.firewalls#FirewallPendingChangesList",
+          "traits": {
+            "smithy.api#documentation": "An array of objects each containing the fields \"droplet_id\", \"removing\", and \"status\". It is provided to detail exactly which Droplets are having their security policies updated. When empty, all changes have been successfully applied."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A human-readable name for a firewall. The name must begin with an alphanumeric character. Subsequent characters must either be alphanumeric characters, a period (.), or a dash (-)."
+          }
+        },
+        "droplet_ids": {
+          "target": "com.digitalocean.firewalls#FirewallDropletIdsList",
+          "traits": {
+            "smithy.api#documentation": "An array containing the IDs of the Droplets assigned to the firewall. <br><br>Requires `droplet:read` scope.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "tags": {
+          "target": "smithy.api#Document"
+        },
+        "inbound_rules": {
+          "target": "com.digitalocean.firewalls#FirewallInboundRulesList",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "outbound_rules": {
+          "target": "com.digitalocean.firewalls#FirewallOutboundRulesList",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.digitalocean.firewalls#FirewallStatus": {
+      "type": "enum",
+      "members": {
+        "WAITING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "waiting"
+          }
+        },
+        "SUCCEEDED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "succeeded"
+          }
+        },
+        "FAILED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "failed"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A status string indicating the current state of the firewall. This can be \"waiting\", \"succeeded\", or \"failed\"."
+      }
+    },
+    "com.digitalocean.firewalls#FirewallPendingChangesItem": {
+      "type": "structure",
+      "members": {
+        "droplet_id": {
+          "target": "smithy.api#Integer"
+        },
+        "removing": {
+          "target": "smithy.api#Boolean"
+        },
+        "status": {
+          "target": "smithy.api#String"
+        }
+      },
+      "traits": {}
+    },
+    "com.digitalocean.firewalls#FirewallPendingChangesList": {
+      "type": "list",
+      "member": {
+        "target": "com.digitalocean.firewalls#FirewallPendingChangesItem"
+      },
+      "traits": {
+        "smithy.api#documentation": "An array of objects each containing the fields \"droplet_id\", \"removing\", and \"status\". It is provided to detail exactly which Droplets are having their security policies updated. When empty, all changes have been successfully applied."
+      }
+    },
+    "com.digitalocean.firewalls#FirewallDropletIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Integer"
+      },
+      "traits": {
+        "smithy.api#documentation": "An array containing the IDs of the Droplets assigned to the firewall. <br><br>Requires `droplet:read` scope."
+      }
+    },
+    "com.digitalocean.firewalls#FirewallInboundRulesItemProtocol": {
+      "type": "enum",
+      "members": {
+        "TCP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "tcp"
+          }
+        },
+        "UDP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "udp"
+          }
+        },
+        "ICMP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "icmp"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The type of traffic to be allowed. This may be one of `tcp`, `udp`, or `icmp`."
+      }
+    },
+    "com.digitalocean.firewalls#FirewallInboundRulesItemSourcesAddressesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "An array of strings containing the IPv4 addresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs to which the firewall will allow traffic."
+      }
+    },
+    "com.digitalocean.firewalls#FirewallInboundRulesItemSourcesDropletIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Integer"
+      },
+      "traits": {
+        "smithy.api#documentation": "An array containing the IDs of the Droplets to which the firewall will allow traffic."
+      }
+    },
+    "com.digitalocean.firewalls#FirewallInboundRulesItemSourcesLoadBalancerUidsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "An array containing the IDs of the load balancers to which the firewall will allow traffic."
+      }
+    },
+    "com.digitalocean.firewalls#FirewallInboundRulesItemSourcesKubernetesIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "An array containing the IDs of the Kubernetes clusters to which the firewall will allow traffic."
+      }
+    },
+    "com.digitalocean.firewalls#FirewallInboundRulesItemSources": {
+      "type": "structure",
+      "members": {
+        "addresses": {
+          "target": "com.digitalocean.firewalls#FirewallInboundRulesItemSourcesAddressesList",
+          "traits": {
+            "smithy.api#documentation": "An array of strings containing the IPv4 addresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs to which the firewall will allow traffic."
+          }
+        },
+        "droplet_ids": {
+          "target": "com.digitalocean.firewalls#FirewallInboundRulesItemSourcesDropletIdsList",
+          "traits": {
+            "smithy.api#documentation": "An array containing the IDs of the Droplets to which the firewall will allow traffic."
+          }
+        },
+        "load_balancer_uids": {
+          "target": "com.digitalocean.firewalls#FirewallInboundRulesItemSourcesLoadBalancerUidsList",
+          "traits": {
+            "smithy.api#documentation": "An array containing the IDs of the load balancers to which the firewall will allow traffic."
+          }
+        },
+        "kubernetes_ids": {
+          "target": "com.digitalocean.firewalls#FirewallInboundRulesItemSourcesKubernetesIdsList",
+          "traits": {
+            "smithy.api#documentation": "An array containing the IDs of the Kubernetes clusters to which the firewall will allow traffic."
+          }
+        },
+        "tags": {
+          "target": "smithy.api#Document"
+        }
+      },
+      "traits": {}
+    },
+    "com.digitalocean.firewalls#FirewallInboundRulesItem": {
+      "type": "structure",
+      "members": {
+        "protocol": {
+          "target": "com.digitalocean.firewalls#FirewallInboundRulesItemProtocol",
+          "traits": {
+            "smithy.api#documentation": "The type of traffic to be allowed. This may be one of `tcp`, `udp`, or `icmp`.",
+            "smithy.api#required": {}
+          }
+        },
+        "ports": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ports on which traffic will be allowed specified as a string containing a single port, a range (e.g. \"8000-9000\"), or \"0\" when all ports are open for a protocol. For ICMP rules this parameter will always return \"0\".",
+            "smithy.api#required": {}
+          }
+        },
+        "sources": {
+          "target": "com.digitalocean.firewalls#FirewallInboundRulesItemSources",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.digitalocean.firewalls#FirewallInboundRulesList": {
+      "type": "list",
+      "member": {
+        "target": "com.digitalocean.firewalls#FirewallInboundRulesItem"
+      },
+      "traits": {}
+    },
+    "com.digitalocean.firewalls#FirewallOutboundRulesItemProtocol": {
+      "type": "enum",
+      "members": {
+        "TCP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "tcp"
+          }
+        },
+        "UDP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "udp"
+          }
+        },
+        "ICMP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "icmp"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The type of traffic to be allowed. This may be one of `tcp`, `udp`, or `icmp`."
+      }
+    },
+    "com.digitalocean.firewalls#FirewallOutboundRulesItemDestinationsAddressesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "An array of strings containing the IPv4 addresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs to which the firewall will allow traffic."
+      }
+    },
+    "com.digitalocean.firewalls#FirewallOutboundRulesItemDestinationsDropletIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Integer"
+      },
+      "traits": {
+        "smithy.api#documentation": "An array containing the IDs of the Droplets to which the firewall will allow traffic."
+      }
+    },
+    "com.digitalocean.firewalls#FirewallOutboundRulesItemDestinationsLoadBalancerUidsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "An array containing the IDs of the load balancers to which the firewall will allow traffic."
+      }
+    },
+    "com.digitalocean.firewalls#FirewallOutboundRulesItemDestinationsKubernetesIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "An array containing the IDs of the Kubernetes clusters to which the firewall will allow traffic."
+      }
+    },
+    "com.digitalocean.firewalls#FirewallOutboundRulesItemDestinations": {
+      "type": "structure",
+      "members": {
+        "addresses": {
+          "target": "com.digitalocean.firewalls#FirewallOutboundRulesItemDestinationsAddressesList",
+          "traits": {
+            "smithy.api#documentation": "An array of strings containing the IPv4 addresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs to which the firewall will allow traffic."
+          }
+        },
+        "droplet_ids": {
+          "target": "com.digitalocean.firewalls#FirewallOutboundRulesItemDestinationsDropletIdsList",
+          "traits": {
+            "smithy.api#documentation": "An array containing the IDs of the Droplets to which the firewall will allow traffic."
+          }
+        },
+        "load_balancer_uids": {
+          "target": "com.digitalocean.firewalls#FirewallOutboundRulesItemDestinationsLoadBalancerUidsList",
+          "traits": {
+            "smithy.api#documentation": "An array containing the IDs of the load balancers to which the firewall will allow traffic."
+          }
+        },
+        "kubernetes_ids": {
+          "target": "com.digitalocean.firewalls#FirewallOutboundRulesItemDestinationsKubernetesIdsList",
+          "traits": {
+            "smithy.api#documentation": "An array containing the IDs of the Kubernetes clusters to which the firewall will allow traffic."
+          }
+        },
+        "tags": {
+          "target": "smithy.api#Document"
+        }
+      },
+      "traits": {}
+    },
+    "com.digitalocean.firewalls#FirewallOutboundRulesItem": {
+      "type": "structure",
+      "members": {
+        "protocol": {
+          "target": "com.digitalocean.firewalls#FirewallOutboundRulesItemProtocol",
+          "traits": {
+            "smithy.api#documentation": "The type of traffic to be allowed. This may be one of `tcp`, `udp`, or `icmp`.",
+            "smithy.api#required": {}
+          }
+        },
+        "ports": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ports on which traffic will be allowed specified as a string containing a single port, a range (e.g. \"8000-9000\"), or \"0\" when all ports are open for a protocol. For ICMP rules this parameter will always return \"0\".",
+            "smithy.api#required": {}
+          }
+        },
+        "destinations": {
+          "target": "com.digitalocean.firewalls#FirewallOutboundRulesItemDestinations",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.digitalocean.firewalls#FirewallOutboundRulesList": {
+      "type": "list",
+      "member": {
+        "target": "com.digitalocean.firewalls#FirewallOutboundRulesItem"
+      },
+      "traits": {}
+    },
+    "com.digitalocean.firewalls#FirewallsListResponseFirewallsList": {
+      "type": "list",
+      "member": {
+        "target": "com.digitalocean.firewalls#Firewall"
+      },
+      "traits": {}
+    },
+    "com.digitalocean.firewalls#PageLinks": {
+      "type": "structure",
+      "members": {
+        "pages": {
+          "target": "com.digitalocean.firewalls#PageLinksPages"
+        }
+      },
+      "traits": {}
+    },
+    "com.digitalocean.firewalls#ForwardLinks": {
+      "type": "structure",
+      "members": {
+        "last": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "URI of the last page of the results."
+          }
+        },
+        "next": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "URI of the next page of the results."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.digitalocean.firewalls#BackwardLinks": {
+      "type": "structure",
+      "members": {
+        "first": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "URI of the first page of the results."
+          }
+        },
+        "prev": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "URI of the previous page of the results."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.digitalocean.firewalls#PageLinksPages": {
+      "type": "union",
+      "members": {
+        "ForwardLinks": {
+          "target": "com.digitalocean.firewalls#ForwardLinks"
+        },
+        "BackwardLinks": {
+          "target": "com.digitalocean.firewalls#BackwardLinks"
+        },
+        "Case2": {
+          "target": "smithy.api#Document"
+        }
+      },
+      "traits": {}
+    },
+    "com.digitalocean.firewalls#FirewallsListResponseMeta": {
+      "type": "structure",
+      "members": {
+        "total": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Number of objects returned by the request.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.digitalocean.firewalls#FirewallsListResponse": {
+      "type": "structure",
+      "members": {
+        "firewalls": {
+          "target": "com.digitalocean.firewalls#FirewallsListResponseFirewallsList"
+        },
+        "links": {
+          "target": "com.digitalocean.firewalls#PageLinks"
+        },
+        "meta": {
+          "target": "com.digitalocean.firewalls#FirewallsListResponseMeta",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.digitalocean.firewalls#FirewallsList": {
+      "type": "operation",
+      "input": {
+        "target": "com.digitalocean.firewalls#FirewallsListRequest"
+      },
+      "output": {
+        "target": "com.digitalocean.firewalls#FirewallsListResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/v2/firewalls",
+          "code": 200
+        },
+        "smithy.api#documentation": "List All Firewalls\n\nTo list all of the firewalls available on your account, send a GET request to `/v2/firewalls`."
+      }
+    },
+    "com.digitalocean.firewalls#FirewallsCreateRequestDropletIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Integer"
+      },
+      "traits": {
+        "smithy.api#documentation": "An array containing the IDs of the Droplets assigned to the firewall. <br><br>Requires `droplet:read` scope."
+      }
+    },
+    "com.digitalocean.firewalls#FirewallsCreateRequestInboundRulesItemProtocol": {
+      "type": "enum",
+      "members": {
+        "TCP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "tcp"
+          }
+        },
+        "UDP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "udp"
+          }
+        },
+        "ICMP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "icmp"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The type of traffic to be allowed. This may be one of `tcp`, `udp`, or `icmp`."
+      }
+    },
+    "com.digitalocean.firewalls#FirewallsCreateRequestInboundRulesItemSourcesAddressesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "An array of strings containing the IPv4 addresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs to which the firewall will allow traffic."
+      }
+    },
+    "com.digitalocean.firewalls#FirewallsCreateRequestInboundRulesItemSourcesDropletIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Integer"
+      },
+      "traits": {
+        "smithy.api#documentation": "An array containing the IDs of the Droplets to which the firewall will allow traffic."
+      }
+    },
+    "com.digitalocean.firewalls#FirewallsCreateRequestInboundRulesItemSourcesLoadBalancerUidsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "An array containing the IDs of the load balancers to which the firewall will allow traffic."
+      }
+    },
+    "com.digitalocean.firewalls#FirewallsCreateRequestInboundRulesItemSourcesKubernetesIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "An array containing the IDs of the Kubernetes clusters to which the firewall will allow traffic."
+      }
+    },
+    "com.digitalocean.firewalls#FirewallsCreateRequestInboundRulesItemSources": {
+      "type": "structure",
+      "members": {
+        "addresses": {
+          "target": "com.digitalocean.firewalls#FirewallsCreateRequestInboundRulesItemSourcesAddressesList",
+          "traits": {
+            "smithy.api#documentation": "An array of strings containing the IPv4 addresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs to which the firewall will allow traffic."
+          }
+        },
+        "droplet_ids": {
+          "target": "com.digitalocean.firewalls#FirewallsCreateRequestInboundRulesItemSourcesDropletIdsList",
+          "traits": {
+            "smithy.api#documentation": "An array containing the IDs of the Droplets to which the firewall will allow traffic."
+          }
+        },
+        "load_balancer_uids": {
+          "target": "com.digitalocean.firewalls#FirewallsCreateRequestInboundRulesItemSourcesLoadBalancerUidsList",
+          "traits": {
+            "smithy.api#documentation": "An array containing the IDs of the load balancers to which the firewall will allow traffic."
+          }
+        },
+        "kubernetes_ids": {
+          "target": "com.digitalocean.firewalls#FirewallsCreateRequestInboundRulesItemSourcesKubernetesIdsList",
+          "traits": {
+            "smithy.api#documentation": "An array containing the IDs of the Kubernetes clusters to which the firewall will allow traffic."
+          }
+        },
+        "tags": {
+          "target": "smithy.api#Document"
+        }
+      },
+      "traits": {}
+    },
+    "com.digitalocean.firewalls#FirewallsCreateRequestInboundRulesItem": {
+      "type": "structure",
+      "members": {
+        "protocol": {
+          "target": "com.digitalocean.firewalls#FirewallsCreateRequestInboundRulesItemProtocol",
+          "traits": {
+            "smithy.api#documentation": "The type of traffic to be allowed. This may be one of `tcp`, `udp`, or `icmp`.",
+            "smithy.api#required": {}
+          }
+        },
+        "ports": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ports on which traffic will be allowed specified as a string containing a single port, a range (e.g. \"8000-9000\"), or \"0\" when all ports are open for a protocol. For ICMP rules this parameter will always return \"0\".",
+            "smithy.api#required": {}
+          }
+        },
+        "sources": {
+          "target": "com.digitalocean.firewalls#FirewallsCreateRequestInboundRulesItemSources",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.digitalocean.firewalls#FirewallsCreateRequestInboundRulesList": {
+      "type": "list",
+      "member": {
+        "target": "com.digitalocean.firewalls#FirewallsCreateRequestInboundRulesItem"
+      },
+      "traits": {}
+    },
+    "com.digitalocean.firewalls#FirewallsCreateRequestOutboundRulesItemProtocol": {
+      "type": "enum",
+      "members": {
+        "TCP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "tcp"
+          }
+        },
+        "UDP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "udp"
+          }
+        },
+        "ICMP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "icmp"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The type of traffic to be allowed. This may be one of `tcp`, `udp`, or `icmp`."
+      }
+    },
+    "com.digitalocean.firewalls#FirewallsCreateRequestOutboundRulesItemDestinationsAddressesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "An array of strings containing the IPv4 addresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs to which the firewall will allow traffic."
+      }
+    },
+    "com.digitalocean.firewalls#FirewallsCreateRequestOutboundRulesItemDestinationsDropletIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Integer"
+      },
+      "traits": {
+        "smithy.api#documentation": "An array containing the IDs of the Droplets to which the firewall will allow traffic."
+      }
+    },
+    "com.digitalocean.firewalls#FirewallsCreateRequestOutboundRulesItemDestinationsLoadBalancerUidsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "An array containing the IDs of the load balancers to which the firewall will allow traffic."
+      }
+    },
+    "com.digitalocean.firewalls#FirewallsCreateRequestOutboundRulesItemDestinationsKubernetesIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "An array containing the IDs of the Kubernetes clusters to which the firewall will allow traffic."
+      }
+    },
+    "com.digitalocean.firewalls#FirewallsCreateRequestOutboundRulesItemDestinations": {
+      "type": "structure",
+      "members": {
+        "addresses": {
+          "target": "com.digitalocean.firewalls#FirewallsCreateRequestOutboundRulesItemDestinationsAddressesList",
+          "traits": {
+            "smithy.api#documentation": "An array of strings containing the IPv4 addresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs to which the firewall will allow traffic."
+          }
+        },
+        "droplet_ids": {
+          "target": "com.digitalocean.firewalls#FirewallsCreateRequestOutboundRulesItemDestinationsDropletIdsList",
+          "traits": {
+            "smithy.api#documentation": "An array containing the IDs of the Droplets to which the firewall will allow traffic."
+          }
+        },
+        "load_balancer_uids": {
+          "target": "com.digitalocean.firewalls#FirewallsCreateRequestOutboundRulesItemDestinationsLoadBalancerUidsList",
+          "traits": {
+            "smithy.api#documentation": "An array containing the IDs of the load balancers to which the firewall will allow traffic."
+          }
+        },
+        "kubernetes_ids": {
+          "target": "com.digitalocean.firewalls#FirewallsCreateRequestOutboundRulesItemDestinationsKubernetesIdsList",
+          "traits": {
+            "smithy.api#documentation": "An array containing the IDs of the Kubernetes clusters to which the firewall will allow traffic."
+          }
+        },
+        "tags": {
+          "target": "smithy.api#Document"
+        }
+      },
+      "traits": {}
+    },
+    "com.digitalocean.firewalls#FirewallsCreateRequestOutboundRulesItem": {
+      "type": "structure",
+      "members": {
+        "protocol": {
+          "target": "com.digitalocean.firewalls#FirewallsCreateRequestOutboundRulesItemProtocol",
+          "traits": {
+            "smithy.api#documentation": "The type of traffic to be allowed. This may be one of `tcp`, `udp`, or `icmp`.",
+            "smithy.api#required": {}
+          }
+        },
+        "ports": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ports on which traffic will be allowed specified as a string containing a single port, a range (e.g. \"8000-9000\"), or \"0\" when all ports are open for a protocol. For ICMP rules this parameter will always return \"0\".",
+            "smithy.api#required": {}
+          }
+        },
+        "destinations": {
+          "target": "com.digitalocean.firewalls#FirewallsCreateRequestOutboundRulesItemDestinations",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.digitalocean.firewalls#FirewallsCreateRequestOutboundRulesList": {
+      "type": "list",
+      "member": {
+        "target": "com.digitalocean.firewalls#FirewallsCreateRequestOutboundRulesItem"
+      },
+      "traits": {}
+    },
+    "com.digitalocean.firewalls#FirewallsCreateRequest": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A human-readable name for a firewall. The name must begin with an alphanumeric character. Subsequent characters must either be alphanumeric characters, a period (.), or a dash (-).",
+            "smithy.api#required": {}
+          }
+        },
+        "droplet_ids": {
+          "target": "com.digitalocean.firewalls#FirewallsCreateRequestDropletIdsList",
+          "traits": {
+            "smithy.api#documentation": "An array containing the IDs of the Droplets assigned to the firewall. <br><br>Requires `droplet:read` scope.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "tags": {
+          "target": "smithy.api#Document"
+        },
+        "inbound_rules": {
+          "target": "com.digitalocean.firewalls#FirewallsCreateRequestInboundRulesList",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "outbound_rules": {
+          "target": "com.digitalocean.firewalls#FirewallsCreateRequestOutboundRulesList",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.digitalocean.firewalls#FirewallsCreate": {
+      "type": "operation",
+      "input": {
+        "target": "com.digitalocean.firewalls#FirewallsCreateRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "errors": [
+        {
+          "target": "com.digitalocean.firewalls#BadRequest"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/v2/firewalls",
+          "code": 200
+        },
+        "smithy.api#documentation": "Create a New Firewall\n\nTo create a new firewall, send a POST request to `/v2/firewalls`. The request\nmust contain at least one inbound or outbound access rule."
+      }
+    },
+    "com.digitalocean.firewalls#FirewallsGetRequest": {
+      "type": "structure",
+      "members": {
+        "firewall_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "A unique ID that can be used to identify and reference a firewall."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.digitalocean.firewalls#FirewallsGetResponse": {
+      "type": "structure",
+      "members": {
+        "firewall": {
+          "target": "com.digitalocean.firewalls#Firewall"
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.digitalocean.firewalls#FirewallsGet": {
+      "type": "operation",
+      "input": {
+        "target": "com.digitalocean.firewalls#FirewallsGetRequest"
+      },
+      "output": {
+        "target": "com.digitalocean.firewalls#FirewallsGetResponse"
+      },
+      "errors": [
+        {
+          "target": "com.digitalocean.firewalls#NotFound"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/v2/firewalls/{firewall_id}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Retrieve an Existing Firewall\n\nTo show information about an existing firewall, send a GET request to `/v2/firewalls/$FIREWALL_ID`."
+      }
+    },
+    "com.digitalocean.firewalls#FirewallsUpdateRequestDropletIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Integer"
+      },
+      "traits": {
+        "smithy.api#documentation": "An array containing the IDs of the Droplets assigned to the firewall. <br><br>Requires `droplet:read` scope."
+      }
+    },
+    "com.digitalocean.firewalls#FirewallsUpdateRequestInboundRulesItemProtocol": {
+      "type": "enum",
+      "members": {
+        "TCP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "tcp"
+          }
+        },
+        "UDP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "udp"
+          }
+        },
+        "ICMP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "icmp"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The type of traffic to be allowed. This may be one of `tcp`, `udp`, or `icmp`."
+      }
+    },
+    "com.digitalocean.firewalls#FirewallsUpdateRequestInboundRulesItemSourcesAddressesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "An array of strings containing the IPv4 addresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs to which the firewall will allow traffic."
+      }
+    },
+    "com.digitalocean.firewalls#FirewallsUpdateRequestInboundRulesItemSourcesDropletIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Integer"
+      },
+      "traits": {
+        "smithy.api#documentation": "An array containing the IDs of the Droplets to which the firewall will allow traffic."
+      }
+    },
+    "com.digitalocean.firewalls#FirewallsUpdateRequestInboundRulesItemSourcesLoadBalancerUidsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "An array containing the IDs of the load balancers to which the firewall will allow traffic."
+      }
+    },
+    "com.digitalocean.firewalls#FirewallsUpdateRequestInboundRulesItemSourcesKubernetesIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "An array containing the IDs of the Kubernetes clusters to which the firewall will allow traffic."
+      }
+    },
+    "com.digitalocean.firewalls#FirewallsUpdateRequestInboundRulesItemSources": {
+      "type": "structure",
+      "members": {
+        "addresses": {
+          "target": "com.digitalocean.firewalls#FirewallsUpdateRequestInboundRulesItemSourcesAddressesList",
+          "traits": {
+            "smithy.api#documentation": "An array of strings containing the IPv4 addresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs to which the firewall will allow traffic."
+          }
+        },
+        "droplet_ids": {
+          "target": "com.digitalocean.firewalls#FirewallsUpdateRequestInboundRulesItemSourcesDropletIdsList",
+          "traits": {
+            "smithy.api#documentation": "An array containing the IDs of the Droplets to which the firewall will allow traffic."
+          }
+        },
+        "load_balancer_uids": {
+          "target": "com.digitalocean.firewalls#FirewallsUpdateRequestInboundRulesItemSourcesLoadBalancerUidsList",
+          "traits": {
+            "smithy.api#documentation": "An array containing the IDs of the load balancers to which the firewall will allow traffic."
+          }
+        },
+        "kubernetes_ids": {
+          "target": "com.digitalocean.firewalls#FirewallsUpdateRequestInboundRulesItemSourcesKubernetesIdsList",
+          "traits": {
+            "smithy.api#documentation": "An array containing the IDs of the Kubernetes clusters to which the firewall will allow traffic."
+          }
+        },
+        "tags": {
+          "target": "smithy.api#Document"
+        }
+      },
+      "traits": {}
+    },
+    "com.digitalocean.firewalls#FirewallsUpdateRequestInboundRulesItem": {
+      "type": "structure",
+      "members": {
+        "protocol": {
+          "target": "com.digitalocean.firewalls#FirewallsUpdateRequestInboundRulesItemProtocol",
+          "traits": {
+            "smithy.api#documentation": "The type of traffic to be allowed. This may be one of `tcp`, `udp`, or `icmp`.",
+            "smithy.api#required": {}
+          }
+        },
+        "ports": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ports on which traffic will be allowed specified as a string containing a single port, a range (e.g. \"8000-9000\"), or \"0\" when all ports are open for a protocol. For ICMP rules this parameter will always return \"0\".",
+            "smithy.api#required": {}
+          }
+        },
+        "sources": {
+          "target": "com.digitalocean.firewalls#FirewallsUpdateRequestInboundRulesItemSources",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.digitalocean.firewalls#FirewallsUpdateRequestInboundRulesList": {
+      "type": "list",
+      "member": {
+        "target": "com.digitalocean.firewalls#FirewallsUpdateRequestInboundRulesItem"
+      },
+      "traits": {}
+    },
+    "com.digitalocean.firewalls#FirewallsUpdateRequestOutboundRulesItemProtocol": {
+      "type": "enum",
+      "members": {
+        "TCP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "tcp"
+          }
+        },
+        "UDP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "udp"
+          }
+        },
+        "ICMP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "icmp"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The type of traffic to be allowed. This may be one of `tcp`, `udp`, or `icmp`."
+      }
+    },
+    "com.digitalocean.firewalls#FirewallsUpdateRequestOutboundRulesItemDestinationsAddressesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "An array of strings containing the IPv4 addresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs to which the firewall will allow traffic."
+      }
+    },
+    "com.digitalocean.firewalls#FirewallsUpdateRequestOutboundRulesItemDestinationsDropletIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Integer"
+      },
+      "traits": {
+        "smithy.api#documentation": "An array containing the IDs of the Droplets to which the firewall will allow traffic."
+      }
+    },
+    "com.digitalocean.firewalls#FirewallsUpdateRequestOutboundRulesItemDestinationsLoadBalancerUidsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "An array containing the IDs of the load balancers to which the firewall will allow traffic."
+      }
+    },
+    "com.digitalocean.firewalls#FirewallsUpdateRequestOutboundRulesItemDestinationsKubernetesIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "An array containing the IDs of the Kubernetes clusters to which the firewall will allow traffic."
+      }
+    },
+    "com.digitalocean.firewalls#FirewallsUpdateRequestOutboundRulesItemDestinations": {
+      "type": "structure",
+      "members": {
+        "addresses": {
+          "target": "com.digitalocean.firewalls#FirewallsUpdateRequestOutboundRulesItemDestinationsAddressesList",
+          "traits": {
+            "smithy.api#documentation": "An array of strings containing the IPv4 addresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs to which the firewall will allow traffic."
+          }
+        },
+        "droplet_ids": {
+          "target": "com.digitalocean.firewalls#FirewallsUpdateRequestOutboundRulesItemDestinationsDropletIdsList",
+          "traits": {
+            "smithy.api#documentation": "An array containing the IDs of the Droplets to which the firewall will allow traffic."
+          }
+        },
+        "load_balancer_uids": {
+          "target": "com.digitalocean.firewalls#FirewallsUpdateRequestOutboundRulesItemDestinationsLoadBalancerUidsList",
+          "traits": {
+            "smithy.api#documentation": "An array containing the IDs of the load balancers to which the firewall will allow traffic."
+          }
+        },
+        "kubernetes_ids": {
+          "target": "com.digitalocean.firewalls#FirewallsUpdateRequestOutboundRulesItemDestinationsKubernetesIdsList",
+          "traits": {
+            "smithy.api#documentation": "An array containing the IDs of the Kubernetes clusters to which the firewall will allow traffic."
+          }
+        },
+        "tags": {
+          "target": "smithy.api#Document"
+        }
+      },
+      "traits": {}
+    },
+    "com.digitalocean.firewalls#FirewallsUpdateRequestOutboundRulesItem": {
+      "type": "structure",
+      "members": {
+        "protocol": {
+          "target": "com.digitalocean.firewalls#FirewallsUpdateRequestOutboundRulesItemProtocol",
+          "traits": {
+            "smithy.api#documentation": "The type of traffic to be allowed. This may be one of `tcp`, `udp`, or `icmp`.",
+            "smithy.api#required": {}
+          }
+        },
+        "ports": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ports on which traffic will be allowed specified as a string containing a single port, a range (e.g. \"8000-9000\"), or \"0\" when all ports are open for a protocol. For ICMP rules this parameter will always return \"0\".",
+            "smithy.api#required": {}
+          }
+        },
+        "destinations": {
+          "target": "com.digitalocean.firewalls#FirewallsUpdateRequestOutboundRulesItemDestinations",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.digitalocean.firewalls#FirewallsUpdateRequestOutboundRulesList": {
+      "type": "list",
+      "member": {
+        "target": "com.digitalocean.firewalls#FirewallsUpdateRequestOutboundRulesItem"
+      },
+      "traits": {}
+    },
+    "com.digitalocean.firewalls#FirewallsUpdateRequest": {
+      "type": "structure",
+      "members": {
+        "firewall_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "A unique ID that can be used to identify and reference a firewall."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A human-readable name for a firewall. The name must begin with an alphanumeric character. Subsequent characters must either be alphanumeric characters, a period (.), or a dash (-).",
+            "smithy.api#required": {}
+          }
+        },
+        "droplet_ids": {
+          "target": "com.digitalocean.firewalls#FirewallsUpdateRequestDropletIdsList",
+          "traits": {
+            "smithy.api#documentation": "An array containing the IDs of the Droplets assigned to the firewall. <br><br>Requires `droplet:read` scope.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "tags": {
+          "target": "smithy.api#Document"
+        },
+        "inbound_rules": {
+          "target": "com.digitalocean.firewalls#FirewallsUpdateRequestInboundRulesList",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "outbound_rules": {
+          "target": "com.digitalocean.firewalls#FirewallsUpdateRequestOutboundRulesList",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.digitalocean.firewalls#FirewallsUpdateResponse": {
+      "type": "structure",
+      "members": {
+        "firewall": {
+          "target": "com.digitalocean.firewalls#Firewall"
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.digitalocean.firewalls#FirewallsUpdate": {
+      "type": "operation",
+      "input": {
+        "target": "com.digitalocean.firewalls#FirewallsUpdateRequest"
+      },
+      "output": {
+        "target": "com.digitalocean.firewalls#FirewallsUpdateResponse"
+      },
+      "errors": [
+        {
+          "target": "com.digitalocean.firewalls#BadRequest"
+        },
+        {
+          "target": "com.digitalocean.firewalls#NotFound"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/v2/firewalls/{firewall_id}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Update a Firewall\n\nTo update the configuration of an existing firewall, send a PUT request to\n`/v2/firewalls/$FIREWALL_ID`. The request should contain a full representation\nof the firewall including existing attributes. **Note that any attributes that\nare not provided will be reset to their default values.**\n<br><br>You must have read access (e.g. `droplet:read`) to all resources attached\nto the firewall to successfully update the firewall."
+      }
+    },
+    "com.digitalocean.firewalls#FirewallsDeleteRequest": {
+      "type": "structure",
+      "members": {
+        "firewall_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "A unique ID that can be used to identify and reference a firewall."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.digitalocean.firewalls#FirewallsDelete": {
+      "type": "operation",
+      "input": {
+        "target": "com.digitalocean.firewalls#FirewallsDeleteRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "errors": [
+        {
+          "target": "com.digitalocean.firewalls#NotFound"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/v2/firewalls/{firewall_id}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Delete a Firewall\n\nTo delete a firewall send a DELETE request to `/v2/firewalls/$FIREWALL_ID`.\n\nNo response body will be sent back, but the response code will indicate\nsuccess. Specifically, the response code will be a 204, which means that the\naction was successful with no returned body data."
+      }
+    },
+    "com.digitalocean.firewalls#FirewallsAssignDropletsRequestDropletIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Integer"
+      },
+      "traits": {
+        "smithy.api#documentation": "An array containing the IDs of the Droplets to be assigned to the firewall."
+      }
+    },
+    "com.digitalocean.firewalls#FirewallsAssignDropletsRequest": {
+      "type": "structure",
+      "members": {
+        "firewall_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "A unique ID that can be used to identify and reference a firewall."
+          }
+        },
+        "droplet_ids": {
+          "target": "com.digitalocean.firewalls#FirewallsAssignDropletsRequestDropletIdsList",
+          "traits": {
+            "smithy.api#documentation": "An array containing the IDs of the Droplets to be assigned to the firewall.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.digitalocean.firewalls#FirewallsAssignDroplets": {
+      "type": "operation",
+      "input": {
+        "target": "com.digitalocean.firewalls#FirewallsAssignDropletsRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "errors": [
+        {
+          "target": "com.digitalocean.firewalls#BadRequest"
+        },
+        {
+          "target": "com.digitalocean.firewalls#NotFound"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/v2/firewalls/{firewall_id}/droplets",
+          "code": 200
+        },
+        "smithy.api#documentation": "Add Droplets to a Firewall\n\nTo assign a Droplet to a firewall, send a POST request to\n`/v2/firewalls/$FIREWALL_ID/droplets`. In the body of the request, there\nshould be a `droplet_ids` attribute containing a list of Droplet IDs.\n\nNo response body will be sent back, but the response code will indicate\nsuccess. Specifically, the response code will be a 204, which means that the\naction was successful with no returned body data."
+      }
+    },
+    "com.digitalocean.firewalls#FirewallsDeleteDropletsRequestDropletIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Integer"
+      },
+      "traits": {
+        "smithy.api#documentation": "An array containing the IDs of the Droplets to be removed from the firewall."
+      }
+    },
+    "com.digitalocean.firewalls#FirewallsDeleteDropletsRequest": {
+      "type": "structure",
+      "members": {
+        "firewall_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "A unique ID that can be used to identify and reference a firewall."
+          }
+        },
+        "droplet_ids": {
+          "target": "com.digitalocean.firewalls#FirewallsDeleteDropletsRequestDropletIdsList",
+          "traits": {
+            "smithy.api#documentation": "An array containing the IDs of the Droplets to be removed from the firewall.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.digitalocean.firewalls#FirewallsDeleteDroplets": {
+      "type": "operation",
+      "input": {
+        "target": "com.digitalocean.firewalls#FirewallsDeleteDropletsRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "errors": [
+        {
+          "target": "com.digitalocean.firewalls#BadRequest"
+        },
+        {
+          "target": "com.digitalocean.firewalls#NotFound"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/v2/firewalls/{firewall_id}/droplets",
+          "code": 200
+        },
+        "smithy.api#documentation": "Remove Droplets from a Firewall\n\nTo remove a Droplet from a firewall, send a DELETE request to\n`/v2/firewalls/$FIREWALL_ID/droplets`. In the body of the request, there should\nbe a `droplet_ids` attribute containing a list of Droplet IDs.\n\nNo response body will be sent back, but the response code will indicate\nsuccess. Specifically, the response code will be a 204, which means that the\naction was successful with no returned body data."
+      }
+    },
+    "com.digitalocean.firewalls#FirewallsAddTagsRequest": {
+      "type": "structure",
+      "members": {
+        "firewall_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "A unique ID that can be used to identify and reference a firewall."
+          }
+        },
+        "tags": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.digitalocean.firewalls#FirewallsAddTags": {
+      "type": "operation",
+      "input": {
+        "target": "com.digitalocean.firewalls#FirewallsAddTagsRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "errors": [
+        {
+          "target": "com.digitalocean.firewalls#BadRequest"
+        },
+        {
+          "target": "com.digitalocean.firewalls#NotFound"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/v2/firewalls/{firewall_id}/tags",
+          "code": 200
+        },
+        "smithy.api#documentation": "Add Tags to a Firewall\n\nTo assign a tag representing a group of Droplets to a firewall, send a POST\nrequest to `/v2/firewalls/$FIREWALL_ID/tags`. In the body of the request,\nthere should be a `tags` attribute containing a list of tag names.\n\nNo response body will be sent back, but the response code will indicate\nsuccess. Specifically, the response code will be a 204, which means that the\naction was successful with no returned body data."
+      }
+    },
+    "com.digitalocean.firewalls#FirewallsDeleteTagsRequest": {
+      "type": "structure",
+      "members": {
+        "firewall_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "A unique ID that can be used to identify and reference a firewall."
+          }
+        },
+        "tags": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.digitalocean.firewalls#FirewallsDeleteTags": {
+      "type": "operation",
+      "input": {
+        "target": "com.digitalocean.firewalls#FirewallsDeleteTagsRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "errors": [
+        {
+          "target": "com.digitalocean.firewalls#BadRequest"
+        },
+        {
+          "target": "com.digitalocean.firewalls#NotFound"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/v2/firewalls/{firewall_id}/tags",
+          "code": 200
+        },
+        "smithy.api#documentation": "Remove Tags from a Firewall\n\nTo remove a tag representing a group of Droplets from a firewall, send a\nDELETE request to `/v2/firewalls/$FIREWALL_ID/tags`. In the body of the\nrequest, there should be a `tags` attribute containing a list of tag names.\n\nNo response body will be sent back, but the response code will indicate\nsuccess. Specifically, the response code will be a 204, which means that the\naction was successful with no returned body data."
+      }
+    },
+    "com.digitalocean.firewalls#FirewallsAddRulesRequestInboundRulesItemProtocol": {
+      "type": "enum",
+      "members": {
+        "TCP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "tcp"
+          }
+        },
+        "UDP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "udp"
+          }
+        },
+        "ICMP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "icmp"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The type of traffic to be allowed. This may be one of `tcp`, `udp`, or `icmp`."
+      }
+    },
+    "com.digitalocean.firewalls#FirewallsAddRulesRequestInboundRulesItemSourcesAddressesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "An array of strings containing the IPv4 addresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs to which the firewall will allow traffic."
+      }
+    },
+    "com.digitalocean.firewalls#FirewallsAddRulesRequestInboundRulesItemSourcesDropletIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Integer"
+      },
+      "traits": {
+        "smithy.api#documentation": "An array containing the IDs of the Droplets to which the firewall will allow traffic."
+      }
+    },
+    "com.digitalocean.firewalls#FirewallsAddRulesRequestInboundRulesItemSourcesLoadBalancerUidsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "An array containing the IDs of the load balancers to which the firewall will allow traffic."
+      }
+    },
+    "com.digitalocean.firewalls#FirewallsAddRulesRequestInboundRulesItemSourcesKubernetesIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "An array containing the IDs of the Kubernetes clusters to which the firewall will allow traffic."
+      }
+    },
+    "com.digitalocean.firewalls#FirewallsAddRulesRequestInboundRulesItemSources": {
+      "type": "structure",
+      "members": {
+        "addresses": {
+          "target": "com.digitalocean.firewalls#FirewallsAddRulesRequestInboundRulesItemSourcesAddressesList",
+          "traits": {
+            "smithy.api#documentation": "An array of strings containing the IPv4 addresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs to which the firewall will allow traffic."
+          }
+        },
+        "droplet_ids": {
+          "target": "com.digitalocean.firewalls#FirewallsAddRulesRequestInboundRulesItemSourcesDropletIdsList",
+          "traits": {
+            "smithy.api#documentation": "An array containing the IDs of the Droplets to which the firewall will allow traffic."
+          }
+        },
+        "load_balancer_uids": {
+          "target": "com.digitalocean.firewalls#FirewallsAddRulesRequestInboundRulesItemSourcesLoadBalancerUidsList",
+          "traits": {
+            "smithy.api#documentation": "An array containing the IDs of the load balancers to which the firewall will allow traffic."
+          }
+        },
+        "kubernetes_ids": {
+          "target": "com.digitalocean.firewalls#FirewallsAddRulesRequestInboundRulesItemSourcesKubernetesIdsList",
+          "traits": {
+            "smithy.api#documentation": "An array containing the IDs of the Kubernetes clusters to which the firewall will allow traffic."
+          }
+        },
+        "tags": {
+          "target": "smithy.api#Document"
+        }
+      },
+      "traits": {}
+    },
+    "com.digitalocean.firewalls#FirewallsAddRulesRequestInboundRulesItem": {
+      "type": "structure",
+      "members": {
+        "protocol": {
+          "target": "com.digitalocean.firewalls#FirewallsAddRulesRequestInboundRulesItemProtocol",
+          "traits": {
+            "smithy.api#documentation": "The type of traffic to be allowed. This may be one of `tcp`, `udp`, or `icmp`.",
+            "smithy.api#required": {}
+          }
+        },
+        "ports": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ports on which traffic will be allowed specified as a string containing a single port, a range (e.g. \"8000-9000\"), or \"0\" when all ports are open for a protocol. For ICMP rules this parameter will always return \"0\".",
+            "smithy.api#required": {}
+          }
+        },
+        "sources": {
+          "target": "com.digitalocean.firewalls#FirewallsAddRulesRequestInboundRulesItemSources",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.digitalocean.firewalls#FirewallsAddRulesRequestInboundRulesList": {
+      "type": "list",
+      "member": {
+        "target": "com.digitalocean.firewalls#FirewallsAddRulesRequestInboundRulesItem"
+      },
+      "traits": {}
+    },
+    "com.digitalocean.firewalls#FirewallsAddRulesRequestOutboundRulesItemProtocol": {
+      "type": "enum",
+      "members": {
+        "TCP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "tcp"
+          }
+        },
+        "UDP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "udp"
+          }
+        },
+        "ICMP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "icmp"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The type of traffic to be allowed. This may be one of `tcp`, `udp`, or `icmp`."
+      }
+    },
+    "com.digitalocean.firewalls#FirewallsAddRulesRequestOutboundRulesItemDestinationsAddressesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "An array of strings containing the IPv4 addresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs to which the firewall will allow traffic."
+      }
+    },
+    "com.digitalocean.firewalls#FirewallsAddRulesRequestOutboundRulesItemDestinationsDropletIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Integer"
+      },
+      "traits": {
+        "smithy.api#documentation": "An array containing the IDs of the Droplets to which the firewall will allow traffic."
+      }
+    },
+    "com.digitalocean.firewalls#FirewallsAddRulesRequestOutboundRulesItemDestinationsLoadBalancerUidsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "An array containing the IDs of the load balancers to which the firewall will allow traffic."
+      }
+    },
+    "com.digitalocean.firewalls#FirewallsAddRulesRequestOutboundRulesItemDestinationsKubernetesIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "An array containing the IDs of the Kubernetes clusters to which the firewall will allow traffic."
+      }
+    },
+    "com.digitalocean.firewalls#FirewallsAddRulesRequestOutboundRulesItemDestinations": {
+      "type": "structure",
+      "members": {
+        "addresses": {
+          "target": "com.digitalocean.firewalls#FirewallsAddRulesRequestOutboundRulesItemDestinationsAddressesList",
+          "traits": {
+            "smithy.api#documentation": "An array of strings containing the IPv4 addresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs to which the firewall will allow traffic."
+          }
+        },
+        "droplet_ids": {
+          "target": "com.digitalocean.firewalls#FirewallsAddRulesRequestOutboundRulesItemDestinationsDropletIdsList",
+          "traits": {
+            "smithy.api#documentation": "An array containing the IDs of the Droplets to which the firewall will allow traffic."
+          }
+        },
+        "load_balancer_uids": {
+          "target": "com.digitalocean.firewalls#FirewallsAddRulesRequestOutboundRulesItemDestinationsLoadBalancerUidsList",
+          "traits": {
+            "smithy.api#documentation": "An array containing the IDs of the load balancers to which the firewall will allow traffic."
+          }
+        },
+        "kubernetes_ids": {
+          "target": "com.digitalocean.firewalls#FirewallsAddRulesRequestOutboundRulesItemDestinationsKubernetesIdsList",
+          "traits": {
+            "smithy.api#documentation": "An array containing the IDs of the Kubernetes clusters to which the firewall will allow traffic."
+          }
+        },
+        "tags": {
+          "target": "smithy.api#Document"
+        }
+      },
+      "traits": {}
+    },
+    "com.digitalocean.firewalls#FirewallsAddRulesRequestOutboundRulesItem": {
+      "type": "structure",
+      "members": {
+        "protocol": {
+          "target": "com.digitalocean.firewalls#FirewallsAddRulesRequestOutboundRulesItemProtocol",
+          "traits": {
+            "smithy.api#documentation": "The type of traffic to be allowed. This may be one of `tcp`, `udp`, or `icmp`.",
+            "smithy.api#required": {}
+          }
+        },
+        "ports": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ports on which traffic will be allowed specified as a string containing a single port, a range (e.g. \"8000-9000\"), or \"0\" when all ports are open for a protocol. For ICMP rules this parameter will always return \"0\".",
+            "smithy.api#required": {}
+          }
+        },
+        "destinations": {
+          "target": "com.digitalocean.firewalls#FirewallsAddRulesRequestOutboundRulesItemDestinations",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.digitalocean.firewalls#FirewallsAddRulesRequestOutboundRulesList": {
+      "type": "list",
+      "member": {
+        "target": "com.digitalocean.firewalls#FirewallsAddRulesRequestOutboundRulesItem"
+      },
+      "traits": {}
+    },
+    "com.digitalocean.firewalls#FirewallsAddRulesRequest": {
+      "type": "structure",
+      "members": {
+        "firewall_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "A unique ID that can be used to identify and reference a firewall."
+          }
+        },
+        "inbound_rules": {
+          "target": "com.digitalocean.firewalls#FirewallsAddRulesRequestInboundRulesList",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "outbound_rules": {
+          "target": "com.digitalocean.firewalls#FirewallsAddRulesRequestOutboundRulesList",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.digitalocean.firewalls#FirewallsAddRules": {
+      "type": "operation",
+      "input": {
+        "target": "com.digitalocean.firewalls#FirewallsAddRulesRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "errors": [
+        {
+          "target": "com.digitalocean.firewalls#BadRequest"
+        },
+        {
+          "target": "com.digitalocean.firewalls#NotFound"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/v2/firewalls/{firewall_id}/rules",
+          "code": 200
+        },
+        "smithy.api#documentation": "Add Rules to a Firewall\n\nTo add additional access rules to a firewall, send a POST request to\n`/v2/firewalls/$FIREWALL_ID/rules`. The body of the request may include an\ninbound_rules and/or outbound_rules attribute containing an array of rules to\nbe added.\n\nNo response body will be sent back, but the response code will indicate\nsuccess. Specifically, the response code will be a 204, which means that the\naction was successful with no returned body data."
+      }
+    },
+    "com.digitalocean.firewalls#FirewallsDeleteRulesRequestInboundRulesItemProtocol": {
+      "type": "enum",
+      "members": {
+        "TCP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "tcp"
+          }
+        },
+        "UDP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "udp"
+          }
+        },
+        "ICMP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "icmp"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The type of traffic to be allowed. This may be one of `tcp`, `udp`, or `icmp`."
+      }
+    },
+    "com.digitalocean.firewalls#FirewallsDeleteRulesRequestInboundRulesItemSourcesAddressesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "An array of strings containing the IPv4 addresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs to which the firewall will allow traffic."
+      }
+    },
+    "com.digitalocean.firewalls#FirewallsDeleteRulesRequestInboundRulesItemSourcesDropletIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Integer"
+      },
+      "traits": {
+        "smithy.api#documentation": "An array containing the IDs of the Droplets to which the firewall will allow traffic."
+      }
+    },
+    "com.digitalocean.firewalls#FirewallsDeleteRulesRequestInboundRulesItemSourcesLoadBalancerUidsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "An array containing the IDs of the load balancers to which the firewall will allow traffic."
+      }
+    },
+    "com.digitalocean.firewalls#FirewallsDeleteRulesRequestInboundRulesItemSourcesKubernetesIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "An array containing the IDs of the Kubernetes clusters to which the firewall will allow traffic."
+      }
+    },
+    "com.digitalocean.firewalls#FirewallsDeleteRulesRequestInboundRulesItemSources": {
+      "type": "structure",
+      "members": {
+        "addresses": {
+          "target": "com.digitalocean.firewalls#FirewallsDeleteRulesRequestInboundRulesItemSourcesAddressesList",
+          "traits": {
+            "smithy.api#documentation": "An array of strings containing the IPv4 addresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs to which the firewall will allow traffic."
+          }
+        },
+        "droplet_ids": {
+          "target": "com.digitalocean.firewalls#FirewallsDeleteRulesRequestInboundRulesItemSourcesDropletIdsList",
+          "traits": {
+            "smithy.api#documentation": "An array containing the IDs of the Droplets to which the firewall will allow traffic."
+          }
+        },
+        "load_balancer_uids": {
+          "target": "com.digitalocean.firewalls#FirewallsDeleteRulesRequestInboundRulesItemSourcesLoadBalancerUidsList",
+          "traits": {
+            "smithy.api#documentation": "An array containing the IDs of the load balancers to which the firewall will allow traffic."
+          }
+        },
+        "kubernetes_ids": {
+          "target": "com.digitalocean.firewalls#FirewallsDeleteRulesRequestInboundRulesItemSourcesKubernetesIdsList",
+          "traits": {
+            "smithy.api#documentation": "An array containing the IDs of the Kubernetes clusters to which the firewall will allow traffic."
+          }
+        },
+        "tags": {
+          "target": "smithy.api#Document"
+        }
+      },
+      "traits": {}
+    },
+    "com.digitalocean.firewalls#FirewallsDeleteRulesRequestInboundRulesItem": {
+      "type": "structure",
+      "members": {
+        "protocol": {
+          "target": "com.digitalocean.firewalls#FirewallsDeleteRulesRequestInboundRulesItemProtocol",
+          "traits": {
+            "smithy.api#documentation": "The type of traffic to be allowed. This may be one of `tcp`, `udp`, or `icmp`.",
+            "smithy.api#required": {}
+          }
+        },
+        "ports": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ports on which traffic will be allowed specified as a string containing a single port, a range (e.g. \"8000-9000\"), or \"0\" when all ports are open for a protocol. For ICMP rules this parameter will always return \"0\".",
+            "smithy.api#required": {}
+          }
+        },
+        "sources": {
+          "target": "com.digitalocean.firewalls#FirewallsDeleteRulesRequestInboundRulesItemSources",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.digitalocean.firewalls#FirewallsDeleteRulesRequestInboundRulesList": {
+      "type": "list",
+      "member": {
+        "target": "com.digitalocean.firewalls#FirewallsDeleteRulesRequestInboundRulesItem"
+      },
+      "traits": {}
+    },
+    "com.digitalocean.firewalls#FirewallsDeleteRulesRequestOutboundRulesItemProtocol": {
+      "type": "enum",
+      "members": {
+        "TCP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "tcp"
+          }
+        },
+        "UDP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "udp"
+          }
+        },
+        "ICMP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "icmp"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The type of traffic to be allowed. This may be one of `tcp`, `udp`, or `icmp`."
+      }
+    },
+    "com.digitalocean.firewalls#FirewallsDeleteRulesRequestOutboundRulesItemDestinationsAddressesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "An array of strings containing the IPv4 addresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs to which the firewall will allow traffic."
+      }
+    },
+    "com.digitalocean.firewalls#FirewallsDeleteRulesRequestOutboundRulesItemDestinationsDropletIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Integer"
+      },
+      "traits": {
+        "smithy.api#documentation": "An array containing the IDs of the Droplets to which the firewall will allow traffic."
+      }
+    },
+    "com.digitalocean.firewalls#FirewallsDeleteRulesRequestOutboundRulesItemDestinationsLoadBalancerUidsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "An array containing the IDs of the load balancers to which the firewall will allow traffic."
+      }
+    },
+    "com.digitalocean.firewalls#FirewallsDeleteRulesRequestOutboundRulesItemDestinationsKubernetesIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "An array containing the IDs of the Kubernetes clusters to which the firewall will allow traffic."
+      }
+    },
+    "com.digitalocean.firewalls#FirewallsDeleteRulesRequestOutboundRulesItemDestinations": {
+      "type": "structure",
+      "members": {
+        "addresses": {
+          "target": "com.digitalocean.firewalls#FirewallsDeleteRulesRequestOutboundRulesItemDestinationsAddressesList",
+          "traits": {
+            "smithy.api#documentation": "An array of strings containing the IPv4 addresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs to which the firewall will allow traffic."
+          }
+        },
+        "droplet_ids": {
+          "target": "com.digitalocean.firewalls#FirewallsDeleteRulesRequestOutboundRulesItemDestinationsDropletIdsList",
+          "traits": {
+            "smithy.api#documentation": "An array containing the IDs of the Droplets to which the firewall will allow traffic."
+          }
+        },
+        "load_balancer_uids": {
+          "target": "com.digitalocean.firewalls#FirewallsDeleteRulesRequestOutboundRulesItemDestinationsLoadBalancerUidsList",
+          "traits": {
+            "smithy.api#documentation": "An array containing the IDs of the load balancers to which the firewall will allow traffic."
+          }
+        },
+        "kubernetes_ids": {
+          "target": "com.digitalocean.firewalls#FirewallsDeleteRulesRequestOutboundRulesItemDestinationsKubernetesIdsList",
+          "traits": {
+            "smithy.api#documentation": "An array containing the IDs of the Kubernetes clusters to which the firewall will allow traffic."
+          }
+        },
+        "tags": {
+          "target": "smithy.api#Document"
+        }
+      },
+      "traits": {}
+    },
+    "com.digitalocean.firewalls#FirewallsDeleteRulesRequestOutboundRulesItem": {
+      "type": "structure",
+      "members": {
+        "protocol": {
+          "target": "com.digitalocean.firewalls#FirewallsDeleteRulesRequestOutboundRulesItemProtocol",
+          "traits": {
+            "smithy.api#documentation": "The type of traffic to be allowed. This may be one of `tcp`, `udp`, or `icmp`.",
+            "smithy.api#required": {}
+          }
+        },
+        "ports": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ports on which traffic will be allowed specified as a string containing a single port, a range (e.g. \"8000-9000\"), or \"0\" when all ports are open for a protocol. For ICMP rules this parameter will always return \"0\".",
+            "smithy.api#required": {}
+          }
+        },
+        "destinations": {
+          "target": "com.digitalocean.firewalls#FirewallsDeleteRulesRequestOutboundRulesItemDestinations",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.digitalocean.firewalls#FirewallsDeleteRulesRequestOutboundRulesList": {
+      "type": "list",
+      "member": {
+        "target": "com.digitalocean.firewalls#FirewallsDeleteRulesRequestOutboundRulesItem"
+      },
+      "traits": {}
+    },
+    "com.digitalocean.firewalls#FirewallsDeleteRulesRequest": {
+      "type": "structure",
+      "members": {
+        "firewall_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "A unique ID that can be used to identify and reference a firewall."
+          }
+        },
+        "inbound_rules": {
+          "target": "com.digitalocean.firewalls#FirewallsDeleteRulesRequestInboundRulesList",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "outbound_rules": {
+          "target": "com.digitalocean.firewalls#FirewallsDeleteRulesRequestOutboundRulesList",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.digitalocean.firewalls#FirewallsDeleteRules": {
+      "type": "operation",
+      "input": {
+        "target": "com.digitalocean.firewalls#FirewallsDeleteRulesRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "errors": [
+        {
+          "target": "com.digitalocean.firewalls#BadRequest"
+        },
+        {
+          "target": "com.digitalocean.firewalls#NotFound"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/v2/firewalls/{firewall_id}/rules",
+          "code": 200
+        },
+        "smithy.api#documentation": "Remove Rules from a Firewall\n\nTo remove access rules from a firewall, send a DELETE request to\n`/v2/firewalls/$FIREWALL_ID/rules`. The body of the request may include an\n`inbound_rules` and/or `outbound_rules` attribute containing an array of rules\nto be removed.\n\nNo response body will be sent back, but the response code will indicate\nsuccess. Specifically, the response code will be a 204, which means that the\naction was successful with no returned body data."
+      }
+    },
+    "com.digitalocean.firewalls#BadRequest": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#error": "client",
+        "smithy.api#httpError": 400,
+        "com.distilled.openapi#errorMatchers": [
+          {
+            "status": 400
+          }
+        ]
+      }
+    },
+    "com.digitalocean.firewalls#NotFound": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#error": "client",
+        "smithy.api#httpError": 404,
+        "com.distilled.openapi#errorMatchers": [
+          {
+            "status": 404
+          }
+        ]
+      }
+    },
+    "com.digitalocean.firewalls#DigitalOceanFirewalls": {
+      "type": "service",
+      "version": "2.0",
+      "operations": [
+        {
+          "target": "com.digitalocean.firewalls#FirewallsList"
+        },
+        {
+          "target": "com.digitalocean.firewalls#FirewallsCreate"
+        },
+        {
+          "target": "com.digitalocean.firewalls#FirewallsGet"
+        },
+        {
+          "target": "com.digitalocean.firewalls#FirewallsUpdate"
+        },
+        {
+          "target": "com.digitalocean.firewalls#FirewallsDelete"
+        },
+        {
+          "target": "com.digitalocean.firewalls#FirewallsAssignDroplets"
+        },
+        {
+          "target": "com.digitalocean.firewalls#FirewallsDeleteDroplets"
+        },
+        {
+          "target": "com.digitalocean.firewalls#FirewallsAddTags"
+        },
+        {
+          "target": "com.digitalocean.firewalls#FirewallsDeleteTags"
+        },
+        {
+          "target": "com.digitalocean.firewalls#FirewallsAddRules"
+        },
+        {
+          "target": "com.digitalocean.firewalls#FirewallsDeleteRules"
+        }
+      ],
+      "traits": {
+        "smithy.api#title": "DigitalOcean API"
+      }
+    }
+  }
+}
