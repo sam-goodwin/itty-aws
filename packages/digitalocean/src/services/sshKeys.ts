@@ -27,16 +27,16 @@ export const SshKeysCreateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SshKeysCreateRequest>;
 
 export interface SshKeys {
-  id?: number;
-  fingerprint?: string;
+  id: number;
+  fingerprint: string;
   /** The entire public key string that was uploaded. Embedded into the root user's `authorized_keys` file if you include this key during Droplet creation. */
   public_key: string;
   name: string;
 }
 export const SshKeys = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.Number),
-    fingerprint: S.optional(S.String),
+    id: S.Number,
+    fingerprint: S.String,
     public_key: S.String,
     name: S.String,
   }),
