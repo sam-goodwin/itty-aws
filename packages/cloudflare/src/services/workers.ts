@@ -8627,11 +8627,16 @@ export const PutScriptAssetsConfigRunWorkerFirst = /*@__PURE__*/ S.Unknown.pipe(
 );
 
 export interface PutScriptAssetsConfig {
+  /** Determines the redirects and rewrites of requests for HTML content. */
   htmlHandling?: PutScriptAssetsConfigHtmlHandling | (string & {});
+  /** Determines the response when a request does not match a static asset, and there is no Worker script. */
   notFoundHandling?: PutScriptAssetsConfigNotFoundHandling | (string & {});
+  /** Controls whether the Worker runs ahead of the static-asset layer. Defaults to false: a request matching an asset is served directly and never invokes the Worker. `true` routes every request through the Worker first (serve files yourself via the `ASSETS` binding). A list of path rules routes only matching paths worker-first: glob (*) and negative (!) rules are supported, rules must start with '/' or '!/', at least one non-negative rule must be provided, and negative rules take precedence. */
   runWorkerFirst?: PutScriptAssetsConfigRunWorkerFirst;
   serveDirectly?: boolean;
+  /** Raw contents of a `_headers` file — header rules applied by the asset layer. */
   headers?: string;
+  /** Raw contents of a `_redirects` file — redirect rules applied by the asset layer. */
   redirects?: string;
 }
 export const PutScriptAssetsConfig = /*@__PURE__*/ S.suspend(() =>

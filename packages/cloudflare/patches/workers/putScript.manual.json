@@ -249,22 +249,37 @@
         "type": "structure",
         "members": {
           "html_handling": {
-            "target": "com.cloudflare.workers#PutScriptAssetsConfigHtmlHandling"
+            "target": "com.cloudflare.workers#PutScriptAssetsConfigHtmlHandling",
+            "traits": {
+              "smithy.api#documentation": "Determines the redirects and rewrites of requests for HTML content."
+            }
           },
           "not_found_handling": {
-            "target": "com.cloudflare.workers#PutScriptAssetsConfigNotFoundHandling"
+            "target": "com.cloudflare.workers#PutScriptAssetsConfigNotFoundHandling",
+            "traits": {
+              "smithy.api#documentation": "Determines the response when a request does not match a static asset, and there is no Worker script."
+            }
           },
           "run_worker_first": {
-            "target": "com.cloudflare.workers#PutScriptAssetsConfigRunWorkerFirst"
+            "target": "com.cloudflare.workers#PutScriptAssetsConfigRunWorkerFirst",
+            "traits": {
+              "smithy.api#documentation": "Controls whether the Worker runs ahead of the static-asset layer. Defaults to false: a request matching an asset is served directly and never invokes the Worker. `true` routes every request through the Worker first (serve files yourself via the `ASSETS` binding). A list of path rules routes only matching paths worker-first: glob (*) and negative (!) rules are supported, rules must start with '/' or '!/', at least one non-negative rule must be provided, and negative rules take precedence."
+            }
           },
           "serve_directly": {
             "target": "smithy.api#Boolean"
           },
           "_headers": {
-            "target": "smithy.api#String"
+            "target": "smithy.api#String",
+            "traits": {
+              "smithy.api#documentation": "Raw contents of a `_headers` file — header rules applied by the asset layer."
+            }
           },
           "_redirects": {
-            "target": "smithy.api#String"
+            "target": "smithy.api#String",
+            "traits": {
+              "smithy.api#documentation": "Raw contents of a `_redirects` file — redirect rules applied by the asset layer."
+            }
           }
         }
       }
