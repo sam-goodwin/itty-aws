@@ -616,9 +616,17 @@ export const buildRequest = ({
       request = request.pipe(HttpClientRequest.bodyJsonUnsafe(rawBody));
     }
   } else if (
-    !BODYLESS.has(http.method) &&
-    (Object.keys(body).length > 0 ||
-      (hasBodyMembers && http.method !== "DELETE"))
+    // A GET/HEAD sends a body only when body members actually carry values.
+    // Some APIs really do document GET-with-body: MongoDB Atlas's
+    // `…/lineItems:search` declares a `requestBody` on `get`, and AWS EFS's
+    // DescribeAccountPreferences takes `{ MaxResults, NextToken }` on a GET.
+    // Suppressing it outright dropped those members silently — the request
+    // succeeded, unfiltered, with nothing on the wire to show why.
+    //
+    // The `{}`-when-empty rule below stays limited to methods that expect a
+    // body, so a bodyless method with nothing set still sends nothing.
+    Object.keys(body).length > 0 ||
+    (hasBodyMembers && !BODYLESS.has(http.method) && http.method !== "DELETE")
   ) {
     // Send `{}` rather than no body when the schema declares body members —
     // some endpoints reject a missing JSON body outright.
